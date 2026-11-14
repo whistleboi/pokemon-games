@@ -1186,6 +1186,16 @@ def _ow(folder, name, tile):
 def _version_file(spec):
     """A picture's file: its own for this save's Hoenn version, if it gives one ("by_version" {version: file}); another
     till a story flag is set ("until" {"flag", "f"}: the Sealed Chamber's braille wall before you Dig through it)."""
+    when = spec.get("when")   # (another picture while a flag is set: Mauville Gym's barriers, flipped by its switches;
+    if when:                  #  a list: the last one whose flag is set, Sootopolis Gym's stairs opening one flight at a time)
+        try:
+            from src.ui import theme
+            flags = theme.GAME.story_manager.story_flags
+            for w in reversed(when if isinstance(when, list) else [when]):
+                if flags.get(w["flag"]):
+                    return w["f"]
+        except Exception:
+            pass
     until = spec.get("until")
     if until:
         try:

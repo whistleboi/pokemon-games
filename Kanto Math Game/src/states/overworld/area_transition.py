@@ -263,6 +263,8 @@ def reset_league_after_loss(game):
     area = story.get_current_area_data()
     if is_league(area.get("gym")):
         story.story_flags[f"gym_progress_{story.current_area_key}"] = 0
+        for k in [k for k in story.story_flags if k.startswith(f"league_won_{story.current_area_key}_")]:
+            story.story_flags.pop(k, None)  # (the Elite Four's rooms walked: their doors shut again)
 
 
 def autosave(game):

@@ -69212,6 +69212,9 @@
     "Where people mingle with nature."
    ]
   ],
+  "inside": {
+   "15,8": "gym"
+  },
   "edge_to": {
    "0,12": [
     39,
@@ -69312,7 +69315,745 @@
      30
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "gym": {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "..c.N.c..",
+     "..c...c..",
+     ".........",
+     ".........",
+     ".........",
+     ".11...11.",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccc1c",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     ".11...11.",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "c1ccccccc",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     ".11...11.",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccc1c",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     "......11.",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "c1ccccc1c",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     ".11...11.",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "c1ccccccc",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     ".11......",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "c1ccccc1c",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     "......11.",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "c1ccccc1c",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     ".11......",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     "c1ccccc1c",
+     ".........",
+     ".........",
+     ".........",
+     "...N.....",
+     ".c.....c.",
+     "....nn..."
+    ],
+    "exits": {
+     "n": "OUT:15,8"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/8_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gym",
+     {
+      "text": "Ace Trainer Berke",
+      "action": "EVENT",
+      "_look": "em_33.png",
+      "event": {
+       "lines": [
+        "Ace Trainer Berke: Each room here tests one thing. Show me what you've got!"
+       ],
+       "flag": "gym_trainer_PETALBURG_CITY_6",
+       "battle": {
+        "name": "Ace Trainer Berke",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_m.png",
+        "team": [
+         335
+        ],
+        "levels": [
+         28
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Berke: That's how it's done!"
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer Berke: Take the next door. Another test waits."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Jody",
+      "action": "EVENT",
+      "_look": "em_34.png",
+      "event": {
+       "lines": [
+        "Ace Trainer Jody: Norman's Trainers don't go easy on anyone!"
+       ],
+       "flag": "gym_trainer_PETALBURG_CITY_5",
+       "battle": {
+        "name": "Ace Trainer Jody",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_f.png",
+        "team": [
+         335
+        ],
+        "levels": [
+         28
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Jody: You passed this room's test!"
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer Jody: The door onward is open now."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer George",
+      "action": "EVENT",
+      "_look": "em_33.png",
+      "event": {
+       "lines": [
+        "Ace Trainer George: Each room here tests one thing. Show me what you've got!"
+       ],
+       "flag": "gym_trainer_PETALBURG_CITY_4",
+       "battle": {
+        "name": "Ace Trainer George",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_m.png",
+        "team": [
+         264
+        ],
+        "levels": [
+         28
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer George: That's how it's done!"
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer George: Take the next door. Another test waits."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Lori",
+      "action": "EVENT",
+      "_look": "em_34.png",
+      "event": {
+       "lines": [
+        "Ace Trainer Lori: Norman's Trainers don't go easy on anyone!"
+       ],
+       "flag": "gym_trainer_PETALBURG_CITY_3",
+       "battle": {
+        "name": "Ace Trainer Lori",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_f.png",
+        "team": [
+         264
+        ],
+        "levels": [
+         28
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Lori: You passed this room's test!"
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer Lori: The door onward is open now."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Parker",
+      "action": "EVENT",
+      "_look": "em_33.png",
+      "event": {
+       "lines": [
+        "Ace Trainer Parker: Each room here tests one thing. Show me what you've got!"
+       ],
+       "flag": "gym_trainer_PETALBURG_CITY_2",
+       "battle": {
+        "name": "Ace Trainer Parker",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_m.png",
+        "team": [
+         264
+        ],
+        "levels": [
+         28
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Parker: That's how it's done!"
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer Parker: Take the next door. Another test waits."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Mary",
+      "action": "EVENT",
+      "_look": "em_34.png",
+      "event": {
+       "lines": [
+        "Ace Trainer Mary: Norman's Trainers don't go easy on anyone!"
+       ],
+       "flag": "gym_trainer_PETALBURG_CITY_1",
+       "battle": {
+        "name": "Ace Trainer Mary",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_f.png",
+        "team": [
+         301
+        ],
+        "levels": [
+         28
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Mary: You passed this room's test!"
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer Mary: The door onward is open now."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Randall",
+      "action": "EVENT",
+      "_look": "em_33.png",
+      "event": {
+       "lines": [
+        "Ace Trainer Randall: Each room here tests one thing. Show me what you've got!"
+       ],
+       "flag": "gym_trainer_PETALBURG_CITY_0",
+       "battle": {
+        "name": "Ace Trainer Randall",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_m.png",
+        "team": [
+         301
+        ],
+        "levels": [
+         28
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Randall: That's how it's done!"
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer Randall: Take the next door. Another test waits."
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: Each room has a Trainer. Beat them to open the doors onward, and choose your path to Norman!"
+       ]
+      }
+     }
+    ],
+    "links": {
+     "1,105": [
+      0,
+      7,
+      85
+     ],
+     "7,85": [
+      0,
+      1,
+      105
+     ],
+     "6,85": [
+      0,
+      1,
+      105
+     ],
+     "7,105": [
+      0,
+      1,
+      98
+     ],
+     "1,98": [
+      0,
+      7,
+      105
+     ],
+     "2,98": [
+      0,
+      7,
+      105
+     ],
+     "1,79": [
+      0,
+      7,
+      46
+     ],
+     "7,79": [
+      0,
+      1,
+      59
+     ],
+     "7,46": [
+      0,
+      1,
+      79
+     ],
+     "6,46": [
+      0,
+      1,
+      79
+     ],
+     "1,59": [
+      0,
+      7,
+      79
+     ],
+     "2,59": [
+      0,
+      7,
+      79
+     ],
+     "1,92": [
+      0,
+      7,
+      59
+     ],
+     "7,92": [
+      0,
+      1,
+      72
+     ],
+     "7,59": [
+      0,
+      1,
+      92
+     ],
+     "6,59": [
+      0,
+      1,
+      92
+     ],
+     "1,72": [
+      0,
+      7,
+      92
+     ],
+     "2,72": [
+      0,
+      7,
+      92
+     ],
+     "7,40": [
+      0,
+      1,
+      20
+     ],
+     "1,53": [
+      0,
+      7,
+      20
+     ],
+     "7,53": [
+      0,
+      1,
+      33
+     ],
+     "1,66": [
+      0,
+      7,
+      33
+     ],
+     "1,20": [
+      0,
+      7,
+      40
+     ],
+     "2,20": [
+      0,
+      7,
+      40
+     ],
+     "7,20": [
+      0,
+      1,
+      53
+     ],
+     "6,20": [
+      0,
+      1,
+      53
+     ],
+     "1,33": [
+      0,
+      7,
+      53
+     ],
+     "2,33": [
+      0,
+      7,
+      53
+     ],
+     "7,33": [
+      0,
+      1,
+      66
+     ],
+     "6,33": [
+      0,
+      1,
+      66
+     ],
+     "7,14": [
+      0,
+      1,
+      7
+     ],
+     "1,27": [
+      0,
+      7,
+      7
+     ],
+     "1,7": [
+      0,
+      7,
+      14
+     ],
+     "2,7": [
+      0,
+      7,
+      14
+     ],
+     "7,7": [
+      0,
+      1,
+      27
+     ],
+     "6,7": [
+      0,
+      1,
+      27
+     ]
+    },
+    "moves": {
+     "4,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,109": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,94": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,81": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,68": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,55": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,42": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,29": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,16": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        1,
+        92
+       ],
+       [
+        7,
+        92
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "gym_trainer_PETALBURG_CITY_0"
+      },
+      "lines": [
+       "The door won't open.",
+       "Beat this room's Trainer first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        79
+       ],
+       [
+        7,
+        79
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "gym_trainer_PETALBURG_CITY_1"
+      },
+      "lines": [
+       "The door won't open.",
+       "Beat this room's Trainer first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        66
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "gym_trainer_PETALBURG_CITY_2"
+      },
+      "lines": [
+       "The door won't open.",
+       "Beat this room's Trainer first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        53
+       ],
+       [
+        7,
+        53
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "gym_trainer_PETALBURG_CITY_3"
+      },
+      "lines": [
+       "The door won't open.",
+       "Beat this room's Trainer first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        40
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "gym_trainer_PETALBURG_CITY_4"
+      },
+      "lines": [
+       "The door won't open.",
+       "Beat this room's Trainer first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        27
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "gym_trainer_PETALBURG_CITY_5"
+      },
+      "lines": [
+       "The door won't open.",
+       "Beat this room's Trainer first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        14
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "gym_trainer_PETALBURG_CITY_6"
+      },
+      "lines": [
+       "The door won't open.",
+       "Beat this room's Trainer first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/8_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       112
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Petalburg Gym"
+   }
+  }
  },
  "HOENN_PETALBURG_WOODS": {
   "art": [
@@ -69596,7 +70337,7 @@
    "oooooccccoooooooooooooooooooo==ccccccccc",
    "oooooooccooooooooooooooooooooccccccccccc",
    "ooooooccoooooooooooooooooooccccccccccccc",
-   "......ccouuuuuuuuuuuuuuuuuocc..ccccccccc"
+   "......ccouuuuuuuuuuuuuuuuuoccccccccccccc"
   ],
   "exits": {
    "^": "RUSTBORO_CITY",
@@ -70021,7 +70762,7 @@
    "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.....................>",
-   "cccccccccccccccccc.N....ccccccccccccccc>",
+   "cccccccccccccccccc.N....ccccccccccccccc.",
    "cccccccccccGcccccc......c...........ccc.",
    "ccccccc...cDDc...c......c...........cccc",
    "ccccccc..........c.c..c.cccccc.ccccccccc",
@@ -70224,6 +70965,9 @@
     "The city probing the integration of nature and science."
    ]
   ],
+  "inside": {
+   "27,19": "gym"
+  },
   "edge_to": {
    "19,0": [
     19,
@@ -70296,10 +71040,6 @@
    "39,12": [
     0,
     12
-   ],
-   "39,13": [
-    0,
-    13
    ]
   },
   "moves": {
@@ -70478,7 +71218,202 @@
      60
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "gym": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "c..c.N.c..c",
+     "...c...c...",
+     "...........",
+     "...........",
+     "cN.cccccccc",
+     "c..cccccccc",
+     "c........cc",
+     "c..Nc.cc.cc",
+     "c...c.cc.cc",
+     "c.ccc....cc",
+     "c.....ccccc",
+     "c.cc.N.cccc",
+     "c.cc.....cc",
+     "c.ccc.cc.cc",
+     "...........",
+     "...........",
+     "..cN....c..",
+     ".....nn...."
+    ],
+    "exits": {
+     "n": "OUT:27,19"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gym",
+     {
+      "text": "Schoolkid Georgia",
+      "action": "EVENT",
+      "_look": "em_14.png",
+      "event": {
+       "lines": [
+        "Schoolkid Georgia: Rock types are tough! You won't get past me easily."
+       ],
+       "flag": "gym_trainer_RUSTBORO_CITY_2",
+       "battle": {
+        "name": "Schoolkid Georgia",
+        "class": "SCHOOLKID",
+        "sprite": "school_kid_f.png",
+        "team": [
+         74
+        ],
+        "levels": [
+         10
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Schoolkid Georgia: Whoa, you're good!"
+         ]
+        }
+       },
+       "done": [
+        "Schoolkid Georgia: Roxanne is way stronger than me, you know."
+       ]
+      }
+     },
+     {
+      "text": "Youngster Tommy",
+      "action": "EVENT",
+      "_look": "em_35.png",
+      "event": {
+       "lines": [
+        "Youngster Tommy: I study hard, and I battle harder!"
+       ],
+       "flag": "gym_trainer_RUSTBORO_CITY_1",
+       "battle": {
+        "name": "Youngster Tommy",
+        "class": "YOUNGSTER",
+        "sprite": "youngster.png",
+        "team": [
+         74
+        ],
+        "levels": [
+         10
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Youngster Tommy: I need to study more..."
+         ]
+        }
+       },
+       "done": [
+        "Youngster Tommy: Rock types hate Water and Grass. Just saying!"
+       ]
+      }
+     },
+     {
+      "text": "Youngster Josh",
+      "action": "EVENT",
+      "_look": "em_35.png",
+      "event": {
+       "lines": [
+        "Youngster Josh: Rock types are tough! You won't get past me easily."
+       ],
+       "flag": "gym_trainer_RUSTBORO_CITY_0",
+       "battle": {
+        "name": "Youngster Josh",
+        "class": "YOUNGSTER",
+        "sprite": "youngster.png",
+        "team": [
+         74,
+         74
+        ],
+        "levels": [
+         7,
+         9
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Youngster Josh: Whoa, you're good!"
+         ]
+        }
+       },
+       "done": [
+        "Youngster Josh: Roxanne is way stronger than me, you know."
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: Roxanne uses Rock types. Water and Grass moves will serve you well!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,18": {
+      "m": "face",
+      "d": "d"
+     },
+     "5,13": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "3,9": {
+      "m": "face",
+      "d": "l",
+      "s": 3
+     },
+     "1,6": {
+      "m": "face",
+      "d": "d",
+      "s": 3
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       20
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Rustboro Gym"
+   }
+  }
  },
  "HOENN_ROUTE_116": {
   "art": [
@@ -70806,7 +71741,7 @@
  },
  "DEWFORD_TOWN": {
   "art": [
-   "ccc^^^^^^^^^^ccccccc",
+   "ccc...^^^^^^^ccccccc",
    "cccccc=====ooccccccc",
    "cccAcc=====ooccccccc",
    "cccDcc=====ooccccccc",
@@ -70900,19 +71835,10 @@
     "Leader: Brawly"
    ]
   ],
+  "inside": {
+   "8,17": "gym"
+  },
   "edge_to": {
-   "3,0": [
-    63,
-    19
-   ],
-   "4,0": [
-    64,
-    19
-   ],
-   "5,0": [
-    65,
-    19
-   ],
    "6,0": [
     66,
     19
@@ -71011,7 +71937,222 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "gym": {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "ccc.Nccccc.cccc.cc",
+     "c.c..c.ccc..ccc.cc",
+     "c............cc.cc",
+     "cc....cccccc....cc",
+     "cccccccccccc..cccc",
+     "cccccccN......cccc",
+     "cc.cccccc.cc.ccc.c",
+     "c....cccc.cc.ccc.c",
+     "c..cccccc.cc.ccc.c",
+     "cc.cccccc.cc.cN..c",
+     "cc.cccc...cc.ccc.c",
+     "cc.cc........ccc.c",
+     "c..cc.cccc...ccc.c",
+     "c.....ccccc.cccc.c",
+     "c..cccccccc.cccc.c",
+     "cc.ccccc.cc.cc...c",
+     "cccccccc.cc.....cc",
+     "cccccccc.cc..ccccc",
+     "cc.ccccc.....ccccc",
+     "cc..............cc",
+     "ccc.....cccc.ccccc",
+     "cccccN.ccccc.ccccc",
+     "cccc....ccccNccccc",
+     "ccccc..ccccccccccc",
+     "cccccnnccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:8,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/3_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gym",
+     {
+      "text": "Battle Girl Tessa",
+      "action": "EVENT",
+      "_look": "em_14.png",
+      "event": {
+       "lines": [
+        "Battle Girl Tessa: Can you even see me? I can see you just fine!"
+       ],
+       "flag": "gym_trainer_DEWFORD_TOWN_2",
+       "battle": {
+        "name": "Battle Girl Tessa",
+        "class": "BATTLE_GIRL",
+        "sprite": "battle_girl.png",
+        "team": [
+         307,
+         66
+        ],
+        "levels": [
+         11,
+         11
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Battle Girl Tessa: Ow! You found me fair and square."
+         ]
+        }
+       },
+       "done": [
+        "Battle Girl Tessa: It's a bit brighter now, isn't it?"
+       ]
+      }
+     },
+     {
+      "text": "Black Belt Hideki",
+      "action": "EVENT",
+      "_look": "em_44.png",
+      "event": {
+       "lines": [
+        "Black Belt Hideki: In the dark, you learn to feel your way. Hyah!"
+       ],
+       "flag": "gym_trainer_DEWFORD_TOWN_1",
+       "battle": {
+        "name": "Black Belt Hideki",
+        "class": "BLACK_BELT",
+        "sprite": "blackbelt.png",
+        "team": [
+         66
+        ],
+        "levels": [
+         13
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt Hideki: You fight well in the dark!"
+         ]
+        }
+       },
+       "done": [
+        "Black Belt Hideki: Brawly trains here to sharpen his senses."
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: It's pitch dark in here! Beat Brawly's trainers and the Gym gets brighter."
+       ]
+      }
+     },
+     {
+      "text": "Battle Girl Laura",
+      "action": "EVENT",
+      "_look": "em_14.png",
+      "event": {
+       "lines": [
+        "Battle Girl Laura: Can you even see me? I can see you just fine!"
+       ],
+       "flag": "gym_trainer_DEWFORD_TOWN_0",
+       "battle": {
+        "name": "Battle Girl Laura",
+        "class": "BATTLE_GIRL",
+        "sprite": "battle_girl.png",
+        "team": [
+         307
+        ],
+        "levels": [
+         13
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Battle Girl Laura: Ow! You found me fair and square."
+         ]
+        }
+       },
+       "done": [
+        "Battle Girl Laura: It's a bit brighter now, isn't it?"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "5,24": {
+      "m": "face",
+      "d": "d"
+     },
+     "12,25": {
+      "m": "face",
+      "d": "u",
+      "s": 2
+     },
+     "14,12": {
+      "m": "face",
+      "d": "r",
+      "s": 2
+     },
+     "7,8": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     }
+    },
+    "dark": {
+     "flags": [
+      "gym_trainer_DEWFORD_TOWN_0",
+      "gym_trainer_DEWFORD_TOWN_1",
+      "gym_trainer_DEWFORD_TOWN_2"
+     ],
+     "radius": [
+      1.5,
+      2.5,
+      3.5
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/3_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       28
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Dewford Gym"
+   }
+  }
  },
  "HOENN_ROUTE_106": {
   "art": [
@@ -71034,7 +72175,7 @@
    "cccccccccccccccccccccccccccccccccccccccccccccccc^cc==================oooocc~cccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccc========cc===========ooooccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccc========ccccc===========oo~cccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccc======ccccccccc=vvvvvvvvvvccccccc"
+   "ccccccccccccccccccccccccccccccccccccccccccccccc======ccccccccc=..vvvvvvvvccccccc"
   ],
   "exits": {
    "w": "HOENN_ROUTE_105",
@@ -71132,14 +72273,6 @@
    "28,0": [
     28,
     79
-   ],
-   "63,19": [
-    3,
-    0
-   ],
-   "64,19": [
-    4,
-    0
    ],
    "65,19": [
     5,
@@ -72790,7 +73923,7 @@
   "floors": [
    {
     "art": [
-     "cccccccccccc^^^^^^^ccccccccc^ccccccc^^^^",
+     "cccccccccccc..^^^^^ccccccccc.ccccccc^^^^",
      "cccccccccccc.......cccccccccccccccccoooo",
      "ccccccccccc.......ccccccccccccccccccoooo",
      "ccccccccccc.......cccccccccccccccccc.ooo",
@@ -73040,14 +74173,6 @@
      ]
     },
     "edge_to": {
-     "12,0": [
-      12,
-      19
-     ],
-     "13,0": [
-      13,
-      19
-     ],
      "14,0": [
       14,
       19
@@ -73066,10 +74191,6 @@
      ],
      "18,0": [
       18,
-      19
-     ],
-     "28,0": [
-      28,
       19
      ],
      "36,0": [
@@ -73393,7 +74514,7 @@
    "ccccccc.......c..............N.....ccc..",
    "ccccccc.......c....................ccc..",
    "ccccccccccccccc....cccccccccccccc..coooo",
-   "ccccccccccccvvvvvvvcccccccc.v.....ccvvvv"
+   "cccccccccccc...vvvvcccccccc.......ccvvvv"
   ],
   "exits": {
    "^": "HOENN_ROUTE_111",
@@ -73487,6 +74608,9 @@
     "MAUVILLE GAME CORNER"
    ]
   ],
+  "inside": {
+   "8,5": "gym"
+  },
   "edge_to": {
    "13,0": [
     13,
@@ -73516,18 +74640,6 @@
     19,
     139
    ],
-   "12,19": [
-    12,
-    0
-   ],
-   "13,19": [
-    13,
-    0
-   ],
-   "14,19": [
-    14,
-    0
-   ],
    "15,19": [
     15,
     0
@@ -73542,10 +74654,6 @@
    ],
    "18,19": [
     18,
-    0
-   ],
-   "28,19": [
-    28,
     0
    ],
    "36,19": [
@@ -73686,7 +74794,362 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "gym": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "cccc.Ncccc",
+     "cccc..cccc",
+     "ccc....ccc",
+     "ccc....ccc",
+     "cccc..cccc",
+     "cccc..cccc",
+     "cccc..cN..",
+     "..........",
+     ".....N....",
+     "c..c..c..c",
+     "..........",
+     ".N.....ccc",
+     "...c..cccc",
+     "..........",
+     ".N........",
+     "cc......cc",
+     "cc.c..c.cc",
+     "cc......cc",
+     "cc..nn.Ncc"
+    ],
+    "exits": {
+     "n": "OUT:8,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "mauville_gym_flipped",
+        "f": "em_ground/10_0_flip.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gym",
+     {
+      "text": "Guitarist Shawn",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Guitarist Shawn: Wattson's Gym is electrifying, isn't it?"
+       ],
+       "flag": "gym_trainer_MAUVILLE_CITY_3",
+       "battle": {
+        "name": "Guitarist Shawn",
+        "class": "GUITARIST",
+        "sprite": "guitarist.png",
+        "team": [
+         100,
+         100
+        ],
+        "levels": [
+         15,
+         17
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Guitarist Shawn: My Pokémon got short-circuited..."
+         ]
+        }
+       },
+       "done": [
+        "Guitarist Shawn: Wahahaha! That's what Wattson would say."
+       ]
+      }
+     },
+     {
+      "text": "Battle Girl Vivian",
+      "action": "EVENT",
+      "_look": "em_14.png",
+      "event": {
+       "lines": [
+        "Battle Girl Vivian: Bzzt! Watch out for the barriers!"
+       ],
+       "flag": "gym_trainer_MAUVILLE_CITY_2",
+       "battle": {
+        "name": "Battle Girl Vivian",
+        "class": "BATTLE_GIRL",
+        "sprite": "battle_girl.png",
+        "team": [
+         307
+        ],
+        "levels": [
+         19
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Battle Girl Vivian: Zap! You shocked me!"
+         ]
+        }
+       },
+       "done": [
+        "Battle Girl Vivian: Every switch flips every barrier. Think ahead!"
+       ]
+      }
+     },
+     {
+      "text": "Youngster Ben",
+      "action": "EVENT",
+      "_look": "em_35.png",
+      "event": {
+       "lines": [
+        "Youngster Ben: Wattson's Gym is electrifying, isn't it?"
+       ],
+       "flag": "gym_trainer_MAUVILLE_CITY_1",
+       "battle": {
+        "name": "Youngster Ben",
+        "class": "YOUNGSTER",
+        "sprite": "youngster.png",
+        "team": [
+         309
+        ],
+        "levels": [
+         17
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Youngster Ben: My Pokémon got short-circuited..."
+         ]
+        }
+       },
+       "done": [
+        "Youngster Ben: Wahahaha! That's what Wattson would say."
+       ]
+      }
+     },
+     {
+      "text": "Guitarist Kirk",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Guitarist Kirk: Bzzt! Watch out for the barriers!"
+       ],
+       "flag": "gym_trainer_MAUVILLE_CITY_0",
+       "battle": {
+        "name": "Guitarist Kirk",
+        "class": "GUITARIST",
+        "sprite": "guitarist.png",
+        "team": [
+         81,
+         309
+        ],
+        "levels": [
+         16,
+         16
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Guitarist Kirk: Zap! You shocked me!"
+         ]
+        }
+       },
+       "done": [
+        "Guitarist Kirk: Every switch flips every barrier. Think ahead!"
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: Step on a switch and every barrier flips! Find the way through to Wattson."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,20": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,16": {
+      "m": "face",
+      "d": "u",
+      "s": 2
+     },
+     "1,13": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "5,10": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     },
+     "7,8": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        4,
+        7
+       ],
+       [
+        5,
+        7
+       ],
+       [
+        6,
+        9
+       ],
+       [
+        6,
+        10
+       ],
+       [
+        1,
+        11
+       ],
+       [
+        2,
+        11
+       ],
+       [
+        4,
+        14
+       ],
+       [
+        5,
+        14
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "mauville_gym_flipped"
+      },
+      "lines": [
+       "An electric barrier crackles across the way!",
+       "Step on a switch to flip the barriers."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        11
+       ],
+       [
+        5,
+        11
+       ],
+       [
+        7,
+        11
+       ],
+       [
+        8,
+        11
+       ],
+       [
+        3,
+        12
+       ],
+       [
+        3,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "not mauville_gym_flipped"
+      },
+      "lines": [
+       "An electric barrier crackles across the way!",
+       "Step on a switch to flip the barriers."
+      ]
+     }
+    ],
+    "switches": {
+     "tiles": [
+      [
+       3,
+       9
+      ],
+      [
+       8,
+       9
+      ],
+      [
+       4,
+       12
+      ],
+      [
+       0,
+       15
+      ]
+     ],
+     "flag": "mauville_gym_flipped",
+     "pressed": "mauville_gym_switch",
+     "lines": [
+      "Click! The electric barriers flipped!"
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       21
+      ],
+      "when": [
+       {
+        "flag": "mauville_gym_flipped",
+        "f": "em_top/10_0_flip.png"
+       }
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Mauville Gym"
+   }
+  }
  },
  "HOENN_ROUTE_117": {
   "art": [
@@ -74258,7 +75721,7 @@
    "cccccccccccc================..====cccccc",
    "ccccccccccc===N=============..====cccccc",
    "ccccccccccc=======ccc====.....======cccc",
-   "ccccccccccc=======cnc.........======cccc",
+   "ccccccccccc=======c>c.........======cccc",
    "ccccccccccc====...............===...=ccc",
    "ccccccccccc===................===...=ccc",
    "ccccccccc......cccc...====....===...=ccc",
@@ -74287,7 +75750,7 @@
    "cccccc.!.....cccccccc======.ccc.=====ccc",
    "cccccc.......ccccccccc====.ccccc.====ccc",
    "cccccc..cc...NNccccccc=cc=.ccccc.=cc=ccc",
-   "ccccc...cc.....ccccccc=cc=.ccccc.=cc=ccc",
+   "ccccc...cc.....ccccccc=cc=.ccncc.=cc=ccc",
    "ccccccc.........cccccc====...N...====ccc",
    "ccccccc.c.......cccccc.==.........==.ccc",
    "ccccccc........cccccccc..cc.....cc.ccccc",
@@ -74345,7 +75808,8 @@
    "v": "MAUVILLE_CITY",
    "<": "HOENN_ROUTE_113",
    "^": "HOENN_ROUTE_112",
-   "n": "HOENN_MIRAGE_TOWER"
+   "n": "HOENN_DESERT_RUINS",
+   ">": "HOENN_MIRAGE_TOWER"
   },
   "buildings": {
    "A": "house",
@@ -77200,7 +78664,7 @@
    "cc.................>",
    "cc.................>",
    "cccccccc...........>",
-   "cccccccc..Ncccccccc>",
+   "cccccccc..Ncccccccc.",
    "cccccBcc...cAcccFccc",
    "cc..cDc!...cDcccDccc",
    "cc............!....c",
@@ -77337,6 +78801,9 @@
     "Bitter taste, better cure!"
    ]
   ],
+  "inside": {
+   "5,15": "gym"
+  },
   "links": {
    "9,2": [
     0,
@@ -77368,10 +78835,6 @@
    "19,12": [
     0,
     52
-   ],
-   "19,13": [
-    0,
-    53
    ]
   },
   "moves": {
@@ -77427,7 +78890,629 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "gym": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     ".....Nc1...c....c",
+     "..1...c....c1...c",
+     "......c....c....c",
+     "......c....c....c",
+     "1..1.1c.1.1c..1.c",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "....c1.c1.cc.N.cc",
+     "1..Nc..c..cc...cc",
+     "....c..c..c.....c",
+     "....c..c..c.1...c",
+     "....c..c..c_____c",
+     ".1.Nc1.c..c.....c",
+     "..N.c__c..c.....c",
+     "....1..c....N....",
+     "1......c.....1...",
+     "....1..c..1..nn.."
+    ],
+    "exits": {
+     "n": "OUT:5,15"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/4_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Battle Girl Sadie",
+      "action": "EVENT",
+      "_look": "em_14.png",
+      "event": {
+       "lines": [
+        "Battle Girl Sadie: Feel the heat of Flannery's Gym!"
+       ],
+       "flag": "gym_trainer_LAVARIDGE_TOWN_3",
+       "battle": {
+        "name": "Battle Girl Sadie",
+        "class": "BATTLE_GIRL",
+        "sprite": "battle_girl.png",
+        "team": [
+         307
+        ],
+        "levels": [
+         26
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Battle Girl Sadie: I got burned..."
+         ]
+        }
+       },
+       "done": [
+        "Battle Girl Sadie: Flannery's Fire Pokémon are fierce. Bring Water types!"
+       ]
+      }
+     },
+     "Gym",
+     {
+      "text": "Kindler Axle",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Kindler Axle: You'll never see me coming in all this steam!"
+       ],
+       "flag": "gym_trainer_LAVARIDGE_TOWN_2",
+       "battle": {
+        "name": "Kindler Axle",
+        "class": "KINDLER",
+        "sprite": "kindler.png",
+        "team": [
+         218
+        ],
+        "levels": [
+         25
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Kindler Axle: Too hot to handle!"
+         ]
+        }
+       },
+       "done": [
+        "Kindler Axle: The pits drop you down below. Watch your step!"
+       ]
+      }
+     },
+     {
+      "text": "Kindler Cole",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Kindler Cole: You'll never see me coming in all this steam!"
+       ],
+       "flag": "gym_trainer_LAVARIDGE_TOWN_0",
+       "battle": {
+        "name": "Kindler Cole",
+        "class": "KINDLER",
+        "sprite": "kindler.png",
+        "team": [
+         322,
+         218
+        ],
+        "levels": [
+         23,
+         23
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Kindler Cole: Too hot to handle!"
+         ]
+        }
+       },
+       "done": [
+        "Kindler Cole: The pits drop you down below. Watch your step!"
+       ]
+      }
+     },
+     {
+      "text": "Ninja Boy Hiromichi",
+      "action": "EVENT",
+      "_look": "em_5.png",
+      "event": {
+       "lines": [
+        "Ninja Boy Hiromichi: Feel the heat of Flannery's Gym!"
+       ],
+       "flag": "gym_trainer_LAVARIDGE_TOWN_1",
+       "battle": {
+        "name": "Ninja Boy Hiromichi",
+        "class": "NINJA_BOY",
+        "sprite": "ninja_boy.png",
+        "team": [
+         109
+        ],
+        "levels": [
+         24
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ninja Boy Hiromichi: I got burned..."
+         ]
+        }
+       },
+       "done": [
+        "Ninja Boy Hiromichi: Flannery's Fire Pokémon are fierce. Bring Water types!"
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: The sand pits drop you to the floor below, and the vents there shoot you back up. Find the way to Flannery!"
+       ]
+      }
+     }
+    ],
+    "links": {
+     "10,18": [
+      "gym_2",
+      10,
+      18
+     ],
+     "8,9": [
+      "gym_2",
+      8,
+      9
+     ],
+     "4,18": [
+      "gym_2",
+      4,
+      18
+     ],
+     "5,14": [
+      "gym_2",
+      5,
+      14
+     ],
+     "0,17": [
+      "gym_2",
+      0,
+      17
+     ],
+     "5,9": [
+      "gym_2",
+      5,
+      9
+     ],
+     "2,15": [
+      "gym_2",
+      2,
+      15
+     ],
+     "3,14": [
+      "gym_2",
+      3,
+      14
+     ],
+     "1,14": [
+      "gym_2",
+      1,
+      14
+     ],
+     "0,10": [
+      "gym_2",
+      0,
+      10
+     ],
+     "3,10": [
+      "gym_2",
+      3,
+      10
+     ],
+     "0,6": [
+      "gym_2",
+      0,
+      6
+     ],
+     "3,6": [
+      "gym_2",
+      3,
+      6
+     ],
+     "5,6": [
+      "gym_2",
+      5,
+      6
+     ],
+     "2,3": [
+      "gym_2",
+      2,
+      3
+     ],
+     "5,2": [
+      "gym_2",
+      5,
+      2
+     ],
+     "7,2": [
+      "gym_2",
+      7,
+      2
+     ],
+     "8,6": [
+      "gym_2",
+      8,
+      6
+     ],
+     "10,6": [
+      "gym_2",
+      10,
+      6
+     ],
+     "4,16": [
+      "gym_2",
+      4,
+      16
+     ],
+     "12,3": [
+      "gym_2",
+      12,
+      3
+     ],
+     "14,6": [
+      "gym_2",
+      14,
+      6
+     ],
+     "13,17": [
+      "gym_2",
+      13,
+      17
+     ],
+     "12,12": [
+      "gym_2",
+      12,
+      12
+     ]
+    },
+    "moves": {
+     "13,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "12,16": {
+      "m": "face",
+      "d": "r"
+     },
+     "3,14": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "2,15": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "3,10": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "5,2": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     }
+    },
+    "parts": true,
+    "theme": "room",
+    "title": "Lavaridge Gym"
+   },
+   "gym_2": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "....c1.1..c......",
+     "..1.........1....",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "1..Nc1.c1c1..c1..",
+     "....c..c.c...c...",
+     "....c..c.c...c...",
+     "....c1.c1c...c...",
+     "1..1c..c.c___c___",
+     "....c__c.c...c...",
+     "____c..c.c..1c...",
+     "....c..c.c...c...",
+     ".1.1c1.c.c...c...",
+     "..1.c..c.c___c...",
+     "....1....c...c...",
+     "1........c...N...",
+     "....N....c1......"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/4_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Ace Trainer Zane",
+      "action": "EVENT",
+      "_look": "em_33.png",
+      "event": {
+       "lines": [
+        "Ace Trainer Zane: Feel the heat of Flannery's Gym!"
+       ],
+       "flag": "gym_trainer_LAVARIDGE_TOWN_5",
+       "battle": {
+        "name": "Ace Trainer Zane",
+        "class": "ACE_TRAINER",
+        "sprite": "acetrainer_m.png",
+        "team": [
+         218,
+         352
+        ],
+        "levels": [
+         24,
+         26
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Zane: I got burned..."
+         ]
+        }
+       },
+       "done": [
+        "Ace Trainer Zane: Flannery's Fire Pokémon are fierce. Bring Water types!"
+       ]
+      }
+     },
+     {
+      "text": "Kindler Andy",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Kindler Andy: You'll never see me coming in all this steam!"
+       ],
+       "flag": "gym_trainer_LAVARIDGE_TOWN_6",
+       "battle": {
+        "name": "Kindler Andy",
+        "class": "KINDLER",
+        "sprite": "kindler.png",
+        "team": [
+         322
+        ],
+        "levels": [
+         25
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Kindler Andy: Too hot to handle!"
+         ]
+        }
+       },
+       "done": [
+        "Kindler Andy: The pits drop you down below. Watch your step!"
+       ]
+      }
+     },
+     {
+      "text": "Ninja Boy Shoji",
+      "action": "EVENT",
+      "_look": "em_5.png",
+      "event": {
+       "lines": [
+        "Ninja Boy Shoji: You'll never see me coming in all this steam!"
+       ],
+       "flag": "gym_trainer_LAVARIDGE_TOWN_4",
+       "battle": {
+        "name": "Ninja Boy Shoji",
+        "class": "NINJA_BOY",
+        "sprite": "ninja_boy.png",
+        "team": [
+         109
+        ],
+        "levels": [
+         24
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ninja Boy Shoji: Too hot to handle!"
+         ]
+        }
+       },
+       "done": [
+        "Ninja Boy Shoji: The pits drop you down below. Watch your step!"
+       ]
+      }
+     }
+    ],
+    "links": {
+     "10,18": [
+      "gym",
+      10,
+      18
+     ],
+     "0,17": [
+      "gym",
+      0,
+      17
+     ],
+     "8,9": [
+      "gym",
+      8,
+      9
+     ],
+     "5,14": [
+      "gym",
+      5,
+      14
+     ],
+     "4,18": [
+      "gym",
+      4,
+      18
+     ],
+     "5,9": [
+      "gym",
+      5,
+      9
+     ],
+     "2,15": [
+      "gym",
+      2,
+      15
+     ],
+     "3,14": [
+      "gym",
+      3,
+      14
+     ],
+     "1,14": [
+      "gym",
+      1,
+      14
+     ],
+     "0,10": [
+      "gym",
+      0,
+      10
+     ],
+     "3,10": [
+      "gym",
+      3,
+      10
+     ],
+     "0,6": [
+      "gym",
+      0,
+      6
+     ],
+     "3,6": [
+      "gym",
+      3,
+      6
+     ],
+     "5,6": [
+      "gym",
+      5,
+      6
+     ],
+     "2,3": [
+      "gym",
+      2,
+      3
+     ],
+     "5,2": [
+      "gym",
+      5,
+      2
+     ],
+     "7,2": [
+      "gym",
+      7,
+      2
+     ],
+     "8,6": [
+      "gym",
+      8,
+      6
+     ],
+     "10,6": [
+      "gym",
+      10,
+      6
+     ],
+     "12,3": [
+      "gym",
+      12,
+      3
+     ],
+     "4,16": [
+      "gym",
+      4,
+      16
+     ],
+     "14,6": [
+      "gym",
+      14,
+      6
+     ],
+     "13,17": [
+      "gym",
+      13,
+      17
+     ],
+     "12,12": [
+      "gym",
+      12,
+      12
+     ]
+    },
+    "moves": {
+     "4,18": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "3,6": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "13,17": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     }
+    },
+    "parts": true,
+    "theme": "room",
+    "title": "Lavaridge Gym B1F"
+   }
+  }
  },
  "HOENN_ROUTE_118": {
   "art": [
@@ -77722,7 +79807,7 @@
    "cccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccc",
    "cccccAcccccccccccccccccccccccccccccccccc",
-   "<ccccDccccnccccccccccccccnccccccnccccccc",
+   ".ccccDccccnccccccccccccccnccccccnccccccc",
    "<.......cc.cccccccccccccc.cccccc.cccc..>",
    "<..........cccccccccccccc.cccccc.......>",
    "<.....!....cccccccccccccc..ccccc.......>",
@@ -77806,11 +79891,10 @@
     "Leader: Winona"
    ]
   ],
+  "inside": {
+   "22,11": "gym"
+  },
   "edge_to": {
-   "0,6": [
-    39,
-    6
-   ],
    "0,7": [
     39,
     7
@@ -77964,7 +80048,354 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "gym": {
+    "art": [
+     "cccccccccccccccccccc",
+     "cccc..cccccccccccccc",
+     "cc....cccccccc.N.ccc",
+     "cc.c..cccc...c...ccc",
+     "cc.c..............cc",
+     "cc.c..ccccccc.....cc",
+     "c..cc.ccccccc_____cc",
+     "c..cc...ccccc.....cc",
+     "c.......cNccc.....cc",
+     "c.ccc......cc.....cc",
+     "cNcccc.....cc.....cc",
+     "ccccccccc.ccc.....cc",
+     "ccccccc...ccc_____cc",
+     "ccccccc.c.ccc.....cc",
+     "ccccNcc...ccc.....cc",
+     "cccc.cc..cccc.....cc",
+     "cccc.....cccc.....cc",
+     "cc...Nc.ccccc_____cc",
+     "cc.c....ccccc.....cc",
+     "cc...cccccccc.....cc",
+     "cc...cccccccc.....cc",
+     "cc...cc...c...cN.ccc",
+     "ccc...............cc",
+     "ccccN...ccccc.....cc",
+     "cccccccccccccccnnccc"
+    ],
+    "exits": {
+     "n": "OUT:22,11"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gym",
+     {
+      "text": "Bird Keeper Bran",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Bird Keeper Bran: The gates spin when you push them. Did you figure that out?"
+       ],
+       "flag": "gym_trainer_FORTREE_CITY_4",
+       "battle": {
+        "name": "Bird Keeper Bran",
+        "class": "BIRD_KEEPER",
+        "sprite": "bird_keeper.png",
+        "team": [
+         279
+        ],
+        "levels": [
+         32
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Bird Keeper Bran: You flew right past me!"
+         ]
+        }
+       },
+       "done": [
+        "Bird Keeper Bran: Push a gate's arm to turn it."
+       ]
+      }
+     },
+     {
+      "text": "Bird Keeper Will",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Bird Keeper Will: Winona's birds soar higher than anyone's!"
+       ],
+       "flag": "gym_trainer_FORTREE_CITY_3",
+       "battle": {
+        "name": "Bird Keeper Will",
+        "class": "BIRD_KEEPER",
+        "sprite": "bird_keeper.png",
+        "team": [
+         85
+        ],
+        "levels": [
+         32
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Bird Keeper Will: I've been grounded..."
+         ]
+        }
+       },
+       "done": [
+        "Bird Keeper Will: Electric and Rock moves ground Flying types!"
+       ]
+      }
+     },
+     {
+      "text": "Camper Terrell",
+      "action": "EVENT",
+      "_look": "em_31.png",
+      "event": {
+       "lines": [
+        "Camper Terrell: The gates spin when you push them. Did you figure that out?"
+       ],
+       "flag": "gym_trainer_FORTREE_CITY_2",
+       "battle": {
+        "name": "Camper Terrell",
+        "class": "CAMPER",
+        "sprite": "camper.png",
+        "team": [
+         84,
+         279
+        ],
+        "levels": [
+         28,
+         30
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Camper Terrell: You flew right past me!"
+         ]
+        }
+       },
+       "done": [
+        "Camper Terrell: Push a gate's arm to turn it."
+       ]
+      }
+     },
+     {
+      "text": "Picnicker Kylee",
+      "action": "EVENT",
+      "_look": "em_32.png",
+      "event": {
+       "lines": [
+        "Picnicker Kylee: Winona's birds soar higher than anyone's!"
+       ],
+       "flag": "gym_trainer_FORTREE_CITY_1",
+       "battle": {
+        "name": "Picnicker Kylee",
+        "class": "PICNICKER",
+        "sprite": "picnicker.png",
+        "team": [
+         333
+        ],
+        "levels": [
+         31
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Picnicker Kylee: I've been grounded..."
+         ]
+        }
+       },
+       "done": [
+        "Picnicker Kylee: Electric and Rock moves ground Flying types!"
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: Push the gates' arms to turn them, and find your way through to Winona!"
+       ]
+      }
+     },
+     {
+      "text": "Bird Keeper Jared",
+      "action": "EVENT",
+      "_look": "em_66.png",
+      "event": {
+       "lines": [
+        "Bird Keeper Jared: The gates spin when you push them. Did you figure that out?"
+       ],
+       "flag": "gym_trainer_FORTREE_CITY_0",
+       "battle": {
+        "name": "Bird Keeper Jared",
+        "class": "BIRD_KEEPER",
+        "sprite": "bird_keeper.png",
+        "team": [
+         277,
+         227
+        ],
+        "levels": [
+         30,
+         30
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Bird Keeper Jared: You flew right past me!"
+         ]
+        }
+       },
+       "done": [
+        "Bird Keeper Jared: Push a gate's arm to turn it."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "15,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "15,21": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,23": {
+      "m": "face",
+      "d": "r",
+      "s": 1
+     },
+     "5,17": {
+      "m": "face",
+      "d": "l",
+      "s": 1
+     },
+     "4,14": {
+      "m": "face",
+      "d": "d",
+      "s": 3
+     },
+     "1,10": {
+      "m": "face",
+      "d": "u",
+      "s": 3
+     },
+     "9,8": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     }
+    },
+    "turnstiles": {
+     "gates": [
+      {
+       "at": [
+        6,
+        7
+       ],
+       "shape": 5,
+       "orient": 1
+      },
+      {
+       "at": [
+        9,
+        15
+       ],
+       "shape": 5,
+       "orient": 2
+      },
+      {
+       "at": [
+        3,
+        19
+       ],
+       "shape": 5,
+       "orient": 1
+      },
+      {
+       "at": [
+        2,
+        6
+       ],
+       "shape": 4,
+       "orient": 1
+      },
+      {
+       "at": [
+        9,
+        12
+       ],
+       "shape": 4,
+       "orient": 0
+      },
+      {
+       "at": [
+        6,
+        23
+       ],
+       "shape": 4,
+       "orient": 0
+      },
+      {
+       "at": [
+        12,
+        22
+       ],
+       "shape": 4,
+       "orient": 0
+      },
+      {
+       "at": [
+        6,
+        3
+       ],
+       "shape": 3,
+       "orient": 2
+      }
+     ],
+     "flag": "fortree_gym_gate"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       25
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Fortree Gym"
+   }
+  }
  },
  "HOENN_ROUTE_119": {
   "art": [
@@ -78637,10 +81068,10 @@
    "<....................\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...c",
    "<...................\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...",
    "<...ccc............c\"\"\"\"\"\"\"\"\"\"X\"\"\"\"\"\"\"..",
-   "<ccccccccccccccccccc\"\"\"\"\"ccc\"\"\"\"\"\"\"\"\"\".c",
+   ".ccccccccccccccccccc\"\"\"\"\"ccc\"\"\"\"\"\"\"\"\"\".c",
    "cccccccccccccccccccc.cccc...\"\"\"\"\"\"\"\"\"\"cc",
    "ccccccccccoooooooccc.ccccccc\"\"\"\"\"\"\"\"\".cc",
-   "ccccccccccooooooo......ccccc\"\"\"\"\"\"\"\".ccc",
+   "ccccccccccoooooooN.....ccccc\"\"\"\"\"\"\"\".ccc",
    "ccccccccccoooooooooooooooocc.\"\"\".....ccc",
    "ccccc.....;;;N;;;;;;;;;;;;..........cccc",
    "cccc......;;;;;;;;;;;;;;;;........cccccc",
@@ -78650,7 +81081,7 @@
    "ccc.....ccoooooooo~~~ooooocccccccccccccc",
    "ccc.....ccc~ooooo~ccc~oooocccccccccccccc",
    "cc......ccccoooooccccco~cccccccccccccccc",
-   "cc......ccccoooooccncc~ccccccccccccccccc",
+   "cc......ccccooooocc^cc~ccccccccccccccccc",
    "c.......ccccccccoooooocccccccc....ccc.cc",
    "c........cccccccccccccccccccccc.......cc",
    "..........ccccccccccccccccccccc.......cc",
@@ -78682,8 +81113,8 @@
    "c.....ccc.....cccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"\"",
    "c....ccccc....cccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"\"",
    ".cc..ccccc..cccccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"ccc",
-   ".cc..ccccc..cccccc\"\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
-   ".......N......cccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
+   ".cc..ccncc..cccccc\"\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
+   "..............cccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
    "..............cccc..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
    "...cc.....cc..cccccc....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
    "...cc.....cc..cccccccc__\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
@@ -78713,9 +81144,9 @@
    "ooooooooocc...cc...\"\"\"\"\"\"\"cccccccccccccc",
    "ooooooooocc...cc...\"\"\"\"\"\"\"\"\"cccccccccccc",
    "ooooooooocc...cc...\"\"\"\"\"\"\"\"\"cccccccccccc",
-   "..oooooooccc.ccc....\"\"\"\"\"\"\"\"\"\"\"\"ccccccc>",
+   "..oooooooccc.ccc....\"\"\"\"\"\"\"\"\"\"\"\"ccccccc.",
    "....oooooccc.ccc.....\"\"\"\"\"\"\"\"\"\"\"cc.....>",
-   "cc........cc...........\"\"\"\"\"\"\"\"\"......!>",
+   "cc........cc...........\"\"\"\"\"\"\"\"\"......!.",
    "cccc......cc...........................>",
    "cccccccccccc...........................>",
    "cccccccccccc...........................>",
@@ -78731,7 +81162,8 @@
   "exits": {
    "<": "FORTREE_CITY",
    ">": "HOENN_ROUTE_121",
-   "n": "HOENN_SCORCHED_SLAB"
+   "n": "HOENN_ANCIENT_TOMB",
+   "^": "HOENN_SCORCHED_SLAB"
   },
   "buildings": {},
   "roofs": {
@@ -78746,8 +81178,8 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "TALK TO STEVEN",
-   "ANCIENT TOMB"
+   "ANCIENT TOMB",
+   "TALK TO STEVEN"
   ],
   "signs": [
    [
@@ -78778,21 +81210,9 @@
     39,
     9
    ],
-   "0,10": [
-    39,
-    10
-   ],
-   "39,86": [
-    0,
-    6
-   ],
    "39,87": [
     0,
     7
-   ],
-   "39,88": [
-    0,
-    8
    ],
    "39,89": [
     0,
@@ -84814,9 +87234,9 @@
      "<ooooooooooooooooooooooooooooooooooooooooooooooo~~oooooccooooooooooo~ccccccc~ooo",
      "<oooooooooooooooooooXoooooooooooooooooooooooooooccoooooccoooooooooooccccccccc~oo",
      "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocc~~~cccccccccc~~",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~occccccccccccccc.>",
-     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccooocccccccccccccc>",
-     "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccccccccc>",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~occccccccccccccc..",
+     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccooocccccccccccccc.",
+     "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccccccccc.",
      "ccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccccccccc",
      "ccccooccoooooooooooooooooooooo::oooooooooooooXoooooooooooooooooooooccccccccccccc",
      "<occccccooooooooooooooooooooo::::ooooooooooooooooooooooooooooooooooooccccccccccc",
@@ -84867,7 +87287,7 @@
      "cccccccccccccc....c..cooooooooccooooooooooooooooooooo~~ooooooccooooooocccccccccc",
      "ccccccccccccccccc.c..coooooooooooooooooooooooooooooooccoccooooooooooo~cccccccccc",
      "ccccccccccccccccc.c..coooooooooooooooooooooooooooooooocccccc~~ccoooooccccccccccc",
-     "cccccccccccccccccvcvvcvvvvvvvvvvvoocc~~~oocc~~~oooooooccvvccccccvoov~ccccccccccc"
+     "cccccccccccccccccvcvvcvvvvvvvvvvvoocc~~~oocc~~~oooooooccccccccccvoov~ccccccccccc"
     ],
     "exits": {
      "v": "HOENN_ROUTE_126",
@@ -84962,14 +87382,6 @@
      ],
      "32,79": [
       32,
-      0
-     ],
-     "56,79": [
-      56,
-      0
-     ],
-     "57,79": [
-      57,
       0
      ],
      "64,79": [
@@ -85139,18 +87551,6 @@
      "79,12": [
       0,
       12
-     ],
-     "79,26": [
-      0,
-      26
-     ],
-     "79,27": [
-      0,
-      27
-     ],
-     "79,28": [
-      0,
-      28
      ],
      "79,42": [
       0,
@@ -85492,7 +87892,7 @@
  },
  "MOSSDEEP_CITY": {
   "art": [
-   "ooooc^^cccc^^^cccccc^oo^^^^^^^^^^^^^^^^^^^^^^^^^^^^^occ^^^^^^^^^^^^^^^^^^^^^^^^^",
+   "ooooccccccc^..cccccc^oo^^^^^^^^^^^^^^^^^^^^^^^^^^^^oocc^^^^^^^^^^^^^^^^^^^^^^^^^",
    "ooooccc.....cccooooooooooooooooooooooooooooooooooooccccooooooooooooooooooooooooo",
    "<ooo~~cccccccooooooooooooooooooooooooooooooooooooooccoooooooo......ooooooooooooo",
    "ooccccoooooooooooooo...oooooooooooooooooooooooo~cccc~~ooccc~~......ooooooooooooo",
@@ -85531,7 +87931,7 @@
    "ccccccccccccccccccccc~ooooooooooooo...cccccccccccccccccccccccccccooooooooo~.cooo",
    "ccccccccccccccc....ccc~ooooooooooooccccccccccccc......ooooooooooooooooooooc.cooo",
    "cccccccccccccccc.c..c.coooooooooooo.ccccccccccc.ooooooooooooooooooooooooo~...~oo",
-   "cccccccccccccccc.vcvcvcccvvvvvvvvvvcccccccccccvooooooooooooovvvvvvvvvoooocvcccoo"
+   "cccccccccccccccc..cvcvcccvvvvvvvvvvcccccccccccoooooooooooooovvvvvvvvvoooocvcccoo"
   ],
   "exits": {
    "^": "HOENN_ROUTE_125",
@@ -85689,6 +88089,7 @@
   ],
   "inside": {
    "28,9": "block_house",
+   "38,9": "gym",
    "28,16": "center",
    "67,25": "wingull_house",
    "37,18": "mart",
@@ -85698,24 +88099,8 @@
    "36,24": "hex_house"
   },
   "edge_to": {
-   "5,0": [
-    5,
-    39
-   ],
-   "6,0": [
-    6,
-    39
-   ],
    "11,0": [
     11,
-    39
-   ],
-   "12,0": [
-    12,
-    39
-   ],
-   "13,0": [
-    13,
     39
    ],
    "20,0": [
@@ -85834,10 +88219,6 @@
     50,
     39
    ],
-   "51,0": [
-    51,
-    39
-   ],
    "55,0": [
     55,
     39
@@ -85938,10 +88319,6 @@
     79,
     39
    ],
-   "17,39": [
-    17,
-    0
-   ],
    "19,39": [
     19,
     0
@@ -85988,10 +88365,6 @@
    ],
    "34,39": [
     34,
-    0
-   ],
-   "46,39": [
-    46,
     0
    ],
    "60,39": [
@@ -87059,6 +89432,724 @@
     ],
     "theme": "room",
     "title": "Hex Maniac sisters' house"
+   },
+   "gym": {
+    "art": [
+     "cccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc",
+     "ccccccNcccc1cccccccccccccc",
+     "cccc.....cc.cccccccccccccc",
+     "cccc.....cc..ccccccccccccc",
+     "cccc.....cc..cccccccc.cccc",
+     "cccc.c..ccc.ccccccccc.cNNc",
+     "cccc....cN..ccccccccc.c..c",
+     "cccccc......ccccccccc.....",
+     "cccccccc.cccccccccccc1cccc",
+     "cccccccc.ccccccccccccccccc",
+     "cccccccc1ccccccccccccccccc",
+     "cccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc",
+     "ccccccc1.1cccccccccccccccc",
+     "cccccccc.ccccccccccccccccc",
+     "cc...N...cccccccccccccc1cc",
+     "c..c..ccccccccccccccccc.cc",
+     "c.....ccccccccccccccc.....",
+     "c1cc.cccccccccccccccc.N...",
+     "cccccccccccccccccccc1....c",
+     "cccccccccccccccccccccc...N",
+     "cccccccccccccccccccccc...c",
+     "ccccccccccccccccccccccc..c",
+     "ccc1cccccccccccccccccccc.c",
+     "c...N.cccccccccccccccccc.c",
+     "c.....c.cccccccccccccccc.c",
+     "c.......ccccccccccccccc..c",
+     "c.c.......ccc1cccccccc..cc",
+     "c1c..N....c...ccccccc..ccc",
+     "ccc.c...c.c...c.......cccc",
+     "ccc...nn..c1.ccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:38,9"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Psychic Virgil",
+      "action": "EVENT",
+      "_look": "em_37.png",
+      "event": {
+       "lines": [
+        "Psychic Virgil: I foresaw this battle. Did I foresee losing?"
+       ],
+       "flag": "gym_trainer_MOSSDEEP_CITY_5",
+       "battle": {
+        "name": "Psychic Virgil",
+        "class": "PSYCHIC",
+        "sprite": "psychic_m.png",
+        "team": [
+         64,
+         203
+        ],
+        "levels": [
+         40,
+         40
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Psychic Virgil: I didn't see that coming!"
+         ]
+        }
+       },
+       "done": [
+        "Psychic Virgil: Tate and Liza fight as one. Watch out!"
+       ]
+      }
+     },
+     "Gym",
+     {
+      "text": "Liza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Liza: Tate and I battle together. Talk to Tate when you're ready for us!"
+       ]
+      }
+     },
+     {
+      "text": "Hex Maniac Patricia",
+      "action": "EVENT",
+      "_look": "em_40.png",
+      "event": {
+       "lines": [
+        "Hex Maniac Patricia: Our minds are as one with our Pokémon!"
+       ],
+       "flag": "gym_trainer_MOSSDEEP_CITY_4",
+       "battle": {
+        "name": "Hex Maniac Patricia",
+        "class": "HEX_MANIAC",
+        "sprite": "hex_maniac.png",
+        "team": [
+         358
+        ],
+        "levels": [
+         41
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Hex Maniac Patricia: My thoughts got scrambled..."
+         ]
+        }
+       },
+       "done": [
+        "Hex Maniac Patricia: Each switch turns the blocks of its own colour."
+       ]
+      }
+     },
+     {
+      "text": "Psychic Joshua",
+      "action": "EVENT",
+      "_look": "em_37.png",
+      "event": {
+       "lines": [
+        "Psychic Joshua: I foresaw this battle. Did I foresee losing?"
+       ],
+       "flag": "gym_trainer_MOSSDEEP_CITY_1",
+       "battle": {
+        "name": "Psychic Joshua",
+        "class": "PSYCHIC",
+        "sprite": "psychic_m.png",
+        "team": [
+         64,
+         308
+        ],
+        "levels": [
+         40,
+         40
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Psychic Joshua: I didn't see that coming!"
+         ]
+        }
+       },
+       "done": [
+        "Psychic Joshua: Tate and Liza fight as one. Watch out!"
+       ]
+      }
+     },
+     {
+      "text": "Psychic Fritz",
+      "action": "EVENT",
+      "_look": "em_37.png",
+      "event": {
+       "lines": [
+        "Psychic Fritz: I foresaw this battle. Did I foresee losing?"
+       ],
+       "flag": "gym_trainer_MOSSDEEP_CITY_3",
+       "battle": {
+        "name": "Psychic Fritz",
+        "class": "PSYCHIC",
+        "sprite": "psychic_m.png",
+        "team": [
+         344,
+         121
+        ],
+        "levels": [
+         39,
+         41
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Psychic Fritz: I didn't see that coming!"
+         ]
+        }
+       },
+       "done": [
+        "Psychic Fritz: Tate and Liza fight as one. Watch out!"
+       ]
+      }
+     },
+     {
+      "text": "Hex Maniac Kindra",
+      "action": "EVENT",
+      "_look": "em_40.png",
+      "event": {
+       "lines": [
+        "Hex Maniac Kindra: Our minds are as one with our Pokémon!"
+       ],
+       "flag": "gym_trainer_MOSSDEEP_CITY_2",
+       "battle": {
+        "name": "Hex Maniac Kindra",
+        "class": "HEX_MANIAC",
+        "sprite": "hex_maniac.png",
+        "team": [
+         281,
+         326
+        ],
+        "levels": [
+         39,
+         39
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Hex Maniac Kindra: My thoughts got scrambled..."
+         ]
+        }
+       },
+       "done": [
+        "Hex Maniac Kindra: Each switch turns the blocks of its own colour."
+       ]
+      }
+     },
+     {
+      "text": "Psychic Preston",
+      "action": "EVENT",
+      "_look": "em_37.png",
+      "event": {
+       "lines": [
+        "Psychic Preston: Our minds are as one with our Pokémon!"
+       ],
+       "flag": "gym_trainer_MOSSDEEP_CITY_0",
+       "battle": {
+        "name": "Psychic Preston",
+        "class": "PSYCHIC",
+        "sprite": "psychic_m.png",
+        "team": [
+         64
+        ],
+        "levels": [
+         42
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Psychic Preston: My thoughts got scrambled..."
+         ]
+        }
+       },
+       "done": [
+        "Psychic Preston: Each switch turns the blocks of its own colour."
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: Step on a coloured switch and the blocks on that colour's arrows turn. Clear a path to Tate and Liza!"
+       ]
+      }
+     }
+    ],
+    "links": {
+     "3,28": [
+      0,
+      1,
+      23
+     ],
+     "1,23": [
+      0,
+      3,
+      28
+     ],
+     "7,18": [
+      0,
+      8,
+      12
+     ],
+     "8,12": [
+      0,
+      7,
+      18
+     ],
+     "9,18": [
+      0,
+      23,
+      20
+     ],
+     "23,20": [
+      0,
+      9,
+      18
+     ],
+     "1,33": [
+      0,
+      20,
+      24
+     ],
+     "20,24": [
+      0,
+      1,
+      33
+     ],
+     "11,3": [
+      0,
+      11,
+      35
+     ],
+     "11,35": [
+      0,
+      11,
+      3
+     ],
+     "13,32": [
+      0,
+      21,
+      10
+     ],
+     "21,10": [
+      0,
+      13,
+      32
+     ]
+    },
+    "moves": {
+     "23,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "5,33": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,29": {
+      "m": "face",
+      "d": "u",
+      "s": 1
+     },
+     "5,20": {
+      "m": "face",
+      "d": "u",
+      "s": 1
+     },
+     "25,25": {
+      "m": "face",
+      "d": "l",
+      "s": 1
+     },
+     "22,23": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "9,8": {
+      "m": "face",
+      "d": "u",
+      "s": 1
+     },
+     "6,3": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "24,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "rotators": {
+     "blocks": {
+      "yellow": [
+       [
+        [
+         4,
+         20
+        ],
+        [
+         4,
+         21
+        ],
+        [
+         5,
+         21
+        ],
+        [
+         5,
+         20
+        ]
+       ],
+       [
+        [
+         1,
+         29
+        ],
+        [
+         1,
+         30
+        ],
+        [
+         2,
+         30
+        ],
+        [
+         2,
+         29
+        ]
+       ],
+       [
+        [
+         4,
+         29
+        ],
+        [
+         4,
+         30
+        ],
+        [
+         5,
+         30
+        ],
+        [
+         5,
+         29
+        ]
+       ]
+      ],
+      "blue": [
+       [
+        [
+         6,
+         8
+        ],
+        [
+         6,
+         9
+        ],
+        [
+         7,
+         9
+        ],
+        [
+         7,
+         8
+        ]
+       ],
+       [
+        [
+         9,
+         8
+        ],
+        [
+         9,
+         9
+        ],
+        [
+         10,
+         9
+        ],
+        [
+         10,
+         8
+        ]
+       ]
+      ],
+      "green": [
+       [
+        [
+         11,
+         33
+        ],
+        [
+         11,
+         34
+        ],
+        [
+         12,
+         34
+        ],
+        [
+         12,
+         33
+        ]
+       ]
+      ],
+      "pink": [
+       [
+        [
+         21,
+         22
+        ],
+        [
+         21,
+         23
+        ],
+        [
+         22,
+         23
+        ],
+        [
+         22,
+         22
+        ]
+       ],
+       [
+        [
+         24,
+         22
+        ],
+        [
+         24,
+         23
+        ],
+        [
+         25,
+         23
+        ],
+        [
+         25,
+         22
+        ]
+       ],
+       [
+        [
+         22,
+         25
+        ],
+        [
+         22,
+         26
+        ],
+        [
+         23,
+         26
+        ],
+        [
+         23,
+         25
+        ]
+       ]
+      ],
+      "orange": [
+       [
+        [
+         6,
+         5
+        ],
+        [
+         6,
+         6
+        ],
+        [
+         7,
+         6
+        ],
+        [
+         7,
+         5
+        ]
+       ],
+       [
+        [
+         11,
+         5
+        ],
+        [
+         11,
+         6
+        ],
+        [
+         12,
+         6
+        ],
+        [
+         12,
+         5
+        ]
+       ]
+      ]
+     },
+     "objects": [
+      [
+       2,
+       30
+      ],
+      [
+       1,
+       29
+      ],
+      [
+       4,
+       30
+      ],
+      [
+       5,
+       29
+      ],
+      [
+       5,
+       21
+      ],
+      [
+       7,
+       9
+      ],
+      [
+       10,
+       8
+      ],
+      [
+       6,
+       6
+      ],
+      [
+       12,
+       5
+      ],
+      [
+       11,
+       5
+      ],
+      [
+       11,
+       34
+      ],
+      [
+       12,
+       33
+      ],
+      [
+       12,
+       34
+      ],
+      [
+       23,
+       26
+      ],
+      [
+       21,
+       23
+      ],
+      [
+       21,
+       22
+      ],
+      [
+       22,
+       22
+      ],
+      [
+       24,
+       22
+      ],
+      [
+       24,
+       23
+      ],
+      [
+       6,
+       5
+      ],
+      [
+       23,
+       25
+      ]
+     ],
+     "switches": {
+      "2,21": "yellow",
+      "3,30": "yellow",
+      "6,7": "blue",
+      "8,10": "blue",
+      "15,34": "green",
+      "23,21": "pink",
+      "23,24": "pink",
+      "8,6": "orange"
+     },
+     "flag": "mossdeep_gym_turns",
+     "look": "img:em_224_block.png",
+     "lines": [
+      "A heavy block. It won't budge.",
+      "Maybe a switch of its colour will turn it."
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       26,
+       36
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Mossdeep Gym"
    }
   }
  },
@@ -87090,20 +90181,20 @@
    "~~ooo.ccc=..oooooo.......oooccoooooooooooooooooooooooccooccccccooooooooooooooooo",
    "ccooo.cccc..ooooooo...ooooooccccooooccoooooooooooooooooooccccccooooooooooooooooo",
    "~~ooo.cccc.oooooooooooooooooooccccooccooooooo....oooooo~~occcccoccoooooooooooooo",
-   "<cooo......oooooooooooooooooooooccooooooooooo.X..ooooooccoccccooccoooooooooooooo",
-   "<coooo....ooooooooooo......oooooooooooooooooo.cc.oooooooooo~~ooooooooooooooooooo",
-   "<cooooooooooooooooooo.......ooXoooooooooooooo.cc.ooooooooooccooooooooooooooooooo",
-   ".cooooooooooooooooooo.cccc..ooooooooooooooooo....oooooooooooo~~ooooooooooooooooo",
-   ".cooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooccooccooooooooooooo",
-   ".cooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooo~~~ccooooooooooooo",
-   ".c~~ooooooooooooooooo..ccc..ooooooooooooccoooooooooooooooooo~~cccooooooooooooooo",
+   "ccooo......oooooooooooooooooooooccooooooooooo.X..ooooooccoccccooccoooooooooooooo",
+   "ccoooo....ooooooooooo......oooooooooooooooooo.cc.oooooooooo~~ooooooooooooooooooo",
+   "ccooooooooooooooooooo.......ooXoooooooooooooo.cc.ooooooooooccooooooooooooooooooo",
+   "ccooooooooooooooooooo.cccc..ooooooooooooooooo....oooooooooooo~~ooooooooooooooooo",
+   "ccooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooccooccooooooooooooo",
+   "ccooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooo~~~ccooooooooooooo",
+   "cc~~ooooooooooooooooo..ccc..ooooooooooooccoooooooooooooooooo~~cccooooooooooooooo",
    "ccccoooooooooooooooooo.....oooooooooooooccooooooooooooccoocccccccooooooooooooooo",
    "cccc~~oooooooooooooooooo..oooooooooooooooccoooooooooccccccccoooooooooooooooooooo",
    "ccccccoooooooooooooooooooooooooooooooooooccoooooooooccooccoooooooooooooooooooooo",
    "ccccc~~~~~~~oooooooo~~oooooooooooooooooooooooooooooccooooooooooooooooooooooooooo",
    "cccc~c.ccccc~~~oooooccoooooooooooooooooooooooooooooccoooccoooooooooooooooooooooo",
    "ccccc..cccc...coo~~~o~~ooooooooooooooooooooooooooooo~~ooccoooooooooooooooooooooo",
-   "cccccvvccccvvvccccccvccvvvvvvvvvvvvvvvvvvvvvvvvvvvvvccovvvvvvvvvvvvvvvvvvvvvvvvv"
+   "ccccc..ccccvv.ccccccvccvvvvvvvvvvvvvvvvvvvvvvvvvvvvvccovoovvvvvvvvvvvvvvvvvvvvvv"
   ],
   "exits": {
    "v": "MOSSDEEP_CITY",
@@ -87128,24 +90219,12 @@
    "Swimmer Ernest"
   ],
   "edge_to": {
-   "5,39": [
-    5,
-    0
-   ],
-   "6,39": [
-    6,
-    0
-   ],
    "11,39": [
     11,
     0
    ],
    "12,39": [
     12,
-    0
-   ],
-   "13,39": [
-    13,
     0
    ],
    "20,39": [
@@ -87270,14 +90349,6 @@
    ],
    "55,39": [
     55,
-    0
-   ],
-   "56,39": [
-    56,
-    0
-   ],
-   "57,39": [
-    57,
     0
    ],
    "58,39": [
@@ -87419,18 +90490,6 @@
    "0,12": [
     79,
     12
-   ],
-   "0,26": [
-    79,
-    26
-   ],
-   "0,27": [
-    79,
-    27
-   ],
-   "0,28": [
-    79,
-    28
    ]
   },
   "moves": {
@@ -87898,7 +90957,7 @@
   "floors": [
    {
     "art": [
-     "ccccccccccccccccc^c^c^ccc^^^^^^^^^^.ccccccccoo^~~~~~~~~~~~cc^^^^^^^^^~~~~c^ccc~~",
+     "ccccccccccccccccc.c^c^ccc^^^^^^^^^^.ccccccccoo.~~~~~~~~~~~cc^^^^^^^^^~~~~c^ccc~~",
      "cccccccccccccccccccccccooooooooooooooooooccoo~~~~~~~~~~~~~ccooooooooo~~~~c.cccc~",
      "ccccccccccccccccccccccooooooooooooooooooocc~~~cc~~~~~~~~~~c~cccccc~oooo~~c.cccc~",
      "cccccccccccccccccccccoooooooooooooooooooccccccc~~~~~~~~~~~~ccccccccc~ccccc.cccc~",
@@ -88005,10 +91064,6 @@
      "Fisherman Henry"
     ],
     "edge_to": {
-     "17,0": [
-      17,
-      39
-     ],
      "19,0": [
       19,
       39
@@ -88055,10 +91110,6 @@
      ],
      "34,0": [
       34,
-      39
-     ],
-     "46,0": [
-      46,
       39
      ],
      "60,0": [
@@ -88499,7 +91550,7 @@
      "ooooooooooooocccccoooo..cccc.oo:::::::ooooooooo...ooooccooooooooccoo~~oooooooooooooooooooooooooooooooooooooooooooooooooo",
      "oooooooooooooocccco~~o...ccc.oo:::::::::::ooooo....oooooooooooooccooccooooo.....oooooooooooooooooooooooooooooooooooooooo",
      "ooooooooooooooocccoccoo......oo:::::::::::::::o....oooooooooooooooooocc~~o..cccc.ooooooooooooooooooooooooooooooooooooooo",
-     "ooooooooooooooocccoooooo....ooooo:::::::::::::oo...ooooo:::ooooooooooccccoccccccc...occooooooooXooooooooooooooooooooooo>",
+     "ooooooooooooooocccoooooo....ooooo:::::::::::::oo...ooooo:::ooooooooooccccoccccccc...occooooooooXooooooooooooooooooooooo.",
      "ooooooooooooooocccoooooooooooooooo:::::::::::::ooooooooo::::::::::ooooooccccccccccccoccooooooooooooooooooooooooooooooooo",
      "ooooooooooooooocccccooooooooooooooooooooo::::::::oooo:::::::::::::oooooocc..ccccccccoooooooooooooooooooooooooooooooooooo",
      "oooooooooooooooo~~cc~~oooooooooooo.....oooooo::::::::::::::::::::oooccoooo....ccccccccoooooooooooooooooooooooooooooooooo",
@@ -88526,7 +91577,7 @@
      "oooooooooooooooooooooooocccooooooooo::::::::::::::::::::ooo.ccccccccccccooooooooooooooooooooooccccccccccccccccccoooocccc",
      "oooooooooooooooooooooooocccooooooooo:::::ooooo::::::::::ooo...ccccccccooooooooooooooooooooooooccccccccccccccccoooooooooo",
      "oooooooooooooooooooooooocccoooooooo:::ooooooooooo::::ooooooo..cccccccooooooooooooooooooooooooooooooccccccccccooooooooooo",
-     "ooooooooooooooooooooooooocc~ccoo:::::oooooooooooooooooooooooccooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "ooooooooooooooooooooooooocc~ccoo:::::oooooooooooooooooooooooccooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.",
      "oooooooooooooooooooooooo~cccccccoooooooooooooooooooooooo~~~~ccooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
      "<<<<<<<<<<<<<<<<<<<<<<<<~~cc<occ<<<<<<<<<<<<oo.........occcco<<<<<<<<<<<<<<<<<<<ooooooooooooooooooooooooooooooooooooooo>"
     ],
@@ -88877,10 +91928,6 @@
       79,
       0
      ],
-     "119,10": [
-      0,
-      50
-     ],
      "119,16": [
       0,
       56
@@ -88936,10 +91983,6 @@
      "119,32": [
       0,
       72
-     ],
-     "119,37": [
-      0,
-      77
      ],
      "119,38": [
       0,
@@ -91007,8 +94050,8 @@
    "cccooooo~c~ooooooccooooooooooccccccccccc",
    "cccoooo~ccc~ooooccoooooooooooccccccccccc",
    "ccoccoocccccooccccccoooooooooccccccccccc",
-   "ccoccoocccccooccooccoooooooccccccccccccc",
-   "ccooooo==NN=oooooccooooooooccooccccccccc",
+   "ccoccooccnccooccooccoooooooccccccccccccc",
+   "ccooooo=====oooooccooooooooccooccccccccc",
    "ccoooooo===ooooooccoooooooooooocc~~ccccc",
    "cccooccoooooccoooccoooooooooocco~ccccccc",
    "cccooccoooooccoooccooooooooooccocccccccc",
@@ -91070,7 +94113,8 @@
   ],
   "exits": {
    "^": "HOENN_ROUTE_104",
-   "v": "HOENN_ROUTE_106"
+   "v": "HOENN_ROUTE_106",
+   "n": "HOENN_ISLAND_CAVE"
   },
   "buildings": {},
   "roofs": {
@@ -91084,10 +94128,6 @@
    "_signs_in_picture": true,
    "_buildings_in_picture": true
   },
-  "people": [
-   "ISLAND CAVE",
-   "AWAKEN REGIGIGAS"
-  ],
   "trainer_spots": [
    "Swimmer Luis",
    "Swimmer Dominik",
@@ -92345,6 +95385,7 @@
   "inside": {
    "43,31": "center",
    "17,29": "mart",
+   "31,32": "gym",
    "9,6": "brick_house",
    "45,6": "orb_house",
    "9,17": "fan_house",
@@ -93434,138 +96475,924 @@
     ],
     "theme": "room",
     "title": "House"
+   },
+   "gym": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccc.cc..N..cc.ccc",
+     "ccc...........ccc",
+     "cccccccc.cccccccc",
+     "cccccccc.cccccccc",
+     "ccc..c........ccc",
+     "ccc......c..c.ccc",
+     "ccc.c..c......ccc",
+     "ccc........c..ccc",
+     "cccccccc.cccccccc",
+     "cccccccc.cccccccc",
+     "ccccc.......ccccc",
+     "ccccc.c...c.ccccc",
+     "ccccc.......ccccc",
+     "cccccccc.cccccccc",
+     "cccccccc.cccccccc",
+     "cccccccc..ccccccc",
+     "ccccccc...ccccccc",
+     "ccccccc..cccccccc",
+     "cccccccc.cccccccc",
+     "cccccccc.cccccccc",
+     "ccccc......<ccccc",
+     "ccccc.......ccccc",
+     "ccccc.cN..c.ccccc",
+     "ccccc...nn..ccccc"
+    ],
+    "exits": {
+     "n": "OUT:31,32",
+     "<": "ROOM:gym_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "sootopolis_gym_ice_1",
+        "f": "em_ground/15_0_ice1.png"
+       },
+       {
+        "flag": "sootopolis_gym_ice_2",
+        "f": "em_ground/15_0_ice2.png"
+       },
+       {
+        "flag": "sootopolis_gym_ice_3",
+        "f": "em_ground/15_0_ice3.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gym",
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: Step on every tile of ice to open the stairs. Step on cracked ice twice and down you go!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "8,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,24": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        15
+       ],
+       [
+        8,
+        16
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "sootopolis_gym_ice_1"
+      },
+      "lines": [
+       "The stairs are frozen over.",
+       "Crack every tile of ice in this room first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        10
+       ],
+       [
+        8,
+        11
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "sootopolis_gym_ice_2"
+      },
+      "lines": [
+       "The stairs are frozen over.",
+       "Crack every tile of ice in this room first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        4
+       ],
+       [
+        8,
+        5
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "sootopolis_gym_ice_3"
+      },
+      "lines": [
+       "The stairs are frozen over.",
+       "Crack every tile of ice in this room first!"
+      ]
+     }
+    ],
+    "thin_ice": {
+     "sections": [
+      {
+       "tiles": [
+        [
+         8,
+         17
+        ],
+        [
+         9,
+         17
+        ],
+        [
+         7,
+         18
+        ],
+        [
+         8,
+         18
+        ],
+        [
+         9,
+         18
+        ],
+        [
+         7,
+         19
+        ],
+        [
+         8,
+         19
+        ]
+       ],
+       "flag": "sootopolis_gym_ice_1"
+      },
+      {
+       "tiles": [
+        [
+         5,
+         12
+        ],
+        [
+         6,
+         12
+        ],
+        [
+         7,
+         12
+        ],
+        [
+         8,
+         12
+        ],
+        [
+         9,
+         12
+        ],
+        [
+         10,
+         12
+        ],
+        [
+         11,
+         12
+        ],
+        [
+         5,
+         13
+        ],
+        [
+         7,
+         13
+        ],
+        [
+         8,
+         13
+        ],
+        [
+         9,
+         13
+        ],
+        [
+         11,
+         13
+        ],
+        [
+         5,
+         14
+        ],
+        [
+         6,
+         14
+        ],
+        [
+         7,
+         14
+        ],
+        [
+         8,
+         14
+        ],
+        [
+         9,
+         14
+        ],
+        [
+         10,
+         14
+        ],
+        [
+         11,
+         14
+        ]
+       ],
+       "flag": "sootopolis_gym_ice_2"
+      },
+      {
+       "tiles": [
+        [
+         3,
+         6
+        ],
+        [
+         4,
+         6
+        ],
+        [
+         6,
+         6
+        ],
+        [
+         7,
+         6
+        ],
+        [
+         8,
+         6
+        ],
+        [
+         9,
+         6
+        ],
+        [
+         10,
+         6
+        ],
+        [
+         11,
+         6
+        ],
+        [
+         12,
+         6
+        ],
+        [
+         13,
+         6
+        ],
+        [
+         3,
+         7
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         5,
+         7
+        ],
+        [
+         6,
+         7
+        ],
+        [
+         7,
+         7
+        ],
+        [
+         8,
+         7
+        ],
+        [
+         10,
+         7
+        ],
+        [
+         11,
+         7
+        ],
+        [
+         13,
+         7
+        ],
+        [
+         3,
+         8
+        ],
+        [
+         5,
+         8
+        ],
+        [
+         6,
+         8
+        ],
+        [
+         8,
+         8
+        ],
+        [
+         9,
+         8
+        ],
+        [
+         10,
+         8
+        ],
+        [
+         11,
+         8
+        ],
+        [
+         12,
+         8
+        ],
+        [
+         13,
+         8
+        ],
+        [
+         3,
+         9
+        ],
+        [
+         4,
+         9
+        ],
+        [
+         5,
+         9
+        ],
+        [
+         6,
+         9
+        ],
+        [
+         7,
+         9
+        ],
+        [
+         8,
+         9
+        ],
+        [
+         9,
+         9
+        ],
+        [
+         10,
+         9
+        ],
+        [
+         12,
+         9
+        ],
+        [
+         13,
+         9
+        ]
+       ],
+       "flag": "sootopolis_gym_ice_3"
+      }
+     ],
+     "fall": "gym_2"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/15_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       26
+      ],
+      "when": [
+       {
+        "flag": "sootopolis_gym_ice_1",
+        "f": "em_top/15_0_ice1.png"
+       },
+       {
+        "flag": "sootopolis_gym_ice_2",
+        "f": "em_top/15_0_ice2.png"
+       },
+       {
+        "flag": "sootopolis_gym_ice_3",
+        "f": "em_top/15_0_ice3.png"
+       }
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Sootopolis Gym"
+   },
+   "gym_2": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.......N..N..cc",
+     "cc.....N.......cc",
+     "cc.........N...cc",
+     "cccccccc.cccccccc",
+     "cccccccc.cccccccc",
+     "cccc.........cccc",
+     "cccc..N...N..cccc",
+     "cccc.........cccc",
+     "cccccccc.cccccccc",
+     "cccccccc.cccccccc",
+     "cccccccN..ccccccc",
+     "ccccccc...ccccccc",
+     "ccccccc..Nccccccc",
+     "cccccccc.cccccccc",
+     "cccccccc.cc.ccccc",
+     "ccccc......nccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc"
+    ],
+    "exits": {
+     "n": "ROOM:gym"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Beauty Tiffany",
+      "action": "EVENT",
+      "_look": "em_45.png",
+      "event": {
+       "lines": [
+        "Beauty Tiffany: Graceful and beautiful, like the water itself!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_6",
+       "battle": {
+        "name": "Beauty Tiffany",
+        "class": "BEAUTY",
+        "sprite": "beauty.png",
+        "team": [
+         55,
+         321
+        ],
+        "levels": [
+         41,
+         41
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Beauty Tiffany: How elegant... even in defeat."
+         ]
+        }
+       },
+       "done": [
+        "Beauty Tiffany: Crack every tile of ice, and the stairs open."
+       ]
+      }
+     },
+     {
+      "text": "Beauty Bridget",
+      "action": "EVENT",
+      "_look": "em_45.png",
+      "event": {
+       "lines": [
+        "Beauty Bridget: Our Leader's Water Pokémon are simply stunning!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_5",
+       "battle": {
+        "name": "Beauty Bridget",
+        "class": "BEAUTY",
+        "sprite": "beauty.png",
+        "team": [
+         368
+        ],
+        "levels": [
+         43
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Beauty Bridget: Oh! You're quite the Trainer!"
+         ]
+        }
+       },
+       "done": [
+        "Beauty Bridget: Fall through the ice and you'll land down here with us!"
+       ]
+      }
+     },
+     {
+      "text": "Lass Andrea",
+      "action": "EVENT",
+      "_look": "em_47.png",
+      "event": {
+       "lines": [
+        "Lass Andrea: Our Leader's Water Pokémon are simply stunning!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_7",
+       "battle": {
+        "name": "Lass Andrea",
+        "class": "LASS",
+        "sprite": "lass.png",
+        "team": [
+         272
+        ],
+        "levels": [
+         42
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Lass Andrea: Oh! You're quite the Trainer!"
+         ]
+        }
+       },
+       "done": [
+        "Lass Andrea: Fall through the ice and you'll land down here with us!"
+       ]
+      }
+     },
+     {
+      "text": "Beauty Connie",
+      "action": "EVENT",
+      "_look": "em_45.png",
+      "event": {
+       "lines": [
+        "Beauty Connie: Graceful and beautiful, like the water itself!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_4",
+       "battle": {
+        "name": "Beauty Connie",
+        "class": "BEAUTY",
+        "sprite": "beauty.png",
+        "team": [
+         367
+        ],
+        "levels": [
+         43
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Beauty Connie: How elegant... even in defeat."
+         ]
+        }
+       },
+       "done": [
+        "Beauty Connie: Crack every tile of ice, and the stairs open."
+       ]
+      }
+     },
+     {
+      "text": "Lady Brianna",
+      "action": "EVENT",
+      "_look": "em_20.png",
+      "event": {
+       "lines": [
+        "Lady Brianna: Our Leader's Water Pokémon are simply stunning!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_3",
+       "battle": {
+        "name": "Lady Brianna",
+        "class": "LADY",
+        "sprite": "lady.png",
+        "team": [
+         366,
+         222
+        ],
+        "levels": [
+         41,
+         41
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Lady Brianna: Oh! You're quite the Trainer!"
+         ]
+        }
+       },
+       "done": [
+        "Lady Brianna: Fall through the ice and you'll land down here with us!"
+       ]
+      }
+     },
+     {
+      "text": "Beauty Olivia",
+      "action": "EVENT",
+      "_look": "em_45.png",
+      "event": {
+       "lines": [
+        "Beauty Olivia: Graceful and beautiful, like the water itself!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_2",
+       "battle": {
+        "name": "Beauty Olivia",
+        "class": "BEAUTY",
+        "sprite": "beauty.png",
+        "team": [
+         121
+        ],
+        "levels": [
+         43
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Beauty Olivia: How elegant... even in defeat."
+         ]
+        }
+       },
+       "done": [
+        "Beauty Olivia: Crack every tile of ice, and the stairs open."
+       ]
+      }
+     },
+     {
+      "text": "Lass Crissy",
+      "action": "EVENT",
+      "_look": "em_47.png",
+      "event": {
+       "lines": [
+        "Lass Crissy: Our Leader's Water Pokémon are simply stunning!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_1",
+       "battle": {
+        "name": "Lass Crissy",
+        "class": "LASS",
+        "sprite": "lass.png",
+        "team": [
+         370,
+         117
+        ],
+        "levels": [
+         39,
+         41
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Lass Crissy: Oh! You're quite the Trainer!"
+         ]
+        }
+       },
+       "done": [
+        "Lass Crissy: Fall through the ice and you'll land down here with us!"
+       ]
+      }
+     },
+     {
+      "text": "Poké Fan Marissa",
+      "action": "EVENT",
+      "_look": "em_18.png",
+      "event": {
+       "lines": [
+        "Poké Fan Marissa: Graceful and beautiful, like the water itself!"
+       ],
+       "flag": "gym_trainer_SOOTOPOLIS_CITY_0",
+       "battle": {
+        "name": "Poké Fan Marissa",
+        "class": "POKEFAN",
+        "sprite": "pokefan_f.png",
+        "team": [
+         184
+        ],
+        "levels": [
+         43
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Poké Fan Marissa: How elegant... even in defeat."
+         ]
+        }
+       },
+       "done": [
+        "Poké Fan Marissa: Crack every tile of ice, and the stairs open."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "9,19": {
+      "m": "face",
+      "d": "l",
+      "s": 1
+     },
+     "7,17": {
+      "m": "face",
+      "d": "r",
+      "s": 1
+     },
+     "10,13": {
+      "m": "face",
+      "d": "l",
+      "s": 3
+     },
+     "6,13": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     },
+     "11,9": {
+      "m": "face",
+      "d": "u",
+      "s": 5
+     },
+     "12,7": {
+      "m": "face",
+      "d": "l",
+      "s": 1
+     },
+     "9,7": {
+      "m": "face",
+      "d": "d",
+      "s": 3
+     },
+     "7,8": {
+      "m": "face",
+      "d": "r",
+      "s": 2
+     }
+    },
+    "theme": "room",
+    "title": "Sootopolis Gym B1F"
    }
   }
  },
  "EVER_GRANDE_CITY": {
   "art": [
-   "cccccccccccccEEEEEEEEEEEcccccccccccccccc",
-   "cccccccccccccEEEEEEEEEEEcccccccccccccccc",
-   "cccccccccccccEEEEEEEEEEEcccccccccccccccc",
-   "cccccccccccccEEEEEEEEEEEcccccccccccccccc",
-   "cccccccccccTgEEEEEEEEEEEgTcccccccccccccc",
-   "ccccccccccTTgEEEEEDEEEEEgTTccccccccccccc",
-   "ccccccccccTTg.TTgpppgTTTgTTccccccccccccc",
-   "cccccfccf.TTg.TTTpppTTTTgTTffffccfcccccc",
-   "ccccccfcff.Tg.TT.pppTTTTgTTffffcffcccccc",
-   "ccccccfcff..g.TT.pppTTTTgTTffffcTT.ccccc",
-   "ccccccfcfff.g.TT.ppp.TT.g.fffffcTTTccccc",
-   "ccccccfcffffgf.ppppppp.fgffffffcTTTccccc",
-   "ccccccfcffffgffpppppppffgffffff.cTTccccc",
-   "ccccccccffffgggppppppp.ggggggggfcffccccc",
-   "ccccccccffffgggg.ppp.ggggggggggfcfcccccc",
-   "ccccccccffffffgg.ppppg.!..ffffgfcfcccccc",
-   "ccccccccffffffgf.pppppppppppffgfcccccccc",
-   "ccccccccffffffgff.pppppppppp.fgfccfccccc",
-   "ccccccccffffffgfff......pppp.fgfcccccccc",
-   "ccccccccffffffggggggggg.ppppp.gfcccccccc",
-   "ccccccccffffffggggggggg.ppppp.gfcccccccc",
-   "ccccccccffcccccccccfffg.ppppp.gfcccccccc",
-   "ccccccccfccccccccccccfg.gpppg.gfcccccccc",
-   "cccccccccccccccccccccfg.gpppg.g.cccccccc",
-   "cccccccccccccccccccccfgT.ppp.Tgccccccccc",
-   "cccccccccccccccccccccfgTTpppTTgccccccccc",
-   "cccccccccccccccccUUUcccccaaacccccfccc.cc",
-   "cccccccccccccccccUDUcff..ppp.fgfcfcccfcc",
-   "cccccccccccccccccc......pppp.fgfcccccfcc",
-   "cccccccccccccccccc..ppppppppffgfccfccfcc",
-   "ccccccccccccccccccc.pppppppfffgfccfccfcc",
-   "cccccccccccccccccccc..gggggggggfcc.ccccc",
-   "cccccccccccccccccccccggggggggggfcccccccc",
-   "ccccccccccccccccccccccccccc.ffffcccccccc",
-   "cccccccccccccccccccccccccccccfffcccccccc",
-   "ccccccccccccccccccccccccccccccffcccccccc",
-   "cccccccccccccccccccccccccccccccfcccccccc",
    "cccccccccccccccccccccccccccccccccccccccc",
-   "cccccccfccccccccccccccccccccccccfccccccc",
-   "cccccccfccccccccccccccccccccccccfccccccc",
-   "cccccccfffcccccccVVVcccccccccccccccccccc",
-   "cccccccccccccccccVDVcccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccAccccccccccccccccccccc",
+   "ccccccccccccccccccDccccccccccccccccccccc",
+   "ccccccccccccc.cc.....cc.cccccccccccccccc",
+   "ccccccccccccc.cc.....cc.cccccccccccccccc",
+   "ccccccccccccc.cc.....cc.cccccccccccccccc",
+   "ccccccccccccc.cc.....cc.cccccccccccccccc",
+   "ccccccccccccc.cc.....cc.cccccccccccccccc",
+   "ccccccccccccc...........cccccccccccccccc",
+   "ccccccccccccc...........cccccccccccccccc",
+   "ccccccccccccc..c.....c..cccccccccccccccc",
+   "cccccccccccccccc.....ccccccccccccccccccc",
+   "cccccccccccccccc.....c.!......cccccccccc",
+   "ccccccccccccccc...............cccccccccc",
+   "ccccccccccccccc...............cccccccccc",
+   "ccccccccccccccc...............cccccccccc",
+   "ccccccccccccccc...............cccccccccc",
+   "ccccccccccccccccccccccc.......cccccccccc",
+   "ccccccccccccccccccccccc.c...c.cccccccccc",
+   "ccccccccccccccccccccccc.c...c.cccccccccc",
+   "ccccccccccccccccccccccc.c...c.cccccccccc",
+   "cccccccccccccccccccccccc.....ccccccccccc",
+   "ccccccccccccccccccccccccc...cccccccccccc",
+   "ccccccccccccccccccccccccc...cccccccccccc",
+   "ccccccccccccccccccncc.........cccccccccc",
+   "cccccccccccccccccc............cccccccccc",
+   "cccccccccccccccccc............cccccccccc",
+   "ccccccccccccccccccc...........cccccccccc",
+   "cccccccccccccccccccc..........cccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccnccccccccccccccccccccc",
    "cccccccccccccccccc.ccccccccccccccccccccc",
-   "ccccccccccccccccc..!fccccccccccccccccccc",
-   "ccccccccccccfffff...fffffcccccfccccccccc",
-   "cccccccccfccfffff...fffffcCCCCfccccccccc",
-   "cccccccccfccfffff...fffffcCCCCcccccccccc",
-   "cccccc.ccfcccffff....NfffcCCCCccccfccccc",
-   "cccccccccccccfff.....ffffcCDCCccfccccccc",
-   "ccccc.ccfcfccfff.....fffccf.ffcccccccccc",
-   ".ccccfcccccccfff......ffc...ffcccccccccc",
-   "cccccccccccccfffcccaacccc..ffccccccccccc",
-   "ccccccccccccccffc.!.......fffccccccccccc",
-   "cccccccfccccfcffc........ffffccccccccccc",
-   "ccccccccccccfcfccccaacccfffffcccfccccccc",
-   "ccccccfcccccfccccc.....ccccffcccfccccccc",
-   "<ccccccccccccffccoooooooooccfcccfcccccco",
-   "<occccccccc.ccccooooooooooocccccccccccco",
-   "<occcccccccccccooooooooooooccccccfccccco",
-   "<oc.cccccccccccooooooooooooccccccfccccco",
-   "<occccccccccccc$$$$$$$$$$$$ccccccfccccco",
-   "<ooccccccfccccc$$$$$$$$$$$$cccccffccccco",
-   "<ooccccccfccccc$$$$$$$$$$$$cccccfcccccco",
-   "<ooccc.cccccccc$$$$$$$$$$$$cccccccfcccco",
-   "<oocccccfffcccc$$$$$$$$$$$$ccccffffcccco",
-   "<oocccccfffcccc$$$$$$$$$$$$ccccccffcccco",
-   "ccocccccccccccc$$$$$$$$$$$$ccccfccccccco",
-   "<oooccccccccccc$$$$$$$$$$$$ccfccccccccco",
-   "<occcccc.ffcccc$$$$$$$$$$$$ccccc.ffcccco",
-   "<ooocc.cccccfccooooooooooooccc.cccccfcco",
-   "<ooooccc..ffccooooooooooooooocc.fcccccoo",
-   "<ooooooccccccoooooooooooooccooccccoooooo",
-   "<ooooooooooooooccooooooooooocooooooooooo",
-   "<oooooooccooooooooooooooooocccoooooooooo",
-   "<oooooooooooccooooooooooooocccoooooooooo",
-   "<ooooooooooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooocooooooooccooooooooo",
-   "<oooooooooooooooooocccoooooooooooooooooo",
-   "<ccooccoooooooooooocccocoooooooooooooooo",
-   "<ooooooooooooccccooooocccooooooooooooooo"
+   "ccccccccccccccccc..!.ccccccccccccccccccc",
+   "cccccccccccc.............ccccccccccccccc",
+   "cccccccccccc.............ccccccccccccccc",
+   "cccccccccccc.............ccccccccccccccc",
+   "ccccccccccccc........N...ccBcccccccccccc",
+   "ccccccccccccc............ccDcccccccccccc",
+   "ccccccccccccc...........cc....cccccccccc",
+   "ccccccccccccc...........c.....cccccccccc",
+   "ccccccccccccc...ccc..cccc....ccccccccccc",
+   "cccccccccccccc..c.!..........ccccccccccc",
+   "cccccccccccccc..c............ccccccccccc",
+   "cccccccccccccc.cccc..ccc.....ccccccccccc",
+   "cccccccccccccccccc.....cccc..ccccccccccc",
+   "occccccccccccccccooooooooocc.ccccccccccc",
+   "<occccccccccccccoooooooooooccccccccccccc",
+   "<occcccccccccccooooooooooooccccccccccccc",
+   "<occcccccccccccooooooooooooccccccccccccc",
+   "<occccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "<oocccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "<oocccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "<oocccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "ooocccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "ccocccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "ccocccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "<occccccccccccc$$$$$$$$$$$$ccccccccccccc",
+   "<occcccccccccccooooooooooooccccccccccccc",
+   "<ooocccccccccccccooooooooooccccccccccccc",
+   "<ooooccccccccccccooooooooocccccccccccccc",
+   "<ooooooccccccccccooooooooocccccccccccccc",
+   "<ooooooocccccccccoooooooooo~c~cccccccccc",
+   "ooooooooccccccccoooooooooooccccccccccccc",
+   "ooooooooooccccccoooooooooooccccccccccccc",
+   "ccoooooooooooooooooooooooooooccccccccccc",
+   "ccooooooooooooooooo~c~oooooccccccccccccc",
+   "occccccooccoooooooocccoooccccccccccccccc",
+   "occccccccccccccccccccccccccccccccccccccc",
+   "<ooooooccccccccccccccccccccccccccccccccc"
   ],
-  "parts": true,
   "exits": {
    "<": "HOENN_ROUTE_128",
-   "U": "HOENN_VICTORY_ROAD",
-   "V": "HOENN_VICTORY_ROAD"
+   "n": "HOENN_VICTORY_ROAD"
   },
   "buildings": {
-   "E": "league",
-   "C": "center",
-   "U": "cave",
-   "V": "cave"
+   "A": "league",
+   "B": "center"
   },
   "roofs": {
-   "E": [
-    224,
-    128,
-    72
-   ],
-   "C": [
-    200,
-    64,
-    80
-   ]
+   "_picture": {
+    "f": "em_ground/0_8.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "people": [
    "A Glinting Stone: Mewtwonite Y"
-  ],
-  "overheads": [
-   {
-    "kind": "torii",
-    "rect": [
-     15,
-     11,
-     7,
-     2
-    ]
-   },
-   {
-    "kind": "torii",
-    "rect": [
-     24,
-     19,
-     5,
-     2
-    ]
-   }
   ],
   "signs": [
    [
@@ -93580,22 +97407,1020 @@
     "EVER GRANDE CITY",
     "The paradise of flowers, the sea, and Pokemon."
    ]
-  ]
+  ],
+  "inside": {
+   "18,5": "league",
+   "27,48": "center"
+  },
+  "edge_to": {
+   "0,57": [
+    119,
+    17
+   ],
+   "0,58": [
+    119,
+    18
+   ],
+   "0,59": [
+    119,
+    19
+   ],
+   "0,60": [
+    119,
+    20
+   ],
+   "0,61": [
+    119,
+    21
+   ],
+   "0,62": [
+    119,
+    22
+   ],
+   "0,63": [
+    119,
+    23
+   ],
+   "0,67": [
+    119,
+    27
+   ],
+   "0,68": [
+    119,
+    28
+   ],
+   "0,69": [
+    119,
+    29
+   ],
+   "0,70": [
+    119,
+    30
+   ],
+   "0,71": [
+    119,
+    31
+   ],
+   "0,72": [
+    119,
+    32
+   ],
+   "0,79": [
+    119,
+    39
+   ]
+  },
+  "surf": true,
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_8.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     40,
+     80
+    ]
+   }
+  ],
+  "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "....cccmcc....",
+     ".........N....",
+     ".....N........",
+     "c<.........cc.",
+     "..........Ncc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:27,48",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_12.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Scott",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Scott: You've made it all the way to Ever Grande! I knew you had it in you.",
+        "Scott: Go show the Elite Four what you're made of!"
+       ]
+      }
+     },
+     {
+      "text": "League hopeful",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Pokémon League is just past Victory Road. Only the very best make it through."
+       ]
+      }
+     },
+     {
+      "text": "Weary Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Victory Road is long and dark. Rest up here first, believe me."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,4": {
+      "m": "face",
+      "d": "u"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_12.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_13.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_13.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "league": {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccc<<cccccccc",
+     "cccNcc..N..N..ccccc",
+     "cccmcc........ccmcc",
+     "...................",
+     "...................",
+     "...................",
+     "cc...............cc",
+     "...............cc..",
+     "...............cc..",
+     "...cc..............",
+     "ccccc....nn.......c"
+    ],
+    "exits": {
+     "n": "OUT:18,5",
+     "<": "ROOM:league_way"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "League guard",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Guard: Only Trainers with all eight Hoenn Badges may pass. Good luck!"
+       ]
+      }
+     },
+     {
+      "text": "League guard ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Guard: Beyond here wait the Elite Four. Heal up before you go!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       19,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League"
+   },
+   "league_way": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc<ccccc",
+     "...........",
+     "...........",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "ccccnnncccc"
+    ],
+    "exits": {
+     "n": "ROOM:league",
+     "<": "ROOM:league_sidney"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League"
+   },
+   "league_sidney": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc<cccccc",
+     ".............",
+     "cc.........cc",
+     "cc....N....cc",
+     "cc.........cc",
+     "cc.........cc",
+     "cc.........cc",
+     ".............",
+     ".............",
+     ".............",
+     "ccccc...ccccc",
+     "ccccc.n.ccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_way",
+     "<": "ROOM:league_hall_1"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Sidney",
+      "action": "LEAGUE",
+      "index": 0,
+      "lines": [
+       "Sidney: I like that look in your eye. Let's have a battle we'll both remember!"
+      ]
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_EVER_GRANDE_CITY_1"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Sidney's room"
+   },
+   "league_hall_1": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc<ccccc",
+     "...........",
+     "...........",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "ccccnnncccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_sidney",
+     "<": "ROOM:league_phoebe"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League"
+   },
+   "league_phoebe": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc<cccccc",
+     ".............",
+     "cc.........cc",
+     "cc....N....cc",
+     "cc.........cc",
+     "cc.........cc",
+     "cc.........cc",
+     ".............",
+     ".............",
+     ".............",
+     "ccccc...ccccc",
+     "ccccc.n.ccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_hall_1",
+     "<": "ROOM:league_hall_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Phoebe",
+      "action": "LEAGUE",
+      "index": 1,
+      "lines": [
+       "Phoebe: I trained with the spirits on Mt. Pyre. Can you keep up with my Ghosts?"
+      ]
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_EVER_GRANDE_CITY_2"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Phoebe's room"
+   },
+   "league_hall_2": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc<ccccc",
+     "...........",
+     "...........",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "ccccnnncccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_phoebe",
+     "<": "ROOM:league_glacia"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League"
+   },
+   "league_glacia": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc<cccccc",
+     ".............",
+     "cc.........cc",
+     "cc....N....cc",
+     "cc.........cc",
+     "cc.........cc",
+     "cc.........cc",
+     ".............",
+     ".............",
+     ".............",
+     "ccccc...ccccc",
+     "ccccc.n.ccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_hall_2",
+     "<": "ROOM:league_hall_3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Glacia",
+      "action": "LEAGUE",
+      "index": 2,
+      "lines": [
+       "Glacia: I came all the way to Hoenn for a real challenge. Show me what you've got!"
+      ]
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_EVER_GRANDE_CITY_3"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Glacia's room"
+   },
+   "league_hall_3": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc<ccccc",
+     "...........",
+     "...........",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "ccccnnncccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_glacia",
+     "<": "ROOM:league_drake"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League"
+   },
+   "league_drake": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc<cccccc",
+     ".............",
+     "cc.........cc",
+     "cc....N....cc",
+     "cc.........cc",
+     "cc.........cc",
+     "cc.........cc",
+     ".............",
+     ".............",
+     ".............",
+     "ccccc...ccccc",
+     "ccccc.n.ccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_hall_3",
+     "<": "ROOM:league_hall_4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Drake",
+      "action": "LEAGUE",
+      "index": 3,
+      "lines": [
+       "Drake: I've sailed the roughest seas with my Dragons. Have you got what it takes?"
+      ]
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_EVER_GRANDE_CITY_4"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Drake's room"
+   },
+   "league_hall_4": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc<ccccc",
+     "...........",
+     "...........",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc...cccc",
+     "cccc.n.cccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_drake",
+     "<": "ROOM:league_champion"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       34
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League"
+   },
+   "league_champion": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccc...ccccc",
+     "cccc.....cccc",
+     "ccc...N...ccc",
+     "cc.........cc",
+     "cc.........cc",
+     "ccc.......ccc",
+     "cccc.....cccc",
+     "ccccc...ccccc",
+     "ccccc...ccccc",
+     "ccccc.n.ccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_hall_4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Steven",
+      "action": "LEAGUE",
+      "index": 4,
+      "lines": [
+       "Steven: I knew you'd make it here. As Champion, I'll give you everything I have!"
+      ],
+      "_look": "em_134.png"
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "theme": "room",
+    "title": "Champion's room"
+   }
+  }
  },
  "HOENN_VICTORY_ROAD": {
-  "theme": "cave",
-  "floor_names": [
-   "1F",
-   "B1F",
-   "B2F"
-  ],
-  "figure_floors": {
-   "Wally": 0,
-   "Ace Trainer Vito": 0,
-   "Cooltrainer Hope": 1,
-   "Cooltrainer Albert": 1,
-   "Cooltrainer Shannon": 2
-  },
   "floors": [
    {
     "art": [
@@ -93604,139 +98429,305 @@
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc..........cccccc",
      "cccccccccccccccccccccccccccccc...........ccccc",
-     "cccccccccccccccccccccccccccccc...........ccccc",
-     "cccccccccccccccccccccccccccccc.........n...ccc",
-     "cccccccccccccccccccccccccccccc...c..........cc",
-     "cccccccccccccccccccccccccccccc...cc..........c",
-     "cccccccccccccccccccccccccccccc...cc.c........c",
-     "cccccccccccccccccccccccccccccc...cc.c........c",
-     "cccccccccccccccccccccccccccccc...cc.c........c",
-     "cccccccccccccccccccccccccccccc...cc.cccccccccc",
+     "cccccccccccccccccccccccccccccc.........n.ccccc",
+     "cccccccccccccccccccccccccccccc...ccccccccccccc",
+     "cccccccccccccccccccccccccccccc...ccccccccccccc",
+     "cccccccccccccccccccccccccccccc...ccccccccccccc",
+     "cccccccccccccccccccccccccccccc.X.ccccccccccccc",
+     "cccccccccccccccccccccccccccccc...ccccccccccccc",
+     "cccccccccccccccccccccccccccccc...ccccccccccccc",
+     "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccc.......cc.....ccccccccccc....ccccccccccccc",
-     "cc.......+.cc.....c.....ccccc....ccccccccccccc",
-     "cc.........cc.....c.........c............ccccc",
-     "cc....cc...cc.....c........cc..X.........ccccc",
-     "cc...cccccccccc...;;;;;;...;;;;;;;;;....cccccc",
-     "cc...cccccccccc...;;;;;;...;;;;;;;;;....cccccc",
-     "cc...ccccccccccc=cccccccccccc.....ccccc=cccccc",
-     "cc..cccccccccccc=cccccccccccc.....ccccc=cccccc",
-     "cc..ccccc...cccc=cccccccc.........ccccc=cccccc",
-     "cc..cccc................c.........ccccc..ccccc",
+     "cc.......1.cc.....ccccccccccc....ccccccccccccc",
+     "cc....X....cc.....ccccccccccc......ccccccccccc",
+     "cc....cc...cc.....cccccc...cc.....cccccccccccc",
+     "cc...cccccccccc.........................cccccc",
+     "cc...cccccccccc.........................cccccc",
+     "cc...ccccccccccc.cccccccccccc.....ccccc.cccccc",
+     "cc..cccccccccccc.cccccccccccc.....ccccc.cccccc",
+     "cc..ccccc...cccc.cccccccc.........ccccc.cccccc",
+     "cc..cccc................c........Xccccc..ccccc",
      "cc..ccc.................ccccccc....cccc..ccccc",
-     "cc..ccc.........c.............c.......c..ccccc",
-     "cc..;;;;;;;;...cc.............c.......c...cccc",
-     "cc..;;;;;;;;...cc........c....c....c..c...cccc",
-     "ccccccc...ccc=ccc..c....;;;;;;;;;.cc..c.cccccc",
-     "ccccccc...ccc=ccc.ccc...;;;;;;;;;.cc..c...cccc",
-     "ccccccc..........cccc=cccc....ccc=cc..c...cccc",
-     "ccccc............cccc=cc..c...ccc=cc..c...cccc",
-     "ccccc............ccc...c..c...c.......c...cccc",
-     "ccccc........c...ccc.+.c..c...c.......c...cccc",
-     "ccccc..c....cc...cc.......c...ccccccccc...cccc",
-     "ccccc..cc...;;;;;;;;...c.cc................ccc",
-     "ccccc..cc...;;;;;;;;...ccc...............c..cc",
-     "ccccc..cc=cccc...cccc=ccc.................c.cc",
-     "ccccc..cc=cccc...cccc=ccc...................cc",
-     "ccccc.....c....X.cc.......................+.cc",
-     "ccccc.....cc.......c........c...............cc",
-     "cccc....c..c.......c.........c...............c",
-     "ccc....c.......v..............c..............c",
-     "cc..c........................................c",
-     "ccc............................c.............c",
+     "cc..ccc...ccccccc.............c.......c..ccccc",
+     "cc.............cc.............c.......c...cccc",
+     "cc.............cc..ccccccc....cccccc..c...cccc",
+     "ccccccc...ccc.ccc..cc.............cc..c___cccc",
+     "ccccccc...ccc.ccc(ccc.............cc..c...cccc",
+     "ccccccc..........(ccc.cccc....ccc.cc..c...cccc",
+     "ccccc............(ccc.ccccc...ccc.cc..c...cccc",
+     "ccccc............(cc...cccc...c.......c...cccc",
+     "ccccc..ccccccc...(cc.1.cccc...c.......c...cccc",
+     "ccccc..cc...cc...(ccccccccc...ccccccccc...cccc",
+     "ccccc..cc..............cccc..............ccccc",
+     "ccccc..cc..............ccc...............cc.cc",
+     "ccccc..cc.cccc...(ccc.ccc..........cccccccc.cc",
+     "ccccc..cc.cccc...(ccc.ccc.........ccccc.....cc",
+     "ccccc.....c......c_c........ccccccccc.....1.cc",
+     "ccccc.....cc.......(........cc..............cc",
+     "ccccccccc..c...n...(..cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "parts": true,
     "exits": {
-     "v": "EVER_GRANDE_CITY",
      "n": "EVER_GRANDE_CITY"
     },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_43.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "trainer_spots": [
-     "Ace Trainer Vito",
-     "Wally"
+     "Wally",
+     "Cooltrainer Hope",
+     "Cooltrainer Albert"
+    ],
+    "links": {
+     "21,32": [
+      1,
+      20,
+      21
+     ],
+     "42,38": [
+      1,
+      42,
+      25
+     ],
+     "9,14": [
+      1,
+      8,
+      3
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_43.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       46,
+       45
+      ]
+     }
     ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccc...cc",
-     "cccccccc-ccccccccccccccccccccccccccc....c.+.cc",
-     "ccccccc...ccccccccccc.ccccc....c...cc...c...cc",
-     "cccc.........cccccc.......ccc...c...cc..c...cc",
-     "cccc....c..c............c...c....c...c..c...cc",
-     "cccc.cccc..c.......c....c...c.....c..c......cc",
-     "ccc...........c.c.......c.........c....c.....c",
-     "cccc....c.c...c.cc.....;;;;;;....cc.c..c.....c",
-     "cccc.cccc.cc..c..cc....;;;;;;....cc.cc.c.....c",
-     "cccc.......c..c..cccc=ccc..ccccc=cc..cccc....c",
-     "ccc.....c.....c..cccc=ccc..cc..c=cc...cccccccc",
-     "cc...c..c.ccccc.............c..c.......c....cc",
-     "cc....c.c..........c..X.c...c....c.....cX....c",
-     "cc..ccc..............c..c...c.......c..c.....c",
-     "ccccc....ccccccccccc.c..c...c......;;;;;;...cc",
-     "cccccccccc......c+.c.....c..c.c....;;;;;;...cc",
-     "cccc...............c.....c..c.cc=cccc..cc...cc",
-     "ccc......................c..cccc=cc.c..cc...cc",
-     "ccc..........c...c...ccc.c..........c..cc....c",
-     "ccc..cc...c..c...c.c-c.c...c.......cc..cc..c.c",
-     "ccc...cc..c..c.....cc..c..........cc...cc..c.c",
-     "ccc....cc.c..c..c....c.c..........c....cc..ccc",
-     "ccc..cccc..c.c..c....c.c...........c...cc=cccc",
-     "ccc...ccc...cc..cccccc.c....ccccc..c...cc=-ccc",
-     "ccc....cc..ccc.........c....c.+.cccc......cccc",
-     "cc.c.+.ccccccc.........c....c..........c...ccc",
-     "cc.c...ccccccc..............c..........c...ccc",
-     "cc..........................................cc",
-     "c............................................c",
+     "ccccccccccccccccccccccccccccccccccccccccc.1.cc",
+     "ccccccc.1.ccccccccccc.cccccccccc..0cccccc...cc",
+     "cccc.......(.cccccc.0b....ccccccc.b.ccccc...cc",
+     "cccc.cccc..(.......0b.ccc...cccccc...cccc...cc",
+     "cccc.cccc..(....cccc.cccc...cccccccb.ccc....cc",
+     "ccc.b.....ccccc.ccccccccc..cccccccc.cccc.....c",
+     "cccc.cccc.ccccc.ccc..............cc.ccccc...cc",
+     "cccc.cccc.ccccc..cc..............cc.cccc.....c",
+     "cccc.....b.cccc..cccc.ccc..ccccc.cc..cccc.c..c",
+     "ccccccccc.ccccc..cccc.ccc..ccccc.cc...cccccccc",
+     "ccccccccc.ccccc...0.....(...cccc.....X.ccccccc",
+     "ccccccccc.......cccc....(...cccccc.....ccccccc",
+     "cccccccccccccccccccccc..(...ccccccccc..cc...cc",
+     "cccccccccccccccccccccc..(...ccc.............cc",
+     "cccccccccc......c1.ccccccc..ccc.............cc",
+     "cccc...............ccccccc..cccc.cccc..cc...cc",
+     "ccc..............ccccccccc..cccc.cccc..cc...cc",
+     "ccc..ccccccccc...ccccccccc.......cccc..cc..ccc",
+     "ccc..ccccccccc...ccccc.ccccc....ccccc..cc..ccc",
+     "ccc...cccccccc..cccc1..ccccccccccccc...cc..ccc",
+     "ccc..ccccccccc..cccccc.cccccccccccc....cc..ccc",
+     "ccc..ccccccccc..cccccc.ccccccccccccc...cc.cccc",
+     "ccc...cccccccc..cccccc.ccccccccccccc...cc.cccc",
+     "ccc....ccccccc......0b.cccccc.1.cccc...(..1ccc",
+     "cccc.1.ccccccc......b0.cccccc..........(...ccc",
+     "cccc...ccccccc.......cccccccc..........(...ccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "parts": true,
     "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_44.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "trainer_spots": [
-     "Cooltrainer Hope",
-     "Cooltrainer Albert"
+     "Ace Trainer Vito"
+    ],
+    "links": {
+     "30,25": [
+      2,
+      30,
+      25
+     ],
+     "17,16": [
+      2,
+      19,
+      12
+     ],
+     "42,25": [
+      0,
+      42,
+      38
+     ],
+     "42,2": [
+      2,
+      43,
+      2
+     ],
+     "8,3": [
+      0,
+      9,
+      14
+     ],
+     "20,21": [
+      0,
+      21,
+      32
+     ],
+     "5,26": [
+      2,
+      5,
+      26
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_44.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       46,
+       31
+      ]
+     }
     ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccooooooooooooooooooooooooc.......c.ccccc-cc",
-     "ccccooooooooooooooooooooooooc...ccccc..cccc..c",
-     "ccccooooooooooooooooooooooooc...c......cccc..c",
-     "ccccoooooooooooooooooooooooocc..c.......ccc..c",
-     "ccccoooooo....cooooooooooooo.c..c.......ccc..c",
-     "ccc....oooc...c........ooooo.c..c....c.......c",
-     "ccc....oooc.ccc..........ooo...cc..c..c......c",
+     "ccccooooooooooooooooooooooooccccccccc.cccccccc",
+     "ccccooooooooooooooooooooooooccccccccc..cccc1.c",
+     "ccccooooooooooooooooooooooooccccc......cccc..c",
+     "ccccooooooooooooooooooooooooccccc.......ccc..c",
+     "ccccoooooocccccooooooooooooo.cccc.......ccc..c",
+     "ccc....oooccccc........ooooo.cccc..ccc.......c",
+     "ccc....oooccccc..........oooccccc..cccc......c",
      "c......oooccc............ooocccc...cccc......c",
-     "c......oooccccccccccccccc$$$cccccc=cccccc....c",
-     "c......oooccccccccccccccc$$$cccccc=cccccc....c",
-     "c..cccc$$$ccccccccc-ccccc$$$cccccc=cccccc....c",
-     "c..cccc$$$cccccooo...o..ooooooooo...ccccc....c",
-     "c..cccc$$$cccccooo...o..ooooooooo...c..cc....c",
-     "c..cccooooooooooooooooo..oooooooooooc..cc....c",
-     "c..cccooooooooooooooooo..oooooooooooc...c....c",
-     "c..cc......cooooooooo...........cooocc..X....c",
-     "c..c......c.cooo...............cc...ccc......c",
-     "c........cc.c...c.............;;;;;;;;;......c",
-     "c........;;;;;;;;;;...........;;;;;;;;;......c",
-     "ccccccc..;;;;;;;;;;..........cccc...cccc.....c",
-     "cc....ccccc.c...ccc........cccccc...cccc.....c",
-     "cc..ccccccccc...ccccccccccccccccc...cccc.....c",
-     "cc.cc.cccccc....cccc....cccccccc.....ccc=ccccc",
-     "cc.c..c.........cccc....c.cccccc.....ccc=ccccc",
-     "cc.cc-............cc....c.c...-......ccc=c.ccc",
-     "cc.ccc............cc....c.c..............c.ccc",
-     "cc.c...............c....c..................ccc",
-     "cc..........................................cc",
+     "c......oooccccccccccccccc$$$cccccc.cccccc....c",
+     "c......oooccccccccccccccc$$$cccccc.cccccc....c",
+     "c..cccc$$$ccccccccccccccc$$$cccccc.cccccc....c",
+     "c..cccc$$$cccccooo.1.occooooooooo...ccccc....c",
+     "c..cccc$$$cccccooo...occooooooooo...ccccc....c",
+     "c..cccoooooooooooooooooccoooooooooooccccc....c",
+     "c..cccoooooooooooooooooccoooooooooooccccc....c",
+     "c..cccccccccoooooooooccccccccccccoooccc......c",
+     "c.Xccccccccccoooccccccccccccccccc...ccc......c",
+     "c........cccc...cccccccc.....................c",
      "c............................................c",
+     "ccccccc......................cccc...cccc_____c",
+     "ccccccccccccc...ccc........cccccc...cccc.....c",
+     "ccccccccccccc...ccccccccccccccccc...cccc.....c",
+     "cccccccccccc....cccccccccccccccc.....ccc.ccccc",
+     "ccccccc.........cccccccccccccccc.....ccc.ccccc",
+     "ccccccc...........ccccccccc...1......ccc.ccccc",
+     "ccccc1............ccccccccc..............ccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "parts": true,
     "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_45.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "trainer_spots": [
      "Cooltrainer Shannon"
+    ],
+    "links": {
+     "30,25": [
+      1,
+      30,
+      25
+     ],
+     "43,2": [
+      1,
+      42,
+      2
+     ],
+     "19,12": [
+      1,
+      17,
+      16
+     ],
+     "5,26": [
+      1,
+      5,
+      26
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_45.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       46,
+       31
+      ]
+     }
     ]
    }
-  ]
+  ],
+  "theme": "cave",
+  "floor_names": [
+   "1F",
+   "B1F",
+   "B2F"
+  ],
+  "figure_floors": {
+   "Wally": 0,
+   "Ace Trainer Vito": 1,
+   "Cooltrainer Hope": 0,
+   "Cooltrainer Albert": 0,
+   "Cooltrainer Shannon": 2
+  }
  },
  "HOENN_SEAFLOOR_CAVERN": {
   "floors": [
@@ -97571,6 +102562,545 @@
    "Outer room",
    "Inner room"
   ]
+ },
+ "HOENN_DESERT_RUINS": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccc.........cccc",
+     "cccc..c...c..cccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc.c.......c.ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "cccc..c...c..cccc",
+     "cccc....1....cccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc1cccccccc",
+     "cccc.........cccc",
+     "cccc.........cccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "cccc.........cccc",
+     "cccc....n....cccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_111"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "regirock_door_open",
+       "f": "em_ground/24_6_closed.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "8,20": [
+      0,
+      8,
+      11
+     ],
+     "8,11": [
+      0,
+      8,
+      20
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "regirock_door_open"
+      },
+      "lines": [
+       "Braille is carved into the wall. It reads:",
+       "\"Go left, left, down, down. Then use Rock Smash.\""
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        7
+       ]
+      ],
+      "look": "sheet:em_200.png",
+      "face": "d",
+      "when": {
+       "flag_condition": "not defeated_regirock"
+      },
+      "lines": [
+       "Regirock stands as still as stone..."
+      ],
+      "boss": {
+       "id": 377,
+       "name": "Regirock",
+       "level": 40,
+       "victory_flag": "defeated_regirock",
+       "lines": [
+        "Regirock's eyes light up! It attacks!"
+       ]
+      }
+     }
+    ],
+    "puzzles": [
+     {
+      "kind": "move",
+      "label": "ROCK SMASH",
+      "item": "HM_ROCK_SMASH",
+      "at": [
+       6,
+       23
+      ],
+      "zone": [
+       3,
+       21,
+       13,
+       29
+      ],
+      "flag": "regirock_door_open",
+      "lines": [
+       "There's a rumble... The braille wall slid open!"
+      ]
+     }
+    ],
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   ""
+  ],
+  "pool": "NO_WILD_INDOORS_PERCENTAGES"
+ },
+ "HOENN_ISLAND_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccc.........cccc",
+     "cccc..c...c..cccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc.c.......c.ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "cccc..c...c..cccc",
+     "cccc....1....cccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc1cccccccc",
+     "cccc.........cccc",
+     "cccc.........cccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "cccc.........cccc",
+     "cccc....n....cccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_105"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_67.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "regice_door_open",
+       "f": "em_ground/24_67_closed.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "8,20": [
+      0,
+      8,
+      11
+     ],
+     "8,11": [
+      0,
+      8,
+      20
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "regice_door_open"
+      },
+      "lines": [
+       "Braille is carved into the wall. It reads:",
+       "\"Keep close to the walls. Walk the whole way around once.\""
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        7
+       ]
+      ],
+      "look": "sheet:em_201.png",
+      "face": "d",
+      "when": {
+       "flag_condition": "not defeated_regice"
+      },
+      "lines": [
+       "Regice stands as still as stone..."
+      ],
+      "boss": {
+       "id": 378,
+       "name": "Regice",
+       "level": 40,
+       "victory_flag": "defeated_regice",
+       "lines": [
+        "Regice's eyes light up! It attacks!"
+       ]
+      }
+     },
+     {
+      "tiles": [
+       [
+        8,
+        7
+       ]
+      ],
+      "look": "mon:486",
+      "face": "d",
+      "when": {
+       "condition": [
+        "defeated_regice",
+        "defeated_regirock",
+        "defeated_registeel"
+       ],
+       "flag_condition": "not island_cave_regigigas"
+      },
+      "lines": [
+       "A colossal Pokémon sleeps here..."
+      ],
+      "boss": {
+       "id": 486,
+       "name": "Regigigas",
+       "level": 50,
+       "victory_flag": "island_cave_regigigas",
+       "lines": [
+        "Regirock, Regice and Registeel stir... Regigigas awakens!"
+       ]
+      }
+     }
+    ],
+    "puzzles": [
+     {
+      "kind": "lap",
+      "read": [
+       8,
+       20
+      ],
+      "tiles": [
+       [
+        4,
+        21
+       ],
+       [
+        5,
+        21
+       ],
+       [
+        6,
+        21
+       ],
+       [
+        7,
+        21
+       ],
+       [
+        8,
+        21
+       ],
+       [
+        9,
+        21
+       ],
+       [
+        10,
+        21
+       ],
+       [
+        11,
+        21
+       ],
+       [
+        12,
+        21
+       ],
+       [
+        4,
+        22
+       ],
+       [
+        12,
+        22
+       ],
+       [
+        3,
+        23
+       ],
+       [
+        13,
+        23
+       ],
+       [
+        3,
+        24
+       ],
+       [
+        13,
+        24
+       ],
+       [
+        3,
+        25
+       ],
+       [
+        13,
+        25
+       ],
+       [
+        3,
+        26
+       ],
+       [
+        13,
+        26
+       ],
+       [
+        3,
+        27
+       ],
+       [
+        13,
+        27
+       ],
+       [
+        4,
+        28
+       ],
+       [
+        12,
+        28
+       ]
+      ],
+      "flag": "regice_door_open",
+      "lines": [
+       "There's a rumble... The braille wall slid open!"
+      ]
+     }
+    ],
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   ""
+  ],
+  "pool": "NO_WILD_INDOORS_PERCENTAGES"
+ },
+ "HOENN_ANCIENT_TOMB": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccc.........cccc",
+     "cccc..c...c..cccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc.c.......c.ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "cccc..c...c..cccc",
+     "cccc....1....cccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc1cccccccc",
+     "cccc.........cccc",
+     "cccc.........cccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "ccc...........ccc",
+     "cccc.........cccc",
+     "cccc....n....cccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_120"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_68.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "registeel_door_open",
+       "f": "em_ground/24_68_closed.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "8,20": [
+      0,
+      8,
+      11
+     ],
+     "8,11": [
+      0,
+      8,
+      20
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "registeel_door_open"
+      },
+      "lines": [
+       "Braille is carved into the wall. It reads:",
+       "\"Those who carry on our will, shine a light in the middle.\""
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        7
+       ]
+      ],
+      "look": "sheet:em_202.png",
+      "face": "d",
+      "when": {
+       "flag_condition": "not defeated_registeel"
+      },
+      "lines": [
+       "Registeel stands as still as stone..."
+      ],
+      "boss": {
+       "id": 379,
+       "name": "Registeel",
+       "level": 40,
+       "victory_flag": "defeated_registeel",
+       "lines": [
+        "Registeel's eyes light up! It attacks!"
+       ]
+      }
+     }
+    ],
+    "puzzles": [
+     {
+      "kind": "move",
+      "label": "FLASH",
+      "item": "HM_FLASH",
+      "at": [
+       8,
+       25
+      ],
+      "zone": [
+       3,
+       21,
+       13,
+       29
+      ],
+      "flag": "registeel_door_open",
+      "lines": [
+       "There's a rumble... The braille wall slid open!"
+      ]
+     }
+    ],
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   ""
+  ],
+  "pool": "NO_WILD_INDOORS_PERCENTAGES"
  },
  "TWINLEAF_TOWN": {
   "art": [

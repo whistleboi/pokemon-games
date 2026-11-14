@@ -1171,6 +1171,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             return self.on_flee_complete()
         if self.battle_type == "gym":
             reset_league_after_loss(self.game)  # a League run starts over after a loss
+            self.game.gym_room_return = None
         roster.wipe_guests(self.game)
         white_out(self.game)
 
@@ -1960,6 +1961,18 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             if self.player_won:
                 self.game.story_manager.story_flags[prog_key] = self.game.story_manager.story_flags.get(prog_key, 0) + 1
             from src.states.overworld import GymLobbyState, evolve_ready_party
+            from src.states.overworld.gym_lobby import in_room, back_to_room
+            if in_room(self.game):  # (the Leader battled in their Gym's room: back there)
+                from src.states.overworld import CityState
+                _st = self.game.story_manager
+                if self.player_won:  # (a League's rooms: this room's door on opens, "league_won_<area>_<how many beaten>")
+                    _st.story_flags[f"league_won_{_st.current_area_key}_{_st.story_flags.get(prog_key, 0)}"] = True
+                self.game.gym_room_return = None
+                room = CityState(self.game)
+                if self.player_won and evolve_ready_party(self.game, room):
+                    return
+                back_to_room(self.game, room)
+                return
             lobby = GymLobbyState(self.game, None)
             if self.player_won and evolve_ready_party(self.game, lobby):
                 return

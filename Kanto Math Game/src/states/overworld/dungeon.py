@@ -1208,6 +1208,9 @@ class DungeonState(OverworldBattles, PlayState):
         PLAY SLOTS at a machine: (label, action), else None."""
         if self._beside("decor:counter") and self._clerk():
             return "TALK", self.talk_to_clerk
+        pz = self._move_puzzle()
+        if pz:
+            return pz["label"], lambda: self._try_move_puzzle(pz)
         plan = self._plan()
         if plan.get("dive") is not None and self.run.player in getattr(self.run.floor, "deep", ()):
             return "DIVE", self.dive_here
@@ -1222,6 +1225,52 @@ class DungeonState(OverworldBattles, PlayState):
         if self._beside("tree") and self._menu_item("HEADBUTT"):
             return "HEADBUTT", self.headbutt_here
         return None
+
+    # ---------------------------------------------------------------- braille puzzles (Emerald's Regi caves)
+    def _puzzles(self, kind):
+        """This floor's open puzzles of a kind (map "puzzles": "move": use a field move on the right spot, "at", with the
+        HM "item", anywhere in "zone" [x0, y0, x1, y1]; "lap": read the braille at "read", then walk past every one of
+        "tiles": the Desert Ruins' Rock Smash, the Ancient Tomb's Flash, the Island Cave's lap of the walls)."""
+        flags = self.game.story_manager.story_flags
+        return [pz for pz in (self._here_art().get("puzzles") or []) if pz.get("kind") == kind and not flags.get(pz["flag"])]
+
+    def _move_puzzle(self):
+        x, y = self.run.player
+        inv = self.game.story_manager.inventory
+        for pz in self._puzzles("move"):
+            x0, y0, x1, y1 = pz["zone"]
+            if x0 <= x <= x1 and y0 <= y <= y1 and inv.get(pz["item"], 0) > 0:
+                return pz
+        return None
+
+    def _try_move_puzzle(self, pz):
+        if not self._ready():
+            return
+        if tuple(self.run.player) == tuple(pz["at"]):
+            self._open_puzzle(pz)
+        else:
+            self.say(pz.get("miss") or ["Nothing happened."])
+
+    def _read_puzzle(self, t):
+        """Braille read at t: a lap puzzle starts (walk past its tiles from here on)."""
+        for pz in self._puzzles("lap"):
+            if tuple(pz["read"]) == tuple(t):
+                self._lap = {"flag": pz["flag"], "pz": pz, "left": {tuple(v) for v in pz["tiles"]}}
+
+    def _lap_step(self):
+        lap = getattr(self, "_lap", None)
+        if lap and not self.game.story_manager.story_flags.get(lap["flag"]):
+            lap["left"].discard(tuple(self.run.player))
+            if not lap["left"]:
+                self._open_puzzle(lap["pz"])
+
+    def _open_puzzle(self, pz):
+        self.game.story_manager.story_flags[pz["flag"]] = True
+        self._lap = None
+        self._clear_boulders()   # (its door's bar: "until" the flag)
+        self._floor_surf = None
+        self._over_key = None
+        self.say(pz.get("lines") or ["Something opened!"])
 
     # ---------------------------------------------------------------- Dive (Hoenn's deep sea)
     def _plan(self):
@@ -1519,6 +1568,7 @@ class DungeonState(OverworldBattles, PlayState):
                 self.anim = STEP_FRAMES * 2
             self.partner_from, self.partner = self.partner, before  # it steps where you were
             self.steps += 1
+            self._lap_step()
             self._copy_step(dx, dy)
             self._note_area()
             self._contest_tick()
@@ -2591,6 +2641,7 @@ class DungeonState(OverworldBattles, PlayState):
                 self._over_key = None   # (its picture may change too: a picture "until" the flag)
                 self.say(ow.get("lines") or ["Something gave way!"])
                 return True
+            self._read_puzzle(t)
             self.say(bar.get("lines") or ["The Cycling Road is for bicycles only.", "Come back with a Bicycle."])
             return True
         if what.startswith("rubble:"):

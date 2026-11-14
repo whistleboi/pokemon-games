@@ -596,6 +596,9 @@
       ],
       "next_area": "HOENN_ROUTE_134"
     },
+    "HOENN_DESERT_RUINS": {"area_type": "dungeon", "route_name": "Desert Ruins", "region": "HOENN", "battle_type": "cave", "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CHALLENGE REGIROCK", "action": "BOSS", "color": "ORANGE", "not_on_map": true, "condition": ["regirock_door_open", "not:defeated_regirock"], "boss": {"id": 377, "level": 40, "name": "Regirock", "victory_flag": "defeated_regirock"}}, {"text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_111"},
+    "HOENN_ISLAND_CAVE": {"area_type": "dungeon", "route_name": "Island Cave", "region": "HOENN", "battle_type": "cave", "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CHALLENGE REGICE", "action": "BOSS", "color": "CYAN", "not_on_map": true, "condition": ["regice_door_open", "not:defeated_regice"], "boss": {"id": 378, "level": 40, "name": "Regice", "victory_flag": "defeated_regice"}}, {"text": "AWAKEN REGIGIGAS", "action": "BOSS", "color": "GOLD", "flag_condition": "not island_cave_regigigas", "boss": {"id": 486, "name": "Regigigas", "victory_flag": "island_cave_regigigas", "lines": ["Regirock, Regice and Registeel react... Regigigas awakens!"]}, "condition": ["defeated_regice", "defeated_regirock", "defeated_registeel"], "not_on_map": true}, {"text": "ROUTE 105", "action": "EXIT", "target_area": "HOENN_ROUTE_105", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_105"},
+    "HOENN_ANCIENT_TOMB": {"area_type": "dungeon", "route_name": "Ancient Tomb", "region": "HOENN", "battle_type": "cave", "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CHALLENGE REGISTEEL", "action": "BOSS", "color": "GRAY", "not_on_map": true, "condition": ["registeel_door_open", "not:defeated_registeel"], "boss": {"id": 379, "level": 40, "name": "Registeel", "victory_flag": "defeated_registeel"}}, {"text": "ROUTE 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_120"},
     "HOENN_SS_TIDAL": {
       "area_type": "dungeon",
       "route_name": "S.S. Tidal",
@@ -1480,8 +1483,7 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-        {"text": "ISLAND CAVE", "action": "BOSS", "color": "CYAN", "condition": ["regi_trio_awakened", "not:defeated_regice"], "boss": {"id": 378, "name": "Regice", "victory_flag": "defeated_regice"}},
-        {"text": "AWAKEN REGIGIGAS", "action": "BOSS", "color": "GOLD", "flag_condition": "not island_cave_regigigas", "boss": {"id": 486, "name": "Regigigas", "victory_flag": "island_cave_regigigas", "lines": ["Regirock, Regice and Registeel react... Regigigas awakens!"]}, "condition": ["defeated_regice", "defeated_regirock", "defeated_registeel"]},
+        {"text": "ISLAND CAVE", "action": "EXIT", "target_area": "HOENN_ISLAND_CAVE", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED"},
         {"text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED"}
       ],
@@ -1731,7 +1733,7 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-        {"text": "DESERT RUINS", "action": "BOSS", "color": "ORANGE", "condition": ["regi_trio_awakened", "not:defeated_regirock"], "boss": {"id": 377, "level": 40, "name": "Regirock", "victory_flag": "defeated_regirock"}},
+        {"text": "DESERT RUINS", "action": "EXIT", "target_area": "HOENN_DESERT_RUINS", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED"},
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED"},
@@ -2149,7 +2151,7 @@
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "TALK TO STEVEN", "action": "HOENN_EVENT", "event": "starter_stone", "condition": ["got_mega_bracelet", "weather_institute_cleared", "not:got_starter_mega_stone"], "color": "GOLD"},
-        {"text": "ANCIENT TOMB", "action": "BOSS", "color": "GRAY", "condition": ["regi_trio_awakened", "not:defeated_registeel"], "boss": {"id": 379, "name": "Registeel", "victory_flag": "defeated_registeel"}},
+        {"text": "ANCIENT TOMB", "action": "EXIT", "target_area": "HOENN_ANCIENT_TOMB", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED"},
         {"text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED"},
         {"text": "Scorched Slab", "action": "EXIT", "target_area": "HOENN_SCORCHED_SLAB", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
         {"text": "FORTREE CITY", "action": "EXIT", "target": "FORTREE_CITY", "condition": "can_exit", "color": "RED"}
@@ -3203,7 +3205,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "CONFRONT WALLY", "action": "TRAINER", "condition": "has_trainers", "color": "ORANGE" },
+        { "text": "CONFRONT WALLY", "not_on_map": true, "action": "TRAINER", "condition": "has_trainers", "color": "ORANGE" },
         { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "EVER_GRANDE_CITY",

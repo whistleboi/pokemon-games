@@ -2400,6 +2400,234 @@
     },
     "HOENN_ROUTE_134:STAR PIECE": {
       "item": "STAR_PIECE"
+    },
+    "EVER_GRANDE_CITY:A Glinting Stone: Mewtwonite Y": {
+      "item": "MEWTWONITE_Y"
+    },
+    "EVER_GRANDE_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "EVER_GRANDE_CITY:Scott": {
+      "sheet": "em_219.png"
+    },
+    "EVER_GRANDE_CITY:League hopeful": {
+      "sheet": "em_34.png"
+    },
+    "EVER_GRANDE_CITY:Weary Trainer": {
+      "sheet": "em_21.png"
+    },
+    "EVER_GRANDE_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "EVER_GRANDE_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "EVER_GRANDE_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "EVER_GRANDE_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "PETALBURG_CITY:Gym": {
+      "sheet": "em_129.png"
+    },
+    "PETALBURG_CITY:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "RUSTBORO_CITY:Gym": {
+      "sheet": "em_125.png"
+    },
+    "RUSTBORO_CITY:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "DEWFORD_TOWN:Gym": {
+      "sheet": "em_126.png"
+    },
+    "DEWFORD_TOWN:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "MAUVILLE_CITY:Gym": {
+      "sheet": "em_127.png"
+    },
+    "MAUVILLE_CITY:Guitarist Kirk": {
+      "sheet": "em_66.png"
+    },
+    "MAUVILLE_CITY:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "LAVARIDGE_TOWN:Gym": {
+      "sheet": "em_128.png"
+    },
+    "LAVARIDGE_TOWN:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "MOSSDEEP_CITY:Psychic Virgil": {
+      "sheet": "em_37.png"
+    },
+    "MOSSDEEP_CITY:Gym": {
+      "sheet": "em_132.png"
+    },
+    "MOSSDEEP_CITY:Liza": {
+      "sheet": "em_131.png"
+    },
+    "MOSSDEEP_CITY:Hex Maniac Patricia": {
+      "sheet": "em_40.png"
+    },
+    "MOSSDEEP_CITY:Psychic Joshua": {
+      "sheet": "em_37.png"
+    },
+    "MOSSDEEP_CITY:Psychic Fritz": {
+      "sheet": "em_37.png"
+    },
+    "MOSSDEEP_CITY:Hex Maniac Kindra": {
+      "sheet": "em_40.png"
+    },
+    "MOSSDEEP_CITY:Psychic Preston": {
+      "sheet": "em_37.png"
+    },
+    "MOSSDEEP_CITY:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "FORTREE_CITY:Gym": {
+      "sheet": "em_130.png"
+    },
+    "FORTREE_CITY:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "SOOTOPOLIS_CITY:Gym": {
+      "sheet": "em_133.png"
+    },
+    "SOOTOPOLIS_CITY:Gym Guide": {
+      "sheet": "em_23.png"
+    },
+    "EVER_GRANDE_CITY:League guard": {
+      "sheet": "em_33.png"
+    },
+    "EVER_GRANDE_CITY:League guard ": {
+      "sheet": "em_33.png"
+    },
+    "EVER_GRANDE_CITY:Sidney": {
+      "sheet": "em_121.png"
+    },
+    "EVER_GRANDE_CITY:Phoebe": {
+      "sheet": "em_122.png"
+    },
+    "EVER_GRANDE_CITY:Glacia": {
+      "sheet": "em_123.png"
+    },
+    "EVER_GRANDE_CITY:Drake": {
+      "sheet": "em_124.png"
+    },
+    "EVER_GRANDE_CITY:Steven": {
+      "sheet": "em_134.png"
+    },
+    "PETALBURG_CITY:Ace Trainer Berke": {
+      "sheet": "em_33.png"
+    },
+    "PETALBURG_CITY:Ace Trainer Jody": {
+      "sheet": "em_34.png"
+    },
+    "PETALBURG_CITY:Ace Trainer George": {
+      "sheet": "em_33.png"
+    },
+    "PETALBURG_CITY:Ace Trainer Lori": {
+      "sheet": "em_34.png"
+    },
+    "PETALBURG_CITY:Ace Trainer Parker": {
+      "sheet": "em_33.png"
+    },
+    "PETALBURG_CITY:Ace Trainer Mary": {
+      "sheet": "em_34.png"
+    },
+    "PETALBURG_CITY:Ace Trainer Randall": {
+      "sheet": "em_33.png"
+    },
+    "RUSTBORO_CITY:Schoolkid Georgia": {
+      "sheet": "em_14.png"
+    },
+    "RUSTBORO_CITY:Youngster Tommy": {
+      "sheet": "em_35.png"
+    },
+    "RUSTBORO_CITY:Youngster Josh": {
+      "sheet": "em_35.png"
+    },
+    "DEWFORD_TOWN:Battle Girl Tessa": {
+      "sheet": "em_14.png"
+    },
+    "DEWFORD_TOWN:Black Belt Hideki": {
+      "sheet": "em_44.png"
+    },
+    "DEWFORD_TOWN:Battle Girl Laura": {
+      "sheet": "em_14.png"
+    },
+    "MAUVILLE_CITY:Guitarist Shawn": {
+      "sheet": "em_66.png"
+    },
+    "MAUVILLE_CITY:Battle Girl Vivian": {
+      "sheet": "em_14.png"
+    },
+    "MAUVILLE_CITY:Youngster Ben": {
+      "sheet": "em_35.png"
+    },
+    "LAVARIDGE_TOWN:Battle Girl Sadie": {
+      "sheet": "em_14.png"
+    },
+    "LAVARIDGE_TOWN:Kindler Axle": {
+      "sheet": "em_66.png"
+    },
+    "LAVARIDGE_TOWN:Kindler Cole": {
+      "sheet": "em_66.png"
+    },
+    "LAVARIDGE_TOWN:Ninja Boy Hiromichi": {
+      "sheet": "em_5.png"
+    },
+    "LAVARIDGE_TOWN:Ace Trainer Zane": {
+      "sheet": "em_33.png"
+    },
+    "LAVARIDGE_TOWN:Kindler Andy": {
+      "sheet": "em_66.png"
+    },
+    "LAVARIDGE_TOWN:Ninja Boy Shoji": {
+      "sheet": "em_5.png"
+    },
+    "FORTREE_CITY:Bird Keeper Bran": {
+      "sheet": "em_66.png"
+    },
+    "FORTREE_CITY:Bird Keeper Will": {
+      "sheet": "em_66.png"
+    },
+    "FORTREE_CITY:Camper Terrell": {
+      "sheet": "em_31.png"
+    },
+    "FORTREE_CITY:Picnicker Kylee": {
+      "sheet": "em_32.png"
+    },
+    "FORTREE_CITY:Bird Keeper Jared": {
+      "sheet": "em_66.png"
+    },
+    "SOOTOPOLIS_CITY:Beauty Tiffany": {
+      "sheet": "em_45.png"
+    },
+    "SOOTOPOLIS_CITY:Beauty Bridget": {
+      "sheet": "em_45.png"
+    },
+    "SOOTOPOLIS_CITY:Lass Andrea": {
+      "sheet": "em_47.png"
+    },
+    "SOOTOPOLIS_CITY:Beauty Connie": {
+      "sheet": "em_45.png"
+    },
+    "SOOTOPOLIS_CITY:Lady Brianna": {
+      "sheet": "em_20.png"
+    },
+    "SOOTOPOLIS_CITY:Beauty Olivia": {
+      "sheet": "em_45.png"
+    },
+    "SOOTOPOLIS_CITY:Lass Crissy": {
+      "sheet": "em_47.png"
+    },
+    "SOOTOPOLIS_CITY:Poké Fan Marissa": {
+      "sheet": "em_18.png"
     }
   },
   "townsperson": "NPC 17.png",

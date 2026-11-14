@@ -36,6 +36,65 @@ def league_rematch_levels(story, team_levels):
     return lv
 
 
+def in_room(game):
+    """Is this Gym challenge being taken in the Gym's own room (walked inside), not the lobby screen?"""
+    return getattr(game, "gym_room_return", None) == game.story_manager.current_area_key
+
+
+def back_to_room(game, state=None):
+    """Back into the Gym's room, where you stood (after the game or the battle)."""
+    from src.states.overworld import CityState
+    game.gym_room_return = None
+    game.change_state(state or CityState(game))
+
+
+def leader_in_room(state):
+    """The Leader in their Gym's room (Jordan, 11-13: the game before the Leader stays; "have the leader say he wants to
+    play a game before battling"): the challenge's minigame first, till it's won, then the battle; back in the room after.
+    The Gym's own trainers stand in the room (battled there), so the Leader is next."""
+    game = state.game
+    story = game.story_manager
+    lobby = GymLobbyState(game, state)
+    name = _fill_names(game, (lobby.leader or {}).get("name", "The Leader"))
+    if lobby.is_league:
+        game.change_state(lobby)
+        return
+    if lobby.is_cleared:
+        state.show_message([f"{name}: You've already beaten me and earned my Badge. Keep it up!"])
+        return
+    if not lobby.challenge and not lobby.redo and lobby.progress < len(lobby.trainers):
+        story.story_flags[lobby.prog_key] = len(lobby.trainers)  # (the room's trainers are the Gym's: the Leader is next)
+        lobby = GymLobbyState(game, state)
+    game.gym_room_return = story.current_area_key
+    if lobby.challenge:
+        state.show_message([f"{name}: Welcome, challenger! Before we battle, I want to play a game with you.",
+                            f"{name}: Win it, and then we'll see how strong you really are!"], callback=lobby._start_challenge)
+        return
+    state.show_message([f"{name}: Now then. Let's battle!"], callback=lobby.challenge_gym)
+
+
+def league_member(state, opt):
+    """An Elite Four member (or the Champion) in their own room of the League (Emerald's rooms, one battle each, in the
+    League's order: opt "index"). Win, and their room's door on opens (battle.py: "league_won_<area>_<n>")."""
+    game = state.game
+    story = game.story_manager
+    closed = state.gym_closed()
+    if closed:
+        state.show_message(closed)
+        return
+    lobby = GymLobbyState(game, state)
+    i, name = int(opt.get("index", 0)), _fill_names(game, opt.get("text", ""))
+    if lobby.is_cleared or lobby.progress > i:
+        state.show_message([f"{name}: You've beaten me already. Go on ahead, the next challenge awaits!"])
+        return
+    if lobby.progress < i:
+        state.show_message([f"{name}: You'll need to get past the others first."])
+        return
+    game.gym_room_return = story.current_area_key
+    state.show_message([_fill_names(game, x) for x in (opt.get("lines") or [f"{name}: Welcome. Let's battle!"])],
+                       callback=lobby.challenge_gym)
+
+
 class GymLobbyState(GameState):
     def __init__(self, game, previous_state=None):
         from src.states.overworld.area_transition import _collapse_hud, is_league
@@ -224,6 +283,12 @@ class GymLobbyState(GameState):
                 story.story_flags[minigames.done_flag(self.area_key)] = True
                 story.story_flags[self.prog_key] = len(self.trainers)
                 story.balls_left += sum((t.get("rewards") or {}).get("balls", 0) for t in self.trainers) or 3
+            if in_room(self.game):  # (a Gym walked inside: won, and the Leader's battle is next; lost, back in the room)
+                if won:
+                    GymLobbyState(self.game, None).challenge_gym()
+                else:
+                    back_to_room(self.game)
+                return
             self.game.change_state(GymLobbyState(self.game, None))
 
         self.game.change_state(self.challenge(

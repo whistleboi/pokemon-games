@@ -95,7 +95,7 @@ def reachable(key, m):
     while todo:
         x, y = todo.pop()
         pad = (m.get("links") or {}).get(f"{x},{y}")  # (a warp pad on this same map: on to its far pad)
-        if pad and (pad[1], pad[2]) not in seen and not m.get("floors"):
+        if pad and not isinstance(pad[0], str) and (pad[1], pad[2]) not in seen and not m.get("floors"):  # (a pad into another room: that room is checked on its own)
             seen.add((pad[1], pad[2]))
             todo.append((pad[1], pad[2]))
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):

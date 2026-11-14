@@ -731,7 +731,7 @@ st._use_figure(_fish); tap(st)
 check(story.inventory.get("GOOD_ROD", 0) > 0, "Route 118: the fisherman on the east bank gives the Good Rod")
 check("MEET STEVEN" in _tm["HOENN_ROUTE_118"].get("people", []) and any(s.get("who") == "MEET STEVEN" for s in _tm["HOENN_ROUTE_118"].get("scenes", [])),
       "Route 118: Steven stands where Emerald has him and walks up to take you to Southern Island")
-check({"ISLAND CAVE", "AWAKEN REGIGIGAS"} <= set(_tm["HOENN_ROUTE_105"].get("people", [])), "Route 105: Island Cave's legends at its door")
+check("HOENN_ISLAND_CAVE" in _tm["HOENN_ROUTE_105"]["exits"].values(), "Route 105: the Island Cave's door (its legends inside: batch 19)")
 _jp = _tm["HOENN_JAGGED_PASS"]
 check(any(b.get("item") == "MAGMA_EMBLEM" for b in _jp.get("barred", [])) and "HOENN_MAGMA_HIDEOUT" in _jp["exits"].values(),
       "Jagged Pass: the Magma Hideout's hidden door is plain rock until the Magma Emblem")
@@ -1678,6 +1678,413 @@ check(_still and story.story_flags.get("regi_trio_awakened") and any("Desert Rui
 story.player_team = _team18
 story.inventory.clear(); story.inventory.update(_inv18)
 story.story_flags.clear(); story.story_flags.update(_saved18)
+
+# ---- batch 19: the Regi caves (Desert Ruins, Island Cave, Ancient Tomb) and Emerald's braille puzzles
+_saved19, _inv19 = dict(story.story_flags), dict(story.inventory)
+_tm19 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp19 = g.loader.area_data["STORY_PROGRESSION"]
+
+
+def _walk19(st, path):
+    """Step along a path of tiles, one at a time, as the player would."""
+    for _t in path:
+        _x, _y = st.run.player
+        st.step((_t[0] > _x) - (_t[0] < _x), (_t[1] > _y) - (_t[1] < _y))
+        for _i in range(60):
+            if not st.anim and not st.sliding:
+                break
+            st.update(); st.draw()
+        _play(st, 1) if st.dialogue_box.visible else None
+
+
+_routes19 = {"HOENN_DESERT_RUINS": "HOENN_ROUTE_111", "HOENN_ISLAND_CAVE": "HOENN_ROUTE_105", "HOENN_ANCIENT_TOMB": "HOENN_ROUTE_120"}
+_rm19 = lambda k: _tm19[k]["floors"][0] if "floors" in _tm19[k] else _tm19[k]
+check(all(c in _rm19(r)["exits"].values() and any(o.get("target_area") == c and "regi_trio_awakened" in o.get("condition", [])
+          for o in _sp19[r]["route_menu"]) for c, r in _routes19.items()),
+      "Routes 105, 111, 120: the Regi caves' doors, open once the Sealed Chamber's braille is read")
+story.story_flags["regi_trio_awakened"] = True
+for _k in ("regirock_door_open", "regice_door_open", "registeel_door_open", "defeated_regirock", "defeated_regice", "defeated_registeel", "island_cave_regigigas"):
+    story.story_flags.pop(_k, None)
+story.inventory.update({"HM_ROCK_SMASH": 1, "HM_FLASH": 1})
+# Desert Ruins: from the braille, left, left, down, down, then Rock Smash
+st = open_map("HOENN_DESERT_RUINS", "HOENN_ROUTE_111")
+_calm(st)
+st.run.player, st.anim, st.facing = (8, 21), 0, (0, 1)
+st.step(0, -1)
+said = _play(st, 300)
+_shut19 = str(st.run.floor.decor.get((8, 20), "")).startswith("barrier:")
+_act = st._act_here()
+_act[1](); _miss = _play(st, 300)
+_walk19(st, [(7, 21), (6, 21), (6, 22), (6, 23)])
+_act2 = st._act_here()
+_act2[1](); said2 = _play(st, 300)
+_walk19(st, [(7, 23), (8, 23), (8, 22), (8, 21), (8, 20)])
+check(_shut19 and any("Rock Smash" in x for x in said) and _act[0] == "ROCK SMASH" and story.story_flags.get("regirock_door_open")
+      and any("Nothing" in x for x in _miss) and st.run.player[1] <= 11,
+      f"Desert Ruins: the braille says left, left, down, down, Rock Smash; there the wall slides open and you walk in ({said2[-1:]}, {st.run.player})")
+_rb = st._bars.get((8, 7), {})
+check(_rb.get("boss", {}).get("id") == 377 and _rb.get("look") == "sheet:em_200.png" and str(st.run.floor.decor.get((8, 7), "")).startswith("barrier:"),
+      "Desert Ruins: Regirock (Emerald's own sprite) waits in the inner room")
+# Island Cave: read the braille, then a lap along the walls
+st = open_map("HOENN_ISLAND_CAVE", "HOENN_ROUTE_105")
+_calm(st)
+st.run.player, st.anim, st.facing = (8, 21), 0, (0, 1)
+_walk19(st, [(7, 21), (6, 21), (5, 21), (4, 21), (4, 22), (4, 23), (3, 23)])
+_early = story.story_flags.get("regice_door_open")
+_walk19(st, [(4, 23), (4, 22), (4, 21), (5, 21), (6, 21), (7, 21), (8, 21)])
+st.step(0, -1); _play(st, 300)
+_lap = [(7, 21), (6, 21), (5, 21), (4, 21), (4, 22), (4, 23), (3, 23), (3, 24), (3, 25), (3, 26), (3, 27), (4, 27), (4, 28), (5, 28), (6, 28),
+        (7, 28), (8, 28), (9, 28), (10, 28), (11, 28), (12, 28), (12, 27), (13, 27), (13, 26), (13, 25), (13, 24), (13, 23), (12, 23), (12, 22),
+        (12, 21), (11, 21), (10, 21), (9, 21), (8, 21)]
+_walk19(st, _lap)
+_play(st, 300)
+check(not _early and story.story_flags.get("regice_door_open") and not str(st.run.floor.decor.get((8, 20), "")).startswith("barrier:"),
+      f"Island Cave: walking the walls before reading the braille does nothing; after it, one lap opens the door ({st.run.player})")
+# Ancient Tomb: Flash in the middle
+st = open_map("HOENN_ANCIENT_TOMB", "HOENN_ROUTE_120")
+_calm(st)
+st.run.player, st.anim = (8, 22), 0
+_act = st._act_here(); _act[1](); _play(st, 300)
+_early = story.story_flags.get("registeel_door_open")
+_walk19(st, [(8, 23), (8, 24), (8, 25)])
+_act = st._act_here(); _act[1](); _play(st, 300)
+check(_act[0] == "FLASH" and not _early and story.story_flags.get("registeel_door_open"),
+      "Ancient Tomb: Flash in the middle of the room opens the braille wall")
+# ORAS: Regigigas in the Island Cave once all three are beaten
+for _k in ("defeated_regirock", "defeated_regice", "defeated_registeel"):
+    story.story_flags[_k] = True
+st = open_map("HOENN_ISLAND_CAVE", "HOENN_ROUTE_105")
+_gb = st._bars.get((8, 7), {})
+check(_gb.get("boss", {}).get("id") == 486 and str(st.run.floor.decor.get((8, 7), "")).startswith("barrier:"),
+      "Island Cave: with the three Regis beaten, Regigigas waits where Regice stood")
+story.inventory.clear(); story.inventory.update(_inv19)
+story.story_flags.clear(); story.story_flags.update(_saved19)
+
+# ---- batch 20: Ever Grande City, Victory Road
+_saved20, _inv20 = dict(story.story_flags), dict(story.inventory)
+_tm20 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+story.inventory.update({"HM_SURF": 1, "HM_STRENGTH": 1, "HM_ROCK_SMASH": 1, "HM_WATERFALL": 1, "HM_FLASH": 1})
+st = open_map("EVER_GRANDE_CITY", "HOENN_ROUTE_128")
+_eg = _tm20["EVER_GRANDE_CITY"]
+_kinds20 = sorted(set(st.doors.values()))
+_lg = [t for t, k in st.doors.items() if k == "league"]
+check(_lg and any(o.get("action") == "GYM" for o in st._door_options("league")) and "Heal" in [q for r in _eg["rooms"].values() for q in r.get("people", []) if isinstance(q, str)],
+      f"Ever Grande: the League's door is the Elite Four challenge; the Pokemon Center walked inside ({_kinds20})")
+_vr = _tm20["HOENN_VICTORY_ROAD"]["floors"]
+_ok20 = set(".=\"NX1w$o[]{}b0(|;")
+_todo = [(0, 15, 40)]
+_seen20 = set(_todo)
+while _todo:
+    _f, _x, _y = _todo.pop()
+    _ln = (_vr[_f].get("links") or {}).get(f"{_x},{_y}")
+    for _n in ([(_ln[0], _ln[1], _ln[2])] if _ln else []) + [(_f, _x + dx, _y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))]:
+        _a = _vr[_n[0]]["art"]
+        if _n not in _seen20 and 0 <= _n[2] < len(_a) and 0 <= _n[1] < len(_a[0]) and (_a[_n[2]][_n[1]] in _ok20 or _a[_n[2]][_n[1]] in _vr[_n[0]]["exits"]):
+            _seen20.add(_n); _todo.append(_n)
+check((0, 39, 5) in _seen20 and {f for f, _x, _y in _seen20} == {0, 1, 2},
+      "Victory Road: from the south mouth, through 1F, B1F and B2F (boulders, rocks, ladders) to the north mouth by the League")
+check(_vr[0]["trainer_spots"][0] == "Wally" and "Wally" in _vr[0]["trainer_spots"],
+      "Victory Road: Wally waits on 1F, by the way out (Emerald's spot); the data's Ace Trainers on all three floors")
+_out20 = {}
+for _tile in ((39, 5), (15, 40)):
+    st = open_map("HOENN_VICTORY_ROAD", "EVER_GRANDE_CITY")
+    _calm(st)
+    _dy = -1 if _tile == (39, 5) else 1
+    st.run.player, st.anim = (_tile[0], _tile[1] - _dy), 0
+    st.step(0, _dy)
+    for _i in range(600):   # (the walk out, then the screen's change over to the town)
+        if g.current_state is not st and type(g.current_state).__name__ != "AreaTransitionState":
+            break
+        g.current_state.update(); g.current_state.draw()
+    frames(4)
+    _out20[_tile] = tuple(getattr(g.current_state, "player", (0, 0))) + (type(g.current_state).__name__, st.run.player)
+check(_out20[(39, 5)][1] < 30 and _out20[(15, 40)][1] > 38,
+      f"Victory Road: out by the north mouth you're by the League, by the south mouth by the Center ({_out20})")
+story.inventory.clear(); story.inventory.update(_inv20)
+story.story_flags.clear(); story.story_flags.update(_saved20)
+
+# ---- batch 21: the Gyms walked inside (Rustboro, Petalburg)
+_saved21 = dict(story.story_flags)
+_tm21 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+st = open_map("RUSTBORO_CITY", "HOENN_ROUTE_104")
+_gd = [t for t, k in st.doors.items() if k == "gym"]
+_rg = _tm21["RUSTBORO_CITY"]["rooms"]["gym"]
+_names21 = [q.get("text") if isinstance(q, dict) else q for q in _rg["people"]]
+check(_gd and st._room_for(_gd[0]) == "gym" and "Gym" in _names21 and {"Youngster Josh", "Youngster Tommy", "Schoolkid Georgia"} <= set(_names21),
+      f"Rustboro Gym: walked inside; Roxanne where Emerald has her, ORAS's three trainers on Emerald's spots ({_names21})")
+st._go("gym", ""); frames(2)
+_josh = next(q for q in _rg["people"] if isinstance(q, dict) and q.get("text") == "Youngster Josh")
+story.story_flags.pop("gym_trainer_RUSTBORO_CITY_0", None)
+st._get_callback_for_option(_josh)(); _said21 = _play(st, 400)
+check(any("TrainerIntroState" in x or "Battle" in x for x in _said21) and _josh["event"]["battle"]["levels"] == [7, 9],
+      f"Rustboro Gym: talk to a trainer and you battle (ORAS's team: Geodude Lv 7 and 9) ({_said21[-1:]})")
+for _i in range(7):
+    story.story_flags.pop(f"gym_trainer_PETALBURG_CITY_{_i}", None)
+st = open_map("PETALBURG_CITY", "HOENN_ROUTE_102")
+st._go("gym", ""); frames(2)
+st.player, st.anim = (1, 106), 0
+st.step(0, -1); frames(20)
+_room2 = st.player
+st.player, st.anim = (1, 80), 0
+st.step(0, -1); frames(20)
+_shut21 = st.player
+story.story_flags["gym_trainer_PETALBURG_CITY_1"] = True
+st._go("gym", ""); frames(2)
+st.player, st.anim = (1, 80), 0
+st.step(0, -1); frames(20)
+check(_room2 == (7, 85) and _shut21 == (1, 80) and st.player[1] < 79,
+      f"Petalburg Gym: through a door to the next room; its doors onward stay shut till its trainer is beaten ({_room2}, {_shut21}, {st.player})")
+story.story_flags.clear(); story.story_flags.update(_saved21)
+
+# ---- batch 21 (2): Dewford's dark Gym, Mauville's switches
+_saved22 = dict(story.story_flags)
+_tm22 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+for _i in range(3):
+    story.story_flags.pop(f"gym_trainer_DEWFORD_TOWN_{_i}", None)
+st = open_map("DEWFORD_TOWN", "HOENN_ROUTE_106")
+st._go("gym", ""); frames(2)
+_r0 = st.light_radius()
+story.story_flags["gym_trainer_DEWFORD_TOWN_0"] = True
+_r1 = st.light_radius()
+for _i in range(3):
+    story.story_flags[f"gym_trainer_DEWFORD_TOWN_{_i}"] = True
+check(_r0 and _r1 and _r1 > _r0 and st.light_radius() is None,
+      f"Dewford Gym: dark, and the light round you widens with each trainer beaten; all three, and it's lit ({_r0}, {_r1})")
+for _k in ("mauville_gym_flipped", "mauville_gym_switch"):
+    story.story_flags.pop(_k, None)
+_mg = _tm22["MAUVILLE_CITY"]["rooms"]["gym"]
+from src.dungeon import art as _a22
+_grid = _mg["art"]
+_sw = [tuple(t) for t in _mg["switches"]["tiles"]]
+_blk = {False: {tuple(t) for b in _mg["barred"] if b["until"]["flag_condition"] == "mauville_gym_flipped" for t in b["tiles"]},
+        True: {tuple(t) for b in _mg["barred"] if b["until"]["flag_condition"] != "mauville_gym_flipped" for t in b["tiles"]}}
+_start = next((x, y - 1) for y, r in enumerate(_grid) for x, c in enumerate(r) if c in _mg["exits"])
+_lead = tuple(next(q["at"] for q in [{"at": [5, 2]}]))
+def _solve22(use_switches):
+    _seen, _todo = {(_start, False, 0)}, [(_start, False, 0)]
+    while _todo:
+        (_x, _y), _f, _p = _todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            _n = (_x + dx, _y + dy)
+            if _n == (_lead[0], _lead[1] + 1) or _n == _lead:
+                return True
+            if not (0 <= _n[1] < len(_grid) and 0 <= _n[0] < len(_grid[0])) or _grid[_n[1]][_n[0]] not in _a22.OPEN or _n in _blk[_f]:
+                continue
+            _nf, _np = _f, _p
+            if use_switches and _n in _sw and _sw.index(_n) + 1 != _p:
+                _nf, _np = not _f, _sw.index(_n) + 1
+            if (_n, _nf, _np) not in _seen:
+                _seen.add((_n, _nf, _np)); _todo.append((_n, _nf, _np))
+    return False
+check(_solve22(True) and not _solve22(False), "Mauville Gym: Wattson can only be reached by flipping the barriers with the switches")
+st = open_map("MAUVILLE_CITY", "HOENN_ROUTE_110")
+st._go("gym", ""); frames(2)
+_before = (4, 7) in st.barred
+st.player, st.anim = (0, 16), 0
+st.step(0, -1); frames(10)
+check(_before and story.story_flags.get("mauville_gym_flipped") and (4, 7) not in st.barred and (4, 11) in st.barred,
+      "Mauville Gym: step on a switch and every barrier flips")
+story.story_flags.clear(); story.story_flags.update(_saved22)
+
+# ---- the Leader in their room: a game first, then the battle (Jordan 11-13)
+_saved23, _badges23 = dict(story.story_flags), {k: list(v) for k, v in story.badges.items()}
+from src import minigames as _mg23
+story.story_flags.pop(_mg23.done_flag("RUSTBORO_CITY"), None)
+story.story_flags.pop("gym_progress_RUSTBORO_CITY", None)
+story.badges["HOENN"] = [b for b in story.badges.get("HOENN", []) if b != "STONE"]
+st = open_map("RUSTBORO_CITY", "HOENN_ROUTE_104")
+st._go("gym", ""); frames(2)
+st.start_gym_battle()
+_said23 = _play(st, 400)
+_game23 = type(g.current_state).__name__
+check(any("play a game" in x for x in _said23) and _game23 not in ("WalkTownState", "GymLobbyState"),
+      f"Rustboro Gym: Roxanne wants to play a game before battling; the game starts ({_said23[:1]}, {_game23})")
+story.story_flags[_mg23.done_flag("RUSTBORO_CITY")] = True
+st = open_map("RUSTBORO_CITY", "HOENN_ROUTE_104")
+st._go("gym", ""); frames(2)
+st.start_gym_battle()
+_said23 = _play(st, 400)
+check(any("battle" in x.lower() for x in _said23) and "TrainerIntroState" in " ".join(_said23) and g.gym_room_return == "RUSTBORO_CITY",
+      f"Rustboro Gym: the game won, Roxanne battles you there, and you come back to her room after ({_said23[-2:]})")
+g.gym_room_return = None
+story.badges.clear(); story.badges.update(_badges23)
+story.story_flags.clear(); story.story_flags.update(_saved23)
+
+# ---- Lavaridge's sand pits, Mossdeep's rotating blocks
+_saved24 = dict(story.story_flags)
+_tm24 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
+st._go("gym", ""); frames(2)
+st.player, st.anim = (10, 17), 0
+st.step(0, 1); frames(10)
+_down24 = (st.room, st.player)
+st.player, st.anim = (10, 17), 0
+st.step(0, 1); frames(10)
+check(_down24 == ("gym_2", (10, 18)) and st.room == "gym",
+      f"Lavaridge Gym: a sand pit drops you to the same spot on B1F; its vent there sends you back up ({_down24}, {st.room})")
+_mo = _tm24["MOSSDEEP_CITY"]["rooms"]["gym"]
+_rot = _mo["rotators"]
+from src.dungeon import art as _a24
+def _blocks24(turns):
+    out = set()
+    for x, y in _rot["objects"]:
+        spot = (x, y)
+        for c, sqs in _rot["blocks"].items():
+            for sq in sqs:
+                cyc = [tuple(v) for v in sq]
+                if spot in cyc:
+                    spot = cyc[(cyc.index(spot) + turns[c]) % 4]
+        out.add(spot)
+    return out
+_cols = sorted(_rot["blocks"])
+_pads = {tuple(int(v) for v in k.split(",")): (t[1], t[2]) for k, t in (_mo.get("links") or {}).items()}
+_g24 = _mo["art"]
+_door = next((x, y - 1) for y, r in enumerate(_g24) for x, c in enumerate(r) if c in _mo["exits"])
+_peo = {tuple(v["at"]) if isinstance(v, dict) and "at" in v else None for v in []}
+def _solve24(switches):
+    t0 = tuple(0 for _ in _cols)
+    seen, todo = {(_door, t0)}, [(_door, t0)]
+    while todo:
+        (x, y), tu = todo.pop()
+        blk = _blocks24(dict(zip(_cols, tu)))
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (x + dx, y + dy)
+            if n in ((23, 8), (22, 7)):
+                return True
+            if not (0 <= n[1] < len(_g24) and 0 <= n[0] < len(_g24[0])) or _g24[n[1]][n[0]] not in _a24.OPEN or n in blk:
+                continue
+            if _g24[n[1]][n[0]] == "N":
+                continue
+            nt = tu
+            k = "%d,%d" % n
+            if switches and k in _rot["switches"]:
+                i = _cols.index(_rot["switches"][k]); nt = tu[:i] + ((tu[i] + 1) % 4,) + tu[i + 1:]
+            nn = _pads.get(n, n)
+            if (nn, nt) not in seen:
+                seen.add((nn, nt)); todo.append((nn, nt))
+    return False
+check(_solve24(True) and not _solve24(False), "Mossdeep Gym: Tate and Liza can only be reached by turning the blocks with the coloured switches")
+for _c in _cols:
+    story.story_flags.pop(f"mossdeep_gym_turns_{_c}", None)
+st = open_map("MOSSDEEP_CITY", "HOENN_ROUTE_124")
+st._go("gym", ""); frames(2)
+_b0 = set(t for t, b in st.barred.items() if str(b.get("look")).startswith("img:"))
+st.player, st.anim = (3, 31), 0
+st.step(0, -1); frames(10)
+_b1 = set(t for t, b in st.barred.items() if str(b.get("look")).startswith("img:"))
+check(story.story_flags.get("mossdeep_gym_turns_yellow") == 1 and _b0 != _b1 and len(_b0) == len(_b1) == 21,
+      "Mossdeep Gym: step on a yellow switch and the blocks on the yellow arrows turn one corner")
+story.story_flags.clear(); story.story_flags.update(_saved24)
+
+# ---- Fortree's rotating gates, Sootopolis's thin ice
+_saved25 = dict(story.story_flags)
+st = open_map("FORTREE_CITY", "HOENN_ROUTE_119")
+st._go("gym", ""); frames(2)
+for _i in range(8):
+    story.story_flags.pop(f"fortree_gym_gate_{_i}", None)
+from collections import deque as _dq25
+_D25 = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+_g25 = st.turnstiles["gates"]
+def _fort_solve(turning):
+    flags = story.story_flags
+    o0 = tuple(st._gate_turn(i) for i in range(len(_g25)))
+    start = st.player
+    seen, q = {(start, o0)}, _dq25([(start, o0)])
+    while q:
+        p, o = q.popleft()
+        if p in ((15, 3), (14, 2), (16, 2)):
+            return True
+        for i, v in enumerate(o):
+            flags[f"fortree_gym_gate_{i}"] = v
+        edges = st._gate_edges()
+        for mv in _D25:
+            n = (p[0] + mv[0], p[1] + mv[1])
+            if not (0 <= n[0] < st.w and 0 <= n[1] < st.h) or st.rows[n[1]][n[0]] != "." or n in st._people():
+                continue
+            no = o
+            arm = edges.get(frozenset((p, n)))
+            if arm is not None:
+                if not turning or not st._turn_gate(arm, mv):
+                    continue
+                no = tuple(st._gate_turn(i) for i in range(len(_g25)))
+                for i, v in enumerate(o):
+                    flags[f"fortree_gym_gate_{i}"] = v
+            if (n, no) not in seen:
+                seen.add((n, no)); q.append((n, no))
+    return False
+_fs = (_fort_solve(True), _fort_solve(False))
+for _i in range(8):
+    story.story_flags.pop(f"fortree_gym_gate_{_i}", None)
+check(_fs == (True, False), f"Fortree Gym: Winona is reached only by pushing the rotating gates round (Emerald's gates and rules) ({_fs})")
+for _f in ("sootopolis_gym_ice_1", "sootopolis_gym_ice_2", "sootopolis_gym_ice_3"):
+    story.story_flags.pop(_f, None)
+st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
+st._go("gym", ""); frames(2)
+_sec = [tuple(t) for t in st.thin_ice["sections"][0]["tiles"]]
+def _ham(path):
+    if len(path) == len(_sec) + 1:
+        return path
+    x, y = path[-1]
+    for dx, dy in _D25:
+        n = (x + dx, y + dy)
+        if n in _sec and n not in path:
+            r = _ham(path + [n])
+            if r:
+                return r
+    return None
+_path25 = _ham([(8, 20)])
+_shut25 = (8, 16) in st.barred
+st.player, st.anim = (8, 20), 0
+for _t in (_path25 or [])[1:]:
+    st.step(_t[0] - st.player[0], _t[1] - st.player[1]); frames(12)
+_open25 = story.story_flags.get("sootopolis_gym_ice_1") and (8, 16) not in st.barred
+_back = _path25[-2]
+st.step(_back[0] - st.player[0], _back[1] - st.player[1]); frames(12)
+check(_path25 and _shut25 and _open25 and st.room == "gym_2" and st.player == _back,
+      f"Sootopolis Gym: crack every tile of the first ice and its stairs open; step on cracked ice again and you fall to B1F ({st.room}, {st.player})")
+story.story_flags.clear(); story.story_flags.update(_saved25)
+
+# ---- the Elite Four walked: a room each, one battle a room
+_saved26, _badges26 = dict(story.story_flags), {k: list(v) for k, v in story.badges.items()}
+story.badges["HOENN"] = ["STONE", "KNUCKLE", "DYNAMO", "HEAT", "BALANCE", "FEATHER", "MIND", "RAIN"]
+story.story_flags["defeated_wally_victory"] = True
+story.story_flags["gym_progress_EVER_GRANDE_CITY"] = 0
+for _k in [k for k in story.story_flags if k.startswith("league_won_")]:
+    story.story_flags.pop(_k, None)
+st = open_map("EVER_GRANDE_CITY", "HOENN_VICTORY_ROAD")
+_lg26 = [t for t, k in st.doors.items() if k == "league"]
+_in26 = st._room_for(_lg26[0]) if _lg26 else None
+st._go("league_sidney", ""); frames(2)
+st.player, st.anim = (6, 3), 0
+st.step(0, -1); frames(10)
+_shut26 = (st.room, st.player)
+_sid = next(v for v in st.people.values() if isinstance(v, dict) and v.get("text") == "Sidney")
+g.transitioning = False   # (an earlier check's battle left it on: a real game's state change clears it)
+st._get_callback_for_option(_sid)(); _said26 = _play(st, 400)
+g.gym_room_return = None
+story.story_flags["gym_progress_EVER_GRANDE_CITY"] = 1
+story.story_flags["league_won_EVER_GRANDE_CITY_1"] = True
+st = open_map("EVER_GRANDE_CITY", "HOENN_VICTORY_ROAD")
+st._go("league_sidney", ""); frames(2)
+st.player, st.anim = (6, 3), 0
+st.step(0, -1); frames(10)
+check(_in26 == "league" and _shut26 == ("league_sidney", (6, 3)) and any("Sidney:" in x for x in _said26) and "TrainerIntroState" in " ".join(_said26)
+      and st.room == "league_hall_1",
+      f"The League: in through its lobby; Sidney battles you in his room; his door on opens once you've won ({_in26}, {_said26[:1]}, {st.room})")
+_ph = next(v for v in _tm["EVER_GRANDE_CITY"]["rooms"]["league_phoebe"]["people"] if isinstance(v, dict))
+st._go("league_phoebe", ""); frames(2)
+g.transitioning = False
+st._get_callback_for_option(next(v for v in st.people.values() if isinstance(v, dict) and v.get("text") == "Phoebe"))()
+_said26b = _play(st, 400)
+g.gym_room_return = None
+from src.states.overworld.area_transition import reset_league_after_loss as _rl26
+story.current_area_key = "EVER_GRANDE_CITY"
+_rl26(g)
+check(any("Phoebe:" in x for x in _said26b) and not story.story_flags.get("league_won_EVER_GRANDE_CITY_1")
+      and story.story_flags.get("gym_progress_EVER_GRANDE_CITY") == 0,
+      "The League: Phoebe next, in her own room; lose, and you start the Elite Four over (the doors shut again)")
+story.badges.clear(); story.badges.update(_badges26)
+story.story_flags.clear(); story.story_flags.update(_saved26)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

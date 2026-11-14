@@ -194,34 +194,29 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
                 self._initiate_gym_battle(t_data, victory_flag=flag)
                 return
 
-        reqs = gym_data.get("requirements", {})
-        if reqs:
-            needed_badges = reqs.get("badges", 0)
-            story = self.game.story_manager
-            if len(story.badges.get(story.get_current_region(), [])) < needed_badges:
-                fail_text = reqs.get("fail_text", "The Gym is closed.")
-                self.show_message(fail_text)
-                return
-
-            missing = [b for b in reqs.get("badge_names", []) if not self.game.story_manager.has_badge(b)]
-            if missing:
-                self.show_message(reqs.get("fail_text", "The Gym is closed."))
-                return
-
-            req_flag = reqs.get("flag")
-            if req_flag and not self.game.story_manager.story_flags.get(req_flag, False):
-                fail_text = reqs.get("fail_text", "The Gym is closed.")
-                self.show_message(fail_text)
-                return
-            # Several story steps ("flags"), or every trainer in an area beaten ("defeated_area").
-            missing_flags = [f for f in reqs.get("flags", []) if not story.story_flags.get(f, False)]
-            area_left = reqs.get("defeated_area") and not story.check_requirements(
-                {"defeated_area": reqs["defeated_area"]})
-            if missing_flags or area_left:
-                self.show_message(reqs.get("fail_text", "The Gym is closed."))
-                return
-
+        closed = self.gym_closed()
+        if closed:
+            self.show_message(closed)
+            return
         self.game.change_state(GymLobbyState(self.game, self))
+
+    def gym_closed(self):
+        """Why the Gym isn't open to you yet (its requirements' words), else None."""
+        reqs = (self.area_data.get("gym") or {}).get("requirements", {})
+        if not reqs:
+            return None
+        story = self.game.story_manager
+        fail = reqs.get("fail_text", "The Gym is closed.")
+        if len(story.badges.get(story.get_current_region(), [])) < reqs.get("badges", 0):
+            return fail
+        if any(not story.has_badge(b) for b in reqs.get("badge_names", [])):
+            return fail
+        if reqs.get("flag") and not story.story_flags.get(reqs["flag"], False):
+            return fail
+        # Several story steps ("flags"), or every trainer in an area beaten ("defeated_area").
+        missing_flags = [f for f in reqs.get("flags", []) if not story.story_flags.get(f, False)]
+        area_left = reqs.get("defeated_area") and not story.check_requirements({"defeated_area": reqs["defeated_area"]})
+        return fail if (missing_flags or area_left) else None
 
     def _initiate_gym_battle(self, trainer_data, victory_flag=None, trainer_index=None):
         from src.states.battle import TrainerBattleState, TrainerIntroState

@@ -191,11 +191,19 @@ class WalkTownState(CityState):
         self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
         # a warp pad (tile 1 with the map's "links" {"x,y": [floor, x, y]}, as on the routes): step on it and you stand on its far pad
         self.links = {tuple(int(v) for v in k.split(",")): (to[1], to[2]) for k, to in (m.get("links") or {}).items()}
+        self.room_links = {tuple(int(v) for v in k.split(",")): to[0] for k, to in (m.get("links") or {}).items()
+                           if isinstance(to[0], str)}  # (a pad into another room, the same spot there: Lavaridge Gym's sand holes)
         self.stops = {tuple(t) for t in m.get("stops", [])}  # (where a spin tile's slide ends: Viridian Gym's stop tiles)
+        self.switches = m.get("switches")  # (floor switches: step on one and every barrier flips: Mauville Gym)
+        self.dark = m.get("dark")  # (a dark room: only a circle round you lit, wider with each of its flags: Dewford Gym's trainers)
         # someone standing in the way till the story moves on (the map's "barred", as on the routes: Snowpoint Temple's guard)
         self._bar_list = m.get("barred", [])
         self._edge_to = m.get("edge_to") or {}  # (out by this edge tile: in at its partner on the next map, Emerald's own connection)
+        self.thin_ice = m.get("thin_ice")  # (Sootopolis Gym's: crack every tile of a section and its stairs open; twice, and you fall)
+        self.turnstiles = m.get("turnstiles")  # (Emerald's rotating gates: Fortree Gym's, turned by walking into an arm)
+        self.rotators = m.get("rotators")  # (Emerald's rotating tile puzzle: Mossdeep Gym's blocks, turned by its coloured switches)
         self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
+        self.barred.update(self._rot_bars())
         self.sign_scenes = {tuple(int(v) for v in k.split(",")): s for k, s in (m.get("sign_scenes") or {}).items()}  # (reading this sign starts a scene)
         # a bridge in town has two levels, like a route's: its deck, crossed along its length, and the street under it, crossed along its width
         self.bridge = {(x, y): art.BRIDGES[c] for y, row in enumerate(grid) for x, c in enumerate(row) if c in art.BRIDGES}
@@ -227,6 +235,9 @@ class WalkTownState(CityState):
         _ck = self.area_key + ("|" + self._cleared if self._cleared else "")  # (redrawn once a tree is cut or a rock broken)
         if getattr(self, "room", None):
             _ck += "|room:" + self.room  # (a room inside one of its buildings: its own picture)
+        _pic = (m.get("roofs") or {}).get("_picture")
+        if _pic and (_pic.get("until") or _pic.get("when") or _pic.get("by_version")):
+            _ck += "|pic:" + art._version_file(_pic)  # (a picture that changes with a flag: Mauville Gym's barriers, flipped by its switches)
         if _ck not in cache:
             cache.clear()
             cache[_ck] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
@@ -294,6 +305,7 @@ class WalkTownState(CityState):
         self.game.story_manager.story_flags[name] = True
         # (a scene that moves the story on: stand-ins come and go at once, the Shroomish back beside its girl)
         self.barred = {tuple(t): bar for bar in getattr(self, "_bar_list", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
+        self.barred.update(self._rot_bars())
 
     def npc_flagged(self, name):
         return bool(self.game.story_manager.story_flags.get(name))
@@ -544,6 +556,7 @@ class WalkTownState(CityState):
         self.signs, self.water_exits = {}, set()
         self._mini = None
         self.walk_goal = None
+        self._ice_cracked = set()  # (the ice is whole again each time you come in)
         self._from_art(self.town_map["rooms"][room] if room else self.town_map)
         if room is None and came.startswith("OUT:"):  # back outside: below the door you went in by
             x, y = (int(v) for v in came.split(":", 1)[1].split(","))
@@ -581,6 +594,11 @@ class WalkTownState(CityState):
             return
         self.facing = (dx, dy)
         to = (self.player[0] + dx, self.player[1] + dy)
+        if getattr(self, "turnstiles", None):
+            arm = self._gate_edges().get(frozenset((tuple(self.player), tuple(to))))
+            if arm is not None and not self._turn_gate(arm, (dx, dy)):
+                self.walk_goal = None
+                return self.flash("The gate won't turn that way.", 80)
         from src.coop import roster
         if roster.host_tethered(self.game, to):
             self.walk_goal = None
@@ -657,12 +675,18 @@ class WalkTownState(CityState):
         self.player = to
         self.steps += 1
         self._remember()
+        if getattr(self, "thin_ice", None) and self._step_ice(to):
+            return
+        self._step_switch(to)
         if to in self.exits:
             self.walk_goal = None
             self._leave(self.exits[to])
         elif to in getattr(self, "links", {}):  # a warp pad: on to its far pad (no stepping back through by itself)
             self.walk_goal = None
-            self.player = self.partner = self.partner_from = self.anim_from = self.links[to]
+            far = self.links[to]
+            if to in getattr(self, "room_links", {}):  # (in another room: Lavaridge Gym's holes down, its vents up)
+                self._go(self.room_links[to], "")
+            self.player = self.partner = self.partner_from = self.anim_from = far
             self.anim = 0
             self._remember()
         elif grid and grid[to[1]][to[0]] in "3456":  # a spin tile: it carries you its way till something stops you, or a stop tile does
@@ -760,6 +784,9 @@ class WalkTownState(CityState):
         style's): the nurse heals your team where you stand and says so from the map."""
         if str(opt_data.get("action") or "").upper() == "HEAL":
             return self._heal_here
+        if str(opt_data.get("action") or "").upper() == "LEAGUE":  # (an Elite Four member, or the Champion, in their own room)
+            from src.states.overworld.gym_lobby import league_member
+            return lambda: league_member(self, opt_data)
         return super()._get_callback_for_option(opt_data)
 
     def _heal_here(self):
@@ -952,6 +979,205 @@ class WalkTownState(CityState):
         team = self.game.story_manager.player_team
         return next((p for p in team if p and p.current_hp > 0), team[0] if team else None)
 
+    GATE_ARMS = [[1, 0, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0], [1, 0, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0],
+                 [1, 0, 1, 0, 1, 0, 0, 0], [1, 1, 1, 0, 1, 0, 0, 0], [1, 0, 1, 1, 1, 0, 0, 0], [1, 0, 1, 0, 1, 1, 0, 0]]  # (Emerald's own: per shape, N E S W arms, 1 or 2 long)
+    GATE_DIRS = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+    # (Emerald's own, ROM 0x592038 / 0x592058: the tile each arm's near and far half sweeps through, turning each way)
+    GATE_SWEEP_CW = [(0, -1), (1, -2), (0, 0), (1, 0), (-1, 0), (-1, 1), (-1, -1), (-2, -1)]
+    GATE_SWEEP_ACW = [(-1, -1), (-1, -2), (0, -1), (1, -1), (0, 0), (0, 1), (-1, 0), (-2, 0)]
+
+    def _gate_turn(self, i):
+        g = self.turnstiles["gates"][i]
+        return int(self.game.story_manager.story_flags.get(f"{self.turnstiles['flag']}_{i}", g["orient"])) % 4
+
+    def _gate_arms(self, i, turn=None):
+        """A gate's arms now: [(direction, length)]; its pivot is the top-left corner of its tile "at"."""
+        g = self.turnstiles["gates"][i]
+        turn = self._gate_turn(i) if turn is None else turn
+        row = self.GATE_ARMS[g["shape"]]
+        return [((d + turn) % 4, 2 if row[d * 2 + 1] else 1) for d in range(4) if row[d * 2]]
+
+    def _gate_edges(self):
+        """The tile edges the gates' arms lie on: {frozenset(tile, tile): (gate, arm direction, its length)}."""
+        out = {}
+        for i, g in enumerate(self.turnstiles["gates"]):
+            px, py = g["at"]
+            for d, n in self._gate_arms(i):
+                for k in range(1, n + 1):
+                    a, b = {0: ((px - 1, py - k), (px, py - k)), 2: ((px - 1, py + k - 1), (px, py + k - 1)),
+                            1: ((px + k - 1, py - 1), (px + k - 1, py)), 3: ((px - k, py - 1), (px - k, py))}[d]
+                    out[frozenset((a, b))] = (i, d, n)
+        return out
+
+    def _turn_gate(self, arm, move):
+        """Walking across an arm pushes its gate a quarter turn (its way: the side you push from), if every arm has room
+        to swing (Emerald's: the tiles each arm sweeps through)."""
+        i, d, _n = arm
+        ax, ay = self.GATE_DIRS[d]
+        cw = ax * move[1] - ay * move[0] > 0
+        if ax * move[1] - ay * move[0] == 0:
+            return False
+        px, py = self.turnstiles["gates"][i]["at"]
+        sweep = self.GATE_SWEEP_CW if cw else self.GATE_SWEEP_ACW
+        for d0, n in self._gate_arms(i):
+            for k in range(n):
+                ox, oy = sweep[d0 * 2 + k]
+                t = (px + ox, py + oy)
+                if not (0 <= t[0] < self.w and 0 <= t[1] < self.h) or self.rows[t[1]][t[0]] != "." or t in self._people():
+                    return False
+        flags = self.game.story_manager.story_flags
+        flags[f"{self.turnstiles['flag']}_{i}"] = (self._gate_turn(i) + (1 if cw else -1)) % 4
+        return True
+
+    def _gate_pieces(self):
+        """Emerald's own gate pictures (kanto_handoff em_gate_art.py): a short arm, a long arm (pointing north, the pivot at
+        their bottom edge) and the pivot, at this map's scale; each arm turned to each way it can point."""
+        cache = self.game.__dict__.setdefault("_gate_pieces", {})
+        if TILE not in cache:
+            base = os.path.join(self.game.assets.assets_dir, "dungeon", "characters")
+            k = TILE / 16
+            load = lambda n: pygame.image.load(os.path.join(base, f"em_gate_{n}.png")).convert_alpha()
+            arms = {}
+            for n, name in ((1, "arm1"), (2, "arm2")):
+                img = load(name)
+                img = pygame.transform.scale(img, (round(img.get_width() * k), round(img.get_height() * k)))
+                arms[n] = {d: pygame.transform.rotate(img, (0, -90, 180, 90)[d]) for d in range(4)}
+            piv = load("pivot")
+            cache[TILE] = (arms, pygame.transform.scale(piv, (round(piv.get_width() * k), round(piv.get_height() * k))))
+        return cache[TILE]
+
+    def _draw_gates(self, screen, ox, oy):
+        try:
+            arms, piv = self._gate_pieces()
+        except (pygame.error, FileNotFoundError):
+            return
+        for i, g in enumerate(self.turnstiles["gates"]):
+            c = (ox + g["at"][0] * TILE, oy + g["at"][1] * TILE)
+            for d, n in self._gate_arms(i):
+                img = arms[n][d]
+                r = img.get_rect()
+                setattr(r, ("midbottom", "midleft", "midtop", "midright")[d], c)
+                screen.blit(img, r)
+            screen.blit(piv, piv.get_rect(center=c))
+
+    def _step_ice(self, t):
+        """Onto thin ice (the room's "thin_ice": {"sections": [{"tiles", "flag"}], "fall": the room below, "lines"}): it
+        cracks; a cracked one breaks, and you fall to the same spot below. Every tile of a section cracked: its flag (its
+        stairs open). True if you fell."""
+        ice = self.thin_ice
+        cracked = self.__dict__.setdefault("_ice_cracked", set())
+        sec = next((s for s in ice["sections"] if list(t) in s["tiles"]), None)
+        if sec is None:
+            return False
+        if tuple(t) in cracked:
+            spot = tuple(t)
+            self._go(ice["fall"], "")
+            self.player = self.partner = self.partner_from = self.anim_from = spot
+            self.anim = 0
+            self._remember()
+            self.flash("The ice broke! You fell to the floor below!", 120)
+            return True
+        cracked.add(tuple(t))
+        flags = self.game.story_manager.story_flags
+        if not flags.get(sec["flag"]) and all(tuple(v) in cracked for v in sec["tiles"]):
+            flags[sec["flag"]] = True
+            keep = (self.player, self.facing)
+            self._from_art(self.town_map["rooms"][self.room] if self.room else self.town_map)
+            self.player, self.facing = keep
+            self.flash("Every tile is cracked! The stairs opened!", 120)
+        return False
+
+    def _draw_ice(self, screen, at):
+        for t in getattr(self, "_ice_cracked", ()):
+            r = at(t)
+            c = (236, 248, 255)
+            pygame.draw.line(screen, c, (r.x + r.w * 0.2, r.y + r.h * 0.25), (r.centerx, r.centery), 2)
+            pygame.draw.line(screen, c, (r.centerx, r.centery), (r.right - r.w * 0.15, r.y + r.h * 0.4), 2)
+            pygame.draw.line(screen, c, (r.centerx, r.centery), (r.x + r.w * 0.45, r.bottom - r.h * 0.15), 2)
+            pygame.draw.line(screen, (150, 190, 220), (r.x + r.w * 0.45, r.bottom - r.h * 0.15), (r.x + r.w * 0.2, r.bottom - r.h * 0.3), 2)
+
+    def _rot_bars(self):
+        """Where the rotating puzzle's blocks stand now (the room's "rotators": {"blocks": {colour: [[TL, BL, BR, TR], ...]}
+        each square's corners in the order its arrows carry a block round, "objects": the blocks' first spots, "switches":
+        {"x,y": colour}, "flag", "look", "lines"}): each block, as many corners on round its square as its colour's switches
+        have been stepped on."""
+        rot = getattr(self, "rotators", None)
+        if not rot:
+            return {}
+        flags = self.game.story_manager.story_flags
+        out = {}
+        for x, y in rot["objects"]:
+            spot = (x, y)
+            for colour, squares in rot["blocks"].items():
+                for sq in squares:
+                    cyc = [tuple(c) for c in sq]
+                    if spot in cyc:
+                        turns = int(flags.get(f"{rot['flag']}_{colour}", 0)) % 4
+                        spot = cyc[(cyc.index(spot) + turns) % 4]
+            out[spot] = {"look": rot.get("look", "boulder"), "lines": rot.get("lines") or ["It won't budge."]}
+        return out
+
+    def _step_switch(self, t):
+        rot = getattr(self, "rotators", None)
+        if rot and "%d,%d" % tuple(t) in rot.get("switches", {}):  # (a coloured switch: that colour's blocks go round one corner)
+            colour = rot["switches"]["%d,%d" % tuple(t)]
+            flags = self.game.story_manager.story_flags
+            key = f"{rot['flag']}_{colour}"
+            flags[key] = (int(flags.get(key, 0)) + 1) % 4
+            self.barred = {tuple(tl): bar for bar in getattr(self, "_bar_list", []) if not self._bar_met(bar) and self._bar_here(bar) for tl in bar.get("tiles", [])}
+            self.barred.update(self._rot_bars())
+            self.flash("Click! The blocks turned!")
+            return
+        self._mauville_switch(t)
+
+    def _mauville_switch(self, t):
+        """On a floor switch (the room's "switches": {"tiles", "flag" flipped, "pressed": the flag that keeps which one is
+        down, "start": the one down to begin with, "lines"}): if it isn't down already, it goes down, the rest pop up, and
+        the flag flips (the room's barriers and its picture with it)."""
+        sw = getattr(self, "switches", None)
+        if not sw:
+            return
+        tiles = [tuple(v) for v in sw["tiles"]]
+        if tuple(t) not in tiles:
+            return
+        flags = self.game.story_manager.story_flags
+        i = tiles.index(tuple(t)) + 1
+        if flags.get(sw["pressed"], sw.get("start", 0)) == i:
+            return
+        flags[sw["pressed"]] = i
+        flags[sw["flag"]] = not flags.get(sw["flag"])
+        self._from_art(self.town_map["rooms"][self.room] if self.room else self.town_map)
+        self.flash((sw.get("lines") or ["Click! The barriers changed!"])[0])
+
+    def start_gym_battle(self):
+        """The Leader, in their Gym's room: they want a game first (src/states/overworld/gym_lobby.py leader_in_room)."""
+        if getattr(self, "room", None) and str(self.room).startswith(("gym", "league")):
+            from src.states.overworld.gym_lobby import leader_in_room
+            if self.gym_closed() or (self.area_data.get("gym") or {}).get("pre_battle_event"):
+                return super().start_gym_battle()  # (not yet: the Gym's own "come back later"; a story battle first)
+            return leader_in_room(self)
+        return super().start_gym_battle()
+
+    def light_radius(self):
+        """A dark room's light, in tiles (None: fully lit): its "radius" list by how many of its "flags" are set."""
+        d = self.dark or {}
+        flags = self.game.story_manager.story_flags
+        n = sum(1 for f in d.get("flags", []) if flags.get(f))
+        radii = d.get("radius") or [2]
+        return None if n >= len(radii) else radii[n]
+
+    def _draw_dark(self, screen, view, centre):
+        r = self.light_radius()
+        if r is None:
+            return
+        veil = pygame.Surface(view.size, pygame.SRCALPHA)
+        veil.fill((0, 0, 0, 250))
+        cx, cy = centre[0] - view.x, centre[1] - view.y
+        rad = int(r * TILE)
+        for i in range(6):  # (a soft edge)
+            pygame.draw.circle(veil, (0, 0, 0, 250 - 40 * (i + 1)), (cx, cy), max(1, rad - i * TILE // 8))
+        screen.blit(veil, view.topleft)
+
     def draw(self):
         # (Jordan, 11-12: no separate scene for someone you talk to: no other background, no picture sliding in. They speak from the map)
         screen = self.game.screen
@@ -967,6 +1193,8 @@ class WalkTownState(CityState):
         def at(t):
             return pygame.Rect(ox + t[0] * TILE, oy + t[1] * TILE, TILE, TILE)
 
+        if getattr(self, "thin_ice", None):
+            self._draw_ice(screen, at)
         if self.walk_goal:
             theme.tap_marker(screen, at(self.walk_goal))
         if self.tap_mark and self.tap_mark[2] > 0 and self.tap_mark[0] != self.walk_goal:
@@ -1020,6 +1248,17 @@ class WalkTownState(CityState):
             _look = str(_bar.get("look") or "person")
             if _look == "unseen":  # (something invisible in the way: Fortree's Kecleon, till the Devon Scope)
                 continue
+            if _look.startswith("img:"):  # (a still picture of the real game's own, a tile's size: Mossdeep Gym's blocks)
+                _ic = self.game.__dict__.setdefault("_bar_imgs", {})
+                if _look not in _ic:
+                    try:
+                        _ic[_look] = pygame.transform.scale(pygame.image.load(os.path.join(
+                            self.game.assets.assets_dir, "dungeon", "characters", _look[4:])).convert_alpha(), (TILE, TILE))
+                    except (pygame.error, FileNotFoundError):
+                        _ic[_look] = None
+                if _ic[_look] is not None:
+                    screen.blit(_ic[_look], at(_t))
+                continue
             _img = self._stand_in_img(_look, _bar) if _look.startswith(("sheet:", "ow:", "mon:", "ribbon:")) else None
             if _img is None and _look.startswith("ribbon:"):
                 continue
@@ -1055,6 +1294,10 @@ class WalkTownState(CityState):
         for spot, opt in sorted(people.items(), key=lambda kv: (kv[1].get("action") == "EVENT" and not (kv[1].get("event") or {}).get("battle"), kv[0])):
             self._pill(screen, _fill_names(self.game, opt.get("who") or opt.get("text", "")).upper()[:28], at(spot).centerx,  # ("who": the person, when the option says what they offer)
                        at(spot).y - 34, fonts, taken)
+        if getattr(self, "turnstiles", None):
+            self._draw_gates(screen, ox, oy)
+        if getattr(self, "dark", None):
+            self._draw_dark(screen, view, pr.center)
         if not self._busy():
             self._draw_guide(screen, at)
         screen.set_clip(None)
@@ -1162,7 +1405,8 @@ class WalkTownState(CityState):
 
     def _draw_hud(self, screen, fonts):
         self._draw_journal(screen)
-        self._draw_minimap(screen)
+        if not (getattr(self, "dark", None) and self.light_radius() is not None):  # (a dark room's map isn't given away)
+            self._draw_minimap(screen)
         W, H = self.game.width, self.game.height
         name = theme.pokemon_word(self.area_data.get("route_name") or self.area_key.replace("_", " ").title())
         if self.banner > 0:
