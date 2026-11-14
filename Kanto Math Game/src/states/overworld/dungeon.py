@@ -731,6 +731,9 @@ class DungeonState(OverworldBattles, PlayState):
                 inn = (t[0] + step[0], t[1] + step[1])
                 if f.walkable(*inn) and inn not in f.exits:
                     self.run.player = inn
+        _arr = ((self.recipe.get("art") or {}).get("arrive") or {}).get(came) if not at_edge else None
+        if _arr and self.run.index == 0 and self.run.floor.walkable(*_arr):   # (a map's "arrive" {area: [x, y]}: off a ferry with
+            self.run.player = tuple(_arr)                                       #  no tile of its own, onto the dock: the Battle Frontier)
         self._sync_gate()
         if not self.run.fog and not story.story_flags.get(f"visited_{self.area_key}"):  # (dark places keep their own darkness)
             self.run.explore = True

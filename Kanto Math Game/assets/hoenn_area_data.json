@@ -376,6 +376,8 @@
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
+        {"text": "HP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hp_up_artisan", "event": {"lines": ["An HP Up, left deep in the cave."], "gift_item": {"HP_UP": 1}, "flag": "got_hp_up_artisan"}},
+        {"text": "CARBOS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_carbos_artisan", "event": {"lines": ["A Carbos, tucked into the rock."], "gift_item": {"CARBOS": 1}, "flag": "got_carbos_artisan"}},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -488,6 +490,10 @@
         }
       ],
       "route_menu": [
+        {"text": "Nurse", "action": "CENTER"},
+        {"text": "Clerk", "action": "SHOP", "stock": ["ULTRA_BALL", "HYPER_POTION", "MAX_POTION", "FULL_RESTORE", "FULL_HEAL", "REVIVE", "MAX_REPEL", "X_ATTACK"]},
+        {"text": "Ferry attendant", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Attendant: The S.S. Tidal is ready to sail. Have a pleasant trip!"], "travel": "HOENN_SS_TIDAL"}},
+        {"text": "WEIRD TREE", "action": "BOSS", "color": "GOLD", "condition": ["has_item:WAILMER_PAIL"], "flag_condition": "not frontier_sudowoodo", "boss": {"id": 185, "name": "Sudowoodo", "level": 40, "victory_flag": "frontier_sudowoodo", "lines": ["You sprinkled water from the Wailmer Pail on the weird tree...", "The weird tree doesn't like it! It attacked!"]}},
         {
           "text": "CHALLENGE THE FRONTIER BRAINS",
           "action": "GALACTIC_GAUNTLET",
@@ -520,6 +526,8 @@
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
+        {"text": "ROOT FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_underpass_fossil", "event": {"lines": ["A fossil, buried in the sand at the end of the tunnel... It's the Root Fossil!"], "gift_item": {"ROOT_FOSSIL": 1}, "flag": "got_underpass_fossil"}, "condition": "mirage_took_claw"},
+        {"text": "CLAW FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_underpass_fossil", "event": {"lines": ["A fossil, buried in the sand at the end of the tunnel... It's the Claw Fossil!"], "gift_item": {"CLAW_FOSSIL": 1}, "flag": "got_underpass_fossil"}, "condition": "mirage_took_root"},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -771,8 +779,8 @@
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
-        {"text": "ROOT FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not mirage_tower_fossil", "event": {"lines": ["You picked up the Root Fossil!", "The ground began to shake... The Mirage Tower is crumbling into the sand!", "You scrambled out just in time."], "gift_item": {"ROOT_FOSSIL": 1}, "flag": "mirage_tower_fossil", "travel": "HOENN_ROUTE_111"}},
-        {"text": "CLAW FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not mirage_tower_fossil", "event": {"lines": ["You picked up the Claw Fossil!", "The ground began to shake... The Mirage Tower is crumbling into the sand!", "You scrambled out just in time."], "gift_item": {"CLAW_FOSSIL": 1}, "flag": "mirage_tower_fossil", "travel": "HOENN_ROUTE_111"}},
+        {"text": "ROOT FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "event": {"lines": ["You picked up the Root Fossil!", "The ground began to shake... The Mirage Tower is crumbling into the sand!", "You scrambled out just in time."], "gift_item": {"ROOT_FOSSIL": 1}, "flag": "mirage_took_root", "travel": "HOENN_ROUTE_111"}, "condition": ["not:mirage_took_root", "not:mirage_took_claw", "not:mirage_tower_fossil"]},
+        {"text": "CLAW FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "event": {"lines": ["You picked up the Claw Fossil!", "The ground began to shake... The Mirage Tower is crumbling into the sand!", "You scrambled out just in time."], "gift_item": {"CLAW_FOSSIL": 1}, "flag": "mirage_took_claw", "travel": "HOENN_ROUTE_111"}, "condition": ["not:mirage_took_root", "not:mirage_took_claw", "not:mirage_tower_fossil"]},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -1681,7 +1689,7 @@
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED"},
-        {"text": "Mirage Tower", "action": "EXIT", "target_area": "HOENN_MIRAGE_TOWER", "condition": ["can_exit", "has_heat_badge"], "flag_condition": "not mirage_tower_fossil", "locked_text": ["Only sand is left where the Mirage Tower stood."], "color": "RED"}
+        {"text": "Mirage Tower", "action": "EXIT", "target_area": "HOENN_MIRAGE_TOWER", "condition": ["can_exit", "has_heat_badge", "not:mirage_took_root", "not:mirage_took_claw"], "flag_condition": "not mirage_tower_fossil", "locked_text": ["Only sand is left where the Mirage Tower stood."], "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_112",
       "region": "HOENN",
@@ -1821,7 +1829,7 @@
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         {"text": "STONE COLLECTOR", "action": "HOENN_EVENT", "event": "stone_shop", "condition": "cave_of_origin_cleared", "color": "PURPLE"},
-        {"text": "TERRA CAVE", "action": "EXIT", "target": "HOENN_TERRA_CAVE", "condition": ["can_exit", "delta_episode_cleared", "hoenn_version:ALPHA_SAPPHIRE"], "color": "RED"},
+        {"text": "TERRA CAVE", "action": "EXIT", "target": "HOENN_TERRA_CAVE", "condition": ["can_exit", "delta_episode_cleared", "hoenn_version:ALPHA_SAPPHIRE"], "color": "RED", "locked_text": ["A dark cave mouth. Nothing stirs inside."]},
         {"text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED"},
         {"text": "METEOR FALLS", "action": "EXIT", "target_area": "HOENN_METEOR_FALLS", "condition": "can_exit", "color": "RED"},
         {"text": "Desert Underpass", "door": "fossil", "action": "EXIT", "target_area": "HOENN_DESERT_UNDERPASS", "condition": ["can_exit", "beat_hoenn_champion"], "color": "RED"},
@@ -3280,8 +3288,8 @@
         "HOENN_SOUTHERN_ISLAND": {"area_type": "dungeon", "route_name": "Southern Island", "region": "HOENN", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [
         {"text": "Sailor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: Ready to head back? Off we go to Slateport!"], "travel": "SLATEPORT_CITY"}},
 {"text": "SEEK THE EON POKEMON", "action": "BOSS", "condition": "not:southern_island_eon_caught", "color": "PURPLE", "boss": {"legend": "other_eon", "id": 380, "level": 30, "name": "Latias", "victory_flag": "southern_island_eon_caught"}}, {"text": "BOAT TO SLATEPORT", "action": "EXIT", "target": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "SLATEPORT_CITY"},
-        "HOENN_MARINE_CAVE": {"area_type": "dungeon", "route_name": "Marine Cave", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK KYOGRE", "action": "BOSS", "color": "GOLD", "condition": "not:counterpart_legend_caught", "boss": {"id": 382, "name": "Kyogre", "victory_flag": "counterpart_legend_caught", "lines": ["The cave trembles... Kyogre awakens!"]}}, {"text": "ROUTE 127", "action": "EXIT", "target": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_127"},
-        "HOENN_TERRA_CAVE": {"area_type": "dungeon", "route_name": "Terra Cave", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK GROUDON", "action": "BOSS", "color": "GOLD", "condition": "not:counterpart_legend_caught", "boss": {"id": 383, "name": "Groudon", "victory_flag": "counterpart_legend_caught", "lines": ["The cave trembles... Groudon awakens!"]}}, {"text": "ROUTE 114", "action": "EXIT", "target": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_114"},
+        "HOENN_MARINE_CAVE": {"area_type": "dungeon", "route_name": "Marine Cave", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK KYOGRE", "action": "BOSS", "not_on_map": true, "color": "GOLD", "condition": "not:counterpart_legend_caught", "boss": {"id": 382, "name": "Kyogre", "victory_flag": "counterpart_legend_caught", "lines": ["The cave trembles... Kyogre awakens!"]}}, {"text": "ROUTE 127", "action": "EXIT", "target": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_127"},
+        "HOENN_TERRA_CAVE": {"area_type": "dungeon", "route_name": "Terra Cave", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK GROUDON", "action": "BOSS", "not_on_map": true, "color": "GOLD", "condition": "not:counterpart_legend_caught", "boss": {"id": 383, "name": "Groudon", "victory_flag": "counterpart_legend_caught", "lines": ["The cave trembles... Groudon awakens!"]}}, {"text": "ROUTE 114", "action": "EXIT", "target": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_114"},
         "HOENN_CRESCENT_ISLE": {"area_type": "dungeon", "route_name": "Crescent Isle", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK CRESSELIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not mirage_cresselia", "boss": {"id": 488, "level": 50, "name": "Cresselia", "victory_flag": "mirage_cresselia", "lines": ["A powerful presence fills the air... Cresselia appears!"]}}, {"text": "SOAR AWAY", "action": "EXIT", "target": "HOENN_SOARING_IN_THE_SKY", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_SOARING_IN_THE_SKY"},
         "HOENN_FABLED_CAVE": {"area_type": "dungeon", "route_name": "Fabled Cave", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK RESHIRAM", "action": "BOSS", "color": "GOLD", "flag_condition": "not mirage_reshiram", "boss": {"id": 643, "level": 50, "name": "Reshiram", "victory_flag": "mirage_reshiram", "lines": ["A powerful presence fills the air... Reshiram appears!"]}}, {"text": "SEEK ZEKROM", "action": "BOSS", "color": "GOLD", "flag_condition": "not mirage_zekrom", "boss": {"id": 644, "name": "Zekrom", "victory_flag": "mirage_zekrom", "lines": ["A powerful presence fills the air... Zekrom appears!"]}}, {"text": "SOAR AWAY", "action": "EXIT", "target": "HOENN_SOARING_IN_THE_SKY", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_SOARING_IN_THE_SKY"},
         "HOENN_GNARLED_DEN": {"area_type": "dungeon", "route_name": "Gnarled Den", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK KYUREM", "action": "BOSS", "color": "GOLD", "flag_condition": "not mirage_kyurem", "boss": {"id": 646, "level": 50, "name": "Kyurem", "victory_flag": "mirage_kyurem", "lines": ["A powerful presence fills the air... Kyurem appears!"]}}, {"text": "SOAR AWAY", "action": "EXIT", "target": "HOENN_SOARING_IN_THE_SKY", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_SOARING_IN_THE_SKY"},

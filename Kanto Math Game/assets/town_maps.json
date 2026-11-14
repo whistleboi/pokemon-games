@@ -79494,7 +79494,7 @@
    "cccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccAcccccccccc",
+   "cccccccncccccccccccccccccccccAcccccccccc",
    "ccccccc..ooooooooooccccccccccDcc........",
    "ccccccc..oooooooooocccc.................",
    "ccccccc..ooooooccccccc..oooo...!.......>",
@@ -79506,7 +79506,7 @@
    "ccccccc..oooo....ooo...................>",
    "cccccccc.oooo.cc.ooo...ooooo...........>",
    "ccccccc.oooooccccooo...ooooocc.........>",
-   "cccccccoooooo..........ooooo.cc......cc>",
+   "cccccccoooooo..........ooooo.cc......cc.",
    "cccccccccooooooo.......ooooo..cccc..cccc",
    "cccccccccooooooo.cc....ooooo.ccccccccccc",
    "ccccccc.oooooooocccc............cccccccc",
@@ -79536,7 +79536,7 @@
    "cccccccccccc0c)..)\"\"\"\"\"\"......(c.ccccccc",
    "cccccccccccc...c.)\"\"\"\"\"...._c.(c.ccccccc",
    "cccccccccccc....c)\"\"\"\"......(.(c.ccccccc",
-   "cccccccccccc....c)\"\"._____c.(.(..ccccccc",
+   "ccccccnccccc....c)\"\"._____c.(.(..ccccccc",
    "cccccc..ccc.....c)........(.(c(ccccccccc",
    "ccccc..cc.......c)........(.cccccccccccc",
    "cccccc.c.....c..c\"\"\"cc....(ccccccccccccc",
@@ -79573,7 +79573,8 @@
   ],
   "exits": {
    ">": "FALLARBOR_TOWN",
-   "^": "HOENN_METEOR_FALLS"
+   "^": "HOENN_METEOR_FALLS",
+   "n": "HOENN_TERRA_CAVE"
   },
   "buildings": {
    "A": "fossil",
@@ -79585,6 +79586,12 @@
     "at": [
      0,
      0
+    ],
+    "when": [
+     {
+      "flag": "delta_episode_cleared",
+      "f": "em_ground/0_29_terra.png"
+     }
     ]
    },
    "_signs_in_picture": true,
@@ -79661,10 +79668,6 @@
    "39,15": [
     0,
     15
-   ],
-   "39,16": [
-    0,
-    16
    ]
   },
   "moves": {
@@ -79759,6 +79762,12 @@
     "size": [
      40,
      80
+    ],
+    "when": [
+     {
+      "flag": "delta_episode_cleared",
+      "f": "em_top/0_29_terra.png"
+     }
     ]
    }
   ]
@@ -93696,8 +93705,8 @@
   "floors": [
    {
     "art": [
-     "ccccccccccccccccc.c^c^ccc^^^^^^^^^^.ccccccccoo.~~~~~~~~~~~cc^^^^^^^^^~~~~c^ccc~~",
-     "cccccccccccccccccccccccooooooooooooooooooccoo~~~~~~~~~~~~~ccooooooooo~~~~c.cccc~",
+     "ccccccccccccccccccccccccc^^^^^^^^^^.ccccccccccc~~~~~~~~~~~cc^^^^^^^^^~~~~c^ccc~~",
+     "cccccccccccccccccccccccoooooooooooooooooocccc~~~~~~~~~~~~~ccooooooooo~~~~c.cccc~",
      "ccccccccccccccccccccccooooooooooooooooooocc~~~cc~~~~~~~~~~c~cccccc~oooo~~c.cccc~",
      "cccccccccccccccccccccoooooooooooooooooooccccccc~~~~~~~~~~~~ccccccccc~ccccc.cccc~",
      "ccccccccccc.....cccccoooooooooooooooooooccccccc~~~~~~~~~~~cccccccccccccoocccccc~",
@@ -93747,8 +93756,8 @@
      "<ooooooooooo:::::oooooooo:::::::::ooo::::oooooo::::o~ccccccooooooooooooo::ooo~~~",
      "<oooo~~oooooo:::::ooooooo:::::::::ooo::::ooooo::::ooccccccooooooooooooo::::oocc~",
      "<ooo~ccoooooo:::::ooooooo:::::::::ooo::::ooooo::::oocccccooooooooooccoo::::ccccc",
-     "<~~occcoooooo:::::ooooooo:::::::::ooo::::oooo:::::oocccccccooooooooccooo::occccc",
-     "<cc~ccco~~ooo::::::ooooo::::::::::oo:::::oooo::::ooocccccccooooooo~~occooooo~~cc",
+     "o~~occcoooooo:::::ooooooo:::::::::ooo::::oooo:::::oocccccccooooooooccooo::occccc",
+     "occ~ccco~~ooo::::::ooooo::::::::::oo:::::oooo::::ooocccccccooooooo~~occooooo~~cc",
      "<ooccccoccoooo:::::ooooo:::::::::::::::::ooo:::::oooccccoo~~ooooccccoccccooocccc",
      "<ooccccooooooo:::::ooooo:::::::::::::::::ooo:::::ooocccooocc~~ccccoo::occ~~~~~c~",
      "<o~ccccooooooo:::::ooooo:::::::::::::::::ooo::::oooocccoooooccccooo::::oocccccc~",
@@ -93775,7 +93784,7 @@
      "~oooo~~ccc.....ccoooocccooooo::::::::oooooccccccoccooooooooooooooooccoccccoooooo",
      "~oooo~~occ.....ccooooccoooooo::::::::ooooooccccc~oooooooooooooooooooo~ccccoooooo",
      "<ooooooocccc...cc~ooooooooooo::::::::oooo~~cccccc~~oooooo~~oooooo~~~~ccccooooooo",
-     "~~~~~~~~cccc..vcvcovvv~~vvvvv::::::::vvvvcccccccvvc~~~~ooccooo~~~cccvvcccvvvvvvv"
+     "~~~~~~~~cccc..vcccovvv~~vvvvv::::::::vvvvcccccccccc~~~~ooccooo~~~ccccccccvvvvvvv"
     ],
     "exits": {
      "^": "MOSSDEEP_CITY",
@@ -93803,14 +93812,6 @@
      "Fisherman Henry"
     ],
     "edge_to": {
-     "19,0": [
-      19,
-      39
-     ],
-     "21,0": [
-      21,
-      39
-     ],
      "25,0": [
       25,
       39
@@ -93895,10 +93896,6 @@
       14,
       0
      ],
-     "16,79": [
-      16,
-      0
-     ],
      "19,79": [
       19,
       0
@@ -93945,22 +93942,6 @@
      ],
      "40,79": [
       40,
-      0
-     ],
-     "48,79": [
-      48,
-      0
-     ],
-     "49,79": [
-      49,
-      0
-     ],
-     "68,79": [
-      68,
-      0
-     ],
-     "69,79": [
-      69,
       0
      ],
      "73,79": [
@@ -94071,14 +94052,6 @@
       79,
       50
      ],
-     "0,51": [
-      79,
-      51
-     ],
-     "0,52": [
-      79,
-      52
-     ],
      "0,53": [
       79,
       53
@@ -94171,7 +94144,7 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.cccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccncccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccc..ccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccc....cccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccc....cccccc",
@@ -94204,7 +94177,7 @@
      "cccccccccccccccccccccccccc......ccccc...ccccccccc....ccccccc....cccccccccccccccc",
      "cccccccccccccccccccccccccc......ccccc...ccccccccc....cccccccc...cccccccccccccccc",
      "cccccccccccccccccccccccccc......ccccc...ccccccccc....ccccccccc..cccccccccccccccc",
-     "cccccccccccc..cccccccccccc......ccccc....cccccccc....cccccccccc.ccc.cccccccccccc",
+     "cccccccccccc..cccccccccccc......ccccc....cccccccc....cccccccccc.cccncccccccccccc",
      "cccccccccccc..cccccccccccc......cccc.....cccccccc....cccccccccc......ccccccccccc",
      "ccccccccccc....ccccccccccc......cccc.....ccccccc.....ccccccccccc....cccccccccccc",
      "cccccccccc.....ccccccccccc......cccc.....ccccccc.....ccccccccccccccccccccccccccc",
@@ -94247,7 +94220,9 @@
      "ccccccccccccccccccccccccccccc........ccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc........ccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "exits": {},
+    "exits": {
+     "n": "HOENN_MARINE_CAVE"
+    },
     "buildings": {},
     "roofs": {
      "_picture": {
@@ -94279,8 +94254,8 @@
   "floors": [
    {
     "art": [
-     "oooooooooocccc^c^c~^^^cc^^^^^::::::::^^^^ooocccc^^..ccc~~~~~~~ccccc.^^ccc^^^^^^^oooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooocccc.c..coooooooooo::::::::ooooooocccccc..cccccccccccccc...cccoooooooooooooooooooooooooooooooooooooooooooooooo",
+     "oooooooooocccc^c^c~^^^cc^^^^^::::::::^^^^oooccccccccccc~~~~~~~ccccc.^.ccc^^^^^^^oooooooooooooooooooooooooooooooooooooooo",
+     "oooooooooocccc.c..coooooooooo::::::::ooooooocccccccccccccccccccccc...cccoooooooooooooooooooooooooooooooooooooooooooooooo",
      "oooooooooooccc..c.coooooooooo::::::::oooooooccccccccccccccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooo",
      "ooooooooooocccc.c.cooooooooooo:::::::ooooooooccccccccccccccccccccccccccooooooooooooooooooooooooooooooooooooooooooooooooo",
      "ooooooooooocccc.c.coooo.....oo:::::::ooooooooccoccccccccccccccccccccooccoooooooooooooooooooooooooooooooooooooooooooooooo",
@@ -94318,7 +94293,7 @@
      "oooooooooooooooooooooooocccoooooooo:::ooooooooooo::::ooooooo..cccccccooooooooooooooooooooooooooooooccccccccccooooooooooo",
      "ooooooooooooooooooooooooocc~ccoo:::::oooooooooooooooooooooooccooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.",
      "oooooooooooooooooooooooo~cccccccoooooooooooooooooooooooo~~~~ccooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-     "<<<<<<<<<<<<<<<<<<<<<<<<~~cc<occ<<<<<<<<<<<<oo.........occcco<<<<<<<<<<<<<<<<<<<ooooooooooooooooooooooooooooooooooooooo>"
+     "<<<<<<<<<<<<<<<<<<<<<<<<~~cccccc<<<<<<<<<<<<oo.........occccoo<<<<<<<<<<<<<<<<<<ooooooooooooooooooooooooooooooooooooooo>"
     ],
     "exits": {
      "^": "HOENN_ROUTE_127",
@@ -94399,20 +94374,8 @@
       40,
       79
      ],
-     "48,0": [
-      48,
-      79
-     ],
-     "49,0": [
-      49,
-      79
-     ],
      "68,0": [
       68,
-      79
-     ],
-     "69,0": [
-      69,
       79
      ],
      "73,0": [
@@ -94539,10 +94502,6 @@
       23,
       0
      ],
-     "28,39": [
-      28,
-      0
-     ],
      "32,39": [
       32,
       0
@@ -94589,10 +94548,6 @@
      ],
      "43,39": [
       43,
-      0
-     ],
-     "61,39": [
-      61,
       0
      ],
      "62,39": [
@@ -110120,6 +110075,1465 @@
      40
     ]
    }
+  ]
+ },
+ "HOENN_BATTLE_FRONTIER": {
+  "art": [
+   "~c~~ccc~~~~~~~~~~~~~~~~~~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cc~~ccc~ccc~cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cc~c~~~~ccc~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~cccccccccccccccccccccccccccccccccc",
+   "~c~~~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~ccccccccccccccccccccccccccccccccc",
+   "cc~~cc..................................ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~cccc",
+   "cc~ccccc................................ccccccc................ccccccccccccccccccccccccccccccccc..........................cc~ccc",
+   "~~ccccc..........ccccc..................c..................ccccccccccccccccccccccccccccccccccccc................ccccc.....ccc~cc",
+   "ccccccc.........ccccccc....................................cccccccccccccccccccccccccncccccccccccc....cc....c..ccccccccc..ccccc~c",
+   "cccccccc.......ccccccccc....................................cccccccccccccccccccccccc..ccccccccccc....ccc...ccccccccccccccccccccc",
+   "ccccccc......ccccccccccccc......cccccccccccccccccccccccc.......ccccccccccccccccccccc__ccccccc........ccc...ccccccccccccccccccccc",
+   "ccccccc......ccccccccccccc.....ccccccccccccccccccccccccc.......ccccccccccccccccccccc...cccccccc......ccc...ccccccccccccccccccccc",
+   "cccccccc.....ccccccccccccc.....ccccccccccccccccccccccccc.......ccccccccccccccccccccc..cccccJccc......ccc...ccccccccccccccccccccc",
+   "ccccccc......ccccccccccccc....cccccccccccccccccccccccccc.......ccccccccccccccccccccc..cccccDccc......ccc...ccccccccccccccccccccc",
+   "ccccccc......ccccccccccccc...ccccccccccccccccccccccccccc.c.....cccccccccFccccccccccc..cc!............ccc...cccccccIccccccccccccc",
+   "cccccccc.....ccccccccccccc...ccccccccccccccccccccccccccc.cc....cccccc.ccDcc.cccccccc..c..............ccc...cccccccDccccccccccccc",
+   "ccccccccc....ccccccccccccc...cccccccc~~~~~~~~~~~cccccccccccc...c.................ccc.c............N..ccc...c..........!..ccccccc",
+   "cccccccccc...ccccccBcccccc...cccccccc~cccccccc~ccccccccccccc...ccc............cccccc.................ccc........cc.cc.....cccccc",
+   "cccccccccc...c....cDc....c...ccccccc~c........c~cccccccccccc......c..!......N.cccccc.................ccc........cc.cc.....cccccc",
+   "cccccccccc.....!.............ccccccccccc.......ccccccccccccc.................cccccc..................cccccccc.........N...cccccc",
+   "cccccccccc...................cccccccccccc.....cccccccccccccc................cccccc...ccccccccccccccccccccccccc.........c..cccccc",
+   "ccc.cccccc...................cccccccccc.......ccccccccccccccccc.............ccccc....ccccccccccccccccccccccccc..cc.cc..c..cccccc",
+   "ccc....ccc...................ccccccccc...ccc..cccccccccccccccccc............cccc.....ccccccccccccccccccccccccc..cc.cc..c..cccccc",
+   "ccc....cccccccccc..........ccccccccccc..ccccc.ccccccccccccccccccccccc.......cccc....cccccccccccccccccccccccccc.........c..cccccc",
+   "ccc....cccccccccc..........cccccccccc...ccccc.cccccccccccccccccccccccc......cccc...ccccccc~ccccccccccccccccccc.........c..cccccc",
+   "ccc....cccccccccc..........cccccccccc...ccccc.cccccccccccccccccccccccc......cccc...ccccc~ccccccccccccc~ccccccc..cc.cc.....cccccc",
+   "ccc.............................ccccc...ccccc.cccccccccccccccccccccc...............cccc~cc...........cc~cccccc..cc.cc.....cccccc",
+   "ccc.............................ccccc...ccAcc.cccccccccccccccccccccccc.............ccccccc.ccccccccc.ccccccccc........cccccccccc",
+   "ccc...ccccccccccc...............cccccc...cDc..ccccccccccccccccccccKccc.............ccccccc.ccccccccc.ccccccccc........cccccccccc",
+   "ccccccccccccccccccccc........cc.cccccc...c.c..ccccccccccccccc..cccDccc.............ccccccc.ccccGcccc.ccccccccc.............ccccc",
+   "cccccccccccccccccccccccc.....cc..cccccc.......ccccccccccccccc..!...................ccccccc.ccccDcccc.ccccccccc........cccccccccc",
+   "cccccccccccccccccccccccc.....cc..cccccc......!ccccccccccccccc....................ccccccccc...........ccccccccc........cccLcccccc",
+   "~~~~~ccccccccccccccccccc.....cc..cccccc.......ccccccccccccccc....................ccccccccccccc...ccccccccccccc........cccDcccccc",
+   "cc~~cccccccccccccccccccc.....ccccccccccc...cccccccccccccccccc...................cccccccccccc.......ccccccccccc........c....ccccc",
+   "cc~~ccccccccccccccc~cccc.....ccccccccccc...cccccccccccccccccc...................ccccccccccccccc.cccccccccccccc........c....ccccc",
+   "~~~ccccccccccccccccc~~~c.....ccccccccccc...ccccccccccccccccccccccccc...ccccc...cccccccccccc.!.......cccccccccc.............ccccc",
+   "~~ccccccccccccccccccc~~c.....cccccc~cccccc.ccccccccccccccccccccccccc...ccccc...ccccccccccccc.......ccccccccccc.............ccccc",
+   "cccccccccccccccccccccccc.....ccccccccccccc.ccccccccccccccccccccccccc...ccccc...ccccccccccccc.......ccccccccccc........cc...ccccc",
+   "cccccccccccCcccccccccccc.....ccccccccccccc.ccccccccccccccccccccccccc...ccccc...ccccccccccccc.......ccccccccccc.......ccccccccccc",
+   "ccccc.....cDc.....cccccc.....cc~~ccccccccc.ccccccccccccccccccccccccc...ccccc...ccccccccccccc.......ccccccccccc......cccccccccccc",
+   "cccccc...........ccccccc......ccccccccccc...ccccccccccccccccccccccc....ccccc....ccccccccccc.........cccccccccc......cccccccccccc",
+   "ccccccccc.....cccccccccc.................................................................ccccc...cccccccccccc.......cccccccccccc",
+   "ccccccccc.....cccccccccc.........N......................................................................N...........cccccccccccc",
+   "ccccccccc.....cccccccccc....................cccccc..ccc....ccc......................................................cccccccccccc",
+   "ccccccccc.....cc!cccccc....................cccccccccccc...ccccc....ccc.c..ccccccccc.................................cccccccccccc",
+   "~~ccccc....................................cccccccccccc...cccc.....ccccc..ccccccccc.................................ccccccccc~~c",
+   "~~ccccc..........ccccc.........cccccccccc..........................ccccc..ccccccccc........cccccccc.....cccccccc....ccccccccc~~c",
+   "ccccccc..........ccccc.........cccccccccc.................................................ccccccccc.....coooooooc...ccccccc~~ccc",
+   "ccccccc..........ccccc.N.......cccccccccc.................................................cccccccccc...ccoooooooc..cccccccc~~ccc",
+   "~~ccccc..................................................................................cccccccccc.....c...ooooc..cccccccccc~~c",
+   "~~ccccc...........................................cccc...cccccc...cccccc..ccccccccc.....cccccccccc.......ccc..ooc.cccccccccccccc",
+   "~~ccccc.................c...c....................ccEccc...cMcc....cccccc..ccccccccc.....cccccc..............ccooo.ccccccccc~~ccc",
+   "~~ccccccccccccccccccccc.......ccccccccccccccc....ccD!!c..ccD!!c....ccccc.....cccccc....ccccccc..ccccccccccc.ccooo.ccccc~cc~ccccc",
+   "cccccccccccccccccccccccc.....ccccccccccccccccc.........................................ccccccc..ccccccccccc..cooo.ccccc~~~~ccccc",
+   "cccccccccccccccccccccccc.....ccccccccccccccccc........................................ccccccccc.ccccccccccc..cooo.......~~~~~ccc",
+   "~~cccccccccccccccccccccc.....ccccccccccccccccc........................................ccccccccc.ccccccccccc..ccco.ccccccc~~~~ccc",
+   "~~ccccccccccccccccccccccc...cccccccccccnccccccccccccccccccccccccccccccc................cccccccc.....cHc......ccco...cccccc~~~ccc",
+   "~~~~~~~~cccccccccccccccc.....cccccccc.....cccccccccccccccccccccccccccccc................cccccc.....!cDc.....ccooo.....ccccc~~ccc",
+   "~~~~~~~~cccccccccccccccc.....cccccccc.....cccccccccccccccccccccccccccccc................................ccccooooo.ccccccccc~~ccc",
+   "~cc~~~~~~~~~cccccccccccc.....cccccccc.....cccccccccccccccccccccccccccccc..ccccccccc.....................ooooooooo.ccccccccc~~ccc",
+   "~cc~~~~~~~~~cccccccccccc.....ccccccccooooooooooooooooooooooooocccccccccc..................oooooooooooooooooocc....ccccccccc~~ccc",
+   "~~~~~~~~cc~~ccccccccccccc...ccccccccoooooooooooooooooooooooccocccccccccc................ccooooooooooooooooccccccc.cccccccccccccc",
+   "~~~~~~~~cc~cc~cc~cc~~~cc..1..cccccccooccoooooooooooooooooooccoccccccccccccccccccccccccccccccccccccccccccccccoocc..cccccccccccccc",
+   "~~~cc~~~~~~cc~cc~cc~~~ccccccccccccccccccooooooooooooooooooooooccccccccccccccccccccccccccccccccccccccccccccooooN..cccccccccc~~ccc",
+   "~~~cc~~~~~~cc~cc~cc~ccccccccccccccccccccccooccooooooooooooooooccccccccccccccccccccccccccccooooooooooooooooooooccccccccccccc~cccc",
+   "~~~~~~~~~~~cc~cc~cc~ccccccccccccccccccccccooccoooooooooooooooocccccccccccccccccccccccccccc$$$$$$$$$$$$$$$$$$$$cccccccc~ccccccccc",
+   "~~~~~~cc~~cccccccccccc.ccc1cccccccccccccccccccccooccoooooooooooooooooooooooooooooooooocccc$$$$$$$$$$$$$$$$$$$$cccccccc~ccccccccc",
+   "~~~~~~cc~~cN..................ccccccccccccccccccooccoooooooooooooooooooooooooooooooooocccc$$$$$$$$$$$$$$$$$$$$cccccccc~ccccccccc",
+   "~~~~~~~~~~c...................ccccccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccccccccc",
+   "~~~~~~~~~~cccccccccN.cccccccccccccccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccccccccc",
+   "~~~~~~~~cccccccccccccccccccccccccccccccccccccccccccooccooccooccooccooccooccooccooccooccooccooccooccooccooccooccooccccccccccccccc",
+   "~~~~cc~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "~~~~cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "n": "HOENN_ARTISAN_CAVE"
+  },
+  "buildings": {
+   "A": "house",
+   "B": "house",
+   "C": "house",
+   "E": "house",
+   "F": "house",
+   "G": "house",
+   "H": "house",
+   "I": "house",
+   "J": "house",
+   "K": "house",
+   "L": "house",
+   "M": "house"
+  },
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/26_104.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   {
+    "text": "Ace Trainer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "My big dream is to conquer the Battle Frontier and the League both!"
+     ]
+    }
+   },
+   {
+    "text": "Boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Wow, the Battle Tower is huge! It feels different from anywhere else."
+     ]
+    }
+   },
+   {
+    "text": "Psychic",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Have you heard the legend of the Battle Pyramid? They say..."
+     ]
+    }
+   },
+   {
+    "text": "Hopeful",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I've finally made it to the Battle Frontier! I'll win a Symbol for sure!"
+     ]
+    }
+   },
+   {
+    "text": "Gentleman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The Frontier isn't only for tough Trainers. Anyone can come and watch."
+     ]
+    }
+   },
+   {
+    "text": "Old-timer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Not so long ago there was nothing here at all. Now look at it!"
+     ]
+    }
+   },
+   "WEIRD TREE",
+   {
+    "text": "Dreamer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "A whole island just for battling... I dreamed of a place like this for years."
+     ]
+    }
+   },
+   "Ferry attendant"
+  ],
+  "signs": [
+   [
+    "BATTLE FRONTIER RANKING HALL",
+    "Set your sights on new records!"
+   ],
+   [
+    "This is the BATTLE PYRAMID!",
+    "Advance through the Battle Quest!"
+   ],
+   [
+    "This is the BATTLE TOWER!",
+    "Keep the win streak as the toughest"
+   ],
+   [
+    "This is the BATTLE DOME!",
+    "Your path to the invincible superstar!"
+   ],
+   [
+    "BATTLE POINT EXCHANGE SERVICE CORNER",
+    "Exchange your Battle Points!"
+   ],
+   [
+    "This is the BATTLE PIKE!",
+    "Choose one of three paths!"
+   ],
+   [
+    "This is the BATTLE ARENA!",
+    "Let the toughest teams gather!"
+   ],
+   [
+    "This is the BATTLE FACTORY!",
+    "Seek out the toughest POKeMON!"
+   ],
+   [
+    "Selected items for your convenience!",
+    "POKeMON MART"
+   ],
+   [
+    "Selected items for your convenience!",
+    "POKeMON MART"
+   ],
+   [
+    "Rejuvenate your tired partners!",
+    "POKeMON CENTER"
+   ],
+   [
+    "Rejuvenate your tired partners!",
+    "POKeMON CENTER"
+   ],
+   [
+    "This is the BATTLE PALACE!",
+    "Keep your eyes on POKeMON battles!"
+   ]
+  ],
+  "inside": {
+   "42,27": "pike",
+   "19,17": "dome",
+   "11,38": "factory",
+   "51,51": "mart",
+   "72,14": "tower",
+   "95,29": "arena",
+   "101,56": "palace",
+   "114,14": "pyramid",
+   "91,12": "ranking",
+   "66,28": "exchange",
+   "59,51": "center"
+  },
+  "links": {
+   "26,65": [
+    0,
+    26,
+    61
+   ],
+   "26,61": [
+    0,
+    26,
+    65
+   ]
+  },
+  "moves": {
+   "23,47": {
+    "m": "look",
+    "d": "ul"
+   },
+   "33,41": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "11,66": {
+    "m": "face",
+    "d": "l"
+   },
+   "76,17": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     3,
+     0
+    ]
+   },
+   "98,15": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     3
+    ]
+   },
+   "118,18": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     6
+    ]
+   },
+   "104,41": {
+    "m": "face",
+    "d": "u"
+   },
+   "19,68": {
+    "m": "face",
+    "d": "u"
+   },
+   "110,62": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "arrive": {
+   "HOENN_SS_TIDAL": [
+    20,
+    68
+   ]
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/26_104.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     128,
+     72
+    ]
+   }
+  ],
+  "rooms": {
+   "tower": {
+    "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "....m...m...m...m...m....",
+     "....m...m...m...m...m....",
+     "....c...c...c...c...m....",
+     "....cm.mcm.mcm.mcm.mc....",
+     ".........................",
+     "............X............",
+     ".........................",
+     "cc..........nn.........cc"
+    ],
+    "exits": {
+     "n": "OUT:72,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Salon Maiden Anabel"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       25,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Tower"
+   },
+   "dome": {
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     ".......................",
+     ".......................",
+     "..cc...............cc..",
+     "..cc.....ccccc.....cc..",
+     "..ccc.ccccccccccc.ccc..",
+     "ccccc.ccccc.ccccc.ccccc",
+     ".......................",
+     "...........X...........",
+     ".......................",
+     "ccccc..............cccc",
+     ".......................",
+     "ccc........nn....cccccc"
+    ],
+    "exits": {
+     "n": "OUT:19,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_18.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Dome Ace Tucker"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_18.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       23,
+       17
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Dome"
+   },
+   "palace": {
+    "art": [
+     ".........................",
+     "c..c...c....c....c...c..c",
+     "c..c...c....cccc.c...c..c",
+     "c..cc.cc.ccccccc.cc.cc..c",
+     "ccccccccccccccccccc.ccccc",
+     "..cc...cc.......cc...cc..",
+     "..ccc.ccc.......ccc.ccc..",
+     "..c.........X...c........",
+     ".........................",
+     ".........................",
+     ".........................",
+     "............nn..........."
+    ],
+    "exits": {
+     "n": "OUT:101,56"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_22.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Palace Maven Spenser"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_22.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       25,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Palace"
+   },
+   "pyramid": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc.ccccc.ccccc",
+     "ccc.ccc.c.ccccc",
+     "..c.c.....c.c..",
+     "...............",
+     "...............",
+     "...cccc.cccc...",
+     "...cccc.cccc...",
+     "...cccc.ccccccc",
+     "cc.cccc.ccccccc",
+     "ccccccc.ccccccc",
+     ".......X.......",
+     "...............",
+     "...............",
+     "...............",
+     ".......n......."
+    ],
+    "exits": {
+     "n": "OUT:114,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_25.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Pyramid King Brandon"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_25.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       18
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Pyramid"
+   },
+   "arena": {
+    "art": [
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "ccc.ccccccc.cccc",
+     "ccc.ccccccc.c.cc",
+     ".....c.........c",
+     ".....c.X.......c",
+     "c..............c",
+     "c..............c",
+     ".......n.......c"
+    ],
+    "exits": {
+     "n": "OUT:95,29"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_28.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Arena Tycoon Greta"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_28.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       16,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Arena"
+   },
+   "factory": {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "cccc.ccccccccc.cccc",
+     "ccm....m...m....mcc",
+     "..cc..cm...cc...m..",
+     "..cm.mmcc.ccmm.mc..",
+     "...................",
+     "...................",
+     "...................",
+     ".........nn....c.c."
+    ],
+    "exits": {
+     "n": "OUT:11,38"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_31.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_31.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       19,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Factory"
+   },
+   "pike": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc.ccccc",
+     "...c...c...",
+     "....c.c....",
+     "...........",
+     ".c...X...c.",
+     "c..c...c..c",
+     "...........",
+     ".c.......c.",
+     "...........",
+     "...cnnnc..."
+    ],
+    "exits": {
+     "n": "OUT:42,27"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_34.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Pike Queen Lucy"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_34.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Pike"
+   },
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccccc....",
+     "....cccmcc....",
+     ".......N......",
+     "..............",
+     "cc.........cc.",
+     "...........cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:59,51"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_53.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Nurse"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_53.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm........",
+     "ccmN......c",
+     "cmc...cc..c",
+     "......cc..c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:51,51"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_55.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Clerk"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_55.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
+   "ranking": {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc.......ccccccccccccccccccccccc",
+     "ccccccccccccccccccccc...........ccccccccccccccccccccc",
+     "ccccc.......ccccccccc.....c.....ccccccccc.......ccccc",
+     "ccccc.......ccccccccc...........ccccccccc.......ccccc",
+     "ccc.....c.....ccccc...............ccccc.....c.....ccc",
+     "ccc...........cc!cc....c.....c....cc!cc...........ccc",
+     "ccc...c...c..............ccc..............c...c...ccc",
+     "ccc...............................................ccc",
+     "ccc...........ccccc...............ccccc...........ccc",
+     "ccccc.......ccccccccc...........ccccccccc.......ccccc",
+     "ccccc.......ccccccccc...........ccccccccc.......ccccc",
+     "ccccccccccccccccccccccc...nn..ccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:91,12"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_40.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "BATTLE DOME, BATTLE PIKE,",
+      "and BATTLE FACTORY Records"
+     ],
+     [
+      "BATTLE PALACE, BATTLE ARENA,",
+      "and BATTLE PYRAMID Records"
+     ]
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_40.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       53,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Ranking Hall"
+   },
+   "exchange": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "...mcccccccm...",
+     "...mcccccccm...",
+     "...mcccccccm...",
+     "...mcccccccm...",
+     "...cmmmmmmmc...",
+     "...............",
+     "...............",
+     "c.............c",
+     "cc....nnn....cc"
+    ],
+    "exits": {
+     "n": "OUT:66,28"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_42.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_42.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Exchange Service Corner"
+   }
+  }
+ },
+ "HOENN_ARTISAN_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cccccc1cccccccNcccccc",
+     "cccccc.ccccccc.cccccc",
+     "cccccc.ccccccc.cccccc",
+     "cccccc.ccccccc.cccccc",
+     "cccccc.ccccccc.cccccc",
+     "cccccc.ccccccc.cccccc",
+     "cccccc.ccccccc.cccccc",
+     "cccccc...ccc...cccccc",
+     "cccccc...ccc...cccccc",
+     "ccccccc..ccc..ccccccc",
+     "cccccccc.....cccccccc",
+     "ccccccccc...ccccccccc",
+     "ccccccccc.n.ccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_BATTLE_FRONTIER"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_100.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "CARBOS"
+    ],
+    "links": {
+     "6,5": [
+      1,
+      38,
+      5
+     ]
+    },
+    "moves": {
+     "14,5": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "parts": true
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccc..cccccccccccc.....ccccccccc..1ccccccc",
+     "cccccccc..cccccccccccc.................ccccccc",
+     "ccccccccc.ccccccccccc....c..c..........ccccccc",
+     "ccccccccc.ccccccccccc...cccccc.........ccccccc",
+     "ccccccccc..............ccc..ccc........ccccccc",
+     "ccccccccc......c..................c....ccccccc",
+     "ccccccccc.....cccccccc............cc...ccccccc",
+     "ccccccccc....ccccccccc.ccccccccc.cccc..ccccccc",
+     "ccccccccc....ccccccccc.ccccccccc.cccc..ccccccc",
+     "ccccccccc....ccccccccc.ccccccccc.cccc..ccccccc",
+     "cccccccc....cccccccccc.ccc.............ccccccc",
+     "cccccccc....cccccccccc.ccc..cccccc.....ccccccc",
+     "ccccccc...cccccccccccc.ccc.cccccccc....ccccccc",
+     "ccccccc.cccccccc.ccccc.......ccccccc...ccccccc",
+     "ccccccc.cccccccc.ccccc.........ccccccccccccccc",
+     "ccccccc.ccc......ccccc..cccccccccccccccccccccc",
+     "ccccccc.ccc......ccccc..cccccccccccccccccccccc",
+     "ccccccc.ccc.cccc.ccccc..cccccccccccccccccccccc",
+     "ccccccc.cc.....c.ccccc..cccccccccccccccccccccc",
+     "ccccccc.cc.ccccc.ccc....cccccccccccccccccccccc",
+     "ccccccc.c.....cc.ccc....cccc........cccccccccc",
+     "ccccccc.c.....cc.ccc....cccc.ccc.ccccccccccccc",
+     "ccccccc.c.....cc.ccc....ccc..ccc.ccccccccccccc",
+     "ccccccc.cccccccc.ccc....ccc..cc...cccccccccccc",
+     "ccccccc......ccc.ccc....ccc..cc.c.cccccccccccc",
+     "ccccccc......ccc.ccc....ccc.ccc...cccccccccccc",
+     "ccccccccc....ccc.cc.....ccc.cccccccccccccccccc",
+     "ccccccccc....ccc.cc.....ccc..ccccccccccccccccc",
+     "cccccccccc...ccc.cc.....ccc..ccccccccccccccccc",
+     "cccccccccc...ccc........ccc.........cccccccccc",
+     "cccccccccc...cccccccc.c......ccc.ccccccccccccc",
+     "ccccccccc..c..c.......c......ccc.ccccccccccccc",
+     "ccccccccc..c..cccc.c..c.cccc.cc...cccccccccccc",
+     "ccccccccc..c.......c..c.cccc.cc.N.cccccccccccc",
+     "ccccccccc..c.ccc.ccc..c.cccc.cc...cccccccccccc",
+     "ccccccc....c.c....ccc.c.cccccccccccccccccccccc",
+     "ccccccc....c.c....ccccc.cccccccccccccccccccccc",
+     "ccccccc....ccc....cccccccccccccccccccccccccccc",
+     "ccccccc....cc......ccccccccccccccccccccccccccc",
+     "ccccccc....cc......ccccccccccccccccccccccccccc",
+     "ccccccc....cc.......cccccccccccccccccccccccccc",
+     "ccccccc....cc.........cccccccccccccccccccccccc",
+     "ccccccc....cc.........cccccccccccccccccccccccc",
+     "ccccccc.n.............cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_BATTLE_FRONTIER"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_99.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "HP UP"
+    ],
+    "links": {
+     "38,5": [
+      0,
+      6,
+      5
+     ]
+    },
+    "moves": {
+     "32,38": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "hidden": {
+     "32,29": "ZINC",
+     "27,8": "CALCIUM",
+     "7,5": "PROTEIN",
+     "19,43": "IRON"
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "1F",
+   "B1F"
+  ]
+ },
+ "HOENN_DESERT_UNDERPASS": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccccccccccccccccc.......ccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc...c...ccccccccccccccccccccccccccccc......cccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccc.cccccccccccccc.ccccccccccccccccc..ccccc.ccccccccccccccccccccccccccccc...ccccccccccccccccccccccccccc..cccccc",
+     "ccccccccccccccccccccccccccccccc.cccccccccccccc.cccccccccccccccc..cccccc..cccccccccccccccccccccccccccc..cccccccccccccccccccccccccccc...ccccc",
+     "cccccccccccccccc.cccccccccccccc...cccccccccccc..cccccccccccccc..ccccccc..cccccccccccccccccccccccccccc..ccccccccccccc..cccccccccccc.....cccc",
+     "ccccccccccccccc...ccccc............ccccccccc....ccccc..ccccccc..ccccccc....ccccccccccc.cc....ccccccc....cccccccccc....ccccc..cccc.......ccc",
+     "ccccccccc..............................ccccc.....ccc....ccc.....ccccc......ccc..ccccc..cc.....cccccc.........ccccc.....ccc..............ccc",
+     "ccccccc............................................................................................................................NN...ccc",
+     "ccccccccc....cccccc................cccc....................c........cccc.....................ccc.......................c....ccc.........ccc",
+     "ccccccccc.n.cccccccc..c..cc.......cccccc..cc..........cccc........ccccccccc........cccc.....cccccc..............ccccc......ccccc........ccc",
+     "ccccccccccccccccccccc....ccc.....cccccccccccc.......cccccccc......cccccccccc......ccccc.ccc..cccccc....ccccc...ccccccc...ccccccccc.....cccc",
+     "ccccccccccccccccccccc....cccc...cccccccccccccc.....ccccccccccccc...cccccccccccc...ccc...ccccccccccccccccccccccccccccccc..cccccccccc...ccccc",
+     "cccccccccccccccccccccc...cccc..ccccccccccccccc.....ccccccccccccccc..cccccccccccc..........cccccccccccccccccccccccccccccc.cccccccccccccccccc",
+     "ccccccccccccccccccccccc...ccc..ccccccccccccccc....ccccccccccccccccc..cccccccccccc..cc....cccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc......cccccccccccccccc...cccccccccccccccccc..cccccccccccc.ccccc.ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc....ccccccccccccccccccccccccccccccccccccccc..ccccccccccc.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc.cccccccccccccccccccccccccccccccccccccccccc..cccccccccc.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc...ccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..........cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_114"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_98.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "CLAW FOSSIL",
+     "ROOT FOSSIL"
+    ],
+    "moves": {
+     "132,10": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Desert Underpass"
+  ]
+ },
+ "HOENN_ALTERING_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccc...ccccccccccccccccccccccc",
+     "ccccc...cccccccccccccccccccccccc",
+     "cccc......cccccccccccccccccccccc",
+     "cccc......cccccccccccccccccccccc",
+     "cccc.c.............ccccccccccccc",
+     "ccccccccccc........ccccccccccccc",
+     "ccccccccccccccccc..ccccccccccccc",
+     "ccccccccccccccccc..ccccc......cc",
+     "ccc...ccccccccccc..ccccc......cc",
+     "cc........ccccccc.cc...c......cc",
+     "c.........cccccc..cccc.c......cc",
+     "c.........ccccc........cc.....cc",
+     "c.........ccccc.........cc..cccc",
+     "c..........cccc................c",
+     "cc...........cc................c",
+     "ccc..........c.................c",
+     "ccccc.................cccccccccc",
+     "cccccccccccccc........cccccccccc",
+     "cccccccccccccc........cccccccccc",
+     "cccccccccccccc.......ccccccccccc",
+     "ccccccccccccccccc.n..ccccccccccc",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_103"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_106.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Altering Cave"
+  ]
+ },
+ "HOENN_MARINE_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "cccccccccccccc1ccccc",
+     "ccccccccccccc===cccc",
+     "cccccccccc======cccc",
+     "cccccccccc=.....cccc",
+     "cccccccc==......cccc",
+     "cccccccc=.......cccc",
+     "cccccc==...oooo.cccc",
+     "cccccc=...ooooo.cccc",
+     "ccccc=...oooooo.cccc",
+     "ccccc...ooooooo.cccc",
+     "ccc=...oooooooo..=cc",
+     "ccc...ooooooooo..=cc",
+     "ccc..ooooooooooo..cc",
+     "ccc..ooooooooooo..cc",
+     "ccc..ooooooooooo..cc",
+     "cccc.ooovvvvoooocccc",
+     "cccccoovvvvvvocccccc",
+     "cccccccvvvvvvccccccc",
+     "cccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "HOENN_ROUTE_127"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_102.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "14,1": [
+      1,
+      20,
+      4
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_102.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       20
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc",
+     "cccccccccc.............cccc",
+     "cccccccccc.............cccc",
+     "ccccccccc...........1..cccc",
+     "ccccccccc.......ccccccccccc",
+     "ccccccccc.......ccccccccccc",
+     "ccccccccc.......ccccccccccc",
+     "ccccccccc.......ccccccccccc",
+     "cccccccccccccc.cccccccccccc",
+     "ccccccccc......cccccccccccc",
+     "cccccccc.......cccccccccccc",
+     "ccccccc...........ccccccccc",
+     "cccccccccccc......ccccccccc",
+     "cccccccccccccc.....cccccccc",
+     "cccccccccccccccc...cccccccc",
+     "ccccccccccccccccc....cccccc",
+     "cccccccc~~~ccccccc...cccccc",
+     "ccccccc~~~~~cccccc...cccccc",
+     "ccccc~~~~~~~~~~ccc.....cccc",
+     "ccccc~~~~~~~~~~ccc.....cccc",
+     "ccccc~~~~~~~~~~ccc.....cccc",
+     "cccc~~~~~~~~~~~ccc.....cccc",
+     "cccc~~~~~~~~~~~ccc.....cccc",
+     "cccc.c~~~~~~~~~ccc.....cccc",
+     "cccc..c~~~~~c..ccc.....cccc",
+     "ccccc..........ccc...cccccc",
+     "cccccccc.............cccccc",
+     "ccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_103.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "20,4": [
+      0,
+      14,
+      1
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        25
+       ]
+      ],
+      "look": "mon:382",
+      "face": "d",
+      "until": {
+       "flag_condition": "counterpart_legend_caught"
+      },
+      "lines": [
+       "Kyogre is sleeping deep in the cave..."
+      ],
+      "boss": {
+       "id": 382,
+       "name": "Kyogre",
+       "victory_flag": "counterpart_legend_caught",
+       "lines": [
+        "The cave trembles...",
+        "Kyogre awakens!"
+       ]
+      }
+     }
+    ],
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Entrance",
+   "The deepest cave"
+  ]
+ },
+ "HOENN_TERRA_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "cccccccccccccc1ccccc",
+     "ccccccccccccc...cccc",
+     "cccccccccc......cccc",
+     "cccccccccc..ccc.cccc",
+     "cccccccc....ccc.cccc",
+     "cccccccc....ccc.cccc",
+     "cccccc......ccc.cccc",
+     "cccccc..ccccccc.cccc",
+     "ccccc..cccccccc.cccc",
+     "ccccc..cccc.....cccc",
+     "ccc....cccc.....cccc",
+     "ccc....ccc......cccc",
+     "ccc....cc....cc.cccc",
+     "ccc..........cc...cc",
+     "ccc..........cc...cc",
+     "cccc.............ccc",
+     "ccccc.......cccccccc",
+     "ccccccc.n..ccccccccc",
+     "cccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_114"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_104.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "14,1": [
+      1,
+      5,
+      4
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_104.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       20
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc",
+     "cccccccccc...cccccccccccccc",
+     "cccccccccc...cccccccccccccc",
+     "cccc.1..........ccccccccccc",
+     "ccccccccc.......ccccccccccc",
+     "ccccccccc.......ccccccccccc",
+     "ccccccccc.......ccccccccccc",
+     "ccccccccc.......ccccccccccc",
+     "ccccccccc.ccccccccccccccccc",
+     "ccccccccc......cccccccccccc",
+     "cccccccc..........ccccccccc",
+     "ccccccc........cccccccccccc",
+     "ccccccc......cccccccccccccc",
+     "cccccc.....cccccccccccccccc",
+     "cccccc.....cccccccccccccccc",
+     "ccccc....cccccccccccccccccc",
+     "ccccc....ccccccc~~~cccccccc",
+     "ccccc...ccccccc~~c~~~cccccc",
+     "ccccc...ccccc~~~cccc~~~cccc",
+     "ccccc...ccccc~cccccccc~cccc",
+     "ccccc...ccccc~cccccccc~cccc",
+     "cccc....cccc~~cccccccc~cccc",
+     "cccc....cccc~ccccccccc~cccc",
+     "cccc....ccc..ccccccccc~cccc",
+     "cccc....ccc...ccccccccccccc",
+     "cccc.................cccccc",
+     "ccccccccccc..........cccccc",
+     "ccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_105.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "5,4": [
+      0,
+      14,
+      1
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        17,
+        25
+       ]
+      ],
+      "look": "mon:383",
+      "face": "d",
+      "until": {
+       "flag_condition": "counterpart_legend_caught"
+      },
+      "lines": [
+       "Groudon is sleeping deep in the cave..."
+      ],
+      "boss": {
+       "id": 383,
+       "name": "Groudon",
+       "victory_flag": "counterpart_legend_caught",
+       "lines": [
+        "The cave trembles...",
+        "Groudon awakens!"
+       ]
+      }
+     }
+    ],
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Entrance",
+   "The deepest cave"
   ]
  },
  "TWINLEAF_TOWN": {

@@ -3141,6 +3141,51 @@
     },
     "HOENN_SOUTHERN_ISLAND:Sailor": {
       "sheet": "em_49.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Ace Trainer": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Boy": {
+      "sheet": "em_5.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Psychic": {
+      "sheet": "em_37.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Hopeful": {
+      "sheet": "em_34.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Gentleman": {
+      "sheet": "em_48.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Old-timer": {
+      "sheet": "em_66.png"
+    },
+    "HOENN_BATTLE_FRONTIER:WEIRD TREE": {
+      "sheet": "em_228.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Dreamer": {
+      "sheet": "em_23.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Ferry attendant": {
+      "sheet": "em_45.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Nurse": {
+      "sheet": "em_58.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Clerk": {
+      "sheet": "em_83.png"
+    },
+    "HOENN_ARTISAN_CAVE:CARBOS": {
+      "item": "CARBOS"
+    },
+    "HOENN_ARTISAN_CAVE:HP UP": {
+      "item": "HP_UP"
+    },
+    "HOENN_DESERT_UNDERPASS:CLAW FOSSIL": {
+      "item": "CLAW_FOSSIL"
+    },
+    "HOENN_DESERT_UNDERPASS:ROOT FOSSIL": {
+      "item": "ROOT_FOSSIL"
     }
   },
   "townsperson": "NPC 17.png",

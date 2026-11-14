@@ -141,6 +141,10 @@ _far, _pairs = [], []
 for key in BUILT:
     _parts = _tm[key]["floors"] if _tm[key].get("floors") else [_tm[key]]
     for came in sorted({v for f in _parts for v in f.get("exits", {}).values()} & set(BUILT)):
+        _way = next((o for o in (_area.get(key) or {}).get("route_menu", []) if (o.get("target") or o.get("target_area")) == came), {})
+        _c = _way.get("condition") if isinstance(_way.get("condition"), list) else [_way.get("condition")]
+        if any(isinstance(c, str) and c.startswith("hoenn_version:") and c[14:] != story.story_flags.get("hoenn_version") for c in _c):
+            continue  # (a way only the other version opens: the Terra Cave in Omega Ruby)
         st = arrive(key, came)
         own = [t for t, v in _exits(st).items() if v == came]
         if own and not _near(_pos(st), own):
@@ -2336,7 +2340,9 @@ _tr23 = sorted((m.payload[1] or {}).get("name", "").strip().replace("Magma", "Aq
 _em_words = any("OCEANIC MINIFACT" in " ".join(s) for f in _tm23["HOENN_OCEANIC_MUSEUM"]["floors"] for s in f.get("signs", []))
 check(_m1 == 0 and _tr23 == ["Aqua Leader Archie", "Team Aqua Grunt", "Team Aqua Grunt"] and not _em_words,
       f"Oceanic Museum: in from Slateport; the Grunts and their leader on 2F by Captain Stern; the exhibits in our own words ({_tr23})")
-story.story_flags.pop("mirage_tower_fossil", None); story.inventory.pop("ROOT_FOSSIL", None)
+for _k23 in ("mirage_tower_fossil", "mirage_took_root", "mirage_took_claw"):
+    story.story_flags.pop(_k23, None)
+story.inventory.pop("ROOT_FOSSIL", None)
 story.badges.setdefault("HOENN", [])
 st = open_map("HOENN_MIRAGE_TOWER", "HOENN_ROUTE_111")
 st.run.jump_floor(3, (5, 5)); _calm(st)
@@ -2345,8 +2351,8 @@ st._get_route_callback(_ft)()
 _said = _play(st, 400)
 _to23 = getattr(g.current_state, "next_area_key", None) if type(g.current_state).__name__ == "AreaTransitionState" else story.current_area_key
 _r111 = next(o for o in _sp23["HOENN_ROUTE_111"]["route_menu"] if o.get("target_area") == "HOENN_MIRAGE_TOWER")
-check(story.inventory.get("ROOT_FOSSIL") == 1 and story.story_flags.get("mirage_tower_fossil") and _to23 == "HOENN_ROUTE_111"
-      and _r111.get("flag_condition") == "not mirage_tower_fossil" and "CLAW FOSSIL" in _tm23["HOENN_MIRAGE_TOWER"]["floors"][3]["people"],
+check(story.inventory.get("ROOT_FOSSIL") == 1 and story.story_flags.get("mirage_took_root") and _to23 == "HOENN_ROUTE_111"
+      and "not:mirage_took_root" in _r111.get("condition", []) and "CLAW FOSSIL" in _tm23["HOENN_MIRAGE_TOWER"]["floors"][3]["people"],
       f"Mirage Tower: take the Root or Claw Fossil on top, the tower crumbles, you're back on Route 111 and it's gone ({_to23}, {_said[:1]})")
 g.transitioning = False
 story.story_flags["beat_hoenn_champion"] = True
@@ -2525,6 +2531,40 @@ check(_on == "HOENN_MIRAGE_ISLAND" and _off == "HOENN_ROUTE_130" and _days == 10
       and "360" in g.loader.area_data["HOENN_MIRAGE_ISLAND_PERCENTAGES"],
       f"Mirage Island: on a Mirage day (one in seven) Route 130 has the island; its grass has Wynaut, the sea Route 130's own ({_on}, {_off}, {_days} of 70, {_pools})")
 g.transitioning = False
+
+# ---- batches 27-28 (11-14): the Battle Frontier; the post-game caves
+_tm27 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp27 = g.loader.area_data["STORY_PROGRESSION"]
+_saved27 = dict(story.story_flags); _inv27 = dict(story.inventory)
+story.story_flags["beat_hoenn_champion"] = True
+_bf = _tm27["HOENN_BATTLE_FRONTIER"]
+st = open_map("HOENN_BATTLE_FRONTIER", "HOENN_SS_TIDAL")
+_dock = tuple(st.run.player)
+_brains = {r: [n.strip() for n in (room.get("trainer_spots") or [])] for r, room in _bf["rooms"].items()}
+_fa = next(o for o in _sp27["HOENN_BATTLE_FRONTIER"]["route_menu"] if o.get("text") == "Ferry attendant")
+check(_dock == (20, 68) and _brains["tower"] == ["Salon Maiden Anabel"] and _brains["pyramid"] == ["Pyramid King Brandon"]
+      and sum(len(v) for v in _brains.values()) == 6 and "Nurse" in _bf["rooms"]["center"]["people"] and "Clerk" in _bf["rooms"]["mart"]["people"]
+      and _fa["event"]["travel"] == "HOENN_SS_TIDAL" and set(_bf["exits"].values()) == {"HOENN_ARTISAN_CAVE"},
+      f"Battle Frontier: off the ferry on the dock; each Frontier Brain in their facility's lobby; the Center and Mart; the Artisan Cave's mouths ({_dock}, {_brains})")
+_ac = _tm27["HOENN_ARTISAN_CAVE"]["floors"]
+check(sorted((_ac[1].get("hidden") or {}).values()) == ["CALCIUM", "IRON", "PROTEIN", "ZINC"] and "HP UP" in _ac[1]["people"] and "CARBOS" in _ac[0]["people"]
+      and {f["exits"].get("n") for f in _ac} == {"HOENN_BATTLE_FRONTIER"},
+      "Artisan Cave: both its mouths on the Frontier; Emerald's HP Up, Carbos and hidden vitamins")
+_fos = {o["text"]: o.get("condition") for o in _sp27["HOENN_DESERT_UNDERPASS"]["route_menu"] if "FOSSIL" in o.get("text", "")}
+_mt = {o["text"]: o["event"]["flag"] for o in _sp27["HOENN_MIRAGE_TOWER"]["route_menu"] if "FOSSIL" in o.get("text", "")}
+check(_fos == {"ROOT FOSSIL": "mirage_took_claw", "CLAW FOSSIL": "mirage_took_root"} and _mt == {"ROOT FOSSIL": "mirage_took_root", "CLAW FOSSIL": "mirage_took_claw"}
+      and set(_tm27["HOENN_DESERT_UNDERPASS"]["floors"][0]["exits"].values()) == {"HOENN_ROUTE_114"},
+      "Desert Underpass: out of the Fossil Maniac's tunnel; at its end the fossil you didn't take at Mirage Tower")
+_r127 = _tm27["HOENN_ROUTE_127"]["floors"][1]
+_r114 = _tm27["HOENN_ROUTE_114"]
+_bars = {k: [b.get("boss", {}).get("name") for f in _tm27[k]["floors"] for b in f.get("barred", [])] for k in ("HOENN_MARINE_CAVE", "HOENN_TERRA_CAVE")}
+check("HOENN_MARINE_CAVE" in _r127["exits"].values() and "HOENN_TERRA_CAVE" in _r114["exits"].values()
+      and (_r114["roofs"]["_picture"].get("when") or [{}])[0].get("flag") == "delta_episode_cleared"
+      and _bars == {"HOENN_MARINE_CAVE": ["Kyogre"], "HOENN_TERRA_CAVE": ["Groudon"]}
+      and set(_tm27["HOENN_ALTERING_CAVE"]["floors"][0]["exits"].values()) == {"HOENN_ROUTE_103"},
+      f"Marine Cave from Route 127's seabed, Terra Cave's mouths on Route 114 (open after the Delta Episode), their legends; Altering Cave off Route 103 ({_bars})")
+story.story_flags.clear(); story.story_flags.update(_saved27)
+story.inventory.clear(); story.inventory.update(_inv27)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
