@@ -1203,6 +1203,53 @@ for _k, _v in _sfs.items():
     if _v is not None:
         story.story_flags[_k] = _v
 
+# ---- Silph Co. in the Journal (Jordan, 11-14: "very clearly guided"): three steps, the marker floor by floor
+_sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated")
+_sfs = {k: story.story_flags.pop(k, None) for k in _sf}
+_ck = story.inventory.pop("CARD_KEY", None)
+_tm0 = story.tracked_mission
+story.story_flags["tower_ghost_defeated"] = True
+story.current_area_key = "SAFFRON_CITY"
+_act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
+check("s_silph" in _act and "s_silph2" not in _act and "Card Key" in _act["s_silph"]["desc"] and "5F" in _act["s_silph"]["desc"],
+      f"Journal: Silph Co.'s first step, the Card Key on 5F ({[k for k in _act if 'silph' in k]})")
+story.tracked_mission = "s_silph"
+si = open_map("SILPH_CITY", "SAFFRON_CITY")
+_way = []
+_up = {1: (30, 3), 2: (28, 3), 3: (30, 3), 4: (28, 3)}   # (in off the stairs from the floor below)
+for _i in range(5):
+    _floor(si, _i); si._guide_key = None
+    if _i in _up:
+        si.run.player = _up[_i]
+    _way.append(si._guide_spot())
+check([w and w[1] for w in _way] == ["To 2F", "To 3F", "To 4F", "To 5F", "Card Key"] and _way[4][0] == (22, 21),
+      f"...the marker: up the stairs floor by floor, then the Card Key itself ({_way})")
+story.inventory["CARD_KEY"] = 1; story.story_flags["got_card_key"] = True
+_act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
+check("s_silph2" in _act and "3F" in _act["s_silph2"]["desc"] and "7F" in _act["s_silph2"]["desc"], "...then the next: 3F's door, the pads to 7F and 11F, Giovanni")
+story.tracked_mission = "s_silph2"
+_way = {}
+for _i, _at in ((0, (8, 19)), (2, (28, 3)), (6, (5, 5)), (10, (2, 6))):   # (1F's door; off 3F's stairs; off the pads)
+    _floor(si, _i); si._guide_key = None; si._step_key = None
+    si.run.player = _at
+    _way[_i] = si._guide_spot()
+check(_way[0] and _way[0][1] == "To 2F" and _way[2] == ((13, 14), "To 7F") and _way[6] == ((5, 8), "To 11F") and _way[10] == ((6, 11), "Giovanni"),
+      f"...the marker: 3F's warp pad to 7F, 7F's to 11F, then Giovanni ({_way})")
+story.story_flags["silph_co_cleared"] = True
+_act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
+check("s_silph3" in _act and "s_silph2" not in _act and "11F" in _act["s_silph3"]["desc"], "...Silph freed: the last step, the President on 11F")
+story.tracked_mission = "s_silph3"
+si = open_map("SILPH_CITY", "SAFFRON_CITY"); _floor(si, 10); si._guide_key = None; si._step_key = None
+check(si._guide_spot() == ((9, 9), "President"), f"...on 11F the marker is on the President ({si._guide_spot()})")
+story.tracked_mission = _tm0
+story.inventory.pop("CARD_KEY", None)
+if _ck is not None:
+    story.inventory["CARD_KEY"] = _ck
+for _k, _v in _sfs.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

@@ -3811,6 +3811,10 @@ class DungeonState(OverworldBattles, PlayState):
         story = self.game.story_manager
         mission = guide.tracked_mission(self.game)
         need = {f for f in story.mission_flags(mission or {}) if not story.story_flags.get(f)}
+        step = self._guide_step(mission)
+        if step:  # (the mission's own way-points in this place: Silph Co.'s Card Key, then the boardroom)
+            self._guide_hit = step
+            return step
         for m in f.movers:  # someone here the mission needs
             if m.kind == "figure" and isinstance(m.payload, dict) and guide.advances_goal(self.game, self.area_key, m.payload):
                 self._guide_hit = ((m.x, m.y), m.payload.get("text") or "Here")
@@ -3844,6 +3848,85 @@ class DungeonState(OverworldBattles, PlayState):
                     self._guide_hit = (stairs, "Upstairs" if want == core.STAIRS_UP else "Downstairs")
                     return self._guide_hit
         return None
+
+    def _guide_step(self, mission):
+        """(tile, label) toward a Journal mission's next "steps" way-point in this place ({"floor", "at", "label",
+        "done"}: Jordan, 11-14: Silph Co. guided floor by floor): on its floor, the spot itself; elsewhere, the stairs
+        or warp pad that starts the shortest way there, through doors you can open now. None: no step here, or no
+        way there yet."""
+        from src.world import guide
+        if not mission or not mission.get("steps") or not self.run.recipe.get("layout"):
+            return None
+        story = self.game.story_manager
+        step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
+                     and not guide._ok(story, s.get("done"))), None)
+        if not step or not 0 <= step["floor"] < self.run.n_floors:
+            return None
+        goal = (step["floor"], *step["at"])
+        start = (self.run.index, *self.run.player)
+        key = (start, goal, tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags))
+        if getattr(self, "_step_key", None) != key:
+            self._step_key, self._step_hit = key, self._step_route(start, goal, step.get("label") or "Here")
+        return self._step_hit
+
+    def _step_route(self, start, goal, label):
+        """The first tile to head for on the shortest way from start to beside goal ((floor, x, y) each)."""
+        from collections import deque
+        art = self.run.recipe.get("art") or {}
+        plans = art.get("floors") or [art]
+        floors = [self.run.made(i) for i in range(self.run.n_floors)]
+        bars, opened = [], []   # (each floor's barred tiles as they stand now: a floor last seen before you had the key keeps its doors drawn shut)
+        for i in range(len(floors)):
+            plan, shut, gone = plans[i] if i < len(plans) and isinstance(plans[i], dict) else {}, set(), set()
+            for bar in plan.get("barred", []):
+                met = self.game.story_manager.inventory.get(bar["item"], 0) > 0 if bar.get("item") else \
+                    self._until_met(bar["until"]) if bar.get("until") else bool(self.game.story_manager.story_flags.get(bar.get("flag")))
+                (gone if met else shut).update(tuple(t) for t in bar.get("tiles", []))
+            bars.append(shut)
+            opened.append(gone - shut)
+
+        def ok(i, x, y):
+            fl = floors[i]
+            return fl.inside(x, y) and (x, y) not in bars[i] and (fl.walkable(x, y) or (x, y) in opened[i] or (i, x, y) == goal)
+
+        def beside(i, x, y):
+            return [(i, x + dx, y + dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
+
+        def onward(i, x, y):  # (a passage on this tile: where you come out)
+            t = floors[i].exits.get((x, y))
+            if t == core.STAIRS and i + 1 < len(floors):
+                return [n for s, v in floors[i + 1].exits.items() if v == core.STAIRS_UP for n in beside(i + 1, *s)]
+            if t == core.STAIRS_UP and i > 0:
+                return [n for s, v in floors[i - 1].exits.items() if v == core.STAIRS for n in beside(i - 1, *s)]
+            if isinstance(t, str) and t.startswith("WARP:"):
+                f2, x2, y2 = (int(v) for v in t.split(":")[1:4])
+                if 0 <= f2 < len(floors):
+                    return beside(f2, x2, y2)
+            return []
+
+        prev, q = {start: None}, deque([start])
+        while q:
+            cur = q.popleft()
+            if cur == goal:
+                break
+            i, x, y = cur
+            nxt = onward(i, x, y) if cur != start and (x, y) in floors[i].exits else \
+                [(i, x + dx, y + dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
+            for n in nxt:
+                if n not in prev:
+                    prev[n] = cur
+                    q.append(n)
+        if goal not in prev:
+            return None
+        path, c = [], goal
+        while c is not None:
+            path.append(c)
+            c = prev[c]
+        path.reverse()
+        for a, b in zip(path, path[1:]):  # (the first passage on the way: the stairs or pad to take)
+            if a[0] != b[0] or abs(a[1] - b[1]) + abs(a[2] - b[2]) > 1:
+                return ((a[1], a[2]), "To " + self._floor_name(b[0])) if a[0] == self.run.index else None
+        return ((goal[1], goal[2]), label) if goal[0] == self.run.index else None
 
     def _draw_gate(self, screen, r, kind):
         """What stands in a locked way out, on its tile."""

@@ -187,8 +187,26 @@
         "condition": { "visited": "FUCHSIA_CITY", "badges_less": 5 }
       },
       {
+        "id": "s_silph", "type": "MAIN", "text": "Silph Co. Takeover: the Card Key", "target": "SILPH_CITY",
+        "desc": "Team Rocket has seized Silph Co., the tall building in the middle of Saffron City, and their grunts block Saffron's Gym until they're driven out. Inside, the Rockets have locked many doors. Don't worry about them yet: take the stairs in the top-right corner of each floor up to 5F. The Card Key that opens every locked door is lying on 5F's floor, in the bottom corridor.",
+        "condition": { "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared" }, "completed_flag": "got_card_key",
+        "steps": [{ "floor": 4, "at": [22, 21], "label": "Card Key", "done": "got_card_key" }]
+      },
+      {
+        "id": "s_silph2", "type": "MAIN", "text": "Silph Co. Takeover: the Boardroom", "target": "SILPH_CITY",
+        "desc": "You have the Card Key! Go back down to 3F and open the locked door in the middle of the floor. The warp pad behind it carries you straight up to 7F, where {rival_name} is waiting. Step on the warp pad in that same room to reach 11F, then follow the corridor around to the boardroom: Giovanni, Team Rocket's boss, is holding the President there. Beat him to free Silph Co.",
+        "condition": { "flag": "got_card_key", "flag_not": "silph_co_cleared" }, "completed_flag": "silph_co_cleared",
+        "steps": [{ "floor": 10, "at": [6, 11], "label": "Giovanni", "done": "silph_co_cleared" }]
+      },
+      {
+        "id": "s_silph3", "type": "MAIN", "text": "Silph Co. Takeover: the President", "target": "SILPH_CITY",
+        "desc": "Silph Co. is free! The President is in his boardroom on 11F and wants to thank you. (The quick way up: the warp pad behind 3F's middle door to 7F, then 7F's pad to 11F.) While you're in the building, a worker in 7F's locked room has a gift for you too.",
+        "condition": { "flag": "silph_co_cleared" }, "completed_flag": "received_silph_reward",
+        "steps": [{ "floor": 10, "at": [9, 9], "label": "President", "done": "received_silph_reward" }]
+      },
+      {
         "id": "m12", "type": "MAIN", "text": "The Marsh Badge", "desc": "Now that Saffron City is accessible, challenge Sabrina at the Saffron Gym for your sixth badge!",
-        "condition": { "badges_min": 5, "badges_less": 6 }
+        "condition": { "badges_min": 5, "badges_less": 6, "flag": "silph_co_cleared" }
       },
       {
         "id": "m13", "type": "MAIN", "text": "Seafoam and Volcanoes", "desc": "Surf south from Fuchsia through Route 19 and 20. Navigate the Seafoam Islands to reach Cinnabar Island.",
@@ -241,10 +259,6 @@
       {
         "id": "s_rocket", "type": "SIDE", "text": "Rocket Hideout", "desc": "Team Rocket's hideout is under the Celadon Game Corner. Their boss is said to have a Silph Scope.",
         "condition": { "visited": "CELADON_CITY", "flag_not": "game_corner_cleared" }
-      },
-      {
-        "id": "s_silph", "type": "SIDE", "text": "Silph Co. Takeover", "desc": "Team Rocket has seized Silph Co. in Saffron City! Fight your way up all 11 floors and drive out their boss, Giovanni. The President may reward you.",
-        "condition": { "visited": "SAFFRON_CITY", "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared" }
       },
       {
         "id": "s2", "type": "SIDE", "text": "The Sleeping Giant", "desc": "A Snorlax blocks Route 12, south of Lavender Town. Use the Poké Flute to wake it up.",
