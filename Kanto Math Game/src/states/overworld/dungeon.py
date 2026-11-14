@@ -567,6 +567,25 @@ def real_maps(game):
 _real_maps = {}
 
 
+_SPECIES = {}
+
+
+def species_named(game, text):
+    """The species a figure's name is ("Poliwrath", "WIGGLYTUFF", "Nidoran"), else None: a Pokemon standing about."""
+    if not _SPECIES:
+        names = getattr(game.assets, "pokemon_names", None) or {}
+        for k, v in names.items():
+            try:
+                _SPECIES.setdefault(str(v).lower(), int(k))
+            except ValueError:
+                pass
+        _SPECIES.setdefault("nidoran", 29)   # (FireRed's own: the female one)
+        _SPECIES.setdefault("mr. mime", 122)
+        _SPECIES.setdefault("farfetch'd", 83)
+    t = str(text or "").strip().lower()
+    return _SPECIES.get(t) if t else None
+
+
 def recipe_for(game, area_key):
     """DEFAULT, then the area's own recipe; an area without one gets its look from its battle type
     (a cave, a building, the sea...), ponds where you can fish, a smaller map for a small place.
@@ -3275,7 +3294,18 @@ class DungeonState(OverworldBattles, PlayState):
         pid = spec.get("pokemon")
         if pid is None and item.get("action") == "BOSS" and not spec.get("sheet"):   # (a boss with a sheet of its own: the legend, Emerald's)
             pid = (item.get("boss") or self.area_data.get("area_boss") or {}).get("id")
+        if pid is None and str(spec.get("sheet") or "").startswith("mon:"):
+            pid = int(str(spec["sheet"])[4:])
+        if pid is None:   # (someone standing about who is a Pokemon: "Poliwrath", "Cubone")
+            pid = species_named(self.game, item.get("text"))
         if pid is not None:
+            # every Pokemon on the map is drawn from the followers' sheets (Jordan, 11-14: "always use the sprites from
+            # assets/dungeon/followers for all overworld pokemon"); a game's own sheet or the icon only if it has none
+            class _Mon:
+                id, form, is_shiny, gender = int(pid), "normal", False, None
+            img = self._follower_img(_Mon(), tuple(facing))
+            if img is not None:
+                return img
             ow = (sm.get("pokemon") or {}).get(str(pid))
             if ow:
                 return self._sheet_frame(ow[0], (0, 1), col=ow[1], height=TILE + 26)

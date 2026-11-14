@@ -369,7 +369,7 @@ _pp = kanto("POWER_PLANT", came="KANTO_ROUTE_10")
 _pp_trainers = [i for i in range(len(_prog["POWER_PLANT"].get("trainer_pool", []))) if not story.is_trainer_defeated("POWER_PLANT", i)]
 _zap = [m for f in _pp.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
 check(_zap and _pp_trainers, "Power Plant: Zapdos is on the map before its trainers are beaten")
-check(_pp._figure_img(_zap[0].payload) is not None, "...drawn with its Journeys overworld sprite")
+check(_pp._figure_img(_zap[0].payload) is not None, "...drawn with its followers sprite (Jordan 11-14: every overworld Pokemon)")
 story.story_flags.pop("mt_moon_nerd_defeated", None)
 _mm = kanto("MT_MOON", came="PEWTER_CITY")
 _last = _mm.run.n_floors - 1

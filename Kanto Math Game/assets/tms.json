@@ -269,6 +269,14 @@
   "gift": true,
   "from": "FireRed TM49: lying in the Rocket Hideout, B4F"
  },
+ "TM124": {
+  "move": "SKILL-SWAP",
+  "type": "PSYCHIC",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM48: lying on Route 12, by the pier"
+ },
  "TM13": {
   "move": "FIRE-SPIN",
   "type": "FIRE",

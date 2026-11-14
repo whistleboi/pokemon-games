@@ -1060,6 +1060,34 @@ for _k, _v in _tfs.items():
 if _scope is not None:
     story.inventory["SILPH_SCOPE"] = _scope
 
+# ---- batch 15: Route 12, Snorlax on the pier
+_sf = {k: story.story_flags.pop(k, None) for k in ("KANTO_ROUTE_12_boss_defeated", "got_tm113_route12", "hidden_KANTO_ROUTE_12_0_14_70")}
+_fl = story.inventory.pop("POKE_FLUTE", None)
+r12 = open_map("KANTO_ROUTE_12", "LAVENDER_TOWN")
+_quiet(r12)
+check(r12.run.floor.exits.get((14, 70)) == "BOSS", "Route 12: Snorlax asleep across the pier where FireRed has him")
+r12.run.player = (14, 69); r12.anim = 0; said.clear()
+r12.step(0, 1); play(lambda: g.current_state._ready(), 300)
+check(tuple(r12.run.player) == (14, 69) and any("asleep" in s for s in said), f"...without the Poké Flute he won't budge ({said[:1]})")
+_rf = r12.recipe["art"]["room_floors"]
+_floor(r12, _rf["gate_2"])
+_had = story.inventory.get("TM113", 0)
+_use(r12, (7, 6), (0, -1))
+check(story.inventory.get("TM113", 0) == _had + 1, "...upstairs in the lookout, the girl gives you TM113 Return (FireRed's TM27)")
+story.story_flags["KANTO_ROUTE_12_boss_defeated"] = True
+r12 = open_map("KANTO_ROUTE_12", "LAVENDER_TOWN"); _quiet(r12); frames(2)
+_lo = story.inventory.get("LEFTOVERS", 0)
+r12.run.player = (14, 69); r12.anim = 0; said.clear()
+r12.step(0, 1); play(lambda: g.current_state._ready(), 300)
+check(tuple(r12.run.player) == (14, 70) and story.story_flags.get("hidden_KANTO_ROUTE_12_0_14_70") and story.inventory.get("LEFTOVERS", 0) >= 1, f"...Snorlax gone: on his spot, FireRed's hidden Leftovers ({r12.run.player})")
+for _k, _v in _sf.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+story.inventory.pop("TM113", None) if not _had else None
+if _fl is not None:
+    story.inventory["POKE_FLUTE"] = _fl
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

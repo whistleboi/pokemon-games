@@ -17310,199 +17310,154 @@
    "ccccccccccc..ccccccccccc",
    "ccccccccccc..ccccccccccc",
    "ccccccccccc..ccccccccccc",
-   "cccccccoooo,,oooocc~~~~~",
-   "cccccccoooo,,ooooqq~~~~~",
-   "cccccccoooo,,oooqq~~~~~~",
-   "cccccccoooo,,oooqq~~~~~~",
-   "cccccccoooo,,ooooqqqq~~~",
-   "ccccccc,,,,,,,,,oqqqqqq~",
-   "ccccccc,,,,,,,,,oooooqq~",
-   "ccccccc,,oooo,,,oooooqq~",
-   "ccccccc,,oooo,,,,!,,oqq~",
-   "ccccccc,,oooo,,,,,,,oqq~",
-   "ccccccc,,oooo,D,oooooqq~",
-   "ccccccc,,oooGGGGGooooqq~",
-   "ccccccc,,oqqGGGGGqqooqq~",
-   "cccccccoooqqGGGGGqqoqq~~",
-   "ccccccccqqqoGGGGGoqqqq~~",
-   "ccccccccqqqoGGGGGoqqqq~~",
-   "cccccccoooooGGDGGoooqq~~",
-   "cccccccccoooo,o,oooooqq~",
-   "cccccccccoooo,,,oooooqq~",
-   "cccccccccoooo,,,oooooqq~",
-   "cccccccccoooo,,,oooooqq~",
-   "ccccccccc,,,,,,,,,,,ooqq",
-   "ccccccccc,,,,,,,,,,,ooqq",
-   "cccccccccooooooooo,,oqq~",
-   "ccccccccoooooooooo,,oqq~",
-   "ccccccccoooooooooo,,oqq~",
-   "cccccccc,,ooo,,,,,,,oqq~",
-   "cccccccc,,ooo,,,,X,,oqq~",
-   "cccccccc,,ooo,,ooooooqq~",
-   "cccccccc,,ooo,,oooooooqq",
-   "cccccccc,,ooo,,ooo..ooqq",
-   "cccccccc,,,,,,,ooo..ooqq",
-   "cccccccc,,,,,,,ooo..ooqq",
-   "cccccccc,,oooooooo..oqq~",
-   "cccccccc,,oooooooo..oqq~",
-   "cccccccc,Xooooooooooooqq",
-   "cccccccc,,ooooooooooooqq",
-   "TTTTTTTT,,,,,,,,,,,,ooqq",
-   "TTTTTTTT,,,,,,,,,,,,ooqq",
-   "TTTTTTTT,,oo,,ooooooooqq",
-   "TTTTTTTT,,oo,,ooooooooqq",
-   "TTTTTTTT,,oo,,oooooooqq~",
-   "TTTTTTTToooo,,,,X,oooqq~",
-   "TTTTTTTToooo,,,,,,oooqq~",
-   "TTTTTTTToooooooo,,,,oqq~",
-   "TTTTTTTToooooooo,,,,oqq~",
-   "TTTTTTTToooooooo,,oooqq~",
-   "TTTTTTTToooooooo,,ooqq~~",
-   "TTTTTTTT,,,,,,oo,,ooqq~~",
-   "TTTTTTTT,,,,,,oo,,oooqq~",
-   "TTTTTTTT,,oo,,oo....oqq~",
-   "TTTTTTTT,,oo,,oo....ooqq",
-   "TTTTTTTT,,oo,,oo....ooqq",
-   "TTTTTTTT,,oo,,,,....ooqq",
-   "TTTTTTTT,,oo,X,,....ooqq",
-   "TTTTTTTT,,oooooooooooqq~",
-   "TTTTTTTT,,oooooooooooqq~",
-   "TTTTTTTT,,oooooooooooqq~",
-   "TTTTTTTT,,,,,,,,,,,Xoqq~",
-   "TTTTTTTT,,,,,,,,,,,,oqq~",
-   "TTTTTTTToooooo,,oooooqq~",
-   "TTTTTTTToooooo,,ooooooqq",
-   "TTTTTTTToooooo,,ooooooqq",
-   "kkkkkkkkoooooo,,ooooqq~~",
-   "<......kkkkkkk,!ooooqq~~",
-   "<.............,,oooqq~~~",
-   "<......kkkkkkk,,oooqq~~~",
-   "kkkkkkkkoooooo,,oooqq~~~",
-   "TTTTTTTToooooo,,oooqq~~~",
-   "TTTTTTTToooooo,,ooooqq~~",
-   "TTTTTTTToooooo,,ooooqq~~",
-   "TTTTTTTToooooo,,oooooqq~",
-   "TTTTTTTToooooo,,oooooqq~",
-   "TTTTTTTToooooo,,ooooooqq",
-   "TTTTTTTToooooo,,,,,,ooqq",
-   "TTTTTTTToooooo,,,,,,ooqq",
-   "TTTTTTTToooooooooo,,ooqq",
-   "TTTTTTTToooooooooo,,oqq~",
-   "TTTTTTTToooooooooo,,oqq~",
-   "TTTTTTTT,,..........oqq~",
-   "TTTTTTTT,,.HHHHHf.f.oqq~",
-   "TTTTTTTT,,.HDHHH.f..ooqq",
-   "TTTTTTTT,,..........ooqq",
-   "TTTTTTTT,,kkkkkkkkkkooqq",
-   "TTTTTTTT,,ooooooooooooqq",
-   "TTTTTTTT,,oooooooooooqq~",
-   "TTTTTTTT,,oooooooooooqq~",
-   "TTTTTTTT,,,,,X,,,,ooqq~~",
-   "TTTTTTTT,,,,,,,,,,ooqq~~",
-   "TTTTTTTToooooo,,ooooqq~~",
-   "TTTTTTTToooooo,,ooooqq~~",
-   "TTTTTTTToooooo,,oooqq~~~",
-   "TTTTTTTToooooo,,oooqq~~~",
-   "TTTTTTTTTTTToo,,ooooqq~~",
-   "TTTTTTTT..XToo,,ooooqq~~",
-   "TTTTTTTT...2,,,,ooooqq~~",
-   "TTTTTTTT..T.,,,,ooooqq~~",
-   "TTTTTTTTTT..oo,,,,,,ooqq",
-   "TTTTTTTT....oo,,,,,,ooqq",
-   "TTTTTTTT,,,,,,,,ooooooqq",
-   "TTTTTTTT,,,,,,,,ooooooqq",
-   "TTTTTTTToooooo,,,,,,ooqq",
-   "TTTTTTTToooooo,,,,,,ooqq",
-   "TTTTTTTTooooooooooX,ooqq",
-   "TTTTTTTToooooooooo,,ooqq",
-   "TTTTTTTTkkkkkk,,,,,,ooqq",
-   "TTTTTTTT....2.,,,,,,ooqq",
-   "TTTTTTTT\"\"\"\"kkoo,,ooooqq",
-   "TTTTTTTT\"\"\"\"TToo,,ooooqq",
-   "TTTTTTTT\"\"\"\"TToo,,oooqq~",
-   "TTTTTTTT\"\"\"\"TToo,,oooqq~",
-   "TTTTTTTT\"\"\"\"TT,,,,oooqq~",
-   "TTTTTTTT\"\"\"\"TT,,,,oooqq~",
-   "TTTTTTTT\"\"\"\"TT,,ooooqq~~",
-   "TTTTTTTTTTTTTTvvooooqq~~"
+   "cccccccoooo..oooo~~ccccc",
+   "cccccccoooo..oooo~~ccccc",
+   "cccccccoooo..ooo~~cccccc",
+   "cccccccoooo..ooo~~cccccc",
+   "cccccccoooo..oooo~~~~ccc",
+   "ccccccc.........o~~~~~~c",
+   "ccccccc.........ooooo~~c",
+   "ccccccc..oooo...ooooo~~c",
+   "ccccccc..oooo....!..o~~c",
+   "ccccccc..oooo.......o~~c",
+   "ccccccc..oooo.DDooooo~~c",
+   "ccccccc..ooo.cBB.oooo~~c",
+   "ccccccc..o~~ccccc~~oo~~c",
+   "cccccccooo~~ccccc~~o~~cc",
+   "ccccccc~~~~occccco~~~~cc",
+   "ccccccc~~~~occCcco~~~~cc",
+   "cccccccoooooccDccooo~~cc",
+   "cccccccccoooo...ooooo~~c",
+   "cccccccccoooo...ooooo~~c",
+   "cccccccccoooo...ooooo~~c",
+   "cccccccccoooo...ooooo~~c",
+   "ccccccccc...........oo~~",
+   "ccccccccc...........oo~~",
+   "cccccccccooooooooo..o~~c",
+   "ccccccccoooooooooo..o~~c",
+   "ccccccccoooooooooo..o~~c",
+   "cccccccc..ooo.......o~~c",
+   "cccccccc..ooo....X..o~~c",
+   "cccccccc..ooo..oooooo~~c",
+   "cccccccc..ooo..ooooooo~~",
+   "cccccccc..ooo..ooo..oo~~",
+   "cccccccc.......oooN.oo~~",
+   "cccccccc.......ooo..oo~~",
+   "cccccccc..oooooooo..o~~c",
+   "cccccccc..oooooooo..o~~c",
+   "cccccccc.Xoooooooooooo~~",
+   "cccccccc..oooooooooooo~~",
+   "cccccccc............oo~~",
+   "cccccccc............oo~~",
+   "cccccccc..oo..oooooooo~~",
+   "cccccccc..oo..oooooooo~~",
+   "cccccccc..oo..ooooooo~~c",
+   "ccccccccoooo....X.ooo~~c",
+   "ccccccccoooo......ooo~~c",
+   "ccccccccoooooooo....o~~c",
+   "ccccccccoooooooo....o~~c",
+   "ccccccccoooooooo..ooo~~c",
+   "ccccccccoooooooo..oo~~cc",
+   "cccccccc......oo..oo~~cc",
+   "cccccccc......oo..ooo~~c",
+   "cccccccc..oo..oo....o~~c",
+   "cccccccc..oo..oo....oo~~",
+   "cccccccc..oo..oo....oo~~",
+   "cccccccc..oo........oo~~",
+   "cccccccc..oo.X......oo~~",
+   "cccccccc..ooooooooooo~~c",
+   "cccccccc..ooooooooooo~~c",
+   "cccccccc..ooooooooooo~~c",
+   "cccccccc...........Xo~~c",
+   "cccccccc............o~~c",
+   "ccccccccoooooo..ooooo~~c",
+   "ccccccccoooooo..oooooo~~",
+   "ccccccccoooooo..oooooo~~",
+   "ccccccccoooooo..oooo~~cc",
+   "<......ccccccc.!oooo~~cc",
+   "<...............ooo~~ccc",
+   "<......ccccccc..ooo~~ccc",
+   "ccccccccoooooo..ooo~~ccc",
+   "ccccccccoooooo..ooo~~ccc",
+   "ccccccccoooooo..oooo~~cc",
+   "ccccccccoooooo..oooo~~cc",
+   "ccccccccoooooo..ooooo~~c",
+   "ccccccccoooooo..ooooo~~c",
+   "ccccccccoooooo..oooooo~~",
+   "ccccccccoooooo......oo~~",
+   "ccccccccoooooo......oo~~",
+   "ccccccccoooooooooo..oo~~",
+   "ccccccccoooooooooo..o~~c",
+   "ccccccccoooooooooo..o~~c",
+   "cccccccc............o~~c",
+   "cccccccc...cAccc....o~~c",
+   "cccccccc...cDccc....oo~~",
+   "cccccccc............oo~~",
+   "cccccccc..ccccccccccoo~~",
+   "cccccccc..oooooooooooo~~",
+   "cccccccc..ooooooooooo~~c",
+   "cccccccc..ooooooooooo~~c",
+   "cccccccc.....X....oo~~cc",
+   "cccccccc..........oo~~cc",
+   "ccccccccoooooo..oooo~~cc",
+   "ccccccccoooooo..oooo~~cc",
+   "ccccccccoooooo..ooo~~ccc",
+   "ccccccccoooooo..ooo~~ccc",
+   "ccccccccccccoo..oooo~~cc",
+   "cccccccc..Xcoo..oooo~~cc",
+   "cccccccc...2....oooo~~cc",
+   "cccccccc.Nc.....oooo~~cc",
+   "cccccccccc..oo......oo~~",
+   "cccccccc....oo......oo~~",
+   "cccccccc........oooooo~~",
+   "cccccccc........oooooo~~",
+   "ccccccccoooooo......oo~~",
+   "ccccccccoooooo......oo~~",
+   "ccccccccooooooooooX.oo~~",
+   "ccccccccoooooooooo..oo~~",
+   "cccccccccccccc......oo~~",
+   "cccccccc....2.......oo~~",
+   "cccccccc\"\"\"\"ccoo..oooo~~",
+   "cccccccc\"\"\"\"ccoo..oooo~~",
+   "cccccccc\"\"\"\"ccoo..ooo~~o",
+   "cccccccc\"\"\"\"ccoo..ooo~~o",
+   "cccccccc\"\"\"\"cc....ooo~~o",
+   "cccccccc\"\"\"\"cc....ooo~~o",
+   "cccccccc\"\"\"\"cc..oooo~~oo",
+   "ccccccccccccccvvvvvv~~vv"
   ],
   "exits": {
    "^": "LAVENDER_TOWN",
-   "<": "KANTO_ROUTE_11",
-   "v": "KANTO_ROUTE_13"
+   "v": "KANTO_ROUTE_13",
+   "<": "KANTO_ROUTE_11"
   },
   "buildings": {
-   "G": "gate",
-   "H": "house"
+   "A": "house",
+   "B": "gate",
+   "C": "gate"
   },
   "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "H": [
-    115,
-    189,
-    246
-   ],
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_30.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     13,
-     15,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     15,
-     15,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     11,
-     84,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     115,
-     189,
-     246
-    ]
-   }
+  "people": [
+   "TM124",
+   "IRON"
   ],
   "signs": [
    [
     "ROUTE 12",
-    "North: Lavender Town"
+    "North to Lavender Town"
    ],
    [
-    "SPORT FISHING AREA",
-    "Cast a line off the pier!"
+    "SPORT FISHING AREA"
    ]
   ],
   "trainer_spots": [
@@ -17515,205 +17470,167 @@
    "Justin",
    "Andrew"
   ],
+  "inside": {
+   "12,86": "house",
+   "14,15": "gate",
+   "15,15": "gate",
+   "14,21": "gate"
+  },
+  "edge_to": {
+   "11,0": [
+    11,
+    19
+   ],
+   "12,0": [
+    12,
+    19
+   ],
+   "14,119": [
+    62,
+    0
+   ],
+   "15,119": [
+    63,
+    0
+   ],
+   "16,119": [
+    64,
+    0
+   ],
+   "17,119": [
+    65,
+    0
+   ],
+   "18,119": [
+    66,
+    0
+   ],
+   "19,119": [
+    67,
+    0
+   ],
+   "22,119": [
+    70,
+    0
+   ],
+   "23,119": [
+    71,
+    0
+   ],
+   "0,69": [
+    71,
+    9
+   ],
+   "0,70": [
+    71,
+    10
+   ],
+   "0,71": [
+    71,
+    11
+   ]
+  },
+  "moves": {
+   "18,36": {
+    "m": "face",
+    "d": "d"
+   },
+   "9,101": {
+    "m": "face",
+    "d": "d"
+   },
+   "17,32": {
+    "m": "look",
+    "d": "du",
+    "s": 1
+   },
+   "9,40": {
+    "m": "look",
+    "d": "lr",
+    "s": 1
+   },
+   "16,47": {
+    "m": "look",
+    "d": "dl",
+    "s": 4
+   },
+   "13,59": {
+    "m": "look",
+    "d": "du",
+    "s": 1
+   },
+   "19,63": {
+    "m": "face",
+    "d": "r"
+   },
+   "13,92": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     4,
+     4
+    ],
+    "s": 1
+   },
+   "10,99": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "18,108": {
+    "m": "look",
+    "d": "lr",
+    "s": 1
+   }
+  },
   "boss_spot": [
    14,
    70
   ],
-  "parts": true,
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
-     "ccccc^ccccc",
-     "..m.....m..",
-     "z.m.===.m..",
-     "..m.===.m..",
-     ".Nm.===.m..",
-     "..m.===.m..",
-     "z.m.===.mmm",
-     "..m.===....",
-     "..m.===..mm",
-     "..m......cm",
-     "z.m..vv..mm",
+     "ccccc^<cccc",
+     "ccm.....mcc",
+     "ccm.....mcc",
+     "ccm.....mcc",
+     "cNm.....mcc",
+     "ccm.....mcc",
+     "ccm.....cmc",
+     "ccm........",
+     "ccm......cc",
+     "ccm.....ncc",
+     "ccm..vv..cc",
      "ccccccccccc"
     ],
     "exits": {
      "^": "OUT:14,15",
-     "v": "OUT:14,21"
+     "<": "OUT:15,15",
+     "v": "OUT:14,21",
+     "n": "ROOM:gate_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      197,
-      187,
-      127
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,2": [
-       246,
-       238,
-       189
-      ],
-      "8,2": [
-       246,
-       238,
-       189
-      ],
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "8,3": [
-       246,
-       238,
-       189
-      ],
-      "2,4": [
-       246,
-       238,
-       189
-      ],
-      "8,4": [
-       246,
-       238,
-       189
-      ],
-      "2,5": [
-       246,
-       238,
-       189
-      ],
-      "8,5": [
-       246,
-       238,
-       189
-      ],
-      "2,6": [
-       246,
-       238,
-       189
-      ],
-      "8,6": [
-       246,
-       238,
-       189
-      ],
-      "2,7": [
-       246,
-       238,
-       189
-      ],
-      "8,7": [
-       246,
-       238,
-       189
-      ],
-      "9,7": [
-       246,
-       238,
-       189
-      ],
-      "10,7": [
-       246,
-       238,
-       189
-      ],
-      "2,8": [
-       246,
-       238,
-       189
-      ],
-      "2,9": [
-       246,
-       238,
-       189
-      ],
-      "9,9": [
-       180,
-       180,
-       164
-      ],
-      "10,9": [
-       255,
-       255,
-       255
-      ],
-      "2,10": [
-       246,
-       238,
-       189
-      ],
-      "10,10": [
-       255,
-       255,
-       255
-      ],
-      "2,11": [
-       131,
-       131,
-       131
-      ],
-      "9,11": [
-       180,
-       180,
-       164
-      ],
-      "10,11": [
-       180,
-       180,
-       164
-      ],
-      "9,10": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/23_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_stairs": {
-      "9,10": "flight"
-     },
-     "_kinds": {
-      "2,2": "table",
-      "8,2": "table",
-      "2,3": "table",
-      "8,3": "table",
-      "2,4": "table",
-      "8,4": "table",
-      "2,5": "table",
-      "8,5": "table",
-      "2,6": "table",
-      "8,6": "table",
-      "2,7": "table",
-      "8,7": "table",
-      "9,7": "table",
-      "10,7": "table",
-      "2,8": "table",
-      "2,9": "table",
-      "9,9": "table",
-      "10,9": "table",
-      "2,10": "table",
-      "10,10": "table",
-      "2,11": "table",
-      "9,11": "table",
-      "10,11": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GATE GUARD"
     ],
+    "moves": {
+     "1,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
     "land": {
      "14,15": [
       14,
@@ -17734,99 +17651,126 @@
       10
      ]
     },
-    "title": "Route 12 Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/23_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Route 12 Gate"
+   },
+   "gate_2": {
+    "art": [
+     "ccccccccccccc",
+     "cccc!ccc!cccc",
+     "cc.........cc",
+     "c...........c",
+     "c...........c",
+     "c..cc..Ncc..c",
+     "c..cc...cc..c",
+     "c...........c",
+     "c.......cc..c",
+     "c.......ccv.c",
+     "cc......cc..c"
+    ],
+    "exits": {
+     "v": "ROOM:gate"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/23_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Little girl"
+    ],
+    "signs": [
+     [
+      "Through the binoculars... There's a man fishing off the pier!"
+     ],
+     [
+      "Through the binoculars... It's the Pokémon Tower, standing tall over Lavender."
+     ]
+    ],
+    "moves": {
+     "7,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/23_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Route 12 Gate 2F"
    },
    "house": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
      "ccccccccccc",
      "...........",
      "...........",
-     "....Nmm....",
-     "z....mm....",
+     "....Ncc....",
+     "c....cc....",
      "...........",
-     "z..v.......",
-     "ccccccccccc"
+     "c..v.......",
+     "ccvcvcccccc"
     ],
     "exits": {
      "v": "OUT:12,86"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      186,
-      175,
-      128
-     ],
-     "_wall": [
-      164,
-      180,
-      189
-     ],
-     "_things": {
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/23_2.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_mat": true,
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      }
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "FISHING GURU"
     ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
     "land": {
      "12,86": [
       12,
@@ -17839,14 +17783,44 @@
       6
      ]
     },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/23_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
     "title": "Fishing House"
    }
   },
-  "inside": {
-   "14,15": "gate",
-   "14,21": "gate",
-   "12,86": "house"
-  }
+  "parts": true,
+  "hidden": {
+   "18,57": "HYPER_POTION",
+   "14,70": "LEFTOVERS",
+   "9,116": "RARE_CANDY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_30.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     120
+    ]
+   }
+  ]
  },
  "KANTO_ROUTE_13": {
   "art": [

@@ -2199,7 +2199,10 @@
         { "sprite": "camper.png", "name": "Justin", "class": "CAMPER", "team": [32, 33], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Andrew", "class": "FISHERMAN", "team": [129, 129], "levels": [24, 24], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Lavender Town is north. The pier runs a long way south."]}}, {"text": "FISHING GURU", "action": "EVENT", "event": {"lines": ["Man: I'm the Fishing Guru's brother. The sea off this pier is full of fish!"]}}, 
+      "route_menu": [{"text": "TM124", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm124_route12", "event": {"lines": ["A TM, lying by the fence! It's Skill Swap."], "gift_item": {"TM124": 1}, "flag": "got_tm124_route12"}},
+        {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_route12", "event": {"lines": ["An Iron! It raises a Pokémon's Defense."], "gift_item": {"IRON": 1}, "flag": "got_iron_route12"}},
+        {"text": "Little girl", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Girl: Oh! You came all the way up to see the view?", "Here, I want you to have this. It's a move for a Pokémon that loves its Trainer!", "You received TM113, Return!"], "gift_item": {"TM113": 1}, "flag": "got_tm113_route12", "done": ["Girl: Return gets stronger the more your Pokémon likes you. Be nice to yours!"]}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Lavender Town is north. The pier runs a long way south."]}}, {"text": "FISHING GURU", "action": "EVENT", "event": {"lines": ["Man: I'm the Fishing Guru's brother. The sea off this pier is full of fish!"]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},

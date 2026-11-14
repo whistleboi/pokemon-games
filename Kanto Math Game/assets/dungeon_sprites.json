@@ -101,7 +101,7 @@
       "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_12:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_15:GATE GUARD": {
       "sheet": "NPC 01.png"
@@ -140,7 +140,7 @@
       "sheet": "fr_55.png"
     },
     "KANTO_ROUTE_12:FISHING GURU": {
-      "sheet": "NPC 10.png"
+      "sheet": "fr_57.png"
     },
     "KANTO_ROUTE_16:CYCLIST": {
       "sheet": "NPC 25.png"
@@ -4152,6 +4152,15 @@
     },
     "KANTO_POKEMON_TOWER:MR. FUJI": {
       "sheet": "fr_78.png"
+    },
+    "KANTO_ROUTE_12:TM124": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_12:IRON": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_12:Little girl": {
+      "sheet": "fr_22.png"
     }
   },
   "townsperson": "NPC 17.png",

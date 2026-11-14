@@ -98,6 +98,7 @@ HELD_BOOST = 1.2
 HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},
         "CHARCOAL": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fire-type moves hit harder."},
         "BLACK_GLASSES": {"price": 1000, "text": "Give it to a Pokemon to hold: its Dark-type moves hit harder."},   # (FireRed: the Rocket Hideout, 11-14)
+        "LEFTOVERS": {"price": 4000, "text": "Held: its holder gets back a little HP at the end of every turn."},   # (FireRed: hidden under Route 12's Snorlax, 11-14)
         "SEA_INCENSE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},
         "CLEANSE_TAG": {"price": 1000, "text": "Give it to your lead Pokemon to hold: fewer wild Pokemon come near."},
         "EVIOLITE": {"price": 3000, "text": "Give it to a Pokemon that can still evolve: it takes less damage."},
