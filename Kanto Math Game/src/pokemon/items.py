@@ -126,7 +126,9 @@ VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it 
              "BIG_PEARL": {"price": 7500, "text": "A big, shining pearl. Sell it for a good price."},
              "PEARL": {"price": 1400, "text": "A small, pretty pearl. Sell it for a little money."},
              "STARDUST": {"price": 2000, "text": "Lovely red sand. Sell it for a little money."},
-             "STAR_PIECE": {"price": 9800, "text": "A shard of a pretty gem. Sell it for a good price."}}
+             "STAR_PIECE": {"price": 9800, "text": "A shard of a pretty gem. Sell it for a good price."},
+             "TINY_MUSHROOM": {"price": 500, "text": "A small, rare mushroom. Sell it for a little money."},  # (FireRed: hidden in Mt. Moon)
+             "BIG_MUSHROOM": {"price": 5000, "text": "A large, rare mushroom. Sell it for a good price."}}
 
 
 def use_vitamin(pokemon, item):

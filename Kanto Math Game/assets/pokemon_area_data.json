@@ -148,7 +148,7 @@
         "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "visited": "PEWTER_CITY", "badges_less": 1 }
       },
       {
-        "id": "m3", "type": "MAIN", "text": "The Road to Cerulean", "desc": "With the Boulder Badge in hand, head east through Route 3 and the depths of Mt. Moon to find Cerulean City.",
+        "id": "m3", "type": "MAIN", "text": "The Road to Cerulean", "target": "MT_MOON", "desc": "With the Boulder Badge in hand, head east through Route 3 and the depths of Mt. Moon to find Cerulean City.",
         "condition": { "badges_min": 1, "visited_not": "CERULEAN_CITY" }
       },
       {
@@ -1830,7 +1830,8 @@
         { "sprite": "youngster.png", "name": "Calvin", "class": "YOUNGSTER", "team": [21], "levels": [14], "rewards": { "balls": 3 } },
         { "sprite": "lass.png", "name": "Robin", "class": "LASS", "team": [39], "levels": [14], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
+      "route_menu": [
+        {"text": "MAGIKARP SALESMAN", "action": "EVENT", "flag_condition": "not got_magikarp_mtmoon", "event": {"requires": ["party_room"], "fail": ["Man: Hey, your team's full! Come back when you've got room for a fantastic Pokémon!"], "lines": ["Man: Psst, kid! Want a MAGIKARP? Just 500, and it's yours!", "Man: ...Pleasure doing business with you. No refunds!"], "pay": 500, "gift_pokemon": 129, "gift_level": 5, "flag": "got_magikarp_mtmoon"}},{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1854,6 +1855,7 @@
         { "sprite": "lass.png", "name": "Crissy", "class": "LASS", "team": [46, 46, 47], "levels": [31, 31, 31], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "TM120", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm120_route4", "event": {"lines": ["A TM, lying on the ledge! It's Roar."], "gift_item": {"TM120": 1}, "flag": "got_tm120_route4"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2768,6 +2770,16 @@
         {"sprite": "jessie_james.png", "name": "Jessie and James", "class": "ROCKET", "dialogue": {"intro": ["Prepare for trouble!", "And make it double!"], "player_won": ["It looks like we were the ones who found trouble!", "Team Rocket's blasting off again!"], "player_lost": ["Too easy!"]}, "team": [23, 109, 52], "rewards": {"balls": 3}}
       ],
       "route_menu": [
+        {"text": "PARALYZE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_parlyz_mtmoon", "event": {"lines": ["A Paralyze Heal, near the cave wall."], "gift_item": {"PARALYZE_HEAL": 1}, "flag": "got_parlyz_mtmoon"}}, 
+        {"text": "TM50", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm50_mtmoon", "event": {"lines": ["A TM, lying in the dark! It's Bullet Seed."], "gift_item": {"TM50": 1}, "flag": "got_tm50_mtmoon"}}, 
+        {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_mtmoon", "event": {"lines": ["A Potion, dropped by some hiker."], "gift_item": {"POTION": 1}, "flag": "got_potion_mtmoon"}}, 
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_candy_mtmoon", "event": {"lines": ["A Rare Candy, tucked in a corner!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_candy_mtmoon"}}, 
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rope_mtmoon", "event": {"lines": ["An Escape Rope. Handy in a cave like this!"], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_rope_mtmoon"}}, 
+        {"text": "MOON STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_moonstone_mtmoon", "event": {"lines": ["A Moon Stone, glowing faintly in the rock!"], "gift_item": {"MOON_STONE": 1}, "flag": "got_moonstone_mtmoon"}}, 
+        {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_starpiece_mtmoon", "event": {"lines": ["A Star Piece, glinting on the cave floor."], "gift_item": {"STAR_PIECE": 1}, "flag": "got_starpiece_mtmoon"}}, 
+        {"text": "TM23", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm23_mtmoon", "event": {"lines": ["A TM the Rockets left behind! It's Thief."], "gift_item": {"TM23": 1}, "flag": "got_tm23_mtmoon"}}, 
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_mtmoon", "event": {"lines": ["A Revive, lying by the rocks."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_mtmoon"}}, 
+        {"text": "ANTIDOTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_antidote_mtmoon", "event": {"lines": ["An Antidote, left in the dust."], "gift_item": {"ANTIDOTE": 1}, "flag": "got_antidote_mtmoon"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},

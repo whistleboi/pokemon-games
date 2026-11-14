@@ -2861,15 +2861,15 @@
    ],
    "47,20": [
     0,
-    10
+    30
    ],
    "47,21": [
     0,
-    11
+    31
    ],
    "47,22": [
     0,
-    12
+    32
    ]
   },
   "moves": {
@@ -3851,73 +3851,100 @@
   "art": [
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccCCCCCccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccCCCCCccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccr...r..CCCCCccccQcccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc=dr....CCDCCdcccDcccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc=====d.....d======ccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc_____==========!==ccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc==================rcc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc============_______cc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc=r=================cc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc_________========r=cc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc============_______cc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc=r==============cc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc=============rcc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc___=======rccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========cccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========cccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc=====___cccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========cccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========cccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========cccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========cccccccc",
-   "ccccccccccccc=================X====cccccccccccccccccccccccccccccccccd=====dccccccccc",
-   "ccccccccccc======X=======X===========ccccccccccccccccccccccccccccccc.d==dccccccccccc",
-   "ccccccccccc=====d.......d============cccccc================ccccccccc.....ccccccccccc",
-   "ccccccccccc.X.......ccc.......ccX.d==ccccc===================ccccccc.....ccccccccccc",
-   "ccccccccccc___..____ccc_______cc___..ccccc===d..........d====ccccccc.....ccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc...c..ccAccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..c....ccDcc.cccncccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..................ccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc_____..........!..ccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......N...........ccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc............_______cc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.c.................cc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc_________........c.cc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc............_______cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.c..............cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.......N.....ccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc___.......cccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....___cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........cccccccc",
+   "ccccccccccccc.................X....ccccccccccccccccccccccccccccccccc.......ccccccccc",
+   "ccccccccccc......X.......X...........ccccccccccccccccccccccccccccccc.....ccccccccccc",
+   "ccccccccccc..........................cccccc................ccccccccc.....ccccccccccc",
+   "ccccccccccc.X.......ccc.......ccX....ccccc...................ccccccc.....ccccccccccc",
+   "ccccccccccc___..____ccc_______cc___..ccccc...................ccccccc.....ccccccccccc",
    "ccccccc.............ccc.......cc.....ccccc____..ccccccc_____.ccccccc___..ccccccccccc",
    "...................Xccc.......cc................ccccccc......ccccccc.....ccccccccccc",
    "<...................ccc......Xccc...............ccccccc......ccccc.......\"\"\"\"ccccccc",
-   "<........ccc........ccc.......ccc\"\"\"\"\"\"\"X.......ccccccc...............##!\"\"\"\"\"\"ccccc",
+   "<........ccc........ccc.......ccc\"\"\"\"\"\"\"X.......ccccccc...............cc!\"\"\"\"\"\"ccccc",
    "<.cccccccccc____..__ccc_______ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccc................\"\"\"\"\"\"\"\"ccccc",
-   "cccccccccccc........ccc.......ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccc................\"\"\"\"\"\"\"\"ccccc",
-   "cccccccccccc========d........cccccc\"\"\"\"\"\"\"\"\"\"\"\"ccccccccf.f............\"\"\"\"\"\"\"\"\"ccccc",
-   "cccccccccccccc===============cccccc\"\"\"\"\"\"\"\"\"\"\"\"cccccccccc.f...........\"\"\"\"\"\"\"\"\"ccccc",
-   "ccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"\"ccccccccccf.f.f........\"\"\"\"\"\"cccccccc",
+   "cccccccccccc........ccc.......ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccc...............N\"\"\"\"\"\"\"\"ccccc",
+   "cccccccccccc.................cccccc\"\"\"\"\"\"\"\"\"\"\"\"cccccccc...............\"\"\"\"\"\"\"\"\"ccccc",
+   "cccccccccccccc...............cccccc\"\"\"\"\"\"\"\"\"\"\"\"cccccccccc.............\"\"\"\"\"\"\"\"\"ccccc",
+   "ccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"\"cccccccccc.............\"\"\"\"\"\"cccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
-   "Q": "MT_MOON",
-   "<": "PEWTER_CITY"
+   "<": "PEWTER_CITY",
+   "n": "MT_MOON"
   },
   "buildings": {
-   "C": "center",
-   "Q": "cave"
+   "A": "center"
   },
   "roofs": {
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "Q": [
-    123,
-    74,
-    74
-   ]
+   "_picture": {
+    "f": "fr_ground/k_r3.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
+  "people": [
+   {
+    "text": "Youngster",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Ouch! I tripped over a Geodude! They look just like rocks."
+     ]
+    }
+   },
+   {
+    "text": "Boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Mt. Moon's a long cave. Stock up on Potions at the Center first!"
+     ]
+    }
+   },
+   {
+    "text": "Tired hiker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Phew... I need a rest. That tunnel from Cerulean wears you right out!"
+     ]
+    }
+   }
+  ],
   "signs": [
    [
     "MT. MOON",
-    "The tunnel through the mountain. Cerulean City lies beyond!"
+    "Tunnel entrance"
    ],
    [
     "ROUTE 3",
-    "Mt. Moon is just north. Rest at the Pokemon Center before you go in!"
+    "Mt. Moon is just ahead!"
    ]
   ],
   "trainer_spots": [
@@ -3930,166 +3957,326 @@
    "Calvin",
    "Robin"
   ],
+  "inside": {
+   "72,5": "center"
+  },
+  "edge_to": {
+   "0,30": [
+    47,
+    20
+   ],
+   "0,31": [
+    47,
+    21
+   ],
+   "0,32": [
+    47,
+    22
+   ]
+  },
+  "moves": {
+   "70,33": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "69,8": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "75,14": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   },
+   "30,23": {
+    "m": "face",
+    "d": "l",
+    "s": 5
+   },
+   "17,24": {
+    "m": "face",
+    "d": "d",
+    "s": 2
+   },
+   "25,24": {
+    "m": "face",
+    "d": "d",
+    "s": 2
+   },
+   "12,26": {
+    "m": "face",
+    "d": "r",
+    "s": 3
+   },
+   "32,26": {
+    "m": "face",
+    "d": "r",
+    "s": 4
+   },
+   "19,29": {
+    "m": "face",
+    "d": "l",
+    "s": 5
+   },
+   "29,30": {
+    "m": "face",
+    "d": "l",
+    "s": 5
+   },
+   "40,31": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ],
+    "s": 3
+   }
+  },
   "rooms": {
    "center": {
-    "theme": "room",
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
-     "...............",
-     "...............",
-     "ce.........mm..",
-     "...........mm..",
+     "....mccNccm....",
+     ".N..cmmmmmc....",
+     ".....N........N",
+     "............N..",
+     "c<.........cc..",
+     "...........cc..",
      "......vvv......",
      "ccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:72,5"
+     "v": "OUT:72,5",
+     "<": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/16_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_mat": true
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "POKEMON CENTER"
+     "POKEMON CENTER",
+     "MAGIKARP SALESMAN",
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Six Poké Balls on my belt... There. You can only carry six Pokémon at once, you know."
+       ]
+      }
+     },
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Got too many Pokémon to carry? Send some to a PC. Any Center's PC will do."
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Team Rocket's been bothering the people of Cerulean. It's in the news every day."
+       ]
+      }
+     }
     ],
-    "title": "Pokemon Center",
-    "land": {
-     "72,5": [
-      72,
-      6
-     ]
+    "moves": {
+     "12,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "5,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "14,4": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,3": {
+      "m": "look",
+      "d": "udlr"
+     }
     },
-    "enter": {
-     "72,5": [
-      7,
-      7
-     ]
-    }
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/16_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "c<.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/16_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/16_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
    }
   },
-  "inside": {
-   "72,5": "center"
-  }
+  "hidden": {
+   "65,4": "PERSIM_BERRY",
+   "26,29": "ORAN_BERRY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/k_r3.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     84,
+     40
+    ]
+   }
+  ]
  },
  "MT_MOON": {
-  "theme": "cave",
-  "descend": true,
-  "buildings": {},
-  "figure_floors": {
-   "Miriam": 0,
-   "Marcos": 0,
-   "Josh": 0,
-   "Kent": 0,
-   "Iris": 0,
-   "Robby": 0,
-   "Jovan": 0,
-   "SUPER NERD": 2,
-   "TAKE DOME FOSSIL": 2,
-   "TAKE HELIX FOSSIL": 2,
-   "Grunt": 2,
-   "Jessie and James": 2
-  },
-  "floor_names": [
-   "1F",
-   "B1F",
-   "B2F"
-  ],
   "floors": [
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cc.........ccccccccc..........................cc",
+     "cc.N.......ccccccccc..........................cc",
      "cc..........ccccccc...........................cc",
      "cc...........ccccc...............X............cc",
      "cc...........ccccc............................cc",
      "cc...1.......cccc.............................cc",
-     "cc...........cccc........................c....cc",
+     "cc...........cccc........................cN...cc",
      "cc...........ccc........................cccc..cc",
      "cc...........ccc.........................cc...cc",
      "cc.....X.....ccc....ccccccccccccccc...........cc",
@@ -4103,8 +4290,8 @@
      "cc..................ccc....ccc.........ccc....cc",
      "ccccccccccc.........ccc....ccc.........ccc....cc",
      "ccccccccccc.........ccc....ccc.........ccc....cc",
-     "ccccccccccc.........ccc....ccc.........ccc....cc",
-     "cc....ccccccccccccccccc....ccc.........ccc....cc",
+     "ccccccccccc.........ccc....ccc.........ccc..N.cc",
+     "ccN...ccccccccccccccccc....ccc.........ccc....cc",
      "cc.....cccccccccccccccc....ccc.........ccc....cc",
      "cc......ccccccccccccccc....ccc.........ccc....cc",
      "cc......ccc................ccc.........ccc....cc",
@@ -4114,10 +4301,10 @@
      "cc..................cccccccccc...ccc...ccc....cc",
      "cc..................cccccccccc...cccX..ccc....cc",
      "cc............cc....cccccccccc...ccc...ccc....cc",
-     "cc...........cccc...ccccc........ccc..........cc",
+     "cc...........cccc...ccccc.N......ccc..........cc",
      "cc...........cccc...cccccc.......ccc..........cc",
      "cc...........cccc...cccccc.......ccc..........cc",
-     "cc...........cccc...ccccc.....X...............cc",
+     "cc.........N.cccc...ccccc.....X...........N...cc",
      "cc...........cccc...cccc......................cc",
      "cc...........cccc.v.cccc......................cc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -4126,7 +4313,49 @@
     "exits": {
      "v": "KANTO_ROUTE_3"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "MOON STONE",
+     {
+      "text": "Hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Clefairy live deep in this mountain, they say. I'd love to see one dance!"
+       ]
+      }
+     },
+     "ESCAPE ROPE",
+     "PARALYZE HEAL",
+     "POTION",
+     "TM50",
+     "RARE CANDY"
+    ],
+    "signs": [
+     [
+      "Watch out! Zubat bite!"
+     ]
+    ],
+    "trainer_spots": [
+     "Miriam",
+     "Marcos",
+     "Josh",
+     "Kent",
+     "Iris",
+     "Robby",
+     "Jovan"
+    ],
     "links": {
      "5,6": [
       1,
@@ -4144,20 +4373,80 @@
       21
      ]
     },
-    "signs": [
-     [
-      "TEAM ROCKET is lurking deep in Mt. Moon. Stay sharp, and keep your math sharper!"
-     ]
-    ],
-    "trainer_spots": [
-     "Miriam",
-     "Marcos",
-     "Josh",
-     "Kent",
-     "Iris",
-     "Robby",
-     "Jovan"
-    ]
+    "moves": {
+     "42,7": {
+      "m": "look",
+      "d": "dl"
+     },
+     "2,22": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,35": {
+      "m": "face",
+      "d": "d"
+     },
+     "26,32": {
+      "m": "face",
+      "d": "d"
+     },
+     "42,35": {
+      "m": "face",
+      "d": "d"
+     },
+     "44,21": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "33,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       5,
+       3
+      ],
+      "s": 2
+     },
+     "7,10": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ],
+      "s": 1
+     },
+     "13,17": {
+      "m": "face",
+      "d": "r",
+      "s": 4
+     },
+     "7,26": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "20,26": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "36,30": {
+      "m": "face",
+      "d": "r",
+      "s": 2
+     },
+     "30,35": {
+      "m": "look",
+      "d": "udlr",
+      "s": 4
+     }
+    },
+    "parts": true
    },
    {
     "art": [
@@ -4205,7 +4494,18 @@
     "exits": {
      "^": "KANTO_ROUTE_4"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "links": {
      "3,3": [
       0,
@@ -4242,6 +4542,15 @@
       5,
       10
      ]
+    },
+    "parts": true,
+    "hidden": {
+     "46,2": "TINY_MUSHROOM",
+     "26,2": "TINY_MUSHROOM",
+     "39,34": "TINY_MUSHROOM",
+     "24,35": "BIG_MUSHROOM",
+     "6,12": "BIG_MUSHROOM",
+     "25,34": "BIG_MUSHROOM"
     }
    },
    {
@@ -4251,13 +4560,13 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccc.................cccccccccccccccccccccccccccc",
      "ccc.................cccccccccccccccccccccccccccc",
-     "ccc.................ccc....cccccc....ccccccccccc",
-     "ccc.................ccc....c....c....c....cccccc",
+     "ccc.................ccc....cccccc..N.ccccccccccc",
+     "ccc.................ccc.N..c....c....c....cccccc",
      "ccc..ccccccccNNcccccccc....c....cc..cc....cccccc",
      "cc......c...........ccc....c..............cccccc",
      "cc...c..c...........ccc....c..............cccccc",
      "cc...1c.c...........ccc....c..cc..........cccccc",
-     "cc......c....N......ccc....c..c1.......c..cccccc",
+     "cc.N....c....N......ccc....c..c1.......c..cccccc",
      "cc.....cccccc..ccc..ccc....c.......X......cccccc",
      "ccccccccc........c..ccc....c..............cccccc",
      "c______c.........c..ccc............cc..........c",
@@ -4272,7 +4581,7 @@
      "cccccccc.....cccccccccccccccccccccccccccccc....c",
      "cccccccc.....c____________________________c....c",
      "cccccccc.....cccccccccccccccccccccccccccccc....c",
-     "cccccccc.....ccccccccccccccc....ccccccccccc....c",
+     "cccccccc.....ccccccccccccccc..N.ccccccccccc....c",
      "cccccccc.....cc...X........c....c..cc..........c",
      "cccccccc.....ccc...........cc..cc..cc..........c",
      "cccccccc.....cc....................cc.....cccccc",
@@ -4288,7 +4597,33 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "TM23",
+     "REVIVE",
+     "TAKE DOME FOSSIL",
+     "TAKE HELIX FOSSIL",
+     "ANTIDOTE",
+     "SUPER NERD",
+     "STAR PIECE"
+    ],
+    "trainer_spots": [
+     "Grunt",
+     "Grunt",
+     "Grunt",
+     "Grunt"
+    ],
     "links": {
      "25,21": [
       1,
@@ -4311,107 +4646,243 @@
       4
      ]
     },
-    "people": [
-     "TAKE DOME FOSSIL",
-     "TAKE HELIX FOSSIL",
-     "SUPER NERD"
+    "moves": {
+     "13,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "13,11": {
+      "m": "face",
+      "d": "r"
+     },
+     "30,26": {
+      "m": "face",
+      "d": "d"
+     },
+     "35,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "24,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "35,12": {
+      "m": "face",
+      "d": "u",
+      "s": 4
+     },
+     "12,20": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "37,21": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "18,27": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     }
+    },
+    "scenes": [
+     {
+      "who": "SUPER NERD",
+      "trigger": {
+       "zone": [
+        9,
+        8,
+        19,
+        11
+       ]
+      },
+      "condition": "not:mt_moon_nerd_defeated",
+      "every": true,
+      "approach": true,
+      "lines": [
+       "Super Nerd Miguel: Hey, stop right there!"
+      ],
+      "then": "talk",
+      "after": "stay"
+     }
     ],
-    "trainer_spots": [
-     "Grunt",
-     "Grunt",
-     "Grunt",
-     "Grunt"
-    ]
+    "parts": true,
+    "hidden": {
+     "20,16": "MOON_STONE",
+     "39,11": "ETHER"
+    }
    }
-  ]
+  ],
+  "theme": "cave",
+  "floor_names": [
+   "1F",
+   "B1F",
+   "B2F"
+  ],
+  "figure_floors": {
+   "Miriam": 0,
+   "Marcos": 0,
+   "Josh": 0,
+   "Kent": 0,
+   "Iris": 0,
+   "Robby": 0,
+   "Jovan": 0,
+   "SUPER NERD": 2,
+   "TAKE DOME FOSSIL": 2,
+   "TAKE HELIX FOSSIL": 2,
+   "Grunt": 2,
+   "Jessie and James": 2,
+   "MOON STONE": 0,
+   "ESCAPE ROPE": 0,
+   "PARALYZE HEAL": 0,
+   "POTION": 0,
+   "TM50": 0,
+   "RARE CANDY": 0,
+   "TM23": 2,
+   "REVIVE": 2,
+   "ANTIDOTE": 2,
+   "STAR PIECE": 2
+  },
+  "descend": true
  },
  "KANTO_ROUTE_4": {
   "art": [
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccc..(......).ccccccccc.(.....(ccccccccccccccc....=======ccccccccccc",
-   "ccccccccccccccccccccc..(......)..).f.f.(..(.....(f.f.X..............=================>",
-   "ccccccccccQcccccccccc..(......)..)f.f.f(..(.....(.f.f...............=================>",
-   "ccccccccccDcccccccc....c__..__c..).....(..(.....c__________________________kkkkkkkkkkk",
-   "ccccccccc=========...............).....(..(................................k~~~~~~~~~~",
-   "ccccccccc===!====d...............).....(..c_.._____________________________k~~~~~~~~~~",
-   "cccccccc==d......................).....(...................................k~~~~~~~~~~",
-   "cccccccc___________...___________c.===.c_c......................TTTT_______kkkkkkkkkkk",
-   "cccccccc...........................===...c_____..TTTT___________TTTT..===============>",
-   "cccccccc....................====================.TTTT\"\"\"\"\"\"\"\"\"\"\"TTTT..===============>",
-   "ccccccccccccccccccc.........====================.TTTT\"\"\"\"\"\"\"\"\"\"\"TTTT..===============>",
-   "cccccccccccccccccccccccTTTT.====================.TTTT\"\"\"\"\"\"\"\"\"\"\"\"\"TT..===..kkkkkkkkkkk",
-   "cccccccccccccccccccccccTTTT......................TTTT\"\"\"\"\"\"\"\"\"\"\"\"\"TT__===__kTTTTTTTTTT",
-   "ccccccccccccccccccccccccccc__.._________.._____TTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"TT..===..kTTTTTTTTTT",
-   "ccccccccccccccccccccccccccc.f.f................TTTTTT\"\"\"\"\"\"\"\"\"\"\"\".TT..===..kTTTTTTTTTT",
-   "cccccccccccccccccccccccccccf.f.f.f.............TTTTTT\"\"\"\"\"\"\"\"\"\"\"...........kTTTTTTTTTT",
-   "cccccccccccccccccccccccccccccccccc.............TTccccccccccccccc.........ccccccccccccc",
+   "ccccccccccccccccccccc..(......).ccccccccc.(.....(ccccccccccccccc...........ccccccccccc",
+   "ccccccccccccccccccccc..(.N..N.)..).....(..(.....(....X...............................>",
+   "ccccccccccccccccccccc..(......)..).....(..(.....(....................................>",
+   "ccccccccccncccccccc....c__..__c..).....(..(..N..c__________________________ccccccccccc",
+   "ccccccccc........................).....(..(................................ccccccccccc",
+   "ccccccccc...!....................).....(..c_.._____________________________ccccccccccc",
+   "cccccccc.........................).....(...................................ccccccccccc",
+   "cccccccc___________...___________c.....c_c......................cccc_______ccccccccccc",
+   "cccccccc.................................c_____..cccc___________cccc.................>",
+   "cccccccc.........................................cccc\"\"\"\"\"\"\"\"\"\"\"cccc.................>",
+   "ccccccccccccccccccc..............................cccc\"\"\"\"\"\"\"\"\"\"\"cccc.................>",
+   "ccccccccccccccccccccccccccc......................cccc\"\"\"\"\"\"\"\"\"\"\"\"\"cc.......ccccccccccc",
+   "ccccccccccccccccccccccccccc......................cccc\"\"\"\"\"\"\"\"\"\"\"\"\"cc__...__ccccccccccc",
+   "ccccccccccccccccccccccccccc__.._________.._____cccccc\"\"\"\"\"\"\"\"\"\"\"\"\"cc.......ccccccccccc",
+   "ccccccccccccccccccccccccccc....................cccccc\"\"\"\"\"\"\"\"\"\"\"\".cc.......ccccccccccc",
+   "ccccccccccccccccccccccccccc....................cccccc\"\"\"\"\"\"\"\"\"\"\"...........ccccccccccc",
+   "cccccccccccccccccccccccccccccccccc.............ccccccccccccccccc.........ccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
-   "Q": "MT_MOON",
-   ">": "CERULEAN_CITY"
+   ">": "CERULEAN_CITY",
+   "n": "MT_MOON"
   },
-  "buildings": {
-   "Q": "cave"
-  },
+  "buildings": {},
   "roofs": {
-   "Q": [
-    123,
-    74,
-    74
-   ]
+   "_picture": {
+    "f": "fr_ground/k_r4.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
+  "people": [
    {
-    "kind": "tops",
-    "rect": [
-     64,
-     8,
-     4,
-     1
-    ],
-    "of": "tree"
+    "text": "Hiker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Cerulean City's just east of here. Made it out of the mountain at last!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     49,
-     9,
-     4,
-     1
-    ],
-    "of": "tree"
+    "text": "Hiker ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "This ledge is a one-way trip. No going back up to the cave from here!"
+     ]
+    }
    },
-   {
-    "kind": "tops",
-    "rect": [
-     23,
-     12,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     47,
-     14,
-     2,
-     1
-    ],
-    "of": "tree"
-   }
+   "TM120"
   ],
   "signs": [
    [
     "ROUTE 4",
-    "Mt. Moon - Cerulean City. You made it through the mountain!"
+    "Mt. Moon - Cerulean City"
    ]
   ],
   "trainer_spots": [
    "Crissy"
+  ],
+  "edge_to": {
+   "85,3": [
+    0,
+    13
+   ],
+   "85,4": [
+    0,
+    14
+   ],
+   "85,10": [
+    0,
+    20
+   ],
+   "85,11": [
+    0,
+    21
+   ],
+   "85,12": [
+    0,
+    22
+   ]
+  },
+  "moves": {
+   "25,3": {
+    "m": "face",
+    "d": "r"
+   },
+   "28,3": {
+    "m": "face",
+    "d": "l"
+   },
+   "45,5": {
+    "m": "face",
+    "d": "d"
+   },
+   "53,3": {
+    "m": "face",
+    "d": "r",
+    "s": 4
+   }
+  },
+  "hidden": {
+   "21,2": "GREAT_BALL",
+   "45,17": "RAZZ_BERRY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/k_r4.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     86,
+     20
+    ]
+   }
   ]
  },
  "CERULEAN_CITY": {

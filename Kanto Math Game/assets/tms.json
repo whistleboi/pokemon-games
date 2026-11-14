@@ -237,6 +237,14 @@
   "tier": 8,
   "price": 3000
  },
+ "TM120": {
+  "move": "ROAR",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM05: lying on Route 4, east of Mt. Moon"
+ },
  "TM13": {
   "move": "FIRE-SPIN",
   "type": "FIRE",

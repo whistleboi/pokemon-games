@@ -103,10 +103,15 @@ for key in BUILT:
     st = open_map(key, came)
     is_town = isinstance(st, _WTS)
     w, h = (st.w, st.h) if is_town else (st.run.floor.w, st.run.floor.h)
-    check((w, h) == (len(m["art"][0]), len(m["art"])) and (is_town or isinstance(st, DungeonState)),
+    _here = _parts[st.run.index] if (not is_town and m.get("floors") and st.run.index < len(_parts)) else m
+    check((w, h) == (len(_here["art"][0]), len(_here["art"])) and (is_town or isinstance(st, DungeonState)),
           f"{key}: opens on its FireRed map ({w} x {h}, {'town' if is_town else 'route'}), in from {came}")
-    check("fr_ground/" in json.dumps(m.get("roofs", {})), f"{key}: drawn from FireRed's own picture")
-    grid = m["art"]
+    check(all("fr_ground/" in json.dumps(f.get("roofs", {})) for f in _parts), f"{key}: drawn from FireRed's own picture (every floor)")
+    grid = _here["art"]
+    if m.get("floors"):   # (a place of floors: every ladder and passage lands on a real tile of a floor that exists)
+        _bad = [(i, k, to) for i, f in enumerate(m["floors"]) for k, to in (f.get("links") or {}).items()
+                if not (0 <= to[0] < len(m["floors"]) and 0 <= to[2] < len(m["floors"][to[0]]["art"]) and 0 <= to[1] < len(m["floors"][to[0]]["art"][0]))]
+        check(not _bad, f"{key}: {len(m['floors'])} floors joined by FireRed's own ladders {_bad[:3]}")
     if not m.get("parts") and not m.get("floors"):
         walkable = set(".=\"NX!ow$[]{}%_()D<>^vnwu20b:|;,'")
         starts = [(x, y) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwu"]
@@ -493,6 +498,61 @@ for _n in (3, 10):
     else:
         check(story.inventory.get("HM_FLASH") == 1, f"...with ten kinds caught, HM Flash")
 del story.kanto_caught_count
+
+# ---- batch 4: Route 3 (with the foot of Mt. Moon), Mt. Moon, Route 4
+story.badges["KANTO"] = ["BOULDER"]
+r3 = open_map("KANTO_ROUTE_3", "PEWTER_CITY")
+check(r3.run.player[0] <= 1 and 25 <= r3.run.player[1] <= 35, f"Route 3: in from Pewter on the west ({r3.run.player})")
+_tr = sorted((m.x, m.y - 20) for m in r3.run.floor.movers if m.kind == "trainer")
+check(len(_tr) == 8 and (40, 11) in _tr and (17, 4) in _tr, f"...FireRed's eight trainers on their spots ({len(_tr)})")
+check(r3.run.floor.exits.get((78, 5)) == "MT_MOON" or any(v == "MT_MOON" for v in r3.run.floor.exits.values()), "...Mt. Moon's mouth at the foot of the mountain")
+# the Center at the foot, and the Magikarp salesman (FireRed: 500)
+_i, _at = None, None
+r3.run.player = (72, 6); r3.anim = 0; r3.run.floor.movers = [m for m in r3.run.floor.movers if m.kind == "figure"]
+r3.step(0, -1); play(lambda: False, 20)
+check(r3._floor_name(r3.run.index).lower().startswith("pok"), f"...the Pokémon Center's door: inside ({r3._floor_name(r3.run.index)})")
+story.story_flags.pop("got_magikarp_mtmoon", None)
+story.money = 600
+story.player_team = story.player_team[:1]
+_sell = next(o for o in _area["KANTO_ROUTE_3"]["route_menu"] if o.get("text") == "MAGIKARP SALESMAN")
+from src.states.overworld import _run_story_event
+said.clear()
+_run_story_event(r3, _sell["event"], lambda c: r3._check_route_condition(c, False), lambda lines: said.extend(lines))
+check(story.money == 100 and any(p.id == 129 for p in story.player_team), f"...the Magikarp salesman: 500 for a Magikarp ({story.money})")
+# Mt. Moon: in from the foot; down the ladders; B2F's Super Nerd steps in as you near the fossils
+mm = open_map("MT_MOON", "KANTO_ROUTE_3")
+check(mm.run.index == 0 and mm.run.player[1] >= 34, f"Mt. Moon: in at 1F's mouth ({mm.run.index}, {mm.run.player})")
+_items = {m.payload.get("text") for m in mm.run.floor.movers if m.kind == "figure"}
+check({"MOON STONE", "TM50", "RARE CANDY"} <= _items, f"...FireRed's item balls on 1F ({sorted(_items)[:6]})")
+story.story_flags.pop("mt_moon_nerd_defeated", None)
+for _k in ("took_dome_fossil", "took_helix_fossil"):
+    story.story_flags.pop(_k, None)
+while len(mm.run.floors) <= 2:   # (floors are made in order)
+    mm.run.enter_floor(len(mm.run.floors))
+mm.run.enter_floor(2); frames(2)
+nerd = next(((m.x, m.y) for m in mm.run.floor.movers if m.kind == "figure" and m.payload.get("text") == "SUPER NERD"), None)
+check(nerd == (13, 11), f"B2F: the Super Nerd guards the fossils at FireRed's spot ({nerd})")
+mm.run.floor.movers = [m for m in mm.run.floor.movers if m.kind == "figure"]
+mm.run.player = (18, 12); mm.anim = 0
+said.clear()
+mm.step(0, -1)
+play(lambda: isinstance(g.current_state, TrainerIntroState), 1500)
+_b = getattr(g.current_state, "next_state", None)
+check(any("stop right there" in s.lower() for s in said) and isinstance(g.current_state, TrainerIntroState) and [p.id for p in _b.opponent_team] == [88, 100, 109],
+      f"...step into the fossil chamber: he stops you and battles ({said[:1]})")
+if _b is not None:
+    g.change_state(_b); _b.player_won = True; _b.exit_battle()
+    play(lambda: isinstance(g.current_state, PlayState), 600)
+mm = g.current_state
+_fos = sorted((m.payload.get("text"), (m.x, m.y)) for m in mm.run.floor.movers if m.kind == "figure" and "FOSSIL" in str(m.payload.get("text")))
+check(story.story_flags.get("mt_moon_nerd_defeated") and _fos == [("TAKE DOME FOSSIL", (13, 7)), ("TAKE HELIX FOSSIL", (14, 7))],
+      f"...beaten, the two fossils are yours to choose from ({_fos})")
+# B1F's far mouth comes out on Route 4, by its own mouth; Route 4's Roar, then Cerulean
+r4 = open_map("KANTO_ROUTE_4", "MT_MOON")
+check(abs(r4.run.player[0] - 10) <= 2 and r4.run.player[1] <= 7, f"Route 4: out of Mt. Moon's far mouth ({r4.run.player})")
+check(_figure(r4, "TM120") == (45, 5), f"...FireRed's TM (Roar, our TM120) on the ledge ({_figure(r4, 'TM120')})")
+check("CERULEAN_CITY" in set(r4.run.floor.exits.values()), "...and east to Cerulean City")
+story.badges["KANTO"] = []
 
 print(f"##### {len(fails)} failures")
 for m in fails:

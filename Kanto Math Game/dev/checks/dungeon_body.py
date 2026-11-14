@@ -384,7 +384,8 @@ if _nm:
     _mm.mode, _mm.anim = "MAP", 0
     _mm.dialogue_box.visible = False
     _mm.step(*_d)
-check(_called and _called[0] in ("SUPER NERD", "TAKE DOME FOSSIL", "TAKE HELIX FOSSIL"), "walking into a figure does its button's action")
+# (11-14: FireRed's item balls lie on B2F too: whichever figure you walk into, its own button)
+check(_called and _called[0] in {m.payload.get("text") for m in _mm.run.floor.movers if m.kind == "figure"}, "walking into a figure does its button's action")
 story.story_flags["received_pokedex_kanto"] = True
 _badges = story.badges.get("KANTO", [])
 story.badges["KANTO"] = []
@@ -800,10 +801,10 @@ _b.player_won = True
 _b.exit_battle()
 check(g.current_state is _mm and _mm.run.index == _mm.run.n_floors - 1 and _mm.run.player == _spot,
       "the Super Nerd beaten: back where you were (not Mt. Moon's entrance)")
-_fos = sorted(m.payload.get("text") for m in _mm.run.floor.movers if m.kind == "figure")
+_fm = [m for m in _mm.run.floor.movers if m.kind == "figure" and "FOSSIL" in str(m.payload.get("text"))]   # (11-14: FireRed's item balls lie about too)
+_fos = sorted(m.payload.get("text") for m in _fm)
 check(_fos == ["TAKE DOME FOSSIL", "TAKE HELIX FOSSIL"]
-      and max(abs(a.x - b.x) + abs(a.y - b.y) for a in _mm.run.floor.movers for b in _mm.run.floor.movers
-              if a.kind == b.kind == "figure") <= 4, "...the two fossils side by side to pick from")
+      and max(abs(a.x - b.x) + abs(a.y - b.y) for a in _fm for b in _fm) <= 4, "...the two fossils side by side to pick from")
 story.story_flags.pop("defeated_rival_nugget_bridge", None)
 _bd = dict(story.badges)
 story.badges["KANTO"] = ["BOULDER"]
