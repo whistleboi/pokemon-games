@@ -1588,7 +1588,8 @@ class DungeonState(OverworldBattles, PlayState):
             self.partner_from, self.partner = self.partner, before  # it steps where you were
             self.steps += 1
             self._lap_step()
-            self._hidden_item(self.run.player)
+            if not self._hidden_item(self.run.player):
+                self._cracked_floor(self.run.player)
             self._copy_step(dx, dy)
             self._note_area()
             self._contest_tick()
@@ -1858,6 +1859,20 @@ class DungeonState(OverworldBattles, PlayState):
         if self.game.assets.heal_sfx:
             self.game.assets.heal_sfx.play()
         self.flash(f"You found a {name}!")
+
+    def _cracked_floor(self, t):
+        """A cracked floor (a map's "cracked" {"to": floor below, "tiles": ["x,y"]}, Emerald's Sky Pillar): on the Bicycle
+        you're over it before it gives; on foot it crumbles and you fall to the floor below, onto the same spot."""
+        cr = self._here_art().get("cracked") or {}
+        if f"{t[0]},{t[1]}" not in set(cr.get("tiles") or ()) or self._cycling(t):
+            return False
+        to = int(cr["to"])
+        below = self.run.made(to)
+        x, y = min(t[0], below.w - 2), min(t[1], below.h - 2)   # (a smaller floor below: the nearest spot on it)
+        self.walk_goal = None
+        self.say(["The cracked floor crumbled under your feet!", "You fell through to the floor below!"],
+                 then=lambda: self._warp(to, x, y, land=True))
+        return True
 
     def _hidden_item(self, t):
         """An item hidden on this floor (a map's "hidden" {"x,y": item}, the game's own hidden items): found by stepping on

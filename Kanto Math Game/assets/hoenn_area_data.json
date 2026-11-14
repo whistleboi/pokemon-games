@@ -807,11 +807,17 @@
       "min_rounds": 0,
       "trainer_pool": [
         {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [261], "rewards": {"balls": 3}},
-        {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [322], "rewards": {"balls": 3}},
-        {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [262], "rewards": {"balls": 3}},
+        {"name": "Team Magma Grunt ", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [322], "rewards": {"balls": 3}},
+        {"name": "Team Magma Grunt  ", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [262], "rewards": {"balls": 3}},
         {"name": "Magma Admin Courtney", "class": "PKMN_TRAINER", "sprite": "courtney.png", "team": [323], "rewards": {"balls": 5}, "levels": [39], "victory_flag": "magma_hideout_cleared", "is_boss_battle": true}
       ],
-      "route_menu": [{"text": "CAMERUPTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_cameruptite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the CAMERUPTITE!"], "gift_item": {"CAMERUPTITE": 1}, "flag": "got_cameruptite"}}, 
+      "route_menu": [
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_magma", "event": {"lines": ["A Rare Candy, left by the Grunts' digging."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_magma"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_magma", "event": {"lines": ["A Full Restore, left among the crates."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_magma"}},
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_magma", "event": {"lines": ["A Nugget, dug up out of the rock!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_magma"}},
+        {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_magma", "event": {"lines": ["A Max Revive, by the magma's edge."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_magma"}},
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_magma", "event": {"lines": ["An Escape Rope. Handy, this deep underground."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_magma"}},
+{"text": "CAMERUPTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_cameruptite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the CAMERUPTITE!"], "gift_item": {"CAMERUPTITE": 1}, "flag": "got_cameruptite"}}, 
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -3132,6 +3138,7 @@
           "boss": { "id": 386, "name": "Deoxys", "victory_flag": "delta_episode_cleared", "background": "battle_space.png" },
           "condition": ["rayquaza_awakened", "not:delta_episode_cleared"]
         },
+        { "text": "ROUTE 131", "action": "EXIT", "target_area": "HOENN_ROUTE_131", "condition": "can_exit", "color": "RED" },
         { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 384, "name": "Rayquaza", "victory_flag": "rayquaza_awakened" },

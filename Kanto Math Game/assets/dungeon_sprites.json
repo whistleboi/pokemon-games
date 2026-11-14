@@ -3105,6 +3105,24 @@
     },
     "LILYCOVE_CITY:Ferry to Birth Island": {
       "sheet": "em_21.png"
+    },
+    "HOENN_MAGMA_HIDEOUT:RARE CANDY": {
+      "item": "RARE_CANDY"
+    },
+    "HOENN_MAGMA_HIDEOUT:FULL RESTORE": {
+      "item": "FULL_RESTORE"
+    },
+    "HOENN_MAGMA_HIDEOUT:NUGGET": {
+      "item": "NUGGET"
+    },
+    "HOENN_MAGMA_HIDEOUT:MAX REVIVE": {
+      "item": "MAX_REVIVE"
+    },
+    "HOENN_MAGMA_HIDEOUT:ESCAPE ROPE": {
+      "item": "ESCAPE_ROPE"
+    },
+    "HOENN_SKY_PILLAR:SUMMON RAYQUAZA": {
+      "sheet": "em_207.png"
     }
   },
   "townsperson": "NPC 17.png",

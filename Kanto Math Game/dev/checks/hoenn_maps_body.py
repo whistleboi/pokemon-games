@@ -2402,5 +2402,41 @@ story.story_flags.clear(); story.story_flags.update(_savedN)
 story.inventory.clear(); story.inventory.update(_invN)
 story.current_area_key = _keyN
 
+# ---- batch 24 (11-13): the Magma Hideout, Sky Pillar (its cracked floors)
+_tm24 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_saved24 = dict(story.story_flags); _inv24 = dict(story.inventory)
+st = open_map("HOENN_MAGMA_HIDEOUT", "HOENN_JAGGED_PASS")
+_hf = _tm24["HOENN_MAGMA_HIDEOUT"]["floors"]
+_tr24 = sorted(n.strip() for f in _hf for n in f.get("trainer_spots", []))
+_it24 = sorted(p for f in _hf for p in f.get("people", []) if isinstance(p, str))
+check(st.run.index == 0 and _tr24 == ["Magma Admin Courtney", "Team Magma Grunt", "Team Magma Grunt", "Team Magma Grunt"]
+      and _it24 == ["CAMERUPTITE", "ESCAPE ROPE", "FULL RESTORE", "MAX REVIVE", "NUGGET", "RARE CANDY"],
+      f"Magma Hideout: in from the Jagged Pass; the Grunts and Courtney on Emerald's spots; Emerald's items and the Cameruptite ({_tr24})")
+_cr = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["cracked"]
+_a24 = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["art"]
+_crt = {tuple(int(v) for v in s.split(",")) for s in _cr["tiles"]}
+_step24 = next(((x + dx, y + dy), (-dx, -dy)) for (x, y) in sorted(_crt) for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0))
+               if 0 <= y + dy < len(_a24) and 0 <= x + dx < len(_a24[0]) and _a24[y + dy][x + dx] == "." and (x + dx, y + dy) not in _crt)
+_res24 = {}
+for _bike in (False, True):
+    if _bike:
+        story.inventory["BICYCLE"] = 1
+    else:
+        story.inventory.pop("BICYCLE", None)
+    st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
+    st.run.jump_floor(3, _step24[0]); _calm(st); st.anim = 0
+    st.step(*_step24[1])
+    _said = _play(st, 300)
+    _res24[_bike] = (st.run.index, any("crumbled" in x for x in _said))
+check(_cr["to"] == 2 and _res24[False] == (2, True) and _res24[True] == (3, False),
+      f"Sky Pillar: a cracked floor drops you to the floor below on foot; on the Bicycle you're over it ({_res24})")
+story.story_flags.update({"beat_hoenn_champion": True, "delta_zinnia_defeated": True})
+st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
+st.run.jump_floor(7, (16, 15))
+_top = sorted(m.payload.get("text") if isinstance(m.payload, dict) else (m.payload[1] or {}).get("name") for m in st.run.floor.movers if m.kind in ("figure", "trainer"))
+check("SUMMON RAYQUAZA" in _top and "Lorekeeper Zinnia" in _top, f"Sky Pillar: Rayquaza asleep on top, Zinnia there for the Delta Episode ({_top})")
+story.story_flags.clear(); story.story_flags.update(_saved24)
+story.inventory.clear(); story.inventory.update(_inv24)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
