@@ -85,7 +85,9 @@ g.change_state(AreaTransitionState(g, S3.AREA))
 st = run_transition()
 check(isinstance(st, Soaring3DState), f"Soaring in the Sky is the 3D flight (got {type(st).__name__})")
 check(len(st.levels) == 4, f"the ground's four pictures are loaded ({len(st.levels)})")
-check(st._eon_img(2, 1) is not None, "the baked Mega Eon is there")
+check(st._eon_img(2, 1) is not None, "the baked Mega Eon is there (EON_LOOK = \"model\")")
+check(S3.EON_LOOK == "sprite" and st._eon_sprite() is not None and st._eon_sprite().get_width() == 31 * 5,
+      "Jordan's back sprite carries you, five times its size")
 check(len(st.skyspots) == 2, f"after the Champion, the rift and the storm cloud are out ({len(st.skyspots)})")
 check(len(st.land) >= 8, f"the Mirage places are out ({len(st.land)})")
 
@@ -103,13 +105,27 @@ for i in range(40):
     st.update(); st.draw()
 ms2 = (time.perf_counter() - t0) / 40 * 1000
 print(f"   {ms2:.1f} ms a frame (straight on)")
-place(st, 1500, 14000, heading=0, alt=1600); shot("slateport")
-place(st, -3000, 9000, heading=330, alt=2600); shot("littleroot")
-place(st, -1500, 2000, heading=0, alt=1400); shot("chimney")
-place(st, 15000, 6500, heading=40, alt=2200); shot("sootopolis")
-place(st, 5000, -2000, heading=270, alt=3800); shot("high")
-st.bank, st.pitch = -1.0, 0.0; shot("bank_left")
-st.bank, st.pitch = 0.0, 0.0
+
+
+def views(st, pre=""):
+    """The same views over either ground: placed from the towns on it."""
+    def near(town, dx, dz, **kw):
+        x, z = S3.TOWNS[town]
+        place(st, x + dx, z + dz, **kw)
+    near("SLATEPORT_CITY", 0, 5500, heading=0, alt=1600); shot(pre + "slateport")
+    near("LITTLEROOT_TOWN", 800, 1400, heading=330, alt=2600); shot(pre + "littleroot")
+    near("LAVARIDGE_TOWN", 0, 5000, heading=0, alt=1400); shot(pre + "chimney")
+    near("SOOTOPOLIS_CITY", -3200, 4200, heading=40, alt=2200); shot(pre + "sootopolis")
+    near("MAUVILLE_CITY", 3800, -2900, heading=270, alt=3800); shot(pre + "high")
+    st.bank, st.pitch = -1.0, 0.0; shot(pre + "bank_left")
+    st.bank, st.pitch = 0.0, 0.0
+
+
+check(S3.GROUND == "map" and st.on_map, "the ground is the 2D version's map")
+mx, mz = S3.TOWNS["MOSSDEEP_CITY"]
+check(abs(mx - (401 * S3.MAP_SCALE + S3.MAP_X0)) < 1 and abs(mz - (129 * S3.MAP_SCALE + S3.MAP_Z0)) < 1,
+      "its towns are the map picture's own points")
+views(st)
 
 print("== a flock")
 place(st, 0, 6000)
@@ -184,5 +200,15 @@ check(st.mode == "ASK" and "Slateport" in st.ask_line, f"LAND offers the nearest
 tap(st, st.ask[1][0][0].center)
 run_transition()
 check(story.current_area_key == "SLATEPORT_CITY", f"and sets you down there ({story.current_area_key})")
+
+print("== Omega Ruby's sky map, the same views (to compare)")
+S3.GROUND = "oras"
+g.soaring3d_state = None
+story.current_area_key = "MOSSDEEP_CITY"
+g.change_state(AreaTransitionState(g, S3.AREA))
+st = run_transition()
+check(isinstance(st, Soaring3DState) and not st.on_map and len(st.levels) == 4, "the sky map still works")
+views(st, "oras_")
+S3.GROUND = "map"
 
 print(f"##### {len(fails)} fail(s)")

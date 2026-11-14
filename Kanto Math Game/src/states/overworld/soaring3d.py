@@ -5,7 +5,8 @@ How it's drawn: the ground is the game's sky map baked flat from above (assets/s
 Jordan's Omega Ruby file by kanto_handoff/oras_rom_tools/bake_soaring3d.py) and laid out in perspective a row at a
 time ("Mode 7"): each frame a square of the ground round you is turned so you face up, and every screen row below
 the horizon is one strip of it, stretched. Nearer rows read a finer picture, farther rows coarser ones. The Eon is
-one of the baked pictures of the real model from behind (5 bank x 3 pitch angles). Spots, the rift, the storm
+Jordan's back sprite (the 2D version's), leaning into turns; or, with EON_LOOK = "model", one of the baked
+pictures of Omega Ruby's model from behind (5 bank x 3 pitch angles). Spots, the rift, the storm
 cloud and wild Pokemon are pictures standing in the world, smaller the farther they are.
 
 Controls: Left / Right turn, Up / Down climb and dive, hold Space (or FAST) to speed up; with a finger or the mouse,
@@ -40,6 +41,8 @@ REACH = 0.72                     # how much of the square a row may use (the res
 HAZE = (176, 206, 236)
 SEA = (40, 108, 184)
 HUD_H = 76
+SPRITE_SCALE = 5                 # Jordan's 31 x 30 back sprites, five times (as in the 2D version)
+SPRITE_ROLL = 22.0               # degrees the sprite leans at full turn
 WILD_EVERY = (FPS * 5, FPS * 9)
 _cache = {}
 
@@ -134,8 +137,9 @@ def follower(game, pid, size, row=0, frame=0):
 class Level:
     """One picture of the ground (world rect, units per pixel) and its turned square, kept while it still fits."""
 
-    def __init__(self, img, rect, crop):
+    def __init__(self, img, rect, crop, sea=None):
         self.img = img
+        self.sea = sea or SEA
         self.x0, self.z0, x1, z1 = rect
         self.s = (x1 - self.x0) / img.get_width()
         self.crop = crop
@@ -149,7 +153,7 @@ class Level:
                 return self.surf      # (still turned the right way, and you haven't flown off it)
         c = self.crop
         sq = pygame.Surface((2 * c, 2 * c))
-        sq.fill(SEA)
+        sq.fill(self.sea)
         px, pz = (x - self.x0) / self.s, (z - self.z0) / self.s
         sq.blit(self.img, (c - int(px), c - int(pz)))
         self.surf = pygame.transform.rotate(sq, heading)
@@ -178,7 +182,7 @@ class Soaring3DState(PlayState):
         self.eon_imgs = {}
         self.rider = self._rider()
         came = getattr(story, "last_area_key", None) or "MOSSDEEP_CITY"
-        start = S3.TOWNS.get(came) or S3.LAND_SPOTS.get(came, (None, None))[1] or S3.TOWNS["MOSSDEEP_CITY"]
+        start = S3.TOWNS.get(came) or S3.LAND_SPOTS.get(came, (None, None))[1] or S3.TOWNS.get("MOSSDEEP_CITY", (0, 0))
         self.x, self.z = float(start[0]), float(start[1]) + 2500   # (a little south, looking north at it)
         self.heading = 0.0       # degrees, 0 = north, clockwise
         self.alt = 1800.0
@@ -204,10 +208,32 @@ class Soaring3DState(PlayState):
                 meta = json.load(f)
         except (OSError, ValueError):
             pass
-        near = _load(self.game, "ground.jpg", alpha=False)
-        far = _load(self.game, "ground_far.jpg", alpha=False)
         self.levels = []
-        if near is not None:
+        self.sea = SEA
+        near = _load(self.game, "map_ground.png", alpha=False) if S3.GROUND == "map" else None
+        self.on_map = near is not None
+        if self.on_map:
+            S3.use_ground("map", self._map_points())
+        else:                     # Omega Ruby's sky map (chosen, or the map picture is missing)
+            S3.use_ground("oras")
+            near = _load(self.game, "ground.jpg", alpha=False)
+        if self.on_map:
+            # the 2D version's map: crisp pixels, so its halves are picked, not blended; its own sea all round
+            rect = S3.map_ground_rect(*near.get_size())
+            self.sea = tuple(near.get_at((4, 4)))[:3]
+            key = ("mips", "map")
+            if key not in _cache:
+                l1 = pygame.transform.scale(near, (near.get_width() // 2, near.get_height() // 2))
+                l2 = pygame.transform.scale(l1, (l1.get_width() // 2, l1.get_height() // 2))
+                l3 = pygame.transform.smoothscale(l2, (l2.get_width() // 2, l2.get_height() // 2))
+                _cache[key] = (near, l1, l2, l3)
+            for img in _cache[key]:
+                self.levels.append(Level(img, rect, CROP, self.sea))
+            m = 30000                                   # (open sea round it, then the edge of the sky)
+            self.bounds = (rect[0] - m, rect[1] - m, rect[2] + m, rect[3] + m)
+            self.mm_src, self.mm_rect = _cache[key][2], rect
+        elif near is not None:
+            far = _load(self.game, "ground_far.jpg", alpha=False)
             rect = tuple(meta.get("near", (-16000, -19000, 32000, 17000)))
             key = ("mips",)
             if key not in _cache:         # the finer pictures, halved and halved again
@@ -215,13 +241,18 @@ class Soaring3DState(PlayState):
                 l2 = pygame.transform.smoothscale(l1, (l1.get_width() // 2, l1.get_height() // 2))
                 _cache[key] = (near, l1, l2)
             for img in _cache[key]:
-                self.levels.append(Level(img, rect, CROP))
-        if far is not None:
-            self.levels.append(Level(far, tuple(meta.get("far", (-56000, -50000, 64000, 40000))), FAR_CROP))
-        self.bounds = tuple(meta.get("far", (-56000, -50000, 64000, 40000)))
+                self.levels.append(Level(img, rect, CROP, self.sea))
+            if far is not None:
+                self.levels.append(Level(far, tuple(meta.get("far", (-56000, -50000, 64000, 40000))), FAR_CROP, self.sea))
+            self.bounds = tuple(meta.get("far", (-56000, -50000, 64000, 40000)))
+            self.mm_src, self.mm_rect = _cache[key][2], rect
+        else:
+            self.bounds = (-56000, -50000, 64000, 40000)
+            self.mm_src, self.mm_rect = None, self.bounds
         self.minimap = None
-        if far is not None:
-            self.minimap = pygame.transform.smoothscale(far, (220, int(220 * far.get_height() / far.get_width())))
+        if self.mm_src is not None:               # the mini-map: Hoenn itself, not the open sea round it
+            src = self.mm_src
+            self.minimap = pygame.transform.smoothscale(src, (240, int(240 * src.get_height() / src.get_width())))
         self.banks = tuple(meta.get("banks", (-50, -25, 0, 25, 50)))
         self.pitches = tuple(meta.get("pitches", (-25, 0, 25)))
         self.view = pygame.Surface((self.RW, self.RH))
@@ -247,17 +278,26 @@ class Soaring3DState(PlayState):
             self.haze.fill(HAZE + (int(235 * (1 - y / 90) ** 1.6),), (0, y, self.RW, 1))
         self.rift_img = rift_picture()
         self.storm_img = storm_picture()
-        x0, z0, x1, z1 = self.bounds
-        if near is not None:                      # the mini-map: Hoenn itself, not the open sea round it
-            x0, z0 = self.levels[0].x0, self.levels[0].z0
-            x1 = x0 + near.get_width() * self.levels[0].s
-            z1 = z0 + near.get_height() * self.levels[0].s
-            small = _cache[("mips",)][2]
-            self.minimap = pygame.transform.smoothscale(small, (240, int(240 * small.get_height() / small.get_width())))
-        self.mm_rect = (x0, z0, x1, z1)
+
+    def _map_points(self):
+        try:
+            with open(os.path.join(self.game.assets.assets_dir, "map_points.json"), encoding="utf-8") as f:
+                return (json.load(f).get("region_maps", {}).get("HOENN") or {}).get("points") or {}
+        except (OSError, ValueError):
+            return {}
 
     def _mount(self):
         return mount(self.game)
+
+    def _eon_sprite(self):
+        """Jordan's Mega Latias / Latios from behind, five times (the 2D version's), or None."""
+        key = ("sprite",)
+        if key not in self.eon_imgs:
+            img = _load(self.game, "mega_latias_back.png" if self.eon_id == 380 else "mega_latios_back.png")
+            if img is not None:
+                img = pygame.transform.scale(img, (img.get_width() * SPRITE_SCALE, img.get_height() * SPRITE_SCALE))
+            self.eon_imgs[key] = img
+        return self.eon_imgs[key]
 
     def _eon_img(self, bank_i, pitch_i):
         key = (bank_i, pitch_i)
@@ -274,7 +314,7 @@ class Soaring3DState(PlayState):
         try:
             from src.coop import world
             char = str(getattr(self.game, "player_character", "") or "red")
-            img = world.person_img(self.game, char, (0, -1), height=60)
+            img = world.person_img(self.game, char, (0, -1), height=70 if S3.EON_LOOK == "sprite" else 60)
         except Exception:
             return None
         if img is None:
@@ -548,7 +588,7 @@ class Soaring3DState(PlayState):
     def _draw_ground(self, view, hy):
         """Mode 7: every row below the horizon is a strip of ground, from the finest picture that reaches."""
         if not self.levels:
-            view.fill(SEA, (0, hy, self.RW, self.RH - hy))
+            view.fill(self.sea, (0, hy, self.RW, self.RH - hy))
             return
         turned = [None] * len(self.levels)
         half_w = self.RW / 2
@@ -566,7 +606,7 @@ class Soaring3DState(PlayState):
                 lvl = len(self.levels) - 1
             L = self.levels[lvl]
             if d * 1.25 > L.crop * L.s * REACH:                    # past the farthest picture: open sea
-                view.fill(SEA, (0, y, self.RW, band))
+                view.fill(self.sea, (0, y, self.RW, band))
                 y += band
                 continue
             if turned[lvl] is None:
@@ -589,10 +629,10 @@ class Soaring3DState(PlayState):
                 dx0 = int((clip.x - src.x) * k)
                 dw = max(1, int(clip.w * k + 1))
                 if clip.w < src.w:
-                    view.fill(SEA, (0, y, self.RW, band))
+                    view.fill(self.sea, (0, y, self.RW, band))
                 view.blit(pygame.transform.scale(strip, (dw, band)), (dx0, y))
             else:
-                view.fill(SEA, (0, y, self.RW, band))
+                view.fill(self.sea, (0, y, self.RW, band))
             y += band
 
     def _project(self, wx, wz, walt):
@@ -670,11 +710,24 @@ class Soaring3DState(PlayState):
             pygame.draw.polygon(view, (90, 10, 20), pts, 1)
 
     def _draw_me(self, screen):
-        # (the baked pictures' bank: + is the left wing down, so turning left picks the + end)
+        cx, cy = self.W // 2, int(self.H * 0.66 + 6 * math.sin(self.t / 6))
+        sprite = self._eon_sprite() if S3.EON_LOOK == "sprite" else None
+        if sprite is not None:
+            # Jordan's back view, as the 2D version draws it: rolled into the turn, nudged up as you climb
+            roll = -self.bank * SPRITE_ROLL
+            img = pygame.transform.rotate(sprite, roll) if abs(roll) > 0.5 else sprite
+            cy -= int(self.pitch * 10)
+            screen.blit(img, img.get_rect(center=(cx, cy)))
+            if self.rider is not None:
+                r = pygame.transform.rotate(self.rider, roll * 0.8) if abs(roll) > 0.5 else self.rider
+                a = math.radians(roll)
+                up = 4 + r.get_height() / 2                        # (the rider's middle, above the sprite's middle)
+                screen.blit(r, r.get_rect(center=(int(cx - math.sin(a) * up), int(cy - math.cos(a) * up))))
+            return
+        # (the baked models' bank: + is the left wing down, so turning left picks the + end)
         bi = min(len(self.banks) - 1, max(0, int(round((1 - self.bank) / 2 * (len(self.banks) - 1)))))
         pi = min(len(self.pitches) - 1, max(0, int(round((self.pitch + 1) / 2 * (len(self.pitches) - 1)))))
         img = self._eon_img(bi, pi)
-        cx, cy = self.W // 2, int(self.H * 0.66 + 6 * math.sin(self.t / 6))
         if img is not None:
             screen.blit(img, img.get_rect(center=(cx, cy)))
         else:

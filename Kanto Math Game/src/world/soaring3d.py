@@ -1,8 +1,8 @@
 """Soaring in the Sky, 3D (Jordan, 11-14: the "baked 2.5D, phone-safe" try): what the flight needs to know.
 
-The ground is Omega Ruby's own sky map of Hoenn, baked from Jordan's game file to top-down pictures
-(kanto_handoff/oras_rom_tools/bake_soaring3d.py -> assets/soaring3d). Places here are in that map's world units:
-x east, z south (about 48 000 x 36 000 across the main picture). The screen: src/states/overworld/soaring3d.py.
+The ground is the 2D version's map of Hoenn, or Omega Ruby's own sky map baked from Jordan's game file
+(kanto_handoff/oras_rom_tools/bake_soaring3d.py -> assets/soaring3d): GROUND below. Places are in world units,
+x east, z south (Omega Ruby's: Hoenn is about 48 000 x 36 000). The screen: src/states/overworld/soaring3d.py.
 
 What's out there comes from the HOENN_SOARING_IN_THE_SKY area's own menu (assets/hoenn_area_data.json):
 - each EXIT to a Mirage place is a spot below to land on;
@@ -41,8 +41,37 @@ def flute_block(story):
         return "You're already soaring!"
     return None
 
-# Towns, read off the baked map (world units). Landing picks the nearest you've visited.
-TOWNS = {
+# Which ground you fly over (Jordan, 11-14: "use that map instead of the blurry one"):
+#   "map"  - the 2D version's ground: the game's own Hoenn map picture redrawn in our pixel style
+#            (assets/soaring3d/map_ground.png, from hoenn-soaring-2d's dev/builders/make_soaring_ground.py);
+#   "oras" - Omega Ruby's own sky map, baked (ground.jpg, ground_far.jpg).
+GROUND = "map"
+# Who carries you (Jordan, 11-14: "the 2D sprite but still your 3D coordinating"):
+#   "sprite" - Jordan's Mega Latias / Latios from behind, the 2D version's (assets/soaring3d/mega_lati*_back.png);
+#   "model"  - Omega Ruby's own models, baked at 5 banks x 3 pitches (eon_<id>_<bank>_<pitch>.png).
+EON_LOOK = "sprite"
+
+# The map picture (assets/region_maps/hoenn.png, 480 x 320, map_points.json's frame) in world units: one scale and
+# offset, fitted to the towns on both grounds so heights and speeds feel the same over either. The ground picture
+# is that map four times the size with 40 map rows of sea added above (make_soaring_ground.py).
+MAP_SCALE, MAP_X0, MAP_Z0 = 88.4, -13391.0, -12234.0
+MAP_GROUND_SCALE, MAP_GROUND_PAD = 4, 40
+
+
+def map_xy(px):
+    """A point on the map picture (map_points.json's pixels) in world units."""
+    return px[0] * MAP_SCALE + MAP_X0, px[1] * MAP_SCALE + MAP_Z0
+
+
+def map_ground_rect(w, h):
+    """The map ground picture's world rect (x0, z0, x1, z1), from its size in pixels."""
+    k = MAP_SCALE / MAP_GROUND_SCALE
+    x0, z0 = MAP_X0, MAP_Z0 - MAP_GROUND_PAD * MAP_SCALE
+    return x0, z0, x0 + w * k, z0 + h * k
+
+
+# Towns on Omega Ruby's sky map, read off the bake (world units). On the map ground they come from map_points.json.
+ORAS_TOWNS = {
     "LITTLEROOT_TOWN": (-3800, 7600), "OLDALE_TOWN": (-3700, 5200), "PETALBURG_CITY": (-6700, 4300),
     "RUSTBORO_CITY": (-9400, -3100), "DEWFORD_TOWN": (-7700, 11200), "SLATEPORT_CITY": (1500, 8500),
     "MAUVILLE_CITY": (1200, 900), "VERDANTURF_TOWN": (-4300, 1500), "FALLARBOR_TOWN": (-5400, -6200),
@@ -51,27 +80,46 @@ TOWNS = {
     "EVER_GRANDE_CITY": (25000, 4000),
 }
 
-# Mirage places (the area's EXITs), out at sea or tucked in the hills, near where ORAS has them.
-LAND_SPOTS = {
-    "HOENN_MIRAGE_ISLAND": ("island", (-10000, 12000)),
-    "HOENN_MIRAGE_FOREST": ("forest", (1000, 11500)),
-    "HOENN_MIRAGE_CAVE": ("cave", (24200, 9400)),
-    "HOENN_MIRAGE_MOUNTAIN": ("mountain", (15500, -5700)),
-    "HOENN_CRESCENT_ISLE": ("crescent", (25900, 15700)),
-    "HOENN_PATHLESS_PLAIN": ("plain", (13300, 12100)),
-    "HOENN_NAMELESS_CAVERN": ("cave", (20500, 600)),
-    "HOENN_FABLED_CAVE": ("cave", (4300, 4000)),
-    "HOENN_GNARLED_DEN": ("den", (-3100, -6800)),
-    "HOENN_TRACKLESS_FOREST": ("forest", (-7900, 1400)),
+# Mirage places (the area's EXITs), near where ORAS has them: (look, on the sky map, on the map picture)
+SPOT_PLACES = {
+    "HOENN_MIRAGE_ISLAND": ("island", (-10000, 12000), (52, 276)),
+    "HOENN_MIRAGE_FOREST": ("forest", (1000, 11500), (172, 266)),
+    "HOENN_MIRAGE_CAVE": ("cave", (24200, 9400), (424, 232)),
+    "HOENN_MIRAGE_MOUNTAIN": ("mountain", (15500, -5700), (322, 80)),
+    "HOENN_CRESCENT_ISLE": ("crescent", (25900, 15700), (446, 296)),
+    "HOENN_PATHLESS_PLAIN": ("plain", (13300, 12100), (306, 266)),
+    "HOENN_NAMELESS_CAVERN": ("cave", (20500, 600), (374, 148)),
+    "HOENN_FABLED_CAVE": ("cave", (4300, 4000), (204, 186)),
+    "HOENN_GNARLED_DEN": ("den", (-3100, -6800), (118, 84)),
+    "HOENN_TRACKLESS_FOREST": ("forest", (-7900, 1400), (70, 166)),
 }
 
-# The legends in the sky: (look, where, height, the SEEK bosses' victory flags in the order they come out)
-SKY_SPOTS = [
-    {"key": "rift", "look": "rift", "at": (-7200, 14400), "alt": 2200, "name": "a huge gap in the sky",
+# The legends in the sky: where (sky map / map picture), height, the SEEK bosses' victory flags in the order they come
+SKY_PLACES = [
+    {"key": "rift", "look": "rift", "oras": (-7200, 14400), "px": (84, 300), "alt": 2200, "name": "a huge gap in the sky",
      "flags": ["soaring_dialga", "soaring_palkia", "soaring_giratina"]},
-    {"key": "storm", "look": "storm", "at": (5400, -9700), "alt": 2600, "name": "a black storm cloud",
+    {"key": "storm", "look": "storm", "oras": (5400, -9700), "px": (204, 46), "alt": 2600, "name": "a black storm cloud",
      "flags": ["soaring_tornadus", "soaring_thundurus", "soaring_landorus"]},
 ]
+
+# The places on the ground in use (use_ground sets them): towns, Mirage places (look, at), the sky's legends
+TOWNS, LAND_SPOTS, SKY_SPOTS = {}, {}, []
+
+
+def use_ground(ground, town_px=None):
+    """Put every place on this ground ("map" or "oras"); town_px: map_points.json's Hoenn points."""
+    global TOWNS, LAND_SPOTS, SKY_SPOTS
+    if ground == "map":
+        TOWNS = {k: map_xy(p) for k, p in (town_px or {}).items() if k in ORAS_TOWNS} or dict(ORAS_TOWNS)
+        LAND_SPOTS = {k: (look, map_xy(px)) for k, (look, _at, px) in SPOT_PLACES.items()}
+        SKY_SPOTS = [dict(s, at=map_xy(s["px"])) for s in SKY_PLACES]
+    else:
+        TOWNS = dict(ORAS_TOWNS)
+        LAND_SPOTS = {k: (look, at) for k, (look, at, _px) in SPOT_PLACES.items()}
+        SKY_SPOTS = [dict(s, at=s["oras"]) for s in SKY_PLACES]
+
+
+use_ground("oras")
 
 
 def _flag_ok(flags, item):
