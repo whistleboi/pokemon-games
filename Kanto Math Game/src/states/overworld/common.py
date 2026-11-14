@@ -296,6 +296,22 @@ def _run_story_event(state, key, check, show):
         t_info = dict(ev["battle"], _intro_lines=lines or None)
         game.change_state(_start_event_battle(game, story.current_area_key, t_info, flag))
         return
+    if ev.get("starter"):  # (one of the Poke Balls on Oak's table: the starter screen, then the rival's first battle)
+        from src.states.menus import StarterSelectionState
+        reg = ev["starter"]
+        if story.story_flags.get(f"received_starter_{reg.lower()}"):
+            show(_resolve_lines(game, ev.get("done") or ["It's empty now."]))
+            return
+        if reg == "KANTO":
+            story.story_flags["kanto_parcel_era"] = True  # (the FireRed opening: the Parcel, then the Pokedex)
+        ids = story.get_region_start(reg).get("starters") or [1, 4, 7]
+        go = lambda: game.change_state(StarterSelectionState(game, starter_ids=ids, region=reg))
+        if lines:
+            state_show = getattr(state, "show_message", None) or getattr(state, "show_dialogue")
+            state_show(lines, callback=go)
+        else:
+            go()
+        return
     if ev.get("scene") == "wally_catch":  # Wally catches his Ralts (src/states/hoenn.py)
         from src.states.hoenn import WallyCatchState
 

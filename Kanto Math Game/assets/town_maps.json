@@ -1,118 +1,65 @@
 {
  "PALLET_TOWN": {
   "art": [
-   "TTTTTTTTTTTT^^TTTTTTTTTT",
-   "TTTTTTTTTTTTNdTTTTTTTTTT",
-   "TTddddddddddddddddddd.TT",
-   "TTddddddddddddddddddd.TT",
-   "TTdd.PPPPPddd.RRRRRdd.TT",
-   "TTd..PPPPP.d..RRRRR.d.TT",
-   "TTd..PPPPP.d..RRRRR.d.TT",
-   "TTd.!PDPPP.d.!RDRRR.d.TT",
-   "TTddddddddddddddddddd.TT",
-   "TTddddddddddddddddddd.TT",
-   "TTdddddddddddLLLLLLLd.TT",
-   "TTdddkkkk!dd.LLLLLLLd.TT",
-   "TTdd.ffff..d.LLLLLLLd.TT",
-   "TTdd.ffff..d.LLLDLLLd.TT",
-   "TTdd.!.....dddddddddd.TT",
-   "TTddddddddddd......dd.TT",
-   "TTdddddddddddkkk!kkdd.TT",
-   "TT.....oooodddddddddd.TT",
-   "TT.....oooo...........TT",
-   "TT.....owwo...........TT"
+   "cccccccccccc^^cccccccccc",
+   "cccccccccccc..cccccccccc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc...ccccc....ccccc...cc",
+   "cc...ccccc....ccccc...cc",
+   "cc...cAccc....cBccc...cc",
+   "cc..!cDccc...!cDccc...cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc.N.........ccccccc..cc",
+   "cc...cccc!...ccccccc..cc",
+   "cc...........cccCccc..cc",
+   "cc...........cccDccc..cc",
+   "cc...!................cc",
+   "cc....................cc",
+   "cc...........ccc!cc...cc",
+   "cc.....oooo..N........cc",
+   "cc.....oooo...........cc",
+   "cc.....wwww...........cc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_1",
    "w": "KANTO_ROUTE_21"
   },
   "buildings": {
-   "L": "lab",
-   "P": "home",
-   "R": "rival"
+   "A": "home",
+   "B": "rival",
+   "C": "lab"
   },
   "roofs": {
-   "L": [
-    189,
-    197,
-    222
-   ],
-   "P": [
-    238,
-    148,
-    115
-   ],
-   "R": [
-    238,
-    148,
-    115
-   ]
+   "_picture": {
+    "f": "fr_ground/3_0.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
+  "people": [
    {
-    "kind": "tops",
-    "rect": [
-     5,
-     3,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     238,
-     148,
-     115
-    ]
+    "text": "Girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I'm raising Pokémon too. Once they're strong, they'll look after me!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     14,
-     3,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     238,
-     148,
-     115
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     13,
-     9,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     189,
-     197,
-     222
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     19,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     19,
-     4,
-     1
-    ],
-    "of": "tree"
+    "text": "Technology fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Technology is amazing! You can keep Pokémon on a PC as data and send them anywhere."
+     ]
+    }
    }
   ],
   "signs": [
@@ -134,402 +81,723 @@
     "Great trainers check their answers twice!"
    ]
   ],
-  "people": [
-   {
-    "text": "Professor Oak",
-    "action": "NPC",
-    "target": "professor_oak",
-    "door": "outside",
-    "flag_condition": "not received_starter_kanto"
-   }
-  ],
-  "surf": true,
   "inside": {
    "6,7": "home",
    "15,7": "rival",
    "16,13": "lab"
   },
+  "edge_to": {
+   "12,0": [
+    12,
+    39
+   ],
+   "13,0": [
+    13,
+    39
+   ],
+   "7,19": [
+    7,
+    0
+   ],
+   "8,19": [
+    8,
+    0
+   ],
+   "9,19": [
+    9,
+    0
+   ],
+   "10,19": [
+    10,
+    0
+   ]
+  },
+  "moves": {
+   "3,10": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     4
+    ]
+   },
+   "13,17": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     6,
+     2
+    ]
+   }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      12,
+      1,
+      13,
+      1
+     ]
+    },
+    "condition": "not:received_starter_kanto",
+    "every": true,
+    "mark": "kanto_oak_led",
+    "call": [
+     "Professor Oak: Hey! Hold on! Don't go out there!"
+    ],
+    "cast": [
+     {
+      "sheet": "fr_71.png",
+      "from": [
+       10,
+       8
+      ],
+      "to": "player",
+      "lines": [
+       "Professor Oak: Phew... that was close. Wild Pokémon hide in that tall grass!",
+       "Professor Oak: Walk out there without a Pokémon of your own and you could get hurt.",
+       "Professor Oak: I've got an idea. Come with me to my Lab!"
+      ],
+      "lead": [
+       [
+        16,
+        14,
+        []
+       ]
+      ],
+      "leave": [
+       16,
+       13
+      ]
+     }
+    ],
+    "room": [
+     "lab",
+     6,
+     11
+    ]
+   }
+  ],
   "rooms": {
    "home": {
-    "theme": "room",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "c..........mm",
+     "c.........<cc",
      "c............",
-     "c.....mmN....",
-     "c.....mm.....",
+     "c.....ccN....",
+     "c.....cc.....",
      "c............",
-     "cm..........m",
-     "c...vv.......",
-     "ccccccccccccc"
+     "cc..........c",
+     "c...nn.......",
+     "cccnccccccccc"
     ],
     "exits": {
-     "v": "OUT:6,7"
+     "n": "OUT:6,7",
+     "<": "ROOM:home_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      163,
-      163,
-      80
-     ],
-     "_wall": [
-      213,
-      213,
-      172
-     ],
-     "_things": {
-      "11,2": [
-       213,
-       197,
-       106
-      ],
-      "12,2": [
-       180,
-       180,
-       164
-      ],
-      "6,4": [
-       156,
-       213,
-       255
-      ],
-      "7,4": [
-       156,
-       213,
-       255
-      ],
-      "6,5": [
-       156,
-       213,
-       255
-      ],
-      "7,5": [
-       156,
-       213,
-       255
-      ],
-      "1,7": [
-       164,
-       148,
-       49
-      ],
-      "12,7": [
-       197,
-       180,
-       74
+     "_picture": {
+      "f": "fr_ground/4_0.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "Talk to Mom"
-    ]
-   },
-   "rival": {
+    ],
+    "moves": {
+     "8,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "scenes": [
+     {
+      "who": "Talk to Mom",
+      "trigger": "enter",
+      "condition": "not:received_starter_kanto",
+      "flag": "kanto_mom_morning",
+      "lines": [
+       "Mom: Oh, you're up! Today's the big day, isn't it?",
+       "Mom: Professor Oak was asking about you. His Lab is just down the road. Don't keep him waiting!"
+      ],
+      "after": "home"
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/4_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ],
     "theme": "room",
+    "title": "Your house"
+   },
+   "home_2": {
     "art": [
-     "ccccccccccccc",
-     "ccccccccccccc",
-     ".............",
-     ".............",
-     "......mm.....",
-     "......mm.....",
-     "..........N..",
-     ".............",
-     "m..vvv......m",
-     "ccccccccccccc"
+     "cccccccccccc",
+     "ccccccccccc!",
+     "c.......ccn.",
+     "c.......cc..",
+     "c.....c.....",
+     "c.....!.....",
+     "c.c.........",
+     "c...........",
+     "c..........."
     ],
     "exits": {
-     "v": "OUT:15,7"
+     "n": "ROOM:home"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      164,
-      162,
-      77
+     "_picture": {
+      "f": "fr_ground/4_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "It's a posted notice",
+      "If you're confused, ask for HELP!"
      ],
-     "_wall": [
-      213,
-      213,
-      172
-     ],
-     "_things": {
-      "6,4": [
-       156,
-       213,
-       255
+     [
+      "played with the NES.",
+      "Okay!"
+     ]
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/4_1.png",
+      "at": [
+       0,
+       0
       ],
-      "7,4": [
-       156,
-       213,
-       255
-      ],
-      "6,5": [
-       156,
-       213,
-       255
-      ],
-      "7,5": [
-       156,
-       213,
-       255
-      ],
-      "0,8": [
-       164,
-       148,
-       49
-      ],
-      "12,8": [
-       197,
-       180,
-       74
+      "size": [
+       12,
+       9
       ]
      }
+    ],
+    "theme": "room",
+    "title": "Your room"
+   },
+   "rival": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccc!c!!",
+     ".............",
+     ".............",
+     "......cc.....",
+     "......cc.....",
+     "..........N..",
+     ".............",
+     "c..nnn......c",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:15,7"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/4_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "Daisy"
-    ]
-   },
-   "lab": {
-    "theme": "room",
-    "art": [
-     "ccccccccccccc",
-     "ccccccccccccc",
-     ".............",
-     "m.....N......",
-     "mmm.....mmm..",
-     ".mm..........",
-     ".............",
-     ".............",
-     "mmmmm...mmmmm",
-     ".............",
-     "..N..........",
-     ".............",
-     "m....vvv....m",
-     "ccccccccccccc"
     ],
-    "exits": {
-     "v": "OUT:16,13"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      221,
-      220,
-      228
+    "signs": [
+     [
+      "The lovely and sweet",
+      "CLEFAIRY"
      ],
-     "_wall": [
-      255,
-      255,
-      255
+     [
+      "The shelves are crammed full of",
+      "books on POKeMON."
      ],
-     "_things": {
-      "0,3": [
-       82,
-       82,
-       106
-      ],
-      "0,4": [
-       82,
-       82,
-       106
-      ],
-      "1,4": [
-       255,
-       255,
-       255
-      ],
-      "2,4": [
-       230,
-       106,
-       65
-      ],
-      "8,4": [
-       139,
-       197,
-       139
-      ],
-      "9,4": [
-       139,
-       197,
-       139
-      ],
-      "10,4": [
-       139,
-       197,
-       139
-      ],
-      "1,5": [
-       82,
-       82,
-       106
-      ],
-      "2,5": [
-       82,
-       82,
-       106
-      ],
-      "0,8": [
-       82,
-       82,
-       106
-      ],
-      "1,8": [
-       82,
-       82,
-       106
-      ],
-      "2,8": [
-       82,
-       82,
-       106
-      ],
-      "3,8": [
-       82,
-       82,
-       106
-      ],
-      "4,8": [
-       82,
-       82,
-       106
-      ],
-      "8,8": [
-       82,
-       82,
-       106
-      ],
-      "9,8": [
-       82,
-       82,
-       106
-      ],
-      "10,8": [
-       82,
-       82,
-       106
-      ],
-      "11,8": [
-       82,
-       82,
-       106
-      ],
-      "12,8": [
-       82,
-       82,
-       106
-      ],
-      "0,12": [
-       82,
-       82,
-       106
-      ],
-      "12,12": [
-       238,
-       238,
-       246
+     [
+      "The shelves are crammed full of",
+      "books on POKeMON."
+     ]
+    ],
+    "moves": {
+     "10,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       3
       ]
      }
     },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        4
+       ]
+      ],
+      "look": "ow:fr:townmap",
+      "lines": [
+       "It's a big map of the Kanto region. Pallet Town is way down in the south-west corner."
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/4_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "{rival_name}'s house"
+   },
+   "lab": {
+    "art": [
+     "ccccccccccccc",
+     "cc!!cc!cccccc",
+     ".............",
+     "c.....N......",
+     "ccc..N..NNN..",
+     ".cc..........",
+     ".............",
+     ".............",
+     "ccccc...ccccc",
+     ".............",
+     "..N........N.",
+     "...N.........",
+     "c....nnn....c",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:16,13"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/4_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "people": [
-     "Talk to Professor Oak",
-     "Show Oak your Pokedex"
+     [
+      {
+       "text": "Talk to Professor Oak",
+       "action": "NPC",
+       "target": "professor_oak",
+       "condition": [
+        "kanto_lab_intro",
+        "not:received_starter_kanto"
+       ]
+      },
+      {
+       "text": "Professor Oak",
+       "action": "NPC",
+       "target": "professor_oak",
+       "flag_condition": "received_starter_kanto"
+      },
+      {
+       "text": "Show Oak your Pokedex",
+       "action": "EVENT",
+       "color": "GOLD",
+       "event": {
+        "requires": [
+         "caught_range:1-251"
+        ],
+        "fail": [
+         "Professor Oak: Catch every Pokemon from Kanto and Johto, all 251 of them,",
+         "and come show me your Pokedex. I'll have something special for you!"
+        ],
+        "lines": [
+         "Professor Oak: All 251 Pokemon of Kanto and Johto... You did it!",
+         "You're a true Pokemon Master of research. Please, take this.",
+         "It's the Shiny Charm! Shiny Pokemon will appear more often now."
+        ],
+        "gift_item": {
+         "SHINY_CHARM": 1
+        },
+        "flag": "got_shiny_charm",
+        "done": [
+         "Professor Oak: Shiny Pokemon are such a treat to see. Keep up the great work!"
+        ]
+       },
+       "flag_condition": "not got_shiny_charm",
+       "condition": "received_starter_kanto"
+      }
+     ],
+     {
+      "text": "{rival_name}",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "{rival_name}: Huh? Oh, it's just you, {player_name}. Gramps isn't here. Boring."
+       ]
+      },
+      "flag_condition": "not kanto_rival_left_lab",
+      "_look": "@rival"
+     },
+     "Bulbasaur's Poke Ball",
+     "Squirtle's Poke Ball",
+     "Charmander's Poke Ball",
+     {
+      "text": "Visitor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Professor Oak looks like an ordinary old man, but he's the top Pokémon expert there is!"
+       ]
+      }
+     },
+     {
+      "text": "Aide ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Professor's research is famous everywhere. We're lucky to help him."
+       ]
+      }
+     },
+     {
+      "text": "Aide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I work here as one of Professor Oak's aides. Studying Pokémon is never dull!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "There's an e-mail message here.",
+      "Finally!"
+     ],
+     [
+      "There's an e-mail message here.",
+      "Finally!"
+     ],
+     [
+      "Press START to open the MENU!"
+     ]
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,11": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "11,10": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "2,10": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       4
+      ]
+     },
+     "6,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "kanto_oak_led",
+       "not:received_starter_kanto"
+      ],
+      "flag": "kanto_lab_intro",
+      "cast": [
+       {
+        "sheet": "fr_71.png",
+        "from": [
+         6,
+         10
+        ],
+        "to": "player",
+        "lead": [
+         [
+          6,
+          3,
+          [
+           "{rival_name}: Gramps! Finally! I've been waiting here forever!",
+           "Professor Oak: {rival_name}? Ah, yes, I did ask you to come. Patience, now.",
+           "Professor Oak: {player_name}, see those three Poké Balls on the table? Each one holds a Pokémon.",
+           "Professor Oak: I trained Pokémon myself when I was young. These three are all I have left now.",
+           "Professor Oak: You may have one of them. Go on, take your pick!",
+           "{rival_name}: Hey, what about me, Gramps?",
+           "Professor Oak: Don't worry, {rival_name}. You'll get one too. {player_name} chooses first."
+          ]
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "who": "Talk to Professor Oak",
+      "trigger": {
+       "zone": [
+        1,
+        11,
+        11,
+        11
+       ]
+      },
+      "condition": [
+       "kanto_lab_intro",
+       "not:received_starter_kanto"
+      ],
+      "every": true,
+      "lines": [
+       "Professor Oak: Hey, don't run off yet! Pick a Pokémon first!"
+      ],
+      "push": [
+       0,
+       -1
+      ],
+      "after": "stay"
+     },
+     {
+      "who": "{rival_name}",
+      "trigger": "enter",
+      "condition": "received_starter_kanto",
+      "flag": "kanto_rival_left_lab",
+      "lines": [
+       "{rival_name}: Hmph. Fine. I'll train my Pokémon out in the wild till it's tough as nails.",
+       "{rival_name}: Gramps! {player_name}! Smell you later!"
+      ],
+      "after": "leave"
+     },
+     {
+      "trigger": {
+       "zone": [
+        0,
+        0,
+        12,
+        12
+       ]
+      },
+      "condition": [
+       "received_pokedex_kanto",
+       "got_oaks_parcel"
+      ],
+      "flag": "kanto_rival_pokedex",
+      "cast": [
+       {
+        "sheet": "@rival",
+        "from": [
+         6,
+         11
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "{rival_name}: Gramps! You wanted me for something?",
+         "Professor Oak: Ah, {rival_name}, good timing. Here: a Pokédex for you as well.",
+         "Professor Oak: Every kind of Pokémon in the world, recorded in one book... That's my dream. I'm counting on you both!",
+         "{rival_name}: Leave it to me, Gramps! I'll have it filled before {player_name} has caught three.",
+         "{rival_name}: You'll see. I'm heading out right now. Smell you later!"
+        ]
+       }
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        4,
+        1
+       ]
+      ],
+      "look": "ow:fr:dex",
+      "until": {
+       "flag_condition": "received_pokedex_kanto"
+      },
+      "lines": [
+       "It's like an encyclopedia, but every page is still blank."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        1
+       ]
+      ],
+      "look": "ow:fr:dex",
+      "until": {
+       "flag_condition": "received_pokedex_kanto"
+      },
+      "lines": [
+       "It's like an encyclopedia, but every page is still blank."
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/4_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Professor Oak's Lab"
+   }
+  },
+  "surf": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_0.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     20
     ]
    }
-  }
+  ]
  },
  "KANTO_ROUTE_1": {
   "art": [
-   "TTTTTTTTTT^^^^TTTTTTTTTT",
-   "TTTTTTTTTT====TTTTTTTTTT",
-   "TT........====.....f.fTT",
-   "TT........============TT",
-   "TT......TT============TT",
-   "TT______TT______..====TT",
-   "TT.f...fTT\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TTf...f.TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TT.f...fTT\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TTf...f.TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TT______TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TT.f....TT...=========TT",
-   "TTf..........=========TT",
-   "TT.f.........===\"\"\"\"\"\"TT",
-   "TT..............\"\"\"\"\"\"TT",
-   "TTTT______TTTTTT\"\"\"\"\"\"TT",
-   "TTTT......TTTTTT\"\"\"\"\"\"TT",
-   "TT...........===\"\"\"\"\"\"TT",
-   "TT...===========...f.fTT",
-   "TT...===========..f.f.TT",
-   "TT__.____..___________TT",
-   "TT...=================TT",
-   "TT...=================TT",
-   "TT................====TT",
-   "TT..........\"\"\"\"\"\"====TT",
-   "TTTTTTTTTTTT\"\"\"\"\"\"====TT",
-   "TTTTTTTTTTTT\"\"\"\"\"\"____TT",
-   "TT.f.f......\"\"\"\"\"\"====TT",
-   "TTf.f.N.....\"\"\"\"\"\"====TT",
-   "TT====================TT",
-   "TT====================TT",
-   "TT____...!____________TT",
-   "TT..\"\"\"\"\"\"\"====..\"\"\"\"\"TT",
-   "TT..\"\"\"\"\"\"\"====..\"\"\"\"\"TT",
-   "TT\"\"\"\"\"\"\".f====\"\"\"\"\"f.TT",
-   "TT\"\"\"\"\"\"\"f..\"\".\"\"\"\"\".fTT",
-   "TTkkkkkkkkkk\"\"kkkkkkkkTT",
-   "TTTTTTTTTTTk\"\"kTTTTTTTTT",
-   "TTTTTTTTTTTT\"\"TTTTTTTTTT",
-   "TTTTTTTTTTTTvvTTTTTTTTTT"
+   "cccccccccc^^^^cccccccccc",
+   "cccccccccc....cccccccccc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc......cc............cc",
+   "cc______cc______......cc",
+   "cc......cc\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc......cc\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc......cc\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc......cc\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc______cc\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc......cc............cc",
+   "cc....................cc",
+   "cc..............\"\"\"\"\"\"cc",
+   "cc..............\"\"\"\"\"\"cc",
+   "cccc______cccccc\"\"\"\"\"\"cc",
+   "cccc......cccccc\"\"\"N\"\"cc",
+   "cc..............\"\"\"\"\"\"cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc__.____..___________cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc..........\"\"\"\"\"\"....cc",
+   "cccccccccccc\"\"\"\"\"\"....cc",
+   "cccccccccccc\"\"\"\"\"\"____cc",
+   "cc..........\"\"\"\"\"\"....cc",
+   "cc....N.....\"\"\"\"\"\"....cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc____...!____________cc",
+   "cc..\"\"\"\"\"\"\"......\"\"\"\"\"cc",
+   "cc..\"\"\"\"\"\"\"......\"\"\"\"\"cc",
+   "cc\"\"\"\"\"\"\"......\"\"\"\"\"..cc",
+   "cc\"\"\"\"\"\"\"...\"\".\"\"\"\"\"..cc",
+   "cccccccccccc\"\"cccccccccc",
+   "cccccccccccc\"\"cccccccccc",
+   "cccccccccccc\"\"cccccccccc",
+   "ccccccccccccvvcccccccccc"
   ],
   "exits": {
    "^": "VIRIDIAN_CITY",
    "v": "PALLET_TOWN"
   },
   "buildings": {},
-  "roofs": {},
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     8,
-     3,
-     2,
-     1
-    ],
-    "of": "tree"
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/3_19.png",
+    "at": [
+     0,
+     0
+    ]
    },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
    {
-    "kind": "tops",
-    "rect": [
-     2,
-     14,
-     2,
-     1
-    ],
-    "of": "tree"
+    "text": "Boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "See those ledges? You can hop down them. It's the quickest way back to Pallet Town!"
+     ]
+    }
    },
-   {
-    "kind": "tops",
-    "rect": [
-     10,
-     14,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     24,
-     10,
-     1
-    ],
-    "of": "tree"
-   }
+   "POKE MART CLERK"
   ],
   "signs": [
    [
@@ -537,233 +805,178 @@
     "Wild Pokemon hide in the tall grass. Answer fast to catch them!"
    ]
   ],
-  "people": [
-   "POKE MART CLERK"
+  "edge_to": {
+   "10,0": [
+    22,
+    39
+   ],
+   "11,0": [
+    23,
+    39
+   ],
+   "12,0": [
+    24,
+    39
+   ],
+   "13,0": [
+    25,
+    39
+   ],
+   "12,39": [
+    12,
+    0
+   ],
+   "13,39": [
+    13,
+    0
+   ]
+  },
+  "moves": {
+   "6,28": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ]
+   },
+   "19,16": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   }
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_19.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     40
+    ]
+   }
   ]
  },
  "VIRIDIAN_CITY": {
   "art": [
-   "ccccccccTTTTTTTTTTk^^^^^TTTTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccccTTTTTTTTTTk....!TTTTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccccTTTTTTTTTTk.eee.TTTTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccccTTTTTTTTTTk.eee.TTTTTTTTTTTTTTTTTTTTTTTT",
-   "cccccccckkkkkkkkkkk.eee.TTTT.eeeeeeeeeeeeeTTTTTT",
-   "cccccccc..........2.eee......eeeeeeeeeeeeeTTTTTT",
-   "cccccccc.kTTTTTTTTk.eNeeeeeeeeeeeeeeeeeeeeTTTTTT",
-   "cccccccc.kTTTTTTTTkTeeeeeeeeeeee.GGGGGGeeeTTTTTT",
-   "cccccccc.kTTTTTTTTk.eeeeeeeeeeee.GGGGGGeeeTTTTTT",
-   "cccccccc.kTTTTTTTTkTeeeTOOOOO....GGGGGGeeeTTTTTT",
-   "cccccccc.kTTTTTTTTk.eeedOOOOO...!..YDY.eeeTTTTTT",
-   "cccccccc.kTTTTTTTTkTeeeTODOOO..........eeeTTTTTT",
-   "cccccccc.kTTTTTTTTk.eeeddddTT_____________TTTTTT",
-   "cccccccc.kTTTTTTTTkTeee................f.fTTTTTT",
-   "cccccccc.kTTTTTTTTk.eee...............f.f.TTTTTT",
-   "cccccc...kTTTTTTTTkTeee......kkkkkkkkkkkkkTTTTTT",
-   "<........kkkkkkkkkk.!eeTSSSSS.............TTTTTT",
-   "<========....eeeeeeeeeedSSSSS.eee.MMMM.eeeTTTTTT",
-   "<========....eeeeeeeeeeTSDSSS.eee.MMMM.eeeTTTTTT",
-   "<========....eeeeeeeeeeddddd..eee.MMDM.eeeTTTTTT",
-   "ccccccc.............eeeeeeeeeeeeeeeeeeeeeeTTTTTT",
-   "ccccccc.......dddd..eeeeeeeeeeeeeeeeeeeeeeTTTTTT",
-   "ccccccc.......dddd..eeeeeeeeeeeeeeeeeeeeeeTTTTTT",
-   "cccccccTTTT....dddd.eee.CCCCC.eee.f.f..eeeTTTTTT",
-   "cccccccTTTT2TT.dddd.eee.CCCCC.eee..f.f.eeeTTTTTT",
-   "ccccccc====.TT......eee.CCCCC.eee.f.f..eeeTTTTTT",
-   "ccccccc====oooooo...eee.CCDCC.eee..f.f.eeeTTTTTT",
-   "ccccccc====oooooo...eeeeeeeeeeeeeeeeeeeeeeTTTTTT",
-   "ccccccc.===oooooo...eeeeeeeeeeeeeeeeeeeeeeTTTTTT",
-   "ccccccc....oooooo...eeeeeeeeeeeeeeeeeeeeeeTTTTTT",
-   "ccccccc____oooooo___...___________________TTTTTT",
-   "ccccccc.............!.......f.f.f...f.f.f.TTTTTT",
-   "ccccccc.......==========================..TTTTTT",
-   "ccccccc.......==========================..TTTTTT",
-   "ccccccTTTTTTTT==========================..TTTTTT",
-   "ccccccTTTTTTTT........====................TTTTTT",
-   "ccccccTTTTTTTTTTTTTTTT====TTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccTTTTTTTTTTTTTTTT====TTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccTTTTTTTTTTTTTTTT====TTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccTTTTTTTTTTTTTTTTvvvvTTTTTTTTTTTTTTTTTTTTTT"
+   "ccccccccccccccccccc^^^^.cccccccccccccccccccccccc",
+   "ccccccccccccccccccc....!cccccccccccccccccccccccc",
+   "ccccccccccccccccccc.....cccccccccccccccccccccccc",
+   "ccccccccccccccccccc.....cccccccccccccccccccccccc",
+   "ccccccccccccccccccc.....cccc..............cccccc",
+   "cccccccc.........N2.......................cccccc",
+   "cccccccc.cccccccccc..N....................cccccc",
+   "cccccccc.ccccccccccc.............cccccc...cccccc",
+   "cccccccc.cccccccccc..............cccccc...cccccc",
+   "cccccccc.ccccccccccc...cccccc....cccCcc...cccccc",
+   "cccccccc.cccccccccc.....cBccc...!..cDc....cccccc",
+   "cccccccc.ccccccccccc...ccDccc.....N.......cccccc",
+   "cccccccc.cccccccccc.N......cc_____________cccccc",
+   "cccccccc.ccccccccccc......................cccccc",
+   "cccccccc.cccccccccc.......................cccccc",
+   "cccccc...ccccccccccc.........ccccccccccccccccccc",
+   "<........cccccccccc.!..cccccc.............cccccc",
+   "<.......................cEccc.....cccc....cccccc",
+   "<......................ccDccc.....ccFc....cccccc",
+   "<.................................ccDc....cccccc",
+   "ccccccc...................................cccccc",
+   "ccccccc...................................cccccc",
+   "ccccccc.........N.........................cccccc",
+   "ccccccccccc.............ccccc.............cccccc",
+   "ccccccccccc2cc..........ccccc.............cccccc",
+   "ccccccc.....cc..........ccAcc.............cccccc",
+   "ccccccc.N..oooooo.......ccDcc....N........cccccc",
+   "ccccccc....oooooo.........................cccccc",
+   "ccccccc....oooooo.........................cccccc",
+   "ccccccc....oooooo.........................cccccc",
+   "ccccccc____oooooo___...___________________cccccc",
+   "ccccccc.............!.....................cccccc",
+   "ccccccc...................................cccccc",
+   "ccccccc...................................cccccc",
+   "cccccccccccccc............................cccccc",
+   "cccccccccccccc............................cccccc",
+   "cccccccccccccccccccccc....cccccccccccccccccccccc",
+   "cccccccccccccccccccccc....cccccccccccccccccccccc",
+   "cccccccccccccccccccccc....cccccccccccccccccccccc",
+   "ccccccccccccccccccccccvvvvcccccccccccccccccccccc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_2",
-   "<": "KANTO_ROUTE_22",
-   "v": "KANTO_ROUTE_1"
+   "v": "KANTO_ROUTE_1",
+   "<": "KANTO_ROUTE_22"
   },
   "buildings": {
-   "C": "center",
-   "G": "gym",
-   "M": "mart",
-   "O": "oldman",
-   "S": "school",
-   "Y": "gym"
+   "A": "center",
+   "B": "oldman",
+   "C": "gym",
+   "E": "school",
+   "F": "mart"
   },
   "roofs": {
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "G": [
-    197,
-    172,
-    106
-   ],
-   "M": [
-    98,
-    164,
-    222
-   ],
-   "O": [
-    74,
-    123,
-    65
-   ],
-   "S": [
-    74,
-    123,
-    65
-   ],
-   "Y": [
-    197,
-    172,
-    106
-   ]
+   "_picture": {
+    "f": "fr_ground/3_1.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
+  "people": [
+   "POTION",
+   "Wake Sleeping Man",
    {
-    "kind": "tops",
-    "rect": [
-     10,
-     5,
-     8,
-     1
-    ],
-    "of": "tree"
+    "text": "Youngster",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "This Gym's doors are always shut. I wonder who the Leader even is?"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     33,
-     6,
-     6,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     197,
-     172,
-     106
-    ]
+    "text": "Granddaughter",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I go shopping in Pewter City sometimes. I have to take the winding path through Viridian Forest."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     24,
-     8,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     74,
-     123,
-     65
-    ]
+    "text": "Boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Are those Poké Balls on your belt? Lucky! You can bring Pokémon anywhere you go."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     24,
-     15,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     74,
-     123,
-     65
-    ]
+    "text": "Man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "West of here is Route 22. Keep going and you'll reach the Pokémon League's front gate."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     34,
-     16,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     98,
-     164,
-     222
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     7,
-     22,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     24,
-     22,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     222,
-     106,
-     98
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     23,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     7,
-     33,
-     7,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     35,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     26,
-     35,
-     16,
-     1
-    ],
-    "of": "tree"
+    "text": "Bug fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Caterpie and Weedle look alike, but only Weedle has a poison stinger. Careful in the forest!"
+     ]
+    }
    }
   ],
   "signs": [
@@ -784,383 +997,252 @@
     "The road to the Pokemon League! Keep practicing, Champion-to-be!"
    ]
   ],
-  "people": [
-   "Wake Sleeping Man"
+  "inside": {
+   "26,26": "center",
+   "25,11": "house",
+   "36,10": "gym",
+   "25,18": "school",
+   "36,19": "mart"
+  },
+  "edge_to": {
+   "19,0": [
+    7,
+    79
+   ],
+   "20,0": [
+    8,
+    79
+   ],
+   "21,0": [
+    9,
+    79
+   ],
+   "22,0": [
+    10,
+    79
+   ],
+   "22,39": [
+    10,
+    0
+   ],
+   "23,39": [
+    11,
+    0
+   ],
+   "24,39": [
+    12,
+    0
+   ],
+   "25,39": [
+    13,
+    0
+   ],
+   "0,16": [
+    47,
+    6
+   ],
+   "0,17": [
+    47,
+    7
+   ],
+   "0,18": [
+    47,
+    8
+   ],
+   "0,19": [
+    47,
+    9
+   ]
+  },
+  "moves": {
+   "8,26": {
+    "m": "face",
+    "d": "d"
+   },
+   "34,11": {
+    "m": "face",
+    "d": "u"
+   },
+   "20,12": {
+    "m": "face",
+    "d": "u"
+   },
+   "33,26": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     2
+    ]
+   },
+   "16,22": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     2
+    ]
+   },
+   "17,5": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "scenes": [
+   {
+    "who": "Granddaughter",
+    "trigger": {
+     "zone": [
+      20,
+      11,
+      22,
+      11
+     ]
+    },
+    "condition": "not:received_pokedex_kanto",
+    "every": true,
+    "approach": true,
+    "push": [
+     0,
+     1
+    ],
+    "after": "home",
+    "lines": [
+     "Granddaughter: Oh! Sorry, you can't go that way just now.",
+     "Granddaughter: My grandpa's lying right across the road up there, and he's ever so grumpy if anyone disturbs him.",
+     "Granddaughter: Maybe come back a little later?"
+    ]
+   }
   ],
-  "surf": true,
+  "barred": [
+   {
+    "tiles": [
+     [
+      36,
+      10
+     ]
+    ],
+    "look": "unseen",
+    "until": {
+     "condition": [
+      "has_boulder_badge",
+      "has_cascade_badge",
+      "has_thunder_badge",
+      "has_rainbow_badge",
+      "has_soul_badge",
+      "has_marsh_badge",
+      "has_volcano_badge"
+     ]
+    },
+    "lines": [
+     "The doors of the Viridian Gym are locked tight..."
+    ]
+   }
+  ],
   "rooms": {
-   "center": {
-    "theme": "room",
-    "art": [
-     "ccccccccccccccc",
-     "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
-     "...............",
-     "...............",
-     "ce.........mm..",
-     "...........mm..",
-     "......vvv......",
-     "ccccccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:26,26"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
-      ]
-     }
-    },
-    "people": [
-     "Heal"
-    ]
-   },
-   "mart": {
-    "theme": "room",
+   "house": {
     "art": [
      "ccccccccccc",
-     "ccccccccccc",
-     "cz.m......m",
-     "..Nm.......",
-     "mmmm...mm.m",
-     ".......mm.m",
-     ".mm....mm.m",
-     "...vvv.....",
+     "ccccccc!ccc",
+     "........N..",
+     "...........",
+     ".....ccN...",
+     "..N..cc....",
+     "......N....",
+     "c..nnn....c",
      "ccccccccccc"
     ],
     "exits": {
-     "v": "OUT:36,19"
+     "n": "OUT:25,11"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      93,
-      148,
-      219
-     ],
-     "_wall": [
-      255,
-      255,
-      255
-     ],
-     "_things": {
-      "3,2": [
-       82,
-       82,
-       106
-      ],
-      "10,2": [
-       213,
-       197,
-       106
-      ],
-      "3,3": [
-       189,
-       230,
-       255
-      ],
-      "0,4": [
-       255,
-       255,
-       255
-      ],
-      "1,4": [
-       139,
-       180,
-       222
-      ],
-      "2,4": [
-       139,
-       180,
-       222
-      ],
-      "3,4": [
-       189,
-       230,
-       255
-      ],
-      "7,4": [
-       255,
-       255,
-       255
-      ],
-      "8,4": [
-       255,
-       255,
-       255
-      ],
-      "10,4": [
-       255,
-       255,
-       255
-      ],
-      "7,5": [
-       255,
-       255,
-       255
-      ],
-      "8,5": [
-       255,
-       255,
-       255
-      ],
-      "10,5": [
-       255,
-       255,
-       255
-      ],
-      "1,6": [
-       255,
-       255,
-       255
-      ],
-      "2,6": [
-       139,
-       180,
-       222
-      ],
-      "7,6": [
-       180,
-       180,
-       164
-      ],
-      "8,6": [
-       180,
-       180,
-       164
-      ],
-      "10,6": [
-       180,
-       180,
-       164
+     "_picture": {
+      "f": "fr_ground/5_0.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     [
-      "Poke Mart",
-      "Shop"
-     ]
-    ]
-   },
-   "school": {
-    "theme": "room",
-    "art": [
-     "cccccccccc",
-     "cccccccccc",
-     "......N.mm",
-     "..........",
-     "....mm....",
-     "..........",
-     "..........",
-     "m..vvv...m",
-     "cccccccccc"
+     "Old Man's House",
+     {
+      "text": "Nickname fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Giving your Pokémon nicknames is fun! A clever name is nice, but a simple one's easier to remember."
+       ]
+      }
+     },
+     {
+      "text": "Little girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My dad loves Pokémon too!"
+       ]
+      }
+     },
+     {
+      "text": "Speary",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "SPEARY: Tweet tweet!"
+       ]
+      }
+     }
     ],
-    "exits": {
-     "v": "OUT:25,18"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      181,
-      164,
-      68
-     ],
-     "_wall": [
-      255,
-      230,
-      172
-     ],
-     "_things": {
-      "8,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,4": [
-       82,
-       82,
-       106
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "0,7": [
-       82,
-       82,
-       106
-      ],
-      "9,7": [
-       197,
-       180,
-       74
-      ]
-     }
-    },
-    "people": [
+    "signs": [
      [
-      "Lesson: Types",
-      "Lesson: Real-Time Battles",
-      "Lesson: Catching",
-      "Lesson: Mega Evolution",
-      "Lesson: Your Team"
+      "SPEAROW",
+      "Name"
      ]
-    ]
-   },
-   "oldman": {
-    "theme": "room",
-    "art": [
-     "ccccccccccc",
-     "ccccccccccc",
-     "...........",
-     "...........",
-     ".....mmN...",
-     ".....mm....",
-     "...........",
-     "m..vvv....m",
-     "ccccccccccc"
     ],
-    "exits": {
-     "v": "OUT:25,11"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      158,
-      163,
-      82
-     ],
-     "_wall": [
-      213,
-      213,
-      172
-     ],
-     "_things": {
-      "5,4": [
-       156,
-       213,
-       255
-      ],
-      "6,4": [
-       156,
-       213,
-       255
-      ],
-      "5,5": [
-       156,
-       213,
-       255
-      ],
-      "6,5": [
-       156,
-       213,
-       255
-      ],
-      "0,7": [
-       164,
-       148,
-       49
-      ],
-      "10,7": [
-       197,
-       180,
-       74
+    "moves": {
+     "7,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "2,5": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       2
+      ]
+     },
+     "6,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       4,
+       0
       ]
      }
     },
-    "people": [
-     "Old Man's House"
-    ]
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/5_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
    },
    "gym": {
-    "theme": "room",
     "art": [
      "cccccccccccccccccccc",
      "cccccccccccccccccccc",
@@ -1182,55 +1264,49 @@
      "..cc.4..............",
      "..cc4...............",
      "..cccccccccccc......",
-     "55cccccccccccc.j...j",
-     ".............3..N...",
-     ".............3..vvv.",
+     "55cccccccccccc.cN..c",
+     ".............3......",
+     ".............3..nnn.",
      "cccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:36,10"
+     "n": "OUT:36,10"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      148,
-      192,
-      181
-     ],
-     "_wall": [
-      213,
-      156,
-      123
-     ],
-     "_things": {},
-     "_stops": [
-      "11,2",
-      "17,3",
-      "19,3",
-      "0,11",
-      "1,13",
-      "18,14",
-      "16,15",
-      "4,17",
-      "13,17",
-      "13,18",
-      "5,21",
-      "1,22"
-     ]
+     "_picture": {
+      "f": "fr_ground/5_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "Gym",
      {
       "text": "Gym Guide",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Gym Guide: The floor carries you off! Watch which way each arrow points."
+        "Gym Guide: Hey, champ in the making! This Leader is the toughest of the lot.",
+        "Gym Guide: The arrows on the floor slide you along. Watch where each one points, and look for the spots that stop you!"
        ]
       }
      }
     ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "16,20": {
+      "m": "face",
+      "d": "d"
+     }
+    },
     "stops": [
      [
       11,
@@ -1280,38 +1356,439 @@
       1,
       22
      ]
-    ]
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/5_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       24
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Viridian Gym"
+   },
+   "school": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "......N.cc",
+     "..........",
+     "....cc....",
+     "....N.....",
+     "..........",
+     "c..nnn...c",
+     "cccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:25,18"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/5_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      "Lesson: Types",
+      "Lesson: Real-Time Battles",
+      "Lesson: Catching",
+      "Lesson: Mega Evolution",
+      "Lesson: Your Team"
+     ],
+     {
+      "text": "Student",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Phew! I'm trying to learn all my notes by heart."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/5_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Trainer school"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cccm..N...c",
+     "ccNm.......",
+     "mcmm...cc.c",
+     ".......ccNc",
+     ".cc....cc.c",
+     "...nnn.....",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:36,19"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/5_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'd better buy some Potions. You never know when your Pokémon will need patching up."
+       ]
+      }
+     },
+     [
+      "Poke Mart",
+      "Shop"
+     ],
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've heard this shop sells a lot of Antidotes."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,2": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "9,5": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "2,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "scenes": [
+     {
+      "who": "Poke Mart",
+      "trigger": "enter",
+      "condition": [
+       "received_starter_kanto",
+       "not:got_oaks_parcel",
+       "not:received_pokedex_kanto"
+      ],
+      "lines": [
+       "Clerk: Hey! You there! Come over here a moment!"
+      ],
+      "then": "talk",
+      "after": "stay"
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/5_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
+   "center": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "....mccNccm....",
+     "..N.cmmmmmc....",
+     "...............",
+     "............N..",
+     "c<.........cc..",
+     "....N......cc..",
+     "......nnn......",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:26,26",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/5_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Pokémon Center makes tired, hurt or fainted Pokémon good as new."
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You're welcome to use the PC in the corner. The nurse said so. Isn't she kind?"
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's a Pokémon Center in every town, and healing never costs a thing!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "12,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,7": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "2,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/5_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "cn.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/5_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/5_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
    }
   },
-  "inside": {
-   "26,26": "center",
-   "36,19": "mart",
-   "25,18": "school",
-   "25,11": "oldman",
-   "36,10": "gym"
-  }
+  "surf": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_1.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     48,
+     40
+    ]
+   }
+  ]
  },
  "KANTO_ROUTE_22": {
   "art": [
-   "ccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
-   "ccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
-   "ccccGGGGGGGGGccccccccccccccccccccc........cccccc",
-   "ccccGGGGGGGGGccccccccccccccccccccc____.___cccccc",
-   "cckkGGGGGGGGGkkkkkkkkk==================..cccccc",
-   "cckTGGGGDDGGGTk=========================..cccccc",
-   "cckTT..eee..TTk=========================TT.....>",
-   "cck===========k.............cccccc......TT.====>",
-   "cck===========k_______oooooocccccc__..__TT.====>",
-   "cck_______..__k\"\"\"\"\"\"\"oooooocccccc\"\"\"\"\"\"TT.====>",
-   "cck...........k\"\"\"\"\"\"\"oooooocccccc\"\"\"\"\"\"TT.===cc",
-   "cck...........k\"\"\"\"\"\"\"oooooocccccc\"\"\"\"\"\"TT.===cc",
-   "cckk...!kkkkkkk\"\"\"\"\"\"\"......cccccc\"\"\"\"\"\"TT.===cc",
-   "cccc...........\"\"\"\"\"\"\"......cccccc\"\"\"\"\"\"TT.===cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccc........cccccc",
+   "cccccccccccccccccccccccccccccccccc____.___cccccc",
+   "ccccccccAccccccccccccc...N................cccccc",
+   "ccccccccDDccccc...........................cccccc",
+   "ccccc.......ccc.........................cc.....>",
+   "ccc...........c.............cccccc......cc.....>",
+   "ccc...........c_______oooooocccccc__..__cc.....>",
+   "ccc_______..__c\"\"\"\"\"\"\"oooooocccccc\"\"\"\"\"\"cc.....>",
+   "ccc...........c\"\"\"\"\"\"\"oooooocccccc\"\"\"\"\"\"cc....cc",
+   "ccc...........c\"\"\"\"\"\"\"oooooocccccc\"\"\"\"\"\"cc....cc",
+   "cccc...!ccccccc\"\"\"\"\"\"\"......cccccc\"\"\"\"\"\"cc....cc",
+   "cccc...........\"\"\"\"\"\"\"......cccccc\"\"\"\"\"\"cc....cc",
    "cccc........................cccccc............cc",
    "cccc___________________________________.._____cc",
-   "cccc==========================================cc",
-   "cccc==========================================cc",
-   "cccc==========================================cc",
+   "cccc..........................................cc",
+   "cccc..........................................cc",
+   "cccc..........................................cc",
    "cccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -1322,26 +1799,21 @@
    ">": "VIRIDIAN_CITY"
   },
   "buildings": {
-   "G": "gate"
+   "A": "gate"
   },
   "roofs": {
-   "G": [
-    213,
-    230,
-    197
-   ]
+   "_picture": {
+    "f": "fr_ground/3_41.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     40,
-     5,
-     2,
-     1
-    ],
-    "of": "tree"
-   }
+  "people": [
+   "{rival_name}"
   ],
   "signs": [
    [
@@ -1349,79 +1821,123 @@
     "Only trainers with all 8 badges may pass. Keep at it!"
    ]
   ],
+  "inside": {
+   "8,5": "gate",
+   "9,5": "gate"
+  },
+  "edge_to": {
+   "47,6": [
+    0,
+    16
+   ],
+   "47,7": [
+    0,
+    17
+   ],
+   "47,8": [
+    0,
+    18
+   ],
+   "47,9": [
+    0,
+    19
+   ]
+  },
+  "moves": {
+   "25,4": {
+    "m": "face",
+    "d": "r"
+   }
+  },
+  "scenes": [
+   {
+    "who": "{rival_name}",
+    "trigger": {
+     "zone": [
+      33,
+      4,
+      33,
+      6
+     ]
+    },
+    "approach": true,
+    "then": "talk",
+    "after": "stay"
+   }
+  ],
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccccccc",
-     "ccccccc^ccccccc",
-     "zz......N....zz",
-     "....j.===.j....",
-     "......===......",
-     "......===......",
-     "...j..===..j...",
-     "......===......",
-     "......===......",
-     "....j.===.j....",
-     "zz.....v.....zz",
+     "cccccccnccccccc",
+     "cc......N....cc",
+     "....c.....c....",
+     "...............",
+     "...............",
+     "...c.......c...",
+     "...............",
+     "...............",
+     "....c.....c....",
+     "cc....<<<....cc",
      "ccccccccccccccc"
     ],
     "exits": {
-     "^": "KANTO_ROUTE_23",
-     "v": "OUT:8,5"
+     "n": "KANTO_ROUTE_23",
+     "<": "OUT:8,5"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      200,
-      191,
-      133
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {},
-     "_kinds": {},
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_picture": {
+      "f": "fr_ground/28_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GATE GUARD"
     ],
-    "land": {
-     "8,5": [
-      8,
-      6
-     ],
-     "9,5": [
-      9,
-      6
-     ]
+    "moves": {
+     "8,2": {
+      "m": "face",
+      "d": "d"
+     }
     },
-    "enter": {
-     "8,5": [
-      7,
-      9
-     ],
-     "9,5": [
-      7,
-      9
-     ]
-    },
-    "title": "League Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/28_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League Front Gate"
    }
   },
-  "inside": {
-   "8,5": "gate",
-   "9,5": "gate"
-  }
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_41.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     48,
+     24
+    ]
+   }
+  ]
  },
  "VIRIDIAN_FOREST": {
   "art": [

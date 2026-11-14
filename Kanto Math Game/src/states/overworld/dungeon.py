@@ -1043,6 +1043,8 @@ class DungeonState(OverworldBattles, PlayState):
         sc.sweep()
         if sc.busy():
             sc.tick()
+            if not sc.busy():  # (a scene just ended: whoever it held and whose story step is done leaves: the beaten rival)
+                self._sync_figures()
         elif self._ready() and not self.walk_goal:
             sc.check()
 
@@ -3233,11 +3235,14 @@ class DungeonState(OverworldBattles, PlayState):
     def _trainer_img(self, info, facing=(0, 1), frame=0):
         name = info.get("sprite") or "rival.png"
         sm = sprite_map(self.game)
-        own = sm.get("trainers_" + str(self.area_data.get("region") or "")) or {}
+        _reg = self.area_data.get("region") or self.game.story_manager.get_current_region() or ""   # (Kanto's areas carry no "region")
+        own = sm.get("trainers_" + str(_reg)) or {}
         for _role in ("rival", "friend"):  # (this save's rival or friend: their own walking sheet, where the region has one: Hoenn's Brendan and May)
             _who = str(getattr(self.game, f"{_role}_character", "") or "").lower()
             if name == "{%s_character}" % _role and _who and f"{_who}.png" in own:
                 name = f"{_who}.png"
+        if name == "{rival_character}" and "rival.png" in own:  # (the region's own rival sheet: FireRed's Blue)
+            name = "rival.png"
         sheet = own.get(name) or (sm.get("trainers") or {}).get(name)  # (the class as this region's own game draws it, where we have that: "trainers_SINNOH")
         if sheet:  # its Pokemon Journeys overworld sprite, looking the way it faces (mid-step: its stepping frame)
             return self._sheet_frame(sheet, tuple(facing), frame=frame)

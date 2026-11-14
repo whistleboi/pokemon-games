@@ -228,8 +228,13 @@ class Scenes:
     A scene with a "cast" needs no "who": [{"sheet": token, "from": [x, y] (where they appear: a door, the map's edge),
     "to": "player" (beside you) or [x, y], "lines": [...], "then": "event:<key>" (a story event: a gift, a battle),
     "heal": true, "leave": [x, y] or "back" (where they walk off to and are gone; else they vanish where they stand),
-    "concurrent": true (sets off together with the one before: a chase)}]. Each walks in, turns to you, speaks,
-    and walks off, in turn. Then the scene's own "then": "event:<key>" plays, if any.
+    "concurrent": true (sets off together with the one before: a chase), "lead": [[x, y, [lines]], ...] (after
+    speaking they show you somewhere, you following a step behind, as a "who" scene's lead: Oak walking you to his Lab)}].
+    Each walks in, turns to you, speaks, and walks off, in turn. Then the scene's own "then": "event:<key>" plays, if any.
+    A scene's "call": lines heard before anyone walks in (someone shouting from off the screen: "Hey! Wait!").
+    A scene's "room": [name, x, y]: when it ends you are in that room of the town, standing there (towns only:
+    host.npc_room; Oak's Lab, once he has walked you to its door). "mark": a flag set whenever it ends (an "every"
+    scene's too, which sets no "flag").
     For a "who" scene: "then": "talk" (their own option) or "event:<key>"; "after_lines" said once that is over (after
     a battle: the rival's last words); "heal": true heals your team there; "instead_of": the key of the town's own
     arrival event this scene plays in place of (towns)."""
@@ -325,6 +330,10 @@ class Scenes:
             m.emote = 0 if s.get("trigger") == "talk" else 40
             st["steps"] = m.steps
         self.playing = [s, "cast" if s.get("cast") else "notice", m, st]
+        if s.get("call"):   # (heard first, before anyone walks in or turns: Oak's "Hey! Wait!")
+            stage = self.playing[1]
+            self.playing[1] = "pause"
+            h.npc_say(list(s["call"]), lambda: self._resume(stage))
 
     # ------------------------------------------------------------ the cast
     def _spawn(self, spec, seed):
@@ -388,6 +397,33 @@ class Scenes:
             h.npc_event(ev if isinstance(ev, dict) else ev[6:], lambda: st.__setitem__("phase", "out"))
             return False
         if ph in ("talk", "wait"):
+            return False
+        if ph == "out" and spec.get("lead") and not st.get("led"):   # (they show you somewhere first: you follow a step behind)
+            st.update(phase="lead", li=0, going=False, lsteps=m.steps)
+            return False
+        if ph == "lead":
+            if m.steps != st["lsteps"]:
+                st["lsteps"] = m.steps
+                h.npc_follow(m.frm)
+            if not m.idle():
+                return False
+            stops = spec["lead"]
+            if st["li"] >= len(stops):
+                st["led"], st["phase"] = True, "out"
+                return False
+            x, y, lines = stops[st["li"]]
+            if not st["going"] and m.pos != (x, y):
+                st["going"] = True
+                if not m.walk((x, y), lambda t: h.npc_passable(t, m) or t == (x, y), beside=False):
+                    st["going"], st["li"] = False, st["li"] + 1
+                return False
+            st["going"] = False
+            st["li"] += 1
+            m.face(me)
+            h.npc_face_player(m.pos)
+            if lines:
+                st["phase"] = "wait"
+                h.npc_say(list(lines), lambda: st.__setitem__("phase", "lead"))
             return False
         if ph == "out":
             leave = spec.get("leave")
@@ -510,8 +546,12 @@ class Scenes:
                 return
             if s.get("flag") and not s.get("every"):
                 h.npc_flag(s["flag"])
+            if s.get("mark"):   # (a flag set each time it ends, even an "every" scene's: Oak has walked you to his Lab)
+                h.npc_flag(s["mark"])
             h.npc_lock(False)
             self.playing = None
+            if s.get("room") and hasattr(h, "npc_room"):   # (and you're inside: Oak's Lab, through the door he went in by)
+                h.npc_room(*s["room"])
         elif stage == "leaving":
             if m.idle():
                 m.gone = True

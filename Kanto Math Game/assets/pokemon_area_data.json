@@ -1,5 +1,5 @@
 {
-  "REGION_START": {"KANTO": {"order": 1, "subtitle": "GEN 1 / RED / BLUE", "start_area": "PALLET_TOWN", "starters": [1, 4, 7], "starter_bg": "starter_bg.png", "dex_range": [1, 151], "dex_extra": [], "professor": "Professor Oak", "starter_in_town": true, "opening_text": "kanto_newgame_intro", "catch_flag": "received_pokedex_kanto"}},
+  "REGION_START": {"KANTO": {"order": 1, "subtitle": "GEN 1 / RED / BLUE", "start_area": "PALLET_TOWN", "starters": [1, 4, 7], "starter_bg": "starter_bg.png", "dex_range": [1, 151], "dex_extra": [], "professor": "Professor Oak", "starter_in_town": true, "start_room": ["home_2", 5, 6], "opening_text": "kanto_newgame_intro", "catch_flag": "received_pokedex_kanto"}},
   "FORM_MAP": {
     "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "types": ["DARK", "NORMAL"] },
     "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "types": ["DARK", "NORMAL"] },
@@ -112,17 +112,27 @@
       {
         "id": "m0a", "type": "MAIN", "text": "Professor Oak", "target": "PALLET_TOWN",
         "desc": "Today your Pokemon journey begins! Head for Route 1, north of Pallet Town. Professor Oak won't let you into the tall grass without a Pokemon.",
-        "condition": { "required_region": "KANTO", "flag_not": "received_starter_kanto" }
+        "condition": { "required_region": "KANTO", "flag_not": "received_starter_kanto" }, "completed_flag": "kanto_oak_led"
+      },
+      {
+        "id": "m0a2", "type": "MAIN", "text": "Choose Your Pokemon", "target": "PALLET_TOWN",
+        "desc": "Professor Oak has three Pokemon in the Poke Balls on his lab table. Walk up to one and pick your first partner!",
+        "condition": { "required_region": "KANTO", "flag": "kanto_lab_intro", "flag_not": "received_starter_kanto" }, "completed_flag": "received_starter_kanto"
       },
       {
         "id": "m0b", "type": "MAIN", "text": "Oak's Parcel", "target": "VIRIDIAN_CITY",
         "desc": "Go north through Route 1 to Viridian City. The Poke Mart there has a parcel for Professor Oak.",
-        "condition": { "required_region": "KANTO", "flag": "received_starter_kanto", "flag_not": ["got_oaks_parcel", "received_pokedex_kanto"] }
+        "condition": { "required_region": "KANTO", "flag": "received_starter_kanto", "flag_not": ["got_oaks_parcel", "received_pokedex_kanto"] }, "completed_flag": "got_oaks_parcel"
       },
       {
         "id": "m0c", "type": "MAIN", "text": "A Pokedex", "target": "PALLET_TOWN",
         "desc": "Take the parcel back to Professor Oak's lab in Pallet Town. He has something for you too!",
-        "condition": { "required_region": "KANTO", "flag": "got_oaks_parcel", "flag_not": "received_pokedex_kanto" }
+        "condition": { "required_region": "KANTO", "flag": "got_oaks_parcel", "flag_not": "received_pokedex_kanto" }, "completed_flag": "received_pokedex_kanto"
+      },
+      {
+        "id": "m0e", "type": "SIDE", "text": "A Rival on Route 22", "target": "KANTO_ROUTE_22",
+        "desc": "{rival_name} went off west of Viridian City, toward the Pokemon League's gate on Route 22. Go and show him how your Pokemon is doing!",
+        "condition": { "required_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "defeated_rival_route22_early", "badges_less": 1 }, "completed_flag": "defeated_rival_route22_early"
       },
       {
         "id": "m1", "type": "MAIN", "text": "Investigation at Viridian", "desc": "Check out the Viridian City Gym. People say the Gym Leader is away, but strange characters have been seen there.",
@@ -567,6 +577,9 @@
       "explore_options": [{"text": "Daisy", "action": "EVENT", "door": "rival", "event": {"lines": ["Daisy: Hi there! My little brother is off training again.", "Whenever your Pokemon look tired, a short rest makes all the difference. Good luck out there!"]}}, 
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
         { "text": "Talk to Mom", "action": "NPC", "target": "mom" },
+        {"text": "Bulbasaur's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds BULBASAUR, the Grass-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
+        {"text": "Squirtle's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds SQUIRTLE, the Water-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
+        {"text": "Charmander's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds CHARMANDER, the Fire-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
             {"text": "Show Oak your Pokedex", "action": "EVENT", "color": "GOLD", "event": {"requires": ["caught_range:1-251"], "fail": ["Professor Oak: Catch every Pokemon from Kanto and Johto, all 251 of them,", "and come show me your Pokedex. I'll have something special for you!"], "lines": ["Professor Oak: All 251 Pokemon of Kanto and Johto... You did it!", "You're a true Pokemon Master of research. Please, take this.", "It's the Shiny Charm! Shiny Pokemon will appear more often now."], "gift_item": {"SHINY_CHARM": 1}, "flag": "got_shiny_charm", "done": ["Professor Oak: Shiny Pokemon are such a treat to see. Keep up the great work!"]}, "flag_condition": "not got_shiny_charm"}
         ],
       "next_area": "KANTO_ROUTE_1",
@@ -602,7 +615,8 @@
         {"text": "Poke Mart", "action": "EVENT", "color": "GOLD", "condition": ["received_starter_kanto", "not:got_oaks_parcel", "not:received_pokedex_kanto"], "event": {"lines": ["Clerk: You're from Pallet Town? Then you know Professor Oak!", "His order just came in. Could you take this parcel to him for me?"], "gift_item": {"OAKS_PARCEL": 1}, "flag": "got_oaks_parcel"}},
         {"text": "Shop", "action": "SHOP", "flag_condition": "received_pokedex_kanto"},
         {"text": "Gym", "action": "GYM"},
-        {"text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet"}
+        {"text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet"},
+        {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_viridian", "event": {"lines": ["Tucked away behind the little tree: a Potion!"], "gift_item": {"POTION": 1}, "flag": "got_potion_viridian"}}
       ],
       "oldman_dialogue_key": "sleeping_man",
       "trainer_pool": [],

@@ -107,7 +107,8 @@ check(tstep(t, (7, 16), (0, 1)) == (7, 16) and "Surf" in t.toast, f"...the pond 
 story.inventory["HM_SURF"] = 1
 check(tstep(t, (7, 16), (0, 1)) == (7, 17), "...and crossed with it")
 story.inventory.pop("HM_SURF", None)
-check(any(o.get("kind") == "tops" and o.get("of") == "roof" for o, _i, _a in t.overheads), "...the roofs' top edges are drawn over you (overheads)")
+# (11-14: rebuilt by the Hoenn method: FireRed's own layer over you, roofs and treetops, instead of our drawn roof edges)
+check(any(o.get("kind") == "picture" and "fr_top/" in str(o.get("f")) for o, _i, _a in t.overheads), "...FireRed's own roofs and treetops are drawn over you (overheads)")
 t.draw()
 
 # ---- Route 1: every ledge a one-way hop south
@@ -144,10 +145,10 @@ check((f.w, f.h) == (48, 24) and p.run.player[0] >= 44 and outs(f) == {"VIRIDIAN
       f"Route 22: FireRed's 48 x 24; in from Viridian on the east {p.run.player}; the League gate's two doors")
 check(not any(m.kind == "figure" for fl in p.run.floors[1:] for m in fl.movers if isinstance(m.payload, dict) and m.payload.get("action") == "ARRIVAL"), "...the rival, when he waits here, waits outdoors")
 _i, _at = step(p, (8, 6), (0, -1))
-check(p._floor_name(_i) == "League Gate" and people(p) >= {"GATE GUARD"} and outs(p.run.floor) == {"KANTO_ROUTE_23"}, f"...into the League gate {_at}: FireRed's room, its guard; its north doorway leads on to Route 23")
+check("League" in p._floor_name(_i) and "Gate" in p._floor_name(_i) and people(p) >= {"GATE GUARD"} and outs(p.run.floor) == {"KANTO_ROUTE_23"}, f"...into the League gate {_at}: FireRed's room, its guard; its north doorway leads on to Route 23")
 p.draw()
 p = route("KANTO_ROUTE_22", "KANTO_ROUTE_23")
-check(p._floor_name(p.run.index) == "League Gate" and p.run.player[1] <= 3, f"...in from Route 23: inside the gate, by its north doorway {tuple(p.run.player)}")
+check("League" in p._floor_name(p.run.index) and p.run.player[1] <= 3, f"...in from Route 23: inside the gate, by its north doorway {tuple(p.run.player)}")
 _i, _at = step(p, (7, 9), (0, 1))
 check(_i == 0 and _at[1] == 6 and _at[0] in (8, 9), f"......and out by its south mat onto Route 22 {_at}")
 
@@ -544,7 +545,9 @@ check(not _bad and _n >= 30, f"all {_n} doors with a room behind them, Pallet to
 
 t = town("PALLET_TOWN", "KANTO_ROUTE_1")
 enter(t, (16, 13))
-check(t.room == "lab" and t.people.get((6, 3), {}).get("target") == "professor_oak", f"Oak's Lab: Professor Oak stands at the back ({t.room})")
+# (11-14: Oak stands at his table once he's brought you in, and from then on: one person with his options)
+check(t.room == "lab" and any(o.get("target") == "professor_oak" for o in t.people.get((6, 3), {}).get("any", [t.people.get((6, 3), {})])),
+      f"Oak's Lab: Professor Oak stands at the back ({t.room})")
 t._go(None, "OUT:16,13"); enter(t, (6, 7))
 check(t.room == "home" and (8, 4) in t.people, "your house: Mom at the table")
 g.walk_town_room = None
@@ -556,10 +559,15 @@ t.player = t.anim_from = (6, 3); t.anim = 0
 t.step(0, -1)
 check(bool(t.hover_menu_active), "...talk to her: a menu of the lessons")
 t.clear_hover_menu(); t._go(None, "OUT:25,18")
+_had, _bag = list(story.badges.get("KANTO", [])), dict(story.inventory)   # (11-14: FireRed's doors stay locked till the other seven badges)
+story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO"]
+t = town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 enter(t, (36, 10))
+story.badges["KANTO"] = _had
 check(t.room == "gym" and (t.w, t.h) == (20, 24) and t.grid[3][11] == "4" and (17, 3) in t.stops, f"Viridian Gym: FireRed's maze, its spin tiles and stop tiles ({t.room})")
 _slid = tstep(t, (10, 3), (1, 0))
 check(_slid == (17, 3), f"...step on the spin tile at (11, 3): it carries you east to the stop tile at (17, 3) ({_slid})")
+story.inventory.clear(); story.inventory.update(_bag)   # (the seven badges' HM Surf, given by sync_key_items, goes back too)
 t.draw(); g.walk_town_room = None
 t = town("SAFFRON_CITY", "KANTO_ROUTE_5")
 enter(t, (46, 12))

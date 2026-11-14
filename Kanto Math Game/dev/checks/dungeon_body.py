@@ -849,7 +849,7 @@ for _k in range(300):
     frames(_wt)
     if _wt.hover_menu_active or _wt.room:
         break
-check(_wt.room == "lab" and any(o.get("target") == "professor_oak" for o in _wt.people.values()), f"walk into the Lab: inside it, Professor Oak there ({_wt.room})")
+check(_wt.room == "lab" and any(o.get("target") == "professor_oak" for v in _wt.people.values() for o in v.get("any", [v])), f"walk into the Lab: inside it, Professor Oak there ({_wt.room})")   # (11-14: his options as one person)
 _wt._go(None, "OUT:16,13")
 g.walk_town_room = None
 _n = min(t for t, v in _wt.exits.items() if v == "KANTO_ROUTE_1")

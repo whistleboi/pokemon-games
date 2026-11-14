@@ -270,11 +270,13 @@ class WalkTownState(CityState):
             return False
         if t == tuple(self.player) or (self.anim > 0 and t == tuple(self.anim_from)) or t == tuple(getattr(self, "partner", ())):
             return False
-        return not any(o is not mover and not o.gone and t in (o.pos, o.frm) for o in self.motions.values())
+        shown = getattr(self, "_shown_homes", None)   # (someone not here yet doesn't stand in the way: Oak before he walks into his Lab)
+        return not any(o is not mover and not o.gone and t in (o.pos, o.frm) and (shown is None or h in shown) for h, o in self.motions.items())
 
     def _npc_tick(self):
         if not getattr(self, "motions", None):
             return
+        self._shown_homes = {h for h, o in self.people.items() if self._shown(o)}
         shown = set(self._people())
         for home, mo in self.motions.items():
             if mo.pos in shown or mo.moving() or mo.path:
@@ -380,6 +382,16 @@ class WalkTownState(CityState):
     def npc_edge(self, m):
         edge = [(x, y) for (x, y) in self.exits if not (x, y) in self.water_exits]
         return min(edge, key=lambda t: abs(t[0] - m.pos[0]) + abs(t[1] - m.pos[1]), default=None)
+
+    def npc_room(self, room, x, y):
+        """A scene ends with you inside one of the town's rooms, standing at (x, y) (Oak walks you into his Lab)."""
+        if room not in ((getattr(self, "town_map", None) or {}).get("rooms") or {}):
+            return
+        self._go(room, "")
+        self.player, self.facing = (x, y), (0, -1)
+        self.anim = 0
+        self.anim_from = self.partner = self.partner_from = self.player
+        self._remember()
 
     # ---------------------------------------------------------------- the map
     def _map_image(self):
