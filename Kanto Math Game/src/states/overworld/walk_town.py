@@ -626,8 +626,10 @@ class WalkTownState(CityState):
                     p2 = tuple(at_edge[2])
                     t = min(edge, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1]))
                 self.game.walk_town_exit = None
-                inward = next(((t[0] + dx, t[1] + dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
-                               and (t[0] + dx, t[1] + dy) not in self.exits), t)
+                _out = [(t[0] + dx, t[1] + dy, dx, dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
+                        and (t[0] + dx, t[1] + dy) not in self.exits]
+                _out.sort(key=lambda o: self._open((t[0] - o[2], t[1] - o[3])))   # (out the way the door faces: away from its building. A gatehouse's side door, Saffron's)
+                inward = (_out[0][0], _out[0][1]) if _out else t
                 self.player = inward
                 self.facing = (inward[0] - t[0], inward[1] - t[1]) if inward != t else (0, 1)
             else:

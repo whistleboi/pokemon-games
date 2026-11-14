@@ -285,6 +285,14 @@
   "gift": true,
   "from": "FireRed TM32: lying in the Safari Zone's west area"
  },
+ "TM126": {
+  "move": "PSYCHIC",
+  "type": "PSYCHIC",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM29: Mr. Psychic, Saffron City"
+ },
  "TM13": {
   "move": "FIRE-SPIN",
   "type": "FIRE",

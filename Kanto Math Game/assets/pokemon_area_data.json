@@ -903,7 +903,8 @@
         { "text": "Silph Co.", "target_area": "SILPH_CITY", "flag_condition": "tower_ghost_defeated" },
             {"text": "Magnet Train to Goldenrod", "door": "station", "long_ride": true, "target_area": "GOLDENROD_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Goldenrod City in Johto!"}
         ],
-      "explore_options": [
+      "explore_options": [{"text": "Mr. Psychic", "action": "EVENT", "door": "psychic", "color": "GOLD", "event": {"lines": ["Mr. Psychic: ...Wait! Don't say a word! You wanted this, didn't you?", "You received TM126, Psychic!"], "gift_item": {"TM126": 1}, "flag": "got_tm126_saffron", "done": ["Mr. Psychic: Psychic hits hard, and it may lower the foe's Sp. Def. I knew you'd ask."]}},
+        
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },

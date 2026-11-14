@@ -762,6 +762,10 @@ class Run:
         if index < len(self.floors):
             f = self.floors[index]
             spot = f.spots.get(payload.get("text") if isinstance(payload, dict) else payload)
+            if spot is not None and f.occupied(*spot):   # (a wild Pokemon wandered onto its own spot: it moves, not the figure.
+                wild = next((m for m in f.movers if m.kind == "wild" and (m.x, m.y) == tuple(spot)), None)   # Mt. Moon's fossils)
+                if wild is not None:
+                    f.movers.remove(wild)
             if spot is None or f.occupied(*spot):
                 spot = _free_tile(f, self.rng, far_from=f.start, min_dist=6) or _free_tile(f, self.rng)
             if spot:

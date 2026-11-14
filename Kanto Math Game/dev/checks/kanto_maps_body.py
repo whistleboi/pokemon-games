@@ -1136,6 +1136,30 @@ r17 = open_map("KANTO_ROUTE_17", "KANTO_ROUTE_16")
 check(set(r17.run.floor.exits.values()) <= {"KANTO_ROUTE_16", "KANTO_ROUTE_18"} and r17._here_art().get("downhill") == [0, 158],
       "Cycling Road: FireRed's road, downhill all the way")
 
+# ---- batch 20: Saffron City
+_sc = story.story_flags.pop("silph_co_cleared", None)
+sa = open_map("SAFFRON_CITY", "KANTO_ROUTE_5")
+_pp = {o.get("text"): p for p, o in sa._people().items()}
+check((sa.w, sa.h) == (66, 55) and sa.doors.get((20, 7)) == "station" and _pp.get("Grunt  ") == (46, 13),
+      f"Saffron: FireRed's city; HeartGold's Magnet Train station in the north-west; a grunt blocks the Gym ({_pp.get('Grunt  ')})")
+story.story_flags["silph_co_cleared"] = True
+sa = open_map("SAFFRON_CITY", "KANTO_ROUTE_5")
+_pp = {o.get("text"): p for p, o in sa._people().items()}
+check("Grunt  " not in _pp and _pp.get("Pidgeot") == (45, 22), "...Silph freed: the grunts are gone, the people come back out")
+_pp = _room_of(sa, "gym")
+_gt = [n for n in _pp if n and n.startswith(("Psychic ", "Channeler "))]
+_pads = [k for k in (sa.town_map["rooms"]["gym"].get("links") or {})]
+check(_pp.get("Gym") == (14, 11) and len(_gt) == 7 and len(_pads) >= 30, f"...Sabrina's Gym: Sabrina at FireRed's spot, seven trainers, FireRed's warp pads ({len(_gt)}, {len(_pads)} pads)")
+_pp = _room_of(sa, "copycat_2")
+check(_pp.get("Visit Copycat") == (9, 6), "...the Copycat in her room upstairs")
+_pp = _room_of(sa, "psychic")
+check(_pp.get("Mr. Psychic") == (7, 4), "...Mr. Psychic (FireRed's TM29 Psychic)")
+_pp = _room_of(sa, "dojo")
+check(_pp.get("Fighting Dojo") == (6, 5) and sum(1 for n in _pp if n and n.startswith("Black Belt")) == 4, "...the Fighting Dojo: the Karate Master and FireRed's four Black Belts")
+story.story_flags.pop("silph_co_cleared", None)
+if _sc is not None:
+    story.story_flags["silph_co_cleared"] = _sc
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

@@ -4314,6 +4314,144 @@
     },
     "KANTO_ROUTE_18:Trader": {
       "sheet": "fr_19.png"
+    },
+    "SAFFRON_CITY:Grunt  ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Boy": {
+      "sheet": "fr_18.png"
+    },
+    "SAFFRON_CITY:Grunt   ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Man ": {
+      "sheet": "fr_19.png"
+    },
+    "SAFFRON_CITY:Pidgeot": {
+      "sheet": "fr_114.png"
+    },
+    "SAFFRON_CITY:Woman": {
+      "sheet": "fr_31.png"
+    },
+    "SAFFRON_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "SAFFRON_CITY:Grunt       ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt     ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Man": {
+      "sheet": "fr_26.png"
+    },
+    "SAFFRON_CITY:Grunt    ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt      ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Lass": {
+      "sheet": "fr_22.png"
+    },
+    "SAFFRON_CITY:Mom": {
+      "sheet": "fr_31.png"
+    },
+    "SAFFRON_CITY:Chansey": {
+      "sheet": "fr_117.png"
+    },
+    "SAFFRON_CITY:Dad": {
+      "sheet": "fr_30.png"
+    },
+    "SAFFRON_CITY:Visit Copycat": {
+      "sheet": "fr_17.png"
+    },
+    "SAFFRON_CITY:Doduo": {
+      "sheet": "fr_132.png"
+    },
+    "SAFFRON_CITY:Black Belt Mike": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Black Belt Aaron": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Black Belt Hideki": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Black Belt Hitoshi": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Psychic Preston": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Channeler Amanda": {
+      "sheet": "fr_58.png"
+    },
+    "SAFFRON_CITY:Psychic Johan": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Channeler Stacy": {
+      "sheet": "fr_58.png"
+    },
+    "SAFFRON_CITY:Psychic Tyron": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Gym": {
+      "sheet": "fr_85.png"
+    },
+    "SAFFRON_CITY:Channeler Tasha": {
+      "sheet": "fr_58.png"
+    },
+    "SAFFRON_CITY:Psychic Cameron": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "SAFFRON_CITY:Girl": {
+      "sheet": "fr_17.png"
+    },
+    "SAFFRON_CITY:Pidgey": {
+      "sheet": "fr_116.png"
+    },
+    "SAFFRON_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "SAFFRON_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "SAFFRON_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "SAFFRON_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SAFFRON_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SAFFRON_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SAFFRON_CITY:Mr. Psychic": {
+      "sheet": "fr_30.png"
+    },
+    "SAFFRON_CITY:Black belt": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Club chairman": {
+      "sheet": "fr_61.png"
+    },
+    "SAFFRON_CITY:Lady": {
+      "sheet": "fr_29.png"
+    },
+    "SAFFRON_CITY:Ex-fan": {
+      "sheet": "fr_24.png"
     }
   },
   "townsperson": "NPC 17.png",

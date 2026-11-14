@@ -552,7 +552,7 @@ for _key, _from in _came.items():
             if _f:
                 t.player = t.anim_from = _f; t.anim = 0; t.walk_goal = None
                 t.step(_m[0] - _f[0], _m[1] - _f[1])
-                _ok = _ok and t.room is None and abs(t.player[0] - _door[0]) + abs(t.player[1] - _door[1]) == 1  # (below the door; a back door: behind it)
+                _ok = _ok and t.room is None and abs(t.player[0] - _door[0]) + abs(t.player[1] - _door[1]) <= 2  # (below the door; a back door: behind it; beside it when someone stands below: Saffron's grunts, FireRed's)
         t.draw()
         if not _ok: _bad.append((_key, _room, _d, t.room, tuple(t.player)))
     g.walk_town_room = None
@@ -993,7 +993,7 @@ for _town, _came, _doors in (
         ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 3))),   # (11-14: FireRed's Pidgey stands with its owners)
         ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 2), ((10, 16), "rater", (11, 9), 1))),   # (batch 10: the Cubone house has its Cubone)
         ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 4), ((41, 29), "house_e", (11, 9), 3), ((49, 29), "hotel", (17, 11), 4))),   # (batch 12: FireRed's own people)
-        ("SAFFRON_CITY", "KANTO_ROUTE_5", (((27, 21), "house_w", (11, 9), 2), ((43, 38), "psychic", (11, 9), 1), ((47, 21), "fans", (11, 17), 4))),
+        ("SAFFRON_CITY", "KANTO_ROUTE_5", (((27, 21), "house_w", (11, 9), 3), ((43, 38), "psychic", (11, 9), 1), ((47, 21), "fans", (11, 17), 8))),   # (Kanto batch 20: FireRed's people)
         ("FUCHSIA_CITY", "KANTO_ROUTE_15", (((28, 16), "office", (20, 11), 4), ((14, 31), "house_w", (11, 9), 3), ((19, 31), "deleter", (11, 9), 1)))):
     t = town(_town, _came)
     for _d, _room, _size, _n in _doors:
@@ -1006,7 +1006,7 @@ for _town, _came, _doors in (
         t.draw()
         if t.room:
             t._go(None, "OUT:%d,%d" % _d)
-            check(t.room is None and abs(t.player[0] - _d[0]) + abs(t.player[1] - _d[1]) <= 1, f"...and back out beside the door {tuple(t.player)}")
+            check(t.room is None and abs(t.player[0] - _d[0]) + abs(t.player[1] - _d[1]) <= 2, f"...and back out beside the door (or a step aside, when FireRed stands someone below it) {tuple(t.player)}")
         g.walk_town_room = None
 t = town("CELADON_CITY", "KANTO_ROUTE_7")
 check("hotel" not in t.locked and "diner" in t.locked, "Celadon: the hotel's door is open now; the diner (ours, HeartGold's) stays shut")
