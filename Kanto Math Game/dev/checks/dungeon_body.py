@@ -326,7 +326,8 @@ check({"MT_MOON", "ROCK_TUNNEL", "SEAFOAM_ISLANDS", "KANTO_POKEMON_TOWER", "POWE
 
 # every region's areas (the map replaces the route menu everywhere): each opens and draws, every way out,
 # figure and item on its first floor can be reached
-_all = [k for k, a in _prog.items() if isinstance(a, dict) and a.get("area_type") != "town"]
+_all = [k for k, a in _prog.items() if isinstance(a, dict) and a.get("area_type") != "town"
+        and not a.get("soaring")]   # (Soaring in the Sky is its flight screen, not a map: dev/checks/soaring_body.py)
 _bad = []
 for _a in _all:
     try:

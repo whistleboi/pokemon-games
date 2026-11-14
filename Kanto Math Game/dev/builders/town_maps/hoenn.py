@@ -4206,3 +4206,5 @@ MAPS = {
 from .emerald import HOENN as _EMERALD  # noqa: E402
 
 MAPS.update(_EMERALD)
+from .soaring import SOARING as _SOARING  # noqa: E402  (the places you land on from Soaring in the Sky)
+MAPS.update(_SOARING)

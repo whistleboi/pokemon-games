@@ -495,7 +495,7 @@ def art_recipe(m):
     legend.update({"+": {"exit": "STAIRS"}, "-": {"exit": "STAIRS_UP"}})
     legend.update({"F": {"decor": "fence"}, "R": {"decor": "rock"}, "B": {"decor": "building"}})
     return {"layout": [{"map": rows}], "legend": legend, "art": m, "fog": bool(m.get("fog")), "fixed": True,
-            "style": "field", "floors": 1}  # (open, unless the map keeps its fog: the Pokemon Tower's)
+            "style": m.get("style") or "field", "floors": 1}  # (open, unless the map keeps its fog: the Pokemon Tower's; a map's own "style": the Trackless Forest's)
 
 
 def real_maps(game):
@@ -589,6 +589,12 @@ def dungeon_for(game, restore_data=None):
     """What PlayState(game, restore_data) should be here: the walk going on (back from a battle), a
     new DungeonState (still to be set up), or None for the old route screen."""
     key = game.story_manager.current_area_key
+    if (game.loader.area_data.get("STORY_PROGRESSION", {}).get(key) or {}).get("soaring"):
+        from src.states.overworld.soaring import SoaringState   # (Soaring in the Sky: the flight, not a map)
+        cur = getattr(game, "soaring_state", None)
+        if restore_data and cur is not None and getattr(cur, "area_key", None) == key:
+            return cur
+        return object.__new__(SoaringState)
     if not enabled(game, key):
         return None
     cur = getattr(game, "dungeon_state", None)
@@ -981,10 +987,7 @@ class DungeonState(OverworldBattles, PlayState):
         fr = (1, 0, 3, 0)[(pygame.time.get_ticks() // 120) % 4] if bar.get("march") else 0
         if look.startswith("mon:"):
             from src.minigames.base import icon
-
-            class _Mon:  # (just what the walking sheet needs)
-                id, form, is_shiny, gender = int(look[4:]), "normal", False, None
-            return (self._follower_img(_Mon(), fc) if bar.get("face") else None) or icon(self.game, int(look[4:]), TILE + 6)
+            return self._mon_img(int(look[4:]), fc) or icon(self.game, int(look[4:]), TILE + 6)
         if look.startswith("sheet:"):   # ("big": a legend standing two tiles tall, the Cave of Origin's Primal one)
             return self._sheet_frame(scene_sheet(self.game, look[6:]), fc, frame=fr, height=self.JUMBO if bar.get("big") else None)
         if look.startswith("ow:"):
@@ -3029,6 +3032,17 @@ class DungeonState(OverworldBattles, PlayState):
                 pass
         return self._t_scale
 
+    def _mon_img(self, pid, facing=(0, 1), form=None, shiny=False):
+        """Species pid's following-Pokemon sheet (assets/dungeon/followers), facing its way, stepping; None if it has none."""
+        class _Mon:  # (just what the walking sheet needs)
+            pass
+        m = _Mon()
+        m.id, m.form, m.is_shiny, m.gender = int(pid), form or "normal", bool(shiny), None
+        try:
+            return self._follower_img(m, facing)
+        except (pygame.error, OSError, ValueError, TypeError):
+            return None
+
     def _follower_img(self, pokemon, facing):
         pid = int(getattr(pokemon, "meta_id", None) or pokemon.id) if int(pokemon.id) >= 2000 else int(pokemon.id)
         shiny = bool(getattr(pokemon, "is_shiny", False))
@@ -3171,6 +3185,30 @@ class DungeonState(OverworldBattles, PlayState):
         frame = (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0
         return self._sheet_frame(sheet, self.facing, frame=frame)
 
+    def _ring_spot(self, f):
+        """A map with Hoopa's ring (its floor's "ring" [x, y], dev/builders/town_maps/soaring.py): where the empty ring floats
+        when no legend stands at the back (else None; a legend out stands in front of a ring of its own)."""
+        m = (getattr(self, "recipe", None) or {}).get("art") or {}
+        fl = m["floors"][self.run.index] if m.get("floors") and self.run.index < len(m["floors"]) else m
+        spot = fl.get("ring")
+        if not spot:
+            return None
+        if any(mv.kind == "figure" and isinstance(mv.payload, dict) and mv.payload.get("action") == "BOSS" for mv in f.movers):
+            return ()
+        return tuple(spot)
+
+    def _draw_ring(self, screen, r):
+        """Hoopa's ring floating over a tile (the Hyperspace Fury picture, Pokemon Orre's animation set: assets/soaring)."""
+        def make():
+            img = pygame.image.load(os.path.join(self.game.assets.assets_dir, "soaring", "hoopa_ring.png")).convert_alpha()
+            side = int(TILE * 2.1)
+            return pygame.transform.smoothscale(img, (side, side))
+        img = self._sprite(("hoopa_ring",), make)
+        if img is None:
+            return
+        bob = int(3 * math.sin(pygame.time.get_ticks() / 500))
+        screen.blit(img, img.get_rect(center=(r.centerx, r.centery - int(TILE * 0.75) + bob)))
+
     def _figure_img(self, item, facing=(0, 1), frame=0):
         """A story figure's look: its own sheet ("AREA:TEXT" in dungeon_sprites.json), a boss's Pokemon
         (its overworld sprite, else its party icon), or a townsperson; facing its way, at that step (src/dungeon/npc.py)."""
@@ -3187,9 +3225,16 @@ class DungeonState(OverworldBattles, PlayState):
             if img is not None:
                 return img
         pid = spec.get("pokemon")
+        if pid == "eon":  # (your Eon, waiting where it set you down: the one that carries you, src/world/soaring.py)
+            from src.world import soaring
+            pid = soaring.mount(self.game)[0]
         if pid is None and item.get("action") == "BOSS" and not spec.get("sheet"):   # (a boss with a sheet of its own: the legend, Emerald's)
             pid = (item.get("boss") or self.area_data.get("area_boss") or {}).get("id")
         if pid is not None:
+            boss = (item.get("boss") or {}) if item.get("action") == "BOSS" else {}
+            img = self._mon_img(pid, tuple(facing) if spec.get("face") else (0, 1), boss.get("form"), boss.get("is_shiny"))
+            if img is not None:   # (every Pokemon on the maps: its following-Pokemon sheet, Jordan 11-14)
+                return img
             ow = (sm.get("pokemon") or {}).get(str(pid))
             if ow:
                 return self._sheet_frame(ow[0], (0, 1), col=ow[1], height=TILE + 26)
@@ -3472,6 +3517,9 @@ class DungeonState(OverworldBattles, PlayState):
                     pygame.draw.rect(screen, (220, 50, 50) if k4 % 2 else (245, 245, 245), (r.x + 4 + k4 * (r.w - 8) // 4, r.centery - 8, (r.w - 8) // 4, 10))
         # wild Pokemon and trainers you can see
         emotes = []
+        _ring = self._ring_spot(f)   # (Soaring's Mirage spots: Hoopa's ring at the back, empty on a quiet visit)
+        if _ring and self.run.visible(*_ring):
+            self._draw_ring(screen, at(*_ring))
         for m in f.movers:
             if not self.run.visible(m.x, m.y) or m is self._ow_foe:
                 continue
@@ -3491,6 +3539,8 @@ class DungeonState(OverworldBattles, PlayState):
                     theme.shadow_text(screen, "!", fonts["label"], r.right - 6, r.y - 18, color=(220, 60, 50))
             elif m.kind == "figure":
                 self._fit_jumbo(m)
+                if _ring is not None and m.payload.get("action") == "BOSS":
+                    self._draw_ring(screen, r)   # (the legend come out of it, in front)
                 img = self._figure_img(m.payload, mo.facing, mo.frame()) if mo is not None else self._figure_img(m.payload)
                 if img and getattr(m, "size", 1) > 1:  # a Max Raid's Pokemon: jumbo, over its 2 x 2 tiles
                     bob = int(3 * math.sin(pygame.time.get_ticks() / 400))

@@ -3175,6 +3175,117 @@
     "HOENN_BATTLE_FRONTIER:Clerk": {
       "sheet": "em_83.png"
     },
+    "HOENN_MIRAGE_ISLANDS:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_MIRAGE_ISLANDS:BIG PEARL 2": {
+      "item": "BIG_PEARL"
+    },
+    "HOENN_MIRAGE_ISLANDS:STAR PIECE 3": {
+      "item": "STAR_PIECE"
+    },
+    "HOENN_MIRAGE_ISLANDS:TM91 5": {
+      "item": "TM91"
+    },
+    "HOENN_MIRAGE_ISLANDS:TM90 6": {
+      "item": "TM90"
+    },
+    "HOENN_MIRAGE_ISLANDS:RARE CANDY 7": {
+      "item": "RARE_CANDY"
+    },
+    "HOENN_MIRAGE_ISLANDS:TM66 8": {
+      "item": "TM66"
+    },
+    "HOENN_CRESCENT_ISLE:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_PATHLESS_PLAIN:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_TRACKLESS_FOREST:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_GNARLED_DEN:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_FABLED_CAVE:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_NAMELESS_CAVERN:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_MIRAGE_FOREST:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_MIRAGE_CAVE:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:SOAR AWAY": {
+      "pokemon": "eon"
+    },
+    "HOENN_MIRAGE_FOREST:FULL RESTORE 2": {
+      "item": "FULL_RESTORE"
+    },
+    "HOENN_MIRAGE_FOREST:TM74 3": {
+      "item": "TM74"
+    },
+    "HOENN_MIRAGE_FOREST:CALCIUM 4": {
+      "item": "CALCIUM"
+    },
+    "HOENN_MIRAGE_FOREST:HYPER POTION 5": {
+      "item": "HYPER_POTION"
+    },
+    "HOENN_MIRAGE_FOREST:MAX REVIVE 6": {
+      "item": "MAX_REVIVE"
+    },
+    "HOENN_MIRAGE_FOREST:GREEN SHARD 7": {
+      "item": "GREEN_SHARD"
+    },
+    "HOENN_MIRAGE_FOREST:IRON 8": {
+      "item": "IRON"
+    },
+    "HOENN_MIRAGE_CAVE:TM95 2": {
+      "item": "TM95"
+    },
+    "HOENN_MIRAGE_CAVE:YELLOW SHARD 3": {
+      "item": "YELLOW_SHARD"
+    },
+    "HOENN_MIRAGE_CAVE:CARBOS 4": {
+      "item": "CARBOS"
+    },
+    "HOENN_MIRAGE_CAVE:RARE CANDY 6": {
+      "item": "RARE_CANDY"
+    },
+    "HOENN_MIRAGE_CAVE:FULL HEAL 7": {
+      "item": "FULL_HEAL"
+    },
+    "HOENN_MIRAGE_CAVE:BIG PEARL 8": {
+      "item": "BIG_PEARL"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:PROTEIN 1": {
+      "item": "PROTEIN"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:TM84 2": {
+      "item": "TM84"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:ZINC 3": {
+      "item": "ZINC"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:RED SHARD 4": {
+      "item": "RED_SHARD"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:RARE CANDY 5": {
+      "item": "RARE_CANDY"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:FULL RESTORE 6": {
+      "item": "FULL_RESTORE"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:BLUE SHARD 7": {
+      "item": "BLUE_SHARD"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:MAX REVIVE 8": {
+      "item": "MAX_REVIVE"
+    },
     "HOENN_ARTISAN_CAVE:CARBOS": {
       "item": "CARBOS"
     },

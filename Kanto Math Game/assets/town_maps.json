@@ -242096,5 +242096,620 @@
    "Rider Shatol": 0
   },
   "theme": "tunnel"
+ },
+ "HOENN_CRESCENT_ISLE": {
+  "art": [
+   "~~~~~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~~~~~~~ssss~~~~~~~~~",
+   "~~~~~~~~sss..Nss~~~~~~~~",
+   "~~~~~~ss..f...ss~~~~~~~~",
+   "~~~~~s..f..sss~~~~~~~~~~",
+   "~~~~s....ss~~~~~~~~~~~~~",
+   "~~~s...fs~~~~~~~~~~~~~~~",
+   "~~~s...s~~~~~~~~~~~~~~~~",
+   "~~s..f.s~~~~~~~~~~~~~~~~",
+   "~~s....s~~~~~~~~~~~~~~~~",
+   "~~~s...s~~~~~~~~~~~~~~~~",
+   "~~~s.f..s~~~~~~~~~~~~~~~",
+   "~~~~s....ss~~~~~~~~~~~~~",
+   "~~~~~s..f..sss~~~~~~~~~~",
+   "~~~~~~ss......ss~~~~~~~~",
+   "~~~~~~~~sss..Nss~~~~~~~~",
+   "~~~~~~~~~~~ssss~~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {},
+  "buildings": {},
+  "people": [
+   "SEEK CRESSELIA",
+   "SOAR AWAY"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    13,
+    14
+   ]
+  },
+  "landings": [
+   [
+    13,
+    14
+   ]
+  ],
+  "ring": [
+   13,
+   2
+  ]
+ },
+ "HOENN_PATHLESS_PLAIN": {
+  "art": [
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~~~~~ssssssss~~~~~~~~~",
+   "~~~~~~sss........sss~~~~~~",
+   "~~~~~s....N..N..N...s~~~~~",
+   "~~~~s................s~~~~",
+   "~~~s...r......f.......s~~~",
+   "~~~s..........f...r...s~~~",
+   "~~s....f..............s~~~",
+   "~~s.........r..........s~~",
+   "~~s...f.........ff.....s~~",
+   "~~s....................s~~",
+   "~~~s..r....f...........s~~",
+   "~~~s..............r...s~~~",
+   "~~~~s.....f..........s~~~~",
+   "~~~~s........r.......s~~~~",
+   "~~~~~s..............s~~~~~",
+   "~~~~~~ss.....N....ss~~~~~~",
+   "~~~~~~~~sss.....sss~~~~~~~",
+   "~~~~~~~~~~~sssss~~~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {},
+  "buildings": {},
+  "people": [
+   "SEEK COBALION",
+   "SEEK TERRAKION",
+   "SEEK VIRIZION",
+   "SOAR AWAY"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    13,
+    15
+   ]
+  },
+  "landings": [
+   [
+    13,
+    15
+   ]
+  ],
+  "ring": [
+   13,
+   3
+  ]
+ },
+ "HOENN_TRACKLESS_FOREST": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTT........TTTTTTTT",
+   "TTTTTTT..N..N..N.TTTTTTT",
+   "TTTTTTT..........TTTTTTT",
+   "TTTTTTTTT...f..TTTTTTTTT",
+   "TTTTTTTTTTT..TTTTTTTTTTT",
+   "TTTTT.......TTTTTTTTTTTT",
+   "TTTT..TTTTTTTTTTTTTTTTTT",
+   "TTTT..T.....TTTTTTTTTTTT",
+   "TTTTT...TTT...TTTTTTTTTT",
+   "TTTTTTTTTTTTT....TTTTTTT",
+   "TTTTTTTTTTTTTTT...TTTTTT",
+   "TTTTTTTT..TTTTTT..TTTTTT",
+   "TTTTTTT....TTTTT..TTTTTT",
+   "TTTTTTT..T..TTT...TTTTTT",
+   "TTTTTTTT.TT.....TTTTTTTT",
+   "TTTTTTTT..TTTTTTTTTTTTTT",
+   "TTTTTTTTT..TTTTTTTTTTTTT",
+   "TTTTTTTTTT...TTTTTTTTTTT",
+   "TTTTTTTTTTT..f.TTTTTTTTT",
+   "TTTTTTTTTT....N.TTTTTTTT",
+   "TTTTTTTTTTT.....TTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {},
+  "buildings": {},
+  "style": "forest",
+  "people": [
+   "SEEK RAIKOU",
+   "SEEK ENTEI",
+   "SEEK SUICUNE",
+   "SOAR AWAY"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    14,
+    19
+   ]
+  },
+  "landings": [
+   [
+    14,
+    19
+   ]
+  ],
+  "ring": [
+   12,
+   2
+  ]
+ },
+ "HOENN_GNARLED_DEN": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccc",
+     "cccccc1ccccccc",
+     "ccccc....ccccc",
+     "cccc..r...cccc",
+     "ccc.........cc",
+     "ccc..r....r.cc",
+     "cc...........c",
+     "cc.....N.....c",
+     "ccc.........cc",
+     "cccccccccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "SOAR AWAY"
+    ],
+    "links": {
+     "6,1": [
+      1,
+      7,
+      12
+     ]
+    },
+    "theme": "cave",
+    "roofs": {
+     "_look": {
+      "floor": [
+       172,
+       168,
+       162
+      ],
+      "top": [
+       112,
+       106,
+       102
+      ],
+      "wall": [
+       138,
+       130,
+       124
+      ]
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "ccccccc..ccccccc",
+     "cccccc..N.cccccc",
+     "cccc.r......cccc",
+     "ccc...........cc",
+     "ccc.r.....r...cc",
+     "cc............cc",
+     "cc..r......r..cc",
+     "ccc...........cc",
+     "cccc..r...r..ccc",
+     "cccccc....cccccc",
+     "ccccccc1cccccccc",
+     "cccccccccccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "SEEK KYUREM"
+    ],
+    "links": {
+     "7,12": [
+      0,
+      6,
+      1
+     ]
+    },
+    "theme": "cave",
+    "ring": [
+     8,
+     3
+    ]
+   }
+  ],
+  "floor_names": [
+   "The ashen slope",
+   "The hollow"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    7,
+    6
+   ]
+  }
+ },
+ "HOENN_FABLED_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "~~~~~~~~~~~~~~",
+     "~~~~cccccc~~~~",
+     "~~~cccc1ccc~~~",
+     "~~sccc...ccs~~",
+     "~s....r....s~~",
+     "~s.f.......s~~",
+     "~s.......f..s~",
+     "~~s....N...s~~",
+     "~~~ss....ss~~~",
+     "~~~~~ssss~~~~~",
+     "~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~"
+    ],
+    "exits": {},
+    "people": [
+     "SOAR AWAY"
+    ],
+    "links": {
+     "7,2": [
+      1,
+      7,
+      16
+     ]
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccc",
+     "ccccc......ccccc",
+     "cccc..N..N..cccc",
+     "ccc..........ccc",
+     "cc............cc",
+     "cc..r......r..cc",
+     "cc............cc",
+     "ccc..........ccc",
+     "ccc...r......ccc",
+     "cccc........cccc",
+     "cccc.....r..cccc",
+     "ccccc......ccccc",
+     "cccccc....cccccc",
+     "cccccc....cccccc",
+     "ccccccc..ccccccc",
+     "ccccccc..ccccccc",
+     "ccccccc1cccccccc",
+     "cccccccccccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "SEEK RESHIRAM",
+     "SEEK ZEKROM"
+    ],
+    "links": {
+     "7,16": [
+      0,
+      7,
+      2
+     ]
+    },
+    "theme": "cave",
+    "ring": [
+     9,
+     2
+    ]
+   }
+  ],
+  "floor_names": [
+   "The island",
+   "The misty room"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    7,
+    6
+   ]
+  }
+ },
+ "HOENN_NAMELESS_CAVERN": {
+  "floors": [
+   {
+    "art": [
+     "~~~~~~~~~~~~",
+     "~~~cccccc~~~",
+     "~~ccc1cccc~~",
+     "~~cc....cc~~",
+     "~s..r....s~~",
+     "~s.......s~~",
+     "~~s..N..s~~~",
+     "~~~sssss~~~~",
+     "~~~~~~~~~~~~",
+     "~~~~~~~~~~~~"
+    ],
+    "exits": {},
+    "people": [
+     "SOAR AWAY"
+    ],
+    "links": {
+     "5,2": [
+      1,
+      8,
+      14
+     ]
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccc......cccccc",
+     "cccc..N..N..N..ccc",
+     "ccc............ccc",
+     "cc....~~~~~~....cc",
+     "cc...~~~~~~~~...cc",
+     "cc...~~~~~~~~...cc",
+     "cc....~~~~~~....cc",
+     "ccc............ccc",
+     "cccc..........cccc",
+     "cccccc......cccccc",
+     "cccccccc..cccccccc",
+     "cccccccc..cccccccc",
+     "cccccccc..cccccccc",
+     "cccccccc1ccccccccc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "SEEK UXIE",
+     "SEEK MESPRIT",
+     "SEEK AZELF"
+    ],
+    "links": {
+     "8,14": [
+      0,
+      5,
+      2
+     ]
+    },
+    "theme": "cave",
+    "ring": [
+     9,
+     2
+    ]
+   }
+  ],
+  "floor_names": [
+   "The islet",
+   "The chamber"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    5,
+    5
+   ]
+  }
+ },
+ "HOENN_MIRAGE_FOREST": {
+  "art": [
+   "~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~ssssssssss~~~~~",
+   "~~~ssTTTTTTTTTTss~~~",
+   "~~sTTT...TTT.NTTTs~~",
+   "~~sTT....\"\"\"...TTs~~",
+   "~sTTN..\"\"\"\"\"\"...TTs~",
+   "~sTT..\"\"\"..\"\"\"..TTs~",
+   "~sTT.\"\"\"....\"\"..NTs~",
+   "~sTT.\"\"..f...\"\"..Ts~",
+   "~sTTN.\"\"....\"\"...Ts~",
+   "~sTT..\"\"\"..\"\"\"..TTs~",
+   "~sTTT..\"\"\"\"\"\"..NTTs~",
+   "~~sTT..........TTs~~",
+   "~~sTTTN..T..NTTTTs~~",
+   "~~~sTTTT.....TTTs~~~",
+   "~~~~ssTT..N..TTs~~~~",
+   "~~~~~~ss.....ss~~~~~",
+   "~~~~~~~~sssss~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {},
+  "buildings": {},
+  "people": [
+   "FULL RESTORE 2",
+   "TM74 3",
+   "CALCIUM 4",
+   "HYPER POTION 5",
+   "MAX REVIVE 6",
+   "GREEN SHARD 7",
+   "IRON 8",
+   "SOAR AWAY"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    10,
+    14
+   ]
+  },
+  "landings": [
+   [
+    10,
+    14
+   ]
+  ]
+ },
+ "HOENN_MIRAGE_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "~~~~~~~~~~~~~~",
+     "~~~~cccccc~~~~",
+     "~~~ccc1cccc~~~",
+     "~~~cc....cc~~~",
+     "~~s...r....s~~",
+     "~~s........s~~",
+     "~~~s..N...s~~~",
+     "~~~~sssss~~~~~",
+     "~~~~~~~~~~~~~~"
+    ],
+    "exits": {},
+    "people": [
+     "SOAR AWAY"
+    ],
+    "links": {
+     "6,2": [
+      1,
+      9,
+      12
+     ]
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "cc.....cccccc....Ncc",
+     "cc..r...cccc..r...cc",
+     "cc.......cc.......cc",
+     "ccc..N..........cccc",
+     "cccc.......r....N.cc",
+     "cc......cccc......cc",
+     "cc.N...cccccc..r..cc",
+     "cc.....ccccc......cc",
+     "ccc..r.........N.ccc",
+     "cccc.....N.......ccc",
+     "cccccc........cccccc",
+     "cccccccc.1cccccccccc",
+     "cccccccccccccccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "TM95 2",
+     "YELLOW SHARD 3",
+     "CARBOS 4",
+     "RARE CANDY 6",
+     "FULL HEAL 7",
+     "BIG PEARL 8"
+    ],
+    "links": {
+     "9,12": [
+      0,
+      6,
+      2
+     ]
+    },
+    "theme": "cave"
+   }
+  ],
+  "floor_names": [
+   "The islet",
+   "Inside"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    6,
+    5
+   ]
+  }
+ },
+ "HOENN_MIRAGE_MOUNTAIN": {
+  "art": [
+   "~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~~sccccccs~~~~~~",
+   "~~~~sccc.NN.cccs~~~~",
+   "~~~sccN.......ccs~~~",
+   "~~sccc..cccc..cccs~~",
+   "~~scc..cc..cc..ccs~~",
+   "~scc.N.c....c....cs~",
+   "~scc...c.N..c..N.cs~",
+   "~scc...cc__cc....cs~",
+   "~scc.............cs~",
+   "~sccc____ccc..cccs~~",
+   "~~scc.N.......ccs~~~",
+   "~~sccc....N..cccs~~~",
+   "~~~sccccc..cccss~~~~",
+   "~~~~sss.....sss~~~~~",
+   "~~~~~~s..N..s~~~~~~~",
+   "~~~~~~~sssss~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {},
+  "buildings": {},
+  "people": [
+   "PROTEIN 1",
+   "TM84 2",
+   "ZINC 3",
+   "RED SHARD 4",
+   "RARE CANDY 5",
+   "FULL RESTORE 6",
+   "BLUE SHARD 7",
+   "MAX REVIVE 8",
+   "SOAR AWAY"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    9,
+    14
+   ]
+  },
+  "landings": [
+   [
+    9,
+    14
+   ]
+  ]
+ },
+ "HOENN_MIRAGE_ISLANDS": {
+  "art": [
+   "~~~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~~~ssssssss~~~~~~~",
+   "~~~~~ss..........ss~~~",
+   "~~~~s...N.N.N.N.N..s~~",
+   "~~~s...............s~~",
+   "~~s...r..\"\"\"\"..r...s~~",
+   "~~s.N..\"\"\"\"\"\"\".....s~~",
+   "~s....\"\"\"\"\"\"\"\"\"\"..N.s~",
+   "~s...\"\"\"\"ff\"\"\"\".....s~",
+   "~sN..\"\"\"\"\"\"\"\"\"\"..r..s~",
+   "~s.....\"\"\"\"\"\".......s~",
+   "~~s..r.......f..N..s~~",
+   "~~s.f....N.........s~~",
+   "~~~s.........r....s~~~",
+   "~~~~s...N........s~~~~",
+   "~~~~~ss...N....ss~~~~~",
+   "~~~~~~~sssssss~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {},
+  "buildings": {},
+  "people": [
+   "SEEK ARTICUNO",
+   "SEEK ZAPDOS",
+   "SEEK MOLTRES",
+   "SEEK MEWTWO",
+   "SEEK CELEBI",
+   "BIG PEARL 2",
+   "STAR PIECE 3",
+   "TM91 5",
+   "TM90 6",
+   "RARE CANDY 7",
+   "TM66 8",
+   "SOAR AWAY"
+  ],
+  "arrive": {
+   "HOENN_SOARING_IN_THE_SKY": [
+    10,
+    14
+   ]
+  },
+  "landings": [
+   [
+    10,
+    14
+   ]
+  ],
+  "ring": [
+   12,
+   3
+  ]
  }
 }

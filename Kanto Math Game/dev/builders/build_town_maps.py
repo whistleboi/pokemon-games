@@ -87,6 +87,8 @@ def reachable(key, m):
     if not exits:  # (the only way out a parked motorbike, kind "cycle": Orre's towns, left by riding)
         bikes = {k for k, v in m.get("buildings", {}).items() if v == "cycle"}
         exits = [(x, y) for x, y in cells("D") if any(art[y + b][x + a] in bikes for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= y + b < h and 0 <= x + a < w)]
+    if not exits and m.get("landings"):  # (an island you're flown to and from: Soaring's Mirage spots, from the spot you land on)
+        exits = [tuple(t) for t in m["landings"]]
     assert exits, f"{key}: no way out"
     starts = exits if m.get("parts") else exits[:1]  # (a floor in separate parts, each reached by its own ladder)
     starts = starts + [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]  # (a yard reached only through a house's back door: Fuchsia's pond)

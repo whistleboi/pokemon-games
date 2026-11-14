@@ -171,6 +171,8 @@ def describe(item):
     from src.pokemon import zpower
     if item in zpower.ITEM_TEXT:
         return zpower.ITEM_TEXT[item]
+    if item == "EON_FLUTE":  # (Soaring in the Sky: src/world/soaring.py)
+        return "Play it outside in Hoenn and your Eon friend comes to fly you high over the region."
     return info(item).get("text") or catching.BALL_TEXT.get(item, "")
 
 
