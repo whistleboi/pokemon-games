@@ -149,9 +149,12 @@ for key in BUILT:
             _pairs.append((key, came))
 check(not _far, f"every rebuilt map: in from each way, you stand beside that way {_far[:4]}")
 _bad, _multi = [], 0
+_twins = {(v.get("mirage") or {}).get("area") for v in _area.values() if (v.get("mirage") or {}).get("area")}
 for a, b in _pairs:
     for x, y in ((a, b), (b, a)):
         if _tm[x].get("floors") or _tm[y].get("floors"):  # (a map of floors: its own section below)
+            continue
+        if x in _twins or y in _twins:  # (Mirage Island: back the way you came is Route 130 on an ordinary day)
             continue
         st = arrive(x, y)
         ta = [t for t, v in _exits(st).items() if v == y]
@@ -2437,6 +2440,91 @@ _top = sorted(m.payload.get("text") if isinstance(m.payload, dict) else (m.paylo
 check("SUMMON RAYQUAZA" in _top and "Lorekeeper Zinnia" in _top, f"Sky Pillar: Rayquaza asleep on top, Zinnia there for the Delta Episode ({_top})")
 story.story_flags.clear(); story.story_flags.update(_saved24)
 story.inventory.clear(); story.inventory.update(_inv24)
+
+# ---- 11-13: on a map of floors everyone stands on the floor their spot is on (a figure named by its text went to the
+# last floor unless the map also had rooms: the Abandoned Ship's items were all in its hidden cabins)
+_tm25 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp25 = g.loader.area_data["STORY_PROGRESSION"]
+_saved25 = dict(story.story_flags); _inv25 = dict(story.inventory)
+story.story_flags.update({"beat_hoenn_champion": True, "cave_of_origin_cleared": True})
+_wrong25 = []
+for _k in sorted(BUILT):
+    _fl = (_tm25.get(_k) or {}).get("floors")
+    if not _fl or _tm25[_k].get("rooms") or _sp25.get(_k, {}).get("area_type") == "town":
+        continue
+    _want = {p: i for i, f in enumerate(_fl) for p in (f.get("people") or []) if isinstance(p, str)}
+    if not _want:
+        continue
+    st = open_map(_k, None)
+    if not hasattr(st, "run"):
+        continue
+    for _i in range(st.run.n_floors):
+        for _m in st.run.made(_i).movers:
+            _txt = _m.payload.get("text") if _m.kind == "figure" and isinstance(_m.payload, dict) else None
+            if _txt in _want and _want[_txt] != _i:
+                _wrong25.append((_k, _txt, _i, _want[_txt]))
+g.transitioning = False
+check(not _wrong25, f"maps of floors: every figure on its own floor ({_wrong25[:6]})")
+# ---- batch 25: the S.S. Tidal (a ferry both ways), Southern Island, the Leftovers
+_tid = _sp25["HOENN_SS_TIDAL"]
+_sailor = next(o for o in _tid["route_menu"] if o.get("text") == "Sailor")
+_to25 = {}
+for _from in ("SLATEPORT_CITY", "LILYCOVE_CITY"):
+    st = open_map("HOENN_SS_TIDAL", _from)
+    story.last_area_key = _from
+    st._get_route_callback(_sailor)()
+    _play(st, 300)
+    _to25[_from] = getattr(g.current_state, "next_area_key", None)
+    g.transitioning = False
+story.inventory.pop("LEFTOVERS", None)
+for _k in [k for k in story.story_flags if k.startswith("hidden_HOENN_SS_TIDAL")]:
+    story.story_flags.pop(_k)
+st = open_map("HOENN_SS_TIDAL", "SLATEPORT_CITY")
+_hl = _tm25["HOENN_SS_TIDAL"]["floors"][2].get("hidden") or {}
+_spot = next(iter(_hl), None)
+if _spot:
+    _hx, _hy = (int(v) for v in _spot.split(","))
+    st.run.jump_floor(2, (_hx + 1, _hy)); _calm(st); st.anim = 0
+    st.step(-1, 0)
+    _play(st, 200)
+_si = _sp25["HOENN_SOUTHERN_ISLAND"]
+_ss = next(o for o in _si["route_menu"] if o.get("text") == "Sailor")
+from src.pokemon import items as _items25
+check(_to25 == {"SLATEPORT_CITY": "LILYCOVE_CITY", "LILYCOVE_CITY": "SLATEPORT_CITY"} and _hl == {_spot: "LEFTOVERS"}
+      and story.inventory.get("LEFTOVERS") == 1 and _ss["event"]["travel"] == "SLATEPORT_CITY" and "LEFTOVERS" in _items25.HELD,
+      f"S.S. Tidal: the sailor sees you off at the other port; Emerald's hidden Leftovers on the lower deck; Southern Island's sailor takes you back ({_to25})")
+from src.states.battle import WildBattleState as _WB25
+_hold = mk(25); _hold.held_item = "LEFTOVERS"
+story.player_team = [_hold]
+_b25 = _WB25(g, mk(19), "HOENN_ROUTE_101")
+_b25.player_hp = max(1, _b25.player_max_hp // 2); _hold.current_hp = _b25.player_hp
+_before = _b25.player_hp
+_lines25 = _b25._status_chip()
+check(_b25.player_hp == min(_b25.player_max_hp, _before + max(1, _b25.player_max_hp // 16)) and any("Leftovers" in l for l in _lines25),
+      f"Leftovers: a sixteenth of its HP back at the end of the turn ({_before} -> {_b25.player_hp})")
+story.story_flags.clear(); story.story_flags.update(_saved25)
+story.inventory.clear(); story.inventory.update(_inv25)
+
+# ---- batch 26 (11-14): Mirage Island: Route 130 with the island in it, on a Mirage day
+_tm26 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp26 = g.loader.area_data["STORY_PROGRESSION"]
+_md = type(story).mirage_day
+type(story).mirage_day = lambda self, day=None: True
+_on = story.prepare_travel("HOENN_ROUTE_130")[0]
+type(story).mirage_day = lambda self, day=None: False
+_off = story.prepare_travel("HOENN_ROUTE_130")[0]
+type(story).mirage_day = _md
+import datetime as _dt26
+_days = sum(story.mirage_day(_dt26.date(2026, 1, 1) + _dt26.timedelta(days=i)) for i in range(70))
+st = open_map("HOENN_MIRAGE_ISLAND", "HOENN_ROUTE_131")
+_isle = st._zone_index(0, 40, 15); _sea = st._zone_index(0, 5, 35)
+_pools = {st.zones[i]: (_sp26["HOENN_MIRAGE_ISLAND"]["zone_pools"] or {}).get(st.zones[i]) if isinstance(st.zones[i], str) else None for i in (_isle, _sea)}
+_mi = _tm26["HOENN_MIRAGE_ISLAND"]
+check(_on == "HOENN_MIRAGE_ISLAND" and _off == "HOENN_ROUTE_130" and _days == 10 and _isle != _sea
+      and set(_mi["exits"].values()) == {"HOENN_ROUTE_131", "HOENN_ROUTE_129"}
+      and "360" in g.loader.area_data["HOENN_MIRAGE_ISLAND_PERCENTAGES"],
+      f"Mirage Island: on a Mirage day (one in seven) Route 130 has the island; its grass has Wynaut, the sea Route 130's own ({_on}, {_off}, {_days} of 70, {_pools})")
+g.transitioning = False
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

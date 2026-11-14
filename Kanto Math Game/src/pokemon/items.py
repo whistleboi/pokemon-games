@@ -103,7 +103,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "MENTAL_HERB": {"price": 1000, "text": "Held: used up to free its holder from love, Taunt, Encore and Disable."},
         "SHELL_BELL": {"price": 4000, "text": "Held: its holder gets back an eighth of the damage it deals."},
         "FOCUS_BAND": {"price": 3000, "text": "Held: now and then its holder hangs on at 1 HP instead of fainting."},
-        "NEVER_MELT_ICE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ice-type moves hit harder."}}
+        "NEVER_MELT_ICE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ice-type moves hit harder."},
+        "LEFTOVERS": {"price": 4000, "text": "Held: its holder gets back a little HP at the end of every turn."}}   # (the S.S. Tidal's hidden one, Emerald)
 
 
 def held_boost(pokemon, move_type):

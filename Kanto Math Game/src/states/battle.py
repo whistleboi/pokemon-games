@@ -701,6 +701,23 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             if st not in explained:  # the first time in a battle: what the status does
                 explained.add(st)
                 out.append(self.STATUS_HELP[st])
+        for side in ("player", "opponent"):   # (held Leftovers: a sixteenth of its HP back, while it's standing and hurt)
+            mon = self.player_pokemon if side == "player" else self.opponent_pokemon
+            if getattr(mon, "held_item", None) != "LEFTOVERS":
+                continue
+            max_hp = self.player_max_hp if side == "player" else self.opp_max_hp
+            hp = self.player_hp if side == "player" else self.opponent_hp
+            if hp <= 0 or hp >= max_hp:
+                continue
+            gain = min(max(1, max_hp // 16), max_hp - hp)
+            if side == "player":
+                self.player_hp += gain
+                mon.current_hp = self.player_hp
+            else:
+                self.opponent_hp += gain
+                mon.current_hp = self.opponent_hp
+            label = mon.display_name.upper() if side == "player" else f"Foe {mon.display_name.upper()}"
+            out.append(f"{label} restored a little HP with its Leftovers!")
         return out
 
     STATUS_HELP = {"burn": "A burn takes 1/16 of its HP at the end of every turn and weakens its physical moves.",

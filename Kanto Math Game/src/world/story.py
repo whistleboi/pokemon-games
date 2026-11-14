@@ -139,6 +139,9 @@ class StoryManager:
         party, PC and bag. The first trip into a region without its starter goes to its professor.
         Returns (area to go to, lines to show)."""
         target_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+        if (target_data.get("mirage") or {}).get("area") and self.mirage_day():   # (Emerald: on a Mirage day Route 130 is the
+            area_key = target_data["mirage"]["area"]                                #  route with Mirage Island in it)
+            target_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
         if target_data.get("border"):  # a border keeps the party and region you arrive with
             self.story_flags["border_region"] = self.get_current_region()
             return area_key, []
@@ -163,6 +166,15 @@ class StoryManager:
             self.story_flags["pending_starter"] = region
             self.story_flags["came_from_region"] = self.get_current_region()
         return area_key, lines
+
+    MIRAGE_EVERY = 7   # (about one day in seven: Emerald's own rule is a daily number matching a Pokemon of yours)
+
+    def mirage_day(self, day=None):
+        """Is Mirage Island out today? The same answer all day, and for each save its own days."""
+        import datetime
+        day = day or datetime.date.today()
+        seed = int(self.story_flags.get("dungeon_seed") or 0)
+        return (day.toordinal() + seed) % self.MIRAGE_EVERY == 0
 
     def pending_starter(self):
         """The region whose starter the player must pick now (first visit, empty party), or None."""

@@ -358,6 +358,11 @@ def art_recipe(m):
         for i, f in enumerate(m["floors"]):  # (a target on two floors: you come back on the lower-numbered one)
             for t in f.get("exits", {}).values():
                 out["exit_floors"].setdefault(t, i)
+        out["people_floors"] = {}   # (everyone on the floor their spot is on: a figure no "figure_floors" names went to the last floor)
+        for i, f in enumerate(m["floors"]):
+            for t in f.get("people") or []:   # (people only: trainers keep their own placing, one name on several floors)
+                if isinstance(t, str):
+                    out["people_floors"].setdefault(t, i)
         out["exit_floors_all"] = {}  # (the same place reached from several floors: each of them, in floor order: Victory Road's two mouths on Route 23)
         for i, f in enumerate(m["floors"]):
             for t in dict.fromkeys(f.get("exits", {}).values()):
@@ -716,7 +721,8 @@ class DungeonState(OverworldBattles, PlayState):
 
         at_edge = getattr(game, "arrive_edge", None)  # (out by an edge tile there: in beside its own partner here)
         game.arrive_edge = None
-        if at_edge and at_edge[0] == entrance and at_edge[1] == self.area_key:
+        _mirage = ((game.loader.area_data.get("STORY_PROGRESSION", {}).get(at_edge[1]) or {}).get("mirage") or {}).get("area") if at_edge else None
+        if at_edge and at_edge[0] == entrance and (at_edge[1] == self.area_key or _mirage == self.area_key):   # (Mirage Island: Route 130's own shape)
             p2, f = tuple(at_edge[2]), self.run.floor
             own = [e for e, v in f.exits.items() if v == entrance]
             t = min(own, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1])) if own else None  # (its partner, or the nearest to it)
@@ -770,7 +776,9 @@ class DungeonState(OverworldBattles, PlayState):
         {text: floor} (Navel Rock: Lugia below, Ho-Oh on top), else default."""
         if isinstance(item, dict) and item.get("_floor") is not None:  # (a passer-by of a map of floors: the floor it stands on)
             return int(item["_floor"])
-        floors = dict(self.recipe.get("figure_floors") or {}, **((self.recipe.get("art") or {}).get("figure_floors") or {}))
+        floors = dict(self.recipe.get("people_floors") or {})   # (the floor whose people list names it, unless a figure_floors says)
+        floors.update(self.recipe.get("figure_floors") or {})
+        floors.update((self.recipe.get("art") or {}).get("figure_floors") or {})
         on = (floors.get(item.get("text"), floors.get(item.get("spot_name"), floors.get(item.get("name"))))) if isinstance(item, dict) else None  # (spot_name: one of several with the same name)
         if on is not None:
             return int(on)

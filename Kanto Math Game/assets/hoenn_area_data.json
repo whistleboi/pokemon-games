@@ -126,10 +126,10 @@
   "HOENN_MIRAGE_CAVE_PERCENTAGES": { "602": 10, "563": 10, "79": 10, "132": 10, "530": 10, "599": 10, "95": 10, "75": 10, "525": 10, "201": 10 },
   "HOENN_MIRAGE_FOREST_PERCENTAGES": { "114": 12, "191": 8, "432": 8, "421": 8, "548": 8, "531": 8, "431": 8, "572": 8, "37": 8, "205": 8, "440": 8, "75": 8 },
   "HOENN_MIRAGE_MOUNTAIN_PERCENTAGES": { "531": 12, "440": 8, "114": 8, "555": 8, "240": 8, "178": 8, "517": 8, "137": 8, "75": 8, "558": 8, "205": 8, "232": 8 },
-  "HOENN_MIRAGE_ISLAND_PERCENTAGES": { "114": 12, "178": 8, "523": 8, "49": 8, "555": 8, "636": 8, "53": 8, "517": 8, "132": 8, "556": 8, "75": 8, "688": 8 },
+  "HOENN_MIRAGE_ISLAND_PERCENTAGES": { "360": 40, "114": 12, "178": 8, "523": 8, "49": 8, "555": 8, "636": 8, "53": 8, "517": 8, "132": 8, "556": 8, "75": 8, "688": 8 },
   "STORY_PROGRESSION": {
     "HOENN_MIRAGE_ISLAND": {
-      "area_type": "dungeon",
+      "area_type": "dungeon", "zones": [{"key": "island", "name": "Mirage Island"}, {"key": "sea", "name": "Route 130"}], "zones_explore": true, "zone_pools": {"island": "HOENN_MIRAGE_ISLAND_PERCENTAGES", "sea": "HOENN_ROUTE_130_PERCENTAGES"},
       "route_name": "Mirage Island",
       "region": "HOENN",
       "battle_type": "grass",
@@ -149,15 +149,9 @@
           "condition": "can_battle",
           "color": "GREEN"
         },
-        {
-          "text": "Soaring in the Sky",
-          "action": "EXIT",
-          "target_area": "HOENN_SOARING_IN_THE_SKY",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "Route 131", "action": "EXIT", "target_area": "HOENN_ROUTE_131", "condition": "can_exit", "color": "RED"}, {"text": "Route 129", "action": "EXIT", "target_area": "HOENN_ROUTE_129", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "HOENN_SOARING_IN_THE_SKY"
+      "next_area": "HOENN_ROUTE_131"
     },
     "HOENN_MIRAGE_MOUNTAIN": {
       "area_type": "dungeon",
@@ -600,7 +594,7 @@
     "HOENN_ISLAND_CAVE": {"area_type": "dungeon", "route_name": "Island Cave", "region": "HOENN", "battle_type": "cave", "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CHALLENGE REGICE", "action": "BOSS", "color": "CYAN", "not_on_map": true, "condition": ["regice_door_open", "not:defeated_regice"], "boss": {"id": 378, "level": 40, "name": "Regice", "victory_flag": "defeated_regice"}}, {"text": "AWAKEN REGIGIGAS", "action": "BOSS", "color": "GOLD", "flag_condition": "not island_cave_regigigas", "boss": {"id": 486, "name": "Regigigas", "victory_flag": "island_cave_regigigas", "lines": ["Regirock, Regice and Registeel react... Regigigas awakens!"]}, "condition": ["defeated_regice", "defeated_regirock", "defeated_registeel"], "not_on_map": true}, {"text": "ROUTE 105", "action": "EXIT", "target_area": "HOENN_ROUTE_105", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_105"},
     "HOENN_ANCIENT_TOMB": {"area_type": "dungeon", "route_name": "Ancient Tomb", "region": "HOENN", "battle_type": "cave", "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CHALLENGE REGISTEEL", "action": "BOSS", "color": "GRAY", "not_on_map": true, "condition": ["registeel_door_open", "not:defeated_registeel"], "boss": {"id": 379, "level": 40, "name": "Registeel", "victory_flag": "defeated_registeel"}}, {"text": "ROUTE 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_120"},
     "HOENN_SS_TIDAL": {
-      "area_type": "dungeon",
+      "ferry": {"SLATEPORT_CITY": "LILYCOVE_CITY", "LILYCOVE_CITY": "SLATEPORT_CITY", "HOENN_BATTLE_FRONTIER": "SLATEPORT_CITY"}, "area_type": "dungeon",
       "route_name": "S.S. Tidal",
       "region": "HOENN",
       "battle_type": "indoor",
@@ -680,7 +674,10 @@
           "victory_flag": "ss_tidal_cleared"
         }
       ],
-      "route_menu": [{"text": "BLASTOISINITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_blastoisinite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BLASTOISINITE!"], "gift_item": {"BLASTOISINITE": 1}, "flag": "got_blastoisinite"}}, 
+      "route_menu": [
+        {"text": "Sailor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: We've made port! Mind your step on the way off."], "travel": "@ferry"}},
+        {"text": "Frontier sailor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: Off to the Battle Frontier? Right this way, Champion!"], "travel": "HOENN_BATTLE_FRONTIER"}, "condition": "beat_hoenn_champion"},
+{"text": "BLASTOISINITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_blastoisinite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BLASTOISINITE!"], "gift_item": {"BLASTOISINITE": 1}, "flag": "got_blastoisinite"}}, 
         {
           "text": "BATTLE THROUGH THE CABINS",
           "action": "GALACTIC_GAUNTLET",
@@ -2503,7 +2500,7 @@
       "region": "HOENN"
     },
     "HOENN_ROUTE_130": {
-      "area_type": "wild_route",
+      "mirage": {"area": "HOENN_MIRAGE_ISLAND"}, "area_type": "wild_route",
       "route_name": "Route 130",
       "battle_type": "ocean",
       "wild_pool_percentages": "HOENN_ROUTE_130_PERCENTAGES",
@@ -3280,7 +3277,9 @@
       ],
       "next_area": "LILYCOVE_CITY"
     },
-        "HOENN_SOUTHERN_ISLAND": {"area_type": "dungeon", "route_name": "Southern Island", "region": "HOENN", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK THE EON POKEMON", "action": "BOSS", "condition": "not:southern_island_eon_caught", "color": "PURPLE", "boss": {"legend": "other_eon", "id": 380, "level": 30, "name": "Latias", "victory_flag": "southern_island_eon_caught"}}, {"text": "BOAT TO SLATEPORT", "action": "EXIT", "target": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "SLATEPORT_CITY"},
+        "HOENN_SOUTHERN_ISLAND": {"area_type": "dungeon", "route_name": "Southern Island", "region": "HOENN", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [
+        {"text": "Sailor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: Ready to head back? Off we go to Slateport!"], "travel": "SLATEPORT_CITY"}},
+{"text": "SEEK THE EON POKEMON", "action": "BOSS", "condition": "not:southern_island_eon_caught", "color": "PURPLE", "boss": {"legend": "other_eon", "id": 380, "level": 30, "name": "Latias", "victory_flag": "southern_island_eon_caught"}}, {"text": "BOAT TO SLATEPORT", "action": "EXIT", "target": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "SLATEPORT_CITY"},
         "HOENN_MARINE_CAVE": {"area_type": "dungeon", "route_name": "Marine Cave", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK KYOGRE", "action": "BOSS", "color": "GOLD", "condition": "not:counterpart_legend_caught", "boss": {"id": 382, "name": "Kyogre", "victory_flag": "counterpart_legend_caught", "lines": ["The cave trembles... Kyogre awakens!"]}}, {"text": "ROUTE 127", "action": "EXIT", "target": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_127"},
         "HOENN_TERRA_CAVE": {"area_type": "dungeon", "route_name": "Terra Cave", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK GROUDON", "action": "BOSS", "color": "GOLD", "condition": "not:counterpart_legend_caught", "boss": {"id": 383, "name": "Groudon", "victory_flag": "counterpart_legend_caught", "lines": ["The cave trembles... Groudon awakens!"]}}, {"text": "ROUTE 114", "action": "EXIT", "target": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_ROUTE_114"},
         "HOENN_CRESCENT_ISLE": {"area_type": "dungeon", "route_name": "Crescent Isle", "region": "HOENN", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK CRESSELIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not mirage_cresselia", "boss": {"id": 488, "level": 50, "name": "Cresselia", "victory_flag": "mirage_cresselia", "lines": ["A powerful presence fills the air... Cresselia appears!"]}}, {"text": "SOAR AWAY", "action": "EXIT", "target": "HOENN_SOARING_IN_THE_SKY", "condition": "can_exit", "color": "RED"}], "next_area": "HOENN_SOARING_IN_THE_SKY"},

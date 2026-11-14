@@ -3123,6 +3123,24 @@
     },
     "HOENN_SKY_PILLAR:SUMMON RAYQUAZA": {
       "sheet": "em_207.png"
+    },
+    "HOENN_SS_TIDAL:Peeko": {
+      "sheet": "em_211.png"
+    },
+    "HOENN_SS_TIDAL:Mr. Briney": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_SS_TIDAL:Frontier sailor": {
+      "sheet": "em_49.png"
+    },
+    "HOENN_SS_TIDAL:Sailor": {
+      "sheet": "em_49.png"
+    },
+    "HOENN_SS_TIDAL:Nervous man": {
+      "sheet": "em_39.png"
+    },
+    "HOENN_SOUTHERN_ISLAND:Sailor": {
+      "sheet": "em_49.png"
     }
   },
   "townsperson": "NPC 17.png",

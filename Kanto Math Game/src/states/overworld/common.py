@@ -468,7 +468,12 @@ def _run_story_event(state, key, check, show):
             state._remember()
     if ev.get("travel"):  # (and off you go: Fallarbor's rival takes you back to Mauville)
         from src.states.overworld import AreaTransitionState
-        game.change_state(AreaTransitionState(game, ev["travel"], initial_message=lines or None))
+        to = ev["travel"]
+        if to == "@ferry":   # (a ferry's sailor: on to the other port from the one you boarded at, the area's "ferry" map:
+            here = game.loader.area_data.get("STORY_PROGRESSION", {}).get(story.current_area_key, {})   # the S.S. Tidal)
+            ferry = here.get("ferry") or {}
+            to = ferry.get(story.last_area_key) or next(iter(ferry.values()), story.last_area_key)
+        game.change_state(AreaTransitionState(game, to, initial_message=lines or None))
         return
     show(lines or ["..."])
 
