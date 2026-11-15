@@ -479,10 +479,10 @@ def surface(art, kinds, tile, roofs=None, theme=None):
             _building(surf, art, rect, kinds.get(k, "house"), tile, (roofs or {}).get(k))
     for o in sorted(OBJECTS, key=lambda o: o["at"][1] if "at" in o else o["r"][1] + o["r"][3]):  # the things from the tile sheets, back to front
         if "at" in o:  # one of the real game's models, where the game stands it
-            pic, ox, oy = _model(o["k"])
+            mp, ox, oy = _model(o["k"])  # (not "pic": that's the map's ground picture, which decides the trees below)
             key = (o["k"], tile)
             if key not in _SCALED:
-                _SCALED[key] = pic if tile == 32 else pygame.transform.scale(pic, (max(1, pic.get_width() * tile // 32), max(1, pic.get_height() * tile // 32)))
+                _SCALED[key] = mp if tile == 32 else pygame.transform.scale(mp, (max(1, mp.get_width() * tile // 32), max(1, mp.get_height() * tile // 32)))
             surf.blit(_SCALED[key], (int(o["at"][0] * tile - ox * tile / 32), int(o["at"][1] * tile - oy * tile / 32)))
         else:
             _object(surf, o["k"], pygame.Rect(o["r"][0] * tile, o["r"][1] * tile, o["r"][2] * tile, o["r"][3] * tile), tile)

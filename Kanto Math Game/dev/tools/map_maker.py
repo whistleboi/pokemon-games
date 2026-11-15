@@ -24,7 +24,10 @@ The park builder (its button, or P): the panel becomes pictures of everything, i
 height, ways out). Click a picture, or drag it onto the map: a see-through copy follows the mouse, green where it fits,
 red where it doesn't; click to drop it (again for another; right-click or Esc empties your hand). Drag anything placed to
 move it; right-click it to take it away. Ground and height are brushes (1, 3 or 5 tiles); raising or lowering the ground
-rebuilds the cliffs when you let go.
+rebuilds the cliffs when you let go. A source picture (a map to follow) goes with the map: Load..., or drop the picture
+file on the window; Fit map sizes the map to it; its mode button cycles On top (the picture see-through over the map),
+Underneath (the map see-through over it) and Tracing layer (the picture, with only what you've put down drawn over it:
+plain lawn stays clear); Strength fades it.
 """
 import copy
 import json
@@ -559,7 +562,7 @@ class ParkBuilder:
         self.b_brush_btns = [Button((x0 + 96 + i * 52, 112, 46, 26), f"{n}x{n}", lambda n=n: setattr(self, "b_brush", n), toggle=lambda n=n: self.b_brush == n)
                              for i, n in enumerate((1, 3, 5))]
         H = self.screen.get_height()
-        self.b_grid = pygame.Rect(x0, 146, w, H - 146 - 214)
+        self.b_grid = pygame.Rect(x0, 146, w, H - 146 - 290)
         y = self.b_grid.bottom + 10
         self.b_roof_rects = [pygame.Rect(x0 + i * 32, y + 22, 28, 22) for i in range(len(ROOF_PRESETS))]
         self.b_detail_rect = pygame.Rect(x0, y + 74, w, 26)
@@ -567,7 +570,13 @@ class ParkBuilder:
                             Button((x0 + 98, y + 112, 60, 28), "Grid", lambda: setattr(self, "show_grid", not self.show_grid), toggle=lambda: self.show_grid),
                             Button((x0 + 164, y + 112, 72, 28), "Levels", lambda: setattr(self, "show_levels", not self.show_levels), toggle=lambda: self.show_levels),
                             Button((x0 + 242, y + 112, w - 242, 28), "Undo", self.undo)]
-        self.b_hint_y = y + 150
+        self.b_src_y = y + 150
+        self.b_src_btns = [Button((x0, y + 172, 96, 28), "Load...", self.browse_ref),
+                           Button((x0 + 102, y + 172, 74, 28), "Fit map", self.fit_to_ref),
+                           Button((x0 + 182, y + 172, 64, 28), "Show", lambda: setattr(self, "show_ref", not self.show_ref), toggle=lambda: self.show_ref),
+                           Button((x0 + 252, y + 172, w - 252, 28), "On top", self.toggle_ref_under, toggle=self.ref_under)]
+        self.b_ref_alpha = Slider((x0, y + 208, w, 18), 0, 255, lambda: (self.doc.ref or {}).get("alpha", 140), self._set_ref_alpha, "Strength")
+        self.b_hint_y = y + 234
 
     def toggle_builder(self):
         self.builder = not self.builder
@@ -804,12 +813,17 @@ class ParkBuilder:
             self.b_scroll[self.b_tab] = max(0, min(max(0, (n + cols - 1) // cols - rows_fit), self.b_scroll[self.b_tab] - e.y))
             return True
         pos = getattr(e, "pos", None)
+        if self.b_ref_alpha.drag and e.type in (pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP):
+            self.b_ref_alpha.event(e)
+            return True
         if e.type == pygame.MOUSEBUTTONDOWN and pos and panel.collidepoint(pos):
             if e.button != 1:
                 return True
             for b in (self.key_box, self.detail_box):
                 b.event(e)
-            for b in [self.btn_save, self.btn_builder] + self.b_tab_btns + self.b_brush_btns + self.b_view_btns:
+            if self.b_ref_alpha.event(e):
+                return True
+            for b in [self.btn_save, self.btn_builder] + self.b_tab_btns + self.b_brush_btns + self.b_view_btns + self.b_src_btns:
                 if b.click(pos):
                     return True
             for i, r in enumerate(self.b_roof_rects):
@@ -948,6 +962,12 @@ class ParkBuilder:
             self.detail_box.draw(s, self.font, mouse)
         for b in self.b_view_btns:
             b.draw(s, self.font, mouse)
+        name = os.path.basename(self.doc.ref["path"]) if self.doc.ref else "none (Load..., or drop a picture on the map)"
+        s.blit(self.font.render(f"Source picture: {name}"[:54], True, DIM), (x0, self.b_src_y))
+        self.b_src_btns[3].text = self.REF_MODES[self.ref_mode()]
+        for b in self.b_src_btns:
+            b.draw(s, self.font, mouse)
+        self.b_ref_alpha.draw(s, self.small, mouse)
         s.blit(self.small.render("Right-click: take away / put down   Esc: empty hand   wheel: zoom", True, DIM), (x0, self.b_hint_y))
 
     def draw_carry(self, mouse):
@@ -1235,19 +1255,132 @@ class MapMaker(ParkBuilder):
         return path, problems
 
     def load_ref(self):
-        path = self.ref_box.text.strip().strip('"')
-        if not os.path.isfile(path):
-            self.status = f"No picture at {path}"
+        self.set_ref(self.ref_box.text)
+
+    def set_ref(self, path):
+        """Lay a source picture with the map (a map from the real game, a sketch): stretched to the map's size."""
+        path = (path or "").strip().strip('"')
+        try:
+            pygame.image.load(path)
+        except (pygame.error, FileNotFoundError, OSError):
+            self.status = f"Couldn't open a picture at {path}" if path else "No picture chosen"
             return
         self.push()
-        self.doc.ref = {"path": path, "alpha": (self.doc.ref or {}).get("alpha", 140)}
+        old = self.doc.ref or {}
+        self.doc.ref = {"path": path, "alpha": old.get("alpha", 140), "under": old.get("under", False)}
+        self.ref_box.text = path
         self._ref_img = None
         self.show_ref = True
-        self.status = "Reference picture laid under the map (stretched to its size)"
+        self.status = f"Source picture: {os.path.basename(path)} (stretched to the map; Fit map sizes the map to it)"
+
+    def browse_ref(self):
+        """Pick the source picture in a file window."""
+        try:
+            import tkinter
+            from tkinter import filedialog
+            root = tkinter.Tk()
+            root.withdraw()
+            root.attributes("-topmost", True)
+            path = filedialog.askopenfilename(title="Source picture for this map",
+                                              filetypes=[("Pictures", "*.png *.jpg *.jpeg *.bmp *.gif"), ("All files", "*.*")])
+            root.destroy()
+        except Exception as e:     # (no file window here: drop the file on the map, or type its path in the classic panel)
+            self.status = f"No file window ({type(e).__name__}): drop the picture file onto the map instead"
+            return
+        if path:
+            self.set_ref(path)
+
+    def fit_to_ref(self):
+        """Size the map to the source picture, a tile per 16 px (a Gen 3/4 screenshot) or per 32 px (a fan-game map)."""
+        if not self.doc.ref:
+            self.status = "Load a source picture first"
+            return
+        try:
+            w, h = pygame.image.load(self.doc.ref["path"]).get_size()
+        except (pygame.error, FileNotFoundError, OSError):
+            self.status = "Couldn't open the source picture"
+            return
+        t = 32 if w % 32 == 0 and h % 32 == 0 and min(w, h) // 32 >= 12 else 16
+        last = getattr(self, "_fit", None)
+        if last and last[0] == self.doc.ref["path"] and last[1] == (self.doc.w, self.doc.h):
+            t = 48 - last[2]                 # (pressed again on the same picture: the other tile size, 16 <-> 32)
+        self._fit = None
+        self.push()
+        self.doc.resize(max(4, min(300, w // t)), max(4, min(300, h // t)))
+        self.w_box.text, self.h_box.text = str(self.doc.w), str(self.doc.h)
+        self._ref_img = None
+        self.changed()
+        self.center_view()
+        self._fit = (self.doc.ref["path"], (self.doc.w, self.doc.h), t)
+        self.status = f"Map sized to the picture: {self.doc.w} x {self.doc.h} tiles ({t} px a tile; Fit map again for {48 - t} px)"
+
+    REF_MODES = {"top": "On top", "under": "Underneath", "trace": "Tracing layer"}
+
+    def ref_mode(self):
+        """How the source picture lies with the map: "top" (see-through over it), "under" (the whole map see-through
+        over it), "trace" (a tracing layer: the picture, and over it only what you've put down; plain lawn is clear)."""
+        if not self.doc.ref:
+            return "top"
+        return self.doc.ref.get("mode") or ("under" if self.doc.ref.get("under") else "top")
+
+    def ref_under(self):
+        return self.ref_mode() != "top"
+
+    def toggle_ref_under(self):
+        if not self.doc.ref:
+            self.status = "Load a source picture first"
+            return
+        order = list(self.REF_MODES)
+        m = order[(order.index(self.ref_mode()) + 1) % len(order)]
+        self.doc.ref["mode"] = m
+        self.doc.ref.pop("under", None)
+        self.status = {"top": "Source picture on top of the map, see-through",
+                       "under": "Source picture underneath: the whole map see-through over it",
+                       "trace": "Tracing layer: the picture, with only what you put down drawn over it (plain lawn is clear)"}[m]
+
+    def trace_surface(self):
+        """The map as a tracing layer, at the zoom: only what's been put down (buildings, pieces, paths, trees, water,
+        cliffs...), plain lawn left clear."""
+        if self.game_surface() is None or self._game[1] is None:
+            return None
+        full, key = self._game[1], self._game[0]
+        if getattr(self, "_trace", None) is None or self._trace[0] != key:
+            T = GAME_TILE
+            lay = pygame.Surface(full.get_size(), pygame.SRCALPHA)
+            models = []
+            for L in self.doc.buildings:
+                r = self.doc.rect_of(L)
+                if not r:
+                    continue
+                roof = self.doc.roofs.get(L)
+                if isinstance(roof, dict) and roof.get("model") and self.art._model(roof["model"]):
+                    models.append((r[1] + r[3], roof["model"], r[0], r[1]))
+                else:
+                    lay.blit(full, (r[0] * T, r[1] * T), (r[0] * T, r[1] * T, r[2] * T, r[3] * T))
+            for y in range(self.doc.h):
+                for x in range(self.doc.w):
+                    if self.doc.art[y][x] in ".`" or self.doc.owner(x, y):
+                        continue
+                    lay.blit(full, (x * T, y * T), (x * T, y * T, T, T))
+            for o in self.doc.objects:
+                p = next((q for q in LIBRARY if q["key"] == o["k"]), None)
+                models.append((o["at"][1] + (p["h"] if p else 1), o["k"], o["at"][0], o["at"][1]))
+            for _foot, k, x, y in sorted(models):      # (the ready-made pieces whole, back to front)
+                m = self.art._model(k)
+                if m:
+                    lay.blit(m[0], (x * T - m[1], y * T - m[2]))
+            self._trace = (key, lay, None)
+        if self._trace[2] is None or self._trace[2][0] != self.zoom:
+            w, h = self.doc.w * self.zoom, self.doc.h * self.zoom
+            sc = pygame.transform.smoothscale(self._trace[1], (w, h)) if self.zoom < GAME_TILE else pygame.transform.scale(self._trace[1], (w, h))
+            self._trace = (self._trace[0], self._trace[1], (self.zoom, sc))
+        return self._trace[2][1]
 
     def _set_ref_alpha(self, v):
         if self.doc.ref:
             self.doc.ref["alpha"] = int(v)
+            if self._ref_img and self._ref_img[1] is not None:
+                self._ref_img[1].set_alpha(int(v))
 
     def cliffs(self):
         self.push()
@@ -1362,6 +1495,18 @@ class MapMaker(ParkBuilder):
                             if self.zoom < GAME_TILE else pygame.transform.scale(self._game[1], (self.doc.w * self.zoom, self.doc.h * self.zoom)))
         return self._scaled[1]
 
+    def ref_picture(self, mw, mh):
+        """The source picture stretched to the map at this zoom (cached), or None."""
+        if not self.doc.ref:
+            return None
+        if self._ref_img is None or self._ref_img[0] != (self.doc.ref["path"], mw, mh):
+            try:
+                img = pygame.image.load(self.doc.ref["path"]).convert()
+                self._ref_img = ((self.doc.ref["path"], mw, mh), pygame.transform.smoothscale(img, (mw, mh)))
+            except (pygame.error, FileNotFoundError, OSError):
+                self._ref_img = ((self.doc.ref["path"], mw, mh), None)
+        return self._ref_img[1]
+
     def draw_roofs(self):
         """The roofs the game look draws with: the map's own, its other entries, its placed pieces."""
         roofs = dict(self.doc.roofs, **(self.doc.extra.get("_roof_extras") or {}))
@@ -1402,8 +1547,37 @@ class MapMaker(ParkBuilder):
         mw, mh = self.doc.w * Z, self.doc.h * Z
         pygame.draw.rect(s, (20, 22, 30), (self.ox - 2, self.oy - 2, mw + 4, mh + 4))
         g = self.game_surface() if self.game_look else None
-        if g is not None:
+        ref = self.ref_picture(mw, mh) if self.show_ref else None
+        mode = self.ref_mode() if ref is not None else "top"
+        under = mode == "under"
+        if mode == "trace":                 # (a tracing layer: the picture, faded by Strength, and over it what's been put down)
+            ref.set_alpha(self.doc.ref.get("alpha", 140))
+            s.blit(ref, (self.ox, self.oy))
+            tr = self.trace_surface() if g is not None else None
+            if tr is not None:
+                s.blit(tr, (self.ox, self.oy))
+            else:
+                for y in range(self.doc.h):
+                    for x in range(self.doc.w):
+                        c = self.doc.art[y][x]
+                        if c != ".":
+                            s.fill(FLAT.get(c) or tuple(self._roof(c)), (self.ox + x * Z, self.oy + y * Z, Z, Z))
+        elif under:
+            ref.set_alpha(255)
+            s.blit(ref, (self.ox, self.oy))
+        if mode == "trace":
+            pass
+        elif g is not None:
+            g.set_alpha(255 - self.doc.ref.get("alpha", 140) if under else 255)
             s.blit(g, (self.ox, self.oy))
+            g.set_alpha(255)
+        elif under:
+            lay = pygame.Surface((mw, mh), pygame.SRCALPHA)
+            for y in range(self.doc.h):
+                for x in range(self.doc.w):
+                    col = FLAT.get(self.doc.art[y][x]) or tuple(self._roof(self.doc.art[y][x]))
+                    lay.fill(tuple(col) + (255 - self.doc.ref.get("alpha", 140),), (x * Z, y * Z, Z, Z))
+            s.blit(lay, (self.ox, self.oy))
         else:
             for y in range(self.doc.h):
                 for x in range(self.doc.w):
@@ -1424,16 +1598,9 @@ class MapMaker(ParkBuilder):
                         pygame.draw.circle(s, col, (cx, cy), Z // 3)
                         t = self.small.render(c, True, (0, 0, 0))
                         s.blit(t, t.get_rect(center=(cx, cy)))
-        if self.show_ref and self.doc.ref:
-            if self._ref_img is None or self._ref_img[0] != (self.doc.ref["path"], mw, mh):
-                try:
-                    img = pygame.image.load(self.doc.ref["path"]).convert()
-                    self._ref_img = ((self.doc.ref["path"], mw, mh), pygame.transform.smoothscale(img, (mw, mh)))
-                except (pygame.error, FileNotFoundError):
-                    self._ref_img = ((self.doc.ref["path"], mw, mh), None)
-            if self._ref_img[1] is not None:
-                self._ref_img[1].set_alpha(self.doc.ref.get("alpha", 140))
-                s.blit(self._ref_img[1], (self.ox, self.oy))
+        if ref is not None and mode == "top":
+            ref.set_alpha(self.doc.ref.get("alpha", 140))
+            s.blit(ref, (self.ox, self.oy))
         if self.show_levels:
             tint = [(0, 0, 120, 70), (0, 120, 0, 50), (200, 160, 0, 70), (200, 40, 40, 80)]
             lay = pygame.Surface((mw, mh), pygame.SRCALPHA)
@@ -1560,6 +1727,13 @@ class MapMaker(ParkBuilder):
         if e.type == pygame.VIDEORESIZE:
             self.screen = pygame.display.set_mode((max(1200, e.w), max(800, e.h)), pygame.RESIZABLE)
             self._build_panel()
+            return
+        if e.type == pygame.DROPFILE:
+            if e.file.lower().endswith((".png", ".jpg", ".jpeg", ".bmp", ".gif")):
+                self.set_ref(e.file)
+            elif e.file.lower().endswith(".json"):
+                self.open_box.text = e.file
+                self.open_from_box()
             return
         if self.builder and self.builder_event(e):
             return
