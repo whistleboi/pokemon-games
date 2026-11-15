@@ -3325,25 +3325,57 @@
     "HOENN_BATTLE_FRONTIER:Salon Maiden Anabel": {
       "sheet": "em_34.png"
     },
-    "HOENN_ROUTE_123:Chomper": {"pokemon": 261},
+    "HOENN_ROUTE_123:Chomper": {
+      "pokemon": 261
+    },
     "HOENN_BATTLE_FRONTIER:Tower attendant": {
       "sheet": "em_85.png"
     },
-    "HOENN_BATTLE_FRONTIER:Wally": {"sheet": "em_135.png"},
-    "HOENN_BATTLE_FRONTIER:The Judge": {"sheet": "em_33.png"},
-    "HOENN_BATTLE_FRONTIER:Looker": {"sheet": "em_17.png"},
-    "HOENN_BATTLE_FRONTIER:Custodian": {"sheet": "em_21.png"},
-    "HOENN_BATTLE_FRONTIER:GENGARITE": {"item": "GENGARITE"},
-    "HOENN_BATTLE_FRONTIER:Berry lover": {"sheet": "em_18.png"},
-    "HOENN_BATTLE_FRONTIER:Little girl": {"sheet": "em_12.png"},
-    "HOENN_BATTLE_FRONTIER:Magma Grunt": {"sheet": "em_119.png"},
-    "HOENN_BATTLE_FRONTIER:Aqua Grunt": {"sheet": "em_117.png"},
-    "HOENN_BATTLE_FRONTIER:Whismur show": {"sheet": "em_24.png"},
-    "HOENN_BATTLE_FRONTIER:Tutor Thunder Punch": {"sheet": "em_21.png"},
-    "HOENN_BATTLE_FRONTIER:Tutor Fire Punch": {"sheet": "em_48.png"},
-    "HOENN_BATTLE_FRONTIER:Tutor Ice Punch": {"sheet": "em_26.png"},
-    "HOENN_BATTLE_FRONTIER:Tutor Superpower": {"sheet": "em_15.png"},
-    "HOENN_BATTLE_FRONTIER:Bike fan": {"sheet": "em_37.png"},
+    "HOENN_BATTLE_FRONTIER:Wally": {
+      "sheet": "em_135.png"
+    },
+    "HOENN_BATTLE_FRONTIER:The Judge": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Looker": {
+      "sheet": "em_17.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Custodian": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_BATTLE_FRONTIER:GENGARITE": {
+      "item": "GENGARITE"
+    },
+    "HOENN_BATTLE_FRONTIER:Berry lover": {
+      "sheet": "em_18.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Little girl": {
+      "sheet": "em_12.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Magma Grunt": {
+      "sheet": "em_119.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Aqua Grunt": {
+      "sheet": "em_117.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Whismur show": {
+      "sheet": "em_24.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Tutor Thunder Punch": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Tutor Fire Punch": {
+      "sheet": "em_48.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Tutor Ice Punch": {
+      "sheet": "em_26.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Tutor Superpower": {
+      "sheet": "em_15.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Bike fan": {
+      "sheet": "em_37.png"
+    },
     "HOENN_BATTLE_FRONTIER:Maison attendant": {
       "sheet": "em_85.png"
     },

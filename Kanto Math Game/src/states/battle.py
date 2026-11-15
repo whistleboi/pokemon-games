@@ -859,6 +859,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             roll = random.randint(*self.WEAK_ROLL)
         elif mode == "max_roll":
             roll = 100
+        if roll is None and self.starter_battle:  # (the opening rival battle leans your way, Jordan 11-15: your hits roll high, the rival's low)
+            roll = random.randint(*(self.STARTER_PLAYER_ROLL if attacker is self.player_pokemon else self.STARTER_RIVAL_ROLL))
         stab = self.stab_mult(attacker, move_type)  # (Terastal: the old types too, 2x on a shared one)
         dmg, self._last_was_crit = balance.damage(
             self._level(attacker), power, attack, defense,
@@ -895,6 +897,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
     QUICK_MS = 2000
     QUICK_BONUSES = ("max_roll", "crit", "flinch")
     WEAK_ROLL = (75, 85)       # a wrong answer: below the usual 85-100% damage roll
+    STARTER_PLAYER_ROLL = (94, 100)   # the opening rival battle (starter_battle): your hits from the top of the 85-100% roll...
+    STARTER_RIVAL_ROLL = (85, 90)     # ...the rival's from the bottom
     WRONG_ANSWER_CAP = 49      # ...and at most 49% of the foe's max HP per move
     QUICK_FLINCH = 30          # % chance the quick-answer flinch bonus works
     FEEDBACK_FRAMES = {True: 16, False: 24}  # ~0.6 s / ~1 s at 25 FPS
@@ -1859,7 +1863,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                 label = "Rare Candy" if candy == 1 else "Rare Candies"
                 msgs.append(f"You received {candy} {label}!")
 
-            balls = self.rewards.get("balls", 0)
+            balls = self.rewards.get("balls", 0) if self.game.story_manager.catch_unlocked() and not self.starter_battle else 0   # (none from the opening rival battle, or before you can catch: Jordan, 11-15)
             if balls > 0:
                 msgs.append(f"You got {balls} Poké Balls!")
             tm = self._tm_reward()
@@ -1903,6 +1907,10 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         return self._tm_won
 
     def exit_battle(self, lost=False):
+        if self.starter_battle:   # (the opening rival battle: your team is healed afterwards, won or lost: Jordan, 11-15)
+            for p in self.game.story_manager.player_team:
+                if p:
+                    p.heal_full()
         if not lost and self.player_won and self._tm_reward():
             self.game.story_manager.add_item(self._tm_reward(), 1)
         from src.pokemon import mega_clock
@@ -1940,6 +1948,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self.game.story_manager.add_item("RARE_CANDY", candy)
 
         reward_balls = self.rewards.get("balls", 3)
+        catching = self.game.story_manager.catch_unlocked()
+        if not catching or self.starter_battle:   # (no Poke Balls from the opening rival battle, or from any battle before the
+            reward_balls = 0                       #  region lets you catch: Jordan 11-15)
 
         key_items = self.game.loader.area_data.get("GAME_CONFIG", {}).get("KEY_ITEMS", [])
         for item, qty in self.rewards.items():
@@ -2013,7 +2024,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         if self.trainer_class == "RIVAL" and self.game.story_manager.current_area_key == "PALLET_TOWN":
             outcome = self.game.story_manager.get_victory_outcome(battle_type="rival")
             play_state_data = getattr(self, 'play_state_data', {})
-            self.game.story_manager.balls_left += reward_balls + outcome.get("rewards", {}).get("balls", 5)
+            self.game.story_manager.balls_left += reward_balls + (outcome.get("rewards", {}).get("balls", 5) if catching and not self.starter_battle else 0)
             from src.states.overworld import PlayState, AreaTransitionState
             self.game.states["play"] = PlayState(self.game, restore_data=play_state_data)
 

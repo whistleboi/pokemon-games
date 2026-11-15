@@ -39,6 +39,13 @@ def _t(base, **kw):
 
 
 EVENTS = {
+    # ---------------- Kanto: after the rival's first battle in the Lab, Oak sends you off with Potions (Jordan, 11-15:
+    # "to assist getting to Viridian")
+    "oak_potions": {
+        "lines": ["Professor Oak: Well fought, both of you! Your Pokémon must be tired after that.",
+                  "Professor Oak: Here, take these Potions. Use one when your Pokémon is hurt on the way to Viridian City."],
+        "gift_item": {"POTION": 5}, "flag": "got_oak_potions",
+        "done": ["Professor Oak: Keep a Potion handy, and don't be afraid to rest at a Pokémon Center!"]},
     # ---------------- Sinnoh (Brilliant Diamond / Shining Pearl) ----------------
     "professor_rowan": {
         "lines": ["Professor Rowan: Hm. So you're the one who met me at Lake Verity.",

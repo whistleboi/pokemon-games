@@ -21,7 +21,8 @@ Story scenes: a map's "scenes" [scene, ...]. A scene plays once its conditions a
     "lines":    what they say when they reach you
     "then":     "talk" (their own option runs, as if you had walked up and talked to them: a battle, a gift), or nothing
     "after":    "home" (they walk back to their spot), "stay" (where they stopped), or "leave" (they walk off the
-                nearest edge of the map and are gone for this visit)
+                nearest edge of the map and are gone for this visit; "exit": [x, y] the tile they walk off by instead,
+                a room's door mat)
     "push":     [dx, dy]: you take a step that way afterwards (someone who stops you going on)
     "every":    true: it plays every time it triggers (someone who keeps stopping you), and "flag" is not set
     "push_unless": a flag: no step back once it's set (the scene's event let you by: the Museum ticket paid)
@@ -534,7 +535,7 @@ class Scenes:
             if after == "home":
                 m.walk(m.home, lambda t: h.npc_passable(t, m), beside=False)
             elif after == "leave":   # (they walk off; you can move at once: sweep() takes them away at the edge or out of view)
-                edge = h.npc_edge(m)
+                edge = tuple(s["exit"]) if s.get("exit") else h.npc_edge(m)   # ("exit": the tile they leave by: a room's door mat, the rival out of Oak's Lab)
                 if edge:
                     m.walk(edge, lambda t: h.npc_passable(t, m) or t == edge, beside=False)
                     self.departing.append(m)

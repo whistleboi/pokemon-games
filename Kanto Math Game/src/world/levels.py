@@ -6,9 +6,10 @@ Levels for everything the player fights.
   The rest of a leader's team sits a few levels below the ace.
 - Elite Four and Champion: per-region ladders.
 - Wild Pokemon and route trainers: the area's level from assets/area_levels.json (the games'
-  encounter levels; an area's own `"level"` key overrides it), and from 11-07 (Jordan) they keep up
-  with the player: never below that, but up to the team's average level, the lowest one left out
-  (a new catch doesn't pull the routes down). Gyms, the League and story trainers keep their own.
+  encounter levels; an area's own `"level"` key overrides it). Before the region's title (Jordan,
+  11-15) they keep that canon level, rising to 3 under the level cap only once your lead Pokemon has
+  reached the cap; after the title they keep up with the team's average level (11-07), the lowest one
+  left out. Gyms, the League and story trainers keep their own.
 - Legendaries use fixed levels; Max Raid bosses take their level from the star rank.
 """
 import random
@@ -115,10 +116,29 @@ def team_level(game):
     return sum(levels) // len(levels) if levels else 0
 
 
+CAP_LIFT_BELOW = 3   # (once your lead is at the level cap, the areas rise to this many levels under it)
+
+
+def lead_level(game):
+    """Your lead Pokemon's level (the first in the team that isn't an Egg); 0 without one."""
+    story = getattr(game, "story_manager", None)
+    lead = next((p for p in (getattr(story, "player_team", None) or []) if p and not getattr(p, "is_egg", False)), None)
+    return int(lead.level) if lead else 0
+
+
 def area_level(game, area_key):
-    """The level an area's wild Pokemon and route trainers are built around: its canon level, or the
-    player's team level (team_level) once the team is ahead of it (Jordan, 11-07: keep up with me)."""
-    return max(canon_area_level(game, area_key), team_level(game))
+    """The level an area's wild Pokemon and route trainers are built around (Jordan, 11-15). Before the region's title:
+    its canon level, unless your lead Pokemon has reached the level cap (the next Gym's ace): then the areas rise to
+    CAP_LIFT_BELOW levels under the cap. After the title (the post-game): its canon level, or the player's team level
+    (team_level) once the team is ahead of it (Jordan, 11-07: keep up with me)."""
+    canon = canon_area_level(game, area_key)
+    story = getattr(game, "story_manager", None)
+    if story is None:
+        return canon
+    if not is_postgame(story):
+        cap = story_level_cap(story)
+        return max(canon, cap - CAP_LIFT_BELOW) if lead_level(game) >= cap else canon
+    return max(canon, team_level(game))
 
 
 

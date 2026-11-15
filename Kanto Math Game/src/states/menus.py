@@ -948,7 +948,8 @@ class StarterSelectionState(GameState):
             msg_text += self._region_lines("starter_text", lead=chosen_pokemon_obj.name,
                                            other=" and ".join(p.name for p in others) or "",
                                            rival_pick=rival_pick, friend_pick=friend_pick)
-            story.balls_left = max(story.balls_left, 5)
+            if story.catch_unlocked(self.region):   # (no Poke Balls before the region lets you catch: Jordan, 11-15)
+                story.balls_left = max(story.balls_left, 5)
         elif self.region == "JOHTO":
             rival_map = {0: 1, 1: 2, 2: 0}
             s_idx = self.selected_idx

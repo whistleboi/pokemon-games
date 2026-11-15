@@ -212,17 +212,35 @@ check(isinstance(intro, TrainerIntroState) and isinstance(b, TrainerBattleState)
       and [p.id for p in b.opponent_team] == [1], f"the rival takes Bulbasaur and battles you ({[p.id for p in b.opponent_team] if b else None})")
 g.change_state(b)
 b.player_won = True
+story.player_team[0].current_hp = 1   # (a hard-won battle: the opening battle heals you after, won or lost; Jordan 11-15)
+_pot = story.inventory.get("POTION", 0)
+_balls = story.balls_left
 b.exit_battle()
+check(story.balls_left == _balls, f"...and no Poké Balls from it: you can't catch yet (Jordan 11-15) ({story.balls_left - _balls})")
+check(story.player_team[0].current_hp == story.player_team[0].get_max_hp(), "after the rival's first battle your team is healed")
 said.clear()
 play(lambda: isinstance(g.current_state, _WTS), 600)
 t = g.current_state
 check(isinstance(t, _WTS) and t.room == "lab" and story.story_flags.get("defeated_rival_kanto"), f"after the battle you're back in the Lab ({getattr(t, 'room', None)})")
-play(lambda: story.story_flags.get("kanto_rival_left_lab") and not g.current_state._busy(), 3000)
+_walked = []
+def _watch():
+    st = g.current_state
+    for h, o in (getattr(st, "motions", None) or {}).items():
+        if getattr(o, "path", None):
+            _walked.append(tuple(o.path[-1]))
+    return story.story_flags.get("kanto_rival_left_lab") and not st._busy()
+play(_watch, 3000)
 t = g.current_state
+check((6, 12) in _walked, f"the rival walks out by the Lab's door ({sorted(set(_walked))[:4]})")
 check(story.story_flags.get("kanto_rival_left_lab") and any("Smell you later" in s for s in said)
       and not any("{rival_name}" == o.get("text") for o in t._people().values()),
       f"the rival says his piece and leaves ({said[-1:]})")
 check(not any("Poke Ball" in str(o.get("text")) for o in t._people().values()), "the Poké Balls are put away")
+t.player = (6, 8); t.anim = 0
+walk(t, "u"); play(lambda: story.story_flags.get("got_oak_potions") and not g.current_state._busy(), 1500); tap(g.current_state)
+t = g.current_state
+check(story.inventory.get("POTION", 0) == _pot + 5 and any("Potions" in x for x in said),
+      f"...and Oak gives you five Potions for the road to Viridian ({story.inventory.get('POTION', 0) - _pot})")
 _m = [m.get("id") for m in story.get_active_missions()]
 check(_m and _m[0] == "m0b", f"the Journal: Oak's Parcel, at the Viridian Mart ({_m[:2]})")
 # out of the Lab and up to Route 1: nobody stops you now

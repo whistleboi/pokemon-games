@@ -24,7 +24,10 @@ check(levels.canon_area_level(g, "JOHTO_ROUTE_44") == 23, f"Route 44 at HGSS's 2
 story.player_team = [mk(6), mk(9), mk(3)]
 for _p, _l in zip(story.player_team, (40, 30, 5)):
     _p.level = _l
-check(levels.area_level(g, "JOHTO_ROUTE_29") == 35, "areas keep up with the team: its average, the lowest left out (Jordan, 11-07)")
+_exp = (lambda _a: (levels.canon_area_level(g, _a) if levels.is_postgame(story) is False and levels.lead_level(g) < levels.story_level_cap(story)
+               else max(levels.canon_area_level(g, _a), levels.story_level_cap(story) - 3) if not levels.is_postgame(story)
+               else max(levels.canon_area_level(g, _a), levels.team_level(g))))("JOHTO_ROUTE_29")
+check(levels.area_level(g, "JOHTO_ROUTE_29") == _exp, f"areas keep their canon level till the lead reaches the cap, then 3 under it; after the title they keep up with the team (Jordan 11-15) {_exp}")
 story.player_team[0].level = story.player_team[1].level = 2
 check(levels.area_level(g, "JOHTO_ROUTE_44") == 23, "...never below the area's own level")
 

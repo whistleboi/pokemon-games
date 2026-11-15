@@ -184,18 +184,18 @@
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "c.........<cc",
+     "c.........ncc",
      "c............",
      "c.....ccN....",
      "c.....cc.....",
      "c............",
      "cc..........c",
-     "c...nn.......",
-     "cccnccccccccc"
+     "c...vv.......",
+     "cccvccccccccc"
     ],
     "exits": {
-     "n": "OUT:6,7",
-     "<": "ROOM:home_2"
+     "v": "OUT:6,7",
+     "n": "ROOM:home_2"
     },
     "buildings": {},
     "roofs": {
@@ -252,7 +252,7 @@
     "art": [
      "cccccccccccc",
      "ccccccccccc!",
-     "c.......ccn.",
+     "c.......cc>.",
      "c.......cc..",
      "c.....c.....",
      "c.....!.....",
@@ -261,7 +261,7 @@
      "c..........."
     ],
     "exits": {
-     "n": "ROOM:home"
+     ">": "ROOM:home"
     },
     "buildings": {},
     "roofs": {
@@ -277,12 +277,11 @@
     },
     "signs": [
      [
-      "It's a posted notice",
-      "If you're confused, ask for HELP!"
+      "A note pinned to the wall: \"Stuck? Open the MENU and take a look around!\""
      ],
      [
-      "played with the NES.",
-      "Okay!"
+      "A game console. You played on it all last night...",
+      "Better get going!"
      ]
     ],
     "overheads": [
@@ -312,11 +311,11 @@
      "......cc.....",
      "..........N..",
      ".............",
-     "c..nnn......c",
+     "c..vvv......c",
      "ccccccccccccc"
     ],
     "exits": {
-     "n": "OUT:15,7"
+     "v": "OUT:15,7"
     },
     "buildings": {},
     "roofs": {
@@ -335,16 +334,13 @@
     ],
     "signs": [
      [
-      "The lovely and sweet",
-      "CLEFAIRY"
+      "A picture of a sweet little Clefairy."
      ],
      [
-      "The shelves are crammed full of",
-      "books on POKeMON."
+      "The shelves are packed with books about Pokémon."
      ],
      [
-      "The shelves are crammed full of",
-      "books on POKeMON."
+      "The shelves are packed with books about Pokémon."
      ]
     ],
     "moves": {
@@ -402,11 +398,11 @@
      ".............",
      "..N........N.",
      "...N.........",
-     "c....nnn....c",
+     "c....vvv....c",
      "ccccccccccccc"
     ],
     "exits": {
-     "n": "OUT:16,13"
+     "v": "OUT:16,13"
     },
     "buildings": {},
     "roofs": {
@@ -510,15 +506,13 @@
     ],
     "signs": [
      [
-      "There's an e-mail message here.",
-      "Finally!"
+      "An e-mail on the screen: \"The Pokédex is finished at last! Two of them are ready.\""
      ],
      [
-      "There's an e-mail message here.",
-      "Finally!"
+      "An e-mail on the screen: \"The Pokédex is finished at last! Two of them are ready.\""
      ],
      [
-      "Press START to open the MENU!"
+      "A poster: \"Tap MENU to see your team, your Bag and your Pokédex!\""
      ]
     ],
     "moves": {
@@ -626,7 +620,29 @@
        "{rival_name}: Hmph. Fine. I'll train my Pokémon out in the wild till it's tough as nails.",
        "{rival_name}: Gramps! {player_name}! Smell you later!"
       ],
-      "after": "leave"
+      "after": "leave",
+      "exit": [
+       6,
+       12
+      ]
+     },
+     {
+      "who": "Professor Oak",
+      "trigger": {
+       "zone": [
+        0,
+        0,
+        12,
+        12
+       ]
+      },
+      "condition": [
+       "kanto_rival_left_lab",
+       "not:got_oak_potions"
+      ],
+      "flag": "got_oak_potions",
+      "then": "event:oak_potions",
+      "after": "stay"
      },
      {
       "trigger": {
