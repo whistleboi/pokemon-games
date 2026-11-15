@@ -4914,6 +4914,186 @@
     },
     "MT_EMBER:CHALLENGE MOLTRES": {
       "sheet": "fr_137.png"
+    },
+    "TWO_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "TWO_ISLAND:Man": {
+      "sheet": "fr_51.png"
+    },
+    "TWO_ISLAND:Cooltrainer": {
+      "sheet": "fr_52.png"
+    },
+    "TWO_ISLAND:Woman": {
+      "sheet": "fr_20.png"
+    },
+    "TWO_ISLAND:Girl": {
+      "sheet": "fr_29.png"
+    },
+    "TWO_ISLAND:Old woman": {
+      "sheet": "fr_19.png"
+    },
+    "TWO_ISLAND:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "TWO_ISLAND:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "TWO_ISLAND:Joyful Game Corner": {
+      "sheet": "fr_25.png"
+    },
+    "TWO_ISLAND:Lostelle's Thanks": {
+      "sheet": "fr_30.png"
+    },
+    "TWO_ISLAND:Lostelle's Dad": {
+      "sheet": "fr_30.png"
+    },
+    "TWO_ISLAND:Move Maniac": {
+      "sheet": "fr_27.png"
+    },
+    "TWO_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "TWO_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "TWO_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "TWO_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "TWO_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "TWO_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "CAPE_BRINK:VISIT THE MOVE TUTOR": {
+      "sheet": "fr_58.png"
+    },
+    "THREE_ISLAND:Man": {
+      "sheet": "fr_30.png"
+    },
+    "THREE_ISLAND:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "THREE_ISLAND:Doduo": {
+      "sheet": "fr_132.png"
+    },
+    "THREE_ISLAND:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "THREE_ISLAND:Biker    ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker ": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Biker  ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker      ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Stop the Biker Gang": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker   ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker     ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker       ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Woman": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Biker        ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Lostelle": {
+      "sheet": "fr_17.png"
+    },
+    "THREE_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "THREE_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "THREE_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "THREE_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "THREE_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "THREE_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "THREE_ISLAND:Girl": {
+      "sheet": "fr_17.png"
+    },
+    "THREE_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "BERRY_FOREST:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "BERRY_FOREST:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "BERRY_FOREST:MAX ELIXIR": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",

@@ -1353,6 +1353,29 @@ for _k, _v in _mef.items():
 _floor(me, 4)
 check(_figure(me, "CHALLENGE MOLTRES") == (9, 6), "...Moltres on the summit, where FireRed has it")
 
+# ---- batch 28: Two Island, Cape Brink, Three Island with its port, Bond Bridge, Berry Forest
+ti = open_map("TWO_ISLAND", "CAPE_BRINK")
+_pp = {o.get("text"): p for p, o in ti._people().items()}
+check((ti.w, ti.h) == (48, 20) and _pp.get("Shop") == (28, 4), f"Two Island: FireRed's picture; the data's shop at the market stall ({_pp.get('Shop')})")
+_pp = _room_of(ti, "gamecorner")
+check(_pp.get("Joyful Game Corner") == (4, 2) and (5, 5) in _pp.values(), f"...the Joyful Game Corner: its attendant and Lostelle's dad ({_pp})")
+_bk = story.story_flags.pop("beat_three_island_bikers", None)
+th = open_map("THREE_ISLAND", "BOND_BRIDGE")
+_pp = {o.get("text"): p for p, o in th._people().items()}
+check((th.w, th.h) == (48, 60) and _pp.get("Stop the Biker Gang") == (8, 24) and sum(1 for n in _pp if n and n.startswith("Biker")) == 9
+      and "THREE_ISLE_PORT" in set(th.town_map["exits"].values()),
+      f"Three Island: the town over its port, as the game joins them; the bikers in the road and on the pier; Three Isle Path's mouth ({sum(1 for n in _pp if n and n.startswith('Biker'))})")
+story.story_flags["beat_three_island_bikers"] = True
+th = open_map("THREE_ISLAND", "BOND_BRIDGE")
+check(not any(n and n.startswith("Biker") for n in {o.get("text") for o in th._people().values()}), "...beaten: the bikers are gone")
+story.story_flags.pop("beat_three_island_bikers", None)
+if _bk is not None:
+    story.story_flags["beat_three_island_bikers"] = _bk
+bb = open_map("BOND_BRIDGE", "THREE_ISLAND")
+check(len(_trainers(bb)) == 6, f"Bond Bridge: FireRed's six trainers ({len(_trainers(bb))})")
+bf = open_map("BERRY_FOREST", "BOND_BRIDGE")
+check((bf.run.floor.w, bf.run.floor.h) == (57, 47) and bf._here_art().get("boss_spot") == [4, 8], "Berry Forest: FireRed's picture; Lostelle's spot where FireRed has her")
+
 # ---- Silph Co. in the Journal (Jordan, 11-14: "very clearly guided"): three steps, the marker floor by floor
 _sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}

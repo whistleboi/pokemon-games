@@ -775,6 +775,7 @@
       "subregion": "SEVII",
       "has_gym": false,
       "explore_options": [
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_twoisland", "event": {"lines": ["A Revive, on the beach."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_twoisland"}},
         {
           "text": "Heal",
           "action": "HEAL"
@@ -982,6 +983,7 @@
       "subregion": "SEVII",
       "has_gym": false,
       "explore_options": [
+        {"text": "ZINC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_zinc_threeisland", "event": {"lines": ["A Zinc, by the houses."], "gift_item": {"ZINC": 1}, "flag": "got_zinc_threeisland"}},
         {
           "text": "Heal",
           "action": "HEAL"
@@ -1109,6 +1111,9 @@
       "min_rounds": 2,
       "trainer_pool": [],
       "route_menu": [
+        {"text": "MAX ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxether_berryforest", "event": {"lines": ["A Max Ether, among the berry bushes."], "gift_item": {"MAX_ETHER": 1}, "flag": "got_maxether_berryforest"}},
+        {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullheal_berryforest", "event": {"lines": ["A Full Heal, by the path."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_fullheal_berryforest"}},
+        {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxelixir_berryforest", "event": {"lines": ["A Max Elixir, near the forest's edge."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_maxelixir_berryforest"}},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
