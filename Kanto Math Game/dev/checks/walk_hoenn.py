@@ -32,9 +32,9 @@ print("HMs:", sorted(k for k in story.inventory if k.startswith("HM_")))
 
 # ---- areas expansion (areas_06_hoenn.patch): Gen 3 / ORAS side areas
 H_STORY = ["HOENN_MAGMA_HIDEOUT", "HOENN_MIRAGE_TOWER", "HOENN_ALTERING_CAVE", "HOENN_SCORCHED_SLAB", "HOENN_SS_TIDAL"]
-H_POST = ["HOENN_SEALED_CHAMBER", "HOENN_DESERT_UNDERPASS", "HOENN_BATTLE_FRONTIER", "HOENN_ARTISAN_CAVE", "HOENN_BATTLE_RESORT",
-          "HOENN_MIRAGE_CAVE", "HOENN_MIRAGE_FOREST", "HOENN_MIRAGE_MOUNTAIN"]
-# (11-14: Soaring and its Mirage spots are set aside; Mirage Island is Route 130 on a Mirage day: hoenn_maps_body checks it)
+H_POST = ["HOENN_SEALED_CHAMBER", "HOENN_DESERT_UNDERPASS", "HOENN_BATTLE_FRONTIER", "HOENN_ARTISAN_CAVE"]
+# (11-14: the daily Mirage spots are Soaring's, before the Champion as in ORAS: side areas, not post-game ones)
+H_STORY += ["HOENN_MIRAGE_CAVE", "HOENN_MIRAGE_FOREST", "HOENN_MIRAGE_MOUNTAIN"]
 expansion_check("hoenn side areas", H_STORY, S)
 gate_check("hoenn post-game side areas", H_POST, S, "beat_hoenn_champion")
 expansion_check("hoenn post-game side areas", H_POST, S)

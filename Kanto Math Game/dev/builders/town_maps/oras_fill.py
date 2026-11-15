@@ -43,6 +43,17 @@ def apply(maps):
         m = maps.get(key)
         if not m:
             continue
+        for room, f in (p.get("rooms") or {}).items():   # (a room's own: a Gym's ORAS trainers on its Emerald spots)
+            r = (m.get("rooms") or {}).get(room)
+            for person in (r or {}).get("people") or []:   # (a Gym trainer already there: ORAS's team and levels)
+                t = (f.get("set_battles") or {}).get(person.get("text")) if isinstance(person, dict) else None
+                if t and isinstance((person.get("event") or {}).get("battle"), dict):
+                    person["event"]["battle"].update(team=list(t["team"]), levels=list(t["levels"]))
+                    person["event"]["battle"].pop("movesets", None)
+            if r and f.get("people"):
+                _put(r, "N", "people", f["people"])
+            if r and f.get("moves"):
+                r["moves"] = dict(r.get("moves") or {}, **f["moves"])
         floors = m["floors"] if m.get("floors") else [m]
         for i, f in (p.get("floors") or {}).items():
             fl = floors[int(i)]

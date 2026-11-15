@@ -316,6 +316,12 @@ def _run_story_event(state, key, check, show):
         story.inventory[_item] = story.inventory.get(_item, 0) + 1
         story.story_flags.pop("mirage_daily_ready", None)
         lines.append(f"{getattr(game, 'player_name', 'You')} found a {forms.item_label(_item).upper()}!")
+    if ev.get("pay"):  # money handed over first (the Day Care Annex's lady borrows $100: ORAS's Battle Resort)
+        if story.money < ev["pay"]:
+            show(_resolve_lines(game, ev.get("fail") or [f"You don't have ${ev['pay']}."]))
+            return
+        story.money -= ev["pay"]
+        lines.append(f"{game.player_name} handed over ${ev['pay']}.")
     for item, qty in (ev.get("gift_item") or {}).items():
         if item == "balls":
             story.balls_left = getattr(story, "balls_left", 0) + qty  # the one ball count
@@ -437,6 +443,20 @@ def _run_story_event(state, key, check, show):
         story.inventory[give] = story.inventory.get(give, 0) + 1
         from src.pokemon import forms as _forms
         lines.append(f"{game.player_name} traded the {_forms.item_label(have).upper()} for the {_forms.item_label(give).upper()}!")
+    if ev.get("judge"):  # the Judge (ORAS's Battle Resort, now at the Frontier): your first Pokemon's potential, from its IVs
+        lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
+        if lead is not None:
+            ivs = getattr(lead, "ivs", None) or {}
+            total = sum(ivs.values())
+            overall = ("decent" if total <= 90 else "above average" if total <= 120 else "relatively superior" if total <= 150
+                       else "outstanding")
+            lines.append(f"Hmm... Your {lead.display_name}'s overall potential is {overall}.")
+            names = {"HP": "HP", "ATTACK": "Attack", "DEFENSE": "Defense", "SPATK": "Sp. Atk", "SPDEF": "Sp. Def", "SPEED": "Speed"}
+            best = max(ivs.values()) if ivs else 0
+            tops = [names[k] for k in names if ivs.get(k) == best]
+            word = ("It can't be beat!" if best == 31 else "It's fantastic!" if best >= 30 else "It's very good." if best >= 26
+                    else "It's pretty good." if best >= 16 else "It's decent." if best >= 1 else "It's no good.")
+            lines.append(f"Its best stat{'s are' if len(tops) > 1 else ' is'} {' and '.join(tops)}. {word}")
     if ev.get("badges"):  # Mossdeep's Hex Maniac: she reads your badges
         got = list(story.badges.get(story.get_current_region(), []) or [])
         lines.append(f"You have {len(got)} badge{'s' if len(got) != 1 else ''} here: " + ", ".join(str(b).title() for b in got) + "."

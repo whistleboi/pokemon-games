@@ -31,6 +31,7 @@ OVERLAYS = ["hoenn_oras.json"]   # (additions laid over a region's area data whe
 
 def _apply_overlays(assets_dir, area_data):
     """An overlay file {"AREAS": {area: {"set_teams": {trainer name: {"team", "levels"}}, "add_trainers": [pool entries],
+    "set_event_battles": {an option's text: {"team", "levels"}} (a story battle's team: a Gym's trainers),
     "route_menu": [options], "explore_options": [options]}}}: Hoenn's ORAS trainers, canon teams and items
     (kanto_handoff/hoenn_rom_tools/oras_fill.py), kept apart from the hand-kept area data."""
     prog = area_data.get("STORY_PROGRESSION") or {}
@@ -53,7 +54,15 @@ def _apply_overlays(assets_dir, area_data):
                         e["team"], e["levels"] = list(t["team"]), list(t["levels"])
                         e.pop("movesets", None)
                         e.pop("team_by_version", None)
-            pool.extend(o.get("add_trainers") or [])
+            pool[:0] = list(o.get("add_trainers") or [])   # (before the area's own: a gauntlet's boss stays its last: the S.S. Tidal)
+            for k in ("route_menu", "explore_options"):   # (a story battle's own team: a Gym's trainers, ORAS's canon one)
+                for x in a.get(k) or []:
+                    t = (o.get("set_event_battles") or {}).get(x.get("text")) if isinstance(x, dict) else None
+                    b = ((x.get("event") or {}).get("battle") if isinstance(x.get("event"), dict) else None) if t else None
+                    if b is not None:
+                        b["team"], b["levels"] = list(t["team"]), list(t["levels"])
+                        b.pop("movesets", None)
+                        b.pop("team_by_version", None)
             for k in ("route_menu", "explore_options"):
                 if o.get(k):
                     a.setdefault(k, [])

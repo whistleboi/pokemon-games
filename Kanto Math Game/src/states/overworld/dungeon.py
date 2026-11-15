@@ -304,13 +304,22 @@ def with_rooms(m):
         for d, name in (f.get("inside") or (m.get("inside") if n0 == 1 else None) or {}).items():
             if name in rooms:
                 doors.setdefault(name, []).append((i, d))
-    for name, room in rooms.items():
-        if name not in doors:
-            continue
-        j = len(floors)
-        where[name] = j
+    include = [n for n in rooms if n in doors]   # (and the rooms those lead on to by their own pads: the Battle Maison's
+    k = 0                                         #  corridor and battle room, behind its lobby)
+    while k < len(include):
+        for v in (rooms[include[k]].get("links") or {}).values():
+            if isinstance(v, list) and v and isinstance(v[0], str) and v[0] in rooms and v[0] not in include:
+                include.append(v[0])
+        k += 1
+    for idx, name in enumerate(include):
+        where[name] = n0 + idx
+    for name in include:
+        room = rooms[name]
+        j = where[name]
         art = [list(r) for r in room["art"]]
-        links, mats = {}, {}
+        links = {k: [where[v[0]], v[1], v[2]] for k, v in (room.get("links") or {}).items()
+                 if isinstance(v, list) and v and isinstance(v[0], str) and v[0] in where}   # (a pad to another room: its floor)
+        mats = {}
         land, enter, keep = room.get("land") or {}, room.get("enter") or {}, {}
         # (Kanto's gatehouses: a mat that is a real way out to the next area stays one; "land" {door: where you stand
         # outside it}, "enter" {door: where you stand inside}: a door in a building's side or back, or two tiles wide)
@@ -319,7 +328,7 @@ def with_rooms(m):
                 keep[ch] = target
                 continue
             x, y = (int(v) for v in str(target)[4:].split(","))
-            back = next((i for i, d in doors[name] if d == f"{x},{y}"), doors[name][0][0])
+            back = next((i for i, d in doors.get(name, []) if d == f"{x},{y}"), (doors.get(name) or [(0, None)])[0][0])
             for ry, row in enumerate(art):
                 for rx, c in enumerate(row):
                     if c == ch:
@@ -330,7 +339,7 @@ def with_rooms(m):
         floors.append(dict(own, art=["".join(r) for r in art], exits=keep, links=links, boss_spot=None, parts=True, indoors=True,
                            pool="NO_WILD_INDOORS_PERCENTAGES", buildings=room.get("buildings") or {}))
         names.append(str(room.get("title") or name).title())
-        for i, d in doors[name]:  # (the door outside: onto the room's mat for it)
+        for i, d in doors.get(name, []):  # (the door outside: onto the room's mat for it)
             mat = (enter[d][0], enter[d][1] + 1) if d in enter else mats.get(d) or next(iter(mats.values()), None)
             if mat:
                 floors[i] = dict(floors[i], links=dict(floors[i].get("links") or {}, **{d: [j, mat[0], mat[1]]}))

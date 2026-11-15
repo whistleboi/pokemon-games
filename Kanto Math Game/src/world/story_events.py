@@ -20,6 +20,8 @@ Each entry is keyed by the button's "target". Fields (all optional):
   tutor     {"move", "like"}: teaches the move to the first Pokemon that could (like: a TM move with the same learners)
   friend_tm a record key: once a week, TM Return (a first Pokemon that likes you) or TM Frustration
   badges    true: says which of this region's badges you have (Mossdeep's Hex Maniac)
+  pay       money handed over first, before any gift (the Day Care Annex's lady borrows $100 for TM87 Swagger)
+  judge     true: the Judge rates your first Pokemon's potential from its IVs, ORAS's words (overall, and its best stat)
   block_taste  true: the Pokeblock colour your first Pokemon likes, from its type
   memory    true: the Memory Girl reads your first Pokemon's journey (where you met, its wins, catches, ribbons)
   place     [x, y]: in town, you stand there after (Lavaridge's hot springs, out behind the Center)

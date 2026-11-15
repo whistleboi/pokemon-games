@@ -131,7 +131,6 @@
   "HOENN_SEALED_CHAMBER_OLD_ROD_PERCENTAGES": {"72": 35, "129": 65},
   "HOENN_DESERT_UNDERPASS_PERCENTAGES": {"132": 50, "293": 34, "294": 16},
   "HOENN_ARTISAN_CAVE_PERCENTAGES": { "235": 100 },
-  "HOENN_BATTLE_RESORT_PERCENTAGES": { "73": 10, "458": 10, "279": 10, "226": 10, "129": 10, "72": 10, "223": 10, "224": 10, "319": 10, "323": 10 },
   "HOENN_SOARING_IN_THE_SKY_PERCENTAGES": { "198": 16, "276": 14, "278": 14, "279": 14, "333": 14, "425": 14, "628": 14 },
   "HOENN_MIRAGE_CAVE_PERCENTAGES": { "602": 10, "563": 10, "79": 10, "132": 10, "530": 10, "599": 10, "95": 10, "75": 10, "525": 10, "201": 10 },
   "HOENN_MIRAGE_FOREST_PERCENTAGES": { "114": 12, "191": 8, "432": 8, "421": 8, "548": 8, "531": 8, "431": 8, "572": 8, "37": 8, "205": 8, "440": 8, "75": 8 },
@@ -291,96 +290,7 @@
       ],
       "next_area": "MOSSDEEP_CITY"
     },
-    "HOENN_BATTLE_RESORT": {
-      "area_type": "wild_route",
-      "route_name": "Battle Resort",
-      "region": "HOENN",
-      "battle_type": "field",
-      "can_fish": true,
-      "wild_pool_percentages": "HOENN_BATTLE_RESORT_PERCENTAGES",
-      "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Aroma Lady Carnation",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            465,
-            189,
-            272,
-            71
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Rich Boy Antoin",
-          "class": "RICH_BOY",
-          "sprite": "richboy.png",
-          "team": [
-            169,
-            452,
-            110,
-            89
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Fairy Tale Girl Josephine",
-          "class": "LASS",
-          "sprite": "lass.png",
-          "team": [
-            547,
-            40,
-            685,
-            210
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Poke Maniac Kelvin",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            464,
-            34,
-            473,
-            450
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Bug Maniac Felix",
-          "class": "PKMN_TRAINER",
-          "sprite": "bug_catcher.png",
-          "team": [
-            212,
-            596,
-            214,
-            127
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        }
-      ],
-      "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "BATTLE WALLY", "action": "EVENT", "color": "GOLD", "flag_condition": "not battle_resort_wally", "event": {"lines": ["Wally: I've been training here ever since the League. Battle me!"], "flag": "battle_resort_wally", "battle": {"name": "Pokémon Trainer Wally", "class": "PKMN_TRAINER", "sprite": "wally.png", "team": [334, 301, 407, 462, 475], "levels": [64, 64, 64, 64, 66], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Pokémon Trainer Wally: Well fought!"]}}}},
-        {"text": "Ever Grande City", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED"}
-      ],
-      "next_area": "EVER_GRANDE_CITY"
-    },
+    
     "HOENN_ARTISAN_CAVE": {
       "area_type": "dungeon",
       "route_name": "Artisan Cave",
@@ -416,12 +326,12 @@
     },
     "HOENN_BATTLE_FRONTIER": {
       "area_type": "dungeon",
-      "route_name": "Battle Frontier",
+      "route_name": "Battle Frontier", "can_fish": true,
       "region": "HOENN",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [],
+      "trainer_pool": [{"name": "Aroma Lady Carnation", "class": "BEAUTY", "sprite": "beauty.png", "team": [465, 189, 272, 71], "rewards": {"balls": 5}}, {"name": "Rich Boy Antoin", "class": "RICH_BOY", "sprite": "richboy.png", "team": [169, 452, 110, 89], "rewards": {"balls": 5}}, {"name": "Fairy Tale Girl Josephine", "class": "LASS", "sprite": "lass.png", "team": [547, 40, 685, 210], "rewards": {"balls": 5}}, {"name": "Poke Maniac Kelvin", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [464, 34, 473, 450], "rewards": {"balls": 5}}, {"name": "Bug Maniac Felix", "class": "PKMN_TRAINER", "sprite": "bug_catcher.png", "team": [212, 596, 214, 127], "rewards": {"balls": 5}}],
       "route_menu": [
         {"text": "Tower attendant", "action": "FRONTIER", "facility": "tower", "color": "GOLD"},
         {"text": "Salon Maiden Anabel", "action": "EVENT", "look": 34, "event": {"lines": ["I'm Anabel, the Salon Maiden. Show me a streak worth my time."]}},
@@ -437,6 +347,30 @@
         {"text": "Factory Head Noland", "action": "EVENT", "look": 33, "event": {"lines": ["Noland. Win a streak here and I'll battle you myself."]}},
         {"text": "Pike attendant", "action": "FRONTIER", "facility": "pike", "color": "GOLD"},
         {"text": "Pike Queen Lucy", "action": "EVENT", "look": 34, "event": {"lines": ["...Lucy. Win, and keep winning. Then we'll battle."]}},
+        {"text": "Maison attendant", "action": "FRONTIER", "facility": "maison", "color": "GOLD"},
+        {"text": "Chatelaine Nita", "action": "EVENT", "event": {"lines": ["Nita: Welcome to the Battle Maison. I am Nita, the Chatelaine of single battles.", "Nita: Win your way up the streak, and I shall greet you here in the battle room."]}},
+        {"text": "Maison fan", "action": "EVENT", "event": {"lines": ["The Battle Maison came over from the Battle Resort. Same battles, cosier tent!"]}},
+        {"text": "Streak hopeful", "action": "EVENT", "event": {"lines": ["Five wins in a row and the Chatelaine battles you herself. I'm on three!"]}},
+        {"text": "Maison regular", "action": "EVENT", "event": {"lines": ["Every battle's a single battle here. Your whole team gets healed in between."]}},
+        {"text": "Maison spectator", "action": "EVENT", "event": {"lines": ["I just come to watch. The battle room's through the door behind the counter."]}},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Wally", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Wally: {player_name}! I've been training here ever since the League. This Frontier's amazing!", "Wally: The Battle Maison's right here, too. But first... battle me!"], "flag": "battle_resort_wally", "battle": {"name": "Pokémon Trainer Wally", "class": "PKMN_TRAINER", "sprite": "wally.png", "team": [334, 301, 407, 462, 475], "levels": [64, 64, 64, 64, 66], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Wally: Well fought! I'll get even stronger, you'll see!"]}}, "done": ["Wally: I'm taking on the Battle Maison next. Let's both keep winning!"]}},
+        {"text": "The Judge", "action": "EVENT", "event": {"lines": ["Judge: They call me the Judge. I can see a Pokemon's potential for greatness.", "Judge: Let me take a look at your first Pokemon..."], "judge": true}},
+        {"text": "POKeMON DAY CARE ANNEX", "door": "annex", "action": "DAYCARE", "color": "ORANGE"},
+        {"text": "Lady in a jam", "door": "annex", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lady: Oh, how embarrassing... I'm $100 short. Could you possibly lend it to me?", "Lady: You're too kind! Here, take this as a token of my thanks."], "pay": 100, "gift_item": {"HTM87": 1}, "flag": "got_tm87_annex", "fail": ["Lady: Oh, you don't have $100 either? How awful for us both..."], "done": ["Lady: I'll pay you back one day. Probably."]}},
+        {"text": "Looker", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Looker: I washed up on this shore and a kind Beauty took me in. You looked out for me too, I hear.", "Looker: A detective repays his debts. Please, take this Mega Stone."], "gift_item": {"AUDINITE": 1}, "flag": "got_audinite_looker", "done": ["Looker: Still recovering. Once I am well, the world will need Looker again!"]}},
+        {"text": "Custodian", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Custodian: People leave all sorts of things lying about the Frontier. I keep them safe.", "Custodian: Nobody's come back for these. Take whatever you like!"], "gift_item": {"PROTEIN": 1, "ZINC": 1, "CARBOS": 1, "IRON": 1, "CALCIUM": 1}, "flag": "got_custodian_items", "done": ["Custodian: That glinting thing by the cabin? Help yourself to that too."]}},
+        {"text": "GENGARITE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_gengarite_frontier", "event": {"lines": ["Something glints by the custodian's cabin... It's a Mega Stone!", "You found the GENGARITE!"], "gift_item": {"GENGARITE": 1}, "flag": "got_gengarite_frontier"}},
+        {"text": "Berry lover", "action": "EVENT", "event": {"lines": ["Berry lover: I grow Berries that make Pokemon more friendly. Here's today's!"], "daily_gift": {"key": "frontier_berry_day", "items": ["POMEG_BERRY", "KELPSY_BERRY", "QUALOT_BERRY", "HONDEW_BERRY", "GREPA_BERRY", "TAMATO_BERRY"], "wait": ["Berry lover: That's all for today. Come back tomorrow!"]}}},
+        {"text": "Little girl", "action": "EVENT", "event": {"stages": [{"requires": ["frontier_maison_silver"], "lines": ["Girl: You beat the Chatelaine! Here, this Berry is for champions!"], "gift_item": {"LANSAT_BERRY": 1}, "flag": "got_lansat_maison"}, {"requires": ["frontier_maison_gold"], "lines": ["Girl: You beat her again?! You get my very best Berry!"], "gift_item": {"STARF_BERRY": 1}, "flag": "got_starf_maison"}], "done": ["Girl: Win lots at the Battle Maison and I'll give you something special!"]}},
+        {"text": "Magma Grunt", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Magma Grunt: You saw us, huh. Team Magma and Team Aqua... it wasn't meant to be.", "Magma Grunt: I'm making a fresh start. Please take my Camerupt. It deserves a better Trainer."], "gift_pokemon": 323, "gift_level": 30, "gift_item": {"PASSHO_BERRY": 1}, "requires": ["party_room"], "fail": ["Magma Grunt: Make some room in your party first."], "flag": "got_camerupt_frontier", "done": ["Magma Grunt: Look after Camerupt for me."]}},
+        {"text": "Aqua Grunt", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Aqua Grunt: We've called it off. No hard feelings, though!", "Aqua Grunt: My Sharpedo wants to see the world. Will you take it with you?"], "gift_pokemon": 319, "gift_level": 30, "gift_item": {"WACAN_BERRY": 1}, "requires": ["party_room"], "fail": ["Aqua Grunt: Make some room in your party first."], "flag": "got_sharpedo_frontier", "done": ["Aqua Grunt: Sharpedo's in good hands. I can tell."]}},
+        {"text": "Whismur show", "action": "EVENT", "event": {"lines": ["Showman: Welcome to the famous Whismur show! Watch them dance, then guess which one holds the Big Mushroom!", "Showman: ...You guessed right! The Big Mushroom is yours!"], "daily_gift": {"key": "frontier_whismur_day", "items": ["BIG_MUSHROOM"], "wait": ["Showman: The Whismur are resting. Come back tomorrow for another show!"]}}},
+        {"text": "Tutor Thunder Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: Battle Points? Not here! I'll teach Thunder Punch for free."], "tutor": {"move": "THUNDER-PUNCH"}}},
+        {"text": "Tutor Fire Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: Fire Punch, no charge. The Frontier pays me well!"], "tutor": {"move": "FIRE-PUNCH"}}},
+        {"text": "Tutor Ice Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: An Ice Punch, coming right up!"], "tutor": {"move": "ICE-PUNCH"}}},
+        {"text": "Tutor Superpower", "action": "EVENT", "event": {"lines": ["Move Tutor: Superpower! Hits hard, costs nothing."], "tutor": {"move": "SUPERPOWER"}}},
+        {"text": "Bike fan", "action": "EVENT", "event": {"lines": ["Triathlete: Is that a Bike from Rydel's Cycles? I've been thinking of buying one myself!"]}},
         {"text": "Nurse", "action": "CENTER"},
         {"text": "Clerk", "action": "SHOP", "stock": ["ULTRA_BALL", "HYPER_POTION", "MAX_POTION", "FULL_RESTORE", "FULL_HEAL", "REVIVE", "MAX_REPEL", "X_ATTACK"]},
         {"text": "Ferry attendant", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Attendant: The S.S. Tidal is ready to sail. Have a pleasant trip!"], "travel": "HOENN_SS_TIDAL"}},
@@ -992,6 +926,7 @@
         {"text": "I'll walk, thanks", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "BLUE", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: Okay! Exploring Meteor Falls and Route 115 on the way? See you in Mauville, then!"], "flag": "rival_mauville_ride"}},{"text": "Professor Cozmo", "door": "cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
         { "text": "Heal", "action": "HEAL" }, {"text": "Shop", "action": "SHOP"},
         { "text": "Talk to Cozmo", "door": "cozmo", "action": "NPC", "target": "professor_cozmo" },
+        {"text": "Move Reminder", "door": "reminder", "action": "EVENT", "event": {"lines": ["Move Reminder: Want me to remind your Pokemon of a move it forgot? Ha! I wish.", "Move Reminder: These days every Pokemon remembers every move it ever learned. Just pick them in the Summary!", "Move Reminder: Put me right out of business. I'm thinking of opening a Berry stand instead."]}}, 
         { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" }
       ],
       "next_area": "HOENN_METEOR_FALLS",
@@ -1153,8 +1088,7 @@
       "travel_options": [
         { "text": "Victory Road", "target_area": "HOENN_VICTORY_ROAD" },
         { "text": "Route 128", "target_area": "HOENN_ROUTE_128" },
-        { "text": "Route 129", "target_area": "HOENN_ROUTE_129" },
-        {"text": "Battle Resort", "target_area": "HOENN_BATTLE_RESORT", "condition": "beat_hoenn_champion"}
+        { "text": "Route 129", "target_area": "HOENN_ROUTE_129" }
       ],
       "explore_options": [{"text": "A Glinting Stone: Mewtwonite Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE Y!"], "gift_item": {"MEWTWONITE_Y": 1}, "flag": "got_mewtwonite_y"}}, {"text": "Heal", "action": "HEAL"}, {"text": "CHALLENGE LEAGUE", "door": "league", "action": "GYM"}],
       "next_area": "HOENN_VICTORY_ROAD",
@@ -2174,7 +2108,7 @@
         }
       ],
       "route_menu": [
-        {"text": "GYARADOSITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_gyaradosite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the GYARADOSITE!"], "gift_item": {"GYARADOSITE": 1}, "flag": "got_gyaradosite"}},
+        {"text": "Chomper", "action": "EVENT", "color": "GOLD", "event": {"lines": ["It's Chomper, 123 Go Fish's guard dog. It's looking at you hopefully...", "You gave Chomper a good scratch behind the ears!", "Chomper: Arf! Arf!", "Chomper dug something out of the sand and dropped it at your feet. It's a Mega Stone!"], "gift_item": {"GYARADOSITE": 1}, "flag": "got_gyaradosite", "done": ["Chomper: Arf! (It's wagging its tail.)"]}}, {"text": "123 GO FISH", "door": "gofish", "action": "EVENT", "event": {"lines": ["Clerk: Welcome to 123 Go Fish, the best little supply shack on Route 123!", "Clerk: ...Er, we're all sold out. Chomper got into the bait again.", "Clerk: Give him a scratch on your way out. He loves that."]}},
         {"text": "ABOMASITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_abomasite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABOMASITE!"], "gift_item": {"ABOMASITE": 1}, "flag": "got_abomasite"}},
         {"text": "Berry Master", "door": "berrymaster", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Berry Master: I'm the Berry Master! Here, take some of my Berries. Grow them with care!"], "daily_gift": {"key": "berry_master_123", "items": ["POMEG_BERRY", "KELPSY_BERRY", "QUALOT_BERRY", "HONDEW_BERRY", "GREPA_BERRY", "TAMATO_BERRY", "CORNN_BERRY", "MAGOST_BERRY", "RABUTA_BERRY", "NOMEL_BERRY"], "count": 2, "wait": ["Berry Master: I've already given you Berries today. Come back tomorrow!"]}}},
         {"text": "Berry Master's wife", "door": "berrymaster", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Wife: My husband and his Berries! Have one from me too, dear."], "daily_gift": {"key": "berry_master_wife_123", "items": ["CHERI_BERRY", "CHESTO_BERRY", "PECHA_BERRY", "RAWST_BERRY", "ASPEAR_BERRY", "LEPPA_BERRY", "ORAN_BERRY", "PERSIM_BERRY", "LUM_BERRY", "SITRUS_BERRY"], "wait": ["Wife: That's all for today. Come and see us again!"]}}},
@@ -3566,7 +3500,7 @@
     {"id": "hoenn_s24", "type": "SIDE", "title": "The Other Hideout", "description": "The other team has a hideout too. Clear it out.", "condition": {"required_region": "HOENN", "visited": "HOENN_MAGMA_HIDEOUT"}, "completed_flag": "magma_hideout_cleared", "target": "HOENN_MAGMA_HIDEOUT"},
     {"id": "hoenn_s25", "type": "SIDE", "title": "The S.S. Tidal", "description": "Battle the trainers in the cabins of the S.S. Tidal.", "condition": {"required_region": "HOENN", "visited": "HOENN_SS_TIDAL"}, "completed_flag": "ss_tidal_cleared", "target": "HOENN_SS_TIDAL"},
     {"id": "hoenn_s26", "type": "SIDE", "title": "Southern Island", "description": "A Pokémon of legend rests on Southern Island.", "condition": {"required_region": "HOENN", "visited": "HOENN_SOUTHERN_ISLAND"}, "completed_flag": "southern_island_eon_caught", "target": "HOENN_SOUTHERN_ISLAND"},
-    {"id": "hoenn_s27", "type": "SIDE", "title": "The Battle Resort", "description": "Someone you know is waiting at the Battle Resort.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_RESORT"}, "completed_flag": "battle_resort_wally", "target": "HOENN_BATTLE_RESORT"},
+    {"id": "hoenn_s27", "type": "SIDE", "title": "Wally at the Battle Frontier", "description": "Wally is training at the Battle Frontier, by the Battle Maison.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER", "flag": "beat_hoenn_champion"}, "completed_flag": "battle_resort_wally", "target": "HOENN_BATTLE_FRONTIER"},
     {"id": "hoenn_s28", "type": "SIDE", "title": "The Battle Frontier", "description": "Win a streak at each of the seven facilities, then beat its Frontier Brain.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER"}, "completed_flag": "hoenn_battle_frontier_cleared", "target": "HOENN_BATTLE_FRONTIER"},
     {"id": "hoenn_s29", "type": "SIDE", "title": "Sea Mauville", "description": "Two Pokémon of legend have been seen at Sea Mauville.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["sea_mauville_lugia", "sea_mauville_ho_oh"], "target": "HOENN_SEA_MAUVILLE", "reward": "Lugia and Ho-Oh"},
     {"id": "hoenn_s30", "type": "SIDE", "title": "Soaring in the Sky", "description": "Play the Eon Flute and fly high over Hoenn. Legends wait in the sky.", "condition": {"required_region": "HOENN", "item": "EON_FLUTE"}, "completed_flag": ["soaring_dialga", "soaring_palkia", "soaring_giratina", "soaring_tornadus", "soaring_thundurus", "soaring_landorus"], "target": "HOENN_SOARING_IN_THE_SKY"},
@@ -3797,9 +3731,9 @@
       "player_lost": ["Team Aqua wins again!"]
     }
   },
-  "HOENN_BATTLE_RESORT_OLD_ROD_PERCENTAGES": {"129": 65, "72": 35},
-  "HOENN_BATTLE_RESORT_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 35, "223": 5},
-  "HOENN_BATTLE_RESORT_SUPER_ROD_PERCENTAGES": {"223": 95, "224": 5},
+  "HOENN_BATTLE_FRONTIER_OLD_ROD_PERCENTAGES": {"129": 65, "72": 35},
+  "HOENN_BATTLE_FRONTIER_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 35, "223": 5},
+  "HOENN_BATTLE_FRONTIER_SUPER_ROD_PERCENTAGES": {"223": 95, "224": 5},
   "HOENN_SCORCHED_SLAB_OLD_ROD_PERCENTAGES": {"118": 70, "129": 130},
   "HOENN_SCORCHED_SLAB_GOOD_ROD_PERCENTAGES": {"118": 70, "129": 120, "339": 10},
   "HOENN_SCORCHED_SLAB_SUPER_ROD_PERCENTAGES": {"339": 200},

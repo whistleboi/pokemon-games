@@ -24,9 +24,13 @@ BRAINS = {
     "factory": ("Factory Head Noland", "acetrainer_m.png", None, None, "Knowledge"),
     "pike": ("Pike Queen Lucy", "acetrainer_f.png", [336, 350, 213], [130, 208, 350], "Luck"),
     "pyramid": ("Pyramid King Brandon", "acetrainer_m.png", [377, 378, 379], [243, 244, 245], "Brave"),
+    # the Battle Maison (Omega Ruby / Alpha Sapphire's, from the Battle Resort: Jordan 11-14, in Emerald's Battle Tent):
+    # its singles Chatelaine, Nita; her teams kept to Hoenn's Gen 1-3 Pokemon (Jordan: Gen 3 or earlier for Hoenn)
+    "maison": ("Chatelaine Nita", "lady.png", [36, 282, 350], [282, 376, 373], "Maison"),
 }
+FRONTIER_SEVEN = [f for f in BRAINS if f != "maison"]   # (the Symbols: the Maison gives none of its own)
 NAMES = {"tower": "Battle Tower", "dome": "Battle Dome", "palace": "Battle Palace", "arena": "Battle Arena",
-         "factory": "Battle Factory", "pike": "Battle Pike", "pyramid": "Battle Pyramid"}
+         "factory": "Battle Factory", "pike": "Battle Pike", "pyramid": "Battle Pyramid", "maison": "Battle Maison"}
 _DATA = None
 
 
@@ -94,7 +98,12 @@ def intro_lines(game, fac):
     w, g = wins(game, fac), goal(game, fac)
     name = NAMES[fac]
     if brain_next(game, fac):
+        if fac == "maison":
+            return [f"{w} wins in a row! The Chatelaine herself, {BRAINS[fac][0]}, will battle you!"]
         return [f"{w} wins in a row! The {name}'s Frontier Brain, {BRAINS[fac][0]}, wants to battle you!"]
+    if w == 0 and fac == "maison":
+        return [f"Welcome to the Battle Maison! Win {g} single battles in a row and the Chatelaine will battle you.",
+                "Your team will be healed before every battle. This way to the battle room!"]
     if w == 0:
         return [f"Welcome to the {name}! Win {g} battles in a row to face its Frontier Brain.",
                 "Your team will be healed before every battle. Here comes your first opponent!"]
@@ -123,10 +132,10 @@ def after_battle(game, fac, won):
     title, _s, _a, _b, sym = BRAINS[fac]
     first = not flags.get(f"frontier_{fac}_silver")
     flags[f"frontier_{fac}_silver" if first else f"frontier_{fac}_gold"] = True
-    lines = [f"You beat {title}! You earned the {'Silver' if first else 'Gold'} {sym} Symbol!"]
+    lines = [f"You beat {title}! You earned the {'Silver' if first else 'Gold'} {sym} Symbol!"] if fac != "maison" else         [f"You beat {title}! Your name goes up on the Maison's wall of {'champions' if first else 'grand champions'}!"]
     if first:
-        lines.append(f"Next time it's {AGAIN} wins in a row for a battle with the Brain's real team.")
-    if all(flags.get(f"frontier_{f}_silver") for f in BRAINS) and not flags.get("hoenn_battle_frontier_cleared"):
+        lines.append(f"Next time it's {AGAIN} wins in a row for a battle with the {'Chatelaine' if fac == 'maison' else 'Brain'}'s real team.")
+    if all(flags.get(f"frontier_{f}_silver") for f in FRONTIER_SEVEN) and not flags.get("hoenn_battle_frontier_cleared"):
         flags["hoenn_battle_frontier_cleared"] = True
         lines.append("You hold a Symbol from every facility in the Battle Frontier!")
     return lines
@@ -136,4 +145,4 @@ def symbols(game):
     """[(facility, 'gold' / 'silver' / None)] for the record."""
     f = _flags(game)
     return [(fac, "gold" if f.get(f"frontier_{fac}_gold") else "silver" if f.get(f"frontier_{fac}_silver") else None)
-            for fac in BRAINS]
+            for fac in FRONTIER_SEVEN]

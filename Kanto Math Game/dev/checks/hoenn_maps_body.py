@@ -2620,6 +2620,60 @@ check(not _fr.brain_next(g, "tower"), "the second challenge: 9 wins is not yet t
 story.story_flags["frontier_tower_wins"] = 10
 _t = _fr.next_trainer(g, "tower")
 check(_t["team"] == [243, 381, 143] and _t["is_boss_battle"], f"10 wins: Anabel's Gold team ({_t['team']})")
+# ---- the Battle Maison (11-14, Jordan: in Emerald's Battle Tent at the Frontier, run like ORAS's Maison, 5 then 10 wins)
+_bfm = _tm2["HOENN_BATTLE_FRONTIER"] if "_tm2" in globals() else json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_BATTLE_FRONTIER"]
+check(_bfm["inside"].get("79,52") == "maison" and {"maison", "maison_hall", "maison_battle"} <= set(_bfm["rooms"])
+      and _bfm["roofs"]["_picture"]["f"] == "em_ground/26_104_maison.png",
+      "Battle Frontier: the Battle Maison, Emerald's Battle Tent where the lounge was; its lobby, corridor and battle room")
+_rf = st.run.recipe.get("art") or {}
+_mi = {n: i for n, i in (_rf.get("room_floors") or {}).items()}
+check({"maison", "maison_hall", "maison_battle"} <= set(_mi), f"the Maison's three rooms are floors of the Frontier ({_mi})")
+if {"maison", "maison_hall", "maison_battle"} <= set(_mi):
+    _lob = _rf["floors"][_mi["maison"]]
+    _hall = _rf["floors"][_mi["maison_hall"]]
+    check(_lob["links"].get("6,1", [None])[0] == _mi["maison_hall"] and _hall["links"].get("2,1", [None])[0] == _mi["maison_battle"]
+          and _rf["floors"][_mi["maison_battle"]]["links"].get("4,8", [None])[0] == _mi["maison_hall"],
+          "the lobby's door leads to the corridor, the corridor to the battle room, and back")
+    while len(st.run.floors) <= _mi["maison"]:
+        st.run.enter_floor(len(st.run.floors))
+    st.run.enter_floor(_mi["maison"]); frames(1)
+    story.story_flags["frontier_maison_wins"] = 0
+    _figs, _b = _streak_battle("maison")
+    check(_figs and _b is not None and getattr(_b, "frontier", None) == "maison", f"the Maison attendant starts a streak ({_b and _b.trainer_name})")
+    if _b:
+        _end(_b, True)
+    story.story_flags["frontier_maison_wins"] = 5
+    _figs, _b = _streak_battle("maison")
+    _nita = (_b.trainer_name, [p.id for p in _b.opponent_team]) if _b else None
+    if _b:
+        _end(_b, True)
+    check(_nita == ("Chatelaine Nita", [36, 282, 350]) and story.story_flags.get("frontier_maison_silver") and _fr.goal(g, "maison") == 10
+          and "maison" not in _fr.FRONTIER_SEVEN,
+          f"5 wins: Chatelaine Nita; beaten, the next run is 10 wins; the Maison isn't one of the seven Symbols ({_nita})")
+# ---- the Battle Resort's content, now at the Frontier (11-14, Jordan: "move oras content into the frontier ... then wally could be there")
+_spF = g.loader.area_data["STORY_PROGRESSION"]
+check("HOENN_BATTLE_RESORT" not in _spF and not any(o.get("target_area") == "HOENN_BATTLE_RESORT" for o in _spF["EVER_GRANDE_CITY"].get("travel_options", [])),
+      "the Battle Resort is gone (its content is at the Battle Frontier); no boat to it from Ever Grande")
+_bfF = json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_BATTLE_FRONTIER"]
+_onmap = {p if isinstance(p, str) else p.get("text") for p in _bfF["people"]}
+check({"Wally", "Looker", "Custodian", "GENGARITE", "Whismur show", "Magma Grunt", "Aqua Grunt"} <= _onmap
+      and {"Fairy Tale Girl Josephine", "Bug Maniac Felix"} <= set(_bfF["trainer_spots"]) and len(_bfF.get("hidden") or {}) >= 3
+      and _bfF["buildings"].get("L") == "annex" and "The Judge" in _bfF["rooms"]["center"]["people"],
+      "the Frontier: Wally, Looker, the custodian and his Gengarite, the Whismur show, the grunts, the five masters, the hidden items, the Day Care Annex, the Judge")
+_fo = {o.get("text"): o for o in _spF["HOENN_BATTLE_FRONTIER"]["route_menu"]}
+check(_fo["Wally"]["event"]["battle"]["team"] == [334, 301, 407, 462, 475] and _spF["HOENN_BATTLE_FRONTIER"].get("can_fish")
+      and g.loader.area_data.get("HOENN_BATTLE_FRONTIER_SUPER_ROD_PERCENTAGES"), "Wally's ORAS team waits by the Maison; the Resort's fishing round the Frontier")
+from src.states.overworld.common import _run_story_event as _rse
+_said = []
+_lead = next(p for p in story.player_team if p)
+_lead.ivs = {"HP": 31, "ATTACK": 20, "DEFENSE": 20, "SPATK": 20, "SPDEF": 20, "SPEED": 20}
+_rse(g.current_state, _fo["The Judge"]["event"], lambda c: True, lambda l: _said.extend(l))
+check(any("relatively superior" in x for x in _said) and any("HP" in x and "can't be beat" in x for x in _said), f"the Judge reads your lead's potential ({_said[-2:]})")
+_m0, _said = story.money, []
+story.story_flags.pop("got_tm87_annex", None); story.money = 500
+_rse(g.current_state, _fo["Lady in a jam"]["event"], lambda c: True, lambda l: _said.extend(l))
+check(story.money == 400 and story.inventory.get("HTM87", 0) >= 1, f"the Day Care Annex's lady: lend her $100, get TM87 Swagger ({story.money})")
+story.money = _m0
 _nol = _fr.BRAINS["factory"]
 story.story_flags["frontier_factory_wins"] = 5
 _t = _fr.next_trainer(g, "factory")
