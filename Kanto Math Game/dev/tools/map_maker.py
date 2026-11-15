@@ -942,6 +942,36 @@ class ParkBuilder:
         self.changed()
         return True
 
+    def piece_tile(self, pos):
+        """The tile under the mouse, or, when the mouse is on the visible part of a ready-made piece's picture that
+        stands above its footprint (a tall tower, a tree's crown), a tile of that piece's footprint: the frontmost
+        piece whose picture is solid there. So a piece is picked, moved or taken away by clicking any of it."""
+        tx, ty = self.to_tile(pos)
+        if self.doc.owner(tx, ty) or self.doc.object_at(tx, ty):
+            return tx, ty
+        mx, my = (pos[0] - self.ox) * 32 / self.zoom, (pos[1] - self.oy) * 32 / self.zoom
+        best = None
+
+        def hit(key, fx, fy, front, tile):
+            nonlocal best
+            m = self.art._model(key)
+            if not m:
+                return
+            pic, ox, oy = m
+            px, py = int(mx - (fx * 32 - ox)), int(my - (fy * 32 - oy))
+            if 0 <= px < pic.get_width() and 0 <= py < pic.get_height() and pic.get_at((px, py)).a > 40:
+                if best is None or front > best[0]:
+                    best = (front, tile)
+        for L in self.doc.buildings:
+            roof = self.doc.roofs.get(L)
+            r = self.doc.rect_of(L)
+            if r and isinstance(roof, dict) and roof.get("model"):
+                hit(roof["model"], r[0], r[1], r[1] + r[3], (r[0], r[1]))
+        for o in self.doc.objects:
+            p = next((q for q in LIBRARY if q["key"] == o["k"]), None)
+            hit(o["k"], o["at"][0], o["at"][1], o["at"][1] + (p["h"] if p else 1), tuple(o["at"]))
+        return best[1] if best else (tx, ty)
+
     def pick_up(self, tx, ty):
         """Lift the building or piece at (tx, ty) off the map to carry it (the map keeps a copy to put back)."""
         surf = self.game_surface() and self._game[1]
@@ -1113,7 +1143,7 @@ class ParkBuilder:
                 if self.carry:
                     self.put_down()
                 elif 0 <= tx < self.doc.w and 0 <= ty < self.doc.h:
-                    self.take_away(tx, ty)
+                    self.take_away(*self.piece_tile(pos))
                 return True
             if e.button != 1 or not (0 <= tx < self.doc.w and 0 <= ty < self.doc.h):
                 return True
@@ -1131,7 +1161,7 @@ class ParkBuilder:
                 self.b_stroke = set()
                 self.brush_at(tx, ty)
                 return True
-            if not self.pick_up(tx, ty):
+            if not self.pick_up(*self.piece_tile(pos)):
                 self.select(None)
             return True
         if e.type == pygame.MOUSEMOTION:
@@ -2288,7 +2318,7 @@ class MapMaker(ParkBuilder):
             if not (0 <= tx < self.doc.w and 0 <= ty < self.doc.h):
                 return
             if e.button == 3:   # pick up what's here
-                L = self.doc.owner(tx, ty)
+                L = self.doc.owner(*self.piece_tile(e.pos))
                 if L:
                     self.select(L)
                     self.tool = "select"
@@ -2302,7 +2332,7 @@ class MapMaker(ParkBuilder):
                         self.status = f"Editing this {kind}: type in the box under the picture"
                 return
             if e.button == 1:
-                self.click_tool(tx, ty)
+                self.click_tool(*(self.piece_tile(e.pos) if self.tool == "select" else (tx, ty)))
         if e.type == pygame.MOUSEMOTION:
             if self.panning:
                 (sx, sy), ox, oy = self.panning
