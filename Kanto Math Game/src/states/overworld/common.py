@@ -67,6 +67,47 @@ def _badge_trivia(state, lines, show):
     say(_resolve_lines(game, lines + [question]), callback=lambda: state._create_hover_menu(opts, None))
 
 
+PRIMO_EGGS = [179, 194, 218]   # (HGSS: Primo's three Eggs - Mareep, Wooper, Slugma)
+PRIMO_QUIZ = [("Which Pokemon evolves into Pikachu?", "Pichu", ["Raichu", "Plusle"]),
+              ("What type are Water moves strong against?", "Fire", ["Grass", "Dragon"]),
+              ("Which Pokemon is Johto's Water-type first partner?", "Totodile", ["Squirtle", "Mudkip"]),
+              ("What does a Pokemon Center do for free?", "Heals your team", ["Sells Poke Balls", "Teaches moves"]),
+              ("Which Badge does Falkner give?", "Zephyr Badge", ["Hive Badge", "Plain Badge"]),
+              ("What type is Togepi in Johto?", "Normal", ["Fairy", "Psychic"]),
+              ("Which item makes a Pokemon hold off evolving?", "Everstone", ["Moon Stone", "Leftovers"]),
+              ("How many Pokemon can travel with you at once?", "Six", ["Four", "Eight"])]
+
+
+def _primo_quiz(state, lines, show):
+    """Primo, the TV star in Violet City's Pokemon Center (HGSS; Jordan 11-15: "do primo's quiz but have him return daily
+    until the player has all 3 eggs"): one question a day; right, and you get his next Egg."""
+    import datetime as _dt
+    import random as _rnd
+    game = state.game
+    story = game.story_manager
+    got = int(story.story_flags.get("primo_eggs", 0) or 0)
+    if got >= len(PRIMO_EGGS):
+        show(["Primo: You have all three of my Eggs! Watch my show, and raise them well!"])
+        return
+    today = _dt.date.today().isoformat()
+    if story.story_flags.get("primo_day") == today or not hasattr(state, "_create_hover_menu"):
+        show(["Primo: One question a day, my friend! Come back tomorrow for another."])
+        return
+    story.story_flags["primo_day"] = today
+    q, right, wrong = _rnd.Random().choice(PRIMO_QUIZ)
+    answers = [right] + list(wrong)
+    _rnd.shuffle(answers)
+    egg = PRIMO_EGGS[got]
+    opts = [{"text": a, "action": "EVENT", "event": (
+                {"lines": [f"Primo: {a}! Correct! You're a natural. Here's an Egg from my show!"], "gift_egg": egg, "primo_next": True}
+                if a == right else {"lines": [f"Primo: {a}? Oh, so close! It was {right}. Try again tomorrow!"]})} for a in answers]
+    say = getattr(state, "show_message", None)
+    if say is None:
+        show(_resolve_lines(game, lines + [f"Primo: {q}"]))
+        return
+    say(_resolve_lines(game, lines + [f"Primo: Quiz time! {q}"]), callback=lambda: state._create_hover_menu(opts, None))
+
+
 def _memories(game):
     """The lines the Memory Girl reads from your first Pokemon: where you met, the battles it won with you, the catches
     it was there for, its Contest ribbons (what our game keeps of a Pokemon's journey)."""
@@ -276,6 +317,12 @@ def _run_story_event(state, key, check, show):
         stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")
                       and all(check(c) for c in st.get("requires", []))), None)
         ev = stage or {"lines": ev.get("done") or ["..."]}
+    if ev.get("daily") and ev.get("flag"):  # (once a day, by the real clock: an Apricorn tree; HGSS, Jordan 11-15)
+        import datetime
+        today = f"{ev['flag']}@{datetime.date.today().isoformat()}"
+        for k in [k for k in story.story_flags if k.startswith(ev["flag"] + "@") and k != today]:
+            story.story_flags.pop(k)   # (yesterday's picking forgotten: one flag a tree)
+        ev = dict(ev, flag=today)
     flag = ev.get("flag")
     if flag and story.story_flags.get(flag):
         show(_resolve_lines(game, ev.get("done") or ev.get("lines") or ["..."]))
@@ -312,6 +359,9 @@ def _run_story_event(state, key, check, show):
         if reg == "KANTO":
             story.story_flags["kanto_parcel_era"] = True  # (the FireRed opening: the Parcel, then the Pokedex)
         ids = story.get_region_start(reg).get("starters") or [1, 4, 7]
+        if getattr(state, "room", None) and hasattr(state, "player"):   # (back where you stood afterwards: Elm's Lab, HGSS)
+            game.walk_town_pos = (state.area_key, tuple(state.player), (0, 1))
+            game.walk_town_room = (state.area_key, state.room)
         go = lambda: game.change_state(StarterSelectionState(game, starter_ids=ids, region=reg))
         if lines:
             state_show = getattr(state, "show_message", None) or getattr(state, "show_dialogue")
@@ -399,6 +449,11 @@ def _run_story_event(state, key, check, show):
         game.data.mark_seen(new.id)
         game.data.add_pokemon(new)
         lines.append(f"{old.display_name} was traded for {new.display_name}!")
+    if ev.get("primo"):  # Violet City's TV star: a question a day, an Egg for a right answer (HGSS)
+        _primo_quiz(state, lines, show)
+        return
+    if ev.get("primo_next"):
+        story.story_flags["primo_eggs"] = int(story.story_flags.get("primo_eggs", 0) or 0) + 1
     if ev.get("trivia"):  # Mossdeep's Hex Maniac: a daily question about one of your badges (Jordan, 11-13)
         _badge_trivia(state, lines, show)
         return

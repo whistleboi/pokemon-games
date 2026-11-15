@@ -1028,9 +1028,10 @@ def overhead(o, tile):
             base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
             _PT[key] = pygame.image.load(os.path.join(base, o["f"]))
         w, h = o["size"]
-        part = pygame.Surface((w * 16, h * 16), pygame.SRCALPHA)
-        part.blit(_PT[key], (-o["at"][0] * 16, -o["at"][1] * 16))
-        return (part if tile == 16 else pygame.transform.scale(part, (w * tile, h * tile))), (0, 0)
+        px = int(o.get("px", 16))   # (as the ground picture's "px")
+        part = pygame.Surface((w * px, h * px), pygame.SRCALPHA)
+        part.blit(_PT[key], (-o["at"][0] * px, -o["at"][1] * px))
+        return (part if tile == px else pygame.transform.scale(part, (w * tile, h * tile))), (0, 0)
     x, y, w, h = o["rect"]
     if o.get("kind") in ("case_top", "case", "window", "emblem", "goods"):  # a room's fitting you walk behind (a prize case's top shelf)
         surf = pygame.Surface((round(w * tile), round(h * tile)), pygame.SRCALPHA)
@@ -1227,10 +1228,11 @@ def _picture(spec, w, h, tile):
             base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
             _PT[key] = pygame.image.load(os.path.join(base, f))
         img = _PT[key]
-        part = pygame.Surface((w * 16, h * 16))
+        px = int(spec.get("px", 16))   # (its pixels a tile: 16 for the GBA games, 32 for a fan tileset's picture, Johto's Gen 4 set)
+        part = pygame.Surface((w * px, h * px))
         part.fill((16, 16, 24))
-        part.blit(img, (-spec["at"][0] * 16, -spec["at"][1] * 16))
-        return part if tile == 16 else pygame.transform.scale(part, (w * tile, h * tile))
+        part.blit(img, (-spec["at"][0] * px, -spec["at"][1] * px))
+        return part if tile == px else pygame.transform.scale(part, (w * tile, h * tile))
     except Exception:
         return None
 

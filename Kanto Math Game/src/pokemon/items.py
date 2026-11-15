@@ -91,7 +91,8 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
-HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK"}  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
+HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
+               "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC"}   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
 FEWER_WILD = {"CLEANSE_TAG"}
 DEFENCE_HELD = {"EVIOLITE"}  # (held by a Pokemon that can still evolve: its defences up by half. Route 123, 11-12)  # (held by your lead: fewer wild Pokemon on a map. Mt. Pyre's old woman, 11-12)
 HELD_BOOST = 1.2
@@ -107,6 +108,10 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "SHELL_BELL": {"price": 4000, "text": "Held: its holder gets back an eighth of the damage it deals."},
         "FOCUS_BAND": {"price": 3000, "text": "Held: now and then its holder hangs on at 1 HP instead of fainting."},
         "NEVER_MELT_ICE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ice-type moves hit harder."},
+        "POWER_HERB": {"price": 100, "text": "A single-use herb. In the games it lets a move that needs a turn to charge go at once."},   # (Route 34's Kate, HGSS; effect not built yet)
+        "MIRACLE_SEED": {"price": 1000, "text": "Give it to a Pokemon to hold: its Grass-type moves hit harder."},
+        "POISON_BARB": {"price": 1000, "text": "Give it to a Pokemon to hold: its Poison-type moves hit harder."},
+        "TWISTED_SPOON": {"price": 1000, "text": "Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
         "LEFTOVERS": {"price": 4000, "text": "Held: its holder gets back a little HP at the end of every turn."}}   # (the S.S. Tidal's hidden one, Emerald)
 
 
@@ -125,6 +130,13 @@ VITAMINS = {"HP_UP": {"stat": "HP", "price": 9800, "text": "Raises a Pokemon's H
             "CALCIUM": {"stat": "SPATK", "price": 9800, "text": "Raises a Pokemon's Sp. Atk a little, for good."},
             "ZINC": {"stat": "SPDEF", "price": 9800, "text": "Raises a Pokemon's Sp. Def a little, for good."},
             "CARBOS": {"stat": "SPEED", "price": 9800, "text": "Raises a Pokemon's Speed a little, for good."}}
+# Apricorns (HGSS, Jordan 11-15, simplified): picked once a day from the trees with the Apricorn Box; Kurt makes each into his ball on the spot.
+APRICORN_BALL = {"RED_APRICORN": "LEVEL_BALL", "BLU_APRICORN": "LURE_BALL", "YLW_APRICORN": "MOON_BALL", "GRN_APRICORN": "FRIEND_BALL",
+                 "PNK_APRICORN": "LOVE_BALL", "WHT_APRICORN": "FAST_BALL", "BLK_APRICORN": "HEAVY_BALL"}
+APRICORNS = {k: {"price": 40, "text": f"A {k.split('_')[0].title().replace('Blu', 'Blue').replace('Ylw', 'Yellow').replace('Grn', 'Green').replace('Pnk', 'Pink').replace('Wht', 'White').replace('Blk', 'Black')} Apricorn. Kurt in Azalea Town makes it into a {APRICORN_BALL[k].replace('_', ' ').title()}."}
+             for k in APRICORN_BALL}
+APRICORNS["MAP_CARD"] = {"text": "A card for the Pokegear: it loads the Town Map. A gift from Cherrygrove's Guide Gent."}
+APRICORNS["APRICORN_BOX"] = {"text": "A box for carrying Apricorns. With it, you can pick them from the Apricorn trees once a day."}
 # Valuables: only to sell (half their price), as in the games
 VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it for a good price."},
              "BIG_PEARL": {"price": 7500, "text": "A big, shining pearl. Sell it for a good price."},
@@ -153,7 +165,7 @@ def use_vitamin(pokemon, item):
 
 
 def info(item):
-    return MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or VITAMINS.get(item) or VALUABLES.get(item) or {}
+    return MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or VITAMINS.get(item) or VALUABLES.get(item) or APRICORNS.get(item) or {}
 
 
 def price(item):

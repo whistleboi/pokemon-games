@@ -38,6 +38,13 @@ def entries_for(state):
     """What the MENU offers on a town or route: by the order Jordan picked, what's unlocked only."""
     game, by_name = state.game, {b.text: b.callback for b in state.menu_entries}
 
+    def phone_open():
+        from src.states.systems.phone import PhoneState
+        game.change_state(PhoneState(game, game.current_state))
+    from src.world import phone as _phone
+    if not _phone.has_phone(game.story_manager):
+        phone_open = None
+
     def coop():
         from src.states.coop_lobby import CoopState
         game.change_state(CoopState(game, state, "host"))
@@ -45,6 +52,7 @@ def entries_for(state):
            ("POKEDEX", getattr(state, "_open_pokedex", None), theme.FIGHT), ("MAP", by_name.get("MAP"), theme.RUN),
            ("JOURNAL", by_name.get("JOURNAL"), theme.RUN), ("BADGES", by_name.get("BADGES"), theme.BAG), ("PC", by_name.get("PC"), theme.POKEMON),
            ("FLY", by_name.get("FLY"), theme.RUN), ("NAV", by_name.get("NAV"), theme.POKEMON),
+           ("PHONE", phone_open, theme.FIGHT),
            ("STATS", lambda: game.change_state(StatsState(game, game.current_state)), theme.MEGA),
            ("SAVE", by_name.get("SAVE"), theme.POKEMON), ("LOAD", by_name.get("LOAD"), theme.BAG), ("CO-OP", coop, theme.MEGA),
            ("OPTIONS", by_name.get("OPTIONS"), theme.BACK), ("QUIT", "quit", theme.FIGHT)]

@@ -42,7 +42,9 @@ _ERRANDS = ("gift_item", "trade", "heal", "requires", "starter", "pay", "gift_po
 
 
 def important_person(opt):
-    if not isinstance(opt, dict) or opt.get("found"):
+    if isinstance(opt, dict) and "any" in opt:   # (one spot, the story's versions of them: the first that has a tag decides)
+        return any(important_person(o) for o in opt["any"])
+    if not isinstance(opt, dict) or opt.get("found") or opt.get("no_tag"):   # (no_tag: a thing, not a person - an Apricorn tree)
         return False
     if opt.get("action") not in (None, "EVENT"):
         return True
@@ -186,7 +188,8 @@ class WalkTownState(CityState):
         grid = m["art"]
         # what stands in the way till you have the move for it, as on the routes: small trees (Cut), cracked rocks (Rock Smash), muddy slopes (the Bicycle)
         _inv = self.game.story_manager.inventory
-        self._cleared = "".join(c for c, item in (("2", "HM_CUT"), ("0", "HM_ROCK_SMASH"), ("7", "BICYCLE")) if _inv.get(item, 0) > 0)
+        from src.world.hms import usable as _usable
+        self._cleared = "".join(c for c, item in (("2", "HM_CUT"), ("0", "HM_ROCK_SMASH"), ("7", "BICYCLE")) if _usable(self.game.story_manager, item))
         for _c in self._cleared:
             grid = [row.replace(_c, ".") for row in grid]
         self.h, self.w = len(grid), len(grid[0])
@@ -664,7 +667,8 @@ class WalkTownState(CityState):
                                                        or (self.rows[y][x] == "o" and self._has("HM_SURF")) or (self.rows[y][x] == "2" and self._has("HM_CUT")))             and tuple(t) not in self._people() and tuple(t) not in getattr(self, "barred", {})
 
     def _has(self, item):
-        return self.game.story_manager.inventory.get(item, 0) > 0
+        from src.world.hms import usable
+        return usable(self.game.story_manager, item)
 
     def _has_waterfall(self):
         return self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0
@@ -1093,6 +1097,12 @@ class WalkTownState(CityState):
         if self.npc_active:
             return super().update()
         self._npc_tick()
+        if not self._busy() and getattr(self, "_phone_area", None) != self.area_key:   # (the phone: a call as you arrive; src/world/phone.py)
+            self._phone_area = self.area_key
+            from src.world import phone as _phone
+            _lines = _phone.ring(self.game, self.area_key)
+            if _lines:
+                self.show_message(_lines)
         if self.toast_timer > 0:
             self.toast_timer -= 1
         if self.banner > 0:

@@ -27,7 +27,9 @@ for area, a in prog.items():
             for v in o:
                 walk(v)
     walk(a)
-missing = [k for k in story_events.EVENTS if k not in where]
+import json as _json, re as _re   # (a story scene on a walked map runs its event too: "then": "event:<key>", Johto's opening, Oak's Potions)
+_scene_events = set(_re.findall(r'"then": "event:([a-z0-9_]+)"', open("assets/town_maps.json", encoding="utf-8").read()))
+missing = [k for k in story_events.EVENTS if k not in where and k not in _scene_events]
 check(not missing, f"every event has a button: missing {missing}")
 
 

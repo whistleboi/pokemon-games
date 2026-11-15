@@ -1,0 +1,293 @@
+# Johto's content from SoulSilver (11-15, Jordan: "Each map should have its HG/SS content"): item balls lying where the game has
+# them, hidden items found by stepping on them, the game's trainers on their tiles, HGSS morning / day / night wild tables.
+# Built by kanto_handoff/johto_map_tools/jcontent.py + jwild.py; jcanon.py lists what is still missing. Glue after harness_head.py:
+#   bash dev/checks/run.sh johto_canon
+import json
+from src.states.overworld import PlayState, CityState
+from src.states.overworld.walk_town import WalkTownState as _WTS
+
+fails = []
+
+
+def check(c, m):
+    print(("   ok  " if c else "   FAIL ") + m)
+    if not c:
+        fails.append(m)
+
+
+g.dungeon_routes = True; g.walk_towns = True; g.player_character = "red"
+_tm = json.load(open("assets/town_maps.json", encoding="utf-8")); _tm = _tm.get("maps", _tm)
+_ad = json.load(open("assets/johto_area_data.json", encoding="utf-8")); _area = _ad["STORY_PROGRESSION"]
+story.badges = {"JOHTO": ["ZEPHYR"]}
+story.story_flags.update({"received_starter_johto": True, "visited_NEW_BARK_TOWN": True})
+story.balls_left = max(getattr(story, "balls_left", 0), 5)
+
+DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30", "JOHTO_ROUTE_31", "VIOLET_CITY", "SPROUT_TOWER", "DARK_CAVE",
+        "JOHTO_ROUTE_32", "RUINS_OF_ALPH", "UNION_CAVE", "JOHTO_ROUTE_33", "AZALEA_TOWN", "SLOWPOKE_WELL", "ILEX_FOREST", "JOHTO_ROUTE_34"]
+
+
+def frames(n):
+    for _ in range(n):
+        g.current_state.update(); g.current_state.draw()
+
+
+def play(until, n=3000):
+    for _ in range(n):
+        if until():
+            return True
+        st = g.current_state
+        if getattr(st, "npc_active", False):
+            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        elif getattr(st, "dialogue_box", None) is not None and getattr(st.dialogue_box, "visible", False):
+            st.dialogue_box.advance()
+        st.update(); st.draw()
+    return until()
+
+
+def open_map(key, came):
+    story.current_area_key, story.last_area_key = key, came
+    g.walk_town_pos = None
+    st = CityState(g) if _area[key].get("area_type") == "town" else None
+    if st is None or not isinstance(st, _WTS):
+        st = PlayState(g); g.states["play"] = st
+    g.change_state(st)
+    frames(2)
+    play(lambda: not getattr(g.current_state, "dialogue_box", None) or not g.current_state.dialogue_box.visible, 300)
+    return g.current_state
+
+
+# ---- the data: every item ball an option with a spot, every trainer spot a trainer of the area's, the HGSS time-of-day pools
+for key in DONE:
+    m = _tm[key]; a = _area[key]
+    parts = m.get("floors") or [m]
+    opts = {o["text"]: o for o in a.get("explore_options", []) + a.get("route_menu", [])}
+    balls = [o for o in opts.values() if o.get("found")]
+    on_map = [p if isinstance(p, str) else (p.get("text") if isinstance(p, dict) else None) for f in parts for p in (f.get("people") or [])]
+    check(all(o["text"] in on_map for o in balls), f"{key}: its {len(balls)} item ball(s) lie on the map {[o['text'] for o in balls if o['text'] not in on_map]}")
+    names = {t["name"] for t in a.get("trainer_pool", [])}
+    spots = [n for f in parts for n in (f.get("trainer_spots") or [])]
+    check(set(spots) <= names and all(sum(r.count("X") for r in f["art"]) == len(f.get("trainer_spots") or []) for f in parts),
+          f"{key}: {len(spots)} trainers on the game's tiles, all of them the area's {sorted(set(spots) - names)}")
+    if a.get("wild_pool_percentages"):
+        pools = [a.get(f) for f in ("morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")]
+        check(all(p and sum(_ad.get(p, {}).values()) == 100 for p in pools), f"{key}: morning / day / night wild tables, each 100% {pools}")
+hid = sum(len(f.get("hidden") or {}) for k in DONE for f in (_tm[k].get("floors") or [_tm[k]]))
+check(hid >= 40, f"N1-N4: the game's hidden items are on the maps ({hid})")
+
+# ---- as a player meets it: Route 30
+r30 = open_map("JOHTO_ROUTE_30", "CHERRYGROVE_CITY")
+fig = {m.payload.get("text"): (m.x, m.y) for m in r30.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+check(fig.get("POTION") == (10, 54) and fig.get("ANTIDOTE") == (20, 81), f"Route 30: the Potion and Antidote lie on SoulSilver's tiles ({fig.get('POTION')}, {fig.get('ANTIDOTE')})")
+tr = {getattr(m, "payload", {}).get("name") if isinstance(getattr(m, "payload", None), dict) else None: (m.x, m.y) for m in r30.run.floor.movers if m.kind == "trainer"}
+check(any(v == (9, 44) for v in tr.values()), f"Route 30: Youngster Joey's tile has a trainer ({tr})")
+flag = next(o["event"]["flag"] for o in _area["JOHTO_ROUTE_30"]["route_menu"] if o["text"] == "POTION")
+story.story_flags.pop(flag, None)
+_had = story.inventory.get("POTION", 0)
+r30.run.floor.movers = [m for m in r30.run.floor.movers if m.kind not in ("wild", "trainer")]
+r30.run.player = (10, 55); r30.anim = 0
+r30.step(0, -1)
+play(lambda: not r30.dialogue_box.visible, 300)
+check(story.inventory.get("POTION", 0) == _had + 1 and story.story_flags.get(flag), "...walk up to the Potion and you pick it up")
+for k in [k for k in story.story_flags if k.startswith("hidden_JOHTO_ROUTE_30")]:
+    story.story_flags.pop(k)
+_had = story.inventory.get("POTION", 0)
+r30.run.player = (11, 32); r30.anim = 0
+r30.step(0, -1)
+play(lambda: False, 40)
+play(lambda: not r30.dialogue_box.visible, 200)
+check(story.inventory.get("POTION", 0) == _had + 1, "...the hidden Potion in the flower bed by the sign is found by stepping on it")
+
+# ---- the Apricorn tree (Jordan 11-15, simplified: with the Apricorn Box, one Apricorn a day)
+r30 = open_map("JOHTO_ROUTE_30", "CHERRYGROVE_CITY")
+fig = {m.payload.get("text"): (m.x, m.y) for m in r30.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+tree = next((t for n, t in fig.items() if n and n.startswith("GREEN APRICORN TREE")), None)
+check(tree == (9, 67), f"Route 30: the Green Apricorn tree on SoulSilver's spot ({tree})")
+story.inventory.pop("APRICORN_BOX", None); story.inventory.pop("GRN_APRICORN", None)
+for k in [k for k in story.story_flags if k.startswith("apricorn_johto_route_30")]:
+    story.story_flags.pop(k)
+r30.run.floor.movers = [m for m in r30.run.floor.movers if m.kind not in ("wild", "trainer")]
+def _pick():
+    r30.run.player = (9, 68); r30.anim = 0
+    r30.step(0, -1)
+    play(lambda: not r30.dialogue_box.visible, 300)
+_pick()
+check(not story.inventory.get("GRN_APRICORN"), "...without the Apricorn Box there's nothing to carry one in")
+story.inventory["APRICORN_BOX"] = 1
+_pick()
+check(story.inventory.get("GRN_APRICORN") == 1, f"...with the Box: a Green Apricorn ({story.inventory.get('GRN_APRICORN')})")
+_pick()
+check(story.inventory.get("GRN_APRICORN") == 1, "...and no more till tomorrow")
+
+# ---- Kurt makes his balls on the spot (simplified), after his Fast Ball for the Well
+from src.states.overworld import CityState as _CS
+story.current_area_key = "AZALEA_TOWN"
+az = _CS(g)
+story.story_flags["slowpoke_well_cleared"] = True; story.story_flags.pop("got_fast_ball_kurt", None)
+_fb = story.inventory.get("FAST_BALL", 0)
+az.visit_kurt()
+check(story.inventory.get("FAST_BALL", 0) == _fb + 1 and story.story_flags.get("got_fast_ball_kurt"), "Kurt: after the Well, his Fast Ball")
+_fr = story.inventory.get("FRIEND_BALL", 0)
+az.visit_kurt()
+check(story.inventory.get("FRIEND_BALL", 0) == _fr + 1 and not story.inventory.get("GRN_APRICORN"), "...then a Green Apricorn into a Friend Ball, on the spot")
+
+# ---- the phone (Jordan 11-15: built, HGSS's Pokegear)
+from src.world import phone
+story.current_area_key = "JOHTO_ROUTE_30"
+joey_i, joey = next((i, t) for i, t in enumerate(_area["JOHTO_ROUTE_30"]["trainer_pool"]) if t["name"] == "Youngster Joey")
+story.story_flags.pop("phone_contacts", None)
+story.inventory.pop("POKEGEAR", None)
+check(phone.register_after_win(g, "JOHTO_ROUTE_30", joey) == [], "Phone: no Pokegear, no numbers")
+story.inventory["POKEGEAR"] = 1
+lines = phone.register_after_win(g, "JOHTO_ROUTE_30", joey)
+check(lines and "JOHTO_ROUTE_30|Youngster Joey" in phone.contacts(story), f"...with the Pokegear, Joey asks for your number ({lines[:1]})")
+story.mark_trainer_defeated("JOHTO_ROUTE_30", joey_i)
+story.badges["JOHTO"] = ["ZEPHYR"]
+check(phone.ring(g, "VIOLET_CITY") == [] and phone.rematch_info(g, "JOHTO_ROUTE_30", joey_i, joey) is joey, "...with one Badge his next team isn't ready: no call, his old team")
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL"]
+call = phone.ring(g, "VIOLET_CITY")
+re = phone.rematch_info(g, "JOHTO_ROUTE_30", joey_i, joey)
+check(call and "Joey" in " ".join(call) and re.get("team") == [20] and re.get("levels") == [34],
+      f"...later his Raticate (lv 34, SoulSilver's rematch) is ready: he calls, and you meet that team ({re.get('team')}, {re.get('levels')})")
+check(phone.ring(g, "VIOLET_CITY") == [], "...one call a team")
+
+# ---- givers in the data
+li = next(t for t in _area["SPROUT_TOWER"]["trainer_pool"] if t["name"] == "Elder Li")
+check(li["rewards"].get("HM_FLASH") and li["team"] == [69, 69, 163], "Elder Li: SoulSilver's team, and Flash for beating him (the Zephyr Badge lets you use it)")
+from src.world.hms import hm_for_badge
+check(hm_for_badge("JOHTO", "ZEPHYR") is None and hm_for_badge("JOHTO", "HIVE") is None, "...Flash and Cut come from the story now (Elder Li, the charcoal maker), not the badges")
+kyle = [o for o in _area["VIOLET_CITY"]["explore_options"] if o.get("text") == "Kyle"]
+check(any((o.get("event") or {}).get("trade") == {"want": 69, "give": 95, "item": "PERSIM_BERRY"} for o in kyle), "Violet: Kyle trades his Onix for a Bellsprout")
+
+# ---- Johto starts as HGSS does (Jordan 11-15: "ensure the johto region starts the same as the games, with the same scenes")
+from src.states.menus import StarterSelectionState as _SSS, region_opening_state
+said = []
+
+
+def _note(st):
+    box = getattr(st, "npc_dialogue", None) if getattr(st, "npc_active", False) else getattr(st, "dialogue_box", None)
+    if box is not None and getattr(box, "visible", True):
+        for line in getattr(box, "text_lines", []) or []:
+            if not said or said[-1] != line:
+                said.append(line)
+
+
+def play2(until, n=3000):
+    for _ in range(n):
+        if until():
+            return True
+        st = g.current_state
+        if getattr(st, "npc_active", False):
+            _note(st); st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        elif not isinstance(st, _WTS) and getattr(st, "dialogue_box", None) is not None and getattr(st.dialogue_box, "visible", False):
+            _note(st); st.dialogue_box.advance()
+        st.update(); st.draw()
+    return until()
+
+
+def walk(st, path):
+    for c in path:
+        d = {"u": (0, -1), "d": (0, 1), "l": (-1, 0), "r": (1, 0)}[c]
+        play2(lambda: not g.current_state._busy() and g.current_state.anim == 0, 400)
+        g.current_state.step(*d)
+        play2(lambda: isinstance(g.current_state, _WTS) and g.current_state.anim == 0, 60)
+
+
+for f in [k for k in list(story.story_flags) if k.startswith("johto_") or k in ("received_starter_johto", "met_mr_pokemon", "received_pokedex_johto", "got_map_card_johto")]:
+    story.story_flags.pop(f, None)
+story.player_team = []
+story.inventory.pop("POKEGEAR", None); story.inventory.pop("MAP_CARD", None)
+story.starting_region = "JOHTO"
+story.badges["JOHTO"] = []
+story.current_area_key = "NEW_BARK_TOWN"
+g.change_state(region_opening_state(g, "JOHTO"))
+play2(lambda: isinstance(g.current_state, _WTS), 600)
+t = g.current_state
+check(isinstance(t, _WTS) and t.area_key == "NEW_BARK_TOWN" and t.room == "home_2" and tuple(t.player) == (5, 7),
+      f"a new Johto game: you wake up in your room upstairs ({getattr(t, 'room', None)}, {getattr(t, 'player', None)})")
+said.clear()
+t.player = (3, 6); t.anim = 0
+walk(t, "u")
+play2(lambda: story.story_flags.get("johto_mom_morning") and not g.current_state._busy(), 1500)
+t = g.current_state
+check(t.room == "home" and any("Professor Elm came by" in x for x in said), f"downstairs, Mom says Lyra was round and Elm wants you ({said[-1:]})")
+_door = next(xy for xy, v in t.exits.items() if str(v).startswith("OUT:"))
+t.player = (_door[0], _door[1] - 1); t.anim = 0
+said.clear()
+walk(t, "d")
+play2(lambda: story.story_flags.get("johto_lyra_morning") and not g.current_state._busy(), 3000)
+t = g.current_state
+check(t.room is None and any("Marill! There you are" in x for x in said), f"outside, Marill runs up, then Lyra ({said[:2]})")
+check(any(isinstance(o, dict) and o.get("text") == "Red-haired boy" for o in t._people().values()), "...and a red-haired boy peers in at the Lab window")
+said.clear()
+t._enter(next(xy for xy, k in t.doors.items() if k == "lab"))
+play2(lambda: isinstance(g.current_state, _SSS), 4000)
+st = g.current_state
+check(isinstance(st, _SSS) and st.region == "JOHTO" and any("Mr. Pokemon" in x for x in said), f"in the Lab Elm asks the favour and you pick your Pokemon ({type(st).__name__}, room {getattr(st, 'room', None)}, flags {story.story_flags.get('johto_lab_intro')}, said {said[:3]}, npc {getattr(st, 'current_npc', None)})")
+if isinstance(st, _SSS):
+    st.load_starters(); st.selected_idx = 1; st.complete_selection()
+    st.dialogue_box.callback()
+play2(lambda: isinstance(g.current_state, _WTS), 1500)
+t = g.current_state
+check(story.story_flags.get("received_starter_johto") and getattr(t, "room", None) == "lab", f"...your Pokemon is yours, and you're back in the Lab ({getattr(t, 'room', None)})")
+if getattr(t, "room", None):
+    t._leave("OUT:12,9")
+play2(lambda: not g.current_state._busy(), 300)
+t = g.current_state
+said.clear()
+t.player = (12, 10); t.anim = 0
+play2(lambda: story.story_flags.get("johto_lyra_after") and not g.current_state._busy(), 3000)
+check(any("show your mom" in x for x in said), f"Lyra waits outside: show your mom ({said[:1]})")
+story.current_area_key = "NEW_BARK_TOWN"
+t.visit_mom()
+play2(lambda: not g.current_state.npc_active, 400)
+check(story.inventory.get("POKEGEAR") == 1, "Mom gives you the Pokegear")
+# Route 29: Lyra's catching lesson
+_b = story.balls_left
+r29 = open_map("JOHTO_ROUTE_29", "NEW_BARK_TOWN")
+said.clear()
+play2(lambda: story.story_flags.get("johto_lyra_lesson") and not g.current_state.dialogue_box.visible, 4000)
+check(story.story_flags.get("johto_lyra_lesson") and story.balls_left == _b + 5, f"Route 29: Lyra catches you up, shows you how to catch, and gives you 5 Poke Balls ({story.balls_left - _b})")
+# Cherrygrove: the Guide Gent's tour and the Map Card
+said.clear()
+story.current_area_key, story.last_area_key = "CHERRYGROVE_CITY", "JOHTO_ROUTE_29"
+g.walk_town_pos = None; g.walk_town_room = None
+cg = _CS(g); g.change_state(cg)
+play2(lambda: story.story_flags.get("got_map_card_johto") and not g.current_state._busy() and not g.current_state.npc_active, 6000)
+check(any("This is the Pokemon Center" in x for x in said) and story.inventory.get("MAP_CARD"), f"Cherrygrove: the Guide Gent's tour, then the Map Card ({len(said)} lines)")
+# Mr. Pokemon: the Egg, and Oak's Pokedex; then Elm's call
+story.story_flags["met_mr_pokemon"] = True
+call = phone.ring(g, "JOHTO_ROUTE_30")
+check(call and "terrible" in " ".join(call), f"leaving Mr. Pokemon's, Elm calls in a panic ({call[1:2]})")
+lab_sc = [sc for sc in _tm["NEW_BARK_TOWN"]["rooms"]["lab"].get("scenes", []) if sc.get("flag") == "johto_police_scene"]
+check(lab_sc and "{rival_name}" in " ".join(lab_sc[0]["cast"][0]["lines"]), "back at the Lab, the officer asks the thief's name")
+sp = [sc for f in _tm["SPROUT_TOWER"]["floors"] for sc in f.get("scenes", []) if sc.get("flag") == "johto_silver_sprout"]
+check(sp, "Sprout Tower: Silver has just beaten the Elder when you arrive")
+
+# ---- Primo's Eggs, the Togepi Egg, the Farfetch'd, the GS Ball
+from src.states.overworld.common import _run_story_event
+story.story_flags.pop("primo_eggs", None)
+_team = len(story.player_team)
+_run_story_event(r29, {"lines": ["Primo: Correct!"], "gift_egg": 179, "primo_next": True}, lambda c: True, lambda ls: None)
+check(story.story_flags.get("primo_eggs") == 1 and len(story.player_team) == _team + 1 and story.player_team[-1].id == 179, "Primo: a right answer, his first Egg (Mareep)")
+story.player_team = story.player_team[:_team]
+aide = [o for o in _area["VIOLET_CITY"]["explore_options"] if o.get("text") == "Elm's aide"]
+check(aide and aide[0]["event"].get("gift_egg") == 175 and aide[0]["condition"] == "has_badge:ZEPHYR", "Violet's Center: after the Zephyr Badge, Elm's aide brings the Egg (Togepi)")
+maker = [p for p in _tm["ILEX_FOREST"].get("people", []) if isinstance(p, dict) and p.get("text") == "Charcoal maker"]
+check(maker and {"ilex_farfetchd_1", "ilex_farfetchd_2"} <= set(maker[0]["event"].get("requires", [])), "Ilex: find both Farfetch'd, then the charcoal maker gives Cut")
+story.current_area_key = "AZALEA_TOWN"
+az = _CS(g)
+story.inventory["GS_BALL"] = 1
+for k in ("kurt_has_gs_ball", "kurt_examined_gs_ball", "kurt_gs_ball_day"):
+    story.story_flags.pop(k, None)
+az.visit_kurt()
+check(story.story_flags.get("kurt_has_gs_ball") and not story.inventory.get("GS_BALL"), "Kurt keeps the GS Ball to study it")
+story.story_flags["kurt_gs_ball_day"] = "2000-01-01"
+az.visit_kurt()
+check(story.story_flags.get("kurt_examined_gs_ball") and story.inventory.get("GS_BALL") == 1, "...the next day he gives it back: take it to Ilex's shrine")
+cel = [o for o in _area["ILEX_FOREST"]["route_menu"] if o.get("action") == "BOSS"]
+check(cel and "kurt_examined_gs_ball" in cel[0]["condition"], "Celebi waits at the shrine for the GS Ball Kurt studied")
+gs = [o for o in _area["GOLDENROD_CITY"]["explore_options"] if (o.get("event") or {}).get("gift_item", {}).get("GS_BALL")]
+check(gs and gs[0]["flag_condition"] == "beat_johto_champion", "Goldenrod's Center hands you the GS Ball once you're Champion (Crystal)")
+
+if fails:
+    print("FAILS:", len(fails))

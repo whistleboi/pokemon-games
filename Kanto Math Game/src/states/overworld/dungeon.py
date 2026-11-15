@@ -755,7 +755,7 @@ class DungeonState(OverworldBattles, PlayState):
         story = game.story_manager
         self.area_key = story.current_area_key
         self.recipe = recipe_for(game, self.area_key)
-        if self.recipe.get("dark") and story.inventory.get("HM_FLASH", 0) > 0:  # (Flash lights a dark cave)
+        if self.recipe.get("dark") and __import__("src.world.hms", fromlist=["usable"]).usable(story, "HM_FLASH"):  # (Flash lights a dark cave)
             self.recipe = dict(self.recipe, fog=False)
         if (self.recipe.get("art") or {}).get("fog") == "defog":  # (thick fog: you see only what is near, till Defog clears it: the Lost Tower)
             self.recipe = dict(self.recipe, fog=story.inventory.get("HM_DEFOG", 0) <= 0)
@@ -1532,7 +1532,7 @@ class DungeonState(OverworldBattles, PlayState):
             kind or ("surf" if core.CURRENT_TILE in (core.SURF, core.WATER) else None))
         if own_kind and area.get(own_kind) and self.game.loader.area_data.get(area[own_kind]):
             area = {k: v for k, v in dict(area, wild_pool_percentages=area[own_kind]).items()
-                    if k not in ("zone_pools", "day_pool_percentages", "night_pool_percentages")}
+                    if k not in ("zone_pools", "morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")}
         layout = self.recipe.get("layout") if isinstance(getattr(self, "recipe", None), dict) else None
         own = layout[core.CURRENT_FLOOR].get("pool") if layout and core.CURRENT_FLOOR < len(layout) else None
         if own:  # (this floor's own Pokemon: the seabed's)
@@ -1581,6 +1581,15 @@ class DungeonState(OverworldBattles, PlayState):
                 idx = mover.payload[0]
                 if self.game.story_manager.beaten_today(self.area_key, idx):
                     self.run.remove(mover)
+                    from src.world import phone as _phone   # (a phone trainer asks for your number; a rematch's gift is given)
+                    _pool = self.area_data.get("trainer_pool", [])
+                    _info = _pool[idx] if 0 <= idx < len(_pool) and isinstance(_pool[idx], dict) else {}
+                    _re = _phone.rematch_info(self.game, self.area_key, idx, _info)
+                    if _re.get("_phone_gift"):
+                        self.game.story_manager.story_flags[_re["_phone_gift"]] = True
+                    _lines = _phone.register_after_win(self.game, self.area_key, _info)
+                    if _lines:
+                        self._phone_say = _lines
                 else:  # lost (or ran out of Pokemon): it looks away, so you can get past
                     mover.facing = (-mover.facing[0], -mover.facing[1])
         self.encounter = None
@@ -2277,6 +2286,21 @@ class DungeonState(OverworldBattles, PlayState):
         if self.contest and self.contest["turns"] > 0:
             self.contest["turns"] -= 1
 
+    def _phone_check(self):
+        """The phone (src/world/phone.py): a number to register after a win; on arriving, a call when a trainer's next team is ready."""
+        if not self._ready() or self.dialogue_box.visible:
+            return
+        if getattr(self, "_phone_say", None):
+            lines, self._phone_say = self._phone_say, None
+            self.say(lines)
+            return
+        if getattr(self, "_phone_area", None) != self.area_key:
+            self._phone_area = self.area_key
+            from src.world import phone
+            lines = phone.ring(self.game, self.area_key)
+            if lines:
+                self.say(lines)
+
     def _safari_check(self):
         """The Safari Game: its welcome on arrival; out of steps or Safari Balls, the visit is over."""
         sf = getattr(self, "safari", None)
@@ -2730,7 +2754,7 @@ class DungeonState(OverworldBattles, PlayState):
             elif str(what).startswith("falls:") and self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0:
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.SURF  # (you climb it: water you Surf up)
-            elif str(what).startswith("cut:") and self.game.story_manager.inventory.get("HM_CUT", 0) > 0:
+            elif str(what).startswith("cut:") and __import__("src.world.hms", fromlist=["usable"]).usable(self.game.story_manager, "HM_CUT"):
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (your Pokemon cuts it down)
             elif str(what).startswith("slope:") and self.game.story_manager.inventory.get("BICYCLE", 0) > 0:
@@ -3028,6 +3052,7 @@ class DungeonState(OverworldBattles, PlayState):
         if self.mode == "MAP":
             self._contest_check()
             self._safari_check()
+            self._phone_check()
             self._follow_hold()
             if self.sliding and self._ready():  # (still sliding on the ice)
                 self.step(*self.sliding)
@@ -3099,7 +3124,7 @@ class DungeonState(OverworldBattles, PlayState):
                 grid = ["".join("." if c == "0" and (i, j) in gone else c for i, c in enumerate(row)) for j, row in enumerate(grid)]
             elif self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0 and any("0" in row for row in grid):  # (cracked rocks, broken)
                 grid = [row.replace("0", ".") for row in grid]
-            if self.game.story_manager.inventory.get("HM_CUT", 0) > 0 and any("2" in row for row in grid):  # (small trees, cut down)
+            if __import__("src.world.hms", fromlist=["usable"]).usable(self.game.story_manager, "HM_CUT") and any("2" in row for row in grid):  # (small trees, cut down)
                 grid = [row.replace("2", ".") for row in grid]
             own = m["floors"][self.run.index].get("theme") if m.get("floors") else None  # (a floor's own look: the seabed under a sea route)
             own_roofs = m["floors"][self.run.index].get("roofs") if m.get("floors") else None  # (a floor's own room look: its floor and wall colours, its furniture)
@@ -3417,6 +3442,17 @@ class DungeonState(OverworldBattles, PlayState):
         spec = (sm.get("figures") or {}).get(f"{self.area_key}:{item.get('text')}") or {}
         if spec.get("item"):
             return self._item_img(spec["item"], 40) or self._sheet_frame("Object ball.png", col=0, height=36)
+        if spec.get("pic"):  # (a thing the game stands on its map, drawn from its own picture: an Apricorn tree, SoulSilver's; 11-15)
+            def _make(path=spec["pic"]):
+                full = os.path.join(self.game.assets.assets_dir or "", path)
+                if not os.path.exists(full):
+                    return None
+                img = pygame.image.load(full).convert_alpha()
+                h = TILE * 2 if img.get_height() > img.get_width() * 1.2 else TILE + 14
+                return pygame.transform.smoothscale(img, (round(img.get_width() * h / img.get_height()), h))
+            got = self._sprite(("pic", spec["pic"]), _make)
+            if got is not None:
+                return got
         if spec.get("draw") == "ghost":  # (the Tower's unknown spirit: nobody can tell what it is yet)
             return self._sprite("ghost_figure", ghost_figure)
         if spec.get("draw") == "terminal":  # (a computer you use: New Mauville's security check)

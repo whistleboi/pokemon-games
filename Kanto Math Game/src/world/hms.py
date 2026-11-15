@@ -7,7 +7,7 @@ Alola, Galar and Paldea have no HMs; their gates use their own story steps inste
 # Region -> badge (normalised, see _norm) -> HM item key. Badges without one are left out.
 HM_BY_BADGE = {
     "KANTO": {"SOUL": "HM_SURF"},  # (Cut: the S.S. Anne's captain; Fly: Route 16's house; Strength: the Warden. 11-07)
-    "JOHTO": {"ZEPHYR": "HM_FLASH", "HIVE": "HM_CUT", "PLAIN": "HM_STRENGTH", "FOG": "HM_SURF",
+    "JOHTO": {"PLAIN": "HM_STRENGTH", "FOG": "HM_SURF",
               "STORM": "HM_FLY", "GLACIER": "HM_WHIRLPOOL", "RISING": "HM_WATERFALL"},
     # (Hoenn's Rock Smash, Strength and Fly are story gifts before their badges: Wally's uncle in Mauville,
     # the rival on Route 112 and on Route 119; Jordan, 11-06: one source for each key item in a region)
@@ -20,6 +20,19 @@ HM_BY_BADGE = {
     "KALOS": {"BUG": "HM_CUT", "CLIFF": "HM_STRENGTH", "RUMBLE": "HM_SURF", "PLANT": "HM_FLY",
               "FAIRY": "HM_WATERFALL"},
 }
+
+# HMs handed out by the story, used only once a badge allows it (HGSS: Elder Li's Flash works after the Zephyr Badge, the
+# charcoal maker's Cut after the Hive Badge; Jordan 11-15: "true to cannon").
+USE_BADGE = {"JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE"}}
+
+
+def usable(story, item):
+    """You have it, and (where the games ask for one) the badge that lets you use it outside battle."""
+    if story.inventory.get(item, 0) <= 0:
+        return False
+    need = USE_BADGE.get(str(story.get_current_region()).upper(), {}).get(item)
+    return not need or any(_norm(b) == need for b in story.badges.get(str(story.get_current_region()).upper(), []))
+
 
 # A badge that hands out a second HM (not canon). Johto's Rising Badge also gives Rock Climb, so a Johto
 # player can climb Mt. Silver (Jordan, 11-09).

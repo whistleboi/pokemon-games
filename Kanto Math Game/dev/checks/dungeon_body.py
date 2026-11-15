@@ -893,9 +893,10 @@ story.story_flags["received_starter_johto"] = True
 story.story_flags["move_offer_johto"] = True
 story.current_area_key, story.last_area_key = "NEW_BARK_TOWN", None
 _nb = _CS(g); g.change_state(_nb); _tap_through(_nb)
-check(isinstance(_nb, _WTS) and {"lab", "home", "rival"} <= set(_nb.doors.values()) and not _nb._people()
+_nb_out = sorted((o.get("text") for o in _nb._people().values() if isinstance(o, dict)), key=str)
+check(isinstance(_nb, _WTS) and {"lab", "home", "rival", "elmhouse"} <= set(_nb.doors.values()) and _nb_out == ["Marill", "Woman"]
       and (_nb.w, _nb.h) == (32, 32) and len(_nb.signs) == 7,
-      "New Bark Town: SoulSilver's own 32 x 32 map, doors for Elm's Lab, your house and Silver's mom's, its signs (the three house signs two tiles tall), nobody outside")
+      f"New Bark Town: SoulSilver's own 32 x 32 map, doors for Elm's Lab, your house, Silver's mom's and Elm's house, its signs, the woman and Marill outside ({_nb_out})")
 _nb_rd = next(t for t, k in _nb.doors.items() if k == "rival")
 _nb._enter(_nb_rd)
 check(_nb.room == "rival" and len(_nb.people) == 1, f"Silver's mom's door: you walk into her house (SoulSilver's own room), the Nice Lady standing there {_nb.room, len(_nb.people)}")
@@ -904,14 +905,17 @@ check(_nb.npc_active and _nb.current_npc == "silver_mom", "...talk to her: the N
 _tap_through(_nb)
 _nb._leave("OUT:%d,%d" % _nb_rd)
 check(_nb.room is None and _nb.player == (_nb_rd[0], _nb_rd[1] + 1), f"...and back out below her door {_nb.player}")
-_nb._enter(next(t for t, k in _nb.doors.items() if k == "house"))
-check(_nb.toast == "The door is locked.", "Elm's house: locked")
+_nb_eh = next(t for t, k in _nb.doors.items() if k == "elmhouse")
+_nb._enter(_nb_eh)
+check(_nb.room == "elmhouse" and [o.get("text") for o in _nb.people.values() if isinstance(o, dict)] == ["Elm's wife"],
+      f"Elm's house: open, as in SoulSilver, his wife at home ({_nb.room})")
+_nb._leave("OUT:%d,%d" % _nb_eh)
 _nb_surf = story.inventory.pop("HM_SURF", None)
 _nb.player = _nb.anim_from = (28, 16)
 _nb.anim = 0
 _nb.step(1, 0)
-check(_nb.player == (28, 16) and _nb.rows[16][29] == "o" and len(getattr(_nb, "overheads", [])) >= 6,
-      "New Bark's bay is Surf water (no Surf: you stay on the shore); the tree tops and roof edges are an overhead layer")
+check(_nb.player == (28, 16) and _nb.rows[16][29] == "o" and any(o.get("kind") == "picture" and "ss_top/" in o.get("f", "") for o, *_r in getattr(_nb, "overheads", [])),
+      "New Bark's bay is Surf water (no Surf: you stay on the shore); the tree tops and roofs are SoulSilver's own top layer (Jordan 11-15: native look)")
 story.inventory["HM_SURF"] = 1
 _nb.player = _nb.anim_from = (30, 16)
 _nb.anim = 0
@@ -1005,6 +1009,29 @@ check(_cg_room == "fisher" and story.inventory.get("MYSTIC_WATER") == 1, "the fi
 _in_and_talk(_cg, "fisher")
 _tap_through(_cg)
 check(story.inventory.get("MYSTIC_WATER") == 1, "...once (after that he just talks)")
+# Jordan 11-15 ("recheck the centers ... they have multiple layers"): a Johto Center is SoulSilver's own two-level room drawn with the true
+# camera; the nurse stands on the game's own spot inside her counter, talked to across it, and both stairways climb to the back level
+_pc_door = next(d for d, k in _cg.doors.items() if k == "center")
+_cg._enter(_pc_door)
+_pc_in = _cg.room == "center" and _cg.player
+_pc_nurse = next(iter(_cg._people()), None)                       # (the nurse, wherever the room's crop puts her)
+_pc_front = (_pc_nurse[0], _pc_nurse[1] + 2) if _pc_nurse else None
+for _p in [_cg.player] + _cg._path(_pc_front):
+    _cg.player = _cg.anim_from = _p
+_cg.anim = 0
+_pc_mon = story.player_team[0] if story.player_team else None
+if _pc_mon:
+    _pc_mon.current_hp = 1
+_cg.step(0, -1)
+_tap_through(_cg)
+check(_pc_in and _pc_nurse and _cg.player == _pc_front and _cg.grid[_pc_nurse[1] + 1][_pc_nurse[0]] == "m"
+      and (not _pc_mon or _pc_mon.current_hp == _pc_mon.get_max_hp()),
+      f"Cherrygrove's Center: up to the counter {_cg.player}, talk to the nurse across it, healed")
+_pc_top = min(y for y, row in enumerate(_cg.grid) if any(_cg._open((x, y)) for x in range(len(row))))   # (the back level's first row)
+_pc_ends = [x for x in range(len(_cg.grid[_pc_top])) if _cg._open((x, _pc_top))]
+check(_pc_ends and bool(_cg._path((_pc_ends[0], _pc_top))) and bool(_cg._path((_pc_ends[-1], _pc_top))) and _pc_top < _pc_nurse[1] - 4,
+      "...the back level is reached by its stairs (left ramp and right steps, as the game)")
+_cg._go(None, "OUT:%d,%d" % _pc_door); g.walk_town_room = None
 # a save loaded straight into a walked town (Jordan, 11-07: it went back to the title): nothing to come from
 _had = story.__dict__.pop("last_area_key", None)
 g.walk_town_pos = None
@@ -1044,7 +1071,8 @@ _r31 = kanto("JOHTO_ROUTE_31", came="JOHTO_ROUTE_30")
 _f31 = _r31.run.floor
 check((_f31.w, _f31.h) == (64, 32) and _f31.exits.get((53, 13)) == "DARK_CAVE" and _f31.exits.get((6, 13)) == "VIOLET_CITY" and _f31.exits.get((6, 14)) == "VIOLET_CITY"
       and _r31.run.player[1] >= 29, f"Route 31: SoulSilver's own 64 x 32; in from Route 30 (south) at {_r31.run.player}; the Dark Cave mouth in the east cliff, the gatehouse's two-tile doorway to Violet")
-check(not _r31._try_exit("DARK_CAVE") and type(g.current_state).__name__ != "AreaTransitionState", "...and it stays shut without Flash")
+_dc_open = _r31._try_exit("DARK_CAVE") or type(g.current_state).__name__ == "AreaTransitionState"
+check(bool(_dc_open), "...and in you go without Flash, as in SoulSilver (it's dark until you have it, 11-15)")
 if _had_flash:
     story.inventory["HM_FLASH"] = _had_flash
 _r30 = kanto("JOHTO_ROUTE_30", came="CHERRYGROVE_CITY")
@@ -1467,7 +1495,7 @@ for _k in ("NEW_BARK_TOWN", "CHERRYGROVE_CITY", "VIOLET_CITY", "AZALEA_TOWN", "C
                 _bad.append((_d, "stairs to", _nxt)); break
         _t._go(_name, "OUT:" + _d)  # (back to the first room, at its mat)
         _t._leave("OUT:" + _d)
-        if _t.room is not None or _t.player not in ((_door[0], _door[1] + 1), (_door[0], _door[1] - 1)):  # (below the door; above it for a door on its building's far side: Olivine's harbour)
+        if _t.room is not None or _t.player not in ((_door[0], _door[1] + 1), (_door[0], _door[1] - 1), (_door[0] - 1, _door[1] + 1), (_door[0] + 1, _door[1] + 1)):  # (below the door; above it for a door on its building's far side: Olivine's harbour; beside the tile below when someone stands there: Azalea's Rocket by the Gym, SoulSilver's spot)
             _bad.append((_d, "out at", _t.player))
         g.walk_town_room = None
     _jr[_k] = (_n, _gym, _bad)

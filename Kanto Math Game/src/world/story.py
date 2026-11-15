@@ -302,6 +302,14 @@ class StoryManager:
         """Conditions shared by town and route menus. None when the condition isn't one of these."""
         if not isinstance(condition, str):
             return None
+        if condition.startswith("start_region:"):  # (a game that began in this region, or moved there as home: Johto's HGSS opening plays only then)
+            want = condition.split(":", 1)[1].upper()
+            return str(getattr(self, "starting_region", "")).upper() == want or bool(self.story_flags.get(f"moved_to_{want.lower()}"))
+        if condition.startswith("weekday:"):  # (the real clock's day: "weekday:tue", "weekday:fri" - HGSS's Week Siblings, Friday's Lapras; Jordan 11-15)
+            import datetime
+            days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+            want = [d.strip()[:3].lower() for d in condition.split(":", 1)[1].split(",")]
+            return days[datetime.date.today().weekday()] in want
         if condition.startswith("caught_kanto:"):  # (kinds of Kanto Pokemon caught: Route 2's aide wants ten before HM Flash, FireRed)
             return self.kanto_caught_count() >= int(condition.split(":", 1)[1])
         if condition.startswith("party_has:"):

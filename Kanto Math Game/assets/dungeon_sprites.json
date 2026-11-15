@@ -5421,6 +5421,411 @@
     },
     "BERRY_FOREST:MAX ELIXIR": {
       "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_30:POTION": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_30:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_31:POTION": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_31:POTION ": {
+      "item": "POKE_BALL"
+    },
+    "VIOLET_CITY:POKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "VIOLET_CITY:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SPROUT_TOWER:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "SPROUT_TOWER:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SPROUT_TOWER:X ACCURACY": {
+      "item": "POKE_BALL"
+    },
+    "SPROUT_TOWER:POTION": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:POTION": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:DIRE HIT": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:X SPEED": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_32:LEPPA BERRY": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_32:REPEL": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_32:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:POTION": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:SHELL BELL": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:X ATTACK": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:POTION": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:X DEFENSE": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:AWAKENING": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "SLOWPOKE_WELL:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SLOWPOKE_WELL:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "ILEX_FOREST:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "ILEX_FOREST:X ATTACK": {
+      "item": "POKE_BALL"
+    },
+    "ILEX_FOREST:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_34:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_34:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_32:TM50": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:TM48": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:TM94": {
+      "item": "POKE_BALL"
+    },
+    "ILEX_FOREST:TM33": {
+      "item": "POKE_BALL"
+    },
+    "NEW_BARK_TOWN:Woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "JOHTO_ROUTE_29:Youngster": {
+      "sheet": "hg_gsboy2.png"
+    },
+    "JOHTO_ROUTE_29:Big man": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "JOHTO_ROUTE_29:Man": {
+      "sheet": "hg_gsman1.png"
+    },
+    "JOHTO_ROUTE_29:Woman": {
+      "sheet": "hg_gswoman2.png"
+    },
+    "JOHTO_ROUTE_29:Tuscany": {
+      "sheet": "hg_gswoman2.png"
+    },
+    "CHERRYGROVE_CITY:Woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "JOHTO_ROUTE_30:Man": {
+      "sheet": "hg_gsman1.png"
+    },
+    "JOHTO_ROUTE_30:Girl": {
+      "sheet": "hg_gsgirl2.png"
+    },
+    "JOHTO_ROUTE_30:Boy": {
+      "sheet": "hg_gsboy3.png"
+    },
+    "JOHTO_ROUTE_31:Man": {
+      "sheet": "hg_gsman1.png"
+    },
+    "JOHTO_ROUTE_31:Sleepy man": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "JOHTO_ROUTE_31:Boy": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "VIOLET_CITY:Girl": {
+      "sheet": "hg_gsgirl2.png"
+    },
+    "VIOLET_CITY:Man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "VIOLET_CITY:Old woman": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "VIOLET_CITY:Boy": {
+      "sheet": "hg_gsboy2.png"
+    },
+    "VIOLET_CITY:Woman": {
+      "sheet": "hg_gswoman3.png"
+    },
+    "VIOLET_CITY:Little boy": {
+      "sheet": "hg_gsbabyboy1.png"
+    },
+    "SPROUT_TOWER:Old woman": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "SPROUT_TOWER:Woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "SPROUT_TOWER:Monk": {
+      "sheet": "hg_bozu.png"
+    },
+    "SPROUT_TOWER:Monk ": {
+      "sheet": "hg_bozu.png"
+    },
+    "DARK_CAVE:Man in sunglasses": {
+      "sheet": "hg_sunglasses.png"
+    },
+    "JOHTO_ROUTE_32:Loud man": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "JOHTO_ROUTE_32:Old man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "JOHTO_ROUTE_32:Shady man": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "JOHTO_ROUTE_32:Frieda": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "JOHTO_ROUTE_33:Girl": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "AZALEA_TOWN:Rocket Grunt": {
+      "sheet": "hg_rocketm.png"
+    },
+    "AZALEA_TOWN:Rocket on guard": {
+      "sheet": "hg_rocketm.png"
+    },
+    "AZALEA_TOWN:Old man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "AZALEA_TOWN:Old man ": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "AZALEA_TOWN:Woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "AZALEA_TOWN:Man": {
+      "sheet": "hg_gsman1.png"
+    },
+    "AZALEA_TOWN:Man ": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "AZALEA_TOWN:Man  ": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "SLOWPOKE_WELL:Researcher": {
+      "sheet": "hg_gsassistantm.png"
+    },
+    "ILEX_FOREST:Tree shaker": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "ILEX_FOREST:Charcoal apprentice": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "ILEX_FOREST:Charcoal maker": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "JOHTO_ROUTE_29:GREEN APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_g.png"
+    },
+    "JOHTO_ROUTE_30:GREEN APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_g.png"
+    },
+    "JOHTO_ROUTE_30:PINK APRICORN TREE ": {
+      "pic": "tiles/ss/ow_bonguri_p.png"
+    },
+    "JOHTO_ROUTE_31:BLACK APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_bk.png"
+    },
+    "VIOLET_CITY:YELLOW APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_y.png"
+    },
+    "JOHTO_ROUTE_33:PINK APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_p.png"
+    },
+    "JOHTO_ROUTE_33:BLACK APRICORN TREE ": {
+      "pic": "tiles/ss/ow_bonguri_bk.png"
+    },
+    "AZALEA_TOWN:WHITE APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_w.png"
+    },
+    "NEW_BARK_TOWN:Visit Elm's Lab": {
+      "sheet": "hg_doctor.png"
+    },
+    "NEW_BARK_TOWN:Visit Mom": {
+      "sheet": "hg_gsmama.png"
+    },
+    "NEW_BARK_TOWN:Talk to Nice Lady": {
+      "sheet": "hg_gswoman3.png"
+    },
+    "NEW_BARK_TOWN:Elm's wife": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "CHERRYGROVE_CITY:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "CHERRYGROVE_CITY:Shop": {
+      "sheet": "hg_gsman3.png"
+    },
+    "CHERRYGROVE_CITY:Guide Gent": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "CHERRYGROVE_CITY:Fisherman": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "CHERRYGROVE_CITY:Boy": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "CHERRYGROVE_CITY:Girl": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "JOHTO_ROUTE_30:Apricorn man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "VIOLET_CITY:Gym": {
+      "sheet": "hg_gsleader1.png"
+    },
+    "VIOLET_CITY:Earl": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "VIOLET_CITY:Student": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "VIOLET_CITY:Student ": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "VIOLET_CITY:Kid": {
+      "sheet": "hg_gsdsboy.png"
+    },
+    "VIOLET_CITY:Kid ": {
+      "sheet": "hg_gsdsboy.png"
+    },
+    "VIOLET_CITY:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "VIOLET_CITY:Mother": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "VIOLET_CITY:Girl ": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "VIOLET_CITY:Kyle": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "VIOLET_CITY:Shop": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "JOHTO_ROUTE_32:POKEMON CENTER": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "JOHTO_ROUTE_32:Fishing guru": {
+      "sheet": "hg_fishing.png"
+    },
+    "JOHTO_ROUTE_32:Woman": {
+      "sheet": "hg_gswoman3.png"
+    },
+    "JOHTO_ROUTE_32:Apricorn fan": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "AZALEA_TOWN:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "AZALEA_TOWN:Charcoal maker": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "AZALEA_TOWN:Apprentice": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "AZALEA_TOWN:Shop": {
+      "sheet": "hg_gsman3.png"
+    },
+    "AZALEA_TOWN:Visit Kurt": {
+      "sheet": "hg_gantetsu.png"
+    },
+    "ILEX_FOREST:Woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "ILEX_FOREST:Girl": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "NEW_BARK_TOWN:Red-haired boy": {
+      "sheet": "hg_gsrivel.png"
+    },
+    "JOHTO_ROUTE_30:Battling youngster": {
+      "sheet": "hg_gsboy2.png"
+    },
+    "SLOWPOKE_WELL:Kurt": {
+      "sheet": "hg_gantetsu.png"
+    },
+    "NEW_BARK_TOWN:Elm's aide": {
+      "sheet": "hg_gsassistantm.png"
+    },
+    "VIOLET_CITY:Elm's aide": {
+      "sheet": "hg_gsassistantm.png"
+    },
+    "VIOLET_CITY:Primo": {
+      "sheet": "hg_instructor.png"
+    },
+    "JOHTO_ROUTE_31:Gate guard": {
+      "sheet": "hg_counterm.png"
+    },
+    "VIOLET_CITY:Gate guard": {
+      "sheet": "hg_counterm.png"
+    },
+    "VIOLET_CITY:Boy ": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "JOHTO_ROUTE_32:Gate guard": {
+      "sheet": "hg_counterm.png"
+    },
+    "JOHTO_ROUTE_32:Boy": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "JOHTO_ROUTE_32:Man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "AZALEA_TOWN:Gate guard": {
+      "sheet": "hg_counterm.png"
+    },
+    "AZALEA_TOWN:Old woman ": {
+      "sheet": "hg_gsoldwoman1.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -5569,5 +5974,35 @@
     "blue.png": "fr_72.png",
     "rival.png": "fr_72.png",
     "professor_oak.png": "fr_71.png"
+  },
+  "trainers_JOHTO": {
+    "acetrainer_f.png": "hg_gswoman3.png",
+    "acetrainer_m.png": "hg_gsman3.png",
+    "ariana.png": "hg_rkanbuw.png",
+    "beauty.png": "hg_gswoman2.png",
+    "bird_keeper.png": "hg_gsman2.png",
+    "blackbelt.png": "hg_gsfighter.png",
+    "bug_catcher.png": "hg_gsboy3.png",
+    "camper.png": "hg_campboy.png",
+    "firebreather.png": "hg_fire.png",
+    "fisherman.png": "hg_fishing.png",
+    "gentleman.png": "hg_gsgentleman.png",
+    "hiker.png": "hg_mount.png",
+    "lass.png": "hg_picnicgirl.png",
+    "officer.png": "hg_policeman.png",
+    "picknicker.png": "hg_picnicgirl.png",
+    "pokefan.png": "hg_gsmiddleman1.png",
+    "pokefan_f.png": "hg_middlewoman1.png",
+    "pokefan_m.png": "hg_gsmiddleman1.png",
+    "pokemaniac.png": "hg_mania.png",
+    "psychic.png": "hg_mystery.png",
+    "rocket_grunt_m.png": "hg_rocketm.png",
+    "sage.png": "hg_bozu.png",
+    "sage2.png": "hg_bozu.png",
+    "sailor.png": "hg_seaman.png",
+    "school_kid_m.png": "hg_gsboy1.png",
+    "supernerd.png": "hg_mania.png",
+    "twins.png": "hg_gsbabygirl1.png",
+    "youngster.png": "hg_gsboy2.png"
   }
 }

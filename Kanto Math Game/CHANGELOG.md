@@ -1154,3 +1154,4 @@ This covers everything since "any-region starts, playable Gen 3–9 regions". Th
 ### Long-term add-ins
 - An Options page: music and sound volume, text speed, big text.
 - The Sinnoh Underground.
+- A DS-style two-screen layout, as an option for the DS-era regions (parked 11-15; the single screen stays for now).

@@ -120,7 +120,7 @@ def travel_dex(game, region):
         for k, a in data.get("STORY_PROGRESSION", {}).items():
             if not isinstance(a, dict) or str(a.get("region") or "").upper() != region:
                 continue
-            pools = [a.get(n) for n in ("wild_pool_percentages", "day_pool_percentages", "night_pool_percentages")]
+            pools = [a.get(n) for n in ("wild_pool_percentages", "morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")]
             pools += list((a.get("zone_pools") or {}).values())
             pools += [f"{k}_{r}_PERCENTAGES" for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD")]
             for pool in pools:
@@ -757,7 +757,7 @@ class DexEntryState(GameState):
         for key, a in prog.items():
             if not isinstance(a, dict) or a.get("area_type") == "town" and not a.get("wild_pool_percentages"):
                 continue
-            pools = [a.get(k) for k in ("wild_pool_percentages", "day_pool_percentages", "night_pool_percentages")]
+            pools = [a.get(k) for k in ("wild_pool_percentages", "morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")]
             pools += list((a.get("zone_pools") or {}).values())
             pools += [f"{key}_{r}_PERCENTAGES" for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD")]
             if any(p and want & set((data.get(p) or {}).keys()) for p in pools):

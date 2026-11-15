@@ -146,12 +146,46 @@ class JohtoTown:
         else:
             self.npc_sprite = self.game.assets.get_trainer_image("oldman.png")
 
-        flags = self.game.story_manager.story_flags
-        if flags.get("slowpoke_well_cleared"):
-            msg = self.game.assets.get_text("kurt_reward")
-            self.game.story_manager.balls_left += 5
-        else:
+        story = self.game.story_manager
+        flags = story.story_flags
+        import datetime as _dt
+        _today = _dt.date.today().isoformat()
+        if flags.get("kurt_has_gs_ball") and flags.get("kurt_gs_ball_day") != _today:   # (Crystal: a day's study, then the GS Ball back)
+            flags.pop("kurt_has_gs_ball", None)
+            flags["kurt_examined_gs_ball"] = True
+            story.inventory["GS_BALL"] = story.inventory.get("GS_BALL", 0) + 1
+            msg = ["Kurt: Ah, there you are. I've studied that GS Ball all night.",
+                   "Kurt: It can't be opened, but it's calling to the shrine in Ilex Forest. Take it there and see what happens.",
+                   "You got the GS BALL back!"]
+        elif flags.get("kurt_has_gs_ball"):
+            msg = ["Kurt: I'm still studying the GS Ball. Come back tomorrow!"]
+        elif story.inventory.get("GS_BALL", 0) > 0 and not flags.get("kurt_examined_gs_ball"):
+            story.inventory["GS_BALL"] -= 1
+            if story.inventory["GS_BALL"] <= 0:
+                story.inventory.pop("GS_BALL")
+            flags["kurt_has_gs_ball"] = True
+            flags["kurt_gs_ball_day"] = _today
+            msg = ["Kurt: What's that? A GS Ball? I've never seen one like it!",
+                   "Kurt: Let me have a good look at it. Come back tomorrow."]
+        elif not flags.get("slowpoke_well_cleared"):
             msg = self.game.assets.get_text("kurt_intro")
+        elif not flags.get("got_fast_ball_kurt"):   # (once: his thanks for the Well, and the Fast Ball he made; HGSS)
+            flags["got_fast_ball_kurt"] = True
+            story.balls_left += 5
+            story.inventory["FAST_BALL"] = story.inventory.get("FAST_BALL", 0) + 1
+            msg = list(self.game.assets.get_text("kurt_reward")) + [
+                "Kurt: And take this. It's a Fast Ball I made from a White Apricorn.",
+                "Bring me Apricorns from the trees around Johto, and I'll make you balls from them!"]
+        else:   # (Apricorns into his balls, on the spot: Jordan 11-15, simplified)
+            from src.pokemon.items import APRICORN_BALL
+            made = []
+            for apr, ball in APRICORN_BALL.items():
+                n = story.inventory.pop(apr, 0)
+                if n:
+                    story.inventory[ball] = story.inventory.get(ball, 0) + n
+                    made.append(f"{n} {ball.replace('_', ' ').title()}{'s' if n > 1 else ''}")
+            msg = (["Kurt: Apricorns, eh? Let's see what we've got...", "Kurt: There! " + ", ".join(made) + ". Use them well!"] if made else
+                   ["Kurt: Bring me Apricorns and I'll make them into balls.", "Each colour of Apricorn makes a different kind of ball!"])
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
     def visit_bill_johto(self):
@@ -263,9 +297,14 @@ class JohtoTown:
                 "Prof. Elm is the expert on Pokémon evolution and life cycles.",
                 "Could you take this to him in New Bark Town?",
                 "You received the MYSTERY EGG!",
+                "Professor Oak: Hm? So you're the trainer Elm sent! I'm Oak. I was visiting my old friend here.",
+                "Professor Oak: You and your Pokemon look like a fine team. Here, take this Pokedex: record every Pokemon you meet!",
+                "You received the POKEDEX!",
+                "Professor Oak: I'll give you my number too. Now I must hurry: I'm on the radio in Goldenrod soon!",
                 "It's safe in your BAG. Hurry back to the lab!"
             ]
             flags["met_mr_pokemon"] = True
+            flags["received_pokedex_johto"] = True   # (HGSS: Oak is at Mr. Pokemon's, and gives you the Pokedex)
             self.game.story_manager.inventory["MYSTERY_EGG"] = 1
             self.game.data.save()
         else:

@@ -372,7 +372,7 @@ class RouteMenu:
             return not self._check_route_condition(condition[4:], trainers_left, item)
 
         if isinstance(condition, str) and condition.startswith("has_item:"):
-            return self.game.story_manager.inventory.get(condition[9:], 0) > 0
+            return __import__("src.world.hms", fromlist=["usable"]).usable(self.game.story_manager, condition[9:])
         if isinstance(condition, str) and condition.replace(" ", "").startswith("badges_less:"):
             # "badges_less: N": fewer than N badges in this region (Route 22's early rival)
             story = self.game.story_manager

@@ -122,6 +122,13 @@ class TownStory:
             r_name = getattr(self.game, "rival_name", "SILVER")
             dialogue = self.game.assets.get_text("johto_mom_neighbor", default=[f"I'm {r_name}'s Mom.", "He's always out training!"])
 
+        _st = self.game.story_manager   # (HGSS: Mom gives you the Pokegear once you have your first Pokemon; Jordan 11-15: the phone)
+        if (not is_silver_mom and not is_neighbor and "NEW_BARK" in self.area_key and _st.story_flags.get("received_starter_johto")
+                and not _st.inventory.get("POKEGEAR")):
+            _st.inventory["POKEGEAR"] = 1
+            dialogue = list(_resolve_lines(self.game, dialogue)) + [
+                "Oh, and take this! It's a Pokegear. It has a phone, so trainers you meet can call you, and so can I!",
+                "You received the POKEGEAR!"]
         self.npc_dialogue = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(self.game),
             _resolve_lines(self.game, dialogue),
@@ -297,20 +304,53 @@ class TownStory:
         story = self.game.story_manager
         region = getattr(story, "starting_region", "KANTO")
 
+        if (story.get_current_region() == "JOHTO" and (getattr(story, "starting_region", "") == "JOHTO" or story.story_flags.get("moved_to_johto")) and story.get_region_start("JOHTO").get("starter_in_town")
+                and not story.story_flags.get("received_starter_johto")):   # (HGSS: Elm gives you your first Pokemon in his Lab)
+            msg = ["Professor Elm: There you are! I need a favour.",
+                   "Professor Elm: A friend of mine, Mr. Pokemon, keeps finding odd things. He just emailed me about another discovery!",
+                   "Professor Elm: I can't leave my research, so could you go and see him for me? He lives past Cherrygrove City, on Route 30.",
+                   "Professor Elm: You'll need a Pokemon for the trip. Pick one of these three, and raise it well!"]
+
+            def johto_first_starter():
+                from src.states.menus import StarterSelectionState
+                if getattr(self, "room", None):   # (back in the Lab after choosing, where you stood)
+                    self.game.walk_town_pos = (self.area_key, tuple(self.player), (0, 1))
+                    self.game.walk_town_room = (self.area_key, self.room)
+                self.start_npc_exit(lambda: self.game.change_state(StarterSelectionState(self.game, starter_ids=[152, 155, 158], region="JOHTO")))
+            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=johto_first_starter)
+            return
+
         if story.inventory.get("MYSTERY_EGG", 0) > 0 and not story.story_flags.get("elm_received_egg"):
             msg = [
                 "Professor Elm: Oh! This is the Egg Mr. Pokémon found!",
                 "It's certainly a mysterious discovery for the Johto region.",
-                "I'll need to study this more. Please, keep it with you!",
-                "It may reveal its secrets as you grow as a trainer.",
+                "I'll need to study this more. Leave it with me for now.",
+                "Once you've earned a Gym Badge, my aide will bring it to you. It may have something to show us by then!",
                 "Take these Poké Balls for your help with my research.",
                 "You received 10 POKé BALLS!",
                 "The Gym Leader in Violet City, Falkner, can help you grow further."
             ]
             story.story_flags["elm_received_egg"] = True
+            story.inventory.pop("MYSTERY_EGG", None)   # (HGSS: Elm keeps it; his aide hands it back in Violet City's Pokemon Center after the Zephyr Badge)
             story.balls_left += 10
             callback = self.end_npc_interaction
             self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=callback)
+            return
+
+        _jb = len(story.badges.get("JOHTO", []))   # (HGSS's later gifts from Elm: the Everstone for showing him Togepi, the Master Ball for 8 Badges)
+        _gift = None
+        if any(p and p.id == 175 and not getattr(p, "is_egg", False) for p in story.player_team) and not story.story_flags.get("got_everstone_elm"):
+            story.story_flags["got_everstone_elm"] = True
+            story.inventory["EVERSTONE"] = story.inventory.get("EVERSTONE", 0) + 1
+            _gift = ["Professor Elm: A Togepi! So that's what was inside the Egg!", "Togepi seem to grow happier around kind trainers. Thank you!",
+                     "Here, take this Everstone. A Pokemon holding it won't evolve.", "You received an EVERSTONE!"]
+        elif _jb >= 8 and not story.story_flags.get("got_master_ball_elm"):
+            story.story_flags["got_master_ball_elm"] = True
+            story.inventory["MASTER_BALL"] = story.inventory.get("MASTER_BALL", 0) + 1
+            _gift = ["Professor Elm: All eight Johto Badges! You've grown so much.", "Take this. It's the best ball there is: the Master Ball!",
+                     "You received a MASTER BALL!"]
+        if _gift:
+            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), _gift, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
             return
 
         if region == "KANTO" and story.story_flags.get("beat_champion") and not story.story_flags.get("unlocked_national_dex"):

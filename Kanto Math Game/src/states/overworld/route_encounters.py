@@ -259,6 +259,9 @@ class RouteEncounters:
             trainer_idx = available[0]
 
         trainer_info = _cast_trainer(self.game, trainer_pool[trainer_idx])
+        if not info:   # (a registered phone trainer met again: its stronger team from the games; src/world/phone.py)
+            from src.world import phone as _phone
+            trainer_info = _phone.rematch_info(self.game, self.game.story_manager.current_area_key, trainer_idx, trainer_info)
         trainer_class = trainer_info.get("class", "YOUNGSTER")
         # Names like "{rival_name}" and text keys are filled in, as story battles do.
         trainer_name = _fill_names(self.game, trainer_info.get("name"))
@@ -382,6 +385,11 @@ class RouteEncounters:
             return self.game.loader.area_data[zone_key]
         hour = datetime.datetime.now().hour
         is_night = hour < 6 or hour >= 20
+        morning_key = area_data.get("morning_pool_percentages")   # (HGSS's morning, 4:00 to 9:59: Johto, 11-15)
+        if morning_key and 4 <= hour < 10:
+            pool = self.game.loader.area_data.get(morning_key, {})
+            if pool:
+                return pool
         night_key = area_data.get("night_pool_percentages")
         day_key = area_data.get("day_pool_percentages")
         if is_night and night_key:

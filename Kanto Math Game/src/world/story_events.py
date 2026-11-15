@@ -39,6 +39,23 @@ def _t(base, **kw):
 
 
 EVENTS = {
+    # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
+    "johto_elm_starter": {"starter": "JOHTO"},   # (no lines of its own: the Lab scene says them, then the starter screen opens)
+    "johto_lyra_balls": {
+        "lines": ["Lyra: Watch, I'll show you how to catch one! First you weaken it in battle...",
+                  "Lyra: ...then you throw a Poke Ball. See? Easy! Here, take some of mine."],
+        "gift_item": {"balls": 5}, "flag": "johto_lyra_lesson",
+        "done": ["Lyra: Catch lots of Pokemon! Your Pokedex will thank you."]},
+    "johto_gent_map_card": {
+        "lines": ["Guide Gent: And that's the tour! Oh, one more thing: let me load the Town Map onto your Pokegear.",
+                  "Guide Gent: Now you'll always know where you are. Off you go!"],
+        "gift_item": {"MAP_CARD": 1}, "flag": "got_map_card_johto",
+        "done": ["Guide Gent: Your Pokegear's Town Map shows all of Johto. Enjoy the trip!"]},
+    "johto_elm_number": {
+        "lines": ["Professor Elm: Phew, caught you! I forgot to give you my phone number.",
+                  "Professor Elm: Call me if anything comes up. Good luck!",
+                  "Professor Elm was registered in the phone!"],
+        "flag": "johto_elm_number"},
     # ---------------- Kanto: after the rival's first battle in the Lab, Oak sends you off with Potions (Jordan, 11-15:
     # "to assist getting to Viridian")
     "oak_potions": {

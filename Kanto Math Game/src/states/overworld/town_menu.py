@@ -124,7 +124,8 @@ class TownMenu:
             return story.has_badge(condition[10:])
 
         if condition.startswith("has_item:"):
-            return story.inventory.get(condition[9:], 0) > 0
+            from src.world.hms import usable
+            return usable(story, condition[9:])
         special = self.game.story_manager.special_condition(condition)
         if special is not None:  # party_has:493, all_unown_registered
             return special
