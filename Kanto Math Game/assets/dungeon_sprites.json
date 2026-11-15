@@ -4749,6 +4749,51 @@
     },
     "INDIGO_PLATEAU:{rival_name}": {
       "sheet": "@rival"
+    },
+    "POWER_PLANT:THUNDER STONE": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:CHALLENGE ZAPDOS": {
+      "sheet": "fr_136.png"
+    },
+    "POWER_PLANT:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:TM25": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:TM110": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:FULL RESTORE ": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:ULTRA BALL ": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:CHALLENGE MEWTWO": {
+      "sheet": "fr_139.png"
     }
   },
   "townsperson": "NPC 17.png",

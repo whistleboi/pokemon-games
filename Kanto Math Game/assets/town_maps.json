@@ -28797,13 +28797,12 @@
   ]
  },
  "POWER_PLANT": {
-  "theme": "tunnel",
   "art": [
    "ccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccc",
    "c...ccccc.c...ccccccc............cccccccccccccccc",
-   "c......cc.c......cccc............cccccccccccc.ccc",
+   "c......cc.c......cccc............ccccccccccccNccc",
    "c.................ccc............ccc..ccccccc..cc",
    "c.................ccccc..cccccc..cc...cccccc...cc",
    "c.........cccc..ccccccc..cccccc..cccc.cccc.....cc",
@@ -28821,12 +28820,12 @@
    "cc.................cccccccccccccccccccccccccc...c",
    "ccccc.....cccc......ccccccccccccccccccccccccc...c",
    "ccccc.....cccc......cccc....................c...c",
-   "c.........cc...........ccc.ccccccccccccc....c...c",
+   "c.........cc...........cccNcccccccccccccN...c...c",
    "c.........c............ccccccccccccccccccc..c...c",
    "c...ccccccc...ccccccc.......................c...c",
    "c...ccccccc...ccccccc....cccccccccccccccc...c...c",
    "c......cccc.........c.......................c...c",
-   "c.......ccc.........c.......................c...c",
+   "c......Nccc.........c.......................c...c",
    "c.......ccc.........ccccccccccccccccccccccccc...c",
    "cccccc..ccccccccc...ccccccccccccccccccccccccc..cc",
    "cccccc..ccccccccc...c........cccc......c.......cc",
@@ -28836,7 +28835,7 @@
    "ccc.....cccccc..cccccccccccccccccccc.c.cccccccccc",
    "ccc.....cccccc..cccccccccccccccccccc...cccccccccc",
    "cc.N...N.cccc......cccc.....ccccc...........ccccc",
-   "c.........cc......cccc......ccccc.cc..ccc...cc..c",
+   "c.........cc......cccc......ccccc.cc..ccc...ccN.c",
    "c....v....c.....................c...............c",
    "ccccvcvcccccccccccccccccccccccccccccccccccccccccc"
   ],
@@ -28844,10 +28843,72 @@
    "v": "KANTO_ROUTE_10"
   },
   "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/1_95.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "people": [
+   "THUNDER STONE",
    "CHALLENGE ZAPDOS",
+   "ELIXIR",
+   "TM25",
+   "MAX POTION",
    "TALK TO THE MANAGER",
-   "RETURN THE MACHINE PART"
+   "RETURN THE MACHINE PART",
+   "TM110"
+  ],
+  "moves": {
+   "5,11": {
+    "m": "face",
+    "d": "d"
+   },
+   "7,27": {
+    "m": "face",
+    "d": "d"
+   },
+   "40,22": {
+    "m": "face",
+    "d": "d"
+   },
+   "46,37": {
+    "m": "face",
+    "d": "d"
+   },
+   "45,4": {
+    "m": "face",
+    "d": "d"
+   },
+   "26,22": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "theme": "tunnel",
+  "hidden": {
+   "29,16": "MAX_ELIXIR",
+   "8,12": "THUNDER_STONE"
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/1_95.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     49,
+     40
+    ]
+   }
   ]
  },
  "KANTO_ROUTE_23": {
@@ -30188,106 +30249,329 @@
   ]
  },
  "CERULEAN_CAVE": {
-  "theme": "cave",
-  "descend": true,
-  "floor_names": [
-   "2F",
-   "1F",
-   "B1F"
-  ],
-  "buildings": {},
   "floors": [
    {
     "art": [
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccrrrrrrrcccccccc",
-     "c....cccc..rr.....r............ccccc",
-     "crrr......+r..rrr.r.rrrrrrrrr.+ccccc",
-     "c..rrrr.rrrr.rr.r.r.........rrrccccc",
-     "c.+...r.........rrrrrrrrrrr....ccccc",
-     "crrr.rrrrrrrrrrrr.........rrrr.ccccc",
-     "c.r...............rrrrrrr....r.ccccc",
-     "r.rrrrrrrrrrrrrrrrr..rr+rrr.rr.ccccc",
-     "r.r....r............+r...r...r.rcccc",
-     "r.r.rr.r.rrrrr.rrrrrrr.rrrrr.r.rcccc",
-     "r.r..r.r.....r.......r.....r.r.rcccc",
-     "r.r..r.rrrrr.rrrrrrr.rrrrr.r.r.rcccc",
-     "r.r.+r.r.....r.....r.....r.r.r.rcccc",
-     "r.rrrr.r.rrrrr.rrr.r.r.r.r.r.r.rcccc",
-     "c.r....r.........r.r.r.r.r.r.r.ccccc",
-     "c.r.rrrr.rrrrrrrrr.r.r.r.rrr.r.ccccc",
-     "c.r....r.....r.....r.r.r.....r.ccccc",
-     "c.rrrrrrrrrrrr.rrrrr.r.rrrrrrr.ccccc",
-     "c..............r.....r.........ccccc",
-     "ccccrrrrrrccccccccccccrrrrrrrccccccc",
-     "cccccccccccccccccccccccccccccccccccc"
-    ],
-    "exits": {},
-    "parts": true
-   },
-   {
-    "art": [
-     "cccccccccccccccccccccccccccccccccccccc",
-     "ccccccc...rr.ccccccccroooooooooc..rr..",
-     "ccccccc...-..cccccccrroooooooooc..-...",
-     "crrcccc..rr..coooooooooooooooooc......",
-     "cr-cccc..rr..cooooooooooo...ooocc.cccc",
-     "cr.c.........cooooooooooc...cooooooooo",
-     "c..c....cc...coooo..........cooooooooo",
-     "c+.c....cc...coooc..........cooooooooo",
-     "c..c....cc...coooc.................ooo",
-     "crbc....cc.crroooc...cccccc...r....coo",
-     "cc......cooorroooc...cc.rccc..-....coo",
-     "cc......cooorrooocc.ccc.-.cc.......coo",
-     "cc......coooooooor....c...cc...cccccoo",
-     "cc......coooooooor..r.cc.ccc...crr....",
-     "cc..rr..coooooooor.........c...c......",
-     "cc..r-..coooo....cr......rrc...c.....c",
-     "cc......c...c....crrr...rrrc...c...rrc",
-     "cc......c...c..................c...ccc",
-     "ccccc.ccc...cc.c...............c...ccc",
-     "ccccc..........c...............c...ccc",
-     "ccccc..........c...............c...ccc",
-     "ccccc..........ccccccccccccccccc...ccc",
-     "cccccccccccccccccccccccccccccccccvcccc"
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "ccccccc...cc.cccccccccoooooooooc..cc..cc",
+     "ccccccc...1..cccccccccoooooooooc..1...cc",
+     "cccccccN.cc..coooooooooooooooooc......cc",
+     "cc1cccc..cc..cooooooooooc...coocc.cccccc",
+     "cc.c.........coooooooooocN..cooooooooooc",
+     "c..c....cc...coooc..........cooooooooooc",
+     "c1.c....cc...coooc..........cooooooooooc",
+     "c..c....cc...coooc.................coooc",
+     "cccc....cc.cccoooc...cccccc...c....coooc",
+     "cc.c....coooccoooc...cc.cccc..1....coooc",
+     "cc......coooccooocc.ccc.1.cc.......coooc",
+     "cc......cooooooooc....c...cc...cccccoooc",
+     "cc......cooooooooc..c.cc.ccc...ccc.....c",
+     "cc..cc..cooooooooc.........c...c.......c",
+     "cc..c1..coooc....cc......ccc...c.....ccc",
+     "cc......c..Nc....cccc...cccc...c...ccccc",
+     "cc......c...c..................c...ccccc",
+     "ccccc.ccc0..cc.c...............c...ccccc",
+     "ccccc..........c...............c...ccccc",
+     "ccccc0........0c...............c...ccccc",
+     "ccccc..0...0.0.ccccccccccccccccc.n.ccccc",
+     "cccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "CERULEAN_CITY"
-    }
+     "n": "CERULEAN_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_72.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "NUGGET",
+     "MAX ELIXIR",
+     "FULL RESTORE"
+    ],
+    "links": {
+     "34,2": [
+      1,
+      33,
+      4
+     ],
+     "1,7": [
+      2,
+      5,
+      7
+     ],
+     "10,2": [
+      1,
+      13,
+      4
+     ],
+     "5,15": [
+      1,
+      7,
+      14
+     ],
+     "30,10": [
+      1,
+      26,
+      9
+     ],
+     "24,11": [
+      1,
+      23,
+      10
+     ],
+     "2,4": [
+      1,
+      5,
+      6
+     ]
+    },
+    "moves": {
+     "7,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,16": {
+      "m": "face",
+      "d": "d"
+     },
+     "25,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "hidden": {
+     "12,2": "ULTRA_BALL"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_72.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       40,
+       23
+      ]
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccccc",
-     "cc..............cr.....ccccccccccrr....c",
-     "cc..............c........ccccccc.......c",
-     "cc..............c..cccc.....ccccccc....c",
-     "cc......ccccc.ccc..cccc.....ccccccc....c",
-     "cc......c..........cccccccc.ccccccc.r..c",
-     "cc..r-..cr........rcccccccc............c",
-     "cc..rr..crr......rrcccccccc............c",
-     "cc......cooooorc................c...cccc",
-     "cccccccccooooorc................c...cccc",
-     "cooocccccccccccc................c...cccc",
-     "cooocccccccccccccc.ccccccc.rcc..c...cccc",
-     "coooc.r.r.ccccccrr.......c.rcc..c...cccc",
-     "coooc.....cccccccr.......c...N..c...cccc",
-     "coooc.....cccccccr.......c......c...cccc",
-     "coooccc.cccooooc......c..c.ccr..c...cccc",
-     "cooooooooooooooc......c..c.ccr..c...cccc",
-     "cooooooooooooooc......c..c......c...cccc",
-     "cooooooooooooooc......c..c......c...cccc",
-     "cccccoooooooooocc.cc.cc..cccc.ccc...cccc",
-     "ccccccoooooooooooor.......ccc.......cccc",
-     "ccccccoooooooooooorr.....cccc.......cccc",
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "cccc....cccc..cc.....c............cccccc",
+     "ccccccc......1c..ccc.c.ccccccccc.1cccccc",
+     "cccc..cccc.cccc.cc.c.c.........ccccccccc",
+     "cccc.1...c...0.....ccccccccccc....cccccc",
+     "ccccccc.cccccccccccc.........cccc.cccccc",
+     "cccc.c...............ccccccc....c.cccccc",
+     "cccc.ccccccccccccccccc..c.1ccc.cc0cccccc",
+     "cccc.c....c............1c...c...c0cccccc",
+     "cccc.c.cc.c.ccccc.ccccccc0ccccc.c.cccccc",
+     "cccc0c..c.c.....c.......c.....c.cNcccccc",
+     "cccc.c..c0ccccc.ccccccc.ccccc.c.cccccccc",
+     "cccc.c.1c.c.....c.....c.....c.c.c.cccccc",
+     "cccc.cccc.c.ccccc.ccc.c.c.c.c.c.c.cccccc",
+     "cccc.c....c.........c.c0c.c.cNc.c.cccccc",
+     "cccc.c.cccc.ccccccccc.c.c.c.ccc.c.cccccc",
+     "cccc.c...Nc.....c.....c.c.c.....c.cccccc",
+     "cccc.cccccccccccc.ccccc.c.ccccccc.cccccc",
+     "cccc......0.......c.....c...0.0...cccccc",
+     "cccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_73.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "people": [
+     "FULL RESTORE ",
+     "ULTRA BALL",
+     "PP UP"
+    ],
+    "links": {
+     "33,4": [
+      0,
+      34,
+      2
+     ],
+     "13,4": [
+      0,
+      10,
+      2
+     ],
+     "7,14": [
+      0,
+      5,
+      15
+     ],
+     "26,9": [
+      0,
+      30,
+      10
+     ],
+     "23,10": [
+      0,
+      24,
+      11
+     ],
+     "5,6": [
+      0,
+      2,
+      4
+     ]
+    },
+    "moves": {
+     "9,18": {
+      "m": "face",
+      "d": "d"
+     },
+     "29,16": {
+      "m": "face",
+      "d": "d"
+     },
+     "33,12": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_73.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       40,
+       23
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "cc..0.0.........cc.....cccccccccccc0.0.c",
+     "cc0.............c........cccccccN.....0c",
+     "cc..............c..cccc.....ccccccc....c",
+     "cc.0....ccccc.ccc..cccc.....ccccccc..0.c",
+     "cc......c..........cccccccc.ccccccc0c..c",
+     "cc..cc..cc........ccccccccc............c",
+     "cc..c1..ccc......cccccccccc............c",
+     "cc......cooooocc................c...cccc",
+     "cccccccccooooocc...............Nc...cccc",
+     "cooocccccccccccc................c...cccc",
+     "cooocccccccccccccc.cccccccc.ccc.c...cccc",
+     "coooc.cNc.cccccccc........c.ccc.c...cccc",
+     "coooc.....cccccccc........c.....c...cccc",
+     "coooc.....cccccccc........c.....c...cccc",
+     "coooccc.cccooooc......c...c.ccc.c...cccc",
+     "cooooooooooooooc......c...c.ccc.c...cccc",
+     "cooooooooooooooc......c...c.....c...cccc",
+     "cooooooooooooooc......c...c.....c...cccc",
+     "ccccccooooooooocc.cc.cc...ccc.ccc...cccc",
+     "ccccccooooooooooooc.......ccc.......cccc",
+     "ccccccoooooooooooocc.....cccc.......cccc",
+     "cccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_74.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "MAX REVIVE",
+     "ULTRA BALL ",
      "CHALLENGE MEWTWO"
+    ],
+    "links": {
+     "5,7": [
+      0,
+      1,
+      7
+     ]
+    },
+    "moves": {
+     "7,12": {
+      "m": "face",
+      "d": "d"
+     },
+     "31,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "32,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_74.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       40,
+       23
+      ]
+     }
     ]
    }
-  ]
+  ],
+  "theme": "cave",
+  "floor_names": [
+   "1F",
+   "2F",
+   "B1F"
+  ],
+  "descend": true,
+  "figure_floors": {
+   "CHALLENGE MEWTWO": 2,
+   "NUGGET": 0,
+   "MAX ELIXIR": 0,
+   "FULL RESTORE": 0,
+   "FULL RESTORE ": 1,
+   "ULTRA BALL": 1,
+   "PP UP": 1,
+   "MAX REVIVE": 2,
+   "ULTRA BALL ": 2
+  }
  },
  "POKEMON_MANSION": {
   "floors": [

@@ -3069,6 +3069,11 @@
         { "sprite": "rocker.png", "name": "Stoney", "class": "ROCKER", "team": [100, 100, 101], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_pplant", "event": {"lines": ["A Max Potion, by the old machines."], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_pplant"}},
+        {"text": "TM25", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm25_pplant", "event": {"lines": ["A TM in the Power Plant! It's Protect."], "gift_item": {"TM25": 1}, "flag": "got_tm25_pplant"}},
+        {"text": "TM110", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm110_pplant", "event": {"lines": ["A TM, crackling with static! It's Thunder."], "gift_item": {"TM110": 1}, "flag": "got_tm110_pplant"}},
+        {"text": "THUNDER STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_thunderstone_pplant", "event": {"lines": ["A Thunder Stone, humming with electricity!"], "gift_item": {"THUNDER_STONE": 1}, "flag": "got_thunderstone_pplant"}},
+        {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_pplant", "event": {"lines": ["An Elixir, left by a worker."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_pplant"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -3805,6 +3810,14 @@
         { "sprite": "acetrainer_m.png", "name": "Ace Trainer Samuel", "class": "COOLTRAINER", "team": [143, 59, 149], "rewards": { "balls": 10 } }
       ],
       "route_menu": [
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ccave", "event": {"lines": ["A Nugget, glinting in the dark!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ccave"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore_ccave", "event": {"lines": ["A Full Restore!"], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore_ccave"}},
+        {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxelixir_ccave", "event": {"lines": ["A Max Elixir!"], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_maxelixir_ccave"}},
+        {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ppup_ccave", "event": {"lines": ["A PP Up!"], "gift_item": {"PP_UP": 1}, "flag": "got_ppup_ccave"}},
+        {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball_ccave", "event": {"lines": ["An Ultra Ball!"], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball_ccave"}},
+        {"text": "FULL RESTORE ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore2_ccave", "event": {"lines": ["Another Full Restore!"], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore2_ccave"}},
+        {"text": "ULTRA BALL ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball2_ccave", "event": {"lines": ["An Ultra Ball, deep in the cave."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball2_ccave"}},
+        {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_ccave", "event": {"lines": ["A Max Revive, near the cave's deepest pool."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_ccave"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
