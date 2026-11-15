@@ -7,8 +7,8 @@ Levels for everything the player fights.
 - Elite Four and Champion: per-region ladders.
 - Wild Pokemon and route trainers: the area's level from assets/area_levels.json (the games'
   encounter levels; an area's own `"level"` key overrides it). Before the region's title (Jordan,
-  11-15) they keep that canon level, rising to 3 under the level cap only once your lead Pokemon has
-  reached the cap; after the title they keep up with the team's average level (11-07), the lowest one
+  11-15) they keep that canon level until your lead Pokemon has reached the level cap; then they come
+  anywhere from 3 under the cap to 1 over it (cap 25: Lv 22-26); after the title they keep up with the team's average level (11-07), the lowest one
   left out. Gyms, the League and story trainers keep their own.
 - Legendaries use fixed levels; Max Raid bosses take their level from the star rank.
 """
@@ -116,7 +116,8 @@ def team_level(game):
     return sum(levels) // len(levels) if levels else 0
 
 
-CAP_LIFT_BELOW = 3   # (once your lead is at the level cap, the areas rise to this many levels under it)
+CAP_LIFT_BELOW = 3   # (once your lead is at the level cap, enemies come from this many levels under it...
+CAP_LIFT_ABOVE = 1   # ...to this many over it: cap 25 -> Lv 22-26)
 
 
 def lead_level(game):
@@ -141,6 +142,18 @@ def area_level(game, area_key):
     return max(canon, team_level(game))
 
 
+def capped_band(game, area_key):
+    """Before the title, once your lead Pokemon has reached the level cap: the (low, high) levels the area's wild
+    Pokemon and route trainers come at, cap - CAP_LIFT_BELOW to cap + CAP_LIFT_ABOVE (Jordan, 11-15). None otherwise,
+    or where the area's canon level is already above that."""
+    story = getattr(game, "story_manager", None)
+    if story is None or is_postgame(story):
+        return None
+    cap = story_level_cap(story)
+    if lead_level(game) < cap or canon_area_level(game, area_key) > cap + CAP_LIFT_ABOVE:
+        return None
+    return cap - CAP_LIFT_BELOW, cap + CAP_LIFT_ABOVE
+
 
 
 def follow_team(game, team_levels):
@@ -150,6 +163,9 @@ def follow_team(game, team_levels):
 
 
 def wild_level(game, area_key):
+    band = capped_band(game, area_key)
+    if band:
+        return random.randint(*band)
     return max(2, area_level(game, area_key) + random.randint(-2, 1))
 
 
@@ -159,6 +175,9 @@ def trainer_level(game, area_key, boss=False):
     base = area_level(game, area_key)
     if boss:
         return base + 4
+    band = capped_band(game, area_key)
+    if band:
+        return random.randint(*band)
     return base + (random.randint(0, 1) if base < 8 else random.randint(1, 3))
 
 
@@ -329,7 +348,9 @@ def set_team(team, team_levels, exact=False):
 def trainer_team_levels(game, area_key, size, boss=False):
     """Route trainers: around the area level, building to the last Pokemon."""
     top = trainer_level(game, area_key, boss)
-    return [max(2, top - (size - 1 - i)) for i in range(size)]
+    band = capped_band(game, area_key)
+    low = band[0] if band else 2   # (at the cap, the rest of the team stays in the band too)
+    return [max(low, top - (size - 1 - i)) for i in range(size)]
 
 
 def elite_levels(region, index, size):

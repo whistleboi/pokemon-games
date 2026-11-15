@@ -44,6 +44,17 @@ check(levels.is_postgame(story) or levels.area_level(g, "VICTORY_ROAD") == max(v
 lead.level = 3
 check(levels.is_postgame(story) or levels.area_level(g, "VICTORY_ROAD") == vr, "a lead under the cap: the area keeps its canon level (Jordan 11-15)")
 lead.level = 14
+_first = weak.level
+weak.level = _cap   # (the lead is the team's first Pokemon)
+_wl = [levels.wild_level(g, "ROUTE_1") for _ in range(400)]
+_tl = [levels.trainer_level(g, "ROUTE_1") for _ in range(400)]
+_tt = [lv for _ in range(100) for lv in levels.trainer_team_levels(g, "ROUTE_1", 3)]
+check(min(_wl) == _cap - 3 and max(_wl) == _cap + 1, f"a lead at the cap ({_cap}): wild Lv {min(_wl)}-{max(_wl)}, anywhere from cap-3 to cap+1 (Jordan 11-15)")
+check(min(_tl) == _cap - 3 and max(_tl) == _cap + 1, f"...route trainers Lv {min(_tl)}-{max(_tl)} the same")
+check(min(_tt) >= _cap - 3 and max(_tt) <= _cap + 1, f"...their whole teams too: Lv {min(_tt)}-{max(_tt)}")
+_vw = [levels.wild_level(g, "VICTORY_ROAD") for _ in range(200)]
+check(min(_vw) >= vr - 2, f"...an area above the band keeps its own levels: Victory Road Lv {min(_vw)}-{max(_vw)}")
+weak.level = _first
 
 print("5) Gyms keep their canon levels; the cap after the last badge is the Champion's ace")
 check(levels.gym_team_levels("KANTO", "PEWTER_CITY", 2, "leader") == [12, 14], "Brock 12/14")
