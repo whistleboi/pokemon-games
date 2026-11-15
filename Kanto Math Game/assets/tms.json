@@ -309,6 +309,14 @@
   "gift": true,
   "from": "FireRed TM41: lying in Silph Co., 4F"
  },
+ "TM129": {
+  "move": "DRAGON-CLAW",
+  "type": "DRAGON",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM02: lying in Victory Road, 1F"
+ },
  "TM13": {
   "move": "FIRE-SPIN",
   "type": "FIRE",

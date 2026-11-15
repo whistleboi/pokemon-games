@@ -4144,6 +4144,11 @@
         { "sprite": "acetrainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [80, 134], "rewards": { "balls": 5 } }
       ],
       "route_menu": [
+        {"text": "ICE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iceheal_seafoam", "event": {"lines": ["An Ice Heal, on the frozen floor."], "gift_item": {"ICE_HEAL": 1}, "flag": "got_iceheal_seafoam"}},
+        {"text": "WATER STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_waterstone_seafoam", "event": {"lines": ["A Water Stone, glittering in the ice!"], "gift_item": {"WATER_STONE": 1}, "flag": "got_waterstone_seafoam"}},
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_seafoam", "event": {"lines": ["A Revive, tucked between the rocks."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_seafoam"}},
+        {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_bigpearl_seafoam", "event": {"lines": ["A Big Pearl, washed up by the water!"], "gift_item": {"BIG_PEARL": 1}, "flag": "got_bigpearl_seafoam"}},
+        {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball_seafoam", "event": {"lines": ["An Ultra Ball, by the icy water."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball_seafoam"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -4200,6 +4205,14 @@
         { "sprite": "acetrainer_m.png", "name": "Colby", "class": "COOLTRAINER", "team": [99, 61, 73, 117, 9], "levels": [41, 42, 42, 42, 43], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rarecandy_vroad", "event": {"lines": ["A Rare Candy, left by a trainer who came this way."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rarecandy_vroad"}},
+        {"text": "TM129", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm129_vroad", "event": {"lines": ["A TM on the ledge! It's Dragon Claw."], "gift_item": {"TM129": 1}, "flag": "got_tm129_vroad"}},
+        {"text": "GUARD SPEC.", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_guardspec_vroad", "event": {"lines": ["A Guard Spec., by the rocks."], "gift_item": {"GUARD_SPEC": 1}, "flag": "got_guardspec_vroad"}},
+        {"text": "TM35", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm35_vroad", "event": {"lines": ["A TM in the cave! It's Hail."], "gift_item": {"TM35": 1}, "flag": "got_tm35_vroad"}},
+        {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullheal_vroad", "event": {"lines": ["A Full Heal."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_fullheal_vroad"}},
+        {"text": "TM32", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm32_vroad", "event": {"lines": ["A TM in the cave! It's Sandstorm."], "gift_item": {"TM32": 1}, "flag": "got_tm32_vroad"}},
+        {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_vroad", "event": {"lines": ["A Max Revive! Trainers drop the best things up here."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_vroad"}},
+        {"text": "TM117", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm117_vroad", "event": {"lines": ["A TM in the cave! It's Overheat."], "gift_item": {"TM117": 1}, "flag": "got_tm117_vroad"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

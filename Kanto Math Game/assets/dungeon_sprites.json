@@ -4638,6 +4638,117 @@
     },
     "POKEMON_MANSION:FULL RESTORE": {
       "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:ICE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:WATER STONE": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:BIG PEARL": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:CHALLENGE ARTICUNO": {
+      "sheet": "fr_138.png"
+    },
+    "SEAFOAM_ISLANDS:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_23:EARTH BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:VOLCANO BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:MARSH BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:SOUL BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:RAINBOW BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:THUNDER BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:CASCADE BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "VICTORY_ROAD:TM129": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:GUARD SPEC.": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM35": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:Cooltrainer": {
+      "sheet": "fr_41.png"
+    },
+    "VICTORY_ROAD:TM32": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM117": {
+      "item": "POKE_BALL"
+    },
+    "INDIGO_PLATEAU:Guard": {
+      "sheet": "fr_42.png"
+    },
+    "INDIGO_PLATEAU:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "INDIGO_PLATEAU:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "INDIGO_PLATEAU:Man": {
+      "sheet": "fr_54.png"
+    },
+    "INDIGO_PLATEAU:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "INDIGO_PLATEAU:Boy": {
+      "sheet": "fr_41.png"
+    },
+    "INDIGO_PLATEAU:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "INDIGO_PLATEAU:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "INDIGO_PLATEAU:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "INDIGO_PLATEAU:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "INDIGO_PLATEAU:Lorelei": {
+      "sheet": "fr_77.png"
+    },
+    "INDIGO_PLATEAU:Bruno": {
+      "sheet": "fr_79.png"
+    },
+    "INDIGO_PLATEAU:Agatha": {
+      "sheet": "fr_75.png"
+    },
+    "INDIGO_PLATEAU:Lance": {
+      "sheet": "fr_74.png"
+    },
+    "INDIGO_PLATEAU:{rival_name}": {
+      "sheet": "@rival"
     }
   },
   "townsperson": "NPC 17.png",

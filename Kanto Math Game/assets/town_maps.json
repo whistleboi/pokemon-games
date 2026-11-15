@@ -24677,19 +24677,6 @@
   ]
  },
  "SEAFOAM_ISLANDS": {
-  "theme": "ice",
-  "descend": true,
-  "buildings": {},
-  "floor_names": [
-   "1F",
-   "B1F",
-   "B2F",
-   "B3F",
-   "B4F"
-  ],
-  "figure_floors": {
-   "CHALLENGE ARTICUNO": 4
-  },
   "floors": [
    {
     "art": [
@@ -24701,7 +24688,7 @@
      "cccc.......................c.c.....ccc",
      "cccc......1........cc........c.....ccc",
      "cccc.c........ccccccccccc..ccc.....ccc",
-     "cccc.c........c......1..c...c.1....ccc",
+     "cccc.c.....N..c......1..c...c.1....ccc",
      "cccc..........c.........cc......b..ccc",
      "ccccc........cc.........cc.........ccc",
      "ccccc.........c.........cc.........ccc",
@@ -24714,15 +24701,28 @@
      "ccc.....................cc.........ccc",
      "ccc.....................cc..1......ccc",
      "ccccc...ccccccccccccccccccccccc...cccc",
-     "ccccc.<.ccccccccccccccccccccccc.>.cccc",
+     "ccccc.n.ccccccccccccccccccccccc.n.cccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "<": "KANTO_ROUTE_20",
-     ">": "KANTO_ROUTE_20"
+     "n": "KANTO_ROUTE_20"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_83.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "ICE HEAL"
+    ],
     "links": {
      "10,6": [
       1,
@@ -24742,14 +24742,37 @@
      "21,8": [
       1,
       21,
-      8
+      8,
+      "fall"
      ],
      "30,8": [
       1,
       29,
-      8
+      8,
+      "fall"
      ]
-    }
+    },
+    "moves": {
+     "11,8": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_83.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       24
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -24767,18 +24790,33 @@
      "ccc..cc..ccc........c.....cccccccccccc",
      "ccc........c.............c.........ccc",
      "ccc........c.............c.........ccc",
-     "ccc........c.............c......1..ccc",
+     "ccc........c............Nc......1..ccc",
      "ccc........c.............c.........ccc",
      "ccc........cc..ccccccccccc.........ccc",
      "ccc..............c........c........ccc",
-     "ccc..............c........c.c......ccc",
+     "ccc..............c.N......c.c......ccc",
      "ccc..............c.......1c.1......ccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_84.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "REVIVE",
+     "WATER STONE"
+    ],
     "links": {
      "10,6": [
       0,
@@ -24818,14 +24856,51 @@
      "23,8": [
       2,
       22,
-      7
+      7,
+      "fall"
      ],
      "28,8": [
       2,
       29,
+      8,
+      "fall"
+     ]
+    },
+    "landings": [
+     [
+      21,
+      8
+     ],
+     [
+      29,
       8
      ]
-    }
+    ],
+    "moves": {
+     "19,18": {
+      "m": "face",
+      "d": "d"
+     },
+     "24,14": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_84.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       23
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -24844,7 +24919,7 @@
      "cccc.......................c.......ccc",
      "cccc.......................cc.c.c.cccc",
      "cccccccc..cccccccccc.......cc...1.cccc",
-     "ccc................c.......cc.....cccc",
+     "ccc...............Nc.......cc.....cccc",
      "ccc................ccc..ccccc.....cccc",
      "ccc....1....................c..1..cccc",
      "ccc......................c..c.....cccc",
@@ -24855,7 +24930,21 @@
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_85.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "BIG PEARL"
+    ],
     "links": {
      "7,17": [
       3,
@@ -24895,27 +24984,60 @@
      "24,8": [
       3,
       23,
-      9
+      9,
+      "fall"
      ],
      "27,8": [
       3,
       24,
-      9
+      9,
+      "fall"
      ]
-    }
+    },
+    "landings": [
+     [
+      22,
+      7
+     ],
+     [
+      29,
+      8
+     ]
+    ],
+    "moves": {
+     "18,15": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_85.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       24
+      ]
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccc}}}ccccccccccccccccc",
-     "cccccccccccccccccc}}}ccccccccccccccccc",
-     "cccc.........ccccc}}}ccccc.....c..cccc",
-     "cccc.........ccccc}}}ccccc.....1c.cccc",
+     "cccccccccccccccccc$$$ccccccccccccccccc",
+     "cccccccccccccccccc$$$ccccccccccccccccc",
+     "cccc.........ccccc$$$ccccc.....c..cccc",
+     "cccc.........ccccc$$$ccccc.....1c.cccc",
      "cccc.........cc}}}}}}]]]}c...1....cccc",
      "cccc.........cc}}}}}]]]}}c........cccc",
      "cccc.........cc.......c}}ccccccccccccc",
      "cccc.....c..ccc.......cooc........cccc",
-     "cccc.....c..1.c.......c}}c........cccc",
+     "cccc.....c..1.c.......c11c........cccc",
      "cccc.....c....c...cc..c}}c........cccc",
      "cccc..............c}oo}}}cc..c....cccc",
      "cccc.c............c}}}}}}]]ooc....cccc",
@@ -24925,14 +25047,25 @@
      "ccc......b.cbbc.........c}}c...1..cccc",
      "ccc...bc......cccccc..ccc}}ccccccccccc",
      "ccc...&c.&...c........cccooccccccccccc",
-     "ccc....c..............ccc}}ccccccccccc",
-     "ccccccccccccccccccccccccc}}ccccccccccc",
-     "ccccccccccccccccccccccccc}}ccccccccccc",
+     "ccc....c..............ccc$$ccccccccccc",
+     "ccccccccccccccccccccccccc$$ccccccccccc",
+     "ccccccccccccccccccccccccc$$ccccccccccc",
      "ccccccccccccccccccccccccc11ccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_86.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "links": {
      "8,14": [
       2,
@@ -24958,6 +25091,16 @@
       4,
       32,
       5
+     ],
+     "23,9": [
+      2,
+      22,
+      7
+     ],
+     "24,9": [
+      2,
+      29,
+      8
      ],
      "25,22": [
       4,
@@ -24997,6 +25140,24 @@
       32,
       9
      ]
+    ],
+    "hidden": {
+     "5,12": "NUGGET"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_86.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       24
+      ]
+     }
     ]
    },
    {
@@ -25020,14 +25181,39 @@
      "ccc{{{{{{{{]]]{{{c..cooooooooooooooccc",
      "cccccccc{{c............coooooooooooccc",
      "ccccccccooc...!..........coooooooooccc",
-     "cccccccc{{c..............c{{{ccccccccc",
+     "cccccccc{{c...........N..c{{{ccccccccc",
      "cccccccc{{c..............c{{{ccccccccc",
      "cccccccc{{cccccccccccccccc{{{ccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_87.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "CHALLENGE ARTICUNO",
+     "ULTRA BALL"
+    ],
+    "signs": [
+     [
+      "DANGER",
+      "Fast current!"
+     ],
+     [
+      "A hint:",
+      "Boulders might change the flow of the water!"
+     ]
+    ],
     "links": {
      "15,9": [
       3,
@@ -25039,6 +25225,26 @@
       29,
       5
      ]
+    },
+    "landings": [
+     [
+      8,
+      17
+     ],
+     [
+      9,
+      17
+     ]
+    ],
+    "moves": {
+     "9,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "22,19": {
+      "m": "face",
+      "d": "d"
+     }
     },
     "fallen": [
      [
@@ -25068,19 +25274,43 @@
       16
      ]
     ],
-    "people": [
-     "CHALLENGE ARTICUNO"
-    ],
-    "signs": [
-     [
-      "The water runs fast here. Boulders dropped from above would slow it!"
-     ],
-     [
-      "Something very cold is close by..."
-     ]
+    "hidden": {
+     "13,8": "WATER_STONE"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_87.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       24
+      ]
+     }
     ]
    }
-  ]
+  ],
+  "theme": "ice",
+  "floor_names": [
+   "1F",
+   "B1F",
+   "B2F",
+   "B3F",
+   "B4F"
+  ],
+  "figure_floors": {
+   "CHALLENGE ARTICUNO": 4,
+   "ICE HEAL": 0,
+   "REVIVE": 1,
+   "WATER STONE": 1,
+   "BIG PEARL": 2,
+   "ULTRA BALL": 4
+  },
+  "descend": true
  },
  "CINNABAR_ISLAND": {
   "art": [
@@ -28623,421 +28853,183 @@
  "KANTO_ROUTE_23": {
   "art": [
    "cccccccccc^^^ccccccccccc",
-   "ccccccceejeeejeecccccccc",
-   "TTTTTTjejeeeeeeeejTTTTTT",
-   "TTTTTTjejjeejejeejTTTTTT",
-   "TTTTTTejejeejejejjTTTTTT",
-   "TTggggjeeejeejeejjggggTT",
-   "TTggggjeeejeejeeejggggTT",
-   "TTggggeejejejeeeeeggggTT",
-   "TTggggeejejejeeejeggggTT",
-   "TTggggjeejejejeejeggggTT",
-   "TTggggjeejejejeejeggggTT",
-   "TTggggejeejeejeeeeggggTT",
-   "TTggggjjjejeejejeeggggTT",
-   "TTggggjejejeejejeeggggTT",
-   "TTggggjejejeejejejggggTT",
-   "TTggggjejeeeeeejejggggTT",
-   "TTjeejeeeeeeeeeeeejeejTT",
-   "TT.eeeeeeeeeeeeeeeeee.TT",
-   "TT......eeeeeeeee.....TT",
-   "TT....................TT",
-   "TTccccccccccccccccc...TT",
-   "TTccccccccccccccccc...TT",
-   "TTccccccccccccccccc...TT",
-   "TTccccccccccccccccc...TT",
-   "TTccccccccccccccccc...TT",
-   "TTcccccccccccccccccc..TT",
-   "TTccccccccccccccccccc.TT",
-   "TTcccQccccccccccccPcc.TT",
-   "TTcgcDcgccccccccccDcc.TT",
-   "TT.jeeejrcccccccc.....TT",
-   "TT..eee..cccccccc.....TT",
-   "TT.!eee.rccccccccf....TT",
-   "TT..eee..cccccccc.f.f.TT",
-   "TTr.eee..cccccccccccccTT",
-   "TT..eee.rcccccccccccccTT",
-   "TTrjeeNj.cccccccccccccTT",
-   "TT..eee.rcccccccccccccTT",
-   "TT..eee..cccccccccccccTT",
-   "TT.reee.rcccccccccccccTT",
-   "TT..eee.rcccccccccccccTT",
-   "TTr.eee..cccccccccccccTT",
-   "TT.jeeej.cccccccccccccTT",
-   "TTr.eee...rrr\"\"\"\"..r..TT",
-   "TT.r.......rr\"\"\"......TT",
-   "TT.........rr\"\"\"......TT",
-   "TTgggg......rrr.eeeeeeTT",
-   "TTgggg......rrr.eeeeeeTT",
-   "TTggggggg.......eeeeeeTT",
-   "TTgggggggeeeeee...f.f.TT",
-   "TTgggggggeeeeee..f.f..TT",
-   "TTgggggggeeeeee.......TT",
-   "TTggggggg...eee.......TT",
-   "TTj..j..j...eeegggggggTT",
-   "TT..........eeegggggggTT",
-   "TT..........eeegggggggTT",
-   "TTgggggggggg...gggggggTT",
-   "TTgggggggggg...gggggggTT",
-   "TTgggggggggg...gggggggTT",
-   "TTggggggggggeeegggggggTT",
-   "TTggggggggggeeegggggggTT",
-   "TTggggggggggeeegggggggTT",
-   "TTggggggj\"\"jeeNjf.jgggTT",
-   "TTgggggg\"\"\"\"eee...fgggTT",
-   "TTgggggg\"\"\"\"\"...f..gggTT",
-   "TTgggggg\"\"\"rr.....fgggTT",
-   "TTgggggg\"\"\"rr\"\"\"\"\"\"gggTT",
-   "TTggggggr...r\"\"\"\"\"\"gggTT",
-   "TTggggggr...r\"\"\"\"\"\"gggTT",
-   "TTggggggr...r..rr..gggTT",
-   "TTggggggr...r..rr..gggTT",
-   "TTgggggg\"\"\"rr...r..gggTT",
-   "TTgggggg\"\"\"rr...r..gggTT",
-   "TTgggggg..\"\"\"..r...gggTT",
-   "TTggggggr.\"\"\"..r...j\"jTT",
-   "TTggggggrr....f.f.\"\"\"\"TT",
-   "TTggggggrr...f.f..\"\"\"\"TT",
-   "TTggggggrr........\"\"\"\"TT",
-   "TTgggggg=========.....TT",
-   "TTggggggssssssss=.....TT",
-   "TTggggggsoooooosggggggTT",
-   "TTggggggsoooooosggggggTT",
-   "TTggggggsoooooosggggggTT",
-   "TTggggggsoooooosggggggTT",
-   "TTsssssssoooooosssssssTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTgggggoooggggggggggggTT",
-   "TTgggggoooggggggggggggTT",
-   "TTgggggoooggggggggggggTT",
-   "TTgggggoooggggggggggggTT",
-   "TTgggsgoooNssssssssgggTT",
-   "TTgggsoooooooooooosgggTT",
-   "TTgggsoooooooooooosgggTT",
-   "TTgggsoooooooooooosgggTT",
-   "TTgggsoooooooooooosgggTT",
-   "TTgggsoossssssoooosgggTT",
-   "TTgggsoossssssoooosgggTT",
-   "TTgggsoossssssoooosgggTT",
-   "TTgggsoossssssoooosgggTT",
-   "TTssssoossssssoooosgggTT",
-   "TTsooooooooooooooosgggTT",
-   "TTsooooooooooooooosgggTT",
-   "TTsooooooooooooooosgggTT",
-   "TTsooooooooooooooosgggTT",
-   "TTgggggggggggoooggggggTT",
-   "TTgggggggggggoooggggggTT",
-   "TTgggggggggggoooggggggTT",
-   "TTgggggggggggoooggggggTT",
-   "TTssssssssssgoooNsssssTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTsoooooooooooooooooosTT",
-   "TTgggggggggg...gggggggTT",
-   "TTgggggggggg...gggggggTT",
-   "TTgggggggggg...gggggggTT",
-   "TTggggggggggeeegggggggTT",
-   "TTggggggggggeeegggggggTT",
-   "TT.eeeeeeeejeeNjeeeee.TT",
-   "TT.eeeeeeeeeeeeeeeeee.TT",
-   "TT.eeeeeeeeeeeeeeeeee.TT",
-   "TT.......eee..........TT",
-   "TT...ggggeeeggggggggggTT",
-   "TT...ggggeeeggggggggggTT",
-   "TT...ggggeeeggggggggggTT",
-   "TT...ggggeeeggggggggggTT",
-   "TT......jeeej.........TT",
-   "TTTTf....eee...f..f..fTT",
-   "TTTT.f................TT",
-   "TTTTf............f..f.TT",
-   "TTgT..................TT",
-   "TTgggg...gggggggggggggTT",
-   "TTgggg...gggggggggggggTT",
-   "TTggggeeegggggggggggggTT",
-   "TTggggeeegggggggggggggTT",
-   "TTjf.jeeNj...........jTT",
-   "TT...feee.eeeeeeeeee..TT",
-   "TTTTf.....eeeeeeeeeeTTTT",
-   "TTTT......eeeeeeeeeeTTTT",
-   "TTTTTT..............TTTT",
-   "TTTTTTggggggg...ggggTTTT",
-   "TTTTTTggggggg...ggggTTTT",
-   "TTTTTTgggggggeeeggggTTTT",
-   "TTTTTTgggggggeeeggggTTTT",
-   "TTTTTTj.....jeeNj.fjTTTT",
-   "TTTTTTTeeeeeeeee...fTTTT",
-   "TTTTTTTeeeeeeeee..f.TTTT",
-   "TTTTTTTeeeeeeeee.f.f.fTT",
-   "ccTTkkkeDNkkkkccccccckTT",
-   "ccccYYYYYYYYYcccccccccTT",
-   "ccccYYYYYYYYYcccccccccTT",
-   "ccccYYYYYYYYYcccccccccTT",
-   "ccccYYYYYYYYYcccccccccTT",
-   "ccccYYYYYYYYYccccccccccc",
-   "ccccYYYYYYYYYccccccccccc"
+   "cccccccccc...c..cccccccc",
+   "ccccccccc........ccccccc",
+   "cccccccccc..c.c..ccccccc",
+   "cccccccc.c..c.c.cccccccc",
+   "ccccccc...c..c..cccccccc",
+   "ccccccc...c..c...ccccccc",
+   "cccccc..c.c.c.....cccccc",
+   "cccccc..c.c.c...c.cccccc",
+   "ccccccc..ccc.c..c.cccccc",
+   "ccccccc..ccc.c..c.cccccc",
+   "cccccccc..c..c....cccccc",
+   "ccccccccc.c..c.c..cccccc",
+   "ccccccc.c.c..c.c..cccccc",
+   "ccccccc.c.c..c.c.ccccccc",
+   "ccccccc.c......c.ccccccc",
+   "ccc..c............c..ccc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "ccccccccccccccccccc...cc",
+   "ccccccccccccccccccc...cc",
+   "ccccccccccccccccccc...cc",
+   "ccccccccccccccccccc...cc",
+   "ccccccccccccccccccc...cc",
+   "cccccccccccccccccccc..cc",
+   "ccccccccccccccccccccc.cc",
+   "ccccccccccccccccccccc.cc",
+   "cccccnccccccccccccncc.cc",
+   "cc.c...cccccccccc.....cc",
+   "cc.......cccccccc.....cc",
+   "cc.!....ccccccccc.....cc",
+   "cc.......cccccccc.....cc",
+   "ccc......ccccccccccccccc",
+   "cc......cccccccccccccccc",
+   "cccc..Nccccccccccccccccc",
+   "cc......cccccccccccccccc",
+   "cc.......ccccccccccccccc",
+   "cc.c....cccccccccccccccc",
+   "cc......cccccccccccccccc",
+   "ccc......ccccccccccccccc",
+   "cccc...c.ccccccccccccccc",
+   "ccc.......ccc\"\"\"\"..c..cc",
+   "cc.c.......cc\"\"\"......cc",
+   "cc.........cc\"\"\"......cc",
+   "cccccc......ccc.......cc",
+   "cccccc......ccc.......cc",
+   "ccccccccc.............cc",
+   "ccccccccc.............cc",
+   "ccccccccc.............cc",
+   "ccccccccc.............cc",
+   "ccccccccc.............cc",
+   "ccc..c..c......ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "ccccccccc\"\"c..Nc..cccccc",
+   "cccccccc\"\"\"\".......ccccc",
+   "cccccccc\"\"\"\"\"......ccccc",
+   "cccccccc\"\"\"cc......ccccc",
+   "cccccccc\"\"\"cc\"\"\"\"\"\"ccccc",
+   "ccccccccc...c\"\"\"\"\"\"ccccc",
+   "ccccccccc...c\"\"\"\"\"\"ccccc",
+   "ccccccccc...c..cc..ccccc",
+   "ccccccccc...c..cc..ccccc",
+   "cccccccc\"\"\"cc...c..ccccc",
+   "cccccccc\"\"\"cc...c..ccccc",
+   "cccccccc..\"\"\"..c...ccccc",
+   "ccccccccc.\"\"\"..c...c\"ccc",
+   "cccccccccc........\"\"\"\"cc",
+   "cccccccccc........\"\"\"\"cc",
+   "cccccccccc........\"\"\"\"cc",
+   "cccccccc..............cc",
+   "cccccccc========......cc",
+   "cccccccc=oooooo=cccccccc",
+   "cccccccc=oooooo=cccccccc",
+   "cccccccc=oooooo=cccccccc",
+   "cccccccc=oooooo=cccccccc",
+   "cc=======oooooo=======cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cccccccooocccccccccccccc",
+   "cccccccooocccccccccccccc",
+   "cccccccooocccccccccccccc",
+   "cccccccooocccccccccccccc",
+   "ccccc=coooN========ccccc",
+   "ccccc=oooooooooooo=ccccc",
+   "ccccc=oooooooooooo=ccccc",
+   "ccccc=oooooooooooo=ccccc",
+   "ccccc=oooooooooooo=ccccc",
+   "ccccc=oo======oooo=ccccc",
+   "ccccc=oo======oooo=ccccc",
+   "ccccc=oo======oooo=ccccc",
+   "ccccc=oo======oooo=ccccc",
+   "cc====oo======oooo=ccccc",
+   "cc=ooooooooooooooo=ccccc",
+   "cc=ooooooooooooooo=ccccc",
+   "cc=ooooooooooooooo=ccccc",
+   "cc=ooooooooooooooo=ccccc",
+   "cccccccccccccooocccccccc",
+   "cccccccccccccooocccccccc",
+   "cccccccccccccooocccccccc",
+   "cccccccccccccooocccccccc",
+   "cc==========coooN=====cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cc=oooooooooooooooooo=cc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cccccccccccc...ccccccccc",
+   "cc.........c..Nc......cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc...cccc...cccccccccccc",
+   "cc...cccc...cccccccccccc",
+   "cc...cccc...cccccccccccc",
+   "cc...cccc...cccccccccccc",
+   "cc......c...c.........cc",
+   "cccc..................cc",
+   "cccc..................cc",
+   "cccc..................cc",
+   "cccc..................cc",
+   "cccccc...ccccccccccccccc",
+   "cccccc...ccccccccccccccc",
+   "cccccc...ccccccccccccccc",
+   "cccccc...ccccccccccccccc",
+   "ccc..c..Nc...........ccc",
+   "cc....................cc",
+   "cccc................cccc",
+   "cccc................cccc",
+   "cccccc..............cccc",
+   "ccccccccccccc...cccccccc",
+   "ccccccccccccc...cccccccc",
+   "ccccccccccccc...cccccccc",
+   "ccccccccccccc...cccccccc",
+   "ccccccc.....c..Nc..ccccc",
+   "ccccccc.............cccc",
+   "ccccccc.............cccc",
+   "ccccccc...............cc",
+   "ccccccc.<Ncccccccccccccc",
+   "ccccccccc<cccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc"
   ],
   "exits": {
-   "Y": "KANTO_ROUTE_22",
-   "Q": "VICTORY_ROAD",
-   "P": "VICTORY_ROAD",
-   "^": "INDIGO_PLATEAU"
+   "^": "INDIGO_PLATEAU",
+   "n": "VICTORY_ROAD",
+   "<": "KANTO_ROUTE_22"
   },
-  "buildings": {
-   "P": "cave",
-   "Q": "cave",
-   "Y": "gate"
-  },
+  "buildings": {},
   "roofs": {
-   "P": [
-    123,
-    74,
-    74
-   ],
-   "Q": [
-    123,
-    74,
-    74
-   ],
-   "Y": [
-    213,
-    230,
-    197
-   ],
-   "_statues": [
-    [
-     9,
-     1
-    ],
-    [
-     13,
-     1
-    ],
-    [
-     2,
-     16
-    ],
-    [
-     5,
-     16
-    ],
-    [
-     18,
-     16
-    ],
-    [
-     21,
-     16
-    ],
-    [
-     3,
-     29
-    ],
-    [
-     7,
-     29
-    ],
-    [
-     3,
-     35
-    ],
-    [
-     7,
-     35
-    ],
-    [
-     3,
-     41
-    ],
-    [
-     7,
-     41
-    ],
-    [
-     2,
-     52
-    ],
-    [
-     5,
-     52
-    ],
-    [
-     8,
-     52
-    ],
-    [
-     8,
-     61
-    ],
-    [
-     11,
-     61
-    ],
-    [
-     15,
-     61
-    ],
-    [
-     18,
-     61
-    ],
-    [
-     19,
-     73
-    ],
-    [
-     21,
-     73
-    ],
-    [
-     11,
-     123
-    ],
-    [
-     15,
-     123
-    ],
-    [
-     8,
-     131
-    ],
-    [
-     12,
-     131
-    ],
-    [
-     2,
-     140
-    ],
-    [
-     5,
-     140
-    ],
-    [
-     9,
-     140
-    ],
-    [
-     21,
-     140
-    ],
-    [
-     6,
-     149
-    ],
-    [
-     12,
-     149
-    ],
-    [
-     16,
-     149
-    ],
-    [
-     19,
-     149
+   "_picture": {
+    "f": "fr_ground/3_42.png",
+    "at": [
+     0,
+     0
     ]
-   ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     55,
-     3,
-     1
-    ],
-    "of": "arch"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     118,
-     3,
-     1
-    ],
-    "of": "arch"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     131,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     6,
-     135,
-     3,
-     1
-    ],
-    "of": "arch"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     141,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     141,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     4,
-     143,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     7,
-     153,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     213,
-     230,
-     197
-    ]
-   }
-  ],
-  "signs": [
-   [
-    "VICTORY ROAD GATE",
-    "Pokemon League ahead"
-   ]
-  ],
   "people": [
    "EARTH BADGE GUARD",
    "VOLCANO BADGE GUARD",
@@ -29048,37 +29040,90 @@
    "CASCADE BADGE GUARD",
    "BOULDER BADGE GUARD"
   ],
-  "parts": true
+  "signs": [
+   [
+    "VICTORY ROAD GATE",
+    "Pokémon League ahead"
+   ]
+  ],
+  "edge_to": {
+   "10,0": [
+    10,
+    19
+   ],
+   "11,0": [
+    11,
+    19
+   ],
+   "12,0": [
+    12,
+    19
+   ]
+  },
+  "moves": {
+   "6,35": {
+    "m": "face",
+    "d": "d"
+   },
+   "14,61": {
+    "m": "face",
+    "d": "d"
+   },
+   "10,94": {
+    "m": "face",
+    "d": "d"
+   },
+   "16,112": {
+    "m": "face",
+    "d": "d"
+   },
+   "14,123": {
+    "m": "face",
+    "d": "d"
+   },
+   "8,140": {
+    "m": "face",
+    "d": "d"
+   },
+   "15,149": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "parts": true,
+  "hidden": {
+   "19,42": "FULL_RESTORE",
+   "20,72": "ULTRA_BALL",
+   "11,101": "MAX_ETHER",
+   "3,18": "LUM_BERRY",
+   "2,29": "SITRUS_BERRY",
+   "10,67": "ASPEAR_BERRY",
+   "3,128": "LEPPA_BERRY",
+   "9,8": "MAX_ELIXIR"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_42.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     160
+    ]
+   }
+  ]
  },
  "VICTORY_ROAD": {
-  "theme": "cave",
-  "buildings": {},
-  "floor_names": [
-   "1F",
-   "2F",
-   "3F"
-  ],
-  "figure_floors": {
-   "Rolando": 0,
-   "Naomi": 0,
-   "Dawson": 1,
-   "Gregory": 1,
-   "Vincent": 1,
-   "Daisuke": 1,
-   "Nelson": 1,
-   "Alexa": 2,
-   "George": 2,
-   "Ray & Tyra": 2,
-   "Caroline": 2,
-   "Colby": 2
-  },
   "floors": [
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccc.cc..ccccccccccccccccccccccccccccc",
+     "ccccccccccccccNcc..ccccccccccccccccccccccccccccc",
      "ccc1.Xcccccccc.ccc..cccccccccccccccccccccccccccc",
-     "cccc..cccccc....b....ccccccccccccccccccccccccccc",
+     "cccc..ccccccN...b....ccccccccccccccccccccccccccc",
      "cccc...ccccccc..c.....cccccccccccccccccccccccccc",
      "ccc...c.............c..ccccccccccccccccccccccccc",
      "ccc...c.......X.....c..ccccccccccccccccccccccccc",
@@ -29091,17 +29136,36 @@
      "cccc..c....ccc..cccccccccccccccccccccccccccccccc",
      "cccc..c.........cc...ccccccccccccccccccccccccccc",
      "ccc...c.........c....ccccccccccccccccccccccccccc",
-     "cc...cc.ccccccccc.c..ccccccccccccccccccccccccccc",
+     "cc...cc.ccccccccc.c.%ccccccccccccccccccccccccccc",
      "cc..cc..ccc.........cccccccccccccccccccccccccccc",
      "ccc....bcc...cc.....cccccccccccccccccccccccccccc",
      "cccc.........cc..ccccccccccccccccccccccccccccccc",
-     "cccccccc...v.ccccccccccccccccccccccccccccccccccc",
+     "cccccccc...n.ccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "KANTO_ROUTE_23"
+     "n": "KANTO_ROUTE_23"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_39.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "TM129",
+     "RARE CANDY"
+    ],
+    "trainer_spots": [
+     "Rolando",
+     "Naomi"
+    ],
     "links": {
      "3,2": [
       1,
@@ -29109,10 +29173,21 @@
       9
      ]
     },
-    "trainer_spots": [
-     "Rolando",
-     "Naomi"
-    ]
+    "moves": {
+     "12,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,1": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "hidden": {
+     "12,12": "ULTRA_BALL",
+     "16,1": "FULL_RESTORE"
+    },
+    "parts": true
    },
    {
     "art": [
@@ -29122,27 +29197,60 @@
      "ccc1..................c..................cccccccccc",
      "ccc....Xc.............c..................cccccccccc",
      "ccc...................c.............X....cccccccccc",
-     "cccccccc.ccccc........c...X.cccccccc.....cccccccccc",
-     "cc......bc...c........c............c.....cccccccccc",
+     "cccccccc.ccccc...N....c...X.cccccccc.....cccccccccc",
+     "cc......bc...c........c............c....Ncccccccccc",
      "c............c........c...........ccccccccc....cccc",
-     "c1c..........c........c...........1c..1c........ccc",
+     "c1c..........c........c...........1c..1cN.......ccc",
      "c......c...............c...........c.............cc",
      "cc.....c............X..c...........c.............cc",
-     "cc.....cc.cccccc.......c...........c......ccccc.>.c",
-     "cc...........c.ccccc...c...........cccccccc...c>c>c",
+     "cc.....cc.cccccc.......c...........c......ccccc.n.c",
+     "cc...........cNccccc...c.N.........cccccccc...cncnc",
      "cc...........c.....c...c..................c......c.",
      "ccc..........c.....c............cc........cc.......",
      "ccc..........c.....c...........Xc...c..c...cc......",
      "cc....b......c.....c................1..c...c.......",
      "cc.c.....ccccc.....cccc.ccccccc.cccccccc...c.c.....",
-     "cc....cccccccc...................b1........c.......",
+     "cc%...cccccccc%..................b.........c.......",
      "ccccccccccccccccc..........................c.......",
      "cccccccccccccccccccccccccccccccccccccccccccc......."
     ],
     "exits": {
-     ">": "KANTO_ROUTE_23"
+     "n": "KANTO_ROUTE_23"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_40.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "GUARD SPEC.",
+     "TM35",
+     {
+      "text": "Cooltrainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You made it through Victory Road! Be proud. The League is just ahead."
+       ]
+      }
+     },
+     "TM32",
+     "FULL HEAL"
+    ],
+    "trainer_spots": [
+     "Dawson",
+     "Gregory",
+     "Vincent",
+     "Daisuke",
+     "Nelson"
+    ],
     "links": {
      "1,9": [
       0,
@@ -29168,20 +29276,37 @@
       2,
       39,
       17
-     ],
-     "34,19": [
-      2,
-      34,
-      18
      ]
     },
-    "trainer_spots": [
-     "Dawson",
-     "Gregory",
-     "Vincent",
-     "Daisuke",
-     "Nelson"
-    ]
+    "landings": [
+     [
+      34,
+      19
+     ]
+    ],
+    "moves": {
+     "40,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "17,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "40,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "25,13": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,13": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true
    },
    {
     "art": [
@@ -29192,9 +29317,9 @@
      "ccccc........c..............c.........c..cccc",
      "cccc...c.c...c.......X......c...b..cccc..cccc",
      "cccc.....c...c..............c......cccc..cccc",
-     "cccc....cc...c...cccccccc.ccc......ccc..Xcccc",
+     "cccc...%cc...c...cccccccc.ccc......cccN.Xcccc",
      "ccc...cccc...c...c.................cccccccccc",
-     "ccc........c.c...c................1c.....cccc",
+     "ccc........cNc...c................1c.....cccc",
      "ccc........ccc...c........ccc......c.1...cccc",
      "ccc........ccc...c.........c.......c.....cccc",
      "cccc.cccc........c.............ccccc.....cccc",
@@ -29209,7 +29334,29 @@
      "ccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_41.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "MAX REVIVE",
+     "TM117"
+    ],
+    "trainer_spots": [
+     "Alexa",
+     "George",
+     "Ray & Tyra",
+     "Caroline",
+     "Colby"
+    ],
     "links": {
      "5,2": [
       1,
@@ -29234,618 +29381,811 @@
      "34,18": [
       1,
       34,
-      19
+      19,
+      "fall"
      ]
     },
-    "trainer_spots": [
-     "Alexa",
-     "George",
-     "Ray & Tyra",
-     "Caroline",
-     "Colby"
-    ]
+    "moves": {
+     "38,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "12,9": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true
    }
-  ]
+  ],
+  "theme": "cave",
+  "floor_names": [
+   "1F",
+   "2F",
+   "3F"
+  ],
+  "figure_floors": {
+   "Rolando": 0,
+   "Naomi": 0,
+   "TM129": 0,
+   "RARE CANDY": 0,
+   "Dawson": 1,
+   "Gregory": 1,
+   "Vincent": 1,
+   "Daisuke": 1,
+   "Nelson": 1,
+   "GUARD SPEC.": 1,
+   "TM35": 1,
+   "TM32": 1,
+   "FULL HEAL": 1,
+   "Alexa": 2,
+   "George": 2,
+   "Ray & Tyra": 2,
+   "Caroline": 2,
+   "Colby": 2,
+   "MAX REVIVE": 2,
+   "TM117": 2
+  }
  },
  "INDIGO_PLATEAU": {
   "art": [
-   "TTTTTTLLLLLLLLLLLTTTTTTT",
-   "TTTTTTLLLLLLLLLLLTTTTTTT",
-   "TTTTTTLLLLLLLLLLLTTTTTTT",
-   "TTTTTTLLLLLLLLLLLTTTTTTT",
-   "TTTTTTLLLLLLLLLLLTTTTTTT",
-   "TTTTTTjTjTPPPTjTjTTTTTTT",
-   "TTTTTT.TTTPDPTTT.TTTTTTT",
-   "TTTTTT.jj.eee.jj.TTTTTTT",
-   "TTTTTTj.........jTTTTTTT",
-   "TTTTTTj...eee...jTTTTTTT",
-   "TTTT..j.j.eee.j..DJTTTTT",
-   "TTTT..j...eee...j..TTTTT",
-   "cccccc.j..eee..j.ccccccc",
-   "cccccc..jkeeekj..ccccccc",
-   "ccccccccckeeekcccccccccc",
-   "ccccccccckeeekcccccccccc",
-   "ccccccccckeeekcccccccccc",
-   "ccccccccckeeekcccccccccc",
-   "ccccccccckeeekcccccccccc",
-   "ccccccccckvvvkcccccccccc"
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccAcccccccccccc",
+   "cccccccccccDcccccccccccc",
+   "ccccccccc.....cccccccccc",
+   "ccccccc.........cccccccc",
+   "ccccccc.........cBcccccc",
+   "ccccccc.c.....c..D.ccccc",
+   "ccccccc.........c..ccccc",
+   "cccccccc.......ccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "ccccccccccvvvccccccccccc"
   ],
   "exits": {
    "v": "KANTO_ROUTE_23"
   },
   "buildings": {
-   "J": "johto",
-   "L": "league",
-   "P": "league"
+   "A": "league",
+   "B": "johto"
   },
   "roofs": {
-   "J": [
-    65,
-    180,
-    139
-   ],
-   "L": [
-    213,
-    230,
-    197
-   ],
-   "P": [
-    213,
-    230,
-    197
-   ],
-   "_statues": [
-    [
-     8,
-     7
-    ],
-    [
-     14,
-     7
-    ],
-    [
-     8,
-     10
-    ],
-    [
-     14,
-     10
-    ],
-    [
-     8,
-     13
-    ],
-    [
-     14,
-     13
+   "_picture": {
+    "f": "fr_ground/3_9.png",
+    "at": [
+     0,
+     0
     ]
-   ]
-  },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     10,
-     13,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
    },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     13,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     10,
-     14,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     14,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     10,
-     17,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     17,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     10,
-     18,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     18,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   }
-  ],
-  "signs": [],
-  "locked": {
-   "johto": "The ride to Johto is for Champions only. Beat the Elite Four first!"
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "inside": {
    "11,6": "lobby"
   },
+  "edge_to": {
+   "10,19": [
+    10,
+    0
+   ],
+   "11,19": [
+    11,
+    0
+   ],
+   "12,19": [
+    12,
+    0
+   ]
+  },
   "rooms": {
    "lobby": {
-    "theme": "room",
     "art": [
      "ccccccccccccccccccccccccc",
-     "mmmmNmmmmcccccccccccccccc",
-     "..m...m..cccccccccccccccc",
-     ".........cccccccccccccccc",
-     "........mcccccccccccccccc",
-     "mm.......cccccccccccccccc",
-     ".m......mcccccccccccccccc",
-     "Nm.......mccccccccccccccc",
-     "mm......mmmmmmmmmmmmmmmmm",
-     "..........mmmmmmmmmmmmmmm",
-     ".mm.......mmmN.mm........",
-     ".mm.......mmmmmmm........",
+     "cccc^cccccccccccccccccccc",
+     "..c...c..cccccccccccccccc",
+     ".....N...cccccccccccccccc",
+     "........ccccccccccccccccc",
+     "mc.......cccccccccccccccc",
+     "cc......ccccccccccccccccc",
+     "Nm.......cccccccccccccccc",
+     "mc......ccccccccccccccccc",
+     "..........ccccccccccccccc",
+     ".cc.......mccNccm........",
+     ".cc.......cmmmmmc........",
      ".........................",
-     "..................mm.mm..",
-     "m.................mm.mm..",
-     ".........................",
+     "..................cc.ccN.",
+     "c<.....N..........cc.cc..",
+     "................N........",
      "...........v.............",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:11,6"
+     "v": "OUT:11,6",
+     "^": "ROOM:league_lorelei",
+     "<": "ROOM:lobby_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      229,
-      225,
-      175
-     ],
-     "_wall": [
-      246,
-      238,
-      164
-     ],
-     "_things": {
-      "0,1": [
-       230,
-       189,
-       115
-      ],
-      "1,1": [
-       230,
-       139,
-       98
-      ],
-      "2,1": [
-       82,
-       82,
-       106
-      ],
-      "3,1": [
-       246,
-       238,
-       164
-      ],
-      "5,1": [
-       246,
-       238,
-       164
-      ],
-      "6,1": [
-       82,
-       82,
-       106
-      ],
-      "7,1": [
-       230,
-       139,
-       98
-      ],
-      "8,1": [
-       230,
-       189,
-       115
-      ],
-      "2,2": [
-       123,
-       123,
-       123
-      ],
-      "6,2": [
-       123,
-       123,
-       123
-      ],
-      "8,4": [
-       82,
-       82,
-       106
-      ],
-      "0,5": [
-       255,
-       131,
-       115
-      ],
-      "1,5": [
-       255,
-       131,
-       115
-      ],
-      "1,6": [
-       255,
-       131,
-       115
-      ],
-      "8,6": [
-       82,
-       82,
-       106
-      ],
-      "1,7": [
-       255,
-       131,
-       115
-      ],
-      "9,7": [
-       255,
-       255,
-       255
-      ],
-      "0,8": [
-       255,
-       131,
-       115
-      ],
-      "1,8": [
-       82,
-       82,
-       106
-      ],
-      "8,8": [
-       82,
-       82,
-       106
-      ],
-      "9,8": [
-       230,
-       189,
-       115
-      ],
-      "10,8": [
-       246,
-       238,
-       164
-      ],
-      "11,8": [
-       246,
-       238,
-       164
-      ],
-      "12,8": [
-       246,
-       238,
-       164
-      ],
-      "13,8": [
-       255,
-       255,
-       255
-      ],
-      "14,8": [
-       230,
-       139,
-       98
-      ],
-      "15,8": [
-       246,
-       238,
-       164
-      ],
-      "16,8": [
-       246,
-       238,
-       164
-      ],
-      "17,8": [
-       255,
-       255,
-       255
-      ],
-      "18,8": [
-       246,
-       238,
-       164
-      ],
-      "19,8": [
-       230,
-       139,
-       98
-      ],
-      "20,8": [
-       230,
-       139,
-       98
-      ],
-      "21,8": [
-       246,
-       238,
-       164
-      ],
-      "22,8": [
-       230,
-       139,
-       98
-      ],
-      "23,8": [
-       230,
-       139,
-       98
-      ],
-      "24,8": [
-       255,
-       255,
-       255
-      ],
-      "10,9": [
-       246,
-       238,
-       164
-      ],
-      "11,9": [
-       82,
-       82,
-       106
-      ],
-      "12,9": [
-       82,
-       82,
-       106
-      ],
-      "13,9": [
-       82,
-       82,
-       106
-      ],
-      "14,9": [
-       82,
-       82,
-       106
-      ],
-      "15,9": [
-       246,
-       238,
-       164
-      ],
-      "16,9": [
-       246,
-       238,
-       164
-      ],
-      "17,9": [
-       82,
-       82,
-       106
-      ],
-      "18,9": [
-       230,
-       139,
-       98
-      ],
-      "19,9": [
-       230,
-       139,
-       98
-      ],
-      "20,9": [
-       230,
-       139,
-       98
-      ],
-      "21,9": [
-       230,
-       139,
-       98
-      ],
-      "22,9": [
-       82,
-       82,
-       106
-      ],
-      "23,9": [
-       82,
-       82,
-       106
-      ],
-      "24,9": [
-       230,
-       189,
-       115
-      ],
-      "1,10": [
-       255,
-       255,
-       255
-      ],
-      "2,10": [
-       255,
-       255,
-       255
-      ],
-      "10,10": [
-       255,
-       131,
-       115
-      ],
-      "11,10": [
-       82,
-       82,
-       106
-      ],
-      "12,10": [
-       82,
-       82,
-       106
-      ],
-      "15,10": [
-       82,
-       82,
-       106
-      ],
-      "16,10": [
-       255,
-       131,
-       115
-      ],
-      "1,11": [
-       222,
-       213,
-       230
-      ],
-      "2,11": [
-       255,
-       255,
-       255
-      ],
-      "10,11": [
-       82,
-       82,
-       106
-      ],
-      "11,11": [
-       255,
-       131,
-       115
-      ],
-      "12,11": [
-       255,
-       131,
-       115
-      ],
-      "13,11": [
-       180,
-       180,
-       164
-      ],
-      "14,11": [
-       255,
-       131,
-       115
-      ],
-      "15,11": [
-       255,
-       131,
-       115
-      ],
-      "16,11": [
-       82,
-       82,
-       106
-      ],
-      "18,13": [
-       255,
-       255,
-       255
-      ],
-      "19,13": [
-       255,
-       255,
-       255
-      ],
-      "21,13": [
-       255,
-       255,
-       255
-      ],
-      "22,13": [
-       255,
-       255,
-       255
-      ],
-      "0,14": [
-       82,
-       82,
-       106
-      ],
-      "18,14": [
-       222,
-       213,
-       230
-      ],
-      "19,14": [
-       255,
-       255,
-       255
-      ],
-      "21,14": [
-       222,
-       213,
-       230
-      ],
-      "22,14": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/13_0.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "ELITE_FOUR",
+     {
+      "text": "Guard",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "From here on, you face the Elite Four. Once you go in, there's no turning back!"
+       ]
+      }
+     },
      "Shop",
-     "Heal"
+     "Heal",
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Agatha's Ghost Pokémon are terrifying. Bring something that can hit them!"
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Yo, champ in the making! The Elite Four fight one after another, no rest between. Stock up!"
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Maybe one day I'll be a member of the Elite Four..."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,14": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "23,13": {
+      "m": "face",
+      "d": "r"
+     },
+     "16,15": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "13,10": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,7": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/13_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       25,
+       18
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League"
+   },
+   "lobby_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "c<.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:lobby"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/13_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/13_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon League 2F"
+   },
+   "league_lorelei": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccncccccc",
+     "c.c.......c.c",
+     "c...........c",
+     "c.c...N...c.c",
+     "c.c.......c.c",
+     "c...........c",
+     "c.c.......c.c",
+     "c.c.......c.c",
+     "c...........c",
+     "ccccccccccccc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_bruno"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_75.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_1",
+        "f": "fr_ground/1_75_won.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Lorelei",
+      "action": "LEAGUE",
+      "index": 0,
+      "lines": [
+       "Lorelei: Welcome to the Pokémon League. My Ice Pokémon will freeze you solid!"
+      ]
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_INDIGO_PLATEAU_1"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_75.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       13
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_1",
+        "f": "fr_top/1_75_won.png"
+       }
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lorelei's room"
+   },
+   "league_bruno": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccncccccc",
+     "c.c.......c.c",
+     "c...........c",
+     "c.c...N...c.c",
+     "c.c.......c.c",
+     "c...........c",
+     "c.c.......c.c",
+     "c.c.......c.c",
+     "c...........c",
+     "ccccccccccccc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_agatha"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_76.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_2",
+        "f": "fr_ground/1_76_won.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Bruno",
+      "action": "LEAGUE",
+      "index": 1,
+      "lines": [
+       "Bruno: I've trained with my Fighting Pokémon to the limit. Hoo hah!"
+      ]
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_INDIGO_PLATEAU_2"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_76.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       13
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_2",
+        "f": "fr_top/1_76_won.png"
+       }
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Bruno's room"
+   },
+   "league_agatha": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccncccccc",
+     "c.c.......c.c",
+     "c...........c",
+     "c.c...N...c.c",
+     "c.c.......c.c",
+     "c...........c",
+     "c.c.......c.c",
+     "c.c.......c.c",
+     "c...........c",
+     "ccccccccccccc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_lance"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_77.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_3",
+        "f": "fr_ground/1_77_won.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Agatha",
+      "action": "LEAGUE",
+      "index": 2,
+      "lines": [
+       "Agatha: Oak's taken a shine to you, has he? Let's see what you're made of!"
+      ]
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_INDIGO_PLATEAU_3"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_77.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       13
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_3",
+        "f": "fr_top/1_77_won.png"
+       }
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Agatha's room"
+   },
+   "league_lance": {
+    "art": [
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccc<ccccccccccccccccccccc",
+     "c.c.......c.cccccccccccccccc",
+     "c...........cccccccccccccccc",
+     "c.c...N...c.cccccccccccccccc",
+     "c.c.......c.ccc............c",
+     "c...........ccc............c",
+     "c.c.......c.ccc............c",
+     "c.c.......c.ccc............c",
+     "c...........ccc......c.n.c.c",
+     "cccccc.cccccccc.....cccccccc",
+     "cccccc.cccccccc.....cccccccc",
+     "....................cccccccc",
+     ".c..c...c..c........cccccccc",
+     "....................cccccccc",
+     "....................cccccccc",
+     "....................cccccccc",
+     "cc..c...c..c........cccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:league_agatha",
+     "<": "ROOM:league_champion"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_78.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_4",
+        "f": "fr_ground/1_78_won.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Lance",
+      "action": "LEAGUE",
+      "index": 3,
+      "lines": [
+       "Lance: I am Lance, the Dragon master. Let's begin!"
+      ]
+     }
+    ],
+    "moves": {
+     "6,8": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        5
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_INDIGO_PLATEAU_4"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_78.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       28,
+       24
+      ],
+      "when": [
+       {
+        "flag": "league_won_INDIGO_PLATEAU_4",
+        "f": "fr_top/1_78_won.png"
+       }
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lance's room"
+   },
+   "league_champion": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     ".............",
+     ".............",
+     ".............",
+     ".............",
+     ".............",
+     "......N......",
+     ".............",
+     ".............",
+     ".............",
+     ".............",
+     "c...........c",
+     "ccccc...ccccc",
+     "ccccc...ccccc",
+     "ccccc...ccccc",
+     "ccccc...ccccc",
+     "ccccc...ccccc",
+     "ccccc.v.ccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_lance"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_79.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "{rival_name}",
+      "action": "LEAGUE",
+      "index": 4,
+      "lines": [
+       "{rival_name}: Hey, {player_name}! I'm the Champion now. You're too late!"
+      ]
+     }
+    ],
+    "moves": {
+     "6,8": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_79.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       20
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Champion's room"
+   }
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_9.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     20
     ]
    }
-  }
+  ]
  },
  "CERULEAN_CAVE": {
   "theme": "cave",

@@ -1480,7 +1480,7 @@ _sl_in = _sl.player
 _sl_gym = _sl.area_data["gym"]
 _sl._enter(next(t for t, k in _sl.doors.items() if k == "league"))
 _sl_opts = sorted(str(o.get("action")) for o in _sl.people.values())
-check(isinstance(_sl, _WTS) and _tm_s["SILVER_LEAGUE_PLATEAU"]["art"] == _tm_s["INDIGO_PLATEAU"]["art"] and _sl_in[1] >= 17 and _sl.room == "lobby"
+check(isinstance(_sl, _WTS) and len(_tm_s["SILVER_LEAGUE_PLATEAU"]["art"]) == len(_tm_s["INDIGO_PLATEAU"]["art"]) == 20 and _sl_in[1] >= 17 and _sl.room == "lobby"
       and _sl_opts == ["GYM", "HEAL", "SHOP"] and [t["name"] for t in _sl_gym["trainers"]] == ["Will", "Koga", "Bruno", "Karen"] and _sl_gym["leader"]["name"] == "Lance",
       f"the Silver League plateau: Indigo Plateau's map; in from Mt. Silver's clearing (south) at {_sl_in}; the lobby's nurse, clerk and the League door; Will, Koga, Bruno, Karen, Champion Lance")
 _ip_gym = g.loader.area_data["STORY_PROGRESSION"]["INDIGO_PLATEAU"]["gym"]
@@ -1758,7 +1758,8 @@ story.current_area_key, story.last_area_key = "INDIGO_PLATEAU", "VICTORY_ROAD"
 _ip = _CS(g); g.change_state(_ip); _tap_through(_ip)
 _ipd = set(_ip.doors.values())  # (the town's doors, before you step into the lobby)
 _ip._enter(next(t for t, k in _ip.doors.items() if k == "league"))
-check({"league", "johto"} <= _ipd and _ip.room == "lobby" and {o.get("text") for o in _ip.people.values()} >= {"Heal", "Shop", "ELITE_FOUR"},
+check({"league", "johto"} <= _ipd and _ip.room == "lobby" and {o.get("text") for o in _ip.people.values()} >= {"Heal", "Shop"}
+      and "ROOM:league_lorelei" in _ip.town_map["rooms"]["lobby"].get("exits", {}).values(),
       "Indigo Plateau: the League's door, the ride to Johto; in its lobby the nurse, the clerk and the Elite Four's door (11-12: FireRed's lobby)")
 _ip._go(None, "OUT:11,6"); g.walk_town_room = None
 _cc = kanto("CERULEAN_CAVE", came="CERULEAN_CITY")

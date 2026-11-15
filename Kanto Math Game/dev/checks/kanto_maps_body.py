@@ -1291,6 +1291,43 @@ for _k, _v in _cfs.items():
     if _v is not None:
         story.story_flags[_k] = _v
 
+# ---- batch 24: the Seafoam Islands from the file; batch 25: Route 23, Victory Road, Indigo Plateau, the Elite Four's rooms
+sf = open_map("SEAFOAM_ISLANDS", "KANTO_ROUTE_20")
+check(sf.run.n_floors == 5 and "fr_ground/1_83" in json.dumps(sf.recipe["art"]["floors"][0]), "Seafoam: FireRed's five floors, drawn from the file")
+check(sorted(t for t, v in sf.run.floor.decor.items() if str(v).startswith("boulder")) == [(22, 12), (32, 9)], "...1F's two boulders where FireRed has them")
+_floor(sf, 3)
+check(sorted(t for t, v in sf.run.floor.decor.items() if str(v).startswith("hole")) == [(6, 18), (9, 18)], "...B3F's two holes take its boulders (ours, kept)")
+_floor(sf, 4)
+check(_figure(sf, "CHALLENGE ARTICUNO") == (9, 2), "...B4F: Articuno where FireRed has it")
+r23 = open_map("KANTO_ROUTE_23", "KANTO_ROUTE_22")
+_gd = sorted((m.y, m.payload.get("text")) for m in r23.run.floor.movers if m.kind == "figure" and "GUARD" in str(m.payload.get("text")))
+check((r23.run.floor.w, r23.run.floor.h) == (24, 160) and len(_gd) == 8, f"Route 23: FireRed's 24 x 160, the eight badge guards ({len(_gd)})")
+vr = open_map("VICTORY_ROAD", "KANTO_ROUTE_23")
+_n = []
+for _i in range(3):
+    _floor(vr, _i)
+    _n.append(sum(1 for m in vr.run.floor.movers if m.kind == "trainer"))
+check(vr.run.n_floors == 3 and _n == [2, 5, 5], f"Victory Road: FireRed's three floors, its trainers on FireRed's spots ({_n})")
+_lw = {k: story.story_flags.pop(k, None) for k in [f"league_won_INDIGO_PLATEAU_{i}" for i in range(1, 6)]}
+ip = open_map("INDIGO_PLATEAU", "KANTO_ROUTE_23")
+_pp = _room_of(ip, "lobby")
+check(_pp.get("Heal") == (13, 10) and _pp.get("Shop") == (0, 7), f"Indigo Plateau: the League's lobby, the nurse and the clerk across their counters ({_pp})")
+_pp = _room_of(ip, "league_lorelei")
+check(_pp.get("Lorelei") == (6, 5), "...Lorelei in her own room")
+ip.player = (6, 3); ip.facing = (0, -1); ip.anim = 0
+walk(ip, "u")
+check(ip.room == "league_lorelei" and tuple(ip.player) == (6, 3), f"...her far door stays shut till you've won ({ip.room}, {ip.player})")
+story.story_flags["league_won_INDIGO_PLATEAU_1"] = True
+frames(25)
+check(getattr(ip, "_pic_now", "").endswith("1_75_won.png"), f"......won: FireRed's open door drawn ({getattr(ip, '_pic_now', None)})")
+ip.player = (6, 3); ip.facing = (0, -1); ip.anim = 0
+walk(ip, "uu")
+check(g.current_state.room == "league_bruno", f"......and through it to Bruno's room ({g.current_state.room})")
+for _k, _v in _lw.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+
 # ---- Silph Co. in the Journal (Jordan, 11-14: "very clearly guided"): three steps, the marker floor by floor
 _sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}
@@ -1394,6 +1431,8 @@ _steps = [
     ("six badges: by sea to Cinnabar", _journal(6), "m13"),
     ("Cinnabar: the Gym's key is in the Mansion", _journal(6, ["visited_CINNABAR_ISLAND"]), ("k_mansion", "POKEMON_MANSION")),
     ("the Secret Key: Blaine's quiz Gym", _journal(6, ["got_secret_key"]), ("m14", "CINNABAR_ISLAND")),
+    ("seven badges: Viridian's Gym", _journal(7), ("m15", "VIRIDIAN_CITY")),
+    ("eight badges: the League", _journal(8), "m16"),
 ]
 for _what, (_id, _to), _want in _steps:
     _ok = _id == _want if isinstance(_want, str) else (_id, _to) == _want

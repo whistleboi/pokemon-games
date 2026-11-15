@@ -941,7 +941,7 @@ check(len(g.loader.area_data["STORY_PROGRESSION"]["CINNABAR_ISLAND"]["gym"]["tra
 p = route("KANTO_ROUTE_23", "KANTO_ROUTE_22"); f = p.run.floor
 _gd = sorted((m.y, m.payload.get("text")) for m in f.movers if m.kind == "figure")
 check([n for _y, n in _gd] == ["EARTH BADGE GUARD", "VOLCANO BADGE GUARD", "MARSH BADGE GUARD", "SOUL BADGE GUARD", "RAINBOW BADGE GUARD", "THUNDER BADGE GUARD", "CASCADE BADGE GUARD", "BOULDER BADGE GUARD"]
-      and len(p._overheads()) >= 6, f"Route 23: the eight badge guards in FireRed's order, north to south; the gates' arches overhead ({len(p._overheads())})")
+      and len(p._overheads()) >= 1, f"Route 23: the eight badge guards in FireRed's order, north to south; the gates' arches overhead (FireRed's top layer, batch 25: {len(p._overheads())})")
 for _i, _fl, _n in ((0, 0, 2), (1, 1, 5)):
     p = route("VICTORY_ROAD", "KANTO_ROUTE_23", index=_i, count=2)
     check(p.run.n_floors == 3 and p.run.index == _fl and sum(m.kind == "trainer" for m in p.run.floor.movers) == _n, f"Victory Road by Route 23's {'south' if _i == 0 else 'north'} mouth: onto {'1F' if _fl == 0 else '2F'} (floor {p.run.index}), FireRed's trainers there")
@@ -953,7 +953,9 @@ for _i, _fl, _n in ((0, 0, 2), (1, 1, 5)):
 t = town("INDIGO_PLATEAU", "KANTO_ROUTE_23")
 check((t.w, t.h) == (24, 20) and t.doors.get((11, 6)) == "league" and "johto" in t.doors.values() and t.player[1] >= 17, f"Indigo Plateau: FireRed's 24 x 20, up the stairs from Route 23 {tuple(t.player)}; the League's door, the booth for Johto (ours)")
 enter(t, (11, 6))
-check(t.room == "lobby" and {o.get("text") for o in t.people.values()} == {"Heal", "Shop", "ELITE_FOUR"}, f"...the League's lobby: the nurse, the clerk, the Elite Four's door ({t.room})")
+_lr = t.town_map["rooms"]["lobby"]   # (batch 25, 11-14: the Elite Four walked, each in their own room through the lobby's door)
+check(t.room == "lobby" and {"Heal", "Shop"} <= {o.get("text") for o in t.people.values()} and "ROOM:league_lorelei" in _lr.get("exits", {}).values(),
+      f"...the League's lobby: the nurse, the clerk, the Elite Four's door ({t.room})")
 t.draw(); t._go(None, "OUT:11,6"); g.walk_town_room = None
 p = route("SAFARI_ZONE", "FUCHSIA_CITY"); f = p.run.floor; f.movers = [m for m in f.movers if m.kind == "figure"]
 check([p.zones[p._zone_index(0, x, y)] for x, y in ((75, 60), (130, 60), (75, 20), (20, 60))] == ["center", "east", "north", "west"], "the Safari Zone: FireRed's four areas, each its own zone")

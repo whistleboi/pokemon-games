@@ -52,7 +52,8 @@ GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town"
             "TM125": ("DOUBLE-TEAM", "FireRed TM32: lying in the Safari Zone's west area"),
             "TM126": ("PSYCHIC", "FireRed TM29: Mr. Psychic, Saffron City"),
             "TM127": ("FOCUS-PUNCH", "FireRed TM01: lying in Silph Co., 5F"),
-            "TM128": ("TORMENT", "FireRed TM41: lying in Silph Co., 4F")}
+            "TM128": ("TORMENT", "FireRed TM41: lying in Silph Co., 4F"),
+            "TM129": ("DRAGON-CLAW", "FireRed TM02: lying in Victory Road, 1F")}
 # Sold only by the shop that lists them (Jordan, 11-13: match the games): Lilycove Department Store's TM Corner
 # (Emerald and ORAS: Fire Blast, Thunder, Blizzard), never on an ordinary Mart's shelf.
 SHOP_TMS = {"TM109": ("FIRE-BLAST", "Lilycove Department Store 4F"), "TM110": ("THUNDER", "Lilycove Department Store 4F"),
