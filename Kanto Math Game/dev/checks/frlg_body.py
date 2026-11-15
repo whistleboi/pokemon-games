@@ -1019,14 +1019,14 @@ t = town("ONE_ISLAND", "KINDLE_ROAD")
 check(isinstance(t, _WTS) and (t.w, t.h) == (24, 20) and t.player[0] >= 21 and set(t.exits.values()) == {"KINDLE_ROAD", "TREASURE_BEACH"},
       f"One Island: FireRed's 24 x 20; in from Kindle Road on the east {t.player}")
 enter(t, (14, 5))
-check(t.room == "center" and len(t.people) == 3 and t.people[(2, 2)].get("action") == "SHOP" and "any" in t.people[(13, 2)],
-      f"...the Network Center: the shared Center room, with the shop's clerk and Celio standing in it ({t.room})")
+check(t.room == "center" and t.people[(5, 2)].get("action") == "SHOP" and t.people[(6, 2)].get("action") == "HEAL" and "any" in t.people[(14, 6)],
+      f"...the Network Center: FireRed's own room (batch 27), the nurse and the shop's clerk across the counter, Celio by his machine ({t.room})")
 t._go(None, "OUT:14,5")
 g.walk_town_room = None
 check(t.doors.get((12, 18)) == "harbor" and t.doors.get((14, 5)) == "center" and t._door_options("harbor") and t._door_options("center"),
       f"...the harbour's door is the mat at the pier's end; the Network Center's door {sorted(t.doors.items())}")
 check(tstep(t, (11, 17), (-1, 0)) == (11, 17) and "Surf" in t.toast, "...the sea beside the pier needs Surf")
-check(all(t.rows[6][x] == "#" for x in range(18, 23)) and t.rows[6][16] == ".", "...the row above the east house is solid")
+check(t.doors.get((19, 9)) == "house" and t.doors.get((8, 11)) == "house", "...the east and west houses' doors (FireRed's)")
 t.draw()
 p = route("TREASURE_BEACH", "ONE_ISLAND")
 f = p.run.floor

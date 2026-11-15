@@ -1328,6 +1328,31 @@ for _k, _v in _lw.items():
     if _v is not None:
         story.story_flags[_k] = _v
 
+# ---- batch 27: the Sevii Islands begin (One Island, Treasure Beach, Kindle Road, Mt. Ember), from FireRed's pictures
+oi = open_map("ONE_ISLAND", "KINDLE_ROAD")
+check((oi.w, oi.h) == (24, 20) and "fr_ground/3_12" in json.dumps(oi.town_map), "One Island: FireRed's own picture")
+_pp = _room_of(oi, "center")
+check(_pp.get("Heal") == (6, 2) and (14, 6) in [p for n, p in _pp.items() if n and n.startswith(("Give Celio", "Celio's"))], f"...the Network Center: the nurse across her counter, Celio by his machine ({_pp})")
+_pp = _room_of(oi, "harbor")
+check(any(p == (8, 6) for p in _pp.values()), f"...the harbour: the Seagallop's sailor on the pier ({_pp})")
+kr = open_map("KINDLE_ROAD", "ONE_ISLAND")
+check(len(_trainers(kr)) == 12 and _trainers(kr).get("Mik & Kia") == (8, 68), f"Kindle Road: FireRed's twelve trainers on their spots ({len(_trainers(kr))})")
+_floor(kr, kr.recipe["art"]["room_floors"]["spa"])
+check(_figure(kr, "EMBER SPA") == (15, 11), "...the Ember Spa: the old man by the pool (HM Rock Smash)")
+_mef = {k: story.story_flags.pop(k, None) for k in ("met_ember_researchers", "sevii_ember_rocket")}
+me = open_map("MT_EMBER", "KINDLE_ROAD")
+_rs = _figure(me, "TALK TO THE RESEARCHERS")
+story.story_flags["met_ember_researchers"] = True   # (the Rockets stand at the door once you've heard of them)
+me = open_map("MT_EMBER", "KINDLE_ROAD")
+check(me.run.n_floors == 13 and _rs == (29, 45) and _figure(me, "CHASE OFF TEAM ROCKET") == (42, 40),
+      f"Mt. Ember: thirteen maps; the researchers at the foot, the Rockets at the Ruby Path's door ({[(m.payload.get('text'), m.x, m.y) for m in me.run.floor.movers if m.kind == 'figure']})")
+for _k, _v in _mef.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+_floor(me, 4)
+check(_figure(me, "CHALLENGE MOLTRES") == (9, 6), "...Moltres on the summit, where FireRed has it")
+
 # ---- Silph Co. in the Journal (Jordan, 11-14: "very clearly guided"): three steps, the marker floor by floor
 _sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}

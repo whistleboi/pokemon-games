@@ -290,7 +290,8 @@ for _a in sorted(DATA):
     if _a not in MAPS or DATA[_a].get("area_type") == "town": continue
     _m = MAPS[_a]
     _fl = _m.get("floors") or [_m]
-    _have = {x for f in _fl for x in f.get("people", [])} | ({"BOSS"} if any(f.get("boss_spot") for f in _fl) else set())
+    _who = lambda x: [x] if isinstance(x, str) else [y.get("text") if isinstance(y, dict) else y for y in x] if isinstance(x, list) else [x.get("text")] if isinstance(x, dict) else []   # (a rebuilt map's people: names, lists, whole options; 11-14)
+    _have = {y for f in _fl for x in f.get("people", []) for y in _who(x)} | ({"BOSS"} if any(f.get("boss_spot") for f in _fl) else set())
     _kinds = set((_m.get("buildings") or {}).values()) | {k for f in _fl for k in (f.get("buildings") or {}).values()}
     _lost = [o["text"] for o in DATA[_a].get("route_menu", []) if o.get("action") in ("EVENT", "BOSS", "NPC")
              and o["text"] not in _have and o.get("door") not in _kinds and not (o.get("action") == "BOSS" and "BOSS" in _have)]

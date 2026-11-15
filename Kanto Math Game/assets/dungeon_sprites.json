@@ -4794,6 +4794,126 @@
     },
     "CERULEAN_CAVE:CHALLENGE MEWTWO": {
       "sheet": "fr_139.png"
+    },
+    "ONE_ISLAND:Man": {
+      "sheet": "fr_56.png"
+    },
+    "ONE_ISLAND:Woman": {
+      "sheet": "fr_24.png"
+    },
+    "ONE_ISLAND:Shop": {
+      "sheet": "fr_64.png"
+    },
+    "ONE_ISLAND:Give Celio the Gems": {
+      "sheet": "fr_73.png"
+    },
+    "ONE_ISLAND:Celio's Rainbow Pass": {
+      "sheet": "fr_73.png"
+    },
+    "ONE_ISLAND:Celio's Network Machine": {
+      "sheet": "fr_73.png"
+    },
+    "ONE_ISLAND:Girl": {
+      "sheet": "fr_16.png"
+    },
+    "ONE_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "ONE_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ONE_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ONE_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ONE_ISLAND:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "ONE_ISLAND:Old woman": {
+      "sheet": "fr_22.png"
+    },
+    "ONE_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Navel Rock": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Birth Island": {
+      "sheet": "fr_62.png"
+    },
+    "TREASURE_BEACH:DIG IN THE SAND": {
+      "sheet": "fr_19.png"
+    },
+    "KINDLE_ROAD:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "KINDLE_ROAD:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "KINDLE_ROAD:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "KINDLE_ROAD:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "KINDLE_ROAD:Woman": {
+      "sheet": "fr_35.png"
+    },
+    "KINDLE_ROAD:Black belt": {
+      "sheet": "fr_54.png"
+    },
+    "KINDLE_ROAD:EMBER SPA": {
+      "sheet": "fr_30.png"
+    },
+    "KINDLE_ROAD:Man": {
+      "sheet": "fr_32.png"
+    },
+    "KINDLE_ROAD:Woman ": {
+      "sheet": "fr_30.png"
+    },
+    "MT_EMBER:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "MT_EMBER:FIRE STONE": {
+      "item": "POKE_BALL"
+    },
+    "MT_EMBER:DIRE HIT": {
+      "item": "POKE_BALL"
+    },
+    "MT_EMBER:Grunt": {
+      "sheet": "fr_49.png"
+    },
+    "MT_EMBER:CHASE OFF TEAM ROCKET": {
+      "sheet": "fr_49.png"
+    },
+    "MT_EMBER:TALK TO THE RESEARCHERS": {
+      "sheet": "fr_56.png"
+    },
+    "MT_EMBER:CHALLENGE MOLTRES": {
+      "sheet": "fr_137.png"
     }
   },
   "townsperson": "NPC 17.png",
