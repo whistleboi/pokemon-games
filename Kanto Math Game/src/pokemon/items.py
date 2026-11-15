@@ -127,7 +127,10 @@ VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it 
              "BIG_PEARL": {"price": 7500, "text": "A big, shining pearl. Sell it for a good price."},
              "PEARL": {"price": 1400, "text": "A small, pretty pearl. Sell it for a little money."},
              "STARDUST": {"price": 2000, "text": "Lovely red sand. Sell it for a little money."},
-             "STAR_PIECE": {"price": 9800, "text": "A shard of a pretty gem. Sell it for a good price."}}
+             "STAR_PIECE": {"price": 9800, "text": "A shard of a pretty gem. Sell it for a good price."},
+             "TINY_MUSHROOM": {"price": 500, "text": "A small, rare mushroom collectors love. Sell it for a little money."},
+             "BIG_MUSHROOM": {"price": 5000, "text": "A big, rare mushroom collectors love. Sell it for a good price."},
+             "HEART_SCALE": {"price": 100, "text": "A pretty, heart-shaped scale that shines like a rainbow."}}
 
 
 def use_vitamin(pokemon, item):
@@ -171,6 +174,9 @@ def describe(item):
     from src.pokemon import zpower
     if item in zpower.ITEM_TEXT:
         return zpower.ITEM_TEXT[item]
+    if item == "EON_FLUTE":  # (Soaring in the Sky: src/world/soaring3d.py)
+        from src.world import soaring3d
+        return soaring3d.FLUTE_TEXT
     return info(item).get("text") or catching.BALL_TEXT.get(item, "")
 
 

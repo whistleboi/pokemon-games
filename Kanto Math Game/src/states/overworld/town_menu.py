@@ -120,6 +120,8 @@ class TownMenu:
 
         if condition == "has_8_badges":
             return sum(len(b) for b in story.badges.values()) >= 8
+        if condition.startswith("has_badge:"):  # (a badge earned: ORAS's Wattson after the Rain Badge)
+            return story.has_badge(condition[10:])
 
         if condition.startswith("has_item:"):
             return story.inventory.get(condition[9:], 0) > 0

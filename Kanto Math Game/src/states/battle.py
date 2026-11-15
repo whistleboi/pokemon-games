@@ -2804,8 +2804,9 @@ class WildBattleState(TrainerBattleState):
             return
         flags = self.game.story_manager.story_flags
         flags[self.victory_flag] = True
-        if balance.is_legendary(self.opponent_pokemon.id):
-            flags[f"legend_rematch_{self.victory_flag}"] = True
+        if balance.is_legendary(self.opponent_pokemon.id):   # (back the next day, Jordan 11-14: the day it was beaten)
+            import datetime
+            flags[f"legend_rematch_{self.victory_flag}"] = datetime.date.today().toordinal()
 
     def catch_no(self):
         self.btn_yes.set_visibility(False)
@@ -3365,3 +3366,14 @@ class TrainerVictoryState(GameState):
         if self.trainer_sprite:
             self.game.screen.blit(self.trainer_sprite, self.trainer_sprite.get_rect(center=(self.game.width//2, self.game.height*0.4)))
         self.dialogue_box.draw(self.game.screen)
+
+
+def legend_back(flags, victory_flag):
+    """A beaten, uncaught legendary is there again: from the day after it was beaten (an old save's True: now)."""
+    when = flags.get(f"legend_rematch_{victory_flag}")
+    if not when:
+        return False
+    if when is True or not isinstance(when, int):
+        return True
+    import datetime
+    return datetime.date.today().toordinal() > when
