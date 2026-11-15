@@ -264,6 +264,11 @@ def sprite_map(game):
                 _sprite_map["all"] = json.load(f)
         except (OSError, ValueError):
             _sprite_map["all"] = {}
+        try:   # (an overlay's own looks: Hoenn's ORAS items and the people who give them, assets/hoenn_oras.json "FIGURES")
+            with open(os.path.join(game.assets.assets_dir or "", "hoenn_oras.json"), encoding="utf-8") as f:
+                _sprite_map["all"].setdefault("figures", {}).update(json.load(f).get("FIGURES") or {})
+        except (OSError, ValueError):
+            pass
     return _sprite_map["all"]
 
 

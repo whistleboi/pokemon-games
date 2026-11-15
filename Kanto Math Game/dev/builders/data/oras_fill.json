@@ -1,0 +1,4906 @@
+{
+ "DEWFORD_TOWN": {
+  "floors": {}
+ },
+ "EVER_GRANDE_CITY": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "27,17": "REVIVE"
+    },
+    "people": [
+     [
+      18,
+      14,
+      "TM29 PSYCHIC"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "TM29 PSYCHIC": {
+    "item": "HTM29"
+   }
+  }
+ },
+ "FALLARBOR_TOWN": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "2,15": "NUGGET"
+    },
+    "people": [
+     [
+      3,
+      9,
+      "Bug Maniac"
+     ],
+     [
+      13,
+      10,
+      "Professor Cozmo "
+     ]
+    ]
+   }
+  },
+  "givers": {
+   "Bug Maniac": "Bug Maniac",
+   "Professor Cozmo ": "Professor Cozmo"
+  }
+ },
+ "FORTREE_CITY": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "24,12": "SUPER_REPEL"
+    },
+    "people": [
+     [
+      3,
+      9,
+      "Old woman"
+     ],
+     [
+      11,
+      18,
+      "TM86 GRASS KNOT"
+     ],
+     [
+      37,
+      9,
+      "Winona"
+     ],
+     [
+      5,
+      10,
+      "Boy"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "TM86 GRASS KNOT": {
+    "item": "HTM86"
+   }
+  },
+  "givers": {
+   "Old woman": "Old woman",
+   "Winona": "Winona",
+   "Boy": "Boy"
+  }
+ },
+ "HOENN_FIERY_PATH": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      7,
+      32,
+      "TM06 TOXIC"
+     ],
+     [
+      25,
+      3,
+      "FIRE STONE"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "TM06 TOXIC": {
+    "item": "HTM06"
+   },
+   "FIRE STONE": {
+    "item": "FIRE_STONE"
+   }
+  }
+ },
+ "HOENN_GRANITE_CAVE": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      6,
+      6,
+      "Ruin Maniac Omari"
+     ],
+     [
+      8,
+      7,
+      "Hiker Davian"
+     ]
+    ],
+    "people": [
+     [
+      9,
+      9,
+      "Hiker "
+     ],
+     [
+      5,
+      7,
+      "ESCAPE ROPE"
+     ],
+     [
+      7,
+      4,
+      "POKE BALL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "ESCAPE ROPE": {
+    "item": "ESCAPE_ROPE"
+   },
+   "POKE BALL": {
+    "item": "POKE_BALLS"
+   }
+  },
+  "givers": {
+   "Hiker ": "Hiker"
+  }
+ },
+ "HOENN_JAGGED_PASS": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      10,
+      8,
+      "Expert Shelby",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 3
+      }
+     ],
+     [
+      16,
+      35,
+      "Camper Ethan",
+      {
+       "m": "look",
+       "d": "lr",
+       "s": 4
+      }
+     ],
+     [
+      9,
+      21,
+      "Fairy Tale Girl Nellie",
+      {
+       "m": "look",
+       "d": "ur",
+       "s": 3
+      }
+     ]
+    ],
+    "people": [
+     [
+      23,
+      24,
+      "SUPER REPEL"
+     ],
+     [
+      14,
+      38,
+      "MAX ETHER"
+     ],
+     [
+      15,
+      21,
+      "X DEFENSE"
+     ],
+     [
+      21,
+      20,
+      "TINY MUSHROOM"
+     ]
+    ],
+    "hidden": {
+     "7,29": "GREAT_BALL"
+    }
+   }
+  },
+  "figures": {
+   "SUPER REPEL": {
+    "item": "SUPER_REPEL"
+   },
+   "MAX ETHER": {
+    "item": "MAX_ETHER"
+   },
+   "X DEFENSE": {
+    "item": "X_DEFENSE"
+   },
+   "TINY MUSHROOM": {
+    "item": "TINY_MUSHROOM"
+   }
+  }
+ },
+ "HOENN_METEOR_FALLS": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      27,
+      5,
+      "FULL HEAL"
+     ],
+     [
+      2,
+      4,
+      "MOON STONE"
+     ],
+     [
+      26,
+      32,
+      "GREAT BALL"
+     ],
+     [
+      6,
+      25,
+      "STARDUST"
+     ],
+     [
+      4,
+      4,
+      "STAR PIECE"
+     ],
+     [
+      21,
+      19,
+      "TM02 DRAGON CLAW"
+     ],
+     [
+      15,
+      35,
+      "PP MAX"
+     ],
+     [
+      13,
+      30,
+      "SUPER REPEL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "FULL HEAL": {
+    "item": "FULL_HEAL"
+   },
+   "MOON STONE": {
+    "item": "MOON_STONE"
+   },
+   "GREAT BALL": {
+    "item": "GREAT_BALL"
+   },
+   "STARDUST": {
+    "item": "STARDUST"
+   },
+   "STAR PIECE": {
+    "item": "STAR_PIECE"
+   },
+   "TM02 DRAGON CLAW": {
+    "item": "HTM02"
+   },
+   "PP MAX": {
+    "item": "PP_MAX"
+   },
+   "SUPER REPEL": {
+    "item": "SUPER_REPEL"
+   }
+  }
+ },
+ "HOENN_MT_CHIMNEY": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "23,15": "ZINC",
+     "26,15": "PROTEIN"
+    },
+    "people": [
+     [
+      27,
+      17,
+      "TM59 INCINERATE"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "TM59 INCINERATE": {
+    "item": "HTM59"
+   }
+  }
+ },
+ "HOENN_MT_PYRE": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      9,
+      27,
+      "Poké Maniac Mark"
+     ],
+     [
+      17,
+      18,
+      "Psychic William"
+     ],
+     [
+      10,
+      43,
+      "Hex Maniac Valerie"
+     ],
+     [
+      11,
+      35,
+      "Black Belt Atsushi"
+     ],
+     [
+      11,
+      44,
+      "Fairy Tale Girl Momo"
+     ],
+     [
+      28,
+      39,
+      "Young Couple Dez & Luke"
+     ],
+     [
+      22,
+      27,
+      "Mysterious Sisters Elle & Aya"
+     ],
+     [
+      25,
+      24,
+      "Hex Maniac Tasha"
+     ],
+     [
+      24,
+      26,
+      "Backpacker Darnell"
+     ]
+    ],
+    "people": [
+     [
+      19,
+      40,
+      "CLEANSE TAG"
+     ],
+     [
+      17,
+      12,
+      "ULTRA BALL"
+     ],
+     [
+      20,
+      19,
+      "DUSK STONE"
+     ],
+     [
+      28,
+      37,
+      "SUPER REPEL"
+     ],
+     [
+      24,
+      20,
+      "SHINY STONE"
+     ],
+     [
+      25,
+      21,
+      "LAX INCENSE"
+     ],
+     [
+      27,
+      42,
+      "MAX POTION"
+     ]
+    ],
+    "hidden": {
+     "8,44": "ULTRA_BALL",
+     "27,17": "MAX_ETHER",
+     "28,44": "ZINC",
+     "15,12": "DIRE_HIT",
+     "20,14": "RARE_CANDY",
+     "24,12": "CARBOS"
+    }
+   }
+  },
+  "figures": {
+   "CLEANSE TAG": {
+    "item": "CLEANSE_TAG"
+   },
+   "ULTRA BALL": {
+    "item": "ULTRA_BALL"
+   },
+   "DUSK STONE": {
+    "item": "DUSK_STONE"
+   },
+   "SUPER REPEL": {
+    "item": "SUPER_REPEL"
+   },
+   "SHINY STONE": {
+    "item": "SHINY_STONE"
+   },
+   "LAX INCENSE": {
+    "item": "LAX_INCENSE"
+   },
+   "MAX POTION": {
+    "item": "MAX_POTION"
+   }
+  }
+ },
+ "HOENN_NEW_MAUVILLE": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      10,
+      22,
+      "ESCAPE ROPE"
+     ],
+     [
+      17,
+      3,
+      "PARALYZE HEAL"
+     ],
+     [
+      31,
+      18,
+      "THUNDER STONE"
+     ],
+     [
+      4,
+      12,
+      "FULL HEAL"
+     ],
+     [
+      19,
+      21,
+      "ULTRA BALL"
+     ],
+     [
+      2,
+      2,
+      "METAL COAT"
+     ]
+    ],
+    "hidden": {
+     "30,23": "MAX_REPEL"
+    }
+   }
+  },
+  "figures": {
+   "ESCAPE ROPE": {
+    "item": "ESCAPE_ROPE"
+   },
+   "PARALYZE HEAL": {
+    "item": "PARALYZE_HEAL"
+   },
+   "THUNDER STONE": {
+    "item": "THUNDER_STONE"
+   },
+   "FULL HEAL": {
+    "item": "FULL_HEAL"
+   },
+   "ULTRA BALL": {
+    "item": "ULTRA_BALL"
+   },
+   "METAL COAT": {
+    "item": "METAL_COAT"
+   }
+  }
+ },
+ "HOENN_PETALBURG_WOODS": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "39,35": "POTION"
+    },
+    "people": [
+     [
+      45,
+      7,
+      "PARALYZE HEAL"
+     ],
+     [
+      35,
+      20,
+      "BALM MUSHROOM"
+     ],
+     [
+      4,
+      8,
+      "ETHER"
+     ],
+     [
+      4,
+      26,
+      "NET BALL"
+     ],
+     [
+      16,
+      11,
+      "Girl "
+     ],
+     [
+      17,
+      33,
+      "GREAT BALL"
+     ],
+     [
+      36,
+      24,
+      "X ATTACK"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "PARALYZE HEAL": {
+    "item": "PARALYZE_HEAL"
+   },
+   "BALM MUSHROOM": {
+    "item": "BALM_MUSHROOM"
+   },
+   "ETHER": {
+    "item": "ETHER"
+   },
+   "NET BALL": {
+    "item": "NET_BALL"
+   },
+   "GREAT BALL": {
+    "item": "GREAT_BALL"
+   },
+   "X ATTACK": {
+    "item": "X_ATTACK"
+   }
+  },
+  "givers": {
+   "Girl ": "Girl"
+  }
+ },
+ "HOENN_ROUTE_102": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      33,
+      14,
+      "Youngster Calvin",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 3
+      }
+     ],
+     [
+      25,
+      15,
+      "Bug Catcher Rick",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 2
+      }
+     ],
+     [
+      8,
+      7,
+      "Lass Tiana",
+      {
+       "m": "look",
+       "d": "dr",
+       "s": 3
+      }
+     ]
+    ],
+    "people": [
+     [
+      40,
+      14,
+      "Soft soil patch"
+     ],
+     [
+      38,
+      12,
+      "Soft soil patch "
+     ],
+     [
+      11,
+      15,
+      "POTION"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "POTION": {
+    "item": "POTION"
+   }
+  },
+  "givers": {
+   "Soft soil patch": "Soft soil patch",
+   "Soft soil patch ": "Soft soil patch"
+  }
+ },
+ "HOENN_ROUTE_103": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      71,
+      11,
+      "Aroma Lady Daisy",
+      {
+       "m": "look",
+       "d": "dr",
+       "s": 3
+      }
+     ],
+     [
+      65,
+      12,
+      "Twins Amy & Liv",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      64,
+      12,
+      "Poké Fan Miguel",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ]
+    ],
+    "people": [
+     [
+      50,
+      5,
+      "LEPPA BERRY"
+     ],
+     [
+      64,
+      7,
+      "CHESTO BERRY"
+     ],
+     [
+      77,
+      12,
+      "GUARD SPEC."
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "LEPPA BERRY": {
+    "item": "LEPPA_BERRY"
+   },
+   "CHESTO BERRY": {
+    "item": "CHESTO_BERRY"
+   },
+   "GUARD SPEC.": {
+    "item": "GUARD_SPEC"
+   }
+  }
+ },
+ "HOENN_ROUTE_104": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      31,
+      24,
+      "Youngster Billy",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 7
+      }
+     ],
+     [
+      29,
+      8,
+      "Lass Haley",
+      {
+       "m": "face",
+       "d": "d"
+      }
+     ],
+     [
+      27,
+      15,
+      "Twins Gina & Mia",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ]
+    ],
+    "hidden": {
+     "16,72": "ANTIDOTE",
+     "16,64": "HEART_SCALE",
+     "14,55": "POTION",
+     "3,9": "POKE_BALLS",
+     "7,6": "SUPER_POTION"
+    },
+    "people": [
+     [
+      39,
+      15,
+      "PECHA BERRY"
+     ],
+     [
+      29,
+      53,
+      "ORAN BERRY"
+     ],
+     [
+      37,
+      22,
+      "POKE BALL"
+     ],
+     [
+      5,
+      8,
+      "LUXURY BALL"
+     ],
+     [
+      33,
+      61,
+      "Youngster"
+     ],
+     [
+      6,
+      22,
+      "PECHA BERRY "
+     ],
+     [
+      18,
+      3,
+      "X ATTACK"
+     ],
+     [
+      10,
+      41,
+      "Old woman"
+     ],
+     [
+      32,
+      62,
+      "Woman"
+     ],
+     [
+      21,
+      8,
+      "REVIVE"
+     ],
+     [
+      25,
+      25,
+      "PP UP"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "PECHA BERRY": {
+    "item": "PECHA_BERRY"
+   },
+   "ORAN BERRY": {
+    "item": "ORAN_BERRY"
+   },
+   "POKE BALL": {
+    "item": "POKE_BALLS"
+   },
+   "LUXURY BALL": {
+    "item": "LUXURY_BALL"
+   },
+   "PECHA BERRY ": {
+    "item": "PECHA_BERRY"
+   },
+   "X ATTACK": {
+    "item": "X_ATTACK"
+   },
+   "REVIVE": {
+    "item": "REVIVE"
+   },
+   "PP UP": {
+    "item": "PP_UP"
+   }
+  },
+  "givers": {
+   "Youngster": "Youngster",
+   "Old woman": "Old woman",
+   "Woman": "Woman"
+  }
+ },
+ "HOENN_ROUTE_105": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      8,
+      73,
+      "IRON"
+     ]
+    ],
+    "hidden": {
+     "5,56": "BIG_PEARL",
+     "15,68": "HEART_SCALE"
+    }
+   }
+  },
+  "figures": {
+   "IRON": {
+    "item": "IRON"
+   }
+  }
+ },
+ "HOENN_ROUTE_106": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      18,
+      5,
+      "Fisherman Ned",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        4,
+        0
+       ],
+       "s": 3
+      }
+     ],
+     [
+      29,
+      10,
+      "Backpacker Graeme",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ],
+    "hidden": {
+     "68,15": "HEART_SCALE",
+     "41,11": "STARDUST"
+    },
+    "people": [
+     [
+      29,
+      14,
+      "PROTEIN"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "PROTEIN": {
+    "item": "PROTEIN"
+   }
+  }
+ },
+ "HOENN_ROUTE_107": {
+  "floors": {}
+ },
+ "HOENN_ROUTE_108": {
+  "floors": {}
+ },
+ "HOENN_ROUTE_109": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      12,
+      36,
+      "Sailor Edmond",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 5
+      }
+     ],
+     [
+      25,
+      39,
+      "Tuber Simon",
+      {
+       "m": "look",
+       "d": "ul",
+       "s": 5
+      }
+     ],
+     [
+      15,
+      17,
+      "Delinquent Destinee",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      24,
+      13,
+      "Street Thug Blair",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 6
+      }
+     ],
+     [
+      19,
+      10,
+      "Beauty Johanna",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 3
+      }
+     ],
+     [
+      22,
+      7,
+      "Sailor Dwayne",
+      {
+       "m": "march",
+       "d": "l",
+       "s": 4
+      }
+     ],
+     [
+      29,
+      32,
+      "Tuber Gwen",
+      {
+       "m": "look",
+       "d": "du",
+       "s": 3
+      }
+     ],
+     [
+      28,
+      31,
+      "Tuber Carmen",
+      {
+       "m": "look",
+       "d": "dl",
+       "s": 3
+      }
+     ],
+     [
+      21,
+      56,
+      "Ace Trainer Portia",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 3
+      }
+     ],
+     [
+      8,
+      41,
+      "Swimmer ♀ Alice",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      9,
+      41,
+      "Swimmer ♂ David",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      27,
+      7,
+      "Young Couple Mel & Paul",
+      {
+       "m": "march",
+       "d": "u",
+       "s": 4
+      }
+     ],
+     [
+      17,
+      56,
+      "Fisherman Carter",
+      {
+       "m": "march",
+       "d": "l",
+       "s": 3
+      }
+     ]
+    ],
+    "hidden": {
+     "16,23": "REVIVE",
+     "28,20": "ETHER",
+     "9,10": "GREAT_BALL",
+     "33,5": "HEART_SCALE"
+    },
+    "people": [
+     [
+      23,
+      15,
+      "Female Tuber"
+     ],
+     [
+      27,
+      46,
+      "SODA POP"
+     ],
+     [
+      25,
+      6,
+      "PP UP"
+     ],
+     [
+      20,
+      15,
+      "BIG PEARL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "SODA POP": {
+    "item": "SODA_POP"
+   },
+   "PP UP": {
+    "item": "PP_UP"
+   },
+   "BIG PEARL": {
+    "item": "BIG_PEARL"
+   }
+  },
+  "givers": {
+   "Female Tuber": "Female Tuber"
+  }
+ },
+ "HOENN_ROUTE_110": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      19,
+      31,
+      "Poké Fan Isabel",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        10,
+        1
+       ],
+       "s": 3
+      }
+     ],
+     [
+      30,
+      31,
+      "Youngster Timmy",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 4
+      }
+     ],
+     [
+      3,
+      39,
+      "Psychic Edward",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 6
+      }
+     ],
+     [
+      33,
+      15,
+      "Fisherman Dale",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 1
+      }
+     ],
+     [
+      34,
+      40,
+      "Beauty Melissa",
+      {
+       "m": "still",
+       "s": 4
+      }
+     ],
+     [
+      10,
+      19,
+      "Triathlete Sloan",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      21,
+      78,
+      "Triathlete Jacob",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        7,
+        1
+       ],
+       "s": 2
+      }
+     ],
+     [
+      33,
+      69,
+      "Triathlete Anthony",
+      {
+       "m": "look",
+       "d": "lr",
+       "s": 3
+      }
+     ],
+     [
+      10,
+      76,
+      "Triathlete Benjamin",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 2
+      }
+     ],
+     [
+      7,
+      76,
+      "Triathlete Dolph",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 2
+      }
+     ]
+    ],
+    "people": [
+     [
+      30,
+      69,
+      "DIRE HIT"
+     ],
+     [
+      18,
+      70,
+      "Berry Trees"
+     ],
+     [
+      26,
+      47,
+      "HEAL BALL"
+     ],
+     [
+      6,
+      38,
+      "REPEAT BALL"
+     ],
+     [
+      10,
+      70,
+      "RARE CANDY"
+     ],
+     [
+      15,
+      70,
+      "ELIXIR"
+     ]
+    ],
+    "hidden": {
+     "37,67": "FULL_HEAL",
+     "33,45": "GREAT_BALL",
+     "35,39": "REVIVE",
+     "4,35": "POKE_BALLS"
+    }
+   }
+  },
+  "figures": {
+   "DIRE HIT": {
+    "item": "DIRE_HIT"
+   },
+   "HEAL BALL": {
+    "item": "HEAL_BALL"
+   },
+   "REPEAT BALL": {
+    "item": "REPEAT_BALL"
+   },
+   "RARE CANDY": {
+    "item": "RARE_CANDY"
+   },
+   "ELIXIR": {
+    "item": "ELIXIR"
+   }
+  },
+  "givers": {
+   "Berry Trees": "Berry Trees"
+  }
+ },
+ "HOENN_ROUTE_111": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      28,
+      51,
+      "Interviewers Gabby & Ty",
+      {
+       "m": "look",
+       "d": "dl",
+       "s": 3
+      }
+     ],
+     [
+      29,
+      37,
+      "Camper Travis",
+      {
+       "m": "look",
+       "d": "dl",
+       "s": 3
+      }
+     ],
+     [
+      27,
+      69,
+      "Backpacker Emory",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        2,
+        2
+       ],
+       "s": 2
+      }
+     ],
+     [
+      21,
+      47,
+      "Fairy Tale Girl Cece",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 4
+      }
+     ],
+     [
+      32,
+      66,
+      "Backpacker Deon",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      10,
+      82,
+      "Ace Trainer Brooke",
+      {
+       "m": "look",
+       "d": "lr",
+       "s": 2
+      }
+     ],
+     [
+      11,
+      71,
+      "Camper Cliff",
+      {
+       "m": "look",
+       "d": "dlr",
+       "s": 3
+      }
+     ],
+     [
+      11,
+      11,
+      "Picnicker Heidi",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 4
+      }
+     ],
+     [
+      9,
+      27,
+      "Camper Drew",
+      {
+       "m": "look",
+       "d": "dl",
+       "s": 3
+      }
+     ],
+     [
+      26,
+      132,
+      "Picnicker Becky",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 5
+      }
+     ],
+     [
+      20,
+      132,
+      "Ruin Maniac Dusty",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 5
+      }
+     ],
+     [
+      19,
+      121,
+      "Black Belt Daisuke",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 2
+      }
+     ]
+    ],
+    "people": [
+     [
+      33,
+      104,
+      "MACHO BRACE"
+     ],
+     [
+      3,
+      114,
+      "HP UP"
+     ],
+     [
+      15,
+      136,
+      "Girl"
+     ],
+     [
+      26,
+      51,
+      "Berry Trees"
+     ],
+     [
+      11,
+      85,
+      "Berry Trees "
+     ],
+     [
+      19,
+      118,
+      "ELIXIR"
+     ],
+     [
+      18,
+      8,
+      "Bug Maniac"
+     ],
+     [
+      12,
+      54,
+      "TM37 SANDSTORM"
+     ]
+    ],
+    "hidden": {
+     "19,55": "REVIVE",
+     "3,28": "PP_UP",
+     "6,65": "PROTEIN",
+     "17,98": "RARE_CANDY"
+    }
+   }
+  },
+  "figures": {
+   "MACHO BRACE": {
+    "item": "MACHO_BRACE"
+   },
+   "HP UP": {
+    "item": "HP_UP"
+   },
+   "ELIXIR": {
+    "item": "ELIXIR"
+   },
+   "TM37 SANDSTORM": {
+    "item": "HTM37"
+   }
+  },
+  "givers": {
+   "Girl": "Girl",
+   "Berry Trees": "Berry Trees",
+   "Berry Trees ": "Berry Trees",
+   "Bug Maniac": "Bug Maniac"
+  }
+ },
+ "HOENN_ROUTE_112": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      24,
+      34,
+      "Camper Larry",
+      {
+       "m": "look",
+       "d": "lr",
+       "s": 2
+      }
+     ],
+     [
+      29,
+      49,
+      "Picnicker Carol",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 3
+      }
+     ],
+     [
+      22,
+      46,
+      "Hiker Brice",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      15,
+      40,
+      "Street Thug Jaylin",
+      {
+       "m": "look",
+       "d": "ur",
+       "s": 3
+      }
+     ]
+    ],
+    "people": [
+     [
+      14,
+      43,
+      "BIG MUSHROOM"
+     ],
+     [
+      14,
+      38,
+      "GUARD SPEC."
+     ],
+     [
+      21,
+      48,
+      "NUGGET"
+     ],
+     [
+      32,
+      50,
+      "Berry Trees"
+     ],
+     [
+      36,
+      47,
+      "Berry Trees "
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "BIG MUSHROOM": {
+    "item": "BIG_MUSHROOM"
+   },
+   "GUARD SPEC.": {
+    "item": "GUARD_SPEC"
+   },
+   "NUGGET": {
+    "item": "NUGGET"
+   }
+  },
+  "givers": {
+   "Berry Trees": "Berry Trees",
+   "Berry Trees ": "Berry Trees"
+  }
+ },
+ "HOENN_ROUTE_113": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      21,
+      11,
+      "Fairy Tale Girl Franny",
+      {
+       "m": "look",
+       "d": "dl",
+       "s": 3
+      }
+     ],
+     [
+      51,
+      11,
+      "Ninja Boy Lao",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 2
+      }
+     ],
+     [
+      29,
+      6,
+      "Youngster Dillion",
+      {
+       "m": "still",
+       "s": 1
+      }
+     ]
+    ],
+    "hidden": {
+     "66,3": "ETHER",
+     "73,3": "NUGGET"
+    },
+    "people": [
+     [
+      79,
+      5,
+      "SUPER REPEL"
+     ],
+     [
+      53,
+      7,
+      "TM32 DOUBLE TEAM"
+     ],
+     [
+      15,
+      15,
+      "MAX ETHER"
+     ],
+     [
+      8,
+      7,
+      "HYPER POTION"
+     ],
+     [
+      37,
+      13,
+      "REVIVE"
+     ],
+     [
+      21,
+      6,
+      "MAX REPEL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "SUPER REPEL": {
+    "item": "SUPER_REPEL"
+   },
+   "TM32 DOUBLE TEAM": {
+    "item": "HTM32"
+   },
+   "MAX ETHER": {
+    "item": "MAX_ETHER"
+   },
+   "HYPER POTION": {
+    "item": "HYPER_POTION"
+   },
+   "REVIVE": {
+    "item": "REVIVE"
+   },
+   "MAX REPEL": {
+    "item": "MAX_REPEL"
+   }
+  }
+ },
+ "HOENN_ROUTE_114": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      15,
+      65,
+      "Fisherman Claude",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 6
+      }
+     ],
+     [
+      30,
+      72,
+      "Fisherman Nolan",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 4
+      }
+     ],
+     [
+      22,
+      50,
+      "Teammates Tyra & Ivy",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 3
+      }
+     ],
+     [
+      19,
+      35,
+      "Camper Shane",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      20,
+      56,
+      "Kindler Bernie",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 3
+      }
+     ],
+     [
+      25,
+      6,
+      "Hiker Lenny",
+      {
+       "m": "face",
+       "d": "d"
+      }
+     ]
+    ],
+    "people": [
+     [
+      15,
+      59,
+      "Old man and his Poochyena"
+     ],
+     [
+      21,
+      14,
+      "Berry Trees southeast of Lanette's house"
+     ],
+     [
+      11,
+      37,
+      "PROTEIN"
+     ],
+     [
+      7,
+      6,
+      "ENERGY POWDER"
+     ],
+     [
+      31,
+      19,
+      "RARE CANDY"
+     ]
+    ],
+    "hidden": {
+     "7,30": "REVIVE",
+     "35,7": "CARBOS",
+     "28,61": "COMET_SHARD",
+     "36,11": "RARE_BONE"
+    }
+   }
+  },
+  "figures": {
+   "PROTEIN": {
+    "item": "PROTEIN"
+   },
+   "ENERGY POWDER": {
+    "item": "ENERGY_POWDER"
+   },
+   "RARE CANDY": {
+    "item": "RARE_CANDY"
+   }
+  },
+  "givers": {
+   "Old man and his Poochyena": "Old man and his Poochyena",
+   "Berry Trees southeast of Lanette's house": "Berry Trees southeast of Lanette's house"
+  }
+ },
+ "HOENN_ROUTE_115": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      5,
+      15,
+      "Collector HectorOR",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 6
+      }
+     ],
+     [
+      27,
+      53,
+      "Collector HectorAS",
+      {
+       "m": "look",
+       "d": "ul",
+       "s": 4
+      }
+     ],
+     [
+      15,
+      50,
+      "Black Belt Koichi",
+      {
+       "m": "still",
+       "s": 3
+      }
+     ],
+     [
+      19,
+      15,
+      "Expert Timothy",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        5,
+        0
+       ],
+       "s": 2
+      }
+     ],
+     [
+      10,
+      15,
+      "Ruin Maniac Hayes",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        3,
+        3
+       ],
+       "s": 2
+      }
+     ]
+    ],
+    "hidden": {
+     "15,49": "HEART_SCALE"
+    },
+    "people": [
+     [
+      31,
+      56,
+      "GREAT BALL"
+     ],
+     [
+      20,
+      78,
+      "Berry Trees"
+     ],
+     [
+      20,
+      60,
+      "ZINC"
+     ],
+     [
+      22,
+      51,
+      "Berry Trees "
+     ],
+     [
+      23,
+      15,
+      "Berry Trees  "
+     ],
+     [
+      26,
+      67,
+      "PP UP"
+     ],
+     [
+      12,
+      14,
+      "HEAL POWDER"
+     ],
+     [
+      18,
+      7,
+      "IRON"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "GREAT BALL": {
+    "item": "GREAT_BALL"
+   },
+   "ZINC": {
+    "item": "ZINC"
+   },
+   "PP UP": {
+    "item": "PP_UP"
+   },
+   "HEAL POWDER": {
+    "item": "HEAL_POWDER"
+   },
+   "IRON": {
+    "item": "IRON"
+   }
+  },
+  "givers": {
+   "Berry Trees": "Berry Trees",
+   "Berry Trees ": "Berry Trees",
+   "Berry Trees  ": "Berry Trees"
+  }
+ },
+ "HOENN_ROUTE_116": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      12,
+      7,
+      "Youngster Joey",
+      {
+       "m": "look",
+       "d": "ur",
+       "s": 3
+      }
+     ],
+     [
+      13,
+      17,
+      "Schoolkid Karen",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 2
+      }
+     ]
+    ],
+    "people": [
+     [
+      10,
+      17,
+      "REPEL"
+     ],
+     [
+      34,
+      7,
+      "POTION"
+     ],
+     [
+      19,
+      6,
+      "X SP. ATK"
+     ],
+     [
+      80,
+      8,
+      "ETHER"
+     ],
+     [
+      55,
+      12,
+      "CHESTO BERRY"
+     ],
+     [
+      76,
+      13,
+      "HP UP"
+     ],
+     [
+      2,
+      11,
+      "Devon researcher"
+     ]
+    ],
+    "hidden": {
+     "22,9": "SUPER_POTION"
+    }
+   }
+  },
+  "figures": {
+   "REPEL": {
+    "item": "REPEL"
+   },
+   "POTION": {
+    "item": "POTION"
+   },
+   "X SP. ATK": {
+    "item": "X_SP_ATK"
+   },
+   "ETHER": {
+    "item": "ETHER"
+   },
+   "CHESTO BERRY": {
+    "item": "CHESTO_BERRY"
+   },
+   "HP UP": {
+    "item": "HP_UP"
+   }
+  },
+  "givers": {
+   "Devon researcher": "Devon researcher"
+  }
+ },
+ "HOENN_ROUTE_117": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      38,
+      16,
+      "Pokémon Breeder Lydia",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        8,
+        0
+       ],
+       "s": 4
+      }
+     ],
+     [
+      33,
+      11,
+      "Bug Maniac Derek",
+      {
+       "m": "look",
+       "d": "ur",
+       "s": 4
+      }
+     ]
+    ],
+    "people": [
+     [
+      27,
+      9,
+      "Berry Trees"
+     ],
+     [
+      9,
+      1,
+      "REVIVE"
+     ],
+     [
+      16,
+      18,
+      "GREAT BALL"
+     ],
+     [
+      55,
+      12,
+      "ULTRA BALL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "REVIVE": {
+    "item": "REVIVE"
+   },
+   "GREAT BALL": {
+    "item": "GREAT_BALL"
+   },
+   "ULTRA BALL": {
+    "item": "ULTRA_BALL"
+   }
+  },
+  "givers": {
+   "Berry Trees": "Berry Trees"
+  }
+ },
+ "HOENN_ROUTE_118": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      64,
+      10,
+      "Aroma Lady Rose",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 3
+      }
+     ],
+     [
+      7,
+      12,
+      "Fisherman Wade",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 4
+      }
+     ],
+     [
+      14,
+      14,
+      "Bird Keeper Chester",
+      {
+       "m": "face",
+       "d": "d"
+      }
+     ],
+     [
+      56,
+      7,
+      "Delinquent Miley",
+      {
+       "m": "look",
+       "d": "ur",
+       "s": 3
+      }
+     ]
+    ],
+    "hidden": {
+     "62,10": "HEART_SCALE",
+     "78,11": "IRON"
+    },
+    "people": [
+     [
+      69,
+      7,
+      "STARDUST"
+     ],
+     [
+      58,
+      11,
+      "LEAF STONE"
+     ],
+     [
+      58,
+      2,
+      "Soft soil patch"
+     ],
+     [
+      73,
+      12,
+      "HYPER POTION"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "STARDUST": {
+    "item": "STARDUST"
+   },
+   "LEAF STONE": {
+    "item": "LEAF_STONE"
+   },
+   "HYPER POTION": {
+    "item": "HYPER_POTION"
+   }
+  },
+  "givers": {
+   "Soft soil patch": "Soft soil patch"
+  }
+ },
+ "HOENN_ROUTE_119": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      12,
+      123,
+      "Bug Catcher Greg",
+      {
+       "m": "copy",
+       "v": "same",
+       "g": 1,
+       "s": 1
+      }
+     ],
+     [
+      26,
+      123,
+      "Bug Catcher Doug",
+      {
+       "m": "copy",
+       "v": "opposite",
+       "g": 1,
+       "s": 1
+      }
+     ],
+     [
+      5,
+      125,
+      "Bug Maniac Donald",
+      {
+       "m": "copy",
+       "v": "cw",
+       "g": 1,
+       "s": 1
+      }
+     ],
+     [
+      28,
+      116,
+      "Bug Catcher Kent",
+      {
+       "m": "copy",
+       "v": "opposite",
+       "g": 1,
+       "s": 1
+      }
+     ],
+     [
+      34,
+      122,
+      "Bug Maniac Brent",
+      {
+       "m": "copy",
+       "v": "ccw",
+       "g": 1,
+       "s": 1
+      }
+     ],
+     [
+      17,
+      128,
+      "Bug Maniac Taylor",
+      {
+       "m": "copy",
+       "v": "ccw",
+       "g": 1,
+       "s": 1
+      }
+     ],
+     [
+      35,
+      83,
+      "Brains & Brawn Jael & Kael",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 2
+      }
+     ],
+     [
+      28,
+      14,
+      "Pokémon Ranger Jackson",
+      {
+       "m": "still",
+       "s": 1
+      }
+     ],
+     [
+      19,
+      49,
+      "Bird Keeper Hugh",
+      {
+       "m": "still",
+       "s": 3
+      }
+     ],
+     [
+      10,
+      50,
+      "Ninja Boy Yasu",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 3
+      }
+     ],
+     [
+      8,
+      63,
+      "Fisherman Eugene",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 5
+      }
+     ]
+    ],
+    "move_trainers": [
+     [
+      "Ninja Boy Takashi",
+      7,
+      74,
+      {
+       "m": "look",
+       "d": "dr",
+       "s": 3
+      }
+     ]
+    ],
+    "people": [
+     [
+      12,
+      121,
+      "MAX REPEL"
+     ],
+     [
+      4,
+      96,
+      "ZINC"
+     ],
+     [
+      29,
+      53,
+      "HONDEW BERRY"
+     ],
+     [
+      25,
+      76,
+      "CALCIUM"
+     ],
+     [
+      8,
+      18,
+      "PP MAX"
+     ],
+     [
+      24,
+      42,
+      "ELIXIR"
+     ],
+     [
+      33,
+      117,
+      "MAX ETHER"
+     ],
+     [
+      3,
+      56,
+      "ULTRA BALL"
+     ],
+     [
+      19,
+      5,
+      "LEAF STONE"
+     ],
+     [
+      26,
+      111,
+      "POMEG BERRY"
+     ],
+     [
+      36,
+      90,
+      "TIMER BALL"
+     ],
+     [
+      30,
+      24,
+      "RARE CANDY"
+     ],
+     [
+      36,
+      92,
+      "TM62 ACROBATICS"
+     ],
+     [
+      24,
+      113,
+      "LEPPA BERRY"
+     ],
+     [
+      12,
+      84,
+      "SITRUS BERRY"
+     ]
+    ],
+    "hidden": {
+     "26,120": "FULL_HEAL"
+    }
+   }
+  },
+  "figures": {
+   "MAX REPEL": {
+    "item": "MAX_REPEL"
+   },
+   "ZINC": {
+    "item": "ZINC"
+   },
+   "HONDEW BERRY": {
+    "item": "HONDEW_BERRY"
+   },
+   "CALCIUM": {
+    "item": "CALCIUM"
+   },
+   "PP MAX": {
+    "item": "PP_MAX"
+   },
+   "ELIXIR": {
+    "item": "ELIXIR"
+   },
+   "MAX ETHER": {
+    "item": "MAX_ETHER"
+   },
+   "ULTRA BALL": {
+    "item": "ULTRA_BALL"
+   },
+   "LEAF STONE": {
+    "item": "LEAF_STONE"
+   },
+   "POMEG BERRY": {
+    "item": "POMEG_BERRY"
+   },
+   "TIMER BALL": {
+    "item": "TIMER_BALL"
+   },
+   "RARE CANDY": {
+    "item": "RARE_CANDY"
+   },
+   "TM62 ACROBATICS": {
+    "item": "HTM62"
+   },
+   "LEPPA BERRY": {
+    "item": "LEPPA_BERRY"
+   },
+   "SITRUS BERRY": {
+    "item": "SITRUS_BERRY"
+   }
+  }
+ },
+ "HOENN_ROUTE_120": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      5,
+      22,
+      "Parasol Lady Clarissa",
+      {
+       "m": "look",
+       "d": "lr",
+       "s": 3
+      }
+     ],
+     [
+      32,
+      14,
+      "Bird Keeper Colin",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 3
+      }
+     ],
+     [
+      27,
+      51,
+      "Ninja Boy Tsunao",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 7
+      }
+     ],
+     [
+      36,
+      45,
+      "Bug Maniac Brandon",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 2
+      }
+     ],
+     [
+      19,
+      80,
+      "Street Thug Gomez",
+      {
+       "m": "look",
+       "d": "ul",
+       "s": 3
+      }
+     ],
+     [
+      31,
+      37,
+      "Delinquent Sharlene",
+      {
+       "m": "look",
+       "d": "ul",
+       "s": 4
+      }
+     ],
+     [
+      9,
+      60,
+      "Ninja Boy Keigo",
+      {
+       "m": "look",
+       "d": "ulr",
+       "s": 4
+      }
+     ],
+     [
+      16,
+      6,
+      "Ruin Maniac Chip",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 4
+      }
+     ],
+     [
+      18,
+      34,
+      "Pokémon Ranger Carlos",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 3
+      }
+     ],
+     [
+      10,
+      72,
+      "Pokémon Ranger Jenna",
+      {
+       "m": "still",
+       "s": 3
+      }
+     ]
+    ],
+    "people": [
+     [
+      20,
+      55,
+      "RARE CANDY"
+     ],
+     [
+      22,
+      13,
+      "NEST BALL"
+     ],
+     [
+      7,
+      89,
+      "ASPEAR BERRY"
+     ],
+     [
+      23,
+      82,
+      "WEPEAR BERRY"
+     ],
+     [
+      24,
+      33,
+      "PINAP BERRY"
+     ],
+     [
+      6,
+      57,
+      "NUGGET"
+     ],
+     [
+      24,
+      80,
+      "REVIVE"
+     ],
+     [
+      4,
+      5,
+      "FULL HEAL"
+     ],
+     [
+      6,
+      24,
+      "RARE CANDY "
+     ],
+     [
+      19,
+      36,
+      "LIGHT BALL"
+     ],
+     [
+      25,
+      64,
+      "FULL RESTORE"
+     ],
+     [
+      26,
+      80,
+      "DUSK BALL"
+     ]
+    ],
+    "hidden": {
+     "31,11": "REVIVE",
+     "24,42": "ZINC"
+    }
+   }
+  },
+  "figures": {
+   "RARE CANDY": {
+    "item": "RARE_CANDY"
+   },
+   "NEST BALL": {
+    "item": "NEST_BALL"
+   },
+   "ASPEAR BERRY": {
+    "item": "ASPEAR_BERRY"
+   },
+   "WEPEAR BERRY": {
+    "item": "WEPEAR_BERRY"
+   },
+   "PINAP BERRY": {
+    "item": "PINAP_BERRY"
+   },
+   "NUGGET": {
+    "item": "NUGGET"
+   },
+   "REVIVE": {
+    "item": "REVIVE"
+   },
+   "FULL HEAL": {
+    "item": "FULL_HEAL"
+   },
+   "RARE CANDY ": {
+    "item": "RARE_CANDY"
+   },
+   "LIGHT BALL": {
+    "item": "LIGHT_BALL"
+   },
+   "FULL RESTORE": {
+    "item": "FULL_RESTORE"
+   },
+   "DUSK BALL": {
+    "item": "DUSK_BALL"
+   }
+  }
+ },
+ "HOENN_ROUTE_121": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      39,
+      9,
+      "Teammates Kate & Joy",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      40,
+      9,
+      "Poké Fan Vanessa",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ]
+    ],
+    "people": [
+     [
+      55,
+      10,
+      "ASPEAR BERRY"
+     ],
+     [
+      60,
+      10,
+      "PERSIM BERRY"
+     ],
+     [
+      38,
+      13,
+      "RAWST BERRY"
+     ],
+     [
+      6,
+      10,
+      "ZINC"
+     ],
+     [
+      5,
+      7,
+      "MAX REPEL"
+     ],
+     [
+      10,
+      7,
+      "CARBOS"
+     ],
+     [
+      12,
+      8,
+      "SHINY STONE"
+     ],
+     [
+      63,
+      10,
+      "NUGGET"
+     ],
+     [
+      73,
+      11,
+      "NANAB BERRY"
+     ],
+     [
+      2,
+      10,
+      "PEARL"
+     ],
+     [
+      42,
+      10,
+      "NUGGET "
+     ]
+    ],
+    "hidden": {
+     "23,10": "HP_UP",
+     "72,5": "FULL_HEAL",
+     "68,8": "MAX_REVIVE"
+    }
+   }
+  },
+  "figures": {
+   "ASPEAR BERRY": {
+    "item": "ASPEAR_BERRY"
+   },
+   "PERSIM BERRY": {
+    "item": "PERSIM_BERRY"
+   },
+   "RAWST BERRY": {
+    "item": "RAWST_BERRY"
+   },
+   "ZINC": {
+    "item": "ZINC"
+   },
+   "MAX REPEL": {
+    "item": "MAX_REPEL"
+   },
+   "CARBOS": {
+    "item": "CARBOS"
+   },
+   "SHINY STONE": {
+    "item": "SHINY_STONE"
+   },
+   "NUGGET": {
+    "item": "NUGGET"
+   },
+   "NANAB BERRY": {
+    "item": "NANAB_BERRY"
+   },
+   "PEARL": {
+    "item": "PEARL"
+   },
+   "NUGGET ": {
+    "item": "NUGGET"
+   }
+  }
+ },
+ "HOENN_ROUTE_123": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      70,
+      12,
+      "Aroma Lady Violet",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 1
+      }
+     ],
+     [
+      58,
+      7,
+      "Twins Miu & Yuki",
+      {
+       "m": "look",
+       "d": "dl",
+       "s": 2
+      }
+     ],
+     [
+      18,
+      9,
+      "Picnicker Martha",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 2
+      }
+     ],
+     [
+      38,
+      13,
+      "Street Thug Hannibal",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      37,
+      13,
+      "Delinquent Kylie",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      138,
+      12,
+      "Ace Trainer Julie",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 7
+      }
+     ],
+     [
+      49,
+      16,
+      "Ace Trainer Clyde",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      138,
+      14,
+      "Fisherman Timin",
+      {
+       "m": "still",
+       "s": 1
+      }
+     ],
+     [
+      138,
+      16,
+      "Fisherman Fisher",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 1
+      }
+     ],
+     [
+      87,
+      17,
+      "Fisherman Finley",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 4
+      }
+     ]
+    ],
+    "people": [
+     [
+      57,
+      16,
+      "REVIVAL HERB"
+     ],
+     [
+      76,
+      15,
+      "Girl southwest of the pier"
+     ],
+     [
+      31,
+      8,
+      "HONDEW BERRY"
+     ],
+     [
+      27,
+      18,
+      "LEPPA BERRY"
+     ],
+     [
+      75,
+      9,
+      "SITRUS BERRY"
+     ],
+     [
+      43,
+      15,
+      "QUALOT BERRY"
+     ],
+     [
+      74,
+      5,
+      "GREPA BERRY"
+     ],
+     [
+      9,
+      13,
+      "TAMATO BERRY"
+     ],
+     [
+      85,
+      15,
+      "ELIXIR"
+     ],
+     [
+      7,
+      10,
+      "WIDE LENS"
+     ],
+     [
+      73,
+      15,
+      "CALCIUM"
+     ],
+     [
+      23,
+      8,
+      "Fairy Tale Girl"
+     ],
+     [
+      12,
+      15,
+      "ULTRA BALL"
+     ],
+     [
+      4,
+      10,
+      "GRACIDEA"
+     ]
+    ],
+    "hidden": {
+     "75,1": "SUPER_REPEL",
+     "12,1": "HYPER_POTION",
+     "139,15": "REVIVE"
+    }
+   }
+  },
+  "figures": {
+   "REVIVAL HERB": {
+    "item": "REVIVAL_HERB"
+   },
+   "HONDEW BERRY": {
+    "item": "HONDEW_BERRY"
+   },
+   "LEPPA BERRY": {
+    "item": "LEPPA_BERRY"
+   },
+   "SITRUS BERRY": {
+    "item": "SITRUS_BERRY"
+   },
+   "QUALOT BERRY": {
+    "item": "QUALOT_BERRY"
+   },
+   "GREPA BERRY": {
+    "item": "GREPA_BERRY"
+   },
+   "TAMATO BERRY": {
+    "item": "TAMATO_BERRY"
+   },
+   "ELIXIR": {
+    "item": "ELIXIR"
+   },
+   "WIDE LENS": {
+    "item": "WIDE_LENS"
+   },
+   "CALCIUM": {
+    "item": "CALCIUM"
+   },
+   "ULTRA BALL": {
+    "item": "ULTRA_BALL"
+   },
+   "GRACIDEA": {
+    "item": "GRACIDEA"
+   }
+  },
+  "givers": {
+   "Girl southwest of the pier": "Girl southwest of the pier",
+   "Fairy Tale Girl": "Fairy Tale Girl"
+  }
+ },
+ "HOENN_ROUTE_124": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      34,
+      25,
+      "Sis & Bro Rita & Sam",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      61,
+      74,
+      "Swimmer ♂ Spencer",
+      {
+       "m": "still",
+       "s": 7
+      }
+     ],
+     [
+      49,
+      45,
+      "Swimmer ♂ Chad",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      7,
+      23,
+      "Scuba Diver Dmitry",
+      {
+       "m": "look",
+       "d": "dr",
+       "s": 5
+      }
+     ],
+     [
+      58,
+      58,
+      "Scuba Diver Kylan",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        7,
+        0
+       ],
+       "s": 2
+      }
+     ],
+     [
+      18,
+      44,
+      "Free Diver Rischel",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ],
+     [
+      17,
+      44,
+      "Free Diver Arzu",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ]
+    ],
+    "hidden": {
+     "29,52": "HEART_SCALE",
+     "71,51": "BIG_PEARL",
+     "75,47": "CALCIUM",
+     "74,45": "CARBOS",
+     "29,13": "PEARL",
+     "59,13": "HEART_SCALE",
+     "62,39": "SKY_PLATE"
+    },
+    "people": [
+     [
+      26,
+      12,
+      "HEART SCALE"
+     ],
+     [
+      71,
+      44,
+      "HEART SCALE "
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "HEART SCALE": {
+    "item": "HEART_SCALE"
+   },
+   "HEART SCALE ": {
+    "item": "HEART_SCALE"
+   }
+  }
+ },
+ "HOENN_ROUTE_125": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      7,
+      31,
+      "Swimmer ♂ Stan",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        1,
+        0
+       ],
+       "s": 2
+      }
+     ],
+     [
+      45,
+      9,
+      "Swimmer ♀ Tanya",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 2
+      }
+     ],
+     [
+      38,
+      24,
+      "Teammates Kim & Iris",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        6,
+        0
+       ],
+       "s": 3
+      }
+     ],
+     [
+      21,
+      30,
+      "Swimmer ♀ Sharon",
+      {
+       "m": "look",
+       "d": "du",
+       "s": 2
+      }
+     ],
+     [
+      17,
+      19,
+      "Swimmer ♂ Cody",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 1
+      }
+     ]
+    ],
+    "people": [
+     [
+      46,
+      17,
+      "BIG PEARL"
+     ],
+     [
+      14,
+      19,
+      "DIVE BALL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "BIG PEARL": {
+    "item": "BIG_PEARL"
+   },
+   "DIVE BALL": {
+    "item": "DIVE_BALL"
+   }
+  }
+ },
+ "HOENN_ROUTE_126": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      51,
+      65,
+      "Triathlete Denzel",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        10,
+        3
+       ],
+       "s": 3
+      }
+     ],
+     [
+      56,
+      22,
+      "Swimmer ♀ Brenda",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        9,
+        0
+       ],
+       "s": 3
+      }
+     ],
+     [
+      63,
+      43,
+      "Ace Trainer Leopold",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      9,
+      48,
+      "Ace Trainer Harriet",
+      {
+       "m": "face",
+       "d": "u",
+       "s": 3
+      }
+     ],
+     [
+      15,
+      66,
+      "Swimmer ♂ Dean",
+      {
+       "m": "still",
+       "s": 7
+      }
+     ],
+     [
+      7,
+      66,
+      "Scuba Diver Yutaka",
+      {
+       "m": "still",
+       "s": 7
+      }
+     ],
+     [
+      64,
+      5,
+      "Scuba Diver Tristan",
+      {
+       "m": "still",
+       "s": 7
+      }
+     ],
+     [
+      56,
+      5,
+      "Free Diver Jillian",
+      {
+       "m": "still",
+       "s": 7
+      }
+     ]
+    ],
+    "people": [
+     [
+      14,
+      1,
+      "GREEN SHARD"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "GREEN SHARD": {
+    "item": "GREEN_SHARD"
+   }
+  }
+ },
+ "HOENN_ROUTE_127": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      45,
+      42,
+      "Bird Keeper Byron",
+      {
+       "m": "look",
+       "d": "lr",
+       "s": 2
+      }
+     ],
+     [
+      18,
+      68,
+      "Fisherman Jonah",
+      {
+       "m": "look",
+       "d": "ulr",
+       "s": 4
+      }
+     ],
+     [
+      42,
+      21,
+      "Fisherman Roger",
+      {
+       "m": "face",
+       "d": "l"
+      }
+     ],
+     [
+      64,
+      19,
+      "Ace Trainer Hisato",
+      {
+       "m": "face",
+       "d": "r"
+      }
+     ],
+     [
+      54,
+      14,
+      "Ace Trainer Claudia",
+      {
+       "m": "face",
+       "d": "u"
+      }
+     ],
+     [
+      15,
+      23,
+      "Triathlete Jaylon",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 2
+      }
+     ],
+     [
+      12,
+      23,
+      "Black Belt Koji",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 2
+      }
+     ],
+     [
+      58,
+      16,
+      "Scuba Diver Javier"
+     ],
+     [
+      10,
+      23,
+      "Free Diver Kailyn"
+     ],
+     [
+      53,
+      65,
+      "Free Diver Aileen"
+     ]
+    ],
+    "people": [
+     [
+      14,
+      6,
+      "ZINC"
+     ],
+     [
+      13,
+      20,
+      "CARBOS"
+     ],
+     [
+      50,
+      15,
+      "RARE CANDY"
+     ]
+    ],
+    "hidden": {
+     "54,66": "STAR_PIECE",
+     "46,16": "HP_UP",
+     "10,18": "SPOOKY_PLATE",
+     "8,10": "DREAD_PLATE",
+     "63,23": "RED_SHARD",
+     "57,14": "INSECT_PLATE",
+     "68,43": "HEART_SCALE"
+    }
+   }
+  },
+  "figures": {
+   "ZINC": {
+    "item": "ZINC"
+   },
+   "CARBOS": {
+    "item": "CARBOS"
+   },
+   "RARE CANDY": {
+    "item": "RARE_CANDY"
+   }
+  }
+ },
+ "HOENN_ROUTE_128": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      35,
+      33,
+      "Ace Trainer Cornelius",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        5,
+        5
+       ],
+       "s": 3
+      }
+     ],
+     [
+      78,
+      24,
+      "Fisherman Wayne",
+      {
+       "m": "wander",
+       "d": "lr",
+       "r": [
+        5,
+        0
+       ],
+       "s": 7
+      }
+     ],
+     [
+      63,
+      28,
+      "Tuber Delmar",
+      {
+       "m": "face",
+       "d": "u"
+      }
+     ],
+     [
+      47,
+      9,
+      "Tuber Marlene",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 3
+      }
+     ],
+     [
+      24,
+      8,
+      "Free Diver Mayu",
+      {
+       "m": "look",
+       "d": "dl",
+       "s": 3
+      }
+     ]
+    ],
+    "hidden": {
+     "49,9": "STONE_PLATE",
+     "57,21": "DRACO_PLATE",
+     "31,33": "PIXIE_PLATE",
+     "75,27": "PROTEIN",
+     "62,19": "PEARL"
+    }
+   }
+  }
+ },
+ "HOENN_ROUTE_129": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      28,
+      16,
+      "Fisherman Fisk",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        3,
+        4
+       ],
+       "s": 3
+      }
+     ],
+     [
+      10,
+      14,
+      "Fisherman Sheaffer",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        5,
+        2
+       ],
+       "s": 2
+      }
+     ],
+     [
+      13,
+      22,
+      "Ace Trainer Honor",
+      {
+       "m": "still",
+       "s": 5
+      }
+     ],
+     [
+      35,
+      9,
+      "Triathlete Chase",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 2
+      }
+     ],
+     [
+      13,
+      27,
+      "Scuba Diver Jason",
+      {
+       "m": "still",
+       "s": 5
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "HOENN_ROUTE_130": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      70,
+      21,
+      "Triathlete Karsen",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        3,
+        6
+       ],
+       "s": 3
+      }
+     ],
+     [
+      7,
+      21,
+      "Scuba Diver Silas",
+      {
+       "m": "wander",
+       "d": "ud",
+       "r": [
+        0,
+        4
+       ],
+       "s": 5
+      }
+     ],
+     [
+      7,
+      30,
+      "Free Diver Cordura",
+      {
+       "m": "wander",
+       "d": "ud",
+       "r": [
+        0,
+        4
+       ],
+       "s": 5
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "HOENN_ROUTE_131": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      41,
+      32,
+      "Swimmer ♀ Susie",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        5,
+        7
+       ],
+       "s": 3
+      }
+     ],
+     [
+      18,
+      19,
+      "Sis & Bro Rell & Ian",
+      {
+       "m": "look",
+       "d": "dlr",
+       "s": 4
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "HOENN_ROUTE_132": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      10,
+      6,
+      "Black Belt Kiyo",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        3,
+        3
+       ],
+       "s": 2
+      }
+     ],
+     [
+      9,
+      15,
+      "Fisherman Ronald",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 4
+      }
+     ]
+    ],
+    "people": [
+     [
+      47,
+      22,
+      "TM34 SLUDGE WAVE"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "TM34 SLUDGE WAVE": {
+    "item": "HTM34"
+   }
+  }
+ },
+ "HOENN_ROUTE_133": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      68,
+      27,
+      "Fisherman River",
+      {
+       "m": "wander",
+       "d": "ud",
+       "r": [
+        0,
+        2
+       ],
+       "s": 3
+      }
+     ],
+     [
+      13,
+      3,
+      "Backpacker Grayson",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 3
+      }
+     ],
+     [
+      68,
+      28,
+      "Swimmer ♀ Debra",
+      {
+       "m": "wander",
+       "d": "ud",
+       "r": [
+        0,
+        2
+       ],
+       "s": 3
+      }
+     ],
+     [
+      7,
+      14,
+      "Swimmer ♂ Franklin",
+      {
+       "m": "look",
+       "d": "dr",
+       "s": 2
+      }
+     ],
+     [
+      56,
+      11,
+      "Swimmer ♀ Linda",
+      {
+       "m": "face",
+       "d": "d",
+       "s": 3
+      }
+     ],
+     [
+      56,
+      15,
+      "Swimmer ♀ Sheryl",
+      {
+       "m": "look",
+       "d": "ur",
+       "s": 3
+      }
+     ]
+    ],
+    "people": [
+     [
+      39,
+      16,
+      "CALCIUM"
+     ],
+     [
+      24,
+      5,
+      "Psychic"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "CALCIUM": {
+    "item": "CALCIUM"
+   }
+  },
+  "givers": {
+   "Psychic": "Psychic"
+  }
+ },
+ "HOENN_ROUTE_134": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      49,
+      9,
+      "Bird Keeper Alex",
+      {
+       "m": "wander",
+       "d": "udlr",
+       "r": [
+        3,
+        5
+       ],
+       "s": 2
+      }
+     ],
+     [
+      58,
+      7,
+      "Black Belt Hitoshi",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      41,
+      23,
+      "Dragon Tamer Aaron",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 2
+      }
+     ],
+     [
+      24,
+      23,
+      "Ace Trainer Elaine",
+      {
+       "m": "wander",
+       "d": "ud",
+       "r": [
+        0,
+        3
+       ],
+       "s": 6
+      }
+     ]
+    ],
+    "people": [
+     [
+      78,
+      31,
+      "TM80 ROCK SLIDE"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "TM80 ROCK SLIDE": {
+    "item": "HTM80"
+   }
+  }
+ },
+ "HOENN_RUSTURF_TUNNEL": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "6,9": "DIRE_HIT"
+    },
+    "people": [
+     [
+      3,
+      1,
+      "POKE BALL"
+     ],
+     [
+      30,
+      2,
+      "MAX ETHER"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "POKE BALL": {
+    "item": "POKE_BALLS"
+   },
+   "MAX ETHER": {
+    "item": "MAX_ETHER"
+   }
+  }
+ },
+ "HOENN_SAFARI_ZONE": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      98,
+      48,
+      "Street Thug"
+     ],
+     [
+      30,
+      55,
+      "TM53 ENERGY BALL"
+     ],
+     [
+      24,
+      59,
+      "PROTEIN"
+     ],
+     [
+      20,
+      66,
+      "RARE CANDY"
+     ],
+     [
+      65,
+      78,
+      "ULTRA BALL"
+     ],
+     [
+      92,
+      13,
+      "TM93 WILD CHARGE"
+     ]
+    ],
+    "hidden": {
+     "21,73": "REVIVE"
+    }
+   }
+  },
+  "figures": {
+   "TM53 ENERGY BALL": {
+    "item": "HTM53"
+   },
+   "PROTEIN": {
+    "item": "PROTEIN"
+   },
+   "RARE CANDY": {
+    "item": "RARE_CANDY"
+   },
+   "ULTRA BALL": {
+    "item": "ULTRA_BALL"
+   },
+   "TM93 WILD CHARGE": {
+    "item": "HTM93"
+   }
+  },
+  "givers": {
+   "Street Thug": "Street Thug"
+  }
+ },
+ "HOENN_SCORCHED_SLAB": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      5,
+      5,
+      "FULL HEAL"
+     ]
+    ],
+    "hidden": {
+     "8,4": "ESCAPE_ROPE",
+     "6,6": "SUPER_POTION",
+     "9,5": "NUGGET"
+    }
+   }
+  },
+  "figures": {
+   "FULL HEAL": {
+    "item": "FULL_HEAL"
+   }
+  }
+ },
+ "HOENN_SEAFLOOR_CAVERN": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      11,
+      8,
+      "Team Magma Grunt"
+     ],
+     [
+      7,
+      10,
+      "Team Aqua Grunt"
+     ]
+    ],
+    "hidden": {
+     "12,10": "HEART_SCALE",
+     "6,9": "ESCAPE_ROPE"
+    }
+   }
+  }
+ },
+ "HOENN_SHOAL_CAVE": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "5,27": "STAR_PIECE",
+     "15,26": "PEARL"
+    },
+    "people": [
+     [
+      25,
+      17,
+      "BIG PEARL"
+     ],
+     [
+      10,
+      11,
+      "FOCUS BAND"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "BIG PEARL": {
+    "item": "BIG_PEARL"
+   },
+   "FOCUS BAND": {
+    "item": "FOCUS_BAND"
+   }
+  }
+ },
+ "HOENN_SKY_PILLAR": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      7,
+      3,
+      "DRAGON SCALE"
+     ],
+     [
+      11,
+      3,
+      "TM64 EXPLOSION"
+     ],
+     [
+      9,
+      3,
+      "FULL RESTORE"
+     ],
+     [
+      6,
+      14,
+      "ULTRA BALL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "DRAGON SCALE": {
+    "item": "DRAGON_SCALE"
+   },
+   "TM64 EXPLOSION": {
+    "item": "HTM64"
+   },
+   "FULL RESTORE": {
+    "item": "FULL_RESTORE"
+   },
+   "ULTRA BALL": {
+    "item": "ULTRA_BALL"
+   }
+  }
+ },
+ "HOENN_SOUTHERN_ISLAND": {
+  "floors": {}
+ },
+ "HOENN_SPACE_CENTER": {
+  "floors": {}
+ },
+ "HOENN_SS_TIDAL": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      2,
+      3,
+      "Sailor Phillip"
+     ],
+     [
+      4,
+      10,
+      "Sailor Leonard"
+     ]
+    ],
+    "people": [
+     [
+      16,
+      5,
+      "TM63 EMBARGO"
+     ],
+     [
+      16,
+      9,
+      "SHARP BEAK"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "TM63 EMBARGO": {
+    "item": "HTM63"
+   },
+   "SHARP BEAK": {
+    "item": "SHARP_BEAK"
+   }
+  }
+ },
+ "HOENN_TEAM_HIDEOUT": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      17,
+      3,
+      "Team Magma Grunt"
+     ],
+     [
+      7,
+      17,
+      "Team Magma Grunts"
+     ],
+     [
+      3,
+      12,
+      "Team Aqua Grunt"
+     ],
+     [
+      23,
+      10,
+      "Team Aqua Grunts"
+     ]
+    ],
+    "people": [
+     [
+      3,
+      21,
+      "FULL RESTORE"
+     ],
+     [
+      22,
+      4,
+      "MAX ELIXIR"
+     ],
+     [
+      10,
+      3,
+      "ESCAPE ROPE"
+     ],
+     [
+      24,
+      4,
+      "NEST BALL"
+     ],
+     [
+      21,
+      5,
+      "TM97 DARK PULSE"
+     ],
+     [
+      6,
+      8,
+      "NUGGET "
+     ],
+     [
+      21,
+      7,
+      "PP MAX"
+     ],
+     [
+      6,
+      6,
+      "MAX REVIVE"
+     ],
+     [
+      24,
+      15,
+      "NUGGET  "
+     ],
+     [
+      24,
+      22,
+      "FULL RESTORE "
+     ],
+     [
+      13,
+      10,
+      "MAX ELIXIR "
+     ],
+     [
+      20,
+      9,
+      "ESCAPE ROPE "
+     ],
+     [
+      23,
+      8,
+      "NEST BALL "
+     ],
+     [
+      7,
+      4,
+      "TM97 DARK PULSE "
+     ],
+     [
+      23,
+      17,
+      "NUGGET   "
+     ],
+     [
+      23,
+      6,
+      "MASTER BALL "
+     ],
+     [
+      3,
+      14,
+      "PP MAX "
+     ],
+     [
+      7,
+      25,
+      "MAX REVIVE "
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "FULL RESTORE": {
+    "item": "FULL_RESTORE"
+   },
+   "MAX ELIXIR": {
+    "item": "MAX_ELIXIR"
+   },
+   "ESCAPE ROPE": {
+    "item": "ESCAPE_ROPE"
+   },
+   "NEST BALL": {
+    "item": "NEST_BALL"
+   },
+   "TM97 DARK PULSE": {
+    "item": "HTM97"
+   },
+   "NUGGET ": {
+    "item": "NUGGET"
+   },
+   "PP MAX": {
+    "item": "PP_MAX"
+   },
+   "MAX REVIVE": {
+    "item": "MAX_REVIVE"
+   },
+   "NUGGET  ": {
+    "item": "NUGGET"
+   },
+   "FULL RESTORE ": {
+    "item": "FULL_RESTORE"
+   },
+   "MAX ELIXIR ": {
+    "item": "MAX_ELIXIR"
+   },
+   "ESCAPE ROPE ": {
+    "item": "ESCAPE_ROPE"
+   },
+   "NEST BALL ": {
+    "item": "NEST_BALL"
+   },
+   "TM97 DARK PULSE ": {
+    "item": "HTM97"
+   },
+   "NUGGET   ": {
+    "item": "NUGGET"
+   },
+   "MASTER BALL ": {
+    "item": "MASTER_BALL"
+   },
+   "PP MAX ": {
+    "item": "PP_MAX"
+   },
+   "MAX REVIVE ": {
+    "item": "MAX_REVIVE"
+   }
+  }
+ },
+ "HOENN_VICTORY_ROAD": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      27,
+      34,
+      "Expert Bryn",
+      {
+       "m": "look",
+       "d": "dr",
+       "s": 3
+      }
+     ],
+     [
+      29,
+      17,
+      "Ace Trainer Edgar",
+      {
+       "m": "face",
+       "d": "r",
+       "s": 2
+      }
+     ],
+     [
+      32,
+      17,
+      "Street Thug Regan",
+      {
+       "m": "face",
+       "d": "l",
+       "s": 2
+      }
+     ],
+     [
+      35,
+      4,
+      "Ace Duo Jude & Rory"
+     ],
+     [
+      9,
+      30,
+      "Expert Theodore"
+     ],
+     [
+      15,
+      36,
+      "Dragon Tamer Egon"
+     ],
+     [
+      27,
+      28,
+      "Brains & Brawn Aden & Finn"
+     ]
+    ],
+    "people": [
+     [
+      40,
+      26,
+      "FULL HEAL"
+     ],
+     [
+      37,
+      39,
+      "PP UP"
+     ],
+     [
+      31,
+      13,
+      "MAX ELIXIR"
+     ],
+     [
+      16,
+      34,
+      "TM35 FLAMETHROWER"
+     ],
+     [
+      27,
+      37,
+      "FULL RESTORE"
+     ],
+     [
+      18,
+      24,
+      "TM81 X-SCISSOR"
+     ]
+    ],
+    "hidden": {
+     "30,39": "MAX_REPEL",
+     "9,22": "ELIXIR",
+     "33,18": "ULTRA_BALL",
+     "3,15": "IRON"
+    }
+   }
+  },
+  "figures": {
+   "FULL HEAL": {
+    "item": "FULL_HEAL"
+   },
+   "PP UP": {
+    "item": "PP_UP"
+   },
+   "MAX ELIXIR": {
+    "item": "MAX_ELIXIR"
+   },
+   "TM35 FLAMETHROWER": {
+    "item": "HTM35"
+   },
+   "FULL RESTORE": {
+    "item": "FULL_RESTORE"
+   },
+   "TM81 X-SCISSOR": {
+    "item": "HTM81"
+   }
+  }
+ },
+ "HOENN_WEATHER_INSTITUTE": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      6,
+      6,
+      "Team Magma Grunt"
+     ],
+     [
+      9,
+      4,
+      "Team Aqua Grunt"
+     ]
+    ],
+    "people": [
+     [
+      17,
+      2,
+      "Scientist"
+     ],
+     [
+      5,
+      7,
+      "Receptionist "
+     ],
+     [
+      9,
+      11,
+      "Receptionist  "
+     ],
+     [
+      18,
+      11,
+      "Receptionist   "
+     ],
+     [
+      9,
+      6,
+      "Receptionist    "
+     ]
+    ]
+   }
+  },
+  "givers": {
+   "Scientist": "Scientist",
+   "Receptionist ": "Receptionist",
+   "Receptionist  ": "Receptionist",
+   "Receptionist   ": "Receptionist",
+   "Receptionist    ": "Receptionist"
+  }
+ },
+ "LAVARIDGE_TOWN": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      8,
+      10,
+      "Black Belt"
+     ],
+     [
+      14,
+      9,
+      "Flannery"
+     ]
+    ],
+    "hidden": {
+     "4,5": "ICE_HEAL"
+    }
+   }
+  },
+  "givers": {
+   "Black Belt": "Black Belt",
+   "Flannery": "Flannery"
+  }
+ },
+ "LILYCOVE_CITY": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      61,
+      36,
+      "MAX REPEL"
+     ],
+     [
+      64,
+      20,
+      "Man"
+     ],
+     [
+      46,
+      25,
+      "Man "
+     ]
+    ],
+    "hidden": {
+     "49,30": "HEART_SCALE",
+     "36,36": "POKE_BALLS",
+     "63,15": "PP_UP"
+    }
+   }
+  },
+  "figures": {
+   "MAX REPEL": {
+    "item": "MAX_REPEL"
+   }
+  },
+  "givers": {
+   "Man": "Man",
+   "Man ": "Man"
+  }
+ },
+ "LITTLEROOT_TOWN": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      5,
+      11,
+      "POTION"
+     ],
+     [
+      14,
+      3,
+      "Mom "
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "POTION": {
+    "item": "POTION"
+   }
+  },
+  "givers": {
+   "Mom ": "Mom"
+  }
+ },
+ "MAUVILLE_CITY": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      28,
+      19,
+      "X SPEED"
+     ],
+     [
+      8,
+      16,
+      "TM58 SKY DROP"
+     ],
+     [
+      21,
+      7,
+      "Girl"
+     ],
+     [
+      35,
+      9,
+      "Wattson"
+     ],
+     [
+      9,
+      7,
+      "Old man"
+     ],
+     [
+      31,
+      9,
+      "METRONOME"
+     ],
+     [
+      38,
+      7,
+      "Delinquent"
+     ],
+     [
+      27,
+      12,
+      "ELIXIR"
+     ],
+     [
+      25,
+      8,
+      "TM89 U-TURN"
+     ],
+     [
+      2,
+      7,
+      "TM24 THUNDERBOLT"
+     ]
+    ],
+    "hidden": {
+     "4,8": "X_DEFENSE",
+     "38,10": "LUXURY_BALL",
+     "26,6": "MAX_REPEL"
+    }
+   }
+  },
+  "figures": {
+   "X SPEED": {
+    "item": "X_SPEED"
+   },
+   "TM58 SKY DROP": {
+    "item": "HTM58"
+   },
+   "METRONOME": {
+    "item": "METRONOME"
+   },
+   "ELIXIR": {
+    "item": "ELIXIR"
+   },
+   "TM89 U-TURN": {
+    "item": "HTM89"
+   },
+   "TM24 THUNDERBOLT": {
+    "item": "HTM24"
+   }
+  },
+  "givers": {
+   "Girl": "Girl",
+   "Wattson": "Wattson",
+   "Old man": "Old man",
+   "Delinquent": "Delinquent"
+  }
+ },
+ "MOSSDEEP_CITY": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      62,
+      35,
+      "BIG PEARL"
+     ],
+     [
+      49,
+      13,
+      "Boy"
+     ],
+     [
+      44,
+      25,
+      "Woman"
+     ],
+     [
+      46,
+      30,
+      "NET BALL"
+     ],
+     [
+      17,
+      5,
+      "REVIVE"
+     ],
+     [
+      11,
+      15,
+      "Sailor"
+     ],
+     [
+      27,
+      27,
+      "Liza and Tate"
+     ]
+    ],
+    "hidden": {
+     "3,20": "STAR_PIECE",
+     "14,22": "IRON"
+    }
+   }
+  },
+  "figures": {
+   "BIG PEARL": {
+    "item": "BIG_PEARL"
+   },
+   "NET BALL": {
+    "item": "NET_BALL"
+   },
+   "REVIVE": {
+    "item": "REVIVE"
+   }
+  },
+  "givers": {
+   "Boy": "Boy",
+   "Woman": "Woman",
+   "Sailor": "Sailor",
+   "Liza and Tate": "Liza and Tate"
+  }
+ },
+ "OLDALE_TOWN": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      11,
+      7,
+      "Poké Mart attendant"
+     ]
+    ]
+   }
+  },
+  "givers": {
+   "Poké Mart attendant": "Poké Mart attendant"
+  }
+ },
+ "PACIFIDLOG_TOWN": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      15,
+      17,
+      "Man"
+     ],
+     [
+      17,
+      23,
+      "BIG PEARL"
+     ],
+     [
+      8,
+      18,
+      "TM21 FRUSTRATION"
+     ],
+     [
+      10,
+      25,
+      "TM27 RETURN"
+     ],
+     [
+      8,
+      28,
+      "Man "
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "BIG PEARL": {
+    "item": "BIG_PEARL"
+   },
+   "TM21 FRUSTRATION": {
+    "item": "HTM21"
+   },
+   "TM27 RETURN": {
+    "item": "HTM27"
+   }
+  },
+  "givers": {
+   "Man": "Man",
+   "Man ": "Man"
+  }
+ },
+ "PETALBURG_CITY": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      19,
+      2,
+      "MAX REVIVE"
+     ],
+     [
+      3,
+      28,
+      "ETHER"
+     ],
+     [
+      18,
+      25,
+      "RARE CANDY"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "MAX REVIVE": {
+    "item": "MAX_REVIVE"
+   },
+   "ETHER": {
+    "item": "ETHER"
+   },
+   "RARE CANDY": {
+    "item": "RARE_CANDY"
+   }
+  }
+ },
+ "RUSTBORO_CITY": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      21,
+      42,
+      "X DEFENSE"
+     ],
+     [
+      27,
+      10,
+      "Businessman"
+     ],
+     [
+      23,
+      35,
+      "Ace Trainer"
+     ],
+     [
+      13,
+      43,
+      "Boy "
+     ],
+     [
+      20,
+      9,
+      "Teacher"
+     ],
+     [
+      32,
+      33,
+      "Roxanne"
+     ],
+     [
+      23,
+      50,
+      "GREAT BALL"
+     ]
+    ]
+   }
+  },
+  "figures": {
+   "X DEFENSE": {
+    "item": "X_DEFENSE"
+   },
+   "GREAT BALL": {
+    "item": "GREAT_BALL"
+   }
+  },
+  "givers": {
+   "Businessman": "Businessman",
+   "Ace Trainer": "Ace Trainer",
+   "Boy ": "Boy",
+   "Teacher": "Teacher",
+   "Roxanne": "Roxanne"
+  }
+ },
+ "SLATEPORT_CITY": {
+  "floors": {
+   "0": {
+    "people": [
+     [
+      32,
+      41,
+      "Fan Club chairman"
+     ],
+     [
+      19,
+      7,
+      "Fan Club chairman "
+     ],
+     [
+      14,
+      19,
+      "Fan Club chairman  "
+     ],
+     [
+      21,
+      38,
+      "Fan Club chairman   "
+     ],
+     [
+      16,
+      49,
+      "Fan Club chairman    "
+     ],
+     [
+      16,
+      15,
+      "Team MagmaOR/AquaAS Grunt"
+     ]
+    ]
+   }
+  },
+  "givers": {
+   "Fan Club chairman": "Fan Club chairman",
+   "Fan Club chairman ": "Fan Club chairman",
+   "Fan Club chairman  ": "Fan Club chairman",
+   "Fan Club chairman   ": "Fan Club chairman",
+   "Fan Club chairman    ": "Fan Club chairman",
+   "Team MagmaOR/AquaAS Grunt": "Team MagmaOR/AquaAS Grunt"
+  }
+ },
+ "SOOTOPOLIS_CITY": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "34,32": "PROTEIN",
+     "43,33": "SUPER_POTION",
+     "26,21": "X_ATTACK",
+     "13,44": "REVIVE"
+    },
+    "people": [
+     [
+      32,
+      35,
+      "Collector"
+     ],
+     [
+      43,
+      42,
+      "Black Belt"
+     ]
+    ]
+   }
+  },
+  "givers": {
+   "Collector": "Collector",
+   "Black Belt": "Black Belt"
+  }
+ },
+ "VERDANTURF_TOWN": {
+  "floors": {
+   "0": {
+    "hidden": {
+     "3,16": "REPEL"
+    }
+   }
+  }
+ }
+}

@@ -42,7 +42,7 @@ HILLS_ROOM = {
                                  "Wattson: Here, this is for you. Thunderbolt suits a Trainer with spark!"],
                        "gift_item": {"HTM24": 1}, "flag": "new_mauville_cleared"}},
             {"text": "Wattson", "action": "EVENT", "condition": "wattson_new_mauville_asked",
-             "event": {"lines": ["Wattson: The computer is in New Mauville's back room. Surf along Route 110 to get there!"]}},
+             "event": {"lines": ["Wattson: The computer is in New Mauville's back room. Its door is at the east end of town!"]}},
             {"text": "Wattson", "action": "EVENT",
              "event": {"lines": ["Wattson: Wahahaha! Mauville Hills is a fine place to live. You can see the whole city!"]}},
         ]},
@@ -71,10 +71,5 @@ def apply(maps):
     m["inside"] = dict(m.get("inside") or {}, **{"19,14": "hills"})
     m["rooms"] = dict(m.get("rooms") or {}, hills=HILLS_ROOM)
     m["scenes"] = list(m.get("scenes") or []) + [WATTSON_SCENE]
-    nm = maps["HOENN_NEW_MAUVILLE"]
-    rows = nm["art"]
-    assert rows[1][10] == "X" and nm["trainer_spots"][0] == "Wattson"
-    rows = rows[:1] + [rows[1][:10] + "N" + rows[1][11:]] + rows[2:]
-    nm["art"] = rows
-    nm["trainer_spots"] = nm["trainer_spots"][1:]   # (Wattson is at home in Mauville Hills: ORAS)
-    nm["people"] = ["Security computer"] + list(nm.get("people") or [])
+    from . import oras_new_mauville   # (New Mauville: ORAS's layout, Emerald's tiles; the computer where Wattson stood)
+    oras_new_mauville.new_mauville(maps)

@@ -4210,3 +4210,5 @@ from .soaring import SOARING as _SOARING  # noqa: E402  (the places you land on 
 from . import hoenn_oras as _ORAS  # noqa: E402  (ORAS's New Mauville story, fitted to Emerald's Mauville)
 MAPS.update(_SOARING)
 _ORAS.apply(MAPS)
+from . import oras_fill as _FILL  # noqa: E402  (ORAS's trainers and items on the maps: data/oras_fill.json)
+_FILL.apply(MAPS)

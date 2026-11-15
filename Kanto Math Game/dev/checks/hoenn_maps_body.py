@@ -1420,8 +1420,8 @@ st.run.enter_floor(1); frames(2)
 _all13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload).get("name") for f in st.run.floors for m in f.movers if m.kind == "trainer"]
 check(_quiet and len(_all13) == 3, f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge ({_all13})")
 _r125 = _tm13["HOENN_ROUTE_125"]
-check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) == 3,
-      "Route 125: Emerald's map, its three Trainers, and Shoal Cave's mouth")
+check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) >= 3,
+      "Route 125: Emerald's map, its Trainers (Emerald's three and ORAS's), and Shoal Cave's mouth")
 story.player_team = _team13
 story.inventory.clear(); story.inventory.update(_inv13)
 story.story_flags.clear(); story.story_flags.update(_saved13)
@@ -1646,8 +1646,9 @@ _vv = [k for k, t in _r134["exits"].items() if t == "HOENN_SEALED_CHAMBER"]
 check(_vv and sum(r.count(_vv[0]) for r in _r134["art"]) >= 6 and "has_item:HM_DIVE" in _dive134["condition"],
       "Route 134: Dive in its deep water into the Sealed Chamber (with Dive, once you're Champion)")
 _found18 = {k: {o["text"] for o in _sp18[k]["route_menu"] if o.get("found")} for k in ("HOENN_ROUTE_132", "HOENN_ROUTE_133", "HOENN_ROUTE_134")}
-check(_found18["HOENN_ROUTE_132"] == {"RARE CANDY", "PROTEIN"} and _found18["HOENN_ROUTE_133"] == {"BIG PEARL", "STAR PIECE", "MAX REVIVE"}
-      and _found18["HOENN_ROUTE_134"] == {"CARBOS", "STAR PIECE"}, f"Routes 132-134: Emerald's items to find ({_found18})")
+_found18 = {k: {t.strip() for t in v} for k, v in _found18.items()}
+check({"RARE CANDY", "PROTEIN"} <= _found18["HOENN_ROUTE_132"] and {"BIG PEARL", "STAR PIECE", "MAX REVIVE"} <= _found18["HOENN_ROUTE_133"]
+      and {"CARBOS", "STAR PIECE"} <= _found18["HOENN_ROUTE_134"], f"Routes 132-134: Emerald's items to find, among ORAS's ({_found18})")
 for _k in ("sealed_chamber_dug", "regi_trio_awakened"):
     story.story_flags.pop(_k, None)
 story.story_flags["beat_hoenn_champion"] = True
@@ -1796,7 +1797,7 @@ while _todo:
             _seen20.add(_n); _todo.append(_n)
 check((0, 39, 5) in _seen20 and {f for f, _x, _y in _seen20} == {0, 1, 2},
       "Victory Road: from the south mouth, through 1F, B1F and B2F (boulders, rocks, ladders) to the north mouth by the League")
-check(_vr[0]["trainer_spots"][0] == "Wally" and "Wally" in _vr[0]["trainer_spots"],
+check("Wally" in _vr[0]["trainer_spots"],
       "Victory Road: Wally waits on 1F, by the way out (Emerald's spot); the data's Ace Trainers on all three floors")
 _out20 = {}
 for _tile in ((39, 5), (15, 40)):
@@ -2571,6 +2572,52 @@ check("HOENN_MARINE_CAVE" in _r127["exits"].values() and "HOENN_TERRA_CAVE" in _
       f"Marine Cave from Route 127's seabed, Terra Cave's mouths on Route 114 (open after the Delta Episode), their legends; Altering Cave off Route 103 ({_bars})")
 story.story_flags.clear(); story.story_flags.update(_saved27)
 story.inventory.clear(); story.inventory.update(_inv27)
+
+# ---- 11-14 (Jordan): ORAS's trainers with their canon teams, its items on Emerald's spots, Route 119's Mimic Circle
+# (kanto_handoff/hoenn_rom_tools/oras_fill.py -> assets/hoenn_oras.json + dev/builders/data/oras_fill.json)
+_savedO, _invO = dict(story.story_flags), dict(story.inventory)
+_spO = g.loader.area_data["STORY_PROGRESSION"]
+_ivan = next(t for t in _spO["HOENN_ROUTE_104"]["trainer_pool"] if t["name"] == "Fisherman Ivan")
+check(_ivan["team"] == [129, 129, 129] and _ivan["levels"] == [7, 7, 7], f"Route 104: Fisherman Ivan's ORAS team, three Magikarp at Lv.7 ({_ivan['team']}, {_ivan.get('levels')})")
+_new104 = [t["name"] for t in _spO["HOENN_ROUTE_104"]["trainer_pool"] if t.get("oras")]
+check({"Youngster Billy", "Lass Haley"} <= set(_new104), f"Route 104: ORAS's trainers who weren't here, now are ({_new104})")
+st = open_map("HOENN_ROUTE_104", "PETALBURG_CITY")
+_billy = [m for f in st.run.floors for m in f.movers if m.kind == "trainer" and "Billy" in str(m.payload)]
+check(_billy, "Route 104: Youngster Billy stands on the map, ready to battle")
+_ball = next((m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "LUXURY BALL"), None)
+_had = story.inventory.get("LUXURY_BALL", 0)
+if _ball:
+    st._use_figure(_ball); tap(st)
+check(_ball and story.inventory.get("LUXURY_BALL", 0) == _had + 1, "Route 104: a Luxury Ball lying where Emerald has an item ball: picked up")
+_hid = next(iter((_tm["HOENN_ROUTE_104"].get("hidden") or {}).items()), None)
+if _hid:
+    _hx, _hy = (int(v) for v in _hid[0].split(","))
+    _before = story.inventory.get(_hid[1], 0)
+    st._hidden_item((_hx, _hy)); tap(st)
+check(_hid and story.inventory.get(_hid[1], 0) == _before + 1, f"Route 104: a hidden item found by stepping on its spot ({_hid})")
+st = open_map("HOENN_ROUTE_119", "HOENN_ROUTE_118")
+frames(3)
+_greg = next((m for m in st.run.floor.movers if m.kind == "trainer" and "Greg" in str(m.payload)), None)
+_mo = getattr(_greg, "motion", None)
+_moved = False
+if _mo:
+    _gx, _gy = _mo.home
+    for _px, _py in ((_gx + 4, _gy), (_gx - 4, _gy), (_gx, _gy + 4), (_gx, _gy - 4), (_gx + 5, _gy + 2), (_gx - 5, _gy - 2)):
+        for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if not (st.run.floor.walkable(_px, _py) and st.run.floor.walkable(_px + _dx, _py + _dy)):
+                continue
+            _at = _mo.pos
+            st.run.player, st.anim = (_px, _py), 0
+            st.step(_dx, _dy); frames(25)
+            if _mo.pos != _at:
+                _moved = True
+                break
+        if _moved:
+            break
+check(_mo is not None and _mo.kind == "copy" and _moved,
+      f"Route 119: the Mimic Circle: Bug Catcher Greg copies your steps ({getattr(_mo, 'kind', None)}, moved {_moved})")
+story.story_flags.clear(); story.story_flags.update(_savedO)
+story.inventory.clear(); story.inventory.update(_invO)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

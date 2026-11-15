@@ -68217,7 +68217,7 @@
    "cccccccccc^^cccccccc",
    "cccccccccc..cccccccc",
    "cc................cc",
-   "cc................cc",
+   "cc............N...cc",
    "....................",
    "..ccccc......ccccc..",
    "..ccccc......ccccc..",
@@ -68225,7 +68225,7 @@
    "..cccDc!....!cDccc..",
    "....................",
    "................N...",
-   "....................",
+   ".....N..............",
    "....................",
    "...ccccccc..N..!....",
    "...ccccccc..........",
@@ -68255,6 +68255,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Mom ",
    {
     "text": "Little girl",
     "action": "EVENT",
@@ -68264,6 +68265,7 @@
      ]
     }
    },
+   "POTION",
    {
     "text": "Science fan",
     "action": "EVENT",
@@ -68590,7 +68592,7 @@
    "cc...........cccc.cc",
    "cc..cccc.....cEcc.cc",
    "cc..cAcc.....cDcc.cc",
-   "cc..cDcc.....N....cc",
+   "cc..cDcc...N.N....cc",
    "cc..................",
    "cc......N..!........",
    "<...................",
@@ -68627,6 +68629,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Poké Mart attendant",
    "Poke Mart Clerk",
    "Path to Route 102",
    {
@@ -69036,15 +69039,15 @@
    "cc\"\"\"\"\"\"\"\"\".X.....................).\"N\"\"oooooocccc",
    "cc\"\"\"\"\"\"\"\"...................X....)..\"\"\"oooooocccc",
    "<..\"\"\"\"\"\"\"....cc__..______....cc..)...\"\"oooooocccc",
-   "<...\"\"\"\"......cc....\"\"\"\"\".cccccc..)...........cccc",
+   "<...\"\"\"\"X.....cc....\"\"\"\"\".cccccc..)...........cccc",
    "<...........cccc..\"\"\"\"\"\"\".ccccccccc.............cc",
    "<...........cccc.\"\"\"\"\"\"\"..cccccccc......!.......cc",
    "cccccccc....cccc\"\"\"\"\"\"....cccccccccc.............>",
    "cccccccc..cccccc\"\"N\"......cccccccccc.............>",
-   "cccccc\"\"..cccccc\"\"\".......cccc\"\"cccc.....X......cc",
+   "cccccc\"\"..cccccc\"\"\".......cccc\"\"cccc..N..X......cc",
    "cccccc\"\"____cccc\"\"...cc.....\"\"\"\"cccc............cc",
-   "cccccc\"\"\"...cccccc...cccc...\"\"\"\"\"...........cccccc",
-   "cccccc\"\"\"...cccccc..\"\"\"cc....\"\"\"............cccccc",
+   "cccccc\"\"\"...cccccc...cccc...\"\"\"\"\"X......N...cccccc",
+   "cccccc\"\"\"..Ncccccc..\"\"\"ccX...\"\"\"............cccccc",
    "cccccc\"\"\"\"cccccccc.\"\"\"\"\"\"\"..............cccccccccc",
    "cccccc\"\"\"\"cccccccc.\"\"\"\"\"\"\"\".............cccccccccc",
    "cccccccccccccccccccccccc\"\"\"\"....cccccccccccccccccc",
@@ -69084,7 +69087,10 @@
       "The tall grass is taller than me! It tickles my nose... achoo!"
      ]
     }
-   }
+   },
+   "Soft soil patch ",
+   "Soft soil patch",
+   "POTION"
   ],
   "signs": [
    [
@@ -69099,7 +69105,10 @@
   "trainer_spots": [
    "Youngster Allen",
    "Lass Katie",
-   "Bug Catcher Lyle"
+   "Lass Tiana",
+   "Bug Catcher Lyle",
+   "Youngster Calvin",
+   "Bug Catcher Rick"
   ],
   "edge_to": {
    "0,6": [
@@ -69139,6 +69148,21 @@
      1,
      1
     ]
+   },
+   "33,14": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "25,15": {
+    "m": "face",
+    "d": "u",
+    "s": 2
+   },
+   "8,7": {
+    "m": "look",
+    "d": "dr",
+    "s": 3
    }
   },
   "scenes": [
@@ -69208,14 +69232,14 @@
    "cccc......\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccc......N\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cc\"\".........\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cc\"\"\"\"_______c\"\"\"\"ccccccccccccccccoooccccccccccccc........ccc.cccc....cccccccccc",
+   "cc\"\"\"\"_______c\"\"\"\"ccccccccccccccccooocccccccccccccN.......ccc.cccc....cccccccccc",
    "cc\"\"\"\"\"\"\"....c______ccccccccooccccoooccccccccncccc.cccccc.....ccccc.c.cccccccccc",
-   "cc\"\"\"\"\"\"\"...........ccccooccoooooooooooooooo......ccccccc......c.c.2.....cccc.c.",
+   "cc\"\"\"\"\"\"\"...........ccccooccoooooooooooooooo......ccccccc......cNc.2.....cccc.c.",
    "cc\"\"\"\"\"\"\".............ooooooooooooooooooooooooooo...ccccc......c....c...2cccc.c.",
    "cc\"\"\"\"\"\"\"..!..........ooooooooooooooooooooooooooo....ccccc.c.c..ccc...cc.c.....>",
    "cccc\"\"\"\"X.........X.N.ooooooooooooooooooooooooooo......cccccccc......c.c.......>",
-   "cccc\"\"\"\"......\"\"\"\"....ooooooooooooooooooooooooooo.........c.c.ccccccc..........>",
-   "cccc__________\"\"\"\"\".....oooooooooooooooooooooooooN.............................c",
+   "cccc\"\"\"\"......\"\"\"\"....ooooooooooooooooooooooooooo.........c.c.ccccccc..X.......>",
+   "cccc__________\"\"\"\"\".....oooooooooooooooooooooooooN..............XX...........N.c",
    "cccc.......\"\"\"\"\"\"\"\".....ccccooooooooooccooooooooo..............................c",
    "cccc.......\"\"\"\"\"\"\"ccccccccccccooooccccccoccooccc...ccc.c.....................ccc",
    "cccc........\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccc.c.c.c.c.c.c.c.cc.cccc",
@@ -69245,6 +69269,8 @@
   },
   "people": [
    "{rival_name}",
+   "LEPPA BERRY",
+   "CHESTO BERRY",
    {
     "text": "Boy",
     "action": "EVENT",
@@ -69262,7 +69288,8 @@
       "Surf across the water from here and you'll be back in Oldale Town in no time."
      ]
     }
-   }
+   },
+   "GUARD SPEC."
   ],
   "signs": [
    [
@@ -69273,6 +69300,9 @@
   "trainer_spots": [
    "Youngster Timmy",
    "Fisherman Andrew",
+   "Aroma Lady Daisy",
+   "Poké Fan Miguel",
+   "Twins Amy & Liv",
    "Lass Natalie"
   ],
   "edge_to": {
@@ -69321,6 +69351,21 @@
    "10,3": {
     "m": "face",
     "d": "r"
+   },
+   "71,11": {
+    "m": "look",
+    "d": "dr",
+    "s": 3
+   },
+   "65,12": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "64,12": {
+    "m": "face",
+    "d": "d",
+    "s": 1
    }
   },
   "scenes": [
@@ -69380,7 +69425,7 @@
   "art": [
    "cccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccc...oooocccc",
+   "cccccccccccccccccccN..oooocccc",
    "cccccccccccccccccccooooooocccc",
    "cccccccBcccccccccccooooooocccc",
    "cccc.ccDcccccccccccooooooocccc",
@@ -69403,10 +69448,10 @@
    "ccooooo.N....N....cccccccccccc",
    "ccoooooooooo......ccFccccccccc",
    "ccoooooooooocc.....cDcc..ccccc",
-   "ccoooooooooocc...........ccccc",
+   "ccoooooooooocc....N......ccccc",
    "ccoooooooooocc...........ccccc",
    "ccoooooooooocc............cccc",
-   "cc...cccccc.cccccccccccccccccc",
+   "cc.N.cccccc.cccccccccccccccccc",
    "cc...cccccc.cccccccccccccccccc"
   ],
   "exits": {
@@ -69433,6 +69478,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "MAX REVIVE",
    "Talk to Dad",
    {
     "text": "Gentleman",
@@ -69471,7 +69517,9 @@
      ]
     }
    },
-   "Battle Matt"
+   "Battle Matt",
+   "RARE CANDY",
+   "ETHER"
   ],
   "signs": [
    [
@@ -70642,11 +70690,11 @@
    "cccccccccccccccccccccccccccccccc......\"\"\"\"\"\"cccc",
    "ccccccccccccccvvcccccccccccccccc.N...\"\"\"\"\"\"\"cccc",
    "cccccccccccc......cccccccc.cccc......cccc\"\"\"..cc",
-   "cccccccccccc......cccccccc.cccc......cccc\"\"...cc",
-   "cccc...\"\"\"\"!......cccccc\"\"......\"\"\"..cccc_____cc",
+   "cccccccccccc......cccccccc.cccc......cccc\"\"..Ncc",
+   "ccccN..\"\"\"\"!......cccccc\"\"......\"\"\"..cccc_____cc",
    "cccc.\"\"\"\"\"\".......cccccc\"\"\"...\"\"\"\"\"\".cccc.....cc",
    "cccc\"\"\"\"\"\"\"...X....2.\"\"\"\"\"\"\"cccccc\"\"\"........\"cc",
-   "cccc\"\"\"\"\"\".........2..\"\"\"\"\"\"cccccc\"\"\"\"......\"\"cc",
+   "cccc\"\"\"\"\"\"......N..2..\"\"\"\"\"\"cccccc\"\"\"\"......\"\"cc",
    "cccc.\"\"\"cccccc....cccccccccccccccccccccc...\"\"\"cc",
    "cccc....cccccc....cccccccccccccccccccccc...\"\"\"cc",
    "cccc....cccccc_____cccccccccccccccccccccc..\"\"\"cc",
@@ -70655,20 +70703,20 @@
    "cccc\"\"\"\"\"\"\"......\"\"\"\".....X.cccccccccccccc..\"\"cc",
    "cccc\"\"\"\"\"\"\".....\"\"\"\"\"\"\"\"\"...cccccccccccccc...\"cc",
    "cccc.\"\"\"\"\".....N\"\"\"\"\"\"\"\"\"\"..cccccccccccccc....cc",
-   "cccccccccccc....ccccccccccN.cccccc..cccccc____cc",
+   "cccccccccccc....ccccccccccN.cccccc.Ncccccc____cc",
    "cccccccccccc....cccccccccc..cccccc..cccccc\"...cc",
    "cccccccccccc____cccccccccc..cccc\".....cccc\"\"..cc",
    "cccccccccccc....cccccccccc..cccc\".....cccc\"\"\".cc",
-   "cccccc..X.........\"\"\"\"\"\"\"\"..cccc\"\"......\"\"\"\"\".cc",
+   "cccccc..X.........\"\"\"\"\"\"\"\"..cccc\"\"..N...\"\"\"\"\".cc",
    "cccccc\"\"\"..........\"\"\"\"\"\"...cccc\"\"\"....\"\"\"\"\"\"\"cc",
-   "cccc.\"\"\"\"\"\"\"\"...............cccc\"\"\"\"cc.\"\"\"\"\"\"\"cc",
+   "ccccN\"\"\"\"\"\"\"\"...............cccc\"\"\"\"cc.\"\"\"\"\"\"\"cc",
    "cccc\"\"\"\"\"\"\"\"\"\"..............cccc\"\"\"\"cc.\"\"\"\"\"\"\"cc",
    "cccc\"\"\"\"\"\"cccccc......cccccccccc\"\"\"\"cccc\"\"\"\"cccc",
    "cccc\"\"\"\"\"\"cccccc......cccccccccc.\"\"\"cccc.\"\"\"cccc",
    "cccc\"\"\"\"\"\"cccccc______cccccccccc...\"cccccccccccc",
    "cccc\"\"\"\"\"\"cccccc......cccccccccc....cccccccccccc",
    "cccc.\"\"\"\"\"\"\"\"\"!.......\"\"\"\"cccccc____cccccccccccc",
-   "cccc...\"\"\"\"\"\"........\"\"\"\"\"cccccc....cccccccccccc",
+   "cccc...\"\"\"\"\"\"....N...\"\"\"\"\"cccccc....cccccccccccc",
    "cccccc...............\"\"\"\"\"\"\"..N.....\"\"\"\"\"\"cccccc",
    "cccccc...............\"\"\"\"\"\"..........\"\".\"\"cccccc",
    "cccccccccccccc......cccccccccccccc...\"\"\"\"\"cccccc",
@@ -70705,6 +70753,9 @@
      ]
     }
    },
+   "PARALYZE HEAL",
+   "ETHER",
+   "Girl ",
    {
     "text": "Camper boy",
     "action": "EVENT",
@@ -70724,6 +70775,10 @@
     },
     "flag_condition": "not woods_researcher_left"
    },
+   "BALM MUSHROOM",
+   "X ATTACK",
+   "NET BALL",
+   "GREAT BALL",
    {
     "text": "Watchful boy",
     "action": "EVENT",
@@ -70832,36 +70887,39 @@
      44
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "39,35": "POTION"
+  }
  },
  "HOENN_ROUTE_104": {
   "art": [
    "cccccccccc..^^^^^^^^..............cccccc",
    "cccccccccccc......................cccccc",
    "cccccccccccc....................cccccccc",
-   "cccccccccccccc..................cccccccc",
+   "cccccccccccccc....N.............cccccccc",
    "cccccc\"\"cccccc..................cccccccc",
    "cccccc.\"cccccc.........!........cccccccc",
    "cc\".\"\"\".\"\"cccc......X.............ccc.cc",
    "cc\"\"\"\"\"\"\".cccccc......................cc",
-   "cc\"\"\".\"\"\"\"cccccccccc.................Ncc",
+   "cc\"\"\"N\"\"\"\"cccccccccc.N.......X.......Ncc",
    "cc\".\"\"\"\"ccccccccccccoooo..oooooooooooocc",
    "cc\"\"\"\"ccccccccccccccoooo..oooooooooooocc",
    "cc\"\"\"\"ccccccccccccccoooo..oooooooooooocc",
    "cc.\"ccccccccccccoooooooo..oooooooooooocc",
    "cc..ccccccccccoooooooooo..oooooooooooocc",
    "cc..ccccccccccoooooooooo..oooooooooooocc",
-   "cc..cccccccccooooooooooo........oooooo..",
+   "cc..cccccccccooooooooooo...X....oooooo.N",
    "cc.ccccccccccooooooooooo........oooooo..",
    "cc.ccBcccccccooooooooooooooooo..oooooocc",
    "cc.ccDcccccccooooooooooooooooo..oooooocc",
    "cc......N..ccooooooooooooooooo..oooooocc",
    "cc.....!...ccooooooooooooooooo..oooooocc",
    "cc...........ooooooooooooooooo..oooooocc",
-   "cc.c..................X............2..cc",
+   "cc.c..N...............X............2.Ncc",
    "cc.c.............!................cccccc",
-   "cc.c..............................cccccc",
-   "cc.c............................cccccccc",
+   "cc.c...........................X..cccccc",
+   "cc.c.....................N......cccccccc",
    "cc...N..........................cccccccc",
    "cc............cccccccccccccccccccccccccc",
    "cccccccccc..cccccccccccccccccccccccccccc",
@@ -70877,7 +70935,7 @@
    "ccccccccccnncccccccccccccccccccccccccccc",
    "oooocccccc..cccccccccccccccccccccccccccc",
    "oooocccccc..cccccccccccccccccccccccccccc",
-   "ooooocc\"\"\"..\"\"\"\"ccccc.ccc.cccccccccccccc",
+   "ooooocc\"\"\"N.\"\"\"\"ccccc.ccc.cccccccccccccc",
    "ooooooc\"\"\"..\"\"\"\"\".........ccccccnncccccc",
    "ooooooc\"\"\"................cccccc..cccccc",
    "oooooocc\"\"................ccccc...cccccc",
@@ -70889,7 +70947,7 @@
    "oooooooo~cc~~~cccDcc!.......(.N...cccccc",
    "ooooooocccc<N...............(.....cccccc",
    "oooooccccoo<................(.....cccccc",
-   "oooooccoooooooc.............(...cccccccc",
+   "oooooccoooooooc.............(N..cccccccc",
    "oooo~c~ooooooocc..cc.....\"\"\"(...cccccccc",
    "oooocccooooooo=====c.\"\"\"\"\"\"\"c_c.cccccccc",
    "oooocccoooooooo====c\"\"\"\"\"\"\"\"\"\"(.cccccccc",
@@ -70897,8 +70955,8 @@
    "oooooccoooooooo====cc\"\"\"\"\"\"\"\"\"....cccccc",
    "ooooooccooooooo=====c\"\"\"\"\"\".......cccccc",
    "ooooooccoooooooN====cc\"\"\"...........cccc",
-   "ooooooccoooooo=======c\"\"\"...............",
-   "ooooooccoooooo=======ccc...............>",
+   "ooooooccoooooo=======c\"\"\"........N......",
+   "ooooooccoooooo=======ccc........N......>",
    "oooooooccooooo=========c...N...........>",
    "oooooccccooooo=========cc...........cccc",
    "oooooccooooooo==========c...........cccc",
@@ -70940,6 +70998,9 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "X ATTACK",
+   "LUXURY BALL",
+   "REVIVE",
    {
     "text": "Berry lover",
     "action": "EVENT",
@@ -70949,6 +71010,7 @@
      ]
     }
    },
+   "PECHA BERRY",
    {
     "text": "Shopper",
     "action": "EVENT",
@@ -70958,6 +71020,9 @@
      ]
     }
    },
+   "PECHA BERRY ",
+   "POKE BALL",
+   "PP UP",
    {
     "text": "Seed boy",
     "action": "EVENT",
@@ -70967,6 +71032,7 @@
      ]
     }
    },
+   "Old woman",
    {
     "text": "Cottage girl",
     "action": "EVENT",
@@ -70994,6 +71060,7 @@
      ]
     }
    },
+   "ORAN BERRY",
    {
     "text": "Bug catcher",
     "action": "EVENT",
@@ -71003,6 +71070,8 @@
      ]
     }
    },
+   "Youngster",
+   "Woman",
    {
     "text": "Catcher boy",
     "action": "EVENT",
@@ -71044,7 +71113,10 @@
   ],
   "trainer_spots": [
    "Fisherman Ivan",
+   "Lass Haley",
+   "Twins Gina & Mia",
    "Lady Cindy",
+   "Youngster Billy",
    "Rich Boy Winston"
   ],
   "edge_to": {
@@ -71209,6 +71281,20 @@
    "12,51": {
     "m": "face",
     "d": "r"
+   },
+   "31,24": {
+    "m": "face",
+    "d": "l",
+    "s": 7
+   },
+   "29,8": {
+    "m": "face",
+    "d": "d"
+   },
+   "27,15": {
+    "m": "face",
+    "d": "d",
+    "s": 1
    }
   },
   "scenes": [
@@ -71323,7 +71409,14 @@
      80
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "16,72": "ANTIDOTE",
+   "16,64": "HEART_SCALE",
+   "14,55": "POTION",
+   "3,9": "POKE_BALLS",
+   "7,6": "SUPER_POTION"
+  }
  },
  "RUSTBORO_CITY": {
   "art": [
@@ -71336,8 +71429,8 @@
    "ccccccccccccccccccc.......cccccccccccccc",
    "ccccccccccccccccccc.....ccccccccccccc.cc",
    "cccccccccccccccccc............!........>",
-   "cccccccccccccccccc.....................>",
-   "cccccccccccccccccc.....................>",
+   "cccccccccccccccccc..N..................>",
+   "cccccccccccccccccc.........N...........>",
    "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.N....ccccccccccccccc.",
@@ -71360,24 +71453,24 @@
    "ccccccc..ccccDcccc......c...........cccc",
    "ccccccc............c..c.ccccccc...cccccc",
    "ccccccc.................ccccccc.....cccc",
-   "ccccccc.................cccFccc.....cccc",
+   "ccccccc.................cccFccc.N...cccc",
    "ccccccc......N........N.cccDccc.....cccc",
-   "cccccccccccc.............!..........cccc",
+   "cccccccccccc...........N.!..........cccc",
    "cccccccccccc...cccc............N....cccc",
    "cccccccccIcc...cEcc......N..........cccc",
    "cccccccccDcc!..cDccc..c....ccc......cccc",
    "ccccccc....................ccc......cccc",
    "ccccccc....................ccc.cccc.cccc",
    "ccc............................cccc.cccc",
-   "ccc............................cccc.cccc",
-   "ccc............cccc.....cccccc.cccc.cccc",
+   "ccc..................N.........cccc.cccc",
+   "ccc..........N.cccc.....cccccc.cccc.cccc",
    "cccccccccc.....cCcc.....cccccc.cccc.cccc",
    "cccccccccc..N..cDccc..c.ccLccc.cccc.cccc",
    "cccccccccc...........N..ccDccc.cccc.cccc",
    "cccccccccc..........................cccc",
    "cccccccccc..........................cccc",
    "cccccccccc.........!.........c......cccc",
-   "cccccKcccc.....................ccccccccc",
+   "cccccKcccc.............N.......ccccccccc",
    "cccccDcccc..............NN.....ccccccccc",
    "ccc............................ccccccccc",
    "ccc............................ccccccccc",
@@ -71418,6 +71511,8 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Teacher",
+   "Businessman",
    {
     "text": "Devon fan",
     "action": "EVENT",
@@ -71445,6 +71540,7 @@
      ]
     }
    },
+   "Roxanne",
    {
     "text": "Devon worker",
     "action": "EVENT",
@@ -71463,6 +71559,7 @@
      ]
     }
    },
+   "Ace Trainer",
    {
     "text": "Battle fan",
     "action": "EVENT",
@@ -71481,6 +71578,8 @@
      ]
     }
    },
+   "X DEFENSE",
+   "Boy ",
    {
     "text": "Boy",
     "action": "EVENT",
@@ -71499,6 +71598,7 @@
      ]
     }
    },
+   "GREAT BALL",
    {
     "text": "Little boy",
     "action": "EVENT",
@@ -72296,18 +72396,18 @@
    "cccccccccccccc..(......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccc..........(......cc......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccc......\"...(c....ccc.cc.c2cc.ccccccccccccccccccccccccccccccccccccc...cccccccccccccccccccccccccc",
-   "cc.......\".\".\"..(.c.c2.........cc..cccccc.ccccccccccccccccccccccccccccc.....cccccccccccccccccccccccc",
-   "cc......\".\"\"\"\"\"\"c____c...c...c.....cccAcc.ccccccccccc....cccccccccccc............ccccccccccccccccccc",
-   "<....X..cc\"\"\"\"\"\"\"\"...(c..ccc.c.....cccDcc..ccccnccccc.cccccccccccccccccc.cccc.....cccccccccccccccccc",
+   "cc.......\".\".\"..(.cNc2.........cc..cccccc.ccccccccccccccccccccccccccccc.....cccccccccccccccccccccccc",
+   "cc......\".\"\"X\"\"\"c____c...c...c....NcccAcc.ccccccccccc....cccccccccccc............ccccccccccccccccccc",
+   "<....X..cc\"\"\"\"\"\"\"\"...(c..ccc.c.....cccDcc..ccccnccccc.cccccccccccccccccc.cccc...N.cccccccccccccccccc",
    "<.....cccc\"\"\"\"\"\"\".\"..(.c2...c..cccc...N.!.....N.!.c.....cccccccccccccc...cccccc...cccccccccccccccccc",
    "<....!cccccc\"\"\"\".\"...(.c.c..c!..2.................cc....cccccccccnccc....ccccccccccccccccccccccccccc",
-   "<.....cccccc\"\"\".\".X..(....c.2..c..c................c.cc.cccccccc....cccc.ccccccccccccccccccccccccccc",
-   "<....\"cccccccccc!....c______________..................c.cccccccc................cccccccccccccccccccc",
-   "<...\".\"\"cccccccc........\"\"\"\"\"\"\"\"\"..\"......X...........c.cccccccc..........N.....cccccccccccccccccccc",
+   "<.N...cccccc\"\"\".\".X..(....c.2..c..c................c.cc.cccccccc....cccc.ccccccccccccccccccccccccccc",
+   "<....\"cccccccccc!....c______________..................cNcccccccc................cccccccccccccccccccc",
+   "<...\".\"\"cccccccc........\"\"\"\"\"\"\"\"\"..\"......X...........c.cccccccc..........N.N...cccccccccccccccccccc",
    "cc...\"\"\"\"\"\"\"\"\"cc.......\".\"\"\"..\"\"\"\"\".\".....cccccccc....c.....cccccccccccc.....ccccccccccccccccccccccc",
    "cc..\".\"\"\"\"\"\"\"\"cc........\"\"\"\".\"\"\"\"\"\"\"......cccccccc....ccc....ccccccccccccccccccccccccccccccccccccccc",
    "cccc.\"\"\"\"\"\"\"\"..........\"\"\"\"\"\"\"\"\"X.\".\"...cccccccccccc....c....ccccccccccccccccccccccccccccccccccccccc",
-   "cccc\"\"\"\"\"\".\".\"........\".\"..\"\"\"\"..\"\"\"....cccccccccccc....cccccccccccccccccccccccccccccccccccccccccccc",
+   "cccc\"\"\"\"\"\"N\".X........\".\"..\"\"\"\"..\"\"\"....cccccccccccc....cccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccc\".\"........\"\"\".\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccc.........\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
@@ -72330,6 +72430,9 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "X SP. ATK",
+   "POTION",
+   "ETHER",
    {
     "text": "Tunneler",
     "action": "EVENT",
@@ -72349,6 +72452,8 @@
     },
     "flag_condition": "not rusturf_rescued"
    },
+   "Devon researcher",
+   "CHESTO BERRY",
    {
     "text": "Short-sighted man",
     "action": "EVENT",
@@ -72357,7 +72462,9 @@
       "I dropped my glasses somewhere around here... I can't see a thing without them!"
      ]
     }
-   }
+   },
+   "HP UP",
+   "REPEL"
   ],
   "signs": [
    [
@@ -72381,10 +72488,12 @@
    ]
   ],
   "trainer_spots": [
+   "Youngster Joey",
    "School Kid Jerry",
    "Lass Janice",
    "Bug Catcher Jose",
-   "Hiker Clark"
+   "Hiker Clark",
+   "Schoolkid Karen"
   ],
   "edge_to": {
    "0,8": [
@@ -72429,6 +72538,16 @@
     "m": "face",
     "d": "l",
     "s": 5
+   },
+   "12,7": {
+    "m": "look",
+    "d": "ur",
+    "s": 3
+   },
+   "13,17": {
+    "m": "look",
+    "d": "udlr",
+    "s": 2
    }
   },
   "berry_soil": [
@@ -72467,13 +72586,16 @@
      20
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "22,9": "SUPER_POTION"
+  }
  },
  "HOENN_RUSTURF_TUNNEL": {
   "art": [
    "cccccccccccccccccccccccccccccccccccc",
-   "ccc......ccccc_cccc___cccccccccccccc",
-   "ccc......ccccccccccccccccccccc.ccccc",
+   "cccN.....ccccc_cccc___cccccccccccccc",
+   "ccc......cccccccccccccccccccccNccccc",
    "cccccccc.ccccccccccccccccccc...ccccc",
    "cccc....................0N....cccccc",
    "cccc..........X........N0......ccccc",
@@ -72513,6 +72635,8 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "POKE BALL",
+   "MAX ETHER",
    {
     "text": "Wanda",
     "action": "EVENT",
@@ -72610,7 +72734,10 @@
     ]
    }
   ],
-  "theme": "cave"
+  "theme": "cave",
+  "hidden": {
+   "6,9": "DIRE_HIT"
+  }
  },
  "DEWFORD_TOWN": {
   "art": [
@@ -73220,16 +73347,16 @@
    "ccccccccc~c~ooooooooooooooocco~c~ccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccoooooooooooooooccoccccccc~cc~ccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccoooooooooooooooooocccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccooooooooooooooooooooooocccccccoccoccooccooccooooccccccccccoccccccccccc",
+   "ccccccccccooooooooXoooooooooooooocccccccoccoccooccooccooooccccccccccoccccccccccc",
    "ccccccccccoooooooooooooooooooooooccooooooccoooooooooooooooooccooccoooccocccccccc",
    "ccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccc",
    "ccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccc",
    "ccccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccc",
-   "ccccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccc",
+   "ccccccccccccccccccoooooooooooXoooooooooooooooooooooooooooooooooooooooooooccccccc",
    "ccccccccccccccccccooooooooooooooooooooooo===============oooooooooooooooooccccccc",
    "ccccccccccccccccccccooccoooooooo========ccccccccccc==c==X===oooooooooooooccccccc",
    "ccccccccccccccccccccccccoccoo=X=cccccccccccccccccccc=======!======ooooooocccc~cc",
-   "ccccccccccccccccccccccccccccc=ccccccccccccccccccccc===============oooooooccccccc",
+   "cccccccccccccccccccccccccccccNccccccccccccccccccccc===============oooooooccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccc========X========ooooccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccc^cc==================oooocc~cccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccc========cc===========ooooccccccc",
@@ -73260,6 +73387,8 @@
    ]
   ],
   "trainer_spots": [
+   "Fisherman Ned",
+   "Backpacker Graeme",
    "Fisherman Elliot",
    "Swimmer Ned",
    "Team Aqua Grunt"
@@ -73379,7 +73508,30 @@
      20
     ]
    }
-  ]
+  ],
+  "moves": {
+   "18,5": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     4,
+     0
+    ],
+    "s": 3
+   },
+   "29,10": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   }
+  },
+  "people": [
+   "PROTEIN"
+  ],
+  "hidden": {
+   "68,15": "HEART_SCALE",
+   "41,11": "STARDUST"
+  }
  },
  "HOENN_GRANITE_CAVE": {
   "floors": [
@@ -73389,12 +73541,12 @@
      "ccccccccccccccc",
      "ccccccccccccccc",
      "ccccccc1ccccccc",
-     "ccccc....cccccc",
+     "ccccc..N.cccccc",
      "cccccc...cccccc",
-     "cccc.....cccccc",
-     "cccc.......cccc",
+     "cccc..X..cccccc",
+     "cccc.N..X..cccc",
      "cccc...N..ccccc",
-     "cccccc.....cccc",
+     "cccccc...N.cccc",
      "cccccc.c...cccc",
      "ccccccccccccccc",
      "ccccccccccccccc",
@@ -73414,7 +73566,10 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TALK TO STEVEN"
+     "POKE BALL",
+     "ESCAPE ROPE",
+     "TALK TO STEVEN",
+     "Hiker "
     ],
     "links": {
      "7,3": [
@@ -73428,7 +73583,11 @@
       "m": "look",
       "d": "udlr"
      }
-    }
+    },
+    "trainer_spots": [
+     "Ruin Maniac Omari",
+     "Hiker Davian"
+    ]
    },
    {
     "art": [
@@ -73694,18 +73853,18 @@
    "cccoooooo=ccccc====================ooocc",
    "ccccooooo=ccAcc===============X====ooocc",
    "ccccooooo=ccDcc!====X==============ooocc",
-   "ccccooooo==N=====================Noooocc",
-   "ccccooooo=========================oooccc",
+   "ccccooooo==N=============N=======Noooocc",
+   "ccccooooo=============X====X======oooccc",
    "cccoooooo=========================oooccc",
    "cccoooooo.=======.=====..=========oocccc",
-   "cccccoooo.====..=.=====..====!=.=ooocccc",
+   "cccccoooo.====..=.=X===..====!=.=ooocccc",
    "cccccoooo.====..===============.=ooooocc",
    "ccccccoooo==.==================.=ooooccc",
-   "cc~~ccoooo==.====X===============ooooccc",
+   "cc~~ccoooo==.====X======X========ooooccc",
    "cccc~oooooo=========....========oooooocc",
-   "cccccoooooo=======.=....=====.==oooooocc",
+   "cccccoooooo=======.=N..N=====.==oooooocc",
    "ccccccooooo=======.==========.==oooooccc",
-   "ccccccoooooo.================.oooooooccc",
+   "ccccccoooooo.==X=============.oooooooccc",
    "cccccooooooo.===..=====.NN====oooooocccc",
    "cccccoooooooo===..=====.X=.==ooooooocccc",
    "cccccoooooooo=============.==ooooooooccc",
@@ -73719,22 +73878,22 @@
    "ccc~cccccoooooooooooooooooo==ooooooocccc",
    "cccccccccooooooooooooooooo=====ooooocccc",
    "cccccccoooooooooooooooooo========ooccccc",
-   "ccccccooooooooooooooooooo====.===ooccccc",
-   "ccccccccooooooooooooooooo====.N==ooocccc",
+   "ccccccooooooooooooooooooo===X.===ooccccc",
+   "ccccccccooooooooooooooooo====XN==ooocccc",
    "ccccccccccooooooooooooooo====.==oooocccc",
    "ccccccccccooooooooooooooooo===oooooccccc",
    "cccccc~c~ooooooooooooooooooooooooooccccc",
-   "cccccccccooooooooooooooooooooooooocccccc",
+   "cccccccccoooXooooooooooooooooooooocccccc",
    "cccccccccooooooooooooooooooooooooocccccc",
    "cccccooooooooooooooooooooooooooooccccccc",
-   "cccccooooooooooooooooooooooooooooccccccc",
+   "cccccooooooooooooooooooooXoooooooccccccc",
    "ccccoooo==oooooooooooooooooooooccccccccc",
-   "ccccooo===oooooooooooooooooooooccccccccc",
+   "ccccooo=XXoooooooooooooooooooooccccccccc",
    "ccooooo===ooooooooooooooooo==ooocccccccc",
    "woccooo==ooooooooooooooooo===ooocccccccc",
    "woccoooooooooooooooooooooo====oooccccccc",
    "woooooooooooooooooooooooo=====oooccccccc",
-   "woooooooooooooooooooooooo=====oooocccccc",
+   "woooooooooooooooooooooooo==N==oooocccccc",
    "woooooooooooooooooooooooo====ooooocccccc",
    "wooooooooooooooooooooooooooooooooccccccc",
    "wooooooooooooooooooooooooooooooooccccccc",
@@ -73744,7 +73903,7 @@
    "wooooooooooooooo...==ooooooooooooccccccc",
    "woccccooccoooooo...==oooooooooooo~c~cccc",
    "ccccccooccoooooo======ooccoooooo~ccccccc",
-   "ccccccc~c~ooooo=====.==occoooocccccccccc",
+   "ccccccc~c~ooooo==X==.X=occoooocccccccccc",
    "ccccccccccooooo=====.==occccoocccccccccc",
    "ccccccccccoooooooo====oocccccccccccccccc",
    "cccccccccccoooccoooo=ooccccccccccccccccc",
@@ -73780,6 +73939,7 @@
      ]
     }
    },
+   "PP UP",
    {
     "text": "Old man",
     "action": "EVENT",
@@ -73789,6 +73949,8 @@
      ]
     }
    },
+   "BIG PEARL",
+   "Female Tuber",
    {
     "text": "Sandcastle boy",
     "action": "EVENT",
@@ -73815,7 +73977,8 @@
       "Little kids dart around so fast. You can't take your eyes off them for a second!"
      ]
     }
-   }
+   },
+   "SODA POP"
   ],
   "signs": [
    [
@@ -73830,8 +73993,21 @@
   "trainer_spots": [
    "Tuber Ricky",
    "Tuber Lola",
+   "Sailor Dwayne",
+   "Young Couple Mel & Paul",
+   "Beauty Johanna",
    "Sailor Huey",
-   "Swimmer Grace"
+   "Street Thug Blair",
+   "Delinquent Destinee",
+   "Swimmer Grace",
+   "Tuber Carmen",
+   "Tuber Gwen",
+   "Sailor Edmond",
+   "Tuber Simon",
+   "Swimmer ♀ Alice",
+   "Swimmer ♂ David",
+   "Fisherman Carter",
+   "Ace Trainer Portia"
   ],
   "edge_to": {
    "4,0": [
@@ -74044,6 +74220,71 @@
     "m": "march",
     "d": "l",
     "s": 6
+   },
+   "12,36": {
+    "m": "face",
+    "d": "r",
+    "s": 5
+   },
+   "25,39": {
+    "m": "look",
+    "d": "ul",
+    "s": 5
+   },
+   "15,17": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "24,13": {
+    "m": "face",
+    "d": "l",
+    "s": 6
+   },
+   "19,10": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "22,7": {
+    "m": "march",
+    "d": "l",
+    "s": 4
+   },
+   "29,32": {
+    "m": "look",
+    "d": "du",
+    "s": 3
+   },
+   "28,31": {
+    "m": "look",
+    "d": "dl",
+    "s": 3
+   },
+   "21,56": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "8,41": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "9,41": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "27,7": {
+    "m": "march",
+    "d": "u",
+    "s": 4
+   },
+   "17,56": {
+    "m": "march",
+    "d": "l",
+    "s": 3
    }
   },
   "barred": [
@@ -74074,7 +74315,13 @@
      63
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "16,23": "REVIVE",
+   "28,20": "ETHER",
+   "9,10": "GREAT_BALL",
+   "33,5": "HEART_SCALE"
+  }
  },
  "SLATEPORT_CITY": {
   "art": [
@@ -74085,7 +74332,7 @@
    "cccccccccccccccc.....ccccccccccccccccccc",
    "cccccccccccccccc.....ccccccccccccccccccc",
    "cccccccccccccccc.....ccccccccccccccccccc",
-   "cccccccccccccccc.....cccccccccccccccccow",
+   "cccccccccccccccc...N.cccccccccccccccccow",
    "cccccccccccccccc.....cccccccccccccccooow",
    "cccc....ccccc...c...c....cccccccooooooow",
    "cccc...ccccccc...........cccccccooooooow",
@@ -74093,11 +74340,11 @@
    "cccc...cccDccc..........!cccDccc.oooooow",
    "cccc.N.!..............................ow",
    "cccc..................................ow",
-   "cccc..................................cc",
+   "cccc............N.....................cc",
    "cccc............................cccccccc",
    "cccccccc..........cccc..........oooccccc",
    "cccccHcc..........cAccc..ooooooooccccccc",
-   "cccccDcc!.........cDcccooooooooooccccccc",
+   "cccccDcc!.....N...cDcccooooooooooccccccc",
    "cccc..................cooooooooooocccccc",
    "cccc..................cooooooooooocccccc",
    "cc..............!.....cooocccccccccccccc",
@@ -74116,10 +74363,10 @@
    "cc.cccc....cc.c......ccccccccccccccccccc",
    "cc.ccccc..ccc.c......ccccccccccccccccccc",
    "cc.cccc....Nc.c.....N...cc.ccccccccccccc",
-   "cc..ccN...ccc.c........!cCDccccccccccccc",
+   "cc..ccN...ccc.c......N.!cCDccccccccccccc",
    "cc..cc...cc.c.c..................ccccccc",
    "cc............c.......................cc",
-   "cc.....cc.....c......................Ncc",
+   "cc.....cc.....c.................N....Ncc",
    "cc.....cN.....c.....cccccccccc...ccccccc",
    "cccccNcc..ccccc.....cJcccccccc..cccccccc",
    "cc.c........ccc.....cDcccccccc..cccccccc",
@@ -74127,7 +74374,7 @@
    "cc.....cc.....c.N...........N...cccccccc",
    "cccc..ccc.cN.cc.....cccccccccccccccccccc",
    "ccc..........cc.....cccccccccccccccccccc",
-   "cc............c.....cccccccccccccccccccc",
+   "cc............c.N...cccccccccccccccccccc",
    "cc......cN....c.....cccccccccccccccccccc",
    "cccccNc.c.c.cc!.....cccccccc......N..ccc",
    "cc.c.................................ccc",
@@ -74167,6 +74414,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Fan Club chairman ",
    {
     "text": "Weary hiker",
     "action": "EVENT",
@@ -74185,6 +74433,8 @@
      ]
     }
    },
+   "Team MagmaOR/AquaAS Grunt",
+   "Fan Club chairman  ",
    {
     "text": "Nickname fan",
     "action": "EVENT",
@@ -74248,6 +74498,8 @@
      ]
     }
    },
+   "Fan Club chairman   ",
+   "Fan Club chairman",
    {
     "text": "Sailor",
     "action": "EVENT",
@@ -74294,6 +74546,7 @@
     }
    },
    "door:market",
+   "Fan Club chairman    ",
    {
     "text": "Big spender",
     "action": "EVENT",
@@ -75226,11 +75479,11 @@
      "cccc.............ccccccccccccccccccccooo",
      "cccc..........ccccccc11cccccccccccccc..o",
      "cccc..........ccccccc..cccccccccccccccco",
-     "cccc..........c.cc.c..............ccccco",
+     "cccc..........c.cc.c.............Xccccco",
      "cccc.........!c1cc1c....cccccc...cccccco",
      "ccc!.............c.....cccccccc..cccccco",
      "ccc..............c....ccccccccccccccccco",
-     "ccc.....cc.c...cccccccccccccccccccccccco",
+     "ccc.....ccXc...cccccccccccccccccccccccco",
      "ccc...coooooooooooooooooocccccooocccccco",
      "ccc...coooooooooooooooooocccccooocccccco",
      "ccc..\"coooooooooooooooooo~ccc~ooocccccco",
@@ -75242,23 +75495,23 @@
      "ccc.\".coooooooooooooooooooooooooo..cccoo",
      "ccc\".\"coooooooooooooooooo.ooo.ooooccccoo",
      "ccc.X\"co.oooooooooooooooooooooo.ooccccoo",
-     "ccc\"\"\"cocoooooooooooooooooooooocoooccooo",
+     "ccc\"\"\"cocooooooooooXooooooooooXcoooccooo",
      "ccc.\"\"co~..ooo.................~ooocccco",
      "ccc\"\"\"co~ooooooooo.ooooo.oooooo~ooooocco",
      "ccc\"\"\"cooooooooooocooooocooooooooooooocc",
      "ccc\".\"cooooooooooo~ooooo~ooooooooooooocc",
      "ccc\"\"\"cooooooooooooooooooooooooooooooccc",
      "ccc\"\".cooooooooooooooooooooooooooooooccc",
-     "ccc\"\"..ccccccccccccccccccccccccccccccccc",
-     "ccc\"\"............\"\".\".\"..\"\".\".\"\"\"!\".\"ccc",
-     "ccc\"\"\"\"\"\"..........\"..\"\"\"\".\".\".\"\"\"\"\"\"ccc",
+     "ccc\"\".Nccccccccccccccccccccccccccccccccc",
+     "cccX\"............\"\".\".\"..\"\".\".\"\"\"!\".\"ccc",
+     "ccc\"\"\"\"\"\"..........\"..\"\"\"\".\".\".\"\"\"X\"\"ccc",
      "ccc\"\"\"\"\"\"\"......\".\"..\"\"\".\"\"\"\"\"\"\"\"\"\"\"\"ccc",
      "ccccccccccccccccccccccccccccccc\"\"\"\"\"\"ccc",
      "ccccccccccccccccccccoooooooooooc\"\"\"\"\"ccc",
      "ccccccccccccccccccccoooooooooooc.\"\"\"\"ccc",
      "cccccccccc~ccc~ccccooooooooooooc\".\"\".ccc",
      "cccccccccc~ccc~ccccoooooo...oooc\"\"\"\"\"ccc",
-     "cccccccccc~ccc~cccccooooo...oooc\"\".\".ccc",
+     "cccccccccc~ccc~cccccooooo.N.oooc\"\".\".ccc",
      "cccccccccc~ccc~cccccccoooo..oooc\".\".\"ccc",
      "cccccccccc~ccc~cccccccoooooooooc.\"\"\"\"ccc",
      "ccccccc~~~ccccc~~~~~~~ccoooooooc..\"..ccc",
@@ -75280,16 +75533,16 @@
      "cccccccc.ccDcc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
      "....ccc.!....c~~ccc~ccccooooooc\"\"\"\"\"\".cc",
      "<.............cccccccccccc..cc\"\"\"\"\"\"\"\"cc",
-     "<......................\"\".\"\"\"\".\".\".\"\"\"cc",
-     "<.......................X\".\".\"\"\"\"\"\"\".!cc",
+     "<......................\"\".\"\"\"\"N\".X.\"\"\"cc",
+     "<.........N....N..N.....X\".\".\"\"\"\"\"\"\".!cc",
      "<.....................\"...\".\"\"...\"\"\"..cc",
      "cccccc......ccccccccccccccccccc....ccccc",
      "cccccccc....ooocccccoooooooooooooooocccc",
      "cccccccc....ooo~ccc~oooooooooooooooocccc",
      "cccccccc....oooooooooooooooooooooooocccc",
-     "ccccccc....cooo.ooo.oooooooooooooooocccc",
+     "cccccccX..Xcooo.ooo.oooooooooooooooocccc",
      "cccccccc...co.oooooooooooooooo.ooooooocc",
-     "cccccccc...cocoooooooooooooooocooooooocc",
+     "cccccccc...cocoooooooXoooooooocooooooocc",
      "ccccccc!...co~.............ooocooooooocc",
      "ccccccc....co~ooo.oooo.ooooooo~ooooooccc",
      "ccccccc....cooooocoooocooooooooooooooccc",
@@ -75332,6 +75585,12 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "REPEAT BALL",
+     "HEAL BALL",
+     "DIRE HIT",
+     "RARE CANDY",
+     "ELIXIR",
+     "Berry Trees",
      {
       "text": "Grunt",
       "action": "EVENT",
@@ -75413,10 +75672,20 @@
      ]
     ],
     "trainer_spots": [
+     "Fisherman Dale",
+     "Triathlete Sloan",
      "Biker Edwin",
+     "Poké Fan Isabel",
+     "Youngster Timmy",
+     "Psychic Edward",
+     "Beauty Melissa",
      "{rival_name}",
      "Triathlete Alyssa",
-     "Triathlete Dylan"
+     "Triathlete Anthony",
+     "Triathlete Dylan",
+     "Triathlete Dolph",
+     "Triathlete Benjamin",
+     "Triathlete Jacob"
     ],
     "links": {
      "21,13": [
@@ -75546,6 +75815,63 @@
      "10,83": {
       "m": "face",
       "d": "u"
+     },
+     "19,31": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       10,
+       1
+      ],
+      "s": 3
+     },
+     "30,31": {
+      "m": "face",
+      "d": "l",
+      "s": 4
+     },
+     "3,39": {
+      "m": "face",
+      "d": "r",
+      "s": 6
+     },
+     "33,15": {
+      "m": "face",
+      "d": "l",
+      "s": 1
+     },
+     "34,40": {
+      "m": "still",
+      "s": 4
+     },
+     "10,19": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "21,78": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       7,
+       1
+      ],
+      "s": 2
+     },
+     "33,69": {
+      "m": "look",
+      "d": "lr",
+      "s": 3
+     },
+     "10,76": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     },
+     "7,76": {
+      "m": "face",
+      "d": "r",
+      "s": 2
      }
     },
     "scenes": [
@@ -75618,7 +75944,13 @@
        100
       ]
      }
-    ]
+    ],
+    "hidden": {
+     "37,67": "FULL_HEAL",
+     "33,45": "GREAT_BALL",
+     "35,39": "REVIVE",
+     "4,35": "POKE_BALLS"
+    }
    },
    {
     "art": [
@@ -75786,19 +76118,19 @@
    "ccccccccAcccc.......ccBcccccc.cccccCcccc",
    "c......cDc...........cDccc.......ccDcccc",
    "c..........!......N..............!.....c",
-   "<............N.....!...................>",
-   "<......................................>",
-   "<......................................>",
+   "<.N......N...N.....!.N................N>",
+   "<........................N.............>",
+   "<..............................N...N...>",
    "<.......................N..............>",
    "c....ccccccc..N........................>",
-   "c....cccGccc..cccccccccccc.....ccccccccc",
+   "c....cccGccc..cccccccccccc.N...ccccccccc",
    "c....cccDccc..c...cHcccEcc.....cFccccccc",
    "ccccccc.......c..NcDcccDcc.....cDcccccIc",
    "ccccccc....!..c.....................ccDc",
-   "ccccccc.......c..............N.....ccc..",
+   "ccccccc.N.....c..............N.....ccc..",
    "ccccccc.......c....................ccc..",
    "ccccccccccccccc....cccccccccccccc..coooo",
-   "cccccccccccc...vvvvcccccccc.......ccvvvv"
+   "cccccccccccc...vvvvcccccccc.N.....ccvvvv"
   ],
   "exits": {
    "^": "HOENN_ROUTE_111",
@@ -75838,6 +76170,8 @@
      ]
     }
    },
+   "TM24 THUNDERBOLT",
+   "Old man",
    {
     "text": "Straight-road man",
     "action": "EVENT",
@@ -75847,6 +76181,11 @@
      ]
     }
    },
+   "Girl",
+   "Delinquent",
+   "TM89 U-TURN",
+   "METRONOME",
+   "Wattson",
    "Man in a Suit",
    {
     "text": "Road fan",
@@ -75857,6 +76196,7 @@
      ]
     }
    },
+   "ELIXIR",
    {
     "text": "TV fan",
     "action": "EVENT",
@@ -75866,6 +76206,7 @@
      ]
     }
    },
+   "TM58 SKY DROP",
    {
     "text": "Careful boy",
     "action": "EVENT",
@@ -75874,7 +76215,8 @@
       "Battles are cool and all, but if your Pokémon gets hurt you have to look after it."
      ]
     }
-   }
+   },
+   "X SPEED"
   ],
   "signs": [
    [
@@ -76806,7 +77148,7 @@
         "condition": "wattson_new_mauville_asked",
         "event": {
          "lines": [
-          "Wattson: The computer is in New Mauville's back room. Surf along Route 110 to get there!"
+          "Wattson: The computer is in New Mauville's back room. Its door is at the east end of town!"
          ]
         }
        },
@@ -76850,12 +77192,17 @@
     "theme": "room",
     "title": "Mauville Hills"
    }
+  },
+  "hidden": {
+   "4,8": "X_DEFENSE",
+   "38,10": "LUXURY_BALL",
+   "26,6": "MAX_REPEL"
   }
  },
  "HOENN_ROUTE_117": {
   "art": [
    "cccccccccccccccccccccccccccccccccccccc..\"........\"\".........",
-   "cccccccc..\"\"cccccc....oooooooccccccccc....\"....c.\"\"\"\".......",
+   "cccccccc.N\"\"cccccc....oooooooccccccccc....\"....c.\"\"\"\".......",
    "cccccccc\"\"\"\"\"\"\"2......ooooooooccccccccc.\"\".....\"............",
    "ccccccccccccccc.......oooooooooccccccc.\"\"....\"....cccc..c...",
    "cccccccc......c.......oooooooooccccc..\".\"c.....N..cAcc......",
@@ -76863,16 +77210,16 @@
    "cccccccc......c.!.........ooooo.............................",
    "ccccccccc....cc.............ooo........X...................>",
    "<.....................................................X....>",
-   "<......................................cccccccc............>",
+   "<..........................N...........cccccccc............>",
    "<.......X...........ooo................cccccccc.N..........>",
-   "<...................oooo..............cccccccccc............",
-   "<...................oooooo............cccccccccc.!..........",
+   "<...................oooo.........X....cccccccccc............",
+   "<...................oooooo............cccccccccc.!.....N....",
    "ccccccccccc..Nccc.\"\"ooooooX...........cc.ccc.cc...........cc",
    "ccccccccc.......c\"\"\"oooooooo.\"\"\"......cc.....cc........ccccc",
    "ccccccccc.......c\"\"\"oooooooo\"\"\"\"\"....................ccccccc",
-   "ccccccccc.......c\"\"\"oooooooo\"\"\"\"\"\"...................ccccccc",
+   "ccccccccc.......c\"\"\"oooooooo\"\"\"\"\"\"....X..............ccccccc",
    "ccccccccc.ccccccccccoooooooo\"\"\"\"\"\"\".................cccccccc",
-   "ccc..............ccc.cccccc.cc\"\"\"\"\"................ccccccccc",
+   "ccc.............Nccc.cccccc.cc\"\"\"\"\"................ccccccccc",
    "cccc.ccccc.ccccc.ccccccccccccccc\"\"\"..ccccccccccc..cccccccccc"
   ],
   "exits": {
@@ -76894,6 +77241,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "REVIVE",
    {
     "text": "Day-Care Man",
     "action": "EVENT",
@@ -76912,6 +77260,7 @@
      ]
     }
    },
+   "Berry Trees",
    {
     "text": "Day Care visitor",
     "action": "EVENT",
@@ -76921,6 +77270,7 @@
      ]
     }
    },
+   "ULTRA BALL",
    {
     "text": "Gardener",
     "action": "EVENT",
@@ -76929,7 +77279,8 @@
       "Aren't these flowers pretty? I planted every one of them!"
      ]
     }
-   }
+   },
+   "GREAT BALL"
   ],
   "signs": [
    [
@@ -76949,7 +77300,9 @@
    "Triathlete Dylan",
    "Sr. and Jr. Anna & Meg",
    "Pokémon Breeder Isaac",
-   "Triathlete Maria"
+   "Bug Maniac Derek",
+   "Triathlete Maria",
+   "Pokémon Breeder Lydia"
   ],
   "edge_to": {
    "0,8": [
@@ -77027,6 +77380,20 @@
      2
     ],
     "s": 5
+   },
+   "38,16": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     8,
+     0
+    ],
+    "s": 4
+   },
+   "33,11": {
+    "m": "look",
+    "d": "ur",
+    "s": 4
    }
   },
   "berry_soil": [
@@ -77655,6 +78022,9 @@
     "theme": "room",
     "title": "Poké Mart"
    }
+  },
+  "hidden": {
+   "3,16": "REPEL"
   }
  },
  "HOENN_ROUTE_111": {
@@ -77667,10 +78037,10 @@
    "ccccccccccccccccc.cc..cc.ccccccccccccccc",
    "cccccccccccc.!...........cccc7cccccccccc",
    "<...ccccccc...............ccc7cccccccccc",
-   "<......................N.......ccccccccc",
+   "<.................N....N.......ccccccccc",
    "<..............................ccccccccc",
    "<..............................ccccccccc",
-   "cccccc...................c.....ccccccccc",
+   "cccccc.....X.............c.....ccccccccc",
    "cccccccc............)...cc.....ccccccccc",
    "ccccccccccc...______c...ccc....ccccccccc",
    "cccccccccccccc..........ccc....ccccccccc",
@@ -77686,7 +78056,7 @@
    "ccccccc............ccccccccccccccccccccc",
    "cccccc............cccccccccccccccccccccc",
    "cccc___...___ccccccccccccccccccccccccccc",
-   "cc...........ccccccccccccccccccccccccccc",
+   "cc.......X...ccccccccccccccccccccccccccc",
    "^......N....cccccccccccccccccccccccccccc",
    "^..........ccccccccccccccccccccccccccccc",
    "^..........ccccccccccccccccccccccccccccc",
@@ -77696,7 +78066,7 @@
    "cccccc.....ccccccccccccccccccccccccccccc",
    "cccccc.....cccccccccccccccccc.....cccccc",
    "ccccccc......cccc7cccccccccc......cccccc",
-   "cccccccc.....cccc7ccccc===......==cccccc",
+   "cccccccc.....cccc7ccccc===...X..==cccccc",
    "ccccccccc..........==..===..==..==.ccccc",
    "ccccccccc.........===..===..===...cccccc",
    "cccccccccc........=======..c.==..ccccccc",
@@ -77706,14 +78076,14 @@
    "ccccccccc.....==========X=c===.ccccccccc",
    "ccccccccc..cc.=================ccccccccc",
    "ccccccccccccc.......=========cc=cccccccc",
-   "ccccccccccc===.............==cc=cccccccc",
+   "ccccccccccc===.......X.....==cc=cccccccc",
    "ccccccccccc========........======ccccccc",
    "ccccccccccc============....======ccccccc",
    "ccccccccccc==============..======ccccccc",
-   "ccccccccccc=cc===========......====ccccc",
+   "ccccccccccc=cc===========.N.X..====ccccc",
    "ccccccccccc=ccc==========......====ccccc",
    "cccccccccccc=============......====ccccc",
-   "ccccccccccc================...=====ccccc",
+   "ccccccccccc=N==============...=====ccccc",
    "cccccccccccc================..====cccccc",
    "ccccccccccc===N=============..====cccccc",
    "ccccccccccc=======ccc====.....======cccc",
@@ -77725,12 +78095,12 @@
    "ccccc..........cccc...====.........==ccc",
    "ccccc..........cccc...==========..===ccc",
    "ccc............cccccc.===============ccc",
-   "^......!.......cccccc==============c=ccc",
+   "^......!.......cccccc===========X==c=ccc",
    "^..............cccccc=================cc",
    "^..............cccccc==============cc=cc",
-   "^...............ccccc==============cc=cc",
+   "^...............ccccc======X=======cc=cc",
    "^...............ccccc=====c===========cc",
-   "^...............cccccc=========..=====cc",
+   "^..........X....cccccc=========..=====cc",
    "cccccccc.......ccccccc=========...====cc",
    "ccccccccc.......cccccc.=========..====cc",
    "cccccccc.......ccccccc...=======..===ccc",
@@ -77741,10 +78111,10 @@
    "ccccccccc....ccccccccc.=====..=======.cc",
    "ccccccccc....ccccccccc======.========.cc",
    "ccccccc......cccccccc================.cc",
-   "cccccccc.....cccccccc====cc=====cc===ccc",
+   "cccccccc..X..cccccccc====cc=====cc===ccc",
    "ccccccc......cccccccc====cc=====cc===ccc",
    "cccccc.!.....cccccccc======.ccc.=====ccc",
-   "cccccc.......ccccccccc====.ccccc.====ccc",
+   "cccccc.....N.ccccccccc====.ccccc.====ccc",
    "cccccc..cc...NNccccccc=cc=.ccccc.=cc=ccc",
    "ccccc...cc.....ccccccc=cc=.ccncc.=cc=ccc",
    "ccccccc.........cccccc====...N...====ccc",
@@ -77763,7 +78133,7 @@
    "cccccccccccccccccc0N...ccccccc===ccccccc",
    "cccccccccccccccc.....c..cccccc.===cccccc",
    "ccccccccccccccc..cc....ccccccccc==cccccc",
-   "cccccccccccc.....cc.....ccccccccc.cccccc",
+   "cccccccccccc.....cc.....cccccccccNcccccc",
    "ccccccccoooo............cccccccccccccccc",
    "cccccccooooooo...........ccccccccccccccc",
    "cccccooooooooocc.........ccccccccccccccc",
@@ -77773,14 +78143,14 @@
    "ccccoooooocccccc.ccc....cccccccccccccccc",
    "ccccooooooccc.cc.ccc....cccccccCcccccccc",
    "ccc..oooooccADcc.cc.......cccccDcccccccc",
-   "ccc.ooooooccc.cc!c..N.Xccc.......ccccccc",
+   "cccNooooooccc.cc!c..N.Xccc.......ccccccc",
    "ccccoooooo....N.......ccccc......ccccccc",
    "ccccoooooocc...........c!c.......ccccccc",
    "ccccoooooooc.......cc........ccccccccccc",
-   "cccc...ooooooo......c.......cccccccccccc",
+   "cccc...ooooooo.....Nc.......cccccccccccc",
    "cccc....oooooocc...........ccccccccccccc",
    "ccccccc.......ccc.........cccccccccccccc",
-   "ccccccccccccccccccc.....cccccccccccccccc",
+   "cccccccccccccccccccX....cccccccccccccccc",
    "ccccccccccccccccccccc...cccccccccccccccc",
    "ccccccccccccccccccc.....cccccccccccccccc",
    "cccccccccccccccccccc....cccccccccccccccc",
@@ -77791,11 +78161,11 @@
    "cccccccccccccccccccc......cccccccccccccc",
    "ccccccccccccccccc.c........c.ccccccccccc",
    "ccccccccccccccccc............ccccccccccc",
-   "cccccccccccccc...............ccccccccccc",
+   "cccccccccccccc......X.....X..ccccccccccc",
    "cccccccccccccc...........cc..ccccccccccc",
    "ccccccccccc..............cc...cccccccccc",
    "cccccccccccc................cccccccccccc",
-   "cccccccccccc................cccccccccccc",
+   "cccccccccccc...N............cccccccccccc",
    "ccccccccccccc.......cccccccccccccccccccc",
    "ccccccccccccc.......cccccccccccccccccccc",
    "cccccccccccccvvvvvvvcccccccccccccccccccc"
@@ -77828,6 +78198,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Bug Maniac",
    {
     "text": "Flower girl",
     "action": "EVENT",
@@ -77867,6 +78238,8 @@
      ]
     }
    },
+   "Berry Trees",
+   "TM37 SANDSTORM",
    {
     "text": "Ruin seeker",
     "action": "EVENT",
@@ -77876,6 +78249,7 @@
      ]
     }
    },
+   "Berry Trees ",
    {
     "text": "Gabby",
     "action": "EVENT",
@@ -77969,6 +78343,8 @@
      ]
     }
    },
+   "MACHO BRACE",
+   "HP UP",
    {
     "text": "Tired Trainer",
     "action": "EVENT",
@@ -77987,7 +78363,9 @@
       "Victor: Our family loves a good battle. Come back any time!"
      ]
     }
-   }
+   },
+   "ELIXIR",
+   "Girl"
   ],
   "signs": [
    [
@@ -78019,10 +78397,22 @@
    ]
   ],
   "trainer_spots": [
+   "Picnicker Heidi",
    "Picnicker Irene",
+   "Camper Drew",
+   "Camper Travis",
    "Camper Tyron",
+   "Fairy Tale Girl Cece",
+   "Interviewers Gabby & Ty",
+   "Backpacker Deon",
+   "Backpacker Emory",
+   "Camper Cliff",
    "Hiker Clark",
-   "Cooltrainer Wilton"
+   "Ace Trainer Brooke",
+   "Cooltrainer Wilton",
+   "Black Belt Daisuke",
+   "Ruin Maniac Dusty",
+   "Picnicker Becky"
   ],
   "edge_to": {
    "13,139": [
@@ -78154,6 +78544,70 @@
    "14,86": {
     "m": "face",
     "d": "d"
+   },
+   "28,51": {
+    "m": "look",
+    "d": "dl",
+    "s": 3
+   },
+   "29,37": {
+    "m": "look",
+    "d": "dl",
+    "s": 3
+   },
+   "27,69": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     2
+    ],
+    "s": 2
+   },
+   "21,47": {
+    "m": "face",
+    "d": "l",
+    "s": 4
+   },
+   "32,66": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "10,82": {
+    "m": "look",
+    "d": "lr",
+    "s": 2
+   },
+   "11,71": {
+    "m": "look",
+    "d": "dlr",
+    "s": 3
+   },
+   "11,11": {
+    "m": "face",
+    "d": "u",
+    "s": 4
+   },
+   "9,27": {
+    "m": "look",
+    "d": "dl",
+    "s": 3
+   },
+   "26,132": {
+    "m": "face",
+    "d": "l",
+    "s": 5
+   },
+   "20,132": {
+    "m": "face",
+    "d": "r",
+    "s": 5
+   },
+   "19,121": {
+    "m": "face",
+    "d": "u",
+    "s": 2
    }
   },
   "scenes": [
@@ -78476,7 +78930,13 @@
      "f": "em_top/0_26_closed.png"
     }
    }
-  ]
+  ],
+  "hidden": {
+   "19,55": "REVIVE",
+   "3,28": "PP_UP",
+   "6,65": "PROTEIN",
+   "17,98": "RARE_CANDY"
+  }
  },
  "HOENN_ROUTE_112": {
   "art": [
@@ -78514,23 +78974,23 @@
    "ccccccccccccccccccccccc.......cccccccccc",
    "ccccccccccccccccccccccc......ccccccccccc",
    "cccccccccccccccccccc.c......cccccccccccc",
-   "cccccccccccccccccccc........cccccccccccc",
+   "cccccccccccccccccccc....X...cccccccccccc",
    "ccccccccccc.ccccc..........ccccccccccccc",
    "cccccccccccvccc............ccccccccccccc",
    "ccccccccc.............!....ccccccccccccc",
-   "ccccccccc.................cccccccccccccc",
+   "ccccccccc.....N...........cccccccccccccc",
    "ccccccccccc...........X...cccccccccccccc",
-   "ccccccccccccc..........ccccccccccccccccc",
+   "ccccccccccccc..X.......ccccccccccccccccc",
    "cccccccccccccccccccc..cccccccccccccccccc",
    "cccccccccccccccccccc..cccccccccccccccccc",
-   "cccccccccccc)).c_ccc..cccc\"\"\"\"\"ccccccccc",
+   "cccccccccccc))Nc_ccc..cccc\"\"\"\"\"ccccccccc",
    "cccccccccccc)).).).!.....\"\"\"\"\"\"\"\"\"cccccc",
    "ccccccccccc_c).).).......\"\"\"\"\"\"\"\"\"..cccc",
-   "ccccccnncc)..).).).....cccccccc\"\"\".....>",
-   ".ccccc..cc)..).).).....ccccccccc.......>",
-   "<.ccc...cc)..).).).......ccccccc.......>",
-   "<...!....c)..).).)............cc.N.....>",
-   "<.......N.)..).).).....................>",
+   "ccccccnncc)..).).)....Xcccccccc\"\"\".....>",
+   ".ccccc..cc)..).).).....ccccccccc....N..>",
+   "<.ccc...cc)..).).)...N...ccccccc.......>",
+   "<...!....c)..).).)...........Xcc.N.....>",
+   "<.......N.)..).).)..............N......>",
    "<.........)..).).).....................>",
    "<.........)..).).)....................cc",
    "<.........ccccccc)cccccccccccccccccccccc",
@@ -78584,6 +79044,10 @@
     "condition": "not:meteor_falls_cleared",
     "_look": "@grunt"
    },
+   "GUARD SPEC.",
+   "BIG MUSHROOM",
+   "Berry Trees ",
+   "NUGGET",
    "TALK TO YOUR RIVAL",
    {
     "text": "Ledge hiker",
@@ -78593,7 +79057,8 @@
       "I'd like to get to Mauville, but once I hop down these ledges there's no climbing back to Lavaridge."
      ]
     }
-   }
+   },
+   "Berry Trees"
   ],
   "signs": [
    [
@@ -78612,7 +79077,11 @@
   "trainer_spots": [
    "Hiker Trent",
    "Team Magma Grunt",
-   "Team Aqua Grunt"
+   "Camper Larry",
+   "Team Aqua Grunt",
+   "Street Thug Jaylin",
+   "Hiker Brice",
+   "Picnicker Carol"
   ],
   "edge_to": {
    "0,48": [
@@ -78696,6 +79165,26 @@
    "27,30": {
     "m": "face",
     "d": "u"
+   },
+   "24,34": {
+    "m": "look",
+    "d": "lr",
+    "s": 2
+   },
+   "29,49": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "22,46": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "15,40": {
+    "m": "look",
+    "d": "ur",
+    "s": 3
    }
   },
   "scenes": [
@@ -78762,7 +79251,7 @@
    "ccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccc",
    "ccccccc...ccccccccc........cccccccc",
-   "cccccc..N..cccccccc.........ccccccc",
+   "cccccc..N..cccccccc......N..ccccccc",
    "cccccc.....cccccccc.......v.ccccccc",
    "cccccc.ccccccccccc....ccccccccccccc",
    "cccccc.ccccccccccc...cccccccccccccc",
@@ -78791,7 +79280,7 @@
    "cccccc...cccccccccccccccc...ccccccc",
    "cccccc...cccccccccccccccc...ccccccc",
    "ccccc.....ccccccccccccccc...ccccccc",
-   "cccc.......cccccccccccccc...ccccccc",
+   "cccc...N...cccccccccccccc...ccccccc",
    "cccc.......cccccccccccccc...ccccccc",
    "cccc.......cccccccccccccc...ccccccc",
    "ccccccccccccccccccccccccc...ccccccc",
@@ -78814,7 +79303,9 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "CHARIZARDITE X"
+   "CHARIZARDITE X",
+   "FIRE STONE",
+   "TM06 TOXIC"
   ],
   "trainer_spots": [
    "Kindler Bernie",
@@ -78850,17 +79341,17 @@
    "ccccccccccccccc(ccccccccccccccccccccccccc..\"\"\"\"\"\"\"\"\"\"\"\").cccccccc...).c..ccccccccccccccccccccccccccc",
    "ccccccccccccccc(cccccccccccccccccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\")......\"\"\"...)...........cccccccccccccccccccc",
    "ccccccccccccccc(cccc______ccccc.cAcc..\"\"\"\"\"\"\"\"\"\"cccc\"\"\")..!.\"\"\"\"\"\"..).c...cccc.c)ccccccccccccccccccc",
-   "ccccccccccccccc(cccc......(....!cDcc.\"\"\"\"\"\"\"\"\"\"\"cccc\"\"\")....\"\"\"\"\"\"..)..cccc...X.)\"\"\"\"ccccccccccccccc",
-   "<..............(ccc.....\"\"(.........\"\"\"\"\"\"\"\"\".X.cccc...)\"\"\"\"\"\"\"\"\"ccc)...........)\"\"\"\"!c...cccccccccc",
-   "<..............(cccc..\"\"\"\"(........\"\"\"\"\"\"\"\".....cccc...)\"\"\"\"\"\"\"\"\"ccc)cccccc_____c\"\"\"\".......ccccccc.",
+   "ccccccccccccccc(cccc......(....!cDcc.\"\"\"\"\"\"\"\"\"\"\"cccc\"\"\")....\"\"\"\"\"\"..)..cccc...XN)\"\"\"\"ccccccccccccccc",
+   "<..............(ccc..N..\"\"(..X......\"\"\"\"\"\"\"\"\".X.cccc...)\"\"\"\"\"\"\"\"\"ccc)...........)\"\"\"\"!c...cccccccccc",
+   "<.......N......(cccc..\"\"\"\"(........\"\"\"\"\"\"\"\".....cccc.N.)\"\"\"\"\"\"\"\"\"ccc)cccccc_____c\"\"\"\".......ccccccc.",
    "<..............(.cc.\"\"\"\"\"\"c__c.....\"\"..ccccc....cccc___c\"\"\"\"\"\"X..ccc)ccccc\"\"\"\"\"\"\"\"\"\"\"..............>",
    "<...........!..c___\"\"\"\"\"\"\"\"\"\"(X.......cccccccc......\"\"\"\"\"\"\"\"\"\"...ccc)..\"\"\"\"\"\"\"\"\"\"\"\"\"...............>",
    "<...................\"\"\"\"\"\"\"\"\"c_____.N.cccccccc......\"\"\"\"\"\"\"c__...___c..\"\"\"\"\"\"\"\"\"\"\"\"\"...............>",
-   "<.....................\"\"\"\"\"\"\"\"\"\"\".....cccccccc........\"\"\"\"\")...........\"\"\"\"\"\"\"\"\"\"\"..c.....cccccccccc",
+   "<....................X\"\"\"\"\"\"\"\"\"\"\".....cccccccc.....X..\"\"\"\"\")...........\"\"\"\"\"\"\"\"\"\"\"..c.....cccccccccc",
    "<.....................\"\"\"\"\"\"\"\"\"\"\".....ccccccccccc......\"\"\"\").cc...N......\"\"\"\"ccccccccccccccccccccccc",
-   "<.....................\"\"\"\"\"\"\"\"\"\"\".........cccccccc..ccccccc)...............ccccccccccccccccccccccccc",
+   "<.....................\"\"\"\"\"\"\"\"\"\"\"....N....cccccccc..ccccccc)...............ccccccccccccccccccccccccc",
    "<..............cc.........\"\"\"\"\"\"........c.cccccc....ccccccc).ccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccc..ccccccccccccccccccccccccccccccccccccccccc__ccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccc.Nccccccccccccccccccccccccccccccccccccccccc__ccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -78885,6 +79376,10 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "SUPER REPEL",
+   "MAX REPEL",
+   "HYPER POTION",
+   "TM32 DOUBLE TEAM",
    {
     "text": "Glass fan",
     "action": "EVENT",
@@ -78902,7 +79397,9 @@
       "Walking through the ash is fun. You can see every footprint you leave behind!"
      ]
     }
-   }
+   },
+   "REVIVE",
+   "MAX ETHER"
   ],
   "signs": [
    [
@@ -78924,9 +79421,12 @@
   ],
   "trainer_spots": [
    "Ninja Boy Takashi",
+   "Youngster Dillion",
    "Parasol Lady Madeline",
    "Ninja Boy Lung",
-   "Youngster Neal"
+   "Youngster Neal",
+   "Fairy Tale Girl Franny",
+   "Ninja Boy Lao"
   ],
   "edge_to": {
    "0,6": [
@@ -79004,6 +79504,20 @@
     "m": "face",
     "d": "d",
     "s": 3
+   },
+   "21,11": {
+    "m": "look",
+    "d": "dl",
+    "s": 3
+   },
+   "51,11": {
+    "m": "look",
+    "d": "udlr",
+    "s": 2
+   },
+   "29,6": {
+    "m": "still",
+    "s": 1
    }
   },
   "scenes": [
@@ -79057,7 +79571,11 @@
      20
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "66,3": "ETHER",
+   "73,3": "NUGGET"
+  }
  },
  "FALLARBOR_TOWN": {
   "art": [
@@ -79070,8 +79588,8 @@
    "cDcc.cccBccc.cCcc..>",
    "<..!.cccDccc.cDcc..>",
    "<.....!............>",
-   "<..........N.......>",
-   "<..................>",
+   "<..N.......N.......>",
+   "<............N.....>",
    "<.......N.!........>",
    "<..................>",
    "<.............cccc.>",
@@ -79105,6 +79623,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Bug Maniac",
    {
     "text": "Meteor fan",
     "action": "EVENT",
@@ -79114,6 +79633,7 @@
      ]
     }
    },
+   "Professor Cozmo ",
    {
     "text": "Azurill girl",
     "action": "EVENT",
@@ -79612,6 +80132,9 @@
     "theme": "room",
     "title": "Poké Mart"
    }
+  },
+  "hidden": {
+   "2,15": "NUGGET"
   }
  },
  "HOENN_ROUTE_114": {
@@ -79622,7 +80145,7 @@
    "cccccccccccccccccccccccccccccccccccccccc",
    "cccccccncccccccccccccccccccccAcccccccccc",
    "ccccccc..ooooooooooccccccccccDcc........",
-   "ccccccc..oooooooooocccc.................",
+   "cccccccN.oooooooooocccc..X..............",
    "ccccccc..ooooooccccccc..oooo...!.......>",
    "ccccccc..ooooccccccccc..oooo...........>",
    "ccccccc..ooooccccccccc..oooo...........>",
@@ -79630,12 +80153,12 @@
    "ccccccccc$$$$ccc...N...................>",
    "ccccccccc$$$$ccc.cc....................>",
    "ccccccc..oooo....ooo...................>",
-   "cccccccc.oooo.cc.ooo...ooooo...........>",
+   "cccccccc.oooo.cc.ooo.N.ooooo...........>",
    "ccccccc.oooooccccooo...ooooocc.........>",
    "cccccccoooooo..........ooooo.cc......cc.",
    "cccccccccooooooo.......ooooo..cccc..cccc",
    "cccccccccooooooo.cc....ooooo.ccccccccccc",
-   "ccccccc.oooooooocccc............cccccccc",
+   "ccccccc.oooooooocccc...........Ncccccccc",
    "ccccccccoooooooo.cc........c.cc..ccccccc",
    "cccccccXooooooooooo....ooooooocccccccccc",
    "ccccccccooooooooooo....ooooooo.ccccccccc",
@@ -79651,9 +80174,9 @@
    "ccccccc.ooooooooooo....ooooooooooccccccc",
    "ccccccc.......ooooo....o.........ccccccc",
    "cccccccccccc.............ccccc\"\".ccccccc",
-   "cccccccccccc.............ccBcc\"\"\"ccccccc",
+   "cccccccccccc.......X.....ccBcc\"\"\"ccccccc",
    "ccccccccccc..cc____...__cccDcc.\"\"ccccccc",
-   "ccccccccccc..c).........c_..._c\"\"ccccccc",
+   "cccccccccccN.c).........c_..._c\"\"ccccccc",
    "cccccccccccc.c).......cc.!....(\"\"ccccccc",
    "cccccccccccc.c)......\"cc......(.\"ccccccc",
    "cccccccccccc.c).X...\"\"\"cc.....(..ccccccc",
@@ -79666,29 +80189,29 @@
    "cccccc..ccc.....c)........(.(c(ccccccccc",
    "ccccc..cc.......c)........(.cccccccccccc",
    "cccccc.c.....c..c\"\"\"cc....(ccccccccccccc",
-   "cccccc.......c\"\"\"\"\"\"cc....(ccccccccccccc",
+   "cccccc.......c\"\"\"\"\"\"ccX...(ccccccccccccc",
    "cccccc.......c\"\"\"\"\"\"\"\"....(ccccccccccccc",
    "cccccc.cc....c\"\"\"\"\"\"\"\"\"...(cc..ccccccccc",
    "ccccccccc.......c\"\"\"\"\"\"cccccc0.ccccccccc",
    "cccccccccc......c\"\"\"\"\"\"cc.....0ccccccccc",
    "cccccccccccc......c\"\"\"\"cc.X....ccccccccc",
-   "cccccccccccccc....c\".\"\"cc......ccccccccc",
+   "cccccccccccccc....c\"X\"\"cc......ccccccccc",
    "cccccccccccccc....c.c.\"cc..c...ccccccccc",
    "cccccccccccccc.............c.....ccccccc",
-   "cccccccccccccc.............c.....ccccccc",
+   "cccccccccccccc.N...........c.....ccccccc",
    "cccccccccccccc...X.........c.....ccccccc",
    "cccccccccccccccccccccc....c.....cccccccc",
    "ccccccccccccccc.....cccccccc....cccccccc",
    "cccccccc^cc.ccc.........cccc....cccccccc",
    "ccccccc!...0c...........cccc...ccccccccc",
-   "ccccccc....cc.............c....ccccccccc",
+   "ccccccc....cc..X..........c....ccccccccc",
    "ccccccc....cc.....cccc....cc...ccccccccc",
    "cccccccc...cc..ccccccc....cc...ccccccccc",
    "cccccccc...cc...cccccc....cc...ccccccccc",
    "ccccccc.....c..cccccc.0c..cc...ccccccccc",
    "cccccccc.......cccccc.cc...c...ccccccccc",
    "cccccccc.......ccc....cc..cc...ccccccccc",
-   "ccccccccc......ccccccccc.......ccccccccc",
+   "ccccccccc......ccccccccc......Xccccccccc",
    "cccccccccc.....ccccccccc......cccccccccc",
    "ccccccccccccccccccccccccc....ccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccc",
@@ -79724,6 +80247,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "ENERGY POWDER",
    {
     "text": "Roar man",
     "action": "EVENT",
@@ -79733,12 +80257,16 @@
      ]
     }
    },
+   "Berry Trees southeast of Lanette's house",
+   "RARE CANDY",
+   "PROTEIN",
    {
     "text": "Berry boy",
     "action": "NPC",
     "target": "berry_boy",
     "_look": "em_65.png"
-   }
+   },
+   "Old man and his Poochyena"
   ],
   "signs": [
    [
@@ -79753,10 +80281,16 @@
    ]
   ],
   "trainer_spots": [
+   "Hiker Lenny",
    "Fisherman Kai",
+   "Camper Shane",
    "Picnicker Angelina",
+   "Teammates Tyra & Ivy",
    "Pokemaniac Steve",
-   "Hiker Lucas"
+   "Kindler Bernie",
+   "Hiker Lucas",
+   "Fisherman Claude",
+   "Fisherman Nolan"
   ],
   "edge_to": {
    "39,7": [
@@ -79808,6 +80342,35 @@
      0,
      1
     ]
+   },
+   "15,65": {
+    "m": "face",
+    "d": "r",
+    "s": 6
+   },
+   "30,72": {
+    "m": "face",
+    "d": "l",
+    "s": 4
+   },
+   "22,50": {
+    "m": "face",
+    "d": "r",
+    "s": 3
+   },
+   "19,35": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "20,56": {
+    "m": "face",
+    "d": "u",
+    "s": 3
+   },
+   "25,6": {
+    "m": "face",
+    "d": "d"
    }
   },
   "scenes": [
@@ -79896,7 +80459,13 @@
      }
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "7,30": "REVIVE",
+   "35,7": "CARBOS",
+   "28,61": "COMET_SHARD",
+   "36,11": "RARE_BONE"
+  }
  },
  "HOENN_METEOR_FALLS": {
   "floors": [
@@ -79906,8 +80475,8 @@
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
      "c......ccc1ccccccccccccccccccc",
-     "c....1.c.....oooooccccccccc.cc",
-     "c......c.....oooooccccccccc..c",
+     "c.N.N1.c.....oooooccccccccc.cc",
+     "c......c.....ooooocccccccccN.c",
      "c.....ccooooooooooccccccccc..c",
      "c.....cooooooooooocccccccc...c",
      "c....ccooooooooooocccccccc...c",
@@ -79921,23 +80490,23 @@
      "cc.cccoooooooooooccoooccccc.cc",
      "c....coooooc......coooc.....cc",
      "cc.cccoooooc...............n.c",
-     "cc....oooooccc.c........cccccc",
+     "cc....oooooccc.c.....N..cccccc",
      "cc..........X..c..cooocccccccc",
      "ccc........X..Xc..cooooccccccc",
      "cccc...........c..cooooccccccc",
      "cccccc.ccc....ccccc.oooccccccc",
      "cccccc.ccc.c...ccccc$$$ccccccc",
-     "cccc....cccccccccccc$$$ccccccc",
+     "cccc..N.cccccccccccc$$$ccccccc",
      "ccc.......cccccccccc$$$ccccccc",
      "c..............ccccc$$$ccccccc",
      "c...c...c......ccccc$$$ccc1ccc",
      "ccccc___ccccc.cccccc$$$cc....c",
-     "cccc......c.....cccoooooc..c.c",
+     "cccc......c..N..cccoooooc..c.c",
      "cccc______ccc.cccccoooooc....c",
-     "cccc.......c...ccccoooooc....c",
+     "cccc.......c...ccccoooooc.N..c",
      "cccc_______cc.cccccoooooc....c",
      "ccc.........c....ccoooooc....c",
-     "ccc_________c....ccooccoc.c..c",
+     "ccc_________c..N.ccooccoc.c..c",
      "ccc.........c....coooccocc..cc",
      "ccc_________c.ccccoooooooccccc",
      "ccc............c.oooooooooccoc",
@@ -79962,7 +80531,15 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "AERODACTYLITE"
+     "MOON STONE",
+     "STAR PIECE",
+     "FULL HEAL",
+     "AERODACTYLITE",
+     "TM02 DRAGON CLAW",
+     "STARDUST",
+     "SUPER REPEL",
+     "GREAT BALL",
+     "PP MAX"
     ],
     "trainer_spots": [
      "Admin Tabitha",
@@ -80360,15 +80937,15 @@
    "cccccccccccccccccccccccccccccccccccccccc",
    "ccccc\"\"\"cc..ccc.cccccccccccccccccccccccc",
    "cccc\"\"\"\"\".......cccccccccccccccccccccccc",
-   "cccc\"\"\"\"\"c......cc.c..cccccccccccccccccc",
+   "cccc\"\"\"\"\"c......ccNc..cccccccccccccccccc",
    "cccc\"\"\"\"\"cccc.cccc....cccccc7ccccccccccc",
    "cccc..\"\".cccc.cccc......cccc7ccccccccccc",
    "cccccc..ccccc.cccc............cccccccccc",
    "ccccccc.ccccc.cccc............cccccccccc",
    "ccccccc..ccXc.cccc..ccccccc..ccccccccccc",
    "cccccccc....c..ccc..c........ccccccccccc",
-   "ccccccccccc.........c....ccc.ccccccccccc",
-   "ccccc...............c....ccc.ccccccccccc",
+   "ccccccccccc.N.......c....ccc.ccccccccccc",
+   "cccccX....X........Xc..N.ccc.ccccccccccc",
    "cccccccc....c.....c..........ccccccccccc",
    "ccccccccc..cc.ccc.c.ccc..c.ccccccccccccc",
    "cccccccccc....ccc.c.ccc..ccccccccccccccc",
@@ -80403,24 +80980,24 @@
    "cccoooooooooo=====c..cccc........ccccccc",
    "cccoooooooooo=====c..ccccc..cccccccccccc",
    "ccccooooccooo=====c....cc....ccccccccccc",
-   "ccccooooccooo=====c..........0..cccccccc",
-   "cccccoooooooo=====c..........(...ccccccc",
+   "ccccooooccooo==X==c..........0..cccccccc",
+   "cccccoooooooo=====c...N......(...ccccccc",
    "cccccooooooooo====cc.........(...ccccccc",
-   "cccooooooooooo=====ccccc.....(...ccccccc",
+   "cccooooooooooo=====ccccc...X.(...ccccccc",
    "ccccooooooccoo=======ccc.....(..cccccccc",
    "ccccooooooccoooooooooccc.....(...ccccccc",
-   "ccoooooooooooooooooooccc.....(...ccccccc",
+   "ccoooooooooooooooooooccc.....(.N.ccccccc",
    "ccoooooooooooooooooooccc.....(...ccccccc",
    "ccoooooooooooooooooooccc.....(...ccccccc",
    "cccooooooooooooooooooccc.....(...ccccccc",
-   "cccoooooo============ccc.....(...ccccccc",
+   "cccoooooo===========Nccc.....(...ccccccc",
    "cccoooo=======c.......cc.....(...ccccccc",
    "cccooo=====c..........ccX....(c..ccccccc",
    "ccoooo=====c.......cc.(......(...ccccccc",
    "ccoooo===c......!..cc.(......(.c.ccccccc",
    "ccoooo===c.........cc.(......(.c.ccccccc",
    "ccoooo===c.........cc.(......(...ccccccc",
-   "cccooo===c............(......c___ccccccc",
+   "cccooo===c............(...N..c___ccccccc",
    "cccooo===c.....(..N...(..........ccccccc",
    "ccoooo===c.....(......c_________cccccccc",
    "ccoooo===c..c..(................cccccccc",
@@ -80431,7 +81008,7 @@
    "ccccooooooooccccc_____..______cccccccccc",
    "ccccccooocc~ccccc.............cccccccccc",
    "ccccccccocccccccc.........cccccccccccccc",
-   "ccccccccccccccccc.........cccccccccccccc",
+   "ccccccccccccccccc...N.....cccccccccccccc",
    "ccccccccccccccccc..vvvvvcccccccccccccccc"
   ],
   "exits": {
@@ -80451,6 +81028,13 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "IRON",
+   "HEAL POWDER",
+   "Berry Trees  ",
+   "Berry Trees ",
+   "GREAT BALL",
+   "ZINC",
+   "PP UP",
    {
     "text": "Cave hiker",
     "action": "EVENT",
@@ -80459,7 +81043,8 @@
       "Exploring a cave isn't like walking a road. You never know when wild Pokémon will pop out!"
      ]
     }
-   }
+   },
+   "Berry Trees"
   ],
   "signs": [
    [
@@ -80473,7 +81058,12 @@
   ],
   "trainer_spots": [
    "Collector Hector",
+   "Collector HectorOR",
+   "Ruin Maniac Hayes",
+   "Expert Timothy",
    "Black Belt Nob",
+   "Black Belt Koichi",
+   "Collector HectorAS",
    "Battle Girl Cyndy"
   ],
   "edge_to": {
@@ -80515,6 +81105,38 @@
     "m": "look",
     "d": "dr",
     "s": 4
+   },
+   "5,15": {
+    "m": "face",
+    "d": "r",
+    "s": 6
+   },
+   "27,53": {
+    "m": "look",
+    "d": "ul",
+    "s": 4
+   },
+   "15,50": {
+    "m": "still",
+    "s": 3
+   },
+   "19,15": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     5,
+     0
+    ],
+    "s": 2
+   },
+   "10,15": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     3,
+     3
+    ],
+    "s": 2
    }
   },
   "berry_soil": [
@@ -80557,7 +81179,10 @@
      80
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "15,49": "HEART_SCALE"
+  }
  },
  "HOENN_MT_CHIMNEY": {
   "art": [
@@ -80578,7 +81203,7 @@
    "ccccccccc...ccc..cccccc.........cccccccc",
    "ccccccccc...ccc.................cccccccc",
    "cccccccccX.....................ccccccccc",
-   "ccccccccccX............N.......ccccccccc",
+   "ccccccccccX............N...N...ccccccccc",
    "cccccccccccc...................ccccccccc",
    "cccccccccccc.........N..N.....cccccccccc",
    "cccccccccccccc...............ccccccccccc",
@@ -80682,6 +81307,7 @@
     "condition": "not:mt_chimney_boss_defeated",
     "_look": "@grunt"
    },
+   "TM59 INCINERATE",
    {
     "text": "Grumbling grunt",
     "action": "EVENT",
@@ -80826,7 +81452,11 @@
      47
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "23,15": "ZINC",
+   "26,15": "PROTEIN"
+  }
  },
  "HOENN_JAGGED_PASS": {
   "art": [
@@ -80838,7 +81468,7 @@
    "ccccccccccccc^^ccccccccccccccc",
    "ccccccccccccc..ccccccccccccccc",
    "cccccccccc..c..c....cccccccccc",
-   "cccccccccc........'Xcccccccccc",
+   "ccccccccccX.......'Xcccccccccc",
    "ccccccccccc______c'ccccccccccc",
    "ccccccccN\"(......)...'cccccccc",
    "cccccccc\"\"c______c..c'cccccccc",
@@ -80850,11 +81480,11 @@
    "cccccccccc.....c.c\"\"\"\"'ccccccc",
    "ccccccc..cccc..cnccccc'ccccccc",
    "ccccccc.........N......ccccccc",
-   "cccccccc....X..........ccccccc",
-   "cccccccc............c..ccccccc",
+   "cccccccc....X........N.ccccccc",
+   "cccccccc.X.....N....c..ccccccc",
    "ccccccc___c.........c..ccccccc",
    "cccccccc\"\"c_cc_____cc..ccccccc",
-   "cccccccc\"\"\"\"cc.....)....cccccc",
+   "cccccccc\"\"\"\"cc.....)...Ncccccc",
    "cccccccc\"\"\"\"cc.....)..cccccccc",
    "cccccccc____cc_____c..cccccccc",
    "cccccccc....cc.....c_'_ccccccc",
@@ -80865,10 +81495,10 @@
    "ccccccc__'_____cc\"\"\"\"\"\"ccccccc",
    "ccccccc........cc______ccccccc",
    "ccccccc...X............ccccccc",
-   "ccccccccc............ccccccccc",
+   "ccccccccc.......X....ccccccccc",
    "ccccccccccccc....ccccccccccccc",
    "cccccccccccccc..cccccccccccccc",
-   "cccccccccccc......cccccccccccc",
+   "cccccccccccc..N...cccccccccccc",
    "cccccccccccc......cccccccccccc",
    "ccccccccccccccvvcccccccccccccc",
    "cccccccccccccccccccccccccccccc",
@@ -80906,17 +81536,39 @@
      ]
     },
     "_look": "@grunt"
-   }
+   },
+   "TINY MUSHROOM",
+   "X DEFENSE",
+   "SUPER REPEL",
+   "MAX ETHER"
   ],
   "trainer_spots": [
+   "Expert Shelby",
    "Hiker Eric",
    "Team Magma Grunt",
-   "Picnicker Diana"
+   "Fairy Tale Girl Nellie",
+   "Picnicker Diana",
+   "Camper Ethan"
   ],
   "moves": {
    "16,19": {
     "m": "face",
     "d": "u"
+   },
+   "10,8": {
+    "m": "face",
+    "d": "r",
+    "s": 3
+   },
+   "16,35": {
+    "m": "look",
+    "d": "lr",
+    "s": 4
+   },
+   "9,21": {
+    "m": "look",
+    "d": "ur",
+    "s": 3
    }
   },
   "barred": [
@@ -80948,7 +81600,10 @@
      46
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "7,29": "GREAT_BALL"
+  }
  },
  "LAVARIDGE_TOWN": {
   "art": [
@@ -80961,8 +81616,8 @@
    "cccccccccDcccc....cc",
    "cc==N==.N.......N..>",
    "cc=.=N.......!.....>",
-   "cc=.=..............>",
-   "cc.................>",
+   "cc=.=.........N....>",
+   "cc......N..........>",
    "cc.................>",
    "cccccccc...........>",
    "cccccccc..Ncccccccc.",
@@ -81078,6 +81733,8 @@
      ]
     }
    },
+   "Flannery",
+   "Black Belt",
    {
     "text": "Flannery fan",
     "action": "EVENT",
@@ -82087,25 +82744,28 @@
     "theme": "room",
     "title": "Lavaridge Gym B1F"
    }
+  },
+  "hidden": {
+   "4,5": "ICE_HEAL"
   }
  },
  "HOENN_ROUTE_118": {
   "art": [
    "ccccc)cccccccccccccc)cccccccc(ccccccccccccccccccccccccccc^^^cccccccccccccccccccc",
    "ccccc)cccccccccccccc)cccccccc(ccccccccccccccccccccccccccc...cccccccccccccccccccc",
-   "ccccc)cccccccccccccccccccccccc_cccccccccccccccccccccccccc...cccccccccccccccccccc",
+   "ccccc)cccccccccccccccccccccccc_cccccccccccccccccccccccccc.N.cccccccccccccccccccc",
    "ccccc)ccccccccccccc)ccccccccccc(ccccccccccccccccccccccccc...cccccccccccccccccccc",
    "ccccc)ccccccccccc__cccccccccccc(ccccccccccccccccccccccc\"....cccccccccccccccccccc",
    "ccc...ccccccccccccccccccoocccccccccccc.cccccccccccc\"\"\"\"\".....\"\"\"\".cccccccccccccc",
    "c.....ccccccc!_cccccccoooooo===c(cc....ccccccc.....\"\"\"\"\"....\"\"\"\"\"\"cccccccccccccc",
-   "<..............==cccooooooooc===c__c........N.......\"\"\"\"....\"\"\"\"\"\"....cccccc..cc",
+   "<..............==cccooooooooc===c__c........N.......\"\"\"\"X...\"\"\"\"\"\"...Ncccccc..cc",
    "<.............===cooooooooooN====NN(c.2_________________!..._________________ccc",
    "<....).......=====oooooooooo=======(cc..........\"\"\"\"\"\".........\"\"\"\"\"\"\"\"\"\"\"....cc",
-   "<....)......N=====ooooooooooooo====ccc......X...\"\"\"\"\"\"\"\".........\"\"\"\"\"\"\"\"......>",
-   "<....)...)..=====Xooooooooooooo=====ccc..........\"\"\"\"\"\"\"\"........\"\"\"\"\"\"\"\"......>",
-   ".cccc)...)..====ooooooooooooooo====X=c_____...ccc.\"\"\"\"\"\"\".........\"\"\"\"\"\".......>",
+   "<....)......N=====ooooooooooooo====ccc......X...\"\"\"\"\"\"\"\"........X\"\"\"\"\"\"\"\"......>",
+   "<....)...)..=====Xooooooooooooo=====ccc..........\"\"\"\"\"\"\"\".N......\"\"\"\"\"\"\"\"......>",
+   ".cccc).X.)..====ooooooooooooooo====X=c_____...ccc.\"\"\"\"\"\"\".........\"\"\"\"\"\".N.....>",
    "ccccc).cc).=====oooooooooooooooc==============ccc(cc\"\"\"\"\"...cccc...\"\"\"\"\"....cccc",
-   "cccc_ccccc==c===oooooooooooooooooo===========cccc(cccc\"\"\"cccccccc...\"\"\"\"cccccccc",
+   "cccc_ccccc==c=X=oooooooooooooooooo===========cccc(cccc\"\"\"cccccccc...\"\"\"\"cccccccc",
    "cccc____ccc==oooooooooooooooooooooooooo=========c(cccccccccccccccccccccccccccccc",
    "cccc~ccccccooooooooooccoooccoooooooooooooooooocco(cccccccccccccccccccccccccccccc",
    "cccc~ccccccccooooooccccoccccccooccooccooooccccccoc______cccccccccccccccccccccccc",
@@ -82130,7 +82790,9 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Soft soil patch",
    "MEET STEVEN",
+   "STARDUST",
    {
     "text": "Good Rod fisherman",
     "action": "EVENT",
@@ -82229,7 +82891,9 @@
       "Even without a boat you can cross rivers and the sea, if your Pokémon knows Surf."
      ]
     }
-   }
+   },
+   "LEAF STONE",
+   "HYPER POTION"
   ],
   "signs": [
    [
@@ -82242,9 +82906,13 @@
    ]
   ],
   "trainer_spots": [
+   "Delinquent Miley",
    "Bird Keeper Perry",
+   "Aroma Lady Rose",
    "Fisherman Barny",
-   "Guitarist Dalton"
+   "Fisherman Wade",
+   "Guitarist Dalton",
+   "Bird Keeper Chester"
   ],
   "edge_to": {
    "57,0": [
@@ -82321,6 +82989,25 @@
     "m": "look",
     "d": "ul",
     "s": 3
+   },
+   "64,10": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "7,12": {
+    "m": "face",
+    "d": "u",
+    "s": 4
+   },
+   "14,14": {
+    "m": "face",
+    "d": "d"
+   },
+   "56,7": {
+    "m": "look",
+    "d": "ur",
+    "s": 3
    }
   },
   "scenes": [
@@ -82372,7 +83059,11 @@
      20
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "62,10": "HEART_SCALE",
+   "78,11": "IRON"
+  }
  },
  "FORTREE_CITY": {
   "art": [
@@ -82385,8 +83076,8 @@
    ".ccccDccccnccccccccccccccnccccccnccccccc",
    "<.......cc.cccccccccccccc.cccccc.cccc..>",
    "<..........cccccccccccccc.cccccc.......>",
-   "<.....!....cccccccccccccc..ccccc.......>",
-   "<.......N..ccccccc.cccBcc.!cccccN......>",
+   "<..N..!....cccccccccccccc..ccccc.....N.>",
+   "<....N..N..ccccccc.cccBcc.!cccccN......>",
    "c..........ccccccc...cDc...cccc....ccccc",
    "ccccccc...ccccccccc........cccc...cccccc",
    "ccccCcc..ccccccccccc......cccc....cccccc",
@@ -82394,7 +83085,7 @@
    "ccc......ccccccccccccccccccccc....cccccc",
    "cccc.....Nccnccccccccccccccccc..N.cccncc",
    "cccc.........cccccccccccccccccc.......cc",
-   "cccccc.......ccccccccccccccccccc......cc",
+   "cccccc.....N.ccccccccccccccccccc......cc",
    "ccccccccc....ccccccccccccccccccccc...ccc"
   ],
   "exits": {
@@ -82419,6 +83110,9 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Old woman",
+   "Winona",
+   "Boy",
    {
     "text": "Kind local",
     "action": "EVENT",
@@ -82454,7 +83148,8 @@
       "Rain soaks into the ground and the trees drink it. That's how Fortree grows."
      ]
     }
-   }
+   },
+   "TM86 GRASS KNOT"
   ],
   "signs": [
    [
@@ -83261,6 +83956,9 @@
     "theme": "room",
     "title": "Fortree Gym"
    }
+  },
+  "hidden": {
+   "24,12": "SUPER_REPEL"
   }
  },
  "HOENN_ROUTE_119": {
@@ -83270,7 +83968,7 @@
    "cccccccccccccccccccccccccccccccccccccccc",
    "cccc....cccccccccccccccccccccccccccccccc",
    "ccccccc.cccccccccccccccccccccccccccccccc",
-   "cccccc..'''cccccccc.ccc.ccc.ccccccc..ccc",
+   "cccccc..'''ccccccccNccc.ccc.ccccccc..ccc",
    "ccccc...cc'cccccccc.ccc.....cXc.c......>",
    "ccccc'ccc~'''''''''.cccc...............>",
    "ccccc'ccccccccccccc.cccccc.............>",
@@ -83279,17 +83977,17 @@
    "ccccccccc'ccccccccc..ccccccc......\"ccccc",
    "ccccccccc'ccccccccc..ccccccc.....c\"ccccc",
    "ccccccc~c'ccccccccc..cccccccc....c\"ccccc",
-   "ccccccccc'cccccccccc.ccccccc.....c\"ccccc",
+   "ccccccccc'cccccccccc.cccccccX....c\"ccccc",
    "ccccccccc'cccccccccc.ccc.........c\"ccccc",
    "ccc........cccc~c'''.ccccccc....cc\"ccccc",
    "cccccc.....cccccc'cc.ccccccc....cc\"\"cccc",
-   "ccccccc....cc..'''occccccccc....cc\"\"cccc",
+   "ccccccc.N..cc..'''occccccccc....cc\"\"cccc",
    "ccccccc____c...cccooccccccc!....cc\"\"cccc",
    "ccccccc........cooooccccccc......c\"\"cccc",
    "ccccccc........c.oooccccccc.....\"\"\"\"cccc",
    "ccccccc.....c..c.ooocccccc......\"\"\"\"cccc",
    "ccccccc.cc..c....ooocccccc.....\"\"\"\"\"\"ccc",
-   "ccccccccccccc....ooocccccc.....\"\"ccc\"ccc",
+   "ccccccccccccc....ooocccccc....N\"\"ccc\"ccc",
    "ccccccccccccccccc$$$cccccc.....\"\"\"\"\"\"ccc",
    "ccccccccccccccccc$$$ccccccc..cccc\"\"\".ccc",
    "ccccccccccccccccc$$$ccccccc..cccc...cccc",
@@ -83307,28 +84005,28 @@
    "ccccccc....\"\"\"ccoooooooc.....ccccccccccc",
    "ccccccc....\"\"\"ccoooooooc......cccccccccc",
    "ccccccc\"\"...\"\"ccooooooocc.cccccccccccccc",
-   "ccccccc\"\"\"....ccoooooooo..cccccccccccccc",
+   "ccccccc\"\"\"....ccooooooooN.cccccccccccccc",
    "ccccccc\"\"\"\"\"..ccoooooooooooooooccccccccc",
    "ccccccc\"\"\"\"\"\"......~oooooooooooooccccccc",
    "ccccccc\"\"\"\"\"\"\"......~ooooooooooooccccccc",
    "ccccccc\"\"\"X\"\"\"\"\".......~oooooooooooccccc",
    "ccccccc\"\"\"\"\"\"\"\"\".......c...~ooooooo.cccc",
    "ccccccc\"\"\"\"\"\"\"\"\"..ccc..c...cccooooo.cccc",
-   "ccccccc\"\"\"\"\"\".....c........ccccooooocccc",
-   "ccccccc\"\"\".....cccc......ccccccooocc.ccc",
+   "ccccccc\"\"\"\"\"\".....cX.......ccccooooocccc",
+   "ccccccc\"\"\"X....cccc......ccccccooocc.ccc",
    "ccccc..........c........cc\"\"cccooocc.ccc",
    "ccccc.....cccccc......ccc\"\"\"\"ccooooo.ccc",
-   "ccccc....cccccccccc..cc..\"\"\"\".cooooo.ccc",
+   "ccccc....cccccccccc..cc..\"\"\"\"Ncooooo.ccc",
    "cccccc7ccccccc\"\"\"........\"\"\"\".cccooocccc",
    "cccccc7ccccc\"\"\"\"\"\"..ccccc.\"\"\"ccccooocccc",
-   "ccc........\"\"\"\"\"\"\".ccccccc...ccooooocccc",
+   "cccN.......\"\"\"\"\"\"\".ccccccc...ccooooocccc",
    "ccc.....ccc\"\"\"\"\"\"\".ccccccccccccooooocccc",
    "cccc....ccc.\"\"\"\"\"\"ccccccccccccoooooocccc",
    "cccc....cccc\"\"\"\"\"\"cccccccccoooooooo..ccc",
    "cccc....cccc\"\"\"\"\"\"ccccccccoooooooo..\"\"\"c",
    "ccccc...cccc\"\"\"\"\".ccccccccoooooocc.c\"\"\"\"",
    "ccccc...cccc.\"\"\"\"cccccccccoooooocccc\"\"\"\"",
-   "cccccc....ccc\"\"\"\"cccccccccooooooo.cc\"\"\"\"",
+   "cccccc..X.ccc\"\"\"\"cccccccccooooooo.cc\"\"\"\"",
    "ccccccc...ccc\"\"\".cccccccoooooo...\"cc.\"\"\"",
    "ccccccc...cc.\"\"\"ccccccccooooo..\"\"\"\"cc...",
    "ccccccc......\"\"\"ccccccooooooo..\"\"\"\"ccccc",
@@ -83339,29 +84037,29 @@
    "cccccccc\"\"\"\"\"\"ccccccoooooo.cc\"\"\"\"ccccccc",
    "cccccccc\"\"\"\"\"\"ccccccoooooo.cc\"\"\"\"ccccccc",
    "ccccccc.\"\"\"\"\".ccccccoooo..ccc\"cccccccccc",
-   "ccccccc..\"\"\"\"ccccccc.occ..ccc....ccccccc",
+   "cccccccX.\"\"\"\"ccccccc.occ..ccc....ccccccc",
    "ccccccc...\"\".ccccc...occ..cccccccccccccc",
-   "cccccc......cccccccc.cccc.cccccccccccccc",
+   "cccccc......cccccccc.ccccNcccccccccccccc",
    "ccccc.......cccccc...cccc.cccccccccccccc",
    "cccc........cccccccccccccccccccccccccccc",
    "cccc.....cccccccccccc~~~cccccccccccccccc",
    "ccccc..cccccccccccccc~~~cccccccccccccccc",
    "ccc....cccccccccccccc~~~cccccccccccccccc",
    "ccc....cccccc.....ccc~~~c...cccccccccccc",
-   "ccc....ccc........ccc~~~c...cccccc....cc",
-   "ccc...................................cc",
+   "ccc....ccc........ccc~~~c...cccccc.X..cc",
+   "ccc.........N.........................cc",
    "ccc...................................cc",
    "ccccccccccccc.cccccccccccc..cccccc...ccc",
    "ccccccccccccc.cccccccccccc...ccccc...ccc",
    "cccccc\"\".......cccccccccccc.....ccc..ccc",
    "cccccc\"\"........ccccccccccc.....c.c..ccc",
-   "ccc.\"\"\"\"..........ccccccccc..cc.c.....cc",
+   "ccc.\"\"\"\"..........ccccccccc..cc.c...N.cc",
    "cccc\"\"\"\"cc........''''cccc...c........cc",
-   "cccc....ccc.......ccc'ccc....c........cc",
+   "cccc....ccc.......ccc'ccc....c......N.cc",
    "ccccccccccccc..cccccc'ccc....c.....N..cc",
    "ccccccccccccccccccccc''''....c........cc",
    "ccccccccccccccccccccccccc..\"\"c...ccccccc",
-   "cccc..\"\"\"\"\"cccccccccccccc.\"\"\"c...ccccccc",
+   "ccccN.\"\"\"\"\"cccccccccccccc.\"\"\"c...ccccccc",
    "cc\"\"\"\"\"\"\"\"\"\"cccccccccccccc\"\"\"c..cccccccc",
    "cc\"\"\"\"\"\"\"\"\"\".coccccccccccc\"\"\"\"...ccccccc",
    "cc..\"\"\"\"\"\"\"\".coccccccccccc\"\"\"\"..cccccccc",
@@ -83376,21 +84074,21 @@
    "cccccccccooooooooooooooooo......cAcccccc",
    "cccccccccooooooooooooooo.......NcDcccccc",
    "ccccccccoooooooooooo................cccc",
-   "ccccccccooooocccc....................ccc",
+   "ccccccccooooocccc.........N..........ccc",
    "cccccccoocccccccc................\"\"\"\"\"cc",
-   "cccccccccccccccc..............\"\"\"\"\"\"\"\"cc",
+   "cccccccccccccccc........N.....\"\"\"\"\"\"\"\"cc",
    "ccccccccccccccc.........\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
    "cccccccccccccc.....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
-   "ccccccccccc.....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
-   "cccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"c",
+   "ccccccccccc.....\"\"\"\"\"\"\"\"\"\"\"\"X\"\"\"\"\"\"\"\"\"cc",
+   "cccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"N\"\"\"\"\"c",
    "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"c",
    "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"c",
    "ccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"c",
-   "cccccc\"\"\"\"\"\"..\"\"\".....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
-   "ccccc\"\"\"\"\"\"\"\"\"\"\".cccc..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
-   "cccc\"\"\"\"\"\"\"\"\"\"\"\".ccccc.\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+   "cccccc\"\"\"\"\"\"N.\"\"\".....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+   "ccccc\"\"\"\"\"\"\"\"\"\"\".cccc..\"\"\"\"\"\"\"\"\"\"\"X\"\"\"\"\"",
+   "cccc\"\"\"\"\"\"\"\"X\"\"\".ccccc.\"\"\"X\"\"\"\"\"\"\"\"\"\"\"\"\"",
    "cccc\"\"\"\"\"\"\"\"\"\"\"\"\"ccccc.\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
-   "cccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"ccc\"\"\"\"\"\"\"..\"\"\"\"\"\"\"\"\"",
+   "cccc\"X\"\"\"\"\"\"\"\"\"\"\"\"\"ccc\"\"\"\"\"\"\"..\"\"\"\"\"\"\"\"\"",
    "ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".cc.\"\"\"\"\"\"\"\"",
    "ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".ccc.\"\"\"\"\"\".",
    "ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"X\"\"\"\"\"\"\"\"\"\"\"ccc.\"\"\"\"\"\"c",
@@ -83426,6 +84124,9 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "LEAF STONE",
+   "PP MAX",
+   "RARE CANDY",
    {
     "text": "Lookout grunt",
     "action": "EVENT",
@@ -83452,6 +84153,13 @@
     ],
     "_look": "@grunt"
    },
+   "ELIXIR",
+   "HONDEW BERRY",
+   "ULTRA BALL",
+   "CALCIUM",
+   "SITRUS BERRY",
+   "TIMER BALL",
+   "TM62 ACROBATICS",
    {
     "text": "Secret Spot fan",
     "action": "EVENT",
@@ -83461,6 +84169,7 @@
      ]
     }
    },
+   "ZINC",
    {
     "text": "Fly dreamer",
     "action": "EVENT",
@@ -83470,6 +84179,10 @@
      ]
     }
    },
+   "POMEG BERRY",
+   "LEPPA BERRY",
+   "MAX ETHER",
+   "MAX REPEL",
    {
     "text": "Stuck cyclist",
     "action": "EVENT",
@@ -83495,9 +84208,20 @@
   ],
   "trainer_spots": [
    "Ninja Boy Hideo",
+   "Pokémon Ranger Jackson",
    "Bird Keeper Phil",
+   "Bird Keeper Hugh",
+   "Ninja Boy Yasu",
+   "Fisherman Eugene",
+   "Ninja Boy Takashi",
+   "Brains & Brawn Jael & Kael",
    "Pokémon Ranger Catherine",
-   "Ninja Boy Takashi"
+   "Bug Catcher Kent",
+   "Bug Maniac Brent",
+   "Bug Catcher Greg",
+   "Bug Catcher Doug",
+   "Bug Maniac Donald",
+   "Bug Maniac Taylor"
   ],
   "edge_to": {
    "17,139": [
@@ -83566,11 +84290,69 @@
     "m": "still",
     "s": 3
    },
+   "7,74": {
+    "m": "look",
+    "d": "dr",
+    "s": 3
+   },
+   "12,123": {
+    "m": "copy",
+    "v": "same",
+    "g": 1,
+    "s": 1
+   },
+   "26,123": {
+    "m": "copy",
+    "v": "opposite",
+    "g": 1,
+    "s": 1
+   },
+   "5,125": {
+    "m": "copy",
+    "v": "cw",
+    "g": 1,
+    "s": 1
+   },
+   "28,116": {
+    "m": "copy",
+    "v": "opposite",
+    "g": 1,
+    "s": 1
+   },
+   "34,122": {
+    "m": "copy",
+    "v": "ccw",
+    "g": 1,
+    "s": 1
+   },
    "17,128": {
     "m": "copy",
     "v": "ccw",
     "g": 1,
     "s": 1
+   },
+   "35,83": {
+    "m": "face",
+    "d": "d",
+    "s": 2
+   },
+   "28,14": {
+    "m": "still",
+    "s": 1
+   },
+   "19,49": {
+    "m": "still",
+    "s": 3
+   },
+   "10,50": {
+    "m": "face",
+    "d": "r",
+    "s": 3
+   },
+   "8,63": {
+    "m": "face",
+    "d": "d",
+    "s": 5
    }
   },
   "scenes": [
@@ -83829,7 +84611,10 @@
      140
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "26,120": "FULL_HEAL"
+  }
  },
  "FORTREE_CITY_UPPER": {
   "art": [
@@ -83929,16 +84714,16 @@
    "ccccccccccc.....cccc.........ccccccccccc",
    "ccccccccccccccccccc........!.....ccccccc",
    "cccc..cccccccccc....................cccc",
-   "......................................cc",
-   "......................\"\"\"\"\"\"\"\"\"\"\"......c",
+   "....N.................................cc",
+   "................X.....\"\"\"\"\"\"\"\"\"\"\"......c",
    "<....................\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...c",
    "<...................\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...",
    "<...ccc............c\"\"\"\"\"\"\"\"\"\"X\"\"\"\"\"\"\"..",
    ".ccccccccccccccccccc\"\"\"\"\"ccc\"\"\"\"\"\"\"\"\"\".c",
    "cccccccccccccccccccc.cccc...\"\"\"\"\"\"\"\"\"\"cc",
    "ccccccccccoooooooccc.ccccccc\"\"\"\"\"\"\"\"\".cc",
-   "ccccccccccoooooooN.....ccccc\"\"\"\"\"\"\"\".ccc",
-   "ccccccccccoooooooooooooooocc.\"\"\".....ccc",
+   "ccccccccccoooooooN....Nccccc\"\"\"\"\"\"\"\".ccc",
+   "ccccccccccoooooooooooooooocc.\"\"\"X....ccc",
    "ccccc.....;;;N;;;;;;;;;;;;..........cccc",
    "cccc......;;;;;;;;;;;;;;;;........cccccc",
    "cccc....ccooo.oooooooooooocc.....ccccccc",
@@ -83946,9 +84731,9 @@
    "ccc.....ccoooooooooooooooocccccccccccccc",
    "ccc.....ccoooooooo~~~ooooocccccccccccccc",
    "ccc.....ccc~ooooo~ccc~oooocccccccccccccc",
-   "cc......ccccoooooccccco~cccccccccccccccc",
+   "cc...X..ccccoooooccccco~cccccccccccccccc",
    "cc......ccccooooocc^cc~ccccccccccccccccc",
-   "c.......ccccccccoooooocccccccc....ccc.cc",
+   "c.....N.ccccccccoooooocccccccc....ccc.cc",
    "c........cccccccccccccccccccccc.......cc",
    "..........ccccccccccccccccccccc.......cc",
    "............cccccccccccccccccccc.....ccc",
@@ -83957,11 +84742,11 @@
    "c....X.........................cccc.cccc",
    "cc...........cc.................ccc.cccc",
    "ccccc........cc.....c.....cc.....cc2cccc",
-   "ccccccc............ccc...ccc........cccc",
-   "cccccccc...........c.....cc.........cccc",
+   "ccccccc............ccc..Nccc........cccc",
+   "cccccccc..........Xc.....cc.........cccc",
    "cccccccccc....cc....................cccc",
-   "ccccccccccccc\"ccc..................ccccc",
-   "ccccccccccccc\"\"\"c..................ccccc",
+   "ccccccccccccc\"ccc..N...............ccccc",
+   "ccccccccccccc\"\"\"c..............X...ccccc",
    "ccccccccccccc\"\"\"\"c.................ccccc",
    "ccccccccccccccc\"\"\"c................ccccc",
    "cccccccccccccccc\"\"cccccc\"\"\"\".\"\"\"\"\"\"\"\"ccc",
@@ -83969,26 +84754,26 @@
    "ccccccccccccccccc\"\"ccccc\"\"\"\".\"\"\"\"\"\"\"\"ccc",
    "cccccccccccccccccc\"\"\"\"\"\"\"\"\"\".\"\"\"\"\".\"\"\"cc",
    "cccccccccccccccccc\"\"\"\"\"\"\"\"\"\".\"\"\"\"\".\"\"\"cc",
-   "cccccccccccccccccc\"\"\"\"\"\"\"X\"\".\"\"\"\"\".\"\"\"cc",
+   "cccccccccccccccccc\"\"\"\"\"\"\"X\"\".\"\"\"\"\".\"X\"cc",
    "cccccccccccccccccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
    "ccccccccc...cccccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
    "cccccc......cccccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"c",
    "ccc..........ccccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"c",
    "cc.cc.....cc..cccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"c",
-   "c..cc.....cc..cccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"c",
+   "c..cc.....cc..cccc\".\"\"\"\"\"\"\"X\"\"\"\"\"\"\"\".\"\"c",
    "c.....ccc.....cccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"\"",
    "c....ccccc....cccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"\"",
    ".cc..ccccc..cccccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"ccc",
-   ".cc..ccncc..cccccc\"\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
+   ".cc..ccncc..cccccc\"\"N\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
    "..............cccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
-   "..............cccc..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
+   "......N.......cccc..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
    "...cc.....cc..cccccc....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
    "...cc.....cc..cccccccc__\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
-   "..............ccccccc)..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+   ".........X....ccccccc)..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
    "..............ccccc..)............_____.",
    "..............cccc...)Xccccccccccc.....c",
    "c.............cccc.._c.c.......cccc....c",
-   "c.............cccc....cc.......ccccc...c",
+   "c.............cccc....cc.N.....ccccc...c",
    "ccc.......cc.ccccc...cccoooooooccccc...c",
    "ccccccc...cc.ccccc...cccoooooooocccc...c",
    "cccccccc..cc....cc......;;;;;;;;.......c",
@@ -83996,7 +84781,7 @@
    "cccccccccccc\"\"\"\"cc.....cooooooooc.....cc",
    "cccccccccccc\"\"\"\"ccc....cooooooooc....ccc",
    "cccccccccccc\"\"\"\"cccc...cooooooooc...cccc",
-   "cccccccccc.\"\"\"\"ccccc...coooooooocccccccc",
+   "ccccccccccX\"\"\"\"ccccc...coooooooocccccccc",
    "ccccccccc..\"\"\"\"cccc....coooooooocccccccc",
    "cccccccccc.\"\"\"\"cc......coooooooocccccccc",
    "ccccccccc...\"\"\"cc......coooooooocccccccc",
@@ -84004,16 +84789,16 @@
    "cccc........\"\"ccc....c...ooooo~ccccccccc",
    "ccc...........cc.....c...oooo~cccccccccc",
    "cc..cccc......cc.....c.......ccccccccccc",
-   "ooooooooo.....cc.....c.......ccccccccccc",
+   "ooooooooo.....cc...X.c..N.N..ccccccccccc",
    "ooooooooo.....cc....\"c.......ccccccccccc",
-   "ooooooooocc...cc...\"\"...cccccccccccccccc",
+   "ooooooooocc...cc...\"\"..Ncccccccccccccccc",
    "ooooooooocc...cc...\"\"\"\"\"\"\"cccccccccccccc",
    "ooooooooocc...cc...\"\"\"\"\"\"\"\"\"cccccccccccc",
    "ooooooooocc...cc...\"\"\"\"\"\"\"\"\"cccccccccccc",
    "..oooooooccc.ccc....\"\"\"\"\"\"\"\"\"\"\"\"ccccccc.",
    "....oooooccc.ccc.....\"\"\"\"\"\"\"\"\"\"\"cc.....>",
    "cc........cc...........\"\"\"\"\"\"\"\"\"......!.",
-   "cccc......cc...........................>",
+   "cccc...N..cc...........................>",
    "cccccccccccc...........................>",
    "cccccccccccc...........................>",
    "cccccccc.ccc.................cccc......>",
@@ -84048,8 +84833,20 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "FULL HEAL",
    "ANCIENT TOMB",
-   "TALK TO STEVEN"
+   "NEST BALL",
+   "TALK TO STEVEN",
+   "RARE CANDY ",
+   "PINAP BERRY",
+   "LIGHT BALL",
+   "RARE CANDY",
+   "NUGGET",
+   "FULL RESTORE",
+   "REVIVE",
+   "DUSK BALL",
+   "WEPEAR BERRY",
+   "ASPEAR BERRY"
   ],
   "signs": [
    [
@@ -84062,10 +84859,20 @@
    ]
   ],
   "trainer_spots": [
+   "Ruin Maniac Chip",
    "Bird Keeper Robert",
+   "Bird Keeper Colin",
+   "Parasol Lady Clarissa",
    "Parasol Lady Angelica",
+   "Pokémon Ranger Carlos",
+   "Delinquent Sharlene",
    "Cooltrainer Jennifer",
-   "Team Magma Grunt"
+   "Bug Maniac Brandon",
+   "Ninja Boy Tsunao",
+   "Ninja Boy Keigo",
+   "Team Magma Grunt",
+   "Pokémon Ranger Jenna",
+   "Street Thug Gomez"
   ],
   "edge_to": {
    "0,7": [
@@ -84109,6 +84916,55 @@
    "13,15": {
     "m": "face",
     "d": "d"
+   },
+   "5,22": {
+    "m": "look",
+    "d": "lr",
+    "s": 3
+   },
+   "32,14": {
+    "m": "face",
+    "d": "r",
+    "s": 3
+   },
+   "27,51": {
+    "m": "face",
+    "d": "l",
+    "s": 7
+   },
+   "36,45": {
+    "m": "face",
+    "d": "l",
+    "s": 2
+   },
+   "19,80": {
+    "m": "look",
+    "d": "ul",
+    "s": 3
+   },
+   "31,37": {
+    "m": "look",
+    "d": "ul",
+    "s": 4
+   },
+   "9,60": {
+    "m": "look",
+    "d": "ulr",
+    "s": 4
+   },
+   "16,6": {
+    "m": "look",
+    "d": "udlr",
+    "s": 4
+   },
+   "18,34": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "10,72": {
+    "m": "still",
+    "s": 3
    }
   },
   "scenes": [
@@ -84454,7 +85310,11 @@
      "f": "em_top/0_35_closed.png"
     }
    }
-  ]
+  ],
+  "hidden": {
+   "31,11": "REVIVE",
+   "24,42": "ZINC"
+  }
  },
  "HOENN_ROUTE_121": {
   "art": [
@@ -84465,13 +85325,13 @@
    "cccccccccccccc\"\"\"ccccccccccccccccccccAccccccccccccccccccccccccccc2cccccccccccccc",
    "cccccccccccccc\"\"\"\".....\"\"\"......2..ccDcc.ccccc........\"\"\"\"\".........\"\"\"\".c.....>",
    "<.....................\"\"\"\"\".....cc.....!.ccccc.........\"\"\"\"\"\"\".....\"\"\"\"\"\"c.....>",
-   "<.....................\"\"\"\"\"...NNcc.......cccccccccc..cccc..ccc..cccccccccc.....>",
-   "<....................\"\"\"\"\"\"\"..N.ccccc..ccc..c\"\".........c....c..c.\"\".\"\"\".c......",
-   "<.............\"\"\"ccccccccccccc..ccccc.......c\"\"\"cccccc.cc....c..cX\"\"\"\"\"\".c......",
-   "<...........\"\"\"\"\"\"\"\"\"\"\".cccccc..ccccc.......c\"\"\"\"\"X\"....c\"\"..c....\"\"\"\"\"\"......cc",
-   "<..........\"\"\"\"\"\"\"\"\"cccccccccc..cccccccccc..ccccccccccccc\"\"\".c..............cccc",
+   "<....N....N...........\"\"\"\"\"...NNcc.......cccccccccc..cccc..ccc..cccccccccc.....>",
+   "<...........N........\"\"\"\"\"\"\"..N.ccccc..ccc..c\"\".........c....c..c.\"\".\"\"\".c......",
+   "<.............\"\"\"ccccccccccccc..ccccc..XX...c\"\"\"cccccc.cc....c..cX\"\"\"\"\"\".c......",
+   "<.N...N.....\"\"\"\"\"\"\"\"\"\"\".cccccc..ccccc.....N.c\"\"\"\"\"X\"...Nc\"\".Nc.N..\"\"\"\"\"\"......cc",
+   "<..........\"\"\"\"\"\"\"\"\"cccccccccc..cccccccccc..ccccccccccccc\"\"\".c...........N..cccc",
    "<.......cccccccccccccccccc2...........\"\"\"\"\"............\"\"\"\"\".ccccccccccc....cccc",
-   "<.......cccccccccccccc.....ccc..ccc....\"\"\"\"\"\"\".........\"\"\"\"\".c............ccccc~",
+   "<.......cccccccccccccc.....ccc..ccc...N\"\"\"\"\"\"\".........\"\"\"\"\".c............ccccc~",
    "cccccccccccccccccc.....ccccccN..!ccccccc\"\"\"\"\"\"\".......\"\"\"\"\"ccc..cccc......c~~~~~",
    "ccccccccccccccccccccccccccccc....ccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccc....cccccccccccccccccccccccccccccccccc~~~~~~~~~cccc",
@@ -84499,6 +85359,8 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "MAX REPEL",
+   "CARBOS",
    {
     "text": "Hurried grunt",
     "action": "EVENT",
@@ -84529,6 +85391,7 @@
     ],
     "_look": "@grunt"
    },
+   "SHINY STONE",
    {
     "text": "Panting grunt",
     "action": "EVENT",
@@ -84544,6 +85407,14 @@
     ],
     "_look": "@grunt"
    },
+   "PEARL",
+   "ZINC",
+   "NUGGET ",
+   "ASPEAR BERRY",
+   "PERSIM BERRY",
+   "NUGGET",
+   "NANAB BERRY",
+   "RAWST BERRY",
    {
     "text": "Pilgrim",
     "action": "EVENT",
@@ -84566,6 +85437,8 @@
   ],
   "trainer_spots": [
    "Hex Maniac Tammy",
+   "Teammates Kate & Joy",
+   "Poké Fan Vanessa",
    "Beauty Jessica",
    "Gentleman Walter"
   ],
@@ -84680,6 +85553,16 @@
     "m": "look",
     "d": "dr",
     "s": 6
+   },
+   "39,9": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "40,9": {
+    "m": "face",
+    "d": "d",
+    "s": 1
    }
   },
   "scenes": [
@@ -84794,7 +85677,12 @@
      20
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "23,10": "HP_UP",
+   "72,5": "FULL_HEAL",
+   "68,8": "MAX_REVIVE"
+  }
  },
  "LILYCOVE_CITY": {
   "art": [
@@ -84818,12 +85706,12 @@
    "<.............................................(..c__c....Nccc=====........ooooow",
    "cccc...........N..............................(.....(.....ccc=====...=....oooocc",
    "cccc....cccccccccccccccccccccc................(.....(.....ccc====........ooocccc",
-   "cccccccc..cccc......ccccccc.....N.............c_____ccc..cccc==..........oooccoo",
+   "cccccccc..cccc......ccccccc.....N.............c_____ccc..cccc==.N........oooccoo",
    "cccccccc..cKcc....ccccccccccc.......cccccc..........ccc..ccc=..........oooooccow",
    "ccccccc...cDcc....ccccccccccc.......cccccc..........c=====............ooooooccow",
    "ooccccc.........N.cccccFccccc.......cBcccc..........c==.........==...ooooooccoow",
    "ooccccc...........cccccDccccc!.....!cDcccc.......cccc.........===....ooooooccoow",
-   ".occccc.................................NN.......c=..................oooooccooow",
+   ".occccc.................................NN....N..c=..................oooooccooow",
    ".occccc..........................................c=.....===.........coooooccooow",
    ".occccc............................N........cccccc=......===........oooooooccoow",
    ".occccc..cccccccccccccccNc..N...........ccccc=c===.......=====.....ooooooooccoow",
@@ -84834,7 +85722,7 @@
    "oooc..............cooooooooccc......c=======c==....==............oooooooccooooow",
    "oooc............N.cooooooooooc...........c=====.....=...c.c..c..~oooooooccooooow",
    "oooccc..........N.coooooooooocc................c..........c.....cooccooccoooooow",
-   "ooooocccc.....cccccoooooooooooc.................................cccccccccoooooow",
+   "ooooocccc.....cccccoooooooooooc..............................N..cccccccccoooooow",
    "oooooooocccccccoooooooooooooooccccNN................ccccccc.....cccooccoooooooow",
    "oooooooooooooooooooooooooooooooooccccccccccccccccccccooooocccccccoooooooooooooow",
    "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooow"
@@ -84955,6 +85843,7 @@
      "not:aqua_hideout_cleared"
     ]
    },
+   "Man",
    {
     "text": "Pokéblock fan",
     "action": "EVENT",
@@ -84982,6 +85871,7 @@
      ]
     }
    },
+   "Man ",
    {
     "text": "Dozing man",
     "action": "EVENT",
@@ -85019,6 +85909,7 @@
      ]
     }
    },
+   "MAX REPEL",
    {
     "text": "Old woman",
     "action": "EVENT",
@@ -88905,6 +89796,11 @@
     "theme": "room",
     "title": "Lilycove Harbour"
    }
+  },
+  "hidden": {
+   "49,30": "HEART_SCALE",
+   "36,36": "POKE_BALLS",
+   "63,15": "PP_UP"
   }
  },
  "HOENN_ROUTE_122": {
@@ -89057,22 +89953,22 @@
      "ccccccccc.cccccccccccccccccccccccccccc",
      "ccccccccc.ccccccccc11ccccccccccccccccc",
      "ccccccccc.ccccc.c.c..c.c.ccccccccccccc",
-     "ccccccc...cccc............cccccccccccc",
+     "ccccccc...cccc...N........cccccccccccc",
      "ccccccc.ccccccc.c......c.ccccccccccccc",
      "ccccccc.cccccc............c..ccccccccc",
      "ccccccc.ccccccccccc..ccccccN.ccccccccc",
      "ccccccc.ccccccccccc..ccccc...ccccccccc",
      "ccccccc..............ccccc...ccccccccc",
-     "cccccccc.............ccccc..cc.ccccccc",
-     "cccccccc.......................ccccccc",
-     "ccccccccc.\"\"ccccccc.........cccccccccc",
-     "ccccccccc\"\"\"ccccccc.cccc...ccccccccccc",
+     "cccccccc.........X...ccccc..cc.ccccccc",
+     "cccccccc............N..........ccccccc",
+     "ccccccccc.\"\"ccccccc.....N...cccccccccc",
+     "ccccccccc\"\"\"ccccccc.cccc.N.ccccccccccc",
      "ccccccccccc\"\"\"\".cccccccc...ccccccccccc",
      "ccccccccccccccc..ccccccc...ccccccccccc",
-     "ccccccccccccccccccccccc........ccccccc",
+     "ccccccccccccccccccccccc..X.....ccccccc",
      "ccccccc.ccccccccccccccc.....cccccccccc",
-     "ccccccc.....cccccccccc......cccccccccc",
-     "ccccccc.............X.......cccccccccc",
+     "ccccccc.....cccccccccc..X...cccccccccc",
+     "ccccccc..X..........X.X.....cccccccccc",
      "cccccccc.................ccccccccccccc",
      "ccccccccc..cccccccccc...cccccccccccccc",
      "ccccccccc..ccccccccccccccccccccccccccc",
@@ -89080,16 +89976,16 @@
      "ccccccccc..ccccccccccccccccccccccccccc",
      "ccccccccc..ccccccccccccccccccccccccccc",
      "cccccccc....cccccccccccccccccccccccccc",
-     "cccccccc.......\"\"\"\"\"..cccccccccccccccc",
+     "cccccccc...X...\"\"\"\"\"..cccccccccccccccc",
      "cccccccccc....\"\"\"\"\"\"\"..........ccccccc",
-     "cccccccccccccc\"\"\"\"\"\"\"\".........ccccccc",
+     "cccccccccccccc\"\"\"\"\"\"\"\"......N..ccccccc",
      "cccccccccc...c..c\"\"\"\"cccccc...cccccccc",
-     "cccccccccc......ccccccccccc...cccccccc",
-     "ccccccccccccccc.......ccccc...cccccccc",
+     "cccccccccc......ccccccccccc.X.cccccccc",
+     "ccccccccccccccc....N..ccccc...cccccccc",
      "ccccccccccccccccccccccccccc...cccccccc",
-     "cccccccccc1ccccccccccccccc.....ccccccc",
-     "cccccccc....ccccccccccccc\".....ccccccc",
-     "ccccccc............\"\"\"\"\"\"\"\"...cccccccc",
+     "cccccccccc1ccccccccccccccc.N...ccccccc",
+     "cccccccc..X.ccccccccccccc\".....ccccccc",
+     "ccccccc....X.......\"\"\"\"\"\"\"\"...cccccccc",
      "cccccccc............\"\"\"\"\"\"\"\".ccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
@@ -89111,10 +90007,26 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TM61 WILL-O-WISP"
+     "ULTRA BALL",
+     "TM61 WILL-O-WISP",
+     "DUSK STONE",
+     "SHINY STONE",
+     "LAX INCENSE",
+     "SUPER REPEL",
+     "CLEANSE TAG",
+     "MAX POTION"
     ],
     "trainer_spots": [
-     "Hex Maniac Leah"
+     "Psychic William",
+     "Hex Maniac Tasha",
+     "Backpacker Darnell",
+     "Poké Maniac Mark",
+     "Hex Maniac Leah",
+     "Mysterious Sisters Elle & Aya",
+     "Black Belt Atsushi",
+     "Young Couple Dez & Luke",
+     "Hex Maniac Valerie",
+     "Fairy Tale Girl Momo"
     ],
     "links": {
      "10,42": [
@@ -89139,7 +90051,15 @@
       "d": "udlr"
      }
     },
-    "parts": true
+    "parts": true,
+    "hidden": {
+     "8,44": "ULTRA_BALL",
+     "27,17": "MAX_ETHER",
+     "28,44": "ZINC",
+     "15,12": "DIRE_HIT",
+     "20,14": "RARE_CANDY",
+     "24,12": "CARBOS"
+    }
    },
    {
     "art": [
@@ -89859,20 +90779,20 @@
    "cccccccccccccccccccc.cccccccccccccccccccc.....ccccccccccccccccccc.\"\"\"\"\"\"cc\"\"\"\"(......cccccccccc..ccoooooooooooooooooooc..ccccccccccccccccccc",
    "ccccccccccccc.cc.ccc......cccccccccccc......c.cccccccccccccccccc..\"\"\"\"\"\"cc\"\"\"\"(......cccccccccccccccooooooooooooooooooc..ccccccccccccccccccc",
    "ccccccccccc........c.cccc.ccccccccoooooooo......(..\"\"cccccccccc...\"\"\"\"\"\"\"c\"\"\"\"(.......cccccccccccccccoooooooooooooooooc..ccccccccccccccccccc",
-   "ccccccccccccc.cc.ccc.cAcc.ccccccccoooooooo......(.\"\"\"\"ccccccccc_______.\"\"...\"\"(....\"\"........cccccccccooooooooooooooooc..ccccccccccccccccccc",
+   "ccccccccccccc.cc.ccc.cAcc.ccccccccoooooooo......(.\"\"\"\"ccccccccc_______.\"\".N.\"\"(....\"\"........cccccccccooooooooooooooooc..ccccccccccccccccccc",
    "cccccccc.cc........c.cDcc.cccccc..oooooooo......(\"\"\"\"\"_c..ccccc.......c\"......(...\"\"\"\"\"ccccc.cccccccccccooooooooooooooc..ccccccccccccccccccc",
-   "cccccc...cccc....ccc!.....cc.(c...oooooooo......(\"\"\"\"\"\"(...ccc.X.....cc.......(..\"\"\"\"\"\"\"cccc.cccccccccccccooooooooooooc..ccccccccccccccccccc",
-   "cccc.....c................c..(....oooooooo......(\"\"\"\"\"\"(...cc........ccc.c.....cc\"\"\"\"\"\"\"cccc.ccccccccccccccoooooooooooc..ccccccccccccccccccc",
-   "c........ccc..............c..(...............c...cc\"\"\"\"(...c______.\"\"\"ccc.....cccc\"\"\"\"\"\"\"ccc2ccccccccccccccccoooooooooc..ccccccccccccccccccc",
-   "<........cc...............c..(......N.N........ccccc\"\".(.c........c\"\"\"cccc....ccccc\"\"\"\"\"\"ccc..........ccccccccccccccc!....cccccccccccccccccc",
+   "cccccc...cccc....ccc!.....cc.(c...oooooooo......(\"\"\"\"\"\"(..Xccc.X.....cc.......(..\"\"\"\"\"\"\"cccc.cccccccccccccooooooooooooc..ccccccccccccccccccc",
+   "cccc.....c.............N..c..(.N..oooooooo......(\"\"\"\"\"\"(...cc........ccc.c.....cc\"\"\"\"\"\"\"cccc.ccccccccccccccoooooooooooc..ccccccccccccccccccc",
+   "c........ccc......X.......c..(...............c...cc\"\"\"\"(...c______.\"\"\"ccc..N..cccc\"\"\"\"\"\"\"ccc2ccccccccccccccccoooooooooc..ccccccccccccccccccc",
+   "<...N..N.cc...............c..(......N.N........ccccc\"\".(.c........c\"\"\"cccc....ccccc\"\"\"\"\"\"ccc..........ccccccccccccccc!....cccccccccccccccccc",
    "<........ccccccccccc....ccc..c__ccc.______c...cccccc...(cc........cc\"\"\"\"cc_____ccccc...\"\"\"cc.cccccccc.cccccccccccc.c.......c.ccccccccccccccc",
-   "<.........!.....................cccc......(ccccccccc....cc.......ccc\"\"\"\"\"......cccc....X.......\"\"\"ccc.ccccccccccc...X.........ccc..........c",
-   "cccc.............................ccc......(cccccccc....cc_______ccccc\"\"\"\"........(..c........\"\"\"\"\"ccc2ccccccNccc..............ccc.cccccccccc",
-   "cccccc....................................(.cccccc______c.......ccccccc\".........(...........\"\"\"\"\"\"\"...cccc......................2cccccccc.c",
-   "ccccccc.......................X...........(...cccc......(.........cccc.(.........(.........c.\"\"\"\"\"\"\".....................c..ccccc...........",
-   "cccccccc..................................(.............(..............(.........(..........\"\"\"\"\"\"\"\"......................ccccccc.cccccccc.c",
-   "cccccccccccc.cccccccccccccccccc.ccccc.....(.............(..............(.......c.(.........cccc\"\"\"\"\"........c...........ccccccccc.cccccccccc",
-   "ccccccccccc.............cc......cccccccc..(c......c......cc........c...(..........cc...cccccccccccc..c............ccccccccccccccc..........c",
+   "<.........!.....................cccc......(ccccccccc....cc.......ccc\"\"X\"\"......cccc....X.......\"\"\"ccc.ccccccccccc...X.........ccc.........Xc",
+   "cccc.....N.......................ccc.XX...(cccccccc....cc_______ccccc\"\"\"\"........(..c........\"\"\"\"\"ccc2ccccccNccc..............ccc.cccccccccc",
+   "cccccc....................................(.cccccc______c.......ccccccc\".........(...........\"\"\"\"\"\"\"...cccc......................2ccccccccXc",
+   "ccccccc.....N.................X...........(N..cccc......(.........cccc.(.N..N....(...N.....c.\"\"\"\"\"\"\".....................c..ccccc...........",
+   "cccccccc..................................(......X......(N.............(.........(..........\"\"\"\"\"\"\"\"......................ccccccc.ccccccccXc",
+   "cccccccccccc.cccccccccccccccccc.ccccc.....(.............(..............(.......c.(.....X...cccc\"\"\"\"\"........c...........ccccccccc.cccccccccc",
+   "ccccccccccc.............cc.N....cccccccc..(c......c......cc........c...(..........cc...cccccccccccc..c............ccccccccccccccc..........c",
    "ccccccccccccccccccccccccccc.cccccccccccccc.ccc......ccccccccccc.........ccc...ccccccccccccccccccccccc........ccccccccccccccccccccccccccccccc"
   ],
   "exits": {
@@ -89894,8 +90814,15 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "GREPA BERRY",
+   "Fairy Tale Girl",
+   "HONDEW BERRY",
+   "SITRUS BERRY",
+   "GRACIDEA",
+   "WIDE LENS",
    "Magikarp fan",
    "GYARADOSITE",
+   "TAMATO BERRY",
    {
     "text": "Grass lover",
     "action": "EVENT",
@@ -89917,7 +90844,14 @@
       "Grass lover: Giga Drain heals the user as it hits. Grass types love it!"
      ]
     }
-   }
+   },
+   "ULTRA BALL",
+   "QUALOT BERRY",
+   "CALCIUM",
+   "Girl southwest of the pier",
+   "ELIXIR",
+   "REVIVAL HERB",
+   "LEPPA BERRY"
   ],
   "signs": [
    [
@@ -89933,10 +90867,20 @@
    ]
   ],
   "trainer_spots": [
+   "Twins Miu & Yuki",
    "Collector Ed",
+   "Picnicker Martha",
+   "Aroma Lady Violet",
    "Hex Maniac Kindra",
    "Cooltrainer Wendy",
-   "Psychic Cameron"
+   "Ace Trainer Julie",
+   "Delinquent Kylie",
+   "Street Thug Hannibal",
+   "Fisherman Timin",
+   "Psychic Cameron",
+   "Ace Trainer Clyde",
+   "Fisherman Fisher",
+   "Fisherman Finley"
   ],
   "edge_to": {
    "119,0": [
@@ -89968,6 +90912,55 @@
    "87,12": {
     "m": "face",
     "d": "d",
+    "s": 4
+   },
+   "70,12": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "58,7": {
+    "m": "look",
+    "d": "dl",
+    "s": 2
+   },
+   "18,9": {
+    "m": "look",
+    "d": "udlr",
+    "s": 2
+   },
+   "38,13": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "37,13": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "138,12": {
+    "m": "face",
+    "d": "l",
+    "s": 7
+   },
+   "49,16": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "138,14": {
+    "m": "still",
+    "s": 1
+   },
+   "138,16": {
+    "m": "face",
+    "d": "u",
+    "s": 1
+   },
+   "87,17": {
+    "m": "face",
+    "d": "u",
     "s": 4
    }
   },
@@ -90076,7 +91069,12 @@
      20
     ]
    }
-  ]
+  ],
+  "hidden": {
+   "75,1": "SUPER_REPEL",
+   "12,1": "HYPER_POTION",
+   "139,15": "REVIVE"
+  }
  },
  "HOENN_ROUTE_124": {
   "floors": [
@@ -90094,7 +91092,7 @@
      "oocccccc~o~~ooooooooooooooccccoccccccccccooooooooooccccc....oooooooo::oooccoooo>",
      ".ooccccccoccooooooooooooooccccoccccccccccooooooooooccccc....ooooooo::::ooccoooo>",
      ".oocccccc~oooooooooooooooo.cccocccccccccc~~ooooooooccccc..N.ooooooo::::ooo~~ooo>",
-     ".ooocccccc~~~occoooooooooo..N.occcccccccccc~~~oooooocccc....oooooooo::ooooccooo>",
+     ".ooocccccc~~~occooooooooooN.N.occcccccccccc~~~oooooocccc....oooooooo::ooooccooo>",
      ".oooocccccccc~ccooooooooooo...occccccccccooccco~~ooooccc....oooooooooooooooocco~",
      ".ooooocccccccco~~~ooccoooooooooooccccccccoocccoccoooocco...oooooooooooooooooccoc",
      ".ooocccccoccccocccooccoocc~~~ooooocccccooooo~~oo~~~~~ccooooooooooccooooooooooocc",
@@ -90105,9 +91103,9 @@
      "<oooooooccooooooooooooooooooooooooooccoooocccccccccccccccccooooo::::occcc~ooooo~",
      "<ooooooccooooooooooooooooooooooooooooooooooooooccccccccccooooooo::::occccc~~oooc",
      "<ooooooccooooooooooooooooooooooooooooooooooooooooccccccoooooooooo::oocccccccoooc",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooo~~oooooccooooooooooo~ccccccc~ooo",
+     "<ooooooXoooooooooooooooooooooooooooooooooooooooo~~oooooccooooooooooo~ccccccc~ooo",
      "<oooooooooooooooooooXoooooooooooooooooooooooooooccoooooccoooooooooooccccccccc~oo",
-     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocc~~~cccccccccc~~",
+     "<oooooooooooooooooooooooooooooooooXoooooooooooooooooooooooooooocc~~~cccccccccc~~",
      "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~occccccccccccccc..",
      "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccooocccccccccccccc.",
      "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccccccccc.",
@@ -90126,8 +91124,8 @@
      "<oooooooo~~ccooooooooooooooooooooooooooooooooooooooooooo..=====..oooooooccoccccc",
      "<ooooooooccooooooooooooooooooooooooooooooooooooooooooooo...====..ooooooooooo~~o^",
      "<ooooooccoooooooooooooooooooooo~~oooooooooooooooooooooooo..===..oooooooooooocc~~",
-     "<ooooooccooccoooooooooooooccoooccooooooooooooooooooooooooo.....ooooo......oooocc",
-     "<oooooccoooccoooooooooooooccooooooooooooooooooooooooooooooo..ooooooo.......ooooo",
+     "<ooooooccooccooooXXoooooooccoooccooooooooooooooooooooooooo.....ooooo...N..oooocc",
+     "<oooooccoooccoooooooooooooccoooooooooooooooooooooXooooooooo..ooooooo.......ooooo",
      "<oooooccccoooooooooooooooooo~~~~~~~~ooooooooooooooooooooooooooooooo..cccc..oooo^",
      "<oooooooccooooooooooooooo~~~cccccccc~~~ooooooooooooo::ooooooooooooo..cAcc=..ooo^",
      "<oooooooooccooooooooccoooccccccccccccccoooooooooooo::::oooooooooooo..cDcc!..ooo^",
@@ -90140,7 +91138,7 @@
      "cccooooooooooooooooccoooooooooooooccoo~~ooooooooooooooooooooooo::oooooooooooooo^",
      "cccccoooooooooooooooooooooooooXoooooooccccooooooooooooooooooooooooooooooooooooo^",
      "cccccooooooooooooooooooooooooccooooo~~~cccooooooooooooo::oooooooooooooooooooooo^",
-     "ccccccooooooooooooooooooooo~~cc~~oooccc~~ooooooooooooo::::ooooooooooooooooooooo^",
+     "ccccccooooooooooooooooooooo~~cc~~oooccc~~ooooooooooooo::::Xoooooooooooooooooooo^",
      "ccccccoooooooooooooooooooooccoocco~~cccccooooccooooooo::::ooooooooooooooooooooo^",
      "ccc~~ooooo::oooooooooooooo~~ooooccccoooo~~~~occoooooooo::oooooooooooooooooooooo^",
      "cccccoooo::::oooooooooo~~~ccooooccoooo.occccooooooooooooooooooooooooooooooooooo^",
@@ -90156,7 +91154,7 @@
      "c~~~~~ccccccccccc....cccccccooooooooooocc~~~o~~ooooo::ooccoccoooooooooooooooooo^",
      "cccccccccccccccccc...cccccccoooo~~~~~ccoocccoccoooo::::occoo~~ooooooooooooooooo^",
      "~ccccccccccccccccc...ccccccc~~oocccccccoocccooooooo::::occooccooooooooooo~~~~~~~",
-     "ccccccccccccccc......c~~ooooccoocccccooooccooooooooo::occooccooooooooo~~~ccccccc",
+     "ccccccccccccccc......c~~ooooccoocccccooooccooooooooo::occooccXoooooooo~~~ccccccc",
      "cccccccccccccc...c...cccoooooo~~occccooooccooooooooooooccooccccooooooocccccccccc",
      "cccccccccccccc....c..cooooooooccooooooooooooooooooooo~~ooooooccooooooocccccccccc",
      "ccccccccccccccccc.c..coooooooooooooooooooooooooooooooccoccooooooooooo~cccccccccc",
@@ -90185,7 +91183,9 @@
     },
     "people": [
      "YELLOW SHARD",
+     "HEART SCALE",
      "RED SHARD",
+     "HEART SCALE ",
      "BLUE SHARD"
     ],
     "signs": [
@@ -90194,9 +91194,16 @@
      ]
     ],
     "trainer_spots": [
+     "Scuba Diver Dmitry",
      "Swimmer Grace",
+     "Sis & Bro Rita & Sam",
      "Swimmer Roland",
-     "Swimmer Jenny"
+     "Free Diver Arzu",
+     "Free Diver Rischel",
+     "Swimmer ♂ Chad",
+     "Swimmer Jenny",
+     "Scuba Diver Kylan",
+     "Swimmer ♂ Spencer"
     ],
     "inside": {
      "70,48": "treasure_hunter"
@@ -90551,6 +91558,44 @@
      "58,11": {
       "m": "look",
       "d": "udlr"
+     },
+     "34,25": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "61,74": {
+      "m": "still",
+      "s": 7
+     },
+     "49,45": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "7,23": {
+      "m": "look",
+      "d": "dr",
+      "s": 5
+     },
+     "58,58": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       7,
+       0
+      ],
+      "s": 2
+     },
+     "18,44": {
+      "m": "face",
+      "d": "d",
+      "s": 1
+     },
+     "17,44": {
+      "m": "face",
+      "d": "d",
+      "s": 1
      }
     },
     "dive": 1,
@@ -90568,7 +91613,16 @@
        80
       ]
      }
-    ]
+    ],
+    "hidden": {
+     "29,52": "HEART_SCALE",
+     "71,51": "BIG_PEARL",
+     "75,47": "CALCIUM",
+     "74,45": "CARBOS",
+     "29,13": "PEARL",
+     "59,13": "HEART_SCALE",
+     "62,39": "SKY_PLATE"
+    }
    },
    {
     "art": [
@@ -90771,7 +91825,7 @@
    "<ooo~~cccccccooooooooooooooooooooooooooooooooooooooccoooooooo......ooooooooooooo",
    "ooccccoooooooooooooo...oooooooooooooooooooooooo~cccc~~ooccc~~......ooooooooooooo",
    "ccccooooooooo.............oooo~...........~ooo~ccccc.....cc~o......ooooooooooooo",
-   "ccoooooooooo.........c...c....................cccGcc...Ncccc~....o.ooooooooooooo",
+   "ccoooooooooo.....N...c...c....................cccGcc...Ncccc~....o.ooooooooooooo",
    "<oooooooooo....c.......c.......cccccccccc.....cccDcc......c...........~ooooooooo",
    "<ooooooooo...cc.........cc.cccc.cc.cccccc..ccc..........c.c...........c~oooooooo",
    "<ooooooooo...cccc.cccc.cccccAcc....cccBcc.cccc........c.cc..ccccccccc.cc.~oooooo",
@@ -90779,9 +91833,9 @@
    "<ooooooooo..ccc...cDcc....................cc........cccccc..ccccccccc..cccc~oooo",
    "<ooooooooo...ccc..........................cc.......ccccccc..ccccccccc..ccccc~ooo",
    "<ooooooooo...ccc................N.....N..c.........ccccccc..ccccccccc..cccccc~oo",
-   "<ooooooooo....ccc......Ncc..............cc.c.......ccccccc..ccccccccc..ccccccc.~",
+   "<ooooooooo....ccc......Ncc..............cc.c.....N.ccccccc..ccccccccc..ccccccc.~",
    "<ooooooooo....ccccccc....cccccc.........ccccc......ccccccc..ccccccccc..ccccccccc",
-   "<ooooooooo.....cccIcc.cccc.cCcc.........cc.........cccccccc.ccccncccc..ccccccccc",
+   "<ooooooooo.N...cccIcc.cccc.cCcc.........cc.........cccccccc.ccccncccc..ccccccccc",
    "<oooooooooo....cccDcc....!.cDcc.....ccccccc.........cccccccc......!...cccccccccc",
    "<oooooooooo....cc...................cFcccccc........ccccccccccN.....N.cccccccccc",
    "<oooooooooo....ccc..................cDcc.ccc.N.......cccccccccc...cccccccccccccc",
@@ -90791,17 +91845,17 @@
    "<=====.............ccccc.....cc....ccccc....ccccccc.........ccc...cccccc...ccccc",
    "<==cc==............ccccc....cc.....cJccc......cccccc..............cccc...ccccccc",
    "<===cc=...............ccc..cccc....cDccc.........ccc..............cEcc..ccccccco",
-   "<=======...........N..ccc..cccc...................ccccc...........cDcc..ccccccco",
+   "<=======...........N..ccc..cccc.............N.....ccccc...........cDcc..ccccccco",
    "<.======.....................cc...................cccccc...............cccccccco",
-   "<..=cc==.....................ccc..cccccccccc.........cccc..cccccc....c.ccccccooo",
+   "<..=cc==...................N.ccc..cccccccccc.........cccc..cccccc....c.ccccccooo",
    "<..=====..oooo...............ccc..cccccccccc..........ccc..ccccccc..ccccccccoooo",
    "<..=====..ooooooo..............N...ccccccccc.................Nccccccccccccccoooo",
-   "<o..===..oooooooooooooo.............ccccccccc...................cccccccccccooooo",
+   "<o..===..oooooooooooooo.............ccccccccc.N.................cccccccccccooooo",
    "<oo.....oooooooooooooooooooo.......cccccccc.cc..ccc................ccccccccooooo",
    "<ooooooooooooooooooooooooooooooo..ccccccccc.......cccc...........ccccccccccooooo",
    "oooooooooooooooooooooooooooooooooo.cccccccc.cc.......ccccccc...ccccccccooooooooo",
    "cccccccc~occooooooooooooooooooooooo.ccccccccc.....N........ccccccccccccooooooooo",
-   "ccccccccc~ccooooooooooooooooooooooocccccccccccccc...............coooooooooo~~ooo",
+   "ccccccccc~ccooooooooooooooooooooooocccccccccccccc.............N.coooooooooo~~ooo",
    "ccccccccccccccccccccc~ooooooooooooo...cccccccccccccccccccccccccccooooooooo~.cooo",
    "ccccccccccccccc....ccc~ooooooooooooccccccccccccc......ooooooooooooooooooooc.cooo",
    "cccccccccccccccc.c..c.coooooooooooo.ccccccccccc.ooooooooooooooooooooooooo~...~oo",
@@ -90836,6 +91890,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "REVIVE",
    {
     "text": "Surfer",
     "action": "EVENT",
@@ -90879,6 +91934,8 @@
      ]
     }
    },
+   "Boy",
+   "Sailor",
    "Battle Courtney",
    "Battle Matt",
    {
@@ -90917,6 +91974,8 @@
      ]
     }
    },
+   "Woman",
+   "Liza and Tate",
    {
     "text": "Wave watcher",
     "action": "EVENT",
@@ -90935,6 +91994,7 @@
      ]
     }
    },
+   "NET BALL",
    {
     "text": "Thoughtful man",
     "action": "EVENT",
@@ -90943,7 +92003,8 @@
       "All life comes from the sea. And in the end, everything goes back to it."
      ]
     }
-   }
+   },
+   "BIG PEARL"
   ],
   "signs": [
    [
@@ -93025,6 +94086,10 @@
     "theme": "room",
     "title": "Mossdeep Gym"
    }
+  },
+  "hidden": {
+   "3,20": "STAR_PIECE",
+   "14,22": "IRON"
   }
  },
  "HOENN_ROUTE_125": {
@@ -93038,7 +94103,7 @@
    "<ooooooooooooooooocccccccccccccccccccccoooccccooooooooooooooooooo~~ooooooooooooo",
    "<ooooooooooooooooocccccccccccccccccccccoo~~oooooooo......ooooooooccooooooooooooo",
    "<ooooooooooooo~~oocccccccccccccccccccccccccoooooooo.......oo~~~~~ooooooooooooooo",
-   "<ooooooooooooocco.cccccccccccccccccccccccoooooooooo.cccc...occcccooooooooooooooo",
+   "<ooooooooooooocco.cccccccccccccccccccccccooooXooooo.cccc...occcccooooooooooooooo",
    "<ooooooooooooooooccccccccccccccccccccccoooooooooooo.ccccc..occcccooccooooooooooo",
    "<oooooooooo~~~oo.ccccccccccccccccccccc.oooooooooooo..=ccc..occcccooccooooooooooo",
    "<ooooooccoocccooccccccccccccccccccccccoooooooooooooo......oooccccooooooooooooooo",
@@ -93046,21 +94111,21 @@
    "c~~o~~~~occoooccccccccccccccccccccccccoooooo....oooooooooooooooccooooooooooooooo",
    "occoccccoooo~~ooccccccccccccccccccccccoooo...cc...ooooooooooo~~ooooooooooooooooo",
    "oo~~oooooooocco.ccccccccccccccccccccccoooo...cc...oooooooooooccooooooooooooooooo",
-   "~occooooooooooo.ccccccccccccccccccccc.oooo.cc==cc.ooooooo~~~~ooooooooooooooooooo",
+   "~occooooooooooo.ccccccccccccccccccccc.oooo.cc=Ncc.ooooooo~~~~ooooooooooooooooooo",
    "cooooooooooooo..cccccccccccccccccccccooooo.cc==cc.oooooooccccooooooooooooooooooo",
-   "~~~ooooooooo.......cccnccccccccccccc.ooooo........ooooooocccc~oooooooooooooooooo",
+   "~~~ooooooooo..N..X.cccnccccccccccccc.ooooo........ooooooocccc~oooooooooooooooooo",
    "cccooooo................cccccccccccc.ooooooooooooooooooooccccco~~ooooooooooooooo",
    "cccoo...................cccccccccccc.oooooooooooooooooooocccccXccooooooooooooooo",
    "cccoo.....=.oooo........cccccccccccc.ooooooooooooooooccooccccc~ooooooooooooooooo",
    "~~ooo.ccc=..oooooo.......oooccoooooooooooooooooooooooccooccccccooooooooooooooooo",
-   "ccooo.cccc..ooooooo...ooooooccccooooccoooooooooooooooooooccccccooooooooooooooooo",
+   "ccooo.cccc..ooooooo...ooooooccccooooccXooooooooooooooooooccccccooooooooooooooooo",
    "~~ooo.cccc.oooooooooooooooooooccccooccooooooo....oooooo~~occcccoccoooooooooooooo",
    "ccooo......oooooooooooooooooooooccooooooooooo.X..ooooooccoccccooccoooooooooooooo",
    "ccoooo....ooooooooooo......oooooooooooooooooo.cc.oooooooooo~~ooooooooooooooooooo",
    "ccooooooooooooooooooo.......ooXoooooooooooooo.cc.ooooooooooccooooooooooooooooooo",
    "ccooooooooooooooooooo.cccc..ooooooooooooooooo....oooooooooooo~~ooooooooooooooooo",
-   "ccooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooccooccooooooooooooo",
-   "ccooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooo~~~ccooooooooooooo",
+   "ccoooooooooooooooooooXcccc..ooooooooooooooooooooooooccoooooooccooccooooooooooooo",
+   "ccoooooXooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooo~~~ccooooooooooooo",
    "cc~~ooooooooooooooooo..ccc..ooooooooooooccoooooooooooooooooo~~cccooooooooooooooo",
    "ccccoooooooooooooooooo.....oooooooooooooccooooooooooooccoocccccccooooooooooooooo",
    "cccc~~oooooooooooooooooo..oooooooooooooooccoooooooooccccccccoooooooooooooooooooo",
@@ -93088,9 +94153,14 @@
    "_buildings_in_picture": true
   },
   "trainer_spots": [
+   "Swimmer ♀ Tanya",
+   "Swimmer ♂ Cody",
    "Swimmer Nance",
+   "Teammates Kim & Iris",
    "Sailor Forrest",
-   "Swimmer Ernest"
+   "Swimmer Ernest",
+   "Swimmer ♀ Sharon",
+   "Swimmer ♂ Stan"
   ],
   "edge_to": {
    "11,39": [
@@ -93375,6 +94445,39 @@
      9
     ],
     "s": 3
+   },
+   "7,31": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ],
+    "s": 2
+   },
+   "45,9": {
+    "m": "face",
+    "d": "r",
+    "s": 2
+   },
+   "38,24": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     6,
+     0
+    ],
+    "s": 3
+   },
+   "21,30": {
+    "m": "look",
+    "d": "du",
+    "s": 2
+   },
+   "17,19": {
+    "m": "face",
+    "d": "d",
+    "s": 1
    }
   },
   "parts": true,
@@ -93391,6 +94494,10 @@
      40
     ]
    }
+  ],
+  "people": [
+   "BIG PEARL",
+   "DIVE BALL"
   ]
  },
  "HOENN_ROUTE_126": {
@@ -93398,11 +94505,11 @@
    {
     "art": [
      "cccccc~c~~ooo..cc^c^^c^^^^^^^^^oo~~ccccc~~ccccc~~~~~~~~o^^oooooo^cc^cccccccccccc",
-     "ccccccc~ccooo..cc.c..coooo::ooo~~ccoocccccoocccccccccccooooooooooccocccccccccccc",
+     "ccccccc~ccooo.Ncc.c..coooo::ooo~~ccoocccccoocccccccccccooooooooooccocccccccccccc",
      "cccccccc~ooooo.cc.c.ccooo::::ooccoooocccoooooooccccc~ooooooooooooooocccccccccccc",
      "ccccccccco::ooocc.c.c~~oo::::ooccooooooooooooooocccccoooooooooooo~~occcccccccccc",
      "~cccccccco::ooocc.c.cccooo::oooccooooooooooooooooccccooooooooooooccocccccccccccc",
-     "~ccccccccoooooocc.cccc~~ooooooccoooooooooooooooooooooooooooooooooocccccccccccccc",
+     "~ccccccccoooooocc.cccc~~ooooooccooooooooooooooooooooooooXoooooooXocccccccccccccc",
      "~cccccccc~~~~oocc.cccccco~~~~~ccooccooooooooooccoooooooooooooooooocccccccccccccc",
      "~~~cccccccccc~~cccccccc~~cccccooooccooooooooooccoooooooooooooooooccocccccccccccc",
      "~~~ccccccccccccccccc~~~cccccccoooooooooooooooooooooooooooooooooooccocccccccccccc",
@@ -93419,7 +94526,7 @@
      "~~~~~~~ccooooooooo:::oooooooo:::oocco:::::::ooooo::::::::::::::::::oooooo~~ccccc",
      "~~~~~ccooooooooocccccoccccccooooooccoo:::::ooocco::::::::::::::::::ooooooccccccc",
      "~~~ccooooooooooccccccccccccccoooccoooooooooooocco:::::::::::::::::::oooooooooccc",
-     "~~~ccooooooooooccccooccccccccoccccooooooooooooooo::::::ooo::::::::::oooooo~~~ccc",
+     "~~~ccooooooooooccccooccccccccoccccooooooooooooooo::::::oXo::::::::::oooooo~~~ccc",
      "~~~~~~ooooooocccccoooccccccccoccoooooooccoooooooo:::::ccccco::::::::oooooocccccc",
      "~~~~ccoooooooccooooooocccccccccooooooooccooooooo::::::cccccco:::::::ooooooccc~~c",
      "~~~~~ccoooooooccoo:::oooccccccc:::::oooooooooo::::::::ooccccooo:::::oooooo~~occc",
@@ -93440,12 +94547,12 @@
      "cccccoccoo:::occo::::::oooocccccccccccccccccccccccccccccccooccoo:::::oooooooooo>",
      "ccccooccoo:::occo::::::ooocccccccccccccccccccccccccccccccccoooooo::::oooooooooo>",
      "cccccooooo:::occo::::::oooccccccccccccccccccccccccccccccccccoooooo::::ooooooooo>",
-     "cccccoooooo:occoo:::::ooooccccccccccccccccccccccccccccccccccoooooo::::ooooooooo>",
+     "cccccoooooo:occoo:::::ooooccccccccccccccccccccccccccccccccccoooXoo::::ooooooooo>",
      "cccccccoooooocco::::::ooooccccccccccccccccccccccccccccccccccoooooo::::ooooooooo>",
      "cccccccoooocccoo::::::ooooccccccccccccccccccccccccccccccccccoooooX:::::oooooooo>",
      "~~cccccooocccco:::::::ooooccccccccccccccccccccccccccccccccccooooooo::::oooooooo>",
      "~~~~~ccooocccco:::::::occoccccccccccccccccccccccccccccccccccooccooo:::::ooooooo>",
-     "~~~~~ccooocccco::::::ooccoccccccccccccccccccccccccccccccccccoocccoo:::::ooooooo>",
+     "~~~~~ccooXcccco::::::ooccoccccccccccccccccccccccccccccccccccoocccoo:::::ooooooo>",
      "~cccccccoocccoo::::::oooooccccccccccccccccccccccccccccccccccoocccoo:::::ooooooo>",
      "~ccccccccccoooo::::::oooooocccccccccccccccccccccccccccccccccooccco::::::ooooooo>",
      "~ccccccccccoooo::::::ooooooccccccccccccccccccccccccccccccccooccooo::::::ooooooo>",
@@ -93462,8 +94569,8 @@
      "~~~cccoooooooooooo:::::::::::ooooooooooooooooooooooooooooccoo:::::::oooooooooocc",
      "~~~cccoooooooooooo::::::::::::ooooooooooooooooccoooooooooooo:::::::ooooooooooccc",
      "~~~ccccoooooccooooo::::::::::::::oooooooooooooccooooooooo::::::::::ooooooooccccc",
-     "~~~ccccoooooccoooooooo::::::::::::::::::oooooooooooo:::::::::::::::ooooooccccoo~",
-     "~~~ccccooooooooooooooooo::::::::::::::::::::::::::::::::::::::::::oooooooccoooo>",
+     "~~~ccccoooooccoooooooo::::::::::::::::::oooooooooooX:::::::::::::::ooooooccccoo~",
+     "~~~ccccXoooooooXoooooooo::::::::::::::::::::::::::::::::::::::::::oooooooccoooo>",
      "~~~cccooo::ooccooooooooooo:::::::::::::::::::::::::::::::::::::::oooooooccooooo>",
      "~~ccoooo::::occoccccccoooooooo::::::::::::::::::::::::::::::::ooooooocccccooooo>",
      "~~ccoooo::::oooccccccccoooooooo::::::::::::::::::::::::::::::oooooooccccooccooo>",
@@ -93495,8 +94602,16 @@
      "_buildings_in_picture": true
     },
     "trainer_spots": [
+     "Free Diver Jillian",
+     "Scuba Diver Tristan",
+     "Swimmer ♀ Brenda",
      "Swimmer Barry",
+     "Ace Trainer Leopold",
      "Swimmer Nikki",
+     "Ace Trainer Harriet",
+     "Triathlete Denzel",
+     "Scuba Diver Yutaka",
+     "Swimmer ♂ Dean",
      "Swimmer Pablo"
     ],
     "edge_to": {
@@ -93712,6 +94827,55 @@
        80
       ]
      }
+    ],
+    "moves": {
+     "51,65": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       10,
+       3
+      ],
+      "s": 3
+     },
+     "56,22": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       9,
+       0
+      ],
+      "s": 3
+     },
+     "63,43": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "9,48": {
+      "m": "face",
+      "d": "u",
+      "s": 3
+     },
+     "15,66": {
+      "m": "still",
+      "s": 7
+     },
+     "7,66": {
+      "m": "still",
+      "s": 7
+     },
+     "64,5": {
+      "m": "still",
+      "s": 7
+     },
+     "56,5": {
+      "m": "still",
+      "s": 7
+     }
+    },
+    "people": [
+     "GREEN SHARD"
     ]
    },
    {
@@ -93837,7 +95001,7 @@
      "cccccccccccccccccccccoooooooooooooooooooccccccc~~~~~~~~~~~~ccccccccc~ccccc.cccc~",
      "ccccccccccc.....cccccoooooooooooooooooooccccccc~~~~~~~~~~~cccccccccccccoocccccc~",
      "ccccccccccc.....ccccc~~ooooooooooooooooooo~cccc~cc~~~~~~~~cccccccccccoooooccccc~",
-     "ccccccccc........occcccoooooooooooooooooo~ccccc~~~~~~~~cc~~ccccccccccoo::occccc~",
+     "ccccccccc.....N..occcccoooooooooooooooooo~ccccc~~~~~~~~cc~~ccccccccccoo::occccc~",
      "ccccccccc........occcooooooooooooooooooooccccc~~~cccc~~cccccccccccccoo::::cccccc",
      "ccccccccc........occcoooooooooooooooo~~o~ccccc~~~ccccccooooooooooooooo::::occccc",
      "ccccccc........oooooooooooooooooooooocc~ccccccccccoccooooooooooooooooo::::occccc",
@@ -93845,16 +95009,16 @@
      "ccccccc......ooooo..oooooooooooooo~~oo~cccccccoooooooooooooooooooooooo::::occccc",
      "ccccccc......ooooo...ooooooooooooocc~~cccccccoooooooooooooooooooooooo:::::occccc",
      "cccccccooooooooooo...ooo::oooooooooocccccccoooooo.........oooooooooo:::::::occcc",
-     "ccccccoooooooooooooo.oo::::oooooo~~~cccccooooooo............oooooooo:::::::occcc",
-     "ccccccoooo.......oooooo:::::ooo~~ccccccccooooo...............ooooooo::::::::cccc",
-     "cccccc~~oo........ooooo:::::oooccccccccccoooo.......cccc........oooo::::::::cccc",
+     "ccccccoooooooooooooo.oo::::oooooo~~~cccccooooooo......X.....oooooooo:::::::occcc",
+     "ccccccoooo.......oooooo:::::ooo~~ccccccccooooo....N..........ooooooo::::::::cccc",
+     "cccccc~~oo........ooooo:::::oooccccccccccoooo.......cccc..X.....oooo::::::::cccc",
      "ccccccccoo..cccc..ooooo:::::oooooccccccoooo.......cccccccc......ooooo:::::::cccc",
      "ccccccoooo...cccc.ooooo:::::oooooccccccoooo.....cccccccccccc.....oooo:::::::cccc",
-     "<..cccocco..cccc..ooooo::::::ooooccccccoooo..cccccccccccccccccc..ooooo::::::cccc",
-     "c..cccocco.cc..cc.ooooo::::::oooocccccoooo..ccccccccccccccccccc..ooooo::::::cccc",
-     "c..cccoooocc..ccccoooooo:::::oooocccccoooo..ccccccccccccccccccc..oooooo:::::cccc",
+     "<..cccocco..cccc..ooooo::::::ooooccccccoooo..cccccccccccccccccc.Xooooo::::::cccc",
+     "c..cccocco.ccN.cc.ooooo::::::oooocccccoooo..ccccccccccccccccccc..ooooo::::::cccc",
+     "c..cccoooocc..ccccoooooo:::::oooocccccooooX.ccccccccccccccccccc..oooooo:::::cccc",
      "c.ccccoooo.cc..cc.oooooo:::::oooocccccoooo..ccccccc==cccccccc....oooooo:::::cccc",
-     "c.cccooooo........oooooo::::::oooccccooooo..cccccc=..............ooooooo::::cccc",
+     "c.cccoooooX.X..X..oooooo::::::oooccccooooo..cccccc=..............ooooooo::::cccc",
      "c.ccoooooooo.....ooo~~ooo:::::oooocccoooooo.cccc.......ooccooooooooooooo::::cccc",
      "cccco~~oooooooooooooccooo:::::oooocccoooooo..........oooocc~~ooooooooooo:::occcc",
      "ccccoccooooooooooo~~~oooo::::::oooccoooooooo.....ooooooooooccooooooooooo:::occcc",
@@ -93873,7 +95037,7 @@
      "<ooooooooooo::oooocccooooo::::::oooo:::::oooccooo::::occccc~o.ccN.cc..oooocccc~~",
      "<oooooooooo::::ooocccooooo::::::oooo:::::ooooooo:::::occccccocc..cccc.oooocccc~~",
      "<ooooooooo:::::ooocccooooo::::::oooo:::::ooooooo:::::occcccco.cc..ccccooooccccc~",
-     "<ooooooooo::::::oocc~~oooo:::::::ooo:::::ooooooo::::ooccccccoo........ooooccccc~",
+     "<ooooooooo::::::oocc~~oooo:::::::ooo:::::ooooXoo::::ooccccccoo........ooooccccc~",
      "<ooooooooo::::::ooooccooo::::::::ooo::::::oooooo::::ooocccccooo.......ooooccccc~",
      "<ooooooooo::::::ooooooooo::::::::ooo::::::ooooo:::::oo~cccccoooo......ooooccccc~",
      "<oooooooooo::::::oooooooo::::::::ooo::::::ooooo:::::ooccccccoooooooooooooocccccc",
@@ -93896,10 +95060,10 @@
      "oooccccccooooooo::ooooooo::::::::::::::oooooccoooooo....cccc=...=cccc..oocccccc~",
      "<ooccccccooooooo::oooooooo:::::::::::::oooooccooooo....=ccccc==X==ccc..oocccccc~",
      "<oocccccc~oo~~oo::oooooooo::::::::::::oooooo~~~oooo...==cccccc=........oocccccc~",
-     "ooocccccccooccoo::ooo~~ooo::::::::::::oooooocccooo....==cccccc=.......oo~cccccc~",
+     "ooocccccccooccoo::ooo~~ooo::::::::::::oooooocccooo...X==cccccc=.......oo~cccccc~",
      "<ooocccccc~ooooo::oooccoooo:::::::::::ooooo~cccooo......cccccc=....oooooccccccc~",
      "<ooooccccccoo~~~oooooooooooo::::::::::ooo~~ccccoooo.ooo..ccccc....oooooocccccc~~",
-     "<ooooccccccoocccooooo~~~oooo:::::::::ooooccccccooooooooo.====....oooooo~cccccc~~",
+     "<ooooccccccoocccooXoo~~~oooo:::::::::ooooccccccooooooooo.====....oooooo~cccccc~~",
      "<oooocccccc~~cccooooocccooooo::::::::ooooo~ccccooooooooo.====....ooooooccccccc~~",
      "<oo~occcccccccccoooo~cccooooo::::::::oooooccccc~oooooooo.cccc..ooooo~~~ccccccc~~",
      "ooooooccccccccccooooccccooooo::::::::oooooccccccoooooooo.cccc..oooooccccccccc~~~",
@@ -93930,12 +95094,25 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "ZINC",
+     "RARE CANDY",
+     "CARBOS",
      "HERACRONITE"
     ],
     "trainer_spots": [
+     "Ace Trainer Claudia",
+     "Scuba Diver Javier",
+     "Ace Trainer Hisato",
+     "Fisherman Roger",
+     "Free Diver Kailyn",
+     "Black Belt Koji",
+     "Triathlete Jaylon",
      "Bird Keeper Beck",
+     "Bird Keeper Byron",
      "Cooltrainer Camden",
-     "Fisherman Henry"
+     "Fisherman Henry",
+     "Free Diver Aileen",
+     "Fisherman Jonah"
     ],
     "edge_to": {
      "25,0": [
@@ -94244,6 +95421,38 @@
       "m": "look",
       "d": "udlr",
       "s": 3
+     },
+     "45,42": {
+      "m": "look",
+      "d": "lr",
+      "s": 2
+     },
+     "18,68": {
+      "m": "look",
+      "d": "ulr",
+      "s": 4
+     },
+     "42,21": {
+      "m": "face",
+      "d": "l"
+     },
+     "64,19": {
+      "m": "face",
+      "d": "r"
+     },
+     "54,14": {
+      "m": "face",
+      "d": "u"
+     },
+     "15,23": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     },
+     "12,23": {
+      "m": "face",
+      "d": "r",
+      "s": 2
      }
     },
     "dive": 1,
@@ -94261,7 +95470,16 @@
        80
       ]
      }
-    ]
+    ],
+    "hidden": {
+     "54,66": "STAR_PIECE",
+     "46,16": "HP_UP",
+     "10,18": "SPOOKY_PLATE",
+     "8,10": "DREAD_PLATE",
+     "63,23": "RED_SHARD",
+     "57,14": "INSECT_PLATE",
+     "68,43": "HEART_SCALE"
+    }
    },
    {
     "art": [
@@ -94388,8 +95606,8 @@
      "ooooooooooooccccc.cooo..cccc.oo::::::ooooooooccoooccccccccccccccccc~~occoooooooooooooooooooooooooooooooooooooooooooooooo",
      "oooooooooooocccccccooo..cccc.oo::::::oooooooooooooooooccoooooooooooccooooooooooooooooooooooooooooooooooooooooooooooooooo",
      "ooooooooooooocccccoooo..cccc.oo:::::::ooooooooo...ooooccooooooooccoo~~oooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooocccco~~o...ccc.oo:::::::::::ooooo....oooooooooooooccooccooooo.....oooooooooooooooooooooooooooooooooooooooo",
-     "ooooooooooooooocccoccoo......oo:::::::::::::::o....oooooooooooooooooocc~~o..cccc.ooooooooooooooooooooooooooooooooooooooo",
+     "oooooooooooooocccco~~o..Xccc.oo:::::::::::ooooo....oooooooooooooccooccooooo.....oooooooooooooooooooooooooooooooooooooooo",
+     "ooooooooooooooocccoccoo......oo:::::::::::::::oX...oooooooooooooooooocc~~o..cccc.ooooooooooooooooooooooooooooooooooooooo",
      "ooooooooooooooocccoooooo....ooooo:::::::::::::oo...ooooo:::ooooooooooccccoccccccc...occooooooooXooooooooooooooooooooooo.",
      "ooooooooooooooocccoooooooooooooooo:::::::::::::ooooooooo::::::::::ooooooccccccccccccoccooooooooooooooooooooooooooooooooo",
      "ooooooooooooooocccccooooooooooooooooooooo::::::::oooo:::::::::::::oooooocc..ccccccccoooooooooooooooooooooooooooooooooooo",
@@ -94404,16 +95622,16 @@
      "ooooooooooooooooooo~cccoo::::oooo..........oooo:::::oooo..ccc.ooooooo:::::::::::::ooooooooooooooooocccccccccccccccccc~o>",
      "oooooooooooooooooooccccoo::::occoo.........occo:::::ooooo...oooooooooo:::::::::::ooooooooooooooooooooooccccccccccccccco>",
      "oooooooooooooooooooccccoo::::occoooo......oocco:::::oooooooooooooooooooo::::ooooooooooooooooooooooooooooo~~oocccccccooo>",
-     "oooooooooooooooooooccccooo::::oooooooooooooooo::::::oooooooXooccoooooooooooooooooooooooooooooooooooooooooccooooccccccccc",
+     "oooooooooooooooooooccccooo::::oooooooooooooooo::::::oooooooXooccooooooooooooooXooooooooooooooooooooooooooccooooccccccccc",
      "ooooooooooooooooooocccc~~oo:::::oooooccooooo::::::::ooooooooooccoooooooooooooooooooooooooooooooooooooooooooooooooocccccc",
      "oooooooooooooooooooccccccooo::::::oooccoooo:::::::o....oooooooooooo........oooooooooooooooooooooooooooooooooooooooccoooo",
      "oooooooooooooooooooocccoooooo:::::::::::::::::::oo.ccc..ooooooooo...........oo~~oooooccoooooo~~oooooooooooooooooooooooo>",
-     "ooooooooooooooooooooccc~~oooooo::::::::::::::::oo..ccc..oooccoo.....cc...cc.cccc~~ccocc~~~oooccoooooooooooooooooooooooo>",
+     "ooooooooooooooooooooccc~~oooooo::::::::::::::::oo..ccc..oooccooX....cc...cc.cccc~~ccocc~~~oooccoooooooooooooooooooooooo>",
      "oooooooooooooooooooocccccoooooXooo::::::::::::ooo......oooocco......cc...cc.ccooccccccoccco~~~~~~~~ooo~~ooooooooooooooo>",
      "ooooooooooooooooooooo~~ooooooo..ooo:::::::::::oooo...ooooooooo......cccccccoo~~oooooccocccocccccccc~~~ccooooooccooooooo>",
      "ooooooooooooooooooooocco~~ooo.cc.oooo:::::::::ooooooooooooooo.....cccccccccccccoooooooooo~~ccccccccccc~~~~~~~occccccooo>",
      "oooooooooooooooooooooo~~ccooo.cc.oooo:::::::::oooooooooooooo.....ccccccccccccoooooooooooocccccccccccccccccccc~ccccccooo>",
-     "oooooooooooooooooooooocccc~ooo..oooo:::::::::::oooooooooooo.cccccccccccccccooooooooooooooooocccccccccccccccccc~coooocccc",
+     "oooooooooooooooooooooocccc~ooo..oooX:::::::::::oooooooooooo.cccccccccccccccooooooooooooooooocccccccccccccccccc~coooocccc",
      "oooooooooooooooooooooooocccooooooooo::::::::::::::::::::ooo.ccccccccccccooooooooooooooooooooooccccccccccccccccccoooocccc",
      "oooooooooooooooooooooooocccooooooooo:::::ooooo::::::::::ooo...ccccccccooooooooooooooooooooooooccccccccccccccccoooooooooo",
      "oooooooooooooooooooooooocccoooooooo:::ooooooooooo::::ooooooo..cccccccooooooooooooooooooooooooooooooccccccccccooooooooooo",
@@ -94439,9 +95657,14 @@
      "_buildings_in_picture": true
     },
     "trainer_spots": [
+     "Free Diver Mayu",
+     "Tuber Marlene",
      "Swimmer Katelyn",
      "Team Aqua Grunt",
-     "Swimmer Isaiah"
+     "Fisherman Wayne",
+     "Tuber Delmar",
+     "Swimmer Isaiah",
+     "Ace Trainer Cornelius"
     ],
     "edge_to": {
      "14,0": [
@@ -94888,7 +96111,48 @@
        40
       ]
      }
-    ]
+    ],
+    "moves": {
+     "35,33": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       5,
+       5
+      ],
+      "s": 3
+     },
+     "78,24": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       5,
+       0
+      ],
+      "s": 7
+     },
+     "63,28": {
+      "m": "face",
+      "d": "u"
+     },
+     "47,9": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     },
+     "24,8": {
+      "m": "look",
+      "d": "dl",
+      "s": 3
+     }
+    },
+    "hidden": {
+     "49,9": "STONE_PLATE",
+     "57,21": "DRACO_PLATE",
+     "31,33": "PIXIE_PLATE",
+     "75,27": "PROTEIN",
+     "62,19": "PEARL"
+    }
    },
    {
     "art": [
@@ -94974,25 +96238,25 @@
    "<oooooooooooooo~~ooooooooooooo~~occooooooooooooooocccccccccccccooooooooooooooooo",
    "<ooooooooooooooccooooooccoooooccooooooooooooooooooccccccccccccoooooooooooooooooo",
    "<ooooooooooo~~~~~~~~~~occccooocc~oooooooooooooooo~~oooocccccoooooooooooooooooooo",
-   "<ooooooooc~~cccccccccc~ccccoo~cccooooooooooooooooccooooccccooooooooooooooooooooo",
+   "<ooooooooc~~cccccccccc~ccccoo~cccooXoooooooooooooccooooccccooooooooooooooooooooo",
    "<oooooocccccccccccccccc~cooooccccoooooooooooooooooooo~~ccccooooooooooooooooooooo",
    "ccccoooccccccccccccccccccooccccoooooooooooooooooooo~~ccocccooooooooooooooooooooo",
    "ccccoccooocccccccccccccooccccoooooooooooooooooooooocc~oocccooooooooooooooooooooo",
    "oooccccoooooccccccccccoooccoooooooooooooooooooooooocccooccoooooooooooooooooooooo",
-   "oooccoooooooooooooooooooooooooooooooooooooooooooo~~cccoooooooooooooooooooooooooo",
+   "oooccoooooXoooooooooooooooooooooooooooooooooooooo~~cccoooooooooooooooooooooooooo",
    "occoooccooooooooooooooooooooooooooooooooooooooooocccccoooooooooooXoooooooooooooo",
-   "occoooccooooooooooooooooooooooooooooccoooooooooooccccooooooooooooooooooooooooooo",
+   "occoooccooooooooooooooooooooXoooooooccoooooooooooccccooooooooooooooooooooooooooo",
    "<oooooooc~~~~oooooooooooooooooooooccccoooooooooooccccooooooooooooooooooooooooooo",
    "<oooooooccccc~ooccoooooooooooooccoccooooooooooooocccoooooooooooooooooooooooooooo",
    "<oooooooocccccooccoooooooooooooccccoooooooooooo~~cccoooooooooooooooooooooooooooo",
    "<ooooooooocccc~~~occXooooooooccooccooooooooooooccocc~ooooooooooooooooooooooooooo",
    "<ooooooooooooocccoccoooooooooccooooooooooooooooooocccooooooooooooooooooooooooooo",
-   "<ooooooooooooocccooooooooooooo~~oooooooooooooooo~~~ccooooooooooooooooooooooooooo",
+   "<ooooooooooooXcccooooooooooooo~~oooooooooooooooo~~~ccooooooooooooooooooooooooooo",
    "<oooooooooooooooooooooooooooooccooooooooooooooooccoooooooooooooooooooooooooooooo",
    "<ooooooooooooooooooooooooo~~~~oooooooo~~oooooo~~oooooooooooooooooooooooooooooooo",
    "<ooooooooooooooooooooooo~~cccc~ooooo~~ccccooccccoooooooooooooooooooooooooooooooo",
    "<ooooooooooooooooooooo~~ccccccc~~~~occooccccccoooooooooooooooooooooooooooooooooo",
-   "<oooooooooooooooooo~~~ccccccccccccc~~oooooccoooooooooooooooooooooooooooooooooooo",
+   "<ooooooooooooXooooo~~~ccccccccccccc~~oooooccoooooooooooooooooooooooooooooooooooo",
    "ooooccooo~~~~~~~~ooccc~cccccccccccccc~oooooooooooooooooooooooooooooooooooooooooo",
    "ooooccooccccccccc~~~cccccccccccccccccc~~oooooooooooooooooooooooooooooooooooooooo",
    ".occoocccccccccccccc~oooocccccccccccccccoooooXoooooooooooooooooooooooooooooooooo",
@@ -95023,8 +96287,13 @@
    "_buildings_in_picture": true
   },
   "trainer_spots": [
+   "Triathlete Chase",
+   "Fisherman Sheaffer",
    "Swimmer Clarence",
+   "Fisherman Fisk",
    "Swimmer Reed",
+   "Ace Trainer Honor",
+   "Scuba Diver Jason",
    "Swimmer Tisha"
   ],
   "edge_to": {
@@ -95371,7 +96640,40 @@
      40
     ]
    }
-  ]
+  ],
+  "moves": {
+   "28,16": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     3,
+     4
+    ],
+    "s": 3
+   },
+   "10,14": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     5,
+     2
+    ],
+    "s": 2
+   },
+   "13,22": {
+    "m": "still",
+    "s": 5
+   },
+   "35,9": {
+    "m": "look",
+    "d": "udlr",
+    "s": 2
+   },
+   "13,27": {
+    "m": "still",
+    "s": 5
+   }
+  }
  },
  "HOENN_ROUTE_130": {
   "art": [
@@ -95396,7 +96698,7 @@
    "ooccooooooooooooccccccoooooooooooooooooccoooccccccccccooooooccooooooccooooooooo>",
    "oocccccoooooooccccccooooooooooooooooooooccooccccccccoccoooooooooooooooooooooooo>",
    "ccoocccoooooooccooooooooooooooooooooooooccccccccccccoccoooooooooooooooooooooooo>",
-   "ccooccooooooooooooooooooooooooooooooooooooccoooccccoooooooooooooooooooooooooooo>",
+   "ccooccoXooooooooooooooooooooooooooooooooooccoooccccoooooooooooooooooooXoooooooo>",
    "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooXoooooooooooooooooooooooooooooooooooooooooXoooooooooooooooo>",
@@ -95405,7 +96707,7 @@
    "oooooooooooooooooooooooooooooooocccoooooooooooooooooooooooooooooccoccoo~cccccco>",
    "ccccoooooooooooooooooooooooooooocccccoooooooooooooooooooooooooooccooo~cccccccccc",
    "c..coooooooooooooooooooooooooocccccccooooooooooooooooooooooooooooocccccccccccccc",
-   "..ccoccoooooooooooooooooooooccccooooooooooooooooooooooooooccoccooocccccccccccccc",
+   "..ccoccXooooooooooooooooooooccccooooooooooooooooooooooooooccoccooocccccccccccccc",
    "ccccccccccccoccoooooooccooooccooooooooooooooooooooooooooooccoccooooccccccccccccc",
    "<ooccoocccccoccooooooocccccccoooccoooooooooooooooooooooocccccocccccooccccccccccc",
    "<oooooooooooccoccooocccccccccccoccooooooccoooooooooooooocccccoccccccoooooooooccc",
@@ -95434,8 +96736,11 @@
   },
   "trainer_spots": [
    "Swimmer Katie",
+   "Scuba Diver Silas",
+   "Triathlete Karsen",
    "Swimmer Rodney",
-   "Swimmer Santiago"
+   "Swimmer Santiago",
+   "Free Diver Cordura"
   ],
   "edge_to": {
    "0,0": [
@@ -95653,7 +96958,36 @@
      40
     ]
    }
-  ]
+  ],
+  "moves": {
+   "70,21": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     3,
+     6
+    ],
+    "s": 3
+   },
+   "7,21": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     4
+    ],
+    "s": 5
+   },
+   "7,30": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     4
+    ],
+    "s": 5
+   }
+  }
  },
  "HOENN_ROUTE_131": {
   "art": [
@@ -95676,7 +97010,7 @@
    "<ooooooooooooooooooocccccooooccooccccooooooocccoooooccoocccc",
    "<ooooooooooooooooooocccccooooccccccooooooocccccoooooccoocco>",
    "<ooooooooooooooooooooooooooooooccooooooocccccccooooooccooocc",
-   "<ooooooooooooooooooooooooooooooooooooooocccccccooooooccooocc",
+   "<oooooooooooooooooXooooooooooooooooooooocccccccooooooccooocc",
    "<oooooooooooXoooooooooooccooccooooooocccoooooooooooooooooooo",
    "<oooooooooooooooooooooooccccccooooccccccoooooooooooooooooooo",
    "<oooooooooooooooooooooooooccooccccccccccooooooooXoooooooooo>",
@@ -95689,7 +97023,7 @@
    "<ooccoccooooooooccooooooooooooooooooooooooooooooccccoooooocc",
    "ccoccooocccooooocccoccoooooooooooooccoooooooooccoooooooooocc",
    "ccoooooocccoccooccccccoooooooooooccccoooooooccccoooooooocccc",
-   "cccc~ooocccoccccccccoooooooccccooccoccooooooccoooccoccoocco>",
+   "cccc~ooocccoccccccccoooooooccccooccoccoooXooccoooccoccoocco>",
    "cccccc~oooocccccccccoooooooccccccoooccccoooccccooccoccoccoo>",
    "cccccccccc~cccccccccooccccocccccccooooccoocccccccccccccccoo>",
    "cccccccccccc~cccccccccccccccccccccoooooocccccccccccccccoooo>",
@@ -95716,9 +97050,11 @@
    "_buildings_in_picture": true
   },
   "trainer_spots": [
+   "Sis & Bro Rell & Ian",
    "Swimmer Richard",
    "Swimmer Herman",
-   "Swimmer Kara"
+   "Swimmer Kara",
+   "Swimmer ♀ Susie"
   ],
   "edge_to": {
    "0,8": [
@@ -95895,6 +97231,20 @@
      5
     ],
     "s": 3
+   },
+   "41,32": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     5,
+     7
+    ],
+    "s": 3
+   },
+   "18,19": {
+    "m": "look",
+    "d": "dlr",
+    "s": 4
    }
   },
   "parts": true,
@@ -95921,7 +97271,7 @@
    "<ooocccooooooccooo[[[[[ccccccooccoocc[[[[ooccoccooooocccooccoooooocccccccccccccc",
    "<[oocccoccoooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[ccooo[[[[[[[[[[[[[oocccccccccccccc",
    "<[[[ooooccoooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[ccoooooo[[[[[[[[[[[[[[occccccocccccc",
-   "<[[[[oooooooooocc[[[[[[[[cc{{{{{[[[[[[[[[[[[ccooooooo[[[[[[[[[[[[[[ccccccooooccc",
+   "<[[[[oooooXoooocc[[[[[[[[cc{{{{{[[[[[[[[[[[[ccooooooo[[[[[[[[[[[[[[ccccccooooccc",
    "<[[oooooooocccccc[[[[[[[[cc[cc{{{{[[[[[[[[[[ccooooocc{{{[[[[[[[[[[[ooccooccooooo",
    "<[[[ooooocccccc[[[[[[[[[[[[[cccc{{{{[[[[[[[[ccooooocccc{{{[[[[[[[[oooooooccoooo>",
    "<[[[[cccccc[..[[[[[[[[[[[[[[[[cc[cc{{[[[[[[ccoocccccccc}}}[[[[[oooooooo~c~oocco>",
@@ -95930,14 +97280,14 @@
    "<[[[...........[[[[[[cc{{{[[[[[[[[[[ccooooooooooooooo[[[[[[[[[[[[[[oooooocc~cc~o",
    "<[[[.ccccccc...[[[[[[cc[[{{{[[[[[[[ccoooXooooooooooocc[[[[[[[[[[[[[[ooooocccccco",
    "<[[[ccccccccccc[[[[[[[[[[cc{{[[[[[[ccooooooooooooocccc{{{{[[[[[[[[[[[[ooooooccco",
-   "<[[[ccc.....ccc[[[[[cc[[[cc[{{[[[[[[ccoooooooooooocc[cccc{{{[[[[[[[[[[[oooooooo>",
+   "<[[[ccc..X..ccc[[[[[cc[[[cc[{{[[[[[[ccoooooooooooocc[cccc{{{[[[[[[[[[[[oooooooo>",
    "<[[[[..........[[[[[cccc[[[[[{{[[[[[ccoooooooooocc[[[cccc[cccc[[[[[[[oooooooooo>",
    "<[[[[[..ooo....[[[[[[[cc[[[[cc{{[[[[[[oooooooooocc[[[cc[[[cccccccc[[ooooooooooo>",
    "<[[[[[[[ooo[[[[[[{{{{[[[[[[[cc[[{{[[[[[[oooooo[[[[[[[cc[[[[[[[cccc[oooooooooooo>",
    "<[[[[[[[[[[[[[[[[[[[[[{{{{[[[[[[[[{{[[[[[[[[[[[{{{{{{[[[[[[[[[[[[[ooooooooooooo>",
    "<[[[[[[[[[[[[[[[[[[[[[[[[[[{{{{[[[[[[[[[[[[[[[[[[[[{{{{{{[[[[[[[[[[[[oooooooooo>",
    "<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[{{[[[[[[[[[[[[[[[[[[[[[{{{{{{[[[[[[[[ooooooooooo>",
-   "cccc[[[cc{{{{{[[[[[[[[[[[[[[[[....[[[[[[[[[[[.............[cc[cc[[[oooooooooooo>",
+   "cccc[[[cc{{{{{[[[[[[[[[[[[[[[[....[[[[[[[[[[[..N..........[cc[cc[[[oooooooooooo>",
    "cccccc[cc{{{{[[[[[[[[[[[[[[[[[....[[[[[[[[[[.......cc.cc..[cc[cc[[ooooooooooooo>",
    "<ooocccc]{{{[[[[[[[...............[[[[[[[[[...=cc=.cc.cc[[[}[[[[[[[oooooooooooo>",
    "<ooooocc{{{{[[[[[[[...............[[[[[[[[....=cc..cc[[[[}}[[[[[ooooooooooooooo>",
@@ -95974,11 +97324,14 @@
   },
   "people": [
    "RARE CANDY",
+   "TM34 SLUDGE WAVE",
    "PROTEIN"
   ],
   "trainer_spots": [
+   "Black Belt Kiyo",
    "Swimmer Gilbert",
    "Swimmer Dana",
+   "Fisherman Ronald",
    "Swimmer Koji"
   ],
   "edge_to": {
@@ -96191,6 +97544,20 @@
    "20,27": {
     "m": "look",
     "d": "udlr"
+   },
+   "10,6": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     3,
+     3
+    ],
+    "s": 2
+   },
+   "9,15": {
+    "m": "face",
+    "d": "d",
+    "s": 4
    }
   },
   "parts": true,
@@ -96214,20 +97581,20 @@
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccooooooccccoocccccc[[ccccooooccccoooooooccccooccoocc[[oooocccc[[[[[ooooocccco",
-   "<occooooooccoooooooo[[[[[ooooooocc[ooooooooccooooooo[[[[[[[ooo[[[[[[[[[[[oooocco",
+   "<occooooooccoXoooooo[[[[[ooooooocc[ooooooooccooooooo[[[[[[[ooo[[[[[[[[[[[oooocco",
    "<[oooooooooooooo[[[[[[[[[[[[[[[[[[[[cc}}}[[[[[ooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[>",
-   "<[[[ooooccooccooocc[[[[[...[[[[[{{{[cc}}[[[ooooo[[[[[[[[[[[[[[[[[[............[>",
+   "<[[[ooooccooccooocc[[[[[N..[[[[[{{{[cc}}[[[ooooo[[[[[[[[[[[[[[[[[[............[>",
    "<[[[[occccooccooocc[.......[[[[[cc{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[............[>",
    "<[[[[[cco...........cccccc[[[[[[cc[}}}}}[[[[[[[[[[[{{{{{{[[[[[[[[[[[[.........[>",
    "<[[[........cccccccccccccc[[[[[[[}}}}[[[[[[[[[[[[[[[[[[{{{{{{{{[[[[[[[[[......[>",
    "<[[[ccc.....cccccccccccc..[[[[[}}}}[[[[[[[[[[[[[[[[...[[[[[[{{{{{{[[[[[[[[....[>",
    "<[[.ccccN.ccccccccccc...[[[[[}}}[[[[[[[[[[[[[[[[[[[......[[[[[[{{{{{{{[[[[[[[[[>",
-   "<[[cccccccccccc.......[[[[[}}}[[[[[[[[[[[[[{{{{[[[[[........[[[[[[{{{{{{{[[[[[[>",
+   "<[[cccccccccccc.......[[[[[}}}[[[[[[[[[[[[[{{{{[[[[[....X...[[[[[[{{{{{{{[[[[[[>",
    "<[.ccccccccc.......[[[[[[}}}[[[ccccccccccccc~{{{{[[[[N.........[[[[[[{{{{{{[[[[>",
    "<[.ccccccccc.[[[[[[[[[}}}}}[ccccccccccccccccccc~{{[[[[............[[[[[[{{{{{[[>",
-   "<[.cccc......[[[[[[}}}}}[[[cccccccccccccccccccccc~{[[[[..............[[[[[[[[[[>",
-   "<[.......[[[[[[[}}}}}[[[ccccccccc====X=====ccccccc{{[[[[.............[[[[[[[[[[>",
-   "<[[[....[[[[[[[[[[[[[[cccccccc=......==.....===ccc~[[[[[[[[[[[[[[[[[[[[{{{[[[[[>",
+   "<[.ccccX.....[[[[[[}}}}}[[[cccccccccccccccccccccc~{[[[[..............[[[[[[[[[[>",
+   "<[.......[[[[[[[}}}}}[[[ccccccccc====X=====ccccccc{{[[[[X............[[[[[[[[[[>",
+   "<[[[....[[[[[[[[[[[[[[cccccccc=......==N....===ccc~[[[[[[[[[[[[[[[[[[[[{{{[[[[[>",
    "<[[[[[[[[[[[[[[[[[[[[[cccc......oooo....ooo....cccc~[[[[[[[[[[[[[[[[[[[cc{{{[[[>",
    "<[[[[[[[[[[[[[[[[[[[[[ccoooooooooooooooooooooooooccc[[[[[[[[[[[[[[[[[[[cc[{{{[[>",
    "<[[[[[[[[[[[[[[[[[[[[[[oooooooooooooooooooooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[{{{{>",
@@ -96238,8 +97605,8 @@
    "<[[[[[[[[[[[[[[[[cc[cc[[[ccooccccooooocccccccccccccccccccc[[[[[[[ccccoocc[ccooo>",
    "<[[[[[[[[[[[[[[cccc}}}[[[ooooooooooocccccc..c..ccc..c...[[[[[[oooooooooooccoooo>",
    "<[[[[[[[[[[[[cccc}}}}[[[[[[[ooooocccccccc....c..cc.......[[[Xooooooooooccccoooo>",
-   "<[[[[[[[[[[cccc}}}}[[[[[[[[[[[oocccccc.....cc......ccc...[[ooooooooooooccoooooo>",
-   "<[[[[[[[[[[cc}}}}[[[[[[[[[[[[[[[ccccc..c...cc...N...cccc.[[[oooooooooooccoooooo>",
+   "<[[[[[[[[[[cccc}}}}[[[[[[[[[[[oocccccc.....cc......ccc...[[oooooooooXooccoooooo>",
+   "<[[[[[[[[[[cc}}}}[[[[[[[[[[[[[[[ccccc..c...cc...N...cccc.[[[ooooooooXooccoooooo>",
    "<[[[[[[[[[[[}}}[[[[[[[[[[[[[[[[[[[[[[....cc.........cccc.[[[[ooooooooooccoooooo>",
    "<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[..cc.c.........cc.[[[[[[oooooo{[[ccooooo>",
    "<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[..cc....[[[[[....[[[[[[[[[oocc{[[ccccooo>",
@@ -96269,14 +97636,22 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "Psychic",
    "STAR PIECE",
    "BIG PEARL",
+   "CALCIUM",
    "MAX REVIVE"
   ],
   "trainer_spots": [
+   "Backpacker Grayson",
+   "Swimmer ♀ Linda",
+   "Swimmer ♂ Franklin",
    "Swimmer Warren",
+   "Swimmer ♀ Sheryl",
    "Swimmer Mollie",
-   "Swimmer Beck"
+   "Swimmer Beck",
+   "Fisherman River",
+   "Swimmer ♀ Debra"
   ],
   "edge_to": {
    "0,3": [
@@ -96552,6 +97927,44 @@
    "48,28": {
     "m": "look",
     "d": "udlr"
+   },
+   "68,27": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     2
+    ],
+    "s": 3
+   },
+   "13,3": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "68,28": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     2
+    ],
+    "s": 3
+   },
+   "7,14": {
+    "m": "look",
+    "d": "dr",
+    "s": 2
+   },
+   "56,11": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "56,15": {
+    "m": "look",
+    "d": "ur",
+    "s": 3
    }
   },
   "parts": true,
@@ -96581,9 +97994,9 @@
      "occo~c~occcooooooccoooooo[[[..[[[[[[[[[[[ooooooooooooooooo[[[cccccccccc.[[}}}}}>",
      "cco~cccocccooooooooo[[[[[[[[...[[[[[[[[[[[ooooooooooooooo[[[[[[[.cccccc[[}}}}[[>",
      "ccoccccooooooooooo[[[[[[[[[[....[[[[[[[[[[[oooooooooooooooo[[[[[[[[[[[[[}}}[[[[>",
-     "<oocccooooooooooooooo[[..[[[.....[{{[[[[[[[[ooooooooooooooooo[[[[[[[[[[[[[[[[[[>",
+     "<oocccooooooooooooooo[[..[[[.....[{{[[[[[[[[ooooooooooooooXoo[[[[[[[[[[[[[[[[[[>",
      "<ooooooooooooooooooo[[[..[[[.....[[{{{[[[[[[[[oooooooooooooo[[[[[[[....[[[[[[[[>",
-     "<ooooooooooooooooo[[[[[...[[ccc..[[cc{{{[[[[[[[[[oooooooo[[[[[[[...cccc[[[[[[[[>",
+     "<ooooooooooooooooo[[[[[...[[ccc..[[cc{{{[[[[[[[[[Xooooooo[[[[[[[...cccc[[[[[[[[>",
      "<ooooooooooooooo[[[[[[[...[[cccc[[[cc[cc{[[[[[[[[[[ooo[[[[[[[[[.ccccccc[[[[[[[[>",
      "<ooooooooooooo[[[[[[[[....[[cccc[[[[[[cc{{[[[[[[[[[[[[[[[[[[[..cccccc[[[[[[[[[[>",
      "<oooooooooooooooo[[[[.....[[[cc.........[[[[[[[[[[[[[[[[[[[[.ccccc...[[[[[[[[[[>",
@@ -96597,7 +98010,7 @@
      ".oooocccccoooo[[[[[[[[[[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[}}}}[[[[[[[[[[>",
      ".ooooooooccoooo[[[[[[[[[[[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[[[[}}}}[[[[[[[[[[[[>",
      ".oooooooocco[[[[[[[[[[[[.....[[[[[cc{{{[[...[[[cccc[[[[[[[cccc[[[[[[[[[[[[[[[[[>",
-     ".oooooooo~c~oo[[[[[[[[[.......[[[[cccc{[[...[ccccccoooocc[cccc[[[[[[[[[[[[[[[[[>",
+     ".oooooooo~c~oo[[[[[[[[[.X.....[[[[cccc{[[X..[ccccccoooocc[cccc[[[[[[[[[[[[[[[[[>",
      ".oooooooocccooo[[[[[[[[........[[[[[ccccoooooccoooooocccc[[[[[[[[[[[[[[[[[[[[[[>",
      ".oooooooocccoooo[[[[[[.........[[[[ccXccccoooccoooooocc[cc[[cc[[[[[[[[[[[[[[[[[>",
      ".ooooooooocc~c~ooo[[[[...cc....[[[[ccoooccoooccoccoooo[[cc[[cc[[[[[[[[[[[[[[[..>",
@@ -96605,7 +98018,7 @@
      ".oooooooooooccccooo[[[.......[[[[[[ccooooccoccoooccoocccc}}[[[[[[cc[[[[[[[[....>",
      ".oooooooooooocccoo[[[[.......[[[[[[ccccooccooooccccoocccc}[oXoo{[cc[[[[[[[[....>",
      ".ooooooooooooccoo[[[[[[.....[[[[[[[[[ccooccccccccooocc[[[[oovvoo{[[[[[[[[[[....>",
-     ".ooooooooooooccoooo[[[[[...[[[[[[[[[[[ccoooccccooocccc[[[[ovvvvo[[[[[[[[[[[....>",
+     ".ooooooooooooccoooo[[[[[...[[[[[[[[[[[ccoooccccooocccc[[[[ovvvvo[[[[[[[[[[[...N>",
      ".oooooooooooooccooooo[[[[[[[[[cc[[[[[[cc[[oooooocccc[[[[[[ovvvvo[[[[[[[[[[[....>",
      ".oooooooooooooccccccooo[[[[[cccc[[[[[[[[[[[[ccoocc[[[[[[[[oovvoo}[[[[[[[[[[....>",
      ".oooooooooooooooccccccccccoocco[[[[[[[[[[[[[cc[[[[[[[[[cc{[oooo}[cc[[[[[[[[....>",
@@ -96634,10 +98047,15 @@
     },
     "people": [
      "CARBOS",
-     "STAR PIECE"
+     "STAR PIECE",
+     "TM80 ROCK SLIDE"
     ],
     "trainer_spots": [
+     "Black Belt Hitoshi",
+     "Bird Keeper Alex",
      "Sailor Kelvin",
+     "Ace Trainer Elaine",
+     "Dragon Tamer Aaron",
      "Swimmer Jack",
      "Swimmer Laurel"
     ],
@@ -96819,6 +98237,34 @@
      "22,27": {
       "m": "look",
       "d": "udlr"
+     },
+     "49,9": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       3,
+       5
+      ],
+      "s": 2
+     },
+     "58,7": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "41,23": {
+      "m": "face",
+      "d": "r",
+      "s": 2
+     },
+     "24,23": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       3
+      ],
+      "s": 6
      }
     },
     "dive": 1,
@@ -96923,7 +98369,7 @@
    "ccccccccccoooooooooooooooooooocccccccccc",
    "ccccccccccoo==oooooooooooooooocccccccccc",
    "ccccccccoooo==oooooooooooooooocccccccccc",
-   "cccccccc==ooo=oooooooooooooooocccccccccc",
+   "ccccccccN=ooo=oooooooooooooooocccccccccc",
    "cccccccc==oooooooooooooooooooooocccccccc",
    "ccccccccc=oooooooooooooooooooooccccccccc",
    "cccccccccooooooooooooooooooooccccccccccc",
@@ -97112,7 +98558,14 @@
      "f": "em_top/0_20_closed.png"
     }
    }
-  ]
+  ],
+  "people": [
+   "IRON"
+  ],
+  "hidden": {
+   "5,56": "BIG_PEARL",
+   "15,68": "HEART_SCALE"
+  }
  },
  "PACIFIDLOG_TOWN": {
   "art": [
@@ -97133,18 +98586,18 @@
    "<...No.cAccNoo.....>",
    "<oo.oo.cDcc.oooo.oo>",
    "<oo.oo.!.N..oooo.oo>",
-   "<oo..............oo>",
-   "<ooooooo.oooooooooo>",
+   "<oo............N.oo>",
+   "<oooooooNoooooooooo>",
    "<ooooooo.oooooooooo>",
    "<ooooooo.oooooo.cGc.",
    "<.cCc.oo.oooooo.cDc.",
    "<.cDc.oo.oooooo....>",
-   "<.....oo.oNcEc.oo.o>",
+   "<.....oo.oNcEc.ooNo>",
    "<oo.oooo.o.cDc.oo.o>",
-   "<oo.oooo.o.....oo.o>",
+   "<oo.oooo.oN....oo.o>",
    "<oo......ooo.oooo.o>",
    "<ooooooo..........o>",
-   "<ooooooo.oooooooooo>",
+   "<oooooooNoooooooooo>",
    "ccooooooooooooooooo>",
    "ccooooooooooooooccoo",
    "<o~cccccccccccc~ccoo",
@@ -97200,6 +98653,8 @@
      ]
     }
    },
+   "Man",
+   "TM21 FRUSTRATION",
    {
     "text": "Tide warner",
     "action": "EVENT",
@@ -97208,7 +98663,10 @@
       "The sea between here and Slateport runs fast. Surf it and you could be swept far away!"
      ]
     }
-   }
+   },
+   "BIG PEARL",
+   "TM27 RETURN",
+   "Man "
   ],
   "signs": [
    [
@@ -98070,14 +99528,14 @@
    "ccccccccccc.....c..c...cooo...cDc..ooooccc........cccccccccc",
    "ccccccccccc....cc......cooo........ooooccc...........ccccccc",
    "ccccccccKc....cc......ccooo......!.oooocccc..ccc.Ncccccccccc",
-   "ccccccccDc....ccccc..ccoooo........oooocccc..ccc..cMcccccccc",
+   "ccccccccDc....ccccc..ccoooo.....N..oooocccc..ccc..cMcccccccc",
    "ccccccc.......ccccc....oooo........oooocccc..ccc..cDcccccccc",
    "cccccccc....ccccccc....ooooooooooooooooo.!...ccc.....ccccccc",
    "ccccccccccccccccc.oooooooooooooooooooooo.....ccccccccccccccc",
    "cccccccccccccc....oooooooooooooooooooooo.....ccccccccccccccc",
    "ccccccc.cccc.....Noooooooooooooooooooooooo...ccccccccccccccc",
    "ccccccc.cccc......oooooooooooooooooooooooo........cccccccccc",
-   "ccccccc...cc..N...oooooooooooooooooooooooo.........ccccccccc",
+   "ccccccc...cc..N...oooooooooooooooooooooooo.N.......ccccccccc",
    "ccccccc..Ncc......ooooooooooooooooooooooooooo......ccccccccc",
    "ccccccc..........Nooooooooooooooooooooooooooo....ccccccccccc",
    "ccccccc.......cc..ooooooooooooooooooooooooooo....ccccccccccc",
@@ -98163,6 +99621,7 @@
      ]
     }
    },
+   "Collector",
    {
     "text": "Battle fan",
     "action": "EVENT",
@@ -98181,6 +99640,7 @@
      ]
     }
    },
+   "Black Belt",
    {
     "text": "Seasons girl",
     "action": "EVENT",
@@ -100115,6 +101575,12 @@
     "theme": "room",
     "title": "Sootopolis Gym B1F"
    }
+  },
+  "hidden": {
+   "34,32": "PROTEIN",
+   "43,33": "SUPER_POTION",
+   "26,21": "X_ATTACK",
+   "13,44": "REVIVE"
   }
  },
  "EVER_GRANDE_CITY": {
@@ -100133,7 +101599,7 @@
    "ccccccccccccc...........cccccccccccccccc",
    "ccccccccccccc...........cccccccccccccccc",
    "ccccccccccccc..c.....c..cccccccccccccccc",
-   "cccccccccccccccc.....ccccccccccccccccccc",
+   "cccccccccccccccc..N..ccccccccccccccccccc",
    "cccccccccccccccc.....c.!......cccccccccc",
    "ccccccccccccccc...............cccccccccc",
    "ccccccccccccccc...............cccccccccc",
@@ -100220,6 +101686,7 @@
    "_buildings_in_picture": true
   },
   "people": [
+   "TM29 PSYCHIC",
    "A Glinting Stone: Mewtwonite Y"
   ],
   "signs": [
@@ -101246,6 +102713,9 @@
     "theme": "room",
     "title": "Champion's room"
    }
+  },
+  "hidden": {
+   "27,17": "REVIVE"
   }
  },
  "HOENN_VICTORY_ROAD": {
@@ -101256,7 +102726,7 @@
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc..........cccccc",
-     "cccccccccccccccccccccccccccccc...........ccccc",
+     "cccccccccccccccccccccccccccccc.....X.....ccccc",
      "cccccccccccccccccccccccccccccc.........n.ccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
@@ -101265,33 +102735,33 @@
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
-     "cccc.......cc.....ccccccccccc....ccccccccccccc",
+     "cccc.......cc.....ccccccccccc..N.ccccccccccccc",
      "cc.......1.cc.....ccccccccccc....ccccccccccccc",
      "cc....X....cc.....ccccccccccc......ccccccccccc",
      "cc....cc...cc.....cccccc...cc.....cccccccccccc",
-     "cc...cccccccccc.........................cccccc",
+     "cc...cccccccccc..............X..X.......cccccc",
      "cc...cccccccccc.........................cccccc",
      "cc...ccccccccccc.cccccccccccc.....ccccc.cccccc",
      "cc..cccccccccccc.cccccccccccc.....ccccc.cccccc",
      "cc..ccccc...cccc.cccccccc.........ccccc.cccccc",
      "cc..cccc................c........Xccccc..ccccc",
      "cc..ccc.................ccccccc....cccc..ccccc",
-     "cc..ccc...ccccccc.............c.......c..ccccc",
+     "cc..ccc...ccccccc.N...........c.......c..ccccc",
      "cc.............cc.............c.......c...cccc",
-     "cc.............cc..ccccccc....cccccc..c...cccc",
+     "cc.............cc..ccccccc....cccccc..c.N.cccc",
      "ccccccc...ccc.ccc..cc.............cc..c___cccc",
-     "ccccccc...ccc.ccc(ccc.............cc..c...cccc",
+     "ccccccc...ccc.ccc(ccc......X......cc..c...cccc",
      "ccccccc..........(ccc.cccc....ccc.cc..c...cccc",
-     "ccccc............(ccc.ccccc...ccc.cc..c...cccc",
+     "ccccc....X.......(ccc.ccccc...ccc.cc..c...cccc",
      "ccccc............(cc...cccc...c.......c...cccc",
      "ccccc..ccccccc...(cc.1.cccc...c.......c...cccc",
      "ccccc..cc...cc...(ccccccccc...ccccccccc...cccc",
-     "ccccc..cc..............cccc..............ccccc",
+     "ccccc..cc.......N......ccccX.............ccccc",
      "ccccc..cc..............ccc...............cc.cc",
-     "ccccc..cc.cccc...(ccc.ccc..........cccccccc.cc",
-     "ccccc..cc.cccc...(ccc.ccc.........ccccc.....cc",
+     "ccccc..cc.cccc.X.(ccc.ccc..........cccccccc.cc",
+     "ccccc..cc.cccc...(ccc.ccc..N......ccccc.....cc",
      "ccccc.....c......c_c........ccccccccc.....1.cc",
-     "ccccc.....cc.......(........cc..............cc",
+     "ccccc.....cc.......(........cc.......N......cc",
      "ccccccccc..c...n...(..cccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc",
@@ -101314,9 +102784,16 @@
      "_buildings_in_picture": true
     },
     "trainer_spots": [
+     "Ace Duo Jude & Rory",
      "Wally",
      "Cooltrainer Hope",
-     "Cooltrainer Albert"
+     "Ace Trainer Edgar",
+     "Street Thug Regan",
+     "Cooltrainer Albert",
+     "Brains & Brawn Aden & Finn",
+     "Expert Theodore",
+     "Expert Bryn",
+     "Dragon Tamer Egon"
     ],
     "links": {
      "21,32": [
@@ -101349,7 +102826,38 @@
        45
       ]
      }
-    ]
+    ],
+    "moves": {
+     "27,34": {
+      "m": "look",
+      "d": "dr",
+      "s": 3
+     },
+     "29,17": {
+      "m": "face",
+      "d": "r",
+      "s": 2
+     },
+     "32,17": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     }
+    },
+    "people": [
+     "MAX ELIXIR",
+     "TM81 X-SCISSOR",
+     "FULL HEAL",
+     "TM35 FLAMETHROWER",
+     "FULL RESTORE",
+     "PP UP"
+    ],
+    "hidden": {
+     "30,39": "MAX_REPEL",
+     "9,22": "ELIXIR",
+     "33,18": "ULTRA_BALL",
+     "3,15": "IRON"
+    }
    },
    {
     "art": [
@@ -101569,9 +103077,9 @@
      "cccc============cccc",
      "cccc============cccc",
      "ccc===============cc",
-     "ccc=====.....=====cc",
+     "ccc=====...X.=====cc",
      "ccc===.........===cc",
-     "ccc==...........==cc",
+     "ccc==..X........==cc",
      "ccc=...ooooooo...=cc",
      "ccc...ooooooooo..=cc",
      "ccc..ooooooooooo..cc",
@@ -101639,7 +103147,15 @@
        20
       ]
      }
-    ]
+    ],
+    "trainer_spots": [
+     "Team Magma Grunt",
+     "Team Aqua Grunt"
+    ],
+    "hidden": {
+     "12,10": "HEART_SCALE",
+     "6,9": "ESCAPE_ROPE"
+    }
    },
    {
     "art": [
@@ -102745,13 +104261,13 @@
      "ccc....cc.....cccc...cccc.cccc..ccc",
      "ccc....cc.....c......ccccccccc..ccc",
      "ccccccccc.....c......ccccccccc..ccc",
-     "ccccccccc.....c............ccc..ccc",
+     "ccccccccc.N...c............ccc..ccc",
      "ccccc......c.cc............ccc..ccc",
      "ccccc......c....cccccccccccccc..ccc",
      "cccccccccccc....cc...........c..ccc",
      "ccc......ccc....ccN..........c..ccc",
      "ccc......ccc....cc..........c...ccc",
-     "ccc......ccc....cc.cccc.....c...ccc",
+     "ccc......ccc....cc.cccc..N..c...ccc",
      "ccc...cc.ccc....cc.cccc.....ccccccc",
      "ccc...cccccc.........cc.....ccccccc",
      "ccc...cccccc.........cc...ccccccccc",
@@ -102787,6 +104303,7 @@
     },
     "people": [
      "RARE CANDY",
+     "FOCUS BAND",
      {
       "text": "Shell Bell maker",
       "action": "EVENT",
@@ -102807,7 +104324,8 @@
         "Old man: Salt is left in the cave at low tide. Shells wash in at high tide. They're back every day!"
        ]
       }
-     }
+     },
+     "BIG PEARL"
     ],
     "links": {
      "19,5": [
@@ -102836,7 +104354,11 @@
       "d": "l"
      }
     },
-    "parts": true
+    "parts": true,
+    "hidden": {
+     "5,27": "STAR_PIECE",
+     "15,26": "PEARL"
+    }
    },
    {
     "art": [
@@ -103835,29 +105357,71 @@
  },
  "HOENN_NEW_MAUVILLE": {
   "art": [
-   "gggggggggggggggggggggg",
-   "gmmmeeeeeeNeeeeeeemmmg",
-   "gmmmeeeeeeeeeeeeeemmmg",
-   "geeeeemmeeeeeemmeeeeeg",
-   "geeXeemmeeNeeemmeeXeeg",
-   "geeeeeeeeeeeeeeeeeeeeg",
-   "gmmeeeeeeeeeeeeeeeemmg",
-   "gmmeeeeemmmmmmeeeeemmg",
-   "geeeeeeeeeeeeeeeeeeeeg",
-   "geeeeeeeeeeeeeeeeeeeeg",
-   "ggggggggggvvgggggggggg"
+   "ccmcccccccccccccmmmcccccccccccccmcc",
+   "c......Ncccccccc...cccccccc.......c",
+   "c.N...............................c",
+   "c................N................c",
+   "c.................................c",
+   "c.................................c",
+   "c...ccccccccccccccccccccccccccc...c",
+   "c...ccccccccccccccccccccccccccc...c",
+   "c...ccccccccccccccccccccccccccc...c",
+   "c...ccccccccccccccccccccccccccc...c",
+   "cc.cccccccccccccccccccccccccccccccc",
+   "c.........ccccccccccccccc.cccc....c",
+   "c...N.....ccccccccccccccc.cccc....c",
+   "c.............cccccccN............c",
+   "c.............ccccccccccc.cccc....c",
+   "c.............ccccccccccc.cccc....c",
+   "c.............ccccccc.............c",
+   "c.............ccccccccccc.cccc....c",
+   "c.............ccccccccccc.cccc.N..c",
+   "c...ccccccc....ccccc..............c",
+   "c.................................c",
+   "c..................N..............c",
+   "c.........N.......................c",
+   "c.................................c",
+   "c.................................c",
+   "c.................................c",
+   "cccccccccccccccc...cccccccccccccccc",
+   "ccccccccccccccc.....ccccccccccccccc",
+   "ccccccccccccccc.....ccccccccccccccc",
+   "ccccccccccccccc.....ccccccccccccccc",
+   "ccccccccccccccc.....ccccccccccccccc",
+   "ccccccccccccccc.....ccccccccccccccc",
+   "ccccccccccccccccvvvcccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "v": "MAUVILLE_CITY"
   },
-  "trainer_spots": [
-   "Team Magma Grunt",
-   "Team Aqua Grunt"
-  ],
+  "buildings": {},
   "people": [
    "Security computer",
-   "AMPHAROSITE"
-  ]
+   "METAL COAT",
+   "PARALYZE HEAL",
+   "FULL HEAL",
+   "AMPHAROSITE",
+   "THUNDER STONE",
+   "ULTRA BALL",
+   "ESCAPE ROPE"
+  ],
+  "trainer_spots": [],
+  "theme": "room",
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/oras_new_mauville.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "hidden": {
+   "30,23": "MAX_REPEL"
+  }
  },
  "HOENN_WEATHER_INSTITUTE": {
   "floors": [
@@ -103865,16 +105429,16 @@
     "art": [
      "cccccccccccccccccccc",
      "ccccccccccccccccc1cc",
-     "cc.c...ccccc.......c",
+     "cc.c...ccccc.....N.c",
      "cc.c...c.......X....",
-     "...c.N.c...cc...cc..",
+     "...c.N.c.X.cc...cc..",
      "...c...c...cc...cc..",
-     "...........cc...cc..",
-     ".c.................c",
+     "......X..N.cc...cc..",
+     ".c...N.............c",
      "cccc...ccccccccccccc",
      "cccc...ccccccccccccc",
      "....................",
-     "..N...........N.....",
+     "..N......N....N...N.",
      "........cnnc........"
     ],
     "exits": {
@@ -103893,6 +105457,7 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "Scientist",
      {
       "text": "Grateful scientist",
       "action": "EVENT",
@@ -103915,6 +105480,8 @@
        ]
       }
      },
+     "Receptionist    ",
+     "Receptionist ",
      {
       "text": "Receptionist",
       "action": "EVENT",
@@ -103943,6 +105510,7 @@
        }
       }
      },
+     "Receptionist  ",
      {
       "text": "Sleepy researcher",
       "action": "EVENT",
@@ -103952,10 +105520,13 @@
        ],
        "heal": true
       }
-     }
+     },
+     "Receptionist   "
     ],
     "trainer_spots": [
-     "Team Grunt (lobby)"
+     "Team Grunt (lobby)",
+     "Team Aqua Grunt",
+     "Team Magma Grunt"
     ],
     "links": {
      "17,1": [
@@ -104080,29 +105651,29 @@
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccc1ccccc",
      "cccccccc.....cc..........ccc",
-     "cccccc...................ccc",
-     "ccccc...............X.....cc",
-     "ccccc...cccccccccccc......cc",
-     "ccccc...cccccccccccc......cc",
-     "cccc....cccccccccccc......cc",
-     "ccc.....cccccccccccc.....ccc",
-     "cc.......................ccc",
-     "cc.......................ccc",
+     "cccccc....N......X.......ccc",
+     "ccccc..N............X.N.N.cc",
+     "ccccc...cccccccccccc.N....cc",
+     "ccccc.N.cccccccccccc...N..cc",
+     "cccc....cccccccccccc.N....cc",
+     "ccc...N.cccccccccccc...N.ccc",
+     "cc..................N....ccc",
+     "cc...........N.........X.ccc",
      "cc...cccccccc.Xcccccccc..ccc",
-     "cc...cccccccc..cccccccc..ccc",
+     "cc.X.cccccccc..cccccccc..ccc",
      "cc...ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
+     "cc.N.ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc.N.cc",
      "cccc.ccoooooooooooooocc...cc",
-     "cccc......~ooooo~.........cc",
+     "cccc...X..~ooooo~......N..cc",
      "cc........coooooc.........cc",
      "cc...ccccccoooooccccccc.cccc",
      "cc...ccoooooooooooooocc.cccc",
-     "cc...ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
+     "cc.N.ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc.N.cc",
      "cccc.ccoooooooooooooocc...cc",
      "cccc.ccoooooooooooooocc.cccc",
-     "cc.........~ooo~........cccc",
+     "cc.....N...~ooo~........cccc",
      "cc.........coooc..........cc",
      "cccccccccccconnccccccccccccc",
      "cccccccccccccccccccccccccccc",
@@ -104124,8 +105695,12 @@
      "_buildings_in_picture": true
     },
     "trainer_spots": [
+     "Team Magma Grunt",
      "Team Grunt (1F)",
-     "Team Grunt (entrance)"
+     "Team Aqua Grunts",
+     "Team Grunt (entrance)",
+     "Team Aqua Grunt",
+     "Team Magma Grunts"
     ],
     "links": {
      "22,1": [
@@ -104148,6 +105723,26 @@
        30
       ]
      }
+    ],
+    "people": [
+     "ESCAPE ROPE",
+     "TM97 DARK PULSE ",
+     "MAX ELIXIR",
+     "NEST BALL",
+     "TM97 DARK PULSE",
+     "MAX REVIVE",
+     "MASTER BALL ",
+     "PP MAX",
+     "NUGGET ",
+     "NEST BALL ",
+     "ESCAPE ROPE ",
+     "MAX ELIXIR ",
+     "PP MAX ",
+     "NUGGET  ",
+     "NUGGET   ",
+     "FULL RESTORE",
+     "FULL RESTORE ",
+     "MAX REVIVE "
     ]
    },
    {
@@ -104648,7 +106243,7 @@
    "cc\"\"\"\"\"........cccccccccoooooooooooocccccccc\"\"\"\"\"\"\"\"\"....========0===cccccccccccccccccc.0.....cc.................ccccccc",
    "cc\"\"\"\".........cccc.ccccoooooooooooocccccccc\"\"\"\"\"\"\"\"\"....==========c=cccccccccccccccccc....0..c..................ccccccc",
    "cc\"\".............c..ccccoooooooooooocccccccc\"\"\"\"\"\".......============ccccccccccccccccc........c..................ccccccc",
-   "cc...............c....ccoooooooooooocccccccc\"\"\"\"\"\"........c======0====cccccccccccccccc..0.....c....ccccccc..c...\"ccccccc",
+   "cc...............c....ccoooooooooooocccccccc\"\"\"\"\"\"........c======0====cccccccccccccccc..0...N.c....ccccccc..c...\"ccccccc",
    "cccccc.....cc..ccc...ccc............\"\"cccccc\"\"\"............=========0=cccccccccccccccc.......cc....ccccccc..cc.\"\"ccccccc",
    "cccccc.....c..................\"\"\"!\"\"\"\"cccccc................==========ccccccccccccccccc____c.c.....ccccccc...ccc\"ccccccc",
    "cccccccc...c\"\"\"\".............\"\"\"\".\"\"\"\"cccccc.........c........c========cccccccccccccc.)....(.c..cccccccc.......c\"ccccccc",
@@ -104683,25 +106278,25 @@
    "ccccccc...ccccccccc.........cccccccccccccccc....ccccc....c..'''..c..........cccccccccc.......cccccc.........oooocccccccc",
    "ccccccc...cccccccc..........cAcc..c.............cc......Nc..'cc..c.c_____c...ccccccccc.....................ooooocccccccc",
    "ccccccc...cccccccc.c........cDcc!...............c........''''....c.).....(cccccccccccc.N.................ooooocccccccccc",
-   "ccccccc....cccccccc...................cccc...\"\"\"c.......ccccc....ccc_____cc\"\"\"cccccc.\"\"................ooooooocccccccccc",
+   "ccccccc....cccccccc...................cccc...\"\"\"c.......ccccc....ccc_____cc\"\"\"cccccc.\"\"...........N....ooooooocccccccccc",
    "ccccccc....cccccccc...N...............cccc..\"\"\"\"ccccc..ccc.............\"\"\"\"\"\"\"cccccc\"\"\"\".............ooooooo..cccccccccc",
    "cccc\"\"\"....cccccccccccccccc.......cccccccccccc\"\"\"\".......c....cccccc...\"\"\"\"\"\"\"cccccccc\"\".............ooooo..\"\"cccccccccc",
    "cccc\"\"\"....cccccccccccccccc.......cccccccccccc\"\"\"\"\"...........cccccc....\"\"\"\"\"\"cccccccc\"\".............ooooo.\"\"!\"\"cccccccc",
    "cccc\"\"\"...c................c....cccccccccccccc\"\"\"\"\"\".........ccccccccc...\"\"\"cccccccccc\"\"\"\"...........ooo...\"\".\"\"cccccccc",
    "cccc\"\"\"..cc................cc...cccccccccccccc\"\"\"\"\"\".........cccccccc......\"cccccccccc\"\"\"\".....\"\"....ooo...\"\"\"\"\"cccccccc",
    "cc\"\"\"\"...cc..ooooooooooo...cc...cccccccccccccc\"\"\"\"\"\".......................ccccccccccc\"\"\"\"....\"\"\"....ooo...\"\"\"\"\"cccccccc",
-   "cc\"\"\"\"...cc..ooooooooooo...cc...cccccccccccccc\"\"\".cccc......................cccccccccc\"\"\".....\"\"\"....ooo...\"\"\"\"Ncccccccc",
+   "cc\"\"\"\"...cc..ooooooooooo...cc.N.cccccccccccccc\"\"\".cccc......................cccccccccc\"\"\".....\"\"\"....ooo...\"\"\"\"Ncccccccc",
    "cc\"\"\"....cc..ooooo!ooooo...cc.....cccccccccccc....cccc......................................N.cccc..c$$$c.\"ccccccccccccc",
    "cc\"\".....cc..ooooooooooo...cc....cccccccccccccc...cccc........................................cccc..c$$$cccccccccccccccc",
    "cc.......cc..ooooooooooo...cc.....ccccccccccc.....cccccc......cccccccccccccccccccccc........ccccc..\"c$$$ccccc..ccccccccc",
-   "cc.......cc....ooooooooo...cc.....cccccccccc......cccccc......cccccccccccccccccccccc........ccccc.\"\"coooo......ccccccccc",
+   "cc.......cc....oooooooooN..cc.....cccccccccc......cccccc......cccccccccccccccccccccc........ccccc.\"\"coooo......ccccccccc",
    "cc.......cc...............ccc...................cccccccc....cccccccccccccccccccccccc\".......ccccc\"\"\"coooo........ccccccc",
    "cccc....\"cc...............ccc...................cccccccc....cccccccccccccccccccccccc\"\".....\"ccccc\"\"\"coooo!.......ccccccc",
    "cccc...\"\"cccccccccc..ccccccc.........ccccccccccccccccccc.....cccccccccccccccccccccc\"\"\"\"....\"ccccc\"\"\"coooo......ccccccccc",
    "cccc...\"\"cccccccccc..ccccccc..........cccccccccccccccccc.....cccccccccccccccccccccc\"\"\"\"...\"\"ccccc\"\".cooooooooooccccccccc",
    "cccc...\"\"\"\"\"__c.................cccccccccccccccccccccccc...........cccccccccccccccc\"\"\"\"...\"\"ccccc\"..cooooooooooccccccccc",
    "cccc....\"\"\"\"\"\"(.................cccccccccccccccccccccccc...........cccccccccccccccc\"\"\"\"...\"\"ccc..\".ccooooooooooccccccccc",
-   "cccc......\"\"\"\"(...........cccccccccccccccccccccccccccc.................cccccccccccccccc.N.\"\"ccc.\"..coooooooooooo.ccccccc",
+   "cccc......\"\"\"\"(.....N.....cccccccccccccccccccccccccccc.................cccccccccccccccc.N.\"\"ccc.\"..coooooooooooo.ccccccc",
    "cc........\"\"\"\"(...........cccccccccccccccccccccccc\"\"\".........\"\"\"......cccccccccccccccc..\"\"\"ccc\"..ccoooooooooooooccccccc",
    "cc.........\"\"\"c_____cccccccccccccccccccccccccc\"\"\"\"\"\"\".......\"\"\"\"\"\"N.....ccccccccccccccccccccccc...c..ooooooooooooccccccc",
    "cc..................cccccccccccccccccccccccccc\"\"\"\"\"\"........\"\"\"\"\"\"\"......cccccccccccccccccccccc..cc...oooooooooooccccccc",
@@ -104713,7 +106308,7 @@
    "oooooooocccccccc..............\"\"\"\"..ccccccc.......cccc...................ccccccccccccccccccccccccc\"\"\"\"........\"\"\"ccccccc",
    "oooooooocccccccccccc...........................ccccccccc.................ccccccccccccccccccccccccc\".\"\"\"...\".\"\"\".\"ccccccc",
    "N.......cccccccccccc............................cccccccc.................ccccccccccccccccccccccccc\"\".\"....\"\"\"\"\"\"\"ccccccc",
-   "cccccccccccccccccccccccccc......cccccccccccccccccccccccccccc.......ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccc......cccccccccccccccccccccccccccc.....N.ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccc......cccccccccccccccccccccccccccc........cccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
@@ -104754,6 +106349,7 @@
      ]
     }
    },
+   "TM93 WILD CHARGE",
    "NUGGET",
    {
     "text": "Last-ball girl",
@@ -104810,6 +106406,7 @@
      ]
     }
    },
+   "Street Thug",
    {
     "text": "Pokéblock thrower",
     "action": "EVENT",
@@ -104819,6 +106416,7 @@
      ]
     }
    },
+   "TM53 ENERGY BALL",
    "BIG PEARL",
    {
     "text": "Proud worker",
@@ -104832,6 +106430,8 @@
      "beat_hoenn_champion"
     ]
    },
+   "PROTEIN",
+   "RARE CANDY",
    {
     "text": "Amazed kid",
     "action": "EVENT",
@@ -104877,7 +106477,8 @@
      ]
     }
    },
-   "MAX REVIVE"
+   "MAX REVIVE",
+   "ULTRA BALL"
   ],
   "signs": [
    [
@@ -105175,6 +106776,9 @@
     "theme": "room",
     "title": "Rest house"
    }
+  },
+  "hidden": {
+   "21,73": "REVIVE"
   }
  },
  "HOENN_SPACE_CENTER": {
@@ -108042,7 +109646,7 @@
      "ccccccccccccccc",
      "ccccc..N..ccccc",
      "cccc.......cccc",
-     "cccc...N...cccc",
+     "cccc.N.N...cccc",
      "cccc.......cccc",
      "cccc......Ncccc",
      "ccccooooooocccc",
@@ -108075,6 +109679,7 @@
     },
     "people": [
      "SEEK HEATRAN",
+     "FULL HEAL",
      "TM11 SUNNY DAY",
      "CHARIZARDITE Y"
     ],
@@ -108098,7 +109703,12 @@
        20
       ]
      }
-    ]
+    ],
+    "hidden": {
+     "8,4": "ESCAPE_ROPE",
+     "6,6": "SUPER_POTION",
+     "9,5": "NUGGET"
+    }
    }
   ],
   "floor_names": [
@@ -108779,7 +110389,7 @@
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "ccccc..........ccc",
-     "ccccc..........ccc",
+     "ccccc..N.N.N...ccc",
      "cccc..........1.cc",
      "cccc......cccccccc",
      "cccccc.cc.cccccccc",
@@ -108790,7 +110400,7 @@
      "cccccc.ccccccccccc",
      "ccccc...cccccccccc",
      "ccccc...cccccccccc",
-     "ccccc...cccccccccc",
+     "ccccc.N.cccccccccc",
      "ccccc...cccccccccc",
      "ccccc.n.cccccccccc",
      "cccccccccccccccccc"
@@ -108831,6 +110441,12 @@
        18
       ]
      }
+    ],
+    "people": [
+     "DRAGON SCALE",
+     "FULL RESTORE",
+     "TM64 EXPLOSION",
+     "ULTRA BALL"
     ]
    },
    {
@@ -109351,14 +110967,14 @@
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "c......N.N......1c",
-     "c...1..1..1..1....",
-     "c..cccccccccccc...",
-     "c..cccccccccccc...",
+     "c.X.1..1..1..1....",
      "c..cccccccccccc...",
      "c..cccccccccccc.N.",
      "c..cccccccccccc...",
-     "c..c1cc1cc1cc1c...",
-     "c.................",
+     "c..cccccccccccc.N.",
+     "c..cccccccccccc...",
+     "c..c1cc1cc1cc1c.N.",
+     "c...X.............",
      "cN................",
      "cccccccccccccccccc"
     ],
@@ -109395,7 +111011,9 @@
        ]
       }
      },
+     "TM63 EMBARGO",
      "Frontier sailor",
+     "SHARP BEAK",
      "Sailor"
     ],
     "links": {
@@ -109481,6 +111099,10 @@
        13
       ]
      }
+    ],
+    "trainer_spots": [
+     "Sailor Phillip",
+     "Sailor Leonard"
     ]
    },
    {

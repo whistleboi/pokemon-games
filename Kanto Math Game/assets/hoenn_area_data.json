@@ -2925,7 +2925,7 @@
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_NEW_MAUVILLE_PERCENTAGES",
       "min_rounds": 3,
-      "trainer_pool": [{"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [100, 100, 101], "rewards": {"balls": 3}}, {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [81, 81, 82], "rewards": {"balls": 3}}],
+      "trainer_pool": [],
       "route_menu": [{"text": "Security computer", "action": "EVENT", "condition": "not:wattson_new_mauville_asked", "event": {"lines": ["The computer's screen glows: EYE SCAN NOT RECOGNISED. ACCESS DENIED."]}}, {"text": "Security computer", "action": "EVENT", "condition": ["wattson_new_mauville_asked", "not:new_mauville_checked"], "event": {"lines": ["The computer scans your eyes... ACCESS GRANTED.", "You pressed the button. SECURITY CHECK... ALL SYSTEMS NORMAL.", "Time to tell Wattson in Mauville Hills!"], "flag": "new_mauville_checked"}}, {"text": "Security computer", "action": "EVENT", "condition": "new_mauville_checked", "event": {"lines": ["SECURITY CHECK: ALL SYSTEMS NORMAL."]}}, {"text": "AMPHAROSITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_ampharosite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AMPHAROSITE!"], "gift_item": {"AMPHAROSITE": 1}, "flag": "got_ampharosite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
