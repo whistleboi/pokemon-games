@@ -88,11 +88,11 @@ ROOF_PRESETS = [(232, 92, 64), (72, 122, 214), (96, 170, 108), (80, 152, 166), (
 
 # the park builder's groups, tab by tab (a piece's index.json may name its own "group"; else it's guessed from its name)
 GROUPS = {"Buildings": ["Centers & Marts", "Houses", "Shops & towers", "Landmarks"],
-          "Scenery": ["Trees & plants", "Rocks", "Statues", "Signs & lamps", "Furniture", "Vehicles", "Fences & walls", "Props"],
+          "Scenery": ["Stairs", "Trees & plants", "Rocks", "Statues", "Signs & lamps", "Furniture", "Vehicles", "Fences & walls", "Props"],
           "Ground": ["Ground", "Water", "Cliffs & ledges", "Bridges"], "Ways out": ["Ways out", "People"], "Height": []}
 SOURCES = {"alola": "KingTapir", "biome": "Kyle-Dove", "lotus": "LotusKing", "hgss": "Akizakura16", "gen5": "UltimoSpriter",
            "hoenn_sv": "SailorVicious", "kaliser": "Kaliser", "bp": "Banished Platinum"}
-_WORDS = [("Trees & plants", "tree palm pine jungle tropic sprout bush grove flower hedge plant"),
+_WORDS = [("Stairs", "stair steps"), ("Trees & plants", "tree palm pine jungle tropic sprout bush grove flower hedge plant"),
           ("Rocks", "boulder rock stump ice crystal stone_block"),
           ("Signs & lamps", "sign board map lamp lantern light"),
           ("Statues", "totem tiki statue monument arch pedestal tablet post orb fountain"),
@@ -160,6 +160,7 @@ def library():
                             "prop": kind in ("tree", "prop"),
                             "group": meta.get("group") or guess_group(name, meta.get("label", name), kind),
                             "source": meta.get("artist") or SOURCES.get(folder, folder),
+                            "walk": bool(meta.get("walk")),       # (stairs: walked on, not in the way)
                             "theme": meta.get("theme") or guess_theme(name, meta.get("label", name), kind),
                             "gen": meta.get("gen") or ""})
     return out
@@ -329,16 +330,17 @@ class MapDoc:
                         self.art[yy][xx] = "."
 
     def place_object(self, x, y, piece):
-        """A ready-made prop (a palm, a totem): its footprint in the way (`), the piece drawn over it."""
+        """A ready-made prop (a palm, a totem): its footprint in the way (`), the piece drawn over it. Stairs (a "walk"
+        piece) are walked on: their footprint becomes open ground (.), even across a cliff."""
         if not (0 <= x and x + piece["w"] <= self.w and 0 <= y and y + piece["h"] <= self.h):
             return False
         for yy in range(y, y + piece["h"]):
             for xx in range(x, x + piece["w"]):
                 if self.owner(xx, yy):
                     self.remove_building(self.owner(xx, yy))
-                if self.cell(xx, yy) == "`":
+                if self.cell(xx, yy) == "`" or self.object_at(xx, yy):
                     self.remove_object_at(xx, yy)
-                self.art[yy][xx] = "`"
+                self.art[yy][xx] = "." if piece.get("walk") else "`"
         self.objects.append({"k": piece["key"], "at": [x, y]})
         return True
 
@@ -580,7 +582,9 @@ class Slider:
 # again and again. Drag anything placed to move it; right-click it to take it away. The ground brushes paint 1, 3 or 5
 # tiles at a time (the game draws the edges); the height brush raises or lowers the ground and the cliffs rebuild when
 # you let go (dev/tools/cliff_tiers.py).
-BUILDER_TABS = ["Buildings", "Scenery", "Ground", "Height", "Ways out"]
+BUILDER_TABS = ["Buildings", "Scenery", "Height", "Ways out"]
+# (Jordan, 11-15: the park builder offers only pictures from the games and tile artists, not the map maker's own drawn
+#  buildings, scenery and ground; those stay in the classic panel's lists, and the game still draws maps with them)
 HIDDEN = os.path.join("dev", "builders", "pieces", "hidden.json")
 OURS = "Our own art"                 # (the map characters and buildings art.py draws itself)
 GAME_SOURCES = ("FireRed / LeafGreen", "HeartGold / SoulSilver", "Diamond / Pearl / Platinum", "Black 2 / White 2")   # (read from
@@ -599,14 +603,10 @@ def builder_items():
             out["Scenery" if p[4]["prop"] else "Buildings"].append({"preset": p, "label": p[4]["label"], "group": p[4]["group"],
                                                                      "source": p[4]["source"], "theme": p[4]["theme"],
                                                                      "gen": p[4]["gen"]})
-        else:
-            out["Buildings"].append({"preset": p, "label": p[0], "group": game_groups.get(p[1], "Landmarks"), "source": OURS,
-                                     "theme": "Town", "gen": "Ours"})
+        # (the map maker's own drawn buildings: the classic panel only)
     char_groups = {"T": "Trees & plants", "2": "Trees & plants", "r": "Rocks", "0": "Rocks", "b": "Rocks", "@": "Statues",
                    "!": "Signs & lamps", "l": "Signs & lamps"}
-    for cat, tab in (("Nature", "Scenery"), ("Fences & walls", "Scenery"), ("Props", "Scenery"), ("Ground", "Ground"),
-                     ("Water", "Ground"), ("Cliffs & ledges", "Ground"), ("Bridges", "Ground"), ("Ways out", "Ways out"),
-                     ("People", "Ways out")):
+    for cat, tab in (("Ways out", "Ways out"), ("People", "Ways out")):      # (markers, not drawings: kept)
         for c, n in pal[cat]:
             group = cat if tab in ("Ground", "Ways out") else char_groups.get(c, "Fences & walls" if cat == "Fences & walls" else "Props")
             theme = {"8": "Snow", "%": "Snow", "9": "Swamp", "*": "Volcano", "s": "Tropical", "o": "Water", "~": "Water",
@@ -632,7 +632,7 @@ class ParkBuilder:
         self.carry = None              # a thing following the mouse: {"preset" | "move", "w", "h", "ghost", "up", "grab"}
         self.b_stroke = None           # a brush stroke going on: the tiles it has touched
         self._thumbs = {}
-        tw = (w - 4 * 4) // 5
+        tw = (w - 4 * (len(BUILDER_TABS) - 1)) // len(BUILDER_TABS)
         self.b_tab_btns = [Button((x0 + i * (tw + 4), 76, tw, 28), t, lambda t=t: self.builder_tab(t), toggle=lambda t=t: self.b_tab == t)
                            for i, t in enumerate(BUILDER_TABS)]
         self.b_brush_btns = [Button((x0 + 96 + i * 52, 112, 46, 26), f"{n}x{n}", lambda n=n: setattr(self, "b_brush", n), toggle=lambda n=n: self.b_brush == n)
@@ -879,7 +879,10 @@ class ParkBuilder:
     def fits(self, x, y, w, h):
         if not (0 <= x and 0 <= y and x + w <= self.doc.w and y + h <= self.doc.h):
             return False
-        return all(self.doc.cell(xx, yy) in CARRY_OVER and not self.doc.owner(xx, yy)
+        c = self.carry or {}
+        piece = c["preset"][4] if c.get("preset") else (c.get("move") or {}).get("piece")
+        ok = CARRY_OVER | ({"c"} if piece and piece.get("walk") else set())      # (stairs may cut through a cliff)
+        return all(self.doc.cell(xx, yy) in ok and not self.doc.owner(xx, yy)
                    for yy in range(y, y + h) for xx in range(x, x + w))
 
     def carry_spot(self, pos):

@@ -248,48 +248,6 @@
    "R30"
   ]
  },
- "dun_stairup_102": {
-  "name": "stairup",
-  "ox": 64,
-  "oy": 128,
-  "foot": [
-   2,
-   1
-  ],
-  "doors": [],
-  "kind": "prop",
-  "label": "stairup",
-  "credit": "HeartGold / SoulSilver (Game Freak / Nintendo / The Pokemon Company): read from the game file",
-  "gen": "Gen 4",
-  "artist": "HeartGold / SoulSilver",
-  "model": "dun_stairup",
-  "zones": [
-   "D11R0103",
-   "D11R0104",
-   "D11R0105"
-  ]
- },
- "dun_stairdw_102": {
-  "name": "stairdw",
-  "ox": 64,
-  "oy": 64,
-  "foot": [
-   1,
-   1
-  ],
-  "doors": [],
-  "kind": "prop",
-  "label": "stairdw",
-  "credit": "HeartGold / SoulSilver (Game Freak / Nintendo / The Pokemon Company): read from the game file",
-  "gen": "Gen 4",
-  "artist": "HeartGold / SoulSilver",
-  "model": "dun_stairdw",
-  "zones": [
-   "D11R0102",
-   "D11R0103",
-   "D11R0104"
-  ]
- },
  "kn_h01_14": {
   "name": "Kanto House",
   "ox": 32,
