@@ -106,7 +106,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "MENTAL_HERB": {"price": 1000, "text": "Held: used up to free its holder from love, Taunt, Encore and Disable."},
         "SHELL_BELL": {"price": 4000, "text": "Held: its holder gets back an eighth of the damage it deals."},
         "FOCUS_BAND": {"price": 3000, "text": "Held: now and then its holder hangs on at 1 HP instead of fainting."},
-        "NEVER_MELT_ICE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ice-type moves hit harder."}}
+        "NEVER_MELT_ICE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ice-type moves hit harder."},
+        "LEFTOVERS": {"price": 4000, "text": "Held: its holder gets back a little HP at the end of every turn."}}   # (the S.S. Tidal's hidden one, Emerald)
 
 
 def held_boost(pokemon, move_type):
@@ -130,8 +131,9 @@ VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it 
              "PEARL": {"price": 1400, "text": "A small, pretty pearl. Sell it for a little money."},
              "STARDUST": {"price": 2000, "text": "Lovely red sand. Sell it for a little money."},
              "STAR_PIECE": {"price": 9800, "text": "A shard of a pretty gem. Sell it for a good price."},
-             "TINY_MUSHROOM": {"price": 500, "text": "A small, rare mushroom. Sell it for a little money."},  # (FireRed: hidden in Mt. Moon)
-             "BIG_MUSHROOM": {"price": 5000, "text": "A large, rare mushroom. Sell it for a good price."}}
+             "TINY_MUSHROOM": {"price": 500, "text": "A small, rare mushroom collectors love. Sell it for a little money."},
+             "BIG_MUSHROOM": {"price": 5000, "text": "A big, rare mushroom collectors love. Sell it for a good price."},
+             "HEART_SCALE": {"price": 100, "text": "A pretty, heart-shaped scale that shines like a rainbow."}}
 
 
 def use_vitamin(pokemon, item):
@@ -175,6 +177,9 @@ def describe(item):
     from src.pokemon import zpower
     if item in zpower.ITEM_TEXT:
         return zpower.ITEM_TEXT[item]
+    if item == "EON_FLUTE":  # (Soaring in the Sky: src/world/soaring3d.py)
+        from src.world import soaring3d
+        return soaring3d.FLUTE_TEXT
     return info(item).get("text") or catching.BALL_TEXT.get(item, "")
 
 

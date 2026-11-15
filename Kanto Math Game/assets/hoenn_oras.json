@@ -1,0 +1,9746 @@
+{
+ "_about": "ORAS's trainers, canon teams and items laid over hoenn_area_data.json when the game loads (src/core/game.py _apply_overlays); written by kanto_handoff/hoenn_rom_tools/oras_fill.py from Bulbapedia's ORAS walkthrough and Emerald's own item and trainer spots. Placements on the maps: dev/builders/data/oras_fill.json.",
+ "AREAS": {
+  "EVER_GRANDE_CITY": {
+   "explore_options": [
+    {
+     "text": "TM29 PSYCHIC",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_ever_grande_city_2",
+     "event": {
+      "lines": [
+       "You found a TM29 PSYCHIC!"
+      ],
+      "gift_item": {
+       "HTM29": 1
+      },
+      "flag": "oras_ever_grande_city_2"
+     }
+    }
+   ]
+  },
+  "FALLARBOR_TOWN": {
+   "explore_options": [
+    {
+     "text": "Bug Maniac",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Bug Maniac: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HONEY": 1
+      },
+      "flag": "oras_fallarbor_town_2"
+     },
+     "flag_condition": "not oras_fallarbor_town_2"
+    },
+    {
+     "text": "Professor Cozmo ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Professor Cozmo: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM23": 1
+      },
+      "flag": "oras_fallarbor_town_3"
+     },
+     "flag_condition": "not oras_fallarbor_town_3"
+    }
+   ]
+  },
+  "FORTREE_CITY": {
+   "set_teams": {
+    "Bird Keeper Jared": {
+     "team": [
+      277,
+      227
+     ],
+     "levels": [
+      30,
+      30
+     ]
+    }
+   },
+   "explore_options": [
+    {
+     "text": "Old woman",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Old woman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM10": 1
+      },
+      "flag": "oras_fortree_city_2"
+     },
+     "flag_condition": "not oras_fortree_city_2"
+    },
+    {
+     "text": "TM86 GRASS KNOT",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_fortree_city_3",
+     "event": {
+      "lines": [
+       "You found a TM86 GRASS KNOT!"
+      ],
+      "gift_item": {
+       "HTM86": 1
+      },
+      "flag": "oras_fortree_city_3"
+     }
+    },
+    {
+     "text": "Winona",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Winona: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM19": 1
+      },
+      "flag": "oras_fortree_city_4"
+     },
+     "flag_condition": "not oras_fortree_city_4"
+    },
+    {
+     "text": "Boy",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Boy: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "MENTAL_HERB": 1
+      },
+      "flag": "oras_fortree_city_5"
+     },
+     "flag_condition": "not oras_fortree_city_5"
+    }
+   ]
+  },
+  "HOENN_FIERY_PATH": {
+   "route_menu": [
+    {
+     "text": "TM06 TOXIC",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_fiery_path_1",
+     "event": {
+      "lines": [
+       "You found a TM06 TOXIC!"
+      ],
+      "gift_item": {
+       "HTM06": 1
+      },
+      "flag": "oras_hoenn_fiery_path_1"
+     }
+    },
+    {
+     "text": "FIRE STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_fiery_path_2",
+     "event": {
+      "lines": [
+       "You found a Fire Stone!"
+      ],
+      "gift_item": {
+       "FIRE_STONE": 1
+      },
+      "flag": "oras_hoenn_fiery_path_2"
+     }
+    }
+   ]
+  },
+  "HOENN_GRANITE_CAVE": {
+   "add_trainers": [
+    {
+     "name": "Ruin Maniac Omari",
+     "class": "RUIN_MANIAC",
+     "sprite": "ruinmaniac.png",
+     "team": [
+      27
+     ],
+     "levels": [
+      15
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Hiker Davian",
+     "class": "HIKER",
+     "sprite": "hiker.png",
+     "team": [
+      74
+     ],
+     "levels": [
+      15
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "Hiker ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Hiker: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM70": 1
+      },
+      "flag": "oras_hoenn_granite_cave_1"
+     },
+     "flag_condition": "not oras_hoenn_granite_cave_1"
+    },
+    {
+     "text": "ESCAPE ROPE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_granite_cave_2",
+     "event": {
+      "lines": [
+       "You found a Escape Rope!"
+      ],
+      "gift_item": {
+       "ESCAPE_ROPE": 1
+      },
+      "flag": "oras_hoenn_granite_cave_2"
+     }
+    },
+    {
+     "text": "POKE BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_granite_cave_3",
+     "event": {
+      "lines": [
+       "You found a Poke Ball!"
+      ],
+      "gift_item": {
+       "POKE_BALLS": 1
+      },
+      "flag": "oras_hoenn_granite_cave_3"
+     }
+    }
+   ]
+  },
+  "HOENN_JAGGED_PASS": {
+   "add_trainers": [
+    {
+     "name": "Expert Shelby",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      307,
+      297
+     ],
+     "levels": [
+      24,
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Camper Ethan",
+     "class": "CAMPER",
+     "sprite": "camper.png",
+     "team": [
+      316
+     ],
+     "levels": [
+      24
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fairy Tale Girl Nellie",
+     "class": "LASS",
+     "sprite": "lass.png",
+     "team": [
+      300,
+      39
+     ],
+     "levels": [
+      21,
+      23
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Hiker Eric": {
+     "team": [
+      75
+     ],
+     "levels": [
+      25
+     ]
+    },
+    "Picnicker Diana": {
+     "team": [
+      44,
+      333
+     ],
+     "levels": [
+      22,
+      22
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "SUPER REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_jagged_pass_1",
+     "event": {
+      "lines": [
+       "You found a Super Repel!"
+      ],
+      "gift_item": {
+       "SUPER_REPEL": 1
+      },
+      "flag": "oras_hoenn_jagged_pass_1"
+     }
+    },
+    {
+     "text": "MAX ETHER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_jagged_pass_3",
+     "event": {
+      "lines": [
+       "You found a Max Ether!"
+      ],
+      "gift_item": {
+       "MAX_ETHER": 1
+      },
+      "flag": "oras_hoenn_jagged_pass_3"
+     }
+    },
+    {
+     "text": "X DEFENSE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_jagged_pass_4",
+     "event": {
+      "lines": [
+       "You found a X Defense!"
+      ],
+      "gift_item": {
+       "X_DEFENSE": 1
+      },
+      "flag": "oras_hoenn_jagged_pass_4"
+     }
+    },
+    {
+     "text": "TINY MUSHROOM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_jagged_pass_5",
+     "event": {
+      "lines": [
+       "You found a Tiny Mushroom!"
+      ],
+      "gift_item": {
+       "TINY_MUSHROOM": 1
+      },
+      "flag": "oras_hoenn_jagged_pass_5"
+     }
+    }
+   ]
+  },
+  "HOENN_METEOR_FALLS": {
+   "route_menu": [
+    {
+     "text": "FULL HEAL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_1",
+     "event": {
+      "lines": [
+       "You found a Full Heal!"
+      ],
+      "gift_item": {
+       "FULL_HEAL": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_1"
+     }
+    },
+    {
+     "text": "MOON STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_2",
+     "event": {
+      "lines": [
+       "You found a Moon Stone!"
+      ],
+      "gift_item": {
+       "MOON_STONE": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_2"
+     }
+    },
+    {
+     "text": "GREAT BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_3",
+     "event": {
+      "lines": [
+       "You found a Great Ball!"
+      ],
+      "gift_item": {
+       "GREAT_BALL": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_3"
+     }
+    },
+    {
+     "text": "STARDUST",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_4",
+     "event": {
+      "lines": [
+       "You found a Stardust!"
+      ],
+      "gift_item": {
+       "STARDUST": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_4"
+     }
+    },
+    {
+     "text": "STAR PIECE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_5",
+     "event": {
+      "lines": [
+       "You found a Star Piece!"
+      ],
+      "gift_item": {
+       "STAR_PIECE": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_5"
+     }
+    },
+    {
+     "text": "TM02 DRAGON CLAW",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_6",
+     "event": {
+      "lines": [
+       "You found a TM02 DRAGON CLAW!"
+      ],
+      "gift_item": {
+       "HTM02": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_6"
+     }
+    },
+    {
+     "text": "PP MAX",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_7",
+     "event": {
+      "lines": [
+       "You found a Pp Max!"
+      ],
+      "gift_item": {
+       "PP_MAX": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_7"
+     }
+    },
+    {
+     "text": "SUPER REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_meteor_falls_8",
+     "event": {
+      "lines": [
+       "You found a Super Repel!"
+      ],
+      "gift_item": {
+       "SUPER_REPEL": 1
+      },
+      "flag": "oras_hoenn_meteor_falls_8"
+     }
+    }
+   ]
+  },
+  "HOENN_MT_CHIMNEY": {
+   "route_menu": [
+    {
+     "text": "TM59 INCINERATE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_chimney_2",
+     "event": {
+      "lines": [
+       "You found a TM59 INCINERATE!"
+      ],
+      "gift_item": {
+       "HTM59": 1
+      },
+      "flag": "oras_hoenn_mt_chimney_2"
+     }
+    }
+   ]
+  },
+  "HOENN_MT_PYRE": {
+   "add_trainers": [
+    {
+     "name": "Poké Maniac Mark",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_f.png",
+     "team": [
+      305
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Psychic William",
+     "class": "PSYCHIC",
+     "sprite": "supernerd.png",
+     "team": [
+      120,
+      326
+     ],
+     "levels": [
+      35,
+      35
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Hex Maniac Valerie",
+     "class": "PSYCHIC",
+     "sprite": "channeler.png",
+     "team": [
+      302
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Black Belt Atsushi",
+     "class": "BLACKBELT",
+     "sprite": "blackbelt.png",
+     "team": [
+      67
+     ],
+     "levels": [
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fairy Tale Girl Momo",
+     "class": "LASS",
+     "sprite": "lass.png",
+     "team": [
+      39
+     ],
+     "levels": [
+      35
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Young Couple Dez & Luke",
+     "class": "TWINS",
+     "sprite": "twins.png",
+     "team": [
+      301,
+      310
+     ],
+     "levels": [
+      36,
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Mysterious Sisters Elle & Aya",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      203,
+      303
+     ],
+     "levels": [
+      36,
+      35
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Hex Maniac Tasha",
+     "class": "PSYCHIC",
+     "sprite": "channeler.png",
+     "team": [
+      353,
+      178
+     ],
+     "levels": [
+      34,
+      34
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Backpacker Darnell",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      352
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "CLEANSE TAG",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_pyre_1",
+     "event": {
+      "lines": [
+       "You found a Cleanse Tag!"
+      ],
+      "gift_item": {
+       "CLEANSE_TAG": 1
+      },
+      "flag": "oras_hoenn_mt_pyre_1"
+     }
+    },
+    {
+     "text": "ULTRA BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_pyre_2",
+     "event": {
+      "lines": [
+       "You found a Ultra Ball!"
+      ],
+      "gift_item": {
+       "ULTRA_BALL": 1
+      },
+      "flag": "oras_hoenn_mt_pyre_2"
+     }
+    },
+    {
+     "text": "DUSK STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_pyre_3",
+     "event": {
+      "lines": [
+       "You found a Dusk Stone!"
+      ],
+      "gift_item": {
+       "DUSK_STONE": 1
+      },
+      "flag": "oras_hoenn_mt_pyre_3"
+     }
+    },
+    {
+     "text": "SUPER REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_pyre_4",
+     "event": {
+      "lines": [
+       "You found a Super Repel!"
+      ],
+      "gift_item": {
+       "SUPER_REPEL": 1
+      },
+      "flag": "oras_hoenn_mt_pyre_4"
+     }
+    },
+    {
+     "text": "SHINY STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_pyre_5",
+     "event": {
+      "lines": [
+       "You found a Shiny Stone!"
+      ],
+      "gift_item": {
+       "SHINY_STONE": 1
+      },
+      "flag": "oras_hoenn_mt_pyre_5"
+     }
+    },
+    {
+     "text": "LAX INCENSE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_pyre_6",
+     "event": {
+      "lines": [
+       "You found a Lax Incense!"
+      ],
+      "gift_item": {
+       "LAX_INCENSE": 1
+      },
+      "flag": "oras_hoenn_mt_pyre_6"
+     }
+    },
+    {
+     "text": "MAX POTION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_mt_pyre_8",
+     "event": {
+      "lines": [
+       "You found a Max Potion!"
+      ],
+      "gift_item": {
+       "MAX_POTION": 1
+      },
+      "flag": "oras_hoenn_mt_pyre_8"
+     }
+    }
+   ]
+  },
+  "HOENN_NEW_MAUVILLE": {
+   "route_menu": [
+    {
+     "text": "ESCAPE ROPE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_new_mauville_1",
+     "event": {
+      "lines": [
+       "You found a Escape Rope!"
+      ],
+      "gift_item": {
+       "ESCAPE_ROPE": 1
+      },
+      "flag": "oras_hoenn_new_mauville_1"
+     }
+    },
+    {
+     "text": "PARALYZE HEAL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_new_mauville_2",
+     "event": {
+      "lines": [
+       "You found a Paralyze Heal!"
+      ],
+      "gift_item": {
+       "PARALYZE_HEAL": 1
+      },
+      "flag": "oras_hoenn_new_mauville_2"
+     }
+    },
+    {
+     "text": "THUNDER STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_new_mauville_3",
+     "event": {
+      "lines": [
+       "You found a Thunder Stone!"
+      ],
+      "gift_item": {
+       "THUNDER_STONE": 1
+      },
+      "flag": "oras_hoenn_new_mauville_3"
+     }
+    },
+    {
+     "text": "FULL HEAL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_new_mauville_5",
+     "event": {
+      "lines": [
+       "You found a Full Heal!"
+      ],
+      "gift_item": {
+       "FULL_HEAL": 1
+      },
+      "flag": "oras_hoenn_new_mauville_5"
+     }
+    },
+    {
+     "text": "ULTRA BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_new_mauville_6",
+     "event": {
+      "lines": [
+       "You found a Ultra Ball!"
+      ],
+      "gift_item": {
+       "ULTRA_BALL": 1
+      },
+      "flag": "oras_hoenn_new_mauville_6"
+     }
+    },
+    {
+     "text": "METAL COAT",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_new_mauville_7",
+     "event": {
+      "lines": [
+       "You found a Metal Coat!"
+      ],
+      "gift_item": {
+       "METAL_COAT": 1
+      },
+      "flag": "oras_hoenn_new_mauville_7"
+     }
+    }
+   ]
+  },
+  "HOENN_PETALBURG_WOODS": {
+   "set_teams": {
+    "Bug Catcher Lyle": {
+     "team": [
+      265,
+      265,
+      265
+     ],
+     "levels": [
+      5,
+      5,
+      5
+     ]
+    },
+    "Bug Catcher James": {
+     "team": [
+      290
+     ],
+     "levels": [
+      8
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "PARALYZE HEAL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_petalburg_woods_2",
+     "event": {
+      "lines": [
+       "You found a Paralyze Heal!"
+      ],
+      "gift_item": {
+       "PARALYZE_HEAL": 1
+      },
+      "flag": "oras_hoenn_petalburg_woods_2"
+     }
+    },
+    {
+     "text": "BALM MUSHROOM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_petalburg_woods_3",
+     "event": {
+      "lines": [
+       "You found a Balm Mushroom!"
+      ],
+      "gift_item": {
+       "BALM_MUSHROOM": 1
+      },
+      "flag": "oras_hoenn_petalburg_woods_3"
+     }
+    },
+    {
+     "text": "ETHER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_petalburg_woods_4",
+     "event": {
+      "lines": [
+       "You found a Ether!"
+      ],
+      "gift_item": {
+       "ETHER": 1
+      },
+      "flag": "oras_hoenn_petalburg_woods_4"
+     }
+    },
+    {
+     "text": "NET BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_petalburg_woods_5",
+     "event": {
+      "lines": [
+       "You found a Net Ball!"
+      ],
+      "gift_item": {
+       "NET_BALL": 1
+      },
+      "flag": "oras_hoenn_petalburg_woods_5"
+     }
+    },
+    {
+     "text": "Girl ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Girl: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "MIRACLE_SEED": 1
+      },
+      "flag": "oras_hoenn_petalburg_woods_6"
+     },
+     "flag_condition": "not oras_hoenn_petalburg_woods_6"
+    },
+    {
+     "text": "GREAT BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_petalburg_woods_7",
+     "event": {
+      "lines": [
+       "You found a Great Ball!"
+      ],
+      "gift_item": {
+       "GREAT_BALL": 1
+      },
+      "flag": "oras_hoenn_petalburg_woods_7"
+     }
+    },
+    {
+     "text": "X ATTACK",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_petalburg_woods_8",
+     "event": {
+      "lines": [
+       "You found a X Attack!"
+      ],
+      "gift_item": {
+       "X_ATTACK": 1
+      },
+      "flag": "oras_hoenn_petalburg_woods_8"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_102": {
+   "add_trainers": [
+    {
+     "name": "Youngster Calvin",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      263
+     ],
+     "levels": [
+      4
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Catcher Rick",
+     "class": "BUG_CATCHER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      265
+     ],
+     "levels": [
+      4
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Lass Tiana",
+     "class": "LASS",
+     "sprite": "lass.png",
+     "team": [
+      263
+     ],
+     "levels": [
+      5
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Youngster Allen": {
+     "team": [
+      261,
+      276
+     ],
+     "levels": [
+      4,
+      2
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "Soft soil patch",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Soft soil patch: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "ORAN_BERRY": 2
+      },
+      "flag": "oras_hoenn_route_102_1"
+     },
+     "flag_condition": "not oras_hoenn_route_102_1"
+    },
+    {
+     "text": "Soft soil patch ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Soft soil patch: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "PECHA_BERRY": 2
+      },
+      "flag": "oras_hoenn_route_102_2"
+     },
+     "flag_condition": "not oras_hoenn_route_102_2"
+    },
+    {
+     "text": "POTION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_102_3",
+     "event": {
+      "lines": [
+       "You found a Potion!"
+      ],
+      "gift_item": {
+       "POTION": 1
+      },
+      "flag": "oras_hoenn_route_102_3"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_103": {
+   "add_trainers": [
+    {
+     "name": "Aroma Lady Daisy",
+     "class": "BEAUTY",
+     "sprite": "beauty.png",
+     "team": [
+      315
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Twins Amy & Liv",
+     "class": "TWINS",
+     "sprite": "twins.png",
+     "team": [
+      311,
+      312
+     ],
+     "levels": [
+      16,
+      16
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Poké Fan Miguel",
+     "class": "POKEFAN",
+     "sprite": "pokefan_f.png",
+     "team": [
+      300
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Fisherman Andrew": {
+     "team": [
+      129,
+      129
+     ],
+     "levels": [
+      14,
+      16
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "LEPPA BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_103_1",
+     "event": {
+      "lines": [
+       "You found 4 Leppa Berry!"
+      ],
+      "gift_item": {
+       "LEPPA_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_103_1"
+     }
+    },
+    {
+     "text": "CHESTO BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_103_2",
+     "event": {
+      "lines": [
+       "You found 4 Chesto Berry!"
+      ],
+      "gift_item": {
+       "CHESTO_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_103_2"
+     }
+    },
+    {
+     "text": "GUARD SPEC.",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_103_3",
+     "event": {
+      "lines": [
+       "You found a Guard Spec.!"
+      ],
+      "gift_item": {
+       "GUARD_SPEC": 1
+      },
+      "flag": "oras_hoenn_route_103_3"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_104": {
+   "add_trainers": [
+    {
+     "name": "Youngster Billy",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      273,
+      276
+     ],
+     "levels": [
+      4,
+      6
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Lass Haley",
+     "class": "LASS",
+     "sprite": "lass.png",
+     "team": [
+      270,
+      285
+     ],
+     "levels": [
+      6,
+      8
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Twins Gina & Mia",
+     "class": "TWINS",
+     "sprite": "twins.png",
+     "team": [
+      270,
+      273
+     ],
+     "levels": [
+      9,
+      9
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Rich Boy Winston": {
+     "team": [
+      263
+     ],
+     "levels": [
+      8
+     ]
+    },
+    "Lady Cindy": {
+     "team": [
+      263
+     ],
+     "levels": [
+      10
+     ]
+    },
+    "Fisherman Ivan": {
+     "team": [
+      129,
+      129,
+      129
+     ],
+     "levels": [
+      7,
+      7,
+      7
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "PECHA BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_4",
+     "event": {
+      "lines": [
+       "You found 2 Pecha Berry!"
+      ],
+      "gift_item": {
+       "PECHA_BERRY": 2
+      },
+      "flag": "oras_hoenn_route_104_4"
+     }
+    },
+    {
+     "text": "ORAN BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_5",
+     "event": {
+      "lines": [
+       "You found 2 Oran Berry!"
+      ],
+      "gift_item": {
+       "ORAN_BERRY": 2
+      },
+      "flag": "oras_hoenn_route_104_5"
+     }
+    },
+    {
+     "text": "POKE BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_6",
+     "event": {
+      "lines": [
+       "You found a Poke Ball!"
+      ],
+      "gift_item": {
+       "POKE_BALLS": 1
+      },
+      "flag": "oras_hoenn_route_104_6"
+     }
+    },
+    {
+     "text": "LUXURY BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_7",
+     "event": {
+      "lines": [
+       "You found a Luxury Ball!"
+      ],
+      "gift_item": {
+       "LUXURY_BALL": 1
+      },
+      "flag": "oras_hoenn_route_104_7"
+     }
+    },
+    {
+     "text": "Youngster",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Youngster: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM49": 1
+      },
+      "flag": "oras_hoenn_route_104_8"
+     },
+     "flag_condition": "not oras_hoenn_route_104_8"
+    },
+    {
+     "text": "PECHA BERRY ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_9",
+     "event": {
+      "lines": [
+       "You found 3 Pecha Berry!"
+      ],
+      "gift_item": {
+       "PECHA_BERRY": 3
+      },
+      "flag": "oras_hoenn_route_104_9"
+     }
+    },
+    {
+     "text": "X ATTACK",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_12",
+     "event": {
+      "lines": [
+       "You found a X Attack!"
+      ],
+      "gift_item": {
+       "X_ATTACK": 1
+      },
+      "flag": "oras_hoenn_route_104_12"
+     }
+    },
+    {
+     "text": "Old woman",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Old woman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "CHESTO_BERRY": 1
+      },
+      "flag": "oras_hoenn_route_104_13"
+     },
+     "flag_condition": "not oras_hoenn_route_104_13"
+    },
+    {
+     "text": "Woman",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Woman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "WHITE_HERB": 1
+      },
+      "flag": "oras_hoenn_route_104_14"
+     },
+     "flag_condition": "not oras_hoenn_route_104_14"
+    },
+    {
+     "text": "REVIVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_15",
+     "event": {
+      "lines": [
+       "You found a Revive!"
+      ],
+      "gift_item": {
+       "REVIVE": 1
+      },
+      "flag": "oras_hoenn_route_104_15"
+     }
+    },
+    {
+     "text": "PP UP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_104_16",
+     "event": {
+      "lines": [
+       "You found a Pp Up!"
+      ],
+      "gift_item": {
+       "PP_UP": 1
+      },
+      "flag": "oras_hoenn_route_104_16"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_105": {
+   "route_menu": [
+    {
+     "text": "IRON",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_105_1",
+     "event": {
+      "lines": [
+       "You found a Iron!"
+      ],
+      "gift_item": {
+       "IRON": 1
+      },
+      "flag": "oras_hoenn_route_105_1"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_106": {
+   "add_trainers": [
+    {
+     "name": "Fisherman Ned",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      72
+     ],
+     "levels": [
+      13
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Backpacker Graeme",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      287
+     ],
+     "levels": [
+      13
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Fisherman Elliot": {
+     "team": [
+      129,
+      72
+     ],
+     "levels": [
+      10,
+      12
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "PROTEIN",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_106_4",
+     "event": {
+      "lines": [
+       "You found a Protein!"
+      ],
+      "gift_item": {
+       "PROTEIN": 1
+      },
+      "flag": "oras_hoenn_route_106_4"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_109": {
+   "set_teams": {
+    "Sailor Huey": {
+     "team": [
+      66
+     ],
+     "levels": [
+      15
+     ]
+    },
+    "Tuber Ricky": {
+     "team": [
+      263
+     ],
+     "levels": [
+      14
+     ]
+    },
+    "Tuber Lola": {
+     "team": [
+      298
+     ],
+     "levels": [
+      14
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Sailor Edmond",
+     "class": "SAILOR",
+     "sprite": "sailor.png",
+     "team": [
+      278,
+      66
+     ],
+     "levels": [
+      12,
+      14
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Tuber Simon",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      298
+     ],
+     "levels": [
+      14
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Delinquent Destinee",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      302
+     ],
+     "levels": [
+      15
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Street Thug Blair",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      261,
+      318
+     ],
+     "levels": [
+      12,
+      14
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Beauty Johanna",
+     "class": "BEAUTY",
+     "sprite": "beauty.png",
+     "team": [
+      118
+     ],
+     "levels": [
+      15
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Sailor Dwayne",
+     "class": "SAILOR",
+     "sprite": "sailor.png",
+     "team": [
+      72,
+      66
+     ],
+     "levels": [
+      13,
+      13
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Tuber Gwen",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      184
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Tuber Carmen",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      184
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Portia",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      352,
+      219
+     ],
+     "levels": [
+      26,
+      28
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♀ Alice",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      118,
+      320
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♂ David",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      341,
+      318
+     ],
+     "levels": [
+      26,
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Young Couple Mel & Paul",
+     "class": "TWINS",
+     "sprite": "twins.png",
+     "team": [
+      267,
+      269
+     ],
+     "levels": [
+      27,
+      27
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Carter",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      72
+     ],
+     "levels": [
+      27
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "Female Tuber",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Female Tuber: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "SOFT_SAND": 1
+      },
+      "flag": "oras_hoenn_route_109_2"
+     },
+     "flag_condition": "not oras_hoenn_route_109_2"
+    },
+    {
+     "text": "SODA POP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_109_5",
+     "event": {
+      "lines": [
+       "You found 6 Soda Pop!"
+      ],
+      "gift_item": {
+       "SODA_POP": 6
+      },
+      "flag": "oras_hoenn_route_109_5"
+     }
+    },
+    {
+     "text": "PP UP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_109_6",
+     "event": {
+      "lines": [
+       "You found a Pp Up!"
+      ],
+      "gift_item": {
+       "PP_UP": 1
+      },
+      "flag": "oras_hoenn_route_109_6"
+     }
+    },
+    {
+     "text": "BIG PEARL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_109_8",
+     "event": {
+      "lines": [
+       "You found a Big Pearl!"
+      ],
+      "gift_item": {
+       "BIG_PEARL": 1
+      },
+      "flag": "oras_hoenn_route_109_8"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_110": {
+   "add_trainers": [
+    {
+     "name": "Poké Fan Isabel",
+     "class": "POKEFAN",
+     "sprite": "pokefan_f.png",
+     "team": [
+      311,
+      312
+     ],
+     "levels": [
+      15,
+      15
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Youngster Timmy",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      261,
+      304,
+      309
+     ],
+     "levels": [
+      12,
+      13,
+      14
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Psychic Edward",
+     "class": "PSYCHIC",
+     "sprite": "supernerd.png",
+     "team": [
+      63
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Dale",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      72,
+      320
+     ],
+     "levels": [
+      14,
+      16
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Beauty Melissa",
+     "class": "BEAUTY",
+     "sprite": "beauty.png",
+     "team": [
+      118
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Triathlete Sloan",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      311
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Triathlete Jacob",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      100,
+      81
+     ],
+     "levels": [
+      14,
+      16
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Triathlete Anthony",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      81
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Triathlete Benjamin",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      100
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Triathlete Dolph",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      312
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Biker Edwin": {
+     "team": [
+      271,
+      274
+     ],
+     "levels": [
+      15,
+      15
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "DIRE HIT",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_110_1",
+     "event": {
+      "lines": [
+       "You found a Dire Hit!"
+      ],
+      "gift_item": {
+       "DIRE_HIT": 1
+      },
+      "flag": "oras_hoenn_route_110_1"
+     }
+    },
+    {
+     "text": "Berry Trees",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "LEPPA_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_110_6"
+     },
+     "flag_condition": "not oras_hoenn_route_110_6"
+    },
+    {
+     "text": "HEAL BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_110_7",
+     "event": {
+      "lines": [
+       "You found a Heal Ball!"
+      ],
+      "gift_item": {
+       "HEAL_BALL": 1
+      },
+      "flag": "oras_hoenn_route_110_7"
+     }
+    },
+    {
+     "text": "REPEAT BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_110_8",
+     "event": {
+      "lines": [
+       "You found a Repeat Ball!"
+      ],
+      "gift_item": {
+       "REPEAT_BALL": 1
+      },
+      "flag": "oras_hoenn_route_110_8"
+     }
+    },
+    {
+     "text": "RARE CANDY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_110_9",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_hoenn_route_110_9"
+     }
+    },
+    {
+     "text": "ELIXIR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_110_10",
+     "event": {
+      "lines": [
+       "You found a Elixir!"
+      ],
+      "gift_item": {
+       "ELIXIR": 1
+      },
+      "flag": "oras_hoenn_route_110_10"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_111": {
+   "add_trainers": [
+    {
+     "name": "Interviewers Gabby & Ty",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      81,
+      293
+     ],
+     "levels": [
+      20,
+      20
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Camper Travis",
+     "class": "CAMPER",
+     "sprite": "camper.png",
+     "team": [
+      27
+     ],
+     "levels": [
+      19
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Backpacker Emory",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      276
+     ],
+     "levels": [
+      21
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fairy Tale Girl Cece",
+     "class": "LASS",
+     "sprite": "lass.png",
+     "team": [
+      325,
+      303
+     ],
+     "levels": [
+      19,
+      19
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Backpacker Deon",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      264
+     ],
+     "levels": [
+      21
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Brooke",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      278,
+      322,
+      315
+     ],
+     "levels": [
+      20,
+      20,
+      20
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Camper Cliff",
+     "class": "CAMPER",
+     "sprite": "camper.png",
+     "team": [
+      28
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Picnicker Heidi",
+     "class": "PICNIKER",
+     "sprite": "picknicker.png",
+     "team": [
+      28
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Camper Drew",
+     "class": "CAMPER",
+     "sprite": "camper.png",
+     "team": [
+      75
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Picnicker Becky",
+     "class": "PICNIKER",
+     "sprite": "picknicker.png",
+     "team": [
+      331
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ruin Maniac Dusty",
+     "class": "RUIN_MANIAC",
+     "sprite": "ruinmaniac.png",
+     "team": [
+      343,
+      28
+     ],
+     "levels": [
+      24,
+      26
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Black Belt Daisuke",
+     "class": "BLACKBELT",
+     "sprite": "blackbelt.png",
+     "team": [
+      67
+     ],
+     "levels": [
+      28
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Picnicker Irene": {
+     "team": [
+      311,
+      314
+     ],
+     "levels": [
+      16,
+      18
+     ]
+    },
+    "Cooltrainer Wilton": {
+     "team": [
+      309,
+      296,
+      371
+     ],
+     "levels": [
+      20,
+      20,
+      20
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "MACHO BRACE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_111_1",
+     "event": {
+      "lines": [
+       "You found a Macho Brace!"
+      ],
+      "gift_item": {
+       "MACHO_BRACE": 1
+      },
+      "flag": "oras_hoenn_route_111_1"
+     }
+    },
+    {
+     "text": "HP UP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_111_2",
+     "event": {
+      "lines": [
+       "You found a Hp Up!"
+      ],
+      "gift_item": {
+       "HP_UP": 1
+      },
+      "flag": "oras_hoenn_route_111_2"
+     }
+    },
+    {
+     "text": "Girl",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Girl: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "RAZZ_BERRY": 1
+      },
+      "flag": "oras_hoenn_route_111_3"
+     },
+     "flag_condition": "not oras_hoenn_route_111_3"
+    },
+    {
+     "text": "Berry Trees",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "RAWST_BERRY": 2
+      },
+      "flag": "oras_hoenn_route_111_4"
+     },
+     "flag_condition": "not oras_hoenn_route_111_4"
+    },
+    {
+     "text": "Berry Trees ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "NANAB_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_111_5"
+     },
+     "flag_condition": "not oras_hoenn_route_111_5"
+    },
+    {
+     "text": "ELIXIR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_111_6",
+     "event": {
+      "lines": [
+       "You found a Elixir!"
+      ],
+      "gift_item": {
+       "ELIXIR": 1
+      },
+      "flag": "oras_hoenn_route_111_6"
+     }
+    },
+    {
+     "text": "Bug Maniac",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Bug Maniac: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "SAFETY_GOGGLES": 1
+      },
+      "flag": "oras_hoenn_route_111_11"
+     },
+     "flag_condition": "not oras_hoenn_route_111_11"
+    },
+    {
+     "text": "TM37 SANDSTORM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_111_12",
+     "event": {
+      "lines": [
+       "You found a TM37 SANDSTORM!"
+      ],
+      "gift_item": {
+       "HTM37": 1
+      },
+      "flag": "oras_hoenn_route_111_12"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_112": {
+   "add_trainers": [
+    {
+     "name": "Camper Larry",
+     "class": "CAMPER",
+     "sprite": "camper.png",
+     "team": [
+      276,
+      41
+     ],
+     "levels": [
+      16,
+      18
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Picnicker Carol",
+     "class": "PICNIKER",
+     "sprite": "picknicker.png",
+     "team": [
+      316
+     ],
+     "levels": [
+      19
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Hiker Brice",
+     "class": "HIKER",
+     "sprite": "hiker.png",
+     "team": [
+      322,
+      66
+     ],
+     "levels": [
+      18,
+      18
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Street Thug Jaylin",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      262
+     ],
+     "levels": [
+      21
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Hiker Trent": {
+     "team": [
+      74,
+      74,
+      74
+     ],
+     "levels": [
+      17,
+      17,
+      17
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "BIG MUSHROOM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_112_1",
+     "event": {
+      "lines": [
+       "You found a Big Mushroom!"
+      ],
+      "gift_item": {
+       "BIG_MUSHROOM": 1
+      },
+      "flag": "oras_hoenn_route_112_1"
+     }
+    },
+    {
+     "text": "GUARD SPEC.",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_112_2",
+     "event": {
+      "lines": [
+       "You found a Guard Spec.!"
+      ],
+      "gift_item": {
+       "GUARD_SPEC": 1
+      },
+      "flag": "oras_hoenn_route_112_2"
+     }
+    },
+    {
+     "text": "NUGGET",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_112_3",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_route_112_3"
+     }
+    },
+    {
+     "text": "Berry Trees",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "RAZZ_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_112_4"
+     },
+     "flag_condition": "not oras_hoenn_route_112_4"
+    },
+    {
+     "text": "Berry Trees ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "PERSIM_BERRY": 3
+      },
+      "flag": "oras_hoenn_route_112_5"
+     },
+     "flag_condition": "not oras_hoenn_route_112_5"
+    }
+   ]
+  },
+  "HOENN_ROUTE_113": {
+   "set_teams": {
+    "Youngster Neal": {
+     "team": [
+      328,
+      309
+     ],
+     "levels": [
+      19,
+      19
+     ]
+    },
+    "Parasol Lady Madeline": {
+     "team": [
+      322
+     ],
+     "levels": [
+      22
+     ]
+    },
+    "Ninja Boy Lung": {
+     "team": [
+      290,
+      291
+     ],
+     "levels": [
+      18,
+      20
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Fairy Tale Girl Franny",
+     "class": "LASS",
+     "sprite": "lass.png",
+     "team": [
+      281
+     ],
+     "levels": [
+      22
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ninja Boy Lao",
+     "class": "NINJA_BOY",
+     "sprite": "ninja_boy.png",
+     "team": [
+      109,
+      109,
+      109
+     ],
+     "levels": [
+      16,
+      17,
+      18
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Youngster Dillion",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      304
+     ],
+     "levels": [
+      21
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "SUPER REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_113_2",
+     "event": {
+      "lines": [
+       "You found a Super Repel!"
+      ],
+      "gift_item": {
+       "SUPER_REPEL": 1
+      },
+      "flag": "oras_hoenn_route_113_2"
+     }
+    },
+    {
+     "text": "TM32 DOUBLE TEAM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_113_3",
+     "event": {
+      "lines": [
+       "You found a TM32 DOUBLE TEAM!"
+      ],
+      "gift_item": {
+       "HTM32": 1
+      },
+      "flag": "oras_hoenn_route_113_3"
+     }
+    },
+    {
+     "text": "MAX ETHER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_113_4",
+     "event": {
+      "lines": [
+       "You found a Max Ether!"
+      ],
+      "gift_item": {
+       "MAX_ETHER": 1
+      },
+      "flag": "oras_hoenn_route_113_4"
+     }
+    },
+    {
+     "text": "HYPER POTION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_113_6",
+     "event": {
+      "lines": [
+       "You found a Hyper Potion!"
+      ],
+      "gift_item": {
+       "HYPER_POTION": 1
+      },
+      "flag": "oras_hoenn_route_113_6"
+     }
+    },
+    {
+     "text": "REVIVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_113_7",
+     "event": {
+      "lines": [
+       "You found a Revive!"
+      ],
+      "gift_item": {
+       "REVIVE": 1
+      },
+      "flag": "oras_hoenn_route_113_7"
+     }
+    },
+    {
+     "text": "MAX REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_113_8",
+     "event": {
+      "lines": [
+       "You found a Max Repel!"
+      ],
+      "gift_item": {
+       "MAX_REPEL": 1
+      },
+      "flag": "oras_hoenn_route_113_8"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_114": {
+   "add_trainers": [
+    {
+     "name": "Fisherman Claude",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      341,
+      320
+     ],
+     "levels": [
+      21,
+      21
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Nolan",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      130
+     ],
+     "levels": [
+      23
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Teammates Tyra & Ivy",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      315,
+      184
+     ],
+     "levels": [
+      21,
+      23
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Camper Shane",
+     "class": "CAMPER",
+     "sprite": "camper.png",
+     "team": [
+      312,
+      313
+     ],
+     "levels": [
+      20,
+      20
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Kindler Bernie",
+     "class": "KINDLER",
+     "sprite": "kindler.png",
+     "team": [
+      218,
+      278
+     ],
+     "levels": [
+      20,
+      22
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Hiker Lenny",
+     "class": "HIKER",
+     "sprite": "hiker.png",
+     "team": [
+      66
+     ],
+     "levels": [
+      23
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Pokemaniac Steve": {
+     "team": [
+      304
+     ],
+     "levels": [
+      23
+     ]
+    },
+    "Hiker Lucas": {
+     "team": [
+      74,
+      74
+     ],
+     "levels": [
+      22,
+      20
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "Old man and his Poochyena",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Old man and his Poochyena: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM05": 1
+      },
+      "flag": "oras_hoenn_route_114_1"
+     },
+     "flag_condition": "not oras_hoenn_route_114_1"
+    },
+    {
+     "text": "Berry Trees southeast of Lanette's house",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees southeast of Lanette's house: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "ASPEAR_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_114_3"
+     },
+     "flag_condition": "not oras_hoenn_route_114_3"
+    },
+    {
+     "text": "PROTEIN",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_114_5",
+     "event": {
+      "lines": [
+       "You found a Protein!"
+      ],
+      "gift_item": {
+       "PROTEIN": 1
+      },
+      "flag": "oras_hoenn_route_114_5"
+     }
+    },
+    {
+     "text": "ENERGY POWDER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_114_8",
+     "event": {
+      "lines": [
+       "You found a Energy Powder!"
+      ],
+      "gift_item": {
+       "ENERGY_POWDER": 1
+      },
+      "flag": "oras_hoenn_route_114_8"
+     }
+    },
+    {
+     "text": "RARE CANDY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_114_9",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_hoenn_route_114_9"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_115": {
+   "set_teams": {
+    "Black Belt Nob": {
+     "team": [
+      66
+     ],
+     "levels": [
+      25
+     ]
+    },
+    "Battle Girl Cyndy": {
+     "team": [
+      307
+     ],
+     "levels": [
+      25
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Collector HectorOR",
+     "class": "POKEMANIAC",
+     "sprite": "supernerd.png",
+     "team": [
+      336
+     ],
+     "levels": [
+      24
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Collector HectorAS",
+     "class": "POKEMANIAC",
+     "sprite": "supernerd.png",
+     "team": [
+      335
+     ],
+     "levels": [
+      24
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Black Belt Koichi",
+     "class": "BLACKBELT",
+     "sprite": "blackbelt.png",
+     "team": [
+      66,
+      66
+     ],
+     "levels": [
+      25,
+      27
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Expert Timothy",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      297
+     ],
+     "levels": [
+      30
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ruin Maniac Hayes",
+     "class": "RUIN_MANIAC",
+     "sprite": "ruinmaniac.png",
+     "team": [
+      28,
+      28
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "GREAT BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_115_2",
+     "event": {
+      "lines": [
+       "You found a Great Ball!"
+      ],
+      "gift_item": {
+       "GREAT_BALL": 1
+      },
+      "flag": "oras_hoenn_route_115_2"
+     }
+    },
+    {
+     "text": "Berry Trees",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "WEPEAR_BERRY": 8
+      },
+      "flag": "oras_hoenn_route_115_3"
+     },
+     "flag_condition": "not oras_hoenn_route_115_3"
+    },
+    {
+     "text": "ZINC",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_115_4",
+     "event": {
+      "lines": [
+       "You found a Zinc!"
+      ],
+      "gift_item": {
+       "ZINC": 1
+      },
+      "flag": "oras_hoenn_route_115_4"
+     }
+    },
+    {
+     "text": "Berry Trees ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "BLUK_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_115_5"
+     },
+     "flag_condition": "not oras_hoenn_route_115_5"
+    },
+    {
+     "text": "Berry Trees  ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "KELPSY_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_115_6"
+     },
+     "flag_condition": "not oras_hoenn_route_115_6"
+    },
+    {
+     "text": "PP UP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_115_7",
+     "event": {
+      "lines": [
+       "You found a Pp Up!"
+      ],
+      "gift_item": {
+       "PP_UP": 1
+      },
+      "flag": "oras_hoenn_route_115_7"
+     }
+    },
+    {
+     "text": "HEAL POWDER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_115_8",
+     "event": {
+      "lines": [
+       "You found a Heal Powder!"
+      ],
+      "gift_item": {
+       "HEAL_POWDER": 1
+      },
+      "flag": "oras_hoenn_route_115_8"
+     }
+    },
+    {
+     "text": "IRON",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_115_9",
+     "event": {
+      "lines": [
+       "You found a Iron!"
+      ],
+      "gift_item": {
+       "IRON": 1
+      },
+      "flag": "oras_hoenn_route_115_9"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_116": {
+   "add_trainers": [
+    {
+     "name": "Youngster Joey",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      263,
+      66
+     ],
+     "levels": [
+      7,
+      9
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Schoolkid Karen",
+     "class": "SCHOOL_KID",
+     "sprite": "school_kid_m.png",
+     "team": [
+      285,
+      293
+     ],
+     "levels": [
+      8,
+      8
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Bug Catcher Jose": {
+     "team": [
+      265,
+      266,
+      290
+     ],
+     "levels": [
+      7,
+      7,
+      7
+     ]
+    },
+    "Lass Janice": {
+     "team": [
+      183
+     ],
+     "levels": [
+      10
+     ]
+    },
+    "Hiker Clark": {
+     "team": [
+      74,
+      74
+     ],
+     "levels": [
+      8,
+      10
+     ]
+    },
+    "School Kid Jerry": {
+     "team": [
+      280
+     ],
+     "levels": [
+      10
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_116_1",
+     "event": {
+      "lines": [
+       "You found a Repel!"
+      ],
+      "gift_item": {
+       "REPEL": 1
+      },
+      "flag": "oras_hoenn_route_116_1"
+     }
+    },
+    {
+     "text": "POTION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_116_2",
+     "event": {
+      "lines": [
+       "You found a Potion!"
+      ],
+      "gift_item": {
+       "POTION": 1
+      },
+      "flag": "oras_hoenn_route_116_2"
+     }
+    },
+    {
+     "text": "X SP. ATK",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_116_3",
+     "event": {
+      "lines": [
+       "You found a X Sp. Atk!"
+      ],
+      "gift_item": {
+       "X_SP_ATK": 1
+      },
+      "flag": "oras_hoenn_route_116_3"
+     }
+    },
+    {
+     "text": "ETHER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_116_4",
+     "event": {
+      "lines": [
+       "You found a Ether!"
+      ],
+      "gift_item": {
+       "ETHER": 1
+      },
+      "flag": "oras_hoenn_route_116_4"
+     }
+    },
+    {
+     "text": "CHESTO BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_116_5",
+     "event": {
+      "lines": [
+       "You found 6 Chesto Berry!"
+      ],
+      "gift_item": {
+       "CHESTO_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_116_5"
+     }
+    },
+    {
+     "text": "HP UP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_116_7",
+     "event": {
+      "lines": [
+       "You found a Hp Up!"
+      ],
+      "gift_item": {
+       "HP_UP": 1
+      },
+      "flag": "oras_hoenn_route_116_7"
+     }
+    },
+    {
+     "text": "Devon researcher",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Devon researcher: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "REPEAT_BALL": 1
+      },
+      "flag": "oras_hoenn_route_116_8"
+     },
+     "flag_condition": "not oras_hoenn_route_116_8"
+    }
+   ]
+  },
+  "HOENN_ROUTE_117": {
+   "set_teams": {
+    "Sr. and Jr. Anna & Meg": {
+     "team": [
+      263,
+      296
+     ],
+     "levels": [
+      17,
+      18
+     ]
+    },
+    "Triathlete Dylan": {
+     "team": [
+      84
+     ],
+     "levels": [
+      18
+     ]
+    },
+    "Pokémon Breeder Isaac": {
+     "team": [
+      293,
+      263,
+      304,
+      261,
+      276,
+      296
+     ],
+     "levels": [
+      17,
+      17,
+      17,
+      17,
+      17,
+      17
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Pokémon Breeder Lydia",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      278,
+      285,
+      298,
+      118,
+      406,
+      300
+     ],
+     "levels": [
+      17,
+      17,
+      17,
+      17,
+      17,
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Maniac Derek",
+     "class": "PKMN_TRAINER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      290,
+      269,
+      267
+     ],
+     "levels": [
+      15,
+      15,
+      15
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "Berry Trees",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Berry Trees: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "PINAP_BERRY": 8
+      },
+      "flag": "oras_hoenn_route_117_1"
+     },
+     "flag_condition": "not oras_hoenn_route_117_1"
+    },
+    {
+     "text": "REVIVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_117_2",
+     "event": {
+      "lines": [
+       "You found a Revive!"
+      ],
+      "gift_item": {
+       "REVIVE": 1
+      },
+      "flag": "oras_hoenn_route_117_2"
+     }
+    },
+    {
+     "text": "GREAT BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_117_3",
+     "event": {
+      "lines": [
+       "You found a Great Ball!"
+      ],
+      "gift_item": {
+       "GREAT_BALL": 1
+      },
+      "flag": "oras_hoenn_route_117_3"
+     }
+    },
+    {
+     "text": "ULTRA BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_117_4",
+     "event": {
+      "lines": [
+       "You found a Ultra Ball!"
+      ],
+      "gift_item": {
+       "ULTRA_BALL": 1
+      },
+      "flag": "oras_hoenn_route_117_4"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_118": {
+   "add_trainers": [
+    {
+     "name": "Aroma Lady Rose",
+     "class": "BEAUTY",
+     "sprite": "beauty.png",
+     "team": [
+      43,
+      315
+     ],
+     "levels": [
+      16,
+      16
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Wade",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      318
+     ],
+     "levels": [
+      17
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bird Keeper Chester",
+     "class": "BIRD_KEEPER",
+     "sprite": "bird_keeper.png",
+     "team": [
+      333,
+      277
+     ],
+     "levels": [
+      26,
+      28
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Delinquent Miley",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      331,
+      262
+     ],
+     "levels": [
+      26,
+      28
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Guitarist Dalton": {
+     "team": [
+      81,
+      293
+     ],
+     "levels": [
+      16,
+      16
+     ]
+    },
+    "Fisherman Barny": {
+     "team": [
+      318,
+      130
+     ],
+     "levels": [
+      26,
+      26
+     ]
+    },
+    "Bird Keeper Perry": {
+     "team": [
+      279
+     ],
+     "levels": [
+      29
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "STARDUST",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_118_2",
+     "event": {
+      "lines": [
+       "You found a Stardust!"
+      ],
+      "gift_item": {
+       "STARDUST": 1
+      },
+      "flag": "oras_hoenn_route_118_2"
+     }
+    },
+    {
+     "text": "LEAF STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_118_3",
+     "event": {
+      "lines": [
+       "You found a Leaf Stone!"
+      ],
+      "gift_item": {
+       "LEAF_STONE": 1
+      },
+      "flag": "oras_hoenn_route_118_3"
+     }
+    },
+    {
+     "text": "Soft soil patch",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Soft soil patch: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "SITRUS_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_118_5"
+     },
+     "flag_condition": "not oras_hoenn_route_118_5"
+    },
+    {
+     "text": "HYPER POTION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_118_6",
+     "event": {
+      "lines": [
+       "You found a Hyper Potion!"
+      ],
+      "gift_item": {
+       "HYPER_POTION": 1
+      },
+      "flag": "oras_hoenn_route_118_6"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_119": {
+   "add_trainers": [
+    {
+     "name": "Bug Catcher Greg",
+     "class": "BUG_CATCHER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      267
+     ],
+     "levels": [
+      29
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Catcher Doug",
+     "class": "BUG_CATCHER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      313,
+      314
+     ],
+     "levels": [
+      26,
+      28
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Maniac Donald",
+     "class": "PKMN_TRAINER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      267
+     ],
+     "levels": [
+      30
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Catcher Kent",
+     "class": "BUG_CATCHER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      269
+     ],
+     "levels": [
+      29
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Maniac Brent",
+     "class": "PKMN_TRAINER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      284,
+      291
+     ],
+     "levels": [
+      28,
+      28
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Maniac Taylor",
+     "class": "PKMN_TRAINER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      269
+     ],
+     "levels": [
+      30
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Brains & Brawn Jael & Kael",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      64,
+      67
+     ],
+     "levels": [
+      31,
+      31
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Pokémon Ranger Jackson",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_f.png",
+     "team": [
+      336,
+      288
+     ],
+     "levels": [
+      29,
+      29
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bird Keeper Hugh",
+     "class": "BIRD_KEEPER",
+     "sprite": "bird_keeper.png",
+     "team": [
+      277
+     ],
+     "levels": [
+      30
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ninja Boy Yasu",
+     "class": "NINJA_BOY",
+     "sprite": "ninja_boy.png",
+     "team": [
+      291
+     ],
+     "levels": [
+      27
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Eugene",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      318,
+      318,
+      349
+     ],
+     "levels": [
+      27,
+      27,
+      27
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Pokémon Ranger Catherine": {
+     "team": [
+      286
+     ],
+     "levels": [
+      31
+     ]
+    },
+    "Bird Keeper Phil": {
+     "team": [
+      84
+     ],
+     "levels": [
+      30
+     ]
+    },
+    "Ninja Boy Takashi": {
+     "team": [
+      109
+     ],
+     "levels": [
+      29
+     ]
+    },
+    "Ninja Boy Hideo": {
+     "team": [
+      109,
+      109
+     ],
+     "levels": [
+      27,
+      27
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "MAX REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_1",
+     "event": {
+      "lines": [
+       "You found a Max Repel!"
+      ],
+      "gift_item": {
+       "MAX_REPEL": 1
+      },
+      "flag": "oras_hoenn_route_119_1"
+     }
+    },
+    {
+     "text": "ZINC",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_3",
+     "event": {
+      "lines": [
+       "You found a Zinc!"
+      ],
+      "gift_item": {
+       "ZINC": 1
+      },
+      "flag": "oras_hoenn_route_119_3"
+     }
+    },
+    {
+     "text": "HONDEW BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_4",
+     "event": {
+      "lines": [
+       "You found 4 Hondew Berry!"
+      ],
+      "gift_item": {
+       "HONDEW_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_119_4"
+     }
+    },
+    {
+     "text": "CALCIUM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_5",
+     "event": {
+      "lines": [
+       "You found a Calcium!"
+      ],
+      "gift_item": {
+       "CALCIUM": 1
+      },
+      "flag": "oras_hoenn_route_119_5"
+     }
+    },
+    {
+     "text": "PP MAX",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_6",
+     "event": {
+      "lines": [
+       "You found a Pp Max!"
+      ],
+      "gift_item": {
+       "PP_MAX": 1
+      },
+      "flag": "oras_hoenn_route_119_6"
+     }
+    },
+    {
+     "text": "ELIXIR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_7",
+     "event": {
+      "lines": [
+       "You found a Elixir!"
+      ],
+      "gift_item": {
+       "ELIXIR": 1
+      },
+      "flag": "oras_hoenn_route_119_7"
+     }
+    },
+    {
+     "text": "MAX ETHER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_8",
+     "event": {
+      "lines": [
+       "You found a Max Ether!"
+      ],
+      "gift_item": {
+       "MAX_ETHER": 1
+      },
+      "flag": "oras_hoenn_route_119_8"
+     }
+    },
+    {
+     "text": "ULTRA BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_9",
+     "event": {
+      "lines": [
+       "You found a Ultra Ball!"
+      ],
+      "gift_item": {
+       "ULTRA_BALL": 1
+      },
+      "flag": "oras_hoenn_route_119_9"
+     }
+    },
+    {
+     "text": "LEAF STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_10",
+     "event": {
+      "lines": [
+       "You found a Leaf Stone!"
+      ],
+      "gift_item": {
+       "LEAF_STONE": 1
+      },
+      "flag": "oras_hoenn_route_119_10"
+     }
+    },
+    {
+     "text": "POMEG BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_11",
+     "event": {
+      "lines": [
+       "You found 6 Pomeg Berry!"
+      ],
+      "gift_item": {
+       "POMEG_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_119_11"
+     }
+    },
+    {
+     "text": "TIMER BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_12",
+     "event": {
+      "lines": [
+       "You found a Timer Ball!"
+      ],
+      "gift_item": {
+       "TIMER_BALL": 1
+      },
+      "flag": "oras_hoenn_route_119_12"
+     }
+    },
+    {
+     "text": "RARE CANDY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_13",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_hoenn_route_119_13"
+     }
+    },
+    {
+     "text": "TM62 ACROBATICS",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_14",
+     "event": {
+      "lines": [
+       "You found a TM62 ACROBATICS!"
+      ],
+      "gift_item": {
+       "HTM62": 1
+      },
+      "flag": "oras_hoenn_route_119_14"
+     }
+    },
+    {
+     "text": "LEPPA BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_15",
+     "event": {
+      "lines": [
+       "You found 5 Leppa Berry!"
+      ],
+      "gift_item": {
+       "LEPPA_BERRY": 5
+      },
+      "flag": "oras_hoenn_route_119_15"
+     }
+    },
+    {
+     "text": "SITRUS BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_119_16",
+     "event": {
+      "lines": [
+       "You found 3 Sitrus Berry!"
+      ],
+      "gift_item": {
+       "SITRUS_BERRY": 3
+      },
+      "flag": "oras_hoenn_route_119_16"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_120": {
+   "add_trainers": [
+    {
+     "name": "Parasol Lady Clarissa",
+     "class": "LASS",
+     "sprite": "beauty.png",
+     "team": [
+      118,
+      119
+     ],
+     "levels": [
+      31,
+      33
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bird Keeper Colin",
+     "class": "BIRD_KEEPER",
+     "sprite": "bird_keeper.png",
+     "team": [
+      277,
+      178
+     ],
+     "levels": [
+      32,
+      32
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ninja Boy Tsunao",
+     "class": "NINJA_BOY",
+     "sprite": "ninja_boy.png",
+     "team": [
+      109,
+      109,
+      109
+     ],
+     "levels": [
+      29,
+      30,
+      31
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Bug Maniac Brandon",
+     "class": "PKMN_TRAINER",
+     "sprite": "bug_catcher.png",
+     "team": [
+      284
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Street Thug Gomez",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      332
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Delinquent Sharlene",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      319
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ninja Boy Keigo",
+     "class": "NINJA_BOY",
+     "sprite": "ninja_boy.png",
+     "team": [
+      291,
+      109
+     ],
+     "levels": [
+      32,
+      30
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ruin Maniac Chip",
+     "class": "RUIN_MANIAC",
+     "sprite": "ruinmaniac.png",
+     "team": [
+      343,
+      299
+     ],
+     "levels": [
+      32,
+      32
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Pokémon Ranger Carlos",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_f.png",
+     "team": [
+      274,
+      310
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Pokémon Ranger Jenna",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_f.png",
+     "team": [
+      271,
+      326
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Bird Keeper Robert": {
+     "team": [
+      333
+     ],
+     "levels": [
+      34
+     ]
+    },
+    "Parasol Lady Angelica": {
+     "team": [
+      351
+     ],
+     "levels": [
+      34
+     ]
+    },
+    "Cooltrainer Jennifer": {
+     "team": [
+      350
+     ],
+     "levels": [
+      36
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "RARE CANDY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_1",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_hoenn_route_120_1"
+     }
+    },
+    {
+     "text": "NEST BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_3",
+     "event": {
+      "lines": [
+       "You found a Nest Ball!"
+      ],
+      "gift_item": {
+       "NEST_BALL": 1
+      },
+      "flag": "oras_hoenn_route_120_3"
+     }
+    },
+    {
+     "text": "ASPEAR BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_4",
+     "event": {
+      "lines": [
+       "You found 4 Aspear Berry!"
+      ],
+      "gift_item": {
+       "ASPEAR_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_120_4"
+     }
+    },
+    {
+     "text": "WEPEAR BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_5",
+     "event": {
+      "lines": [
+       "You found 4 Wepear Berry!"
+      ],
+      "gift_item": {
+       "WEPEAR_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_120_5"
+     }
+    },
+    {
+     "text": "PINAP BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_6",
+     "event": {
+      "lines": [
+       "You found 4 Pinap Berry!"
+      ],
+      "gift_item": {
+       "PINAP_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_120_6"
+     }
+    },
+    {
+     "text": "NUGGET",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_8",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_route_120_8"
+     }
+    },
+    {
+     "text": "REVIVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_9",
+     "event": {
+      "lines": [
+       "You found a Revive!"
+      ],
+      "gift_item": {
+       "REVIVE": 1
+      },
+      "flag": "oras_hoenn_route_120_9"
+     }
+    },
+    {
+     "text": "FULL HEAL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_10",
+     "event": {
+      "lines": [
+       "You found a Full Heal!"
+      ],
+      "gift_item": {
+       "FULL_HEAL": 1
+      },
+      "flag": "oras_hoenn_route_120_10"
+     }
+    },
+    {
+     "text": "RARE CANDY ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_11",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_hoenn_route_120_11"
+     }
+    },
+    {
+     "text": "LIGHT BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_12",
+     "event": {
+      "lines": [
+       "You found a Light Ball!"
+      ],
+      "gift_item": {
+       "LIGHT_BALL": 1
+      },
+      "flag": "oras_hoenn_route_120_12"
+     }
+    },
+    {
+     "text": "FULL RESTORE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_13",
+     "event": {
+      "lines": [
+       "You found a Full Restore!"
+      ],
+      "gift_item": {
+       "FULL_RESTORE": 1
+      },
+      "flag": "oras_hoenn_route_120_13"
+     }
+    },
+    {
+     "text": "DUSK BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_120_14",
+     "event": {
+      "lines": [
+       "You found a Dusk Ball!"
+      ],
+      "gift_item": {
+       "DUSK_BALL": 1
+      },
+      "flag": "oras_hoenn_route_120_14"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_121": {
+   "set_teams": {
+    "Hex Maniac Tammy": {
+     "team": [
+      355,
+      302
+     ],
+     "levels": [
+      33,
+      33
+     ]
+    },
+    "Beauty Jessica": {
+     "team": [
+      352,
+      336
+     ],
+     "levels": [
+      32,
+      34
+     ]
+    },
+    "Gentleman Walter": {
+     "team": [
+      310
+     ],
+     "levels": [
+      35
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Teammates Kate & Joy",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      327,
+      289
+     ],
+     "levels": [
+      34,
+      35
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Poké Fan Vanessa",
+     "class": "POKEFAN",
+     "sprite": "pokefan_f.png",
+     "team": [
+      25
+     ],
+     "levels": [
+      35
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "ASPEAR BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_1",
+     "event": {
+      "lines": [
+       "You found 3 Aspear Berry!"
+      ],
+      "gift_item": {
+       "ASPEAR_BERRY": 3
+      },
+      "flag": "oras_hoenn_route_121_1"
+     }
+    },
+    {
+     "text": "PERSIM BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_2",
+     "event": {
+      "lines": [
+       "You found 4 Persim Berry!"
+      ],
+      "gift_item": {
+       "PERSIM_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_121_2"
+     }
+    },
+    {
+     "text": "RAWST BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_3",
+     "event": {
+      "lines": [
+       "You found 4 Rawst Berry!"
+      ],
+      "gift_item": {
+       "RAWST_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_121_3"
+     }
+    },
+    {
+     "text": "ZINC",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_5",
+     "event": {
+      "lines": [
+       "You found a Zinc!"
+      ],
+      "gift_item": {
+       "ZINC": 1
+      },
+      "flag": "oras_hoenn_route_121_5"
+     }
+    },
+    {
+     "text": "MAX REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_6",
+     "event": {
+      "lines": [
+       "You found a Max Repel!"
+      ],
+      "gift_item": {
+       "MAX_REPEL": 1
+      },
+      "flag": "oras_hoenn_route_121_6"
+     }
+    },
+    {
+     "text": "CARBOS",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_7",
+     "event": {
+      "lines": [
+       "You found a Carbos!"
+      ],
+      "gift_item": {
+       "CARBOS": 1
+      },
+      "flag": "oras_hoenn_route_121_7"
+     }
+    },
+    {
+     "text": "SHINY STONE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_8",
+     "event": {
+      "lines": [
+       "You found a Shiny Stone!"
+      ],
+      "gift_item": {
+       "SHINY_STONE": 1
+      },
+      "flag": "oras_hoenn_route_121_8"
+     }
+    },
+    {
+     "text": "NUGGET",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_9",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_route_121_9"
+     }
+    },
+    {
+     "text": "NANAB BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_11",
+     "event": {
+      "lines": [
+       "You found 6 Nanab Berry!"
+      ],
+      "gift_item": {
+       "NANAB_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_121_11"
+     }
+    },
+    {
+     "text": "PEARL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_13",
+     "event": {
+      "lines": [
+       "You found a Pearl!"
+      ],
+      "gift_item": {
+       "PEARL": 1
+      },
+      "flag": "oras_hoenn_route_121_13"
+     }
+    },
+    {
+     "text": "NUGGET ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_121_14",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_route_121_14"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_123": {
+   "add_trainers": [
+    {
+     "name": "Aroma Lady Violet",
+     "class": "BEAUTY",
+     "sprite": "beauty.png",
+     "team": [
+      45
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Twins Miu & Yuki",
+     "class": "TWINS",
+     "sprite": "twins.png",
+     "team": [
+      267,
+      269,
+      64,
+      338
+     ],
+     "levels": [
+      35,
+      35,
+      34,
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Picnicker Martha",
+     "class": "PICNIKER",
+     "sprite": "picknicker.png",
+     "team": [
+      314,
+      40
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Street Thug Hannibal",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      342
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Delinquent Kylie",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      262
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Julie",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      38,
+      182
+     ],
+     "levels": [
+      35,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Clyde",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      329,
+      227
+     ],
+     "levels": [
+      35,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Timin",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      119
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Fisher",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      340
+     ],
+     "levels": [
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Finley",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      342,
+      130
+     ],
+     "levels": [
+      34,
+      34
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Cooltrainer Wendy": {
+     "team": [
+      111,
+      357
+     ],
+     "levels": [
+      36,
+      36
+     ]
+    },
+    "Psychic Cameron": {
+     "team": [
+      338,
+      65
+     ],
+     "levels": [
+      40,
+      42
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "REVIVAL HERB",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_1",
+     "event": {
+      "lines": [
+       "You found a Revival Herb!"
+      ],
+      "gift_item": {
+       "REVIVAL_HERB": 1
+      },
+      "flag": "oras_hoenn_route_123_1"
+     }
+    },
+    {
+     "text": "Girl southwest of the pier",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Girl southwest of the pier: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "BIG_ROOT": 1
+      },
+      "flag": "oras_hoenn_route_123_2"
+     },
+     "flag_condition": "not oras_hoenn_route_123_2"
+    },
+    {
+     "text": "HONDEW BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_3",
+     "event": {
+      "lines": [
+       "You found 2 Hondew Berry!"
+      ],
+      "gift_item": {
+       "HONDEW_BERRY": 2
+      },
+      "flag": "oras_hoenn_route_123_3"
+     }
+    },
+    {
+     "text": "LEPPA BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_4",
+     "event": {
+      "lines": [
+       "You found 4 Leppa Berry!"
+      ],
+      "gift_item": {
+       "LEPPA_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_123_4"
+     }
+    },
+    {
+     "text": "SITRUS BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_5",
+     "event": {
+      "lines": [
+       "You found 4 Sitrus Berry!"
+      ],
+      "gift_item": {
+       "SITRUS_BERRY": 4
+      },
+      "flag": "oras_hoenn_route_123_5"
+     }
+    },
+    {
+     "text": "QUALOT BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_8",
+     "event": {
+      "lines": [
+       "You found 6 Qualot Berry!"
+      ],
+      "gift_item": {
+       "QUALOT_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_123_8"
+     }
+    },
+    {
+     "text": "GREPA BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_9",
+     "event": {
+      "lines": [
+       "You found 6 Grepa Berry!"
+      ],
+      "gift_item": {
+       "GREPA_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_123_9"
+     }
+    },
+    {
+     "text": "TAMATO BERRY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_10",
+     "event": {
+      "lines": [
+       "You found 6 Tamato Berry!"
+      ],
+      "gift_item": {
+       "TAMATO_BERRY": 6
+      },
+      "flag": "oras_hoenn_route_123_10"
+     }
+    },
+    {
+     "text": "ELIXIR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_11",
+     "event": {
+      "lines": [
+       "You found a Elixir!"
+      ],
+      "gift_item": {
+       "ELIXIR": 1
+      },
+      "flag": "oras_hoenn_route_123_11"
+     }
+    },
+    {
+     "text": "WIDE LENS",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_12",
+     "event": {
+      "lines": [
+       "You found a Wide Lens!"
+      ],
+      "gift_item": {
+       "WIDE_LENS": 1
+      },
+      "flag": "oras_hoenn_route_123_12"
+     }
+    },
+    {
+     "text": "CALCIUM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_13",
+     "event": {
+      "lines": [
+       "You found a Calcium!"
+      ],
+      "gift_item": {
+       "CALCIUM": 1
+      },
+      "flag": "oras_hoenn_route_123_13"
+     }
+    },
+    {
+     "text": "Fairy Tale Girl",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Fairy Tale Girl: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM99": 1
+      },
+      "flag": "oras_hoenn_route_123_14"
+     },
+     "flag_condition": "not oras_hoenn_route_123_14"
+    },
+    {
+     "text": "ULTRA BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_15",
+     "event": {
+      "lines": [
+       "You found a Ultra Ball!"
+      ],
+      "gift_item": {
+       "ULTRA_BALL": 1
+      },
+      "flag": "oras_hoenn_route_123_15"
+     }
+    },
+    {
+     "text": "GRACIDEA",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_123_17",
+     "event": {
+      "lines": [
+       "You found a Gracidea!"
+      ],
+      "gift_item": {
+       "GRACIDEA": 1
+      },
+      "flag": "oras_hoenn_route_123_17"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_124": {
+   "set_teams": {
+    "Swimmer Jenny": {
+     "team": [
+      370
+     ],
+     "levels": [
+      39
+     ]
+    },
+    "Swimmer Roland": {
+     "team": [
+      364
+     ],
+     "levels": [
+      39
+     ]
+    },
+    "Swimmer Grace": {
+     "team": [
+      320,
+      184
+     ],
+     "levels": [
+      36,
+      38
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Sis & Bro Rita & Sam",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      279,
+      340
+     ],
+     "levels": [
+      39,
+      38
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♂ Spencer",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      120,
+      73
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♂ Chad",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      55
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Dmitry",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      121
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Kylan",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      117
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Rischel",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      119
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Arzu",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      366,
+      366
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "HEART SCALE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_124_8",
+     "event": {
+      "lines": [
+       "You found a Heart Scale!"
+      ],
+      "gift_item": {
+       "HEART_SCALE": 1
+      },
+      "flag": "oras_hoenn_route_124_8"
+     }
+    },
+    {
+     "text": "HEART SCALE ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_124_9",
+     "event": {
+      "lines": [
+       "You found a Heart Scale!"
+      ],
+      "gift_item": {
+       "HEART_SCALE": 1
+      },
+      "flag": "oras_hoenn_route_124_9"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_125": {
+   "add_trainers": [
+    {
+     "name": "Swimmer ♂ Stan",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      117
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♀ Tanya",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      370
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Teammates Kim & Iris",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      334,
+      323
+     ],
+     "levels": [
+      38,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♀ Sharon",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      366,
+      119
+     ],
+     "levels": [
+      38,
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♂ Cody",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      120,
+      120
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Swimmer Ernest": {
+     "team": [
+      320,
+      73,
+      67
+     ],
+     "levels": [
+      36,
+      36,
+      36
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "BIG PEARL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_125_1",
+     "event": {
+      "lines": [
+       "You found a Big Pearl!"
+      ],
+      "gift_item": {
+       "BIG_PEARL": 1
+      },
+      "flag": "oras_hoenn_route_125_1"
+     }
+    },
+    {
+     "text": "DIVE BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_125_2",
+     "event": {
+      "lines": [
+       "You found a Dive Ball!"
+      ],
+      "gift_item": {
+       "DIVE_BALL": 1
+      },
+      "flag": "oras_hoenn_route_125_2"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_126": {
+   "add_trainers": [
+    {
+     "name": "Triathlete Denzel",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      184
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♀ Brenda",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      272
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Leopold",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      329,
+      112
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Harriet",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      169
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♂ Dean",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      320,
+      120,
+      55
+     ],
+     "levels": [
+      35,
+      36,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Yutaka",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      279,
+      171
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Tristan",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      321
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Jillian",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      184
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Swimmer Barry": {
+     "team": [
+      130
+     ],
+     "levels": [
+      39
+     ]
+    },
+    "Swimmer Nikki": {
+     "team": [
+      370,
+      73
+     ],
+     "levels": [
+      36,
+      38
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "GREEN SHARD",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_126_1",
+     "event": {
+      "lines": [
+       "You found a Green Shard!"
+      ],
+      "gift_item": {
+       "GREEN_SHARD": 1
+      },
+      "flag": "oras_hoenn_route_126_1"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_127": {
+   "add_trainers": [
+    {
+     "name": "Bird Keeper Byron",
+     "class": "BIRD_KEEPER",
+     "sprite": "bird_keeper.png",
+     "team": [
+      85,
+      178
+     ],
+     "levels": [
+      38,
+      38
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Jonah",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      370,
+      369
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Roger",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      320,
+      319
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Hisato",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      127
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Claudia",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      361,
+      284,
+      356
+     ],
+     "levels": [
+      38,
+      38,
+      38
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Triathlete Jaylon",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      73
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Black Belt Koji",
+     "class": "BLACKBELT",
+     "sprite": "blackbelt.png",
+     "team": [
+      67,
+      297
+     ],
+     "levels": [
+      37,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Javier",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      369
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Kailyn",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      121
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Aileen",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      364
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Fisherman Henry": {
+     "team": [
+      73
+     ],
+     "levels": [
+      39
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "ZINC",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_127_1",
+     "event": {
+      "lines": [
+       "You found a Zinc!"
+      ],
+      "gift_item": {
+       "ZINC": 1
+      },
+      "flag": "oras_hoenn_route_127_1"
+     }
+    },
+    {
+     "text": "CARBOS",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_127_2",
+     "event": {
+      "lines": [
+       "You found a Carbos!"
+      ],
+      "gift_item": {
+       "CARBOS": 1
+      },
+      "flag": "oras_hoenn_route_127_2"
+     }
+    },
+    {
+     "text": "RARE CANDY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_127_3",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_hoenn_route_127_3"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_128": {
+   "add_trainers": [
+    {
+     "name": "Ace Trainer Cornelius",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      76,
+      26
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Wayne",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      320,
+      117
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Tuber Delmar",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      370
+     ],
+     "levels": [
+      38
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Tuber Marlene",
+     "class": "YOUNGSTER",
+     "sprite": "youngster.png",
+     "team": [
+      370
+     ],
+     "levels": [
+      38
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Mayu",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      370,
+      370
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Swimmer Isaiah": {
+     "team": [
+      121
+     ],
+     "levels": [
+      36
+     ]
+    }
+   }
+  },
+  "HOENN_ROUTE_129": {
+   "add_trainers": [
+    {
+     "name": "Fisherman Fisk",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      171
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Sheaffer",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      319,
+      340
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Honor",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      324,
+      308
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Triathlete Chase",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      117
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Jason",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      171
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Colten",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      55,
+      130
+     ],
+     "levels": [
+      38,
+      40
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Coral",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      366,
+      73
+     ],
+     "levels": [
+      38,
+      40
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Swimmer Tisha": {
+     "team": [
+      370,
+      184,
+      222
+     ],
+     "levels": [
+      36,
+      36,
+      36
+     ]
+    },
+    "Swimmer Reed": {
+     "team": [
+      279,
+      117
+     ],
+     "levels": [
+      37,
+      37
+     ]
+    }
+   }
+  },
+  "HOENN_ROUTE_130": {
+   "set_teams": {
+    "Swimmer Katie": {
+     "team": [
+      55,
+      119
+     ],
+     "levels": [
+      38,
+      36
+     ]
+    },
+    "Swimmer Rodney": {
+     "team": [
+      342
+     ],
+     "levels": [
+      39
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Triathlete Karsen",
+     "class": "TRIATHLETE",
+     "sprite": "triathlete_f.png",
+     "team": [
+      55,
+      73
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Scuba Diver Silas",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      364,
+      340
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Free Diver Cordura",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      222
+     ],
+     "levels": [
+      41
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ]
+  },
+  "HOENN_ROUTE_131": {
+   "set_teams": {
+    "Swimmer Kara": {
+     "team": [
+      366
+     ],
+     "levels": [
+      39
+     ]
+    },
+    "Swimmer Richard": {
+     "team": [
+      320
+     ],
+     "levels": [
+      39
+     ]
+    },
+    "Swimmer Herman": {
+     "team": [
+      117,
+      130
+     ],
+     "levels": [
+      37,
+      37
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Swimmer ♀ Susie",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      121
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Sis & Bro Rell & Ian",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      184,
+      364
+     ],
+     "levels": [
+      39,
+      38
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ]
+  },
+  "HOENN_ROUTE_132": {
+   "set_teams": {
+    "Swimmer Gilbert": {
+     "team": [
+      73,
+      319
+     ],
+     "levels": [
+      37,
+      37
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Black Belt Kiyo",
+     "class": "BLACKBELT",
+     "sprite": "blackbelt.png",
+     "team": [
+      68
+     ],
+     "levels": [
+      40
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Fisherman Ronald",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      130,
+      130,
+      130
+     ],
+     "levels": [
+      36,
+      36,
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "TM34 SLUDGE WAVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_132_1",
+     "event": {
+      "lines": [
+       "You found a TM34 SLUDGE WAVE!"
+      ],
+      "gift_item": {
+       "HTM34": 1
+      },
+      "flag": "oras_hoenn_route_132_1"
+     }
+    }
+   ]
+  },
+  "HOENN_ROUTE_133": {
+   "add_trainers": [
+    {
+     "name": "Fisherman River",
+     "class": "FISHERMAN",
+     "sprite": "fisherman.png",
+     "team": [
+      117
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Backpacker Grayson",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      203
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♀ Debra",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      222
+     ],
+     "levels": [
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♂ Franklin",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      340,
+      117
+     ],
+     "levels": [
+      36,
+      36
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♀ Linda",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      279,
+      119
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Swimmer ♀ Sheryl",
+     "class": "SWIMMER",
+     "sprite": "swimmer_m.png",
+     "team": [
+      370,
+      279
+     ],
+     "levels": [
+      36,
+      38
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "set_teams": {
+    "Swimmer Beck": {
+     "team": [
+      227
+     ],
+     "levels": [
+      39
+     ]
+    },
+    "Swimmer Warren": {
+     "team": [
+      305,
+      65,
+      310
+     ],
+     "levels": [
+      38,
+      38,
+      38
+     ]
+    }
+   },
+   "route_menu": [
+    {
+     "text": "CALCIUM",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_133_1",
+     "event": {
+      "lines": [
+       "You found a Calcium!"
+      ],
+      "gift_item": {
+       "CALCIUM": 1
+      },
+      "flag": "oras_hoenn_route_133_1"
+     }
+    },
+    {
+     "text": "Psychic",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Psychic: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM77": 1
+      },
+      "flag": "oras_hoenn_route_133_2"
+     },
+     "flag_condition": "not oras_hoenn_route_133_2"
+    }
+   ]
+  },
+  "HOENN_ROUTE_134": {
+   "set_teams": {
+    "Swimmer Jack": {
+     "team": [
+      120,
+      319
+     ],
+     "levels": [
+      36,
+      38
+     ]
+    },
+    "Swimmer Laurel": {
+     "team": [
+      370,
+      370,
+      370
+     ],
+     "levels": [
+      36,
+      36,
+      36
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Bird Keeper Alex",
+     "class": "BIRD_KEEPER",
+     "sprite": "bird_keeper.png",
+     "team": [
+      277,
+      334
+     ],
+     "levels": [
+      37,
+      37
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Black Belt Hitoshi",
+     "class": "BLACKBELT",
+     "sprite": "blackbelt.png",
+     "team": [
+      67,
+      214
+     ],
+     "levels": [
+      37,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Dragon Tamer Aaron",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      372,
+      230
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Elaine",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      305,
+      357
+     ],
+     "levels": [
+      38,
+      40
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "TM80 ROCK SLIDE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_route_134_1",
+     "event": {
+      "lines": [
+       "You found a TM80 ROCK SLIDE!"
+      ],
+      "gift_item": {
+       "HTM80": 1
+      },
+      "flag": "oras_hoenn_route_134_1"
+     }
+    }
+   ]
+  },
+  "HOENN_RUSTURF_TUNNEL": {
+   "route_menu": [
+    {
+     "text": "POKE BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_rusturf_tunnel_2",
+     "event": {
+      "lines": [
+       "You found a Poke Ball!"
+      ],
+      "gift_item": {
+       "POKE_BALLS": 1
+      },
+      "flag": "oras_hoenn_rusturf_tunnel_2"
+     }
+    },
+    {
+     "text": "MAX ETHER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_rusturf_tunnel_3",
+     "event": {
+      "lines": [
+       "You found a Max Ether!"
+      ],
+      "gift_item": {
+       "MAX_ETHER": 1
+      },
+      "flag": "oras_hoenn_rusturf_tunnel_3"
+     }
+    }
+   ]
+  },
+  "HOENN_SAFARI_ZONE": {
+   "route_menu": [
+    {
+     "text": "Street Thug",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Street Thug: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM85": 1
+      },
+      "flag": "oras_hoenn_safari_zone_1"
+     },
+     "flag_condition": "not oras_hoenn_safari_zone_1"
+    },
+    {
+     "text": "TM53 ENERGY BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_safari_zone_2",
+     "event": {
+      "lines": [
+       "You found a TM53 ENERGY BALL!"
+      ],
+      "gift_item": {
+       "HTM53": 1
+      },
+      "flag": "oras_hoenn_safari_zone_2"
+     }
+    },
+    {
+     "text": "PROTEIN",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_safari_zone_3",
+     "event": {
+      "lines": [
+       "You found a Protein!"
+      ],
+      "gift_item": {
+       "PROTEIN": 1
+      },
+      "flag": "oras_hoenn_safari_zone_3"
+     }
+    },
+    {
+     "text": "RARE CANDY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_safari_zone_4",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_hoenn_safari_zone_4"
+     }
+    },
+    {
+     "text": "ULTRA BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_safari_zone_6",
+     "event": {
+      "lines": [
+       "You found a Ultra Ball!"
+      ],
+      "gift_item": {
+       "ULTRA_BALL": 1
+      },
+      "flag": "oras_hoenn_safari_zone_6"
+     }
+    },
+    {
+     "text": "TM93 WILD CHARGE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_safari_zone_7",
+     "event": {
+      "lines": [
+       "You found a TM93 WILD CHARGE!"
+      ],
+      "gift_item": {
+       "HTM93": 1
+      },
+      "flag": "oras_hoenn_safari_zone_7"
+     }
+    }
+   ]
+  },
+  "HOENN_SCORCHED_SLAB": {
+   "route_menu": [
+    {
+     "text": "FULL HEAL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_scorched_slab_1",
+     "event": {
+      "lines": [
+       "You found a Full Heal!"
+      ],
+      "gift_item": {
+       "FULL_HEAL": 1
+      },
+      "flag": "oras_hoenn_scorched_slab_1"
+     }
+    }
+   ]
+  },
+  "HOENN_SEAFLOOR_CAVERN": {
+   "add_trainers": [
+    {
+     "name": "Team Magma Grunt",
+     "class": "TEAM_MAGMA",
+     "sprite": "magma_grunt.png",
+     "team": [
+      322,
+      262
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Team Aqua Grunt",
+     "class": "TEAM_AQUA",
+     "sprite": "aqua_grunt.png",
+     "team": [
+      318,
+      262
+     ],
+     "levels": [
+      39,
+      39
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ]
+  },
+  "HOENN_SHOAL_CAVE": {
+   "route_menu": [
+    {
+     "text": "BIG PEARL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_shoal_cave_2",
+     "event": {
+      "lines": [
+       "You found a Big Pearl!"
+      ],
+      "gift_item": {
+       "BIG_PEARL": 1
+      },
+      "flag": "oras_hoenn_shoal_cave_2"
+     }
+    },
+    {
+     "text": "FOCUS BAND",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_shoal_cave_4",
+     "event": {
+      "lines": [
+       "You found a Focus Band!"
+      ],
+      "gift_item": {
+       "FOCUS_BAND": 1
+      },
+      "flag": "oras_hoenn_shoal_cave_4"
+     }
+    }
+   ]
+  },
+  "HOENN_SKY_PILLAR": {
+   "route_menu": [
+    {
+     "text": "DRAGON SCALE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_sky_pillar_1",
+     "event": {
+      "lines": [
+       "You found a Dragon Scale!"
+      ],
+      "gift_item": {
+       "DRAGON_SCALE": 1
+      },
+      "flag": "oras_hoenn_sky_pillar_1"
+     }
+    },
+    {
+     "text": "TM64 EXPLOSION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_sky_pillar_2",
+     "event": {
+      "lines": [
+       "You found a TM64 EXPLOSION!"
+      ],
+      "gift_item": {
+       "HTM64": 1
+      },
+      "flag": "oras_hoenn_sky_pillar_2"
+     }
+    },
+    {
+     "text": "FULL RESTORE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_sky_pillar_3",
+     "event": {
+      "lines": [
+       "You found a Full Restore!"
+      ],
+      "gift_item": {
+       "FULL_RESTORE": 1
+      },
+      "flag": "oras_hoenn_sky_pillar_3"
+     }
+    },
+    {
+     "text": "ULTRA BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_sky_pillar_4",
+     "event": {
+      "lines": [
+       "You found a Ultra Ball!"
+      ],
+      "gift_item": {
+       "ULTRA_BALL": 1
+      },
+      "flag": "oras_hoenn_sky_pillar_4"
+     }
+    }
+   ]
+  },
+  "HOENN_SS_TIDAL": {
+   "set_teams": {
+    "Gentleman Tucker": {
+     "team": [
+      78,
+      523
+     ],
+     "levels": [
+      49,
+      49
+     ]
+    },
+    "Young Couple Lea & Jed": {
+     "team": [
+      241,
+      128
+     ],
+     "levels": [
+      51,
+      51
+     ]
+    },
+    "Poke Fan Colton": {
+     "team": [
+      301,
+      301,
+      301
+     ],
+     "levels": [
+      48,
+      48,
+      48
+     ]
+    },
+    "Lady Anette": {
+     "team": [
+      53
+     ],
+     "levels": [
+      51
+     ]
+    },
+    "Gentleman Thomas": {
+     "team": [
+      628
+     ],
+     "levels": [
+      51
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Sailor Phillip",
+     "class": "SAILOR",
+     "sprite": "sailor.png",
+     "team": [
+      211,
+      68
+     ],
+     "levels": [
+      48,
+      50
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Sailor Leonard",
+     "class": "SAILOR",
+     "sprite": "sailor.png",
+     "team": [
+      419,
+      279
+     ],
+     "levels": [
+      49,
+      49
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "TM63 EMBARGO",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_ss_tidal_1",
+     "event": {
+      "lines": [
+       "You found a TM63 EMBARGO!"
+      ],
+      "gift_item": {
+       "HTM63": 1
+      },
+      "flag": "oras_hoenn_ss_tidal_1"
+     }
+    },
+    {
+     "text": "SHARP BEAK",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_ss_tidal_2",
+     "event": {
+      "lines": [
+       "You found a Sharp Beak!"
+      ],
+      "gift_item": {
+       "SHARP_BEAK": 1
+      },
+      "flag": "oras_hoenn_ss_tidal_2"
+     }
+    }
+   ]
+  },
+  "HOENN_TEAM_HIDEOUT": {
+   "add_trainers": [
+    {
+     "name": "Team Magma Grunt",
+     "class": "TEAM_MAGMA",
+     "sprite": "magma_grunt.png",
+     "team": [
+      109,
+      322
+     ],
+     "levels": [
+      35,
+      35
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Team Magma Grunts",
+     "class": "TEAM_MAGMA",
+     "sprite": "magma_grunt.png",
+     "team": [
+      261,
+      261,
+      261,
+      261,
+      261
+     ],
+     "levels": [
+      18,
+      18,
+      18,
+      18,
+      18
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Team Aqua Grunt",
+     "class": "TEAM_AQUA",
+     "sprite": "aqua_grunt.png",
+     "team": [
+      88,
+      318
+     ],
+     "levels": [
+      35,
+      35
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Team Aqua Grunts",
+     "class": "TEAM_AQUA",
+     "sprite": "aqua_grunt.png",
+     "team": [
+      261,
+      261,
+      261,
+      261,
+      261
+     ],
+     "levels": [
+      18,
+      18,
+      18,
+      18,
+      18
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "FULL RESTORE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_1",
+     "event": {
+      "lines": [
+       "You found a Full Restore!"
+      ],
+      "gift_item": {
+       "FULL_RESTORE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_1"
+     }
+    },
+    {
+     "text": "MAX ELIXIR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_2",
+     "event": {
+      "lines": [
+       "You found a Max Elixir!"
+      ],
+      "gift_item": {
+       "MAX_ELIXIR": 1
+      },
+      "flag": "oras_hoenn_team_hideout_2"
+     }
+    },
+    {
+     "text": "ESCAPE ROPE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_3",
+     "event": {
+      "lines": [
+       "You found a Escape Rope!"
+      ],
+      "gift_item": {
+       "ESCAPE_ROPE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_3"
+     }
+    },
+    {
+     "text": "NEST BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_4",
+     "event": {
+      "lines": [
+       "You found a Nest Ball!"
+      ],
+      "gift_item": {
+       "NEST_BALL": 1
+      },
+      "flag": "oras_hoenn_team_hideout_4"
+     }
+    },
+    {
+     "text": "TM97 DARK PULSE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_5",
+     "event": {
+      "lines": [
+       "You found a TM97 DARK PULSE!"
+      ],
+      "gift_item": {
+       "HTM97": 1
+      },
+      "flag": "oras_hoenn_team_hideout_5"
+     }
+    },
+    {
+     "text": "NUGGET ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_6",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_team_hideout_6"
+     }
+    },
+    {
+     "text": "PP MAX",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_7",
+     "event": {
+      "lines": [
+       "You found a Pp Max!"
+      ],
+      "gift_item": {
+       "PP_MAX": 1
+      },
+      "flag": "oras_hoenn_team_hideout_7"
+     }
+    },
+    {
+     "text": "MAX REVIVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_8",
+     "event": {
+      "lines": [
+       "You found a Max Revive!"
+      ],
+      "gift_item": {
+       "MAX_REVIVE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_8"
+     }
+    },
+    {
+     "text": "NUGGET  ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_9",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_team_hideout_9"
+     }
+    },
+    {
+     "text": "FULL RESTORE ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_10",
+     "event": {
+      "lines": [
+       "You found a Full Restore!"
+      ],
+      "gift_item": {
+       "FULL_RESTORE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_10"
+     }
+    },
+    {
+     "text": "MAX ELIXIR ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_11",
+     "event": {
+      "lines": [
+       "You found a Max Elixir!"
+      ],
+      "gift_item": {
+       "MAX_ELIXIR": 1
+      },
+      "flag": "oras_hoenn_team_hideout_11"
+     }
+    },
+    {
+     "text": "ESCAPE ROPE ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_12",
+     "event": {
+      "lines": [
+       "You found a Escape Rope!"
+      ],
+      "gift_item": {
+       "ESCAPE_ROPE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_12"
+     }
+    },
+    {
+     "text": "NEST BALL ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_13",
+     "event": {
+      "lines": [
+       "You found a Nest Ball!"
+      ],
+      "gift_item": {
+       "NEST_BALL": 1
+      },
+      "flag": "oras_hoenn_team_hideout_13"
+     }
+    },
+    {
+     "text": "TM97 DARK PULSE ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_14",
+     "event": {
+      "lines": [
+       "You found a TM97 DARK PULSE!"
+      ],
+      "gift_item": {
+       "HTM97": 1
+      },
+      "flag": "oras_hoenn_team_hideout_14"
+     }
+    },
+    {
+     "text": "NUGGET   ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_15",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_team_hideout_15"
+     }
+    },
+    {
+     "text": "MASTER BALL ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_16",
+     "event": {
+      "lines": [
+       "You found a Master Ball!"
+      ],
+      "gift_item": {
+       "MASTER_BALL": 1
+      },
+      "flag": "oras_hoenn_team_hideout_16"
+     }
+    },
+    {
+     "text": "PP MAX ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_17",
+     "event": {
+      "lines": [
+       "You found a Pp Max!"
+      ],
+      "gift_item": {
+       "PP_MAX": 1
+      },
+      "flag": "oras_hoenn_team_hideout_17"
+     }
+    },
+    {
+     "text": "MAX REVIVE ",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_18",
+     "event": {
+      "lines": [
+       "You found a Max Revive!"
+      ],
+      "gift_item": {
+       "MAX_REVIVE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_18"
+     }
+    }
+   ]
+  },
+  "HOENN_VICTORY_ROAD": {
+   "set_teams": {
+    "Cooltrainer Albert": {
+     "team": [
+      561,
+      464
+     ],
+     "levels": [
+      45,
+      45
+     ]
+    },
+    "Cooltrainer Hope": {
+     "team": [
+      478
+     ],
+     "levels": [
+      47
+     ]
+    }
+   },
+   "add_trainers": [
+    {
+     "name": "Expert Bryn",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      237,
+      538
+     ],
+     "levels": [
+      45,
+      45
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Trainer Edgar",
+     "class": "COOLTRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      303
+     ],
+     "levels": [
+      47
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Street Thug Regan",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      229,
+      275
+     ],
+     "levels": [
+      43,
+      43
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Ace Duo Jude & Rory",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      348,
+      346
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Expert Theodore",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      539
+     ],
+     "levels": [
+      47
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Dragon Tamer Egon",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      230
+     ],
+     "levels": [
+      47
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Brains & Brawn Aden & Finn",
+     "class": "PKMN_TRAINER",
+     "sprite": "acetrainer_m.png",
+     "team": [
+      518,
+      57
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "FULL HEAL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_victory_road_1",
+     "event": {
+      "lines": [
+       "You found a Full Heal!"
+      ],
+      "gift_item": {
+       "FULL_HEAL": 1
+      },
+      "flag": "oras_hoenn_victory_road_1"
+     }
+    },
+    {
+     "text": "PP UP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_victory_road_5",
+     "event": {
+      "lines": [
+       "You found a Pp Up!"
+      ],
+      "gift_item": {
+       "PP_UP": 1
+      },
+      "flag": "oras_hoenn_victory_road_5"
+     }
+    },
+    {
+     "text": "MAX ELIXIR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_victory_road_6",
+     "event": {
+      "lines": [
+       "You found a Max Elixir!"
+      ],
+      "gift_item": {
+       "MAX_ELIXIR": 1
+      },
+      "flag": "oras_hoenn_victory_road_6"
+     }
+    },
+    {
+     "text": "TM35 FLAMETHROWER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_victory_road_7",
+     "event": {
+      "lines": [
+       "You found a TM35 FLAMETHROWER!"
+      ],
+      "gift_item": {
+       "HTM35": 1
+      },
+      "flag": "oras_hoenn_victory_road_7"
+     }
+    },
+    {
+     "text": "FULL RESTORE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_victory_road_8",
+     "event": {
+      "lines": [
+       "You found a Full Restore!"
+      ],
+      "gift_item": {
+       "FULL_RESTORE": 1
+      },
+      "flag": "oras_hoenn_victory_road_8"
+     }
+    },
+    {
+     "text": "TM81 X-SCISSOR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_victory_road_10",
+     "event": {
+      "lines": [
+       "You found a TM81 X-SCISSOR!"
+      ],
+      "gift_item": {
+       "HTM81": 1
+      },
+      "flag": "oras_hoenn_victory_road_10"
+     }
+    }
+   ]
+  },
+  "HOENN_WEATHER_INSTITUTE": {
+   "add_trainers": [
+    {
+     "name": "Team Magma Grunt",
+     "class": "TEAM_MAGMA",
+     "sprite": "magma_grunt.png",
+     "team": [
+      262,
+      42
+     ],
+     "levels": [
+      29,
+      29
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    },
+    {
+     "name": "Team Aqua Grunt",
+     "class": "TEAM_AQUA",
+     "sprite": "aqua_grunt.png",
+     "team": [
+      262,
+      42
+     ],
+     "levels": [
+      28,
+      28
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "oras": true
+    }
+   ],
+   "route_menu": [
+    {
+     "text": "Scientist",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Scientist: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "ROCKY_HELMET": 1
+      },
+      "flag": "oras_hoenn_weather_institute_1"
+     },
+     "flag_condition": "not oras_hoenn_weather_institute_1"
+    },
+    {
+     "text": "Receptionist ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Receptionist: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "ICY_ROCK": 1
+      },
+      "flag": "oras_hoenn_weather_institute_2"
+     },
+     "flag_condition": "not oras_hoenn_weather_institute_2"
+    },
+    {
+     "text": "Receptionist  ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Receptionist: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "SMOOTH_ROCK": 1
+      },
+      "flag": "oras_hoenn_weather_institute_3"
+     },
+     "flag_condition": "not oras_hoenn_weather_institute_3"
+    },
+    {
+     "text": "Receptionist   ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Receptionist: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HEAT_ROCK": 1
+      },
+      "flag": "oras_hoenn_weather_institute_4"
+     },
+     "flag_condition": "not oras_hoenn_weather_institute_4"
+    },
+    {
+     "text": "Receptionist    ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Receptionist: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "DAMP_ROCK": 1
+      },
+      "flag": "oras_hoenn_weather_institute_5"
+     },
+     "flag_condition": "not oras_hoenn_weather_institute_5"
+    }
+   ]
+  },
+  "LAVARIDGE_TOWN": {
+   "explore_options": [
+    {
+     "text": "Black Belt",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Black Belt: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM75": 1
+      },
+      "flag": "oras_lavaridge_town_1"
+     },
+     "flag_condition": "not oras_lavaridge_town_1"
+    },
+    {
+     "text": "Flannery",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Flannery: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM50": 1
+      },
+      "flag": "oras_lavaridge_town_3"
+     },
+     "flag_condition": "not oras_lavaridge_town_3"
+    }
+   ]
+  },
+  "LILYCOVE_CITY": {
+   "explore_options": [
+    {
+     "text": "MAX REPEL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_lilycove_city_1",
+     "event": {
+      "lines": [
+       "You found a Max Repel!"
+      ],
+      "gift_item": {
+       "MAX_REPEL": 1
+      },
+      "flag": "oras_lilycove_city_1"
+     }
+    },
+    {
+     "text": "Man",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Man: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM44": 1
+      },
+      "flag": "oras_lilycove_city_2"
+     },
+     "flag_condition": "not oras_lilycove_city_2"
+    },
+    {
+     "text": "Man ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Man: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM88": 1
+      },
+      "flag": "oras_lilycove_city_3"
+     },
+     "flag_condition": "not oras_lilycove_city_3"
+    }
+   ]
+  },
+  "LITTLEROOT_TOWN": {
+   "explore_options": [
+    {
+     "text": "POTION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_littleroot_town_1",
+     "event": {
+      "lines": [
+       "You found a Potion!"
+      ],
+      "gift_item": {
+       "POTION": 1
+      },
+      "flag": "oras_littleroot_town_1"
+     }
+    },
+    {
+     "text": "Mom ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Mom: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "AMULET_COIN": 1
+      },
+      "flag": "oras_littleroot_town_2"
+     },
+     "flag_condition": "not oras_littleroot_town_2"
+    }
+   ]
+  },
+  "MAUVILLE_CITY": {
+   "set_teams": {
+    "Guitarist Kirk": {
+     "team": [
+      81,
+      309
+     ],
+     "levels": [
+      16,
+      16
+     ]
+    }
+   },
+   "explore_options": [
+    {
+     "text": "X SPEED",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mauville_city_1",
+     "event": {
+      "lines": [
+       "You found a X Speed!"
+      ],
+      "gift_item": {
+       "X_SPEED": 1
+      },
+      "flag": "oras_mauville_city_1"
+     }
+    },
+    {
+     "text": "TM58 SKY DROP",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mauville_city_3",
+     "event": {
+      "lines": [
+       "You found a TM58 SKY DROP!"
+      ],
+      "gift_item": {
+       "HTM58": 1
+      },
+      "flag": "oras_mauville_city_3"
+     }
+    },
+    {
+     "text": "Girl",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Girl: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM48": 1
+      },
+      "flag": "oras_mauville_city_4"
+     },
+     "flag_condition": "not oras_mauville_city_4"
+    },
+    {
+     "text": "Wattson",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Wattson: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM72": 1
+      },
+      "flag": "oras_mauville_city_5"
+     },
+     "flag_condition": "not oras_mauville_city_5"
+    },
+    {
+     "text": "Old man",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Old man: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_mauville_city_6"
+     },
+     "flag_condition": "not oras_mauville_city_6"
+    },
+    {
+     "text": "METRONOME",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mauville_city_9",
+     "event": {
+      "lines": [
+       "You found a Metronome!"
+      ],
+      "gift_item": {
+       "METRONOME": 1
+      },
+      "flag": "oras_mauville_city_9"
+     }
+    },
+    {
+     "text": "Delinquent",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Delinquent: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "POKE_TOY": 1
+      },
+      "flag": "oras_mauville_city_10"
+     },
+     "flag_condition": "not oras_mauville_city_10"
+    },
+    {
+     "text": "ELIXIR",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mauville_city_11",
+     "event": {
+      "lines": [
+       "You found a Elixir!"
+      ],
+      "gift_item": {
+       "ELIXIR": 1
+      },
+      "flag": "oras_mauville_city_11"
+     }
+    },
+    {
+     "text": "TM89 U-TURN",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mauville_city_12",
+     "event": {
+      "lines": [
+       "You found a TM89 U-TURN!"
+      ],
+      "gift_item": {
+       "HTM89": 1
+      },
+      "flag": "oras_mauville_city_12"
+     }
+    },
+    {
+     "text": "TM24 THUNDERBOLT",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mauville_city_13",
+     "event": {
+      "lines": [
+       "You found a TM24 THUNDERBOLT!"
+      ],
+      "gift_item": {
+       "HTM24": 1
+      },
+      "flag": "oras_mauville_city_13"
+     }
+    }
+   ]
+  },
+  "MOSSDEEP_CITY": {
+   "set_teams": {
+    "Psychic Preston": {
+     "team": [
+      64
+     ],
+     "levels": [
+      42
+     ]
+    }
+   },
+   "explore_options": [
+    {
+     "text": "BIG PEARL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mossdeep_city_1",
+     "event": {
+      "lines": [
+       "You found a Big Pearl!"
+      ],
+      "gift_item": {
+       "BIG_PEARL": 1
+      },
+      "flag": "oras_mossdeep_city_1"
+     }
+    },
+    {
+     "text": "Boy",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Boy: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "KINGS_ROCK": 1
+      },
+      "flag": "oras_mossdeep_city_2"
+     },
+     "flag_condition": "not oras_mossdeep_city_2"
+    },
+    {
+     "text": "Woman",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Woman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM60": 1
+      },
+      "flag": "oras_mossdeep_city_4"
+     },
+     "flag_condition": "not oras_mossdeep_city_4"
+    },
+    {
+     "text": "NET BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mossdeep_city_5",
+     "event": {
+      "lines": [
+       "You found a Net Ball!"
+      ],
+      "gift_item": {
+       "NET_BALL": 1
+      },
+      "flag": "oras_mossdeep_city_5"
+     }
+    },
+    {
+     "text": "REVIVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_mossdeep_city_6",
+     "event": {
+      "lines": [
+       "You found a Revive!"
+      ],
+      "gift_item": {
+       "REVIVE": 1
+      },
+      "flag": "oras_mossdeep_city_6"
+     }
+    },
+    {
+     "text": "Sailor",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Sailor: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "SUN_STONE": 1
+      },
+      "flag": "oras_mossdeep_city_7"
+     },
+     "flag_condition": "not oras_mossdeep_city_7"
+    },
+    {
+     "text": "Liza and Tate",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Liza and Tate: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM04": 1
+      },
+      "flag": "oras_mossdeep_city_9"
+     },
+     "flag_condition": "not oras_mossdeep_city_9"
+    }
+   ]
+  },
+  "OLDALE_TOWN": {
+   "explore_options": [
+    {
+     "text": "Poké Mart attendant",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Poké Mart attendant: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "POTION": 10
+      },
+      "flag": "oras_oldale_town_1"
+     },
+     "flag_condition": "not oras_oldale_town_1"
+    }
+   ]
+  },
+  "PACIFIDLOG_TOWN": {
+   "explore_options": [
+    {
+     "text": "Man",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Man: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM03": 1
+      },
+      "flag": "oras_pacifidlog_town_1"
+     },
+     "flag_condition": "not oras_pacifidlog_town_1"
+    },
+    {
+     "text": "BIG PEARL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_pacifidlog_town_2",
+     "event": {
+      "lines": [
+       "You found a Big Pearl!"
+      ],
+      "gift_item": {
+       "BIG_PEARL": 1
+      },
+      "flag": "oras_pacifidlog_town_2"
+     }
+    },
+    {
+     "text": "TM21 FRUSTRATION",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_pacifidlog_town_3",
+     "event": {
+      "lines": [
+       "You found a TM21 FRUSTRATION!"
+      ],
+      "gift_item": {
+       "HTM21": 1
+      },
+      "flag": "oras_pacifidlog_town_3"
+     }
+    },
+    {
+     "text": "TM27 RETURN",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_pacifidlog_town_4",
+     "event": {
+      "lines": [
+       "You found a TM27 RETURN!"
+      ],
+      "gift_item": {
+       "HTM27": 1
+      },
+      "flag": "oras_pacifidlog_town_4"
+     }
+    },
+    {
+     "text": "Man ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Man: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM56": 1
+      },
+      "flag": "oras_pacifidlog_town_5"
+     },
+     "flag_condition": "not oras_pacifidlog_town_5"
+    }
+   ]
+  },
+  "PETALBURG_CITY": {
+   "explore_options": [
+    {
+     "text": "MAX REVIVE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_petalburg_city_1",
+     "event": {
+      "lines": [
+       "You found a Max Revive!"
+      ],
+      "gift_item": {
+       "MAX_REVIVE": 1
+      },
+      "flag": "oras_petalburg_city_1"
+     }
+    },
+    {
+     "text": "ETHER",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_petalburg_city_2",
+     "event": {
+      "lines": [
+       "You found a Ether!"
+      ],
+      "gift_item": {
+       "ETHER": 1
+      },
+      "flag": "oras_petalburg_city_2"
+     }
+    },
+    {
+     "text": "RARE CANDY",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_petalburg_city_3",
+     "event": {
+      "lines": [
+       "You found a Rare Candy!"
+      ],
+      "gift_item": {
+       "RARE_CANDY": 1
+      },
+      "flag": "oras_petalburg_city_3"
+     }
+    }
+   ]
+  },
+  "RUSTBORO_CITY": {
+   "set_teams": {
+    "Youngster Josh": {
+     "team": [
+      74,
+      74
+     ],
+     "levels": [
+      7,
+      9
+     ]
+    }
+   },
+   "explore_options": [
+    {
+     "text": "X DEFENSE",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_rustboro_city_1",
+     "event": {
+      "lines": [
+       "You found a X Defense!"
+      ],
+      "gift_item": {
+       "X_DEFENSE": 1
+      },
+      "flag": "oras_rustboro_city_1"
+     }
+    },
+    {
+     "text": "Businessman",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Businessman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM54": 1
+      },
+      "flag": "oras_rustboro_city_2"
+     },
+     "flag_condition": "not oras_rustboro_city_2"
+    },
+    {
+     "text": "Ace Trainer",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Ace Trainer: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "FLOAT_STONE": 1
+      },
+      "flag": "oras_rustboro_city_3"
+     },
+     "flag_condition": "not oras_rustboro_city_3"
+    },
+    {
+     "text": "Boy ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Boy: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "PREMIER_BALL": 1
+      },
+      "flag": "oras_rustboro_city_4"
+     },
+     "flag_condition": "not oras_rustboro_city_4"
+    },
+    {
+     "text": "Teacher",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Teacher: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "QUICK_CLAW": 1
+      },
+      "flag": "oras_rustboro_city_5"
+     },
+     "flag_condition": "not oras_rustboro_city_5"
+    },
+    {
+     "text": "Roxanne",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Roxanne: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM39": 1
+      },
+      "flag": "oras_rustboro_city_6"
+     },
+     "flag_condition": "not oras_rustboro_city_6"
+    },
+    {
+     "text": "GREAT BALL",
+     "action": "EVENT",
+     "color": "GOLD",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_rustboro_city_7",
+     "event": {
+      "lines": [
+       "You found a Great Ball!"
+      ],
+      "gift_item": {
+       "GREAT_BALL": 1
+      },
+      "flag": "oras_rustboro_city_7"
+     }
+    }
+   ]
+  },
+  "SLATEPORT_CITY": {
+   "explore_options": [
+    {
+     "text": "Fan Club chairman",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Fan Club chairman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "RED_SCARF": 1
+      },
+      "flag": "oras_slateport_city_1"
+     },
+     "flag_condition": "not oras_slateport_city_1"
+    },
+    {
+     "text": "Fan Club chairman ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Fan Club chairman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "BLUE_SCARF": 1
+      },
+      "flag": "oras_slateport_city_2"
+     },
+     "flag_condition": "not oras_slateport_city_2"
+    },
+    {
+     "text": "Fan Club chairman  ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Fan Club chairman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "PINK_SCARF": 1
+      },
+      "flag": "oras_slateport_city_3"
+     },
+     "flag_condition": "not oras_slateport_city_3"
+    },
+    {
+     "text": "Fan Club chairman   ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Fan Club chairman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "GREEN_SCARF": 1
+      },
+      "flag": "oras_slateport_city_4"
+     },
+     "flag_condition": "not oras_slateport_city_4"
+    },
+    {
+     "text": "Fan Club chairman    ",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Fan Club chairman: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "YELLOW_SCARF": 1
+      },
+      "flag": "oras_slateport_city_5"
+     },
+     "flag_condition": "not oras_slateport_city_5"
+    },
+    {
+     "text": "Team MagmaOR/AquaAS Grunt",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Team MagmaOR/AquaAS Grunt: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM46": 1
+      },
+      "flag": "oras_slateport_city_6"
+     },
+     "flag_condition": "not oras_slateport_city_6"
+    }
+   ]
+  },
+  "SOOTOPOLIS_CITY": {
+   "explore_options": [
+    {
+     "text": "Collector",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Collector: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM83": 1
+      },
+      "flag": "oras_sootopolis_city_3"
+     },
+     "flag_condition": "not oras_sootopolis_city_3"
+    },
+    {
+     "text": "Black Belt",
+     "action": "EVENT",
+     "oras": true,
+     "event": {
+      "lines": [
+       "Black Belt: Here, I want you to have this!"
+      ],
+      "gift_item": {
+       "HTM31": 1
+      },
+      "flag": "oras_sootopolis_city_4"
+     },
+     "flag_condition": "not oras_sootopolis_city_4"
+    }
+   ]
+  }
+ },
+ "FIGURES": {
+  "EVER_GRANDE_CITY:TM29 PSYCHIC": {
+   "item": "HTM29"
+  },
+  "FALLARBOR_TOWN:Bug Maniac": {
+   "sheet": "em_17.png"
+  },
+  "FALLARBOR_TOWN:Professor Cozmo ": {
+   "sheet": "em_26.png"
+  },
+  "FORTREE_CITY:TM86 GRASS KNOT": {
+   "item": "HTM86"
+  },
+  "FORTREE_CITY:Old woman": {
+   "sheet": "em_22.png"
+  },
+  "FORTREE_CITY:Winona": {
+   "sheet": "em_26.png"
+  },
+  "FORTREE_CITY:Boy": {
+   "sheet": "em_5.png"
+  },
+  "HOENN_FIERY_PATH:TM06 TOXIC": {
+   "item": "HTM06"
+  },
+  "HOENN_FIERY_PATH:FIRE STONE": {
+   "item": "FIRE_STONE"
+  },
+  "HOENN_GRANITE_CAVE:ESCAPE ROPE": {
+   "item": "ESCAPE_ROPE"
+  },
+  "HOENN_GRANITE_CAVE:POKE BALL": {
+   "item": "POKE_BALLS"
+  },
+  "HOENN_GRANITE_CAVE:Hiker ": {
+   "sheet": "em_39.png"
+  },
+  "HOENN_JAGGED_PASS:SUPER REPEL": {
+   "item": "SUPER_REPEL"
+  },
+  "HOENN_JAGGED_PASS:MAX ETHER": {
+   "item": "MAX_ETHER"
+  },
+  "HOENN_JAGGED_PASS:X DEFENSE": {
+   "item": "X_DEFENSE"
+  },
+  "HOENN_JAGGED_PASS:TINY MUSHROOM": {
+   "item": "TINY_MUSHROOM"
+  },
+  "HOENN_METEOR_FALLS:FULL HEAL": {
+   "item": "FULL_HEAL"
+  },
+  "HOENN_METEOR_FALLS:MOON STONE": {
+   "item": "MOON_STONE"
+  },
+  "HOENN_METEOR_FALLS:GREAT BALL": {
+   "item": "GREAT_BALL"
+  },
+  "HOENN_METEOR_FALLS:STARDUST": {
+   "item": "STARDUST"
+  },
+  "HOENN_METEOR_FALLS:STAR PIECE": {
+   "item": "STAR_PIECE"
+  },
+  "HOENN_METEOR_FALLS:TM02 DRAGON CLAW": {
+   "item": "HTM02"
+  },
+  "HOENN_METEOR_FALLS:PP MAX": {
+   "item": "PP_MAX"
+  },
+  "HOENN_METEOR_FALLS:SUPER REPEL": {
+   "item": "SUPER_REPEL"
+  },
+  "HOENN_MT_CHIMNEY:TM59 INCINERATE": {
+   "item": "HTM59"
+  },
+  "HOENN_MT_PYRE:CLEANSE TAG": {
+   "item": "CLEANSE_TAG"
+  },
+  "HOENN_MT_PYRE:ULTRA BALL": {
+   "item": "ULTRA_BALL"
+  },
+  "HOENN_MT_PYRE:DUSK STONE": {
+   "item": "DUSK_STONE"
+  },
+  "HOENN_MT_PYRE:SUPER REPEL": {
+   "item": "SUPER_REPEL"
+  },
+  "HOENN_MT_PYRE:SHINY STONE": {
+   "item": "SHINY_STONE"
+  },
+  "HOENN_MT_PYRE:LAX INCENSE": {
+   "item": "LAX_INCENSE"
+  },
+  "HOENN_MT_PYRE:MAX POTION": {
+   "item": "MAX_POTION"
+  },
+  "HOENN_NEW_MAUVILLE:ESCAPE ROPE": {
+   "item": "ESCAPE_ROPE"
+  },
+  "HOENN_NEW_MAUVILLE:PARALYZE HEAL": {
+   "item": "PARALYZE_HEAL"
+  },
+  "HOENN_NEW_MAUVILLE:THUNDER STONE": {
+   "item": "THUNDER_STONE"
+  },
+  "HOENN_NEW_MAUVILLE:FULL HEAL": {
+   "item": "FULL_HEAL"
+  },
+  "HOENN_NEW_MAUVILLE:ULTRA BALL": {
+   "item": "ULTRA_BALL"
+  },
+  "HOENN_NEW_MAUVILLE:METAL COAT": {
+   "item": "METAL_COAT"
+  },
+  "HOENN_PETALBURG_WOODS:PARALYZE HEAL": {
+   "item": "PARALYZE_HEAL"
+  },
+  "HOENN_PETALBURG_WOODS:BALM MUSHROOM": {
+   "item": "BALM_MUSHROOM"
+  },
+  "HOENN_PETALBURG_WOODS:ETHER": {
+   "item": "ETHER"
+  },
+  "HOENN_PETALBURG_WOODS:NET BALL": {
+   "item": "NET_BALL"
+  },
+  "HOENN_PETALBURG_WOODS:GREAT BALL": {
+   "item": "GREAT_BALL"
+  },
+  "HOENN_PETALBURG_WOODS:X ATTACK": {
+   "item": "X_ATTACK"
+  },
+  "HOENN_PETALBURG_WOODS:Girl ": {
+   "sheet": "em_12.png"
+  },
+  "HOENN_ROUTE_102:POTION": {
+   "item": "POTION"
+  },
+  "HOENN_ROUTE_102:Soft soil patch": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_102:Soft soil patch ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_103:LEPPA BERRY": {
+   "item": "LEPPA_BERRY"
+  },
+  "HOENN_ROUTE_103:CHESTO BERRY": {
+   "item": "CHESTO_BERRY"
+  },
+  "HOENN_ROUTE_103:GUARD SPEC.": {
+   "item": "GUARD_SPEC"
+  },
+  "HOENN_ROUTE_104:PECHA BERRY": {
+   "item": "PECHA_BERRY"
+  },
+  "HOENN_ROUTE_104:ORAN BERRY": {
+   "item": "ORAN_BERRY"
+  },
+  "HOENN_ROUTE_104:POKE BALL": {
+   "item": "POKE_BALLS"
+  },
+  "HOENN_ROUTE_104:LUXURY BALL": {
+   "item": "LUXURY_BALL"
+  },
+  "HOENN_ROUTE_104:PECHA BERRY ": {
+   "item": "PECHA_BERRY"
+  },
+  "HOENN_ROUTE_104:X ATTACK": {
+   "item": "X_ATTACK"
+  },
+  "HOENN_ROUTE_104:REVIVE": {
+   "item": "REVIVE"
+  },
+  "HOENN_ROUTE_104:PP UP": {
+   "item": "PP_UP"
+  },
+  "HOENN_ROUTE_104:Youngster": {
+   "sheet": "em_35.png"
+  },
+  "HOENN_ROUTE_104:Old woman": {
+   "sheet": "em_22.png"
+  },
+  "HOENN_ROUTE_104:Woman": {
+   "sheet": "em_18.png"
+  },
+  "HOENN_ROUTE_105:IRON": {
+   "item": "IRON"
+  },
+  "HOENN_ROUTE_106:PROTEIN": {
+   "item": "PROTEIN"
+  },
+  "HOENN_ROUTE_109:SODA POP": {
+   "item": "SODA_POP"
+  },
+  "HOENN_ROUTE_109:PP UP": {
+   "item": "PP_UP"
+  },
+  "HOENN_ROUTE_109:BIG PEARL": {
+   "item": "BIG_PEARL"
+  },
+  "HOENN_ROUTE_109:Female Tuber": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_110:DIRE HIT": {
+   "item": "DIRE_HIT"
+  },
+  "HOENN_ROUTE_110:HEAL BALL": {
+   "item": "HEAL_BALL"
+  },
+  "HOENN_ROUTE_110:REPEAT BALL": {
+   "item": "REPEAT_BALL"
+  },
+  "HOENN_ROUTE_110:RARE CANDY": {
+   "item": "RARE_CANDY"
+  },
+  "HOENN_ROUTE_110:ELIXIR": {
+   "item": "ELIXIR"
+  },
+  "HOENN_ROUTE_110:Berry Trees": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_111:MACHO BRACE": {
+   "item": "MACHO_BRACE"
+  },
+  "HOENN_ROUTE_111:HP UP": {
+   "item": "HP_UP"
+  },
+  "HOENN_ROUTE_111:ELIXIR": {
+   "item": "ELIXIR"
+  },
+  "HOENN_ROUTE_111:TM37 SANDSTORM": {
+   "item": "HTM37"
+  },
+  "HOENN_ROUTE_111:Girl": {
+   "sheet": "em_12.png"
+  },
+  "HOENN_ROUTE_111:Berry Trees": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_111:Berry Trees ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_111:Bug Maniac": {
+   "sheet": "em_17.png"
+  },
+  "HOENN_ROUTE_112:BIG MUSHROOM": {
+   "item": "BIG_MUSHROOM"
+  },
+  "HOENN_ROUTE_112:GUARD SPEC.": {
+   "item": "GUARD_SPEC"
+  },
+  "HOENN_ROUTE_112:NUGGET": {
+   "item": "NUGGET"
+  },
+  "HOENN_ROUTE_112:Berry Trees": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_112:Berry Trees ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_113:SUPER REPEL": {
+   "item": "SUPER_REPEL"
+  },
+  "HOENN_ROUTE_113:TM32 DOUBLE TEAM": {
+   "item": "HTM32"
+  },
+  "HOENN_ROUTE_113:MAX ETHER": {
+   "item": "MAX_ETHER"
+  },
+  "HOENN_ROUTE_113:HYPER POTION": {
+   "item": "HYPER_POTION"
+  },
+  "HOENN_ROUTE_113:REVIVE": {
+   "item": "REVIVE"
+  },
+  "HOENN_ROUTE_113:MAX REPEL": {
+   "item": "MAX_REPEL"
+  },
+  "HOENN_ROUTE_114:PROTEIN": {
+   "item": "PROTEIN"
+  },
+  "HOENN_ROUTE_114:ENERGY POWDER": {
+   "item": "ENERGY_POWDER"
+  },
+  "HOENN_ROUTE_114:RARE CANDY": {
+   "item": "RARE_CANDY"
+  },
+  "HOENN_ROUTE_114:Old man and his Poochyena": {
+   "sheet": "em_21.png"
+  },
+  "HOENN_ROUTE_114:Berry Trees southeast of Lanette's house": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_115:GREAT BALL": {
+   "item": "GREAT_BALL"
+  },
+  "HOENN_ROUTE_115:ZINC": {
+   "item": "ZINC"
+  },
+  "HOENN_ROUTE_115:PP UP": {
+   "item": "PP_UP"
+  },
+  "HOENN_ROUTE_115:HEAL POWDER": {
+   "item": "HEAL_POWDER"
+  },
+  "HOENN_ROUTE_115:IRON": {
+   "item": "IRON"
+  },
+  "HOENN_ROUTE_115:Berry Trees": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_115:Berry Trees ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_115:Berry Trees  ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_116:REPEL": {
+   "item": "REPEL"
+  },
+  "HOENN_ROUTE_116:POTION": {
+   "item": "POTION"
+  },
+  "HOENN_ROUTE_116:X SP. ATK": {
+   "item": "X_SP_ATK"
+  },
+  "HOENN_ROUTE_116:ETHER": {
+   "item": "ETHER"
+  },
+  "HOENN_ROUTE_116:CHESTO BERRY": {
+   "item": "CHESTO_BERRY"
+  },
+  "HOENN_ROUTE_116:HP UP": {
+   "item": "HP_UP"
+  },
+  "HOENN_ROUTE_116:Devon researcher": {
+   "sheet": "em_46.png"
+  },
+  "HOENN_ROUTE_117:REVIVE": {
+   "item": "REVIVE"
+  },
+  "HOENN_ROUTE_117:GREAT BALL": {
+   "item": "GREAT_BALL"
+  },
+  "HOENN_ROUTE_117:ULTRA BALL": {
+   "item": "ULTRA_BALL"
+  },
+  "HOENN_ROUTE_117:Berry Trees": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_118:STARDUST": {
+   "item": "STARDUST"
+  },
+  "HOENN_ROUTE_118:LEAF STONE": {
+   "item": "LEAF_STONE"
+  },
+  "HOENN_ROUTE_118:HYPER POTION": {
+   "item": "HYPER_POTION"
+  },
+  "HOENN_ROUTE_118:Soft soil patch": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_ROUTE_119:MAX REPEL": {
+   "item": "MAX_REPEL"
+  },
+  "HOENN_ROUTE_119:ZINC": {
+   "item": "ZINC"
+  },
+  "HOENN_ROUTE_119:HONDEW BERRY": {
+   "item": "HONDEW_BERRY"
+  },
+  "HOENN_ROUTE_119:CALCIUM": {
+   "item": "CALCIUM"
+  },
+  "HOENN_ROUTE_119:PP MAX": {
+   "item": "PP_MAX"
+  },
+  "HOENN_ROUTE_119:ELIXIR": {
+   "item": "ELIXIR"
+  },
+  "HOENN_ROUTE_119:MAX ETHER": {
+   "item": "MAX_ETHER"
+  },
+  "HOENN_ROUTE_119:ULTRA BALL": {
+   "item": "ULTRA_BALL"
+  },
+  "HOENN_ROUTE_119:LEAF STONE": {
+   "item": "LEAF_STONE"
+  },
+  "HOENN_ROUTE_119:POMEG BERRY": {
+   "item": "POMEG_BERRY"
+  },
+  "HOENN_ROUTE_119:TIMER BALL": {
+   "item": "TIMER_BALL"
+  },
+  "HOENN_ROUTE_119:RARE CANDY": {
+   "item": "RARE_CANDY"
+  },
+  "HOENN_ROUTE_119:TM62 ACROBATICS": {
+   "item": "HTM62"
+  },
+  "HOENN_ROUTE_119:LEPPA BERRY": {
+   "item": "LEPPA_BERRY"
+  },
+  "HOENN_ROUTE_119:SITRUS BERRY": {
+   "item": "SITRUS_BERRY"
+  },
+  "HOENN_ROUTE_120:RARE CANDY": {
+   "item": "RARE_CANDY"
+  },
+  "HOENN_ROUTE_120:NEST BALL": {
+   "item": "NEST_BALL"
+  },
+  "HOENN_ROUTE_120:ASPEAR BERRY": {
+   "item": "ASPEAR_BERRY"
+  },
+  "HOENN_ROUTE_120:WEPEAR BERRY": {
+   "item": "WEPEAR_BERRY"
+  },
+  "HOENN_ROUTE_120:PINAP BERRY": {
+   "item": "PINAP_BERRY"
+  },
+  "HOENN_ROUTE_120:NUGGET": {
+   "item": "NUGGET"
+  },
+  "HOENN_ROUTE_120:REVIVE": {
+   "item": "REVIVE"
+  },
+  "HOENN_ROUTE_120:FULL HEAL": {
+   "item": "FULL_HEAL"
+  },
+  "HOENN_ROUTE_120:RARE CANDY ": {
+   "item": "RARE_CANDY"
+  },
+  "HOENN_ROUTE_120:LIGHT BALL": {
+   "item": "LIGHT_BALL"
+  },
+  "HOENN_ROUTE_120:FULL RESTORE": {
+   "item": "FULL_RESTORE"
+  },
+  "HOENN_ROUTE_120:DUSK BALL": {
+   "item": "DUSK_BALL"
+  },
+  "HOENN_ROUTE_121:ASPEAR BERRY": {
+   "item": "ASPEAR_BERRY"
+  },
+  "HOENN_ROUTE_121:PERSIM BERRY": {
+   "item": "PERSIM_BERRY"
+  },
+  "HOENN_ROUTE_121:RAWST BERRY": {
+   "item": "RAWST_BERRY"
+  },
+  "HOENN_ROUTE_121:ZINC": {
+   "item": "ZINC"
+  },
+  "HOENN_ROUTE_121:MAX REPEL": {
+   "item": "MAX_REPEL"
+  },
+  "HOENN_ROUTE_121:CARBOS": {
+   "item": "CARBOS"
+  },
+  "HOENN_ROUTE_121:SHINY STONE": {
+   "item": "SHINY_STONE"
+  },
+  "HOENN_ROUTE_121:NUGGET": {
+   "item": "NUGGET"
+  },
+  "HOENN_ROUTE_121:NANAB BERRY": {
+   "item": "NANAB_BERRY"
+  },
+  "HOENN_ROUTE_121:PEARL": {
+   "item": "PEARL"
+  },
+  "HOENN_ROUTE_121:NUGGET ": {
+   "item": "NUGGET"
+  },
+  "HOENN_ROUTE_123:REVIVAL HERB": {
+   "item": "REVIVAL_HERB"
+  },
+  "HOENN_ROUTE_123:HONDEW BERRY": {
+   "item": "HONDEW_BERRY"
+  },
+  "HOENN_ROUTE_123:LEPPA BERRY": {
+   "item": "LEPPA_BERRY"
+  },
+  "HOENN_ROUTE_123:SITRUS BERRY": {
+   "item": "SITRUS_BERRY"
+  },
+  "HOENN_ROUTE_123:QUALOT BERRY": {
+   "item": "QUALOT_BERRY"
+  },
+  "HOENN_ROUTE_123:GREPA BERRY": {
+   "item": "GREPA_BERRY"
+  },
+  "HOENN_ROUTE_123:TAMATO BERRY": {
+   "item": "TAMATO_BERRY"
+  },
+  "HOENN_ROUTE_123:ELIXIR": {
+   "item": "ELIXIR"
+  },
+  "HOENN_ROUTE_123:WIDE LENS": {
+   "item": "WIDE_LENS"
+  },
+  "HOENN_ROUTE_123:CALCIUM": {
+   "item": "CALCIUM"
+  },
+  "HOENN_ROUTE_123:ULTRA BALL": {
+   "item": "ULTRA_BALL"
+  },
+  "HOENN_ROUTE_123:GRACIDEA": {
+   "item": "GRACIDEA"
+  },
+  "HOENN_ROUTE_123:Girl southwest of the pier": {
+   "sheet": "em_12.png"
+  },
+  "HOENN_ROUTE_123:Fairy Tale Girl": {
+   "sheet": "em_12.png"
+  },
+  "HOENN_ROUTE_124:HEART SCALE": {
+   "item": "HEART_SCALE"
+  },
+  "HOENN_ROUTE_124:HEART SCALE ": {
+   "item": "HEART_SCALE"
+  },
+  "HOENN_ROUTE_125:BIG PEARL": {
+   "item": "BIG_PEARL"
+  },
+  "HOENN_ROUTE_125:DIVE BALL": {
+   "item": "DIVE_BALL"
+  },
+  "HOENN_ROUTE_126:GREEN SHARD": {
+   "item": "GREEN_SHARD"
+  },
+  "HOENN_ROUTE_127:ZINC": {
+   "item": "ZINC"
+  },
+  "HOENN_ROUTE_127:CARBOS": {
+   "item": "CARBOS"
+  },
+  "HOENN_ROUTE_127:RARE CANDY": {
+   "item": "RARE_CANDY"
+  },
+  "HOENN_ROUTE_132:TM34 SLUDGE WAVE": {
+   "item": "HTM34"
+  },
+  "HOENN_ROUTE_133:CALCIUM": {
+   "item": "CALCIUM"
+  },
+  "HOENN_ROUTE_133:Psychic": {
+   "sheet": "em_45.png"
+  },
+  "HOENN_ROUTE_134:TM80 ROCK SLIDE": {
+   "item": "HTM80"
+  },
+  "HOENN_RUSTURF_TUNNEL:POKE BALL": {
+   "item": "POKE_BALLS"
+  },
+  "HOENN_RUSTURF_TUNNEL:MAX ETHER": {
+   "item": "MAX_ETHER"
+  },
+  "HOENN_SAFARI_ZONE:TM53 ENERGY BALL": {
+   "item": "HTM53"
+  },
+  "HOENN_SAFARI_ZONE:PROTEIN": {
+   "item": "PROTEIN"
+  },
+  "HOENN_SAFARI_ZONE:RARE CANDY": {
+   "item": "RARE_CANDY"
+  },
+  "HOENN_SAFARI_ZONE:ULTRA BALL": {
+   "item": "ULTRA_BALL"
+  },
+  "HOENN_SAFARI_ZONE:TM93 WILD CHARGE": {
+   "item": "HTM93"
+  },
+  "HOENN_SAFARI_ZONE:Street Thug": {
+   "sheet": "em_31.png"
+  },
+  "HOENN_SCORCHED_SLAB:FULL HEAL": {
+   "item": "FULL_HEAL"
+  },
+  "HOENN_SHOAL_CAVE:BIG PEARL": {
+   "item": "BIG_PEARL"
+  },
+  "HOENN_SHOAL_CAVE:FOCUS BAND": {
+   "item": "FOCUS_BAND"
+  },
+  "HOENN_SKY_PILLAR:DRAGON SCALE": {
+   "item": "DRAGON_SCALE"
+  },
+  "HOENN_SKY_PILLAR:TM64 EXPLOSION": {
+   "item": "HTM64"
+  },
+  "HOENN_SKY_PILLAR:FULL RESTORE": {
+   "item": "FULL_RESTORE"
+  },
+  "HOENN_SKY_PILLAR:ULTRA BALL": {
+   "item": "ULTRA_BALL"
+  },
+  "HOENN_SS_TIDAL:TM63 EMBARGO": {
+   "item": "HTM63"
+  },
+  "HOENN_SS_TIDAL:SHARP BEAK": {
+   "item": "SHARP_BEAK"
+  },
+  "HOENN_TEAM_HIDEOUT:FULL RESTORE": {
+   "item": "FULL_RESTORE"
+  },
+  "HOENN_TEAM_HIDEOUT:MAX ELIXIR": {
+   "item": "MAX_ELIXIR"
+  },
+  "HOENN_TEAM_HIDEOUT:ESCAPE ROPE": {
+   "item": "ESCAPE_ROPE"
+  },
+  "HOENN_TEAM_HIDEOUT:NEST BALL": {
+   "item": "NEST_BALL"
+  },
+  "HOENN_TEAM_HIDEOUT:TM97 DARK PULSE": {
+   "item": "HTM97"
+  },
+  "HOENN_TEAM_HIDEOUT:NUGGET ": {
+   "item": "NUGGET"
+  },
+  "HOENN_TEAM_HIDEOUT:PP MAX": {
+   "item": "PP_MAX"
+  },
+  "HOENN_TEAM_HIDEOUT:MAX REVIVE": {
+   "item": "MAX_REVIVE"
+  },
+  "HOENN_TEAM_HIDEOUT:NUGGET  ": {
+   "item": "NUGGET"
+  },
+  "HOENN_TEAM_HIDEOUT:FULL RESTORE ": {
+   "item": "FULL_RESTORE"
+  },
+  "HOENN_TEAM_HIDEOUT:MAX ELIXIR ": {
+   "item": "MAX_ELIXIR"
+  },
+  "HOENN_TEAM_HIDEOUT:ESCAPE ROPE ": {
+   "item": "ESCAPE_ROPE"
+  },
+  "HOENN_TEAM_HIDEOUT:NEST BALL ": {
+   "item": "NEST_BALL"
+  },
+  "HOENN_TEAM_HIDEOUT:TM97 DARK PULSE ": {
+   "item": "HTM97"
+  },
+  "HOENN_TEAM_HIDEOUT:NUGGET   ": {
+   "item": "NUGGET"
+  },
+  "HOENN_TEAM_HIDEOUT:MASTER BALL ": {
+   "item": "MASTER_BALL"
+  },
+  "HOENN_TEAM_HIDEOUT:PP MAX ": {
+   "item": "PP_MAX"
+  },
+  "HOENN_TEAM_HIDEOUT:MAX REVIVE ": {
+   "item": "MAX_REVIVE"
+  },
+  "HOENN_VICTORY_ROAD:FULL HEAL": {
+   "item": "FULL_HEAL"
+  },
+  "HOENN_VICTORY_ROAD:PP UP": {
+   "item": "PP_UP"
+  },
+  "HOENN_VICTORY_ROAD:MAX ELIXIR": {
+   "item": "MAX_ELIXIR"
+  },
+  "HOENN_VICTORY_ROAD:TM35 FLAMETHROWER": {
+   "item": "HTM35"
+  },
+  "HOENN_VICTORY_ROAD:FULL RESTORE": {
+   "item": "FULL_RESTORE"
+  },
+  "HOENN_VICTORY_ROAD:TM81 X-SCISSOR": {
+   "item": "HTM81"
+  },
+  "HOENN_WEATHER_INSTITUTE:Scientist": {
+   "sheet": "em_46.png"
+  },
+  "HOENN_WEATHER_INSTITUTE:Receptionist ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_WEATHER_INSTITUTE:Receptionist  ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_WEATHER_INSTITUTE:Receptionist   ": {
+   "sheet": "em_26.png"
+  },
+  "HOENN_WEATHER_INSTITUTE:Receptionist    ": {
+   "sheet": "em_26.png"
+  },
+  "LAVARIDGE_TOWN:Black Belt": {
+   "sheet": "em_33.png"
+  },
+  "LAVARIDGE_TOWN:Flannery": {
+   "sheet": "em_26.png"
+  },
+  "LILYCOVE_CITY:MAX REPEL": {
+   "item": "MAX_REPEL"
+  },
+  "LILYCOVE_CITY:Man": {
+   "sheet": "em_17.png"
+  },
+  "LILYCOVE_CITY:Man ": {
+   "sheet": "em_17.png"
+  },
+  "LITTLEROOT_TOWN:POTION": {
+   "item": "POTION"
+  },
+  "LITTLEROOT_TOWN:Mom ": {
+   "sheet": "em_26.png"
+  },
+  "MAUVILLE_CITY:X SPEED": {
+   "item": "X_SPEED"
+  },
+  "MAUVILLE_CITY:TM58 SKY DROP": {
+   "item": "HTM58"
+  },
+  "MAUVILLE_CITY:METRONOME": {
+   "item": "METRONOME"
+  },
+  "MAUVILLE_CITY:ELIXIR": {
+   "item": "ELIXIR"
+  },
+  "MAUVILLE_CITY:TM89 U-TURN": {
+   "item": "HTM89"
+  },
+  "MAUVILLE_CITY:TM24 THUNDERBOLT": {
+   "item": "HTM24"
+  },
+  "MAUVILLE_CITY:Girl": {
+   "sheet": "em_12.png"
+  },
+  "MAUVILLE_CITY:Wattson": {
+   "sheet": "em_26.png"
+  },
+  "MAUVILLE_CITY:Old man": {
+   "sheet": "em_21.png"
+  },
+  "MAUVILLE_CITY:Delinquent": {
+   "sheet": "em_31.png"
+  },
+  "MOSSDEEP_CITY:BIG PEARL": {
+   "item": "BIG_PEARL"
+  },
+  "MOSSDEEP_CITY:NET BALL": {
+   "item": "NET_BALL"
+  },
+  "MOSSDEEP_CITY:REVIVE": {
+   "item": "REVIVE"
+  },
+  "MOSSDEEP_CITY:Boy": {
+   "sheet": "em_5.png"
+  },
+  "MOSSDEEP_CITY:Woman": {
+   "sheet": "em_18.png"
+  },
+  "MOSSDEEP_CITY:Sailor": {
+   "sheet": "em_49.png"
+  },
+  "MOSSDEEP_CITY:Liza and Tate": {
+   "sheet": "em_26.png"
+  },
+  "OLDALE_TOWN:Poké Mart attendant": {
+   "sheet": "em_26.png"
+  },
+  "PACIFIDLOG_TOWN:BIG PEARL": {
+   "item": "BIG_PEARL"
+  },
+  "PACIFIDLOG_TOWN:TM21 FRUSTRATION": {
+   "item": "HTM21"
+  },
+  "PACIFIDLOG_TOWN:TM27 RETURN": {
+   "item": "HTM27"
+  },
+  "PACIFIDLOG_TOWN:Man": {
+   "sheet": "em_17.png"
+  },
+  "PACIFIDLOG_TOWN:Man ": {
+   "sheet": "em_17.png"
+  },
+  "PETALBURG_CITY:MAX REVIVE": {
+   "item": "MAX_REVIVE"
+  },
+  "PETALBURG_CITY:ETHER": {
+   "item": "ETHER"
+  },
+  "PETALBURG_CITY:RARE CANDY": {
+   "item": "RARE_CANDY"
+  },
+  "RUSTBORO_CITY:X DEFENSE": {
+   "item": "X_DEFENSE"
+  },
+  "RUSTBORO_CITY:GREAT BALL": {
+   "item": "GREAT_BALL"
+  },
+  "RUSTBORO_CITY:Businessman": {
+   "sheet": "em_17.png"
+  },
+  "RUSTBORO_CITY:Ace Trainer": {
+   "sheet": "em_26.png"
+  },
+  "RUSTBORO_CITY:Boy ": {
+   "sheet": "em_5.png"
+  },
+  "RUSTBORO_CITY:Teacher": {
+   "sheet": "em_26.png"
+  },
+  "RUSTBORO_CITY:Roxanne": {
+   "sheet": "em_26.png"
+  },
+  "SLATEPORT_CITY:Fan Club chairman": {
+   "sheet": "em_17.png"
+  },
+  "SLATEPORT_CITY:Fan Club chairman ": {
+   "sheet": "em_17.png"
+  },
+  "SLATEPORT_CITY:Fan Club chairman  ": {
+   "sheet": "em_17.png"
+  },
+  "SLATEPORT_CITY:Fan Club chairman   ": {
+   "sheet": "em_17.png"
+  },
+  "SLATEPORT_CITY:Fan Club chairman    ": {
+   "sheet": "em_17.png"
+  },
+  "SLATEPORT_CITY:Team MagmaOR/AquaAS Grunt": {
+   "sheet": "em_26.png"
+  },
+  "SOOTOPOLIS_CITY:Collector": {
+   "sheet": "em_38.png"
+  },
+  "SOOTOPOLIS_CITY:Black Belt": {
+   "sheet": "em_33.png"
+  }
+ }
+}

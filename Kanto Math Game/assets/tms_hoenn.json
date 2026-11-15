@@ -1,0 +1,886 @@
+{
+ "HTM01": {
+  "move": "HONE-CLAWS",
+  "type": "DARK",
+  "number": 1,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM02": {
+  "move": "DRAGON-CLAW",
+  "type": "DRAGON",
+  "number": 2,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM03": {
+  "move": "PSYSHOCK",
+  "type": "PSYCHIC",
+  "number": 3,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM04": {
+  "move": "CALM-MIND",
+  "type": "PSYCHIC",
+  "number": 4,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM05": {
+  "move": "ROAR",
+  "type": "NORMAL",
+  "number": 5,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM06": {
+  "move": "TOXIC",
+  "type": "POISON",
+  "number": 6,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM07": {
+  "move": "HAIL",
+  "type": "ICE",
+  "number": 7,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM08": {
+  "move": "BULK-UP",
+  "type": "FIGHTING",
+  "number": 8,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM09": {
+  "move": "VENOSHOCK",
+  "type": "POISON",
+  "number": 9,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM10": {
+  "move": "HIDDEN-POWER",
+  "type": "NORMAL",
+  "number": 10,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM11": {
+  "move": "SUNNY-DAY",
+  "type": "FIRE",
+  "number": 11,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM12": {
+  "move": "TAUNT",
+  "type": "DARK",
+  "number": 12,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM13": {
+  "move": "ICE-BEAM",
+  "type": "ICE",
+  "number": 13,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM14": {
+  "move": "BLIZZARD",
+  "type": "ICE",
+  "number": 14,
+  "tier": 8,
+  "price": 5500,
+  "shop_only": true,
+  "from": "ORAS"
+ },
+ "HTM15": {
+  "move": "HYPER-BEAM",
+  "type": "NORMAL",
+  "number": 15,
+  "tier": 8,
+  "price": 3000,
+  "from": "ORAS"
+ },
+ "HTM16": {
+  "move": "LIGHT-SCREEN",
+  "type": "PSYCHIC",
+  "number": 16,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM17": {
+  "move": "PROTECT",
+  "type": "NORMAL",
+  "number": 17,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM18": {
+  "move": "RAIN-DANCE",
+  "type": "WATER",
+  "number": 18,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM19": {
+  "move": "ROOST",
+  "type": "FLYING",
+  "number": 19,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM20": {
+  "move": "SAFEGUARD",
+  "type": "NORMAL",
+  "number": 20,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM21": {
+  "move": "FRUSTRATION",
+  "type": "NORMAL",
+  "number": 21,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM22": {
+  "move": "SOLAR-BEAM",
+  "type": "GRASS",
+  "number": 22,
+  "tier": 8,
+  "price": 3000,
+  "from": "ORAS"
+ },
+ "HTM23": {
+  "move": "SMACK-DOWN",
+  "type": "ROCK",
+  "number": 23,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM24": {
+  "move": "THUNDERBOLT",
+  "type": "ELECTRIC",
+  "number": 24,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM25": {
+  "move": "THUNDER",
+  "type": "ELECTRIC",
+  "number": 25,
+  "tier": 8,
+  "price": 5500,
+  "shop_only": true,
+  "from": "ORAS"
+ },
+ "HTM26": {
+  "move": "EARTHQUAKE",
+  "type": "GROUND",
+  "number": 26,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM27": {
+  "move": "RETURN",
+  "type": "NORMAL",
+  "number": 27,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM28": {
+  "move": "DIG",
+  "type": "GROUND",
+  "number": 28,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM29": {
+  "move": "PSYCHIC",
+  "type": "PSYCHIC",
+  "number": 29,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM30": {
+  "move": "SHADOW-BALL",
+  "type": "GHOST",
+  "number": 30,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM31": {
+  "move": "BRICK-BREAK",
+  "type": "FIGHTING",
+  "number": 31,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM32": {
+  "move": "DOUBLE-TEAM",
+  "type": "NORMAL",
+  "number": 32,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM33": {
+  "move": "REFLECT",
+  "type": "PSYCHIC",
+  "number": 33,
+  "tier": 1,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM34": {
+  "move": "SLUDGE-WAVE",
+  "type": "POISON",
+  "number": 34,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM35": {
+  "move": "FLAMETHROWER",
+  "type": "FIRE",
+  "number": 35,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM36": {
+  "move": "SLUDGE-BOMB",
+  "type": "POISON",
+  "number": 36,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM37": {
+  "move": "SANDSTORM",
+  "type": "ROCK",
+  "number": 37,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM38": {
+  "move": "FIRE-BLAST",
+  "type": "FIRE",
+  "number": 38,
+  "tier": 8,
+  "price": 5500,
+  "shop_only": true,
+  "from": "ORAS"
+ },
+ "HTM39": {
+  "move": "ROCK-TOMB",
+  "type": "ROCK",
+  "number": 39,
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM40": {
+  "move": "AERIAL-ACE",
+  "type": "FLYING",
+  "number": 40,
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM41": {
+  "move": "TORMENT",
+  "type": "DARK",
+  "number": 41,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM42": {
+  "move": "FACADE",
+  "type": "NORMAL",
+  "number": 42,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM43": {
+  "move": "FLAME-CHARGE",
+  "type": "FIRE",
+  "number": 43,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM44": {
+  "move": "REST",
+  "type": "PSYCHIC",
+  "number": 44,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM45": {
+  "move": "ATTRACT",
+  "type": "NORMAL",
+  "number": 45,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM46": {
+  "move": "THIEF",
+  "type": "DARK",
+  "number": 46,
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM47": {
+  "move": "LOW-SWEEP",
+  "type": "FIGHTING",
+  "number": 47,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM48": {
+  "move": "ROUND",
+  "type": "NORMAL",
+  "number": 48,
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM49": {
+  "move": "ECHOED-VOICE",
+  "type": "NORMAL",
+  "number": 49,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM50": {
+  "move": "OVERHEAT",
+  "type": "FIRE",
+  "number": 50,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM51": {
+  "move": "STEEL-WING",
+  "type": "STEEL",
+  "number": 51,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM52": {
+  "move": "FOCUS-BLAST",
+  "type": "FIGHTING",
+  "number": 52,
+  "tier": 8,
+  "price": 3000,
+  "from": "ORAS"
+ },
+ "HTM53": {
+  "move": "ENERGY-BALL",
+  "type": "GRASS",
+  "number": 53,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM54": {
+  "move": "FALSE-SWIPE",
+  "type": "NORMAL",
+  "number": 54,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM55": {
+  "move": "SCALD",
+  "type": "WATER",
+  "number": 55,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM56": {
+  "move": "FLING",
+  "type": "DARK",
+  "number": 56,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM57": {
+  "move": "CHARGE-BEAM",
+  "type": "ELECTRIC",
+  "number": 57,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM58": {
+  "move": "SKY-DROP",
+  "type": "FLYING",
+  "number": 58,
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM59": {
+  "move": "INCINERATE",
+  "type": "FIRE",
+  "number": 59,
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM60": {
+  "move": "QUASH",
+  "type": "DARK",
+  "number": 60,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM61": {
+  "move": "WILL-O-WISP",
+  "type": "FIRE",
+  "number": 61,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM62": {
+  "move": "ACROBATICS",
+  "type": "FLYING",
+  "number": 62,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM63": {
+  "move": "EMBARGO",
+  "type": "DARK",
+  "number": 63,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM64": {
+  "move": "EXPLOSION",
+  "type": "NORMAL",
+  "number": 64,
+  "tier": 8,
+  "price": 3000,
+  "from": "ORAS"
+ },
+ "HTM65": {
+  "move": "SHADOW-CLAW",
+  "type": "GHOST",
+  "number": 65,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM66": {
+  "move": "PAYBACK",
+  "type": "DARK",
+  "number": 66,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM67": {
+  "move": "RETALIATE",
+  "type": "NORMAL",
+  "number": 67,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM68": {
+  "move": "GIGA-IMPACT",
+  "type": "NORMAL",
+  "number": 68,
+  "tier": 8,
+  "price": 3000,
+  "from": "ORAS"
+ },
+ "HTM69": {
+  "move": "ROCK-POLISH",
+  "type": "ROCK",
+  "number": 69,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM70": {
+  "move": "FLASH",
+  "type": "NORMAL",
+  "number": 70,
+  "tier": 2,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM71": {
+  "move": "STONE-EDGE",
+  "type": "ROCK",
+  "number": 71,
+  "tier": 8,
+  "price": 3000,
+  "from": "ORAS"
+ },
+ "HTM72": {
+  "move": "VOLT-SWITCH",
+  "type": "ELECTRIC",
+  "number": 72,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM73": {
+  "move": "THUNDER-WAVE",
+  "type": "ELECTRIC",
+  "number": 73,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM74": {
+  "move": "GYRO-BALL",
+  "type": "STEEL",
+  "number": 74,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM75": {
+  "move": "SWORDS-DANCE",
+  "type": "NORMAL",
+  "number": 75,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM76": {
+  "move": "STRUGGLE-BUG",
+  "type": "BUG",
+  "number": 76,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM77": {
+  "move": "PSYCH-UP",
+  "type": "NORMAL",
+  "number": 77,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM78": {
+  "move": "BULLDOZE",
+  "type": "GROUND",
+  "number": 78,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM79": {
+  "move": "FROST-BREATH",
+  "type": "ICE",
+  "number": 79,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM80": {
+  "move": "ROCK-SLIDE",
+  "type": "ROCK",
+  "number": 80,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM81": {
+  "move": "X-SCISSOR",
+  "type": "BUG",
+  "number": 81,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM82": {
+  "move": "DRAGON-TAIL",
+  "type": "DRAGON",
+  "number": 82,
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM83": {
+  "move": "INFESTATION",
+  "type": "BUG",
+  "number": 83,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM84": {
+  "move": "POISON-JAB",
+  "type": "POISON",
+  "number": 84,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM85": {
+  "move": "DREAM-EATER",
+  "type": "PSYCHIC",
+  "number": 85,
+  "tier": 8,
+  "price": 3000,
+  "from": "ORAS"
+ },
+ "HTM86": {
+  "move": "GRASS-KNOT",
+  "type": "GRASS",
+  "number": 86,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM87": {
+  "move": "SWAGGER",
+  "type": "NORMAL",
+  "number": 87,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM88": {
+  "move": "SLEEP-TALK",
+  "type": "NORMAL",
+  "number": 88,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM89": {
+  "move": "U-TURN",
+  "type": "BUG",
+  "number": 89,
+  "tier": 6,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM90": {
+  "move": "SUBSTITUTE",
+  "type": "NORMAL",
+  "number": 90,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM91": {
+  "move": "FLASH-CANNON",
+  "type": "STEEL",
+  "number": 91,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM92": {
+  "move": "TRICK-ROOM",
+  "type": "PSYCHIC",
+  "number": 92,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM93": {
+  "move": "WILD-CHARGE",
+  "type": "ELECTRIC",
+  "number": 93,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM94": {
+  "move": "SECRET-POWER",
+  "type": "NORMAL",
+  "number": 94,
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS"
+ },
+ "HTM95": {
+  "move": "SNARL",
+  "type": "DARK",
+  "number": 95,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM96": {
+  "move": "NATURE-POWER",
+  "type": "NORMAL",
+  "number": 96,
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS"
+ },
+ "HTM97": {
+  "move": "DARK-PULSE",
+  "type": "DARK",
+  "number": 97,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM98": {
+  "move": "POWER-UP-PUNCH",
+  "type": "FIGHTING",
+  "number": 98,
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS"
+ },
+ "HTM99": {
+  "move": "DAZZLING-GLEAM",
+  "type": "FAIRY",
+  "number": 99,
+  "tier": 7,
+  "price": 2500,
+  "from": "ORAS"
+ },
+ "HTM100": {
+  "move": "CONFIDE",
+  "type": "NORMAL",
+  "number": 100,
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS"
+ },
+ "HTM101": {
+  "move": "FOCUS-PUNCH",
+  "type": "FIGHTING",
+  "number": 101,
+  "tier": 8,
+  "price": 3000,
+  "from": "Emerald TM01"
+ },
+ "HTM102": {
+  "move": "WATER-PULSE",
+  "type": "WATER",
+  "number": 102,
+  "tier": 5,
+  "price": 2000,
+  "from": "Emerald TM03"
+ },
+ "HTM103": {
+  "move": "BULLET-SEED",
+  "type": "GRASS",
+  "number": 103,
+  "tier": 0,
+  "price": 1000,
+  "from": "Emerald TM09"
+ },
+ "HTM104": {
+  "move": "GIGA-DRAIN",
+  "type": "GRASS",
+  "number": 104,
+  "tier": 6,
+  "price": 2500,
+  "from": "Emerald TM19"
+ },
+ "HTM105": {
+  "move": "IRON-TAIL",
+  "type": "STEEL",
+  "number": 105,
+  "tier": 8,
+  "price": 3000,
+  "from": "Emerald TM23"
+ },
+ "HTM106": {
+  "move": "SHOCK-WAVE",
+  "type": "ELECTRIC",
+  "number": 106,
+  "tier": 5,
+  "price": 2000,
+  "from": "Emerald TM34"
+ },
+ "HTM107": {
+  "move": "SKILL-SWAP",
+  "type": "PSYCHIC",
+  "number": 107,
+  "tier": 4,
+  "price": 2000,
+  "from": "Emerald TM48"
+ },
+ "HTM108": {
+  "move": "SNATCH",
+  "type": "DARK",
+  "number": 108,
+  "tier": 4,
+  "price": 2000,
+  "from": "Emerald TM49"
+ }
+}

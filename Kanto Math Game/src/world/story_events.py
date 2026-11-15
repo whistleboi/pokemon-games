@@ -345,7 +345,7 @@ EVENTS = {
                    "Professor Cozmo: They took my Meteorite up Mt. Chimney. Please stop them!",
                    "Professor Cozmo: The Cable Car on Route 112 goes to the top.",
                    "Professor Cozmo: Please, take this as thanks. It teaches Smack Down!"],
-         "requires": ["meteor_falls_cleared"], "flag": "cozmo_thanked", "gift_item": {"TM100": 1}},  # (ORAS: TM23 Smack Down)
+         "requires": ["meteor_falls_cleared"], "flag": "cozmo_thanked", "gift_item": {"HTM23": 1}},  # (ORAS: TM23 Smack Down)
         # Jordan (11-04): Hoenn's Jirachi (no place in the games: it was an event gift) wakes
         # in Meteor Falls under the Millennium Comet, after the Delta Episode.
         {"lines": ["Professor Cozmo: Have you seen the sky? The Millennium Comet is passing over Hoenn!",

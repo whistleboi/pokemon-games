@@ -25,6 +25,40 @@ from src.states.overworld import PlayState, CityState
 
 
 # [REF-0043: Main Game Class]
+
+OVERLAYS = ["hoenn_oras.json"]   # (additions laid over a region's area data when it loads: dev tools write them)
+
+
+def _apply_overlays(assets_dir, area_data):
+    """An overlay file {"AREAS": {area: {"set_teams": {trainer name: {"team", "levels"}}, "add_trainers": [pool entries],
+    "route_menu": [options], "explore_options": [options]}}}: Hoenn's ORAS trainers, canon teams and items
+    (kanto_handoff/hoenn_rom_tools/oras_fill.py), kept apart from the hand-kept area data."""
+    prog = area_data.get("STORY_PROGRESSION") or {}
+    for name in OVERLAYS:
+        path = os.path.join(assets_dir, name)
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as f:
+            ov = json.load(f)
+        for key, o in (ov.get("AREAS") or {}).items():
+            a = prog.get(key)
+            if not isinstance(a, dict):
+                continue
+            pool = a.setdefault("trainer_pool", [])
+            gym = a.get("gym") or {}
+            everyone = pool + (gym.get("trainers") or []) + ([gym["leader"]] if gym.get("leader") else [])
+            for tname, t in (o.get("set_teams") or {}).items():
+                for e in everyone:
+                    if e.get("name") == tname:
+                        e["team"], e["levels"] = list(t["team"]), list(t["levels"])
+                        e.pop("movesets", None)
+                        e.pop("team_by_version", None)
+            pool.extend(o.get("add_trainers") or [])
+            for k in ("route_menu", "explore_options"):
+                if o.get(k):
+                    a.setdefault(k, [])
+                    a[k] = [x for x in a[k] if not (isinstance(x, dict) and x.get("oras"))] + list(o[k])
+
 class Game:
     def __init__(self):
         # One fixed canvas on every device: the game always lays out at 1280x720 and SDL scales
@@ -135,6 +169,8 @@ class Game:
                     print(f"✓ Loaded {os.path.basename(path)}")
                 except Exception as e:
                     print(f"✗ Parse error on {os.path.basename(path)}: {e}")
+
+        _apply_overlays(self.assets.assets_dir, loaded_area_data)
 
         # Kanto's missions live in its GAME_CONFIG; put them in the journal list too.
         kanto_missions = loaded_area_data.get("GAME_CONFIG", {}).get("JOURNAL_MISSIONS", [])

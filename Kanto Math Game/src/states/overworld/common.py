@@ -333,6 +333,12 @@ def _run_story_event(state, key, check, show):
         state_show = getattr(state, "show_message", None) or getattr(state, "show_dialogue")
         state_show(show_then, callback=lambda: game.change_state(WallyCatchState(game, after)))
         return
+    if ev.get("gift_daily"):   # (a Mirage spot's hidden item: today's, once a day: src/world/soaring.py)
+        from src.world import soaring as _soar
+        _item = _soar.daily_item(story, ev["gift_daily"])
+        story.inventory[_item] = story.inventory.get(_item, 0) + 1
+        story.story_flags.pop("mirage_daily_ready", None)
+        lines.append(f"{getattr(game, 'player_name', 'You')} found a {forms.item_label(_item).upper()}!")
     for item, qty in (ev.get("gift_item") or {}).items():
         if item == "balls":
             story.balls_left = getattr(story, "balls_left", 0) + qty  # the one ball count
@@ -436,7 +442,7 @@ def _run_story_event(state, key, check, show):
         from src.pokemon import evolution as _evo
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
         fond = lead is not None and (getattr(lead, "friendship", 0) >= _evo.FRIENDSHIP_CATCHES or getattr(lead, "affection", 0) >= 150)
-        tm = "TM113" if fond else "TM114"
+        tm = "HTM27" if fond else "HTM21"  # (Hoenn's own: Return TM27, Frustration TM21)
         story.story_flags[key] = list(week)
         story.inventory[tm] = story.inventory.get(tm, 0) + 1
         lines += ([f"Your {lead.display_name} looks so happy with you. This TM's for you: Return!"] if fond
@@ -491,7 +497,12 @@ def _run_story_event(state, key, check, show):
             state._remember()
     if ev.get("travel"):  # (and off you go: Fallarbor's rival takes you back to Mauville)
         from src.states.overworld import AreaTransitionState
-        game.change_state(AreaTransitionState(game, ev["travel"], initial_message=lines or None))
+        to = ev["travel"]
+        if to == "@ferry":   # (a ferry's sailor: on to the other port from the one you boarded at, the area's "ferry" map:
+            here = game.loader.area_data.get("STORY_PROGRESSION", {}).get(story.current_area_key, {})   # the S.S. Tidal)
+            ferry = here.get("ferry") or {}
+            to = ferry.get(story.last_area_key) or next(iter(ferry.values()), story.last_area_key)
+        game.change_state(AreaTransitionState(game, to, initial_message=lines or None))
         return
     show(lines or ["..."])
 

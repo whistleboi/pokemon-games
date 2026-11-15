@@ -143,6 +143,7 @@ class WalkTownState(CityState):
     _jumbo = dn.DungeonState._jumbo
     _figure_img = dn.DungeonState._figure_img
     _stand_in_img = dn.DungeonState._stand_in_img
+    _mon_img = dn.DungeonState._mon_img
     _actor_img = dn.DungeonState._actor_img
     _trainer_img = dn.DungeonState._trainer_img
     _item_img = dn.DungeonState._item_img

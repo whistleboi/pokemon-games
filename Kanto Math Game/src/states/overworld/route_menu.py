@@ -267,7 +267,8 @@ class RouteMenu:
                 valid_options.append(item)
                 continue
 
-            if action == "BOSS" and flags.get(f"legend_rematch_{self._boss_flag_for(item)}"):
+            from src.states.battle import legend_back
+            if action == "BOSS" and legend_back(flags, self._boss_flag_for(item)):
                 valid_options.append(item)  # a beaten legendary that got away: rematch until caught
                 continue
 
@@ -430,6 +431,8 @@ class RouteMenu:
             return self.game.story_manager.inventory.get("SILPH_SCOPE", 0) > 0
         if condition == "has_rainbow_wing":
             return self.game.story_manager.inventory.get("RAINBOW_WING", 0) > 0
+        if isinstance(condition, str) and condition.startswith("has_badge:"):  # (a badge earned)
+            return self.game.story_manager.has_badge(condition[10:])
         if condition == "has_8_badges":
             return sum(len(b) for b in self.game.story_manager.badges.values()) >= 8
         if condition == "has_8_kanto_badges":
@@ -546,6 +549,8 @@ class RouteMenu:
             return lambda t=target: self.action_exit_route(t)
         if action == "GALACTIC_GAUNTLET":
             return self.action_search_trainer
+        if action == "FRONTIER":  # a Battle Frontier facility's attendant: its streak (src/world/frontier.py)
+            return lambda it=item: self.action_frontier(it)
         if action == "MAX_RAID":
             return self.action_max_raid
         if action == "SNAG":

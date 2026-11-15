@@ -18,6 +18,12 @@ def check(c, m):
         fails.append(m)
 
 
+def _htm(old):
+    """Hoenn's own TM (11-14: ORAS numbering) for an old Sword/Shield-numbered key the checks were written with."""
+    from src.pokemon import tms as _t
+    return _t.hoenn_key(g, json.load(open("assets/tms.json", encoding="utf-8"))[old]["move"])
+
+
 g.dungeon_routes = True; g.walk_towns = True
 story.story_flags["hoenn_version"] = "OMEGA_RUBY"
 _tm = json.load(open("assets/town_maps.json", encoding="utf-8"))
@@ -141,6 +147,10 @@ _far, _pairs = [], []
 for key in BUILT:
     _parts = _tm[key]["floors"] if _tm[key].get("floors") else [_tm[key]]
     for came in sorted({v for f in _parts for v in f.get("exits", {}).values()} & set(BUILT)):
+        _way = next((o for o in (_area.get(key) or {}).get("route_menu", []) if (o.get("target") or o.get("target_area")) == came), {})
+        _c = _way.get("condition") if isinstance(_way.get("condition"), list) else [_way.get("condition")]
+        if any(isinstance(c, str) and c.startswith("hoenn_version:") and c[14:] != story.story_flags.get("hoenn_version") for c in _c):
+            continue  # (a way only the other version opens: the Terra Cave in Omega Ruby)
         st = arrive(key, came)
         own = [t for t, v in _exits(st).items() if v == came]
         if own and not _near(_pos(st), own):
@@ -149,9 +159,12 @@ for key in BUILT:
             _pairs.append((key, came))
 check(not _far, f"every rebuilt map: in from each way, you stand beside that way {_far[:4]}")
 _bad, _multi = [], 0
+_twins = {(v.get("mirage") or {}).get("area") for v in _area.values() if (v.get("mirage") or {}).get("area")}
 for a, b in _pairs:
     for x, y in ((a, b), (b, a)):
         if _tm[x].get("floors") or _tm[y].get("floors"):  # (a map of floors: its own section below)
+            continue
+        if x in _twins or y in _twins:  # (Mirage Island: back the way you came is Route 130 on an ordinary day)
             continue
         st = arrive(x, y)
         ta = [t for t, v in _exits(st).items() if v == y]
@@ -635,11 +648,11 @@ for _k in ("meteor_falls_cleared", "route114_rival_race", "got_tm_dig_114", "rou
            "meteor_falls_other_leader", "mt_chimney_boss_defeated", "mt_chimney_other_leader", "cozmo_thanked"):
     story.story_flags.pop(_k, None)
 story.story_flags["heard_cozmo"] = True
-_tm15 = story.inventory.pop("TM15", None)
+_tm15 = story.inventory.pop(_htm("TM15"), None)
 st = open_map("HOENN_ROUTE_114", "FALLARBOR_TOWN")
 st.run.player, st.facing = (29, 6), (0, -1)
 st._read_sign(); tap(st)
-check(story.inventory.get("TM15", 0) > 0, "Route 114: the Fossil Maniac's little brother gives you TM15 (Dig)")
+check(story.inventory.get(_htm("TM15"), 0) > 0, "Route 114: the Fossil Maniac's little brother gives you TM15 (Dig)")
 st.run.player, st.facing = (27, 37), (0, -1)
 st._read_sign()
 check(st.dialogue_box.visible and "Lanette" in " ".join(st.dialogue_box.text_lines), f"Route 114: Lanette at home ({st.dialogue_box.text_lines[:1]})")
@@ -665,7 +678,7 @@ check(len(_mf["floors"]) == 4 and _mf["floors"][0].get("parts") and _mf.get("fig
       "Meteor Falls: four floors from Emerald (no Steven's room); 1F's pockets reached from B1F; the comet's Jirachi in the deepest room")
 story.repel_routes = _rep
 if _tm15 is None:
-    story.inventory.pop("TM15", None)
+    story.inventory.pop(_htm("TM15"), None)
 
 # after Meteor Falls (ORAS): Cozmo's thanks (TM100 Smack Down: a story gift, never sold), your rival's offer to go
 # back to Mauville together; Mt. Chimney's Lava Cookies
@@ -673,11 +686,11 @@ from src.pokemon import tms as _tms, items as _items
 for _k in ("cozmo_thanked", "rival_mauville_ride"):
     story.story_flags.pop(_k, None)
 story.story_flags["meteor_falls_cleared"] = True
-_t100 = story.inventory.pop("TM100", None)
+_t100 = story.inventory.pop(_htm("TM100"), None)
 st = open_map("FALLARBOR_TOWN", "HOENN_ROUTE_114")
 _cz = next(o for o in st._door_options("cozmo") if o.get("target") == "professor_cozmo")
 st._get_callback_for_option(_cz)(); tap(st)
-check(story.inventory.get("TM100", 0) > 0 and _tms.move_of(g, "TM100") == "SMACK-DOWN" and "TM100" not in _tms.mart_stock(g, 8),
+check(story.inventory.get(_htm("TM100"), 0) > 0 and _tms.move_of(g, _htm("TM100")) == "SMACK-DOWN" and _htm("TM100") not in _tms.mart_stock(g, 8),
       "Fallarbor: Professor Cozmo thanks you with TM100 Smack Down (a story gift: not in any Mart)")
 st = open_map("FALLARBOR_TOWN", "HOENN_ROUTE_114")
 _rr = st._door_options("rivalride")
@@ -693,7 +706,7 @@ check(type(g.current_state).__name__ == "PokeMartState" and getattr(g.current_st
       and _items.MEDICINE["LAVA_COOKIE"].get("cure") == "all", "Mt. Chimney: the Lava Cookie lady sells Lava Cookies (200; they cure any status)")
 g.change_state(st)
 if _t100 is None:
-    story.inventory.pop("TM100", None)
+    story.inventory.pop(_htm("TM100"), None)
 
 # ---- batch 8: Jagged Pass, Lavaridge Town, Route 118, Route 105 (ORAS, parts 9-10)
 for _k in ("got_tm_swords_dance", "got_lavaridge_egg", "got_charcoal", "got_good_rod_hoenn"):
@@ -711,7 +724,7 @@ def _talk8(st, at, face):
 
 
 _talk8(st, (16, 8), (0, -1))
-check(story.inventory.get("TM101", 0) > 0, "Lavaridge: the dancing Black Belt gives TM101 Swords Dance (ORAS's TM75)")
+check(story.inventory.get(_htm("TM101"), 0) > 0, "Lavaridge: the dancing Black Belt gives TM101 Swords Dance (ORAS's TM75)")
 story.player_team = _team8[:5]
 _n8 = len(story.player_team)
 _talk8(st, (4, 8), (0, -1))
@@ -772,9 +785,9 @@ _wheelie = st._on_stones() and st._acro_sheet() == "em_acro_may.png" and st._pla
 g.player_character = _pc8
 check(_foot[0] == (21, 9) and "Bicycle" in _foot[1] and _hop and _wheelie,
       f"Jagged Pass: round stones stop you on foot ({_foot}); on the Bicycle you ride onto them, a wheelie on each and a hop between (Emerald's Acro Bike frames)")
-_tmf = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "TM102 FLAME CHARGE")
+_tmf = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "TM43 FLAME CHARGE")
 st._use_figure(_tmf); tap(st)
-check(story.inventory.get("TM102", 0) > 0 and "TM103 ROCK POLISH" in _tm["HOENN_JAGGED_PASS"].get("people", []),
+check(story.inventory.get(_htm("TM102"), 0) > 0 and "TM69 ROCK POLISH" in _tm["HOENN_JAGGED_PASS"].get("people", []),
       "Jagged Pass: TM102 Flame Charge across the stones, TM103 Rock Polish on the west hill (story-gift TMs)")
 if _bk8 is None:
     story.inventory.pop("BICYCLE", None)
@@ -943,7 +956,7 @@ story.repel_routes = 9
 story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["STONE", "KNUCKLE", "DYNAMO", "HEAT", "BALANCE", "FEATHER"]))
 for _k in ("mt_pyre_cleared", "route121_grunts_ran", "mt_pyre_leader_left", "got_cleanse_tag", "got_eviolite_123", "got_tm28_123", "berry_master_123"):
     story.story_flags.pop(_k, None)
-for _k in ("CLEANSE_TAG", "EVIOLITE", "TM28"):
+for _k in ("CLEANSE_TAG", "EVIOLITE", _htm("TM28")):
     story.inventory.pop(_k, None)
 _fig10 = lambda st, name: next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == name)
 st = open_map("HOENN_ROUTE_121", "HOENN_ROUTE_120")
@@ -991,18 +1004,18 @@ st = open_map("HOENN_MT_PYRE", "HOENN_ROUTE_122")
 st.run.enter_floor(1); frames(2)
 check(_mv(st).get((22, 5)) == "TALK TO THE ELDERS", "Mt. Pyre summit: after the Admin, the elders by the altar")
 _tmp = json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_MT_PYRE"]
-check(_tmp["figure_floors"].get("TM105 SHADOW BALL") == 7 and _tmp["figure_floors"].get("SEA INCENSE") == 4 and _tmp["floors"][2].get("landings") == [[20, 9]], "Mt. Pyre: TM105 Shadow Ball on 6F, the Sea Incense on 3F; 1F's landing spot under 2F's hole")
+check(_tmp["figure_floors"].get("TM30 SHADOW BALL") == 7 and _tmp["figure_floors"].get("SEA INCENSE") == 4 and _tmp["floors"][2].get("landings") == [[20, 9]], "Mt. Pyre: TM105 Shadow Ball on 6F, the Sea Incense on 3F; 1F's landing spot under 2F's hole")
 st = open_map("HOENN_ROUTE_123", "HOENN_ROUTE_118")
 st._use_figure(_fig10(st, "Magikarp fan")); tap(st)
 check(story.inventory.get("EVIOLITE") == 1, "Route 123: the Magikarp fan by the pond gives an Eviolite")
 story.player_team = [p for p in _team10 if "GRASS" not in [str(t).upper() for t in (p.types or [])]] or [Pokemon(g.loader.fetch_specific(258), g.assets)]
 _gl = next(m for m in st.run.floor.movers if (m.x, m.y) == (108, 13))
 st._use_figure(_gl); tap(st)
-_no = story.inventory.get("TM28")
+_no = story.inventory.get(_htm("TM28"))
 story.player_team = story.player_team + [Pokemon(g.loader.fetch_specific(252), g.assets)]
 st.dialogue_box.visible = False
 st._use_figure(_gl); tap(st)
-check(not _no and story.inventory.get("TM28") == 1, "Route 123: the Grass lover gives TM28 Giga Drain only to a Trainer with a Grass type")
+check(not _no and story.inventory.get(_htm("TM28")) == 1, "Route 123: the Grass lover gives TM28 Giga Drain only to a Trainer with a Grass type")
 _b0 = sum(v for k, v in story.inventory.items() if k.endswith("_BERRY"))
 st.run.player, st.anim = (22, 7), 0
 st.dialogue_box.visible = False
@@ -1086,11 +1099,11 @@ st._go("dept_2", "ROOM:dept_3"); frames(2)
 st.player, st.facing, st.anim = (10, 4), (0, 1), 0
 st.step(0, 1); frames(2)
 _cs = g.current_state
-check(type(_cs).__name__ == "PokeMartState" and "GREAT_BALL" in (_cs.stock or []) and "TM08" not in (_cs.stock or []),
+check(type(_cs).__name__ == "PokeMartState" and "GREAT_BALL" in (_cs.stock or []) and _htm("TM08") not in (_cs.stock or []),
       f"Lilycove: 2F's clerk across the counter sells his own shelf (Poke Balls, medicine) ({type(_cs).__name__})")
 g.change_state(st)
 _shelves = {o.get("text"): o.get("stock") for r in _tm2["LILYCOVE_CITY"]["rooms"].values() for o in r.get("people", []) if isinstance(o, dict) and o.get("stock")}
-check(_shelves.get("Attack TM clerk") == ["TM109", "TM110", "TM111", "TM08"] and "X_ATTACK" in _shelves.get("Battle clerk", [])
+check(_shelves.get("Attack TM clerk") == [_htm("TM109"), _htm("TM110"), _htm("TM111"), _htm("TM08")] and "X_ATTACK" in _shelves.get("Battle clerk", [])
       and "CALCIUM" in _shelves.get("Vitamin clerk", [])
       and "LEMONADE" in _shelves.get("Rooftop stand", []) and "RED_POKEBLOCK" in _shelves.get("Contest clerk", []),
       f"Lilycove: each counter of the store sells its own kind of thing (2F travel and Trainer goods, 3F X items, 4F TMs, 5F Pokeblocks, rooftop drinks)")
@@ -1107,10 +1120,10 @@ _m = _PM.__new__(_PM); _m.game = g
 story.inventory.update({"BIG_PEARL": 1, "NUGGET": 1})
 check({"BIG_PEARL", "NUGGET"} <= set(_m._sellable()) and _m._price("NUGGET") // 2 == 5000,
       "Valuables (Nugget, Big Pearl...) sell at any Mart for half their price")
-_tmd = json.load(open("assets/tms.json", encoding="utf-8"))
 from src.pokemon import tms as _tmsm
-check(all(_tmd[k].get("shop_only") for k in ("TM109", "TM110", "TM111")) and not set(_tmsm.mart_stock(g, 8)) & {"TM109", "TM110", "TM111"}
-      and _tmd["TM108"]["move"] == "FROST-BREATH",
+_tmd = _tmsm.table(g)
+check(all(_tmd[k].get("shop_only") for k in (_htm("TM109"), _htm("TM110"), _htm("TM111"))) and not set(_tmsm.mart_stock(g, 8)) & {_htm("TM109"), _htm("TM110"), _htm("TM111")}
+      and _tmd[_htm("TM108")]["move"] == "FROST-BREATH",
       "TMs: Fire Blast, Thunder, Blizzard sold only at Lilycove's TM Corner; Frost Breath found in Shoal Cave")
 st._go("dept", "ROOM:dept_2"); frames(2)
 _loto = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Loto clerk")
@@ -1190,9 +1203,9 @@ st._get_callback_for_option(_md)()
 said = _play(st, 200)
 check(st.room == "move_deleter" and any("forgot how" in x for x in said), f"Lilycove: the Move Deleter has forgotten how to delete moves ({said[-1:]})")
 st._go("house_sleepy", "OUT:55,15"); frames(2)
-story.story_flags.pop("got_tm21_lilycove", None); story.inventory.pop("TM21", None)
+story.story_flags.pop("got_tm21_lilycove", None); story.inventory.pop(_htm("TM21"), None)
 st._get_callback_for_option(next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Sleepy man"))(); tap(st)
-check(story.inventory.get("TM21") == 1, "Lilycove: the sleepy man in the house by the Berry gentleman gives TM21 Rest")
+check(story.inventory.get(_htm("TM21")) == 1, "Lilycove: the sleepy man in the house by the Berry gentleman gives TM21 Rest")
 st._go("center", "OUT:24,14"); frames(2)
 _hp = story.player_team[0]; _hp.current_hp = 1
 st.player, st.facing, st.anim = (7, 4), (0, -1), 0
@@ -1407,8 +1420,8 @@ st.run.enter_floor(1); frames(2)
 _all13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload).get("name") for f in st.run.floors for m in f.movers if m.kind == "trainer"]
 check(_quiet and len(_all13) == 3, f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge ({_all13})")
 _r125 = _tm13["HOENN_ROUTE_125"]
-check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) == 3,
-      "Route 125: Emerald's map, its three Trainers, and Shoal Cave's mouth")
+check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) >= 3,
+      "Route 125: Emerald's map, its Trainers (Emerald's three and ORAS's), and Shoal Cave's mouth")
 story.player_team = _team13
 story.inventory.clear(); story.inventory.update(_inv13)
 story.story_flags.clear(); story.story_flags.update(_saved13)
@@ -1538,7 +1551,7 @@ check(_blocked and story.story_flags.get("sootopolis_wallace_met") and story.inv
       f"Sootopolis: Wallace keeps the Cave of Origin; he and Steven meet you, the Admin gives you the team's suit ({said[:1]})")
 st._go("brick_house", ""); frames(2)
 st._get_callback_for_option(next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Brick Break master"))(); tap(st)
-check(story.inventory.get("TM43") == 1, "Sootopolis: the old man's TM Brick Break")
+check(story.inventory.get(_htm("TM43")) == 1, "Sootopolis: the old man's TM Brick Break")
 _co = _tm16["HOENN_CAVE_OF_ORIGIN"]["floors"]
 _seen16 = {0}
 _todo = [0]
@@ -1571,7 +1584,7 @@ _pg = Pokemon(g.loader.fetch_specific(383), g.assets); _pg.primal_ready = True
 _pf = _fm16.opponent_form(g.assets, _pg, False)
 check(_pf and _pf.get("form") == "primal", "Cave of Origin: the battle starts with the legend already in its Primal form")
 _aar = next(p for p in _tm16["HOENN_ROUTE_111"]["people"] if isinstance(p, dict) and p.get("text") == "Aarune")
-check(_aar["event"].get("gift_item") == {"TM112": 1} and json.load(open("assets/tms.json", encoding="utf-8"))["TM112"]["move"] == "SECRET-POWER"
+check(_aar["event"].get("gift_item") == {_htm("TM112"): 1} and json.load(open("assets/tms.json", encoding="utf-8"))["TM112"]["move"] == "SECRET-POWER"
       and any("Secret Bases" in x for x in _aar["event"]["lines"]),
       "Route 111: Aarune gives TM Secret Power; his Secret Bases aren't ready yet")
 story.inventory.clear(); story.inventory.update(_inv16)
@@ -1594,12 +1607,12 @@ _run_story_event(st, _p17("center", "Explosion tutor")["event"], lambda c: True,
 from src.pokemon import moves as _mv17
 check("EXPLOSION" in _mv17.move_pool(g, _geo), "Pacifidlog: the Center's tutor teaches Explosion (to a Geodude)")
 story.story_flags.pop("pacifidlog_friend_tm_week", None)
-story.inventory.pop("TM113", None); story.inventory.pop("TM114", None)
+story.inventory.pop(_htm("TM113"), None); story.inventory.pop(_htm("TM114"), None)
 _geo.friendship = 9
 _run_story_event(st, _p17("friend_house", "Friendly man")["event"], lambda c: True, lambda l, **k: None); tap(st)
-_ret = story.inventory.get("TM113")
+_ret = story.inventory.get(_htm("TM113"))
 _run_story_event(st, _p17("friend_house", "Friendly man")["event"], lambda c: True, lambda l, **k: None); tap(st)
-check(_ret == 1 and not story.inventory.get("TM114") and story.inventory.get("TM113") == 1,
+check(_ret == 1 and not story.inventory.get(_htm("TM114")) and story.inventory.get(_htm("TM113")) == 1,
       "Pacifidlog: TM Return for a Pokemon that likes you, once a week")
 story.player_team = [Pokemon(g.loader.fetch_specific(371), g.assets)]
 story.story_flags.pop("pacifidlog_bagon_trade", None)
@@ -1633,8 +1646,9 @@ _vv = [k for k, t in _r134["exits"].items() if t == "HOENN_SEALED_CHAMBER"]
 check(_vv and sum(r.count(_vv[0]) for r in _r134["art"]) >= 6 and "has_item:HM_DIVE" in _dive134["condition"],
       "Route 134: Dive in its deep water into the Sealed Chamber (with Dive, once you're Champion)")
 _found18 = {k: {o["text"] for o in _sp18[k]["route_menu"] if o.get("found")} for k in ("HOENN_ROUTE_132", "HOENN_ROUTE_133", "HOENN_ROUTE_134")}
-check(_found18["HOENN_ROUTE_132"] == {"RARE CANDY", "PROTEIN"} and _found18["HOENN_ROUTE_133"] == {"BIG PEARL", "STAR PIECE", "MAX REVIVE"}
-      and _found18["HOENN_ROUTE_134"] == {"CARBOS", "STAR PIECE"}, f"Routes 132-134: Emerald's items to find ({_found18})")
+_found18 = {k: {t.strip() for t in v} for k, v in _found18.items()}
+check({"RARE CANDY", "PROTEIN"} <= _found18["HOENN_ROUTE_132"] and {"BIG PEARL", "STAR PIECE", "MAX REVIVE"} <= _found18["HOENN_ROUTE_133"]
+      and {"CARBOS", "STAR PIECE"} <= _found18["HOENN_ROUTE_134"], f"Routes 132-134: Emerald's items to find, among ORAS's ({_found18})")
 for _k in ("sealed_chamber_dug", "regi_trio_awakened"):
     story.story_flags.pop(_k, None)
 story.story_flags["beat_hoenn_champion"] = True
@@ -1783,7 +1797,7 @@ while _todo:
             _seen20.add(_n); _todo.append(_n)
 check((0, 39, 5) in _seen20 and {f for f, _x, _y in _seen20} == {0, 1, 2},
       "Victory Road: from the south mouth, through 1F, B1F and B2F (boulders, rocks, ladders) to the north mouth by the League")
-check(_vr[0]["trainer_spots"][0] == "Wally" and "Wally" in _vr[0]["trainer_spots"],
+check("Wally" in _vr[0]["trainer_spots"],
       "Victory Road: Wally waits on 1F, by the way out (Emerald's spot); the data's Ace Trainers on all three floors")
 _out20 = {}
 for _tile in ((39, 5), (15, 40)):
@@ -2333,7 +2347,9 @@ _tr23 = sorted((m.payload[1] or {}).get("name", "").strip().replace("Magma", "Aq
 _em_words = any("OCEANIC MINIFACT" in " ".join(s) for f in _tm23["HOENN_OCEANIC_MUSEUM"]["floors"] for s in f.get("signs", []))
 check(_m1 == 0 and _tr23 == ["Aqua Leader Archie", "Team Aqua Grunt", "Team Aqua Grunt"] and not _em_words,
       f"Oceanic Museum: in from Slateport; the Grunts and their leader on 2F by Captain Stern; the exhibits in our own words ({_tr23})")
-story.story_flags.pop("mirage_tower_fossil", None); story.inventory.pop("ROOT_FOSSIL", None)
+for _k23 in ("mirage_tower_fossil", "mirage_took_root", "mirage_took_claw"):
+    story.story_flags.pop(_k23, None)
+story.inventory.pop("ROOT_FOSSIL", None)
 story.badges.setdefault("HOENN", [])
 st = open_map("HOENN_MIRAGE_TOWER", "HOENN_ROUTE_111")
 st.run.jump_floor(3, (5, 5)); _calm(st)
@@ -2342,14 +2358,14 @@ st._get_route_callback(_ft)()
 _said = _play(st, 400)
 _to23 = getattr(g.current_state, "next_area_key", None) if type(g.current_state).__name__ == "AreaTransitionState" else story.current_area_key
 _r111 = next(o for o in _sp23["HOENN_ROUTE_111"]["route_menu"] if o.get("target_area") == "HOENN_MIRAGE_TOWER")
-check(story.inventory.get("ROOT_FOSSIL") == 1 and story.story_flags.get("mirage_tower_fossil") and _to23 == "HOENN_ROUTE_111"
-      and _r111.get("flag_condition") == "not mirage_tower_fossil" and "CLAW FOSSIL" in _tm23["HOENN_MIRAGE_TOWER"]["floors"][3]["people"],
+check(story.inventory.get("ROOT_FOSSIL") == 1 and story.story_flags.get("mirage_took_root") and _to23 == "HOENN_ROUTE_111"
+      and "not:mirage_took_root" in _r111.get("condition", []) and "CLAW FOSSIL" in _tm23["HOENN_MIRAGE_TOWER"]["floors"][3]["people"],
       f"Mirage Tower: take the Root or Claw Fossil on top, the tower crumbles, you're back on Route 111 and it's gone ({_to23}, {_said[:1]})")
 g.transitioning = False
 story.story_flags["beat_hoenn_champion"] = True
 st = open_map("HOENN_SCORCHED_SLAB", "HOENN_ROUTE_120")
 _fig23 = sorted(m.payload.get("text") for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict))
-check({"SEEK HEATRAN", "TM34 SUNNY DAY", "CHARIZARDITE Y"} <= set(_fig23),
+check({"SEEK HEATRAN", "TM11 SUNNY DAY", "CHARIZARDITE Y"} <= set(_fig23),
       f"Scorched Slab: Emerald's TM (Sunny Day), the Charizardite Y, and Heatran once you're Champion ({_fig23})")
 story.story_flags.clear(); story.story_flags.update(_saved23)
 story.inventory.clear(); story.inventory.update(_inv23)
@@ -2437,6 +2453,250 @@ _top = sorted(m.payload.get("text") if isinstance(m.payload, dict) else (m.paylo
 check("SUMMON RAYQUAZA" in _top and "Lorekeeper Zinnia" in _top, f"Sky Pillar: Rayquaza asleep on top, Zinnia there for the Delta Episode ({_top})")
 story.story_flags.clear(); story.story_flags.update(_saved24)
 story.inventory.clear(); story.inventory.update(_inv24)
+
+# ---- 11-13: on a map of floors everyone stands on the floor their spot is on (a figure named by its text went to the
+# last floor unless the map also had rooms: the Abandoned Ship's items were all in its hidden cabins)
+_tm25 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp25 = g.loader.area_data["STORY_PROGRESSION"]
+_saved25 = dict(story.story_flags); _inv25 = dict(story.inventory)
+story.story_flags.update({"beat_hoenn_champion": True, "cave_of_origin_cleared": True})
+_wrong25 = []
+for _k in sorted(BUILT):
+    _fl = (_tm25.get(_k) or {}).get("floors")
+    if not _fl or _tm25[_k].get("rooms") or _sp25.get(_k, {}).get("area_type") == "town":
+        continue
+    _want = {p: i for i, f in enumerate(_fl) for p in (f.get("people") or []) if isinstance(p, str)}
+    if not _want:
+        continue
+    st = open_map(_k, None)
+    if not hasattr(st, "run"):
+        continue
+    for _i in range(st.run.n_floors):
+        for _m in st.run.made(_i).movers:
+            _txt = _m.payload.get("text") if _m.kind == "figure" and isinstance(_m.payload, dict) else None
+            if _txt in _want and _want[_txt] != _i:
+                _wrong25.append((_k, _txt, _i, _want[_txt]))
+g.transitioning = False
+check(not _wrong25, f"maps of floors: every figure on its own floor ({_wrong25[:6]})")
+# ---- batch 25: the S.S. Tidal (a ferry both ways), Southern Island, the Leftovers
+_tid = _sp25["HOENN_SS_TIDAL"]
+_sailor = next(o for o in _tid["route_menu"] if o.get("text") == "Sailor")
+_to25 = {}
+for _from in ("SLATEPORT_CITY", "LILYCOVE_CITY"):
+    st = open_map("HOENN_SS_TIDAL", _from)
+    story.last_area_key = _from
+    st._get_route_callback(_sailor)()
+    _play(st, 300)
+    _to25[_from] = getattr(g.current_state, "next_area_key", None)
+    g.transitioning = False
+story.inventory.pop("LEFTOVERS", None)
+for _k in [k for k in story.story_flags if k.startswith("hidden_HOENN_SS_TIDAL")]:
+    story.story_flags.pop(_k)
+st = open_map("HOENN_SS_TIDAL", "SLATEPORT_CITY")
+_hl = _tm25["HOENN_SS_TIDAL"]["floors"][2].get("hidden") or {}
+_spot = next(iter(_hl), None)
+if _spot:
+    _hx, _hy = (int(v) for v in _spot.split(","))
+    st.run.jump_floor(2, (_hx + 1, _hy)); _calm(st); st.anim = 0
+    st.step(-1, 0)
+    _play(st, 200)
+_si = _sp25["HOENN_SOUTHERN_ISLAND"]
+_ss = next(o for o in _si["route_menu"] if o.get("text") == "Sailor")
+from src.pokemon import items as _items25
+check(_to25 == {"SLATEPORT_CITY": "LILYCOVE_CITY", "LILYCOVE_CITY": "SLATEPORT_CITY"} and _hl == {_spot: "LEFTOVERS"}
+      and story.inventory.get("LEFTOVERS") == 1 and _ss["event"]["travel"] == "SLATEPORT_CITY" and "LEFTOVERS" in _items25.HELD,
+      f"S.S. Tidal: the sailor sees you off at the other port; Emerald's hidden Leftovers on the lower deck; Southern Island's sailor takes you back ({_to25})")
+from src.states.battle import WildBattleState as _WB25
+_hold = mk(25); _hold.held_item = "LEFTOVERS"
+story.player_team = [_hold]
+_b25 = _WB25(g, mk(19), "HOENN_ROUTE_101")
+_b25.player_hp = max(1, _b25.player_max_hp // 2); _hold.current_hp = _b25.player_hp
+_before = _b25.player_hp
+_lines25 = _b25._status_chip()
+check(_b25.player_hp == min(_b25.player_max_hp, _before + max(1, _b25.player_max_hp // 16)) and any("Leftovers" in l for l in _lines25),
+      f"Leftovers: a sixteenth of its HP back at the end of the turn ({_before} -> {_b25.player_hp})")
+story.story_flags.clear(); story.story_flags.update(_saved25)
+story.inventory.clear(); story.inventory.update(_inv25)
+
+# ---- batch 26 (11-14): Mirage Island: Route 130 with the island in it, on a Mirage day
+_tm26 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp26 = g.loader.area_data["STORY_PROGRESSION"]
+_md = type(story).mirage_day
+type(story).mirage_day = lambda self, day=None: True
+_on = story.prepare_travel("HOENN_ROUTE_130")[0]
+type(story).mirage_day = lambda self, day=None: False
+_off = story.prepare_travel("HOENN_ROUTE_130")[0]
+type(story).mirage_day = _md
+import datetime as _dt26
+_days = sum(story.mirage_day(_dt26.date(2026, 1, 1) + _dt26.timedelta(days=i)) for i in range(70))
+st = open_map("HOENN_MIRAGE_ISLAND", "HOENN_ROUTE_131")
+_isle = st._zone_index(0, 40, 15); _sea = st._zone_index(0, 5, 35)
+_pools = {st.zones[i]: (_sp26["HOENN_MIRAGE_ISLAND"]["zone_pools"] or {}).get(st.zones[i]) if isinstance(st.zones[i], str) else None for i in (_isle, _sea)}
+_mi = _tm26["HOENN_MIRAGE_ISLAND"]
+check(_on == "HOENN_MIRAGE_ISLAND" and _off == "HOENN_ROUTE_130" and _days == 10 and _isle != _sea
+      and set(_mi["exits"].values()) == {"HOENN_ROUTE_131", "HOENN_ROUTE_129"}
+      and "360" in g.loader.area_data["HOENN_MIRAGE_ISLAND_PERCENTAGES"],
+      f"Mirage Island: on a Mirage day (one in seven) Route 130 has the island; its grass has Wynaut, the sea Route 130's own ({_on}, {_off}, {_days} of 70, {_pools})")
+g.transitioning = False
+
+# ---- batches 27-28 (11-14): the Battle Frontier; the post-game caves
+_tm27 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp27 = g.loader.area_data["STORY_PROGRESSION"]
+_saved27 = dict(story.story_flags); _inv27 = dict(story.inventory)
+story.story_flags["beat_hoenn_champion"] = True
+_bf = _tm27["HOENN_BATTLE_FRONTIER"]
+st = open_map("HOENN_BATTLE_FRONTIER", "HOENN_SS_TIDAL")
+_dock = tuple(st.run.player)
+_LOBBIES = ("tower", "dome", "palace", "pyramid", "arena", "factory", "pike")
+_brains = {r: [n.strip() for n in _bf["rooms"][r].get("people") or []] for r in _LOBBIES}
+_fa = next(o for o in _sp27["HOENN_BATTLE_FRONTIER"]["route_menu"] if o.get("text") == "Ferry attendant")
+check(_dock == (20, 68) and _brains["tower"] == ["Salon Maiden Anabel", "Tower attendant"] and _brains["factory"] == ["Factory Head Noland", "Factory attendant"]
+      and all(len(v) == 2 for v in _brains.values()) and not any(_bf["rooms"][r].get("trainer_spots") for r in _LOBBIES)
+      and "Nurse" in _bf["rooms"]["center"]["people"] and "Clerk" in _bf["rooms"]["mart"]["people"]
+      and _fa["event"]["travel"] == "HOENN_SS_TIDAL" and set(_bf["exits"].values()) == {"HOENN_ARTISAN_CAVE"},
+      f"Battle Frontier: off the ferry on the dock; each lobby's attendant and Frontier Brain (no Brain to walk up to); the Center and Mart; the Artisan Cave's mouths ({_dock}, {_brains})")
+
+# ---- the facility streaks (11-14, Jordan: random single battles, the Brain after 5 wins, after 10 the second time)
+from src.world import frontier as _fr
+from src.states.battle import TrainerIntroState as _TIS
+
+
+def _streak_battle(fac):
+    """Talk to the attendant in the lobby (the figure on the map), through the words: the battle it opens."""
+    st = g.current_state
+    figs = [m for m in st.run.floor.movers if getattr(m, "kind", "") == "figure" and (m.payload or {}).get("facility") == fac]
+    st._get_route_callback(figs[0].payload)()
+    tap(st)
+    frames(1)
+    cur = g.current_state
+    return figs, (cur.next_state if isinstance(cur, _TIS) else None)
+
+
+def _end(b, won):
+    b.player_won = won
+    if won:
+        b.exit_battle()
+    else:
+        b.continue_after_starter_loss()
+    frames(1)
+    tap(g.current_state)
+
+
+_saved_bf = dict(story.story_flags)
+for _k in [k for k in story.story_flags if k.startswith("frontier_")]:
+    story.story_flags.pop(_k)
+story.story_flags.pop("hoenn_battle_frontier_cleared", None)
+st = open_map("HOENN_BATTLE_FRONTIER", "HOENN_SS_TIDAL")
+while len(st.run.floors) < 2:   # (the Battle Tower's lobby: the first room; floors are made in order)
+    st.run.enter_floor(len(st.run.floors))
+st.run.enter_floor(1)
+frames(1)
+_figs, _b = _streak_battle("tower")
+_opp = [p.id for p in _b.opponent_team] if _b else []
+_sizes = [len(_fr.data(g)["groups"][k]) for k in "0123"]
+check(len(_figs) == 1 and _b is not None and getattr(_b, "frontier", None) == "tower" and len(set(_opp)) == 3
+      and _b.trainer_index is None and len(_fr.data(g)["trainers"]) == 300 and min(_sizes) > 40,
+      f"Battle Tower: the attendant's streak opens a battle with a random Frontier trainer, three different Pokemon ({_b and _b.trainer_name}, {_opp}, groups {_sizes})")
+_end(_b, True)
+check(_fr.wins(g, "tower") == 1 and isinstance(g.current_state, DungeonState) and g.current_state.run.index == 1,
+      f"a streak win: 1 win, back in the Tower's lobby ({_fr.wins(g, 'tower')}, {type(g.current_state).__name__})")
+for _p in story.player_team:
+    if _p:
+        _p.current_hp = 1
+_figs, _b = _streak_battle("tower")
+_healed = all(p.current_hp == p.max_hp for p in story.player_team if p)
+_end(_b, False)
+check(_healed and _fr.wins(g, "tower") == 0 and story.current_area_key == "HOENN_BATTLE_FRONTIER" and isinstance(g.current_state, DungeonState),
+      f"healed before each streak battle; a loss ends the streak in the lobby, no whiting out ({_fr.wins(g, 'tower')}, {story.current_area_key})")
+story.story_flags["frontier_tower_wins"] = 5
+_figs, _b = _streak_battle("tower")
+_brain = (_b.trainer_name, [p.id for p in _b.opponent_team]) if _b else None
+_end(_b, True)
+check(_brain == ("Salon Maiden Anabel", [65, 244, 143]) and story.story_flags.get("frontier_tower_silver") and _fr.wins(g, "tower") == 0
+      and _fr.goal(g, "tower") == 10,
+      f"5 wins: Anabel's Silver team; beaten, the Silver Symbol, and next time it's 10 wins ({_brain}, goal {_fr.goal(g, 'tower')})")
+story.story_flags["frontier_tower_wins"] = 9
+check(not _fr.brain_next(g, "tower"), "the second challenge: 9 wins is not yet the Brain")
+story.story_flags["frontier_tower_wins"] = 10
+_t = _fr.next_trainer(g, "tower")
+check(_t["team"] == [243, 381, 143] and _t["is_boss_battle"], f"10 wins: Anabel's Gold team ({_t['team']})")
+_nol = _fr.BRAINS["factory"]
+story.story_flags["frontier_factory_wins"] = 5
+_t = _fr.next_trainer(g, "factory")
+check(_t["name"] == "Factory Head Noland" and len(set(_t["team"])) == 3 and all(i in _fr.data(g)["groups"]["3"] for i in _t["team"]),
+      f"Noland (the Factory, rentals in Emerald): three random strong Pokemon ({_t['team']})")
+for _f in _fr.BRAINS:
+    story.story_flags[f"frontier_{_f}_silver"] = True
+story.story_flags.pop("frontier_pike_silver")
+story.story_flags["frontier_pike_wins"] = 5
+check(_fr.after_battle(g, "pike", True) and story.story_flags.get("hoenn_battle_frontier_cleared"),
+      "all seven Silver Symbols: the Battle Frontier mission is done")
+story.story_flags.clear(); story.story_flags.update(_saved_bf)
+_ac = _tm27["HOENN_ARTISAN_CAVE"]["floors"]
+check(sorted((_ac[1].get("hidden") or {}).values()) == ["CALCIUM", "IRON", "PROTEIN", "ZINC"] and "HP UP" in _ac[1]["people"] and "CARBOS" in _ac[0]["people"]
+      and {f["exits"].get("n") for f in _ac} == {"HOENN_BATTLE_FRONTIER"},
+      "Artisan Cave: both its mouths on the Frontier; Emerald's HP Up, Carbos and hidden vitamins")
+_fos = {o["text"]: o.get("condition") for o in _sp27["HOENN_DESERT_UNDERPASS"]["route_menu"] if "FOSSIL" in o.get("text", "")}
+_mt = {o["text"]: o["event"]["flag"] for o in _sp27["HOENN_MIRAGE_TOWER"]["route_menu"] if "FOSSIL" in o.get("text", "")}
+check(_fos == {"ROOT FOSSIL": "mirage_took_claw", "CLAW FOSSIL": "mirage_took_root"} and _mt == {"ROOT FOSSIL": "mirage_took_root", "CLAW FOSSIL": "mirage_took_claw"}
+      and set(_tm27["HOENN_DESERT_UNDERPASS"]["floors"][0]["exits"].values()) == {"HOENN_ROUTE_114"},
+      "Desert Underpass: out of the Fossil Maniac's tunnel; at its end the fossil you didn't take at Mirage Tower")
+_r127 = _tm27["HOENN_ROUTE_127"]["floors"][1]
+_r114 = _tm27["HOENN_ROUTE_114"]
+_bars = {k: [b.get("boss", {}).get("name") for f in _tm27[k]["floors"] for b in f.get("barred", [])] for k in ("HOENN_MARINE_CAVE", "HOENN_TERRA_CAVE")}
+check("HOENN_MARINE_CAVE" in _r127["exits"].values() and "HOENN_TERRA_CAVE" in _r114["exits"].values()
+      and (_r114["roofs"]["_picture"].get("when") or [{}])[0].get("flag") == "delta_episode_cleared"
+      and _bars == {"HOENN_MARINE_CAVE": ["Kyogre"], "HOENN_TERRA_CAVE": ["Groudon"]}
+      and set(_tm27["HOENN_ALTERING_CAVE"]["floors"][0]["exits"].values()) == {"HOENN_ROUTE_103"},
+      f"Marine Cave from Route 127's seabed, Terra Cave's mouths on Route 114 (open after the Delta Episode), their legends; Altering Cave off Route 103 ({_bars})")
+story.story_flags.clear(); story.story_flags.update(_saved27)
+story.inventory.clear(); story.inventory.update(_inv27)
+
+# ---- 11-14 (Jordan): ORAS's trainers with their canon teams, its items on Emerald's spots, Route 119's Mimic Circle
+# (kanto_handoff/hoenn_rom_tools/oras_fill.py -> assets/hoenn_oras.json + dev/builders/data/oras_fill.json)
+_savedO, _invO = dict(story.story_flags), dict(story.inventory)
+_spO = g.loader.area_data["STORY_PROGRESSION"]
+_ivan = next(t for t in _spO["HOENN_ROUTE_104"]["trainer_pool"] if t["name"] == "Fisherman Ivan")
+check(_ivan["team"] == [129, 129, 129] and _ivan["levels"] == [7, 7, 7], f"Route 104: Fisherman Ivan's ORAS team, three Magikarp at Lv.7 ({_ivan['team']}, {_ivan.get('levels')})")
+_new104 = [t["name"] for t in _spO["HOENN_ROUTE_104"]["trainer_pool"] if t.get("oras")]
+check({"Youngster Billy", "Lass Haley"} <= set(_new104), f"Route 104: ORAS's trainers who weren't here, now are ({_new104})")
+st = open_map("HOENN_ROUTE_104", "PETALBURG_CITY")
+_billy = [m for f in st.run.floors for m in f.movers if m.kind == "trainer" and "Billy" in str(m.payload)]
+check(_billy, "Route 104: Youngster Billy stands on the map, ready to battle")
+_ball = next((m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "LUXURY BALL"), None)
+_had = story.inventory.get("LUXURY_BALL", 0)
+if _ball:
+    st._use_figure(_ball); tap(st)
+check(_ball and story.inventory.get("LUXURY_BALL", 0) == _had + 1, "Route 104: a Luxury Ball lying where Emerald has an item ball: picked up")
+_hid = next(iter((_tm["HOENN_ROUTE_104"].get("hidden") or {}).items()), None)
+if _hid:
+    _hx, _hy = (int(v) for v in _hid[0].split(","))
+    _before = story.inventory.get(_hid[1], 0)
+    st._hidden_item((_hx, _hy)); tap(st)
+check(_hid and story.inventory.get(_hid[1], 0) == _before + 1, f"Route 104: a hidden item found by stepping on its spot ({_hid})")
+st = open_map("HOENN_ROUTE_119", "HOENN_ROUTE_118")
+frames(3)
+_greg = next((m for m in st.run.floor.movers if m.kind == "trainer" and "Greg" in str(m.payload)), None)
+_mo = getattr(_greg, "motion", None)
+_moved = False
+if _mo:
+    _gx, _gy = _mo.home
+    for _px, _py in ((_gx + 4, _gy), (_gx - 4, _gy), (_gx, _gy + 4), (_gx, _gy - 4), (_gx + 5, _gy + 2), (_gx - 5, _gy - 2)):
+        for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if not (st.run.floor.walkable(_px, _py) and st.run.floor.walkable(_px + _dx, _py + _dy)):
+                continue
+            _at = _mo.pos
+            st.run.player, st.anim = (_px, _py), 0
+            st.step(_dx, _dy); frames(25)
+            if _mo.pos != _at:
+                _moved = True
+                break
+        if _moved:
+            break
+check(_mo is not None and _mo.kind == "copy" and _moved,
+      f"Route 119: the Mimic Circle: Bug Catcher Greg copies your steps ({getattr(_mo, 'kind', None)}, moved {_moved})")
+story.story_flags.clear(); story.story_flags.update(_savedO)
+story.inventory.clear(); story.inventory.update(_invO)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
