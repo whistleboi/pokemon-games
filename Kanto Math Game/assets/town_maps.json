@@ -24278,14 +24278,14 @@
  },
  "KANTO_ROUTE_20": {
   "art": [
-   "uooooooooooooooooooooo~~cccccccccccccccccc~~~~cccccccccccccccccc~~cccc~~~~cccccccccccccccccccccccccccccccccccccccccccccc",
-   "uooooooooooo~~oooo~~~~~~~~cccccc~~cccccc~~~~~~~~~~cccccccccccccc~~~~~~~~~~~~~~cccccccccccccccccc~~cccccccccccccccc~~~~~~",
-   "uooooooooo~~~~~~~~~~~~oo~~~~~~~~~~~~~~~~~~oooo~~~~~~cccccccccccccc~~~~oooo~~~~~~~~cc~~cccccc~~~~~~~~cccc~~~~cccc~~~~~~~~",
-   "uooooooooo~~oo~~~~oooooooo~~~~~~oo~~~~~~oooo~~oooo~~~~ccccccccccccoo=N======oo~~~~~~~~~~~~~~~~~~cc~~~~~~~~~~~~~~~~ooooow",
+   ".ooooooooooooooooooooo~~cccccccccccccccccc~~~~cccccccccccccccccc~~cccc~~~~cccccccccccccccccccccccccccccccccccccccccccccc",
+   ".ooooooooooo~~oooo~~~~~~~~cccccc~~cccccc~~~~~~~~~~cccccccccccccc~~~~~~~~~~~~~~cccccccccccccccccc~~cccccccccccccccc~~~~~~",
+   ".ooooooooo~~~~~~~~~~~~oo~~~~~~~~~~~~~~~~~~oooo~~~~~~cccccccccccccc~~~~oooo~~~~~~~~cc~~cccccc~~~~~~~~cccc~~~~cccc~~~~~~~~",
+   ".ooooooooo~~oo~~~~oooooooo~~~~~~oo~~~~~~oooo~~oooo~~~~ccccccccccccoo=N======oo~~~~~~~~~~~~~~~~~~cc~~~~~~~~~~~~~~~~ooooow",
    "o~~oooooo~~ooooooo~~oo===ooooooooooooooooooo~~oo~~oo~~cccccccccccc===========ooooo~~oo~~~~~~oooo~~oo~~~~oooo~~~~ooo~~oow",
    "~~~~~~~~~~~o~~oooo~~o======ooooooo~~oooooooooooo~~o~~~~ccccccccccc============oooooooooooooooooo~~ooooooooooooooooo~~oow",
    "~oo~~~~~~ooo~~ooooooo=======oooooo~~ooooooooooooooo~~~~ccccccccccc====ccccc===ooooooooooooooooooooooooooooooooooooooooow",
-   "uoooooooooooooooooooo=======ooooooXooooo=====ooooo~~ooo=ccccccccc====ccccccc==ooooooooooooooooooooooooooooooooooooooooow",
+   ".oooooooooooooooooooo=======ooooooXooooo=====ooooo~~ooo=ccccccccc====ccccccc==ooooooooooooooooooooooooooooooooooooooooow",
    "uoooooooooooooooooooo======ooooooooooooo======oooo~~o~~==cccnccc!===ccccccccc=ooooooooooooooooooooooooooooooooooooooooow",
    "uooooooooooooooooooooooooooooooooooooooo===X==oooo~~o~~============cccccccccccoooooooooooooooooooooooooooooooooXooooooow",
    "uooooooooooooooooooooooXoooooooooooooooo======oooo~~oooo===========ccccccccccc~~oooooooooooooXooooooooooooooooooooooooow",
@@ -24348,26 +24348,6 @@
    "Irene"
   ],
   "edge_to": {
-   "0,0": [
-    23,
-    0
-   ],
-   "0,1": [
-    23,
-    1
-   ],
-   "0,2": [
-    23,
-    2
-   ],
-   "0,3": [
-    23,
-    3
-   ],
-   "0,7": [
-    23,
-    7
-   ],
    "0,8": [
     23,
     8
@@ -25104,143 +25084,51 @@
  },
  "CINNABAR_ISLAND": {
   "art": [
-   "qqwwwAAAAAAA^^^^wGGGGGG~",
-   "qqoooAAAAAAA==...GGGGGG~",
-   "qqoooAAAAAAA=....GGGGGG~",
-   "qqoooAAADAAA!....GGGGGG~",
-   "~qqoo==............YDYY~",
-   "~qqoo==......=======..!V",
-   "~qqoo==......=N=====...D",
-   "~qqooLLLLLLL...........P",
-   "qqoooLLLLLLLCCCCC....==D",
-   "qqoooLLLDLLLCCCCCMMMM==o",
-   "qqooo==.....CCCCCMMMM==o",
-   "qqooo======NCCDCCMMDM==o",
-   "~qqooooo====.........==o",
-   "~qqooooo===============o",
-   "~qqooooo===============o",
-   "~qqoooooooooooooooooooou",
-   "~~qqooooooooooooooooooou",
-   "~~qqqqqqooooooqqqqqqooou",
-   "~~~~qqqqqqqqqqqqqqqqqqqq",
-   "~~~~~~~~qqqqqq~~~~~~qqqq"
+   "~~^^^ccccccc^^^^^ccccccc",
+   "~~oooccccccc.....ccccccc",
+   "~~oooccccccc.....ccccccc",
+   "~~ooocccnccc!....cccAccc",
+   "c~~oo..............cDccc",
+   "c~~oo.................!~",
+   "c~~oo.........N........F",
+   "c~~ooccccccc...........D",
+   "~~ooocccBcccccccc......N",
+   "~~ooocccD!!cccccccccc..u",
+   "~~ooo.......ccCccccEc..u",
+   "~~ooo......NccDccccDc..u",
+   "c~~ooooo...............u",
+   "c~~ooooo...............u",
+   "c~~ooooo...............u",
+   "c~~oooooooooooooooooooou",
+   "cc~~ooooooooooooooooooou",
+   "cc~~~~~~oooooo~~~~~~ooou",
+   "cccc~~~~~~~~~~~~~~~~~~~~",
+   "cccccccc~~~~~~cccccc~~~~"
   ],
   "exits": {
    "^": "KANTO_ROUTE_21",
-   "w": "KANTO_ROUTE_21",
    "u": "KANTO_ROUTE_20",
-   "V": "CINNABAR_VOLCANO"
+   "n": "POKEMON_MANSION",
+   "F": "CINNABAR_VOLCANO"
   },
   "buildings": {
-   "A": "mansion",
+   "A": "gym",
+   "B": "fossil",
    "C": "center",
-   "G": "gym",
-   "L": "fossil",
-   "M": "mart",
-   "P": "harbor",
-   "V": "cave",
-   "Y": "gym"
+   "E": "mart",
+   "F": "cave"
   },
   "roofs": {
-   "A": [
-    164,
-    106,
-    82
-   ],
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "G": [
-    197,
-    172,
-    106
-   ],
-   "L": [
-    230,
-    230,
-    189
-   ],
-   "M": [
-    98,
-    164,
-    222
-   ],
-   "P": [
-    74,
-    123,
-    222
-   ],
-   "V": [
-    49,
-    98,
-    180
-   ],
-   "Y": [
-    197,
-    172,
-    106
-   ],
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_8.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     5,
-     6,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     230,
-     230,
-     189
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     7,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     222,
-     106,
-     98
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     17,
-     8,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     98,
-     164,
-     222
-    ]
-   }
-  ],
-  "signs": [
-   [
-    "CINNABAR ISLAND",
-    "The Fiery Town of Burning Desire"
-   ],
-   [
-    "CINNABAR ISLAND GYM",
-    "Leader: Blaine, the Hotheaded Quiz Master!"
-   ]
-  ],
   "people": [
    {
     "text": "Islander",
@@ -25252,6 +25140,7 @@
      ]
     }
    },
+   "door:harbor",
    {
     "text": "Scientist",
     "action": "EVENT",
@@ -25263,123 +25152,1405 @@
     }
    }
   ],
+  "signs": [
+   [
+    "CINNABAR ISLAND",
+    "The Fiery Town of Burning Desire"
+   ],
+   [
+    "CINNABAR ISLAND POKéMON GYM",
+    "Leader: Blaine, the Hotheaded Quiz Master!"
+   ],
+   [
+    "POKéMON LAB"
+   ],
+   [
+    "POKéMON LAB"
+   ]
+  ],
+  "inside": {
+   "20,4": "gym",
+   "8,9": "lab",
+   "14,11": "center",
+   "19,11": "mart"
+  },
+  "edge_to": {
+   "2,0": [
+    2,
+    99
+   ],
+   "3,0": [
+    3,
+    99
+   ],
+   "4,0": [
+    4,
+    99
+   ],
+   "12,0": [
+    12,
+    99
+   ],
+   "13,0": [
+    13,
+    99
+   ],
+   "14,0": [
+    14,
+    99
+   ],
+   "15,0": [
+    15,
+    99
+   ],
+   "16,0": [
+    16,
+    99
+   ],
+   "23,9": [
+    0,
+    9
+   ],
+   "23,10": [
+    0,
+    10
+   ],
+   "23,11": [
+    0,
+    11
+   ],
+   "23,12": [
+    0,
+    12
+   ],
+   "23,13": [
+    0,
+    13
+   ],
+   "23,14": [
+    0,
+    14
+   ],
+   "23,15": [
+    0,
+    15
+   ],
+   "23,16": [
+    0,
+    16
+   ],
+   "23,17": [
+    0,
+    17
+   ]
+  },
   "rooms": {
-   "center": {
+   "gym": {
+    "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "ccc.....ccccc..!!............c",
+     "c.........ccc................c",
+     "c....N....ccc............N...c",
+     "c.........ccc....N...c.......c",
+     "c.........ccc........c.......c",
+     "c.........ccc........c.......c",
+     "ccccc..cccccccccc..ccccccc..cc",
+     "ccccc..cccccccccc..ccccccc..cc",
+     "c!!.......ccc!!......c!!.....c",
+     "c...N.....ccc...N....c...N...c",
+     "c.........ccc........c.......c",
+     "c.........ccc........c.......c",
+     "c.........ccc........ccccc...c",
+     "c.........ccccccc..ccccccc...c",
+     "ccccc..cccccccccc..ccc.......c",
+     "ccccc..cccccc!!......c.......c",
+     "c!!.......ccc...N....c.......c",
+     "c...N.....ccc........c.......c",
+     "c.........ccc........c.!N..!.c",
+     "c.........c.c........c.......c",
+     "c....................c.......c",
+     "c....................c..vvv..c",
+     "cccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/12_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "cinnabar_gym_gate_1",
+        "f": "fr_ground/12_0_q1.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_2",
+        "f": "fr_ground/12_0_q2.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_3",
+        "f": "fr_ground/12_0_q3.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_4",
+        "f": "fr_ground/12_0_q4.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_5",
+        "f": "fr_ground/12_0_q5.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_6",
+        "f": "fr_ground/12_0_q6.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gym",
+     {
+      "text": "Super Nerd Erik",
+      "action": "EVENT",
+      "_look": "fr_55.png",
+      "event": {
+       "lines": [
+        "Super Nerd Erik: Fire is weak to Water! Even a quiz knows that."
+       ],
+       "flag": "gym_trainer_CINNABAR_ISLAND_1",
+       "battle": {
+        "name": "Super Nerd Erik",
+        "class": "SUPER_NERD",
+        "sprite": "supernerd.png",
+        "team": [
+         37,
+         37,
+         38
+        ],
+        "levels": [
+         36,
+         36,
+         36
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Super Nerd Erik: Too much heat!"
+         ]
+        }
+       },
+       "done": [
+        "Super Nerd Erik: Blaine's Pokémon burn hot."
+       ]
+      }
+     },
+     {
+      "text": "Super Nerd Avery",
+      "action": "EVENT",
+      "_look": "fr_55.png",
+      "event": {
+       "lines": [
+        "Super Nerd Avery: My Pokémon love the heat in here!"
+       ],
+       "flag": "gym_trainer_CINNABAR_ISLAND_2",
+       "battle": {
+        "name": "Super Nerd Avery",
+        "class": "SUPER_NERD",
+        "sprite": "supernerd.png",
+        "team": [
+         77,
+         4,
+         37,
+         58
+        ],
+        "levels": [
+         34,
+         34,
+         34,
+         34
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Super Nerd Avery: My flames went out!"
+         ]
+        }
+       },
+       "done": [
+        "Super Nerd Avery: Water and Ground moves work well here."
+       ]
+      }
+     },
+     {
+      "text": "Super Nerd Zac",
+      "action": "EVENT",
+      "_look": "fr_55.png",
+      "event": {
+       "lines": [
+        "Super Nerd Zac: Blaine's waiting just ahead. You won't reach him!"
+       ],
+       "flag": "gym_trainer_CINNABAR_ISLAND_6",
+       "battle": {
+        "name": "Super Nerd Zac",
+        "class": "SUPER_NERD",
+        "sprite": "supernerd.png",
+        "team": [
+         58,
+         37
+        ],
+        "levels": [
+         37,
+         37
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Super Nerd Zac: Fizzle..."
+         ]
+        }
+       },
+       "done": [
+        "Super Nerd Zac: Go on. The Volcano Badge is yours to win."
+       ]
+      }
+     },
+     {
+      "text": "Burglar Ramon",
+      "action": "EVENT",
+      "_look": "fr_52.png",
+      "event": {
+       "lines": [
+        "Burglar Ramon: Got the answer? Then let's see your Pokémon!"
+       ],
+       "flag": "gym_trainer_CINNABAR_ISLAND_3",
+       "battle": {
+        "name": "Burglar Ramon",
+        "class": "BURGLAR",
+        "sprite": "burglar.png",
+        "team": [
+         77
+        ],
+        "levels": [
+         41
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Burglar Ramon: Ouch!"
+         ]
+        }
+       },
+       "done": [
+        "Burglar Ramon: Blaine knows a quiz for every Pokémon."
+       ]
+      }
+     },
+     {
+      "text": "Burglar Quinn",
+      "action": "EVENT",
+      "_look": "fr_52.png",
+      "event": {
+       "lines": [
+        "Burglar Quinn: I was a thief, but Blaine's quizzes set me straight!"
+       ],
+       "flag": "gym_trainer_CINNABAR_ISLAND_0",
+       "battle": {
+        "name": "Burglar Quinn",
+        "class": "BURGLAR",
+        "sprite": "burglar.png",
+        "team": [
+         58,
+         37,
+         38
+        ],
+        "levels": [
+         36,
+         36,
+         36
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Burglar Quinn: Burned!"
+         ]
+        }
+       },
+       "done": [
+        "Burglar Quinn: Every answer opens a gate. Think before you pick!"
+       ]
+      }
+     },
+     {
+      "text": "Super Nerd Derek",
+      "action": "EVENT",
+      "_look": "fr_55.png",
+      "event": {
+       "lines": [
+        "Super Nerd Derek: I studied every question in this Gym!"
+       ],
+       "flag": "gym_trainer_CINNABAR_ISLAND_4",
+       "battle": {
+        "name": "Super Nerd Derek",
+        "class": "SUPER_NERD",
+        "sprite": "supernerd.png",
+        "team": [
+         78
+        ],
+        "levels": [
+         41
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Super Nerd Derek: I didn't study battles..."
+         ]
+        }
+       },
+       "done": [
+        "Super Nerd Derek: The gates open one at a time."
+       ]
+      }
+     },
+     {
+      "text": "Burglar Dusty",
+      "action": "EVENT",
+      "_look": "fr_52.png",
+      "event": {
+       "lines": [
+        "Burglar Dusty: I used to steal. Now I just burn things!"
+       ],
+       "flag": "gym_trainer_CINNABAR_ISLAND_5",
+       "battle": {
+        "name": "Burglar Dusty",
+        "class": "BURGLAR",
+        "sprite": "burglar.png",
+        "team": [
+         37,
+         58
+        ],
+        "levels": [
+         37,
+         37
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Burglar Dusty: Doused!"
+         ]
+        }
+       },
+       "done": [
+        "Burglar Dusty: Blaine is just past the last gate."
+       ]
+      }
+     },
+     {
+      "text": "Gym Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gym Guide: Yo, champ in the making! Blaine's quiz machines open the gates.",
+        "Gym Guide: Answer each one right and the gate beside it slides open. Bring Water types!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "A quiz machine. Answer its question to open the gate."
+     ],
+     [
+      "CINNABAR GYM",
+      "Leader: Blaine"
+     ],
+     [
+      "CINNABAR GYM",
+      "Leader: Blaine"
+     ]
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "24,20": {
+      "m": "face",
+      "d": "d"
+     },
+     "25,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "25,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "17,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "16,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "16,18": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,19": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,11": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "sign_events": {
+     "22,10": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_1",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "23,10": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_1",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "15,2": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_2",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "16,2": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_2",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "13,10": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_3",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "14,10": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_3",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "13,17": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_4",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "14,17": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_4",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "1,18": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_5",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "2,18": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_5",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "1,10": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_6",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     },
+     "2,10": {
+      "text": "QUIZ MACHINE",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The gate ahead slides open!"
+       ],
+       "puzzle": "quiz",
+       "flag": "cinnabar_gym_gate_6",
+       "puzzle_fail": [
+        "The quiz machine powers down. Check it again to try another question."
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ],
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "cinnabar_gym_gate_1"
+      },
+      "lines": [
+       "The gate is shut. Answer the quiz machine's question to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ],
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "cinnabar_gym_gate_2"
+      },
+      "lines": [
+       "The gate is shut. Answer the quiz machine's question to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        16
+       ],
+       [
+        18,
+        16
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "cinnabar_gym_gate_3"
+      },
+      "lines": [
+       "The gate is shut. Answer the quiz machine's question to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        21
+       ],
+       [
+        11,
+        22
+       ],
+       [
+        11,
+        23
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "cinnabar_gym_gate_4"
+      },
+      "lines": [
+       "The gate is shut. Answer the quiz machine's question to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        17
+       ],
+       [
+        6,
+        17
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "cinnabar_gym_gate_5"
+      },
+      "lines": [
+       "The gate is shut. Answer the quiz machine's question to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        9
+       ],
+       [
+        6,
+        9
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "cinnabar_gym_gate_6"
+      },
+      "lines": [
+       "The gate is shut. Answer the quiz machine's question to open it."
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       30,
+       25
+      ],
+      "when": [
+       {
+        "flag": "cinnabar_gym_gate_1",
+        "f": "fr_top/12_0_q1.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_2",
+        "f": "fr_top/12_0_q2.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_3",
+        "f": "fr_top/12_0_q3.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_4",
+        "f": "fr_top/12_0_q4.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_5",
+        "f": "fr_top/12_0_q5.png"
+       },
+       {
+        "flag": "cinnabar_gym_gate_6",
+        "f": "fr_top/12_0_q6.png"
+       }
+      ]
+     }
+    ],
     "theme": "room",
+    "title": "Cinnabar Gym"
+   },
+   "lab": {
+    "art": [
+     "cccccccccccccccccccccccccccc",
+     "cccc!ccccccccccccccccccccccc",
+     ".c.....c.ccccccccccccccccccc",
+     ".........ccccccccccccccccccc",
+     "mcN.cc...ccccccccccccccccccc",
+     "cm..cc...ccc!ncccc!<cccc!>cc",
+     "cm..........................",
+     "mm..........................",
+     "............................",
+     "...vvv.....c..c..c..c..c..c.",
+     "cccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:8,9",
+     "n": "ROOM:lab_meet",
+     "<": "ROOM:lab_rd",
+     ">": "ROOM:lab_test"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/12_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We study Pokémon here every day. People bring us all sorts of rare ones."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A photo of the Lab's founder...",
+      "Dr. Fuji?!"
+     ],
+     [
+      "POKéMON LAB",
+      "Meeting Room"
+     ],
+     [
+      "POKéMON LAB",
+      "R & D Room"
+     ],
+     [
+      "POKéMON LAB",
+      "Testing Room"
+     ]
+    ],
+    "moves": {
+     "2,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       28,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Lab"
+   },
+   "lab_meet": {
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
+     "...............",
+     ".....N.........",
+     "......ccc......",
+     "......ccc.N....",
+     "....N.ccc......",
      "...............",
      "...............",
-     "ce.........mm..",
-     "...........mm..",
+     "cc.....v.....cc",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lab"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/12_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I found a remarkable fossil inside Mt. Moon once. I think it was very rare!"
+       ]
+      }
+     },
+     {
+      "text": "Scientist  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Have you got a Pokémon from far away? I'd love to see it!"
+       ]
+      }
+     },
+     {
+      "text": "Scientist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Rare Pokémon come through here all the time. Trading is how most of them got here."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "4,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Meeting Room"
+   },
+   "lab_rd": {
+    "art": [
+     "ccccccccccccccc",
+     "ccc!cc!cccccccc",
+     "...............",
+     "..........N....",
+     "..cc.N.cc...ccc",
+     "..cc...cc......",
+     "..cc...cc..cccc",
+     "...........cccc",
+     "...............",
+     ".......v.......",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lab"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/12_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Scientist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We're studying how Eevee chooses what to evolve into. Fascinating!"
+       ]
+      }
+     },
+     {
+      "text": "Scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Eevee can evolve into one of several kinds, depending on the stone you use."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "An e-mail on the screen:",
+      "\"Research on Pokémon evolution continues...\""
+     ],
+     [
+      "An amber pipe!"
+     ]
+    ],
+    "moves": {
+     "5,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "10,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "R & D Room"
+   },
+   "lab_test": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "............ccc",
+     "c...........Ncc",
+     "c.ccc..cc......",
+     ".......cc..ccc.",
+     ".......cc..ccc.",
+     "..ccc......ccc.",
+     "...........N...",
+     ".......v.......",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lab"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/12_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Pokemon Lab",
+     {
+      "text": "Scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We test Pokémon here. I wonder what we'll find next!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "11,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "12,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Testing Room"
+   },
+   "center": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "....mccNccm....",
+     "....cmmmmmc....",
+     "..N............",
+     "...............",
+     "c<.........cc.N",
+     ".........N.cc..",
      "......vvv......",
      "ccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:14,11"
+     "v": "OUT:14,11",
+     "<": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/12_5.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Heal"
-    ]
+     "Heal",
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I came to see the Cinnabar Gym, but the door's locked. Where's the key?"
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Pokémon can still learn a move you once turned down. Ask someone who teaches moves!"
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading with friends is a great way to fill your Pokédex!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,4": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "14,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "9,7": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "c<.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/12_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
    },
    "mart": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "cz.m......m",
-     "..Nm.......",
-     "mmmm...mm.m",
-     ".......mm.m",
-     ".mm....mm.m",
+     "cccm..N.N.c",
+     "ccNm.......",
+     "mcmm...cc.c",
+     ".......cc.c",
+     ".cc....cc.c",
      "...vvv.....",
      "ccccccccccc"
     ],
@@ -25388,1574 +26559,84 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      93,
-      148,
-      219
-     ],
-     "_wall": [
-      255,
-      255,
-      255
-     ],
-     "_things": {
-      "3,2": [
-       82,
-       82,
-       106
-      ],
-      "10,2": [
-       213,
-       197,
-       106
-      ],
-      "3,3": [
-       189,
-       230,
-       255
-      ],
-      "0,4": [
-       255,
-       255,
-       255
-      ],
-      "1,4": [
-       139,
-       180,
-       222
-      ],
-      "2,4": [
-       139,
-       180,
-       222
-      ],
-      "3,4": [
-       189,
-       230,
-       255
-      ],
-      "7,4": [
-       255,
-       255,
-       255
-      ],
-      "8,4": [
-       255,
-       255,
-       255
-      ],
-      "10,4": [
-       255,
-       255,
-       255
-      ],
-      "7,5": [
-       255,
-       255,
-       255
-      ],
-      "8,5": [
-       255,
-       255,
-       255
-      ],
-      "10,5": [
-       255,
-       255,
-       255
-      ],
-      "1,6": [
-       255,
-       255,
-       255
-      ],
-      "2,6": [
-       139,
-       180,
-       222
-      ],
-      "7,6": [
-       180,
-       180,
-       164
-      ],
-      "8,6": [
-       180,
-       180,
-       164
-      ],
-      "10,6": [
-       180,
-       180,
-       164
+     "_picture": {
+      "f": "fr_ground/12_7.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Shop"
-    ]
-   },
-   "gym": {
-    "theme": "room",
-    "art": [
-     "cccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccc",
-     "mmm.....mmmmm..mm............m",
-     "m.........mmm................m",
-     "m....N....mmm................m",
-     "m.........mmm........m.......m",
-     "m.........mmm........m.......m",
-     "m.........mmm........m.......m",
-     "mmmmm..mmmmmmmmmm..mmmmmmm..mm",
-     "mmmmm..mmmmmmmmmm..mmmmmmm..mm",
-     "mmm.......mmmmm......mmm.....m",
-     "m.........mmm........m.......m",
-     "m.........mmm........m.......m",
-     "m.........mmm........m.......m",
-     "m.........mmm........mmmmm...m",
-     "m.........mmmmmmm..mmmmmmm...m",
-     "mmmmm..mmmmmmmmmm..mmm.......m",
-     "mmmmm..mmmmmmmm......m.......m",
-     "mmm.......mmm........m.......m",
-     "m.........mmm........m.......m",
-     "m.........mmm........m.jN..j.m",
-     "m.........mmm........m.......m",
-     "m....................m.......m",
-     "m....................m..vvv..m",
-     "cccccccccccccccccccccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:20,4"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      175,
-      139,
-      89
-     ],
-     "_wall": [
-      205,
-      189,
-      189
-     ],
-     "_things": {
-      "0,2": [
-       205,
-       238,
-       115
-      ],
-      "1,2": [
-       205,
-       189,
-       230
-      ],
-      "2,2": [
-       82,
-       82,
-       106
-      ],
-      "8,2": [
-       205,
-       189,
-       230
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "10,2": [
-       205,
-       238,
-       115
-      ],
-      "11,2": [
-       205,
-       189,
-       230
-      ],
-      "12,2": [
-       205,
-       238,
-       115
-      ],
-      "15,2": [
-       205,
-       189,
-       230
-      ],
-      "16,2": [
-       82,
-       82,
-       106
-      ],
-      "29,2": [
-       205,
-       238,
-       115
-      ],
-      "0,3": [
-       205,
-       238,
-       115
-      ],
-      "10,3": [
-       205,
-       238,
-       115
-      ],
-      "11,3": [
-       205,
-       189,
-       230
-      ],
-      "12,3": [
-       205,
-       238,
-       115
-      ],
-      "29,3": [
-       205,
-       238,
-       115
-      ],
-      "0,4": [
-       205,
-       238,
-       115
-      ],
-      "10,4": [
-       205,
-       238,
-       115
-      ],
-      "11,4": [
-       205,
-       189,
-       230
-      ],
-      "12,4": [
-       205,
-       238,
-       115
-      ],
-      "29,4": [
-       205,
-       238,
-       115
-      ],
-      "0,5": [
-       205,
-       238,
-       115
-      ],
-      "10,5": [
-       205,
-       238,
-       115
-      ],
-      "11,5": [
-       205,
-       189,
-       230
-      ],
-      "12,5": [
-       205,
-       238,
-       115
-      ],
-      "21,5": [
-       205,
-       238,
-       115
-      ],
-      "29,5": [
-       205,
-       238,
-       115
-      ],
-      "0,6": [
-       205,
-       238,
-       115
-      ],
-      "10,6": [
-       205,
-       238,
-       115
-      ],
-      "11,6": [
-       205,
-       189,
-       230
-      ],
-      "12,6": [
-       205,
-       238,
-       115
-      ],
-      "21,6": [
-       205,
-       238,
-       115
-      ],
-      "29,6": [
-       205,
-       238,
-       115
-      ],
-      "0,7": [
-       205,
-       238,
-       115
-      ],
-      "10,7": [
-       205,
-       238,
-       115
-      ],
-      "11,7": [
-       205,
-       189,
-       230
-      ],
-      "12,7": [
-       205,
-       238,
-       115
-      ],
-      "21,7": [
-       205,
-       238,
-       115
-      ],
-      "29,7": [
-       205,
-       238,
-       115
-      ],
-      "0,8": [
-       205,
-       238,
-       115
-      ],
-      "1,8": [
-       205,
-       238,
-       115
-      ],
-      "2,8": [
-       205,
-       238,
-       115
-      ],
-      "3,8": [
-       205,
-       238,
-       115
-      ],
-      "4,8": [
-       205,
-       238,
-       115
-      ],
-      "7,8": [
-       205,
-       238,
-       115
-      ],
-      "8,8": [
-       205,
-       238,
-       115
-      ],
-      "9,8": [
-       205,
-       238,
-       115
-      ],
-      "10,8": [
-       205,
-       238,
-       115
-      ],
-      "11,8": [
-       205,
-       189,
-       230
-      ],
-      "12,8": [
-       205,
-       238,
-       115
-      ],
-      "13,8": [
-       205,
-       238,
-       115
-      ],
-      "14,8": [
-       205,
-       238,
-       115
-      ],
-      "15,8": [
-       205,
-       238,
-       115
-      ],
-      "16,8": [
-       205,
-       238,
-       115
-      ],
-      "19,8": [
-       205,
-       238,
-       115
-      ],
-      "20,8": [
-       205,
-       238,
-       115
-      ],
-      "21,8": [
-       205,
-       238,
-       115
-      ],
-      "22,8": [
-       205,
-       238,
-       115
-      ],
-      "23,8": [
-       205,
-       238,
-       115
-      ],
-      "24,8": [
-       205,
-       238,
-       115
-      ],
-      "25,8": [
-       205,
-       238,
-       115
-      ],
-      "28,8": [
-       205,
-       238,
-       115
-      ],
-      "29,8": [
-       205,
-       238,
-       115
-      ],
-      "0,9": [
-       205,
-       238,
-       115
-      ],
-      "1,9": [
-       246,
-       246,
-       255
-      ],
-      "2,9": [
-       205,
-       189,
-       189
-      ],
-      "3,9": [
-       205,
-       189,
-       189
-      ],
-      "4,9": [
-       205,
-       189,
-       189
-      ],
-      "7,9": [
-       205,
-       189,
-       189
-      ],
-      "8,9": [
-       205,
-       189,
-       189
-      ],
-      "9,9": [
-       205,
-       189,
-       189
-      ],
-      "10,9": [
-       205,
-       238,
-       115
-      ],
-      "11,9": [
-       205,
-       189,
-       230
-      ],
-      "12,9": [
-       205,
-       238,
-       115
-      ],
-      "13,9": [
-       246,
-       246,
-       255
-      ],
-      "14,9": [
-       205,
-       189,
-       189
-      ],
-      "15,9": [
-       205,
-       189,
-       189
-      ],
-      "16,9": [
-       205,
-       189,
-       189
-      ],
-      "19,9": [
-       205,
-       189,
-       189
-      ],
-      "20,9": [
-       205,
-       189,
-       189
-      ],
-      "21,9": [
-       205,
-       238,
-       115
-      ],
-      "22,9": [
-       246,
-       246,
-       255
-      ],
-      "23,9": [
-       205,
-       189,
-       189
-      ],
-      "24,9": [
-       205,
-       189,
-       189
-      ],
-      "25,9": [
-       205,
-       189,
-       189
-      ],
-      "28,9": [
-       205,
-       189,
-       189
-      ],
-      "29,9": [
-       205,
-       238,
-       115
-      ],
-      "0,10": [
-       205,
-       238,
-       115
-      ],
-      "1,10": [
-       205,
-       189,
-       230
-      ],
-      "2,10": [
-       82,
-       82,
-       106
-      ],
-      "10,10": [
-       205,
-       238,
-       115
-      ],
-      "11,10": [
-       205,
-       189,
-       230
-      ],
-      "12,10": [
-       205,
-       238,
-       115
-      ],
-      "13,10": [
-       205,
-       189,
-       230
-      ],
-      "14,10": [
-       82,
-       82,
-       106
-      ],
-      "21,10": [
-       205,
-       238,
-       115
-      ],
-      "22,10": [
-       205,
-       189,
-       230
-      ],
-      "23,10": [
-       82,
-       82,
-       106
-      ],
-      "29,10": [
-       205,
-       238,
-       115
-      ],
-      "0,11": [
-       205,
-       238,
-       115
-      ],
-      "10,11": [
-       205,
-       238,
-       115
-      ],
-      "11,11": [
-       205,
-       189,
-       230
-      ],
-      "12,11": [
-       205,
-       238,
-       115
-      ],
-      "21,11": [
-       205,
-       238,
-       115
-      ],
-      "29,11": [
-       205,
-       238,
-       115
-      ],
-      "0,12": [
-       205,
-       238,
-       115
-      ],
-      "10,12": [
-       205,
-       238,
-       115
-      ],
-      "11,12": [
-       205,
-       189,
-       230
-      ],
-      "12,12": [
-       205,
-       238,
-       115
-      ],
-      "21,12": [
-       205,
-       238,
-       115
-      ],
-      "29,12": [
-       205,
-       238,
-       115
-      ],
-      "0,13": [
-       205,
-       238,
-       115
-      ],
-      "10,13": [
-       205,
-       238,
-       115
-      ],
-      "11,13": [
-       205,
-       189,
-       230
-      ],
-      "12,13": [
-       205,
-       238,
-       115
-      ],
-      "21,13": [
-       205,
-       238,
-       115
-      ],
-      "29,13": [
-       205,
-       238,
-       115
-      ],
-      "0,14": [
-       205,
-       238,
-       115
-      ],
-      "10,14": [
-       205,
-       238,
-       115
-      ],
-      "11,14": [
-       205,
-       189,
-       230
-      ],
-      "12,14": [
-       205,
-       238,
-       115
-      ],
-      "21,14": [
-       205,
-       238,
-       115
-      ],
-      "22,14": [
-       205,
-       238,
-       115
-      ],
-      "23,14": [
-       205,
-       238,
-       115
-      ],
-      "24,14": [
-       205,
-       238,
-       115
-      ],
-      "25,14": [
-       205,
-       238,
-       115
-      ],
-      "29,14": [
-       205,
-       238,
-       115
-      ],
-      "0,15": [
-       205,
-       238,
-       115
-      ],
-      "10,15": [
-       205,
-       238,
-       115
-      ],
-      "11,15": [
-       205,
-       189,
-       230
-      ],
-      "12,15": [
-       205,
-       238,
-       115
-      ],
-      "13,15": [
-       205,
-       238,
-       115
-      ],
-      "14,15": [
-       205,
-       238,
-       115
-      ],
-      "15,15": [
-       205,
-       238,
-       115
-      ],
-      "16,15": [
-       205,
-       238,
-       115
-      ],
-      "19,15": [
-       205,
-       238,
-       115
-      ],
-      "20,15": [
-       205,
-       238,
-       115
-      ],
-      "21,15": [
-       205,
-       238,
-       115
-      ],
-      "22,15": [
-       205,
-       189,
-       189
-      ],
-      "23,15": [
-       205,
-       189,
-       189
-      ],
-      "24,15": [
-       205,
-       189,
-       189
-      ],
-      "25,15": [
-       205,
-       189,
-       189
-      ],
-      "29,15": [
-       205,
-       238,
-       115
-      ],
-      "0,16": [
-       205,
-       238,
-       115
-      ],
-      "1,16": [
-       205,
-       238,
-       115
-      ],
-      "2,16": [
-       205,
-       238,
-       115
-      ],
-      "3,16": [
-       205,
-       238,
-       115
-      ],
-      "4,16": [
-       205,
-       238,
-       115
-      ],
-      "7,16": [
-       205,
-       238,
-       115
-      ],
-      "8,16": [
-       205,
-       238,
-       115
-      ],
-      "9,16": [
-       205,
-       238,
-       115
-      ],
-      "10,16": [
-       205,
-       238,
-       115
-      ],
-      "11,16": [
-       205,
-       189,
-       230
-      ],
-      "12,16": [
-       205,
-       238,
-       115
-      ],
-      "13,16": [
-       246,
-       246,
-       255
-      ],
-      "14,16": [
-       205,
-       189,
-       189
-      ],
-      "15,16": [
-       205,
-       189,
-       189
-      ],
-      "16,16": [
-       205,
-       189,
-       189
-      ],
-      "19,16": [
-       205,
-       189,
-       189
-      ],
-      "20,16": [
-       205,
-       189,
-       189
-      ],
-      "21,16": [
-       205,
-       238,
-       115
-      ],
-      "29,16": [
-       205,
-       238,
-       115
-      ],
-      "0,17": [
-       205,
-       238,
-       115
-      ],
-      "1,17": [
-       246,
-       246,
-       255
-      ],
-      "2,17": [
-       205,
-       189,
-       189
-      ],
-      "3,17": [
-       205,
-       189,
-       189
-      ],
-      "4,17": [
-       205,
-       189,
-       189
-      ],
-      "7,17": [
-       205,
-       189,
-       189
-      ],
-      "8,17": [
-       205,
-       189,
-       189
-      ],
-      "9,17": [
-       205,
-       189,
-       189
-      ],
-      "10,17": [
-       205,
-       238,
-       115
-      ],
-      "11,17": [
-       205,
-       189,
-       230
-      ],
-      "12,17": [
-       205,
-       238,
-       115
-      ],
-      "13,17": [
-       205,
-       189,
-       230
-      ],
-      "14,17": [
-       82,
-       82,
-       106
-      ],
-      "21,17": [
-       205,
-       238,
-       115
-      ],
-      "29,17": [
-       205,
-       238,
-       115
-      ],
-      "0,18": [
-       205,
-       238,
-       115
-      ],
-      "1,18": [
-       205,
-       189,
-       230
-      ],
-      "2,18": [
-       82,
-       82,
-       106
-      ],
-      "10,18": [
-       205,
-       238,
-       115
-      ],
-      "11,18": [
-       205,
-       189,
-       230
-      ],
-      "12,18": [
-       205,
-       238,
-       115
-      ],
-      "21,18": [
-       205,
-       238,
-       115
-      ],
-      "29,18": [
-       205,
-       238,
-       115
-      ],
-      "0,19": [
-       205,
-       238,
-       115
-      ],
-      "10,19": [
-       205,
-       238,
-       115
-      ],
-      "11,19": [
-       205,
-       189,
-       230
-      ],
-      "12,19": [
-       205,
-       238,
-       115
-      ],
-      "21,19": [
-       205,
-       238,
-       115
-      ],
-      "29,19": [
-       205,
-       238,
-       115
-      ],
-      "0,20": [
-       205,
-       238,
-       115
-      ],
-      "10,20": [
-       205,
-       238,
-       115
-      ],
-      "11,20": [
-       205,
-       238,
-       115
-      ],
-      "12,20": [
-       205,
-       238,
-       115
-      ],
-      "21,20": [
-       205,
-       238,
-       115
-      ],
-      "29,20": [
-       205,
-       238,
-       115
-      ],
-      "0,21": [
-       205,
-       238,
-       115
-      ],
-      "10,21": [
-       205,
-       189,
-       189
-      ],
-      "11,21": [
-       255,
-       139,
-       74
-      ],
-      "12,21": [
-       205,
-       189,
-       189
-      ],
-      "21,21": [
-       205,
-       238,
-       115
-      ],
-      "29,21": [
-       205,
-       238,
-       115
-      ],
-      "0,22": [
-       205,
-       238,
-       115
-      ],
-      "21,22": [
-       205,
-       238,
-       115
-      ],
-      "29,22": [
-       205,
-       238,
-       115
-      ],
-      "0,23": [
-       205,
-       189,
-       189
-      ],
-      "21,23": [
-       205,
-       189,
-       189
-      ],
-      "29,23": [
-       205,
-       189,
-       189
-      ]
-     }
-    },
-    "people": [
-     "Gym",
      {
-      "text": "Gym Guide",
+      "text": "Woman",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Gym Guide: Blaine's Fire Pokemon fear Water, Ground and Rock moves. His quiz doors are open today!"
+        "An X Attack sharply raises Attack in battle. I always carry a few!"
        ]
       }
-     }
-    ]
-   },
-   "lab": {
-    "theme": "room",
-    "art": [
-     "cccccccccccccccccccccccccccc",
-     "mmmmmmmmmccccccccc.ccccccccc",
-     ".m.....m.ccccccccccccccccccc",
-     ".........ccccccccccccccccccc",
-     "mmN.mm...mmmmmmmmmmmmmmmmmmm",
-     ".m..mm...mmmm.mmmmm.mmmmm.mm",
-     ".m..........................",
-     "mm..........................",
-     "............................",
-     "...vvv.....m..m..m..m..m..m.",
-     "cccccccccccccccccccccccccccc"
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It never hurts to carry extra items. You never know what's coming."
+       ]
+      }
+     },
+     "Shop"
     ],
-    "exits": {
-     "v": "OUT:8,9"
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "8,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "r"
+     }
     },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      214,
-      213,
-      219
-     ],
-     "_wall": [
-      213,
-      213,
-      172
-     ],
-     "_things": {
-      "0,1": [
-       213,
-       213,
-       172
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/12_7.png",
+      "at": [
+       0,
+       0
       ],
-      "1,1": [
-       213,
-       213,
-       172
-      ],
-      "2,1": [
-       164,
-       148,
-       49
-      ],
-      "3,1": [
-       213,
-       213,
-       172
-      ],
-      "4,1": [
-       82,
-       82,
-       106
-      ],
-      "5,1": [
-       213,
-       213,
-       172
-      ],
-      "6,1": [
-       164,
-       148,
-       49
-      ],
-      "7,1": [
-       213,
-       213,
-       172
-      ],
-      "8,1": [
-       213,
-       213,
-       172
-      ],
-      "1,2": [
-       205,
-       205,
-       213
-      ],
-      "7,2": [
-       205,
-       205,
-       213
-      ],
-      "0,4": [
-       189,
-       230,
-       255
-      ],
-      "1,4": [
-       189,
-       230,
-       255
-      ],
-      "4,4": [
-       255,
-       255,
-       255
-      ],
-      "5,4": [
-       255,
-       255,
-       255
-      ],
-      "9,4": [
-       255,
-       255,
-       255
-      ],
-      "10,4": [
-       255,
-       255,
-       255
-      ],
-      "11,4": [
-       213,
-       213,
-       172
-      ],
-      "12,4": [
-       213,
-       213,
-       172
-      ],
-      "13,4": [
-       255,
-       255,
-       255
-      ],
-      "14,4": [
-       213,
-       213,
-       172
-      ],
-      "15,4": [
-       255,
-       255,
-       255
-      ],
-      "16,4": [
-       255,
-       255,
-       255
-      ],
-      "17,4": [
-       213,
-       213,
-       172
-      ],
-      "18,4": [
-       213,
-       213,
-       172
-      ],
-      "19,4": [
-       255,
-       255,
-       255
-      ],
-      "20,4": [
-       213,
-       213,
-       172
-      ],
-      "21,4": [
-       255,
-       255,
-       255
-      ],
-      "22,4": [
-       255,
-       255,
-       255
-      ],
-      "23,4": [
-       213,
-       213,
-       172
-      ],
-      "24,4": [
-       213,
-       213,
-       172
-      ],
-      "25,4": [
-       255,
-       255,
-       255
-      ],
-      "26,4": [
-       213,
-       213,
-       172
-      ],
-      "27,4": [
-       255,
-       255,
-       255
-      ],
-      "1,5": [
-       189,
-       230,
-       255
-      ],
-      "4,5": [
-       222,
-       213,
-       230
-      ],
-      "5,5": [
-       255,
-       255,
-       255
-      ],
-      "9,5": [
-       213,
-       213,
-       172
-      ],
-      "10,5": [
-       213,
-       213,
-       172
-      ],
-      "11,5": [
-       213,
-       213,
-       172
-      ],
-      "12,5": [
-       82,
-       82,
-       106
-      ],
-      "14,5": [
-       213,
-       213,
-       172
-      ],
-      "15,5": [
-       213,
-       213,
-       172
-      ],
-      "16,5": [
-       213,
-       213,
-       172
-      ],
-      "17,5": [
-       213,
-       213,
-       172
-      ],
-      "18,5": [
-       82,
-       82,
-       106
-      ],
-      "20,5": [
-       213,
-       213,
-       172
-      ],
-      "21,5": [
-       213,
-       213,
-       172
-      ],
-      "22,5": [
-       213,
-       213,
-       172
-      ],
-      "23,5": [
-       213,
-       213,
-       172
-      ],
-      "24,5": [
-       82,
-       82,
-       106
-      ],
-      "26,5": [
-       213,
-       213,
-       172
-      ],
-      "27,5": [
-       213,
-       213,
-       172
-      ],
-      "1,6": [
-       189,
-       230,
-       255
-      ],
-      "0,7": [
-       189,
-       230,
-       255
-      ],
-      "1,7": [
-       189,
-       230,
-       255
-      ],
-      "11,9": [
-       238,
-       238,
-       246
-      ],
-      "14,9": [
-       238,
-       238,
-       246
-      ],
-      "17,9": [
-       238,
-       238,
-       246
-      ],
-      "20,9": [
-       238,
-       238,
-       246
-      ],
-      "23,9": [
-       238,
-       238,
-       246
-      ],
-      "26,9": [
-       238,
-       238,
-       246
+      "size": [
+       11,
+       9
       ]
      }
-    },
-    "people": [
-     "Pokemon Lab"
-    ]
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
    }
   },
-  "inside": {
-   "14,11": "center",
-   "19,11": "mart",
-   "20,4": "gym",
-   "8,9": "lab"
-  },
-  "surf": true
+  "surf": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_8.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     20
+    ]
+   }
+  ]
  },
  "SAFFRON_CITY": {
   "art": [
@@ -30269,23 +29950,6 @@
   ]
  },
  "POKEMON_MANSION": {
-  "theme": "ship",
-  "buildings": {},
-  "floor_names": [
-   "1F",
-   "2F",
-   "3F",
-   "B1F"
-  ],
-  "figure_floors": {
-   "Johnson": 0,
-   "Ted": 0,
-   "Arnie": 1,
-   "Braydon": 2,
-   "Ivan": 3,
-   "Lewis": 3,
-   "BURGLAR SIMON": 2
-  },
   "floors": [
    {
     "art": [
@@ -30295,16 +29959,16 @@
      "c....................................c",
      "c....................................c",
      "c..c.c.ccc...c.....c.c.c.c..ccccc....c",
-     "c..c...ccc...c.....c.c.c.c..ccccc...cc",
+     "c..c...ccc...c.....c.cNc.c..ccccc...cc",
      "c............c..............ccccc...cc",
      "c.......X....c..............c........c",
      "c............cc...cccc...cccc........c",
      "cccccccccccccccc..cccc...cccc...ccc..c",
      "cccccccccccccccc..cccc...cccc...ccc..c",
      "cccccccccccccc....c.......cccc.......c",
-     "c.........1ccc....c........ccc.......c",
+     "c.........11cc....c........ccc.......c",
      "c..........ccc....c.........cc.......c",
-     "c.................c.........cc.......c",
+     "c.................c........Ncc.......c",
      "c.................c.........cc.......c",
      "c...............ccccccccccccccc...cccc",
      "c...............ccccccccccccccc...cccc",
@@ -30321,14 +29985,40 @@
      "c...............c..............c.....c",
      "c....c.....c....c..............c.....c",
      "c....c.....c....c..............c.....c",
-     "c....c.....c....c..cccccc......c.....c",
-     "c......vvv......c..............c..v..c",
-     "cccccccccccccccccccccccccccccccccccvcc"
+     "c....c.....c....c..cccccc....N.c.....c",
+     "c......nnn......c..............c..n..c",
+     "cccccccccccccccccccccccccccccccccccncc"
     ],
     "exits": {
-     "v": "CINNABAR_ISLAND"
+     "n": "CINNABAR_ISLAND"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_59.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_ground/1_59_sw.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "ESCAPE ROPE",
+     "PROTEIN",
+     "CARBOS"
+    ],
+    "trainer_spots": [
+     "Johnson",
+     "Ted"
+    ],
     "links": {
      "10,13": [
       1,
@@ -30339,15 +30029,195 @@
       3,
       34,
       29
+     ],
+     "11,13": [
+      1,
+      6,
+      14
      ]
     },
-    "trainer_spots": [
-     "Johnson",
-     "Ted"
+    "landings": [
+     [
+      19,
+      22
+     ],
+     [
+      20,
+      22
+     ]
     ],
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "moves": {
+     "29,32": {
+      "m": "face",
+      "d": "d"
+     },
+     "22,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "27,15": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "switch": {
+     "flag": "mansion_switch",
+     "on": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! Somewhere in the Mansion, gates swung around."
+     ],
+     "off": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! The gates swung back the other way."
+     ]
+    },
+    "decor": {
+     "5,5": "statue"
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ],
+       [
+        23,
+        10
+       ],
+       [
+        24,
+        10
+       ],
+       [
+        22,
+        11
+       ],
+       [
+        23,
+        11
+       ],
+       [
+        24,
+        11
+       ],
+       [
+        27,
+        25
+       ],
+       [
+        28,
+        25
+       ],
+       [
+        29,
+        25
+       ],
+       [
+        32,
+        25
+       ],
+       [
+        33,
+        25
+       ],
+       [
+        34,
+        25
+       ],
+       [
+        27,
+        26
+       ],
+       [
+        28,
+        26
+       ],
+       [
+        29,
+        26
+       ],
+       [
+        32,
+        26
+       ],
+       [
+        33,
+        26
+       ],
+       [
+        34,
+        26
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        31,
+        18
+       ],
+       [
+        32,
+        18
+       ],
+       [
+        33,
+        18
+       ],
+       [
+        31,
+        19
+       ],
+       [
+        32,
+        19
+       ],
+       [
+        33,
+        19
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "not mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     }
+    ],
+    "hidden": {
+     "2,21": "MOON_STONE"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_59.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       35
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_top/1_59_sw.png"
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -30355,11 +30225,11 @@
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "ccccc....1ccc........c...............c",
-     "ccccc.....ccc........c...ccc.........c",
+     "ccccc.....ccc........c...!cc.........c",
      "ccc.........c........c...ccc.........c",
      "cc...................c...............c",
      "c....................c..........ccc..c",
-     "c....................ccc...cccc.ccc..c",
+     "c....................ccc...cccc.ccc.Nc",
      "c...........c........ccc...cccccccc..c",
      "c...........ccc......ccc...ccccccccccc",
      "ccccccccccccccc......................c",
@@ -30368,21 +30238,21 @@
      "c...cc1..1ccc.....cccccc...ccccccccccc",
      "c...cc....ccc.....cccccc...ccccccccccc",
      "c.c.........c.....c..........cc......c",
-     "c.................c..........cc......c",
+     "c.................c..........cc....N.c",
      "c.................c..........c.......c",
      "ccccccc.........cccccccccc.ccc...ccccc",
      "ccccccc...c.....ccccccccccccc....ccccc",
      "ccccccc..cc.....cccccccccc.......ccccc",
      "c........cccc...c..cccccc.........1ccc",
-     "c....X....ccc...c..cccccc..........ccc",
+     "c....X....ccc...c.Ncccccc..........ccc",
      "c.........ccc...c..ccccccccccccccccccc",
      "c.........cc....c..ccccccccccccccccccc",
      "ccccccccccc.....c..ccccccccccccccccccc",
      "ccccccccccc.....c..ccccccccccccccccccc",
      "ccccccccccc.....c..ccccccccccccccccccc",
-     "c...............c..ccccccccccccccccccc",
+     "c.........c.....c..ccccccccccccccccccc",
      "c..................ccccccccccccccccccc",
-     "c.cccccc...........ccccccccccccccccccc",
+     "c.cccc!c...........ccccccccccccccccccc",
      "c.cccccc...........ccccccccccccccccccc",
      "c.........c.....cccccccccccccccccccccc",
      "c.........c.....cccccccccccccccccccccc",
@@ -30391,7 +30261,40 @@
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_60.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_ground/1_60_sw.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "CALCIUM",
+     "HP UP",
+     "ZINC"
+    ],
+    "signs": [
+     [
+      "A diary: \"July 5. Deep in the jungles of Guyana, South America, we found a new Pokémon.\""
+     ],
+     [
+      "A diary: \"July 10. We named the newly found Pokémon Mew.\""
+     ]
+    ],
+    "trainer_spots": [
+     "Arnie"
+    ],
     "links": {
      "9,3": [
       2,
@@ -30414,12 +30317,133 @@
       11
      ]
     },
-    "trainer_spots": [
-     "Arnie"
+    "landings": [
+     [
+      27,
+      17
+     ]
     ],
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "moves": {
+     "36,8": {
+      "m": "face",
+      "d": "d"
+     },
+     "18,23": {
+      "m": "face",
+      "d": "d"
+     },
+     "35,17": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "switch": {
+     "flag": "mansion_switch",
+     "on": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! Somewhere in the Mansion, gates swung around."
+     ],
+     "off": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! The gates swung back the other way."
+     ]
+    },
+    "decor": {
+     "2,16": "statue"
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        24,
+        14
+       ],
+       [
+        25,
+        14
+       ],
+       [
+        26,
+        14
+       ],
+       [
+        24,
+        15
+       ],
+       [
+        25,
+        15
+       ],
+       [
+        26,
+        15
+       ],
+       [
+        10,
+        30
+       ],
+       [
+        10,
+        31
+       ],
+       [
+        10,
+        32
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        6
+       ],
+       [
+        12,
+        7
+       ],
+       [
+        12,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "not mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_60.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       38
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_top/1_60_sw.png"
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -30429,7 +30453,7 @@
      "c.....cc1.......ccc..c.......c...ccccc",
      "c.....cc.........cc..c.......c....cccc",
      "cc..........c....cc..c..ccc..c....cccc",
-     "ccc.....................ccc........ccc",
+     "ccc.....................ccc.....N..ccc",
      "ccc..................................c",
      "cccccccc.cccccc......................c",
      "ccccccccccccccc......c...............c",
@@ -30439,10 +30463,10 @@
      "c..c...N......cc......X..............c",
      "c.............c......................c",
      "c.............cccc...cc..cc..ccccccccc",
-     "c.....ccc.....cccc...cc..cc..ccccccccc",
+     "c.....cc!.....cccc...cc..cc..ccccccccc",
      "cccc..ccc....ccccc...cc..cc..ccccccccc",
      "cccc........cccccc111cc11cc.....cc1..c",
-     "c..........cccccccccccccccc.....cc...c",
+     "c........N.cccccccccccccccc.....cc...c",
      "c.............ccccccccccccc..........c",
      "c.............ccccccccccccc..........c",
      "cccccccccccccccccccccccccccccccccccccc",
@@ -30460,7 +30484,37 @@
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_61.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_ground/1_61_sw.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "IRON",
+     "BURGLAR SIMON",
+     "MAX POTION"
+    ],
+    "signs": [
+     [
+      "A diary: \"Feb. 6. Mew gave birth. We named the newborn Mewtwo.\""
+     ]
+    ],
+    "trainer_spots": [
+     "Braydon"
+    ],
     "links": {
      "8,3": [
       1,
@@ -30480,38 +30534,151 @@
      "18,18": [
       0,
       19,
-      22
+      22,
+      "fall"
      ],
      "19,18": [
       0,
       20,
-      22
+      22,
+      "fall"
      ],
      "23,18": [
       1,
       27,
-      17
+      17,
+      "fall"
      ],
      "20,18": [
       0,
       20,
-      22
+      22,
+      "fall"
      ],
      "24,18": [
       1,
       27,
-      17
+      17,
+      "fall"
      ]
     },
-    "trainer_spots": [
-     "Braydon"
+    "moves": {
+     "7,13": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ],
+      "s": 1
+     },
+     "9,19": {
+      "m": "face",
+      "d": "d"
+     },
+     "32,6": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "switch": {
+     "flag": "mansion_switch",
+     "on": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! Somewhere in the Mansion, gates swung around."
+     ],
+     "off": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! The gates swung back the other way."
+     ]
+    },
+    "decor": {
+     "12,5": "statue"
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ],
+       [
+        18,
+        11
+       ],
+       [
+        19,
+        11
+       ],
+       [
+        17,
+        12
+       ],
+       [
+        18,
+        12
+       ],
+       [
+        19,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        6
+       ],
+       [
+        21,
+        7
+       ],
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "not mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     }
     ],
-    "people": [
-     "BURGLAR SIMON"
-    ],
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "hidden": {
+     "36,13": "RARE_CANDY"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_61.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       35
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_top/1_61_sw.png"
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -30519,12 +30686,12 @@
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "c...........c............c...........c",
-     "c...........c............c...........c",
+     "c...........c..........N.c...........c",
      "c...........c............c.c.........c",
      "c...........ccccc...cccccc...........c",
      "c....ccc....ccccc...cccccccccc....cccc",
      "c....ccc....ccccc...cccccccccc....cccc",
-     "c........................ccccc....cccc",
+     "c...........c............ccccc....cccc",
      "c....................................c",
      "c....................................c",
      "c....................................c",
@@ -30536,15 +30703,15 @@
      "c.ccc...ccc.c.................c......c",
      "c...........c.................ccc...cc",
      "c...........c.................ccc...cc",
-     "c.ccc...ccc.c...cccc...cccc...ccc...cc",
+     "c.ccc.N.ccc.c...cccc...cccc...ccc...cc",
      "c...........c...cccc...cccc..........c",
      "ccccccccccccc...cccc...cccc..........c",
      "ccccccccccccc...c.........c..........c",
      "ccccccccccccc...c...X.....c..........c",
      "c...............c.........c......ccccc",
-     "c...............c...ccc...c......ccccc",
+     "c...............c...c!c...c......ccccc",
      "c...................ccc...c......ccccc",
-     "c.......................c.c.......1ccc",
+     "c.N.....................c.c.......1ccc",
      "c.........................c........ccc",
      "c...............c.........c..........c",
      "cccccccccccccccccccccccccccccccccccccc",
@@ -30552,7 +30719,38 @@
      "cccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_62.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_ground/1_62_sw.png"
+       }
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "TM111",
+     "TM11",
+     "FULL RESTORE"
+    ],
+    "signs": [
+     [
+      "A diary: \"Sept. 1. Mewtwo is far too powerful. We have failed to calm its fury...\""
+     ]
+    ],
+    "trainer_spots": [
+     "Ivan",
+     "Lewis"
+    ],
     "links": {
      "34,29": [
       0,
@@ -30560,15 +30758,184 @@
       27
      ]
     },
-    "trainer_spots": [
-     "Ivan",
-     "Lewis"
+    "moves": {
+     "6,21": {
+      "m": "face",
+      "d": "d"
+     },
+     "23,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,29": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "switch": {
+     "flag": "mansion_switch",
+     "on": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! Somewhere in the Mansion, gates swung around."
+     ],
+     "off": [
+      "A statue of a Pokémon... There's a secret switch on it!",
+      "Click! The gates swung back the other way."
+     ]
+    },
+    "decor": {
+     "24,29": "statue",
+     "27,5": "statue"
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        12,
+        10
+       ],
+       [
+        12,
+        11
+       ],
+       [
+        12,
+        12
+       ],
+       [
+        20,
+        22
+       ],
+       [
+        21,
+        22
+       ],
+       [
+        22,
+        22
+       ],
+       [
+        20,
+        23
+       ],
+       [
+        21,
+        23
+       ],
+       [
+        22,
+        23
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        33,
+        20
+       ],
+       [
+        34,
+        20
+       ],
+       [
+        35,
+        20
+       ],
+       [
+        33,
+        21
+       ],
+       [
+        34,
+        21
+       ],
+       [
+        35,
+        21
+       ],
+       [
+        16,
+        28
+       ],
+       [
+        16,
+        29
+       ],
+       [
+        16,
+        30
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "not mansion_switch"
+      },
+      "lines": [
+       "A heavy gate blocks the way. A secret switch somewhere must move it..."
+      ]
+     }
     ],
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "hidden": {
+     "35,5": "ELIXIR"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_62.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       38,
+       35
+      ],
+      "when": [
+       {
+        "flag": "mansion_switch",
+        "f": "fr_top/1_62_sw.png"
+       }
+      ]
+     }
+    ]
    }
-  ]
+  ],
+  "theme": "ship",
+  "floor_names": [
+   "1F",
+   "2F",
+   "3F",
+   "B1F"
+  ],
+  "figure_floors": {
+   "Johnson": 0,
+   "Ted": 0,
+   "ESCAPE ROPE": 0,
+   "PROTEIN": 0,
+   "CARBOS": 0,
+   "Arnie": 1,
+   "CALCIUM": 1,
+   "HP UP": 1,
+   "ZINC": 1,
+   "Braydon": 2,
+   "IRON": 2,
+   "BURGLAR SIMON": 2,
+   "MAX POTION": 2,
+   "Ivan": 3,
+   "Lewis": 3,
+   "TM111": 3,
+   "TM11": 3,
+   "FULL RESTORE": 3
+  }
  },
  "NEW_BARK_TOWN": {
   "art": [

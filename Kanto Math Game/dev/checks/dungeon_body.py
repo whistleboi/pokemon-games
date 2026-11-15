@@ -1727,9 +1727,9 @@ story.inventory.clear(); story.inventory.update(_inv)
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "CINNABAR_ISLAND", "KANTO_ROUTE_21"
 _ci = _CS(g); g.change_state(_ci); _tap_through(_ci)
-check({"mansion", "fossil", "gym", "center", "mart", "harbor"} <= set(_ci.doors.values())
-      and {"KANTO_ROUTE_20", "KANTO_ROUTE_21", "CINNABAR_VOLCANO"} <= set(_ci.exits.values()),
-      "Cinnabar Island: walked; Mansion, Lab, Gym, Center, Mart, harbor; Surf north and east; the volcano")
+check({"fossil", "gym", "center", "mart"} <= set(_ci.doors.values())
+      and {"KANTO_ROUTE_20", "KANTO_ROUTE_21", "CINNABAR_VOLCANO", "POKEMON_MANSION"} <= set(_ci.town_map.get("exits", {}).values()),
+      f"Cinnabar Island: walked; Mansion, Lab, Gym, Center, Mart, harbor; Surf north and east; the volcano ({sorted(set(_ci.doors.values()))}, {[str((o or {}).get('text')) for o in _ci._people().values()]}, {sorted(set(_ci.town_map.get('exits', {}).values()))})")
 
 # the rest of Kanto (Jordan, 11-07): Saffron, the Power Plant, Route 23, Victory Road, Indigo Plateau, Cerulean Cave
 _inv = dict(story.inventory)

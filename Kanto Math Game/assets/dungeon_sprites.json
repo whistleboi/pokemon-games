@@ -4533,6 +4533,111 @@
     },
     "KANTO_ROUTE_20:Swimmer": {
       "sheet": "fr_39.png"
+    },
+    "CINNABAR_ISLAND:Islander": {
+      "sheet": "fr_28.png"
+    },
+    "CINNABAR_ISLAND:Scientist": {
+      "sheet": "fr_19.png"
+    },
+    "CINNABAR_ISLAND:Gym": {
+      "sheet": "fr_86.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Erik": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Avery": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Zac": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Burglar Ramon": {
+      "sheet": "fr_52.png"
+    },
+    "CINNABAR_ISLAND:Burglar Quinn": {
+      "sheet": "fr_52.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Derek": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Burglar Dusty": {
+      "sheet": "fr_52.png"
+    },
+    "CINNABAR_ISLAND:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "CINNABAR_ISLAND:Scientist  ": {
+      "sheet": "fr_28.png"
+    },
+    "CINNABAR_ISLAND:Scientist ": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Pokemon Lab": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "CINNABAR_ISLAND:Woman": {
+      "sheet": "fr_28.png"
+    },
+    "CINNABAR_ISLAND:Man": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Youngster": {
+      "sheet": "fr_61.png"
+    },
+    "CINNABAR_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "CINNABAR_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CINNABAR_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CINNABAR_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CINNABAR_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "CINNABAR_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_108.png"
+    },
+    "POKEMON_MANSION:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:IRON": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:TM111": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:TM11": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:FULL RESTORE": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",

@@ -925,14 +925,15 @@ story.story_flags.update(_bf)
 for _from, _ok in (("KANTO_ROUTE_21", lambda q: q[1] <= 2), ("KANTO_ROUTE_20", lambda q: q[0] >= 20)):
     t = town("CINNABAR_ISLAND", _from)
     check((t.w, t.h) == (24, 20) and _ok(t.player), f"Cinnabar Island from {_from}: FireRed's 24 x 20 {tuple(t.player)}")
-check({"mansion", "gym", "fossil", "center", "mart"} <= set(t.doors.values()) and "CINNABAR_VOLCANO" in t.exits.values(), "...the Mansion, Gym, Lab, Center, Mart; the volcano's mouth (HeartGold's)")
+_cex = set(t.town_map.get("exits", {}).values())   # (batch 23, 11-14: the Mansion's door leads into it; the data's Volcano a door on the east shore)
+check({"gym", "fossil", "center", "mart"} <= set(t.doors.values()) and {"POKEMON_MANSION", "CINNABAR_VOLCANO"} <= _cex, "...the Mansion, Gym, Lab, Center, Mart; the volcano's mouth (HeartGold's)")
 _gk = story.story_flags.get("got_secret_key"); story.story_flags["got_secret_key"] = True
 for _d, _room in (((14, 11), "center"), ((19, 11), "mart"), ((8, 9), "lab"), ((20, 4), "gym")):
     enter(t, _d)
     check(t.room == _room and t.people, f"...door {_d}: the {_room}'s room ({t.room})")
     t.draw()
     if t.room == "gym":
-        check((t.w, t.h) == (30, 25) and t.people.get((5, 4), {}).get("action") == "GYM" and t._open((26, 9)) and t._open((5, 9)), "...Cinnabar Gym: FireRed's rooms, the quiz doors open, Blaine in the far one")
+        check((t.w, t.h) == (30, 25) and t.people.get((5, 4), {}).get("action") == "GYM" and not t._open((26, 9)) and not t._open((5, 9)), "...Cinnabar Gym: FireRed's rooms, the quiz gates shut till answered (batch 23), Blaine in the far one")
     if t.room: t._go(None, "OUT:%d,%d" % _d)
 if not _gk: story.story_flags.pop("got_secret_key", None)
 g.walk_town_room = None

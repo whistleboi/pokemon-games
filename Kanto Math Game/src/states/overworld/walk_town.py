@@ -219,6 +219,7 @@ class WalkTownState(CityState):
         self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
         self.barred.update(self._rot_bars())
         self.sign_scenes = {tuple(int(v) for v in k.split(",")): s for k, s in (m.get("sign_scenes") or {}).items()}  # (reading this sign starts a scene)
+        self.sign_events = {tuple(int(v) for v in k.split(",")): e for k, e in (m.get("sign_events") or {}).items()}  # (reading this sign runs an event till its flag is set: Cinnabar Gym's quiz machines)
         # a bridge in town has two levels, like a route's: its deck, crossed along its length, and the street under it, crossed along its width
         self.bridge = {(x, y): art.BRIDGES[c] for y, row in enumerate(grid) for x, c in enumerate(row) if c in art.BRIDGES}
         self.deck = True
@@ -305,6 +306,7 @@ class WalkTownState(CityState):
         if self._bar_tick % 20 == 0 and not self._busy() and getattr(self, "_bar_list", None):   # (a gift or a battle moved the story on:
             self.barred = {tuple(t): bar for bar in self._bar_list if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}   # the Amber gone from its case)
             self.barred.update(self._rot_bars())
+            self._refresh_picture()   # (and its picture: a quiz machine answered, a Cinnabar Gym gate drawn open)
         if not getattr(self, "motions", None):
             return
         self._shown_homes = {h for h, o in self.people.items() if self._shown(o)}
@@ -910,6 +912,12 @@ class WalkTownState(CityState):
         self._create_hover_menu(opts, None)  # (a building with several things inside: pick one)
 
     def _read(self, spot):
+        ev = getattr(self, "sign_events", {}).get(tuple(spot))
+        if ev and not self.game.story_manager.story_flags.get((ev.get("event") or {}).get("flag")):
+            cb = self._get_callback_for_option(ev)
+            if cb:
+                cb()
+                return
         sc = getattr(self, "sign_scenes", {}).get(tuple(spot))
         if sc and getattr(self, "scenes", None) and not self.scenes.busy() and self.scenes.pending(sc):  # (something behind the sign)
             self.scenes.start(sc, None)

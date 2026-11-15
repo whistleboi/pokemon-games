@@ -1222,6 +1222,75 @@ check((r21.run.floor.w, r21.run.floor.h) == (24, 100) and len(_t) == 9 and _t.ge
       f"Route 21: FireRed's two maps as one, Pallet to Cinnabar, nine trainers ({len(_t)})")
 check({"PALLET_TOWN", "CINNABAR_ISLAND"} <= set(r21.run.floor.exits.values()), "...Pallet Town at the top, Cinnabar at the bottom")
 
+# ---- batch 23: Cinnabar Island, Blaine's quiz Gym, the Pokémon Mansion's switches
+_cf = ("cinnabar_gym_gate_1", "mansion_switch", "got_secret_key", "visited_CINNABAR_ISLAND", "visited_POKEMON_MANSION")
+_cfs = {k: story.story_flags.pop(k, None) for k in _cf}
+ci = open_map("CINNABAR_ISLAND", "KANTO_ROUTE_21")
+_ex = set(_tm["CINNABAR_ISLAND"]["exits"].values())
+check((ci.w, ci.h) == (24, 20) and {"POKEMON_MANSION", "CINNABAR_VOLCANO"} <= _ex,
+      f"Cinnabar: FireRed's island; the Mansion's door, the data's Volcano by the east shore ({sorted(_ex)})")
+_pp = {o.get("text"): p for p, o in ci._people().items()}
+check(_pp.get("Seagallop to One Island") in (None, (23, 8)), f"...the Seagallop's sailor on the east shore ({_pp})")
+_vp = story.inventory.get("VOLCANO_PASS"); story.inventory["VOLCANO_PASS"] = 1
+ci.player = (22, 7); ci.facing = (1, 0); ci.anim = 0
+walk(ci, "r"); play(lambda: story.current_area_key == "CINNABAR_VOLCANO" or isinstance(g.current_state, _WTS) and g.current_state.anim == 0, 400)
+check(story.current_area_key == "CINNABAR_VOLCANO" or type(g.current_state).__name__ == "AreaTransitionState",
+      f"...the Volcano's mouth in the east cliff leads into the data's Volcano ({story.current_area_key}, {type(g.current_state).__name__})")
+story.inventory.pop("VOLCANO_PASS", None)
+if _vp is not None:
+    story.inventory["VOLCANO_PASS"] = _vp
+ci = open_map("CINNABAR_ISLAND", "KANTO_ROUTE_21")
+_pp = _room_of(ci, "gym")
+check(_pp.get("Gym") == (5, 4) and sum(1 for n in _pp if n and n.startswith(("Burglar", "Super Nerd"))) == 7,
+      "...Blaine's Gym: Blaine where FireRed has him, his seven trainers")
+check(len(ci.sign_events) == 12, f"...six quiz machines, both halves of each readable ({len(ci.sign_events)})")
+ci.player = (26, 10); ci.facing = (0, -1); ci.anim = 0
+walk(ci, "u")
+check(tuple(ci.player) == (26, 10), f"...the first gate is shut ({ci.player})")
+ci.player = (22, 11); ci.facing = (0, -1); ci.anim = 0
+ci._read((22, 10)); frames(2)
+_pz = g.current_state
+check(type(_pz).__name__ == "GymPuzzleState", f"...read the machine: a math question ({type(_pz).__name__})")
+if type(_pz).__name__ == "GymPuzzleState":
+    _pz.answer(next(i for i, o in enumerate(_pz.options) if o[1]))
+    play(lambda: isinstance(g.current_state, _WTS), 600)
+    tap(g.current_state)
+ci = g.current_state
+frames(25)
+check(story.story_flags.get("cinnabar_gym_gate_1") and getattr(ci, "_pic_now", "").endswith("12_0_q1.png"), f"......answered right: the gate's flag is set, the gate drawn open ({getattr(ci, '_pic_now', None)})")
+ci.player = (26, 10); ci.facing = (0, -1); ci.anim = 0
+walk(ci, "u")
+check(tuple(ci.player) == (26, 9), f"......and the first gate is open ({ci.player})")
+ma = open_map("POKEMON_MANSION", "CINNABAR_ISLAND")
+check(ma.run.n_floors == 4, f"Pokémon Mansion: FireRed's four floors ({ma.run.n_floors})")
+_n = []
+for _i in range(4):
+    _floor(ma, _i)
+    _n.append(sum(1 for m in ma.run.floor.movers if m.kind == "trainer"))
+check(_n == [2, 1, 1, 2], f"...FireRed's trainers floor by floor ({_n})")
+_floor(ma, 2)
+check(_figure(ma, "BURGLAR SIMON") == (7, 13), "...3F: the burglar with the Secret Key")
+_floor(ma, 0); _quiet(ma)
+ma.run.floor.movers = [m for m in ma.run.floor.movers if m.kind != "trainer"]
+ma.run.player = (5, 6); ma.facing = (0, -1); ma.anim = 0
+_act = ma._act_here()
+check(_act and _act[0] == "CHECK", f"...1F's statue: a secret switch ({_act and _act[0]})")
+_shut = (22, 12)   # (below 1F's first switch gate: shut till the switch is pressed)
+ma.run.player = _shut; ma.anim = 0
+ma.step(0, -1); play(lambda: g.current_state._ready(), 300)
+_before = tuple(ma.run.player)
+ma.run.player = (5, 6); ma.facing = (0, -1); ma.anim = 0
+_act[1](); play(lambda: g.current_state._ready(), 300); tap(g.current_state)
+ma = g.current_state
+check(story.story_flags.get("mansion_switch"), "......pressed: the switch is on")
+ma.run.player = _shut; ma.anim = 0
+ma.step(0, -1); play(lambda: g.current_state._ready(), 300)
+check(_before == _shut and tuple(ma.run.player) == (22, 11), f"......and the gate it held shut swings open ({_before} -> {ma.run.player})")
+for _k, _v in _cfs.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+
 # ---- Silph Co. in the Journal (Jordan, 11-14: "very clearly guided"): three steps, the marker floor by floor
 _sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}
@@ -1281,7 +1350,7 @@ from src.world import guide as _guide
 _jf = ("got_ss_ticket_bill", "got_hm_cut_kanto", "game_corner_poster", "game_corner_cleared", "hideout_giovanni_defeated",
        "tower_ghost_defeated", "fuji_rescued", "got_tea", "got_card_key", "silph_co_cleared", "received_silph_reward",
        "visited_CERULEAN_CITY", "visited_VERMILLION_CITY", "visited_LAVENDER_TOWN", "visited_CELADON_CITY", "visited_FUCHSIA_CITY",
-       "visited_PEWTER_CITY", "visited_SAFFRON_CITY", "received_pokedex_kanto", "received_starter_kanto", "viridian_rocket_defeated")
+       "visited_PEWTER_CITY", "visited_SAFFRON_CITY", "visited_CINNABAR_ISLAND", "got_secret_key", "received_pokedex_kanto", "received_starter_kanto", "viridian_rocket_defeated")
 _jfs = {k: story.story_flags.pop(k, None) for k in _jf}
 _jinv = {k: story.inventory.pop(k, None) for k in ("SS_TICKET", "HM_CUT", "SILPH_SCOPE", "LIFT_KEY", "POKE_FLUTE", "TEA", "CARD_KEY")}
 _jb, _tm0 = list(story.badges.get("KANTO", [])), story.tracked_mission
@@ -1322,12 +1391,16 @@ _steps = [
     ("the Card Key: the boardroom", _journal(5, ["got_card_key"], ["CARD_KEY"]), ("s_silph2", "SILPH_CITY")),
     ("Silph freed: the President", _journal(5, ["silph_co_cleared"]), ("s_silph3", "SILPH_CITY")),
     ("the Master Ball: Sabrina", _journal(5, ["received_silph_reward"]), "m12"),
+    ("six badges: by sea to Cinnabar", _journal(6), "m13"),
+    ("Cinnabar: the Gym's key is in the Mansion", _journal(6, ["visited_CINNABAR_ISLAND"]), ("k_mansion", "POKEMON_MANSION")),
+    ("the Secret Key: Blaine's quiz Gym", _journal(6, ["got_secret_key"]), ("m14", "CINNABAR_ISLAND")),
 ]
 for _what, (_id, _to), _want in _steps:
     _ok = _id == _want if isinstance(_want, str) else (_id, _to) == _want
     check(_ok, f"Journal: {_what} ({_id} -> {_to})")
 # ---- the marker inside: the S.S. Anne's Captain, the Hideout's Lift Key, the Tower's ghost
-for _f in ("visited_LAVENDER_TOWN", "visited_CELADON_CITY", "visited_FUCHSIA_CITY", "game_corner_poster", "game_corner_cleared", "got_hm_cut_kanto"):
+for _f in ("visited_LAVENDER_TOWN", "visited_CELADON_CITY", "visited_FUCHSIA_CITY", "visited_CINNABAR_ISLAND", "got_secret_key",
+           "game_corner_poster", "game_corner_cleared", "got_hm_cut_kanto"):
     story.story_flags.pop(_f, None)
 story.inventory.pop("HM_CUT", None); story.badges["KANTO"] = _BADGES[:2]
 check(_journal(2)[0] == "k_ssanne", "...the S.S. Anne's step is the one the Journal shows")
@@ -1356,6 +1429,17 @@ check(_gs and _gs[1] == "To B4F", f"......with the Lift Key, to the elevator, do
 story.inventory.pop("LIFT_KEY", None)
 if _lk is not None:
     story.inventory["LIFT_KEY"] = _lk
+_ms = story.story_flags.pop("mansion_switch", None)
+check(_journal(6, ["visited_CINNABAR_ISLAND"])[0] == "k_mansion", "...on Cinnabar the Mansion's step is the one the Journal shows")
+story.story_flags.pop("got_secret_key", None)
+ma = open_map("POKEMON_MANSION", "CINNABAR_ISLAND"); ma._guide_key = ma._step_key = None
+_g1 = ma._guide_spot()
+_floor(ma, 2); ma.run.player = (7, 15); ma._guide_key = ma._step_key = None
+_g3 = ma._guide_spot()
+check(_g1 is not None and _g3 == ((7, 13), "Burglar"), f"...in the Mansion the marker leads on (1F: {_g1}), and on 3F onto the burglar ({_g3})")
+story.story_flags.pop("mansion_switch", None)
+if _ms is not None:
+    story.story_flags["mansion_switch"] = _ms
 for _k, _v in _hf.items():
     story.story_flags.pop(_k, None)
     if _v is not None:

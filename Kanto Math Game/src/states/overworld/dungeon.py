@@ -1040,6 +1040,20 @@ class DungeonState(OverworldBattles, PlayState):
         self._sync_gate()
         self.say(gate.get("lines") or ["You push the switch."])
 
+    def flip_statue(self):
+        """A statue with a switch (the floor's "switch": {"flag", "on", "off"}: the Pokémon Mansion's): each press flips
+        the flag, and with it every gate the flag shuts or opens (the floor's "barred", its "picture_when")."""
+        sw = self._here_art().get("switch") or {}
+        flags = self.game.story_manager.story_flags
+        if not self._ready() or not sw.get("flag"):
+            return
+        self.walk_goal = None
+        on = not flags.get(sw["flag"])
+        flags[sw["flag"]] = on
+        self._clear_boulders()
+        self._floor_surf = None
+        self.say(sw.get("on" if on else "off") or ["Click! Something moved somewhere."])
+
     def _stand_in_img(self, look, bar):
         """A story stand-in's picture (a map's "barred" look): "sheet:<walking sheet>" (bar "face" u d l r, "march": running
         on the spot), "ow:<folder>:<thing>" (a real game's own thing: a bag, a boat), "mon:<species>". None if there is none."""
@@ -1315,6 +1329,8 @@ class DungeonState(OverworldBattles, PlayState):
             return "PLAY SLOTS", self.play_slots
         if (self.recipe.get("gate") or {}).get("switch") and self._beside("decor:" + self.recipe["gate"]["switch"]):
             return "CHECK", self.push_switch
+        if self._here_art().get("switch") and self._beside("decor:statue"):
+            return "CHECK", self.flip_statue
         if self._beside("water") and self._menu_item("FISH"):
             return "FISH", self.fish_here
         if self._beside("tree") and self._menu_item("HEADBUTT"):
@@ -3940,7 +3956,11 @@ class DungeonState(OverworldBattles, PlayState):
                     if through:
                         passed.add(cur)
                     q.append(n)
-        if goal not in prev:
+        if goal not in prev:   # (no way yet: a statue switch on this floor may swing the gates: the Pokémon Mansion's)
+            here = self.run.index
+            for t, kind in sorted(floors[here].decor.items()):
+                if kind == "statue" and any((here, t[0] + dx, t[1] + dy) in prev for dx, dy in core.DIRS):
+                    return (t, "Switch")
             return None
         path, c = [], goal
         while c is not None:

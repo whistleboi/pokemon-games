@@ -240,8 +240,13 @@
         "condition": { "badges_min": 6, "visited_not": "CINNABAR_ISLAND" }
       },
       {
-        "id": "m14", "type": "MAIN", "text": "The Volcano Badge", "desc": "Challenge Blaine at the Cinnabar Island Gym. Only a burning math spirit can win here!",
+        "id": "m14", "type": "MAIN", "text": "The Volcano Badge", "desc": "Challenge Blaine at the Cinnabar Island Gym. Only a burning math spirit can win here! Inside, answer the quiz machines' questions: each right answer opens the next gate on the way to Blaine.",
         "condition": { "visited": "CINNABAR_ISLAND", "badges_less": 7 }
+      },
+      {
+        "id": "k_mansion", "type": "MAIN", "text": "The Key in the Mansion", "target": "POKEMON_MANSION",
+        "desc": "Cinnabar's Gym is locked, and its key is somewhere in the burned-out Pokémon Mansion at the north of the island. Its halls are blocked by heavy gates: the Pokémon statues hide secret switches, and each press swings every gate in the Mansion the other way. A burglar on 3F has found the Secret Key. Beat him and take it!",
+        "condition": {"visited": "CINNABAR_ISLAND", "badges_min": 6, "flag_not": "got_secret_key"}, "completed_flag": "got_secret_key", "steps": [{"floor": 2, "at": [7, 13], "label": "Burglar", "done": "got_secret_key"}]
       },
       {
         "id": "m15", "type": "MAIN", "text": "The Final Badge", "desc": "The Viridian Gym Leader has finally returned. Head back to Viridian City to earn your final badge!",
@@ -2515,6 +2520,17 @@
           "condition": "has_balls",
           "color": "GREEN"
         },
+        {"text": "CARBOS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_carbos_mansion", "event": {"lines": ["A Carbos, left among the ruins."], "gift_item": {"CARBOS": 1}, "flag": "got_carbos_mansion"}},
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escaperope_mansion", "event": {"lines": ["An Escape Rope. Handy in a place like this!"], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escaperope_mansion"}},
+        {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_mansion", "event": {"lines": ["A Protein, under the rubble."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_mansion"}},
+        {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_mansion", "event": {"lines": ["A Calcium, in a burnt-out room."], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_mansion"}},
+        {"text": "ZINC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_zinc_mansion", "event": {"lines": ["A Zinc, by the old lab benches."], "gift_item": {"ZINC": 1}, "flag": "got_zinc_mansion"}},
+        {"text": "HP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hpup_mansion", "event": {"lines": ["An HP Up, left behind by the scientists."], "gift_item": {"HP_UP": 1}, "flag": "got_hpup_mansion"}},
+        {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_mansion", "event": {"lines": ["A Max Potion!"], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_mansion"}},
+        {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_mansion", "event": {"lines": ["An Iron, in the corner."], "gift_item": {"IRON": 1}, "flag": "got_iron_mansion"}},
+        {"text": "TM11", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm11_mansion", "event": {"lines": ["A TM in the basement lab! It's Solar Beam."], "gift_item": {"TM11": 1}, "flag": "got_tm11_mansion"}},
+        {"text": "TM111", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm111_mansion", "event": {"lines": ["A TM in the basement lab! It's Blizzard."], "gift_item": {"TM111": 1}, "flag": "got_tm111_mansion"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore_mansion", "event": {"lines": ["A Full Restore, in the basement!"], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore_mansion"}},
         {
           "text": "LOOK FOR TRAINER",
           "action": "TRAINER",
