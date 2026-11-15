@@ -59,6 +59,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #7 4",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -488,6 +489,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 6",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -504,6 +506,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 11",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -520,6 +523,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 12",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -536,6 +540,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 13",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -552,6 +557,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 14",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -568,6 +574,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 15",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -584,6 +591,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 16",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -600,6 +608,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 17",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -616,6 +625,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 18",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -632,6 +642,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 19",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -648,6 +659,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 20",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -664,6 +676,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 21",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -680,6 +693,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1-6 (Reva 22",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -882,48 +896,51 @@
  },
  "104_alola_tile_dump_1_6_reva_48": {
   "name": "Alola Tile Dump #1-6 (Reva 48",
-  "ox": 0,
+  "ox": 32,
   "oy": 96,
   "foot": [
-   3,
+   1,
    1
   ],
   "doors": [],
-  "kind": "prop",
+  "kind": "tree",
   "label": "Alola Tile Dump #1-6 (Reva 48",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Trees & plants",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
  },
  "104_alola_tile_dump_1_6_reva_49": {
   "name": "Alola Tile Dump #1-6 (Reva 49",
-  "ox": 0,
+  "ox": 32,
   "oy": 64,
   "foot": [
-   3,
+   1,
    1
   ],
   "doors": [],
-  "kind": "prop",
+  "kind": "tree",
   "label": "Alola Tile Dump #1-6 (Reva 49",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Trees & plants",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
  },
  "104_alola_tile_dump_1_6_reva_50": {
   "name": "Alola Tile Dump #1-6 (Reva 50",
-  "ox": 0,
+  "ox": 32,
   "oy": 64,
   "foot": [
-   3,
+   1,
    1
   ],
   "doors": [],
-  "kind": "prop",
+  "kind": "tree",
   "label": "Alola Tile Dump #1-6 (Reva 50",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Trees & plants",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -1083,6 +1100,7 @@
   "kind": "prop",
   "label": "Galar Tile Dump #6 (Isle o 8",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 8",
   "artist": "KingTapir"
@@ -1229,6 +1247,329 @@
   "label": "Pokemon Center (Galar Tile 0",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
   "group": "Centers & Marts",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "111_pokemon_center_galar_til_1": {
+  "name": "Pokemon Center (Galar Tile 1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Center (Galar Tile 1",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Centers & Marts",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_0": {
+  "name": "Galar Tile Dump #3 0",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 0",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_1": {
+  "name": "Galar Tile Dump #3 1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 1",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_2": {
+  "name": "Galar Tile Dump #3 2",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 2",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_3": {
+  "name": "Galar Tile Dump #3 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 3",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_4": {
+  "name": "Galar Tile Dump #3 4",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 4",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_5": {
+  "name": "Galar Tile Dump #3 5",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 5",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_11": {
+  "name": "Galar Tile Dump #3 11",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 11",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_12": {
+  "name": "Galar Tile Dump #3 12",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 12",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_17": {
+  "name": "Galar Tile Dump #3 17",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 17",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_31": {
+  "name": "Galar Tile Dump #3 31",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 31",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_44": {
+  "name": "Galar Tile Dump #3 44",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 44",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_45": {
+  "name": "Galar Tile Dump #3 45",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 45",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_46": {
+  "name": "Galar Tile Dump #3 46",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 46",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_47": {
+  "name": "Galar Tile Dump #3 47",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 47",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_48": {
+  "name": "Galar Tile Dump #3 48",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 48",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 8",
+  "artist": "KingTapir"
+ },
+ "112_galar_tile_dump_3_49": {
+  "name": "Galar Tile Dump #3 49",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Galar Tile Dump #3 49",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
   "theme": "Town",
   "gen": "Gen 8",
   "artist": "KingTapir"
@@ -1568,6 +1909,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1 (CHECK  5",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -1648,6 +1990,7 @@
   "kind": "prop",
   "label": "Alola Tile Dump #1 (CHECK  22",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -1667,6 +2010,22 @@
   "label": "Alola Tile Dump #1 (CHECK  24",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
   "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "117_alola_tile_dump_1_check__27": {
+  "name": "Alola Tile Dump #1 (CHECK  27",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alola Tile Dump #1 (CHECK  27",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
   "theme": "Town",
   "gen": "Gen 7",
   "artist": "KingTapir"
@@ -1747,6 +2106,101 @@
   "gen": "Gen 3/7",
   "artist": "KingTapir"
  },
+ "100_old_oras_cave_tiles_v2_4": {
+  "name": "Old ORAS Cave Tiles (V2) 4",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Old ORAS Cave Tiles (V2) 4",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Cave",
+  "gen": "Gen 3/7",
+  "artist": "KingTapir"
+ },
+ "100_old_oras_cave_tiles_v2_13": {
+  "name": "Old ORAS Cave Tiles (V2) 13",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Old ORAS Cave Tiles (V2) 13",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Cave",
+  "gen": "Gen 3/7",
+  "artist": "KingTapir"
+ },
+ "100_old_oras_cave_tiles_v2_14": {
+  "name": "Old ORAS Cave Tiles (V2) 14",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Old ORAS Cave Tiles (V2) 14",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Cave",
+  "gen": "Gen 3/7",
+  "artist": "KingTapir"
+ },
+ "100_old_oras_cave_tiles_v2_15": {
+  "name": "Old ORAS Cave Tiles (V2) 15",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Old ORAS Cave Tiles (V2) 15",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Cave",
+  "gen": "Gen 3/7",
+  "artist": "KingTapir"
+ },
+ "100_old_oras_cave_tiles_v2_16": {
+  "name": "Old ORAS Cave Tiles (V2) 16",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Old ORAS Cave Tiles (V2) 16",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Cave",
+  "gen": "Gen 3/7",
+  "artist": "KingTapir"
+ },
  "101_agate_village_tileset_0": {
   "name": "Agate Village (Tileset) 0",
   "ox": 0,
@@ -1759,6 +2213,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 0",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -1775,6 +2230,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 1",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -1791,6 +2247,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 2",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -1807,6 +2264,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 3",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -1861,6 +2319,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 6",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -1896,6 +2355,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 10",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -1912,6 +2372,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 11",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -2042,6 +2503,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 25",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -2058,6 +2520,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 27",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -2074,6 +2537,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 28",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -2128,6 +2592,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 31",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -2163,6 +2628,7 @@
   "kind": "prop",
   "label": "Agate Village (Tileset) 34",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -2294,6 +2760,25 @@
   ],
   "kind": "house",
   "label": "Gateon Port (Tileset) 0",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "102_gateon_port_tileset_1": {
+  "name": "Gateon Port (Tileset) 1",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Gateon Port (Tileset) 1",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
   "group": "Houses",
   "theme": "Town",
@@ -2464,6 +2949,7 @@
   "kind": "prop",
   "label": "Gateon Port (Tileset) 18",
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KingTapir"
@@ -2503,6 +2989,279 @@
   "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
   "group": "Houses",
   "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_2": {
+  "name": "Desert Tileset (Deluxe Edi 2",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Desert Tileset (Deluxe Edi 2",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_3": {
+  "name": "Desert Tileset (Deluxe Edi 3",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Desert Tileset (Deluxe Edi 3",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_5": {
+  "name": "Desert Tileset (Deluxe Edi 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Desert Tileset (Deluxe Edi 5",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_6": {
+  "name": "Desert Tileset (Deluxe Edi 6",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Desert Tileset (Deluxe Edi 6",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_7": {
+  "name": "Desert Tileset (Deluxe Edi 7",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Desert Tileset (Deluxe Edi 7",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Trees & plants",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_9": {
+  "name": "Desert Tileset (Deluxe Edi 9",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Desert Tileset (Deluxe Edi 9",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_10": {
+  "name": "Desert Tileset (Deluxe Edi 10",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Desert Tileset (Deluxe Edi 10",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_11": {
+  "name": "Desert Tileset (Deluxe Edi 11",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Desert Tileset (Deluxe Edi 11",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_12": {
+  "name": "Desert Tileset (Deluxe Edi 12",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Desert Tileset (Deluxe Edi 12",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "96_desert_tileset_deluxe_edi_16": {
+  "name": "Sand (Desert Tileset (Delu) 16",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Sand (Desert Tileset (Delu) 16",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "walk": true,
+  "group": "Paths & ground",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "105_sandstream_desert_tilese_1": {
+  "name": "Sandstream Desert Tileset 1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Sandstream Desert Tileset 1",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "105_sandstream_desert_tilese_9": {
+  "name": "Sandstream Desert Tileset 9",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sandstream Desert Tileset 9",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "105_sandstream_desert_tilese_17": {
+  "name": "Sandstream Desert Tileset 17",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sandstream Desert Tileset 17",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "105_sandstream_desert_tilese_19": {
+  "name": "Sandstream Desert Tileset 19",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Sandstream Desert Tileset 19",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "KingTapir"
+ },
+ "105_sandstream_desert_tilese_24": {
+  "name": "Sandstream Desert Tileset 24",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Sandstream Desert Tileset 24",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "theme": "Desert",
   "gen": "Gen 3",
   "artist": "KingTapir"
  }

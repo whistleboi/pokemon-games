@@ -23,11 +23,11 @@
    "foot": [
     1,
     5,
-    2,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "Tileset Pokemon Resurgent 2",
    "touches": [
     "top",
@@ -36,7 +36,70 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "252_tileset_pokemon_resurgen_4": {
+   "sheet": "252_tileset_pokemon_resurgent",
+   "blocks": [
+    [
+     7,
+     27,
+     12,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    4
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Tileset Pokemon Resurgent 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "252_tileset_pokemon_resurgen_5": {
+   "sheet": "252_tileset_pokemon_resurgent",
+   "blocks": [
+    [
+     1,
+     27,
+     6,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Tileset Pokemon Resurgent 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
   }
  },
  "_sources": [

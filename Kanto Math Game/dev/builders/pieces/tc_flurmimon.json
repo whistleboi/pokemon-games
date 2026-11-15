@@ -1,0 +1,180 @@
+{
+ "set": "tc_flurmimon",
+ "artist": "Flurmimon",
+ "credit": "Flurmimon (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Tileset Collection/_processed",
+ "sheets": {
+  "371_flurmimons_tileset_nature": "flurmimon__371_flurmimons_tileset_nature.png"
+ },
+ "pieces": {
+  "371_flurmimons_tileset_natur_6": {
+   "sheet": "371_flurmimons_tileset_nature",
+   "blocks": [
+    [
+     40,
+     0,
+     43,
+     3
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Flurmimons Tileset - Natur 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ]
+  },
+  "371_flurmimons_tileset_natur_11": {
+   "sheet": "371_flurmimons_tileset_nature",
+   "blocks": [
+    [
+     50,
+     4,
+     54,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Flurmimons Tileset - Natur 11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "group": "Houses"
+  },
+  "371_flurmimons_tileset_natur_12": {
+   "sheet": "371_flurmimons_tileset_nature",
+   "blocks": [
+    [
+     43,
+     6,
+     48,
+     9
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Flurmimons Tileset - Natur 12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ]
+  },
+  "371_flurmimons_tileset_natur_14": {
+   "sheet": "371_flurmimons_tileset_nature",
+   "blocks": [
+    [
+     45,
+     28,
+     49,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Flurmimons Tileset - Natur 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "group": "Houses"
+  },
+  "371_flurmimons_tileset_natur_37": {
+   "sheet": "371_flurmimons_tileset_nature",
+   "blocks": [
+    [
+     14,
+     45,
+     17,
+     48
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Flurmimons Tileset - Natur 37",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ]
+  },
+  "371_flurmimons_tileset_natur_38": {
+   "sheet": "371_flurmimons_tileset_nature",
+   "blocks": [
+    [
+     19,
+     45,
+     22,
+     48
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Flurmimons Tileset - Natur 38",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ]
+  }
+ },
+ "_sources": [
+  {
+   "title": "Flurmimons Tileset - Nature",
+   "url": "https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241",
+   "credits": "\u2606"
+  }
+ ]
+}

@@ -7,7 +7,9 @@
   "244_public_tileset_dump_3_4_beach_and_se": "peekychew__244_public_tileset_dump_3_4_beach_and_se.png",
   "248_beach_and_sea_tiles": "peekychew__248_beach_and_sea_tiles.png",
   "247_traditional_japanese_building_tiles_": "peekychew__247_traditional_japanese_building_tiles_.png",
-  "250_shrine_tiles": "peekychew__250_shrine_tiles.png"
+  "250_shrine_tiles": "peekychew__250_shrine_tiles.png",
+  "245_public_tileset_dump_2_4_desert": "peekychew__245_public_tileset_dump_2_4_desert.png",
+  "243_public_tileset_dump_4_4_standard_rou": "peekychew__243_public_tileset_dump_4_4_standard_rou.png"
  },
  "pieces": {
   "244_public_tileset_dump_3_4__0": {
@@ -162,6 +164,37 @@
    "theme": "Tropical",
    "gen": "Gen 3"
   },
+  "244_public_tileset_dump_3_4__11": {
+   "sheet": "244_public_tileset_dump_3_4_beach_and_se",
+   "blocks": [
+    [
+     12,
+     10,
+     15,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 3/4 -  11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Tropical",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "244_public_tileset_dump_3_4__12": {
    "sheet": "244_public_tileset_dump_3_4_beach_and_se",
    "blocks": [
@@ -189,6 +222,37 @@
    ],
    "theme": "Tropical",
    "gen": "Gen 3"
+  },
+  "244_public_tileset_dump_3_4__13": {
+   "sheet": "244_public_tileset_dump_3_4_beach_and_se",
+   "blocks": [
+    [
+     20,
+     10,
+     23,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 3/4 -  13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Tropical",
+   "gen": "Gen 3",
+   "group": "Houses"
   },
   "244_public_tileset_dump_3_4__14": {
    "sheet": "244_public_tileset_dump_3_4_beach_and_se",
@@ -544,6 +608,66 @@
     "right"
    ],
    "theme": "Tropical",
+   "gen": "Gen 3"
+  },
+  "248_beach_and_sea_tiles_8": {
+   "sheet": "248_beach_and_sea_tiles",
+   "blocks": [
+    [
+     23,
+     5,
+     25,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Paving (Beach and Sea Tiles) 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "248_beach_and_sea_tiles_9": {
+   "sheet": "248_beach_and_sea_tiles",
+   "blocks": [
+    [
+     26,
+     5,
+     28,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": false,
+   "group": "Paths & ground",
+   "label": "Water (Beach and Sea Tiles) 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Water",
    "gen": "Gen 3"
   },
   "248_beach_and_sea_tiles_10": {
@@ -1342,6 +1466,1584 @@
    "theme": "Town",
    "gen": "Gen 3",
    "group": "Landmarks"
+  },
+  "245_public_tileset_dump_2_4__0": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     17,
+     1,
+     20,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Sand (Public Tileset Dump ) 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Tropical",
+   "gen": "Gen 3"
+  },
+  "245_public_tileset_dump_2_4__1": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     21,
+     1,
+     24,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Sand (Public Tileset Dump ) 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Tropical",
+   "gen": "Gen 3"
+  },
+  "245_public_tileset_dump_2_4__2": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     1,
+     1,
+     4,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__3": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     9,
+     1,
+     12,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__4": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     5,
+     2,
+     8,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__5": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     13,
+     2,
+     16,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__6": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     17,
+     5,
+     20,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Dirt path (Public Tileset Dump ) 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3"
+  },
+  "245_public_tileset_dump_2_4__7": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     21,
+     5,
+     24,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Dirt path (Public Tileset Dump ) 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3"
+  },
+  "245_public_tileset_dump_2_4__10": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     1,
+     8,
+     4,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__11": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     5,
+     8,
+     8,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 2/4 -  11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3"
+  },
+  "245_public_tileset_dump_2_4__12": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     17,
+     9,
+     20,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__13": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     21,
+     9,
+     24,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__16": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     1,
+     12,
+     4,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__17": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     5,
+     12,
+     8,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 2/4 -  17",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3"
+  },
+  "245_public_tileset_dump_2_4__19": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     17,
+     13,
+     20,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Public Tileset Dump 2/4 -  19",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "245_public_tileset_dump_2_4__20": {
+   "sheet": "245_public_tileset_dump_2_4_desert",
+   "blocks": [
+    [
+     21,
+     13,
+     24,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 2/4 -  20",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Desert",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__0": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     1,
+     1,
+     4,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Grass patch (Public Tileset Dump ) 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__1": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     5,
+     1,
+     8,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__2": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     17,
+     1,
+     20,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__3": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     21,
+     1,
+     24,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__4": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     9,
+     1,
+     12,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__5": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     13,
+     1,
+     16,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__6": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     25,
+     1,
+     26,
+     5
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__7": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     27,
+     1,
+     28,
+     5
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__8": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     1,
+     5,
+     4,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Grass patch (Public Tileset Dump ) 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__9": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     5,
+     5,
+     8,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__10": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     9,
+     5,
+     12,
+     8
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__11": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     13,
+     5,
+     16,
+     8
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__12": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     17,
+     5,
+     20,
+     8
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__13": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     21,
+     5,
+     24,
+     8
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__14": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     25,
+     6,
+     28,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__15": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     3,
+     9,
+     7,
+     12
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__16": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     7,
+     9,
+     9,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__17": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     16,
+     9,
+     19,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  17",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__18": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     25,
+     9,
+     26,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  18",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__19": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     27,
+     9,
+     28,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  19",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__20": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     1,
+     9,
+     2,
+     10
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  20",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__21": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     2,
+     9,
+     3,
+     10
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  21",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__22": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     20,
+     9,
+     24,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  22",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__23": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     10,
+     9,
+     12,
+     11
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  23",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__24": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     13,
+     9,
+     14,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  24",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__25": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     1,
+     10,
+     2,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  25",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__26": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     2,
+     10,
+     3,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  26",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__27": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     14,
+     10,
+     15,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  27",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__28": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     1,
+     12,
+     3,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  28",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__29": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     10,
+     12,
+     12,
+     14
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  29",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__30": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     7,
+     12,
+     9,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  30",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__31": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     16,
+     12,
+     19,
+     14
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  31",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__32": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     21,
+     13,
+     23,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  32",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__33": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     3,
+     13,
+     7,
+     16
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  33",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__34": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     25,
+     13,
+     28,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Public Tileset Dump 4/4 -  34",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "243_public_tileset_dump_4_4__35": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     13,
+     13,
+     15,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  35",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__36": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     16,
+     14,
+     19,
+     16
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  36",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "243_public_tileset_dump_4_4__37": {
+   "sheet": "243_public_tileset_dump_4_4_standard_rou",
+   "blocks": [
+    [
+     10,
+     15,
+     12,
+     16
+    ]
+   ],
+   "foot": [
+    1,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Public Tileset Dump 4/4 -  37",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
   }
  },
  "_sources": [
@@ -1363,6 +3065,16 @@
   {
    "title": "Shrine Tiles by PeekyChew on DeviantArt",
    "url": "https://www.deviantart.com/peekychew/art/Shrine-Tiles-467493523",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Public Tileset Dump 2/4 - Desert by PeekyChew on DeviantArt",
+   "url": "https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-2-4-Desert-828044216",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Public Tileset Dump 4/4 - Standard Route by PeekyChew on DeviantArt",
+   "url": "https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-4-4-Standard-Route-828486767",
    "credits": "\u2606"
   }
  ]

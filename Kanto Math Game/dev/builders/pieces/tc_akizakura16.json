@@ -1,0 +1,1828 @@
+{
+ "set": "tc_akizakura16",
+ "artist": "Akizakura16",
+ "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Tileset Collection/_processed",
+ "sheets": {
+  "341_4th_gen_outdoor_tileset": "akizakura16__341_4th_gen_outdoor_tileset.png"
+ },
+ "pieces": {
+  "341_4th_gen_outdoor_tileset_2": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     3,
+     34,
+     6,
+     37
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_5": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     5,
+     39,
+     8,
+     44
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "4th gen Outdoor Tileset 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Trees & plants"
+  },
+  "341_4th_gen_outdoor_tileset_6": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     40,
+     3,
+     44
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "4th gen Outdoor Tileset 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Trees & plants"
+  },
+  "341_4th_gen_outdoor_tileset_8": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     44,
+     3,
+     48
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_10": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     48,
+     3,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_12": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     52,
+     3,
+     56
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_14": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     56,
+     3,
+     60
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_16": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     60,
+     3,
+     64
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_18": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     64,
+     3,
+     68
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "4th gen Outdoor Tileset 18",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Trees & plants"
+  },
+  "341_4th_gen_outdoor_tileset_20": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     68,
+     3,
+     72
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 20",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_22": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     72,
+     3,
+     76
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 22",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_24": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     76,
+     3,
+     80
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 24",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_39": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     3,
+     108,
+     6,
+     112
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 39",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_45": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     3,
+     112,
+     6,
+     116
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 45",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_63": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     148,
+     7,
+     155
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 63",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_64": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     155,
+     7,
+     162
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 64",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_70": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     195,
+     7,
+     204
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    6,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 70",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_71": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     205,
+     6,
+     212
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    4,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 71",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_72": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     212,
+     6,
+     219
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    4,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 72",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_73": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     219,
+     6,
+     222
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 73",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_74": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     222,
+     7,
+     229
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 74",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_75": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     229,
+     6,
+     235
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 75",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_78": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     1,
+     244,
+     6,
+     247
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 78",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_79": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     247,
+     7,
+     253
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 79",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_80": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     253,
+     6,
+     259
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 80",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_81": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     259,
+     6,
+     262
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 81",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_82": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     262,
+     6,
+     265
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 82",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_83": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     265,
+     7,
+     271
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 83",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_84": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     271,
+     6,
+     277
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 84",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_85": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     277,
+     6,
+     283
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 85",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_86": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     283,
+     6,
+     286
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 86",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_87": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     286,
+     7,
+     292
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 87",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_88": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     292,
+     6,
+     298
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    4,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 88",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_90": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     1,
+     304,
+     6,
+     307
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 90",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_91": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     1,
+     307,
+     7,
+     313
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 91",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_92": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     313,
+     6,
+     320
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    4,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 92",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_93": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     320,
+     6,
+     323
+    ]
+   ],
+   "foot": [
+    2,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "4th gen Outdoor Tileset 93",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Trees & plants"
+  },
+  "341_4th_gen_outdoor_tileset_94": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     323,
+     6,
+     326
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 94",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_95": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     326,
+     7,
+     335
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    7,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 95",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_96": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     335,
+     7,
+     343
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 96",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_97": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     343,
+     7,
+     351
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 97",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_98": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     351,
+     7,
+     355
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    7,
+    2
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 98",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_102": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     386,
+     5,
+     393
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 102",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_103": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     393,
+     5,
+     399
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 103",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_104": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     399,
+     5,
+     404
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 104",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_105": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     404,
+     5,
+     409
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 105",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_106": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     409,
+     5,
+     414
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 106",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_107": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     414,
+     5,
+     419
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 107",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_109": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     425,
+     5,
+     428
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 109",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_110": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     428,
+     5,
+     434
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 110",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_111": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     434,
+     6,
+     440
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 111",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_113": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     447,
+     5,
+     450
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 113",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_115": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     457,
+     5,
+     460
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 115",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_118": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     467,
+     5,
+     470
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 118",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_122": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     489,
+     6,
+     496
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 122",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_124": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     503,
+     6,
+     507
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 124",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_125": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     508,
+     7,
+     515
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 125",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_126": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     516,
+     6,
+     523
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 126",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_128": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     530,
+     6,
+     533
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 128",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_129": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     533,
+     7,
+     540
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 129",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_130": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     540,
+     6,
+     547
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 130",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "341_4th_gen_outdoor_tileset_132": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     554,
+     6,
+     557
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "4th gen Outdoor Tileset 132",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4"
+  },
+  "341_4th_gen_outdoor_tileset_133": {
+   "sheet": "341_4th_gen_outdoor_tileset",
+   "blocks": [
+    [
+     0,
+     557,
+     7,
+     564
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "4th gen Outdoor Tileset 133",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  }
+ },
+ "_sources": [
+  {
+   "title": "4th gen Outdoor Tileset by Akizakura16 on DeviantArt",
+   "url": "https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695",
+   "credits": "\u2606"
+  }
+ ]
+}

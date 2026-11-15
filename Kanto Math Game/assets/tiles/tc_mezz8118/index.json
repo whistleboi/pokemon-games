@@ -34,16 +34,17 @@
  },
  "268_tiles_st_s_jungle_tilese_19": {
   "name": "Tiles - St's Jungle tilese 19",
-  "ox": 0,
+  "ox": 32,
   "oy": 96,
   "foot": [
-   3,
+   1,
    1
   ],
   "doors": [],
-  "kind": "prop",
+  "kind": "tree",
   "label": "Tiles - St's Jungle tilese 19",
   "credit": "Mezz8118 (from the Pokemon Ultimate Tileset Collection; https://eeveeexpo.com/resources/684/)",
+  "group": "Trees & plants",
   "gen": "?",
   "artist": "Mezz8118"
  }

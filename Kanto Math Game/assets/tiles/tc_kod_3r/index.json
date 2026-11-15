@@ -302,5 +302,307 @@
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "KOD-3R"
+ },
+ "336_koder_compilation_13": {
+  "name": "KODER COMPILATION 13",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 13",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_14": {
+  "name": "KODER COMPILATION 14",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 14",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_15": {
+  "name": "KODER COMPILATION 15",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 15",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_16": {
+  "name": "KODER COMPILATION 16",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 16",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_17": {
+  "name": "KODER COMPILATION 17",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 17",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_18": {
+  "name": "KODER COMPILATION 18",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 18",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_19": {
+  "name": "KODER COMPILATION 19",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 19",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_20": {
+  "name": "KODER COMPILATION 20",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 20",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_30": {
+  "name": "KODER COMPILATION 30",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 30",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_31": {
+  "name": "KODER COMPILATION 31",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 31",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_34": {
+  "name": "KODER COMPILATION 34",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "KODER COMPILATION 34",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_36": {
+  "name": "KODER COMPILATION 36",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 36",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_46": {
+  "name": "KODER COMPILATION 46",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 46",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_47": {
+  "name": "KODER COMPILATION 47",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 47",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_48": {
+  "name": "KODER COMPILATION 48",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 48",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
+ },
+ "336_koder_compilation_49": {
+  "name": "KODER COMPILATION 49",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "KODER COMPILATION 49",
+  "credit": "KOD-3R (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kod-3r/art/Other-house-596491460)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "KOD-3R"
  }
 }

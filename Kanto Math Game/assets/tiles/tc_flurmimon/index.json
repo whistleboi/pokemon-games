@@ -1,0 +1,92 @@
+{
+ "371_flurmimons_tileset_natur_6": {
+  "name": "Flurmimons Tileset - Natur 6",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Flurmimons Tileset - Natur 6",
+  "credit": "Flurmimon (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241)",
+  "artist": "Flurmimon"
+ },
+ "371_flurmimons_tileset_natur_11": {
+  "name": "Flurmimons Tileset - Natur 11",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Flurmimons Tileset - Natur 11",
+  "credit": "Flurmimon (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241)",
+  "group": "Houses",
+  "artist": "Flurmimon"
+ },
+ "371_flurmimons_tileset_natur_12": {
+  "name": "Flurmimons Tileset - Natur 12",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Flurmimons Tileset - Natur 12",
+  "credit": "Flurmimon (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241)",
+  "artist": "Flurmimon"
+ },
+ "371_flurmimons_tileset_natur_14": {
+  "name": "Flurmimons Tileset - Natur 14",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Flurmimons Tileset - Natur 14",
+  "credit": "Flurmimon (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241)",
+  "group": "Houses",
+  "artist": "Flurmimon"
+ },
+ "371_flurmimons_tileset_natur_37": {
+  "name": "Flurmimons Tileset - Natur 37",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Flurmimons Tileset - Natur 37",
+  "credit": "Flurmimon (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241)",
+  "artist": "Flurmimon"
+ },
+ "371_flurmimons_tileset_natur_38": {
+  "name": "Flurmimons Tileset - Natur 38",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Flurmimons Tileset - Natur 38",
+  "credit": "Flurmimon (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/flurmimon/art/Flurmimons-Tileset-Nature-580160241)",
+  "artist": "Flurmimon"
+ }
+}

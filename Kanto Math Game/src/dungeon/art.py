@@ -477,7 +477,7 @@ def surface(art, kinds, tile, roofs=None, theme=None):
             continue
         if not models and not (pic and (roofs or {}).get("_buildings_in_picture")):  # (the picture already shows its buildings: Orre's fan-game maps)
             _building(surf, art, rect, kinds.get(k, "house"), tile, (roofs or {}).get(k))
-    for o in sorted(OBJECTS, key=lambda o: o["at"][1] if "at" in o else o["r"][1] + o["r"][3]):  # the things from the tile sheets, back to front
+    for o in sorted(OBJECTS, key=lambda o: (not _walked_on(o["k"]), o["at"][1] if "at" in o else o["r"][1] + o["r"][3])):  # the things from the tile sheets, back to front (paths and stairs first, under everything)
         if "at" in o:  # one of the real game's models, where the game stands it
             mp, ox, oy = _model(o["k"])  # (not "pic": that's the map's ground picture, which decides the trees below)
             key = (o["k"], tile)
@@ -1280,6 +1280,14 @@ def _cliff_tiles(spec, art):
                 if code in pics and y < len(art) and x < len(art[0]) and ok(art[y][x]):
                     out.setdefault((x, y), []).append(pics[code])
     return out
+
+
+def _walked_on(key):
+    """Is this piece walked on (stairs, a sand or paving patch: assets/tiles index "walk")? Drawn under everything."""
+    if not (isinstance(key, str) and ":" in key) or not _model(key):
+        return False
+    folder, name = key.split(":", 1)
+    return bool((_PT.get(("index", folder)) or {}).get(name, {}).get("walk"))
 
 
 def _model(key):

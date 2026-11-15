@@ -88,7 +88,7 @@ ROOF_PRESETS = [(232, 92, 64), (72, 122, 214), (96, 170, 108), (80, 152, 166), (
 
 # the park builder's groups, tab by tab (a piece's index.json may name its own "group"; else it's guessed from its name)
 GROUPS = {"Buildings": ["Centers & Marts", "Houses", "Shops & towers", "Landmarks"],
-          "Scenery": ["Stairs", "Trees & plants", "Rocks", "Statues", "Signs & lamps", "Furniture", "Vehicles", "Fences & walls", "Props"],
+          "Scenery": ["Stairs", "Paths & ground", "Trees & plants", "Rocks", "Statues", "Signs & lamps", "Furniture", "Vehicles", "Fences & walls", "Props"],
           "Ground": ["Ground", "Water", "Cliffs & ledges", "Bridges"], "Ways out": ["Ways out", "People"], "Height": []}
 SOURCES = {"alola": "KingTapir", "biome": "Kyle-Dove", "lotus": "LotusKing", "hgss": "Akizakura16", "gen5": "UltimoSpriter",
            "hoenn_sv": "SailorVicious", "kaliser": "Kaliser", "bp": "Banished Platinum"}

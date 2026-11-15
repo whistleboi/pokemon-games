@@ -1,0 +1,1042 @@
+{
+ "set": "tc_anarlaurendil",
+ "artist": "Anarlaurendil",
+ "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Tileset Collection/_processed",
+ "sheets": {
+  "193_pokemon_tile_modern_house_to_age_old": "anarlaurendil__193_pokemon_tile_modern_house_to_age_old.png",
+  "189_alienor_tileset_v2_pokemon_sacred_ph": "anarlaurendil__189_alienor_tileset_v2_pokemon_sacred_ph.png",
+  "190_alienor_tileset_v1_pokemon_sacred_ph": "anarlaurendil__190_alienor_tileset_v1_pokemon_sacred_ph.png",
+  "192_tileset_herbe_et_chemin_1": "anarlaurendil__192_tileset_herbe_et_chemin_1.png"
+ },
+ "pieces": {
+  "189_alienor_tileset_v2_pokem_7": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     28,
+     0,
+     32,
+     5
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_58": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     32,
+     18,
+     37,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Alienor Tileset v2 - Pokem 58",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "189_alienor_tileset_v2_pokem_60": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     28,
+     18,
+     32,
+     23
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 60",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_75": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     32,
+     29,
+     35,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 75",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "189_alienor_tileset_v2_pokem_91": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     16,
+     48,
+     21,
+     53
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 91",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "189_alienor_tileset_v2_pokem_109": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     40,
+     79,
+     48,
+     83
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    8,
+    2
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Alienor Tileset v2 - Pokem 109",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "189_alienor_tileset_v2_pokem_110": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     24,
+     82,
+     28,
+     88
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 110",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_111": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     28,
+     82,
+     32,
+     88
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 111",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_122": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     12,
+     91,
+     16,
+     94
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 122",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "189_alienor_tileset_v2_pokem_126": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     40,
+     93,
+     46,
+     99
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 126",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "189_alienor_tileset_v2_pokem_133": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     40,
+     99,
+     48,
+     104
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    8,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 133",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "189_alienor_tileset_v2_pokem_137": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     16,
+     101,
+     19,
+     104
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 137",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_138": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     19,
+     101,
+     22,
+     104
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 138",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_142": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     19,
+     104,
+     22,
+     107
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 142",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "189_alienor_tileset_v2_pokem_143": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     16,
+     104,
+     19,
+     107
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 143",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "189_alienor_tileset_v2_pokem_151": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     40,
+     107,
+     48,
+     112
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    8,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 151",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "189_alienor_tileset_v2_pokem_163": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     40,
+     115,
+     48,
+     120
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    8,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 163",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "189_alienor_tileset_v2_pokem_169": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     29,
+     118,
+     32,
+     121
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 169",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_186": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     40,
+     122,
+     48,
+     128
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 186",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "189_alienor_tileset_v2_pokem_187": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     28,
+     124,
+     32,
+     128
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v2 - Pokem 187",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "189_alienor_tileset_v2_pokem_188": {
+   "sheet": "189_alienor_tileset_v2_pokemon_sacred_ph",
+   "blocks": [
+    [
+     13,
+     124,
+     16,
+     127
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v2 - Pokem 188",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "190_alienor_tileset_v1_pokem_6": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     28,
+     0,
+     32,
+     5
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v1 - Pokem 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "190_alienor_tileset_v1_pokem_21": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     32,
+     18,
+     37,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Alienor Tileset v1 - Pokem 21",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "190_alienor_tileset_v1_pokem_23": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     28,
+     18,
+     32,
+     23
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v1 - Pokem 23",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "190_alienor_tileset_v1_pokem_38": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     32,
+     29,
+     35,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 38",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "190_alienor_tileset_v1_pokem_43": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     33,
+     39,
+     40,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    7,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 43",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "190_alienor_tileset_v1_pokem_53": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     16,
+     48,
+     21,
+     53
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 53",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "190_alienor_tileset_v1_pokem_63": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     24,
+     82,
+     28,
+     88
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v1 - Pokem 63",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "190_alienor_tileset_v1_pokem_64": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     28,
+     82,
+     32,
+     88
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v1 - Pokem 64",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "190_alienor_tileset_v1_pokem_71": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     42,
+     88,
+     45,
+     92
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 71",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "190_alienor_tileset_v1_pokem_76": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     40,
+     93,
+     46,
+     99
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 76",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "190_alienor_tileset_v1_pokem_87": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     16,
+     101,
+     19,
+     104
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v1 - Pokem 87",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "190_alienor_tileset_v1_pokem_88": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     19,
+     101,
+     22,
+     104
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Alienor Tileset v1 - Pokem 88",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "190_alienor_tileset_v1_pokem_92": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     19,
+     104,
+     22,
+     107
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 92",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "190_alienor_tileset_v1_pokem_93": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     16,
+     104,
+     19,
+     107
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 93",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "190_alienor_tileset_v1_pokem_128": {
+   "sheet": "190_alienor_tileset_v1_pokemon_sacred_ph",
+   "blocks": [
+    [
+     10,
+     122,
+     16,
+     125
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Alienor Tileset v1 - Pokem 128",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  }
+ },
+ "_sources": [
+  {
+   "title": "Pokemon tile - modern house to age-old cottage by Anarlaurendil on DeviantArt",
+   "url": "https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Alienor Tileset v2 - Pokemon Sacred Phoenix by Anarlaurendil on DeviantArt",
+   "url": "https://www.deviantart.com/anarlaurendil/art/Alienor-Tileset-v2-Pokemon-Sacred-Phoenix-900827294",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Alienor Tileset v1 - Pokemon Sacred Phoenix by Anarlaurendil on DeviantArt",
+   "url": "https://www.deviantart.com/anarlaurendil/art/Alienor-Tileset-v1-Pokemon-Sacred-Phoenix-834634422",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Paved stone path - Tileset by Anarlaurendil on DeviantArt",
+   "url": "https://www.deviantart.com/anarlaurendil/art/Paved-stone-path-Tileset-800379337",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Tileset herbe et chemin 1 by Anarlaurendil on DeviantArt",
+   "url": "https://www.deviantart.com/anarlaurendil/art/Tileset-herbe-et-chemin-1-761283987",
+   "credits": "\u2606"
+  }
+ ]
+}

@@ -75,13 +75,13 @@
     ]
    ],
    "foot": [
-    0,
+    1,
     3,
-    3,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "Tiles - St's Jungle tilese 19",
    "touches": [
     "top",
@@ -89,7 +89,8 @@
     "left",
     "right"
    ],
-   "gen": "?"
+   "gen": "?",
+   "group": "Trees & plants"
   }
  },
  "_sources": [

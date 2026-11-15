@@ -1,0 +1,329 @@
+{
+ "set": "tc_thefloofypanthar",
+ "artist": "TheFloofyPanthar",
+ "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Tileset Collection/_processed",
+ "sheets": {
+  "343_bw_spring_tileset_version_2_wip": "thefloofypanthar__343_bw_spring_tileset_version_2_wip.png"
+ },
+ "pieces": {
+  "343_bw_spring_tileset_versio_7": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     0,
+     23,
+     4,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "BW Spring Tileset version  7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5"
+  },
+  "343_bw_spring_tileset_versio_8": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     8,
+     23,
+     12,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "BW Spring Tileset version  8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5"
+  },
+  "343_bw_spring_tileset_versio_13": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     9,
+     36,
+     14,
+     40
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "BW Spring Tileset version  13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5"
+  },
+  "343_bw_spring_tileset_versio_15": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     9,
+     40,
+     14,
+     44
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "BW Spring Tileset version  15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Rocks"
+  },
+  "343_bw_spring_tileset_versio_16": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     2,
+     41,
+     6,
+     44
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "BW Spring Tileset version  16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5"
+  },
+  "343_bw_spring_tileset_versio_39": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     6,
+     178,
+     16,
+     191
+    ]
+   ],
+   "foot": [
+    0,
+    6,
+    10,
+    6
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "BW Spring Tileset version  39",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Houses"
+  },
+  "343_bw_spring_tileset_versio_40": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     1,
+     178,
+     6,
+     182
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "BW Spring Tileset version  40",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Rocks"
+  },
+  "343_bw_spring_tileset_versio_60": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     11,
+     293,
+     15,
+     297
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "BW Spring Tileset version  60",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Houses"
+  },
+  "343_bw_spring_tileset_versio_61": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     11,
+     305,
+     15,
+     309
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "BW Spring Tileset version  61",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Houses"
+  },
+  "343_bw_spring_tileset_versio_64": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     10,
+     328,
+     16,
+     334
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "BW Spring Tileset version  64",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Houses"
+  },
+  "343_bw_spring_tileset_versio_67": {
+   "sheet": "343_bw_spring_tileset_version_2_wip",
+   "blocks": [
+    [
+     6,
+     372,
+     10,
+     376
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "BW Spring Tileset version  67",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5"
+  }
+ },
+ "_sources": [
+  {
+   "title": "BW Spring Tileset version 2 (WIP) by TheFloofyPanthar on DeviantArt",
+   "url": "https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857",
+   "credits": "\u2606"
+  }
+ ]
+}

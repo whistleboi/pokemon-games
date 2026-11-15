@@ -6,9 +6,41 @@
  "sheets": {
   "374_mixed_style_cps": "hek_el_grande__374_mixed_style_cps.png",
   "378_pkmn_league_and_statues": "hek_el_grande__378_pkmn_league_and_statues.png",
-  "380_new_pallete_3": "hek_el_grande__380_new_pallete_3.png"
+  "380_new_pallete_3": "hek_el_grande__380_new_pallete_3.png",
+  "382_new_forest_tiles": "hek_el_grande__382_new_forest_tiles.png",
+  "381_new_outside_mountains": "hek_el_grande__381_new_outside_mountains.png"
  },
  "pieces": {
+  "374_mixed_style_cps_0": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     1,
+     2,
+     5,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
   "374_mixed_style_cps_1": {
    "sheet": "374_mixed_style_cps",
    "blocks": [
@@ -30,6 +62,96 @@
    ],
    "kind": "house",
    "label": "Mixed style CPs 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
+  "374_mixed_style_cps_2": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     7,
+     2,
+     11,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
+  "374_mixed_style_cps_3": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     1,
+     8,
+     6,
+     13
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
+  "374_mixed_style_cps_4": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     7,
+     8,
+     12,
+     13
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 4",
    "touches": [
     "top",
     "bottom",
@@ -69,6 +191,36 @@
    "theme": "Town",
    "group": "Houses"
   },
+  "374_mixed_style_cps_6": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     1,
+     16,
+     5,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
   "374_mixed_style_cps_7": {
    "sheet": "374_mixed_style_cps",
    "blocks": [
@@ -90,6 +242,96 @@
    ],
    "kind": "house",
    "label": "Mixed style CPs 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
+  "374_mixed_style_cps_8": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     7,
+     16,
+     11,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
+  "374_mixed_style_cps_9": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     1,
+     22,
+     6,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
+  "374_mixed_style_cps_10": {
+   "sheet": "374_mixed_style_cps",
+   "blocks": [
+    [
+     7,
+     22,
+     12,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Mixed style CPs 10",
    "touches": [
     "top",
     "bottom",
@@ -189,6 +431,36 @@
    "theme": "Town",
    "group": "Centers & Marts"
   },
+  "380_new_pallete_3_1": {
+   "sheet": "380_new_pallete_3",
+   "blocks": [
+    [
+     12,
+     1,
+     15,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "New pallete :3 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
+  },
   "380_new_pallete_3_3": {
    "sheet": "380_new_pallete_3",
    "blocks": [
@@ -218,6 +490,33 @@
    ],
    "theme": "Town",
    "group": "Houses"
+  },
+  "380_new_pallete_3_6": {
+   "sheet": "380_new_pallete_3",
+   "blocks": [
+    [
+     30,
+     4,
+     33,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New pallete :3 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town"
   },
   "380_new_pallete_3_16": {
    "sheet": "380_new_pallete_3",
@@ -411,23 +710,22 @@
    ],
    "foot": [
     0,
-    1,
+    0,
     3,
-    2
+    3
    ],
-   "doors": [
-    1
-   ],
-   "kind": "house",
-   "label": "New pallete :3 28",
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Dirt path (New pallete :3) 28",
    "touches": [
     "top",
     "bottom",
     "left",
     "right"
    ],
-   "theme": "Town",
-   "group": "Houses"
+   "theme": "Town"
   },
   "380_new_pallete_3_29": {
    "sheet": "380_new_pallete_3",
@@ -441,23 +739,22 @@
    ],
    "foot": [
     0,
-    1,
+    0,
     3,
-    2
+    3
    ],
-   "doors": [
-    1
-   ],
-   "kind": "house",
-   "label": "New pallete :3 29",
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Dirt path (New pallete :3) 29",
    "touches": [
     "top",
     "bottom",
     "left",
     "right"
    ],
-   "theme": "Town",
-   "group": "Houses"
+   "theme": "Town"
   },
   "380_new_pallete_3_32": {
    "sheet": "380_new_pallete_3",
@@ -518,6 +815,557 @@
    ],
    "theme": "Town",
    "group": "Houses"
+  },
+  "382_new_forest_tiles_0": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     1,
+     1,
+     4,
+     4
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_1": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     5,
+     1,
+     8,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New forest tiles 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest"
+  },
+  "382_new_forest_tiles_2": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     9,
+     1,
+     12,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New forest tiles 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest"
+  },
+  "382_new_forest_tiles_3": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     14,
+     3,
+     18,
+     6
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_4": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     1,
+     5,
+     5,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_5": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     10,
+     5,
+     11,
+     6
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_7": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     6,
+     5,
+     8,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_8": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     14,
+     6,
+     18,
+     9
+    ]
+   ],
+   "foot": [
+    2,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_9": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     9,
+     7,
+     12,
+     8
+    ]
+   ],
+   "foot": [
+    1,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_10": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     10,
+     9,
+     14,
+     14
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_11": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     16,
+     9,
+     18,
+     13
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_15": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     5,
+     13,
+     7,
+     14
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New forest tiles 15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "group": "Trees & plants"
+  },
+  "382_new_forest_tiles_17": {
+   "sheet": "382_new_forest_tiles",
+   "blocks": [
+    [
+     11,
+     15,
+     21,
+     19
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    10,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New forest tiles 17",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest"
+  },
+  "381_new_outside_mountains_0": {
+   "sheet": "381_new_outside_mountains",
+   "blocks": [
+    [
+     2,
+     1,
+     5,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New Outside Mountains 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain"
+  },
+  "381_new_outside_mountains_1": {
+   "sheet": "381_new_outside_mountains",
+   "blocks": [
+    [
+     6,
+     1,
+     9,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New Outside Mountains 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain"
+  },
+  "381_new_outside_mountains_2": {
+   "sheet": "381_new_outside_mountains",
+   "blocks": [
+    [
+     10,
+     1,
+     13,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New Outside Mountains 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain"
+  },
+  "381_new_outside_mountains_3": {
+   "sheet": "381_new_outside_mountains",
+   "blocks": [
+    [
+     1,
+     5,
+     4,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New Outside Mountains 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain"
+  },
+  "381_new_outside_mountains_4": {
+   "sheet": "381_new_outside_mountains",
+   "blocks": [
+    [
+     5,
+     5,
+     8,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New Outside Mountains 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain"
+  },
+  "381_new_outside_mountains_5": {
+   "sheet": "381_new_outside_mountains",
+   "blocks": [
+    [
+     9,
+     5,
+     12,
+     8
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "New Outside Mountains 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain",
+   "group": "Trees & plants"
+  },
+  "381_new_outside_mountains_12": {
+   "sheet": "381_new_outside_mountains",
+   "blocks": [
+    [
+     4,
+     15,
+     14,
+     19
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    10,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "New Outside Mountains 12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain"
   }
  },
  "_sources": [
@@ -534,6 +1382,26 @@
   {
    "title": "New pallete :3 by Hek-el-grande on DeviantArt",
    "url": "https://www.deviantart.com/hek-el-grande/art/New-pallete-3-281976788",
+   "credits": "\u2606"
+  },
+  {
+   "title": "New forest tiles by Hek-el-grande on DeviantArt",
+   "url": "https://www.deviantart.com/hek-el-grande/art/New-forest-tiles-280949337",
+   "credits": "\u2606"
+  },
+  {
+   "title": "New Outside Mountains",
+   "url": "https://www.deviantart.com/hek-el-grande/art/New-outside-mountains-281299916",
+   "credits": "\u2606"
+  },
+  {
+   "title": "New Soil",
+   "url": "https://www.deviantart.com/hek-el-grande/art/New-soil-284471137",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Flowers And Others",
+   "url": "https://www.deviantart.com/hek-el-grande/art/Flowers-and-others-291615053",
    "credits": "\u2606"
   }
  ]

@@ -17,5 +17,743 @@
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "J-Treecko252"
+ },
+ "120_path_tiles_ex_haunted_wo_3": {
+  "name": "Path Tiles EX Haunted Wood 3",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Haunted Wood 3",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "120_path_tiles_ex_haunted_wo_10": {
+  "name": "Path Tiles EX Haunted Wood 10",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Haunted Wood 10",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "161_path_tiles_ex_dirt_1": {
+  "name": "Path Tiles EX Dirt 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Dirt 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "161_path_tiles_ex_dirt_8": {
+  "name": "Path Tiles EX Dirt 8",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Dirt 8",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "164_path_tiles_ex_sand_0": {
+  "name": "Path Tiles EX Sand 0",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Sand 0",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "165_path_tiles_ex_gravel_1": {
+  "name": "Path Tiles EX Gravel 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Gravel 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "166_path_tiles_ex_rocky_1": {
+  "name": "Path Tiles EX - Rocky 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX - Rocky 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "167_path_tiles_ex_stone_1": {
+  "name": "Path Tiles EX Stone 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Stone 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "169_path_tiles_ex_compacted__0": {
+  "name": "Path Tiles EX Compacted Sn 0",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Compacted Sn 0",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "169_path_tiles_ex_compacted__13": {
+  "name": "Path Tiles EX Compacted Sn 13",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Compacted Sn 13",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "173_path_tiles_ex_stone_road_1": {
+  "name": "Path Tiles EX Stone Road G 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Stone Road G 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Rocks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "174_path_tiles_ex_stone_road_1": {
+  "name": "Path Tiles EX Stone Road S 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Stone Road S 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Rocks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "175_path_tiles_ex_stone_road_1": {
+  "name": "Path Tiles EX - Stone Road 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX - Stone Road 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Rocks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "176_path_tiles_ex_stone_road_1": {
+  "name": "Paving (Path Tiles EX Stone ) 1",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Paving (Path Tiles EX Stone ) 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "walk": true,
+  "group": "Paths & ground",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "177_path_tiles_ex_sandstone__1": {
+  "name": "Path Tiles EX - Sandstone  1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX - Sandstone  1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "181_path_tiles_ex_cobbled_ro_0": {
+  "name": "Path Tiles EX Cobbled Road 0",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Cobbled Road 0",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Rocks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "181_path_tiles_ex_cobbled_ro_2": {
+  "name": "Path Tiles EX Cobbled Road 2",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Cobbled Road 2",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Rocks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "181_path_tiles_ex_cobbled_ro_12": {
+  "name": "Path Tiles EX Cobbled Road 12",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Cobbled Road 12",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "181_path_tiles_ex_cobbled_ro_14": {
+  "name": "Path Tiles EX Cobbled Road 14",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Path Tiles EX Cobbled Road 14",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "182_path_tiles_ex_asphalt_gr_1": {
+  "name": "Paving (Path Tiles EX Asphal) 1",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Paving (Path Tiles EX Asphal) 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "walk": true,
+  "group": "Paths & ground",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "183_path_tiles_ex_asphalt_sa_1": {
+  "name": "Paving (Path Tiles EX - Asph) 1",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Paving (Path Tiles EX - Asph) 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "walk": true,
+  "group": "Paths & ground",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "184_path_tiles_ex_asphalt_sn_1": {
+  "name": "Paving (Path Tiles EX Asphal) 1",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Paving (Path Tiles EX Asphal) 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "walk": true,
+  "group": "Paths & ground",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "185_path_tiles_ex_asphalt_tr_1": {
+  "name": "Paving (Path Tiles EX - Asph) 1",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Paving (Path Tiles EX - Asph) 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "walk": true,
+  "group": "Paths & ground",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "188_path_tiles_ex_add_ons_03_1": {
+  "name": "Path Tiles EX Add Ons 03 1",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Path Tiles EX Add Ons 03 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "131_cactus_tiles_ver_01_1": {
+  "name": "Cactus Tiles Ver.01 1",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.01 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "131_cactus_tiles_ver_01_2": {
+  "name": "Cactus Tiles Ver.01 2",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.01 2",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "131_cactus_tiles_ver_01_3": {
+  "name": "Cactus Tiles Ver.01 3",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.01 3",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "131_cactus_tiles_ver_01_4": {
+  "name": "Cactus Tiles Ver.01 4",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.01 4",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "131_cactus_tiles_ver_01_5": {
+  "name": "Cactus Tiles Ver.01 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.01 5",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "131_cactus_tiles_ver_01_6": {
+  "name": "Cactus Tiles Ver.01 6",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.01 6",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "132_cactus_tiles_ver_02_1": {
+  "name": "Cactus Tiles Ver.02 1",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.02 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "132_cactus_tiles_ver_02_2": {
+  "name": "Cactus Tiles Ver.02 2",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.02 2",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "132_cactus_tiles_ver_02_3": {
+  "name": "Cactus Tiles Ver.02 3",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.02 3",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "132_cactus_tiles_ver_02_4": {
+  "name": "Cactus Tiles Ver.02 4",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.02 4",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "132_cactus_tiles_ver_02_5": {
+  "name": "Cactus Tiles Ver.02 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.02 5",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "132_cactus_tiles_ver_02_6": {
+  "name": "Cactus Tiles Ver.02 6",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.02 6",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "133_cactus_tiles_ver_03_1": {
+  "name": "Cactus Tiles Ver.03 1",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.03 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "133_cactus_tiles_ver_03_2": {
+  "name": "Cactus Tiles Ver.03 2",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.03 2",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "133_cactus_tiles_ver_03_3": {
+  "name": "Cactus Tiles Ver.03 3",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.03 3",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "133_cactus_tiles_ver_03_4": {
+  "name": "Cactus Tiles Ver.03 4",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.03 4",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "133_cactus_tiles_ver_03_5": {
+  "name": "Cactus Tiles Ver.03 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.03 5",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "133_cactus_tiles_ver_03_6": {
+  "name": "Cactus Tiles Ver.03 6",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Cactus Tiles Ver.03 6",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "158_assorted_ground_tiles_1": {
+  "name": "Assorted Ground Tiles 1",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Assorted Ground Tiles 1",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ },
+ "158_assorted_ground_tiles_3": {
+  "name": "Assorted Ground Tiles 3",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Assorted Ground Tiles 3",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
  }
 }

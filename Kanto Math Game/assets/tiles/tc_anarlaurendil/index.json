@@ -1,0 +1,571 @@
+{
+ "189_alienor_tileset_v2_pokem_7": {
+  "name": "Alienor Tileset v2 - Pokem 7",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 7",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_58": {
+  "name": "Alienor Tileset v2 - Pokem 58",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Alienor Tileset v2 - Pokem 58",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Houses",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_60": {
+  "name": "Alienor Tileset v2 - Pokem 60",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 60",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_75": {
+  "name": "Alienor Tileset v2 - Pokem 75",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 75",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Rocks",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_91": {
+  "name": "Alienor Tileset v2 - Pokem 91",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 91",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_109": {
+  "name": "Alienor Tileset v2 - Pokem 109",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   8,
+   2
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Alienor Tileset v2 - Pokem 109",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Houses",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_110": {
+  "name": "Alienor Tileset v2 - Pokem 110",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 110",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_111": {
+  "name": "Alienor Tileset v2 - Pokem 111",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 111",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_122": {
+  "name": "Alienor Tileset v2 - Pokem 122",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 122",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_126": {
+  "name": "Alienor Tileset v2 - Pokem 126",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 126",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_133": {
+  "name": "Alienor Tileset v2 - Pokem 133",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   8,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 133",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Rocks",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_137": {
+  "name": "Alienor Tileset v2 - Pokem 137",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 137",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_138": {
+  "name": "Alienor Tileset v2 - Pokem 138",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 138",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_142": {
+  "name": "Alienor Tileset v2 - Pokem 142",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 142",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Rocks",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_143": {
+  "name": "Alienor Tileset v2 - Pokem 143",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 143",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_151": {
+  "name": "Alienor Tileset v2 - Pokem 151",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   8,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 151",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_163": {
+  "name": "Alienor Tileset v2 - Pokem 163",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   8,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 163",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_169": {
+  "name": "Alienor Tileset v2 - Pokem 169",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 169",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_186": {
+  "name": "Alienor Tileset v2 - Pokem 186",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   8,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 186",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_187": {
+  "name": "Alienor Tileset v2 - Pokem 187",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v2 - Pokem 187",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "189_alienor_tileset_v2_pokem_188": {
+  "name": "Alienor Tileset v2 - Pokem 188",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v2 - Pokem 188",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Rocks",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_6": {
+  "name": "Alienor Tileset v1 - Pokem 6",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v1 - Pokem 6",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_21": {
+  "name": "Alienor Tileset v1 - Pokem 21",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Alienor Tileset v1 - Pokem 21",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Houses",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_23": {
+  "name": "Alienor Tileset v1 - Pokem 23",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v1 - Pokem 23",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_38": {
+  "name": "Alienor Tileset v1 - Pokem 38",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 38",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Rocks",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_43": {
+  "name": "Alienor Tileset v1 - Pokem 43",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   7,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 43",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_53": {
+  "name": "Alienor Tileset v1 - Pokem 53",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 53",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_63": {
+  "name": "Alienor Tileset v1 - Pokem 63",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v1 - Pokem 63",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_64": {
+  "name": "Alienor Tileset v1 - Pokem 64",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v1 - Pokem 64",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_71": {
+  "name": "Alienor Tileset v1 - Pokem 71",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 71",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_76": {
+  "name": "Alienor Tileset v1 - Pokem 76",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 76",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_87": {
+  "name": "Alienor Tileset v1 - Pokem 87",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v1 - Pokem 87",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_88": {
+  "name": "Alienor Tileset v1 - Pokem 88",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Alienor Tileset v1 - Pokem 88",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Trees & plants",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_92": {
+  "name": "Alienor Tileset v1 - Pokem 92",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 92",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "group": "Rocks",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_93": {
+  "name": "Alienor Tileset v1 - Pokem 93",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 93",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ },
+ "190_alienor_tileset_v1_pokem_128": {
+  "name": "Alienor Tileset v1 - Pokem 128",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Alienor Tileset v1 - Pokem 128",
+  "credit": "Anarlaurendil (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/anarlaurendil/art/Pokemon-tile-modern-house-to-age-old-cottage-763856421)",
+  "gen": "Gen 3",
+  "artist": "Anarlaurendil"
+ }
+}

@@ -1,0 +1,656 @@
+{
+ "350_starter_kit_tileset_10": {
+  "name": "Starter Kit Tileset 10",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 10",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_13": {
+  "name": "Starter Kit Tileset 13",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 13",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_14": {
+  "name": "Starter Kit Tileset 14",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 14",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_15": {
+  "name": "Starter Kit Tileset 15",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 15",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_31": {
+  "name": "Starter Kit Tileset 31",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 31",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_36": {
+  "name": "Starter Kit Tileset 36",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 36",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_41": {
+  "name": "Starter Kit Tileset 41",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 41",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_43": {
+  "name": "Starter Kit Tileset 43",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 43",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_49": {
+  "name": "Starter Kit Tileset 49",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 49",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_50": {
+  "name": "Starter Kit Tileset 50",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 50",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_51": {
+  "name": "Starter Kit Tileset 51",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 51",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_52": {
+  "name": "Starter Kit Tileset 52",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 52",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_54": {
+  "name": "Starter Kit Tileset 54",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 54",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_55": {
+  "name": "Starter Kit Tileset 55",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 55",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_56": {
+  "name": "Starter Kit Tileset 56",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 56",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_57": {
+  "name": "Starter Kit Tileset 57",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 57",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_58": {
+  "name": "Starter Kit Tileset 58",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 58",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_60": {
+  "name": "Starter Kit Tileset 60",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 60",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_61": {
+  "name": "Starter Kit Tileset 61",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 61",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_62": {
+  "name": "Starter Kit Tileset 62",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 62",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_63": {
+  "name": "Starter Kit Tileset 63",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 63",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_64": {
+  "name": "Starter Kit Tileset 64",
+  "ox": 64,
+  "oy": 160,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 64",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_70": {
+  "name": "Starter Kit Tileset 70",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 70",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_74": {
+  "name": "Starter Kit Tileset 74",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 74",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_80": {
+  "name": "Starter Kit Tileset 80",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 80",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Rocks",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_84": {
+  "name": "Starter Kit Tileset 84",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 84",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Rocks",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_86": {
+  "name": "Starter Kit Tileset 86",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 86",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_92": {
+  "name": "Starter Kit Tileset 92",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 92",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_93": {
+  "name": "Starter Kit Tileset 93",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 93",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_94": {
+  "name": "Starter Kit Tileset 94",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 94",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_95": {
+  "name": "Starter Kit Tileset 95",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Starter Kit Tileset 95",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_96": {
+  "name": "Starter Kit Tileset 96",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 96",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_97": {
+  "name": "Starter Kit Tileset 97",
+  "ox": 64,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Starter Kit Tileset 97",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Trees & plants",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_98": {
+  "name": "Starter Kit Tileset 98",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   5,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 98",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_103": {
+  "name": "Starter Kit Tileset 103",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 103",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_104": {
+  "name": "Starter Kit Tileset 104",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 104",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_106": {
+  "name": "Starter Kit Tileset 106",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   6,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 106",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_107": {
+  "name": "Starter Kit Tileset 107",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 107",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_110": {
+  "name": "Starter Kit Tileset 110",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 110",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ },
+ "350_starter_kit_tileset_112": {
+  "name": "Starter Kit Tileset 112",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Starter Kit Tileset 112",
+  "credit": "UltimoSpriter (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ultimospriter/art/Route-4-Tiles-243807699)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "UltimoSpriter"
+ }
+}

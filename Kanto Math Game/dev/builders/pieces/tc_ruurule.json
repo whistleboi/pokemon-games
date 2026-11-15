@@ -131,6 +131,99 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_4": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     28,
+     1,
+     34,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_5": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     35,
+     1,
+     42,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_6": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     22,
+     2,
+     27,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_7": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -152,6 +245,99 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_8": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     50,
+     2,
+     55,
+     6
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_9": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     56,
+     2,
+     61,
+     6
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_10": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     62,
+     2,
+     68,
+     6
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 10",
    "touches": [
     "top",
     "bottom",
@@ -245,6 +431,130 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_14": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     45,
+     7,
+     49,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_15": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     50,
+     7,
+     55,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_16": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     56,
+     7,
+     60,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_17": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     62,
+     7,
+     66,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 17",
    "touches": [
     "top",
     "bottom",
@@ -441,6 +751,99 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_25": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     35,
+     12,
+     40,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 25",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_26": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     45,
+     12,
+     49,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 26",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_27": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     55,
+     12,
+     59,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 27",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_28": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -462,6 +865,161 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 28",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_29": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     66,
+     12,
+     70,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 29",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_30": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     8,
+     13,
+     13,
+     18
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 30",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_31": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     2,
+     14,
+     6,
+     18
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 31",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_32": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     45,
+     17,
+     49,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 32",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_33": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     50,
+     17,
+     55,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 33",
    "touches": [
     "top",
     "bottom",
@@ -565,6 +1123,68 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_37": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     61,
+     17,
+     66,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 37",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_38": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     33,
+     18,
+     42,
+     24
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    9,
+    3
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 38",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_39": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -617,6 +1237,99 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 40",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_41": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     6,
+     19,
+     9,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 41",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_42": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     10,
+     19,
+     16,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 42",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_43": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     2,
+     19,
+     5,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 43",
    "touches": [
     "top",
     "bottom",
@@ -1337,6 +2050,68 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_69": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     2,
+     35,
+     6,
+     39
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 69",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_70": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     7,
+     35,
+     12,
+     39
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 70",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_71": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -1368,6 +2143,130 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_72": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     27,
+     35,
+     32,
+     39
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 72",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_73": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     33,
+     35,
+     37,
+     39
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 73",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_74": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     38,
+     35,
+     42,
+     39
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 74",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_75": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     64,
+     36,
+     70,
+     41
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 75",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_77": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -1389,6 +2288,68 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 77",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_78": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     90,
+     38,
+     94,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 78",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_79": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     45,
+     38,
+     50,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 79",
    "touches": [
     "top",
     "bottom",
@@ -1554,6 +2515,130 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_86": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     33,
+     40,
+     38,
+     44
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 86",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_87": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     64,
+     42,
+     71,
+     48
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 87",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_88": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     45,
+     42,
+     50,
+     46
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 88",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_91": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     57,
+     43,
+     62,
+     47
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 91",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_92": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -1616,6 +2701,68 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_94": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     45,
+     47,
+     50,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 94",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_95": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     51,
+     47,
+     56,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 95",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_96": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -1637,6 +2784,37 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 96",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_97": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     7,
+     47,
+     12,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 97",
    "touches": [
     "top",
     "bottom",
@@ -1802,6 +2980,99 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_103": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     57,
+     48,
+     63,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 103",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_104": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     73,
+     50,
+     78,
+     54
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 104",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_105": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     79,
+     50,
+     84,
+     54
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 105",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_106": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -1854,6 +3125,37 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 107",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_108": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     64,
+     53,
+     71,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    2
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 108",
    "touches": [
     "top",
     "bottom",
@@ -1926,6 +3228,68 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_111": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     51,
+     54,
+     56,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 111",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_112": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     57,
+     54,
+     63,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 112",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_113": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -1988,6 +3352,37 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_115": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     73,
+     54,
+     78,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 115",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_116": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -2009,6 +3404,99 @@
    ],
    "kind": "house",
    "label": "Pokemon Tileset - GBA - Bu 116",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_117": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     35,
+     55,
+     40,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 117",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_118": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     8,
+     55,
+     12,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 118",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "236_pokemon_tileset_gba_buil_119": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     2,
+     55,
+     6,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 119",
    "touches": [
     "top",
     "bottom",
@@ -2078,6 +3566,37 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_123": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     85,
+     62,
+     96,
+     67
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    11,
+    2
+   ],
+   "doors": [
+    5
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 123",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_126": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -2105,6 +3624,37 @@
    ],
    "theme": "Town",
    "gen": "Gen 3"
+  },
+  "236_pokemon_tileset_gba_buil_128": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     85,
+     70,
+     96,
+     75
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    11,
+    2
+   ],
+   "doors": [
+    5
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 128",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
   },
   "236_pokemon_tileset_gba_buil_130": {
    "sheet": "236_pokemon_tileset_gba_buildings",
@@ -2196,6 +3746,37 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "236_pokemon_tileset_gba_buil_134": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     31,
+     82,
+     40,
+     90
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    9,
+    4
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 134",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "236_pokemon_tileset_gba_buil_135": {
    "sheet": "236_pokemon_tileset_gba_buildings",
    "blocks": [
@@ -2251,6 +3832,37 @@
    ],
    "theme": "Town",
    "gen": "Gen 3"
+  },
+  "236_pokemon_tileset_gba_buil_137": {
+   "sheet": "236_pokemon_tileset_gba_buildings",
+   "blocks": [
+    [
+     10,
+     83,
+     19,
+     90
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    9,
+    4
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "Pokemon Tileset - GBA - Bu 137",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
   },
   "236_pokemon_tileset_gba_buil_138": {
    "sheet": "236_pokemon_tileset_gba_buildings",

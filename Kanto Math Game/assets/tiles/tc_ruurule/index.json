@@ -75,6 +75,63 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_4": {
+  "name": "Pokemon Tileset - GBA - Bu 4",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 4",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_5": {
+  "name": "Pokemon Tileset - GBA - Bu 5",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 5",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_6": {
+  "name": "Pokemon Tileset - GBA - Bu 6",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 6",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_7": {
   "name": "Pokemon Tileset - GBA - Bu 7",
   "ox": 0,
@@ -88,6 +145,63 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 7",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_8": {
+  "name": "Pokemon Tileset - GBA - Bu 8",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 8",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_9": {
+  "name": "Pokemon Tileset - GBA - Bu 9",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 9",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_10": {
+  "name": "Pokemon Tileset - GBA - Bu 10",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 10",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -145,6 +259,82 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 13",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_14": {
+  "name": "Pokemon Tileset - GBA - Bu 14",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 14",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_15": {
+  "name": "Pokemon Tileset - GBA - Bu 15",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 15",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_16": {
+  "name": "Pokemon Tileset - GBA - Bu 16",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 16",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_17": {
+  "name": "Pokemon Tileset - GBA - Bu 17",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 17",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -265,6 +455,63 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_25": {
+  "name": "Pokemon Tileset - GBA - Bu 25",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 25",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_26": {
+  "name": "Pokemon Tileset - GBA - Bu 26",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 26",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_27": {
+  "name": "Pokemon Tileset - GBA - Bu 27",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 27",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_28": {
   "name": "Pokemon Tileset - GBA - Bu 28",
   "ox": 0,
@@ -278,6 +525,101 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 28",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_29": {
+  "name": "Pokemon Tileset - GBA - Bu 29",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 29",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_30": {
+  "name": "Pokemon Tileset - GBA - Bu 30",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 30",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_31": {
+  "name": "Pokemon Tileset - GBA - Bu 31",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 31",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_32": {
+  "name": "Pokemon Tileset - GBA - Bu 32",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 32",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_33": {
+  "name": "Pokemon Tileset - GBA - Bu 33",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 33",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -341,6 +683,44 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_37": {
+  "name": "Pokemon Tileset - GBA - Bu 37",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 37",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_38": {
+  "name": "Pokemon Tileset - GBA - Bu 38",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   9,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 38",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_39": {
   "name": "Pokemon Tileset - GBA - Bu 39",
   "ox": 0,
@@ -373,6 +753,63 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 40",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_41": {
+  "name": "Pokemon Tileset - GBA - Bu 41",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 41",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_42": {
+  "name": "Pokemon Tileset - GBA - Bu 42",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 42",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_43": {
+  "name": "Pokemon Tileset - GBA - Bu 43",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 43",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -813,6 +1250,44 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_69": {
+  "name": "Pokemon Tileset - GBA - Bu 69",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 69",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_70": {
+  "name": "Pokemon Tileset - GBA - Bu 70",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 70",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_71": {
   "name": "Pokemon Tileset - GBA - Bu 71",
   "ox": 0,
@@ -832,6 +1307,82 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_72": {
+  "name": "Pokemon Tileset - GBA - Bu 72",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 72",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_73": {
+  "name": "Pokemon Tileset - GBA - Bu 73",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 73",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_74": {
+  "name": "Pokemon Tileset - GBA - Bu 74",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 74",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_75": {
+  "name": "Pokemon Tileset - GBA - Bu 75",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 75",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_77": {
   "name": "Pokemon Tileset - GBA - Bu 77",
   "ox": 0,
@@ -845,6 +1396,44 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 77",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_78": {
+  "name": "Pokemon Tileset - GBA - Bu 78",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 78",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_79": {
+  "name": "Pokemon Tileset - GBA - Bu 79",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 79",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -946,6 +1535,82 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_86": {
+  "name": "Pokemon Tileset - GBA - Bu 86",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 86",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_87": {
+  "name": "Pokemon Tileset - GBA - Bu 87",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 87",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_88": {
+  "name": "Pokemon Tileset - GBA - Bu 88",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 88",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_91": {
+  "name": "Pokemon Tileset - GBA - Bu 91",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 91",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_92": {
   "name": "Pokemon Tileset - GBA - Bu 92",
   "ox": 0,
@@ -984,6 +1649,44 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_94": {
+  "name": "Pokemon Tileset - GBA - Bu 94",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 94",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_95": {
+  "name": "Pokemon Tileset - GBA - Bu 95",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 95",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_96": {
   "name": "Pokemon Tileset - GBA - Bu 96",
   "ox": 0,
@@ -997,6 +1700,25 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 96",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_97": {
+  "name": "Pokemon Tileset - GBA - Bu 97",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 97",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -1098,6 +1820,63 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_103": {
+  "name": "Pokemon Tileset - GBA - Bu 103",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 103",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_104": {
+  "name": "Pokemon Tileset - GBA - Bu 104",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 104",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_105": {
+  "name": "Pokemon Tileset - GBA - Bu 105",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 105",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_106": {
   "name": "Pokemon Tileset - GBA - Bu 106",
   "ox": 0,
@@ -1130,6 +1909,25 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 107",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_108": {
+  "name": "Pokemon Tileset - GBA - Bu 108",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   2
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 108",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -1174,6 +1972,44 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_111": {
+  "name": "Pokemon Tileset - GBA - Bu 111",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 111",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_112": {
+  "name": "Pokemon Tileset - GBA - Bu 112",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 112",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_113": {
   "name": "Pokemon Tileset - GBA - Bu 113",
   "ox": 0,
@@ -1212,6 +2048,25 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_115": {
+  "name": "Pokemon Tileset - GBA - Bu 115",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 115",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_116": {
   "name": "Pokemon Tileset - GBA - Bu 116",
   "ox": 0,
@@ -1225,6 +2080,63 @@
   ],
   "kind": "house",
   "label": "Pokemon Tileset - GBA - Bu 116",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_117": {
+  "name": "Pokemon Tileset - GBA - Bu 117",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 117",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_118": {
+  "name": "Pokemon Tileset - GBA - Bu 118",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 118",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_119": {
+  "name": "Pokemon Tileset - GBA - Bu 119",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 119",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
   "group": "Houses",
   "theme": "Town",
@@ -1266,6 +2178,25 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_123": {
+  "name": "Pokemon Tileset - GBA - Bu 123",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   11,
+   2
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 123",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_126": {
   "name": "Pokemon Tileset - GBA - Bu 126",
   "ox": 32,
@@ -1278,6 +2209,25 @@
   "kind": "prop",
   "label": "Pokemon Tileset - GBA - Bu 126",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_128": {
+  "name": "Pokemon Tileset - GBA - Bu 128",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   11,
+   2
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 128",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "Ruurule"
@@ -1336,6 +2286,25 @@
   "gen": "Gen 3",
   "artist": "Ruurule"
  },
+ "236_pokemon_tileset_gba_buil_134": {
+  "name": "Pokemon Tileset - GBA - Bu 134",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   9,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 134",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
  "236_pokemon_tileset_gba_buil_135": {
   "name": "Pokemon Tileset - GBA - Bu 135",
   "ox": 96,
@@ -1364,6 +2333,25 @@
   "kind": "prop",
   "label": "Pokemon Tileset - GBA - Bu 136",
   "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ruurule"
+ },
+ "236_pokemon_tileset_gba_buil_137": {
+  "name": "Pokemon Tileset - GBA - Bu 137",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   9,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Pokemon Tileset - GBA - Bu 137",
+  "credit": "Ruurule (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ruurule/art/Pokemon-Tileset-GBA-Buildings-848552540)",
+  "group": "Houses",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "Ruurule"

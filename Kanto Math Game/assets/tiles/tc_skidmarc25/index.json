@@ -1,0 +1,18 @@
+{
+ "338_pokemon_gen_2_hd_sprites_2": {
+  "name": "Pokemon Gen 2 HD Sprites 2",
+  "ox": 64,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Pokemon Gen 2 HD Sprites 2",
+  "credit": "SkidMarc25 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/skidmarc25/art/Pokemon-Gen-2-HD-Sprites-914449171)",
+  "group": "Trees & plants",
+  "gen": "Gen 2",
+  "artist": "SkidMarc25"
+ }
+}

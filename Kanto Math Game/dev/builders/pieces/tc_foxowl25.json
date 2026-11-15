@@ -33,7 +33,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "91_gen_3_coastal_city_tilese_19": {
    "sheet": "91_gen_3_coastal_city_tileset",
@@ -61,7 +62,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   }
  },
  "_sources": [

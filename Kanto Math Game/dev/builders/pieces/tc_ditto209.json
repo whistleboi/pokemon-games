@@ -6,7 +6,10 @@
  "sheets": {
   "314_resort_buildings": "ditto209__314_resort_buildings.png",
   "315_primoris_city": "ditto209__315_primoris_city.png",
-  "322_pewter_city_tiles_add_on": "ditto209__322_pewter_city_tiles_add_on.png"
+  "322_pewter_city_tiles_add_on": "ditto209__322_pewter_city_tiles_add_on.png",
+  "323_pewter_city_tileset_updated": "ditto209__323_pewter_city_tileset_updated.png",
+  "316_fall_collection_route_tiles": "ditto209__316_fall_collection_route_tiles.png",
+  "321_winter_tileset": "ditto209__321_winter_tileset.png"
  },
  "pieces": {
   "315_primoris_city_3": {
@@ -35,7 +38,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "322_pewter_city_tiles_add_on_5": {
    "sheet": "322_pewter_city_tiles_add_on",
@@ -64,6 +68,149 @@
    ],
    "theme": "Town",
    "gen": "Gen 3"
+  },
+  "323_pewter_city_tileset_upda_1": {
+   "sheet": "323_pewter_city_tileset_updated",
+   "blocks": [
+    [
+     0,
+     2,
+     6,
+     8
+    ]
+   ],
+   "foot": [
+    2,
+    5,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Pewter City Tileset (Updat 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "323_pewter_city_tileset_upda_14": {
+   "sheet": "323_pewter_city_tileset_updated",
+   "blocks": [
+    [
+     10,
+     68,
+     16,
+     76
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    6,
+    4
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Pewter City Tileset (Updat 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
+  },
+  "316_fall_collection_route_ti_5": {
+   "sheet": "316_fall_collection_route_tiles",
+   "blocks": [
+    [
+     6,
+     18,
+     16,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    10,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Collection (Route til 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "316_fall_collection_route_ti_8": {
+   "sheet": "316_fall_collection_route_tiles",
+   "blocks": [
+    [
+     12,
+     34,
+     15,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Collection (Route til 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "316_fall_collection_route_ti_9": {
+   "sheet": "316_fall_collection_route_tiles",
+   "blocks": [
+    [
+     13,
+     38,
+     16,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Collection (Route til 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
   }
  },
  "_sources": [
@@ -95,6 +242,21 @@
   {
    "title": "Pewter City Tiles Add On by ditto209 on DeviantArt",
    "url": "https://www.deviantart.com/ditto209/art/Pewter-City-Tiles-Add-On-419111806",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Pewter City Tileset (Updated) by ditto209 on DeviantArt",
+   "url": "https://www.deviantart.com/ditto209/art/Pewter-City-Tileset-Updated-415102004",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Fall Collection (Route tiles) by ditto209 on DeviantArt",
+   "url": "https://www.deviantart.com/ditto209/art/Fall-Collection-Route-tiles-575713086",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Winter Tileset by ditto209 on DeviantArt",
+   "url": "https://www.deviantart.com/ditto209/art/Winter-Tileset-419617260",
    "credits": "\u2749"
   }
  ]

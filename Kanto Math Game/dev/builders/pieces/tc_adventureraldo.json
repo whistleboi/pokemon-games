@@ -61,7 +61,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "342_outs_5": {
    "sheet": "342_outs",

@@ -1,0 +1,37 @@
+{
+ "89_gen_3_desert_tiles_3": {
+  "name": "Gen 3 Desert Tiles 3",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Gen 3 Desert Tiles 3",
+  "credit": "Foxowl23 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/foxowl23/art/Gen-3-Desert-Tiles-not-very-good-877456392)",
+  "group": "Houses",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "Foxowl23"
+ },
+ "89_gen_3_desert_tiles_4": {
+  "name": "Gen 3 Desert Tiles 4",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gen 3 Desert Tiles 4",
+  "credit": "Foxowl23 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/foxowl23/art/Gen-3-Desert-Tiles-not-very-good-877456392)",
+  "theme": "Desert",
+  "gen": "Gen 3",
+  "artist": "Foxowl23"
+ }
+}

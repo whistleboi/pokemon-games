@@ -8,7 +8,8 @@
   "333_ecologic_energy": "kod_3r__333_ecologic_energy.png",
   "334_dojo": "kod_3r__334_dojo.png",
   "335_new_house": "kod_3r__335_new_house.png",
-  "337_mansion": "kod_3r__337_mansion.png"
+  "337_mansion": "kod_3r__337_mansion.png",
+  "336_koder_compilation": "kod_3r__336_koder_compilation.png"
  },
  "pieces": {
   "332_other_house_0": {
@@ -506,6 +507,500 @@
    "theme": "Town",
    "gen": "Gen 3",
    "group": "Landmarks"
+  },
+  "336_koder_compilation_13": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     21,
+     14,
+     27,
+     20
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_14": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     1,
+     20,
+     6,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_15": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     7,
+     20,
+     13,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_16": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     14,
+     20,
+     20,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_17": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     21,
+     20,
+     27,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 17",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_18": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     0,
+     26,
+     6,
+     33
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    6,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 18",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_19": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     7,
+     26,
+     13,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 19",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_20": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     14,
+     26,
+     20,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 20",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_30": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     14,
+     34,
+     20,
+     40
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 30",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_31": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     6,
+     34,
+     11,
+     40
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 31",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_34": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     11,
+     35,
+     14,
+     39
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "KODER COMPILATION 34",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "336_koder_compilation_36": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     4,
+     40,
+     8,
+     44
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 36",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_46": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     2,
+     48,
+     8,
+     54
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 46",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_47": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     15,
+     54,
+     22,
+     61
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 47",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_48": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     8,
+     54,
+     14,
+     61
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 48",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "336_koder_compilation_49": {
+   "sheet": "336_koder_compilation",
+   "blocks": [
+    [
+     2,
+     54,
+     8,
+     61
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "KODER COMPILATION 49",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
   }
  },
  "_sources": [
@@ -532,6 +1027,11 @@
   {
    "title": "Mansion by KOD-3R on DeviantArt",
    "url": "https://www.deviantart.com/kod-3r/art/Mansion-327488008",
+   "credits": "\u2606"
+  },
+  {
+   "title": "KODER COMPILATION by KOD-3R on DeviantArt",
+   "url": "https://www.deviantart.com/kod-3r/art/KODER-COMPILATION-327489338",
    "credits": "\u2606"
   }
  ]

@@ -209,6 +209,8 @@ def main():
             index[pname] = {"name": ps.get("label", pname), "ox": fx * T, "oy": fy * T, "foot": [fw, fh],
                             "doors": ps.get("doors", []), "kind": ps.get("kind", "house"), "label": ps.get("label", pname),
                             "credit": spec.get("credit", "")}
+            if ps.get("walk"):                              # (walked on: stairs, path patches)
+                index[pname]["walk"] = True
             for k in ("group", "theme", "gen", "artist"):   # (the park builder's filters: the piece's own, else its set's;
                 if ps.get(k) or spec.get(k):                #  missing ones are guessed from its name)
                     index[pname][k] = ps.get(k) or spec.get(k)

@@ -30,6 +30,7 @@
   "kind": "prop",
   "label": "Fisherman's Hut Tileset 4",
   "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "Aveontrainer"
@@ -104,16 +105,17 @@
  },
  "197_farm_exterior_tileset_10": {
   "name": "Farm Exterior Tileset 10",
-  "ox": 0,
+  "ox": 64,
   "oy": 64,
   "foot": [
-   4,
+   1,
    1
   ],
   "doors": [],
-  "kind": "prop",
+  "kind": "tree",
   "label": "Farm Exterior Tileset 10",
   "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "group": "Trees & plants",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "Aveontrainer"

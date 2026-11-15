@@ -70,7 +70,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "194_fisherman_s_hut_tileset_6": {
    "sheet": "194_fisherman_s_hut_tileset",
@@ -199,13 +200,13 @@
     ]
    ],
    "foot": [
-    0,
     2,
-    4,
+    2,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "Farm Exterior Tileset 10",
    "touches": [
     "top",
@@ -214,7 +215,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Trees & plants"
   },
   "197_farm_exterior_tileset_11": {
    "sheet": "197_farm_exterior_tileset",

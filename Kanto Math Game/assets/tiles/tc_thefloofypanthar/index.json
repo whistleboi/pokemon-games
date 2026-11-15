@@ -1,0 +1,181 @@
+{
+ "343_bw_spring_tileset_versio_7": {
+  "name": "BW Spring Tileset version  7",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "BW Spring Tileset version  7",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_8": {
+  "name": "BW Spring Tileset version  8",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "BW Spring Tileset version  8",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_13": {
+  "name": "BW Spring Tileset version  13",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "BW Spring Tileset version  13",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_15": {
+  "name": "BW Spring Tileset version  15",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "BW Spring Tileset version  15",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "group": "Rocks",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_16": {
+  "name": "BW Spring Tileset version  16",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "BW Spring Tileset version  16",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_39": {
+  "name": "BW Spring Tileset version  39",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   10,
+   6
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "BW Spring Tileset version  39",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_40": {
+  "name": "BW Spring Tileset version  40",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "BW Spring Tileset version  40",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "group": "Rocks",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_60": {
+  "name": "BW Spring Tileset version  60",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "BW Spring Tileset version  60",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_61": {
+  "name": "BW Spring Tileset version  61",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "BW Spring Tileset version  61",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_64": {
+  "name": "BW Spring Tileset version  64",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "BW Spring Tileset version  64",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ },
+ "343_bw_spring_tileset_versio_67": {
+  "name": "BW Spring Tileset version  67",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "BW Spring Tileset version  67",
+  "credit": "TheFloofyPanthar (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/thefloofypanthar/art/BW-Spring-Tileset-version-2-WIP-817532857)",
+  "gen": "Gen 5",
+  "artist": "TheFloofyPanthar"
+ }
+}

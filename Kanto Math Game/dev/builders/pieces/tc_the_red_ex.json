@@ -6,7 +6,10 @@
  "sheets": {
   "328_remake_old_style_new_tile_5": "the_red_ex__328_remake_old_style_new_tile_5.png",
   "329_remake_old_style_new_tile_4": "the_red_ex__329_remake_old_style_new_tile_4.png",
-  "330_remake_old_style_new_tile_2": "the_red_ex__330_remake_old_style_new_tile_2.png"
+  "330_remake_old_style_new_tile_2": "the_red_ex__330_remake_old_style_new_tile_2.png",
+  "325_gd_tileset_stadt_boden_grab": "the_red_ex__325_gd_tileset_stadt_boden_grab.png",
+  "331_public_tileset": "the_red_ex__331_public_tileset.png",
+  "326_gd_tileset_gebirge": "the_red_ex__326_gd_tileset_gebirge.png"
  },
  "pieces": {
   "328_remake_old_style_new_til_1": {
@@ -235,13 +238,13 @@
     ]
    ],
    "foot": [
-    0,
+    2,
     4,
-    5,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "Remake - Old style, new Ti 3",
    "touches": [
     "top",
@@ -250,7 +253,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Trees & plants"
   },
   "330_remake_old_style_new_til_4": {
    "sheet": "330_remake_old_style_new_tile_2",
@@ -263,13 +267,13 @@
     ]
    ],
    "foot": [
-    0,
+    1,
     2,
-    3,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "Remake - Old style, new Ti 4",
    "touches": [
     "top",
@@ -278,6 +282,182 @@
     "right"
    ],
    "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "325_gd_tileset_stadt_boden_g_1": {
+   "sheet": "325_gd_tileset_stadt_boden_grab",
+   "blocks": [
+    [
+     21,
+     0,
+     28,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "GD - Tileset - Stadt Boden 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "325_gd_tileset_stadt_boden_g_2": {
+   "sheet": "325_gd_tileset_stadt_boden_grab",
+   "blocks": [
+    [
+     10,
+     0,
+     21,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    6,
+    7,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "GD - Tileset - Stadt Boden 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "325_gd_tileset_stadt_boden_g_3": {
+   "sheet": "325_gd_tileset_stadt_boden_grab",
+   "blocks": [
+    [
+     10,
+     7,
+     16,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "GD - Tileset - Stadt Boden 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "331_public_tileset_2": {
+   "sheet": "331_public_tileset",
+   "blocks": [
+    [
+     0,
+     0,
+     9,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    9,
+    3
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "Public Tileset 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Houses"
+  },
+  "331_public_tileset_7": {
+   "sheet": "331_public_tileset",
+   "blocks": [
+    [
+     1,
+     20,
+     10,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    9,
+    3
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "Public Tileset 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 5",
+   "group": "Houses"
+  },
+  "326_gd_tileset_gebirge_0": {
+   "sheet": "326_gd_tileset_gebirge",
+   "blocks": [
+    [
+     13,
+     0,
+     24,
+     13
+    ]
+   ],
+   "foot": [
+    0,
+    12,
+    11,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "GD - Tileset - Gebirge 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Mountain",
    "gen": "Gen 3"
   }
  },
@@ -296,6 +476,21 @@
    "title": "Remake - Old style, new Tile' (2) by The-Red-eX on DeviantArt",
    "url": "https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-2-432892162",
    "credits": "\u2606"
+  },
+  {
+   "title": "GD - Tileset - Stadt Boden - Grab by The-Red-eX on DeviantArt",
+   "url": "https://www.deviantart.com/the-red-ex/art/GD-Tileset-Stadt-Boden-Grab-435409771",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Public Tileset by The-Red-eX on DeviantArt",
+   "url": "https://www.deviantart.com/the-red-ex/art/Public-Tileset-347956199",
+   "credits": "\u2749"
+  },
+  {
+   "title": "GD - Tileset - Gebirge by The-Red-eX on DeviantArt",
+   "url": "https://www.deviantart.com/the-red-ex/art/GD-Tileset-Gebirge-435409690",
+   "credits": "\u2749"
   }
  ]
 }

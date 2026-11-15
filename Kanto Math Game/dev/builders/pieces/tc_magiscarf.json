@@ -12,7 +12,12 @@
   "82_victorian_variations": "magiscarf__82_victorian_variations.png",
   "86_terraces_2_0": "magiscarf__86_terraces_2_0.png",
   "87_terraces": "magiscarf__87_terraces.png",
-  "81_city_tiles": "magiscarf__81_city_tiles.png"
+  "81_city_tiles": "magiscarf__81_city_tiles.png",
+  "83_free_new_tiles_mastersheet": "magiscarf__83_free_new_tiles_mastersheet.png",
+  "88_bunch_o_free_tiles": "magiscarf__88_bunch_o_free_tiles.png",
+  "72_concrete_tiles": "magiscarf__72_concrete_tiles.png",
+  "78_further_additional_more_tiles": "magiscarf__78_further_additional_more_tiles.png",
+  "85_freebies": "magiscarf__85_freebies.png"
  },
  "pieces": {
   "73_subterranean_suburbia_0": {
@@ -1038,6 +1043,316 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "74_buildings_tiles_w_snow_40": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     2,
+     26,
+     7,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 40",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_41": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     8,
+     26,
+     13,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 41",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_42": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     14,
+     26,
+     19,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    4
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 42",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_43": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     20,
+     26,
+     25,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    4
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 43",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_44": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     26,
+     26,
+     33,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    7,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 44",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_45": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     53,
+     26,
+     58,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 45",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_46": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     59,
+     26,
+     64,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 46",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_47": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     65,
+     26,
+     70,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    4
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 47",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_48": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     71,
+     26,
+     76,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    4
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 48",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_49": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     77,
+     26,
+     84,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    7,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 49",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "74_buildings_tiles_w_snow_50": {
    "sheet": "74_buildings_tiles_w_snow",
    "blocks": [
@@ -1100,6 +1415,130 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "74_buildings_tiles_w_snow_52": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     32,
+     35,
+     37,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 52",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_53": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     83,
+     35,
+     88,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 53",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_54": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     2,
+     36,
+     7,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 54",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_55": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     14,
+     36,
+     19,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 55",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "74_buildings_tiles_w_snow_56": {
    "sheet": "74_buildings_tiles_w_snow",
    "blocks": [
@@ -1131,6 +1570,161 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "74_buildings_tiles_w_snow_57": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     26,
+     36,
+     31,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 57",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_58": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     38,
+     36,
+     43,
+     43
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 58",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_59": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     44,
+     36,
+     49,
+     43
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 59",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_60": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     53,
+     36,
+     58,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 60",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_61": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     65,
+     36,
+     70,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 61",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "74_buildings_tiles_w_snow_62": {
    "sheet": "74_buildings_tiles_w_snow",
    "blocks": [
@@ -1152,6 +1746,99 @@
    ],
    "kind": "house",
    "label": "Buildings Tiles w/ Snow 62",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_63": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     77,
+     36,
+     82,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 63",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_64": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     89,
+     36,
+     94,
+     43
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 64",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_65": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     95,
+     36,
+     100,
+     43
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 65",
    "touches": [
     "top",
     "bottom",
@@ -1255,6 +1942,99 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "74_buildings_tiles_w_snow_69": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     83,
+     42,
+     88,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 69",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_70": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     2,
+     43,
+     7,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 70",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_71": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     14,
+     43,
+     19,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 71",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "74_buildings_tiles_w_snow_72": {
    "sheet": "74_buildings_tiles_w_snow",
    "blocks": [
@@ -1286,6 +2066,161 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "74_buildings_tiles_w_snow_73": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     26,
+     43,
+     31,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 73",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_74": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     38,
+     43,
+     43,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 74",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_75": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     44,
+     43,
+     49,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 75",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_76": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     53,
+     43,
+     58,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 76",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_77": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     65,
+     43,
+     70,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 77",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "74_buildings_tiles_w_snow_78": {
    "sheet": "74_buildings_tiles_w_snow",
    "blocks": [
@@ -1307,6 +2242,99 @@
    ],
    "kind": "house",
    "label": "Buildings Tiles w/ Snow 78",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_79": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     77,
+     43,
+     82,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 79",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_80": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     89,
+     43,
+     94,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 80",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "74_buildings_tiles_w_snow_81": {
+   "sheet": "74_buildings_tiles_w_snow",
+   "blocks": [
+    [
+     95,
+     43,
+     100,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Buildings Tiles w/ Snow 81",
    "touches": [
     "top",
     "bottom",
@@ -1650,7 +2678,39 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "75_snow_and_stone_28": {
+   "sheet": "75_snow_and_stone",
+   "blocks": [
+    [
+     29,
+     15,
+     32,
+     18
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Snow and Stone 28",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
   },
   "76_free_rustic_tiles_w_updat_0": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -1691,13 +2751,13 @@
     ]
    ],
    "foot": [
-    0,
+    1,
     6,
-    4,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "[Free] Rustic Tiles w/ upd 1",
    "touches": [
     "top",
@@ -1706,7 +2766,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Trees & plants"
   },
   "76_free_rustic_tiles_w_updat_2": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -1861,13 +2922,13 @@
     ]
    ],
    "foot": [
-    0,
+    1,
     4,
-    4,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "[Free] Rustic Tiles w/ upd 7",
    "touches": [
     "top",
@@ -1876,7 +2937,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Trees & plants"
   },
   "76_free_rustic_tiles_w_updat_8": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -2314,7 +3376,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "76_free_rustic_tiles_w_updat_57": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -2342,7 +3405,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "76_free_rustic_tiles_w_updat_60": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -2442,13 +3506,13 @@
     ]
    ],
    "foot": [
-    0,
+    3,
     6,
-    6,
+    1,
     1
    ],
    "doors": [],
-   "kind": "prop",
+   "kind": "tree",
    "label": "[Free] Rustic Tiles w/ upd 73",
    "touches": [
     "top",
@@ -2457,7 +3521,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Trees & plants"
   },
   "76_free_rustic_tiles_w_updat_74": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -2597,7 +3662,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "76_free_rustic_tiles_w_updat_94": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -2625,7 +3691,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "76_free_rustic_tiles_w_updat_95": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -2653,7 +3720,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "76_free_rustic_tiles_w_updat_96": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -2765,7 +3833,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "76_free_rustic_tiles_w_updat_105": {
    "sheet": "76_free_rustic_tiles_w_updates",
@@ -3171,6 +4240,37 @@
    "theme": "Town",
    "gen": "Gen 3"
   },
+  "80_frlg_style_house_0": {
+   "sheet": "80_frlg_style_house",
+   "blocks": [
+    [
+     1,
+     1,
+     9,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "FRLG style house 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
   "80_frlg_style_house_1": {
    "sheet": "80_frlg_style_house",
    "blocks": [
@@ -3192,6 +4292,37 @@
    ],
    "kind": "house",
    "label": "FRLG style house 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "80_frlg_style_house_2": {
+   "sheet": "80_frlg_style_house",
+   "blocks": [
+    [
+     11,
+     7,
+     14,
+     10
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "FRLG style house 2",
    "touches": [
     "top",
     "bottom",
@@ -3419,6 +4550,37 @@
    "gen": "Gen 3",
    "group": "Houses"
   },
+  "81_city_tiles_0": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     4,
+     0,
+     7,
+     5
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "City Tiles 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
+  },
   "81_city_tiles_3": {
    "sheet": "81_city_tiles",
    "blocks": [
@@ -3448,6 +4610,67 @@
    "gen": "Gen 3",
    "group": "Trees & plants"
   },
+  "81_city_tiles_4": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     14,
+     1,
+     16,
+     3
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": false,
+   "group": "Paths & ground",
+   "label": "Water (City Tiles) 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Water",
+   "gen": "Gen 3"
+  },
+  "81_city_tiles_5": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     17,
+     1,
+     20,
+     4
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "City Tiles 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
+  },
   "81_city_tiles_11": {
    "sheet": "81_city_tiles",
    "blocks": [
@@ -3475,6 +4698,37 @@
    ],
    "theme": "Town",
    "gen": "Gen 3"
+  },
+  "81_city_tiles_21": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     1,
+     8,
+     9,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    8,
+    2
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "City Tiles 21",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
   },
   "81_city_tiles_22": {
    "sheet": "81_city_tiles",
@@ -3532,6 +4786,68 @@
    "theme": "Town",
    "gen": "Gen 3"
   },
+  "81_city_tiles_27": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     24,
+     8,
+     27,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "City Tiles 27",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
+  },
+  "81_city_tiles_28": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     28,
+     8,
+     31,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "City Tiles 28",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
+  },
   "81_city_tiles_30": {
    "sheet": "81_city_tiles",
    "blocks": [
@@ -3587,6 +4903,68 @@
    ],
    "theme": "Town",
    "gen": "Gen 3"
+  },
+  "81_city_tiles_32": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     18,
+     12,
+     24,
+     18
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "City Tiles 32",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
+  },
+  "81_city_tiles_33": {
+   "sheet": "81_city_tiles",
+   "blocks": [
+    [
+     25,
+     12,
+     31,
+     18
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "City Tiles 33",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
   },
   "81_city_tiles_34": {
    "sheet": "81_city_tiles",
@@ -3811,6 +5189,8428 @@
    ],
    "theme": "Town",
    "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_0": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     1,
+     0,
+     5,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_1": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     5,
+     0,
+     9,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_2": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     9,
+     0,
+     13,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_3": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     13,
+     0,
+     17,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_4": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     17,
+     0,
+     21,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_5": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     21,
+     0,
+     25,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_6": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     25,
+     0,
+     29,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_7": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     29,
+     0,
+     33,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_8": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     33,
+     0,
+     37,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_9": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     37,
+     0,
+     41,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_10": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     41,
+     0,
+     45,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_11": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     45,
+     0,
+     49,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_12": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     49,
+     0,
+     53,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_13": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     53,
+     0,
+     57,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_14": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     57,
+     0,
+     61,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_15": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     61,
+     0,
+     65,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_16": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     67,
+     4,
+     70,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_18": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     8,
+     18,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 18",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_19": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     18,
+     8,
+     26,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 19",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_20": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     26,
+     8,
+     32,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    6,
+    4
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 20",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_21": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     51,
+     8,
+     57,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 21",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_22": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     58,
+     8,
+     65,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    7,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 22",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_23": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     66,
+     8,
+     73,
+     11
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 23",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_24": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     74,
+     8,
+     81,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 24",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_29": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     33,
+     8,
+     37,
+     15
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 29",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_30": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     37,
+     8,
+     41,
+     15
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 30",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_31": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     41,
+     8,
+     45,
+     15
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 31",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_32": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     45,
+     8,
+     49,
+     15
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 32",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_33": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     83,
+     8,
+     86,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 33",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_34": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     91,
+     8,
+     94,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 34",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_37": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     51,
+     13,
+     57,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 37",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_38": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     59,
+     13,
+     65,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 38",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_39": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     67,
+     13,
+     73,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 39",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_40": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     75,
+     13,
+     81,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 40",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_41": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     86,
+     13,
+     89,
+     17
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 41",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_42": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     94,
+     13,
+     97,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 42",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_43": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     83,
+     13,
+     86,
+     16
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 43",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_44": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     91,
+     13,
+     94,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 44",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_47": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     33,
+     16,
+     37,
+     22
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 47",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_48": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     37,
+     16,
+     41,
+     22
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 48",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_49": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     41,
+     16,
+     45,
+     22
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 49",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_50": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     45,
+     16,
+     49,
+     22
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 50",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_56": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     14,
+     17,
+     18,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 56",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_57": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     18,
+     17,
+     22,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 57",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_60": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     18,
+     13,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 60",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_61": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     51,
+     18,
+     57,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 61",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_62": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     58,
+     18,
+     65,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    7,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": false,
+   "group": "Paths & ground",
+   "label": "Water ([Free] New Tiles Mas) 62",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Water",
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_72": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     83,
+     18,
+     86,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 72",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_73": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     96,
+     18,
+     99,
+     21
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 73",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_81": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     23,
+     13,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 81",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_85": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     58,
+     23,
+     65,
+     26
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 85",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_97": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     14,
+     25,
+     17,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 97",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_98": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     17,
+     25,
+     20,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 98",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_101": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     25,
+     26,
+     28,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 101",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_104": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     50,
+     27,
+     54,
+     30
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 104",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_105": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     22,
+     27,
+     25,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 105",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_106": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     28,
+     27,
+     31,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 106",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_107": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     19,
+     27,
+     22,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 107",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_108": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     28,
+     13,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 108",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_122": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     14,
+     31,
+     20,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 122",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_128": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     33,
+     13,
+     37
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 128",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_144": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     30,
+     35,
+     35,
+     40
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 144",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_146": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     14,
+     36,
+     20,
+     40
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 146",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_154": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     38,
+     13,
+     42
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 154",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_155": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     24,
+     38,
+     30,
+     46
+    ]
+   ],
+   "foot": [
+    0,
+    7,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 155",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_158": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     20,
+     39,
+     23,
+     43
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 158",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_164": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     57,
+     41,
+     61,
+     52
+    ]
+   ],
+   "foot": [
+    2,
+    10,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 164",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_165": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     61,
+     41,
+     65,
+     52
+    ]
+   ],
+   "foot": [
+    2,
+    10,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 165",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_166": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     65,
+     41,
+     69,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    10,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 166",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_167": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     69,
+     41,
+     73,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    10,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 167",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_168": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     73,
+     41,
+     77,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    10,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 168",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_169": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     77,
+     41,
+     81,
+     52
+    ]
+   ],
+   "foot": [
+    0,
+    10,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 169",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_172": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     42,
+     42,
+     48,
+     46
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 172",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_177": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     43,
+     13,
+     47
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 177",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_188": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     19,
+     47,
+     25,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 188",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_190": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     37,
+     47,
+     43,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 190",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_191": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     13,
+     47,
+     16,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 191",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_192": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     16,
+     47,
+     19,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 192",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_193": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     31,
+     47,
+     34,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 193",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_194": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     34,
+     47,
+     37,
+     50
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 194",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_205": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     86,
+     49,
+     88,
+     51
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": false,
+   "group": "Paths & ground",
+   "label": "Water ([Free] New Tiles Mas) 205",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Water",
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_206": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     99,
+     49,
+     101,
+     51
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": false,
+   "group": "Paths & ground",
+   "label": "Water ([Free] New Tiles Mas) 206",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Water",
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_212": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     18,
+     50,
+     22,
+     53
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 212",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_214": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     36,
+     50,
+     40,
+     53
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 214",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_223": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     57,
+     52,
+     61,
+     56
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 223",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_224": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     61,
+     52,
+     65,
+     56
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 224",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_225": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     65,
+     52,
+     69,
+     56
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 225",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_226": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     69,
+     52,
+     73,
+     56
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 226",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_227": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     73,
+     52,
+     77,
+     56
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 227",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_228": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     77,
+     52,
+     81,
+     56
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 228",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_232": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     1,
+     56,
+     5,
+     61
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 232",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_236": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     57,
+     56,
+     61,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 236",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_237": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     61,
+     56,
+     65,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 237",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_238": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     65,
+     56,
+     69,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 238",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_239": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     69,
+     56,
+     73,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 239",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_240": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     73,
+     56,
+     77,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 240",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_241": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     77,
+     56,
+     81,
+     59
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 241",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_245": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     58,
+     14,
+     61
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 245",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_249": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     42,
+     59,
+     46,
+     63
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 249",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_250": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     57,
+     60,
+     61,
+     63
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 250",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_251": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     61,
+     60,
+     65,
+     63
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 251",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_252": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     65,
+     60,
+     69,
+     63
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 252",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_253": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     69,
+     60,
+     73,
+     63
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 253",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_254": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     73,
+     60,
+     77,
+     63
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 254",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_255": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     77,
+     60,
+     81,
+     63
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 255",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_258": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     15,
+     61,
+     23,
+     65
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    8,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 258",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_260": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     61,
+     14,
+     64
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 260",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_264": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     38,
+     62,
+     41,
+     66
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 264",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_271": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     64,
+     14,
+     67
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 271",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_276": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     6,
+     66,
+     9,
+     70
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 276",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_281": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     101,
+     66,
+     104,
+     69
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 281",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_282": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     26,
+     67,
+     30,
+     71
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 282",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_283": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     32,
+     67,
+     35,
+     73
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 283",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_285": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     15,
+     68,
+     18,
+     79
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    3,
+    6
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 285",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_286": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     19,
+     68,
+     24,
+     78
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    5,
+    5
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 286",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_291": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     71,
+     13,
+     77
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 291",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_292": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     26,
+     71,
+     30,
+     75
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 292",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_293": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     0,
+     72,
+     5,
+     82
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    5,
+    5
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 293",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_297": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     82,
+     76,
+     88,
+     82
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 297",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_298": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     94,
+     76,
+     100,
+     82
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 298",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_299": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     5,
+     78,
+     8,
+     82
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 299",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_300": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     82,
+     83,
+     89,
+     96
+    ]
+   ],
+   "foot": [
+    0,
+    12,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 300",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_301": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     90,
+     83,
+     93,
+     87
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 301",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_304": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     101,
+     83,
+     107,
+     87
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 304",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_308": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     1,
+     84,
+     5,
+     89
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 308",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_314": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     86,
+     14,
+     89
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 314",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_315": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     89,
+     88,
+     93,
+     91
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 315",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_317": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     101,
+     88,
+     107,
+     92
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 317",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_320": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     15,
+     89,
+     23,
+     93
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    8,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 320",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_322": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     89,
+     14,
+     92
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 322",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_326": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     89,
+     92,
+     93,
+     99
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    4
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 326",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_327": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     92,
+     14,
+     95
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 327",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_330": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     39,
+     93,
+     49,
+     106
+    ]
+   ],
+   "foot": [
+    0,
+    7,
+    10,
+    6
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 330",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_331": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     49,
+     93,
+     56,
+     96
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    7,
+    2
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 331",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_332": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     60,
+     93,
+     70,
+     106
+    ]
+   ],
+   "foot": [
+    0,
+    7,
+    10,
+    6
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 332",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_333": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     70,
+     93,
+     77,
+     96
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    7,
+    2
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 333",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_334": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     94,
+     93,
+     98,
+     98
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 334",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_335": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     98,
+     93,
+     102,
+     98
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 335",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_337": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     6,
+     94,
+     9,
+     98
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 337",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_339": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     26,
+     95,
+     30,
+     99
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 339",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_340": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     32,
+     95,
+     35,
+     101
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 340",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_342": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     15,
+     96,
+     18,
+     107
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    3,
+    6
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 342",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_343": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     19,
+     96,
+     24,
+     106
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    5,
+    5
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 343",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_345": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     49,
+     96,
+     57,
+     105
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 345",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_346": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     70,
+     96,
+     78,
+     105
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 346",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_347": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     94,
+     98,
+     98,
+     103
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 347",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_348": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     98,
+     98,
+     102,
+     103
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 348",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "83_free_new_tiles_mastershee_350": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     10,
+     99,
+     13,
+     105
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    3
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 350",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_351": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     26,
+     99,
+     30,
+     103
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 351",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "83_free_new_tiles_mastershee_352": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     0,
+     100,
+     5,
+     110
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    5,
+    5
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 352",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_356": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     5,
+     106,
+     8,
+     110
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 356",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_357": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     37,
+     106,
+     40,
+     109
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 357",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_358": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     41,
+     106,
+     46,
+     109
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 358",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_359": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     47,
+     106,
+     51,
+     109
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 359",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_360": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     52,
+     106,
+     56,
+     109
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "[Free] New Tiles Mastershe 360",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "83_free_new_tiles_mastershee_361": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     58,
+     106,
+     61,
+     109
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 361",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_362": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     62,
+     106,
+     67,
+     109
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 362",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_363": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     68,
+     106,
+     72,
+     109
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "[Free] New Tiles Mastershe 363",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "83_free_new_tiles_mastershee_364": {
+   "sheet": "83_free_new_tiles_mastersheet",
+   "blocks": [
+    [
+     73,
+     106,
+     77,
+     109
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "[Free] New Tiles Mastershe 364",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_4": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     41,
+     0,
+     47,
+     5
+    ]
+   ],
+   "foot": [
+    2,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_11": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     47,
+     0,
+     50,
+     6
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "88_bunch_o_free_tiles_15": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     37,
+     4,
+     41,
+     11
+    ]
+   ],
+   "foot": [
+    1,
+    6,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_17": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     41,
+     7,
+     45,
+     11
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 17",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_20": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     51,
+     9,
+     56,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 20",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "88_bunch_o_free_tiles_22": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     37,
+     11,
+     43,
+     15
+    ]
+   ],
+   "foot": [
+    2,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 22",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_23": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     44,
+     12,
+     49,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    5,
+    5
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 23",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_28": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     57,
+     16,
+     61,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 28",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_29": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     50,
+     16,
+     54,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 29",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_33": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     37,
+     21,
+     41,
+     24
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 33",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_35": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     57,
+     22,
+     61,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 35",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "88_bunch_o_free_tiles_36": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     50,
+     22,
+     54,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 36",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "88_bunch_o_free_tiles_40": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     28,
+     25,
+     32,
+     29
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 40",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_41": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     33,
+     25,
+     37,
+     29
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    4,
+    4
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Paving (Bunch o' free tiles) 41",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_42": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     38,
+     25,
+     41,
+     29
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    4
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Snow (Bunch o' free tiles) 42",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Snow",
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_43": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     21,
+     25,
+     24,
+     29
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 43",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_46": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     42,
+     26,
+     45,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 46",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "88_bunch_o_free_tiles_47": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     46,
+     26,
+     50,
+     30
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 47",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_57": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     55,
+     33,
+     60,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 57",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_60": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     17,
+     34,
+     23,
+     39
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 60",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_61": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     24,
+     34,
+     30,
+     37
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 61",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "88_bunch_o_free_tiles_63": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     24,
+     38,
+     30,
+     41
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 63",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_70": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     13,
+     40,
+     16,
+     43
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 70",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_75": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     27,
+     42,
+     30,
+     45
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 75",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_76": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     17,
+     43,
+     20,
+     46
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 76",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_77": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     4,
+     44,
+     6,
+     46
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": false,
+   "group": "Paths & ground",
+   "label": "Water (Bunch o' free tiles) 77",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Water",
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_81": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     40,
+     46,
+     46,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    6,
+    6,
+    6
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 81",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_83": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     24,
+     47,
+     32,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    6,
+    8,
+    5
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 83",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_84": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     16,
+     48,
+     24,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    6,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 84",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_85": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     0,
+     49,
+     8,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 85",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_86": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     8,
+     49,
+     16,
+     58
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 86",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_87": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     32,
+     50,
+     40,
+     57
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    8,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 87",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_88": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     0,
+     59,
+     8,
+     70
+    ]
+   ],
+   "foot": [
+    2,
+    10,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 88",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "88_bunch_o_free_tiles_89": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     8,
+     59,
+     16,
+     70
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    7,
+    6
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 89",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_91": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     32,
+     59,
+     42,
+     68
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    10,
+    4
+   ],
+   "doors": [
+    4
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 91",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_92": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     42,
+     59,
+     50,
+     68
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    8,
+    4
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 92",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_94": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     56,
+     61,
+     62,
+     67
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 94",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_95": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     50,
+     63,
+     55,
+     67
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 95",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3"
+  },
+  "88_bunch_o_free_tiles_96": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     56,
+     67,
+     62,
+     73
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 96",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_97": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     51,
+     68,
+     56,
+     73
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 97",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_98": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     1,
+     72,
+     5,
+     76
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 98",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_99": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     9,
+     72,
+     13,
+     78
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 99",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_100": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     5,
+     73,
+     9,
+     78
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Bunch o' free tiles 100",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "88_bunch_o_free_tiles_101": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     14,
+     73,
+     17,
+     76
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Bunch o' free tiles 101",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "88_bunch_o_free_tiles_102": {
+   "sheet": "88_bunch_o_free_tiles",
+   "blocks": [
+    [
+     26,
+     73,
+     31,
+     76
+    ]
+   ],
+   "foot": [
+    2,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Bunch o' free tiles 102",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "72_concrete_tiles_5": {
+   "sheet": "72_concrete_tiles",
+   "blocks": [
+    [
+     6,
+     18,
+     8,
+     19
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Concrete Tiles 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "72_concrete_tiles_6": {
+   "sheet": "72_concrete_tiles",
+   "blocks": [
+    [
+     0,
+     20,
+     3,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Concrete Tiles 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "72_concrete_tiles_7": {
+   "sheet": "72_concrete_tiles",
+   "blocks": [
+    [
+     3,
+     20,
+     6,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Concrete Tiles 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "72_concrete_tiles_10": {
+   "sheet": "72_concrete_tiles",
+   "blocks": [
+    [
+     0,
+     23,
+     3,
+     25
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Concrete Tiles 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_5": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     7,
+     0,
+     10,
+     3
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_6": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     10,
+     4,
+     13,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Further Additional More Ti 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "78_further_additional_more_t_7": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     4,
+     17,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_8": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     17,
+     4,
+     20,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_9": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     7,
+     4,
+     10,
+     7
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Further Additional More Ti 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "78_further_additional_more_t_10": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     10,
+     8,
+     13,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Further Additional More Ti 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "78_further_additional_more_t_11": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     8,
+     17,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_12": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     17,
+     8,
+     20,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_13": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     7,
+     8,
+     10,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_14": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     44,
+     12,
+     46,
+     14
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Dirt path (Further Additional M) 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_15": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     12,
+     17,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_16": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     20,
+     12,
+     23,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 16",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_17": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     41,
+     12,
+     44,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 17",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_18": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     17,
+     12,
+     20,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 18",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_20": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     23,
+     13,
+     26,
+     14
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 20",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_21": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     26,
+     13,
+     29,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 21",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_22": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     29,
+     13,
+     32,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 22",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_23": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     32,
+     13,
+     35,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 23",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_24": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     35,
+     13,
+     38,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 24",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_25": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     8,
+     13,
+     14,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 25",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_26": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     8,
+     15,
+     14,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 26",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_27": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     16,
+     17,
+     19
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 27",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_28": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     20,
+     16,
+     23,
+     19
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 28",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_29": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     17,
+     16,
+     20,
+     19
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 29",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_30": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     23,
+     17,
+     26,
+     18
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 30",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_32": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     47,
+     18,
+     53,
+     20
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    6,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 32",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_33": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     41,
+     18,
+     43,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 33",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_34": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     44,
+     18,
+     46,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 34",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_35": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     17,
+     19,
+     20,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 35",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_36": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     19,
+     16,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 36",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_37": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     21,
+     19,
+     23,
+     22
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 37",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_40": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     5,
+     21,
+     7,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Further Additional More Ti 40",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "78_further_additional_more_t_42": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     0,
+     22,
+     1,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 42",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_43": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     8,
+     22,
+     9,
+     23
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 43",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_44": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     1,
+     24,
+     6,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 44",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_45": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     8,
+     24,
+     13,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 45",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_46": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     20,
+     24,
+     23,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 46",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_47": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     33,
+     24,
+     37,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 47",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_48": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     37,
+     24,
+     41,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 48",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_49": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     26,
+     24,
+     28,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 49",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_50": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     28,
+     24,
+     30,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 50",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_51": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     30,
+     24,
+     33,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 51",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_52": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     41,
+     24,
+     44,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 52",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_53": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     44,
+     24,
+     46,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 53",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_54": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     46,
+     24,
+     48,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 54",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_55": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     24,
+     16,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 55",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_56": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     16,
+     24,
+     18,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 56",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_57": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     0,
+     28,
+     7,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Further Additional More Ti 57",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "78_further_additional_more_t_58": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     7,
+     28,
+     14,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    7,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Further Additional More Ti 58",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "78_further_additional_more_t_59": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     28,
+     19,
+     31
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 59",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_60": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     26,
+     28,
+     29,
+     31
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 60",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_61": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     20,
+     29,
+     23,
+     33
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Further Additional More Ti 61",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "78_further_additional_more_t_62": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     29,
+     29,
+     32,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 62",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_63": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     32,
+     29,
+     35,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 63",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_64": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     35,
+     29,
+     38,
+     30
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 64",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_65": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     14,
+     31,
+     19,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 65",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_66": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     33,
+     31,
+     37,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 66",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_67": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     37,
+     31,
+     41,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 67",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_68": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     26,
+     31,
+     28,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 68",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_69": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     28,
+     31,
+     30,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 69",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_70": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     30,
+     31,
+     33,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 70",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_71": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     41,
+     31,
+     44,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 71",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_72": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     44,
+     31,
+     46,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 72",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_73": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     46,
+     31,
+     48,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 73",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_74": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     20,
+     33,
+     23,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 74",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_77": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     15,
+     34,
+     18,
+     36
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 77",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_78": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     1,
+     34,
+     4,
+     36
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 78",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_79": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     4,
+     34,
+     7,
+     36
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 79",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_80": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     7,
+     34,
+     10,
+     36
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 80",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_81": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     10,
+     34,
+     13,
+     36
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 81",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_82": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     26,
+     35,
+     29,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 82",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_83": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     20,
+     36,
+     23,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 83",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_84": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     29,
+     36,
+     32,
+     37
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 84",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_85": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     32,
+     36,
+     35,
+     37
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 85",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_86": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     35,
+     36,
+     38,
+     37
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 86",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_87": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     1,
+     36,
+     4,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 87",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_88": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     4,
+     36,
+     7,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 88",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_89": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     7,
+     36,
+     10,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 89",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_90": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     10,
+     36,
+     13,
+     38
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 90",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "78_further_additional_more_t_91": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     15,
+     36,
+     18,
+     39
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 91",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "78_further_additional_more_t_93": {
+   "sheet": "78_further_additional_more_tiles",
+   "blocks": [
+    [
+     26,
+     39,
+     30,
+     51
+    ]
+   ],
+   "foot": [
+    0,
+    11,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Further Additional More Ti 93",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "85_freebies_1": {
+   "sheet": "85_freebies",
+   "blocks": [
+    [
+     0,
+     6,
+     4,
+     10
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Freebies 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "85_freebies_4": {
+   "sheet": "85_freebies",
+   "blocks": [
+    [
+     13,
+     7,
+     16,
+     10
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Freebies 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "85_freebies_5": {
+   "sheet": "85_freebies",
+   "blocks": [
+    [
+     14,
+     10,
+     16,
+     11
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Freebies 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "85_freebies_6": {
+   "sheet": "85_freebies",
+   "blocks": [
+    [
+     0,
+     10,
+     2,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Freebies 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "85_freebies_7": {
+   "sheet": "85_freebies",
+   "blocks": [
+    [
+     2,
+     10,
+     4,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Freebies 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "85_freebies_8": {
+   "sheet": "85_freebies",
+   "blocks": [
+    [
+     13,
+     10,
+     14,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Freebies 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "85_freebies_10": {
+   "sheet": "85_freebies",
+   "blocks": [
+    [
+     15,
+     11,
+     16,
+     12
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Freebies 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
   }
  },
  "_sources": [
@@ -3863,6 +13663,31 @@
    "title": "City Tiles by Magiscarf on DeviantArt",
    "url": "https://www.deviantart.com/magiscarf/art/City-Tiles-702589704",
    "credits": "\u2749"
+  },
+  {
+   "title": "[Free] New Tiles Mastersheet by Magiscarf on DeviantArt",
+   "url": "https://www.deviantart.com/magiscarf/art/Free-New-Tiles-Mastersheet-648639390",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Bunch o' free tiles by Magiscarf on DeviantArt",
+   "url": "https://www.deviantart.com/magiscarf/art/Bunch-o-free-tiles-393827416",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Concrete Tiles by Magiscarf on DeviantArt",
+   "url": "https://www.deviantart.com/magiscarf/art/Concrete-Tiles-1108031997",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Further Additional More Tiles by Magiscarf on DeviantArt",
+   "url": "https://www.deviantart.com/magiscarf/art/Further-Additional-More-Tiles-739067524",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Freebies by Magiscarf on DeviantArt",
+   "url": "https://www.deviantart.com/magiscarf/art/Freebies-447772645",
+   "credits": "\u2606"
   }
  ]
 }

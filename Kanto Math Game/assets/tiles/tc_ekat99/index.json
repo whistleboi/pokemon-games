@@ -118,6 +118,24 @@
   "theme": "Town",
   "artist": "Ekat99"
  },
+ "63_1950s_house_13": {
+  "name": "1950s House 13",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "1950s House 13",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Ekat99"
+ },
  "2_thistle_town_6": {
   "name": "Thistle Town 6",
   "ox": 0,
@@ -280,6 +298,7 @@
   "kind": "prop",
   "label": "Odisea Outdoors 8",
   "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "Ekat99"
@@ -296,8 +315,731 @@
   "kind": "prop",
   "label": "Silph City 7",
   "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Rocks",
   "theme": "Town",
   "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "5_pokemon_halycon_outdoors_24": {
+  "name": "Paving (Pokemon Halycon Outd) 24",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Paving (Pokemon Halycon Outd) 24",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "walk": true,
+  "group": "Paths & ground",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "8_fairy_woods_default_pallet_3": {
+  "name": "Fairy Woods - Default Pall 3",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Fairy Woods - Default Pall 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "8_fairy_woods_default_pallet_8": {
+  "name": "Fairy Woods - Default Pall 8",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Fairy Woods - Default Pall 8",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "8_fairy_woods_default_pallet_9": {
+  "name": "Fairy Woods - Default Pall 9",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Fairy Woods - Default Pall 9",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "8_fairy_woods_default_pallet_10": {
+  "name": "Fairy Woods - Default Pall 10",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Fairy Woods - Default Pall 10",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "9_fairy_woods_idilio_pallet_3": {
+  "name": "Fairy Woods - Idilio Palle 3",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Fairy Woods - Idilio Palle 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "9_fairy_woods_idilio_pallet_8": {
+  "name": "Fairy Woods - Idilio Palle 8",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Fairy Woods - Idilio Palle 8",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "9_fairy_woods_idilio_pallet_9": {
+  "name": "Fairy Woods - Idilio Palle 9",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Fairy Woods - Idilio Palle 9",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "27_haunted_woods_1": {
+  "name": "Haunted Woods 1",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Haunted Woods 1",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "27_haunted_woods_2": {
+  "name": "Haunted Woods 2",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Haunted Woods 2",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "27_haunted_woods_3": {
+  "name": "Haunted Woods 3",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Haunted Woods 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "27_haunted_woods_5": {
+  "name": "Haunted Woods 5",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Haunted Woods 5",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "27_haunted_woods_6": {
+  "name": "Haunted Woods 6",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Haunted Woods 6",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "27_haunted_woods_7": {
+  "name": "Haunted Woods 7",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Haunted Woods 7",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Trees & plants",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "62_coral_tiles_1": {
+  "name": "Coral Tiles 1",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Coral Tiles 1",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "62_coral_tiles_3": {
+  "name": "Coral Tiles 3",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Coral Tiles 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Forest",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "7_cherubi_station_cherubi_pa_1": {
+  "name": "Cherubi Station (Cherubi P 1",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Cherubi Station (Cherubi P 1",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "10_clown_jail_2": {
+  "name": "Clown Jail 2",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Clown Jail 2",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "11_floating_cliffs_1": {
+  "name": "Floating Cliffs 1",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Floating Cliffs 1",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Rocks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "11_floating_cliffs_3": {
+  "name": "Floating Cliffs 3",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Floating Cliffs 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Rocks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_1": {
+  "name": "Fall Cafe 1",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 1",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_3": {
+  "name": "Fall Cafe 3",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_4": {
+  "name": "Fall Cafe 4",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 4",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_5": {
+  "name": "Fall Cafe 5",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 5",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_8": {
+  "name": "Fall Cafe 8",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 8",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_9": {
+  "name": "Fall Cafe 9",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 9",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_10": {
+  "name": "Fall Cafe 10",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 10",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "14_fall_cafe_12": {
+  "name": "Fall Cafe 12",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fall Cafe 12",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "29_summer_blues_3": {
+  "name": "Summer Blues 3",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Summer Blues 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "29_summer_blues_4": {
+  "name": "Summer Blues 4",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Summer Blues 4",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "29_summer_blues_5": {
+  "name": "Summer Blues 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Summer Blues 5",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "29_summer_blues_7": {
+  "name": "Summer Blues 7",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Summer Blues 7",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "29_summer_blues_11": {
+  "name": "Summer Blues 11",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Summer Blues 11",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "29_summer_blues_14": {
+  "name": "Summer Blues 14",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Summer Blues 14",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "29_summer_blues_15": {
+  "name": "Summer Blues 15",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Summer Blues 15",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "68_park_tileset_3": {
+  "name": "Park Tileset 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Park Tileset 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "68_park_tileset_4": {
+  "name": "Park Tileset 4",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Park Tileset 4",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "68_park_tileset_6": {
+  "name": "Park Tileset 6",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Park Tileset 6",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "68_park_tileset_7": {
+  "name": "Park Tileset 7",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Park Tileset 7",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "57_sinnoh_tile_dump_0": {
+  "name": "Sinnoh Tile Dump 0",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Sinnoh Tile Dump 0",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Ekat99"
+ },
+ "57_sinnoh_tile_dump_1": {
+  "name": "Sinnoh Tile Dump 1",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Sinnoh Tile Dump 1",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Ekat99"
+ },
+ "57_sinnoh_tile_dump_2": {
+  "name": "Sinnoh Tile Dump 2",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sinnoh Tile Dump 2",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Ekat99"
+ },
+ "57_sinnoh_tile_dump_3": {
+  "name": "Sinnoh Tile Dump 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sinnoh Tile Dump 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "gen": "Gen 4",
   "artist": "Ekat99"
  }
 }

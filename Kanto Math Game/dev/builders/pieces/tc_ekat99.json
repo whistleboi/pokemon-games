@@ -34,7 +34,30 @@
   "20_nuphar_city": "ekat99__20_nuphar_city.png",
   "41_jonquil_town": "ekat99__41_jonquil_town.png",
   "47_odisea_outdoors": "ekat99__47_odisea_outdoors.png",
-  "55_silph_city": "ekat99__55_silph_city.png"
+  "55_silph_city": "ekat99__55_silph_city.png",
+  "21_all_cliffs": "ekat99__21_all_cliffs.png",
+  "5_pokemon_halycon_outdoors": "ekat99__5_pokemon_halycon_outdoors.png",
+  "25_mega_outdoor_tileset": "ekat99__25_mega_outdoor_tileset.png",
+  "71_ekat_s_mega_gen_3_set": "ekat99__71_ekat_s_mega_gen_3_set.png",
+  "8_fairy_woods_default_pallet": "ekat99__8_fairy_woods_default_pallet.png",
+  "9_fairy_woods_idilio_pallet": "ekat99__9_fairy_woods_idilio_pallet.png",
+  "17_ivy_woods": "ekat99__17_ivy_woods.png",
+  "26_haunted_woods_normal_pallet": "ekat99__26_haunted_woods_normal_pallet.png",
+  "27_haunted_woods": "ekat99__27_haunted_woods.png",
+  "24_tall_grass": "ekat99__24_tall_grass.png",
+  "44_cacti_tiles": "ekat99__44_cacti_tiles.png",
+  "62_coral_tiles": "ekat99__62_coral_tiles.png",
+  "7_cherubi_station_cherubi_pallet": "ekat99__7_cherubi_station_cherubi_pallet.png",
+  "10_clown_jail": "ekat99__10_clown_jail.png",
+  "11_floating_cliffs": "ekat99__11_floating_cliffs.png",
+  "12_safari_zone": "ekat99__12_safari_zone.png",
+  "14_fall_cafe": "ekat99__14_fall_cafe.png",
+  "18_dreamyard": "ekat99__18_dreamyard.png",
+  "29_summer_blues": "ekat99__29_summer_blues.png",
+  "56_park_gazebo": "ekat99__56_park_gazebo.png",
+  "68_park_tileset": "ekat99__68_park_tileset.png",
+  "70_wild_west": "ekat99__70_wild_west.png",
+  "57_sinnoh_tile_dump": "ekat99__57_sinnoh_tile_dump.png"
  },
  "pieces": {
   "30_general_pink_flower_build_3": {
@@ -239,6 +262,36 @@
     "right"
    ],
    "theme": "Town"
+  },
+  "63_1950s_house_13": {
+   "sheet": "63_1950s_house",
+   "blocks": [
+    [
+     14,
+     18,
+     17,
+     21
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "1950s House 13",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "group": "Houses"
   },
   "2_thistle_town_6": {
    "sheet": "2_thistle_town",
@@ -524,7 +577,8 @@
     "right"
    ],
    "theme": "Town",
-   "gen": "Gen 3"
+   "gen": "Gen 3",
+   "group": "Rocks"
   },
   "55_silph_city_7": {
    "sheet": "55_silph_city",
@@ -552,7 +606,1246 @@
     "right"
    ],
    "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "5_pokemon_halycon_outdoors_24": {
+   "sheet": "5_pokemon_halycon_outdoors",
+   "blocks": [
+    [
+     5,
+     225,
+     8,
+     228
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "doors": [],
+   "kind": "prop",
+   "walk": true,
+   "group": "Paths & ground",
+   "label": "Paving (Pokemon Halycon Outd) 24",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
    "gen": "Gen 3"
+  },
+  "8_fairy_woods_default_pallet_3": {
+   "sheet": "8_fairy_woods_default_pallet",
+   "blocks": [
+    [
+     4,
+     63,
+     7,
+     66
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Fairy Woods - Default Pall 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "8_fairy_woods_default_pallet_8": {
+   "sheet": "8_fairy_woods_default_pallet",
+   "blocks": [
+    [
+     5,
+     72,
+     6,
+     74
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Fairy Woods - Default Pall 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "8_fairy_woods_default_pallet_9": {
+   "sheet": "8_fairy_woods_default_pallet",
+   "blocks": [
+    [
+     6,
+     74,
+     8,
+     75
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Fairy Woods - Default Pall 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "8_fairy_woods_default_pallet_10": {
+   "sheet": "8_fairy_woods_default_pallet",
+   "blocks": [
+    [
+     7,
+     87,
+     8,
+     88
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Fairy Woods - Default Pall 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "9_fairy_woods_idilio_pallet_3": {
+   "sheet": "9_fairy_woods_idilio_pallet",
+   "blocks": [
+    [
+     4,
+     63,
+     7,
+     66
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Fairy Woods - Idilio Palle 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "9_fairy_woods_idilio_pallet_8": {
+   "sheet": "9_fairy_woods_idilio_pallet",
+   "blocks": [
+    [
+     5,
+     72,
+     6,
+     74
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Fairy Woods - Idilio Palle 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "9_fairy_woods_idilio_pallet_9": {
+   "sheet": "9_fairy_woods_idilio_pallet",
+   "blocks": [
+    [
+     6,
+     74,
+     8,
+     75
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Fairy Woods - Idilio Palle 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "27_haunted_woods_1": {
+   "sheet": "27_haunted_woods",
+   "blocks": [
+    [
+     4,
+     45,
+     6,
+     47
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Haunted Woods 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "27_haunted_woods_2": {
+   "sheet": "27_haunted_woods",
+   "blocks": [
+    [
+     6,
+     59,
+     8,
+     64
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Haunted Woods 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "27_haunted_woods_3": {
+   "sheet": "27_haunted_woods",
+   "blocks": [
+    [
+     3,
+     62,
+     6,
+     67
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Haunted Woods 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "27_haunted_woods_5": {
+   "sheet": "27_haunted_woods",
+   "blocks": [
+    [
+     3,
+     69,
+     5,
+     71
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Haunted Woods 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "27_haunted_woods_6": {
+   "sheet": "27_haunted_woods",
+   "blocks": [
+    [
+     6,
+     69,
+     8,
+     71
+    ]
+   ],
+   "foot": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Haunted Woods 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "27_haunted_woods_7": {
+   "sheet": "27_haunted_woods",
+   "blocks": [
+    [
+     0,
+     69,
+     2,
+     71
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Haunted Woods 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3",
+   "group": "Trees & plants"
+  },
+  "62_coral_tiles_1": {
+   "sheet": "62_coral_tiles",
+   "blocks": [
+    [
+     7,
+     8,
+     8,
+     10
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Coral Tiles 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "62_coral_tiles_3": {
+   "sheet": "62_coral_tiles",
+   "blocks": [
+    [
+     7,
+     13,
+     8,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Coral Tiles 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Forest",
+   "gen": "Gen 3"
+  },
+  "7_cherubi_station_cherubi_pa_1": {
+   "sheet": "7_cherubi_station_cherubi_pallet",
+   "blocks": [
+    [
+     6,
+     16,
+     7,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Cherubi Station (Cherubi P 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "10_clown_jail_2": {
+   "sheet": "10_clown_jail",
+   "blocks": [
+    [
+     6,
+     28,
+     8,
+     31
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Clown Jail 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "11_floating_cliffs_1": {
+   "sheet": "11_floating_cliffs",
+   "blocks": [
+    [
+     3,
+     32,
+     4,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Floating Cliffs 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "11_floating_cliffs_3": {
+   "sheet": "11_floating_cliffs",
+   "blocks": [
+    [
+     4,
+     32,
+     5,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Floating Cliffs 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Rocks"
+  },
+  "14_fall_cafe_1": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     6,
+     6,
+     8,
+     8
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "14_fall_cafe_3": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     7,
+     19,
+     8,
+     20
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "14_fall_cafe_4": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     7,
+     24,
+     8,
+     25
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "14_fall_cafe_5": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     7,
+     25,
+     8,
+     26
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "14_fall_cafe_8": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     7,
+     28,
+     8,
+     29
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "14_fall_cafe_9": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     6,
+     29,
+     7,
+     31
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "14_fall_cafe_10": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     7,
+     29,
+     8,
+     32
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 10",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "14_fall_cafe_12": {
+   "sheet": "14_fall_cafe",
+   "blocks": [
+    [
+     3,
+     39,
+     6,
+     43
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Fall Cafe 12",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "29_summer_blues_3": {
+   "sheet": "29_summer_blues",
+   "blocks": [
+    [
+     0,
+     25,
+     2,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Summer Blues 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "29_summer_blues_4": {
+   "sheet": "29_summer_blues",
+   "blocks": [
+    [
+     2,
+     25,
+     4,
+     27
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Summer Blues 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "29_summer_blues_5": {
+   "sheet": "29_summer_blues",
+   "blocks": [
+    [
+     4,
+     25,
+     6,
+     28
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Summer Blues 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "29_summer_blues_7": {
+   "sheet": "29_summer_blues",
+   "blocks": [
+    [
+     4,
+     28,
+     6,
+     29
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Summer Blues 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "29_summer_blues_11": {
+   "sheet": "29_summer_blues",
+   "blocks": [
+    [
+     5,
+     42,
+     8,
+     44
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Summer Blues 11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "29_summer_blues_14": {
+   "sheet": "29_summer_blues",
+   "blocks": [
+    [
+     5,
+     44,
+     7,
+     46
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Summer Blues 14",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "29_summer_blues_15": {
+   "sheet": "29_summer_blues",
+   "blocks": [
+    [
+     3,
+     54,
+     5,
+     55
+    ]
+   ],
+   "foot": [
+    0,
+    0,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Summer Blues 15",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "68_park_tileset_3": {
+   "sheet": "68_park_tileset",
+   "blocks": [
+    [
+     13,
+     2,
+     16,
+     9
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    4
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Park Tileset 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "68_park_tileset_4": {
+   "sheet": "68_park_tileset",
+   "blocks": [
+    [
+     9,
+     4,
+     12,
+     9
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    3,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Park Tileset 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "68_park_tileset_6": {
+   "sheet": "68_park_tileset",
+   "blocks": [
+    [
+     9,
+     10,
+     14,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Park Tileset 6",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Houses"
+  },
+  "68_park_tileset_7": {
+   "sheet": "68_park_tileset",
+   "blocks": [
+    [
+     15,
+     10,
+     20,
+     16
+    ]
+   ],
+   "foot": [
+    1,
+    5,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Park Tileset 7",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "57_sinnoh_tile_dump_0": {
+   "sheet": "57_sinnoh_tile_dump",
+   "blocks": [
+    [
+     1,
+     1,
+     9,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    8,
+    3
+   ],
+   "doors": [
+    3
+   ],
+   "kind": "house",
+   "label": "Sinnoh Tile Dump 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "57_sinnoh_tile_dump_1": {
+   "sheet": "57_sinnoh_tile_dump",
+   "blocks": [
+    [
+     10,
+     1,
+     14,
+     7
+    ]
+   ],
+   "foot": [
+    0,
+    4,
+    4,
+    2
+   ],
+   "doors": [
+    1
+   ],
+   "kind": "house",
+   "label": "Sinnoh Tile Dump 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "57_sinnoh_tile_dump_2": {
+   "sheet": "57_sinnoh_tile_dump",
+   "blocks": [
+    [
+     1,
+     8,
+     6,
+     14
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Sinnoh Tile Dump 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
+  },
+  "57_sinnoh_tile_dump_3": {
+   "sheet": "57_sinnoh_tile_dump",
+   "blocks": [
+    [
+     7,
+     9,
+     13,
+     14
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    6,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Sinnoh Tile Dump 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "Gen 4",
+   "group": "Houses"
   }
  },
  "_sources": [
@@ -729,6 +2022,126 @@
   {
    "title": "Silph City by Ekat99 on DeviantArt",
    "url": "https://www.deviantart.com/ekat99/art/Silph-City-875480518",
+   "credits": "\u2606"
+  },
+  {
+   "title": "All Cliffs by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/All-Cliffs-887616852",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Pokemon Halycon Outdoors",
+   "url": "https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Outdoors-926210088",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Mega Outdoor Tileset by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Mega-Outdoor-Tileset-887616036",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Ekat's Mega Gen 3 Set by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Ekat-s-Mega-Gen-3-Set-875478881",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Fairy Woods - Default Pallet by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Fairy-Woods-Default-Pallet-900007443",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Fairy Woods - Idilio Pallet by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Fairy-Woods-Idilio-Pallet-900007241",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Ivy Woods",
+   "url": "https://www.deviantart.com/ekat99/art/Ivy-Woods-891125480",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Haunted Woods (Normal Pallet) by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Haunted-Woods-Normal-Pallet-887547666",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Haunted Woods by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Haunted-Woods-887547633",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Tall Grass by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Tall-Grass-887616549",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Cacti Tiles by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Cacti-Tiles-879738547",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Coral Tiles by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Coral-Tiles-875478040",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Cherubi Station (Cherubi Pallet) by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Cherubi-Station-Cherubi-Pallet-900410102",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Clown Jail",
+   "url": "https://www.deviantart.com/ekat99/art/Clown-Jail-899361338",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Floating Cliffs by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Floating-Cliffs-899270990",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Safari Zone by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Safari-Zone-899080762",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Fall Cafe by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Fall-Cafe-894568006",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Dreamyard by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Dreamyard-890426826",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Nosepass Spring by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Nosepass-Spring-887520074",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Summer Blues",
+   "url": "https://www.deviantart.com/ekat99/art/Summer-Blues-887334531",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Park Gazebo by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Park-Gazebo-875480358",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Park Tileset by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Park-Tileset-875478335",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Wild West by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Wild-West-875478760",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Sinnoh Tile Dump by Ekat99 on DeviantArt",
+   "url": "https://www.deviantart.com/ekat99/art/Sinnoh-Tile-Dump-875479802",
    "credits": "\u2606"
   }
  ]

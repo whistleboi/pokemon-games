@@ -1,0 +1,1056 @@
+{
+ "341_4th_gen_outdoor_tileset_2": {
+  "name": "4th gen Outdoor Tileset 2",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 2",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_5": {
+  "name": "4th gen Outdoor Tileset 5",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "4th gen Outdoor Tileset 5",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Trees & plants",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_6": {
+  "name": "4th gen Outdoor Tileset 6",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "4th gen Outdoor Tileset 6",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Trees & plants",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_8": {
+  "name": "4th gen Outdoor Tileset 8",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 8",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_10": {
+  "name": "4th gen Outdoor Tileset 10",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 10",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_12": {
+  "name": "4th gen Outdoor Tileset 12",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 12",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_14": {
+  "name": "4th gen Outdoor Tileset 14",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 14",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_16": {
+  "name": "4th gen Outdoor Tileset 16",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 16",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_18": {
+  "name": "4th gen Outdoor Tileset 18",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "4th gen Outdoor Tileset 18",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Trees & plants",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_20": {
+  "name": "4th gen Outdoor Tileset 20",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 20",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_22": {
+  "name": "4th gen Outdoor Tileset 22",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 22",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_24": {
+  "name": "4th gen Outdoor Tileset 24",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 24",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_39": {
+  "name": "4th gen Outdoor Tileset 39",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 39",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_45": {
+  "name": "4th gen Outdoor Tileset 45",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 45",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_63": {
+  "name": "4th gen Outdoor Tileset 63",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 63",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_64": {
+  "name": "4th gen Outdoor Tileset 64",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 64",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_70": {
+  "name": "4th gen Outdoor Tileset 70",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 70",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_71": {
+  "name": "4th gen Outdoor Tileset 71",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 71",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_72": {
+  "name": "4th gen Outdoor Tileset 72",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 72",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_73": {
+  "name": "4th gen Outdoor Tileset 73",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 73",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_74": {
+  "name": "4th gen Outdoor Tileset 74",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 74",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_75": {
+  "name": "4th gen Outdoor Tileset 75",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 75",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_78": {
+  "name": "4th gen Outdoor Tileset 78",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 78",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_79": {
+  "name": "4th gen Outdoor Tileset 79",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 79",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_80": {
+  "name": "4th gen Outdoor Tileset 80",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 80",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_81": {
+  "name": "4th gen Outdoor Tileset 81",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 81",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_82": {
+  "name": "4th gen Outdoor Tileset 82",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 82",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_83": {
+  "name": "4th gen Outdoor Tileset 83",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 83",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_84": {
+  "name": "4th gen Outdoor Tileset 84",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 84",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_85": {
+  "name": "4th gen Outdoor Tileset 85",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 85",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_86": {
+  "name": "4th gen Outdoor Tileset 86",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 86",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_87": {
+  "name": "4th gen Outdoor Tileset 87",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 87",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_88": {
+  "name": "4th gen Outdoor Tileset 88",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 88",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_90": {
+  "name": "4th gen Outdoor Tileset 90",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 90",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_91": {
+  "name": "4th gen Outdoor Tileset 91",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 91",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_92": {
+  "name": "4th gen Outdoor Tileset 92",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 92",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_93": {
+  "name": "4th gen Outdoor Tileset 93",
+  "ox": 64,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "4th gen Outdoor Tileset 93",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Trees & plants",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_94": {
+  "name": "4th gen Outdoor Tileset 94",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 94",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_95": {
+  "name": "4th gen Outdoor Tileset 95",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 95",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_96": {
+  "name": "4th gen Outdoor Tileset 96",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 96",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_97": {
+  "name": "4th gen Outdoor Tileset 97",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 97",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_98": {
+  "name": "4th gen Outdoor Tileset 98",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   7,
+   2
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 98",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_102": {
+  "name": "4th gen Outdoor Tileset 102",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 102",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_103": {
+  "name": "4th gen Outdoor Tileset 103",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 103",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_104": {
+  "name": "4th gen Outdoor Tileset 104",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 104",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_105": {
+  "name": "4th gen Outdoor Tileset 105",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 105",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_106": {
+  "name": "4th gen Outdoor Tileset 106",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 106",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_107": {
+  "name": "4th gen Outdoor Tileset 107",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 107",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_109": {
+  "name": "4th gen Outdoor Tileset 109",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 109",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_110": {
+  "name": "4th gen Outdoor Tileset 110",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 110",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_111": {
+  "name": "4th gen Outdoor Tileset 111",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 111",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_113": {
+  "name": "4th gen Outdoor Tileset 113",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 113",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_115": {
+  "name": "4th gen Outdoor Tileset 115",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 115",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_118": {
+  "name": "4th gen Outdoor Tileset 118",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 118",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_122": {
+  "name": "4th gen Outdoor Tileset 122",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 122",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_124": {
+  "name": "4th gen Outdoor Tileset 124",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 124",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_125": {
+  "name": "4th gen Outdoor Tileset 125",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 125",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_126": {
+  "name": "4th gen Outdoor Tileset 126",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 126",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_128": {
+  "name": "4th gen Outdoor Tileset 128",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 128",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_129": {
+  "name": "4th gen Outdoor Tileset 129",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 129",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_130": {
+  "name": "4th gen Outdoor Tileset 130",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 130",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_132": {
+  "name": "4th gen Outdoor Tileset 132",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "4th gen Outdoor Tileset 132",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "341_4th_gen_outdoor_tileset_133": {
+  "name": "4th gen Outdoor Tileset 133",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "4th gen Outdoor Tileset 133",
+  "credit": "Akizakura16 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/akizakura16/art/4th-gen-Outdoor-Tileset-613857695)",
+  "group": "Houses",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ }
+}

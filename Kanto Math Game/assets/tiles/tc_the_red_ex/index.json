@@ -132,33 +132,138 @@
  },
  "330_remake_old_style_new_til_3": {
   "name": "Remake - Old style, new Ti 3",
-  "ox": 0,
+  "ox": 64,
   "oy": 128,
   "foot": [
-   5,
+   1,
    1
   ],
   "doors": [],
-  "kind": "prop",
+  "kind": "tree",
   "label": "Remake - Old style, new Ti 3",
   "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Trees & plants",
   "theme": "Town",
   "gen": "Gen 3",
   "artist": "The-Red-eX"
  },
  "330_remake_old_style_new_til_4": {
   "name": "Remake - Old style, new Ti 4",
-  "ox": 0,
+  "ox": 32,
   "oy": 64,
   "foot": [
-   3,
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Remake - Old style, new Ti 4",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "325_gd_tileset_stadt_boden_g_1": {
+  "name": "GD - Tileset - Stadt Boden 1",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "GD - Tileset - Stadt Boden 1",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "325_gd_tileset_stadt_boden_g_2": {
+  "name": "GD - Tileset - Stadt Boden 2",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   7,
    1
   ],
   "doors": [],
   "kind": "prop",
-  "label": "Remake - Old style, new Ti 4",
+  "label": "GD - Tileset - Stadt Boden 2",
   "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
   "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "325_gd_tileset_stadt_boden_g_3": {
+  "name": "GD - Tileset - Stadt Boden 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "GD - Tileset - Stadt Boden 3",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "331_public_tileset_2": {
+  "name": "Public Tileset 2",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   9,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Public Tileset 2",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "The-Red-eX"
+ },
+ "331_public_tileset_7": {
+  "name": "Public Tileset 7",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   9,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Public Tileset 7",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "gen": "Gen 5",
+  "artist": "The-Red-eX"
+ },
+ "326_gd_tileset_gebirge_0": {
+  "name": "GD - Tileset - Gebirge 0",
+  "ox": 0,
+  "oy": 384,
+  "foot": [
+   11,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "GD - Tileset - Gebirge 0",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "theme": "Mountain",
   "gen": "Gen 3",
   "artist": "The-Red-eX"
  }
