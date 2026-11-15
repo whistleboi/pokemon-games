@@ -13,7 +13,7 @@ for t in $HELPED; do cat $C/harness_head.py $C/sub_helpers_body.py $C/${t}_body.
 for t in $PLAIN; do cat $C/harness_head.py $C/${t}_body.py > $O/check_$t.py; done
 for t in $HELPED $PLAIN; do
   r=$(timeout 1500 python $O/check_$t.py $O 2>&1)
-  n=$(echo "$r" | grep -cE 'FAIL |Traceback')
+  n=$(echo "$r" | grep -cE 'FAIL |Traceback|(Syntax|Indentation)Error')
   [ "$t" = batch5 ] && n=$((n - $(echo "$r" | grep -c '^ValueError: test$')))  # its crash-handler test raises on purpose
   echo "== $t: $n fails"; echo "$r" | grep -E "FAIL |Error" | head -5
 done

@@ -128,7 +128,7 @@ def make_step(kind, step, rng=random):
     return (f"QUIZ! What is {q}?", "", [(str(o), o == ans) for o in opts])
 
 
-STEPS = {"coins": 3, "braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3, "cafe": 3, "galette": 3}
+STEPS = {"coins": 3, "braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3, "cafe": 3, "galette": 3, "quiz": 1}
 INTRO = {
     "coins": "The old woman holds out two closed hands. \"Which one has the coin? Get it right three times!\"",
     "braille": "Strange dots are carved into the walls of the Dotted Hole...",
@@ -138,6 +138,7 @@ INTRO = {
     "carvings": "Three ice seals cover the spring, each carved with numbers.",
     "cafe": "Cafe Soleil is busy! Help ring up three tables.",
     "galette": "The galette stall has a line of customers. Hand each the right tray!",
+    "quiz": "Blaine's quiz machine buzzes to life! Answer right and the gate opens.",   # (Cinnabar Gym's machines, one question each: FireRed)
 }
 WRONG = {
     "coins": ("Empty! Not that hand.", "Empty! Let's start over from the first round."),
@@ -148,6 +149,7 @@ WRONG = {
     "carvings": ("The ice stays frozen.", "The ice stays frozen."),
     "cafe": ("That's not their order!", "Oops! The orders got mixed up. Start again."),
     "galette": ("That's the wrong tray!", "Oops! Those trays got mixed up. Start again."),
+    "quiz": ("BZZT! Wrong! Try another answer.", "BZZT! Wrong! Try another answer."),
 }
 DONE = {
     "coins": "Three in a row! The old woman laughs with delight.",
@@ -158,6 +160,7 @@ DONE = {
     "carvings": "Crack! The last seal melts away.",
     "cafe": "Every table is paid up. The owner is delighted!",
     "galette": "Every customer leaves happy, munching a galette!",
+    "quiz": "DING DING! Correct! The gate slides open.",
 }
 
 

@@ -647,6 +647,9 @@ class MoveEffects:
             if v.get("ingrain") and self._hp(mon) < mx:
                 self._adjust_hp(mon, max(1, mx // 16))
                 lines.append(f"{label} absorbed nutrients with its roots!")
+            if getattr(mon, "held_item", None) == "LEFTOVERS" and self._hp(mon) < mx:   # (held Leftovers: a sixteenth back each turn. FireRed, Route 12)
+                self._adjust_hp(mon, max(1, mx // 16))
+                lines.append(f"{label} restored a little HP using its Leftovers!")
             if v.get("seeded"):
                 sap = min(self._hp(mon), max(1, mx // 8))
                 self._adjust_hp(mon, -sap)

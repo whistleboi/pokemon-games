@@ -181,6 +181,14 @@ def contest_entry(state):
          callback=lambda: game.change_state(AreaTransitionState(game, "BUG_CONTEST")))
 
 
+def running():
+    """Shift held down (Jordan, 11-14: hold Shift while moving to run; no shoes needed): each step takes half the time."""
+    try:
+        return bool(pygame.key.get_mods() & pygame.KMOD_SHIFT)
+    except pygame.error:
+        return False
+
+
 def held_way(keys_map):
     """The way a held arrow key (or WASD) points, or None (Jordan, 11-07: hold to keep walking)."""
     try:
@@ -285,6 +293,52 @@ def recipes(game):
     return _recipes["all"]
 
 
+def _upstairs(rooms, floors, names, where):
+    """Rooms reached from other rooms ("exits" {"v": "ROOM:gate_2"}: a gatehouse's stairs up) become floors too, after
+    the rest; each such stairs tile leads onto the tile beside the other room's stairs back."""
+    refs = lambda r: [str(t)[5:] for t in (r.get("exits") or {}).values() if str(t).startswith("ROOM:")]
+    grew = True
+    while grew:
+        grew = False
+        for name, room in rooms.items():
+            if name in where or not any(name in refs(rooms[o]) for o in where):
+                continue
+            where[name] = len(floors)
+            own = {k: v for k, v in room.items() if k not in ("art", "exits", "links", "land", "enter")}
+            floors.append(dict(own, art=list(room["art"]), exits={}, links={}, boss_spot=None, parts=True, indoors=True,
+                               pool="NO_WILD_INDOORS_PERCENTAGES", buildings=room.get("buildings") or {}))
+            names.append(str(room.get("title") or name).title())
+            grew = True
+
+    def stairs(name, to):
+        art = rooms[name]["art"]
+        chs = [ch for ch, t in (rooms[name].get("exits") or {}).items() if str(t) == f"ROOM:{to}"]
+        return [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c in chs]
+
+    for name, j in where.items():
+        f = floors[j]
+        art = [list(r) for r in f["art"]]
+        links, keep = dict(f.get("links") or {}), dict(f.get("exits") or {})
+        for ch, target in (rooms[name].get("exits") or {}).items():
+            to = str(target)[5:] if str(target).startswith("ROOM:") else None
+            if to not in where:
+                continue
+            keep.pop(ch, None)
+            back = stairs(to, name)
+            if not back:
+                continue
+            bx, by = back[0]
+            tart = rooms[to]["art"]
+            near = next(((x, y) for x, y in ((bx, by - 1), (bx - 1, by), (bx + 1, by), (bx, by + 1))
+                         if 0 <= y < len(tart) and 0 <= x < len(tart[y]) and tart[y][x] in ".N"), (bx, by))
+            for ry, row in enumerate(art):
+                for rx, c in enumerate(row):
+                    if c == ch:
+                        row[rx] = "1"
+                        links[f"{rx},{ry}"] = [where[to], near[0], near[1]]
+        floors[j] = dict(f, art=["".join(r) for r in art], links=links, exits=keep)
+
+
 def with_rooms(m):
     """A route map with buildings you walk into (Jordan, 11-12: "buildings on routes"), in the towns' own words: "rooms"
     {name: a map of its own (theme "room", its mats' "exits" {"v": "OUT:x,y"}, "people": route options by their text)}
@@ -296,7 +350,7 @@ def with_rooms(m):
         return m
     floors = [dict(f) for f in m["floors"]] if m.get("floors") else [
         {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops",
-                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
+                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool", "hidden", "cycling", "downhill") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
     n0 = len(floors)
     names = list(m.get("floor_names") or [""] * n0)
     where, doors = {}, {}
@@ -343,6 +397,7 @@ def with_rooms(m):
             mat = (enter[d][0], enter[d][1] + 1) if d in enter else mats.get(d) or next(iter(mats.values()), None)
             if mat:
                 floors[i] = dict(floors[i], links=dict(floors[i].get("links") or {}, **{d: [j, mat[0], mat[1]]}))
+    _upstairs(rooms, floors, names, where)
     on = dict(m.get("figure_floors") or {})
     for i, f in enumerate(floors):  # (everyone stays on the floor their spot is on: a figure with no floor named would be put on the last, a room)
         for t in list(f.get("people") or []) + list(f.get("trainer_spots") or []):
@@ -397,7 +452,11 @@ def art_recipe(m):
     for y, row in enumerate(grid):
         out = []
         for x, c in enumerate(row):
-            if [x, y] == list(m.get("boss_spot") or ()):  # the area's boss asleep on this very tile (the map's "boss_spot": Snorlax on Route 12)
+            if f"{x},{y}" in (m.get("decor") or {}):  # (a thing drawn in the map's picture that does something: a slot machine, the poster's switch)
+                ch = chr(0x2D80 + len(legend))
+                legend[ch] = {"decor": m["decor"][f"{x},{y}"]}
+                out.append(ch)
+            elif [x, y] == list(m.get("boss_spot") or ()):  # the area's boss asleep on this very tile (the map's "boss_spot": Snorlax on Route 12)
                 ch = chr(0x2D80 + len(legend))
                 legend[ch] = {"exit": "BOSS"}
                 out.append(ch)
@@ -526,6 +585,25 @@ def real_maps(game):
 
 
 _real_maps = {}
+
+
+_SPECIES = {}
+
+
+def species_named(game, text):
+    """The species a figure's name is ("Poliwrath", "WIGGLYTUFF", "Nidoran"), else None: a Pokemon standing about."""
+    if not _SPECIES:
+        names = getattr(game.assets, "pokemon_names", None) or {}
+        for k, v in names.items():
+            try:
+                _SPECIES.setdefault(str(v).lower(), int(k))
+            except ValueError:
+                pass
+        _SPECIES.setdefault("nidoran", 29)   # (FireRed's own: the female one)
+        _SPECIES.setdefault("mr. mime", 122)
+        _SPECIES.setdefault("farfetch'd", 83)
+    t = str(text or "").strip().lower()
+    return _SPECIES.get(t) if t else None
 
 
 def recipe_for(game, area_key):
@@ -964,14 +1042,19 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _boss_spot(self):
         """The tile the area's boss sleeps on (the map's "boss_spot"), while it is still there."""
-        spot = (self.recipe.get("art") or {}).get("boss_spot")
+        art = self.recipe.get("art") or {}
+        spot = art.get("boss_spot")
+        if not spot and art.get("floors") and hasattr(self, "run") and self.run.index < len(art["floors"]):
+            spot = art["floors"][self.run.index].get("boss_spot")   # (a boss on one floor of a place of floors: the Pokemon Tower's ghost on 6F)
         boss = self.area_data.get("area_boss") or {}
         if not spot or not boss or self.game.story_manager.story_flags.get(boss.get("victory_flag")):
             return None
         return tuple(spot)
 
     def _sync_boss_spot(self):
-        if (self.recipe.get("art") or {}).get("boss_spot") and hasattr(self, "run") and not self._boss_spot():
+        _art = self.recipe.get("art") or {}
+        _has = _art.get("boss_spot") or any(f.get("boss_spot") for f in (_art.get("floors") or []))
+        if _has and hasattr(self, "run") and not self._boss_spot():
             for t in [t for t, v in self.run.floor.exits.items() if v == "BOSS"]:  # (beaten: the way is clear)
                 del self.run.floor.exits[t]
 
@@ -1006,6 +1089,20 @@ class DungeonState(OverworldBattles, PlayState):
         flags[gate["flag"]] = True
         self._sync_gate()
         self.say(gate.get("lines") or ["You push the switch."])
+
+    def flip_statue(self):
+        """A statue with a switch (the floor's "switch": {"flag", "on", "off"}: the Pokémon Mansion's): each press flips
+        the flag, and with it every gate the flag shuts or opens (the floor's "barred", its "picture_when")."""
+        sw = self._here_art().get("switch") or {}
+        flags = self.game.story_manager.story_flags
+        if not self._ready() or not sw.get("flag"):
+            return
+        self.walk_goal = None
+        on = not flags.get(sw["flag"])
+        flags[sw["flag"]] = on
+        self._clear_boulders()
+        self._floor_surf = None
+        self.say(sw.get("on" if on else "off") or ["Click! Something moved somewhere."])
 
     def _stand_in_img(self, look, bar):
         """A story stand-in's picture (a map's "barred" look): "sheet:<walking sheet>" (bar "face" u d l r, "march": running
@@ -1090,6 +1187,8 @@ class DungeonState(OverworldBattles, PlayState):
         sc.sweep()
         if sc.busy():
             sc.tick()
+            if not sc.busy():  # (a scene just ended: whoever it held and whose story step is done leaves: the beaten rival)
+                self._sync_figures()
         elif self._ready() and not self.walk_goal:
             sc.check()
 
@@ -1277,6 +1376,8 @@ class DungeonState(OverworldBattles, PlayState):
             return "PLAY SLOTS", self.play_slots
         if (self.recipe.get("gate") or {}).get("switch") and self._beside("decor:" + self.recipe["gate"]["switch"]):
             return "CHECK", self.push_switch
+        if self._here_art().get("switch") and self._beside("decor:statue"):
+            return "CHECK", self.flip_statue
         if self._beside("water") and self._menu_item("FISH"):
             return "FISH", self.fish_here
         if self._beside("tree") and self._menu_item("HEADBUTT"):
@@ -1540,6 +1641,17 @@ class DungeonState(OverworldBattles, PlayState):
         x, y = t or self.run.player
         return bool(rows) and rows[0] <= y <= rows[1] and self.run.floor.tile(x, y) != core.SURF
 
+    def _may_run(self):
+        """Running (Shift held), on foot only: not surfing, riding, hopping, sliding on ice, or following someone in a scene."""
+        if not running() or not hasattr(self, "run") or getattr(self, "hop", None) or getattr(self, "sliding", None) or getattr(self, "_scene_lock", False):
+            return False
+        try:
+            if self.run.floor.tile(*self.run.player) == core.SURF or self._cycling():
+                return False
+        except Exception:
+            return False
+        return True
+
     def _cycling(self, t=None):
         """Are you riding here (the map's "cycling": true, or [x0, y0, x1, y1]; with the Bicycle)?"""
         area = self._here_art().get("cycling")
@@ -1644,6 +1756,7 @@ class DungeonState(OverworldBattles, PlayState):
             self._lap_step()
             if not self._hidden_item(self.run.player):
                 self._cracked_floor(self.run.player)
+                self._itemfinder(self.run.player)
             self._copy_step(dx, dy)
             self._note_area()
             self._contest_tick()
@@ -1827,7 +1940,8 @@ class DungeonState(OverworldBattles, PlayState):
                 self._get_route_callback(boss)()
                 return
             name = (self.area_data.get("area_boss") or {}).get("name", "A Pokemon")
-            self.say([f"A {name} is sound asleep, right in the way!", "It won't budge. Maybe a sound would wake it..."])
+            self.say((self.area_data.get("area_boss") or {}).get("blocked_lines")   # (its own words: the Pokemon Tower's ghost)
+                     or [f"A {name} is sound asleep, right in the way!", "It won't budge. Maybe a sound would wake it..."])
             return
         same = [t for t, v in self.run.floor.exits.items() if v == target]
         _to = (self._here_art() or {}).get("edge_to", {}).get("%d,%d" % tuple(self.run.player))
@@ -1940,12 +2054,27 @@ class DungeonState(OverworldBattles, PlayState):
         if not item or story.story_flags.get(flag):
             return False
         story.story_flags[flag] = True
-        story.add_item(item)
+        if item == "POKE_BALLS":  # (Poke Balls are the one ball count)
+            story.balls_left = getattr(story, "balls_left", 0) + 1
+        else:
+            story.add_item(item)
         if self.game.assets.heal_sfx:
             self.game.assets.heal_sfx.play()
         self.walk_goal = None
         self.say([f"Something was hidden here... You found a {forms.item_label(item).upper()}!"])
         return True
+
+    def _itemfinder(self, here):
+        """With the Itemfinder, a hidden item on screen makes it beep (once each visit to the floor)."""
+        from src.world import itemfinder
+        m = self.run.recipe.get("art") or {}
+        if m.get("floors"):
+            m = m["floors"][self.run.index] if self.run.index < len(m["floors"]) else {}
+        heard = self.__dict__.setdefault("_heard", {}).setdefault(self.run.index, set())
+        line = itemfinder.beep(self.game.story_manager, m.get("hidden"), here,
+                               lambda x, y: f"hidden_{self.area_key}_{self.run.index}_{x}_{y}", heard)
+        if line:
+            self.flash(line, 150)
 
     def _pick_up_tm(self, spot):
         story = self.game.story_manager
@@ -2880,6 +3009,9 @@ class DungeonState(OverworldBattles, PlayState):
             return super().update()
         if hasattr(self, "run"):
             self._clear_boulders()
+            if getattr(self, "_boss_synced", None) != self.run.index:   # (up or down a floor: a beaten boss's tile there is clear too, the Tower's 6F)
+                self._boss_synced = self.run.index
+                self._sync_boss_spot()
         if self.dialogue_box.visible:
             self.dialogue_box.update()
         if self.toast_timer > 0:
@@ -2887,7 +3019,7 @@ class DungeonState(OverworldBattles, PlayState):
         if self.banner > 0:
             self.banner -= 1
         if self.anim > 0:
-            self.anim -= 1
+            self.anim = max(0, self.anim - (2 if self._may_run() else 1))
         if getattr(self, "_walker", None):
             self._walker_step()
             return
@@ -3301,6 +3433,10 @@ class DungeonState(OverworldBattles, PlayState):
             pid = soaring.mount(self.game)[0]
         if pid is None and item.get("action") == "BOSS" and not spec.get("sheet"):   # (a boss with a sheet of its own: the legend, Emerald's)
             pid = (item.get("boss") or self.area_data.get("area_boss") or {}).get("id")
+        if pid is None and str(spec.get("sheet") or "").startswith("mon:"):
+            pid = int(str(spec["sheet"])[4:])
+        if pid is None:   # (someone standing about who is a Pokemon: "Poliwrath", "Cubone")
+            pid = species_named(self.game, item.get("text"))
         if pid is not None:
             boss = (item.get("boss") or {}) if item.get("action") == "BOSS" else {}
             img = self._mon_img(pid, tuple(facing) if spec.get("face") else (0, 1), boss.get("form"), boss.get("is_shiny"))
@@ -3360,11 +3496,14 @@ class DungeonState(OverworldBattles, PlayState):
     def _trainer_img(self, info, facing=(0, 1), frame=0):
         name = info.get("sprite") or "rival.png"
         sm = sprite_map(self.game)
-        own = sm.get("trainers_" + str(self.area_data.get("region") or "")) or {}
+        _reg = self.area_data.get("region") or self.game.story_manager.get_current_region() or ""   # (Kanto's areas carry no "region")
+        own = sm.get("trainers_" + str(_reg)) or {}
         for _role in ("rival", "friend"):  # (this save's rival or friend: their own walking sheet, where the region has one: Hoenn's Brendan and May)
             _who = str(getattr(self.game, f"{_role}_character", "") or "").lower()
             if name == "{%s_character}" % _role and _who and f"{_who}.png" in own:
                 name = f"{_who}.png"
+        if name == "{rival_character}" and "rival.png" in own:  # (the region's own rival sheet: FireRed's Blue)
+            name = "rival.png"
         sheet = own.get(name) or (sm.get("trainers") or {}).get(name)  # (the class as this region's own game draws it, where we have that: "trainers_SINNOH")
         if sheet:  # its Pokemon Journeys overworld sprite, looking the way it faces (mid-step: its stepping frame)
             return self._sheet_frame(sheet, tuple(facing), frame=frame)
@@ -3813,6 +3952,10 @@ class DungeonState(OverworldBattles, PlayState):
         story = self.game.story_manager
         mission = guide.tracked_mission(self.game)
         need = {f for f in story.mission_flags(mission or {}) if not story.story_flags.get(f)}
+        step = self._guide_step(mission)
+        if step:  # (the mission's own way-points in this place: Silph Co.'s Card Key, then the boardroom)
+            self._guide_hit = step
+            return step
         for m in f.movers:  # someone here the mission needs
             if m.kind == "figure" and isinstance(m.payload, dict) and guide.advances_goal(self.game, self.area_key, m.payload):
                 self._guide_hit = ((m.x, m.y), m.payload.get("text") or "Here")
@@ -3846,6 +3989,113 @@ class DungeonState(OverworldBattles, PlayState):
                     self._guide_hit = (stairs, "Upstairs" if want == core.STAIRS_UP else "Downstairs")
                     return self._guide_hit
         return None
+
+    def _guide_step(self, mission):
+        """(tile, label) toward a Journal mission's next "steps" way-point in this place ({"floor", "at", "label",
+        "done"}: Jordan, 11-14: Silph Co. guided floor by floor): on its floor, the spot itself; elsewhere, the stairs
+        or warp pad that starts the shortest way there, through doors you can open now. None: no step here, or no
+        way there yet."""
+        from src.world import guide
+        if not mission or not mission.get("steps") or not self.run.recipe.get("layout"):
+            return None
+        story = self.game.story_manager
+        step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
+                     and not guide._ok(story, s.get("done"))), None)
+        fl = step.get("floor") if step else None
+        if step and step.get("room"):  # (a room of the map, walked as a floor of its own: the S.S. Anne's Captain's cabin)
+            fl = ((self.run.recipe.get("art") or {}).get("room_floors") or {}).get(step["room"])
+        if fl is None or not 0 <= fl < self.run.n_floors:
+            return None
+        goal = (fl, *step["at"])
+        start = (self.run.index, *self.run.player)
+        key = (start, goal, tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags))
+        if getattr(self, "_step_key", None) != key:
+            self._step_key, self._step_hit = key, self._step_route(start, goal, step.get("label") or "Here")
+        return self._step_hit
+
+    def _step_route(self, start, goal, label):
+        """The first tile to head for on the shortest way from start to beside goal ((floor, x, y) each)."""
+        from collections import deque
+        art = self.run.recipe.get("art") or {}
+        plans = art.get("floors") or [art]
+        floors = [self.run.made(i) for i in range(self.run.n_floors)]
+        bars, opened = [], []   # (each floor's barred tiles as they stand now: a floor last seen before you had the key keeps its doors drawn shut)
+        for i in range(len(floors)):
+            plan, shut, gone = plans[i] if i < len(plans) and isinstance(plans[i], dict) else {}, set(), set()
+            for bar in plan.get("barred", []):
+                met = self.game.story_manager.inventory.get(bar["item"], 0) > 0 if bar.get("item") else \
+                    self._until_met(bar["until"]) if bar.get("until") else bool(self.game.story_manager.story_flags.get(bar.get("flag")))
+                (gone if met else shut).update(tuple(t) for t in bar.get("tiles", []))
+            bars.append(shut)
+            opened.append(gone - shut)
+
+        def ok(i, x, y):
+            fl = floors[i]
+            return fl.inside(x, y) and (x, y) not in bars[i] and (fl.walkable(x, y) or (x, y) in opened[i] or (i, x, y) == goal)
+
+        stops = [{tuple(t) for t in (plans[i].get("stops") or [])} if i < len(plans) and isinstance(plans[i], dict) else set()
+                 for i in range(len(floors))]
+
+        def slide(i, x, y, dx, dy):
+            """Where a step from (x, y) ends: on a spin tile or ice you're carried on (the Rocket Hideout's maze)."""
+            fl, at, seen = floors[i], (x + dx, y + dy), set()
+            cur, ice = getattr(fl, "current", {}) or {}, getattr(fl, "ice", ()) or ()
+            while at not in seen and at not in fl.exits and at not in stops[i]:
+                seen.add(at)
+                d = cur.get(at) or ((dx, dy) if at in ice else None)
+                if not d:
+                    break
+                nxt = (at[0] + d[0], at[1] + d[1])
+                if not ok(i, *nxt):
+                    break
+                at, (dx, dy) = nxt, d
+            return (i, *at)
+
+        def beside(i, x, y):
+            return [(i, x + dx, y + dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
+
+        def onward(i, x, y):  # (a passage on this tile: where you come out)
+            t = floors[i].exits.get((x, y))
+            if t == core.STAIRS and i + 1 < len(floors):
+                return [n for s, v in floors[i + 1].exits.items() if v == core.STAIRS_UP for n in beside(i + 1, *s)]
+            if t == core.STAIRS_UP and i > 0:
+                return [n for s, v in floors[i - 1].exits.items() if v == core.STAIRS for n in beside(i - 1, *s)]
+            if isinstance(t, str) and t.startswith("WARP:"):
+                f2, x2, y2 = (int(v) for v in t.split(":")[1:4])
+                if 0 <= f2 < len(floors):
+                    return beside(f2, x2, y2)
+            return []
+
+        prev, q, passed = {start: None}, deque([start]), set()
+        while q:
+            cur = q.popleft()
+            if cur == goal:
+                break
+            i, x, y = cur
+            through = cur != start and (x, y) in floors[i].exits   # (stairs or a pad: on through it)
+            nxt = onward(i, x, y) if through else \
+                [slide(i, x, y, dx, dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
+            for n in nxt:
+                if n not in prev:
+                    prev[n] = cur
+                    if through:
+                        passed.add(cur)
+                    q.append(n)
+        if goal not in prev:   # (no way yet: a statue switch on this floor may swing the gates: the Pokémon Mansion's)
+            here = self.run.index
+            for t, kind in sorted(floors[here].decor.items()):
+                if kind == "statue" and any((here, t[0] + dx, t[1] + dy) in prev for dx, dy in core.DIRS):
+                    return (t, "Switch")
+            return None
+        path, c = [], goal
+        while c is not None:
+            path.append(c)
+            c = prev[c]
+        path.reverse()
+        for a, b in zip(path, path[1:]):  # (the first passage on the way: the stairs or pad to take)
+            if a in passed and prev.get(b) == a:
+                return ((a[1], a[2]), "To " + self._floor_name(b[0]) if b[0] != a[0] else "Warp") if a[0] == self.run.index else None
+        return ((goal[1], goal[2]), label) if goal[0] == self.run.index else None
 
     def _draw_gate(self, screen, r, kind):
         """What stands in a locked way out, on its tile."""

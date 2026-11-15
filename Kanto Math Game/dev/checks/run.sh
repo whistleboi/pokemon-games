@@ -27,12 +27,12 @@ for t in "$@"; do
       cat $C/harness_head.py $C/${t}_body.py > $O/check_$t.py
     fi
     out=$(timeout 1500 python $O/check_$t.py $O 2>&1)
-    n=$(echo "$out" | grep -cE 'FAIL |Traceback')
+    n=$(echo "$out" | grep -cE 'FAIL |Traceback|(Syntax|Indentation)Error')   # (a suite that can't even start: no Traceback line)
     [ "$t" = batch5 ] && n=$((n - $(echo "$out" | grep -c '^ValueError: test$')))   # (its crash-handler test raises on purpose)
   fi
   total=$((total + n))
   echo "== $t: $n fails"
-  if [ $VERBOSE = 1 ]; then echo "$out" | grep -v '^Sync: '; else echo "$out" | grep -E 'FAIL|Traceback' -A3 | grep -vE '^--$|##### 0 fail' | head -40; fi
+  if [ $VERBOSE = 1 ]; then echo "$out" | grep -v '^Sync: '; else echo "$out" | grep -E 'FAIL|Traceback|(Syntax|Indentation)Error' -B3 -A3 | grep -vE '^--$|##### 0 fail' | head -40; fi
 done
 echo "##### $total fails in all"
 [ $total = 0 ]

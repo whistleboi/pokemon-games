@@ -363,7 +363,7 @@ check(_p.run.n_floors == 5 and story.story_flags.get("zone_SEAFOAM_ISLANDS") == 
 _p._descend()
 check(story.story_flags.get("zone_SEAFOAM_ISLANDS") == "b1f" and _p._floor_name(1) == "B1F", "down the stairs: B1F's Pokemon")
 _tower = kanto("KANTO_POKEMON_TOWER", came="LAVENDER_TOWN")
-check(_tower.run.n_floors == 4 and "LAVENDER_TOWN" in _tower.run.floor.exits.values(), "the Pokemon Tower: four floors, the way out on 1F")
+check(_tower.run.n_floors == 7 and "LAVENDER_TOWN" in _tower.run.floor.exits.values(), "the Pokemon Tower: FireRed's seven floors (Kanto batch 14), the way out on 1F")
 
 # figures: a legendary doesn't wait for the trainers; story people; the rival on arrival
 for _k in ("POWER_PLANT_boss_defeated",):
@@ -372,7 +372,7 @@ _pp = kanto("POWER_PLANT", came="KANTO_ROUTE_10")
 _pp_trainers = [i for i in range(len(_prog["POWER_PLANT"].get("trainer_pool", []))) if not story.is_trainer_defeated("POWER_PLANT", i)]
 _zap = [m for f in _pp.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
 check(_zap and _pp_trainers, "Power Plant: Zapdos is on the map before its trainers are beaten")
-check(_pp._figure_img(_zap[0].payload) is not None, "...drawn with its Journeys overworld sprite")
+check(_pp._figure_img(_zap[0].payload) is not None, "...drawn with its followers sprite (Jordan 11-14: every overworld Pokemon)")
 story.story_flags.pop("mt_moon_nerd_defeated", None)
 _mm = kanto("MT_MOON", came="PEWTER_CITY")
 _last = _mm.run.n_floors - 1
@@ -387,7 +387,8 @@ if _nm:
     _mm.mode, _mm.anim = "MAP", 0
     _mm.dialogue_box.visible = False
     _mm.step(*_d)
-check(_called and _called[0] in ("SUPER NERD", "TAKE DOME FOSSIL", "TAKE HELIX FOSSIL"), "walking into a figure does its button's action")
+# (11-14: FireRed's item balls lie on B2F too: whichever figure you walk into, its own button)
+check(_called and _called[0] in {m.payload.get("text") for m in _mm.run.floor.movers if m.kind == "figure"}, "walking into a figure does its button's action")
 story.story_flags["received_pokedex_kanto"] = True
 _badges = story.badges.get("KANTO", [])
 story.badges["KANTO"] = []
@@ -423,13 +424,15 @@ for _k in ("silph_co_cleared", "hideout_giovanni_defeated", "game_corner_cleared
     story.story_flags.pop(_k, None)
 story.defeated_trainers.pop("SILPH_CITY", None)
 _sil = kanto("SILPH_CITY", came="SAFFRON_CITY")
-check(_sil.run.n_floors == 5 and _sil._floor_name(4) == "5F" and "SAFFRON_CITY" in _sil.run.floor.exits.values(),
-      "Silph Co.: 1F (the way out) up to 5F")
-check(any(m.kind == "figure" and m.payload.get("text") == "NURSE" for m in _sil.run.floor.movers), "a nurse on 1F")
-while _sil.run.index < 4:
+check(_sil.run.n_floors == 11 and _sil._floor_name(10) == "11F" and "SAFFRON_CITY" in _sil.run.floor.exits.values(),
+      "Silph Co.: 1F (the way out) up to 11F (FireRed's floors)")
+while _sil.run.index < 8:
+    _sil._descend()
+check(any(m.kind == "figure" and m.payload.get("text") == "NURSE" for m in _sil.run.floor.movers), "a nurse on 9F (FireRed's)")
+while _sil.run.index < 10:
     _sil._descend()
 check(any(m.kind == "trainer" and m.payload[1].get("name") == "Giovanni" for m in _sil.run.floor.movers),
-      "Giovanni waits on 5F")
+      "Giovanni waits on 11F")
 _hid = kanto("ROCKET_HIDEOUT", came="CELADON_GAME_CORNER")
 while _hid.run.index < 3:
     _hid._descend()
@@ -803,10 +806,10 @@ _b.player_won = True
 _b.exit_battle()
 check(g.current_state is _mm and _mm.run.index == _mm.run.n_floors - 1 and _mm.run.player == _spot,
       "the Super Nerd beaten: back where you were (not Mt. Moon's entrance)")
-_fos = sorted(m.payload.get("text") for m in _mm.run.floor.movers if m.kind == "figure")
+_fm = [m for m in _mm.run.floor.movers if m.kind == "figure" and "FOSSIL" in str(m.payload.get("text"))]   # (11-14: FireRed's item balls lie about too)
+_fos = sorted(m.payload.get("text") for m in _fm)
 check(_fos == ["TAKE DOME FOSSIL", "TAKE HELIX FOSSIL"]
-      and max(abs(a.x - b.x) + abs(a.y - b.y) for a in _mm.run.floor.movers for b in _mm.run.floor.movers
-              if a.kind == b.kind == "figure") <= 4, "...the two fossils side by side to pick from")
+      and max(abs(a.x - b.x) + abs(a.y - b.y) for a in _fm for b in _fm) <= 4, "...the two fossils side by side to pick from")
 story.story_flags.pop("defeated_rival_nugget_bridge", None)
 _bd = dict(story.badges)
 story.badges["KANTO"] = ["BOULDER"]
@@ -852,7 +855,7 @@ for _k in range(300):
     frames(_wt)
     if _wt.hover_menu_active or _wt.room:
         break
-check(_wt.room == "lab" and any(o.get("target") == "professor_oak" for o in _wt.people.values()), f"walk into the Lab: inside it, Professor Oak there ({_wt.room})")
+check(_wt.room == "lab" and any(o.get("target") == "professor_oak" for v in _wt.people.values() for o in v.get("any", [v])), f"walk into the Lab: inside it, Professor Oak there ({_wt.room})")   # (11-14: his options as one person)
 _wt._go(None, "OUT:16,13")
 g.walk_town_room = None
 _n = min(t for t, v in _wt.exits.items() if v == "KANTO_ROUTE_1")
@@ -1480,7 +1483,7 @@ _sl_in = _sl.player
 _sl_gym = _sl.area_data["gym"]
 _sl._enter(next(t for t, k in _sl.doors.items() if k == "league"))
 _sl_opts = sorted(str(o.get("action")) for o in _sl.people.values())
-check(isinstance(_sl, _WTS) and _tm_s["SILVER_LEAGUE_PLATEAU"]["art"] == _tm_s["INDIGO_PLATEAU"]["art"] and _sl_in[1] >= 17 and _sl.room == "lobby"
+check(isinstance(_sl, _WTS) and len(_tm_s["SILVER_LEAGUE_PLATEAU"]["art"]) == len(_tm_s["INDIGO_PLATEAU"]["art"]) == 20 and _sl_in[1] >= 17 and _sl.room == "lobby"
       and _sl_opts == ["GYM", "HEAL", "SHOP"] and [t["name"] for t in _sl_gym["trainers"]] == ["Will", "Koga", "Bruno", "Karen"] and _sl_gym["leader"]["name"] == "Lance",
       f"the Silver League plateau: Indigo Plateau's map; in from Mt. Silver's clearing (south) at {_sl_in}; the lobby's nurse, clerk and the League door; Will, Koga, Bruno, Karen, Champion Lance")
 _ip_gym = g.loader.area_data["STORY_PROGRESSION"]["INDIGO_PLATEAU"]["gym"]
@@ -1643,8 +1646,8 @@ for _k in ("GOLD_TEETH", "HM_STRENGTH", "GOOD_ROD"):
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "FUCHSIA_CITY", "KANTO_ROUTE_15"
 _fu = _CS(g); g.change_state(_fu); _tap_through(_fu)
-check({"warden", "brother", "gym", "center", "mart"} <= set(_fu.doors.values()) and set(_fu.exits.values()) == {
-    "KANTO_ROUTE_15", "KANTO_ROUTE_18", "KANTO_ROUTE_19", "SAFARI_ZONE"}, "Fuchsia: walked, its doors and four ways out")
+check({"warden", "brother", "gym", "center", "mart", "safari"} <= set(_fu.doors.values()) and set(_fu.exits.values()) == {
+    "KANTO_ROUTE_15", "KANTO_ROUTE_18", "KANTO_ROUTE_19"}, f"Fuchsia: walked, its doors and three ways out (the Safari Zone through its entrance house, Kanto batch 17) {sorted(set(_fu.doors.values()))} {sorted(set(_fu.exits.values()))}")
 def _talk_inside(t, kind):  # (11-11: their houses are rooms now: in by the door, talk to whoever is there, out again)
     door = max((d for d, k in t.doors.items() if k == kind), key=lambda d: d[1])
     t._enter(door)
@@ -1672,6 +1675,8 @@ if _tt:
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "FUCHSIA_CITY", "SAFARI_ZONE"
 _fu = _CS(g); g.change_state(_fu); _tap_through(_fu)
+if getattr(_fu, "room", None) == "safari":   # (back from the Safari Zone you're in its entrance house: out to the street first. Kanto batch 17)
+    _fu._go(None, "OUT:24,5"); g.walk_town_room = None
 _talk_inside(_fu, "warden")
 check(story.inventory.get("HM_STRENGTH") == 1 and not story.inventory.get("GOLD_TEETH"), "the Warden: HM Strength for his teeth")
 
@@ -1725,9 +1730,9 @@ story.inventory.clear(); story.inventory.update(_inv)
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "CINNABAR_ISLAND", "KANTO_ROUTE_21"
 _ci = _CS(g); g.change_state(_ci); _tap_through(_ci)
-check({"mansion", "fossil", "gym", "center", "mart", "harbor"} <= set(_ci.doors.values())
-      and {"KANTO_ROUTE_20", "KANTO_ROUTE_21", "CINNABAR_VOLCANO"} <= set(_ci.exits.values()),
-      "Cinnabar Island: walked; Mansion, Lab, Gym, Center, Mart, harbor; Surf north and east; the volcano")
+check({"fossil", "gym", "center", "mart"} <= set(_ci.doors.values())
+      and {"KANTO_ROUTE_20", "KANTO_ROUTE_21", "CINNABAR_VOLCANO", "POKEMON_MANSION"} <= set(_ci.town_map.get("exits", {}).values()),
+      f"Cinnabar Island: walked; Mansion, Lab, Gym, Center, Mart, harbor; Surf north and east; the volcano ({sorted(set(_ci.doors.values()))}, {[str((o or {}).get('text')) for o in _ci._people().values()]}, {sorted(set(_ci.town_map.get('exits', {}).values()))})")
 
 # the rest of Kanto (Jordan, 11-07): Saffron, the Power Plant, Route 23, Victory Road, Indigo Plateau, Cerulean Cave
 _inv = dict(story.inventory)
@@ -1756,7 +1761,8 @@ story.current_area_key, story.last_area_key = "INDIGO_PLATEAU", "VICTORY_ROAD"
 _ip = _CS(g); g.change_state(_ip); _tap_through(_ip)
 _ipd = set(_ip.doors.values())  # (the town's doors, before you step into the lobby)
 _ip._enter(next(t for t, k in _ip.doors.items() if k == "league"))
-check({"league", "johto"} <= _ipd and _ip.room == "lobby" and {o.get("text") for o in _ip.people.values()} >= {"Heal", "Shop", "ELITE_FOUR"},
+check({"league", "johto"} <= _ipd and _ip.room == "lobby" and {o.get("text") for o in _ip.people.values()} >= {"Heal", "Shop"}
+      and "ROOM:league_lorelei" in _ip.town_map["rooms"]["lobby"].get("exits", {}).values(),
       "Indigo Plateau: the League's door, the ride to Johto; in its lobby the nurse, the clerk and the Elite Four's door (11-12: FireRed's lobby)")
 _ip._go(None, "OUT:11,6"); g.walk_town_room = None
 _cc = kanto("CERULEAN_CAVE", came="CERULEAN_CITY")

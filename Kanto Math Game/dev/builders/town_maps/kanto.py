@@ -3713,3 +3713,9 @@ MAPS = {
 from .frlg import KANTO as _FRLG  # noqa: E402
 
 MAPS.update(_FRLG)
+
+# Rebuilt from the FireRed file by the Hoenn method (firered.py, written by kanto_handoff/kanto_rom_tools/kgen.py, 11-14):
+# loaded last, so each map rebuilt there replaces the one above of the same name.
+from .firered import KANTO as _FIRERED  # noqa: E402
+
+MAPS.update(_FIRERED)

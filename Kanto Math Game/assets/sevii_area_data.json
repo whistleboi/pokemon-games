@@ -597,6 +597,9 @@
         { "sprite": "swimmer_f.png", "name": "Abigail", "class": "SWIMMER", "team": [54, 54, 55], "levels": [35, 36, 37], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_kindle", "event": {"lines": ["An Ether, washed up on the sand."], "gift_item": {"ETHER": 1}, "flag": "got_ether_kindle"}},
+        {"text": "MAX REPEL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrepel_kindle", "event": {"lines": ["A Max Repel, by the cracked rocks."], "gift_item": {"MAX_REPEL": 1}, "flag": "got_maxrepel_kindle"}},
+        {"text": "CARBOS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_carbos_kindle", "event": {"lines": ["A Carbos, in the grass at the foot of Mt. Ember."], "gift_item": {"CARBOS": 1}, "flag": "got_carbos_kindle"}},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -667,6 +670,9 @@
         { "sprite": "ranger_m.png", "name": "Beth", "class": "POKEMON_RANGER", "team": [69, 44, 44], "levels": [38, 38, 38], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball_ember", "event": {"lines": ["An Ultra Ball, high on the mountain."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball_ember"}},
+        {"text": "FIRE STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_firestone_ember", "event": {"lines": ["A Fire Stone, warm from the volcano!"], "gift_item": {"FIRE_STONE": 1}, "flag": "got_firestone_ember"}},
+        {"text": "DIRE HIT", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_direhit_ember", "event": {"lines": ["A Dire Hit, among the rocks."], "gift_item": {"DIRE_HIT": 1}, "flag": "got_direhit_ember"}},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -769,6 +775,7 @@
       "subregion": "SEVII",
       "has_gym": false,
       "explore_options": [
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_twoisland", "event": {"lines": ["A Revive, on the beach."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_twoisland"}},
         {
           "text": "Heal",
           "action": "HEAL"
@@ -976,6 +983,7 @@
       "subregion": "SEVII",
       "has_gym": false,
       "explore_options": [
+        {"text": "ZINC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_zinc_threeisland", "event": {"lines": ["A Zinc, by the houses."], "gift_item": {"ZINC": 1}, "flag": "got_zinc_threeisland"}},
         {
           "text": "Heal",
           "action": "HEAL"
@@ -1103,6 +1111,9 @@
       "min_rounds": 2,
       "trainer_pool": [],
       "route_menu": [
+        {"text": "MAX ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxether_berryforest", "event": {"lines": ["A Max Ether, among the berry bushes."], "gift_item": {"MAX_ETHER": 1}, "flag": "got_maxether_berryforest"}},
+        {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullheal_berryforest", "event": {"lines": ["A Full Heal, by the path."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_fullheal_berryforest"}},
+        {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxelixir_berryforest", "event": {"lines": ["A Max Elixir, near the forest's edge."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_maxelixir_berryforest"}},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",

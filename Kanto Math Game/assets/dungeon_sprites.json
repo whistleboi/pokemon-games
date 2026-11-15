@@ -80,112 +80,112 @@
       "draw": "ghost"
     },
     "SAFARI_ZONE:GOLD TEETH": {
-      "item": "GOLD_TEETH"
+      "item": "POKE_BALL"
     },
     "KANTO_ROUTE_5:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_6:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_7:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_8:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_22:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_11:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_12:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_15:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_16:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_18:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_2:FOREST GUIDE": {
-      "sheet": "NPC 20.png"
+      "sheet": "fr_18.png"
     },
     "KANTO_ROUTE_2:BUG FAN": {
-      "sheet": "NPC 02.png"
+      "sheet": "fr_42.png"
     },
     "KANTO_ROUTE_2:RESTING GIRL": {
-      "sheet": "NPC 08.png"
+      "sheet": "fr_32.png"
     },
     "KANTO_ROUTE_2:GATE LADY": {
-      "sheet": "NPC 14.png"
+      "sheet": "fr_28.png"
     },
     "KANTO_ROUTE_2:YOUNG TRAINER": {
-      "sheet": "NPC 05.png"
+      "sheet": "fr_23.png"
     },
     "KANTO_ROUTE_2:GATE VISITOR": {
-      "sheet": "NPC 21.png"
+      "sheet": "fr_26.png"
     },
     "KANTO_ROUTE_2:TRADER": {
-      "sheet": "NPC 24.png"
+      "sheet": "fr_51.png"
     },
     "KANTO_ROUTE_2:TRADER'S FRIEND": {
-      "sheet": "NPC 28.png"
+      "sheet": "fr_55.png"
     },
     "KANTO_ROUTE_2:OAK'S AIDE": {
-      "sheet": "NPC 15.png"
+      "sheet": "fr_55.png"
     },
     "KANTO_ROUTE_12:FISHING GURU": {
-      "sheet": "NPC 10.png"
+      "sheet": "fr_57.png"
     },
     "KANTO_ROUTE_16:CYCLIST": {
-      "sheet": "NPC 25.png"
+      "sheet": "fr_32.png"
     },
     "KANTO_ROUTE_16:A QUIET HOUSE": {
-      "sheet": "NPC 23.png"
+      "sheet": "fr_23.png"
     },
     "SAFARI_ZONE:SAFARI RANGER": {
-      "sheet": "NPC 20.png"
+      "sheet": "fr_55.png"
     },
     "SAFARI_ZONE:RESTING SCIENTIST": {
-      "sheet": "NPC 15.png"
+      "sheet": "fr_23.png"
     },
     "SAFARI_ZONE:TIRED HIKER": {
-      "sheet": "NPC 06.png"
+      "sheet": "fr_55.png"
     },
     "SAFARI_ZONE:BIRD FAN": {
-      "sheet": "NPC 05.png"
+      "sheet": "fr_26.png"
     },
     "SAFARI_ZONE:ROCK FAN": {
-      "sheet": "NPC 13.png"
+      "sheet": "fr_30.png"
     },
     "SAFARI_ZONE:NAP TAKER": {
-      "sheet": "NPC 18.png"
+      "sheet": "fr_61.png"
     },
     "SAFARI_ZONE:LOST BOY": {
-      "sheet": "NPC 02.png"
+      "sheet": "fr_55.png"
     },
     "SAFARI_ZONE:FISHING FAN": {
-      "sheet": "NPC 07.png"
+      "sheet": "fr_57.png"
     },
     "SAFARI_ZONE:PICNIC GIRL": {
-      "sheet": "NPC 08.png"
+      "sheet": "fr_30.png"
     },
     "SAFARI_ZONE:OLD CAMPER": {
-      "sheet": "NPC 10.png"
+      "sheet": "fr_55.png"
     },
     "SAFARI_ZONE:TEETH HUNTER": {
-      "sheet": "NPC 21.png"
+      "sheet": "fr_25.png"
     },
     "SAFARI_ZONE:LUCKY CATCHER": {
-      "sheet": "NPC 28.png"
+      "sheet": "fr_42.png"
     },
     "SAFARI_ZONE:SECRET HOUSE MAN": {
-      "sheet": "NPC 24.png"
+      "sheet": "fr_47.png"
     },
     "VERMILLION_CITY:Machop": {
       "pokemon": 66
@@ -314,7 +314,7 @@
       "sheet": "NPC 15.png"
     },
     "MT_MOON:SUPER NERD": {
-      "sheet": "trchar034.png"
+      "sheet": "fr_55.png"
     },
     "MT_MOON:TAKE DOME FOSSIL": {
       "item": "DOME_FOSSIL"
@@ -323,22 +323,22 @@
       "item": "HELIX_FOSSIL"
     },
     "KANTO_ROUTE_5:POKéMON DAY CARE": {
-      "sheet": "NPC 11.png"
+      "sheet": "fr_61.png"
     },
     "SILPH_CITY:NURSE": {
-      "sheet": "NPC 16.png"
+      "sheet": "fr_28.png"
     },
     "SILPH_CITY:TALK TO EMPLOYEE": {
-      "sheet": "trchar033.png"
+      "sheet": "fr_28.png"
     },
     "SILPH_CITY:VISIT THE PRESIDENT": {
-      "sheet": "trchar016.png"
+      "sheet": "fr_33.png"
     },
     "ROCKET_HIDEOUT:GIOVANNI": {
-      "sheet": "trchar031.png"
+      "sheet": "fr_87.png"
     },
     "ROCKET_HIDEOUT:SILPH SCOPE": {
-      "item": "SILPH_SCOPE"
+      "item": "POKE_BALL"
     },
     "POKEMON_MANSION:BURGLAR SIMON": {
       "sheet": "trchar012.png"
@@ -347,7 +347,7 @@
       "sheet": "trchar024.png"
     },
     "CELADON_GAME_CORNER:CLERK": {
-      "sheet": "NPC 19.png"
+      "sheet": "fr_47.png"
     },
     "NATIONAL_PARK:BUG-CATCHING CONTEST": {
       "sheet": "NPC 01.png"
@@ -3382,6 +3382,2013 @@
     },
     "HOENN_BATTLE_FRONTIER:Pike attendant": {
       "sheet": "em_45.png"
+    },
+    "HOENN_JAGGED_PASS:TM103 ROCK POLISH": {
+      "item": "TM103"
+    },
+    "HOENN_JAGGED_PASS:TM102 FLAME CHARGE": {
+      "item": "TM102"
+    },
+    "HOENN_MT_PYRE:TM38 WILL-O-WISP": {
+      "item": "TM38"
+    },
+    "HOENN_MT_PYRE:TM105 SHADOW BALL": {
+      "item": "TM105"
+    },
+    "HOENN_SAFARI_ZONE:TM11 SOLAR BEAM": {
+      "item": "TM11"
+    },
+    "HOENN_SHOAL_CAVE:TM35 HAIL": {
+      "item": "TM35"
+    },
+    "HOENN_SEAFLOOR_CAVERN:TM107 SCALD": {
+      "item": "TM107"
+    },
+    "HOENN_SEAFLOOR_CAVERN:TM106 EARTHQUAKE": {
+      "item": "TM106"
+    },
+    "HOENN_SHOAL_CAVE:TM108 FROST BREATH": {
+      "item": "TM108"
+    },
+    "HOENN_ABANDONED_SHIP:TM115 ICE BEAM": {
+      "item": "TM115"
+    },
+    "HOENN_ABANDONED_SHIP:TM33 RAIN DANCE": {
+      "item": "TM33"
+    },
+    "HOENN_SCORCHED_SLAB:TM34 SUNNY DAY": {
+      "item": "TM34"
+    },
+    "PALLET_TOWN:Girl": {
+      "sheet": "fr_23.png"
+    },
+    "PALLET_TOWN:Technology fan": {
+      "sheet": "fr_27.png"
+    },
+    "PALLET_TOWN:Talk to Mom": {
+      "sheet": "fr_88.png"
+    },
+    "PALLET_TOWN:Daisy": {
+      "sheet": "fr_76.png"
+    },
+    "PALLET_TOWN:Talk to Professor Oak": {
+      "sheet": "fr_71.png"
+    },
+    "PALLET_TOWN:Professor Oak": {
+      "sheet": "fr_71.png"
+    },
+    "PALLET_TOWN:Show Oak your Pokedex": {
+      "sheet": "fr_71.png"
+    },
+    "PALLET_TOWN:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "PALLET_TOWN:Bulbasaur's Poke Ball": {
+      "item": "POKE_BALL"
+    },
+    "PALLET_TOWN:Squirtle's Poke Ball": {
+      "item": "POKE_BALL"
+    },
+    "PALLET_TOWN:Charmander's Poke Ball": {
+      "item": "POKE_BALL"
+    },
+    "PALLET_TOWN:Visitor": {
+      "sheet": "fr_48.png"
+    },
+    "PALLET_TOWN:Aide ": {
+      "sheet": "fr_55.png"
+    },
+    "PALLET_TOWN:Aide": {
+      "sheet": "fr_55.png"
+    },
+    "KANTO_ROUTE_1:Boy": {
+      "sheet": "fr_19.png"
+    },
+    "KANTO_ROUTE_1:POKE MART CLERK": {
+      "sheet": "fr_68.png"
+    },
+    "VIRIDIAN_CITY:POTION": {
+      "item": "POKE_BALL"
+    },
+    "VIRIDIAN_CITY:Wake Sleeping Man": {
+      "sheet": "fr_34.png"
+    },
+    "VIRIDIAN_CITY:Youngster": {
+      "sheet": "fr_19.png"
+    },
+    "VIRIDIAN_CITY:Granddaughter": {
+      "sheet": "fr_31.png"
+    },
+    "VIRIDIAN_CITY:Boy": {
+      "sheet": "fr_19.png"
+    },
+    "VIRIDIAN_CITY:Man": {
+      "sheet": "fr_27.png"
+    },
+    "VIRIDIAN_CITY:Bug fan": {
+      "sheet": "fr_18.png"
+    },
+    "VIRIDIAN_CITY:Nickname fan": {
+      "sheet": "fr_30.png"
+    },
+    "VIRIDIAN_CITY:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "VIRIDIAN_CITY:Speary": {
+      "sheet": "fr_110.png"
+    },
+    "VIRIDIAN_CITY:Gym": {
+      "sheet": "fr_87.png"
+    },
+    "VIRIDIAN_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "VIRIDIAN_CITY:Lesson: Types": {
+      "sheet": "fr_28.png"
+    },
+    "VIRIDIAN_CITY:Lesson: Real-Time Battles": {
+      "sheet": "fr_28.png"
+    },
+    "VIRIDIAN_CITY:Lesson: Catching": {
+      "sheet": "fr_28.png"
+    },
+    "VIRIDIAN_CITY:Lesson: Mega Evolution": {
+      "sheet": "fr_28.png"
+    },
+    "VIRIDIAN_CITY:Lesson: Your Team": {
+      "sheet": "fr_28.png"
+    },
+    "VIRIDIAN_CITY:Student": {
+      "sheet": "fr_22.png"
+    },
+    "VIRIDIAN_CITY:Shopper": {
+      "sheet": "fr_18.png"
+    },
+    "VIRIDIAN_CITY:Poke Mart": {
+      "sheet": "fr_68.png"
+    },
+    "VIRIDIAN_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "VIRIDIAN_CITY:Lady": {
+      "sheet": "fr_18.png"
+    },
+    "VIRIDIAN_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "VIRIDIAN_CITY:Gentleman": {
+      "sheet": "fr_61.png"
+    },
+    "VIRIDIAN_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "VIRIDIAN_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VIRIDIAN_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VIRIDIAN_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_22:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "VIRIDIAN_FOREST:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "VIRIDIAN_FOREST:POTION": {
+      "item": "POKE_BALL"
+    },
+    "VIRIDIAN_FOREST:POKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "VIRIDIAN_FOREST:Bug Catcher": {
+      "sheet": "fr_18.png"
+    },
+    "VIRIDIAN_FOREST:Youngster": {
+      "sheet": "fr_19.png"
+    },
+    "VIRIDIAN_FOREST:POTION ": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_2:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_2:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "PEWTER_CITY:Girl": {
+      "sheet": "fr_51.png"
+    },
+    "PEWTER_CITY:Museum fan": {
+      "sheet": "fr_25.png"
+    },
+    "PEWTER_CITY:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "PEWTER_CITY:Gardener": {
+      "sheet": "fr_20.png"
+    },
+    "PEWTER_CITY:Man": {
+      "sheet": "fr_27.png"
+    },
+    "PEWTER_CITY:Old Amber": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Amber scientist": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "PEWTER_CITY:Curator": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Visit Museum": {
+      "sheet": "fr_47.png"
+    },
+    "PEWTER_CITY:Researcher": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Guide": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "PEWTER_CITY:Dad": {
+      "sheet": "fr_30.png"
+    },
+    "PEWTER_CITY:Gym": {
+      "sheet": "fr_80.png"
+    },
+    "PEWTER_CITY:Camper Liam": {
+      "sheet": "fr_39.png"
+    },
+    "PEWTER_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "PEWTER_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "PEWTER_CITY:Shopper": {
+      "sheet": "fr_19.png"
+    },
+    "PEWTER_CITY:Nidoran": {
+      "sheet": "fr_123.png"
+    },
+    "PEWTER_CITY:Sleepy man": {
+      "sheet": "fr_18.png"
+    },
+    "PEWTER_CITY:Jigglypuff": {
+      "sheet": "fr_115.png"
+    },
+    "PEWTER_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "PEWTER_CITY:Lady": {
+      "sheet": "fr_23.png"
+    },
+    "PEWTER_CITY:Man on the phone": {
+      "sheet": "fr_61.png"
+    },
+    "PEWTER_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "PEWTER_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "PEWTER_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "PEWTER_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_3:Youngster": {
+      "sheet": "fr_19.png"
+    },
+    "KANTO_ROUTE_3:Boy": {
+      "sheet": "fr_19.png"
+    },
+    "KANTO_ROUTE_3:Tired hiker": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_ROUTE_3:POKEMON CENTER": {
+      "sheet": "fr_64.png"
+    },
+    "KANTO_ROUTE_3:MAGIKARP SALESMAN": {
+      "sheet": "fr_30.png"
+    },
+    "KANTO_ROUTE_3:Lady": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_ROUTE_3:Man": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_ROUTE_3:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "KANTO_ROUTE_3:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_3:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_3:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "MT_MOON:MOON STONE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:Hiker": {
+      "sheet": "fr_30.png"
+    },
+    "MT_MOON:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:POTION": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:TM50": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:TM23": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:STAR PIECE": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_4:Hiker": {
+      "sheet": "fr_54.png"
+    },
+    "KANTO_ROUTE_4:Hiker ": {
+      "sheet": "fr_54.png"
+    },
+    "KANTO_ROUTE_4:TM120": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CITY:ROCKET GRUNT": {
+      "sheet": "fr_49.png"
+    },
+    "CERULEAN_CITY:Police officer": {
+      "sheet": "fr_60.png"
+    },
+    "CERULEAN_CITY:Cave guard": {
+      "sheet": "fr_41.png"
+    },
+    "CERULEAN_CITY:Little boy": {
+      "sheet": "fr_16.png"
+    },
+    "CERULEAN_CITY:Youngster": {
+      "sheet": "fr_22.png"
+    },
+    "CERULEAN_CITY:Gentleman": {
+      "sheet": "fr_30.png"
+    },
+    "CERULEAN_CITY:Slowbro": {
+      "sheet": "fr_129.png"
+    },
+    "CERULEAN_CITY:Trainer": {
+      "sheet": "fr_22.png"
+    },
+    "CERULEAN_CITY:Girl": {
+      "sheet": "fr_23.png"
+    },
+    "CERULEAN_CITY:Badge fan": {
+      "sheet": "fr_61.png"
+    },
+    "CERULEAN_CITY:Man": {
+      "sheet": "fr_26.png"
+    },
+    "CERULEAN_CITY:Woman": {
+      "sheet": "fr_22.png"
+    },
+    "CERULEAN_CITY:Trader": {
+      "sheet": "fr_32.png"
+    },
+    "CERULEAN_CITY:Wife": {
+      "sheet": "fr_35.png"
+    },
+    "CERULEAN_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "CERULEAN_CITY:Lady": {
+      "sheet": "fr_18.png"
+    },
+    "CERULEAN_CITY:Boy": {
+      "sheet": "fr_18.png"
+    },
+    "CERULEAN_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "CERULEAN_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CERULEAN_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CERULEAN_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CERULEAN_CITY:Gym": {
+      "sheet": "fr_81.png"
+    },
+    "CERULEAN_CITY:Picnicker Diana": {
+      "sheet": "fr_40.png"
+    },
+    "CERULEAN_CITY:Swimmer Luis": {
+      "sheet": "fr_43.png"
+    },
+    "CERULEAN_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "CERULEAN_CITY:Bike Shop": {
+      "sheet": "fr_25.png"
+    },
+    "CERULEAN_CITY:Shopper": {
+      "sheet": "fr_18.png"
+    },
+    "CERULEAN_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "CERULEAN_CITY:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "CERULEAN_CITY:Berry grinder": {
+      "sheet": "fr_33.png"
+    },
+    "KANTO_ROUTE_24:TM31": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_24:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "KANTO_ROUTE_25:TM112": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_25:Boyfriend": {
+      "sheet": "fr_29.png"
+    },
+    "KANTO_ROUTE_25:Girlfriend": {
+      "sheet": "fr_25.png"
+    },
+    "BILLS_HOUSE:Talk to Bill": {
+      "sheet": "fr_113.png"
+    },
+    "BILLS_HOUSE:Bill": {
+      "sheet": "fr_73.png"
+    },
+    "UNDERGROUND_PATH:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "UNDERGROUND_PATH:Girl": {
+      "sheet": "fr_28.png"
+    },
+    "VERMILLION_CITY:Scientist": {
+      "sheet": "fr_55.png"
+    },
+    "VERMILLION_CITY:Old man": {
+      "sheet": "fr_30.png"
+    },
+    "VERMILLION_CITY:Builder": {
+      "sheet": "fr_33.png"
+    },
+    "VERMILLION_CITY:Lady": {
+      "sheet": "fr_25.png"
+    },
+    "VERMILLION_CITY:Sailor": {
+      "sheet": "fr_42.png"
+    },
+    "VERMILLION_CITY:Harbor sailor": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Fishing Guru": {
+      "sheet": "fr_57.png"
+    },
+    "VERMILLION_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "VERMILLION_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "VERMILLION_CITY:Man": {
+      "sheet": "fr_42.png"
+    },
+    "VERMILLION_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "VERMILLION_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VERMILLION_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VERMILLION_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VERMILLION_CITY:Pokemon Fan Club": {
+      "sheet": "fr_61.png"
+    },
+    "VERMILLION_CITY:Member": {
+      "sheet": "fr_48.png"
+    },
+    "VERMILLION_CITY:Seel's owner": {
+      "sheet": "fr_23.png"
+    },
+    "VERMILLION_CITY:Pikachu's owner": {
+      "sheet": "fr_27.png"
+    },
+    "VERMILLION_CITY:Seel": {
+      "sheet": "fr_126.png"
+    },
+    "VERMILLION_CITY:Pikachu": {
+      "sheet": "fr_120.png"
+    },
+    "VERMILLION_CITY:Boy": {
+      "sheet": "fr_19.png"
+    },
+    "VERMILLION_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "VERMILLION_CITY:Gym": {
+      "sheet": "fr_82.png"
+    },
+    "VERMILLION_CITY:Gentleman Tucker": {
+      "sheet": "fr_61.png"
+    },
+    "VERMILLION_CITY:Rocker Baily": {
+      "sheet": "fr_30.png"
+    },
+    "VERMILLION_CITY:Sailor Dwayne": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "VERMILLION_CITY:Girl": {
+      "sheet": "fr_22.png"
+    },
+    "VERMILLION_CITY:Pidgey": {
+      "sheet": "fr_116.png"
+    },
+    "KANTO_SS_ANNE:Sailor": {
+      "sheet": "fr_62.png"
+    },
+    "KANTO_SS_ANNE:Waiter": {
+      "sheet": "fr_47.png"
+    },
+    "KANTO_SS_ANNE:Passenger": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_SS_ANNE:Seasick man": {
+      "sheet": "fr_30.png"
+    },
+    "KANTO_SS_ANNE:Deckhand": {
+      "sheet": "fr_62.png"
+    },
+    "KANTO_SS_ANNE:Chef  ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Chef": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Cook": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Chef ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Cook ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Head chef": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Cook  ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Agent": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_SS_ANNE:Mother": {
+      "sheet": "fr_28.png"
+    },
+    "KANTO_SS_ANNE:TM43": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Wigglytuff": {
+      "sheet": "fr_131.png"
+    },
+    "KANTO_SS_ANNE:Gentleman": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_SS_ANNE:Lady": {
+      "sheet": "fr_17.png"
+    },
+    "KANTO_SS_ANNE:Girl": {
+      "sheet": "fr_23.png"
+    },
+    "KANTO_SS_ANNE:Kind lady": {
+      "sheet": "fr_28.png"
+    },
+    "KANTO_SS_ANNE:STARDUST": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "KANTO_SS_ANNE:X ATTACK": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Boy": {
+      "sheet": "fr_31.png"
+    },
+    "KANTO_SS_ANNE:CAPTAIN": {
+      "sheet": "fr_63.png"
+    },
+    "KANTO_SS_ANNE:TM21": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Machoke": {
+      "sheet": "fr_134.png"
+    },
+    "KANTO_SS_ANNE:Trainer": {
+      "sheet": "fr_19.png"
+    },
+    "VERMILLION_CITY:Orange Islands Ferry": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Aqua to Olivine": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Anne to the Orange Islands": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Aqua": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Anne": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Dock sailor": {
+      "sheet": "fr_62.png"
+    },
+    "KANTO_ROUTE_11:AWAKENING": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_11:X DEFEND": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_11:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_11:Man": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_11:Trader": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_ROUTE_11:OAK'S AIDE": {
+      "sheet": "fr_55.png"
+    },
+    "DIGGLETT_CAVE:Hiker": {
+      "sheet": "fr_56.png"
+    },
+    "DIGGLETT_CAVE:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "KANTO_ROUTE_9:TM121": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_9:BURN HEAL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_10:POKEMON CENTER": {
+      "sheet": "fr_64.png"
+    },
+    "KANTO_ROUTE_10:Man": {
+      "sheet": "fr_27.png"
+    },
+    "KANTO_ROUTE_10:Youngster": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_ROUTE_10:OAK'S AIDE": {
+      "sheet": "fr_55.png"
+    },
+    "KANTO_ROUTE_10:Girl": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_ROUTE_10:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "KANTO_ROUTE_10:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_10:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_10:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ROCK_TUNNEL:REPEL": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:PEARL": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:Hiker": {
+      "sheet": "fr_18.png"
+    },
+    "ROCK_TUNNEL:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "LAVENDER_TOWN:Boy": {
+      "sheet": "fr_18.png"
+    },
+    "LAVENDER_TOWN:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "LAVENDER_TOWN:Man": {
+      "sheet": "fr_30.png"
+    },
+    "LAVENDER_TOWN:Gentleman": {
+      "sheet": "fr_18.png"
+    },
+    "LAVENDER_TOWN:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "LAVENDER_TOWN:Girl": {
+      "sheet": "fr_16.png"
+    },
+    "LAVENDER_TOWN:Youngster": {
+      "sheet": "fr_30.png"
+    },
+    "LAVENDER_TOWN:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "LAVENDER_TOWN:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "LAVENDER_TOWN:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "LAVENDER_TOWN:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "LAVENDER_TOWN:Girl ": {
+      "sheet": "fr_17.png"
+    },
+    "LAVENDER_TOWN:Talk to Mr. Fuji": {
+      "sheet": "fr_78.png"
+    },
+    "LAVENDER_TOWN:Nidorino": {
+      "sheet": "fr_124.png"
+    },
+    "LAVENDER_TOWN:Psyduck": {
+      "sheet": "fr_121.png"
+    },
+    "LAVENDER_TOWN:Woman": {
+      "sheet": "fr_42.png"
+    },
+    "LAVENDER_TOWN:Cubone": {
+      "sheet": "fr_111.png"
+    },
+    "LAVENDER_TOWN:Name Rater": {
+      "sheet": "fr_61.png"
+    },
+    "LAVENDER_TOWN:Lady": {
+      "sheet": "fr_26.png"
+    },
+    "LAVENDER_TOWN:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "CELADON_CITY:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "CELADON_CITY:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "CELADON_CITY:Poliwrath": {
+      "sheet": "fr_112.png"
+    },
+    "CELADON_CITY:Old man": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_CITY:Grunt": {
+      "sheet": "fr_49.png"
+    },
+    "CELADON_CITY:Girl": {
+      "sheet": "fr_27.png"
+    },
+    "CELADON_CITY:Old man ": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_CITY:Woman": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Gambler": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_CITY:Man ": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Man": {
+      "sheet": "fr_25.png"
+    },
+    "CELADON_CITY:Grunt ": {
+      "sheet": "fr_49.png"
+    },
+    "CELADON_CITY:Receptionist": {
+      "sheet": "fr_35.png"
+    },
+    "CELADON_CITY:Dept. Store": {
+      "sheet": "fr_68.png"
+    },
+    "CELADON_CITY:Clerk ": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Clerk": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Lady": {
+      "sheet": "fr_22.png"
+    },
+    "CELADON_CITY:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "CELADON_CITY:Boy  ": {
+      "sheet": "fr_51.png"
+    },
+    "CELADON_CITY:Boy ": {
+      "sheet": "fr_51.png"
+    },
+    "CELADON_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "CELADON_CITY:Gentleman": {
+      "sheet": "fr_61.png"
+    },
+    "CELADON_CITY:Sailor": {
+      "sheet": "fr_62.png"
+    },
+    "CELADON_CITY:Nidoran": {
+      "sheet": "fr_122.png"
+    },
+    "CELADON_CITY:Meowth": {
+      "sheet": "fr_125.png"
+    },
+    "CELADON_CITY:Celadon Mansion": {
+      "sheet": "fr_35.png"
+    },
+    "CELADON_CITY:Clefairy": {
+      "sheet": "fr_113.png"
+    },
+    "CELADON_CITY:Game designer": {
+      "sheet": "fr_25.png"
+    },
+    "CELADON_CITY:Programmer": {
+      "sheet": "fr_26.png"
+    },
+    "CELADON_CITY:Artist": {
+      "sheet": "fr_52.png"
+    },
+    "CELADON_CITY:Writer": {
+      "sheet": "fr_27.png"
+    },
+    "CELADON_CITY:EEVEE": {
+      "item": "POKE_BALL"
+    },
+    "CELADON_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "CELADON_CITY:Biker": {
+      "sheet": "fr_42.png"
+    },
+    "CELADON_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "CELADON_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CELADON_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CELADON_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CELADON_CITY:Prize Corner": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Beauty Lori": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Gym": {
+      "sheet": "fr_83.png"
+    },
+    "CELADON_CITY:Lass Lisa": {
+      "sheet": "fr_22.png"
+    },
+    "CELADON_CITY:Beauty Tamia": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Cooltrainer Mary": {
+      "sheet": "fr_42.png"
+    },
+    "CELADON_CITY:Picnicker Tina": {
+      "sheet": "fr_40.png"
+    },
+    "CELADON_CITY:Beauty Bridget": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Lass Kay": {
+      "sheet": "fr_22.png"
+    },
+    "CELADON_CITY:Chef": {
+      "sheet": "fr_59.png"
+    },
+    "ROCKET_HIDEOUT:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:X SPEED": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:MOON STONE": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM122": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM114": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:BLACK GLASSES": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:LIFT KEY": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM123": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "CELADON_GAME_CORNER:Clerk": {
+      "sheet": "fr_48.png"
+    },
+    "CELADON_GAME_CORNER:Man": {
+      "sheet": "fr_30.png"
+    },
+    "CELADON_GAME_CORNER:Gambler ": {
+      "sheet": "fr_57.png"
+    },
+    "CELADON_GAME_CORNER:Fisherman": {
+      "sheet": "fr_55.png"
+    },
+    "CELADON_GAME_CORNER:Gambler": {
+      "sheet": "fr_28.png"
+    },
+    "CELADON_GAME_CORNER:Woman": {
+      "sheet": "fr_23.png"
+    },
+    "CELADON_GAME_CORNER:Old man": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_GAME_CORNER:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "CELADON_GAME_CORNER:Gentleman": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_POKEMON_TOWER:Girl": {
+      "sheet": "fr_28.png"
+    },
+    "KANTO_POKEMON_TOWER:Channeler": {
+      "sheet": "fr_58.png"
+    },
+    "KANTO_POKEMON_TOWER:Old woman": {
+      "sheet": "fr_31.png"
+    },
+    "KANTO_POKEMON_TOWER:Man": {
+      "sheet": "fr_30.png"
+    },
+    "KANTO_POKEMON_TOWER:Receptionist": {
+      "sheet": "fr_48.png"
+    },
+    "KANTO_POKEMON_TOWER:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:AWAKENING": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:CLEANSE TAG": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:X ACCURACY": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:MR. FUJI": {
+      "sheet": "fr_78.png"
+    },
+    "KANTO_ROUTE_12:TM124": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_12:IRON": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_12:Little girl": {
+      "sheet": "fr_22.png"
+    },
+    "KANTO_ROUTE_15:TM33": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_15:Oak's aide": {
+      "sheet": "fr_55.png"
+    },
+    "FUCHSIA_CITY:Girl": {
+      "sheet": "fr_22.png"
+    },
+    "FUCHSIA_CITY:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "FUCHSIA_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "FUCHSIA_CITY:Woman": {
+      "sheet": "fr_25.png"
+    },
+    "FUCHSIA_CITY:Erik": {
+      "sheet": "fr_27.png"
+    },
+    "FUCHSIA_CITY:Gentleman": {
+      "sheet": "fr_32.png"
+    },
+    "FUCHSIA_CITY:Attendant": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Attendant ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "FUCHSIA_CITY:Man": {
+      "sheet": "fr_42.png"
+    },
+    "FUCHSIA_CITY:Worker": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Worker ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Worker  ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Worker   ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Tamer Edgar": {
+      "sheet": "fr_25.png"
+    },
+    "FUCHSIA_CITY:Tamer Phil": {
+      "sheet": "fr_25.png"
+    },
+    "FUCHSIA_CITY:Juggler Shawn": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Juggler Kirk": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Gym": {
+      "sheet": "fr_84.png"
+    },
+    "FUCHSIA_CITY:Juggler Nate": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Juggler Kayden": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "FUCHSIA_CITY:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "FUCHSIA_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "FUCHSIA_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "FUCHSIA_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FUCHSIA_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FUCHSIA_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FUCHSIA_CITY:Return the Gold Teeth": {
+      "sheet": "fr_33.png"
+    },
+    "FUCHSIA_CITY:Warden": {
+      "sheet": "fr_33.png"
+    },
+    "FUCHSIA_CITY:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "FUCHSIA_CITY:Fishing Guru's Brother": {
+      "sheet": "fr_57.png"
+    },
+    "FUCHSIA_CITY:Move Deleter": {
+      "sheet": "fr_30.png"
+    },
+    "SAFARI_ZONE:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:TM30": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:QUICK CLAW": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:TM125": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:LEAF STONE": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:TM34": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:MAX POTION ": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_16:Fearow": {
+      "sheet": "fr_133.png"
+    },
+    "KANTO_ROUTE_16:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "KANTO_ROUTE_16:OAK'S AIDE": {
+      "sheet": "fr_55.png"
+    },
+    "KANTO_ROUTE_16:Girl": {
+      "sheet": "fr_17.png"
+    },
+    "KANTO_ROUTE_18:Trader": {
+      "sheet": "fr_19.png"
+    },
+    "SAFFRON_CITY:Grunt  ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Boy": {
+      "sheet": "fr_18.png"
+    },
+    "SAFFRON_CITY:Grunt   ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Man ": {
+      "sheet": "fr_19.png"
+    },
+    "SAFFRON_CITY:Pidgeot": {
+      "sheet": "fr_114.png"
+    },
+    "SAFFRON_CITY:Woman": {
+      "sheet": "fr_31.png"
+    },
+    "SAFFRON_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "SAFFRON_CITY:Grunt       ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt     ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Man": {
+      "sheet": "fr_26.png"
+    },
+    "SAFFRON_CITY:Grunt    ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Grunt      ": {
+      "sheet": "fr_49.png"
+    },
+    "SAFFRON_CITY:Lass": {
+      "sheet": "fr_22.png"
+    },
+    "SAFFRON_CITY:Mom": {
+      "sheet": "fr_31.png"
+    },
+    "SAFFRON_CITY:Chansey": {
+      "sheet": "fr_117.png"
+    },
+    "SAFFRON_CITY:Dad": {
+      "sheet": "fr_30.png"
+    },
+    "SAFFRON_CITY:Visit Copycat": {
+      "sheet": "fr_17.png"
+    },
+    "SAFFRON_CITY:Doduo": {
+      "sheet": "fr_132.png"
+    },
+    "SAFFRON_CITY:Black Belt Mike": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Black Belt Aaron": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Black Belt Hideki": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Black Belt Hitoshi": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Psychic Preston": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Channeler Amanda": {
+      "sheet": "fr_58.png"
+    },
+    "SAFFRON_CITY:Psychic Johan": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Channeler Stacy": {
+      "sheet": "fr_58.png"
+    },
+    "SAFFRON_CITY:Psychic Tyron": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Gym": {
+      "sheet": "fr_85.png"
+    },
+    "SAFFRON_CITY:Channeler Tasha": {
+      "sheet": "fr_58.png"
+    },
+    "SAFFRON_CITY:Psychic Cameron": {
+      "sheet": "fr_41.png"
+    },
+    "SAFFRON_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "SAFFRON_CITY:Girl": {
+      "sheet": "fr_17.png"
+    },
+    "SAFFRON_CITY:Pidgey": {
+      "sheet": "fr_116.png"
+    },
+    "SAFFRON_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "SAFFRON_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "SAFFRON_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "SAFFRON_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SAFFRON_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SAFFRON_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SAFFRON_CITY:Mr. Psychic": {
+      "sheet": "fr_30.png"
+    },
+    "SAFFRON_CITY:Black belt": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Club chairman": {
+      "sheet": "fr_61.png"
+    },
+    "SAFFRON_CITY:Lady": {
+      "sheet": "fr_29.png"
+    },
+    "SAFFRON_CITY:Ex-fan": {
+      "sheet": "fr_24.png"
+    },
+    "SILPH_CITY:Receptionist": {
+      "sheet": "fr_48.png"
+    },
+    "SILPH_CITY:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:Worker": {
+      "sheet": "fr_47.png"
+    },
+    "SILPH_CITY:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:TM128": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:Scientist": {
+      "sheet": "fr_55.png"
+    },
+    "SILPH_CITY:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:TM127": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:CARD KEY": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:Worker  ": {
+      "sheet": "fr_47.png"
+    },
+    "SILPH_CITY:Woman": {
+      "sheet": "fr_48.png"
+    },
+    "SILPH_CITY:Woman ": {
+      "sheet": "fr_48.png"
+    },
+    "SILPH_CITY:Worker ": {
+      "sheet": "fr_47.png"
+    },
+    "SILPH_CITY:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:X SP. ATK": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:LAPRAS": {
+      "sheet": "fr_47.png"
+    },
+    "SILPH_CITY:TM116": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:IRON": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:Secretary": {
+      "sheet": "fr_48.png"
+    },
+    "SILPH_CITY:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_20:Swimmer": {
+      "sheet": "fr_39.png"
+    },
+    "CINNABAR_ISLAND:Islander": {
+      "sheet": "fr_28.png"
+    },
+    "CINNABAR_ISLAND:Scientist": {
+      "sheet": "fr_19.png"
+    },
+    "CINNABAR_ISLAND:Gym": {
+      "sheet": "fr_86.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Erik": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Avery": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Zac": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Burglar Ramon": {
+      "sheet": "fr_52.png"
+    },
+    "CINNABAR_ISLAND:Burglar Quinn": {
+      "sheet": "fr_52.png"
+    },
+    "CINNABAR_ISLAND:Super Nerd Derek": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Burglar Dusty": {
+      "sheet": "fr_52.png"
+    },
+    "CINNABAR_ISLAND:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "CINNABAR_ISLAND:Scientist  ": {
+      "sheet": "fr_28.png"
+    },
+    "CINNABAR_ISLAND:Scientist ": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Pokemon Lab": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "CINNABAR_ISLAND:Woman": {
+      "sheet": "fr_28.png"
+    },
+    "CINNABAR_ISLAND:Man": {
+      "sheet": "fr_55.png"
+    },
+    "CINNABAR_ISLAND:Youngster": {
+      "sheet": "fr_61.png"
+    },
+    "CINNABAR_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "CINNABAR_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CINNABAR_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CINNABAR_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CINNABAR_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "CINNABAR_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_108.png"
+    },
+    "POKEMON_MANSION:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:IRON": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:TM111": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:TM11": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:ICE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:WATER STONE": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:BIG PEARL": {
+      "item": "POKE_BALL"
+    },
+    "SEAFOAM_ISLANDS:CHALLENGE ARTICUNO": {
+      "sheet": "fr_138.png"
+    },
+    "SEAFOAM_ISLANDS:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_23:EARTH BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:VOLCANO BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:MARSH BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:SOUL BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:RAINBOW BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:THUNDER BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_23:CASCADE BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "VICTORY_ROAD:TM129": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:GUARD SPEC.": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM35": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:Cooltrainer": {
+      "sheet": "fr_41.png"
+    },
+    "VICTORY_ROAD:TM32": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM117": {
+      "item": "POKE_BALL"
+    },
+    "INDIGO_PLATEAU:Guard": {
+      "sheet": "fr_42.png"
+    },
+    "INDIGO_PLATEAU:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "INDIGO_PLATEAU:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "INDIGO_PLATEAU:Man": {
+      "sheet": "fr_54.png"
+    },
+    "INDIGO_PLATEAU:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "INDIGO_PLATEAU:Boy": {
+      "sheet": "fr_41.png"
+    },
+    "INDIGO_PLATEAU:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "INDIGO_PLATEAU:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "INDIGO_PLATEAU:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "INDIGO_PLATEAU:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "INDIGO_PLATEAU:Lorelei": {
+      "sheet": "fr_77.png"
+    },
+    "INDIGO_PLATEAU:Bruno": {
+      "sheet": "fr_79.png"
+    },
+    "INDIGO_PLATEAU:Agatha": {
+      "sheet": "fr_75.png"
+    },
+    "INDIGO_PLATEAU:Lance": {
+      "sheet": "fr_74.png"
+    },
+    "INDIGO_PLATEAU:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "POWER_PLANT:THUNDER STONE": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:CHALLENGE ZAPDOS": {
+      "sheet": "fr_136.png"
+    },
+    "POWER_PLANT:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:TM25": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:TM110": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:FULL RESTORE ": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:ULTRA BALL ": {
+      "item": "POKE_BALL"
+    },
+    "CERULEAN_CAVE:CHALLENGE MEWTWO": {
+      "sheet": "fr_139.png"
+    },
+    "ONE_ISLAND:Man": {
+      "sheet": "fr_56.png"
+    },
+    "ONE_ISLAND:Woman": {
+      "sheet": "fr_24.png"
+    },
+    "ONE_ISLAND:Shop": {
+      "sheet": "fr_64.png"
+    },
+    "ONE_ISLAND:Give Celio the Gems": {
+      "sheet": "fr_73.png"
+    },
+    "ONE_ISLAND:Celio's Rainbow Pass": {
+      "sheet": "fr_73.png"
+    },
+    "ONE_ISLAND:Celio's Network Machine": {
+      "sheet": "fr_73.png"
+    },
+    "ONE_ISLAND:Girl": {
+      "sheet": "fr_16.png"
+    },
+    "ONE_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "ONE_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ONE_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ONE_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ONE_ISLAND:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "ONE_ISLAND:Old woman": {
+      "sheet": "fr_22.png"
+    },
+    "ONE_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Navel Rock": {
+      "sheet": "fr_62.png"
+    },
+    "ONE_ISLAND:Seagallop to Birth Island": {
+      "sheet": "fr_62.png"
+    },
+    "TREASURE_BEACH:DIG IN THE SAND": {
+      "sheet": "fr_19.png"
+    },
+    "KINDLE_ROAD:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "KINDLE_ROAD:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "KINDLE_ROAD:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "KINDLE_ROAD:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "KINDLE_ROAD:Woman": {
+      "sheet": "fr_35.png"
+    },
+    "KINDLE_ROAD:Black belt": {
+      "sheet": "fr_54.png"
+    },
+    "KINDLE_ROAD:EMBER SPA": {
+      "sheet": "fr_30.png"
+    },
+    "KINDLE_ROAD:Man": {
+      "sheet": "fr_32.png"
+    },
+    "KINDLE_ROAD:Woman ": {
+      "sheet": "fr_30.png"
+    },
+    "MT_EMBER:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "MT_EMBER:FIRE STONE": {
+      "item": "POKE_BALL"
+    },
+    "MT_EMBER:DIRE HIT": {
+      "item": "POKE_BALL"
+    },
+    "MT_EMBER:Grunt": {
+      "sheet": "fr_49.png"
+    },
+    "MT_EMBER:CHASE OFF TEAM ROCKET": {
+      "sheet": "fr_49.png"
+    },
+    "MT_EMBER:TALK TO THE RESEARCHERS": {
+      "sheet": "fr_56.png"
+    },
+    "MT_EMBER:CHALLENGE MOLTRES": {
+      "sheet": "fr_137.png"
+    },
+    "TWO_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "TWO_ISLAND:Man": {
+      "sheet": "fr_51.png"
+    },
+    "TWO_ISLAND:Cooltrainer": {
+      "sheet": "fr_52.png"
+    },
+    "TWO_ISLAND:Woman": {
+      "sheet": "fr_20.png"
+    },
+    "TWO_ISLAND:Girl": {
+      "sheet": "fr_29.png"
+    },
+    "TWO_ISLAND:Old woman": {
+      "sheet": "fr_19.png"
+    },
+    "TWO_ISLAND:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "TWO_ISLAND:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "TWO_ISLAND:Joyful Game Corner": {
+      "sheet": "fr_25.png"
+    },
+    "TWO_ISLAND:Lostelle's Thanks": {
+      "sheet": "fr_30.png"
+    },
+    "TWO_ISLAND:Lostelle's Dad": {
+      "sheet": "fr_30.png"
+    },
+    "TWO_ISLAND:Move Maniac": {
+      "sheet": "fr_27.png"
+    },
+    "TWO_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "TWO_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "TWO_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "TWO_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "TWO_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "TWO_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "TWO_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "CAPE_BRINK:VISIT THE MOVE TUTOR": {
+      "sheet": "fr_58.png"
+    },
+    "THREE_ISLAND:Man": {
+      "sheet": "fr_30.png"
+    },
+    "THREE_ISLAND:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "THREE_ISLAND:Doduo": {
+      "sheet": "fr_132.png"
+    },
+    "THREE_ISLAND:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "THREE_ISLAND:Biker    ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker ": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Biker  ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker      ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Stop the Biker Gang": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker   ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker     ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Biker       ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Woman": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Biker        ": {
+      "sheet": "fr_53.png"
+    },
+    "THREE_ISLAND:Lostelle": {
+      "sheet": "fr_17.png"
+    },
+    "THREE_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "THREE_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "THREE_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "THREE_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "THREE_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "THREE_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "THREE_ISLAND:Girl": {
+      "sheet": "fr_17.png"
+    },
+    "THREE_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "BERRY_FOREST:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "BERRY_FOREST:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "BERRY_FOREST:MAX ELIXIR": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",
@@ -3525,5 +5532,10 @@
     "maxie.png": "em_196.png",
     "brendan.png": "em_100.png",
     "may.png": "em_105.png"
+  },
+  "trainers_KANTO": {
+    "blue.png": "fr_72.png",
+    "rival.png": "fr_72.png",
+    "professor_oak.png": "fr_71.png"
   }
 }

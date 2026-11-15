@@ -296,6 +296,29 @@ def _run_story_event(state, key, check, show):
         t_info = dict(ev["battle"], _intro_lines=lines or None)
         game.change_state(_start_event_battle(game, story.current_area_key, t_info, flag))
         return
+    if ev.get("pay"):  # (an entry fee: the Pewter Museum's 50 ticket, FireRed; the Day Care Annex lady's $100 loan, ORAS)
+        cost = int(ev["pay"])
+        if getattr(story, "money", 0) < cost:
+            show(_resolve_lines(game, ev.get("fail") or ["You don't have enough money."]))
+            return
+        story.money -= cost
+        lines.append(f"{getattr(game, 'player_name', 'You')} paid ${cost}.")
+    if ev.get("starter"):  # (one of the Poke Balls on Oak's table: the starter screen, then the rival's first battle)
+        from src.states.menus import StarterSelectionState
+        reg = ev["starter"]
+        if story.story_flags.get(f"received_starter_{reg.lower()}"):
+            show(_resolve_lines(game, ev.get("done") or ["It's empty now."]))
+            return
+        if reg == "KANTO":
+            story.story_flags["kanto_parcel_era"] = True  # (the FireRed opening: the Parcel, then the Pokedex)
+        ids = story.get_region_start(reg).get("starters") or [1, 4, 7]
+        go = lambda: game.change_state(StarterSelectionState(game, starter_ids=ids, region=reg))
+        if lines:
+            state_show = getattr(state, "show_message", None) or getattr(state, "show_dialogue")
+            state_show(lines, callback=go)
+        else:
+            go()
+        return
     if ev.get("scene") == "wally_catch":  # Wally catches his Ralts (src/states/hoenn.py)
         from src.states.hoenn import WallyCatchState
 
@@ -316,12 +339,6 @@ def _run_story_event(state, key, check, show):
         story.inventory[_item] = story.inventory.get(_item, 0) + 1
         story.story_flags.pop("mirage_daily_ready", None)
         lines.append(f"{getattr(game, 'player_name', 'You')} found a {forms.item_label(_item).upper()}!")
-    if ev.get("pay"):  # money handed over first (the Day Care Annex's lady borrows $100: ORAS's Battle Resort)
-        if story.money < ev["pay"]:
-            show(_resolve_lines(game, ev.get("fail") or [f"You don't have ${ev['pay']}."]))
-            return
-        story.money -= ev["pay"]
-        lines.append(f"{game.player_name} handed over ${ev['pay']}.")
     for item, qty in (ev.get("gift_item") or {}).items():
         if item == "balls":
             story.balls_left = getattr(story, "balls_left", 0) + qty  # the one ball count

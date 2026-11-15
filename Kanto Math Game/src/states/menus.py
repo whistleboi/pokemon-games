@@ -672,6 +672,11 @@ def region_opening_state(game, region):
     key = cfg.get("opening_text") or cfg.get("newgame_text")
     text = game.assets.get_text(key, player_name=game.player_name,
                                 rival_name=getattr(game, "rival_name", "???")) if key else []
+    room = cfg.get("start_room")  # (["room", x, y]: on the walked maps you wake up in your own room: FireRed's 2F)
+    from src.states.overworld import walk_town as _wt
+    if room and _wt.available(game, cfg.get("start_area")):
+        game.walk_town_pos = (cfg.get("start_area"), (room[1], room[2]), (0, 1))
+        game.walk_town_room = (cfg.get("start_area"), room[0])
     arrive = lambda: AreaTransitionState(game, cfg.get("start_area"),
                                          initial_message=text if isinstance(text, list) else [text])
     if hoenn.needs_choice(story):  # Omega Ruby or Alpha Sapphire comes first

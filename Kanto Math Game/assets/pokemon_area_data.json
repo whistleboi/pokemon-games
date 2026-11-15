@@ -1,5 +1,5 @@
 {
-  "REGION_START": {"KANTO": {"order": 1, "subtitle": "GEN 1 / RED / BLUE", "start_area": "PALLET_TOWN", "starters": [1, 4, 7], "starter_bg": "starter_bg.png", "dex_range": [1, 151], "dex_extra": [], "professor": "Professor Oak", "starter_in_town": true, "opening_text": "kanto_newgame_intro", "catch_flag": "received_pokedex_kanto"}},
+  "REGION_START": {"KANTO": {"order": 1, "subtitle": "GEN 1 / RED / BLUE", "start_area": "PALLET_TOWN", "starters": [1, 4, 7], "starter_bg": "starter_bg.png", "dex_range": [1, 151], "dex_extra": [], "professor": "Professor Oak", "starter_in_town": true, "start_room": ["home_2", 5, 6], "opening_text": "kanto_newgame_intro", "catch_flag": "received_pokedex_kanto"}},
   "FORM_MAP": {
     "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "types": ["DARK", "NORMAL"] },
     "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "types": ["DARK", "NORMAL"] },
@@ -91,7 +91,7 @@
       80, 82, 85, 87, 89, 91, 94, 101, 103, 105, 112, 121, 130, 131, 134, 135, 136, 139, 141, 142, 143, 149
     ],
 
-    "KEY_ITEMS": ["CLEFABLITE", "VICTREEBELITE", "STARMINITE", "DRAGONINITE", "MEGANIUMITE", "FERALIGITE", "SKARMORITE", "FROSLASSITE", "EMBOARITE", "EXCADRITE", "SCOLIPITE", "SCRAFTINITE", "EELEKTROSSITE", "CHANDELURITE", "CHESNAUGHTITE", "DELPHOXITE", "GRENINJITE", "PYROARITE", "FLOETTITE", "MALAMARITE", "BARBARACITE", "DRAGALGITE", "HAWLUCHANITE", "ZYGARDITE", "DRAMPANITE", "FALINKSITE", 
+    "KEY_ITEMS": ["ITEMFINDER", "LIFT_KEY", "CARD_KEY", "CLEFABLITE", "VICTREEBELITE", "STARMINITE", "DRAGONINITE", "MEGANIUMITE", "FERALIGITE", "SKARMORITE", "FROSLASSITE", "EMBOARITE", "EXCADRITE", "SCOLIPITE", "SCRAFTINITE", "EELEKTROSSITE", "CHANDELURITE", "CHESNAUGHTITE", "DELPHOXITE", "GRENINJITE", "PYROARITE", "FLOETTITE", "MALAMARITE", "BARBARACITE", "DRAGALGITE", "HAWLUCHANITE", "ZYGARDITE", "DRAMPANITE", "FALINKSITE", 
       "SNAG_MACHINE",
       "ADAMANT_ORB", "LUSTROUS_ORB", "GRISEOUS_ORB",
       "BURN_DRIVE", "DOUSE_DRIVE", "CHILL_DRIVE", "SHOCK_DRIVE",
@@ -112,28 +112,43 @@
       {
         "id": "m0a", "type": "MAIN", "text": "Professor Oak", "target": "PALLET_TOWN",
         "desc": "Today your Pokemon journey begins! Head for Route 1, north of Pallet Town. Professor Oak won't let you into the tall grass without a Pokemon.",
-        "condition": { "required_region": "KANTO", "flag_not": "received_starter_kanto" }
+        "condition": { "required_region": "KANTO", "flag_not": "received_starter_kanto" }, "completed_flag": "kanto_oak_led"
+      },
+      {
+        "id": "m0a2", "type": "MAIN", "text": "Choose Your Pokemon", "target": "PALLET_TOWN",
+        "desc": "Professor Oak has three Pokemon in the Poke Balls on his lab table. Walk up to one and pick your first partner!",
+        "condition": { "required_region": "KANTO", "flag": "kanto_lab_intro", "flag_not": "received_starter_kanto" }, "completed_flag": "received_starter_kanto"
       },
       {
         "id": "m0b", "type": "MAIN", "text": "Oak's Parcel", "target": "VIRIDIAN_CITY",
         "desc": "Go north through Route 1 to Viridian City. The Poke Mart there has a parcel for Professor Oak.",
-        "condition": { "required_region": "KANTO", "flag": "received_starter_kanto", "flag_not": ["got_oaks_parcel", "received_pokedex_kanto"] }
+        "condition": { "required_region": "KANTO", "flag": "received_starter_kanto", "flag_not": ["got_oaks_parcel", "received_pokedex_kanto"] }, "completed_flag": "got_oaks_parcel"
       },
       {
         "id": "m0c", "type": "MAIN", "text": "A Pokedex", "target": "PALLET_TOWN",
         "desc": "Take the parcel back to Professor Oak's lab in Pallet Town. He has something for you too!",
-        "condition": { "required_region": "KANTO", "flag": "got_oaks_parcel", "flag_not": "received_pokedex_kanto" }
+        "condition": { "required_region": "KANTO", "flag": "got_oaks_parcel", "flag_not": "received_pokedex_kanto" }, "completed_flag": "received_pokedex_kanto"
+      },
+      {
+        "id": "m0e", "type": "SIDE", "text": "A Rival on Route 22", "target": "KANTO_ROUTE_22",
+        "desc": "{rival_name} went off west of Viridian City, toward the Pokemon League's gate on Route 22. Go and show him how your Pokemon is doing!",
+        "condition": { "required_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "defeated_rival_route22_early", "badges_less": 1 }, "completed_flag": "defeated_rival_route22_early"
       },
       {
         "id": "m1", "type": "MAIN", "text": "Investigation at Viridian", "desc": "Check out the Viridian City Gym. People say the Gym Leader is away, but strange characters have been seen there.",
         "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "viridian_rocket_defeated" }
       },
       {
-        "id": "m2", "type": "MAIN", "text": "Challenge Brock", "desc": "Head north through Route 2 and Viridian Forest to reach Pewter City. Earn your first badge from Brock, the rock-solid Gym Leader!",
-        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "badges_less": 1 }
+        "id": "m1b", "type": "MAIN", "text": "Through Viridian Forest", "target": "VIRIDIAN_FOREST",
+        "desc": "Pewter City lies north, past Route 2 and the winding paths of Viridian Forest. Bug Catchers hide among the trees!",
+        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "visited_not": "PEWTER_CITY", "badges_less": 1 }, "completed_flag": "visited_PEWTER_CITY"
       },
       {
-        "id": "m3", "type": "MAIN", "text": "The Road to Cerulean", "desc": "With the Boulder Badge in hand, head east through Route 3 and the depths of Mt. Moon to find Cerulean City.",
+        "id": "m2", "type": "MAIN", "text": "Challenge Brock", "target": "PEWTER_CITY", "desc": "Head north through Route 2 and Viridian Forest to reach Pewter City. Earn your first badge from Brock, the rock-solid Gym Leader!",
+        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "visited": "PEWTER_CITY", "badges_less": 1 }
+      },
+      {
+        "id": "m3", "type": "MAIN", "text": "The Road to Cerulean", "target": "MT_MOON", "desc": "With the Boulder Badge in hand, head east through Route 3 and the depths of Mt. Moon to find Cerulean City.",
         "condition": { "badges_min": 1, "visited_not": "CERULEAN_CITY" }
       },
       {
@@ -145,23 +160,45 @@
         "condition": { "badges_min": 2, "visited_not": "VERMILLION_CITY" }
       },
       {
+        "id": "k_bill", "type": "MAIN", "text": "Bill's Sea Cottage", "target": "BILLS_HOUSE",
+        "desc": "North of Cerulean City, cross Nugget Bridge (Route 24): five trainers wait on it, and {rival_name} too. Then follow Route 25 east to Bill's Sea Cottage at the very end. Bill, the man who made the PC Storage System, needs your help, and he'll give you a ticket for the S.S. Anne.",
+        "condition": {"visited": "CERULEAN_CITY", "flag_not": "got_ss_ticket_bill"}, "completed_flag": "got_ss_ticket_bill"
+      },
+      {
         "id": "m6", "type": "MAIN", "text": "The Thunder Badge", "desc": "Challenge Lt. Surge at the Vermilion City Gym. His Electric-type Pokémon are lightning fast!",
         "condition": { "visited": "VERMILLION_CITY", "badges_less": 3 }
+      },
+      {
+        "id": "k_ssanne", "type": "MAIN", "text": "The S.S. Anne", "target": "KANTO_SS_ANNE",
+        "desc": "A small tree blocks the way to Vermilion's Gym, and only Cut can clear it. The S.S. Anne is docked at the harbour at the south end of town: show your S.S. Ticket and go aboard. The Captain's cabin is at the back of the ship, up on 2F. He's seasick! Help him out and he'll give you HM Cut. Teach it to a Pokémon from the Bag, and hurry: the ship sails once you leave.",
+        "condition": {"visited": "VERMILLION_CITY", "flag": "got_ss_ticket_bill", "item_not": "HM_CUT"}, "completed_flag": "got_hm_cut_kanto", "steps": [{"room": "captain", "at": [5, 4], "label": "Captain", "done": "got_hm_cut_kanto"}]
       },
       {
         "id": "m7", "type": "MAIN", "text": "The Dark Tunnel", "desc": "Travel north from Vermilion back to Cerulean, then head east through Route 9 and Route 10 to brave the Rock Tunnel.",
         "condition": { "badges_min": 3, "visited_not": "LAVENDER_TOWN" }
       },
       {
-        "id": "m8", "type": "MAIN", "text": "Spirit of Lavender", "desc": "A restless spirit haunts the Pokémon Tower. You'll need a Silph Scope to see it. Team Rocket in Celadon might have one...",
+        "id": "m8", "type": "MAIN", "text": "Spirit of Lavender", "desc": "A restless spirit haunts the Pokémon Tower. You'll need a Silph Scope to see it. Team Rocket in Celadon might have one... With the Silph Scope, climb the Tower: the ghost blocks the stairs on 6F, and Mr. Fuji is held on 7F. Once he's free, visit him at his house in Lavender Town.",
         "condition": { "visited": "LAVENDER_TOWN", "item_not": "POKE_FLUTE" },
-        "targets": [["ROCKET_HIDEOUT", "has_item:SILPH_SCOPE"]], "target": "KANTO_POKEMON_TOWER"
+        "targets": [["ROCKET_HIDEOUT", "has_item:SILPH_SCOPE"], ["KANTO_POKEMON_TOWER", "fuji_rescued"]], "target": "LAVENDER_TOWN",
+        "steps": [{"area": "KANTO_POKEMON_TOWER", "floor": 5, "at": [11, 15], "label": "Ghost", "done": "tower_ghost_defeated"},
+                  {"area": "KANTO_POKEMON_TOWER", "floor": 6, "at": [11, 4], "label": "Mr. Fuji", "done": "fuji_rescued"}]
       },
       {"id": "k_power", "type": "SIDE", "text": "Lights Out in Lavender", "target": "POWER_PLANT", "desc": "Lavender's Radio Tower has no power! Surf along the channel on Route 10 to the Power Plant and help the manager fix the generator.", "condition": {"visited": "LAVENDER_TOWN", "flag_not": "power_plant_fixed"}},
       {"id": "k_teeth", "type": "SIDE", "text": "The Warden's Teeth", "target": "SAFARI_ZONE", "desc": "The Safari Zone's Warden lost his Gold Teeth and can't talk! Find them in the Safari Zone's west area and take them back to him in Fuchsia City.", "condition": {"flag": "heard_warden_teeth", "flag_not": "got_hm_strength_kanto"}},
       {
         "id": "m9", "type": "MAIN", "text": "The Rainbow Badge", "desc": "Travel west through Route 8 and Route 7 to reach Celadon City. Challenge Erika for the Rainbow Badge!",
         "condition": { "visited": "CELADON_CITY", "badges_less": 4 }
+      },
+      {
+        "id": "k_hideout1", "type": "MAIN", "text": "The Game Corner's Secret", "target": "CELADON_GAME_CORNER",
+        "desc": "Team Rocket is up to something in Celadon's Game Corner. A grunt stands guard by the poster at the back of the room. Beat him, then check the poster: there's a switch behind it, and stairs open in the corner, down to Team Rocket's hideout.",
+        "condition": {"visited": "CELADON_CITY", "badges_min": 3, "flag_not": ["game_corner_poster", "game_corner_cleared"]}, "completed_flag": "game_corner_poster"
+      },
+      {
+        "id": "k_hideout2", "type": "MAIN", "text": "The Rocket Hideout", "target": "ROCKET_HIDEOUT",
+        "desc": "The hideout's floors are a maze of arrow tiles that whisk you along: watch where each one points. Take the stairs all the way down to B4F, beat the grunt there and pick up the Lift Key he drops. The elevator on B1F or B2F then takes you down to the far side of B4F, where Giovanni, Team Rocket's boss, is waiting. Beat him and take the Silph Scope.",
+        "condition": {"flag": "game_corner_poster", "badges_min": 3, "flag_not": "game_corner_cleared"}, "completed_flag": "game_corner_cleared", "steps": [{"floor": 3, "at": [3, 2], "label": "Lift Key", "done": "has_item:LIFT_KEY"}, {"floor": 3, "at": [19, 4], "label": "Giovanni", "done": "hideout_giovanni_defeated"}, {"floor": 3, "at": [20, 5], "label": "Silph Scope", "done": "game_corner_cleared"}]
       },
       {
         "id": "m10", "type": "MAIN", "text": "Journey to Fuchsia", "desc": "Travel south to Fuchsia City. Take the long way through Route 12-15 or the fast way via Cycling Road (Route 16-18)!",
@@ -172,16 +209,44 @@
         "condition": { "visited": "FUCHSIA_CITY", "badges_less": 5 }
       },
       {
+        "id": "k_tea", "type": "MAIN", "text": "A Drink for the Guards", "target": "CELADON_CITY",
+        "desc": "The guards at Saffron City's gates won't let anyone by: they're parched! An old woman in Celadon Mansion, the tall building in the north of Celadon City, will give you some Tea. Bring it to any of Saffron's four gatehouses and the guard will let you through.",
+        "condition": {"badges_min": 5, "item_not": "TEA", "flag_not": "silph_co_cleared"}, "completed_flag": "got_tea"
+      },
+      {
+        "id": "s_silph", "type": "MAIN", "text": "Silph Co. Takeover: the Card Key", "target": "SILPH_CITY",
+        "desc": "Team Rocket has seized Silph Co., the tall building in the middle of Saffron City, and their grunts block Saffron's Gym until they're driven out. Inside, the Rockets have locked many doors. Don't worry about them yet: take the stairs in the top-right corner of each floor up to 5F. The Card Key that opens every locked door is lying on 5F's floor, in the bottom corridor.",
+        "condition": { "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared", "badges_min": 5, "item": "TEA" }, "completed_flag": "got_card_key",
+        "steps": [{ "floor": 4, "at": [22, 21], "label": "Card Key", "done": "got_card_key" }]
+      },
+      {
+        "id": "s_silph2", "type": "MAIN", "text": "Silph Co. Takeover: the Boardroom", "target": "SILPH_CITY",
+        "desc": "You have the Card Key! Go back down to 3F and open the locked door in the middle of the floor. The warp pad behind it carries you straight up to 7F, where {rival_name} is waiting. Step on the warp pad in that same room to reach 11F, then follow the corridor around to the boardroom: Giovanni, Team Rocket's boss, is holding the President there. Beat him to free Silph Co.",
+        "condition": { "flag": "got_card_key", "flag_not": "silph_co_cleared" }, "completed_flag": "silph_co_cleared",
+        "steps": [{ "floor": 10, "at": [6, 11], "label": "Giovanni", "done": "silph_co_cleared" }]
+      },
+      {
+        "id": "s_silph3", "type": "MAIN", "text": "Silph Co. Takeover: the President", "target": "SILPH_CITY",
+        "desc": "Silph Co. is free! The President is in his boardroom on 11F and wants to thank you. (The quick way up: the warp pad behind 3F's middle door to 7F, then 7F's pad to 11F.) While you're in the building, a worker in 7F's locked room has a gift for you too.",
+        "condition": { "flag": "silph_co_cleared" }, "completed_flag": "received_silph_reward",
+        "steps": [{ "floor": 10, "at": [9, 9], "label": "President", "done": "received_silph_reward" }]
+      },
+      {
         "id": "m12", "type": "MAIN", "text": "The Marsh Badge", "desc": "Now that Saffron City is accessible, challenge Sabrina at the Saffron Gym for your sixth badge!",
-        "condition": { "badges_min": 5, "badges_less": 6 }
+        "condition": { "badges_min": 5, "badges_less": 6, "flag": ["silph_co_cleared", "received_silph_reward"] }
       },
       {
         "id": "m13", "type": "MAIN", "text": "Seafoam and Volcanoes", "desc": "Surf south from Fuchsia through Route 19 and 20. Navigate the Seafoam Islands to reach Cinnabar Island.",
         "condition": { "badges_min": 6, "visited_not": "CINNABAR_ISLAND" }
       },
       {
-        "id": "m14", "type": "MAIN", "text": "The Volcano Badge", "desc": "Challenge Blaine at the Cinnabar Island Gym. Only a burning math spirit can win here!",
+        "id": "m14", "type": "MAIN", "text": "The Volcano Badge", "desc": "Challenge Blaine at the Cinnabar Island Gym. Only a burning math spirit can win here! Inside, answer the quiz machines' questions: each right answer opens the next gate on the way to Blaine.",
         "condition": { "visited": "CINNABAR_ISLAND", "badges_less": 7 }
+      },
+      {
+        "id": "k_mansion", "type": "MAIN", "text": "The Key in the Mansion", "target": "POKEMON_MANSION",
+        "desc": "Cinnabar's Gym is locked, and its key is somewhere in the burned-out Pokémon Mansion at the north of the island. Its halls are blocked by heavy gates: the Pokémon statues hide secret switches, and each press swings every gate in the Mansion the other way. A burglar on 3F has found the Secret Key. Beat him and take it!",
+        "condition": {"visited": "CINNABAR_ISLAND", "badges_min": 6, "flag_not": "got_secret_key"}, "completed_flag": "got_secret_key", "steps": [{"floor": 2, "at": [7, 13], "label": "Burglar", "done": "got_secret_key"}]
       },
       {
         "id": "m15", "type": "MAIN", "text": "The Final Badge", "desc": "The Viridian Gym Leader has finally returned. Head back to Viridian City to earn your final badge!",
@@ -226,10 +291,6 @@
       {
         "id": "s_rocket", "type": "SIDE", "text": "Rocket Hideout", "desc": "Team Rocket's hideout is under the Celadon Game Corner. Their boss is said to have a Silph Scope.",
         "condition": { "visited": "CELADON_CITY", "flag_not": "game_corner_cleared" }
-      },
-      {
-        "id": "s_silph", "type": "SIDE", "text": "Silph Co. Takeover", "desc": "Team Rocket has seized Silph Co. in Saffron City! Fight your way up all 11 floors and drive out their boss, Giovanni. The President may reward you.",
-        "condition": { "visited": "SAFFRON_CITY", "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared" }
       },
       {
         "id": "s2", "type": "SIDE", "text": "The Sleeping Giant", "desc": "A Snorlax blocks Route 12, south of Lavender Town. Use the Poké Flute to wake it up.",
@@ -530,8 +591,15 @@
         {"name": "Lass Ann", "class": "LASS", "sprite": "lass.png", "team": [16, 29], "rewards": {"balls": 4}},
         {"name": "Fisherman Barny", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [72, 120], "rewards": {"balls": 4}},
         {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [17, 20, 64, 8], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "ss_anne_cleared", "team_choice": {"1": [17, 20, 64, 5], "4": [17, 20, 64, 8], "7": [17, 20, 64, 2]}, "levels": [19, 16, 18, 20]}
-      ],
-      "route_menu": [{"text": "CABIN 1", "action": "CABIN", "door": "cabin0", "trainer": 0}, {"text": "CABIN 2", "action": "CABIN", "door": "cabin1", "trainer": 1}, {"text": "CABIN 3", "action": "CABIN", "door": "cabin2", "trainer": 2}, {"text": "CABIN 4", "action": "CABIN", "door": "cabin3", "trainer": 3}, {"text": "CABIN 5", "action": "CABIN", "door": "cabin4", "trainer": 4}, {"text": "CABIN 6", "action": "CABIN", "door": "cabin5", "trainer": 5}, {"text": "CAPTAIN", "action": "EVENT", "door": "captain", "event": {"lines": ["The captain is slumped over his desk, looking very green...", "Captain: Ooh... seasick... Could you rub my back? ...Rub, rub, rub...", "Captain: Whew! I feel much better! Thank you, young trainer.", "Take this HM as thanks. Cut chops down small trees in your way!"], "gift_item": {"HM_CUT": 1}, "flag": "got_hm_cut_kanto", "done": ["Captain: Feeling shipshape now! Use Cut on the little trees around Kanto."]}}, 
+      , {"name": "Youngster Tyler", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [32], "rewards": {"balls": 2}}, {"name": "Fisherman Dale", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 72, 118], "rewards": {"balls": 2}}, {"name": "Gentleman Brooks", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [25], "rewards": {"balls": 2}}, {"name": "Gentleman Lamar", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [58, 77], "rewards": {"balls": 2}}, {"name": "Lass Dawn", "class": "LASS", "sprite": "lass.png", "team": [19, 25], "rewards": {"balls": 2}}, {"name": "Sailor Phillip", "class": "SAILOR", "sprite": "sailor.png", "team": [66], "rewards": {"balls": 2}}, {"name": "Sailor Huey", "class": "SAILOR", "sprite": "sailor.png", "team": [72, 120], "rewards": {"balls": 2}}, {"name": "Sailor Dylan", "class": "SAILOR", "sprite": "sailor.png", "team": [116, 116, 116], "rewards": {"balls": 2}}, {"name": "Sailor Duncan", "class": "SAILOR", "sprite": "sailor.png", "team": [116, 90, 72], "rewards": {"balls": 2}}, {"name": "Sailor Leonard", "class": "SAILOR", "sprite": "sailor.png", "team": [90], "rewards": {"balls": 2}}],
+      "route_menu": [
+        {"text": "GREAT BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_greatball_ssanne", "event": {"lines": ["A Great Ball, left in the kitchen."], "gift_item": {"GREAT_BALL": 1}, "flag": "got_greatball_ssanne"}}, 
+        {"text": "TM43", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm43_ssanne", "event": {"lines": ["A TM in the cabin! It's Brick Break."], "gift_item": {"TM43": 1}, "flag": "got_tm43_ssanne"}}, 
+        {"text": "STARDUST", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_stardust_ssanne", "event": {"lines": ["Some Stardust, glittering on the floor."], "gift_item": {"STARDUST": 1}, "flag": "got_stardust_ssanne"}}, 
+        {"text": "X ATTACK", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_xattack_ssanne", "event": {"lines": ["An X Attack, left by a passenger."], "gift_item": {"X_ATTACK": 1}, "flag": "got_xattack_ssanne"}}, 
+        {"text": "TM21", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm21_ssanne", "event": {"lines": ["A TM in the cabin! It's Rest."], "gift_item": {"TM21": 1}, "flag": "got_tm21_ssanne"}}, 
+        {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_ssanne", "event": {"lines": ["An Ether, under the bunk."], "gift_item": {"ETHER": 1}, "flag": "got_ether_ssanne"}}, 
+        {"text": "SUPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_superpotion_ssanne", "event": {"lines": ["A Super Potion, by Machoke's trainer."], "gift_item": {"SUPER_POTION": 1}, "flag": "got_superpotion_ssanne"}},{"text": "CABIN 1", "action": "CABIN", "door": "cabin0", "trainer": 0}, {"text": "CABIN 2", "action": "CABIN", "door": "cabin1", "trainer": 1}, {"text": "CABIN 3", "action": "CABIN", "door": "cabin2", "trainer": 2}, {"text": "CABIN 4", "action": "CABIN", "door": "cabin3", "trainer": 3}, {"text": "CABIN 5", "action": "CABIN", "door": "cabin4", "trainer": 4}, {"text": "CABIN 6", "action": "CABIN", "door": "cabin5", "trainer": 5}, {"text": "CAPTAIN", "action": "EVENT", "door": "captain", "event": {"lines": ["The captain is slumped over his desk, looking very green...", "Captain: Ooh... seasick... Could you rub my back? ...Rub, rub, rub...", "Captain: Whew! I feel much better! Thank you, young trainer.", "Take this HM as thanks. Cut chops down small trees in your way!"], "gift_item": {"HM_CUT": 1}, "flag": "got_hm_cut_kanto", "done": ["Captain: Feeling shipshape now! Use Cut on the little trees around Kanto."]}}, 
         {
           "text": "BATTLE THROUGH THE CABINS",
           "action": "GALACTIC_GAUNTLET",
@@ -567,6 +635,9 @@
       "explore_options": [{"text": "Daisy", "action": "EVENT", "door": "rival", "event": {"lines": ["Daisy: Hi there! My little brother is off training again.", "Whenever your Pokemon look tired, a short rest makes all the difference. Good luck out there!"]}}, 
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
         { "text": "Talk to Mom", "action": "NPC", "target": "mom" },
+        {"text": "Bulbasaur's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds BULBASAUR, the Grass-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
+        {"text": "Squirtle's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds SQUIRTLE, the Water-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
+        {"text": "Charmander's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds CHARMANDER, the Fire-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
             {"text": "Show Oak your Pokedex", "action": "EVENT", "color": "GOLD", "event": {"requires": ["caught_range:1-251"], "fail": ["Professor Oak: Catch every Pokemon from Kanto and Johto, all 251 of them,", "and come show me your Pokedex. I'll have something special for you!"], "lines": ["Professor Oak: All 251 Pokemon of Kanto and Johto... You did it!", "You're a true Pokemon Master of research. Please, take this.", "It's the Shiny Charm! Shiny Pokemon will appear more often now."], "gift_item": {"SHINY_CHARM": 1}, "flag": "got_shiny_charm", "done": ["Professor Oak: Shiny Pokemon are such a treat to see. Keep up the great work!"]}, "flag_condition": "not got_shiny_charm"}
         ],
       "next_area": "KANTO_ROUTE_1",
@@ -602,7 +673,8 @@
         {"text": "Poke Mart", "action": "EVENT", "color": "GOLD", "condition": ["received_starter_kanto", "not:got_oaks_parcel", "not:received_pokedex_kanto"], "event": {"lines": ["Clerk: You're from Pallet Town? Then you know Professor Oak!", "His order just came in. Could you take this parcel to him for me?"], "gift_item": {"OAKS_PARCEL": 1}, "flag": "got_oaks_parcel"}},
         {"text": "Shop", "action": "SHOP", "flag_condition": "received_pokedex_kanto"},
         {"text": "Gym", "action": "GYM"},
-        {"text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet"}
+        {"text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet"},
+        {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_viridian", "event": {"lines": ["Tucked away behind the little tree: a Potion!"], "gift_item": {"POTION": 1}, "flag": "got_potion_viridian"}}
       ],
       "oldman_dialogue_key": "sleeping_man",
       "trainer_pool": [],
@@ -631,7 +703,8 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Visit Museum", "action": "NPC", "target": "museum", "door": "museum" }
+        { "text": "Visit Museum", "action": "NPC", "target": "museum", "door": "museum" },
+        {"text": "Old Amber", "action": "EVENT", "color": "GOLD", "door": "museum", "flag_condition": "not received_old_amber", "event": {"lines": ["Scientist: You came in the back way? Well, you seem trustworthy.", "Scientist: This Amber has something ancient sealed inside. Take it to the Pokémon Lab on Cinnabar Island: they can bring it back to life!"], "gift_item": {"OLD_AMBER": 1}, "flag": "received_old_amber"}}
       ],
       "on_enter_event": null
     },
@@ -660,6 +733,8 @@
         {"text": "Cerulean Cave", "target_area": "CERULEAN_CAVE", "condition": "beat_champion"}
       ],
       "explore_options": [
+        {"text": "ROCKET GRUNT", "action": "EVENT", "flag_condition": "not got_tm_dig_cerulean", "event": {"lines": ["Grunt: Hey! Stay out! This is none of your business!", "Grunt: ...What, the TM? Never heard of it. Get lost, kid!"], "flag": "got_tm_dig_cerulean", "battle": {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [66, 96], "levels": [17, 17], "rewards": {"balls": 2, "TM15": 1}, "dialogue": {"player_won": ["Grunt: Argh! OK, OK, take your TM back! I'm out of here!"]}}}}, 
+        {"text": "Trader", "action": "EVENT", "door": "house_mid", "color": "GOLD", "flag_condition": "not cerulean_jynx_trade", "event": {"requires": ["party_has:61"], "fail": ["Old man: I'm looking for a Poliwhirl. Bring me one and I'll trade you my Jynx for it!"], "lines": ["Old man: A Poliwhirl! Will you trade it for my Jynx? Wonderful, thank you!"], "trade": {"want": 61, "give": 124}, "flag": "cerulean_jynx_trade"}},
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -755,7 +830,7 @@
             {"text": "Seagallop to One Island", "door": "harbor", "long_ride": true, "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "The Seagallop Ferry speeds south to the Sevii Islands. Next stop: One Island!"},
             {"text": "Seagallop to Four Island", "door": "harbor", "long_ride": true, "target_area": "FOUR_ISLAND", "condition": "has_item:RAINBOW_PASS", "message": "The Seagallop Ferry speeds far to the south. Next stop: Four Island!"},
             {"text": "S.S. Aqua", "door": "harbor", "target_area": "JOHTO_SS_AQUA", "condition": ["has_item:SS_TICKET", "beat_champion"]},
-            {"text": "S.S. Anne", "door": "harbor", "target_area": "KANTO_SS_ANNE", "condition": "has_item:SS_TICKET"}
+            {"text": "S.S. Anne", "door": "harbor", "target_area": "KANTO_SS_ANNE", "condition": ["has_item:SS_TICKET", "not:ss_anne_departed"]}
         ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -837,6 +912,8 @@
         {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"}
       ],
       "explore_options": [
+        {"text": "EEVEE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_eevee_celadon", "event": {"requires": ["party_room"], "fail": ["A Poké Ball sits on the table... but your team is full. Make room and come back!"], "lines": ["A Poké Ball sits on the table, with a note: \"Please look after this Eevee.\"", "You got an Eevee!"], "gift_pokemon": 133, "gift_level": 25, "flag": "got_eevee_celadon"}},
+        {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_celadon", "event": {"lines": ["An Ether, tucked behind the building."], "gift_item": {"ETHER": 1}, "flag": "got_ether_celadon"}},
         {"text": "Heal", "action": "HEAL"},
         {"text": "Dept. Store", "action": "SHOP", "door": "dept"},
         {"text": "Gym", "action": "GYM"},
@@ -872,7 +949,8 @@
         { "text": "Silph Co.", "target_area": "SILPH_CITY", "flag_condition": "tower_ghost_defeated" },
             {"text": "Magnet Train to Goldenrod", "door": "station", "long_ride": true, "target_area": "GOLDENROD_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Goldenrod City in Johto!"}
         ],
-      "explore_options": [
+      "explore_options": [{"text": "Mr. Psychic", "action": "EVENT", "door": "psychic", "color": "GOLD", "event": {"lines": ["Mr. Psychic: ...Wait! Don't say a word! You wanted this, didn't you?", "You received TM126, Psychic!"], "gift_item": {"TM126": 1}, "flag": "got_tm126_saffron", "done": ["Mr. Psychic: Psychic hits hard, and it may lower the foe's Sp. Def. I knew you'd ask."]}},
+        
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -913,6 +991,30 @@
         {
           "key": "5f",
           "name": "5F"
+        },
+        {
+          "key": "6f",
+          "name": "6F"
+        },
+        {
+          "key": "7f",
+          "name": "7F"
+        },
+        {
+          "key": "8f",
+          "name": "8F"
+        },
+        {
+          "key": "9f",
+          "name": "9F"
+        },
+        {
+          "key": "10f",
+          "name": "10F"
+        },
+        {
+          "key": "11f",
+          "name": "11F"
         }
       ],
       "zones_linear": true,
@@ -943,7 +1045,8 @@
               "Scram, kid!"
             ]
           },
-          "zone": "1f"
+          "zone": "1f",
+          "spot_name": "Grunt 1F"
         },
         {
           "sprite": "rocket_grunt_f.png",
@@ -968,7 +1071,8 @@
               "Lost in the maze, huh?"
             ]
           },
-          "zone": "1f"
+          "zone": "3f",
+          "spot_name": "Grunt 3F"
         },
         {
           "sprite": "scientist.png",
@@ -994,7 +1098,7 @@
               "Science wins again!"
             ]
           },
-          "zone": "2f"
+          "zone": "4f"
         },
         {
           "sprite": "rocket_grunt_m.png",
@@ -1019,7 +1123,8 @@
               "Get lost!"
             ]
           },
-          "zone": "2f"
+          "zone": "5f",
+          "spot_name": "Grunt 5F 1"
         },
         {
           "sprite": "scientist.png",
@@ -1043,7 +1148,7 @@
               "I have no choice!"
             ]
           },
-          "zone": "3f"
+          "zone": "7f"
         },
         {
           "name": "{rival_name}",
@@ -1103,7 +1208,7 @@
               "{rival_name}: Not even close. Turn back while you can."
             ]
           },
-          "zone": "3f"
+          "zone": "7f"
         },
         {
           "sprite": "proton.png",
@@ -1130,7 +1235,7 @@
               "Too slow, kid."
             ]
           },
-          "zone": "4f"
+          "zone": "8f"
         },
         {
           "sprite": "archer.png",
@@ -1156,7 +1261,7 @@
               "Typical child."
             ]
           },
-          "zone": "4f"
+          "zone": "9f"
         },
         {
           "sprite": "ariana.png",
@@ -1201,7 +1306,7 @@
               "BITE"
             ]
           },
-          "zone": "5f"
+          "zone": "11f"
         },
         {
           "sprite": "leader_giovanni.png",
@@ -1238,10 +1343,868 @@
               "Giovanni: That's what happens when you meddle with Team Rocket."
             ]
           },
+          "zone": "11f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            42,
+            41,
+            41,
+            20,
+            41
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Silph Co. belongs to Team Rocket now!"
+            ],
+            "player_won": [
+              "No way!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "2f",
+          "spot_name": "Grunt 2F 1"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Jerry",
+          "class": "SCIENTIST",
+          "team": [
+            81,
+            100,
+            82
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Think you can find your way through this building? Good luck!"
+            ],
+            "player_won": [
+              "I lost my way too..."
+            ],
+            "player_lost": [
+              "Lost already?"
+            ]
+          },
+          "zone": "2f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            104,
+            41
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "See the diamond tiles? Step on one and it whisks you somewhere else."
+            ],
+            "player_won": [
+              "Argh! Off you go, then!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "2f",
+          "spot_name": "Grunt 2F 2"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Jose",
+          "class": "SCIENTIST",
+          "team": [
+            101,
+            110
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Team Rocket promised I could study Pokémon all I like if I helped them!"
+            ],
+            "player_won": [
+              "Maybe that was a bad deal..."
+            ],
+            "player_lost": [
+              "Science!"
+            ]
+          },
+          "zone": "3f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            23,
+            41,
+            104
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Intruder! I'd better tell the Boss up on 11F!"
+            ],
+            "player_won": [
+              "Too late to warn anyone..."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "4f",
+          "spot_name": "Grunt 4F 1"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            66,
+            96
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Ha ha ha! The Boss has wanted this building for ages!"
+            ],
+            "player_won": [
+              "You'll regret this!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "4f",
+          "spot_name": "Grunt 4F 2"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            97
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Hey, did you know Koffing turns into Weezing?"
+            ],
+            "player_won": [
+              "Why did I bring that up..."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "5f",
+          "spot_name": "Grunt 5F 2"
+        },
+        {
+          "sprite": "juggler.png",
+          "name": "Juggler Dalton",
+          "class": "JUGGLER",
+          "team": [
+            64,
+            122
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Only 5F? You've got a long climb to the Boss!"
+            ],
+            "player_won": [
+              "I dropped everything!"
+            ],
+            "player_lost": [
+              "Ta-da!"
+            ]
+          },
           "zone": "5f"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Beau",
+          "class": "SCIENTIST",
+          "team": [
+            82,
+            109,
+            110,
+            81
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "We were building the perfect Poké Ball, one that catches anything!"
+            ],
+            "player_won": [
+              "Imperfect results..."
+            ],
+            "player_lost": [
+              "Perfect!"
+            ]
+          },
+          "zone": "5f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            66,
+            67
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "You'll never get past Team Rocket!"
+            ],
+            "player_won": [
+              "My brothers will get you for this!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "6f",
+          "spot_name": "Grunt 6F 1"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            41,
+            41,
+            42
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Heroes always get in the way of us bad guys!"
+            ],
+            "player_won": [
+              "Hmph! Fine!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "6f",
+          "spot_name": "Grunt 6F 2"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            104,
+            104
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Stop right there! This floor is off limits!"
+            ],
+            "player_won": [
+              "My brothers will pay you back!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "7f",
+          "spot_name": "Grunt 7F 1"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            27,
+            28
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Go home before the Boss loses his temper!"
+            ],
+            "player_won": [
+              "Aww..."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "7f",
+          "spot_name": "Grunt 7F 2"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            20,
+            41,
+            42,
+            19
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Running around won't help you find the Boss!"
+            ],
+            "player_won": [
+              "How did you get so strong?"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "7f",
+          "spot_name": "Grunt 7F 3"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            110,
+            42,
+            109
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Leave now, or I'll call for backup!"
+            ],
+            "player_won": [
+              "I'll let my brothers handle you."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "8f",
+          "spot_name": "Grunt 8F"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Parker",
+          "class": "SCIENTIST",
+          "team": [
+            88,
+            101
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "How do you like our building's maze?"
+            ],
+            "player_won": [
+              "You solved it, didn't you?"
+            ],
+            "player_lost": [
+              "Lost, are we?"
+            ]
+          },
+          "zone": "8f"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Ed",
+          "class": "SCIENTIST",
+          "team": [
+            100,
+            109,
+            82
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Hit a Pokémon where it's weak. Type matchups matter!"
+            ],
+            "player_won": [
+              "You know your types!"
+            ],
+            "player_lost": [
+              "Weak spots!"
+            ]
+          },
+          "zone": "9f"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            96,
+            88,
+            66
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "If I'd started training at your age..."
+            ],
+            "player_won": [
+              "...I'd still lose to you."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "9f",
+          "spot_name": "Grunt 9F"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Travis",
+          "class": "SCIENTIST",
+          "team": [
+            81,
+            109
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Happy now that you've come this far? Then go home!"
+            ],
+            "player_won": [
+              "You won't go home, will you?"
+            ],
+            "player_lost": [
+              "Off you go!"
+            ]
+          },
+          "zone": "10f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            67
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Good try, but the boardroom is one more floor up!"
+            ],
+            "player_won": [
+              "Ugh! The Boss is right upstairs!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "10f",
+          "spot_name": "Grunt 10F"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            104,
+            96,
+            105
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "So you want to see the Boss? You'll have to beat me first!"
+            ],
+            "player_won": [
+              "Go on... he's waiting."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "11f",
+          "spot_name": "Grunt 11F"
         }
       ],
       "route_menu": [
+        {
+          "text": "HYPER POTION",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "3f",
+          "flag_condition": "not got_hyperpotion_silph",
+          "event": {
+            "lines": [
+              "A Hyper Potion, left by a desk."
+            ],
+            "gift_item": {
+              "HYPER_POTION": 1
+            },
+            "flag": "got_hyperpotion_silph"
+          }
+        },
+        {
+          "text": "MAX REVIVE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_maxrevive_silph",
+          "event": {
+            "lines": [
+              "A Max Revive in the storeroom!"
+            ],
+            "gift_item": {
+              "MAX_REVIVE": 1
+            },
+            "flag": "got_maxrevive_silph"
+          }
+        },
+        {
+          "text": "ESCAPE ROPE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_escaperope_silph",
+          "event": {
+            "lines": [
+              "An Escape Rope in the storeroom."
+            ],
+            "gift_item": {
+              "ESCAPE_ROPE": 1
+            },
+            "flag": "got_escaperope_silph"
+          }
+        },
+        {
+          "text": "FULL HEAL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_fullheal_silph",
+          "event": {
+            "lines": [
+              "A Full Heal in the storeroom."
+            ],
+            "gift_item": {
+              "FULL_HEAL": 1
+            },
+            "flag": "got_fullheal_silph"
+          }
+        },
+        {
+          "text": "TM128",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_tm128_silph",
+          "event": {
+            "lines": [
+              "A TM on the floor! It's Torment."
+            ],
+            "gift_item": {
+              "TM128": 1
+            },
+            "flag": "got_tm128_silph"
+          }
+        },
+        {
+          "text": "PROTEIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "5f",
+          "flag_condition": "not got_protein_silph",
+          "event": {
+            "lines": [
+              "Someone left a Protein here."
+            ],
+            "gift_item": {
+              "PROTEIN": 1
+            },
+            "flag": "got_protein_silph"
+          }
+        },
+        {
+          "text": "TM127",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "5f",
+          "flag_condition": "not got_tm127_silph",
+          "event": {
+            "lines": [
+              "A TM, tucked away in a corner! It's Focus Punch."
+            ],
+            "gift_item": {
+              "TM127": 1
+            },
+            "flag": "got_tm127_silph"
+          }
+        },
+        {
+          "text": "CARD KEY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "5f",
+          "flag_condition": "not got_card_key",
+          "event": {
+            "lines": [
+              "It's Silph's Card Key! It opens the locked doors all over the building."
+            ],
+            "gift_item": {
+              "CARD_KEY": 1
+            },
+            "flag": "got_card_key"
+          }
+        },
+        {
+          "text": "HP UP",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "6f",
+          "flag_condition": "not got_hpup_silph",
+          "event": {
+            "lines": [
+              "An HP Up behind the desks!"
+            ],
+            "gift_item": {
+              "HP_UP": 1
+            },
+            "flag": "got_hpup_silph"
+          }
+        },
+        {
+          "text": "X SP. ATK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "6f",
+          "flag_condition": "not got_xspatk_silph",
+          "event": {
+            "lines": [
+              "An X Sp. Atk in the corner."
+            ],
+            "gift_item": {
+              "X_SP_ATK": 1
+            },
+            "flag": "got_xspatk_silph"
+          }
+        },
+        {
+          "text": "CALCIUM",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "7f",
+          "flag_condition": "not got_calcium_silph",
+          "event": {
+            "lines": [
+              "A Calcium, left in a meeting room."
+            ],
+            "gift_item": {
+              "CALCIUM": 1
+            },
+            "flag": "got_calcium_silph"
+          }
+        },
+        {
+          "text": "TM116",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "7f",
+          "flag_condition": "not got_tm116_silph",
+          "event": {
+            "lines": [
+              "A TM behind the locked door! It's Bulk Up."
+            ],
+            "gift_item": {
+              "TM116": 1
+            },
+            "flag": "got_tm116_silph"
+          }
+        },
+        {
+          "text": "IRON",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "8f",
+          "flag_condition": "not got_iron_silph",
+          "event": {
+            "lines": [
+              "An Iron, left on the floor."
+            ],
+            "gift_item": {
+              "IRON": 1
+            },
+            "flag": "got_iron_silph"
+          }
+        },
+        {
+          "text": "CARBOS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "10f",
+          "flag_condition": "not got_carbos_silph",
+          "event": {
+            "lines": [
+              "A Carbos in the office."
+            ],
+            "gift_item": {
+              "CARBOS": 1
+            },
+            "flag": "got_carbos_silph"
+          }
+        },
+        {
+          "text": "ULTRA BALL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "10f",
+          "flag_condition": "not got_ultraball_silph",
+          "event": {
+            "lines": [
+              "An Ultra Ball in the office!"
+            ],
+            "gift_item": {
+              "ULTRA_BALL": 1
+            },
+            "flag": "got_ultraball_silph"
+          }
+        },
+        {
+          "text": "RARE CANDY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "10f",
+          "flag_condition": "not got_rarecandy_silph",
+          "event": {
+            "lines": [
+              "A Rare Candy in the office!"
+            ],
+            "gift_item": {
+              "RARE_CANDY": 1
+            },
+            "flag": "got_rarecandy_silph"
+          }
+        },
+        {
+          "text": "ZINC",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "11f",
+          "flag_condition": "not got_zinc_silph",
+          "event": {
+            "lines": [
+              "A Zinc in the boardroom's back corridor."
+            ],
+            "gift_item": {
+              "ZINC": 1
+            },
+            "flag": "got_zinc_silph"
+          }
+        },
+        {
+          "text": "LAPRAS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "zone": "7f",
+          "event": {
+            "lines": [
+              "Employee: Oh! You're not one of the Rockets! You came to rescue us?",
+              "Thank you! Please take this Pokémon, as thanks for saving us."
+            ],
+            "gift_pokemon": 131,
+            "gift_level": 25,
+            "flag": "got_silph_lapras",
+            "done": [
+              "Employee: That Lapras was going to be a research subject. It's much happier with you!"
+            ]
+          }
+        },
         {
           "text": "LOOK FOR TRAINER",
           "action": "TRAINER",
@@ -1256,7 +2219,7 @@
         {
           "text": "NURSE",
           "action": "EVENT",
-          "zone": "1f",
+          "zone": "9f",
           "color": "GREEN",
           "event": {
             "lines": [
@@ -1295,7 +2258,7 @@
               {
                 "lines": [
                   "Employee: They're everywhere... the black suits... the red 'R'...",
-                  "Please stop them! Their boss is up on 5F, in the President's office."
+                  "Please stop them! Their boss is up on 11F, in the President's office."
                 ]
               }
             ]
@@ -1304,7 +2267,7 @@
         {
           "text": "VISIT THE PRESIDENT",
           "action": "EVENT",
-          "zone": "5f",
+          "zone": "11f",
           "flag_condition": "silph_co_cleared",
           "color": "GOLD",
           "event": {
@@ -1411,19 +2374,32 @@
       "trainer_encounter_rate": 0,
       "min_rounds": 0,
       "trainer_pool": [
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [20, 20], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [96, 66], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [88, 109, 109], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [88, 109], "levels": [22, 22], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [19, 20, 20, 19], "levels": [19, 19, 19, 19], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b2f", "team": [41, 109, 88, 41, 20], "levels": [17, 17, 17, 17, 17], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b3f", "team": [66, 66], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b3f", "team": [19, 20, 96], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [109, 41], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [27, 23, 28], "levels": [23, 23, 23], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [23, 27, 24], "levels": [23, 23, 23], "rewards": { "balls": 3 } }
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B1F 1", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [20, 20], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B1F 2", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [96, 66], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B1F 3", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [88, 109, 109], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B1F 4", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [88, 109], "levels": [22, 22], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B1F 5", "class": "ROCKET_GRUNT", "zone": "b1f", "team": [19, 20, 20, 19], "levels": [19, 19, 19, 19], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B2F", "class": "ROCKET_GRUNT", "zone": "b2f", "team": [41, 109, 88, 41, 20], "levels": [17, 17, 17, 17, 17], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B3F 1", "class": "ROCKET_GRUNT", "zone": "b3f", "team": [66, 66], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B3F 2", "class": "ROCKET_GRUNT", "zone": "b3f", "team": [19, 20, 96], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B4F 1", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [109, 41], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B4F 2", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [27, 23, 28], "levels": [23, 23, 23], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B4F 3", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [23, 27, 24], "levels": [23, 23, 23], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "LIFT KEY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lift_key", "event": {"lines": ["The grunt dropped something... It's the Lift Key! The Hideout's elevator works with it."], "gift_item": {"LIFT_KEY": 1}, "flag": "got_lift_key"}},
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escrope_hideout", "event": {"lines": ["An Escape Rope, left by a crate."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escrope_hideout"}},
+        {"text": "HYPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hyperpotion_hideout", "event": {"lines": ["A Hyper Potion, tucked in a corner."], "gift_item": {"HYPER_POTION": 1}, "flag": "got_hyperpotion_hideout"}},
+        {"text": "X SPEED", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_xspeed_hideout", "event": {"lines": ["An X Speed, dropped on the floor."], "gift_item": {"X_SPEED": 1}, "flag": "got_xspeed_hideout"}},
+        {"text": "MOON STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_moonstone_hideout", "event": {"lines": ["A Moon Stone! The Rockets must have stolen it from Mt. Moon."], "gift_item": {"MOON_STONE": 1}, "flag": "got_moonstone_hideout"}},
+        {"text": "TM122", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm122_hideout", "event": {"lines": ["A TM, lying on the floor! It's Taunt."], "gift_item": {"TM122": 1}, "flag": "got_tm122_hideout"}},
+        {"text": "SUPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_superpotion_hideout", "event": {"lines": ["A Super Potion, by the wall."], "gift_item": {"SUPER_POTION": 1}, "flag": "got_superpotion_hideout"}},
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rarecandy_hideout", "event": {"lines": ["A Rare Candy!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rarecandy_hideout"}},
+        {"text": "TM114", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm114_hideout", "event": {"lines": ["A TM, lying on the floor! It's Frustration."], "gift_item": {"TM114": 1}, "flag": "got_tm114_hideout"}},
+        {"text": "BLACK GLASSES", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_blackglasses_hideout", "event": {"lines": ["A pair of Black Glasses! Held, they power up Dark moves."], "gift_item": {"BLACK_GLASSES": 1}, "flag": "got_blackglasses_hideout"}},
+        {"text": "TM123", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm123_hideout", "event": {"lines": ["A TM, lying on the floor! It's Snatch."], "gift_item": {"TM123": 1}, "flag": "got_tm123_hideout"}},
+        {"text": "MAX ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxether_hideout", "event": {"lines": ["A Max Ether, by the crates."], "gift_item": {"MAX_ETHER": 1}, "flag": "got_maxether_hideout"}},
+        {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_hideout", "event": {"lines": ["A Calcium! It raises a Pokémon's Sp. Atk."], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_hideout"}},
         {
           "text": "LOOK FOR TRAINER",
           "action": "TRAINER",
@@ -1544,6 +2520,17 @@
           "condition": "has_balls",
           "color": "GREEN"
         },
+        {"text": "CARBOS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_carbos_mansion", "event": {"lines": ["A Carbos, left among the ruins."], "gift_item": {"CARBOS": 1}, "flag": "got_carbos_mansion"}},
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escaperope_mansion", "event": {"lines": ["An Escape Rope. Handy in a place like this!"], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escaperope_mansion"}},
+        {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_mansion", "event": {"lines": ["A Protein, under the rubble."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_mansion"}},
+        {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_mansion", "event": {"lines": ["A Calcium, in a burnt-out room."], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_mansion"}},
+        {"text": "ZINC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_zinc_mansion", "event": {"lines": ["A Zinc, by the old lab benches."], "gift_item": {"ZINC": 1}, "flag": "got_zinc_mansion"}},
+        {"text": "HP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hpup_mansion", "event": {"lines": ["An HP Up, left behind by the scientists."], "gift_item": {"HP_UP": 1}, "flag": "got_hpup_mansion"}},
+        {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_mansion", "event": {"lines": ["A Max Potion!"], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_mansion"}},
+        {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_mansion", "event": {"lines": ["An Iron, in the corner."], "gift_item": {"IRON": 1}, "flag": "got_iron_mansion"}},
+        {"text": "TM11", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm11_mansion", "event": {"lines": ["A TM in the basement lab! It's Solar Beam."], "gift_item": {"TM11": 1}, "flag": "got_tm11_mansion"}},
+        {"text": "TM111", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm111_mansion", "event": {"lines": ["A TM in the basement lab! It's Blizzard."], "gift_item": {"TM111": 1}, "flag": "got_tm111_mansion"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore_mansion", "event": {"lines": ["A Full Restore, in the basement!"], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore_mansion"}},
         {
           "text": "LOOK FOR TRAINER",
           "action": "TRAINER",
@@ -1617,7 +2604,8 @@
         { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" },
         { "text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND" }        
       ],
-      "explore_options": [{"text": "Warden", "action": "EVENT", "door": "warden", "condition": ["not:has_item:GOLD_TEETH", "not:got_hm_strength_kanto"], "event": {"lines": ["Warden: Hif fuff hefifoo! Ahf hoo hoo...", "(He's lost his teeth! He keeps pointing at the Safari Zone.)"], "flag": "heard_warden_teeth", "done": ["Warden: Hif fuff hefifoo! (He points at the Safari Zone again.)"]}}, {"text": "Return the Gold Teeth", "action": "EVENT", "door": "warden", "condition": "has_item:GOLD_TEETH", "flag_condition": "not got_hm_strength_kanto", "event": {"lines": ["Warden: My teeth! You found my Gold Teeth! Thank you, thank you!", "I can talk again! Here, take this HM. Strength pushes big boulders out of your way!"], "take_item": {"GOLD_TEETH": 1}, "gift_item": {"HM_STRENGTH": 1}, "flag": "got_hm_strength_kanto"}}, {"text": "Fishing Guru's Brother", "action": "EVENT", "door": "brother", "event": {"lines": ["Fisherman: My big brother is the Fishing Guru in Vermilion. I love to fish too!", "Fishing is all about patience, like counting to a hundred. Take this Good Rod!"], "gift_item": {"GOOD_ROD": 1}, "flag": "got_good_rod_kanto", "done": ["Fisherman: The Good Rod pulls up bigger Pokemon than the Old Rod. Try it in the Safari Zone!"]}}, 
+      "explore_options": [{"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rarecandy_warden", "event": {"lines": ["A Rare Candy, tucked behind the boulder!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rarecandy_warden"}},
+        {"text": "Warden", "action": "EVENT", "door": "warden", "condition": ["not:has_item:GOLD_TEETH", "not:got_hm_strength_kanto"], "event": {"lines": ["Warden: Hif fuff hefifoo! Ahf hoo hoo...", "(He's lost his teeth! He keeps pointing at the Safari Zone.)"], "flag": "heard_warden_teeth", "done": ["Warden: Hif fuff hefifoo! (He points at the Safari Zone again.)"]}}, {"text": "Return the Gold Teeth", "action": "EVENT", "door": "warden", "condition": "has_item:GOLD_TEETH", "flag_condition": "not got_hm_strength_kanto", "event": {"lines": ["Warden: My teeth! You found my Gold Teeth! Thank you, thank you!", "I can talk again! Here, take this HM. Strength pushes big boulders out of your way!"], "take_item": {"GOLD_TEETH": 1}, "gift_item": {"HM_STRENGTH": 1}, "flag": "got_hm_strength_kanto"}}, {"text": "Fishing Guru's Brother", "action": "EVENT", "door": "brother", "event": {"lines": ["Fisherman: My big brother is the Fishing Guru in Vermilion. I love to fish too!", "Fishing is all about patience, like counting to a hundred. Take this Good Rod!"], "gift_item": {"GOOD_ROD": 1}, "flag": "got_good_rod_kanto", "done": ["Fisherman: The Good Rod pulls up bigger Pokemon than the Old Rod. Try it in the Safari Zone!"]}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" }
@@ -1749,6 +2737,10 @@
         { "sprite": "bug_catcher.png", "name": "Rick", "class": "BUG_CATCHER", "team": [13, 10], "levels": [6, 6], "rewards": { "balls": 3 }, "dialogue": {"intro": ["I love bug Pokémon!"], "player_won": ["Wow, you're pretty good at battling!"], "player_lost": ["No way! I thought my bugs would win!"]} }
       ],
       "route_menu": [
+        {"text": "POKE BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ball_forest", "event": {"lines": ["A Poké Ball, dropped among the roots."], "gift_item": {"balls": 1}, "flag": "got_ball_forest"}}, 
+        {"text": "ANTIDOTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_antidote_forest", "event": {"lines": ["An Antidote, left behind by a Bug Catcher."], "gift_item": {"ANTIDOTE": 1}, "flag": "got_antidote_forest"}}, 
+        {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_forest", "event": {"lines": ["A Potion, tucked under a bush."], "gift_item": {"POTION": 1}, "flag": "got_potion_forest"}}, 
+        {"text": "POTION ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_forest_2", "event": {"lines": ["Another Potion, near the forest's end."], "gift_item": {"POTION": 1}, "flag": "got_potion_forest_2"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1774,7 +2766,7 @@
         { "sprite": "lass.png", "name": "Patty", "class": "LASS", "team": [16, 19], "rewards": { "balls": 3 } },
         { "sprite": "school_kid_m.png", "name": "Billy", "class": "SCHOOL_KID", "team": [25], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "FOREST GUIDE", "action": "EVENT", "event": {"lines": ["Guide: Viridian Forest is a natural maze. Take your time in there!"]}}, {"text": "BUG FAN", "action": "EVENT", "event": {"lines": ["Boy: The forest is full of Bug Pokemon. Watch out for Weedle's sting!"]}}, {"text": "RESTING GIRL", "action": "EVENT", "event": {"lines": ["Girl: I made it through the forest! My feet hurt."]}}, {"text": "GATE LADY", "action": "EVENT", "event": {"lines": ["Lady: Pewter City is past the forest. Its Gym Leader uses Rock Pokemon."]}}, {"text": "YOUNG TRAINER", "action": "EVENT", "event": {"lines": ["Boy: Got Antidotes? You'll want some in the forest."]}}, {"text": "GATE VISITOR", "action": "EVENT", "event": {"lines": ["Man: Cut down the small tree outside and you can reach Diglett's Cave."]}}, {"text": "TRADER", "action": "EVENT", "event": {"lines": ["Man: I love trading Pokemon. A traded Pokemon grows fast!"]}}, {"text": "TRADER'S FRIEND", "action": "EVENT", "event": {"lines": ["Woman: He talks about trades all day long."]}}, {"text": "DIGLETT'S CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": ["can_exit", "has_item:HM_CUT"], "color": "RED"}, {"text": "OAK'S AIDE", "action": "EVENT", "door": "aide", "color": "GOLD", "event": {"lines": ["Aide: Oh, you're the trainer Professor Oak told me about!", "Caves can be pitch black inside. This HM will light the way. Take it!"], "gift_item": {"HM_FLASH": 1}, "flag": "got_hm_flash_kanto", "done": ["Aide: Flash lights up dark caves, so you can see where you're going. Good luck!"]}}, 
+      "route_menu": [{"text": "FOREST GUIDE", "action": "EVENT", "event": {"lines": ["Guide: Viridian Forest is a natural maze. Take your time in there!"]}}, {"text": "BUG FAN", "action": "EVENT", "event": {"lines": ["Boy: The forest is full of Bug Pokemon. Watch out for Weedle's sting!"]}}, {"text": "RESTING GIRL", "action": "EVENT", "event": {"lines": ["Girl: I made it through the forest! My feet hurt."]}}, {"text": "GATE LADY", "action": "EVENT", "event": {"lines": ["Lady: Pewter City is past the forest. Its Gym Leader uses Rock Pokemon."]}}, {"text": "YOUNG TRAINER", "action": "EVENT", "event": {"lines": ["Boy: Got Antidotes? You'll want some in the forest."]}}, {"text": "GATE VISITOR", "action": "EVENT", "event": {"lines": ["Man: Cut down the small tree outside and you can reach Diglett's Cave."]}}, {"text": "TRADER", "action": "EVENT", "event": {"lines": ["Man: I love trading Pokemon. A traded Pokemon grows fast!"]}}, {"text": "TRADER'S FRIEND", "action": "EVENT", "event": {"lines": ["Woman: He talks about trades all day long."]}}, {"text": "DIGLETT'S CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": ["can_exit", "has_item:HM_CUT"], "color": "RED"}, {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_route2", "event": {"lines": ["An Ether, lying by the trees."], "gift_item": {"ETHER": 1}, "flag": "got_ether_route2"}}, {"text": "PARALYZE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_parlyz_route2", "event": {"lines": ["A Paralyze Heal, dropped in the grass."], "gift_item": {"PARALYZE_HEAL": 1}, "flag": "got_parlyz_route2"}}, {"text": "OAK'S AIDE", "action": "EVENT", "door": "aide", "color": "GOLD", "event": {"requires": ["caught_kanto:10"], "fail": ["Aide: Oh, you're the trainer Professor Oak told me about! I'm one of his aides.", "Aide: I've got an HM for you, but first show me you're serious: catch ten different kinds of Pokémon and come back!"], "lines": ["Aide: Oh, you're the trainer Professor Oak told me about!", "Aide: Ten kinds of Pokémon already? The Professor will be thrilled!", "Caves can be pitch black inside. This HM will light the way. Take it!"], "gift_item": {"HM_FLASH": 1}, "flag": "got_hm_flash_kanto", "done": ["Aide: Flash lights up dark caves, so you can see where you're going. Good luck!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1806,7 +2798,8 @@
         { "sprite": "youngster.png", "name": "Calvin", "class": "YOUNGSTER", "team": [21], "levels": [14], "rewards": { "balls": 3 } },
         { "sprite": "lass.png", "name": "Robin", "class": "LASS", "team": [39], "levels": [14], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
+      "route_menu": [
+        {"text": "MAGIKARP SALESMAN", "action": "EVENT", "flag_condition": "not got_magikarp_mtmoon", "event": {"requires": ["party_room"], "fail": ["Man: Hey, your team's full! Come back when you've got room for a fantastic Pokémon!"], "lines": ["Man: Psst, kid! Want a MAGIKARP? Just 500, and it's yours!", "Man: ...Pleasure doing business with you. No refunds!"], "pay": 500, "gift_pokemon": 129, "gift_level": 5, "flag": "got_magikarp_mtmoon"}},{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1830,6 +2823,7 @@
         { "sprite": "lass.png", "name": "Crissy", "class": "LASS", "team": [46, 46, 47], "levels": [31, 31, 31], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "TM120", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm120_route4", "event": {"lines": ["A TM, lying on the ledge! It's Roar."], "gift_item": {"TM120": 1}, "flag": "got_tm120_route4"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2004,6 +2998,8 @@
         { "sprite": "hiker.png", "name": "Jeremy", "class": "HIKER", "team": [66, 95], "levels": [20, 20], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "TM121", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm121_route9", "event": {"lines": ["A TM, lying by the hill! It's Aerial Ace."], "gift_item": {"TM121": 1}, "flag": "got_tm121_route9"}},
+        {"text": "BURN HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_burnheal_route9", "event": {"lines": ["A Burn Heal, by the fence."], "gift_item": {"BURN_HEAL": 1}, "flag": "got_burnheal_route9"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
@@ -2028,6 +3024,7 @@
         { "sprite": "pokemaniac.png", "name": "Mark", "class": "POKEMANIAC", "team": [111, 108], "levels": [29, 29], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
+        {"text": "OAK'S AIDE", "action": "EVENT", "door": "center", "color": "GOLD", "event": {"requires": ["caught_kanto:20"], "fail": ["Aide: There you are! I'm one of Professor Oak's aides.", "Aide: Show me twenty kinds of Pokémon caught and I'll give you something from the Professor."], "lines": ["Aide: There you are! I'm one of Professor Oak's aides.", "Aide: Twenty kinds of Pokémon! Then this is yours: an Everstone.", "A Pokémon holding it won't evolve. Handy if you like it just the way it is!"], "gift_item": {"EVERSTONE": 1}, "flag": "got_everstone_kanto", "done": ["Aide: Give the Everstone to a Pokémon to hold, and it won't evolve."]}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2072,6 +3069,11 @@
         { "sprite": "rocker.png", "name": "Stoney", "class": "ROCKER", "team": [100, 100, 101], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_pplant", "event": {"lines": ["A Max Potion, by the old machines."], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_pplant"}},
+        {"text": "TM25", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm25_pplant", "event": {"lines": ["A TM in the Power Plant! It's Protect."], "gift_item": {"TM25": 1}, "flag": "got_tm25_pplant"}},
+        {"text": "TM110", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm110_pplant", "event": {"lines": ["A TM, crackling with static! It's Thunder."], "gift_item": {"TM110": 1}, "flag": "got_tm110_pplant"}},
+        {"text": "THUNDER STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_thunderstone_pplant", "event": {"lines": ["A Thunder Stone, humming with electricity!"], "gift_item": {"THUNDER_STONE": 1}, "flag": "got_thunderstone_pplant"}},
+        {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_pplant", "event": {"lines": ["An Elixir, left by a worker."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_pplant"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2109,6 +3111,11 @@
         { "sprite": "engineer.png", "name": "Bernie", "class": "ENGINEER", "team": [81, 81, 82], "levels": [18, 18, 18], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Route 12 is ahead. I hear a huge Pokemon sleeps on its pier."]}}, 
+        {"text": "OAK'S AIDE", "action": "EVENT", "door": "gate_2", "color": "GOLD", "event": {"requires": ["caught_kanto:30"], "fail": ["Aide: Hello again! I'm another of Professor Oak's aides.", "Aide: Catch thirty kinds of Pokémon and I'll give you something handy. Keep at it!"], "lines": ["Aide: Hello again! I'm another of Professor Oak's aides.", "Aide: Thirty kinds of Pokémon! The Professor asked me to give you this: the Itemfinder.", "It beeps when something's hidden nearby. Lots of things lie buried out there!"], "gift_item": {"ITEMFINDER": 1}, "flag": "got_itemfinder_kanto", "done": ["Aide: The Itemfinder beeps whenever a hidden item is close. Walk around until you find it!"]}},
+        {"text": "Trader", "action": "EVENT", "door": "gate_2", "color": "GOLD", "flag_condition": "not route11_nidorina_trade", "event": {"requires": ["party_has:33"], "fail": ["Boy: I'm after a Nidorino. Got one? I'll swap my Nidorina for it!"], "lines": ["Boy: A Nidorino! Will you trade it for my Nidorina? Great, thanks!"], "trade": {"want": 33, "give": 30}, "flag": "route11_nidorina_trade"}},
+        {"text": "X DEFEND", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_xdefense_route11", "event": {"lines": ["An X Defense, lying in the grass."], "gift_item": {"X_DEFENSE": 1}, "flag": "got_xdefense_route11"}},
+        {"text": "GREAT BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_greatball_route11", "event": {"lines": ["A Great Ball, by the trees."], "gift_item": {"GREAT_BALL": 1}, "flag": "got_greatball_route11"}},
+        {"text": "AWAKENING", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_awakening_route11", "event": {"lines": ["An Awakening, lying in a corner."], "gift_item": {"AWAKENING": 1}, "flag": "got_awakening_route11"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
@@ -2141,7 +3148,10 @@
         { "sprite": "camper.png", "name": "Justin", "class": "CAMPER", "team": [32, 33], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Andrew", "class": "FISHERMAN", "team": [129, 129], "levels": [24, 24], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Lavender Town is north. The pier runs a long way south."]}}, {"text": "FISHING GURU", "action": "EVENT", "event": {"lines": ["Man: I'm the Fishing Guru's brother. The sea off this pier is full of fish!"]}}, 
+      "route_menu": [{"text": "TM124", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm124_route12", "event": {"lines": ["A TM, lying by the fence! It's Skill Swap."], "gift_item": {"TM124": 1}, "flag": "got_tm124_route12"}},
+        {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_route12", "event": {"lines": ["An Iron! It raises a Pokémon's Defense."], "gift_item": {"IRON": 1}, "flag": "got_iron_route12"}},
+        {"text": "Little girl", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Girl: Oh! You came all the way up to see the view?", "Here, I want you to have this. It's a move for a Pokémon that loves its Trainer!", "You received TM113, Return!"], "gift_item": {"TM113": 1}, "flag": "got_tm113_route12", "done": ["Girl: Return gets stronger the more your Pokémon likes you. Be nice to yours!"]}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Lavender Town is north. The pier runs a long way south."]}}, {"text": "FISHING GURU", "action": "EVENT", "event": {"lines": ["Man: I'm the Fishing Guru's brother. The sea off this pier is full of fish!"]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2268,7 +3278,8 @@
         { "sprite": "biker.png", "name": "Ernest", "class": "BIKER", "team": [109, 109, 110, 109, 88], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Chester", "class": "BIRD_KEEPER", "team": [85, 84, 84], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Fuchsia City is west. Don't miss the Safari Zone!"]}}, 
+      "route_menu": [{"text": "TM33", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm33_route15", "event": {"lines": ["A TM, lying in the grass! It's Rain Dance."], "gift_item": {"TM33": 1}, "flag": "got_tm33_route15"}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Fuchsia City is west. Don't miss the Safari Zone!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2281,7 +3292,7 @@
 
     "SAFARI_ZONE": {
       "zones": [{"key": "center", "name": "Center Area"}, {"key": "east", "name": "Area 1 (East)"}, {"key": "north", "name": "Area 2 (North)"}, {"key": "west", "name": "Area 3 (West)"}],
-      "zones_explore": true,
+      "safari_game": {"balls": 30, "steps": 600}, "zones_explore": true,
       "zone_pools": {"center": "SAFARI_ZONE_CENTER_PERCENTAGES", "east": "SAFARI_ZONE_EAST_PERCENTAGES", "north": "SAFARI_ZONE_NORTH_PERCENTAGES", "west": "SAFARI_ZONE_WEST_PERCENTAGES"},
       "area_type": "wild_route",
       "route_name": "Safari Zone",
@@ -2294,7 +3305,18 @@
       "trainer_encounter_rate": 0,
       "min_rounds": 0,
       "trainer_pool": [],
-      "route_menu": [{"text": "SAFARI RANGER", "action": "EVENT", "event": {"lines": ["Ranger: Welcome to the rest house! Sit down and catch your breath."]}},
+      "route_menu": [{"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_safari", "event": {"lines": ["A Nugget, glinting in the grass!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_safari"}},
+        {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_safari_e", "event": {"lines": ["A Max Potion, left by a pond."], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_safari_e"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore_safari", "event": {"lines": ["A Full Restore!"], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore_safari"}},
+        {"text": "TM34", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm34_safari", "event": {"lines": ["A TM, lying in the grass! It's Sunny Day."], "gift_item": {"TM34": 1}, "flag": "got_tm34_safari"}},
+        {"text": "LEAF STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_leafstone_safari", "event": {"lines": ["A Leaf Stone!"], "gift_item": {"LEAF_STONE": 1}, "flag": "got_leafstone_safari"}},
+        {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_safari", "event": {"lines": ["A Protein! It raises a Pokémon's Attack."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_safari"}},
+        {"text": "TM30", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm30_safari", "event": {"lines": ["A TM, lying in the grass! It's Steel Wing."], "gift_item": {"TM30": 1}, "flag": "got_tm30_safari"}},
+        {"text": "QUICK CLAW", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_quickclaw_safari", "event": {"lines": ["A Quick Claw! Held, it sometimes lets a Pokémon move first."], "gift_item": {"QUICK_CLAW": 1}, "flag": "got_quickclaw_safari"}},
+        {"text": "TM125", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm125_safari", "event": {"lines": ["A TM, lying in the grass! It's Double Team."], "gift_item": {"TM125": 1}, "flag": "got_tm125_safari"}},
+        {"text": "MAX POTION ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_safari_w", "event": {"lines": ["A Max Potion, by the path."], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_safari_w"}},
+        {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_safari", "event": {"lines": ["A Max Revive!"], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_safari"}},
+        {"text": "SAFARI RANGER", "action": "EVENT", "event": {"lines": ["Ranger: Welcome to the rest house! Sit down and catch your breath."]}},
         {"text": "RESTING SCIENTIST", "action": "EVENT", "event": {"lines": ["Scientist: I'm studying which Pokemon live in which area. Every area is different!"]}},
         {"text": "TIRED HIKER", "action": "EVENT", "event": {"lines": ["Hiker: Phew... I walked all the way round. My legs are done!"]}},
         {"text": "BIRD FAN", "action": "EVENT", "event": {"lines": ["Bird Fan: I saw a Doduo dash by outside. So fast!"]}},
@@ -2336,7 +3358,8 @@
         { "sprite": "biker.png", "name": "Hideo", "class": "BIKER", "team": [110], "levels": [33], "rewards": { "balls": 3 } },
         { "sprite": "cueball.png", "name": "Koji", "class": "CUE_BALL", "team": [66, 56, 66], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: The Cycling Road is downhill all the way. Bicycles only!"]}}, {"text": "CYCLIST", "action": "EVENT", "event": {"lines": ["Cyclist: No Bicycle? The Bike Shop is in Cerulean City."]}}, {"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
+      "route_menu": [{"text": "OAK'S AIDE", "action": "EVENT", "door": "gate_2", "color": "GOLD", "event": {"requires": ["caught_kanto:40"], "fail": ["Aide: Hi! I'm one of Professor Oak's aides.", "Aide: Catch forty kinds of Pokémon and I've got a reward for you from the Professor!"], "lines": ["Aide: Hi! I'm one of Professor Oak's aides.", "Aide: Forty kinds! Wow! Here, this is from the Professor: an Amulet Coin.", "Battles pay double when your team carries it!"], "gift_item": {"AMULET_COIN": 1}, "flag": "got_amulet_coin_kanto", "done": ["Aide: With the Amulet Coin, your battles pay out twice as much. Spend it well!"]}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: The Cycling Road is downhill all the way. Bicycles only!"]}}, {"text": "CYCLIST", "action": "EVENT", "event": {"lines": ["Cyclist: No Bicycle? The Bike Shop is in Cerulean City."]}}, {"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2394,7 +3417,8 @@
         { "sprite": "birdkeeper.png", "name": "Jacob", "class": "BIRD_KEEPER", "team": [21, 21, 22, 21], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [85], "levels": [34], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Riding up the Cycling Road is hard work. Take it slow!"]}}, 
+      "route_menu": [{"text": "Trader", "action": "EVENT", "door": "gate_2", "color": "GOLD", "flag_condition": "not route18_lickitung_trade", "event": {"requires": ["party_has:55"], "fail": ["Man: I'm looking for a Golduck. Got one? I'll trade you my Lickitung for it!"], "lines": ["Man: A Golduck! Will you trade it for my Lickitung? Thanks a lot!"], "trade": {"want": 55, "give": 108}, "flag": "route18_lickitung_trade"}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Riding up the Cycling Road is hard work. Take it slow!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2592,6 +3616,7 @@
         {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [23, 41], "rewards": {"balls": 8}, "is_boss_battle": true, "dialogue": {"intro": ["Congratulations! You beat our five contest trainers! Here's a nugget...", "...Now, how about joining Team Rocket? No? Then I'll make you!"], "player_won": ["Arrgh! You're good. You'd have made a great Rocket..."], "player_lost": ["Heh. Think about it!"]}}
       ],
       "route_menu": [
+        {"text": "TM31", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm31_route24", "event": {"lines": ["A TM, lying by the bridge! It's Attract."], "gift_item": {"TM31": 1}, "flag": "got_tm31_route24"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
@@ -2626,6 +3651,7 @@
         { "sprite": "hiker.png", "name": "Nob", "class": "HIKER", "team": [74, 74, 66, 74], "levels": [13, 13, 13, 13], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "TM112", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm112_route25", "event": {"lines": ["A TM, tucked behind the trees! It's Secret Power."], "gift_item": {"TM112": 1}, "flag": "got_tm112_route25"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2744,6 +3770,16 @@
         {"sprite": "jessie_james.png", "name": "Jessie and James", "class": "ROCKET", "dialogue": {"intro": ["Prepare for trouble!", "And make it double!"], "player_won": ["It looks like we were the ones who found trouble!", "Team Rocket's blasting off again!"], "player_lost": ["Too easy!"]}, "team": [23, 109, 52], "rewards": {"balls": 3}}
       ],
       "route_menu": [
+        {"text": "PARALYZE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_parlyz_mtmoon", "event": {"lines": ["A Paralyze Heal, near the cave wall."], "gift_item": {"PARALYZE_HEAL": 1}, "flag": "got_parlyz_mtmoon"}}, 
+        {"text": "TM50", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm50_mtmoon", "event": {"lines": ["A TM, lying in the dark! It's Bullet Seed."], "gift_item": {"TM50": 1}, "flag": "got_tm50_mtmoon"}}, 
+        {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_mtmoon", "event": {"lines": ["A Potion, dropped by some hiker."], "gift_item": {"POTION": 1}, "flag": "got_potion_mtmoon"}}, 
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_candy_mtmoon", "event": {"lines": ["A Rare Candy, tucked in a corner!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_candy_mtmoon"}}, 
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rope_mtmoon", "event": {"lines": ["An Escape Rope. Handy in a cave like this!"], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_rope_mtmoon"}}, 
+        {"text": "MOON STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_moonstone_mtmoon", "event": {"lines": ["A Moon Stone, glowing faintly in the rock!"], "gift_item": {"MOON_STONE": 1}, "flag": "got_moonstone_mtmoon"}}, 
+        {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_starpiece_mtmoon", "event": {"lines": ["A Star Piece, glinting on the cave floor."], "gift_item": {"STAR_PIECE": 1}, "flag": "got_starpiece_mtmoon"}}, 
+        {"text": "TM23", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm23_mtmoon", "event": {"lines": ["A TM the Rockets left behind! It's Thief."], "gift_item": {"TM23": 1}, "flag": "got_tm23_mtmoon"}}, 
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_mtmoon", "event": {"lines": ["A Revive, lying by the rocks."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_mtmoon"}}, 
+        {"text": "ANTIDOTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_antidote_mtmoon", "event": {"lines": ["An Antidote, left in the dust."], "gift_item": {"ANTIDOTE": 1}, "flag": "got_antidote_mtmoon"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2774,6 +3810,14 @@
         { "sprite": "acetrainer_m.png", "name": "Ace Trainer Samuel", "class": "COOLTRAINER", "team": [143, 59, 149], "rewards": { "balls": 10 } }
       ],
       "route_menu": [
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ccave", "event": {"lines": ["A Nugget, glinting in the dark!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ccave"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore_ccave", "event": {"lines": ["A Full Restore!"], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore_ccave"}},
+        {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxelixir_ccave", "event": {"lines": ["A Max Elixir!"], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_maxelixir_ccave"}},
+        {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ppup_ccave", "event": {"lines": ["A PP Up!"], "gift_item": {"PP_UP": 1}, "flag": "got_ppup_ccave"}},
+        {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball_ccave", "event": {"lines": ["An Ultra Ball!"], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball_ccave"}},
+        {"text": "FULL RESTORE ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore2_ccave", "event": {"lines": ["Another Full Restore!"], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore2_ccave"}},
+        {"text": "ULTRA BALL ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball2_ccave", "event": {"lines": ["An Ultra Ball, deep in the cave."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball2_ccave"}},
+        {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_ccave", "event": {"lines": ["A Max Revive, near the cave's deepest pool."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_ccave"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
@@ -2811,6 +3855,11 @@
         { "sprite": "pokemaniac.png", "name": "Winston", "class": "POKEMANIAC", "team": [79], "levels": [25], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "REPEL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_repel_rocktunnel", "event": {"lines": ["A Repel, lying in the dark."], "gift_item": {"REPEL": 1}, "flag": "got_repel_rocktunnel"}},
+        {"text": "PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pearl_rocktunnel", "event": {"lines": ["A Pearl! It gleams even in the dark."], "gift_item": {"PEARL": 1}, "flag": "got_pearl_rocktunnel"}},
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escrope_rocktunnel", "event": {"lines": ["An Escape Rope, dropped by the rocks."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escrope_rocktunnel"}},
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_rocktunnel", "event": {"lines": ["A Revive, tucked in a corner."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_rocktunnel"}},
+        {"text": "MAX ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxether_rocktunnel", "event": {"lines": ["A Max Ether, by the rocks."], "gift_item": {"MAX_ETHER": 1}, "flag": "got_maxether_rocktunnel"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2830,7 +3879,8 @@
       "area_boss": {
         "id": 10500,
         "victory_flag": "tower_ghost_defeated",
-        "name": "(Ghost)"
+        "name": "(Ghost)",
+        "blocked_lines": ["A ghost blocks the stairs! You can't make out what it is...", "Get out... Go away...", "You'll need a Silph Scope to see it."]
       },
       "alt_forms": {
         "enabled": true,
@@ -2870,7 +3920,7 @@
         },
         {
           "sprite": "rocket_grunt_m.png",
-          "name": "Grunt",
+          "name": "Grunt", "spot_name": "Grunt 7F 1",
           "class": "ROCKET_GRUNT",
           "team": [
             41,
@@ -2880,7 +3930,7 @@
           "rewards": {
             "balls": 3
           },
-          "zone": "floor_4"
+          "zone": "floor_7"
         },
         {
           "sprite": "jessie_james.png",
@@ -2894,10 +3944,29 @@
           "rewards": {
             "balls": 3
           },
-          "zone": "floor_4"
-        }
+          "zone": "floor_7"
+        },
+        {"sprite": "channeler.png", "name": "Patricia", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Hope", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Jody", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Ruth", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Tammy", "class": "CHANNELER", "team": [93], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Karina", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Janae", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Angelica", "class": "CHANNELER", "team": [92, 92, 92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Jennifer", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Emilia", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt 7F 2", "class": "ROCKET_GRUNT", "team": [109, 96], "rewards": {"balls": 3}}
       ],
-      "route_menu": [{"text": "GHOST", "action": "EVENT", "zone": "floor_3", "condition": ["not:has_item:SILPH_SCOPE", "not:tower_ghost_defeated"], "event": {"lines": ["A ghost blocks the stairs! You can't make out what it is...", "Get out... Go away...", "You'll need a Silph Scope to see it."]}}, {"text": "MR. FUJI", "action": "EVENT", "zone": "floor_4", "condition": "tower_ghost_defeated", "flag_condition": "not fuji_rescued", "event": {"lines": ["Mr. Fuji: You came all this way to rescue me? Thank you, young trainer.", "Team Rocket wanted the Pokemon here... but you've sent them running.", "Please, come and see me at my house in Lavender Town."], "flag": "fuji_rescued"}}, 
+      "route_menu": [{"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escrope_ptower", "event": {"lines": ["An Escape Rope, left by a grave."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escrope_ptower"}},
+        {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_ptower", "event": {"lines": ["An Elixir, set down as an offering."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_ptower"}},
+        {"text": "AWAKENING", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_awakening_ptower", "event": {"lines": ["An Awakening, by a gravestone."], "gift_item": {"AWAKENING": 1}, "flag": "got_awakening_ptower"}},
+        {"text": "GREAT BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_greatball_ptower", "event": {"lines": ["A Great Ball, left behind."], "gift_item": {"GREAT_BALL": 1}, "flag": "got_greatball_ptower"}},
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ptower", "event": {"lines": ["A Nugget! Someone's offering, long forgotten."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ptower"}},
+        {"text": "CLEANSE TAG", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_cleansetag_ptower", "event": {"lines": ["A Cleanse Tag! Held by your lead Pokémon, it keeps wild Pokémon away."], "gift_item": {"CLEANSE_TAG": 1}, "flag": "got_cleansetag_ptower"}},
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rarecandy_ptower", "event": {"lines": ["A Rare Candy!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rarecandy_ptower"}},
+        {"text": "X ACCURACY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_xaccuracy_ptower", "event": {"lines": ["An X Accuracy, by the wall."], "gift_item": {"X_ACCURACY": 1}, "flag": "got_xaccuracy_ptower"}},
+        {"text": "GHOST", "action": "EVENT", "zone": "floor_6", "not_on_map": true, "condition": ["not:has_item:SILPH_SCOPE", "not:tower_ghost_defeated"], "event": {"lines": ["A ghost blocks the stairs! You can't make out what it is...", "Get out... Go away...", "You'll need a Silph Scope to see it."]}}, {"text": "MR. FUJI", "action": "EVENT", "zone": "floor_7", "condition": "tower_ghost_defeated", "flag_condition": "not fuji_rescued", "event": {"lines": ["Mr. Fuji: You came all this way to rescue me? Thank you, young trainer.", "Team Rocket wanted the Pokemon here... but you've sent them running.", "Please, come and see me at my house in Lavender Town."], "flag": "fuji_rescued"}}, 
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -2927,7 +3996,7 @@
           "condition": ["boss_available", "has_item:SILPH_SCOPE"],
           "has_SILPH_SCOPE": true,
           "color": "GOLD",
-          "zone": "floor_3"
+          "zone": "floor_6"
         },
         {
           "text": "EXIT TOWER",
@@ -3019,7 +4088,7 @@
         {
           "key": "floor_4",
           "name": "4F"
-        }
+        }, {"key": "floor_5", "name": "5F"}, {"key": "floor_6", "name": "6F"}, {"key": "floor_7", "name": "7F"}
       ],
       "zones_linear": true,
       "zone_moods": [
@@ -3088,6 +4157,11 @@
         { "sprite": "acetrainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [80, 134], "rewards": { "balls": 5 } }
       ],
       "route_menu": [
+        {"text": "ICE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iceheal_seafoam", "event": {"lines": ["An Ice Heal, on the frozen floor."], "gift_item": {"ICE_HEAL": 1}, "flag": "got_iceheal_seafoam"}},
+        {"text": "WATER STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_waterstone_seafoam", "event": {"lines": ["A Water Stone, glittering in the ice!"], "gift_item": {"WATER_STONE": 1}, "flag": "got_waterstone_seafoam"}},
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_seafoam", "event": {"lines": ["A Revive, tucked between the rocks."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_seafoam"}},
+        {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_bigpearl_seafoam", "event": {"lines": ["A Big Pearl, washed up by the water!"], "gift_item": {"BIG_PEARL": 1}, "flag": "got_bigpearl_seafoam"}},
+        {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball_seafoam", "event": {"lines": ["An Ultra Ball, by the icy water."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball_seafoam"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -3144,6 +4218,14 @@
         { "sprite": "acetrainer_m.png", "name": "Colby", "class": "COOLTRAINER", "team": [99, 61, 73, 117, 9], "levels": [41, 42, 42, 42, 43], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rarecandy_vroad", "event": {"lines": ["A Rare Candy, left by a trainer who came this way."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rarecandy_vroad"}},
+        {"text": "TM129", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm129_vroad", "event": {"lines": ["A TM on the ledge! It's Dragon Claw."], "gift_item": {"TM129": 1}, "flag": "got_tm129_vroad"}},
+        {"text": "GUARD SPEC.", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_guardspec_vroad", "event": {"lines": ["A Guard Spec., by the rocks."], "gift_item": {"GUARD_SPEC": 1}, "flag": "got_guardspec_vroad"}},
+        {"text": "TM35", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm35_vroad", "event": {"lines": ["A TM in the cave! It's Hail."], "gift_item": {"TM35": 1}, "flag": "got_tm35_vroad"}},
+        {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullheal_vroad", "event": {"lines": ["A Full Heal."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_fullheal_vroad"}},
+        {"text": "TM32", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm32_vroad", "event": {"lines": ["A TM in the cave! It's Sandstorm."], "gift_item": {"TM32": 1}, "flag": "got_tm32_vroad"}},
+        {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_vroad", "event": {"lines": ["A Max Revive! Trainers drop the best things up here."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_vroad"}},
+        {"text": "TM117", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm117_vroad", "event": {"lines": ["A TM in the cave! It's Overheat."], "gift_item": {"TM117": 1}, "flag": "got_tm117_vroad"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

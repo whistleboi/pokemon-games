@@ -190,6 +190,12 @@ class TownStory:
                     self.start_npc_exit(lambda: self.game.change_state(
                         StarterSelectionState(self.game, starter_ids=[1, 4, 7], region="KANTO")))
                 callback = kanto_starter_exit
+        elif (story.get_current_region() == "KANTO" and story.story_flags.get("kanto_lab_intro")
+              and not story.story_flags.get("received_starter_kanto")):
+            # (the walked Lab: he has already brought you in; the Poke Balls are on the table beside him)
+            msg = ["Professor Oak: Go on! Each of the three Poké Balls on the table holds a Pokémon.",
+                   "Walk up to the one you like and take a look!"]
+            callback = self.end_npc_interaction
         elif (story.get_current_region() == "KANTO" and not story.story_flags.get("received_starter_kanto")
               and (region == "KANTO" or story.story_flags.get("moved_to_kanto"))):
             # FireRed/LeafGreen: Oak stops you at the edge of town and takes you to his lab.

@@ -35,6 +35,20 @@ LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. C
           "burned": "BURNED TOWER", "bellchime": "BELLCHIME TRAIL", "theater": "DANCE THEATER", "pharmacy": "PHARMACY", "souvenir": "SOUVENIR SHOP", "leaguegate": "VICTORY ROAD", "dome": "POKEATHLON DOME"}
 _DATA = {}
 
+# Name tags (Jordan, 11-14: "nametags only show overhead for important places and people, it overcrowds the screen"):
+# a building is named when it's a landmark (LABELS) or a story option names it; a person when they do something (heal,
+# sell, a story errand, a gift, a trade, a quest); not the townsfolk who only chat, the trainers, things lying about.
+_ERRANDS = ("gift_item", "trade", "heal", "requires", "starter", "pay", "gift_pokemon", "give", "take_item", "story")
+
+
+def important_person(opt):
+    if not isinstance(opt, dict) or opt.get("found"):
+        return False
+    if opt.get("action") not in (None, "EVENT"):
+        return True
+    ev = opt.get("event") or {}
+    return opt.get("color") == "GOLD" or any(k in ev for k in _ERRANDS)
+
 
 def held_way(keys_map):
     """The way a held arrow key (or WASD) points, or None (Jordan, 11-07: hold to keep walking)."""
@@ -206,6 +220,7 @@ class WalkTownState(CityState):
         self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
         self.barred.update(self._rot_bars())
         self.sign_scenes = {tuple(int(v) for v in k.split(",")): s for k, s in (m.get("sign_scenes") or {}).items()}  # (reading this sign starts a scene)
+        self.sign_events = {tuple(int(v) for v in k.split(",")): e for k, e in (m.get("sign_events") or {}).items()}  # (reading this sign runs an event till its flag is set: Cinnabar Gym's quiz machines)
         # a bridge in town has two levels, like a route's: its deck, crossed along its length, and the street under it, crossed along its width
         self.bridge = {(x, y): art.BRIDGES[c] for y, row in enumerate(grid) for x, c in enumerate(row) if c in art.BRIDGES}
         self.deck = True
@@ -244,7 +259,20 @@ class WalkTownState(CityState):
             cache[_ck] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
         self.map_img = cache[_ck]
         self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
+        self._pic_now = art._version_file(_pic) if _pic else None
         self._npc_init(m)
+
+    def _refresh_picture(self):
+        """A flag changed the picture of the map you're on (the S.S. Anne sails out of the harbour): draw the new one,
+        without starting its people and scenes over."""
+        from src.dungeon import art
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
+        pic = ((m or {}).get("roofs") or {}).get("_picture")
+        if not pic or not (pic.get("until") or pic.get("when")) or art._version_file(pic) == getattr(self, "_pic_now", None):
+            return
+        self._pic_now = art._version_file(pic)
+        self.map_img = art.surface(self.grid, m.get("buildings", {}), TILE, m.get("roofs"), m.get("theme"))
+        self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
 
     # ---------------------------------------------------------------- people who move (src/dungeon/npc.py)
     def _npc_init(self, m):
@@ -271,11 +299,18 @@ class WalkTownState(CityState):
             return False
         if t == tuple(self.player) or (self.anim > 0 and t == tuple(self.anim_from)) or t == tuple(getattr(self, "partner", ())):
             return False
-        return not any(o is not mover and not o.gone and t in (o.pos, o.frm) for o in self.motions.values())
+        shown = getattr(self, "_shown_homes", None)   # (someone not here yet doesn't stand in the way: Oak before he walks into his Lab)
+        return not any(o is not mover and not o.gone and t in (o.pos, o.frm) and (shown is None or h in shown) for h, o in self.motions.items())
 
     def _npc_tick(self):
+        self._bar_tick = getattr(self, "_bar_tick", 0) + 1
+        if self._bar_tick % 20 == 0 and not self._busy() and getattr(self, "_bar_list", None):   # (a gift or a battle moved the story on:
+            self.barred = {tuple(t): bar for bar in self._bar_list if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}   # the Amber gone from its case)
+            self.barred.update(self._rot_bars())
+            self._refresh_picture()   # (and its picture: a quiz machine answered, a Cinnabar Gym gate drawn open)
         if not getattr(self, "motions", None):
             return
+        self._shown_homes = {h for h, o in self.people.items() if self._shown(o)}
         shown = set(self._people())
         for home, mo in self.motions.items():
             if mo.pos in shown or mo.moving() or mo.path:
@@ -311,6 +346,7 @@ class WalkTownState(CityState):
 
     def npc_flag(self, name):
         self.game.story_manager.story_flags[name] = True
+        self._refresh_picture()
         # (a scene that moves the story on: stand-ins come and go at once, the Shroomish back beside its girl)
         self.barred = {tuple(t): bar for bar in getattr(self, "_bar_list", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
         self.barred.update(self._rot_bars())
@@ -381,6 +417,97 @@ class WalkTownState(CityState):
     def npc_edge(self, m):
         edge = [(x, y) for (x, y) in self.exits if not (x, y) in self.water_exits]
         return min(edge, key=lambda t: abs(t[0] - m.pos[0]) + abs(t[1] - m.pos[1]), default=None)
+
+    def _may_run(self):
+        """Running (Shift held) on foot: not surfing, not following someone in a scene."""
+        if not dn.running() or getattr(self, "_scene_lock", False):
+            return False
+        x, y = self.player
+        return not (0 <= y < self.h and 0 <= x < self.w and self.rows[y][x] == "o")
+
+    def _trash_can(self, t):
+        """A room's "trashcans" {"cans": [[x, y]...] in rows of "cols", "first": flag, "open": flag} (FireRed's Vermilion
+        Gym): two switches hide in the cans, the second always beside the first (left, right, up or down in the grid).
+        Find the first and one lock opens; the second next opens the door; a wrong can after the first resets both and
+        hides the switches somewhere new. Returns True when t was a can."""
+        tc = (((self.town_map or {}).get("rooms") or {}).get(getattr(self, "room", None)) or {}).get("trashcans") if getattr(self, "town_map", None) else None
+        if not tc or [t[0], t[1]] not in tc["cans"]:
+            return False
+        import random
+        story = self.game.story_manager
+        flags = story.story_flags
+        cans, cols = [tuple(c) for c in tc["cans"]], int(tc.get("cols", 5))
+        i = cans.index(tuple(t))
+
+        def hide():
+            first = random.randrange(len(cans))
+            r, c = divmod(first, cols)
+            near = [rr * cols + cc for rr, cc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1))
+                    if 0 <= cc < cols and 0 <= rr * cols + cc < len(cans) and 0 <= rr]
+            flags[tc["first"] + "_where"] = [first, random.choice(near)]
+        if flags.get(tc["open"]):
+            self.show_message(["Nope, there's only trash in here."])
+            return True
+        if not flags.get(tc["first"] + "_where"):
+            hide()
+        first, second = flags[tc["first"] + "_where"]
+        if not flags.get(tc["first"]):
+            if i == first:
+                flags[tc["first"]] = True
+                self._from_art(self.town_map["rooms"][self.room])
+                self.show_message(["Hey! There's a switch under the trash!", "Click! The first electric lock opened!"])
+            else:
+                self.show_message(["Nope, there's only trash in here."])
+            return True
+        if i == second:
+            flags[tc["open"]] = True
+            self._from_art(self.town_map["rooms"][self.room])
+            self.show_message(["There's another switch under the trash!", "Click! The second electric lock opened! The door to the Leader is open!"])
+        else:
+            flags.pop(tc["first"], None)
+            hide()
+            self._from_art(self.town_map["rooms"][self.room])
+            self.show_message(["Nope, there's only trash in here.", "Hey! The electric locks were reset!"])
+        return True
+
+    def _town_hidden(self, t):
+        """An item hidden in town (the map's or room's "hidden" {"x,y": item}: the game's own hidden items, as on the
+        routes): found by stepping on its spot, or walking into it where it's solid. Once each."""
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
+        item = ((m or {}).get("hidden") or {}).get(f"{t[0]},{t[1]}")
+        story = self.game.story_manager
+        flag = f"hidden_{self.area_key}_{getattr(self, 'room', None) or ''}_{t[0]}_{t[1]}"
+        if not item or story.story_flags.get(flag):
+            return False
+        story.story_flags[flag] = True
+        if item == "POKE_BALLS":   # (Poke Balls are the one ball count)
+            story.balls_left = getattr(story, "balls_left", 0) + 1
+        else:
+            story.add_item(item)
+        from src.pokemon import forms as _forms
+        self.walk_goal = None
+        self.show_message([f"Something was hidden here... You found a {_forms.item_label(item).upper()}!"])
+        return True
+
+    def _itemfinder(self, here):
+        """With the Itemfinder, a hidden item on screen makes it beep (once each visit)."""
+        from src.world import itemfinder
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
+        heard = self.__dict__.setdefault("_heard", {}).setdefault(getattr(self, "room", None) or "", set())
+        line = itemfinder.beep(self.game.story_manager, (m or {}).get("hidden"), here,
+                               lambda x, y: f"hidden_{self.area_key}_{getattr(self, 'room', None) or ''}_{x}_{y}", heard)
+        if line:
+            self.flash(line, 150)
+
+    def npc_room(self, room, x, y):
+        """A scene ends with you inside one of the town's rooms, standing at (x, y) (Oak walks you into his Lab)."""
+        if room not in ((getattr(self, "town_map", None) or {}).get("rooms") or {}):
+            return
+        self._go(room, "")
+        self.player, self.facing = (x, y), (0, -1)
+        self.anim = 0
+        self.anim_from = self.partner = self.partner_from = self.player
+        self._remember()
 
     # ---------------------------------------------------------------- the map
     def _map_image(self):
@@ -502,8 +629,10 @@ class WalkTownState(CityState):
                     p2 = tuple(at_edge[2])
                     t = min(edge, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1]))
                 self.game.walk_town_exit = None
-                inward = next(((t[0] + dx, t[1] + dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
-                               and (t[0] + dx, t[1] + dy) not in self.exits), t)
+                _out = [(t[0] + dx, t[1] + dy, dx, dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
+                        and (t[0] + dx, t[1] + dy) not in self.exits]
+                _out.sort(key=lambda o: self._open((t[0] - o[2], t[1] - o[3])))   # (out the way the door faces: away from its building. A gatehouse's side door, Saffron's)
+                inward = (_out[0][0], _out[0][1]) if _out else t
                 self.player = inward
                 self.facing = (inward[0] - t[0], inward[1] - t[1]) if inward != t else (0, 1)
             else:
@@ -614,6 +743,9 @@ class WalkTownState(CityState):
         if roster.world.occupied(self.game, to):
             self.walk_goal = None  # (a friend or their Pokemon is standing there)
             return
+        if self._trash_can(to):   # (Vermilion Gym's trash cans: search one by walking into it)
+            self.walk_goal = None
+            return
         if tuple(to) in getattr(self, "barred", {}):
             self.walk_goal = None
             bar = self.barred[tuple(to)]
@@ -663,6 +795,8 @@ class WalkTownState(CityState):
             return self.flash("The water pours down too hard. WATERFALL could climb it!", 110)
         if not self._open(to):
             self.walk_goal = None
+            if self._town_hidden(to):   # (an item hidden in something solid: walk into it)
+                return
             if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] in "o2" and to not in self._people():
                 self.flash("The water's deep here. You'll need Surf to cross it!" if self.rows[to[1]][to[0]] == "o" else "A small tree is in the way. CUT could clear it!", 110)
             return
@@ -683,6 +817,8 @@ class WalkTownState(CityState):
         self.player = to
         self.steps += 1
         self._remember()
+        if not self._town_hidden(to):
+            self._itemfinder(to)
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)
@@ -777,6 +913,12 @@ class WalkTownState(CityState):
         self._create_hover_menu(opts, None)  # (a building with several things inside: pick one)
 
     def _read(self, spot):
+        ev = getattr(self, "sign_events", {}).get(tuple(spot))
+        if ev and not self.game.story_manager.story_flags.get((ev.get("event") or {}).get("flag")):
+            cb = self._get_callback_for_option(ev)
+            if cb:
+                cb()
+                return
         sc = getattr(self, "sign_scenes", {}).get(tuple(spot))
         if sc and getattr(self, "scenes", None) and not self.scenes.busy() and self.scenes.pending(sc):  # (something behind the sign)
             self.scenes.start(sc, None)
@@ -956,7 +1098,7 @@ class WalkTownState(CityState):
         if self.banner > 0:
             self.banner -= 1
         if self.anim > 0:
-            self.anim -= 1
+            self.anim = max(0, self.anim - (2 if self._may_run() else 1))   # (Shift held: running, Jordan 11-14)
             return
         if not self._busy():  # held down: keep walking (a key), or keep heading for the finger
             way = held_way(KEYS)
@@ -1281,12 +1423,17 @@ class WalkTownState(CityState):
         for _o, img, (bx, by) in getattr(self, "overheads", []):  # (solid, over you: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
         # the buildings' names over their doors, who the people are, where the ways out go
-        for spot, kind in self.doors.items():
+        _named = []   # (a building with several door tiles, the Dept. Store's two: its name once)
+        for spot, kind in sorted(self.doors.items()):
             if kind == "house" or (kind == "home" and spot != min(t for t, k2 in self.doors.items() if k2 == "home")):
                 continue
+            if any(k2 == kind and abs(s2[0] - spot[0]) + abs(s2[1] - spot[1]) <= 6 for s2, k2 in _named):
+                continue
+            _named.append((spot, kind))
             label = LABELS.get(kind) or next((o.get("text", "") for o in self.area_data.get("explore_options", [])
-                                              if o.get("door") == kind), kind).upper()
-            self._pill(screen, label, at(spot).centerx, at(spot).y - 6, fonts)
+                                              if o.get("door") == kind and o.get("action") not in (None, "EVENT")), "").upper()
+            if label:   # (a landmark or a place the story names; a plain house or room has no tag)
+                self._pill(screen, label, at(spot).centerx, at(spot).y - 6, fonts)
         ways = {}
         for spot, target in self.exits.items():
             ways.setdefault(target, []).append(spot)
@@ -1294,12 +1441,14 @@ class WalkTownState(CityState):
             tiles.sort()
             t = tiles[len(tiles) // 2]
             name = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(target) or {}).get("route_name") or target
-            if str(target).startswith(("OUT:", "ROOM:")):  # (a room's mat or stairs: no place of their own to name)
-                name = "EXIT" if str(target).startswith("OUT:") else "STAIRS"
+            if str(target).startswith(("OUT:", "ROOM:")):  # (a room's mat or stairs: no place of their own to name, no tag)
+                continue
             self._pill(screen, str(name).upper(), at(t).centerx, at(t).centery + 10, fonts)
         from src.states.overworld.common import _fill_names
         taken = []  # (name tags that would sit on top of one another: the one with something to do is shown: a row of clerks)
         for spot, opt in sorted(people.items(), key=lambda kv: (kv[1].get("action") == "EVENT" and not (kv[1].get("event") or {}).get("battle"), kv[0])):
+            if not important_person(opt):   # (townsfolk who only chat: no tag)
+                continue
             self._pill(screen, _fill_names(self.game, opt.get("who") or opt.get("text", "")).upper()[:28], at(spot).centerx,  # ("who": the person, when the option says what they offer)
                        at(spot).y - 34, fonts, taken)
         if getattr(self, "turnstiles", None):
@@ -1385,10 +1534,17 @@ class WalkTownState(CityState):
         return self._guide_hit
 
     def _guide_lift(self, t):
+        """How high the Journal's arrow sits over a tile that already has a name tag (None: no tag there, so the arrow
+        brings its own)."""
         if t in self._people():
-            return 70  # (over the person's name)
-        if t in self.doors or t in self.exits:
-            return 44  # (over the building's name; a way out's name sits low on its tile)
+            return 70 if important_person(self._people()[t]) else None  # (over the person's name)
+        if t in self.doors:
+            kind = self.doors[t]
+            named = kind not in ("house", "home") and (LABELS.get(kind) or any(o.get("door") == kind and o.get("action") not in (None, "EVENT")
+                                                                             for o in self.area_data.get("explore_options", [])))
+            return 44 if named else None  # (over the building's name)
+        if t in self.exits and not str(self.exits[t]).startswith(("OUT:", "ROOM:")):
+            return 44  # (a way out's name sits low on its tile)
         return None
 
     def _draw_guide(self, screen, at):

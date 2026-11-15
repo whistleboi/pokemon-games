@@ -237,6 +237,86 @@
   "tier": 8,
   "price": 3000
  },
+ "TM120": {
+  "move": "ROAR",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM05: lying on Route 4, east of Mt. Moon"
+ },
+ "TM121": {
+  "move": "AERIAL-ACE",
+  "type": "FLYING",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM40: lying on Route 9, by the hill"
+ },
+ "TM122": {
+  "move": "TAUNT",
+  "type": "DARK",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM12: lying in the Rocket Hideout, B2F"
+ },
+ "TM123": {
+  "move": "SNATCH",
+  "type": "DARK",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM49: lying in the Rocket Hideout, B4F"
+ },
+ "TM124": {
+  "move": "SKILL-SWAP",
+  "type": "PSYCHIC",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM48: lying on Route 12, by the pier"
+ },
+ "TM125": {
+  "move": "DOUBLE-TEAM",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM32: lying in the Safari Zone's west area"
+ },
+ "TM126": {
+  "move": "PSYCHIC",
+  "type": "PSYCHIC",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM29: Mr. Psychic, Saffron City"
+ },
+ "TM127": {
+  "move": "FOCUS-PUNCH",
+  "type": "FIGHTING",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM01: lying in Silph Co., 5F"
+ },
+ "TM128": {
+  "move": "TORMENT",
+  "type": "DARK",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM41: lying in Silph Co., 4F"
+ },
+ "TM129": {
+  "move": "DRAGON-CLAW",
+  "type": "DRAGON",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM02: lying in Victory Road, 1F"
+ },
  "TM13": {
   "move": "FIRE-SPIN",
   "type": "FIRE",

@@ -102,8 +102,10 @@ for area, flag in (("KANTO_ROUTE_24", "defeated_rival_nugget_bridge"), ("KANTO_P
     check(ev["flag_check"] == flag and set(ev["trainer"]["team_choice"]) == {"1", "4", "7"}, f"{area}: the rival, team by starter")
 silph = prog["SILPH_CITY"]["trainer_pool"]
 names = [t["name"] for t in silph]
-check(names.index("{rival_name}") < names.index("Admin Proton") and names[-1] == "Giovanni"
-      and silph[-1].get("victory_flag") == "silph_co_cleared", "Silph Co.: the rival on 7F, Giovanni at the top")
+_gio = next(t for t in silph if t["name"] == "Giovanni")
+_rv = next(t for t in silph if t["name"] == "{rival_name}")
+check(_rv.get("zone") == "7f" and _gio.get("zone") == prog["SILPH_CITY"]["zones"][-1]["key"] == "11f"
+      and _gio.get("victory_flag") == "silph_co_cleared", "Silph Co.: the rival on 7F, Giovanni at the top")
 
 
 def arrive(area):
