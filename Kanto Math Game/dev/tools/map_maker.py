@@ -1334,7 +1334,7 @@ class MapMaker(ParkBuilder):
         self.btn_resize = Button((x0 + 216, y + 20, 92, 28), "Resize", self.resize_map)
         y += 52
         self.open_box = TextBox((x0, y + 20, w - 92, 28), "", "key or layout file")
-        self.btn_open = Button((x0 + w - 84, y + 20, 84, 28), "Open", self.open_from_box)
+        self.btn_open = Button((x0 + w - 84, y + 20, 84, 28), "Open", self.browse_open)
         y += 54
         self.tool_btns = []
         bw = (w - 10) // 3
@@ -1370,7 +1370,7 @@ class MapMaker(ParkBuilder):
                           Button((x0 + 164, y + 20, 72, 28), "Levels", lambda: setattr(self, "show_levels", not self.show_levels), toggle=lambda: self.show_levels),
                           Button((x0 + 242, y + 20, 92, 28), "Reference", lambda: setattr(self, "show_ref", not self.show_ref), toggle=lambda: self.show_ref)]
         self.ref_box = TextBox((x0, y + 56, w - 92, 28), (self.doc.ref or {}).get("path", ""), "reference picture (png)")
-        self.btn_ref = Button((x0 + w - 84, y + 56, 84, 28), "Load", self.load_ref)
+        self.btn_ref = Button((x0 + w - 84, y + 56, 84, 28), "Load", self.browse_ref)
         self.ref_alpha = Slider((x0, y + 92, w, 18), 0, 255, lambda: (self.doc.ref or {}).get("alpha", 140), self._set_ref_alpha, "Picture")
         self.level_btns = [Button((x0 + i * 46, y + 118, 40, 26), f"L{i}", lambda i=i: self.set_level(i), toggle=lambda i=i: self.level_brush == i and self.tool == "level") for i in range(4)]
         self.btn_cliffs = Button((x0 + 190, y + 118, w - 190, 26), "Cliffs from levels", self.cliffs)
@@ -1552,22 +1552,34 @@ class MapMaker(ParkBuilder):
         self.b_pic_open = True
         self.status = f"Source picture: {os.path.basename(path)} (stretched to the map; Fit map sizes the map to it)"
 
-    def browse_ref(self):
-        """Pick the source picture in a file window."""
+    def ask_file(self, title, filetypes):
+        """A file window (opening where the map maker saves its maps), or None if cancelled or there is none."""
         try:
             import tkinter
             from tkinter import filedialog
             root = tkinter.Tk()
             root.withdraw()
             root.attributes("-topmost", True)
-            path = filedialog.askopenfilename(title="Source picture for this map",
-                                              filetypes=[("Pictures", "*.png *.jpg *.jpeg *.bmp *.gif"), ("All files", "*.*")])
+            os.makedirs(MADE, exist_ok=True)
+            path = filedialog.askopenfilename(title=title, initialdir=os.path.abspath(MADE), filetypes=filetypes, parent=root)
             root.destroy()
-        except Exception as e:     # (no file window here: drop the file on the map, or type its path in the classic panel)
-            self.status = f"No file window ({type(e).__name__}): drop the picture file onto the map instead"
-            return
+        except Exception as e:     # (no file window here: type the key or path in the box, or drop the file on the map)
+            self.status = f"No file window ({type(e).__name__}): type it in the box, or drop the file onto the map"
+            return None
+        return path or None
+
+    def browse_ref(self):
+        """Pick the source picture in a file window."""
+        path = self.ask_file("Source picture for this map", [("Pictures", "*.png *.jpg *.jpeg *.bmp *.gif"), ("All files", "*.*")])
         if path:
             self.set_ref(path)
+
+    def browse_open(self):
+        """Open a map from a file window (the saved maps); a key typed in the box opens with Enter."""
+        path = self.ask_file("Open a map", [("Maps", "*.json"), ("All files", "*.*")])
+        if path:
+            self.open_box.text = path
+            self.open_from_box()
 
     def fit_to_ref(self):
         """Size the map to the source picture, a tile per 16 px (a Gen 3/4 screenshot) or per 32 px (a fan-game map)."""

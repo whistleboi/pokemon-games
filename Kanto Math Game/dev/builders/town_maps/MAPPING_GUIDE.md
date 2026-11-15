@@ -242,7 +242,7 @@ It should end with `##### 0 failures`.
 A window for drawing a map by hand in this same format (Jordan, 11-14), made first for the regions that only exist in 3D:
 lay the 3D area's top-down picture underneath (Reference) and design the 2D map over it.
 
-- `python dev/tools/map_maker.py [KEY | layout.json] [--ref=picture.png] [--size=WxH]`.
+- `python dev/tools/map_maker.py [KEY | layout.json] [--ref=picture.png] [--size=WxH]`. Open and Load (and the park builder's Load...) pop up a file window at the saved maps folder, `dev/builders/town_maps/made`; a key typed in the Open box opens with Enter.
 - Paint, Box and Fill with any character from the drop lists (each shows its picture as the game draws it). Right-click picks up what's under the mouse.
 - Buildings: pre-made at the game's usual sizes. Pick one to change its kind, name, size, door position or roof colour. A tile-sheet house's custom roof is saved as `{"roof": [r, g, b], "tint": true}`, and `art.py` tints the house picture for it.
 - Pick a way out to fill in "Leads to". Right-click a person or a sign to say who they are or what it says.
