@@ -126,7 +126,8 @@ WATER_C = ((70, 130, 206), (150, 196, 240))  # a pond, its ripples
 TREE_STYLES = ("field", "forest", "snow")  # where HEADBUTT works (a wall is a tree)
 # The route's buttons that are figures on the map (walk into one: its button's action).
 FIGURE_ACTIONS = ("BOSS", "EVENT", "NPC", "HOENN_EVENT", "DAYCARE", "BERRY", "CAMP", "REST", "WEATHER_DIRECTOR", "CENTER",
-                  "SNAG", "MAX_RAID", "DIVE", "GAME_CORNER", "BUG_CONTEST")
+                  "SNAG", "MAX_RAID", "DIVE", "GAME_CORNER", "BUG_CONTEST",
+                  "FRONTIER")   # (FRONTIER: a Battle Frontier attendant, src/world/frontier.py)
 DECOR_C = {"slot": ((200, 60, 70), (250, 230, 120)), "counter": ((150, 100, 60), (204, 156, 100)),
            "poster": ((60, 60, 80), (236, 226, 200))}
 FACING_ROW = {(0, 1): 0, (-1, 0): 1, (1, 0): 2, (0, -1): 3}  # a sheet's rows: down, left, right, up

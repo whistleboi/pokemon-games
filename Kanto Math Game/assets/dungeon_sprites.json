@@ -3186,6 +3186,33 @@
     },
     "HOENN_DESERT_UNDERPASS:ROOT FOSSIL": {
       "item": "ROOT_FOSSIL"
+    },
+    "HOENN_BATTLE_FRONTIER:Salon Maiden Anabel": {
+      "sheet": "em_34.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Tower attendant": {
+      "sheet": "em_85.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Dome Ace Tucker": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Palace Maven Spenser": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Pyramid King Brandon": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Arena Tycoon Greta": {
+      "sheet": "em_34.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Factory Head Noland": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Pike Queen Lucy": {
+      "sheet": "em_34.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Pike attendant": {
+      "sheet": "em_45.png"
     }
   },
   "townsperson": "NPC 17.png",

@@ -407,99 +407,26 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Salon Maiden Anabel",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            65,
-            244,
-            143
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Dome Ace Tucker",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            260,
-            373,
-            6
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Palace Maven Spenser",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            169,
-            289,
-            131
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Arena Tycoon Greta",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            214,
-            197,
-            292
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Pike Queen Lucy",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            336,
-            350,
-            213
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Pyramid King Brandon",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            377,
-            378,
-            379
-          ],
-          "rewards": {
-            "balls": 10
-          },
-          "is_boss_battle": true,
-          "victory_flag": "hoenn_battle_frontier_cleared"
-        }
-      ],
+      "trainer_pool": [],
       "route_menu": [
+        {"text": "Tower attendant", "action": "FRONTIER", "facility": "tower", "color": "GOLD"},
+        {"text": "Salon Maiden Anabel", "action": "EVENT", "look": 34, "event": {"lines": ["I'm Anabel, the Salon Maiden. Show me a streak worth my time."]}},
+        {"text": "Dome attendant", "action": "FRONTIER", "facility": "dome", "color": "GOLD"},
+        {"text": "Dome Ace Tucker", "action": "EVENT", "look": 33, "event": {"lines": ["Tucker's the name! Win enough in a row and you'll get to battle the star."]}},
+        {"text": "Palace attendant", "action": "FRONTIER", "facility": "palace", "color": "GOLD"},
+        {"text": "Palace Maven Spenser", "action": "EVENT", "look": 33, "event": {"lines": ["I am Spenser. A Pokemon's spirit shows in a long run of battles."]}},
+        {"text": "Pyramid attendant", "action": "FRONTIER", "facility": "pyramid", "color": "GOLD"},
+        {"text": "Pyramid King Brandon", "action": "EVENT", "look": 33, "event": {"lines": ["Brandon here! Keep winning and I'll be waiting at the top."]}},
+        {"text": "Arena attendant", "action": "FRONTIER", "facility": "arena", "color": "GOLD"},
+        {"text": "Arena Tycoon Greta", "action": "EVENT", "look": 34, "event": {"lines": ["Greta's the name! Win enough in a row and we'll have a real fight!"]}},
+        {"text": "Factory attendant", "action": "FRONTIER", "facility": "factory", "color": "GOLD"},
+        {"text": "Factory Head Noland", "action": "EVENT", "look": 33, "event": {"lines": ["Noland. Win a streak here and I'll battle you myself."]}},
+        {"text": "Pike attendant", "action": "FRONTIER", "facility": "pike", "color": "GOLD"},
+        {"text": "Pike Queen Lucy", "action": "EVENT", "look": 34, "event": {"lines": ["...Lucy. Win, and keep winning. Then we'll battle."]}},
         {"text": "Nurse", "action": "CENTER"},
         {"text": "Clerk", "action": "SHOP", "stock": ["ULTRA_BALL", "HYPER_POTION", "MAX_POTION", "FULL_RESTORE", "FULL_HEAL", "REVIVE", "MAX_REPEL", "X_ATTACK"]},
         {"text": "Ferry attendant", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Attendant: The S.S. Tidal is ready to sail. Have a pleasant trip!"], "travel": "HOENN_SS_TIDAL"}},
         {"text": "WEIRD TREE", "action": "BOSS", "color": "GOLD", "condition": ["has_item:WAILMER_PAIL"], "flag_condition": "not frontier_sudowoodo", "boss": {"id": 185, "name": "Sudowoodo", "level": 40, "victory_flag": "frontier_sudowoodo", "lines": ["You sprinkled water from the Wailmer Pail on the weird tree...", "The weird tree doesn't like it! It attacked!"]}},
-        {
-          "text": "CHALLENGE THE FRONTIER BRAINS",
-          "action": "GALACTIC_GAUNTLET",
-          "flag_condition": "not hoenn_battle_frontier_cleared",
-          "color": "GOLD"
-        },
         {
           "text": "S.S. Tidal",
           "action": "EXIT",
@@ -3626,7 +3553,7 @@
     {"id": "hoenn_s25", "type": "SIDE", "title": "The S.S. Tidal", "description": "Battle the trainers in the cabins of the S.S. Tidal.", "condition": {"required_region": "HOENN", "visited": "HOENN_SS_TIDAL"}, "completed_flag": "ss_tidal_cleared", "target": "HOENN_SS_TIDAL"},
     {"id": "hoenn_s26", "type": "SIDE", "title": "Southern Island", "description": "A Pokémon of legend rests on Southern Island.", "condition": {"required_region": "HOENN", "visited": "HOENN_SOUTHERN_ISLAND"}, "completed_flag": "southern_island_eon_caught", "target": "HOENN_SOUTHERN_ISLAND"},
     {"id": "hoenn_s27", "type": "SIDE", "title": "The Battle Resort", "description": "Someone you know is waiting at the Battle Resort.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_RESORT"}, "completed_flag": "battle_resort_wally", "target": "HOENN_BATTLE_RESORT"},
-    {"id": "hoenn_s28", "type": "SIDE", "title": "The Battle Frontier", "description": "Take on the Frontier Brains, up to Pyramid King Brandon.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER"}, "completed_flag": "hoenn_battle_frontier_cleared", "target": "HOENN_BATTLE_FRONTIER"},
+    {"id": "hoenn_s28", "type": "SIDE", "title": "The Battle Frontier", "description": "Win a streak at each of the seven facilities, then beat its Frontier Brain.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER"}, "completed_flag": "hoenn_battle_frontier_cleared", "target": "HOENN_BATTLE_FRONTIER"},
     {"id": "hoenn_s29", "type": "SIDE", "title": "Sea Mauville", "description": "Two Pokémon of legend have been seen at Sea Mauville.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["sea_mauville_lugia", "sea_mauville_ho_oh"], "target": "HOENN_SEA_MAUVILLE", "reward": "Lugia and Ho-Oh"},
     {"id": "hoenn_s30", "type": "SIDE", "title": "Soaring in the Sky", "description": "Fly high over Hoenn. Six Pokémon of legend are up there.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["soaring_dialga", "soaring_palkia", "soaring_giratina", "soaring_tornadus", "soaring_thundurus", "soaring_landorus"], "target": "HOENN_SOARING_IN_THE_SKY"},
     {"id": "hoenn_s31", "type": "SIDE", "title": "The Scorched Slab", "description": "Deep in the Scorched Slab, something burns hot.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "scorched_slab_heatran", "target": "HOENN_SCORCHED_SLAB", "reward": "Heatran"},

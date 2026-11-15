@@ -546,6 +546,8 @@ class RouteMenu:
             return lambda t=target: self.action_exit_route(t)
         if action == "GALACTIC_GAUNTLET":
             return self.action_search_trainer
+        if action == "FRONTIER":  # a Battle Frontier facility's attendant: its streak (src/world/frontier.py)
+            return lambda it=item: self.action_frontier(it)
         if action == "MAX_RAID":
             return self.action_max_raid
         if action == "SNAG":

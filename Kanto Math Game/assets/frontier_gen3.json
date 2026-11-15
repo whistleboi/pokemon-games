@@ -1,0 +1,3578 @@
+{
+"_source": "Bulbapedia: List of Battle Frontier Trainers / Pokémon in Generation III (Emerald)",
+"trainers": [
+{
+"class": "Youngster",
+"name": "Brady",
+"sprite": "youngster.png",
+"cols": [
+0
+]
+},
+{
+"class": "Youngster",
+"name": "Conner",
+"sprite": "youngster.png",
+"cols": [
+0
+]
+},
+{
+"class": "Youngster",
+"name": "Bradley",
+"sprite": "youngster.png",
+"cols": [
+0
+]
+},
+{
+"class": "Lass",
+"name": "Cybil",
+"sprite": "lass.png",
+"cols": [
+0
+]
+},
+{
+"class": "Lass",
+"name": "Rodette",
+"sprite": "lass.png",
+"cols": [
+0
+]
+},
+{
+"class": "Lass",
+"name": "Peggy",
+"sprite": "lass.png",
+"cols": [
+0
+]
+},
+{
+"class": "School Kid♂",
+"name": "Keith",
+"sprite": "school_kid_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "School Kid♂",
+"name": "Grayson",
+"sprite": "school_kid_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "School Kid♂",
+"name": "Glenn",
+"sprite": "school_kid_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "School Kid♀",
+"name": "Liliana",
+"sprite": "school_kid_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "School Kid♀",
+"name": "Elise",
+"sprite": "school_kid_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "School Kid♀",
+"name": "Zoey",
+"sprite": "school_kid_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "Rich Boy",
+"name": "Manuel",
+"sprite": "richboy.png",
+"cols": [
+0
+]
+},
+{
+"class": "Rich Boy",
+"name": "Russ",
+"sprite": "richboy.png",
+"cols": [
+0
+]
+},
+{
+"class": "Rich Boy",
+"name": "Dustin",
+"sprite": "richboy.png",
+"cols": [
+0
+]
+},
+{
+"class": "Lady",
+"name": "Tina",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Lady",
+"name": "Gillian",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Lady",
+"name": "Zoe",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Camper",
+"name": "Chen",
+"sprite": "camper.png",
+"cols": [
+0
+]
+},
+{
+"class": "Camper",
+"name": "Al",
+"sprite": "camper.png",
+"cols": [
+0
+]
+},
+{
+"class": "Camper",
+"name": "Mitch",
+"sprite": "camper.png",
+"cols": [
+0
+]
+},
+{
+"class": "Picnicker",
+"name": "Anne",
+"sprite": "picnicker.png",
+"cols": [
+0
+]
+},
+{
+"class": "Picnicker",
+"name": "Alize",
+"sprite": "picnicker.png",
+"cols": [
+0
+]
+},
+{
+"class": "Picnicker",
+"name": "Lauren",
+"sprite": "picnicker.png",
+"cols": [
+0
+]
+},
+{
+"class": "Tuber♂",
+"name": "Kipp",
+"sprite": "youngster.png",
+"cols": [
+0
+]
+},
+{
+"class": "Tuber♂",
+"name": "Jason",
+"sprite": "youngster.png",
+"cols": [
+0
+]
+},
+{
+"class": "Tuber♂",
+"name": "John",
+"sprite": "youngster.png",
+"cols": [
+0
+]
+},
+{
+"class": "Tuber♀",
+"name": "Ann",
+"sprite": "twins.png",
+"cols": [
+0
+]
+},
+{
+"class": "Tuber♀",
+"name": "Eileen",
+"sprite": "twins.png",
+"cols": [
+0
+]
+},
+{
+"class": "Tuber♀",
+"name": "Carlie",
+"sprite": "twins.png",
+"cols": [
+0
+]
+},
+{
+"class": "Swimmer♂",
+"name": "Gordon",
+"sprite": "swimmer_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "Swimmer♂",
+"name": "Ayden",
+"sprite": "swimmer_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "Swimmer♂",
+"name": "Marco",
+"sprite": "swimmer_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "Swimmer♀",
+"name": "Cierra",
+"sprite": "swimmer_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "Swimmer♀",
+"name": "Marcy",
+"sprite": "swimmer_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "Swimmer♀",
+"name": "Kathy",
+"sprite": "swimmer_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "Pokéfan♂",
+"name": "Peyton",
+"sprite": "pokefan_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "Pokéfan♂",
+"name": "Julian",
+"sprite": "pokefan_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "Pokéfan♂",
+"name": "Quinn",
+"sprite": "pokefan_m.png",
+"cols": [
+0
+]
+},
+{
+"class": "Pokéfan♀",
+"name": "Haylee",
+"sprite": "pokefan_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "Pokéfan♀",
+"name": "Amanda",
+"sprite": "pokefan_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "Pokéfan♀",
+"name": "Stacy",
+"sprite": "pokefan_f.png",
+"cols": [
+0
+]
+},
+{
+"class": "PKMN Breeder♂",
+"name": "Rafael",
+"sprite": "veteran.png",
+"cols": [
+0
+]
+},
+{
+"class": "PKMN Breeder♂",
+"name": "Oliver",
+"sprite": "veteran.png",
+"cols": [
+0
+]
+},
+{
+"class": "PKMN Breeder♂",
+"name": "Payton",
+"sprite": "veteran.png",
+"cols": [
+0
+]
+},
+{
+"class": "PKMN Breeder♀",
+"name": "Pamela",
+"sprite": "teacher.png",
+"cols": [
+0
+]
+},
+{
+"class": "PKMN Breeder♀",
+"name": "Eliza",
+"sprite": "teacher.png",
+"cols": [
+0
+]
+},
+{
+"class": "PKMN Breeder♀",
+"name": "Marisa",
+"sprite": "teacher.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bug Catcher",
+"name": "Lewis",
+"sprite": "bug_catcher.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bug Catcher",
+"name": "Yoshi",
+"sprite": "bug_catcher.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bug Catcher",
+"name": "Destin",
+"sprite": "bug_catcher.png",
+"cols": [
+0
+]
+},
+{
+"class": "Ninja Boy",
+"name": "Keon",
+"sprite": "ninja_boy.png",
+"cols": [
+0
+]
+},
+{
+"class": "Ninja Boy",
+"name": "Stuart",
+"sprite": "ninja_boy.png",
+"cols": [
+0
+]
+},
+{
+"class": "Ninja Boy",
+"name": "Nestor",
+"sprite": "ninja_boy.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Derrick",
+"sprite": "bug_catcher.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Bryson",
+"sprite": "bug_catcher.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Clayton",
+"sprite": "bug_catcher.png",
+"cols": [
+0
+]
+},
+{
+"class": "Fisherman",
+"name": "Trenton",
+"sprite": "fisherman.png",
+"cols": [
+0
+]
+},
+{
+"class": "Fisherman",
+"name": "Jenson",
+"sprite": "fisherman.png",
+"cols": [
+0
+]
+},
+{
+"class": "Fisherman",
+"name": "Wesley",
+"sprite": "fisherman.png",
+"cols": [
+0
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Anton",
+"sprite": "ruinmaniac.png",
+"cols": [
+0
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Lawson",
+"sprite": "ruinmaniac.png",
+"cols": [
+0
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Sammy",
+"sprite": "ruinmaniac.png",
+"cols": [
+0
+]
+},
+{
+"class": "Collector",
+"name": "Arnie",
+"sprite": "supernerd.png",
+"cols": [
+0
+]
+},
+{
+"class": "Collector",
+"name": "Adrian",
+"sprite": "supernerd.png",
+"cols": [
+0
+]
+},
+{
+"class": "Collector",
+"name": "Tristan",
+"sprite": "supernerd.png",
+"cols": [
+0
+]
+},
+{
+"class": "Parasol Lady",
+"name": "Juliana",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Parasol Lady",
+"name": "Rylee",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Parasol Lady",
+"name": "Chelsea",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Beauty",
+"name": "Danela",
+"sprite": "beauty.png",
+"cols": [
+0
+]
+},
+{
+"class": "Beauty",
+"name": "Lizbeth",
+"sprite": "beauty.png",
+"cols": [
+0
+]
+},
+{
+"class": "Beauty",
+"name": "Amelia",
+"sprite": "beauty.png",
+"cols": [
+0
+]
+},
+{
+"class": "Aroma Lady",
+"name": "Jillian",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Aroma Lady",
+"name": "Abbie",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Aroma Lady",
+"name": "Briana",
+"sprite": "lady.png",
+"cols": [
+0
+]
+},
+{
+"class": "Guitarist",
+"name": "Antonio",
+"sprite": "guitarist.png",
+"cols": [
+0
+]
+},
+{
+"class": "Guitarist",
+"name": "Jaden",
+"sprite": "guitarist.png",
+"cols": [
+0
+]
+},
+{
+"class": "Guitarist",
+"name": "Dakota",
+"sprite": "guitarist.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bird Keeper",
+"name": "Brayden",
+"sprite": "bird_keeper.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bird Keeper",
+"name": "Corson",
+"sprite": "bird_keeper.png",
+"cols": [
+0
+]
+},
+{
+"class": "Bird Keeper",
+"name": "Trevin",
+"sprite": "bird_keeper.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Sailor",
+"name": "Patrick",
+"sprite": "sailor.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Sailor",
+"name": "Kaden",
+"sprite": "sailor.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Sailor",
+"name": "Maxwell",
+"sprite": "sailor.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Hiker",
+"name": "Daryl",
+"sprite": "hiker.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Hiker",
+"name": "Kenneth",
+"sprite": "hiker.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Hiker",
+"name": "Rich",
+"sprite": "hiker.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Kindler",
+"name": "Caden",
+"sprite": "kindler.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Kindler",
+"name": "Marlon",
+"sprite": "kindler.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Kindler",
+"name": "Nash",
+"sprite": "kindler.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Robby",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Reece",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Kathryn",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Ellen",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Ramon",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Arthur",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Alondra",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Adriana",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Malik",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Jill",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Erik",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Yazmin",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Jamal",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Leslie",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Dave",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Carlo",
+"sprite": "triathlete_m.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Emilia",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Dalia",
+"sprite": "triathlete_f.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Black Belt",
+"name": "Hitomi",
+"sprite": "blackbelt.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Black Belt",
+"name": "Ricardo",
+"sprite": "blackbelt.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Black Belt",
+"name": "Shizuka",
+"sprite": "blackbelt.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Battle Girl",
+"name": "Joana",
+"sprite": "battle_girl.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Battle Girl",
+"name": "Kelly",
+"sprite": "battle_girl.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Battle Girl",
+"name": "Rayna",
+"sprite": "battle_girl.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Expert♂",
+"name": "Evan",
+"sprite": "veteran.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Expert♂",
+"name": "Jordan",
+"sprite": "veteran.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Expert♂",
+"name": "Joel",
+"sprite": "veteran.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Expert♀",
+"name": "Kristen",
+"sprite": "veteranf.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Expert♀",
+"name": "Selphy",
+"sprite": "veteranf.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Expert♀",
+"name": "Chloe",
+"sprite": "veteranf.png",
+"cols": [
+0,
+1,
+2
+]
+},
+{
+"class": "Psychic♂",
+"name": "Norton",
+"sprite": "psychic_m.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Psychic♂",
+"name": "Lukas",
+"sprite": "psychic_m.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Psychic♂",
+"name": "Zach",
+"sprite": "psychic_m.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Psychic♀",
+"name": "Kaitlyn",
+"sprite": "psychic.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Psychic♀",
+"name": "Breanna",
+"sprite": "psychic.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Psychic♀",
+"name": "Kendra",
+"sprite": "psychic.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Hex Maniac",
+"name": "Molly",
+"sprite": "hex_maniac.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Hex Maniac",
+"name": "Jazmin",
+"sprite": "hex_maniac.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Hex Maniac",
+"name": "Kelsey",
+"sprite": "hex_maniac.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "PokéManiac",
+"name": "Jalen",
+"sprite": "pokemaniac.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "PokéManiac",
+"name": "Griffen",
+"sprite": "pokemaniac.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "PokéManiac",
+"name": "Xander",
+"sprite": "pokemaniac.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Gentleman",
+"name": "Marvin",
+"sprite": "gentleman.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Gentleman",
+"name": "Brennan",
+"sprite": "gentleman.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Baley",
+"sprite": "bug_catcher.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Zackary",
+"sprite": "ruinmaniac.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Collector",
+"name": "Gabriel",
+"sprite": "supernerd.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Parasol Lady",
+"name": "Emily",
+"sprite": "lady.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Beauty",
+"name": "Jordyn",
+"sprite": "beauty.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Aroma Lady",
+"name": "Sofia",
+"sprite": "lady.png",
+"cols": [
+1,
+2,
+3
+]
+},
+{
+"class": "Cooltrainer♂",
+"name": "Braden",
+"sprite": "acetrainer_m.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Cooltrainer♂",
+"name": "Kayden",
+"sprite": "acetrainer_m.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Cooltrainer♂",
+"name": "Cooper",
+"sprite": "acetrainer_m.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Cooltrainer♀",
+"name": "Julia",
+"sprite": "acetrainer_f.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Cooltrainer♀",
+"name": "Amara",
+"sprite": "acetrainer_f.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Cooltrainer♀",
+"name": "Lynn",
+"sprite": "acetrainer_f.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Ranger♂",
+"name": "Jovan",
+"sprite": "ranger_m.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Ranger♂",
+"name": "Dominic",
+"sprite": "ranger_m.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Ranger♂",
+"name": "Nikolas",
+"sprite": "ranger_m.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Ranger♀",
+"name": "Valeria",
+"sprite": "acetrainer_f.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Ranger♀",
+"name": "Delaney",
+"sprite": "acetrainer_f.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Ranger♀",
+"name": "Meghan",
+"sprite": "acetrainer_f.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Dragon Tamer",
+"name": "Roberto",
+"sprite": "dragon_tamer.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Dragon Tamer",
+"name": "Damian",
+"sprite": "dragon_tamer.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Dragon Tamer",
+"name": "Brody",
+"sprite": "dragon_tamer.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Dragon Tamer",
+"name": "Graham",
+"sprite": "dragon_tamer.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Pokéfan♂",
+"name": "Tylor",
+"sprite": "pokefan_m.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Pokéfan♀",
+"name": "Jaren",
+"sprite": "pokefan_f.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Breeder♂",
+"name": "Cordell",
+"sprite": "veteran.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "PKMN Breeder♀",
+"name": "Jazlyn",
+"sprite": "teacher.png",
+"cols": [
+2,
+3,
+4
+]
+},
+{
+"class": "Youngster",
+"name": "Zachery",
+"sprite": "youngster.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Youngster",
+"name": "Johan",
+"sprite": "youngster.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Lass",
+"name": "Shea",
+"sprite": "lass.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Lass",
+"name": "Kaila",
+"sprite": "lass.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "School Kid♂",
+"name": "Isiah",
+"sprite": "school_kid_m.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "School Kid♂",
+"name": "Garrett",
+"sprite": "school_kid_m.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "School Kid♀",
+"name": "Haylie",
+"sprite": "school_kid_f.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "School Kid♀",
+"name": "Megan",
+"sprite": "school_kid_f.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Rich Boy",
+"name": "Issac",
+"sprite": "richboy.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Rich Boy",
+"name": "Quinton",
+"sprite": "richboy.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Lady",
+"name": "Salma",
+"sprite": "lady.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Lady",
+"name": "Ansley",
+"sprite": "lady.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Bug Catcher",
+"name": "Holden",
+"sprite": "bug_catcher.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Bug Catcher",
+"name": "Luca",
+"sprite": "bug_catcher.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Ninja Boy",
+"name": "Jamison",
+"sprite": "ninja_boy.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Ninja Boy",
+"name": "Gunnar",
+"sprite": "ninja_boy.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Tuber♂",
+"name": "Craig",
+"sprite": "youngster.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Tuber♂",
+"name": "Pierce",
+"sprite": "youngster.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Tuber♀",
+"name": "Regina",
+"sprite": "twins.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Tuber♀",
+"name": "Alison",
+"sprite": "twins.png",
+"cols": [
+3,
+4,
+5
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Hank",
+"sprite": "bug_catcher.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Earl",
+"sprite": "bug_catcher.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Fisherman",
+"name": "Ramiro",
+"sprite": "fisherman.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Fisherman",
+"name": "Hunter",
+"sprite": "fisherman.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Aiden",
+"sprite": "ruinmaniac.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Xavier",
+"sprite": "ruinmaniac.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Collector",
+"name": "Clinton",
+"sprite": "supernerd.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Collector",
+"name": "Jesse",
+"sprite": "supernerd.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Guitarist",
+"name": "Eduardo",
+"sprite": "guitarist.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Guitarist",
+"name": "Hal",
+"sprite": "guitarist.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Bird Keeper",
+"name": "Gage",
+"sprite": "bird_keeper.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Bird Keeper",
+"name": "Arnold",
+"sprite": "bird_keeper.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Sailor",
+"name": "Jarrett",
+"sprite": "sailor.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Sailor",
+"name": "Garett",
+"sprite": "sailor.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Hiker",
+"name": "Emanuel",
+"sprite": "hiker.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Hiker",
+"name": "Gustavo",
+"sprite": "hiker.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Kindler",
+"name": "Kameron",
+"sprite": "kindler.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Kindler",
+"name": "Alfredo",
+"sprite": "kindler.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Gentleman",
+"name": "Ruben",
+"sprite": "gentleman.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Gentleman",
+"name": "Lamar",
+"sprite": "gentleman.png",
+"cols": [
+4,
+5,
+6
+]
+},
+{
+"class": "Youngster",
+"name": "Jaxon",
+"sprite": "youngster.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Youngster",
+"name": "Logan",
+"sprite": "youngster.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Lass",
+"name": "Emilee",
+"sprite": "lass.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Lass",
+"name": "Josie",
+"sprite": "lass.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Camper",
+"name": "Armando",
+"sprite": "camper.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Camper",
+"name": "Skyler",
+"sprite": "camper.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Picnicker",
+"name": "Ruth",
+"sprite": "picnicker.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Picnicker",
+"name": "Melody",
+"sprite": "picnicker.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Swimmer♂",
+"name": "Pedro",
+"sprite": "swimmer_m.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Swimmer♂",
+"name": "Erick",
+"sprite": "swimmer_m.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Swimmer♀",
+"name": "Elaine",
+"sprite": "swimmer_f.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Swimmer♀",
+"name": "Joyce",
+"sprite": "swimmer_f.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Pokéfan♂",
+"name": "Todd",
+"sprite": "pokefan_m.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Pokéfan♂",
+"name": "Gavin",
+"sprite": "pokefan_m.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Pokéfan♀",
+"name": "Malory",
+"sprite": "pokefan_f.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Pokéfan♀",
+"name": "Esther",
+"sprite": "pokefan_f.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "PKMN Breeder♂",
+"name": "Oscar",
+"sprite": "veteran.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "PKMN Breeder♂",
+"name": "Wilson",
+"sprite": "veteran.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "PKMN Breeder♀",
+"name": "Clare",
+"sprite": "teacher.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "PKMN Breeder♀",
+"name": "Tess",
+"sprite": "teacher.png",
+"cols": [
+5,
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♂",
+"name": "Leon",
+"sprite": "acetrainer_m.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♂",
+"name": "Alonzo",
+"sprite": "acetrainer_m.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♂",
+"name": "Vince",
+"sprite": "acetrainer_m.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♂",
+"name": "Bryon",
+"sprite": "acetrainer_m.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♀",
+"name": "Ava",
+"sprite": "acetrainer_f.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♀",
+"name": "Miriam",
+"sprite": "acetrainer_f.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♀",
+"name": "Carrie",
+"sprite": "acetrainer_f.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Cooltrainer♀",
+"name": "Gillian",
+"sprite": "acetrainer_f.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "PKMN Ranger♂",
+"name": "Tyler",
+"sprite": "ranger_m.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "PKMN Ranger♂",
+"name": "Chaz",
+"sprite": "ranger_m.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "PKMN Ranger♂",
+"name": "Nelson",
+"sprite": "ranger_m.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "PKMN Ranger♀",
+"name": "Shania",
+"sprite": "acetrainer_f.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "PKMN Ranger♀",
+"name": "Stella",
+"sprite": "acetrainer_f.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "PKMN Ranger♀",
+"name": "Dorine",
+"sprite": "acetrainer_f.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Dragon Tamer",
+"name": "Maddox",
+"sprite": "dragon_tamer.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Dragon Tamer",
+"name": "Davin",
+"sprite": "dragon_tamer.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Dragon Tamer",
+"name": "Trevon",
+"sprite": "dragon_tamer.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Black Belt",
+"name": "Mateo",
+"sprite": "blackbelt.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Black Belt",
+"name": "Bret",
+"sprite": "blackbelt.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Black Belt",
+"name": "Raul",
+"sprite": "blackbelt.png",
+"cols": [
+6,
+7
+]
+},
+{
+"class": "Battle Girl",
+"name": "Kay",
+"sprite": "battle_girl.png",
+"cols": [
+7
+]
+},
+{
+"class": "Battle Girl",
+"name": "Elena",
+"sprite": "battle_girl.png",
+"cols": [
+7
+]
+},
+{
+"class": "Battle Girl",
+"name": "Alana",
+"sprite": "battle_girl.png",
+"cols": [
+7
+]
+},
+{
+"class": "Expert♂",
+"name": "Alexas",
+"sprite": "veteran.png",
+"cols": [
+7
+]
+},
+{
+"class": "Expert♂",
+"name": "Weston",
+"sprite": "veteran.png",
+"cols": [
+7
+]
+},
+{
+"class": "Expert♂",
+"name": "Jasper",
+"sprite": "veteran.png",
+"cols": [
+7
+]
+},
+{
+"class": "Expert♀",
+"name": "Nadia",
+"sprite": "veteranf.png",
+"cols": [
+7
+]
+},
+{
+"class": "Expert♀",
+"name": "Miranda",
+"sprite": "veteranf.png",
+"cols": [
+7
+]
+},
+{
+"class": "Expert♀",
+"name": "Emma",
+"sprite": "veteranf.png",
+"cols": [
+7
+]
+},
+{
+"class": "Psychic♂",
+"name": "Rolando",
+"sprite": "psychic_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Psychic♂",
+"name": "Stanly",
+"sprite": "psychic_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Psychic♂",
+"name": "Dario",
+"sprite": "psychic_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Psychic♀",
+"name": "Karlee",
+"sprite": "psychic.png",
+"cols": [
+7
+]
+},
+{
+"class": "Psychic♀",
+"name": "Jaylin",
+"sprite": "psychic.png",
+"cols": [
+7
+]
+},
+{
+"class": "Psychic♀",
+"name": "Ingrid",
+"sprite": "psychic.png",
+"cols": [
+7
+]
+},
+{
+"class": "Hex Maniac",
+"name": "Delilah",
+"sprite": "hex_maniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "Hex Maniac",
+"name": "Carly",
+"sprite": "hex_maniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "Hex Maniac",
+"name": "Lexie",
+"sprite": "hex_maniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "PokéManiac",
+"name": "Miller",
+"sprite": "pokemaniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "PokéManiac",
+"name": "Marv",
+"sprite": "pokemaniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "PokéManiac",
+"name": "Layton",
+"sprite": "pokemaniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "Gentleman",
+"name": "Brooks",
+"sprite": "gentleman.png",
+"cols": [
+7
+]
+},
+{
+"class": "Gentleman",
+"name": "Gregory",
+"sprite": "gentleman.png",
+"cols": [
+7
+]
+},
+{
+"class": "Gentleman",
+"name": "Reese",
+"sprite": "gentleman.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Mason",
+"sprite": "triathlete_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Toby",
+"sprite": "triathlete_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Dorothy",
+"sprite": "triathlete_f.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Piper",
+"sprite": "triathlete_f.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Finn",
+"sprite": "triathlete_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Samir",
+"sprite": "triathlete_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Fiona",
+"sprite": "triathlete_f.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Gloria",
+"sprite": "triathlete_f.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Nico",
+"sprite": "triathlete_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♂",
+"name": "Jeremy",
+"sprite": "triathlete_m.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Caitlin",
+"sprite": "triathlete_f.png",
+"cols": [
+7
+]
+},
+{
+"class": "Triathlete♀",
+"name": "Reena",
+"sprite": "triathlete_f.png",
+"cols": [
+7
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Avery",
+"sprite": "bug_catcher.png",
+"cols": [
+7
+]
+},
+{
+"class": "Bug Maniac",
+"name": "Liam",
+"sprite": "bug_catcher.png",
+"cols": [
+7
+]
+},
+{
+"class": "Fisherman",
+"name": "Theo",
+"sprite": "fisherman.png",
+"cols": [
+7
+]
+},
+{
+"class": "Fisherman",
+"name": "Bailey",
+"sprite": "fisherman.png",
+"cols": [
+7
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Hugo",
+"sprite": "ruinmaniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "Ruin Maniac",
+"name": "Bryce",
+"sprite": "ruinmaniac.png",
+"cols": [
+7
+]
+},
+{
+"class": "Collector",
+"name": "Gideon",
+"sprite": "supernerd.png",
+"cols": [
+7
+]
+},
+{
+"class": "Collector",
+"name": "Triston",
+"sprite": "supernerd.png",
+"cols": [
+7
+]
+},
+{
+"class": "Guitarist",
+"name": "Charles",
+"sprite": "guitarist.png",
+"cols": [
+7
+]
+},
+{
+"class": "Guitarist",
+"name": "Raymond",
+"sprite": "guitarist.png",
+"cols": [
+7
+]
+},
+{
+"class": "Bird Keeper",
+"name": "Dirk",
+"sprite": "bird_keeper.png",
+"cols": [
+7
+]
+},
+{
+"class": "Bird Keeper",
+"name": "Harold",
+"sprite": "bird_keeper.png",
+"cols": [
+7
+]
+},
+{
+"class": "Sailor",
+"name": "Omar",
+"sprite": "sailor.png",
+"cols": [
+7
+]
+},
+{
+"class": "Sailor",
+"name": "Peter",
+"sprite": "sailor.png",
+"cols": [
+7
+]
+},
+{
+"class": "Hiker",
+"name": "Dev",
+"sprite": "hiker.png",
+"cols": [
+7
+]
+},
+{
+"class": "Hiker",
+"name": "Corey",
+"sprite": "hiker.png",
+"cols": [
+7
+]
+},
+{
+"class": "Kindler",
+"name": "Andre",
+"sprite": "kindler.png",
+"cols": [
+7
+]
+},
+{
+"class": "Kindler",
+"name": "Ferris",
+"sprite": "kindler.png",
+"cols": [
+7
+]
+},
+{
+"class": "Parasol Lady",
+"name": "Alivia",
+"sprite": "lady.png",
+"cols": [
+7
+]
+},
+{
+"class": "Parasol Lady",
+"name": "Paige",
+"sprite": "lady.png",
+"cols": [
+7
+]
+},
+{
+"class": "Beauty",
+"name": "Anya",
+"sprite": "beauty.png",
+"cols": [
+7
+]
+},
+{
+"class": "Beauty",
+"name": "Dawn",
+"sprite": "beauty.png",
+"cols": [
+7
+]
+},
+{
+"class": "Aroma Lady",
+"name": "Abby",
+"sprite": "lady.png",
+"cols": [
+7
+]
+},
+{
+"class": "Aroma Lady",
+"name": "Gretel",
+"sprite": "lady.png",
+"cols": [
+7
+]
+}
+],
+"groups": {
+"0": [
+191,
+298,
+10,
+13,
+265,
+280,
+129,
+349,
+11,
+14,
+172,
+266,
+268,
+174,
+194,
+236,
+161,
+173,
+273,
+270,
+261,
+292,
+296,
+293,
+263,
+41,
+175,
+167,
+183,
+187,
+218,
+220,
+235,
+16,
+19,
+360,
+300,
+21,
+163,
+50,
+165,
+290,
+283,
+39,
+276,
+278,
+32,
+29,
+281,
+179,
+307,
+287,
+46,
+23,
+132,
+339,
+52,
+204,
+328,
+363,
+116,
+285,
+353,
+355,
+309,
+37,
+25,
+27,
+60,
+69,
+74,
+147,
+209,
+223,
+246,
+343,
+361,
+371,
+374,
+316,
+48,
+56,
+66,
+90,
+238,
+322,
+318,
+341,
+4,
+155,
+63,
+84,
+92,
+333,
+252,
+255,
+258,
+7,
+158,
+79,
+1,
+152,
+43,
+54,
+104,
+118,
+177,
+35,
+81,
+86
+],
+"1": [
+88,
+98,
+102,
+133,
+96,
+100,
+170,
+216,
+225,
+228,
+231,
+325,
+304,
+370,
+72,
+331,
+201,
+109,
+120,
+188,
+274,
+271,
+329,
+111,
+366,
+17,
+58,
+83,
+138,
+140,
+345,
+347,
+190,
+239,
+294,
+327,
+30,
+33,
+180,
+240,
+299,
+222,
+303,
+12,
+15,
+61,
+95,
+267,
+269,
+166,
+168,
+193
+],
+"2": [
+301,
+302,
+108,
+70,
+75,
+44,
+137,
+64,
+320,
+315,
+313,
+314,
+2,
+5,
+8,
+47,
+67,
+93,
+153,
+156,
+159,
+176,
+198,
+202,
+311,
+312,
+253,
+256,
+259,
+77,
+184,
+185,
+219,
+247,
+364,
+20,
+284,
+162,
+206,
+148,
+262,
+264,
+351,
+372,
+375,
+40,
+192,
+358,
+207,
+211,
+215,
+279,
+277,
+305,
+114,
+24,
+53,
+117,
+352,
+288,
+337,
+338,
+164,
+28,
+49,
+113,
+119,
+189,
+221,
+42,
+57,
+106,
+107,
+203,
+237,
+354,
+291,
+336,
+335,
+323,
+319,
+357,
+82,
+226,
+234,
+359,
+317,
+342,
+18,
+326,
+324,
+99,
+332,
+182,
+224,
+367,
+368,
+369,
+139,
+141,
+62,
+123,
+127,
+186,
+91,
+301,
+302,
+108,
+70,
+75,
+44,
+137,
+64,
+320,
+315,
+313,
+314,
+2,
+5,
+8,
+47,
+67,
+93,
+153,
+156,
+159,
+176,
+198,
+202,
+311,
+312,
+253,
+256,
+259,
+77,
+184,
+185,
+219,
+247,
+364,
+20,
+284,
+162,
+206,
+148,
+262,
+264,
+351,
+372,
+375,
+40,
+192,
+358,
+207,
+211,
+215,
+279,
+277,
+305,
+114,
+24,
+53,
+117,
+352,
+288,
+337,
+338,
+164,
+28,
+49,
+113,
+119,
+189,
+221,
+42,
+57,
+106,
+107,
+203,
+237,
+354,
+291,
+336,
+335,
+323,
+319,
+357,
+82,
+226,
+234,
+359,
+317,
+342,
+18,
+326,
+324,
+99,
+332,
+182,
+224,
+367,
+368,
+369,
+139,
+141,
+62,
+123,
+127,
+186,
+91
+],
+"3": [
+51,
+308,
+200,
+22,
+210,
+124,
+356,
+85,
+122,
+171,
+286,
+205,
+340,
+178,
+227,
+105,
+195,
+36,
+297,
+26,
+87,
+310,
+45,
+71,
+101,
+295,
+275,
+362,
+272,
+97,
+76,
+112,
+65,
+110,
+115,
+125,
+128,
+80,
+199,
+241,
+334,
+31,
+34,
+126,
+346,
+348,
+55,
+78,
+89,
+94,
+181,
+212,
+214,
+217,
+229,
+232,
+344,
+321,
+38,
+68,
+213,
+208,
+73,
+142,
+233,
+282,
+103,
+121,
+330,
+3,
+134,
+135,
+136,
+154,
+196,
+197,
+9,
+160,
+306,
+257,
+365,
+254,
+6,
+157,
+131,
+169,
+260,
+130,
+143,
+230,
+242,
+350,
+59,
+373,
+376,
+289,
+51,
+308,
+105,
+195,
+200,
+22,
+210,
+124,
+356,
+85,
+122,
+171,
+286,
+205,
+227,
+340,
+178,
+36,
+297,
+26,
+87,
+310,
+45,
+71,
+101,
+295,
+275,
+362,
+272,
+97,
+76,
+112,
+65,
+110,
+115,
+125,
+128,
+80,
+199,
+241,
+334,
+31,
+34,
+126,
+346,
+348,
+55,
+78,
+89,
+94,
+181,
+212,
+214,
+217,
+229,
+232,
+344,
+321,
+38,
+68,
+213,
+208,
+73,
+142,
+233,
+282,
+103,
+121,
+330,
+3,
+134,
+135,
+136,
+154,
+196,
+197,
+9,
+160,
+306,
+257,
+365,
+254,
+6,
+157,
+131,
+169,
+260,
+130,
+143,
+230,
+242,
+350,
+59,
+373,
+376,
+289,
+51,
+308,
+200,
+22,
+210,
+124,
+356,
+85,
+122,
+171,
+286,
+205,
+340,
+178,
+227,
+105,
+195,
+36,
+297,
+26,
+87,
+310,
+45,
+71,
+101,
+295,
+275,
+362,
+272,
+97,
+76,
+112,
+65,
+110,
+115,
+125,
+128,
+80,
+199,
+241,
+334,
+31,
+34,
+126,
+346,
+348,
+55,
+78,
+89,
+94,
+181,
+212,
+214,
+217,
+229,
+232,
+344,
+321,
+38,
+68,
+213,
+208,
+73,
+142,
+233,
+282,
+103,
+121,
+330,
+3,
+134,
+135,
+136,
+154,
+196,
+197,
+9,
+160,
+306,
+257,
+365,
+254,
+6,
+157,
+131,
+169,
+260,
+130,
+143,
+230,
+242,
+350,
+59,
+373,
+376,
+289,
+51,
+308,
+200,
+22,
+210,
+124,
+356,
+85,
+122,
+171,
+286,
+205,
+340,
+178,
+227,
+105,
+195,
+36,
+297,
+26,
+87,
+310,
+45,
+71,
+101,
+295,
+275,
+362,
+272,
+97,
+76,
+112,
+65,
+110,
+115,
+125,
+128,
+80,
+199,
+241,
+334,
+31,
+34,
+126,
+346,
+348,
+55,
+78,
+89,
+94,
+181,
+212,
+214,
+217,
+229,
+232,
+344,
+321,
+38,
+68,
+213,
+208,
+73,
+142,
+233,
+282,
+103,
+121,
+330,
+3,
+134,
+135,
+136,
+154,
+196,
+197,
+9,
+160,
+306,
+257,
+365,
+254,
+6,
+157,
+131,
+169,
+260,
+130,
+143,
+230,
+242,
+350,
+59,
+373,
+376,
+289,
+144,
+145,
+146,
+243,
+244,
+245,
+377,
+378,
+379,
+380,
+381,
+144,
+145,
+146,
+243,
+244,
+245,
+377,
+378,
+379,
+380,
+381,
+144,
+145,
+146,
+243,
+244,
+245,
+377,
+378,
+379,
+380,
+381,
+144,
+145,
+146,
+243,
+244,
+245,
+377,
+378,
+379,
+380,
+381,
+94,
+94,
+94,
+94,
+217,
+217,
+217,
+217,
+68,
+68,
+68,
+68,
+282,
+282,
+282,
+282,
+121,
+121,
+121,
+121,
+131,
+131,
+131,
+131,
+143,
+143,
+143,
+143,
+143,
+373,
+373,
+373,
+373,
+376,
+376,
+376,
+376,
+377,
+377,
+378,
+378,
+379,
+379,
+380,
+380,
+380,
+380,
+381,
+381,
+381,
+381,
+149,
+149,
+149,
+149,
+149,
+149,
+149,
+149,
+149,
+149,
+248,
+248,
+248,
+248,
+248,
+248,
+248,
+248,
+248,
+248,
+144,
+144,
+145,
+145,
+146,
+146,
+243,
+243,
+244,
+244,
+245,
+245
+]
+}
+}

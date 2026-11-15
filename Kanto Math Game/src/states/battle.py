@@ -372,6 +372,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             if self.starter_battle:
                 text = lines + ["Your partner is worn out, but that was a great first battle!",
                                 "Your team was healed. Time to set off on your journey!"]
+            elif getattr(self, "frontier", None):  # (a Battle Frontier streak: it ends, no whiting out)
+                text = lines + ["Player is out of usable Pokémon!"]
             else:
                 text = lines + ["Player is out of usable Pokémon!", "Player whited out!"]
             self.phase = "OUTRO"
@@ -1165,8 +1167,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                                 if self.player_won:
 
                                     self.exit_battle()
-                                elif self.starter_battle:
-                                    self.continue_after_starter_loss()
+                                elif self.starter_battle or getattr(self, "frontier", None):
+                                    self.continue_after_starter_loss()  # (healed, back where you were)
                                 else:
 
                                     self.perform_battle_black_out()
@@ -2044,6 +2046,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             pygame.event.clear()
             self.game.states["play"] = PlayState(self.game, restore_data=play_state_data)
             next_state = self.game.states["play"]
+
+        if getattr(self, "frontier", None):  # a Battle Frontier streak's battle: the streak goes on, ends, or a Symbol
+            from src.world import frontier
+            said = frontier.after_battle(self.game, self.frontier, bool(self.player_won and not lost))
+            if said and next_state is not None:
+                (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)(said)
 
         if next_state and hasattr(next_state, "check_for_evolution"):
             if next_state.check_for_evolution():

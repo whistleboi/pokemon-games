@@ -233,8 +233,12 @@ class RouteEncounters:
             self.initial_round_active = False
             self.show_progression_menu()
 
-    def trigger_trainer_battle(self, specific_index=None):  # (route trainers; prizes: items.route_rewards)
-        trainer_pool = self.area_data.get("trainer_pool", [])
+    def trigger_trainer_battle(self, specific_index=None, info=None, frontier=None):  # (route trainers; prizes: items.route_rewards)
+        # info: a trainer made up on the spot (the Battle Frontier's streaks: src/world/frontier.py), not one of the
+        # area's own; frontier: that streak's facility (the battle reports back to it when it ends)
+        trainer_pool = [info] if info else self.area_data.get("trainer_pool", [])
+        if info:
+            specific_index = 0
         if not trainer_pool:
             self.trigger_wild_encounter()
             return
@@ -332,7 +336,7 @@ class RouteEncounters:
             opponent_team,
             trainer_sprite=trainer_sprite,
             trainer_class=trainer_class,
-            trainer_index=trainer_idx,
+            trainer_index=None if info else trainer_idx,
             trainer_name=trainer_name,
             custom_dialogue=custom_dialogue,
             rewards=rewards,
@@ -342,6 +346,7 @@ class RouteEncounters:
             victory_flag=victory_flag,
             background_image=bg_file
         )
+        battle_state.frontier = frontier
 
         battle_state.play_state_data = {
             "balls_left": self.balls_left,
@@ -731,6 +736,18 @@ class RouteEncounters:
 
         self.pending_wild_encounters = 0
         self.trigger_trainer_battle()
+
+    def action_frontier(self, item):
+        """A Battle Frontier facility's attendant: the streak's next battle (src/world/frontier.py)."""
+        from src.world import frontier
+        fac = item.get("facility")
+        frontier.heal(self.game)
+        info = frontier.next_trainer(self.game, fac)
+
+        def go():
+            self.hide_menu_buttons()
+            self.trigger_trainer_battle(info=info, frontier=fac)
+        (self.say if hasattr(self, "say") else self.show_dialogue)(frontier.intro_lines(self.game, fac), go)
 
     def action_battle_wild(self):
         self.is_progression_paused = False

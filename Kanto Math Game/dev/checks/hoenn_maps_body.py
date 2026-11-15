@@ -2540,12 +2540,91 @@ story.story_flags["beat_hoenn_champion"] = True
 _bf = _tm27["HOENN_BATTLE_FRONTIER"]
 st = open_map("HOENN_BATTLE_FRONTIER", "HOENN_SS_TIDAL")
 _dock = tuple(st.run.player)
-_brains = {r: [n.strip() for n in (room.get("trainer_spots") or [])] for r, room in _bf["rooms"].items()}
+_LOBBIES = ("tower", "dome", "palace", "pyramid", "arena", "factory", "pike")
+_brains = {r: [n.strip() for n in _bf["rooms"][r].get("people") or []] for r in _LOBBIES}
 _fa = next(o for o in _sp27["HOENN_BATTLE_FRONTIER"]["route_menu"] if o.get("text") == "Ferry attendant")
-check(_dock == (20, 68) and _brains["tower"] == ["Salon Maiden Anabel"] and _brains["pyramid"] == ["Pyramid King Brandon"]
-      and sum(len(v) for v in _brains.values()) == 6 and "Nurse" in _bf["rooms"]["center"]["people"] and "Clerk" in _bf["rooms"]["mart"]["people"]
+check(_dock == (20, 68) and _brains["tower"] == ["Salon Maiden Anabel", "Tower attendant"] and _brains["factory"] == ["Factory Head Noland", "Factory attendant"]
+      and all(len(v) == 2 for v in _brains.values()) and not any(_bf["rooms"][r].get("trainer_spots") for r in _LOBBIES)
+      and "Nurse" in _bf["rooms"]["center"]["people"] and "Clerk" in _bf["rooms"]["mart"]["people"]
       and _fa["event"]["travel"] == "HOENN_SS_TIDAL" and set(_bf["exits"].values()) == {"HOENN_ARTISAN_CAVE"},
-      f"Battle Frontier: off the ferry on the dock; each Frontier Brain in their facility's lobby; the Center and Mart; the Artisan Cave's mouths ({_dock}, {_brains})")
+      f"Battle Frontier: off the ferry on the dock; each lobby's attendant and Frontier Brain (no Brain to walk up to); the Center and Mart; the Artisan Cave's mouths ({_dock}, {_brains})")
+
+# ---- the facility streaks (11-14, Jordan: random single battles, the Brain after 5 wins, after 10 the second time)
+from src.world import frontier as _fr
+from src.states.battle import TrainerIntroState as _TIS
+
+
+def _streak_battle(fac):
+    """Talk to the attendant in the lobby (the figure on the map), through the words: the battle it opens."""
+    st = g.current_state
+    figs = [m for m in st.run.floor.movers if getattr(m, "kind", "") == "figure" and (m.payload or {}).get("facility") == fac]
+    st._get_route_callback(figs[0].payload)()
+    tap(st)
+    frames(1)
+    cur = g.current_state
+    return figs, (cur.next_state if isinstance(cur, _TIS) else None)
+
+
+def _end(b, won):
+    b.player_won = won
+    if won:
+        b.exit_battle()
+    else:
+        b.continue_after_starter_loss()
+    frames(1)
+    tap(g.current_state)
+
+
+_saved_bf = dict(story.story_flags)
+for _k in [k for k in story.story_flags if k.startswith("frontier_")]:
+    story.story_flags.pop(_k)
+story.story_flags.pop("hoenn_battle_frontier_cleared", None)
+st = open_map("HOENN_BATTLE_FRONTIER", "HOENN_SS_TIDAL")
+while len(st.run.floors) < 2:   # (the Battle Tower's lobby: the first room; floors are made in order)
+    st.run.enter_floor(len(st.run.floors))
+st.run.enter_floor(1)
+frames(1)
+_figs, _b = _streak_battle("tower")
+_opp = [p.id for p in _b.opponent_team] if _b else []
+_sizes = [len(_fr.data(g)["groups"][k]) for k in "0123"]
+check(len(_figs) == 1 and _b is not None and getattr(_b, "frontier", None) == "tower" and len(set(_opp)) == 3
+      and _b.trainer_index is None and len(_fr.data(g)["trainers"]) == 300 and min(_sizes) > 40,
+      f"Battle Tower: the attendant's streak opens a battle with a random Frontier trainer, three different Pokemon ({_b and _b.trainer_name}, {_opp}, groups {_sizes})")
+_end(_b, True)
+check(_fr.wins(g, "tower") == 1 and isinstance(g.current_state, DungeonState) and g.current_state.run.index == 1,
+      f"a streak win: 1 win, back in the Tower's lobby ({_fr.wins(g, 'tower')}, {type(g.current_state).__name__})")
+for _p in story.player_team:
+    if _p:
+        _p.current_hp = 1
+_figs, _b = _streak_battle("tower")
+_healed = all(p.current_hp == p.max_hp for p in story.player_team if p)
+_end(_b, False)
+check(_healed and _fr.wins(g, "tower") == 0 and story.current_area_key == "HOENN_BATTLE_FRONTIER" and isinstance(g.current_state, DungeonState),
+      f"healed before each streak battle; a loss ends the streak in the lobby, no whiting out ({_fr.wins(g, 'tower')}, {story.current_area_key})")
+story.story_flags["frontier_tower_wins"] = 5
+_figs, _b = _streak_battle("tower")
+_brain = (_b.trainer_name, [p.id for p in _b.opponent_team]) if _b else None
+_end(_b, True)
+check(_brain == ("Salon Maiden Anabel", [65, 244, 143]) and story.story_flags.get("frontier_tower_silver") and _fr.wins(g, "tower") == 0
+      and _fr.goal(g, "tower") == 10,
+      f"5 wins: Anabel's Silver team; beaten, the Silver Symbol, and next time it's 10 wins ({_brain}, goal {_fr.goal(g, 'tower')})")
+story.story_flags["frontier_tower_wins"] = 9
+check(not _fr.brain_next(g, "tower"), "the second challenge: 9 wins is not yet the Brain")
+story.story_flags["frontier_tower_wins"] = 10
+_t = _fr.next_trainer(g, "tower")
+check(_t["team"] == [243, 381, 143] and _t["is_boss_battle"], f"10 wins: Anabel's Gold team ({_t['team']})")
+_nol = _fr.BRAINS["factory"]
+story.story_flags["frontier_factory_wins"] = 5
+_t = _fr.next_trainer(g, "factory")
+check(_t["name"] == "Factory Head Noland" and len(set(_t["team"])) == 3 and all(i in _fr.data(g)["groups"]["3"] for i in _t["team"]),
+      f"Noland (the Factory, rentals in Emerald): three random strong Pokemon ({_t['team']})")
+for _f in _fr.BRAINS:
+    story.story_flags[f"frontier_{_f}_silver"] = True
+story.story_flags.pop("frontier_pike_silver")
+story.story_flags["frontier_pike_wins"] = 5
+check(_fr.after_battle(g, "pike", True) and story.story_flags.get("hoenn_battle_frontier_cleared"),
+      "all seven Silver Symbols: the Battle Frontier mission is done")
+story.story_flags.clear(); story.story_flags.update(_saved_bf)
 _ac = _tm27["HOENN_ARTISAN_CAVE"]["floors"]
 check(sorted((_ac[1].get("hidden") or {}).values()) == ["CALCIUM", "IRON", "PROTEIN", "ZINC"] and "HP UP" in _ac[1]["people"] and "CARBOS" in _ac[0]["people"]
       and {f["exits"].get("n") for f in _ac} == {"HOENN_BATTLE_FRONTIER"},

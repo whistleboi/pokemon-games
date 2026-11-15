@@ -110411,7 +110411,7 @@
      "....c...c...c...c...m....",
      "....cm.mcm.mcm.mcm.mc....",
      ".........................",
-     "............X............",
+     "............N.N..........",
      ".........................",
      "cc..........nn.........cc"
     ],
@@ -110430,8 +110430,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "trainer_spots": [
-     "Salon Maiden Anabel"
+    "people": [
+     "Salon Maiden Anabel",
+     "Tower attendant"
     ],
     "overheads": [
      {
@@ -110464,7 +110465,7 @@
      "..ccc.ccccccccccc.ccc..",
      "ccccc.ccccc.ccccc.ccccc",
      ".......................",
-     "...........X...........",
+     "...........N.N.........",
      ".......................",
      "ccccc..............cccc",
      ".......................",
@@ -110485,8 +110486,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "trainer_spots": [
-     "Dome Ace Tucker"
+    "people": [
+     "Dome Ace Tucker",
+     "Dome attendant"
     ],
     "overheads": [
      {
@@ -110514,7 +110516,7 @@
      "ccccccccccccccccccc.ccccc",
      "..cc...cc.......cc...cc..",
      "..ccc.ccc.......ccc.ccc..",
-     "..c.........X...c........",
+     "..c.........N.N.c........",
      ".........................",
      ".........................",
      ".........................",
@@ -110535,8 +110537,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "trainer_spots": [
-     "Palace Maven Spenser"
+    "people": [
+     "Palace Maven Spenser",
+     "Palace attendant"
     ],
     "overheads": [
      {
@@ -110570,7 +110573,7 @@
      "...cccc.ccccccc",
      "cc.cccc.ccccccc",
      "ccccccc.ccccccc",
-     ".......X.......",
+     ".......N.N.....",
      "...............",
      "...............",
      "...............",
@@ -110591,8 +110594,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "trainer_spots": [
-     "Pyramid King Brandon"
+    "people": [
+     "Pyramid King Brandon",
+     "Pyramid attendant"
     ],
     "overheads": [
      {
@@ -110622,7 +110626,7 @@
      "ccc.ccccccc.cccc",
      "ccc.ccccccc.c.cc",
      ".....c.........c",
-     ".....c.X.......c",
+     ".....c.N.N.....c",
      "c..............c",
      "c..............c",
      ".......n.......c"
@@ -110642,8 +110646,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "trainer_spots": [
-     "Arena Tycoon Greta"
+    "people": [
+     "Arena Tycoon Greta",
+     "Arena attendant"
     ],
     "overheads": [
      {
@@ -110673,7 +110678,7 @@
      "..cc..cm...cc...m..",
      "..cm.mmcc.ccmm.mc..",
      "...................",
-     "...................",
+     "........N.N........",
      "...................",
      ".........nn....c.c."
     ],
@@ -110692,6 +110697,10 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
+    "people": [
+     "Factory Head Noland",
+     "Factory attendant"
+    ],
     "overheads": [
      {
       "kind": "picture",
@@ -110718,9 +110727,9 @@
      "...c...c...",
      "....c.c....",
      "...........",
-     ".c...X...c.",
+     ".c.......c.",
      "c..c...c..c",
-     "...........",
+     "....N.N....",
      ".c.......c.",
      "...........",
      "...cnnnc..."
@@ -110740,8 +110749,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "trainer_spots": [
-     "Pike Queen Lucy"
+    "people": [
+     "Pike Queen Lucy",
+     "Pike attendant"
     ],
     "overheads": [
      {
