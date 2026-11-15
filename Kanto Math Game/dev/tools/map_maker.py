@@ -672,7 +672,8 @@ class ParkBuilder:
                            Button(z, "On top", self.toggle_ref_under, toggle=self.ref_under)]
         self.b_ref_alpha = Slider(z, 0, 255, lambda: (self.doc.ref or {}).get("alpha", 140), self._set_ref_alpha, "Strength")
         self.b_frame_btns = [Button(z, "Move / size", self.toggle_ref_adjust, toggle=lambda: getattr(self, "ref_adjust", False)),
-                             Button(z, "Keep shape", self.ref_keep_shape), Button(z, "Reset", self.ref_reset)]
+                             Button(z, "Keep shape", self.ref_keep_shape), Button(z, "Size", self.ref_size_cycle),
+                             Button(z, "Remove", self.remove_ref)]
         self._bottom_key = None
         self.layout_bottom()
 
@@ -694,7 +695,7 @@ class ParkBuilder:
             x += bw + 6
         if self.b_pic_open:
             y -= 34
-            for b, (dx, bw) in zip(self.b_frame_btns, ((0, 128), (134, 110), (250, w - 250))):
+            for b, (dx, bw) in zip(self.b_frame_btns, ((0, 104), (110, 98), (214, 100), (320, w - 320))):
                 b.rect = pygame.Rect(x0 + dx, y, bw, 28)
             y -= 26
             self.b_ref_alpha.rect = pygame.Rect(x0, y, w, 18)
@@ -1369,8 +1370,10 @@ class MapMaker(ParkBuilder):
                           Button((x0 + 98, y + 20, 60, 28), "Grid", lambda: setattr(self, "show_grid", not self.show_grid), toggle=lambda: self.show_grid),
                           Button((x0 + 164, y + 20, 72, 28), "Levels", lambda: setattr(self, "show_levels", not self.show_levels), toggle=lambda: self.show_levels),
                           Button((x0 + 242, y + 20, 92, 28), "Reference", lambda: setattr(self, "show_ref", not self.show_ref), toggle=lambda: self.show_ref)]
-        self.ref_box = TextBox((x0, y + 56, w - 92, 28), (self.doc.ref or {}).get("path", ""), "reference picture (png)")
-        self.btn_ref = Button((x0 + w - 84, y + 56, 84, 28), "Load", self.browse_ref)
+        self.ref_box = TextBox((x0, y + 56, w - 302, 28), (self.doc.ref or {}).get("path", ""), "reference picture (png)")
+        self.btn_ref_size = Button((x0 + w - 296, y + 56, 150, 28), "Size", self.ref_size_cycle)
+        self.btn_ref_remove = Button((x0 + w - 140, y + 56, 70, 28), "Remove", self.remove_ref)
+        self.btn_ref = Button((x0 + w - 64, y + 56, 64, 28), "Load", self.browse_ref)
         self.ref_alpha = Slider((x0, y + 92, w, 18), 0, 255, lambda: (self.doc.ref or {}).get("alpha", 140), self._set_ref_alpha, "Picture")
         self.level_btns = [Button((x0 + i * 46, y + 118, 40, 26), f"L{i}", lambda i=i: self.set_level(i), toggle=lambda i=i: self.level_brush == i and self.tool == "level") for i in range(4)]
         self.btn_cliffs = Button((x0 + 190, y + 118, w - 190, 26), "Cliffs from levels", self.cliffs)
@@ -1380,7 +1383,7 @@ class MapMaker(ParkBuilder):
         self._build_builder()
         if self.builder:
             self.detail_box.rect = pygame.Rect(self.b_detail_rect)
-        self.buttons = [self.btn_save, self.btn_builder, self.btn_new, self.btn_resize, self.btn_open, self.btn_ref, self.btn_cliffs] + self.tool_btns + self.sel_btns + self.view_btns + self.level_btns
+        self.buttons = [self.btn_save, self.btn_builder, self.btn_new, self.btn_resize, self.btn_open, self.btn_ref, self.btn_ref_size, self.btn_ref_remove, self.btn_cliffs] + self.tool_btns + self.sel_btns + self.view_btns + self.level_btns
         self.sliders = self.rgb + [self.ref_alpha]
         self.labels = [(x0, 12, "Map key"), (x0, 70, "Size (tiles)"), (x0, 122, "Open a map"), (x0, 176, "Tools"),
                        (x0, 248, "Assets"), (x0, 458, "Buildings"), (x0, 658, "Roof colour"), (x0, 780, "View")]
@@ -1545,12 +1548,16 @@ class MapMaker(ParkBuilder):
             return
         self.push()
         old = self.doc.ref or {}
-        self.doc.ref = {"path": path, "alpha": old.get("alpha", 140), "mode": self.ref_mode() if old else "top"}   # (a new picture lies over the whole map till it's framed)
+        self.doc.ref = {"path": path, "alpha": old.get("alpha", 140), "mode": self.ref_mode() if old else "top"}
+        self._ref_src = None
+        img = self.ref_source()
+        if img is not None:              # (at its actual size, a tile per 32 px, the way the pieces are drawn: not stretched)
+            self.doc.ref["rect"] = [0.0, 0.0, round(img.get_width() / 32, 3), round(img.get_height() / 32, 3)]
         self.ref_box.text = path
         self._ref_img = None
         self.show_ref = True
         self.b_pic_open = True
-        self.status = f"Source picture: {os.path.basename(path)} (stretched to the map; Fit map sizes the map to it)"
+        self.status = f"Source picture: {os.path.basename(path)} at its actual size, 32 px a tile (the Size button: 16 px, or stretched to the map)"
 
     def ask_file(self, title, filetypes):
         """A file window (opening where the map maker saves its maps), or None if cancelled or there is none."""
@@ -1850,6 +1857,56 @@ class MapMaker(ParkBuilder):
         self.frame_ref([x, y, w, w * ih / iw])
         self.status = "The picture keeps its own shape (as wide as it was; its height to match)"
 
+    def remove_ref(self):
+        """Take the source picture off the map altogether (Ctrl+Z puts it back); saving then leaves it out."""
+        if not self.doc.ref:
+            self.status = "No source picture to remove"
+            return
+        self.push()
+        name = os.path.basename(self.doc.ref.get("path", ""))
+        self.doc.ref = None
+        self.ref_box.text = ""
+        self._ref_img = self._ref_src = None
+        self.ref_adjust = False
+        self.status = f"Source picture {name} removed (Ctrl+Z puts it back)"
+
+    def ref_size_state(self):
+        """How the picture is sized: "32", "16" (actual size at that many px a tile), "stretch" or "framed"."""
+        if not self.doc.ref:
+            return None
+        r = self.doc.ref.get("rect")
+        if not r:
+            return "stretch"
+        img = self.ref_source()
+        if img is not None:
+            for t in ("32", "16"):
+                if abs(r[2] - img.get_width() / int(t)) < 0.01 and abs(r[3] - img.get_height() / int(t)) < 0.01:
+                    return t
+        return "framed"
+
+    SIZE_LABELS = {"32": "Size: 32 px a tile", "16": "Size: 16 px a tile", "stretch": "Size: stretched", "framed": "Size: framed",
+                   None: "Size"}
+
+    def ref_size_cycle(self):
+        """Actual size at 32 px a tile (fan maps, RPG Maker), at 16 px (GBA screenshots), or stretched over the map."""
+        img = self.ref_source()
+        if not self.doc.ref or img is None:
+            self.status = "Load a source picture first"
+            return
+        state = self.ref_size_state()
+        nxt = {"32": "16", "16": "stretch"}.get(state, "32")
+        self.push()
+        x, y = (self.doc.ref.get("rect") or [0.0, 0.0])[:2]
+        if nxt == "stretch":
+            self.doc.ref.pop("rect", None)
+            self.status = "Picture stretched over the whole map (its own shape lost)"
+        else:
+            t = int(nxt)
+            self.doc.ref["rect"] = [x, y, round(img.get_width() / t, 3), round(img.get_height() / t, 3)]
+            self.status = (f"Picture at its actual size, {t} px a tile: {img.get_width() / t:.0f} x {img.get_height() / t:.0f} tiles "
+                           f"({'fan maps, RPG Maker sheets' if t == 32 else 'GBA screenshots'}); Move / size frames it by hand")
+        self._ref_img = None
+
     def ref_reset(self):
         if self.doc.ref and self.doc.ref.get("rect"):
             self.push()
@@ -1939,6 +1996,10 @@ class MapMaker(ParkBuilder):
 
     # ---- drawing
     def draw(self):
+        label = self.SIZE_LABELS[self.ref_size_state()]
+        self.btn_ref_size.text = label
+        if hasattr(self, "b_frame_btns"):
+            self.b_frame_btns[2].text = label.replace("Size: ", "").replace(" a tile", "/tile") if self.doc.ref else "Size"
         s = self.screen
         s.fill(BG)
         mouse = pygame.mouse.get_pos()
