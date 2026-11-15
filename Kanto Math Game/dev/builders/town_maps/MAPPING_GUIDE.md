@@ -235,3 +235,23 @@ It should end with `##### 0 failures`.
 - Deliver the changed `<region>.py` (and any data or `LABELS` edits) as a patch.
 - Include the side-by-side image, the builder's output, and a short list of anything you weren't sure about.
 - Claude reviews each map against its source before it's merged. Jordan approves layouts.
+
+
+## The map maker (dev/tools/map_maker.py)
+
+A window for drawing a map by hand in this same format (Jordan, 11-14), made first for the regions that only exist in 3D:
+lay the 3D area's top-down picture underneath (Reference) and design the 2D map over it.
+
+- `python dev/tools/map_maker.py [KEY | layout.json] [--ref=picture.png] [--size=WxH]`.
+- Paint, Box and Fill with any character from the drop lists (each shows its picture as the game draws it). Right-click picks up what's under the mouse.
+- Buildings: pre-made at the game's usual sizes. Pick one to change its kind, name, size, door position or roof colour. A tile-sheet house's custom roof is saved as `{"roof": [r, g, b], "tint": true}`, and `art.py` tints the house picture for it.
+- Pick a way out to fill in "Leads to". Right-click a person or a sign to say who they are or what it says.
+- Height levels (L0-L3) are the map maker's own guide. "Cliffs from levels" lays real cliffs where the ground steps down
+  (dev/tools/cliff_tiers.py): a higher level's south edge gets its whole face (lip, face, base: 3 rows of that level),
+  its west and east edges a column of rock side, its north edge the lip; ends round off, corners join, inside corners turn,
+  tiers stand on one another, and a path crossing a cliff becomes stairs. The rock tiles become c (in the way) and the
+  tiles to draw go in the map's roofs "_cliffs" (tile set rock_bp, Banished Platinum's). Trees, buildings and water keep
+  their tile: a cliff runs on hidden under the woods, so paint the woods at the level of the ground beside them. Change
+  the levels and press it again: the last cliffs are cleared first.
+- The park builder (its button, or P) swaps the panel for pictures of everything in tabs (Buildings, Scenery, Ground, Height, Ways out). Click a picture or drag it onto the map: a see-through copy follows the mouse, green where it fits, red where it doesn't; click again for another, right-click or Esc to empty your hand. Drag anything placed to move it; right-click takes it away. Ground and height are 1/3/5-tile brushes; raising or lowering the ground rebuilds the cliffs when you let go. Stairs only where a path runs across a cliff; a path running along under one is covered by the rock.
+- Saves to `dev/builders/town_maps/made/<KEY>.json`. The build takes it in as region `made` (last, so it replaces a region's map with the same key) and checks it like any other.

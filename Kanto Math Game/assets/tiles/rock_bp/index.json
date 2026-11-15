@@ -1,0 +1,102 @@
+{
+ "lip_L": {
+  "tile": 968,
+  "code": "a",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "lip_C": {
+  "tile": 969,
+  "code": "b",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "lip_R": {
+  "tile": 970,
+  "code": "c",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "mid_L": {
+  "tile": 976,
+  "code": "d",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "mid_C": {
+  "tile": 977,
+  "code": "e",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "mid_R": {
+  "tile": 978,
+  "code": "f",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "face_L": {
+  "tile": 984,
+  "code": "g",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "face_C": {
+  "tile": 985,
+  "code": "h",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "face_R": {
+  "tile": 986,
+  "code": "i",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "base_L": {
+  "tile": 992,
+  "code": "j",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "base_C": {
+  "tile": 993,
+  "code": "k",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "base_R": {
+  "tile": 994,
+  "code": "l",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "inside_W": {
+  "tile": 996,
+  "code": "m",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "inside_E": {
+  "tile": 995,
+  "code": "n",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "stairs_top_0": {
+  "tile": 1051,
+  "code": "o",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "stairs_top_1": {
+  "tile": 1052,
+  "code": "p",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "stairs_top_2": {
+  "tile": 1053,
+  "code": "q",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "stairs_0": {
+  "tile": 1059,
+  "code": "r",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "stairs_1": {
+  "tile": 1060,
+  "code": "s",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ },
+ "stairs_2": {
+  "tile": 1061,
+  "code": "t",
+  "credit": "Banished Platinum outdoor tileset (Wesley-FG-DPPt): Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat"
+ }
+}

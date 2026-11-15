@@ -31,8 +31,13 @@ can walk. The town screen (src/states/overworld/walk_town.py) and the route maps
   1 a passage to any other floor, or across this one (a map's "links" {"x,y": [floor, x, y]}: Mt. Coronet)
   [ ] { } a sea current: it carries you west, east, north, south till something stops you (Routes 132-134)
   : deep, dark sea: Surf across it, and Dive there to the map's seabed floor
+  ` under a ready-made piece (a palm, a totem: the map's roofs "_objects" {"k": "alola:palm", "at": [x, y]}, from
+    dev/tools/piece_library.py): in the way, drawn as the ground round it, the piece over it
   | ; a log bridge running north-south / east-west: cross it along its length, or walk under it across
     its width, never from one to the other (Victory Road's two levels)
+A map's roofs "_cliffs" {"set": "rock_bp", "rock": [rows], "steps": [rows]} draw its cliffs from a tile set (one code a tile,
+from assets/tiles/<set>/index.json; dev/tools/cliff_tiers.py lays them from the map's height levels): the rock on its c
+tiles, stairs on the open tiles that cross it.
 A map's "theme" "distortion" draws the Distortion World: red rock slabs in a blue void (its c), stepping stones (its ,).
 A map's "theme" "seabed" draws a floor under the sea: dark blue sand, rock walls, seaweed for its tall grass.
 A way out (< > ^ v) with the sea on every side is surfed onto, like w and u (Route 124's sides).
@@ -240,6 +245,7 @@ def surface(art, kinds, tile, roofs=None, theme=None):
     ROOM_LOOK = ((roofs or {}).get("_floor"), (roofs or {}).get("_wall"))
     BRIDGE_LOOK = (roofs or {}).get("_bridge")  # (the map's own bridges: "wood" planks, "steel" (a cycling road), "solar" panels; else the log bridge)
     h, w = len(art), len(art[0])
+    cliffs = _cliff_tiles((roofs or {}).get("_cliffs"), art)
     surf = pygame.Surface((w * tile, h * tile))
     pic = _picture((roofs or {}).get("_picture"), w, h, tile)  # (the real game's own picture of this map's ground, laid under everything)
     rng = random.Random(f"{w}x{h}:{''.join(art[0])}")
@@ -248,7 +254,7 @@ def surface(art, kinds, tile, roofs=None, theme=None):
         surf.blit(pic, (0, 0))
     for y in range(h if not pic else 0):
         for x in range(w):
-            _ground(surf, art, x, y, tile, rng)
+            _ground(surf, art, x, y, tile, rng, as_c="." if art[y][x] == "c" and (x, y) in cliffs else None)
     snow = {tuple(t) for t in (roofs or {}).get("_snow", [])}  # (patches of snow lying on a green map's lawn, where the source has them: Sinnoh)
     for x, y in sorted(snow):
         if not pic and 0 <= y < h and 0 <= x < w and art[y][x] == ".":
@@ -444,6 +450,13 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                     pygame.draw.line(surf, (140, 170, 96), (r.x + i, r.bottom - 6), (r.x + i + 2, r.bottom - 16), 2)
             elif c in "+-":
                 _ladder(surf, r, c == "+")
+    for (x, y), pics in sorted(cliffs.items(), key=lambda kv: kv[0][::-1]):  # the cliffs from their tile set, stairs over them
+        for p in pics:
+            key = ("cliff", p, tile)
+            if key not in _SCALED:
+                img = pygame.image.load(p)
+                _SCALED[key] = img if tile == 32 else pygame.transform.scale(img, (tile, tile))
+            surf.blit(_SCALED[key], (x * tile, y * tile))
     for o in (roofs or {}).get("_fittings") or ():  # a room's drawn objects, over its furniture blocks (the Prize Corner's cases)
         fitting(surf, o, tile)
     if _THEME != "room":  # stop tiles on a route map's floor (the Rocket Hideout): a small steel stud
@@ -454,6 +467,14 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 pygame.draw.circle(surf, (120, 126, 140), c0, tile // 5)
                 pygame.draw.circle(surf, (214, 218, 226), c0, tile // 9)
     for k, rect in sorted(buildings(art).items(), key=lambda kv: kv[1].bottom):
+        piece = (roofs or {}).get(k)
+        if isinstance(piece, dict) and piece.get("model") and _model(piece["model"]):  # a ready-made piece (dev/tools/piece_library.py):
+            mp, ox, oy = _model(piece["model"])                                          # its picture over its footprint, the
+            key = (piece["model"], tile)                                                 # footprint's top-left at (ox, oy)
+            if key not in _SCALED:
+                _SCALED[key] = mp if tile == 32 else pygame.transform.scale(mp, (max(1, mp.get_width() * tile // 32), max(1, mp.get_height() * tile // 32)))
+            surf.blit(_SCALED[key], (rect.x * tile - ox * tile // 32, rect.y * tile - oy * tile // 32))
+            continue
         if not models and not (pic and (roofs or {}).get("_buildings_in_picture")):  # (the picture already shows its buildings: Orre's fan-game maps)
             _building(surf, art, rect, kinds.get(k, "house"), tile, (roofs or {}).get(k))
     for o in sorted(OBJECTS, key=lambda o: o["at"][1] if "at" in o else o["r"][1] + o["r"][3]):  # the things from the tile sheets, back to front
@@ -1235,6 +1256,29 @@ def _picture(spec, w, h, tile):
         return None
 
 
+def _cliff_tiles(spec, art):
+    """{(x, y): [picture path, ...]} for a map's "_cliffs": rock only where the map has c, stairs only on open ground."""
+    if not spec:
+        return {}
+    base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", spec.get("set", ""))
+    key = ("cliffs", spec.get("set"))
+    if key not in _PT:
+        try:
+            import json as _json
+            with open(os.path.join(base, "index.json"), encoding="utf-8") as f:
+                _PT[key] = {v["code"]: os.path.join(base, k + ".png") for k, v in _json.load(f).items() if v.get("code")}
+        except (OSError, ValueError):
+            _PT[key] = {}
+    pics = _PT[key]
+    out = {}
+    for name, ok in (("rock", lambda c: c == "c"), ("steps", lambda c: c in OPEN)):
+        for y, row in enumerate(spec.get(name) or ()):
+            for x, code in enumerate(row):
+                if code in pics and y < len(art) and x < len(art[0]) and ok(art[y][x]):
+                    out.setdefault((x, y), []).append(pics[code])
+    return out
+
+
 def _model(key):
     """(picture, origin x, origin y) of one of a real game's models ("pt:0_23": assets/tiles/pt/0_23.png), or None."""
     if key not in _PT:
@@ -1286,9 +1330,29 @@ def _out(kind, w, h=None):
     return _SCALED[key]
 
 
-def _house_sprite(surf, art, rect, tile, kind):
+_TINTED = {}
+
+
+def _tinted_house(rgb):
+    """The tile sheet's house with its roof in any colour (the map maker's roof {"roof": [r, g, b], "tint": true}): the
+    green roof's pixels recoloured, keeping their light and shade; walls, door and windows as they are."""
+    key = tuple(int(v) for v in rgb)
+    if key not in _TINTED:
+        img = _sprite("house").copy()
+        base = 200.0                      # (the roof's middle green, about)
+        for y in range(img.get_height()):
+            for x in range(img.get_width()):
+                r, g, b, a = img.get_at((x, y))
+                if a and g > r + 18 and g > b + 18:
+                    k = g / base
+                    img.set_at((x, y), (min(255, int(key[0] * k)), min(255, int(key[1] * k)), min(255, int(key[2] * k)), a))
+        _TINTED[key] = img
+    return _TINTED[key]
+
+
+def _house_sprite(surf, art, rect, tile, kind, img=None):
     """A house off the tile sheet over its tiles: the part left of its door, its door, the part right, each fitted to this building."""
-    img = _sprite(kind)
+    img = img or _sprite(kind)
     box = pygame.Rect(rect.x * tile, rect.y * tile, rect.w * tile, rect.h * tile)
     ds = sorted(d for d, _k in doors_in(art, rect))
     dx = ds[0][0] if ds else rect.x + rect.w // 2
@@ -1785,6 +1849,8 @@ def _building(surf, art, rect, kind, tile, roof_colour=None):
         return _treehouse(surf, art, rect, tile, kind != "treehouse")
     if kind in ("house", "home", "rival", "assistant", "elder") and _out("house", tile):  # a plain house off the tile sheet, in the roof nearest its own
         rc = roof_colour.get("roof") if isinstance(roof_colour, dict) else roof_colour
+        if isinstance(roof_colour, dict) and roof_colour.get("tint") and rc and not isinstance(rc, str):
+            return _house_sprite(surf, art, rect, tile, "house", _tinted_house(rc))
         pick = "house"
         if rc and not isinstance(rc, str):
             pick = "house_blue" if rc[2] > rc[1] and rc[2] > rc[0] else "house_orange" if rc[0] > rc[1] + 20 else "house"
