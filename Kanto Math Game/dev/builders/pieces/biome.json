@@ -1,0 +1,322 @@
+{
+ "set": "biome",
+ "credit": "Kyle-Dove (Biome Tiles; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Eevee Expo tilesets",
+ "sheets": {
+  "biome": "KyleDove_Biome_Tiles.png"
+ },
+ "pieces": {
+  "palm": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     5,
+     143,
+     8,
+     146
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Palm (round)"
+  },
+  "palm_grove": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     3,
+     146,
+     8,
+     150
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Palm grove"
+  },
+  "palm_grove_2": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     3,
+     150,
+     8,
+     155
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Palm grove (2)"
+  },
+  "jungle_tree": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     162,
+     3,
+     166
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Jungle tree"
+  },
+  "jungle_pair": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     166,
+     5,
+     171
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Jungle trees"
+  },
+  "tropic_tree": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     177,
+     3,
+     180
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Tropical tree"
+  },
+  "tropic_pair": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     180,
+     5,
+     184
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Tropical trees"
+  },
+  "tropic_big": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     184,
+     5,
+     189
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Tropical tree (big)"
+  },
+  "round_hut": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     189,
+     5,
+     194
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Round thatched hut"
+  },
+  "barrel": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     6,
+     194,
+     7,
+     196
+    ]
+   ],
+   "foot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Barrel",
+   "touches": [
+    "right",
+    "bottom",
+    "left"
+   ]
+  },
+  "tree_dark": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     50,
+     3,
+     53
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Leafy tree"
+  },
+  "tree_dark_pair": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     3,
+     50,
+     8,
+     54
+    ]
+   ],
+   "foot": [
+    1,
+    3,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Leafy trees"
+  },
+  "tree_bush": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     53,
+     3,
+     56
+    ]
+   ],
+   "foot": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Vine tree"
+  },
+  "tree_dark_big": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     3,
+     54,
+     8,
+     59
+    ]
+   ],
+   "foot": [
+    1,
+    4,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "tree",
+   "label": "Leafy trees (big)"
+  },
+  "stump_hollow": {
+   "sheet": "biome",
+   "blocks": [
+    [
+     0,
+     43,
+     3,
+     47
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Hollow stump",
+   "touches": [
+    "bottom"
+   ]
+  }
+ },
+ "gen": "Gen 4",
+ "artist": "Kyle-Dove"
+}

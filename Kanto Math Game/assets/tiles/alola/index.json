@@ -12,7 +12,10 @@
   ],
   "kind": "house",
   "label": "Thatched hut (small)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "hut_big": {
   "name": "Thatched house (big)",
@@ -28,7 +31,10 @@
   ],
   "kind": "house",
   "label": "Thatched house (big)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "stage": {
   "name": "Festival stage",
@@ -41,7 +47,10 @@
   "doors": [],
   "kind": "stage",
   "label": "Festival stage",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "palm": {
   "name": "Palm tree",
@@ -54,7 +63,10 @@
   "doors": [],
   "kind": "tree",
   "label": "Palm tree",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "palm_short": {
   "name": "Palm tree (short)",
@@ -67,7 +79,10 @@
   "doors": [],
   "kind": "tree",
   "label": "Palm tree (short)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "palm_teal": {
   "name": "Palm tree (teal)",
@@ -80,7 +95,10 @@
   "doors": [],
   "kind": "tree",
   "label": "Palm tree (teal)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "palm_teal_short": {
   "name": "Palm tree (teal, short)",
@@ -93,7 +111,10 @@
   "doors": [],
   "kind": "tree",
   "label": "Palm tree (teal, short)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "totem_a": {
   "name": "Totem (yellow)",
@@ -106,7 +127,10 @@
   "doors": [],
   "kind": "prop",
   "label": "Totem (yellow)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "totem_b": {
   "name": "Totem (purple)",
@@ -119,7 +143,10 @@
   "doors": [],
   "kind": "prop",
   "label": "Totem (purple)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "tiki_a": {
   "name": "Tiki statue",
@@ -132,7 +159,10 @@
   "doors": [],
   "kind": "prop",
   "label": "Tiki statue",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  },
  "tiki_b": {
   "name": "Tiki statue (2)",
@@ -145,6 +175,930 @@
   "doors": [],
   "kind": "prop",
   "label": "Tiki statue (2)",
-  "credit": "KingTapir (KingTapirAlolaMisc tile sheet)"
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "pine_round": {
+  "name": "Round pine",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Round pine",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "boulder_a": {
+  "name": "Boulder",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Boulder",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "boulder_b": {
+  "name": "Boulder (2)",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Boulder (2)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "crate": {
+  "name": "Crate",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Crate",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "stone_sign": {
+  "name": "Stone sign",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone sign",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "stone_tablet": {
+  "name": "Stone tablet",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone tablet",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "pedestal": {
+  "name": "Stone pedestal",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone pedestal",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "town_map": {
+  "name": "Town map board",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Town map board",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "gold_statue": {
+  "name": "Gold statue",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gold statue",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "post_a": {
+  "name": "Carved post",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Carved post",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "post_b": {
+  "name": "Carved post (2)",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Carved post (2)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "hula_stand": {
+  "name": "Festival stand",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Festival stand",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "truck": {
+  "name": "Truck",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Truck",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "beach_umbrella": {
+  "name": "Beach umbrella",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Beach umbrella",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "carved_arch": {
+  "name": "Carved arch",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Carved arch",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "wheelbarrow": {
+  "name": "Wheelbarrow",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Wheelbarrow",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "ice_block": {
+  "name": "Ice block",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Ice block",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "white_rock": {
+  "name": "White rock",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "White rock",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "bird_statue": {
+  "name": "Bird statue",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Bird statue",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "picnic_table": {
+  "name": "Picnic table",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Picnic table",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "palm_small": {
+  "name": "Palm tree (small)",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Palm tree (small)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "palm_teal_small": {
+  "name": "Palm tree (teal, small)",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Palm tree (teal, small)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "sprout": {
+  "name": "Palm sprout",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Palm sprout",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "sprout_teal": {
+  "name": "Palm sprout (teal)",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Palm sprout (teal)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "bush_green": {
+  "name": "Bushes (green)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Bushes (green)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "bush_teal": {
+  "name": "Bushes (teal)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Bushes (teal)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "orb_pole": {
+  "name": "Orb pole",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Orb pole",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "notice_board": {
+  "name": "Notice board",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Notice board",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "small_board": {
+  "name": "Small notice board",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Small notice board",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "info_sign": {
+  "name": "Info sign",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Info sign",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "board_frame": {
+  "name": "Framed board",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Framed board",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "lantern_post": {
+  "name": "Lantern post",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Lantern post",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "lantern_post_2": {
+  "name": "Lantern post (2)",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Lantern post (2)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "wood_sign": {
+  "name": "Wooden sign",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Wooden sign",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "fancy_sign": {
+  "name": "Shop sign",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Shop sign",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "mascot_sign": {
+  "name": "Mascot sign",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Mascot sign",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "monument": {
+  "name": "Monument",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Monument",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "van": {
+  "name": "Camper van",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Camper van",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "tiki_heads": {
+  "name": "Tiki heads",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Tiki heads",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "offering_box": {
+  "name": "Offering box",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Offering box",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "bench": {
+  "name": "Bench",
+  "ox": 32,
+  "oy": 0,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Bench",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "bench_2": {
+  "name": "Bench (facing)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Bench (facing)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "bench_long": {
+  "name": "Long bench",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Long bench",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "table_long": {
+  "name": "Long table",
+  "ox": 32,
+  "oy": 0,
+  "foot": [
+   2,
+   4
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Long table",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "green_tall": {
+  "name": "Green building (tall)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   6
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Green building (tall)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "glass_tower": {
+  "name": "Glass-domed tower",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   3,
+   5
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Glass-domed tower",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "green_tall_2": {
+  "name": "Green building (tall, 2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   6
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Green building (tall, 2)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "orange_shop": {
+  "name": "Malasada shop",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   9,
+   4
+  ],
+  "doors": [
+   6
+  ],
+  "kind": "house",
+  "label": "Malasada shop",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "center": {
+  "name": "Pokemon Center (Alola)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   13,
+   5
+  ],
+  "doors": [
+   6
+  ],
+  "kind": "center",
+  "label": "Pokemon Center (Alola)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "center_rundown": {
+  "name": "Pokemon Center (run-down)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   13,
+   5
+  ],
+  "doors": [
+   6
+  ],
+  "kind": "center",
+  "label": "Pokemon Center (run-down)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "aether_yacht": {
+  "name": "Aether yacht",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Aether yacht",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "aether_entrance": {
+  "name": "Aether building",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   10
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Aether building",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "solar_panel": {
+  "name": "Solar panel",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Solar panel",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "crystal": {
+  "name": "Aether crystal",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Aether crystal",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "aether_lamp": {
+  "name": "Aether lamp",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Aether lamp",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "aether_lamp_2": {
+  "name": "Aether lamp (2)",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Aether lamp (2)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
+ },
+ "aether_lamp_3": {
+  "name": "Aether lamp (3)",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Aether lamp (3)",
+  "credit": "KingTapir (KingTapirAlolaMisc and KingTapirAetherParadise tile sheets)",
+  "theme": "Town",
+  "gen": "Gen 7",
+  "artist": "KingTapir"
  }
 }

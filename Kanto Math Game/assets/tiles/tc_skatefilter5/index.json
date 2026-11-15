@@ -1,0 +1,107 @@
+{
+ "299_pokemon_c3_mt_moon_groun_4": {
+  "name": "Pokemon C3 Mt Moon Ground 4",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon C3 Mt Moon Ground 4",
+  "credit": "skatefilter5 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/skatefilter5/art/Pokemon-C3-Mt-Moon-Ground-3-891202454)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "skatefilter5"
+ },
+ "299_pokemon_c3_mt_moon_groun_6": {
+  "name": "Pokemon C3 Mt Moon Ground 6",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Pokemon C3 Mt Moon Ground 6",
+  "credit": "skatefilter5 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/skatefilter5/art/Pokemon-C3-Mt-Moon-Ground-3-891202454)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "skatefilter5"
+ },
+ "303_farming_e_1": {
+  "name": "Farming E 1",
+  "ox": 192,
+  "oy": 416,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Farming E 1",
+  "credit": "skatefilter5 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/skatefilter5/art/Pokemon-C3-Mt-Moon-Ground-3-891202454)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "skatefilter5"
+ },
+ "305_outside_stuff_7": {
+  "name": "Outside Stuff 7",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Outside Stuff 7",
+  "credit": "skatefilter5 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/skatefilter5/art/Pokemon-C3-Mt-Moon-Ground-3-891202454)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "skatefilter5"
+ },
+ "305_outside_stuff_8": {
+  "name": "Outside Stuff 8",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Outside Stuff 8",
+  "credit": "skatefilter5 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/skatefilter5/art/Pokemon-C3-Mt-Moon-Ground-3-891202454)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "skatefilter5"
+ },
+ "305_outside_stuff_9": {
+  "name": "Outside Stuff 9",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Outside Stuff 9",
+  "credit": "skatefilter5 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/skatefilter5/art/Pokemon-C3-Mt-Moon-Ground-3-891202454)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "skatefilter5"
+ }
+}

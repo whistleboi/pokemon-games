@@ -1,0 +1,2263 @@
+{
+ "73_subterranean_suburbia_0": {
+  "name": "Subterranean Suburbia 0",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Subterranean Suburbia 0",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "73_subterranean_suburbia_1": {
+  "name": "Subterranean Suburbia 1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Subterranean Suburbia 1",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "73_subterranean_suburbia_2": {
+  "name": "Subterranean Suburbia 2",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Subterranean Suburbia 2",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_0": {
+  "name": "Buildings Tiles w/ Snow 0",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 0",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_1": {
+  "name": "Buildings Tiles w/ Snow 1",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 1",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_2": {
+  "name": "Buildings Tiles w/ Snow 2",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 2",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_3": {
+  "name": "Buildings Tiles w/ Snow 3",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 3",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_4": {
+  "name": "Buildings Tiles w/ Snow 4",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 4",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_5": {
+  "name": "Buildings Tiles w/ Snow 5",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 5",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_6": {
+  "name": "Buildings Tiles w/ Snow 6",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 6",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_7": {
+  "name": "Buildings Tiles w/ Snow 7",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 7",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_8": {
+  "name": "Buildings Tiles w/ Snow 8",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 8",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_9": {
+  "name": "Buildings Tiles w/ Snow 9",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 9",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_10": {
+  "name": "Buildings Tiles w/ Snow 10",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 10",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_11": {
+  "name": "Buildings Tiles w/ Snow 11",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 11",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_12": {
+  "name": "Buildings Tiles w/ Snow 12",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 12",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_13": {
+  "name": "Buildings Tiles w/ Snow 13",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 13",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_14": {
+  "name": "Buildings Tiles w/ Snow 14",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 14",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_15": {
+  "name": "Buildings Tiles w/ Snow 15",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 15",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_16": {
+  "name": "Buildings Tiles w/ Snow 16",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 16",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_17": {
+  "name": "Buildings Tiles w/ Snow 17",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 17",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_18": {
+  "name": "Buildings Tiles w/ Snow 18",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 18",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_19": {
+  "name": "Buildings Tiles w/ Snow 19",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 19",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_20": {
+  "name": "Buildings Tiles w/ Snow 20",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 20",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_21": {
+  "name": "Buildings Tiles w/ Snow 21",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 21",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_22": {
+  "name": "Buildings Tiles w/ Snow 22",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 22",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_23": {
+  "name": "Buildings Tiles w/ Snow 23",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 23",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_24": {
+  "name": "Buildings Tiles w/ Snow 24",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   9,
+   5
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 24",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_25": {
+  "name": "Buildings Tiles w/ Snow 25",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   9,
+   5
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 25",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_34": {
+  "name": "Buildings Tiles w/ Snow 34",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 34",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_35": {
+  "name": "Buildings Tiles w/ Snow 35",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 35",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_36": {
+  "name": "Buildings Tiles w/ Snow 36",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 36",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_37": {
+  "name": "Buildings Tiles w/ Snow 37",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 37",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_50": {
+  "name": "Buildings Tiles w/ Snow 50",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 50",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_51": {
+  "name": "Buildings Tiles w/ Snow 51",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 51",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_56": {
+  "name": "Buildings Tiles w/ Snow 56",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 56",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_62": {
+  "name": "Buildings Tiles w/ Snow 62",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 62",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_66": {
+  "name": "Buildings Tiles w/ Snow 66",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 66",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_67": {
+  "name": "Buildings Tiles w/ Snow 67",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 67",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_68": {
+  "name": "Buildings Tiles w/ Snow 68",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 68",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_72": {
+  "name": "Buildings Tiles w/ Snow 72",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 72",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "74_buildings_tiles_w_snow_78": {
+  "name": "Buildings Tiles w/ Snow 78",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Buildings Tiles w/ Snow 78",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_0": {
+  "name": "Snow and Stone 0",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 0",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_1": {
+  "name": "Snow and Stone 1",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 1",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_2": {
+  "name": "Snow and Stone 2",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 2",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_3": {
+  "name": "Snow and Stone 3",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 3",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_4": {
+  "name": "Snow and Stone 4",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 4",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_5": {
+  "name": "Snow and Stone 5",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 5",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_6": {
+  "name": "Snow and Stone 6",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 6",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_8": {
+  "name": "Snow and Stone 8",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 8",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_11": {
+  "name": "Snow and Stone 11",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   7,
+   2
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Snow and Stone 11",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_18": {
+  "name": "Snow and Stone 18",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Snow and Stone 18",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "75_snow_and_stone_26": {
+  "name": "Snow and Stone 26",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Snow and Stone 26",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_0": {
+  "name": "[Free] Rustic Tiles w/ upd 0",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   9,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 0",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_1": {
+  "name": "[Free] Rustic Tiles w/ upd 1",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 1",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_2": {
+  "name": "[Free] Rustic Tiles w/ upd 2",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 2",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_3": {
+  "name": "[Free] Rustic Tiles w/ upd 3",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "[Free] Rustic Tiles w/ upd 3",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_4": {
+  "name": "[Free] Rustic Tiles w/ upd 4",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "[Free] Rustic Tiles w/ upd 4",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_5": {
+  "name": "[Free] Rustic Tiles w/ upd 5",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 5",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_6": {
+  "name": "[Free] Rustic Tiles w/ upd 6",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 6",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_7": {
+  "name": "[Free] Rustic Tiles w/ upd 7",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 7",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_8": {
+  "name": "[Free] Rustic Tiles w/ upd 8",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 8",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_12": {
+  "name": "[Free] Rustic Tiles w/ upd 12",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 12",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_13": {
+  "name": "[Free] Rustic Tiles w/ upd 13",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 13",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_14": {
+  "name": "[Free] Rustic Tiles w/ upd 14",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 14",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_23": {
+  "name": "[Free] Rustic Tiles w/ upd 23",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 23",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_24": {
+  "name": "[Free] Rustic Tiles w/ upd 24",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 24",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_25": {
+  "name": "[Free] Rustic Tiles w/ upd 25",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 25",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_34": {
+  "name": "[Free] Rustic Tiles w/ upd 34",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 34",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_35": {
+  "name": "[Free] Rustic Tiles w/ upd 35",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 35",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_36": {
+  "name": "[Free] Rustic Tiles w/ upd 36",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 36",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_37": {
+  "name": "[Free] Rustic Tiles w/ upd 37",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 37",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_38": {
+  "name": "[Free] Rustic Tiles w/ upd 38",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 38",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_48": {
+  "name": "[Free] Rustic Tiles w/ upd 48",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 48",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_49": {
+  "name": "[Free] Rustic Tiles w/ upd 49",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 49",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_55": {
+  "name": "[Free] Rustic Tiles w/ upd 55",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 55",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_57": {
+  "name": "[Free] Rustic Tiles w/ upd 57",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 57",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_60": {
+  "name": "[Free] Rustic Tiles w/ upd 60",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   10,
+   2
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 60",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_65": {
+  "name": "[Free] Rustic Tiles w/ upd 65",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 65",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_68": {
+  "name": "[Free] Rustic Tiles w/ upd 68",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 68",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_73": {
+  "name": "[Free] Rustic Tiles w/ upd 73",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 73",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_74": {
+  "name": "[Free] Rustic Tiles w/ upd 74",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   10,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 74",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_75": {
+  "name": "[Free] Rustic Tiles w/ upd 75",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 75",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_76": {
+  "name": "[Free] Rustic Tiles w/ upd 76",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 76",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_84": {
+  "name": "[Free] Rustic Tiles w/ upd 84",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 84",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_85": {
+  "name": "[Free] Rustic Tiles w/ upd 85",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 85",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_94": {
+  "name": "[Free] Rustic Tiles w/ upd 94",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 94",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_95": {
+  "name": "[Free] Rustic Tiles w/ upd 95",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 95",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_96": {
+  "name": "[Free] Rustic Tiles w/ upd 96",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 96",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_97": {
+  "name": "[Free] Rustic Tiles w/ upd 97",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 97",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_103": {
+  "name": "[Free] Rustic Tiles w/ upd 103",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 103",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_104": {
+  "name": "[Free] Rustic Tiles w/ upd 104",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 104",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_105": {
+  "name": "[Free] Rustic Tiles w/ upd 105",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 105",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_106": {
+  "name": "[Free] Rustic Tiles w/ upd 106",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 106",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_116": {
+  "name": "[Free] Rustic Tiles w/ upd 116",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 116",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_117": {
+  "name": "[Free] Rustic Tiles w/ upd 117",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 117",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_118": {
+  "name": "[Free] Rustic Tiles w/ upd 118",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 118",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_126": {
+  "name": "[Free] Rustic Tiles w/ upd 126",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 126",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_127": {
+  "name": "[Free] Rustic Tiles w/ upd 127",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 127",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_128": {
+  "name": "[Free] Rustic Tiles w/ upd 128",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 128",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_129": {
+  "name": "[Free] Rustic Tiles w/ upd 129",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "[Free] Rustic Tiles w/ upd 129",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_130": {
+  "name": "[Free] Rustic Tiles w/ upd 130",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 130",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_131": {
+  "name": "[Free] Rustic Tiles w/ upd 131",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 131",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_136": {
+  "name": "[Free] Rustic Tiles w/ upd 136",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 136",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_137": {
+  "name": "[Free] Rustic Tiles w/ upd 137",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 137",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "76_free_rustic_tiles_w_updat_138": {
+  "name": "[Free] Rustic Tiles w/ upd 138",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "[Free] Rustic Tiles w/ upd 138",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "80_frlg_style_house_1": {
+  "name": "FRLG style house 1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "FRLG style house 1",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "82_victorian_variations_2": {
+  "name": "Victorian Variations 2",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   12,
+   6
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Victorian Variations 2",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "82_victorian_variations_3": {
+  "name": "Victorian Variations 3",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   8,
+   6
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Victorian Variations 3",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "82_victorian_variations_5": {
+  "name": "Victorian Variations 5",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   11,
+   7
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Victorian Variations 5",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "82_victorian_variations_6": {
+  "name": "Victorian Variations 6",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   11,
+   7
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Victorian Variations 6",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "82_victorian_variations_7": {
+  "name": "Victorian Variations 7",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   9,
+   7
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Victorian Variations 7",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "82_victorian_variations_8": {
+  "name": "Victorian Variations 8",
+  "ox": 32,
+  "oy": 224,
+  "foot": [
+   8,
+   7
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Victorian Variations 8",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "87_terraces_3": {
+  "name": "Terraces 3",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Terraces 3",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_3": {
+  "name": "City Tiles 3",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "City Tiles 3",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_11": {
+  "name": "City Tiles 11",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 11",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_22": {
+  "name": "City Tiles 22",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 22",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_24": {
+  "name": "City Tiles 24",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 24",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_30": {
+  "name": "City Tiles 30",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 30",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_31": {
+  "name": "City Tiles 31",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 31",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_34": {
+  "name": "City Tiles 34",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 34",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_35": {
+  "name": "City Tiles 35",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 35",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_37": {
+  "name": "City Tiles 37",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 37",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_38": {
+  "name": "City Tiles 38",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 38",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_43": {
+  "name": "City Tiles 43",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   9,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 43",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_46": {
+  "name": "City Tiles 46",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   9,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 46",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_48": {
+  "name": "City Tiles 48",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 48",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ },
+ "81_city_tiles_49": {
+  "name": "City Tiles 49",
+  "ox": 96,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "City Tiles 49",
+  "credit": "Magiscarf (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/magiscarf/art/Subterranean-Suburbia-811228116)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Magiscarf"
+ }
+}

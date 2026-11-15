@@ -1,0 +1,303 @@
+{
+ "30_general_pink_flower_build_3": {
+  "name": "General Pink Flower Buildi 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "General Pink Flower Buildi 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "35_pointy_buildings_2": {
+  "name": "Pointy Buildings 2",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Pointy Buildings 2",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "39_pokmon_center_mart_buildi_6": {
+  "name": "Pokmon Center & Mart Build 6",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Pokmon Center & Mart Build 6",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Centers & Marts",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "43_viridian_mansion_3": {
+  "name": "Viridian Mansion 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Viridian Mansion 3",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "50_schoolhouse_exterior_0": {
+  "name": "Schoolhouse Exterior 0",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Schoolhouse Exterior 0",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "63_1950s_house_0": {
+  "name": "1950s House 0",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "1950s House 0",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Ekat99"
+ },
+ "63_1950s_house_6": {
+  "name": "1950s House 6",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "1950s House 6",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "artist": "Ekat99"
+ },
+ "2_thistle_town_6": {
+  "name": "Thistle Town 6",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Thistle Town 6",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "3_pokemon_halcyon_venice_out_7": {
+  "name": "Pokemon Halcyon - Venice O 7",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Pokemon Halcyon - Venice O 7",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "13_brick_city_4": {
+  "name": "Brick City 4",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Brick City 4",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "20_nuphar_city_8": {
+  "name": "Nuphar City 8",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Nuphar City 8",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Shops & towers",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "20_nuphar_city_10": {
+  "name": "Nuphar City 10",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Nuphar City 10",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "group": "Shops & towers",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "20_nuphar_city_11": {
+  "name": "Nuphar City 11",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Nuphar City 11",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "20_nuphar_city_12": {
+  "name": "Nuphar City 12",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Nuphar City 12",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "47_odisea_outdoors_5": {
+  "name": "Odisea Outdoors 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Odisea Outdoors 5",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "47_odisea_outdoors_6": {
+  "name": "Odisea Outdoors 6",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Odisea Outdoors 6",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "47_odisea_outdoors_8": {
+  "name": "Odisea Outdoors 8",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Odisea Outdoors 8",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ },
+ "55_silph_city_7": {
+  "name": "Silph City 7",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Silph City 7",
+  "credit": "Ekat99 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ekat99/art/Pokemon-Halcyon-Dojo-926209792)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Ekat99"
+ }
+}

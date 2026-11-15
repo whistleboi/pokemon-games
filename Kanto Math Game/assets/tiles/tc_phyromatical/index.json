@@ -1,0 +1,574 @@
+{
+ "287_dot_day6_bridgeton_tiles_1": {
+  "name": "DoT Day6 - Bridgeton Tiles 1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day6 - Bridgeton Tiles 1",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_2": {
+  "name": "DoT Day6 - Bridgeton Tiles 2",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day6 - Bridgeton Tiles 2",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_3": {
+  "name": "DoT Day6 - Bridgeton Tiles 3",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   7,
+   2
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "DoT Day6 - Bridgeton Tiles 3",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_4": {
+  "name": "DoT Day6 - Bridgeton Tiles 4",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day6 - Bridgeton Tiles 4",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_6": {
+  "name": "DoT Day6 - Bridgeton Tiles 6",
+  "ox": 64,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 6",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_9": {
+  "name": "DoT Day6 - Bridgeton Tiles 9",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 9",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_10": {
+  "name": "DoT Day6 - Bridgeton Tiles 10",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 10",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_11": {
+  "name": "DoT Day6 - Bridgeton Tiles 11",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 11",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_12": {
+  "name": "DoT Day6 - Bridgeton Tiles 12",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 12",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_13": {
+  "name": "DoT Day6 - Bridgeton Tiles 13",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 13",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_14": {
+  "name": "DoT Day6 - Bridgeton Tiles 14",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 14",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_15": {
+  "name": "DoT Day6 - Bridgeton Tiles 15",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   10,
+   3
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "DoT Day6 - Bridgeton Tiles 15",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "287_dot_day6_bridgeton_tiles_16": {
+  "name": "DoT Day6 - Bridgeton Tiles 16",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day6 - Bridgeton Tiles 16",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "288_dot_day7_random_old_thin_1": {
+  "name": "DoT Day7 - Random old thin 1",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day7 - Random old thin 1",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "288_dot_day7_random_old_thin_3": {
+  "name": "DoT Day7 - Random old thin 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "DoT Day7 - Random old thin 3",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "288_dot_day7_random_old_thin_4": {
+  "name": "DoT Day7 - Random old thin 4",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day7 - Random old thin 4",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "288_dot_day7_random_old_thin_5": {
+  "name": "DoT Day7 - Random old thin 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day7 - Random old thin 5",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "288_dot_day7_random_old_thin_8": {
+  "name": "DoT Day7 - Random old thin 8",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day7 - Random old thin 8",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "288_dot_day7_random_old_thin_9": {
+  "name": "DoT Day7 - Random old thin 9",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day7 - Random old thin 9",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_1": {
+  "name": "DoT Day9 - BW2 Houses edit 1",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 1",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_2": {
+  "name": "DoT Day9 - BW2 Houses edit 2",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 2",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_3": {
+  "name": "DoT Day9 - BW2 Houses edit 3",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 3",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_4": {
+  "name": "DoT Day9 - BW2 Houses edit 4",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 4",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_5": {
+  "name": "DoT Day9 - BW2 Houses edit 5",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   9,
+   6
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 5",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_6": {
+  "name": "DoT Day9 - BW2 Houses edit 6",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   8,
+   6
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 6",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_7": {
+  "name": "DoT Day9 - BW2 Houses edit 7",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 7",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "289_dot_day9_bw2_houses_edit_8": {
+  "name": "DoT Day9 - BW2 Houses edit 8",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "DoT Day9 - BW2 Houses edit 8",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 5",
+  "artist": "Phyromatical"
+ },
+ "277_tons_of_tileset_2_10_fea_1": {
+  "name": "Tons of Tileset 2/10 - Fea 1",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Tons of Tileset 2/10 - Fea 1",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "277_tons_of_tileset_2_10_fea_2": {
+  "name": "Tons of Tileset 2/10 - Fea 2",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Tons of Tileset 2/10 - Fea 2",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "277_tons_of_tileset_2_10_fea_3": {
+  "name": "Tons of Tileset 2/10 - Fea 3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Tons of Tileset 2/10 - Fea 3",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "277_tons_of_tileset_2_10_fea_4": {
+  "name": "Tons of Tileset 2/10 - Fea 4",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Tons of Tileset 2/10 - Fea 4",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ },
+ "277_tons_of_tileset_2_10_fea_5": {
+  "name": "Tons of Tileset 2/10 - Fea 5",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Tons of Tileset 2/10 - Fea 5",
+  "credit": "Phyromatical (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/phyromatical/art/DoT-Day6-Bridgeton-Tileset-649657763)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Phyromatical"
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "91_gen_3_coastal_city_tilese_2": {
+  "name": "Gen 3 Coastal City Tileset 2",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gen 3 Coastal City Tileset 2",
+  "credit": "Foxowl25 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/foxowl23/art/Gen-3-Coastal-City-Tileset-877455638)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Foxowl25"
+ },
+ "91_gen_3_coastal_city_tilese_19": {
+  "name": "Gen 3 Coastal City Tileset 19",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gen 3 Coastal City Tileset 19",
+  "credit": "Foxowl25 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/foxowl23/art/Gen-3-Coastal-City-Tileset-877455638)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Foxowl25"
+ }
+}

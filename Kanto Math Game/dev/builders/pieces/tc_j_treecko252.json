@@ -1,0 +1,80 @@
+{
+ "set": "tc_j_treecko252",
+ "artist": "J-Treecko252",
+ "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Tileset Collection/_processed",
+ "sheets": {
+  "125_train_station_tiles_01": "j_treecko252__125_train_station_tiles_01.png",
+  "127_dark_city_tiles_01": "j_treecko252__127_dark_city_tiles_01.png"
+ },
+ "pieces": {
+  "125_train_station_tiles_01_0": {
+   "sheet": "125_train_station_tiles_01",
+   "blocks": [
+    [
+     0,
+     0,
+     5,
+     6
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    3
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Train Station Tiles 01 0",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3",
+   "group": "Shops & towers"
+  }
+ },
+ "_sources": [
+  {
+   "title": "Apartment Building Tiles 01 by J-Treecko252 on DeviantArt",
+   "url": "https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Train Station Tiles 01 by J-Treecko252 on DeviantArt",
+   "url": "https://www.deviantart.com/j-treecko252/art/Train-Station-Tiles-01-903544863",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Skyscraper Tiles 01 by J-Treecko252 on DeviantArt",
+   "url": "https://www.deviantart.com/j-treecko252/art/Skyscraper-Tiles-01-903545141",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Gym (Exterior) Tiles Ver.01 by J-Treecko252 on DeviantArt",
+   "url": "https://www.deviantart.com/j-treecko252/art/Gym-Exterior-Tiles-Ver-01-884928557",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Gym (Exterior) Tiles Ver.02 by J-Treecko252 on DeviantArt",
+   "url": "https://www.deviantart.com/j-treecko252/art/Gym-Exterior-Tiles-Ver-02-884928621",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Gym (Exterior) Tiles Ver.03 by J-Treecko252 on DeviantArt",
+   "url": "https://www.deviantart.com/j-treecko252/art/Gym-Exterior-Tiles-Ver-03-884928637",
+   "credits": "\u2606"
+  },
+  {
+   "title": "Dark City Tiles 01 by J-Treecko252 on DeviantArt",
+   "url": "https://www.deviantart.com/j-treecko252/art/Dark-City-Tiles-01-898234017",
+   "credits": "\u2606"
+  }
+ ]
+}

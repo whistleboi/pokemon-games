@@ -1,0 +1,308 @@
+{
+ "374_mixed_style_cps_1": {
+  "name": "Mixed style CPs 1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Mixed style CPs 1",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "374_mixed_style_cps_5": {
+  "name": "Mixed style CPs 5",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Mixed style CPs 5",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "374_mixed_style_cps_7": {
+  "name": "Mixed style CPs 7",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Mixed style CPs 7",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "374_mixed_style_cps_11": {
+  "name": "Mixed style CPs 11",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Mixed style CPs 11",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "378_pkmn_league_and_statues_0": {
+  "name": "Pkmn league and statues 0",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   9,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Pkmn league and statues 0",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Centers & Marts",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "378_pkmn_league_and_statues_11": {
+  "name": "Pkmn league and statues 11",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pkmn league and statues 11",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Centers & Marts",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_3": {
+  "name": "New pallete :3 3",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 3",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_16": {
+  "name": "New pallete :3 16",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 16",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_17": {
+  "name": "New pallete :3 17",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 17",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_21": {
+  "name": "New pallete :3 21",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 21",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_22": {
+  "name": "New pallete :3 22",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 22",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_24": {
+  "name": "New pallete :3 24",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   9,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "New pallete :3 24",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_25": {
+  "name": "New pallete :3 25",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 25",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_28": {
+  "name": "New pallete :3 28",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 28",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_29": {
+  "name": "New pallete :3 29",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 29",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_32": {
+  "name": "New pallete :3 32",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "New pallete :3 32",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ },
+ "380_new_pallete_3_37": {
+  "name": "New pallete :3 37",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "New pallete :3 37",
+  "credit": "Hek-el-grande (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/hek-el-grande/art/Mixed-style-CP-s-292625820)",
+  "group": "Houses",
+  "theme": "Town",
+  "artist": "Hek-el-grande"
+ }
+}

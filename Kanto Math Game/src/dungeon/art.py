@@ -582,6 +582,9 @@ def _ground(surf, art, x, y, tile, rng, as_c=None):
     if as_c is None and _THEME == "ruins" and c in "gjr":  # ruins stand on the ground around them (sand, paving or grass)
         near = [n for n in (cell(art, x + dx, y + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (1, -1), (-1, 1), (1, 1))) if n in ".=e"]
         return _ground(surf, art, x, y, tile, rng, as_c=max(set(near), key=near.count) if near else "=")
+    if as_c is None and c == "`":  # under a ready-made piece: the ground round it carries on under it (sand under a beach umbrella)
+        near = [n for n in (cell(art, x + dx, y + dy) for dx in (-2, -1, 0, 1, 2) for dy in (-2, -1, 0, 1, 2)) if n and n in '.=s"de,ap8%9']
+        return _ground(surf, art, x, y, tile, rng, as_c=max(sorted(set(near)), key=near.count) if near else ".")
     if as_c is None and c in LEDGES:  # (drawn on the ground you hop from)
         way = LEDGES[c]
         behind = cell(art, x - way[0], y - way[1])

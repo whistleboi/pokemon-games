@@ -1,0 +1,2336 @@
+{
+ "c1_b01c_0": {
+  "name": "Jubilife Building 01c",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 01c",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_b01c"
+ },
+ "c1_s01_0": {
+  "name": "Jubilife Building 01",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   9,
+   6
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_s01"
+ },
+ "c1_s02_0": {
+  "name": "Jubilife Building 02",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   10,
+   7
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_s02"
+ },
+ "c1_s03_0": {
+  "name": "Jubilife Building 03",
+  "ox": 32,
+  "oy": 320,
+  "foot": [
+   9,
+   10
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_s03"
+ },
+ "c1_school_0": {
+  "name": "Jubilife School",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   10,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Jubilife School",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_school"
+ },
+ "c1_b03_0": {
+  "name": "Jubilife Building 03 (2)",
+  "ox": 32,
+  "oy": 224,
+  "foot": [
+   5,
+   7
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 03 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_b03"
+ },
+ "c1_b02a_0": {
+  "name": "Jubilife Building 02a",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 02a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_b02a"
+ },
+ "t1_h01_0": {
+  "name": "Twinleaf House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Twinleaf House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t1_h01"
+ },
+ "t1_s01_0": {
+  "name": "Twinleaf Building 01",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Twinleaf Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t1_s01"
+ },
+ "t1_s02_0": {
+  "name": "Twinleaf Building 02",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Twinleaf Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t1_s02"
+ },
+ "t2_s01_0": {
+  "name": "Sandgem Building 01",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   9,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Sandgem Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t2_s01"
+ },
+ "c1_b02c_0": {
+  "name": "Jubilife Building 02c",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 02c",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_b02c"
+ },
+ "t2_s02_0": {
+  "name": "Sandgem Building 02",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sandgem Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t2_s02"
+ },
+ "r221s01_0": {
+  "name": "Route Building 01",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   7,
+   5
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Route Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r221s01"
+ },
+ "funsui_0": {
+  "name": "Fountain",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Fountain",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "funsui"
+ },
+ "pc_0": {
+  "name": "Pokemon Center",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "center",
+  "label": "Pokemon Center",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "pc"
+ },
+ "fs_0": {
+  "name": "Poke Mart",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "mart",
+  "label": "Poke Mart",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "fs"
+ },
+ "t2_h01_0": {
+  "name": "Sandgem House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Sandgem House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t2_h01"
+ },
+ "c1_b01a_0": {
+  "name": "Jubilife Building 01a",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Jubilife Building 01a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c1_b01a"
+ },
+ "c9_h01_10": {
+  "name": "Snowpoint House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Snowpoint House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c9_h01"
+ },
+ "c9_s01_10": {
+  "name": "Snowpoint Building 01",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   10,
+   5
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Snowpoint Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c9_s01"
+ },
+ "c9_o01_10": {
+  "name": "Snowpoint Object 01",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Snowpoint Object 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c9_o01"
+ },
+ "c9_o02_10": {
+  "name": "Snowpoint Object 02",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Snowpoint Object 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c9_o02"
+ },
+ "c9_o03_10": {
+  "name": "Snowpoint Object 03",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Snowpoint Object 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c9_o03"
+ },
+ "c9_o02b_10": {
+  "name": "Snowpoint Object 02b",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Snowpoint Object 02b",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c9_o02b"
+ },
+ "pc_01_10": {
+  "name": "Pokemon Center (2)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "center",
+  "label": "Pokemon Center (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "pc_01"
+ },
+ "c09_s02_10": {
+  "name": "Building 02",
+  "ox": 64,
+  "oy": 64,
+  "foot": [
+   7,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c09_s02"
+ },
+ "gym00_10": {
+  "name": "Gym",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Gym",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "gym00"
+ },
+ "c5_o01_11": {
+  "name": "Hearthome Object 01",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Hearthome Object 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c5_o01"
+ },
+ "r212s02_11": {
+  "name": "Route Building 02",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r212s02"
+ },
+ "c2_h01a_11": {
+  "name": "Canalave House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Canalave House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c2_h01a"
+ },
+ "c2_s02_11": {
+  "name": "Canalave Building 02",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Canalave Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c2_s02"
+ },
+ "c2_s03a_11": {
+  "name": "Canalave Building 03a",
+  "ox": 64,
+  "oy": 160,
+  "foot": [
+   6,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Canalave Building 03a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c2_s03a"
+ },
+ "c2_s03b_11": {
+  "name": "Canalave Building 03b",
+  "ox": 64,
+  "oy": 160,
+  "foot": [
+   6,
+   5
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Canalave Building 03b",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c2_s03b"
+ },
+ "c2_o02_11": {
+  "name": "Canalave Object 02",
+  "ox": 32,
+  "oy": 224,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Canalave Object 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c2_o02"
+ },
+ "gate_b_11": {
+  "name": "Gatehouse",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Gatehouse",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "gate_b"
+ },
+ "t6_h01_13": {
+  "name": "Survival Area House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Survival Area House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t6_h01"
+ },
+ "t6_s01_13": {
+  "name": "Survival Area Building 01",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Survival Area Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t6_s01"
+ },
+ "d16_o02_13": {
+  "name": "Place Object 02",
+  "ox": 192,
+  "oy": 992,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Place Object 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d16_o02"
+ },
+ "c6_h01_14": {
+  "name": "Pastoria House",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pastoria House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c6_h01"
+ },
+ "c8_h01_14": {
+  "name": "Sunyshore House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sunyshore House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c8_h01"
+ },
+ "l2_s01_14": {
+  "name": "Pokemon League Building 01",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pokemon League Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "l2_s01"
+ },
+ "l2_s02a_14": {
+  "name": "Pokemon League Building 02a",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Pokemon League Building 02a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "l2_s02a"
+ },
+ "gate_a_14": {
+  "name": "Gatehouse (2)",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   5,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Gatehouse (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "gate_a"
+ },
+ "r213s01_14": {
+  "name": "Route Building 01 (2)",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Route Building 01 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r213s01"
+ },
+ "r213s02_14": {
+  "name": "Route Building 02 (2)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Route Building 02 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r213s02"
+ },
+ "c06_s02_15": {
+  "name": "Building 02 (2)",
+  "ox": 64,
+  "oy": 64,
+  "foot": [
+   7,
+   2
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Building 02 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c06_s02"
+ },
+ "t7_s01_15": {
+  "name": "Resort Area Building 01",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   9,
+   5
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Resort Area Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t7_s01"
+ },
+ "t7_s02_15": {
+  "name": "Resort Area Building 02",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Resort Area Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t7_s02"
+ },
+ "c11_o01_15": {
+  "name": "Fight Area Object 01",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fight Area Object 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c11_o01"
+ },
+ "t7_s03_15": {
+  "name": "Resort Area Building 03",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Resort Area Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t7_s03"
+ },
+ "d32_s06_15": {
+  "name": "Place Building 06",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Place Building 06",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d32_s06"
+ },
+ "flower_jpn02_16": {
+  "name": "Flowers",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Flowers",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "flower_jpn02"
+ },
+ "pc01_17": {
+  "name": "Pokemon Center (3)",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Pokemon Center (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "pc01"
+ },
+ "flower_pc01_17": {
+  "name": "Pokemon Center (4)",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Pokemon Center (4)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "flower_pc01"
+ },
+ "t_map01_17": {
+  "name": "Town map",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Town map",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t_map01"
+ },
+ "fs02_o01_18": {
+  "name": "Poke Mart (2)",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Poke Mart (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "fs02_o01"
+ },
+ "r_flower01_18": {
+  "name": "Route Flowers",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Flowers",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r_flower01"
+ },
+ "r_flower02_18": {
+  "name": "Route Flowers (2)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Flowers (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r_flower02"
+ },
+ "r_flower03_18": {
+  "name": "Route Flowers (3)",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Flowers (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r_flower03"
+ },
+ "r_flower04_18": {
+  "name": "Route Flowers (4)",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Flowers (4)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r_flower04"
+ },
+ "gym8_spk_s_26": {
+  "name": "Gym (2)",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Gym (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "gym8_spk_s"
+ },
+ "stone01_27": {
+  "name": "Stone",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "stone01"
+ },
+ "pc03_28": {
+  "name": "Pokemon Center (5)",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Pokemon Center (5)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "pc03"
+ },
+ "gym05_o4_38": {
+  "name": "Gym (3)",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gym (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "gym05_o4"
+ },
+ "tomb01_38": {
+  "name": "Gravestone",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gravestone",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "tomb01"
+ },
+ "tomb02_38": {
+  "name": "Gravestone (2)",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gravestone (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "tomb02"
+ },
+ "r206s01_3": {
+  "name": "Route Building 01 (3)",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   11,
+   5
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Route Building 01 (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r206s01"
+ },
+ "c3_s03_3": {
+  "name": "Oreburgh Building 03",
+  "ox": 32,
+  "oy": 512,
+  "foot": [
+   8,
+   16
+  ],
+  "doors": [
+   7
+  ],
+  "kind": "house",
+  "label": "Oreburgh Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_s03"
+ },
+ "c3_h01a_3": {
+  "name": "Oreburgh House",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Oreburgh House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_h01a"
+ },
+ "c3_h01b_3": {
+  "name": "Oreburgh House (2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Oreburgh House (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_h01b"
+ },
+ "c3_b01a_3": {
+  "name": "Oreburgh Building 01a",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Oreburgh Building 01a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_b01a"
+ },
+ "c3_o01a_3": {
+  "name": "Oreburgh Object 01a",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Oreburgh Object 01a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_o01a"
+ },
+ "c3_o01b_3": {
+  "name": "Oreburgh Object 01b",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Oreburgh Object 01b",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_o01b"
+ },
+ "c3_o02_3": {
+  "name": "Oreburgh Object 02",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   6,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Oreburgh Object 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_o02"
+ },
+ "c3_s01_3": {
+  "name": "Oreburgh Building 01",
+  "ox": 288,
+  "oy": 288,
+  "foot": [
+   5,
+   7
+  ],
+  "doors": [
+   0
+  ],
+  "kind": "house",
+  "label": "Oreburgh Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_s01"
+ },
+ "c3_s02_3": {
+  "name": "Oreburgh Building 02",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Oreburgh Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c3_s02"
+ },
+ "d2_s01_4": {
+  "name": "Place Building 01",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   1,
+   4
+  ],
+  "doors": [
+   0
+  ],
+  "kind": "house",
+  "label": "Place Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d2_s01"
+ },
+ "d4_s01_4": {
+  "name": "Place Building 01 (2)",
+  "ox": 32,
+  "oy": 256,
+  "foot": [
+   15,
+   8
+  ],
+  "doors": [
+   7
+  ],
+  "kind": "house",
+  "label": "Place Building 01 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d4_s01"
+ },
+ "d2_s02_4": {
+  "name": "Place Building 02",
+  "ox": 32,
+  "oy": 224,
+  "foot": [
+   7,
+   5
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Place Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d2_s02"
+ },
+ "t3_s01_4": {
+  "name": "Floaroma Building 01",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Floaroma Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t3_s01"
+ },
+ "t3_h01_4": {
+  "name": "Floaroma House",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Floaroma House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t3_h01"
+ },
+ "d2_s01a_4": {
+  "name": "Place Building 01a",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   1,
+   4
+  ],
+  "doors": [
+   0
+  ],
+  "kind": "house",
+  "label": "Place Building 01a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d2_s01a"
+ },
+ "d2_s01b_4": {
+  "name": "Place Building 01b",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   1,
+   4
+  ],
+  "doors": [
+   0
+  ],
+  "kind": "house",
+  "label": "Place Building 01b",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d2_s01b"
+ },
+ "c4_h01a_4": {
+  "name": "Eterna House",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Eterna House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c4_h01a"
+ },
+ "c4_o01_4": {
+  "name": "Eterna Object 01",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Eterna Object 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c4_o01"
+ },
+ "c4_s01_4": {
+  "name": "Eterna Building 01",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Eterna Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c4_s01"
+ },
+ "c4_s03_4": {
+  "name": "Eterna Building 03",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Eterna Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c4_s03"
+ },
+ "c4_s04_4": {
+  "name": "Eterna Building 04",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   7,
+   6
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Eterna Building 04",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c4_s04"
+ },
+ "d3_s01_50": {
+  "name": "Place Building 01 (3)",
+  "ox": 160,
+  "oy": 96,
+  "foot": [
+   3,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Place Building 01 (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d3_s01"
+ },
+ "d01_o1_51": {
+  "name": "Place Object 1",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   20,
+   6
+  ],
+  "doors": [
+   10
+  ],
+  "kind": "house",
+  "label": "Place Object 1",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d01_o1"
+ },
+ "d20_o03_52": {
+  "name": "Place Object 03",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Place Object 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d20_o03"
+ },
+ "c06_s01_59": {
+  "name": "Building 01",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   5,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c06_s01"
+ },
+ "d6_o01_59": {
+  "name": "Place Object 01",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Place Object 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d6_o01"
+ },
+ "d6_o02_59": {
+  "name": "Place Object 02 (2)",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Place Object 02 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d6_o02"
+ },
+ "c5_h01_5": {
+  "name": "Hearthome House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Hearthome House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c5_h01"
+ },
+ "c5_s01_5": {
+  "name": "Hearthome Building 01",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   4,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Hearthome Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c5_s01"
+ },
+ "c5_b01_5": {
+  "name": "Hearthome Building 01 (2)",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Hearthome Building 01 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c5_b01"
+ },
+ "c5_s02_5": {
+  "name": "Hearthome Building 02",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Hearthome Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c5_s02"
+ },
+ "c5_o01b_5": {
+  "name": "Hearthome Object 01b",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Hearthome Object 01b",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c5_o01b"
+ },
+ "c5_s03_5": {
+  "name": "Hearthome Building 03",
+  "ox": 64,
+  "oy": 192,
+  "foot": [
+   9,
+   5
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Hearthome Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c5_s03"
+ },
+ "d20_o01_61": {
+  "name": "Place Object 01 (2)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Place Object 01 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d20_o01"
+ },
+ "d20_o02_61": {
+  "name": "Place Object 02 (3)",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Place Object 02 (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d20_o02"
+ },
+ "d04_s01_63": {
+  "name": "Place Building 01 (4)",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Place Building 01 (4)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d04_s01"
+ },
+ "d26_o01_64": {
+  "name": "Place Object 01 (3)",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Place Object 01 (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d26_o01"
+ },
+ "d26_o02_64": {
+  "name": "Place Object 02 (4)",
+  "ox": 32,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Place Object 02 (4)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d26_o02"
+ },
+ "d26_o03_64": {
+  "name": "Place Object 03 (2)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Place Object 03 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d26_o03"
+ },
+ "d24_o01_68": {
+  "name": "Place Object 01 (4)",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   3,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Place Object 01 (4)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d24_o01"
+ },
+ "t4_h01_6": {
+  "name": "Solaceon House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Solaceon House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t4_h01"
+ },
+ "t4_s01_6": {
+  "name": "Solaceon Building 01",
+  "ox": 0,
+  "oy": 416,
+  "foot": [
+   4,
+   12
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Solaceon Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t4_s01"
+ },
+ "t5_s01_6": {
+  "name": "Celestic Building 01",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   9,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Celestic Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t5_s01"
+ },
+ "t5_s02_6": {
+  "name": "Celestic Building 02",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Celestic Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t5_s02"
+ },
+ "r210h02_6": {
+  "name": "Route House",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Route House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r210h02"
+ },
+ "r209s01_6": {
+  "name": "Route Building 01 (4)",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   3,
+   5
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Route Building 01 (4)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r209s01"
+ },
+ "r209s02_6": {
+  "name": "Route Building 02 (3)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Building 02 (3)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r209s02"
+ },
+ "t5_o01_6": {
+  "name": "Celestic Object 01",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Celestic Object 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t5_o01"
+ },
+ "t5_o01b_6": {
+  "name": "Celestic Object 01b",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Celestic Object 01b",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "t5_o01b"
+ },
+ "c7_h01_7": {
+  "name": "Veilstone House",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Veilstone House",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_h01"
+ },
+ "c7_s01_7": {
+  "name": "Veilstone Building 01",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Veilstone Building 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_s01"
+ },
+ "c7_s02a_7": {
+  "name": "Veilstone Building 02a",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Veilstone Building 02a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_s02a"
+ },
+ "c7_s02b_7": {
+  "name": "Veilstone Building 02b",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Veilstone Building 02b",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_s02b"
+ },
+ "c7_o01a_7": {
+  "name": "Veilstone Object 01a",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Veilstone Object 01a",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_o01a"
+ },
+ "c7_s03_7": {
+  "name": "Veilstone Building 03",
+  "ox": 96,
+  "oy": 256,
+  "foot": [
+   10,
+   8
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Veilstone Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_s03"
+ },
+ "c7_o02_7": {
+  "name": "Veilstone Object 02",
+  "ox": 32,
+  "oy": 288,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Veilstone Object 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_o02"
+ },
+ "c7_s04_7": {
+  "name": "Veilstone Building 04",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   5,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Veilstone Building 04",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c7_s04"
+ },
+ "d23_yane_8": {
+  "name": "Place yane",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   33,
+   2
+  ],
+  "doors": [
+   16
+  ],
+  "kind": "house",
+  "label": "Place yane",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "d23_yane"
+ },
+ "r212s01_8": {
+  "name": "Route Building 01 (5)",
+  "ox": 160,
+  "oy": 192,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Building 01 (5)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r212s01"
+ },
+ "r212s03_8": {
+  "name": "Route Building 03",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r212s03"
+ },
+ "c8_s02_9": {
+  "name": "Sunyshore Building 02",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sunyshore Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c8_s02"
+ },
+ "c8_s03_9": {
+  "name": "Sunyshore Building 03",
+  "ox": 32,
+  "oy": 224,
+  "foot": [
+   6,
+   6
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sunyshore Building 03",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c8_s03"
+ },
+ "c8_o02_9": {
+  "name": "Sunyshore Object 02",
+  "ox": 64,
+  "oy": 288,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Sunyshore Object 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c8_o02"
+ },
+ "c10_s01_9": {
+  "name": "Pokemon League Building 01 (2)",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   12,
+   7
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Pokemon League Building 01 (2)",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c10_s01"
+ },
+ "c10_s02_9": {
+  "name": "Pokemon League Building 02",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Pokemon League Building 02",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "c10_s02"
+ },
+ "r224o01_9": {
+  "name": "Route Object 01",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Route Object 01",
+  "credit": "Diamond / Pearl / Platinum (Game Freak / Nintendo / The Pokemon Company): read from the game file",
+  "gen": "Gen 4",
+  "artist": "Diamond / Pearl / Platinum",
+  "model": "r224o01"
+ }
+}

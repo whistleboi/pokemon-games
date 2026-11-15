@@ -1,0 +1,807 @@
+{
+ "244_public_tileset_dump_3_4__0": {
+  "name": "Public Tileset Dump 3/4 -  0",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  0",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__1": {
+  "name": "Public Tileset Dump 3/4 -  1",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  1",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__2": {
+  "name": "Public Tileset Dump 3/4 -  2",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  2",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__3": {
+  "name": "Public Tileset Dump 3/4 -  3",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  3",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__10": {
+  "name": "Public Tileset Dump 3/4 -  10",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   9,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Public Tileset Dump 3/4 -  10",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__12": {
+  "name": "Public Tileset Dump 3/4 -  12",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Public Tileset Dump 3/4 -  12",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__14": {
+  "name": "Public Tileset Dump 3/4 -  14",
+  "ox": 0,
+  "oy": 224,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Public Tileset Dump 3/4 -  14",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__15": {
+  "name": "Public Tileset Dump 3/4 -  15",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  15",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__16": {
+  "name": "Public Tileset Dump 3/4 -  16",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  16",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__17": {
+  "name": "Public Tileset Dump 3/4 -  17",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Public Tileset Dump 3/4 -  17",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Trees & plants",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__18": {
+  "name": "Public Tileset Dump 3/4 -  18",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Public Tileset Dump 3/4 -  18",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Trees & plants",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__22": {
+  "name": "Public Tileset Dump 3/4 -  22",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  22",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__23": {
+  "name": "Public Tileset Dump 3/4 -  23",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Public Tileset Dump 3/4 -  23",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__24": {
+  "name": "Public Tileset Dump 3/4 -  24",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  24",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__26": {
+  "name": "Public Tileset Dump 3/4 -  26",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  26",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__27": {
+  "name": "Public Tileset Dump 3/4 -  27",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Public Tileset Dump 3/4 -  27",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "244_public_tileset_dump_3_4__28": {
+  "name": "Public Tileset Dump 3/4 -  28",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   3,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Public Tileset Dump 3/4 -  28",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "248_beach_and_sea_tiles_4": {
+  "name": "Beach and Sea Tiles 4",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Beach and Sea Tiles 4",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "248_beach_and_sea_tiles_10": {
+  "name": "Beach and Sea Tiles 10",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Beach and Sea Tiles 10",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "248_beach_and_sea_tiles_11": {
+  "name": "Beach and Sea Tiles 11",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Beach and Sea Tiles 11",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Tropical",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_0": {
+  "name": "Traditional Japanese Build 0",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 0",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_1": {
+  "name": "Traditional Japanese Build 1",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 1",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_2": {
+  "name": "Traditional Japanese Build 2",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 2",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_4": {
+  "name": "Traditional Japanese Build 4",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 4",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_5": {
+  "name": "Traditional Japanese Build 5",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 5",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_6": {
+  "name": "Traditional Japanese Build 6",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 6",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_7": {
+  "name": "Traditional Japanese Build 7",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 7",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_8": {
+  "name": "Traditional Japanese Build 8",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 8",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_9": {
+  "name": "Traditional Japanese Build 9",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 9",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_10": {
+  "name": "Traditional Japanese Build 10",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 10",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_12": {
+  "name": "Traditional Japanese Build 12",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 12",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_13": {
+  "name": "Traditional Japanese Build 13",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Traditional Japanese Build 13",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_14": {
+  "name": "Traditional Japanese Build 14",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   7,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 14",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_15": {
+  "name": "Traditional Japanese Build 15",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   7,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 15",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_16": {
+  "name": "Traditional Japanese Build 16",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   7,
+   5
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 16",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_17": {
+  "name": "Traditional Japanese Build 17",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 17",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_18": {
+  "name": "Traditional Japanese Build 18",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 18",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_19": {
+  "name": "Traditional Japanese Build 19",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 19",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_20": {
+  "name": "Traditional Japanese Build 20",
+  "ox": 32,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 20",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_22": {
+  "name": "Traditional Japanese Build 22",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 22",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "247_traditional_japanese_bui_23": {
+  "name": "Traditional Japanese Build 23",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   6,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Traditional Japanese Build 23",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "?",
+  "artist": "PeekyChew"
+ },
+ "250_shrine_tiles_0": {
+  "name": "Shrine Tiles 0",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Shrine Tiles 0",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Landmarks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "250_shrine_tiles_1": {
+  "name": "Shrine Tiles 1",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Shrine Tiles 1",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Landmarks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ },
+ "250_shrine_tiles_2": {
+  "name": "Shrine Tiles 2",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Shrine Tiles 2",
+  "credit": "PeekyChew (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/peekychew/art/Public-Tileset-Dump-3-4-Beach-and-Sea-828233122)",
+  "group": "Landmarks",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "PeekyChew"
+ }
+}

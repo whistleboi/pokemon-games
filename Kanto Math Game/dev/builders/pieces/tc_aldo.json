@@ -1,0 +1,241 @@
+{
+ "set": "tc_aldo",
+ "artist": "Aldo",
+ "credit": "Aldo (from the Pokemon Ultimate Tileset Collection; https://eeveeexpo.com/resources/858/)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Tileset Collection/_processed",
+ "sheets": {
+  "232_random_tiles_eevee_expo_0": "aldo__232_random_tiles_eevee_expo_0.png",
+  "232_random_tiles_eevee_expo_1": "aldo__232_random_tiles_eevee_expo_1.png",
+  "232_random_tiles_eevee_expo_2": "aldo__232_random_tiles_eevee_expo_2.png",
+  "232_random_tiles_eevee_expo_3": "aldo__232_random_tiles_eevee_expo_3.png",
+  "232_random_tiles_eevee_expo_4": "aldo__232_random_tiles_eevee_expo_4.png"
+ },
+ "pieces": {
+  "232_random_tiles_eevee_expo__2": {
+   "sheet": "232_random_tiles_eevee_expo_0",
+   "blocks": [
+    [
+     0,
+     11,
+     4,
+     14
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Random Tiles | Eevee Expo 2",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?"
+  },
+  "232_random_tiles_eevee_expo__3": {
+   "sheet": "232_random_tiles_eevee_expo_0",
+   "blocks": [
+    [
+     4,
+     13,
+     8,
+     16
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Random Tiles | Eevee Expo 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?"
+  },
+  "232_random_tiles_eevee_expo__5": {
+   "sheet": "232_random_tiles_eevee_expo_1",
+   "blocks": [
+    [
+     0,
+     17,
+     3,
+     20
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Random Tiles | Eevee Expo 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?"
+  },
+  "232_random_tiles_eevee_expo__8": {
+   "sheet": "232_random_tiles_eevee_expo_0",
+   "blocks": [
+    [
+     0,
+     29,
+     6,
+     35
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    5,
+    2
+   ],
+   "doors": [
+    2
+   ],
+   "kind": "house",
+   "label": "Random Tiles | Eevee Expo 8",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?",
+   "group": "Houses"
+  },
+  "232_random_tiles_eevee_expo__1": {
+   "sheet": "232_random_tiles_eevee_expo_1",
+   "blocks": [
+    [
+     3,
+     14,
+     6,
+     17
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Random Tiles | Eevee Expo 1",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?"
+  },
+  "232_random_tiles_eevee_expo__4": {
+   "sheet": "232_random_tiles_eevee_expo_1",
+   "blocks": [
+    [
+     3,
+     17,
+     6,
+     20
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Random Tiles | Eevee Expo 4",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?"
+  },
+  "232_random_tiles_eevee_expo__9": {
+   "sheet": "232_random_tiles_eevee_expo_1",
+   "blocks": [
+    [
+     5,
+     28,
+     8,
+     34
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    2,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Random Tiles | Eevee Expo 9",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?"
+  },
+  "232_random_tiles_eevee_expo__11": {
+   "sheet": "232_random_tiles_eevee_expo_1",
+   "blocks": [
+    [
+     0,
+     34,
+     3,
+     37
+    ]
+   ],
+   "foot": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Random Tiles | Eevee Expo 11",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "gen": "?"
+  }
+ },
+ "_sources": [
+  {
+   "title": "Random Tiles | Eevee Expo",
+   "url": "https://eeveeexpo.com/resources/858/",
+   "credits": "\u2606"
+  }
+ ]
+}

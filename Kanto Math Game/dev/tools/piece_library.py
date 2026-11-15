@@ -29,7 +29,8 @@ import sys
 GAME = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SPECS = os.path.join(GAME, "dev", "builders", "pieces")
 T = 32
-SHADOW = (120, 120, 120)          # (Essentials sheets draw shadows in solid grey: made see-through dark here)
+SHADOWS = {(120, 120, 120)}       # (Essentials sheets draw shadows in solid grey: made see-through dark here; a spec's
+                                  # "shadows" names its sheet's own, e.g. LotusKing's [75, 79, 82])
 
 
 def background(c):
@@ -37,7 +38,7 @@ def background(c):
 
 
 def solid(c):
-    return not background(c) and (c.r, c.g, c.b) != SHADOW
+    return not background(c) and (c.r, c.g, c.b) not in SHADOWS
 
 
 def cut(sheet, blocks, pygame):
@@ -53,7 +54,7 @@ def cut(sheet, blocks, pygame):
                 c = part.get_at((xx, yy))
                 if background(c):
                     continue
-                out.set_at((x + xx, yy), (0, 0, 0, 70) if (c.r, c.g, c.b) == SHADOW else c)
+                out.set_at((x + xx, yy), (0, 0, 0, 70) if (c.r, c.g, c.b) in SHADOWS else c)
         x += (c1 - c0) * T
         seams.append(x)
     return out, seams[:-1]
@@ -170,6 +171,7 @@ def main():
     only_check = "--check" in sys.argv
     with open(os.path.join(SPECS, f"{name}.json"), encoding="utf-8") as f:
         spec = json.load(f)
+    SHADOWS.update(tuple(v) for v in spec.get("shadows", []))
     sheets = {k: pygame.image.load(os.path.join(spec["sheet_dir"], v)) for k, v in spec["sheets"].items()}
     tiles = {}
     for tname, ts in (spec.get("tiles") or {}).items():
@@ -180,7 +182,7 @@ def main():
             for xx in range(T):
                 c = part.get_at((xx, yy))
                 if not background(c):
-                    pic.set_at((xx, yy), (0, 0, 0, 70) if (c.r, c.g, c.b) == SHADOW else c)
+                    pic.set_at((xx, yy), (0, 0, 0, 70) if (c.r, c.g, c.b) in SHADOWS else c)
         tiles[tname] = (pic, ts)
     done, failed = {}, 0
     for pname, ps in spec["pieces"].items():
@@ -207,6 +209,9 @@ def main():
             index[pname] = {"name": ps.get("label", pname), "ox": fx * T, "oy": fy * T, "foot": [fw, fh],
                             "doors": ps.get("doors", []), "kind": ps.get("kind", "house"), "label": ps.get("label", pname),
                             "credit": spec.get("credit", "")}
+            for k in ("group", "theme", "gen", "artist"):   # (the park builder's filters: the piece's own, else its set's;
+                if ps.get(k) or spec.get(k):                #  missing ones are guessed from its name)
+                    index[pname][k] = ps.get(k) or spec.get(k)
         with open(os.path.join(out, "index.json"), "w", encoding="utf-8", newline="\n") as f:
             json.dump(index, f, indent=1)
             f.write("\n")

@@ -1,0 +1,21 @@
+{
+ "125_train_station_tiles_01_0": {
+  "name": "Train Station Tiles 01 0",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Train Station Tiles 01 0",
+  "credit": "J-Treecko252 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/j-treecko252/art/Apartment-Building-Tiles-01-903544904)",
+  "group": "Shops & towers",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "J-Treecko252"
+ }
+}

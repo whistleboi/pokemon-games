@@ -1,0 +1,159 @@
+{
+ "194_fisherman_s_hut_tileset_0": {
+  "name": "Fisherman's Hut Tileset 0",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   10,
+   5
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Fisherman's Hut Tileset 0",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "194_fisherman_s_hut_tileset_4": {
+  "name": "Fisherman's Hut Tileset 4",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fisherman's Hut Tileset 4",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "194_fisherman_s_hut_tileset_6": {
+  "name": "Fisherman's Hut Tileset 6",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fisherman's Hut Tileset 6",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "194_fisherman_s_hut_tileset_8": {
+  "name": "Fisherman's Hut Tileset 8",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   10,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Fisherman's Hut Tileset 8",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "196_pokecenter_0": {
+  "name": "PokeCenter 0",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "PokeCenter 0",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "group": "Centers & Marts",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "197_farm_exterior_tileset_4": {
+  "name": "Farm Exterior Tileset 4",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Farm Exterior Tileset 4",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "197_farm_exterior_tileset_10": {
+  "name": "Farm Exterior Tileset 10",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   4,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Farm Exterior Tileset 10",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "197_farm_exterior_tileset_11": {
+  "name": "Farm Exterior Tileset 11",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Farm Exterior Tileset 11",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ },
+ "197_farm_exterior_tileset_12": {
+  "name": "Farm Exterior Tileset 12",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Farm Exterior Tileset 12",
+  "credit": "Aveontrainer (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/aveontrainer/art/Fisherman-s-Hut-Tileset-1052987012)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "Aveontrainer"
+ }
+}

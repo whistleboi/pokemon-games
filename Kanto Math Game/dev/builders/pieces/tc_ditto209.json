@@ -1,0 +1,101 @@
+{
+ "set": "tc_ditto209",
+ "artist": "ditto209",
+ "credit": "ditto209 (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/ditto209/art/Resort-buildings-691519150)",
+ "sheet_dir": "C:/Users/Dad/Downloads/Tileset Collection/_processed",
+ "sheets": {
+  "314_resort_buildings": "ditto209__314_resort_buildings.png",
+  "315_primoris_city": "ditto209__315_primoris_city.png",
+  "322_pewter_city_tiles_add_on": "ditto209__322_pewter_city_tiles_add_on.png"
+ },
+ "pieces": {
+  "315_primoris_city_3": {
+   "sheet": "315_primoris_city",
+   "blocks": [
+    [
+     1,
+     14,
+     5,
+     18
+    ]
+   ],
+   "foot": [
+    0,
+    3,
+    4,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Primoris City 3",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  },
+  "322_pewter_city_tiles_add_on_5": {
+   "sheet": "322_pewter_city_tiles_add_on",
+   "blocks": [
+    [
+     15,
+     9,
+     18,
+     15
+    ]
+   ],
+   "foot": [
+    0,
+    5,
+    3,
+    1
+   ],
+   "doors": [],
+   "kind": "prop",
+   "label": "Pewter City Tiles Add On 5",
+   "touches": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "theme": "Town",
+   "gen": "Gen 3"
+  }
+ },
+ "_sources": [
+  {
+   "title": "Resort Buildings",
+   "url": "https://www.deviantart.com/ditto209/art/Resort-buildings-691519150",
+   "credits": "\u2749"
+  },
+  {
+   "title": "House 2",
+   "url": "https://www.deviantart.com/ditto209/art/House-2-567897359",
+   "credits": "\u2749"
+  },
+  {
+   "title": "House 3 by ditto209 on DeviantArt",
+   "url": "https://www.deviantart.com/ditto209/art/House-3-575918915",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Players House",
+   "url": "https://www.deviantart.com/ditto209/art/Players-House-552226459",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Primoris City",
+   "url": "https://www.deviantart.com/ditto209/art/Primoris-City-576270194",
+   "credits": "\u2749"
+  },
+  {
+   "title": "Pewter City Tiles Add On by ditto209 on DeviantArt",
+   "url": "https://www.deviantart.com/ditto209/art/Pewter-City-Tiles-Add-On-419111806",
+   "credits": "\u2749"
+  }
+ ]
+}

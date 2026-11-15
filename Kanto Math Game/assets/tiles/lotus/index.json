@@ -1,0 +1,849 @@
+{
+ "center": {
+  "name": "Pokemon Center (Gen 4)",
+  "ox": 32,
+  "oy": 192,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "center",
+  "label": "Pokemon Center (Gen 4)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "lamp": {
+  "name": "Street lamp",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Street lamp",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "brick_apartment": {
+  "name": "Brick apartment",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Brick apartment",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "boutique": {
+  "name": "Boutique",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Boutique",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "stone_house_tall": {
+  "name": "Stone house (tall)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Stone house (tall)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_hall": {
+  "name": "Blue hall",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Blue hall",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "green_roof_house": {
+  "name": "Green-roof house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Green-roof house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_house": {
+  "name": "Pink house",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pink house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "orange_house": {
+  "name": "Orange house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Orange house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "orange_house_tall": {
+  "name": "Orange house (tall)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Orange house (tall)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "purple_flat": {
+  "name": "Purple flat-roof house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Purple flat-roof house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "yellow_house": {
+  "name": "Yellow house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Yellow house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "grey_house": {
+  "name": "Grey house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Grey house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_house": {
+  "name": "Blue house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "navy_house": {
+  "name": "Navy house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Navy house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "teal_cottage": {
+  "name": "Teal cottage",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Teal cottage",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_cottage": {
+  "name": "Blue cottage",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue cottage",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "teal_chimney_house": {
+  "name": "Teal house (chimney)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Teal house (chimney)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_chimney_house": {
+  "name": "Blue house (chimney)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue house (chimney)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "brown_chimney_house": {
+  "name": "Brown house (chimney)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Brown house (chimney)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "red_chimney_house": {
+  "name": "Red house (chimney)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Red house (chimney)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "sky_chimney_house": {
+  "name": "Sky-blue house (chimney)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Sky-blue house (chimney)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "purple_house": {
+  "name": "Purple house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Purple house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "purple_house_2": {
+  "name": "Purple house (2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Purple house (2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "yellow_fence_house": {
+  "name": "Yellow house (fence)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Yellow house (fence)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "yellow_garden_house": {
+  "name": "Yellow house (garden)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Yellow house (garden)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "thatch_cottage": {
+  "name": "Grey cottage",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [],
+  "kind": "house",
+  "label": "Grey cottage",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "thatch_cottage_2": {
+  "name": "Grey cottage (2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Grey cottage (2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "red_cottage": {
+  "name": "Red cottage",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Red cottage",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "red_cottage_2": {
+  "name": "Red cottage (2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Red cottage (2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "orange_villa": {
+  "name": "Orange villa",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   8,
+   4
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Orange villa",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "stone_lantern": {
+  "name": "Stone lantern",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone lantern",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "gold_lantern": {
+  "name": "Gold lantern",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Gold lantern",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "dark_lantern": {
+  "name": "Dark lantern",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Dark lantern",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "temple_green": {
+  "name": "Temple (green)",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Temple (green)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "group": "Landmarks",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "temple_dark": {
+  "name": "Temple (dark)",
+  "ox": 32,
+  "oy": 128,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Temple (dark)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "group": "Landmarks",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_townhouse": {
+  "name": "Pink townhouse",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pink townhouse",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_townhouse_2": {
+  "name": "Pink townhouse (2)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [],
+  "kind": "house",
+  "label": "Pink townhouse (2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_townhouse_3": {
+  "name": "Pink townhouse (3)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pink townhouse (3)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_townhouse_4": {
+  "name": "Pink townhouse (4)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [],
+  "kind": "house",
+  "label": "Pink townhouse (4)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_house_wide": {
+  "name": "Pink house (wide)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pink house (wide)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_house_wide_2": {
+  "name": "Pink house (wide, 2)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [],
+  "kind": "house",
+  "label": "Pink house (wide, 2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_house_wide_3": {
+  "name": "Pink house (wide, 3)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Pink house (wide, 3)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "pink_house_wide_4": {
+  "name": "Pink house (wide, 4)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [],
+  "kind": "house",
+  "label": "Pink house (wide, 4)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "red_tile_shop": {
+  "name": "Red-tile shop",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Red-tile shop",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "red_tile_house": {
+  "name": "Red-tile house",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Red-tile house",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "red_tile_house_2": {
+  "name": "Red-tile house (2)",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Red-tile house (2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_townhouse": {
+  "name": "Blue townhouse",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue townhouse",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_townhouse_2": {
+  "name": "Blue townhouse (2)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [],
+  "kind": "house",
+  "label": "Blue townhouse (2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_house_wide": {
+  "name": "Blue house (wide)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue house (wide)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ },
+ "blue_house_wide_2": {
+  "name": "Blue house (wide, 2)",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [],
+  "kind": "house",
+  "label": "Blue house (wide, 2)",
+  "credit": "LotusKing (from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "LotusKing"
+ }
+}

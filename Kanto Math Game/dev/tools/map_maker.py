@@ -25,7 +25,8 @@ height, ways out). Click a picture, or drag it onto the map: a see-through copy 
 red where it doesn't; click to drop it (again for another; right-click or Esc empties your hand). Drag anything placed to
 move it; right-click it to take it away. Ground and height are brushes (1, 3 or 5 tiles); raising or lowering the ground
 rebuilds the cliffs when you let go. A source picture (a map to follow) goes with the map: Load..., or drop the picture
-file on the window; Fit map sizes the map to it; its mode button cycles On top (the picture see-through over the map),
+file on the window; Fit map sizes the map to it; Move / size frames it against the map (drag it; the wheel sizes it,
+Ctrl only wider, Shift only taller; arrows nudge; Keep shape, Reset); its mode button cycles On top (the picture see-through over the map),
 Underneath (the map see-through over it) and Tracing layer (the picture, with only what you've put down drawn over it:
 plain lawn stays clear); Strength fades it.
 """
@@ -85,6 +86,59 @@ KINDS = sorted({b[1] for b in BUILDINGS} | {"bike", "tunnel", "heap", "hedge", "
 ROOF_PRESETS = [(232, 92, 64), (72, 122, 214), (96, 170, 108), (80, 152, 166), (214, 72, 64), (222, 128, 150),
                 (222, 150, 70), (150, 162, 184), (150, 116, 84), (120, 170, 220), (196, 170, 90), (140, 100, 170)]
 
+# the park builder's groups, tab by tab (a piece's index.json may name its own "group"; else it's guessed from its name)
+GROUPS = {"Buildings": ["Centers & Marts", "Houses", "Shops & towers", "Landmarks"],
+          "Scenery": ["Trees & plants", "Rocks", "Statues", "Signs & lamps", "Furniture", "Vehicles", "Fences & walls", "Props"],
+          "Ground": ["Ground", "Water", "Cliffs & ledges", "Bridges"], "Ways out": ["Ways out", "People"], "Height": []}
+SOURCES = {"alola": "KingTapir", "biome": "Kyle-Dove", "lotus": "LotusKing", "hgss": "Akizakura16", "gen5": "UltimoSpriter",
+           "hoenn_sv": "SailorVicious", "kaliser": "Kaliser", "bp": "Banished Platinum"}
+_WORDS = [("Trees & plants", "tree palm pine jungle tropic sprout bush grove flower hedge plant"),
+          ("Rocks", "boulder rock stump ice crystal stone_block"),
+          ("Signs & lamps", "sign board map lamp lantern light"),
+          ("Statues", "totem tiki statue monument arch pedestal tablet post orb fountain"),
+          ("Vehicles", "truck van yacht boat car ship bike"),
+          ("Fences & walls", "fence wall gate rail"),
+          ("Furniture", "bench table umbrella chair stand")]
+
+
+THEMES = ["Town", "Tropical", "Forest", "Desert", "Snow", "Water", "Cave", "Ruins", "Mountain", "Swamp", "Volcano"]
+_THEME_WORDS = [("Tropical", "palm tropic beach umbrella surf hula tiki totem aloha alola"),
+                ("Snow", "snow ice frost winter"), ("Desert", "cactus desert sand dune"), ("Swamp", "swamp marsh bog"),
+                ("Volcano", "lava volcano magma"), ("Cave", "cave mine crystal"), ("Ruins", "ruin temple shrine"),
+                ("Water", "dock pier boat yacht ship sea"), ("Mountain", "boulder rock cliff mountain"),
+                ("Forest", "tree pine stump log bush jungle grove mushroom")]
+# the sheet's own categories (Pokemon Ultimate Tileset Collection) -> our themes
+CATEGORY_THEMES = {"beaches": "Tropical", "beachers": "Tropical", "trees": "Forest", "forests": "Forest", "plants": "Forest",
+                   "snow": "Snow", "desert": "Desert", "water": "Water", "caves": "Cave", "ruins": "Ruins",
+                   "mountains": "Mountain", "cliffs": "Mountain", "rocks": "Mountain", "swamp": "Swamp", "volcano": "Volcano",
+                   "lava": "Volcano", "city": "Town", "buildings": "Town", "poi": "Town", "paths": "Town", "routes": "Forest"}
+
+
+def guess_theme(name, label, kind):
+    words = f"{name} {label}".lower()
+    for theme, ws in _THEME_WORDS:
+        if any(w in words for w in ws.split()):
+            return theme
+    return "Town" if kind not in ("tree", "prop") else None
+
+
+def guess_group(name, label, kind):
+    """Which group a piece goes in, from its kind and name."""
+    words = f"{name} {label}".lower()
+    if kind in ("center", "mart"):
+        return "Centers & Marts"
+    if kind not in ("tree", "prop"):
+        if any(w in words for w in ("shop", "store", "tower", "building", "apartment", "market", "mall", "office")):
+            return "Shops & towers"
+        if any(w in words for w in ("hut", "house", "home", "cottage", "cabin")):
+            return "Houses"
+        return "Landmarks"
+    for group, ws in _WORDS:
+        if any(w in words for w in ws.split()):
+            return group
+    return "Trees & plants" if kind == "tree" else "Props"
+
+
 def library():
     """The ready-made pieces (dev/tools/piece_library.py): every assets/tiles/<set>/index.json entry with a footprint."""
     out = []
@@ -100,9 +154,14 @@ def library():
             continue
         for name, meta in index.items():
             if isinstance(meta, dict) and meta.get("foot"):
-                out.append({"key": f"{folder}:{name}", "label": meta.get("label", name), "kind": meta.get("kind", "house"),
+                kind = meta.get("kind", "house")
+                out.append({"key": f"{folder}:{name}", "label": meta.get("label", name), "kind": kind,
                             "w": meta["foot"][0], "h": meta["foot"][1], "doors": meta.get("doors", []),
-                            "prop": meta.get("kind") in ("tree", "prop")})
+                            "prop": kind in ("tree", "prop"),
+                            "group": meta.get("group") or guess_group(name, meta.get("label", name), kind),
+                            "source": meta.get("artist") or SOURCES.get(folder, folder),
+                            "theme": meta.get("theme") or guess_theme(name, meta.get("label", name), kind),
+                            "gen": meta.get("gen") or ""})
     return out
 
 
@@ -522,6 +581,10 @@ class Slider:
 # tiles at a time (the game draws the edges); the height brush raises or lowers the ground and the cliffs rebuild when
 # you let go (dev/tools/cliff_tiers.py).
 BUILDER_TABS = ["Buildings", "Scenery", "Ground", "Height", "Ways out"]
+HIDDEN = os.path.join("dev", "builders", "pieces", "hidden.json")
+OURS = "Our own art"                 # (the map characters and buildings art.py draws itself)
+GAME_SOURCES = ("FireRed / LeafGreen", "HeartGold / SoulSilver", "Diamond / Pearl / Platinum", "Black 2 / White 2")   # (read from
+                                     # the games' own files: kanto_handoff/tileset_catalog/game_sets.py; listed first)     # (pictures hidden from the palette: right-click one)
 THUMB = 88
 CARRY_OVER = set('.=sd"f8T2,ape@r')   # (what a building or piece may be dropped on: its tiles are cleared)
 
@@ -530,13 +593,26 @@ def builder_items():
     """{tab: [item]}: an item is {"preset": PRESETS entry} (placed whole), {"char": c} (a brush), or {"height": op}."""
     pal = dict(PALETTE)
     out = {t: [] for t in BUILDER_TABS}
+    game_groups = {"center": "Centers & Marts", "mart": "Centers & Marts", "house": "Houses", "home": "Houses", "rival": "Houses"}
     for p in PRESETS:
-        (out["Scenery"] if p[4] and p[4]["prop"] else out["Buildings"]).append({"preset": p, "label": p[4]["label"] if p[4] else p[0]})
+        if p[4]:
+            out["Scenery" if p[4]["prop"] else "Buildings"].append({"preset": p, "label": p[4]["label"], "group": p[4]["group"],
+                                                                     "source": p[4]["source"], "theme": p[4]["theme"],
+                                                                     "gen": p[4]["gen"]})
+        else:
+            out["Buildings"].append({"preset": p, "label": p[0], "group": game_groups.get(p[1], "Landmarks"), "source": OURS,
+                                     "theme": "Town", "gen": "Ours"})
+    char_groups = {"T": "Trees & plants", "2": "Trees & plants", "r": "Rocks", "0": "Rocks", "b": "Rocks", "@": "Statues",
+                   "!": "Signs & lamps", "l": "Signs & lamps"}
     for cat, tab in (("Nature", "Scenery"), ("Fences & walls", "Scenery"), ("Props", "Scenery"), ("Ground", "Ground"),
                      ("Water", "Ground"), ("Cliffs & ledges", "Ground"), ("Bridges", "Ground"), ("Ways out", "Ways out"),
                      ("People", "Ways out")):
         for c, n in pal[cat]:
-            out[tab].append({"char": c, "label": n})
+            group = cat if tab in ("Ground", "Ways out") else char_groups.get(c, "Fences & walls" if cat == "Fences & walls" else "Props")
+            theme = {"8": "Snow", "%": "Snow", "9": "Swamp", "*": "Volcano", "s": "Tropical", "o": "Water", "~": "Water",
+                     ":": "Water", "q": "Water", "$": "Water", "T": "Forest", "2": "Forest", "r": "Mountain", "b": "Mountain",
+                     "0": "Mountain", "/": "Mountain", "@": "Ruins"}.get(c)
+            out[tab].append({"char": c, "label": n, "group": group, "source": OURS, "theme": theme, "gen": "Ours"})
     out["Height"] = [{"height": "raise", "label": "Raise the ground"}, {"height": "lower", "label": "Lower the ground"}] + \
                     [{"height": i, "label": f"Level {i}"} for i in range(4)]
     return out
@@ -562,21 +638,85 @@ class ParkBuilder:
         self.b_brush_btns = [Button((x0 + 96 + i * 52, 112, 46, 26), f"{n}x{n}", lambda n=n: setattr(self, "b_brush", n), toggle=lambda n=n: self.b_brush == n)
                              for i, n in enumerate((1, 3, 5))]
         H = self.screen.get_height()
-        self.b_grid = pygame.Rect(x0, 146, w, H - 146 - 290)
-        y = self.b_grid.bottom + 10
-        self.b_roof_rects = [pygame.Rect(x0 + i * 32, y + 22, 28, 22) for i in range(len(ROOF_PRESETS))]
-        self.b_detail_rect = pygame.Rect(x0, y + 74, w, 26)
-        self.b_view_btns = [Button((x0, y + 112, 92, 28), "Game look", self.toggle_game, toggle=lambda: self.game_look),
-                            Button((x0 + 98, y + 112, 60, 28), "Grid", lambda: setattr(self, "show_grid", not self.show_grid), toggle=lambda: self.show_grid),
-                            Button((x0 + 164, y + 112, 72, 28), "Levels", lambda: setattr(self, "show_levels", not self.show_levels), toggle=lambda: self.show_levels),
-                            Button((x0 + 242, y + 112, w - 242, 28), "Undo", self.undo)]
-        self.b_src_y = y + 150
-        self.b_src_btns = [Button((x0, y + 172, 96, 28), "Load...", self.browse_ref),
-                           Button((x0 + 102, y + 172, 74, 28), "Fit map", self.fit_to_ref),
-                           Button((x0 + 182, y + 172, 64, 28), "Show", lambda: setattr(self, "show_ref", not self.show_ref), toggle=lambda: self.show_ref),
-                           Button((x0 + 252, y + 172, w - 252, 28), "On top", self.toggle_ref_under, toggle=self.ref_under)]
-        self.b_ref_alpha = Slider((x0, y + 208, w, 18), 0, 255, lambda: (self.doc.ref or {}).get("alpha", 140), self._set_ref_alpha, "Strength")
-        self.b_hint_y = y + 234
+        self.b_search = getattr(self, "b_search", None) or TextBox((0, 0, 10, 10), "", "search: palm, house, Ekat99...")
+        filt = lambda _v: self.pick_chip("b_source", self.b_source)     # (a list changed: back to the top of the pictures)
+        self.b_set_dd = getattr(self, "b_set_dd", None) or Dropdown((0, 0, 10, 10), [], filt, rows=16)
+        self.b_theme_dd = getattr(self, "b_theme_dd", None) or Dropdown((0, 0, 10, 10), [], filt, rows=14)
+        self.b_gen_dd = getattr(self, "b_gen_dd", None) or Dropdown((0, 0, 10, 10), [], filt, rows=12)
+        try:
+            with open(HIDDEN, encoding="utf-8") as f:
+                self.b_hidden = set(json.load(f))
+        except (OSError, ValueError):
+            self.b_hidden = set()
+        self.b_show_hidden = getattr(self, "b_show_hidden", False)
+        self.b_hidden_btn = Button((0, 0, 10, 10), f"Hidden ({len(self.b_hidden)})", self.toggle_show_hidden,
+                                   toggle=lambda: self.b_show_hidden)
+        self.b_group = getattr(self, "b_group", "All")
+        self.b_source = getattr(self, "b_source", "All sets")
+        self.b_grid = pygame.Rect(x0, 146, w, H - 146 - 322)
+        self.b_grid_bottom = self.b_grid.bottom
+        self.layout_chips()
+        # the lower part of the panel: laid out by layout_bottom (the roof colours only for a chosen building, the
+        # source picture's controls only while "Picture" is open), so the pictures get the rest
+        z = (0, 0, 10, 10)
+        self.b_roof_rects = [pygame.Rect(z) for _ in ROOF_PRESETS]
+        self.b_detail_rect = pygame.Rect(x0, 0, w, 26)
+        self.b_pic_open = getattr(self, "b_pic_open", bool(self.doc.ref))
+        self.b_view_btns = [Button(z, "Game look", self.toggle_game, toggle=lambda: self.game_look),
+                            Button(z, "Grid", lambda: setattr(self, "show_grid", not self.show_grid), toggle=lambda: self.show_grid),
+                            Button(z, "Levels", lambda: setattr(self, "show_levels", not self.show_levels), toggle=lambda: self.show_levels),
+                            Button(z, "Picture", lambda: setattr(self, "b_pic_open", not self.b_pic_open), toggle=lambda: self.b_pic_open),
+                            Button(z, "Undo", self.undo)]
+        self.b_src_btns = [Button(z, "Load...", self.browse_ref), Button(z, "Fit map", self.fit_to_ref),
+                           Button(z, "Show", lambda: setattr(self, "show_ref", not self.show_ref), toggle=lambda: self.show_ref),
+                           Button(z, "On top", self.toggle_ref_under, toggle=self.ref_under)]
+        self.b_ref_alpha = Slider(z, 0, 255, lambda: (self.doc.ref or {}).get("alpha", 140), self._set_ref_alpha, "Strength")
+        self.b_frame_btns = [Button(z, "Move / size", self.toggle_ref_adjust, toggle=lambda: getattr(self, "ref_adjust", False)),
+                             Button(z, "Keep shape", self.ref_keep_shape), Button(z, "Reset", self.ref_reset)]
+        self._bottom_key = None
+        self.layout_bottom()
+
+    def layout_bottom(self):
+        """Lay out the panel's lower part from the bottom up; the pictures fill what's left above it."""
+        key = (self.screen.get_size(), bool(self.selected), bool(self.detail), self.b_pic_open)
+        if key == self._bottom_key:
+            return
+        self._bottom_key = key
+        x0 = self.screen.get_width() - PANEL_W + 14
+        w = PANEL_W - 28
+        y = self.screen.get_height() - 22
+        self.b_hint_y = y
+        y -= 34
+        widths = [92, 52, 62, 68]
+        x = x0
+        for b, bw in zip(self.b_view_btns, widths + [w - sum(widths) - 4 * 6]):
+            b.rect = pygame.Rect(x, y, bw, 28)
+            x += bw + 6
+        if self.b_pic_open:
+            y -= 34
+            for b, (dx, bw) in zip(self.b_frame_btns, ((0, 128), (134, 110), (250, w - 250))):
+                b.rect = pygame.Rect(x0 + dx, y, bw, 28)
+            y -= 26
+            self.b_ref_alpha.rect = pygame.Rect(x0, y, w, 18)
+            y -= 34
+            for b, (dx, bw) in zip(self.b_src_btns, ((0, 96), (102, 74), (182, 64), (252, w - 252))):
+                b.rect = pygame.Rect(x0 + dx, y, bw, 28)
+            y -= 22
+            self.b_src_y = y
+        if self.detail:
+            y -= 34
+            self.b_detail_rect.y = y
+            self.detail_box.rect = pygame.Rect(self.b_detail_rect)
+            y -= 18
+        if self.selected:
+            y -= 28
+            for i, r in enumerate(self.b_roof_rects):
+                r.update(x0 + i * 32, y, 28, 22)
+            y -= 22
+            self.b_roof_y = y
+        self.b_grid_bottom = y - 24
+        if hasattr(self, "b_chips"):
+            self.layout_chips()
 
     def toggle_builder(self):
         self.builder = not self.builder
@@ -586,8 +726,106 @@ class ParkBuilder:
         self.status = ("Park builder: pick a picture on the right, then click the map (or drag it there)" if self.builder
                        else "Classic panel")
 
+    def layout_chips(self):
+        """The group and source chips for this tab (wrapping onto more rows), the pictures below them."""
+        x0 = self.screen.get_width() - PANEL_W + 14
+        w = PANEL_W - 28
+        items = self.b_items[self.b_tab]
+        groups = ["All"] + [g for g in GROUPS.get(self.b_tab, []) if any(i.get("group") == g for i in items)]
+        self.b_chips = []
+        y = 112
+        for row, values, cur, attr in ((0, groups, self.b_group, "b_group"),):
+            if len(values) <= 2:
+                continue
+            x = x0
+            for v in values:
+                tw = self.small.size(v)[0] + 14
+                if x + tw > x0 + w:
+                    x, y = x0, y + 26
+                self.b_chips.append(Button((x, y, tw, 22), v, lambda v=v, a=attr: self.pick_chip(a, v),
+                                           toggle=lambda v=v, a=attr: getattr(self, a) == v))
+                x += tw + 4
+            y += 28
+        # the search box, the hidden pieces' button, and the set / theme / generation lists
+        self.b_search.rect = pygame.Rect(x0, y, w - 120, 26)
+        self.b_hidden_btn.rect = pygame.Rect(x0 + w - 114, y, 114, 26)
+        y += 32
+        sets = sorted({i.get("source", OURS) for i in items}, key=lambda v: (v != OURS, v not in GAME_SOURCES, v.lower()))
+        themes = [t for t in THEMES if any(i.get("theme") == t for i in items)]
+        gens = sorted({i.get("gen") for i in items if i.get("gen")}, key=lambda g: (g == "Ours", g))
+        dw = (w - 8) // 3
+        for k, (dd, label, values) in enumerate(((self.b_set_dd, "Any tile set", sets), (self.b_theme_dd, "Any theme", themes),
+                                                 (self.b_gen_dd, "Any generation", gens))):
+            dd.rect = pygame.Rect(x0 + k * (dw + 4), y, dw, 26)
+            cur = dd.items[dd.index][0] if dd.items else None
+            dd.set_items([(None, label)] + [(v, v) for v in values])
+            dd.index = next((n for n, (v, _t) in enumerate(dd.items) if v == cur), 0)
+        y += 32
+        self.b_brush_y = y
+        for i, b in enumerate(self.b_brush_btns):
+            b.rect.y = y
+        if self.b_tab in ("Ground", "Height", "Ways out"):
+            y += 32
+        self.b_grid = pygame.Rect(x0, y + 4, w, self.b_grid_bottom - y - 4)
+
+    def pick_chip(self, attr, v):
+        setattr(self, attr, v)
+        self.b_scroll[self.b_tab] = 0
+
+    def items_view(self):
+        """This tab's pictures, filtered by the group chip, the set / theme / generation lists, the search words and
+        the hidden list (a hidden picture shows only while "Hidden" is on)."""
+        pick = lambda dd: dd.items[dd.index][0] if dd.items else None
+        st, th, gn = pick(self.b_set_dd), pick(self.b_theme_dd), pick(self.b_gen_dd)
+        words = self.b_search.text.lower().split()
+        out = []
+        for i in self.b_items[self.b_tab]:
+            hidden = self.item_key(i) in self.b_hidden
+            if hidden != self.b_show_hidden:
+                continue
+            if self.b_group != "All" and i.get("group") != self.b_group:
+                continue
+            if (st and i.get("source", OURS) != st) or (th and i.get("theme") != th) or (gn and i.get("gen") != gn):
+                continue
+            text = f"{i['label']} {i.get('source', '')} {i.get('theme') or ''} {i.get('group', '')}".lower()
+            if any(wd not in text for wd in words):
+                continue
+            out.append(i)
+        return out
+
+    @staticmethod
+    def item_key(i):
+        return i["preset"][4]["key"] if "preset" in i and i["preset"][4] else (
+            "game:" + i["preset"][0] if "preset" in i else "char:" + i["char"] if "char" in i else f"height:{i['height']}")
+
+    def toggle_hidden_item(self, item):
+        """Right-click a picture: hide it from the palette (or, while "Hidden" is on, bring it back)."""
+        k = self.item_key(item)
+        if k in self.b_hidden:
+            self.b_hidden.discard(k)
+            self.status = f"{item['label']}: back in the palette"
+        else:
+            self.b_hidden.add(k)
+            self.status = f"{item['label']}: hidden (the Hidden button shows hidden pieces; right-click one to bring it back)"
+        try:
+            with open(HIDDEN, "w", encoding="utf-8", newline="\n") as f:
+                json.dump(sorted(self.b_hidden), f, indent=1)
+                f.write("\n")
+        except OSError:
+            pass
+        self.b_hidden_btn.text = f"Hidden ({len(self.b_hidden)})"
+
+    def toggle_show_hidden(self):
+        self.b_show_hidden = not self.b_show_hidden
+        self.b_scroll[self.b_tab] = 0
+
     def builder_tab(self, t):
         self.b_tab = t
+        self.b_group, self.b_source = "All", "All sets"
+        for dd in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
+            dd.index, dd.open = 0, False
+        self.b_scroll[t] = 0
+        self.layout_chips()
         self.carry, self.b_pick = None, None
         self.show_levels = t == "Height"
 
@@ -794,8 +1032,27 @@ class ParkBuilder:
     # ---- events
     def builder_event(self, e):
         """True if the park builder took the event (else the map maker's own handling goes on: zoom, pan, keys)."""
+        self.layout_bottom()
         panel = pygame.Rect(self.screen.get_width() - PANEL_W, 0, PANEL_W, self.screen.get_height())
         canvas = self.canvas_rect()
+        for dd in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
+            if dd.open and dd.event(e):
+                self.b_scroll[self.b_tab] = 0
+                return True
+        if e.type == pygame.MOUSEBUTTONDOWN and getattr(e, "button", 0) == 1:
+            for dd in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
+                if dd.rect.collidepoint(e.pos):
+                    for o in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
+                        o.open = False
+                    dd.event(e)
+                    return True
+        if self.b_search.focus and e.type in (pygame.KEYDOWN, pygame.TEXTINPUT):
+            self.b_search.event(e)
+            self.b_scroll[self.b_tab] = 0
+            return True
+        typing = self.key_box.focus or self.detail_box.focus or self.b_search.focus
+        if getattr(self, "ref_adjust", False) and self.doc.ref and not typing and self.ref_frame_event(e):
+            return True
         if e.type == pygame.KEYDOWN or e.type == pygame.TEXTINPUT:
             for b in (self.key_box, self.detail_box):
                 if b.focus and b.event(e):
@@ -807,7 +1064,7 @@ class ParkBuilder:
                 return True
             return False
         if e.type == pygame.MOUSEWHEEL and panel.collidepoint(pygame.mouse.get_pos()):
-            n = len(self.b_items[self.b_tab])
+            n = len(self.items_view())
             cols = max(1, self.b_grid.w // (THUMB + 8))
             rows_fit = max(1, self.b_grid.h // (THUMB + 26))
             self.b_scroll[self.b_tab] = max(0, min(max(0, (n + cols - 1) // cols - rows_fit), self.b_scroll[self.b_tab] - e.y))
@@ -817,13 +1074,19 @@ class ParkBuilder:
             self.b_ref_alpha.event(e)
             return True
         if e.type == pygame.MOUSEBUTTONDOWN and pos and panel.collidepoint(pos):
+            if e.button == 3:
+                item = self.item_at(pos)
+                if item:
+                    self.toggle_hidden_item(item)
+                return True
             if e.button != 1:
                 return True
-            for b in (self.key_box, self.detail_box):
+            for b in (self.key_box, self.detail_box, self.b_search):
                 b.event(e)
-            if self.b_ref_alpha.event(e):
+            if self.b_pic_open and self.b_ref_alpha.event(e):
                 return True
-            for b in [self.btn_save, self.btn_builder] + self.b_tab_btns + self.b_brush_btns + self.b_view_btns + self.b_src_btns:
+            pic = self.b_src_btns + self.b_frame_btns if self.b_pic_open else []
+            for b in [self.btn_save, self.btn_builder, self.b_hidden_btn] + self.b_tab_btns + self.b_chips + self.b_brush_btns + self.b_view_btns + pic:
                 if b.click(pos):
                     return True
             for i, r in enumerate(self.b_roof_rects):
@@ -912,11 +1175,12 @@ class ParkBuilder:
         if c >= cols:
             return None
         i = (r + self.b_scroll[self.b_tab]) * cols + c
-        items = self.b_items[self.b_tab]
+        items = self.items_view()
         return items[i] if 0 <= i < len(items) else None
 
     # ---- drawing
     def draw_builder_panel(self, mouse):
+        self.layout_bottom()
         s = self.screen
         px = s.get_width() - PANEL_W
         pygame.draw.rect(s, PANEL, (px, 0, PANEL_W, s.get_height()))
@@ -925,17 +1189,23 @@ class ParkBuilder:
         s.blit(self.big.render("Map key", True, TEXT), (x0, 12))
         for w in [self.key_box, self.btn_save, self.btn_builder] + self.b_tab_btns:
             w.draw(s, self.font, mouse)
+        for b in self.b_chips:
+            b.draw(s, self.small, mouse)
+        self.b_search.draw(s, self.font, mouse)
+        self.b_hidden_btn.draw(s, self.small, mouse)
+        for dd in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
+            dd.draw(s, self.small, mouse)
         if self.b_tab in ("Ground", "Height", "Ways out"):
-            s.blit(self.font.render("Brush size", True, DIM), (x0, 116))
+            s.blit(self.font.render("Brush size", True, DIM), (x0, self.b_brush_y + 4))
             for b in self.b_brush_btns:
                 b.draw(s, self.font, mouse)
-        else:
+        elif not self.b_chips:
             s.blit(self.small.render("Click a picture, then the map. Drag placed things to move them.", True, DIM), (x0, 118))
         g = self.b_grid
         pygame.draw.rect(s, (36, 40, 56), g, border_radius=6)
         s.set_clip(g)
         cols = max(1, g.w // (THUMB + 8))
-        items = self.b_items[self.b_tab]
+        items = self.items_view()
         start = self.b_scroll[self.b_tab] * cols
         for n, item in enumerate(items[start:]):
             c, r = n % cols, n // cols
@@ -951,24 +1221,32 @@ class ParkBuilder:
             t = self.small.render(item["label"][:15], True, TEXT)
             s.blit(t, (cell.centerx - t.get_width() // 2, cell.bottom - 18))
         s.set_clip(None)
-        y = g.bottom + 10
-        s.blit(self.font.render("Roof colour of the chosen building" if self.selected else "Roof colour (pick a building first)", True, DIM), (x0, y))
-        for i, r in enumerate(self.b_roof_rects):
-            pygame.draw.rect(s, ROOF_PRESETS[i], r, border_radius=4)
-            pygame.draw.rect(s, (255, 255, 255) if self.selected and list(ROOF_PRESETS[i]) == list(self._roof()) else PANEL_LINE, r, 2, border_radius=4)
+        if self.selected:
+            s.blit(self.font.render("Roof colour of the chosen building", True, DIM), (x0, self.b_roof_y))
+            for i, r in enumerate(self.b_roof_rects):
+                pygame.draw.rect(s, ROOF_PRESETS[i], r, border_radius=4)
+                pygame.draw.rect(s, (255, 255, 255) if list(ROOF_PRESETS[i]) == list(self._roof()) else PANEL_LINE, r, 2, border_radius=4)
         if self.detail:
             label = {"exit": "Leads to:", "person": "This person:", "sign": "This sign says:"}[self.detail[0]]
             s.blit(self.small.render(label, True, TEXT), (self.detail_box.rect.x, self.detail_box.rect.y - 18))
             self.detail_box.draw(s, self.font, mouse)
         for b in self.b_view_btns:
             b.draw(s, self.font, mouse)
-        name = os.path.basename(self.doc.ref["path"]) if self.doc.ref else "none (Load..., or drop a picture on the map)"
-        s.blit(self.font.render(f"Source picture: {name}"[:54], True, DIM), (x0, self.b_src_y))
-        self.b_src_btns[3].text = self.REF_MODES[self.ref_mode()]
-        for b in self.b_src_btns:
-            b.draw(s, self.font, mouse)
-        self.b_ref_alpha.draw(s, self.small, mouse)
+        if self.b_pic_open:
+            name = os.path.basename(self.doc.ref["path"]) if self.doc.ref else "none (Load..., or drop one on the map)"
+            s.blit(self.font.render(f"Source picture: {name}"[:54], True, DIM), (x0, self.b_src_y))
+            self.b_src_btns[3].text = self.REF_MODES[self.ref_mode()]
+            for b in self.b_src_btns:
+                b.draw(s, self.font, mouse)
+            self.b_ref_alpha.draw(s, self.small, mouse)
+            for b in self.b_frame_btns:
+                b.draw(s, self.font, mouse)
         s.blit(self.small.render("Right-click: take away / put down   Esc: empty hand   wheel: zoom", True, DIM), (x0, self.b_hint_y))
+        n = len(self.items_view())
+        s.blit(self.small.render(f"{n} picture{'s' if n != 1 else ''}" + ("  (hidden ones: right-click to bring back)" if self.b_show_hidden else
+                                 "  (right-click one to hide it)"), True, DIM), (x0, self.b_grid.bottom + 4))
+        for dd in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
+            dd.draw_list(s, self.small, mouse)
 
     def draw_carry(self, mouse):
         """The carried thing under the mouse, green where it fits, red where it doesn't."""
@@ -1267,10 +1545,11 @@ class MapMaker(ParkBuilder):
             return
         self.push()
         old = self.doc.ref or {}
-        self.doc.ref = {"path": path, "alpha": old.get("alpha", 140), "under": old.get("under", False)}
+        self.doc.ref = {"path": path, "alpha": old.get("alpha", 140), "mode": self.ref_mode() if old else "top"}   # (a new picture lies over the whole map till it's framed)
         self.ref_box.text = path
         self._ref_img = None
         self.show_ref = True
+        self.b_pic_open = True
         self.status = f"Source picture: {os.path.basename(path)} (stretched to the map; Fit map sizes the map to it)"
 
     def browse_ref(self):
@@ -1308,6 +1587,7 @@ class MapMaker(ParkBuilder):
         self.push()
         self.doc.resize(max(4, min(300, w // t)), max(4, min(300, h // t)))
         self.w_box.text, self.h_box.text = str(self.doc.w), str(self.doc.h)
+        self.doc.ref.pop("rect", None)
         self._ref_img = None
         self.changed()
         self.center_view()
@@ -1495,17 +1775,126 @@ class MapMaker(ParkBuilder):
                             if self.zoom < GAME_TILE else pygame.transform.scale(self._game[1], (self.doc.w * self.zoom, self.doc.h * self.zoom)))
         return self._scaled[1]
 
-    def ref_picture(self, mw, mh):
-        """The source picture stretched to the map at this zoom (cached), or None."""
+    def ref_source(self):
+        """The source picture as loaded (cached), or None."""
         if not self.doc.ref:
             return None
-        if self._ref_img is None or self._ref_img[0] != (self.doc.ref["path"], mw, mh):
+        path = self.doc.ref["path"]
+        if getattr(self, "_ref_src", None) is None or self._ref_src[0] != path:
             try:
-                img = pygame.image.load(self.doc.ref["path"]).convert()
-                self._ref_img = ((self.doc.ref["path"], mw, mh), pygame.transform.smoothscale(img, (mw, mh)))
+                self._ref_src = (path, pygame.image.load(path).convert())
             except (pygame.error, FileNotFoundError, OSError):
-                self._ref_img = ((self.doc.ref["path"], mw, mh), None)
-        return self._ref_img[1]
+                self._ref_src = (path, None)
+        return self._ref_src[1]
+
+    def ref_rect(self):
+        """Where the source picture lies, in map tiles: [x, y, w, h] (stretched over the whole map until it's framed)."""
+        r = (self.doc.ref or {}).get("rect")
+        return list(r) if r else [0.0, 0.0, float(self.doc.w), float(self.doc.h)]
+
+    def ref_picture(self, mw=None, mh=None):
+        """The part of the source picture on screen, at this zoom and placing: (surface, top-left) or None."""
+        img = self.ref_source()
+        if img is None:
+            return None
+        Z = self.zoom
+        x, y, w, h = self.ref_rect()
+        D = pygame.Rect(round(self.ox + x * Z), round(self.oy + y * Z), max(1, round(w * Z)), max(1, round(h * Z)))
+        V = D.clip(self.canvas_rect())
+        if V.w <= 0 or V.h <= 0:
+            return None
+        key = (self.doc.ref["path"], tuple(D), tuple(V))
+        if self._ref_img is None or self._ref_img[0] != key:
+            iw, ih = img.get_size()
+            sx, sy = (V.x - D.x) * iw / D.w, (V.y - D.y) * ih / D.h
+            sw, sh = max(1, min(iw - int(sx), int(V.w * iw / D.w + 1))), max(1, min(ih - int(sy), int(V.h * ih / D.h + 1)))
+            part = img.subsurface((int(sx), int(sy), sw, sh))
+            self._ref_img = (key, pygame.transform.smoothscale(part, V.size))
+        return self._ref_img[1], V.topleft
+
+    def frame_ref(self, rect, push=True):
+        if push and not getattr(self, "_framing", False):
+            self.push()
+            self._framing = True       # (one undo for a whole drag or run of wheel turns)
+        self.doc.ref["rect"] = [round(v, 3) for v in rect]
+        self._ref_img = None
+
+    def toggle_ref_adjust(self):
+        if not self.doc.ref:
+            self.status = "Load a source picture first"
+            return
+        self.ref_adjust = not getattr(self, "ref_adjust", False)
+        self.carry, self.b_pick, self._framing = None, None, False
+        self.status = ("Framing the picture: drag it to move; wheel to size it (Ctrl: only wider, Shift: only taller); "
+                       "arrows nudge (Shift: a whole tile); +/- size; Esc when done") if self.ref_adjust else "Picture framed"
+
+    def ref_keep_shape(self):
+        img = self.ref_source()
+        if img is None:
+            return
+        x, y, w, h = self.ref_rect()
+        iw, ih = img.get_size()
+        self._framing = False
+        self.frame_ref([x, y, w, w * ih / iw])
+        self.status = "The picture keeps its own shape (as wide as it was; its height to match)"
+
+    def ref_reset(self):
+        if self.doc.ref and self.doc.ref.get("rect"):
+            self.push()
+            self.doc.ref.pop("rect", None)
+            self._ref_img = None
+        self.status = "Picture stretched over the whole map again"
+
+    def ref_scale(self, k, about=None, wide=True, tall=True):
+        x, y, w, h = self.ref_rect()
+        ax, ay = about if about else (x + w / 2, y + h / 2)
+        nw, nh = (w * k if wide else w), (h * k if tall else h)
+        if min(nw, nh) < 1 or max(nw, nh) > 2000:
+            return
+        self.frame_ref([ax - (ax - x) * nw / w, ay - (ay - y) * nh / h, nw, nh])
+
+    def ref_frame_event(self, e):
+        """Mouse and keys while framing the picture: True if taken."""
+        canvas = self.canvas_rect()
+        Z = self.zoom
+        if e.type == pygame.KEYDOWN:
+            shift = e.mod & pygame.KMOD_SHIFT
+            step = 1.0 if shift else 0.25
+            moves = {pygame.K_LEFT: (-step, 0), pygame.K_RIGHT: (step, 0), pygame.K_UP: (0, -step), pygame.K_DOWN: (0, step)}
+            if e.key in moves:
+                x, y, w, h = self.ref_rect()
+                self.frame_ref([x + moves[e.key][0], y + moves[e.key][1], w, h])
+                return True
+            if e.key in (pygame.K_EQUALS, pygame.K_PLUS, pygame.K_KP_PLUS, pygame.K_MINUS, pygame.K_KP_MINUS):
+                self.ref_scale(1.02 if e.key in (pygame.K_EQUALS, pygame.K_PLUS, pygame.K_KP_PLUS) else 1 / 1.02)
+                return True
+            if e.key in (pygame.K_ESCAPE, pygame.K_RETURN):
+                self.toggle_ref_adjust()
+                return True
+            return False
+        if e.type == pygame.MOUSEWHEEL and canvas.collidepoint(pygame.mouse.get_pos()):
+            mx, my = pygame.mouse.get_pos()
+            mods = pygame.key.get_mods()
+            self.ref_scale(1.04 ** e.y, ((mx - self.ox) / Z, (my - self.oy) / Z),
+                           wide=not mods & pygame.KMOD_SHIFT, tall=not mods & pygame.KMOD_CTRL)
+            return True
+        pos = getattr(e, "pos", None)
+        if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1 and pos and canvas.collidepoint(pos) \
+                and not pygame.key.get_pressed()[pygame.K_SPACE]:
+            self._framing = False
+            self._ref_drag = (pos, self.ref_rect())
+            return True
+        if e.type == pygame.MOUSEMOTION and getattr(self, "_ref_drag", None):
+            (sx, sy), (x, y, w, h) = self._ref_drag
+            self.frame_ref([x + (pos[0] - sx) / Z, y + (pos[1] - sy) / Z, w, h])
+            return True
+        if e.type == pygame.MOUSEBUTTONUP and e.button == 1 and getattr(self, "_ref_drag", None):
+            self._ref_drag = None
+            return True
+        if e.type == pygame.MOUSEBUTTONDOWN and e.button == 3 and pos and canvas.collidepoint(pos):
+            self.toggle_ref_adjust()
+            return True
+        return False
 
     def draw_roofs(self):
         """The roofs the game look draws with: the map's own, its other entries, its placed pieces."""
@@ -1547,12 +1936,17 @@ class MapMaker(ParkBuilder):
         mw, mh = self.doc.w * Z, self.doc.h * Z
         pygame.draw.rect(s, (20, 22, 30), (self.ox - 2, self.oy - 2, mw + 4, mh + 4))
         g = self.game_surface() if self.game_look else None
-        ref = self.ref_picture(mw, mh) if self.show_ref else None
+        rp = self.ref_picture() if self.show_ref else None
+        ref, rpos = rp if rp else (None, None)
+        framing = bool(getattr(self, "ref_adjust", False) and self.doc.ref)
+        on_map = canvas.clip(pygame.Rect(self.ox, self.oy, mw, mh))
         mode = self.ref_mode() if ref is not None else "top"
         under = mode == "under"
         if mode == "trace":                 # (a tracing layer: the picture, faded by Strength, and over it what's been put down)
             ref.set_alpha(self.doc.ref.get("alpha", 140))
-            s.blit(ref, (self.ox, self.oy))
+            s.set_clip(canvas if framing else on_map)
+            s.blit(ref, rpos)
+            s.set_clip(canvas)
             tr = self.trace_surface() if g is not None else None
             if tr is not None:
                 s.blit(tr, (self.ox, self.oy))
@@ -1564,7 +1958,9 @@ class MapMaker(ParkBuilder):
                             s.fill(FLAT.get(c) or tuple(self._roof(c)), (self.ox + x * Z, self.oy + y * Z, Z, Z))
         elif under:
             ref.set_alpha(255)
-            s.blit(ref, (self.ox, self.oy))
+            s.set_clip(canvas if framing else on_map)
+            s.blit(ref, rpos)
+            s.set_clip(canvas)
         if mode == "trace":
             pass
         elif g is not None:
@@ -1600,7 +1996,16 @@ class MapMaker(ParkBuilder):
                         s.blit(t, t.get_rect(center=(cx, cy)))
         if ref is not None and mode == "top":
             ref.set_alpha(self.doc.ref.get("alpha", 140))
-            s.blit(ref, (self.ox, self.oy))
+            s.set_clip(canvas if framing else on_map)
+            s.blit(ref, rpos)
+            s.set_clip(canvas)
+        if framing:     # (the picture's outline and corners while it's being framed)
+            x, y, w, h = self.ref_rect()
+            R = pygame.Rect(round(self.ox + x * Z), round(self.oy + y * Z), round(w * Z), round(h * Z))
+            pygame.draw.rect(s, (255, 220, 40), R, 3)
+            for c in (R.topleft, R.topright, R.bottomleft, R.bottomright):
+                pygame.draw.circle(s, (255, 220, 40), c, 6)
+            pygame.draw.rect(s, (255, 255, 255), (self.ox, self.oy, mw, mh), 1)
         if self.show_levels:
             tint = [(0, 0, 120, 70), (0, 120, 0, 50), (200, 160, 0, 70), (200, 40, 40, 80)]
             lay = pygame.Surface((mw, mh), pygame.SRCALPHA)

@@ -1,0 +1,165 @@
+{
+ "328_remake_old_style_new_til_1": {
+  "name": "Remake - Old style, new Ti 1",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   7,
+   6
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Remake - Old style, new Ti 1",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "329_remake_old_style_new_til_1": {
+  "name": "Remake - Old style, new Ti 1",
+  "ox": 0,
+  "oy": 192,
+  "foot": [
+   11,
+   5
+  ],
+  "doors": [
+   5
+  ],
+  "kind": "house",
+  "label": "Remake - Old style, new Ti 1",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "329_remake_old_style_new_til_2": {
+  "name": "Remake - Old style, new Ti 2",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   9,
+   3
+  ],
+  "doors": [
+   4
+  ],
+  "kind": "house",
+  "label": "Remake - Old style, new Ti 2",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "329_remake_old_style_new_til_3": {
+  "name": "Remake - Old style, new Ti 3",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   8,
+   2
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Remake - Old style, new Ti 3",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "329_remake_old_style_new_til_5": {
+  "name": "Remake - Old style, new Ti 5",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Remake - Old style, new Ti 5",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Trees & plants",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "330_remake_old_style_new_til_1": {
+  "name": "Remake - Old style, new Ti 1",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   8,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Remake - Old style, new Ti 1",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "330_remake_old_style_new_til_2": {
+  "name": "Remake - Old style, new Ti 2",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Remake - Old style, new Ti 2",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "group": "Houses",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "330_remake_old_style_new_til_3": {
+  "name": "Remake - Old style, new Ti 3",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Remake - Old style, new Ti 3",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ },
+ "330_remake_old_style_new_til_4": {
+  "name": "Remake - Old style, new Ti 4",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Remake - Old style, new Ti 4",
+  "credit": "The-Red-eX (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/the-red-ex/art/Remake-Old-style-new-Tile-5-432892663)",
+  "theme": "Town",
+  "gen": "Gen 3",
+  "artist": "The-Red-eX"
+ }
+}

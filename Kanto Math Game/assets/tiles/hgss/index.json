@@ -1,0 +1,534 @@
+{
+ "tree_green": {
+  "name": "Round tree (green)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Round tree (green)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_olive": {
+  "name": "Round tree (olive)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Round tree (olive)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_gold": {
+  "name": "Round tree (gold)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Round tree (gold)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_rust": {
+  "name": "Round tree (rust)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Round tree (rust)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_orange": {
+  "name": "Round tree (orange)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Round tree (orange)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_pink": {
+  "name": "Blossom tree",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Blossom tree",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "pine_green": {
+  "name": "Pine (green)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Pine (green)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "pine_olive": {
+  "name": "Pine (olive)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Pine (olive)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "pine_brown": {
+  "name": "Pine (brown)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Pine (brown)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "pine_blue": {
+  "name": "Pine (blue)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Pine (blue)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_lime": {
+  "name": "Leafy tree (lime)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Leafy tree (lime)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_autumn": {
+  "name": "Leafy tree (autumn)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Leafy tree (autumn)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "tree_red": {
+  "name": "Leafy tree (red)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Leafy tree (red)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "dead_tree": {
+  "name": "Dead tree",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Dead tree",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "log": {
+  "name": "Log",
+  "ox": 0,
+  "oy": 32,
+  "foot": [
+   2,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Log",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "mart": {
+  "name": "Poke Mart (HGSS)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "mart",
+  "label": "Poke Mart (HGSS)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "mart_2": {
+  "name": "Poke Mart (HGSS, 2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "mart",
+  "label": "Poke Mart (HGSS, 2)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "teal_hall": {
+  "name": "Teal-roof hall",
+  "ox": 0,
+  "oy": 160,
+  "foot": [
+   6,
+   4
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Teal-roof hall",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "group": "Landmarks",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "red_house": {
+  "name": "Red-roof house",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Red-roof house",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "red_house_wide": {
+  "name": "Red-roof house (wide)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   5,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Red-roof house (wide)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "red_house_slant": {
+  "name": "Red-roof house (slanted)",
+  "ox": 32,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Red-roof house (slanted)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "orange_flat": {
+  "name": "Orange flat-roof shop",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Orange flat-roof shop",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "orange_flat_wide": {
+  "name": "Orange flat-roof shop (wide)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Orange flat-roof shop (wide)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "blue_tower": {
+  "name": "Blue tower",
+  "ox": 0,
+  "oy": 128,
+  "foot": [
+   5,
+   4
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue tower",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "blue_house": {
+  "name": "Blue-roof house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue-roof house",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "blue_house_wide": {
+  "name": "Blue-roof house (wide)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Blue-roof house (wide)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "blue_house_2": {
+  "name": "Blue-roof house (2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue-roof house (2)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "blue_gable": {
+  "name": "Blue gable house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   6,
+   3
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Blue gable house",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "blue_gable_wide": {
+  "name": "Blue gable house (wide)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   7,
+   3
+  ],
+  "doors": [
+   3
+  ],
+  "kind": "house",
+  "label": "Blue gable house (wide)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "grey_house": {
+  "name": "Grey stone house",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Grey stone house",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "grey_house_2": {
+  "name": "Grey stone house (2)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   4,
+   2
+  ],
+  "doors": [
+   1
+  ],
+  "kind": "house",
+  "label": "Grey stone house (2)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "grey_house_3": {
+  "name": "Grey stone house (3)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Grey stone house (3)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ },
+ "grey_house_4": {
+  "name": "Grey stone house (4)",
+  "ox": 0,
+  "oy": 96,
+  "foot": [
+   5,
+   2
+  ],
+  "doors": [
+   2
+  ],
+  "kind": "house",
+  "label": "Grey stone house (4)",
+  "credit": "Akizakura16 (Gen 4 HGSS outdoor tileset; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Akizakura16"
+ }
+}
