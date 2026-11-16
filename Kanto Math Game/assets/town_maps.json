@@ -43858,7 +43858,14 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "I'm shaking trees with Headbutt. Sometimes a Pokemon falls out! Try it with your Pokemon too."
+      "I'm shaking trees with Headbutt. Sometimes a Pokemon falls out! Here, you try it with your Pokemon too."
+     ],
+     "tutor": {
+      "move": "HEADBUTT",
+      "like": "HEADBUTT"
+     },
+     "fail": [
+      "Hmm, none of your Pokemon can learn Headbutt. Too bad!"
      ]
     }
    },
@@ -44353,7 +44360,7 @@
    "ooooooooooooooooooookeeeQQQeeeRRReeekooooooooooooooo~ΡΡΡΡΡΡΡSSSSSSSeaaaaaaeeΞΞΞΞNNΗΗΗΗΗΗΗΗeeeecc",
    "ooooooooooooooooooookeeeQQQeeeRRReeekooooooooooooooo~ΡΡΡΡΡΡΡSSSSSSSeaaaaaaeeΞΞΞΞeeΘΘΘΘeeeeeeeecc",
    "ooooooooooooooooooookeeeQQQeeeRRReeekooooooooooooooo~ΡΡΡΡΡΡΡSSSDSSSeaaaaaaekΞΞΞΞeeeeUUUUeeeeeecc",
-   "ooooooooooooooooooookeeeeeeeeeeeeeeekooooooooo~~oooo~ΣΣΣeeeeeeeee!NeaaaaaaekΞΞΞΞeeeeUUUUeΙΙΙΙecc",
+   "ooooooooooooooooooookeeeeeeeeeeeeeeekooooooooo~~oooo~ΣΣΣeeeeeNeee!NeaaaaaaekΞΞΞΞeeeeUUUUeΙΙΙΙecc",
    "ooooooooooooooooooookleeeeeeeeeeeeelkooooooooo~~oooo~ΣΣΣeeeeeeeeeeeeaaaaaaekΞΞΞΞeeeeUDUUeΙΙΙΙecc",
    "ooooooooooooooooooookkkkkkkkkkkkkkkkkoooooooooookkkk~ΣΣΣeeeeeeWWWWWeaaaaaaekΞΞΞΞeeeeeeeelΙΙΙΙecc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookeee~VVVeeΑΑΑΑWWWWWeaaaaaaeYYYYYYΟΟΟΟeeeeeΚΚΚΚcc",
@@ -45108,6 +45115,32 @@
     "event": {
      "lines": [
       "Our dream is so close now... after such a long wait!"
+     ]
+    }
+   },
+   {
+    "text": "Move Tutor",
+    "action": "EVENT",
+    "condition": {
+     "any": [
+      "weekday:wed",
+      "weekday:sat"
+     ]
+    },
+    "flag_condition": "beat_johto_champion",
+    "event": {
+     "lines": [
+      "I'm the Move Tutor! Today I'll teach one of three special moves to one of your Pokemon. Which will it be?"
+     ],
+     "tutor": {
+      "choices": [
+       "FLAMETHROWER",
+       "THUNDERBOLT",
+       "ICE-BEAM"
+      ]
+     },
+     "fail": [
+      "Hmm, none of your Pokemon can learn that one."
      ]
     }
    },
@@ -71267,21 +71300,98 @@
     "px": 32
    }
   ],
+  "people": [
+   {
+    "text": "Den guard",
+    "action": "EVENT",
+    "condition": "not:has_rising_badge",
+    "event": {
+     "lines": [
+      "No. Only Trainers who have been chosen may train in the Dragon's Den. Please leave."
+     ]
+    }
+   },
+   {
+    "text": "Den guard ",
+    "action": "EVENT",
+    "condition": "has_rising_badge",
+    "event": {
+     "lines": [
+      "If Clair allows it, her grandfather, our Master, will too. You may enter."
+     ]
+    }
+   },
+   {
+    "text": "Gym guide",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Clair, our Gym Leader, is waiting for you. Few Trainers can match her dragons. Good luck!"
+     ]
+    }
+   },
+   {
+    "text": "Youngster",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Those Trainers they call Dragon Tamers all come from Blackthorn!"
+     ]
+    }
+   },
+   {
+    "text": "Girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Wow, you came through the Ice Path? You must be a real hotshot Trainer!"
+     ]
+    }
+   },
+   {
+    "text": "Santos",
+    "action": "EVENT",
+    "condition": "weekday:sat",
+    "event": {
+     "lines": [
+      "...Saturday's my day... I'm Santos...",
+      "Santos: ...Here. Soft Sand. A Pokemon holding it hits harder with Ground-type moves..."
+     ],
+     "gift_item": {
+      "SOFT_SAND": 1
+     },
+     "flag": "got_soft_sand_blackthorn_city",
+     "done": [
+      "Santos: ...See you next Saturday..."
+     ]
+    },
+    "color": "GOLD"
+   },
+   {
+    "text": "Woman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Are you here to make your Pokemon forget some moves? The house over there can help... sometimes."
+     ]
+    }
+   }
+  ],
   "rooms": {
    "gym": {
     "theme": "room",
     "art": [
      "ccmmmmmmmmmmmmmmmmmmmmmmc",
-     "ccmmmmmcmmmmmmmcmmmmmmmmc",
-     "ccmmmmmcccccccccmmmmmmmmc",
-     "ccmmmmmmcccccccmmmmmmmmmc",
-     "ccmmmmmmcccccccmmmmmmmmmc",
-     "ccmmmmmmm.....cmcccccmmmc",
-     "ccmmmmmmm..N..mmcccccmmmc",
-     "ccmmmmmmm.....mccccccmmmc",
-     "cccccccmm.....mccccccmmmc",
-     "cccccccmm.....cccccccmmmc",
-     "ccccccccm............mmmc",
+     "ccmmmmmmmmmmmmmmmmmmmmmmc",
+     "ccmmmmmmm.....mmmmmmmmmmc",
+     "ccmmmmmmm..N..mmmmmmmmmmc",
+     "ccmmmmmmm.....mmmmmmmmmmc",
+     "ccmmmmmmm............mmmc",
+     "ccmmmmmmm............mmmc",
+     "ccmmmmmmm............mmmc",
+     "ccm..................mmmc",
+     "ccm..................mmmc",
+     "ccm..................mmmc",
      "ccm..................mmmc",
      "ccm..................mmmc",
      "ccm..................mmmc",
@@ -71291,79 +71401,74 @@
      "ccm....................mc",
      "ccm....................mc",
      "ccmm...................mc",
-     "ccmm...................mc",
-     "ccmm...................mc",
-     "ccmm...................mc",
-     "ccmm.mcm...............mc",
+     "ccmm.mmm...............mc",
      "ccmm.mcm...............mc",
      "ccmm.mmm...............mc",
-     "ccmm.ccc.cm............mc",
-     "ccmm.ccc.cm.......mcm..mc",
+     "ccmm....mmm............mc",
+     "ccmm....mcm.......mmm..mc",
      "ccmm....mmm.......mcm..mc",
-     "ccm.....ccc.......mmm..mc",
-     "ccm.....ccc.......ccc..mc",
-     "ccm...............ccc..mc",
-     "cmm....................mc",
-     "cmm....................mc",
-     "cc.....................mc",
-     "cm.....................mc",
-     "cm....................mmc",
-     "c.....................mmc",
-     "c....................cmmc",
-     "c....................cmmc",
-     "c..........m...m.....mccc",
-     "c..........m...mc....mccc",
-     "c.......mc.m...mmmmm.cccc",
-     "cc......mc.m............c",
-     "cm......mmmm............c",
-     "cm......cccm............c",
-     "cmm.....cccmmmm......mmmc",
-     "cmccm......cccm......mmmc",
-     "cmmmcm.....cccm......mmmc",
-     "cc.mcm........mmm....mmmc",
-     "cm.mmm........ccm....mmmc",
-     "cm.ccc........ccmm...mmmc",
-     "cm.ccc..........cc...mmmc",
-     "cm..............cc...mmmc",
+     "ccmm..............mmm..mc",
+     "ccmm...................mc",
+     "ccmm...................mc",
+     "ccm....................mc",
+     "ccm....................mc",
+     "ccm....................mc",
+     "cmm...................mmc",
+     "cmm...................mmc",
+     "cm...................mmmc",
+     "cm...................mmmc",
+     "cm...................mmmc",
+     "c..........m...m.....mmmc",
+     "c..........m...m.....mmmc",
+     "c.......mmmm...mmmmmmmmmc",
+     "c.......mcmm............c",
+     "c.......mmmm............c",
+     "c..........m............c",
+     "cm.........mmmm......mmmc",
+     "cmm...........m......mmmc",
+     "cmmmmm........m......mmmc",
+     "cmmmcm........mmm....mmmc",
+     "cmmmmm..........m....mmmc",
+     "cmm.............mm...mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
-     "cm...................cmmc",
-     "cm...................cmmc",
-     "cc...................mmmc",
      "cm...................mmmc",
-     "cmcc..............mmcmmmc",
-     "ccmm...mmm........ccmmmmc",
-     "c........m.mmmm...ccccccc",
-     "c.............m......cccc",
-     "c.............m......cccc",
+     "cm...................mmmc",
+     "cm...................mmmc",
+     "cm...................mmmc",
+     "cm...................mmmc",
+     "cm...................mmmc",
+     "cm................mmmmmmc",
+     "cmmm...mmm...........mmmc",
+     "c........mmmmmm......mmmc",
+     "c.............m......mmmc",
+     "c.............m......mmmc",
      "cmmm..........m......cccc",
-     "cmm...........m......cccc",
-     "cmm.mmmm......m......cccc",
-     "cmm.cccmmmm...m......cccc",
-     "cc..ccccccm...m......cccc",
-     "cm.....cccm...m......cccc",
-     "cm........m...m......cccc",
-     "cm........c...c......cccc",
-     "cm........c...c......cccc",
+     "cmmm..........m......cccc",
+     "cmmmmmmm......m......cccc",
+     "cmmm...mmmm...m......cccc",
+     "cmm.......m...m......cccc",
+     "cmm.......m...m......cccc",
+     "cmm.......m...m......cccc",
+     "cm...................cccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
-     "cmm...............mmmcccc",
-     "cmm...............mmmcccc",
-     "cmm......cm...m...mmmcccc",
-     "cmmm.mmmmmm...mmm.mmmcccc",
-     "cccccc............ccccccc",
-     "cccccc............ccccccc",
-     "cccccc............ccccccc",
+     "cm................mmmcccc",
+     "cm................mmmcccc",
+     "cm................mmmcccc",
+     "cm........m...m...mmmcccc",
+     "cmmmmmmmmmm...mmmmmmmcccc",
+     "cmmmmm............mmmcccc",
+     "cmmmmm............mmmcccc",
+     "cmmmmm............mmmcccc",
      "cccccc....c...c...ccccccc",
      "cccccc....j...j...ccccccc",
      "cccccc......v.....ccccccc",
-     "ccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -73922,42 +74027,15 @@
       150,
       154,
       172
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T30GYM0101.png",
-      "at": [
-       1,
-       1
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Gym"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T30GYM0101.png",
-      "at": [
-       1,
-       1
-      ],
-      "size": [
-       25,
-       94
-      ],
-      "px": 32
-     }
     ]
    },
    "dratinihouse": {
     "theme": "room",
     "art": [
-     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmmN...mmc",
@@ -74040,43 +74118,16 @@
       236,
       232,
       214
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T30R0201.png",
-      "at": [
-       0,
-       4
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Dratini",
      "Old woman"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T30R0201.png",
-      "at": [
-       0,
-       4
-      ],
-      "size": [
-       11,
-       10
-      ],
-      "px": 32
-     }
     ]
    },
    "dodriotrade": {
     "theme": "room",
     "art": [
-     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm....mmc",
@@ -74159,42 +74210,15 @@
       236,
       232,
       214
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T30R0301.png",
-      "at": [
-       0,
-       4
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Trader"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T30R0301.png",
-      "at": [
-       0,
-       4
-      ],
-      "size": [
-       11,
-       10
-      ],
-      "px": 32
-     }
     ]
    },
    "mart": {
     "theme": "room",
     "art": [
-     "cccccccccccccc",
      "cccccccccccccc",
      "cccccccccccccc",
      "ccccmmmmcccccc",
@@ -74382,36 +74406,10 @@
       190,
       206,
       226
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T30FS0101.png",
-      "at": [
-       0,
-       3
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Shop"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T30FS0101.png",
-      "at": [
-       0,
-       3
-      ],
-      "size": [
-       14,
-       14
-      ],
-      "px": 32
-     }
     ]
    },
    "center": {
@@ -74419,27 +74417,21 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccczc",
+     "ccccccNcccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
-     "c..cccccccccc..cc",
-     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmNcmc....c",
-     "c..c.cccmccm....c",
+     "c..c.cmmccmc....c",
+     "c..c.ccccccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
-     "cc............ccc",
+     "c..............cc",
+     "c.............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -74536,42 +74528,15 @@
       236,
       200,
       190
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T30PC0101.png",
-      "at": [
-       0,
-       0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Heal"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T30PC0101.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       17,
-       25
-      ],
-      "px": 32
-     }
     ]
    },
    "movehouse": {
     "theme": "room",
     "art": [
-     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm....mmc",
@@ -74654,39 +74619,13 @@
       236,
       232,
       214
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T30R0601.png",
-      "at": [
-       0,
-       4
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Move Reminder",
      "Move Deleter",
      "Grandma Wilma",
      "Old man"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T30R0601.png",
-      "at": [
-       0,
-       4
-      ],
-      "size": [
-       11,
-       10
-      ],
-      "px": 32
-     }
     ]
    }
   },
@@ -74697,84 +74636,7 @@
    "27,48": "mart",
    "34,48": "center",
    "18,48": "movehouse"
-  },
-  "people": [
-   {
-    "text": "Den guard",
-    "action": "EVENT",
-    "condition": "not:has_rising_badge",
-    "event": {
-     "lines": [
-      "No. Only Trainers who have been chosen may train in the Dragon's Den. Please leave."
-     ]
-    }
-   },
-   {
-    "text": "Den guard ",
-    "action": "EVENT",
-    "condition": "has_rising_badge",
-    "event": {
-     "lines": [
-      "If Clair allows it, her grandfather, our Master, will too. You may enter."
-     ]
-    }
-   },
-   {
-    "text": "Gym guide",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Clair, our Gym Leader, is waiting for you. Few Trainers can match her dragons. Good luck!"
-     ]
-    }
-   },
-   {
-    "text": "Youngster",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Those Trainers they call Dragon Tamers all come from Blackthorn!"
-     ]
-    }
-   },
-   {
-    "text": "Girl",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Wow, you came through the Ice Path? You must be a real hotshot Trainer!"
-     ]
-    }
-   },
-   {
-    "text": "Santos",
-    "action": "EVENT",
-    "condition": "weekday:sat",
-    "event": {
-     "lines": [
-      "...Saturday's my day... I'm Santos...",
-      "Santos: ...Here. Soft Sand. A Pokemon holding it hits harder with Ground-type moves..."
-     ],
-     "gift_item": {
-      "SOFT_SAND": 1
-     },
-     "flag": "got_soft_sand_blackthorn_city",
-     "done": [
-      "Santos: ...See you next Saturday..."
-     ]
-    },
-    "color": "GOLD"
-   },
-   {
-    "text": "Woman",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Are you here to make your Pokemon forget some moves? The house over there can help... sometimes."
-     ]
-    }
-   }
-  ]
+  }
  },
  "DRAGONS_DEN": {
   "theme": "cave",

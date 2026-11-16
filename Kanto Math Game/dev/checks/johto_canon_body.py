@@ -638,5 +638,33 @@ _bo = _area["BLACKTHORN_CITY"]["explore_options"]
 check(any((o.get("event") or {}).get("trade", {}).get("give") == 85 for o in _bo) and {"dratinihouse", "dodriotrade", "movehouse"} <= set(_tm["BLACKTHORN_CITY"].get("rooms", {})),
       "...the Dodrio-for-Dragonair trade (Doris holds a Smoke Ball), the Dratini house and the move house are open")
 check(_it.HELD_BOOSTS.get("SOFT_SAND") == "GROUND", "Soft Sand powers up Ground-type moves")
+# ---- move tutors (Jordan 11-15): Ilex Forest's Headbutt, Grandma Wilma's Draco Meteor, the ultimate moves, Crystal's Goldenrod tutor;
+#      the Move Deleter and Reminder are out of work (our Pokemon keep every move)
+from src.pokemon.data import Pokemon as _Pk
+from src.states.overworld.common import _tutor_teach
+def _mon(pid, friend=70):
+    m = _Pk(g.loader.fetch_specific(pid), g.assets); m.level = 40; m.friendship = friend; return m
+_keep_team = list(story.player_team)
+_ilex = next((q for p in _tm["ILEX_FOREST"].get("people", []) if isinstance(p, dict) for q in (p.get("any") or [p]) if q.get("text") == "Tree shaker"), {})
+story.player_team = [_mon(25)]
+_o = _tutor_teach(g, _ilex["event"]["tutor"], _ilex["event"]) if _ilex.get("event", {}).get("tutor") else ["\x00fail"]
+check(_o[0] != "\x00fail" and "HEADBUTT" in __import__("src.pokemon.moves", fromlist=["move_pool"]).move_pool(g, story.player_team[0]),
+      f"Ilex Forest: the tree shaker teaches Headbutt ({_o[:1]})")
+_wil = next(o for o in _area["BLACKTHORN_CITY"]["explore_options"] if o.get("text") == "Grandma Wilma")["event"]
+story.player_team = [_mon(147, 100)]
+_o1 = _tutor_teach(g, _wil["tutor"], _wil)
+story.player_team = [_mon(147, 255)]
+_o2 = _tutor_teach(g, _wil["tutor"], _wil)
+check(_o1[0] == "\x00fail" and "close" in _o1[1] and _o2[0] != "\x00fail", "Blackthorn: Grandma Wilma teaches Draco Meteor to a Dragon that loves you")
+_ult = next(o for o in _area["BLACKTHORN_CITY"]["explore_options"] if o.get("text") == "Old man")["event"]
+story.player_team = [_mon(154, 255)]
+check(_ult["tutor"].get("choices") == ["FRENZY-PLANT", "BLAST-BURN", "HYDRO-CANNON"] and _tutor_teach(g, dict(_ult["tutor"], move="FRENZY-PLANT", like="FRENZY-PLANT"), _ult)[0] != "\x00fail",
+      "...and the master teaches Meganium Frenzy Plant (the starters' ultimate moves)")
+_del = next(o for o in _area["BLACKTHORN_CITY"]["explore_options"] if o.get("text") == "Move Deleter")["event"]
+check("every move" in " ".join(_del["lines"]) and not _del.get("tutor"), "...the Move Deleter's out of work: Pokemon keep every move now")
+_gt = next((q for p in _tm["GOLDENROD_CITY"].get("people", []) if isinstance(p, dict) for q in (p.get("any") or [p]) if q.get("text") == "Move Tutor"), {})
+check(_gt.get("flag_condition") == "beat_johto_champion" and _gt["event"]["tutor"]["choices"] == ["FLAMETHROWER", "THUNDERBOLT", "ICE-BEAM"],
+      "Goldenrod (Crystal): the Move Tutor, Wednesdays and Saturdays after the title")
+story.player_team = _keep_team
 if fails:
     print("FAILS:", len(fails))

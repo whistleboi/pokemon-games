@@ -624,24 +624,22 @@ def _run_story_event(state, key, check, show):
         story.inventory[cr["gives"]] = story.inventory.get(cr["gives"], 0) + 1
         from src.pokemon import forms as _forms
         lines.append(f"{game.player_name} received the {_forms.item_label(cr['gives']).upper()}!")
-    if ev.get("tutor"):  # a move tutor (Pacifidlog's Explosion man): {"move", "like": a TM move whose learners can learn it too}
-        tu = ev["tutor"]
-        import json as _json, os as _os
-        try:
-            learners = set(_json.load(open(_os.path.join("assets", "tm_learners.json"), encoding="utf-8")).get(tu.get("like", ""), []))
-        except (OSError, ValueError):
-            learners = set()
-        from src.pokemon import moves as _mv
-        who = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)
-                    and (int(p.id) in learners or str(p.id) in learners or tu["move"] in _mv.learnable(game, p))
-                    and tu["move"] not in (_mv.move_pool(game, p) or [])), None)
-        if who is None:
-            show(_resolve_lines(game, ev.get("fail") or ["None of your Pokemon can learn it right now."]))
+    if ev.get("tutor"):  # a move tutor (Pacifidlog's Explosion man): {"move", "like": a TM move whose learners can learn it too,
+        tu = ev["tutor"]   #   "choices": [moves] for a menu (Crystal's Goldenrod tutor), "min_friend": it must love you (Grandma Wilma)}
+        if tu.get("choices"):
+            from src.states.systems.pick_list import PickListState
+            def chose(mv):
+                if mv is None:
+                    show(_resolve_lines(game, ev.get("cancel") or ["Come back any time!"]))
+                    return
+                show(_resolve_lines(game, _tutor_teach(game, dict(tu, move=mv, like=mv), ev)))
+            game.change_state(PickListState(game, state, "WHICH MOVE?", [(m.replace("-", " "), m) for m in tu["choices"]], chose))
             return
-        _mv.move_pool(game, who).append(tu["move"])
-        if len(who.moves) < _mv.MAX_MOVES:
-            who.moves.append(tu["move"])
-        lines.append(f"{who.display_name.upper()} learned {tu['move'].replace('-', ' ')}! (Set its moves in the Summary.)")
+        out = _tutor_teach(game, tu, ev)
+        if out and out[0] == "\x00fail":
+            show(_resolve_lines(game, out[1:]))
+            return
+        lines += out
     if ev.get("friend_check"):  # (Goldenrod's friendship checker, HGSS: how your first Pokemon feels about you)
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
         f = max(int(getattr(lead, "friendship", 0) or 0), int(getattr(lead, "affection", 0) or 0)) if lead else 0
@@ -815,6 +813,33 @@ def _start_event_puzzle(state, ev, lines, show):
         show(out or ["..."])
 
     game.change_state(GymPuzzleState(game, story.current_area_key, ev["puzzle"], done))
+
+
+def _tutor_teach(game, tu, ev):
+    """Teach tu["move"] to the first party Pokemon that can learn it (and, with "min_friend", loves you enough): its lines, or
+    ["\x00fail", ...] when nobody can."""
+    import json as _json, os as _os
+    from src.pokemon import moves as _mv
+    story = game.story_manager
+    try:
+        learners = set(_json.load(open(_os.path.join("assets", "tm_learners.json"), encoding="utf-8")).get(tu.get("like") or tu["move"], []))
+    except (OSError, ValueError):
+        learners = set()
+    can = [p for p in story.player_team if p and not getattr(p, "is_egg", False)
+           and (int(p.id) in learners or str(p.id) in learners or tu["move"] in _mv.learnable(game, p))
+           and tu["move"] not in (_mv.move_pool(game, p) or [])]
+    if tu.get("min_friend"):
+        close = [p for p in can if max(int(getattr(p, "friendship", 0) or 0), int(getattr(p, "affection", 0) or 0)) >= int(tu["min_friend"])]
+        if can and not close:
+            return ["\x00fail"] + list(ev.get("not_close") or ["That Pokemon could learn it, but it doesn't trust you enough yet. Come back when you're closer!"])
+        can = close
+    if not can:
+        return ["\x00fail"] + list(ev.get("fail") or ["None of your Pokemon can learn it right now."])
+    who = can[0]
+    _mv.move_pool(game, who).append(tu["move"])
+    if len(who.moves) < _mv.MAX_MOVES:
+        who.moves.append(tu["move"])
+    return [f"{who.display_name.upper()} learned {tu['move'].replace('-', ' ')}! (Set its moves in the Summary.)"]
 
 
 def _teach_move(game, teach):

@@ -6642,6 +6642,96 @@
     },
     "BLACKTHORN_CITY:Santos": {
       "sheet": "hg_gsboy3.png"
+    },
+    "GOLDENROD_CITY:Move Tutor": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "JOHTO_ROUTE_39:Farmer": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "JOHTO_ROUTE_39:Farmer ": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "JOHTO_ROUTE_39:Twin": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "JOHTO_ROUTE_39:Twin ": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "JOHTO_ROUTE_39:Farmer's wife": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "CIANWOOD_CITY:Gym": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "CIANWOOD_CITY:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "CIANWOOD_CITY:Shop": {
+      "sheet": "hg_sunglasses.png"
+    },
+    "CIANWOOD_CITY:Kirk": {
+      "sheet": "hg_gsman2.png"
+    },
+    "CIANWOOD_CITY:Woman": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "CIANWOOD_CITY:Girl": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "CIANWOOD_CITY:Boy": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "CIANWOOD_CITY:Photographer": {
+      "sheet": "hg_fishing.png"
+    },
+    "MAHOGANY_TOWN:Gym": {
+      "sheet": "hg_gsleader7.png"
+    },
+    "MAHOGANY_TOWN:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "MAHOGANY_TOWN:Man": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "MAHOGANY_TOWN:Girl": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "LAKE_OF_RAGE:Hermit": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "LAKE_OF_RAGE:Fishing Guru": {
+      "sheet": "hg_fishing.png"
+    },
+    "MAHOGANY_TOWN:Dragonite": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "BLACKTHORN_CITY:Gym": {
+      "sheet": "hg_gsleader8.png"
+    },
+    "BLACKTHORN_CITY:Old woman": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "BLACKTHORN_CITY:Trader": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "BLACKTHORN_CITY:Shop": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "BLACKTHORN_CITY:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "BLACKTHORN_CITY:Move Deleter": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "BLACKTHORN_CITY:Move Reminder": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "BLACKTHORN_CITY:Grandma Wilma": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "BLACKTHORN_CITY:Old man": {
+      "sheet": "hg_gsoldman1.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -6792,6 +6882,7 @@
     "professor_oak.png": "fr_71.png"
   },
   "trainers_JOHTO": {
+    "ace_trainer.png": "hg_gsman3.png",
     "acetrainer_f.png": "hg_gswoman3.png",
     "acetrainer_m.png": "hg_gsman3.png",
     "ariana.png": "hg_rkanbuw.png",
@@ -6825,6 +6916,9 @@
     "scientist.png": "hg_assistantm.png",
     "super_nerd.png": "hg_gsassistantm.png",
     "supernerd.png": "hg_mania.png",
+    "swimmer.png": "hg_gsswimmerw.png",
+    "swimmer_f.png": "hg_gsswimmerw.png",
+    "swimmer_m.png": "hg_gsswimmerm.png",
     "team_rocket.png": "hg_rocketm.png",
     "twins.png": "hg_gsbabygirl1.png",
     "youngster.png": "hg_gsboy2.png"
