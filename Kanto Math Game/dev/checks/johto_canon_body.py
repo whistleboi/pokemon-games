@@ -483,7 +483,7 @@ check((_wife.get("event") or {}).get("gift_item", {}).get("TM136") and _wife["ev
       "...the farmer's wife then gives TM Natural Gift, and the farm sells Moomoo Milk")
 _ol = _area["OLIVINE_CITY"]["explore_options"]
 _gift = lambda door, item: any(o.get("door") == door and (o.get("event") or {}).get("gift_item", {}).get(item) for o in _ol)
-check(_gift("guru", "GOOD_ROD") and _gift("cafe", "HM_STRENGTH"), "Olivine: the Fishing Guru's Good Rod, and Strength from the cafe's sailor")
+check(_gift("guru", "GOOD_ROD") and not _gift("cafe", "HM_STRENGTH"), "Olivine: the Fishing Guru's Good Rod (Strength isn't the cafe's in HGSS)")
 check(_hms.HM_BY_BADGE["JOHTO"].get("PLAIN") is None and _hms.USE_BADGE["JOHTO"].get("HM_STRENGTH") == "PLAIN", "...Strength usable with the Plain Badge (no longer given by it)")
 check(any((o.get("event") or {}).get("trade", {}).get("want") == 98 for o in _ol), "...the Krabby-for-Voltorb trade (Billy holds a Cheri Berry)")
 # ---- N9: Cianwood, Routes 40 and 41 (HGSS)
@@ -527,5 +527,14 @@ if _rw is None:
 else:
     _inv["RAINBOW_WING"] = _rw
 check(any((t.get("rewards") or {}).get("TIDAL_BELL") for t in _area["ECRUTEAK_DANCE_THEATER"]["trainer_pool"]), "...which Kimono Girl Miki gives after the dance")
+# ---- N10: Route 42, Mahogany, Mt. Mortar (HGSS)
+_r42 = {p.get("text"): p for p in _ppl("JOHTO_ROUTE_42")}
+check(((_r42.get("Hiker") or {}).get("event") or {}).get("gift_item", {}).get("HM_STRENGTH")
+      and any(sc.get("flag") == "johto_strength_hiker" for sc in _tm["JOHTO_ROUTE_42"].get("scenes", [])),
+      "Route 42: a Hiker comes charging out of Mt. Mortar and gives you Strength")
+check(sum("APRICORN TREE" in t for t in _r42) == 3, "...and the three Apricorn trees (Pink, Green, Yellow)")
+_ky = next((t for t in _area["MT_MORTAR"]["trainer_pool"] if t["name"] == "Karate King Kiyo"), {})
+check((_ky.get("rewards") or {}).get("POKEMON_236") and "TYROGUE" not in (_ky.get("rewards") or {}), "Mt. Mortar: Karate King Kiyo gives a Tyrogue (the Pokemon, not a bag item)")
+check("radiohouse" in _tm["MAHOGANY_TOWN"].get("rooms", {}), "Mahogany: the house by the Center is open")
 if fails:
     print("FAILS:", len(fails))

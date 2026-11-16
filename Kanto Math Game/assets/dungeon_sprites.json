@@ -6390,6 +6390,102 @@
     },
     "WHIRL_ISLANDS:Old man": {
       "sheet": "hg_gsoldman1.png"
+    },
+    "JOHTO_ROUTE_42:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_42:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_42:DUBIOUS DISC": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:TM65": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:IRON BALL": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:IRON": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:FULL INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:PROTECTOR": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:MAX POTION ": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:TM121": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:DRAGON SCALE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:ESCAPE ROPE ": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "MAHOGANY_TOWN:RageCandyBar man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "MAHOGANY_TOWN:Old man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "MAHOGANY_TOWN:Woman": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "JOHTO_ROUTE_42:Hiker": {
+      "sheet": "hg_mount.png"
+    },
+    "JOHTO_ROUTE_42:PINK APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_p.png"
+    },
+    "JOHTO_ROUTE_42:GREEN APRICORN TREE ": {
+      "pic": "tiles/ss/ow_bonguri_g.png"
+    },
+    "JOHTO_ROUTE_42:YELLOW APRICORN TREE  ": {
+      "pic": "tiles/ss/ow_bonguri_y.png"
     }
   },
   "townsperson": "NPC 17.png",

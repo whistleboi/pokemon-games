@@ -137,6 +137,12 @@
     "JOHTO_WHIRL_ISLANDS_DAY_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
     "JOHTO_WHIRL_ISLANDS_MORNING_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
     "JOHTO_WHIRL_ISLANDS_NIGHT_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
+    "JOHTO_MT_MORTAR_DAY_PERCENTAGES": {"41": 30, "74": 20, "66": 18, "19": 11, "75": 7, "67": 7, "20": 4, "183": 1, "42": 1, "2012": 1},
+    "JOHTO_MT_MORTAR_MORNING_PERCENTAGES": {"41": 30, "74": 20, "66": 18, "19": 11, "75": 7, "67": 7, "20": 4, "183": 1, "42": 1, "2012": 1},
+    "JOHTO_MT_MORTAR_NIGHT_PERCENTAGES": {"41": 30, "74": 20, "66": 18, "19": 11, "75": 7, "67": 7, "20": 4, "183": 1, "42": 1, "2012": 1},
+    "JOHTO_ROUTE_42_DAY_PERCENTAGES": {"179": 29, "21": 25, "56": 11, "23": 11, "180": 7, "19": 7, "20": 4, "22": 2, "24": 2, "2001": 1, "2002": 1},
+    "JOHTO_ROUTE_42_MORNING_PERCENTAGES": {"179": 29, "21": 25, "56": 11, "23": 11, "180": 7, "19": 7, "20": 4, "22": 2, "24": 2, "2001": 1, "2002": 1},
+    "JOHTO_ROUTE_42_NIGHT_PERCENTAGES": {"179": 29, "41": 25, "56": 11, "19": 11, "180": 7, "20": 7, "42": 6, "183": 2, "2001": 1, "2002": 1},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -1078,7 +1084,7 @@
 
                 {"action": "EVENT", "color": "GOLD", "event": {"lines": ["Olivine's right on the sea, and where there's sea, there's fish! I've fished here thirty years.", "You look like you've got an angler's soul. Take this rod and try it for yourself!"], "gift_item": {"GOOD_ROD": 1}, "flag": "got_good_rod_olivine", "done": ["How's the fishing? Land the big one yet?"]}, "text": "Fishing Guru", "door": "guru"},
 
-                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["Olivine Cafe's food makes a sailor strong! Strong enough to shift a boulder, even. Here, you try it!"], "gift_item": {"HM_STRENGTH": 1}, "flag": "got_hm_strength_olivine", "done": ["Strength lets your Pokemon push big boulders. You'll need the Plain Badge to use it outside battle."]}, "text": "Sailor", "door": "cafe"},
+                {"action": "EVENT", "event": {"lines": ["Olivine Cafe's menu is packed with hearty food for hungry sailors!"]}, "text": "Sailor", "door": "cafe"},
 
                 {"action": "EVENT", "event": {"lines": ["Gobble, gobble... Ack! Choking! ...Whew. I should chew before I swallow."]}, "text": "Fisherman", "door": "cafe"},
 
@@ -1153,28 +1159,49 @@
         },
 
         "MAHOGANY_TOWN": {
-        "area_type": "town",
-        "route_name": "Mahogany Town",
-        "region": "JOHTO",
-        "backgrounds": {
-            "main": "mahogany_town.png",
-            "pokecenter": "mahogany_center.png",
-            "pokemart": "mahogany_mart.png",
-            "gym": "battle_gym_mahogany.png"
-            },
-        "has_gym": true,
-        "gym": {"requirements": {"flag": "rocket_hq_cleared", "fail_text": ["Something strange is going on in Mahogany. Pryce won't battle while Team Rocket is in town.", "Maybe the trouble at the Lake of Rage is connected..."]}, "trainers": [{"name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true, "team": [124, 124], "rewards": {"balls": 2}}], "leader": {"name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png", "team": [86, 87, 221], "levels": [30, 32, 34], "badge_reward": "GLACIER", "rewards": {"balls": 5, "ICE_MELTER": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."], "player_won": ["Your math burned right through my defense.", "The path to Blackthorn is frozen solid. Take this.", "You received the ICE MELTER!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"86": ["ICY-WIND", "REST", "SNORE", "HAIL"], "87": ["AURORA-BEAM", "REST", "SLEEP-TALK", "ICE-SHARD"], "221": ["BLIZZARD", "ICE-FANG", "MUD-BOMB", "HAIL"]}}},
-        "travel_options": [
-            { "text": "Route 42", "target_area": "JOHTO_ROUTE_42" },
-            { "text": "Route 43", "target_area": "JOHTO_ROUTE_43" },
-            { "text": "Route 44", "target_area": "JOHTO_ROUTE_44", "flag_condition": "radio_tower_cleared" },
-            { "text": "Rocket HQ", "target_area": "ROCKET_HQ", "flag_condition": "defeated_red_gyarados", "door": "souvenir" }
-        ],
-        "explore_options": [
-            { "text": "Heal", "action": "HEAL" },
-            { "text": "Shop", "action": "SHOP", "door": "souvenir" },
-            { "text": "Gym", "action": "GYM" },
-            { "text": "Talk to Lance", "action": "NPC", "target": "lance_mahogany" } ]
+
+            "area_type": "town",
+
+            "route_name": "Mahogany Town",
+
+            "region": "JOHTO",
+
+            "backgrounds": {"main": "mahogany_town.png", "pokecenter": "mahogany_center.png", "pokemart": "mahogany_mart.png", "gym": "battle_gym_mahogany.png"},
+
+            "has_gym": true,
+
+            "gym": {"requirements": {"flag": "rocket_hq_cleared", "fail_text": ["Something strange is going on in Mahogany. Pryce won't battle while Team Rocket is in town.", "Maybe the trouble at the Lake of Rage is connected..."]}, "trainers": [{"name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true, "team": [124, 124], "rewards": {"balls": 2}}, {"name": "Skier Diana", "class": "SKIER", "sprite": "skier.png", "is_boss_battle": true, "team": [124], "rewards": {"balls": 2}}, {"name": "Boarder Patton", "class": "BOARDER", "sprite": "boarder.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Boarder Deandre", "class": "BOARDER", "sprite": "boarder.png", "is_boss_battle": true, "team": [86, 87, 86], "rewards": {"balls": 2}}, {"name": "Boarder Gerardo", "class": "BOARDER", "sprite": "boarder.png", "is_boss_battle": true, "team": [90, 91, 86], "rewards": {"balls": 2}}, {"name": "Skier Jill", "class": "SKIER", "sprite": "skier.png", "is_boss_battle": true, "team": [87], "rewards": {"balls": 2}}], "leader": {"name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png", "team": [86, 87, 221], "levels": [30, 32, 34], "badge_reward": "GLACIER", "rewards": {"balls": 5, "ICE_MELTER": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."], "player_won": ["Your math burned right through my defense.", "The path to Blackthorn is frozen solid. Take this.", "You received the ICE MELTER!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"86": ["ICY-WIND", "REST", "SNORE", "HAIL"], "87": ["AURORA-BEAM", "REST", "SLEEP-TALK", "ICE-SHARD"], "221": ["BLIZZARD", "ICE-FANG", "MUD-BOMB", "HAIL"]}}},
+
+            "travel_options": [
+
+                {"text": "Route 42", "target_area": "JOHTO_ROUTE_42"},
+
+                {"text": "Route 43", "target_area": "JOHTO_ROUTE_43"},
+
+                {"text": "Route 44", "target_area": "JOHTO_ROUTE_44", "flag_condition": "radio_tower_cleared"},
+
+                {"text": "Rocket HQ", "target_area": "ROCKET_HQ", "flag_condition": "defeated_red_gyarados", "door": "souvenir"}
+
+            ],
+
+            "explore_options": [
+
+                {"text": "Heal", "action": "HEAL"},
+
+                {"text": "Shop", "action": "SHOP", "door": "souvenir"},
+
+                {"text": "Gym", "action": "GYM"},
+
+                {"text": "Talk to Lance", "action": "NPC", "target": "lance_mahogany"},
+
+                {"action": "EVENT", "event": {"lines": ["They say a red Gyarados showed up at the Lake of Rage. Odd, when even ordinary Gyarados are rare round here..."]}, "text": "Man", "door": "radiohouse"},
+
+                {"action": "EVENT", "event": {"lines": ["My favourite radio show? Pokemon Music, easily."]}, "text": "Girl", "door": "radiohouse", "flag_condition": "not radio_tower_cleared"}
+
+            ],
+
+            "trainer_pool": []
+
         },
 
         "BLACKTHORN_CITY": {
@@ -2195,31 +2222,73 @@
         },
         
         "JOHTO_ROUTE_42": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 42",
+        
             "battle_type": "grass",
-            "wild_pool_percentages": "JOHTO_ROUTE_42_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_ROUTE_42_DAY_PERCENTAGES",
+        
             "has_trees": true,
+        
             "tree_pool": "JOHTO_MOUNTAIN_TREE_PERCENTAGES",
+        
             "can_fish": true,
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { "name": "Fisherman Chris", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211], "rewards": { "balls": 2 } },
-                { "name": "Hiker Benjamin", "class": "HIKER", "sprite": "hiker.png", "team": [50, 74, 51], "rewards": { "balls": 2 } },
-                { "name": "Poke Maniac Shane", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [34, 31], "rewards": { "balls": 2 } },
-                { "name": "Hiker Anthony", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": { "balls": 2 } }
+        
+                {"name": "Fisherman Chris", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Benjamin", "class": "HIKER", "sprite": "hiker.png", "team": [50, 74, 51], "rewards": {"balls": 2}},
+        
+                {"name": "Poke Maniac Shane", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [30, 33], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Anthony", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
+        
+                {"name": "Fisherman Tully", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        
+                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        
                 {"text": "Ecruteak City", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"},
+        
                 {"text": "Mt Mortar", "action": "EXIT", "target_area": "MT_MORTAR", "condition": "can_exit", "color": "RED"},
-                {"text": "Mahogany Town", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"}
-                ] 
+        
+                {"text": "Mahogany Town", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_johto_route_42_r42_56_16", "event": {"lines": ["A Nugget, lying in the grass."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_johto_route_42_r42_56_16"}},
+        
+                {"text": "SUPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_super_potion_johto_route_42_r42_61_6", "event": {"lines": ["A Super Potion, dropped by the path."], "gift_item": {"SUPER_POTION": 1}, "flag": "got_super_potion_johto_route_42_r42_61_6"}},
+        
+                {"text": "DUBIOUS DISC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dubious_disc_johto_route_42_r42_14_9", "event": {"lines": ["A Dubious Disc, tucked behind a tree."], "gift_item": {"DUBIOUS_DISC": 1}, "flag": "got_dubious_disc_johto_route_42_r42_14_9"}}
+        
+            ],
+        
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+        
+            "morning_pool_percentages": "JOHTO_ROUTE_42_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_ROUTE_42_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_ROUTE_42_NIGHT_PERCENTAGES"
+        
         },
         
         "JOHTO_ROUTE_43": {
@@ -2862,30 +2931,103 @@
         },
         
         "MT_MORTAR": {
+        
             "region": "JOHTO",
+        
             "area_type": "dungeon",
+        
             "battle_type": "cave",
-            "wild_pool_percentages": "JOHTO_MT_MORTAR_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_MT_MORTAR_DAY_PERCENTAGES",
+        
             "min_rounds": 2,
-            "backgrounds": {
-                "battle": "battle_mt_mortar.png"
-            },
+        
+            "backgrounds": {"battle": "battle_mt_mortar.png"},
+        
             "trainer_pool": [
-                { "name": "Super Nerd Markus", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [79, 80], "rewards": { "balls": 2 } },
-                { "name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66, 67], "rewards": { "balls": 2 } },
-                { "name": "Hiker Erik", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": { "balls": 2 } },
-                { "name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74], "rewards": { "balls": 2 } },
-                {"name": "Karate King Kiyo", "class": "BLACKBELT", "sprite": "blackbelt.png",
-                "team": [106, 107], "rewards": { "balls": 5, "TYROGUE": 1 },
-                "victory_flag": "defeated_karate_king"}
+        
+                {"name": "Super Nerd Markus", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [79], "rewards": {"balls": 2}},
+        
+                {"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66, 67], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Erik", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74], "rewards": {"balls": 2}},
+        
+                {"name": "Karate King Kiyo", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [106, 107], "rewards": {"balls": 5, "POKEMON_236": 1}, "victory_flag": "defeated_karate_king"},
+        
+                {"name": "Poké Maniac Harrison", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [34, 31], "rewards": {"balls": 2}},
+        
+                {"name": "Super Nerd Hugh", "class": "SUPER_NERD", "sprite": "super_nerd.png", "team": [117], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                {"text": "EXIT MOUNTAIN", "action": "EXIT", "target_area": "JOHTO_ROUTE_42", "condition": "can_exit", "color": "RED"}
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "EXIT MOUNTAIN", "action": "EXIT", "target_area": "JOHTO_ROUTE_42", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "TM65", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm65_mt_mortar_d38r0101_34_20", "event": {"lines": ["A TM (Shadow-Claw), lying among the rocks."], "gift_item": {"TM65": 1}, "flag": "got_tm65_mt_mortar_d38r0101_34_20"}},
+        
+                {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_mt_mortar_d38r0101_67_30", "event": {"lines": ["An Ether, in a dark corner."], "gift_item": {"ETHER": 1}, "flag": "got_ether_mt_mortar_d38r0101_67_30"}},
+        
+                {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_mt_mortar_d38r0102_67_54", "event": {"lines": ["A Revive, beside the cave wall."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_mt_mortar_d38r0102_67_54"}},
+        
+                {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_mt_mortar_d38r0102_67_28", "event": {"lines": ["An Escape Rope, left behind by a hiker."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_mt_mortar_d38r0102_67_28"}},
+        
+                {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_mt_mortar_d38r0102_51_31", "event": {"lines": ["A Nugget, lying among the rocks."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_mt_mortar_d38r0102_51_31"}},
+        
+                {"text": "IRON BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_ball_mt_mortar_d38r0102_51_43", "event": {"lines": ["An Iron Ball, in a dark corner."], "gift_item": {"IRON_BALL": 1}, "flag": "got_iron_ball_mt_mortar_d38r0102_51_43"}},
+        
+                {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_potion_mt_mortar_d38r0102_29_20", "event": {"lines": ["A Max Potion, beside the cave wall."], "gift_item": {"MAX_POTION": 1}, "flag": "got_max_potion_mt_mortar_d38r0102_29_20"}},
+        
+                {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_mt_mortar_d38r0102_23_36", "event": {"lines": ["An Iron, left behind by a hiker."], "gift_item": {"IRON": 1}, "flag": "got_iron_mt_mortar_d38r0102_23_36"}},
+        
+                {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_mt_mortar_d38r0102_37_52", "event": {"lines": ["A Max Revive, lying among the rocks."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_mt_mortar_d38r0102_37_52"}},
+        
+                {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_mt_mortar_d38r0102_73_47", "event": {"lines": ["An Ultra Ball, in a dark corner."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_mt_mortar_d38r0102_73_47"}},
+        
+                {"text": "FULL INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_incense_mt_mortar_d38r0102_38_75", "event": {"lines": ["A Full Incense, beside the cave wall."], "gift_item": {"FULL_INCENSE": 1}, "flag": "got_full_incense_mt_mortar_d38r0102_38_75"}},
+        
+                {"text": "PROTECTOR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protector_mt_mortar_d38r0103_6_55", "event": {"lines": ["A Protector, left behind by a hiker."], "gift_item": {"PROTECTOR": 1}, "flag": "got_protector_mt_mortar_d38r0103_6_55"}},
+        
+                {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_mt_mortar_d38r0103_45_38", "event": {"lines": ["A Rare Candy, lying among the rocks."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_mt_mortar_d38r0103_45_38"}},
+        
+                {"text": "MAX POTION ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_potion_mt_mortar_d38r0103_29_34", "event": {"lines": ["A Max Potion, in a dark corner."], "gift_item": {"MAX_POTION": 1}, "flag": "got_max_potion_mt_mortar_d38r0103_29_34"}},
+        
+                {"text": "TM121", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm121_mt_mortar_d38r0103_16_24", "event": {"lines": ["A TM (Aerial-Ace), beside the cave wall."], "gift_item": {"TM121": 1}, "flag": "got_tm121_mt_mortar_d38r0103_16_24"}},
+        
+                {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_mt_mortar_d38r0103_27_14", "event": {"lines": ["An Elixir, left behind by a hiker."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_mt_mortar_d38r0103_27_14"}},
+        
+                {"text": "DRAGON SCALE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dragon_scale_mt_mortar_d38r0103_45_15", "event": {"lines": ["A Dragon Scale, lying among the rocks."], "gift_item": {"DRAGON_SCALE": 1}, "flag": "got_dragon_scale_mt_mortar_d38r0103_45_15"}},
+        
+                {"text": "ESCAPE ROPE ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_mt_mortar_d38r0104_11_58", "event": {"lines": ["An Escape Rope, in a dark corner."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_mt_mortar_d38r0104_11_58"}},
+        
+                {"text": "CARBOS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_carbos_mt_mortar_d38r0104_36_66", "event": {"lines": ["A Carbos, beside the cave wall."], "gift_item": {"CARBOS": 1}, "flag": "got_carbos_mt_mortar_d38r0104_36_66"}},
+        
+                {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pp_up_mt_mortar_d38r0104_52_64", "event": {"lines": ["A Pp Up, left behind by a hiker."], "gift_item": {"PP_UP": 1}, "flag": "got_pp_up_mt_mortar_d38r0104_52_64"}},
+        
+                {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_mt_mortar_d38r0104_46_45", "event": {"lines": ["A Full Restore, lying among the rocks."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_mt_mortar_d38r0104_46_45"}},
+        
+                {"text": "MAX ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_ether_mt_mortar_d38r0104_40_39", "event": {"lines": ["A Max Ether, in a dark corner."], "gift_item": {"MAX_ETHER": 1}, "flag": "got_max_ether_mt_mortar_d38r0104_40_39"}}
+        
             ],
-            "next_area": "JOHTO_ROUTE_42"
+        
+            "next_area": "JOHTO_ROUTE_42",
+        
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+        
+            "morning_pool_percentages": "JOHTO_MT_MORTAR_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_MT_MORTAR_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_MT_MORTAR_NIGHT_PERCENTAGES"
+        
         },
         
         "ICE_PATH": {

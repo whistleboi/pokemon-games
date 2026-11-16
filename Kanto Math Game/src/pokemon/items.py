@@ -114,6 +114,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "HARD_STONE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Rock-type moves hit harder."},
         "POISON_BARB": {"price": 1000, "text": "Give it to a Pokemon to hold: its Poison-type moves hit harder."},
         "TWISTED_SPOON": {"price": 1000, "text": "Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
+        "IRON_BALL": {"price": 200, "text": "A heavy iron ball. In the games it slows its holder down."},   # (HGSS: Mt. Mortar; effect not built yet)
+        "FULL_INCENSE": {"price": 9600, "text": "An incense with a lulling scent. In the games its holder moves after the foe."},   # (HGSS: Mt. Mortar; effect not built yet)
         "SHARP_BEAK": {"price": 1000, "text": "Give it to a Pokemon to hold: its Flying-type moves hit harder."},   # (HGSS: Monica, Route 40)
         "MAGNET": {"price": 1000, "text": "Give it to a Pokemon to hold: its Electric-type moves hit harder."},   # (HGSS: Sunny, Route 37)
         "SOOTHE_BELL": {"price": 100, "text": "Held: its holder grows friendly with you faster."},   # (HGSS: the National Park, 11-15)
