@@ -2512,6 +2512,14 @@ _walk_ok = all(i == 0 for i, _p in _corr) and _corr[-1][1] == (14, 3)
 st.run.jump_floor(0, (7, 3)); _calm(st); st.anim = 0
 st.step(0, 1); _play(st, 60)
 check(_walk_ok and st.run.index == 1, f"S.S. Tidal: the corridor walks past Peeko and Mr. Briney without dropping into a cabin; walk into a door to enter ({_corr[-1]}, then floor {st.run.index})")
+# (Jordan 11-15: walking into the sailor by the stair sent him back to the ship's start - a stale area key after a reload.
+#  Boarded at Slateport, the area key gone stale: he still sees you off at Lilycove.)
+st = open_map("HOENN_SS_TIDAL", "SLATEPORT_CITY")
+story.current_area_key, story.last_area_key = "SLATEPORT_CITY", "HOENN_SS_TIDAL"
+st._get_route_callback(_sailor)()
+_play(st, 300)
+check(getattr(g.current_state, "next_area_key", None) == "LILYCOVE_CITY", f"S.S. Tidal: the sailor always sees you off at the other port, never back onto the ship ({getattr(g.current_state, 'next_area_key', None)})")
+g.transitioning = False
 _si = _sp25["HOENN_SOUTHERN_ISLAND"]
 _ss = next(o for o in _si["route_menu"] if o.get("text") == "Sailor")
 from src.pokemon import items as _items25

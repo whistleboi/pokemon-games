@@ -755,6 +755,9 @@ class DungeonState(OverworldBattles, PlayState):
         self._dungeon_ready = True
         story = game.story_manager
         self.area_key = story.current_area_key
+        _ferry = (game.loader.area_data.get("STORY_PROGRESSION", {}).get(self.area_key) or {}).get("ferry") or {}
+        if story.last_area_key in _ferry:   # (a ferry: the port you boarded at, so its sailor still knows where you're bound after a reload)
+            story.story_flags[f"ferry_from_{self.area_key}"] = story.last_area_key
         self.recipe = recipe_for(game, self.area_key)
         if self.recipe.get("dark") and __import__("src.world.hms", fromlist=["usable"]).usable(story, "HM_FLASH"):  # (Flash lights a dark cave)
             self.recipe = dict(self.recipe, fog=False)

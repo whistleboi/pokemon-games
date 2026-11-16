@@ -729,9 +729,14 @@ def _run_story_event(state, key, check, show):
         from src.states.overworld import AreaTransitionState
         to = ev["travel"]
         if to == "@ferry":   # (a ferry's sailor: on to the other port from the one you boarded at, the area's "ferry" map:
-            here = game.loader.area_data.get("STORY_PROGRESSION", {}).get(story.current_area_key, {})   # the S.S. Tidal)
-            ferry = here.get("ferry") or {}
-            to = ferry.get(story.last_area_key) or next(iter(ferry.values()), story.last_area_key)
+            areas = game.loader.area_data.get("STORY_PROGRESSION", {})   # the S.S. Tidal)
+            ship = getattr(state, "area_key", None) or story.current_area_key   # (the ship you're walking on: Jordan 11-15, a stale
+            if not (areas.get(ship) or {}).get("ferry"):                       #  area key after a reload sent the sailor's trip back to the ship)
+                ship = next((k for k, a in areas.items() if isinstance(a, dict) and a.get("ferry") and k in (story.current_area_key, story.last_area_key)), ship)
+            ferry = (areas.get(ship) or {}).get("ferry") or {}
+            to = ferry.get(story.last_area_key) or ferry.get(story.story_flags.get(f"ferry_from_{ship}"))
+            if not to or to == ship:
+                to = next((v for v in ferry.values() if v != ship), story.last_area_key)
         game.change_state(AreaTransitionState(game, to, initial_message=lines or None))
         return
     show(lines or ["..."])
