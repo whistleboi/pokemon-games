@@ -505,5 +505,9 @@ check(_r40.get("Monica", {}).get("condition") == "weekday:mon" and (_r40["Monica
       "Route 40: Monica, on Mondays, gives a Sharp Beak")
 check("Swimmer Kirk" in _tm["JOHTO_ROUTE_41"].get("trainer_spots", []) and len(_tm["JOHTO_ROUTE_41"]["trainer_spots"]) == 11,
       "Route 41: SoulSilver's swimmers, and our own Swimmer Kirk still out on the water")
+# ---- Lugia waits for the Tidal Bell (Jordan 11-15: as SoulSilver), Kimono Girl Miki's prize
+_lg = next((o for o in _area["WHIRL_ISLANDS"]["route_menu"] if o.get("text") == "CHALLENGE LUGIA"), {})
+check("has_tidal_bell" in (_lg.get("condition") or []) and "has_silver_wing" not in (_lg.get("condition") or []), "Whirl Islands: Lugia appears to the holder of the Tidal Bell")
+check(any((t.get("rewards") or {}).get("TIDAL_BELL") for t in _area["ECRUTEAK_DANCE_THEATER"]["trainer_pool"]), "...which Kimono Girl Miki gives after the dance")
 if fails:
     print("FAILS:", len(fails))

@@ -1140,7 +1140,7 @@
 
                 {"action": "EVENT", "event": {"lines": ["The whirlpools round those islands are caused by the sea creature, I've heard. You'd need a special move to get past them."]}, "text": "Girl", "door": "seahouse"},
 
-                {"action": "EVENT", "event": {"lines": ["They say you can only see it if you hold a Silver Wing. It must carry the creature's scent."]}, "text": "Boy", "door": "seahouse"},
+                {"action": "EVENT", "event": {"lines": ["They say it only shows itself to someone carrying a special bell, the kind the Kimono Girls of Ecruteak keep."]}, "text": "Boy", "door": "seahouse"},
 
                 {"text": "Photographer", "action": "EVENT", "door": "photostudio", "event": {"lines": ["Hi! You must be a sightseer! Let me take a picture of you and your team."], "photo": true}},
 
@@ -2949,7 +2949,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "CHALLENGE LUGIA", "action": "BOSS", "condition": ["boss_available", "has_silver_wing"], "color": "BLUE"},
+                {"text": "CHALLENGE LUGIA", "action": "BOSS", "condition": ["boss_available", "has_tidal_bell"], "color": "BLUE"},
         
                 {"text": "EXIT", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
         
