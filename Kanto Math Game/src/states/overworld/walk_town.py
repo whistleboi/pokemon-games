@@ -316,7 +316,14 @@ class WalkTownState(CityState):
             return
         self._shown_homes = {h for h, o in self.people.items() if self._shown(o)}
         shown = set(self._people())
+        _leads = None
         for home, mo in self.motions.items():
+            if mo.kind == "trail":   # (a Pokemon at its trainer's heels, at their side when they stop: npc.trail)
+                if _leads is None:
+                    _leads = {(o.get("text") if isinstance(o, dict) else o): self.motions.get(h) for h, o in self.people.items()}
+                from src.dungeon import npc as _npc
+                _npc.trail(mo, _leads.get(mo.leader), lambda t, mo=mo: self._npc_free(t, mo))
+                continue
             if mo.pos in shown or mo.moving() or mo.path:
                 mo.tick(lambda t, mo=mo: self._npc_free(t, mo))
         self.scenes.sweep()

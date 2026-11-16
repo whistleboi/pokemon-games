@@ -1182,12 +1182,8 @@ class DungeonState(OverworldBattles, PlayState):
             if mo.kind == "trail":   # (a Pokemon at its trainer's heels: into the tile they just left)
                 if _leads is None:
                     _leads = {o.payload.get("text"): self._motion(o) for o in f.movers if o.kind == "figure" and isinstance(o.payload, dict)}
-                ld = _leads.get(mo.leader)
-                if mo.moving():
-                    mo.t = min(1.0, mo.t + 1.0 / 9)
-                elif ld is not None and ld.moving() and ld.frm != mo.pos and ld.pos != mo.pos:
-                    mo.facing = (max(-1, min(1, ld.frm[0] - mo.pos[0])), max(-1, min(1, ld.frm[1] - mo.pos[1])))
-                    mo.step_to(ld.frm)
+                from src.dungeon import npc as _npc
+                _npc.trail(mo, _leads.get(mo.leader), lambda t, m=m: self._npc_free(t, m))
                 m.x, m.y = mo.pos
                 m.facing = mo.facing
                 continue

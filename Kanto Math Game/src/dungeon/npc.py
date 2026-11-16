@@ -204,6 +204,38 @@ def sees(motion, target, open_tile, reach=4):
     return False
 
 
+def trail(mo, ld, free):
+    """A "trail" Pokemon (mo) and its trainer (ld), one frame (Jordan 11-15, global): while the trainer walks it steps into the tile
+    they left; when they stop it settles at their SIDE - never on the tile they face (where they'd battle you) or just in front of
+    them on screen (drawn over them). free(tile): may it step there."""
+    if mo.moving():
+        mo.t = min(1.0, mo.t + 1.0 / STEP)
+        return
+    if ld is None or getattr(ld, "gone", False):
+        return
+    if ld.moving():
+        if ld.frm != mo.pos and ld.pos != mo.pos:
+            mo.step_to(ld.frm)
+        return
+    x, y = ld.pos
+    front = (x + ld.facing[0], y + ld.facing[1])
+    bad = {front, (x, y + 1), (x, y)}
+    near = abs(mo.pos[0] - x) + abs(mo.pos[1] - y)
+    if mo.pos not in bad and near == 1:
+        if mo.facing != ld.facing and mo.hold <= 0:
+            mo.facing = ld.facing
+        return
+    sides = [t for t in ((x - ld.facing[1], y + ld.facing[0]), (x + ld.facing[1], y - ld.facing[0]), (x - 1, y), (x + 1, y), (x, y - 1))
+             if t not in bad]
+    for t in sides:
+        if t == mo.pos or free(t):
+            if t != mo.pos and abs(t[0] - mo.pos[0]) + abs(t[1] - mo.pos[1]) <= 2:
+                mo.step_to(t)
+            elif t != mo.pos:
+                mo.frm = mo.pos = tuple(t); mo.t = 1.0   # (too far to walk it in a step: just there)
+            return
+
+
 def spec_at(moves, spot):
     return (moves or {}).get("%d,%d" % tuple(spot))
 

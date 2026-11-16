@@ -550,7 +550,10 @@ if "Bug Catcher Don" in _figs and "Venonat" in _figs:
     if _to:
         _ld.timer = 999; _ld.path = [_to]
         frames(40)
-    check(_to and tuple(_fo.pos) == _was, f"...a contestant's Pokemon follows a step behind ({_was} -> {_to}; Venonat at {_fo.pos})")
+    _lp, _lf = tuple(_ld.pos), tuple(_ld.facing)
+    _bad = {(_lp[0] + _lf[0], _lp[1] + _lf[1]), (_lp[0], _lp[1] + 1), _lp}
+    check(_to and abs(_fo.pos[0] - _lp[0]) + abs(_fo.pos[1] - _lp[1]) == 1 and tuple(_fo.pos) not in _bad,
+          f"...a contestant's Pokemon follows, then rests at their side - never in front ({_was} -> {_to}; Venonat at {_fo.pos}, Don at {_lp} facing {_lf})")
 # ---- N11: Lake of Rage, Route 43 (HGSS)
 _lr = {p.get("text"): p for p in _ppl("LAKE_OF_RAGE")}
 check(_lr.get("Wesley", {}).get("condition") == "weekday:wed" and (_lr["Wesley"].get("event") or {}).get("gift_item", {}).get("BLACK_BELT"),
@@ -607,5 +610,21 @@ if _save_flag is None:
     story.story_flags.pop("magikarp_record", None)
 else:
     story.story_flags["magikarp_record"] = _save_flag
+# ---- followers rest at their trainer's side (Jordan 11-15, global): Lance's Dragonite in the transmitter room
+story.story_flags["hq_electrode_1"] = story.story_flags["hq_electrode_2"] = True
+_tr = kanto_open = open_map("ROCKET_HQ", "MAHOGANY_TOWN")
+if getattr(_tr, "run", None):
+    _tr.run.enter_floor(1); frames(30)
+    _ff = {m.payload.get("text"): m for m in _tr.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+    if "Lance " in _ff and "Dragonite " in _ff:
+        _lm, _dm = _tr._motion(_ff["Lance "]), _tr._motion(_ff["Dragonite "])
+        frames(60)
+        _lp = tuple(_lm.pos); _bad = {(_lp[0] + _lm.facing[0], _lp[1] + _lm.facing[1]), (_lp[0], _lp[1] + 1)}
+        check(abs(_dm.pos[0] - _lp[0]) + abs(_dm.pos[1] - _lp[1]) == 1 and tuple(_dm.pos) not in _bad,
+              f"Lance's Dragonite stands at his side, not in front of him (Lance {_lp} facing {_lm.facing}, Dragonite {_dm.pos})")
+    else:
+        check(False, f"Lance and Dragonite in the transmitter room ({sorted(_ff)})")
+for _k in ("hq_electrode_1", "hq_electrode_2"):
+    story.story_flags.pop(_k, None)
 if fails:
     print("FAILS:", len(fails))
