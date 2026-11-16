@@ -38,6 +38,20 @@ def table(set_name="rock_bp"):
         return json.load(f)["tiles"]
 
 
+def set_rows(set_name="rock_bp"):
+    """How tall a set's south faces are (lip included): its spec's "rows" (rock_hgss, the thin-rimmed grass plateau:
+    1), else 3."""
+    try:
+        with open(os.path.join(GAME, "dev", "builders", "pieces", f"{set_name}.json"), encoding="utf-8") as f:
+            return int(json.load(f).get("rows", 3))
+    except (OSError, ValueError):
+        return 3
+
+
+# the cliff styles the map maker offers: (set, label)
+STYLES = [("rock_bp", "Platinum rock (tall faces)"), ("rock_hgss", "Johto grass plateau (thin rim)")]
+
+
 # Banished Platinum's outdoor sheet (Wesley-FG-DPPt.png): the rock block (rows 73-76 of the sheet), its inside corners,
 # the stairs (rows 83-84); Route 213, Route 219 and Oreburgh City draw their cliffs with these. {part name: tile id}
 BANISHED_PLATINUM = {k: v["id"] for k, v in table("rock_bp").items()}

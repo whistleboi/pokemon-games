@@ -173,6 +173,7 @@ def main():
         spec = json.load(f)
     SHADOWS.update(tuple(v) for v in spec.get("shadows", []))
     sheets = {k: pygame.image.load(os.path.join(spec["sheet_dir"], v)) for k, v in spec["sheets"].items()}
+    clear = {tuple(v) for v in spec.get("see_through", [])}   # (a tile set's own lawn colours: our ground shows through)
     tiles = {}
     for tname, ts in (spec.get("tiles") or {}).items():
         i = ts["id"] - 384
@@ -181,9 +182,14 @@ def main():
         for yy in range(T):
             for xx in range(T):
                 c = part.get_at((xx, yy))
-                if not background(c):
+                if not background(c) and (c.r, c.g, c.b) not in clear:
                     pic.set_at((xx, yy), (0, 0, 0, 70) if (c.r, c.g, c.b) in SHADOWS else c)
         tiles[tname] = (pic, ts)
+    for tname, layers in (spec.get("compose") or {}).items():   # (a tile the sheet lacks, built from its own tiles:
+        pic = pygame.Surface((T, T), pygame.SRCALPHA)              #  [[tile, [x, y, w, h]], ...] laid in order)
+        for src, (x, y, w, h) in layers:
+            pic.blit(tiles[src][0], (x, y), (x, y, w, h))
+        tiles[tname] = (pic, dict(spec["tiles"][tname], id=-1))
     done, failed = {}, 0
     for pname, ps in spec["pieces"].items():
         sheet = sheets[ps["sheet"]]

@@ -1,0 +1,102 @@
+{
+ "lip_L": {
+  "tile": 696,
+  "code": "a",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "lip_C": {
+  "tile": 697,
+  "code": "b",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "lip_R": {
+  "tile": 698,
+  "code": "c",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "mid_L": {
+  "tile": 704,
+  "code": "d",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "mid_C": {
+  "tile": 704,
+  "code": "e",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "mid_R": {
+  "tile": 706,
+  "code": "f",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "face_L": {
+  "tile": 712,
+  "code": "g",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "face_C": {
+  "tile": 713,
+  "code": "h",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "face_R": {
+  "tile": 714,
+  "code": "i",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "base_L": {
+  "tile": 712,
+  "code": "j",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "base_C": {
+  "tile": 713,
+  "code": "k",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "base_R": {
+  "tile": 714,
+  "code": "l",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "inside_W": {
+  "tile": -1,
+  "code": "m",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "inside_E": {
+  "tile": -1,
+  "code": "n",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "stairs_top_0": {
+  "tile": 1051,
+  "code": "o",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "stairs_top_1": {
+  "tile": 1052,
+  "code": "p",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "stairs_top_2": {
+  "tile": 1053,
+  "code": "q",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "stairs_0": {
+  "tile": 1059,
+  "code": "r",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "stairs_1": {
+  "tile": 1060,
+  "code": "s",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ },
+ "stairs_2": {
+  "tile": 1061,
+  "code": "t",
+  "credit": "HeartGold / SoulSilver-style outdoor tileset (PokemonHGSStileset) from the Pokemon Journeys V18 fan game; stairs from Banished Platinum's outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing)"
+ }
+}

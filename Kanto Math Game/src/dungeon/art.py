@@ -264,8 +264,9 @@ def surface(art, kinds, tile, roofs=None, theme=None):
         if not pic and 0 <= y < h and 0 <= x < w and art[y][x] == ".":
             _snow_patch(surf, pygame.Rect(x * tile, y * tile, tile, tile), [(x + dx, y + dy) in wet for dx, dy in ((0, -1), (1, 0), (0, 1), (-1, 0))],
                         (150, 196, 236), (176, 216, 246))
+    fences = _fence_cells((roofs or {}).get("_fences"), art)  # (fences laid with the map maker's fence line: kit pictures that join up)
     if not pic:
-        _paint(surf, (roofs or {}).get("_paint"), art, tile)  # (ground painted in the map maker: it draws its own edges)
+        _paint(surf, (roofs or {}).get("_paint"), art, tile, fences)  # (ground painted in the map maker: it draws its own edges)
     for y in range(h):
         for x in range(w):
             c = art[y][x]
@@ -311,7 +312,9 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 if not same(x, y + 1):
                     pygame.draw.rect(surf, tuple(v * 2 // 3 for v in col), (body.x, body.bottom - tile // 4, body.w, tile // 4))
                 continue
-            if c == "#":
+            if (x, y) in fences:
+                _fence_kit(surf, x, y, r, fences)
+            elif c == "#":
                 _fence(surf, art, x, y, r)
             elif c == "k":
                 _fence(surf, art, x, y, r, "k", PICKET, PICKET_DARK)
@@ -1297,7 +1300,64 @@ def _autotile_piece(img, same, tile):
     return q if tile == 32 else pygame.transform.scale(q, (tile, tile))
 
 
-def _paint(surf, spec, art, tile):
+def _fence_cells(spec, art):
+    """A map's kit fences (roofs "_fences": {"key": {code: kind}, "rows": [...]}, the map maker's fence line):
+    {(x, y): kind}, only where the map still has that kit's character (assets/tiles/fences/index.json)."""
+    if not spec:
+        return {}
+    key, out = spec.get("key") or {}, {}
+    for y, row in enumerate((spec.get("rows") or ())[:len(art)]):
+        for x, code in enumerate(row[:len(art[0])]):
+            got = _fence_kit_pic(key.get(code)) if code in key else None
+            if got and art[y][x] == got[1].get("char"):
+                out[(x, y)] = key[code]
+    return out
+
+
+def _fence_kit_pic(kind):
+    """A fence kit (assets/tiles/fences/<kind>.png: the run across, then the run down) and its index entry."""
+    k = ("fencekit", kind)
+    if k not in _PT:
+        _PT[k] = None
+        try:
+            import json as _json
+            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", "fences")
+            if ("index", "fences") not in _PT:
+                with open(os.path.join(base, "index.json"), encoding="utf-8") as f:
+                    _PT[("index", "fences")] = _json.load(f)
+            meta = _PT[("index", "fences")].get(kind)
+            if meta:
+                _PT[k] = (pygame.image.load(os.path.join(base, kind + ".png")), meta)
+        except (OSError, ValueError, pygame.error, TypeError):
+            _PT[k] = None
+    return _PT[k]
+
+
+def _fence_kit(surf, x, y, r, fences):
+    """One fence tile from its kit: the west / east half of the run across where the fence goes on that way, the
+    north / south half of the run down likewise (a lone tile: the run across)."""
+    kind = fences[(x, y)]
+    n, e, s_, w = (fences.get((x + dx, y + dy)) == kind for dx, dy in ((0, -1), (1, 0), (0, 1), (-1, 0)))
+    ck = ("fencepiece", kind, n, e, s_, w, r.w)
+    if ck not in _PT:
+        kit = _fence_kit_pic(kind)[0]
+        q = pygame.Surface((32, 32), pygame.SRCALPHA)
+        if not (n or e or s_ or w) or ((w or e) and not (n or s_)) and not (w and e):
+            q.blit(kit, (0, 0), (0, 0, 32, 32))           # (a lone post or a run's end: the whole run across)
+        else:
+            if w:
+                q.blit(kit, (0, 0), (0, 0, 16, 32))
+            if e:
+                q.blit(kit, (16, 0), (16, 0, 16, 32))
+            if n:
+                q.blit(kit, (0, 0), (32, 0, 32, 16))
+            if s_:
+                q.blit(kit, (0, 16), (32, 16, 32, 16))
+        _PT[ck] = q if r.w == 32 else pygame.transform.scale(q, (r.w, r.h))
+    surf.blit(_PT[ck], r.topleft)
+
+
+def _paint(surf, spec, art, tile, fences=None):
     """A map's painted ground (roofs "_paint": {"key": {code: surface}, "rows": [...]}, the map maker's Ground tab):
     each painted tile drawn from its surface's autotile with the edge or corner its neighbours call for. A tile shows
     its paint only while the map still has the surface's own character there, or a placed piece (`) standing on it."""
@@ -1309,7 +1369,7 @@ def _paint(surf, spec, art, tile):
     for y, row in enumerate(rows[:h]):
         for x, code in enumerate(row[:w]):
             got = _autotile(key.get(code)) if code in key else None
-            if got and art[y][x] in (got[1].get("char"), "`"):   # (` : a placed piece stands on it; the ground runs on under it)
+            if got and (art[y][x] in (got[1].get("char"), "`") or (x, y) in (fences or ())):   # (a placed piece or a fence stands on it: the ground runs on under it)
                 names[(x, y)] = key[code]
     for (x, y), name in names.items():
         img, meta = _autotile(name)
