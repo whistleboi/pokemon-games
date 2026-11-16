@@ -488,6 +488,43 @@ def _run_story_event(state, key, check, show):
         else:
             show(_resolve_lines(game, [f"You gave it a {name}. It munched it up... ({n} of {fd['need']})", *fd.get("more", ["It still looks weak."])]))
         return
+    if ev.get("size_record"):  # (Lake of Rage's Fishing Guru, HGSS's Magikarp record - Jordan 11-15: measured by its hidden strength,
+        import random as _rnd   #  the sum of its six IVs, record starting at 130; shown as a length, never as IVs)
+        flags = story.story_flags
+        karps = [p for p in story.player_team if p and getattr(p, "id", None) == 129 and not getattr(p, "is_egg", False)]
+        if not karps:
+            show(_resolve_lines(game, lines + [_rnd.choice(["Bring me a Magikarp and I'll measure it! I'm after a record-breaker.",
+                                                           "No Magikarp with you? Catch one in the lake and show me!"])]))
+            return
+        ivs = lambda p: dict(getattr(p, "ivs", {}) or {})
+        best = max(karps, key=lambda p: sum(ivs(p).values()))
+        total = sum(ivs(best).values())
+        inch = lambda t: round(10 + t / 4, 1)
+        record = int(flags.get("magikarp_record", 130))
+        out = list(lines) + [f"Let's see that Magikarp... It measures {inch(total)} inches!"]
+        if total > record:
+            flags["magikarp_record"] = total
+            story.inventory["ETHER"] = story.inventory.get("ETHER", 0) + 1
+            out += [_rnd.choice(["Wow! That's a new record! It beats the old one at " + str(inch(record)) + " inches!",
+                                 "Incredible! " + str(inch(total)) + " inches! The record's yours now!",
+                                 "Now THAT is a Magikarp! A new record, no doubt about it!"]),
+                    "Here, take this as a prize.", f"{getattr(game, 'player_name', 'You')} received an ETHER!"]
+        else:
+            out.append(_rnd.choice([f"Hmm... Not bad, but the record is {inch(record)} inches.",
+                                    f"Close, but no record. The one to beat is {inch(record)} inches.",
+                                    f"Respectable! Still, my record book says {inch(record)} inches."]))
+            low_k, low_v = min(ivs(best).items(), key=lambda kv: kv[1]) if ivs(best) else (None, 99)
+            if low_v < 17:
+                said = {"SPEED": ["The one Ralph had was faster than that!", "Ralph's was quicker in the water, I tell you."],
+                        "ATTACK": ["The one Ralph had hit harder than that!", "Ralph's Magikarp had more punch to its splash."],
+                        "DEFENSE": ["The one Ralph had was tougher than that!", "Ralph's had scales like armor plating!"],
+                        "SPATK": ["The one Ralph had had a sharper glint in its eye!"],
+                        "SPDEF": ["The one Ralph had was steadier than that!", "Ralph's Magikarp never flinched at anything."],
+                        "HP": ["The one Ralph had was hardier than that!", "Ralph's could flop around all day long!"]}.get(low_k)
+                if said:
+                    out.append(_rnd.choice(said))
+        show(_resolve_lines(game, out))
+        return
     if ev.get("salon"):  # (Goldenrod Tunnel's Pokemon Salon, HGSS: a haircut a day; the older brother's does more for its friendship)
         import datetime as _dt
         sal = ev["salon"]; today = _dt.date.today().isoformat()

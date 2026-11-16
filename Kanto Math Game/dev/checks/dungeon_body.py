@@ -1579,7 +1579,7 @@ g.walk_town_pos = None; g.walk_town_room = None
 story.current_area_key, story.last_area_key = "MAHOGANY_TOWN", "JOHTO_ROUTE_42"
 _mh2 = _CS(g); g.change_state(_mh2); _tap_through(_mh2)
 _mh2._enter(next(t for t, k in _mh2.doors.items() if k == "souvenir"))
-check(_mh2.room == "souvenir" and "ROCKET_HQ" in _mh2.exits.values() and len(_mh2.people) == 1,
+check(_mh2.room == "souvenir" and "ROCKET_HQ" in _mh2.exits.values() and any((o.get("text") if isinstance(o, dict) else o) == "Shop" for o in _mh2.people.values()),   # (11-15: Lance and Dragonite there too, after the red Gyarados)
       f"Mahogany's shop: its own room, the clerk at the counter, the stairs down to the hideout {sorted(map(str, _mh2.exits.values()))}")
 g.walk_town_pos = None; g.walk_town_room = None
 story.current_area_key, story.last_area_key = "SAFARI_ZONE_GATE", "JOHTO_ROUTE_48"

@@ -66262,9 +66262,6 @@
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "ccccccccccc",
-     "ccccccccccc",
-     "ccccccccccc",
      "ccccc^ccccc",
      "czz.....zzc",
      "c.........c",
@@ -66297,42 +66294,12 @@
       236,
       232,
       214
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/R43R0101.png",
-      "at": [
-       0,
-       1
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
-    },
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/R43R0101.png",
-      "at": [
-       0,
-       1
-      ],
-      "size": [
-       11,
-       17
-      ],
-      "px": 32
-     }
-    ]
+     ]
+    }
    },
    "gym": {
     "theme": "room",
     "art": [
-     "cccccccccc",
-     "cccccccccc",
-     "cccccccccc",
-     "cccccccccc",
      "cccccccccc",
      "cccccccccc",
      "mmm^mmmmmc",
@@ -66349,11 +66316,11 @@
      "m%%%%mmmmc",
      "mmmm%%%.mc",
      "m...%%%.mc",
+     "m.......mc",
      "m.m...m.mc",
      "m.j...j.mc",
-     "c...v...cc",
-     "cmmmmmmmcc",
-     "cccccccccc",
+     "m...v...mc",
+     "mmmmmmmmmc",
      "cccccccccc"
     ],
     "exits": {
@@ -66741,43 +66708,13 @@
       150,
       154,
       172
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T28GYM0103.png",
-      "at": [
-       0,
-       0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
-    },
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T28GYM0103.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       10,
-       26
-      ],
-      "px": 32
-     }
-    ]
+     ]
+    }
    },
    "gym_2": {
     "theme": "room",
     "art": [
-     "ccccccccccccc",
      "mmmmmmmmmmmmc",
-     "mcccccccccccc",
-     "mcccccccccccc",
-     "mcccccccccccc",
      "mmmmmmmmmmmmc",
      "mmmmmm<mmmmmc",
      "mmmmm...mmmmc",
@@ -66791,9 +66728,9 @@
      "m..%%%%%%%..c",
      "m....mmmm...c",
      "m...........c",
-     "c.....^.....c",
-     "cmmmmmmmmmmmc",
-     "ccccccccccccc",
+     "m...........c",
+     "m.....^.....c",
+     "mmmmmmmmmmmmc",
      "ccccccccccccc"
     ],
     "exits": {
@@ -67352,45 +67289,15 @@
       150,
       154,
       172
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T28GYM0102.png",
-      "at": [
-       0,
-       0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
-    },
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T28GYM0102.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       13,
-       22
-      ],
-      "px": 32
-     }
-    ]
+     ]
+    }
    },
    "gym_3": {
     "theme": "room",
     "art": [
      "cccccccccccc",
-     "cccccccccccc",
      "cmmmmmmmmmmc",
-     "cmmmmmcccmmc",
-     "cccccccccccc",
-     "ccccccmmmccc",
-     "cccccccccccc",
+     "cmmmmmmmmmmc",
      "cmmmmm...mmc",
      "cmmmmm.N.mmc",
      "cmmmmm...mmc",
@@ -67405,9 +67312,9 @@
      "c..%m%%%%%mc",
      "c..m%%%m%%mc",
      "c..m%%%%%%mc",
+     "c......mmmmc",
      "c.......mmmc",
-     "c....^..mmcc",
-     "cccccccccccc",
+     "c....^..mmmc",
      "cccccccccccc"
     ],
     "exits": {
@@ -67919,36 +67826,10 @@
       150,
       154,
       172
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T28GYM0101.png",
-      "at": [
-       0,
-       0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Gym"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T28GYM0101.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       12,
-       25
-      ],
-      "px": 32
-     }
     ]
    },
    "center": {
@@ -67956,27 +67837,21 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccccc",
-     "ccccccccccccccczc",
+     "ccccccNcccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
-     "c..cccccccccc..cc",
-     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmNcmc....c",
-     "c..c.cccmccm....c",
+     "c..c.cmmccmc....c",
+     "c..c.ccccccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
-     "cc............ccc",
+     "c..............cc",
+     "c.............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -68073,42 +67948,15 @@
       236,
       200,
       190
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T28PC0101.png",
-      "at": [
-       0,
-       0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Heal"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T28PC0101.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       17,
-       25
-      ],
-      "px": 32
-     }
     ]
    },
    "radiohouse": {
     "theme": "room",
     "art": [
-     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm....mmc",
@@ -68191,37 +68039,11 @@
       236,
       232,
       214
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/T28R0201.png",
-      "at": [
-       0,
-       4
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
      "Man",
      "Girl"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T28R0201.png",
-      "at": [
-       0,
-       4
-      ],
-      "size": [
-       11,
-       10
-      ],
-      "px": 32
-     }
     ]
    },
    "souvenir": {
@@ -68229,12 +68051,9 @@
     "art": [
      "cccccccccccc",
      "cccccccccccc",
-     "cccccccccccc",
-     "mccccccccccc",
-     "mccccccccccc",
-     "cmmccccccccc",
-     "cm....^cc..c",
-     "c..m...N...c",
+     "mmmccccccccc",
+     "mm....^cc..c",
+     "c.Nm...NN..c",
      "c..m.......c",
      "ccccc......c",
      "ccccc......c",
@@ -68306,36 +68125,12 @@
       236,
       232,
       214
-     ],
-     "_screen": true,
-     "_picture": {
-      "f": "ss_ground/D35R0101.png",
-      "at": [
-       0,
-       1
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     ]
     },
     "people": [
-     "Shop"
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/D35R0101.png",
-      "at": [
-       0,
-       1
-      ],
-      "size": [
-       12,
-       14
-      ],
-      "px": 32
-     }
+     "Dragonite",
+     "Shop",
+     "Lance"
     ]
    }
   },
@@ -70050,14 +69845,14 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccc.......c.........................c......ccccc",
+     "ccc.......N.........................N......ccccc",
      "ccc........................................^cccc",
-     "ccc.X.......................................cccc",
+     "ccc.X...................................NN..cccc",
      "cccccc...cccccc..ccccccccccccccccccccccccccccccc",
      "cccccc...cccccc..ccccccccccccccccccccccccccccccc",
      "cccccc...cccccc..ccccccccccccccccccccccccccccccc",
      "cccccc...cccccc..ccccccccccccccccccccccccccccccc",
-     "ccc......cc.........................c......ccccc",
+     "ccc......cc.........................N......ccccc",
      "ccc......ccmmmm.............................N.cc",
      "ccc......ccmmmm...............................cc",
      "ccc......ccccccccccccccccccccc..ccccccccc..ccccc",
@@ -70075,7 +69870,7 @@
      "ccc......cccccccccccccccccccccccccccccccc.....cc",
      "ccc......cccccccccccccccccccccccccccccccc.....cc",
      "ccc......cccccccccccccccccccccccccccccccc.....cc",
-     "ccc.......c...........N.............c.........cc",
+     "ccc.......N...........N.............N.........cc",
      "cc1...........................................cc",
      "cc............................................cc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc"
@@ -70216,9 +70011,76 @@
      "45,15": "REVIVE"
     },
     "people": [
+     {
+      "text": "Persian statue ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a Persian statue... Its eyes glow red. You feel as if someone is watching you..."
+       ]
+      }
+     },
+     {
+      "text": "Persian statue",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a Persian statue... Its eyes glow red. You feel as if someone is watching you..."
+       ]
+      }
+     },
+     {
+      "text": "Dragonite",
+      "action": "EVENT",
+      "condition": "not:rocket_hq_cleared",
+      "event": {
+       "lines": [
+        "DRAGONITE: Gyaoo!"
+       ]
+      }
+     },
+     {
+      "text": "Lance",
+      "action": "EVENT",
+      "condition": "not:rocket_hq_cleared",
+      "event": {
+       "lines": [
+        "Lance: You made it down. This place is crawling with Team Rocket, and they've rigged it with traps.",
+        "Lance: Here, let me patch up your Pokemon. Rest a moment, then let's keep going."
+       ],
+       "heal": true
+      }
+     },
+     {
+      "text": "Persian statue  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a Persian statue... Its eyes glow red. You feel as if someone is watching you..."
+       ]
+      }
+     },
      "HYPER POTION",
      "HYPER POTION ",
-     "GUARD SPEC"
+     {
+      "text": "Persian statue    ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a Persian statue... Its eyes glow red. You feel as if someone is watching you..."
+       ]
+      }
+     },
+     "GUARD SPEC",
+     {
+      "text": "Persian statue   ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a Persian statue... Its eyes glow red. You feel as if someone is watching you..."
+       ]
+      }
+     }
     ],
     "overheads": [
      {
@@ -70233,6 +70095,158 @@
        31
       ],
       "px": 32
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        36,
+        3,
+        36,
+        4
+       ]
+      },
+      "condition": "not:rocket_hq_cleared",
+      "flag": "hq_alarm_scene_1",
+      "cast": [
+       {
+        "sheet": "hg_rocketm.png",
+        "from": [
+         30,
+         3
+        ],
+        "to": "player",
+        "lines": [
+         "Rocket Grunt: Hey! The statue's eyes lit up! Intruder!"
+        ],
+        "then": "event:hq_alarm_1",
+        "leave": [
+         30,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        10,
+        3,
+        10,
+        4
+       ]
+      },
+      "condition": "not:rocket_hq_cleared",
+      "flag": "hq_alarm_scene_2",
+      "cast": [
+       {
+        "sheet": "hg_rocketm.png",
+        "from": [
+         16,
+         3
+        ],
+        "to": "player",
+        "lines": [
+         "Rocket Grunt: Hey! The statue's eyes lit up! Intruder!"
+        ],
+        "then": "event:hq_alarm_2",
+        "leave": [
+         16,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        36,
+        10,
+        36,
+        11
+       ]
+      },
+      "condition": "not:rocket_hq_cleared",
+      "flag": "hq_alarm_scene_3",
+      "cast": [
+       {
+        "sheet": "hg_rocketm.png",
+        "from": [
+         30,
+         10
+        ],
+        "to": "player",
+        "lines": [
+         "Rocket Grunt: Hey! The statue's eyes lit up! Intruder!"
+        ],
+        "then": "event:hq_alarm_3",
+        "leave": [
+         30,
+         10
+        ]
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        36,
+        28,
+        36,
+        29
+       ]
+      },
+      "condition": "not:rocket_hq_cleared",
+      "flag": "hq_alarm_scene_4",
+      "cast": [
+       {
+        "sheet": "hg_rocketm.png",
+        "from": [
+         30,
+         28
+        ],
+        "to": "player",
+        "lines": [
+         "Rocket Grunt: Hey! The statue's eyes lit up! Intruder!"
+        ],
+        "then": "event:hq_alarm_4",
+        "leave": [
+         30,
+         28
+        ]
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        10,
+        28,
+        10,
+        29
+       ]
+      },
+      "condition": "not:rocket_hq_cleared",
+      "flag": "hq_alarm_scene_5",
+      "cast": [
+       {
+        "sheet": "hg_rocketm.png",
+        "from": [
+         16,
+         28
+        ],
+        "to": "player",
+        "lines": [
+         "Rocket Grunt: Hey! The statue's eyes lit up! Intruder!"
+        ],
+        "then": "event:hq_alarm_5",
+        "leave": [
+         16,
+         28
+        ]
+       }
+      ]
      }
     ]
    },
@@ -70249,11 +70263,11 @@
      "cccccccccccccccccccccccccccccccccccccc.....ccc",
      "cc1.....cc..........................cc.....ccc",
      "cc......cc...mmmmmmmmmmmmmmmmmmmm...cc.....ccc",
-     "ccc.....cc....mmmmmmmmmmmmmmmmmm....cc.....ccc",
+     "ccc.....cc...Nmmmmmmmmmmmmmmmmmm....cc.....ccc",
      "cccccc..cc...mmmmmmmmmmmmmmmmmmmm...cccccc.ccc",
-     "cccccc..cc....mmmmmmmmmmmmmmmmmm....ccmmmm.ccc",
-     "cccccc..cc...mmmmmmmmmmmmmmmmmmmm...cccc...ccc",
-     "cccccc..cc....mmmmmmmmmmmmmmmmmm....cc.....ccc",
+     "cccccc..cc..NNmmmmmmmmmmmmmmmmmm....ccmmmm.ccc",
+     "cccccc..cc..Nmmmmmmmmmmmmmmmmmmmm...cccc...ccc",
+     "cccccc..cc...Nmmmmmmmmmmmmmmmmmm....cc.....ccc",
      "cccccc..cc...mmmmmmmmmmmmmmmmmmmm...cc.....ccc",
      "ccc.N...cc..........................cc.....ccc",
      "ccc.....cc..........................cc.....ccc",
@@ -71031,6 +71045,78 @@
      "40,13": "X_SP_DEF"
     },
     "people": [
+     {
+      "action": "BOSS",
+      "color": "RED",
+      "boss": {
+       "id": 101,
+       "name": "Electrode",
+       "level": 23,
+       "victory_flag": "hq_electrode_1"
+      },
+      "text": "Electrode",
+      "flag_condition": "not hq_electrode_1"
+     },
+     {
+      "text": "Lance ",
+      "action": "EVENT",
+      "flag_condition": "hq_electrode_2",
+      "event": {
+       "lines": [
+        "Lance: That strange signal has finally stopped. The lake will be back to normal now.",
+        "Lance: You were amazing. Take this as thanks: it's Whirlpool. With the Glacier Badge, it'll get you past whirlpools at sea.",
+        "Lance: Team Rocket will try again somewhere, I'm sure. If you hear anything, I'm counting on you."
+       ],
+       "gift_item": {
+        "HM_WHIRLPOOL": 1
+       },
+       "flag": "got_hm_whirlpool_lance",
+       "done": [
+        "Lance: We make a good team. See you around, Champion-to-be."
+       ],
+       "requires": [
+        "hq_electrode_3"
+       ],
+       "fail": [
+        "Lance: There's still an Electrode powering the transmitter. We have to stop them all!"
+       ]
+      },
+      "color": "GOLD"
+     },
+     {
+      "action": "BOSS",
+      "color": "RED",
+      "boss": {
+       "id": 101,
+       "name": "Electrode",
+       "level": 23,
+       "victory_flag": "hq_electrode_2"
+      },
+      "text": "Electrode ",
+      "flag_condition": "not hq_electrode_2"
+     },
+     {
+      "text": "Dragonite ",
+      "action": "EVENT",
+      "flag_condition": "hq_electrode_2",
+      "event": {
+       "lines": [
+        "DRAGONITE: Gyafooh!"
+       ]
+      }
+     },
+     {
+      "action": "BOSS",
+      "color": "RED",
+      "boss": {
+       "id": 101,
+       "name": "Electrode",
+       "level": 23,
+       "victory_flag": "hq_electrode_3"
+      },
+      "text": "Electrode  ",
+      "flag_condition": "not hq_electrode_3"
+     },
      "NUGGET"
     ],
     "overheads": [
@@ -71047,6 +71133,32 @@
       ],
       "px": 32
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        22,
+        21
+       ],
+       [
+        23,
+        21
+       ]
+      ],
+      "look": "hidden",
+      "until": {
+       "condition": {
+        "any": [
+         "hq_murkrow_password",
+         "rocket_hq_cleared"
+        ]
+       }
+      },
+      "lines": [
+       "The Radio Transmitter room. The door checks the voice of whoever says the password..."
+      ]
+     }
     ]
    },
    {
@@ -71054,7 +71166,7 @@
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "ccc....cccc.zmmmmmmz.cc.ccc..............ccccc",
-     "cc1......cc..........cc.N..................1cc",
+     "cc1......ccN.........cc.N..................1cc",
      "cc.......cc..........cc.....................cc",
      "ccccc....cc..cc..ccc.cc....................ccc",
      "ccccc....cc..X...ccc.cc....................ccc",
@@ -71076,7 +71188,7 @@
      "ccccccccccccccccccccccc...cccc..cccccccc...ccc",
      "cccNzNmmmm......ccc.......cccc..cccccccc...ccc",
      "ccc.c..X..................cccc..cccccccc...ccc",
-     "ccc.z.......ccc......cc....................ccc",
+     "ccc.z.......ccc......cc.............N......ccc",
      "ccc.c.......ccc......cc....................ccc",
      "ccc.z.........X......cc....................ccc",
      "ccc..................cc....................1cc",
@@ -71196,11 +71308,36 @@
      "Scientist Mitch"
     ],
     "people": [
+     {
+      "text": "Murkrow",
+      "action": "EVENT",
+      "condition": "not:rocket_hq_cleared",
+      "event": {
+       "lines": [
+        "MURKROW: Hail Giovanni! Hail Giovanni!",
+        "It must have picked that up from the Rockets... That sounds like a password!"
+       ],
+       "done": [
+        "MURKROW: Hail Giovanni!"
+       ],
+       "flag": "hq_murkrow_password"
+      }
+     },
      "TM23",
      "TM123",
      "X SP ATK",
      "FULL HEAL",
-     "PROTEIN"
+     "PROTEIN",
+     {
+      "text": "Beaten grunt",
+      "action": "EVENT",
+      "condition": "not:rocket_hq_cleared",
+      "event": {
+       "lines": [
+        "Urrgh... The guy in the cape is ridiculously strong. I had to spill everything... The boss's office needs TWO passwords."
+       ]
+      }
+     }
     ],
     "overheads": [
      {
@@ -71215,6 +71352,30 @@
        31
       ],
       "px": 32
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        14
+       ],
+       [
+        16,
+        14
+       ]
+      ],
+      "look": "hidden",
+      "until": {
+       "condition": [
+        "hq_password_1",
+        "hq_password_2"
+       ]
+      },
+      "lines": [
+       "The door's shut tight... It needs two passwords to open."
+      ]
      }
     ]
    }
@@ -71244,7 +71405,21 @@
    "Scientist Ross": 2,
    "Scientist Mitch": 2,
    "Team Rocket Grunt 2": 2,
-   "Team Rocket Grunt 3": 2
+   "Team Rocket Grunt 3": 2,
+   "Lance": 0,
+   "Dragonite": 0,
+   "Persian statue": 0,
+   "Persian statue ": 0,
+   "Persian statue  ": 0,
+   "Persian statue   ": 0,
+   "Persian statue    ": 0,
+   "Lance ": 1,
+   "Dragonite ": 1,
+   "Electrode": 1,
+   "Electrode ": 1,
+   "Electrode  ": 1,
+   "Beaten grunt": 2,
+   "Murkrow": 2
   },
   "descend": true
  },

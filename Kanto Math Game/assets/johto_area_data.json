@@ -1225,7 +1225,11 @@
 
                 {"action": "EVENT", "event": {"lines": ["They say a red Gyarados showed up at the Lake of Rage. Odd, when even ordinary Gyarados are rare round here..."]}, "text": "Man", "door": "radiohouse"},
 
-                {"action": "EVENT", "event": {"lines": ["My favourite radio show? Pokemon Music, easily."]}, "text": "Girl", "door": "radiohouse", "flag_condition": "not radio_tower_cleared"}
+                {"action": "EVENT", "event": {"lines": ["My favourite radio show? Pokemon Music, easily."]}, "text": "Girl", "door": "radiohouse", "flag_condition": "not radio_tower_cleared"},
+
+                {"action": "EVENT", "event": {"lines": ["Lance: So you came. I'm Lance, a Trainer like you. That red Gyarados was forced to evolve, and the trail led here.", "Lance: This shop is a front for Team Rocket's hideout. Dragonite, Hyper Beam! ...There. The stairs behind the counter go down.", "Lance: They're sending out a signal that's driving the lake's Pokemon wild. Let's shut it down together. I'll meet you below."]}, "text": "Lance", "door": "souvenir", "condition": "defeated_red_gyarados", "flag_condition": "not rocket_hq_cleared"},
+
+                {"action": "EVENT", "event": {"lines": ["DRAGONITE: Gyafooha!"]}, "text": "Dragonite", "door": "souvenir", "condition": "defeated_red_gyarados", "flag_condition": "not rocket_hq_cleared"}
 
             ],
 
@@ -2448,7 +2452,7 @@
         
                 {"action": "EVENT", "color": "GOLD", "event": {"lines": ["...You have strayed far to find me. Here I have meditated, and a new power has awakened within me. Let me share it with you."], "gift_item": {"TM104": 1}, "flag": "got_tm_hidden_power_lake", "done": ["It is Hidden Power. It draws out a power that sleeps inside every Pokemon."]}, "text": "Hermit", "door": "hiddenpower"},
         
-                {"action": "EVENT", "event": {"lines": ["The Lake of Rage is a crater the rampaging Gyarados made. Rain filled it, and that's how the lake was born.", "Me, I'm after the biggest Magikarp in the lake. One day I'll catch a record-breaker!"]}, "text": "Fishing Guru", "door": "magikarphouse"}
+                {"action": "EVENT", "event": {"lines": ["The Lake of Rage is a crater the rampaging Gyarados made. Me, I'm after the biggest Magikarp in it."], "size_record": true}, "text": "Fishing Guru", "door": "magikarphouse", "color": "GOLD"}
         
             ],
         
@@ -3248,13 +3252,13 @@
         
                 {"name": "Scientist Gregg", "class": "SCIENTIST", "sprite": "scientist.png", "team": [81, 81, 81], "rewards": {"balls": 2}},
         
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [19, 41, 19], "rewards": {"balls": 2}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [19, 41, 19], "rewards": {"balls": 2}, "victory_flag": "hq_password_1", "dialogue": {"player_won": ["Rocket Grunt: Argh... Fine! The first password to the boss's office is SLOWPOKETAIL. Happy now?"]}},
         
                 {"name": "Scientist Ross", "class": "SCIENTIST", "sprite": "scientist.png", "team": [109, 109], "rewards": {"balls": 2}},
         
                 {"name": "Scientist Mitch", "class": "SCIENTIST", "sprite": "scientist.png", "team": [132], "rewards": {"balls": 2}},
         
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [20], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 2"},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [20], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 2", "victory_flag": "hq_password_2", "dialogue": {"player_won": ["Rocket Grunt: You won't get past the office anyway! ...The second password? RATICATE TAIL. Ugh!"]}},
         
                 {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [23, 44], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 3"}
         

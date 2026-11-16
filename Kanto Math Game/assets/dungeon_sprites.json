@@ -6561,6 +6561,30 @@
     },
     "JOHTO_ROUTE_43:Gate guard": {
       "sheet": "hg_counterm.png"
+    },
+    "ROCKET_HQ:Lance": {
+      "sheet": "hg_wataru.png"
+    },
+    "ROCKET_HQ:Persian statue": {
+      "pokemon": 53
+    },
+    "ROCKET_HQ:Persian statue ": {
+      "pokemon": 53
+    },
+    "ROCKET_HQ:Persian statue  ": {
+      "pokemon": 53
+    },
+    "ROCKET_HQ:Persian statue   ": {
+      "pokemon": 53
+    },
+    "ROCKET_HQ:Persian statue    ": {
+      "pokemon": 53
+    },
+    "ROCKET_HQ:Lance ": {
+      "sheet": "hg_wataru.png"
+    },
+    "ROCKET_HQ:Beaten grunt": {
+      "sheet": "hg_rocketm.png"
     }
   },
   "townsperson": "NPC 17.png",

@@ -562,5 +562,50 @@ check(_toll.get("pay") == 1000 and _toll.get("flag") == "paid_route43_toll", "Ro
 _gd = (_r43.get("Gate guard") or {})
 check(_gd.get("condition") == "rocket_hq_cleared" and (_gd.get("event") or {}).get("gift_item"), "...and the guard's TM Sludge Bomb once the Hideout is cleared")
 check(_it.HELD_BOOSTS.get("BLACK_BELT") == "FIGHTING", "the Black Belt powers up Fighting-type moves")
+# ---- the Rocket Hideout (Jordan 11-15: the whole hideout; Lance with Dragonite; single battles only)
+_hq = _tm["ROCKET_HQ"]["floors"]
+_hqp = lambda i: [q for p in _hq[i].get("people", []) if isinstance(p, dict) for q in (p.get("any") or [p])]
+check(sum(1 for sc in _hq[0].get("scenes", []) if str(sc.get("flag", "")).startswith("hq_alarm_scene_")) == 5
+      and sum(1 for p in _hqp(0) if str(p.get("text", "")).startswith("Persian statue")) == 5,
+      "Rocket Hideout B1F: five Persian statues; pass in front of one and a grunt comes running")
+_lnc = next((p for p in _hqp(0) if p.get("text") == "Lance"), {})
+check((_lnc.get("event") or {}).get("heal"), "...Lance waits on B1F with his Dragonite, and heals your team")
+_pool = {t.get("spot_name") or t["name"]: t for t in _area["ROCKET_HQ"]["trainer_pool"]}
+check(_pool.get("Team Rocket Grunt", {}).get("victory_flag") == "hq_password_1" and _pool.get("Team Rocket Grunt 2", {}).get("victory_flag") == "hq_password_2",
+      "...two grunts give up the office's passwords when beaten")
+check(any(b.get("until", {}).get("condition") == ["hq_password_1", "hq_password_2"] for b in _hq[2].get("barred", [])),
+      "...the boss's office opens only with both passwords")
+check(any((p.get("event") or {}).get("flag") == "hq_murkrow_password" for p in _hqp(2)) and any("hq_murkrow_password" in str(b.get("until")) for b in _hq[1].get("barred", [])),
+      "...Petrel's Murkrow repeats the voice password for the Radio Transmitter room")
+_el = [p for p in _hqp(1) if p.get("action") == "BOSS" and (p.get("boss") or {}).get("id") == 101]
+check(len(_el) == 3, f"...three Electrode power the transmitter ({len(_el)})")
+_l2 = next((p for p in _hqp(1) if p.get("text") == "Lance "), {})
+check((_l2.get("event") or {}).get("gift_item", {}).get("HM_WHIRLPOOL") and _l2["event"].get("requires") == ["hq_electrode_3"]
+      and _hms.HM_BY_BADGE["JOHTO"].get("GLACIER") is None and _hms.USE_BADGE["JOHTO"].get("HM_WHIRLPOOL") == "GLACIER",
+      "...then Lance gives Whirlpool (usable with the Glacier Badge)")
+_sv = [o for o in _area["MAHOGANY_TOWN"]["explore_options"] if o.get("door") == "souvenir" and o.get("text") in ("Lance", "Dragonite")]
+check(len(_sv) == 2, "Mahogany's souvenir shop: Lance and Dragonite uncover the Hideout's stairs")
+
+# ---- the Fishing Guru's Magikarp record (Jordan 11-15: by its hidden strength, record from 130; Ralph's comment on its weakest point)
+class _K: pass
+_k = _K(); _k.id = 129; _k.is_egg = False; _k.display_name = "MAGIKARP"
+_save_team, _save_flag = list(story.player_team), story.story_flags.pop("magikarp_record", None)
+story.player_team = [_k]
+_k.ivs = {"HP": 31, "ATTACK": 31, "DEFENSE": 30, "SPATK": 30, "SPDEF": 20, "SPEED": 20}   # (162: a record)
+_said = []
+_eth = story.inventory.get("ETHER", 0)
+_run_story_event(g.current_state, {"lines": [], "size_record": True}, lambda c: True, lambda ls: _said.extend(ls))
+check(story.story_flags.get("magikarp_record") == 162 and story.inventory.get("ETHER", 0) == _eth + 1 and not any("IV" in x for x in _said),
+      f"Lake of Rage: the Fishing Guru measures your Magikarp; a new record wins an Ether ({_said[1:2]})")
+_k.ivs = {"HP": 31, "ATTACK": 31, "DEFENSE": 25, "SPATK": 25, "SPDEF": 20, "SPEED": 3}
+_said = []
+_run_story_event(g.current_state, {"lines": [], "size_record": True}, lambda c: True, lambda ls: _said.extend(ls))
+check(story.story_flags.get("magikarp_record") == 162 and any("Ralph" in x and ("fast" in x or "quick" in x) for x in _said),
+      f"...a smaller one, and he notes Ralph's was faster ({_said[-1:]})")
+story.player_team = _save_team
+if _save_flag is None:
+    story.story_flags.pop("magikarp_record", None)
+else:
+    story.story_flags["magikarp_record"] = _save_flag
 if fails:
     print("FAILS:", len(fails))

@@ -40,7 +40,24 @@ def _t(base, **kw):
 
 EVENTS = {
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
-    "johto_elm_starter": {"starter": "JOHTO"},   # (no lines of its own: the Lab scene says them, then the starter screen opens)
+    "johto_elm_starter": {"starter": "JOHTO"},
+    # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)
+    "hq_alarm_1": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_1",
+        "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 41], "levels": [18, 18],
+                   "rewards": {"balls": 2}, "dialogue": {"player_won": ["Rocket Grunt: Ugh... Those statues never miss a thing, but I sure did."]}}},
+    "hq_alarm_2": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_2",
+        "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [41, 109], "levels": [18, 18],
+                   "rewards": {"balls": 2}, "dialogue": {"player_won": ["Rocket Grunt: Ugh... Those statues never miss a thing, but I sure did."]}}},
+    "hq_alarm_3": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_3",
+        "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [20], "levels": [18],
+                   "rewards": {"balls": 2}, "dialogue": {"player_won": ["Rocket Grunt: Ugh... Those statues never miss a thing, but I sure did."]}}},
+    "hq_alarm_4": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_4",
+        "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 19, 41], "levels": [18, 18, 18],
+                   "rewards": {"balls": 2}, "dialogue": {"player_won": ["Rocket Grunt: Ugh... Those statues never miss a thing, but I sure did."]}}},
+    "hq_alarm_5": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_5",
+        "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [109, 23], "levels": [18, 18],
+                   "rewards": {"balls": 2}, "dialogue": {"player_won": ["Rocket Grunt: Ugh... Those statues never miss a thing, but I sure did."]}}},
+   # (no lines of its own: the Lab scene says them, then the starter screen opens)
     "johto_lyra_balls": {
         "lines": ["Lyra: Watch, I'll show you how to catch one! First you weaken it in battle...",
                   "Lyra: ...then you throw a Poke Ball. See? Easy! Here, take some of mine."],
