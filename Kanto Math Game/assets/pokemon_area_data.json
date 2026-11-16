@@ -2688,7 +2688,10 @@
         { "text": "Silver League", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "has_8_johto_badges", "door": "leaguegate" },
         { "text": "Route 28", "target_area": "KANTO_ROUTE_28", "condition": ["beat_johto_champion", "has_8_johto_badges"] }
       ],
-      "explore_options": [],
+      "explore_options": [
+        {"text": "GATE GUARD", "action": "EVENT", "condition": "playing_region:JOHTO", "event": {"lines": ["Guard: Only Trainers who have proven themselves may pass. Let me see your Badges...", "The eight Badges of Johto! Go right on through to the Silver League."], "requires": ["has_8_johto_badges"], "fail": ["Guard: Only Trainers with all eight Johto Badges may go on to the Pokemon League.", "Come back when you have them."]}},
+        {"text": "GATE GUARD", "action": "EVENT", "condition": "not:playing_region:JOHTO", "event": {"lines": ["Guard: Only Trainers who have proven themselves may pass. Let me see your Badges...", "The eight Badges of Kanto! Victory Road is straight ahead."], "requires": ["has_8_kanto_badges"], "fail": ["Guard: Only Trainers with all eight Kanto Badges may go on to Victory Road.", "Come back when you have them."]}}
+      ],
       "trainer_pool": [],
       "on_enter_event": null,
         "border": true

@@ -148,25 +148,18 @@ class JohtoTown:
 
         story = self.game.story_manager
         flags = story.story_flags
-        import datetime as _dt
-        _today = _dt.date.today().isoformat()
-        if flags.get("kurt_has_gs_ball") and flags.get("kurt_gs_ball_day") != _today:   # (Crystal: a day's study, then the GS Ball back)
-            flags.pop("kurt_has_gs_ball", None)
+        if flags.get("kurt_has_gs_ball"):   # (an older save left it with him overnight: he gives it straight back now)
+            flags.pop("kurt_has_gs_ball", None); flags.pop("kurt_gs_ball_day", None)
             flags["kurt_examined_gs_ball"] = True
             story.inventory["GS_BALL"] = story.inventory.get("GS_BALL", 0) + 1
-            msg = ["Kurt: Ah, there you are. I've studied that GS Ball all night.",
+            msg = ["Kurt: Ah, there you are. I've studied that GS Ball.",
                    "Kurt: It can't be opened, but it's calling to the shrine in Ilex Forest. Take it there and see what happens.",
                    "You got the GS BALL back!"]
-        elif flags.get("kurt_has_gs_ball"):
-            msg = ["Kurt: I'm still studying the GS Ball. Come back tomorrow!"]
-        elif story.inventory.get("GS_BALL", 0) > 0 and not flags.get("kurt_examined_gs_ball"):
-            story.inventory["GS_BALL"] -= 1
-            if story.inventory["GS_BALL"] <= 0:
-                story.inventory.pop("GS_BALL")
-            flags["kurt_has_gs_ball"] = True
-            flags["kurt_gs_ball_day"] = _today
+        elif story.inventory.get("GS_BALL", 0) > 0 and not flags.get("kurt_examined_gs_ball"):   # (Crystal keeps it a day; ours gives it back at once)
+            flags["kurt_examined_gs_ball"] = True
             msg = ["Kurt: What's that? A GS Ball? I've never seen one like it!",
-                   "Kurt: Let me have a good look at it. Come back tomorrow."]
+                   "Kurt: Hmm... It can't be opened, but it's calling to the shrine in Ilex Forest. Take it there and see what happens.",
+                   "Kurt handed the GS BALL back."]
         elif not flags.get("slowpoke_well_cleared"):
             msg = self.game.assets.get_text("kurt_intro")
         elif not flags.get("got_fast_ball_kurt"):   # (once: his thanks for the Well, and the Fast Ball he made; HGSS)

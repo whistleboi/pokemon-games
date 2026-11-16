@@ -307,6 +307,8 @@ class StoryManager:
         if condition.startswith("start_region:"):  # (a game that began in this region, or moved there as home: Johto's HGSS opening plays only then)
             want = condition.split(":", 1)[1].upper()
             return str(getattr(self, "starting_region", "")).upper() == want or bool(self.story_flags.get(f"moved_to_{want.lower()}"))
+        if condition.startswith("playing_region:"):  # (the region of this playthrough here - at the League Reception Gate, the one you came from: its guard checks Johto's Badges on a Johto run)
+            return self.get_current_region() == condition.split(":", 1)[1].upper()
         if condition.startswith("weekday:"):  # (the real clock's day: "weekday:tue", "weekday:fri" - HGSS's Week Siblings, Friday's Lapras; Jordan 11-15)
             import datetime
             days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]

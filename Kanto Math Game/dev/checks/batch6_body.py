@@ -208,7 +208,14 @@ ps = ow.PlayState(g)
 cel = next(o for o in prog["ILEX_FOREST"]["route_menu"] if "CELEBI" in o["text"])
 check(not ps._check_route_condition(cel["condition"], False), "no GS Ball, no Celebi")
 story.inventory["GS_BALL"] = 1
-check(ps._check_route_condition(cel["condition"], False), "with the GS Ball, Celebi appears")
+_bdg = list(story.badges.get("JOHTO", []))
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"]
+check(not ps._check_route_condition(cel["condition"], False), "a GS Ball Kurt hasn't looked at yet: no Celebi")
+story.current_area_key = "AZALEA_TOWN"
+ow.CityState(g).visit_kurt()   # (he studies it and gives it straight back)
+story.current_area_key = "ILEX_FOREST"
+check(story.inventory.get("GS_BALL") == 1 and ps._check_route_condition(cel["condition"], False), "with the GS Ball Kurt studied, Celebi appears")
+story.badges["JOHTO"] = _bdg
 dex = g.data.data.setdefault("pokedex", {})
 dex.clear()
 for pid in range(1, 251):

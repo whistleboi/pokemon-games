@@ -285,10 +285,13 @@ story.inventory["GS_BALL"] = 1
 for k in ("kurt_has_gs_ball", "kurt_examined_gs_ball", "kurt_gs_ball_day"):
     story.story_flags.pop(k, None)
 az.visit_kurt()
-check(story.story_flags.get("kurt_has_gs_ball") and not story.inventory.get("GS_BALL"), "Kurt keeps the GS Ball to study it")
-story.story_flags["kurt_gs_ball_day"] = "2000-01-01"
+check(story.story_flags.get("kurt_examined_gs_ball") and story.inventory.get("GS_BALL") == 1 and not story.story_flags.get("kurt_has_gs_ball"),
+      "Kurt studies the GS Ball and gives it straight back: take it to Ilex's shrine")
+story.inventory.pop("GS_BALL", None); story.story_flags.pop("kurt_examined_gs_ball", None)
+story.story_flags.update({"kurt_has_gs_ball": True, "kurt_gs_ball_day": "2000-01-01"})   # (an older save that left it with him overnight)
 az.visit_kurt()
-check(story.story_flags.get("kurt_examined_gs_ball") and story.inventory.get("GS_BALL") == 1, "...the next day he gives it back: take it to Ilex's shrine")
+check(story.story_flags.get("kurt_examined_gs_ball") and story.inventory.get("GS_BALL") == 1 and not story.story_flags.get("kurt_has_gs_ball"),
+      "...and a save that left it with him gets it back on the next visit")
 cel = [o for o in _area["ILEX_FOREST"]["route_menu"] if o.get("action") == "BOSS"]
 check(cel and "kurt_examined_gs_ball" in cel[0]["condition"], "Celebi waits at the shrine for the GS Ball Kurt studied")
 gs = [o for o in _area["GOLDENROD_CITY"]["explore_options"] if (o.get("event") or {}).get("gift_item", {}).get("GS_BALL")]

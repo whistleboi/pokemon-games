@@ -1582,8 +1582,17 @@ check(isinstance(_ds, _WTS) and set(_ds.exits.values()) == {"DRAGONS_DEN"} and (
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "POKEMON_LEAGUE_GATE", "KANTO_ROUTE_26"
 _lg = _CS(g); g.change_state(_lg); _tap_through(_lg)
-check(isinstance(_lg, _WTS) and {"KANTO_ROUTE_22", "KANTO_ROUTE_28", "KANTO_ROUTE_26"} == set(_lg.exits.values()) and "leaguegate" in _lg.doors.values() and _lg.player[1] >= 17,
-      f"the Reception Gate: exact; in from Route 26 (south) at {_lg.player}; Route 28 west, Route 22 east (as in SoulSilver), the great door north")
+check(isinstance(_lg, _WTS) and {"KANTO_ROUTE_22", "KANTO_ROUTE_28", "KANTO_ROUTE_26"} == set(_lg.exits.values()) and "leaguegate" in _lg.doors.values() and _lg.player[1] >= 8 and (_lg.w, _lg.h) == (15, 12),
+      f"the Reception Gate: FireRed's League Gate (Jordan 11-16); in from Route 26 (south) at {_lg.player}; Route 28 west, Route 22 east, the great door north")
+_gg = [o for o in _prog["POKEMON_LEAGUE_GATE"]["explore_options"] if o.get("text") == "GATE GUARD"]
+_lg_reg = story.story_flags.get("border_region")
+_gg_on = {}
+for _reg in ("JOHTO", "KANTO"):
+    story.story_flags["border_region"] = _reg
+    _gg_on[_reg] = [o["event"]["requires"] for o in _gg if _lg._check_menu_condition(o.get("condition"))]
+story.story_flags["border_region"] = _lg_reg
+check(_gg_on == {"JOHTO": [["has_8_johto_badges"]], "KANTO": [["has_8_kanto_badges"]]},
+      f"...its guard checks Johto's eight Badges on a Johto playthrough, Kanto's on a Kanto one {_gg_on}")
 _lg_held = _lg._check_menu_condition
 _lg_door = next(t for t, k in _lg.doors.items() if k == "leaguegate")
 _lg_seen = {}
