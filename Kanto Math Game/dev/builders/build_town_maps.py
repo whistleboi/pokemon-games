@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # (the game folder: src.dungeon.art, for whose door is whose)
 
 # One file a region (dev/builders/town_maps/<region>.py), in story order.
-REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii", "orre", "made"]   # (made: the map maker's, dev/tools/map_maker.py)
+REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii", "orre", "made"]   # (made: the map maker's, from its Export)
 
 
 ONLY = next((a.split("=", 1)[1].split(",") for a in sys.argv[1:] if a.startswith("--only=")), None)

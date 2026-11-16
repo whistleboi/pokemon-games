@@ -32,11 +32,11 @@ can walk. The town screen (src/states/overworld/walk_town.py) and the route maps
   [ ] { } a sea current: it carries you west, east, north, south till something stops you (Routes 132-134)
   : deep, dark sea: Surf across it, and Dive there to the map's seabed floor
   ` under a ready-made piece (a palm, a totem: the map's roofs "_objects" {"k": "alola:palm", "at": [x, y]}, from
-    dev/tools/piece_library.py): in the way, drawn as the ground round it, the piece over it
+    piece_library.py in the Pokemath Map Maker project): in the way, drawn as the ground round it, the piece over it
   | ; a log bridge running north-south / east-west: cross it along its length, or walk under it across
     its width, never from one to the other (Victory Road's two levels)
 A map's roofs "_cliffs" {"set": "rock_bp", "rock": [rows], "steps": [rows]} draw its cliffs from a tile set (one code a tile,
-from assets/tiles/<set>/index.json; dev/tools/cliff_tiers.py lays them from the map's height levels): the rock on its c
+from assets/tiles/<set>/index.json; the map maker's cliff_tiers.py lays them from the map's height levels): the rock on its c
 tiles, stairs on the open tiles that cross it.
 A map's "theme" "distortion" draws the Distortion World: red rock slabs in a blue void (its c), stepping stones (its ,).
 A map's "theme" "seabed" draws a floor under the sea: dark blue sand, rock walls, seaweed for its tall grass.
@@ -46,6 +46,21 @@ import os
 import random
 
 import pygame
+
+# where the tile pictures are found: the game's own assets/tiles, after any folder put in front of it (the map maker,
+# its own project, puts its piece library first, so it draws pieces the game hasn't been given yet)
+TILE_DIRS = [os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")]
+
+
+def _tiles_dir(folder=""):
+    """A tile set's folder: the first of TILE_DIRS that has it (the game's own assets/tiles for its own pictures)."""
+    if not folder:
+        return TILE_DIRS[-1]
+    for d in TILE_DIRS:
+        if os.path.isdir(os.path.join(d, folder)):
+            return os.path.join(d, folder)
+    return os.path.join(TILE_DIRS[-1], folder)
+
 
 BLOCK = set("Tr~#!lkcqihmgjyztx&$/*_()@027'")
 LEDGES = {"_": (0, 1), "(": (-1, 0), ")": (1, 0)}  # a ledge, and the one way you hop over it
@@ -473,7 +488,7 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 pygame.draw.circle(surf, (214, 218, 226), c0, tile // 9)
     for k, rect in sorted(buildings(art).items(), key=lambda kv: kv[1].bottom):
         piece = (roofs or {}).get(k)
-        if isinstance(piece, dict) and piece.get("model") and _model(piece["model"]):  # a ready-made piece (dev/tools/piece_library.py):
+        if isinstance(piece, dict) and piece.get("model") and _model(piece["model"]):  # a ready-made piece (piece_library.py in the Pokemath Map Maker project):
             mp, ox, oy = _model(piece["model"])                                          # its picture over its footprint, the
             key = (piece["model"], tile)                                                 # footprint's top-left at (ox, oy)
             if key not in _SCALED:
@@ -1054,7 +1069,7 @@ def overhead(o, tile):
         o = dict(o, f=_version_file(o))   # (a picture of its own for each version: the Cave of Origin's crystals)
         key = ("top", o["f"])
         if key not in _PT:
-            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
+            base = _tiles_dir()
             _PT[key] = pygame.image.load(os.path.join(base, o["f"]))
         w, h = o["size"]
         part = pygame.Surface((w * 16, h * 16), pygame.SRCALPHA)
@@ -1204,7 +1219,7 @@ def _ow(folder, name, tile):
     if key not in _PT:
         _PT[key] = None
         try:
-            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", folder)
+            base = _tiles_dir(folder)
             img = pygame.image.load(os.path.join(base, f"ow_{name}.png"))
             _PT[key] = pygame.transform.scale(img, (img.get_width() * tile // 16, img.get_height() * tile // 16))
         except Exception:
@@ -1253,7 +1268,7 @@ def _picture(spec, w, h, tile):
         f = _version_file(spec)
         key = ("pic", f)
         if key not in _PT:
-            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
+            base = _tiles_dir()
             _PT[key] = pygame.image.load(os.path.join(base, f))
         img = _PT[key]
         part = pygame.Surface((w * 16, h * 16))
@@ -1271,7 +1286,7 @@ def _autotile(name):
         _PT[key] = None
         try:
             import json as _json
-            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", "autotiles")
+            base = _tiles_dir("autotiles")
             if ("index", "autotiles") not in _PT:
                 with open(os.path.join(base, "index.json"), encoding="utf-8") as f:
                     _PT[("index", "autotiles")] = _json.load(f)
@@ -1321,7 +1336,7 @@ def _fence_kit_pic(kind):
         _PT[k] = None
         try:
             import json as _json
-            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", "fences")
+            base = _tiles_dir("fences")
             if ("index", "fences") not in _PT:
                 with open(os.path.join(base, "index.json"), encoding="utf-8") as f:
                     _PT[("index", "fences")] = _json.load(f)
@@ -1386,7 +1401,7 @@ def _cliff_tiles(spec, art):
     """{(x, y): [picture path, ...]} for a map's "_cliffs": rock only where the map has c, stairs only on open ground."""
     if not spec:
         return {}
-    base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", spec.get("set", ""))
+    base = _tiles_dir(spec.get("set", ""))
     key = ("cliffs", spec.get("set"))
     if key not in _PT:
         try:
@@ -1420,7 +1435,7 @@ def _model(key):
         try:
             import json as _json
             folder, name = key.split(":", 1)
-            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", folder)
+            base = _tiles_dir(folder)
             if ("index", folder) not in _PT:
                 _PT[("index", folder)] = _json.load(open(os.path.join(base, "index.json")))
             meta = _PT[("index", folder)].get(name)
@@ -1441,7 +1456,7 @@ def _sprite(kind):
         _ATLAS = {}
         try:
             import json as _json
-            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
+            base = _tiles_dir()
             spec = _json.load(open(os.path.join(base, "atlas.json")))
             sheets = {k: pygame.image.load(os.path.join(base, v)) for k, v in spec["_sheets"].items()}
             global SHEET_OUT
