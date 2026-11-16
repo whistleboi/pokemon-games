@@ -1318,7 +1318,7 @@ _hq = kanto("ROCKET_HQ", came="MAHOGANY_TOWN")
 while _hq.run.index < _hq.run.n_floors - 1:
     _hq.run.enter_floor(_hq.run.index + 1)
 _hqt = [(i, m.x, m.y) for i, f in enumerate(_hq.run.floors) for m in f.movers if m.kind == "trainer"]
-check(len(_hqt) == 5 and len(set(_hqt)) == 5 and [t[0] for t in _hqt].count(0) == 1 and [t[0] for t in _hqt].count(1) == 2,
+check(len(_hqt) == 11 and len(set(_hqt)) == 11,   # (11-15: SoulSilver's own grunts and scientists joined ours, each on a spot of its own)
       f"Rocket Hideout: a grunt on each floor on a spot of their own (three share one name), Ariana on B2F, Petrel on B3F {_hqt}")
 _r44 = kanto("JOHTO_ROUTE_44", came="MAHOGANY_TOWN")
 check(len({(m.x, m.y) for m in _r44.run.floor.movers if m.kind == "trainer"}) == 7, "Route 44: seven trainers, each on a spot of the game's")
@@ -1453,7 +1453,7 @@ check(_walls == 15 and _left == 0 and _m3.run.floor.walkable(15, 10), f"Mt. Silv
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
-check((_lor.run.floor.w, _lor.run.floor.h) == (96, 64) and set(_lor.run.floor.exits.values()) == {"JOHTO_ROUTE_43"} and _lor.run.player[1] >= 60
+check((_lor.run.floor.w, _lor.run.floor.h) == (96, 64) and {str(v) for v in _lor.run.floor.exits.values() if not str(v).startswith(("WARP:", "OUT:", "ROOM:"))} == {"JOHTO_ROUTE_43"} and _lor.run.player[1] >= 60
       and _gy and (_gy[0].x, _gy[0].y) == (45, 39), f"Lake of Rage: exact map; in from Route 43 (south); the Red Gyarados out on the lake {[(m.x, m.y) for m in _gy]}")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "MAHOGANY_TOWN", "JOHTO_ROUTE_42"

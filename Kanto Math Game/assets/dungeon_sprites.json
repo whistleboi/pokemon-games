@@ -6501,6 +6501,66 @@
     },
     "BUG_CONTEST:Youngster Samuel": {
       "sheet": "hg_gsboy1.png"
+    },
+    "LAKE_OF_RAGE:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "LAKE_OF_RAGE:CHOICE SPECS": {
+      "item": "POKE_BALL"
+    },
+    "LAKE_OF_RAGE:TM112": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_43:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:HYPER POTION ": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:GUARD SPEC": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:TM23": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:TM123": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:X SP ATK": {
+      "item": "POKE_BALL"
+    },
+    "LAKE_OF_RAGE:Fisherman": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "LAKE_OF_RAGE:Woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "LAKE_OF_RAGE:Girl": {
+      "sheet": "hg_gsman1.png"
+    },
+    "LAKE_OF_RAGE:Wesley": {
+      "sheet": "hg_gsman3.png"
+    },
+    "JOHTO_ROUTE_43:Rocket Grunt": {
+      "sheet": "hg_rocketm.png"
+    },
+    "JOHTO_ROUTE_43:Rocket Grunt ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "JOHTO_ROUTE_43:Gate guard": {
+      "sheet": "hg_counterm.png"
     }
   },
   "townsperson": "NPC 17.png",

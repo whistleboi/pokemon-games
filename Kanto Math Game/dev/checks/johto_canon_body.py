@@ -551,5 +551,16 @@ if "Bug Catcher Don" in _figs and "Venonat" in _figs:
         _ld.timer = 999; _ld.path = [_to]
         frames(40)
     check(_to and tuple(_fo.pos) == _was, f"...a contestant's Pokemon follows a step behind ({_was} -> {_to}; Venonat at {_fo.pos})")
+# ---- N11: Lake of Rage, Route 43 (HGSS)
+_lr = {p.get("text"): p for p in _ppl("LAKE_OF_RAGE")}
+check(_lr.get("Wesley", {}).get("condition") == "weekday:wed" and (_lr["Wesley"].get("event") or {}).get("gift_item", {}).get("BLACK_BELT"),
+      "Lake of Rage: Wesley, on Wednesdays, gives a Black Belt")
+check({"hiddenpower", "magikarphouse"} <= set(_tm["LAKE_OF_RAGE"].get("rooms", {})), "...the hermit's house (Hidden Power) and the Fishing Guru's are open")
+_r43 = {p.get("text"): p for p in _ppl("JOHTO_ROUTE_43")}
+_toll = (_r43.get("Rocket Grunt") or {}).get("event") or {}
+check(_toll.get("pay") == 1000 and _toll.get("flag") == "paid_route43_toll", "Route 43: Team Rocket's toll at the gate ($1000)")
+_gd = (_r43.get("Gate guard") or {})
+check(_gd.get("condition") == "rocket_hq_cleared" and (_gd.get("event") or {}).get("gift_item"), "...and the guard's TM Sludge Bomb once the Hideout is cleared")
+check(_it.HELD_BOOSTS.get("BLACK_BELT") == "FIGHTING", "the Black Belt powers up Fighting-type moves")
 if fails:
     print("FAILS:", len(fails))

@@ -328,7 +328,9 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
             if what.get("decor"):
                 floor.decor[(x, y)] = what["decor"]
             if what.get("figure"):
-                floor.spots[what["figure"]] = (x, y)
+                if what["figure"] not in floor.spots:
+                    floor.spots[what["figure"]] = (x, y)
+                floor.__dict__.setdefault("spot_queue", {}).setdefault(what["figure"], []).append((x, y))   # (several trainers of one name: each its own spot, in reading order)
     for t in map(tuple, plan.get("exit_order") or ()):  # (several mouths to one place that pair up out of reading order: these come last, in this order: Mt. Mortar's four)
         if t in exits:
             exits[t] = exits.pop(t)
@@ -559,7 +561,9 @@ class Run:
             [t for i, t in enumerate(spread) if i % self.n_floors == index]
         place = fixed or self.rng
         for idx, payload in mine:
-            own = (floor.spots.get(f"trainer:{payload.get('spot_name')}") or floor.spots.get(f"trainer:{payload.get('name')}"))                 if isinstance(payload, dict) else None  # (spot_name first: a villain renamed for the version keeps its own spot, even with others now named alike)
+            _q = floor.__dict__.get("spot_queue", {})
+            _k = next((k for k in (f"trainer:{payload.get('spot_name')}", f"trainer:{payload.get('name')}") if _q.get(k)), None) if isinstance(payload, dict) else None
+            own = _q[_k].pop(0) if _k else ((floor.spots.get(f"trainer:{payload.get('spot_name')}") or floor.spots.get(f"trainer:{payload.get('name')}"))                 if isinstance(payload, dict) else None)  # (spot_name first: a villain renamed for the version keeps its own spot, even with others now named alike)
             spot = own
             if not own:  # (anywhere, but somewhere you can walk to from the way in: never across water you can't cross yet)
                 afoot = on_foot(floor, floor.start) if self.recipe.get("layout") else None

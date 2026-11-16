@@ -143,6 +143,7 @@
     "JOHTO_ROUTE_42_DAY_PERCENTAGES": {"179": 29, "21": 25, "56": 11, "23": 11, "180": 7, "19": 7, "20": 4, "22": 2, "24": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_42_MORNING_PERCENTAGES": {"179": 29, "21": 25, "56": 11, "23": 11, "180": 7, "19": 7, "20": 4, "22": 2, "24": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_42_NIGHT_PERCENTAGES": {"179": 29, "41": 25, "56": 11, "19": 11, "180": 7, "20": 7, "42": 6, "183": 2, "2001": 1, "2002": 1},
+    "JOHTO_ROUTE_43_MORNING_PERCENTAGES": {"180": 21, "203": 22, "17": 19, "161": 11, "179": 7, "83": 7, "162": 6, "48": 4, "20": 2, "2001": 1},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -2320,77 +2321,139 @@
         },
         
         "JOHTO_ROUTE_43": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 43",
+        
             "battle_type": "field",
-            "wild_pool_percentages": "JOHTO_ROUTE_43_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_ROUTE_43_DAY_PERCENTAGES",
+        
             "day_pool_percentages": "JOHTO_ROUTE_43_DAY_PERCENTAGES",
+        
             "night_pool_percentages": "JOHTO_ROUTE_43_NIGHT_PERCENTAGES",
+        
             "has_trees": true,
+        
             "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES",
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { "name": "Picnicker Tiffany", "class": "PICNIKER", "sprite": "lass.png", "team": [35], "rewards": { "balls": 2 } },
-                { "name": "Camper Spencer", "class": "YOUNGSTER", "sprite": "camper.png", "team": [27, 28, 21], "rewards": { "balls": 2 } },
-                { "name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [80, 80], "rewards": { "balls": 2 } },
-                { "name": "Pokemaniac Ron", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [147], "rewards": { "balls": 2 } },
-                { "name": "Pokemaniac Beckett", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [80], "rewards": { "balls": 2 } },
-                { "name": "Fisherman Marvin", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [129, 130, 129], "rewards": { "balls": 2 } },
-                { "name": "Rocket Grunt Kip", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [109, 20], "rewards": { "balls": 2 }, "gone_flag": "rocket_hq_cleared",
-                    "dialogue": {
-                        "intro": ["Hold it, kid! Lena, watch this!", "One more win and you'll see I'm Executive material!"],
-                        "player_won": ["N-not in front of Lena...!"],
-                        "player_lost": ["Did you see that, Lena? Did you?"] } },
-                { "name": "Rocket Grunt Lena", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [24, 41], "rewards": { "balls": 2 }, "gone_flag": "rocket_hq_cleared",
-                    "dialogue": {
-                        "intro": ["Kip has been showing off all day.", "Step aside. I'll show you how it's really done!"],
-                        "player_won": ["Fine. At least I lost with style. Unlike Kip."],
-                        "player_lost": ["See, Kip? That's how a real Rocket battles."] } }
+        
+                {"name": "Picnicker Tiffany", "class": "PICNIKER", "sprite": "lass.png", "team": [35], "rewards": {"balls": 2}},
+        
+                {"name": "Camper Spencer", "class": "YOUNGSTER", "sprite": "camper.png", "team": [27, 28, 41], "rewards": {"balls": 2}},
+        
+                {"name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [30, 33], "rewards": {"balls": 2}},
+        
+                {"name": "Pokemaniac Ron", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [147], "rewards": {"balls": 2}},
+        
+                {"name": "Pokemaniac Beckett", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [80], "rewards": {"balls": 2}},
+        
+                {"name": "Fisherman Marvin", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [129, 130, 129], "rewards": {"balls": 2}},
+        
+                {"name": "Rocket Grunt Kip", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [109, 20], "rewards": {"balls": 2}, "gone_flag": "rocket_hq_cleared", "dialogue": {"intro": ["Hold it, kid! Lena, watch this!", "One more win and you'll see I'm Executive material!"], "player_won": ["N-not in front of Lena...!"], "player_lost": ["Did you see that, Lena? Did you?"]}},
+        
+                {"name": "Rocket Grunt Lena", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [24, 41], "rewards": {"balls": 2}, "gone_flag": "rocket_hq_cleared", "dialogue": {"intro": ["Kip has been showing off all day.", "Step aside. I'll show you how it's really done!"], "player_won": ["Fine. At least I lost with style. Unlike Kip."], "player_lost": ["See, Kip? That's how a real Rocket battles."]}},
+        
+                {"name": "Poké Maniac Ron", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [34], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        
                 {"text": "Mahogany Town", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
-                {"text": "Lake of Rage", "action": "EXIT", "target_area": "LAKE_OF_RAGE", "condition": "can_exit", "color": "RED"}
-                ],
-            "next_area": "JOHTO_ROUTE_44" 
+        
+                {"text": "Lake of Rage", "action": "EXIT", "target_area": "LAKE_OF_RAGE", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_johto_route_43_r43_20_42", "event": {"lines": ["An Ultra Ball, lying in the grass."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_johto_route_43_r43_20_42"}}
+        
+            ],
+        
+            "next_area": "JOHTO_ROUTE_44",
+        
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+        
+            "morning_pool_percentages": "JOHTO_ROUTE_43_MORNING_PERCENTAGES"
+        
         },
         
         "LAKE_OF_RAGE": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Lake of Rage",
+        
             "battle_type": "field",
+        
             "wild_pool_percentages": "JOHTO_LAKE_OF_RAGE_PERCENTAGES",
-            "backgrounds": {
-                "battle": "battle_lake_rage.png"
-            },
-            "area_boss": {
-                "id": 130,
-                "name": "Red Gyarados",
-                "is_shiny": true,
-                "victory_flag": "defeated_red_gyarados"
-            },
+        
+            "backgrounds": {"battle": "battle_lake_rage.png"},
+        
+            "area_boss": {"id": 130, "name": "Red Gyarados", "is_shiny": true, "victory_flag": "defeated_red_gyarados"},
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { "name": "Fisherman Raymond", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [129, 129, 129, 129], "rewards": { "balls": 2 } },
-                { "name": "Fisherman Andre", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [130], "rewards": { "balls": 2 } },
-                { "name": "Cooltrainer Lois", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [188, 38], "rewards": { "balls": 2 } },
-                { "name": "Cooltrainer Aaron", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [2, 5, 8], "rewards": { "balls": 2 } }
+        
+                {"name": "Fisherman Raymond", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [129, 129, 129, 129], "rewards": {"balls": 2}},
+        
+                {"name": "Fisherman Andre", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [130], "rewards": {"balls": 2}},
+        
+                {"name": "Cooltrainer Lois", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [188, 38], "rewards": {"balls": 2}},
+        
+                {"name": "Cooltrainer Aaron", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [2, 5, 8], "rewards": {"balls": 2}},
+        
+                {"name": "Ace Trainer Alton", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [2, 5, 8], "rewards": {"balls": 2}},
+        
+                {"name": "Ace Trainer Lois", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [179, 38], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
                 {"text": "BATTLE GYARADOS", "action": "BOSS", "condition": "can_battle_red_gyarados", "color": "RED"},
+        
                 {"text": "ROUTE 43", "action": "EXIT", "target_area": "JOHTO_ROUTE_43", "condition": "can_exit", "color": "RED"},
+        
                 {"text": "MAHOGANY TOWN", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
-            {"text": "PICK UP THE RED SCALE", "action": "EVENT", "color": "GOLD", "event": {"requires": ["defeated_red_gyarados"], "lines": ["Something red is shining by the shore where the Gyarados was...", "It's a scale from the Red Gyarados!"], "gift_item": {"RED_SCALE": 1}, "flag": "got_red_scale"}, "condition": "defeated_red_gyarados", "flag_condition": "not got_red_scale"}
-        ],
-            "next_area": "MAHOGANY_TOWN" 
+        
+                {"text": "PICK UP THE RED SCALE", "action": "EVENT", "color": "GOLD", "event": {"requires": ["defeated_red_gyarados"], "lines": ["Something red is shining by the shore where the Gyarados was...", "It's a scale from the Red Gyarados!"], "gift_item": {"RED_SCALE": 1}, "flag": "got_red_scale"}, "condition": "defeated_red_gyarados", "flag_condition": "not got_red_scale"},
+        
+                {"text": "MAX ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_ether_lake_of_rage_t29_26_2", "event": {"lines": ["A Max Ether, lying in the grass."], "gift_item": {"MAX_ETHER": 1}, "flag": "got_max_ether_lake_of_rage_t29_26_2"}},
+        
+                {"text": "CHOICE SPECS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_choice_specs_lake_of_rage_t29_9_41", "event": {"lines": ["A Choice Specs, dropped by the path."], "gift_item": {"CHOICE_SPECS": 1}, "flag": "got_choice_specs_lake_of_rage_t29_9_41"}},
+        
+                {"text": "TM112", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm112_lake_of_rage_t29_60_5", "event": {"lines": ["A TM (Secret-Power), tucked behind a tree."], "gift_item": {"TM112": 1}, "flag": "got_tm112_lake_of_rage_t29_60_5"}},
+        
+                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["...You have strayed far to find me. Here I have meditated, and a new power has awakened within me. Let me share it with you."], "gift_item": {"TM104": 1}, "flag": "got_tm_hidden_power_lake", "done": ["It is Hidden Power. It draws out a power that sleeps inside every Pokemon."]}, "text": "Hermit", "door": "hiddenpower"},
+        
+                {"action": "EVENT", "event": {"lines": ["The Lake of Rage is a crater the rampaging Gyarados made. Rain filled it, and that's how the lake was born.", "Me, I'm after the biggest Magikarp in the lake. One day I'll catch a record-breaker!"]}, "text": "Fishing Guru", "door": "magikarphouse"}
+        
+            ],
+        
+            "next_area": "MAHOGANY_TOWN"
+        
         },
 
         "JOHTO_ROUTE_44": {
@@ -3158,25 +3221,75 @@
         },
         
         "ROCKET_HQ": {
+        
             "region": "JOHTO",
+        
             "area_type": "dungeon",
+        
             "battle_type": "indoor",
+        
             "wild_pool_percentages": "JOHTO_ROCKET_HQ_PERCENTAGES",
+        
             "min_rounds": 2,
+        
             "next_area": "MAHOGANY_TOWN",
+        
             "trainer_pool": [
-              {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B1F", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20, 41], "rewards": {"balls": 2}},
-              {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B2F", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [41, 42], "rewards": {"balls": 2}},
-              {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B3F", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20], "rewards": {"balls": 2}},
-              {"name": "Executive Petrel", "class": "ROCKET", "sprite": "petrel.png", "team": [41, 20, 109], "levels": [22, 24, 22], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Petrel: Hah! Fooled you. I'm no Giovanni, but I'm still an Executive of Team Rocket!"], "player_won": ["Petrel: Fine. The password? Go figure it out yourself!"]}},
-              {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 44, 198], "rewards": {"balls": 5, "RARE_CANDY": 1}, "victory_flag": "rocket_hq_cleared", "levels": [25, 25, 27], "is_boss_battle": true}
+        
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B1F", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 19, 19, 19], "rewards": {"balls": 2}},
+        
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B2F", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [48, 48], "rewards": {"balls": 2}},
+        
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B3F", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [42], "rewards": {"balls": 2}},
+        
+                {"name": "Executive Petrel", "class": "ROCKET", "sprite": "petrel.png", "team": [41, 20, 109], "levels": [22, 24, 22], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Petrel: Hah! Fooled you. I'm no Giovanni, but I'm still an Executive of Team Rocket!"], "player_won": ["Petrel: Fine. The password? Go figure it out yourself!"]}},
+        
+                {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 44, 198], "rewards": {"balls": 5, "RARE_CANDY": 1}, "victory_flag": "rocket_hq_cleared", "levels": [25, 25, 27], "is_boss_battle": true},
+        
+                {"name": "Scientist Gregg", "class": "SCIENTIST", "sprite": "scientist.png", "team": [81, 81, 81], "rewards": {"balls": 2}},
+        
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [19, 41, 19], "rewards": {"balls": 2}},
+        
+                {"name": "Scientist Ross", "class": "SCIENTIST", "sprite": "scientist.png", "team": [109, 109], "rewards": {"balls": 2}},
+        
+                {"name": "Scientist Mitch", "class": "SCIENTIST", "sprite": "scientist.png", "team": [132], "rewards": {"balls": 2}},
+        
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [20], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 2"},
+        
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [23, 44], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 3"}
+        
             ],
+        
             "route_menu": [
-                { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                { "text": "CONFRONT ROCKETS", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
-                { "text": "MAHOGANY TOWN", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED" }
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "CONFRONT ROCKETS", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"},
+        
+                {"text": "MAHOGANY TOWN", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "HYPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hyper_potion_rocket_hq_d35r0102_52_11", "event": {"lines": ["A Hyper Potion, lying among the rocks."], "gift_item": {"HYPER_POTION": 1}, "flag": "got_hyper_potion_rocket_hq_d35r0102_52_11"}},
+        
+                {"text": "HYPER POTION ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hyper_potion_rocket_hq_d35r0102_40_22", "event": {"lines": ["A Hyper Potion, in a dark corner."], "gift_item": {"HYPER_POTION": 1}, "flag": "got_hyper_potion_rocket_hq_d35r0102_40_22"}},
+        
+                {"text": "GUARD SPEC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_guard_spec_rocket_hq_d35r0102_30_28", "event": {"lines": ["A Guard Spec, beside the cave wall."], "gift_item": {"GUARD_SPEC": 1}, "flag": "got_guard_spec_rocket_hq_d35r0102_30_28"}},
+        
+                {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_rocket_hq_d35r0103_12_18", "event": {"lines": ["A Nugget, left behind by a hiker."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_rocket_hq_d35r0103_12_18"}},
+        
+                {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_rocket_hq_d35r0104_11_24", "event": {"lines": ["A Full Heal, lying among the rocks."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_rocket_hq_d35r0104_11_24"}},
+        
+                {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_rocket_hq_d35r0104_13_24", "event": {"lines": ["A Protein, in a dark corner."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_rocket_hq_d35r0104_13_24"}},
+        
+                {"text": "TM23", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm23_rocket_hq_d35r0104_32_4", "event": {"lines": ["A TM (Thief), beside the cave wall."], "gift_item": {"TM23": 1}, "flag": "got_tm23_rocket_hq_d35r0104_32_4"}},
+        
+                {"text": "TM123", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm123_rocket_hq_d35r0104_49_15", "event": {"lines": ["A TM (Snatch), left behind by a hiker."], "gift_item": {"TM123": 1}, "flag": "got_tm123_rocket_hq_d35r0104_49_15"}},
+        
+                {"text": "X SP ATK", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_sp_atk_rocket_hq_d35r0104_27_18", "event": {"lines": ["A X Sp Atk, lying among the rocks."], "gift_item": {"X_SP_ATK": 1}, "flag": "got_x_sp_atk_rocket_hq_d35r0104_27_18"}}
+        
             ]
+        
         },
 
         "GOLDENROD_UNDERGROUND": {
@@ -3655,8 +3768,8 @@
     "JOHTO_ROUTE_42_PERCENTAGES": { "19": 10, "20": 9, "21": 10, "22": 5, "23": 10, "24": 5, "56": 10, "179": 20, "180": 20, "2001" :1, "2002": 1},
     
     "JOHTO_ROUTE_43_PERCENTAGES": { "17": 20, "48": 19, "163": 15, "164": 10, "180": 15, "203": 15, "19": 5, "2001": 1 },
-    "JOHTO_ROUTE_43_NIGHT_PERCENTAGES": { "17": 4, "48": 29, "163": 23, "164": 15, "180": 12, "203": 12, "19": 4, "2001": 1 },
-    "JOHTO_ROUTE_43_DAY_PERCENTAGES": { "17": 46, "48": 6, "163": 4, "164": 3, "180": 17, "203": 17, "19": 6, "2001": 1 },
+    "JOHTO_ROUTE_43_NIGHT_PERCENTAGES": {"180": 25, "203": 26, "164": 18, "48": 13, "20": 11, "179": 4, "49": 2, "2001": 1},
+    "JOHTO_ROUTE_43_DAY_PERCENTAGES": {"180": 29, "203": 22, "17": 15, "161": 11, "179": 7, "83": 7, "162": 6, "20": 2, "2001": 1},
     
     "JOHTO_ROUTE_44_PERCENTAGES": { "70": 30, "69": 20, "114": 20, "108": 15, "60": 10, "61": 5 },
     
@@ -3685,8 +3798,7 @@
     "JOHTO_ILEX_FOREST_PERCENTAGES": { "46": 22, "43": 18, "10": 13, "13": 13, "11": 9, "14": 9, "48": 5, "172": 11 },
     "JOHTO_ILEX_FOREST_NIGHT_PERCENTAGES": {"43": 49, "41": 21, "46": 12, "48": 12, "54": 4, "163": 2},
     "JOHTO_ILEX_FOREST_DAY_PERCENTAGES": {"13": 29, "10": 29, "14": 15, "11": 15, "41": 5, "46": 5, "16": 2},
-    
-    "JOHTO_LAKE_OF_RAGE_PERCENTAGES": { "129": 90, "130": 10 },
+    "JOHTO_LAKE_OF_RAGE_PERCENTAGES": {"129": 90, "130": 10},
     
     "JOHTO_WHIRL_ISLANDS_PERCENTAGES": { "72": 36, "73": 18, "98": 18, "116": 15, "117": 5, "158": 8 },
     "JOHTO_ROCKET_HQ_PERCENTAGES": {"19": 39, "109": 30, "96": 20, "88": 10, "2001": 1},

@@ -68357,7 +68357,7 @@
    "TT\".TTTTTTTTTTTT.....TTTTTTTTccc",
    "TT\"\"TTTTTTTTTTTT....fTTTTTTTTccc",
    "TT.\"\"\"\"\"TTTTTTTT.....TTTTTTTTccc",
-   "TT\"\"\"\"\"\"TTTTTTTT.....TTTTTTTTccc",
+   "TT\"\"\"\"\"\"TTTTTTTT.X...TTTTTTTTccc",
    "TT\"\"\"\"\"\"TTTTTT\"\"\"\"X........TTccc",
    "TTTTTT\"\"TTTTTT\"\"\"\".........TTccc",
    "TTTTTT.\"TTTTTT\"\"\"\".........TTccc",
@@ -68392,13 +68392,13 @@
    "TTcccccccccccc\"\"TTTT.f.AAAAAAccc",
    "TTcccccccccccc\"\"TT...f.AAAAAAccc",
    "TTcccccccccccc\"\"TT.....AAAAAAccc",
-   "TTcccccccccccc\"\"TT.....AAAAAAccc",
+   "TTcccccccccccc\"\"TT..N..AAAAAAccc",
    "TTcccccccccccc\"\"TT.....AAAAAAccc",
    "cccccccccccccc\"\"TT.....AAAAAAccc",
    "cccccccccccccc\"\"TT_____AAAAAAccc",
    "cccccccccccccc\"\"TT.....AAAAAAccc",
    "cccccccccccccc\"\"TT.....cc11ccccc",
-   "cccccccccc....fff......======ccc",
+   "cccccccccc....fff......=NNN==ccc",
    "cccrrccccc.............====X=ccc",
    "cccrrccccc..........!..======ccc",
    "cccccccccc.==================ccc",
@@ -68447,7 +68447,17 @@
      133,
      124
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/R43.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "links": {
    "25,47": [
@@ -68487,6 +68497,7 @@
   ],
   "trainer_spots": [
    "Pokemaniac Ron",
+   "Poké Maniac Ron",
    "Pokemaniac Beckett",
    "Fisherman Marvin",
    "Pokemaniac Brent",
@@ -68497,179 +68508,69 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     14,
-     2,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     8,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     11,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     15,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     23,
-     18,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     19,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     1,
-     28,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     28,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
+    "kind": "picture",
+    "f": "ss_top/R43.png",
+    "at": [
      0,
-     30,
-     2,
-     1
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
+    "size": [
      32,
-     4,
-     1
+     64
     ],
-    "of": "tree"
+    "px": 32
+   }
+  ],
+  "people": [
+   "ULTRA BALL",
+   {
+    "text": "Gate guard",
+    "action": "EVENT",
+    "condition": "rocket_hq_cleared",
+    "event": {
+     "lines": [
+      "Those Team Rocket thugs chased me off my post. Then they just vanished! I hear someone broke up their hideout.",
+      "I owe whoever did it. Here, you look like a Trainer who'd use this. It's Sludge Bomb!"
+     ],
+     "gift_item": {
+      "None": 1
+     },
+     "flag": "got_tm_sludge_bomb_route43",
+     "done": [
+      "Sludge Bomb doesn't just hit hard: it can poison the target too."
+     ]
+    },
+    "color": "GOLD"
    },
    {
-    "kind": "tops",
-    "rect": [
-     16,
-     36,
-     2,
-     1
-    ],
-    "of": "tree"
+    "text": "Rocket Grunt",
+    "action": "EVENT",
+    "condition": "not:rocket_hq_cleared",
+    "flag_condition": "not paid_route43_toll",
+    "event": {
+     "lines": [
+      "Rocket Grunt: Hold it! This gate's ours now. Want through? That'll be $1000. He-he-he."
+     ],
+     "pay": 1000,
+     "flag": "paid_route43_toll",
+     "done": [
+      "Rocket Grunt: Pleasure doing business!"
+     ],
+     "fail": [
+      "Rocket Grunt: No money? Then no passing! Beat it!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     23,
-     38,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     91,
-     137,
-     128
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     27,
-     38,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     91,
-     137,
-     128
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     54,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     56,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     11,
-     60,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     91,
-     137,
-     128
-    ]
+    "text": "Rocket Grunt ",
+    "action": "EVENT",
+    "condition": "not:rocket_hq_cleared",
+    "flag_condition": "not paid_route43_toll",
+    "event": {
+     "lines": [
+      "Rocket Grunt: We're making a bundle. Everyone wants to see what's going on up at the Lake of Rage!"
+     ]
+    }
    }
   ]
  },
@@ -68677,10 +68578,10 @@
   "art": [
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT..N.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTToooooo~~~~~~~~~~~~~~~~TTTTTTTTTTTTTT......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTooooooTTTTTTTTTTTTTTT~TTTTTTTTTTTTTT......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTooooooTTTTTTTTTTTTTTT~TTTTTTTTTTTTTT..N...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTooooooTTTTTTTTTTTTTTT~TTTTTTTTTTTTTT......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTooTTTTTTooooooooTTTTT~TTTTTTTTTTTTTT......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTToTToooooAAAATTooTTTTTTooooooooTTTTT~~~~~~~~~~~~~~~ccccooooooooTTTTTTTTTTTTTTTTTTTTTTTTTT",
@@ -68688,7 +68589,7 @@
    "TTTTTTTToTToooooADAATTooTTTToooTTTTTToooooTTTTTTTTTTTTTTTTTTTTooooooooTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTToTTooooo....TTooTTTToTTooooTToooooTTTTTTTTTTTTTTTTTTTTTTTTTTooTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTToTTooooo....TTooTTTToTTooooTToooooTTTTTTTTTTTTTTTTTTTTTTTTTTooTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTToTTooooo....TTooTTTToTToTToooTToooTTTTTTTTTTTTTTTTTTooooTTTTooTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTToTToooooN...TTooTTTToTToTToooTToooTTTTTTTTTTTTTTTTTTooooTTTTooTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTTTTooooooo..TTooTTTToTToTToooTToooTTTTTTTTTTTTTTTTTTooooTTTTooTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTTTTooooooo..TTooTToooTToTTTToTToooTTTTTTTTTTTTTTooooooooTTTTooTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTTTTooooooooccccoTToooTToTTTToTToooTTTTTTTTTTTTTTooooooooTTTTooTTTTTTTTTTTTTTTTTTTTTTTTTT",
@@ -68697,7 +68598,7 @@
    "TTTTTToTTooooTToooooTTTToTToooTTTToTTTTTToTTTTTTTTTTTTTTTTTTTTooooooooTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTTooooTToooooTTTToTToooTTTToTTTTTToTTTTTTTTTTTTTTTTTTTToooooooo..TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTTooooooTToTTTTTTooooooooTTTTTTTTTTTTTTTTTToooooooooo..TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTToTToTToTTTTTTooooooTToTTTTTTooooooooTTTTTTTTTTTTTTTTTToooooooooo....TTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTToTToTToTTTTTTooooooTToTTTTTTooooooooTTTTTTTTTTTTTTTTTTooooooooooX...TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTTTTTTTToooTTTTTTTToTTTTTTTTTTTTTTTTTTTToooooooooooooX...TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTTTTTTTToooTTTTTTTToTTTTTTTTTTTTTTTTTTTToooooooooooooTT....TTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTToooooooTTTTTToooooooTTTTTToooooooooooooooooooooooooTT....TTTTTTTTTTTTTTTTTTTT",
@@ -68707,7 +68608,7 @@
    "TTTTTToTToTTTToTTTTTTTTTTTToooTTTTTTooooooooooooooooooooooooooooooooooTTTT..TTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTTTToTTTTTTTTTTTToooTTTTTTooooooooooooooooooooooooooooooooooTTTT..TTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTTTToooTTTTTTTTTTo~TTTTTTToooooooooooooooooooooooooooooooooo......TTTTTTTTTTTTTTTTTTTT",
-   "TTTTTToTToTTTToooTTTTTTTTTToTTTTTTTToooooooooooooooooooooooooooooooooo......TTTTTTTTTTTTTTTTTTTT",
+   "TTTTTToTToTTTToooTTTTTTTTTToTTTTTTTTooooooooooooooooooooooooooooooooooN.....TTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToooooTToooTTTTTToooooTTTTTToooooooooooooooooooooooooooooocccc....TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToooooTToooTTTTTToooooTTTTTTooooooooooooooooooooooooooooooTTTT....TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTccccccooTTTToTTTTTTTTTToTTTTTTooooooooooooooooooooooooooooooTTTT....TTTTTTTTTTTTTTTTTTTTTT",
@@ -68716,19 +68617,19 @@
    "TTTTTTTTTTTTooTTXooooooooooooooooTTooooooooooooooooooooooooooooTTTT.......TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTooTTTTTTTToTTTTTTTTTTTTooooooooooNoooooooooooooooooTTTT.....TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTT....ooTTTTTTTToTTTTTTTTTTTTooooooooooooooooooooooooooooTTTT.....TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTT....ooTToooooooTTTTTTTTTTTTooooooooooooooooooooooooooooTTTT..TT.TTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTT.N..ooTToooooooTTTTTTTTTTTTooooooooooooooooooooooooooooTTTT..TT.TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTT....ooTToooooooTTTTTTTTTTTTooooooooooooooooooooooooooooTTTT..TT.TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTToooooooooooooooooooooooooooooooooooooooooooooooooooX.....TT.TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTToTToooooTTTTTTTTTTTTTTTTTToooooooooooooooooooocc............TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTToTToooooTTTTTTTTTTTTTTTTTTooooooooooooooooooooTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTToccoooooTTTTTTTTTTTTTTTTTTooooooooooooooooooooTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTcc...........cc..........ccooooooooo..........TT...TTTT.TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT...........cc..........TTcoooooooo.......X.......TTTTcccccccccccccccccccTTTTTTTTTT",
+   "TTTTTTTTTTTTTT...........cc..........TTcooooooooN......X.......TTTTcccccccccccccccccccTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTT.____TT.____TTTTTTTToooooooo.............TTTTTTcccccccccccccccccccTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTT............TTTTTTTTcccc....!............TTTTTTcccccccccccccccccccTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTT___.______TTTTTTTTTTTT...............TTTTTTTTcccccccccrrccccccccTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTT..........TTTTTTTTTTTT...............TTTTTTcccccccccccrrccccccccTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTT...........HHHHTTTTTTcccccccccccccccccccccTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTT.........N.HHHHTTTTTTcccccccccccccccccccccTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTT..........TTTTTTTTTTTTTT...........HHHHTTTTTTcccccccccccccccccccccTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTT....TTTTTTTTTTTTTTTTTTTT...........HHHHTTTTTTcccccccccccccccccccccTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTT....TTTTTTTTTTTTTTTTTTTT...........HHHHTTTTTTcccccccccccccccccccccTTTTTTTTTT",
@@ -68744,8 +68645,8 @@
    "v": "JOHTO_ROUTE_43"
   },
   "buildings": {
-   "A": "house",
-   "H": "house"
+   "A": "hiddenpower",
+   "H": "magikarphouse"
   },
   "roofs": {
    "A": {
@@ -69623,10 +69524,70 @@
      37,
      46
     ]
-   ]
+   ],
+   "_picture": {
+    "f": "ss_ground/T29.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "people": [
-   "BATTLE GYARADOS"
+   "MAX ETHER",
+   "TM112",
+   {
+    "text": "Wesley",
+    "action": "EVENT",
+    "condition": "weekday:wed",
+    "event": {
+     "lines": [
+      "Glad to meet you! I'm Wesley, and Wednesday's my day!",
+      "Wesley: Take this Black Belt! A Pokemon holding it hits harder with Fighting-type moves."
+     ],
+     "gift_item": {
+      "BLACK_BELT": 1
+     },
+     "flag": "got_black_belt_lake_of_rage",
+     "done": [
+      "Wesley: Have you met my brothers and sisters? Each of us comes out on our own day of the week."
+     ]
+    },
+    "color": "GOLD"
+   },
+   {
+    "text": "Girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "They say rampaging Gyarados made this lake. Is that why so many are showing up now?"
+     ]
+    }
+   },
+   "BATTLE GYARADOS",
+   "CHOICE SPECS",
+   {
+    "text": "Fisherman",
+    "action": "EVENT",
+    "flag_condition": "not defeated_red_gyarados",
+    "event": {
+     "lines": [
+      "The Gyarados are angry! It's a bad omen!"
+     ]
+    }
+   },
+   {
+    "text": "Woman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Did I see that right? A red Gyarados in the lake... I thought Gyarados were blue!"
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -69640,617 +69601,273 @@
   ],
   "trainer_spots": [
    "Cooltrainer Aaron",
-   "Cooltrainer Lois",
-   "Fisherman Andre",
-   "Fisherman Raymond"
+   "Ace Trainer Lois",
+   "Ace Trainer Alton",
+   "Fisherman Raymond",
+   "Fisherman Andre"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     24,
-     6,
-     4,
-     1
+    "kind": "picture",
+    "f": "ss_top/T29.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     31,
-     8,
-     6,
-     1
+    "size": [
+     96,
+     64
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     10,
-     2,
-     1
+    "px": 32
+   }
+  ],
+  "hidden": {
+   "31,50": "FULL_RESTORE",
+   "67,47": "RARE_CANDY",
+   "62,5": "MAX_POTION"
+  },
+  "rooms": {
+   "hiddenpower": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     62,
-     10,
-     6,
-     1
+    "exits": {
+     "v": "OUT:17,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T29R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Hermit"
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     32,
-     12,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     37,
-     12,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     8,
-     13,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     34,
-     14,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     11,
-     16,
-     3,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     27,
-     16,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     39,
-     16,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     58,
-     16,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     18,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     23,
-     18,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     25,
-     18,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     18,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     35,
-     18,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     42,
-     18,
-     16,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     10,
-     20,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     15,
-     20,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     28,
-     20,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     19,
-     22,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     34,
-     22,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     37,
-     22,
-     5,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     70,
-     23,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     26,
-     24,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     72,
-     25,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     23,
-     26,
-     3,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     33,
-     26,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     28,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     19,
-     28,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     28,
-     3,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     30,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     32,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     74,
-     32,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     34,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     25,
-     34,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     66,
-     37,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     38,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     23,
-     38,
-     10,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     72,
-     38,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     69,
-     40,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     8,
-     42,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     13,
-     43,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     43,
-     18,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     68,
-     44,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     63,
-     46,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     48,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     32,
-     48,
-     5,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     61,
-     48,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     50,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     59,
-     50,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     52,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     55,
-     52,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     153,
-     70,
-     49
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T29R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
-   {
-    "kind": "tops",
-    "rect": [
-     24,
-     54,
-     6,
-     1
+   "magikarphouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     58,
-     2,
-     1
+    "exits": {
+     "v": "OUT:56,57"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T29R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Fishing Guru"
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     44,
-     58,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     22,
-     60,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     51,
-     60,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     26,
-     62,
-     8,
-     1
-    ],
-    "of": "tree"
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T29R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
    }
-  ]
+  },
+  "inside": {
+   "17,10": "hiddenpower",
+   "56,57": "magikarphouse"
+  }
  },
  "JOHTO_ROUTE_44": {
   "art": [
@@ -70441,7 +70058,7 @@
      "cccccc...cccccc..ccccccccccccccccccccccccccccccc",
      "cccccc...cccccc..ccccccccccccccccccccccccccccccc",
      "ccc......cc.........................c......ccccc",
-     "ccc......ccmmmm...............................cc",
+     "ccc......ccmmmm.............................N.cc",
      "ccc......ccmmmm...............................cc",
      "ccc......ccccccccccccccccccccc..ccccccccc..ccccc",
      "ccc......ccccccccccccccccccccc..ccccccccc..ccccc",
@@ -70452,13 +70069,13 @@
      "ccc......cc...cccccccccccccccccccccccc..mmmm..cc",
      "ccc......cc...cccccccccccccccccccccccc..mmmm..cc",
      "ccc......cc..................ccmmccccc........cc",
-     "ccc......cc..........ccc............cc........cc",
+     "ccc......cc..........ccc....X...N...cc........cc",
      "ccc......cc..........zzz............cc........cc",
      "ccc......cccccccccccccccccccccccccccccccc.....cc",
      "ccc......cccccccccccccccccccccccccccccccc.....cc",
      "ccc......cccccccccccccccccccccccccccccccc.....cc",
      "ccc......cccccccccccccccccccccccccccccccc.....cc",
-     "ccc.......c.........................c.........cc",
+     "ccc.......c...........N.............c.........cc",
      "cc1...........................................cc",
      "cc............................................cc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc"
@@ -70572,7 +70189,17 @@
      },
      "_stairs": {
       "2,28": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D35R0102.png",
+      "at": [
+       8,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "2,28": [
@@ -70582,7 +70209,31 @@
      ]
     },
     "trainer_spots": [
-     "Rocket Grunt B1F"
+     "Rocket Grunt B1F",
+     "Scientist Gregg"
+    ],
+    "hidden": {
+     "45,15": "REVIVE"
+    },
+    "people": [
+     "HYPER POTION",
+     "HYPER POTION ",
+     "GUARD SPEC"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D35R0102.png",
+      "at": [
+       8,
+       1
+      ],
+      "size": [
+       48,
+       31
+      ],
+      "px": 32
+     }
     ]
    },
    {
@@ -70604,14 +70255,14 @@
      "cccccc..cc...mmmmmmmmmmmmmmmmmmmm...cccc...ccc",
      "cccccc..cc....mmmmmmmmmmmmmmmmmm....cc.....ccc",
      "cccccc..cc...mmmmmmmmmmmmmmmmmmmm...cc.....ccc",
-     "ccc.....cc..........................cc.....ccc",
+     "ccc.N...cc..........................cc.....ccc",
      "ccc.....cc..........................cc.....ccc",
      "cccccccccccccccccccccc..cccccccccccccccccccccc",
      "cccccccccccccccccccccc..cccccccccccccccccccccc",
      "cccccccccccccccccccccc..cccccccccccccccccccccc",
      "cccccccccccccccccccccc..cccccccccccccccccccccc",
      "ccc.................................ccccc..ccc",
-     "ccc.................................cc.....ccc",
+     "ccc...........................X.....cc..X..ccc",
      "ccc.....ccccccccccccc....ccccccccccccc.....ccc",
      "ccc.....ccccccccccccc....ccccccccccccc.....ccc",
      "ccc.....ccccccccccccc....ccccccccccccc.....ccc",
@@ -71330,7 +70981,17 @@
       "2,9": "foot",
       "2,3": "foot",
       "43,3": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D35R0103.png",
+      "at": [
+       8,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "2,28": [
@@ -71360,8 +71021,32 @@
      ]
     },
     "trainer_spots": [
+     "Team Rocket Grunt",
      "Rocket Grunt B2F",
+     "Rocket Grunt B3F",
      "Executive Ariana"
+    ],
+    "hidden": {
+     "12,28": "FULL_HEAL",
+     "40,13": "X_SP_DEF"
+    },
+    "people": [
+     "NUGGET"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D35R0103.png",
+      "at": [
+       8,
+       1
+      ],
+      "size": [
+       46,
+       31
+      ],
+      "px": 32
+     }
     ]
    },
    {
@@ -71369,7 +71054,7 @@
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "ccc....cccc.zmmmmmmz.cc.ccc..............ccccc",
-     "cc1......cc..........cc....................1cc",
+     "cc1......cc..........cc.N..................1cc",
      "cc.......cc..........cc.....................cc",
      "ccccc....cc..cc..ccc.cc....................ccc",
      "ccccc....cc..X...ccc.cc....................ccc",
@@ -71379,21 +71064,21 @@
      "cc.......cc..........cc...cccccccccccccc...ccc",
      "ccc......cc..........cc...cc..........cc...ccc",
      "ccc......cccccc..cccccc...cc..........cc...ccc",
-     "ccc......cccccc..cccccc...cc..cccccc..cc...ccc",
-     "ccc......cccccc..cccccc...cc..X.......cc...ccc",
+     "ccc......cccccc..cccccc...cc.Xcccccc..cc...ccc",
+     "ccc......cccccc..cccccc...cc..X.......cc.N.ccc",
      "ccc......cccccc..cccccc...cc..........cc...ccc",
      "ccc..................cc...cc..cccccc..cc...ccc",
-     "ccc..................cc...cc..........cc...ccc",
+     "ccc................N.cc...cc......X...cc...ccc",
      "ccc..................cc...cc..........cc...ccc",
      "ccccccccccccccccccccccc...cc..........cc...ccc",
      "ccccccccccccccccccccccc...cc..........cc...ccc",
      "ccccccccccccccccccccccc...cccc..cccccccc...ccc",
      "ccccccccccccccccccccccc...cccc..cccccccc...ccc",
-     "ccc.z.mmmm......ccc.......cccc..cccccccc...ccc",
-     "ccc.c.....................cccc..cccccccc...ccc",
+     "cccNzNmmmm......ccc.......cccc..cccccccc...ccc",
+     "ccc.c..X..................cccc..cccccccc...ccc",
      "ccc.z.......ccc......cc....................ccc",
      "ccc.c.......ccc......cc....................ccc",
-     "ccc.z................cc....................ccc",
+     "ccc.z.........X......cc....................ccc",
      "ccc..................cc....................1cc",
      "ccc..................cc.....................cc",
      "cccccccccccccccccccccccccccccccccccccccccccccc"
@@ -71468,7 +71153,17 @@
       "2,9": "foot",
       "2,3": "foot",
       "43,3": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D35R0104.png",
+      "at": [
+       8,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "43,28": [
@@ -71494,7 +71189,33 @@
     },
     "trainer_spots": [
      "Executive Petrel",
-     "Rocket Grunt B3F"
+     "Rocket Grunt B3F",
+     "Team Rocket Grunt 3",
+     "Scientist Ross",
+     "Team Rocket Grunt 2",
+     "Scientist Mitch"
+    ],
+    "people": [
+     "TM23",
+     "TM123",
+     "X SP ATK",
+     "FULL HEAL",
+     "PROTEIN"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D35R0104.png",
+      "at": [
+       8,
+       1
+      ],
+      "size": [
+       46,
+       31
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -71508,7 +71229,22 @@
    "Rocket Grunt B2F": 1,
    "Executive Ariana": 1,
    "Executive Petrel": 2,
-   "Rocket Grunt B3F": 2
+   "Rocket Grunt B3F": 2,
+   "HYPER POTION": 0,
+   "HYPER POTION ": 0,
+   "GUARD SPEC": 0,
+   "Scientist Gregg": 0,
+   "NUGGET": 1,
+   "Team Rocket Grunt": 1,
+   "FULL HEAL": 2,
+   "PROTEIN": 2,
+   "TM23": 2,
+   "TM123": 2,
+   "X SP ATK": 2,
+   "Scientist Ross": 2,
+   "Scientist Mitch": 2,
+   "Team Rocket Grunt 2": 2,
+   "Team Rocket Grunt 3": 2
   },
   "descend": true
  },

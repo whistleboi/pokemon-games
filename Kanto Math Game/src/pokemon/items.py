@@ -93,7 +93,7 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
 HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
-               "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING"}   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
+               "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING", "BLACK_BELT": "FIGHTING"}   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
 FEWER_WILD = {"CLEANSE_TAG"}
 DEFENCE_HELD = {"EVIOLITE"}  # (held by a Pokemon that can still evolve: its defences up by half. Route 123, 11-12)  # (held by your lead: fewer wild Pokemon on a map. Mt. Pyre's old woman, 11-12)
 HELD_BOOST = 1.2
@@ -116,6 +116,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "TWISTED_SPOON": {"price": 1000, "text": "Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
         "IRON_BALL": {"price": 200, "text": "A heavy iron ball. In the games it slows its holder down."},   # (HGSS: Mt. Mortar; effect not built yet)
         "FULL_INCENSE": {"price": 9600, "text": "An incense with a lulling scent. In the games its holder moves after the foe."},   # (HGSS: Mt. Mortar; effect not built yet)
+        "BLACK_BELT": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fighting-type moves hit harder."},   # (HGSS: Wesley, Lake of Rage)
+        "CHOICE_SPECS": {"price": 4000, "text": "Held: in the games it boosts special moves but locks its holder into one move."},   # (HGSS: Lake of Rage; effect not built yet)
         "SHARP_BEAK": {"price": 1000, "text": "Give it to a Pokemon to hold: its Flying-type moves hit harder."},   # (HGSS: Monica, Route 40)
         "MAGNET": {"price": 1000, "text": "Give it to a Pokemon to hold: its Electric-type moves hit harder."},   # (HGSS: Sunny, Route 37)
         "SOOTHE_BELL": {"price": 100, "text": "Held: its holder grows friendly with you faster."},   # (HGSS: the National Park, 11-15)
