@@ -134,6 +134,9 @@
     "JOHTO_BURNED_TOWER_NIGHT_PERCENTAGES": {"19": 44, "109": 42, "41": 8, "20": 2, "126": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_38_MORNING_PERCENTAGES": {"20": 26, "81": 19, "52": 14, "19": 14, "83": 9, "241": 5, "17": 5, "128": 4, "209": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_39_MORNING_PERCENTAGES": {"20": 27, "81": 19, "52": 14, "19": 14, "83": 9, "241": 5, "128": 5, "17": 5, "2001": 1, "2002": 1},
+    "JOHTO_WHIRL_ISLANDS_DAY_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
+    "JOHTO_WHIRL_ISLANDS_MORNING_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
+    "JOHTO_WHIRL_ISLANDS_NIGHT_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -2911,30 +2914,77 @@
         },
         
         "WHIRL_ISLANDS": {
+        
             "region": "JOHTO",
+        
             "area_type": "dungeon",
+        
             "battle_type": "cave",
-            "wild_pool_percentages": "JOHTO_WHIRL_ISLANDS_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_WHIRL_ISLANDS_DAY_PERCENTAGES",
+        
             "min_rounds": 4,
-            "backgrounds": {
-                "battle": "battle_whirl_islands.png"
-            },
-            "area_boss": {
-                "id": 249, "level": 70, "name": "Lugia", "victory_flag": "caught_lugia"
-            },
+        
+            "backgrounds": {"battle": "battle_whirl_islands.png"},
+        
+            "area_boss": {"id": 249, "level": 70, "name": "Lugia", "victory_flag": "caught_lugia"},
+        
             "trainer_pool": [
-                { "name": "Swimmer Berke", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 73], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Dawn", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [116, 117], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Simon", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [73], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Paula", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120], "rewards": { "balls": 2 } }
+        
+                {"name": "Swimmer Berke", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 73], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Dawn", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [116, 117], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Simon", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [73], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Paula", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-                { "text": "CHALLENGE LUGIA", "action": "BOSS", "condition": ["boss_available", "has_silver_wing"], "color": "BLUE" },
-                { "text": "EXIT", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED" }
-            ]
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        
+                {"text": "CHALLENGE LUGIA", "action": "BOSS", "condition": ["boss_available", "has_silver_wing"], "color": "BLUE"},
+        
+                {"text": "EXIT", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_whirl_islands_d40r0101_22_47", "event": {"lines": ["An Ultra Ball, lying among the rocks."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_whirl_islands_d40r0101_22_47"}},
+        
+                {"text": "ULTRA BALL ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_whirl_islands_d40r0102_42_49", "event": {"lines": ["An Ultra Ball, in a dark corner."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_whirl_islands_d40r0102_42_49"}},
+        
+                {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_whirl_islands_d40r0102_19_36", "event": {"lines": ["An Escape Rope, beside the cave wall."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_whirl_islands_d40r0102_19_36"}},
+        
+                {"text": "CARBOS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_carbos_whirl_islands_d40r0102_26_27", "event": {"lines": ["A Carbos, left behind by a hiker."], "gift_item": {"CARBOS": 1}, "flag": "got_carbos_whirl_islands_d40r0102_26_27"}},
+        
+                {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_whirl_islands_d40r0102_41_14", "event": {"lines": ["A Full Restore, lying among the rocks."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_whirl_islands_d40r0102_41_14"}},
+        
+                {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_whirl_islands_d40r0102_70_39", "event": {"lines": ["A Nugget, in a dark corner."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_whirl_islands_d40r0102_70_39"}},
+        
+                {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_whirl_islands_d40r0104_25_17", "event": {"lines": ["A Calcium, beside the cave wall."], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_whirl_islands_d40r0104_25_17"}},
+        
+                {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_whirl_islands_d40r0104_29_25", "event": {"lines": ["A Max Revive, left behind by a hiker."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_whirl_islands_d40r0104_29_25"}},
+        
+                {"text": "FULL RESTORE ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_whirl_islands_d40r0104_25_30", "event": {"lines": ["A Full Restore, lying among the rocks."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_whirl_islands_d40r0104_25_30"}},
+        
+                {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_whirl_islands_d40r0106_14_27", "event": {"lines": ["A Max Elixir, in a dark corner."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_whirl_islands_d40r0106_14_27"}},
+        
+                {"text": "TM137", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm137_whirl_islands_d40r0101_48_21", "event": {"lines": ["A TM (Pluck), lying among the rocks."], "gift_item": {"TM137": 1}, "flag": "got_tm137_whirl_islands_d40r0101_48_21"}}
+        
+            ],
+        
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+        
+            "morning_pool_percentages": "JOHTO_WHIRL_ISLANDS_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_WHIRL_ISLANDS_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_WHIRL_ISLANDS_NIGHT_PERCENTAGES"
+        
         },
         
         "ROCKET_HQ": {

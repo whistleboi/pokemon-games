@@ -64052,7 +64052,7 @@
      "ccccccc...ccccccccccccccccccccccc.....)........).......cc",
      "ccccccc...ccccccccccccccccccccccc.....)........).......cc",
      "cccccc..v.ccccccccccccccccccccccc.....).....ccccccccccccc",
-     "ccccccccccccccccccccccccccccccccc.....).....c.........ccc",
+     "ccccccccccccccccccccccccccccccccc.....).....cN........ccc",
      "ccccccccccccccccccccccccccccccccc...cccccc..c...1.....ccc",
      "ccccccccccccccccccccccccccccccccc...cccccc..c.........ccc",
      "ccccccccccccccccccccccccccccccccc...cccccc..cccccccc.cccc",
@@ -64078,7 +64078,7 @@
      "ccccccccccccccccccccccccccccccccccccccccccccc....oooooocc",
      "cccccccccccccccccccccccccccccccccccccccccccc.........oocc",
      "ccccccccccccccccccqccccccccccccccccccccccccc...........cc",
-     "cc.....cccccccooooq.......cccccccccccccccccc...ccccc...cc",
+     "cc.....cccccccooooqN......cccccccccccccccccc...ccccc...cc",
      "cc.....cccccccooooqc......ccccccccccccccccccoooc...c...cc",
      "cc.1...cccccccooooqq....1.ccccccccccccccccccoooc.1.c...cc",
      "cc........oooooooooooo....ccccccccccccccccccoooc...c...cc",
@@ -64129,7 +64129,41 @@
       51,
       47
      ]
-    }
+    },
+    "hidden": {
+     "44,38": "RARE_CANDY"
+    },
+    "people": [
+     "TM137",
+     "ULTRA BALL"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D40R0101.png",
+      "at": [
+       3,
+       6
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D40R0101.png",
+      "at": [
+       3,
+       6
+      ],
+      "size": [
+       57,
+       56
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -64143,7 +64177,7 @@
      "cc......1...c....c....................ccccccc.....cccccccc....cc",
      "cc..........c....c....................ccccccc.....ccccccc.....cc",
      "cc..........c....c...cccccccccc....cccccccccc.....ccccccc.....cc",
-     "cc......c..cc....c...ccccc...........)...)........ccccccc.....cc",
+     "cc......c..cc....c...cccccN..........)...)........ccccccc.....cc",
      "cc......c........c...cccccc..........)...).......1ccccccc.....cc",
      "cccccc..c........c...cccccc..........)...).......1ccccccc.c...cc",
      "cccccc..c.....c..c...ccccccc.......cccccccccc.....ccccccc.....cc",
@@ -64156,7 +64190,7 @@
      "cc......cc....)..cccccccc..ccccc___cccccccccc........cccc.....cc",
      "cc......cc....)..........................(...........cccc....ccc",
      "cc......cccc..)..........................(..........cccc.....ccc",
-     "cc......ccc...)..........................(.......c.ccc......cccc",
+     "cc......cccN..)..........................(.......c.ccc......cccc",
      "cc......cccc__c......cccccc..ccc...ccccccccccccccccccc......cccc",
      "cc.........c......ccccccccc..ccc...cccc..................ccccccc",
      "cc.........c.....ccccccccccccccc...cccc..................c..cccc",
@@ -64165,10 +64199,10 @@
      "cc.........ccccccccccccccccccccc___c.....cccccccc............ccc",
      "ccccccc....ccccccccccccccccccccc...c...cccccccccc............ccc",
      "ccc...c....ccccccccccccccccccccc...c...cccccccccc............ccc",
-     "ccc...c....cccccccccccccc..........c...ccccccc......cccccc...ccc",
+     "ccc.N.c....cccccccccccccc..........c...ccccccc......cccccc...ccc",
      "ccc...c....cccccccccccccc..........c...ccccccc......c....c...ccc",
      "ccc...cc..ccc........cccc..ccccccccc...ccccccc......c....c...ccc",
-     "ccc.........c........cc....c...........ccccccc......c....c...ccc",
+     "ccc.........c........cc....c...........ccccccc......c..N.c...ccc",
      "ccc.........c........c.....c..............cccc...cccc....c...ccc",
      "ccc.........ccc..c...c....cc..............cc....ccccc....c...ccc",
      "cccccccc.........c...c.....cc..cccccc.....c.....ccccc....c...ccc",
@@ -64178,7 +64212,7 @@
      "cccccccccccccccccc...c..............c.....c....cccccc....c...ccc",
      "cccccccccccccccccc...cc.............ccccccc...ccccccc....c...ccc",
      "cccccccccccccc.......cc.......cccccbccc.......ccccccc....c..cccc",
-     "cccccccccccccc..1....c......ccccccc.ccc......cccc........c..cccc",
+     "cccccccccccccc..1....c.....Nccccccc.ccc......cccc........c..cccc",
      "cccccccccccccc.......c...cccccccccc.ccc......c.....1.....c..cccc",
      "cccccccccccccccccccccc...ccccc......c........c.....1.....c...ccc",
      "ccccccccccccc............ccccc.....cc........c........c..c...ccc",
@@ -64263,7 +64297,47 @@
       49,
       43
      ]
-    }
+    },
+    "hidden": {
+     "48,41": "ULTRA_BALL",
+     "52,4": "SUPER_REPEL",
+     "13,6": "PEARL",
+     "57,16": "REVIVE"
+    },
+    "people": [
+     "FULL RESTORE",
+     "CARBOS",
+     "ESCAPE ROPE",
+     "NUGGET",
+     "ULTRA BALL "
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D40R0102.png",
+      "at": [
+       15,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D40R0102.png",
+      "at": [
+       15,
+       4
+      ],
+      "size": [
+       64,
+       56
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -64274,7 +64348,7 @@
      "cccccccccccccccccccccccccccc....1....ccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc.c.......ccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccc...........ccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccc.........cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccN........cccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc...ccc...cccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc..ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc...c..ccccccccccccccccccccccccccc",
@@ -64282,12 +64356,12 @@
      "cccccccccccccccccccccccccccc.........ccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc....ccc..ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc...cc..ccc..ccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccc.....ccccc..ccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc....Nccccc..ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc.....ccccc..ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc..1..ccccc..ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc..1..cc.....ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc.....cc.....ccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccc.....c......ccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccN....c.....Nccccccccccccccccccccccccccc",
      "..............................c1c....ccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc.......ccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc..................................",
@@ -64348,7 +64422,51 @@
       16,
       38
      ]
-    }
+    },
+    "hidden": {
+     "29,1": "FULL_RESTORE"
+    },
+    "people": [
+     "CALCIUM",
+     "MAX REVIVE",
+     "FULL RESTORE ",
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Lugia, the guardian of these islands, hid itself away deep beyond the waterfall basin. No one has seen it since."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D40R0104.png",
+      "at": [
+       0,
+       10
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D40R0104.png",
+      "at": [
+       0,
+       10
+      ],
+      "size": [
+       64,
+       47
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -64379,7 +64497,7 @@
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
-     "~~~~~~~~~~cccc.....cccc~~~~~~~~~",
+     "~~~~~~~~~~ccccN....cccc~~~~~~~~~",
      "~~~~~~~~~~cccc.....cccc~~~~~~~~~",
      "~~~~~~~~~~cccc..1..cccc~~~~~~~~~",
      "~~~~~~~~~~ccccccccccccc~~~~~~~~~",
@@ -64393,7 +64511,37 @@
       31,
       21
      ]
-    }
+    },
+    "people": [
+     "MAX ELIXIR"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D40R0106.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D40R0106.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       32,
+       32
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -64452,6 +64600,33 @@
     },
     "people": [
      "CHALLENGE LUGIA"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D40R0107.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D40R0107.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       32,
+       43
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -64463,7 +64638,19 @@
    "Lugia's chamber"
   ],
   "figure_floors": {
-   "CHALLENGE LUGIA": 4
+   "CHALLENGE LUGIA": 4,
+   "ULTRA BALL": 0,
+   "ULTRA BALL ": 1,
+   "ESCAPE ROPE": 1,
+   "CARBOS": 1,
+   "FULL RESTORE": 1,
+   "NUGGET": 1,
+   "CALCIUM": 2,
+   "MAX REVIVE": 2,
+   "FULL RESTORE ": 2,
+   "MAX ELIXIR": 3,
+   "TM137": 0,
+   "Old man": 2
   },
   "descend": true
  },

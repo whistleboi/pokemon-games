@@ -894,5 +894,13 @@
   "price": 3000,
   "gift": true,
   "from": "HeartGold/SoulSilver TM83: Moomoo Farm, for healing Moomoo"
+ },
+ "TM137": {
+  "move": "PLUCK",
+  "type": "FLYING",
+  "tier": 3,
+  "price": 3000,
+  "gift": true,
+  "from": "HeartGold/SoulSilver TM88: the Whirl Islands"
  }
 }
