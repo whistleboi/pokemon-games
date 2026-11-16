@@ -449,6 +449,103 @@ def _run_story_event(state, key, check, show):
         game.data.mark_seen(new.id)
         game.data.add_pokemon(new)
         lines.append(f"{old.display_name} was traded for {new.display_name}!")
+    if ev.get("elevator"):  # (Goldenrod Dept. Store's elevator attendant, Jordan 11-15 option B: the floors as a list)
+        from src.states.systems.pick_list import PickListState
+        floors = [("B1F", "B1F")] + [(f"{n}F", n) for n in range(1, 7)]
+
+        def ride(to):
+            if to is None:
+                show(["Attendant: Do come again!"])
+                return
+            from src.states.overworld import AreaTransitionState
+            if to == "B1F":
+                game.arrive_floor = ("GOLDENROD_UNDERGROUND", 4, [18, 6])
+                game.change_state(AreaTransitionState(game, "GOLDENROD_UNDERGROUND", initial_message=["The elevator hums down to B1F..."]))
+                return
+            room = "dept" if to == 1 else f"dept_{to}"
+            game.walk_town_room = ("GOLDENROD_CITY", room)
+            game.walk_town_pos = ("GOLDENROD_CITY", tuple(ev.get("lift_at") or (19, 3)), (0, 1))
+            game.change_state(AreaTransitionState(game, "GOLDENROD_CITY", initial_message=[f"The elevator stops at {to}F."]))
+        game.change_state(PickListState(game, state, "ELEVATOR", floors, ride))
+        return
+    if ev.get("salon"):  # (Goldenrod Tunnel's Pokemon Salon, HGSS: a haircut a day; the older brother's does more for its friendship)
+        import datetime as _dt
+        sal = ev["salon"]; today = _dt.date.today().isoformat()
+        lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
+        if story.story_flags.get(sal["key"]) == today:
+            show(["Sorry, one haircut a day. Come back tomorrow!"])
+            return
+        if lead is None:
+            show(["Bring a Pokemon along and I'll make it look wonderful!"])
+            return
+        story.story_flags[sal["key"]] = today
+        lead.friendship = min(255, int(getattr(lead, "friendship", 70) or 70) + int(sal.get("gain", 5)))
+        show(_resolve_lines(game, lines + [f"Snip, snip... There! {lead.display_name} looks happier already!"]))
+        return
+    if ev.get("photo"):  # (the Memorial Photo Studio, option B: a picture of your team, kept in your Trainer stats)
+        import datetime as _dt
+        team = [p.display_name for p in story.player_team if p and not getattr(p, "is_egg", False)]
+        story.story_flags.setdefault("photos", []).append({"date": _dt.date.today().isoformat(), "team": team, "place": "Goldenrod"})
+        show(_resolve_lines(game, lines + ["Say cheese! ...Click!", f"A photo of you with {', '.join(team) or 'nobody'}. It's kept in your Trainer stats."]))
+        return
+    if ev.get("raffle"):  # Goldenrod Dept. Store 6F's Daily Drawing (HGSS): $300 a day; a Berry, a Poke Ball or (rarely) a TM
+        import datetime as _dt, random as _rnd
+        today = _dt.date.today().isoformat()
+        if story.story_flags.get("goldenrod_raffle_day") == today:
+            show(["Clerk: You've had today's draw. Please come again tomorrow!"])
+            return
+        if getattr(story, "money", 0) < 300:
+            show(["Clerk: A draw is $300. Do come back when you have it!"])
+            return
+        story.money -= 300
+        story.story_flags["goldenrod_raffle_day"] = today
+        roll = _rnd.random()
+        from src.pokemon import tms as _tms
+        tm_pool = [k for k in ("TM05", "TM03", "TM04", "TM25", "TM17", "TM18") if k in (_tms.all_tms(game) if hasattr(_tms, "all_tms") else [k])]
+        item = (_rnd.choice(["ORAN_BERRY", "PECHA_BERRY", "CHERI_BERRY", "RAWST_BERRY", "SITRUS_BERRY", "LUM_BERRY"]) if roll < 0.55 else
+                _rnd.choice(["GREAT_BALL", "ULTRA_BALL", "NEST_BALL", "LUXURY_BALL", "QUICK_BALL"]) if roll < 0.9 else _rnd.choice(tm_pool or ["TM05"]))
+        story.inventory[item] = story.inventory.get(item, 0) + 1
+        from src.pokemon import forms as _forms
+        show([f"{game.player_name} paid $300.", "Clerk: Round and round it goes... and the winner is...",
+              f"Clerk: {_forms.item_label(item)}! Congratulations!"])
+        return
+    if ev.get("radio_quiz"):  # Goldenrod Radio Tower's Radio Card quiz: five YES / NO equations in a row (Jordan 11-15)
+        if story.inventory.get("RADIO_CARD"):
+            show(["Quiz lady: You've already won your Radio Card. Enjoy the shows!"])
+            return
+        from src.states.systems.yes_no_quiz import YesNoQuizState
+
+        def quiz_done(won):
+            if won:
+                story.inventory["RADIO_CARD"] = 1
+                show(["Quiz lady: Five in a row! Congratulations, you've won a Radio Card!",
+                      "Your Pokegear can play the radio now! Tune in from the MENU."])
+            else:
+                show(["Quiz lady: Oh, so close! Try again any time."])
+        game.change_state(YesNoQuizState(game, state, 5, quiz_done))
+        return
+    if ev.get("buena"):  # Buena's Password (HGSS): tell her today's password from her show, a point a day; prizes along the way
+        import datetime as _dt
+        from src.world import radio as _radio
+        today = _dt.date.today().isoformat()
+        if story.story_flags.get("buena_told") == today:
+            show(["Buena: You've already told me today's password. Tune in again tomorrow!"])
+            return
+        if story.story_flags.get("buena_heard") != today:
+            show(_resolve_lines(game, lines + ["Buena: Listen to my show on your Pokegear's radio, then come back and tell me the password!"]))
+            return
+        story.story_flags["buena_told"] = today
+        pts = int(story.story_flags.get("buena_points", 0) or 0) + 1
+        story.story_flags["buena_points"] = pts
+        prizes = {1: ("ULTRA_BALL", 1), 3: ("FULL_HEAL", 2), 5: ("NUGGET", 1), 10: ("RARE_CANDY", 1), 20: ("PP_UP", 1), 30: ("MASTER_BALL", 1)}
+        out = [f"Buena: '{_radio.password_today()}'? That's right! Here's a Blue Card point. You have {pts} now!"]
+        if pts in prizes:
+            item, n = prizes[pts]
+            story.inventory[item] = story.inventory.get(item, 0) + n
+            from src.pokemon import forms as _forms
+            out.append(f"Buena: {pts} points! Here's a prize for you: {_forms.item_label(item)}!")
+        show(out)
+        return
     if ev.get("primo"):  # Violet City's TV star: a question a day, an Egg for a right answer (HGSS)
         _primo_quiz(state, lines, show)
         return
@@ -487,6 +584,14 @@ def _run_story_event(state, key, check, show):
         if len(who.moves) < _mv.MAX_MOVES:
             who.moves.append(tu["move"])
         lines.append(f"{who.display_name.upper()} learned {tu['move'].replace('-', ' ')}! (Set its moves in the Summary.)")
+    if ev.get("friend_check"):  # (Goldenrod's friendship checker, HGSS: how your first Pokemon feels about you)
+        lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
+        f = max(int(getattr(lead, "friendship", 0) or 0), int(getattr(lead, "affection", 0) or 0)) if lead else 0
+        name = getattr(lead, "display_name", "Your Pokemon") if lead else "Your Pokemon"
+        lines += [f"{name} looks really happy! It must love you a lot." if f >= 200 else
+                  f"{name} seems to trust you." if f >= 150 else
+                  f"{name} is getting used to you. Keep at it!" if f >= 70 else
+                  f"{name} doesn't seem very close to you yet. Treat it kindly!"]
     if ev.get("friend_tm"):  # once a week: Return for a first Pokemon that likes you, Frustration if not (Pacifidlog, Emerald)
         import datetime as _dt
         week = _dt.date.today().isocalendar()[:2]
@@ -497,7 +602,7 @@ def _run_story_event(state, key, check, show):
         from src.pokemon import evolution as _evo
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
         fond = lead is not None and (getattr(lead, "friendship", 0) >= _evo.FRIENDSHIP_CATCHES or getattr(lead, "affection", 0) >= 150)
-        tm = "HTM27" if fond else "HTM21"  # (Hoenn's own: Return TM27, Frustration TM21)
+        tm = (ev.get("tms") or ["HTM27", "HTM21"])[0 if fond else 1]  # (Hoenn's own: Return TM27, Frustration TM21; "tms": a region's own keys)
         story.story_flags[key] = list(week)
         story.inventory[tm] = story.inventory.get(tm, 0) + 1
         lines += ([f"Your {lead.display_name} looks so happy with you. This TM's for you: Return!"] if fond

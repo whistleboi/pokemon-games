@@ -38846,9 +38846,24 @@
     "action": "EVENT",
     "event": {
      "lines": [
+      "Zzz... Hm? Is that Kenya? A letter from my friend!",
+      "...He says he's doing well. Thank you for bringing it! Take this TM. It's Rest: a nap that heals you right up. Zzz..."
+     ],
+     "gift_item": {
+      "TM21": 1
+     },
+     "flag": "kenya_delivered",
+     "done": [
+      "Zzz... A nice letter makes for a good nap... Zzz..."
+     ],
+     "requires": [
+      "got_kenya"
+     ],
+     "fail": [
       "Zzz... Hm? I'm waiting on a letter from a friend... a Pokemon is bringing it... Zzz..."
      ]
-    }
+    },
+    "color": "GOLD"
    },
    {
     "text": "Man",
@@ -42013,7 +42028,28 @@
    "35,20": "kiln",
    "35,9": "mart",
    "15,6": "kurt"
-  }
+  },
+  "scenes": [
+   {
+    "who": "Rocket on guard",
+    "trigger": {
+     "zone": [
+      45,
+      11,
+      53,
+      17
+     ]
+    },
+    "condition": "not:slowpoke_well_cleared",
+    "flag": "johto_azalea_rocket",
+    "lines": [
+     "Rocket Grunt: Hey, you! What're you looking at?",
+     "Rocket Grunt: Team Rocket broke up three years ago? Ha! We're back, and this time nobody's stopping us!",
+     "Rocket Grunt: The Well's off limits. Now get lost!"
+    ],
+    "after": "stay"
+   }
+  ]
  },
  "SPROUT_TOWER": {
   "theme": "ship",
@@ -44311,7 +44347,42 @@
   },
   "inside": {
    "16,26": "daycare"
-  }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      13,
+      25,
+      17,
+      29
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:johto_lyra_daycare"
+    ],
+    "flag": "johto_lyra_daycare",
+    "cast": [
+     {
+      "sheet": "hg_heroine.png",
+      "from": [
+       16,
+       26
+      ],
+      "to": "player",
+      "lines": [
+       "Lyra: {player_name}! Fancy seeing you here. This is my grandparents' Day Care!",
+       "Lyra: Leave a Pokemon with them and it'll grow while you travel. And if two get along... sometimes they find an Egg!"
+      ],
+      "leave": [
+       16,
+       26
+      ]
+     }
+    ]
+   }
+  ]
  },
  "GOLDENROD_CITY": {
   "art": [
@@ -44321,17 +44392,17 @@
    "oooooooooooooooooooooooooooooooooooooooooooooooooooo...............BAAAAAAC...................cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooooooo............feeBAAAAAACee....ΒΒΒΒΒΒΒΒ.....cc",
    "ooooooooooooooooooooooooooooooooooooooooooooooooooooe............eeBAADDAACee....ΒΒΒΒΒΒΒΒ.....cc",
-   "oooooooooooooooooooooooooooooooooooooooooooooooorrrre............eekkeeeekkee...fΒΒΒΒΒΒΒΒ===..cc",
+   "oooooooooooooooooooooooooooooooooooooooooooooooorrrre............eekkeNNekkee...fΒΒΒΒΒΒΒΒ===..cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrre............eekeeeeeekee......===..=ΓΓΓΓ.cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrre............eekaaaaaakee............ΓΓΓΓ.cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrre............eekaaaaaakee............ΓΓΓΓ.cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrre............eekaaaaaakee.....EEEEeeeeeeeecc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrreeeeeeeeeeeeeeekaaaaaakFFFFFFFEEEEeeeeeeeecc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrr..ΕΕΕHHHHHIIIIIkaaaaaakFFFFFFFEDEEeeeeeeeecc",
-   "oooooooooooooooooooooooooooooooooooooooooooooooorrrr.=ΕΕΕHHHHHIIIIIkaaaaaakFFFFFFFGee!kJJJJe..cc",
+   "oooooooooooooooooooooooooooooooooooooooooooooooorrrr.=ΕΕΕHHHHHIIIIIkaaaaaakFFFFFFFGNe!kJJJJe..cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrr==ΕΕΕHHDHHIIDII!aaaaaa!FFFDFFFGaaaeJJJJe..cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorrrreΔΔΔΔleeeeeeeeeeaaaaaaeeeeeeeeaaaaeJDJJe..cc",
-   "oooooooooooooooooooooooooooooooooooooooooooooooorroo.ΔΔΔΔe!aaaaaaaaaaaaaaaaaaaaaaaaaaaeeeekef.cc",
+   "oooooooooooooooooooooooooooooooooooooooooooooooorroo.ΔΔΔΔe!aaaaaaaaaNaaaaaaaaaaaaaaaaaeeNekef.cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooorroo.ΔΔΔΔeaaaaaaaaaaaaaaaaaaaaaaaaaaaaeeeekef.cc",
    "oooooooooooooooooooooooooooooooooooooooooooooooooooo.ΔΔΔΔeaaaaaaaaaaaaaaaaaaaaaaaaaaaaeekkkef.cc",
    "ooooooooooooooooooooooooooooooooooooooooooooooooooooeΔΔΔΔeaaaaaaaaaaaaaaaaaaaaaaaaaaaaeeklkef.cc",
@@ -44344,19 +44415,19 @@
    "ooooooooooooooooooookeeePPPPPPPPPeeekoooooooooookeeKKKKKKKKMMMMMMMck......kcccccccccccccccccc...",
    "ooooooooooooooooooookeeePPPPPPPPPeeekoooooooooookeeKKKKKKKKMMMMMMMck......kcccccccccccccccccc...",
    "ooooooooooooooooooookeeePPPPDPPPPeeekoooooooooookeeKKKKKKKKMMMMMMMckeeeeeekccccccccccccccccccccc",
-   "ooooooooooooooooooookeejeeeeeeeeejeekkkkkkkkkkkkkeeKKKDKKKKMDMMMMMkk......kkkkkkkkkkkkkkkkkkkkcc",
-   "ooooooooooooooooooookeeeee!eeeeeeeeeeejeeejeeejeeeee!eeeeeeeee!eeeelaaaaaaleeeeeeeeeelkkkkkeeecc",
-   "ooooooooooooooooooookeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaΖΖΖΖΖkeeecc",
-   "ooooooooooooooooooookeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaΖΖΖΖΖkeeecc",
+   "ooooooooooooooooooookeejeeeeNeeeejeekkkkkkkkkkkkkeeKKKDKKKKMDMMMMMkk......kkkkkkkkkkkkkkkkkkkkcc",
+   "ooooooooooooooooooookeeeee!eeeeeeeeeeejeeejeeejeeeee!eeeeeNeee!eeeelaaaaaaleeeeeeeeeelkkkkkeeecc",
+   "ooooooooooooooooooookeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaΖΖΖΖΖkeeecc",
+   "ooooooooooooooooooookeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNaaΖΖΖΖΖkeeecc",
    "ooooooooooooooooooookeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaNaaaaaaaaaaaaaaaaaaaaaaaaaaaΖΖΖΖΖkeeecc",
-   "ooooooooooooooooooookeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaΖΖΖΖΖkeeecc",
+   "ooooooooooooooooooookeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNaaaaaaaaaaaaaaaaΖΖΖΖΖkeeecc",
    "ooooooooooooooooooookeeeeleeeeeleeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaΗΗΗΗΗΗΗΗkeeecc",
    "ooooooooooooooooooookeeeeeeeeeeeeeeeeejeeejeeejeeeeekΡΡΡΡΡΡΡSSSSSSSeaaaaaa!eΞΞΞΞeeΗΗΗΗΗΗΗΗeeeecc",
    "ooooooooooooooooooookeeeeeeeeeeeeeeekkkkkkkkkkkkkkkkkΡΡΡΡΡΡΡSSSSSSSeaaaaaaeeΞΞΞΞeeΗΗΗΗΗΗΗΗeeeecc",
-   "ooooooooooooooooooookeeeQQQeeeRRReeekooooooooooooooo~ΡΡΡΡΡΡΡSSSSSSSeaaaaaaeeΞΞΞΞeeΗΗΗΗΗΗΗΗeeeecc",
+   "ooooooooooooooooooookeeeQQQeeeRRReeekooooooooooooooo~ΡΡΡΡΡΡΡSSSSSSSeaaaaaaeeΞΞΞΞNNΗΗΗΗΗΗΗΗeeeecc",
    "ooooooooooooooooooookeeeQQQeeeRRReeekooooooooooooooo~ΡΡΡΡΡΡΡSSSSSSSeaaaaaaeeΞΞΞΞeeΘΘΘΘeeeeeeeecc",
    "ooooooooooooooooooookeeeQQQeeeRRReeekooooooooooooooo~ΡΡΡΡΡΡΡSSSDSSSeaaaaaaekΞΞΞΞeeeeUUUUeeeeeecc",
-   "ooooooooooooooooooookeeeeeeeeeeeeeeekooooooooo~~oooo~ΣΣΣeeeeeeeee!eeaaaaaaekΞΞΞΞeeeeUUUUeΙΙΙΙecc",
+   "ooooooooooooooooooookeeeeeeeeeeeeeeekooooooooo~~oooo~ΣΣΣeeeeeeeee!NeaaaaaaekΞΞΞΞeeeeUUUUeΙΙΙΙecc",
    "ooooooooooooooooooookleeeeeeeeeeeeelkooooooooo~~oooo~ΣΣΣeeeeeeeeeeeeaaaaaaekΞΞΞΞeeeeUDUUeΙΙΙΙecc",
    "ooooooooooooooooooookkkkkkkkkkkkkkkkkoooooooooookkkk~ΣΣΣeeeeeeWWWWWeaaaaaaekΞΞΞΞeeeeeeeelΙΙΙΙecc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookeee~VVVeeΑΑΑΑWWWWWeaaaaaaeYYYYYYΟΟΟΟeeeeeΚΚΚΚcc",
@@ -44365,9 +44436,9 @@
    "ooooooooooooooooooooooooooooooooooooooooooooooookeeeeeeeeeΑΑΑΑWWWWWeaaaaaaeYYYYYYΟΟΟΟeeeeeΚΚΚΚcc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookleeeeeeeeΑΑΑΑWWDWWeaaaaaaeYYDYYYΟΟΟΟeeeekΚΚΚΚcc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookeeeeeeeeeΑΑΑΑeeeeelaaaaaaleeeeekΟΟΟΟeeeekΚΚΚΚcc",
+   "ooooooooooooooooooooooooooooooooooooooooooooooookΥΥΥΥeeeNeΑΑΑΑaaaaaaaaaaaaaaaaaakΟΟΟΟeeeeΛΛΛΛecc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookΥΥΥΥeeeeeΑΑΑΑaaaaaaaaaaaaaaaaaakΟΟΟΟeeeeΛΛΛΛecc",
-   "ooooooooooooooooooooooooooooooooooooooooooooooookΥΥΥΥeeeeeΑΑΑΑaaaaaaaaaaaaaaaaaakΟΟΟΟeeeeΛΛΛΛecc",
-   "ooooooooooooooooooooooooooooooooooooooooooooooookΥΥΥΥkkeeeΑΑΑΑaaaaaaaaaaaaaaaaaaZZZZZeeelΛΛΛΛecc",
+   "ooooooooooooooooooooooooooooooooooooooooooooooookΥΥΥΥkkeeeΑΑΑΑaaaaaaaaaaaaaNaaaaZZZZZeeelΛΛΛΛecc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookΥΥΥΥkkeeeΑΑΑΑaaaaaaaaaaaaaaaaaaZZZZZeeeeΛΛΛΛecc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookΥΥΥΥkkeeeΑDΑΑΤΤΤΤaaaaaaaaaaΠΠΠΠZZDZZeeeeΛΛΛΛecc",
    "ooooooooooooooooooooooooooooooooooooooooooooooookkkkkkkeeeeee!ΤΤΤΤelaaaaaaleΠΠΠΠ!eeeeeeeeΛΛΛΛecc",
@@ -44393,8 +44464,8 @@
    "F": "gym",
    "G": "house",
    "H": "gate",
-   "I": "house",
-   "J": "bill",
+   "I": "namerater",
+   "J": "pphouse",
    "K": "radio",
    "L": "house",
    "M": "station",
@@ -44403,8 +44474,8 @@
    "Q": "fountain",
    "R": "fountain",
    "S": "game corner",
-   "U": "house",
-   "V": "house",
+   "U": "friendship",
+   "V": "bill",
    "W": "center",
    "Y": "dept",
    "Z": "bike",
@@ -44979,11 +45050,171 @@
      153
     ],
     "design": "block"
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/T25.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "surf": true,
   "people": [
-   "Coin Case Man"
+   {
+    "text": "Rocket Grunt ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "Where do you think you're going? We're in the middle of a mission here!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt  ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "This road's closed, kid. Go play somewhere else!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt   ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "Team Rocket's back, and Goldenrod is ours! Get used to it!"
+     ]
+    }
+   },
+   {
+    "text": "Girl",
+    "action": "EVENT",
+    "condition": "not:radio_takeover",
+    "event": {
+     "lines": [
+      "The man in that house rates your Pokemon's nicknames. He takes it very seriously!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt    ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "You don't look scared of Team Rocket. You should be!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt        ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "Love to trade, do you? Wait till the Radio Tower mission's done!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt         ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "You look awfully young to be out here... Taking over a tower? None of your business!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "So this is the Radio Tower... Hey! What are you gawking at? Scram!"
+     ]
+    }
+   },
+   {
+    "text": "Boy",
+    "action": "EVENT",
+    "condition": "not:radio_takeover",
+    "event": {
+     "lines": [
+      "There's a new Bike Shop somewhere around here, but I can't find it anywhere."
+     ]
+    }
+   },
+   "Coin Case Man",
+   {
+    "text": "Boy ",
+    "action": "EVENT",
+    "condition": "not:radio_takeover",
+    "event": {
+     "lines": [
+      "Heh heh... I got told off for playing in the Dept. Store's basement."
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt     ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "We're on guard here. Pokemon? Just tools for making money!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt      ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "Our dream is so close now... after such a long wait!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket Grunt       ",
+    "action": "EVENT",
+    "condition": "radio_takeover",
+    "event": {
+     "lines": [
+      "I've got this corner covered. Go bother someone else!"
+     ]
+    }
+   },
+   {
+    "text": "Old man",
+    "action": "EVENT",
+    "condition": "not:radio_takeover",
+    "event": {
+     "lines": [
+      "Phew! This is one big town. I can never find where anything is."
+     ]
+    }
+   },
+   {
+    "text": "Woman",
+    "action": "EVENT",
+    "condition": "not:radio_takeover",
+    "event": {
+     "lines": [
+      "The Radio Tower is Goldenrod's landmark. They're running a big promotion right now: they'll even upgrade your Pokegear!"
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -45026,486 +45257,6 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     81,
-     3,
-     8,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     89,
-     6,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     82,
-     9,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     230,
-     206,
-     200
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     75,
-     10,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     195,
-     133,
-     113
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     54,
-     11,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     57,
-     11,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     194,
-     143,
-     75
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     62,
-     11,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     155,
-     94,
-     101
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     87,
-     12,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     194,
-     143,
-     75
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     53,
-     14,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     52,
-     20,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     88,
-     107,
-     121
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     57,
-     20,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     88,
-     107,
-     121
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     59,
-     20,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     234,
-     233,
-     231
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     66,
-     22,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     234,
-     233,
-     231
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     82,
-     34,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     53,
-     35,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     60,
-     35,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     112,
-     122,
-     174
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     76,
-     35,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     24,
-     37,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     108,
-     160,
-     197
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     37,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     108,
-     160,
-     197
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     86,
-     39,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     194,
-     143,
-     75
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     89,
-     40,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     62,
-     42,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     223,
-     143,
-     99
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     58,
-     43,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     80,
-     43,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     215,
-     121,
-     65
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     81,
-     43,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     93,
-     43,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     49,
-     49,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     62,
-     53,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     76,
-     53,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     55,
-     55,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     84,
-     55,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     58,
-     56,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     208,
-     190,
-     141
-    ]
-   },
-   {
     "kind": "rail",
     "rect": [
      66,
@@ -45513,8 +45264,24 @@
      30,
      4
     ]
+   },
+   {
+    "kind": "picture",
+    "f": "ss_top/T25.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     96,
+     64
+    ],
+    "px": 32
    }
   ],
+  "hidden": {
+   "81,60": "SUPER_POTION"
+  },
   "rooms": {
    "gate": {
     "theme": "room",
@@ -45522,11 +45289,11 @@
      "ccccccccccc",
      "ccccccccccc",
      "ccccc^ccccc",
-     "czz.....zzc",
+     "czz.N...zzc",
      "c.........c",
      "ccc.....ccc",
      "ccc.....ccc",
-     "ccc.....ccc",
+     "ccc...N.ccc",
      "ccc.....ccc",
      "ccc.....ccc",
      "ccc.....ccc",
@@ -45554,7 +45321,51 @@
       232,
       214
      ]
-    }
+    },
+    "people": [
+     "Tinkerer",
+     [
+      {
+       "text": "Gate guard",
+       "action": "EVENT",
+       "door": "gate",
+       "color": "GOLD",
+       "flag_condition": "not got_kenya",
+       "event": {
+        "lines": [
+         "Could you do me a favour? My friend's on Route 31, dozing by the pond. Please take him my Spearow, Kenya. She's carrying a letter for him!"
+        ],
+        "gift_pokemon": 21,
+        "flag": "got_kenya"
+       }
+      },
+      {
+       "text": "Gate guard",
+       "action": "EVENT",
+       "door": "gate",
+       "color": "GOLD",
+       "flag_condition": "got_kenya",
+       "event": {
+        "requires": [
+         "kenya_delivered"
+        ],
+        "fail": [
+         "My friend's on Route 31, by the pond. Kenya knows the way... I hope!"
+        ],
+        "lines": [
+         "You delivered the letter? Thank you! Here, take this for your trouble."
+        ],
+        "gift_item": {
+         "HP_UP": 1
+        },
+        "flag": "got_hp_up_kenya_guard",
+        "done": [
+         "Kenya's doing well with you, I see. Look after her!"
+        ]
+       }
+      }
+     ]
+    ]
    },
    "gym": {
     "theme": "room",
@@ -45698,7 +45509,7 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNccccNccczc",
+     "ccNcccNccccNccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
@@ -45706,7 +45517,7 @@
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
      "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.ccccccm...Nc",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
@@ -45812,8 +45623,10 @@
      ]
     },
     "people": [
+     "Big man ",
      "Heal",
-     "Center attendant"
+     "Center attendant",
+     "Little girl "
     ]
    },
    "game_corner": {
@@ -45899,12 +45712,12 @@
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "czz...................zzc",
-     "c.......................c",
+     "c..........N............c",
      "c....cccc......ccc......c",
-     "c....cccc....ccccz......c",
+     "c....cccc....ccccz....N.c",
      "c....ccNm....^cccc......c",
      "c....cccc....ccccz......c",
-     "c..............yy.......c",
+     "c....N.........yy...N...c",
      "ccc...................ccc",
      "czz.........v.........zzc",
      "ccccccccccccccccccccccccc"
@@ -45937,7 +45750,11 @@
      ]
     },
     "people": [
-     "Dept. Store"
+     "Gentleman",
+     "Shopper",
+     "Dept. Store",
+     "Boy",
+     "Elevator"
     ]
    },
    "dept_2": {
@@ -45946,13 +45763,13 @@
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "cz......................c",
-     "c.....................mcc",
+     "c.........N...........mcc",
      "cm..mm..mm.....cc.....mNc",
      "cm..mm..mm...cccccc...ccc",
-     "c............<cccc^...mcc",
+     "c.....N......<cccc^...mNc",
      "cm..mm..mm...cccccc...ccc",
      "cm..mm..mm..............c",
-     "cc....................ccc",
+     "cc................N...ccc",
      "cz....................zzc",
      "ccccccccccccccccccccccccc"
     ],
@@ -46118,7 +45935,11 @@
      ]
     },
     "people": [
-     "Dept. Store"
+     "Girl",
+     "Dept. Store",
+     "Gentleman ",
+     "Camper",
+     "Elevator"
     ]
    },
    "dept_3": {
@@ -46126,14 +45947,14 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "czzmmmmmm............yyzc",
+     "czzmmmmmm......N.....yyzc",
      "c.......................c",
-     "cy..mm.mm......cc.....mcc",
+     "cy..mm.mm.N....cc.....mcc",
      "cy..mm.mm....cccccc...ccc",
      "cy...........<cccc^...mNc",
      "cy..mm.mm....cccccc...ccc",
      "c...mm.mm...............c",
-     "ccc....................cc",
+     "ccc..N.................cc",
      "czz....................zc",
      "ccccccccccccccccccccccccc"
     ],
@@ -46306,7 +46127,10 @@
      ]
     },
     "people": [
-     "Dept. Store"
+     "Elevator",
+     "Jittery man",
+     "Dept. Store",
+     "Man"
     ]
    },
    "dept_4": {
@@ -46314,15 +46138,15 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "czzmmmmmm............zzzc",
-     "c.......................c",
+     "czzmmmmmm......N.....zzzc",
+     "cN......................c",
      "c..............cc.....mcc",
      "c..mm..mm....cccccc...ccc",
      "c..mm..mm....<cccc^...mNc",
      "c............cccccc...ccc",
-     "c.......................c",
+     "c........N..............c",
      "cc.mm..mm.............ccc",
-     "cz.mm..mm.............zzc",
+     "cz.mm..mm..........N..zzc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -46494,7 +46318,11 @@
      ]
     },
     "people": [
-     "Dept. Store"
+     "Elevator",
+     "Tough guy",
+     "Dept. Store",
+     "Boy ",
+     "Kid"
     ]
    },
    "dept_5": {
@@ -46502,15 +46330,15 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "czzmmmmmm...............c",
+     "czzmmmmmm...N..N........c",
      "c.....................mcc",
      "cy..mm.mm......cc.....mNc",
-     "cy..mm.mm....cccccc...ccc",
-     "cy...........<cccc^...mcc",
+     "cyN.mm.mm....cccccc...ccc",
+     "cy...........<cccc^...mNc",
      "cy..mm.mm....cccccc...ccc",
      "c...mm.mm...............c",
      "ccc...................ccc",
-     "czz...................zzc",
+     "czz................N..zzc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -46687,7 +46515,49 @@
      ]
     },
     "people": [
-     "Dept. Store"
+     "Girl ",
+     "Elevator",
+     "Dept. Store",
+     [
+      {
+       "text": "Trader",
+       "action": "EVENT",
+       "door": "dept",
+       "floor": 5,
+       "color": "GOLD",
+       "flag_condition": "not goldenrod_machop_trade",
+       "event": {
+        "requires": [
+         "party_has:96"
+        ],
+        "fail": [
+         "I collect Pokemon. Got a Drowzee? I'd trade my Machop for one!"
+        ],
+        "lines": [
+         "A Drowzee! Will you swap it for my Machop? Thanks a lot!"
+        ],
+        "trade": {
+         "want": 96,
+         "give": 66
+        },
+        "flag": "goldenrod_machop_trade"
+       }
+      },
+      {
+       "text": "Trader",
+       "action": "EVENT",
+       "door": "dept",
+       "floor": 5,
+       "flag_condition": "goldenrod_machop_trade",
+       "event": {
+        "lines": [
+         "How's my old Machop doing? Training hard, I hope!"
+        ]
+       }
+      }
+     ],
+     "Man ",
+     "TM lady"
     ]
    },
    "dept_6": {
@@ -46695,13 +46565,13 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "cz.......zmmmm........zzc",
-     "c.......................c",
+     "cz.......zmmmm...NN...zzc",
+     "c.........N.............c",
      "c.....cc.......cc.....ccc",
-     "c..............cccc...ccc",
+     "c..N...........cccc...ccc",
      "c.cc...........ccc^...mNc",
      "c..............cccc...ccc",
-     "c.....cc................c",
+     "c.....cc.........N......c",
      "cc.......c............ccc",
      "cz.......z............zzc",
      "ccccccccccccccccccccccccc"
@@ -46759,7 +46629,12 @@
      ]
     },
     "people": [
-     "Dept. Store"
+     "Elevator",
+     "Daily Drawing",
+     "Man  ",
+     "Girl  ",
+     "Dept. Store",
+     "Whitney"
     ]
    },
    "station": {
@@ -46824,8 +46699,194 @@
      "ccccccccccc",
      "cmmm...mmzc",
      "c.........c",
+     "c....NmmN.c",
      "c.N...mm..c",
-     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:53,46"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,2": [
+       161,
+       168,
+       109
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       161,
+       168,
+       109
+      ]
+     },
+     "_kinds": {
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "7,2": "shelf",
+      "8,2": "shelf",
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ]
+    },
+    "people": [
+     "Talk to Bill",
+     "Bill's mother",
+     "Bill's sister"
+    ]
+   },
+   "friendship": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm...mmzc",
+     "c.........c",
+     "c....NmmN.c",
+     "c.N...mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:85,42"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,2": [
+       131,
+       108,
+       94
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       131,
+       108,
+       94
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "7,2": "tv",
+      "8,2": "tv",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ]
+    },
+    "people": [
+     "Friendship checker",
+     "Little girl",
+     "Man   "
+    ]
+   },
+   "pphouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm...mmzc",
+     "c.........c",
+     "c.N...mm..c",
+     "c.....mmN.c",
      "c.........c",
      "c...v.....c",
      "ccccccccccc"
@@ -46905,7 +46966,73 @@
      ]
     },
     "people": [
-     "Talk to Bill"
+     "Big man",
+     "Girl   "
+    ]
+   },
+   "namerater": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "c....N....c",
+     "c...mmm...c",
+     "c.........c",
+     "c.........c",
+     "c.m.....m.c",
+     "c....v....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:64,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       217,
+       202,
+       159
+      ],
+      "4,3": [
+       231,
+       195,
+       98
+      ],
+      "5,3": [
+       231,
+       195,
+       98
+      ],
+      "6,3": [
+       231,
+       195,
+       98
+      ],
+      "8,6": [
+       217,
+       202,
+       159
+      ]
+     },
+     "_kinds": {
+      "4,3": "table",
+      "5,3": "table",
+      "6,3": "table"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ]
+    },
+    "people": [
+     "Name Rater"
     ]
    }
   },
@@ -46919,7 +47046,10 @@
    "63,40": "game_corner",
    "77,48": "dept",
    "60,29": "station",
-   "88,15": "bill"
+   "53,46": "bill",
+   "85,42": "friendship",
+   "88,15": "pphouse",
+   "64,14": "namerater"
   }
  },
  "JOHTO_ROUTE_35": {
@@ -46945,7 +47075,7 @@
    "TTTTkkkk======k===TTTTTTTT\"\"cTTc",
    "TTTT===k=X====k===TTTTTTTT\"\"cTTc",
    "TTTT===k======k===TTTTTTTT\"\"cccc",
-   "TTTT===k======k===..ff..TT\"\"cc..",
+   "TTTT===k======k===..ff.NTT\"\"cc..",
    "TTTT===k======k===......TT\"\"ccTT",
    "TTTT===k====X=k===......TT\"\"ccTT",
    "TTTT===k======k===TTTTTTTT\"\"ccTT",
@@ -46954,14 +47084,14 @@
    "TTTT===k======k=========..\"\"ccTT",
    "TTTT===k======k==========.\"\"ccTT",
    "TTTT===k======kkkkkkkkkkkk\"\"ccTT",
-   "TTTT===k=================(\"\"cccc",
-   "TTTT===k=================(\"\"cccc",
+   "TTTT===k=X===============(\"\"cccc",
+   "TTTT===k=======XX========(\"\"cccc",
    "TTTT===k=================(\"\"rrcc",
    "TTTT===k=================(\"\"rrcc",
    "TTTT.==k=================(\"\"\"ccc",
    "TTTT...kkkkkkkkkkkk======(\"\"\"c.c",
    "TTTT....ooooooooooo======(\"\".c.c",
-   "TTTT..T.ooooooooooo======(\"\".ccc",
+   "TTTT..N.ooooooooooo======(\"\".ccc",
    "TTTT....ooooooooooo======(\"\".cc.",
    "TTTTTTTTooooooooooo======(\"\"\"cc.",
    "TTTTTTTTooooooooooo======(.\"\"cc.",
@@ -46975,17 +47105,17 @@
    "TTTT=====================(\"\"cTTc",
    "TTTT=====================(\"\"cTTc",
    "TTTT=====================(\"\"cTTc",
-   "TTTT=====================(\"\"cTTc",
+   "TTTTX====================(\"\"cTTc",
    "TTTT======kkkkkkkkkkkkkkkk\"\"cTTc",
    "TTTT======k==============.\"\"c..c",
    "TTTT=====!k=============..\"\"cc.c",
    "TTTT======k===....TTTTTTTTTTTccc",
    "TTTT======k===....TTTTTTTTTTTTcc",
-   "TTTT======k===....TTTTTTTTTTTTcc",
+   "TTTT======k===.X..TTTTTTTTTTTTcc",
    "TTTT.=====k==.................cc",
    "TTTT......k...TTTTTTTTTTTT..f.cc",
    "TTTT..vv..k...TTTTTTTTTTTT...fcc",
-   "TTTTGGGGGGk...TTTTTTTTTTTT..f.cc",
+   "TTTTGGGGGGk...TTTTTTTTTTTT..N.cc",
    "TTTTGGGGGGk...TTTTTTTTTTTT....cc",
    "TTTTGGGGGGk...TTTTTTTTTTTT....cc"
   ],
@@ -47039,7 +47169,17 @@
      116,
      98
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/R35.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "signs": [
    [
@@ -47052,142 +47192,63 @@
    ]
   ],
   "trainer_spots": [
-   "Picnicker Brooke",
-   "Camper Ivan",
    "Bug Catcher Arnie",
-   "Firebreather Walt"
+   "Policeman Dirk",
+   "Firebreather Walt",
+   "Juggler Irwin",
+   "Camper Ivan",
+   "Picnicker Brooke",
+   "Camper Elliot",
+   "Picnicker Kim",
+   "Bird Keeper Bryan"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     8,
-     3,
-     5,
-     1
+    "kind": "picture",
+    "f": "ss_top/R35.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "roof",
-    "colour": [
-     161,
-     101,
-     67
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     26,
-     5,
-     2,
-     1
+    "size": [
+     32,
+     64
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     13,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     15,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     21,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     23,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     6,
-     36,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     4,
-     38,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     46,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     54,
-     10,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     58,
-     12,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     4,
-     60,
-     6,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     161,
-     101,
-     67
-    ]
+    "px": 32
    }
+  ],
+  "hidden": {
+   "5,22": "NUGGET"
+  },
+  "people": [
+   "TM57",
+   {
+    "text": "GREEN APRICORN TREE",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "It's an Apricorn tree. Green Apricorns grow on it.",
+      "You picked a Green Apricorn!"
+     ],
+     "gift_item": {
+      "GRN_APRICORN": 1
+     },
+     "flag": "apricorn_johto_route_35_6_37",
+     "done": [
+      "There's nothing left to pick today. Come back tomorrow!"
+     ],
+     "requires": [
+      "has_item:APRICORN_BOX"
+     ],
+     "fail": [
+      "It's an Apricorn tree, heavy with green fruit. You've nothing to carry one in."
+     ],
+     "daily": true
+    },
+    "color": "GOLD",
+    "no_tag": true
+   },
+   "ULTRA BALL"
   ],
   "rooms": {
    "gate": {
@@ -47195,9 +47256,12 @@
     "art": [
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
      "cccc.cccccccccccccccccccc^cccc",
-     "cz...............cccccc.....mc",
-     "c................cccccc......c",
+     "cz...............cccccc.N...mc",
+     "c........N.......cccccc......c",
      "c................cccccc......c",
      "c................cccccc......c",
      "c............................c",
@@ -47236,8 +47300,38 @@
       236,
       232,
       214
-     ]
-    }
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R35R0201.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Youngster",
+     "Workman"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R35R0201.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       30,
+       16
+      ],
+      "px": 32
+     }
+    ]
    }
   },
   "inside": {
@@ -47546,23 +47640,23 @@
    "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTTTTTTTTccTT..TTTTTTTTTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTTTTTTTTccTT..TTTTTTTTTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT....TTccTT..TTTTTTTTTT.TT.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "===\"\"\"\"\"\"\"\"\"====#cTTTTTTTTTT..T.TTccTT..TTTTTTTTTT.TT.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "===\"\"\"\"\"\"\"\"\"====#cTTTTTTTTTT..N.TTccTT..TTTTTTTTTT.TT.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "===\"\"\"\"\"\"\"\"\"====#BBBBB..........TTccTT..TTTTTTTTTT.TT.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "===\"\"\"\"\"\"\"\"\"====AAAAAA...!......TTccTT.....TT.TT......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "================AAAAAA=========.TTccTTTT...TT....TT.....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "================AAAAAA<=========TTccTTTT.........TT.TT..TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "================AAAAAA<=========TTccTTTT.N.......TT.TT..TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "================AAAAAA<=========TTccTTTTTTTTTTTTTTTTTT..TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "================AAAAAA==========TTccTTTTTTTTTTTTTTTTTT..TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "===\"\"\"\"\"\"\"\"\"====#CCCCC......====TTccTTTTTTTTTTTTTTTTTT..TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "===\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT====TTccccccccccccccccccTTT.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "===\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT====TTcTTTTTTTTTTTTTTTTccTT......fffTTTTTT........................TT",
    "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT====TTcTTTTTTTTTTTTTTTT.cTTTTTTTTTT.TTTTTT...f.f...f.f...f.f......TT",
-   "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTTX===TTc\"\"\"\"\"\"\"\"\"\"\"TTTTTTcTTTTTTTTTT.TTTTTT..f.f...f.f...f.f..!......",
-   "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT====TTc\"\"\"\"\"\"\"\"\"\"\"TTTTTTcTTTTTTTTTT.TTTTTT...=======================",
-   "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT====TTc\"\"\"\"\"\"\"\"\"\"\"TTTTTTcTTTTTTTTTTN........=======================>",
+   "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTTX===TTc\"\"\"\"\"\"\"\"\"\"\"TTTTTTcTTTTTTTTTT.TTTTTT..f.f...fNf...f.f..!......",
+   "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT====TTc\"\"\"\"\"\"\"\"\"\"\"TTTTTTcTTTTTTTTTT.TTTTTT...==========N============",
+   "\"\"\"\"\"\"\"\"\"\"\"\"====#.TTTTTTTTTT====TTc\"\"\"\"\"\"\"\"\"\"\"TTTTTTcTTTTTTTTTTN........==N====================>",
    "\"\"\"\"\"\"\"\"\"=======#.TTTTTTTTTT====TTc\"\"\"\"\"\"\"\"\"\"\"TTTTTTcTTTTTTTTTT.TTTTTT..=======================>",
    "\"\"\"\"\"\"\"\"\"=======#.TTTTTTTT..======.==============X=.............TTTTTT...==!====================",
-   "\"\"\"\"\"\"\"\"\"=======#.TTTTTTTT..======.=================............TTTTTTTTTT..======..TTTTTTTTTTTT",
+   "\"\"\"\"\"\"\"\"\"=======#.TTTTTTTT..======.=================...........NTTTTTTTTTT..======..TTTTTTTTTTTT",
    "\"\"\"\"\"\"..====##kkk.TTTTTTTT...=====.================.............TTTTTTTTTT..======..TTTTTTTTTTTT",
    "\"\"\"\"\"\"..====#=....TTTTTTTT........cTTTTTTTTTTTTTTTT.c...TTTTTTTTTTTTTTTTTTTT======TTTTTTTTTTTTTT",
    "\"\"\"\"\"\"..====#=#TTTTTTTTTTT..cccccccTTTTTTTTTTTTTTTTcc...TTTTTTTTTTTTTTTTTTTT==nn==TTTTTTTTTTTTTT",
@@ -47623,10 +47717,135 @@
      129,
      124
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/R36.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "people": [
-   "WATER STRANGE TREE"
+   {
+    "text": "BLUE APRICORN TREE",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "It's an Apricorn tree. Blue Apricorns grow on it.",
+      "You picked a Blue Apricorn!"
+     ],
+     "gift_item": {
+      "BLU_APRICORN": 1
+     },
+     "flag": "apricorn_johto_route_36_30_9",
+     "done": [
+      "There's nothing left to pick today. Come back tomorrow!"
+     ],
+     "requires": [
+      "has_item:APRICORN_BOX"
+     ],
+     "fail": [
+      "It's an Apricorn tree, heavy with blue fruit. You've nothing to carry one in."
+     ],
+     "daily": true
+    },
+    "color": "GOLD",
+    "no_tag": true
+   },
+   "SHINY STONE",
+   {
+    "text": "Arthur",
+    "action": "EVENT",
+    "condition": "weekday:thu",
+    "event": {
+     "lines": [
+      "I'm Arthur, and Thursday is my day! Pleased to meet you.",
+      "Arthur: Here, a Hard Stone. A Pokemon holding it hits harder with Rock-type moves."
+     ],
+     "gift_item": {
+      "HARD_STONE": 1
+     },
+     "flag": "got_hard_stone_johto_route_36",
+     "done": [
+      "Arthur: My brothers and sisters each come out on their own day of the week. Have you met them all?"
+     ]
+    },
+    "color": "GOLD"
+   },
+   {
+    "any": [
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "flag_condition": "not defeated_sudowoodo",
+      "event": {
+       "lines": [
+        "A weird tree is blocking the road to Ecruteak City. Now I can't go shopping!"
+       ]
+      }
+     },
+     {
+      "text": "Girl ",
+      "action": "EVENT",
+      "flag_condition": "defeated_sudowoodo",
+      "event": {
+       "lines": [
+        "The weird tree's gone, like it just walked off! It was a Pokemon? Finally I can go to Ecruteak!"
+       ]
+      }
+     }
+    ]
+   },
+   "WATER STRANGE TREE",
+   {
+    "text": "Rock Smash man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Yo! Ever had a boulder blocking your way? Course you have!",
+      "You moved that tree? Then you deserve this HM: Rock Smash! It cracks rocks wide open.",
+      "Your Pokemon will use it outside battle once you have the Zephyr Badge."
+     ],
+     "gift_item": {
+      "HM_ROCK_SMASH": 1
+     },
+     "flag": "got_hm_rock_smash_johto",
+     "done": [
+      "Rock Smash: cracked rocks, gone! And sometimes there's a Pokemon hiding under them."
+     ],
+     "requires": [
+      "defeated_sudowoodo"
+     ],
+     "fail": [
+      "Yo! That weird tree's blocking the whole route. Nobody can get past it!"
+     ]
+    },
+    "color": "GOLD"
+   },
+   {
+    "text": "Floria",
+    "action": "EVENT",
+    "flag_condition": "defeated_sudowoodo",
+    "event": {
+     "lines": [
+      "I'm Floria from the Flower Shop! When I watered that wiggly tree, it jumped right up!",
+      "Here, take these Berries for helping!"
+     ],
+     "gift_item": {
+      "ORAN_BERRY": 1,
+      "PECHA_BERRY": 1
+     },
+     "flag": "got_floria_berries",
+     "done": [
+      "Floria: Plants love water. Pokemon that look like plants... not so much!"
+     ]
+    },
+    "color": "GOLD"
+   }
   ],
   "signs": [
    [
@@ -47648,286 +47867,22 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     36,
-     3,
-     2,
-     1
+    "kind": "picture",
+    "f": "ss_top/R36.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     40,
-     3,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     46,
-     4,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     48,
-     5,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     51,
-     7,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     8,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     38,
-     11,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     49,
-     11,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     52,
-     12,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     40,
-     13,
-     9,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     51,
-     13,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     22,
-     16,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     54,
-     16,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     55,
-     18,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     51,
-     19,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     64,
-     22,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     70,
-     24,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     84,
-     24,
-     12,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     35,
-     26,
-     16,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     56,
-     26,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     74,
-     26,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     82,
-     26,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     15,
-     27,
-     3,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     53,
-     28,
-     3,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     76,
-     28,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
+    "size": [
      96,
-     133,
-     124
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     80,
-     28,
-     2,
-     1
+     32
     ],
-    "of": "roof",
-    "colour": [
-     96,
-     133,
-     124
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     29,
-     2,
-     1
-    ],
-    "of": "tree"
+    "px": 32
    }
-  ]
+  ],
+  "hidden": {
+   "39,19": "AWAKENING"
+  }
  },
  "JOHTO_ROUTE_37": {
   "art": [
@@ -72047,11 +72002,11 @@
      "cm....zzz.zzz..........1ccc",
      "c.......................ccc",
      "c........................cc",
-     "c.................cmmc...zc",
+     "c.................NmmN...zc",
      "c.................cmmc...cc",
      "c........................cc",
      "c...zmcccccccmz..........cc",
-     "c...ccccccccccc...cmmc...cc",
+     "c...cccccccccNc...cmmc...cc",
      "c...ccccccccccc...cmmc...cc",
      "c.v.ccccccccccc..........zc",
      "ccccccccccccccccccccccccccc",
@@ -72131,7 +72086,17 @@
      },
      "_stairs": {
       "23,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D23R0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "23,2": [
@@ -72139,22 +72104,71 @@
       23,
       2
      ]
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D23R0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       27,
+       14
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "condition": "not:radio_takeover",
+      "event": {
+       "lines": [
+        "I love Mary from Pokemon Talk. I only know her voice, though!"
+       ]
+      }
+     },
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "condition": "not:radio_takeover",
+      "event": {
+       "lines": [
+        "DJ Ben has the dreamiest voice. I just melt when his show's on!"
+       ]
+      }
+     },
+     {
+      "text": "Quiz lady",
+      "action": "EVENT",
+      "condition": "not:radio_takeover",
+      "event": {
+       "lines": [
+        "Welcome to our Radio Card campaign! Answer five questions in a row and your Pokegear gets a radio!"
+       ],
+       "radio_quiz": true
+      },
+      "color": "GOLD"
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "ccc1.........Xzzmmmm...1cccc",
+     "ccc1........XXzzmmmmN..1cccc",
      "ccc.....................cccc",
-     "c...cc....................cc",
+     "c...cc..................N.cc",
      "c...mmc...cc..............cc",
-     "c...mmz...cc...cccccc....ccc",
-     "c......X.......ccccccccccccc",
-     "c...cc....cc...cccc...cc..cc",
-     "c...cc....cc...cc.....cc..cc",
+     "c...mmzX..cc...cccccc....ccc",
+     "c....N.X.......ccccccccccccc",
+     "c...cc....cc...cccc...ccN.cc",
+     "c...cc....cc..Xcc.N...cc..cc",
      "cc....................cc..cc",
-     "cz........................cc",
+     "cz.X......................cc",
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc"
     ],
@@ -72216,7 +72230,17 @@
      "_stairs": {
       "23,2": "foot",
       "3,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D23R0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "23,2": [
@@ -72232,23 +72256,116 @@
     },
     "trainer_spots": [
      "Rocket Grunt A",
-     "Rocket Grunt B"
+     "Rocket Grunt",
+     "Rocket Grunt B",
+     "Team Rocket Grunt",
+     "Rocket Grunt",
+     "Team Rocket Grunt"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D23R0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       28,
+       14
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Jigglypuff",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "JIGGLYPUFF: Jiggly..."
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Lullabies on the radio make wild Pokemon sleepy. That's why you meet fewer of them while one's playing!"
+       ]
+      }
+     },
+     {
+      "text": "Radio fan",
+      "action": "EVENT",
+      "condition": "not:radio_takeover",
+      "event": {
+       "lines": [
+        "Radio's great! Music, Pokemon news, surprises, drama... it has everything!"
+       ]
+      }
+     },
+     {
+      "text": "Buena",
+      "action": "EVENT",
+      "condition": "not:radio_takeover",
+      "event": {
+       "lines": [
+        "Buena: Hi! I'm Buena! Tune in to Buena's Password, then come and tell me the password. Get it right and you earn a prize!"
+       ],
+       "buena": true
+      },
+      "color": "GOLD"
+     },
+     {
+      "text": "Woman ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Save up points with Buena and she'll give you some lovely prizes!"
+       ]
+      }
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        2
+       ]
+      ],
+      "look": "sheet:hg_policeman.png",
+      "face": "d",
+      "until": {
+       "condition": {
+        "any": [
+         "radio_takeover_started",
+         "radio_tower_cleared"
+        ]
+       }
+      },
+      "lines": [
+       "Officer: Sorry, the floors above are for staff only. It didn't used to be this strict... something's not right with the Director."
+      ]
+     }
     ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "ccc1........1cccccc1......cc",
+     "ccc1.....X..1cccccc1......cc",
      "ccc..........cccccc.......cc",
-     "c..............cc.........cc",
+     "c..............cc....X....cc",
      "c..cc..cc..cc..cccccccc..ccc",
      "c..............cccccccc..ccc",
      "c..............cccccccc..ccc",
      "c..............cccccccc..ccc",
-     "c..cc..cc..cc............zcc",
+     "c..cc..cc..cc....X.......zcc",
      "cc.......................ccc",
-     "cz.......................zcc",
+     "cz...........X...........zcc",
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc"
     ],
@@ -72270,7 +72387,17 @@
       "3,2": "foot",
       "12,2": "foot",
       "19,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D23R0103.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "3,2": [
@@ -72288,17 +72415,64 @@
       19,
       2
      ]
-    }
+    },
+    "trainer_spots": [
+     "Team Rocket Grunt",
+     "Team Rocket Grunt",
+     "Team Rocket Grunt",
+     "Scientist Garett"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D23R0103.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       28,
+       14
+      ],
+      "px": 32
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ],
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "hidden",
+      "until": {
+       "condition": {
+        "any": [
+         "has_item:CARD_KEY",
+         "radio_tower_cleared"
+        ]
+       }
+      },
+      "lines": [
+       "The door is locked... It needs a Card Key."
+      ]
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "ccc1........1cccccc1...1cccc",
+     "ccc1....X...1cccccc1...1cccc",
      "ccc..........cccccc.....cccc",
-     "ccc............cc.........cc",
+     "ccc............cc........Ncc",
      "cmm..cc........cc......X..cc",
-     "cmm.......zc...cccccc....ccc",
+     "cmm.X.....zc...cccccc....ccc",
      "c.........cc...ccccccccccccc",
      "c....cc...cc...cccc...cc..cc",
      "c..............cc.....cc..cc",
@@ -72347,7 +72521,17 @@
       "3,2": "foot",
       "19,2": "foot",
       "23,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D23R0104.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "12,2": [
@@ -72372,7 +72556,27 @@
      ]
     },
     "trainer_spots": [
-     "Executive Proton"
+     "Team Rocket Grunt",
+     "Executive Proton",
+     "Scientist Trenton"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D23R0104.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       28,
+       14
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     "TM131"
     ]
    },
    {
@@ -72424,7 +72628,17 @@
       "3,5": "foot",
       "19,5": "foot",
       "13,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D23R0105.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "3,5": [
@@ -72446,6 +72660,21 @@
     "trainer_spots": [
      "Executive Ariana",
      "Executive Petrel"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D23R0105.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       17
+      ],
+      "px": 32
+     }
     ]
    },
    {
@@ -72486,7 +72715,17 @@
      "_things": {},
      "_stairs": {
       "8,11": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D23R0106.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "8,11": [
@@ -72497,6 +72736,21 @@
     },
     "trainer_spots": [
      "Executive Archer"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D23R0106.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       18,
+       19
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -72514,7 +72768,20 @@
    "Executive Proton": 3,
    "Executive Ariana": 4,
    "Executive Petrel": 4,
-   "Executive Archer": 5
+   "Executive Archer": 5,
+   "Rocket Grunt": 1,
+   "Team Rocket Grunt": 3,
+   "Scientist Garett": 2,
+   "Scientist Trenton": 3,
+   "TM131": 3,
+   "Quiz lady": 0,
+   "Man": 0,
+   "Girl": 0,
+   "Radio fan": 1,
+   "Woman": 1,
+   "Jigglypuff": 1,
+   "Woman ": 1,
+   "Buena": 1
   }
  },
  "MOOMOO_BARN": {
@@ -73015,8 +73282,8 @@
      "cc......1cccccccccccccc......ccc",
      "cz.......cccccccccccccc......ccc",
      "c...........ccccccccccccc..ccccc",
-     "cc.........ccccccccccc........cc",
-     "cz...^.....zcccccccccc...1....cc",
+     "cc.......N.ccccccccccc........cc",
+     "cz...n.....zcccccccccc...1....cc",
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
@@ -73032,28 +73299,28 @@
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
      "c.......1ccccccccccccccccccccccc",
-     "c.......1ccccccccccccccccccccccc",
+     "c..N....1ccccccccccccccccccccccc",
      "c.......1ccccccccccccccccccccccc",
      "c........ccccccccccccccccccccccc",
      "c...........cccccccccccccccccccc",
      "cc.c...c.c.ccccccccccccccccccccc",
-     "cz.z.^.z.z.zcccccccccccccccccccc",
+     "cz.z.n.z.z.zcccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc"
     ],
     "parts": true,
     "exits": {
-     "^": "GOLDENROD_CITY"
+     "n": "GOLDENROD_CITY"
     },
     "roofs": {
      "_floor": [
-      188,
-      190,
-      196
+      222,
+      206,
+      160
      ],
      "_wall": [
-      128,
-      132,
-      146
+      236,
+      232,
+      214
      ],
      "_things": {},
      "_stairs": {
@@ -73065,7 +73332,17 @@
       "8,4": "foot",
       "8,24": "foot",
       "8,25": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D37R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "8,2": [
@@ -73108,7 +73385,59 @@
       4,
       35
      ]
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D37R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       32,
+       31
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There are shops down here. The herb shop's medicine is cheap... but oh, it's bitter!"
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This tunnel runs under the whole city. Handy when it's raining!"
+       ]
+      }
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        25,
+        2
+       ]
+      ],
+      "look": "ow:ss:stop",
+      "until": {
+       "condition": "has_item:BASEMENT_KEY"
+      },
+      "lines": [
+       "NO ENTRY BEYOND THIS POINT. It's locked tight. A key might open it."
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -73117,9 +73446,9 @@
      "cccc1.....zcccccccccccccccccc",
      "cccc1......ccccccccc1cccccccc",
      "cccc.......cccczz....czcccccc",
-     "cccc.......cccc......cccccccc",
-     "ccccX................mccccccc",
-     "cccc.................mccccccc",
+     "cccc.......ccccN.....cccccccc",
+     "ccccX................mNcccccc",
+     "cccc.................mNcccccc",
      "cccc.......X......m..mccccccc",
      "cccc.................cccccccc",
      "cccc.................cccccccc",
@@ -73128,24 +73457,24 @@
      "ccccc.....ccccccccccccccccccc",
      "ccccz....czcccccccccccccccccc",
      "ccccc....cccccccccccccccccccc",
-     "ccccz....mccccccccccccccccccc",
+     "ccccz....mNcccccccccccccccccc",
      "cccc.....mccccccccccccccccccc",
      "cccc.....czcccccccccccccccccc",
      "cccc.....cccccccccccccccccccc",
-     "cccc.....mccccccccccccccccccc",
-     "ccccc....mccccccccccccccccccc",
+     "cccc.....mNcccccccccccccccccc",
+     "ccccc....mNcccccccccccccccccc",
      "ccccz....mccccccccccccccccccc",
      "ccccc.....zcccccccccccccccccc",
      "ccccz.....ccccccccccccccccccc",
      "ccccc....czcccccccccccccccccc",
      "ccccz....cccccccccccccccccccc",
-     "cccc.....mccccccccccccccccccc",
+     "cccc.....mNcccccccccccccccccc",
      "cccc.....mccccccccccccccccccc",
      "ccccX.....zcccccccccccccc1ccc",
      "cccc.......................cc",
      "cccc.......................cc",
      "cccc.......cccccccccccc....cc",
-     "cccc.......cccccccccccc....cc",
+     "cccc......Xcccccccccccc....cc",
      "cccc1......cccccccccccccccccc",
      "cccc1......cccccccccccccccccc",
      "ccccccccccccccccccccccccccccc",
@@ -73176,14 +73505,14 @@
     "exits": {},
     "roofs": {
      "_floor": [
-      188,
-      190,
-      196
+      222,
+      206,
+      160
      ],
      "_wall": [
-      128,
-      132,
-      146
+      236,
+      232,
+      214
      ],
      "_things": {
       "9,16": [
@@ -73250,7 +73579,17 @@
       "25,29": "foot",
       "4,3": "foot",
       "4,35": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D37R0102.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "4,2": [
@@ -73290,27 +73629,122 @@
      ]
     },
     "trainer_spots": [
+     "Poké Maniac Donald",
      "Super Nerd Teru",
-     "Burglar Duncan",
-     "Pokemaniac Issac"
+     "Pokemaniac Issac",
+     "Super Nerd Eric"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D37R0102.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       29,
+       59
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Rocket Grunt",
+      "action": "EVENT",
+      "condition": "radio_takeover",
+      "event": {
+       "lines": [
+        "Down here it's just shops, kid. Nothing to see. Nothing at all!"
+       ]
+      }
+     },
+     {
+      "text": "Fashion fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ooh, your Pokemon are so charming! They'd look wonderful in a photo!"
+       ]
+      }
+     },
+     {
+      "text": "Photographer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Memorial Photo Studio! Let's take a picture of you and your team."
+       ],
+       "photo": true
+      }
+     },
+     {
+      "action": "SHOP",
+      "stock": [
+       "NUGGET",
+       "PEARL",
+       "BIG_PEARL",
+       "STARDUST",
+       "STAR_PIECE"
+      ],
+      "text": "Bargain shop",
+      "condition": "weekday:mon"
+     },
+     {
+      "text": "Salon (older brother)",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Salon! I'm the older brother. Let me give your first Pokemon a trim."
+       ],
+       "salon": {
+        "key": "salon_older",
+        "gain": 10
+       }
+      }
+     },
+     {
+      "text": "Salon (younger brother)",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm the younger brother! I'm still learning, but I'll do my best."
+       ],
+       "salon": {
+        "key": "salon_younger",
+        "gain": 5
+       }
+      }
+     },
+     {
+      "action": "SHOP",
+      "stock": [
+       "ENERGY_POWDER",
+       "ENERGY_ROOT",
+       "HEAL_POWDER",
+       "REVIVAL_HERB"
+      ],
+      "text": "Herb shop"
+     }
     ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
-     "c.....c...........c........1cccc",
+     "c..X..cN.........Xc........1cccc",
      "c.....c.....................cccc",
      "cc...ccccccccc...cc.....cccccccc",
      "cc...ccccccccc...cc.....cccccccc",
      "cc...ccccccccc...cc.....cccccccc",
-     "c.....c.....c.....c.....cccccccc",
+     "c....Xc.NNN.c.....cX....cccccccc",
      "c.................c.....cccccccc",
      "c.....c.....c.....c.....cccccccc",
      "cc...ccc...ccc...ccc...ccccccccc",
      "cc...ccc...ccc...ccc...ccccccccc",
      "cc...ccc...ccc...ccc...ccc1ccccc",
-     "c.....c.....c.....c...........cc",
+     "cN....cX....c.....c.....X.....cc",
      "c.............................cc",
      "c.....c.....c.....c...........cc",
      "cccccccccccccccccccccccccccccccc",
@@ -73320,20 +73754,30 @@
     "exits": {},
     "roofs": {
      "_floor": [
-      188,
-      190,
-      196
+      222,
+      206,
+      160
      ],
      "_wall": [
-      128,
-      132,
-      146
+      236,
+      232,
+      214
      ],
      "_things": {},
      "_stairs": {
       "27,2": "foot",
       "26,12": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D37R0104.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "27,2": [
@@ -73346,32 +73790,229 @@
       3,
       16
      ]
-    }
+    },
+    "trainer_spots": [
+     "Team Rocket Grunt",
+     "Team Rocket Grunt",
+     "Burglar Orson",
+     "Team Rocket Grunt",
+     "Burglar Duncan",
+     "Team Rocket Grunt"
+    ],
+    "people": [
+     "ULTRA BALL",
+     {
+      "text": "Switch 1",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a control panel. You pressed switch 1... Somewhere, a shutter rumbles open!"
+       ],
+       "done": [
+        "Switch 1 is already on."
+       ],
+       "flag": "warehouse_switch_1"
+      }
+     },
+     {
+      "text": "Switch 2",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a control panel. You pressed switch 2... Somewhere, a shutter rumbles open!"
+       ],
+       "done": [
+        "Switch 2 is already on."
+       ],
+       "flag": "warehouse_switch_2"
+      }
+     },
+     {
+      "text": "Switch 3",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's a control panel. You pressed switch 3... Somewhere, a shutter rumbles open!"
+       ],
+       "done": [
+        "Switch 3 is already on."
+       ],
+       "flag": "warehouse_switch_3"
+      }
+     },
+     "FULL HEAL"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D37R0104.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       32,
+       18
+      ],
+      "px": 32
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        2,
+        5
+       ],
+       [
+        3,
+        5
+       ],
+       [
+        4,
+        5
+       ],
+       [
+        14,
+        5
+       ],
+       [
+        15,
+        5
+       ],
+       [
+        16,
+        5
+       ],
+       [
+        19,
+        5
+       ],
+       [
+        20,
+        5
+       ],
+       [
+        21,
+        5
+       ],
+       [
+        22,
+        5
+       ],
+       [
+        23,
+        5
+       ]
+      ],
+      "look": "ow:ss:stop",
+      "until": {
+       "condition": "warehouse_switch_1"
+      },
+      "lines": [
+       "A shutter is down here. Somewhere there must be a switch for it... (1)"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        11
+       ],
+       [
+        3,
+        11
+       ],
+       [
+        4,
+        11
+       ],
+       [
+        8,
+        11
+       ],
+       [
+        9,
+        11
+       ],
+       [
+        10,
+        11
+       ],
+       [
+        14,
+        11
+       ],
+       [
+        15,
+        11
+       ],
+       [
+        16,
+        11
+       ],
+       [
+        20,
+        11
+       ],
+       [
+        21,
+        11
+       ],
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "ow:ss:stop",
+      "until": {
+       "condition": "warehouse_switch_2"
+      },
+      "lines": [
+       "A shutter is down here. Somewhere there must be a switch for it... (2)"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        12
+       ]
+      ],
+      "look": "ow:ss:stop",
+      "until": {
+       "condition": "warehouse_switch_3"
+      },
+      "lines": [
+       "A shutter is down here. Somewhere there must be a switch for it... (3)"
+      ]
+     }
+    ]
    },
    {
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc",
      "cccccc........cc.....mcc....1cc",
-     "cccccc........cc.....mcc.....cc",
+     "cccccc........cc.X...mcc.....cc",
      "cccccc.mm.ccm.cc..mm.........cc",
-     "cccccc.mm.ccm.cc..mm.........cc",
+     "ccccccNmm.ccm.cc..mm.........cc",
      "cccccc.mm.cc..cc..cccccc.....cc",
      "cccccc.mm.cc..ccm.cccccc...mmcc",
      "cccccc....cc..ccm.ccccccm..mmcc",
-     "cccccc.mm.ccm.cc..cccccc.....cc",
+     "cccccc.mm.ccm.cc..ccccccX....cc",
      "cccccc.mm.cc..cc......cc.mm..cc",
-     "ccccccmm..cc..cc..mm..cc.mmm.cc",
+     "ccccccmm..cc..cc..mmN.cc.mmm.cc",
      "ccccccm...cc..cc..mm..cc.....cc",
-     "cccccc....cc..cc......cc.mm..cc",
+     "cccccc....cc..cc.....Ncc.mm..cc",
      "c.........cc..cccccccccc.mm..cc",
      "c.........cc..cccccccccc..mm.cc",
      "c..1......cc..cccccccccc..mm.cc",
      "cccccccccccc..cccccccccc.....cc",
-     "cccccccccccc.................cc",
+     "cccccccccccc....X............cc",
      "cccccccccccc....mm...........cc",
      "ccccccccccccmm..mm....mmmmmm.cc",
-     "ccccccccccccmm........mmmmmm.cc",
+     "ccccccccccccmm........mmmmmmNcc",
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc"
     ],
@@ -73379,14 +74020,14 @@
     "exits": {},
     "roofs": {
      "_floor": [
-      188,
-      190,
-      196
+      222,
+      206,
+      160
      ],
      "_wall": [
-      128,
-      132,
-      146
+      236,
+      232,
+      214
      ],
      "_things": {
       "6,11": [
@@ -73733,7 +74374,17 @@
      "_stairs": {
       "3,16": "foot",
       "28,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D37R0105.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "3,16": [
@@ -73746,33 +74397,81 @@
       25,
       2
      ]
-    }
+    },
+    "hidden": {
+     "12,9": "MAX_POTION",
+     "27,11": "REVIVE"
+    },
+    "trainer_spots": [
+     "Team Rocket Grunt",
+     "Team Rocket Grunt",
+     "Team Rocket Grunt"
+    ],
+    "people": [
+     "MAX ETHER",
+     {
+      "text": "Director",
+      "action": "EVENT",
+      "condition": "radio_takeover",
+      "event": {
+       "lines": [
+        "Director: You came to rescue me? Thank you! Team Rocket locked me down here and took over my Radio Tower!",
+        "Director: Take this Card Key. It opens the locked door on the Tower's 3F. Please, stop them!"
+       ],
+       "gift_item": {
+        "CARD_KEY": 1
+       },
+       "flag": "got_radio_card_key",
+       "done": [
+        "Director: The Card Key opens the 3F door. Hurry, before they broadcast to the whole region!"
+       ]
+      },
+      "color": "GOLD"
+     },
+     "TM133",
+     "TM134"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D37R0105.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       31,
+       24
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
-     "c............cccccccccccc1..cc",
-     "c.........mm.cccccccccccc...cc",
+     "c............cccccccccccc1.Ncc",
+     "c.........mmNcccccccccccc...cc",
      "c.........mm.ccccccccccccc.ccc",
      "c....ccccccccccccccccccccc.ccc",
-     "c....ccccccccccc.....ccccc.ccc",
-     "cmm..cccccccccccm....ccccc.ccc",
-     "cmm..cccccccccccm...........cc",
+     "c....ccccccccccc..N..ccccc.ccc",
+     "c....cccccccccccm....ccccc.ccc",
+     "c....cccccccccccm...........cc",
      "c....ccccccccccc.......mm..mcc",
-     "c....ccccccccccc....mccccccccc",
      "c....ccccccccccc.....ccccccccc",
-     "c..........mmmm......ccccccccc",
-     "c..........mmmm......ccccccccc",
+     "c....ccccccccccc.....ccccccccc",
+     "c....................ccccccccc",
+     "c....N...........N.N.ccccccccc",
      "ccc.......................cccc",
-     "ccc.......................cccc",
-     "ccc..................cc...cccc",
+     "ccc..N....................cccc",
+     "ccc..N...............cc...cccc",
      "ccc..................cc...cccc",
      "cccccc..ccccccccccccccc...cccc",
      "cccccc..ccccccccccccccc...cccc",
      "cccccc..ccccccccccccccc.....cc",
-     "cccccc..ccccccccccccccc..mm.cc",
-     "cccccc.............cccc..mm.cc",
+     "cccccc..ccccccccccccccc.Nmm.cc",
+     "cccccc...........N.cccc..mm.cc",
      "cccccc.............cccc.....cc",
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc"
@@ -73781,14 +74480,14 @@
     "exits": {},
     "roofs": {
      "_floor": [
-      188,
-      190,
-      196
+      222,
+      206,
+      160
      ],
      "_wall": [
-      128,
-      132,
-      146
+      236,
+      232,
+      214
      ],
      "_things": {
       "1,7": [
@@ -73924,7 +74623,17 @@
      },
      "_stairs": {
       "25,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D37R0103.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "25,2": [
@@ -73932,22 +74641,359 @@
       28,
       2
      ]
-    }
+    },
+    "hidden": {
+     "1,8": "PARALYZE_HEAL",
+     "13,13": "SUPER_POTION",
+     "20,10": "ANTIDOTE"
+    },
+    "people": [
+     "BURN HEAL",
+     "ULTRA BALL ",
+     {
+      "text": "Elevator attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Going up? Which floor, please?"
+       ],
+       "elevator": true
+      }
+     },
+     {
+      "text": "Machoke ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MACHOKE: Macho!"
+       ]
+      }
+     },
+     {
+      "any": [
+       {
+        "text": "Black Belt",
+        "action": "EVENT",
+        "flag_condition": "not b1f_crate_2",
+        "event": {
+         "lines": [
+          "Machoke, help us shift this crate! ...There, that's one out of the way."
+         ],
+         "done": [
+          "The warehouse gets tidied in seconds with Machoke's help!"
+         ],
+         "flag": "b1f_crate_2"
+        }
+       },
+       {
+        "text": "Black Belt ",
+        "action": "EVENT",
+        "flag_condition": "b1f_crate_2",
+        "event": {
+         "lines": [
+          "Another one? Machoke, the small box too! ...Done!"
+         ],
+         "done": [
+          "Anything on the floor's junk. Help yourself!"
+         ],
+         "flag": "b1f_crate_3"
+        }
+       }
+      ]
+     },
+     {
+      "text": "Machoke",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MACHOKE: Maaacho!"
+       ]
+      }
+     },
+     {
+      "text": "Black Belt  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Machoke, move that crate by the wall! ...There you go. Anything behind it is junk. Take it!"
+       ],
+       "done": [
+        "Machoke's strong, isn't it?"
+       ],
+       "flag": "b1f_crate_1"
+      }
+     },
+     {
+      "text": "Machoke  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MACHOKE: Maaa-cho!"
+       ]
+      }
+     },
+     "ETHER",
+     "AMULET COIN"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D37R0103.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       30,
+       26
+      ],
+      "px": 32
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        1,
+        7
+       ]
+      ],
+      "look": "ow:ss:b1f_1_7",
+      "until": {
+       "condition": "b1f_crate_1"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        7
+       ]
+      ],
+      "look": "ow:ss:b1f_2_7",
+      "until": {
+       "condition": "b1f_crate_1"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        8
+       ]
+      ],
+      "look": "ow:ss:b1f_1_8",
+      "until": {
+       "condition": "b1f_crate_1"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        8
+       ]
+      ],
+      "look": "ow:ss:b1f_2_8",
+      "until": {
+       "condition": "b1f_crate_1"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        12
+       ]
+      ],
+      "look": "ow:ss:b1f_11_12",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        12
+       ]
+      ],
+      "look": "ow:ss:b1f_12_12",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        12
+       ]
+      ],
+      "look": "ow:ss:b1f_13_12",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        12
+       ]
+      ],
+      "look": "ow:ss:b1f_14_12",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        13
+       ]
+      ],
+      "look": "ow:ss:b1f_11_13",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        13
+       ]
+      ],
+      "look": "ow:ss:b1f_12_13",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        13
+       ]
+      ],
+      "look": "ow:ss:b1f_13_13",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        13
+       ]
+      ],
+      "look": "ow:ss:b1f_14_13",
+      "until": {
+       "condition": "b1f_crate_2"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "ow:ss:b1f_20_10",
+      "until": {
+       "condition": "b1f_crate_3"
+      },
+      "lines": [
+       "A heavy crate. It won't budge."
+      ]
+     }
+    ]
    }
   ],
   "floor_names": [
-   "Entrance hall",
    "Tunnel",
-   "Switch room",
+   "Booths",
    "Warehouse",
-   "Dept. Store basement"
+   "Back room",
+   "Dept. Store B1F"
   ],
   "figure_floors": {
    "Super Nerd Teru": 1,
-   "Burglar Duncan": 1,
-   "Pokemaniac Issac": 1
-  },
-  "descend": true
+   "Burglar Duncan": 2,
+   "Pokemaniac Issac": 1,
+   "Poké Maniac Donald": 1,
+   "Super Nerd Eric": 1,
+   "ULTRA BALL": 2,
+   "FULL HEAL": 2,
+   "Team Rocket Grunt": 3,
+   "Burglar Orson": 2,
+   "MAX ETHER": 3,
+   "BURN HEAL": 4,
+   "ULTRA BALL ": 4,
+   "AMULET COIN": 4,
+   "ETHER": 4,
+   "Woman": 0,
+   "Man": 0,
+   "Herb shop": 1,
+   "Salon (older brother)": 1,
+   "Salon (younger brother)": 1,
+   "Bargain shop": 1,
+   "Photographer": 1,
+   "Fashion fan": 1,
+   "Rocket Grunt": 1,
+   "Switch 1": 2,
+   "Switch 2": 2,
+   "Switch 3": 2,
+   "TM133": 3,
+   "TM134": 3,
+   "Director": 3,
+   "Black Belt": 4,
+   "Black Belt ": 4,
+   "Black Belt  ": 4,
+   "Machoke": 4,
+   "Machoke ": 4,
+   "Machoke  ": 4,
+   "Elevator attendant": 4
+  }
  },
  "BELL_TOWER": {
   "theme": "ship",

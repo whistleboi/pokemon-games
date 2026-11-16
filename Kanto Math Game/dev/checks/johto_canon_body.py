@@ -23,7 +23,8 @@ story.story_flags.update({"received_starter_johto": True, "visited_NEW_BARK_TOWN
 story.balls_left = max(getattr(story, "balls_left", 0), 5)
 
 DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30", "JOHTO_ROUTE_31", "VIOLET_CITY", "SPROUT_TOWER", "DARK_CAVE",
-        "JOHTO_ROUTE_32", "RUINS_OF_ALPH", "UNION_CAVE", "JOHTO_ROUTE_33", "AZALEA_TOWN", "SLOWPOKE_WELL", "ILEX_FOREST", "JOHTO_ROUTE_34"]
+        "JOHTO_ROUTE_32", "RUINS_OF_ALPH", "UNION_CAVE", "JOHTO_ROUTE_33", "AZALEA_TOWN", "SLOWPOKE_WELL", "ILEX_FOREST", "JOHTO_ROUTE_34",
+        "GOLDENROD_CITY", "RADIO_TOWER", "JOHTO_ROUTE_35", "JOHTO_ROUTE_36"]
 
 
 def frames(n):
@@ -64,11 +65,11 @@ for key in DONE:
     balls = [o for o in opts.values() if o.get("found")]
     on_map = [p if isinstance(p, str) else (p.get("text") if isinstance(p, dict) else None) for f in parts for p in (f.get("people") or [])]
     check(all(o["text"] in on_map for o in balls), f"{key}: its {len(balls)} item ball(s) lie on the map {[o['text'] for o in balls if o['text'] not in on_map]}")
-    names = {t["name"] for t in a.get("trainer_pool", [])}
+    names = {t["name"] for t in a.get("trainer_pool", [])} | {t.get("spot_name") for t in a.get("trainer_pool", []) if t.get("spot_name")}
     spots = [n for f in parts for n in (f.get("trainer_spots") or [])]
     check(set(spots) <= names and all(sum(r.count("X") for r in f["art"]) == len(f.get("trainer_spots") or []) for f in parts),
           f"{key}: {len(spots)} trainers on the game's tiles, all of them the area's {sorted(set(spots) - names)}")
-    if a.get("wild_pool_percentages"):
+    if a.get("morning_pool_percentages"):   # (an area the games give wild Pokemon: HGSS's three times of day)
         pools = [a.get(f) for f in ("morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")]
         check(all(p and sum(_ad.get(p, {}).values()) == 100 for p in pools), f"{key}: morning / day / night wild tables, each 100% {pools}")
 hid = sum(len(f.get("hidden") or {}) for k in DONE for f in (_tm[k].get("floors") or [_tm[k]]))
@@ -289,5 +290,111 @@ check(cel and "kurt_examined_gs_ball" in cel[0]["condition"], "Celebi waits at t
 gs = [o for o in _area["GOLDENROD_CITY"]["explore_options"] if (o.get("event") or {}).get("gift_item", {}).get("GS_BALL")]
 check(gs and gs[0]["flag_condition"] == "beat_johto_champion", "Goldenrod's Center hands you the GS Ball once you're Champion (Crystal)")
 
+
+# ---- N5: Goldenrod, Routes 35 and 36
+gr = _area["GOLDENROD_CITY"]
+kenya = [o for o in gr["explore_options"] if o.get("text") == "Gate guard"]
+check(any((o.get("event") or {}).get("gift_pokemon") == 21 for o in kenya) and any("kenya_delivered" in (o.get("event") or {}).get("requires", []) for o in kenya),
+      "Goldenrod's gate: the guard lends you Kenya (Spearow), and thanks you with an HP Up once the letter's delivered")
+r31man = [p for p in _tm["JOHTO_ROUTE_31"].get("people", []) if isinstance(p, dict) and p.get("text") == "Sleepy man"]
+check(r31man and r31man[0]["event"].get("requires") == ["got_kenya"] and r31man[0]["event"]["gift_item"].get("TM21"), "...the man on Route 31 reads it and gives you Rest")
+rs = [p for p in _tm["JOHTO_ROUTE_36"].get("people", []) if isinstance(p, dict) and p.get("text") == "Rock Smash man"]
+check(rs and rs[0]["event"]["gift_item"].get("HM_ROCK_SMASH") and rs[0]["event"]["requires"] == ["defeated_sudowoodo"], "Route 36: Rock Smash from the man by the odd tree, once it's gone")
+dept5 = _tm["GOLDENROD_CITY"]["rooms"]["dept_5"].get("people", [])
+check(any("Trader" in str(p) for p in dept5) and any("TM lady" in str(p) for p in dept5), "Dept. Store 5F: the Machop trader and the Sunday TM lady")
+stock = {e["item"] for e in gr.get("extra_stock", [])}
+check({"TM05", "TM03", "TM04", "TM110", "TM111", "TM08", "TM132"} <= stock, f"...and the 5F TM Corner's TMs on the shelf ({sorted(stock)})")
+
+# ---- the Radio Card quiz, the radio, Buena, the Daily Drawing (Jordan 11-15)
+from src.states.systems.yes_no_quiz import YesNoQuizState, make_question
+from src.world import radio
+import random as _r
+q, tr = make_question(_r.Random(3), 2)
+check(" = " in q and isinstance(tr, bool), f"the quiz asks yes/no equations ({q})")
+story.inventory.pop("RADIO_CARD", None)
+story.story_flags.pop("radio_takeover_started", None); story.story_flags.pop("radio_tower_cleared", None)
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE"]
+rt = open_map("RADIO_TOWER", "GOLDENROD_CITY")
+figs = {m.payload.get("text"): (m.x, m.y) for m in rt.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+trs = [m for m in rt.run.floor.movers if m.kind == "trainer"]
+check("Quiz lady" in figs and not trs, f"Radio Tower 1F, before the takeover: visitors, the quiz lady behind her desk, no Rockets ({sorted(figs)})")
+rt.run.floor.movers = [m for m in rt.run.floor.movers if m.kind != "wild"]
+qx, qy = figs.get("Quiz lady", (13, 9))
+rt.run.player = (qx, qy - 2); rt.anim = 0   # (her desk is the counter above her)
+rt.step(0, 1)
+play(lambda: isinstance(g.current_state, YesNoQuizState) or not rt.dialogue_box.visible, 400)
+qs = g.current_state
+check(isinstance(qs, YesNoQuizState), f"...talk to her across the desk and the quiz starts ({type(qs).__name__})")
+if isinstance(qs, YesNoQuizState):
+    for _ in range(5):
+        qs.answer(qs.truth)
+play(lambda: not getattr(g.current_state, "dialogue_box", None) or not g.current_state.dialogue_box.visible, 300)
+check(story.inventory.get("RADIO_CARD") == 1, "...five right in a row: the Radio Card")
+story.inventory["POKEGEAR"] = 1
+chs = [k for k, n in radio.channels(g)]
+check({"talk", "music", "buena", "variety"} <= set(chs) and "unown" not in chs, f"the radio's channels ({chs})")
+radio.tune(g, "music")
+check(story.story_flags.get("radio_station") in ("march", "lullaby") and radio.encounter_effect(story) in ("more", "fewer"), "Pokemon Music: the March or the Lullaby, by the day")
+story.story_flags["radio_station"] = "hoenn"
+check(radio.sound_species(story, _area["JOHTO_ROUTE_30"]) == [293, 264], "Hoenn Sound on Route 30: Whismur and Linoone, SoulSilver's own")
+story.story_flags.pop("radio_station", None)
+lines = radio.tune(g, "buena")
+pw = radio.password_today()
+check(pw in " ".join(lines), f"Buena's Password gives today's password ({pw})")
+_run_story_event(rt, {"lines": [], "buena": True}, lambda c: True, lambda ls: None)
+check(story.story_flags.get("buena_points") and story.inventory.get("ULTRA_BALL", 0) >= 1 or story.story_flags.get("buena_points", 0) >= 1, "...tell Buena: a Blue Card point (and a prize)")
+story.money = 1000
+_run_story_event(rt, {"lines": [], "raffle": True}, lambda c: True, lambda ls: None)
+check(story.money == 700 and story.story_flags.get("goldenrod_raffle_day"), "Dept. Store 6F: the Daily Drawing, $300 once a day")
+bars = _tm["RADIO_TOWER"]["floors"][1].get("barred", [])
+check(bars and bars[0]["tiles"] == [[3, 2]], "Radio Tower 2F: the officer keeps visitors off the stairs till the takeover")
+# ---- the Goldenrod Tunnel (Jordan 11-15: option B, simplified): the elevator to B1F, the crates, the warehouse, the keys
+from src.states.systems.pick_list import PickListState
+_gu = _tm["GOLDENROD_UNDERGROUND"]
+check(len(_gu["floors"]) == 5, f"Goldenrod Tunnel: SoulSilver's five maps (Tunnel, booths, warehouse, back room, B1F) ({len(_gu['floors'])})")
+_who = {str(p.get("text")) for f in _gu["floors"] for p in f.get("people", []) if isinstance(p, dict)}
+check({"Herb shop", "Bargain shop", "Photographer", "Director", "Elevator attendant"} <= _who
+      and any(w.startswith("Salon") for w in _who), f"...the herb shop, the salon brothers, the Monday bargain shop, the photo studio, the Director")
+_lifts = [o for o in gr["explore_options"] if o.get("text") == "Elevator"]
+check(_lifts and _lifts[0].get("door") == "dept", "Dept. Store: an elevator attendant on the floors")
+_ev = dict((_lifts[0] if _lifts else {}).get("event") or {})
+for k in ("b1f_crate_1", "b1f_crate_2", "b1f_crate_3", "warehouse_switch_1", "warehouse_switch_2", "warehouse_switch_3"):
+    story.story_flags.pop(k, None)
+_run_story_event(g.current_state, _ev, lambda c: True, lambda ls: None)
+pk = g.current_state
+check(isinstance(pk, PickListState) and len(pk.rows) == 7, f"...ask for a floor: B1F to 6F ({type(pk).__name__})")
+if isinstance(pk, PickListState):
+    pk.pick("B1F")
+play(lambda: getattr(g.current_state, "run", None) is not None and story.current_area_key == "GOLDENROD_UNDERGROUND", 600)
+b1 = g.current_state
+g.arrive_floor = None
+check(getattr(getattr(b1, "run", None), "index", None) == 4, f"...B1F: the elevator brings you down to the store's basement ({story.current_area_key}, {getattr(getattr(b1, 'run', None), 'index', None)})")
+if getattr(b1, "run", None) is not None and b1.run.index == 4:
+    frames(120)
+    check(not [m for m in b1.run.floor.movers if m.kind == "wild"] and not _area["GOLDENROD_UNDERGROUND"].get("wild_pool_percentages"),
+          "...no wild Pokemon down here, as in HGSS (Jordan 11-15)")
+    b1.run.player = (3, 8); b1.anim = 0
+    b1.step(-1, 0)
+    play(lambda: not b1.dialogue_box.visible, 300)
+    check(b1.run.player == (3, 8), f"...a crate blocks the side room by the wall ({b1.run.player})")
+    b1.run.player = (5, 14); b1.anim = 0      # (the Black Belt by the wall stands below, at (5, 15))
+    b1.step(0, 1)
+    play(lambda: not b1.dialogue_box.visible, 400)
+    check(story.story_flags.get("b1f_crate_1"), "...talk to the Black Belt: his Machoke shifts it")
+    b1.run.player = (3, 8); b1.anim = 0
+    b1.step(-1, 0)
+    play(lambda: not b1.dialogue_box.visible, 300)
+    check(b1.run.player == (2, 8), f"...and the way to its item is open ({b1.run.player})")
+story.story_flags["warehouse_switch_2"] = True
+_wh = _gu["floors"][2].get("barred", [])
+check(len(_wh) == 3 and all((b.get("until") or {}).get("condition", "").startswith("warehouse_switch_") for b in _wh),
+      "the warehouse: three shutters, each opened by its own switch")
+check(any((p.get("event") or {}).get("gift_item", {}).get("CARD_KEY") for p in _gu["floors"][3].get("people", []) if isinstance(p, dict)),
+      "...the Director, held in the back room, gives the Card Key")
+_rt2 = _tm["RADIO_TOWER"]["floors"][2].get("barred", [])
+check(any("CARD_KEY" in str(b.get("until")) for b in _rt2), "Radio Tower 3F: the door that needs the Card Key")
+import json as _js
+check('"Executive Petrel"' in _js.dumps(_area["RADIO_TOWER"]) and '"BASEMENT_KEY": 1' in _js.dumps(_area["RADIO_TOWER"]), "...Petrel, the fake Director, drops the Basement Key for the Tunnel's locked door")
+check(any("BASEMENT_KEY" in str(b.get("until")) for b in _gu["floors"][0].get("barred", [])), "...which opens the Tunnel's NO ENTRY door")
 if fails:
     print("FAILS:", len(fails))

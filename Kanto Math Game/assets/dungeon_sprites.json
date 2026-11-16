@@ -5826,6 +5826,297 @@
     },
     "AZALEA_TOWN:Old woman ": {
       "sheet": "hg_gsoldwoman1.png"
+    },
+    "JOHTO_ROUTE_35:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_35:TM57": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_36:SHINY STONE": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_CITY:Woman": {
+      "sheet": "hg_gswoman2.png"
+    },
+    "GOLDENROD_CITY:Old man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "GOLDENROD_CITY:Boy": {
+      "sheet": "hg_delivery.png"
+    },
+    "GOLDENROD_CITY:Boy ": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "GOLDENROD_CITY:Girl": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt  ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt   ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt    ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt     ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt      ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt       ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt        ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_CITY:Rocket Grunt         ": {
+      "sheet": "hg_rocketm.png"
+    },
+    "RADIO_TOWER:TM131": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_35:GREEN APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_g.png"
+    },
+    "JOHTO_ROUTE_36:Rock Smash man": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "JOHTO_ROUTE_36:Girl": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "JOHTO_ROUTE_36:Girl ": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "JOHTO_ROUTE_36:Floria": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "JOHTO_ROUTE_36:Arthur": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "JOHTO_ROUTE_36:BLUE APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_b.png"
+    },
+    "GOLDENROD_CITY:Gym": {
+      "sheet": "hg_gsleader3.png"
+    },
+    "GOLDENROD_CITY:Bike Shop": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "GOLDENROD_CITY:Flower Shop": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "GOLDENROD_CITY:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "GOLDENROD_CITY:Center attendant": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "GOLDENROD_CITY:Game Corner": {
+      "sheet": "hg_suit.png"
+    },
+    "GOLDENROD_CITY:Dept. Store": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "GOLDENROD_CITY:Magnet Train to Saffron": {
+      "sheet": "hg_policeman.png"
+    },
+    "GOLDENROD_CITY:Talk to Bill": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "GOLDENROD_CITY:Gate guard": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "GOLDENROD_CITY:Big man ": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "GOLDENROD_CITY:Little girl ": {
+      "sheet": "hg_gsdsboy.png"
+    },
+    "GOLDENROD_CITY:Gentleman": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "GOLDENROD_CITY:Shopper": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "GOLDENROD_CITY:Camper": {
+      "sheet": "hg_shopm1.png"
+    },
+    "GOLDENROD_CITY:Gentleman ": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "GOLDENROD_CITY:Jittery man": {
+      "sheet": "hg_mania.png"
+    },
+    "GOLDENROD_CITY:Man": {
+      "sheet": "hg_gsman2.png"
+    },
+    "GOLDENROD_CITY:Tough guy": {
+      "sheet": "hg_gsdsboy.png"
+    },
+    "GOLDENROD_CITY:Kid": {
+      "sheet": "hg_gsman2.png"
+    },
+    "GOLDENROD_CITY:Man ": {
+      "sheet": "hg_shopm1.png"
+    },
+    "GOLDENROD_CITY:Girl ": {
+      "sheet": "hg_gsgirl3.png"
+    },
+    "GOLDENROD_CITY:Trader": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "GOLDENROD_CITY:TM lady": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "GOLDENROD_CITY:Man  ": {
+      "sheet": "hg_gsman1.png"
+    },
+    "GOLDENROD_CITY:Girl  ": {
+      "sheet": "hg_gsleader3.png"
+    },
+    "GOLDENROD_CITY:Whitney": {
+      "sheet": "hg_gsgirl2.png"
+    },
+    "GOLDENROD_CITY:Bill's mother": {
+      "sheet": "hg_masaki.png"
+    },
+    "GOLDENROD_CITY:Bill's sister": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "GOLDENROD_CITY:Friendship checker": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "GOLDENROD_CITY:Little girl": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "GOLDENROD_CITY:Man   ": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "GOLDENROD_CITY:Big man": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "GOLDENROD_CITY:Girl   ": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "GOLDENROD_CITY:Name Rater": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "JOHTO_ROUTE_35:Youngster": {
+      "sheet": "hg_counterm.png"
+    },
+    "JOHTO_ROUTE_35:Workman": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "RADIO_TOWER:Quiz lady": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "RADIO_TOWER:Man": {
+      "sheet": "hg_gsman1.png"
+    },
+    "RADIO_TOWER:Girl": {
+      "sheet": "hg_gsgirl2.png"
+    },
+    "RADIO_TOWER:Radio fan": {
+      "sheet": "hg_gsman1.png"
+    },
+    "RADIO_TOWER:Woman": {
+      "sheet": "hg_gswoman2.png"
+    },
+    "RADIO_TOWER:Woman ": {
+      "sheet": "hg_gswoman2.png"
+    },
+    "RADIO_TOWER:Buena": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "GOLDENROD_UNDERGROUND:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:BURN HEAL": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:ULTRA BALL ": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:AMULET COIN": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:Woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "GOLDENROD_UNDERGROUND:Man": {
+      "sheet": "hg_gsman1.png"
+    },
+    "GOLDENROD_UNDERGROUND:Herb shop": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "GOLDENROD_UNDERGROUND:Salon (older brother)": {
+      "sheet": "hg_gsman3.png"
+    },
+    "GOLDENROD_UNDERGROUND:Salon (younger brother)": {
+      "sheet": "hg_gsman2.png"
+    },
+    "GOLDENROD_UNDERGROUND:Bargain shop": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "GOLDENROD_UNDERGROUND:Photographer": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "GOLDENROD_UNDERGROUND:Fashion fan": {
+      "sheet": "hg_mount.png"
+    },
+    "GOLDENROD_UNDERGROUND:Rocket Grunt": {
+      "sheet": "hg_rocketm.png"
+    },
+    "GOLDENROD_UNDERGROUND:Switch 1": {
+      "draw": "terminal"
+    },
+    "GOLDENROD_UNDERGROUND:Switch 2": {
+      "draw": "terminal"
+    },
+    "GOLDENROD_UNDERGROUND:Switch 3": {
+      "draw": "terminal"
+    },
+    "GOLDENROD_UNDERGROUND:TM133": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:TM134": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:Director": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "GOLDENROD_UNDERGROUND:Black Belt": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "GOLDENROD_UNDERGROUND:Black Belt ": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "GOLDENROD_UNDERGROUND:Black Belt  ": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "GOLDENROD_UNDERGROUND:Elevator attendant": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "GOLDENROD_CITY:Elevator": {
+      "sheet": "hg_campboy.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -5983,25 +6274,33 @@
     "bird_keeper.png": "hg_gsman2.png",
     "blackbelt.png": "hg_gsfighter.png",
     "bug_catcher.png": "hg_gsboy3.png",
+    "burglar.png": "hg_thief.png",
     "camper.png": "hg_campboy.png",
     "firebreather.png": "hg_fire.png",
     "fisherman.png": "hg_fishing.png",
     "gentleman.png": "hg_gsgentleman.png",
     "hiker.png": "hg_mount.png",
+    "juggler.png": "hg_juggrer.png",
     "lass.png": "hg_picnicgirl.png",
     "officer.png": "hg_policeman.png",
     "picknicker.png": "hg_picnicgirl.png",
+    "picnicker.png": "hg_picnicgirl.png",
+    "poke_maniac.png": "hg_mania.png",
     "pokefan.png": "hg_gsmiddleman1.png",
     "pokefan_f.png": "hg_middlewoman1.png",
     "pokefan_m.png": "hg_gsmiddleman1.png",
     "pokemaniac.png": "hg_mania.png",
+    "policeman.png": "hg_policeman.png",
     "psychic.png": "hg_mystery.png",
     "rocket_grunt_m.png": "hg_rocketm.png",
     "sage.png": "hg_bozu.png",
     "sage2.png": "hg_bozu.png",
     "sailor.png": "hg_seaman.png",
     "school_kid_m.png": "hg_gsboy1.png",
+    "scientist.png": "hg_assistantm.png",
+    "super_nerd.png": "hg_gsassistantm.png",
     "supernerd.png": "hg_mania.png",
+    "team_rocket.png": "hg_rocketm.png",
     "twins.png": "hg_gsbabygirl1.png",
     "youngster.png": "hg_gsboy2.png"
   }

@@ -302,6 +302,8 @@ class StoryManager:
         """Conditions shared by town and route menus. None when the condition isn't one of these."""
         if not isinstance(condition, str):
             return None
+        if condition == "radio_takeover":  # (Johto: Team Rocket holds Goldenrod's Radio Tower - after their Mahogany hideout, till you clear the Tower)
+            return (bool(self.story_flags.get("rocket_hq_cleared")) or len(self.badges.get("JOHTO", [])) >= 7) and not self.story_flags.get("radio_tower_cleared")
         if condition.startswith("start_region:"):  # (a game that began in this region, or moved there as home: Johto's HGSS opening plays only then)
             want = condition.split(":", 1)[1].upper()
             return str(getattr(self, "starting_region", "")).upper() == want or bool(self.story_flags.get(f"moved_to_{want.lower()}"))

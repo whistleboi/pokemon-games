@@ -121,7 +121,8 @@ def ring(game, area_key):
 # Who's in the phone from the start (HGSS: Mom gives you the Pokegear with her number in it; Elm adds his on Route 29). Our words.
 PEOPLE = {"JOHTO": [("Mom", "New Bark Town", "Mom: Are you eating well? Don't forget to rest your Pokemon at a Pokemon Center!", None),
                     ("Prof. Elm", "New Bark Town", "Prof. Elm: Hello! How's your Pokedex coming along? Every Pokemon you meet helps my research!", "johto_elm_number"),
-                    ("Prof. Oak", "Kanto", "Prof. Oak: Ah, hello! Catch lots of Pokemon. A full Pokedex is a fine thing!", "received_pokedex_johto")]}
+                    ("Prof. Oak", "Kanto", "Prof. Oak: Ah, hello! Catch lots of Pokemon. A full Pokedex is a fine thing!", "received_pokedex_johto"),
+                    ("Whitney", "Goldenrod City", "Whitney: Hiya! Miltank and I have been training super hard. Want a rematch sometime?", "johto_whitney_number")]}
 
 
 def book(game):

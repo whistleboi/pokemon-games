@@ -829,6 +829,9 @@ class DungeonState(OverworldBattles, PlayState):
         lead = next((p for p in story.player_team if getattr(p, "current_hp", 1) > 0), None)
         if getattr(lead, "held_item", None) in itemlib.FEWER_WILD:  # (a Cleanse Tag on your lead: fewer wild Pokemon about)
             recipe = dict(recipe, wild=[max(1, w * 2 // 3) for w in (recipe.get("wild") or [4, 6])])
+        _drop = getattr(game, "arrive_floor", None)   # (an elevator ride: (area, floor, [x, y]) - Goldenrod Dept. Store's lift down to B1F)
+        if _drop and _drop[0] == self.area_key:
+            start = int(_drop[1])
         self.run = core.Run(recipe, random.Random(), entrance=entrance, forwards=forwards,
                             make_wild=self._make_wild, trainers=trainers,
                             loot_for=self._floor_loot(loot), tm_spots=spots, figures=figures,
@@ -850,6 +853,10 @@ class DungeonState(OverworldBattles, PlayState):
         _arr = ((self.recipe.get("art") or {}).get("arrive") or {}).get(came) if not at_edge else None
         if _arr and self.run.index == 0 and self.run.floor.walkable(*_arr):   # (a map's "arrive" {area: [x, y]}: off a ferry with
             self.run.player = tuple(_arr)                                       #  no tile of its own, onto the dock: the Battle Frontier)
+        if _drop and _drop[0] == self.area_key:
+            game.arrive_floor = None
+            if self.run.floor.walkable(*_drop[2]):
+                self.run.player = tuple(_drop[2])
         self._sync_gate()
         if not self.run.fog and not story.story_flags.get(f"visited_{self.area_key}"):  # (dark places keep their own darkness)
             self.run.explore = True
@@ -2288,6 +2295,9 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _phone_check(self):
         """The phone (src/world/phone.py): a number to register after a win; on arriving, a call when a trainer's next team is ready."""
+        if hasattr(self, "run"):   # (the radio's March / Lullaby: src/world/radio.py)
+            from src.world import radio as _radio
+            self.run.radio = _radio.encounter_effect(self.game.story_manager)
         if not self._ready() or self.dialogue_box.visible:
             return
         if getattr(self, "_phone_say", None):

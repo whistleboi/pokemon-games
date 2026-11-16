@@ -687,6 +687,13 @@ class Run:
         return False
 
     # ---- a turn
+    def _art_char(self, x, y):
+        """The drawn map's letter at (x, y) on this floor ("" for a made-up floor)."""
+        art = self.recipe.get("art") or {}
+        here = (art.get("floors") or [art])[self.index] if art.get("floors") and self.index < len(art["floors"]) else art
+        rows = here.get("art") or []
+        return rows[y][x] if 0 <= y < len(rows) and 0 <= x < len(rows[y]) else ""
+
     def step(self, dx, dy):
         """You try to step (dx, dy). Returns a list of events, in order:
         ("blocked",), ("bump", mover), ("moved",), ("item", key), ("tm", spot_id), ("exit", target),
@@ -694,6 +701,10 @@ class Run:
         f = self.floor
         x, y = self.player[0] + dx, self.player[1] + dy
         if not f.walkable(x, y) or self._bridge_bars(self.player, (x, y), dx, dy):
+            if self._art_char(x, y) == "m":   # (a counter: you talk to whoever stands behind it - the Radio Tower's quiz desk, a Center's nurse)
+                behind = f.mover_at(x + dx, y + dy)
+                if behind is not None and behind.kind == "figure":
+                    return [("bump", behind)]
             return [("blocked",)]
         m = f.mover_at(x, y)
         if m is not None:
@@ -814,8 +825,11 @@ class Run:
                     m.x, m.y = nx, ny
             if m.alert and abs(m.x - px) + abs(m.y - py) == 1 and not any(e[0] == "ambush" for e in events):
                 events.append(("ambush", m))
-        if self.recipe.get("respawn", True) and self.turn % self.RESPAWN_TURNS == 0 and not self._indoors(self.index):  # (Hyperspace: none)
+        _radio = getattr(self, "radio", None)   # (the Pokegear radio: the March brings more wild Pokemon, faster; the Lullaby fewer)
+        _turns = max(1, self.RESPAWN_TURNS // 2) if _radio == "more" else self.RESPAWN_TURNS
+        if self.recipe.get("respawn", True) and self.turn % _turns == 0 and not self._indoors(self.index):  # (Hyperspace: none)
             most = (self.recipe.get("wild") or [4, 6])[-1]
+            most = most + 2 if _radio == "more" else max(1, most // 2) if _radio == "fewer" else most
             if sum(1 for m in f.movers if m.kind == "wild") < most:
                 count = len(f.movers)
                 self._spawn_wild(f, far=True)

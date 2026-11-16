@@ -374,6 +374,12 @@ class RouteEncounters:
     def _get_wild_pool(self, area_data):
         """The current area's percentage pool: day/night split, then season and weather."""
         pool = regional_forms.extend_pool(self.game, self._base_wild_pool(area_data))
+        from src.world import radio as _radio   # (Hoenn Sound / Sinnoh Sound on the radio: this place's far-away Pokemon join in; HGSS)
+        extra = _radio.sound_species(self.game.story_manager, area_data)
+        if extra and pool:
+            pool = dict(pool)
+            for sp in extra:
+                pool[str(sp)] = pool.get(str(sp), 0) + max(1, round(sum(pool.values()) * 0.1))
         return seasons.adjust_pool(self.game, pool, self.game.story_manager.current_area_key)
 
     def _base_wild_pool(self, area_data):

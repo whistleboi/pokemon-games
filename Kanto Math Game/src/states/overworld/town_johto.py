@@ -258,6 +258,7 @@ class JohtoTown:
                         if not self.player_won:
                             return super().exit_battle()
                         from src.states.overworld import AreaTransitionState
+                        self.game.story_manager.story_flags["radio_takeover_started"] = True   # (the Rockets inside now stand on their floors)
                         self.game.change_state(AreaTransitionState(self.game, "RADIO_TOWER"))
 
                 battle_state = RadioTowerGateBattle(

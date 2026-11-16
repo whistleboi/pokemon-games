@@ -838,5 +838,45 @@
   "type": "DRAGON",
   "tier": 5,
   "price": 2000
+ },
+ "TM130": {
+  "move": "CHARGE-BEAM",
+  "type": "ELECTRIC",
+  "tier": 4,
+  "price": 3000,
+  "gift": true,
+  "from": "HeartGold/SoulSilver TM57: lying on Route 35"
+ },
+ "TM131": {
+  "move": "CAPTIVATE",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 3000,
+  "gift": true,
+  "from": "HeartGold/SoulSilver TM78: lying in Goldenrod's Radio Tower"
+ },
+ "TM132": {
+  "move": "FOCUS-BLAST",
+  "type": "FIGHTING",
+  "tier": 9,
+  "price": 5500,
+  "from": "HeartGold/SoulSilver TM52: Goldenrod Dept. Store 5F",
+  "shop_only": true
+ },
+ "TM133": {
+  "move": "EMBARGO",
+  "type": "DARK",
+  "tier": 3,
+  "price": 3000,
+  "gift": true,
+  "from": "HeartGold/SoulSilver TM63: Goldenrod Tunnel's back room"
+ },
+ "TM134": {
+  "move": "SLEEP-TALK",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 3000,
+  "gift": true,
+  "from": "HeartGold/SoulSilver TM82: Goldenrod Tunnel's back room"
  }
 }

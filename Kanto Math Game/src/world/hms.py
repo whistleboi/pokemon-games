@@ -23,7 +23,7 @@ HM_BY_BADGE = {
 
 # HMs handed out by the story, used only once a badge allows it (HGSS: Elder Li's Flash works after the Zephyr Badge, the
 # charcoal maker's Cut after the Hive Badge; Jordan 11-15: "true to cannon").
-USE_BADGE = {"JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE"}}
+USE_BADGE = {"JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE", "HM_ROCK_SMASH": "ZEPHYR"}}   # (Rock Smash: the man on Route 36, after Sudowoodo)
 
 
 def usable(story, item):
