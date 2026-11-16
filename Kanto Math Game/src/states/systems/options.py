@@ -32,6 +32,7 @@ class OptionsState(GameState):
         card_w, card_h = (w - 32 - 2 * gap) // 3, 72
         self.level_rects = [pygame.Rect(16 + (i % 3) * (card_w + gap), top + (i // 3) * (card_h + gap), card_w, card_h) for i in range(len(self.levels))]
         self.preview = ""
+        self.jb_all, self.jb_gen, self.jb_track = None, None, None  # the jukebox (see _jukebox_rows)
         self._new_preview()
 
     # ------------------------------------------------------------------ what's on each tab
@@ -61,8 +62,41 @@ class OptionsState(GameState):
                     ("Battle intros", [(True, "On"), (False, "Off")], *self._pref("battle_intros"), "The transition into a battle."),
                     ("Screen fade", [(True, "On"), (False, "Off")], *self._pref("screen_fade"), "The quick fade between screens.")]
         vols = [(n, str(n)) for n in range(11)]
-        return [("Music volume", vols, *self._pref("music"), "0 is silent, 5 is the usual level."),
+        rows = [("Music volume", vols, *self._pref("music"), "0 is silent, 5 is the usual level."),
                 ("Sound effects", vols, *self._pref("sfx"), "Cries and button sounds. New sounds use this right away.")]
+        return rows + self._jukebox_rows()
+
+    # ------------------------------------------------------------------ the jukebox (the music library)
+    def _jukebox_rows(self):
+        """Jukebox: pick a generation, then step through its tracks A-Z (all: Gen 1 first, then by name)."""
+        from src.core import music_library as lib
+        if self.jb_all is None:
+            self.jb_all = lib.ordered(getattr(self.game.assets, "assets_dir", "") or "")
+        if not self.jb_all:
+            return []
+        gens = [(None, "All")] + [(g, lib.gen_label(g)) for g in lib.generations(self.jb_all)]
+        tracks = [t for t in self.jb_all if self.jb_gen is None or t["gen"] == self.jb_gen]
+        values = [(None, "Off")] + [(t["path"], t["name"]) for t in tracks]
+        now = next((t for t in tracks if t["path"] == self.jb_track), None)
+        if now:
+            src = lib.source_title(getattr(self.game.assets, "assets_dir", "") or "", now["source"])
+            desc = f"{now['name']}  -  {lib.gen_label(now['gen'])}, {src}  ({values.index((now['path'], now['name']))} of {len(tracks)})"
+        else:
+            desc = f"{len(tracks)} tracks, by generation then A-Z. Leaving Options brings back the usual music."
+        return [("Jukebox generation", gens, (lambda: self.jb_gen), self._jb_set_gen,
+                 "Which generation's music the jukebox steps through."),
+                ("Jukebox", values, (lambda: self.jb_track), self._jb_play, desc)]
+
+    def _jb_set_gen(self, gen):
+        self.jb_gen = gen
+        if self.jb_track and not any(t["path"] == self.jb_track and (gen is None or t["gen"] == gen) for t in self.jb_all):
+            self._jb_play(None)
+
+    def _jb_play(self, path):
+        self.jb_track = path
+        music = getattr(self.game, "music", None)
+        if music is not None and hasattr(music, "listen"):
+            music.listen(path)
 
     def _top(self):
         H = theme.HEADER_H
@@ -79,6 +113,8 @@ class OptionsState(GameState):
 
     # ------------------------------------------------------------------ doing things
     def close(self):
+        if self.jb_track:
+            self._jb_play(None)  # (back to the usual music)
         self.on_close()
 
     def _new_preview(self):

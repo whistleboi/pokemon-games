@@ -19,11 +19,12 @@ NAME = "KantoMathGame_Android"
 KEEP_FILES = ("main.py", "CREDITS.md", "ANDROID.md")
 KEEP_DIRS = ("src", "assets")
 SKIP_DIRS = {"__pycache__", ".git", ".vscode"}
+LIBRARY = os.path.join("assets", "music", "library")  # the music library (about a gigabyte): only with --music-library
 SKIP_EXT = {".pyc", ".bak", ".tmp", ".corrupt", ".log", ".webp"}  # (the .webp pictures aren't used)
 STORED_EXT = {".png", ".ogg", ".mp3", ".jpg", ".ttf", ".wav"}  # already compressed
 
 
-def game_files(with_saves):
+def game_files(with_saves, with_library=False):
     for name in KEEP_FILES:
         if os.path.exists(os.path.join(GAME, name)):
             yield name
@@ -33,7 +34,8 @@ def game_files(with_saves):
                 yield name
     for top in KEEP_DIRS:
         for root, dirs, files in os.walk(os.path.join(GAME, top)):
-            dirs[:] = sorted(d for d in dirs if d not in SKIP_DIRS)
+            dirs[:] = sorted(d for d in dirs if d not in SKIP_DIRS
+                             and (with_library or os.path.relpath(os.path.join(root, d), GAME) != LIBRARY))
             for f in sorted(files):
                 if os.path.splitext(f)[1].lower() in SKIP_EXT or ".bak" in f:
                     continue
@@ -43,10 +45,11 @@ def game_files(with_saves):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--saves", action="store_true", help="include your save files (game_data*.json)")
+    ap.add_argument("--music-library", action="store_true", help="include the music library (assets/music/library, about 1 GB)")
     ap.add_argument("--folder", action="store_true", help="make a folder instead of a zip")
     ap.add_argument("--out", default=os.path.dirname(GAME), help="where to put it (default: next to the game folder)")
     args = ap.parse_args()
-    files = list(game_files(args.saves))
+    files = list(game_files(args.saves, args.music_library))
     total = sum(os.path.getsize(os.path.join(GAME, f)) for f in files)
     if args.folder:
         dest = os.path.join(args.out, NAME)
