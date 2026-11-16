@@ -218,6 +218,7 @@ class WalkTownState(CityState):
         self._bar_list = m.get("barred", [])
         self._edge_to = m.get("edge_to") or {}  # (out by this edge tile: in at its partner on the next map, Emerald's own connection)
         self.thin_ice = m.get("thin_ice")  # (Sootopolis Gym's: crack every tile of a section and its stairs open; twice, and you fall)
+        self.pits = m.get("pits")  # (a pit round the path: step off it and you fall back to "to", HGSS's Ecruteak Gym: {"chars", "to", "lines"})
         self.turnstiles = m.get("turnstiles")  # (Emerald's rotating gates: Fortree Gym's, turned by walking into an arm)
         self.rotators = m.get("rotators")  # (Emerald's rotating tile puzzle: Mossdeep Gym's blocks, turned by its coloured switches)
         self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
@@ -797,6 +798,14 @@ class WalkTownState(CityState):
         if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] == "$" and not self._has_waterfall():
             self.walk_goal = None  # (a waterfall in town: Ever Grande's, below the League)
             return self.flash("The water pours down too hard. WATERFALL could climb it!", 110)
+        pits = getattr(self, "pits", None)
+        if pits and grid and 0 <= to[0] < self.w and 0 <= to[1] < self.h and grid[to[1]][to[0]] in pits.get("chars", "m"):
+            self.walk_goal = None   # (off the unseen path: you fall, and land back at the start)
+            self.player = self.partner = self.partner_from = self.anim_from = tuple(pits["to"])
+            self.anim = 0
+            self.facing = (0, -1)
+            self._remember()
+            return self.show_message(list(pits.get("lines") or ["You stepped into the dark... and fell!", "You landed back by the entrance."]))
         if not self._open(to):
             self.walk_goal = None
             if self._town_hidden(to):   # (an item hidden in something solid: walk into it)

@@ -3,7 +3,7 @@
 import pygame
 import random
 from src.pokemon import catching
-from src.pokemon import balance
+from src.pokemon import balance, items
 from src.world import regional_forms
 from src.vfx.particles import ShinyBurst, Starburst
 from src.config import WHITE, GREEN, GOLD, RED, FPS
@@ -303,7 +303,7 @@ class RouteCatch:
         # Friendship: every catch made with a Pokemon in the party brings it closer to you.
         for member in self.game.story_manager.player_team:
             if member and member is not pokemon_caught:
-                member.friendship += 1
+                items.friend_gain(member, 1)
                 member.counters["catches"] = member.counters.get("catches", 0) + 1
 
         pokemon_caught.caught_region = self.game.story_manager.get_current_region()

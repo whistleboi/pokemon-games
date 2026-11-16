@@ -479,7 +479,8 @@ def _run_story_event(state, key, check, show):
             show(["Bring a Pokemon along and I'll make it look wonderful!"])
             return
         story.story_flags[sal["key"]] = today
-        lead.friendship = min(255, int(getattr(lead, "friendship", 70) or 70) + int(sal.get("gain", 5)))
+        from src.pokemon import items as _items
+        _items.friend_gain(lead, int(sal.get("gain", 5)))
         show(_resolve_lines(game, lines + [f"Snip, snip... There! {lead.display_name} looks happier already!"]))
         return
     if ev.get("photo"):  # (the Memorial Photo Studio, option B: a picture of your team, kept in your Trainer stats)

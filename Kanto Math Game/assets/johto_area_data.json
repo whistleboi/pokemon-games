@@ -124,6 +124,8 @@
     "JOHTO_UNION_CAVE_NIGHT_PERCENTAGES": {"41": 26, "74": 23, "19": 17, "27": 10, "20": 10, "95": 7, "42": 6, "2001": 1},
     "JOHTO_ROUTE_35_MORNING_PERCENTAGES": {"29": 24, "32": 24, "96": 16, "209": 12, "63": 8, "58": 8, "16": 4, "132": 3, "193": 1},
     "JOHTO_ROUTE_36_MORNING_PERCENTAGES": {"29": 26, "32": 26, "16": 22, "165": 13, "37": 5, "234": 4, "58": 4},
+    "JOHTO_NATIONAL_PARK_MORNING_PERCENTAGES": {"32": 21, "13": 18, "10": 18, "16": 14, "14": 11, "11": 11, "165": 7},
+    "JOHTO_ROUTE_37_MORNING_PERCENTAGES": {"16": 38, "234": 29, "165": 20, "37": 5, "58": 5, "166": 2, "2001": 1},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -933,63 +935,92 @@
           "on_enter_event": null
         },
         "NATIONAL_PARK": {
-        "area_type": "wild_route",
-        "route_name": "National Park",
-        "region": "JOHTO",
-        "battle_type": "grass",
-        "wild_pool_percentages": "JOHTO_NATIONAL_PARK_PERCENTAGES",
-        "day_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
-        "night_pool_percentages": "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES",
-        "backgrounds": {
-            "main": "national_park.png",
-            "battle": "national_park.png"
-        },
-        "has_gym": false,
-        "min_rounds": 0,
-        "trainer_pool": [
-            { "name": "Lass Krise", "class": "LASS", "sprite": "lass.png", "team": [39, 39], "rewards": { "balls": 2 } },
-            { "name": "School Kid Jack", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [48], "rewards": { "balls": 2 } },
-            { "name": "Pokefan William", "class": "POKEFAN", "sprite": "pokefan_m.png", "team": [183, 183], "rewards": { "balls": 2 } },
-            { "name": "Pokefan Beverly", "class": "POKEFAN", "sprite": "pokefan_f.png", "team": [35], "rewards": { "balls": 2 } }
-        ],
-        "route_menu": [
-          {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-          {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-          {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-          {"text": "BUG-CATCHING CONTEST", "action": "BUG_CONTEST", "color": "GOLD"},
-          {"text": "POKEATHLON DOME", "action": "EXIT", "target": "POKEATHLON_DOME", "condition": "can_exit", "color": "RED"},
-          {"text": "Route 35", "action": "EXIT", "target_area": "JOHTO_ROUTE_35", "condition": "can_exit", "color": "RED"},
-          {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"}
-        ]
+            "area_type": "wild_route",
+            "route_name": "National Park",
+            "region": "JOHTO",
+            "battle_type": "grass",
+            "wild_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
+            "day_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
+            "night_pool_percentages": "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES",
+            "backgrounds": {"main": "national_park.png", "battle": "national_park.png"},
+            "has_gym": false,
+            "min_rounds": 0,
+            "trainer_pool": [
+                {"name": "Lass Krise", "class": "LASS", "sprite": "lass.png", "team": [43, 104], "rewards": {"balls": 2}},
+                {"name": "School Kid Jack", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [43, 100], "rewards": {"balls": 2}},
+                {"name": "Pokefan William", "class": "POKEFAN", "sprite": "pokefan_m.png", "team": [26], "rewards": {"balls": 2}},
+                {"name": "Pokefan Beverly", "class": "POKEFAN", "sprite": "pokefan_f.png", "team": [209], "rewards": {"balls": 2}}
+            ],
+            "route_menu": [
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+                {"text": "BUG-CATCHING CONTEST", "action": "BUG_CONTEST", "color": "GOLD"},
+                {"text": "POKEATHLON DOME", "action": "EXIT", "target": "POKEATHLON_DOME", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 35", "action": "EXIT", "target_area": "JOHTO_ROUTE_35", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"},
+                {"text": "SOOTHE BELL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_soothe_bell_national_park_d22r0101_24_58", "event": {"lines": ["A Soothe Bell, lying in the grass."], "gift_item": {"SOOTHE_BELL": 1}, "flag": "got_soothe_bell_national_park_d22r0101_24_58"}},
+                {"text": "PARALYZE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_paralyze_heal_national_park_d22r0101_77_33", "event": {"lines": ["A Paralyze Heal, dropped by the path."], "gift_item": {"PARALYZE_HEAL": 1}, "flag": "got_paralyze_heal_national_park_d22r0101_77_33"}},
+                {"text": "TM15", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm15_national_park_d22r0101_81_16", "event": {"lines": ["A TM (Dig), tucked behind a tree."], "gift_item": {"TM15": 1}, "flag": "got_tm15_national_park_d22r0101_81_16"}}
+            ],
+            "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]},
+            "morning_pool_percentages": "JOHTO_NATIONAL_PARK_MORNING_PERCENTAGES"
         },
 
         "ECRUTEAK_CITY": {
-        "area_type": "town",
-        "route_name": "Ecruteak City",
-        "region": "JOHTO",
-        "backgrounds": {
-            "main": "ecruteak_city.png",
-            "pokecenter": "ecruteak_center.png",
-            "pokemart": "ecruteak_mart.png",
-            "gym": "battle_gym_ecruteak.png"
-            },
-        "has_gym": true,
-        "gym": {"requirements": {"flag": "defeated_rival_burned_tower", "fail_text": ["Morty is at the Burned Tower, searching for the legendary Pokemon. Go and find him there first!", "(If your rival beat you there, go back in and battle him again.)"]}, "trainers": [{"name": "Sage Ping", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [92, 92], "rewards": {"balls": 2}}, {"name": "Sage Jeffrey", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}], "leader": {"name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png", "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": {"balls": 5, "AMULET_COIN": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "93": ["HYPNOSIS", "DREAM-EATER", "CURSE", "NIGHTMARE"], "94": ["HYPNOSIS", "SHADOW-BALL", "MEAN-LOOK", "SUCKER-PUNCH"]}}},
-        "travel_options": [
-            { "text": "Route 38", "target_area": "JOHTO_ROUTE_38" },
-            { "text": "Route 37", "target_area": "JOHTO_ROUTE_37" },
-            { "text": "Route 42", "target_area": "JOHTO_ROUTE_42", "condition": "has_item:HM_SURF" }
-        ],
-        "explore_options": [
-          {"text": "Heal", "action": "HEAL"},
-          {"text": "Shop", "action": "SHOP"},
-          {"text": "Gym", "action": "GYM"},
-          {"text": "Route 38", "action": "TRAVEL", "target_area": "JOHTO_ROUTE_38"},
-          {"text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "flag_condition": "not met_bill_johto"},
-          {"text": "Dance Theater", "action": "TRAVEL", "target_area": "ECRUTEAK_DANCE_THEATER", "door": "theater"},
-          {"text": "Burned Tower", "action": "TRAVEL", "target_area": "BURNED_TOWER", "door": "burned"},
-          {"text": "Bellchime Trail", "action": "TRAVEL", "target_area": "BELLCHIME_TRAIL", "door": "bellchime"}
-        ]
+
+            "area_type": "town",
+
+            "route_name": "Ecruteak City",
+
+            "region": "JOHTO",
+
+            "backgrounds": {"main": "ecruteak_city.png", "pokecenter": "ecruteak_center.png", "pokemart": "ecruteak_mart.png", "gym": "battle_gym_ecruteak.png"},
+
+            "has_gym": true,
+
+            "gym": {"requirements": {"flag": "defeated_rival_burned_tower", "fail_text": ["Morty is at the Burned Tower, searching for the legendary Pokemon. Go and find him there first!", "(If your rival beat you there, go back in and battle him again.)"]}, "trainers": [{"name": "Sage Ping", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [92, 92], "rewards": {"balls": 2}}, {"name": "Sage Jeffrey", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Georgina", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [92, 92, 92, 92, 92], "rewards": {"balls": 2}}, {"name": "Medium Grace", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [93, 93], "rewards": {"balls": 2}}, {"name": "Medium Edith", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Martha", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [92, 93, 92], "rewards": {"balls": 2}}], "leader": {"name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png", "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": {"balls": 5, "AMULET_COIN": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "93": ["HYPNOSIS", "DREAM-EATER", "CURSE", "NIGHTMARE"], "94": ["HYPNOSIS", "SHADOW-BALL", "MEAN-LOOK", "SUCKER-PUNCH"]}}},
+
+            "travel_options": [
+
+                {"text": "Route 38", "target_area": "JOHTO_ROUTE_38"},
+
+                {"text": "Route 37", "target_area": "JOHTO_ROUTE_37"},
+
+                {"text": "Route 42", "target_area": "JOHTO_ROUTE_42", "condition": "has_item:HM_SURF"}
+
+            ],
+
+            "explore_options": [
+
+                {"text": "Heal", "action": "HEAL"},
+
+                {"text": "Shop", "action": "SHOP"},
+
+                {"text": "Gym", "action": "GYM"},
+
+                {"text": "Route 38", "action": "TRAVEL", "target_area": "JOHTO_ROUTE_38"},
+
+                {"text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "flag_condition": "not met_bill_johto"},
+
+                {"text": "Dance Theater", "action": "TRAVEL", "target_area": "ECRUTEAK_DANCE_THEATER", "door": "theater"},
+
+                {"text": "Burned Tower", "action": "TRAVEL", "target_area": "BURNED_TOWER", "door": "burned"},
+
+                {"text": "Bellchime Trail", "action": "TRAVEL", "target_area": "BELLCHIME_TRAIL", "door": "bellchime"},
+
+                {"action": "EVENT", "event": {"lines": ["When I was little, the sky went dark all at once. A huge Flying-type Pokemon was blotting out the sun!", "It flew off toward the sea. I've never forgotten it."]}, "text": "Old man", "door": "skyhouse"},
+
+                {"action": "EVENT", "event": {"lines": ["A Pokemon that big? If it's real, it must be terribly strong."]}, "text": "Boy", "door": "skyhouse"},
+
+                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You're off on an adventure with your Pokemon? Then you'll need to hunt for treasure! Here, take this."], "gift_item": {"ITEMFINDER": 1}, "flag": "got_itemfinder_ecruteak", "done": ["Lots of items lie hidden where you can't see them. Use the Dowsing Machine and it'll point them out!"]}, "text": "Ace Trainer", "door": "dowsing"},
+
+                {"action": "EVENT", "event": {"lines": ["A book: the History of Ecruteak.", "Two towers once stood here, each the roost of a mighty Flying-type Pokemon. One burned...", "...and three Pokemon that raced across the land were said to be born from its ashes."]}, "text": "Bookshelf", "door": "dowsing"}
+
+            ],
+
+            "trainer_pool": []
+
         },
 
         "OLIVINE_CITY": {
@@ -1654,7 +1685,9 @@
         
                 {"action": "EVENT", "event": {"lines": ["I hear Bug-type lovers come from all over for the Bug-Catching Contest in the National Park!"]}, "text": "Youngster", "door": "gate"},
         
-                {"action": "EVENT", "event": {"lines": ["Tap, tap, ding, ding! We're building the Pokeathlon Dome up ahead. It's not ready yet, sorry!"]}, "text": "Workman", "door": "gate"}
+                {"action": "EVENT", "event": {"lines": ["Tap, tap, ding, ding! We're building the Pokeathlon Dome up ahead. It's not ready yet, sorry!"]}, "text": "Workman", "door": "gate"},
+        
+                {"text": "Contest helper", "action": "BUG_CONTEST", "color": "GOLD", "door": "gate"}
         
             ],
         
@@ -1731,35 +1764,63 @@
         },
         
         "JOHTO_ROUTE_37": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 37",
+        
             "battle_type": "field",
-            "wild_pool_percentages": "JOHTO_ROUTE_37_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_ROUTE_37_DAY_PERCENTAGES",
+        
             "day_pool_percentages": "JOHTO_ROUTE_37_DAY_PERCENTAGES",
+        
             "night_pool_percentages": "JOHTO_ROUTE_37_NIGHT_PERCENTAGES",
+        
             "has_trees": true,
+        
             "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES",
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { 
-                    "name": "Psychic Greg", "class": "PSYCHIC", "sprite": "supernerd.png", 
-                    "team": [64, 64], "rewards": { "balls": 2 } 
-                },
-                { 
-                    "name": "Twins Ann & Anne", "class": "TWINS", "sprite": "twins.png", 
-                    "team": [174, 174], "rewards": { "balls": 2 } 
-                }
+        
+                {"name": "Psychic Greg", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [96], "rewards": {"balls": 2}},
+        
+                {"name": "Twins Ann & Anne", "class": "TWINS", "sprite": "twins.png", "team": [174, 174], "rewards": {"balls": 2}},
+        
+                {"name": "Twins Tori & Til", "class": "TWINS", "sprite": "twins.png", "team": [183, 179], "rewards": {"balls": 2}},
+        
+                {"name": "Beauty Callie", "class": "BEAUTY", "sprite": "beauty.png", "team": [36, 40], "rewards": {"balls": 2}},
+        
+                {"name": "Beauty Kassandra", "class": "BEAUTY", "sprite": "beauty.png", "team": [40, 36], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        
                 {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"},
+        
                 {"text": "Ecruteak City", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"}
-                ],
-            "next_area": "ECRUTEAK_CITY" 
+        
+            ],
+        
+            "next_area": "ECRUTEAK_CITY",
+        
+            "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]},
+        
+            "morning_pool_percentages": "JOHTO_ROUTE_37_MORNING_PERCENTAGES"
+        
         },
             
         "JOHTO_ROUTE_38": {
@@ -2963,8 +3024,8 @@
     "JOHTO_NATIONAL_PARK_POOL": [10,13,191,16,19],
     "JOHTO_BUG_CONTEST_PERCENTAGES": {"10": 20, "11": 10, "12": 5, "13": 20, "14": 10, "15": 5, "46": 10, "48": 10, "123": 4, "127": 4, "401": 2},
     "JOHTO_NATIONAL_PARK_PERCENTAGES": {"10": 15, "11": 9, "16": 5, "13": 15, "14": 9, "191": 7, "163": 29, "46": 3, "48": 3, "12": 1, "15": 1, "123": 1, "127": 1},
-    "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES": {"10": 15, "11": 9, "16": 5, "13": 15, "14": 9, "191": 7, "163": 29, "46": 3, "48": 3, "12": 1, "15": 1, "123": 1, "127": 1},
-    "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES": {"10": 15, "11": 9, "16": 5, "13": 15, "14": 9, "191": 7, "163": 29, "46": 3, "48": 3, "12": 1, "15": 1, "123": 1, "127": 1},
+    "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES": {"163": 77, "54": 11, "167": 8, "48": 4},
+    "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES": {"32": 23, "191": 19, "13": 12, "14": 12, "16": 12, "10": 11, "11": 11},
 
     "JOHTO_TOHJO_FALLS_POOL": [118,119,129,130],
     "JOHTO_TOHJO_FALLS_PERCENTAGES": { "118": 40, "119": 10, "129": 40, "130": 10 },
@@ -3002,8 +3063,8 @@
     "JOHTO_ROUTE_36_DAY_PERCENTAGES": {"29": 30, "32": 30, "16": 20, "37": 8, "58": 7, "234": 5},
     
     "JOHTO_ROUTE_37_PERCENTAGES": { "16": 18, "19": 18, "58": 13, "37": 13, "167": 10, "165": 10, "234": 9, "198": 8, "2001": 1 },
-    "JOHTO_ROUTE_37_NIGHT_PERCENTAGES": { "16": 5, "19": 19, "58": 13, "37": 13, "167": 21, "165": 3, "234": 9, "198": 16, "2001": 1 },
-    "JOHTO_ROUTE_37_DAY_PERCENTAGES": { "16": 31, "19": 16, "58": 11, "37": 11, "167": 2, "165": 18, "234": 8, "198": 2, "2001": 1 },
+    "JOHTO_ROUTE_37_NIGHT_PERCENTAGES": {"163": 37, "234": 29, "167": 19, "37": 5, "58": 5, "164": 2, "168": 2, "2001": 1},
+    "JOHTO_ROUTE_37_DAY_PERCENTAGES": {"16": 49, "234": 30, "37": 8, "58": 7, "17": 5, "2001": 1},
     
     "JOHTO_ROUTE_38_PERCENTAGES": { "19": 20, "20": 9, "17": 10, "81": 10, "83": 5, "52": 15, "209": 10, "128": 10, "241": 10, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_38_NIGHT_PERCENTAGES": { "19": 20, "20": 9, "17": 2, "81": 10, "83": 5, "52": 30, "209": 2, "128": 10, "241": 10, "2001": 1, "2002": 1 },

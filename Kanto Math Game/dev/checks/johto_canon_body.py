@@ -396,5 +396,49 @@ check(any("CARD_KEY" in str(b.get("until")) for b in _rt2), "Radio Tower 3F: the
 import json as _js
 check('"Executive Petrel"' in _js.dumps(_area["RADIO_TOWER"]) and '"BASEMENT_KEY": 1' in _js.dumps(_area["RADIO_TOWER"]), "...Petrel, the fake Director, drops the Basement Key for the Tunnel's locked door")
 check(any("BASEMENT_KEY" in str(b.get("until")) for b in _gu["floors"][0].get("barred", [])), "...which opens the Tunnel's NO ENTRY door")
+# ---- N6: the National Park, Route 37, Ecruteak
+from src.pokemon import items as _it
+def _ppl(key, room=None):
+    m = _tm[key]["rooms"][room] if room else _tm[key]
+    out = []
+    for p in m.get("people", []):
+        if isinstance(p, dict):
+            out += p.get("any") or [p]
+    return out
+_np = {p.get("text"): p for p in _ppl("NATIONAL_PARK")}
+check("Teacher" in _np and (_np["Teacher"].get("event") or {}).get("gift_item", {}).get("QUICK_CLAW") and "Persian" in _np,
+      "National Park: the teacher with her Persian gives a Quick Claw")
+_gate = [p for p in _area["JOHTO_ROUTE_35"]["route_menu"] if p.get("door") == "gate" and p.get("action") == "BUG_CONTEST"]
+check(_gate, "...the contest helper in the Route 35 gate signs you up for the Bug-Catching Contest")
+check("ss_ground/D22R0101" in __import__("json").dumps(_tm["BUG_CONTEST"]),
+      "...the contest runs in the park itself (SoulSilver's picture of it)")
+_r37 = {p.get("text"): p for p in _ppl("JOHTO_ROUTE_37")}
+check(_r37.get("Sunny", {}).get("condition") == "weekday:sun" and (_r37["Sunny"].get("event") or {}).get("gift_item", {}).get("MAGNET"),
+      "Route 37: Sunny, on Sundays, gives a Magnet")
+check(sum("APRICORN TREE" in t for t in _r37) == 3, "...and its three Apricorn trees (Red, Blue, Black)")
+_dw = [o for o in _area["ECRUTEAK_CITY"]["explore_options"] if o.get("door") == "dowsing" and (o.get("event") or {}).get("gift_item", {}).get("ITEMFINDER")]
+check(_dw and "dowsing" in _tm["ECRUTEAK_CITY"].get("rooms", {}) and "skyhouse" in _tm["ECRUTEAK_CITY"].get("rooms", {}),
+      "Ecruteak: the house east of the Gym (the Dowsing Machine) and the old man's house are open")
+class _P: pass
+_a, _b = _P(), _P(); _a.friendship = _b.friendship = 70; _a.held_item = "SOOTHE_BELL"; _b.held_item = None
+_it.friend_gain(_a, 2); _it.friend_gain(_b, 2)
+check(_a.friendship > _b.friendship, f"the Soothe Bell: its holder grows friendly faster ({_a.friendship} vs {_b.friendship})")
+check(_it.HELD_BOOSTS.get("MAGNET") == "ELECTRIC", "the Magnet powers up Electric-type moves")
+# ---- Ecruteak Gym (Jordan 11-15: "As HGSS (dark, falls)"): dark, a light round you; step off the path and you fall back to the entrance
+eg = open_map("ECRUTEAK_CITY", "JOHTO_ROUTE_37")
+_gd = next((d for d, k in getattr(eg, "doors", {}).items() if k == "gym"), None)
+if _gd:
+    eg._enter(_gd); frames(5)
+check(getattr(eg, "room", None) == "gym" and eg.light_radius() == 2, f"Ecruteak Gym: dark, lit only round you ({getattr(eg, 'room', None)})")
+if getattr(eg, "room", None) == "gym":
+    eg.player = (15, 50); eg.anim = 0
+    eg.step(0, -1)
+    frames(20)
+    check(tuple(eg.player) == (15, 49), f"...the path carries you ({eg.player})")
+    eg.anim = 0
+    eg.step(-1, 0)
+    frames(5)
+    check(tuple(eg.player) == (16, 55), f"...step off it into the dark and you fall, back by the entrance ({eg.player})")
+g.walk_town_room = g.walk_town_pos = None
 if fails:
     print("FAILS:", len(fails))

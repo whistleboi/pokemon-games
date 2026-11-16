@@ -6117,6 +6117,96 @@
     },
     "GOLDENROD_CITY:Elevator": {
       "sheet": "hg_campboy.png"
+    },
+    "NATIONAL_PARK:SOOTHE BELL": {
+      "item": "POKE_BALL"
+    },
+    "NATIONAL_PARK:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "NATIONAL_PARK:TM15": {
+      "item": "POKE_BALL"
+    },
+    "NATIONAL_PARK:Lass": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "NATIONAL_PARK:Gentleman": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "NATIONAL_PARK:Youngster": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "NATIONAL_PARK:Youngster ": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "NATIONAL_PARK:Jogger": {
+      "sheet": "hg_gsdsboy.png"
+    },
+    "NATIONAL_PARK:Teacher": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "NATIONAL_PARK:Woman": {
+      "sheet": "hg_gswoman2.png"
+    },
+    "JOHTO_ROUTE_37:Sunny": {
+      "sheet": "hg_gsboy2.png"
+    },
+    "JOHTO_ROUTE_37:RED APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_r.png"
+    },
+    "JOHTO_ROUTE_37:BLUE APRICORN TREE ": {
+      "pic": "tiles/ss/ow_bonguri_b.png"
+    },
+    "JOHTO_ROUTE_37:BLACK APRICORN TREE  ": {
+      "pic": "tiles/ss/ow_bonguri_bk.png"
+    },
+    "ECRUTEAK_CITY:Lass": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "ECRUTEAK_CITY:Youngster": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "ECRUTEAK_CITY:Old woman": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "ECRUTEAK_CITY:Old man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "ECRUTEAK_CITY:Kimono girl": {
+      "sheet": "hg_gsgirl2.png"
+    },
+    "ECRUTEAK_CITY:Boy": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "ECRUTEAK_CITY:Ace Trainer": {
+      "sheet": "hg_gsman3.png"
+    },
+    "ECRUTEAK_CITY:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "ECRUTEAK_CITY:Shop": {
+      "sheet": "hg_gsman1.png"
+    },
+    "ECRUTEAK_CITY:Gym": {
+      "sheet": "hg_gsleader4.png"
+    },
+    "JOHTO_ROUTE_35:Contest helper": {
+      "sheet": "hg_gsboy2.png"
+    },
+    "BUG_CONTEST:SOOTHE BELL": {
+      "item": "POKE_BALL"
+    },
+    "BUG_CONTEST:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "BUG_CONTEST:TM15": {
+      "item": "POKE_BALL"
+    },
+    "ECRUTEAK_CITY:Gate guard": {
+      "sheet": "hg_counterm.png"
+    },
+    "ECRUTEAK_CITY:Gate guard ": {
+      "sheet": "hg_counterm.png"
     }
   },
   "townsperson": "NPC 17.png",

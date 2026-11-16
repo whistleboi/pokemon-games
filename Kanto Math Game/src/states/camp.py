@@ -16,7 +16,7 @@ from src.ui.widgets import MathBattleUI
 from src.utils import Utils
 from src.config import WHITE, BLACK, GOLD, RED, GREEN, GRAY
 from src.pokemon.poffin import BERRIES, berry_name
-from src.pokemon import moves as movelib, affection
+from src.pokemon import moves as movelib, affection, items
 from src.world import levels
 
 STIRS = 3
@@ -164,7 +164,7 @@ class CampState(_MenuState):
         for p in self.story.player_team:
             if not p:
                 continue
-            p.friendship += 1
+            items.friend_gain(p, 1)
             if love:
                 affection.add(p, love, daily=False)
             if share and p.level < cap:
