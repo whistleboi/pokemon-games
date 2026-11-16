@@ -7,6 +7,8 @@ How someone moves: a map's "moves" {"x,y" of their spot (an N or X tile): spec}.
           "look"    turns now and then to one of "d" (letters u d l r)
           "wander"  takes a step now and then, in "d", no further than "r" [x, y] tiles from their spot
           "march"   walks on the spot, looking "d" (a jogger, a guard pacing)
+          "trail"   a Pokemon walking behind its trainer ("who": the person's text): each step they take, it steps into
+                    the tile they left (the Bug-Catching Contest's contestants and their Pokemon)
           "copy"    copies your steps: each step you take, they take one ("v": "same", "opposite", "ccw" turned left,
                     "cw" turned right; "g": only onto tall grass): Route 119's Mimic Circle, Emerald's copy-the-player
     "s":  how far a trainer sees (tiles), else the game's usual
@@ -50,6 +52,7 @@ class Motion:
         self.range = tuple(spec.get("r") or (1, 1))
         self.sight = spec.get("s")
         self.copy_way = spec.get("v", "same")   # (a "copy" person: how they turn your step)
+        self.leader = spec.get("who") if self.kind == "trail" else None   # (a "trail" Pokemon: it follows that person, a step behind)
         self.grass = bool(spec.get("g"))
         self.facing = self.dirs[0] if self.kind in ("face", "march") else (DIRS.get(spec.get("f", ""), facing))
         self.t = 1.0

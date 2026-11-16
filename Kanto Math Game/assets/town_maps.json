@@ -48465,8 +48465,8 @@
      "cccc.cccccccccccccccccccc^cccc",
      "cz...............cccccc.N...mc",
      "c........N.......cccccc......c",
-     "c................cccccc....N.c",
-     "c................cccccc......c",
+     "c................cccNcc......c",
+     "c................cmmmmc......c",
      "c............................c",
      "c............................c",
      "c............................c",
@@ -83321,8 +83321,8 @@
    "TTTTTTTTTTTTTTTTTTTTTTTT..kkkkk......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"......kkkkkfccTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..k.......\"\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"\"\"\"\"......=k.cccccccccccccccccc",
    "TTTTTTTTTTTTTTTTTTTTTTTT..k.......\"\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"\"\"\"\"......=k.cccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTT..k.......\"\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"\"\"\"\"......=k.TTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT..k....\"\"\"\"\"\".\"\"\"\"\".................\"\"\"\"\"\"\"\"\"\"\"\"....k.TTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT..k.......\"\"N\"\"\"\"\"\"\"\"\"...........\"N\"\"\"\"\"\"\"\"\"\"......=k.TTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT..k....\"\"\"\"\"N.\"\"\"\"\"...............N.\"\"\"\"\"\"\"\"\"\"\"\"....k.TTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..k....\"\"\"\"\"\"\"\"\"\"\"\".................\"\"\"\"\"\"\"\"\"\"\"\"....k.TTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..k....\"\"\"\"\"\"\"\"\"\"\"\".................\"\"\"\"\"\"\"\"\"\"\"\"....k.TTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..k....\"\"\"\"\"\"\"\"\"........kkkkkkk........\"\"\"\"\"\"\"\"\"....k.TTTTTTTTTTTTTTTTTT",
@@ -83342,9 +83342,9 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTf.k....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===........\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"....kTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..k.......\"\"\"\"\"\"\"\"\"\"\"\"===........\"\"\"\"\"\"\"\"\"\"\"\".......kTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..k.......\"\"\"\"\"\"\"\"\"\"\"\"===........\"\"\"\"\"\"\"\"\"\"\"\".......kTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT..k.......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".......kTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT..kkkkk......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"......kkkkkTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT......k......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"......kTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT..k....N..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".......kTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT..kkkkkN.....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"N\"\"\"......kkkkkTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT......k......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"N\"\"\"......kTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT......k......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"......kTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..TT..kkkk......\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"\"\"......kkkkTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT..TT.....k......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"......kTTTTTTTTTTTTTTTTTTTTTTTTTT",
@@ -83358,8 +83358,8 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..kkkkkk.......kkkkkkkkkjjjjjjTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.k.......kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.k.......kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfk.......kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfk.......kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfk.N.....kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfk.N.....kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfk.......kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.k.......kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.k.......kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
@@ -83460,6 +83460,75 @@
     "Tuesdays, Thursdays and Saturdays."
    ]
   ],
+  "people": [
+   "Bug Catcher Don",
+   "Bug Catcher Ed",
+   "Venonat",
+   "Butterfree",
+   "Cooltrainer Nick",
+   "Scyther",
+   "Pokefan Beverly",
+   "Snubbull",
+   "Youngster Samuel",
+   "Pinsir"
+  ],
+  "moves": {
+   "36,30": {
+    "m": "wander",
+    "r": [
+     5,
+     5
+    ]
+   },
+   "36,31": {
+    "m": "trail",
+    "who": "Bug Catcher Don"
+   },
+   "58,30": {
+    "m": "wander",
+    "r": [
+     5,
+     5
+    ]
+   },
+   "58,31": {
+    "m": "trail",
+    "who": "Bug Catcher Ed"
+   },
+   "31,51": {
+    "m": "wander",
+    "r": [
+     5,
+     5
+    ]
+   },
+   "31,52": {
+    "m": "trail",
+    "who": "Cooltrainer Nick"
+   },
+   "62,52": {
+    "m": "wander",
+    "r": [
+     5,
+     5
+    ]
+   },
+   "62,53": {
+    "m": "trail",
+    "who": "Pokefan Beverly"
+   },
+   "49,67": {
+    "m": "wander",
+    "r": [
+     5,
+     5
+    ]
+   },
+   "49,68": {
+    "m": "trail",
+    "who": "Youngster Samuel"
+   }
+  },
   "exits": {
    ">": "NATIONAL_PARK",
    "v": "NATIONAL_PARK",

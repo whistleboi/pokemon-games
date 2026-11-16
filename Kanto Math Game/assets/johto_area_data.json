@@ -927,29 +927,57 @@
         },
 
         "BUG_CONTEST": {
-          "area_type": "wild_route",
-          "route_name": "Bug-Catching Contest",
-          "region": "JOHTO",
-          "battle_type": "grass",
-          "level": 13,
-          "bug_contest": true,
-          "wild_pool_percentages": "JOHTO_BUG_CONTEST_PERCENTAGES",
-          "backgrounds": {
-            "main": "national_park.png",
-            "battle": "national_park.png"
-          },
-          "trainer_encounter_rate": 0,
-          "min_rounds": 0,
-          "trainer_pool": [],
-          "route_menu": [
-            {
-              "text": "BACK TO THE PARK",
-              "action": "EXIT",
-              "target": "NATIONAL_PARK",
-              "color": "RED"
-            }
-          ],
-          "on_enter_event": null
+
+            "area_type": "wild_route",
+
+            "route_name": "Bug-Catching Contest",
+
+            "region": "JOHTO",
+
+            "battle_type": "grass",
+
+            "level": 13,
+
+            "bug_contest": true,
+
+            "wild_pool_percentages": "JOHTO_BUG_CONTEST_PERCENTAGES",
+
+            "backgrounds": {"main": "national_park.png", "battle": "national_park.png"},
+
+            "trainer_encounter_rate": 0,
+
+            "min_rounds": 0,
+
+            "trainer_pool": [],
+
+            "route_menu": [
+
+                {"text": "BACK TO THE PARK", "action": "EXIT", "target": "NATIONAL_PARK", "color": "RED"},
+
+                {"text": "Bug Catcher Don", "action": "EVENT", "event": {"lines": ["Don: I'm after a Venonat... no, something even better! Out of my way!"]}},
+
+                {"text": "Venonat", "action": "EVENT", "no_tag": true, "event": {"lines": ["VENONAT: It's following Don around the park."]}},
+
+                {"text": "Bug Catcher Ed", "action": "EVENT", "event": {"lines": ["Ed: My Butterfree and I came first last time. We're not losing today!"]}},
+
+                {"text": "Butterfree", "action": "EVENT", "no_tag": true, "event": {"lines": ["BUTTERFREE: It's following Ed around the park."]}},
+
+                {"text": "Cooltrainer Nick", "action": "EVENT", "event": {"lines": ["Nick: A Scyther would score big. That's what I'm hunting."]}},
+
+                {"text": "Scyther", "action": "EVENT", "no_tag": true, "event": {"lines": ["SCYTHER: It's following Nick around the park."]}},
+
+                {"text": "Pokefan Beverly", "action": "EVENT", "event": {"lines": ["Beverly: Isn't my Snubbull adorable? Oh, the contest? I'm just here for the fun of it!"]}},
+
+                {"text": "Snubbull", "action": "EVENT", "no_tag": true, "event": {"lines": ["SNUBBULL: It's following Beverly around the park."]}},
+
+                {"text": "Youngster Samuel", "action": "EVENT", "event": {"lines": ["Samuel: Pinsir and I are going to find the biggest bug in the park!"]}},
+
+                {"text": "Pinsir", "action": "EVENT", "no_tag": true, "event": {"lines": ["PINSIR: It's following Samuel around the park."]}}
+
+            ],
+
+            "on_enter_event": null
+
         },
         "NATIONAL_PARK": {
             "area_type": "wild_route",

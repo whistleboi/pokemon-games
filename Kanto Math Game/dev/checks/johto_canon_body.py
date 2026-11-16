@@ -536,5 +536,20 @@ check(sum("APRICORN TREE" in t for t in _r42) == 3, "...and the three Apricorn t
 _ky = next((t for t in _area["MT_MORTAR"]["trainer_pool"] if t["name"] == "Karate King Kiyo"), {})
 check((_ky.get("rewards") or {}).get("POKEMON_236") and "TYROGUE" not in (_ky.get("rewards") or {}), "Mt. Mortar: Karate King Kiyo gives a Tyrogue (the Pokemon, not a bag item)")
 check("radiohouse" in _tm["MAHOGANY_TOWN"].get("rooms", {}), "Mahogany: the house by the Center is open")
+# ---- the Bug-Catching Contest (Jordan 11-15): check in across the gate's desk; contestants walk the park, their Pokemon at their heels
+_g35 = _tm["JOHTO_ROUTE_35"]["rooms"]["gate"]
+check(_g35["art"][8][20] == "N" and _g35["art"][9][20] == "m", "Route 35's park gate: the contest helper behind SoulSilver's desk, checked in across its counter")
+_bc = open_map("BUG_CONTEST", "JOHTO_ROUTE_35")
+_figs = {m.payload.get("text"): m for m in getattr(getattr(_bc, "run", None), "floor", None).movers if m.kind == "figure" and isinstance(m.payload, dict)} if getattr(_bc, "run", None) else {}
+check({"Bug Catcher Don", "Bug Catcher Ed", "Cooltrainer Nick", "Pokefan Beverly", "Youngster Samuel"} <= set(_figs) and "Venonat" in _figs,
+      f"the contest: the other contestants out in the park, each with a Pokemon ({sorted(_figs)[:6]})")
+if "Bug Catcher Don" in _figs and "Venonat" in _figs:
+    _ld, _fo = _bc._motion(_figs["Bug Catcher Don"]), _bc._motion(_figs["Venonat"])
+    _was = tuple(_ld.pos)
+    _to = next(((_was[0] + dx, _was[1] + dy) for dx, dy in ((1, 0), (-1, 0), (0, -1)) if _bc._npc_free((_was[0] + dx, _was[1] + dy), _figs["Bug Catcher Don"])), None)
+    if _to:
+        _ld.timer = 999; _ld.path = [_to]
+        frames(40)
+    check(_to and tuple(_fo.pos) == _was, f"...a contestant's Pokemon follows a step behind ({_was} -> {_to}; Venonat at {_fo.pos})")
 if fails:
     print("FAILS:", len(fails))

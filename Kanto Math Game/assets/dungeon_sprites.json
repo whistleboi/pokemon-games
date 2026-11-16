@@ -6486,6 +6486,21 @@
     },
     "JOHTO_ROUTE_42:YELLOW APRICORN TREE  ": {
       "pic": "tiles/ss/ow_bonguri_y.png"
+    },
+    "BUG_CONTEST:Bug Catcher Don": {
+      "sheet": "hg_gsboy3.png"
+    },
+    "BUG_CONTEST:Bug Catcher Ed": {
+      "sheet": "hg_gsboy3.png"
+    },
+    "BUG_CONTEST:Cooltrainer Nick": {
+      "sheet": "hg_gsboy2.png"
+    },
+    "BUG_CONTEST:Pokefan Beverly": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "BUG_CONTEST:Youngster Samuel": {
+      "sheet": "hg_gsboy1.png"
     }
   },
   "townsperson": "NPC 17.png",

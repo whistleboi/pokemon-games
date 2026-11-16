@@ -175,9 +175,10 @@ def contest_entry(state):
         show(["Officer: Your Pokemon need rest first. Come back after a visit to a Pokemon Center!"], callback=back)
         return
     story.story_flags["bug_contest_day"] = today.isoformat()
-    show(["Officer: Welcome to the Bug-Catching Contest!",
-          f"Here are {CONTEST_BALLS} SPORT BALLS. Catch the best Bug Pokemon you can before time runs out.",
-          "You can keep only one: the best one you catch. Good luck!"],
+    show(["Contest helper: Welcome to the Bug-Catching Contest check-in desk!",
+          "Contest helper: The rules are simple. Catch the best Bug-type Pokemon you can in the park before time runs out.",
+          f"Contest helper: Here are {CONTEST_BALLS} Sport Balls. Use only these. When time's up, the judges score your best catch.",
+          "Contest helper: You can keep the one you choose. The other contestants are already out there. Good luck!"],
          callback=lambda: game.change_state(AreaTransitionState(game, "BUG_CONTEST")))
 
 
@@ -1173,9 +1174,22 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _npc_tick(self):
         f = self.run.floor
+        _leads = None
         for m in list(f.movers):
             mo = self._motion(m)
             if mo is None:
+                continue
+            if mo.kind == "trail":   # (a Pokemon at its trainer's heels: into the tile they just left)
+                if _leads is None:
+                    _leads = {o.payload.get("text"): self._motion(o) for o in f.movers if o.kind == "figure" and isinstance(o.payload, dict)}
+                ld = _leads.get(mo.leader)
+                if mo.moving():
+                    mo.t = min(1.0, mo.t + 1.0 / 9)
+                elif ld is not None and ld.moving() and ld.frm != mo.pos and ld.pos != mo.pos:
+                    mo.facing = (max(-1, min(1, ld.frm[0] - mo.pos[0])), max(-1, min(1, ld.frm[1] - mo.pos[1])))
+                    mo.step_to(ld.frm)
+                m.x, m.y = mo.pos
+                m.facing = mo.facing
                 continue
             if mo.gone:  # (sent away after a scene, out of view: npc.Scenes.sweep)
                 self.run.remove(m)

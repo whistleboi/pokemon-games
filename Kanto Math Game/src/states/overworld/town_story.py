@@ -320,6 +320,17 @@ class TownStory:
             self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=johto_first_starter)
             return
 
+        if (story.get_current_region() == "JOHTO" and story.is_region_champion("JOHTO")
+                and not story.story_flags.get("got_ss_ticket_elm")):   # (HGSS: after the Hall of Fame, Elm's ticket for the S.S. Aqua to Kanto)
+            story.story_flags["got_ss_ticket_elm"] = True
+            story.inventory["SS_TICKET"] = max(1, story.inventory.get("SS_TICKET", 0))
+            msg = ["Professor Elm: You did it! Johto's Champion! I always knew you had it in you.",
+                   "Professor Elm: Here's my present: a ticket for the S.S. Aqua. It sails from Olivine to Vermilion City in Kanto.",
+                   "You received the S.S. TICKET!",
+                   "Professor Elm: Professor Oak is in Kanto. Go and meet the Pokemon there!"]
+            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
+            return
+
         if story.inventory.get("MYSTERY_EGG", 0) > 0 and not story.story_flags.get("elm_received_egg"):
             msg = [
                 "Professor Elm: Oh! This is the Egg Mr. Pokémon found!",
