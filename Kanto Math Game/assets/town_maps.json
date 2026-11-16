@@ -84318,29 +84318,6 @@
    "_buildings_in_picture": true,
    "_signs_in_picture": true
   },
-  "people": [
-   [
-    {
-     "text": "Johto League Plateau",
-     "target_area": "SILVER_LEAGUE_PLATEAU",
-     "condition": "has_8_johto_badges",
-     "color": "RED",
-     "action": "TRAVEL"
-    },
-    {
-     "text": "Mountainside",
-     "target_area": "MT_SILVER_LOWER",
-     "condition": [
-      "beat_johto_champion",
-      "has_8_johto_badges"
-     ],
-     "item_condition": "HM_ROCK_CLIMB",
-     "color": "RED",
-     "action": "TRAVEL"
-    }
-   ],
-   "TM139"
-  ],
   "signs": [
    [
     "Mt. Silver",
@@ -84362,6 +84339,9 @@
     "px": 32
    }
   ],
+  "hidden": {
+   "27,7": "FULL_RESTORE"
+  },
   "rooms": {
    "center": {
     "theme": "room",
@@ -84499,7 +84479,7 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Heal"
+     "POKEMON CENTER"
     ],
     "overheads": [
      {
@@ -84521,9 +84501,40 @@
   "inside": {
    "20,9": "center"
   },
-  "hidden": {
-   "27,7": "FULL_RESTORE"
-  }
+  "people": [
+   {
+    "text": "Mountain guide",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Mt. Silver... Only Trainers who have proven themselves may climb it. The League's plateau lies beyond, too."
+     ],
+     "travel_choices": [
+      {
+       "text": "Johto League Plateau",
+       "to": "SILVER_LEAGUE_PLATEAU",
+       "requires": [
+        "has_8_johto_badges"
+       ]
+      },
+      {
+       "text": "The mountainside",
+       "to": "MT_SILVER_LOWER",
+       "requires": [
+        "beat_johto_champion",
+        "has_8_johto_badges",
+        "has_item:HM_ROCK_CLIMB"
+       ]
+      }
+     ],
+     "ask": "WHERE TO?",
+     "cancel": [
+      "Take care out there. The weather on the mountain turns fast."
+     ]
+    }
+   },
+   "TM139"
+  ]
  },
  "BUG_CONTEST": {
   "art": [

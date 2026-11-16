@@ -168,6 +168,10 @@
     "JOHTO_TOHJO_FALLS_DAY_PERCENTAGES": {"41": 30, "20": 30, "42": 20, "79": 15, "19": 5},
     "JOHTO_TOHJO_FALLS_MORNING_PERCENTAGES": {"41": 30, "20": 30, "42": 20, "79": 15, "19": 5},
     "JOHTO_TOHJO_FALLS_NIGHT_PERCENTAGES": {"41": 30, "20": 30, "42": 20, "79": 15, "19": 5},
+    "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES": {"114": 27, "77": 27, "217": 9, "78": 9, "232": 9, "24": 9, "84": 5, "85": 5},
+    "JOHTO_MT_SILVER_CITY_MORNING_PERCENTAGES": {"114": 27, "77": 27, "217": 9, "78": 9, "232": 9, "24": 9, "84": 5, "85": 5},
+    "JOHTO_MT_SILVER_CITY_NIGHT_PERCENTAGES": {"114": 22, "77": 22, "61": 15, "42": 11, "217": 8, "78": 8, "215": 7, "232": 7},
+    "JOHTO_MT_SILVER_CITY_SURF_PERCENTAGES": {"61": 91, "60": 9},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -1148,37 +1152,47 @@
 
         "MT_SILVER_CITY": {
 
-            "area_type": "town",
+            "area_type": "wild_route",
 
             "route_name": "Mt. Silver",
 
             "region": "JOHTO",
 
+            "battle_type": "field",
+
+            "fly_island": true,
+
             "backgrounds": {"main": "silver_entrance.png", "pokecenter": "silver_center.png"},
 
-            "travel_options": [
+            "wild_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES", "surf_pool_percentages": "JOHTO_MT_SILVER_CITY_SURF_PERCENTAGES",
 
-                {"text": "Reception Gate", "target_area": "POKEMON_LEAGUE_GATE", "color": "RED"},
+            "min_rounds": 0,
 
-                {"text": "Johto League Plateau", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "has_8_johto_badges", "color": "RED"},
+            "trainer_pool": [],
 
-                {"text": "Mt. Silver", "target_area": "MT_SILVER", "condition": ["beat_johto_champion", "has_8_johto_badges"], "color": "RED"},
+            "route_menu": [
 
-                {"text": "Mountainside", "target_area": "MT_SILVER_LOWER", "condition": ["beat_johto_champion", "has_8_johto_badges"], "item_condition": "HM_ROCK_CLIMB", "color": "RED"}
+                {"text": "POKEMON CENTER", "action": "CENTER", "door": "center"},
 
-            ],
+                {"text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER", "condition": ["can_exit", "beat_johto_champion", "has_8_johto_badges"], "color": "RED"},
 
-            "explore_options": [
-
-                {"text": "Heal", "action": "HEAL"},
+                {"text": "ROUTE 28", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"], "color": "RED"},
 
                 {"text": "TM139", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm139_mt_silver_city_t31_8_21", "event": {"lines": ["A TM (Flamethrower), lying by the path."], "gift_item": {"TM139": 1}, "flag": "got_tm139_mt_silver_city_t31_8_21"}}
 
             ],
 
+            "next_area": "MT_SILVER",
+
             "on_enter_event": {"type": "trainer_battle", "condition": "has_8_johto_badges", "flag_check": "defeated_rival_victory_road_johto", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [215, 42, 82, 93, 64, 157], "team_choice": {"152": [215, 42, 82, 93, 64, 157], "155": [215, 42, 82, 93, 64, 160], "158": [215, 42, 82, 93, 64, 154]}, "levels": [36, 38, 37, 37, 37, 40], "rewards": {"balls": 10}, "dialogue": {"intro": ["...Hold it.", "Are you going to take the Pokemon League challenge?", "...Don't make me laugh. You're so much weaker than I am.", "I'm not like I was before. I now have the best and strongest Pokemon with me!"], "player_won": ["...I haven't given up on becoming the greatest Trainer...", "I'm going to find out why I can't win and become stronger.", "When I do, I will challenge you. And I'll beat you down with all my power.", "...Humph! You keep at it until then."], "player_lost": ["...Humph! I knew it. Go home, the League isn't for you."]}, "movesets": {"215": ["FEINT-ATTACK", "ICY-WIND", "FURY-SWIPES", "QUICK-ATTACK"], "42": ["BITE", "CONFUSE-RAY", "AIR-CUTTER", "ASTONISH"], "82": ["SPARK", "THUNDER-WAVE", "SUPERSONIC", "MAGNET-BOMB"], "64": ["REFLECT", "DISABLE", "PSYBEAM", "RECOVER"], "93": ["CURSE", "MEAN-LOOK", "CONFUSE-RAY", "SHADOW-BALL"], "157": ["LAVA-PLUME", "SWIFT", "FLAME-WHEEL", "QUICK-ATTACK"], "160": ["WATERFALL", "SLASH", "ICE-FANG", "CRUNCH"], "154": ["REFLECT", "PETAL-DANCE", "POISONPOWDER", "SYNTHESIS"]}}},
 
-            "trainer_pool": []
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+
+            "morning_pool_percentages": "JOHTO_MT_SILVER_CITY_MORNING_PERCENTAGES",
+
+            "day_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES",
+
+            "night_pool_percentages": "JOHTO_MT_SILVER_CITY_NIGHT_PERCENTAGES"
 
         },
 

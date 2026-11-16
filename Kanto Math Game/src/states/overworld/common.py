@@ -755,6 +755,21 @@ def _run_story_event(state, key, check, show):
         state.anim = 0
         if hasattr(state, "_remember"):
             state._remember()
+    if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
+        from src.states.systems.pick_list import PickListState
+        from src.states.overworld import AreaTransitionState
+        can = [(o["text"], o["to"]) for o in ev["travel_choices"] if all(check(c) for c in o.get("requires", []))]
+        if not can:
+            show(lines or ["..."])
+            return
+
+        def go(to):
+            if to is None:
+                show(_resolve_lines(game, ev.get("cancel") or ["Take care out there."]))
+                return
+            game.change_state(AreaTransitionState(game, to))
+        _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ev.get("ask") or "WHERE TO?", can, go)))
+        return
     if ev.get("travel"):  # (and off you go: Fallarbor's rival takes you back to Mauville)
         from src.states.overworld import AreaTransitionState
         to = ev["travel"]

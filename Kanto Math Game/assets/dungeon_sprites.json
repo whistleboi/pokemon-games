@@ -6969,6 +6969,9 @@
     },
     "POKEATHLON_DOME:Juice stand clerk": {
       "sheet": "hg_shopm1.png"
+    },
+    "MT_SILVER_CITY:Mountain guide": {
+      "sheet": "hg_gsmiddleman1.png"
     }
   },
   "townsperson": "NPC 17.png",

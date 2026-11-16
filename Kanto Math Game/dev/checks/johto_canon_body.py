@@ -798,7 +798,7 @@ if all(w in _aqP for w in _need):
     check(all(_itA.HELD_BOOSTS.get(f"{p}_PLATE") for p in ("FLAME", "IRON", "DRACO")), "...each Plate boosts its type when held (Flame: Fire, Iron: Steel, Draco: Dragon)")
 story.story_flags.clear(); story.story_flags.update(_flA); story.badges.clear(); story.badges.update(_bA); story.inventory.clear(); story.inventory.update(_invA)
 _tm139 = json.load(open("assets/tms.json", encoding="utf-8")).get("TM139") or {}
-_silver_balls = [o for o in _area["MT_SILVER_CITY"].get("explore_options", []) if o.get("found")]
+_silver_balls = [o for o in _area["MT_SILVER_CITY"].get("explore_options", []) + _area["MT_SILVER_CITY"].get("route_menu", []) if o.get("found")]
 check(_tm139.get("move") == "FLAMETHROWER" and any("TM139" in json.dumps(o) for o in _silver_balls),
       f"Mt. Silver: TM139 Flamethrower (HGSS TM35) lies outside the Pokemon Center ({[o['text'] for o in _silver_balls]})")
 _dome = _tm["POKEATHLON_DOME"]
@@ -808,6 +808,42 @@ check(len(_rows) == 64 and len(_rows[0]) == 64 and _dome["buildings"] == {"P": "
       "Pokeathlon Dome: the plaza is SoulSilver's zone D49, whole; the Dome's door, the way south to the National Park")
 _dfolk = [p for p in (_dome.get("people") or []) if isinstance(p, dict) and p.get("event")]
 check(len(_dfolk) == 15 and sum(r.count("N") for r in _rows) == 15, f"...its 15 people from the game stand on the plaza ({len(_dfolk)})")
+
+# ---- Mt. Silver's clearing (11-16, Jordan: "fix the entrance to Mt silver however is needed to make canon"): a walked route now,
+# SoulSilver's wild Pokemon roaming its grass, its Pokemon Center a room, a Fly spot still; the game's bystander offers our two trips
+_flS, _bS, _invS = dict(story.story_flags), {k: list(v) for k, v in story.badges.items()}, dict(story.inventory)
+_aS = _area["MT_SILVER_CITY"]
+_poolS = {str(k) for f in ("morning_pool_percentages", "day_pool_percentages", "night_pool_percentages") for k in (_ad.get(_aS.get(f)) or {})}
+check(_aS.get("area_type") != "town" and _aS.get("fly_island") and {"114", "77", "217", "78"} <= _poolS,
+      f"Mt. Silver's clearing: SoulSilver's wild Pokemon (Tangela, Ponyta, Ursaring, Rapidash...) and still a place to Fly to ({sorted(_poolS)})")
+story.story_flags["defeated_rival_victory_road_johto"] = True
+_ms = open_map("MT_SILVER_CITY", "POKEMON_LEAGUE_GATE")
+_wildS = [m for f in getattr(_ms.run, "floors", [_ms.run.floor]) for m in f.movers if m.kind == "wild"] if hasattr(_ms, "run") else []
+check(type(_ms).__name__ != "WalkTownState" and len(_wildS) > 0, f"...walked like a route: wild Pokemon about in the clearing ({type(_ms).__name__}, {len(_wildS)})")
+_wp = _ms._make_wild(__import__("random").Random(3)) if hasattr(_ms, "_make_wild") else None
+check(_wp is not None and str(_wp.id) in _poolS, f"...and they're the clearing's own ({_wp and _wp.id})")
+_surfS = _ad.get(_aS.get("surf_pool_percentages")) or {}
+check(set(_surfS) == {"60", "61"}, f"...and Poliwag and Poliwhirl in its pond, not land Pokemon ({_surfS})")
+_artS = (_ms.recipe.get("art") or {})
+_cen = [f for f in (_artS.get("floors") or []) if f.get("indoors")]
+check(any("POKEMON CENTER" in (f.get("people") or []) for f in _cen), "...its Pokemon Center a room you walk into, the nurse inside")
+_guide = next((p for p in (_tm["MT_SILVER_CITY"].get("people") or []) if isinstance(p, dict) and p.get("text") == "Mountain guide"), None)
+check(_guide is not None, "...the game's bystander is a guide")
+if _guide:
+    story.badges = {"JOHTO": ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"]}
+    story.story_flags["beat_johto_champion"] = True
+    story.inventory["HM_ROCK_CLIMB"] = 1
+    _rseN(_ms, _guide["event"], lambda c: _ms._check_route_condition(c, False), lambda l, **k: None)
+    play(lambda: type(g.current_state).__name__ == "PickListState", 300)
+    _pl = g.current_state
+    _opts = [getattr(b, "text", None) for b in getattr(_pl, "rows", [])] if type(_pl).__name__ == "PickListState" else []
+    check(len(_opts) == 2, f"...who offers the League plateau and the mountainside ({_opts})")
+    if type(_pl).__name__ == "PickListState":
+        _pl.pick("SILVER_LEAGUE_PLATEAU")
+        frames(3)
+    check(type(g.current_state).__name__ == "AreaTransitionState" or story.current_area_key == "SILVER_LEAGUE_PLATEAU",
+          f"...and takes you there ({type(g.current_state).__name__}, {story.current_area_key})")
+story.story_flags.clear(); story.story_flags.update(_flS); story.badges.clear(); story.badges.update(_bS); story.inventory.clear(); story.inventory.update(_invS)
 
 if fails:
     print("FAILS:", len(fails))
