@@ -150,6 +150,12 @@
     "JOHTO_ROUTE_44_DAY_PERCENTAGES": {"70": 35, "114": 30, "69": 20, "108": 15},
     "JOHTO_ROUTE_44_MORNING_PERCENTAGES": {"70": 35, "114": 30, "69": 20, "108": 15},
     "JOHTO_ROUTE_44_NIGHT_PERCENTAGES": {"70": 29, "114": 25, "69": 17, "108": 13, "60": 12, "61": 4},
+    "JOHTO_ROUTE_45_DAY_PERCENTAGES": {"75": 43, "74": 28, "207": 9, "232": 7, "216": 5, "231": 5, "227": 2, "2012": 1},
+    "JOHTO_ROUTE_45_MORNING_PERCENTAGES": {"75": 44, "74": 29, "207": 9, "216": 5, "231": 5, "232": 5, "227": 2, "2012": 1},
+    "JOHTO_ROUTE_45_NIGHT_PERCENTAGES": {"75": 47, "74": 30, "207": 10, "216": 5, "231": 5, "227": 2, "2012": 1},
+    "JOHTO_ROUTE_46_DAY_PERCENTAGES": {"74": 40, "21": 34, "19": 24, "2001": 1, "2012": 1},
+    "JOHTO_ROUTE_46_MORNING_PERCENTAGES": {"74": 38, "21": 33, "19": 24, "231": 3, "2001": 1, "2012": 1},
+    "JOHTO_ROUTE_46_NIGHT_PERCENTAGES": {"19": 54, "74": 44, "2001": 1, "2012": 1},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -1255,7 +1261,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}, {"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}}},
+            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}, {"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "badge_later": "johto_beat_clair", "badge_later_lines": ["Clair: ...I still don't accept it. Go to the Dragon's Den behind this Gym.", "Clair: Pass the Elder's test at the Dragon Shrine, and then... we'll talk about the Rising Badge."], "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["Clair: I lost? I don't believe it. There must be some mistake...", "Clair: I won't admit this. I won't give you the Rising Badge!", "Clair: ...Fine. There's a place called the Dragon's Den behind this Gym. Go to the Dragon Shrine at its heart and take the Elder's test. If you pass, I'll accept you as a Trainer worthy of the Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}}},
 
             "travel_options": [
 
@@ -2562,57 +2568,139 @@
         },
         
         "JOHTO_ROUTE_45": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 45",
+        
             "battle_type": "field",
-            "wild_pool_percentages": "JOHTO_ROUTE_45_PERCENTAGES", 
+        
+            "wild_pool_percentages": "JOHTO_ROUTE_45_DAY_PERCENTAGES",
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { "name": "Hiker Erik", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75, 76], "rewards": { "balls": 2 } },
-                { "name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": { "balls": 2 } },
-                { "name": "Hiker Parry", "class": "HIKER", "sprite": "hiker.png", "team": [95], "rewards": { "balls": 2 } },
-                { "name": "Blackbelt Kenji", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66, 67, 68], "rewards": { "balls": 2 } },
-                { "name": "Hiker Timothy", "class": "HIKER", "sprite": "hiker.png", "team": [50, 51], "rewards": { "balls": 2 } },
-                { "name": "Cooltrainer Kelly", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [183, 8, 8], "rewards": { "balls": 2 } },
-                { "name": "Cooltrainer Ryan", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [18, 125], "rewards": { "balls": 2 } }
+        
+                {"name": "Hiker Erik", "class": "HIKER", "sprite": "hiker.png", "team": [66, 75, 66], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75, 76], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Parry", "class": "HIKER", "sprite": "hiker.png", "team": [95], "rewards": {"balls": 2}},
+        
+                {"name": "Blackbelt Kenji", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [67], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Timothy", "class": "HIKER", "sprite": "hiker.png", "team": [50, 51], "rewards": {"balls": 2}},
+        
+                {"name": "Cooltrainer Kelly", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [183, 8, 8], "rewards": {"balls": 2}},
+        
+                {"name": "Cooltrainer Ryan", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [18, 125], "rewards": {"balls": 2}},
+        
+                {"name": "Ace Trainer Ryan", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [18, 125], "rewards": {"balls": 2}},
+        
+                {"name": "Ace Trainer Kelly", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [183, 8, 8], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
                 {"text": "Blackthorn City", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
+        
                 {"text": "Route 46", "action": "EXIT", "target_area": "JOHTO_ROUTE_46", "condition": "can_exit", "color": "RED"},
-                {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"}
-                ],
-            "next_area": "JOHTO_ROUTE_46" 
+        
+                {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "DRAGON FANG", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dragon_fang_johto_route_45_r45_5_34", "event": {"lines": ["A Dragon Fang, lying in the grass."], "gift_item": {"DRAGON_FANG": 1}, "flag": "got_dragon_fang_johto_route_45_r45_5_34"}},
+        
+                {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_johto_route_45_r45_22_50", "event": {"lines": ["An Elixir, dropped by the path."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_johto_route_45_r45_22_50"}},
+        
+                {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_potion_johto_route_45_r45_13_77", "event": {"lines": ["A Max Potion, tucked behind a tree."], "gift_item": {"MAX_POTION": 1}, "flag": "got_max_potion_johto_route_45_r45_13_77"}},
+        
+                {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_johto_route_45_r45_7_90", "event": {"lines": ["A Full Heal, left near a ledge."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_johto_route_45_r45_7_90"}},
+        
+                {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_johto_route_45_r45_5_110", "event": {"lines": ["A Nugget, sitting in the weeds."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_johto_route_45_r45_5_110"}}
+        
+            ],
+        
+            "next_area": "JOHTO_ROUTE_46",
+        
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+        
+            "morning_pool_percentages": "JOHTO_ROUTE_45_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_ROUTE_45_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_ROUTE_45_NIGHT_PERCENTAGES"
+        
         },
         
         "JOHTO_ROUTE_46": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 46",
+        
             "battle_type": "field",
-            "wild_pool_percentages": "JOHTO_ROUTE_46_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_ROUTE_46_DAY_PERCENTAGES",
+        
             "has_trees": true,
+        
             "tree_pool": "JOHTO_MOUNTAIN_TREE_PERCENTAGES",
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { "name": "Hiker Bailey", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74], "rewards": { "balls": 2 } },
-                { "name": "Camper Ted", "class": "CAMPER", "sprite": "camper.png", "team": [19], "rewards": { "balls": 2 } },
-                { "name": "Picnicker Erin", "class": "PICNIKER", "sprite": "lass.png", "team": [35], "rewards": { "balls": 2 } },
-                { "name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": { "balls": 2 } }
+        
+                {"name": "Hiker Bailey", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74, 74, 74, 74], "rewards": {"balls": 2}},
+        
+                {"name": "Camper Ted", "class": "CAMPER", "sprite": "camper.png", "team": [56], "rewards": {"balls": 2}},
+        
+                {"name": "Picnicker Erin", "class": "PICNIKER", "sprite": "lass.png", "team": [77, 43], "rewards": {"balls": 2}},
+        
+                {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-              {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
-              {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"},
-              {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"},
-              {"text": "ROUTE 45", "action": "EXIT", "target": "JOHTO_ROUTE_45", "condition": "can_exit", "flag_condition": "visited_BLACKTHORN_CITY", "locked_text": ["The ledges only go down this way.", "Route 45 is reached from Blackthorn City."], "color": "RED"}
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        
+                {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "ROUTE 45", "action": "EXIT", "target": "JOHTO_ROUTE_45", "condition": "can_exit", "flag_condition": "visited_BLACKTHORN_CITY", "locked_text": ["The ledges only go down this way.", "Route 45 is reached from Blackthorn City."], "color": "RED"},
+        
+                {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_johto_route_46_r46_3_24", "event": {"lines": ["A Revive, lying in the grass."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_johto_route_46_r46_3_24"}}
+        
             ],
-            "next_area": "JOHTO_ROUTE_29" 
+        
+            "next_area": "JOHTO_ROUTE_29",
+        
+            "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]},
+        
+            "morning_pool_percentages": "JOHTO_ROUTE_46_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_ROUTE_46_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_ROUTE_46_NIGHT_PERCENTAGES"
+        
         },
 
         "UNION_CAVE": {
@@ -3621,40 +3709,81 @@
         },
 
         "DRAGON_SHRINE": {
+
             "area_type": "town",
+
             "region": "JOHTO",
+
             "route_name": "Dragon Shrine",
+
             "travel_options": [
-                { "text": "Dragon's Den", "target_area": "DRAGONS_DEN" }
+
+                {"text": "Dragon's Den", "target_area": "DRAGONS_DEN"}
+
             ],
-            "explore_options": [
-                { "text": "Talk to the Elder", "action": "NPC", "target": "dragon_elder" }
-            ]
+
+            "explore_options": [],
+
+            "trainer_pool": []
+
         },
 
         "DRAGONS_DEN": {
+
             "region": "JOHTO",
+
             "area_type": "dungeon",
+
             "battle_type": "cave",
+
             "wild_pool_percentages": "JOHTO_DRAGON_DEN_PERCENTAGES",
+
             "min_rounds": 2,
+
             "trainer_pool": [
-                { "name": "Cooltrainer Gwen", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [148, 117], "rewards": { "balls": 3 } },
-                { "name": "Cooltrainer Paul", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [148, 130], "rewards": { "balls": 3 } },
-                { "name": "Dragon Tamer Mike", "class": "COOLTRAINER", "sprite": "dragon_tamer.png", "team": [147, 147, 147], "rewards": { "balls": 3 } },
-                { "name": "Dragon Tamer Darin", "class": "COOLTRAINER", "sprite": "dragon_tamer.png",
-                "team": [147, 147, 148], "rewards": { "balls": 5, "DRATINI": 1 }, "victory_flag": "received_den_dratini" }
+
+                {"name": "Cooltrainer Gwen", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [148, 117], "rewards": {"balls": 3}},
+
+                {"name": "Cooltrainer Paul", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [148, 130], "rewards": {"balls": 3}},
+
+                {"name": "Dragon Tamer Mike", "class": "COOLTRAINER", "sprite": "dragon_tamer.png", "team": [147, 147, 147], "rewards": {"balls": 3}},
+
+                {"name": "Dragon Tamer Darin", "class": "COOLTRAINER", "sprite": "dragon_tamer.png", "team": [147, 147, 148], "rewards": {"balls": 5, "DRATINI": 1}, "victory_flag": "received_den_dratini"},
+
+                {"name": "Ace Trainer Kobe", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [148], "rewards": {"balls": 2}},
+
+                {"name": "Ace Trainer Piper", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [116, 116, 117], "rewards": {"balls": 2}},
+
+                {"name": "Twins Clea & Gil", "class": "TWINS", "sprite": "twins.png", "team": [147, 147], "rewards": {"balls": 2}}
+
             ],
+
             "route_menu": [
-              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-              {"text": "BATTLE CLAIR", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_clair", "condition": ["beat_johto_champion"], "event": {"lines": ["{rival_name} is training in the Dragon's Den. 'Clair and Lance want a double battle... I'm with you!'", "Clair: Two of you? Fine. Show me your dragon spirit!"], "flag": "dragons_den_clair", "battle": {"name": "Leader Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 230, 149], "levels": [52, 56, 60], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Clair: ...Not bad, you two.", "Lance steps forward: 'My turn.'"]}}}},
-              {"text": "BATTLE LANCE", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_lance", "condition": ["dragons_den_clair"], "event": {"lines": ["Lance: You and {rival_name} make quite a team. Let's see it against a Champion!"], "flag": "dragons_den_lance", "battle": {"name": "Champion Lance", "class": "CHAMPION", "sprite": "lance.png", "team": [130, 6, 149], "levels": [68, 68, 75], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lance: Excellent! {rival_name}, you've grown. And you, Champion, even more."]}}}},
-              {"text": "BLACKTHORN CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
-              {"text": "Dragon Shrine", "action": "EXIT", "target_area": "DRAGON_SHRINE", "condition": "can_exit", "color": "RED"}
+
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+
+                {"text": "BATTLE CLAIR", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_clair", "condition": ["beat_johto_champion"], "event": {"lines": ["{rival_name} is training in the Dragon's Den. 'Clair and Lance want a double battle... I'm with you!'", "Clair: Two of you? Fine. Show me your dragon spirit!"], "flag": "dragons_den_clair", "battle": {"name": "Leader Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 230, 149], "levels": [52, 56, 60], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Clair: ...Not bad, you two.", "Lance steps forward: 'My turn.'"]}}}},
+
+                {"text": "BATTLE LANCE", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_lance", "condition": ["dragons_den_clair"], "event": {"lines": ["Lance: You and {rival_name} make quite a team. Let's see it against a Champion!"], "flag": "dragons_den_lance", "battle": {"name": "Champion Lance", "class": "CHAMPION", "sprite": "lance.png", "team": [130, 6, 149], "levels": [68, 68, 75], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lance: Excellent! {rival_name}, you've grown. And you, Champion, even more."]}}}},
+
+                {"text": "BLACKTHORN CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
+
+                {"text": "Dragon Shrine", "action": "EXIT", "target_area": "DRAGON_SHRINE", "condition": "can_exit", "color": "RED"},
+
+                {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_dragons_den_d44r0102_50_34", "event": {"lines": ["A Max Elixir, lying among the rocks."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_dragons_den_d44r0102_50_34"}},
+
+                {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_dragons_den_d44r0102_42_16", "event": {"lines": ["An Iron, in a dark corner."], "gift_item": {"IRON": 1}, "flag": "got_iron_dragons_den_d44r0102_42_16"}},
+
+                {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_dragons_den_d44r0102_7_33", "event": {"lines": ["A Calcium, beside the cave wall."], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_dragons_den_d44r0102_7_33"}}
+
             ],
+
             "next_area": "BLACKTHORN_CITY"
+
         },
         
         "MT_SILVER_EXPERT": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "1F", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}]},
@@ -3925,8 +4054,7 @@
     
     "JOHTO_WHIRL_ISLANDS_PERCENTAGES": { "72": 36, "73": 18, "98": 18, "116": 15, "117": 5, "158": 8 },
     "JOHTO_ROCKET_HQ_PERCENTAGES": {"19": 39, "109": 30, "96": 20, "88": 10, "2001": 1},
-    
-    "JOHTO_DRAGON_DEN_PERCENTAGES": { "129": 80, "147": 20 },
+    "JOHTO_DRAGON_DEN_PERCENTAGES": {"129": 80, "147": 20},
     
     "JOHTO_MT_SILVER_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},
     "JOHTO_MT_SILVER_NIGHT_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},

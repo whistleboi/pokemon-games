@@ -24,7 +24,8 @@ story.balls_left = max(getattr(story, "balls_left", 0), 5)
 
 DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30", "JOHTO_ROUTE_31", "VIOLET_CITY", "SPROUT_TOWER", "DARK_CAVE",
         "JOHTO_ROUTE_32", "RUINS_OF_ALPH", "UNION_CAVE", "JOHTO_ROUTE_33", "AZALEA_TOWN", "SLOWPOKE_WELL", "ILEX_FOREST", "JOHTO_ROUTE_34",
-        "GOLDENROD_CITY", "RADIO_TOWER", "JOHTO_ROUTE_35", "JOHTO_ROUTE_36"]
+        "GOLDENROD_CITY", "RADIO_TOWER", "JOHTO_ROUTE_35", "JOHTO_ROUTE_36",
+        "DRAGONS_DEN", "DRAGON_SHRINE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_46"]   # (N13, 11-16)
 
 
 def frames(n):
@@ -692,5 +693,44 @@ check(_mb and _was_mega and _mc.active(g) and _fm.is_changed(_v) and 0 < _mc.sta
 g.rt_mega = None
 if _fm.is_changed(_v): _fm.revert_form(_v)
 story.player_team = _keep; story.inventory.clear(); story.inventory.update(_inv)
+# ---- N13 (11-16): HGSS's Dragon's Den. Clair keeps the Rising Badge after her Gym; the Elder's quiz at the Dragon Shrine gives it;
+# a Dratini after (Extreme Speed when every answer was right the first time); Clair's TM138 Dragon Pulse by the bridge
+_lead = _area["BLACKTHORN_CITY"]["gym"]["leader"]
+check(_lead.get("badge_later") == "johto_beat_clair" and _lead.get("badge_reward") == "RISING", "Blackthorn Gym: Clair keeps the Rising Badge when beaten (HGSS)")
+_keepN, _flN, _bN = list(story.player_team), dict(story.story_flags), {k: list(v) for k, v in story.badges.items()}
+story.badges.setdefault("JOHTO", []); story.badges["JOHTO"] = [b for b in story.badges["JOHTO"] if b != "RISING"]
+for f in ("johto_beat_clair", "dragon_quiz_done", "dragon_quiz_done_perfect", "dragon_shrine_dratini", "clair_tm_dragon_pulse"):
+    story.story_flags.pop(f, None)
+_sh = open_map("DRAGON_SHRINE", "DRAGONS_DEN")
+_eld = next((p for p in (_tm["DRAGON_SHRINE"].get("people") or []) if isinstance(p, dict) and p.get("text") == "Elder"), None)
+from src.states.overworld.common import _run_story_event as _rseN
+_saidN = []
+def _talkN(ev):
+    _rseN(_sh, ev, lambda c: _sh._check_menu_condition(c) if hasattr(_sh, "_check_menu_condition") else True,
+          lambda l, **k: _saidN.extend(l))
+    play(lambda: not getattr(g.current_state, "dialogue_box", None) or not g.current_state.dialogue_box.visible, 300)
+_talkN(_eld["event"])
+check(not story.has_badge("RISING") and not story.story_flags.get("dragon_quiz_done"), f"Dragon Shrine: before Clair's battle the Elder only explains ({_saidN[-1:]})")
+story.story_flags["johto_beat_clair"] = True
+_talkN(_eld["event"])
+_picksN = 0
+for _ans in (2, 1, 2, 0, 1):
+    play(lambda: type(g.current_state).__name__ == "PickListState", 400)
+    if type(g.current_state).__name__ == "PickListState":
+        g.current_state.pick(_ans); _picksN += 1
+play(lambda: not getattr(g.current_state, "dialogue_box", None) or not g.current_state.dialogue_box.visible, 400)
+check(_picksN == 5 and story.has_badge("RISING") and story.story_flags.get("dragon_quiz_done_perfect"),
+      f"...beaten, the Elder's five questions; answered, the Rising Badge, all right the first time ({_picksN}, {story.has_badge('RISING')})")
+story.player_team = story.player_team[:5]
+_n0 = len(story.player_team)
+_talkN(_eld["event"])
+_dr = story.player_team[-1] if len(story.player_team) > _n0 else None
+check(_dr is not None and _dr.id == 147 and _dr.level == 15 and "EXTREME-SPEED" in _dr.moves, f"...then a Lv 15 Dratini that knows Extreme Speed ({_dr and (_dr.id, _dr.level, _dr.moves)})")
+_cl = next((p for p in (_tm["DRAGONS_DEN"]["floors"][1].get("people") or []) if isinstance(p, dict) and p.get("text") == "Clair"), None)
+story.inventory.pop("TM138", None)
+_rseN(_sh, _cl["event"], lambda c: True, lambda l, **k: None) if _cl else None
+check(_cl is not None and _cl.get("condition") == "dragon_quiz_done" and story.inventory.get("TM138") == 1, "...and Clair gives TM138 Dragon Pulse in the Den")
+story.player_team = _keepN; story.story_flags.clear(); story.story_flags.update(_flN); story.badges.clear(); story.badges.update(_bN)
+
 if fails:
     print("FAILS:", len(fails))

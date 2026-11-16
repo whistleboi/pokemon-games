@@ -60,6 +60,10 @@ def leader_in_room(state):
         game.change_state(lobby)
         return
     if lobby.is_cleared:
+        later = (lobby.leader or {}).get("badge_later")
+        if later and not story.has_badge((lobby.leader or {}).get("badge_reward")):
+            state.show_message([_fill_names(game, x) for x in lobby.leader.get("badge_later_lines") or [f"{name}: ..."]])
+            return
         state.show_message([f"{name}: You've already beaten me and earned my Badge. Keep it up!"])
         return
     if not lobby.challenge and not lobby.redo and lobby.progress < len(lobby.trainers):
@@ -413,6 +417,9 @@ class GymLobbyState(GameState):
         bg_file = self.game.story_manager.get_gym_battle_background(
             self.area_key, trainer_index=self.progress, is_leader=is_leader
         )
+        if t_data.get("badge_later") and t_data.get("badge_reward"):   # (HGSS's Clair: beaten, she keeps the Rising Badge till the
+            t_data["victory_flag"] = t_data["badge_later"]              #  Dragon Shrine's test; the flag opens the Den, the Elder gives it)
+            t_data["badge_reward"] = None
 
         battle_state = TrainerBattleState(
             self.game, opponent_team, trainer_sprite=trainer_sprite,

@@ -6795,6 +6795,45 @@
     },
     "VICTORY_ROAD:Ace trainer": {
       "sheet": "fr_41.png"
+    },
+    "DRAGONS_DEN:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "DRAGONS_DEN:IRON": {
+      "item": "POKE_BALL"
+    },
+    "DRAGONS_DEN:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "DRAGONS_DEN:Clair": {
+      "sheet": "hg_gsleader8.png"
+    },
+    "DRAGONS_DEN:{rival_name}": {
+      "sheet": "hg_gsrivel.png"
+    },
+    "DRAGON_SHRINE:Shrine elder": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "DRAGON_SHRINE:Shrine elder ": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "JOHTO_ROUTE_45:DRAGON FANG": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_45:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_45:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_45:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_45:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_46:REVIVE": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",

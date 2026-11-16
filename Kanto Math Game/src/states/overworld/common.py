@@ -428,7 +428,22 @@ def _run_story_event(state, key, check, show):
         lines.append(f"{game.player_name} received an Egg!")
     gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
     if gift:
+        if ev.get("max_party") and len([p for p in story.player_team if p]) > int(ev["max_party"]):   # (HGSS's Elder: room for it)
+            show(_resolve_lines(game, ev.get("full") or ["You have no room in your party for it."]))
+            return
+        before = len(story.player_team)
         lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level"), ev.get("gift_held")))
+        gm = ev.get("gift_moves")   # {"if": flag, "moves": [...], "else": [...]}: the Dragon Shrine's Dratini (Extreme Speed or Leer)
+        if gm and len(story.player_team) > before:
+            mon = story.player_team[-1]
+            mv = gm["moves"] if story.story_flags.get(gm.get("if", "")) else gm.get("else") or []
+            if mv:
+                from src.pokemon import moves as _mvg
+                pool = _mvg.move_pool(game, mon)
+                for m in mv:
+                    if m not in pool:
+                        pool.append(m)
+                mon.moves = list(mv)[:_mvg.MAX_MOVES]
     if flag:
         story.story_flags[flag] = True
     if ev.get("trade"):  # an in-game trade (Fortree's girl: a Spinda for her Skitty): your first one they want, for theirs
@@ -624,6 +639,11 @@ def _run_story_event(state, key, check, show):
         story.inventory[cr["gives"]] = story.inventory.get(cr["gives"], 0) + 1
         from src.pokemon import forms as _forms
         lines.append(f"{game.player_name} received the {_forms.item_label(cr['gives']).upper()}!")
+    if ev.get("quiz"):  # HGSS's Dragon Shrine: the Elder's questions, one menu each ({"q", "options", "right"}); answered,
+        _run_quiz(state, ev, lines, show)   #  "quiz_flag" is set (and "<quiz_flag>_perfect" when all were right the first time)
+        return
+    if ev.get("give_badge"):  # a badge given outside its Gym's battle (HGSS: Clair's Rising Badge, at the Dragon Shrine)
+        lines += _give_badge(game, ev["give_badge"])
     if ev.get("tutor"):  # a move tutor (Pacifidlog's Explosion man): {"move", "like": a TM move whose learners can learn it too,
         tu = ev["tutor"]   #   "choices": [moves] for a menu (Crystal's Goldenrod tutor), "min_friend": it must love you (Grandma Wilma)}
         if tu.get("choices"):
@@ -822,6 +842,55 @@ def _start_event_puzzle(state, ev, lines, show):
         show(out or ["..."])
 
     game.change_state(GymPuzzleState(game, story.current_area_key, ev["puzzle"], done))
+
+
+def _give_badge(game, badge):
+    """The badge into the current region's case (and its HM), with the line that says so."""
+    from src.world import hms
+    story = game.story_manager
+    earned = story.badges.setdefault(story.get_current_region(), [])
+    if badge in earned:
+        return []
+    earned.append(badge)
+    hms.give_for_badges(story)
+    return [f"{getattr(game, 'player_name', 'You')} received the {badge.replace('_', ' ').title()} Badge!"]
+
+
+def _run_quiz(state, ev, lines, show):
+    """Ask ev["quiz"]'s questions one menu at a time, then show ev["after"] lines (and give ev["give_badge"]).
+    Only the first time through counts for "<quiz_flag>_perfect" (HGSS: the Dratini knows Extreme Speed)."""
+    from src.states.systems.pick_list import PickListState
+    game = state.game
+    story = game.story_manager
+    qs, right = ev["quiz"], []
+
+    def ask(i):
+        if i == len(qs):
+            flag = ev.get("quiz_flag") or "quiz_done"
+            if not story.story_flags.get(flag):
+                story.story_flags[flag + "_perfect"] = all(right)
+            story.story_flags[flag] = True
+            out = _resolve_lines(game, ev.get("after") or [])
+            if ev.get("give_badge"):
+                out += _give_badge(game, ev["give_badge"])
+            out += _resolve_lines(game, ev.get("after_badge") or [])
+            show(out or ["..."])
+            return
+        q = qs[i]
+
+        def chose(v):
+            if v is None:
+                show(_resolve_lines(game, ev.get("cancel") or ["Come back when you are ready to answer."]))
+                return
+            right.append(v == q["right"])
+            ask(i + 1)
+        game.change_state(PickListState(game, state, q["q"], [(o, k) for k, o in enumerate(q["options"])], chose))
+
+    say = getattr(state, "show_message", None) or getattr(state, "show_dialogue", None)
+    if lines and say:
+        say(lines, callback=lambda: ask(0))
+    else:
+        ask(0)
 
 
 def _tutor_teach(game, tu, ev):

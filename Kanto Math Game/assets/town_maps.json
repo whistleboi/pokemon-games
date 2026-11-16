@@ -71438,7 +71438,10 @@
    {
     "text": "Den guard",
     "action": "EVENT",
-    "condition": "not:has_rising_badge",
+    "condition": [
+     "not:johto_beat_clair",
+     "not:has_rising_badge"
+    ],
     "event": {
      "lines": [
       "No. Only Trainers who have been chosen may train in the Dragon's Den. Please leave."
@@ -71448,7 +71451,12 @@
    {
     "text": "Den guard ",
     "action": "EVENT",
-    "condition": "has_rising_badge",
+    "condition": {
+     "any": [
+      "johto_beat_clair",
+      "has_rising_badge"
+     ]
+    },
     "event": {
      "lines": [
       "If Clair allows it, her grandfather, our Master, will too. You may enter."
@@ -71516,16 +71524,16 @@
     "theme": "room",
     "art": [
      "ccmmmmmmmmmmmmmmmmmmmmmmc",
-     "ccmmmmmmmmmmmmmmmmmmmmmmc",
-     "ccmmmmmmm.....mmmmmmmmmmc",
-     "ccmmmmmmm..N..mmmmmmmmmmc",
-     "ccmmmmmmm.....mmmmmmmmmmc",
-     "ccmmmmmmm............mmmc",
-     "ccmmmmmmm............mmmc",
-     "ccmmmmmmm............mmmc",
-     "ccm..................mmmc",
-     "ccm..................mmmc",
-     "ccm..................mmmc",
+     "ccmmmmmcmmmmmmmcmmmmmmmmc",
+     "ccmmmmmcccccccccmmmmmmmmc",
+     "ccmmmmmmcccccccmmmmmmmmmc",
+     "ccmmmmmmcccccccmmmmmmmmmc",
+     "ccmmmmmmm.....cmcccccmmmc",
+     "ccmmmmmmm..N..mmcccccmmmc",
+     "ccmmmmmmm.....mccccccmmmc",
+     "cccccccmm.....mccccccmmmc",
+     "cccccccmm.....cccccccmmmc",
+     "ccccccccm............mmmc",
      "ccm..................mmmc",
      "ccm..................mmmc",
      "ccm..................mmmc",
@@ -71535,74 +71543,79 @@
      "ccm....................mc",
      "ccm....................mc",
      "ccmm...................mc",
-     "ccmm.mmm...............mc",
+     "ccmm...................mc",
+     "ccmm...................mc",
+     "ccmm...................mc",
+     "ccmm.mcm...............mc",
      "ccmm.mcm...............mc",
      "ccmm.mmm...............mc",
-     "ccmm....mmm............mc",
-     "ccmm....mcm.......mmm..mc",
+     "ccmm.ccc.cm............mc",
+     "ccmm.ccc.cm.......mcm..mc",
      "ccmm....mmm.......mcm..mc",
-     "ccmm..............mmm..mc",
-     "ccmm...................mc",
-     "ccmm...................mc",
-     "ccm....................mc",
-     "ccm....................mc",
-     "ccm....................mc",
-     "cmm...................mmc",
-     "cmm...................mmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "c..........m...m.....mmmc",
-     "c..........m...m.....mmmc",
-     "c.......mmmm...mmmmmmmmmc",
-     "c.......mcmm............c",
-     "c.......mmmm............c",
-     "c..........m............c",
-     "cm.........mmmm......mmmc",
-     "cmm...........m......mmmc",
-     "cmmmmm........m......mmmc",
-     "cmmmcm........mmm....mmmc",
-     "cmmmmm..........m....mmmc",
-     "cmm.............mm...mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
+     "ccm.....ccc.......mmm..mc",
+     "ccm.....ccc.......ccc..mc",
+     "ccm...............ccc..mc",
+     "cmm....................mc",
+     "cmm....................mc",
+     "cc.....................mc",
+     "cm.....................mc",
+     "cm....................mmc",
+     "c.....................mmc",
+     "c....................cmmc",
+     "c....................cmmc",
+     "c..........m...m.....mccc",
+     "c..........m...mc....mccc",
+     "c.......mc.m...mmmmm.cccc",
+     "cc......mc.m............c",
+     "cm......mmmm............c",
+     "cm......cccm............c",
+     "cmm.....cccmmmm......mmmc",
+     "cmccm......cccm......mmmc",
+     "cmmmcm.....cccm......mmmc",
+     "cc.mcm........mmm....mmmc",
+     "cm.mmm........ccm....mmmc",
+     "cm.ccc........ccmm...mmmc",
+     "cm.ccc..........cc...mmmc",
+     "cm..............cc...mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
-     "cm................mmmmmmc",
-     "cmmm...mmm...........mmmc",
-     "c........mmmmmm......mmmc",
-     "c.............m......mmmc",
-     "c.............m......mmmc",
+     "cm...................cmmc",
+     "cm...................cmmc",
+     "cc...................mmmc",
+     "cm...................mmmc",
+     "cmcc..............mmcmmmc",
+     "ccmm...mmm........ccmmmmc",
+     "c........m.mmmm...ccccccc",
+     "c.............m......cccc",
+     "c.............m......cccc",
      "cmmm..........m......cccc",
-     "cmmm..........m......cccc",
-     "cmmmmmmm......m......cccc",
-     "cmmm...mmmm...m......cccc",
-     "cmm.......m...m......cccc",
-     "cmm.......m...m......cccc",
-     "cmm.......m...m......cccc",
-     "cm...................cccc",
+     "cmm...........m......cccc",
+     "cmm.mmmm......m......cccc",
+     "cmm.cccmmmm...m......cccc",
+     "cc..ccccccm...m......cccc",
+     "cm.....cccm...m......cccc",
+     "cm........m...m......cccc",
+     "cm........c...c......cccc",
+     "cm........c...c......cccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
-     "cm................mmmcccc",
-     "cm................mmmcccc",
-     "cm................mmmcccc",
-     "cm........m...m...mmmcccc",
-     "cmmmmmmmmmm...mmmmmmmcccc",
-     "cmmmmm............mmmcccc",
-     "cmmmmm............mmmcccc",
-     "cmmmmm............mmmcccc",
+     "cmm...............mmmcccc",
+     "cmm...............mmmcccc",
+     "cmm......cm...m...mmmcccc",
+     "cmmm.mmmmmm...mmm.mmmcccc",
+     "cccccc............ccccccc",
+     "cccccc............ccccccc",
+     "cccccc............ccccccc",
      "cccccc....c...c...ccccccc",
      "cccccc....j...j...ccccccc",
      "cccccc......v.....ccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -74161,15 +74174,42 @@
       150,
       154,
       172
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30GYM0101.png",
+      "at": [
+       1,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Gym"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30GYM0101.png",
+      "at": [
+       1,
+       1
+      ],
+      "size": [
+       25,
+       94
+      ],
+      "px": 32
+     }
     ]
    },
    "dratinihouse": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmmN...mmc",
@@ -74252,16 +74292,43 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Dratini",
      "Old woman"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "dodriotrade": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm....mmc",
@@ -74344,15 +74411,42 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Trader"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "mart": {
     "theme": "room",
     "art": [
+     "cccccccccccccc",
      "cccccccccccccc",
      "cccccccccccccc",
      "ccccmmmmcccccc",
@@ -74540,10 +74634,36 @@
       190,
       206,
       226
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30FS0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Shop"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30FS0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       14,
+       14
+      ],
+      "px": 32
+     }
     ]
    },
    "center": {
@@ -74551,21 +74671,27 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNcccccccczc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -74662,15 +74788,42 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Heal"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    "movehouse": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm....mmc",
@@ -74753,13 +74906,39 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Move Reminder",
      "Move Deleter",
      "Grandma Wilma",
      "Old man"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    }
   },
@@ -74802,7 +74981,34 @@
       24,
       5
      ]
-    }
+    },
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D44R0101.png",
+      "at": [
+       1,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D44R0101.png",
+      "at": [
+       1,
+       1
+      ],
+      "size": [
+       11,
+       11
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -74814,17 +75020,17 @@
      "ccccccccccccccccccccc...1.....cccccccccccccccccccc",
      "cccccccccccccccccccc..........cccccccccccccccccccc",
      "ccccccccccccccccccc...........cccccccccccccccccccc",
-     "ccccccccccccccccccccccc...cccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc..Xcccccccccccccccccccccccc",
      "ccccccccccccccccc.........Xccccccccccccccccccccccc",
      "ccccccccccccccccc...........cccccccccccccccccccccc",
      "ccccccccccc........cccc...cccccccccccccccccccccccc",
      "cccccccccc.........c................cccccccccccccc",
-     "cccccccccccccccccccc..................cccccccccccc",
+     "ccccccccccccccccccccN.................cccccccccccc",
      "cccccccc..ccccccccccccc...ccccccccccc..ccccccccccc",
-     "cccccccc..coooqoooooooo...ooooooooqqc..ccccccccccc",
+     "cccccccc..coooqoooooooo...ooooooooqqc.Nccccccccccc",
      "cccccccc...oooooooooooo...ooooooooooc..ccccccccccc",
      "cccccccc...oooooooooooo...oooooooooocccccccccccccc",
-     "cccccccc..coocooooooooooooooooooooooococcccccccccc",
+     "ccccccccX.coocooooooooooooooooooooooococcccccccccc",
      "ccccccccX.cooccoooooooooooooooooooooococcccccccccc",
      "cccccccc..cooocooooooooooooooooooooooooccccccccccc",
      "ccccc.....ccccoooooooooooooooooooccooocccccccccccc",
@@ -74834,19 +75040,19 @@
      "cccccoooooooooooocoocc~ooooooooooooccccccccccccccc",
      "cccccooooooccoocoooocccooooooooooooccccccccccccccc",
      "ccc..oooooooooocooccoooooooooooocooccccccccccccccc",
-     "cc...oooooooooccccoooooooooooooocooccccccccccccccc",
+     "ccX..oooooooooccccoooooooooooooocooccccccccccccccc",
      "ccX..oooooooccccoooooooooooooooooooccccc.ccc..cccc",
      "ccX..ooooooocoocoooooooooooooooooocccooc...c...ccc",
      "cc...qcooooccooooooooooooooooooooooccoo........ccc",
-     "cc...qooooooocoooooooooooooooooooooccoo........ccc",
-     "cc...qcoooooocooooooooo...oooooooocooooc...c....cc",
+     "cc.N.qooooooocoooooooooooooooooooooccoo........ccc",
+     "cc...qcoooooocooooooooo...oooooooocooooc...c..N.cc",
      "cccc.qqoooooccooooooooo...oooooooocooooc...c....cc",
      "cccccccccxxxxoooooooooo...ooooooooccoooc...ccccccc",
      "cccccccccxxxxoooooooooo...ooooooooocoooccccccccccc",
      "cccccccccxxxxoooooocccc...ccccooooccoooooqqooccccc",
      "cccccccccooooccoooocccc...ccccoocccooooooocooccccc",
      "cccccccccoooocoooooc.........coooooccooooocooccccc",
-     "cccccccccoooccoooooc.......!.cooooocooooccoooocccc",
+     "cccccccccoooccoooooc.N.....!.cooooocooooccoooocccc",
      "cccccccccoooccoooooc.........cooooocooooocooooqccc",
      "cccccccccoooccoooooc..SSSSS..coocoooccooocoooooccc",
      "cccccccccooocooooooc..SSSSS..coococcooooooccoooccc",
@@ -74881,8 +75087,11 @@
     },
     "trainer_spots": [
      "Cooltrainer Gwen",
+     "Ace Trainer Kobe",
      "Cooltrainer Paul",
+     "Ace Trainer Piper",
      "Dragon Tamer Mike",
+     "Twins Clea & Gil",
      "Dragon Tamer Darin"
     ],
     "signs": [
@@ -74890,6 +75099,77 @@
       "Dragon Shrine",
       "A place to honor the dragons."
      ]
+    ],
+    "hidden": {
+     "10,11": "REVIVE",
+     "28,48": "MAX_ELIXIR",
+     "4,21": "MAX_POTION"
+    },
+    "people": [
+     {
+      "text": "Clair",
+      "action": "EVENT",
+      "condition": "dragon_quiz_done",
+      "flag_condition": "not clair_tm_dragon_pulse",
+      "event": {
+       "lines": [
+        "Clair: I'm sorry about before. You beat me fair and square.",
+        "Clair: You have all eight Badges now. The Pokemon League is at Indigo Plateau: Surf east from New Bark Town.",
+        "Clair: ...Though your face says you still have unfinished business. Don't give up, whatever happens. Or I'll feel even worse about losing!",
+        "Clair: Here. Take this as an apology."
+       ],
+       "gift_item": {
+        "TM138": 1
+       },
+       "flag": "clair_tm_dragon_pulse"
+      }
+     },
+     "IRON",
+     "CALCIUM",
+     "MAX ELIXIR",
+     {
+      "text": "{rival_name}",
+      "action": "EVENT",
+      "condition": {
+       "any": [
+        "weekday:tue",
+        "weekday:thu"
+       ]
+      },
+      "event": {
+       "lines": [
+        "{rival_name}: ...What? Yeah, I'm training my Pokemon here. Go ahead and laugh.",
+        "{rival_name}: ...But it has to be done. My Pokemon and I are going to get stronger. Together."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D44R0102.png",
+      "at": [
+       4,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D44R0102.png",
+      "at": [
+       4,
+       1
+      ],
+      "size": [
+       50,
+       56
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -74901,7 +75181,15 @@
    "Cooltrainer Gwen": 1,
    "Cooltrainer Paul": 1,
    "Dragon Tamer Mike": 1,
-   "Dragon Tamer Darin": 1
+   "Dragon Tamer Darin": 1,
+   "MAX ELIXIR": 1,
+   "IRON": 1,
+   "CALCIUM": 1,
+   "Ace Trainer Kobe": 1,
+   "Ace Trainer Piper": 1,
+   "Twins Clea & Gil": 1,
+   "Clair": 1,
+   "{rival_name}": 1
   },
   "descend": true,
   "roofs": {
@@ -74920,7 +75208,7 @@
    "c.......c",
    "c.......c",
    "c.......c",
-   "c.......c",
+   "cN.....Nc",
    "c.......c",
    "c.......c",
    "c.j...j.c",
@@ -74934,9 +75222,175 @@
   },
   "buildings": {},
   "people": [
-   "Talk to the Elder"
+   {
+    "text": "Elder",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "..."
+     ],
+     "stages": [
+      {
+       "requires": [
+        "not:johto_beat_clair",
+        "not:has_rising_badge"
+       ],
+       "lines": [
+        "Elder: This is the Dragon Shrine. Only those Clair has sent may take the dragon clan's test."
+       ]
+      },
+      {
+       "requires": [
+        "not:dragon_quiz_done"
+       ],
+       "quiz": [
+        {
+         "q": "What are Pokemon to you?",
+         "options": [
+          "Allies",
+          "Juniors",
+          "Friends"
+         ],
+         "right": 2
+        },
+        {
+         "q": "What helps you win battles?",
+         "options": [
+          "Strategy",
+          "Training",
+          "Cheating"
+         ],
+         "right": 1
+        },
+        {
+         "q": "What kind of Trainer do you want to battle?",
+         "options": [
+          "Weak ones",
+          "Strong ones",
+          "Anyone"
+         ],
+         "right": 2
+        },
+        {
+         "q": "What matters most in raising Pokemon?",
+         "options": [
+          "Love",
+          "Violence",
+          "Knowledge"
+         ],
+         "right": 0
+        },
+        {
+         "q": "Strong Pokemon or weak Pokemon: which matter more?",
+         "options": [
+          "Strong",
+          "Both",
+          "Weak"
+         ],
+         "right": 1
+        }
+       ],
+       "quiz_flag": "dragon_quiz_done",
+       "lines": [
+        "Elder: So Clair sent you. Then I must learn how you see your Pokemon.",
+        "Elder: Answer honestly. There is no hurry."
+       ],
+       "after": [
+        "Elder: Hm... I see. You care for your Pokemon deeply. Never lose that feeling; it will carry you through the League.",
+        "Clair: Grandfather, well? I knew it. They failed, didn't they?",
+        "Elder: They passed, Clair. Better than you did, as I recall. Admit your defeat and give them the Badge, or I'll be telling Lance.",
+        "Clair: ...Fine. Here. The Rising Badge."
+       ],
+       "give_badge": "RISING",
+       "after_badge": [
+        "Elder: Have you heard of Lugia? It is said to live around the Whirl Islands. Remember that name."
+       ],
+       "cancel": [
+        "Elder: Come back when you are ready to answer."
+       ]
+      },
+      {
+       "requires": [
+        "dragon_quiz_done"
+       ],
+       "flag": "dragon_shrine_dratini",
+       "max_party": 5,
+       "lines": [
+        "Elder: You have earned my trust. Take this Dratini as proof of it, and raise it with that same kindness."
+       ],
+       "gift_pokemon": 147,
+       "gift_level": 15,
+       "gift_moves": {
+        "if": "dragon_quiz_done_perfect",
+        "moves": [
+         "EXTREME-SPEED",
+         "WRAP",
+         "THUNDER-WAVE",
+         "TWISTER"
+        ],
+        "else": [
+         "LEER",
+         "WRAP",
+         "THUNDER-WAVE",
+         "TWISTER"
+        ]
+       },
+       "full": [
+        "Elder: I have something to entrust to you, but your party is full. Come back with room for one more."
+       ]
+      }
+     ],
+     "done": [
+      "Elder: Clair seems to have learned a lesson from you. I thank you, as her grandfather."
+     ]
+    }
+   },
+   {
+    "text": "Shrine elder",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "It's been a long time since a Trainer earned our Master's approval. Not since young Master Lance, I think."
+     ]
+    }
+   },
+   {
+    "text": "Shrine elder ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "You know Master Lance? He looks just like our Master did when he was young. It runs in the family."
+     ]
+    }
+   }
   ],
-  "overheads": []
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/D44R0103.png",
+    "at": [
+     2,
+     8
+    ],
+    "size": [
+     9,
+     13
+    ],
+    "px": 32
+   }
+  ],
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/D44R0103.png",
+    "at": [
+     2,
+     8
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  }
  },
  "JOHTO_ROUTE_45": {
   "art": [
@@ -74971,10 +75425,10 @@
    "cccc\"\"\"\"ccoocc==.cccccccc==.cccc",
    "cccc\"\"\"\"ccoocc=..cccccccc==.cccc",
    "cccc\"\"\"\"ccoocc..Xcccccccc===cccc",
-   "cccc\"\"\"\"ccoocc___cccccccc===cccc",
+   "cccc\"\"\"\"ccoocc___ccccccccX==cccc",
    "cccc\"\"\"\"ccoocc\"\"\"ccccccccX==cccc",
    "cccc....ccoocc\"\"\"ccccrrcc___cccc",
-   "cccc....ccoocc\"\"\"ccccrrcc===cccc",
+   "cccc.N..ccoocc\"\"\"ccccrrcc===cccc",
    "cccc.===ccoocc\"\"\"cccccccc===cccc",
    "cccc====ccoocc\"\"\"cccccccc===cccc",
    "ccccc...ccoocc\"\"\"cccccccc===cccc",
@@ -74990,7 +75444,7 @@
    "ccccc..==coooooc_______ccccccccc",
    "ccccc...=coooooc=======ccccccccc",
    "ccccc=...cccoooc=======ccccccccc",
-   "ccccc===..fcoooc.======ccccccccc",
+   "ccccc===..fcoooc.=====Nccccccccc",
    "ccccc==X=..coooccccc___ccccccccc",
    "ccccc=====.coooccccc\"\"\"ccccccccc",
    "ccccc=====fcoooccccc\"\"\"ccccccccc",
@@ -75000,7 +75454,7 @@
    "cccccc=====coooc\"\"\".\"\"\"ccccccccc",
    "cccccc=====coooc\"\"\".\"\"\"ccccccccc",
    "cccccc_____coooc\"\"\".\"\"\"ccccccccc",
-   "cccccc=====ccccc\"\"\"ccccccccccccc",
+   "cccccc=====cccccX\"\"ccccccccccccc",
    "cccccc=====,...,\"X\"\"\"\"cccccccccc",
    "cccccc=====,...,\"\"\"\"\"\"cccccccccc",
    "cccccc=====,...,\"\"\"\"\"\"cccccccccc",
@@ -75017,7 +75471,7 @@
    "cccccccc\"\"\"\"\"cccoooc___ccccccccc",
    "cccccccc\"\"\"\"\"\"\"coooc===ccccrrccc",
    "cccccccc\"\"\"\"\"\"\"coooc===ccccrrccc",
-   "cccccccc\"\"\"\"\"=\"coooc___ccccccccc",
+   "cccccccc\"\"\"\"\"N\"coooc___ccccccccc",
    "cccccccc\"\"\"\"\"\"\"coooc===ccccccccc",
    "cccccccc\"\"\"cccccoooc===ccccccccc",
    "cccccccc\"\"\"coooooooc===ccccccccc",
@@ -75030,7 +75484,7 @@
    "cccc_______ccccc===(======cccccc",
    "cccc=======coooc===(======cccccc",
    "cccc.======coooc===c______cccccc",
-   "cccc.=====ccoooc==.\"\"\"\"\"\"\"cccccc",
+   "cccc.==N==ccoooc==.\"\"\"\"\"\"\"cccccc",
    "cccc.=====cooooc==.\"\"\"\"\"\"\"cccccc",
    "cccc______cooocc=..\"\"\"\"\"\"\"cccccc",
    "cccc\"\"\"\"\"\"coooc=..\"\"\"\"\"\"\"\"\"\"\"ccc",
@@ -75050,7 +75504,7 @@
    "cccc\"\"\"\"c.coooc...cccccccc==.ccc",
    "cccc\"\"\"\"c.coooc..Xcccccc..==.ccc",
    "cccc\"\"\"\"c.coooc...cccccc.X=..ccc",
-   "cccc\"=\"\"c.coooc....fccccf....ccc",
+   "cccc\"N\"\"c.coooc....fccccf....ccc",
    "cccc\"\"\"\"c.coooc....fccccf....ccc",
    "cccc\"\"\"\"c.coooccc...cccc_____ccc",
    "cccc...=c.coooooc...\"\"\"\"\"\"\"\"\"ccc",
@@ -75107,7 +75561,18 @@
    "<": "JOHTO_ROUTE_46"
   },
   "buildings": {},
-  "roofs": {},
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/R45.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  },
   "parts": true,
   "signs": [
    [
@@ -75122,63 +75587,39 @@
   "trainer_spots": [
    "Hiker Erik",
    "Cooltrainer Kelly",
+   "Ace Trainer Ryan",
    "Hiker Parry",
    "Cooltrainer Ryan",
+   "Ace Trainer Kelly",
    "Blackbelt Kenji",
    "Hiker Timothy",
    "Hiker Michael"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     17,
-     134,
-     1,
-     1
+    "kind": "picture",
+    "f": "ss_top/R45.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     22,
-     142,
-     6,
-     1
+    "size": [
+     32,
+     160
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     6,
-     148,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     153,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     155,
-     10,
-     1
-    ],
-    "of": "tree"
+    "px": 32
    }
+  ],
+  "hidden": {
+   "9,97": "PP_UP",
+   "0,149": "PP_MAX"
+  },
+  "people": [
+   "DRAGON FANG",
+   "ELIXIR",
+   "MAX POTION",
+   "FULL HEAL",
+   "NUGGET"
   ]
  },
  "JOHTO_ROUTE_46": {
@@ -75207,7 +75648,7 @@
    "cTTcrrccccccccccccc_____ccccc==>",
    "cTTcrrccccccccccccc.....ccccc==>",
    "cTTcccccccccccccccc...../////==>",
-   "cTTfff.X.......(........cccccccc",
+   "cTTNff.X.......(........cccccccc",
    "cTTff..........(......cccccccccc",
    "cTTf...........(....TTcccccccccc",
    "cTT........ffcccc___TTcccccccccc",
@@ -75254,7 +75695,18 @@
    "v": "JOHTO_ROUTE_29"
   },
   "buildings": {},
-  "roofs": {},
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/R46.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  },
   "signs": [
    [
     "Dark Cave",
@@ -75272,95 +75724,21 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     9,
-     10,
-     1,
-     1
+    "kind": "picture",
+    "f": "ss_top/R46.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     8,
-     11,
-     1,
-     1
+    "size": [
+     32,
+     64
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     7,
-     14,
-     12,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     25,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     4,
-     48,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     6,
-     52,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     8,
-     56,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     60,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     60,
-     1,
-     1
-    ],
-    "of": "tree"
+    "px": 32
    }
+  ],
+  "people": [
+   "REVIVE"
   ]
  },
  "KANTO_ROUTE_27": {
