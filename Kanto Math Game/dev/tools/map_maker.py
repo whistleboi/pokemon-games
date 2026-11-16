@@ -88,8 +88,8 @@ ROOF_PRESETS = [(232, 92, 64), (72, 122, 214), (96, 170, 108), (80, 152, 166), (
 
 # the park builder's groups, tab by tab (a piece's index.json may name its own "group"; else it's guessed from its name)
 GROUPS = {"Buildings": ["Centers & Marts", "Houses", "Shops & towers", "Landmarks"],
-          "Scenery": ["Stairs", "Paths & ground", "Trees & plants", "Rocks", "Statues", "Signs & lamps", "Furniture", "Vehicles", "Fences & walls", "Props"],
-          "Ground": ["Ground", "Water", "Cliffs & ledges", "Bridges"], "Ways out": ["Ways out", "People"], "Height": []}
+          "Scenery": ["Stairs", "Paths & ground", "Trees & plants", "Rocks", "Mounds", "Statues", "Signs & lamps", "Furniture", "Vehicles", "Fences & walls", "Props"],
+          "Ground": ["Paths", "Grass", "Water", "Ledges"], "Ways out": ["Ways out", "People"], "Height": []}
 SOURCES = {"alola": "KingTapir", "biome": "Kyle-Dove", "lotus": "LotusKing", "hgss": "Akizakura16", "gen5": "UltimoSpriter",
            "hoenn_sv": "SailorVicious", "kaliser": "Kaliser", "bp": "Banished Platinum"}
 _WORDS = [("Stairs", "stair steps"), ("Trees & plants", "tree palm pine jungle tropic sprout bush grove flower hedge plant"),
@@ -206,6 +206,7 @@ class MapDoc:
         self.theme = None
         self.ref = None              # {"path": ..., "alpha": 0-255}
         self.objects = []            # ready-made pieces standing on the map: {"k": "alola:palm", "at": [x, y]} (on ` tiles)
+        self.paint = {}              # painted ground: {(x, y): surface} (assets/tiles/autotiles; roofs "_paint" in the map)
         self.extra = {}              # the entry's other keys (kept as they were: rooms, scenes, ...)
 
     # ---- reading and writing the game's format
@@ -225,6 +226,11 @@ class MapDoc:
         extras = {k: v for k, v in (m.get("roofs") or {}).items() if k not in d.roofs}
         sets = {p["key"].split(":")[0] for p in LIBRARY}
         objs = extras.pop("_objects", []) or []
+        pt = extras.pop("_paint", None) or {}
+        for y, row in enumerate((pt.get("rows") or [])[:d.h]):
+            for x, code in enumerate(row[:d.w]):
+                if code in (pt.get("key") or {}):
+                    d.paint[(x, y)] = pt["key"][code]
         d.objects = [o for o in objs if isinstance(o.get("k"), str) and o["k"].split(":")[0] in sets and "at" in o]
         if len(d.objects) < len(objs):
             extras["_objects"] = [o for o in objs if o not in d.objects]
@@ -245,6 +251,8 @@ class MapDoc:
         roofs.update({k: v for k, v in self.roofs.items() if k in used})
         if self.objects:
             roofs["_objects"] = list(roofs.get("_objects") or []) + self.objects
+        if self.paint_spec():
+            roofs["_paint"] = self.paint_spec()
         m.update({"art": rows, "buildings": {k: v for k, v in self.buildings.items() if k in used}, "roofs": roofs,
                   "exits": {k: v for k, v in self.exits.items() if k in used},
                   "people": [p for p in order({c: p for c, p in self.people.items() if self.cell(*c) == "N"})],
@@ -256,11 +264,37 @@ class MapDoc:
 
     def snapshot(self):
         return copy.deepcopy((self.w, self.h, self.art, self.levels, self.buildings, self.roofs, self.names,
-                              self.exits, self.people, self.signs, self.theme, self.ref, self.objects, self.extra))
+                              self.exits, self.people, self.signs, self.theme, self.ref, self.objects, self.extra, self.paint))
 
     def restore(self, s):
         (self.w, self.h, self.art, self.levels, self.buildings, self.roofs, self.names, self.exits, self.people,
-         self.signs, self.theme, self.ref, self.objects, self.extra) = copy.deepcopy(s)
+         self.signs, self.theme, self.ref, self.objects, self.extra, self.paint) = copy.deepcopy(s)
+
+    def paint_spec(self):
+        """The painted ground as the map holds it: {"key": {code: surface}, "rows": [...]} ("." unpainted), or None."""
+        live = {xy: n for xy, n in self.paint.items() if n in AUTOTILES and self.cell(*xy) in (AUTOTILES[n].get("char"), "`")}
+        if not live:
+            return None
+        codes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        names = sorted(set(live.values()))
+        code = dict(zip(names, codes))
+        rows = [["."] * self.w for _ in range(self.h)]
+        for (x, y), n in live.items():
+            rows[y][x] = code[n]
+        return {"key": {c: n for n, c in code.items()}, "rows": ["".join(r) for r in rows]}
+
+    def paint_cell(self, x, y, name):
+        """Paint a tile with a surface (its walking character goes in the map; "" rubs it back to grass). Never over a
+        building, a placed piece or cliff rock. True if it changed."""
+        if not (0 <= x < self.w and 0 <= y < self.h) or self.owner(x, y) or self.cell(x, y) in ("`", "c"):
+            return False
+        ch = AUTOTILES[name]["char"] if name else "."
+        if self.cell(x, y) == ch and self.paint.get((x, y), "") == name:
+            return False
+        self.set(x, y, ch)
+        if name:
+            self.paint[(x, y)] = name
+        return True
 
     # ---- cells
     def cell(self, x, y):
@@ -304,6 +338,7 @@ class MapDoc:
     def set(self, x, y, ch):
         if not (0 <= x < self.w and 0 <= y < self.h):
             return
+        self.paint.pop((x, y), None)
         if self.owner(x, y) and not self.is_building(ch) and ch != "D":
             L = self.owner(x, y)
             self.remove_building(L)
@@ -319,6 +354,11 @@ class MapDoc:
                 return o
         return None
 
+    def painted_char(self, x, y):
+        """The walking character of a tile's painted ground (sand: =), or "." where it isn't painted."""
+        n = self.paint.get((x, y))
+        return AUTOTILES[n]["char"] if n in AUTOTILES else "."
+
     def remove_object_at(self, x, y):
         o = self.object_at(x, y)
         if o:
@@ -327,7 +367,7 @@ class MapDoc:
             for yy in range(o["at"][1], o["at"][1] + (p["h"] if p else 1)):
                 for xx in range(o["at"][0], o["at"][0] + (p["w"] if p else 1)):
                     if self.cell(xx, yy) == "`":
-                        self.art[yy][xx] = "."
+                        self.art[yy][xx] = self.painted_char(xx, yy)
 
     def place_object(self, x, y, piece):
         """A ready-made prop (a palm, a totem): its footprint in the way (`), the piece drawn over it. Stairs (a "walk"
@@ -340,7 +380,7 @@ class MapDoc:
                     self.remove_building(self.owner(xx, yy))
                 if self.cell(xx, yy) == "`" or self.object_at(xx, yy):
                     self.remove_object_at(xx, yy)
-                self.art[yy][xx] = "." if piece.get("walk") else "`"
+                self.art[yy][xx] = self.painted_char(xx, yy) if piece.get("walk") else "`"   # (painted ground runs on under it)
         self.objects.append({"k": piece["key"], "at": [x, y]})
         return True
 
@@ -415,6 +455,7 @@ class MapDoc:
                 continue
             seen.add((a, b))
             self.art[b][a] = ch
+            self.paint.pop((a, b), None)
             todo += [(a + 1, b), (a - 1, b), (a, b + 1), (a, b - 1)]
 
     def resize(self, w, h, fill="."):
@@ -425,6 +466,7 @@ class MapDoc:
             for k in ("rock", "steps"):
                 cl[k] = [((cl[k][y] if y < len(cl[k]) else "") + "." * w)[:w] for y in range(h)]
         self.w, self.h = w, h
+        self.paint = {(x, y): n for (x, y), n in self.paint.items() if x < w and y < h}
         for L in list(self.buildings):
             if not any(L in r for r in self.art):
                 self.buildings.pop(L, None)
@@ -582,7 +624,20 @@ class Slider:
 # again and again. Drag anything placed to move it; right-click it to take it away. The ground brushes paint 1, 3 or 5
 # tiles at a time (the game draws the edges); the height brush raises or lowers the ground and the cliffs rebuild when
 # you let go (dev/tools/cliff_tiers.py).
-BUILDER_TABS = ["Buildings", "Scenery", "Height", "Ways out"]
+BUILDER_TABS = ["Buildings", "Scenery", "Ground", "Height", "Ways out"]
+
+
+def autotiles():
+    """The ground you paint (assets/tiles/autotiles, kanto_handoff/tileset_catalog/autotiles.py): {name: meta}. Each one
+    draws its own edges and corners from its neighbours (art.py _paint)."""
+    try:
+        with open(os.path.join("assets", "tiles", "autotiles", "index.json"), encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+AUTOTILES = autotiles()
 # (Jordan, 11-15: the park builder offers only pictures from the games and tile artists, not the map maker's own drawn
 #  buildings, scenery and ground; those stay in the classic panel's lists, and the game still draws maps with them)
 HIDDEN = os.path.join("dev", "builders", "pieces", "hidden.json")
@@ -613,6 +668,11 @@ def builder_items():
                      ":": "Water", "q": "Water", "$": "Water", "T": "Forest", "2": "Forest", "r": "Mountain", "b": "Mountain",
                      "0": "Mountain", "/": "Mountain", "@": "Ruins"}.get(c)
             out[tab].append({"char": c, "label": n, "group": group, "source": OURS, "theme": theme, "gen": "Ours"})
+    for name, meta in AUTOTILES.items():     # (painted ground: its edges draw themselves)
+        out["Ground"].append({"surface": name, "label": meta["label"], "group": meta.get("group", "Paths"),
+                              "theme": meta.get("theme"), "source": meta.get("credit", "").split(" (")[0] or OURS})
+    out["Ground"].append({"surface": "", "label": "Plain grass (rubs painted ground out)", "group": "Paths", "source": OURS})
+    out["Ground"].append({"ledge": True, "label": "Ledge (drag along it)", "group": "Ledges", "source": OURS})
     out["Height"] = [{"height": "raise", "label": "Raise the ground"}, {"height": "lower", "label": "Lower the ground"}] + \
                     [{"height": i, "label": f"Level {i}"} for i in range(4)]
     return out
@@ -635,8 +695,11 @@ class ParkBuilder:
         tw = (w - 4 * (len(BUILDER_TABS) - 1)) // len(BUILDER_TABS)
         self.b_tab_btns = [Button((x0 + i * (tw + 4), 76, tw, 28), t, lambda t=t: self.builder_tab(t), toggle=lambda t=t: self.b_tab == t)
                            for i, t in enumerate(BUILDER_TABS)]
-        self.b_brush_btns = [Button((x0 + 96 + i * 52, 112, 46, 26), f"{n}x{n}", lambda n=n: setattr(self, "b_brush", n), toggle=lambda n=n: self.b_brush == n)
-                             for i, n in enumerate((1, 3, 5))]
+        self.b_brush_btns = [Button((x0 + 96 + i * 52, 112, 46, 26), f"{n}x{n}" if isinstance(n, int) else n.title(),
+                                    lambda n=n: setattr(self, "b_brush", n), toggle=lambda n=n: self.b_brush == n)
+                             for i, n in enumerate((1, 3, 5, "box", "fill"))]
+        self.b_box_from = None         # a box being dragged out (Ground: box): its first corner
+        self.b_ledge = None            # a ledge being drawn: its tiles in the order dragged; then the last one drawn
         H = self.screen.get_height()
         self.b_search = getattr(self, "b_search", None) or TextBox((0, 0, 10, 10), "", "search: palm, house, Ekat99...")
         filt = lambda _v: self.pick_chip("b_source", self.b_source)     # (a list changed: back to the top of the pictures)
@@ -796,6 +859,10 @@ class ParkBuilder:
 
     @staticmethod
     def item_key(i):
+        if "surface" in i:
+            return "surface:" + i["surface"]
+        if "ledge" in i:
+            return "ledge"
         return i["preset"][4]["key"] if "preset" in i and i["preset"][4] else (
             "game:" + i["preset"][0] if "preset" in i else "char:" + i["char"] if "char" in i else f"height:{i['height']}")
 
@@ -822,6 +889,8 @@ class ParkBuilder:
 
     def builder_tab(self, t):
         self.b_tab = t
+        if t != "Ground" and not isinstance(self.b_brush, int):
+            self.b_brush = 1
         self.b_group, self.b_source = "All", "All sets"
         for dd in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
             dd.index, dd.open = 0, False
@@ -838,6 +907,14 @@ class ParkBuilder:
                 img, _fx, _fy, _up = self.preset_picture(item["preset"])
             elif "char" in item:
                 img = self.preview(("a", item["char"]), self.asset_rows(item["char"]))
+            elif "ledge" in item:
+                img = self.preview(("a", "_"), self.asset_rows("_"))
+            elif "surface" in item:
+                name = item["surface"]
+                ch = AUTOTILES[name]["char"] if name else "."
+                rows = [".....", "." + ch * 3 + ".", ch * 4 + ".", "." + ch * 3 + ".", "....."]
+                paint = {"key": {"a": name}, "rows": ["".join("a" if c == ch else "." for c in r) for r in rows]} if name else None
+                img = self.preview(("surface", name), rows, None, {"_paint": paint} if paint else {})
             else:
                 img = pygame.Surface((96, 96))
                 op = item["height"]
@@ -901,7 +978,13 @@ class ParkBuilder:
                           "grab": (w // 2, h // 2)}
             self.status = f"{item['label']}: click the map to place it (right-click or Esc: put it down)"
         elif "char" in item:
-            self.status = f"Brush: {item['label']} ({self.b_brush}x{self.b_brush}) - click or drag on the map"
+            self.status = f"Brush: {item['label']} ({self.brush_n()}x{self.brush_n()}) - click or drag on the map"
+        elif "ledge" in item:
+            self.status = ("Ledge: drag along it. Across the map it hops south; up or down it hops toward the lower ground, "
+                           "else dragged down hops east, dragged up hops west (F flips it)")
+        elif "surface" in item:
+            how = {"box": "drag out a box", "fill": "click to fill the whole stretch"}.get(self.b_brush, "click or drag to paint")
+            self.status = f"{item['label']}: {how}; the edges and corners draw themselves"
         else:
             op = item["height"]
             self.show_levels = True
@@ -913,8 +996,11 @@ class ParkBuilder:
         c = self.carry
         if not self.fits(x, y, c["w"], c["h"]):
             return False
-        for yy in range(y, y + c["h"]):          # (trees and props under it go)
+        prop = ("move" in c and c["move"]["type"] == "object") or ("preset" in c and bool(c["preset"][4]) and c["preset"][4]["prop"])
+        for yy in range(y, y + c["h"]):          # (trees and props under it go; a placed piece keeps painted ground under it)
             for xx in range(x, x + c["w"]):
+                if prop and (xx, yy) in self.doc.paint and self.doc.cell(xx, yy) == self.doc.painted_char(xx, yy):
+                    continue
                 if self.doc.cell(xx, yy) != ".":
                     self.doc.set(xx, yy, ".")
         if "move" in c:
@@ -1027,7 +1113,9 @@ class ParkBuilder:
 
     def brush_at(self, tx, ty):
         item = self.b_pick
-        r = self.b_brush // 2
+        if "surface" in item or "ledge" in item:
+            return self.ground_at(tx, ty)
+        r = self.brush_n() // 2
         for yy in range(ty - r, ty + r + 1):
             for xx in range(tx - r, tx + r + 1):
                 if not (0 <= xx < self.doc.w and 0 <= yy < self.doc.h) or (xx, yy) in self.b_stroke:
@@ -1048,15 +1136,111 @@ class ParkBuilder:
         if "char" in item:
             self.changed()
 
+    def brush_n(self):
+        """The brush's width in tiles (a box or a fill: one tile at a time where they don't apply)."""
+        return self.b_brush if isinstance(self.b_brush, int) else 1
+
+    def brush_buttons(self):
+        return self.b_brush_btns if self.b_tab == "Ground" else self.b_brush_btns[:3]
+
+    def ground_at(self, tx, ty):
+        """The Ground tab's brush: paint a surface (its edges draw themselves), or lay a ledge tile."""
+        item = self.b_pick
+        if "ledge" in item:
+            if (tx, ty) not in self.b_stroke and 0 <= tx < self.doc.w and 0 <= ty < self.doc.h and not self.doc.owner(tx, ty) \
+                    and self.doc.cell(tx, ty) not in ("`", "c"):
+                self.b_stroke.add((tx, ty))
+                self.b_ledge["cells"].append((tx, ty))
+                self.doc.set(tx, ty, "_")
+                self.changed()
+            return
+        if self.b_brush == "box":
+            return                      # (a box is laid when the mouse comes up)
+        if self.b_brush == "fill":
+            self.fill_ground(tx, ty, item["surface"])
+            return
+        r = self.brush_n() // 2
+        for yy in range(ty - r, ty + r + 1):
+            for xx in range(tx - r, tx + r + 1):
+                if (xx, yy) not in self.b_stroke:
+                    self.b_stroke.add((xx, yy))
+                    self.doc.paint_cell(xx, yy, item["surface"])
+        self.changed()
+
+    def fill_ground(self, tx, ty, name):
+        """Paint the whole stretch of like ground round (tx, ty): every tile joined to it (not corner to corner) with the
+        same character and paint, up to buildings, pieces and anything different."""
+        d = self.doc
+        if not (0 <= tx < d.w and 0 <= ty < d.h):
+            return 0
+        like = (d.cell(tx, ty), d.paint.get((tx, ty), ""))
+        todo, seen = [(tx, ty)], set()
+        while todo:
+            x, y = todo.pop()
+            if (x, y) in seen or not (0 <= x < d.w and 0 <= y < d.h) or (d.cell(x, y), d.paint.get((x, y), "")) != like \
+                    or d.owner(x, y):
+                continue
+            seen.add((x, y))
+            todo += [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
+        n = sum(d.paint_cell(x, y, name) for x, y in seen)
+        self.changed()
+        self.status = f"Filled {n} tiles" + (" (the edges draw themselves)" if name else " with plain grass")
+        return n
+
+    def box_ground(self, a, b, name):
+        (x0, y0), (x1, y1) = a, b
+        n = sum(self.doc.paint_cell(x, y, name) for y in range(min(y0, y1), max(y0, y1) + 1) for x in range(min(x0, x1), max(x0, x1) + 1))
+        self.changed()
+        self.status = f"Painted a box of {n} tiles"
+
+    def finish_ledge(self):
+        """Which way the ledge just drawn faces: a run across the map hops south; a run up or down it hops toward the
+        lower ground (by the levels), else the way the drag went: dragged down, it hops east; dragged up, west (F flips
+        it). Each tile is the part of the run it's on, so an L-shaped ledge turns its corner."""
+        cells = self.b_ledge["cells"]
+        if not cells:
+            return
+        on = set(cells)
+        lv = lambda x, y: self.doc.levels[y][x] if 0 <= x < self.doc.w and 0 <= y < self.doc.h else None
+        west = sum((lv(x - 1, y) or 0) for x, y in cells)
+        east = sum((lv(x + 1, y) or 0) for x, y in cells)
+        down = cells[-1][1] >= cells[0][1]
+        side = ")" if east < west else "(" if west < east else (")" if down else "(")
+        for x, y in cells:
+            across = (x - 1, y) in on or (x + 1, y) in on or not ((x, y - 1) in on or (x, y + 1) in on)
+            self.doc.art[y][x] = "_" if across else side
+        self.b_ledge = {"cells": [], "last": cells}
+        self.changed()
+        kinds = {self.doc.art[y][x] for x, y in cells}
+        self.status = ("Ledge laid: " + ", ".join({"_": "hop south", "(": "hop west", ")": "hop east"}[k] for k in sorted(kinds))
+                       + ("  (F flips the side ones)" if kinds - {"_"} else ""))
+
+    def flip_ledge(self):
+        last = (self.b_ledge or {}).get("last") or []
+        side = [(x, y) for x, y in last if self.doc.cell(x, y) in ("(", ")")]
+        if not side:
+            return False
+        self.push()
+        for x, y in side:
+            self.doc.art[y][x] = "(" if self.doc.art[y][x] == ")" else ")"
+        self.changed()
+        self.status = "Ledge flipped: it hops " + ("west" if self.doc.cell(*side[0]) == "(" else "east")
+        return True
+
     def end_stroke(self):
         if self.b_stroke is None:
             return
         item = self.b_pick
+        if item and "ledge" in item:
+            self.finish_ledge()
+        elif item and "surface" in item and self.b_brush == "box" and self.b_box_from:
+            self.box_ground(self.b_box_from, self.b_box_to, item["surface"])
+        self.b_box_from = None
         if item and "height" in item:
             n = self.doc.cliffs_from_levels()
             self.changed()
             self.status = f"Ground reshaped; {n} cliff tiles" if n else "Ground reshaped (all one level: no cliffs)"
-        elif item and item.get("char") in EXIT_CHARS + "N!":
+        elif item and item.get("char") and item["char"] in EXIT_CHARS + "N!":
             x, y = next(iter(self.b_stroke))
             c = item["char"]
             self.set_detail(("exit", c) if c in EXIT_CHARS else ("person", (x, y)) if c == "N" else ("sign", (x, y)))
@@ -1096,6 +1280,8 @@ class ParkBuilder:
             if e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE:
                 self.put_down()
                 return True
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_f and not typing and self.flip_ledge():
+                return True
             return False
         if e.type == pygame.MOUSEWHEEL and panel.collidepoint(pygame.mouse.get_pos()):
             n = len(self.items_view())
@@ -1120,7 +1306,7 @@ class ParkBuilder:
             if self.b_pic_open and self.b_ref_alpha.event(e):
                 return True
             pic = self.b_src_btns + self.b_frame_btns if self.b_pic_open else []
-            for b in [self.btn_save, self.btn_builder, self.b_hidden_btn] + self.b_tab_btns + self.b_chips + self.b_brush_btns + self.b_view_btns + pic:
+            for b in [self.btn_save, self.btn_builder, self.b_hidden_btn] + self.b_tab_btns + self.b_chips + self.brush_buttons() + self.b_view_btns + pic:
                 if b.click(pos):
                     return True
             for i, r in enumerate(self.b_roof_rects):
@@ -1156,9 +1342,13 @@ class ParkBuilder:
                     self.undo_stack.pop()
                     self.status = "It doesn't fit there (red): something's in the way, or it's off the map"
                 return True
-            if self.b_pick and ("char" in self.b_pick or "height" in self.b_pick):
+            if self.b_pick and any(k in self.b_pick for k in ("char", "height", "surface", "ledge")):
                 self.push()
                 self.b_stroke = set()
+                if "ledge" in self.b_pick:
+                    self.b_ledge = {"cells": [], "last": (self.b_ledge or {}).get("last")}
+                if "surface" in self.b_pick and self.b_brush == "box":
+                    self.b_box_from = self.b_box_to = (tx, ty)
                 self.brush_at(tx, ty)
                 return True
             if not self.pick_up(*self.piece_tile(pos)):
@@ -1167,7 +1357,10 @@ class ParkBuilder:
         if e.type == pygame.MOUSEMOTION:
             if self.b_stroke is not None and canvas.collidepoint(pos):
                 tx, ty = self.to_tile(pos)
-                self.brush_at(tx, ty)
+                if self.b_box_from:
+                    self.b_box_to = (max(0, min(self.doc.w - 1, tx)), max(0, min(self.doc.h - 1, ty)))
+                elif not (self.b_pick and "surface" in self.b_pick and self.b_brush == "fill"):
+                    self.brush_at(tx, ty)
                 return True
             return False
         if e.type == pygame.MOUSEBUTTONUP and e.button == 1:
@@ -1231,7 +1424,7 @@ class ParkBuilder:
             dd.draw(s, self.small, mouse)
         if self.b_tab in ("Ground", "Height", "Ways out"):
             s.blit(self.font.render("Brush size", True, DIM), (x0, self.b_brush_y + 4))
-            for b in self.b_brush_btns:
+            for b in self.brush_buttons():
                 b.draw(s, self.font, mouse)
         elif not self.b_chips:
             s.blit(self.small.render("Click a picture, then the map. Drag placed things to move them.", True, DIM), (x0, 118))
@@ -1303,8 +1496,15 @@ class ParkBuilder:
         if not self.b_pick or "preset" in self.b_pick or not self.canvas_rect().collidepoint(mouse):
             return
         tx, ty = self.to_tile(mouse)
-        r, Z = self.b_brush // 2, self.zoom
-        pygame.draw.rect(self.screen, (255, 255, 255), (self.ox + (tx - r) * Z, self.oy + (ty - r) * Z, self.b_brush * Z, self.b_brush * Z), 2)
+        Z = self.zoom
+        if self.b_box_from:            # (a box being dragged out)
+            (x0, y0), (x1, y1) = self.b_box_from, self.b_box_to
+            x0, x1, y0, y1 = min(x0, x1), max(x0, x1), min(y0, y1), max(y0, y1)
+            pygame.draw.rect(self.screen, (255, 255, 255), (self.ox + x0 * Z, self.oy + y0 * Z, (x1 - x0 + 1) * Z, (y1 - y0 + 1) * Z), 2)
+            return
+        n = 1 if ("ledge" in self.b_pick or "surface" in self.b_pick) and not isinstance(self.b_brush, int) else self.brush_n()
+        r = n // 2
+        pygame.draw.rect(self.screen, (255, 255, 255), (self.ox + (tx - r) * Z, self.oy + (ty - r) * Z, n * Z, n * Z), 2)
 
 
 # ---------------------------------------------------------------- the map maker
@@ -2003,6 +2203,8 @@ class MapMaker(ParkBuilder):
         roofs = dict(self.doc.roofs, **(self.doc.extra.get("_roof_extras") or {}))
         if self.doc.objects:
             roofs["_objects"] = list(roofs.get("_objects") or []) + list(self.doc.objects)
+        if self.doc.paint_spec():
+            roofs["_paint"] = self.doc.paint_spec()
         return roofs
 
     def preview(self, key, rows, kinds=None, roofs=None):

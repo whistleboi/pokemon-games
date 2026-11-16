@@ -264,6 +264,8 @@ def surface(art, kinds, tile, roofs=None, theme=None):
         if not pic and 0 <= y < h and 0 <= x < w and art[y][x] == ".":
             _snow_patch(surf, pygame.Rect(x * tile, y * tile, tile, tile), [(x + dx, y + dy) in wet for dx, dy in ((0, -1), (1, 0), (0, 1), (-1, 0))],
                         (150, 196, 236), (176, 216, 246))
+    if not pic:
+        _paint(surf, (roofs or {}).get("_paint"), art, tile)  # (ground painted in the map maker: it draws its own edges)
     for y in range(h):
         for x in range(w):
             c = art[y][x]
@@ -1257,6 +1259,67 @@ def _picture(spec, w, h, tile):
         return part if tile == 16 else pygame.transform.scale(part, (w * tile, h * tile))
     except Exception:
         return None
+
+
+def _autotile(name):
+    """A painted surface's autotile (assets/tiles/autotiles/<name>.png, RPG Maker XP's 96 x 128 layout) and its index entry."""
+    key = ("autotile", name)
+    if key not in _PT:
+        _PT[key] = None
+        try:
+            import json as _json
+            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", "autotiles")
+            if ("index", "autotiles") not in _PT:
+                with open(os.path.join(base, "index.json"), encoding="utf-8") as f:
+                    _PT[("index", "autotiles")] = _json.load(f)
+            meta = _PT[("index", "autotiles")].get(name)
+            if meta:
+                _PT[key] = (pygame.image.load(os.path.join(base, name + ".png")), meta)
+        except (OSError, ValueError, pygame.error):
+            _PT[key] = None
+    return _PT[key]
+
+
+def _autotile_piece(img, same, tile):
+    """One tile of an autotile, built from four 16 px quarters by which of its eight neighbours are the same surface
+    (same(dx, dy)): a middle, an edge, an outer corner or an inside corner, as RPG Maker lays them out."""
+    q = pygame.Surface((32, 32), pygame.SRCALPHA)
+    for qx in (0, 1):
+        for qy in (0, 1):
+            dx, dy = (-1 if qx == 0 else 1), (-1 if qy == 0 else 1)
+            h, v, d = same(dx, 0), same(0, dy), same(dx, dy)
+            if h and v and not d:      # an inside corner (the top right block)
+                col, row = 4 + qx, qy
+            else:                      # the 3 x 3 block below: edges, outer corners, the middle
+                col = (2 if h else 0) if qx == 0 else (3 if h else 5)
+                row = (4 if v else 2) if qy == 0 else (5 if v else 7)
+            q.blit(img, (qx * 16, qy * 16), (col * 16, row * 16, 16, 16))
+    return q if tile == 32 else pygame.transform.scale(q, (tile, tile))
+
+
+def _paint(surf, spec, art, tile):
+    """A map's painted ground (roofs "_paint": {"key": {code: surface}, "rows": [...]}, the map maker's Ground tab):
+    each painted tile drawn from its surface's autotile with the edge or corner its neighbours call for. A tile shows
+    its paint only while the map still has the surface's own character there, or a placed piece (`) standing on it."""
+    if not spec:
+        return
+    key, rows = spec.get("key") or {}, spec.get("rows") or ()
+    h, w = len(art), len(art[0])
+    names = {}
+    for y, row in enumerate(rows[:h]):
+        for x, code in enumerate(row[:w]):
+            got = _autotile(key.get(code)) if code in key else None
+            if got and art[y][x] in (got[1].get("char"), "`"):   # (` : a placed piece stands on it; the ground runs on under it)
+                names[(x, y)] = key[code]
+    for (x, y), name in names.items():
+        img, meta = _autotile(name)
+        joins = {name, *(meta.get("joins") or ())}   # (surfaces counted as this one: the sea runs on under a beach in it)
+        same = lambda dx, dy: not (0 <= x + dx < w and 0 <= y + dy < h) or names.get((x + dx, y + dy)) in joins
+        mask = tuple(same(dx, dy) for dx, dy in ((-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)))
+        ck = ("autopiece", name, mask, tile)
+        if ck not in _PT:
+            _PT[ck] = _autotile_piece(img, same, tile)
+        surf.blit(_PT[ck], (x * tile, y * tile))
 
 
 def _cliff_tiles(spec, art):

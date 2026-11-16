@@ -54,7 +54,7 @@
   "theme": "Mountain"
  },
  "stone_stairs_2": {
-  "name": "Stone stairs (2 high)",
+  "name": "Stone stairs (3 wide, 2 high)",
   "ox": 0,
   "oy": 0,
   "foot": [
@@ -63,7 +63,7 @@
   ],
   "doors": [],
   "kind": "prop",
-  "label": "Stone stairs (2 high)",
+  "label": "Stone stairs (3 wide, 2 high)",
   "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
   "gen": "Gen 4",
   "artist": "Banished Platinum",
@@ -72,7 +72,7 @@
   "theme": "Mountain"
  },
  "stone_stairs_3": {
-  "name": "Stone stairs (3 high)",
+  "name": "Stone stairs (3 wide, 3 high)",
   "ox": 0,
   "oy": 0,
   "foot": [
@@ -81,7 +81,7 @@
   ],
   "doors": [],
   "kind": "prop",
-  "label": "Stone stairs (3 high)",
+  "label": "Stone stairs (3 wide, 3 high)",
   "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
   "gen": "Gen 4",
   "artist": "Banished Platinum",
@@ -90,7 +90,7 @@
   "theme": "Mountain"
  },
  "stone_stairs_4": {
-  "name": "Stone stairs (4 high)",
+  "name": "Stone stairs (3 wide, 4 high)",
   "ox": 0,
   "oy": 0,
   "foot": [
@@ -99,7 +99,7 @@
   ],
   "doors": [],
   "kind": "prop",
-  "label": "Stone stairs (4 high)",
+  "label": "Stone stairs (3 wide, 4 high)",
   "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
   "gen": "Gen 4",
   "artist": "Banished Platinum",
@@ -108,7 +108,7 @@
   "theme": "Mountain"
  },
  "stone_stairs_5": {
-  "name": "Stone stairs (5 high)",
+  "name": "Stone stairs (3 wide, 5 high)",
   "ox": 0,
   "oy": 0,
   "foot": [
@@ -117,7 +117,7 @@
   ],
   "doors": [],
   "kind": "prop",
-  "label": "Stone stairs (5 high)",
+  "label": "Stone stairs (3 wide, 5 high)",
   "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
   "gen": "Gen 4",
   "artist": "Banished Platinum",
@@ -278,5 +278,131 @@
   "model": "stair_d01",
   "walk": true,
   "group": "Stairs"
+ },
+ "cliff_stairs_narrow_2": {
+  "name": "Cliff stairs, 2-wide flight (2 wide)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Cliff stairs, 2-wide flight (2 wide)",
+  "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
+  "gen": "Gen 4",
+  "artist": "Banished Platinum",
+  "walk": true,
+  "group": "Stairs",
+  "theme": "Mountain"
+ },
+ "cliff_stairs_narrow_3": {
+  "name": "Cliff stairs, 2-wide flight (3 wide)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   3,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Cliff stairs, 2-wide flight (3 wide)",
+  "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
+  "gen": "Gen 4",
+  "artist": "Banished Platinum",
+  "walk": true,
+  "group": "Stairs",
+  "theme": "Mountain"
+ },
+ "cliff_stairs_narrow_4": {
+  "name": "Cliff stairs, 2-wide flight (4 wide)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   4,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Cliff stairs, 2-wide flight (4 wide)",
+  "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
+  "gen": "Gen 4",
+  "artist": "Banished Platinum",
+  "walk": true,
+  "group": "Stairs",
+  "theme": "Mountain"
+ },
+ "stone_stairs_narrow_2": {
+  "name": "Stone stairs (2 wide, 2 high)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   2
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone stairs (2 wide, 2 high)",
+  "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
+  "gen": "Gen 4",
+  "artist": "Banished Platinum",
+  "walk": true,
+  "group": "Stairs",
+  "theme": "Mountain"
+ },
+ "stone_stairs_narrow_3": {
+  "name": "Stone stairs (2 wide, 3 high)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   3
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone stairs (2 wide, 3 high)",
+  "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
+  "gen": "Gen 4",
+  "artist": "Banished Platinum",
+  "walk": true,
+  "group": "Stairs",
+  "theme": "Mountain"
+ },
+ "stone_stairs_narrow_4": {
+  "name": "Stone stairs (2 wide, 4 high)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   4
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone stairs (2 wide, 4 high)",
+  "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
+  "gen": "Gen 4",
+  "artist": "Banished Platinum",
+  "walk": true,
+  "group": "Stairs",
+  "theme": "Mountain"
+ },
+ "stone_stairs_narrow_5": {
+  "name": "Stone stairs (2 wide, 5 high)",
+  "ox": 0,
+  "oy": 0,
+  "foot": [
+   2,
+   5
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Stone stairs (2 wide, 5 high)",
+  "credit": "Banished Platinum outdoor tileset (Wesley FG, BiggusWeeabus, LotusKing; game by Zygoat)",
+  "gen": "Gen 4",
+  "artist": "Banished Platinum",
+  "walk": true,
+  "group": "Stairs",
+  "theme": "Mountain"
  }
 }

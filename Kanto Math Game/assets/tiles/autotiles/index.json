@@ -1,0 +1,117 @@
+{
+ "sand": {
+  "label": "Sand path",
+  "char": "=",
+  "group": "Paths",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)",
+  "theme": "Tropical"
+ },
+ "dirt": {
+  "label": "Dirt path",
+  "char": "d",
+  "group": "Paths",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)"
+ },
+ "gravel": {
+  "label": "Gravel",
+  "char": "e",
+  "group": "Paths",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)",
+  "theme": "Mountain"
+ },
+ "brick": {
+  "label": "Brick path",
+  "char": "p",
+  "group": "Paths",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)",
+  "theme": "Town"
+ },
+ "white_path": {
+  "label": "White stone path",
+  "char": "e",
+  "group": "Paths",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)",
+  "theme": "Town"
+ },
+ "cave_sand": {
+  "label": "Brown sand",
+  "char": "=",
+  "group": "Paths",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)",
+  "theme": "Desert"
+ },
+ "light_grass": {
+  "label": "Light grass",
+  "char": ".",
+  "group": "Grass",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)"
+ },
+ "tall_grass": {
+  "label": "Tall grass (wild)",
+  "char": "\"",
+  "group": "Grass",
+  "credit": "Banished Platinum (Zygoat); outdoor tiles by Wesley FG, BiggusWeeabus, LotusKing",
+  "theme": "Forest"
+ },
+ "snow_grass": {
+  "label": "Snowy tall grass (wild)",
+  "char": "\"",
+  "group": "Grass",
+  "credit": "Banished Platinum (Zygoat); outdoor tiles by Wesley FG, BiggusWeeabus, LotusKing",
+  "theme": "Snow"
+ },
+ "sea": {
+  "label": "Sea with a sand shore (Surf)",
+  "char": "o",
+  "group": "Water",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)",
+  "theme": "Water",
+  "joins": [
+   "sand_island"
+  ]
+ },
+ "sand_island": {
+  "label": "Beach in the sea",
+  "char": "s",
+  "group": "Water",
+  "credit": "Pokemon Essentials v21.1 (Maruno and the Essentials team; default resources)",
+  "theme": "Tropical"
+ },
+ "beach_water": {
+  "label": "Water in a pale beach (Surf)",
+  "char": "o",
+  "group": "Water",
+  "credit": "Banished Platinum (Zygoat); outdoor tiles by Wesley FG, BiggusWeeabus, LotusKing",
+  "theme": "Tropical",
+  "joins": [
+   "sand_island"
+  ]
+ },
+ "lake": {
+  "label": "Lake, earth rim (Surf)",
+  "char": "o",
+  "group": "Water",
+  "credit": "Banished Platinum (Zygoat); outdoor tiles by Wesley FG, BiggusWeeabus, LotusKing",
+  "theme": "Water",
+  "joins": [
+   "sand_island"
+  ]
+ },
+ "shore": {
+  "label": "Sea, wooden shore (Surf)",
+  "char": "o",
+  "group": "Water",
+  "credit": "Pokemon Journeys V18 fan game (its team and the tile artists it credits)",
+  "theme": "Water",
+  "joins": [
+   "sand_island"
+  ]
+ },
+ "lava": {
+  "label": "Lava",
+  "char": "*",
+  "group": "Water",
+  "credit": "Pokemon Journeys V18 fan game (its team and the tile artists it credits)",
+  "theme": "Volcano"
+ }
+}
