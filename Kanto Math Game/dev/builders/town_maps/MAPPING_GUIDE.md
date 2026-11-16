@@ -235,3 +235,12 @@ It should end with `##### 0 failures`.
 - Deliver the changed `<region>.py` (and any data or `LABELS` edits) as a patch.
 - Include the side-by-side image, the builder's output, and a short list of anything you weren't sure about.
 - Claude reviews each map against its source before it's merged. Jordan approves layouts.
+
+
+## The map maker
+
+The map maker is its own project now: `Pokemath Map Maker`, beside this folder (its README says how to use it). It
+draws with this game's `src/dungeon/art.py`, its piece library first (art.py's `TILE_DIRS`). Its Export puts a map in
+`dev/builders/town_maps/made/<KEY>.json`, copies the library pictures the map uses into `assets/tiles/<set>/`, and runs
+`dev/builders/build_town_maps.py --only=made`. The build takes made maps in as region `made` (last, so one replaces a
+region's map with the same key) and checks them like any other.

@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # (the game folder: src.dungeon.art, for whose door is whose)
 
 # One file a region (dev/builders/town_maps/<region>.py), in story order.
-REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii", "orre"]
+REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii", "orre", "made"]   # (made: the map maker's, from its Export)
 
 
 ONLY = next((a.split("=", 1)[1].split(",") for a in sys.argv[1:] if a.startswith("--only=")), None)
@@ -55,7 +55,7 @@ def check(key, m):
     w = len(art[0])
     bad = [(i, len(r)) for i, r in enumerate(art) if len(r) != w]
     assert not bad, f"{key}: rows not {w} wide: {bad}"
-    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;0123456789?'"):  # (? a crate: Orre's S.S. Libra; ' round stones: the Jagged Pass)
+    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;0123456789?'`"):  # (` a ready-made piece's footprint)  # (? a crate: Orre's S.S. Libra; ' round stones: the Jagged Pass)
         from src.dungeon import art as _a
         cells = [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c == ch or
                  (c == "D" and (_a.door_owner(art, x, y) == ch or (_a.door_owner(art, x, y) is None and 0 <= y - 1 and art[y - 1][x] == ch)))]
