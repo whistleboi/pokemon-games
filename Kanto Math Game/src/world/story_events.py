@@ -421,7 +421,7 @@ def gift_for_starter(gift, starter_id):
     return gift
 
 
-def gift_pokemon(game, pid, level=None):
+def gift_pokemon(game, pid, level=None, held=None):
     """Give a Pokemon to the player (party, or the PC when the party is full), at the area's wild
     level or at `level` (the Sinjoh Ruins' Lv 1 dragons). Returns the message."""
     from src.pokemon.data import Pokemon
@@ -433,6 +433,8 @@ def gift_pokemon(game, pid, level=None):
     if level:
         mon.level = int(level)
         mon.current_hp = mon.get_max_hp()
+    if held:
+        mon.held_item = held
     if len(story.player_team) < 6:
         story.player_team.append(mon)
         where = "joined your team"

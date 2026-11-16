@@ -21,6 +21,7 @@ MEDICINE = {
     "SODA_POP": {"heal": 50, "price": 300, "text": "A fizzy soda drink. Restores 50 HP."},
     "LEMONADE": {"heal": 70, "price": 400, "text": "A very sweet drink. Restores 70 HP."},
     "MOOMOO_MILK": {"heal": 100, "price": 600, "text": "Rich milk from Miltank. Restores 100 HP."},
+    "BERRY_JUICE": {"heal": 20, "price": 100, "text": "A juice made from Berries. Restores 20 HP."},   # (HGSS: Shuckie holds one)
     "ANTIDOTE": {"cure": ["poison", "toxic"], "price": 200, "text": "Cures poison."},
     "PARALYZE_HEAL": {"cure": ["paralysis"], "price": 200, "text": "Cures paralysis."},
     "AWAKENING": {"cure": ["sleep"], "price": 100, "text": "Wakes up a sleeping Pokemon."},
@@ -92,7 +93,7 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
 HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
-               "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC"}   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
+               "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING"}   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
 FEWER_WILD = {"CLEANSE_TAG"}
 DEFENCE_HELD = {"EVIOLITE"}  # (held by a Pokemon that can still evolve: its defences up by half. Route 123, 11-12)  # (held by your lead: fewer wild Pokemon on a map. Mt. Pyre's old woman, 11-12)
 HELD_BOOST = 1.2
@@ -113,6 +114,7 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "HARD_STONE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Rock-type moves hit harder."},
         "POISON_BARB": {"price": 1000, "text": "Give it to a Pokemon to hold: its Poison-type moves hit harder."},
         "TWISTED_SPOON": {"price": 1000, "text": "Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
+        "SHARP_BEAK": {"price": 1000, "text": "Give it to a Pokemon to hold: its Flying-type moves hit harder."},   # (HGSS: Monica, Route 40)
         "MAGNET": {"price": 1000, "text": "Give it to a Pokemon to hold: its Electric-type moves hit harder."},   # (HGSS: Sunny, Route 37)
         "SOOTHE_BELL": {"price": 100, "text": "Held: its holder grows friendly with you faster."},   # (HGSS: the National Park, 11-15)
         "LEFTOVERS": {"price": 4000, "text": "Held: its holder gets back a little HP at the end of every turn."}}   # (the S.S. Tidal's hidden one, Emerald)

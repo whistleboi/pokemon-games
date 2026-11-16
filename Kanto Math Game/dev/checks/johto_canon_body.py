@@ -486,5 +486,24 @@ _gift = lambda door, item: any(o.get("door") == door and (o.get("event") or {}).
 check(_gift("guru", "GOOD_ROD") and _gift("cafe", "HM_STRENGTH"), "Olivine: the Fishing Guru's Good Rod, and Strength from the cafe's sailor")
 check(_hms.HM_BY_BADGE["JOHTO"].get("PLAIN") is None and _hms.USE_BADGE["JOHTO"].get("HM_STRENGTH") == "PLAIN", "...Strength usable with the Plain Badge (no longer given by it)")
 check(any((o.get("event") or {}).get("trade", {}).get("want") == 98 for o in _ol), "...the Krabby-for-Voltorb trade (Billy holds a Cheri Berry)")
+# ---- N9: Cianwood, Routes 40 and 41 (HGSS)
+_cw = {p.get("text"): p for p in _ppl("CIANWOOD_CITY")}
+_wife = (_cw.get("Chuck's wife") or {}).get("event") or {}
+check(_wife.get("gift_item", {}).get("HM_FLY") and _wife.get("requires") == ["has_storm_badge"], "Cianwood: Chuck's wife gives Fly once you have the Storm Badge")
+check(_hms.HM_BY_BADGE["JOHTO"].get("STORM") is None and _hms.USE_BADGE["JOHTO"].get("HM_FLY") == "STORM", "...usable with the Storm Badge (no longer given by it)")
+_ck = next((o for o in _area["CIANWOOD_CITY"]["explore_options"] if o.get("door") == "kirk"), {}).get("event") or {}
+check(_ck.get("gift_pokemon") == 213 and _ck.get("gift_held") == "BERRY_JUICE", "...Kirk asks you to look after Shuckie, his Shuckle, holding Berry Juice")
+_had_team = list(story.player_team)
+from src.world import story_events as _se
+_msg = _se.gift_pokemon(g, 213, 15, "BERRY_JUICE")
+_sh = next((p for p in list(story.player_team) + [q for q in story.pc_pokemon if q] if getattr(p, "id", None) == 213), None)
+check(_sh is not None and getattr(_sh, "held_item", None) == "BERRY_JUICE", "...and Shuckie arrives holding it")
+story.player_team = _had_team
+check(any(sc.get("flag") == "johto_suicune_cianwood" for sc in _tm["CIANWOOD_CITY"].get("scenes", [])), "...Suicune by the north rocks, then gone across the sea")
+_r40 = {p.get("text"): p for p in _ppl("JOHTO_ROUTE_40")}
+check(_r40.get("Monica", {}).get("condition") == "weekday:mon" and (_r40["Monica"].get("event") or {}).get("gift_item", {}).get("SHARP_BEAK"),
+      "Route 40: Monica, on Mondays, gives a Sharp Beak")
+check("Swimmer Kirk" in _tm["JOHTO_ROUTE_41"].get("trainer_spots", []) and len(_tm["JOHTO_ROUTE_41"]["trainer_spots"]) == 11,
+      "Route 41: SoulSilver's swimmers, and our own Swimmer Kirk still out on the water")
 if fails:
     print("FAILS:", len(fails))

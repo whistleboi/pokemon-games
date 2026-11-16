@@ -8,7 +8,7 @@ Alola, Galar and Paldea have no HMs; their gates use their own story steps inste
 HM_BY_BADGE = {
     "KANTO": {"SOUL": "HM_SURF"},  # (Cut: the S.S. Anne's captain; Fly: Route 16's house; Strength: the Warden. 11-07)
     "JOHTO": {
-              "STORM": "HM_FLY", "GLACIER": "HM_WHIRLPOOL", "RISING": "HM_WATERFALL"},
+              "GLACIER": "HM_WHIRLPOOL", "RISING": "HM_WATERFALL"},
     # (Hoenn's Rock Smash, Strength and Fly are story gifts before their badges: Wally's uncle in Mauville,
     # the rival on Route 112 and on Route 119; Jordan, 11-06: one source for each key item in a region)
     "HOENN": {"STONE": "HM_CUT", "KNUCKLE": "HM_FLASH", "BALANCE": "HM_SURF", "MIND": "HM_DIVE",
@@ -23,7 +23,7 @@ HM_BY_BADGE = {
 
 # HMs handed out by the story, used only once a badge allows it (HGSS: Elder Li's Flash works after the Zephyr Badge, the
 # charcoal maker's Cut after the Hive Badge; Jordan 11-15: "true to cannon").
-USE_BADGE = {"JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE", "HM_ROCK_SMASH": "ZEPHYR", "HM_SURF": "FOG", "HM_STRENGTH": "PLAIN"}}   # (Surf: the Dance Theater's gentleman, HGSS)   # (Rock Smash: the man on Route 36, after Sudowoodo)
+USE_BADGE = {"JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE", "HM_ROCK_SMASH": "ZEPHYR", "HM_SURF": "FOG", "HM_STRENGTH": "PLAIN", "HM_FLY": "STORM"}}   # (Surf: the Dance Theater's gentleman, HGSS)   # (Rock Smash: the man on Route 36, after Sudowoodo)
 
 
 def usable(story, item):

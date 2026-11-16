@@ -61823,9 +61823,9 @@
    "cccccrrcccc=====================",
    "cccccrrcccc=================ssss",
    "ccccccccccc==============ssssss>",
-   "ccccccccccc============ssssssss>",
-   "ccccccccccc==========!sssssssss>",
-   "cccccccccccs========sssssssssss>",
+   "ccccccccccc============sssssNss>",
+   "ccccccccccc==========!ssNssssss>",
+   "cccccccccccs==N=====sssssssssss>",
    "cccccccccccss====ssssssssssoooo>",
    "cccccccccccssssssssssssssssoooo>",
    "ccccccccccsssssssssssssssssooooo",
@@ -61852,7 +61852,7 @@
    "oooooqqoooooooooooooooooossrrooo",
    "oooooqqoooooooooooooooooossssrqo",
    "oooooqqoooooooooooooooooossssrqo",
-   "ooooooqqooooooooooooooooosssssrq",
+   "ooooooqqooooooooooooooooosssNsrq",
    "ooooooqqooooooooooooooooosssssrq",
    "ooooooqqoooooooooooooooooossssrq",
    "ooooooqooooooooooooooooooossssrq",
@@ -61893,7 +61893,17 @@
      133,
      124
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/W40.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "signs": [
    [
@@ -61908,25 +61918,66 @@
   "trainer_spots": [
    "Swimmer Simon",
    "Swimmer Elaine",
-   "Swimmer Paula",
-   "Swimmer Randall"
+   "Swimmer Randall",
+   "Swimmer Paula"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     11,
-     4,
-     6,
-     1
+    "kind": "picture",
+    "f": "ss_top/W40.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "roof",
-    "colour": [
-     91,
-     137,
-     128
-    ]
+    "size": [
+     32,
+     64
+    ],
+    "px": 32
    }
+  ],
+  "hidden": {
+   "28,44": "HYPER_POTION"
+  },
+  "people": [
+   {
+    "text": "Swimmer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The sea's so warm today! I could swim all the way to Cianwood!"
+     ]
+    }
+   },
+   {
+    "text": "Monica",
+    "action": "EVENT",
+    "condition": "weekday:mon",
+    "event": {
+     "lines": [
+      "Glad to meet you! I'm Monica, and Monday's my day!",
+      "Monica: Here, a Sharp Beak! A Pokemon holding it hits harder with Flying-type moves."
+     ],
+     "gift_item": {
+      "SHARP_BEAK": 1
+     },
+     "flag": "got_sharp_beak_johto_route_40",
+     "done": [
+      "Monica: My brothers and sisters are all over Johto, each on their own day. Have you met them all?"
+     ]
+    },
+    "color": "GOLD"
+   },
+   {
+    "text": "Surfer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Hey! Great waves here! Nobody can resist waves like these!"
+     ]
+    }
+   },
+   "SUPER POTION"
   ]
  },
  "JOHTO_ROUTE_41": {
@@ -61943,7 +61994,7 @@
    "uoooooooooooooooooooo~oooooooooq~oooooqoooooqoooooooq~ooooooooqq",
    "uooooooooooooqqoooqq~qooooooooooooooqqoooooooosssssooqooooooooqq",
    "uoooocco~qq~~qqcc~qqqoxxxoooooooooooqooosssssssssssoooqqooooooqq",
-   "uoooocccqooqqooccqooooxxxoooooooooooq~oosssssssssssssooqooooooqq",
+   "uoooocccqooqqooccqooooxxxoooooooooooq~oosssssssssssssooqoXooooqq",
    "uooooccccooooooccoooooxxxooooooooqqooqoosssssssssssssooccoooooqq",
    "uooooocccssssssoooooooooo~~ooooooooqqoooscccccccccssssoccXooooqq",
    "uooooocccssssssooqqooooooqq~ooooooooqoooscccccccccssssocccooooqq",
@@ -61962,17 +62013,17 @@
    "uooooooooooqqoooooooooqoooooooooooooooooooqqoqqq~qqooooxxxooooqq",
    "uoooooooooooo~ooooccooqoooooooooooooooooooooooooqoqqooooooooooqq",
    "uooooooooooooq~qq~ccccooooooooooooo~ooooooooooooooqqooooooooooqq",
-   "uoooooqqooooooqooqccccoooooooooooooqooooooooooooooooooooooooooqq",
+   "uoooooqqooooooqooqccccooooooooXooooqoooooooooooooXooooooooooooqq",
    "uooooooooooooooooooo~~ooooooooooooooooooqqoooooooooooooooooooo~~",
    "uooooooooooooooooooooooqqooooooooooooooooooooooooooooooooooooqqo",
-   "uooooooooooooooooooooooqqoooooooooooo~oooooooooooooo~ooooooooqqo",
+   "uooooooooooooooooooooooqqoooooooooooo~oooooooooooooo~oooooXooqqo",
    "uooooooooooooooooooooooooooooooooooooqoqqoooooooooooqooooooooqqo",
    "uooooooooooooooooqqooqqoooooooooooooooooooooooooo~oooooooooooqqo",
    "uooo~oooooooooqq~qoqqqo~~cccoooooooooqq~cccoo~o~oqo~o~qqoooooqqo",
    "uoooqoooooooooqoqqoooqoqqcccoooooooo~ooqcccqqq~q~~~q~qqqooooooqo",
    "uoooooooooooooqoooooooooocccooooooooq~oooccqqoqoqqqoqo~occooooqq",
    "uooooooooooxxxoooooooooooooqoooooooooqooqoooooooooooooqoccooo~qq",
-   "uooooooooooxxxoooccccoooooooqqoooooqqoooooossssoooooooooqqoooqqq",
+   "uooooooooooxxxoooccccoooooooqqooooXqqoooooossssoooooooooqqoooqqq",
    "uoooooo~oooxxxoocccccooooooooqooooooocccooossssoocccoooooo~oooqq",
    "uooooooqoo~ooooocccccoossssooq~oooooccccooossssooccccoooooq~ooqq",
    "uooooooo~oq~~ooocccccoossssoooqooooocccoooossss~~ccccsssso~qooqq",
@@ -61988,7 +62039,7 @@
    "uoooooqqooqqqqqqooossscccccsooqqoooooqxxxqccooosssssssssooqooqqo",
    "uooooooo~~ooooqqqqoocccccssrq~ooooooooxxxooq~oossssssssooccooqqo",
    "uoooooooqqooooooooccccssssoooqooooooooxxxoooqoossccccsso~ccooqqo",
-   "uooooqqoooooooo~ooccccooooooooooo~ooooooooooq~oo~cccc~~~qooooqqo",
+   "uooooqqoooooooo~XoccccooooooooooX~ooooooooooq~oo~cccc~~~qooooqqo",
    "uooooooooooooooqoooooooooooooooooqoooooooooooq~~qooccqqqoooooqqo",
    "uoooooooooooooooooooooooooooooooooooooooooooooqqooooooooooooqqoo",
    "~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooqqoo",
@@ -62003,12 +62054,52 @@
   },
   "buildings": {},
   "trainer_spots": [
+   "Swimmer Susie",
    "Swimmer George",
-   "Swimmer Berke",
    "Swimmer Kirk",
-   "Swimmer Kaylee"
+   "Swimmer Charlie",
+   "Swimmer Wendy",
+   "Swimmer Berke",
+   "Swimmer Matthew",
+   "Swimmer Kaylee",
+   "Swimmer Kara",
+   "Swimmer Denise",
+   "Swimmer Ronald"
   ],
-  "overheads": []
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/W41.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     64,
+     64
+    ],
+    "px": 32
+   }
+  ],
+  "hidden": {
+   "45,50": "MAX_ETHER",
+   "11,16": "STARDUST",
+   "20,53": "STARDUST",
+   "51,16": "STARDUST",
+   "49,22": "STARDUST"
+  },
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/W41.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  }
  },
  "CIANWOOD_CITY": {
   "art": [
@@ -62022,7 +62113,7 @@
    "ccccccccccccccccccccccooooooooqq",
    "ccccccccccccccccccccccrqqqqqqqqq",
    "ccccccccccccccccccccccrqoooqqoow",
-   "cccccccccccccr..r.)ssssqoooqqoow",
+   "cccccccccccccrN.r.)ssssqoooqqoow",
    "ccccccccccccc..N..)ssssooooqooow",
    "ccccccccccccc...ss)ssssoooqqooow",
    "ccccccAAAA0rr___s_cssssooooqooow",
@@ -62038,13 +62129,13 @@
    "ccccccccccc.ssssNsssoooooooqqoow",
    "ccccccccccc.!sssssssoooooooqqoow",
    "ccccccccccc.ssssssssoooooooqqoow",
-   "ccccccccccc.ssssssssoooooooqqoow",
+   "ccccccccccc.sssssNssoooooooqqoow",
    "ccccccccccc<ssssssssssoooooqqoow",
    "ccccccccccc.sssssssssssssssrrsss",
    "ccccccccccc.ssssssssssssssssssss",
    "ccccccccccc.ssssssssssssssssssss",
    "cccccccccccsssssssssBBBBssssssss",
-   "cccccccccGGGGGGGssssBBBBssssssss",
+   "cccccccccGGGGGGGssNsBBBBssssssss",
    "cccccccccGGGGGGGssssBBBBssss##ss",
    "cccccccccGGGGGGGsss!BDBBrrssssss",
    "cccccccccGGGGGGGssssssssssssssss",
@@ -62052,7 +62143,7 @@
    "cccccccccGGGDGGGssssssssssssssss",
    "cccccccccssssss!ssssHHHHssssssss",
    "cccccccccsssssssssssHHHHssss##ss",
-   "cccccccccsssssssssssHHHHssssssss",
+   "cccccccccssssNssssssHHHHssssssss",
    "cccccccccsssssssssssHHHHssssssss",
    "cccccccccsssssss!sssHDHHssss##ss",
    "cccccccccJJJJsssssssssssssssssss",
@@ -62063,9 +62154,9 @@
    "cccccccccsssssssssPPPPsssCCCCCss",
    "cccccccccs...sssssPPPPsssCCDCCss",
    "ccccccccc.....ssssPDPP!sssssssss",
-   "ccccccccc.....ssssssssssssssssss",
+   "ccccccccc....Nssssssssssssssssss",
    "ccccccccccccc..sssssssssssssssss",
-   "ccccccccccccc........sssssssssss",
+   "ccccccccccccc........Nssssssssss",
    "cccccccccccccrr......sssssssssss",
    "cccccccccccccccccccccccccccccccs",
    "cccccccccccccccccccccccccccccccs",
@@ -62082,11 +62173,11 @@
    "w": "JOHTO_ROUTE_41"
   },
   "buildings": {
-   "A": "house",
-   "B": "house",
+   "A": "bellhouse",
+   "B": "photostudio",
    "G": "gym",
-   "H": "house",
-   "J": "house",
+   "H": "seahouse",
+   "J": "kirk",
    "C": "center",
    "P": "pharmacy"
   },
@@ -62174,12 +62265,93 @@
      121,
      108
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/T24.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "surf": true,
   "people": [
+   {
+    "text": "Suicune",
+    "action": "EVENT",
+    "condition": "johto_beasts_fled",
+    "flag_condition": "not johto_suicune_cianwood",
+    "event": {
+     "lines": [
+      "..."
+     ]
+    }
+   },
    "Talk to Euskine",
-   "Battle Eusine"
+   "Battle Eusine",
+   {
+    "text": "Man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The boulders north of town can be smashed. They might be hiding something! A Pokemon with Rock Smash could do it."
+     ]
+    }
+   },
+   {
+    "text": "Youngster",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "If you use Fly, you can get back to Olivine in an instant."
+     ]
+    }
+   },
+   {
+    "text": "Chuck's wife",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "You crossed the sea to get here? That must have been hard. Fly would make it so much easier!",
+      "You beat Chuck! Then take this HM. It's Fly: with the Storm Badge, your Pokemon can carry you to any town you've been to."
+     ],
+     "gift_item": {
+      "HM_FLY": 1
+     },
+     "flag": "got_hm_fly_cianwood",
+     "done": [
+      "With Fly you can get back to Olivine in no time."
+     ],
+     "requires": [
+      "has_storm_badge"
+     ],
+     "fail": [
+      "But you can't use Fly here without our Gym's badge. Beat my husband, Chuck, then come and see me!"
+     ]
+    },
+    "color": "GOLD"
+   },
+   {
+    "text": "Lass",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Chuck, our Gym Leader, trains with his Fighting-type Pokemon under the waterfall."
+     ]
+    }
+   },
+   {
+    "text": "Old man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "There are islands between here and Olivine. They say a mythical sea creature lives there."
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -62204,120 +62376,52 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     20,
-     30,
-     4,
-     1
+    "kind": "picture",
+    "f": "ss_top/T24.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "roof",
-    "colour": [
-     147,
-     159,
-     193
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     11,
-     31,
-     5,
-     1
+    "size": [
+     32,
+     64
     ],
-    "of": "roof",
-    "colour": [
-     182,
-     119,
-     88
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     37,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     130,
-     148,
-     165
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     9,
-     42,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     130,
-     148,
-     165
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     25,
-     43,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     223,
-     143,
-     99
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     45,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     100,
-     122,
-     152
-    ]
+    "px": 32
    }
   ],
+  "hidden": {
+   "10,12": "REVIVE",
+   "29,37": "STARDUST"
+  },
   "rooms": {
    "gym": {
     "theme": "room",
     "art": [
-     "ccccccccmmmmmmmmmcccccccc",
-     "cmmmmmmmmmmmmmmmmmmmmmmmc",
-     "cmmmmmmmmmmmmmmmmmmmmmmmc",
-     "c..........mmmN.........c",
-     "cmmmm.mmmmmmmmmmmmmmmm.mc",
-     "c.......................c",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccmcccccccccccccc",
+     "ccccccccmmccccmmmcccccccc",
+     "cmmmmmmmmmmcccmmmmmmmmmmc",
+     "c..........cccN.........c",
+     "cmmmm.mmmccmmmccmmmmmm.mc",
+     "ccccc.cccmmmmmmmcccccc.cc",
+     "c..........mmm..........c",
      "cmm.mmmmmmmmmmmmmm.mmmmmc",
      "c.......................c",
-     "cmmmmmmmm.m...mm.mmmm.mmc",
-     "c..........mmm..........c",
-     "cmmmmm.mmmmm.mmmmm.mmmmmc",
+     "cmmmmmmmm.cmmmcm.mmmm.mmc",
+     "ccccccccc.m...mc.cccc.ccc",
+     "c.......................c",
+     "cmmmmm.mmmcmmmcmmm.mmmmmc",
+     "cccccc.cccmm.mmccc.cccccc",
      "c.......................c",
      "c.......................c",
      "c.......................c",
-     "cmmmmmmmmmmm.mmmmmmmmmmmc",
      "c.......................c",
      "c.......................c",
      "c.........c...c.........c",
      "c.........j...j.........c",
      "c...........v...........c",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -63146,10 +63250,36 @@
       150,
       154,
       172
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T24GYM0101.png",
+      "at": [
+       1,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Gym"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T24GYM0101.png",
+      "at": [
+       1,
+       0
+      ],
+      "size": [
+       25,
+       26
+      ],
+      "px": 32
+     }
     ]
    },
    "center": {
@@ -63157,21 +63287,27 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNcccccccczc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -63268,10 +63404,36 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T24PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Heal"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T24PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    "pharmacy": {
@@ -63279,7 +63441,9 @@
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "ccmccmmccccNc",
+     "ccccccccccccc",
+     "c.ccccccccccc",
+     "c.mccmmccccNc",
      "c..ccccc....c",
      "c..ccNcc....c",
      "c..ccmcc....c",
@@ -63329,19 +63493,543 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T24R0501.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Pharmacy",
      "Shop"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T24R0501.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       13,
+       12
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "kirk": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:10,47"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T24R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Kirk"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T24R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "seahouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "cN........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.......N.c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:21,42"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T24R0701.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Woman",
+     "Girl",
+     "Boy"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T24R0701.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "photostudio": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm...mmzc",
+     "c...N.....c",
+     "c.....mm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:21,34"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,2": [
+       161,
+       168,
+       109
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       161,
+       168,
+       109
+      ]
+     },
+     "_kinds": {
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "7,2": "shelf",
+      "8,2": "shelf",
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T24R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Photographer"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T24R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "bellhouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:7,15"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T24R0801.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Old man"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T24R0801.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    }
   },
   "inside": {
    "12,37": "gym",
    "27,49": "center",
-   "19,50": "pharmacy"
-  }
+   "19,50": "pharmacy",
+   "10,47": "kirk",
+   "21,42": "seahouse",
+   "21,34": "photostudio",
+   "7,15": "bellhouse"
+  },
+  "scenes": [
+   {
+    "who": "Suicune",
+    "trigger": {
+     "zone": [
+      12,
+      10,
+      18,
+      13
+     ]
+    },
+    "condition": "johto_beasts_fled",
+    "flag": "johto_suicune_cianwood",
+    "lines": [
+     "Suicune! It stood by the rocks, watching the sea...",
+     "Then it turned, looked straight at you, and bounded away across the waves!"
+    ],
+    "after": "leave"
+   }
+  ]
  },
  "WHIRL_ISLANDS": {
   "theme": "cave",

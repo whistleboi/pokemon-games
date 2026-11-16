@@ -428,7 +428,7 @@ def _run_story_event(state, key, check, show):
         lines.append(f"{game.player_name} received an Egg!")
     gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
     if gift:
-        lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level")))
+        lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level"), ev.get("gift_held")))
     if flag:
         story.story_flags[flag] = True
     if ev.get("trade"):  # an in-game trade (Fortree's girl: a Spinda for her Skitty): your first one they want, for theirs
@@ -506,7 +506,7 @@ def _run_story_event(state, key, check, show):
     if ev.get("photo"):  # (the Memorial Photo Studio, option B: a picture of your team, kept in your Trainer stats)
         import datetime as _dt
         team = [p.display_name for p in story.player_team if p and not getattr(p, "is_egg", False)]
-        story.story_flags.setdefault("photos", []).append({"date": _dt.date.today().isoformat(), "team": team, "place": "Goldenrod"})
+        story.story_flags.setdefault("photos", []).append({"date": _dt.date.today().isoformat(), "team": team, "place": str(story.current_area_key).split("_CITY")[0].replace("_", " ").title()})
         show(_resolve_lines(game, lines + ["Say cheese! ...Click!", f"A photo of you with {', '.join(team) or 'nobody'}. It's kept in your Trainer stats."]))
         return
     if ev.get("raffle"):  # Goldenrod Dept. Store 6F's Daily Drawing (HGSS): $300 a day; a Berry, a Poke Ball or (rarely) a TM

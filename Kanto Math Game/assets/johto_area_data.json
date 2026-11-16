@@ -1096,29 +1096,57 @@
         },
 
         "CIANWOOD_CITY": {
-        "area_type": "town",
-        "route_name": "Cianwood City",
-        "region": "JOHTO",
-        "backgrounds": {
-            "main": "cianwood_city.png",
-            "pokecenter": "cianwood_center.png",
-            "pokemart": "cianwood_mart.png",
-            "gym": "battle_gym_cianwood.png"
-            },
-        "has_gym": true,
-        "gym": {"trainers": [{"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [106], "rewards": {"balls": 2}}, {"name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [107], "rewards": {"balls": 2}}], "leader": {"name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png", "team": [57, 62], "levels": [29, 31], "badge_reward": "STORMBADGE", "rewards": {"balls": 5, "ROCK_SMASHER": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"57": ["LEER", "DOUBLE-TEAM", "ROCK-SLIDE", "FOCUS-PUNCH"], "62": ["HYPNOSIS", "BODY-SLAM", "SURF", "FOCUS-PUNCH"]}}},
-        "travel_options": [
-            { "text": "Route 41", "target_area": "JOHTO_ROUTE_41" }
-        ],
-        "explore_options": [
-          {"text": "Heal", "action": "HEAL"},
-          {"text": "Shop", "door": "pharmacy", "action": "SHOP"},
-          {"text": "Gym", "action": "GYM"},
-          {"text": "Pharmacy", "door": "pharmacy", "action": "NPC", "target": "pharmacist"},
-          {"text": "Talk to Euskine", "action": "NPC", "target": "euskine"},
-          {"text": "Cliff Edge Gate", "action": "TRAVEL", "target_area": "CLIFF_EDGE_GATE", "condition": "has_ROCK_SMASHER"},
-          {"text": "Battle Eusine", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_eusine", "event": {"lines": ["Eusine: I'm Eusine. I've been chasing Suicune for years.", "You've seen it too? Then show me what kind of trainer you are!"], "flag": "defeated_eusine", "battle": {"name": "Mystery Man Eusine", "class": "MYSTERY_MAN", "sprite": "eusine.png", "team": [96, 93, 101], "levels": [25, 25, 27], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Eusine: ...I see why Suicune keeps appearing near you."]}}}}
-        ]
+
+            "area_type": "town",
+
+            "route_name": "Cianwood City",
+
+            "region": "JOHTO",
+
+            "backgrounds": {"main": "cianwood_city.png", "pokecenter": "cianwood_center.png", "pokemart": "cianwood_mart.png", "gym": "battle_gym_cianwood.png"},
+
+            "has_gym": true,
+
+            "gym": {"trainers": [{"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [106], "rewards": {"balls": 2}}, {"name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [107], "rewards": {"balls": 2}}, {"name": "Black Belt Nob", "class": "BLACK_BELT", "sprite": "black_belt.png", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 2}}, {"name": "Black Belt Lung", "class": "BLACK_BELT", "sprite": "black_belt.png", "is_boss_battle": true, "team": [56, 56, 57], "rewards": {"balls": 2}}], "leader": {"name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png", "team": [57, 62], "levels": [29, 31], "badge_reward": "STORMBADGE", "rewards": {"balls": 5, "ROCK_SMASHER": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"57": ["LEER", "DOUBLE-TEAM", "ROCK-SLIDE", "FOCUS-PUNCH"], "62": ["HYPNOSIS", "BODY-SLAM", "SURF", "FOCUS-PUNCH"]}}},
+
+            "travel_options": [
+
+                {"text": "Route 41", "target_area": "JOHTO_ROUTE_41"}
+
+            ],
+
+            "explore_options": [
+
+                {"text": "Heal", "action": "HEAL"},
+
+                {"text": "Shop", "door": "pharmacy", "action": "SHOP"},
+
+                {"text": "Gym", "action": "GYM"},
+
+                {"text": "Pharmacy", "door": "pharmacy", "action": "NPC", "target": "pharmacist"},
+
+                {"text": "Talk to Euskine", "action": "NPC", "target": "euskine"},
+
+                {"text": "Cliff Edge Gate", "action": "TRAVEL", "target_area": "CLIFF_EDGE_GATE", "condition": "has_ROCK_SMASHER"},
+
+                {"text": "Battle Eusine", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_eusine", "event": {"lines": ["Eusine: I'm Eusine. I've been chasing Suicune for years.", "You've seen it too? Then show me what kind of trainer you are!"], "flag": "defeated_eusine", "battle": {"name": "Mystery Man Eusine", "class": "MYSTERY_MAN", "sprite": "eusine.png", "team": [96, 93, 101], "levels": [25, 25, 27], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Eusine: ...I see why Suicune keeps appearing near you."]}}}},
+
+                {"text": "Kirk", "action": "EVENT", "door": "kirk", "color": "GOLD", "event": {"lines": ["A boy about your age with piercing eyes and long red hair came by... He scared me half to death!", "What if he comes back for my Pokemon? Please, will you look after my Shuckle for me? His name's Shuckie."], "gift_pokemon": 213, "gift_held": "BERRY_JUICE", "flag": "got_shuckie", "done": ["Is Shuckie well? For a Pokemon, happiness is being with someone who treats it kindly."]}},
+
+                {"action": "EVENT", "event": {"lines": ["You came from Olivine? Remember the four islands on the way? They say a mythical sea creature lives there."]}, "text": "Woman", "door": "seahouse"},
+
+                {"action": "EVENT", "event": {"lines": ["The whirlpools round those islands are caused by the sea creature, I've heard. You'd need a special move to get past them."]}, "text": "Girl", "door": "seahouse"},
+
+                {"action": "EVENT", "event": {"lines": ["They say you can only see it if you hold a Silver Wing. It must carry the creature's scent."]}, "text": "Boy", "door": "seahouse"},
+
+                {"text": "Photographer", "action": "EVENT", "door": "photostudio", "event": {"lines": ["Hi! You must be a sightseer! Let me take a picture of you and your team."], "photo": true}},
+
+                {"action": "EVENT", "event": {"lines": ["Have you heard of the Bell Tower in Ecruteak? They say a bell at its top rings clear when the legendary Pokemon is near."]}, "text": "Old man", "door": "bellhouse"}
+
+            ],
+
+            "trainer_pool": []
+
         },
 
         "MAHOGANY_TOWN": {
@@ -2048,56 +2076,120 @@
         },
         
         "JOHTO_ROUTE_40": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 40",
+        
             "battle_type": "ocean",
+        
             "wild_pool_percentages": "JOHTO_ROUTE_40_PERCENTAGES",
+        
             "can_fish": true,
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { "name": "Swimmer Simon", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [73], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Elaine", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120, 121], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Paula", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [90], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Randall", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [90, 8], "rewards": { "balls": 2 } }
+        
+                {"name": "Swimmer Simon", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 72], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Elaine", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Paula", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120, 90], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Randall", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [90, 8, 90], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-              {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
-              {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
-              {"text": "Route 41", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
-              {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        
+                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "Route 41", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"},
+        
+                {"text": "SUPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_super_potion_johto_route_40_w40_28_44", "event": {"lines": ["A Super Potion, lying in the grass."], "gift_item": {"SUPER_POTION": 1}, "flag": "got_super_potion_johto_route_40_w40_28_44"}}
+        
             ],
-            "next_area": "JOHTO_ROUTE_41" 
+        
+            "next_area": "JOHTO_ROUTE_41"
+        
         },
         
         "JOHTO_ROUTE_41": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 41",
+        
             "battle_type": "ocean",
+        
             "wild_pool_percentages": "JOHTO_ROUTE_41_PERCENTAGES",
+        
             "can_fish": true,
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
-                { "name": "Swimmer George", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 72, 73], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Berke", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [211], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Kirk", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [130], "rewards": { "balls": 2 } },
-                { "name": "Swimmer Kaylee", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118, 119], "rewards": { "balls": 2 } }
+        
+                {"name": "Swimmer George", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 72, 72, 120, 72, 223], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Berke", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [211], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Kirk", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [130], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Kaylee", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118, 118, 119], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Charlie", "class": "SWIMMER", "sprite": "swimmer.png", "team": [90, 72, 73], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Matthew", "class": "SWIMMER", "sprite": "swimmer.png", "team": [98], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Ronald", "class": "SWIMMER", "sprite": "swimmer.png", "team": [130, 130], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Susie", "class": "SWIMMER", "sprite": "swimmer.png", "team": [54, 118], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Denise", "class": "SWIMMER", "sprite": "swimmer.png", "team": [86], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Kara", "class": "SWIMMER", "sprite": "swimmer.png", "team": [120, 121], "rewards": {"balls": 2}},
+        
+                {"name": "Swimmer Wendy", "class": "SWIMMER", "sprite": "swimmer.png", "team": [116, 116], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        
                 {"text": "Route 40", "action": "EXIT", "target_area": "JOHTO_ROUTE_40", "condition": "can_exit", "color": "RED"},
+        
                 {"text": "Whirl Islands", "action": "EXIT", "target_area": "WHIRL_ISLANDS", "condition": ["can_exit", "has_item:HM_WHIRLPOOL"], "color": "RED"},
+        
                 {"text": "Cianwood City", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED"}
-                ],
+        
+            ],
+        
             "next_area": "CIANWOOD_CITY"
-     },
+        
+        },
         
         "JOHTO_ROUTE_42": {
             "region": "JOHTO",
@@ -3338,10 +3430,8 @@
     "JOHTO_ROUTE_39_PERCENTAGES": { "19": 15, "20": 9, "81": 15, "52": 15, "128": 20, "241": 25, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_39_NIGHT_PERCENTAGES": {"20": 26, "52": 19, "81": 19, "19": 19, "241": 5, "128": 5, "164": 5, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_39_DAY_PERCENTAGES": {"20": 27, "81": 19, "52": 14, "19": 14, "83": 9, "241": 5, "128": 5, "17": 5, "2001": 1, "2002": 1},
-    
-    "JOHTO_ROUTE_40_PERCENTAGES": { "72": 50, "73": 25, "120": 10, "222": 15 },
-    
-    "JOHTO_ROUTE_41_PERCENTAGES": { "72": 50, "73": 30, "226": 20 },
+    "JOHTO_ROUTE_40_PERCENTAGES": {"72": 50, "73": 25, "120": 10, "222": 15},
+    "JOHTO_ROUTE_41_PERCENTAGES": {"72": 50, "73": 30, "226": 20},
     
     "JOHTO_ROUTE_42_PERCENTAGES": { "19": 10, "20": 9, "21": 10, "22": 5, "23": 10, "24": 5, "56": 10, "179": 20, "180": 20, "2001" :1, "2002": 1},
     

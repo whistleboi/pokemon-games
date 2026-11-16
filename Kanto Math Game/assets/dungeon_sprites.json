@@ -6327,6 +6327,33 @@
     },
     "OLIVINE_LIGHTHOUSE_FLOORS:Sailor": {
       "sheet": "hg_seaman.png"
+    },
+    "JOHTO_ROUTE_40:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "CIANWOOD_CITY:Chuck's wife": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "CIANWOOD_CITY:Youngster": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "CIANWOOD_CITY:Man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "CIANWOOD_CITY:Lass": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "CIANWOOD_CITY:Old man": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "JOHTO_ROUTE_40:Monica": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "JOHTO_ROUTE_40:Surfer": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "JOHTO_ROUTE_40:Swimmer": {
+      "sheet": "hg_gsmiddleman1.png"
     }
   },
   "townsperson": "NPC 17.png",
