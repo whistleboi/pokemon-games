@@ -65641,6 +65641,9 @@
     "art": [
      "ccccccccccc",
      "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
      "ccccc^ccccc",
      "czz.....zzc",
      "c.........c",
@@ -65673,12 +65676,42 @@
       236,
       232,
       214
-     ]
-    }
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R43R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R43R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       11,
+       17
+      ],
+      "px": 32
+     }
+    ]
    },
    "gym": {
     "theme": "room",
     "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "cccccccccc",
+     "cccccccccc",
      "cccccccccc",
      "cccccccccc",
      "mmm^mmmmmc",
@@ -65695,11 +65728,11 @@
      "m%%%%mmmmc",
      "mmmm%%%.mc",
      "m...%%%.mc",
-     "m.......mc",
      "m.m...m.mc",
      "m.j...j.mc",
-     "m...v...mc",
-     "mmmmmmmmmc",
+     "c...v...cc",
+     "cmmmmmmmcc",
+     "cccccccccc",
      "cccccccccc"
     ],
     "exits": {
@@ -66087,13 +66120,43 @@
       150,
       154,
       172
-     ]
-    }
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T28GYM0103.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T28GYM0103.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       26
+      ],
+      "px": 32
+     }
+    ]
    },
    "gym_2": {
     "theme": "room",
     "art": [
+     "ccccccccccccc",
      "mmmmmmmmmmmmc",
+     "mcccccccccccc",
+     "mcccccccccccc",
+     "mcccccccccccc",
      "mmmmmmmmmmmmc",
      "mmmmmm<mmmmmc",
      "mmmmm...mmmmc",
@@ -66107,9 +66170,9 @@
      "m..%%%%%%%..c",
      "m....mmmm...c",
      "m...........c",
-     "m...........c",
-     "m.....^.....c",
-     "mmmmmmmmmmmmc",
+     "c.....^.....c",
+     "cmmmmmmmmmmmc",
+     "ccccccccccccc",
      "ccccccccccccc"
     ],
     "exits": {
@@ -66668,15 +66731,45 @@
       150,
       154,
       172
-     ]
-    }
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T28GYM0102.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T28GYM0102.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       22
+      ],
+      "px": 32
+     }
+    ]
    },
    "gym_3": {
     "theme": "room",
     "art": [
      "cccccccccccc",
+     "cccccccccccc",
      "cmmmmmmmmmmc",
-     "cmmmmmmmmmmc",
+     "cmmmmmcccmmc",
+     "cccccccccccc",
+     "ccccccmmmccc",
+     "cccccccccccc",
      "cmmmmm...mmc",
      "cmmmmm.N.mmc",
      "cmmmmm...mmc",
@@ -66691,9 +66784,9 @@
      "c..%m%%%%%mc",
      "c..m%%%m%%mc",
      "c..m%%%%%%mc",
-     "c......mmmmc",
      "c.......mmmc",
-     "c....^..mmmc",
+     "c....^..mmcc",
+     "cccccccccccc",
      "cccccccccccc"
     ],
     "exits": {
@@ -67205,10 +67298,36 @@
       150,
       154,
       172
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T28GYM0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Gym"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T28GYM0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    "center": {
@@ -67216,21 +67335,27 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNcccccccczc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -67327,15 +67452,42 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T28PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Heal"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T28PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    "radiohouse": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm....mmc",
@@ -67418,11 +67570,37 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T28R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Man",
      "Girl"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T28R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "souvenir": {
@@ -67430,8 +67608,11 @@
     "art": [
      "cccccccccccc",
      "cccccccccccc",
-     "mmmccccccccc",
-     "mm....^cc..c",
+     "cccccccccccc",
+     "mccccccccccc",
+     "mccccccccccc",
+     "cmmccccccccc",
+     "cm....^cc..c",
      "c.Nm...NN..c",
      "c..m.......c",
      "ccccc......c",
@@ -67504,7 +67685,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D35R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Dragonite",
@@ -67516,7 +67708,22 @@
       "m": "trail",
       "who": "Lance"
      }
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D35R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       12,
+       14
+      ],
+      "px": 32
+     }
+    ]
    }
   },
   "inside": {
