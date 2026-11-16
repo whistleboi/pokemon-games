@@ -36854,6 +36854,706 @@
     "after": "home"
    },
    {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
+    "who": "Woman",
+    "trigger": {
+     "zone": [
+      0,
+      12,
+      1,
+      18
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:received_starter_johto"
+    ],
+    "every": true,
+    "approach": true,
+    "lines": [
+     "Wait! The tall grass is full of wild Pokemon. Don't go out there without one of your own!"
+    ],
+    "push": [
+     1,
+     0
+    ],
+    "after": "home"
+   },
+   {
     "trigger": {
      "zone": [
       21,
@@ -45302,6 +46002,9 @@
     "art": [
      "ccccccccccc",
      "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
      "ccccc^ccccc",
      "czz.N...zzc",
      "c.........c",
@@ -45334,7 +46037,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R35R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Tinkerer",
@@ -45379,11 +46093,29 @@
        }
       }
      ]
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R35R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       11,
+       17
+      ],
+      "px": 32
+     }
     ]
    },
    "gym": {
     "theme": "room",
     "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
      "ccccccccccc.....cccccccccccccc",
@@ -45426,15 +46158,44 @@
       150,
       154,
       172
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25GYM0101.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Gym"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25GYM0101.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       30,
+       29
+      ],
+      "px": 32
+     }
     ]
    },
    "bike": {
     "theme": "room",
     "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccccccccccccc",
      "cccccccccccccc",
      "cccccccccccccc",
      "ccc.c.c.cccmcc",
@@ -45477,15 +46238,44 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R0201.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Bike Shop"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R0201.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       14,
+       15
+      ],
+      "px": 32
+     }
     ]
    },
    "flower": {
     "theme": "room",
     "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cccccccccccc",
      "cccccccccccc",
      "cccccccccccc",
      "cccc.....ccc",
@@ -45512,10 +46302,36 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R0601.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Flower Shop"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R0601.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       12,
+       13
+      ],
+      "px": 32
+     }
     ]
    },
    "center": {
@@ -45523,10 +46339,16 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
      "ccNcccNccccNccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
@@ -45536,8 +46358,8 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -45634,18 +46456,49 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Big man ",
      "Heal",
      "Center attendant",
      "Little girl "
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    "game_corner": {
     "theme": "room",
     "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
      "ccccccccccccccc",
      "ccccccccccccccc",
      "cz...........zc",
@@ -45714,15 +46567,44 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25SP0101.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Game Corner"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25SP0101.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       15,
+       18
+      ],
+      "px": 32
+     }
     ]
    },
    "dept": {
     "theme": "room",
     "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "czz...................zzc",
@@ -45761,7 +46643,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R1001.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Gentleman",
@@ -45769,11 +46662,29 @@
      "Dept. Store",
      "Boy",
      "Elevator"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R1001.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       25,
+       15
+      ],
+      "px": 32
+     }
     ]
    },
    "dept_2": {
     "theme": "room",
     "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "cz......................c",
@@ -45946,7 +46857,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R1002.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Girl",
@@ -45954,11 +46876,29 @@
      "Gentleman ",
      "Camper",
      "Elevator"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R1002.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       25,
+       15
+      ],
+      "px": 32
+     }
     ]
    },
    "dept_3": {
     "theme": "room",
     "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "czzmmmmmm......N.....yyzc",
@@ -46138,18 +47078,47 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R1003.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Elevator",
      "Jittery man",
      "Dept. Store",
      "Man"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R1003.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       25,
+       15
+      ],
+      "px": 32
+     }
     ]
    },
    "dept_4": {
     "theme": "room",
     "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "czzmmmmmm......N.....zzzc",
@@ -46329,7 +47298,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R1004.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Elevator",
@@ -46337,11 +47317,29 @@
      "Dept. Store",
      "Boy ",
      "Kid"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R1004.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       25,
+       15
+      ],
+      "px": 32
+     }
     ]
    },
    "dept_5": {
     "theme": "room",
     "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "czzmmmmmm...N..N........c",
@@ -46526,7 +47524,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R1005.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Girl ",
@@ -46572,11 +47581,29 @@
      ],
      "Man ",
      "TM lady"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R1005.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       25,
+       15
+      ],
+      "px": 32
+     }
     ]
    },
    "dept_6": {
     "theme": "room",
     "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "cz.......zmmmm...NN...zzc",
@@ -46640,7 +47667,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R1006.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Elevator",
@@ -46649,6 +47687,21 @@
      "Girl  ",
      "Dept. Store",
      "Whitney"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R1006.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       25,
+       15
+      ],
+      "px": 32
+     }
     ]
    },
    "station": {
@@ -46656,11 +47709,13 @@
     "art": [
      "cccccccccccccccccccc",
      "cccccccccccccccccccc",
+     "cccccccccccccccccccc",
+     "cccccccccccccccccccc",
      "ccc......ccccccccccc",
      "ccc......ccccccccccc",
      "ccc......ccccccccccc",
-     "cccc.c.c.ccccccccccc",
-     "cccrrr.rrrcccccccccc",
+     "cccc.c.c.rcccccccccc",
+     "cccrrr.rrccccccccccc",
      "cccrrrNrrrcccccccccc",
      "cz..............zzzc",
      "c..................c",
@@ -46689,7 +47744,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R0501.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      {
@@ -46704,11 +47770,27 @@
       "message": "You board the Magnet Train. It races underground toward Saffron City in Kanto!",
       "action": "TRAVEL"
      }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R0501.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       20,
+       21
+      ],
+      "px": 32
+     }
     ]
    },
    "bill": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm...mmzc",
@@ -46791,17 +47873,44 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R0401.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Talk to Bill",
      "Bill's mother",
      "Bill's sister"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R0401.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "friendship": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm...mmzc",
@@ -46884,17 +47993,44 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Friendship checker",
      "Little girl",
      "Man   "
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "pphouse": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "cmmm...mmzc",
@@ -46977,16 +48113,43 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R0801.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Big man",
      "Girl   "
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R0801.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "namerater": {
     "theme": "room",
     "art": [
+     "ccccccccccc",
      "ccccccccccc",
      "ccccccccccc",
      "c....N....c",
@@ -47043,10 +48206,36 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T25R0901.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Name Rater"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T25R0901.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    }
   },
