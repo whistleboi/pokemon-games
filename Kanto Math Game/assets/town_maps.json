@@ -1505,6 +1505,10 @@
       {
        "text": "Clerk",
        "action": "EVENT",
+       "condition": [
+        "got_oaks_parcel",
+        "not:received_pokedex_kanto"
+       ],
        "event": {
         "lines": [
          "Clerk: Thanks! Please take that parcel to Professor Oak in Pallet Town.",

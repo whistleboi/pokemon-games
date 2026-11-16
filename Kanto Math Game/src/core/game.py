@@ -325,8 +325,21 @@ class Game:
         if hasattr(new_state, "ui_elements"):
             self.ui_manager.elements = new_state.ui_elements
 
+    HANG_SECONDS = 10  # a frame stuck this long: where it is goes to crash.log (a freeze leaves no error of its own)
+
+    def _arm_hang_watch(self):
+        """Re-armed every frame: if the next one never finishes, every thread's stack is written to crash.log."""
+        import faulthandler
+        try:
+            if getattr(self, "_hang_log", None) is None:
+                self._hang_log = open(os.path.join(self.assets.base_dir, "crash.log"), "a", encoding="utf-8")
+            faulthandler.dump_traceback_later(self.HANG_SECONDS, repeat=False, file=self._hang_log)
+        except (OSError, AttributeError, ValueError, RuntimeError):
+            pass
+
     def run(self):
         while True:
+            self._arm_hang_watch()
             if not pygame.display.get_active():
                 # Minimized: keep answering the window's events (Windows marks a window that
                 # stops reading them as "Not Responding" and offers to close it), but skip drawing.

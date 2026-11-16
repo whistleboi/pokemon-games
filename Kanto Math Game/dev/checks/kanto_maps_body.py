@@ -261,6 +261,21 @@ check(isinstance(p, PlayState) and p.run.player[1] >= 37, f"Route 1: you come in
 _clerk = [f for f in p.placed if f.get("text") == "POKE MART CLERK"]
 _at = next(((m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and m.payload.get("text") == "POKE MART CLERK"), None)
 check(_clerk and _at is not None and abs(_at[0] - 6) + abs(_at[1] - 28) <= 1, f"Route 1: the Mart clerk stands at FireRed's spot (6, 28) ({_at})")
+_cm = next(m for m in p.run.floor.movers if m.kind == "figure" and m.payload.get("text") == "POKE MART CLERK")
+_pot = story.inventory.get("POTION", 0)
+said.clear()
+p._use_figure(_cm)
+play(lambda: not p.dialogue_box.visible, 300)
+p._sync_figures()
+check(story.inventory.get("POTION", 0) == _pot + 1 and any(m is _cm for m in p.run.floor.movers),
+      "Route 1: the clerk's free Potion, and he's still standing there afterwards (not gone on the spot)")
+said.clear()
+p._use_figure(_cm)
+play(lambda: not p.dialogue_box.visible, 300)
+check(story.inventory.get("POTION", 0) == _pot + 1 and any("any time" in s for s in said),
+      f"...talked to again: no second Potion, just a word about the Mart ({said[:1]})")
+p = open_map("KANTO_ROUTE_1", "PALLET_TOWN")
+check(not any(f.get("text") == "POKE MART CLERK" for f in p.placed), "...come back later: he's gone back to his Mart")
 
 # ---- Viridian City (FireRed 3.1): before the Pokedex the road north is shut; the Mart clerk calls you over with Oak's Parcel
 v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
@@ -280,6 +295,13 @@ check(v.room == "mart" and story.inventory.get("OAKS_PARCEL") == 1 and any("Come
       f"Viridian Mart: the clerk calls you over and hands you Oak's Parcel ({said[:2]})")
 _m = [m.get("id") for m in story.get_active_missions()]
 check(_m and _m[0] == "m0c", f"the Journal: take it back to Oak ({_m[:2]})")
+_who = [k for k, o in v._people().items() if o.get("text") == "Clerk"]
+check(v.room == "mart" and _who, "Viridian Mart: the clerk stays behind his counter with the Parcel handed over")
+said.clear()
+v._talk(_who[0])
+play(lambda: any("Professor Oak" in s for s in said) and not g.current_state._busy(), 400)
+check(any("parcel to Professor Oak" in s for s in said) and story.inventory.get("OAKS_PARCEL") == 1,
+      f"...talked to: take the Parcel to Oak (no second one) ({said[:1]})")
 g.walk_town_pos = ("PALLET_TOWN", (6, 5), (0, -1)); g.walk_town_room = ("PALLET_TOWN", "lab")
 story.current_area_key, story.last_area_key = "PALLET_TOWN", "KANTO_ROUTE_1"
 t = CityState(g); g.change_state(t); frames(2)
