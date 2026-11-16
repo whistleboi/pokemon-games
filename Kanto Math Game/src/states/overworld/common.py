@@ -835,6 +835,11 @@ def _tutor_teach(game, tu, ev):
         can = close
     if not can:
         return ["\x00fail"] + list(ev.get("fail") or ["None of your Pokemon can learn it right now."])
+    if tu.get("coins"):   # (Crystal's Goldenrod tutor: Game Corner coins, 4000 a move)
+        from src.states import game_corner as _gc
+        if _gc.coins(story) < int(tu["coins"]):
+            return ["\x00fail", f"That'll be {tu['coins']} coins... You only have {_gc.coins(story)}. Win some at the Game Corner first!"]
+        _gc.add_coins(story, -int(tu["coins"]))
     who = can[0]
     _mv.move_pool(game, who).append(tu["move"])
     if len(who.moves) < _mv.MAX_MOVES:

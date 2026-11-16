@@ -663,8 +663,16 @@ check(_ult["tutor"].get("choices") == ["FRENZY-PLANT", "BLAST-BURN", "HYDRO-CANN
 _del = next(o for o in _area["BLACKTHORN_CITY"]["explore_options"] if o.get("text") == "Move Deleter")["event"]
 check("every move" in " ".join(_del["lines"]) and not _del.get("tutor"), "...the Move Deleter's out of work: Pokemon keep every move now")
 _gt = next((q for p in _tm["GOLDENROD_CITY"].get("people", []) if isinstance(p, dict) for q in (p.get("any") or [p]) if q.get("text") == "Move Tutor"), {})
-check(_gt.get("flag_condition") == "beat_johto_champion" and _gt["event"]["tutor"]["choices"] == ["FLAMETHROWER", "THUNDERBOLT", "ICE-BEAM"],
-      "Goldenrod (Crystal): the Move Tutor, Wednesdays and Saturdays after the title")
+check(_gt.get("flag_condition") == "beat_johto_champion" and not _gt.get("condition") and _gt["event"]["tutor"]["choices"] == ["FLAMETHROWER", "THUNDERBOLT", "ICE-BEAM"],
+      "Goldenrod (Crystal): the Move Tutor, every day after the title (Jordan 11-15)")
+from src.states import game_corner as _gc
+story.player_team = [_mon(149)]
+_gc.add_coins(story, -_gc.coins(story)); _gc.add_coins(story, 3000)
+_c1 = _tutor_teach(g, dict(_gt["event"]["tutor"], move="ICE-BEAM", like="ICE-BEAM"), _gt["event"])
+_gc.add_coins(story, 2000)
+_c2 = _tutor_teach(g, dict(_gt["event"]["tutor"], move="ICE-BEAM", like="ICE-BEAM"), _gt["event"])
+check(_c1[0] == "\x00fail" and "coins" in _c1[1] and _c2[0] != "\x00fail" and _gc.coins(story) == 1000,
+      f"...for 4000 Game Corner coins a move, as in Crystal ({_c1[-1][:40]} / {_gc.coins(story)} left)")
 story.player_team = _keep_team
 if fails:
     print("FAILS:", len(fails))

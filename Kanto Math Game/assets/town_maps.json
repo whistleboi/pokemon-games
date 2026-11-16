@@ -45121,23 +45121,18 @@
    {
     "text": "Move Tutor",
     "action": "EVENT",
-    "condition": {
-     "any": [
-      "weekday:wed",
-      "weekday:sat"
-     ]
-    },
     "flag_condition": "beat_johto_champion",
     "event": {
      "lines": [
-      "I'm the Move Tutor! Today I'll teach one of three special moves to one of your Pokemon. Which will it be?"
+      "I'm the Move Tutor! For 4000 coins I'll teach one of three special moves to one of your Pokemon. Which will it be?"
      ],
      "tutor": {
       "choices": [
        "FLAMETHROWER",
        "THUNDERBOLT",
        "ICE-BEAM"
-      ]
+      ],
+      "coins": 4000
      },
      "fail": [
       "Hmm, none of your Pokemon can learn that one."

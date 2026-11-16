@@ -1244,7 +1244,7 @@ st.dialogue_box.visible = False
 st._use_figure(_el)
 said = _play(st, 300)
 check(story.inventory.get("MASTER_BALL") == 1 and "<WildBattleState>" in said,
-      f"The hideout: the leader's room's Poke Balls: the Master Ball, and an Electrode in disguise {story.inventory.get("MASTER_BALL")} {str(said)[-160:]}")
+      f"The hideout: the leader's room's Poke Balls: the Master Ball, and an Electrode in disguise {story.inventory.get('MASTER_BALL')} {str(said)[-160:]}")
 g.change_state(st)
 # the sub room: five Grunts rush you (ORAS's horde battle), one battle with their five Poochyena
 st = open_map("HOENN_TEAM_HIDEOUT", "LILYCOVE_CITY")
