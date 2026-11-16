@@ -80,7 +80,7 @@ class OptionsState(GameState):
         now = next((t for t in tracks if t["path"] == self.jb_track), None)
         if now:
             src = lib.source_title(getattr(self.game.assets, "assets_dir", "") or "", now["source"])
-            desc = f"{lib.gen_label(now['gen'])}  -  {src}  ({values.index((now['path'], now['name']))} of {len(tracks)})"
+            desc = f"{now['name']}  -  {lib.gen_label(now['gen'])}, {src}  ({values.index((now['path'], now['name']))} of {len(tracks)})"
         else:
             desc = f"{len(tracks)} tracks, by generation then A-Z. Leaving Options brings back the usual music."
         return [("Jukebox generation", gens, (lambda: self.jb_gen), self._jb_set_gen,

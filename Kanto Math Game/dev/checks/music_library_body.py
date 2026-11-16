@@ -99,8 +99,12 @@ if not man.get("tracks"):
 else:
     check(len(real) == len([t for t in man["tracks"] if t["kind"] in lib.MUSIC_KINDS]), f"every listed track is built ({len(real)})")
     check(real == sorted(real, key=lib.sort_key), "the library comes in order")
-    short = [t["name"] for t in real if t.get("seconds", 999) < 20]
+    # (game files name their own fanfares; a fan game's file under 20 seconds counts as one)
+    short = [t["name"] for t in real if t.get("seconds", 999) < 20
+             and man["sources"].get(t["source"], {}).get("kind") == "fan game"]
     check(not short and all(t["kind"] == "bgm" for t in real), f"the jukebox has songs only, no fanfares: {short[:5]}")
+    fan = [t["name"] for t in real if any(w in t["name"] for w in ("Level Up", "Badge Get", "Item Get", "Healed"))]
+    check(not fan, f"no well-known fanfare is in the jukebox: {fan[:5]}")
     check(all(t.get("gen") in range(0, 10) and t.get("source") in man["sources"] for t in man["tracks"]),
           "every track has a generation and a credited source")
     shas = [t["sha1"] for t in man["tracks"] + man.get("sounds", [])]
