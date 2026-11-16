@@ -341,7 +341,7 @@ for _a in _all:
         _f = _p.run.floor
         _reach = _reach_of(_f, _p.run.player)
         _af = ((_dg.recipe_for(g, _a).get("art") or {}).get("floors") or [])
-        if (_af and _af[_p.run.index].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts"):  # (in parts, Rock Tunnel's 1F: each from its own ladder; Route 42: each from its own way out)
+        if (_af and _af[_p.run.index].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts") or (_dg.recipe_for(g, _a).get("art") or {}).get("split"):  # (in parts, Rock Tunnel's 1F: each from its own ladder; Route 42: each from its own way out)
             for _t in list(_f.exits):
                 _reach = {**_reach, **_reach_of(_f, _t)}
         for _t in getattr(_f, "deep", ()):  # (deep sea: come up into it from the seabed by Dive: Route 124's rocky northern waters)
@@ -1171,7 +1171,7 @@ check(_bt.run.n_floors == 2 and "ECRUTEAK_CITY" in _bt.run.floor.exits.values() 
 _r38 = kanto("JOHTO_ROUTE_38", came="ECRUTEAK_CITY")
 check((_r38.run.floor.w, _r38.run.floor.h) == (64, 32) and {"ECRUTEAK_CITY", "JOHTO_ROUTE_39"} == set(_r38.run.floor.exits.values()), "Route 38: exact map, Ecruteak and Route 39")
 _r39 = kanto("JOHTO_ROUTE_39", came="JOHTO_ROUTE_38")
-check((_r39.run.floor.w, _r39.run.floor.h) == (32, 64) and {"JOHTO_ROUTE_38", "OLIVINE_CITY", "MOOMOO_BARN", "MOOMOO_HOUSE"} == set(_r39.run.floor.exits.values()), "Route 39: exact to the HGSS picture with Moomoo Farm; Route 38, Olivine, the barn and house doors")
+check((_r39.run.floor.w, _r39.run.floor.h) == (32, 64) and {"JOHTO_ROUTE_38", "OLIVINE_CITY"} == {str(v) for v in _r39.run.floor.exits.values() if not str(v).startswith(("ROOM:", "OUT:", "WARP:"))} and sum(str(v).startswith("WARP:") for v in _r39.run.floor.exits.values()) == 2, "Route 39: exact to the HGSS picture with Moomoo Farm; Route 38, Olivine (the barn and house are its rooms now)")
 _bct = kanto("BELLCHIME_TRAIL", came="ECRUTEAK_CITY")
 check((_bct.run.floor.w, _bct.run.floor.h) == (64, 32) and {"ECRUTEAK_CITY", "BELL_TOWER"} == set(_bct.run.floor.exits.values()) and _bct.run.player[0] <= 12, f"Bellchime Trail: SoulSilver's own 64 x 32, in from Ecruteak's gatehouse at {_bct.run.player}; the Bell Tower door")
 g.walk_town_pos = None
@@ -1194,7 +1194,7 @@ _back.run.floor
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "OLIVINE_LIGHTHOUSE", "OLIVINE_LIGHTHOUSE_FLOORS"
 _top = _CS(g); g.change_state(_top); _tap_through(_top)
-check(isinstance(_top, _WTS) and sorted(o["text"] for o in _top._people().values()) == ["Check Amphy", "Talk to Jasmine"]
+check(isinstance(_top, _WTS) and sorted(o["text"] for o in _top._people().values() if not o.get("found")) == ["Check Amphy", "Talk to Jasmine"]
       and {"OLIVINE_CITY", "OLIVINE_LIGHTHOUSE_FLOORS"} == set(_top.exits.values()), "...the beacon room: Jasmine, Amphy, the stairs, the elevator")
 _lift = next(t for t, v in _top.exits.items() if v == "OLIVINE_CITY")
 story.story_flags.pop("ampharos_cured", None)

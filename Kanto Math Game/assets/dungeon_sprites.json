@@ -6279,6 +6279,54 @@
     },
     "ECRUTEAK_DANCE_THEATER:Old woman": {
       "sheet": "hg_gsoldwoman1.png"
+    },
+    "JOHTO_ROUTE_38:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_38:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_39:LAX INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_CITY:TM63": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_LIGHTHOUSE:SUPER REPEL": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_LIGHTHOUSE_FLOORS:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_LIGHTHOUSE_FLOORS:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_LIGHTHOUSE_BALCONY:TM130": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_LIGHTHOUSE_FLOORS:TM135": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_38:WHITE APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_w.png"
+    },
+    "JOHTO_ROUTE_39:GREEN APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_g.png"
+    },
+    "OLIVINE_CITY:Sailor": {
+      "sheet": "hg_seaman.png"
+    },
+    "OLIVINE_CITY:Boy": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "OLIVINE_CITY:Sailor ": {
+      "sheet": "hg_seaman.png"
+    },
+    "OLIVINE_LIGHTHOUSE_FLOORS:Woman": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "OLIVINE_LIGHTHOUSE_FLOORS:Sailor": {
+      "sheet": "hg_seaman.png"
     }
   },
   "townsperson": "NPC 17.png",

@@ -468,6 +468,26 @@ def _run_story_event(state, key, check, show):
             game.change_state(AreaTransitionState(game, "GOLDENROD_CITY", initial_message=[f"The elevator stops at {to}F."]))
         game.change_state(PickListState(game, state, "ELEVATOR", floors, ride))
         return
+    if ev.get("feed"):  # (Moomoo Farm's sick Miltank, HGSS: feed it Oran Berries one at a time till it's well)
+        fd = ev["feed"]; flags = story.story_flags
+        if flags.get(fd["flag"]):
+            show(_resolve_lines(game, ev.get("done") or ["It looks happy and healthy."]))
+            return
+        if story.inventory.get(fd["item"], 0) <= 0:
+            show(_resolve_lines(game, lines + list(fd.get("fail") or ["It needs something to eat..."])))
+            return
+        story.inventory[fd["item"]] -= 1
+        if story.inventory[fd["item"]] <= 0:
+            story.inventory.pop(fd["item"], None)
+        n = int(flags.get(fd["count"], 0)) + 1
+        flags[fd["count"]] = n
+        name = fd["item"].replace("_", " ").title()
+        if n >= int(fd["need"]):
+            flags[fd["flag"]] = True
+            show(_resolve_lines(game, [f"You gave it a {name}.", *fd.get("well", ["It's full of energy again!"])]))
+        else:
+            show(_resolve_lines(game, [f"You gave it a {name}. It munched it up... ({n} of {fd['need']})", *fd.get("more", ["It still looks weak."])]))
+        return
     if ev.get("salon"):  # (Goldenrod Tunnel's Pokemon Salon, HGSS: a haircut a day; the older brother's does more for its friendship)
         import datetime as _dt
         sal = ev["salon"]; today = _dt.date.today().isoformat()

@@ -90,7 +90,7 @@ def reachable(key, m):
     if not exits and m.get("landings"):  # (an island you're flown to and from: Soaring's Mirage spots, from the spot you land on)
         exits = [tuple(t) for t in m["landings"]]
     assert exits, f"{key}: no way out"
-    starts = exits if m.get("parts") else exits[:1]  # (a floor in separate parts, each reached by its own ladder)
+    starts = exits if m.get("parts") or m.get("split") else exits[:1]  # (a floor in separate parts, each reached by its own ladder; "split": a route in two parts, each from its own edge: Route 38's south path)
     starts = starts + [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]  # (a yard reached only through a house's back door: Fuchsia's pond)
     starts = starts + [tuple(t) for t in m.get("landings", [])]  # (a spot reached only by falling through a hole above: Mt. Pyre)
     seen, todo = set(starts), list(starts)
@@ -112,7 +112,7 @@ def reachable(key, m):
                 if r == room and t not in seen:
                     seen.add(t)
                     todo.append(t)
-            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$027?'"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall; a crate: pushed aside)
+            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$027?'/"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall; a crate: pushed aside; a Rock Climb wall)
                 seen.add(n)
                 todo.append(n)
     near = lambda t: any((t[0] + dx, t[1] + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))

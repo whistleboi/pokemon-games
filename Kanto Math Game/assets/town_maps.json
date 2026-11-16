@@ -58604,12 +58604,12 @@
    "c.........k====TTTT\"\"\"\"\"TTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===.....",
    "ckkkkkkkkkk====TTTT\"\"\"\"\"TTTTTTkkkkkkkkkkkkkkkkkkkkkkkkkk===.....",
    "<==============TTTT\"\"\"\"\"TT....k============================.TTTT",
-   "<==============TTTT\"\"\"\"\"TT.T..k============================.TTTT",
+   "<==============TTTT\"\"\"\"\"TT.N..k============================.TTTT",
    "<==============TTTT\"\"\"\"\"TT....k=X==========================.TTTT",
    "ckkkkkkkkkk===.TTTT\"\"\"\"\"TT....kkk===kkkkkkkkkkkkkkk===kkkkkkTTTT",
    "c.....fff.k.....)\"\"\"\"\"\"\"(..............)....==========......TTTT",
    "c.........k.....)\"\"\"\"\"\"\"(.f...........f)....==========..TTTTTTTT",
-   "ccccccccc.k.....)\"\"\"\"\"\"\"(..............)....=========...TTTTTTTT",
+   "ccccccccc.k.....)\"\"\"\"\"\"\"(..............).N..=========...TTTTTTTT",
    "ccccccccc.k.....)\"\"\"\"\"\"\"c______________c....===.TTTTTTTTTTTTTTTT",
    "TTTTTT.cc.k..!..)\"\"\"\"\"=\"\"\"\"\".==================.TTTTTTTTTTTTTTTT",
    "TTTTTT.//.k.....)\"\"\"==.\"\"\"\"\"===================.TTTTTTTTTTTTTTTT",
@@ -58618,17 +58618,36 @@
    "TTTTTT.cc.k_____c...===========kccccccccccccccccccccccccccccTTTT",
    "TTTTTT.cc.k.........===========kccccccccccccccccccccccccccccTTTT",
    "TTTTTT.cc.k.........===========kccTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
-   "TTTTTT.cc.kkkkkkkkkkkkkkkkkkkkkkccTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
+   "TTTTTT.ccNkkkkkkkkkkkkkkkkkkkkkkccTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
    "TTTTTT.cccccccccccccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
    "TTTTTT.cccccccccccccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
    "TTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
-   "T.............TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
+   "<.............TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccTTTT"
   ],
   "exits": {
    "<": "JOHTO_ROUTE_39",
    ">": "ECRUTEAK_CITY"
   },
+  "edge_to": {
+   "0,11": [
+    31,
+    11
+   ],
+   "0,12": [
+    31,
+    12
+   ],
+   "0,13": [
+    31,
+    13
+   ],
+   "0,30": [
+    31,
+    30
+   ]
+  },
+  "split": true,
   "signs": [
    [
     "Route 38",
@@ -58640,111 +58659,79 @@
    ]
   ],
   "trainer_spots": [
-   "Sailor Harry",
+   "School Kid Chad",
    "Lass Dana",
+   "Sailor Harry",
    "Beauty Valerie",
-   "Bird Keeper Toby",
-   "School Kid Chad"
+   "Bird Keeper Toby"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     15,
-     1,
-     16,
-     1
+    "kind": "picture",
+    "f": "ss_top/R38.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     36,
-     2,
-     10,
-     1
+    "size": [
+     64,
+     32
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     15,
-     7,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     24,
-     7,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     60,
-     10,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     27,
-     11,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     56,
-     15,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     48,
-     17,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     1,
-     30,
-     13,
-     1
-    ],
-    "of": "tree"
+    "px": 32
    }
-  ]
+  ],
+  "hidden": {
+   "3,15": "HP_UP"
+  },
+  "people": [
+   {
+    "text": "WHITE APRICORN TREE",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "It's an Apricorn tree. White Apricorns grow on it.",
+      "You picked a White Apricorn!"
+     ],
+     "gift_item": {
+      "WHT_APRICORN": 1
+     },
+     "flag": "apricorn_johto_route_38_27_12",
+     "done": [
+      "There's nothing left to pick today. Come back tomorrow!"
+     ],
+     "requires": [
+      "has_item:APRICORN_BOX"
+     ],
+     "fail": [
+      "It's an Apricorn tree, heavy with white fruit. You've nothing to carry one in."
+     ],
+     "daily": true
+    },
+    "color": "GOLD",
+    "no_tag": true
+   },
+   "HP UP",
+   "MAX POTION"
+  ],
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/R38.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  }
  },
  "JOHTO_ROUTE_39": {
   "art": [
    "TTkkkkkkkkkkkkkkkkTTTTTTTTTTTTTT",
    "TTkBBAAAAAAA.....kTTTTTTTTTTTTTT",
    "TTkBBAAAAAAA.....k===.TTTTTTTTTT",
-   "TTkBBAAAAAAA.T...k====TTTTTTTTTT",
+   "TTkBBAAAAAAA.N...k====TTTTTTTTTT",
    "TTkBDAAAADAA.....k====.k..TTTTTT",
    "TTk.....===......k====.k..TTTTTT",
    "TTkkk...===...!kkk====.k..TTTTTT",
@@ -58756,19 +58743,19 @@
    "TTk..............k=============>",
    "TTk..............k=============>",
    "TTk..............k=====kkkkkkkkk",
-   "TTk..............k====.k........",
-   "TTk..............k====.k........",
-   "TTk..............k===X.k........",
-   "TTk..............k====.k...ccccc",
+   "TTk.....N........k====.k........",
+   "TTk..............k==X=.k........",
+   "TTk.............Nk===X.k........",
+   "TTk.........N....k====.k...ccccc",
    "TTk..............k====.k...cTTTT",
    "TTk..............k====.k...cTTTT",
-   "TTk........TTTT..k====.k...cTTTT",
+   "TTk...N....TTTT..k====.k...cTTTT",
    "TTk........TTTT..k====.k...cTTTT",
    "TTk........TTTT..k====.k...cTTTT",
    "TTk..............k====.k...cTTTT",
    "TTkkkk.........kkk===..k...cTTTT",
    "cccccc=========ccc...cccccccTTTT",
-   "c.SSS..........kcc...cccccccTTTT",
+   "cNSSS..........kcc...cccccccTTTT",
    "c.SSS..........kc.===....cccTTTT",
    "c.SSS..........kc=====.f.cccTTTT",
    "c..............kc=====f..ccc...>",
@@ -58808,13 +58795,29 @@
   ],
   "exits": {
    ">": "JOHTO_ROUTE_38",
-   "v": "OLIVINE_CITY",
-   "A": "MOOMOO_HOUSE",
-   "B": "MOOMOO_BARN"
+   "v": "OLIVINE_CITY"
+  },
+  "edge_to": {
+   "31,11": [
+    0,
+    11
+   ],
+   "31,12": [
+    0,
+    12
+   ],
+   "31,13": [
+    0,
+    13
+   ],
+   "31,30": [
+    0,
+    30
+   ]
   },
   "buildings": {
-   "A": "house",
-   "B": "house",
+   "A": "farmhouse",
+   "B": "barn",
    "S": "silo"
   },
   "roofs": {
@@ -58841,7 +58844,17 @@
      129,
      55
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/R39.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "signs": [
    [
@@ -58859,72 +58872,384 @@
   ],
   "trainer_spots": [
    "Psychic Norman",
+   "Psychic Nelson",
    "Sailor Eugene",
    "Pokefan Derek",
    "Pokefan Ruth"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     13,
-     2,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     11,
-     20,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     30,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     28,
-     32,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     18,
-     55,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
+    "kind": "picture",
+    "f": "ss_top/R39.png",
+    "at": [
      0,
-     56,
-     5,
-     1
+     0
     ],
-    "of": "tree"
+    "size": [
+     32,
+     64
+    ],
+    "px": 32
    }
-  ]
+  ],
+  "hidden": {
+   "10,31": "NUGGET",
+   "3,16": "PP_UP",
+   "15,20": "X_ATTACK"
+  },
+  "people": [
+   {
+    "text": "GREEN APRICORN TREE",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "It's an Apricorn tree. Green Apricorns grow on it.",
+      "You picked a Green Apricorn!"
+     ],
+     "gift_item": {
+      "GRN_APRICORN": 1
+     },
+     "flag": "apricorn_johto_route_39_13_3",
+     "done": [
+      "There's nothing left to pick today. Come back tomorrow!"
+     ],
+     "requires": [
+      "has_item:APRICORN_BOX"
+     ],
+     "fail": [
+      "It's an Apricorn tree, heavy with green fruit. You've nothing to carry one in."
+     ],
+     "daily": true
+    },
+    "color": "GOLD",
+    "no_tag": true
+   },
+   {
+    "text": "Miltank",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "MILTANK: Mooo!"
+     ]
+    }
+   },
+   {
+    "text": "Miltank ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "MILTANK: Mooo!"
+     ]
+    }
+   },
+   {
+    "text": "Miltank   ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "MILTANK: Mooo!"
+     ]
+    }
+   },
+   {
+    "text": "Miltank  ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "MILTANK: Mooo!"
+     ]
+    }
+   },
+   "LAX INCENSE"
+  ],
+  "rooms": {
+   "farmhouse": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cmmmNcmm.mmmmc",
+     "c.....N......c",
+     "c........N...c",
+     "c............c",
+     "c............c",
+     "c.........mmmc",
+     "c............c",
+     "c.....v......c",
+     "cccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:9,4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       162,
+       169,
+       202
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       203,
+       140,
+       41
+      ],
+      "6,2": [
+       131,
+       108,
+       94
+      ],
+      "7,2": [
+       131,
+       108,
+       94
+      ],
+      "9,2": [
+       154,
+       135,
+       87
+      ],
+      "10,2": [
+       105,
+       162,
+       139
+      ],
+      "10,7": [
+       150,
+       150,
+       160
+      ],
+      "11,2": [
+       161,
+       168,
+       109
+      ],
+      "11,7": [
+       150,
+       150,
+       160
+      ],
+      "12,2": [
+       161,
+       168,
+       109
+      ],
+      "12,7": [
+       57,
+       172,
+       131
+      ]
+     },
+     "_kinds": {
+      "1,2": "sink",
+      "2,2": "sink",
+      "3,2": "shelf",
+      "11,2": "shelf",
+      "12,2": "shelf",
+      "6,2": "tv",
+      "7,2": "tv",
+      "12,7": "crate",
+      "9,2": "shelf",
+      "10,2": "shelf",
+      "11,7": "crate",
+      "10,7": "crate"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R39R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Moomoo Milk",
+     [
+      {
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "My Miltank's stopped giving milk. This farm's famous for its milk, and everyone wants a drink..."
+        ]
+       },
+       "text": "Farmer",
+       "door": "farmhouse",
+       "flag_condition": "not moomoo_healed"
+      },
+      {
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "My Miltank's milking again, thanks to you! Here, have a bottle any time."
+        ]
+       },
+       "text": "Farmer",
+       "door": "farmhouse",
+       "flag_condition": "moomoo_healed"
+      }
+     ],
+     "Farmer's wife"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R39R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       14,
+       12
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "barn": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cc..mc.N..cc...ccc..c",
+     "c....c....c....cc...c",
+     "c....cN.N.c....c....c",
+     "c....c....c....c....c",
+     "cr..rcr..rcr..rc....c",
+     "c...................c",
+     "c......v............c",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:4,4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "4,2": [
+       150,
+       150,
+       160
+      ]
+     },
+     "_kinds": {
+      "4,2": "crate"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R39R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Moomoo",
+     [
+      {
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "Moomoo is sick... She needs lots of Oran Berries."
+        ]
+       },
+       "text": "Twin",
+       "door": "barn",
+       "flag_condition": "not moomoo_healed"
+      },
+      {
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "Thank you! Moomoo is totally healthy again!"
+        ]
+       },
+       "text": "Twin",
+       "door": "barn",
+       "flag_condition": "moomoo_healed"
+      }
+     ],
+     [
+      {
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "Moomoo is sick... She needs lots of Oran Berries."
+        ]
+       },
+       "text": "Twin ",
+       "door": "barn",
+       "flag_condition": "not moomoo_healed"
+      },
+      {
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "Moomoo's all better! We sell her milk at the house. Don't forget to drop by!"
+        ]
+       },
+       "text": "Twin ",
+       "door": "barn",
+       "flag_condition": "moomoo_healed"
+      }
+     ]
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R39R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       21,
+       11
+      ],
+      "px": 32
+     }
+    ]
+   }
+  },
+  "inside": {
+   "9,4": "farmhouse",
+   "4,4": "barn"
+  }
  },
  "BELLCHIME_TRAIL": {
   "art": [
@@ -59078,7 +59403,7 @@
    "TTTTcTk...................kTc.BBBB.FFFF.ccTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTcTk...................kTc.BBBB.FFFF.ccTTTTTTTTTTcccccccccccc",
    "TTTTcTk...................kTc.BDBB.FDFF.ccTTTTTTTTTTcTTccccccccc",
-   "TTTTcTk...................kTc...........ccTTTTTTTTcccTTccccccccc",
+   "TTTTcTk.................N.kTc...........ccTTTTTTTTcccTTccccccccc",
    "TTTTcTk...................kTc...........ccTTTTTTTTcrrccccooooooo",
    "TTTTcTkkkk...kkkkkkkkkkkkkkTc...........ccTTTTTTTTcrrcTTcoqqoooo",
    "TTTTcTk......k..kkkk......kTcTTTTcc..cccccTTTTTTTTcTTcTTcoqqoooo",
@@ -59086,7 +59411,7 @@
    "TTTTcTk......k..EDEE...!..kTcTTTTc....cc.cTTTTTTTTcTTccooooooooo",
    "TTTTcTk...................kTcTTrTc....cc.cTTTTTTTTcccccooooqqooo",
    "TTTTcTk...................kTcTTrTc....cc.cTTTTTTTTcccccooooqqooo",
-   "TTTTcTk...................kTcTTcck....cc.cTTTTTTTTcccssqqooooooo",
+   "TTTTcTk...................kTcTTcck....cc.cTTTTTTTTcccNsqqooooooo",
    "TTTTcTk...................kTcTTc......cc.cTTTTTTTTcccssooqqooooo",
    "TTTTcTk...................kTkcck......cc.cTTTTTTTTcccssooqqooooo",
    "TTTTcTkkkkkkkkkkkkkkk.....kkkkkkkk....ccccTTTTTTTTcccccooqqooooo",
@@ -59097,12 +59422,12 @@
    "<==...................................ccc.LLLLLLL.ccTTcooqqooooo",
    "<=....................................ccc.LLLLLLL.ccTTcooqqooooo",
    "<=....................................ccc.LLLLLLL.ccTTcooqqooooo",
-   "<=....................................ccc.LLLLLLL.ccTTcooooqqooo",
+   "<=..................N.................ccc.LLLLLLL.ccTTcooooqqooo",
    "<==...................................ccc.LLLLLLL.ccrrcooooqqooo",
    "cccck.................................ccc.LLLDLLL.ccrrcooooqqooo",
    "ccccc.........................................!...cccccooooqqooo",
    "ccccc.............................................cccoooooooqooo",
-   "ccccc..kkkk...kkkk......!....kkky.................cccoooooooqqoo",
+   "ccccc..kkkk...kkkk......!....kkky...............N.cccoooooooqqoo",
    "ccccc.................................ccc.......cccccoooooooqqoo",
    "ccccc.................................ccccccccccc.rccoooooooqqoo",
    "ccccc.................................cccccccccccccccoooooooqqoo",
@@ -59132,11 +59457,11 @@
   },
   "buildings": {
    "G": "gym",
-   "B": "house",
-   "F": "house",
-   "E": "house",
+   "B": "krabbytrade",
+   "F": "islandhouse",
+   "E": "guru",
    "C": "center",
-   "I": "house",
+   "I": "cafe",
    "L": "gate",
    "M": "mart",
    "H": "harbor",
@@ -59252,7 +59577,17 @@
      214
     ],
     "design": "slab"
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/T26.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "surf": true,
   "signs": [
@@ -59275,90 +59610,59 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     30,
-     13,
-     4,
-     1
+    "kind": "picture",
+    "f": "ss_top/T26.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "roof",
-    "colour": [
-     42,
-     140,
-     75
-    ]
+    "size": [
+     64,
+     64
+    ],
+    "px": 32
+   }
+  ],
+  "hidden": {
+   "53,32": "RARE_CANDY",
+   "29,7": "FULL_HEAL"
+  },
+  "people": [
+   {
+    "text": "Boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Is that a Pokegear? Wow, that's so cool!"
+     ]
+    }
+   },
+   "TM63",
+   {
+    "text": "Sailor ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Young Trainer! The sea is sweet! Sing with me! The sea is blue! The sea is salty!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     35,
-     13,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     42,
-     140,
-     75
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     20,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     32,
-     45,
-     5,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     19,
-     52,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     200,
-     204,
-     214
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     24,
-     52,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     200,
-     204,
-     214
-    ]
+    "text": "Sailor",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Dark roads are dangerous at night, but the pitch-black sea is worse! Without the Lighthouse, no ship could sail."
+     ]
+    }
    }
   ],
   "rooms": {
    "gym": {
     "theme": "room",
     "art": [
+     "ccccccccc",
+     "ccccccccc",
      "ccccccccc",
      "ccccccccc",
      "c...N...c",
@@ -59401,10 +59705,36 @@
       150,
       154,
       172
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T26GYM0101.png",
+      "at": [
+       2,
+       5
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Gym"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T26GYM0101.png",
+      "at": [
+       2,
+       5
+      ],
+      "size": [
+       9,
+       28
+      ],
+      "px": 32
+     }
     ]
    },
    "center": {
@@ -59412,21 +59742,27 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNcccccccczc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -59523,15 +59859,42 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T26PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Heal"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T26PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    "mart": {
     "theme": "room",
     "art": [
+     "cccccccccccccc",
      "cccccccccccccc",
      "cccccccccccccc",
      "ccccmmmmcccccc",
@@ -59719,15 +60082,480 @@
       190,
       206,
       226
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T26FS0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Shop"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T26FS0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       14,
+       14
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "guru": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm...mmzc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:17,23"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,2": [
+       161,
+       168,
+       109
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       161,
+       168,
+       109
+      ]
+     },
+     "_kinds": {
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "7,2": "shelf",
+      "8,2": "shelf",
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T26R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Fishing Guru"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T26R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "cafe": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cz........cmmc",
+     "c.........cccc",
+     "c..ccc...Ncccc",
+     "c.Nccc....cccc",
+     "c..cccN...cccc",
+     "c..N......cccc",
+     "cc...........c",
+     "cz...v.......c",
+     "cccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:9,33"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "11,2": [
+       162,
+       169,
+       202
+      ],
+      "12,2": [
+       162,
+       169,
+       202
+      ]
+     },
+     "_kinds": {
+      "11,2": "sink",
+      "12,2": "sink"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T26R0701.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Sailor",
+     "Fisherman",
+     "Sailor ",
+     "Sailor  "
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T26R0701.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       14,
+       12
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "krabbytrade": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm...mmzc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:31,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,2": [
+       161,
+       168,
+       109
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       161,
+       168,
+       109
+      ]
+     },
+     "_kinds": {
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "7,2": "shelf",
+      "8,2": "shelf",
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T26R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Trader"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T26R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "islandhouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm...mmzc",
+     "c.........c",
+     "c....NmmN.c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:36,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,2": [
+       161,
+       168,
+       109
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       161,
+       168,
+       109
+      ]
+     },
+     "_kinds": {
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "7,2": "shelf",
+      "8,2": "shelf",
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T26R0501.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Little girl",
+     "Man"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T26R0501.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "harbor": {
     "theme": "room",
     "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
      "ccccccccccccccc",
      "ccccccccccccccc",
      "cccccccvccccccc",
@@ -59762,7 +60590,18 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/P01R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Orange Islands Ferry",
@@ -59787,11 +60626,30 @@
       "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!",
       "action": "TRAVEL"
      }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       15,
+       16
+      ],
+      "px": 32
+     }
     ]
    },
    "harbor_2": {
     "theme": "room",
     "art": [
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
      "cmmmmmmmcccccccmmmmmmmcccccc",
      "ccmmmmmcccccccccmmmmmccccccc",
@@ -59812,12 +60670,12 @@
      "cccccccccc...ccccccccccccccc",
      "cccccccccc...ccccccccccccccc",
      "cccccccccc...ccccccccccccccc",
-     "cccccccccc...ccccccccc<ccccc",
-     "cccccccccc...cccccmmmm.mmmmc",
+     "cccccccccc...cccccmmmm<mmmmc",
      "cccccccccc................cc",
      "cccccccccc................cc",
      "cccccccccc................cc",
      "cccccccccc................cc",
+     "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -60272,15 +61130,49 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/P01R0102.png",
+      "at": [
+       5,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
-    "parts": true
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0102.png",
+      "at": [
+       5,
+       0
+      ],
+      "size": [
+       28,
+       31
+      ],
+      "px": 32
+     }
+    ],
+    "hidden": {
+     "18,26": "PROTEIN",
+     "8,16": "PEARL"
+    }
    }
   },
   "inside": {
    "13,14": "gym",
    "16,33": "center",
    "29,33": "mart",
+   "17,23": "guru",
+   "9,33": "cafe",
+   "31,17": "krabbytrade",
+   "36,17": "islandhouse",
    "23,53": "harbor"
   }
  },
@@ -60294,14 +61186,14 @@
      "cccccccccccccccccc",
      "c.1ccccccccc....cc",
      "c..ccccccccc....cc",
-     "c...............cc",
+     "c...N...........cc",
      "c...............cc",
      "c.....c...c.....cc",
      "c..c..z...z..c..cc",
      "c..c.........c..cc",
      "c.....c...c.....cc",
      "c.....z...z.....cc",
-     "c...............cc",
+     "c........N......cc",
      "c..c..c...c..c..cc",
      "c..c..z...z..c..cc",
      "c...............cc",
@@ -60328,7 +61220,17 @@
      "_things": {},
      "_stairs": {
       "2,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D27R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "2,2": [
@@ -60336,7 +61238,42 @@
       5,
       2
      ]
-    }
+    },
+    "people": [
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "People come to train here. It's a hard climb with all these Trainers about!"
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Long ago, Pokemon lit the sea around Olivine at night. This Lighthouse was built in their honour."
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D27R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       18,
+       19
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -60348,12 +61285,12 @@
      "c.......ccc..1..cc",
      "c.......ccc.....cc",
      "c.......ccc.....cc",
-     "c.....ccccc.....cc",
+     "cX....ccccc.....cc",
      "c.....ccccc.....cc",
      "c.....cccccc...ccc",
      "c.....cccccz...zcc",
      "c...............cc",
-     "c...............cc",
+     "c..............Xcc",
      "c...............cc",
      "c...............cc",
      "c...............cc",
@@ -60378,7 +61315,17 @@
       "5,2": "foot",
       "13,5": "foot",
       "13,4": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D27R0102.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "5,2": [
@@ -60396,23 +61343,42 @@
       13,
       6
      ]
-    }
+    },
+    "trainer_spots": [
+     "Gentleman Alfred",
+     "Sailor Huey"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D27R0102.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       19
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "ccccc..ccc..cccccc",
-     "cccc...ccc...ccccc",
+     "cccc...ccc..Xccccc",
      "ccc....ccc....cccc",
      "cc....1ccc1....ccc",
      "c.....1ccc1..1..cc",
-     "c......ccc......cc",
+     "cX.....ccc......cc",
      "c......ccccccccccc",
      "c......ccccccccccc",
      "c......ccccccccccc",
      "c......ccccccccccc",
-     "c...............cc",
+     "c..........X..N.cc",
      "cc.............ccc",
      "ccc...........cccc",
      "cccc.........ccccc",
@@ -60443,7 +61409,17 @@
       "10,5": "foot",
       "6,6": "foot",
       "6,5": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D27R0104.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "13,6": [
@@ -60471,7 +61447,33 @@
       6,
       6
      ]
-    }
+    },
+    "hidden": {
+     "5,13": "HYPER_POTION"
+    },
+    "trainer_spots": [
+     "Bird Keeper Theo",
+     "Bird Keeper Denis",
+     "Sailor Kent"
+    ],
+    "people": [
+     "RARE CANDY"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D27R0104.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       18,
+       20
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -60480,14 +61482,14 @@
      "ccccc..ccc..ccccccc",
      "ccc1...ccc...cccccc",
      "ccc1...ccc....ccccc",
-     "cc.....ccc.....cccc",
+     "cc.....ccc....Xcccc",
      "c.....1ccc1.....ccc",
      "c......ccc......ccc",
      "cccccccccc......<cc",
      "cccccccccc......ccc",
      "cccccccccc......ccc",
      "cccccccccc......ccc",
-     "c...............ccc",
+     "c.N......X......ccc",
      "cc.............cccc",
      "ccc...........ccccc",
      "cccc.........cccccc",
@@ -60516,7 +61518,17 @@
       "6,6": "foot",
       "3,4": "foot",
       "3,3": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D27R0105.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "10,6": [
@@ -60539,20 +61551,42 @@
       4,
       4
      ]
-    }
+    },
+    "trainer_spots": [
+     "Gentleman Preston",
+     "Lass Connie"
+    ],
+    "people": [
+     "ETHER"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D27R0105.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       19,
+       19
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "ccccc..ccc..cccccc",
-     "cccc...ccc...ccccc",
+     "cccc...ccc.N.ccccc",
      "ccc.1..ccc....cccc",
      "cc.....ccc.....ccc",
      "c......ccc......cc",
-     "c......ccc......cc",
+     "c......ccc...X..cc",
      "c......ccc^.....cc",
-     "c......ccc^.....cc",
+     "c.....Xccc^.....cc",
      "c......ccc......cc",
      "c......ccc......cc",
      "c...............cc",
@@ -60581,7 +61615,17 @@
      "_things": {},
      "_stairs": {
       "4,4": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/D27R0106.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "4,4": [
@@ -60589,7 +61633,29 @@
       3,
       4
      ]
-    }
+    },
+    "trainer_spots": [
+     "Sailor Roberto",
+     "Sailor Terrell"
+    ],
+    "people": [
+     "TM135"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D27R0106.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       19
+      ],
+      "px": 32
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -60599,7 +61665,22 @@
    "4F",
    "5F"
   ],
-  "figure_floors": {}
+  "figure_floors": {
+   "Gentleman Alfred": 1,
+   "Sailor Huey": 1,
+   "RARE CANDY": 2,
+   "Sailor Kent": 2,
+   "Bird Keeper Denis": 2,
+   "Bird Keeper Theo": 2,
+   "ETHER": 3,
+   "Lass Connie": 3,
+   "Gentleman Preston": 3,
+   "Sailor Terrell": 4,
+   "Sailor Roberto": 4,
+   "TM135": 4,
+   "Woman": 0,
+   "Sailor": 0
+  }
  },
  "OLIVINE_LIGHTHOUSE": {
   "art": [
@@ -60609,7 +61690,7 @@
    "cc.............cc",
    "cc.....ccc.....cc",
    "c.....ccccc.....c",
-   "c....ccNN.cc....c",
+   "c....ccNN.cc...Nc",
    "c....cc...cc....c",
    "c....cc..-cc....c",
    "c....cc...cc....c",
@@ -60634,22 +61715,47 @@
     150,
     156,
     170
-   ]
+   ],
+   "_picture": {
+    "f": "ss_ground/D27R0107.png",
+    "at": [
+     0,
+     2
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "locked": {
    "OLIVINE_CITY": "The elevator is locked. Jasmine has the key."
   },
   "people": [
    "Talk to Jasmine",
-   "Check Amphy"
+   "Check Amphy",
+   "SUPER REPEL"
   ],
-  "overheads": []
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/D27R0107.png",
+    "at": [
+     0,
+     2
+    ],
+    "size": [
+     17,
+     17
+    ],
+    "px": 32
+   }
+  ]
  },
  "OLIVINE_LIGHTHOUSE_BALCONY": {
   "theme": "ship",
   "art": [
    "ccccccccccccccccc",
-   "c..ccccccccccc..c",
+   "c.Nccccccccccc..c",
    "c..ccccccccccc..c",
    "c..ccccccccccc..c",
    "c..ccccccccccc..c",
@@ -60669,7 +61775,36 @@
    "^": "OLIVINE_LIGHTHOUSE_FLOORS"
   },
   "buildings": {},
-  "overheads": []
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/D27R0103.png",
+    "at": [
+     0,
+     1
+    ],
+    "size": [
+     17,
+     16
+    ],
+    "px": 32
+   }
+  ],
+  "people": [
+   "TM130"
+  ],
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/D27R0103.png",
+    "at": [
+     0,
+     1
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  }
  },
  "JOHTO_ROUTE_40": {
   "art": [

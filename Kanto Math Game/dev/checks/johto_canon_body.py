@@ -462,5 +462,29 @@ check(any(sc.get("flag") == "johto_beasts_fled" for sc in _bt.get("scenes", []))
       "Burned Tower B1F: Raikou, Entei and Suicune wake and flee as you come near")
 _eb = [b for b in _tm["ECRUTEAK_CITY"].get("barred", []) if b.get("tiles") == [[24, 56]]]
 check(_eb and _eb[0]["until"]["condition"] == "johto_beasts_fled", "Ecruteak Gym: shut till you've seen the Burned Tower's Pokemon (Morty went there)")
+# ---- N8: Routes 38 and 39, Olivine (HGSS)
+_r39 = _area["JOHTO_ROUTE_39"]["route_menu"]
+_moo = next((o for o in _r39 if o.get("door") == "barn" and (o.get("event") or {}).get("feed")), None)
+check(_moo and "barn" in _tm["JOHTO_ROUTE_39"].get("rooms", {}) and "farmhouse" in _tm["JOHTO_ROUTE_39"]["rooms"],
+      "Moomoo Farm: the barn and the farmhouse, SoulSilver's own rooms off Route 39")
+if _moo:
+    for _k in ("moomoo_healed", "moomoo_berries"):
+        story.story_flags.pop(_k, None)
+    story.inventory["ORAN_BERRY"] = 7
+    _st = g.current_state
+    for _ in range(6):
+        _run_story_event(_st, _moo["event"], lambda c: True, lambda ls: None)
+    _mid = not story.story_flags.get("moomoo_healed") and story.story_flags.get("moomoo_berries") == 6
+    _run_story_event(_st, _moo["event"], lambda c: True, lambda ls: None)
+    check(_mid and story.story_flags.get("moomoo_healed") and not story.inventory.get("ORAN_BERRY"),
+          "...the sick Miltank eats seven Oran Berries, one at a time, and gets well")
+_wife = next((o for o in _r39 if o.get("text") == "Farmer's wife"), {})
+check((_wife.get("event") or {}).get("gift_item", {}).get("TM136") and _wife["event"].get("requires") == ["moomoo_healed"],
+      "...the farmer's wife then gives TM Natural Gift, and the farm sells Moomoo Milk")
+_ol = _area["OLIVINE_CITY"]["explore_options"]
+_gift = lambda door, item: any(o.get("door") == door and (o.get("event") or {}).get("gift_item", {}).get(item) for o in _ol)
+check(_gift("guru", "GOOD_ROD") and _gift("cafe", "HM_STRENGTH"), "Olivine: the Fishing Guru's Good Rod, and Strength from the cafe's sailor")
+check(_hms.HM_BY_BADGE["JOHTO"].get("PLAIN") is None and _hms.USE_BADGE["JOHTO"].get("HM_STRENGTH") == "PLAIN", "...Strength usable with the Plain Badge (no longer given by it)")
+check(any((o.get("event") or {}).get("trade", {}).get("want") == 98 for o in _ol), "...the Krabby-for-Voltorb trade (Billy holds a Cheri Berry)")
 if fails:
     print("FAILS:", len(fails))
