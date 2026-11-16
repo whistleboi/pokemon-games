@@ -889,7 +889,7 @@ class ParkBuilder:
 
     def builder_tab(self, t):
         self.b_tab = t
-        if t != "Ground" and not isinstance(self.b_brush, int):
+        if t not in ("Ground", "Height") and not isinstance(self.b_brush, int):
             self.b_brush = 1
         self.b_group, self.b_source = "All", "All sets"
         for dd in (self.b_set_dd, self.b_theme_dd, self.b_gen_dd):
@@ -1115,6 +1115,10 @@ class ParkBuilder:
         item = self.b_pick
         if "surface" in item or "ledge" in item:
             return self.ground_at(tx, ty)
+        if "height" in item and self.b_brush == "box":
+            return                      # (laid when the mouse comes up)
+        if "height" in item and self.b_brush == "fill":
+            return self.height_fill(tx, ty, item["height"])
         r = self.brush_n() // 2
         for yy in range(ty - r, ty + r + 1):
             for xx in range(tx - r, tx + r + 1):
@@ -1141,7 +1145,7 @@ class ParkBuilder:
         return self.b_brush if isinstance(self.b_brush, int) else 1
 
     def brush_buttons(self):
-        return self.b_brush_btns if self.b_tab == "Ground" else self.b_brush_btns[:3]
+        return self.b_brush_btns if self.b_tab in ("Ground", "Height") else self.b_brush_btns[:3]
 
     def ground_at(self, tx, ty):
         """The Ground tab's brush: paint a surface (its edges draw themselves), or lay a ledge tile."""
@@ -1186,6 +1190,26 @@ class ParkBuilder:
         self.changed()
         self.status = f"Filled {n} tiles" + (" (the edges draw themselves)" if name else " with plain grass")
         return n
+
+    def height_level(self, op, lv):
+        return max(0, min(3, lv + 1 if op == "raise" else lv - 1 if op == "lower" else op))
+
+    def height_fill(self, tx, ty, op):
+        """Raise, lower or set the whole stretch of ground at one level joined to (tx, ty) (not corner to corner):
+        draw a terrace's edge at its level, then fill inside it. The cliffs rebuild when the mouse comes up."""
+        d = self.doc
+        if not (0 <= tx < d.w and 0 <= ty < d.h) or (tx, ty) in self.b_stroke:
+            return
+        lv0 = d.levels[ty][tx]
+        todo = [(tx, ty)]
+        while todo:
+            x, y = todo.pop()
+            if (x, y) in self.b_stroke or not (0 <= x < d.w and 0 <= y < d.h) or d.levels[y][x] != lv0:
+                continue
+            self.b_stroke.add((x, y))
+            todo += [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
+        for x, y in self.b_stroke:
+            d.levels[y][x] = self.height_level(op, lv0)
 
     def box_ground(self, a, b, name):
         (x0, y0), (x1, y1) = a, b
@@ -1233,6 +1257,11 @@ class ParkBuilder:
         item = self.b_pick
         if item and "ledge" in item:
             self.finish_ledge()
+        elif item and "height" in item and self.b_brush == "box" and self.b_box_from:
+            (x0, y0), (x1, y1) = self.b_box_from, self.b_box_to
+            for y in range(min(y0, y1), max(y0, y1) + 1):
+                for x in range(min(x0, x1), max(x0, x1) + 1):
+                    self.doc.levels[y][x] = self.height_level(item["height"], self.doc.levels[y][x])
         elif item and "surface" in item and self.b_brush == "box" and self.b_box_from:
             self.box_ground(self.b_box_from, self.b_box_to, item["surface"])
         self.b_box_from = None
@@ -1347,7 +1376,7 @@ class ParkBuilder:
                 self.b_stroke = set()
                 if "ledge" in self.b_pick:
                     self.b_ledge = {"cells": [], "last": (self.b_ledge or {}).get("last")}
-                if "surface" in self.b_pick and self.b_brush == "box":
+                if ("surface" in self.b_pick or "height" in self.b_pick) and self.b_brush == "box":
                     self.b_box_from = self.b_box_to = (tx, ty)
                 self.brush_at(tx, ty)
                 return True
@@ -1359,7 +1388,7 @@ class ParkBuilder:
                 tx, ty = self.to_tile(pos)
                 if self.b_box_from:
                     self.b_box_to = (max(0, min(self.doc.w - 1, tx)), max(0, min(self.doc.h - 1, ty)))
-                elif not (self.b_pick and "surface" in self.b_pick and self.b_brush == "fill"):
+                elif not (self.b_pick and ("surface" in self.b_pick or "height" in self.b_pick) and self.b_brush == "fill"):
                     self.brush_at(tx, ty)
                 return True
             return False
@@ -1502,7 +1531,7 @@ class ParkBuilder:
             x0, x1, y0, y1 = min(x0, x1), max(x0, x1), min(y0, y1), max(y0, y1)
             pygame.draw.rect(self.screen, (255, 255, 255), (self.ox + x0 * Z, self.oy + y0 * Z, (x1 - x0 + 1) * Z, (y1 - y0 + 1) * Z), 2)
             return
-        n = 1 if ("ledge" in self.b_pick or "surface" in self.b_pick) and not isinstance(self.b_brush, int) else self.brush_n()
+        n = 1 if ("ledge" in self.b_pick or "surface" in self.b_pick or "height" in self.b_pick) and not isinstance(self.b_brush, int) else self.brush_n()
         r = n // 2
         pygame.draw.rect(self.screen, (255, 255, 255), (self.ox + (tx - r) * Z, self.oy + (ty - r) * Z, n * Z, n * Z), 2)
 
