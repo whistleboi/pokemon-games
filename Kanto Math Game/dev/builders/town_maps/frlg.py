@@ -365,7 +365,7 @@ KANTO = {
                     },
                 },
                 'people': [
-                    ["Poke Mart", "Shop"],
+                    ["Poke Mart", "Shop", {"text": "Clerk", "action": "EVENT", "event": {"lines": ["Clerk: Thanks! Please take that parcel to Professor Oak in Pallet Town.", "Once he's done with it, come back and shop with us!"]}}],
                 ],
             },
             'school': {

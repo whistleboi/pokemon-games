@@ -1546,8 +1546,11 @@ for _k, _cm in (("MR_POKEMONS_HOUSE", "JOHTO_ROUTE_30"), ("MT_SILVER_CITY", "POK
     _t = _CS(g); g.change_state(_t); _tap_through(_t)
     _nm[_k] = (isinstance(_t, _WTS), (_t.w, _t.h), _t.player, set(map(str, _t.exits.values())), len(_t.people), set(_t.doors.values()))
 story.defeated_trainers.pop("ECRUTEAK_DANCE_THEATER", None)
+_jb = list(story.badges.get("JOHTO", []))   # (HGSS: the Kimono Girls battle only after the Rising Badge, 11-15)
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORM", "MINERAL", "GLACIER", "RISING"]
 _dt = kanto("ECRUTEAK_DANCE_THEATER", came="ECRUTEAK_CITY")
 _dtt = {(m.x, m.y) for m in _dt.run.floor.movers if m.kind == "trainer"}
+story.badges["JOHTO"] = _jb
 check(set(map(str, _dt.run.floor.exits.values())) == {"ECRUTEAK_CITY"} and len(_dtt) == 5,
       f"the Dance Theater: SoulSilver's hall, in at its door {_dt.run.player}, the five Kimono Girls on the stage {sorted(_dtt)}")
 check(_nm["MR_POKEMONS_HOUSE"][0] and _nm["MR_POKEMONS_HOUSE"][3] == {"JOHTO_ROUTE_30"} and _nm["MR_POKEMONS_HOUSE"][4] == 2,

@@ -1501,7 +1501,17 @@
      },
      [
       "Poke Mart",
-      "Shop"
+      "Shop",
+      {
+       "text": "Clerk",
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "Clerk: Thanks! Please take that parcel to Professor Oak in Pallet Town.",
+         "Once he's done with it, come back and shop with us!"
+        ]
+       }
+      }
      ],
      {
       "text": "Lady",
@@ -58262,21 +58272,6 @@
     "people": [
      "Gym"
     ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/T27GYM0101.png",
-      "at": [
-       0,
-       1
-      ],
-      "size": [
-       32,
-       68
-      ],
-      "px": 32
-     }
-    ],
     "dark": {
      "radius": [
       2
@@ -58292,7 +58287,22 @@
       "You stepped off the path into the dark... and fell!",
       "You landed back by the Gym's entrance."
      ]
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T27GYM0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       32,
+       68
+      ],
+      "px": 32
+     }
+    ]
    }
   },
   "inside": {
@@ -58301,7 +58311,25 @@
    "45,55": "center",
    "54,45": "mart",
    "24,55": "gym"
-  }
+  },
+  "barred": [
+   {
+    "tiles": [
+     [
+      24,
+      56
+     ]
+    ],
+    "look": "sheet:hg_gsman2.png",
+    "face": "d",
+    "until": {
+     "condition": "johto_beasts_fled"
+    },
+    "lines": [
+     "Morty, our Gym Leader, went off to the Burned Tower. The Gym's closed till he's back!"
+    ]
+   }
+  ]
  },
  "BURNED_TOWER": {
   "theme": "cave",
@@ -58312,9 +58340,9 @@
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "cc..cc.c...............cc",
-     "cc.....cccccccccc......cc",
+     "cc.....cccccccccc.X....cc",
      "ccc........ccccccccX..ccc",
-     "cccX...........cccc...ccc",
+     "cccX........N..cccc...ccc",
      "ccc....cccccc.........ccc",
      "cccc.cccccccccccc....cccc",
      "cccr..ccccccccccccc..rccc",
@@ -58328,10 +58356,10 @@
      "ccc.ccccccccccccccc..cccc",
      "ccc..ccccccccccccc....ccc",
      "cc0......ccccccc.......cc",
-     "cc.0....cc...........c.cc",
+     "cc.0....cc..........Nc.cc",
      "ccc.....c.......c.....ccc",
      "cccc0....c.....c....cc.cc",
-     "cccc.cc..r..v..r.cc....cc",
+     "ccccNcc..r..v..r.cc.N..cc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc"
     ],
@@ -58348,15 +58376,73 @@
     },
     "trainer_spots": [
      "Firebreather Dick",
-     "Firebreather Ned"
+     "Firebreather Ned",
+     "Firebreather Richard"
+    ],
+    "hidden": {
+     "5,20": "ULTRA_BALL",
+     "8,2": "ETHER"
+    },
+    "people": [
+     "HYPER POTION",
+     {
+      "text": "Eusine",
+      "action": "EVENT",
+      "flag_condition": "not johto_beasts_fled",
+      "event": {
+       "lines": [
+        "Eusine: I'm Eusine. I've come chasing the legendary Pokemon said to sleep below this tower... Suicune above all!",
+        "Eusine: There's more to you than meets the eye. Perhaps they'll show themselves to you."
+       ]
+      }
+     },
+     "ANTIDOTE",
+     {
+      "text": "Morty",
+      "action": "EVENT",
+      "flag_condition": "not johto_beasts_fled",
+      "event": {
+       "lines": [
+        "Morty: I'm Morty, Ecruteak's Gym Leader. My old friend Eusine is here looking for Suicune, so I came along.",
+        "Morty: Legend says the Pokemon of this tower sleep in its basement. Go and see. I'll be at the Gym when you're ready."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D18R0101.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D18R0101.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    {
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "cc.ccc.........c.cccccccc",
-     "cc.ccc.c...........cccccc",
+     "ccNccc....N.N..c.cccccccc",
+     "cc.ccc.c...N.......cccccc",
      "cc.ccc.............cccccc",
      "cc.cccc..c..ccccc..cccccc",
      "cc...ccccc.....cccc...ccc",
@@ -58394,7 +58480,89 @@
      ]
     },
     "people": [
+     "HP UP",
+     {
+      "text": "Raikou",
+      "action": "EVENT",
+      "flag_condition": "not johto_beasts_fled",
+      "event": {
+       "lines": [
+        "..."
+       ]
+      }
+     },
+     {
+      "text": "Entei",
+      "action": "EVENT",
+      "flag_condition": "not johto_beasts_fled",
+      "event": {
+       "lines": [
+        "..."
+       ]
+      }
+     },
+     {
+      "text": "Suicune",
+      "action": "EVENT",
+      "flag_condition": "not johto_beasts_fled",
+      "event": {
+       "lines": [
+        "..."
+       ]
+      }
+     },
      "ENCOUNTER SUICUNE"
+    ],
+    "hidden": {
+     "12,20": "REVIVE",
+     "7,3": "ANTIDOTE"
+    },
+    "scenes": [
+     {
+      "who": "Suicune",
+      "trigger": {
+       "zone": [
+        7,
+        4,
+        15,
+        7
+       ]
+      },
+      "flag": "johto_beasts_fled",
+      "lines": [
+       "Three Pokemon lay sleeping under the tower... Raikou, Entei and Suicune!",
+       "They woke at once! Raikou and Entei bolted past you and were gone in a flash!",
+       "Suicune stopped for a moment and looked straight at you... then it too leapt away."
+      ],
+      "after": "leave"
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D18R0102.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D18R0102.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -58405,7 +58573,16 @@
   "figure_floors": {
    "Firebreather Dick": 0,
    "Firebreather Ned": 0,
-   "ENCOUNTER SUICUNE": 1
+   "ENCOUNTER SUICUNE": 1,
+   "ANTIDOTE": 0,
+   "HYPER POTION": 0,
+   "Firebreather Richard": 0,
+   "HP UP": 1,
+   "Eusine": 0,
+   "Morty": 0,
+   "Raikou": 1,
+   "Entei": 1,
+   "Suicune": 1
   },
   "descend": true
  },
@@ -58755,10 +58932,10 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTGGGGGGG===================TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTGGGGGGG==N=N==============TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTGGGGGGG<======eeeeeeeee=e=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTGGGGGGG<=====e==eeeeeee==e======TZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
-   "TTGGGGGGG======eeeee===eeeee======TZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
+   "TTGGGGGGG===N==eeeee===eeeee======TZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT=eeee======ZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT=eeeee=====ZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT====ZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
@@ -58813,38 +58990,67 @@
      60
     ],
     "design": "tower"
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/D17R1101.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     9,
-     11,
-     15,
-     1
+    "kind": "picture",
+    "f": "ss_top/D17R1101.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
+    "size": [
+     64,
+     32
+    ],
+    "px": 32
+   }
+  ],
+  "hidden": {
+   "33,10": "TINY_MUSHROOM",
+   "39,20": "BIG_MUSHROOM",
+   "14,7": "TINY_MUSHROOM",
+   "23,7": "BIG_MUSHROOM",
+   "17,7": "TINY_MUSHROOM"
+  },
+  "people": [
+   {
+    "text": "Sage",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Beyond here lies the Bell Tower, built as a resting place for Ho-Oh, the legendary Flying-type Pokemon."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     24,
-     13,
-     7,
-     1
-    ],
-    "of": "tree"
+    "text": "Sage ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "A rainbow-hued Pokemon soaring over the tower... and a silver one resting deep beneath the sea. So the old stories go."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     31,
-     20,
-     9,
-     1
-    ],
-    "of": "tree"
+    "text": "Sage  ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Only one who holds the Rainbow Wing may climb to the top of the Bell Tower."
+     ]
+    }
    }
   ]
  },
@@ -75264,6 +75470,33 @@
     },
     "people": [
      "TALK TO SAGE LI"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0101.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0101.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
     ]
    },
    {
@@ -75312,7 +75545,34 @@
       12,
       21
      ]
-    }
+    },
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0102.png",
+      "at": [
+       6,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0102.png",
+      "at": [
+       6,
+       4
+      ],
+      "size": [
+       19,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -75337,7 +75597,7 @@
      "cc......)........).....cc",
      "cc.....cc.......cc.....cc",
      "cc.....cc.......cc.....cc",
-     "cc.....(....1...(......cc",
+     "cc.N...(....1...(......cc",
      "cc.....cc.......cc.....cc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc"
@@ -75360,7 +75620,40 @@
       21,
       4
      ]
-    }
+    },
+    "hidden": {
+     "13,4": "MAX_POTION"
+    },
+    "people": [
+     "TM122"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0103.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0103.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -75378,13 +75671,13 @@
      "ccccccccc..jjj..c_ccc_ccc",
      "ccccccccc..jjj..c.ccc.ccc",
      "ccccccccc..jjj..c_ccc_ccc",
-     "cc....).).......c...).ccc",
+     "cc....).).......c..N).ccc",
      "cc...cccccccccccc_ccc_ccc",
      "cc...ccc.(.(.(..(.c.(.ccc",
-     "cc...ccc_ccccc..ccc_ccccc",
+     "cc.N.ccc_ccccc..ccc_ccccc",
      "cc...ccc.).).c..ccc.ccccc",
      "cc...ccccccc_c..ccc_ccccc",
-     "cc.1.ccc.(.(.c..ccc..1.cc",
+     "cc.1.ccc.(.(.c..ccc..1Ncc",
      "cc.1.ccc_ccccc..(.(..1.cc",
      "cc...(.(.cccccccccc....cc",
      "ccccccccccccccccccccccccc",
@@ -75428,7 +75721,39 @@
       21,
       21
      ]
-    }
+    },
+    "people": [
+     "ESCAPE ROPE",
+     "FULL HEAL",
+     "ULTRA BALL"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0104.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0104.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -75447,7 +75772,7 @@
      "ccccc.c.cc.jjj..ccccccccc",
      "ccccc_c_cc.jjj..ccccccccc",
      "ccccc.c.).......).)....cc",
-     "ccccc_c_c.......ccc....cc",
+     "ccccc_c_c..N....ccc....cc",
      "ccccc.c.cc.....cccc....cc",
      "ccccc_c_cc.....cccc....cc",
      "cc....c.ccccccccccc....cc",
@@ -75486,14 +75811,47 @@
       10,
       21
      ]
-    }
+    },
+    "hidden": {
+     "21,16": "FULL_RESTORE"
+    },
+    "people": [
+     "PP UP"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0105.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0105.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccclllccclllccclllccccc",
      "cc.....cccccccccccccc..cc",
-     "cc......,,,,,,,,,,,,,..cc",
+     "cc.N....,,,,,,,,,,,,,..cc",
      "cc.......,,,,,,,,,,,,..cc",
      "cc.cccccccccccccccccc..cc",
      "cc_cccccccccccccccccc..cc",
@@ -75502,7 +75860,7 @@
      "cc.cccccccccccccccccc..cc",
      "cc_cccccc.......ccccc..cc",
      "cc...cccc..jjj..ccccc..cc",
-     "cc...cccc..jjj..ccccc..cc",
+     "cc...cccc.Njjj..ccccc..cc",
      "cc...cccc..jjj..ccccc..cc",
      "cc.1.cccc.......,,,,,..cc",
      "cc.1.cccc.......,,,,,..cc",
@@ -75534,14 +75892,45 @@
       3,
       15
      ]
-    }
+    },
+    "people": [
+     "MAX POTION",
+     "RARE CANDY"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0106.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0106.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccclllccclllccclllccccc",
      "cjj.....(.(.(.(.(.....jjc",
-     "cc......(.(.(.(.(......cc",
+     "cc......(.(.(.(.(...N..cc",
      "cc......ccccccccc......cc",
      "cc......ccccccccc......cc",
      "cc....1.).).).).)......cc",
@@ -75592,13 +75981,43 @@
       15,
       12
      ]
-    }
+    },
+    "people": [
+     "FULL HEAL "
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0107.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0107.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "cjj...ccccccc.........jjc",
+     "cjjN..ccccccc.........jjc",
      "cc....,,,,,,,..........cc",
      "cc.......,,,,..........cc",
      "ccccccccccccc1.........cc",
@@ -75606,7 +76025,7 @@
      "cc....cccccccccccccc,,ccc",
      "cc..1.cccccccccccccc,,ccc",
      "cc....cccccccccccccc,,ccc",
-     "ccc,.ccccc.....ccccc,,ccc",
+     "ccc,.ccccc....Nccccc,,ccc",
      "ccc,,ccccc.jjj.ccccc,,ccc",
      "ccc,,ccccc.jjj.cccc....cc",
      "ccc,,ccc...jjj.cccc.1..cc",
@@ -75616,7 +76035,7 @@
      "cc....ccccccccccccccccccc",
      "ccc,.cccccccccc...cc...cc",
      "ccc,,cccccccccc...(....cc",
-     "ccc..,,,,,,,,,c...cc.1.cc",
+     "ccc..,,,,,,,,,c.N.cc.1.cc",
      "ccc..,,,,,,,,,c....)...cc",
      "ccccccccccccccc...cc...cc",
      "ccccccccccccccccccccccccc",
@@ -75655,13 +76074,48 @@
       7,
       19
      ]
-    }
+    },
+    "hidden": {
+     "18,2": "CARBOS"
+    },
+    "people": [
+     "MAX REVIVE",
+     "FULL RESTORE",
+     "MAX ELIXIR"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0108.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0108.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "ccccjj....j...j....jjcccc",
+     "ccccjj....j.N.j....jjcccc",
      "ccccc............1..ccccc",
      "ccccc...............ccccc",
      "ccccc..cccccccccccccccccc",
@@ -75728,7 +76182,37 @@
       3,
       5
      ]
-    }
+    },
+    "people": [
+     "NUGGET"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0109.png",
+      "at": [
+       3,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0109.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       25,
+       25
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -75768,7 +76252,34 @@
       5,
       14
      ]
-    }
+    },
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0112.png",
+      "at": [
+       8,
+       12
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0112.png",
+      "at": [
+       8,
+       12
+      ],
+      "size": [
+       12,
+       17
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -75801,6 +76312,33 @@
     },
     "people": [
      "CHALLENGE HO-OH"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D17R0110.png",
+      "at": [
+       10,
+       10
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D17R0110.png",
+      "at": [
+       10,
+       10
+      ],
+      "size": [
+       11,
+       17
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -75819,7 +76357,19 @@
   ],
   "figure_floors": {
    "TALK TO SAGE LI": 0,
-   "CHALLENGE HO-OH": 10
+   "CHALLENGE HO-OH": 10,
+   "TM122": 2,
+   "FULL HEAL": 3,
+   "ESCAPE ROPE": 3,
+   "ULTRA BALL": 3,
+   "PP UP": 4,
+   "RARE CANDY": 5,
+   "MAX POTION": 5,
+   "FULL HEAL ": 6,
+   "MAX REVIVE": 7,
+   "FULL RESTORE": 7,
+   "MAX ELIXIR": 7,
+   "NUGGET": 8
   }
  },
  "MT_MORTAR": {
@@ -77160,14 +77710,14 @@
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     "c...X.....X..cc",
-     "c.X....X....Xcc",
+     "c...X.X...X..cc",
+     "c.X....N....Xcc",
      "c............cc",
      "c.c.ccccccc.ccc",
      "c.c..........cc",
-     "c.c...cc.....cc",
+     "c.c...cc..N..cc",
      "c.c..........cc",
-     "c.c..........cc",
+     "c.c.N...NN...cc",
      "c.c..........cc",
      "c.c..........cc",
      "c.c..........cc",
@@ -77192,14 +77742,124 @@
       60
      ],
      "_things": {},
-     "_stairs": {}
+     "_stairs": {},
+     "_picture": {
+      "f": "ss_ground/T27R0501.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "trainer_spots": [
      "Kimono Girl Sayo",
+     "Kimono Girl Zuki",
      "Kimono Girl Kuni",
      "Kimono Girl Naoko",
-     "Kimono Girl Zuki",
      "Kimono Girl Miki"
+    ],
+    "people": [
+     {
+      "text": "Rocket Grunt",
+      "action": "EVENT",
+      "flag_condition": "not beat_theater_grunt",
+      "event": {
+       "lines": [
+        "Rocket Grunt: Huh? Who are you? You want to get in my way?"
+       ],
+       "flag": "beat_theater_grunt",
+       "battle": {
+        "name": "Rocket Grunt",
+        "class": "ROCKET",
+        "sprite": "rocket_grunt_m.png",
+        "team": [
+         109
+        ],
+        "levels": [
+         12
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Rocket Grunt: Oh no! You've made me look like the bad guy!",
+          "Rocket Grunt: I've got a mission to get back to. If they find out I was goofing off..."
+         ]
+        }
+       }
+      }
+     },
+     {
+      "text": "Old woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Kimono Girls are so graceful. They train every day, in dance and in battle both."
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've been training my Psyduck to Surf AND dance. Then the Kimono Girls will surely notice us!"
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That Rocket Grunt is pestering my favourite Kimono Girl! You're a Trainer, aren't you? Please, do something!",
+        "Bravo! You sent that ruffian packing. Please, take this HM as my thanks. It's Surf!",
+        "With the Fog Badge from our Gym, your Pokemon can use it to cross water."
+       ],
+       "gift_item": {
+        "HM_SURF": 1
+       },
+       "flag": "got_hm_surf_theater",
+       "done": [
+        "The Kimono Girls dance beautifully, and they're fine Trainers too. You might test yourself against them one day."
+       ],
+       "requires": [
+        "beat_theater_grunt"
+       ],
+       "fail": [
+        "That Rocket Grunt is pestering my favourite Kimono Girl! You're a Trainer, aren't you? Please, do something!"
+       ]
+      },
+      "color": "GOLD"
+     },
+     {
+      "text": "Psyduck",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PSYDUCK: Psy... psyyy?"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T27R0501.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       15,
+       17
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -77211,7 +77871,12 @@
    "Kimono Girl Kuni": 0,
    "Kimono Girl Naoko": 0,
    "Kimono Girl Zuki": 0,
-   "Kimono Girl Miki": 0
+   "Kimono Girl Miki": 0,
+   "Rocket Grunt": 0,
+   "Gentleman": 0,
+   "Man": 0,
+   "Psyduck": 0,
+   "Old woman": 0
   }
  },
  "MR_POKEMONS_HOUSE": {

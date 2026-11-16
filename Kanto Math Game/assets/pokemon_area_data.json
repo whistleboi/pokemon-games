@@ -2708,7 +2708,7 @@
         }
       },
       "trainer_pool": [],
-      "route_menu": [{"text": "POKE MART CLERK", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_route1_potion", "event": {"lines": ["Clerk: Hi! I work at the Poke Mart in Viridian City.", "Here's a free sample: a Potion! It heals your Pokemon. Come shop with us!"], "gift_item": {"POTION": 1}, "flag": "got_route1_potion"}}, 
+      "route_menu": [{"text": "POKE MART CLERK", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_route1_potion", "stays": ["Clerk: Come and see us at the Viridian City Poke Mart any time!"], "event": {"lines": ["Clerk: Hi! I work at the Poke Mart in Viridian City.", "Here's a free sample: a Potion! It heals your Pokemon. Come shop with us!"], "gift_item": {"POTION": 1}, "flag": "got_route1_potion"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

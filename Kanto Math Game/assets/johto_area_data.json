@@ -126,6 +126,12 @@
     "JOHTO_ROUTE_36_MORNING_PERCENTAGES": {"29": 26, "32": 26, "16": 22, "165": 13, "37": 5, "234": 4, "58": 4},
     "JOHTO_NATIONAL_PARK_MORNING_PERCENTAGES": {"32": 21, "13": 18, "10": 18, "16": 14, "14": 11, "11": 11, "165": 7},
     "JOHTO_ROUTE_37_MORNING_PERCENTAGES": {"16": 38, "234": 29, "165": 20, "37": 5, "58": 5, "166": 2, "2001": 1},
+    "JOHTO_BELL_TOWER_DAY_PERCENTAGES": {"19": 99, "2001": 1},
+    "JOHTO_BELL_TOWER_MORNING_PERCENTAGES": {"19": 99, "2001": 1},
+    "JOHTO_BELL_TOWER_NIGHT_PERCENTAGES": {"92": 79, "19": 20, "2001": 1},
+    "JOHTO_BURNED_TOWER_DAY_PERCENTAGES": {"19": 42, "109": 42, "41": 7, "126": 5, "20": 2, "2001": 1, "2002": 1},
+    "JOHTO_BURNED_TOWER_MORNING_PERCENTAGES": {"19": 44, "109": 42, "41": 8, "20": 2, "126": 2, "2001": 1, "2002": 1},
+    "JOHTO_BURNED_TOWER_NIGHT_PERCENTAGES": {"19": 44, "109": 42, "41": 8, "20": 2, "126": 2, "2001": 1, "2002": 1},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -2480,52 +2486,143 @@
         },
         
         "BURNED_TOWER": {
-            "region": "JOHTO", 
+        
+            "region": "JOHTO",
+        
             "area_type": "dungeon",
+        
             "battle_type": "indoor",
-            "wild_pool_percentages": "JOHTO_BURNED_TOWER_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_BURNED_TOWER_DAY_PERCENTAGES",
+        
             "min_rounds": 2,
-            "backgrounds": {
-                "battle": "battle_burned_tower.png"
-            },
-            "area_boss": { "id": 245, "name": "Suicune" },
+        
+            "backgrounds": {"battle": "battle_burned_tower.png"},
+        
+            "area_boss": {"id": 245, "name": "Suicune"},
+        
             "trainer_pool": [
-                { "name": "Firebreather Dick", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 109, 58], "rewards": { "balls": 2 } },
-                { "name": "Firebreather Ned", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [110], "rewards": { "balls": 2 } },
-                { "name": "Firebreather Burt", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 58], "rewards": { "balls": 2 } }
+        
+                {"name": "Firebreather Dick", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 109, 58], "rewards": {"balls": 2}},
+        
+                {"name": "Firebreather Ned", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 58, 109], "rewards": {"balls": 2}},
+        
+                {"name": "Firebreather Burt", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 58], "rewards": {"balls": 2}},
+        
+                {"name": "Firebreather Richard", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [5], "rewards": {"balls": 2}}
+        
             ],
+        
             "on_enter_event": {"type": "trainer_battle", "condition": "has_plain_badge", "flag_check": "defeated_rival_burned_tower", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [92, 81, 41, 156], "team_choice": {"152": [92, 81, 41, 156], "155": [92, 81, 41, 159], "158": [92, 81, 41, 153]}, "levels": [20, 18, 20, 22], "rewards": {"balls": 5}, "dialogue": {"intro": ["...You again?", "I'm looking for the legendary Pokemon.", "Only the strongest trainers deserve them!", "That's not you!"], "player_won": ["Humph. You got lucky."], "player_lost": ["As I thought. Weak."]}, "movesets": {"92": ["LICK", "CONFUSE-RAY", "MEAN-LOOK", "CURSE"], "41": ["WING-ATTACK", "SUPERSONIC", "ASTONISH", "BITE"], "81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "156": ["FLAME-WHEEL", "SMOKESCREEN", "EMBER", "QUICK-ATTACK"], "159": ["WATER-GUN", "SCARY-FACE", "ICE-FANG", "BITE"], "153": ["REFLECT", "MAGICAL-LEAF", "POISONPOWDER", "SYNTHESIS"]}}},
-            "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "ENCOUNTER SUICUNE", "action": "BOSS", "condition": "boss_available", "color": "CYAN"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_burned_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 26, "no_catch": true, "victory_flag": "black_fog_banished_burned_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "EXIT TOWER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"}]
+        
+            "route_menu": [
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        
+                {"text": "ENCOUNTER SUICUNE", "action": "BOSS", "condition": "boss_available", "flag_condition": "johto_beasts_fled", "color": "CYAN"},
+        
+                {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_burned_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 26, "no_catch": true, "victory_flag": "black_fog_banished_burned_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}},
+        
+                {"text": "EXIT TOWER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "ANTIDOTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_antidote_burned_tower_d18r0101_7_26", "event": {"lines": ["An Antidote, by a pillar."], "gift_item": {"ANTIDOTE": 1}, "flag": "got_antidote_burned_tower_d18r0101_7_26"}},
+        
+                {"text": "HYPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hyper_potion_burned_tower_d18r0101_15_9", "event": {"lines": ["A Hyper Potion, in a corner of the floor."], "gift_item": {"HYPER_POTION": 1}, "flag": "got_hyper_potion_burned_tower_d18r0101_15_9"}},
+        
+                {"text": "HP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hp_up_burned_tower_d18r0102_5_6", "event": {"lines": ["A Hp Up, left near the stairs."], "gift_item": {"HP_UP": 1}, "flag": "got_hp_up_burned_tower_d18r0102_5_6"}}
+        
+            ],
+        
+            "radio_sounds": {"hoenn": [263, 327], "sinnoh": [441, 307]},
+        
+            "morning_pool_percentages": "JOHTO_BURNED_TOWER_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_BURNED_TOWER_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_BURNED_TOWER_NIGHT_PERCENTAGES"
+        
         },
         
         "BELL_TOWER": {
+        
             "region": "JOHTO",
+        
             "area_type": "dungeon",
+        
             "battle_type": "indoor",
-            "wild_pool_percentages": "JOHTO_BELL_TOWER_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_BELL_TOWER_DAY_PERCENTAGES",
+        
             "min_rounds": 2,
-            "backgrounds": {
-                "battle": "battle_bell_tower.png"
-            },
-            "area_boss": { 
-                "id": 250, "level": 45, 
-                "name": "Ho-Oh",
-                "victory_flag": "caught_ho_oh"
-            },
+        
+            "backgrounds": {"battle": "battle_bell_tower.png"},
+        
+            "area_boss": {"id": 250, "level": 45, "name": "Ho-Oh", "victory_flag": "caught_ho_oh"},
+        
             "trainer_pool": [
-                { "name": "Sage Gaku", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": { "balls": 2 } },
-                { "name": "Sage Masa", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": { "balls": 2 } },
-                { "name": "Sage Koji", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": { "balls": 2 } },
-                { "name": "Sage Li", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": { "balls": 2 } }
+        
+                {"name": "Sage Gaku", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}},
+        
+                {"name": "Sage Masa", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}},
+        
+                {"name": "Sage Koji", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}},
+        
+                {"name": "Sage Li", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-              {"text": "CHALLENGE HO-OH", "action": "BOSS", "condition": ["boss_available", "has_rainbow_wing"], "color": "GOLD"},
-              {"text": "TALK TO SAGE LI", "action": "NPC", "target": "sage_li", "condition": "no_trainers", "color": "GOLD"},
-              {"text": "BELLCHIME TRAIL", "action": "EXIT", "target_area": "BELLCHIME_TRAIL", "condition": "can_exit", "color": "RED"}
-            ]
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        
+                {"text": "CHALLENGE HO-OH", "action": "BOSS", "condition": ["boss_available", "has_rainbow_wing"], "color": "GOLD"},
+        
+                {"text": "TALK TO SAGE LI", "action": "NPC", "target": "sage_li", "condition": "no_trainers", "color": "GOLD"},
+        
+                {"text": "BELLCHIME TRAIL", "action": "EXIT", "target_area": "BELLCHIME_TRAIL", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "TM122", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm122_bell_tower_d17r0103_6_25", "event": {"lines": ["A TM (Taunt), by a pillar."], "gift_item": {"TM122": 1}, "flag": "got_tm122_bell_tower_d17r0103_6_25"}},
+        
+                {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_bell_tower_d17r0104_6_21", "event": {"lines": ["A Full Heal, in a corner of the floor."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_bell_tower_d17r0104_6_21"}},
+        
+                {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_bell_tower_d17r0104_22_18", "event": {"lines": ["An Escape Rope, left near the stairs."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_bell_tower_d17r0104_22_18"}},
+        
+                {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_bell_tower_d17r0104_25_24", "event": {"lines": ["An Ultra Ball, by a pillar."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_bell_tower_d17r0104_25_24"}},
+        
+                {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pp_up_bell_tower_d17r0105_14_19", "event": {"lines": ["A Pp Up, in a corner of the floor."], "gift_item": {"PP_UP": 1}, "flag": "got_pp_up_bell_tower_d17r0105_14_19"}},
+        
+                {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_bell_tower_d17r0106_13_16", "event": {"lines": ["A Rare Candy, left near the stairs."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_bell_tower_d17r0106_13_16"}},
+        
+                {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_potion_bell_tower_d17r0106_6_7", "event": {"lines": ["A Max Potion, by a pillar."], "gift_item": {"MAX_POTION": 1}, "flag": "got_max_potion_bell_tower_d17r0106_6_7"}},
+        
+                {"text": "FULL HEAL ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_bell_tower_d17r0107_23_7", "event": {"lines": ["A Full Heal, in a corner of the floor."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_bell_tower_d17r0107_23_7"}},
+        
+                {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_bell_tower_d17r0108_6_6", "event": {"lines": ["A Max Revive, left near the stairs."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_bell_tower_d17r0108_6_6"}},
+        
+                {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_bell_tower_d17r0108_17_14", "event": {"lines": ["A Full Restore, by a pillar."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_bell_tower_d17r0108_17_14"}},
+        
+                {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_bell_tower_d17r0108_19_24", "event": {"lines": ["A Max Elixir, in a corner of the floor."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_bell_tower_d17r0108_19_24"}},
+        
+                {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_bell_tower_d17r0109_15_6", "event": {"lines": ["A Nugget, left near the stairs."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_bell_tower_d17r0109_15_6"}}
+        
+            ],
+        
+            "radio_sounds": {"hoenn": [263, 327], "sinnoh": [441, 307]},
+        
+            "morning_pool_percentages": "JOHTO_BELL_TOWER_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_BELL_TOWER_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_BELL_TOWER_NIGHT_PERCENTAGES"
+        
         },
         
         "MT_MORTAR": {
@@ -2767,25 +2864,39 @@
         },
 
         "ECRUTEAK_DANCE_THEATER": {
+
             "area_type": "dungeon",
+
             "route_name": "Dance Theater",
+
             "region": "JOHTO",
+
             "min_rounds": 0,
-            "backgrounds": {
-                "main": "ecruteak_dance_theater.png",
-                "battle": "battle_ecruteak_dance.png"
-            },
+
+            "backgrounds": {"main": "ecruteak_dance_theater.png", "battle": "battle_ecruteak_dance.png"},
+
             "route_menu": [
-                { "text": "BATTLE", "action": "TRAINER", "condition": "has_trainers", "color": "BLUE" },
-                { "text": "EXIT THEATER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "color": "RED" }
+
+                {"text": "BATTLE", "action": "TRAINER", "condition": "has_trainers", "color": "BLUE"},
+
+                {"text": "EXIT THEATER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "color": "RED"}
+
             ],
+
             "trainer_pool": [
-              {"name": "Kimono Girl Naoko", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [196], "rewards": {"balls": 2}, "levels": [38]},
-              {"name": "Kimono Girl Sayo", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [135], "rewards": {"balls": 2}, "levels": [38]},
-              {"name": "Kimono Girl Zuki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [197], "rewards": {"balls": 2}, "levels": [38]},
-              {"name": "Kimono Girl Kuni", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [134], "rewards": {"balls": 2}, "levels": [38]},
-              {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5, "TIDAL_BELL": 1}, "victory_flag": "kimono_girls_defeated", "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. The bell resonates with you."]}, "levels": [38]}
+
+                {"name": "Kimono Girl Naoko", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [196], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+
+                {"name": "Kimono Girl Sayo", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [135], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+
+                {"name": "Kimono Girl Zuki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [197], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+
+                {"name": "Kimono Girl Kuni", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [134], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+
+                {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5, "TIDAL_BELL": 1}, "victory_flag": "kimono_girls_defeated", "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. The bell resonates with you."]}, "levels": [38], "when_flags": ["badge:RISING"]}
+
             ]
+
         },
 
         "CLIFF_EDGE_GATE": {
@@ -2866,7 +2977,20 @@
         "MT_SILVER_3F": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver 3F", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Upper Mountainside", "action": "EXIT", "target_area": "MT_SILVER_UPPER", "condition": "can_exit", "color": "RED"}, {"text": "Summit", "action": "EXIT", "target_area": "MT_SILVER_SUMMIT", "condition": "can_exit", "color": "RED"}]},
         "MT_SILVER_SUMMIT": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver Summit", "route_menu": [{"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}}, {"text": "3F", "action": "EXIT", "target_area": "MT_SILVER_3F", "condition": "can_exit", "color": "RED"}]},
         "MT_SILVER": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "trainer_pool": [{"name": "Ace Trainer Gaven", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [160, 212, 130], "rewards": {"balls": 5}}, {"name": "Ace Trainer Kevin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [6, 121, 143], "rewards": {"balls": 5}}, {"name": "Ace Trainer Irene", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [3, 131, 242], "rewards": {"balls": 5}}, {"name": "Ace Trainer Reena", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [9, 196, 232], "rewards": {"balls": 5}}], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "Pokemon Center", "action": "EXIT", "target_area": "MT_SILVER_CITY", "condition": "can_exit", "color": "RED"}, {"text": "2F", "action": "EXIT", "target_area": "MT_SILVER_2F", "condition": "can_exit", "color": "RED"}, {"text": "Moltres's chamber", "action": "EXIT", "target_area": "MT_SILVER_MOLTRES", "condition": "can_exit", "color": "RED"}, {"text": "A side chamber", "action": "EXIT", "target_area": "MT_SILVER_EXPERT", "condition": "can_exit", "color": "RED"}, {"text": "Mountainside", "action": "EXIT", "target_area": "MT_SILVER_LOWER", "condition": "can_exit", "color": "RED"}], "next_area": "MT_SILVER_CITY"},
-        "BELLCHIME_TRAIL": {"area_type": "dungeon", "route_name": "Bellchime Trail", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "LISTEN TO THE BELL", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Autumn leaves drift along the trail. Somewhere above, a bell rings softly..."]}}, {"text": "ECRUTEAK CITY", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"}, {"text": "BELL TOWER", "action": "EXIT", "target": "BELL_TOWER", "condition": "can_exit", "color": "RED"}], "next_area": "BELL_TOWER"},
+        "BELLCHIME_TRAIL": {
+            "area_type": "dungeon",
+            "route_name": "Bellchime Trail",
+            "region": "JOHTO",
+            "battle_type": "field",
+            "min_rounds": 0,
+            "trainer_pool": [],
+            "route_menu": [
+                {"text": "LISTEN TO THE BELL", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Autumn leaves drift along the trail. Somewhere above, a bell rings softly..."]}},
+                {"text": "ECRUTEAK CITY", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "BELL TOWER", "action": "EXIT", "target": "BELL_TOWER", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "BELL_TOWER"
+        },
         "SAFARI_ZONE_GATE": {"area_type": "town", "route_name": "Safari Zone Gate", "region": "JOHTO", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Route 48", "target_area": "JOHTO_ROUTE_48"}, {"text": "Safari Zone", "target_area": "JOHTO_SAFARI_ZONE"}], "explore_options": [{"text": "Heal", "action": "HEAL"}], "trainer_pool": [], "on_enter_event": null},
         "FRONTIER_ACCESS": {"area_type": "dungeon", "route_name": "Frontier Access", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "ROUTE 40", "action": "EXIT", "target": "JOHTO_ROUTE_40", "condition": "can_exit", "color": "RED"}, {"text": "BATTLE FRONTIER", "action": "EXIT", "target": "JOHTO_BATTLE_FRONTIER", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}], "next_area": "JOHTO_BATTLE_FRONTIER"},
         "POKEATHLON_DOME": {"area_type": "town", "route_name": "Pokéathlon Dome", "region": "JOHTO", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "National Park", "target_area": "NATIONAL_PARK"}], "explore_options": [{"text": "Pokéathlon Dome", "action": "EVENT", "door": "dome", "event": {"lines": ["A sign on the door: UNDER CONSTRUCTION.", "The Pokéathlon Dome isn't open yet. Come back another day!"]}}], "trainer_pool": [], "on_enter_event": null}

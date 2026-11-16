@@ -440,5 +440,27 @@ if getattr(eg, "room", None) == "gym":
     frames(5)
     check(tuple(eg.player) == (16, 55), f"...step off it into the dark and you fall, back by the entrance ({eg.player})")
 g.walk_town_room = g.walk_town_pos = None
+# ---- N7: the Burned Tower, the Dance Theater, the Bell Tower (HGSS)
+from src.world import hms as _hms
+_kg = [t for t in _area["ECRUTEAK_DANCE_THEATER"]["trainer_pool"] if t["name"].startswith("Kimono Girl")]
+_had = list(story.badges.get("JOHTO", []))
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG"]
+_early = [story.trainer_on_map("ECRUTEAK_DANCE_THEATER", i, t) for i, t in enumerate(_kg)]
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORM", "MINERAL", "GLACIER", "RISING"]
+_late = [story.trainer_on_map("ECRUTEAK_DANCE_THEATER", i, t) for i, t in enumerate(_kg)]
+story.badges["JOHTO"] = _had
+check(len(_kg) == 5 and not any(_early) and all(_late), f"Dance Theater: the five Kimono Girls battle only after the Rising Badge ({_early} / {_late})")
+_thm = _tm["ECRUTEAK_DANCE_THEATER"]
+_th = {p.get("text"): p for p in ((_thm.get("floors") or [_thm])[0].get("people") or []) if isinstance(p, dict)}
+_g = _th.get("Rocket Grunt", {}).get("event", {})
+check(_g.get("battle", {}).get("team") == [109] and _g.get("flag") == "beat_theater_grunt", "...a Rocket Grunt pesters a Kimono Girl (Koffing): beat him")
+_gm = _th.get("Gentleman", {}).get("event", {})
+check(_gm.get("gift_item", {}).get("HM_SURF") and _gm.get("requires") == ["beat_theater_grunt"], "...and the gentleman gives you Surf")
+check(_hms.HM_BY_BADGE["JOHTO"].get("FOG") is None and _hms.USE_BADGE["JOHTO"].get("HM_SURF") == "FOG", "...usable with the Fog Badge (it no longer comes with the badge)")
+_bt = _tm["BURNED_TOWER"]["floors"][1]
+check(any(sc.get("flag") == "johto_beasts_fled" for sc in _bt.get("scenes", [])) and {"Raikou", "Entei", "Suicune"} <= {p.get("text") for p in _bt.get("people", []) if isinstance(p, dict)},
+      "Burned Tower B1F: Raikou, Entei and Suicune wake and flee as you come near")
+_eb = [b for b in _tm["ECRUTEAK_CITY"].get("barred", []) if b.get("tiles") == [[24, 56]]]
+check(_eb and _eb[0]["until"]["condition"] == "johto_beasts_fled", "Ecruteak Gym: shut till you've seen the Burned Tower's Pokemon (Morty went there)")
 if fails:
     print("FAILS:", len(fails))

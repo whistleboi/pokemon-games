@@ -6207,6 +6207,78 @@
     },
     "ECRUTEAK_CITY:Gate guard ": {
       "sheet": "hg_counterm.png"
+    },
+    "BURNED_TOWER:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "BURNED_TOWER:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "BURNED_TOWER:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:TM122": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:FULL HEAL ": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "BURNED_TOWER:Eusine": {
+      "sheet": "hg_minaki.png"
+    },
+    "BURNED_TOWER:Morty": {
+      "sheet": "hg_gsleader4.png"
+    },
+    "BELLCHIME_TRAIL:Sage": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "BELLCHIME_TRAIL:Sage ": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "BELLCHIME_TRAIL:Sage  ": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "ECRUTEAK_DANCE_THEATER:Rocket Grunt": {
+      "sheet": "hg_rocketm.png"
+    },
+    "ECRUTEAK_DANCE_THEATER:Gentleman": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "ECRUTEAK_DANCE_THEATER:Man": {
+      "sheet": "hg_gsman1.png"
+    },
+    "ECRUTEAK_DANCE_THEATER:Old woman": {
+      "sheet": "hg_gsoldwoman1.png"
     }
   },
   "townsperson": "NPC 17.png",

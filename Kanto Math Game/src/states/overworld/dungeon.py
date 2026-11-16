@@ -980,7 +980,8 @@ class DungeonState(OverworldBattles, PlayState):
             if item.get("not_on_map"):
                 continue  # (the map stands it there itself, as a stand-in: the Cave of Origin's legend on its rock)
             fc = item.get("flag_condition")
-            if fc:
+            stays = item.get("stays") and any(item is p for p in getattr(self, "placed", ()))  # (done, but still here till you leave)
+            if fc and not stays:
                 parts = fc.split()
                 if parts[0] == "not" and len(parts) == 2:
                     if flags.get(parts[1]):
@@ -1329,6 +1330,9 @@ class DungeonState(OverworldBattles, PlayState):
             mo.hold = 150
         item = mover.payload
         if isinstance(item, dict) and self._scenes().on_talk(item.get("text")):  # (a scene of theirs plays instead)
+            return
+        if isinstance(item, dict) and item.get("stays") and not self._flag_ok(item):  # (their part is done: they just chat till you go)
+            self.say(item["stays"])
             return
         if item.get("action") == "GAME_CORNER":
             self.talk_to_clerk()
