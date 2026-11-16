@@ -2797,7 +2797,7 @@
         
             "backgrounds": {"battle": "battle_bell_tower.png"},
         
-            "area_boss": {"id": 250, "level": 45, "name": "Ho-Oh", "victory_flag": "caught_ho_oh"},
+            "area_boss": {"id": 250, "level": 60, "name": "Ho-Oh", "victory_flag": "caught_ho_oh"},
         
             "trainer_pool": [
         
@@ -2927,7 +2927,7 @@
         
             "backgrounds": {"battle": "battle_whirl_islands.png"},
         
-            "area_boss": {"id": 249, "level": 70, "name": "Lugia", "victory_flag": "caught_lugia"},
+            "area_boss": {"id": 249, "level": 60, "name": "Lugia", "victory_flag": "caught_lugia"},
         
             "trainer_pool": [
         
@@ -2949,7 +2949,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "CHALLENGE LUGIA", "action": "BOSS", "condition": ["boss_available", "has_tidal_bell"], "color": "BLUE"},
+                {"text": "CHALLENGE LUGIA", "action": "BOSS", "condition": ["boss_available", "has_silver_wing", "has_tidal_bell"], "color": "BLUE"},
         
                 {"text": "EXIT", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
         

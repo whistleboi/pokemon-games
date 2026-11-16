@@ -284,19 +284,15 @@ class RouteActions:
         self.is_progression_paused = True
         self.hide_menu_buttons()
         inv = self.game.story_manager.inventory
-        # Pokedex keys are "243-normal", so compare species ids (str(pid) in keys never matched).
-        caught_ids = {v.get("id") for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict)}
-        has_trio = {243, 244, 245} <= caught_ids
-        
+        # (Jordan 11-15: the Rainbow Wing for anyone who's beaten the sages; no need to have caught the three beasts)
         if inv.get("RAINBOW_WING", 0) > 0:
             lines = ["Sage Li: Seek the summit, chosen one."]
-        elif has_trio:
-            lines = self.game.assets.get_text("sage_li_intro")
+        else:
+            lines = ["Sage Li: You have shown us your strength, and your bond with your Pokemon.",
+                     "Sage Li: Take this Rainbow Wing. Ho-Oh waits at the top of the Bell Tower for the one who holds it."]
             inv["RAINBOW_WING"] = 1
             if self.game.assets.heal_sfx: self.game.assets.heal_sfx.play()
-        else:
-            lines = self.game.assets.get_text("sage_li_fail")
-            
+
         path = os.path.join(self.game.assets.sprites_dir, "png", "elder.png")
         if not os.path.exists(path): path = os.path.join(self.game.assets.sprites_dir, "png", "oldman.png")
         if os.path.exists(path):

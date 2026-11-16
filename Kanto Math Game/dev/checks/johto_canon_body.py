@@ -507,7 +507,25 @@ check("Swimmer Kirk" in _tm["JOHTO_ROUTE_41"].get("trainer_spots", []) and len(_
       "Route 41: SoulSilver's swimmers, and our own Swimmer Kirk still out on the water")
 # ---- Lugia waits for the Tidal Bell (Jordan 11-15: as SoulSilver), Kimono Girl Miki's prize
 _lg = next((o for o in _area["WHIRL_ISLANDS"]["route_menu"] if o.get("text") == "CHALLENGE LUGIA"), {})
-check("has_tidal_bell" in (_lg.get("condition") or []) and "has_silver_wing" not in (_lg.get("condition") or []), "Whirl Islands: Lugia appears to the holder of the Tidal Bell")
+check({"has_tidal_bell", "has_silver_wing"} <= set(_lg.get("condition") or []), "Whirl Islands: Lugia appears to the holder of the Silver Wing and the Tidal Bell (SoulSilver)")
+_ho = next((o for o in _area["BELL_TOWER"]["route_menu"] if o.get("text") == "CHALLENGE HO-OH"), {})
+check("has_rainbow_wing" in (_ho.get("condition") or []), "Bell Tower: Ho-Oh, for the holder of the Rainbow Wing")
+check(_area["BELL_TOWER"]["area_boss"]["level"] == 60 and _area["WHIRL_ISLANDS"]["area_boss"]["level"] == 60, "...both legends at level 60, as in Crystal")
+_inv = story.inventory; _rw = _inv.pop("RAINBOW_WING", None)
+from src.states.overworld.route_actions import RouteActions as _RA
+class _SL: pass
+_sl = _SL(); _sl.game = g; _sl.is_progression_paused = False
+for _n in ("hide_menu_buttons", "show_dialogue", "_end_npc_interaction_playstate"):
+    setattr(_sl, _n, lambda *a, **k: None)
+try:
+    _RA.visit_sage_li(_sl)
+except Exception as _e:
+    print("sage li:", repr(_e)[:80])
+check(_inv.get("RAINBOW_WING") == 1, "...Sage Li gives the Rainbow Wing without the three beasts caught")
+if _rw is None:
+    _inv.pop("RAINBOW_WING", None)
+else:
+    _inv["RAINBOW_WING"] = _rw
 check(any((t.get("rewards") or {}).get("TIDAL_BELL") for t in _area["ECRUTEAK_DANCE_THEATER"]["trainer_pool"]), "...which Kimono Girl Miki gives after the dance")
 if fails:
     print("FAILS:", len(fails))
