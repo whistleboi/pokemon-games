@@ -92,7 +92,7 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
-HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
+HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "WAVE_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
                "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING", "BLACK_BELT": "FIGHTING", "SOFT_SAND": "GROUND", "DRAGON_FANG": "DRAGON"}   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
 FEWER_WILD = {"CLEANSE_TAG"}
 DEFENCE_HELD = {"EVIOLITE"}  # (held by a Pokemon that can still evolve: its defences up by half. Route 123, 11-12)  # (held by your lead: fewer wild Pokemon on a map. Mt. Pyre's old woman, 11-12)
@@ -114,6 +114,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "HARD_STONE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Rock-type moves hit harder."},
         "POISON_BARB": {"price": 1000, "text": "Give it to a Pokemon to hold: its Poison-type moves hit harder."},
         "TWISTED_SPOON": {"price": 1000, "text": "Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
+        "WAVE_INCENSE": {"price": 9600, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},   # (HGSS: Route 47)
+        "LAGGING_TAIL": {"price": 200, "text": "A tardy tail. In the games its holder always moves last."},   # (HGSS: Route 47; effect not built yet)
         "IRON_BALL": {"price": 200, "text": "A heavy iron ball. In the games it slows its holder down."},   # (HGSS: Mt. Mortar; effect not built yet)
         "FULL_INCENSE": {"price": 9600, "text": "An incense with a lulling scent. In the games its holder moves after the foe."},   # (HGSS: Mt. Mortar; effect not built yet)
         "BLACK_BELT": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fighting-type moves hit harder."},   # (HGSS: Wesley, Lake of Rage)

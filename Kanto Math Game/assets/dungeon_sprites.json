@@ -6834,6 +6834,69 @@
     },
     "JOHTO_ROUTE_46:REVIVE": {
       "item": "POKE_BALL"
+    },
+    "TOHJO_FALLS:BLACK FLUTE": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_47:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_47:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_47:LAGGING TAIL": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_47:WAVE INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_47:Ruin watcher": {
+      "sheet": "hg_mount.png"
+    },
+    "JOHTO_ROUTE_47:Crasher Wake": {
+      "sheet": "hg_leader3.png"
+    },
+    "JOHTO_ROUTE_47:Chuck": {
+      "sheet": "hg_gsleader5.png"
+    },
+    "JOHTO_ROUTE_48:WHITE FLUTE": {
+      "item": "POKE_BALL"
+    },
+    "CLIFF_EDGE_GATE:Worker": {
+      "sheet": "hg_workman.png"
+    },
+    "CLIFF_EDGE_GATE:Worker ": {
+      "sheet": "hg_workman.png"
+    },
+    "CLIFF_EDGE_GATE:Traveller": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "JOHTO_CLIFF_CAVE:Cave guide": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "SAFARI_ZONE_GATE:Traveller": {
+      "sheet": "hg_gsman1.png"
+    },
+    "SAFARI_ZONE_GATE:Lass": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "SAFARI_ZONE_GATE:Quiet man": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "SAFARI_ZONE_GATE:Singing girl": {
+      "sheet": "hg_gsbabyboy1.png"
+    },
+    "SAFARI_ZONE_GATE:Drink seller": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "SAFARI_ZONE_GATE:Shopkeeper": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "SAFARI_ZONE_GATE:Slowpoke fan": {
+      "sheet": "hg_gswoman2.png"
+    },
+    "SAFARI_ZONE_GATE:Kid": {
+      "sheet": "hg_gsbabygirl1.png"
     }
   },
   "townsperson": "NPC 17.png",

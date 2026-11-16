@@ -80597,8 +80597,8 @@
      "ccccccc...ccccc.ccccccccc.cc",
      "ccccccc...ccccc.ccccccccc.cc",
      "ccccccc...ccccc.cccccc....cc",
-     "ccccccc...................cc",
-     "ccccccc..................>cc",
+     "ccccccc........N..........cc",
+     "ccccccc........N.........>cc",
      "ccccccc...ccccc...........cc",
      "ccccccc...cccccccccccccccccc",
      "ccccccc...cccccooooooooo.ccc",
@@ -80630,13 +80630,67 @@
     "exits": {
      ">": "CIANWOOD_CITY",
      "<": "JOHTO_ROUTE_47"
-    }
+    },
+    "hidden": {
+     "25,9": "BIG_PEARL"
+    },
+    "people": [
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hm? You want to go to the Safari Zone too? It's still being built. Come back later, kid."
+       ]
+      }
+     },
+     {
+      "text": "Worker ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Everybody's excited about the Safari Zone. The lady at the front desk is a little over the top about it, though..."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D48R0101.png",
+      "at": [
+       15,
+       16
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D48R0101.png",
+      "at": [
+       15,
+       16
+      ],
+      "size": [
+       28,
+       33
+      ],
+      "px": 32
+     }
+    ]
    }
   ],
   "floor_names": [
    "Cliff Edge Gate"
   ],
-  "figure_floors": {}
+  "figure_floors": {
+   "Worker": 0,
+   "Worker ": 0,
+   "Traveller": 0
+  }
  },
  "JOHTO_ROUTE_47": {
   "art": [
@@ -80651,7 +80705,7 @@
    "ccccccccccccff....TTTTTTccoooocc....TTTTTTTTTTcccccccccTTTooooooTTTTTTcccccccccccccccccccccccccc",
    "cccccccccccc......TTTTTTccoooocc....TTTTTTTTTTcccccccccTTTooooooTTTTTTcccccccccccccccccccccccccc",
    "cccccccccccc......TTTTTTccoooocc....TTTTTTTTTTcccccccccTTTooooooTTTTTccccccccccccccccccccccccccc",
-   "cccccccccccc......TTTTTTccoooocc....TTTTTTTTTTcccccccccTTTqrooooTTTTTccccccccccccccccccccccccccc",
+   "cccccccccccc..N...TTTTTTccoooocc....TTTTTTTTTTcccccccccTTTqrooooTTTTTccccccccccccccccccccccccccc",
    "cccccccccccc......TTTTTTccoooocc....XfTTTTTTTTcccccccccTTToorrrq.\"\"\"\"\"cccccccccccccccccccccccccc",
    "cccccccccccc......TTTTTTccoooocc......TTTTTTTTcccccccccTTToooooo.\"\"\"\"\"cccccccccccccccccccccccccc",
    "cccccccccccc......TTTTTTccqrrqccf........fTTTTcccccccccTTToooooo.\"\"\"\"\"cccccccccccccccccccccccccc",
@@ -80659,7 +80713,7 @@
    "ccccccccccccccc..cccccccccooooccccccccc,..TTTTccccccccccccoooooo......cccccccccccccccccccccccccc",
    "ooooooooooccccc..cccccccccooooccccccccc,..TTTTccccccccccccoooooocccccccccccccccccccccccccccccccc",
    "ooooooooooqqoo....ooooooooooooooooooooo,..TTTTccccccccccccoooooocccccccccccccccccccccccccccccccc",
-   "oooooooooorroo....ooooooooooooooooooooo,..TTTTccccccccccccoooooocccccccccccccccccccccccccccccccc",
+   "oooooooooorroo..N.ooooooooooooooooooooo,..TTTTccccccccccccoooooocccccccccccccccccccccccccccccccc",
    "oooooooooorroo....ooooooooooooooooooooo,..TTTTccccccccccccoooooocccccccccccccccccccccccccccccccc",
    "oooooooooorrooooooooooooooooooooooooooo,..TTTTccccccccccccoooooocccccccccccccccccccccccccccccccc",
    "oooooooooorroooooooocccccccccccccoooooo,..TTTTccccccccccccoooooocccccccccccccccccccccccccccccccc",
@@ -80673,21 +80727,21 @@
    "ccccccccccccccccccccccccccccccc=,oooooo,..TTTTccccc======,oooooo,===cccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccc=,$$$$$$,..TTTTccc========,;;;;;;,==Xcccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccc=,oooooo,......ccc========,;;;;;;,===ccccccccccccccccc>ccoooooooo",
-   "ccccccccccccccccccccccccccccccc=,oooooo,......ccc====cccccooooooccnccccccccccccccc.====,oooooooo",
+   "ccccccccccccccccccccccccccccccc=,oooooo,....N.ccc====cccccooooooccnccccccccccccccc.====,oooooooo",
    "ccccccccccccccccccccccccccccccc=,oooooocccccccccc=======rqoooooo,==.cccccccccccccc.====,oooooooo",
    "ccccccccccccccccccccccccccccccc=,ooooooooooooo,=========rqoooooo,==.cccccccccccccc.==cccoooooooo",
    "ccccccccccccccccccccccccccccccc=,ooooooooooooo,==========,oooooo,==.cccccccccccccc.=,ooqqooooooo",
    "cccccccccccccccccccccccuccccccc=,ooooooooooooo,==========,;;;;;;,======.cccccccc.===,ooqqooooooo",
-   "ccccccccccc.===============.ccc=,;;;;;;;;;;;;;,===cccX===,;;;;;;,======.cccccccc.===,ooqqooooooo",
+   "ccccccccccc.==========N====.ccc=,;;N;;;;;;;;;;,===cccX===,;;;;;;,======.cccccccc.===,ooqqooooooo",
    "ccccccccccc.===============.ccc=,;;;;;;;;;;;;;,===ccc===ccoqqooocccnc==.cccccccc.===,ooqqooooooo",
    "ccccccccccc.===============.ccc=,ooooooooooooo,==cccc==,ooooooooossss==Xcccccccc.==ccooqqooooooo",
    "ooooooooooocc/ccccccccccc/ccrrrrqqooooooooooooccccccc==,ooooooooossss======.cccc.=,ooooqqooooooo",
    "ooooooooooocc/ccccccccccc/ccooooooqqooooooooqqossss====,ooooooooooooo,=====.cccc.=,ooooqqooooooo",
-   "ooooooooooocc/ccccccccccc/ccoooooooqooooooooooossss====,ooooooooooooocccc==.cccc.=,ooooqqooooooo",
+   "ooooooooooocc/ccccccccccc/ccoooooooqooooooooooossss==N=,ooooooooooooocccc==.cccc.=,ooooqqooooooo",
    "ooooooooooocc/ccc==========,oooooooqqoooooooooossss====,ooooooooooooooooo,========,oooqqoooooooo",
    "ooooooooooocc/cc===========,oooooooooqqoooooooooooocccccooooooooooooooooo,========,oooqqoooooooo",
    "ooooooooooocc/ccccccccccc/ccoooooooooooooooooooooooooooqqooooooooooooooooccccccccccoooqqoooooooo",
-   "oooooooooqqsssssccccccccc/ccoooooooooooooooooqqqqoooooooooooooooooooooooooooooooooooooqqoooooooo",
+   "oooooooooqqsssNsccccccccc/ccoooooooooooooooooqqqqoooooooooooooooooooooooooooooooooooooqqoooooooo",
    "oooooooooqqsssssccccccccc/ccooooooooqqoooooooqqqqqqoooooooooooqqqqqqoooooooooooooooooqqooooooooo",
    "oooooooooqqqqqqqqoooooosssssooooooooqqooqqooqqoooqqoooooooqqooqqqqqqoooooooooooooooooqqooooooooo",
    "oooooooooqqqqqqqqoooooosssssooooooqqooqqqqqqqqooooqqooooooqqqqoooooqqqqqqooooooooooooqqooooooooo",
@@ -80712,25 +80766,79 @@
    "^": "JOHTO_ROUTE_48"
   },
   "buildings": {},
-  "roofs": {},
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/R47.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  },
   "parts": true,
   "trainer_spots": [
-   "Double Team Thom & Kae",
    "Young Couple Duff & Eda",
+   "Double Team Thom & Kae",
    "Camper Grant",
    "Hiker Devin"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     36,
-     4,
-     4,
-     1
+    "kind": "picture",
+    "f": "ss_top/R47.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
+    "size": [
+     96,
+     64
+    ],
+    "px": 32
    }
+  ],
+  "hidden": {
+   "16,44": "STARDUST",
+   "48,43": "PEARL"
+  },
+  "people": [
+   "WAVE INCENSE",
+   {
+    "text": "Chuck",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Chuck: Hwaaah! You climbed all the way up here to see me? I'm training on the cliffs today!",
+      "Chuck: The wind up here nearly knocks you flat. Perfect for building strong legs!"
+     ]
+    }
+   },
+   "REVIVE",
+   {
+    "text": "Ruin watcher",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Hello there! They say a huge tower once stood past this cave, reaching right up into the sky.",
+      "Whatever is left of it must be sealed away in there... I'd love to know what it was built for."
+     ]
+    }
+   },
+   {
+    "text": "Crasher Wake",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "A masked man standing tall before a roaring waterfall... That's me, Crasher Wake! Gym Leader of Pastoria, far off in Sinnoh!",
+      "I came all this way to train under these cliffs. The spray off the sea here is fantastic!"
+     ]
+    }
+   },
+   "RARE CANDY",
+   "LAGGING TAIL"
   ]
  },
  "JOHTO_CLIFF_CAVE": {
@@ -80742,7 +80850,7 @@
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
      "ccc...ccc.ccccccccccccccc0....cc",
-     "cc........ccccccccccccccc0.1.0cc",
+     "cc....N...ccccccccccccccc0.1.0cc",
      "cc..1......cccccccccccccc..1.ccc",
      "cc..1...1..cccccccccccccc....ccc",
      "cc.........cccccccccccccc....ccc",
@@ -80817,13 +80925,56 @@
       26,
       13
      ]
+    ],
+    "hidden": {
+     "9,30": "ULTRA_BALL"
+    },
+    "people": [
+     {
+      "text": "Cave guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When a cave splits in two, one way usually leads on and the other is a dead end. Choose carefully!"
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D50R0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D50R0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       32,
+       32
+      ],
+      "px": 32
+     }
     ]
    }
   ],
   "floor_names": [
    "Cliff Cave"
   ],
-  "figure_floors": {}
+  "figure_floors": {
+   "Cave guide": 0
+  }
  },
  "JOHTO_ROUTE_48": {
   "art": [
@@ -80843,7 +80994,7 @@
    "cccccccccccTTTTTTTT\"\"\".,,,,.ccoooooccccccccccccccccccccccccccccc",
    "cccccccccccTTTTTTTT\"\"\"\"\"\"\"\".ccoooooccccccccccccccccccccccccccccc",
    "cccccccccccTTTTTTTT\"\"\"\"\"\"\"\".ccoooooccf.fffTTTTcccccccccccccccccc",
-   "ccccccccccc....TTTT\"\"\"\"\"\"\"\".ccooooocc..!ffTTTTcccccccccccccccccc",
+   "cccccccccccN...TTTT\"\"\"\"\"\"\"\".ccooooocc..!ffTTTTcccccccccccccccccc",
    "cccccccccccccc.TTTT\"\"\"\"\"\"\"\",;;;;;;;;;,....TTTTcccccccccccccccccc",
    "cccccccccccccc.TTTT\"\"\"\"\"\"\"\",;;;;;;;;;,...fTTTTcccccccccccccccccc",
    "cccccccccccccc.TTTT\"\"\"\"\"\"\"\",;;;;;;;;;,....TTTTcccccccccccccccccc",
@@ -80865,7 +81016,18 @@
    "v": "JOHTO_ROUTE_47"
   },
   "buildings": {},
-  "roofs": {},
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/R48.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  },
   "signs": [
    [
     "Route 48",
@@ -80874,15 +81036,21 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     40,
-     30,
-     2,
-     1
+    "kind": "picture",
+    "f": "ss_top/R48.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
+    "size": [
+     64,
+     32
+    ],
+    "px": 32
    }
+  ],
+  "people": [
+   "WHITE FLUTE"
   ]
  },
  "SAFARI_ZONE_GATE": {
@@ -80926,26 +81094,26 @@
    "TTTTTTTTTTTTTTTTTTTTTAAAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTAAADDAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTf......j......!.j.......TTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT...f....................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT.NNf....................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT.f......................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT...FFFFF.........jjjjj..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTf..FFFFF........EEEjjj..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT...FFFFF........EEE..j..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT...FFFFF........EEENNj..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT...FFFFF................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT...FFFFF................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT...FFDFF...............fTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT.................jjjjjf.TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT.........N.......jjjjjf.TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT..f............GGGGGGG..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT...............jjj=jjj..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT...............jjjNjjj..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT........................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTf.......................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT..HHHHH.................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT..HHHHH.c........IIIII.fTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT.cjj==jjj.......jIIIII..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT...............jjj..jj..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT.cjjNNjjj.......jIIIII..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT...............jjjN.jj..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTf.......................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT.f....................ffTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTT........................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT.f......N.............ffTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTT....................NN..TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT........................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTT........................TTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTjj........cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
@@ -81035,7 +81203,17 @@
      154,
      143
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/D47.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "signs": [
    [
@@ -81045,105 +81223,28 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     16,
-     40,
-     5,
-     1
+    "kind": "picture",
+    "f": "ss_top/D47.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "roof",
-    "colour": [
-     223,
-     143,
-     99
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     41,
-     1,
-     1
+    "size": [
+     64,
+     64
     ],
-    "of": "roof",
-    "colour": [
-     182,
-     206,
-     212
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     28,
-     47,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     214,
-     173,
-     173
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     15,
-     51,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     218,
-     179,
-     179
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     52,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     183,
-     206,
-     207
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     13,
-     60,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     60,
-     7,
-     1
-    ],
-    "of": "tree"
+    "px": 32
    }
   ],
   "rooms": {
    "gate": {
     "theme": "room",
     "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "ccccc^ccccccccccccc^ccccc",
@@ -81202,30 +81303,62 @@
       236,
       232,
       214
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D47R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
-    "parts": true
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D47R0101.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       25,
+       22
+      ],
+      "px": 32
+     }
+    ]
    },
    "center": {
     "theme": "room",
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNcccccccczc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -81322,10 +81455,36 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D47PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Heal"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D47PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
     ]
    }
   },
@@ -81333,7 +81492,122 @@
    "24,37": "gate",
    "25,37": "gate",
    "18,46": "center"
-  }
+  },
+  "hidden": {
+   "14,49": "TINY_MUSHROOM",
+   "22,44": "TINY_MUSHROOM",
+   "36,43": "TINY_MUSHROOM"
+  },
+  "people": [
+   {
+    "text": "Jigglypuff",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "JIGGLYPUFF: Puu puuu."
+     ]
+    }
+   },
+   {
+    "text": "Lass",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "This Safari Zone is great! I chased Pokemon all day... Though my Jigglypuff got a bit grumpy."
+     ]
+    }
+   },
+   {
+    "text": "Quiet man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "...... (He doesn't seem to be the talking type.)"
+     ]
+    }
+   },
+   {
+    "text": "Kangaskhan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "KANGASKHAN: ......"
+     ]
+    }
+   },
+   {
+    "text": "Kid",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I've always wanted to catch my very first Pokemon in the Safari Zone!"
+     ]
+    }
+   },
+   {
+    "text": "Singing girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Safari, safari, so much fun! So many Pokemon waiting for us out there!"
+     ]
+    }
+   },
+   {
+    "text": "Butterfree",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "BUTTERFREE: Free free."
+     ]
+    }
+   },
+   {
+    "text": "Shopkeeper",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Oh, you'd like to buy something? Give me a moment to get set up... Just a minute..."
+     ]
+    }
+   },
+   {
+    "text": "Drink seller",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I've decided to sell drinks for Pokemon. It's new to me, but I'll do my best!"
+     ]
+    }
+   },
+   {
+    "text": "Traveller",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The Safari Zone feels like a trip to another country. Strange, isn't it?"
+     ]
+    }
+   },
+   {
+    "text": "Slowpoke fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "There are lots of cute Pokemon, but nothing beats Slowpoke. People say I look like one. ...I'm flattered!"
+     ]
+    }
+   },
+   {
+    "text": "Slowpoke",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "SLOWPOKE: ...Yawn?"
+     ]
+    }
+   }
+  ]
  },
  "JOHTO_EMBEDDED_TOWER": {
   "theme": "cave",
@@ -81407,7 +81681,7 @@
      "cccccc~~ooooocccccccoooooccccccccccccc",
      "cccccc~~ooqqocccccccoooooccccccccccccc",
      "ccccccccoo1oocccccccoooooccccccccccccc",
-     "ccoooc...........................ooocc",
+     "ccooocN..........................ooocc",
      "ccoooccc$$$$$ccccccc$$$$$ccccccccooocc",
      "ccooooooooooocccccccoooooooooooooooocc",
      "ccooooooooooocccccccoooooooooooooooocc",
@@ -81431,7 +81705,37 @@
       5,
       9
      ]
-    }
+    },
+    "people": [
+     "BLACK FLUTE"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D45R0101.png",
+      "at": [
+       17,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D45R0101.png",
+      "at": [
+       17,
+       1
+      ],
+      "size": [
+       38,
+       24
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -81459,6 +81763,33 @@
     },
     "people": [
      "Waterfall Cave"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D45R0102.png",
+      "at": [
+       1,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D45R0102.png",
+      "at": [
+       1,
+       1
+      ],
+      "size": [
+       11,
+       12
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -81467,7 +81798,8 @@
    "Hidden room"
   ],
   "figure_floors": {
-   "Waterfall Cave": 1
+   "Waterfall Cave": 1,
+   "BLACK FLUTE": 0
   }
  },
  "ECRUTEAK_DANCE_THEATER": {
@@ -81754,13 +82086,37 @@
     236,
     232,
     214
-   ]
+   ],
+   "_picture": {
+    "f": "ss_ground/R30R0201.png",
+    "at": [
+     0,
+     1
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "people": [
    "Talk to Mr. Pokemon",
    "Show the Red Scale"
   ],
-  "overheads": []
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/R30R0201.png",
+    "at": [
+     0,
+     1
+    ],
+    "size": [
+     14,
+     10
+    ],
+    "px": 32
+   }
+  ]
  },
  "FRONTIER_ACCESS": {
   "theme": "room",
