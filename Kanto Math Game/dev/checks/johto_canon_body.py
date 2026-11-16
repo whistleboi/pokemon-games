@@ -26,7 +26,8 @@ DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30",
         "JOHTO_ROUTE_32", "RUINS_OF_ALPH", "UNION_CAVE", "JOHTO_ROUTE_33", "AZALEA_TOWN", "SLOWPOKE_WELL", "ILEX_FOREST", "JOHTO_ROUTE_34",
         "GOLDENROD_CITY", "RADIO_TOWER", "JOHTO_ROUTE_35", "JOHTO_ROUTE_36",
         "DRAGONS_DEN", "DRAGON_SHRINE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_46",   # (N13, 11-16)
-        "TOHJO_FALLS", "MR_POKEMONS_HOUSE", "JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "CLIFF_EDGE_GATE", "JOHTO_CLIFF_CAVE", "SAFARI_ZONE_GATE"]   # (N14)
+        "TOHJO_FALLS", "MR_POKEMONS_HOUSE", "JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "CLIFF_EDGE_GATE", "JOHTO_CLIFF_CAVE", "SAFARI_ZONE_GATE",   # (N14)
+        "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "MT_SILVER_CITY", "FRONTIER_ACCESS", "POKEATHLON_DOME"]   # (N15)
 
 
 def frames(n):
@@ -732,6 +733,81 @@ story.inventory.pop("TM138", None)
 _rseN(_sh, _cl["event"], lambda c: True, lambda l, **k: None) if _cl else None
 check(_cl is not None and _cl.get("condition") == "dragon_quiz_done" and story.inventory.get("TM138") == 1, "...and Clair gives TM138 Dragon Pulse in the Den")
 story.player_team = _keepN; story.story_flags.clear(); story.story_flags.update(_flN); story.badges.clear(); story.badges.update(_bN)
+
+# ---- N15 (11-16): the S.S. Aqua's HGSS story - the crewman's sleeping buddy (Sailor Stanly), the granddaughter's hide-and-seek and
+# her grandfather's Metal Coat, the captain's Plates (one a day after all 16 Badges, then Nuggets); Mt. Silver's TM Flamethrower;
+# the Pokeathlon Dome's plaza from the game file
+_flA, _bA, _invA = dict(story.story_flags), {k: list(v) for k, v in story.badges.items()}, dict(story.inventory)
+for _f in [f for f in story.story_flags if f.startswith("ss_aqua_")]:
+    story.story_flags.pop(_f)
+_aq = open_map("JOHTO_SS_AQUA", "OLIVINE_CITY")
+_aqP = {p["text"].strip() + (f"@{i}" if p["text"].strip() == "Little girl" else ""): p for i, f in enumerate(_tm["JOHTO_SS_AQUA"]["floors"])
+        for p in (f.get("people") or []) if isinstance(p, dict) and p.get("text")}
+_saidA = []
+def _talkA(who):
+    _saidA.clear()
+    _rseN(_aq, _aqP[who]["event"], lambda c: _aq._check_route_condition(c, False),
+          lambda l, **k: _saidA.extend(l))
+    play(lambda: not getattr(g.current_state, "dialogue_box", None) or not g.current_state.dialogue_box.visible, 300)
+_need = ["Crewman", "Sailor Stanly", "Captain", "Gentleman", "Little girl@6", "Little girl@5", "Little girl@3"]
+check(all(w in _aqP for w in _need), f"S.S. Aqua: the crewman, Stanly, the captain, the gentleman and the girl in her three places {[w for w in _need if w not in _aqP]}")
+if all(w in _aqP for w in _need):
+    _talkA("Sailor Stanly")
+    check(type(g.current_state).__name__ not in ("TrainerIntroState", "TrainerBattleState") and any("Zzz" in l for l in _saidA),
+          f"...Sailor Stanly sleeps until his buddy has asked for him ({_saidA[:1]})")
+    _talkA("Crewman")
+    check(story.story_flags.get("ss_aqua_find_buddy"), "...the crewman on the lower deck asks you to find him")
+    _aq = g.current_state
+    _rseN(_aq, _aqP["Sailor Stanly"]["event"], lambda c: _aq._check_route_condition(c, False), lambda l, **k: None)
+    check(type(g.current_state).__name__ in ("TrainerIntroState", "TrainerBattleState"), f"...then Stanly wakes up and battles ({type(g.current_state).__name__})")
+    _aq = open_map("JOHTO_SS_AQUA", "OLIVINE_CITY")
+    story.story_flags["ss_aqua_stanly"] = True
+    _talkA("Crewman")
+    check(any("Thanks" in l for l in _saidA), f"...beaten, the crewman thanks you ({_saidA[:1]})")
+    _cnd = lambda w: _aq._check_route_condition(_aqP[w].get("condition"), False) if _aqP[w].get("condition") is not None else True
+    check(_cnd("Little girl@6") and not _cnd("Little girl@5") and not _cnd("Little girl@3"), "...the little girl is first in the captain's cabin, pestering him")
+    _talkA("Little girl@6")
+    check(story.story_flags.get("ss_aqua_girl_hiding") and _cnd("Little girl@5") and not _cnd("Little girl@6"), "...she runs off to hide on the lower deck")
+    story.inventory.pop("METAL_COAT", None)
+    _talkA("Gentleman")
+    check(not story.inventory.get("METAL_COAT"), "...her grandfather asks you to find her (no gift yet)")
+    _talkA("Little girl@5")
+    check(story.story_flags.get("ss_aqua_girl_found") and _cnd("Little girl@3"), "...found, she goes back to her grandfather's cabin")
+    _talkA("Gentleman")
+    check(story.inventory.get("METAL_COAT") == 1, "...and he gives you the Metal Coat")
+    story.badges = {"JOHTO": [], "KANTO": []}
+    _talkA("Captain")
+    check(not any(k.endswith("_PLATE") and v for k, v in story.inventory.items()), "...the captain gives nothing before all 16 Badges")
+    story.badges = {"JOHTO": ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"],
+                    "KANTO": ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"]}
+    for _k in [k for k in story.inventory if k.endswith("_PLATE")]:
+        story.inventory.pop(_k)
+    _talkA("Captain"); _talkA("Captain")
+    check(story.inventory.get("FLAME_PLATE") == 1 and not story.inventory.get("SPLASH_PLATE"), "...with 16, a Flame Plate - one a day, not two")
+    for _k in [k for k in story.story_flags if k.startswith("ss_aqua_captain_gift@")]:
+        story.story_flags.pop(_k)   # (the next day)
+    _talkA("Captain")
+    check(story.inventory.get("SPLASH_PLATE") == 1, "...the next day the Splash Plate")
+    story.story_flags["ss_aqua_captain_gifts"] = 16
+    for _k in [k for k in story.story_flags if k.startswith("ss_aqua_captain_gift@")]:
+        story.story_flags.pop(_k)
+    _ng = story.inventory.get("NUGGET", 0)
+    _talkA("Captain")
+    check(story.inventory.get("NUGGET", 0) == _ng + 1, "...and after all 16 Plates, a Nugget a day")
+    from src.pokemon import items as _itA
+    check(all(_itA.HELD_BOOSTS.get(f"{p}_PLATE") for p in ("FLAME", "IRON", "DRACO")), "...each Plate boosts its type when held (Flame: Fire, Iron: Steel, Draco: Dragon)")
+story.story_flags.clear(); story.story_flags.update(_flA); story.badges.clear(); story.badges.update(_bA); story.inventory.clear(); story.inventory.update(_invA)
+_tm139 = json.load(open("assets/tms.json", encoding="utf-8")).get("TM139") or {}
+_silver_balls = [o for o in _area["MT_SILVER_CITY"].get("explore_options", []) if o.get("found")]
+check(_tm139.get("move") == "FLAMETHROWER" and any("TM139" in json.dumps(o) for o in _silver_balls),
+      f"Mt. Silver: TM139 Flamethrower (HGSS TM35) lies outside the Pokemon Center ({[o['text'] for o in _silver_balls]})")
+_dome = _tm["POKEATHLON_DOME"]
+_rows = _dome["art"]
+check(len(_rows) == 64 and len(_rows[0]) == 64 and _dome["buildings"] == {"P": "dome"} and any("D" in r for r in _rows)
+      and _dome["exits"] == {"v": "NATIONAL_PARK"},
+      "Pokeathlon Dome: the plaza is SoulSilver's zone D49, whole; the Dome's door, the way south to the National Park")
+_dfolk = [p for p in (_dome.get("people") or []) if isinstance(p, dict) and p.get("event")]
+check(len(_dfolk) == 15 and sum(r.count("N") for r in _rows) == 15, f"...its 15 people from the game stand on the plaza ({len(_dfolk)})")
 
 if fails:
     print("FAILS:", len(fails))

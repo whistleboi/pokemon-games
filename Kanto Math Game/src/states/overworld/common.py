@@ -392,6 +392,13 @@ def _run_story_event(state, key, check, show):
         story.inventory[_item] = story.inventory.get(_item, 0) + 1
         story.story_flags.pop("mirage_daily_ready", None)
         lines.append(f"{getattr(game, 'player_name', 'You')} found a {forms.item_label(_item).upper()}!")
+    if ev.get("gift_cycle"):   # (one after another, then the last again and again: the S.S. Aqua captain's Plates, then Nuggets; HGSS)
+        _cf = ev.get("cycle_flag") or "gift_cycle"
+        _n = int(story.story_flags.get(_cf) or 0)
+        _item = ev["gift_cycle"][min(_n, len(ev["gift_cycle"]) - 1)]
+        story.story_flags[_cf] = _n + 1
+        story.inventory[_item] = story.inventory.get(_item, 0) + 1
+        lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(_item).upper()}!")
     for item, qty in (ev.get("gift_item") or {}).items():
         if item == "balls":
             story.balls_left = getattr(story, "balls_left", 0) + qty  # the one ball count

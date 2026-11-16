@@ -93,7 +93,8 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
 HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "WAVE_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
-               "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING", "BLACK_BELT": "FIGHTING", "SOFT_SAND": "GROUND", "DRAGON_FANG": "DRAGON"}   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
+               "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING", "BLACK_BELT": "FIGHTING", "SOFT_SAND": "GROUND", "DRAGON_FANG": "DRAGON",
+               "FLAME_PLATE": "FIRE", "SPLASH_PLATE": "WATER", "ZAP_PLATE": "ELECTRIC", "MEADOW_PLATE": "GRASS", "ICICLE_PLATE": "ICE", "FIST_PLATE": "FIGHTING", "TOXIC_PLATE": "POISON", "EARTH_PLATE": "GROUND", "SKY_PLATE": "FLYING", "MIND_PLATE": "PSYCHIC", "INSECT_PLATE": "BUG", "STONE_PLATE": "ROCK", "SPOOKY_PLATE": "GHOST", "DRACO_PLATE": "DRAGON", "DREAD_PLATE": "DARK", "IRON_PLATE": "STEEL"}   # (the Plates: HGSS's S.S. Aqua captain, 11-16)   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
 FEWER_WILD = {"CLEANSE_TAG"}
 DEFENCE_HELD = {"EVIOLITE"}  # (held by a Pokemon that can still evolve: its defences up by half. Route 123, 11-12)  # (held by your lead: fewer wild Pokemon on a map. Mt. Pyre's old woman, 11-12)
 HELD_BOOST = 1.2
@@ -121,6 +122,22 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "BLACK_BELT": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fighting-type moves hit harder."},   # (HGSS: Wesley, Lake of Rage)
         "CHOICE_SPECS": {"price": 4000, "text": "Held: in the games it boosts special moves but locks its holder into one move."},   # (HGSS: Lake of Rage; effect not built yet)
         "DRAGON_FANG": {"price": 1000, "text": "Give it to a Pokemon to hold: its Dragon-type moves hit harder."},   # (HGSS: Route 45 / Dragon's Den)
+        "FLAME_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Fire-type moves hit harder."},
+        "SPLASH_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Water-type moves hit harder."},
+        "ZAP_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Electric-type moves hit harder."},
+        "MEADOW_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Grass-type moves hit harder."},
+        "ICICLE_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Ice-type moves hit harder."},
+        "FIST_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Fighting-type moves hit harder."},
+        "TOXIC_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Poison-type moves hit harder."},
+        "EARTH_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Ground-type moves hit harder."},
+        "SKY_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Flying-type moves hit harder."},
+        "MIND_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
+        "INSECT_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Bug-type moves hit harder."},
+        "STONE_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Rock-type moves hit harder."},
+        "SPOOKY_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Ghost-type moves hit harder."},
+        "DRACO_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Dragon-type moves hit harder."},
+        "DREAD_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Dark-type moves hit harder."},
+        "IRON_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Steel-type moves hit harder."},   # (HGSS: the S.S. Aqua's captain, a Plate a day after all 16 Badges)
         "SOFT_SAND": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ground-type moves hit harder."},   # (HGSS: Santos, Blackthorn)
         "POKE_DOLL": {"price": 1000, "text": "A cute doll. Saffron's Copycat would love one: she teaches Mimic for it. (FireRed: Celadon Dept. Store 4F)"},
         "SMOKE_BALL": {"price": 200, "text": "Held: in the games its holder can always run from a wild Pokemon."},   # (HGSS: Doris the Dodrio; effect not built yet)

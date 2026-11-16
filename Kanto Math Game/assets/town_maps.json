@@ -77203,78 +77203,267 @@
  },
  "POKEATHLON_DOME": {
   "art": [
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~PPPPPPPPPPPPPPPPPP~~TT",
-   "~~eeeeeeeeleeeeeeeleeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeeee...eeeeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeee.....eeeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeee.....eeeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeee.....eeeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eleeeeeee=e...e=eeeeeeekePPPPPPPPPPPPPPPPPPeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeelkePPPPPPPPPDPPPPPPPPeeTT",
-   "~~eeeeeeeeeemmmmeeeeeeeeekeeeeeeeeeeeeeeeeeeeeeTT",
-   "~~eeeeeeeeeemmmmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!eeeeeeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eleeeeeeeeeeeeeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeee...eeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeee.....eeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeee.....eeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeee.....eeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeee=e...e=eeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeee=...=eeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeeeeleeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeyyyeyyyeeeyyyyTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeemmmmmmmeeemmmmTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeemmmmmmmeeemmmmTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeemmmmmmmeeemmmmTTTTTTTTTeeeeeeTTTTTTTTTT",
-   "~~eeeeeeeeeeeeeeeeeeeeeeTTTTTTTTTGGDGGGGGGGGGGGTT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~TTTTTTTTTGGGGGGGGGGGGGGTT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~TTTTTTTTTGGGGGGGGGGGGGGTT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~TTTTTTTTTGGGGGGGGGGGGGGTT"
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooTTTTTTTTTT",
+   "ooooooooo#############################################TTTTTTTTTT",
+   "ooooooooo#......c...N...c......#ccc=ccccccccccccc=cc##TTTTTTTTTT",
+   "ooooooooo#...===============...#cccccccccccccccccccc##TTTTTTTTTT",
+   "ooooooooo#..======N==========..#cccccPPPPPPPPPPPcccc##TTTTTTTTTT",
+   "ooooooooo#.===========N=======.#==cccPPPPPPPPPPPccc==#TTTTTTTTTT",
+   "ooooooooo#.=======N===========.#==cccPPPPPPPPPPPccc==#TTTTTTTTTT",
+   "ooooooooo#.===================.###cccPPPPPPPPPPPccc###TTTTTTTTTT",
+   "ooooooooo#.===================.#..cccPPPPPPPPPPPccc..#TTTTTTTTTT",
+   "ooooooooo#.===================.#..cccPPPPPPPPPPPccc..#TTTTTTTTTT",
+   "ooooooooo#.========...========.#...ccPPPPPPPPPPPcc...#TTTTTTTTTT",
+   "ooooooooo#.=======.....=======.#...ccPPPPPPPPPPPcc...#TTTTTTTTTT",
+   "ooooooooo#.=======.....=======.#...ccPPPPPPPPPPPcc...#TTTTTTTTTT",
+   "ooooooooo#c=======.....=======c#...ccPPPPPPPPPPPcc...#TTTTTTTTTT",
+   "ooooooooo#.======c.....c======.#.....PPPPDDDPPPP.....#TTTTTTTTTT",
+   "ooooooooo#.=======ccccc======NN#...NN===========.....#TTTTTTTTTT",
+   "ooooooooo#.=======!cccN=======.......===========.....#TTTTTTTTTT",
+   "ooooooooo#.===================.......=========!=.....#TTTTTTTTTT",
+   "ooooooooo#.===================.......===========.....#TTTTTTTTTT",
+   "ooooooooo#.===================.......===========.....#TTTTTTTTTT",
+   "ooooooooo#.===================.......==========......#TTTTTTTTTT",
+   "ooooooooo#.===================.........=======.......#TTTTTTTTTT",
+   "ooooooooo#.===================.........=======.......#TTTTTTTTTT",
+   "ooooooooo#.===================.......cc.=====.cc.....#TTTTTTTTTT",
+   "ooooooooo#.===================..........=====........#TTTTTTTTTT",
+   "ooooooooo#.========...====NN==..........=====........#TTTTTTTTTT",
+   "ooooooooo#c=======.....=======.TTTTTT.c.=====.c.TTTTTTTTTTTTTTTT",
+   "ooooooooo#.=======.....=======.TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#.=======.....=======.TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#.======c.....c======.TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#.=======ccccc=======.TTTTTT.c.=====.c.TTTTTTTTTTTTTTTT",
+   "ooooooooo#.===================.TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#.N==================.TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#.N==================.TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#.===================.TTTTTT.c.=====.c.TTTTTTTTTTTTTTTT",
+   "ooooooooo#..=================..TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#...===============...TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#..........c..........TTTTTT...=====...TTTTTTTTTTTTTTTT",
+   "ooooooooo#......###############TTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#.......cc.cccc...cccTTTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#...........N.........TTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#.............N.......TTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#.....................TTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#.......ccccccc...cccTTTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#.......c.....c...c..TTTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#.......c.....c...c..TTTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo#.......ccccccc...cccTTTTTTTTT.=====.TTTTTTTTTTTTTTTTTT",
+   "ooooooooo######################TTTTTTTTTvvvvvTTTTTTTTTTTTTTTTTTT",
+   "oooooooooooooooooooooooooooooooTTTTTTTTTcccccTTTTTTTTTTTTTTTTTTT",
+   "oooooooooooooooooooooooooooooooTTTTTTTTTcccccTTTTTTTTTTTTTTTTTTT",
+   "oooooooooooooooooooooooooooooooTTTTTTTTccccccccccccccccc========",
+   "oooooooooooooooooooooooooooooooTTTTTTTTccccccccccccccccc========",
+   "oooooooooooooooooooooooooooooooTTTTTTTTccccccccccccccccc========",
+   "oooooooooooooooooooooooooooooooTTTTTTTTccccccccccccccccc========",
+   "oooooooooooooooooooooooooooooooTTTTTTTTccccccccccccccccc========",
+   "oooooooooooooooooooooooooooooooTTTTTTTTccccccccccccccccc========"
   ],
   "exits": {
-   "G": "NATIONAL_PARK"
+   "v": "NATIONAL_PARK"
   },
   "buildings": {
-   "P": "dome",
-   "G": "gate"
+   "P": "dome"
   },
   "roofs": {
-   "P": [
-    70,
-    150,
-    210
-   ],
-   "G": [
-    222,
-    96,
-    50
-   ]
+   "P": {
+    "roof": [
+     42,
+     76,
+     132
+    ],
+    "wall": [
+     81,
+     75,
+     132
+    ]
+   },
+   "_picture": {
+    "f": "ss_ground/D49.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "signs": [
    [
     "Pokeathlon Dome",
     "Under construction. Opening soon!"
+   ],
+   [
+    "Pokeathlon Dome",
+    "The race track: Pokemon run here once the Dome opens."
    ]
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/D49.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     64,
+     64
+    ],
+    "px": 32
+   }
+  ],
+  "hidden": {
+   "52,16": "PP_UP",
+   "20,34": "PROTEIN"
+  },
+  "people": [
+   {
+    "text": "Coach",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "They looked tired yesterday, but today they're in great shape! We'll win for sure once the Dome opens!"
+     ]
+    }
+   },
+   {
+    "text": "Slowpoke",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "SLOWPOKE: ...Moah?"
+     ]
+    }
+   },
+   {
+    "text": "Farfetch'd",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "FARFETCH'D: Teree!"
+     ]
+    }
+   },
+   {
+    "text": "Psyduck",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "PSYDUCK: Guack!"
+     ]
+    }
+   },
+   {
+    "text": "Meowth",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "MEOWTH: Nyaah!"
+     ]
+    }
+   },
+   {
+    "text": "Athlete",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "There's more to Pokemon than battling, you know!"
+     ]
+    }
+   },
+   {
+    "text": "Oddish",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "ODDISH: Odd! Odd!"
+     ]
+    }
+   },
+   {
+    "text": "Undecided girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Running, jumping... there are so many events for Pokemon. Which one should we try first?"
+     ]
+    }
+   },
+   {
+    "text": "Juice stand clerk",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Welcome to the Aprijuice stand! ...Sorry, we open when the Dome does. It's still being built!"
+     ]
+    }
+   },
+   {
+    "text": "Pidgey",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "PIDGEY: Po po!"
+     ]
+    }
+   },
+   {
+    "text": "Jogger",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "It's no good at battles, but nothing beats it at running, thanks to our walk every morning!",
+      "My goal is a thousand dashes! What's yours? Having a goal makes everything more fun."
+     ]
+    }
+   },
+   {
+    "text": "Pokeathlete",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Every Pokemon has its own strengths. A True Pokeathlete knows them and brings out the best in each one."
+     ]
+    }
+   },
+   {
+    "text": "Machop",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "MACHOP: Macho!"
+     ]
+    }
+   },
+   {
+    "text": "Juice fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Pokemon can get better at events with the right food and drink. People make juice from Apricorns for them!"
+     ]
+    }
+   },
+   {
+    "text": "Slowbro",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "SLOWBRO: ...Whick!"
+     ]
+    }
+   }
   ]
  },
  "GOLDENROD_UNDERGROUND": {
@@ -81652,6 +81841,33 @@
      "Embedded Tower",
      "AWAKEN KYOGRE",
      "CALL RAYQUAZA"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D52R0101.png",
+      "at": [
+       8,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D52R0101.png",
+      "at": [
+       8,
+       4
+      ],
+      "size": [
+       17,
+       28
+      ],
+      "px": 32
+     }
     ]
    }
   ],
@@ -82130,13 +82346,13 @@
    "ccccc.....................ccccc",
    "ccccc.....................ccccc",
    "cmmmm.......j.....j...y.y.mmmmc",
+   "cmmmm.N...............y.y.mmmmc",
    "cmmmm.................y.y.mmmmc",
    "cmmmm.................y.y.mmmmc",
-   "cmmmm.................y.y.mmmmc",
+   "c........N...............N....c",
+   "c.N..........N...........N....c",
    "c.............................c",
-   "c.............................c",
-   "c.............................c",
-   "ccccccccc.............ccccccccc",
+   "ccccccccc..........NN.ccccccccc",
    "ccccccccc.............ccccccccc",
    "ccccccccc.............ccccccccc",
    "ccccccccc...j.vvv.j...ccccccccc",
@@ -82356,9 +82572,107 @@
     236,
     232,
     214
-   ]
+   ],
+   "_picture": {
+    "f": "ss_ground/D31R0201.png",
+    "at": [
+     0,
+     1
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
-  "overheads": []
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/D31R0201.png",
+    "at": [
+     0,
+     1
+    ],
+    "size": [
+     31,
+     20
+    ],
+    "px": 32
+   }
+  ],
+  "people": [
+   {
+    "text": "New idol",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Me? I only just started out as an idol, so I don't get much work yet. I come here to battle whenever I'm free!"
+     ]
+    }
+   },
+   {
+    "text": "Frontier fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Isn't the Battle Frontier something? I hear there are places like it far away, in other regions too."
+     ]
+    }
+   },
+   {
+    "text": "Pikachu fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I've trained my little guy as hard as we can go. We're going for a fifty-win streak... Right, Pikachu?"
+     ]
+    }
+   },
+   {
+    "text": "Lift fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I've always loved see-through lifts like the one here. Ever since I was little! ...Well, mostly."
+     ]
+    }
+   },
+   {
+    "text": "Off-duty nurse",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Shall I heal your Pokemon? ...Oh my, sorry! I'm not on duty today. I just came to watch the battles."
+     ]
+    }
+   },
+   {
+    "text": "Pikachu",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "PIKACHU: ......"
+     ]
+    }
+   },
+   {
+    "text": "Pichu",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "PICHU: Pichu! Pichu!"
+     ]
+    }
+   },
+   {
+    "text": "Proud girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Tee hee! Everyone around here looks so weak! ...No, no, thinking like that is how you lose. I take it back!"
+     ]
+    }
+   }
+  ]
  },
  "JOHTO_SS_AQUA": {
   "theme": "room",
@@ -82375,14 +82689,14 @@
      "c........ccccccccccccc.....cccccccccccccc...cccccccc....cc",
      "c..c.c...cccc1ccccc1cc.....ccc1ccccc1cccc...cccccccc..cccc",
      "c..c.c.................................cc.1.cccccccc..cccc",
-     "c..c.c.................................cc...cccccccc..cccc",
+     "c..c.c..........N......................cc...cccccccc..cccc",
      "c......................................cc...cccccccc..cccc",
      "c......................................cc...cccccccc..cccc",
-     "c..c.c.................................cc...cccccccc..cccc",
+     "c..c.c...............................N.cc...cccccccc..cccc",
      "c..c.c.......1.....1..........1.....1..cc...cccccccc..cccc",
      "c..c.c...ccccccccccccc.....cccccccccccccc...ccccc1cc....cc",
      "cc.......ccccccccccccccc.cccccccccccccccc...............cc",
-     "cz.......ccccccccccccc.....cccccccccccccc...............cc",
+     "cz.......ccccccccccccc..N..cccccccccccccc...............cc",
      "ccc......ccccccccccccc.....cccccccccccccc...............cc",
      "ccc.ccc..ccccccccccccc..v>.cccccccccccccc.............cccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -82417,7 +82731,17 @@
       "24,2": "foot",
       "42,8": "foot",
       "49,14": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/P01R0301.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "13,13": [
@@ -82475,7 +82799,51 @@
       9,
       10
      ]
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0301.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       58,
+       21
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Most of our passengers are Trainers. They're all itching for a battle in their cabins."
+       ]
+      }
+     },
+     {
+      "text": "Cabin sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is your cabin. If your Pokemon are hurt, take a nap in the bed and they'll be good as new."
+       ]
+      }
+     },
+     {
+      "text": "Sailor ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Fast Ship S.S. Aqua, sailing between Olivine City and Vermilion City. We'll let you know when we arrive."
+       ]
+      }
+     }
+    ]
    },
    {
     "art": [
@@ -82527,7 +82895,17 @@
      "_stairs": {
       "9,2": "foot",
       "23,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/P01R0304.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "9,2": [
@@ -82542,10 +82920,25 @@
      ]
     },
     "trainer_spots": [
-     "Super Nerd Shawn",
-     "Psychic Rodney",
      "Ace Trainer Shaye",
-     "Ace Trainer Carol"
+     "Ace Trainer Carol",
+     "Hiker Noland",
+     "Poké Maniac Morgan"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0304.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       29,
+       14
+      ],
+      "px": 32
+     }
     ]
    },
    {
@@ -82560,7 +82953,7 @@
      "c........X...cc......ccc...cc",
      "c............cc......ccc...cc",
      "cX.....c...c.cc......ccc...cc",
-     "c............cc............cc",
+     "c......N.....cc............cc",
      "cm.....c...c.ccm...........cc",
      "ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc"
@@ -82603,7 +82996,17 @@
      "_stairs": {
       "9,2": "foot",
       "23,2": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/P01R0303.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "9,2": [
@@ -82618,8 +83021,77 @@
      ]
     },
     "trainer_spots": [
-     "Beauty Cassie",
+     "Burglar Corey",
      "Gentleman Edward"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0303.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       29,
+       14
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Sailor Stanly",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "..."
+       ],
+       "stages": [
+        {
+         "requires": [
+          "not:ss_aqua_find_buddy"
+         ],
+         "lines": [
+          "Zzz... Zzz..."
+         ]
+        },
+        {
+         "flag": "ss_aqua_stanly",
+         "lines": [
+          "Zzz... Wh-what? I wasn't asleep! A sailor on duty never naps! ...My buddy sent you? Then I'll prove I'm wide awake!"
+         ],
+         "battle": {
+          "name": "Sailor Stanly",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [
+           66,
+           67,
+           54
+          ],
+          "levels": [
+           39,
+           41,
+           34
+          ],
+          "rewards": {
+           "balls": 3
+          },
+          "dialogue": {
+           "player_won": [
+            "Sailor Stanly: That woke me right up. I'll get back to work.",
+            "Sailor Stanly: ...You won't tell anyone I was napping, will you?"
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Sailor Stanly: Losing to you woke me up for good. Keep my nap a secret, OK?"
+       ]
+      }
+     }
     ]
    },
    {
@@ -82629,11 +83101,11 @@
      "c.c..........cc............cc",
      "c............cc.....c...c..cc",
      "c.c..........cc............cc",
-     "c.....cccc...cc.....c...c..cc",
-     "c.....cccc...cccc..........cc",
-     "c............cccc..........cc",
-     "c............cccc..........cc",
-     "c............cccc..........cc",
+     "c.....ccccX..cc.....c.X.c..cc",
+     "c.....cccc...cccc.......X..cc",
+     "c.......NN...ccccX.........cc",
+     "c............ccccX.........cc",
+     "c............ccccX.........cc",
      "c........1...cccc......1...cc",
      "ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc"
@@ -82655,7 +83127,17 @@
      "_stairs": {
       "9,10": "foot",
       "23,10": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/P01R0306.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "9,10": [
@@ -82668,7 +83150,75 @@
       19,
       7
      ]
-    }
+    },
+    "trainer_spots": [
+     "Super Nerd Shawn",
+     "Pokéfan Jeremy",
+     "Twins Meg & Peg",
+     "Pokéfan Georgia",
+     "Psychic Rodney",
+     "Pokéfan Colin"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0306.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       29,
+       13
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Little girl  ",
+      "action": "EVENT",
+      "condition": "ss_aqua_girl_found",
+      "event": {
+       "lines": [
+        "I had lots of fun! Let's play again sometime!"
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "..."
+       ],
+       "stages": [
+        {
+         "requires": [
+          "not:ss_aqua_girl_found"
+         ],
+         "lines": [
+          "Gentleman: Oh dear, my granddaughter has wandered off again. She loves to play hide-and-seek...",
+          "Gentleman: If you see a little girl about the ship, would you bring her back to me?"
+         ]
+        },
+        {
+         "flag": "ss_aqua_metal_coat",
+         "lines": [
+          "Gentleman: You found my granddaughter! She says you played hide-and-seek. Thank you so much.",
+          "Gentleman: Please, take this. It's the least I can do."
+         ],
+         "gift_item": {
+          "METAL_COAT": 1
+         }
+        }
+       ],
+       "done": [
+        "Gentleman: We're travelling around the world together. She keeps me young!"
+       ]
+      }
+     }
+    ]
    },
    {
     "art": [
@@ -82677,8 +83227,8 @@
      "cccc......ccccc............cc",
      "cccc......ccccc............cc",
      "c............cc............cc",
-     "c.c..........cc.....cccc...cc",
-     "c............cc.....cccc...cc",
+     "c.c....X.X...cc.....ccccX..cc",
+     "c............cc....Xcccc...cc",
      "c.c..........cc.....cccc...cc",
      "c.c..........cc.c..........cc",
      "c............cc............cc",
@@ -82703,7 +83253,17 @@
      "_stairs": {
       "9,10": "foot",
       "23,10": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/P01R0305.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "9,10": [
@@ -82716,7 +83276,28 @@
       36,
       7
      ]
-    }
+    },
+    "trainer_spots": [
+     "Guitarist Clyde",
+     "Beauty Cassie",
+     "Firebreather Lyle",
+     "Bug Catcher Ken"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0305.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       29,
+       13
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -82724,21 +83305,21 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccc..............cccc",
      "ccc...ccmmm...mm...mmcc.1cccccc..mmmmccc................cc",
-     "ccc...cc..y...y...y..cc..cccc.........cc................cc",
+     "ccc...ccX.y...y...y..cc..cccc.........cc.........X......cc",
      "ccc...cc.............cc....cc.........cc................mc",
-     "ccc...cc..y...y...y..cc....cc...ccc...cc....mmmmmmmmm...mc",
+     "ccc...cc..y...y...y..cc....cc..Xccc...cc....mmmmmmmmm...mc",
      "ccc...cc.............cc....cc...ccc...cc....mmmmmmmmm...mc",
-     "c.....cc..y...y...y..cc....cc...ccc...cc..1.mmmmmmmmm.mmmc",
-     "c.....cc.............cc....cc...ccc...cc..1.mmmmmmmmm.mmmc",
-     "c.....cc..y...y...y..cc....cc...ccc...cc....mmmmmmmmm.mmmc",
+     "c.....cc..y...y...y..cc....ccX..cccX..cc..1.mmmmmmmmm.mmmc",
+     "c.....cc.............cc....cc...cccX..cc..1.mmmmmmmmm.mmmc",
+     "c.....cc..y...y...y..cc....cc..Xccc...cc....mmmmmmmmm.mmmc",
      "c.....cc.............cc....cc.........cc....mmmmmmmmm.mmmc",
-     "c.....cc.............cc....cc.........cc....mmmmmmmmm.mmmc",
-     "c.....cc.............cc....cc.........cc....mmmmmmmmm.mmmc",
+     "c.....cc......X......cc....cc.........cc....mmmmmmmmm.mmmc",
+     "cN....cc.............cc...Xcc.........cc....mmmmmmmmm.mmmc",
      "ccc...ccccccc...ccccccc....ccccc...ccccc....mmmmmmmmm...mc",
      "ccc...ccccccc...ccccccc....ccccc...ccccc................mc",
      "ccc...ccccccc...ccccccc....ccccc...ccccc................cc",
-     "ccc.....................................................cc",
-     "ccc.....................................................cc",
+     "ccc.......X.............................................cc",
+     "ccc...................................N.................cc",
      "ccc...................................................cccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
@@ -83337,7 +83918,17 @@
       "24,3": "foot",
       "42,9": "foot",
       "42,8": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/P01R0307.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "24,3": [
@@ -83355,14 +83946,97 @@
       42,
       8
      ]
-    }
+    },
+    "trainer_spots": [
+     "Juggler Fritz",
+     "Picnicker Debra",
+     "School Kid Nate",
+     "Black Belt Wai",
+     "Teacher Shirley",
+     "Sailor Jeff",
+     "School Kid Ricky",
+     "Fisherman Jonah",
+     "Sailor Garrett",
+     "Sailor Kenneth"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0307.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       58,
+       22
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Little girl ",
+      "action": "EVENT",
+      "condition": [
+       "ss_aqua_girl_hiding",
+       "not:ss_aqua_girl_found"
+      ],
+      "event": {
+       "lines": [
+        "Oh, you found me! That was fun! I'd better go back to my grandpa now!"
+       ],
+       "flag": "ss_aqua_girl_found"
+      }
+     },
+     {
+      "text": "Crewman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "..."
+       ],
+       "stages": [
+        {
+         "requires": [
+          "not:ss_aqua_stanly"
+         ],
+         "flag": "ss_aqua_find_buddy",
+         "lines": [
+          "Crewman: Hey, kid. Could you find my buddy for me? He's slacking off somewhere upstairs, the good-for-nothing!",
+          "Crewman: Try the cabins. I bet he's napping."
+         ]
+        },
+        {
+         "requires": [
+          "not:ss_aqua_stanly"
+         ],
+         "lines": [
+          "Crewman: Still haven't found him? Check the cabins upstairs. He'll be the one snoring."
+         ]
+        },
+        {
+         "requires": [
+          "ss_aqua_stanly"
+         ],
+         "lines": [
+          "Crewman: Thanks, kid! I chewed him out good. He won't be slacking off again in a hurry."
+         ]
+        }
+       ],
+       "done": [
+        "Crewman: Thanks, kid!"
+       ]
+      }
+     }
+    ]
    },
    {
     "art": [
      "ccccccccccccccc",
      "cmccccccccccccc",
      "ccc..mmm.....cc",
-     "c.......m....cc",
+     "c.......mNN..cc",
      "c.c.....ccc..cc",
      "c.......ccc..cc",
      "c............cc",
@@ -83415,7 +84089,17 @@
      },
      "_stairs": {
       "9,10": "foot"
-     }
+     },
+     "_picture": {
+      "f": "ss_ground/P01R0302.png",
+      "at": [
+       0,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "links": {
      "9,10": [
@@ -83423,7 +84107,101 @@
       49,
       14
      ]
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/P01R0302.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       15,
+       13
+      ],
+      "px": 32
+     }
+    ],
+    "people": [
+     {
+      "text": "Captain",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "..."
+       ],
+       "stages": [
+        {
+         "requires": [
+          "not:ss_aqua_girl_found"
+         ],
+         "lines": [
+          "Captain: This little girl keeps asking me to play with her. Ouch! Please don't pull my ear!"
+         ]
+        },
+        {
+         "requires": [
+          "has_8_johto_badges",
+          "has_8_kanto_badges"
+         ],
+         "flag": "ss_aqua_captain_gift",
+         "daily": true,
+         "lines": [
+          "Captain: Sixteen Badges! Then you've sailed far and wide, like me. Here, a little something I picked up on my voyages."
+         ],
+         "gift_cycle": [
+          "FLAME_PLATE",
+          "SPLASH_PLATE",
+          "ZAP_PLATE",
+          "MEADOW_PLATE",
+          "ICICLE_PLATE",
+          "FIST_PLATE",
+          "TOXIC_PLATE",
+          "EARTH_PLATE",
+          "SKY_PLATE",
+          "MIND_PLATE",
+          "INSECT_PLATE",
+          "STONE_PLATE",
+          "SPOOKY_PLATE",
+          "DRACO_PLATE",
+          "DREAD_PLATE",
+          "IRON_PLATE",
+          "NUGGET"
+         ],
+         "cycle_flag": "ss_aqua_captain_gifts",
+         "done": [
+          "Captain: That's all for today. Come and see me again tomorrow!"
+         ]
+        },
+        {
+         "lines": [
+          "Captain: Thank you for playing with her. Being a captain is harder work than it looks, you know.",
+          "Captain: How do you like the S.S. Aqua? She practically skates across the waves."
+         ]
+        }
+       ],
+       "done": [
+        "Captain: How do you like the S.S. Aqua? She practically skates across the waves."
+       ]
+      }
+     },
+     {
+      "text": "Little girl",
+      "action": "EVENT",
+      "condition": [
+       "not:ss_aqua_girl_hiding",
+       "not:ss_aqua_girl_found"
+      ],
+      "event": {
+       "lines": [
+        "Captain, play with me, please? I'm bored!",
+        "...You'll play with me? Then let's play hide-and-seek! Count to ten, then come find me!"
+       ],
+       "flag": "ss_aqua_girl_hiding"
+      }
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -83436,12 +84214,42 @@
    "Captain's cabin"
   ],
   "figure_floors": {
-   "Super Nerd Shawn": 1,
-   "Psychic Rodney": 1,
+   "Super Nerd Shawn": 3,
+   "Psychic Rodney": 3,
    "Ace Trainer Shaye": 1,
    "Ace Trainer Carol": 1,
-   "Beauty Cassie": 2,
-   "Gentleman Edward": 2
+   "Beauty Cassie": 4,
+   "Gentleman Edward": 2,
+   "Hiker Noland": 1,
+   "Poké Maniac Morgan": 1,
+   "Burglar Corey": 2,
+   "Pokéfan Colin": 3,
+   "Twins Meg & Peg": 3,
+   "Pokéfan Georgia": 3,
+   "Pokéfan Jeremy": 3,
+   "Firebreather Lyle": 4,
+   "Guitarist Clyde": 4,
+   "Bug Catcher Ken": 4,
+   "Picnicker Debra": 5,
+   "Sailor Jeff": 5,
+   "Juggler Fritz": 5,
+   "Fisherman Jonah": 5,
+   "Sailor Garrett": 5,
+   "Black Belt Wai": 5,
+   "Sailor Kenneth": 5,
+   "School Kid Nate": 5,
+   "School Kid Ricky": 5,
+   "Teacher Shirley": 5,
+   "Sailor": 0,
+   "Sailor ": 0,
+   "Cabin sailor": 0,
+   "Sailor Stanly": 2,
+   "Gentleman": 3,
+   "Little girl  ": 3,
+   "Crewman": 5,
+   "Little girl ": 5,
+   "Captain": 6,
+   "Little girl": 6
   }
  },
  "MT_SILVER_CITY": {
@@ -83467,7 +84275,7 @@
    "ccccccccccTTTTTTTT====TTTT==TTTT",
    "ccccccccccTTTTTTTT====TTTT==TTTT",
    "cccTTTT.==)===oooo====TTTT=====>",
-   "cccTTTT===)===oooo==TTTTTT=====>",
+   "cccTTTT=N=)===oooo==TTTTTT=====>",
    "ccc..=====)===ooooooTTTTTT======",
    "ccc.._____c\"\"\"\"\"\"oooTTTTTT======",
    "ccc\"\"\"\"==\"\"\"\"\"\"\"\"ooooooooo==TTTT",
@@ -83498,7 +84306,17 @@
      145,
      156
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/T31.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "people": [
    [
@@ -83520,7 +84338,8 @@
      "color": "RED",
      "action": "TRAVEL"
     }
-   ]
+   ],
+   "TM139"
   ],
   "signs": [
    [
@@ -83530,64 +84349,17 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     29,
-     6,
-     2,
-     1
+    "kind": "picture",
+    "f": "ss_top/T31.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     9,
-     11,
-     2,
-     1
+    "size": [
+     32,
+     32
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     29,
-     11,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     20,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     28,
-     23,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     26,
-     25,
-     2,
-     1
-    ],
-    "of": "tree"
+    "px": 32
    }
   ],
   "rooms": {
@@ -83596,21 +84368,27 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNcccccccczc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -83707,15 +84485,44 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T31PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Heal"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T31PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
     ]
    }
   },
   "inside": {
    "20,9": "center"
+  },
+  "hidden": {
+   "27,7": "FULL_RESTORE"
   }
  },
  "BUG_CONTEST": {

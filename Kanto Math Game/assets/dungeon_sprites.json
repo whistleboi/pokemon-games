@@ -6897,6 +6897,78 @@
     },
     "SAFARI_ZONE_GATE:Kid": {
       "sheet": "hg_gsbabygirl1.png"
+    },
+    "JOHTO_SS_AQUA:Sailor": {
+      "sheet": "hg_seaman.png"
+    },
+    "JOHTO_SS_AQUA:Sailor ": {
+      "sheet": "hg_seaman.png"
+    },
+    "JOHTO_SS_AQUA:Cabin sailor": {
+      "sheet": "hg_seaman.png"
+    },
+    "JOHTO_SS_AQUA:Sailor Stanly": {
+      "sheet": "hg_seaman.png"
+    },
+    "JOHTO_SS_AQUA:Gentleman": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "JOHTO_SS_AQUA:Little girl  ": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "JOHTO_SS_AQUA:Crewman": {
+      "sheet": "hg_seaman.png"
+    },
+    "JOHTO_SS_AQUA:Little girl ": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "JOHTO_SS_AQUA:Captain": {
+      "sheet": "hg_captain.png"
+    },
+    "JOHTO_SS_AQUA:Little girl": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "MT_SILVER_CITY:TM139": {
+      "item": "POKE_BALL"
+    },
+    "FRONTIER_ACCESS:Lift fan": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "FRONTIER_ACCESS:Off-duty nurse": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "FRONTIER_ACCESS:New idol": {
+      "sheet": "hg_idol.png"
+    },
+    "FRONTIER_ACCESS:Pikachu fan": {
+      "sheet": "hg_gorggeousm.png"
+    },
+    "FRONTIER_ACCESS:Proud girl": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "FRONTIER_ACCESS:Frontier fan": {
+      "sheet": "hg_gsassistantm.png"
+    },
+    "POKEATHLON_DOME:Undecided girl": {
+      "sheet": "hg_gsboy2.png"
+    },
+    "POKEATHLON_DOME:Athlete": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "POKEATHLON_DOME:Coach": {
+      "sheet": "hg_gsman3.png"
+    },
+    "POKEATHLON_DOME:Jogger": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "POKEATHLON_DOME:Juice fan": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "POKEATHLON_DOME:Pokeathlete": {
+      "sheet": "hg_gsman3.png"
+    },
+    "POKEATHLON_DOME:Juice stand clerk": {
+      "sheet": "hg_shopm1.png"
     }
   },
   "townsperson": "NPC 17.png",
