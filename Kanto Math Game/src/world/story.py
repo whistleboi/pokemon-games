@@ -1643,6 +1643,10 @@ class StoryManager:
         # The Sinjoh Ruins are one place now, as in HGSS (no Snowfields, Pathways or separate Mystri Stage).
         if self.current_area_key in ("SINJOH_SNOWFIELDS", "SINJOH_PATHWAYS", "MYSTRI_STAGE"):
             self.current_area_key = "SINJOH_CABIN"
+        # Mt. Silver is one cave of eight floors now, as in HGSS (its side chamber, Moltres's chamber, mountainsides, floors and summit).
+        if self.current_area_key in ("MT_SILVER_EXPERT", "MT_SILVER_MOLTRES", "MT_SILVER_LOWER", "MT_SILVER_2F", "MT_SILVER_UPPER",
+                                     "MT_SILVER_3F", "MT_SILVER_SUMMIT"):
+            self.current_area_key = "MT_SILVER"
 
     def get_gym_battle_background(self, area_id, trainer_index=0, is_leader=False):
         """

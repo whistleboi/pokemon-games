@@ -113,8 +113,8 @@ got = lineup(battle_of(g.current_state))
 check(got[-1] == (160, 40) and len(got) == 6, f"Victory Road (HGSS levels): {got}")
 
 print("4) Red")
-red = next(o for o in prog["MT_SILVER_SUMMIT"]["route_menu"] if o["text"] == "CHALLENGE RED")   # (the summit: its own area since the Johto map pass)
-story.current_area_key = "MT_SILVER_SUMMIT"
+red = next(o for o in prog["MT_SILVER"]["route_menu"] if o["text"] == "CHALLENGE RED")   # (the summit: a floor of Mt. Silver since N16)
+story.current_area_key = "MT_SILVER"
 ps = ow.PlayState(g)
 g.change_state(ps)
 ow._run_story_event(ps, red["event"], lambda c: True, lambda lines: None)

@@ -27,7 +27,8 @@ DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30",
         "GOLDENROD_CITY", "RADIO_TOWER", "JOHTO_ROUTE_35", "JOHTO_ROUTE_36",
         "DRAGONS_DEN", "DRAGON_SHRINE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_46",   # (N13, 11-16)
         "TOHJO_FALLS", "MR_POKEMONS_HOUSE", "JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "CLIFF_EDGE_GATE", "JOHTO_CLIFF_CAVE", "SAFARI_ZONE_GATE",   # (N14)
-        "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "MT_SILVER_CITY", "FRONTIER_ACCESS", "POKEATHLON_DOME"]   # (N15)
+        "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "MT_SILVER_CITY", "FRONTIER_ACCESS", "POKEATHLON_DOME",   # (N15)
+        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER"]   # (N16)
 
 
 def frames(n):
@@ -837,13 +838,34 @@ if _guide:
     play(lambda: type(g.current_state).__name__ == "PickListState", 300)
     _pl = g.current_state
     _opts = [getattr(b, "text", None) for b in getattr(_pl, "rows", [])] if type(_pl).__name__ == "PickListState" else []
-    check(len(_opts) == 2, f"...who offers the League plateau and the mountainside ({_opts})")
+    check(len(_opts) == 1, f"...who offers the League plateau (the mountainside is walked from Mt. Silver 1F since N16) ({_opts})")
     if type(_pl).__name__ == "PickListState":
         _pl.pick("SILVER_LEAGUE_PLATEAU")
         frames(3)
     check(type(g.current_state).__name__ == "AreaTransitionState" or story.current_area_key == "SILVER_LEAGUE_PLATEAU",
           f"...and takes you there ({type(g.current_state).__name__}, {story.current_area_key})")
 story.story_flags.clear(); story.story_flags.update(_flS); story.badges.clear(); story.badges.update(_bS); story.inventory.clear(); story.inventory.update(_invS)
+
+print("N16: Routes 26-27's houses")
+from src.pokemon import evolution as _evoN
+
+_rest = next(o for o in _area["KANTO_ROUTE_26"]["route_menu"] if o.get("text") == "Resting woman")
+_tmman = next(o for o in _area["KANTO_ROUTE_27"]["route_menu"] if o.get("text") == "Thoughtful man")
+check("resthouse" in ((_tm["KANTO_ROUTE_26"].get("rooms") or {})) and "tmhouse" in ((_tm["KANTO_ROUTE_27"].get("rooms") or {})),
+      "Route 26's rest house and Route 27's house are rooms you walk into")
+story.current_area_key, story.last_area_key = "KANTO_ROUTE_26", "KANTO_ROUTE_27"
+_pN = PlayState(g, classic=True); g.change_state(_pN)
+_lead = story.player_team[0]; _lead.current_hp = 1
+_rseN(_pN, _rest["event"], lambda c: _pN._check_route_condition(c, False), lambda l, **k: None)
+check(_lead.current_hp == _lead.max_hp, f"...the woman on Route 26 lets your team rest ({_lead.current_hp}/{_lead.max_hp})")
+_fr, _af = getattr(_lead, "friendship", 0), getattr(_lead, "affection", 0)
+_lead.friendship, _lead.affection = 0, 0
+_low = _pN._check_route_condition("lead_trusts_you", False)
+_lead.friendship = _evoN.FRIENDSHIP_CATCHES
+_high = _pN._check_route_condition("lead_trusts_you", False)
+_lead.friendship, _lead.affection = _fr, _af
+check(not _low and _high and _tmman["event"]["requires"] == ["lead_trusts_you"] and "TM32" in _tmman["event"]["gift_item"],
+      "...the man on Route 27 gives TM Sandstorm only when your lead Pokemon trusts you")
 
 if fails:
     print("FAILS:", len(fails))

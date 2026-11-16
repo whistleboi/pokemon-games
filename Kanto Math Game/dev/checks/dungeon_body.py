@@ -1407,50 +1407,32 @@ _r46 = kanto("JOHTO_ROUTE_46", came="JOHTO_ROUTE_29")
 check((_r46.run.floor.w, _r46.run.floor.h) == (32, 64) and {"DARK_CAVE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_29"} == set(_r46.run.floor.exits.values()) and _r46.run.player[1] >= 57,
       f"Route 46: exact map; in from Route 29's gate (south) at {_r46.run.player}; the Dark Cave's mouth, east to Route 45")
 _r27 = kanto("KANTO_ROUTE_27", came="NEW_BARK_TOWN")
-check((_r27.run.floor.w, _r27.run.floor.h) == (126, 20) and {"NEW_BARK_TOWN", "TOHJO_FALLS", "KANTO_ROUTE_26"} == set(_r27.run.floor.exits.values()) and _r27.run.player[0] <= 2,
+check((_r27.run.floor.w, _r27.run.floor.h) == (192, 32) and {"NEW_BARK_TOWN", "TOHJO_FALLS", "KANTO_ROUTE_26"} == {v for v in _r27.run.floor.exits.values() if not str(v).startswith("WARP")} and _r27.run.player[0] <= 2,
       f"Route 27: exact map; in from New Bark by Surf (west) at {_r27.run.player}; Tohjo Falls' two mouths, east to Route 26")
 _sw = [(m.x, m.y) for f in _r27.run.floors for m in f.movers if m.kind == "trainer" and "Swimmer Glenn" in str(m.payload)]
-check(_sw == [(102, 10)] or (102, 10) in {(m.x, m.y) for f in _r27.run.floors for m in f.movers if m.kind == "trainer"},
-      f"Route 27: the swimmer out in the channel by the long bridge {_sw}")
+check(len(_sw) == 1, f"Route 27: our swimmer still out on the water (N16: moved off the game's trainer tiles) {_sw}")
 _r26 = kanto("KANTO_ROUTE_26", came="KANTO_ROUTE_27")
-check((_r26.run.floor.w, _r26.run.floor.h) == (31, 126) and {"POKEMON_LEAGUE_GATE", "KANTO_ROUTE_27"} == set(_r26.run.floor.exits.values()) and _r26.run.player[1] >= 110,
-      f"Route 26: exact map; in from Route 27 over the long bridge at {_r26.run.player}; the Reception Gate north")
+check((_r26.run.floor.w, _r26.run.floor.h) == (32, 128) and {"POKEMON_LEAGUE_GATE", "KANTO_ROUTE_27"} == {v for v in _r26.run.floor.exits.values() if not str(v).startswith("WARP")} and _r26.run.player[0] <= 1 and _r26.run.player[1] >= 100,
+      f"Route 26: exact map; in from Route 27 on its west edge (SoulSilver's seam) at {_r26.run.player}; the Reception Gate north")
 _rt = kanto("RADIO_TOWER", came="GOLDENROD_CITY")
 _rt.run.player = (13, 3)
 _rt_in = _rt.run.player
 check(_rt.run.n_floors == 6 and "GOLDENROD_CITY" in _rt.run.floor.exits.values(), "the Radio Tower: exact 1F-5F and the Observation Deck; in from Goldenrod on 1F")
 _ms = kanto("MT_SILVER", came="MT_SILVER_CITY")
-check((_ms.run.floor.w, _ms.run.floor.h) == (64, 57) and _ms.run.player[1] >= 50 and {"MT_SILVER_CITY", "MT_SILVER_2F", "MT_SILVER_MOLTRES", "MT_SILVER_EXPERT", "MT_SILVER_LOWER"} == set(_ms.run.floor.exits.values()),
-      f"Mt. Silver 1F: exact; in from the Pokemon Center at its foot {_ms.run.player}; 2F, Moltres's and the Expert Belt's chambers, three ways onto the mountainside")
-_ms2 = kanto("MT_SILVER_2F", came="MT_SILVER")
-check(abs(_ms2.run.player[0] - 22) <= 1 and 22 <= _ms2.run.player[1] <= 26, f"Mt. Silver 2F: in from 1F on the crater's floor {_ms2.run.player}")
-from src.dungeon import core as _c
-_c.ENTRANCE_INDEX = 4
-_msu = kanto("MT_SILVER_UPPER", came="MT_SILVER_2F")
-_c.ENTRANCE_INDEX = 1
-_msl = kanto("MT_SILVER_LOWER", came="MT_SILVER")
-_c.ENTRANCE_INDEX = 0
-check(abs(_msu.run.player[0] - 18) <= 1 and 40 <= _msu.run.player[1] <= 41 and abs(_msl.run.player[0] - 18) <= 1 and abs(_msl.run.player[1] - 24) <= 1,
-      f"Mt. Silver: each mouth leads to its own (2F's fifth onto the mountainside's low mouth {_msu.run.player}; 1F's middle opening to the Lower Mountainside's middle level {_msl.run.player})")
-_champ = story.story_flags.get("beat_johto_champion")
-story.story_flags["beat_johto_champion"] = True
-_mo = kanto("MT_SILVER_MOLTRES", came="MT_SILVER")
-_su = kanto("MT_SILVER_SUMMIT", came="MT_SILVER_3F")
-story.story_flags["beat_johto_champion"] = _champ
-_figs = ([(m.x, m.y, str(m.payload.get("text"))) for m in _mo.run.floor.movers if m.kind == "figure"], [(m.x, m.y, str(m.payload.get("text"))) for m in _su.run.floor.movers if m.kind == "figure"])
-check([(m.x, m.y) for m in _mo.run.floor.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"] == [(12, 14)]
-      and [(m.x, m.y) for m in _su.run.floor.movers if m.kind == "figure" and "RED" in str(m.payload.get("text"))] == [(20, 2)],
-      f"Mt. Silver: Moltres in the pit of its chamber; Red at the summit {_figs}")
-_had = story.inventory.pop("HM_ROCK_CLIMB", 0)
-_m3 = kanto("MT_SILVER_3F", came="MT_SILVER_UPPER")
-_walls = sum(1 for w in _m3.run.floor.decor.values() if str(w).startswith("climb:"))
-story.inventory["HM_ROCK_CLIMB"] = 1
-_m3._clear_boulders()
-_left = sum(1 for w in _m3.run.floor.decor.values() if str(w).startswith("climb:"))
-story.inventory.pop("HM_ROCK_CLIMB", None)
-if _had:
-    story.inventory["HM_ROCK_CLIMB"] = _had
-check(_walls == 15 and _left == 0 and _m3.run.floor.walkable(15, 10), f"Mt. Silver 3F: the towering cliff waits for Rock Climb ({_walls} footholds), then it's climbable")
+_msa = (_ms.recipe.get("art") or {})
+_msf = _msa.get("floors") or []
+check(_ms.run.n_floors == 8 and (_ms.run.floor.w, _ms.run.floor.h) == (51, 57) and _ms.run.player[1] >= 50
+      and {v for v in _ms.run.floor.exits.values() if not str(v).startswith("WARP")} == {"MT_SILVER_CITY"},
+      f"Mt. Silver (N16): one cave of eight floors as in SoulSilver; in from the Pokemon Center's clearing at 1F's foot {_ms.run.player}")
+_msl = [len(f.get("links") or {}) for f in _msf]
+_bad = [(i, k, v) for i, f in enumerate(_msf) for k, v in (f.get("links") or {}).items() if not (0 <= v[0] < 8 and _msf[v[0]]["art"][v[2]][v[1]] != "c")]
+check(_msl == [6, 3, 1, 1, 7, 7, 2, 1] and not _bad, f"Mt. Silver: every ladder and mouth joined to its real far end {_msl} {_bad[:3]}")
+_ff = _msa.get("figure_floors") or {}
+check(_ff.get("SEEK MOLTRES") == 3 and _ff.get("CHALLENGE RED") == 7 and _msf[7].get("people") == ["CHALLENGE RED"]
+      and {o["text"] for o in _prog["MT_SILVER"]["route_menu"]} >= {"SEEK MOLTRES", "CHALLENGE RED"},
+      f"Mt. Silver: Moltres in its own chamber, Red at the summit {_ff}")
+check([sum(r.count("/") for r in f["art"]) for f in _msf] == [11, 0, 0, 12, 0, 20, 10, 0],
+      f"Mt. Silver: the Rock Climb walls where the game has them {[sum(r.count('/') for r in f['art']) for f in _msf]}")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1601,7 +1583,7 @@ g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "POKEMON_LEAGUE_GATE", "KANTO_ROUTE_26"
 _lg = _CS(g); g.change_state(_lg); _tap_through(_lg)
 check(isinstance(_lg, _WTS) and {"KANTO_ROUTE_22", "KANTO_ROUTE_28", "KANTO_ROUTE_26"} == set(_lg.exits.values()) and "leaguegate" in _lg.doors.values() and _lg.player[1] >= 17,
-      f"the Reception Gate: exact; in from Route 26 (south) at {_lg.player}; Route 22 west, Route 28 east, the great door north")
+      f"the Reception Gate: exact; in from Route 26 (south) at {_lg.player}; Route 28 west, Route 22 east (as in SoulSilver), the great door north")
 _lg_held = _lg._check_menu_condition
 _lg_door = next(t for t, k in _lg.doors.items() if k == "leaguegate")
 _lg_seen = {}

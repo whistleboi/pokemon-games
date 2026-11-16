@@ -3691,35 +3691,6 @@
       "on_enter_event": null
     },
 
-    "KANTO_ROUTE_26": {
-      "area_type": "wild_route",
-      "route_name": "Route 26",
-      "battle_type": "field",
-      "can_fish": true,
-      "has_trees": true,
-      "alt_forms": { "enabled": true, "weights": { "20_alolan": 0.01, "77_galarian": 0.01, "194_paldean": 0.01 } },
-      "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
-      "wild_pool_percentages": "KANTO_ROUTE_26_PERCENTAGES",
-      "trainer_encounter_rate": 0.1,
-      "min_rounds": 2,
-      "trainer_pool": [
-        { "sprite": "fisherman.png", "name": "Kyler", "class": "FISHERMAN", "team": [130, 130], "rewards": { "balls": 3 } },
-        { "sprite": "acetrainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [121, 134], "rewards": { "balls": 5 } },
-        { "sprite": "camper.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": { "balls": 3 } }
-      ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"],  "color": "RED" },
-        { "text": "ROUTE 27", "action": "EXIT", "target": "KANTO_ROUTE_27", "condition": ["can_exit"],  "color": "RED" }
-      ],
-      "next_area": "KANTO_ROUTE_27",
-      "on_enter_event": null,
-        "region": "JOHTO"
-    },
 
     "KANTO_ROUTE_28": {
       "area_type": "wild_route",
@@ -3742,38 +3713,6 @@
         "region": "JOHTO"
     },
 
-    "KANTO_ROUTE_27": {
-      "area_type": "wild_route",
-      "route_name": "Route 27",
-      "battle_type": "ocean",
-      "can_fish": true,
-      "has_trees": true,
-      "alt_forms": { "enabled": true, "weights": { "20_alolan": 0.01, "77_galarian": 0.01, "194_paldean": 0.01 } },
-      "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
-      "wild_pool_percentages": "KANTO_ROUTE_27_PERCENTAGES",
-      "trainer_encounter_rate": 0.1,
-      "min_rounds": 2,
-      "trainer_pool": [
-        { "sprite": "acetrainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [121, 134], "rewards": { "balls": 5 } },
-        { "sprite": "acetrainer_f.png", "name": "Ace Trainer Megan", "class": "COOLTRAINER", "team": [180, 184], "rewards": { "balls": 5 } },
-        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Blake", "class": "COOLTRAINER", "team": [141], "rewards": { "balls": 5 } },
-        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Brian", "class": "COOLTRAINER", "team": [130], "rewards": { "balls": 5 } },
-        { "sprite": "swimmer_m.png", "name": "Swimmer Glenn", "class": "SWIMMER", "team": [73, 121], "rewards": { "balls": 3 } }
-      ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "TOHJO FALLS", "action": "EXIT", "target": "TOHJO_FALLS", "condition": ["can_exit"],  "color": "RED" },
-        { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": ["can_exit"],  "color": "RED" },
-        { "text": "ROUTE 26", "action": "EXIT", "target": "KANTO_ROUTE_26", "condition": ["can_exit"], "color": "RED" }
-      ],
-      "next_area": "NEW_BARK_TOWN",
-      "on_enter_event": null,
-        "region": "JOHTO"
-    },
 
     "MT_MOON": {
       "area_type": "wild_route",

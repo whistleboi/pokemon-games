@@ -410,6 +410,11 @@ class RouteMenu:
             has_caught = self.game.story_manager.story_flags.get("caught_mew", False)
             return has_spotted and not has_caught and not trainers_left
 
+        if condition == "lead_trusts_you":  # (your first Pokemon is fond of you, as the friendship checker counts it: Route 27's TM man, HGSS)
+            from src.pokemon import evolution as _evo
+            lead = next((p for p in self.game.story_manager.player_team if p and not getattr(p, "is_egg", False)), None)
+            return lead is not None and (getattr(lead, "friendship", 0) >= _evo.FRIENDSHIP_CATCHES or getattr(lead, "affection", 0) >= 150)
+
         if condition == "can_battle_red_gyarados":
             # As in the games: the Red Gyarados comes first, then Lance and the Rocket Hideout.
             boss_beaten = self.game.story_manager.story_flags.get("defeated_red_gyarados", False)

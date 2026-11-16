@@ -911,5 +911,6 @@
   "gift": true,
   "from": "HeartGold/SoulSilver TM59: from Clair in the Dragon's Den, after the Elder's test"
  },
- "TM139": {"move": "FLAMETHROWER", "type": "FIRE", "tier": 3, "price": 3000, "gift": true, "from": "HeartGold/SoulSilver TM35: outside Mt. Silver's Pokemon Center"}
+ "TM139": {"move": "FLAMETHROWER", "type": "FIRE", "tier": 3, "price": 3000, "gift": true, "from": "HeartGold/SoulSilver TM35: outside Mt. Silver's Pokemon Center"},
+ "TM140": {"move": "STEALTH-ROCK", "type": "ROCK", "tier": 2, "price": 3000, "gift": true, "from": "HeartGold/SoulSilver TM76: an item ball in Mt. Silver"}
 }

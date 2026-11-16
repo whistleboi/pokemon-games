@@ -6972,6 +6972,48 @@
     },
     "MT_SILVER_CITY:Mountain guide": {
       "sheet": "hg_gsmiddleman1.png"
+    },
+    "KANTO_ROUTE_27:MOON STONE": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_27:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_27:TM129": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_26:DESTINY KNOT": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:REAPER CLOTH": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:DAWN STONE": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:TM140": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:EXPERT BELT": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:PURE INCENSE": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",

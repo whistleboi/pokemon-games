@@ -95,7 +95,7 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "WAVE_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
                "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING", "BLACK_BELT": "FIGHTING", "SOFT_SAND": "GROUND", "DRAGON_FANG": "DRAGON",
                "FLAME_PLATE": "FIRE", "SPLASH_PLATE": "WATER", "ZAP_PLATE": "ELECTRIC", "MEADOW_PLATE": "GRASS", "ICICLE_PLATE": "ICE", "FIST_PLATE": "FIGHTING", "TOXIC_PLATE": "POISON", "EARTH_PLATE": "GROUND", "SKY_PLATE": "FLYING", "MIND_PLATE": "PSYCHIC", "INSECT_PLATE": "BUG", "STONE_PLATE": "ROCK", "SPOOKY_PLATE": "GHOST", "DRACO_PLATE": "DRAGON", "DREAD_PLATE": "DARK", "IRON_PLATE": "STEEL"}   # (the Plates: HGSS's S.S. Aqua captain, 11-16)   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
-FEWER_WILD = {"CLEANSE_TAG"}
+FEWER_WILD = {"CLEANSE_TAG", "PURE_INCENSE"}
 DEFENCE_HELD = {"EVIOLITE"}  # (held by a Pokemon that can still evolve: its defences up by half. Route 123, 11-12)  # (held by your lead: fewer wild Pokemon on a map. Mt. Pyre's old woman, 11-12)
 HELD_BOOST = 1.2
 HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},
@@ -119,6 +119,9 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "LAGGING_TAIL": {"price": 200, "text": "A tardy tail. In the games its holder always moves last."},   # (HGSS: Route 47; effect not built yet)
         "IRON_BALL": {"price": 200, "text": "A heavy iron ball. In the games it slows its holder down."},   # (HGSS: Mt. Mortar; effect not built yet)
         "FULL_INCENSE": {"price": 9600, "text": "An incense with a lulling scent. In the games its holder moves after the foe."},   # (HGSS: Mt. Mortar; effect not built yet)
+        "PURE_INCENSE": {"price": 9600, "text": "Give it to your lead Pokemon to hold: fewer wild Pokemon come near."},   # (HGSS: Mt. Silver, N16)
+        "EXPERT_BELT": {"price": 4000, "text": "A well-worn belt. In the games its holder's super-effective moves hit harder."},   # (HGSS: Mt. Silver; effect not built yet)
+        "DESTINY_KNOT": {"price": 200, "text": "A long thin thread. In the games love it feels spreads to the foe."},   # (HGSS: Route 26; effect not built yet)
         "BLACK_BELT": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fighting-type moves hit harder."},   # (HGSS: Wesley, Lake of Rage)
         "CHOICE_SPECS": {"price": 4000, "text": "Held: in the games it boosts special moves but locks its holder into one move."},   # (HGSS: Lake of Rage; effect not built yet)
         "DRAGON_FANG": {"price": 1000, "text": "Give it to a Pokemon to hold: its Dragon-type moves hit harder."},   # (HGSS: Route 45 / Dragon's Den)

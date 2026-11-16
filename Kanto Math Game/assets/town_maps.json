@@ -75950,45 +75950,72 @@
  },
  "KANTO_ROUTE_27": {
   "art": [
-   "TTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc................=ccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc===cccccccccc=cc=ccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc===cccccccccc=cc=ccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTcccccccccccccccccccccccccccccccTTTTTcccccccccccccccccccccccc.=..\"\"\"\"\"\"cccc=cc=ccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTcccccccccccccccccccccccccc\"\"\"\"\"TTTTTTccccccccccccccccccccccc==\"\"\"\"\"\"\"\"cccc=cc=ccccccccccccccccccccccccccc",
-   "TTTTTTToooooooTTTTTTTcccccccccccccc^cccccccccccTT\"\"\"TTTTTToooooooooooocccccc......=oooooooo\"\"\"\"=..=ccccccccccccccccccccccccccc",
-   "TTTTTTTooooooooooqoooccccc^cTTTTHHH...c~~~cccccTT\"\"\"\"\"\"\"\"oo========oooooo....==....occccccccccccc==ccccccccccccccccccccccccccc",
-   "TTTTTTToooooooooooooqooo.!..TTTTHHH.TTTTTTTooooT...\"TTTT\"oo========oooooo..!.==.rooq~q~~qoooooooo...cccccccccccccccccccccccccc",
-   "wooooooooccoooooqooooooo....TTTTHDH.TTTTTTTooqooqoooTTTTooooooooo========........ooq~~xxooooooooo...ooXoooooooooooo.###c.....o",
-   "wooooooooccooTTTTTTTTooo............TTTTTTToooooTTTTTTTTTTTTooooo========........ooq~~xxooooooooo...ooooooooooooooo....>.....o",
-   "TTTTTTTooooooTTTTTTTTTTT......#####.TTTTTTToooooTTTTTTTTTTTToooooooooooooooooooooooqqqooqqqqqqqqq...===============....>.....~",
-   "TTTTTTTooooooTTTTTTTTTTT.....TTTTTTTTTTTTTTTTTooooooTTTTooooqooooooooooooooooooooooooqooqoooooooq...===============....c.....~",
-   "TTTTTTTccccccTTTTTTTTTTTTToooTTTTTTTTTTTTT...qooqoo.........qoooooooooooooooooooooooooooooooooooo~~~~~~~~~~~~~~~~~~....ccccc.~",
-   "TTTTTTTccccccTTTTTTTTTTTTTooooooooooooooooooooooooooTTTTooooqqqoqqxxoqccccccoooooocccqqoqqcccccoooqqoqoqoqoqoqocccccc~qcccccqo",
-   "TTTTTTTccccccTTTTTTTTTTTTToooooooooooooooooooooooooccccccoooooooooxxooccccccoooooooooooooocccccooooooooooooooooccccccooooooooo",
-   "TTTTTTTooooooTTTTTTTTTTTTTqoqoqoqoqoqoqoqoqoqoqcqoqccccccoqoqoqoqoqoqoccccccqoqoqoqoqoqoqocccccoqoqoqoqoqoqoqoqccccccoqoqoqoqo",
-   "TTTTTTTooooooooooooooooooooooooooooooooooooooooooooccccccoooooooooooooccccccoooooooooooooooooooooooooooooooooooccccccooooooooo",
-   "TTTTTTTooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+   "TTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccrrcccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccrrcccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c~cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c~~cccccccccccccc.................ccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c~~~cccccccccccccc..cccccccccccccc.....ccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~cccccccccccc~~~~~~~~~~~~~~~~~~c~~~~cccccccccccccc..ccccccccccccccccc..ccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccooo\"\"\"\"\"\"\"\"TTTTTTTTTTooooooooooooooooo~c~~~~~cccccccccccccc..ccccccccccccccccc..ccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTooooooooooooTTTTTTTTTTcccccccccccccccccccccccccccc~~~~~c~ccccooo\"\"\"\"\"\"\"\"TTTTTTTTTToooooooooooooooooc~~~~~~cccccccc~c~\"\"...\"\"\"\"\"\"\"\"\"\"\"~~~~~~..~~~~~~c~~~c~~cccccccccccccccccccccccccccccccc",
+   "TTTTTTooooooooooooTTTTTTTTTTcccccccccccccccccccccccccccc~~~~~~cccccoooTT\"\"\"\"\"\"TTTTTTTTTToooooooooooooooooooooo..cccccccc~~c...~~~~~~~~~~~~~~~~~~~.....\"\"~~~~c~~~cccccccccccccccccccccccc.......>",
+   "TTTTTTooooooooooooooooqqooooccccccccccccccccccccccc^cccc~~~~~~~~ccooooTT\"\"\"\"\"\"TTTTTTTTTT,,,,,,,,,,,,,ooooooooo..cccccccc~~~..~~~~~~~~~~~~~cN\"\"\"\"~..~~~~\"\"\".~~~~~ccccccccccccccccccccccff.....c.>",
+   "TTTTTToooooooooooooooooooooocccccccccccccccccccccc......ooooooooooooooTT\"\"\"\"\"\"\"\"\"\"\"\"\"\".,,,,,,,,,,,,,,ooooooooooocc.............~~~~~~~~~~~~\"\"\"\"\"......~~~~~c~~~~ccccccccccccccccccccc.f..ccccccc",
+   "TTTTTToooooooooooooooooooooocccc~~~~^~~cccccccAAAA...X..ooooooooooooooTT\"\"\"...\"\"\"\"\"\"\"\".,,,,,,,,,,,,,,ooooooooooocccc..cc~~~~~~~c~oooooooo~c~~~~~~~~~..~~~~~~~~~~ccccccccccccccccccc.......cccccc",
+   "TTTTTTooooooooooooooooooooqqooooo.......TTTTTTAAAA......ooooooooooooooTT\"\"X...\"\"\"\"\"\"\"\".,,,,,,,,,,,,,,,,,,,,,,,,,cccc..cc~~~~~~~~cqqoooqqoc~~~~~~~~~~..~~~~~~~~~~cccccccccccccccccc......ccccfff.",
+   "<oooooooooooooooooooooooooqqooooo.......TTTTTTAAAA..TTTTTTTTTTooooooooqqooooooTTTTTToooooooooooooo,,,,,,,,,,,,,,,.!......qqoooooooqoooqoqqoooooooooo..fffoooooo~ccccccccccccccccc.....ccccccff..",
+   "<oooooooocccooooooooqqooooqqccooo..!....TTTTTTAAAA..TTTTTTTTTToooooqqoooooooooTTTTTToooooooooooooo,,,X,,,,,,,,,,,........qqooooooooxxxoooooooooooooo...ffooo~~occcccccccccccccccc_____cccccc....",
+   "<oooooooocccoooo~~~~qq~~oooocccoo.......TTTTTTADAA..TTTTTTTTTTooooooooooooooooTTTTTToooooooooooooo,,,,,,,,,,,,,,,........ooooooooooxxxoooooooooooooo..Xffooo~~ooooooooooooooooooo.....~~fff.....",
+   "<oooooooocccooooTTTTTTTToooocccoo.........(.........TTTTTTTTTTooooooooooooooooTTTTTToooooooooooooooooooooooooooooooooooooooooooooooxxxoooooooooooooo....foooooooooooooooooqqooooo.....~~ff......",
+   "<oooooooooooooooTTTTTTTT..................(.........TTTTTTTTTTooooooooooTTTTTTTTTTTTooooooooooooooooooooooooooooooooooooooooooooooooooqqoooooooooooo....,,,,,,,,,,,,,,,,,X,,,,,,,,....~~........",
+   "TTTTTTooooooooooTTTTTTTTTT................c_________TTTTTTTTTTooooooooooTTTTTTTTTTTTooooooooooooooooooooooooooooooooooooooooooooooooooqqoooooooooooooo..,,,,,,,,,,,,,,,,,,X,,,,,,,.............>",
+   "TTTTTTooooooooooTTTTTTTTTT..........................TTTTTTTTTTooooooooooTTTTTTTTTTTTTTTTTTooooooooooooooooooooooooooooooooooooooooooooqqoooooooooooooo..,,,,,,,,,,,,,,,,,,,,,,,,,,.............>",
+   "TTTTTTooooooooooTTTTTTTTTTTTTTff....................TTTTTTTTTTooooooooooTTTTTTTTTTTTTTTTTTooooooooooooooooooooooooooooooooooooooooooqqqqoooooooooooooo..,,,,,,,,,,,,,,,,,,,,,,,,,,.............>",
+   "TTTTTTooccooooooTTTTTTTTTTTTTTfff.........TTTTTTTTTTTTTTTTTTTTTTTTTTooqqTTTTTTTTTTTTTTTTTTqqooooooooooooooooooooooooooooooooooooqqqqqqooqqooooooooooooooooooooooooooooooooooooooooo...~ccccccccc",
+   "TTTTTTccccccooooTTTTTTTTTTTTTTTTTTTTooooooTTTTTTTTTTTTTTTTTTTTTTTTTTqqoooooooo.NTTTT.....Nqqoooooooooooooooooooooooooooooooooooooqqqooooqqooooooooooooooooooooooooooooooooooooooooooooc~cccccccc",
+   "TTTTTTccooccccooTTTTTTTTTTTTTTTTTTTTooooooTTTTTTTTTTTTTTTTTTTTTTTTTToooooooooo..TTTT.X....qqooooooooooooooooooooooooooooooooo~~~~ooooooooo~~~~oooooooooooooooooooooqqoooqq~~~~oooooooqqo......o>",
+   "TTTTTTooooooccooTTTTTTTTTTTTTTTTTTTToooooooooooooooooooooooooooooooooooooooooo..TTTTooooooooqqqqooooxxxooooooooooooooooqqqqoo~cc~ooooooooo~cc~oooooooooooooooooooqqqqoooqq~cc~~~oooooqooo....oo>",
+   "TTTTTTooooooooccTTTTTTTTTTTTTTTTTTTTqqqqooooooooooooooooooooooooooooooooooooooooTTTTooooooooooooqqqqxxxqq~~~~~~ooooooqqqqqqqqoooooooooooooooo~~~~qqqqqqooooooqqq~qqooqqqqoooooc~~~~~qqoooooooooo",
+   "TTTTTTooooooooccTTTTTTTTTTTTTTTTTTTTqqqqoooooooooooooooooooooooooooooooooooooooo~~~~ooooooooooooooooxxxoo~cccc~~~~~qqqqooooqqoooooooooooooooo~~c~qqqqqqqqooooqqq~ooooqqqqooooooo~~c~qqqqoooooooo",
+   "TTTTTTooooooooooTTTTTTTTTTTTTTTTTTTToooo~~ooooooqqqqoooo~~~~oooooooooo~~oooo~~~~~cc~ooooooooooooooooooooo~coooo~cc~qqooooooooooooooooooooooooooooooooooqqqqqqoooooooooooooooooooooooooqqqqooooqq",
+   "TTTTTTooooooooooTTTTTTTTTTTTTTTTTTTToooo~~~~qqqqqqqqqq~~~cc~ooo~qqqqq~~~qqqq~cccooooqqqqooqqoooooooooooo~~cooooooooooooooooooooooooooooooooooooooooooooooqqqqoooooooooooooooooooooooooooqqqqqqqq",
+   "TTTTTToooooooooooooooooooooooooooooooooooo~~qqqqooooqq~coooo~qq~qqqqq~ooqqqqooooooooqqqqqqqqqqqqqqqqqqqqq~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooqqqqo>",
+   "TTTTTToooooooooooooooooooooooooooooooooooooooooooooooooooooo~qqoooooooooooooooooooooooooqqooqqqqqqqqqqqq~~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>"
   ],
   "exits": {
-   "w": "NEW_BARK_TOWN",
+   "<": "NEW_BARK_TOWN",
    "^": "TOHJO_FALLS",
    ">": "KANTO_ROUTE_26"
   },
   "buildings": {
-   "H": "house"
+   "A": "tmhouse"
   },
   "roofs": {
-   "H": [
-    200,
-    70,
-    50
-   ]
+   "A": {
+    "roof": [
+     214,
+     103,
+     80
+    ],
+    "wall": [
+     170,
+     134,
+     97
+    ]
+   },
+   "_picture": {
+    "f": "ss_ground/R27.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
-  "trainer_spots": [
-   "Swimmer Glenn"
-  ],
+  "parts": true,
   "signs": [
    [
     "Tohjo Falls",
@@ -75998,163 +76025,354 @@
     "Route 27",
     "West: New Bark Town."
    ]
+  ],
+  "trainer_spots": [
+   "Ace Trainer Megan",
+   "Ace Trainer Blake",
+   "Ace Trainer Brian",
+   "Psychic Eli",
+   "Swimmer Glenn",
+   "Ace Trainer Reena",
+   "Bird Keeper Jose"
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/R27.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     192,
+     32
+    ],
+    "px": 32
+   }
+  ],
+  "rooms": {
+   "tmhouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:47,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R27R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Thoughtful man"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R27R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   }
+  },
+  "inside": {
+   "47,16": "tmhouse"
+  },
+  "hidden": {
+   "154,10": "REVIVE",
+   "178,12": "BIG_MUSHROOM",
+   "186,24": "NUGGET"
+  },
+  "people": [
+   "TM129",
+   "MOON STONE",
+   "RARE CANDY"
   ]
  },
  "KANTO_ROUTE_26": {
   "art": [
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGGGGGcccccccccccccc",
-   "ccccccccccGGGDGGGcccccccccccccc",
-   "ccccccccccc===!=ccccccccccccccc",
-   "ccccccccc..=====...cccccccccccc",
-   "cccccccccc....==.r.cccccccccccc",
-   "cccccccccc....==...cccccccccccc",
-   "cccccccccc....==.f.cccccccccccc",
-   "ccccccc.......==...cccccccccccc",
-   "ccccccc.......========ccccccccc",
-   "ccccccc.......=========cccccccc",
-   "ccccccc....cccccccc.===cccccccc",
-   "ccccccc....cccccccc.===cccccccc",
-   "ccccccc#.##cccccccc.===cccccccc",
-   "ccccccc....cccccccc.===.ccccccc",
-   "ccccccc....cccccccc.===.ccccccc",
-   "ccccccc#.##cccccccc.===.ccccccc",
-   "ccccccc....cccccccc.===.ccccccc",
-   "ccccccc....rccccccc.===..cccccc",
-   "ccccccc....cccccccc.===..cccccc",
-   "ccccccc....cccccccc.===..cccccc",
-   "ccccccc###.####cccc.===..cccccc",
-   "ccccccc.......ccccc.===....rrcc",
-   "ccccccc.......rcccc.===.TT...cc",
-   "ccccccc##.###cccccc.===.TT...cc",
-   "ccccccc.....ccccccc.===....TTcc",
-   "ccccccc.....ccccccc.===....TTcc",
-   "ccccccc##.###cccccc.===......cc",
-   "ccccccc.....ccccccc.===......cc",
-   "ccccccc.....ccccccc.==========c",
-   "ccccccccc==cccccccc.==========c",
-   "ccccccccc==ccccccccc==TTT=====c",
-   "ccccccccc==cccccccccrrTTT=====c",
-   "ccccccccc==ccccccccc==========c",
-   "ccccccccc==ccccccccc==========c",
-   "ccccccccc==ccccccccc==========c",
-   "ccccccc.........==============c",
-   "ccccccc.........==============c",
-   "cccccccccccccccc==TTTTTTTTTTTTc",
-   "cccccccccccccccc==TTTTTTTTTTTTc",
-   "cccccccccccccccc==TTTTTTTTTTTTc",
-   "cccccccccccccccc==TTTTTTTTTTTTc",
-   "cccccccccccccccc==TTTTTTTTTTTTc",
-   "cccccccccccccccc==TTTTTTTTTTTTc",
-   "cccccccccccccccc==TTTTTTTTTTTTc",
-   "cccccccccccccccc==============c",
-   "ccccccccccccccc===##########TTc",
-   "ccccccccccccccc.===!==.TAAAATTc",
-   "ccccccccccccccc.======..AAAATTc",
-   "ccccccccccccccc.======..AAAATTc",
-   "ccccccccccccccc.======..AADATTc",
-   "ccccccccccccccc.=========...TTc",
-   "ccccccccccccccc.=========...TTc",
-   "ccccccccccccccc.=========...TTc",
-   "ccccccccccccccc....===....==TTc",
-   "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".=#TTc",
-   "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".==TTc",
-   "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".==TTc",
-   "ccccccccc\"\"\"\"\"\"\"\"ccccc....==TTc",
-   "ccccccccc\"\"\"\"TTTTTTTTTTTT.==TTc",
-   "ccccccccc\"\"\"\"TTTTTTTTTTTT.==TTc",
-   "ccccccccc\"\"\"\"TTTTTTTTTTTT.==TTc",
-   "ccccccccc\"\"\"\"TTTTTTTTTTTT.==TTc",
-   "ccccccccc\"\"\"\"TTTTTTTTTTTT.==TTc",
-   "cccccccc.\"\"\"\"TTTTTTTTTTTT.==TTc",
-   "cccccccc.BBBBBTTTTTTTTTTT.==TTc",
-   "cccccccc.BBBBBTTTTTTTTTTT.==TTc",
-   "cccccccc.BBBBBTTTTTTTTTTT.==TTc",
-   "cccccccc.BBBBBTTTTTTTTTTT.==TTc",
-   "cccccccc.BBBBBTTTTTTTTTTT.==TTc",
-   "cccccccc.BBDBBTTTTTTTTTTT...TTc",
-   "cccccccc.....TTTTTTTTTTTT.\"\"TTc",
-   "cccccccc...TTTTTTTTTTTTTT.\"\"TTc",
-   "cccccccc...TTTTTTTTTTTTTT.\"\"TTc",
-   "cccccccc...TTTTTTTTTTTTcc.\"\"TTc",
-   "cccccccc.c.#TTTTTTTTTTTcc.\"\"TTc",
-   "cccccccc.ccTTTTTTTTTTTTcc.\"\"TTc",
-   "cccccccc.ccTTTTTTTTTTTTcc.\"\"TTc",
-   "ccccc.................TT\"\"\"\"TTc",
-   "ccccc.................TT\"\"\"\"TTc",
-   "ccccc.................TT\"\"\"\"TTc",
-   "ccccc......#####......TT\"\"\"\"TTc",
-   "ccccc......\"\"\"\"\"\"\"\"\"\"\"TT....TTc",
-   "ccccc......\"\"\"\"\"\"\"\"\"\"\"TT..TTTTc",
-   "ccccc......\"\"\"\"\"TTTTTTTT..TTTTc",
-   "ccccc...........TTTT\"\"\"\"\"\"TTTTc",
-   "ccccc.TTTTTTTTTcTTTT\"\"\"\"\"\"TTTTc",
-   "ccccc.TTTTTTTTTccccc\"\"\"\"\"\"TTTTc",
-   "ccccc.TTTTTTTTTccccc\"\"\"\"\"\"TTTTc",
-   "ccccc.TTTTTTTTTccccc\"\"\"\"\"\"TTTTc",
-   "ccccc.TTTTTTTTTcc===\"\"\"\"TTTTTTc",
-   "ccccc.TTTTTTTTTcc===ccccTTTTTTc",
-   "ccccc.TTTTTTTTTcc===ccccTTTTTTc",
-   "ccccc.TTTTTTTTTcc===ccccTTTTTTc",
-   "ccccc.TTToooooooo===ooocTTTTTTc",
-   "ccccc##..oooooooo===ooocTTTTTTc",
-   "ccccc....oooooooo===ooocTTTTTTc",
-   "ccccc....oooooooo===ooocTTTTTTc",
-   "cccccccccoooooooo===ooocTTTTTTc",
-   "cccccccccoooooooo===ooocccccccc",
-   "ccrccccccoooooooo===ooocccccccc",
-   "cccccccccoooooooo===oqocccccccc",
-   "ccccrccccoooooooo===ooooooooooc",
-   "cccccccccoooooooo===ooqoooooooc",
-   "cccccccccoooooooo===ooooooooooc",
-   "==============ccc===cccoooooooc",
-   "<===============.....ccoooooooc",
-   "<===============.....ccoooooooc",
-   "==============cc.....ccoooooooc",
-   "oooooooooooooocccccccccoooooooc",
-   "oooooooooooooocccccccccoooooooc",
-   "oooooooooooooocccccccccoooooooc",
-   "oooooooocccqoqooooooooooooooooc",
-   "qoqoqoqocccoooooooooooooooooooc",
-   "oooooooocccoooooooooooooooooooc",
-   "oooooooocccoooooooooooooooooooc",
-   "qoooooooooooooooooooooooooooooc",
-   "ooooooooooooooooooooooooooooooc",
-   "ooooooooooooooooooooooooooooooc",
-   "ccccccccccccccccccccccccccccccc"
+   "ccccccccAAAAAAAAAAcccccccccccccc",
+   "ccccccccAAAAAAAAAAcccccccccccccc",
+   "ccccccccAAAAAAAAAAcccccccccccccc",
+   "ccccccccAAAAAAAAAAcccccccccccccc",
+   "ccccccccAAAAAAAAAAcccccccccccccc",
+   "ccccccccAAAAAAAAAAcccccccccccccc",
+   "ccccccccAAAAAAAAAAcccccccccccccc",
+   "ccccccrrAAAAAAAAAAcccccccccccccc",
+   "ccccccrrAAAAADDAAAcccccccccccccc",
+   "ccccccccccc=c==c=ccccccccccccccc",
+   "ccccccccccc====!=ccccccccccccccc",
+   "ccccccccccc======ccccccccccccccc",
+   "cccccccccc.======frrcccccccccccc",
+   "cccccccccc.=====X.rrcccccccccccc",
+   "ccccccccc..======Xffcccccccccccc",
+   "cccccccff..=============cccccccc",
+   "ccccccc....=============cccccccc",
+   "ccccccc....=============cccccccc",
+   "ccccccc.....cccccccc.===cccccccc",
+   "ccccccc....fccccccccf===cccccccc",
+   "ccccccc____cccccccccc...cccccccc",
+   "cccccccf...cccccccccc===cccccccc",
+   "cccccccf...cccccccccc===cccccccc",
+   "ccccccc____cccccccccc===cccccccc",
+   "cccccccf...cccccccccc===cccccccc",
+   "cccccccf...rrcccccccc===cccccccc",
+   "ccccccc....rrfNcccccc===cccccccc",
+   "ccccccc.......fcccccc...cccccccc",
+   "ccccccc________cccccc===ccccrrcc",
+   "cccccccf.....fffccccc===cTT.rrcc",
+   "cccccccf......ffccccc===cTT.ffcc",
+   "ccccccc........cccccc===cTT.TTcc",
+   "ccccccc______cccccccc===cf..TTcc",
+   "cccccccff....cccccccc===cX..TTcc",
+   "cccccccf.....cccccccc...cX.ccccc",
+   "ccccccc______cccccccc======.===c",
+   "cccccccf.....cccccccc======.===c",
+   "ccccccc......cccccccc======.===c",
+   "ccccccccc..cccccccccc..TTTTc===c",
+   "ccccccccc..ccccccccccrrTTTTc===c",
+   "ccccccccc..ccccccccccrrTTTTc===c",
+   "ccccccccc..ccccccccccccccccc=X=c",
+   "ccccccccf.......==============Xc",
+   "ccccccccf.......===============c",
+   "cccccccc........===============c",
+   "cccccccccccccccc===TTTTTTTTTTTTc",
+   "cccccccccccccccc===TTTTTTTTTTTTc",
+   "cccccccccccccccc===TTTTTTTTTTTTc",
+   "cccccccccccccccc===TTTTTTTTTTTTc",
+   "cccccccccccccccc===TTTTTTTTTTTTc",
+   "cccccccccccccccc===TTTTTTTTTTTTc",
+   "cccccccccccccccc===TTTTTTTTTTTTc",
+   "cccccccccccccccc...cccccccBBBBcc",
+   "cccccccccccccccc====!=.fffBBBBTT",
+   "cccccccccccccccc======..T.BBBBTT",
+   "cccccccccccccccc======....BBBBTT",
+   "cccccccccccccccc.f.==X====BBBBTT",
+   "ccccccccccccccccff.=======BDBBTT",
+   "ccccccccccccccccff.===========TT",
+   "ccccccccccccccccf.....========TT",
+   "ccccccccccccccccf.....========TT",
+   "cccccccccccccccc__________==__TT",
+   "cccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"====TT",
+   "cccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"====TT",
+   "cccccccccc\"\"\"\"\"\"\".\"\"\"\"\"\"..====TT",
+   "cccccccccc\"\"\"\"\"....\"\"\"\"\"..====TT",
+   "cccccccccc\"\"\"\"TTTTTTTTTTTT====TT",
+   "cccccccccc\"\"\"\"TTTTTTTTTTTT====TT",
+   "cccccccccc\"\"\"\"TTTTTTTTTTTT====TT",
+   "cccccccccc\"\"\"\"TTTTTTTTTTTT====TT",
+   "cccccccccc.\"\"\"TTTTTTTTTTTT====TT",
+   "cccccccccc..\"\"\"\"\"\"TTTTTTTT====TT",
+   "cccccccccc..\"\"\"\"\"\"TTTTTTTT====TT",
+   "ccccccCCCCCCCC\"\"\"\"TTTTTTTT====TT",
+   "ccccccCCCCCCCC\"\"\"\"TTTTTTTT====TT",
+   "ccccccCCCCCCCC\"\"\".TTTTTTTT====TT",
+   "ccccccCCCCCCCC\"\"..TTTTTTTT====TT",
+   "ccccccCCCCCDCC\"\"..TTTTTTTT....TT",
+   "cccccccccc........TTTTTTTT....TT",
+   "cccccccccc........TTTTTTTT..\"\"TT",
+   "cccccccccc..TTTTTTTTTTTTTT..\"\"TT",
+   "cccccccccc..TTTTTTTTTTTTTT..\"\"TT",
+   "cccccccccc__TTTTTTTTTTTTTT__\"\"TT",
+   "cccccccccc..TTTTTTTTTTTT....\"\"TT",
+   "cccccccccc..TTTTTTTTTTTT....\"\"TT",
+   "cccccccccc..TTTTTTfff.......\"\"TT",
+   "cccccccccc..TTTTTTff.......X\"\"TT",
+   "rrcccccccc..(..........TT\"\"\"\"\"TT",
+   "rrcccccccc..(..........TT\"\"\"\"\"TT",
+   "cccccccccc..c__________TT\"\"\"\"\"TT",
+   "cccccffff...\"\"\"\"\"\"\"\"\"\"\"TT.....TT",
+   "ccccc.ff....\"\"\"\"\"\"\"\"\"\"\"TT...TTTT",
+   "ccccc........\"\"\"\"\"\"\"\"\"\"TT...TTTT",
+   "ccccc..ccccccccccTTTTTTTT...TTTT",
+   "ccccc..ccccccccccTTTTTTTT\"\".TTTT",
+   "ccccc..TTTTTTTTccTTTTTTTT\"\".TTTT",
+   "ccccc..TTTTTTTTc~....\"\"\"\"\"\".TTTT",
+   "ccccc..TTTTTTTTc~.....\"\"\"\"\"\"TTTT",
+   "ccccc__TTTTTTTTc~.,,,.\"\"\"\"\"\"TTTT",
+   "ccccc..TTTTTTTTcc~|||~~~ccTTTTTT",
+   "ccccc..TTTTTTTTc~~|||~~~ccTTTTTT",
+   "ccccc..TTTTooooooo|||oooccTTTTTT",
+   "ccccc__TTTTooooooo|||oooccTTTTTT",
+   "ccccc..ffooooooooo|||oooccTTTTTT",
+   "~~~~~...fooooooooo|||ooo~cTTTTTT",
+   "v........ooooooooo|||ooo~cTTTTTT",
+   "v........ooooooooo|||ooo~cTTTTTT",
+   "~~~~~~~~~ooooooooo|||ooo~cTTTTTT",
+   "cccccccc~ooooooooo|||ooo~c~~~~~c",
+   "cccccccc~ooooooooo|||oqq~~~~~~~c",
+   "ccccrr~~~ooooooooo|||oqqoooooooo",
+   "ccccrr~ooooooooooo|||oqqoooooooo",
+   "c~~~~~~ooooooooooo|||oqqoooooooo",
+   "c~oooooooooooooccc|||cccoooooooo",
+   "c~oooooooooooooccc|||cccoooooooo",
+   ";;;;;;;;;;;;;;;;;X,,,.ccoooooooo",
+   ";;;;;;;;;;;;;;;;;,....ccoooooooo",
+   ";;;;;;;;;;;;;;;;;,....ccoooooooo",
+   "c~ooooooooooooocccccccccoooooooo",
+   "~~ooooooooooooocccccccccoooooooo",
+   "vooooooooooqqqqooooooooooooooooo",
+   "vooooooo~~oqqqqooooooooooooooooo",
+   "qqqqqqqq~~~~oooooooooooooooooooo",
+   "qqqqqqqqooc~oooooooooooooooooooo",
+   "oooooooooooooooooooooooooooooooo",
+   "oooooooooooooooooooooooooooooooo",
+   "vooooooooooooooooooooooooooooooo",
+   "vooooooooooooooooooooooooooooooo"
   ],
   "exits": {
-   "G": "POKEMON_LEAGUE_GATE",
-   "<": "KANTO_ROUTE_27"
+   "v": "KANTO_ROUTE_27",
+   "A": "POKEMON_LEAGUE_GATE"
   },
   "buildings": {
-   "G": "gate",
-   "A": "house",
-   "B": "house"
+   "A": "gate",
+   "B": "resthouse",
+   "C": "house"
   },
   "roofs": {
-   "G": [
-    120,
-    150,
-    110
-   ],
-   "A": [
-    200,
-    70,
-    50
-   ],
-   "B": [
-    200,
-    70,
-    50
-   ]
+   "A": {
+    "roof": [
+     164,
+     174,
+     128
+    ],
+    "wall": [
+     144,
+     107,
+     66
+    ]
+   },
+   "B": {
+    "roof": [
+     214,
+     103,
+     80
+    ],
+    "wall": [
+     170,
+     134,
+     97
+    ]
+   },
+   "C": {
+    "roof": [
+     214,
+     103,
+     80
+    ],
+    "wall": [
+     170,
+     134,
+     97
+    ]
+   },
+   "_picture": {
+    "f": "ss_ground/R26.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
+  "parts": true,
   "signs": [
    [
     "Pokemon League Reception Gate",
@@ -76164,9 +76382,165 @@
     "Route 26",
     "North: the Pokemon League."
    ]
+  ],
+  "trainer_spots": [
+   "Kyler",
+   "Ace Trainer Jamie",
+   "Reena",
+   "Ace Trainer Jake",
+   "Josh",
+   "Ace Trainer Gaven",
+   "Ace Trainer Joyce",
+   "Psychic Vernon",
+   "Fisherman Scott"
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/R26.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     32,
+     128
+    ],
+    "px": 32
+   }
+  ],
+  "rooms": {
+   "resthouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:27,57"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R26R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Resting woman"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R26R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   }
+  },
+  "inside": {
+   "27,57": "resthouse"
+  },
+  "hidden": {
+   "27,28": "TINY_MUSHROOM"
+  },
+  "people": [
+   "DESTINY KNOT"
   ]
  },
  "POKEMON_LEAGUE_GATE": {
+  "theme": "ship",
   "art": [
    "ccccccccccLLLcccccccccc",
    "ccccccccccLLLcccccccccc",
@@ -76174,25 +76548,30 @@
    "ccccccccc.....ccccccccc",
    "ccccccccc.....ccccccccc",
    "ccccccccc.....ccccccccc",
+   "ccccccccc.....ccccccccc",
+   "c.....ccc.....ccc.....c",
+   "c<...................>c",
    "c.....................c",
-   "<.....................>",
    "c.....................c",
    "c.....................c",
    "ccccccccc.....ccccccccc",
    "ccccccccc.....ccccccccc",
-   "ccccccccc.m.m.ccccccccc",
-   "ccccccccc.m.m.ccccccccc",
-   "ccccccccc.m.m.ccccccccc",
-   "ccccccccc.m.m.ccccccccc",
+   "ccccccccc.....ccccccccc",
+   "ccccccccccc.ccccccccccc",
+   "ccccccccccc.ccccccccccc",
+   "ccccccccccc.ccccccccccc",
+   "ccccccccccc.ccccccccccc",
    "ccccccccc.....ccccccccc",
    "ccccccccc.....ccccccccc",
    "ccccccccc.....ccccccccc",
-   "cccccccccccvccccccccccc"
+   "ccccccccc.....ccccccccc",
+   "ccccccccc..v..ccccccccc",
+   "ccccccccccccccccccccccc"
   ],
   "exits": {
-   "<": "KANTO_ROUTE_22",
-   ">": "KANTO_ROUTE_28",
-   "v": "KANTO_ROUTE_26"
+   "v": "KANTO_ROUTE_26",
+   "<": "KANTO_ROUTE_28",
+   ">": "KANTO_ROUTE_22"
   },
   "buildings": {
    "L": "leaguegate"
@@ -76202,9 +76581,33 @@
     168,
     44,
     40
-   ]
+   ],
+   "_picture": {
+    "f": "ss_ground/R22R0101.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
-  "theme": "ship"
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/R22R0101.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     23,
+     25
+    ],
+    "px": 32
+   }
+  ]
  },
  "RADIO_TOWER": {
   "theme": "room",
@@ -77036,75 +77439,790 @@
   "theme": "ship"
  },
  "MT_SILVER": {
-  "art": [
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccc^ccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccc...cccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccc...cccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccc...cccccccccccccccccccccccccccccc",
-   "ccccccccccccccc<ccccccccccccccc...cccccccccccccccccccccccccccccc",
-   "ccccccccccccc.....ccccccccccccc...cccccccccccccccccccccccccccccc",
-   "ccccccccccccc.....ccccccccccccc...cccccccccccccccccccccccccccccc",
-   "cccccccccccccc===cccccccccccccc...cccccccccccccccc..r...cccccccc",
-   "cccccccccccccc===cccccccccccccc...cccccccccccccccc.....rcccccccc",
-   "cccccccccooooo===oooooocccccccc===ccccccccc......c.cccc.cccccccc",
-   "cccccccccoooooooooooooocccccccc===ccccccccc..r...c.cccc.cccccccc",
-   "cccccccccoooooooooooooocccccccc===ccccccccc......c.cccc.cccccccc",
-   "cccccccccoooooooooooooocccccccc===ccccccccc......c......cccccccc",
-   "cccccccccoooooooooooooocccccccc===ccccccccc......c.cccc.cccccccc",
-   "cccccccc....ooooooooooocccccccc===ccccccccc......c.cccc>cccccccc",
-   "cccccccccoooooooooooooocccccccc===ccccccccc......c.cccc.cccccccc",
-   "cccccccccoooooooooooooocccccccc===ccccccccc......c.cccc.cccccccc",
-   "ccccccccccccc$$$$$$$$$$cccccrcc===ccccccccc......ccccccccccccccc",
-   "ccccccccccccc$$$$$$$$$$ccccc.....................ccccccccccccccc",
-   "ccccccccccccc$$$$$$$$$$ccccc..................rr.ccccccccccccccc",
-   "ccccccccccccc$$$$$$$$$$ccccc..cccccccccccccccccccccccccccccccccc",
-   "cccccccccccccooooooooooooccc..cccccccccccccccccccccccccccccccccc",
-   "cccccccccccccooooooooooooccc..cccccccccccccccccccccccccccccccccc",
-   "cccccccccc...ooooooooooooccc..cccccccccccccccccccccccccccccccccc",
-   "cccccccccc...ooooooooooooccc..cccccccccccccccccccccccccccccccccc",
-   "cccccccccc......//c......ccc..cccooooooooooooooooooccccccccccccc",
-   "cccccccccc......ccc......ccc..cccooooooooooooooooooccccccccccccc",
-   "cccccccccc............rrr.....cccooooooooooooooooooccccccccccccc",
-   "cccccccccccccccccc/ccccccccc..........rrr............>cccccccccc",
-   "cccccccccccccccccc/ccccccccc..........................cccccccccc",
-   "cccccccccccccccccc/ccccccccc..........................cccccccccc",
-   "cccccccccccccccccc/ccccccccc..........................cccccccccc",
-   "cccccccccccccccccc/ccccccccc..cccccccccc..cccccccccccccccccccccc",
-   "cccccccccccccooooooooooooccc..cccccccccc............cccccccccccc",
-   "cccccccccccccooooooooooooccc..ccccnccccc...........>cccccccccccc",
-   "cccccccccccccooooooooooooccc..c......ccc..ccc.......cccccccccccc",
-   "cccccccccccccooooooooooooccc..c......ccc..ccc.......cccccccccccc",
-   "cccccccccccc.........ooooccc..c.==...ccc..ccc.......cccccccccccc",
-   "ccccccccccccr........ooooooooooooooocccccc........r.cccccccccccc",
-   "cccccccccccc.......r.ooooooooooooooocccccc..........cccccccccccc",
-   "cccccccccccccooooooooooooooooooooooocccccc../.......cccccccccccc",
-   "cccccccccccccooooooooooooooooooooooocccccccc/ccccccccccccccccccc",
-   "ccccccccccccccccccccc$$$$$$$$$$$$$$$cccccccc/ccccccccccccccccccc",
-   "ccccccccccccccccccccc$$$$$$$$$$$$$$$cccccccc/ccccccccccccccccccc",
-   "ccccccccccccccccccccc$$$$$$$$$$$$$$$cccccccc/ccccccccccccccccccc",
-   "ccccccccccccccccccccc$$$$$$$$$$$$$$$cccccccc/ccccccccccccccccccc",
-   "cccccccccccccccccooooooooooooooooooocccccccc/ccccccccccccccccccc",
-   "cccccccccccccccccooooooooooooooooooo...........ccccccccccccccccc",
-   "cccccccccccccccccooooooooooooooooooo...........ccccccccccccccccc",
-   "cccccccccccccccccoooooooooooooooooooccccvccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
-  ],
-  "exits": {
-   "v": "MT_SILVER_CITY",
-   "^": "MT_SILVER_2F",
-   "<": "MT_SILVER_MOLTRES",
-   "n": "MT_SILVER_EXPERT",
-   ">": "MT_SILVER_LOWER"
-  },
   "theme": "cave",
   "buildings": {},
-  "parts": true
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc1ccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc...cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc...cccccccccccccccccccccccc",
+     "cccccccc1ccccccccccccccc...cccccccccccccccccccccccc",
+     "cccccc.....ccccccccccccc...cccccccccccccccccccccccc",
+     "cccccc.....ccccccccccccc...cccccccccccccccc.cc...cc",
+     "ccooccc...cccooocccccccc...cccccccccccccccc.cc.N.cc",
+     "ccooccc...cccooocccccccc...ccccccccc.....cc....cccc",
+     "ccoo.........ooocccccccc...ccccccccc..c..cc....cccc",
+     "ccoooooooooooooocccccccc...ccccccccc.....cc.ccccccc",
+     "ccoooooooooooooocccccccc...ccccccccc.....cc.ccccccc",
+     "ccoooooooooooooocccccccc...ccccccccc.....cc.ccccccc",
+     "ccoooooooooooooocccccccc...ccccccccc.....cc.ccccccc",
+     "ccccccoooooooooocccccccc...ccccccccc.....cc.....ccc",
+     "ccccccoooooooooocccccccc...ccccccccc.....cc.cccc.cc",
+     "ccccccoooooooooocccccccc...ccccccccc.....cc.cccc1cc",
+     "ccccccoooooooooocccccccc...ccccccccc.....cc.cccc.cc",
+     "cccccc$$$$$$$$$$cccccccc...ccccccccc.....cc.cccc.cc",
+     "ccccccooooooooooccccccc..................cc......cc",
+     "ccccccooooooooooccccc.c................cccccccccccc",
+     "ccccccooooooooooccccc.................Xcccccccccccc",
+     "ccccccooooooooooooccc..cccccccccccccccccccccccccccc",
+     "ccccccccccccooooooccc..cccccccccccccccccccccccccccc",
+     "ccccccccccccooooooccc..cccccccccccccccccccccccccccc",
+     "cccccccccccc......ccc..cccccccccccccccccccccccccccc",
+     "ccc......///......ccc..cccccccccccccccccccccccccccc",
+     "ccc......ccc......ccc..cccccccccccccccccccccccccccc",
+     "ccc......cccccccccccc..cccccccccccccccccccccccccccc",
+     "ccc......cccccccccccc..cccccccccccccccccccccccccccc",
+     "ccc......cccccccccccc..cccccccccccccccccccccccccccc",
+     "cccc...........cccc....cccccccccccccccccccccccccccc",
+     "ccc............cccc....ccccccccccc.............cccc",
+     "ccccccccccc/ccccccccc..ccccccccccc............1cccc",
+     "ccccccccccc/ccccccccc........X.................cccc",
+     "ccccccccccc/ccccccccc...............ccccccccccccccc",
+     "cccccc............ccc...............ccccccccccccccc",
+     "ccccccooooooooooooccc...............ccc......cccccc",
+     "ccccccooooooooooooccccccccccccc..ccccc......1cccccc",
+     "ccccccooooooooooooccccccccc1ccc..ccccc.......cccccc",
+     "ccccccoooooooooooocccccc.....cc..ccccc.......cccccc",
+     "ccccccccccccccoooooooooc.....cc..ccccc.......cccccc",
+     "ccccccccccccccooooooooocc..cccc..ccccc.......cccccc",
+     "ccccccccccccccooooooooooooooocc..cc..........cccccc",
+     "ccccccccccccccooooooooooooooocccccc........cccccccc",
+     "ccccccccccccccooooooooooooooocccccc........cccccccc",
+     "ccccccccccccccooooooooooooooocccccccc/ccccccccccccc",
+     "cccccccccccccc$$$$$$$$$$$$$$$cccccccc/ccccccccccccc",
+     "ccccccccccccccooooooooooooooocccccccc/ccccccccccccc",
+     "ccccccccccccccooooooooooooooocccccccc/ccccccccccccc",
+     "ccccccccccccccooooooooooooooocccccccc/ccccccccccccc",
+     "ccccccccccooooooooooooooooooo...........ccccccccccc",
+     "ccccccccccooooooooooooooooooo...........ccccccccccc",
+     "ccccccccccooooooooooooooooooo....v......ccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "parts": true,
+    "exits": {
+     "v": "MT_SILVER_CITY"
+    },
+    "links": {
+     "8,5": [
+      3,
+      10,
+      22
+     ],
+     "27,40": [
+      2,
+      5,
+      8
+     ],
+     "44,39": [
+      1,
+      14,
+      30
+     ],
+     "46,34": [
+      1,
+      10,
+      25
+     ],
+     "48,17": [
+      1,
+      6,
+      8
+     ],
+     "25,2": [
+      4,
+      20,
+      22
+     ]
+    },
+    "trainer_spots": [
+     "Ace Trainer Kevin",
+     "Ace Trainer Gaven"
+    ],
+    "hidden": {
+     "38,38": "DIRE_HIT",
+     "3,32": "ULTRA_BALL",
+     "38,10": "REVIVE"
+    },
+    "people": [
+     "REAPER CLOTH"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0101.png",
+      "at": [
+       7,
+       7
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0101.png",
+      "at": [
+       7,
+       7
+      ],
+      "size": [
+       51,
+       57
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cc\"\"cccccccccccccc",
+     "cc\"\"cccccc..cccccc",
+     "cc\"\"..\".cc..cccccc",
+     "cc....\".cc..cccccc",
+     "cc.\"cc\"\"....cc..cc",
+     "cc.\"cc....\".cc\".cc",
+     "cc..cc1\"cc\".cc\"\"cc",
+     "cc\"\"cc.\"cc\".cc..cc",
+     "cc\".cc..cc\"\"cc\"\"cc",
+     "cc..cccccc..cc\"\"cc",
+     "cc\".cccccc\".cc\"\"cc",
+     "cc\".cccccc..cc\"\"cc",
+     "cc\"\"cc..cc....\"\"cc",
+     "cc.\"cc\".cc......cc",
+     "cc..cc\"\"cccccc\".cc",
+     "cc\"...\".cccccc\".cc",
+     "cc\"\"..\"\"cccccc\".cc",
+     "cc\".cc\".cccccc.\"cc",
+     "cc.\"cc\"\"cccccc\"\"cc",
+     "cc.\"cc\".cc\".cc.\"cc",
+     "cc.\"cc..cc\"\"...\"cc",
+     "cc\"\"cc\".cc\".....cc",
+     "cc\"\"cc\"\"cc..cc..cc",
+     "cc..cc.\"cc1.cc..cc",
+     "cc\".cc.\"cc..cccccc",
+     "cc\"\"cc..cccccccccc",
+     "cc\"\"cc\"\"cccccccccc",
+     "cc\".cc\".cccccc..cc",
+     "cc\"\"cc\"\"cc..cc1.cc",
+     "cc\".cc\".cc..cc..cc",
+     "cc\"\"cc..cc..cc\".cc",
+     "ccN.cc..cc..cc\".cc",
+     "cc\"\"cc.....\"ccN\"cc",
+     "cccccc.....\"cc..cc",
+     "cccccc..cc.\"cc..cc",
+     "cccccccccc.\"cc..cc",
+     "cccccccccc.\"....cc",
+     "cccccccccc......cc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc"
+    ],
+    "parts": true,
+    "exits": {},
+    "links": {
+     "6,8": [
+      0,
+      48,
+      17
+     ],
+     "10,25": [
+      0,
+      46,
+      34
+     ],
+     "14,30": [
+      0,
+      44,
+      39
+     ]
+    },
+    "people": [
+     "ESCAPE ROPE",
+     "DAWN STONE"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0103.png",
+      "at": [
+       13,
+       12
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0103.png",
+      "at": [
+       13,
+       12
+      ],
+      "size": [
+       18,
+       42
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cc.......cc",
+     "cc.......cc",
+     "cc...N...cc",
+     "cc.......cc",
+     "cc.......cc",
+     "cc.......cc",
+     "cc...1...cc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "parts": true,
+    "exits": {},
+    "links": {
+     "5,8": [
+      0,
+      27,
+      40
+     ]
+    },
+    "people": [
+     "TM140"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0104.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0104.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       11
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.cccccc...cccccc.cc",
+     "cc.cccccc.N.cccccc.cc",
+     "cc.cccccc...cccccc.cc",
+     "cc.cccccc...cccccc.cc",
+     "cc.//////...//////.cc",
+     "cc.cccccc...cccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.ccccccccccccccc.cc",
+     "cc.................cc",
+     "cc.................cc",
+     "cc........1........cc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "parts": true,
+    "exits": {},
+    "links": {
+     "10,22": [
+      0,
+      8,
+      5
+     ]
+    },
+    "people": [
+     "SEEK MOLTRES"
+    ],
+    "hidden": {
+     "18,1": "ULTRA_BALL",
+     "2,1": "HYPER_POTION"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0105.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0105.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       21,
+       25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccc1cccccccccccccccccccc",
+     "cc....................c..............0ccc",
+     "cc...................c................0cc",
+     "cc..cc..ccccccccccccccccccccccccccccc..cc",
+     "cc..cc..ccccccccccccccccccccccccccccc..cc",
+     "cc..cc.....................c.......cc..cc",
+     "cc..cc.....c.......c.....Nccc......cc..cc",
+     "cc..cc..ccccccccccccccccccccc..cc..cc.1cc",
+     "cc..cc..ccccccccccccccccccccc..cc..cc..cc",
+     "cc..cc..cc......cc.............cc..cc..cc",
+     "cc.ccc..cc......cN..........X..cc..cc..cc",
+     "cc.ccc..cc..cc..ccccccccccccc..cc..cc..cc",
+     "cc..cc..cc..cc..ccccccccccccc..cc..cc..cc",
+     "cc..cc..cc..cc.............cc..cc..cc..cc",
+     "cc..cc..cc..cc.............cc..cc..cc..cc",
+     "cc..cc..cc..cc..ccccc..cc..cc..cc..cc..cc",
+     "ccc.cc..cc..cc..ccccc..cc..cc..cc..ccNccc",
+     "ccc0cc..cc..cc..cc.....cc..cc..cc..cc.ccc",
+     "ccc0cc..cc..cc..cc.....cc..cc..cc..ccc.cc",
+     "cc0.cc..cc..cc..ccc...ccc..cc..cc..cc.1cc",
+     "cc..cc..cc..cc..ccc...ccc..cc..cc..cc..cc",
+     "cc..cc..cc..cc..cccc1cccc..cc..cc..cc..cc",
+     "ccc.cc..cc..cc..ccccccccc..cc..cc..cc..cc",
+     "ccc.cc..cc..cc..ccccccccc..cc..cc..cc..cc",
+     "cc..ccc.cc..cc.............cc..cc..cc..cc",
+     "cc..cc..cc..cc.............cc..cc..cc..cc",
+     "cc..cc..cc..ccccccccccccccccc..cc..cc..cc",
+     "cc..cc..cc..ccccccccccccccccc..cc..cc..cc",
+     "cc..cc..cc.....................cc..cc..cc",
+     "cc..cc..cc.....................cc..cc..cc",
+     "cc.ccc..ccccccccccccccccccccccccc..cc..cc",
+     "cc.ccc..ccccccccccccccccccccccccc..cc.1cc",
+     "cc..cc......................X......cc..cc",
+     "cc..cc.............................cc..cc",
+     "cc..ccccccccccccccccccccccccccccccccc.ccc",
+     "cc..ccccccccccccccccccccccccccccccccccccc",
+     "cc...............N.c..................ccc",
+     "cc................c.1.............1....cc",
+     "ccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "parts": true,
+    "exits": {},
+    "links": {
+     "20,22": [
+      0,
+      25,
+      2
+     ],
+     "20,1": [
+      5,
+      16,
+      3
+     ],
+     "38,8": [
+      5,
+      31,
+      10
+     ],
+     "38,20": [
+      5,
+      31,
+      22
+     ],
+     "38,32": [
+      5,
+      31,
+      34
+     ],
+     "34,38": [
+      5,
+      24,
+      42
+     ],
+     "20,38": [
+      5,
+      10,
+      42
+     ]
+    },
+    "trainer_spots": [
+     "Ace Trainer Irene",
+     "Ace Trainer Reena"
+    ],
+    "hidden": {
+     "2,19": "MAX_POTION",
+     "38,2": "IRON"
+    },
+    "people": [
+     "PROTEIN",
+     "EXPERT BELT",
+     "CALCIUM",
+     "MAX ELIXIR"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0106.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0106.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       41,
+       41
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccc....cc..\"\"\"\"\"cc",
+     "cccccccccccccccc1....\"\"....\"...\"\"cc",
+     "ccccccccccccccccccccccccccccccc\"\"cc",
+     "ccccccccccccccccccccccccccccccc\".cc",
+     "ccccccccccccccccccccccccccccccc.\"cc",
+     "ccccccccccccccccccccccccccccccc\"\"cc",
+     "ccccccccccccccccccccccccccccccc.\"cc",
+     "ccccccccccccccccccccccccccccccc.\"cc",
+     "ccccccccccccccccccccccccccccccc1\"cc",
+     "ccccccccccccccccccccccccccccccc.\"cc",
+     "ccccccccccccccccccccccccccccccc.\"cc",
+     "ccccccccccccccccccccccccccccccc.\"cc",
+     "ccccccccccccccccccccccccccccccc..cc",
+     "ccccccccccccccccccccccccccccccc..cc",
+     "ccccccccccccccccccccccccccccccc..cc",
+     "ccccccccccccccccccccccccccccccc..cc",
+     "ccccccccccccccccccccccccccccccc..cc",
+     "ccccccccccccccccccccccccccccccc\"\"cc",
+     "ccccccccccccccccccccccccccccccc\"\"cc",
+     "ccccccccccccccccccccccccccccccc\"\"cc",
+     "ccccccccccccccccccccccccccccccc1\"cc",
+     "ccccccccccccccccccccccccccccccc\".cc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "cccccc1cccccccccccccccccccccccccccc",
+     "ccNcc...\"cc..cc\"\"\"\"ccccN.cccccc..cc",
+     "cc.cc\".\"\"cc..cc.\"\"\".ccc..cccccc..cc",
+     "cc/ccc/cccc/ccc/ccccccc..cc..cc..cc",
+     "cc/ccc/cccc/ccc/ccccccc\".cc..cc1.cc",
+     "cc..c..\".cc..cc..\"\"\"\"\"\"\".cc..cc.\"cc",
+     "cc...c...cc..cc...\"\"\"\"\"\"\"cc..cc.\"cc",
+     "cccc/ccc/ccc/cc/ccccccccccc..cc\"\"cc",
+     "cccc/ccc/ccc/cc/ccccccccccc..cc\"\"cc",
+     "cc.\".\"\"\".\"\"\".cc.\"\"\"\".........cc\".cc",
+     "cc..\"\"\"\"\"\"\"\".cc.\"\"\"\"\"........cc.\"cc",
+     "cccccccccccc/cccccccc/ccccccccc.\"cc",
+     "cccccccccc1c/cccccccc/cc1cccccc.\"cc",
+     "cccccc...\".\".......cc......\"\"\"\".\"cc",
+     "cccccc..\"\"..\"......cc...........\"cc",
+     "ccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccc"
+    ],
+    "parts": true,
+    "exits": {},
+    "links": {
+     "16,3": [
+      4,
+      20,
+      1
+     ],
+     "31,10": [
+      4,
+      38,
+      8
+     ],
+     "31,22": [
+      4,
+      38,
+      20
+     ],
+     "31,34": [
+      4,
+      38,
+      32
+     ],
+     "24,42": [
+      4,
+      34,
+      38
+     ],
+     "10,42": [
+      4,
+      20,
+      38
+     ],
+     "6,30": [
+      6,
+      34,
+      18
+     ]
+    },
+    "hidden": {
+     "20,32": "RARE_CANDY",
+     "15,3": "MAX_ETHER",
+     "12,31": "HYPER_POTION"
+    },
+    "people": [
+     "PURE INCENSE",
+     "FULL RESTORE"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0102.png",
+      "at": [
+       8,
+       9
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0102.png",
+      "at": [
+       8,
+       9
+      ],
+      "size": [
+       35,
+       47
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccc1ccccccccccccccccccccccccc",
+     "cc......................ccccccccccccccc",
+     "cc.......................cccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "ccccccccccccc/ccccccccccccccccccccccccc",
+     "cccccccccccc...cccccccccccccccccccccccc",
+     "cccccccccccc...cccccccccccccccccccccccc",
+     "cccccccccccc.........................cc",
+     "cccccccccccc.........................cc",
+     "cccccccccccc......................1..cc",
+     "ccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "parts": true,
+    "exits": {},
+    "links": {
+     "34,18": [
+      5,
+      6,
+      30
+     ],
+     "13,1": [
+      7,
+      3,
+      28
+     ]
+    },
+    "hidden": {
+     "24,2": "MAX_REVIVE"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0107.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0107.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       39,
+       21
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "cc...cc",
+     "cc.N.cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc...cc",
+     "cc.1.cc",
+     "ccccccc",
+     "ccccccc"
+    ],
+    "parts": true,
+    "exits": {},
+    "links": {
+     "3,28": [
+      6,
+      13,
+      1
+     ]
+    },
+    "people": [
+     "CHALLENGE RED"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D41R0108.png",
+      "at": [
+       27,
+       8
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D41R0108.png",
+      "at": [
+       27,
+       8
+      ],
+      "size": [
+       7,
+       31
+      ],
+      "px": 32
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "1F",
+   "Mountainside",
+   "Side chamber",
+   "Moltres's chamber",
+   "2F",
+   "Upper mountainside",
+   "3F",
+   "Summit"
+  ],
+  "figure_floors": {
+   "Ace Trainer Kevin": 0,
+   "Ace Trainer Gaven": 0,
+   "SEEK MOLTRES": 3,
+   "Ace Trainer Irene": 4,
+   "Ace Trainer Reena": 4,
+   "CHALLENGE RED": 7,
+   "REAPER CLOTH": 0,
+   "DAWN STONE": 1,
+   "ESCAPE ROPE": 1,
+   "TM140": 2,
+   "EXPERT BELT": 4,
+   "MAX ELIXIR": 4,
+   "CALCIUM": 4,
+   "PROTEIN": 4,
+   "FULL RESTORE": 5,
+   "PURE INCENSE": 5
+  }
  },
  "MT_SILVER_EXPERT": {
   "art": [
@@ -84722,15 +85840,6 @@
        "to": "SILVER_LEAGUE_PLATEAU",
        "requires": [
         "has_8_johto_badges"
-       ]
-      },
-      {
-       "text": "The mountainside",
-       "to": "MT_SILVER_LOWER",
-       "requires": [
-        "beat_johto_champion",
-        "has_8_johto_badges",
-        "has_item:HM_ROCK_CLIMB"
        ]
       }
      ],

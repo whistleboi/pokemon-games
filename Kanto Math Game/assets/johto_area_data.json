@@ -170,8 +170,15 @@
     "JOHTO_TOHJO_FALLS_NIGHT_PERCENTAGES": {"41": 30, "20": 30, "42": 20, "79": 15, "19": 5},
     "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES": {"114": 27, "77": 27, "217": 9, "78": 9, "232": 9, "24": 9, "84": 5, "85": 5},
     "JOHTO_MT_SILVER_CITY_MORNING_PERCENTAGES": {"114": 27, "77": 27, "217": 9, "78": 9, "232": 9, "24": 9, "84": 5, "85": 5},
-    "JOHTO_MT_SILVER_CITY_NIGHT_PERCENTAGES": {"114": 22, "77": 22, "61": 15, "42": 11, "217": 8, "78": 8, "215": 7, "232": 7},
+    "JOHTO_MT_SILVER_CITY_NIGHT_PERCENTAGES": {"114": 22, "77": 22, "61": 15, "42": 11, "217": 8, "78": 8, "215": 7, "232": 7},
     "JOHTO_MT_SILVER_CITY_SURF_PERCENTAGES": {"61": 91, "60": 9},
+    "JOHTO_KANTO_ROUTE_26_DAY_PERCENTAGES": {"84": 40, "20": 20, "77": 20, "28": 15, "24": 3, "85": 2},
+    "JOHTO_KANTO_ROUTE_26_MORNING_PERCENTAGES": {"84": 40, "20": 20, "77": 20, "28": 15, "24": 3, "85": 2},
+    "JOHTO_KANTO_ROUTE_26_NIGHT_PERCENTAGES": {"20": 50, "77": 20, "28": 15, "195": 8, "84": 5, "24": 2},
+    "JOHTO_KANTO_ROUTE_27_DAY_PERCENTAGES": {"84": 45, "20": 30, "24": 15, "77": 5, "85": 3, "28": 2},
+    "JOHTO_KANTO_ROUTE_27_MORNING_PERCENTAGES": {"84": 45, "20": 30, "24": 15, "77": 5, "85": 3, "28": 2},
+    "JOHTO_KANTO_ROUTE_27_NIGHT_PERCENTAGES": {"195": 53, "20": 25, "24": 15, "77": 5, "28": 2},
+    "JOHTO_MT_SILVER_MORNING_PERCENTAGES": {"195": 15, "55": 11, "77": 11, "217": 8, "42": 8, "232": 8, "24": 8, "95": 7, "215": 7, "246": 4, "78": 4, "216": 2, "75": 2, "231": 2, "208": 2, "247": 1},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -1164,7 +1171,9 @@
 
             "backgrounds": {"main": "silver_entrance.png", "pokecenter": "silver_center.png"},
 
-            "wild_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES", "surf_pool_percentages": "JOHTO_MT_SILVER_CITY_SURF_PERCENTAGES",
+            "wild_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES",
+
+            "surf_pool_percentages": "JOHTO_MT_SILVER_CITY_SURF_PERCENTAGES",
 
             "min_rounds": 0,
 
@@ -1317,6 +1326,171 @@
         },
 
 
+        "KANTO_ROUTE_27": {
+
+
+            "area_type": "wild_route",
+
+
+            "route_name": "Route 27",
+
+
+            "battle_type": "ocean",
+
+
+            "can_fish": true,
+
+
+            "has_trees": true,
+
+
+            "alt_forms": {"enabled": true, "weights": {"20_alolan": 0.01, "77_galarian": 0.01, "194_paldean": 0.01}},
+
+
+            "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
+
+
+            "wild_pool_percentages": "JOHTO_KANTO_ROUTE_27_DAY_PERCENTAGES",
+
+
+            "trainer_encounter_rate": 0.1,
+
+
+            "min_rounds": 2,
+
+
+            "trainer_pool": [
+
+
+                {"sprite": "acetrainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [58, 30, 120], "rewards": {"balls": 5}},
+
+
+                {"sprite": "acetrainer_f.png", "name": "Ace Trainer Megan", "class": "COOLTRAINER", "team": [1, 2, 3], "rewards": {"balls": 5}},
+
+
+                {"sprite": "acetrainer_m.png", "name": "Ace Trainer Blake", "class": "COOLTRAINER", "team": [82, 195, 102], "rewards": {"balls": 5}},
+
+
+                {"sprite": "acetrainer_m.png", "name": "Ace Trainer Brian", "class": "COOLTRAINER", "team": [179], "rewards": {"balls": 5}},
+
+
+                {"sprite": "swimmer_m.png", "name": "Swimmer Glenn", "class": "SWIMMER", "team": [73, 121], "rewards": {"balls": 3}},
+
+
+                {"name": "Bird Keeper Jose", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [83], "rewards": {"balls": 2}},
+
+
+                {"name": "Psychic Eli", "class": "PSYCHIC", "sprite": "psychic.png", "team": [121, 102, 203], "rewards": {"balls": 2}}
+
+
+            ],
+
+
+            "route_menu": [
+
+
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+
+
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+
+
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+
+
+                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+
+
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+
+
+                {"text": "TOHJO FALLS", "action": "EXIT", "target": "TOHJO_FALLS", "condition": ["can_exit"], "color": "RED"},
+
+
+                {"text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": ["can_exit"], "color": "RED"},
+
+
+                {"text": "ROUTE 26", "action": "EXIT", "target": "KANTO_ROUTE_26", "condition": ["can_exit"], "color": "RED"},
+
+
+                {"text": "MOON STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_moon_stone_kanto_route_27_r27_79_23", "event": {"lines": ["A Moon Stone, lying in the grass."], "gift_item": {"MOON_STONE": 1}, "flag": "got_moon_stone_kanto_route_27_r27_79_23"}},
+
+
+                {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_kanto_route_27_r27_89_23", "event": {"lines": ["A Rare Candy, dropped by the path."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_kanto_route_27_r27_89_23"}},
+
+
+                {"text": "TM129", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm129_kanto_route_27_r27_139_10", "event": {"lines": ["A TM (Dragon-Claw), tucked behind a tree."], "gift_item": {"TM129": 1}, "flag": "got_tm129_kanto_route_27_r27_139_10"}},
+
+
+                {"text": "Thoughtful man", "action": "EVENT", "door": "tmhouse", "color": "GOLD", "event": {"lines": ["Off to the Pokemon League? Then your Pokemon had better trust you. Let me see your partner...", "Yes, the two of you are close. Take this TM - it's Sandstorm."], "gift_item": {"TM32": 1}, "flag": "got_tm32_route_27_house", "requires": ["lead_trusts_you"], "fail": ["Off to the Pokemon League? Then your Pokemon had better trust you. Let me see your partner...", "Hmm. It doesn't quite trust you yet. Spend more time together and come back."], "done": ["Sandstorm stirs up a storm of sand that hurts every Pokemon but Rock, Ground and Steel types."]}}
+
+
+            ],
+
+
+            "next_area": "NEW_BARK_TOWN",
+
+
+            "on_enter_event": null,
+
+
+            "region": "JOHTO",
+
+
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+
+
+            "morning_pool_percentages": "JOHTO_KANTO_ROUTE_27_MORNING_PERCENTAGES",
+
+
+            "day_pool_percentages": "JOHTO_KANTO_ROUTE_27_DAY_PERCENTAGES",
+
+
+            "night_pool_percentages": "JOHTO_KANTO_ROUTE_27_NIGHT_PERCENTAGES"
+
+
+        },
+        "KANTO_ROUTE_26": {
+            "area_type": "wild_route",
+            "route_name": "Route 26",
+            "battle_type": "field",
+            "can_fish": true,
+            "has_trees": true,
+            "alt_forms": {"enabled": true, "weights": {"20_alolan": 0.01, "77_galarian": 0.01, "194_paldean": 0.01}},
+            "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
+            "wild_pool_percentages": "JOHTO_KANTO_ROUTE_26_DAY_PERCENTAGES",
+            "trainer_encounter_rate": 0.1,
+            "min_rounds": 2,
+            "trainer_pool": [
+                {"sprite": "fisherman.png", "name": "Kyler", "class": "FISHERMAN", "team": [130, 130], "rewards": {"balls": 3}},
+                {"sprite": "acetrainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [121, 134], "rewards": {"balls": 5}},
+                {"sprite": "camper.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": {"balls": 3}},
+                {"name": "Fisherman Scott", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211, 211, 119], "rewards": {"balls": 2}},
+                {"name": "Psychic Vernon", "class": "PSYCHIC", "sprite": "psychic.png", "team": [196], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Joyce", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [25, 9], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Gaven", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [71, 99, 136], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Jake", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [47, 55, 134], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Jamie", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [78, 180], "rewards": {"balls": 2}}
+            ],
+            "route_menu": [
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"], "color": "RED"},
+                {"text": "ROUTE 27", "action": "EXIT", "target": "KANTO_ROUTE_27", "condition": ["can_exit"], "color": "RED"},
+                {"text": "DESTINY KNOT", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_destiny_knot_kanto_route_26_r26_14_26", "event": {"lines": ["A Destiny Knot, lying in the grass."], "gift_item": {"DESTINY_KNOT": 1}, "flag": "got_destiny_knot_kanto_route_26_r26_14_26"}},
+                {"text": "Resting woman", "action": "EVENT", "door": "resthouse", "event": {"lines": ["Lucky you, finding a place to rest right where the road gets hard! Make yourself at home.", "There! Your Pokemon look full of fight again. Keep it up!"], "heal": true}}
+            ],
+            "next_area": "KANTO_ROUTE_27",
+            "on_enter_event": null,
+            "region": "JOHTO",
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+            "morning_pool_percentages": "JOHTO_KANTO_ROUTE_26_MORNING_PERCENTAGES",
+            "day_pool_percentages": "JOHTO_KANTO_ROUTE_26_DAY_PERCENTAGES",
+            "night_pool_percentages": "JOHTO_KANTO_ROUTE_26_NIGHT_PERCENTAGES"
+        },
         "TOHJO_FALLS": {
 
 
@@ -2058,64 +2232,9 @@
             
         },
         
-        "MOOMOO_BARN": {
-            "area_type": "town",
-            "region": "JOHTO",
-            "route_name": "Moomoo Farm Barn",
-            "travel_options": [
-                { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" }
-            ],
-            "explore_options": []
-        },
-        "MOOMOO_HOUSE": {
-            "area_type": "town",
-            "region": "JOHTO",
-            "route_name": "Moomoo Farm",
-            "travel_options": [
-                { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" }
-            ],
-            "explore_options": []
-        },
-        "JOHTO_ROUTE_39": {
-            "region": "JOHTO",
-            "area_type": "wild_route",
-            "route_name": "Route 39",
-            "battle_type": "grass",
-            "wild_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES",
-            "day_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES",
-            "night_pool_percentages": "JOHTO_ROUTE_39_NIGHT_PERCENTAGES",
-            "has_trees": true,
-            "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES",
-            "min_rounds": 2,
-            "trainer_pool": [
-                {"name": "Psychic Norman", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}},
-                {"name": "Sailor Eugene", "class": "SAILOR", "sprite": "sailor.png", "team": [61, 20, 98], "rewards": {"balls": 2}},
-                {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}},
-                {"name": "Pokefan Ruth", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}},
-                {"name": "Psychic Nelson", "class": "PSYCHIC", "sprite": "psychic.png", "team": [79, 79], "rewards": {"balls": 2}}
-            ],
-            "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
-                {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"},
-                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
-                {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lax_incense_johto_route_39_r39_1_27", "event": {"lines": ["A Lax Incense, lying in the grass."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_lax_incense_johto_route_39_r39_1_27"}},
-                {"action": "EVENT", "event": {"lines": ["My Miltank's stopped giving milk. This farm's famous for its milk, and everyone wants a drink..."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "not moomoo_healed"},
-                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You made our Moomoo well again, hon! Our milk goes all the way to Kanto, so we were in real trouble. Here's something for your trouble."], "gift_item": {"TM136": 1}, "flag": "got_tm83_moomoo", "done": ["That's Natural Gift. Its power and type depend on the Berry your Pokemon's holding."], "requires": ["moomoo_healed"], "fail": ["Our milk goes all the way to Kanto. If Moomoo won't give milk, we're in a real fix."]}, "text": "Farmer's wife", "door": "farmhouse"},
-                {"text": "Moomoo Milk", "action": "SHOP", "door": "farmhouse", "flag_condition": "moomoo_healed", "stock": ["MOOMOO_MILK"]},
-                {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin", "door": "barn", "flag_condition": "not moomoo_healed"},
-                {"action": "EVENT", "event": {"lines": ["Thank you! Moomoo is totally healthy again!"]}, "text": "Twin", "door": "barn", "flag_condition": "moomoo_healed"},
-                {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin ", "door": "barn", "flag_condition": "not moomoo_healed"},
-                {"action": "EVENT", "event": {"lines": ["Moomoo's all better! We sell her milk at the house. Don't forget to drop by!"]}, "text": "Twin ", "door": "barn", "flag_condition": "moomoo_healed"},
-                {"text": "Moomoo", "action": "EVENT", "door": "barn", "color": "GOLD", "event": {"lines": ["MOOMOO: ...Moo... Its cry is weak."], "feed": {"item": "ORAN_BERRY", "need": 7, "count": "moomoo_berries", "flag": "moomoo_healed", "fail": ["It looks hungry. Maybe a Berry would help?"], "more": ["It still looks weak. It needs more Berries."], "well": ["MOOMOO: Mooo! It's brimming with energy again!"]}, "done": ["MOOMOO: Mooo! It's brimming with energy."]}},
-                {"action": "EVENT", "event": {"lines": ["My Miltank's milking again, thanks to you! Here, have a bottle any time."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "moomoo_healed"}
-            ],
-            "next_area": "OLIVINE_CITY",
-            "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]},
-            "morning_pool_percentages": "JOHTO_ROUTE_39_MORNING_PERCENTAGES"
-        },
+        "MOOMOO_BARN": {"area_type": "town", "region": "JOHTO", "route_name": "Moomoo Farm Barn", "travel_options": [{"text": "Route 39", "target_area": "JOHTO_ROUTE_39"}], "explore_options": [], "trainer_pool": []},
+        "MOOMOO_HOUSE": {"area_type": "town", "region": "JOHTO", "route_name": "Moomoo Farm", "travel_options": [{"text": "Route 39", "target_area": "JOHTO_ROUTE_39"}], "explore_options": [], "trainer_pool": []},
+        "JOHTO_ROUTE_39": {"region": "JOHTO", "area_type": "wild_route", "route_name": "Route 39", "battle_type": "grass", "wild_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES", "day_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_ROUTE_39_NIGHT_PERCENTAGES", "has_trees": true, "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "min_rounds": 2, "trainer_pool": [{"name": "Psychic Norman", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}}, {"name": "Sailor Eugene", "class": "SAILOR", "sprite": "sailor.png", "team": [61, 20, 98], "rewards": {"balls": 2}}, {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}}, {"name": "Pokefan Ruth", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}}, {"name": "Psychic Nelson", "class": "PSYCHIC", "sprite": "psychic.png", "team": [79, 79], "rewards": {"balls": 2}}], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"}, {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"}, {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"}, {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lax_incense_johto_route_39_r39_1_27", "event": {"lines": ["A Lax Incense, lying in the grass."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_lax_incense_johto_route_39_r39_1_27"}}, {"action": "EVENT", "event": {"lines": ["My Miltank's stopped giving milk. This farm's famous for its milk, and everyone wants a drink..."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "not moomoo_healed"}, {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You made our Moomoo well again, hon! Our milk goes all the way to Kanto, so we were in real trouble. Here's something for your trouble."], "gift_item": {"TM136": 1}, "flag": "got_tm83_moomoo", "done": ["That's Natural Gift. Its power and type depend on the Berry your Pokemon's holding."], "requires": ["moomoo_healed"], "fail": ["Our milk goes all the way to Kanto. If Moomoo won't give milk, we're in a real fix."]}, "text": "Farmer's wife", "door": "farmhouse"}, {"text": "Moomoo Milk", "action": "SHOP", "door": "farmhouse", "flag_condition": "moomoo_healed", "stock": ["MOOMOO_MILK"]}, {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin", "door": "barn", "flag_condition": "not moomoo_healed"}, {"action": "EVENT", "event": {"lines": ["Thank you! Moomoo is totally healthy again!"]}, "text": "Twin", "door": "barn", "flag_condition": "moomoo_healed"}, {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin ", "door": "barn", "flag_condition": "not moomoo_healed"}, {"action": "EVENT", "event": {"lines": ["Moomoo's all better! We sell her milk at the house. Don't forget to drop by!"]}, "text": "Twin ", "door": "barn", "flag_condition": "moomoo_healed"}, {"text": "Moomoo", "action": "EVENT", "door": "barn", "color": "GOLD", "event": {"lines": ["MOOMOO: ...Moo... Its cry is weak."], "feed": {"item": "ORAN_BERRY", "need": 7, "count": "moomoo_berries", "flag": "moomoo_healed", "fail": ["It looks hungry. Maybe a Berry would help?"], "more": ["It still looks weak. It needs more Berries."], "well": ["MOOMOO: Mooo! It's brimming with energy again!"]}, "done": ["MOOMOO: Mooo! It's brimming with energy."]}}, {"action": "EVENT", "event": {"lines": ["My Miltank's milking again, thanks to you! Here, have a bottle any time."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "moomoo_healed"}], "next_area": "OLIVINE_CITY", "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]}, "morning_pool_percentages": "JOHTO_ROUTE_39_MORNING_PERCENTAGES"},
         
         "JOHTO_ROUTE_40": {
         
@@ -3738,14 +3857,79 @@
 
         },
         
-        "MT_SILVER_EXPERT": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "1F", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}]},
-        "MT_SILVER_MOLTRES": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "SEEK MOLTRES", "action": "BOSS", "color": "GOLD", "flag_condition": "not mt_silver_moltres_defeated", "boss": {"id": 146, "level": 50, "name": "Moltres", "victory_flag": "mt_silver_moltres_defeated", "lines": ["Heat shimmers off the rocks... Moltres blazes down!"]}, "condition": ["beat_johto_champion"]}, {"text": "1F", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}]},
-        "MT_SILVER_LOWER": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver Mountainside", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Mt. Silver Cave", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}, {"text": "Pokemon Center", "action": "EXIT", "target_area": "MT_SILVER_CITY", "condition": "can_exit", "color": "RED"}]},
-        "MT_SILVER_2F": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver 2F", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "1F", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}, {"text": "Upper Mountainside", "action": "EXIT", "target_area": "MT_SILVER_UPPER", "condition": "can_exit", "color": "RED"}]},
-        "MT_SILVER_UPPER": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver Mountainside", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "2F", "action": "EXIT", "target_area": "MT_SILVER_2F", "condition": "can_exit", "color": "RED"}, {"text": "3F", "action": "EXIT", "target_area": "MT_SILVER_3F", "condition": ["can_exit", "has_item:HM_ROCK_CLIMB"], "color": "RED"}]},
-        "MT_SILVER_3F": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver 3F", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Upper Mountainside", "action": "EXIT", "target_area": "MT_SILVER_UPPER", "condition": "can_exit", "color": "RED"}, {"text": "Summit", "action": "EXIT", "target_area": "MT_SILVER_SUMMIT", "condition": "can_exit", "color": "RED"}]},
-        "MT_SILVER_SUMMIT": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver Summit", "route_menu": [{"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}}, {"text": "3F", "action": "EXIT", "target_area": "MT_SILVER_3F", "condition": "can_exit", "color": "RED"}]},
-        "MT_SILVER": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "trainer_pool": [{"name": "Ace Trainer Gaven", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [160, 212, 130], "rewards": {"balls": 5}}, {"name": "Ace Trainer Kevin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [6, 121, 143], "rewards": {"balls": 5}}, {"name": "Ace Trainer Irene", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [3, 131, 242], "rewards": {"balls": 5}}, {"name": "Ace Trainer Reena", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [9, 196, 232], "rewards": {"balls": 5}}], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "Pokemon Center", "action": "EXIT", "target_area": "MT_SILVER_CITY", "condition": "can_exit", "color": "RED"}, {"text": "2F", "action": "EXIT", "target_area": "MT_SILVER_2F", "condition": "can_exit", "color": "RED"}, {"text": "Moltres's chamber", "action": "EXIT", "target_area": "MT_SILVER_MOLTRES", "condition": "can_exit", "color": "RED"}, {"text": "A side chamber", "action": "EXIT", "target_area": "MT_SILVER_EXPERT", "condition": "can_exit", "color": "RED"}, {"text": "Mountainside", "action": "EXIT", "target_area": "MT_SILVER_LOWER", "condition": "can_exit", "color": "RED"}], "next_area": "MT_SILVER_CITY"},
+        "MT_SILVER": {
+        
+            "region": "JOHTO",
+        
+            "area_type": "dungeon",
+        
+            "battle_type": "mountain",
+        
+            "wild_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES",
+        
+            "min_rounds": 5,
+        
+            "trainer_pool": [
+        
+                {"name": "Ace Trainer Gaven", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [160, 212, 130], "rewards": {"balls": 5}},
+        
+                {"name": "Ace Trainer Kevin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [6, 121, 143], "rewards": {"balls": 5}},
+        
+                {"name": "Ace Trainer Irene", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [3, 131, 242], "rewards": {"balls": 5}},
+        
+                {"name": "Ace Trainer Reena", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [9, 196, 232], "rewards": {"balls": 5}}
+        
+            ],
+        
+            "route_menu": [
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        
+                {"text": "Pokemon Center", "action": "EXIT", "target_area": "MT_SILVER_CITY", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "SEEK MOLTRES", "action": "BOSS", "color": "GOLD", "flag_condition": "not mt_silver_moltres_defeated", "boss": {"id": 146, "level": 50, "name": "Moltres", "victory_flag": "mt_silver_moltres_defeated", "lines": ["Heat shimmers off the rocks... Moltres blazes down!"]}, "condition": ["beat_johto_champion"]},
+        
+                {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
+        
+                {"text": "REAPER CLOTH", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_reaper_cloth_mt_silver_d41r0101_54_15", "event": {"lines": ["A Reaper Cloth, lying among the rocks."], "gift_item": {"REAPER_CLOTH": 1}, "flag": "got_reaper_cloth_mt_silver_d41r0101_54_15"}},
+        
+                {"text": "DAWN STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dawn_stone_mt_silver_d41r0103_27_46", "event": {"lines": ["A Dawn Stone, in a dark corner."], "gift_item": {"DAWN_STONE": 1}, "flag": "got_dawn_stone_mt_silver_d41r0103_27_46"}},
+        
+                {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_mt_silver_d41r0103_15_45", "event": {"lines": ["An Escape Rope, beside the cave wall."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_mt_silver_d41r0103_15_45"}},
+        
+                {"text": "TM140", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm140_mt_silver_d41r0104_5_4", "event": {"lines": ["A TM (Stealth-Rock), left behind by a hiker."], "gift_item": {"TM140": 1}, "flag": "got_tm140_mt_silver_d41r0104_5_4"}},
+        
+                {"text": "EXPERT BELT", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_expert_belt_mt_silver_d41r0106_17_11", "event": {"lines": ["An Expert Belt, lying among the rocks."], "gift_item": {"EXPERT_BELT": 1}, "flag": "got_expert_belt_mt_silver_d41r0106_17_11"}},
+        
+                {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_mt_silver_d41r0106_17_37", "event": {"lines": ["A Max Elixir, in a dark corner."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_mt_silver_d41r0106_17_37"}},
+        
+                {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_mt_silver_d41r0106_37_17", "event": {"lines": ["A Calcium, beside the cave wall."], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_mt_silver_d41r0106_37_17"}},
+        
+                {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_mt_silver_d41r0106_25_7", "event": {"lines": ["A Protein, left behind by a hiker."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_mt_silver_d41r0106_25_7"}},
+        
+                {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_mt_silver_d41r0102_31_40", "event": {"lines": ["A Full Restore, lying among the rocks."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_mt_silver_d41r0102_31_40"}},
+        
+                {"text": "PURE INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pure_incense_mt_silver_d41r0102_10_40", "event": {"lines": ["A Pure Incense, in a dark corner."], "gift_item": {"PURE_INCENSE": 1}, "flag": "got_pure_incense_mt_silver_d41r0102_10_40"}}
+        
+            ],
+        
+            "next_area": "MT_SILVER_CITY",
+        
+            "route_name": "Mt. Silver",
+        
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+        
+            "morning_pool_percentages": "JOHTO_MT_SILVER_MORNING_PERCENTAGES"
+        
+        },
         "BELLCHIME_TRAIL": {
             "area_type": "dungeon",
             "route_name": "Bellchime Trail",
@@ -4050,8 +4234,8 @@
     "JOHTO_DRAGON_DEN_PERCENTAGES": {"129": 80, "147": 20},
     
     "JOHTO_MT_SILVER_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},
-    "JOHTO_MT_SILVER_NIGHT_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},
-    "JOHTO_MT_SILVER_DAY_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},
+    "JOHTO_MT_SILVER_NIGHT_PERCENTAGES": {"61": 17, "55": 11, "200": 9, "195": 9, "217": 8, "42": 8, "232": 8, "95": 7, "215": 7, "246": 5, "216": 3, "75": 2, "231": 2, "247": 2, "208": 2},
+    "JOHTO_MT_SILVER_DAY_PERCENTAGES": {"195": 15, "55": 11, "77": 11, "217": 8, "42": 8, "232": 8, "24": 8, "95": 7, "215": 7, "246": 4, "78": 4, "216": 2, "75": 2, "231": 2, "208": 2, "247": 1},
 
     "JOHTO_CLIFF_GATE_POOL": [74, 75, 194, 195, 41, 42, 66],
     "JOHTO_CLIFF_GATE_PERCENTAGES": {"74": 30, "194": 30, "41": 20, "75": 5, "195": 5, "42": 5, "66": 5, "2012": 1, "2013": 1},
