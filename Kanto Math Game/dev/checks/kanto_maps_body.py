@@ -1589,7 +1589,8 @@ for _k, _v in _jinv.items():
 from src.states.overworld import _run_story_event as _rseT
 from src.pokemon import moves as _mvT
 _tmT = json.load(open("assets/town_maps.json", encoding="utf-8"))
-_stT = type("S", (), {"game": g})()
+_saidT = []
+_stT = type("S", (), {"game": g, "show_message": lambda self, l, callback=None: (_saidT.extend(l), callback and callback())})()
 def _atT(key, part, name):
     m = _tmT[key]
     m = m["rooms"][part] if isinstance(part, str) else m["floors"][part] if isinstance(part, int) else m
@@ -1624,9 +1625,16 @@ for key, part, name, xy, move, can in (("KANTO_ROUTE_4", None, "Punching fan", (
     burnt = story.story_flags.get(flag)
     yes = _teachT(who["event"], [can]) if who else []
     got = move in _mvT.move_pool(g, story.player_team[0])
-    again = _teachT(who["event"], [can]) if who else []
-    check(at == xy and not burnt and got and story.story_flags.get(flag) and again == who["event"]["done"],
-          f"{key} {part or ''}: {name} at FireRed's spot {xy} teaches {move} free, once; a Magikarp can't learn it and that doesn't use it up ({at}, {burnt}, {got}, {again[:1]})")
+    # (taught once: again, to another Pokemon, for money - Jordan 11-16: "permanent ... at an appropriate relative cost")
+    from src.states.overworld.common import _tutor_price as _tpT
+    story.money = 10000; _saidT.clear(); _prevT = g.current_state
+    _teachT(who["event"], [can]) if who else []
+    _pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _prevT else None
+    if _pk:
+        _pk.done(True)
+    again = move in _mvT.move_pool(g, story.player_team[0]) and story.money == 10000 - _tpT(g, move)
+    check(at == xy and not burnt and got and story.story_flags.get(flag) and _pk is not None and again,
+          f"{key} {part or ''}: {name} at FireRed's spot {xy} teaches {move} free the first time, then again for ${_tpT(g, move)}; a Magikarp can't learn it and that doesn't use it up ({at}, {burnt}, {got}, {_pk is not None}, {story.money}, {_saidT[-1:]})")
 # Copycat: the Magnet Train Pass first (HGSS), then Mimic for a Poke Doll (FireRed), bought on Celadon 4F for $1000
 _, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")
 story.money = 1500; story.inventory.pop("POKE_DOLL", None)
@@ -1639,6 +1647,13 @@ check(story.inventory.get("POKE_DOLL") == 1 and not story.story_flags.get("frlg_
 _w = _teachT(_cc["event"], [35])
 check("MIMIC" in _mvT.move_pool(g, story.player_team[0]) and not story.inventory.get("POKE_DOLL") and story.story_flags.get("frlg_tutor_mimic"),
       f"...and teaches a Clefairy Mimic for it ({_w[:2]})")
+story.money = 5000; _prevT = g.current_state
+_w = _teachT(_cc["event"], [35])
+_pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _prevT else None
+if _pk:
+    _pk.done(True)
+check(_pk is not None and "MIMIC" in _mvT.move_pool(g, story.player_team[0]) and story.money == 3500,
+      f"...and again later, no doll needed: $1,500 ({_pk is not None}, {story.money})")
 # Silph Co. 2F: Thunder Wave (once she's given the Up-Grade hint, when there's one to give)
 _se = next(o for o in _area["SILPH_CITY"]["route_menu"] if o.get("text") == "TALK TO EMPLOYEE")
 story.story_flags.pop("frlg_tutor_thunder_wave", None)

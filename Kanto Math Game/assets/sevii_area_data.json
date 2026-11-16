@@ -719,6 +719,19 @@
                 ]
               },
               {
+                "requires": [
+                  "frlg_tutor_explosion"
+                ],
+                "tutor": {
+                  "move": "EXPLOSION",
+                  "like": "EXPLOSION"
+                },
+                "tutor_repeat": true,
+                "done": [
+                  "Researcher: Please don't use that Explosion near the summit. The volcano is jumpy enough!"
+                ]
+              },
+              {
                 "lines": [
                   "Researcher: Please don't use that Explosion near the summit. The volcano is jumpy enough!"
                 ]

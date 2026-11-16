@@ -325,6 +325,9 @@ def _run_story_event(state, key, check, show):
         ev = dict(ev, flag=today)
     flag = ev.get("flag")
     if flag and story.story_flags.get(flag):
+        if ev.get("tutor") and not ev["tutor"].get("choices"):   # (a once-only tutor, used: again, for money; Jordan 11-16)
+            _tutor_again(state, ev, show)
+            return
         show(_resolve_lines(game, ev.get("done") or ev.get("lines") or ["..."]))
         return
     if "unlocked_national_dex" in ev.get("requires", []):
@@ -645,25 +648,21 @@ def _run_story_event(state, key, check, show):
     if ev.get("give_badge"):  # a badge given outside its Gym's battle (HGSS: Clair's Rising Badge, at the Dragon Shrine)
         lines += _give_badge(game, ev["give_badge"])
     if ev.get("tutor"):  # a move tutor (Pacifidlog's Explosion man): {"move", "like": a TM move whose learners can learn it too,
-        tu = ev["tutor"]   #   "choices": [moves] for a menu (Crystal's Goldenrod tutor), "min_friend": it must love you (Grandma Wilma)}
+        tu = ev["tutor"]   #   "choices": [moves] for a menu (Crystal's Goldenrod tutor), "min_friend": it must love you (Grandma Wilma),
+        if ev.get("tutor_repeat"):   #   "coins", "take": items}; you pick which Pokemon learns it (Jordan 11-16)
+            _tutor_again(state, ev, show)
+            return
         if tu.get("choices"):
             from src.states.systems.pick_list import PickListState
             def chose(mv):
                 if mv is None:
                     show(_resolve_lines(game, ev.get("cancel") or ["Come back any time!"]))
                     return
-                show(_resolve_lines(game, _tutor_teach(game, dict(tu, move=mv, like=mv), ev)))
+                _tutor_flow(state, dict(tu, move=mv, like=mv), ev, [], show)
             game.change_state(PickListState(game, state, "WHICH MOVE?", [(m.replace("-", " "), m) for m in tu["choices"]], chose))
             return
-        out = _tutor_teach(game, tu, ev)
-        if out and out[0] == "\x00fail":
-            if flag:   # (a once-only tutor, FireRed's: nobody learned it, so they'll still teach it)
-                story.story_flags.pop(flag, None)
-            show(_resolve_lines(game, out[1:]))
-            return
-        for item, qty in (tu.get("take") or {}).items():   # (what they want for it, taken once it's taught: Copycat's Poke Doll)
-            story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
-        lines += out
+        _tutor_flow(state, tu, ev, lines, show, flag=flag)
+        return
     if ev.get("friend_check"):  # (Goldenrod's friendship checker, HGSS: how your first Pokemon feels about you)
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
         f = max(int(getattr(lead, "friendship", 0) or 0), int(getattr(lead, "affection", 0) or 0)) if lead else 0
@@ -893,9 +892,97 @@ def _run_quiz(state, ev, lines, show):
         ask(0)
 
 
-def _tutor_teach(game, tu, ev):
-    """Teach tu["move"] to the first party Pokemon that can learn it (and, with "min_friend", loves you enough): its lines, or
-    ["\x00fail", ...] when nobody can."""
+def _tutor_price(game, move):
+    """What a tutor asks to teach a move again (Jordan 11-16: "an appropriate relative cost"), beside the TMs' $3000: support
+    moves $1500, up to 70 power $2000, fixed-damage moves (Seismic Toss) $2500, up to 90 $3000, up to 120 $4000, stronger $6000."""
+    try:
+        import json as _json, os as _os
+        d = _json.load(open(_os.path.join("assets", "moves.json"), encoding="utf-8")).get(move) or {}
+    except (OSError, ValueError):
+        d = {}
+    power = int(d.get("power") or 0)
+    if str(d.get("category", "")).upper() == "STATUS":
+        return 1500
+    if power == 0:
+        return 2500
+    return 2000 if power <= 70 else 3000 if power <= 90 else 4000 if power <= 120 else 6000
+
+
+def _say_then(state, lines, then):
+    say = getattr(state, "show_message", None) or getattr(state, "show_dialogue", None)
+    if lines and say:
+        say(lines, callback=then)
+    else:
+        then()
+
+
+def _tutor_flow(state, tu, ev, head, show, flag=None, price=0):
+    """Teach tu["move"]: you pick which of the Pokemon that can learn it (nobody: the "fail" lines, and a once-only tutor
+    isn't used up), then pay `price` (money) and what tu["take"] asks for."""
+    from src.states.systems.pick_list import PickListState
+    game = state.game
+    story = game.story_manager
+    can, fail = _tutor_candidates(game, tu, ev)
+    if fail:
+        if flag:
+            story.story_flags.pop(flag, None)
+        show(_resolve_lines(game, fail))
+        return
+
+    def go(who):
+        if who is None:
+            if flag:
+                story.story_flags.pop(flag, None)
+            show(_resolve_lines(game, ev.get("cancel") or ["Come back any time!"]))
+            return
+        out = _tutor_teach(game, tu, ev, who=who)
+        if out and out[0] == "\x00fail":
+            if flag:
+                story.story_flags.pop(flag, None)
+            show(_resolve_lines(game, out[1:]))
+            return
+        if price:
+            story.money -= price
+            out = [f"{getattr(game, 'player_name', 'You')} paid ${price:,}."] + out
+        for item, qty in (tu.get("take") or {}).items():   # (what they want for it, taken once it's taught: Copycat's Poke Doll)
+            story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
+        show((list(head) if len(can) == 1 else []) + out)
+
+    if len(can) == 1:
+        go(can[0])
+        return
+    pick = lambda: game.change_state(PickListState(game, state, "WHO SHOULD LEARN " + tu["move"].replace("-", " ") + "?",
+                                                   [(f"{p.display_name} Lv{p.level}", i) for i, p in enumerate(can)],
+                                                   lambda i: go(None if i is None else can[i])))
+    _say_then(state, list(head), pick)
+
+
+def _tutor_again(state, ev, show):
+    """A tutor who has taught their move already (FireRed's teach once): again, to any Pokemon, for money."""
+    from src.states.systems.pick_list import PickListState
+    game = state.game
+    story = game.story_manager
+    tu = dict(ev["tutor"])
+    tu.pop("take", None)   # (Copycat wants a doll once; after that, money like the rest)
+    move = tu["move"].replace("-", " ").title()
+    price = int(ev.get("repeat_price") or tu.get("price") or _tutor_price(game, tu["move"]))
+    lines = _resolve_lines(game, ev.get("done") or []) + [f"I can teach {move} again, to any Pokemon that can learn it. That'll be ${price:,}."]
+
+    def answer(yes):
+        if not yes:
+            show(["Come back any time!"])
+            return
+        if getattr(story, "money", 0) < price:
+            show([f"${price:,}, please... You don't have enough money right now."])
+            return
+        _tutor_flow(state, tu, ev, [], show, price=price)
+
+    _say_then(state, lines, lambda: game.change_state(PickListState(game, state, f"TEACH {move.upper()} FOR ${price:,}?",
+                                                                     [(f"Yes, pay ${price:,}", True)], answer)))
+
+
+def _tutor_candidates(game, tu, ev):
+    """(the party Pokemon that can learn tu["move"] now, None), or ([], the lines saying why nobody can)."""
     import json as _json, os as _os
     from src.pokemon import moves as _mv
     story = game.story_manager
@@ -909,16 +996,26 @@ def _tutor_teach(game, tu, ev):
     if tu.get("min_friend"):
         close = [p for p in can if max(int(getattr(p, "friendship", 0) or 0), int(getattr(p, "affection", 0) or 0)) >= int(tu["min_friend"])]
         if can and not close:
-            return ["\x00fail"] + list(ev.get("not_close") or ["That Pokemon could learn it, but it doesn't trust you enough yet. Come back when you're closer!"])
+            return [], list(ev.get("not_close") or ["That Pokemon could learn it, but it doesn't trust you enough yet. Come back when you're closer!"])
         can = close
     if not can:
-        return ["\x00fail"] + list(ev.get("fail") or ["None of your Pokemon can learn it right now."])
+        return [], list(ev.get("fail") or ["None of your Pokemon can learn it right now."])
+    return can, None
+
+
+def _tutor_teach(game, tu, ev, who=None):
+    """Teach tu["move"] to `who` (else the first party Pokemon that can learn it): its lines, or [FAILMARK, ...] when nobody can."""
+    from src.pokemon import moves as _mv
+    story = game.story_manager
+    can, fail = _tutor_candidates(game, tu, ev)
+    if fail:
+        return ["\x00fail"] + fail
     if tu.get("coins"):   # (Crystal's Goldenrod tutor: Game Corner coins, 4000 a move)
         from src.states import game_corner as _gc
         if _gc.coins(story) < int(tu["coins"]):
             return ["\x00fail", f"That'll be {tu['coins']} coins... You only have {_gc.coins(story)}. Win some at the Game Corner first!"]
         _gc.add_coins(story, -int(tu["coins"]))
-    who = can[0]
+    who = who if who in can else can[0]
     _mv.move_pool(game, who).append(tu["move"])
     if len(who.moves) < _mv.MAX_MOVES:
         who.moves.append(tu["move"])
