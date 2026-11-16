@@ -674,5 +674,23 @@ _c2 = _tutor_teach(g, dict(_gt["event"]["tutor"], move="ICE-BEAM", like="ICE-BEA
 check(_c1[0] == "\x00fail" and "coins" in _c1[1] and _c2[0] != "\x00fail" and _gc.coins(story) == 1000,
       f"...for 4000 Game Corner coins a move, as in Crystal ({_c1[-1][:40]} / {_gc.coins(story)} left)")
 story.player_team = _keep_team
+# ---- Mega on the map in towns too, and it carries between areas (Jordan 11-15)
+from src.pokemon import mega_clock as _mc, forms as _fm
+_keep = list(story.player_team); _inv = dict(story.inventory)
+_v = _mon(3, 70); story.player_team = [_v]
+story.inventory["MEGA_BRACELET"] = 1; story.inventory["VENUSAURITE"] = 1
+g.rt_mega = None
+_town = open_map("CHERRYGROVE_CITY", "JOHTO_ROUTE_29")
+_mb = [b for b in (_town._buttons() if hasattr(_town, "_buttons") else []) if str(b[1]).startswith("MEGA")]
+if _mb:
+    _mb[0][3]()
+_was_mega = _mc.active(g) and _fm.is_changed(_v)
+_left = _mc.state(g).get("left", 0)
+_route = open_map("JOHTO_ROUTE_30", "CHERRYGROVE_CITY"); frames(30)
+check(_mb and _was_mega and _mc.active(g) and _fm.is_changed(_v) and 0 < _mc.state(g).get("left", 0) <= _left,   # (the checks' frames don't run Game.run, which ticks the clock)
+      f"MEGA in a town: Venusaur Mega Evolves in Cherrygrove and is still Mega on Route 30, its clock running ({bool(_mb)}, {_was_mega}, active {_mc.active(g)}, changed {_fm.is_changed(_v)}, left {_left}->{_mc.state(g).get('left')}, team same {story.player_team[0] is _v})")
+g.rt_mega = None
+if _fm.is_changed(_v): _fm.revert_form(_v)
+story.player_team = _keep; story.inventory.clear(); story.inventory.update(_inv)
 if fails:
     print("FAILS:", len(fails))

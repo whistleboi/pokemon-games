@@ -1030,9 +1030,21 @@ class WalkTownState(CityState):
     # ---------------------------------------------------------------- input
     def _buttons(self):
         side = dn.side_buttons(self.game)  # (stacked in the right band, beside the map)
-        return [(side[3].move(0, -70).inflate(0, -14).move(0, 7), "BAG", (198, 132, 60), self._open_bag),  # (Jordan, 11-12: the Bag one press away on the map, with the others)
-                (side[3], theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
-                (side[2], theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
+        out = [(side[3].move(0, -70).inflate(0, -14).move(0, 7), "BAG", (198, 132, 60), self._open_bag),  # (Jordan, 11-12: the Bag one press away on the map, with the others)
+               (side[3], theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
+               (side[2], theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
+        mega = self._map_mega_button()   # (Jordan 11-15: the MEGA button in towns too; the Mega's own clock carries between areas)
+        if mega:
+            r, label, col, fn, enabled, sub = mega
+            out.append((r, f"{label} {sub}" if not enabled and sub else label, col, fn if enabled else (lambda: None)))
+        return out
+
+    # the map's MEGA button, as on the routes (src/states/overworld/overworld_battle.py; src/pokemon/mega_clock.py)
+    from src.states.overworld.overworld_battle import OverworldBattles as _OB
+    _mega_rect = _OB._mega_rect
+    _map_mega_button = _OB._map_mega_button
+    _map_mega = _OB._map_mega
+    del _OB
 
     def _camera(self):
         px, py = self.player
