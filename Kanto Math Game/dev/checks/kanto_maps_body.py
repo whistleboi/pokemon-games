@@ -1584,6 +1584,76 @@ for _k, _v in _jinv.items():
         story.inventory[_k] = _v
 
 
+# ---- FireRed's move tutors (Jordan 11-16: "Put in all Kanto move tutors. Have them cost cannon amount"): free, once each,
+# on FireRed's own spots; Copycat's Mimic for a Poke Doll (Celadon 4F sells it), Silph 2F's Thunder Wave, Mt. Ember's Explosion
+from src.states.overworld import _run_story_event as _rseT
+from src.pokemon import moves as _mvT
+_tmT = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_stT = type("S", (), {"game": g})()
+def _atT(key, part, name):
+    m = _tmT[key]
+    m = m["rooms"][part] if isinstance(part, str) else m["floors"][part] if isinstance(part, int) else m
+    ns = [(x, y) for y, r in enumerate(m["art"]) for x, c in enumerate(r) if c == "N"]
+    for xy, p in zip(ns, m.get("people") or []):
+        if isinstance(p, dict) and p.get("text") == name:
+            return xy, p
+    return None, None
+def _teachT(ev, team, flags=()):
+    said = []
+    story.player_team = [mk(i) for i in team]
+    for f in flags:
+        story.story_flags[f] = True
+    _rseT(_stT, ev, lambda c: (story.inventory.get(c[9:], 0) > 0) if c.startswith("has_item:") else
+          (not story.story_flags.get(c[4:])) if c.startswith("not:") else bool(story.story_flags.get(c)), lambda l, **k: said.extend(l))
+    return said
+_savedT, _invT, _teamT, _moneyT = dict(story.story_flags), dict(story.inventory), list(story.player_team), story.money
+for key, part, name, xy, move, can in (("KANTO_ROUTE_4", None, "Punching fan", (25, 3), "MEGA-PUNCH", 66),
+                                       ("KANTO_ROUTE_4", None, "Kicking fan", (28, 3), "MEGA-KICK", 66),
+                                       ("VIRIDIAN_CITY", None, "Sleepy man", (8, 26), "DREAM-EATER", 63),
+                                       ("PEWTER_CITY", "museum_1f", "Wrestling fan", (26, 7), "SEISMIC-TOSS", 66),
+                                       ("ROCK_TUNNEL", 1, "Tunnel hiker", (2, 29), "ROCK-SLIDE", 74),
+                                       ("CELADON_CITY", "dept_3", "Counter man", (10, 9), "COUNTER", 66),
+                                       ("CELADON_CITY", None, "Pond man", (26, 19), "SOFT-BOILED", 113),
+                                       ("FUCHSIA_CITY", None, "Kangaskhan fan", (15, 11), "SUBSTITUTE", 25),
+                                       ("CINNABAR_ISLAND", "lab_rd", "Metronome scientist", (5, 4), "METRONOME", 35),
+                                       ("VICTORY_ROAD", 1, "Ace trainer", (40, 9), "DOUBLE-EDGE", 19)):
+    at, who = _atT(key, part, name)
+    flag = "frlg_tutor_" + move.lower().replace("-", "_")
+    story.story_flags.pop(flag, None)
+    no = _teachT(who["event"], [129]) if who else []
+    burnt = story.story_flags.get(flag)
+    yes = _teachT(who["event"], [can]) if who else []
+    got = move in _mvT.move_pool(g, story.player_team[0])
+    again = _teachT(who["event"], [can]) if who else []
+    check(at == xy and not burnt and got and story.story_flags.get(flag) and again == who["event"]["done"],
+          f"{key} {part or ''}: {name} at FireRed's spot {xy} teaches {move} free, once; a Magikarp can't learn it and that doesn't use it up ({at}, {burnt}, {got}, {again[:1]})")
+# Copycat: the Magnet Train Pass first (HGSS), then Mimic for a Poke Doll (FireRed), bought on Celadon 4F for $1000
+_, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")
+story.money = 1500; story.inventory.pop("POKE_DOLL", None)
+_teachT(_clk["event"], [25])
+check(story.inventory.get("POKE_DOLL") == 1 and story.money == 500, f"Celadon Dept. Store 4F: a Poke Doll for $1000 ({story.inventory.get('POKE_DOLL')}, {story.money})")
+_cc = next(o for o in _area["SAFFRON_CITY"]["explore_options"] if o.get("text") == "Visit Copycat")
+story.story_flags.pop("frlg_tutor_mimic", None)
+_w = _teachT(_cc["event"], [129], flags=["got_magnet_pass"])
+check(story.inventory.get("POKE_DOLL") == 1 and not story.story_flags.get("frlg_tutor_mimic"), f"...Copycat keeps your doll for later when nobody can learn Mimic ({_w[:1]})")
+_w = _teachT(_cc["event"], [35])
+check("MIMIC" in _mvT.move_pool(g, story.player_team[0]) and not story.inventory.get("POKE_DOLL") and story.story_flags.get("frlg_tutor_mimic"),
+      f"...and teaches a Clefairy Mimic for it ({_w[:2]})")
+# Silph Co. 2F: Thunder Wave (once she's given the Up-Grade hint, when there's one to give)
+_se = next(o for o in _area["SILPH_CITY"]["route_menu"] if o.get("text") == "TALK TO EMPLOYEE")
+story.story_flags.pop("frlg_tutor_thunder_wave", None)
+_w = _teachT(_se["event"], [35], flags=["silph_upgrade_hint"])
+check("THUNDER-WAVE" in _mvT.move_pool(g, story.player_team[0]) and story.story_flags.get("frlg_tutor_thunder_wave"), f"Silph Co. 2F: the employee teaches Thunder Wave ({_w[:1]})")
+# Mt. Ember: the researchers, then Explosion
+_me = next(o for o in g.loader.area_data["STORY_PROGRESSION"]["MT_EMBER"]["route_menu"] if o.get("text") == "TALK TO THE RESEARCHERS")
+story.story_flags.pop("frlg_tutor_explosion", None)
+_w = _teachT(_me["event"], [74], flags=["met_ember_researchers"])
+check("EXPLOSION" in _mvT.move_pool(g, story.player_team[0]) and story.story_flags.get("frlg_tutor_explosion"), f"Mt. Ember: the researcher teaches Explosion ({_w[:1]})")
+story.story_flags.clear(); story.story_flags.update(_savedT)
+story.inventory.clear(); story.inventory.update(_invT)
+story.player_team, story.money = _teamT, _moneyT
+
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

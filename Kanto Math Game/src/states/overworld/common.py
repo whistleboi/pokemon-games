@@ -637,8 +637,12 @@ def _run_story_event(state, key, check, show):
             return
         out = _tutor_teach(game, tu, ev)
         if out and out[0] == "\x00fail":
+            if flag:   # (a once-only tutor, FireRed's: nobody learned it, so they'll still teach it)
+                story.story_flags.pop(flag, None)
             show(_resolve_lines(game, out[1:]))
             return
+        for item, qty in (tu.get("take") or {}).items():   # (what they want for it, taken once it's taught: Copycat's Poke Doll)
+            story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
         lines += out
     if ev.get("friend_check"):  # (Goldenrod's friendship checker, HGSS: how your first Pokemon feels about you)
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)

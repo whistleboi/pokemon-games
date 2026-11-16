@@ -977,11 +977,25 @@
     }
    },
    {
-    "text": "Man",
+    "text": "Sleepy man",
     "action": "EVENT",
+    "color": "GOLD",
     "event": {
      "lines": [
-      "West of here is Route 22. Keep going and you'll reach the Pokémon League's front gate."
+      "Zzz... I can't eat another bite... Zzz...",
+      "...Hm? Oh! I was dreaming about a feast.",
+      "Want your Pokemon to feast on dreams too? I'll teach it Dream Eater. Just this once... yaaawn."
+     ],
+     "tutor": {
+      "move": "DREAM-EATER",
+      "like": "DREAM-EATER"
+     },
+     "flag": "frlg_tutor_dream_eater",
+     "done": [
+      "Zzz... still full... Zzz..."
+     ],
+     "fail": [
+      "Sleepy man: Hmm, none of your Pokemon can learn Dream Eater. Come back with one that can!"
      ]
     }
    },
@@ -3018,11 +3032,24 @@
      },
      "Visit Museum",
      {
-      "text": "Researcher",
+      "text": "Wrestling fan",
       "action": "EVENT",
+      "color": "GOLD",
       "event": {
        "lines": [
-        "Fossils turn up in Mt. Moon, east of here. Bring us any you find!"
+        "Whoa, a Trainer! Never throw in the towel, kid. Throw your opponent instead!",
+        "I'll teach one of your Pokemon Seismic Toss. It hits as hard as its level, every time! Only once, though."
+       ],
+       "tutor": {
+        "move": "SEISMIC-TOSS",
+        "like": "SEISMIC-TOSS"
+       },
+       "flag": "frlg_tutor_seismic_toss",
+       "done": [
+        "Still tossing? Good. Don't you dare throw in the towel!"
+       ],
+       "fail": [
+        "Wrestling fan: Hmm, none of your Pokemon can learn Seismic Toss. Come back with one that can!"
        ]
       }
      }
@@ -4827,20 +4854,46 @@
   },
   "people": [
    {
-    "text": "Hiker",
+    "text": "Punching fan",
     "action": "EVENT",
+    "color": "GOLD",
     "event": {
      "lines": [
-      "Cerulean City's just east of here. Made it out of the mountain at last!"
+      "Kicks? Bah! The fist is everything! That fool next to me only thinks about his feet.",
+      "Let me teach one of your Pokemon the way of the fist: Mega Punch! Just this once, mind."
+     ],
+     "tutor": {
+      "move": "MEGA-PUNCH",
+      "like": "MEGA-PUNCH"
+     },
+     "flag": "frlg_tutor_mega_punch",
+     "done": [
+      "We're comrades in the way of punching now! Go, before that kicking nitwit spots you."
+     ],
+     "fail": [
+      "Punching fan: Hmm, none of your Pokemon can learn Mega Punch. Come back with one that can!"
      ]
     }
    },
    {
-    "text": "Hiker ",
+    "text": "Kicking fan",
     "action": "EVENT",
+    "color": "GOLD",
     "event": {
      "lines": [
-      "This ledge is a one-way trip. No going back up to the cave from here!"
+      "Punches? Please! Real power comes from the legs. Ignore the guy beside me.",
+      "I'll teach one of your Pokemon the way of the kick: Mega Kick! Only the once, though."
+     ],
+     "tutor": {
+      "move": "MEGA-KICK",
+      "like": "MEGA-KICK"
+     },
+     "flag": "frlg_tutor_mega_kick",
+     "done": [
+      "We're soul mates in the way of kicking! Run, before that punching fool sees you."
+     ],
+     "fail": [
+      "Kicking fan: Hmm, none of your Pokemon can learn Mega Kick. Come back with one that can!"
      ]
     }
    },
@@ -12232,11 +12285,24 @@
     "people": [
      "MAX ETHER",
      {
-      "text": "Hiker",
+      "text": "Tunnel hiker",
       "action": "EVENT",
+      "color": "GOLD",
       "event": {
        "lines": [
-        "Up in rocky places like this, rockslides are a real danger. Imagine boulders crashing down!"
+        "Rocks fall all the time in a tunnel like this. Might as well put them to work!",
+        "I'll teach one of your Pokemon Rock Slide. Just once. Scary to use it in here, though..."
+       ],
+       "tutor": {
+        "move": "ROCK-SLIDE",
+        "like": "ROCK-SLIDE"
+       },
+       "flag": "frlg_tutor_rock_slide",
+       "done": [
+        "Careful with that Rock Slide down here. I'd like to get out of this tunnel someday!"
+       ],
+       "fail": [
+        "Tunnel hiker: Hmm, none of your Pokemon can learn Rock Slide. Come back with one that can!"
        ]
       }
      },
@@ -17003,11 +17069,24 @@
     }
    },
    {
-    "text": "Old man ",
+    "text": "Pond man",
     "action": "EVENT",
+    "color": "GOLD",
     "event": {
      "lines": [
-      "My Poliwrath and I go everywhere together. It's a strong one!"
+      "Not many people come all the way out here! You must have Surfed across the pond.",
+      "As a reward, I'll teach Soft-Boiled to one of your Pokemon. It can heal itself, or so they say. Just the once!"
+     ],
+     "tutor": {
+      "move": "SOFT-BOILED",
+      "like": "SOFT-BOILED"
+     },
+     "flag": "frlg_tutor_soft_boiled",
+     "done": [
+      "Is Soft-Boiled keeping your Pokemon healthy? I wish you the best of luck!"
+     ],
+     "fail": [
+      "Pond man: Hmm, Soft-Boiled is a rare move. Only a few Pokemon, like Chansey, can learn it."
      ]
     }
    },
@@ -17458,11 +17537,24 @@
       }
      },
      {
-      "text": "Clerk",
+      "text": "Counter man",
       "action": "EVENT",
+      "color": "GOLD",
       "event": {
        "lines": [
-        "Every Pokémon you catch gets an ID No. and an OT, its Original Trainer. That's you!"
+        "I work the counter here, so naturally my favourite move is Counter!",
+        "Hit back twice as hard as you got hit! I'll teach it to one of your Pokemon, one time only."
+       ],
+       "tutor": {
+        "move": "COUNTER",
+        "like": "COUNTER"
+       },
+       "flag": "frlg_tutor_counter",
+       "done": [
+        "Are you using that Counter I taught your Pokemon? Get hit, hit back harder!"
+       ],
+       "fail": [
+        "Counter man: Hmm, none of your Pokemon can learn Counter. Come back with one that can!"
        ]
       }
      },
@@ -17588,9 +17680,17 @@
      {
       "text": "Clerk",
       "action": "EVENT",
+      "color": "GOLD",
       "event": {
        "lines": [
-        "Please come again!"
+        "Welcome to the Wise Man Gifts floor! A Poke Doll is $1000. Here you go!"
+       ],
+       "pay": 1000,
+       "gift_item": {
+        "POKE_DOLL": 1
+       },
+       "fail": [
+        "A Poke Doll is $1000... You don't have enough money, I'm afraid."
        ]
       }
      }
@@ -21860,11 +21960,24 @@
     }
    },
    {
-    "text": "Boy",
+    "text": "Kangaskhan fan",
     "action": "EVENT",
+    "color": "GOLD",
     "event": {
      "lines": [
-      "Aww, I wish I was a Kangaskhan baby. I'd love to ride in a pouch!"
+      "Aww, I wish I were a baby Kangaskhan. I'd love to be a substitute and snuggle in that pouch...",
+      "Speaking of substitutes! I'll teach one of your Pokemon Substitute, just once. It makes a decoy of itself!"
+     ],
+     "tutor": {
+      "move": "SUBSTITUTE",
+      "like": "SUBSTITUTE"
+     },
+     "flag": "frlg_tutor_substitute",
+     "done": [
+      "Boy, what I'd give to crawl inside a Kangaskhan's pouch..."
+     ],
+     "fail": [
+      "Kangaskhan fan: Hmm, none of your Pokemon can learn Substitute. Come back with one that can!"
      ]
     }
    },
@@ -26474,11 +26587,24 @@
       }
      },
      {
-      "text": "Scientist",
+      "text": "Metronome scientist",
       "action": "EVENT",
+      "color": "GOLD",
       "event": {
        "lines": [
-        "Eevee can evolve into one of several kinds, depending on the stone you use."
+        "Tch-tch-tch! That's the sound of a Metronome. It tweaks a Pokemon's brain into using a move it doesn't even know!",
+        "Fascinating, isn't it? I'll teach it to one of your Pokemon, one time only. For science!"
+       ],
+       "tutor": {
+        "move": "METRONOME",
+        "like": "METRONOME"
+       },
+       "flag": "frlg_tutor_metronome",
+       "done": [
+        "Tch-tch-tch... Has Metronome surprised you yet? It surprises me every time!"
+       ],
+       "fail": [
+        "Metronome scientist: Hmm, none of your Pokemon can learn Metronome. Come back with one that can!"
        ]
       }
      }
@@ -29324,11 +29450,24 @@
      "GUARD SPEC.",
      "TM35",
      {
-      "text": "Cooltrainer",
+      "text": "Ace trainer",
       "action": "EVENT",
+      "color": "GOLD",
       "event": {
        "lines": [
-        "You made it through Victory Road! Be proud. The League is just ahead."
+        "You made it this far! Keep that drive going all the way to the Pokemon League!",
+        "Here, take a move that charges straight ahead: Double-Edge. I'll teach it to one of your Pokemon, just once."
+       ],
+       "tutor": {
+        "move": "DOUBLE-EDGE",
+        "like": "DOUBLE-EDGE"
+       },
+       "flag": "frlg_tutor_double_edge",
+       "done": [
+        "Take a run at the League and knock 'em out! Just watch the recoil."
+       ],
+       "fail": [
+        "Ace trainer: Hmm, none of your Pokemon can learn Double Edge. Come back with one that can!"
        ]
       }
      },

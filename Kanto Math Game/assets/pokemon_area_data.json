@@ -956,7 +956,7 @@
         { "text": "Gym", "action": "GYM" },
         { "text": "Confront Team Rocket", "action": "TRAVEL", "target_area": "SILPH_CITY", "flag_condition": "not silph_co_cleared", "condition": "tower_ghost_defeated" },
         { "text": "Fighting Dojo", "action": "NPC", "target": "dojo", "door": "dojo" },
-            {"text": "Visit Copycat", "action": "EVENT", "door": "copycat", "color": "GOLD", "event": {"requires": ["has_item:LOST_ITEM"], "fail": ["Copycat: ...Copycat copies everyone! But I lost my Clefairy doll...", "...Have you seen it?"], "lines": ["Copycat: My Clefairy doll! You found it!", "Thank you! Thank you! Here, I don't need my Magnet Train Pass anymore.", "It lets you ride the Magnet Train between Saffron and Goldenrod as much as you like!"], "take_item": {"LOST_ITEM": 1}, "gift_item": {"PASS": 1}, "flag": "got_magnet_pass"}, "flag_condition": "not got_magnet_pass"}
+            {"text": "Visit Copycat", "action": "EVENT", "door": "copycat", "color": "GOLD", "event": {"stages": [{"lines": ["Copycat: My Clefairy doll! You found it!", "Thank you! Thank you! Here, I don't need my Magnet Train Pass anymore.", "It lets you ride the Magnet Train between Saffron and Goldenrod as much as you like!"], "take_item": {"LOST_ITEM": 1}, "gift_item": {"PASS": 1}, "flag": "got_magnet_pass", "requires": ["has_item:LOST_ITEM"]}, {"lines": ["Copycat: ...Copycat copies everyone! But I lost my Clefairy doll...", "...Have you seen it?"], "requires": ["not:got_magnet_pass"]}, {"requires": ["has_item:POKE_DOLL"], "flag": "frlg_tutor_mimic", "lines": ["Copycat: Oh wow! A Poke Doll! For me? Thank you!", "You know what? I can teach the move Mimic. Copying is my favourite thing in the whole world!"], "tutor": {"move": "MIMIC", "like": "MIMIC", "take": {"POKE_DOLL": 1}}, "fail": ["Copycat: Oh, none of your Pokemon can learn Mimic! Hold on to that doll till one can, okay?"]}, {"lines": ["Copycat: Copycat copies everyone! ...Hmm? Do you have a Poke Doll? They sell them at the Celadon Dept. Store!"], "requires": ["not:frlg_tutor_mimic"]}, {"lines": ["Copycat: Is Mimic fun? Copying is the best! Copy, copy, copy!"]}]}}
         ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -2236,16 +2236,8 @@
           "color": "GOLD",
           "event": {
             "stages": [
-              {
-                "lines": [
-                  "Employee: You saved us! Silph's UP-GRADE, a part that makes Porygon even better, is made in Sinnoh now.",
-                  "You can buy one at the Veilstone Department Store there."
-                ],
-                "requires": [
-                  "silph_co_cleared",
-                  "visited_region:JOHTO"
-                ]
-              },
+              {"lines": ["Employee: You saved us! Silph's UP-GRADE, a part that makes Porygon even better, is made in Sinnoh now.", "You can buy one at the Veilstone Department Store there."], "requires": ["silph_co_cleared", "visited_region:JOHTO"], "flag": "silph_upgrade_hint"},
+              {"flag": "frlg_tutor_thunder_wave", "lines": ["Employee: Thunder Wave paralyses the target. A paralysed Pokemon may not be able to move at all!", "It's our company's favourite move. Let me teach it to one of your Pokemon. Just this once!"], "tutor": {"move": "THUNDER-WAVE", "like": "THUNDER-WAVE"}, "fail": ["Employee: Oh dear, none of your Pokemon can learn Thunder Wave."]},
               {
                 "lines": [
                   "Employee: You saved us! Team Rocket is gone.",

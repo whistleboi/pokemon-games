@@ -696,13 +696,35 @@
           "action": "EVENT",
           "color": "GOLD",
           "event": {
-            "lines": [
-              "Researcher: We're studying the volcano's heat... but two men in black chased us off!",
-              "They were digging near the summit, talking about a gem called the Ruby."
-            ],
-            "flag": "met_ember_researchers"
-          },
-          "flag_condition": "not met_ember_researchers"
+            "stages": [
+              {
+                "lines": [
+                  "Researcher: We're studying the volcano's heat... but two men in black chased us off!",
+                  "They were digging near the summit, talking about a gem called the Ruby."
+                ],
+                "flag": "met_ember_researchers"
+              },
+              {
+                "flag": "frlg_tutor_explosion",
+                "lines": [
+                  "Researcher: Using Explosion on a volcano? What a terrifying thrill!",
+                  "...Ahem. For research purposes, I can teach one of your Pokemon Explosion. Just the once!"
+                ],
+                "tutor": {
+                  "move": "EXPLOSION",
+                  "like": "EXPLOSION"
+                },
+                "fail": [
+                  "Researcher: None of your Pokemon can learn Explosion. Probably for the best, up here."
+                ]
+              },
+              {
+                "lines": [
+                  "Researcher: Please don't use that Explosion near the summit. The volcano is jumpy enough!"
+                ]
+              }
+            ]
+          }
         },
         {
           "text": "CHASE OFF TEAM ROCKET",

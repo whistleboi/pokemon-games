@@ -6765,6 +6765,36 @@
     },
     "HOENN_BATTLE_FRONTIER:Prize clerk": {
       "sheet": "em_45.png"
+    },
+    "PEWTER_CITY:Wrestling fan": {
+      "sheet": "fr_55.png"
+    },
+    "KANTO_ROUTE_4:Punching fan": {
+      "sheet": "fr_54.png"
+    },
+    "KANTO_ROUTE_4:Kicking fan": {
+      "sheet": "fr_54.png"
+    },
+    "VIRIDIAN_CITY:Sleepy man": {
+      "sheet": "fr_27.png"
+    },
+    "ROCK_TUNNEL:Tunnel hiker": {
+      "sheet": "fr_18.png"
+    },
+    "CELADON_CITY:Pond man": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_CITY:Counter man": {
+      "sheet": "fr_68.png"
+    },
+    "FUCHSIA_CITY:Kangaskhan fan": {
+      "sheet": "fr_20.png"
+    },
+    "CINNABAR_ISLAND:Metronome scientist": {
+      "sheet": "fr_52.png"
+    },
+    "VICTORY_ROAD:Ace trainer": {
+      "sheet": "fr_41.png"
     }
   },
   "townsperson": "NPC 17.png",

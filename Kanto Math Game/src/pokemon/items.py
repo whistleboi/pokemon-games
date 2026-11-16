@@ -119,6 +119,7 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "BLACK_BELT": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fighting-type moves hit harder."},   # (HGSS: Wesley, Lake of Rage)
         "CHOICE_SPECS": {"price": 4000, "text": "Held: in the games it boosts special moves but locks its holder into one move."},   # (HGSS: Lake of Rage; effect not built yet)
         "SOFT_SAND": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ground-type moves hit harder."},   # (HGSS: Santos, Blackthorn)
+        "POKE_DOLL": {"price": 1000, "text": "A cute doll. Saffron's Copycat would love one: she teaches Mimic for it. (FireRed: Celadon Dept. Store 4F)"},
         "SMOKE_BALL": {"price": 200, "text": "Held: in the games its holder can always run from a wild Pokemon."},   # (HGSS: Doris the Dodrio; effect not built yet)
         "SHARP_BEAK": {"price": 1000, "text": "Give it to a Pokemon to hold: its Flying-type moves hit harder."},   # (HGSS: Monica, Route 40)
         "MAGNET": {"price": 1000, "text": "Give it to a Pokemon to hold: its Electric-type moves hit harder."},   # (HGSS: Sunny, Route 37)
