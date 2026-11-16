@@ -25,7 +25,3 @@ Kanto Math Game/dev/builders/bulbapedia_cache/
 
 # builders' check pictures (rebuilt on every run)
 Kanto Math Game/dev/builders/out/
-
-# the music library's audio (about 1 GB, rebuilt by dev/builders/build_music_library.py); its manifest stays in git
-Kanto Math Game/assets/music/library/*
-!Kanto Math Game/assets/music/library/manifest.json

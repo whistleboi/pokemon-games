@@ -106,7 +106,6 @@ class MusicManager:
         self.path = None      # the track playing
         self.jingle_channel = None  # a fanfare playing over the paused music
         self.pending = None   # what to play once the victory jingle ends
-        self.listening = False  # the Options jukebox is playing a library track (see listen)
 
     def tracks(self, kind, region=None):
         files = getattr(self.game.assets, "sound_map", {})
@@ -169,29 +168,6 @@ class MusicManager:
             pygame.mixer.music.set_endevent(self._end_event())
             self.kind = kind
             self.path = path
-            self.listening = False
-        except Exception as e:
-            print(f"Music: couldn't play {path}: {e}")
-
-    def listen(self, path):
-        """The Options jukebox: play this music-library track on a loop. None: stop it and go back
-        to the music for what's on screen (the kind that was playing before)."""
-        if not pygame.mixer.get_init():
-            return
-        if path is None:
-            if self.listening:
-                self.listening = False
-                self.path = None
-                if self.kind:
-                    self.play(self.kind, force=True)
-                else:
-                    pygame.mixer.music.stop()
-            return
-        try:
-            pygame.mixer.music.load(path)
-            pygame.mixer.music.set_volume(music_volume())
-            pygame.mixer.music.play(-1)
-            self.listening, self.path = True, path
         except Exception as e:
             print(f"Music: couldn't play {path}: {e}")
 
