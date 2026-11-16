@@ -1244,7 +1244,7 @@ st.dialogue_box.visible = False
 st._use_figure(_el)
 said = _play(st, 300)
 check(story.inventory.get("MASTER_BALL") == 1 and "<WildBattleState>" in said,
-      "The hideout: the leader's room's Poke Balls: the Master Ball, and an Electrode in disguise")
+      f"The hideout: the leader's room's Poke Balls: the Master Ball, and an Electrode in disguise {story.inventory.get("MASTER_BALL")} {str(said)[-160:]}")
 g.change_state(st)
 # the sub room: five Grunts rush you (ORAS's horde battle), one battle with their five Poochyena
 st = open_map("HOENN_TEAM_HIDEOUT", "LILYCOVE_CITY")
@@ -2500,6 +2500,18 @@ if _spot:
     st.run.jump_floor(2, (_hx + 1, _hy)); _calm(st); st.anim = 0
     st.step(-1, 0)
     _play(st, 200)
+# (Jordan 11-15: soft-locked on the S.S. Tidal - the north cabins' door pads lay on the corridor row past Peeko and Mr. Briney.
+#  They're in the cabin wall now: walk the corridor freely, walk into a door to go in.)
+st = open_map("HOENN_SS_TIDAL", "SLATEPORT_CITY")
+st.run.jump_floor(0, (3, 3)); _calm(st); st.anim = 0
+_corr = []
+for _ in range(11):
+    st.anim = 0; st.step(1, 0); _play(st, 20)
+    _corr.append((st.run.index, tuple(st.run.player)))
+_walk_ok = all(i == 0 for i, _p in _corr) and _corr[-1][1] == (14, 3)
+st.run.jump_floor(0, (7, 3)); _calm(st); st.anim = 0
+st.step(0, 1); _play(st, 60)
+check(_walk_ok and st.run.index == 1, f"S.S. Tidal: the corridor walks past Peeko and Mr. Briney without dropping into a cabin; walk into a door to enter ({_corr[-1]}, then floor {st.run.index})")
 _si = _sp25["HOENN_SOUTHERN_ISLAND"]
 _ss = next(o for o in _si["route_menu"] if o.get("text") == "Sailor")
 from src.pokemon import items as _items25
