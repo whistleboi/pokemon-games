@@ -6585,6 +6585,63 @@
     },
     "ROCKET_HQ:Beaten grunt": {
       "sheet": "hg_rocketm.png"
+    },
+    "JOHTO_ROUTE_44:RED FLUTE": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_44:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_44:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:TM64": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:NEVER MELT ICE": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:HM WATERFALL": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:HM WATERFALL ": {
+      "item": "POKE_BALL"
+    },
+    "BLACKTHORN_CITY:Woman": {
+      "sheet": "hg_gswoman3.png"
+    },
+    "BLACKTHORN_CITY:Youngster": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "BLACKTHORN_CITY:Girl": {
+      "sheet": "hg_gswoman3.png"
+    },
+    "BLACKTHORN_CITY:Gym guide": {
+      "sheet": "hg_gsman3.png"
+    },
+    "BLACKTHORN_CITY:Den guard": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "BLACKTHORN_CITY:Den guard ": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "BLACKTHORN_CITY:Santos": {
+      "sheet": "hg_gsboy3.png"
     }
   },
   "townsperson": "NPC 17.png",

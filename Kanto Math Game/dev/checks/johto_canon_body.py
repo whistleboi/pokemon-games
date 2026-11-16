@@ -626,5 +626,17 @@ if getattr(_tr, "run", None):
         check(False, f"Lance and Dragonite in the transmitter room ({sorted(_ff)})")
 for _k in ("hq_electrode_1", "hq_electrode_2"):
     story.story_flags.pop(_k, None)
+# ---- N12: Route 44, the Ice Path, Blackthorn (HGSS)
+_ip = [q for f in _tm["ICE_PATH"]["floors"] for p in f.get("people", []) if isinstance(p, dict) for q in (p.get("any") or [p])]
+_hmw = [o for o in _area["ICE_PATH"]["route_menu"] if (o.get("event") or {}).get("gift_item", {}).get("HM_WATERFALL")]
+check(_hmw and _hms.HM_BY_BADGE["JOHTO"].get("RISING") is None and _hms.USE_BADGE["JOHTO"].get("HM_WATERFALL") == "RISING",
+      "Ice Path: HM Waterfall lies in an icy corner (usable with the Rising Badge, no longer given by it)")
+_bt = {p.get("text"): p for p in _ppl("BLACKTHORN_CITY")}
+check(_bt.get("Santos", {}).get("condition") == "weekday:sat" and (_bt["Santos"].get("event") or {}).get("gift_item", {}).get("SOFT_SAND"),
+      "Blackthorn: Santos, on Saturdays, gives Soft Sand")
+_bo = _area["BLACKTHORN_CITY"]["explore_options"]
+check(any((o.get("event") or {}).get("trade", {}).get("give") == 85 for o in _bo) and {"dratinihouse", "dodriotrade", "movehouse"} <= set(_tm["BLACKTHORN_CITY"].get("rooms", {})),
+      "...the Dodrio-for-Dragonair trade (Doris holds a Smoke Ball), the Dratini house and the move house are open")
+check(_it.HELD_BOOSTS.get("SOFT_SAND") == "GROUND", "Soft Sand powers up Ground-type moves")
 if fails:
     print("FAILS:", len(fails))

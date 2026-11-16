@@ -1321,7 +1321,8 @@ _hqt = [(i, m.x, m.y) for i, f in enumerate(_hq.run.floors) for m in f.movers if
 check(len(_hqt) == 11 and len(set(_hqt)) == 11,   # (11-15: SoulSilver's own grunts and scientists joined ours, each on a spot of its own)
       f"Rocket Hideout: a grunt on each floor on a spot of their own (three share one name), Ariana on B2F, Petrel on B3F {_hqt}")
 _r44 = kanto("JOHTO_ROUTE_44", came="MAHOGANY_TOWN")
-check(len({(m.x, m.y) for m in _r44.run.floor.movers if m.kind == "trainer"}) == 7, "Route 44: seven trainers, each on a spot of the game's")
+_r44t = [(m.x, m.y) for m in _r44.run.floor.movers if m.kind == "trainer"]
+check(len(_r44t) == len(set(_r44t)) == 9, f"Route 44: nine trainers (SoulSilver's Ace Trainers Cybil and Allen joined, 11-15), each on a spot of the game's {len(_r44t)}")
 story.defeated_trainers.pop("JOHTO_ROUTE_43", None)
 _r43 = kanto("JOHTO_ROUTE_43", came="MAHOGANY_TOWN")
 check({(m.x, m.y) for m in _r43.run.floor.movers if m.kind == "trainer"} >= {(18, 8), (25, 15), (8, 17), (19, 26), (14, 31), (14, 53)}, "Route 43: the game's six trainers on the game's six spots")

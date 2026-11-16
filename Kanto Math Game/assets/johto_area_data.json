@@ -144,6 +144,12 @@
     "JOHTO_ROUTE_42_MORNING_PERCENTAGES": {"179": 29, "21": 25, "56": 11, "23": 11, "180": 7, "19": 7, "20": 4, "22": 2, "24": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_42_NIGHT_PERCENTAGES": {"179": 29, "41": 25, "56": 11, "19": 11, "180": 7, "20": 7, "42": 6, "183": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_43_MORNING_PERCENTAGES": {"180": 21, "203": 22, "17": 19, "161": 11, "179": 7, "83": 7, "162": 6, "48": 4, "20": 2, "2001": 1},
+    "JOHTO_ICE_PATH_DAY_PERCENTAGES": {"220": 40, "42": 30, "225": 10, "124": 10, "41": 10},
+    "JOHTO_ICE_PATH_MORNING_PERCENTAGES": {"220": 40, "42": 30, "41": 15, "225": 10, "124": 5},
+    "JOHTO_ICE_PATH_NIGHT_PERCENTAGES": {"220": 37, "42": 28, "41": 14, "225": 9, "215": 7, "124": 5},
+    "JOHTO_ROUTE_44_DAY_PERCENTAGES": {"70": 35, "114": 30, "69": 20, "108": 15},
+    "JOHTO_ROUTE_44_MORNING_PERCENTAGES": {"70": 35, "114": 30, "69": 20, "108": 15},
+    "JOHTO_ROUTE_44_NIGHT_PERCENTAGES": {"70": 29, "114": 25, "69": 17, "108": 13, "60": 12, "61": 4},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -1238,26 +1244,55 @@
         },
 
         "BLACKTHORN_CITY": {
-        "area_type": "town",
-        "route_name": "Blackthorn City",
-        "region": "JOHTO",
-        "backgrounds": {
-            "main": "blackthorn_city.png",
-            "pokecenter": "blackthorn_center.png",
-            "pokemart": "blackthorn_mart.png",
-            "gym": "battle_gym_blackthorn.png"
-            },
-        "has_gym": true,
-        "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}}},
-        "travel_options": [
-            { "text": "Route 45", "target_area": "JOHTO_ROUTE_45", "color": "RED"},
-            { "text": "Ice Path", "target_area": "ICE_PATH", "color": "RED"},
-            { "text": "Dragon's Den", "target_area": "DRAGONS_DEN", "color": "RED", "item_condition": "HM_SURF" }
-        ],
-        "explore_options": [
-            { "text": "Heal", "action": "HEAL" },
-            { "text": "Shop", "action": "SHOP" },
-            { "text": "Gym", "action": "GYM" } ]
+
+            "area_type": "town",
+
+            "route_name": "Blackthorn City",
+
+            "region": "JOHTO",
+
+            "backgrounds": {"main": "blackthorn_city.png", "pokecenter": "blackthorn_center.png", "pokemart": "blackthorn_mart.png", "gym": "battle_gym_blackthorn.png"},
+
+            "has_gym": true,
+
+            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}, {"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}}},
+
+            "travel_options": [
+
+                {"text": "Route 45", "target_area": "JOHTO_ROUTE_45", "color": "RED"},
+
+                {"text": "Ice Path", "target_area": "ICE_PATH", "color": "RED"},
+
+                {"text": "Dragon's Den", "target_area": "DRAGONS_DEN", "color": "RED", "item_condition": "HM_SURF"}
+
+            ],
+
+            "explore_options": [
+
+                {"text": "Heal", "action": "HEAL"},
+
+                {"text": "Shop", "action": "SHOP"},
+
+                {"text": "Gym", "action": "GYM"},
+
+                {"action": "EVENT", "event": {"lines": ["A clan of Trainers who command Dragon-type Pokemon lives right here in Blackthorn.", "That's why so many Dragon Tamers come from this town."]}, "text": "Old woman", "door": "dratinihouse"},
+
+                {"action": "EVENT", "event": {"lines": ["DRATINI: Draa!"]}, "text": "Dratini", "door": "dratinihouse"},
+
+                {"text": "Trader", "action": "EVENT", "door": "dodriotrade", "color": "GOLD", "event": {"lines": ["Dragonair is so cute, but I don't have one! Will you trade yours for my Dodrio, Doris? She's holding something nice."], "trade": {"want": 148, "give": 85, "item": "SMOKE_BALL"}, "flag": "blackthorn_dodrio_trade", "done": ["Your Dragonair's so cute! How's Doris doing?"]}},
+
+                {"action": "EVENT", "event": {"lines": ["Um... who did you say I was again? ...Oh, right! I'm the Move Deleter!", "...Hm? I seem to have forgotten how to do it. Come back another time!"]}, "text": "Move Deleter", "door": "movehouse"},
+
+                {"action": "EVENT", "event": {"lines": ["That's it! A Heart Scale! ...Hm, not today, I'm afraid. Come back later."]}, "text": "Move Reminder", "door": "movehouse"},
+
+                {"action": "EVENT", "event": {"lines": ["Hohoho... They call me Grandma Wilma. I sense a little talent as a Dragon Tamer in you."]}, "text": "Grandma Wilma", "door": "movehouse"},
+
+                {"action": "EVENT", "event": {"lines": ["Your quest for power has brought you here... Come back when you're ready for the ultimate moves."]}, "text": "Old man", "door": "movehouse"}
+
+            ],
+
+            "trainer_pool": []
+
         },
 
         "MT_SILVER_CITY": {
@@ -2461,28 +2496,69 @@
         },
 
         "JOHTO_ROUTE_44": {
+
             "region": "JOHTO",
+
             "area_type": "wild_route",
+
             "route_name": "Route 44",
+
             "battle_type": "grass",
-            "wild_pool_percentages": "JOHTO_ROUTE_44_PERCENTAGES",
+
+            "wild_pool_percentages": "JOHTO_ROUTE_44_DAY_PERCENTAGES",
+
             "min_rounds": 2,
+
             "trainer_pool": [
-                { "name": "Psychic Phil", "class": "PSYCHIC", "sprite": "psychic.png", "team": [64, 64], "rewards": { "balls": 2 } },
-                { "name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [60, 61, 60], "rewards": { "balls": 2 } },
-                { "name": "Cooltrainer Allen", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [147, 148, 6], "rewards": { "balls": 2 } },
-                { "name": "Cooltrainer Cybil", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [124, 38, 130], "rewards": { "balls": 2 } },
-                { "name": "Fisherman Edgar", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [223, 223], "rewards": { "balls": 2 } },
-                { "name": "Pokemaniac Zach", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [111], "rewards": { "balls": 2 } },
-                { "name": "Bird Keeper Vance", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [163, 17], "rewards": { "balls": 2 } }
+
+                {"name": "Psychic Phil", "class": "PSYCHIC", "sprite": "psychic.png", "team": [177, 64], "rewards": {"balls": 2}},
+
+                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}},
+
+                {"name": "Cooltrainer Allen", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [147, 148, 6], "rewards": {"balls": 2}},
+
+                {"name": "Cooltrainer Cybil", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [124, 38, 130], "rewards": {"balls": 2}},
+
+                {"name": "Fisherman Edgar", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [223, 223], "rewards": {"balls": 2}},
+
+                {"name": "Pokemaniac Zach", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [111], "rewards": {"balls": 2}},
+
+                {"name": "Bird Keeper Vance", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [163, 17], "rewards": {"balls": 2}},
+
+                {"name": "Ace Trainer Cybil", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [179, 182], "rewards": {"balls": 2}},
+
+                {"name": "Ace Trainer Allen", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [5, 81], "rewards": {"balls": 2}}
+
             ],
+
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+
                 {"text": "MAHOGANY TOWN", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
-                {"text": "Ice Path","action": "EXIT", "target_area": "ICE_PATH", "condition": "can_exit", "color": "RED"}
-            ] 
+
+                {"text": "Ice Path", "action": "EXIT", "target_area": "ICE_PATH", "condition": "can_exit", "color": "RED"},
+
+                {"text": "RED FLUTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_red_flute_johto_route_44_r44_20_17", "event": {"lines": ["A Red Flute, lying in the grass."], "gift_item": {"RED_FLUTE": 1}, "flag": "got_red_flute_johto_route_44_r44_20_17"}},
+
+                {"text": "MAX REPEL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_repel_johto_route_44_r44_45_13", "event": {"lines": ["A Max Repel, dropped by the path."], "gift_item": {"MAX_REPEL": 1}, "flag": "got_max_repel_johto_route_44_r44_45_13"}},
+
+                {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_johto_route_44_r44_63_2", "event": {"lines": ["A Max Revive, tucked behind a tree."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_johto_route_44_r44_63_2"}}
+
+            ],
+
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+
+            "morning_pool_percentages": "JOHTO_ROUTE_44_MORNING_PERCENTAGES",
+
+            "day_pool_percentages": "JOHTO_ROUTE_44_DAY_PERCENTAGES",
+
+            "night_pool_percentages": "JOHTO_ROUTE_44_NIGHT_PERCENTAGES"
+
         },
         
         "JOHTO_ROUTE_45": {
@@ -3126,28 +3202,71 @@
         },
         
         "ICE_PATH": {
-            "region": "JOHTO", 
+        
+            "region": "JOHTO",
+        
             "area_type": "dungeon",
+        
             "battle_type": "cave",
-            "wild_pool_percentages": "JOHTO_ICE_PATH_PERCENTAGES",
+        
+            "wild_pool_percentages": "JOHTO_ICE_PATH_DAY_PERCENTAGES",
+        
             "min_rounds": 2,
-            "backgrounds": {
-                "battle": "battle_ice_path.png"
-            },
+        
+            "backgrounds": {"battle": "battle_ice_path.png"},
+        
             "trainer_pool": [
-                { "name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "team": [220, 220, 221], "rewards": { "balls": 2 } },
-                { "name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", "team": [124], "rewards": { "balls": 2 } },
-                { "name": "Skier Jill", "class": "LASS", "sprite": "lass.png", "team": [124, 124], "rewards": { "balls": 2 } },
-                { "name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "team": [220], "rewards": { "balls": 2 } }
+        
+                {"name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "team": [220, 220, 221], "rewards": {"balls": 2}},
+        
+                {"name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", "team": [124], "rewards": {"balls": 2}},
+        
+                {"name": "Skier Jill", "class": "LASS", "sprite": "lass.png", "team": [124, 124], "rewards": {"balls": 2}},
+        
+                {"name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "team": [220], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GRAY" },
+        
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GRAY"},
+        
                 {"text": "ROUTE 44", "action": "EXIT", "target_area": "JOHTO_ROUTE_44", "condition": "can_exit", "color": "RED"},
-                {"text": "BLACKTHORN_CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"}
+        
+                {"text": "BLACKTHORN_CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
+        
+                {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_ice_path_d39r0101_47_10", "event": {"lines": ["An Ultra Ball, lying among the rocks."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_ice_path_d39r0101_47_10"}},
+        
+                {"text": "HM WATERFALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_waterfall_ice_path_d39r0101_53_15", "event": {"lines": ["HM Waterfall, tucked away in a dark, icy corner!"], "gift_item": {"HM_WATERFALL": 1}, "flag": "got_hm_waterfall_ice_path_d39r0101_53_15"}},
+        
+                {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_ice_path_d39r0101_53_35", "event": {"lines": ["A Protein, beside the cave wall."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_ice_path_d39r0101_53_35"}},
+        
+                {"text": "TM64", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm64_ice_path_d39r0102_13_48", "event": {"lines": ["A TM (Avalanche), left behind by a hiker."], "gift_item": {"TM64": 1}, "flag": "got_tm64_ice_path_d39r0102_13_48"}},
+        
+                {"text": "NEVER MELT ICE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_never_melt_ice_ice_path_d39r0103_57_24", "event": {"lines": ["A Never Melt Ice, lying among the rocks."], "gift_item": {"NEVER_MELT_ICE": 1}, "flag": "got_never_melt_ice_ice_path_d39r0103_57_24"}},
+        
+                {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pp_up_ice_path_d39r0103_15_15", "event": {"lines": ["A Pp Up, in a dark corner."], "gift_item": {"PP_UP": 1}, "flag": "got_pp_up_ice_path_d39r0103_15_15"}},
+        
+                {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_ice_path_d39r0103_5_12", "event": {"lines": ["A Full Heal, beside the cave wall."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_ice_path_d39r0103_5_12"}},
+        
+                {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_potion_ice_path_d39r0104_12_13", "event": {"lines": ["A Max Potion, left behind by a hiker."], "gift_item": {"MAX_POTION": 1}, "flag": "got_max_potion_ice_path_d39r0104_12_13"}}
+        
             ],
-            "next_area": "BLACKTHORN_CITY"
+        
+            "next_area": "BLACKTHORN_CITY",
+        
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+        
+            "morning_pool_percentages": "JOHTO_ICE_PATH_MORNING_PERCENTAGES",
+        
+            "day_pool_percentages": "JOHTO_ICE_PATH_DAY_PERCENTAGES",
+        
+            "night_pool_percentages": "JOHTO_ICE_PATH_NIGHT_PERCENTAGES"
+        
         },
         
         "WHIRL_ISLANDS": {

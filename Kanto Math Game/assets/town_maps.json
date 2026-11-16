@@ -68886,7 +68886,7 @@
   "art": [
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccrrcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccrrcccccccccccTTTTTT.......................................TTTTTTTTcccccccccccccccccccccccc",
+   "ccccccrrcccccccccccTTTTTT......................................NTTTTTTTTcccccccccccccccccccccccc",
    "cccccccccccccccccccTTTTTT..................................X....TTTTTTTTcccccccccccccccccccccccc",
    "cccccccccccccTTTTTTTTTTTT..ccccccccccTTTTTTooooooooX............TTTTTTTTccccccccrrcccccccccccccc",
    "cccccccccccccTTTTTTTT......ccccccccccTTTTTTooooooooooooooooooo..TTTTTTTTccccccccrrcccccccccccccc",
@@ -68897,19 +68897,19 @@
    "cccccccccc...........TTTTccccrrccccccccccccTTTTTToooooooooooooTT..TTTTTTccc..............=..cccc",
    "cccccccccc.ffT.......TTccccccrrccccccccccccTTTTTToooooooooooooTT......TTccc..cccc.....(...!.cccc",
    "TTTTTTTTTT...f...TTTTTTccccccccccccccccccccTTTTTT\"\"\"ooooooooooTT..TTTTTTccc..cccc.....(.....cccc",
-   "TTTTTTTTTT.......TTTTTTccccccccccccoooo\"\"\"\"\"\"\"\"\"\"\"\"\"ooooooooo.....TTTTTTccc..cccc....Xc_____cccc",
+   "TTTTTTTTTT.......TTTTTTccccccccccccoooo\"\"\"\"\"\"N\"\"\"\"\"\"ooooooooo.....TTTTTTccc..cccc....Xc_____cccc",
    "TTTTTTTTTT.......TTTTTTccccccccccccoooo\"\"\"\"\"\"\"\"\"\"\"\"\"oooooooTT...TTTTTTTTccc.................cccc",
    "<=============...TTTTccccccccccccccoooo\"\"\"\"\"\"\"\"\"\"\"\"\"oooooooTT...TTTTTTTTccc.................cccc",
    "<==============..TTTTcrrcccccccccccooooTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTcccccc..cccccccccccccccc",
-   "<=============X==....crrcccccccooooooooTTTTTTTTTTTTTTTTTTTTTT.....TTTTTTcccccc..cccccccccccccccc",
+   "<=============X==...NcrrcccccccooooooooTTTTTTTTTTTTTTTTTTTTTT.....TTTTTTcccccc..cccccccccccccccc",
    "ccccc===!=========...ccccccccccooooooooTTTTTTTTTTTTTTTTTTTTTT.....TTTTTTcccccc..cccccccccccccccc",
    "ccccc=============...ccccccccccooooooooTTTTTTTTTTTTTTTTTTTTTT.................==....cccccccccccc",
    "ccccc=============...ccccccccccooooooooTTTTTTTTTTTTTTTTTTTTTT..===================..cccccccccccc",
    "ccccc..........======......ooooooooooooTTTTTTTTTTTTTTTTTTTTTT.=====================.cccccccccccc",
    "cccccooooooooo.=======...f.ooooooooooooTTTTTTTTTTTTTTTTTTTTTT.====================..cccccccccccc",
    "cccccooooooooo..======.f.f.ooooooooooooTTTTTTTTTTTTTTTTTTTTTT.===...................cccccccccccc",
-   "cccccooooooooo.....===.....,,,,,X,,,,,,TTTTTTTTTTTTTTTTTTTTTT.===.cccccccccccccccccccccccccccccc",
-   "cccccooooooooooooo.=======.,,,,,,,,,,,,,====================X====.cccccccccccccccccccccccccccccc",
+   "cccccooooooooo.....===.....,,,,,X,,,,,,TTTTTTTTTTTTTTTTTTTTTTX===.cccccccccccccccccccccccccccccc",
+   "cccccooooooooooooo.=======.,,,,,,,,,,,,,=======X============X====.cccccccccccccccccccccccccccccc",
    "cccccccccooooooooo.========,,,,,,,,,,,,,========X================.cccccccccccccccccccccccccccccc",
    "cccccccccooooooooo..======.,,,,,,,,,,,,,========================..cccccccccccccccrrccccccccccccc",
    "cccccccccooooooooo.........oooooooooooo...........................cccccccccccccccrrccccccccccccc",
@@ -68922,7 +68922,18 @@
    "^": "ICE_PATH"
   },
   "buildings": {},
-  "roofs": {},
+  "roofs": {
+   "_picture": {
+    "f": "ss_ground/R44.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  },
   "signs": [
    [
     "Route 44",
@@ -68940,119 +68951,32 @@
    "Psychic Phil",
    "Fisherman Edgar",
    "Cooltrainer Cybil",
-   "Cooltrainer Allen"
+   "Cooltrainer Allen",
+   "Ace Trainer Allen",
+   "Ace Trainer Cybil"
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     37,
-     3,
-     6,
-     1
+    "kind": "picture",
+    "f": "ss_top/R44.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     23,
-     7,
-     2,
-     1
+    "size": [
+     96,
+     32
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     62,
-     7,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     9,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     43,
-     9,
-     6,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     13,
-     10,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     17,
-     11,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     66,
-     11,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     59,
-     13,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     64,
-     13,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     39,
-     15,
-     20,
-     1
-    ],
-    "of": "tree"
+    "px": 32
    }
+  ],
+  "hidden": {
+   "69,11": "ELIXIR"
+  },
+  "people": [
+   "MAX REVIVE",
+   "MAX REPEL",
+   "RED FLUTE"
   ]
  },
  "ROCKET_HQ": {
@@ -70666,12 +70590,12 @@
      "cccccccc%%%%%%%%%%%%ccc......................c..1.cc",
      "cccccccc%%%%%%%%%%%%%cc.....cccccccccccccc..cc....cc",
      "cccccccc%%%%%%%%%%%%%%cc..ccc%c%%%%%%%%cc.........cc",
-     "cccccccc%%%c%%%%%%%%%%.....cc%%%%%%%%%%..c........cc",
+     "cccccccc%%%c%%%%%%%%%%.....cc%%%%%%%%%%.Nc........cc",
      "cccccccc%%%%%%%%%%%%%%......c%%%%%%%%%%ccc........cc",
      "cccccccc%%%%%c%%%%%%%%.......%%%%%%%c%%ccc.......ccc",
      "cccccccc%%%%%%%%%c%%%%.......c%%%c%%%%%ccccccccccccc",
      "cccccccc%%%%c%%%%%%%%%ccccccccccccccccccccc......ccc",
-     "cccccccc%%%%%%%%%%%%%%cccccc............ccc......ccc",
+     "cccccccc%%%%%%%%%%%%%%cccccc............ccc...N..ccc",
      "cccccccc%%%%%%%%%%%%%ccccccc............ccc......ccc",
      "cccccccc%%%%%%%%c%%%%%cccccc............ccc......ccc",
      "cccccccc%%c%%%%%%%%%%%cccccc............ccccc..ccccc",
@@ -70691,7 +70615,7 @@
      "ccccccccccccccccccccccccc..cccccccccccccc%%%%%%%%%cc",
      "ccccccccccccccc%%%%%%%%......cccccccccccccccc%%%%%cc",
      "ccccccccccccccc%%%%%%%%......cccccccccccccccc%%%%%cc",
-     "ccccccccccccccc%%%%%%%%....ccccccccccccccccccc.c.ccc",
+     "ccccccccccccccc%%%%%%%%....cccccccccccccccccccNc.ccc",
      "ccccccccccccccc%%%%%%%%...ccccccccccccccccccccc...cc",
      "ccccccccccccccc%%%%cccccccccccccccccccccccccccc...cc",
      "ccccccccccccccc%%%%cccccccccccccccccccccccccccc...cc",
@@ -70734,7 +70658,43 @@
       5,
       40
      ]
-    }
+    },
+    "hidden": {
+     "10,15": "MAX_POTION",
+     "41,2": "ICE_HEAL"
+    },
+    "people": [
+     "ULTRA BALL",
+     "HM WATERFALL",
+     "PROTEIN"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D39R0101.png",
+      "at": [
+       7,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D39R0101.png",
+      "at": [
+       7,
+       3
+      ],
+      "size": [
+       52,
+       58
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -70784,7 +70744,7 @@
      "ccccccccccc.%%%%%%c%.ccccccccc",
      "ccccccccccc.%%%%c%%%.ccccccccc",
      "ccccccccccc.%%c%%%%%.ccccccccc",
-     "cccccccccccc.cc......ccccccccc",
+     "ccccccccccccNcc......ccccccccc",
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc"
     ],
@@ -70879,6 +70839,39 @@
        21
       ]
      ]
+    ],
+    "hidden": {
+     "14,45": "REVIVE"
+    },
+    "people": [
+     "TM64"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D39R0102.png",
+      "at": [
+       1,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D39R0102.png",
+      "at": [
+       1,
+       2
+      ],
+      "size": [
+       30,
+       49
+      ],
+      "px": 32
+     }
     ]
    },
    {
@@ -70894,10 +70887,10 @@
      "ccc.%%%%%%%%%%%%%%%%%...cccccccccccccccc....c..........ccc",
      "cc%%%%%%%%%%%%%%.%%%%..1.ccccccccccccccc....c..........ccc",
      "ccc%%%%%%%%%%%%%c%%%%c.1.cccccccccccccc.....c....ccc..cccc",
-     "cc.%%%%%%%%%%%%%%%%%c....cccccccccccccc....cc....c......cc",
+     "ccN%%%%%%%%%%%%%%%%%c....cccccccccccccc....cc....c......cc",
      "ccc%%%%%%.%%%%%%%%%%%%%%%%ccccccccccccc....cc....c......cc",
      "cc%%%%%%%c%......%%%%%%%%%ccccccccccccc.....c....c......cc",
-     "cc%%%%%%%%.......%%%%%%%%%ccccccccccccc%%%%.c....c%%%%%%cc",
+     "cc%%%%%%%%..N....%%%%%%%%%ccccccccccccc%%%%.c....c%%%%%%cc",
      "cc%%%%%%%%.c....c%%%%%%%%%ccccccccccccc%%%%.c....c%%%%%%cc",
      "cc%%%%%%%%...1..c%%%%%%%%%ccccccccccccc%%%%.cc..cc%%%%%%cc",
      "cc%%%%%%%%.....c%%%%%%%%%%ccccccccccccc%%%%.......%%%%%%cc",
@@ -70906,7 +70899,7 @@
      "ccc.%%%%.%%%%%%%%%%%%%%%%%ccccccccccccc.1.%%%%%%%%%%%%%%cc",
      "cc..%%%%c%%%%%%%c.%%%%....ccccccccccccc.1.%%%%%%%%%%%%%%cc",
      "ccc...%%%%%%%%%%%c%%%%..ccccccccccccccc...%%%%%%%%%%%%c%cc",
-     "cccc..%%%%%%%%%%%%%%%%..ccccccccccccccc%%%%%%%%%%%%%%%.ccc",
+     "cccc..%%%%%%%%%%%%%%%%..ccccccccccccccc%%%%%%%%%%%%%%%Nccc",
      "ccccc.%%%%%%%%%%%%%%%%c.ccccccccccccccc%%%%%%%%%%%%c%%cccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
@@ -70944,7 +70937,42 @@
       26,
       38
      ]
-    }
+    },
+    "hidden": {
+     "23,25": "CARBOS"
+    },
+    "people": [
+     "FULL HEAL",
+     "PP UP",
+     "NEVER MELT ICE"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D39R0103.png",
+      "at": [
+       3,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D39R0103.png",
+      "at": [
+       3,
+       1
+      ],
+      "size": [
+       58,
+       27
+      ],
+      "px": 32
+     }
+    ]
    },
    {
     "art": [
@@ -70959,7 +70987,7 @@
      "ccc.1.....c..cccccc..c....cc",
      "cc..1....c...cc.)......1..cc",
      "cc.......0......)......1..cc",
-     "cc......c...c...).........cc",
+     "cc......c..Nc...).........cc",
      "ccccc.ccc.cc..c.).ccccc...cc",
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc"
@@ -70987,7 +71015,37 @@
       47,
       4
      ]
-    }
+    },
+    "people": [
+     "MAX POTION"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/D39R0104.png",
+      "at": [
+       1,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D39R0104.png",
+      "at": [
+       1,
+       2
+      ],
+      "size": [
+       28,
+       15
+      ],
+      "px": 32
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -70996,7 +71054,16 @@
    "B2F",
    "B3F"
   ],
-  "figure_floors": {},
+  "figure_floors": {
+   "ULTRA BALL": 0,
+   "HM WATERFALL": 0,
+   "PROTEIN": 0,
+   "TM64": 1,
+   "NEVER MELT ICE": 2,
+   "PP UP": 2,
+   "FULL HEAL": 2,
+   "MAX POTION": 3
+  },
   "descend": true
  },
  "BLACKTHORN_CITY": {
@@ -71006,7 +71073,7 @@
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccc^cccccrrcccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccc...ccccrrcccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccc.NNccccrrcccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccc!..cccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccc...cccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccoooooccccccccccccccccccccccccccccccc",
@@ -71025,19 +71092,19 @@
    "cccccccccccccccccccoooooo~YYYYYYoooooocccccccccccccccc.....ccccc",
    "cccccccccccccccccccoooooo~YYYYYYoooooocccccccccccccccc__.__ccccc",
    "ccccccccccccccccccc......~YYDYYY......ccccccccccccccc......ccccc",
-   "ccccccccccccccccccc.....................ccccccccccccc......ccccc",
+   "ccccccccccccccccccc..........N..........ccccccccccccc......ccccc",
    "ccccccccccccccccccc.......!.............ccccccccccccc___.__ccccc",
    "ccccccccccccccccccc.....................ccccccccccccf......ccccc",
-   "ccccccccccccccccccc....................fcccccccccccc.......ccccc",
+   "ccccccccccccccccccc..N.................fcccccccccccc.......ccccc",
    "ccccccccccccccccccc..........cccccccc...cccccccccccc.......ccccc",
-   "ccccccccccccccccccc..........cccccccc...ccccccccccrr.......ccccc",
+   "ccccccccccccccccccc..........cccccccc...ccccccccccrr....N..ccccc",
    "ccccccccccccccccccc___.._____cccccccc___ccccccccccrr...ccccccccc",
    "ccccccccccccccccccc==========cccccccc===cccccccccc.....ccccccccc",
    "ccccccccccccccccf============cccccccc===cccccccccc.....ccccccccc",
    "cccccccccccccccc.============cccccccc===ccrrcccccc__.__ccccccccc",
    "cccccccccccccccc.==BBBB======cccccccc===ccrrcccccc..=..ccccccccc",
    "ccccccccccccc..====BBBBrr======ccc======cccccccc...===.ccccccccc",
-   "ccccccccccccc======BBBBrr======ccc======cccccccc..=====ccccccccc",
+   "ccccccccccccc======BBBBrr======cccN=====cccccccc..=====ccccccccc",
    "ccccccccccccc____==BDBBrr__==__ccc______cccEEEEc__=____ccccccccc",
    "ccccccccccccc===========================cccEEEE========ccccccccc",
    "ccccccccccccc===========================cccEEEE========ccccccccc",
@@ -71049,7 +71116,7 @@
    "cccccccccc.======GGGG=====MMMM==CCCCC===ccc======...cccccooooooo",
    "cccccccccc.===cccGGGG=====MMMM==CCCCC===ccc=====....cccccooocccc",
    "cccccccccc.===cccGGGG=====MMMM==CCCCC========ccccccccccccooocccc",
-   "cccccccccc====cccGDGG!====MDMMc=CCDCC========cccc.cccccccooocccc",
+   "cccccccccc====cccGDGG!==N=MDMMc=CCDCC========cccc.cccccccooocccc",
    "ccccccc...=================================cccccc.cooooooooocccc",
    "ccccccc..================================...ffccc.cooooooooocccc",
    "ccccccc..===============================..........cooccccccccccc",
@@ -71073,10 +71140,10 @@
   },
   "buildings": {
    "Y": "gym",
-   "B": "house",
-   "E": "house",
+   "B": "dratinihouse",
+   "E": "dodriotrade",
    "C": "center",
-   "G": "house",
+   "G": "movehouse",
    "M": "mart"
   },
   "roofs": {
@@ -71151,7 +71218,17 @@
      152,
      180
     ]
-   }
+   },
+   "_picture": {
+    "f": "ss_ground/T30.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
   },
   "signs": [
    [
@@ -71177,64 +71254,17 @@
   ],
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     19,
-     33,
-     4,
-     1
+    "kind": "picture",
+    "f": "ss_top/T30.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "roof",
-    "colour": [
-     173,
-     145,
-     94
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     32,
-     42,
-     5,
-     1
+    "size": [
+     64,
+     64
     ],
-    "of": "roof",
-    "colour": [
-     223,
-     143,
-     99
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     26,
-     43,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     79,
-     133,
-     172
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     17,
-     44,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     173,
-     145,
-     94
-    ]
+    "px": 32
    }
   ],
   "rooms": {
@@ -71242,16 +71272,16 @@
     "theme": "room",
     "art": [
      "ccmmmmmmmmmmmmmmmmmmmmmmc",
-     "ccmmmmmmmmmmmmmmmmmmmmmmc",
-     "ccmmmmmmm.....mmmmmmmmmmc",
-     "ccmmmmmmm..N..mmmmmmmmmmc",
-     "ccmmmmmmm.....mmmmmmmmmmc",
-     "ccmmmmmmm............mmmc",
-     "ccmmmmmmm............mmmc",
-     "ccmmmmmmm............mmmc",
-     "ccm..................mmmc",
-     "ccm..................mmmc",
-     "ccm..................mmmc",
+     "ccmmmmmcmmmmmmmcmmmmmmmmc",
+     "ccmmmmmcccccccccmmmmmmmmc",
+     "ccmmmmmmcccccccmmmmmmmmmc",
+     "ccmmmmmmcccccccmmmmmmmmmc",
+     "ccmmmmmmm.....cmcccccmmmc",
+     "ccmmmmmmm..N..mmcccccmmmc",
+     "ccmmmmmmm.....mccccccmmmc",
+     "cccccccmm.....mccccccmmmc",
+     "cccccccmm.....cccccccmmmc",
+     "ccccccccm............mmmc",
      "ccm..................mmmc",
      "ccm..................mmmc",
      "ccm..................mmmc",
@@ -71261,74 +71291,79 @@
      "ccm....................mc",
      "ccm....................mc",
      "ccmm...................mc",
-     "ccmm.mmm...............mc",
+     "ccmm...................mc",
+     "ccmm...................mc",
+     "ccmm...................mc",
+     "ccmm.mcm...............mc",
      "ccmm.mcm...............mc",
      "ccmm.mmm...............mc",
-     "ccmm....mmm............mc",
-     "ccmm....mcm.......mmm..mc",
+     "ccmm.ccc.cm............mc",
+     "ccmm.ccc.cm.......mcm..mc",
      "ccmm....mmm.......mcm..mc",
-     "ccmm..............mmm..mc",
-     "ccmm...................mc",
-     "ccmm...................mc",
-     "ccm....................mc",
-     "ccm....................mc",
-     "ccm....................mc",
-     "cmm...................mmc",
-     "cmm...................mmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "c..........m...m.....mmmc",
-     "c..........m...m.....mmmc",
-     "c.......mmmm...mmmmmmmmmc",
-     "c.......mcmm............c",
-     "c.......mmmm............c",
-     "c..........m............c",
-     "cm.........mmmm......mmmc",
-     "cmm...........m......mmmc",
-     "cmmmmm........m......mmmc",
-     "cmmmcm........mmm....mmmc",
-     "cmmmmm..........m....mmmc",
-     "cmm.............mm...mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
-     "cm...................mmmc",
+     "ccm.....ccc.......mmm..mc",
+     "ccm.....ccc.......ccc..mc",
+     "ccm...............ccc..mc",
+     "cmm....................mc",
+     "cmm....................mc",
+     "cc.....................mc",
+     "cm.....................mc",
+     "cm....................mmc",
+     "c.....................mmc",
+     "c....................cmmc",
+     "c....................cmmc",
+     "c..........m...m.....mccc",
+     "c..........m...mc....mccc",
+     "c.......mc.m...mmmmm.cccc",
+     "cc......mc.m............c",
+     "cm......mmmm............c",
+     "cm......cccm............c",
+     "cmm.....cccmmmm......mmmc",
+     "cmccm......cccm......mmmc",
+     "cmmmcm.....cccm......mmmc",
+     "cc.mcm........mmm....mmmc",
+     "cm.mmm........ccm....mmmc",
+     "cm.ccc........ccmm...mmmc",
+     "cm.ccc..........cc...mmmc",
+     "cm..............cc...mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
      "cm...................mmmc",
-     "cm................mmmmmmc",
-     "cmmm...mmm...........mmmc",
-     "c........mmmmmm......mmmc",
-     "c.............m......mmmc",
-     "c.............m......mmmc",
+     "cm...................cmmc",
+     "cm...................cmmc",
+     "cc...................mmmc",
+     "cm...................mmmc",
+     "cmcc..............mmcmmmc",
+     "ccmm...mmm........ccmmmmc",
+     "c........m.mmmm...ccccccc",
+     "c.............m......cccc",
+     "c.............m......cccc",
      "cmmm..........m......cccc",
-     "cmmm..........m......cccc",
-     "cmmmmmmm......m......cccc",
-     "cmmm...mmmm...m......cccc",
-     "cmm.......m...m......cccc",
-     "cmm.......m...m......cccc",
-     "cmm.......m...m......cccc",
-     "cm...................cccc",
+     "cmm...........m......cccc",
+     "cmm.mmmm......m......cccc",
+     "cmm.cccmmmm...m......cccc",
+     "cc..ccccccm...m......cccc",
+     "cm.....cccm...m......cccc",
+     "cm........m...m......cccc",
+     "cm........c...c......cccc",
+     "cm........c...c......cccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
      "cm................mmmcccc",
-     "cm................mmmcccc",
-     "cm................mmmcccc",
-     "cm................mmmcccc",
-     "cm........m...m...mmmcccc",
-     "cmmmmmmmmmm...mmmmmmmcccc",
-     "cmmmmm............mmmcccc",
-     "cmmmmm............mmmcccc",
-     "cmmmmm............mmmcccc",
+     "cmm...............mmmcccc",
+     "cmm...............mmmcccc",
+     "cmm......cm...m...mmmcccc",
+     "cmmm.mmmmmm...mmm.mmmcccc",
+     "cccccc............ccccccc",
+     "cccccc............ccccccc",
+     "cccccc............ccccccc",
      "cccccc....c...c...ccccccc",
      "cccccc....j...j...ccccccc",
      "cccccc......v.....ccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -73887,15 +73922,279 @@
       150,
       154,
       172
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30GYM0101.png",
+      "at": [
+       1,
+       1
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Gym"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30GYM0101.png",
+      "at": [
+       1,
+       1
+      ],
+      "size": [
+       25,
+       94
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "dratinihouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmmN...mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,37"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Dratini",
+     "Old woman"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30R0201.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "dodriotrade": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:44,40"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Trader"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30R0301.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    },
    "mart": {
     "theme": "room",
     "art": [
+     "cccccccccccccc",
      "cccccccccccccc",
      "cccccccccccccc",
      "ccccmmmmcccccc",
@@ -74083,10 +74382,36 @@
       190,
       206,
       226
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30FS0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Shop"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30FS0101.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       14,
+       14
+      ],
+      "px": 32
+     }
     ]
    },
    "center": {
@@ -74094,21 +74419,27 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccNcccccccczc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
      "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
+     "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "c..............cc",
-     "c.............ccc",
+     "cc.............cc",
+     "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
@@ -74205,18 +74536,245 @@
       236,
       200,
       190
-     ]
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
     },
     "people": [
      "Heal"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30PC0101.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "movehouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "cN.N......c",
+     "c....NmmN.c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:18,48"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "2,2": "sink",
+      "3,2": "sink",
+      "1,2": "fridge",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T30R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Move Reminder",
+     "Move Deleter",
+     "Grandma Wilma",
+     "Old man"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T30R0601.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
     ]
    }
   },
   "inside": {
    "28,23": "gym",
+   "20,37": "dratinihouse",
+   "44,40": "dodriotrade",
    "27,48": "mart",
-   "34,48": "center"
-  }
+   "34,48": "center",
+   "18,48": "movehouse"
+  },
+  "people": [
+   {
+    "text": "Den guard",
+    "action": "EVENT",
+    "condition": "not:has_rising_badge",
+    "event": {
+     "lines": [
+      "No. Only Trainers who have been chosen may train in the Dragon's Den. Please leave."
+     ]
+    }
+   },
+   {
+    "text": "Den guard ",
+    "action": "EVENT",
+    "condition": "has_rising_badge",
+    "event": {
+     "lines": [
+      "If Clair allows it, her grandfather, our Master, will too. You may enter."
+     ]
+    }
+   },
+   {
+    "text": "Gym guide",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Clair, our Gym Leader, is waiting for you. Few Trainers can match her dragons. Good luck!"
+     ]
+    }
+   },
+   {
+    "text": "Youngster",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Those Trainers they call Dragon Tamers all come from Blackthorn!"
+     ]
+    }
+   },
+   {
+    "text": "Girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Wow, you came through the Ice Path? You must be a real hotshot Trainer!"
+     ]
+    }
+   },
+   {
+    "text": "Santos",
+    "action": "EVENT",
+    "condition": "weekday:sat",
+    "event": {
+     "lines": [
+      "...Saturday's my day... I'm Santos...",
+      "Santos: ...Here. Soft Sand. A Pokemon holding it hits harder with Ground-type moves..."
+     ],
+     "gift_item": {
+      "SOFT_SAND": 1
+     },
+     "flag": "got_soft_sand_blackthorn_city",
+     "done": [
+      "Santos: ...See you next Saturday..."
+     ]
+    },
+    "color": "GOLD"
+   },
+   {
+    "text": "Woman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Are you here to make your Pokemon forget some moves? The house over there can help... sometimes."
+     ]
+    }
+   }
+  ]
  },
  "DRAGONS_DEN": {
   "theme": "cave",
