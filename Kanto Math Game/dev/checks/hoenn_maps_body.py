@@ -2772,5 +2772,25 @@ check(_mo is not None and _mo.kind == "copy" and _moved,
 story.story_flags.clear(); story.story_flags.update(_savedO)
 story.inventory.clear(); story.inventory.update(_invO)
 
+
+# ---- the secret Game Corner (Jordan 11-15: Hoenn, on a dead floor; Emerald's Mauville Game Corner layout): the Battle Tower's lift
+st = open_map("HOENN_BATTLE_FRONTIER", "SLATEPORT_CITY")
+_play(st, 900)   # (the arrival scene first: you can't walk while it plays)
+_rooms = (st.run.recipe.get("art") or {}).get("floor_names") or []
+_ti = next((i for i, n in enumerate(_rooms) if "Battle Tower" == n), None)
+_si = next((i for i, n in enumerate(_rooms) if str(n).startswith("Battle Tower ??")), None)
+_ok, _clerk = False, None
+if _ti is not None and _si is not None:
+    st.run.jump_floor(_ti, (6, 2)); _calm(st); st.anim = 0
+    st.step(0, -1); _play(st, 120)
+    _ok = st.run.index == _si
+    _clerk = next((m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "Game Corner clerk"), None)
+check(_ok and _clerk is not None and _clerk.payload.get("action") == "GAME_CORNER",
+      f"Battle Frontier: the Battle Tower's lift goes down to a floor that isn't on any sign - a secret Game Corner ({_ti}, {_si}, {_ok}, {_rooms[:3]})")
+from src.states import game_corner as _gcs
+_ak = story.current_area_key; story.current_area_key = "HOENN_BATTLE_FRONTIER"
+check(any(p[1] == "LEFTOVERS" for p in _gcs.prizes_here(story)), "...with prizes of its own")
+story.current_area_key = _ak
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

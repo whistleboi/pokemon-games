@@ -333,6 +333,7 @@
       "min_rounds": 0,
       "trainer_pool": [{"name": "Aroma Lady Carnation", "class": "BEAUTY", "sprite": "beauty.png", "team": [465, 189, 272, 71], "rewards": {"balls": 5}}, {"name": "Rich Boy Antoin", "class": "RICH_BOY", "sprite": "richboy.png", "team": [169, 452, 110, 89], "rewards": {"balls": 5}}, {"name": "Fairy Tale Girl Josephine", "class": "LASS", "sprite": "lass.png", "team": [547, 40, 685, 210], "rewards": {"balls": 5}}, {"name": "Poke Maniac Kelvin", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [464, 34, 473, 450], "rewards": {"balls": 5}}, {"name": "Bug Maniac Felix", "class": "PKMN_TRAINER", "sprite": "bug_catcher.png", "team": [212, 596, 214, 127], "rewards": {"balls": 5}}],
       "route_menu": [
+        {"text": "Game Corner clerk", "action": "GAME_CORNER", "color": "GOLD"},
         {"text": "Tower attendant", "action": "FRONTIER", "facility": "tower", "color": "GOLD"},
         {"text": "Salon Maiden Anabel", "action": "EVENT", "look": 34, "event": {"lines": ["I'm Anabel, the Salon Maiden. Show me a streak worth my time."]}},
         {"text": "Dome attendant", "action": "FRONTIER", "facility": "dome", "color": "GOLD"},

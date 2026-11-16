@@ -6732,6 +6732,39 @@
     },
     "BLACKTHORN_CITY:Old man": {
       "sheet": "hg_gsoldman1.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Game Corner clerk": {
+      "sheet": "em_45.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Woman": {
+      "sheet": "em_10.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Old man": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Fisherman": {
+      "sheet": "em_34.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Sailor": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Youngster": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Lass": {
+      "sheet": "em_27.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Beauty": {
+      "sheet": "em_39.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Hiker": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Coin clerk": {
+      "sheet": "em_45.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Prize clerk": {
+      "sheet": "em_45.png"
     }
   },
   "townsperson": "NPC 17.png",

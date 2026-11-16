@@ -126554,11 +126554,6 @@
       31,
       16
      ],
-     "16,2": [
-      2,
-      15,
-      2
-     ],
      "4,4": [
       1,
       4,
@@ -126578,6 +126573,11 @@
       1,
       31,
       1
+     ],
+     "16,2": [
+      2,
+      15,
+      2
      ]
     },
     "moves": {
@@ -127723,7 +127723,7 @@
    "tower": {
     "art": [
      "ccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccc",
+     "cccccc1cccccccccccccccccc",
      "....m...m...m...m...m....",
      "....m...m...m...m...m....",
      "....c...c...c...c...m....",
@@ -127752,6 +127752,13 @@
      "Salon Maiden Anabel",
      "Tower attendant"
     ],
+    "links": {
+     "6,1": [
+      "secret_corner",
+      11,
+      9
+     ]
+    },
     "overheads": [
      {
       "kind": "picture",
@@ -128287,6 +128294,214 @@
     ],
     "theme": "room",
     "title": "Exchange Service Corner"
+   },
+   "secret_corner": {
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "ccc..ccc.mcNcNNm..cccc",
+     ".......N.cmmmmmc......",
+     "...................N.c",
+     "................N.....",
+     "..ccN..cc.....cc..cc..",
+     ".Ncc...cc...N.cc..cc..",
+     "..cc..NccN....cc..ccN.",
+     "..cc...cc.............",
+     "...........11........."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Coin clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to... well, a floor that doesn't exist. Officially. Coins and prizes are with my colleague."
+       ]
+      }
+     },
+     "Game Corner clerk",
+     {
+      "text": "Prize clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Frontier Brains? Never heard of 'em down here. Enjoy the games!"
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I pressed the lift button for the top floor and ended up here. Best mistake I ever made."
+       ]
+      }
+     },
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Don't tell Anabel. She thinks I'm upstairs training."
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Battle Points, schmattle points. THIS is where the real winnings are."
+       ]
+      }
+     },
+     {
+      "text": "Fisherman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's quieter down here than the Battle Tower. Fewer Hyper Beams, too."
+       ]
+      }
+     },
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Scott built this place, I bet. The man's got a secret for everything."
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Three sevens! ...Nope. Two sevens and a Pikachu."
+       ]
+      }
+     },
+     {
+      "text": "Lass",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The lift attendant winked when I asked about this floor. Weird, right?"
+       ]
+      }
+     },
+     {
+      "text": "Beauty",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My lucky machine is THIS one. Find your own!"
+       ]
+      }
+     },
+     {
+      "text": "Hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I came to the Frontier to test my Pokemon. I stayed for the slots."
+       ]
+      }
+     }
+    ],
+    "links": {
+     "11,10": [
+      "tower",
+      6,
+      2
+     ],
+     "12,10": [
+      "tower",
+      6,
+      2
+     ]
+    },
+    "moves": {
+     "11,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "16,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "19,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "12,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "20,8": {
+      "m": "face",
+      "d": "l"
+     },
+     "6,8": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,8": {
+      "m": "face",
+      "d": "l"
+     },
+     "4,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "13,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       22,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Tower ??F"
    },
    "maison": {
     "art": [
