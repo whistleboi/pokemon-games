@@ -1346,6 +1346,10 @@ class StoryManager:
                 self.inventory["SILPH_SCOPE"] = 1
 
     def serialize(self):
+        from src.world import mystery_dungeon   # (inside the Giant Volcano as a Charmander: your real party is what's saved)
+        return mystery_dungeon.save_view(self, self._serialize())
+
+    def _serialize(self):
         return {
             "current_area_key": self.current_area_key,
             "badges": self.badges,

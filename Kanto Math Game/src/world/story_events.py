@@ -39,6 +39,7 @@ def _t(base, **kw):
 
 
 EVENTS = {
+    "giant_volcano_fall": {"scene": "giant_volcano_fall"},  # (the Giant Volcano easter egg: src/world/mystery_dungeon.py)
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
     "johto_elm_starter": {"starter": "JOHTO"},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)

@@ -66,6 +66,9 @@ class AreaTransitionState(GameState):
             self.timer = RIDE_FRAMES
         self.wait_for_dialogue = bool(initial_message)
         self.bg = None
+        from src.world import mystery_dungeon   # (out of the Giant Volcano some other way, an Escape Rope or Fly: yourself again)
+        if next_area_key != mystery_dungeon.AREA and mystery_dungeon.active(game.story_manager):
+            mystery_dungeon.back_to_normal(game)
 
         if isinstance(self.game.current_state, PlayState):
             self.game.story_manager.balls_left = self.game.current_state.balls_left
@@ -282,7 +285,11 @@ def white_out(game):
     from src.states.overworld.pokecenter import PokeCenterState
     from src.states.overworld.route import PlayState
     from src.states.overworld.town import CityState
+    from src.world import mystery_dungeon
     story = game.story_manager
+    if mystery_dungeon.active(story):  # (fainted as a Charmander in the Giant Volcano: you wake up in the Lab as yourself)
+        mystery_dungeon.wake_in_lab(game, mystery_dungeon.LOST)
+        return
     for p in story.player_team:
         p.heal_full()
         if hasattr(p, "revert_transform"):

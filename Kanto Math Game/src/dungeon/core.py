@@ -417,7 +417,7 @@ def build_floor(rng, recipe, index, entrance=None, forwards=(), last=True, figur
         gate = _edge_gate(floor, "west")
         floor.exits[gate] = STAIRS_UP
         floor.start = (gate[0] + 1, gate[1])
-    beside = [STAIRS_UP] if index > 0 and not open_ else []
+    beside = [STAIRS_UP] if index > 0 and not open_ and not recipe.get("no_return") else []  # ("no_return": no way back down, as in a Mystery Dungeon)
     if entrance:
         beside.append(entrance)
     for target in beside:

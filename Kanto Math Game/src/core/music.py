@@ -45,7 +45,7 @@ KANTO_AREAS = {
     "POKEMON_LEAGUE_GATE": "route_22", "UNDERGROUND_PATH": "route_11",
     "VIRIDIAN_FOREST": "viridian_forest", "MT_MOON": "mt_moon", "ROCK_TUNNEL": "mt_moon",
     "DIGGLETT_CAVE": "mt_moon", "SEAFOAM_ISLANDS": "mt_moon", "CERULEAN_CAVE": "mt_moon",
-    "VICTORY_ROAD": "mt_moon", "CINNABAR_VOLCANO": "pokemon_mansion", "KANTO_POKEMON_TOWER": "pokemon_tower",
+    "VICTORY_ROAD": "mt_moon", "CINNABAR_VOLCANO": "pokemon_mansion", "GIANT_VOLCANO": "pokemon_mansion", "KANTO_POKEMON_TOWER": "pokemon_tower",
     "KANTO_SS_ANNE": "ss_anne", "SAFARI_ZONE": "safari_zone", "POWER_PLANT": "rocket_hideout",
 }
 for _n in (1, 2):

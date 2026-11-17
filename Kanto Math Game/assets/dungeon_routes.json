@@ -686,6 +686,7 @@
       "KANTO_TM_SEAFOAM"
     ]
   },
+  "GIANT_VOLCANO": {"_about": "The Giant Volcano easter egg (Explorers of Sky's, 10 of its floors): every floor made fresh, its own tiles (pmd), lava pools (ponds), no way back down (no_return).", "floors": 10, "style": "cave", "pmd": "giant_volcano", "no_return": true, "size": [44, 30], "ponds": 2, "fog": true, "wild": [3, 5], "loot": {"per_floor": [3, 5], "items": {"ORAN_BERRY": 14, "SITRUS_BERRY": 10, "SUPER_POTION": 10, "HYPER_POTION": 6, "REVIVE": 7, "FULL_HEAL": 4}}},
   "CINNABAR_VOLCANO": {
     "floors": 2,
     "style": "cave",

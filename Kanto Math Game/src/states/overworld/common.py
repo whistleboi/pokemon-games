@@ -372,6 +372,14 @@ def _run_story_event(state, key, check, show):
         else:
             go()
         return
+    if ev.get("scene") == "giant_volcano":  # the Cinnabar Lab's machine: out to the volcano (src/world/mystery_dungeon.py)
+        from src.world import mystery_dungeon
+        mystery_dungeon.offer_scene(state, lines, show)
+        return
+    if ev.get("scene") == "giant_volcano_fall":  # ...and into it, as a Charmander
+        from src.world import mystery_dungeon
+        mystery_dungeon.fall(game)
+        return
     if ev.get("scene") == "wally_catch":  # Wally catches his Ralts (src/states/hoenn.py)
         from src.states.hoenn import WallyCatchState
 

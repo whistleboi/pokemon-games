@@ -94,6 +94,8 @@ def custom(game):
                 _CUSTOM["all"] = json.load(f)
         except (OSError, ValueError):
             _CUSTOM["all"] = {}
+        from src.world import mystery_dungeon   # (the Giant Volcano easter egg's lab scientist and walk, laid over Cinnabar)
+        mystery_dungeon.overlay(_CUSTOM["all"])
     return _CUSTOM["all"]
 
 

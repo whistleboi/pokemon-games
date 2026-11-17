@@ -4165,6 +4165,8 @@
       "on_enter_event": null
     },
 
+    "GIANT_VOLCANO": {"area_type": "wild_route", "route_name": "Giant Volcano", "battle_type": "cave", "mystery_dungeon": "giant_volcano", "_about": "The Giant Volcano easter egg (src/world/mystery_dungeon.py): reached only through the Cinnabar Lab's machine, as a Charmander. Its wild Pokemon come from mystery_dungeon.WILD by floor.", "backgrounds": {"battle": "battle_gym_cinnabar.png"}, "wild_pool_percentages": "GIANT_VOLCANO_PERCENTAGES", "trainer_encounter_rate": 0.0, "min_rounds": 0, "trainer_pool": [], "area_boss": {"id": 146, "name": "Moltres", "is_shiny": true, "level": 44, "no_catch": true, "victory_flag": "giant_volcano_moltres_beaten", "lines": ["A Moltres blazes at the summit, its feathers glowing gold!", "Vulpix: That's what's been stirring up the volcano! Let's calm it down!"]}, "route_menu": [{"text": "Moltres", "action": "BOSS", "condition": "not:giant_volcano_moltres", "color": "GOLD"}], "next_area": null, "on_enter_event": null},
+
     "VICTORY_ROAD": {
       "area_type": "wild_route",
       "route_name": "Victory Road",
@@ -4305,6 +4307,7 @@
   "SEAFOAM_ISLANDS_B3F_PERCENTAGES": {"86": 40, "54": 10, "79": 10, "41": 10, "42": 10, "55": 8, "80": 8, "87": 5, "90": 20, "91": 5, "2006": 1, "2007": 1},
   "SEAFOAM_ISLANDS_B4F_PERCENTAGES": {"86": 50, "42": 15, "87": 10, "55": 8, "80": 8, "54": 5, "79": 5, "98": 20, "99": 5, "124": 10, "131": 10},
 
+  "GIANT_VOLCANO_PERCENTAGES": {"4": 100},
   "CINNABAR_VOLCANO_PERCENTAGES": {"4":20,"5":3,"37":19,"38":2,"58":19,"59":2,"77":19,"78":4,"88":10,"89":4,"126":3,"136":3,"2020":1,"2021":1,"2015":1,"2016":1,"2025":1},
 
   "VICTORY_ROAD_PERCENTAGES": {"1":2,"4":2,"7":2,"41":30,"74":23,"42":10,"75":10,"67":10,"105":9,"35":5,"95":5,"2012":1,"2018":1},

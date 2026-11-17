@@ -694,6 +694,9 @@ def dungeon_for(game, restore_data=None):
     cur = getattr(game, "dungeon_state", None)
     if restore_data and cur is not None and getattr(cur, "area_key", None) == key:
         return cur
+    if (game.loader.area_data.get("STORY_PROGRESSION", {}).get(key) or {}).get("mystery_dungeon"):
+        from src.states.overworld.mystery_dungeon import MysteryDungeonState  # (the Giant Volcano, as a Charmander)
+        return object.__new__(MysteryDungeonState)
     if (game.loader.area_data.get("STORY_PROGRESSION", {}).get(key) or {}).get("hyperspace"):
         from src.states.overworld.hyperspace import HyperspaceState  # (Hyperspace Lumiose's zones)
         return object.__new__(HyperspaceState)
@@ -3501,7 +3504,7 @@ class DungeonState(OverworldBattles, PlayState):
         if pid is None:   # (someone standing about who is a Pokemon: "Poliwrath", "Cubone")
             pid = species_named(self.game, item.get("text"))
         if pid is not None:
-            boss = (item.get("boss") or {}) if item.get("action") == "BOSS" else {}
+            boss = (item.get("boss") or self.area_data.get("area_boss") or {}) if item.get("action") == "BOSS" else {}  # (a shiny boss shiny on the map too: the Red Gyarados, the Giant Volcano's Moltres)
             img = self._mon_img(pid, tuple(facing) if spec.get("face") else (0, 1), boss.get("form"), boss.get("is_shiny"))
             if img is not None:   # (every Pokemon on the maps: its following-Pokemon sheet, Jordan 11-14)
                 return img
