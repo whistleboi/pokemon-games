@@ -309,60 +309,22 @@
     "KANTO_ROUTE_28_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
-          "area_type": "dungeon",
-          "route_name": "Battle Frontier",
-          "region": "JOHTO",
-          "battle_type": "indoor",
-          "wild_pool_percentages": null,
-          "min_rounds": 0,
-          "trainer_pool": [
-            {
-              "name": "Tower Tycoon Palmer",
-              "class": "FRONTIER_BRAIN",
-              "sprite": "master.png",
-              "team": [
-                464,
-                350,
-                149
-              ],
-              "rewards": {
-                "balls": 5
-              }
-            },
-            {
-              "name": "Arcade Star Dahlia",
-              "class": "FRONTIER_BRAIN",
-              "sprite": "master.png",
-              "team": [
-                308,
-                272,
-                477
-              ],
-              "rewards": {
-                "balls": 5
-              }
-            },
-            {
-              "name": "Castle Valet Darach",
-              "class": "FRONTIER_BRAIN",
-              "sprite": "master.png",
-              "team": [
-                395,
-                398,
-                229
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "is_boss_battle": true,
-              "victory_flag": "johto_battle_frontier_cleared"
-            }
-          ],
-          "route_menu": [
-            {"text": "CHALLENGE THE FRONTIER BRAINS", "action": "GALACTIC_GAUNTLET", "flag_condition": "not johto_battle_frontier_cleared", "color": "GOLD"},
-            {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": "can_exit", "color": "RED"}
-          ],
-          "next_area": "JOHTO_ROUTE_40"
+            "area_type": "dungeon",
+            "route_name": "Battle Frontier",
+            "region": "JOHTO",
+            "battle_type": "indoor",
+            "wild_pool_percentages": null,
+            "min_rounds": 0,
+            "trainer_pool": [],
+            "route_menu": [
+                {"text": "Tower attendant", "action": "FRONTIER", "facility": "jtower", "door": "jtower", "color": "GOLD"},
+                {"text": "Factory attendant", "action": "FRONTIER", "facility": "jfactory", "door": "jfactory", "color": "GOLD"},
+                {"text": "Hall attendant", "action": "FRONTIER", "facility": "jhall", "door": "jhall", "color": "GOLD"},
+                {"text": "Castle attendant", "action": "FRONTIER", "facility": "jcastle", "door": "jcastle", "color": "GOLD"},
+                {"text": "Arcade attendant", "action": "FRONTIER", "facility": "jarcade", "door": "jarcade", "color": "GOLD"},
+                {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "JOHTO_ROUTE_40"
         },
         "JOHTO_SS_AQUA": {
             "area_type": "dungeon",

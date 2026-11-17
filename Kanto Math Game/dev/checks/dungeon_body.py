@@ -1553,6 +1553,11 @@ _fa = kanto("FRONTIER_ACCESS", came="JOHTO_ROUTE_40")
 _fa2 = kanto("FRONTIER_ACCESS", came="JOHTO_BATTLE_FRONTIER")
 check({"JOHTO_ROUTE_40", "JOHTO_BATTLE_FRONTIER"} == set(map(str, _fa.run.floor.exits.values())) and _fa.run.player[1] < _fa2.run.player[1],
       f"Frontier Access: SoulSilver's gate hall; in from Route 40 at the north mat {_fa.run.player}, from the Frontier at the south doors {_fa2.run.player}")
+_bfr = kanto("JOHTO_BATTLE_FRONTIER", came="FRONTIER_ACCESS")
+_bfk = {k for k in (_bfr.recipe.get("art") or {}).get("buildings", {}).values()}
+check((_bfr.run.floor.w, _bfr.run.floor.h) == (96, 96) and {v for v in _bfr.run.floor.exits.values() if not str(v).startswith("WARP")} == {"FRONTIER_ACCESS"}
+      and _bfr.run.player[1] <= 19 and {"jtower", "jfactory", "jhall", "jcastle", "jarcade"} <= _bfk,
+      f"the Battle Frontier (N18): SoulSilver's plaza; in from Frontier Access at {_bfr.run.player}; five facility doors {sorted(_bfk)}")
 _bc = kanto("BUG_CONTEST", came="NATIONAL_PARK")
 check((_bc.run.floor.w, _bc.run.floor.h) == (96, 96) and set(map(str, _bc.run.floor.exits.values())) == {"NATIONAL_PARK"} and not [m for m in _bc.run.floor.movers if m.kind == "trainer"],
       "the Bug-Catching Contest: the National Park's own map, no trainers, every gate back to the park")

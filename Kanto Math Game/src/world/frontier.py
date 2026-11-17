@@ -27,10 +27,35 @@ BRAINS = {
     # the Battle Maison (Omega Ruby / Alpha Sapphire's, from the Battle Resort: Jordan 11-14, in Emerald's Battle Tent):
     # its singles Chatelaine, Nita; her teams kept to Hoenn's Gen 1-3 Pokemon (Jordan: Gen 3 or earlier for Hoenn)
     "maison": ("Chatelaine Nita", "lady.png", [36, 282, 350], [282, 376, 373], "Maison"),
+    # Johto's Battle Frontier (HeartGold / SoulSilver; Jordan 11-16: "real streaks per facility"). The Brains' teams and moves are the
+    # game file's own (a/2/0/2 trainers, a/2/0/3 sets; first print = Silver, second = Gold). Thorton (rentals) and Argenta (the Hall's
+    # pool) have no fixed team in the game: a random strong one here, as for Emerald's Noland. Prints, not Symbols.
+    "jtower": ("Tower Tycoon Palmer", "master.png", [464, 350, 149], [485, 488, 486], "Tower"),
+    "jfactory": ("Factory Head Thorton", "master.png", None, None, "Factory"),
+    "jhall": ("Hall Matron Argenta", "master.png", None, None, "Hall"),
+    "jcastle": ("Castle Valet Darach", "master.png", [395, 398, 229], [395, 475, 244], "Castle"),
+    "jarcade": ("Arcade Star Dahlia", "master.png", [308, 272, 477], [257, 468, 145], "Arcade"),
 }
-FRONTIER_SEVEN = [f for f in BRAINS if f != "maison"]   # (the Symbols: the Maison gives none of its own)
+# The Johto Brains' own moves (HGSS, by species; Darach's first of his two sets for each).
+BRAIN_MOVES = {
+    "jtower": ({"464": ["ROCK-WRECKER", "EARTHQUAKE", "CRUNCH", "ROAR"], "350": ["SURF", "ICE-BEAM", "ATTRACT", "HYPNOSIS"],
+                "149": ["DRAGON-CLAW", "AERIAL-ACE", "THUNDER-WAVE", "DRAGON-DANCE"]},
+               {"485": ["MAGMA-STORM", "FLASH-CANNON", "EARTH-POWER", "EXPLOSION"], "488": ["PSYCHIC", "ICE-BEAM", "SIGNAL-BEAM", "MOONLIGHT"],
+                "486": ["CRUSH-GRIP", "EARTHQUAKE", "STONE-EDGE", "DRAIN-PUNCH"]}),
+    "jarcade": ({"308": ["ZEN-HEADBUTT", "REVERSAL", "ENDURE", "FAKE-OUT"], "272": ["WATERFALL", "RAZOR-LEAF", "DRAIN-PUNCH", "SWORDS-DANCE"],
+                 "477": ["SHADOW-PUNCH", "FLING", "WILL-O-WISP", "TRICK-ROOM"]},
+                {"257": ["FLARE-BLITZ", "SUPERPOWER", "THUNDER-PUNCH", "NIGHT-SLASH"], "468": ["HYPER-BEAM", "AIR-SLASH", "AURA-SPHERE", "PSYCHIC"],
+                 "145": ["THUNDERBOLT", "AIR-CUTTER", "HEAT-WAVE", "SIGNAL-BEAM"]}),
+    "jcastle": ({"395": ["WATERFALL", "METAL-CLAW", "BRICK-BREAK", "KNOCK-OFF"], "398": ["RETURN", "AERIAL-ACE", "DOUBLE-TEAM", "ROOST"],
+                 "229": ["FIRE-FANG", "CRUNCH", "ROAR", "COUNTER"]},
+                {"395": ["SURF", "EARTHQUAKE", "BLIZZARD", "SIGNAL-BEAM"], "475": ["PSYCHO-CUT", "STONE-EDGE", "AERIAL-ACE", "X-SCISSOR"],
+                 "244": ["FIRE-BLAST", "SOLAR-BEAM", "HYPER-BEAM", "SUNNY-DAY"]}),
+}
+JOHTO_FIVE = ["jtower", "jfactory", "jhall", "jcastle", "jarcade"]
+FRONTIER_SEVEN = [f for f in BRAINS if f != "maison" and not f.startswith("j")]   # (the Symbols: the Maison gives none of its own)
 NAMES = {"tower": "Battle Tower", "dome": "Battle Dome", "palace": "Battle Palace", "arena": "Battle Arena",
-         "factory": "Battle Factory", "pike": "Battle Pike", "pyramid": "Battle Pyramid", "maison": "Battle Maison"}
+         "factory": "Battle Factory", "pike": "Battle Pike", "pyramid": "Battle Pyramid", "maison": "Battle Maison",
+         "jtower": "Battle Tower", "jfactory": "Battle Factory", "jhall": "Battle Hall", "jcastle": "Battle Castle", "jarcade": "Battle Arcade"}
 _DATA = None
 
 
@@ -81,9 +106,13 @@ def next_trainer(game, fac):
     """The next opponent's trainer info (as a trainer_pool entry): a random Frontier trainer, or the Brain."""
     if brain_next(game, fac):
         title, sprite, silver, gold, _sym = BRAINS[fac]
-        team = (gold if _flags(game).get(f"frontier_{fac}_silver") else silver) or _team(game, [3])
-        return {"name": title, "class": "FRONTIER_BRAIN", "sprite": sprite, "team": list(team),
+        is_gold = bool(_flags(game).get(f"frontier_{fac}_silver"))
+        team = (gold if is_gold else silver) or _team(game, [3])
+        info = {"name": title, "class": "FRONTIER_BRAIN", "sprite": sprite, "team": list(team),
                 "is_boss_battle": True, "rewards": {"balls": 5}}
+        if fac in BRAIN_MOVES:
+            info["movesets"] = dict(BRAIN_MOVES[fac][1 if is_gold else 0])
+        return info
     w = wins(game, fac)
     col = min(7, w // 7)   # (Emerald's columns: battles 1-7, 8-14, ... who may appear)
     trainers = [t for t in data(game)["trainers"] if col in t["cols"]] or data(game)["trainers"]
@@ -132,10 +161,14 @@ def after_battle(game, fac, won):
     title, _s, _a, _b, sym = BRAINS[fac]
     first = not flags.get(f"frontier_{fac}_silver")
     flags[f"frontier_{fac}_silver" if first else f"frontier_{fac}_gold"] = True
-    lines = [f"You beat {title}! You earned the {'Silver' if first else 'Gold'} {sym} Symbol!"] if fac != "maison" else         [f"You beat {title}! Your name goes up on the Maison's wall of {'champions' if first else 'grand champions'}!"]
+    _mark = "Print" if fac.startswith("j") else "Symbol"   # (HGSS: Prints)
+    lines = [f"You beat {title}! You earned the {'Silver' if first else 'Gold'} {sym} {_mark}!"] if fac != "maison" else         [f"You beat {title}! Your name goes up on the Maison's wall of {'champions' if first else 'grand champions'}!"]
     if first:
         lines.append(f"Next time it's {AGAIN} wins in a row for a battle with the {'Chatelaine' if fac == 'maison' else 'Brain'}'s real team.")
-    if all(flags.get(f"frontier_{f}_silver") for f in FRONTIER_SEVEN) and not flags.get("hoenn_battle_frontier_cleared"):
+    if fac.startswith("j") and all(flags.get(f"frontier_{f}_silver") for f in JOHTO_FIVE) and not flags.get("johto_battle_frontier_cleared"):
+        flags["johto_battle_frontier_cleared"] = True
+        lines.append("You hold a Silver Print from every facility in the Battle Frontier!")
+    if not fac.startswith("j") and all(flags.get(f"frontier_{f}_silver") for f in FRONTIER_SEVEN) and not flags.get("hoenn_battle_frontier_cleared"):
         flags["hoenn_battle_frontier_cleared"] = True
         lines.append("You hold a Symbol from every facility in the Battle Frontier!")
     return lines

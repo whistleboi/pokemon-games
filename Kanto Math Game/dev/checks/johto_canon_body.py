@@ -28,7 +28,7 @@ DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30",
         "DRAGONS_DEN", "DRAGON_SHRINE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_46",   # (N13, 11-16)
         "TOHJO_FALLS", "MR_POKEMONS_HOUSE", "JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "CLIFF_EDGE_GATE", "JOHTO_CLIFF_CAVE", "SAFARI_ZONE_GATE",   # (N14)
         "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "MT_SILVER_CITY", "FRONTIER_ACCESS", "POKEATHLON_DOME",   # (N15)
-        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER", "KANTO_ROUTE_28"]   # (N16, N17)
+        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER", "KANTO_ROUTE_28", "JOHTO_BATTLE_FRONTIER"]   # (N16, N17, N18)
 
 
 def frames(n):
@@ -892,6 +892,30 @@ check(_hq._companions() == ("Lance", "Dragonite") and not _left and len(set(_tr[
 story.story_flags["got_hm_whirlpool_lance"] = True
 check(_hq._companions() == (), "...and leave once Lance has given you Whirlpool")
 story.story_flags.clear(); story.story_flags.update(_flL)
+
+print("N18: the Battle Frontier's five facilities (Jordan 11-16: real streaks per facility)")
+from src.world import frontier as _fr
+_bf = _tm["JOHTO_BATTLE_FRONTIER"]
+check(set((_bf.get("rooms") or {})) == set(_fr.JOHTO_FIVE) and all(
+          any(isinstance(p, str) and "attendant" in p for p in _bf["rooms"][k].get("people", [])) for k in _fr.JOHTO_FIVE),
+      f"the plaza's five lobbies, an attendant in each {sorted(_bf.get('rooms') or {})}")
+_flF = dict(story.story_flags)
+for _k in [k for k in story.story_flags if k.startswith("frontier_j") or k == "johto_battle_frontier_cleared"]:
+    story.story_flags.pop(_k, None)
+story.story_flags["frontier_jtower_wins"] = 5
+_p1 = _fr.next_trainer(g, "jtower")
+_fr.after_battle(g, "jtower", True)
+story.story_flags["frontier_jtower_wins"] = 10
+_p2 = _fr.next_trainer(g, "jtower")
+check(_p1["name"] == "Tower Tycoon Palmer" and _p1["team"] == [464, 350, 149] and _p1["movesets"]["464"][0] == "ROCK-WRECKER"
+      and _p2["team"] == [485, 488, 486] and story.story_flags.get("frontier_jtower_silver"),
+      f"...Palmer after 5 wins with the game's own team and moves, then 10 for his Gold team {_p1['team']} -> {_p2['team']}")
+for _f in ["jfactory", "jhall", "jcastle", "jarcade"]:
+    story.story_flags[f"frontier_{_f}_wins"] = 5
+    _b = _fr.next_trainer(g, _f); _ln = _fr.after_battle(g, _f, True)
+check(story.story_flags.get("johto_battle_frontier_cleared") and any("Print" in l for l in _ln),
+      "...a Silver Print from all five clears Johto's Frontier (its Journal mission)")
+story.story_flags.clear(); story.story_flags.update(_flF)
 
 print("N16: Routes 26-27's houses")
 from src.pokemon import evolution as _evoN
