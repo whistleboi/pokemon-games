@@ -770,6 +770,19 @@ def _run_story_event(state, key, check, show):
             state._remember()
     for k in ev.get("clear", []):   # (story flags it unsets: the Hall of Fame's, used once per title)
         story.story_flags.pop(k, None)
+    if ev.get("choose"):   # (pick one, kept as a story flag: {"flag", "ask", "choices": [{"text", "value"}], "done": [...]} - the Johto
+        from src.states.systems.pick_list import PickListState   #  Safari Zone's Area Setup, which of its ten layouts you walk into; 11-16)
+        ch = ev["choose"]
+        rows = [(o["text"], o["value"]) for o in ch.get("choices", [])]
+
+        def picked(v):
+            if v is None:
+                show(_resolve_lines(game, ch.get("cancel") or ["Come back any time."]))
+                return
+            story.story_flags[ch["flag"]] = v
+            show(_resolve_lines(game, ch.get("done") or ["All set!"]))
+        _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ch.get("ask") or "WHICH ONE?", rows, picked)))
+        return
     if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
         from src.states.systems.pick_list import PickListState
         from src.states.overworld import AreaTransitionState

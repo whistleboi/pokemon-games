@@ -515,22 +515,20 @@ _bt = kanto("BELL_TOWER", came="ECRUTEAK_CITY")
 check(_bt.run.n_floors == 11 and _bt._figure_floor({"text": "TALK TO SAGE LI", "action": "NPC"}, 11) == 0 and _bt._figure_floor({"text": "CHALLENGE HO-OH", "action": "BOSS"}, 11) == 10,
       "Bell Tower: SoulSilver's ten floors and roof; the sage at the entrance, Ho-Oh on the roof")
 
-# the Johto Safari Zone: three areas side by side on each of 4 wide floors (Jordan, 11-05)
+# the Johto Safari Zone (N19, 11-16): SoulSilver's own twelve areas (land 652-663) in HGSS's ten default layouts, one floor each;
+# the receptionist's Area Setup picks the layout (story flag safari_layout); Hoenn's Safari Game (30 Safari Balls, 500 steps)
 _jz = _prog["JOHTO_SAFARI_ZONE"]
-_js = kanto("JOHTO_SAFARI_ZONE", came=next((i.get("target") or i.get("target_area") for i in _jz.get("route_menu", []) if i.get("action") in ("EXIT", "TRAVEL")), None))
-_keys = [z["key"] for z in _jz["zones"]]
-check(_js.run.n_floors == 4 and _js.run.floor.w == 3 * 36, f"12 areas on 4 floors, each 3x as wide ({_js.run.n_floors}, {_js.run.floor.w})")
-_flag = "zone_JOHTO_SAFARI_ZONE"
-_seen57 = []
-for _x in (5, 50, 100):
-    _js.run.player = (_x, _js.run.player[1])
-    _js._note_area()
-    _seen57.append(story.story_flags.get(_flag))
-check(_seen57 == _keys[:3], f"crossing the gate lines: each part is its area {_seen57}")
-check(_js.toast.startswith("You entered"), "...and it says which area you entered")
-_js.draw()
-_js._descend()
-check(_js._floor_name(1) == " / ".join(_js._zone_name(i) for i in (3, 4, 5)), "the next floor: the next three areas")
+_sv57 = story.story_flags.get("safari_layout")
+_lay57 = {}
+for _l in (0, 5, 9):
+    story.story_flags["safari_layout"] = _l
+    _js = kanto("JOHTO_SAFARI_ZONE", came="SAFARI_ZONE_GATE")
+    _lay57[_l] = (_js.run.index, tuple(_js.run.player), [_js.zones[_js._zone_index(_js.run.index, _x, _y)] for _x, _y in ((10, 10), (40, 10), (75, 10), (10, 45), (40, 45), (75, 45))])
+story.story_flags["safari_layout"] = _sv57
+check(_js.run.n_floors == 10 and [_lay57[_l][0] for _l in (0, 5, 9)] == [0, 5, 9] and _lay57[0][2] == ["plains", "swamp", "meadow", "wetland", "peak", "forest"]
+      and _lay57[5][2] == ["marshland", "plains", "wasteland", "mountain", "peak", "savannah"] and all(_lay57[_l][1] == (47, 67) for _l in _lay57),
+      f"the Johto Safari Zone: ten layouts of SoulSilver's areas, in by the gatehouse below the Peak; Area Setup picks the layout {_lay57}")
+check(getattr(_js, "safari", None) and _js.safari["balls"] == 30, "...the Safari Game: 30 Safari Balls a visit, as in Hoenn's")
 
 # the Bug-Catching Contest (Jordan, 11-05): National Park, its own map
 check(_dg.CONTEST_DAYS == tuple(range(7)), "the contest is open any day (once a day)")
