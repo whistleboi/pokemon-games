@@ -1,0 +1,19 @@
+{
+ "117_alola_tile_dump_1_check__7": {
+  "name": "Notice board (Alola) 1",
+  "ox": 0,
+  "oy": 64,
+  "foot": [
+   3,
+   1
+  ],
+  "doors": [],
+  "kind": "prop",
+  "label": "Notice board (Alola) 1",
+  "credit": "KingTapir (from the Pokemon Ultimate Tileset Collection; https://www.deviantart.com/kingtapir/art/Slaking-Motel-884287164)",
+  "theme": "Tropical",
+  "gen": "Gen 7",
+  "artist": "KingTapir",
+  "group": "Signs & lamps"
+ }
+}
