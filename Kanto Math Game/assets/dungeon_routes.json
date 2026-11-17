@@ -1622,15 +1622,7 @@
       "SEEK MOLTRES": 0
     }
   },
-  "JOHTO_SAFARI_ZONE": {
-    "zones_per_floor": 3,
-    "size": [
-      36,
-      24
-    ],
-    "style": "field",
-    "ponds": 3
-  },
+  "JOHTO_SAFARI_ZONE": {"zones_per_floor": 12, "size": [36, 24], "style": "field", "ponds": 3, "floors": 10},
   "ALOLA_ROUTE_7": {
     "style": "desert",
     "ponds": 2

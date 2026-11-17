@@ -28,7 +28,7 @@ DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30",
         "DRAGONS_DEN", "DRAGON_SHRINE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_46",   # (N13, 11-16)
         "TOHJO_FALLS", "MR_POKEMONS_HOUSE", "JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "CLIFF_EDGE_GATE", "JOHTO_CLIFF_CAVE", "SAFARI_ZONE_GATE",   # (N14)
         "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "MT_SILVER_CITY", "FRONTIER_ACCESS", "POKEATHLON_DOME",   # (N15)
-        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER", "KANTO_ROUTE_28", "JOHTO_BATTLE_FRONTIER"]   # (N16, N17, N18)
+        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER", "KANTO_ROUTE_28", "JOHTO_BATTLE_FRONTIER", "JOHTO_SAFARI_ZONE"]   # (N16, N17, N18, N19)
 
 
 def frames(n):
@@ -916,6 +916,16 @@ for _f in ["jfactory", "jhall", "jcastle", "jarcade"]:
 check(story.story_flags.get("johto_battle_frontier_cleared") and any("Print" in l for l in _ln),
       "...a Silver Print from all five clears Johto's Frontier (its Journal mission)")
 story.story_flags.clear(); story.story_flags.update(_flF)
+
+print("N19: the Safari Zone's Area Setup (Jordan 11-16: all ten default layouts)")
+_rc = next(o for o in _area["SAFARI_ZONE_GATE"]["explore_options"] if o.get("text") == "Safari receptionist")
+_ch = _rc["event"]["choose"]
+check(_ch["flag"] == "safari_layout" and len(_ch["choices"]) == 10 and _ch["choices"][0]["text"].startswith("1: Plains, Swamp, Meadow")
+      and "gate" in (_tm["SAFARI_ZONE_GATE"].get("rooms") or {}) and "Safari receptionist" in _tm["SAFARI_ZONE_GATE"]["rooms"]["gate"].get("people", []),
+      "the gatehouse receptionist offers HGSS's ten default layouts")
+_aS2 = _area["JOHTO_SAFARI_ZONE"]
+check(_ad[_aS2["zone_pools"]["desert"]].get("27") and _ad[_aS2["zone_pools"]["peak"]].get("74") and _aS2["safari_game"] == {"balls": 30, "steps": 500},
+      "...each area's Pokemon are SoulSilver's own (Desert: Sandshrew; Peak: Geodude)")
 
 print("N16: Routes 26-27's houses")
 from src.pokemon import evolution as _evoN

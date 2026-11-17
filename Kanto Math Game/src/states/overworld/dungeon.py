@@ -789,6 +789,8 @@ class DungeonState(OverworldBattles, PlayState):
         if self.zones:
             recipe["floors"] = -(-len(self.zones) // self.per_floor)
             recipe["floors"] += sum(1 for f in recipe.get("layout") or [] if isinstance(f, dict) and f.get("indoors"))  # (and its rooms: the Safari Zone's rest houses)
+            if (recipe.get("art") or {}).get("start_floor_flag"):   # (a map of alternative floors, each holding all the zones: the Johto Safari's layouts)
+                recipe["floors"] = len((recipe.get("art") or {}).get("floors") or []) or recipe["floors"]
             if self.per_floor > 1:  # a wide floor: the areas side by side
                 w, h = recipe.get("size", (40, 26))
                 recipe["size"] = [w * self.per_floor, h]
@@ -812,7 +814,7 @@ class DungeonState(OverworldBattles, PlayState):
                 else:
                     fwd.append(target)
             exits_by_floor = {k: (v[0], v[1]) for k, v in by.items()}
-            story.story_flags[f"zone_{self.area_key}"] = self.zones[start * self.per_floor]
+            story.story_flags[f"zone_{self.area_key}"] = self.zones[min(len(self.zones) - 1, start * self.per_floor)]
 
         tides = (recipe.get("art") or {}).get("tides")  # (Shoal Cave: the sea in or out, by the clock: its high- or low-tide rooms)
         if tides:
@@ -836,6 +838,13 @@ class DungeonState(OverworldBattles, PlayState):
         _drop = getattr(game, "arrive_floor", None)   # (an elevator ride: (area, floor, [x, y]) - Goldenrod Dept. Store's lift down to B1F)
         if _drop and _drop[0] == self.area_key:
             start = int(_drop[1])
+        _sf = (recipe.get("art") or {}).get("start_floor_flag")   # (a map of alternatives, the floor a story flag picks: the Johto Safari
+        if _sf:                                                     #  Zone's ten layouts, chosen at its Area Setup desk; 11-16)
+            start = max(0, min(n - 1, int(story.story_flags.get(_sf) or 0)))
+            if self.zones:
+                _fz = ((recipe.get("art") or {}).get("floors") or [{}])[start].get("zone_at") or []
+                if _fz:
+                    story.story_flags[f"zone_{self.area_key}"] = _fz[-1][4]
         self.run = core.Run(recipe, random.Random(), entrance=entrance, forwards=forwards,
                             make_wild=self._make_wild, trainers=trainers,
                             loot_for=self._floor_loot(loot), tm_spots=spots, figures=figures,
@@ -936,7 +945,14 @@ class DungeonState(OverworldBattles, PlayState):
     def _zone_index(self, index, x=None, y=None):
         """Which zone floor index (at column x, on a wide floor) is. One of our own maps can lay its zones out
         any way ("zone_rects": [x, y, w, h] a zone, in the zones' order: the Safari Zone's four areas)."""
-        rects = ((getattr(self, "recipe", None) or {}).get("art") or {}).get("zone_rects")
+        _art = (getattr(self, "recipe", None) or {}).get("art") or {}
+        _fl = _art["floors"][index] if _art.get("floors") and index < len(_art["floors"]) else {}
+        if self.zones and _fl.get("zone_at") and x is not None:   # (each floor its own areas: [x, y, w, h, zone key] - the Safari's layouts)
+            yy = y if y is not None else (self.run.player[1] if hasattr(self, "run") else 0)
+            for rx, ry, rw, rh, key in _fl["zone_at"]:
+                if rx <= x < rx + rw and ry <= yy < ry + rh and key in self.zones:
+                    return self.zones.index(key)
+        rects = _art.get("zone_rects")
         lay = (getattr(self, "recipe", None) or {}).get("layout") or []
         if self.zones and index < len(lay) and isinstance(lay[index], dict) and lay[index].get("indoors"):  # (in a room: still the zone you came in from)
             now = self.game.story_manager.story_flags.get(f"zone_{self.area_key}")
