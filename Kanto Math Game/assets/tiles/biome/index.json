@@ -1,0 +1,17 @@
+{
+ "tree_dark": {
+  "name": "Leafy tree",
+  "ox": 32,
+  "oy": 64,
+  "foot": [
+   1,
+   1
+  ],
+  "doors": [],
+  "kind": "tree",
+  "label": "Leafy tree",
+  "credit": "Kyle-Dove (Biome Tiles; from \"Tiles - Ready to use Tilesets\" on Eevee Expo)",
+  "gen": "Gen 4",
+  "artist": "Kyle-Dove"
+ }
+}

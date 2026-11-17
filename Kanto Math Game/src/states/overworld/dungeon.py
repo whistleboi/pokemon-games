@@ -3524,6 +3524,9 @@ class DungeonState(OverworldBattles, PlayState):
         if not sheet:
             return None
         frame = (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0
+        _surf = getattr(self, "_on_surf", None) if hasattr(self, "run") else None
+        if _surf and (_surf() or (self.anim > 0 and _surf(self.anim_from))):
+            frame = 0   # (riding a Pokemon on the water: you sit still, no walking steps - Jordan 11-16)
         return self._sheet_frame(sheet, self.facing, frame=frame)
 
     def _ring_spot(self, f):
@@ -3553,9 +3556,6 @@ class DungeonState(OverworldBattles, PlayState):
     def _figure_img(self, item, facing=(0, 1), frame=0):
         """A story figure's look: its own sheet ("AREA:TEXT" in dungeon_sprites.json), a boss's Pokemon
         (its overworld sprite, else its party icon), or a townsperson; facing its way, at that step (src/dungeon/npc.py)."""
-        _surf = getattr(self, "_on_surf", None) if hasattr(self, "run") else None
-        if _surf and (_surf() or (self.anim > 0 and _surf(self.anim_from))):
-            frame = 0   # (riding a Pokemon on the water: you sit still, no walking steps - Jordan 11-16)
         sm = sprite_map(self.game)
         spec = (sm.get("figures") or {}).get(f"{self.area_key}:{item.get('text')}") or {}
         if spec.get("item"):
@@ -3983,6 +3983,18 @@ class DungeonState(OverworldBattles, PlayState):
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
             img = self._icon(lead, TILE, flip=(self.run.player[0] > tx), facing=way)
             drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
+        for _ci, _who in enumerate(self._companions() if me is not None and not self._backdrop and not surfing else ()):
+            (fx, fy), (tx, ty) = self._ctrail_from[_ci + 1], self._ctrail[_ci + 1]
+            if (tx, ty) in (self.run.player, self.partner):
+                continue                                  # (not out yet: they come out from behind you)
+            r = pygame.Rect(int(ox + (fx + (tx - fx) * k) * TILE), int(oy + (fy + (ty - fy) * k) * TILE), TILE, TILE)
+            ahead = self._ctrail[_ci] if _ci else self.partner
+            way = (ahead[0] - tx, ahead[1] - ty)
+            way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
+            img = (self._mon_img(149, way) if _who == "Dragonite"
+                   else self._figure_img({"text": _who}, way, (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0))
+            if img is not None:
+                drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
         if me is not None and surfing:  # on the sea: you ride your Pokemon (a hop on and off)
             drawn += self._surf_draw(me, pr, at, k)
         elif me is not None and stones and self._acro_sheet():  # (on the round stones: your own wheelie, Emerald's Acro Bike frames)
@@ -4012,18 +4024,6 @@ class DungeonState(OverworldBattles, PlayState):
             wx, wy = ra.centerx + (rb.centerx - ra.centerx) * fr, ra.bottom + (rb.bottom - ra.bottom) * fr
             way = (b[0] - a[0], b[1] - a[1]) if a != b else (self.run.player[0] - a[0], self.run.player[1] - a[1])
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
-        for _ci, _who in enumerate(self._companions() if me is not None and not self._backdrop and not surfing else ()):
-            (fx, fy), (tx, ty) = self._ctrail_from[_ci + 1], self._ctrail[_ci + 1]
-            if (tx, ty) in (self.run.player, self.partner):
-                continue                                  # (not out yet: they come out from behind you)
-            r = pygame.Rect(int(ox + (fx + (tx - fx) * k) * TILE), int(oy + (fy + (ty - fy) * k) * TILE), TILE, TILE)
-            ahead = self._ctrail[_ci] if _ci else self.partner
-            way = (ahead[0] - tx, ahead[1] - ty)
-            way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
-            img = (self._mon_img(149, way) if _who == "Dragonite"
-                   else self._figure_img({"text": _who}, way, (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0))
-            if img is not None:
-                drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
             if wk.get("leaving"):
                 way = (-way[0], -way[1])
             wimg = self._sheet_frame(wk["sheet"], way, frame=int(wk["i"] * 2) % 4 if a != b and (wk["i"] < len(wk["path"]) - 1 or wk.get("leaving")) else 0)
