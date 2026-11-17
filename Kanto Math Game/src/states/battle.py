@@ -297,6 +297,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             power = d.get("power") or 0
             mtype = d.get("type")  # None for Struggle (typeless)
             effect = None
+            if name in movelib.WEIGHT_MOVES:  # (its power from the two Pokemon's weights)
+                power = movelib.weight_power(self.game, name, self.player_pokemon, self.opponent_pokemon)
             if mtype and (power or name in movelib.FIXED_DAMAGE):
                 eff = chart.get_multiplier(mtype, self.opponent_pokemon.types)
                 effect = "super" if eff > 1 else "weak" if 0 < eff < 1 else "none" if eff == 0 else None
@@ -409,6 +411,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         category, power) for the move this Pokemon would use against the defender."""
         name = self._ai_choose(attacker, defender)
         d = movelib.info(self.game, name)
+        if name in movelib.WEIGHT_MOVES:
+            d = dict(d, power=movelib.weight_power(self.game, name, attacker, defender))
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         eff = chart.get_multiplier(d["type"], defender.types) if (d.get("power") or 0) else 1.0
         return name, d["type"], eff, d.get("category") or "PHYSICAL", d.get("power") or 0
@@ -459,7 +463,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         foe = self._foe_of(defender) if hasattr(self, "_foe_of") else None
         if foe and self.ability_immunity(foe, defender, d):
             return False  # its ability would take it (Volt Absorb, Levitate...)
-        if (d.get("power") or 0) or name in movelib.FIXED_DAMAGE:
+        if (d.get("power") or 0) or name in movelib.FIXED_DAMAGE or name in movelib.WEIGHT_MOVES:
             return chart.get_multiplier(d["type"], defender.types) != 0
         return self._status_move_works(d, defender, ignore_current=True)
 
@@ -495,6 +499,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         scored = []
         for name in self._battle_moves(attacker):
             d = movelib.info(self.game, name)
+            if name in movelib.WEIGHT_MOVES:
+                d = dict(d, power=movelib.weight_power(self.game, name, attacker, defender))
             acc = (d.get("accuracy") or 100) / 100
             if (d.get("power") or 0) > 0:
                 wm = self._weather_type_mult(d["type"])
@@ -544,6 +550,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         name = self.chosen_move or self._battle_moves(self.player_pokemon)[0]
         d = movelib.info(self.game, name)
+        if name in movelib.WEIGHT_MOVES:
+            d = dict(d, power=movelib.weight_power(self.game, name, self.player_pokemon, self.opponent_pokemon))
         eff = chart.get_multiplier(d["type"], self.opponent_pokemon.types) if (d.get("power") or 0) else 1.0
         self.adv_opp = eff if eff > 0 else 1.0
         (self.opponent_move, self.opponent_attack_type, eff,
@@ -1422,6 +1430,11 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
     def _use_move(self, attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp):
         """Run one move. Returns (damage dealt, message lines, was_effective_hit)."""
         d = self.ability_move_type(attacker, self.held_move_type(attacker, name, movelib.info(self.game, name)))  # (Pixilate, Normalize...; a Plate for Judgment)
+        if name in movelib.WEIGHT_MOVES:  # Low Kick, Grass Knot, Heavy Slam, Heat Crash: power from weight
+            if forms.is_dynamax(defender):
+                return 0, [self.game.assets.get_text("used_move", name=att_label, move=name.replace("-", " ")),
+                           "But it failed!"], False  # (a Dynamax Pokemon can't be weighed, as in the games)
+            d = dict(d, power=movelib.weight_power(self.game, name, attacker, defender))
         blocked = self.move_blocked(attacker, name, d)  # Taunt, Disable
         if blocked:
             return 0, [blocked], False

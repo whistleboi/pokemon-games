@@ -346,4 +346,23 @@ b._xp_participants = [p]
 check([x for x, _ in b._xp_shares()] == [p], "EXP SHARE off in Options: only the battler shares")
 story.exp_share = True
 
+
+print("14) moves powered by weight; the Float Stone")
+check(movelib.usable(movelib.info(g, "LOW-KICK")) and movelib.usable(movelib.info(g, "HEAVY-SLAM")), "Low Kick and Heavy Slam can be learned")
+snorlax, pika, onix = mk(143), mk(25), mk(95)
+check(movelib.weight_power(g, "LOW-KICK", pika, snorlax) == 120 and movelib.weight_power(g, "GRASS-KNOT", snorlax, pika) == 20,
+      "Low Kick on a Snorlax (460 kg): 120; Grass Knot on a Pikachu (6 kg): 20")
+check(movelib.weight_power(g, "HEAVY-SLAM", snorlax, pika) == 120 and movelib.weight_power(g, "HEAT-CRASH", pika, snorlax) == 40,
+      "Heavy Slam: Snorlax on Pikachu 120, Pikachu on Snorlax 40")
+snorlax.held_item = "FLOAT_STONE"
+check(movelib.weight_power(g, "LOW-KICK", pika, snorlax) == 120 and catching.weight(g, snorlax) == 230, "a Float Stone halves its weight")
+onix.held_item = "FLOAT_STONE"
+check(movelib.weight_power(g, "LOW-KICK", pika, onix) == 100, "Onix (210 kg) with a Float Stone: Low Kick 100, not 120")
+b = fresh(moves=["LOW-KICK"])
+b.opponent_pokemon = foe = mk(143)
+foe.level = 3
+b.opponent_hp = b.opp_max_hp = foe.current_hp = 5000
+lines = turn(b, "LOW-KICK")
+check(b.opponent_hp < 5000 and any("LOW KICK" in l.upper() for l in lines), f"Low Kick hits in battle ({5000 - b.opponent_hp} damage)")
+
 print("##### FAILURES:", fails)

@@ -7,6 +7,7 @@
 - **Other items**: Poke Toy / Poke Doll (run from a wild Pokemon), Pomeg-type berries, Gracidea, Heavy Ball, Love Ball, Contest scarves; every item in the Bag now says what it does.
 - **Fixed**: Leftovers healed twice a turn; vitamins said there was no use for them.
 - **Effort points from battles**: every Pokemon that earns XP from a knockout gets the foe's effort points (as in Gen 6 on: up to 252 a stat, 510 in all); a held Macho Brace doubles them.
+- **Low Kick, Grass Knot, Heavy Slam and Heat Crash**: their power comes from the Pokemon's weights, as in the games (a held Float Stone halves its holder's weight), so Pokemon can learn them now.
 - **The Exp. Share item is gone**: EXP SHARE in Options does its job. Old saves lose the item; badge gifts and Game Corner prizes no longer include it.
 
 - **Options > BATTLE STYLE: CLASSIC / OVERWORLD** (was BATTLES: CLASSIC / REAL-TIME). Every battle is turn-based again, with a math question every turn. The style only changes how trainer battles look: OVERWORLD shows the trainer's lines in the map's text box, then the battle right on the map (its Pokemon in front of it, yours facing it, small HP bars, an orb flying for each attack) with the usual buttons and questions. Wild battles are always classic, in Hyperspace Lumiose too.

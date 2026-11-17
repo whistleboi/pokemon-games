@@ -35,6 +35,19 @@ STRUGGLE = "STRUGGLE"  # used only when no known move can affect the foe
 STRUGGLE_DATA = {"type": None, "power": 50, "accuracy": None, "category": "PHYSICAL", "priority": 0,
                  "category_meta": "damage"}
 MAX_MOVES = 4
+# Power from weight (as in the games): Low Kick / Grass Knot by the target's weight, Heavy Slam / Heat Crash by
+# how many times heavier the user is (weights: assets/dex_info.json; a held Float Stone halves it).
+WEIGHT_MOVES = {"LOW-KICK": "target", "GRASS-KNOT": "target", "HEAVY-SLAM": "ratio", "HEAT-CRASH": "ratio"}
+
+
+def weight_power(game, name, user, target):
+    """The power of a weight move against this target."""
+    from src.pokemon.catching import weight
+    t = max(0.1, weight(game, target))
+    if WEIGHT_MOVES.get(name) == "target":
+        return next(p for kg, p in ((10, 20), (25, 40), (50, 60), (100, 80), (200, 100), (float("inf"), 120)) if t < kg)
+    ratio = weight(game, user) / t
+    return 120 if ratio >= 5 else 100 if ratio >= 4 else 80 if ratio >= 3 else 60 if ratio >= 2 else 40
 # Fixed damage: "level" = user's level, "half" = half the target's HP, a number = that much HP.
 FIXED_DAMAGE = {"SEISMIC-TOSS": "level", "NIGHT-SHADE": "level", "DRAGON-RAGE": 40, "SONIC-BOOM": 20,
                 "SUPER-FANG": "half", "RUINATION": "half", "NATURES-MADNESS": "half"}
@@ -83,7 +96,7 @@ def usable(d):
     moves the battle runs (stat moves, conditions, healing, field moves...: battle_effects)."""
     if d.get("name") in SELF_KO:
         return False
-    if (d.get("power") or 0) > 0 or d.get("name") in FIXED_DAMAGE or d.get("category_meta") == "ohko":
+    if (d.get("power") or 0) > 0 or d.get("name") in FIXED_DAMAGE or d.get("name") in WEIGHT_MOVES or d.get("category_meta") == "ohko":
         return True
     if d.get("name") in WEATHER_MOVES:
         return True
