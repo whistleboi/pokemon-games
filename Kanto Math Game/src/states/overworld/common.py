@@ -426,6 +426,11 @@ def _run_story_event(state, key, check, show):
                   or ["None of your Pokemon need purifying right now."])
         if names:
             lines += _evolve_due(game, names)
+    if ev.get("odd_egg"):  # (Route 34's Day-Care Man: seven Odd Eggs, one a day after the last hatches - src/world/odd_egg.py)
+        from src.world import odd_egg as _odd
+        _sp = _odd.talk(game, lines)
+        if _sp:
+            ev = dict(ev, gift_egg=_sp)
     if ev.get("gift_egg"):  # an Egg to hatch on your travels (Lavaridge's old woman: Wynaut, as in the games)
         from src.pokemon import breeding
         from src.pokemon.data import Pokemon

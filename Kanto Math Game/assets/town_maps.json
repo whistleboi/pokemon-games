@@ -44343,6 +44343,41 @@
    "NUGGET",
    "ETHER"
   ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      13,
+      25,
+      17,
+      29
+     ]
+    },
+    "condition": [
+     "start_region:JOHTO",
+     "not:johto_lyra_daycare"
+    ],
+    "flag": "johto_lyra_daycare",
+    "cast": [
+     {
+      "sheet": "hg_heroine.png",
+      "from": [
+       16,
+       26
+      ],
+      "to": "player",
+      "lines": [
+       "Lyra: {player_name}! Fancy seeing you here. This is my grandparents' Day Care!",
+       "Lyra: Leave a Pokemon with them and it'll grow while you travel. And if two get along... sometimes they find an Egg!"
+      ],
+      "leave": [
+       16,
+       26
+      ]
+     }
+    ]
+   }
+  ],
   "rooms": {
    "daycare": {
     "theme": "room",
@@ -44352,7 +44387,7 @@
      "cccccccc",
      "cccccccc",
      "cccccccc",
-     "cm....rc",
+     "cm.N..rc",
      "c.....rc",
      "c.....rc",
      "c..N..rc",
@@ -44398,6 +44433,7 @@
      "_signs_in_picture": true
     },
     "people": [
+     "Day-Care Man",
      "POKéMON DAY CARE"
     ],
     "overheads": [
@@ -44419,42 +44455,7 @@
   },
   "inside": {
    "16,26": "daycare"
-  },
-  "scenes": [
-   {
-    "trigger": {
-     "zone": [
-      13,
-      25,
-      17,
-      29
-     ]
-    },
-    "condition": [
-     "start_region:JOHTO",
-     "not:johto_lyra_daycare"
-    ],
-    "flag": "johto_lyra_daycare",
-    "cast": [
-     {
-      "sheet": "hg_heroine.png",
-      "from": [
-       16,
-       26
-      ],
-      "to": "player",
-      "lines": [
-       "Lyra: {player_name}! Fancy seeing you here. This is my grandparents' Day Care!",
-       "Lyra: Leave a Pokemon with them and it'll grow while you travel. And if two get along... sometimes they find an Egg!"
-      ],
-      "leave": [
-       16,
-       26
-      ]
-     }
-    ]
-   }
-  ]
+  }
  },
  "GOLDENROD_CITY": {
   "art": [

@@ -1,0 +1,199 @@
+# Dex audit (11-16; Jordan: "In each region, all of that dex's mons must be available in the first playthrough somehow: catching,
+# evolution, in-game trading, non-canon placements we agreed on, gifts, shops, events"). Glue after dev/checks/harness_head.py:
+#   cat dev/checks/harness_head.py dev/tools/dex_audit_body.py > dev/checks/out/dex_audit.py; python dev/checks/out/dex_audit.py <scratch> [REGION...]
+# Counts, for each region's own dex (REGION_START dex_range + dex_extra), every way inside that region's own areas:
+# wild pools the areas reference (walk/day/night/surf/rods/trees/rock smash...), the area's own rod pools and the region's rod pools,
+# bosses, gifts, Eggs, trades (the Pokemon you GET), Game Corner prizes, fossils, roamers, and then evolution (into this region's dex
+# only) and breeding (pre-evolutions, where the region has a Day Care). Prints what is still missing, with how close each one is.
+import json, re
+from src.states.game_corner import PRIZES
+
+A = g.loader.area_data
+P = A["STORY_PROGRESSION"]
+T = json.load(open("assets/town_maps.json", encoding="utf-8"))
+EV = json.load(open("assets/pokemon_evolutions.json", encoding="utf-8"))
+N2I = dict(g.name_to_id) if hasattr(g, "name_to_id") else {}
+I2N = {v: k for k, v in N2I.items()}
+STARTS = A.get("REGION_START", {})
+try:
+    from src.states.overworld import town_kanto as _tk
+    FOSSILS = next(v for k, v in vars(_tk).items() if isinstance(v, type) and hasattr(v, "FOSSILS")).FOSSILS
+except Exception:
+    FOSSILS = {}
+FOSSIL_REGION = {138: "KANTO", 140: "KANTO", 142: "KANTO", 345: "HOENN", 347: "HOENN"}
+ROAMERS = {"JOHTO": [243, 244]}
+CODE_GIFTS = {"KANTO": {106: "Dojo (town_kanto.visit_dojo)", 107: "Dojo (town_kanto.visit_dojo)"}, "JOHTO": {133: "Bill's Eevee (town_johto.py)"}, "HOENN": {380: "Soaring: Latias", 381: "Soaring: Latios"}}   # (gifts written in code)
+from src.world import story_events as _se
+SE = _se.EVENTS
+
+regions = [a for a in sys.argv[2:]] or ["KANTO", "JOHTO", "HOENN"]
+
+
+SEEN = set()
+
+
+def ids_in(o, out, why, where):
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in ("boss", "area_boss") and isinstance(v, dict) and str(v.get("id", "")).isdigit():
+                out.setdefault(int(v["id"]), set()).add(f"{why}:{where}")
+            elif k == "gift_pokemon":
+                for x in (v if isinstance(v, list) else [v]):
+                    x = x.get("id") if isinstance(x, dict) else x
+                    if str(x).isdigit():
+                        out.setdefault(int(x), set()).add(f"gift:{where}")
+            elif k == "gift_egg" and str(v).isdigit():
+                out.setdefault(int(v), set()).add(f"egg:{where}")
+            elif k == "trade" and isinstance(v, dict) and str(v.get("give", "")).isdigit():
+                out.setdefault(int(v["give"]), set()).add(f"trade:{where}")
+            elif k == "catch_id" and str(v).isdigit():
+                out.setdefault(int(v), set()).add(f"catch:{where}")
+            elif re.match(r"POKEMON_(\d+)$", str(k)):
+                out.setdefault(int(str(k)[8:]), set()).add(f"gift:{where}")
+            elif k == "battle" and isinstance(v, dict) and v.get("catchable") and v.get("team"):
+                for x in v["team"]:
+                    out.setdefault(int(x), set()).add(f"boss:{where}")
+            else:
+                if isinstance(v, str) and v in SE and (where, v) not in SEEN:
+                    SEEN.add((where, v)); ids_in(SE[v], out, "story", f"{where}/{v}")
+                ids_in(v, out, why, where)
+    elif isinstance(o, list):
+        for x in o:
+            ids_in(x, out, why, where)
+
+
+def pool_ids(name_or_dict):
+    d = A.get(name_or_dict) if isinstance(name_or_dict, str) else name_or_dict
+    if not isinstance(d, dict):
+        return []
+    out = []
+    for k in d:
+        m = re.match(r"^(\d+)", str(k))
+        if m:
+            out.append(int(m.group(1)))
+    return out
+
+
+def evo_targets(pid):
+    n = I2N.get(pid)
+    return [N2I[t.upper()] for t in (EV.get(n) or []) if t.upper() in N2I] if n else []
+
+
+RULES = json.load(open("assets/pokemon_levels.json", encoding="utf-8"))["pairs"]   # ("a>b": {"item": ...}) how each step evolves
+ITEM_KEYS = ("gift_item", "stock", "extra_stock", "hidden", "rewards", "gift_cycle", "items")
+
+
+def items_in(o, out):
+    """Every item key this data can hand over: gifts, rewards, shop stock, hidden items, found balls."""
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in ("gift_item", "rewards") and isinstance(v, dict):
+                out.update(str(x) for x in v)
+            elif k in ("stock",) and isinstance(v, list):
+                out.update(str(x) for x in v if isinstance(x, str))
+            elif k == "extra_stock" and isinstance(v, list):
+                out.update(str(x.get("item")) for x in v if isinstance(x, dict))
+            elif k == "hidden" and isinstance(v, dict):
+                out.update(str(x) for x in v.values())
+            elif k == "gift_cycle" and isinstance(v, list):
+                out.update(str(x) for x in v)
+            elif isinstance(v, str) and v in SE:
+                items_in(SE[v], out)
+            items_in(v, out)
+    elif isinstance(o, list):
+        for x in o:
+            items_in(x, out)
+
+
+PRE = {}
+for n, ts in EV.items():
+    if n in N2I and isinstance(ts, list):
+        for t in ts:
+            if str(t).upper() in N2I:
+                PRE.setdefault(N2I[str(t).upper()], set()).add(N2I[n])
+
+for region in regions:
+    st = STARTS.get(region, {})
+    lo, hi = st.get("dex_range", [0, 0]); extra = set(st.get("dex_extra", []))
+    dex = set(range(lo, hi + 1)) | extra
+    allowed = lambda t: t <= hi or t in extra
+    areas = [k for k in P if story.area_region(k) == region and isinstance(P[k], dict)]
+    got = {}
+    for k in areas:
+        a = P[k]
+        for f, v in a.items():
+            if "pool" in f and isinstance(v, (str, dict)):
+                for pid in pool_ids(v):
+                    got.setdefault(pid, set()).add(f"wild:{k}")
+        for rod in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD"):
+            if a.get("can_fish"):
+                for nm in (f"{k}_{rod}_PERCENTAGES", f"{region}_{rod}_POOL_PERCENTAGES"):
+                    for pid in pool_ids(nm):
+                        got.setdefault(pid, set()).add(f"fish:{k}")
+        ids_in(a, got, "boss", k)
+        if k in T:
+            ids_in(T[k], got, "map", k)
+            for fl in (T[k].get("floors") or []):
+                ids_in(fl, got, "map", k)
+        for city, prizes in PRIZES.items():
+            if city == k:
+                for kind, pid, _c in prizes:
+                    if kind == "POKEMON":
+                        got.setdefault(int(pid), set()).add(f"prize:{k}")
+    for pid, r in FOSSIL_REGION.items():
+        if r == region:
+            got.setdefault(pid, set()).add("fossil")
+    if region == "JOHTO":                       # (src/world/odd_egg.py: Route 34's Day-Care Man, seven Odd Eggs)
+        from src.world import odd_egg as _odd
+        for pid in _odd.SPECIES:
+            got.setdefault(pid, set()).add("odd egg")
+    for pid, why in CODE_GIFTS.get(region, {}).items():
+        got.setdefault(pid, set()).add(why)
+    if region == "HOENN":
+        for pid in pool_ids("HOENN_UNDERWATER_POOL_PERCENTAGES"):
+            got.setdefault(pid, set()).add("dive")
+    for pid in ROAMERS.get(region, []):
+        got.setdefault(pid, set()).add("roamer")
+    for pid in st.get("starters", []):
+        got.setdefault(int(pid), set()).add("starter")
+    daycare = any('"DAYCARE"' in json.dumps(P[k]) for k in areas)
+    have_items = set()
+    for k in areas:
+        items_in(P[k], have_items)
+        if k in T:
+            items_in(T[k], have_items)
+        for kind, it, _c in PRIZES.get(k, []):
+            if kind == "ITEM":
+                have_items.add(str(it))
+    if any(k in ("CELADON_CITY", "GOLDENROD_CITY") or P[k].get("department_store") for k in areas):   # (mart.py: a department store
+        from src.states.systems.mart import PokeMartState as _PM                                             #  sells every evolution item a
+        from src.pokemon import items as _it                                                                 #  Pokemon here can use)
+        evo_items = set(g.loader.evolution_map.get("EVOLUTION_ITEMS", {})) | set(getattr(_it, "DEPARTMENT", []))
+        have_items |= {i for i in evo_items if i not in getattr(_PM, "NEVER_SOLD", ())}
+    need_item = {}
+    base = set(got)
+    # closure: evolution into this region's dex, breeding back down where there's a Day Care
+    reach = set(base); changed = True
+    while changed:
+        changed = False
+        for pid in list(reach):
+            for t in evo_targets(pid):
+                it = (RULES.get(f"{pid}>{t}") or {}).get("item"); it = {"UP_GRADE": "UPGRADE"}.get(it, it)   # (loader.ITEM_ALIASES)
+                if it and it not in have_items:
+                    need_item[t] = it; continue
+                if allowed(t) and t not in reach:
+                    reach.add(t); got.setdefault(t, set()).add(f"evolve:{I2N.get(pid, pid)}"); changed = True
+            if daycare:
+                for p in PRE.get(pid, ()):
+                    if allowed(p) and p not in reach:
+                        reach.add(p); got.setdefault(p, set()).add(f"breed:{I2N.get(pid, pid)}"); changed = True
+    missing = sorted(dex - reach)
+    print(f"===== {region}: dex {len(dex)} ({lo}-{hi} + {len(extra)} extra), {len(areas)} areas, Day Care {daycare}: "
+          f"obtainable {len(dex & reach)}, MISSING {len(missing)}")
+    for pid in missing:
+        pre = PRE.get(pid, set())
+        hint = ""
+        if pre:
+            hint = "evolves from " + ", ".join(f"{I2N.get(p, p)}#{p}{'(have)' if p in reach else ''}" for p in sorted(pre))
+        print(f"   #{pid:<4} {I2N.get(pid, '?'):14} {hint}{'  NEEDS ' + need_item[pid] + ' (not found in this region)' if pid in need_item else ''}")
+    print("   only by evolving/breeding (no direct source):", len([p for p in dex & reach if p not in base]))

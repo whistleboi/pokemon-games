@@ -849,6 +849,50 @@ if _guide:
           f"...and takes you there ({type(g.current_state).__name__}, {story.current_area_key})")
 story.story_flags.clear(); story.story_flags.update(_flS); story.badges.clear(); story.badges.update(_bS); story.inventory.clear(); story.inventory.update(_invS)
 
+print("Odd Egg (Jordan 11-16): seven from Route 34's Day-Care Man, the next one the day after the last hatches")
+from src.world import odd_egg as _oe
+_dc = next(o for o in _area["JOHTO_ROUTE_34"]["route_menu"] if o.get("text") == "Day-Care Man")
+_flO = dict(story.story_flags); _teamO = list(story.player_team)
+for _k in ("odd_eggs_given", "odd_egg_pending", "odd_egg_hatched_day", "odd_egg_ready"):
+    story.story_flags.pop(_k, None)
+story.current_area_key = "JOHTO_ROUTE_34"
+_pO = PlayState(g, classic=True); g.change_state(_pO)
+_got, _waits, _mission = [], 0, []
+for _i in range(_oe.COUNT):
+    story.player_team = [p for p in story.player_team if p and not getattr(p, "is_egg", False)][:5]
+    _mission.append(any(m.get("id") == "johto_s_oddegg" for m in story.get_active_missions()))
+    _rseN(_pO, _dc["event"], lambda c: True, lambda l, **k: None)
+    _eggs = [p for p in story.player_team if getattr(p, "is_egg", False)]
+    _got.append(_eggs[-1].id if _eggs else None)
+    _rseN(_pO, _dc["event"], lambda c: True, lambda l, **k: None)       # (talking again before it hatches: no second Egg)
+    _waits += len([p for p in story.player_team if getattr(p, "is_egg", False)]) == 1
+    _oe.hatched(story, _got[-1])
+    _rseN(_pO, _dc["event"], lambda c: True, lambda l, **k: None)       # (the same day it hatched: nothing yet)
+    _waits += len([p for p in story.player_team if getattr(p, "is_egg", False)]) == 1
+    story.story_flags["odd_egg_hatched_day"] = "2000-01-01"               # (a calendar day later)
+check(sorted(_got) == sorted(_oe.SPECIES) and _waits == 2 * _oe.COUNT and all(_mission),
+      f"...seven different babies {_got}, one at a time, each a day after the last hatched; the Journal mission each time {_mission}")
+check(not _oe.refresh(story) and not any(m.get("id") == "johto_s_oddegg" for m in story.get_active_missions()), "...and no eighth")
+story.story_flags.clear(); story.story_flags.update(_flO); story.player_team = _teamO
+
+print("Lance and Dragonite walk with you through the Rocket Hideout (Jordan 11-16)")
+_flL = dict(story.story_flags)
+story.story_flags["defeated_red_gyarados"] = True; story.story_flags.pop("got_hm_whirlpool_lance", None)
+story.current_area_key, story.last_area_key = "ROCKET_HQ", "MAHOGANY_TOWN"
+_hq = PlayState(g); g.change_state(_hq)
+_left = [m.payload.get("text") for fl in _hq.run.floors for m in fl.movers if m.kind == "figure" and isinstance(m.payload, dict)
+         and m.payload.get("text", "").strip() in ("Lance", "Dragonite")]
+for _d in [(-1, 0), (-1, 0), (0, -1), (-1, 0)]:
+    if _hq.run.floor.walkable(_hq.run.player[0] + _d[0], _hq.run.player[1] + _d[1]):
+        _hq.step(*_d)
+    for _ in range(20): _hq.update()
+_tr = list(_hq._ctrail)
+check(_hq._companions() == ("Lance", "Dragonite") and not _left and len(set(_tr[:3])) == 3 and _hq._companion_at(_tr[1]) == "Lance",
+      f"...they follow a step behind your Pokemon {_tr[:3]}; their standing figures step off ({_left})")
+story.story_flags["got_hm_whirlpool_lance"] = True
+check(_hq._companions() == (), "...and leave once Lance has given you Whirlpool")
+story.story_flags.clear(); story.story_flags.update(_flL)
+
 print("N16: Routes 26-27's houses")
 from src.pokemon import evolution as _evoN
 

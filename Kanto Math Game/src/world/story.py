@@ -538,6 +538,9 @@ class StoryManager:
         """Returns a list of missions whose conditions are currently met."""
         all_missions = self.region_missions()
         active = []
+        if self.story_flags.get("odd_eggs_given") or self.story_flags.get("visited_JOHTO_ROUTE_34"):   # (the Odd Egg mission: by the calendar)
+            from src.world import odd_egg as _odd
+            _odd.refresh(self)
 
         for m in all_missions:
             if self.check_requirements(m.get("condition", {}), region=m.get("region")):
