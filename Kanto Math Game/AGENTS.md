@@ -7,7 +7,9 @@ A Pygame Pokémon game where battles are won by answering math problems. Nine re
 
 ## Run and check
 - Run the game: `python main.py`
-- Run all checks: `bash dev/checks/run_all.sh`. It should end with `##### 0 failures`. The `ValueError: test` from batch5 is deliberate.
+- Which checks to run: `pokemon-games/kanto_handoff/SWEEP_RULES.md` Part 3 (approved rulebook, 11-16). Usually just the
+  suites a change touches: `bash dev/checks/run.sh <suite> ... walk:<region>`; each suite must end `##### 0 failures`.
+- Everything: `bash dev/checks/run_all.sh` (about 40 minutes; only when asked). The `ValueError: test` from batch5 is deliberate.
 - Headless checks use `SDL_VIDEODRIVER=dummy` and `SDL_AUDIODRIVER=dummy`.
 
 ## Layout
@@ -20,6 +22,7 @@ A Pygame Pokémon game where battles are won by answering math problems. Nine re
 - `assets/*_area_data.json`: each region's areas, buttons, trainers and wild Pokémon (`pokemon_area_data.json` is Kanto).
 - `dev/builders`: scripts that made the data. Some are out of date (Sevii's), so check before re-running one.
 - `dev/checks`: the check suite. `dev/tools`: one-off tools. `dev/reference`: reference pictures the game doesn't load.
+  `dev/README.md` says what every dev folder holds.
 - Android (Pydroid 3): `ANDROID.md`, `src/core/android.py`, and `dev/tools/make_android_copy.py`. Keep the code Python 3.11 compatible (the suite compiles it with 3.11) and avoid pygame-ce-only functions.
 
 ## Rules
