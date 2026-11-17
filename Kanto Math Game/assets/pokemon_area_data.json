@@ -3695,26 +3695,6 @@
     },
 
 
-    "KANTO_ROUTE_28": {
-      "area_type": "wild_route",
-      "route_name": "Route 28",
-      "battle_type": "field",
-      "can_fish": true,
-      "wild_pool_percentages": "KANTO_ROUTE_28_PERCENTAGES",
-      "trainer_encounter_rate": 0,
-      "min_rounds": 2,
-      "trainer_pool": [],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER_CITY", "condition": ["can_exit"],  "color": "RED" },
-        { "text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"],  "color": "RED" }
-      ],
-      "next_area": "MT_SILVER",
-      "on_enter_event": null,
-        "region": "JOHTO"
-    },
 
 
     "MT_MOON": {

@@ -1523,7 +1523,7 @@ check("center" in (_r32.run.recipe.get("art") or {}).get("room_floors", {}) and 
 g.walk_town_pos = None; g.walk_town_room = None
 # Johto places that had no map (11-12): each from SoulSilver's own room or zone
 _nm = {}
-for _k, _cm in (("MR_POKEMONS_HOUSE", "JOHTO_ROUTE_30"), ("MT_SILVER_CITY", "POKEMON_LEAGUE_GATE")):
+for _k, _cm in (("MR_POKEMONS_HOUSE", "JOHTO_ROUTE_30"), ("MT_SILVER_CITY", "KANTO_ROUTE_28")):
     g.walk_town_pos = None; g.walk_town_room = None
     story.current_area_key, story.last_area_key = _k, _cm
     _t = _CS(g); g.change_state(_t); _tap_through(_t)
@@ -1538,8 +1538,14 @@ check(set(map(str, _dt.run.floor.exits.values())) == {"ECRUTEAK_CITY"} and len(_
       f"the Dance Theater: SoulSilver's hall, in at its door {_dt.run.player}, the five Kimono Girls on the stage {sorted(_dtt)}")
 check(_nm["MR_POKEMONS_HOUSE"][0] and _nm["MR_POKEMONS_HOUSE"][3] == {"JOHTO_ROUTE_30"} and _nm["MR_POKEMONS_HOUSE"][4] == 2,
       f"Mr. Pokemon's house: SoulSilver's room, in from Route 30 at {_nm['MR_POKEMONS_HOUSE'][2]}, two people to talk to")
-check(_nm["MT_SILVER_CITY"][0] and _nm["MT_SILVER_CITY"][1] == (32, 32) and _nm["MT_SILVER_CITY"][3] == {"MT_SILVER", "POKEMON_LEAGUE_GATE"} and "center" in _nm["MT_SILVER_CITY"][5]
-      and _nm["MT_SILVER_CITY"][2][0] >= 29, f"Mt. Silver's clearing: SoulSilver's 32 x 32, in from the Reception Gate (east) at {_nm['MT_SILVER_CITY'][2]}; the Center, the cave mouth, a guide for the other two ways")
+check(_nm["MT_SILVER_CITY"][0] and _nm["MT_SILVER_CITY"][1] == (32, 32) and _nm["MT_SILVER_CITY"][3] == {"MT_SILVER", "KANTO_ROUTE_28"} and "center" in _nm["MT_SILVER_CITY"][5]
+      and _nm["MT_SILVER_CITY"][2][0] >= 29, f"Mt. Silver's clearing: SoulSilver's 32 x 32, in from Route 28 (east) at {_nm['MT_SILVER_CITY'][2]}; the Center, the cave mouth, a guide for the League plateau")
+_r28 = kanto("KANTO_ROUTE_28", came="MT_SILVER_CITY")
+_r28in = tuple(_r28.run.player)
+_r28b = kanto("KANTO_ROUTE_28", came="POKEMON_LEAGUE_GATE")
+check((_r28.run.floor.w, _r28.run.floor.h) == (64, 32) and {v for v in _r28.run.floor.exits.values() if not str(v).startswith("WARP")} == {"MT_SILVER_CITY", "POKEMON_LEAGUE_GATE"}
+      and _r28in[0] <= 1 and _r28b.run.player[0] >= 50,
+      f"Route 28 (N17): SoulSilver's 64 x 32; in from Mt. Silver's clearing (west) at {_r28in}, from the Reception Gate (east) at {_r28b.run.player}")
 _aq = kanto("JOHTO_SS_AQUA", came="OLIVINE_CITY")
 check(_aq.run.n_floors == 7 and {"OLIVINE_CITY", "VERMILLION_CITY"} <= set(map(str, _aq.run.floor.exits.values())),
       f"the S.S. Aqua: seven decks and cabins from SoulSilver; aboard from Olivine at {_aq.run.player}; gangway mats for Olivine and Vermilion")

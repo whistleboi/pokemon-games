@@ -28,7 +28,7 @@ DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30",
         "DRAGONS_DEN", "DRAGON_SHRINE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_46",   # (N13, 11-16)
         "TOHJO_FALLS", "MR_POKEMONS_HOUSE", "JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "CLIFF_EDGE_GATE", "JOHTO_CLIFF_CAVE", "SAFARI_ZONE_GATE",   # (N14)
         "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "MT_SILVER_CITY", "FRONTIER_ACCESS", "POKEATHLON_DOME",   # (N15)
-        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER"]   # (N16)
+        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER", "KANTO_ROUTE_28"]   # (N16, N17)
 
 
 def frames(n):
@@ -821,7 +821,7 @@ _poolS = {str(k) for f in ("morning_pool_percentages", "day_pool_percentages", "
 check(_aS.get("area_type") != "town" and _aS.get("fly_island") and {"114", "77", "217", "78"} <= _poolS,
       f"Mt. Silver's clearing: SoulSilver's wild Pokemon (Tangela, Ponyta, Ursaring, Rapidash...) and still a place to Fly to ({sorted(_poolS)})")
 story.story_flags["defeated_rival_victory_road_johto"] = True
-_ms = open_map("MT_SILVER_CITY", "POKEMON_LEAGUE_GATE")
+_ms = open_map("MT_SILVER_CITY", "KANTO_ROUTE_28")
 _wildS = [m for f in getattr(_ms.run, "floors", [_ms.run.floor]) for m in f.movers if m.kind == "wild"] if hasattr(_ms, "run") else []
 check(type(_ms).__name__ != "WalkTownState" and len(_wildS) > 0, f"...walked like a route: wild Pokemon about in the clearing ({type(_ms).__name__}, {len(_wildS)})")
 _wp = _ms._make_wild(__import__("random").Random(3)) if hasattr(_ms, "_make_wild") else None

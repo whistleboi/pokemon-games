@@ -77393,42 +77393,6 @@
    "Buena": 1
   }
  },
- "MOOMOO_BARN": {
-  "art": [
-   "cccccccccccccccccccc",
-   "cccccccccccccccc....",
-   "cmmmccmmmccmmmccmm..",
-   "cmmmccmmmccmmmccmm..",
-   "cmmmccmmmccmmmcc....",
-   "cmmm.mmmm.mmmm......",
-   "c.................m.",
-   "c...................",
-   "ccccccvccccccccccccc"
-  ],
-  "exits": {
-   "v": "JOHTO_ROUTE_39"
-  },
-  "buildings": {},
-  "theme": "ship"
- },
- "MOOMOO_HOUSE": {
-  "art": [
-   "ccccccccccccc",
-   "ccccccccccccc",
-   "cmm...mm.mmmm",
-   "c............",
-   "c............",
-   "c............",
-   "c...mmmm..mmm",
-   "c............",
-   "cccccvccccccc"
-  ],
-  "exits": {
-   "v": "JOHTO_ROUTE_39"
-  },
-  "buildings": {},
-  "theme": "ship"
- },
  "MT_SILVER": {
   "theme": "cave",
   "buildings": {},
@@ -85605,7 +85569,7 @@
   ],
   "exits": {
    "^": "MT_SILVER",
-   ">": "POKEMON_LEAGUE_GATE"
+   ">": "KANTO_ROUTE_28"
   },
   "buildings": {
    "C": "center"
@@ -258852,5 +258816,236 @@
   },
   "people": [],
   "signs": []
+ },
+ "KANTO_ROUTE_28": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccckccccccccccccccccccTTTTTTTTTTTTTTccccccccccccccccc",
+   "cccccccccc....kfffAAAAcccccccccccTTTTTTTTTTTTTTcTTTTTTTTcccccccc",
+   "cccccccccc....kfffAAAAccccccccccc..........TTTTcTTTTTTTTcccccccc",
+   "cccccccccc....kkkkADAAccccccccccc..TTTTTTTTTTTTcTTTT====cccccccc",
+   "c.TTTTTT.........................N.TTTTTTTTTTTTcTTTT===cBBBBBBBB",
+   "c.TTTTTT...........................TTTTTTTTTTTTcTT=====cBBBBBBBB",
+   "<.TTTTTT.cTT__________ccccccccccccccccccccccccccTT!====>BBBBBBBB",
+   "<.TTTTTT2cTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"...(..........TTTTTTTT=======>BBBBBBBB",
+   "c.TTTTTT.cTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"...(..........TTTTTTTT=======cBBBBBBBB",
+   "c.TTTTTT.cTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"...c____..____TTTTTTTT========BBBBBBBB",
+   "c........cTT........TTTTTT\"\"\"\"\"\"....\"\"\"\"TTTTTTTT..====TTTTcccccc",
+   "cTTTT..TTcTT........TTTTTT\"\"\"\"\"\"....\"\"\"\"oooo..(...====TTTTcccccc",
+   "cTTTT__TTcTT....TTTTTTTTTT.\"\"...TTTT\"\"\"\"oooo..(...====TTTTcccccc",
+   "cTTTT\"\"TTcccccccTTTTTTTTTT..TT..TTTT\"\"\"\"\"\"\"\"\"\"c___====TTTTcccccc",
+   "cTTTT\"\"TTTTTTTTcTTTTTTTTTT..TT..TTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"....TTTTcccccc",
+   "cTTTT\"\"TTTTTTTTcTTTTTTTT\"\"..TT....TT\"\"\"\"\"\"\"\"\"\"\"\"\"\"....TTTTcccccc",
+   "<\"\"TT\"\"..TTTTTTcTTTTTTTT.\"\".TT\"...TTTTTT\"\"\"\"\"\"\"\"\"\"....TTTTcccccc",
+   "<\"\"TT\"\"..TTTTTTccccccccc____TT\"\"\"\"TTTTTToooooooooocccccccccccccc",
+   "c\"\"(.....)\"\"\"\"\"\"\"...\"\"\".\"\"\".\"\"\"\"\".TTTTTToooooooooocccccccccccccc",
+   "c..(.....)\"\"\"\"\"\"\"..\"\"\"\".\"\"..\"\"\"\"\".TTTTTT\"\"\"\"oooooocccccccccccccc",
+   "c..c_____c\"\"\"\"\"\"\"..\"\"\"\"cTTTTTTTT..TTTTTT\"\"\"\"oooooocccccccccccccc",
+   "c..\"\"\"\"\"\"\"\"\"\"TTTTTTTTTTcTTTTTTTT........\"\"\"\"oooooocccccccccccccc",
+   "c...\"\"\"\"\"\"\"\"\"TTTTTTTTTTcTTTTTTTT........\"\"\"\"oooooocccccccccccccc",
+   "c....\"\"\"\"\"\"\"\"TTTTTTTTTTccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "<": "MT_SILVER_CITY",
+   ">": "POKEMON_LEAGUE_GATE"
+  },
+  "buildings": {
+   "A": "celebhouse",
+   "B": "house"
+  },
+  "roofs": {
+   "A": {
+    "roof": [
+     56,
+     97,
+     30
+    ],
+    "wall": [
+     129,
+     129,
+     116
+    ]
+   },
+   "B": {
+    "roof": [
+     165,
+     174,
+     127
+    ],
+    "wall": [
+     146,
+     110,
+     68
+    ]
+   },
+   "_picture": {
+    "f": "ss_ground/R28.png",
+    "at": [
+     0,
+     0
+    ],
+    "px": 32
+   },
+   "_buildings_in_picture": true,
+   "_signs_in_picture": true
+  },
+  "parts": true,
+  "signs": [
+   [
+    "Route 28",
+    "West: Mt. Silver."
+   ]
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "ss_top/R28.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     64,
+     32
+    ],
+    "px": 32
+   }
+  ],
+  "rooms": {
+   "celebhouse": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm....mmc",
+     "c.........c",
+     "c....Nmm..c",
+     "c.....mm..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:19,7"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       114,
+       121,
+       80
+      ],
+      "9,2": [
+       114,
+       121,
+       80
+      ]
+     },
+     "_kinds": {
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table",
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/R28R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Celebrity"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/R28R0101.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
+   }
+  },
+  "inside": {
+   "19,7": "celebhouse"
+  },
+  "hidden": {
+   "42,6": "RARE_CANDY"
+  },
+  "people": [
+   "TM55"
+  ]
  }
 }

@@ -300,6 +300,13 @@
     "WHIRL_ISLANDS_GOOD_ROD_PERCENTAGES": {"98": 56, "129": 40, "116": 4},
     "WHIRL_ISLANDS_OLD_ROD_PERCENTAGES": {"129": 95, "98": 5},
     "WHIRL_ISLANDS_SUPER_ROD_PERCENTAGES": {"98": 40, "116": 40, "99": 16, "117": 4},
+    "JOHTO_KANTO_ROUTE_28_DAY_PERCENTAGES": {"114": 30, "77": 30, "217": 10, "78": 10, "232": 10, "84": 5, "85": 5},
+    "JOHTO_KANTO_ROUTE_28_MORNING_PERCENTAGES": {"114": 30, "77": 30, "217": 10, "78": 10, "232": 10, "84": 5, "85": 5},
+    "JOHTO_KANTO_ROUTE_28_NIGHT_PERCENTAGES": {"114": 30, "77": 30, "217": 10, "215": 10, "78": 10, "232": 10},
+    "JOHTO_KANTO_ROUTE_28_SURF_PERCENTAGES": {"60": 90, "61": 10},
+    "KANTO_ROUTE_28_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "KANTO_ROUTE_28_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "KANTO_ROUTE_28_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
@@ -1648,6 +1655,33 @@
             "night_pool_percentages": "JOHTO_KANTO_ROUTE_26_NIGHT_PERCENTAGES",
             "surf_pool_percentages": "JOHTO_KANTO_ROUTE_26_SURF_PERCENTAGES"
         },
+        "KANTO_ROUTE_28": {
+            "area_type": "wild_route",
+            "route_name": "Route 28",
+            "battle_type": "field",
+            "can_fish": true,
+            "wild_pool_percentages": "JOHTO_KANTO_ROUTE_28_DAY_PERCENTAGES",
+            "trainer_encounter_rate": 0,
+            "min_rounds": 2,
+            "trainer_pool": [],
+            "route_menu": [
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+                {"text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER_CITY", "condition": ["can_exit"], "color": "RED"},
+                {"text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"], "color": "RED"},
+                {"text": "Celebrity", "action": "EVENT", "door": "celebhouse", "color": "GOLD", "event": {"lines": ["Celebrity: You found my hideaway! I came out here to rest after years in the spotlight.", "Celebrity: Well, since you're not the press... Take this. My debut dress was inspired by this move: Steel Wing."], "gift_item": {"TM30": 1}, "flag": "got_tm30_route_28", "done": ["Celebrity: Shh! Not a word to anyone that I'm out here, all right?"]}},
+                {"text": "TM55", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm55_kanto_route_28_r28_33_8", "event": {"lines": ["A TM (Brine), lying in the grass."], "gift_item": {"TM55": 1}, "flag": "got_tm55_kanto_route_28_r28_33_8"}}
+            ],
+            "next_area": "MT_SILVER",
+            "on_enter_event": null,
+            "region": "JOHTO",
+            "surf_pool_percentages": "JOHTO_KANTO_ROUTE_28_SURF_PERCENTAGES",
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+            "morning_pool_percentages": "JOHTO_KANTO_ROUTE_28_MORNING_PERCENTAGES",
+            "day_pool_percentages": "JOHTO_KANTO_ROUTE_28_DAY_PERCENTAGES",
+            "night_pool_percentages": "JOHTO_KANTO_ROUTE_28_NIGHT_PERCENTAGES"
+        },
         "TOHJO_FALLS": {
             "region": "JOHTO",
             "area_type": "dungeon",
@@ -2368,8 +2402,6 @@
             
         },
         
-        "MOOMOO_BARN": {"area_type": "town", "region": "JOHTO", "route_name": "Moomoo Farm Barn", "travel_options": [{"text": "Route 39", "target_area": "JOHTO_ROUTE_39"}], "explore_options": [], "trainer_pool": []},
-        "MOOMOO_HOUSE": {"area_type": "town", "region": "JOHTO", "route_name": "Moomoo Farm", "travel_options": [{"text": "Route 39", "target_area": "JOHTO_ROUTE_39"}], "explore_options": [], "trainer_pool": []},
         "JOHTO_ROUTE_39": {
             "region": "JOHTO",
             "area_type": "wild_route",

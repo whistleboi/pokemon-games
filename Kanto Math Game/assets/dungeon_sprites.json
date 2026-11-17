@@ -7014,6 +7014,9 @@
     },
     "MT_SILVER:PURE INCENSE": {
       "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_28:TM55": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",

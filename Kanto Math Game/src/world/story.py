@@ -1654,6 +1654,12 @@ class StoryManager:
             self.current_area_key = "MT_SILVER"
 
     def get_gym_battle_background(self, area_id, trainer_index=0, is_leader=False):
+        # Old areas nothing leads to any more (Jordan 11-16: deleted): Moomoo's drawn house and barn (the farm is Route 39's rooms),
+        # and Hoenn's dropped Secret Islet / Meadow / Shore (back to the route their Soaring landing hangs off).
+        _gone = {"MOOMOO_HOUSE": "JOHTO_ROUTE_39", "MOOMOO_BARN": "JOHTO_ROUTE_39", "HOENN_SECRET_ISLET": "HOENN_ROUTE_126",
+                 "HOENN_SECRET_MEADOW": "HOENN_ROUTE_130", "HOENN_SECRET_SHORE": "HOENN_ROUTE_129"}
+        if self.current_area_key in _gone:
+            self.current_area_key = _gone[self.current_area_key]
         """
         Determines the correct battle background for a Gym or League battle.
         Handles both static strings (standard gyms) and lists (Elite 4).
