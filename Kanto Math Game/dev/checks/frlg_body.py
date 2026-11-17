@@ -274,8 +274,8 @@ g.walk_town_room = None
 t = town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 enter(t, (36, 19))
 _clerk = t.people.get((2, 3), {})
-check(t.room == "mart" and [o.get("text") for o in _clerk.get("any", [])] == ["Poke Mart", "Shop"] and t._people().get((2, 3), {}).get("action") == "SHOP",
-      f"Viridian's Mart: the shared room; the clerk is Oak's parcel first, then the Shop ({t.room})")
+check(t.room == "mart" and [o.get("text") for o in _clerk.get("any", [])] == ["Poke Mart", "Shop", "Clerk"] and t._people().get((2, 3), {}).get("action") == "SHOP",
+      f"Viridian's Mart: the shared room; the clerk is Oak's parcel first, then the Shop (between them: take the parcel to Oak) ({t.room})")
 t._go(None, "OUT:36,19")
 enter(t, (26, 26))
 check(t.room == "center" and t.people.get((7, 2), {}).get("action") == "HEAL", "Viridian's Center: the shared room, the nurse")

@@ -156,7 +156,8 @@ check(story.inventory.get("DOME_FOSSIL") == 1 and flags.get("took_dome_fossil"),
 lab = city("CINNABAR_ISLAND")
 lab.visit_stoneman()
 check(story.inventory.get("HELIX_FOSSIL") == 1, "the lab hands over the Helix Fossil Miguel kept")
-check(not any(o.get("target") == "stoneman" for o in prog["MT_MOON_CITY"]["explore_options"]), "revival is at Cinnabar only")
+check("MT_MOON_CITY" not in prog and not any(o.get("target") == "stoneman" for o in prog["MT_MOON"].get("route_menu", [])),
+      "revival is at Cinnabar only (Mt. Moon's old menu stop is gone, 11-16)")
 story.badges["KANTO"] = ["BOULDER"]
 p = city("PEWTER_CITY")
 p.visit_museum()

@@ -587,6 +587,7 @@ PRIZES = {
                      ("POKEMON", 137, 6500),  # Porygon, as in FireRed / LeafGreen
                      ("ITEM", "RARE_CANDY", 500), ("ITEM", "NUGGET", 1000), ("ITEM", "EXP_SHARE", 2000)],
     "GOLDENROD_CITY": [("POKEMON", 63, 200), ("POKEMON", 23, 700), ("POKEMON", 147, 2100),
+                       ("POKEMON", 137, 6500), ("ITEM", "UPGRADE", 4000),   # (Jordan 11-16: Porygon and its Up-Grade, so Porygon2 is in Johto's first run)
                        ("ITEM", "EVERSTONE", 300), ("ITEM", "RARE_CANDY", 500), ("ITEM", "AMULET_COIN", 2000)],
     "MAUVILLE_CITY": [("ITEM", "RARE_CANDY", 500), ("ITEM", "NUGGET", 1000), ("ITEM", "METAL_COAT", 1500),
                       ("ITEM", "KINGS_ROCK", 1500), ("ITEM", "EXP_SHARE", 2000)],

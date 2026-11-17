@@ -61,7 +61,7 @@ ROMS = {
         "path": os.path.join(DOWNLOADS, "Pokemon Ultra Violet v1.22", "Pokemon Ultra Violet v1.22.gba"),
         "engine": "BPRE",
         "maps": {
-            "VIRIDIAN_CITY": (3, 1), "MT_MOON_CITY": (1, 1), "ROCK_TUNNEL_CITY": (1, 81),
+            "VIRIDIAN_CITY": (3, 1),
             "SILPH_CITY": (1, 51), "KANTO_POKEMON_TOWER": (1, 94),
             "THREE_ISLE_PORT": (3, 49), "NAVEL_ROCK": (2, 0), "BIRTH_ISLAND": (2, 56),
             "ROCKET_WAREHOUSE": (1, 114),

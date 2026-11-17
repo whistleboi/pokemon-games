@@ -28,7 +28,7 @@ DONE = ["NEW_BARK_TOWN", "JOHTO_ROUTE_29", "CHERRYGROVE_CITY", "JOHTO_ROUTE_30",
         "DRAGONS_DEN", "DRAGON_SHRINE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_46",   # (N13, 11-16)
         "TOHJO_FALLS", "MR_POKEMONS_HOUSE", "JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "CLIFF_EDGE_GATE", "JOHTO_CLIFF_CAVE", "SAFARI_ZONE_GATE",   # (N14)
         "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "MT_SILVER_CITY", "FRONTIER_ACCESS", "POKEATHLON_DOME",   # (N15)
-        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER"]   # (N16)
+        "KANTO_ROUTE_27", "KANTO_ROUTE_26", "MT_SILVER", "KANTO_ROUTE_28", "JOHTO_BATTLE_FRONTIER"]   # (N16, N17, N18)
 
 
 def frames(n):
@@ -821,7 +821,7 @@ _poolS = {str(k) for f in ("morning_pool_percentages", "day_pool_percentages", "
 check(_aS.get("area_type") != "town" and _aS.get("fly_island") and {"114", "77", "217", "78"} <= _poolS,
       f"Mt. Silver's clearing: SoulSilver's wild Pokemon (Tangela, Ponyta, Ursaring, Rapidash...) and still a place to Fly to ({sorted(_poolS)})")
 story.story_flags["defeated_rival_victory_road_johto"] = True
-_ms = open_map("MT_SILVER_CITY", "POKEMON_LEAGUE_GATE")
+_ms = open_map("MT_SILVER_CITY", "KANTO_ROUTE_28")
 _wildS = [m for f in getattr(_ms.run, "floors", [_ms.run.floor]) for m in f.movers if m.kind == "wild"] if hasattr(_ms, "run") else []
 check(type(_ms).__name__ != "WalkTownState" and len(_wildS) > 0, f"...walked like a route: wild Pokemon about in the clearing ({type(_ms).__name__}, {len(_wildS)})")
 _wp = _ms._make_wild(__import__("random").Random(3)) if hasattr(_ms, "_make_wild") else None
@@ -848,6 +848,74 @@ if _guide:
     check(type(g.current_state).__name__ == "AreaTransitionState" or story.current_area_key == "SILVER_LEAGUE_PLATEAU",
           f"...and takes you there ({type(g.current_state).__name__}, {story.current_area_key})")
 story.story_flags.clear(); story.story_flags.update(_flS); story.badges.clear(); story.badges.update(_bS); story.inventory.clear(); story.inventory.update(_invS)
+
+print("Odd Egg (Jordan 11-16): seven from Route 34's Day-Care Man, the next one the day after the last hatches")
+from src.world import odd_egg as _oe
+_dc = next(o for o in _area["JOHTO_ROUTE_34"]["route_menu"] if o.get("text") == "Day-Care Man")
+_flO = dict(story.story_flags); _teamO = list(story.player_team)
+for _k in ("odd_eggs_given", "odd_egg_pending", "odd_egg_hatched_day", "odd_egg_ready"):
+    story.story_flags.pop(_k, None)
+story.current_area_key = "JOHTO_ROUTE_34"
+_pO = PlayState(g, classic=True); g.change_state(_pO)
+_got, _waits, _mission = [], 0, []
+for _i in range(_oe.COUNT):
+    story.player_team = [p for p in story.player_team if p and not getattr(p, "is_egg", False)][:5]
+    _mission.append(any(m.get("id") == "johto_s_oddegg" for m in story.get_active_missions()))
+    _rseN(_pO, _dc["event"], lambda c: True, lambda l, **k: None)
+    _eggs = [p for p in story.player_team if getattr(p, "is_egg", False)]
+    _got.append(_eggs[-1].id if _eggs else None)
+    _rseN(_pO, _dc["event"], lambda c: True, lambda l, **k: None)       # (talking again before it hatches: no second Egg)
+    _waits += len([p for p in story.player_team if getattr(p, "is_egg", False)]) == 1
+    _oe.hatched(story, _got[-1])
+    _rseN(_pO, _dc["event"], lambda c: True, lambda l, **k: None)       # (the same day it hatched: nothing yet)
+    _waits += len([p for p in story.player_team if getattr(p, "is_egg", False)]) == 1
+    story.story_flags["odd_egg_hatched_day"] = "2000-01-01"               # (a calendar day later)
+check(sorted(_got) == sorted(_oe.SPECIES) and _waits == 2 * _oe.COUNT and all(_mission),
+      f"...seven different babies {_got}, one at a time, each a day after the last hatched; the Journal mission each time {_mission}")
+check(not _oe.refresh(story) and not any(m.get("id") == "johto_s_oddegg" for m in story.get_active_missions()), "...and no eighth")
+story.story_flags.clear(); story.story_flags.update(_flO); story.player_team = _teamO
+
+print("Lance and Dragonite walk with you through the Rocket Hideout (Jordan 11-16)")
+_flL = dict(story.story_flags)
+story.story_flags["defeated_red_gyarados"] = True; story.story_flags.pop("got_hm_whirlpool_lance", None)
+story.current_area_key, story.last_area_key = "ROCKET_HQ", "MAHOGANY_TOWN"
+_hq = PlayState(g); g.change_state(_hq)
+_left = [m.payload.get("text") for fl in _hq.run.floors for m in fl.movers if m.kind == "figure" and isinstance(m.payload, dict)
+         and m.payload.get("text", "").strip() in ("Lance", "Dragonite")]
+for _d in [(-1, 0), (-1, 0), (0, -1), (-1, 0)]:
+    if _hq.run.floor.walkable(_hq.run.player[0] + _d[0], _hq.run.player[1] + _d[1]):
+        _hq.step(*_d)
+    for _ in range(20): _hq.update()
+_tr = list(_hq._ctrail)
+check(_hq._companions() == ("Lance", "Dragonite") and not _left and len(set(_tr[:3])) == 3 and _hq._companion_at(_tr[1]) == "Lance",
+      f"...they follow a step behind your Pokemon {_tr[:3]}; their standing figures step off ({_left})")
+story.story_flags["got_hm_whirlpool_lance"] = True
+check(_hq._companions() == (), "...and leave once Lance has given you Whirlpool")
+story.story_flags.clear(); story.story_flags.update(_flL)
+
+print("N18: the Battle Frontier's five facilities (Jordan 11-16: real streaks per facility)")
+from src.world import frontier as _fr
+_bf = _tm["JOHTO_BATTLE_FRONTIER"]
+check(set((_bf.get("rooms") or {})) == set(_fr.JOHTO_FIVE) and all(
+          any(isinstance(p, str) and "attendant" in p for p in _bf["rooms"][k].get("people", [])) for k in _fr.JOHTO_FIVE),
+      f"the plaza's five lobbies, an attendant in each {sorted(_bf.get('rooms') or {})}")
+_flF = dict(story.story_flags)
+for _k in [k for k in story.story_flags if k.startswith("frontier_j") or k == "johto_battle_frontier_cleared"]:
+    story.story_flags.pop(_k, None)
+story.story_flags["frontier_jtower_wins"] = 5
+_p1 = _fr.next_trainer(g, "jtower")
+_fr.after_battle(g, "jtower", True)
+story.story_flags["frontier_jtower_wins"] = 10
+_p2 = _fr.next_trainer(g, "jtower")
+check(_p1["name"] == "Tower Tycoon Palmer" and _p1["team"] == [464, 350, 149] and _p1["movesets"]["464"][0] == "ROCK-WRECKER"
+      and _p2["team"] == [485, 488, 486] and story.story_flags.get("frontier_jtower_silver"),
+      f"...Palmer after 5 wins with the game's own team and moves, then 10 for his Gold team {_p1['team']} -> {_p2['team']}")
+for _f in ["jfactory", "jhall", "jcastle", "jarcade"]:
+    story.story_flags[f"frontier_{_f}_wins"] = 5
+    _b = _fr.next_trainer(g, _f); _ln = _fr.after_battle(g, _f, True)
+check(story.story_flags.get("johto_battle_frontier_cleared") and any("Print" in l for l in _ln),
+      "...a Silver Print from all five clears Johto's Frontier (its Journal mission)")
+story.story_flags.clear(); story.story_flags.update(_flF)
 
 print("N16: Routes 26-27's houses")
 from src.pokemon import evolution as _evoN

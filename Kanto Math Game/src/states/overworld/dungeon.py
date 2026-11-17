@@ -875,6 +875,7 @@ class DungeonState(OverworldBattles, PlayState):
         self.anim_from = self.run.player
         self.partner = self.run.player       # where your lead Pokemon walks (a step behind you)
         self.partner_from = self.run.player
+        self._reset_trail()                  # (companions walking behind your Pokemon: Lance and Dragonite in the Rocket Hideout)
         self.steps = 0                       # (which foot: the walking frames)
         self.walk_goal = None      # a tapped tile you're walking to
         self.encounter = None      # the wild Pokemon or trainer you met
@@ -1035,6 +1036,55 @@ class DungeonState(OverworldBattles, PlayState):
                                                        "text": (ev.get("trainer") or {}).get("name", "")}))
         return out
 
+    # ---------------------------------------------------------------- companions (Jordan 11-16: "have lance and dragonite follow the player")
+    # Someone walking with you, a step behind your Pokemon: Lance and his Dragonite through the Rocket Hideout, from his talk in the
+    # souvenir shop till he gives you Whirlpool. Their standing figures on the floors are lifted while they walk with you; talking to
+    # the walking Lance plays the line his figure on this floor has (B1F: he patches up your team; B2F: Whirlpool).
+    COMPANIONS = {"ROCKET_HQ": {"names": ("Lance", "Dragonite"), "while": ["defeated_red_gyarados"], "until": "got_hm_whirlpool_lance"}}
+
+    def _companions(self):
+        c = self.COMPANIONS.get(getattr(self, "area_key", None))
+        flags = self.game.story_manager.story_flags
+        if not c or not all(flags.get(f) for f in c["while"]) or flags.get(c["until"]):
+            return ()
+        return c["names"]
+
+    def _reset_trail(self):
+        here = self.run.player if hasattr(self, "run") else (0, 0)
+        self._ctrail = [here] * 4
+        self._ctrail_from = list(self._ctrail)
+        self._hide_followed()
+
+    def _hide_followed(self):
+        """While they walk with you, their figures standing on the floors step off."""
+        names = self._companions()
+        if not names or not hasattr(self, "run"):
+            return
+        for f in getattr(self.run, "floors", None) or [self.run.floor]:
+            f.movers = [m for m in f.movers if not (m.kind == "figure" and isinstance(m.payload, dict)
+                                                    and str(m.payload.get("text", "")).strip() in names)]
+
+    def _companion_at(self, tile):
+        names = self._companions()
+        for i, who in enumerate(names):
+            if i + 1 < len(self._ctrail) and self._ctrail[i + 1] == tile and tile != self.run.player and tile != self.partner:
+                return who
+        return None
+
+    def _talk_companion(self, who):
+        """Talking to someone walking with you: this floor's line of theirs (their figure's), else a word in passing."""
+        art = (getattr(self, "recipe", None) or {}).get("art") or {}
+        fl = art["floors"][self.run.index] if art.get("floors") and self.run.index < len(art["floors"]) else art
+        item = next((p for p in (fl.get("people") or []) if isinstance(p, dict) and str(p.get("text", "")).strip() == who
+                     and self.npc_shown(p)), None)
+        if item is not None:
+            class _M:   # (as a standing figure would be)
+                pass
+            m = _M(); m.payload, m.motion, m.kind = item, None, "figure"
+            self._use_figure(m)
+            return
+        self.say(["DRAGONITE: Gyaoo!"] if who == "Dragonite" else ["Lance: Stay sharp. Team Rocket could be around any corner."])
+
     def _sync_figures(self):
         """After a battle or an event: figures whose time has come turn up, and finished ones leave."""
         if not hasattr(self, "run"):
@@ -1054,6 +1104,7 @@ class DungeonState(OverworldBattles, PlayState):
             self.run.add_figure(self._figure_floor(item, self.run.n_floors), item)
         self.placed = now
         self._sync_gate()
+        self._hide_followed()
 
     def _boss_spot(self):
         """The tile the area's boss sleeps on (the map's "boss_spot"), while it is still there."""
@@ -1788,6 +1839,7 @@ class DungeonState(OverworldBattles, PlayState):
             if dy < 0 and self._downhill(before):  # (pedalling up the Cycling Road's slope: each step takes twice as long)
                 self.anim = STEP_FRAMES * 2
             self.partner_from, self.partner = self.partner, before  # it steps where you were
+            self._ctrail_from = list(self._ctrail); self._ctrail = [before] + self._ctrail[:3]   # (companions: a step behind each other)
             self.steps += 1
             self._lap_step()
             if not self._hidden_item(self.run.player):
@@ -1910,6 +1962,7 @@ class DungeonState(OverworldBattles, PlayState):
         self.run.descend()
         self.anim = 0
         self.anim_from = self.partner = self.partner_from = self.run.player
+        self._reset_trail()
         self.banner = 120
 
     def _warp(self, index, x, y, land=False):
@@ -1920,6 +1973,7 @@ class DungeonState(OverworldBattles, PlayState):
         self.run.warp(index, x, y, land=land)
         self.anim = 0
         self.anim_from = self.partner = self.partner_from = self.run.player
+        self._reset_trail()
         self.banner = 120
 
     def _ascend(self):
@@ -1927,6 +1981,7 @@ class DungeonState(OverworldBattles, PlayState):
         self.run.ascend()
         self.anim = 0
         self.anim_from = self.partner = self.partner_from = self.run.player
+        self._reset_trail()
         self.banner = 120
 
     # ---------------------------------------------------------------- story gates on the map (Jordan, 11-06)
@@ -2611,6 +2666,10 @@ class DungeonState(OverworldBattles, PlayState):
             elif e.key in (pygame.K_PERIOD, pygame.K_z):
                 self.wait_turn()
             elif e.key in (pygame.K_SPACE, pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_f):
+                _cw = self._companion_at((self.run.player[0] + self.facing[0], self.run.player[1] + self.facing[1]))
+                if _cw:
+                    self._talk_companion(_cw)
+                    return
                 act = self._act_here()
                 if act:
                     act[1]()
@@ -2735,10 +2794,28 @@ class DungeonState(OverworldBattles, PlayState):
         cond = u.get("condition")
         return all(self._check_route_condition(c, False, u) for c in (cond if isinstance(cond, list) else [cond] if cond else []))
 
+    def _switches(self):
+        """This floor's "boulder_switches": [{"on": [x, y] the switch, "boulders": [[x, y], ...] the ones that can reach it
+        (the source game's), "flag": set once one is on it, "lines"}] (FireRed's Victory Road: each holds a rock barrier down)."""
+        m = self.run.recipe.get("art") or {}
+        here = m["floors"][self.run.index] if m.get("floors") and self.run.index < len(m["floors"]) else m
+        return here.get("boulder_switches") or []
+
+    def _switch_for(self, t):
+        """The switch a boulder at t rolls onto when pushed (one still empty), else None."""
+        flags = self.game.story_manager.story_flags
+        return next((sw for sw in self._switches() if not flags.get(sw["flag"])
+                     and any(tuple(b) == tuple(t) for b in sw.get("boulders", []))), None)
+
     def _clear_boulders(self):
         """Boulders pushed aside stay out of the way (a story flag each)."""
         f = self.run.floor
         flags = self.game.story_manager.story_flags
+        for sw in self._switches():   # (a boulder sitting on its switch)
+            t = tuple(sw["on"])
+            if flags.get(sw["flag"]) and t not in f.decor:
+                f.decor[t] = f"pressed:{t[0]},{t[1]}"
+                f.tiles[t[1]][t[0]] = core.WALL
         for b, _hole, land in self._drops(self.run.index - 1):  # (dropped from above: a rock on the ice here)
             t = tuple(land)
             if t not in f.decor and flags.get(f"boulder_{self.area_key}_{self.run.index - 1}_{b[0]}_{b[1]}"):
@@ -2869,8 +2946,16 @@ class DungeonState(OverworldBattles, PlayState):
             self.game.change_state(self)
             if solved:
                 story.story_flags[self._boulder_flag(t)] = True
+                sw = self._switch_for(t)
+                if sw:   # (it rolls onto its floor switch: Victory Road's, and the rock barrier it holds up drops)
+                    story.story_flags[sw["flag"]] = True
                 self._clear_boulders()
-                if any(tuple(b) == tuple(t) for b, _h, _l in self._drops(self.run.index)):
+                if sw:
+                    self._floor_surf = None
+                    self._over_key = None   # (the floor's picture: the barrier gone)
+                    self.say(sw.get("lines") or ["Your Pokemon used Strength!", "The boulder rolled onto the floor switch!",
+                                                 "Click! Somewhere, a rock barrier sank into the ground."])
+                elif any(tuple(b) == tuple(t) for b, _h, _l in self._drops(self.run.index)):
                     self.say(["Your Pokemon used Strength!", "The boulder dropped through the hole!", "It landed on the floor below."])
                 else:
                     self.say(["Your Pokemon used Strength!", "The boulder slid out of the way!"])
@@ -2965,6 +3050,9 @@ class DungeonState(OverworldBattles, PlayState):
             return True
         if what.startswith("rubble:"):
             self.say(["Fallen rocks block the way.", "Maybe there's another way around."])
+            return True
+        if what.startswith("pressed:"):
+            self.say(["The boulder sits on the floor switch.", "It's holding the switch down."])
             return True
         if what.startswith("fallen:"):
             self.say(["A boulder that fell from above.", "It's frozen fast in the ice."])
@@ -3468,6 +3556,9 @@ class DungeonState(OverworldBattles, PlayState):
     def _figure_img(self, item, facing=(0, 1), frame=0):
         """A story figure's look: its own sheet ("AREA:TEXT" in dungeon_sprites.json), a boss's Pokemon
         (its overworld sprite, else its party icon), or a townsperson; facing its way, at that step (src/dungeon/npc.py)."""
+        _surf = getattr(self, "_on_surf", None) if hasattr(self, "run") else None
+        if _surf and (_surf() or (self.anim > 0 and _surf(self.anim_from))):
+            frame = 0   # (riding a Pokemon on the water: you sit still, no walking steps - Jordan 11-16)
         sm = sprite_map(self.game)
         spec = (sm.get("figures") or {}).get(f"{self.area_key}:{item.get('text')}") or {}
         if spec.get("item"):
@@ -3753,7 +3844,7 @@ class DungeonState(OverworldBattles, PlayState):
                 img = self._crate_img()
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom)))
                 continue
-            if str(what).startswith(("boulder:", "fallen:", "rubble:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
+            if str(what).startswith(("boulder:", "fallen:", "rubble:", "pressed:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
                 r = at(x, y)
                 img = self._sheet_frame("Object boulder.png", col=0, height=TILE - 4)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
@@ -3838,9 +3929,10 @@ class DungeonState(OverworldBattles, PlayState):
                     screen.blit(tag, tag.get_rect(center=pill.center))
                 continue
             else:
-                img = self._trainer_img(m.payload[1], m.facing, mo.frame() if mo is not None else 0)
+                _wet = f.tile(m.x, m.y) == core.SURF
+                img = self._trainer_img(m.payload[1], m.facing, mo.frame() if mo is not None and not _wet else 0)   # (on the water: still, no steps)
                 lift = 0
-                if f.tile(m.x, m.y) == core.SURF:  # (out on the sea: riding a Pokemon too)
+                if _wet:  # (out on the sea: riding a Pokemon too)
                     frame = (pygame.time.get_ticks() // 160 + m.x) % 4
                     base = self._sheet_frame("base_surf.png", m.facing, col=frame, height=int(TILE * 0.95))
                     bob = int(2 * math.sin(pygame.time.get_ticks() / 180 + m.x))
@@ -3923,6 +4015,18 @@ class DungeonState(OverworldBattles, PlayState):
             wx, wy = ra.centerx + (rb.centerx - ra.centerx) * fr, ra.bottom + (rb.bottom - ra.bottom) * fr
             way = (b[0] - a[0], b[1] - a[1]) if a != b else (self.run.player[0] - a[0], self.run.player[1] - a[1])
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
+        for _ci, _who in enumerate(self._companions() if me is not None and not self._backdrop and not surfing else ()):
+            (fx, fy), (tx, ty) = self._ctrail_from[_ci + 1], self._ctrail[_ci + 1]
+            if (tx, ty) in (self.run.player, self.partner):
+                continue                                  # (not out yet: they come out from behind you)
+            r = pygame.Rect(int(ox + (fx + (tx - fx) * k) * TILE), int(oy + (fy + (ty - fy) * k) * TILE), TILE, TILE)
+            ahead = self._ctrail[_ci] if _ci else self.partner
+            way = (ahead[0] - tx, ahead[1] - ty)
+            way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
+            img = (self._mon_img(149, way) if _who == "Dragonite"
+                   else self._figure_img({"text": _who}, way, (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0))
+            if img is not None:
+                drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
             if wk.get("leaving"):
                 way = (-way[0], -way[1])
             wimg = self._sheet_frame(wk["sheet"], way, frame=int(wk["i"] * 2) % 4 if a != b and (wk["i"] < len(wk["path"]) - 1 or wk.get("leaving")) else 0)

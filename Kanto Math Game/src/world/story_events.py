@@ -26,6 +26,7 @@ Each entry is keyed by the button's "target". Fields (all optional):
   memory    true: the Memory Girl reads your first Pokemon's journey (where you met, its wins, catches, ribbons)
   place     [x, y]: in town, you stand there after (Lavaridge's hot springs, out behind the Center)
   travel    an area: after the lines you're taken there (Fallarbor's rival, back to Mauville with you)
+  clear     [flags]: story flags unset (the Hall of Fame's "due" flag, once your team is recorded)
 """
 
 GRUNT_G = {"name": "Galactic Grunt", "class": "GRUNT", "sprite": "galactic_grunt.png"}
@@ -40,6 +41,9 @@ def _t(base, **kw):
 
 EVENTS = {
     "giant_volcano_fall": {"scene": "giant_volcano_fall"},  # (the Giant Volcano easter egg: src/world/mystery_dungeon.py)
+    # ---------------- Kanto: the Hall of Fame (FireRed 1.80), after the Champion: your team recorded, then home
+    "kanto_hall_of_fame": {"lines": ["You returned home to share your victory!"], "clear": ["hall_of_fame_due_INDIGO_PLATEAU"],
+                           "travel": "PALLET_TOWN"},
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
     "johto_elm_starter": {"starter": "JOHTO"},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)

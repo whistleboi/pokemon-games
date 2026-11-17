@@ -1988,6 +1988,14 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                 self.game.data.save()
             except Exception as e:  # never block the victory screen on a save error
                 print("Champion save failed:", e)
+            from src.states.overworld.gym_lobby import in_room, back_to_room
+            from src.states.overworld.walk_town import custom as _town_maps
+            _rooms = (_town_maps(self.game).get(story.current_area_key) or {}).get("rooms") or {}
+            if in_room(self.game) and "hall_of_fame" in _rooms:   # (a walked League with its Hall of Fame: FireRed's Indigo
+                story.story_flags[f"hall_of_fame_due_{story.current_area_key}"] = True   # Plateau; back in the Champion's
+                from src.states.overworld import CityState                                # room, Oak walks you there, then home)
+                back_to_room(self.game, CityState(self.game))
+                return
             from src.states.overworld import AreaTransitionState
             self.game.change_state(AreaTransitionState(self.game, home, initial_message="You returned home to share your victory!"))
             return

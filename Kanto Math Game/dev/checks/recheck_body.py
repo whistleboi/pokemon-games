@@ -90,7 +90,7 @@ print("3) low")
 for area in ("BELLCHIME_TRAIL", "SAFARI_ZONE_GATE", "FRONTIER_ACCESS", "POKEATHLON_DOME",
              "THREE_ISLE_PORT", "NAVEL_ROCK", "BIRTH_ISLAND", "HOENN_SOUTHERN_ISLAND", "HOENN_MARINE_CAVE",
              "HOENN_TERRA_CAVE", "HOENN_CRESCENT_ISLE", "HOENN_FABLED_CAVE", "HOENN_GNARLED_DEN", "HOENN_NAMELESS_CAVERN",
-             "HOENN_PATHLESS_PLAIN", "HOENN_TRACKLESS_FOREST", "HOENN_SECRET_ISLET", "HOENN_SECRET_MEADOW", "HOENN_SECRET_SHORE"):
+             "HOENN_PATHLESS_PLAIN", "HOENN_TRACKLESS_FOREST"):   # (Secret Islet/Meadow/Shore: deleted 11-16)
     linked = any(area in links(k) for k in prog if isinstance(prog[k], dict))
     try:
         story.current_area_key = area

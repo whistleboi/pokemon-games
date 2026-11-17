@@ -538,6 +538,9 @@ class StoryManager:
         """Returns a list of missions whose conditions are currently met."""
         all_missions = self.region_missions()
         active = []
+        if self.story_flags.get("odd_eggs_given") or self.story_flags.get("visited_JOHTO_ROUTE_34"):   # (the Odd Egg mission: by the calendar)
+            from src.world import odd_egg as _odd
+            _odd.refresh(self)
 
         for m in all_missions:
             if self.check_requirements(m.get("condition", {}), region=m.get("region")):
@@ -1408,7 +1411,9 @@ class StoryManager:
     @staticmethod
     def _migrate_area_keys(obj, renames={"FUSCHIA_CITY": "FUCHSIA_CITY", "KNuckle": "KNUCKLE",
                                           "ISLE_OF_ARMOR_boss_defeated": "GLIMWOOD_TANGLE_boss_defeated",
-                                          "THREE_ISLE_PATH": "THREE_ISLE_PORT"}):  # (Jordan, 11-04)
+                                          "THREE_ISLE_PATH": "THREE_ISLE_PORT",
+                                          "MT_MOON_CITY": "MT_MOON", "ROCK_TUNNEL_CITY": "ROCK_TUNNEL"}):  # (Jordan, 11-04; the old
+        # menu stops outside Mt. Moon and Rock Tunnel, deleted 11-16: a save left there wakes up in the cave)
         """Rewrite renamed area keys anywhere in an older save (keys, values, flag names)."""
         if isinstance(obj, str):
             for old, new in renames.items():
@@ -1653,6 +1658,12 @@ class StoryManager:
         if self.current_area_key in ("MT_SILVER_EXPERT", "MT_SILVER_MOLTRES", "MT_SILVER_LOWER", "MT_SILVER_2F", "MT_SILVER_UPPER",
                                      "MT_SILVER_3F", "MT_SILVER_SUMMIT"):
             self.current_area_key = "MT_SILVER"
+        # Old areas nothing leads to any more (Jordan 11-16: deleted): Moomoo's drawn house and barn (the farm is Route 39's rooms),
+        # and Hoenn's dropped Secret Islet / Meadow / Shore (back to the route their Soaring landing hangs off).
+        _gone = {"MOOMOO_HOUSE": "JOHTO_ROUTE_39", "MOOMOO_BARN": "JOHTO_ROUTE_39", "HOENN_SECRET_ISLET": "HOENN_ROUTE_126",
+                 "HOENN_SECRET_MEADOW": "HOENN_ROUTE_130", "HOENN_SECRET_SHORE": "HOENN_ROUTE_129"}
+        if self.current_area_key in _gone:
+            self.current_area_key = _gone[self.current_area_key]
 
     def get_gym_battle_background(self, area_id, trainer_index=0, is_leader=False):
         """

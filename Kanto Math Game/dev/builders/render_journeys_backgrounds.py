@@ -67,7 +67,7 @@ ALIASES = {
     "MANDARIN_NORTH": "Manderin Island North", "ORANGE_ROUTE_50": "Route 50",  # (Journeys' spelling; our Routes 50 and 51)
 }
 # Our "towns" that are really a cave or a building (Journeys has them only as indoor maps).
-SKIP = {"MT_MOON_CITY", "MT_SILVER_CITY", "ROCK_TUNNEL_CITY", "SILPH_CITY", "OLIVINE_LIGHTHOUSE",
+SKIP = {"MT_SILVER_CITY", "SILPH_CITY", "OLIVINE_LIGHTHOUSE",
         "PINKAN_ISLAND"}  # (Journeys' Pinkan Island is an empty placeholder)
 # Towns tucked into a corner of a big map of cliffs or forest, framed by hand: (scale, x, y) of
 # the frame's top-left tile.

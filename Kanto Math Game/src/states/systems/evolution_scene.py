@@ -167,6 +167,8 @@ class EvolutionState(GameState):
                         self.evolved_pokemon_obj.current_hp = new_max
                         self.evolved_pokemon_obj.friendship = 3
                         self.evolved_pokemon_obj.caught_level = 1
+                        from src.world import odd_egg as _odd   # (the Odd Egg: the next one is ready tomorrow)
+                        _odd.hatched(self.game.story_manager, self.evolved_pokemon_obj.id)
                     self.game.data.add_pokemon(self.evolved_pokemon_obj)
                     self._maybe_shedinja()
 

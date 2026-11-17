@@ -110,7 +110,7 @@
     "JOHTO_ROUTE_32_MORNING_PERCENTAGES": {"69": 28, "179": 20, "19": 19, "23": 15, "187": 10, "41": 5, "16": 2, "2001": 1},
     "JOHTO_ROUTE_33_MORNING_PERCENTAGES": {"187": 34, "19": 25, "21": 20, "23": 15, "41": 5, "2001": 1},
     "JOHTO_ROUTE_34_MORNING_PERCENTAGES": {"96": 39, "19": 28, "209": 12, "63": 8, "16": 8, "132": 4, "2001": 1},
-    "JOHTO_RUINS_OF_ALPH_DAY_PERCENTAGES": {"177": 90, "235": 10},
+    "JOHTO_RUINS_OF_ALPH_DAY_PERCENTAGES": {"201": 100},
     "JOHTO_RUINS_OF_ALPH_MORNING_PERCENTAGES": {"177": 90, "235": 10},
     "JOHTO_RUINS_OF_ALPH_NIGHT_PERCENTAGES": {"177": 90, "235": 10},
     "JOHTO_SLOWPOKE_WELL_DAY_PERCENTAGES": {"41": 82, "79": 15, "42": 2, "2022": 1},
@@ -123,15 +123,15 @@
     "JOHTO_UNION_CAVE_MORNING_PERCENTAGES": {"41": 26, "74": 23, "19": 17, "27": 10, "20": 10, "95": 7, "42": 6, "2001": 1},
     "JOHTO_UNION_CAVE_NIGHT_PERCENTAGES": {"41": 26, "74": 23, "19": 17, "27": 10, "20": 10, "95": 7, "42": 6, "2001": 1},
     "JOHTO_ROUTE_35_MORNING_PERCENTAGES": {"29": 24, "32": 24, "96": 16, "209": 12, "63": 8, "58": 8, "16": 4, "132": 3, "193": 1},
-    "JOHTO_ROUTE_36_MORNING_PERCENTAGES": {"29": 26, "32": 26, "16": 22, "165": 13, "37": 5, "234": 4, "58": 4},
+    "JOHTO_ROUTE_36_MORNING_PERCENTAGES": {"29": 23, "32": 23, "16": 20, "165": 12, "37": 4, "234": 4, "58": 4, "177": 10},
     "JOHTO_NATIONAL_PARK_MORNING_PERCENTAGES": {"32": 21, "13": 18, "10": 18, "16": 14, "14": 11, "11": 11, "165": 7},
     "JOHTO_ROUTE_37_MORNING_PERCENTAGES": {"16": 38, "234": 29, "165": 20, "37": 5, "58": 5, "166": 2, "2001": 1},
     "JOHTO_BELL_TOWER_DAY_PERCENTAGES": {"19": 99, "2001": 1},
     "JOHTO_BELL_TOWER_MORNING_PERCENTAGES": {"19": 99, "2001": 1},
     "JOHTO_BELL_TOWER_NIGHT_PERCENTAGES": {"92": 79, "19": 20, "2001": 1},
-    "JOHTO_BURNED_TOWER_DAY_PERCENTAGES": {"19": 42, "109": 42, "41": 7, "126": 5, "20": 2, "2001": 1, "2002": 1},
-    "JOHTO_BURNED_TOWER_MORNING_PERCENTAGES": {"19": 44, "109": 42, "41": 8, "20": 2, "126": 2, "2001": 1, "2002": 1},
-    "JOHTO_BURNED_TOWER_NIGHT_PERCENTAGES": {"19": 44, "109": 42, "41": 8, "20": 2, "126": 2, "2001": 1, "2002": 1},
+    "JOHTO_BURNED_TOWER_DAY_PERCENTAGES": {"19": 33, "109": 34, "41": 6, "126": 4, "20": 2, "2001": 1, "2002": 1, "218": 10, "228": 9},
+    "JOHTO_BURNED_TOWER_MORNING_PERCENTAGES": {"19": 35, "109": 34, "41": 6, "20": 2, "126": 2, "2001": 1, "2002": 1, "218": 10, "228": 9},
+    "JOHTO_BURNED_TOWER_NIGHT_PERCENTAGES": {"19": 35, "109": 34, "41": 6, "20": 2, "126": 2, "2001": 1, "2002": 1, "218": 10, "228": 9},
     "JOHTO_ROUTE_38_MORNING_PERCENTAGES": {"20": 26, "81": 19, "52": 14, "19": 14, "83": 9, "241": 5, "17": 5, "128": 4, "209": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_39_MORNING_PERCENTAGES": {"20": 27, "81": 19, "52": 14, "19": 14, "83": 9, "241": 5, "128": 5, "17": 5, "2001": 1, "2002": 1},
     "JOHTO_WHIRL_ISLANDS_DAY_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
@@ -179,62 +179,152 @@
     "JOHTO_KANTO_ROUTE_27_MORNING_PERCENTAGES": {"84": 45, "20": 30, "24": 15, "77": 5, "85": 3, "28": 2},
     "JOHTO_KANTO_ROUTE_27_NIGHT_PERCENTAGES": {"195": 53, "20": 25, "24": 15, "77": 5, "28": 2},
     "JOHTO_MT_SILVER_MORNING_PERCENTAGES": {"195": 15, "55": 11, "77": 11, "217": 8, "42": 8, "232": 8, "24": 8, "95": 7, "215": 7, "246": 4, "78": 4, "216": 2, "75": 2, "231": 2, "208": 2, "247": 1},
+    "BLACKTHORN_CITY_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "BLACKTHORN_CITY_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "BLACKTHORN_CITY_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "CHERRYGROVE_CITY_GOOD_ROD_PERCENTAGES": {"98": 56, "129": 40, "222": 4},
+    "CHERRYGROVE_CITY_OLD_ROD_PERCENTAGES": {"129": 95, "98": 5},
+    "CHERRYGROVE_CITY_SUPER_ROD_PERCENTAGES": {"98": 56, "222": 40, "99": 4},
+    "CIANWOOD_CITY_GOOD_ROD_PERCENTAGES": {"98": 56, "129": 40, "222": 4},
+    "CIANWOOD_CITY_OLD_ROD_PERCENTAGES": {"129": 95, "98": 5},
+    "CIANWOOD_CITY_SUPER_ROD_PERCENTAGES": {"98": 56, "222": 40, "99": 4},
+    "CLIFF_EDGE_GATE_GOOD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "CLIFF_EDGE_GATE_OLD_ROD_PERCENTAGES": {"129": 100},
+    "CLIFF_EDGE_GATE_SUPER_ROD_PERCENTAGES": {"129": 80, "60": 20},
+    "DARK_CAVE_GOOD_ROD_PERCENTAGES": {"118": 60, "129": 40},
+    "DARK_CAVE_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
+    "DARK_CAVE_SUPER_ROD_PERCENTAGES": {"118": 80, "129": 16, "119": 4},
+    "DRAGONS_DEN_GOOD_ROD_PERCENTAGES": {"129": 96, "147": 4},
+    "DRAGONS_DEN_OLD_ROD_PERCENTAGES": {"129": 100},
+    "DRAGONS_DEN_SUPER_ROD_PERCENTAGES": {"129": 56, "147": 40, "148": 4},
+    "ECRUTEAK_CITY_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "ECRUTEAK_CITY_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "ECRUTEAK_CITY_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "ILEX_FOREST_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "ILEX_FOREST_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "ILEX_FOREST_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "JOHTO_BLACKTHORN_CITY_SURF_PERCENTAGES": {"129": 100},
+    "JOHTO_CHERRYGROVE_CITY_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_CIANWOOD_CITY_ROCK_SMASH_PERCENTAGES": {"98": 90, "213": 10},
+    "JOHTO_CIANWOOD_CITY_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_CLIFF_EDGE_GATE_SURF_PERCENTAGES": {"194": 90, "195": 10},
+    "JOHTO_DARK_CAVE_ROCK_SMASH_PERCENTAGES": {"206": 90, "74": 10},
+    "JOHTO_DARK_CAVE_SURF_PERCENTAGES": {"129": 100},
+    "JOHTO_DRAGONS_DEN_SURF_PERCENTAGES": {"129": 90, "147": 10},
+    "JOHTO_ECRUTEAK_CITY_SURF_PERCENTAGES": {"60": 90, "61": 10},
+    "JOHTO_ILEX_FOREST_SURF_PERCENTAGES": {"54": 90, "55": 10},
+    "JOHTO_JOHTO_CLIFF_CAVE_ROCK_SMASH_PERCENTAGES": {"98": 90, "99": 10},
+    "JOHTO_JOHTO_ROUTE_30_SURF_PERCENTAGES": {"60": 90, "61": 10},
+    "JOHTO_JOHTO_ROUTE_31_SURF_PERCENTAGES": {"60": 90, "61": 10},
+    "JOHTO_JOHTO_ROUTE_32_SURF_PERCENTAGES": {"72": 60, "195": 30, "73": 10},
+    "JOHTO_JOHTO_ROUTE_34_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_JOHTO_ROUTE_35_SURF_PERCENTAGES": {"54": 90, "55": 10},
+    "JOHTO_JOHTO_ROUTE_40_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_JOHTO_ROUTE_41_SURF_PERCENTAGES": {"72": 75, "73": 20, "226": 5},
+    "JOHTO_JOHTO_ROUTE_42_SURF_PERCENTAGES": {"118": 90, "119": 10},
+    "JOHTO_JOHTO_ROUTE_43_SURF_PERCENTAGES": {"129": 100},
+    "JOHTO_JOHTO_ROUTE_44_SURF_PERCENTAGES": {"60": 90, "61": 10},
+    "JOHTO_JOHTO_ROUTE_45_SURF_PERCENTAGES": {"129": 100},
+    "JOHTO_JOHTO_ROUTE_47_SURF_PERCENTAGES": {"72": 60, "86": 30, "120": 10},
+    "JOHTO_KANTO_ROUTE_26_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_KANTO_ROUTE_27_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_LAKE_OF_RAGE_SURF_PERCENTAGES": {"129": 90, "130": 10},
+    "JOHTO_MT_MORTAR_SURF_PERCENTAGES": {"118": 90, "119": 10},
+    "JOHTO_MT_SILVER_SURF_PERCENTAGES": {"119": 90, "118": 10},
+    "JOHTO_NEW_BARK_TOWN_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_OLIVINE_CITY_SURF_PERCENTAGES": {"72": 90, "73": 10},
+    "JOHTO_ROUTE_30_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "JOHTO_ROUTE_30_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "JOHTO_ROUTE_30_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "JOHTO_ROUTE_31_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "JOHTO_ROUTE_31_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "JOHTO_ROUTE_31_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "JOHTO_ROUTE_34_GOOD_ROD_PERCENTAGES": {"98": 56, "129": 40, "222": 4},
+    "JOHTO_ROUTE_34_OLD_ROD_PERCENTAGES": {"129": 95, "98": 5},
+    "JOHTO_ROUTE_34_SUPER_ROD_PERCENTAGES": {"98": 56, "222": 40, "99": 4},
+    "JOHTO_ROUTE_35_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "JOHTO_ROUTE_35_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "JOHTO_ROUTE_35_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "JOHTO_ROUTE_40_GOOD_ROD_PERCENTAGES": {"98": 56, "129": 40, "222": 4},
+    "JOHTO_ROUTE_40_SUPER_ROD_PERCENTAGES": {"98": 56, "222": 40, "99": 4},
+    "JOHTO_ROUTE_43_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "JOHTO_ROUTE_43_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "JOHTO_ROUTE_43_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "JOHTO_ROUTE_44_GOOD_ROD_PERCENTAGES": {"60": 59, "129": 40, "223": 1},
+    "JOHTO_ROUTE_44_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "JOHTO_ROUTE_44_SUPER_ROD_PERCENTAGES": {"60": 80, "129": 16, "223": 4},
+    "JOHTO_ROUTE_45_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "JOHTO_ROUTE_45_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "JOHTO_ROUTE_45_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "JOHTO_SLOWPOKE_WELL_SURF_PERCENTAGES": {"79": 95, "80": 5},
+    "JOHTO_TOHJO_FALLS_SURF_PERCENTAGES": {"118": 60, "79": 30, "119": 10},
+    "JOHTO_UNION_CAVE_SURF_PERCENTAGES": {"194": 40, "195": 37, "72": 20, "73": 3},
+    "JOHTO_VIOLET_CITY_SURF_PERCENTAGES": {"60": 90, "61": 10},
+    "JOHTO_WHIRL_ISLANDS_SURF_PERCENTAGES": {"116": 45, "72": 30, "73": 20, "117": 5},
+    "KANTO_ROUTE_26_GOOD_ROD_PERCENTAGES": {"129": 40, "72": 40, "170": 16, "90": 4},
+    "KANTO_ROUTE_26_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+    "KANTO_ROUTE_26_SUPER_ROD_PERCENTAGES": {"170": 40, "90": 40, "73": 16, "171": 4},
+    "KANTO_ROUTE_27_GOOD_ROD_PERCENTAGES": {"129": 40, "72": 40, "170": 16, "90": 4},
+    "KANTO_ROUTE_27_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+    "KANTO_ROUTE_27_SUPER_ROD_PERCENTAGES": {"170": 40, "90": 40, "73": 16, "171": 4},
+    "LAKE_OF_RAGE_GOOD_ROD_PERCENTAGES": {"129": 96, "130": 4},
+    "LAKE_OF_RAGE_OLD_ROD_PERCENTAGES": {"129": 100},
+    "LAKE_OF_RAGE_SUPER_ROD_PERCENTAGES": {"129": 60, "130": 40},
+    "MT_MORTAR_GOOD_ROD_PERCENTAGES": {"118": 60, "129": 40},
+    "MT_MORTAR_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
+    "MT_MORTAR_SUPER_ROD_PERCENTAGES": {"118": 80, "129": 16, "119": 4},
+    "MT_SILVER_CITY_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "MT_SILVER_CITY_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "MT_SILVER_CITY_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "MT_SILVER_GOOD_ROD_PERCENTAGES": {"118": 56, "129": 41, "119": 3},
+    "MT_SILVER_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
+    "MT_SILVER_SUPER_ROD_PERCENTAGES": {"118": 64, "119": 14, "129": 13, "130": 9},
+    "NEW_BARK_TOWN_GOOD_ROD_PERCENTAGES": {"129": 40, "72": 40, "170": 16, "90": 4},
+    "NEW_BARK_TOWN_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+    "NEW_BARK_TOWN_SUPER_ROD_PERCENTAGES": {"170": 40, "90": 40, "73": 16, "171": 4},
+    "OLIVINE_CITY_GOOD_ROD_PERCENTAGES": {"98": 56, "129": 40, "222": 4},
+    "OLIVINE_CITY_OLD_ROD_PERCENTAGES": {"129": 95, "98": 5},
+    "OLIVINE_CITY_SUPER_ROD_PERCENTAGES": {"98": 56, "222": 40, "99": 4},
+    "SLOWPOKE_WELL_GOOD_ROD_PERCENTAGES": {"118": 60, "129": 40},
+    "SLOWPOKE_WELL_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
+    "SLOWPOKE_WELL_SUPER_ROD_PERCENTAGES": {"118": 80, "129": 16, "119": 4},
+    "TOHJO_FALLS_GOOD_ROD_PERCENTAGES": {"118": 60, "129": 40},
+    "TOHJO_FALLS_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
+    "TOHJO_FALLS_SUPER_ROD_PERCENTAGES": {"118": 80, "129": 16, "119": 4},
+    "UNION_CAVE_GOOD_ROD_PERCENTAGES": {"129": 40, "118": 40, "98": 19, "222": 1},
+    "UNION_CAVE_OLD_ROD_PERCENTAGES": {"129": 95, "118": 3, "98": 2},
+    "UNION_CAVE_SUPER_ROD_PERCENTAGES": {"118": 53, "98": 19, "222": 13, "129": 11, "119": 3, "99": 1},
+    "VIOLET_CITY_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "VIOLET_CITY_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "VIOLET_CITY_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
+    "WHIRL_ISLANDS_GOOD_ROD_PERCENTAGES": {"98": 56, "129": 40, "116": 4},
+    "WHIRL_ISLANDS_OLD_ROD_PERCENTAGES": {"129": 95, "98": 5},
+    "WHIRL_ISLANDS_SUPER_ROD_PERCENTAGES": {"98": 40, "116": 40, "99": 16, "117": 4},
+    "JOHTO_KANTO_ROUTE_28_DAY_PERCENTAGES": {"114": 30, "77": 30, "217": 10, "78": 10, "232": 10, "84": 5, "85": 5},
+    "JOHTO_KANTO_ROUTE_28_MORNING_PERCENTAGES": {"114": 30, "77": 30, "217": 10, "78": 10, "232": 10, "84": 5, "85": 5},
+    "JOHTO_KANTO_ROUTE_28_NIGHT_PERCENTAGES": {"114": 30, "77": 30, "217": 10, "215": 10, "78": 10, "232": 10},
+    "JOHTO_KANTO_ROUTE_28_SURF_PERCENTAGES": {"60": 90, "61": 10},
+    "KANTO_ROUTE_28_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 40},
+    "KANTO_ROUTE_28_OLD_ROD_PERCENTAGES": {"129": 95, "60": 5},
+    "KANTO_ROUTE_28_SUPER_ROD_PERCENTAGES": {"60": 84, "129": 16},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
-          "area_type": "dungeon",
-          "route_name": "Battle Frontier",
-          "region": "JOHTO",
-          "battle_type": "indoor",
-          "wild_pool_percentages": null,
-          "min_rounds": 0,
-          "trainer_pool": [
-            {
-              "name": "Tower Tycoon Palmer",
-              "class": "FRONTIER_BRAIN",
-              "sprite": "master.png",
-              "team": [
-                464,
-                350,
-                149
-              ],
-              "rewards": {
-                "balls": 5
-              }
-            },
-            {
-              "name": "Arcade Star Dahlia",
-              "class": "FRONTIER_BRAIN",
-              "sprite": "master.png",
-              "team": [
-                308,
-                272,
-                477
-              ],
-              "rewards": {
-                "balls": 5
-              }
-            },
-            {
-              "name": "Castle Valet Darach",
-              "class": "FRONTIER_BRAIN",
-              "sprite": "master.png",
-              "team": [
-                395,
-                398,
-                229
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "is_boss_battle": true,
-              "victory_flag": "johto_battle_frontier_cleared"
-            }
-          ],
-          "route_menu": [
-            {"text": "CHALLENGE THE FRONTIER BRAINS", "action": "GALACTIC_GAUNTLET", "flag_condition": "not johto_battle_frontier_cleared", "color": "GOLD"},
-            {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": "can_exit", "color": "RED"}
-          ],
-          "next_area": "JOHTO_ROUTE_40"
+            "area_type": "dungeon",
+            "route_name": "Battle Frontier",
+            "region": "JOHTO",
+            "battle_type": "indoor",
+            "wild_pool_percentages": null,
+            "min_rounds": 0,
+            "trainer_pool": [],
+            "route_menu": [
+                {"text": "Tower attendant", "action": "FRONTIER", "facility": "jtower", "door": "jtower", "color": "GOLD"},
+                {"text": "Factory attendant", "action": "FRONTIER", "facility": "jfactory", "door": "jfactory", "color": "GOLD"},
+                {"text": "Hall attendant", "action": "FRONTIER", "facility": "jhall", "door": "jhall", "color": "GOLD"},
+                {"text": "Castle attendant", "action": "FRONTIER", "facility": "jcastle", "door": "jcastle", "color": "GOLD"},
+                {"text": "Arcade attendant", "action": "FRONTIER", "facility": "jarcade", "door": "jarcade", "color": "GOLD"},
+                {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "JOHTO_ROUTE_40"
         },
         "JOHTO_SS_AQUA": {
             "area_type": "dungeon",
@@ -316,7 +406,8 @@
             "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
             "morning_pool_percentages": "JOHTO_CLIFF_CAVE_MORNING_PERCENTAGES",
             "day_pool_percentages": "JOHTO_CLIFF_CAVE_DAY_PERCENTAGES",
-            "night_pool_percentages": "JOHTO_CLIFF_CAVE_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_CLIFF_CAVE_NIGHT_PERCENTAGES",
+            "rock_smash_pool_percentages": "JOHTO_JOHTO_CLIFF_CAVE_ROCK_SMASH_PERCENTAGES"
         },
         "JOHTO_ROUTE_48": {
             "area_type": "wild_route",
@@ -371,7 +462,8 @@
             "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
             "morning_pool_percentages": "JOHTO_ROUTE_47_MORNING_PERCENTAGES",
             "day_pool_percentages": "JOHTO_ROUTE_47_DAY_PERCENTAGES",
-            "night_pool_percentages": "JOHTO_ROUTE_47_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_ROUTE_47_NIGHT_PERCENTAGES",
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_47_SURF_PERCENTAGES"
         },
         "NEW_BARK_TOWN": {
             "area_type": "town",
@@ -394,7 +486,9 @@
             "prof_elm_dialogue": "profile_elm",
             "silver_mom_dialogue": "silver_mom",
             "old_on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "silver.png", "team": [155], "team_choice": {"152": [155], "155": [158], "158": [152]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_newbark_ambush"}, "condition": "has_zephyr_badge", "flag_check": "defeated_rival_newbark_ambush"},
-            "trainer_pool": []
+            "trainer_pool": [],
+            "surf_pool_percentages": "JOHTO_NEW_BARK_TOWN_SURF_PERCENTAGES",
+            "can_fish": true
         },
 
         "CHERRYGROVE_CITY": {
@@ -439,7 +533,11 @@
 
             "on_enter_event": {"type": "trainer_battle", "starter_battle": true, "condition": "met_mr_pokemon", "flag_check": "defeated_rival_cherrygrove", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [155], "team_choice": {"152": [155], "155": [158], "158": [152]}, "levels": [5], "rewards": {"balls": 5}, "victory_flag": "defeated_rival_cherrygrove", "dialogue": {"intro": ["...You got a Pokemon at the lab. What a waste.", "A wimp like you doesn't deserve it.", "...Don't you get what I'm saying?", "Well, I too have a good Pokemon. I'll show you what I mean!"], "player_won": ["...Humph! Are you happy you won?"], "player_lost": ["...Humph. I knew it. You're weak."]}, "movesets": {"155": ["TACKLE", "LEER"], "158": ["SCRATCH", "LEER"], "152": ["TACKLE", "GROWL"]}}},
 
-            "trainer_pool": []
+            "trainer_pool": [],
+
+            "surf_pool_percentages": "JOHTO_CHERRYGROVE_CITY_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
 
@@ -515,7 +613,11 @@
 
             ],
 
-            "trainer_pool": []
+            "trainer_pool": [],
+
+            "surf_pool_percentages": "JOHTO_VIOLET_CITY_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
 
@@ -585,11 +687,11 @@
 
             ],
 
-            "morning_pool_percentages": "JOHTO_RUINS_OF_ALPH_MORNING_PERCENTAGES",
+            "morning_pool_percentages": "JOHTO_RUINS_OF_ALPH_DAY_PERCENTAGES",
 
             "day_pool_percentages": "JOHTO_RUINS_OF_ALPH_DAY_PERCENTAGES",
 
-            "night_pool_percentages": "JOHTO_RUINS_OF_ALPH_NIGHT_PERCENTAGES",
+            "night_pool_percentages": "JOHTO_RUINS_OF_ALPH_DAY_PERCENTAGES",
 
             "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]}
 
@@ -933,7 +1035,11 @@
 
             ],
 
-            "trainer_pool": []
+            "trainer_pool": [],
+
+            "surf_pool_percentages": "JOHTO_ECRUTEAK_CITY_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
 
@@ -997,7 +1103,11 @@
 
             ],
 
-            "trainer_pool": []
+            "trainer_pool": [],
+
+            "surf_pool_percentages": "JOHTO_OLIVINE_CITY_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
 
@@ -1051,7 +1161,13 @@
 
             ],
 
-            "trainer_pool": []
+            "trainer_pool": [],
+
+            "surf_pool_percentages": "JOHTO_CIANWOOD_CITY_SURF_PERCENTAGES",
+
+            "can_fish": true,
+
+            "rock_smash_pool_percentages": "JOHTO_CIANWOOD_CITY_ROCK_SMASH_PERCENTAGES"
 
         },
 
@@ -1095,7 +1211,7 @@
 
                 {"action": "EVENT", "event": {"lines": ["My favourite radio show? Pokemon Music, easily."]}, "text": "Girl", "door": "radiohouse", "flag_condition": "not radio_tower_cleared"},
 
-                {"action": "EVENT", "event": {"lines": ["Lance: So you came. I'm Lance, a Trainer like you. That red Gyarados was forced to evolve, and the trail led here.", "Lance: This shop is a front for Team Rocket's hideout. Dragonite, Hyper Beam! ...There. The stairs behind the counter go down.", "Lance: They're sending out a signal that's driving the lake's Pokemon wild. Let's shut it down together. I'll meet you below."]}, "text": "Lance", "door": "souvenir", "condition": "defeated_red_gyarados", "flag_condition": "not rocket_hq_cleared"},
+                {"action": "EVENT", "event": {"lines": ["Lance: So you came. I'm Lance, a Trainer like you. That red Gyarados was forced to evolve, and the trail led here.", "Lance: This shop is a front for Team Rocket's hideout. Dragonite, Hyper Beam! ...There. The stairs behind the counter go down.", "Lance: They're sending out a signal that's driving the lake's Pokemon wild. Let's shut it down together. Dragonite and I will go down with you."]}, "text": "Lance", "door": "souvenir", "condition": "defeated_red_gyarados", "flag_condition": "not rocket_hq_cleared"},
 
                 {"action": "EVENT", "event": {"lines": ["DRAGONITE: Gyafooha!"]}, "text": "Dragonite", "door": "souvenir", "condition": "defeated_red_gyarados", "flag_condition": "not rocket_hq_cleared"}
 
@@ -1153,7 +1269,11 @@
 
             ],
 
-            "trainer_pool": []
+            "trainer_pool": [],
+
+            "surf_pool_percentages": "JOHTO_BLACKTHORN_CITY_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
 
@@ -1201,7 +1321,9 @@
 
             "day_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES",
 
-            "night_pool_percentages": "JOHTO_MT_SILVER_CITY_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_MT_SILVER_CITY_NIGHT_PERCENTAGES",
+
+            "can_fish": true
 
         },
 
@@ -1446,7 +1568,10 @@
             "day_pool_percentages": "JOHTO_KANTO_ROUTE_27_DAY_PERCENTAGES",
 
 
-            "night_pool_percentages": "JOHTO_KANTO_ROUTE_27_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_KANTO_ROUTE_27_NIGHT_PERCENTAGES",
+
+
+            "surf_pool_percentages": "JOHTO_KANTO_ROUTE_27_SURF_PERCENTAGES"
 
 
         },
@@ -1489,71 +1614,58 @@
             "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
             "morning_pool_percentages": "JOHTO_KANTO_ROUTE_26_MORNING_PERCENTAGES",
             "day_pool_percentages": "JOHTO_KANTO_ROUTE_26_DAY_PERCENTAGES",
-            "night_pool_percentages": "JOHTO_KANTO_ROUTE_26_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_KANTO_ROUTE_26_NIGHT_PERCENTAGES",
+            "surf_pool_percentages": "JOHTO_KANTO_ROUTE_26_SURF_PERCENTAGES"
+        },
+        "KANTO_ROUTE_28": {
+            "area_type": "wild_route",
+            "route_name": "Route 28",
+            "battle_type": "field",
+            "can_fish": true,
+            "wild_pool_percentages": "JOHTO_KANTO_ROUTE_28_DAY_PERCENTAGES",
+            "trainer_encounter_rate": 0,
+            "min_rounds": 2,
+            "trainer_pool": [],
+            "route_menu": [
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+                {"text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER_CITY", "condition": ["can_exit"], "color": "RED"},
+                {"text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"], "color": "RED"},
+                {"text": "Celebrity", "action": "EVENT", "door": "celebhouse", "color": "GOLD", "event": {"lines": ["Celebrity: You found my hideaway! I came out here to rest after years in the spotlight.", "Celebrity: Well, since you're not the press... Take this. My debut dress was inspired by this move: Steel Wing."], "gift_item": {"TM30": 1}, "flag": "got_tm30_route_28", "done": ["Celebrity: Shh! Not a word to anyone that I'm out here, all right?"]}},
+                {"text": "TM55", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm55_kanto_route_28_r28_33_8", "event": {"lines": ["A TM (Brine), lying in the grass."], "gift_item": {"TM55": 1}, "flag": "got_tm55_kanto_route_28_r28_33_8"}}
+            ],
+            "next_area": "MT_SILVER",
+            "on_enter_event": null,
+            "region": "JOHTO",
+            "surf_pool_percentages": "JOHTO_KANTO_ROUTE_28_SURF_PERCENTAGES",
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+            "morning_pool_percentages": "JOHTO_KANTO_ROUTE_28_MORNING_PERCENTAGES",
+            "day_pool_percentages": "JOHTO_KANTO_ROUTE_28_DAY_PERCENTAGES",
+            "night_pool_percentages": "JOHTO_KANTO_ROUTE_28_NIGHT_PERCENTAGES"
         },
         "TOHJO_FALLS": {
-
-
             "region": "JOHTO",
-
-
             "area_type": "dungeon",
-
-
             "route_name": "Tohjo Falls",
-
-
             "battle_type": "cave",
-
-
             "wild_pool_percentages": "JOHTO_TOHJO_FALLS_DAY_PERCENTAGES",
-
-
             "can_fish": true,
-
-
             "min_rounds": 1,
-
-
             "route_menu": [
-
-
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-
-
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-
-
                 {"text": "Waterfall Cave", "action": "NPC", "target": "giovanni", "condition": "has_8_johto_badges", "color": "GOLD", "is_boss_battle": true},
-
-
                 {"text": "Route 27", "action": "EXIT", "target_area": "KANTO_ROUTE_27", "condition": "can_exit", "color": "RED"},
-
-
                 {"text": "Route 26", "action": "EXIT", "target_area": "KANTO_ROUTE_26", "condition": ["can_exit", "has_item:HM_WATERFALL"], "color": "RED"},
-
-
                 {"text": "BLACK FLUTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_black_flute_tohjo_falls_d45r0101_23_12", "event": {"lines": ["A Black Flute, lying among the rocks."], "gift_item": {"BLACK_FLUTE": 1}, "flag": "got_black_flute_tohjo_falls_d45r0101_23_12"}}
-
-
             ],
-
-
             "trainer_pool": [],
-
-
             "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
-
-
             "morning_pool_percentages": "JOHTO_TOHJO_FALLS_MORNING_PERCENTAGES",
-
-
             "day_pool_percentages": "JOHTO_TOHJO_FALLS_DAY_PERCENTAGES",
-
-
-            "night_pool_percentages": "JOHTO_TOHJO_FALLS_NIGHT_PERCENTAGES"
-
-
+            "night_pool_percentages": "JOHTO_TOHJO_FALLS_NIGHT_PERCENTAGES",
+            "surf_pool_percentages": "JOHTO_TOHJO_FALLS_SURF_PERCENTAGES"
         },
 
         "JOHTO_ROUTE_29": {
@@ -1680,7 +1792,11 @@
 
             "morning_pool_percentages": "JOHTO_ROUTE_30_MORNING_PERCENTAGES",
 
-            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]}
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_30_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
         
@@ -1744,7 +1860,11 @@
         
             "morning_pool_percentages": "JOHTO_ROUTE_31_MORNING_PERCENTAGES",
         
-            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]}
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_31_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -1832,7 +1952,9 @@
         
             "morning_pool_percentages": "JOHTO_ROUTE_32_MORNING_PERCENTAGES",
         
-            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]}
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_32_SURF_PERCENTAGES"
         
         },
         
@@ -1952,6 +2074,8 @@
         
                 {"text": "POKéMON DAY CARE", "action": "DAYCARE", "door": "daycare", "color": "ORANGE"},
         
+                {"text": "Day-Care Man", "action": "EVENT", "door": "daycare", "color": "GOLD", "event": {"odd_egg": true}},
+        
                 {"text": "Ilex Forest", "action": "EXIT", "target_area": "ILEX_FOREST", "condition": "can_exit", "color": "RED"},
         
                 {"text": "Goldenrod City", "action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"},
@@ -1966,7 +2090,11 @@
         
             "morning_pool_percentages": "JOHTO_ROUTE_34_MORNING_PERCENTAGES",
         
-            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]}
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_34_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -2040,7 +2168,11 @@
         
             "morning_pool_percentages": "JOHTO_ROUTE_35_MORNING_PERCENTAGES",
         
-            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]}
+            "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_35_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -2232,9 +2364,46 @@
             
         },
         
-        "MOOMOO_BARN": {"area_type": "town", "region": "JOHTO", "route_name": "Moomoo Farm Barn", "travel_options": [{"text": "Route 39", "target_area": "JOHTO_ROUTE_39"}], "explore_options": [], "trainer_pool": []},
-        "MOOMOO_HOUSE": {"area_type": "town", "region": "JOHTO", "route_name": "Moomoo Farm", "travel_options": [{"text": "Route 39", "target_area": "JOHTO_ROUTE_39"}], "explore_options": [], "trainer_pool": []},
-        "JOHTO_ROUTE_39": {"region": "JOHTO", "area_type": "wild_route", "route_name": "Route 39", "battle_type": "grass", "wild_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES", "day_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_ROUTE_39_NIGHT_PERCENTAGES", "has_trees": true, "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "min_rounds": 2, "trainer_pool": [{"name": "Psychic Norman", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}}, {"name": "Sailor Eugene", "class": "SAILOR", "sprite": "sailor.png", "team": [61, 20, 98], "rewards": {"balls": 2}}, {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}}, {"name": "Pokefan Ruth", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}}, {"name": "Psychic Nelson", "class": "PSYCHIC", "sprite": "psychic.png", "team": [79, 79], "rewards": {"balls": 2}}], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"}, {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"}, {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"}, {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lax_incense_johto_route_39_r39_1_27", "event": {"lines": ["A Lax Incense, lying in the grass."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_lax_incense_johto_route_39_r39_1_27"}}, {"action": "EVENT", "event": {"lines": ["My Miltank's stopped giving milk. This farm's famous for its milk, and everyone wants a drink..."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "not moomoo_healed"}, {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You made our Moomoo well again, hon! Our milk goes all the way to Kanto, so we were in real trouble. Here's something for your trouble."], "gift_item": {"TM136": 1}, "flag": "got_tm83_moomoo", "done": ["That's Natural Gift. Its power and type depend on the Berry your Pokemon's holding."], "requires": ["moomoo_healed"], "fail": ["Our milk goes all the way to Kanto. If Moomoo won't give milk, we're in a real fix."]}, "text": "Farmer's wife", "door": "farmhouse"}, {"text": "Moomoo Milk", "action": "SHOP", "door": "farmhouse", "flag_condition": "moomoo_healed", "stock": ["MOOMOO_MILK"]}, {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin", "door": "barn", "flag_condition": "not moomoo_healed"}, {"action": "EVENT", "event": {"lines": ["Thank you! Moomoo is totally healthy again!"]}, "text": "Twin", "door": "barn", "flag_condition": "moomoo_healed"}, {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin ", "door": "barn", "flag_condition": "not moomoo_healed"}, {"action": "EVENT", "event": {"lines": ["Moomoo's all better! We sell her milk at the house. Don't forget to drop by!"]}, "text": "Twin ", "door": "barn", "flag_condition": "moomoo_healed"}, {"text": "Moomoo", "action": "EVENT", "door": "barn", "color": "GOLD", "event": {"lines": ["MOOMOO: ...Moo... Its cry is weak."], "feed": {"item": "ORAN_BERRY", "need": 7, "count": "moomoo_berries", "flag": "moomoo_healed", "fail": ["It looks hungry. Maybe a Berry would help?"], "more": ["It still looks weak. It needs more Berries."], "well": ["MOOMOO: Mooo! It's brimming with energy again!"]}, "done": ["MOOMOO: Mooo! It's brimming with energy."]}}, {"action": "EVENT", "event": {"lines": ["My Miltank's milking again, thanks to you! Here, have a bottle any time."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "moomoo_healed"}], "next_area": "OLIVINE_CITY", "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]}, "morning_pool_percentages": "JOHTO_ROUTE_39_MORNING_PERCENTAGES"},
+        "JOHTO_ROUTE_39": {
+            "region": "JOHTO",
+            "area_type": "wild_route",
+            "route_name": "Route 39",
+            "battle_type": "grass",
+            "wild_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES",
+            "day_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES",
+            "night_pool_percentages": "JOHTO_ROUTE_39_NIGHT_PERCENTAGES",
+            "has_trees": true,
+            "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES",
+            "min_rounds": 2,
+            "trainer_pool": [
+                {"name": "Psychic Norman", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}},
+                {"name": "Sailor Eugene", "class": "SAILOR", "sprite": "sailor.png", "team": [61, 20, 98], "rewards": {"balls": 2}},
+                {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}},
+                {"name": "Pokefan Ruth", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}},
+                {"name": "Psychic Nelson", "class": "PSYCHIC", "sprite": "psychic.png", "team": [79, 79], "rewards": {"balls": 2}}
+            ],
+            "route_menu": [
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"},
+                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lax_incense_johto_route_39_r39_1_27", "event": {"lines": ["A Lax Incense, lying in the grass."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_lax_incense_johto_route_39_r39_1_27"}},
+                {"action": "EVENT", "event": {"lines": ["My Miltank's stopped giving milk. This farm's famous for its milk, and everyone wants a drink..."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "not moomoo_healed"},
+                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You made our Moomoo well again, hon! Our milk goes all the way to Kanto, so we were in real trouble. Here's something for your trouble."], "gift_item": {"TM136": 1}, "flag": "got_tm83_moomoo", "done": ["That's Natural Gift. Its power and type depend on the Berry your Pokemon's holding."], "requires": ["moomoo_healed"], "fail": ["Our milk goes all the way to Kanto. If Moomoo won't give milk, we're in a real fix."]}, "text": "Farmer's wife", "door": "farmhouse"},
+                {"text": "Moomoo Milk", "action": "SHOP", "door": "farmhouse", "flag_condition": "moomoo_healed", "stock": ["MOOMOO_MILK"]},
+                {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin", "door": "barn", "flag_condition": "not moomoo_healed"},
+                {"action": "EVENT", "event": {"lines": ["Thank you! Moomoo is totally healthy again!"]}, "text": "Twin", "door": "barn", "flag_condition": "moomoo_healed"},
+                {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin ", "door": "barn", "flag_condition": "not moomoo_healed"},
+                {"action": "EVENT", "event": {"lines": ["Moomoo's all better! We sell her milk at the house. Don't forget to drop by!"]}, "text": "Twin ", "door": "barn", "flag_condition": "moomoo_healed"},
+                {"text": "Moomoo", "action": "EVENT", "door": "barn", "color": "GOLD", "event": {"lines": ["MOOMOO: ...Moo... Its cry is weak."], "feed": {"item": "ORAN_BERRY", "need": 7, "count": "moomoo_berries", "flag": "moomoo_healed", "fail": ["It looks hungry. Maybe a Berry would help?"], "more": ["It still looks weak. It needs more Berries."], "well": ["MOOMOO: Mooo! It's brimming with energy again!"]}, "done": ["MOOMOO: Mooo! It's brimming with energy."]}},
+                {"action": "EVENT", "event": {"lines": ["My Miltank's milking again, thanks to you! Here, have a bottle any time."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "moomoo_healed"}
+            ],
+            "next_area": "OLIVINE_CITY",
+            "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]},
+            "morning_pool_percentages": "JOHTO_ROUTE_39_MORNING_PERCENTAGES"
+        },
         
         "JOHTO_ROUTE_40": {
         
@@ -2284,7 +2453,9 @@
         
             ],
         
-            "next_area": "JOHTO_ROUTE_41"
+            "next_area": "JOHTO_ROUTE_41",
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_40_SURF_PERCENTAGES"
         
         },
         
@@ -2348,7 +2519,9 @@
         
             ],
         
-            "next_area": "CIANWOOD_CITY"
+            "next_area": "CIANWOOD_CITY",
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_41_SURF_PERCENTAGES"
         
         },
         
@@ -2418,7 +2591,9 @@
         
             "day_pool_percentages": "JOHTO_ROUTE_42_DAY_PERCENTAGES",
         
-            "night_pool_percentages": "JOHTO_ROUTE_42_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_ROUTE_42_NIGHT_PERCENTAGES",
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_42_SURF_PERCENTAGES"
         
         },
         
@@ -2488,7 +2663,11 @@
         
             "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
         
-            "morning_pool_percentages": "JOHTO_ROUTE_43_MORNING_PERCENTAGES"
+            "morning_pool_percentages": "JOHTO_ROUTE_43_MORNING_PERCENTAGES",
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_43_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -2554,7 +2733,11 @@
         
             ],
         
-            "next_area": "MAHOGANY_TOWN"
+            "next_area": "MAHOGANY_TOWN",
+        
+            "surf_pool_percentages": "JOHTO_LAKE_OF_RAGE_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
 
@@ -2620,7 +2803,11 @@
 
             "day_pool_percentages": "JOHTO_ROUTE_44_DAY_PERCENTAGES",
 
-            "night_pool_percentages": "JOHTO_ROUTE_44_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_ROUTE_44_NIGHT_PERCENTAGES",
+
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_44_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
         
@@ -2694,7 +2881,11 @@
         
             "day_pool_percentages": "JOHTO_ROUTE_45_DAY_PERCENTAGES",
         
-            "night_pool_percentages": "JOHTO_ROUTE_45_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_ROUTE_45_NIGHT_PERCENTAGES",
+        
+            "surf_pool_percentages": "JOHTO_JOHTO_ROUTE_45_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -2844,7 +3035,11 @@
 
             "night_pool_percentages": "JOHTO_UNION_CAVE_NIGHT_PERCENTAGES",
 
-            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]}
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+
+            "surf_pool_percentages": "JOHTO_UNION_CAVE_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
         
@@ -2910,7 +3105,13 @@
         
             "night_pool_percentages": "JOHTO_DARK_CAVE_NIGHT_PERCENTAGES",
         
-            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]}
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+        
+            "surf_pool_percentages": "JOHTO_DARK_CAVE_SURF_PERCENTAGES",
+        
+            "can_fish": true,
+        
+            "rock_smash_pool_percentages": "JOHTO_DARK_CAVE_ROCK_SMASH_PERCENTAGES"
         
         },
         
@@ -2966,7 +3167,11 @@
         
             "night_pool_percentages": "JOHTO_SLOWPOKE_WELL_NIGHT_PERCENTAGES",
         
-            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]}
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+        
+            "surf_pool_percentages": "JOHTO_SLOWPOKE_WELL_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -3036,7 +3241,11 @@
         
             "morning_pool_percentages": "JOHTO_ILEX_FOREST_MORNING_PERCENTAGES",
         
-            "radio_sounds": {"hoenn": [325, 322], "sinnoh": [406, 455]}
+            "radio_sounds": {"hoenn": [325, 322], "sinnoh": [406, 455]},
+        
+            "surf_pool_percentages": "JOHTO_ILEX_FOREST_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -3342,7 +3551,11 @@
         
             "day_pool_percentages": "JOHTO_MT_MORTAR_DAY_PERCENTAGES",
         
-            "night_pool_percentages": "JOHTO_MT_MORTAR_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_MT_MORTAR_NIGHT_PERCENTAGES",
+        
+            "surf_pool_percentages": "JOHTO_MT_MORTAR_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -3484,7 +3697,11 @@
         
             "day_pool_percentages": "JOHTO_WHIRL_ISLANDS_DAY_PERCENTAGES",
         
-            "night_pool_percentages": "JOHTO_WHIRL_ISLANDS_NIGHT_PERCENTAGES"
+            "night_pool_percentages": "JOHTO_WHIRL_ISLANDS_NIGHT_PERCENTAGES",
+        
+            "surf_pool_percentages": "JOHTO_WHIRL_ISLANDS_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         
@@ -3756,7 +3973,11 @@
 
             ],
 
-            "trainer_pool": []
+            "trainer_pool": [],
+
+            "surf_pool_percentages": "JOHTO_CLIFF_EDGE_GATE_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
 
@@ -3853,7 +4074,11 @@
 
             ],
 
-            "next_area": "BLACKTHORN_CITY"
+            "next_area": "BLACKTHORN_CITY",
+
+            "surf_pool_percentages": "JOHTO_DRAGONS_DEN_SURF_PERCENTAGES",
+
+            "can_fish": true
 
         },
         
@@ -3927,7 +4152,11 @@
         
             "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
         
-            "morning_pool_percentages": "JOHTO_MT_SILVER_MORNING_PERCENTAGES"
+            "morning_pool_percentages": "JOHTO_MT_SILVER_MORNING_PERCENTAGES",
+        
+            "surf_pool_percentages": "JOHTO_MT_SILVER_SURF_PERCENTAGES",
+        
+            "can_fish": true
         
         },
         "BELLCHIME_TRAIL": {
@@ -4003,6 +4232,7 @@
             "completed_flag": "unown_research_complete",
             "reward": "Master Ball"
         },
+        {"id": "johto_s_oddegg", "type": "SIDE", "title": "The Odd Egg", "description": "The Day-Care Man on Route 34 has found another odd Egg. Go and see him!", "target": "JOHTO_ROUTE_34", "condition": {"required_region": "JOHTO", "flag": "odd_egg_ready"}, "completed_flag": "odd_egg_pending"},
         {
             "id": "johto_m2", "type": "MAIN", "title": "The Mystery Egg", "description": "You've got Mr. Pokemon's egg! Return to the Lab in New Bark Town to show Prof. Elm the Mystery Egg.",
             "target": "NEW_BARK_TOWN",
@@ -4177,8 +4407,8 @@
     "JOHTO_ROUTE_35_DAY_PERCENTAGES": {"29": 24, "32": 24, "96": 16, "209": 12, "63": 8, "58": 8, "16": 4, "132": 3, "193": 1},
     
     "JOHTO_ROUTE_36_PERCENTAGES": { "234": 25, "29": 12, "32": 12, "58": 10, "37": 10, "16": 9, "163": 9, "177": 8, "235": 5 },
-    "JOHTO_ROUTE_36_NIGHT_PERCENTAGES": {"29": 26, "32": 26, "163": 21, "167": 13, "37": 4, "234": 4, "58": 4, "92": 2},
-    "JOHTO_ROUTE_36_DAY_PERCENTAGES": {"29": 30, "32": 30, "16": 20, "37": 8, "58": 7, "234": 5},
+    "JOHTO_ROUTE_36_NIGHT_PERCENTAGES": {"29": 22, "32": 23, "163": 19, "167": 12, "37": 4, "234": 4, "58": 4, "92": 2, "177": 10},
+    "JOHTO_ROUTE_36_DAY_PERCENTAGES": {"29": 28, "32": 27, "16": 18, "37": 7, "58": 6, "234": 4, "177": 10},
     
     "JOHTO_ROUTE_37_PERCENTAGES": { "16": 18, "19": 18, "58": 13, "37": 13, "167": 10, "165": 10, "234": 9, "198": 8, "2001": 1 },
     "JOHTO_ROUTE_37_NIGHT_PERCENTAGES": {"163": 37, "234": 29, "167": 19, "37": 5, "58": 5, "164": 2, "168": 2, "2001": 1},
@@ -4254,17 +4484,17 @@
     "JOHTO_SAFARI_WASTELAND_PERCENTAGES": {"81": 30, "95": 30, "66": 13, "115": 13, "22": 10, "67": 3, "247": 2},
     "JOHTO_SAFARI_MOUNTAIN_PERCENTAGES": {"19": 20, "20": 20, "108": 20, "41": 13, "42": 10, "82": 10, "246": 7, "227": 9, "215": 10},
     "JOHTO_SAFARI_DESERT_PERCENTAGES": {"27": 40, "28": 30, "104": 13, "22": 10, "105": 7, "207": 13},
-  "JOHTO_ROUTE_47_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
-  "JOHTO_ROUTE_47_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 30, "170": 7, "90": 3},
-  "JOHTO_ROUTE_47_SUPER_ROD_PERCENTAGES": {"170": 60, "90": 30, "73": 7, "171": 3},
-  "JOHTO_ROUTE_32_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
-  "JOHTO_ROUTE_32_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 38, "211": 2},
-  "JOHTO_ROUTE_32_SUPER_ROD_PERCENTAGES": {"72": 48, "129": 4, "211": 48},
-  "JOHTO_ROUTE_40_OLD_ROD_PERCENTAGES": {"129": 42, "98": 30, "222": 13, "120": 13, "99": 1},
-  "JOHTO_ROUTE_41_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
-  "JOHTO_ROUTE_41_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 30, "170": 7, "90": 3},
-  "JOHTO_ROUTE_41_SUPER_ROD_PERCENTAGES": {"170": 60, "90": 30, "73": 7, "171": 3},
-  "JOHTO_ROUTE_42_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
-  "JOHTO_ROUTE_42_GOOD_ROD_PERCENTAGES": {"129": 60, "118": 40},
-  "JOHTO_ROUTE_42_SUPER_ROD_PERCENTAGES": {"118": 90, "129": 7, "119": 3}
+    "JOHTO_ROUTE_47_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+    "JOHTO_ROUTE_47_GOOD_ROD_PERCENTAGES": {"129": 40, "72": 40, "170": 16, "90": 4},
+    "JOHTO_ROUTE_47_SUPER_ROD_PERCENTAGES": {"170": 40, "90": 40, "73": 16, "171": 4},
+    "JOHTO_ROUTE_32_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+    "JOHTO_ROUTE_32_GOOD_ROD_PERCENTAGES": {"72": 59, "129": 40, "211": 1},
+    "JOHTO_ROUTE_32_SUPER_ROD_PERCENTAGES": {"72": 80, "129": 16, "211": 4},
+    "JOHTO_ROUTE_40_OLD_ROD_PERCENTAGES": {"129": 95, "98": 5},
+    "JOHTO_ROUTE_41_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+    "JOHTO_ROUTE_41_GOOD_ROD_PERCENTAGES": {"129": 40, "72": 40, "170": 16, "90": 4},
+    "JOHTO_ROUTE_41_SUPER_ROD_PERCENTAGES": {"170": 40, "90": 40, "73": 16, "171": 4},
+    "JOHTO_ROUTE_42_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
+    "JOHTO_ROUTE_42_GOOD_ROD_PERCENTAGES": {"118": 60, "129": 40},
+    "JOHTO_ROUTE_42_SUPER_ROD_PERCENTAGES": {"118": 80, "129": 16, "119": 4}
 }
