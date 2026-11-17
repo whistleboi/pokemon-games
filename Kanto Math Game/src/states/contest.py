@@ -285,7 +285,8 @@ class ContestState(GameState):
         self.phase = "INTRO"
         self.started = False
 
-        me = Contestant(game.player_name or "YOU", pokemon, pokemon.condition.get(category, 0), is_player=True)
+        from src.pokemon.contest import scarf_condition
+        me = Contestant(game.player_name or "YOU", pokemon, scarf_condition(pokemon, category), is_player=True)
         self.contestants = [me] + self._make_rivals()
         self.player = me
         self.moves = self._pick_moves(pokemon)

@@ -809,6 +809,7 @@ class StoryManager:
         pokemon.current_hp = pokemon.get_max_hp()
         if getattr(pokemon, "status", None):
             pokemon.cure_status()
+        pokemon.pp = {}  # (and full PP)
         return pokemon
 
     def deposit_to_pc(self, pokemon):
@@ -1201,7 +1202,7 @@ class StoryManager:
             if not self.story_flags.get(flag) and any(self.story_flags.get(f) for f in sources):
                 self.story_flags[flag] = True
 
-    RETIRED_ITEMS = ("SURF_BOARD", "AIR_BALLOON")
+    RETIRED_ITEMS = ("SURF_BOARD", "AIR_BALLOON", "EXP_SHARE")  # (Exp. Share is an Option now: Jordan, 11-16)
 
     def sync_key_items(self):
         """Ensures players have key items unlocked by their earned badges."""
@@ -1231,7 +1232,6 @@ class StoryManager:
             "KANTO": [
                 ("BOULDER", "TOWN_MAP"),
                 ("CASCADE", "BIKE_VOUCHER"),
-                ("THUNDER", "EXP_SHARE"),
                 ("RAINBOW", "COIN_CASE"),
                 ("VOLCANO", "VOLCANO_PASS"),
                 ("VOLCANO", "TRI_PASS"),  # Blaine: the Seagallop Ferry to the Sevii Islands
@@ -1259,7 +1259,6 @@ class StoryManager:
             "SINNOH": [
                 ("COAL_BADGE", "SINNOH_MAP"),
                 ("FOREST_BADGE", "OLD_ROD"),
-                ("COBBLE_BADGE", "EXP_SHARE"),
                 ("FEN_BADGE", "SUPER_ROD"),
                 ("RELIC_BADGE", "AMULET_COIN"),
                 ("MINE_BADGE", "EXPLORER_KIT"),
@@ -1268,7 +1267,6 @@ class StoryManager:
             ],
             "UNOVA": [
                 ("TRIO_BADGE", "UNOVA_MAP"),
-                ("BASIC_BADGE", "EXP_SHARE"),
                 ("INSECT_BADGE", "OLD_ROD"),
                 ("BOLT_BADGE", "SUPER_ROD"),
                 ("QUAKE_BADGE", "AMULET_COIN"),
@@ -1278,7 +1276,6 @@ class StoryManager:
             ],
             "KALOS": [
                 ("BUG_BADGE", "KALOS_MAP"),
-                ("CLIFF_BADGE", "EXP_SHARE"),
                 ("RUMBLE_BADGE", "OLD_ROD"),
                 ("PLANT_BADGE", "SUPER_ROD"),
                 ("VOLTAGE_BADGE", "AMULET_COIN"),
@@ -1288,7 +1285,6 @@ class StoryManager:
             ],
             "ALOLA": [
                 ("MELEMELE_STAMP", "ALOLA_MAP"),
-                ("AKALA_STAMP", "EXP_SHARE"),
                 ("AKALA_STAMP", "RIDE_PAGER"),  # Charizard Glide, after Akala's grand trial (Sun/Moon)
                 ("ULAUA_STAMP", "AMULET_COIN"),
                 ("PONI_STAMP", "Z_RING"),
@@ -1296,7 +1292,6 @@ class StoryManager:
             "GALAR": [
                 ("GRASS_BADGE", "GALAR_MAP"),
                 ("GRASS_BADGE", "FLYING_TAXI"),  # Corviknight taxis run from the start (Sword/Shield)
-                ("WATER_BADGE", "EXP_SHARE"),
                 ("FIRE_BADGE", "OLD_ROD"),
                 ("FIGHTING_BADGE", "AMULET_COIN"),
                 ("FAIRY_BADGE", "ROTOM_BIKE"),
@@ -1306,7 +1301,6 @@ class StoryManager:
             ],
             "PALDEA": [
                 ("BUG_BADGE", "PALDEA_MAP"),
-                ("GRASS_BADGE", "EXP_SHARE"),
                 ("ELECTRIC_BADGE", "OLD_ROD"),
                 ("WATER_BADGE", "AMULET_COIN"),
                 ("NORMAL_BADGE", "SUPER_ROD"),
@@ -1443,6 +1437,7 @@ class StoryManager:
             "ability_slot": getattr(p, "ability_slot", 0), "gender": getattr(p, "gender", "?"),
             "is_egg": bool(getattr(p, "is_egg", False)), "egg_steps": getattr(p, "egg_steps", 0),
             "tera_type": getattr(p, "tera_type", None), "held_item": getattr(p, "held_item", None),
+            "pp": dict(getattr(p, "pp", None) or {}), "pp_ups": dict(getattr(p, "pp_ups", None) or {}),
         }
 
     TEMPORARY_FORMS = ("mega", "mega_x", "mega_y", "primal")
@@ -1468,6 +1463,8 @@ class StoryManager:
         if p_data.get("tera_type"):
             pokemon.tera_type = p_data["tera_type"]
         pokemon.held_item = p_data.get("held_item")
+        pokemon.pp = dict(p_data.get("pp") or {})  # (older saves: full PP)
+        pokemon.pp_ups = dict(p_data.get("pp_ups") or {})
         pokemon.condition.update(p_data.get("condition", {}))
         pokemon.sheen = p_data.get("sheen", 0)
         pokemon.ribbons = list(p_data.get("ribbons", []))

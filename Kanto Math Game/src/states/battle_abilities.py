@@ -211,7 +211,7 @@ class AbilityEffects:
         t, name = d.get("type"), d.get("name")
         if fa in ABSORB and ABSORB[fa][0] == t:
             return fa
-        if fa == "LEVITATE" and t == "GROUND" and (d.get("power") or 0):
+        if fa == "LEVITATE" and t == "GROUND" and (d.get("power") or 0) and not self.held_grounded(defender):
             return fa
         flags = self._flags(name)
         if (fa == "SOUNDPROOF" and "sound" in flags) or (fa == "BULLETPROOF" and "bomb" in flags):
@@ -288,8 +288,7 @@ class AbilityEffects:
             mult *= 1.3
         if a in TYPE_BOOST and TYPE_BOOST[a][0] == t:
             mult *= TYPE_BOOST[a][1]
-        from src.pokemon.items import held_boost
-        mult *= held_boost(attacker, t)  # (a held Mystic Water: Water moves)
+        mult *= self.held_power_mult(attacker, defender, name, d)  # (a held Mystic Water, a Plate, a Metronome: src/states/battle_items.py)
         if self.vol(attacker).get("flash_fire") and t == "FIRE":
             mult *= 1.5
         status = getattr(attacker, "status", None)
@@ -311,7 +310,7 @@ class AbilityEffects:
             mult *= 1.5
         if a == "DEFEATIST" and self._hp(attacker) * 2 <= self._max_hp(attacker):
             mult *= 0.5
-        return mult
+        return mult * self.held_attack_mult(attacker, special)  # (Choice Band / Specs, Light Ball...)
 
     def ability_defense_mult(self, attacker, defender, special):
         fa, mult = self.def_ab(attacker, defender), 1.0
@@ -319,11 +318,7 @@ class AbilityEffects:
             mult *= 2
         if not special and fa == "MARVELSCALE" and getattr(defender, "status", None):
             mult *= 1.5
-        if getattr(defender, "held_item", None) == "EVIOLITE":  # (held by one that can still evolve: both defences up)
-            from src.pokemon.evolution import _descendants
-            if _descendants(self.game, getattr(defender, "id", 0)):
-                mult *= 1.5
-        return mult
+        return mult * self.held_defense_mult(defender, special)  # (Eviolite, Deep Sea Scale, Metal Powder)
 
     def ability_final_mult(self, attacker, defender, name, d, eff, crit, stab):
         a, fa, mult = self.ab(attacker), self.def_ab(attacker, defender), 1.0
@@ -352,7 +347,7 @@ class AbilityEffects:
             mult *= 1.25
         if fa == "PURIFYINGSALT" and t == "GHOST":
             mult *= 0.5
-        return mult
+        return mult * self.held_final_mult(attacker, defender, eff)  # (Expert Belt)
 
     def ability_crit(self, attacker, defender, stage):
         """(stage, blocked): Super Luck +1; Battle Armor / Shell Armor stop crits; Merciless always."""

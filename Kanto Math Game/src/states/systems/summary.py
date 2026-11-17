@@ -468,6 +468,13 @@ class PokemonDetailState(GameState):
         pygame.draw.rect(screen, GOLD if highlight else (20, 20, 30), rect, 5 if highlight else 3, border_radius=12)
         Utils.draw_text_outline(screen, name.replace("-", " ").upper(), fonts["label"], WHITE,
                                 rect.x + 14, rect.y + 8, align="left", outline_color=dark, thickness=2)
+        from src.pokemon import pp as pplib  # (PP left / most for a move it knows; the most for a pool move)
+        p = self.pokemon
+        top = pplib.max_pp(self.game, p, name)
+        have = pplib.left(self.game, p, name) if name in (p.moves or []) else top
+        Utils.draw_text_outline(screen, f"PP {have}/{top}", fonts["caption"],
+                                (255, 110, 100) if have <= 0 else (255, 214, 90) if have * 4 <= top else WHITE,
+                                rect.right - 14, rect.y + 10, align="right", outline_color=dark, thickness=2)
         acc = f"{d['accuracy']}%" if d.get("accuracy") else "-"
         detail = (f"{str(d.get('type', '')).title()}  {str(d.get('category', '')).title()}  "
                   f"Pow {d.get('power') or '-'}  {acc}")

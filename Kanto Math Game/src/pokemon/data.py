@@ -60,6 +60,8 @@ class Pokemon:
         self.sleep_turns = 0
         self.moves = []           # up to four move names (filled from its learnset when needed)
         self.move_pool = []       # every move it has learned; the player picks four in the Summary
+        self.pp = {}              # PP left per move (a move not in it has full PP: src/pokemon/pp.py)
+        self.pp_ups = {}          # PP Ups used per move (0-3)
         self.caught_region = None
         # The level it was caught at: a level evolution waits until it has levelled up once
         # (Jordan), so a Charmander caught at Lv 20 doesn't turn into Charmeleon on the spot.
@@ -286,9 +288,10 @@ class Pokemon:
         self.toxic_count = 0
 
     def heal_full(self):
-        """Full HP and no status, like a Pokemon Center."""
+        """Full HP, full PP and no status, like a Pokemon Center."""
         self.current_hp = self.get_max_hp()
         self.cure_status()
+        self.pp = {}
 
     def get_max_hp(self, level=None, **_legacy):
         """Real HP: floor((2 x Base + IV) x Lv / 100) + Lv + 10."""

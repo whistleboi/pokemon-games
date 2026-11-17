@@ -1355,7 +1355,7 @@
 
                 {"text": "Talk to Mr. Pokemon", "action": "NPC", "target": "mr_pokemon"},
 
-                {"text": "Show the Red Scale", "action": "EVENT", "color": "GOLD", "event": {"requires": ["has_item:RED_SCALE"], "lines": ["Mr. Pokemon: Hm? What's that? A red scale!", "Is it from a Gyarados? How fascinating! Would you trade it for this?", "It's an Exp. Share! Pokemon that hold it share the experience of battles."], "take_item": {"RED_SCALE": 1}, "gift_item": {"EXP_SHARE": 1}, "flag": "traded_red_scale"}, "condition": "has_item:RED_SCALE", "flag_condition": "not traded_red_scale"}
+                {"text": "Show the Red Scale", "action": "EVENT", "color": "GOLD", "event": {"requires": ["has_item:RED_SCALE"], "lines": ["Mr. Pokemon: Hm? What's that? A red scale!", "Is it from a Gyarados? How fascinating! Would you trade it for this?", "Here, a set of vitamins! They make a Pokemon stronger."], "take_item": {"RED_SCALE": 1}, "gift_item": {"HP_UP": 1, "PROTEIN": 1, "IRON": 1, "CALCIUM": 1, "ZINC": 1, "CARBOS": 1}, "flag": "traded_red_scale"}, "condition": "has_item:RED_SCALE", "flag_condition": "not traded_red_scale"}
 
             ],
 
