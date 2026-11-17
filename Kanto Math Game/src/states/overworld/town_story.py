@@ -136,8 +136,37 @@ class TownStory:
             callback=self.end_npc_interaction
         )
         region = story.get_current_region()
+        then = self.end_npc_interaction
         if should_heal and story.is_region_champion(region):
-            self.npc_dialogue.callback = lambda: self._offer_move(region, phone=False)
+            then = lambda: self._offer_move(region, phone=False)
+        from src.pokemon import rowdy
+        if should_heal and not is_reds_mom and (rowdy.in_party(story) or rowdy.at_mom(story)):
+            self.npc_dialogue.callback = lambda: self._mom_pikachu(then)   # (Yellow's Pikachu: Mom's the only one it stays with)
+        elif then is not self.end_npc_interaction:
+            self.npc_dialogue.callback = then
+
+    def _mom_pikachu(self, then):
+        """Mom keeps the rowdy Pikachu for you: one locker shared by every region's Mom (src/pokemon/rowdy.py)."""
+        from src.pokemon import rowdy
+        from src.states.systems.pick_list import PickListState
+        story = self.game.story_manager
+        if rowdy.in_party(story):
+            rows, ask = [("LEAVE PIKACHU WITH MOM", "leave"), ("KEEP PIKACHU", None)], "LEAVE PIKACHU WITH MOM?"
+        else:
+            rows, ask = [("TAKE PIKACHU WITH YOU", "take"), ("LEAVE IT WITH MOM", None)], "PIKACHU IS PLAYING HERE"
+
+        def picked(v):
+            msg = None
+            if v == "leave":
+                msg = rowdy.leave_with_mom(story)
+            elif v == "take":
+                msg = rowdy.take_from_mom(self.game)
+            if msg:
+                self.game.data.save()
+                self.show_message([msg], callback=then)
+            else:
+                then()
+        self.game.change_state(PickListState(self.game, self, ask, rows, picked))
 
     def visit_prof_oak(self):
         self.game.music.play("oak")
@@ -170,6 +199,21 @@ class TownStory:
             ]
             story.story_flags["mew_spotted_mt_moon"] = True
             self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
+            return
+
+        from src.pokemon import rowdy
+        if story.get_current_region() == "KANTO" and rowdy.can_get(story):
+            # (Pokemon Yellow, Jordan 11-16: after Lt. Surge, Oak's rowdy Pikachu; the Journal's side mission sends you)
+            got = rowdy.give(self.game)
+            self.game.data.save()
+            msg = ["Professor Oak: The Thunder Badge! You beat Lt. Surge and his Electric Pokémon!",
+                   "I caught this Pikachu at the edge of town. It refuses to stay in its Poke Ball...",
+                   "and it zaps anyone who tries to make it evolve! After that battle, I think it will listen to you.",
+                   "You received PIKACHU!", got,
+                   "Professor Oak: It won't go in the PC, mind you. If you need a break, your Mom can look after it.",
+                   "She'll keep it safe for you, wherever in the world you are!"]
+            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"],
+                                                   callback=self.end_npc_interaction)
             return
 
         if (region == "JOHTO" and story.is_region_champion("JOHTO")

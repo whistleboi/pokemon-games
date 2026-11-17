@@ -326,6 +326,12 @@ play(lambda: any("Daisy" in s for s in said) and not g.current_state._busy(), 60
 check(any("Daisy: Hi there" in s for s in said), f"Daisy, next door, at FireRed's spot {daisy} ({said[:1]})")
 
 # ---- Viridian: the Gym's doors stay locked till the other seven badges; inside, FireRed's spin maze; the Center
+# (first, Jordan's own: Jessie & James jump you at the locked doors on your first look; yellow_kanto plays it through)
+v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+v.player = (36, 11); v.anim = 0; v.facing = (0, -1)
+walk(v, "u")
+check(isinstance(g.current_state, (TrainerIntroState, TrainerBattleState)), f"Viridian Gym: Jessie & James jump you at its locked doors ({type(g.current_state).__name__})")
+story.story_flags["viridian_rocket_defeated"] = True
 v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 v.player = (36, 11); v.anim = 0; v.facing = (0, -1)
 walk(v, "u")
@@ -410,7 +416,7 @@ _use(r2, (17, 55), (0, -1))
 check(story.inventory.get("ETHER", 0) == _had + 1 and story.story_flags.get("got_ether_route2"), "...walk up to it and you pick it up")
 fo = open_map("VIRIDIAN_FOREST", "KANTO_ROUTE_2")
 _tr = sorted((m.x, m.y) for m in fo.run.floor.movers if m.kind == "trainer")
-check(len(_tr) == 5 and (16, 5) in _tr and (47, 45) in _tr, f"Viridian Forest: the five Bug Catchers on FireRed's spots ({_tr})")
+check(len(_tr) == 7 and (16, 5) in _tr and (47, 45) in _tr and (29, 23) in _tr and (12, 31) in _tr, f"Viridian Forest: the five Bug Catchers on FireRed's spots, and Yellow's two ({_tr})")
 _b = story.balls_left
 story.story_flags.pop("got_ball_forest", None)
 _use(fo, (5, 42), (0, -1))
@@ -1049,7 +1055,7 @@ _g = {m.payload[1].get("spot_name"): (m.x, m.y) for m in hq.run.floor.movers if 
 check(_g.get("Grunt B1F 1") == (4, 9) and _g.get("Grunt B1F 5") == (6, 32) and len(_g) == 5, f"...B1F's five grunts on FireRed's spots, each his own team ({_g})")
 _floor(hq, 3)
 _g = {m.payload[1].get("spot_name"): (m.x, m.y) for m in hq.run.floor.movers if m.kind == "trainer"}
-check(len(_g) == 3 and _figure(hq, "GIOVANNI") == (19, 4) and _figure(hq, "LIFT KEY") == (3, 2), f"...B4F: three grunts, Giovanni at FireRed's spot, the Lift Key by the grunt who drops it ({_g})")
+check(len(_g) == 4 and (19, 8) in _g.values() and _figure(hq, "GIOVANNI") == (19, 4) and _figure(hq, "LIFT KEY") == (3, 2), f"...B4F: three grunts and Yellow's Jessie & James, Giovanni at FireRed's spot, the Lift Key by the grunt who drops it ({_g})")
 _floor(hq, 0)
 hq.run.floor.movers = [m for m in hq.run.floor.movers if m.kind not in ("wild", "trainer")]
 story.inventory.pop("LIFT_KEY", None)
@@ -1213,7 +1219,7 @@ for _i in range(11):
     _n.append(len(_ms))
     for m in _ms:
         _who[m.payload[1].get("spot_name") or m.payload[1]["name"]] = (_i, m.x, m.y)
-check(_n == [1, 3, 2, 3, 4, 2, 5, 3, 3, 2, 3], f"...FireRed's trainers floor by floor, the data's among them ({_n})")
+check(_n == [1, 3, 2, 3, 4, 2, 5, 3, 3, 2, 4], f"...FireRed's trainers floor by floor, the data's among them, and Yellow's Jessie & James on 11F ({_n})")
 check(_who.get("Grunt 3F") == (2, 25, 9) and _who.get("Admin Proton") == (7, 28, 5) and _who.get("Archer") == (8, 15, 18),
       f"...the data's on the floors their words name: the warp-panel grunt on 3F, Proton on 8F, Archer on 9F ({_who.get('Admin Proton')}, {_who.get('Archer')})")
 check(_who.get("{rival_name}") == (6, 2, 6) and _who.get("Giovanni") == (10, 6, 11) and _who.get("Executive Ariana") == (10, 16, 12),

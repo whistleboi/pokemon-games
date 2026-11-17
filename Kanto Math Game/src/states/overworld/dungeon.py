@@ -3465,7 +3465,9 @@ class DungeonState(OverworldBattles, PlayState):
         """(bottom, image, rect) for you surfing: the Pokemon carrying you (Pokemon Orre's base_surf sheet,
         bobbing), you on its back; stepping on or off the sea you hop across (an arc) while it stays put."""
         frame = (pygame.time.get_ticks() // 160) % 4
-        base = self._sheet_frame("base_surf.png", self.facing, col=frame, height=int(TILE * 0.95))
+        from src.pokemon import rowdy   # (Pokemon Yellow: with the rowdy Pikachu along, you ride its surfboard; Jordan's sheet, 11-16)
+        pika = self._pika_surf(frame) if rowdy.in_party(self.game.story_manager) is not None else None
+        base, pika_top = pika if pika else (self._sheet_frame("base_surf.png", self.facing, col=frame, height=int(TILE * 0.95)), None)
         bob = int(2 * math.sin(pygame.time.get_ticks() / 180))
         was, now = (self._on_surf(self.anim_from) if self.anim > 0 else True), self._on_surf()
         if was and now:  # riding: it moves with you
@@ -3475,8 +3477,28 @@ class DungeonState(OverworldBattles, PlayState):
         else:  # hopping off: it stays on the water you leave
             spot, lift = at(*self.anim_from), int(16 * (1 - k) + 30 * math.sin(k * math.pi))
         out = [(spot.bottom - 1, base, base.get_rect(midbottom=(spot.centerx, spot.bottom + 4 + bob)))]
-        out.append((max(pr.bottom, spot.bottom), me, me.get_rect(midbottom=(pr.centerx, pr.bottom - lift))))
+        mx = pr.centerx
+        if pika_top is not None and self.facing[0]:   # (side on: you stand at the back of the board, a leg past Pikachu; Jordan 11-16)
+            mx -= int(self.facing[0] * TILE * 0.27)
+        out.append((max(pr.bottom, spot.bottom), me, me.get_rect(midbottom=(mx, pr.bottom - lift))))
+        if pika_top is not None and self.facing != (0, -1):   # (Pikachu again, over you: you stand behind it on the board; Jordan 11-16. Heading up, it's ahead of you)
+            out.append((max(pr.bottom, spot.bottom) + 1, pika_top, pika_top.get_rect(midbottom=(spot.centerx, spot.bottom + 4 + bob))))
         return out
+
+    def _pika_surf(self, col):
+        """The Surfing Pikachu's board (Jordan's sheet, pikachu_surf.png) and Pikachu alone (pikachu_surf_top.png), cut
+        and scaled the same way so the two lie exactly on each other."""
+        def make():
+            d = os.path.join(self.game.assets.assets_dir, "dungeon", "characters")
+            full = pygame.image.load(os.path.join(d, "pikachu_surf.png")).convert_alpha()
+            top = pygame.image.load(os.path.join(d, "pikachu_surf_top.png")).convert_alpha()
+            cw, ch = full.get_width() // 4, full.get_height() // 4
+            cell = pygame.Rect(col * cw, FACING_ROW.get(self.facing, 0) * ch, cw, ch)
+            box = full.subsurface(cell).get_bounding_rect().move(cell.topleft)
+            k = max(1, round(TILE * 1.05 / max(1, box.h))) * 1.5   # (Jordan 11-16: half as big again; the sheet is drawn at 2x, so 1.5 = 3 px an art pixel)
+            size = (int(box.w * k), int(box.h * k))
+            return (pygame.transform.scale(full.subsurface(box), size), pygame.transform.scale(top.subsurface(box), size))
+        return self._sprite(("pika_surf", self.facing, col), make)
 
     def _bike_img(self, front=False):
         """The Bicycle under you, drawn (we have no sheet of one): side on, two wheels and a red frame; from the front or
@@ -3713,6 +3735,11 @@ class DungeonState(OverworldBattles, PlayState):
     def lead(self):
         team = self.game.story_manager.player_team
         return next((p for p in team if p and p.current_hp > 0), team[0] if team else None)
+
+    def follower(self):
+        """The Pokemon walking behind you: the rowdy Pikachu whenever it's in the party (Yellow), else your lead."""
+        from src.pokemon import rowdy
+        return rowdy.in_party(self.game.story_manager) or self.lead()
 
     _backdrop = False
     _ow_foe = None  # (the wild Pokemon an OVERWORLD-style battle is drawing itself)
@@ -3975,7 +4002,7 @@ class DungeonState(OverworldBattles, PlayState):
             theme.shadow_text(screen, "!", fonts["label"], er.centerx - 4, er.y - 34, color=(230, 60, 50))
         # you, your trainer, with your lead Pokemon a step behind
         k = 1 - self.anim / STEP_FRAMES if self.anim > 0 else 1
-        lead = self.lead()
+        lead = self.follower()
         pr = pygame.Rect(0, 0, TILE, TILE)
         (fx0, fy0), (tx0, ty0) = (self.anim_from if self.anim > 0 else self.run.player), self.run.player
         pr.topleft = (int(ox + (fx0 + (tx0 - fx0) * k) * TILE), int(oy + (fy0 + (ty0 - fy0) * k) * TILE))  # (you, mid-step)

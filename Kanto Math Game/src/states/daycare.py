@@ -89,6 +89,9 @@ class DaycareState(GameState):
         if getattr(mon, "is_egg", False):
             self._say("An Egg can't be left at the Day Care.")
             return
+        if getattr(mon, "special", None) == "rowdy_pikachu":   # (Yellow's partner: only Mom keeps it)
+            self._say("There isn't any response... Pikachu won't leave your side.")
+            return
         others = [p for p in team if p is not mon and not getattr(p, "is_egg", False)]
         if not others:
             self._say("You can't leave your last Pokémon! Keep at least one with you.")

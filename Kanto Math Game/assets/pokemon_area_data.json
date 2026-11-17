@@ -135,13 +135,20 @@
         "condition": { "required_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "defeated_rival_route22_early", "badges_less": 1 }, "completed_flag": "defeated_rival_route22_early"
       },
       {
-        "id": "m1", "type": "MAIN", "text": "Investigation at Viridian", "desc": "Check out the Viridian City Gym. People say the Gym Leader is away, but strange characters have been seen there.",
-        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "viridian_rocket_defeated" }
-      },
-      {
         "id": "m1b", "type": "MAIN", "text": "Through Viridian Forest", "target": "VIRIDIAN_FOREST",
         "desc": "Pewter City lies north, past Route 2 and the winding paths of Viridian Forest. Bug Catchers hide among the trees!",
         "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "visited_not": "PEWTER_CITY", "badges_less": 1 }, "completed_flag": "visited_PEWTER_CITY"
+      },
+      {
+        "id": "s_rowdy_pikachu", "type": "SIDE", "text": "A Rowdy Pikachu", "target": "PALLET_TOWN",
+        "desc": "Professor Oak heard you beat Lt. Surge. He has an Electric Pokemon at his Lab in Pallet Town that might listen to a trainer like you!",
+        "condition": { "required_region": "KANTO", "badge": "THUNDER", "flag_not": "got_rowdy_pikachu" }, "completed_flag": "got_rowdy_pikachu",
+        "steps": [{"at": [16, 14], "label": "Oak's Lab", "done": "got_rowdy_pikachu"}]
+      },
+      {
+        "id": "m1", "type": "MAIN", "text": "Investigation at Viridian", "target": "VIRIDIAN_CITY", "desc": "Check out the Viridian City Gym. People say the Gym Leader is away, but strange characters have been seen there.",
+        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "viridian_rocket_defeated", "badges_less": 1 },
+        "steps": [{"at": [36, 11], "label": "Viridian Gym", "done": "viridian_rocket_defeated"}]
       },
       {
         "id": "m2", "type": "MAIN", "text": "Challenge Brock", "target": "PEWTER_CITY", "desc": "Head north through Route 2 and Viridian Forest to reach Pewter City. Earn your first badge from Brock, the rock-solid Gym Leader!",
@@ -658,7 +665,7 @@
         "gym": "battle_gym_viridian.png"
       },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Blackbelt Warren", "class": "BLACKBELT", "sprite": "hiker.png", "is_boss_battle": true, "team": [67, 66], "rewards": {"balls": 2}, "dialogue": {"intro": ["Kiyah!"], "player_won": ["I ran out of steam."], "player_lost": ["Karate chop!"]}}, {"name": "Cooltrainer Yuji", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [111, 33], "rewards": {"balls": 2}, "dialogue": {"intro": ["This is the final test before the leader!"], "player_won": ["You are ready."], "player_lost": ["Not ready yet!"]}}], "requirements": {"badges": 7, "fail_text": "The Gym is closed. The Leader is away."}, "leader": {"name": "Giovanni", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "leader_giovanni.png", "team": [111, 51, 31, 34, 111], "levels": [45, 42, 44, 45, 50], "badge_reward": "EARTH", "dialogue": {"intro": ["This is the last time you meddle with Team Rocket!"], "player_won": ["I must admit, you're quite skilled...", "The rumors are true. A powerful Pokémon is waking in Cerulean Cave... something Team Rocket left behind after the destruction at Cinnabar Island.", "This map will lead you there. Don't say I never gave you anything.", "Take the Earth Badge."], "player_lost": ["A child could never hope to defeat Team Rocket!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "CERULEAN_CAVE_MAP": 1}, "movesets": {"111": ["TAKE-DOWN", "ROCK-BLAST", "SCARY-FACE", "EARTHQUAKE"], "51": ["SLASH", "SAND-TOMB", "MUD-SLAP", "EARTHQUAKE"], "31": ["DOUBLE-KICK", "EARTHQUAKE", "POISON-STING", "BODY-SLAM"], "34": ["DOUBLE-KICK", "EARTHQUAKE", "POISON-STING", "THRASH"]}}, "pre_battle_event": {"flag_check": "viridian_rocket_defeated", "invert_flag": true, "trainer": {"name": "Jessie and James", "class": "ROCKET", "sprite": "jessie_james.png", "is_boss_battle": true, "team": [23, 109, 52], "rewards": {"balls": 3}, "dialogue": {"intro": ["We don't know where the boss is, get out!"], "player_won": ["We're blasting off again!"], "player_lost": ["Too easy!"]}}}},
+      "gym": {"trainers": [{"name": "Blackbelt Warren", "class": "BLACKBELT", "sprite": "hiker.png", "is_boss_battle": true, "team": [67, 66], "rewards": {"balls": 2}, "dialogue": {"intro": ["Kiyah!"], "player_won": ["I ran out of steam."], "player_lost": ["Karate chop!"]}}, {"name": "Cooltrainer Yuji", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [111, 33], "rewards": {"balls": 2}, "dialogue": {"intro": ["This is the final test before the leader!"], "player_won": ["You are ready."], "player_lost": ["Not ready yet!"]}}], "requirements": {"badges": 7, "fail_text": "The Gym is closed. The Leader is away."}, "leader": {"name": "Giovanni", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "leader_giovanni.png", "team": [111, 51, 31, 34, 111], "levels": [45, 42, 44, 45, 50], "badge_reward": "EARTH", "dialogue": {"intro": ["This is the last time you meddle with Team Rocket!"], "player_won": ["I must admit, you're quite skilled...", "The rumors are true. A powerful Pokémon is waking in Cerulean Cave... something Team Rocket left behind after the destruction at Cinnabar Island.", "This map will lead you there. Don't say I never gave you anything.", "Take the Earth Badge."], "player_lost": ["A child could never hope to defeat Team Rocket!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "CERULEAN_CAVE_MAP": 1}, "movesets": {"111": ["TAKE-DOWN", "ROCK-BLAST", "SCARY-FACE", "EARTHQUAKE"], "51": ["SLASH", "SAND-TOMB", "MUD-SLAP", "EARTHQUAKE"], "31": ["DOUBLE-KICK", "EARTHQUAKE", "POISON-STING", "BODY-SLAM"], "34": ["DOUBLE-KICK", "EARTHQUAKE", "POISON-STING", "THRASH"]}}, "pre_battle_event": {"flag_check": "viridian_rocket_defeated", "invert_flag": true, "trainer": {"name": "Jessie and James", "class": "ROCKET", "sprite": "jessie_james.png", "is_boss_battle": true, "team": [23, 52], "levels": [6, 6], "rewards": {"balls": 3}, "dialogue": {"intro": ["We don't know where the boss is, get out!"], "player_won": ["We're blasting off again!"], "player_lost": ["Too easy!"]}}}},
       "trainer_encounter_rate": 0,
       "travel_options": [
         {"text": "Route 1", "target_area": "KANTO_ROUTE_1"},
@@ -872,7 +879,7 @@
         {"text": "Gym", "action": "GYM"},
         {"text": "Game Corner", "action": "GAMECORNER"},
         {"text": "Prize Corner", "action": "PRIZES", "door": "prize corner"},
-        {"text": "Celadon Mansion", "action": "EVENT", "flag_condition": "not got_tea", "event": {"lines": ["An old woman in the Celadon Mansion smiles at you.", "Nothing beats thirst like some hot Tea. Here, take some!", "The guards around Saffron City look thirsty. Maybe they'd like it too?"], "gift_item": {"TEA": 1}, "flag": "got_tea"}}
+        {"text": "Celadon Mansion", "action": "EVENT", "event": {"lines": ["An old woman in the Celadon Mansion smiles at you.", "Nothing beats thirst like some hot Tea. Here, take some!", "The guards around Saffron City look thirsty. Maybe they'd like it too?"], "gift_item": {"TEA": 1}, "flag": "got_tea", "done": ["Old woman: My pets keep me young! Pokemon are such good company."], "pikachu_mood": true}}
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -1848,7 +1855,8 @@
           },
           "zone": "11f",
           "spot_name": "Grunt 11F"
-        }
+        },
+        {"sprite": "jessie_james.png", "name": "Jessie and James", "class": "ROCKET", "zone": "11f", "team": [110, 24, 52], "levels": [31, 31, 31], "rewards": {"balls": 3}, "dialogue": {"intro": ["Prepare for trouble! This building belongs to Team Rocket now!", "And make it double! You're not getting past us this time!"], "player_won": ["How do you keep beating us?!", "Team Rocket's blasting off again!"], "player_lost": ["Too easy!"]}}
       ],
       "route_menu": [
         {
@@ -2365,7 +2373,8 @@
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B3F 2", "class": "ROCKET_GRUNT", "zone": "b3f", "team": [19, 20, 96], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B4F 1", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [109, 41], "levels": [21, 21], "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B4F 2", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [27, 23, 28], "levels": [23, 23, 23], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B4F 3", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [23, 27, 24], "levels": [23, 23, 23], "rewards": { "balls": 3 } }
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt B4F 3", "class": "ROCKET_GRUNT", "zone": "b4f", "team": [23, 27, 24], "levels": [23, 23, 23], "rewards": { "balls": 3 } },
+        {"sprite": "jessie_james.png", "name": "Jessie and James", "class": "ROCKET", "zone": "b4f", "team": [109, 52, 23], "levels": [25, 25, 25], "rewards": {"balls": 3}, "dialogue": {"intro": ["You again?! Prepare for trouble!", "And make it double! The Boss is not to be disturbed!"], "player_won": ["Not again...!", "Team Rocket's blasting off again!"], "player_lost": ["Too easy!"]}}
       ],
       "route_menu": [
         {"text": "LIFT KEY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lift_key", "event": {"lines": ["The grunt dropped something... It's the Lift Key! The Hideout's elevator works with it."], "gift_item": {"LIFT_KEY": 1}, "flag": "got_lift_key"}},
@@ -2718,7 +2727,9 @@
         { "sprite": "bug_catcher.png", "name": "Anthony", "class": "BUG_CATCHER", "team": [10, 10], "levels": [7, 8], "rewards": { "balls": 3 }, "dialogue": {"intro": ["I went to the Pokemon Center... and now I'm ready to battle!"], "player_won": ["Ow! Out of Pokemon!"], "player_lost": ["Bugs are tough, huh?"]} },
         { "sprite": "bug_catcher.png", "name": "Sammy", "class": "BUG_CATCHER", "team": [13], "levels": [9], "rewards": { "balls": 3 } },
         { "sprite": "bug_catcher.png", "name": "Doug", "class": "BUG_CATCHER", "team": [13, 14, 13], "levels": [7, 7, 7], "rewards": { "balls": 3 }, "dialogue": {"intro": ["Hey! You have Pokemon! Come on, let's battle 'em!"], "player_won": ["No! Caterpie can't cut it!"], "player_lost": ["My bugs are the best!"]} },
-        { "sprite": "bug_catcher.png", "name": "Rick", "class": "BUG_CATCHER", "team": [13, 10], "levels": [6, 6], "rewards": { "balls": 3 }, "dialogue": {"intro": ["I love bug Pokémon!"], "player_won": ["Wow, you're pretty good at battling!"], "player_lost": ["No way! I thought my bugs would win!"]} }
+        { "sprite": "bug_catcher.png", "name": "Rick", "class": "BUG_CATCHER", "team": [13, 10], "levels": [6, 6], "rewards": { "balls": 3 }, "dialogue": {"intro": ["I love bug Pokémon!"], "player_won": ["Wow, you're pretty good at battling!"], "player_lost": ["No way! I thought my bugs would win!"]} },
+        { "sprite": "lass.png", "name": "Lass", "spot_name": "Lass VF", "class": "LASS", "team": [29, 32], "levels": [6, 6], "rewards": { "balls": 3 }, "dialogue": {"intro": ["Hi! You look new here. Let's battle!"], "player_won": ["Aww, I lost..."], "player_lost": ["Yay, I won!"]} },
+        { "sprite": "bug_catcher.png", "name": "Bug Catcher", "spot_name": "Bug Catcher VF", "class": "BUG_CATCHER", "team": [10, 10], "levels": [7, 7], "rewards": { "balls": 3 }, "dialogue": {"intro": ["My two Caterpie are going to beat you!"], "player_won": ["They tried their best..."], "player_lost": ["Bugs rule!"]} }
       ],
       "route_menu": [
         {"text": "POKE BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ball_forest", "event": {"lines": ["A Poké Ball, dropped among the roots."], "gift_item": {"balls": 1}, "flag": "got_ball_forest"}}, 
@@ -3444,6 +3455,7 @@
         { "sprite": "swimmer_f.png", "name": "Connie", "class": "SWIMMER", "team": [120, 120, 120], "levels": [29, 29, 29], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "SURFIN' DUDE", "action": "EVENT", "door": "beach", "event": {"minigame": "pikachu_beach", "lines": ["Surfin' Dude: Yo! Welcome to the Summer Beach House, dude!", "Surfin' Dude: I ride the waves with my Pikachu. Surfing Pikachu are the raddest!"]}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -3683,7 +3695,7 @@
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [19, 41], "levels": [13, 13], "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [19, 27], "levels": [13, 13], "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [27, 19, 41], "levels": [11, 11, 11], "rewards": { "balls": 3 } },
-        {"sprite": "jessie_james.png", "name": "Jessie and James", "class": "ROCKET", "dialogue": {"intro": ["Prepare for trouble!", "And make it double!"], "player_won": ["It looks like we were the ones who found trouble!", "Team Rocket's blasting off again!"], "player_lost": ["Too easy!"]}, "team": [23, 109, 52], "rewards": {"balls": 3}}
+        {"sprite": "jessie_james.png", "name": "Jessie and James", "class": "ROCKET", "dialogue": {"intro": ["Prepare for trouble!", "And make it double!"], "player_won": ["It looks like we were the ones who found trouble!", "Team Rocket's blasting off again!"], "player_lost": ["Too easy!"]}, "team": [23, 52, 109], "levels": [14, 14, 14], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "PARALYZE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_parlyz_mtmoon", "event": {"lines": ["A Paralyze Heal, near the cave wall."], "gift_item": {"PARALYZE_HEAL": 1}, "flag": "got_parlyz_mtmoon"}}, 
@@ -3853,11 +3865,8 @@
           "sprite": "jessie_james.png",
           "name": "Jessie and James",
           "class": "ROCKET",
-          "team": [
-            23,
-            109,
-            52
-          ],
+          "team": [52, 24, 110],
+          "levels": [27, 27, 27],
           "rewards": {
             "balls": 3
           },

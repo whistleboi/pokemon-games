@@ -814,6 +814,10 @@ class StoryManager:
 
     def deposit_to_pc(self, pokemon):
         """Put a Pokemon in the first empty PC slot (the PC is 300 slots, None = empty), healed."""
+        if getattr(pokemon, "special", None) == "rowdy_pikachu":   # (never in the PC: it goes home to Mom instead)
+            pokemon.heal_full()
+            self.story_flags["mom_locker"] = [self._pokemon_record(pokemon)]
+            return None
         self.heal_for_pc(pokemon)
         slot = next((i for i, p in enumerate(self.pc_pokemon) if p is None), None)
         if slot is None:
@@ -1438,6 +1442,7 @@ class StoryManager:
             "is_egg": bool(getattr(p, "is_egg", False)), "egg_steps": getattr(p, "egg_steps", 0),
             "tera_type": getattr(p, "tera_type", None), "held_item": getattr(p, "held_item", None),
             "pp": dict(getattr(p, "pp", None) or {}), "pp_ups": dict(getattr(p, "pp_ups", None) or {}),
+            "special": getattr(p, "special", None),   # (one of a kind: "rowdy_pikachu", src/pokemon/rowdy.py)
         }
 
     TEMPORARY_FORMS = ("mega", "mega_x", "mega_y", "primal")
@@ -1474,6 +1479,7 @@ class StoryManager:
         pokemon.friendship = p_data.get("friendship", 0)
         pokemon.affection = p_data.get("affection", 0)
         pokemon.everstone = bool(p_data.get("everstone", False))
+        pokemon.special = p_data.get("special")
         pokemon.counters = dict(p_data.get("counters", {}))
         if p_data.get("ivs"):
             pokemon.ivs = dict(p_data["ivs"])

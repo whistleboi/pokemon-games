@@ -1164,6 +1164,7 @@
       "has_volcano_badge"
      ]
     },
+    "ambush": true,
     "lines": [
      "The doors of the Viridian Gym are locked tight..."
     ]
@@ -2008,7 +2009,7 @@
    "ccc\"\"\"\"\"ccc\"\"\"\"\"ccc\"\"\"\"\"ccc\"\"\"\"\"\"cccccc......ccccccccc",
    "ccc\"\"\"\"\"ccc\"\"\"\"\"ccc\"\"\"\"\"ccc...\"\"\"cccccc.N....ccccccccc",
    "ccc\"\"\"\"Xccc\"\"\"\"\"ccc.....ccc......cccccc......ccccccccc",
-   "ccc\"\"\"\"\"ccc\"\"\"\"\"ccc..............cccccc......ccccccccc",
+   "ccc\"\"\"\"\"ccc\"\"\"\"\"ccc..........X...cccccc......ccccccccc",
    "ccc\"\"\"\"\"ccc\"\"\"\"\"ccccc............cccccc......ccccccccc",
    "ccc\"\"\"\"\"ccc\"\"\"\"\"ccccc............cccccc............ccc",
    "ccc\"\"\"\"\"ccc\"\"\"\"\"\"\"ccccccccccccccccccccc....!.......ccc",
@@ -2016,7 +2017,7 @@
    "ccc...............ccccccccccccccccccccc............ccc",
    "ccc......!........ccccccccccccccccccccc\"\"\"\"....X...ccc",
    "ccc...............ccccccccccccccccccccc\"\"\"\"\"ccc....ccc",
-   "ccc.....................ccccccccccccccc\"\"\"\"\"ccc....ccc",
+   "ccc.........X...........ccccccccccccccc\"\"\"\"\"ccc....ccc",
    "ccc.....................ccccccccccccccc\"\"\"\"\"ccc....ccc",
    "ccc.....................ccccccccccccccc\"\"\"\"\"ccc....ccc",
    "cccccccccccccccccc...N..ccccccccccccccc\"\"\"\"\"ccc....ccc",
@@ -2124,7 +2125,9 @@
    "Charlie",
    "Anthony",
    "Sammy",
+   "Lass VF",
    "Doug",
+   "Bug Catcher VF",
    "Rick"
   ],
   "moves": {
@@ -4621,7 +4624,7 @@
      "ccc.................ccc.N..c....c....c....cccccc",
      "ccc..ccccccccNNcccccccc....c....cc..cc....cccccc",
      "cc......c...........ccc....c..............cccccc",
-     "cc...c..c...........ccc....c..............cccccc",
+     "cc...c..c........X..ccc....c..............cccccc",
      "cc...1c.c...........ccc....c..cc..........cccccc",
      "cc.N....c....N......ccc....c..c1.......c..cccccc",
      "cc.....cccccc..ccc..ccc....c.......X......cccccc",
@@ -4676,6 +4679,7 @@
      "STAR PIECE"
     ],
     "trainer_spots": [
+     "Jessie and James",
      "Grunt",
      "Grunt",
      "Grunt",
@@ -14262,7 +14266,7 @@
      "ccccc.........ccc...N.cc",
      "cN............cc..ccc..c",
      "c.............ccc.....cc",
-     "c......cc.....cc.......c",
+     "c......cc.....cc...X...c",
      "ccccccccc.....cc.......c",
      "ccccccccc.....cc.......c",
      "ccc....cc.....cc.......c",
@@ -14304,6 +14308,7 @@
     ],
     "trainer_spots": [
      "Grunt B4F 1",
+     "Jessie and James",
      "Grunt B4F 2",
      "Grunt B4F 3"
     ],
@@ -14397,6 +14402,7 @@
    "TM114": 2,
    "BLACK GLASSES": 2,
    "Grunt B4F 1": 3,
+   "Jessie and James": 3,
    "Grunt B4F 2": 3,
    "Grunt B4F 3": 3,
    "LIFT KEY": 3,
@@ -16318,7 +16324,7 @@
      "...cc..cccccccc..",
      "...cc..cccccccc..",
      ".........ccc.cc.N",
-     "..X..........cc.."
+     "..X....X.....cc.."
     ],
     "exits": {},
     "buildings": {},
@@ -16359,7 +16365,8 @@
     "trainer_spots": [
      "Giovanni",
      "Executive Ariana",
-     "Grunt 11F"
+     "Grunt 11F",
+     "Jessie and James"
     ],
     "links": {
      "7,2": [
@@ -16506,6 +16513,7 @@
    "Giovanni": 10,
    "Executive Ariana": 10,
    "Grunt 11F": 10,
+   "Jessie and James": 10,
    "VISIT THE PRESIDENT": 10,
    "ZINC": 10
   }
@@ -24229,9 +24237,9 @@
    "ccccccc=======c==ccccccc",
    "ccccccc_______c==ccccccc",
    "ccccccc==========ccccccc",
-   "ccccc~~o==X=====o~~ccccc",
-   "ccccc~~o=======Xo~~ccccc",
-   "ccccc~~o========o~~ccccc",
+   "ccccc~~occccc===o~~ccccc",
+   "ccccc~~ocAccc==Xo~~ccccc",
+   "ccccc~~ocDccc=X=o~~ccccc",
    "ccccc~~oo====!==o~~ccccc",
    "ccccc~~oooo=====o~~ccccc",
    "ccccc~~oooooooooo~~~~ccc",
@@ -24285,10 +24293,12 @@
    "^": "FUCHSIA_CITY",
    "w": "KANTO_ROUTE_20"
   },
-  "buildings": {},
+  "buildings": {
+   "A": "house"
+  },
   "roofs": {
    "_picture": {
-    "f": "fr_ground/3_37.png",
+    "f": "fr_ground/k_r19.png",
     "at": [
      0,
      0
@@ -24304,8 +24314,8 @@
    ]
   ],
   "trainer_spots": [
-   "Richard",
    "Reece",
+   "Richard",
    "Tony",
    "David",
    "Douglas",
@@ -24316,6 +24326,9 @@
    "Alice",
    "Connie"
   ],
+  "inside": {
+   "9,11": "beach"
+  },
   "edge_to": {
    "7,0": [
     19,
@@ -24417,6 +24430,91 @@
     119,
     17
    ]
+  },
+  "moves": {
+   "12,17": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "16,22": {
+    "m": "look",
+    "d": "lr",
+    "s": 6
+   },
+   "8,27": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     2
+    ],
+    "s": 1
+   },
+   "18,33": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     5,
+     3
+    ],
+    "s": 1
+   }
+  },
+  "rooms": {
+   "beach": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....Ncc....",
+     "c....cc....",
+     "...........",
+     "c..v.......",
+     "ccvcvcccccc"
+    ],
+    "exits": {
+     "v": "OUT:9,11"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/23_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "SURFIN' DUDE"
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/23_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Summer Beach House"
+   }
   }
  },
  "KANTO_ROUTE_20": {

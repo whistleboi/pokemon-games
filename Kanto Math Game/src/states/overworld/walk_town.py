@@ -763,6 +763,8 @@ class WalkTownState(CityState):
         if tuple(to) in getattr(self, "barred", {}):
             self.walk_goal = None
             bar = self.barred[tuple(to)]
+            if bar.get("ambush") and self._gym_ambush_due():   # (Viridian: Jessie & James jump you at the locked Gym; Jordan's)
+                return self.start_gym_battle()
             if bar.get("on_bump"):  # (walking into it moves the story: Fortree's Kecleon, seen with the Devon Scope, runs off)
                 ob = bar["on_bump"]
                 if ob.get("flag"):
@@ -1169,6 +1171,11 @@ class WalkTownState(CityState):
         team = self.game.story_manager.player_team
         return next((p for p in team if p and p.current_hp > 0), team[0] if team else None)
 
+    def follower(self):
+        """The Pokemon walking behind you: the rowdy Pikachu whenever it's in the party (Yellow), else your lead."""
+        from src.pokemon import rowdy
+        return rowdy.in_party(self.game.story_manager) or self.lead()
+
     GATE_ARMS = [[1, 0, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0], [1, 0, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0],
                  [1, 0, 1, 0, 1, 0, 0, 0], [1, 1, 1, 0, 1, 0, 0, 0], [1, 0, 1, 1, 1, 0, 0, 0], [1, 0, 1, 0, 1, 1, 0, 0]]  # (Emerald's own: per shape, N E S W arms, 1 or 2 long)
     GATE_DIRS = [(0, -1), (1, 0), (0, 1), (-1, 0)]
@@ -1339,6 +1346,17 @@ class WalkTownState(CityState):
         self._from_art(self.town_map["rooms"][self.room] if self.room else self.town_map)
         self.flash((sw.get("lines") or ["Click! The barriers changed!"])[0])
 
+    def _gym_ambush_due(self):
+        """The Gym's story battle at its door is still to come (its pre_battle_event's flag), before the region's first badge."""
+        pe = (self.area_data.get("gym") or {}).get("pre_battle_event") or {}
+        if not pe.get("trainer"):
+            return False
+        story = self.game.story_manager
+        if story.badges.get(story.get_current_region()):
+            return False
+        on = bool(story.story_flags.get(pe.get("flag_check")))
+        return (not on) if pe.get("invert_flag") else on
+
     def start_gym_battle(self):
         """The Leader, in their Gym's room: they want a game first (src/states/overworld/gym_lobby.py leader_in_room)."""
         if getattr(self, "room", None) and str(self.room).startswith(("gym", "league")):
@@ -1408,7 +1426,7 @@ class WalkTownState(CityState):
             if mo and mo.emote > 0:  # (they've noticed you: a "!" over them, drawn after everyone)
                 emotes.append((r.centerx - 4, r.y - 34))
         k = 1 - self.anim / STEP if self.anim > 0 else 1
-        lead = self.lead()
+        lead = self.follower()
         me = self._player_img()
         pr = pygame.Rect(0, 0, TILE, TILE)
         fx, fy = self.anim_from

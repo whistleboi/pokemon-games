@@ -247,7 +247,7 @@ check(not p2.run.floor.tm_spots, "a taken TM spot stays taken")
 p = kanto("VIRIDIAN_FOREST", came="KANTO_ROUTE_2")
 check(p.run.n_floors == 1 and {"KANTO_ROUTE_2"} == set(p.run.floor.exits.values()),
       "Viridian Forest: one open map, out to Route 2 by its north gate and its south gate")
-check(sum(m.kind == "trainer" for m in p.run.floor.movers) == 5, "...its five Bug Catchers (and the school kids)")
+check(sum(m.kind == "trainer" for m in p.run.floor.movers) == 7, "...its five Bug Catchers (and the school kids), and Pokemon Yellow's two")
 for mode in ("MAP", "CHOICE", "MATH", "THROW", "SPOTTED"):
     m = next((x for x in p.run.floor.movers if x.kind == ("trainer" if mode == "SPOTTED" else "wild")), None)
     p.encounter, p.mode = m, mode

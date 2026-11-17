@@ -201,7 +201,7 @@ p = route("VIRIDIAN_FOREST", "KANTO_ROUTE_2", index=3, count=4)
 f = p.run.floor
 check((f.w, f.h) == (54, 69) and set(f.exits.values()) == {"KANTO_ROUTE_2"} and p.run.player[1] >= 59,
       f"Viridian Forest: FireRed's 54 x 69; in by Route 2's south gate you stand at its south end {p.run.player}")
-check(sum(m.kind == "trainer" for m in f.movers) == 5, f"...its five Bug Catchers ({sum(m.kind == 'trainer' for m in f.movers)})")
+check(sum(m.kind == "trainer" for m in f.movers) == 7, f"...its five Bug Catchers, and Yellow's Lass and Bug Catcher ({sum(m.kind == 'trainer' for m in f.movers)})")
 p = route("VIRIDIAN_FOREST", "KANTO_ROUTE_2", index=0, count=4)
 check(p.run.player[1] <= 12, f"...in by the north gate you stand at its north end {p.run.player}")
 
@@ -612,7 +612,7 @@ f = p.run.floor
 check(p.run.n_floors == 4 and (f.w, f.h) == (28, 34) and p.run.index == 0 and p.run.player[1] <= 5 and sum(m.kind == "trainer" for m in f.movers) == 5,
       f"the Rocket Hideout: FireRed's four floors; in from the Game Corner at B1F's stairs {tuple(p.run.player)}; FireRed's five Grunts on B1F")
 _hp = [t.get("zone") for t in g.loader.area_data["STORY_PROGRESSION"]["ROCKET_HIDEOUT"]["trainer_pool"]]
-check(_hp == ["b1f"] * 5 + ["b2f"] + ["b3f"] * 2 + ["b4f"] * 3, f"...its trainer list is FireRed's eleven Grunts, floor by floor {_hp}")
+check(_hp == ["b1f"] * 5 + ["b2f"] + ["b3f"] * 2 + ["b4f"] * 4, f"...its trainer list is FireRed's eleven Grunts, floor by floor, and Yellow's Jessie & James on B4F {_hp}")
 p.run.warp(1, 21, 3)                                     # (down to B2F, where the spin-tile maze is)
 f = p.run.floor
 _spin = sorted(f.current)

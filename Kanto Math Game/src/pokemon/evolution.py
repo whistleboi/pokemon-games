@@ -179,6 +179,8 @@ def _form_item_rules(game):
 
 def evolution_options(game, poke):
     """[(entry_name, target_id, rule)] for everything this Pokemon can evolve into."""
+    if getattr(poke, "special", None) == "rowdy_pikachu":
+        return []   # (Yellow's partner Pikachu refuses to evolve, stones included: src/pokemon/rowdy.py)
     evo_map = game.loader.evolution_map
     key = poke.name.upper()
     if poke.form and poke.form != "normal":

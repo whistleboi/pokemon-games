@@ -325,6 +325,12 @@ def _run_story_event(state, key, check, show):
         ev = dict(ev, flag=today)
     flag = ev.get("flag")
     if flag and story.story_flags.get(flag):
+        if ev.get("pikachu_mood"):   # (Yellow's Celadon Mansion lady: how much your Pikachu likes you; Jordan 11-16)
+            from src.pokemon import rowdy
+            pk = rowdy.in_party(story)
+            if pk is not None:
+                show(_resolve_lines(game, rowdy.mood_lines(pk)))
+                return
         if ev.get("tutor") and not ev["tutor"].get("choices"):   # (a once-only tutor, used: again, for money; Jordan 11-16)
             _tutor_again(state, ev, show)
             return
@@ -472,7 +478,8 @@ def _run_story_event(state, key, check, show):
     if ev.get("trade"):  # an in-game trade (Fortree's girl: a Spinda for her Skitty): your first one they want, for theirs
         tr = ev["trade"]   # {"want": species, "give": species, "item": what it holds}
         from src.pokemon.data import Pokemon
-        mine = next((i for i, p in enumerate(story.player_team) if p and p.id == int(tr["want"]) and not getattr(p, "is_egg", False)), None)
+        mine = next((i for i, p in enumerate(story.player_team) if p and p.id == int(tr["want"]) and not getattr(p, "is_egg", False)
+                     and getattr(p, "special", None) != "rowdy_pikachu"), None)   # (Yellow's partner is never traded)
         if mine is None:
             show(_resolve_lines(game, ev.get("fail") or ["You don't have the Pokemon they want."]))
             return
@@ -770,6 +777,22 @@ def _run_story_event(state, key, check, show):
             state._remember()
     for k in ev.get("clear", []):   # (story flags it unsets: the Hall of Fame's, used once per title)
         story.story_flags.pop(k, None)
+    if ev.get("minigame") == "pikachu_beach":   # (Yellow's Summer Beach House, Route 19: the rowdy Pikachu surfs; Jordan 11-16)
+        from src.pokemon import rowdy
+        if not rowdy.in_party(story):
+            show(_resolve_lines(game, ["Surfin' Dude: Yo! Got a Pikachu that can ride the waves? Bring it by and you can surf, dude!"]))
+            return
+        from src.minigames.beach import PikachuBeach, BEST_FLAG
+
+        def done(_won):
+            if hasattr(state, "is_resuming"):
+                state.is_resuming = True
+            game.change_state(state)
+        best = int(story.story_flags.get(BEST_FLAG, 0) or 0)
+        lines = list(lines) + ["Surfin' Dude: Your Pikachu's itching to surf! Hit those waves, dude!"] + (
+            [f"Surfin' Dude: Best score so far: {best}. Can you beat it?"] if best else [])
+        _say_then(state, lines, lambda: game.change_state(PikachuBeach(game, done, partner=25, team=[25])))
+        return
     if ev.get("choose"):   # (pick one, kept as a story flag: {"flag", "ask", "choices": [{"text", "value"}], "done": [...]} - the Johto
         from src.states.systems.pick_list import PickListState   #  Safari Zone's Area Setup, which of its ten layouts you walk into; 11-16)
         ch = ev["choose"]

@@ -364,6 +364,16 @@ class PCState(GameState):
                 return self.pc[i]
         return None
 
+    def _refused(self, mon):
+        """Yellow's partner Pikachu won't go in a Poke Ball box (src/pokemon/rowdy.py): only Mom keeps it."""
+        from src.pokemon import rowdy
+        why = rowdy.refuse(mon)
+        if why:
+            self.selected_party_idx = self.selected_pc_idx = None
+            self.game.show_dialogue([why, "Pikachu won't go in the PC. Only Mom can look after it."])
+            return True
+        return False
+
     def handle_click(self, source, index):
         if source == "pc" and index < len(self.pc) and getattr(self.pc[index], "coop_lent", None) is not None:
             from src.coop import roster
@@ -384,6 +394,8 @@ class PCState(GameState):
                 self.party[index], self.party[old_idx] = self.party[old_idx], self.party[index]
                 self.selected_party_idx = None
             elif self.selected_pc_idx is not None:
+                if self._refused(self.party[index]):
+                    return
                 pc_mon = self.pc[self.selected_pc_idx]
                 self.pc[self.selected_pc_idx] = self.game.story_manager.heal_for_pc(self.party[index])
                 self.party[index] = pc_mon
@@ -404,6 +416,8 @@ class PCState(GameState):
 
                 old_p_idx = self.selected_party_idx
                 party_mon = self.party[old_p_idx]
+                if self._refused(party_mon):
+                    return
 
                 self.game.story_manager.heal_for_pc(party_mon)
                 if self.pc[index] is None:
