@@ -806,6 +806,7 @@ class StoryManager:
         pokemon.current_hp = pokemon.get_max_hp()
         if getattr(pokemon, "status", None):
             pokemon.cure_status()
+        pokemon.pp = {}  # (and full PP)
         return pokemon
 
     def deposit_to_pc(self, pokemon):
@@ -1434,6 +1435,7 @@ class StoryManager:
             "ability_slot": getattr(p, "ability_slot", 0), "gender": getattr(p, "gender", "?"),
             "is_egg": bool(getattr(p, "is_egg", False)), "egg_steps": getattr(p, "egg_steps", 0),
             "tera_type": getattr(p, "tera_type", None), "held_item": getattr(p, "held_item", None),
+            "pp": dict(getattr(p, "pp", None) or {}), "pp_ups": dict(getattr(p, "pp_ups", None) or {}),
         }
 
     TEMPORARY_FORMS = ("mega", "mega_x", "mega_y", "primal")
@@ -1459,6 +1461,8 @@ class StoryManager:
         if p_data.get("tera_type"):
             pokemon.tera_type = p_data["tera_type"]
         pokemon.held_item = p_data.get("held_item")
+        pokemon.pp = dict(p_data.get("pp") or {})  # (older saves: full PP)
+        pokemon.pp_ups = dict(p_data.get("pp_ups") or {})
         pokemon.condition.update(p_data.get("condition", {}))
         pokemon.sheen = p_data.get("sheen", 0)
         pokemon.ribbons = list(p_data.get("ribbons", []))

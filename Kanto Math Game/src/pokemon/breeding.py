@@ -112,8 +112,9 @@ def make_egg(game, a, b, rng=random):
     egg = Pokemon(game.loader.fetch_specific(pid), game.assets, size_mult=2.5)
     egg.level = 1
     egg.xp = 0
-    # three IVs from the parents
-    for stat in rng.sample(list(Pokemon.IV_KEYS), 3):
+    # three IVs from the parents (five when one holds a Destiny Knot, as in the games)
+    knot = any(getattr(x, "held_item", None) == "DESTINY_KNOT" for x in (a, b))
+    for stat in rng.sample(list(Pokemon.IV_KEYS), 5 if knot else 3):
         egg.ivs[stat] = rng.choice((a, b)).ivs.get(stat, egg.ivs[stat])
     egg.floor_ivs()
     if ablib.is_hidden(game, mother) and rng.random() < 0.6:

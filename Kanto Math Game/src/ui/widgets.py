@@ -147,7 +147,10 @@ class MoveButton(Button):
               "none": ((128, 128, 136), "NO EFFECT")}
 
     def __init__(self, rect, name, font, small_font, callback, type_name, type_color, detail,
-                 effect=None, stab=False):
+                 effect=None, stab=False, pp=None):
+        self.pp = pp  # (PP left, most PP), or None (Struggle)
+        if pp and pp[0] <= 0:  # out of PP: greyed out
+            type_color = tuple(int(c * 0.45 + 70) for c in type_color)
         super().__init__(rect, name, font, callback, bg_color=type_color, autosize=False)
         self.small_font = small_font
         self.type_name = type_name
@@ -166,7 +169,16 @@ class MoveButton(Button):
         pygame.draw.rect(surface, self._shade(self.type_color, 1.12) if hover else self.type_color, r, border_radius=14)
         pygame.draw.rect(surface, GOLD if self.stab else (255, 255, 255) if hover else (20, 20, 30), r,
                          4 if self.stab else 3, border_radius=14)
-        name_font = self.font if self.font.size(self.text.upper())[0] <= r.w - 70 else self.small_font
+        pp_w = 0
+        if self.pp:  # PP left / most, top right (red when empty, gold when low)
+            have, top = self.pp
+            pp_txt = f"PP {have}/{top}"
+            pp_w = self.small_font.size(pp_txt)[0] + 12
+            col = (255, 110, 100) if have <= 0 else (255, 214, 90) if have * 4 <= top else WHITE
+            right = r.right - (50 if self.effect in self.EFFECT else 14)
+            Utils.draw_text_outline(surface, pp_txt, self.small_font, col, right, r.y + 9, align="right",
+                                    outline_color=dark, thickness=2)
+        name_font = self.font if self.font.size(self.text.upper())[0] <= r.w - 70 - pp_w else self.small_font
         Utils.draw_text_outline(surface, self.text.upper(), name_font, WHITE, r.x + 16, r.y + 6, align="left",
                                 outline_color=dark, thickness=2)
         pill_txt = self.type_name.upper()

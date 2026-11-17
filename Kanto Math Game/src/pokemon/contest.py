@@ -84,3 +84,15 @@ def feebas_ready(pokemon):
     if pokemon.name.upper() != "FEEBAS":
         return True
     return pokemon.condition.get("BEAUTY", 0) >= FEEBAS_BEAUTY
+
+
+# Contest scarves (Gen 3, Hoenn): held in a Contest of its colour, the condition counts for a tenth more.
+SCARVES = {"RED_SCARF": "COOL", "BLUE_SCARF": "BEAUTY", "PINK_SCARF": "CUTE", "GREEN_SCARF": "SMART", "YELLOW_SCARF": "TOUGH"}
+
+
+def scarf_condition(pokemon, category):
+    """Its condition for this Contest, with a matching held scarf's tenth more."""
+    value = int((getattr(pokemon, "condition", None) or {}).get(category, 0))
+    if SCARVES.get(getattr(pokemon, "held_item", None)) == category:
+        value = value + max(1, value // 10) if value else 0
+    return value

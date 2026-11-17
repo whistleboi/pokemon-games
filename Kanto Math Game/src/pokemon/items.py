@@ -40,13 +40,14 @@ MEDICINE = {
     # Berries that heal (Hoenn's berry patches, Jordan 11-12): used from the Berries pocket, in or out of battle
     # (no price here: the shops' berry price stands)
     "ORAN_BERRY": {"heal": 10, "berry": True, "text": "A Berry. Restores 10 HP."},
-    "SITRUS_BERRY": {"heal": 30, "berry": True, "text": "A Berry. Restores 30 HP."},
+    "SITRUS_BERRY": {"heal": 0.25, "berry": True, "text": "A Berry. Restores a quarter of a Pokemon's HP."},
     "CHERI_BERRY": {"cure": ["paralysis"], "berry": True, "text": "A Berry. Cures paralysis."},
     "CHESTO_BERRY": {"cure": ["sleep"], "berry": True, "text": "A Berry. Wakes up a sleeping Pokemon."},
     "PECHA_BERRY": {"cure": ["poison", "toxic"], "berry": True, "text": "A Berry. Cures poison."},
     "RAWST_BERRY": {"cure": ["burn"], "berry": True, "text": "A Berry. Heals a burn."},
     "ASPEAR_BERRY": {"cure": ["freeze"], "berry": True, "text": "A Berry. Thaws out a frozen Pokemon."},
     "LUM_BERRY": {"cure": "all", "berry": True, "text": "A Berry. Cures any status condition."},
+    "PERSIM_BERRY": {"cure_vol": "confused", "berry": True, "text": "A Berry. Held, it snaps its holder out of confusion."},
     # Route 113's Glass Workshop flutes (blown from volcanic ash; sold there): played again and again ("keep")
     "BLUE_FLUTE": {"cure": ["sleep"], "keep": True, "price": 100, "text": "A blue glass flute. Its tune wakes a sleeping Pokemon."},
 }
@@ -59,6 +60,10 @@ BATTLE = {
     "X_ACCURACY": {"stat": "ACCURACY", "price": 1000, "text": "Sharply raises accuracy in battle."},
     "DIRE_HIT": {"focus": 2, "price": 1000, "text": "Makes critical hits much more likely in battle."},
     "GUARD_SPEC": {"mist": 5, "price": 1500, "text": "Stops your team's stats being lowered for five turns."},
+    # Run from a wild Pokemon for sure (FireRed's Poke Doll, ORAS's Poke Toy, Gen 3's Fluffy Tail)
+    "POKE_TOY": {"flee": True, "price": 1000, "text": "A toy on a stick. Use it in a battle with a wild Pokemon to get away for sure."},
+    "POKE_DOLL": {"flee": True, "price": 1000, "text": "A cute doll. Use it against a wild Pokemon to get away for sure. Saffron's Copycat would love one, too."},   # (FireRed: Celadon Dept. Store 4F)
+    "FLUFFY_TAIL": {"flee": True, "price": 1000, "text": "A fluffy tail toy. Use it in a battle with a wild Pokemon to get away for sure."},
     "YELLOW_FLUTE": {"cure_vol": "confused", "keep": True, "price": 300, "text": "A yellow glass flute. In battle, its tune snaps a Pokemon out of confusion."},
     "RED_FLUTE": {"cure_vol": "infatuated", "keep": True, "price": 200, "text": "A red glass flute. In battle, its tune snaps a Pokemon out of infatuation."},
 }
@@ -92,7 +97,8 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
-HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "WAVE_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
+HELD_BOOSTS = {"SILK_SCARF": "NORMAL", "METAL_COAT": "STEEL", "SPELL_TAG": "GHOST", "SILVER_POWDER": "BUG", "PIXIE_PLATE": "FAIRY",
+               "ROCK_INCENSE": "ROCK", "ROSE_INCENSE": "GRASS", "ODD_INCENSE": "PSYCHIC", "MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER", "WAVE_INCENSE": "WATER", "NEVER_MELT_ICE": "ICE", "BLACK_GLASSES": "DARK",
                "MIRACLE_SEED": "GRASS", "POISON_BARB": "POISON", "TWISTED_SPOON": "PSYCHIC", "HARD_STONE": "ROCK", "MAGNET": "ELECTRIC", "SHARP_BEAK": "FLYING", "BLACK_BELT": "FIGHTING", "SOFT_SAND": "GROUND", "DRAGON_FANG": "DRAGON",
                "FLAME_PLATE": "FIRE", "SPLASH_PLATE": "WATER", "ZAP_PLATE": "ELECTRIC", "MEADOW_PLATE": "GRASS", "ICICLE_PLATE": "ICE", "FIST_PLATE": "FIGHTING", "TOXIC_PLATE": "POISON", "EARTH_PLATE": "GROUND", "SKY_PLATE": "FLYING", "MIND_PLATE": "PSYCHIC", "INSECT_PLATE": "BUG", "STONE_PLATE": "ROCK", "SPOOKY_PLATE": "GHOST", "DRACO_PLATE": "DRAGON", "DREAD_PLATE": "DARK", "IRON_PLATE": "STEEL"}   # (the Plates: HGSS's S.S. Aqua captain, 11-16)   # (HGSS gifts: Route 32's old man, Frieda, Tuscany; 11-15)  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
 FEWER_WILD = {"CLEANSE_TAG", "PURE_INCENSE"}
@@ -110,20 +116,20 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "SHELL_BELL": {"price": 4000, "text": "Held: its holder gets back an eighth of the damage it deals."},
         "FOCUS_BAND": {"price": 3000, "text": "Held: now and then its holder hangs on at 1 HP instead of fainting."},
         "NEVER_MELT_ICE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ice-type moves hit harder."},
-        "POWER_HERB": {"price": 100, "text": "A single-use herb. In the games it lets a move that needs a turn to charge go at once."},   # (Route 34's Kate, HGSS; effect not built yet)
+        "POWER_HERB": {"price": 100, "text": "Held: a move that needs a turn to charge goes at once. Used up."},   # (Route 34's Kate, HGSS; effect not built yet)
         "MIRACLE_SEED": {"price": 1000, "text": "Give it to a Pokemon to hold: its Grass-type moves hit harder."},
         "HARD_STONE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Rock-type moves hit harder."},
         "POISON_BARB": {"price": 1000, "text": "Give it to a Pokemon to hold: its Poison-type moves hit harder."},
         "TWISTED_SPOON": {"price": 1000, "text": "Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
         "WAVE_INCENSE": {"price": 9600, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},   # (HGSS: Route 47)
-        "LAGGING_TAIL": {"price": 200, "text": "A tardy tail. In the games its holder always moves last."},   # (HGSS: Route 47; effect not built yet)
-        "IRON_BALL": {"price": 200, "text": "A heavy iron ball. In the games it slows its holder down."},   # (HGSS: Mt. Mortar; effect not built yet)
-        "FULL_INCENSE": {"price": 9600, "text": "An incense with a lulling scent. In the games its holder moves after the foe."},   # (HGSS: Mt. Mortar; effect not built yet)
+        "LAGGING_TAIL": {"price": 200, "text": "Held: its holder always moves last."},   # (HGSS: Route 47; effect not built yet)
+        "IRON_BALL": {"price": 200, "text": "Held: its holder's Speed is halved, and Ground moves can hit it even if it flies."},   # (HGSS: Mt. Mortar; effect not built yet)
+        "FULL_INCENSE": {"price": 9600, "text": "Held: its holder always moves last."},   # (HGSS: Mt. Mortar; effect not built yet)
         "PURE_INCENSE": {"price": 9600, "text": "Give it to your lead Pokemon to hold: fewer wild Pokemon come near."},   # (HGSS: Mt. Silver, N16)
-        "EXPERT_BELT": {"price": 4000, "text": "A well-worn belt. In the games its holder's super-effective moves hit harder."},   # (HGSS: Mt. Silver; effect not built yet)
-        "DESTINY_KNOT": {"price": 200, "text": "A long thin thread. In the games love it feels spreads to the foe."},   # (HGSS: Route 26; effect not built yet)
+        "EXPERT_BELT": {"price": 4000, "text": "Held: its holder's super-effective moves hit harder."},   # (HGSS: Mt. Silver; effect not built yet)
+        "DESTINY_KNOT": {"price": 200, "text": "Held: if its holder falls in love, the foe does too. At the Day Care, it passes on more of a parent's strengths."},   # (HGSS: Route 26; effect not built yet)
         "BLACK_BELT": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fighting-type moves hit harder."},   # (HGSS: Wesley, Lake of Rage)
-        "CHOICE_SPECS": {"price": 4000, "text": "Held: in the games it boosts special moves but locks its holder into one move."},   # (HGSS: Lake of Rage; effect not built yet)
+        "CHOICE_SPECS": {"price": 4000, "text": "Held: Sp. Atk goes up by half, but its holder can only use the first move it picks."},   # (HGSS: Lake of Rage; effect not built yet)
         "DRAGON_FANG": {"price": 1000, "text": "Give it to a Pokemon to hold: its Dragon-type moves hit harder."},   # (HGSS: Route 45 / Dragon's Den)
         "FLAME_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Fire-type moves hit harder."},
         "SPLASH_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Water-type moves hit harder."},
@@ -142,12 +148,100 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "DREAD_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Dark-type moves hit harder."},
         "IRON_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Steel-type moves hit harder."},   # (HGSS: the S.S. Aqua's captain, a Plate a day after all 16 Badges)
         "SOFT_SAND": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ground-type moves hit harder."},   # (HGSS: Santos, Blackthorn)
-        "POKE_DOLL": {"price": 1000, "text": "A cute doll. Saffron's Copycat would love one: she teaches Mimic for it. (FireRed: Celadon Dept. Store 4F)"},
-        "SMOKE_BALL": {"price": 200, "text": "Held: in the games its holder can always run from a wild Pokemon."},   # (HGSS: Doris the Dodrio; effect not built yet)
+        "SMOKE_BALL": {"price": 200, "text": "Held: its holder can always get away from a wild Pokemon."},   # (HGSS: Doris the Dodrio; effect not built yet)
         "SHARP_BEAK": {"price": 1000, "text": "Give it to a Pokemon to hold: its Flying-type moves hit harder."},   # (HGSS: Monica, Route 40)
         "MAGNET": {"price": 1000, "text": "Give it to a Pokemon to hold: its Electric-type moves hit harder."},   # (HGSS: Sunny, Route 37)
         "SOOTHE_BELL": {"price": 100, "text": "Held: its holder grows friendly with you faster."},   # (HGSS: the National Park, 11-15)
-        "LEFTOVERS": {"price": 4000, "text": "Held: its holder gets back a little HP at the end of every turn."}}   # (the S.S. Tidal's hidden one, Emerald)
+        "LEFTOVERS": {"price": 4000, "text": "Held: its holder gets back a little HP at the end of every turn."},   # (the S.S. Tidal's hidden one, Emerald)
+        # (11-16: the rest of the held items the regions hand out, each with its games' effect: src/states/battle_items.py)
+        "SILK_SCARF": {"price": 1000, "text": "Give it to a Pokemon to hold: its Normal-type moves hit harder."},
+        "SPELL_TAG": {"price": 1000, "text": "Give it to a Pokemon to hold: its Ghost-type moves hit harder."},
+        "SILVER_POWDER": {"price": 1000, "text": "Give it to a Pokemon to hold: its Bug-type moves hit harder."},
+        "PIXIE_PLATE": {"price": 1000, "text": "A stone tablet. Give it to a Pokemon to hold: its Fairy-type moves hit harder."},
+        "ROCK_INCENSE": {"price": 2000, "text": "Give it to a Pokemon to hold: its Rock-type moves hit harder."},
+        "ROSE_INCENSE": {"price": 2000, "text": "Give it to a Pokemon to hold: its Grass-type moves hit harder."},
+        "ODD_INCENSE": {"price": 2000, "text": "Give it to a Pokemon to hold: its Psychic-type moves hit harder."},
+        "LAX_INCENSE": {"price": 5000, "text": "Held: foes' moves miss its holder a little more often."},
+        "BRIGHT_POWDER": {"price": 4000, "text": "Held: foes' moves miss its holder a little more often."},
+        "WIDE_LENS": {"price": 4000, "text": "Held: its holder's moves hit a little more often."},
+        "KINGS_ROCK": {"price": 5000, "text": "Held: its holder's attacks may make the foe flinch. (A Poliwhirl or Slowpoke may also evolve with it.)"},
+        "RAZOR_FANG": {"price": 5000, "text": "Held: its holder's attacks may make the foe flinch."},
+        "METAL_COAT": {"price": 2000, "text": "Held: its holder's Steel-type moves hit harder. (Onix and Scyther may also evolve with it.)"},
+        "LIGHT_BALL": {"price": 1000, "text": "Held by Pikachu: its Attack and Sp. Atk are doubled."},
+        "THICK_CLUB": {"price": 1000, "text": "Held by Cubone or Marowak: its Attack is doubled."},
+        "DEEP_SEA_TOOTH": {"price": 2000, "text": "Held by Clamperl: its Sp. Atk is doubled. (Clamperl may also evolve with it.)"},
+        "DEEP_SEA_SCALE": {"price": 2000, "text": "Held by Clamperl: its Sp. Def is doubled. (Clamperl may also evolve with it.)"},
+        "METAL_POWDER": {"price": 1000, "text": "Held by Ditto: its Defense is doubled."},
+        "QUICK_POWDER": {"price": 1000, "text": "Held by Ditto: its Speed is doubled."},
+        "CHOICE_BAND": {"price": 4000, "text": "Held: Attack goes up by half, but its holder can only use the first move it picks."},
+        "CHOICE_SCARF": {"price": 4000, "text": "Held: Speed goes up by half, but its holder can only use the first move it picks."},
+        "MACHO_BRACE": {"price": 3000, "text": "Held: its holder's Speed is halved. (In the games it also doubles effort points.)"},
+        "METRONOME": {"price": 4000, "text": "Held: using the same move again and again makes it stronger."},
+        "BIG_ROOT": {"price": 4000, "text": "Held: moves that drain HP give its holder more back."},
+        "SAFETY_GOGGLES": {"price": 4000, "text": "Held: its holder takes no sandstorm damage, and powder moves don't affect it."},
+        "ROCKY_HELMET": {"price": 4000, "text": "Held: a foe that touches its holder with a move gets hurt. (Lets your Pokemon Headbutt trees, too.)"},
+        "WHITE_HERB": {"price": 4000, "text": "Held: if its holder's stats are lowered, it puts them back. Used up."},
+        "FLOAT_STONE": {"price": 1000, "text": "Held: its holder weighs half as much."},
+        "HEAT_ROCK": {"price": 4000, "text": "Held: sunshine its holder calls lasts eight turns. Use it in battle to call sunshine."},
+        "DAMP_ROCK": {"price": 4000, "text": "Held: rain its holder calls lasts eight turns. Use it in battle to call rain."},
+        "SMOOTH_ROCK": {"price": 4000, "text": "Held: a sandstorm its holder calls lasts eight turns. Use it in battle to call one."},
+        "ICY_ROCK": {"price": 4000, "text": "Held: snow its holder calls lasts eight turns. Use it in battle to call snow."},
+        "RED_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Cool condition counts for more."},
+        "BLUE_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Beauty condition counts for more."},
+        "PINK_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Cute condition counts for more."},
+        "GREEN_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Clever condition counts for more."},
+        "YELLOW_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Tough condition counts for more."}}
+# Items that are used up when their effect happens (berries too): the holder's copy leaves the Bag.
+CONSUMED = {"POWER_HERB", "WHITE_HERB", "MENTAL_HERB"}
+# Held berries (Gen 4 on): eaten in battle when their moment comes.
+PINCH_BERRIES = {"LIECHI_BERRY": "ATTACK", "GANLON_BERRY": "DEFENSE", "SALAC_BERRY": "SPEED", "PETAYA_BERRY": "SPATK",
+                 "APICOT_BERRY": "SPDEF", "LANSAT_BERRY": "focus", "STARF_BERRY": "random"}
+RESIST_BERRIES = {"OCCA_BERRY": "FIRE", "PASSHO_BERRY": "WATER", "WACAN_BERRY": "ELECTRIC", "RINDO_BERRY": "GRASS",
+                  "YACHE_BERRY": "ICE", "CHOPLE_BERRY": "FIGHTING", "KEBIA_BERRY": "POISON", "SHUCA_BERRY": "GROUND",
+                  "COBA_BERRY": "FLYING", "PAYAPA_BERRY": "PSYCHIC", "TANGA_BERRY": "BUG", "CHARTI_BERRY": "ROCK",
+                  "KASIB_BERRY": "GHOST", "HABAN_BERRY": "DRAGON", "COLBUR_BERRY": "DARK", "BABIRI_BERRY": "STEEL",
+                  "ROSELI_BERRY": "FAIRY", "CHILAN_BERRY": "NORMAL"}
+# Berries that lower one stat's effort points by 10 and make a Pokemon friendlier (Gen 4 on; ORAS's -10)
+EV_BERRIES = {"POMEG_BERRY": "HP", "KELPSY_BERRY": "ATTACK", "QUALOT_BERRY": "DEFENSE", "HONDEW_BERRY": "SPATK",
+              "GREPA_BERRY": "SPDEF", "TAMATO_BERRY": "SPEED"}
+BERRY_TEXT = {**{k: f"A Berry. Held, it's eaten when its holder is in a pinch: it raises its {s.replace('SPATK', 'Sp. Atk').replace('SPDEF', 'Sp. Def').title()}."
+                 for k, s in PINCH_BERRIES.items() if s not in ("focus", "random")},
+              "LANSAT_BERRY": "A Berry. Held, it's eaten when its holder is in a pinch: critical hits get more likely.",
+              "STARF_BERRY": "A Berry. Held, it's eaten when its holder is in a pinch: one stat sharply rises.",
+              **{k: f"A Berry. Held, it halves one super-effective {t.title()}-type hit." for k, t in RESIST_BERRIES.items() if t != "NORMAL"},
+              "CHILAN_BERRY": "A Berry. Held, it halves one Normal-type hit.",
+              **{k: f"A Berry. Makes a Pokemon friendlier, but lowers its base {s.replace('SPATK', 'Sp. Atk').replace('SPDEF', 'Sp. Def').title() if s != 'HP' else 'HP'}."
+                 for k, s in EV_BERRIES.items()}}
+
+
+def holdable(item):
+    """Can a Pokemon be given this to hold? (held items, and the Berries that do something held)"""
+    return item in HELD or item in BERRY_TEXT and item not in EV_BERRIES or item in MEDICINE and MEDICINE[item].get("berry") \
+        or item in ("LEPPA_BERRY", "BERRY_JUICE")
+
+
+def consumed(item):
+    """Used up when it does its job (a berry is eaten)."""
+    return item in CONSUMED or str(item).endswith("_BERRY") or item == "BERRY_JUICE"
+
+
+def use_ev_berry(pokemon, item):
+    """(used, line): a Pomeg / Kelpsy... Berry: 10 fewer effort points in its stat, and friendlier."""
+    stat = EV_BERRIES[item]
+    evs = pokemon.__dict__.setdefault("evs", {})
+    have = int(evs.get(stat, 0))
+    friend = int(getattr(pokemon, "friendship", 70) or 70)
+    if have <= 0 and friend >= 255:
+        return False, "It won't have any effect."
+    before = pokemon.get_max_hp()
+    evs[stat] = max(0, have - 10)
+    if stat == "HP":
+        pokemon.current_hp = max(1 if pokemon.current_hp > 0 else 0, min(pokemon.get_max_hp(), pokemon.current_hp - (before - pokemon.get_max_hp())))
+    friend_gain(pokemon, 10 if friend < 100 else 5 if friend < 200 else 2)
+    label = {"HP": "HP", "ATTACK": "Attack", "DEFENSE": "Defense", "SPATK": "Sp. Atk", "SPDEF": "Sp. Def", "SPEED": "Speed"}[stat]
+    if have > 0:
+        return True, f"{pokemon.display_name} became friendly. Its base {label} fell!"
+    return True, f"{pokemon.display_name} adores you! Its base {label} can't fall any more."
 
 
 def held_boost(pokemon, move_type):
@@ -191,7 +285,19 @@ VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it 
              "STAR_PIECE": {"price": 9800, "text": "A shard of a pretty gem. Sell it for a good price."},
              "TINY_MUSHROOM": {"price": 500, "text": "A small, rare mushroom collectors love. Sell it for a little money."},
              "BIG_MUSHROOM": {"price": 5000, "text": "A big, rare mushroom collectors love. Sell it for a good price."},
-             "HEART_SCALE": {"price": 100, "text": "A pretty, heart-shaped scale that shines like a rainbow."}}
+             "HEART_SCALE": {"price": 100, "text": "A pretty, heart-shaped scale that shines like a rainbow."},
+             "BIG_NUGGET": {"price": 40000, "text": "A big nugget of pure gold. Sell it for a lot of money."},
+             "COMET_SHARD": {"price": 60000, "text": "A shard that fell with a comet. Sell it for a lot of money."},
+             "BALM_MUSHROOM": {"price": 50000, "text": "A rare mushroom with a lovely smell. Sell it for a lot of money."},
+             "RARE_BONE": {"price": 10000, "text": "A rare bone, prized by collectors. Sell it for a good price."},
+             "PEARL_STRING": {"price": 30000, "text": "Big pearls on a string. Sell it for a lot of money."},
+             "RELIC_GOLD": {"price": 20000, "text": "An old gold coin. Sell it for a lot of money."},
+             "SHOAL_SALT": {"price": 20, "text": "Salt from deep in Shoal Cave. The old man there makes Shell Bells from it and Shoal Shells."},
+             "SHOAL_SHELL": {"price": 20, "text": "A shell from deep in Shoal Cave. The old man there makes Shell Bells from it and Shoal Salt."},
+             "RED_SHARD": {"price": 2000, "text": "A small red shard. The Treasure Hunter on Route 124 trades a Fire Stone for one."},
+             "BLUE_SHARD": {"price": 2000, "text": "A small blue shard. The Treasure Hunter on Route 124 trades a Water Stone for one."},
+             "YELLOW_SHARD": {"price": 2000, "text": "A small yellow shard. The Treasure Hunter on Route 124 trades a Thunder Stone for one."},
+             "GREEN_SHARD": {"price": 2000, "text": "A small green shard. The Treasure Hunter on Route 124 trades a Leaf Stone for one."}}
 
 
 def use_vitamin(pokemon, item):
@@ -211,7 +317,10 @@ def use_vitamin(pokemon, item):
 
 
 def info(item):
-    return MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or VITAMINS.get(item) or VALUABLES.get(item) or APRICORNS.get(item) or {}
+    from src.pokemon.pp import PP_ITEMS
+    return (MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or VITAMINS.get(item) or VALUABLES.get(item)
+            or APRICORNS.get(item) or PP_ITEMS.get(item) or ({"text": BERRY_TEXT[item]} if item in BERRY_TEXT else None)
+            or ({"text": STORY_TEXT[item]} if item in STORY_TEXT else None) or {})
 
 
 def price(item):
@@ -238,7 +347,7 @@ def describe(item):
     if item == "EON_FLUTE":  # (Soaring in the Sky: src/world/soaring3d.py)
         from src.world import soaring3d
         return soaring3d.FLUTE_TEXT
-    return info(item).get("text") or catching.BALL_TEXT.get(item, "")
+    return info(item).get("text") or catching.BALL_TEXT.get(item, "") or describe_extra(theme.GAME, item)
 
 
 def standard_stock(badges):
@@ -296,6 +405,8 @@ def medicine_effect(item, pokemon):
         did = True
     heal = data.get("heal")
     if heal and pokemon.current_hp < mx:
+        if isinstance(heal, float):  # (a share of its HP: the Sitrus Berry's quarter)
+            heal = max(1, int(mx * heal))
         amount = mx - pokemon.current_hp if heal == "full" else min(int(heal), mx - pokemon.current_hp)
         pokemon.current_hp += amount
         lines.append(f"{name}'s HP was restored by {amount} points.")
@@ -310,3 +421,129 @@ def medicine_effect(item, pokemon):
 def _status_word(status):
     return {"poison": "poison", "toxic": "poison", "paralysis": "paralysis", "sleep": "sleep",
             "burn": "burn", "freeze": "freeze"}.get(status, "condition")
+
+
+# Legendary held items (Gen 4 on): their owner's own two types hit harder; Drives set Techno Blast's type.
+ORB_BOOSTS = {"ADAMANT_ORB": (483, ("DRAGON", "STEEL"), "Dialga"), "LUSTROUS_ORB": (484, ("WATER", "DRAGON"), "Palkia"),
+              "GRISEOUS_ORB": (487, ("GHOST", "DRAGON"), "Giratina")}
+DRIVES = {"BURN_DRIVE": "FIRE", "CHILL_DRIVE": "ICE", "DOUSE_DRIVE": "WATER", "SHOCK_DRIVE": "ELECTRIC"}
+for _k, (_id, _t, _who) in ORB_BOOSTS.items():
+    HELD[_k] = {"price": 10000, "text": f"Held by {_who}: its {_t[0].title()}- and {_t[1].title()}-type moves hit harder."}
+for _k, _t in DRIVES.items():
+    HELD[_k] = {"price": 1000, "text": f"Held by Genesect: its Techno Blast becomes {_t.title()} type."}
+PLATE_TYPES = {k: t for k, t in HELD_BOOSTS.items() if k.endswith("_PLATE")}  # (and Judgment takes the Plate's type)
+
+# Story and key items: what each is for (the Bag shows it). Kept short, in our own words.
+STORY_TEXT = {
+    "AMULET_COIN": "While you have it, battles pay out twice the prize money.",
+    "EXP_SHARE": "While it's on, your whole team gets a share of the experience from every battle.",
+    "SHINY_CHARM": "A shining charm: shiny Pokemon turn up more often while you have it.",
+    "EVERSTONE": "Give it to a Pokemon to hold: it won't evolve while it does.",
+    "GRACIDEA": "A flower for Shaymin: in the daytime it changes Shaymin to its Sky Forme (use it again to change back).",
+    "GOLD_TEETH": "The Safari Zone Warden's lost false teeth. He'll be glad to have them back.",
+    "INTRIGUING_STONE": "An odd stone someone in town is keen to see.",
+    "HERBA_MYSTICA": "A rare, powerful herb from Paldea's Titan Pokemon.",
+    "EXPLORER_KIT": "A bag of tools for digging in the Underground.",
+    "ADVENTURE_MAP": "A map from the Survival Area: it points the way to new places.",
+    "GALACTIC_KEY": "A key that opens the doors in Team Galactic's building.",
+    "MAGMA_EMBLEM": "Team Magma's emblem. It gets you past their guards.",
+    "GO_GOGGLES": "Goggles that keep sand out of your eyes in a sandstorm.",
+    "MEGA_RING": "A ring with a Key Stone: a Pokemon holding the right Mega Stone can Mega Evolve.",
+    "METEORITE": "A strange rock that fell from space.",
+    "NATIONAL_DEX": "The National Pokedex: it now lists Pokemon from every region.",
+    "BICYCLE": "A folding bike: get around faster.",
+    "BIKE_VOUCHER": "Trade it in at the bike shop for a free Bicycle.",
+    "COIN_CASE": "A case for Game Corner coins.",
+    "CONTEST_PASS": "Lets you enter Pokemon Contests.",
+    "DEVON_SCOPE": "A scope that shows Pokemon you can't see.",
+    "SILPH_SCOPE": "A scope that shows ghosts for what they really are.",
+    "DIPLOMA": "Proof that you completed the Pokedex.",
+    "DIVE_GEAR": "Gear for diving under deep water.",
+    "AQUA_SUIT": "A Team Aqua uniform: it gets you past their guards.",
+    "MAGMA_SUIT": "A Team Magma uniform: it gets you past their guards.",
+    "AURORA_TICKET": "A ticket for a ship to a faraway island.",
+    "EON_TICKET": "A ticket for a ship to the Southern Island.",
+    "MYSTIC_TICKET": "A ticket for a ship to Navel Rock.",
+    "OLD_SEA_MAP": "An old map of the sea, showing a lonely island.",
+    "SS_TICKET": "A ticket for the ship.",
+    "PASS": "A pass for the Magnet Train.",
+    "RAINBOW_PASS": "A pass for the ferry between the islands.",
+    "TRI_PASS": "A pass for the ferry to the first three islands.",
+    "VOLCANO_PASS": "A pass to the volcano.",
+    "PINKAN_PERMIT": "Lets you onto Pinkan Island.",
+    "OLD_ROD": "An old fishing rod. Fish where there's water.",
+    "GOOD_ROD": "A good fishing rod. Fish where there's water.",
+    "SUPER_ROD": "The best fishing rod. Fish where there's water.",
+    "ITEMFINDER": "It beeps near hidden items.",
+    "POKE_FLUTE": "Its tune wakes sleeping Pokemon, even big ones blocking the road.",
+    "SQUIRT_BOTTLE": "A watering can that wakes a strange tree.",
+    "POKE_NAV": "Hoenn's handy gadget: a map and a phone in one.",
+    "TOWN_MAP": "A map of the region. Use it to see where you are.",
+    "JOHTO_MAP": "A map of Johto. Use it to see where you are.",
+    "CERULEAN_CAVE_MAP": "A map of the cave near Cerulean City.",
+    "MT_SILVER_MAP": "A map of Mt. Silver.",
+    "UNOWN_REPORT": "Notes on the Unown you've caught.",
+    "POKEBLOCK_KIT": "Make Pokeblocks from Berries.",
+    "POKEBLOCK_CASE": "A case for Pokeblocks.",
+    "BERRY_POUCH": "A pouch that holds every Berry you have.",
+    "WAILMER_DOLL": "A big, cuddly Wailmer doll.",
+    "GLASS_ORNAMENT": "A pretty glass ornament.",
+    "GS_BALL": "A mysterious Poke Ball. Kurt in Azalea Town wants to see it.",
+    "RED_SCALE": "A red scale from the Lake of Rage's Gyarados.",
+    "SECRET_POTION": "A medicine that cures a sick Pokemon. The lighthouse's Ampharos needs it.",
+    "TEA": "A cup of tea for the thirsty guards.",
+    "LIFT_KEY": "A key for the lift.",
+    "SECRET_KEY": "A key for the locked Gym door.",
+    "STORAGE_KEY": "A key to the ship's storage room.",
+    "RM_1_KEY": "A key to cabin 1.", "RM_2_KEY": "A key to cabin 2.", "RM_4_KEY": "A key to cabin 4.", "RM_6_KEY": "A key to cabin 6.",
+    "MACHINE_PART": "A part stolen from the Power Plant.",
+    "SCANNER": "A scanner lost in the Abandoned Ship.",
+    "LOST_ITEM": "Something a girl lost. She'll be glad to get it back.",
+    "OAKS_PARCEL": "A parcel for Professor Oak.",
+    "MYSTERY_EGG": "An Egg. Keep it with you and it'll hatch.",
+    "ICE_MELTER": "Melts thick ice in your way.",
+    "ROCK_SMASHER": "Breaks rocks in your way.",
+    "SNAG_MACHINE": "Lets you snatch Shadow Pokemon from other trainers.",
+    "TIDAL_BELL": "A bell that rings like the tide.",
+    "RUBY": "A gem as red as fire.", "SAPPHIRE": "A gem as blue as the sea.",
+    "FIRE_TREASURE": "The Fire Island's sacred treasure.",
+    "ICE_TREASURE": "The Ice Island's sacred treasure.",
+    "LIGHTNING_TREASURE": "The Lightning Island's sacred treasure.",
+    "EON_FLUTE": "Play it to soar through the sky on Latios or Latias.",
+}
+
+
+def describe_extra(game, item):
+    """Text for the items no table above covers: Mega Stones, evolution items, fossils."""
+    if game is None:
+        return ""
+    from src.pokemon import forms
+    for pid, entries in (getattr(game.assets, "mega_forms", None) or _mega_forms(game)).items():
+        for e in entries:
+            if e.get("item") == item:
+                return f"A Mega Stone. With a Key Stone, {str(e.get('name', '')).title().replace('Mega ', '')} can Mega Evolve in battle."
+    evo = game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).get(item)
+    if evo:
+        names = sorted({str(k).split("_")[0].title() for k in evo})
+        return "Makes some Pokemon evolve: " + ", ".join(names[:5]) + ("..." if len(names) > 5 else ".")
+    if str(item).endswith("_FOSSIL") or str(item).startswith("FOSSILIZED_") or item == "OLD_AMBER":
+        return "A fossil. A lab can bring back the Pokemon inside it."
+    from src.pokemon import poffin, contest
+    if item in contest.POKEBLOCKS:
+        return f"A Pokeblock: feed it to a Pokemon to raise its {str(contest.POKEBLOCKS[item]).title()} condition for Contests."
+    if item in poffin.BERRIES:
+        return f"A Berry ({poffin.berry_label(item)}). Plant it, or make it into Pokeblocks and Poffins."
+    return ""
+
+
+def _mega_forms(game):
+    cache = getattr(game, "_mega_forms_cache", None)
+    if cache is None:
+        import json, os
+        try:
+            with open(os.path.join(game.assets.assets_dir, "mega_forms.json"), encoding="utf-8") as f:
+                cache = json.load(f)
+        except OSError:
+            cache = {}
+        game._mega_forms_cache = cache
+    return cache

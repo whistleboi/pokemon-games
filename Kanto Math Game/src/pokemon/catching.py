@@ -41,7 +41,8 @@ BALL_TEXT = {
     "DREAM_BALL": "Great for sleeping Pokemon (x4).", "FRIEND_BALL": "Pokemon caught in it are friendly at once.",
     "BEAST_BALL": "Made for Ultra Beasts (x5); poor for others.",
     "SAFARI_BALL": "A ball used in the Safari Zone (x1.5).", "SPORT_BALL": "A ball for the Bug-Catching Contest (x1.5).",
-    "LOVE_BALL": "A ball Kurt makes from a Pink Apricorn.", "HEAVY_BALL": "A ball Kurt makes from a Black Apricorn.",
+    "LOVE_BALL": "Great for a Pokemon of your own Pokemon's species and the other gender (x8).",
+    "HEAVY_BALL": "Better the heavier the Pokemon (worse for light ones).",
     "CHERISH_BALL": "A rare ball for special Pokemon.",
 }
 MOON_STONE_LINES = {29, 30, 32, 33, 35, 39, 300, 517}  # Nidoran lines, Clefairy, Jigglypuff, Skitty, Munna
@@ -130,7 +131,33 @@ def ball_bonus(ball, game, target, turn=1, fishing=False, terrain=""):
         return 4.0
     if ball == "BEAST_BALL":
         return 5.0 if target.id in ULTRA_BEASTS else 0.1
+    if ball == "HEAVY_BALL":  # (Gen 7 on: the catch rate -20 under 100 kg, +20 from 200 kg, +30 from 300 kg)
+        kg = weight(game, target)
+        add = -20 if kg < 100 else 0 if kg < 200 else 20 if kg < 300 else 30
+        rate = catch_rate(game, target)
+        return max(1, rate + add) / rate
+    if ball == "LOVE_BALL":  # (x8 against the same species as your Pokemon, of the other gender)
+        mine = getattr(getattr(game, "current_state", None), "player_pokemon", None)
+        from src.pokemon.evolution import base_id
+        if mine is not None and base_id(mine) == base_id(target) and {getattr(mine, "gender", None), getattr(target, "gender", None)} == {"M", "F"}:
+            return 8.0
     return bonus
+
+
+def weight(game, mon):
+    """A Pokemon's weight in kg (assets/dex_info.json); a held Float Stone halves it."""
+    info = getattr(game, "_dex_info", None)
+    if info is None:
+        import json, os
+        try:
+            with open(os.path.join(game.assets.assets_dir, "dex_info.json"), encoding="utf-8") as f:
+                info = json.load(f)
+        except OSError:
+            info = {}
+        game._dex_info = info
+    from src.pokemon.evolution import base_id
+    kg = float((info.get(str(getattr(mon, "id", 0))) or info.get(str(base_id(mon))) or {}).get("weight") or 0)
+    return kg / 2 if getattr(mon, "held_item", None) == "FLOAT_STONE" else kg
 
 
 def _caught_before(game, pid):

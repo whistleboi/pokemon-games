@@ -2,6 +2,11 @@
 
 ## Unreleased: battle styles, Bill's research, moving evolution scenes
 
+- **PP**: every move has its games' PP, shown on the FIGHT buttons and the Summary. Using a move spends one (two against Pressure); a move at 0 PP is greyed out, and with none left your Pokemon Struggles. Pokemon Centers refill PP. Ether, Max Ether, Elixir, Max Elixir, PP Up, PP Max and the Leppa Berry work.
+- **Held items do what they do in the games**: Choice items, Expert Belt, held berries (Oran, Sitrus, Lum, Persim, pinch and resist berries), Power Herb, White Herb, Iron Ball, Lagging Tail, Destiny Knot (in battle and at the Day Care), Smoke Ball, King's Rock, Rocky Helmet, Big Root, Safety Goggles, Wide Lens, Lax Incense, Metronome, Light Ball, the Orbs, Drives and more. Berries and the like can be used or given to hold.
+- **Other items**: Poke Toy / Poke Doll (run from a wild Pokemon), Pomeg-type berries, Gracidea, Heavy Ball, Love Ball, Contest scarves; every item in the Bag now says what it does.
+- **Fixed**: Leftovers healed twice a turn; vitamins said there was no use for them.
+
 - **Options > BATTLE STYLE: CLASSIC / OVERWORLD** (was BATTLES: CLASSIC / REAL-TIME). Every battle is turn-based again, with a math question every turn. The style only changes how trainer battles look: OVERWORLD shows the trainer's lines in the map's text box, then the battle right on the map (its Pokemon in front of it, yours facing it, small HP bars, an orb flying for each attack) with the usual buttons and questions. Wild battles are always classic, in Hyperspace Lumiose too.
 - **Mega Evolve on the map** in either style: the Pokemon following you stays a Mega for a minute of walking, and goes into battles (classic or overworld) that way. The minute waits while you battle, and the Mega lasts to the battle's end.
 - **XP halved**: the level cap came too quickly.

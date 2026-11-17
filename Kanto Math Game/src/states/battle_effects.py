@@ -117,6 +117,8 @@ class MoveEffects:
 
     # ------------------------------------------------------------------ terrains
     def grounded(self, mon):
+        if mon and self.held_grounded(mon):  # (an Iron Ball pulls it down)
+            return True
         return bool(mon) and "FLYING" not in (mon.types or []) and self.ab(mon) != "LEVITATE"
 
     def terrain(self):
@@ -172,7 +174,7 @@ class MoveEffects:
             mult *= 2
         if a == "QUICKFEET" and getattr(mon, "status", None):
             mult *= 1.5
-        return mult
+        return mult * self.held_speed_mult(mon)  # (Choice Scarf, Iron Ball, Macho Brace, Quick Powder)
 
     def change_stages(self, mon, changes, by_foe=False):
         """Apply [[STAT, n], ...] to mon. Returns the game's messages."""
@@ -196,18 +198,14 @@ class MoveEffects:
             dropped = dropped or new < st[stat]
             st[stat] = new
             lines.append(f"{label}'s {name} {(RISE if n > 0 else FALL)[min(3, abs(n))]}")
-        return lines + self.ability_after_drop(mon, by_foe, dropped)  # Defiant, Competitive
+        lines += self.ability_after_drop(mon, by_foe, dropped)  # Defiant, Competitive
+        return lines + (self.held_after_stat_drop(mon) if dropped else [])  # (a White Herb)
 
     # ------------------------------------------------------------------ before moving
     def before_move(self, mon):
         """Confusion and infatuation can stop a move. Returns (stopped, lines)."""
         v, label, lines = self.vol(mon), self._label(mon), []
-        _mind = [k for k in ("infatuated", "taunt", "encore", "disabled") if v.get(k)]
-        if _mind and getattr(mon, "held_item", None) == "MENTAL_HERB":  # (a Mental Herb: used up, it frees the mind of all of them)
-            for k in _mind:
-                v.pop(k, None)
-            mon.held_item = None
-            lines.append(f"{label} used its Mental Herb to snap out of it!")
+        lines += self.held_mental_herb(mon)  # (a Mental Herb: used up, it frees the mind of all of them)
         loafing = self.ability_loafs(mon)  # Truant
         if loafing:
             return True, [loafing]
@@ -515,7 +513,7 @@ class MoveEffects:
             if fv.get("infatuated") or ga is None or gd is None or ga == gd:
                 return fail
             fv["infatuated"] = True
-            return [f"{def_label} fell in love!"]
+            return [f"{def_label} fell in love!"] + self.held_destiny_knot(defender, attacker)
         if ailment == "trap":
             if fv.get("trapped"):
                 return []
@@ -642,20 +640,18 @@ class MoveEffects:
             v.pop("protected", None)
             v.pop("endure", None)
             if v.get("aqua_ring") and self._hp(mon) < mx:
-                self._adjust_hp(mon, max(1, mx // 16))
+                self._adjust_hp(mon, max(1, int(mx // 16 * self.held_drain_mult(mon))))  # (a Big Root: more)
                 lines.append(f"A veil of water restored {label}'s HP!")
             if v.get("ingrain") and self._hp(mon) < mx:
-                self._adjust_hp(mon, max(1, mx // 16))
+                self._adjust_hp(mon, max(1, int(mx // 16 * self.held_drain_mult(mon))))
                 lines.append(f"{label} absorbed nutrients with its roots!")
-            if getattr(mon, "held_item", None) == "LEFTOVERS" and self._hp(mon) < mx:   # (held Leftovers: a sixteenth back each turn. FireRed, Route 12)
-                self._adjust_hp(mon, max(1, mx // 16))
-                lines.append(f"{label} restored a little HP using its Leftovers!")
+            # (held Leftovers: with the status damage, src/states/battle.py _status_chip)
             if v.get("seeded"):
                 sap = min(self._hp(mon), max(1, mx // 8))
                 self._adjust_hp(mon, -sap)
                 other = self._foe_of(mon)
                 if other and self._hp(other) > 0:
-                    self._adjust_hp(other, sap)
+                    self._adjust_hp(other, max(1, int(sap * self.held_drain_mult(other))))
                 lines.append(f"{label}'s health is sapped by Leech Seed!")
             if v.get("trapped"):
                 turns, move = v["trapped"]

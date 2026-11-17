@@ -127,7 +127,7 @@ class EvolutionState(GameState):
                 # What the Pokémon has earned stays with it through evolution.
                 for attr in ("level", "xp", "friendship", "affection", "everstone", "counters", "condition", "sheen", "ribbons",
                              "gmax_factor", "caught_region", "ivs", "moves", "move_pool", "status", "ability_slot",
-                             "gender", "tera_type", "held_item"):
+                             "gender", "tera_type", "held_item", "pp", "pp_ups"):
                     if hasattr(self.pokemon, attr):
                         setattr(self.evolved_pokemon_obj, attr, getattr(self.pokemon, attr))
 

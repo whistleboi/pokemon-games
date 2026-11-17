@@ -186,12 +186,15 @@ def set_move(poke, slot, name):
     moves = poke.moves
     if name in moves:
         return False
+    from src.pokemon import pp
     if slot is None or slot >= len(moves):
         if len(moves) >= MAX_MOVES:
             return False
         moves.append(name)
+        pp.forget(poke, name)  # (a move set in comes with full PP)
         return True
     moves[slot] = name
+    pp.forget(poke, name)
     return True
 
 

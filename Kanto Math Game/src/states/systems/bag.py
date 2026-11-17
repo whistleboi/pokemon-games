@@ -10,6 +10,7 @@ from src.utils import Utils
 from src.config import WHITE, GREEN, RED
 from src.pokemon.contest import feed_pokeblock, POKEBLOCKS, MAX_CONDITION
 from src.pokemon import items as itemlib
+from src.pokemon import pp as pplib
 from src.pokemon import forms
 from src.states.systems.evolution_scene import EvolutionState
 from src.states.systems.party_menu import PokemonPartyMenuState
@@ -67,7 +68,7 @@ class BagState(GameState):
 
     POCKETS = ("ITEMS", "MEDICINE", "POKE BALLS", "BERRIES", "TMs & HMs", "KEY ITEMS")
     BATTLE_POCKETS = ("MEDICINE", "POKE BALLS", "BERRIES", "BATTLE ITEMS")
-    MEDICINE = tuple(itemlib.MEDICINE)
+    MEDICINE = tuple(itemlib.MEDICINE) + tuple(k for k in pplib.PP_ITEMS if not k.endswith("_BERRY"))
     BATTLE_ITEMS = ("DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK") + tuple(itemlib.BATTLE)
     # Usable from the Bag (anything else says there's no use for it right now).
     USABLE_KEYS = ("TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL", "POKEBLOCK_KIT", "WAILMER_PAIL", "EON_FLUTE")
@@ -118,9 +119,11 @@ class BagState(GameState):
         if self.context == "battle":
             if key in catching.BALLS:  # throw a ball any time in a wild battle, as in the games
                 return getattr(self.previous_state, "trainer_class", "") == "WILD"
-            return (key in itemlib.MEDICINE and key != "RARE_CANDY") or key in self.BATTLE_ITEMS
+            return ((key in itemlib.MEDICINE and key != "RARE_CANDY") or key in self.BATTLE_ITEMS
+                    or (key in pplib.PP_ITEMS and "ups" not in pplib.PP_ITEMS[key]))
         from src.pokemon import tms, zpower
-        return (key in itemlib.MEDICINE or key in itemlib.FIELD or key in self.USABLE_KEYS
+        return (key in itemlib.MEDICINE or key in itemlib.FIELD or key in self.USABLE_KEYS or key in pplib.PP_ITEMS
+                or key in itemlib.EV_BERRIES or itemlib.holdable(key) or key in itemlib.VITAMINS or key == "GRACIDEA"
                 or key == "EVERSTONE" or key in self.evo_keys or key in POKEBLOCKS or tms.is_tm(key)
                 or bool(zpower.shard_type(key)) or key in zpower.CRYSTAL_TYPE or key in itemlib.HELD)
 
@@ -226,8 +229,38 @@ class BagState(GameState):
             line = f"There's no use for the {name} right now."
         self.game.show_dialogue([line])
 
-    def use_item(self, item_key):
+    def _use_or_give(self, item_key):
+        """An item that can be used and also given to hold (a Berry, a King's Rock): ask which."""
+        from src.states.systems.pick_list import PickListState
+        from src.world import hms
+
+        def done(choice):
+            if choice == "give":
+                self.game.change_state(PokemonPartyMenuState(
+                    self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_hold))
+            elif choice == "use":
+                self.use_item(item_key, asked=True)
+        self.game.change_state(PickListState(self.game, self, f"{hms.item_name(item_key)}: use it, or give it to hold?",
+                                             [("USE", "use"), ("GIVE TO HOLD", "give")], done))
+
+    def use_item(self, item_key, asked=False):
         self.selected_item = item_key
+        usable_too = (item_key in itemlib.MEDICINE or item_key in pplib.PP_ITEMS or item_key in self.evo_keys)
+        if self.context != "battle" and not asked and itemlib.holdable(item_key) and usable_too:
+            self._use_or_give(item_key)
+            return
+        if item_key in pplib.PP_ITEMS:  # Ether, Elixir, PP Up, PP Max, Leppa Berry
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_pp))
+            return
+        if item_key == "GRACIDEA":  # Shaymin's Sky Forme (in the daytime), and back
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_gracidea))
+            return
+        if item_key in itemlib.EV_BERRIES:  # Pomeg, Kelpsy...: friendlier, fewer effort points
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_ev_berry))
+            return
 
         from src.pokemon import catching
         if self.context == "battle" and item_key in catching.BALLS:
@@ -253,7 +286,7 @@ class BagState(GameState):
             return
 
         from src.pokemon import tms, zpower
-        if item_key in itemlib.HELD:  # Mystic Water: give it to a Pokemon to hold (or take it back)
+        if self.context != "battle" and itemlib.holdable(item_key) and item_key not in self.evo_keys:  # Mystic Water: give it to a Pokemon to hold (or take it back)
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_hold))
             return
@@ -455,9 +488,10 @@ class BagState(GameState):
             self._back_to_bag([f"You took the {name} back from {p.display_name}."])
             return
         old = getattr(p, "held_item", None)
-        for other in party:  # (one of them: it moves to this Pokemon)
-            if other is not p and getattr(other, "held_item", None) == item:
-                other.held_item = None
+        holders = [o for o in party if o is not p and getattr(o, "held_item", None) == item]
+        have = self.game.story_manager.inventory.get(item, 0)
+        if holders and (not itemlib.consumed(item) or len(holders) >= have):
+            holders[0].held_item = None  # (one each: it moves to this Pokemon)
         p.held_item = item
         lines = [f"{p.display_name} is now holding the {name}."]
         if old:
@@ -468,7 +502,72 @@ class BagState(GameState):
             lines.append("Leading your team, it keeps wild Pokemon away.")
         elif item in itemlib.DEFENCE_HELD:
             lines.append("If it can still evolve, it takes less damage now.")
+        elif itemlib.consumed(item):
+            lines.append("It's used up when its moment comes in battle.")
         self._back_to_bag(lines)
+
+    def on_pokemon_select_pp(self, slot_index):
+        """An Ether / Max Ether / Leppa Berry / PP Up / PP Max (pick the move), or an Elixir (every move)."""
+        party = self.game.story_manager.player_team
+        if slot_index >= len(party) or party[slot_index] is None or getattr(party[slot_index], "is_egg", False):
+            return
+        p, item = party[slot_index], self.selected_item
+        data = pplib.PP_ITEMS[item]
+        if data.get("all"):
+            self._finish_pp(p, item, None)
+            return
+        from src.pokemon import moves as movelib
+        from src.states.systems.pick_list import PickListState
+        known = list(movelib.ensure_moves(self.game, p))
+        rows = [(f"{m.replace('-', ' ')}  {pplib.left(self.game, p, m)}/{pplib.max_pp(self.game, p, m)}", m) for m in known]
+        title = "Raise which move's PP?" if "ups" in data else "Restore which move's PP?"
+        self.game.change_state(PickListState(self.game, self, title, rows,
+                                             lambda m: self._finish_pp(p, item, m) if m else self._back_to_bag()))
+
+    def _finish_pp(self, p, item, move):
+        used, lines = pplib.use_item(self.game, p, item, move)
+        if not used:
+            self._back_to_bag(lines)
+            return
+        self._take(item)
+        if self.game.assets.heal_sfx:
+            self.game.assets.heal_sfx.play()
+        label = forms.item_label(item).upper()
+        if self.context == "battle":
+            battle = self.previous_state
+            self.game.change_state(battle)
+            battle.show_message([f"{self.game.player_name} used a {label}!"] + lines, callback=battle.on_item_used)
+            return
+        self._back_to_bag([f"You used a {label}."] + lines)
+
+    def on_pokemon_select_gracidea(self, slot_index):
+        """Gracidea: Shaymin turns into its Sky Forme (only in the daytime, as in the games); used again, back to Land."""
+        import datetime
+        story = self.game.story_manager
+        party = story.player_team
+        if slot_index >= len(party) or party[slot_index] is None:
+            return
+        p = party[slot_index]
+        if int(getattr(p, "id", 0) or 0) != 492:
+            self._back_to_bag(["It won't have any effect."])
+            return
+        sky = str(getattr(p, "form", "normal")) != "sky"
+        if sky and not 6 <= datetime.datetime.now().hour < 20:
+            self._back_to_bag(["Nothing happened... Shaymin changes in the daytime."])
+            return
+        rec = story._pokemon_record(p)
+        rec["form"] = "sky" if sky else "normal"
+        party[slot_index] = story._load_pokemon(rec, self.game.loader)
+        self._back_to_bag([f"{p.display_name} changed its form!", "It's in its Sky Forme now!" if sky else "It's back in its Land Forme."])
+
+    def on_pokemon_select_ev_berry(self, slot_index):
+        party = self.game.story_manager.player_team
+        if slot_index >= len(party) or party[slot_index] is None or getattr(party[slot_index], "is_egg", False):
+            return
+        ok, line = itemlib.use_ev_berry(party[slot_index], self.selected_item)
+        if ok:
+            self._take(self.selected_item)
+        self._back_to_bag([line])
 
     def on_pokemon_select_crystal(self, slot_index):
         """A Z-Crystal: the Pokemon holds it (the Bag keeps it, as in Sun / Moon); again takes it back."""
@@ -530,7 +629,17 @@ class BagState(GameState):
         from src.pokemon import tms, zpower
         if tms.is_tm(item):
             return tms.works_on(self.game, p, item)
-        if item in zpower.CRYSTAL_TYPE or item in itemlib.HELD:
+        if item in pplib.PP_ITEMS:
+            from src.pokemon import moves as movelib
+            known = list(movelib.ensure_moves(self.game, p))
+            if "ups" in pplib.PP_ITEMS[item]:
+                return any(pplib.can_raise(self.game, p, m) for m in known)
+            return any(pplib.can_restore(self.game, p, m) for m in known) or (self.context != "battle" and itemlib.holdable(item))
+        if item in itemlib.EV_BERRIES:
+            return itemlib.use_ev_berry(copy.deepcopy(p), item)[0]
+        if item == "GRACIDEA":
+            return int(getattr(p, "id", 0) or 0) == 492
+        if item in zpower.CRYSTAL_TYPE or (itemlib.holdable(item) and item not in itemlib.MEDICINE and item not in self.evo_keys):
             return True  # (give it, or take it back)
         if zpower.shard_type(item):
             return (zpower.tera_type(p) != zpower.shard_type(item)
@@ -654,7 +763,13 @@ class BagState(GameState):
         if slot_index >= len(party):
             return
         p, item = party[slot_index], self.selected_item
-        used, lines = itemlib.medicine_effect(item, p)
+        vol_cure = itemlib.MEDICINE.get(item, {}).get("cure_vol")
+        battle = self.previous_state if self.context == "battle" else None
+        if vol_cure and battle is not None and p is battle.player_pokemon and battle.vol(p).get(vol_cure):
+            battle.vol(p).pop(vol_cure, None)  # (a Persim Berry: out of its confusion)
+            used, lines = True, [f"{p.display_name} snapped out of its confusion!"]
+        else:
+            used, lines = itemlib.medicine_effect(item, p)
         if not used:
             self._back_to_bag(lines)
             return
@@ -690,6 +805,16 @@ class BagState(GameState):
                 return
             battle.vol(mon).pop(data["cure_vol"], None)
             lines = [f"{mon.display_name.upper()} snapped out of {'its confusion' if data['cure_vol'] == 'confused' else 'its infatuation'}!"]
+        elif "flee" in data:  # (a Poke Toy / Poke Doll: away from a wild Pokemon for sure)
+            if battle.trainer_class != "WILD":
+                self.game.change_state(battle)
+                battle.show_message(["You can't use that in a battle with a Trainer!"], callback=battle.return_to_menu)
+                return
+            self._take(item)
+            self.game.change_state(battle)
+            battle.show_message([f"{self.game.player_name} used the {label}!", "Got away safely!"],
+                                callback=battle.on_flee_complete)
+            return
         elif "focus" in data:
             if battle.vol(mon).get("focus"):
                 self.game.change_state(battle)
