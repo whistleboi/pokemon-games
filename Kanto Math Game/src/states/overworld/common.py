@@ -760,6 +760,8 @@ def _run_story_event(state, key, check, show):
         state.anim = 0
         if hasattr(state, "_remember"):
             state._remember()
+    for k in ev.get("clear", []):   # (story flags it unsets: the Hall of Fame's, used once per title)
+        story.story_flags.pop(k, None)
     if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
         from src.states.systems.pick_list import PickListState
         from src.states.overworld import AreaTransitionState

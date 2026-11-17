@@ -306,7 +306,7 @@
       },
       {
         "id": "s4", "type": "SIDE", "text": "The Lost Cave", "desc": "A cave hidden in the depths of Mt. Moon is said to contain rare Pokémon and treasures.",
-        "condition": { "visited": "MT_MOON_CITY", "flag_not": "lost_cave_explored" }
+        "condition": { "visited": "MT_MOON", "flag_not": "lost_cave_explored" }
       },
       {
         "id": "s5", "type": "SIDE", "text": "Fighting Dojo", "desc": "The Fighting Dojo in Saffron rewards those who have proven their strength against Sabrina.",
@@ -696,8 +696,7 @@
       "travel_options": [
         { "text": "Route 3", "target_area": "KANTO_ROUTE_3", "condition": "has_boulder_badge" },
         { "text": "Route 2", "target_area": "KANTO_ROUTE_2" },
-        { "text": "Viridian City", "target_area": "VIRIDIAN_CITY", "flag_condition": "visited_VIRIDIAN_CITY" },
-        { "text": "Mt. Moon", "target_area": "MT_MOON_CITY", "flag_condition": "visited_MT_MOON_CITY" }
+        { "text": "Viridian City", "target_area": "VIRIDIAN_CITY", "flag_condition": "visited_VIRIDIAN_CITY" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -726,9 +725,7 @@
         {"text": "Route 5", "target_area": "KANTO_ROUTE_5"},
         {"text": "Route 9", "target_area": "KANTO_ROUTE_9", "condition": ["has_cascade_badge", "visited_VERMILLION_CITY"]},
         {"text": "Route 24", "target_area": "KANTO_ROUTE_24"},
-        {"text": "Mt. Moon", "target_area": "MT_MOON_CITY", "flag_condition": "visited_MT_MOON_CITY"},
         {"text": "Bill's House", "target_area": "BILLS_HOUSE", "flag_condition": "visited_BILLS_HOUSE"},
-        {"text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY"},
         {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
         {"text": "Cerulean Cave", "target_area": "CERULEAN_CAVE", "condition": "beat_champion"}
       ],
@@ -742,27 +739,6 @@
             {"text": "Search the Gym's Pool", "action": "EVENT", "door": "gym", "color": "GOLD", "event": {"requires": ["heard_machine_part"], "lines": ["You search the bottom of the Cerulean Gym's pool...", "There's something shiny wedged between the tiles!"], "gift_item": {"MACHINE_PART": 1}, "flag": "got_machine_part"}, "flag_condition": "not got_machine_part", "condition": "heard_machine_part"}
         ],
       "trainer_pool": [],
-      "on_enter_event": null
-    },
-
-    "MT_MOON_CITY": {
-      "area_type": "town",
-      "route_name": "Mt. Moon",
-      "backgrounds": {
-        "main": "mt_moon_city.png",
-        "pokecenter": "pokecenter.png"
-      },
-      "has_gym": false,
-      "trainer_encounter_rate": 0,
-      "travel_options": [
-        { "text": "Enter Mt. Moon", "target_area": "MT_MOON" },
-        { "text": "Back to Route 3", "target_area": "KANTO_ROUTE_3" },
-        { "text": "Pewter City", "target_area": "PEWTER_CITY", "flag_condition": "visited_PEWTER_CITY" },
-        { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" }
-      ],
-      "explore_options": [{"text": "Heal", "action": "HEAL"}],
-      "trainer_pool": [],
-      "stoneman_dialogue_key": "mt_moon_stoneman_info",
       "on_enter_event": null
     },
 
@@ -844,28 +820,6 @@
       "on_enter_event": null
     },
 
-    "ROCK_TUNNEL_CITY": {
-      "area_type": "town",
-      "route_name": "Rock Tunnel Entrance",
-      "backgrounds": {
-        "main": "rock_tunnel_city.png",
-        "pokecenter": "pokecenter.png"
-      },
-      "has_gym": false,
-      "trainer_encounter_rate": 0,
-      "travel_options": [
-        { "text": "Route 10", "target_area": "KANTO_ROUTE_10" },
-        { "text": "Rock Tunnel", "target_area": "ROCK_TUNNEL" },
-        { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" },
-        { "text": "Lavendar Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" }
-      ],
-      "explore_options": [
-        { "text": "Heal", "action": "HEAL" }
-      ],
-      "trainer_pool": [],
-      "on_enter_event": null
-    },
-
     "LAVENDER_TOWN": {
       "area_type": "town",
       "route_name": "Lavender Town",
@@ -879,7 +833,6 @@
         {"text": "Route 8", "target_area": "KANTO_ROUTE_8"},
         {"text": "Route 12", "target_area": "KANTO_ROUTE_12"},
         {"text": "Rock Tunnel", "target_area": "ROCK_TUNNEL"},
-        {"text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY"},
         {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
         {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"},
         {"text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY"}
@@ -2838,7 +2791,7 @@
         { "text": "PEWTER CITY", "action": "EXIT", "target": "PEWTER_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "MT. MOON", "action": "EXIT", "target": "MT_MOON", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "MT_MOON_CITY",
+      "next_area": "MT_MOON",
       "on_enter_event": null
     },
 
@@ -2902,6 +2855,7 @@
     },
 
     "KANTO_ROUTE_6": {
+      "surf_pool_percentages": "KANTO_ROUTE_6_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 6",
       "battle_type": "grass",
@@ -3042,6 +2996,7 @@
     }, 
 
     "KANTO_ROUTE_10": {
+      "surf_pool_percentages": "KANTO_ROUTE_10_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 10",
       "battle_type": "grass",
@@ -3064,7 +3019,7 @@
         { "text": "POWER PLANT", "action": "EXIT", "target": "POWER_PLANT", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED" },
         { "text": "ROCK TUNNEL", "action": "EXIT", "target": "ROCK_TUNNEL", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "ROCK_TUNNEL_CITY",
+      "next_area": "ROCK_TUNNEL",
       "on_enter_event": null
     },
     "KANTO_ROUTE_10_SOUTH": {"area_type": "wild_route", "route_name": "Route 10", "region": "KANTO", "battle_type": "grass", "wild_pool_percentages": "KANTO_ROUTE_10_PERCENTAGES", "level": 15, "min_rounds": 0, "trainer_pool": [
@@ -3119,6 +3074,7 @@
     
 
     "KANTO_ROUTE_11": {
+      "surf_pool_percentages": "KANTO_ROUTE_11_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 11",
       "battle_type": "field",
@@ -3161,6 +3117,7 @@
     },
 
     "KANTO_ROUTE_12": {
+      "surf_pool_percentages": "KANTO_ROUTE_12_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 12",
       "battle_type": "field",
@@ -3224,6 +3181,7 @@
     },    
 
     "KANTO_ROUTE_13": {
+      "surf_pool_percentages": "KANTO_ROUTE_13_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 13",
       "battle_type": "grass",
@@ -3322,6 +3280,7 @@
     },
 
     "SAFARI_ZONE": {
+      "surf_pool_percentages": "SAFARI_ZONE_SURF_PERCENTAGES",
       "zones": [{"key": "center", "name": "Center Area"}, {"key": "east", "name": "Area 1 (East)"}, {"key": "north", "name": "Area 2 (North)"}, {"key": "west", "name": "Area 3 (West)"}],
       "safari_game": {"balls": 30, "steps": 600}, "zones_explore": true,
       "zone_pools": {"center": "SAFARI_ZONE_CENTER_PERCENTAGES", "east": "SAFARI_ZONE_EAST_PERCENTAGES", "north": "SAFARI_ZONE_NORTH_PERCENTAGES", "west": "SAFARI_ZONE_WEST_PERCENTAGES"},
@@ -3462,6 +3421,7 @@
     },
 
     "KANTO_ROUTE_19": {
+      "surf_pool_percentages": "KANTO_ROUTE_19_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 19",
       "battle_type": "ocean",
@@ -3496,6 +3456,7 @@
     },
 
     "KANTO_ROUTE_20": {
+      "surf_pool_percentages": "KANTO_ROUTE_20_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 20",
       "battle_type": "ocean",
@@ -3530,6 +3491,7 @@
     },
 
     "KANTO_ROUTE_21": {
+      "surf_pool_percentages": "KANTO_ROUTE_21_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 21",
       "battle_type": "ocean",
@@ -3562,6 +3524,7 @@
     },
 
     "KANTO_ROUTE_22": {
+      "surf_pool_percentages": "KANTO_ROUTE_22_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 22",
       "battle_type": "grass",
@@ -3589,6 +3552,7 @@
     },
 
     "KANTO_ROUTE_23": {
+      "surf_pool_percentages": "KANTO_ROUTE_23_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 23",
       "battle_type": "mountain",
@@ -3627,6 +3591,7 @@
     },
 
     "KANTO_ROUTE_24": {
+      "surf_pool_percentages": "KANTO_ROUTE_24_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Nugget Bridge",
       "battle_type": "field",
@@ -3662,6 +3627,7 @@
 
 
     "KANTO_ROUTE_25": {
+      "surf_pool_percentages": "KANTO_ROUTE_25_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 25",
       "battle_type": "field",
@@ -3744,6 +3710,7 @@
     },
 
     "CERULEAN_CAVE": {
+      "surf_pool_percentages": "CERULEAN_CAVE_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Cerulean Cave",
       "battle_type": "cave",
@@ -4080,6 +4047,7 @@
 
 
     "SEAFOAM_ISLANDS": {
+      "surf_pool_percentages": "SEAFOAM_ISLANDS_SURF_PERCENTAGES",
       "zones": [{"key": "1f", "name": "1F"}, {"key": "b1f", "name": "B1F"}, {"key": "b2f", "name": "B2F"}, {"key": "b3f", "name": "B3F"}, {"key": "b4f", "name": "B4F"}],
       "zones_linear": true,
       "zones_descend": true,
@@ -4345,8 +4313,7 @@
       "question": "Take the Old Man's helmet?",
       "yes_dialogue": ["You received the Rocky Helmet!", "You can now Headbutt trees."],
       "no_dialogue": ["You left the old man to his dreams."]
-    },
-    "mt_moon_stoneman_info": ["The Stone Man is a mysterious figure.", "He seems to know more about the mountain than he lets on."]
+    }
 
   },
   "SLOT_MACHINE_MESSAGES": {
@@ -4360,37 +4327,86 @@
     "small_win_pokeballs": "SMALL WIN! 3 POKEBALLS!",
     "won_amount": "WON: ${amount}!"
   },
+  "_KANTO_WATER_NOTE": "FireRed's own Surf and rod tables (its wild headers, slot odds 60/30/5/4/1, 70/30, 60/20/20, 40/40/15/4/1; a map of several floors averaged), 11-16",
+  "KANTO_ROUTE_6_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_6_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 20, "118": 20},
+  "KANTO_ROUTE_6_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 5},
   "KANTO_ROUTE_10_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_10_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_10_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_10_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_10_SUPER_ROD_PERCENTAGES": {"116": 84, "130": 15, "54": 1},
   "KANTO_ROUTE_11_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_11_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_11_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_11_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_11_SUPER_ROD_PERCENTAGES": {"116": 84, "130": 15, "54": 1},
   "KANTO_ROUTE_12_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_12_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_12_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_12_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_12_SUPER_ROD_PERCENTAGES": {"116": 84, "130": 15, "54": 1},
   "KANTO_ROUTE_13_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_13_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_13_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
-  "SAFARI_ZONE_OLD_ROD_PERCENTAGES": {"129": 100},
-  "SAFARI_ZONE_GOOD_ROD_PERCENTAGES": {"118": 60, "60": 20, "129": 20},
-  "SAFARI_ZONE_SUPER_ROD_PERCENTAGES": {"118": 38, "119": 38, "147": 14, "54": 4, "148": 1, "79": 4},
+  "KANTO_ROUTE_13_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_13_SUPER_ROD_PERCENTAGES": {"116": 84, "130": 15, "54": 1},
   "KANTO_ROUTE_19_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_19_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_19_SUPER_ROD_PERCENTAGES": {"116": 43, "130": 8, "117": 2, "54": 1, "98": 43, "99": 2, "79": 1},
+  "KANTO_ROUTE_19_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_19_SUPER_ROD_PERCENTAGES": {"116": 80, "130": 15, "117": 4, "54": 1},
   "KANTO_ROUTE_20_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_20_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_20_SUPER_ROD_PERCENTAGES": {"116": 43, "130": 8, "117": 2, "54": 1, "98": 43, "99": 2, "79": 1},
+  "KANTO_ROUTE_20_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_20_SUPER_ROD_PERCENTAGES": {"116": 80, "130": 15, "117": 4, "54": 1},
   "KANTO_ROUTE_21_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_21_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_21_SUPER_ROD_PERCENTAGES": {"116": 43, "130": 8, "117": 2, "54": 1, "98": 43, "99": 2, "79": 1},
+  "KANTO_ROUTE_21_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_21_SUPER_ROD_PERCENTAGES": {"116": 80, "130": 15, "117": 4, "54": 1},
+  "KANTO_ROUTE_22_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_22_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 20, "118": 20},
+  "KANTO_ROUTE_22_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 5},
   "KANTO_ROUTE_23_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_23_GOOD_ROD_PERCENTAGES": {"60": 60, "118": 20, "129": 20},
-  "KANTO_ROUTE_23_SUPER_ROD_PERCENTAGES": {"60": 38, "61": 38, "130": 14, "54": 5, "79": 5},
+  "KANTO_ROUTE_23_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 20, "118": 20},
+  "KANTO_ROUTE_23_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 5},
   "KANTO_ROUTE_24_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_24_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
-  "KANTO_ROUTE_24_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_24_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "KANTO_ROUTE_24_SUPER_ROD_PERCENTAGES": {"116": 84, "130": 15, "54": 1},
   "KANTO_ROUTE_25_OLD_ROD_PERCENTAGES": {"129": 100},
-  "KANTO_ROUTE_25_GOOD_ROD_PERCENTAGES": {"60": 60, "118": 20, "129": 20},
-  "KANTO_ROUTE_25_SUPER_ROD_PERCENTAGES": {"60": 38, "61": 38, "130": 14, "54": 5, "79": 5}
+  "KANTO_ROUTE_25_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 20, "118": 20},
+  "KANTO_ROUTE_25_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 5},
+  "SAFARI_ZONE_OLD_ROD_PERCENTAGES": {"129": 100},
+  "SAFARI_ZONE_GOOD_ROD_PERCENTAGES": {"118": 60, "129": 20, "60": 20},
+  "SAFARI_ZONE_SUPER_ROD_PERCENTAGES": {"118": 40, "119": 40, "147": 15, "54": 4, "148": 1},
+  "CERULEAN_CAVE_OLD_ROD_PERCENTAGES": {"129": 100},
+  "CERULEAN_CAVE_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 20, "118": 20},
+  "CERULEAN_CAVE_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15.5, "54": 4.5},
+  "SEAFOAM_ISLANDS_OLD_ROD_PERCENTAGES": {"129": 100},
+  "SEAFOAM_ISLANDS_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "SEAFOAM_ISLANDS_SUPER_ROD_PERCENTAGES": {"116": 80, "130": 16, "54": 4},
+  "PALLET_TOWN_OLD_ROD_PERCENTAGES": {"129": 100},
+  "PALLET_TOWN_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "PALLET_TOWN_SUPER_ROD_PERCENTAGES": {"116": 40, "90": 40, "130": 15, "117": 4, "54": 1},
+  "VIRIDIAN_CITY_OLD_ROD_PERCENTAGES": {"129": 100},
+  "VIRIDIAN_CITY_GOOD_ROD_PERCENTAGES": {"60": 60, "129": 20, "118": 20},
+  "VIRIDIAN_CITY_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 5},
+  "CERULEAN_CITY_OLD_ROD_PERCENTAGES": {"129": 100},
+  "CERULEAN_CITY_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "CERULEAN_CITY_SUPER_ROD_PERCENTAGES": {"116": 84, "130": 15, "54": 1},
+  "VERMILLION_CITY_OLD_ROD_PERCENTAGES": {"129": 100},
+  "VERMILLION_CITY_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "VERMILLION_CITY_SUPER_ROD_PERCENTAGES": {"116": 44, "90": 40, "130": 15, "54": 1},
+  "CELADON_CITY_OLD_ROD_PERCENTAGES": {"129": 100},
+  "CELADON_CITY_GOOD_ROD_PERCENTAGES": {"129": 100},
+  "CELADON_CITY_SUPER_ROD_PERCENTAGES": {"129": 99, "88": 1},
+  "FUCHSIA_CITY_OLD_ROD_PERCENTAGES": {"129": 100},
+  "FUCHSIA_CITY_GOOD_ROD_PERCENTAGES": {"118": 60, "129": 20, "60": 20},
+  "FUCHSIA_CITY_SUPER_ROD_PERCENTAGES": {"118": 40, "119": 40, "130": 15, "54": 5},
+  "CINNABAR_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
+  "CINNABAR_ISLAND_GOOD_ROD_PERCENTAGES": {"116": 60, "129": 20, "98": 20},
+  "CINNABAR_ISLAND_SUPER_ROD_PERCENTAGES": {"116": 40, "90": 40, "130": 15, "117": 4, "54": 1},
+  "KANTO_ROUTE_6_SURF_PERCENTAGES": {"54": 100},
+  "KANTO_ROUTE_10_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_11_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_12_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_13_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_19_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_20_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_21_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_22_SURF_PERCENTAGES": {"54": 100},
+  "KANTO_ROUTE_23_SURF_PERCENTAGES": {"54": 100},
+  "KANTO_ROUTE_24_SURF_PERCENTAGES": {"72": 100},
+  "KANTO_ROUTE_25_SURF_PERCENTAGES": {"54": 100},
+  "SAFARI_ZONE_SURF_PERCENTAGES": {"54": 100},
+  "CERULEAN_CAVE_SURF_PERCENTAGES": {"54": 65, "55": 35},
+  "SEAFOAM_ISLANDS_SURF_PERCENTAGES": {"86": 60, "116": 30, "87": 5, "54": 4, "55": 1}
 }

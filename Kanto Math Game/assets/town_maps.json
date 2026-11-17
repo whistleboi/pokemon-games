@@ -29342,18 +29342,18 @@
      "ccc1.Xcccccccc.ccc..cccccccccccccccccccccccccccc",
      "cccc..ccccccN...b....ccccccccccccccccccccccccccc",
      "cccc...ccccccc..c.....cccccccccccccccccccccccccc",
-     "ccc...c.............c..ccccccccccccccccccccccccc",
+     "ccc...c.......cc.cccc..ccccccccccccccccccccccccc",
      "ccc...c.......X.....c..ccccccccccccccccccccccccc",
      "ccc...c.............c..ccccccccccccccccccccccccc",
      "cccc..c.............c..ccccccccccccccccccccccccc",
      "cccc..cccc.ccc..cc.cc..ccccccccccccccccccccccccc",
      "ccccc........c..cc.....ccccccccccccccccccccccccc",
-     "cccc..c....c.c..ccc...cccccccccccccccccccccccccc",
+     "cccc..cccccc.c..ccc...cccccccccccccccccccccccccc",
      "ccccbcc....ccc..cccccccccccccccccccccccccccccccc",
      "cccc..c....ccc..cccccccccccccccccccccccccccccccc",
      "cccc..c.........cc...ccccccccccccccccccccccccccc",
      "ccc...c.........c....ccccccccccccccccccccccccccc",
-     "cc...cc.ccccccccc.c.%ccccccccccccccccccccccccccc",
+     "cc...cc.ccccccccc.c..ccccccccccccccccccccccccccc",
      "cc..cc..ccc.........cccccccccccccccccccccccccccc",
      "ccc....bcc...cc.....cccccccccccccccccccccccccccc",
      "cccc.........cc..ccccccccccccccccccccccccccccccc",
@@ -29370,7 +29370,11 @@
       "at": [
        0,
        0
-      ]
+      ],
+      "until": {
+       "flag": "vr_switch_1f",
+       "f": "fr_ground/1_39_bar.png"
+      }
      },
      "_signs_in_picture": true,
      "_buildings_in_picture": true
@@ -29400,6 +29404,43 @@
       "d": "d"
      }
     },
+    "boulder_switches": [
+     {
+      "on": [
+       20,
+       16
+      ],
+      "boulders": [
+       [
+        7,
+        18
+       ]
+      ],
+      "flag": "vr_switch_1f"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        12,
+        14
+       ],
+       [
+        12,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "vr_switch_1f"
+      },
+      "lines": [
+       "A rock barrier blocks the way.",
+       "A switch somewhere on this floor might lower it..."
+      ]
+     }
+    ],
     "hidden": {
      "12,12": "ULTRA_BALL",
      "16,1": "FULL_RESTORE"
@@ -29418,16 +29459,16 @@
      "cc......bc...c........c............c....Ncccccccccc",
      "c............c........c...........ccccccccc....cccc",
      "c1c..........c........c...........1c..1cN.......ccc",
-     "c......c...............c...........c.............cc",
+     "c......cccccc.cccccccc.c...........c.............cc",
      "cc.....c............X..c...........c.............cc",
      "cc.....cc.cccccc.......c...........c......ccccc.n.c",
      "cc...........cNccccc...c.N.........cccccccc...cncnc",
      "cc...........c.....c...c..................c......c.",
-     "ccc..........c.....c............cc........cc.......",
-     "ccc..........c.....c...........Xc...c..c...cc......",
+     "ccc..........c.....c....cccccccccc........cc.......",
+     "ccc..........c.....c...........Xc.cccccc...cc......",
      "cc....b......c.....c................1..c...c.......",
      "cc.c.....ccccc.....cccc.ccccccc.cccccccc...c.c.....",
-     "cc%...cccccccc%..................b.........c.......",
+     "cc....cccccccc...................b.........c.......",
      "ccccccccccccccccc..........................c.......",
      "cccccccccccccccccccccccccccccccccccccccccccc......."
     ],
@@ -29441,7 +29482,28 @@
       "at": [
        0,
        0
-      ]
+      ],
+      "when": [
+       {
+        "flag": "vr_switch_2f_w",
+        "f": "fr_ground/1_40_bar_e.png"
+       },
+       {
+        "flag": "vr_switch_2f_e",
+        "f": "fr_ground/1_40_bar_w.png"
+       },
+       {
+        "flags": [
+         "vr_switch_2f_w",
+         "vr_switch_2f_e"
+        ],
+        "f": "fr_ground/1_40.png"
+       }
+      ],
+      "until": {
+       "flag": "vr_switch_2f_w",
+       "f": "fr_ground/1_40_bar.png"
+      }
      },
      "_signs_in_picture": true,
      "_buildings_in_picture": true
@@ -29536,6 +29598,80 @@
       "d": "d"
      }
     },
+    "boulder_switches": [
+     {
+      "on": [
+       2,
+       19
+      ],
+      "boulders": [
+       [
+        8,
+        7
+       ],
+       [
+        6,
+        17
+       ]
+      ],
+      "flag": "vr_switch_2f_w"
+     },
+     {
+      "on": [
+       14,
+       19
+      ],
+      "boulders": [
+       [
+        33,
+        19
+       ]
+      ],
+      "flag": "vr_switch_2f_e"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ],
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "vr_switch_2f_w"
+      },
+      "lines": [
+       "A rock barrier blocks the way.",
+       "A switch somewhere on this floor might lower it..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        33,
+        16
+       ],
+       [
+        33,
+        17
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "vr_switch_2f_e"
+      },
+      "lines": [
+       "A rock barrier blocks the way.",
+       "A switch somewhere on this floor might lower it..."
+      ]
+     }
+    ],
     "parts": true
    },
    {
@@ -29544,12 +29680,12 @@
      "ccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccc1.ccc...............................cccc",
      "ccccc...cc...............................cccc",
-     "ccccc........c..............c.........c..cccc",
+     "ccccc........cccccccccccccccc.........c..cccc",
      "cccc...c.c...c.......X......c...b..cccc..cccc",
      "cccc.....c...c..............c......cccc..cccc",
-     "cccc...%cc...c...cccccccc.ccc......cccN.Xcccc",
+     "cccc....cc...c...cccccccc.ccc......cccN.Xcccc",
      "ccc...cccc...c...c.................cccccccccc",
-     "ccc........cNc...c................1c.....cccc",
+     "cccccc....ccNc...c................1c.....cccc",
      "ccc........ccc...c........ccc......c.1...cccc",
      "ccc........ccc...c.........c.......c.....cccc",
      "cccc.cccc........c.............ccccc.....cccc",
@@ -29571,7 +29707,11 @@
       "at": [
        0,
        0
-      ]
+      ],
+      "until": {
+       "flag": "vr_switch_3f",
+       "f": "fr_ground/1_41_bar.png"
+      }
      },
      "_signs_in_picture": true,
      "_buildings_in_picture": true
@@ -29625,6 +29765,47 @@
       "d": "d"
      }
     },
+    "boulder_switches": [
+     {
+      "on": [
+       7,
+       7
+      ],
+      "boulders": [
+       [
+        19,
+        15
+       ],
+       [
+        32,
+        5
+       ]
+      ],
+      "flag": "vr_switch_3f"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        12,
+        12
+       ],
+       [
+        12,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "vr_switch_3f"
+      },
+      "lines": [
+       "A rock barrier blocks the way.",
+       "A switch somewhere on this floor might lower it..."
+      ]
+     }
+    ],
     "parts": true
    }
   ],
@@ -30333,8 +30514,8 @@
    "league_champion": {
     "art": [
      "ccccccccccccc",
-     "ccccccccccccc",
-     "ccccccccccccc",
+     "cccccc.cccccc",
+     "ccccccncccccc",
      ".............",
      ".............",
      ".............",
@@ -30354,7 +30535,8 @@
      "ccccc.v.ccccc"
     ],
     "exits": {
-     "v": "ROOM:league_lance"
+     "v": "ROOM:league_lance",
+     "n": "ROOM:hall_of_fame"
     },
     "buildings": {},
     "roofs": {
@@ -30384,6 +30566,58 @@
       "d": "d"
      }
     },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_INDIGO_PLATEAU",
+      "every": true,
+      "cast": [
+       {
+        "sheet": "fr_71.png",
+        "from": [
+         6,
+         19
+        ],
+        "to": "player",
+        "lines": [
+         "Professor Oak: {player_name}! You did it! You've beaten {rival_name} and become the Champion!",
+         "Professor Oak: {rival_name}... you lost because you forgot to trust your Pokémon and care for them. Remember that.",
+         "Professor Oak: {player_name}, this way. Come with me!"
+        ],
+        "lead": [
+         [
+          6,
+          3,
+          []
+         ]
+        ]
+       }
+      ],
+      "room": [
+       "hall_of_fame",
+       5,
+       11
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "hall_of_fame_due_INDIGO_PLATEAU"
+      },
+      "lines": [
+       "The door won't open.",
+       "Only the League's Champion may go through."
+      ]
+     }
+    ],
     "overheads": [
      {
       "kind": "picture",
@@ -30400,6 +30634,86 @@
     ],
     "theme": "room",
     "title": "Champion's room"
+   },
+   "hall_of_fame": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "......N....",
+     "...........",
+     "...........",
+     "...........",
+     "...........",
+     "...........",
+     "...........",
+     "...........",
+     "cccc.v.cccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_champion"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_80.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Professor Oak",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Professor Oak: Your team has its place in the Hall of Fame. Well done!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "scenes": [
+     {
+      "who": "Professor Oak",
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_INDIGO_PLATEAU",
+      "every": true,
+      "lines": [
+       "Professor Oak: This is the Hall of Fame. Every Champion of the Pokémon League is honored here.",
+       "Professor Oak: Your Pokémon are going in the records too: the team that won you the title!",
+       "{player_name}'s team was entered in the Hall of Fame!"
+      ],
+      "then": "event:kanto_hall_of_fame",
+      "after": "stay"
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_80.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Hall of Fame"
    }
   },
   "overheads": [

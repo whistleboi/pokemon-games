@@ -41,7 +41,7 @@ KANTO_AREAS = {
     "SAFFRON_CITY": "pewter_city", "CERULEAN_CITY": "cerulean_city", "FUCHSIA_CITY": "cerulean_city",
     "VERMILLION_CITY": "vermilion_city", "LAVENDER_TOWN": "lavender_town", "CELADON_CITY": "celadon_city",
     "CINNABAR_ISLAND": "cinnabar_island", "INDIGO_PLATEAU": "pokemon_center", "BILLS_HOUSE": "route_24",
-    "SILPH_CITY": "silph_co", "MT_MOON_CITY": "mt_moon", "ROCK_TUNNEL_CITY": "mt_moon",
+    "SILPH_CITY": "silph_co",
     "POKEMON_LEAGUE_GATE": "route_22", "UNDERGROUND_PATH": "route_11",
     "VIRIDIAN_FOREST": "viridian_forest", "MT_MOON": "mt_moon", "ROCK_TUNNEL": "mt_moon",
     "DIGGLETT_CAVE": "mt_moon", "SEAFOAM_ISLANDS": "mt_moon", "CERULEAN_CAVE": "mt_moon",

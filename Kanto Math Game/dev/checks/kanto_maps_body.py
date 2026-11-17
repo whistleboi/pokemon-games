@@ -1348,6 +1348,77 @@ for _i in range(3):
     _floor(vr, _i)
     _n.append(sum(1 for m in vr.run.floor.movers if m.kind == "trainer"))
 check(vr.run.n_floors == 3 and _n == [2, 5, 5], f"Victory Road: FireRed's three floors, its trainers on FireRed's spots ({_n})")
+# FireRed's floor switches (11-16): a boulder rolled onto each (Strength's puzzle) drops its rock barrier; till then the way
+# on is shut, as FireRed's heights keep it
+from collections import deque as _dq
+from src.states.slide_puzzle import SlidePuzzleState as _SPS
+from src.dungeon import art as _vart
+_vrf = ["vr_switch_1f", "vr_switch_2f_w", "vr_switch_2f_e", "vr_switch_3f"]
+_vsave = {k: story.story_flags.pop(k, None) for k in _vrf + [k for k in story.story_flags if k.startswith("boulder_VICTORY_ROAD")]}
+_vhm = story.inventory.get("HM_STRENGTH", 0)
+story.inventory["HM_STRENGTH"] = 1
+vr = open_map("VICTORY_ROAD", "KANTO_ROUTE_23")
+
+
+def _vr_reach(i, frm):
+    """The ways out reached on foot from beside the way in at frm (the game's own floor, its walls and barriers)."""
+    _floor(vr, i)
+    f = vr.run.floor
+    start = next((frm[0] + dx, frm[1] + dy) for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0)) if f.walkable(frm[0] + dx, frm[1] + dy))
+    seen, q = {start}, _dq([start])
+    while q:
+        x, y = q.popleft()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (x + dx, y + dy)
+            if n not in seen and f.inside(*n) and (f.walkable(*n) or n in f.exits):
+                seen.add(n)
+                if n not in f.exits:
+                    q.append(n)
+    return {t for t in f.exits if t in seen}, seen
+
+
+def _vr_push(i, t):
+    _floor(vr, i)
+    vr._boulder(t)
+    play(lambda: isinstance(g.current_state, _SPS), 300)
+    if isinstance(g.current_state, _SPS):
+        g.current_state._finish(True)
+    play(lambda: g.current_state is vr and not vr.dialogue_box.visible, 300)
+
+
+_pic = lambda i: _vart._version_file(vr.recipe["art"]["floors"][i]["roofs"]["_picture"])
+_ex, _seen = _vr_reach(0, (11, 20))
+check((3, 2) not in _ex and str(vr.run.floor.decor.get((12, 14))).startswith("barrier") and _pic(0).endswith("1_39_bar.png")
+      and any((7 + dx, 18 + dy) in _seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))),
+      f"Victory Road 1F: FireRed's rock barrier stands, the stairs out of reach; the switch's boulder within reach ({_pic(0)})")
+_vr_push(0, (7, 18))
+_ex, _seen = _vr_reach(0, (11, 20))
+check(story.story_flags.get("vr_switch_1f") and str(vr.run.floor.decor.get((20, 16))).startswith("pressed") and (3, 2) in _ex
+      and _pic(0).endswith("1_39.png"), f"...Strength rolls it onto the switch: the barrier drops (FireRed's floor drawn), the stairs up open ({sorted(_ex)})")
+_ex, _ = _vr_reach(1, (1, 9))
+check((3, 3) not in _ex, "2F: up from 1F, the west barrier shuts the stairs to 3F")
+_vr_push(1, (8, 7))
+_ex, _ = _vr_reach(1, (1, 9))
+check(story.story_flags.get("vr_switch_2f_w") and (3, 3) in _ex and _pic(1).endswith("1_40_bar_e.png"),
+      f"...a boulder on the west switch: that barrier drops, the east one still up ({_pic(1)})")
+_ex, _ = _vr_reach(2, (5, 2))
+check((34, 18) not in _ex, "3F: its barrier keeps you from the hole back down")
+_vr_push(2, (19, 15))
+_ex, _ = _vr_reach(2, (5, 2))
+check(story.story_flags.get("vr_switch_3f") and (34, 18) in _ex, "...its switch pressed: through to the hole")
+_ex, _ = _vr_reach(1, (34, 19))
+check((36, 17) not in _ex, "2F again, dropped by the hole: the east barrier shuts the way on")
+_vr_push(1, (33, 19))
+_ex, _ = _vr_reach(1, (34, 19))
+check(story.story_flags.get("vr_switch_2f_e") and (36, 17) in _ex and _pic(1).endswith("1_40.png"), f"...the east switch: both barriers down ({_pic(1)})")
+_ex, _ = _vr_reach(2, (39, 17))
+_ex2, _ = _vr_reach(1, (38, 9))
+check((37, 10) in _ex and any(vr.run.floor.exits[t] == "KANTO_ROUTE_23" for t in _ex2), "...and on through 3F to the way out by the League")
+story.inventory["HM_STRENGTH"] = _vhm
+for _k, _v in _vsave.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
 _lw = {k: story.story_flags.pop(k, None) for k in [f"league_won_INDIGO_PLATEAU_{i}" for i in range(1, 6)]}
 ip = open_map("INDIGO_PLATEAU", "KANTO_ROUTE_23")
 _pp = _room_of(ip, "lobby")
@@ -1367,6 +1438,89 @@ for _k, _v in _lw.items():
     story.story_flags.pop(_k, None)
     if _v is not None:
         story.story_flags[_k] = _v
+
+def _fight(b, n=8000):
+    """Play a turn-based battle as a player would: each turn the first move and the right answer; tap through
+    its text. Returns how many math questions were answered."""
+    asked = 0
+    for _k in range(n):
+        if g.current_state is not b:
+            break
+        if b.phase == "SWITCH_PROMPT" and b.btn_no.visible and b.btn_no.callback:
+            b.btn_no.callback()  # ("Change Pokemon?" NO, as a player would)
+        elif b.phase == "MENU" and not b.dialogue_box.visible:
+            b.open_move_menu()
+            b.choose_move(b.move_buttons[0].text.replace(" ", "-"))
+            b.math_ui.on_click(b.options.index(b.correct_ans))
+            asked += 1
+        elif b.dialogue_box.visible:
+            b.dialogue_box.is_finished = True
+            if b.phase in ("OUTRO", "VICTORY_TEXT", "REWARD_TEXT"):
+                b.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+            else:
+                _cb = b.dialogue_box.callback
+                if _cb:
+                    b.dialogue_box.callback = None
+                    _cb()
+                else:
+                    b.dialogue_box.advance()
+        b.feedback_timer = 0
+        if g.current_state is b:
+            b.update()
+            b.draw()
+    return asked
+
+
+# ---- the Hall of Fame (FireRed 1.80, 11-16): win the title in the Champion's room; Oak walks in and leads you up; your
+# team is recorded; then home
+_hsave = {k: story.story_flags.get(k) for k in ("gym_progress_INDIGO_PLATEAU", "hall_of_fame_due_INDIGO_PLATEAU", "beat_elite_four", "move_offer_kanto", "beat_champion")}
+_hteam = list(story.player_team)
+_ace = mk(150); _ace.level = 100; _ace.moves = ["PSYCHIC", "ICE-BEAM"]; _ace.heal_full()
+story.player_team = [_ace]
+story.story_flags["gym_progress_INDIGO_PLATEAU"] = 4
+for _i in range(1, 5):
+    story.story_flags[f"league_won_INDIGO_PLATEAU_{_i}"] = True
+ip = open_map("INDIGO_PLATEAU", "KANTO_ROUTE_23")
+_pp = _room_of(ip, "league_champion")
+_champ = next(p for n, p in _pp.items() if n == "{rival_name}" or (n and story.rival_name in n) or p == (6, 8))
+check((6, 2) in getattr(ip, "barred", {}) or not ip._open((6, 2)), "Champion's room: the door up to the Hall of Fame is shut before the title")
+ip.player = (_champ[0], _champ[1] + 1); ip.facing = (0, -1); ip.anim = 0
+said.clear()
+ip._talk(_champ)
+play(lambda: type(g.current_state).__name__ in ("TrainerBattleState", "TrainerIntroState"), 600)
+if type(g.current_state).__name__ == "TrainerIntroState":
+    play(lambda: type(g.current_state).__name__ == "TrainerBattleState", 600)
+_b = g.current_state
+check(type(_b).__name__ == "TrainerBattleState", f"...talk to the Champion: the battle ({type(_b).__name__})")
+_fight(_b)
+play(lambda: isinstance(g.current_state, _WTS) and g.current_state.room == "hall_of_fame" and not g.current_state._busy(), 3000)
+t = g.current_state
+check(story.story_flags.get("beat_elite_four") and isinstance(t, _WTS) and t.room == "hall_of_fame"
+      and any("this way" in s for s in said), f"...won: Oak walks in and leads you up into the Hall of Fame ({getattr(t, 'room', None)}, {type(t).__name__})")
+play(lambda: story.current_area_key == "PALLET_TOWN" and not getattr(g.current_state, "_busy", lambda: True)(), 3000)
+check(story.current_area_key == "PALLET_TOWN" and any("entered in the Hall of Fame" in s for s in said)
+      and not story.story_flags.get("hall_of_fame_due_INDIGO_PLATEAU"), f"...your team recorded, then home ({story.current_area_key}, {said[-3:]})")
+story.player_team = _hteam
+for _k, _v in _hsave.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+
+# ---- Surf and rods (11-16): every Kanto area with water has FireRed's own Surf table and rod tables (its wild headers)
+import random as _wr
+import src.dungeon.core as _wc
+for _wa, _wwant in (("KANTO_ROUTE_21", {72}), ("SEAFOAM_ISLANDS", {86, 116, 87, 54, 55}), ("SAFARI_ZONE", {54})):
+    _wp = open_map(_wa, "PALLET_TOWN" if _wa == "KANTO_ROUTE_21" else "KANTO_ROUTE_20" if _wa == "SEAFOAM_ISLANDS" else "FUCHSIA_CITY")
+    _wt0, _wc.CURRENT_TILE = _wc.CURRENT_TILE, _wc.SURF
+    _got = set()
+    for _k in range(40):
+        _m = _wp._wild_for_pool(_wr.Random(_k))
+        _got.add(int(getattr(_m, "id", _m)) if _m is not None else None)
+    _wc.CURRENT_TILE = _wt0
+    check(_got and _got <= _wwant, f"{_wa}: out on the water, only FireRed's surfing Pokemon ({sorted(map(str, _got))})")
+_wp = open_map("KANTO_ROUTE_10", "CERULEAN_CITY")
+check(set(_wp._fishing_pool("SUPER_ROD")) == {"116", "130", "54"} and set(_wp._fishing_pool("OLD_ROD")) == {"129"},
+      f"Route 10: FireRed's rods (Super Rod: Horsea, Gyarados, Psyduck) ({_wp._fishing_pool('SUPER_ROD')})")
 
 # ---- batch 27: the Sevii Islands begin (One Island, Treasure Beach, Kindle Road, Mt. Ember), from FireRed's pictures
 oi = open_map("ONE_ISLAND", "KINDLE_ROAD")

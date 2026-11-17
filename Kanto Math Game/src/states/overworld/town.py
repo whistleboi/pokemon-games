@@ -411,7 +411,8 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
             self.show_message(call)
             return
         offer_flag = f"move_offer_{region.lower()}"
-        if story.is_region_champion(region) and not story.story_flags.get(offer_flag):
+        hof = any(v for k, v in story.story_flags.items() if k.startswith("hall_of_fame_due_"))   # (the Hall of Fame first: the call once home)
+        if story.is_region_champion(region) and not story.story_flags.get(offer_flag) and not hof:
             story.story_flags[offer_flag] = True
             link_lines = []
             if story.link_champion_regions():  # a second (or later) title: PCs and Bags join up

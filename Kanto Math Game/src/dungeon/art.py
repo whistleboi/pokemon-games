@@ -1236,8 +1236,8 @@ def _version_file(spec):
         try:
             from src.ui import theme
             flags = theme.GAME.story_manager.story_flags
-            for w in reversed(when if isinstance(when, list) else [when]):
-                if flags.get(w["flag"]):
+            for w in reversed(when if isinstance(when, list) else [when]):   # ("flags": all of them set, Victory Road 2F's two switches)
+                if all(flags.get(k) for k in (w.get("flags") or [w["flag"]])):
                     return w["f"]
         except Exception:
             pass

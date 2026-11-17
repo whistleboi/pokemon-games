@@ -301,10 +301,10 @@ class GymLobbyState(GameState):
             team=self._leader_team(), partner=getattr(lead, "id", 25)))
 
     def challenge_gym(self):
-        if getattr(self, "challenge", None) and not self.game.transitioning:
+        if getattr(self, "challenge", None) and not getattr(self.game, "transitioning", False):
             self._start_challenge()
             return
-        if self.is_cleared or not self.next_opponent or self.game.transitioning:
+        if self.is_cleared or not self.next_opponent or getattr(self.game, "transitioning", False):   # (unset till a screen sets it: a save loaded at the League)
             return
 
         self.game.transitioning = True

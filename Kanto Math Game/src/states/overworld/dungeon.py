@@ -2791,10 +2791,28 @@ class DungeonState(OverworldBattles, PlayState):
         cond = u.get("condition")
         return all(self._check_route_condition(c, False, u) for c in (cond if isinstance(cond, list) else [cond] if cond else []))
 
+    def _switches(self):
+        """This floor's "boulder_switches": [{"on": [x, y] the switch, "boulders": [[x, y], ...] the ones that can reach it
+        (the source game's), "flag": set once one is on it, "lines"}] (FireRed's Victory Road: each holds a rock barrier down)."""
+        m = self.run.recipe.get("art") or {}
+        here = m["floors"][self.run.index] if m.get("floors") and self.run.index < len(m["floors"]) else m
+        return here.get("boulder_switches") or []
+
+    def _switch_for(self, t):
+        """The switch a boulder at t rolls onto when pushed (one still empty), else None."""
+        flags = self.game.story_manager.story_flags
+        return next((sw for sw in self._switches() if not flags.get(sw["flag"])
+                     and any(tuple(b) == tuple(t) for b in sw.get("boulders", []))), None)
+
     def _clear_boulders(self):
         """Boulders pushed aside stay out of the way (a story flag each)."""
         f = self.run.floor
         flags = self.game.story_manager.story_flags
+        for sw in self._switches():   # (a boulder sitting on its switch)
+            t = tuple(sw["on"])
+            if flags.get(sw["flag"]) and t not in f.decor:
+                f.decor[t] = f"pressed:{t[0]},{t[1]}"
+                f.tiles[t[1]][t[0]] = core.WALL
         for b, _hole, land in self._drops(self.run.index - 1):  # (dropped from above: a rock on the ice here)
             t = tuple(land)
             if t not in f.decor and flags.get(f"boulder_{self.area_key}_{self.run.index - 1}_{b[0]}_{b[1]}"):
@@ -2925,8 +2943,16 @@ class DungeonState(OverworldBattles, PlayState):
             self.game.change_state(self)
             if solved:
                 story.story_flags[self._boulder_flag(t)] = True
+                sw = self._switch_for(t)
+                if sw:   # (it rolls onto its floor switch: Victory Road's, and the rock barrier it holds up drops)
+                    story.story_flags[sw["flag"]] = True
                 self._clear_boulders()
-                if any(tuple(b) == tuple(t) for b, _h, _l in self._drops(self.run.index)):
+                if sw:
+                    self._floor_surf = None
+                    self._over_key = None   # (the floor's picture: the barrier gone)
+                    self.say(sw.get("lines") or ["Your Pokemon used Strength!", "The boulder rolled onto the floor switch!",
+                                                 "Click! Somewhere, a rock barrier sank into the ground."])
+                elif any(tuple(b) == tuple(t) for b, _h, _l in self._drops(self.run.index)):
                     self.say(["Your Pokemon used Strength!", "The boulder dropped through the hole!", "It landed on the floor below."])
                 else:
                     self.say(["Your Pokemon used Strength!", "The boulder slid out of the way!"])
@@ -3021,6 +3047,9 @@ class DungeonState(OverworldBattles, PlayState):
             return True
         if what.startswith("rubble:"):
             self.say(["Fallen rocks block the way.", "Maybe there's another way around."])
+            return True
+        if what.startswith("pressed:"):
+            self.say(["The boulder sits on the floor switch.", "It's holding the switch down."])
             return True
         if what.startswith("fallen:"):
             self.say(["A boulder that fell from above.", "It's frozen fast in the ice."])
@@ -3812,7 +3841,7 @@ class DungeonState(OverworldBattles, PlayState):
                 img = self._crate_img()
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom)))
                 continue
-            if str(what).startswith(("boulder:", "fallen:", "rubble:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
+            if str(what).startswith(("boulder:", "fallen:", "rubble:", "pressed:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
                 r = at(x, y)
                 img = self._sheet_frame("Object boulder.png", col=0, height=TILE - 4)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
