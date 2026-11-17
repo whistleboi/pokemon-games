@@ -202,7 +202,7 @@ story.story_flags["defeated_red_gyarados"] = True
 story.inventory.pop("EXP_SHARE", None)
 run("LAKE_OF_RAGE", "PICK UP THE RED SCALE")
 run("MR_POKEMONS_HOUSE", "Show the Red Scale")
-check(story.inventory.get("EXP_SHARE") == 1 and not story.inventory.get("RED_SCALE"), "Red Scale -> Exp. Share")
+check(all(story.inventory.get(v, 0) >= 1 for v in ("HP_UP", "PROTEIN", "IRON", "CALCIUM", "ZINC", "CARBOS")) and not story.inventory.get("RED_SCALE"), "Red Scale -> a set of vitamins")
 story.current_area_key = "ILEX_FOREST"
 ps = ow.PlayState(g)
 cel = next(o for o in prog["ILEX_FOREST"]["route_menu"] if "CELEBI" in o["text"])
