@@ -276,7 +276,7 @@ for f in glob.glob("assets/*_area_data.json") + ["assets/town_maps.json", "asset
     walk(json.load(open(f, encoding="utf-8")))
 species = {str(n).upper() for n in g.name_to_id}
 flags = {k for k in keys if k.endswith("_HALL_OF_FAME") or k.startswith("POKEMON_") or k in ("balls", "EVENT")}
-missing = sorted(k for k in keys - species - flags if not itemlib.describe(k))
+missing = sorted(k for k in keys - species - flags - set(story.RETIRED_ITEMS) if not itemlib.describe(k))  # (retired items leave the Bag on load)
 check(not missing, f"no item without a description: {missing[:12]}")
 
 print("12) exchanges, balls, Day Care, Contests")
@@ -316,5 +316,34 @@ egg = breeding.make_egg(g, a, c)
 check(sum(1 for v in egg.ivs.values() if v == 31) >= 5, f"Destiny Knot: 5 IVs passed on ({egg.ivs})")
 m = mk(25); m.condition["COOL"] = 100; m.held_item = "RED_SCARF"
 check(scarf_condition(m, "COOL") == 110 and scarf_condition(m, "CUTE") == 0, "Red Scarf: Cool condition counts a tenth more")
+
+
+print("13) effort points from battle; Exp. Share is the Option only")
+b = fresh(moves=["TACKLE"])
+p = b.player_pokemon
+p.evs = {}
+b.opponent_pokemon = mk(143)  # Snorlax: 2 HP
+b.opponent_pokemon.level = 3
+b.opponent_hp = 0
+b._award_battle_xp()
+check(p.evs.get("HP") == 2, f"beating a Snorlax: +2 HP effort points ({p.evs})")
+p.held_item = "MACHO_BRACE"
+b._award_battle_xp()
+check(p.evs.get("HP") == 6, f"with a Macho Brace: twice as many ({p.evs})")
+p.evs = {"HP": 251}
+itemlib.gain_battle_evs(g, p, 143)
+check(p.evs["HP"] == 252, "a stat stops at 252")
+p.evs = {"ATTACK": 252, "SPEED": 252, "DEFENSE": 5}
+itemlib.gain_battle_evs(g, p, 143)
+check(sum(p.evs.values()) == 510, "510 in all")
+story.inventory["EXP_SHARE"] = 1
+story.sync_key_items()
+check(not story.inventory.get("EXP_SHARE"), "an old save's Exp. Share item is taken out of the Bag")
+story.exp_share = False
+team = [p, mk(1)]
+story.player_team = team
+b._xp_participants = [p]
+check([x for x, _ in b._xp_shares()] == [p], "EXP SHARE off in Options: only the battler shares")
+story.exp_share = True
 
 print("##### FAILURES:", fails)

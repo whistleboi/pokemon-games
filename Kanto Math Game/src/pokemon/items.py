@@ -175,7 +175,7 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "QUICK_POWDER": {"price": 1000, "text": "Held by Ditto: its Speed is doubled."},
         "CHOICE_BAND": {"price": 4000, "text": "Held: Attack goes up by half, but its holder can only use the first move it picks."},
         "CHOICE_SCARF": {"price": 4000, "text": "Held: Speed goes up by half, but its holder can only use the first move it picks."},
-        "MACHO_BRACE": {"price": 3000, "text": "Held: its holder's Speed is halved. (In the games it also doubles effort points.)"},
+        "MACHO_BRACE": {"price": 3000, "text": "Held: its holder earns twice the effort points from battles, but its Speed is halved."},
         "METRONOME": {"price": 4000, "text": "Held: using the same move again and again makes it stronger."},
         "BIG_ROOT": {"price": 4000, "text": "Held: moves that drain HP give its holder more back."},
         "SAFETY_GOGGLES": {"price": 4000, "text": "Held: its holder takes no sandstorm damage, and powder moves don't affect it."},
@@ -298,6 +298,42 @@ VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it 
              "BLUE_SHARD": {"price": 2000, "text": "A small blue shard. The Treasure Hunter on Route 124 trades a Water Stone for one."},
              "YELLOW_SHARD": {"price": 2000, "text": "A small yellow shard. The Treasure Hunter on Route 124 trades a Thunder Stone for one."},
              "GREEN_SHARD": {"price": 2000, "text": "A small green shard. The Treasure Hunter on Route 124 trades a Leaf Stone for one."}}
+
+
+# Effort points from battle (Gen 6 on): each Pokemon that earns XP from a knockout gets the foe's yield
+# (assets/ev_yields.json, from Pokemon Essentials' PBS), doubled by a held Macho Brace; up to 252 a stat, 510 in all.
+EV_STAT_CAP = 252
+
+
+def ev_yield(game, species_id):
+    table = getattr(game, "_ev_yields", None)
+    if table is None:
+        import json, os
+        try:
+            with open(os.path.join(game.assets.assets_dir, "ev_yields.json"), encoding="utf-8") as f:
+                table = json.load(f)
+        except OSError:
+            table = {}
+        game._ev_yields = table
+    return dict(table.get(str(int(species_id)), {}))
+
+
+def gain_battle_evs(game, pokemon, species_id):
+    """Add a knocked-out foe's effort points to a Pokemon. Returns {stat: gained}."""
+    got = {}
+    mult = 2 if getattr(pokemon, "held_item", None) == "MACHO_BRACE" else 1
+    evs = pokemon.__dict__.setdefault("evs", {})
+    for stat, n in ev_yield(game, species_id).items():
+        room = min(EV_STAT_CAP - int(evs.get(stat, 0)), EV_TOTAL - sum(evs.values()))
+        add = max(0, min(n * mult, room))
+        if not add:
+            continue
+        before = pokemon.get_max_hp()
+        evs[stat] = int(evs.get(stat, 0)) + add
+        if stat == "HP" and pokemon.current_hp > 0:  # (the new HP comes filled in)
+            pokemon.current_hp = min(pokemon.get_max_hp(), pokemon.current_hp + pokemon.get_max_hp() - before)
+        got[stat] = add
+    return got
 
 
 def use_vitamin(pokemon, item):
@@ -436,7 +472,6 @@ PLATE_TYPES = {k: t for k, t in HELD_BOOSTS.items() if k.endswith("_PLATE")}  # 
 # Story and key items: what each is for (the Bag shows it). Kept short, in our own words.
 STORY_TEXT = {
     "AMULET_COIN": "While you have it, battles pay out twice the prize money.",
-    "EXP_SHARE": "While it's on, your whole team gets a share of the experience from every battle.",
     "SHINY_CHARM": "A shining charm: shiny Pokemon turn up more often while you have it.",
     "EVERSTONE": "Give it to a Pokemon to hold: it won't evolve while it does.",
     "GRACIDEA": "A flower for Shaymin: in the daytime it changes Shaymin to its Sky Forme (use it again to change back).",

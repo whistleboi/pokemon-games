@@ -2597,7 +2597,7 @@
       "trainer_pool": [
         {"name": "Bug Catcher Lyle", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 265, 265], "rewards": {"balls": 2}},
         {"name": "Bug Catcher James", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 267], "rewards": {"balls": 2}},
-        {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [261], "rewards": {"balls": 5, "EXP_SHARE": 1}, "is_boss_battle": true, "victory_flag": "woods_boss_defeated", "villain": "grunt", "levels": [9], "dialogue": {"player_won": "hoenn_woods_won"}}
+        {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [261], "rewards": {"balls": 5}, "is_boss_battle": true, "victory_flag": "woods_boss_defeated", "villain": "grunt", "levels": [9], "dialogue": {"player_won": "hoenn_woods_won"}}
       ],
       "route_menu": [{"text": "SCIZORITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_scizorite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SCIZORITE!"], "gift_item": {"SCIZORITE": 1}, "flag": "got_scizorite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },

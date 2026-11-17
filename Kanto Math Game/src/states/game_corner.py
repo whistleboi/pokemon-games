@@ -585,13 +585,13 @@ class VoltorbFlipState(_Machine):
 PRIZES = {
     "CELADON_CITY": [("POKEMON", 63, 180), ("POKEMON", 35, 500), ("POKEMON", 147, 2800), ("POKEMON", 123, 5500),
                      ("POKEMON", 137, 6500),  # Porygon, as in FireRed / LeafGreen
-                     ("ITEM", "RARE_CANDY", 500), ("ITEM", "NUGGET", 1000), ("ITEM", "EXP_SHARE", 2000)],
+                     ("ITEM", "RARE_CANDY", 500), ("ITEM", "NUGGET", 1000)],
     "GOLDENROD_CITY": [("POKEMON", 63, 200), ("POKEMON", 23, 700), ("POKEMON", 147, 2100),
                        ("ITEM", "EVERSTONE", 300), ("ITEM", "RARE_CANDY", 500), ("ITEM", "AMULET_COIN", 2000)],
     "MAUVILLE_CITY": [("ITEM", "RARE_CANDY", 500), ("ITEM", "NUGGET", 1000), ("ITEM", "METAL_COAT", 1500),
-                      ("ITEM", "KINGS_ROCK", 1500), ("ITEM", "EXP_SHARE", 2000)],
+                      ("ITEM", "KINGS_ROCK", 1500)],
     "HOENN_BATTLE_FRONTIER": [("ITEM", "RARE_CANDY", 500), ("ITEM", "PP_UP", 800), ("ITEM", "NUGGET", 1000),   # (the Battle Tower's
-                              ("ITEM", "KINGS_ROCK", 1500), ("ITEM", "EXP_SHARE", 2000), ("ITEM", "LEFTOVERS", 4000)],  #  secret floor, 11-15)
+                              ("ITEM", "KINGS_ROCK", 1500), ("ITEM", "LEFTOVERS", 4000)],  #  secret floor, 11-15)
     "VEILSTONE_CITY": [("POKEMON", 133, 1000), ("ITEM", "RARE_CANDY", 500), ("ITEM", "HARD_STONE", 800),
                        ("ITEM", "AMULET_COIN", 2000)],
 }

@@ -1290,7 +1290,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
 
     def _xp_shares(self):
         """[(pokemon, share)] for this KO (Jordan, 10-29). The Pokemon that battled this foe and
-        haven't fainted share it; with EXP SHARE on (Options, the default; or the Exp. Share item)
+        haven't fainted share it; with EXP SHARE on (Options, the default)
         each of them gets it all and the rest of the party (not fainted) half, as in Gen 6+.
         With it off, the battlers split it evenly, as in Gen 1-5."""
         story = self.game.story_manager
@@ -1299,7 +1299,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         fought = [p for p in self._xp_participants if p.current_hp > 0 and any(p is q for q in team)]
         if not fought and self.player_pokemon is not None and self.player_pokemon.current_hp > 0:
             fought = [self.player_pokemon]
-        if getattr(story, "exp_share", True) or story.inventory.get("EXP_SHARE", 0) > 0:
+        if getattr(story, "exp_share", True):
             rest = [p for p in team if p.current_hp > 0 and not any(p is q for q in fought)]
             return [(p, 1.0) for p in fought] + [(p, 0.5) for p in rest]
         return [(p, 1.0 / len(fought)) for p in fought]
@@ -1325,6 +1325,14 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         base_yield = (self.game.assets.movesets.get(str(base_id(foe)), {}).get("base_xp") or 100)
         messages = []
         cap = levels.xp_cap(self.game.story_manager)
+        from src.pokemon.items import gain_battle_evs
+        for p in earners:  # effort points: everyone who earns XP gets the foe's full yield (Gen 6 on), even at the cap
+            if not getattr(p, "is_egg", False):
+                before = p.get_max_hp()
+                gain_battle_evs(self.game, p, base_id(foe))
+                if p is self.player_pokemon and p.get_max_hp() != before:
+                    self.player_max_hp = p.get_max_hp()
+                    self.player_hp = p.current_hp
         for p in earners:
             my_level = self._level(p)
             gained = max(1, int(growth.battle_xp(base_yield, foe_level, my_level, trainer=trainer)
