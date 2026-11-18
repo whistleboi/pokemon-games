@@ -1,916 +1,2438 @@
 {
- "TM00": {
-  "move": "MEGA-PUNCH",
+ "TM001": {
+  "move": "TAKE-DOWN",
   "type": "NORMAL",
   "tier": 7,
-  "price": 2500
+  "price": 2500,
+  "from": "Scarlet/Violet TM01"
  },
- "TM01": {
-  "move": "MEGA-KICK",
-  "type": "NORMAL",
-  "tier": 8,
-  "price": 3000
+ "TM002": {
+  "move": "CHARM",
+  "type": "FAIRY",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM02"
  },
- "TM02": {
-  "move": "PAY-DAY",
-  "type": "NORMAL",
+ "TM003": {
+  "move": "FAKE-TEARS",
+  "type": "DARK",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM03"
+ },
+ "TM004": {
+  "move": "AGILITY",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM04"
+ },
+ "TM005": {
+  "move": "MUD-SLAP",
+  "type": "GROUND",
   "tier": 0,
-  "price": 1000
+  "price": 1000,
+  "from": "Scarlet/Violet TM05"
  },
- "TM03": {
-  "move": "FIRE-PUNCH",
+ "TM006": {
+  "move": "SCARY-FACE",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM06"
+ },
+ "TM007": {
+  "move": "PROTECT",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM07"
+ },
+ "TM008": {
+  "move": "FIRE-FANG",
   "type": "FIRE",
-  "tier": 6,
-  "price": 2500
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM08"
  },
- "TM04": {
-  "move": "ICE-PUNCH",
-  "type": "ICE",
-  "tier": 7,
-  "price": 2500
- },
- "TM05": {
-  "move": "THUNDER-PUNCH",
+ "TM009": {
+  "move": "THUNDER-FANG",
   "type": "ELECTRIC",
-  "tier": 7,
-  "price": 2500
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM09"
  },
- "TM06": {
-  "move": "FLY",
+ "TM010": {
+  "move": "ICE-FANG",
+  "type": "ICE",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM10"
+ },
+ "TM011": {
+  "move": "WATER-PULSE",
+  "type": "WATER",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM11"
+ },
+ "TM012": {
+  "move": "LOW-KICK",
+  "type": "FIGHTING",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM12"
+ },
+ "TM013": {
+  "move": "ACID-SPRAY",
+  "type": "POISON",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM13"
+ },
+ "TM014": {
+  "move": "ACROBATICS",
   "type": "FLYING",
-  "tier": 8,
-  "price": 3000
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM14"
  },
- "TM07": {
-  "move": "PIN-MISSILE",
+ "TM015": {
+  "move": "STRUGGLE-BUG",
   "type": "BUG",
   "tier": 0,
-  "price": 1000
+  "price": 1000,
+  "from": "Scarlet/Violet TM15"
  },
- "TM08": {
-  "move": "HYPER-BEAM",
+ "TM016": {
+  "move": "PSYBEAM",
+  "type": "PSYCHIC",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM16"
+ },
+ "TM017": {
+  "move": "CONFUSE-RAY",
+  "type": "GHOST",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM17"
+ },
+ "TM018": {
+  "move": "THIEF",
+  "type": "DARK",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM18"
+ },
+ "TM019": {
+  "move": "DISARMING-VOICE",
+  "type": "FAIRY",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM19"
+ },
+ "TM020": {
+  "move": "TRAILBLAZE",
+  "type": "GRASS",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM20"
+ },
+ "TM021": {
+  "move": "POUNCE",
+  "type": "BUG",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM21"
+ },
+ "TM022": {
+  "move": "CHILLING-WATER",
+  "type": "WATER",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM22"
+ },
+ "TM023": {
+  "move": "CHARGE-BEAM",
+  "type": "ELECTRIC",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM23"
+ },
+ "TM024": {
+  "move": "FIRE-SPIN",
+  "type": "FIRE",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM24"
+ },
+ "TM025": {
+  "move": "FACADE",
   "type": "NORMAL",
-  "tier": 8,
-  "price": 3000
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM25"
  },
- "TM09": {
-  "move": "GIGA-IMPACT",
+ "TM026": {
+  "move": "POISON-TAIL",
+  "type": "POISON",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM26"
+ },
+ "TM027": {
+  "move": "AERIAL-ACE",
+  "type": "FLYING",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM27"
+ },
+ "TM028": {
+  "move": "BULLDOZE",
+  "type": "GROUND",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM28"
+ },
+ "TM029": {
+  "move": "HEX",
+  "type": "GHOST",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM29"
+ },
+ "TM030": {
+  "move": "SNARL",
+  "type": "DARK",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM30"
+ },
+ "TM031": {
+  "move": "METAL-CLAW",
+  "type": "STEEL",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM31"
+ },
+ "TM032": {
+  "move": "SWIFT",
   "type": "NORMAL",
-  "tier": 8,
-  "price": 3000
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM32"
  },
- "TM10": {
+ "TM033": {
   "move": "MAGICAL-LEAF",
   "type": "GRASS",
   "tier": 4,
-  "price": 2000
+  "price": 2000,
+  "from": "Scarlet/Violet TM33"
  },
- "TM100": {
-  "move": "SMACK-DOWN",
+ "TM034": {
+  "move": "ICY-WIND",
+  "type": "ICE",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM34"
+ },
+ "TM035": {
+  "move": "MUD-SHOT",
+  "type": "GROUND",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM35"
+ },
+ "TM036": {
+  "move": "ROCK-TOMB",
   "type": "ROCK",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM23: Professor Cozmo, Fallarbor Town"
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM36"
  },
- "TM101": {
-  "move": "SWORDS-DANCE",
-  "type": "NORMAL",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM75: the dancing Black Belt, Lavaridge Town"
+ "TM037": {
+  "move": "DRAINING-KISS",
+  "type": "FAIRY",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM37"
  },
- "TM102": {
+ "TM038": {
   "move": "FLAME-CHARGE",
   "type": "FIRE",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM38"
+ },
+ "TM039": {
+  "move": "LOW-SWEEP",
+  "type": "FIGHTING",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM39"
+ },
+ "TM040": {
+  "move": "AIR-CUTTER",
+  "type": "FLYING",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM40"
+ },
+ "TM041": {
+  "move": "STORED-POWER",
+  "type": "PSYCHIC",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM41"
+ },
+ "TM042": {
+  "move": "NIGHT-SHADE",
+  "type": "GHOST",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM42"
+ },
+ "TM043": {
+  "move": "FLING",
+  "type": "DARK",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM43"
+ },
+ "TM044": {
+  "move": "DRAGON-TAIL",
+  "type": "DRAGON",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM44"
+ },
+ "TM045": {
+  "move": "VENOSHOCK",
+  "type": "POISON",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM45"
+ },
+ "TM046": {
+  "move": "AVALANCHE",
+  "type": "ICE",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM46"
+ },
+ "TM047": {
+  "move": "ENDURE",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM47"
+ },
+ "TM048": {
+  "move": "VOLT-SWITCH",
+  "type": "ELECTRIC",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM48"
+ },
+ "TM049": {
+  "move": "SUNNY-DAY",
+  "type": "FIRE",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM49"
+ },
+ "TM050": {
+  "move": "RAIN-DANCE",
+  "type": "WATER",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM50"
+ },
+ "TM051": {
+  "move": "SANDSTORM",
+  "type": "ROCK",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM51"
+ },
+ "TM052": {
+  "move": "SNOWSCAPE",
+  "type": "ICE",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM52"
+ },
+ "TM053": {
+  "move": "SMART-STRIKE",
+  "type": "STEEL",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM53"
+ },
+ "TM054": {
+  "move": "PSYSHOCK",
+  "type": "PSYCHIC",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM54"
+ },
+ "TM055": {
+  "move": "DIG",
+  "type": "GROUND",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM55"
+ },
+ "TM056": {
+  "move": "BULLET-SEED",
+  "type": "GRASS",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM56"
+ },
+ "TM057": {
+  "move": "FALSE-SWIPE",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM57"
+ },
+ "TM058": {
+  "move": "BRICK-BREAK",
+  "type": "FIGHTING",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM58"
+ },
+ "TM059": {
+  "move": "ZEN-HEADBUTT",
+  "type": "PSYCHIC",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM59"
+ },
+ "TM060": {
+  "move": "U-TURN",
+  "type": "BUG",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM60"
+ },
+ "TM061": {
+  "move": "SHADOW-CLAW",
+  "type": "GHOST",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM61"
+ },
+ "TM062": {
+  "move": "FOUL-PLAY",
+  "type": "DARK",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM62"
+ },
+ "TM063": {
+  "move": "PSYCHIC-FANGS",
+  "type": "PSYCHIC",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM63"
+ },
+ "TM064": {
+  "move": "BULK-UP",
+  "type": "FIGHTING",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM64"
+ },
+ "TM065": {
+  "move": "AIR-SLASH",
+  "type": "FLYING",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM65"
+ },
+ "TM066": {
+  "move": "BODY-SLAM",
+  "type": "NORMAL",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM66"
+ },
+ "TM067": {
+  "move": "FIRE-PUNCH",
+  "type": "FIRE",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM67"
+ },
+ "TM068": {
+  "move": "THUNDER-PUNCH",
+  "type": "ELECTRIC",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM68"
+ },
+ "TM069": {
+  "move": "ICE-PUNCH",
+  "type": "ICE",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM69"
+ },
+ "TM070": {
+  "move": "SLEEP-TALK",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM70"
+ },
+ "TM071": {
+  "move": "SEED-BOMB",
+  "type": "GRASS",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM71"
+ },
+ "TM072": {
+  "move": "ELECTRO-BALL",
+  "type": "ELECTRIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM72"
+ },
+ "TM073": {
+  "move": "DRAIN-PUNCH",
+  "type": "FIGHTING",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM73"
+ },
+ "TM074": {
+  "move": "REFLECT",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM74"
+ },
+ "TM075": {
+  "move": "LIGHT-SCREEN",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM75"
+ },
+ "TM076": {
+  "move": "ROCK-BLAST",
+  "type": "ROCK",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM76"
+ },
+ "TM077": {
+  "move": "WATERFALL",
+  "type": "WATER",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM77"
+ },
+ "TM078": {
+  "move": "DRAGON-CLAW",
+  "type": "DRAGON",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM78"
+ },
+ "TM079": {
+  "move": "DAZZLING-GLEAM",
+  "type": "FAIRY",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM79"
+ },
+ "TM080": {
+  "move": "METRONOME",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM80"
+ },
+ "TM081": {
+  "move": "GRASS-KNOT",
+  "type": "GRASS",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM81"
+ },
+ "TM082": {
+  "move": "THUNDER-WAVE",
+  "type": "ELECTRIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM82"
+ },
+ "TM083": {
+  "move": "POISON-JAB",
+  "type": "POISON",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM83"
+ },
+ "TM084": {
+  "move": "STOMPING-TANTRUM",
+  "type": "GROUND",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM84"
+ },
+ "TM085": {
+  "move": "REST",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM85"
+ },
+ "TM086": {
+  "move": "ROCK-SLIDE",
+  "type": "ROCK",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM86"
+ },
+ "TM087": {
+  "move": "TAUNT",
+  "type": "DARK",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM87"
+ },
+ "TM088": {
+  "move": "SWORDS-DANCE",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM88"
+ },
+ "TM089": {
+  "move": "BODY-PRESS",
+  "type": "FIGHTING",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM89"
+ },
+ "TM090": {
+  "move": "SPIKES",
+  "type": "GROUND",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM90"
+ },
+ "TM091": {
+  "move": "TOXIC-SPIKES",
+  "type": "POISON",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM91"
+ },
+ "TM092": {
+  "move": "IMPRISON",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM92"
+ },
+ "TM093": {
+  "move": "FLASH-CANNON",
+  "type": "STEEL",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM93"
+ },
+ "TM094": {
+  "move": "DARK-PULSE",
+  "type": "DARK",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM94"
+ },
+ "TM095": {
+  "move": "LEECH-LIFE",
+  "type": "BUG",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM95"
+ },
+ "TM096": {
+  "move": "EERIE-IMPULSE",
+  "type": "ELECTRIC",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM96"
+ },
+ "TM097": {
+  "move": "FLY",
+  "type": "FLYING",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM97"
+ },
+ "TM098": {
+  "move": "SKILL-SWAP",
+  "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM98"
+ },
+ "TM099": {
+  "move": "IRON-HEAD",
+  "type": "STEEL",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM99"
+ },
+ "TM100": {
+  "move": "DRAGON-DANCE",
+  "type": "DRAGON",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM100"
+ },
+ "TM101": {
+  "move": "POWER-GEM",
+  "type": "ROCK",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM101"
+ },
+ "TM102": {
+  "move": "GUNK-SHOT",
+  "type": "POISON",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "ORAS TM43: lying on the Jagged Pass (across the round stones)"
+  "from": "Scarlet/Violet TM102"
  },
  "TM103": {
-  "move": "ROCK-POLISH",
-  "type": "ROCK",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM69: lying on the Jagged Pass's west hill"
+  "move": "SUBSTITUTE",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM103"
  },
  "TM104": {
-  "move": "HIDDEN-POWER",
-  "type": "NORMAL",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM10: Fortree City's old woman and her coin game"
+  "move": "IRON-DEFENSE",
+  "type": "STEEL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM104"
  },
  "TM105": {
-  "move": "SHADOW-BALL",
-  "type": "GHOST",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM30: lying on Mt. Pyre's top floor"
+  "move": "X-SCISSOR",
+  "type": "BUG",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM105"
  },
  "TM106": {
-  "move": "EARTHQUAKE",
+  "move": "DRILL-RUN",
   "type": "GROUND",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM26 / Emerald TM26: lying in the Seafloor Cavern"
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM106"
  },
  "TM107": {
-  "move": "SCALD",
-  "type": "WATER",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM55: on the island in the Seafloor Cavern's current room"
+  "move": "WILL-O-WISP",
+  "type": "FIRE",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM107"
  },
  "TM108": {
-  "move": "FROST-BREATH",
-  "type": "ICE",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "ORAS TM79: in Shoal Cave, by the sandy slope"
+  "move": "CRUNCH",
+  "type": "DARK",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM108"
  },
  "TM109": {
+  "move": "TRICK",
+  "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM109"
+ },
+ "TM110": {
+  "move": "LIQUIDATION",
+  "type": "WATER",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM110"
+ },
+ "TM111": {
+  "move": "GIGA-DRAIN",
+  "type": "GRASS",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM111"
+ },
+ "TM112": {
+  "move": "AURA-SPHERE",
+  "type": "FIGHTING",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM112"
+ },
+ "TM113": {
+  "move": "TAILWIND",
+  "type": "FLYING",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM113"
+ },
+ "TM114": {
+  "move": "SHADOW-BALL",
+  "type": "GHOST",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM114"
+ },
+ "TM115": {
+  "move": "DRAGON-PULSE",
+  "type": "DRAGON",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM115"
+ },
+ "TM116": {
+  "move": "STEALTH-ROCK",
+  "type": "ROCK",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM116"
+ },
+ "TM117": {
+  "move": "HYPER-VOICE",
+  "type": "NORMAL",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM117"
+ },
+ "TM118": {
+  "move": "HEAT-WAVE",
+  "type": "FIRE",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM118"
+ },
+ "TM119": {
+  "move": "ENERGY-BALL",
+  "type": "GRASS",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM119"
+ },
+ "TM120": {
+  "move": "PSYCHIC",
+  "type": "PSYCHIC",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM120"
+ },
+ "TM121": {
+  "move": "HEAVY-SLAM",
+  "type": "STEEL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM121"
+ },
+ "TM122": {
+  "move": "ENCORE",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM122"
+ },
+ "TM123": {
+  "move": "SURF",
+  "type": "WATER",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM123"
+ },
+ "TM124": {
+  "move": "ICE-SPINNER",
+  "type": "ICE",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM124"
+ },
+ "TM125": {
+  "move": "FLAMETHROWER",
+  "type": "FIRE",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM125"
+ },
+ "TM126": {
+  "move": "THUNDERBOLT",
+  "type": "ELECTRIC",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM126"
+ },
+ "TM127": {
+  "move": "PLAY-ROUGH",
+  "type": "FAIRY",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM127"
+ },
+ "TM128": {
+  "move": "AMNESIA",
+  "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM128"
+ },
+ "TM129": {
+  "move": "CALM-MIND",
+  "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM129"
+ },
+ "TM130": {
+  "move": "HELPING-HAND",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM130"
+ },
+ "TM131": {
+  "move": "POLLEN-PUFF",
+  "type": "BUG",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM131"
+ },
+ "TM132": {
+  "move": "BATON-PASS",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM132"
+ },
+ "TM133": {
+  "move": "EARTH-POWER",
+  "type": "GROUND",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM133"
+ },
+ "TM134": {
+  "move": "REVERSAL",
+  "type": "FIGHTING",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM134"
+ },
+ "TM135": {
+  "move": "ICE-BEAM",
+  "type": "ICE",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM135"
+ },
+ "TM136": {
+  "move": "ELECTRIC-TERRAIN",
+  "type": "ELECTRIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM136"
+ },
+ "TM137": {
+  "move": "GRASSY-TERRAIN",
+  "type": "GRASS",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM137"
+ },
+ "TM138": {
+  "move": "PSYCHIC-TERRAIN",
+  "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM138"
+ },
+ "TM139": {
+  "move": "MISTY-TERRAIN",
+  "type": "FAIRY",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM139"
+ },
+ "TM140": {
+  "move": "NASTY-PLOT",
+  "type": "DARK",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM140"
+ },
+ "TM141": {
   "move": "FIRE-BLAST",
   "type": "FIRE",
   "tier": 8,
-  "price": 5500,
-  "shop_only": true,
-  "from": "Lilycove Department Store 4F"
+  "price": 3000,
+  "from": "Scarlet/Violet TM141"
  },
- "TM11": {
-  "move": "SOLAR-BEAM",
-  "type": "GRASS",
+ "TM142": {
+  "move": "HYDRO-PUMP",
+  "type": "WATER",
   "tier": 8,
-  "price": 3000
+  "price": 3000,
+  "from": "Scarlet/Violet TM142"
  },
- "TM110": {
-  "move": "THUNDER",
-  "type": "ELECTRIC",
-  "tier": 8,
-  "price": 5500,
-  "shop_only": true,
-  "from": "Lilycove Department Store 4F"
- },
- "TM111": {
+ "TM143": {
   "move": "BLIZZARD",
   "type": "ICE",
   "tier": 8,
-  "price": 5500,
-  "shop_only": true,
-  "from": "Lilycove Department Store 4F"
+  "price": 3000,
+  "from": "Scarlet/Violet TM143"
  },
- "TM112": {
-  "move": "SECRET-POWER",
+ "TM144": {
+  "move": "FIRE-PLEDGE",
+  "type": "FIRE",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM144"
+ },
+ "TM145": {
+  "move": "WATER-PLEDGE",
+  "type": "WATER",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM145"
+ },
+ "TM146": {
+  "move": "GRASS-PLEDGE",
+  "type": "GRASS",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM146"
+ },
+ "TM147": {
+  "move": "WILD-CHARGE",
+  "type": "ELECTRIC",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM147"
+ },
+ "TM148": {
+  "move": "SLUDGE-BOMB",
+  "type": "POISON",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM148"
+ },
+ "TM149": {
+  "move": "EARTHQUAKE",
+  "type": "GROUND",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM149"
+ },
+ "TM150": {
+  "move": "STONE-EDGE",
+  "type": "ROCK",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM150"
+ },
+ "TM151": {
+  "move": "PHANTOM-FORCE",
+  "type": "GHOST",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM151"
+ },
+ "TM152": {
+  "move": "GIGA-IMPACT",
   "type": "NORMAL",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "ORAS TM94: from Aarune, on Route 111"
+  "from": "Scarlet/Violet TM152"
  },
- "TM113": {
-  "move": "RETURN",
-  "type": "NORMAL",
+ "TM153": {
+  "move": "BLAST-BURN",
+  "type": "FIRE",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "Emerald TM27: Pacifidlog's man, for a Pokemon that likes you"
+  "from": "Scarlet/Violet TM153"
  },
- "TM114": {
-  "move": "FRUSTRATION",
-  "type": "NORMAL",
+ "TM154": {
+  "move": "HYDRO-CANNON",
+  "type": "WATER",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "Emerald TM21: Pacifidlog's man, for a Pokemon that doesn't"
+  "from": "Scarlet/Violet TM154"
  },
- "TM115": {
-  "move": "ICE-BEAM",
-  "type": "ICE",
+ "TM155": {
+  "move": "FRENZY-PLANT",
+  "type": "GRASS",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "Emerald TM13: the Abandoned Ship's storeroom (the Storage Key)"
+  "from": "Scarlet/Violet TM155"
  },
- "TM116": {
-  "move": "BULK-UP",
-  "type": "FIGHTING",
+ "TM156": {
+  "move": "OUTRAGE",
+  "type": "DRAGON",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "ORAS TM08: Brawly, for the Knuckle Badge"
+  "from": "Scarlet/Violet TM156"
  },
- "TM117": {
+ "TM157": {
   "move": "OVERHEAT",
   "type": "FIRE",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "ORAS TM50: Flannery, for the Heat Badge"
+  "from": "Scarlet/Violet TM157"
  },
- "TM118": {
-  "move": "ROOST",
+ "TM158": {
+  "move": "FOCUS-BLAST",
+  "type": "FIGHTING",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM158"
+ },
+ "TM159": {
+  "move": "LEAF-STORM",
+  "type": "GRASS",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM159"
+ },
+ "TM160": {
+  "move": "HURRICANE",
   "type": "FLYING",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "ORAS TM19: Winona, for the Feather Badge"
+  "from": "Scarlet/Violet TM160"
  },
- "TM119": {
-  "move": "CALM-MIND",
+ "TM161": {
+  "move": "TRICK-ROOM",
   "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM161"
+ },
+ "TM162": {
+  "move": "BUG-BUZZ",
+  "type": "BUG",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM162"
+ },
+ "TM163": {
+  "move": "HYPER-BEAM",
+  "type": "NORMAL",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "ORAS TM04: Tate & Liza, for the Mind Badge"
+  "from": "Scarlet/Violet TM163"
  },
- "TM12": {
+ "TM164": {
+  "move": "BRAVE-BIRD",
+  "type": "FLYING",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM164"
+ },
+ "TM165": {
+  "move": "FLARE-BLITZ",
+  "type": "FIRE",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM165"
+ },
+ "TM166": {
+  "move": "THUNDER",
+  "type": "ELECTRIC",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM166"
+ },
+ "TM167": {
+  "move": "CLOSE-COMBAT",
+  "type": "FIGHTING",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM167"
+ },
+ "TM168": {
+  "move": "SOLAR-BEAM",
+  "type": "GRASS",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM168"
+ },
+ "TM169": {
+  "move": "DRACO-METEOR",
+  "type": "DRAGON",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM169"
+ },
+ "TM170": {
+  "move": "STEEL-BEAM",
+  "type": "STEEL",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM170"
+ },
+ "TM171": {
+  "move": "TERA-BLAST",
+  "type": "NORMAL",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM171"
+ },
+ "TM172": {
+  "move": "ROAR",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM172"
+ },
+ "TM173": {
+  "move": "CHARGE",
+  "type": "ELECTRIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM173"
+ },
+ "TM174": {
+  "move": "HAZE",
+  "type": "ICE",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM174"
+ },
+ "TM175": {
+  "move": "TOXIC",
+  "type": "POISON",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM175"
+ },
+ "TM176": {
+  "move": "SAND-TOMB",
+  "type": "GROUND",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM176"
+ },
+ "TM177": {
+  "move": "SPITE",
+  "type": "GHOST",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM177"
+ },
+ "TM178": {
+  "move": "GRAVITY",
+  "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM178"
+ },
+ "TM179": {
+  "move": "SMACK-DOWN",
+  "type": "ROCK",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM179"
+ },
+ "TM180": {
+  "move": "GYRO-BALL",
+  "type": "STEEL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM180"
+ },
+ "TM181": {
+  "move": "KNOCK-OFF",
+  "type": "DARK",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM181"
+ },
+ "TM182": {
+  "move": "BUG-BITE",
+  "type": "BUG",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM182"
+ },
+ "TM183": {
+  "move": "SUPER-FANG",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM183"
+ },
+ "TM184": {
+  "move": "VACUUM-WAVE",
+  "type": "FIGHTING",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM184"
+ },
+ "TM185": {
+  "move": "LUNGE",
+  "type": "BUG",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM185"
+ },
+ "TM186": {
+  "move": "HIGH-HORSEPOWER",
+  "type": "GROUND",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM186"
+ },
+ "TM187": {
+  "move": "ICICLE-SPEAR",
+  "type": "ICE",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM187"
+ },
+ "TM188": {
+  "move": "SCALD",
+  "type": "WATER",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM188"
+ },
+ "TM189": {
+  "move": "HEAT-CRASH",
+  "type": "FIRE",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM189"
+ },
+ "TM190": {
   "move": "SOLAR-BLADE",
   "type": "GRASS",
   "tier": 8,
-  "price": 3000
+  "price": 3000,
+  "from": "Scarlet/Violet TM190"
  },
- "TM120": {
-  "move": "ROAR",
+ "TM191": {
+  "move": "UPROAR",
   "type": "NORMAL",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM05: lying on Route 4, east of Mt. Moon"
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM191"
  },
- "TM121": {
-  "move": "AERIAL-ACE",
-  "type": "FLYING",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM40: lying on Route 9, by the hill"
- },
- "TM122": {
-  "move": "TAUNT",
-  "type": "DARK",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM12: lying in the Rocket Hideout, B2F"
- },
- "TM123": {
-  "move": "SNATCH",
-  "type": "DARK",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM49: lying in the Rocket Hideout, B4F"
- },
- "TM124": {
-  "move": "SKILL-SWAP",
-  "type": "PSYCHIC",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM48: lying on Route 12, by the pier"
- },
- "TM125": {
-  "move": "DOUBLE-TEAM",
-  "type": "NORMAL",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM32: lying in the Safari Zone's west area"
- },
- "TM126": {
-  "move": "PSYCHIC",
-  "type": "PSYCHIC",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM29: Mr. Psychic, Saffron City"
- },
- "TM127": {
+ "TM192": {
   "move": "FOCUS-PUNCH",
   "type": "FIGHTING",
   "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "FireRed TM01: lying in Silph Co., 5F"
+  "from": "Scarlet/Violet TM192"
  },
- "TM128": {
-  "move": "TORMENT",
-  "type": "DARK",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM41: lying in Silph Co., 4F"
+ "TM193": {
+  "move": "WEATHER-BALL",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Scarlet/Violet TM193"
  },
- "TM129": {
-  "move": "DRAGON-CLAW",
-  "type": "DRAGON",
-  "tier": 8,
-  "price": 3000,
-  "gift": true,
-  "from": "FireRed TM02: lying in Victory Road, 1F"
+ "TM194": {
+  "move": "GRASSY-GLIDE",
+  "type": "GRASS",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM194"
  },
- "TM13": {
-  "move": "FIRE-SPIN",
+ "TM195": {
+  "move": "BURNING-JEALOUSY",
   "type": "FIRE",
-  "tier": 0,
-  "price": 1000
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM195"
  },
- "TM14": {
-  "move": "THUNDER-WAVE",
-  "type": "ELECTRIC",
-  "tier": 1,
-  "price": 1000
- },
- "TM15": {
-  "move": "DIG",
-  "type": "GROUND",
-  "tier": 8,
-  "price": 3000
- },
- "TM16": {
-  "move": "SCREECH",
-  "type": "NORMAL",
-  "tier": 1,
-  "price": 1000
- },
- "TM17": {
-  "move": "LIGHT-SCREEN",
-  "type": "PSYCHIC",
-  "tier": 1,
-  "price": 1000
- },
- "TM18": {
-  "move": "REFLECT",
-  "type": "PSYCHIC",
-  "tier": 1,
-  "price": 1000
- },
- "TM19": {
-  "move": "SAFEGUARD",
-  "type": "NORMAL",
-  "tier": 1,
-  "price": 1000
- },
- "TM20": {
-  "move": "SELF-DESTRUCT",
-  "type": "NORMAL",
-  "tier": 8,
-  "price": 3000
- },
- "TM21": {
-  "move": "REST",
-  "type": "PSYCHIC",
-  "tier": 1,
-  "price": 1000
- },
- "TM22": {
-  "move": "ROCK-SLIDE",
-  "type": "ROCK",
-  "tier": 7,
-  "price": 2500
- },
- "TM23": {
-  "move": "THIEF",
-  "type": "DARK",
+ "TM196": {
+  "move": "FLIP-TURN",
+  "type": "WATER",
   "tier": 4,
-  "price": 2000
+  "price": 2000,
+  "from": "Scarlet/Violet TM196"
  },
- "TM24": {
-  "move": "SNORE",
-  "type": "NORMAL",
+ "TM197": {
+  "move": "DUAL-WINGBEAT",
+  "type": "FLYING",
   "tier": 0,
-  "price": 1000
+  "price": 1000,
+  "from": "Scarlet/Violet TM197"
  },
- "TM25": {
-  "move": "PROTECT",
+ "TM198": {
+  "move": "POLTERGEIST",
+  "type": "GHOST",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM198"
+ },
+ "TM199": {
+  "move": "LASH-OUT",
+  "type": "DARK",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM199"
+ },
+ "TM200": {
+  "move": "SCALE-SHOT",
+  "type": "DRAGON",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM200"
+ },
+ "TM201": {
+  "move": "MISTY-EXPLOSION",
+  "type": "FAIRY",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM201"
+ },
+ "TM202": {
+  "move": "PAIN-SPLIT",
   "type": "NORMAL",
-  "tier": 1,
-  "price": 1000
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM202"
  },
- "TM26": {
-  "move": "SCARY-FACE",
+ "TM203": {
+  "move": "PSYCH-UP",
   "type": "NORMAL",
-  "tier": 1,
-  "price": 1000
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM203"
  },
- "TM27": {
-  "move": "ICY-WIND",
-  "type": "ICE",
-  "tier": 1,
-  "price": 1000
+ "TM204": {
+  "move": "DOUBLE-EDGE",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM204"
  },
- "TM28": {
-  "move": "GIGA-DRAIN",
+ "TM205": {
+  "move": "ENDEAVOR",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM205"
+ },
+ "TM206": {
+  "move": "PETAL-BLIZZARD",
   "type": "GRASS",
   "tier": 7,
-  "price": 2500
+  "price": 2500,
+  "from": "Scarlet/Violet TM206"
  },
- "TM29": {
-  "move": "CHARM",
-  "type": "FAIRY",
-  "tier": 2,
-  "price": 1500
- },
- "TM30": {
-  "move": "STEEL-WING",
-  "type": "STEEL",
-  "tier": 6,
-  "price": 2500
- },
- "TM31": {
-  "move": "ATTRACT",
-  "type": "NORMAL",
-  "tier": 2,
-  "price": 1500
- },
- "TM32": {
-  "move": "SANDSTORM",
-  "type": "ROCK",
-  "tier": 2,
-  "price": 1500
- },
- "TM33": {
-  "move": "RAIN-DANCE",
-  "type": "WATER",
-  "tier": 2,
-  "price": 1500
- },
- "TM34": {
-  "move": "SUNNY-DAY",
+ "TM207": {
+  "move": "TEMPER-FLARE",
   "type": "FIRE",
-  "tier": 2,
-  "price": 1500
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM207"
  },
- "TM35": {
-  "move": "HAIL",
-  "type": "ICE",
-  "tier": 2,
-  "price": 1500
- },
- "TM36": {
+ "TM208": {
   "move": "WHIRLPOOL",
   "type": "WATER",
   "tier": 0,
-  "price": 1000
+  "price": 1000,
+  "from": "Scarlet/Violet TM208"
  },
- "TM37": {
-  "move": "BEAT-UP",
+ "TM209": {
+  "move": "MUDDY-WATER",
+  "type": "WATER",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM209"
+ },
+ "TM210": {
+  "move": "SUPERCELL-SLAM",
+  "type": "ELECTRIC",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM210"
+ },
+ "TM211": {
+  "move": "ELECTROWEB",
+  "type": "ELECTRIC",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM211"
+ },
+ "TM212": {
+  "move": "TRIPLE-AXEL",
+  "type": "ICE",
+  "tier": 0,
+  "price": 1000,
+  "from": "Scarlet/Violet TM212"
+ },
+ "TM213": {
+  "move": "COACHING",
+  "type": "FIGHTING",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM213"
+ },
+ "TM214": {
+  "move": "SLUDGE-WAVE",
+  "type": "POISON",
+  "tier": 7,
+  "price": 2500,
+  "from": "Scarlet/Violet TM214"
+ },
+ "TM215": {
+  "move": "SCORCHING-SANDS",
+  "type": "GROUND",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM215"
+ },
+ "TM216": {
+  "move": "FEATHER-DANCE",
+  "type": "FLYING",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM216"
+ },
+ "TM217": {
+  "move": "FUTURE-SIGHT",
+  "type": "PSYCHIC",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM217"
+ },
+ "TM218": {
+  "move": "EXPANDING-FORCE",
+  "type": "PSYCHIC",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM218"
+ },
+ "TM219": {
+  "move": "SKITTER-SMACK",
+  "type": "BUG",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM219"
+ },
+ "TM220": {
+  "move": "METEOR-BEAM",
+  "type": "ROCK",
+  "tier": 8,
+  "price": 3000,
+  "from": "Scarlet/Violet TM220"
+ },
+ "TM221": {
+  "move": "THROAT-CHOP",
   "type": "DARK",
-  "tier": 2,
-  "price": 1500
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM221"
  },
- "TM38": {
-  "move": "WILL-O-WISP",
-  "type": "FIRE",
-  "tier": 2,
-  "price": 1500
+ "TM222": {
+  "move": "BREAKING-SWIPE",
+  "type": "DRAGON",
+  "tier": 4,
+  "price": 2000,
+  "from": "Scarlet/Violet TM222"
  },
- "TM39": {
-  "move": "FACADE",
+ "TM223": {
+  "move": "METAL-SOUND",
+  "type": "STEEL",
+  "tier": 2,
+  "price": 1500,
+  "from": "Scarlet/Violet TM223"
+ },
+ "TM224": {
+  "move": "CURSE",
+  "type": "GHOST",
+  "tier": 3,
+  "price": 1500,
+  "from": "Scarlet/Violet TM224"
+ },
+ "TM225": {
+  "move": "HARD-PRESS",
+  "type": "STEEL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Scarlet/Violet TM225"
+ },
+ "TM226": {
+  "move": "DRAGON-CHEER",
+  "type": "DRAGON",
+  "tier": 3,
+  "price": 1500,
+  "from": "Scarlet/Violet TM226"
+ },
+ "TM227": {
+  "move": "ALLURING-VOICE",
+  "type": "FAIRY",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM227"
+ },
+ "TM228": {
+  "move": "PSYCHIC-NOISE",
+  "type": "PSYCHIC",
+  "tier": 6,
+  "price": 2500,
+  "from": "Scarlet/Violet TM228"
+ },
+ "TM229": {
+  "move": "UPPER-HAND",
+  "type": "FIGHTING",
+  "tier": 5,
+  "price": 2000,
+  "from": "Scarlet/Violet TM229"
+ },
+ "TM230": {
+  "move": "WORK-UP",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Brilliant Diamond/Shining Pearl TM10"
+ },
+ "TM231": {
+  "move": "MEGA-PUNCH",
   "type": "NORMAL",
   "tier": 6,
-  "price": 2500
+  "price": 2500,
+  "from": "Sword/Shield TM00"
  },
- "TM40": {
-  "move": "SWIFT",
+ "TM232": {
+  "move": "MEGA-KICK",
   "type": "NORMAL",
-  "tier": 4,
-  "price": 2000
+  "tier": 8,
+  "price": 3000,
+  "from": "Sword/Shield TM01"
  },
- "TM41": {
-  "move": "HELPING-HAND",
+ "TM233": {
+  "move": "PAY-DAY",
   "type": "NORMAL",
-  "tier": 2,
-  "price": 1500
+  "tier": 0,
+  "price": 1000,
+  "from": "Sword/Shield TM02"
  },
- "TM42": {
+ "TM234": {
+  "move": "PIN-MISSILE",
+  "type": "BUG",
+  "tier": 0,
+  "price": 1000,
+  "from": "Sword/Shield TM07"
+ },
+ "TM235": {
+  "move": "SCREECH",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Sword/Shield TM16"
+ },
+ "TM236": {
+  "move": "SAFEGUARD",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Sword/Shield TM19"
+ },
+ "TM237": {
+  "move": "SELF-DESTRUCT",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "from": "Sword/Shield TM20"
+ },
+ "TM238": {
+  "move": "SNORE",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000,
+  "from": "Sword/Shield TM24"
+ },
+ "TM239": {
+  "move": "STEEL-WING",
+  "type": "STEEL",
+  "tier": 5,
+  "price": 2000,
+  "from": "Sword/Shield TM30"
+ },
+ "TM240": {
+  "move": "ATTRACT",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Sword/Shield TM31"
+ },
+ "TM241": {
+  "move": "HAIL",
+  "type": "ICE",
+  "tier": 3,
+  "price": 1500,
+  "from": "Sword/Shield TM35"
+ },
+ "TM242": {
+  "move": "BEAT-UP",
+  "type": "DARK",
+  "tier": 3,
+  "price": 1500,
+  "from": "Sword/Shield TM37"
+ },
+ "TM243": {
   "move": "REVENGE",
   "type": "FIGHTING",
   "tier": 4,
-  "price": 2000
+  "price": 2000,
+  "from": "Sword/Shield TM42"
  },
- "TM43": {
-  "move": "BRICK-BREAK",
-  "type": "FIGHTING",
-  "tier": 7,
-  "price": 2500
- },
- "TM44": {
-  "move": "IMPRISON",
-  "type": "PSYCHIC",
-  "tier": 2,
-  "price": 1500
- },
- "TM45": {
+ "TM244": {
   "move": "DIVE",
   "type": "WATER",
-  "tier": 8,
-  "price": 3000
+  "tier": 6,
+  "price": 2500,
+  "from": "Sword/Shield TM45"
  },
- "TM46": {
-  "move": "WEATHER-BALL",
-  "type": "NORMAL",
-  "tier": 0,
-  "price": 1000
- },
- "TM47": {
-  "move": "FAKE-TEARS",
-  "type": "DARK",
-  "tier": 2,
-  "price": 1500
- },
- "TM48": {
-  "move": "ROCK-TOMB",
-  "type": "ROCK",
-  "tier": 4,
-  "price": 2000
- },
- "TM49": {
-  "move": "SAND-TOMB",
-  "type": "GROUND",
-  "tier": 0,
-  "price": 1000
- },
- "TM50": {
-  "move": "BULLET-SEED",
-  "type": "GRASS",
-  "tier": 0,
-  "price": 1000
- },
- "TM51": {
-  "move": "ICICLE-SPEAR",
-  "type": "ICE",
-  "tier": 0,
-  "price": 1000
- },
- "TM52": {
+ "TM245": {
   "move": "BOUNCE",
   "type": "FLYING",
-  "tier": 8,
-  "price": 3000
+  "tier": 7,
+  "price": 2500,
+  "from": "Sword/Shield TM52"
  },
- "TM53": {
-  "move": "MUD-SHOT",
-  "type": "GROUND",
-  "tier": 3,
-  "price": 1500
- },
- "TM54": {
-  "move": "ROCK-BLAST",
-  "type": "ROCK",
-  "tier": 0,
-  "price": 1000
- },
- "TM55": {
+ "TM246": {
   "move": "BRINE",
   "type": "WATER",
   "tier": 5,
-  "price": 2000
+  "price": 2000,
+  "from": "Sword/Shield TM55"
  },
- "TM56": {
-  "move": "U-TURN",
-  "type": "BUG",
-  "tier": 6,
-  "price": 2500
- },
- "TM57": {
+ "TM247": {
   "move": "PAYBACK",
   "type": "DARK",
   "tier": 1,
-  "price": 1000
+  "price": 1000,
+  "from": "Sword/Shield TM57"
  },
- "TM58": {
+ "TM248": {
   "move": "ASSURANCE",
   "type": "DARK",
   "tier": 4,
-  "price": 2000
+  "price": 2000,
+  "from": "Sword/Shield TM58"
  },
- "TM59": {
-  "move": "FLING",
-  "type": "DARK",
-  "tier": 3,
-  "price": 1500
- },
- "TM60": {
+ "TM249": {
   "move": "POWER-SWAP",
   "type": "PSYCHIC",
   "tier": 3,
-  "price": 1500
+  "price": 1500,
+  "from": "Sword/Shield TM60"
  },
- "TM61": {
+ "TM250": {
   "move": "GUARD-SWAP",
   "type": "PSYCHIC",
   "tier": 3,
-  "price": 1500
+  "price": 1500,
+  "from": "Sword/Shield TM61"
  },
- "TM62": {
+ "TM251": {
   "move": "SPEED-SWAP",
   "type": "PSYCHIC",
   "tier": 3,
-  "price": 1500
+  "price": 1500,
+  "from": "Sword/Shield TM62"
  },
- "TM63": {
-  "move": "DRAIN-PUNCH",
-  "type": "FIGHTING",
-  "tier": 7,
-  "price": 2500
- },
- "TM64": {
-  "move": "AVALANCHE",
-  "type": "ICE",
-  "tier": 5,
-  "price": 2000
- },
- "TM65": {
-  "move": "SHADOW-CLAW",
-  "type": "GHOST",
-  "tier": 6,
-  "price": 2500
- },
- "TM66": {
-  "move": "THUNDER-FANG",
-  "type": "ELECTRIC",
-  "tier": 5,
-  "price": 2000
- },
- "TM67": {
-  "move": "ICE-FANG",
-  "type": "ICE",
-  "tier": 5,
-  "price": 2000
- },
- "TM68": {
-  "move": "FIRE-FANG",
-  "type": "FIRE",
-  "tier": 5,
-  "price": 2000
- },
- "TM69": {
+ "TM252": {
   "move": "PSYCHO-CUT",
   "type": "PSYCHIC",
-  "tier": 6,
-  "price": 2500
+  "tier": 5,
+  "price": 2000,
+  "from": "Sword/Shield TM69"
  },
- "TM70": {
-  "move": "TRICK-ROOM",
-  "type": "PSYCHIC",
-  "tier": 3,
-  "price": 1500
- },
- "TM71": {
+ "TM253": {
   "move": "WONDER-ROOM",
   "type": "PSYCHIC",
   "tier": 3,
-  "price": 1500
+  "price": 1500,
+  "from": "Sword/Shield TM71"
  },
- "TM72": {
+ "TM254": {
   "move": "MAGIC-ROOM",
   "type": "PSYCHIC",
   "tier": 3,
-  "price": 1500
+  "price": 1500,
+  "from": "Sword/Shield TM72"
  },
- "TM73": {
+ "TM255": {
   "move": "CROSS-POISON",
   "type": "POISON",
-  "tier": 6,
-  "price": 2500
- },
- "TM74": {
-  "move": "VENOSHOCK",
-  "type": "POISON",
   "tier": 5,
-  "price": 2000
+  "price": 2000,
+  "from": "Sword/Shield TM73"
  },
- "TM75": {
-  "move": "LOW-SWEEP",
-  "type": "FIGHTING",
-  "tier": 5,
-  "price": 2000
- },
- "TM76": {
+ "TM256": {
   "move": "ROUND",
   "type": "NORMAL",
-  "tier": 5,
-  "price": 2000
+  "tier": 4,
+  "price": 2000,
+  "from": "Sword/Shield TM76"
  },
- "TM77": {
-  "move": "HEX",
-  "type": "GHOST",
-  "tier": 6,
-  "price": 2500
- },
- "TM78": {
-  "move": "ACROBATICS",
-  "type": "FLYING",
-  "tier": 3,
-  "price": 1500
- },
- "TM79": {
+ "TM257": {
   "move": "RETALIATE",
   "type": "NORMAL",
-  "tier": 6,
-  "price": 2500
- },
- "TM80": {
-  "move": "VOLT-SWITCH",
-  "type": "ELECTRIC",
-  "tier": 6,
-  "price": 2500
- },
- "TM81": {
-  "move": "BULLDOZE",
-  "type": "GROUND",
   "tier": 5,
-  "price": 2000
+  "price": 2000,
+  "from": "Sword/Shield TM79"
  },
- "TM82": {
-  "move": "ELECTROWEB",
-  "type": "ELECTRIC",
-  "tier": 3,
-  "price": 1500
- },
- "TM83": {
+ "TM258": {
   "move": "RAZOR-SHELL",
   "type": "WATER",
-  "tier": 7,
-  "price": 2500
+  "tier": 6,
+  "price": 2500,
+  "from": "Sword/Shield TM83"
  },
- "TM84": {
+ "TM259": {
   "move": "TAIL-SLAP",
   "type": "NORMAL",
   "tier": 0,
-  "price": 1000
+  "price": 1000,
+  "from": "Sword/Shield TM84"
  },
- "TM85": {
-  "move": "SNARL",
-  "type": "DARK",
-  "tier": 3,
-  "price": 1500
- },
- "TM86": {
-  "move": "PHANTOM-FORCE",
-  "type": "GHOST",
-  "tier": 8,
-  "price": 3000
- },
- "TM87": {
-  "move": "DRAINING-KISS",
-  "type": "FAIRY",
-  "tier": 1,
-  "price": 1000
- },
- "TM88": {
-  "move": "GRASSY-TERRAIN",
-  "type": "GRASS",
-  "tier": 4,
-  "price": 2000
- },
- "TM89": {
-  "move": "MISTY-TERRAIN",
-  "type": "FAIRY",
-  "tier": 4,
-  "price": 2000
- },
- "TM90": {
-  "move": "ELECTRIC-TERRAIN",
-  "type": "ELECTRIC",
-  "tier": 4,
-  "price": 2000
- },
- "TM91": {
-  "move": "PSYCHIC-TERRAIN",
-  "type": "PSYCHIC",
-  "tier": 4,
-  "price": 2000
- },
- "TM92": {
+ "TM260": {
   "move": "MYSTICAL-FIRE",
   "type": "FIRE",
-  "tier": 7,
-  "price": 2500
- },
- "TM93": {
-  "move": "EERIE-IMPULSE",
-  "type": "ELECTRIC",
-  "tier": 4,
-  "price": 2000
- },
- "TM94": {
-  "move": "FALSE-SWIPE",
-  "type": "NORMAL",
-  "tier": 0,
-  "price": 1000
- },
- "TM95": {
-  "move": "AIR-SLASH",
-  "type": "FLYING",
-  "tier": 7,
-  "price": 2500
- },
- "TM96": {
-  "move": "SMART-STRIKE",
-  "type": "STEEL",
   "tier": 6,
-  "price": 2500
+  "price": 2500,
+  "from": "Sword/Shield TM92"
  },
- "TM97": {
+ "TM261": {
   "move": "BRUTAL-SWING",
   "type": "DARK",
-  "tier": 5,
-  "price": 2000
- },
- "TM98": {
-  "move": "STOMPING-TANTRUM",
-  "type": "GROUND",
-  "tier": 7,
-  "price": 2500
- },
- "TM99": {
-  "move": "BREAKING-SWIPE",
-  "type": "DRAGON",
-  "tier": 5,
-  "price": 2000
- },
- "TM130": {
-  "move": "CHARGE-BEAM",
-  "type": "ELECTRIC",
   "tier": 4,
-  "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM57: lying on Route 35"
+  "price": 2000,
+  "from": "Sword/Shield TM97"
  },
- "TM131": {
-  "move": "CAPTIVATE",
+ "TM262": {
+  "move": "HEADBUTT",
   "type": "NORMAL",
-  "tier": 2,
-  "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM78: lying in Goldenrod's Radio Tower"
+  "tier": 5,
+  "price": 2000,
+  "from": "Let's Go TM01"
  },
- "TM132": {
-  "move": "FOCUS-BLAST",
+ "TM263": {
+  "move": "TELEPORT",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500,
+  "from": "Let's Go TM04"
+ },
+ "TM264": {
+  "move": "SEISMIC-TOSS",
   "type": "FIGHTING",
-  "tier": 9,
-  "price": 5500,
-  "from": "HeartGold/SoulSilver TM52: Goldenrod Dept. Store 5F",
-  "shop_only": true
+  "tier": 3,
+  "price": 1500,
+  "from": "Let's Go TM15"
  },
- "TM133": {
+ "TM265": {
+  "move": "IRON-TAIL",
+  "type": "STEEL",
+  "tier": 7,
+  "price": 2500,
+  "from": "Let's Go TM19"
+ },
+ "TM266": {
+  "move": "TRI-ATTACK",
+  "type": "NORMAL",
+  "tier": 6,
+  "price": 2500,
+  "from": "Let's Go TM28"
+ },
+ "TM267": {
+  "move": "SUPERPOWER",
+  "type": "FIGHTING",
+  "tier": 8,
+  "price": 3000,
+  "from": "Let's Go TM49"
+ },
+ "TM268": {
+  "move": "ROOST",
+  "type": "FLYING",
+  "tier": 3,
+  "price": 1500,
+  "from": "Let's Go TM50"
+ },
+ "TM269": {
+  "move": "MEGA-DRAIN",
+  "type": "GRASS",
+  "tier": 0,
+  "price": 1000,
+  "from": "Let's Go TM53"
+ },
+ "TM270": {
+  "move": "DREAM-EATER",
+  "type": "PSYCHIC",
+  "tier": 7,
+  "price": 2500,
+  "from": "Let's Go TM59"
+ },
+ "TM271": {
+  "move": "MEGAHORN",
+  "type": "BUG",
+  "tier": 8,
+  "price": 3000,
+  "from": "Let's Go TM60"
+ },
+ "TM272": {
+  "move": "HIDDEN-POWER",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000,
+  "from": "Ultra Sun/Ultra Moon TM10"
+ },
+ "TM273": {
+  "move": "FRUSTRATION",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM21"
+ },
+ "TM274": {
+  "move": "RETURN",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM27"
+ },
+ "TM275": {
+  "move": "DOUBLE-TEAM",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM32"
+ },
+ "TM276": {
+  "move": "TORMENT",
+  "type": "DARK",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM41"
+ },
+ "TM277": {
+  "move": "ECHOED-VOICE",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000,
+  "from": "Ultra Sun/Ultra Moon TM49"
+ },
+ "TM278": {
+  "move": "SKY-DROP",
+  "type": "FLYING",
+  "tier": 4,
+  "price": 2000,
+  "from": "Ultra Sun/Ultra Moon TM58"
+ },
+ "TM279": {
+  "move": "QUASH",
+  "type": "DARK",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM60"
+ },
+ "TM280": {
   "move": "EMBARGO",
   "type": "DARK",
   "tier": 3,
-  "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM63: Goldenrod Tunnel's back room"
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM63"
  },
- "TM134": {
-  "move": "SLEEP-TALK",
+ "TM281": {
+  "move": "EXPLOSION",
   "type": "NORMAL",
-  "tier": 3,
+  "tier": 8,
   "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM82: Goldenrod Tunnel's back room"
+  "from": "Ultra Sun/Ultra Moon TM64"
  },
- "TM135": {
+ "TM282": {
+  "move": "ROCK-POLISH",
+  "type": "ROCK",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM69"
+ },
+ "TM283": {
+  "move": "AURORA-VEIL",
+  "type": "ICE",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM70"
+ },
+ "TM284": {
+  "move": "FROST-BREATH",
+  "type": "ICE",
+  "tier": 4,
+  "price": 2000,
+  "from": "Ultra Sun/Ultra Moon TM79"
+ },
+ "TM285": {
+  "move": "INFESTATION",
+  "type": "BUG",
+  "tier": 0,
+  "price": 1000,
+  "from": "Ultra Sun/Ultra Moon TM83"
+ },
+ "TM286": {
   "move": "SWAGGER",
   "type": "NORMAL",
   "tier": 3,
-  "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM87: Olivine Lighthouse 5F"
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM87"
  },
- "TM136": {
+ "TM287": {
+  "move": "NATURE-POWER",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM96"
+ },
+ "TM288": {
+  "move": "CONFIDE",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Ultra Sun/Ultra Moon TM100"
+ },
+ "TM289": {
+  "move": "HONE-CLAWS",
+  "type": "DARK",
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS TM01"
+ },
+ "TM290": {
+  "move": "INCINERATE",
+  "type": "FIRE",
+  "tier": 4,
+  "price": 2000,
+  "from": "ORAS TM59"
+ },
+ "TM291": {
+  "move": "FLASH",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "ORAS TM70"
+ },
+ "TM292": {
+  "move": "SECRET-POWER",
+  "type": "NORMAL",
+  "tier": 5,
+  "price": 2000,
+  "from": "ORAS TM94"
+ },
+ "TM293": {
+  "move": "POWER-UP-PUNCH",
+  "type": "FIGHTING",
+  "tier": 0,
+  "price": 1000,
+  "from": "ORAS TM98"
+ },
+ "TM294": {
+  "move": "ROCK-SMASH",
+  "type": "FIGHTING",
+  "tier": 0,
+  "price": 1000,
+  "from": "X/Y TM94"
+ },
+ "TM295": {
+  "move": "TELEKINESIS",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500,
+  "from": "Black 2/White 2 TM19"
+ },
+ "TM296": {
+  "move": "ALLY-SWITCH",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500,
+  "from": "Black 2/White 2 TM51"
+ },
+ "TM297": {
+  "move": "PLUCK",
+  "type": "FLYING",
+  "tier": 4,
+  "price": 2000,
+  "from": "Black 2/White 2 TM88"
+ },
+ "TM298": {
+  "move": "SHOCK-WAVE",
+  "type": "ELECTRIC",
+  "tier": 4,
+  "price": 2000,
+  "from": "HeartGold/SoulSilver TM34"
+ },
+ "TM299": {
+  "move": "SNATCH",
+  "type": "DARK",
+  "tier": 3,
+  "price": 1500,
+  "from": "HeartGold/SoulSilver TM49"
+ },
+ "TM300": {
+  "move": "SILVER-WIND",
+  "type": "BUG",
+  "tier": 4,
+  "price": 2000,
+  "from": "HeartGold/SoulSilver TM62"
+ },
+ "TM301": {
+  "move": "RECYCLE",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "HeartGold/SoulSilver TM67"
+ },
+ "TM302": {
+  "move": "CAPTIVATE",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "HeartGold/SoulSilver TM78"
+ },
+ "TM303": {
   "move": "NATURAL-GIFT",
   "type": "NORMAL",
   "tier": 3,
-  "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM83: Moomoo Farm, for healing Moomoo"
+  "price": 1500,
+  "from": "HeartGold/SoulSilver TM83"
  },
- "TM137": {
-  "move": "PLUCK",
-  "type": "FLYING",
+ "TM304": {
+  "move": "DYNAMIC-PUNCH",
+  "type": "FIGHTING",
+  "tier": 8,
+  "price": 3000,
+  "from": "Crystal TM01"
+ },
+ "TM305": {
+  "move": "ROLLOUT",
+  "type": "ROCK",
+  "tier": 0,
+  "price": 1000,
+  "from": "Crystal TM04"
+ },
+ "TM306": {
+  "move": "ZAP-CANNON",
+  "type": "ELECTRIC",
+  "tier": 8,
+  "price": 3000,
+  "from": "Crystal TM07"
+ },
+ "TM307": {
+  "move": "SWEET-SCENT",
+  "type": "NORMAL",
   "tier": 3,
-  "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM88: the Whirl Islands"
+  "price": 1500,
+  "from": "Crystal TM12"
  },
- "TM138": {
-  "move": "DRAGON-PULSE",
+ "TM308": {
+  "move": "DRAGON-BREATH",
   "type": "DRAGON",
-  "tier": 3,
-  "price": 3000,
-  "gift": true,
-  "from": "HeartGold/SoulSilver TM59: from Clair in the Dragon's Den, after the Elder's test"
+  "tier": 4,
+  "price": 2000,
+  "from": "Crystal TM24"
  },
- "TM139": {"move": "FLAMETHROWER", "type": "FIRE", "tier": 3, "price": 3000, "gift": true, "from": "HeartGold/SoulSilver TM35: outside Mt. Silver's Pokemon Center"},
- "TM140": {"move": "STEALTH-ROCK", "type": "ROCK", "tier": 2, "price": 3000, "gift": true, "from": "HeartGold/SoulSilver TM76: an item ball in Mt. Silver"}
+ "TM309": {
+  "move": "DEFENSE-CURL",
+  "type": "NORMAL",
+  "tier": 3,
+  "price": 1500,
+  "from": "Crystal TM40"
+ },
+ "TM310": {
+  "move": "DETECT",
+  "type": "FIGHTING",
+  "tier": 3,
+  "price": 1500,
+  "from": "Crystal TM43"
+ },
+ "TM311": {
+  "move": "FURY-CUTTER",
+  "type": "BUG",
+  "tier": 0,
+  "price": 1000,
+  "from": "Crystal TM49"
+ },
+ "TM312": {
+  "move": "NIGHTMARE",
+  "type": "GHOST",
+  "tier": 4,
+  "price": 2000,
+  "from": "Crystal TM50"
+ },
+ "TM313": {
+  "move": "RAZOR-WIND",
+  "type": "NORMAL",
+  "tier": 7,
+  "price": 2500,
+  "from": "Yellow TM02"
+ },
+ "TM314": {
+  "move": "WHIRLWIND",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM04"
+ },
+ "TM315": {
+  "move": "HORN-DRILL",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM07"
+ },
+ "TM316": {
+  "move": "BUBBLE-BEAM",
+  "type": "WATER",
+  "tier": 5,
+  "price": 2000,
+  "from": "Yellow TM11"
+ },
+ "TM317": {
+  "move": "WATER-GUN",
+  "type": "WATER",
+  "tier": 0,
+  "price": 1000,
+  "from": "Yellow TM12"
+ },
+ "TM318": {
+  "move": "SUBMISSION",
+  "type": "FIGHTING",
+  "tier": 7,
+  "price": 2500,
+  "from": "Yellow TM17"
+ },
+ "TM319": {
+  "move": "COUNTER",
+  "type": "FIGHTING",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM18"
+ },
+ "TM320": {
+  "move": "RAGE",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000,
+  "from": "Yellow TM20"
+ },
+ "TM321": {
+  "move": "DRAGON-RAGE",
+  "type": "DRAGON",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM23"
+ },
+ "TM322": {
+  "move": "FISSURE",
+  "type": "GROUND",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM27"
+ },
+ "TM323": {
+  "move": "MIMIC",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM31"
+ },
+ "TM324": {
+  "move": "BIDE",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM34"
+ },
+ "TM325": {
+  "move": "EGG-BOMB",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "from": "Yellow TM37"
+ },
+ "TM326": {
+  "move": "SKULL-BASH",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "from": "Yellow TM40"
+ },
+ "TM327": {
+  "move": "SOFT-BOILED",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM41"
+ },
+ "TM328": {
+  "move": "SKY-ATTACK",
+  "type": "FLYING",
+  "tier": 8,
+  "price": 3000,
+  "from": "Yellow TM43"
+ },
+ "TM329": {
+  "move": "PSYWAVE",
+  "type": "PSYCHIC",
+  "tier": 4,
+  "price": 2000,
+  "from": "Yellow TM46"
+ },
+ "TM330": {
+  "move": "NIGHT-SLASH",
+  "type": "DARK",
+  "tier": 5,
+  "price": 2000,
+  "from": "Legends: Z-A TM34"
+ },
+ "TM331": {
+  "move": "DISCHARGE",
+  "type": "ELECTRIC",
+  "tier": 7,
+  "price": 2500,
+  "from": "Legends: Z-A TM39"
+ },
+ "TM332": {
+  "move": "HEAL-BLOCK",
+  "type": "PSYCHIC",
+  "tier": 4,
+  "price": 2000,
+  "from": "Legends: Z-A TM97"
+ },
+ "TM333": {
+  "move": "COMET-PUNCH",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000,
+  "from": "Legends: Z-A TM108"
+ },
+ "TM334": {
+  "move": "SING",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000,
+  "from": "Legends: Z-A TM111"
+ },
+ "TM335": {
+  "move": "SHADOW-PUNCH",
+  "type": "GHOST",
+  "tier": 4,
+  "price": 2000,
+  "from": "Legends: Z-A TM118"
+ },
+ "TM336": {
+  "move": "OMINOUS-WIND",
+  "type": "GHOST",
+  "tier": 5,
+  "price": 2000,
+  "from": "Legends: Z-A TM119"
+ },
+ "TM337": {
+  "move": "ANCIENT-POWER",
+  "type": "ROCK",
+  "tier": 5,
+  "price": 2000,
+  "from": "Legends: Z-A TM120"
+ },
+ "TM338": {
+  "move": "POISON-FANG",
+  "type": "POISON",
+  "tier": 1,
+  "price": 1000,
+  "from": "Legends: Z-A TM123"
+ },
+ "TM339": {
+  "move": "MAGNET-BOMB",
+  "type": "STEEL",
+  "tier": 5,
+  "price": 2000,
+  "from": "Legends: Z-A TM126"
+ },
+ "TM340": {
+  "move": "CIRCLE-THROW",
+  "type": "FIGHTING",
+  "tier": 5,
+  "price": 2000,
+  "from": "Legends: Z-A TM129"
+ },
+ "TM341": {
+  "move": "DOUBLE-HIT",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000,
+  "from": "Legends: Z-A TM132"
+ },
+ "TM342": {
+  "move": "BLAZE-KICK",
+  "type": "FIRE",
+  "tier": 7,
+  "price": 2500,
+  "from": "Legends: Z-A TM133"
+ },
+ "TM343": {
+  "move": "DUAL-CHOP",
+  "type": "DRAGON",
+  "tier": 0,
+  "price": 1000,
+  "from": "Legends: Z-A TM135"
+ },
+ "TM344": {
+  "move": "STORM-THROW",
+  "type": "FIGHTING",
+  "tier": 5,
+  "price": 2000,
+  "from": "Legends: Z-A TM137"
+ },
+ "TM345": {
+  "move": "FAKE-OUT",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000,
+  "from": "Legends: Z-A TM141"
+ },
+ "TM346": {
+  "move": "FIRST-IMPRESSION",
+  "type": "BUG",
+  "tier": 7,
+  "price": 2500,
+  "from": "Legends: Z-A TM142"
+ },
+ "TM347": {
+  "move": "PETAL-DANCE",
+  "type": "GRASS",
+  "tier": 8,
+  "price": 3000,
+  "from": "Legends: Z-A TM151"
+ },
+ "TM348": {
+  "move": "SHEER-COLD",
+  "type": "ICE",
+  "tier": 4,
+  "price": 2000,
+  "from": "Legends: Z-A TM155"
+ }
 }

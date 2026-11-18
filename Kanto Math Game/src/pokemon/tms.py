@@ -1,27 +1,32 @@
 # [REF-0092: TMs]
-"""TMs (Jordan, 11-03): Sword/Shield's 100 (TM00-TM99) in every region, reusable (Gen 5 on).
-Data: assets/tms.json and assets/tm_learners.json (dev/builders/build_tms.py).
+"""TMs: one list in every region, on Scarlet/Violet's numbers (Jordan, 11-17): TM001-TM229 as Scarlet/Violet has them
+(its DLC's too), then every other move that has been a TM in a main-series game from TM230 on, then the TMs only
+Legends: Z-A has, in Z-A's order (TM330-TM348) (assets/tms.json, dev/builders/build_tms.py). Reusable (Gen 5 on), and one of each: a Bag never holds two of a TM (src/world/story.py Bag).
 
-How you get them, so a region's 100 can all be had by its League (each region's Bag is its own):
+How you get them, so every one can be had by a region's League (each region's Bag is its own until they link):
 - the Poke Mart sells a TM once the region has its tier's badges (tiers 0-8, weak to strong), cheaply;
 - every Gym Leader, Elite Four member and Champion gives one (its type when there's one left);
-- route trainers often give one too (TRAINER_CHANCE).
-Hoenn (Jordan, 11-14) has its own: Omega Ruby / Alpha Sapphire's numbering TM01-TM100 and Emerald's own after TM100
-(assets/tms_hoenn.json, dev/builders/build_hoenn_tms.py). Their items are HTM01... (shown "TM01 ..."), keys of their own so
-a Bag shared between regions can hold both; Hoenn's Marts sell Hoenn's, the other regions' Marts their own.
-Unlocking (Jordan, 11-04): a TM in the Bag puts its move in the move pool of every Pokemon that can learn
-it (src/pokemon/moves.py move_pool), to pick in the Summary's MOVES. Using it from the Bag also sets the
-move while the Pokemon knows fewer than four.
+- route trainers often give one too (TRAINER_CHANCE);
+- the story's TM spots (the games' item balls and gifts) give their move under its number here.
+Unlocking (Jordan, 11-04 / 11-17): a TM in the Bag puts its move in the move pool of every Pokemon that can learn
+it (src/pokemon/moves.py move_pool), party and PC alike, to pick in the Summary's MOVES; no teaching needed. Using it
+from the Bag also sets the move while the Pokemon knows fewer than four.
+Older saves' keys (Sword/Shield's TM00-TM99, the story's TM100-TM141, Hoenn's HTM01...; "v1:TM230".. for the first
+Scarlet/Violet list, which had Z-A's TMs first) are in assets/tm_legacy.json; StoryManager._migrate_tm_numbers turns
+them into these, by move, once.
 """
 import json
 import os
 import random
+import re
 
 TRAINER_CHANCE = 0.35
 # Regions whose maps carry their games' own TMs (on the ground, from people) and whose Leaders give their own (Jordan,
 # 11-13: Hoenn, from Emerald / ORAS): no random TMs from battles there.
 REAL_TM_REGIONS = {"HOENN"}
 LEADER_CLASSES = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION")
+KEY = re.compile(r"^TM\d{3}$")
+V1_FIRST_CHANGED = 230  # (the first list's TM230 on moved when Z-A's went last: "v1:" keys in tm_legacy.json)
 
 
 def _load(game, name):
@@ -35,38 +40,27 @@ def _load(game, name):
     return cache[name]
 
 
-HOENN = "HOENN"
-
-
 def table(game):
-    """Every TM: Sword/Shield's (TM00-TM99, story gifts TM100 on) and Hoenn's own (HTM01-...)."""
-    cache = game.__dict__.setdefault("_tm_data", {})
-    if "_all" not in cache:
-        cache["_all"] = dict(_load(game, "tms.json"), **_load(game, "tms_hoenn.json"))
-    return cache["_all"]
+    """Every TM, TM001 on."""
+    return _load(game, "tms.json")
 
 
 def is_tm(item):
-    if not isinstance(item, str):
-        return False
-    if item.startswith("HTM"):   # (Hoenn's own)
-        return len(item) >= 5 and item[3:].isdigit()
-    return len(item) >= 4 and item.startswith("TM") and item[2:].isdigit()  # (TM00-TM99; story gifts TM100 on)
+    return isinstance(item, str) and bool(KEY.match(item))
 
 
-def is_hoenn(item):
-    return isinstance(item, str) and item.startswith("HTM")
+def key_for_move(game, move):
+    """The TM that teaches a move, or None."""
+    cache = game.__dict__.setdefault("_tm_data", {})
+    if "_by_move" not in cache:
+        cache["_by_move"] = {d.get("move"): k for k, d in table(game).items()}
+    return cache["_by_move"].get(move)
 
 
-def hoenn_key(game, move):
-    """Hoenn's TM for a move (its HTM key), or None."""
-    return next((k for k, d in _load(game, "tms_hoenn.json").items() if d.get("move") == move), None)
-
-
-def _here(game):
-    """The TMs this region's Marts deal in: Hoenn's own in Hoenn, Sword/Shield's elsewhere."""
-    hoenn = str(game.story_manager.get_current_region() or "").upper() == HOENN
-    return {k: d for k, d in table(game).items() if is_hoenn(k) == hoenn}
+def legacy_key(game, old):
+    """An older save's TM key (TM00-TM141, Hoenn's HTM01..., "v1:TM230"...) as its TM here, or None if it isn't one."""
+    move = _load(game, "tm_legacy.json").get(old) if isinstance(old, str) else None
+    return key_for_move(game, move) if move else None
 
 
 def info(game, item):
@@ -78,10 +72,9 @@ def move_of(game, item):
 
 
 def label(game, item):
-    """'TM24 Snore' (Hoenn's HTM34 too: 'TM34 Shock Wave')."""
+    """'TM070 Sleep Talk'."""
     move = move_of(game, item)
-    shown = item[1:] if is_hoenn(item) else item
-    return f"{shown} {move.replace('-', ' ').title()}" if move else shown
+    return f"{item} {move.replace('-', ' ').title()}" if move else item
 
 
 def price(game, item):
@@ -134,11 +127,9 @@ def owned(story):
 
 
 def mart_stock(game, badges):
-    """The TMs the Mart sells with this many badges (the ones you don't have yet)."""
+    """The TMs the Mart sells with this many badges (the ones you don't have yet): all of them by the League."""
     have = owned(game.story_manager)
-    have |= {hoenn_key(game, move_of(game, k)) or k for k in have}   # (one you have under the other numbering: no need to buy it)
-    return [k for k, d in _here(game).items() if d.get("tier", 8) <= badges and k not in have and not d.get("gift")
-            and not d.get("shop_only")]   # (shop_only: sold only where a shop lists it, Lilycove's TM Corner)
+    return [k for k, d in table(game).items() if d.get("tier", 8) <= badges and k not in have]
 
 
 def reward(game, badges, trainer_class, team_types=(), rng=random):
@@ -153,9 +144,9 @@ def reward(game, badges, trainer_class, team_types=(), rng=random):
         return None
     have = owned(game.story_manager)
     cap = min(8, badges + (2 if leader else 1))
-    pool = [k for k, d in _here(game).items() if k not in have and d.get("tier", 8) <= cap and not d.get("gift") and not d.get("shop_only")]
+    pool = [k for k, d in table(game).items() if k not in have and d.get("tier", 8) <= cap]
     if not pool:
-        pool = [k for k, d in _here(game).items() if k not in have and not d.get("gift") and not d.get("shop_only")]  # (story gifts are only given)
+        pool = [k for k in table(game) if k not in have]
     if not pool:
         return None
     if leader:

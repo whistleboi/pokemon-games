@@ -1,17 +1,17 @@
 {
-  "CANYON_ENTRANCE_PERCENTAGES": { "161": 30, "21": 20, "22": 15, "231": 15, "52": 10, "53": 5, "54": 5 },
+  "CANYON_ENTRANCE_PERCENTAGES": {"161": 30, "21": 20, "22": 15, "231": 15, "52": 10, "53": 5, "54": 3, "79": 2},
   "GREEN_PATH_PERCENTAGES": { "72": 95, "73": 5 },
   "OUTCAST_ISLAND_PERCENTAGES": { "72": 95, "73": 5 },
   "SEVII_ALTERING_CAVE_PERCENTAGES": { "41": 12, "179": 11, "204": 11, "228": 11, "216": 11, "190": 11, "213": 11, "234": 11, "235": 11 },
-  "WATER_PATH_PERCENTAGES": { "72": 49, "161": 15, "21": 10, "22": 8, "43": 5, "52": 5, "44": 2, "53": 2, "54": 2, "73": 2 },
-  "MEMORIAL_PILLAR_PERCENTAGES": { "72": 65, "187": 30, "73": 5 },
+  "WATER_PATH_PERCENTAGES": {"161": 30, "21": 20, "22": 15, "52": 10, "43": 5, "53": 5, "69": 5, "44": 3, "54": 3, "70": 2, "79": 2},
+  "MEMORIAL_PILLAR_PERCENTAGES": {"187": 100},
   "RESORT_GORGEOUS_PERCENTAGES": { "72": 65, "187": 30, "73": 5 },
   "STORY_PROGRESSION": {
     "RESORT_GORGEOUS": {
       "area_type": "wild_route",
       "route_name": "Resort Gorgeous",
       "region": "KANTO",
-      "battle_type": "ocean",
+      "battle_type": "ocean", "surf_pool_percentages": "RESORT_GORGEOUS_SURF_PERCENTAGES",
       "can_fish": true,
       "wild_pool_percentages": "RESORT_GORGEOUS_PERCENTAGES",
       "min_rounds": 2,
@@ -55,22 +55,8 @@
           "text": "SELPHY'S VILLA",
           "action": "EVENT",
           "color": "GOLD",
-          "event": {
-            "lines": [
-              "Selphy: Welcome to my villa! Oh, a real Champion!",
-              "Please, take a little something from our resort shop."
-            ],
-            "gift_item": {
-              "balls": 10,
-              "RARE_CANDY": 2
-            },
-            "flag": "visited_resort_gorgeous",
-            "done": [
-              "Selphy: Do come again!"
-            ]
-          },
-          "flag_condition": "not visited_resort_gorgeous",
-          "door": "villa"
+          "event": {"lines": [], "show_request": {"flag": "selphy_wish", "rewards": ["NUGGET", "PEARL", "BIG_PEARL", "STARDUST", "STAR_PIECE", "RARE_CANDY"], "ask": ["Selphy: I'm bored, simply bored! I wish to see a {mon}. Do bring one to show me!"], "thanks": ["Selphy: Oh! A {mon}! It's even more charming than I dreamed.", "Selphy: Here, a little something for your trouble."]}},
+          "door": "villa", "condition": "selphy_home"
         },
         {
           "text": "Water Labyrinth",
@@ -93,7 +79,7 @@
       "area_type": "wild_route",
       "route_name": "Memorial Pillar",
       "region": "KANTO",
-      "battle_type": "ocean",
+      "battle_type": "ocean", "surf_pool_percentages": "MEMORIAL_PILLAR_SURF_PERCENTAGES",
       "can_fish": true,
       "wild_pool_percentages": "MEMORIAL_PILLAR_PERCENTAGES",
       "min_rounds": 2,
@@ -102,7 +88,7 @@
         { "sprite": "birdkeeper.png", "name": "Chaz", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [47, 49], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Harold", "class": "BIRD_KEEPER", "team": [163, 164], "levels": [47, 49], "rewards": { "balls": 3 } }
       ],
-      "level": 55,
+      "level": 55, "wild_levels": {"land": [6, 16]},
       "subregion": "SEVII",
       "route_menu": [
         {
@@ -135,7 +121,9 @@
           "target_area": "FIVE_ISLE_MEADOW",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "METAL COAT", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_metalcoat_pillar", "event": {"lines": ["A Metal Coat, by the cliff path."], "gift_item": {"METAL_COAT": 1}, "flag": "got_metalcoat_pillar"}},
+        {"text": "Memorial man", "action": "EVENT", "event": {"stages": [{"requires": ["has_item:LEMONADE"], "flag": "got_tm_facade_pillar", "take_item": {"LEMONADE": 1}, "gift_item": {"TM025": 1}, "lines": ["Man: You'd leave a Lemonade for Tectonix? He did love those...", "Thank you, truly. Please take this: TM025 Facade. It hits harder when the user is hurt, burned or poisoned."]}, {"requires": ["not:got_tm_facade_pillar"], "lines": ["Man: Scrub, scrub... I keep this stone clean. My Onix, Tectonix, rests here.", "On hot days he always wanted a cold Lemonade. I'll never forget that."]}, {"lines": ["Man: Scrub, scrub... Tectonix would be glad you came by."]}]}}
       ],
       "next_area": "FIVE_ISLE_MEADOW"
     },
@@ -143,7 +131,7 @@
       "area_type": "wild_route",
       "route_name": "Water Path",
       "region": "KANTO",
-      "battle_type": "ocean",
+      "battle_type": "ocean", "surf_pool_percentages": "WATER_PATH_SURF_PERCENTAGES",
       "can_fish": true,
       "wild_pool_percentages": "WATER_PATH_PERCENTAGES",
       "min_rounds": 2,
@@ -202,7 +190,10 @@
           "target_area": "SIX_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_waterpath", "event": {"lines": ["An Elixir, washed up on the rocks."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_waterpath"}},
+        {"text": "DRAGON SCALE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dragonscale_waterpath", "event": {"lines": ["A Dragon Scale! Sea Pokémon shed these."], "gift_item": {"DRAGON_SCALE": 1}, "flag": "got_dragonscale_waterpath"}},
+        {"text": "HERACROSS FAN", "action": "EVENT", "event": {"stages": [{"requires": ["party_has:214"], "flag": "got_nestball_waterpath", "gift_item": {"NEST_BALL": 1}, "lines": ["Woman: Eek! A Heracross! May I measure its horn? ...Oh, how splendid!", "Woman: Thank you! Please, take this Nest Ball."]}, {"requires": ["not:got_nestball_waterpath"], "lines": ["Woman: I just adore Heracross! If you ever catch one, please let me measure it!"]}, {"lines": ["Woman: That Heracross's horn was magnificent. Come back if you find a bigger one!"]}]}}
       ],
       "next_area": "GREEN_PATH"
     },
@@ -243,7 +234,7 @@
       "area_type": "wild_route",
       "route_name": "Outcast Island",
       "region": "KANTO",
-      "battle_type": "ocean",
+      "battle_type": "ocean", "surf_pool_percentages": "OUTCAST_ISLAND_SURF_PERCENTAGES",
       "can_fish": true,
       "wild_pool_percentages": "OUTCAST_ISLAND_PERCENTAGES",
       "min_rounds": 2,
@@ -294,7 +285,8 @@
           "target_area": "SEVII_ALTERING_CAVE",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ppup_outcast", "event": {"lines": ["A PP Up, by the rocks."], "gift_item": {"PP_UP": 1}, "flag": "got_ppup_outcast"}}
       ],
       "next_area": "GREEN_PATH"
     },
@@ -302,7 +294,7 @@
       "area_type": "wild_route",
       "route_name": "Green Path",
       "region": "KANTO",
-      "battle_type": "grass",
+      "battle_type": "grass", "surf_pool_percentages": "GREEN_PATH_SURF_PERCENTAGES",
       "can_fish": true,
       "wild_pool_percentages": "GREEN_PATH_PERCENTAGES",
       "min_rounds": 2,
@@ -413,7 +405,7 @@
       "next_area": "SEVEN_ISLAND"
     },
     "ONE_ISLAND": {
-      "area_type": "town",
+      "area_type": "town", "can_fish": true,
       "route_name": "One Island",
       "region": "KANTO",
       "level": 40,
@@ -427,6 +419,23 @@
         {
           "text": "Shop", "door": "center",
           "action": "SHOP"
+        },
+        {
+          "text": "Celio's Tri-Pass", "door": "center", "action": "EVENT", "color": "GOLD",
+          "event": {
+            "lines": [
+              "Celio: Bill! You really came. And this must be the friend you told me about.",
+              "I'm Celio. I look after the PC network for these islands.",
+              "Bill is staying to help me for a while. Here, take this Tri-Pass.",
+              "The ferry will carry you between One, Two and Three Island with it."
+            ],
+            "gift_item": {
+              "TRI_PASS": 1
+            },
+            "flag": "got_tri_pass"
+          },
+          "condition": "not:has_item:TRI_PASS",
+          "flag_condition": "not got_tri_pass"
         },
         {
           "text": "Celio's Network Machine", "door": "center",
@@ -445,7 +454,7 @@
               "Celio: Still no Ruby or Sapphire... I heard Team Rocket was seen on Mt. Ember."
             ]
           },
-          "flag_condition": "not network_machine_fixed"
+          "flag_condition": "not network_machine_fixed", "condition": {"any": ["got_tri_pass", "has_item:TRI_PASS"]}
         },
         {
           "text": "Celio's Rainbow Pass", "door": "center",
@@ -470,27 +479,16 @@
             "flag": "got_rainbow_pass"
           },
           "condition": "beat_champion",
-          "flag_condition": "not got_rainbow_pass"
+          "flag_condition": "not got_rainbow_pass", "condition": {"any": ["got_tri_pass", "has_item:TRI_PASS"]}
         },
         {
           "text": "Give Celio the Gems", "door": "center",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
-            "requires": [
-              "has_item:RUBY",
-              "has_item:SAPPHIRE"
-            ],
-            "lines": [
-              "Celio: The Ruby AND the Sapphire! You got them back from Team Rocket!",
-              "With these, the Network Machine works! Kanto is linked to the world.",
-              "Oh, and the warehouse files mentioned this old sea chart...",
-              "It shows an island that isn't on any map. Sailors see a pink Pokemon there!"
-            ],
-            "take_item": {
-              "RUBY": 1,
-              "SAPPHIRE": 1
-            },
+            "requires": ["celio_has_ruby", "has_item:SAPPHIRE"],
+            "lines": ["Celio: The Sapphire! With the Ruby, the Network Machine finally works!", "Celio: Kanto is linked to the world. Thank you!", "Celio: Oh, and the warehouse files mentioned this old sea chart...", "Celio: It shows an island that isn't on any map. Sailors see a pink Pokemon there!"],
+            "take_item": {"SAPPHIRE": 1},
             "gift_item": {
               "OLD_SEA_MAP": 1
             },
@@ -498,7 +496,8 @@
           },
           "condition": "has_item:SAPPHIRE",
           "flag_condition": "not network_machine_fixed"
-        }
+        },
+        {"text": "Celio's Ruby", "door": "center", "action": "EVENT", "color": "GOLD", "condition": "has_item:RUBY", "flag_condition": "not celio_has_ruby", "event": {"lines": ["Celio: That's a Ruby! Just what the Network Machine needs!", "Celio: Thank you! Now it only lacks a Sapphire. I'll keep looking."], "take_item": {"RUBY": 1}, "flag": "celio_has_ruby"}}
       ],
       "travel_options": [
         {"text": "Treasure Beach", "condition": "has_item:HM_SURF", "target_area": "TREASURE_BEACH"},
@@ -517,13 +516,13 @@
       "next_area": "TREASURE_BEACH"
     },
     "TREASURE_BEACH": {
-      "area_type": "wild_route",
+      "area_type": "wild_route", "can_fish": true,
       "route_name": "Treasure Beach",
       "region": "KANTO",
       "level": 33,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_TREASURE_BEACH_PERCENTAGES",
-      "battle_type": "ocean",
+      "battle_type": "ocean", "surf_pool_percentages": "TREASURE_BEACH_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "swimmer_f.png", "name": "Amara", "class": "SWIMMER", "team": [86, 86, 87], "levels": [36, 36, 36], "rewards": { "balls": 3 } }
@@ -569,18 +568,19 @@
           "target_area": "ONE_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"}
       ],
       "next_area": "ONE_ISLAND"
     },
     "KINDLE_ROAD": {
-      "area_type": "wild_route",
+      "area_type": "wild_route", "can_fish": true,
       "route_name": "Kindle Road",
       "region": "KANTO",
       "level": 33,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_KINDLE_ROAD_PERCENTAGES",
-      "battle_type": "mountain",
+      "battle_type": "mountain", "surf_pool_percentages": "KINDLE_ROAD_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "fisherman.png", "name": "Tommy", "class": "FISHERMAN", "team": [118, 118, 119, 119, 119], "levels": [33, 33, 35, 35, 35], "rewards": { "balls": 3 } },
@@ -651,7 +651,8 @@
           "target_area": "MT_EMBER",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"}
       ],
       "next_area": "ONE_ISLAND"
     },
@@ -743,43 +744,9 @@
           "text": "CHASE OFF TEAM ROCKET",
           "action": "EVENT",
           "color": "GOLD",
-          "event": {
-            "requires": [
-              "met_ember_researchers"
-            ],
-            "lines": [
-              "Rocket Grunt: The boss is gone, but we've got our own plans now!",
-              "Gems, stronger Pokemon, forced evolution... Scram, kid!"
-            ],
-            "battle": {
-              "name": "Rocket Grunts",
-              "class": "ROCKET_GRUNT",
-              "sprite": "rocket_grunt_m.png",
-              "team": [
-                109,
-                41,
-                110,
-                24
-              ],
-              "levels": [
-                42,
-                42,
-                44,
-                44
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "dialogue": {
-                "player_won": [
-                  "Grunt: Fine, keep the mountain! We'll find the gems elsewhere."
-                ]
-              }
-            },
-            "flag": "sevii_ember_rocket"
-          },
+          "event": {"requires": ["met_ember_researchers"], "fail": ["Grunt: Beat it, kid. This dig site is off limits!"], "flag": "ember_grunt_b", "lines": ["Grunt: Get lost, kid! This dig site is Team Rocket's!"], "battle": {"name": "Grunt ", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [19, 20, 27, 28], "levels": [35, 35, 35, 35], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Grunt: No way! Beaten by a kid!"]}}},
           "condition": "met_ember_researchers",
-          "flag_condition": "not sevii_ember_rocket"
+          "flag_condition": "not ember_grunt_b"
         },
         {
           "text": "CHALLENGE MOLTRES",
@@ -793,7 +760,10 @@
           "target_area": "KINDLE_ROAD",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "ROCKET GRUNT", "action": "EVENT", "color": "GOLD", "flag_condition": "not ember_grunt_a", "event": {"stages": [{"requires": ["not:met_ember_researchers"], "lines": ["Grunt: Dig, dig, dig! There's treasure in this mountain, I just know it!"]}, {"flag": "ember_grunt_a", "lines": ["Grunt: You've been listening in, haven't you? Snoops get squashed!"], "battle": {"name": "Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [104, 105], "levels": [37, 37], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Grunt: Argh! The treasure was nearly ours!"]}}}]}},
+        {"text": "JESSIE AND JAMES", "action": "EVENT", "color": "GOLD", "condition": ["ember_grunt_a", "ember_grunt_b"], "flag_condition": "not sevii_ember_rocket", "event": {"lines": ["Jessie: Hold it right there! You've wrecked our dig!", "James: The treasure of this mountain belongs to Team Rocket!"], "battle": {"name": "Jessie and James", "class": "ROCKET", "sprite": "jessie_james.png", "team": [24, 110, 52], "levels": [37, 37, 37], "rewards": {"balls": 5}, "dialogue": {"player_won": ["Jessie and James: We're blasting off agaaain!"]}}, "flag": "sevii_ember_rocket"}},
+        {"text": "RUBY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ruby_sevii", "event": {"lines": ["A red gem glitters in the dark... the Ruby!"], "gift_item": {"RUBY": 1}, "flag": "got_ruby_sevii"}}
       ],
       "next_area": "KINDLE_ROAD",
       "area_boss": {
@@ -846,20 +816,7 @@
           "door": "gamecorner",
           "action": "EVENT",
           "color": "GOLD",
-          "event": {
-            "requires": [
-              "rescued_lostelle"
-            ],
-            "lines": [
-              "Lostelle: Thank you for saving me from that Hypno!",
-              "Dad: How can we ever repay you? Please, take these."
-            ],
-            "gift_item": {
-              "RARE_CANDY": 3,
-              "balls": 10
-            },
-            "flag": "lostelle_thanked"
-          },
+          "event": {"requires": ["rescued_lostelle"], "lines": ["Lostelle: Daddy! I'm home! This Trainer saved me from a scary Hypno!", "Dad: How can I ever thank you? Please, take this. It's a Moon Stone: some Pokémon evolve when they touch it."], "gift_item": {"MOON_STONE": 1}, "flag": "lostelle_thanked"},
           "condition": "rescued_lostelle",
           "flag_condition": "not lostelle_thanked"
         }
@@ -929,13 +886,13 @@
       "next_area": "CAPE_BRINK"
     },
     "CAPE_BRINK": {
-      "area_type": "wild_route",
+      "area_type": "wild_route", "can_fish": true,
       "route_name": "Cape Brink",
       "region": "KANTO",
       "level": 34,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_CAPE_BRINK_PERCENTAGES",
-      "battle_type": "grass",
+      "battle_type": "grass", "surf_pool_percentages": "CAPE_BRINK_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
 
@@ -1006,7 +963,8 @@
           "target_area": "TWO_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"}
       ],
       "next_area": "TWO_ISLAND"
     },
@@ -1031,40 +989,7 @@
           "text": "Stop the Biker Gang",
           "action": "EVENT",
           "color": "GOLD",
-          "event": {
-            "lines": [
-              "Biker: This island's ours now! Nobody crosses Bond Bridge without beating our leader!"
-            ],
-            "battle": {
-              "name": "Biker Paxton",
-              "class": "BIKER",
-              "sprite": "biker.png",
-              "team": [
-                109,
-                89,
-                110,
-                89
-              ],
-              "levels": [
-                43,
-                44,
-                45,
-                46
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "dialogue": {
-                "player_won": [
-                  "Paxton: Okay, okay! We're leaving! Take your bridge back!"
-                ]
-              }
-            },
-            "flag": "beat_three_island_bikers",
-            "done": [
-              "Townsfolk: The bikers are gone! You can cross Bond Bridge now."
-            ]
-          },
+          "event": {"stages": [{"flag": "three_goon_1", "lines": ["Biker: What're you looking at? Wanna make something of it?"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "biker.png", "team": [109, 88], "levels": [37, 37], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: Whoa... you're tougher than you look."]}}}, {"requires": ["three_goon_1"], "flag": "three_goon_2", "lines": ["Biker: You beat him? Fine. My turn!"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "biker.png", "team": [109], "levels": [38], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: Aww, man! Don't laugh!"]}}}, {"requires": ["three_goon_2"], "flag": "three_goon_3", "lines": ["Biker: Aren't you from Kanto? You should be on our side!"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "biker.png", "team": [88], "levels": [38], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: No way... the boss is gonna hear about this."]}}}, {"requires": ["three_goon_3"], "flag": "beat_three_island_bikers", "lines": ["Paxton: So you're the kid pushing my gang around? Nobody does that to Paxton!"], "battle": {"name": "Cue Ball Paxton", "class": "CUE_BALL", "sprite": "cueball.png", "team": [110, 89], "levels": [39, 39], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Paxton: Okay, okay! We're leaving! Take your bridge back!"]}}}], "done": ["Townsfolk: The bikers are gone! You can cross Bond Bridge now."]},
           "flag_condition": "not beat_three_island_bikers"
         }
       ],
@@ -1083,13 +1008,13 @@
       "next_area": "BOND_BRIDGE"
     },
     "BOND_BRIDGE": {
-      "area_type": "wild_route",
+      "area_type": "wild_route", "can_fish": true,
       "route_name": "Bond Bridge",
       "region": "KANTO",
       "level": 32,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_BOND_BRIDGE_PERCENTAGES",
-      "battle_type": "grass",
+      "battle_type": "grass", "surf_pool_percentages": "BOND_BRIDGE_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "swimmer_f.png", "name": "Tisha", "class": "SWIMMER", "team": [99], "levels": [38], "rewards": { "balls": 3 } },
@@ -1131,18 +1056,19 @@
           "target_area": "BERRY_FOREST",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"}
       ],
       "next_area": "THREE_ISLAND"
     },
     "BERRY_FOREST": {
-      "area_type": "wild_route",
+      "area_type": "wild_route", "can_fish": true,
       "route_name": "Berry Forest",
       "region": "KANTO",
       "level": 34,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_BERRY_FOREST_PERCENTAGES",
-      "battle_type": "forest",
+      "battle_type": "forest", "surf_pool_percentages": "BERRY_FOREST_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [],
       "route_menu": [
@@ -1170,7 +1096,7 @@
           "boss": {
             "id": 97,
             "name": "Hypno",
-            "level": 48,
+            "level": 30,
             "no_catch": true,
             "victory_flag": "rescued_lostelle",
             "lines": [
@@ -1191,18 +1117,19 @@
           "target_area": "BOND_BRIDGE",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"}
       ],
       "next_area": "BOND_BRIDGE"
     },
     "FOUR_ISLAND": {
-      "area_type": "town",
+      "area_type": "town", "can_fish": true,
       "route_name": "Four Island",
       "region": "KANTO",
       "level": 52,
       "subregion": "SEVII",
       "has_gym": false,
-      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Pokémon Day Care", "door": "daycare", "action": "DAYCARE"}, {"text": "Contest Hall", "door": "hall", "action": "NPC", "target": "contest_hall"}, {"text": "Lorelei's House", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared", "flag_condition": "not defeated_lorelei_sevii"}],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Pokémon Day Care", "door": "daycare", "action": "DAYCARE"}, {"text": "Lorelei's House", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared", "flag_condition": "not defeated_lorelei_sevii"}, {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_starpiece_four", "event": {"lines": ["A Star Piece, behind the rock by the shore."], "gift_item": {"STAR_PIECE": 1}, "flag": "got_starpiece_four"}}, {"text": "STARDUST", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_stardust_four", "event": {"lines": ["A pinch of Stardust, by Lorelei's house."], "gift_item": {"STARDUST": 1}, "flag": "got_stardust_four"}}, {"text": "Body Slam Tutor", "action": "EVENT", "color": "GOLD", "event": {"stages": [{"flag": "frlg_tutor_body_slam", "lines": ["Tutor: Boing! My buddy and I are having a body slam contest. Want in?", "I'll teach one of your Pokémon Body Slam. Just the once, mind!"], "tutor": {"move": "BODY-SLAM", "like": "BODY-SLAM"}, "fail": ["Tutor: Aww, none of your Pokémon can learn Body Slam."]}, {"requires": ["frlg_tutor_body_slam"], "tutor": {"move": "BODY-SLAM", "like": "BODY-SLAM"}, "tutor_repeat": true, "done": ["Tutor: Boing! Body Slam! Nothing beats it!"]}]}}],
       "travel_options": [
         {
           "text": "Icefall Cave",
@@ -1268,13 +1195,13 @@
       "next_area": "ICEFALL_CAVE"
     },
     "ICEFALL_CAVE": {
-      "area_type": "dungeon",
+      "area_type": "dungeon", "can_fish": true,
       "route_name": "Icefall Cave",
       "region": "KANTO",
       "level": 45,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_ICEFALL_CAVE_PERCENTAGES",
-      "battle_type": "cave",
+      "battle_type": "cave", "surf_pool_percentages": "ICEFALL_CAVE_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
 
@@ -1309,35 +1236,8 @@
             "fail": [
               "Voices echo from deep in the ice... Someone in town might know what's going on."
             ],
-            "lines": [
-              "Rocket Grunts have trapped a pod of Lapras in nets!",
-              "Grunt: These Lapras will make us a fortune! And there's word of a gem on Six Island..."
-            ],
-            "battle": {
-              "name": "Rocket Grunts",
-              "class": "ROCKET_GRUNT",
-              "sprite": "rocket_grunt_f.png",
-              "team": [
-                24,
-                42,
-                110,
-                20
-              ],
-              "levels": [
-                50,
-                51,
-                52,
-                52
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "dialogue": {
-                "player_won": [
-                  "Grunt: Ugh! Let the Lapras go! Retreat to the warehouse!"
-                ]
-              }
-            },
+            "lines": ["Jessie: Hands off! These Lapras are ours to sell!", "James: And nobody spoils a Team Rocket payday!"],
+            "battle": {"name": "Jessie and James", "class": "ROCKET", "sprite": "jessie_james.png", "team": [110, 24, 52], "levels": [38, 38, 38], "rewards": {"balls": 5}, "dialogue": {"player_won": ["Jessie and James: Not again! We're blasting off agaaain!"]}},
             "flag": "sevii_icefall_cleared"
           },
           "condition": "met_lorelei_sevii",
@@ -1348,16 +1248,7 @@
           "action": "EVENT",
           "color": "GOLD",
           "flag_condition": "not got_waterfall_sevii",
-          "event": {
-            "lines": [
-              "Something is lying on the ice...",
-              "You found HM WATERFALL! Now you can climb the falls."
-            ],
-            "gift_item": {
-              "HM_WATERFALL": 1
-            },
-            "flag": "got_waterfall_sevii"
-          }
+          "event": {"lines": ["An item ball lies by the ice...", "You found HM WATERFALL! Now you can climb the falls."], "gift_item": {"HM_WATERFALL": 1}, "flag": "got_waterfall_sevii"}, "found": true
         },
         {
           "text": "Four Island",
@@ -1365,12 +1256,16 @@
           "target_area": "FOUR_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball_icefall", "event": {"lines": ["An Ultra Ball, on the cold rock."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball_icefall"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore_icefall", "event": {"lines": ["A Full Restore, frozen to the floor."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore_icefall"}},
+        {"text": "NEVERMELTICE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nevermeltice_icefall", "event": {"lines": ["A piece of NeverMeltIce! It never thaws."], "gift_item": {"NEVER_MELT_ICE": 1}, "flag": "got_nevermeltice_icefall"}},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"}
       ],
       "next_area": "FOUR_ISLAND"
     },
     "FIVE_ISLAND": {
-      "area_type": "town",
+      "area_type": "town", "can_fish": true,
       "route_name": "Five Island",
       "region": "KANTO",
       "level": 54,
@@ -1464,13 +1359,13 @@
       "next_area": "FIVE_ISLE_MEADOW"
     },
     "FIVE_ISLE_MEADOW": {
-      "area_type": "wild_route",
+      "area_type": "wild_route", "can_fish": true,
       "route_name": "Five Isle Meadow",
       "region": "KANTO",
       "level": 41,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES",
-      "battle_type": "grass",
+      "battle_type": "grass", "surf_pool_percentages": "FIVE_ISLE_MEADOW_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [19, 88, 89], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
@@ -1483,7 +1378,10 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "Memorial Pillar", "action": "EXIT", "target_area": "MEMORIAL_PILLAR", "condition": "can_exit", "color": "RED"},
-        {"text": "ROCKET WAREHOUSE", "action": "EXIT", "target": "ROCKET_WAREHOUSE", "condition": ["can_exit", "sapphire_stolen"], "color": "RED"}
+        {"text": "ROCKET WAREHOUSE", "action": "EXIT", "target": "ROCKET_WAREHOUSE", "condition": ["can_exit", "sapphire_stolen"], "color": "RED"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_meadow", "event": {"lines": ["A Max Potion, in the long grass."], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_meadow"}},
+        {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ppup_meadow", "event": {"lines": ["A PP Up, by the water's edge."], "gift_item": {"PP_UP": 1}, "flag": "got_ppup_meadow"}}
       ],
       "next_area": "FIVE_ISLAND"
     },
@@ -1494,7 +1392,7 @@
       "level": 54,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_WATER_LABYRINTH_PERCENTAGES",
-      "battle_type": "ocean",
+      "battle_type": "ocean", "surf_pool_percentages": "WATER_LABYRINTH_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "pokefan_f.png", "name": "Alize", "class": "POKEMON_BREEDER", "team": [25, 35, 183], "levels": [48, 48, 48], "rewards": { "balls": 3 } }
@@ -1522,15 +1420,7 @@
           "text": "THE OLD MAN'S EGG",
           "action": "EVENT",
           "color": "GOLD",
-          "event": {
-            "lines": [
-              "Old Man: I raise Pokemon by the water... This Egg hatched while I wasn't looking!",
-              "Togepi needs a trainer who travels. Will you take it?"
-            ],
-            "gift_pokemon": 175,
-            "flag": "got_sevii_togepi"
-          },
-          "flag_condition": "not got_sevii_togepi"
+          "event": {"stages": [{"requires": ["lead_friend:255"], "flag": "got_sevii_togepi", "gift_egg": 175, "lines": ["Old man: My, how fond your Pokémon is of you! You must treat it well.", "Old man: I was given this Egg on my travels. It belongs with someone like you."]}, {"requires": ["not:got_sevii_togepi"], "lines": ["Old man: You travel a lot, don't you? Are you kind to your Pokémon?", "Old man: Hmm... your first Pokémon doesn't seem that close to you yet. Come back when it loves you dearly."]}, {"lines": ["Old man: Has that Egg hatched yet? It wanted a Trainer who travels, like you."]}]}
         },
         {
           "text": "Five Island",
@@ -1556,7 +1446,7 @@
         { "sprite": "ruinmaniac.png", "name": "Lawson", "class": "RUIN_MANIAC", "team": [95, 75, 105], "levels": [47, 48, 49], "rewards": { "balls": 3 } },
         { "sprite": "psychic_m.png", "name": "Laura", "class": "PSYCHIC", "team": [177, 177, 178], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["You feel your way through the pitch-black cave...", "Someone dropped a pouch here long ago. You found it!"], "gift_item": {"RARE_CANDY": 3}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Something was left here in the dark..."], "gift_item": {"RARE_CANDY": 1}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched", "found": true}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}, {"text": "SILK SCARF", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_silkscarf_lost", "event": {"lines": ["A Silk Scarf, dropped in the dark."], "gift_item": {"SILK_SCARF": 1}, "flag": "got_silkscarf_lost"}}, {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_laxincense_lost", "event": {"lines": ["Lax Incense, its scent still faint."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_laxincense_lost"}}, {"text": "SEA INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_seaincense_lost", "event": {"lines": ["Sea Incense, smelling of the shore."], "gift_item": {"SEA_INCENSE": 1}, "flag": "got_seaincense_lost"}}, {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_lost", "event": {"lines": ["A Max Revive, deep in the cave."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_lost"}}, {"text": "LADY SELPHY", "action": "EVENT", "color": "GOLD", "flag_condition": "not rescued_selphy", "event": {"lines": ["Selphy: Oh! At last, someone! I came to see the cave and now I simply cannot find the way out.", "Selphy: But a lady never turns down a battle. Let us see what you can do!"], "battle": {"name": "Lady Selphy", "class": "LADY", "sprite": "beauty.png", "team": [53, 53], "levels": [49, 49], "rewards": {"balls": 5}, "dialogue": {"player_won": ["Selphy: How thrilling! Now, do take me home to my villa at once."]}}, "flag": "rescued_selphy"}}],
       "next_area": "FIVE_ISLAND"
     },
     "ROCKET_WAREHOUSE": {
@@ -1571,20 +1461,24 @@
         { "sprite": "scientist.png", "name": "Gideon", "class": "SCIENTIST", "team": [100, 101, 81, 82, 137], "levels": [46, 46, 46, 46, 46], "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [228, 228], "levels": [49, 49], "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [66, 66, 67], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [97, 97], "levels": [49, 49], "rewards": { "balls": 3 } }
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [97, 97], "levels": [49, 49], "rewards": { "balls": 3 } },
+        {"sprite": "rocket_grunt_m.png", "name": "Admin", "class": "ROCKET_ADMIN", "team": [89, 24, 45], "levels": [52, 53, 54], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "UNLOCK THE DOORS", "action": "EVENT", "color": "GOLD", "event": {"puzzle": "security", "lines": ["The doors open, one by one. The Admin's office is ahead!"], "puzzle_fail": ["The door pads reset. Try the codes again!"], "flag": "warehouse_doors_open"}, "flag_condition": "not warehouse_doors_open"},
-        {"text": "CONFRONT THE ADMIN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["warehouse_doors_open"], "lines": ["Admin: So you're the one ruining our plans on every island.", "With the Ruby and Sapphire we'd force any Pokemon to evolve! Prepare yourself!"], "battle": {"name": "Rocket Admin Archer", "class": "ROCKET_ADMIN", "sprite": "archer.png", "team": [229, 110, 42, 24, 112], "levels": [56, 57, 56, 57, 59], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Archer: Impossible... Take your precious gems, then!"]}}, "flag": "sevii_warehouse_cleared"}, "condition": ["warehouse_doors_open", "no_trainers"], "flag_condition": "not sevii_warehouse_cleared"},
-        {"text": "RECOVER THE GEMS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_warehouse_cleared"], "lines": ["On the Admin's desk sit two glowing gems: the Ruby and the Sapphire!", "Team Rocket's Sevii hideout is shut down for good. Take them to Celio!"], "gift_item": {"RUBY": 1, "SAPPHIRE": 1}, "flag": "got_sevii_gems"}, "condition": "sevii_warehouse_cleared", "flag_condition": "not got_sevii_gems"},
+        {"text": "CONFRONT THE ADMIN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["warehouse_doors_open", "no_trainers"], "fail": ["Admin: Hmph. Get through the locked doors and past my men first, if you can!"], "lines": ["Admin: So you're the one ruining our plans on every island.", "With the Ruby and Sapphire we'd force any Pokemon to evolve! Prepare yourself!"], "battle": {"name": "Rocket Admin Archer", "class": "ROCKET_ADMIN", "sprite": "archer.png", "team": [42, 110, 229], "levels": [53, 54, 55], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Archer: Impossible... Take your precious gems, then!"]}}, "flag": "sevii_warehouse_cleared"}, "flag_condition": "not sevii_warehouse_cleared"},
+        {"text": "RECOVER THE GEMS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_warehouse_cleared"], "lines": ["On the Admin's desk lies the stolen Sapphire!", "Team Rocket's Sevii hideout is shut down for good. Take it to Celio!"], "gift_item": {"SAPPHIRE": 1}, "flag": "got_sevii_gems"}, "condition": "sevii_warehouse_cleared", "flag_condition": "not got_sevii_gems"},
         {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
-        {"text": "FIVE ISLE MEADOW", "action": "EXIT", "target": "FIVE_ISLE_MEADOW", "condition": "can_exit", "color": "RED"}
+        {"text": "FIVE ISLE MEADOW", "action": "EXIT", "target": "FIVE_ISLE_MEADOW", "condition": "can_exit", "color": "RED"},
+        {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_bigpearl_warehouse", "event": {"lines": ["A Big Pearl, among the crates."], "gift_item": {"BIG_PEARL": 1}, "flag": "got_bigpearl_warehouse"}},
+        {"text": "TM208", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm_sludgebomb_warehouse", "event": {"lines": ["TM148 Sludge Bomb! Left behind by Team Rocket."], "gift_item": {"TM148": 1}, "flag": "got_tm_sludgebomb_warehouse"}},
+        {"text": "PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pearl_warehouse", "event": {"lines": ["A Pearl, in a corner of the warehouse."], "gift_item": {"PEARL": 1}, "flag": "got_pearl_warehouse"}}
       ],
       "next_area": "FIVE_ISLAND"
     },
     "SIX_ISLAND": {
-      "area_type": "town",
+      "area_type": "town", "can_fish": true,
       "route_name": "Six Island",
       "region": "KANTO",
       "level": 56,
@@ -1748,13 +1642,13 @@
       "next_area": "SIX_ISLAND"
     },
     "RUIN_VALLEY": {
-      "area_type": "wild_route",
+      "area_type": "wild_route", "can_fish": true,
       "route_name": "Ruin Valley",
       "region": "KANTO",
       "level": 41,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_RUIN_VALLEY_PERCENTAGES",
-      "battle_type": "mountain",
+      "battle_type": "mountain", "surf_pool_percentages": "RUIN_VALLEY_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "hiker.png", "name": "Daryl", "class": "HIKER", "team": [185], "levels": [50], "rewards": { "balls": 3 } },
@@ -1796,7 +1690,11 @@
           "condition": "can_exit",
           "color": "RED"
         },
-        {"text": "Water Path", "action": "EXIT", "target_area": "WATER_PATH", "condition": "can_exit", "color": "RED"}
+        {"text": "Water Path", "action": "EXIT", "target_area": "WATER_PATH", "condition": "can_exit", "color": "RED"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "HP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hpup_ruinvalley", "event": {"lines": ["An HP Up, behind the boulders."], "gift_item": {"HP_UP": 1}, "flag": "got_hpup_ruinvalley"}},
+        {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_fullrestore_ruinvalley", "event": {"lines": ["A Full Restore, in a corner of the valley."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_fullrestore_ruinvalley"}},
+        {"text": "SUN STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_sunstone_ruinvalley", "event": {"lines": ["A Sun Stone, warm to the touch!"], "gift_item": {"SUN_STONE": 1}, "flag": "got_sunstone_ruinvalley"}}
       ],
       "next_area": "SIX_ISLAND"
     },
@@ -1811,22 +1709,6 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "READ THE BRAILLE",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "puzzle": "braille",
-            "lines": [
-              "A hidden passage opens into the ruins below!"
-            ],
-            "puzzle_fail": [
-              "The dots stay silent. Maybe count again?"
-            ],
-            "flag": "dotted_hole_open"
-          },
-          "flag_condition": "not dotted_hole_open"
-        },
-        {
           "text": "TAKE THE SAPPHIRE",
           "action": "EVENT",
           "color": "GOLD",
@@ -1834,12 +1716,7 @@
             "requires": [
               "dotted_hole_open"
             ],
-            "lines": [
-              "Deep underground, a blue gem glows on a stone pedestal: the Sapphire!",
-              "As you reach for it, a man in a lab coat shoves past and grabs it!",
-              "Gideon: Thanks for opening the door! Team Rocket will pay well for this.",
-              "He runs off toward the docks... toward Five Island's Rocket Warehouse!"
-            ],
+            "lines": ["Deep underground, a blue gem glows on a stone pedestal: the Sapphire!", "As you reach for it, a man in a lab coat shoves past and grabs it!", "Gideon: Thanks for opening the way! Team Rocket will pay well for this.", "Gideon: Now, the warehouse password... 'Yes, nah, Chansey'. Ha! I'm off!", "He runs off toward Five Island... and the Rocket Warehouse on the Meadow!"],
             "flag": "sapphire_stolen"
           },
           "condition": "dotted_hole_open",
@@ -1856,7 +1733,7 @@
       "next_area": "RUIN_VALLEY"
     },
     "SEVEN_ISLAND": {
-      "area_type": "town",
+      "area_type": "town", "can_fish": true,
       "route_name": "Seven Island",
       "region": "KANTO",
       "level": 58,
@@ -1875,7 +1752,10 @@
           "text": "Trainer Tower",
           "action": "GYM",
           "color": "GOLD"
-        }
+        },
+        {"text": "Swords Dance Tutor", "action": "EVENT", "color": "GOLD", "event": {"stages": [{"flag": "frlg_tutor_swords_dance", "lines": ["Trainee: Hardly anyone comes out this far. Train here and you're sure to get stronger!", "Trainee: Here, let me teach one of your Pokémon Swords Dance. Only the once, though!"], "tutor": {"move": "SWORDS-DANCE", "like": "SWORDS-DANCE"}, "fail": ["Trainee: Hmm, none of your Pokémon can learn Swords Dance."]}, {"requires": ["frlg_tutor_swords_dance"], "tutor": {"move": "SWORDS-DANCE", "like": "SWORDS-DANCE"}, "tutor_repeat": true, "done": ["Trainee: Swords Dance! Sharpen up and strike hard!"]}]}},
+        {"text": "Psychic Dario", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Dario: I sense a strong will in you. Show me!"], "flag": "beat_dario_seven", "done": ["Dario: The Tower calls to the strong. Go on."], "battle": {"name": "Psychic Dario", "class": "PSYCHIC", "sprite": "psychic_m.png", "team": [203], "levels": [52], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Dario: My mind was clear, yet I lost..."]}}}},
+        {"text": "Psychic Rodette", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Rodette: The future I foresaw has you battling me!"], "flag": "beat_rodette_seven", "done": ["Rodette: Good luck in the Trainer Tower."], "battle": {"name": "Psychic Rodette", "class": "PSYCHIC", "sprite": "psychic.png", "team": [177, 96, 97], "levels": [48, 48, 50], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Rodette: I didn't foresee that ending!"]}}}}
       ],
       "travel_options": [
         {
@@ -2101,15 +1981,19 @@
         },
         {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "Canyon Entrance", "action": "EXIT", "target_area": "CANYON_ENTRANCE", "condition": "can_exit", "color": "RED"},
-        {"text": "TANOBY RUINS", "action": "EXIT", "target": "TANOBY_RUINS", "condition": "can_exit", "color": "RED"}
+        {"text": "TANOBY RUINS", "action": "EXIT", "target": "TANOBY_RUINS", "condition": "can_exit", "color": "RED"},
+        {"text": "KING'S ROCK", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_kingsrock_sevault", "event": {"lines": ["A King's Rock, among the boulders."], "gift_item": {"KINGS_ROCK": 1}, "flag": "got_kingsrock_sevault"}},
+        {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxelixir_sevault", "event": {"lines": ["A Max Elixir, behind the rocks."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_maxelixir_sevault"}},
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_sevault", "event": {"lines": ["A Nugget, glinting on the canyon floor."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_sevault"}},
+        {"text": "LUCKY PUNCH", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_luckypunch_sevault", "event": {"lines": ["A Lucky Punch! Chansey love these."], "gift_item": {"LUCKY_PUNCH": 1}, "flag": "got_luckypunch_sevault"}}
       ],
       "next_area": "SEVEN_ISLAND"
     },
     "TANOBY_RUINS": {
-      "area_type": "dungeon",
+      "area_type": "dungeon", "can_fish": true,
       "route_name": "Tanoby Ruins",
       "region": "KANTO",
-      "level": 58,
+      "level": 58, "wild_levels": {"land": [25, 25]},
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_TANOBY_RUINS_PERCENTAGES",
       "alt_forms": {
@@ -2117,7 +2001,7 @@
         "enabled": true,
         "weights": {"201_a": 0.0886, "201_b": 0.0193, "201_c": 0.0536, "201_d": 0.0393, "201_e": 0.0193, "201_f": 0.0272, "201_g": 0.0357, "201_h": 0.0279, "201_i": 0.0236, "201_j": 0.0322, "201_k": 0.0193, "201_l": 0.0322, "201_m": 0.0236, "201_n": 0.0607, "201_o": 0.0186, "201_p": 0.0464, "201_q": 0.0222, "201_r": 0.0279, "201_s": 0.0393, "201_t": 0.0322, "201_u": 0.0214, "201_v": 0.0536, "201_w": 0.0393, "201_x": 0.0250, "201_y": 0.0464, "201_z": 0.0886, "201_exclamation": 0.0186, "201_question": 0.0186}
       },
-      "battle_type": "cave",
+      "battle_type": "cave", "surf_pool_percentages": "TANOBY_RUINS_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "gentleman.png", "name": "Clifford", "class": "GENTLEMAN", "team": [105, 55], "levels": [49, 49], "rewards": { "balls": 3 } },
@@ -2129,7 +2013,8 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": ["has_balls", "tanoby_chambers_open"], "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
-        {"text": "SEVAULT CANYON", "action": "EXIT", "target": "SEVAULT_CANYON", "condition": "can_exit", "color": "RED"}
+        {"text": "SEVAULT CANYON", "action": "EXIT", "target": "SEVAULT_CANYON", "condition": "can_exit", "color": "RED"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"}
       ],
       "next_area": "SEVEN_ISLAND"
     },
@@ -2180,71 +2065,59 @@
         "victory_flag": "caught_mew"
       }
     },
-        "THREE_ISLE_PORT": {"area_type": "wild_route", "route_name": "Three Isle Port", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "field", "wild_pool_percentages": "THREE_ISLE_PORT_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "Three Island", "action": "EXIT", "target_area": "THREE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLAND"},
+        "THREE_ISLE_PORT": {"area_type": "wild_route", "route_name": "Three Isle Port", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "field", "wild_pool_percentages": "THREE_ISLE_PORT_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "Three Island", "action": "EXIT", "target_area": "THREE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "PROSPECTOR", "action": "EVENT", "event": {"stages": [{"flag": "got_nugget_prospector", "gift_item": {"NUGGET": 1}, "lines": ["Prospector: Howdy! I'm digging for gold in this tunnel.", "Prospector: Look what I found! You have it, I've got plenty."]}, {"lines": ["Prospector: There's more gold in these walls, I just know it!"]}]}}], "next_area": "THREE_ISLAND"},
         "NAVEL_ROCK": {"border": true, "fly_island": true, "fly_group": "Faraway Islands", "boat_home": {"dock": "ONE_ISLAND", "HOENN": "LILYCOVE_CITY"}, "area_type": "dungeon", "route_name": "Navel Rock", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_lugia", "boss": {"id": 249, "level": 70, "name": "Lugia", "victory_flag": "navel_rock_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": []}, {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_ho_oh", "boss": {"id": 250, "level": 70, "name": "Ho-Oh", "victory_flag": "navel_rock_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": []}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60},
-        "BIRTH_ISLAND": {"border": true, "fly_island": true, "fly_group": "Faraway Islands", "boat_home": {"dock": "ONE_ISLAND", "HOENN": "LILYCOVE_CITY"}, "area_type": "dungeon", "route_name": "Birth Island", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK DEOXYS", "action": "BOSS", "color": "GOLD", "flag_condition": "not birth_island_deoxys", "boss": {"id": 386, "level": 30, "name": "Deoxys", "victory_flag": "birth_island_deoxys", "lines": ["A powerful presence fills the air... Deoxys appears!"]}, "condition": []}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60}
+        "BIRTH_ISLAND": {"border": true, "fly_island": true, "fly_group": "Faraway Islands", "boat_home": {"dock": "ONE_ISLAND", "HOENN": "LILYCOVE_CITY"}, "area_type": "dungeon", "route_name": "Birth Island", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK DEOXYS", "action": "BOSS", "color": "GOLD", "flag_condition": "not birth_island_deoxys", "boss": {"id": 386, "level": 30, "name": "Deoxys", "victory_flag": "birth_island_deoxys", "lines": ["A powerful presence fills the air... Deoxys appears!"]}, "condition": []}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "SAIL HOME", "action": "EVENT", "event": {"stages": [{"requires": ["playing_region:HOENN"], "lines": ["Sailor: All aboard! Back to Lilycove City."], "travel": "LILYCOVE_CITY"}, {"lines": ["Sailor: All aboard! Back to One Island."], "travel": "ONE_ISLAND"}]}}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60}
     },
   "JOURNAL_MISSIONS": [
     {
       "id": "sevii_m1",
-      "type": "SIDE",
+      "type": "MAIN",
       "title": "The Sevii Islands",
-      "description": "Blaine's Tri-Pass opens the Seagallop Ferry from Vermilion. Meet Celio on One Island.",
+      "description": "Bill is waiting at Cinnabar Island's harbour now that you've beaten Blaine. Ride the Seagallop Ferry with him to One Island and meet his friend Celio, who has a Tri-Pass for you.",
       "condition": {
-        "item": "TRI_PASS",
-        "flag_not": "met_celio",
+        "badge": "VOLCANO",
+        "flag_not": "got_tri_pass",
+        "item_not": "TRI_PASS",
         "required_region": "KANTO"
       },
-      "reward": "Network Machine",
-      "region": "KANTO"
+      "reward": "Tri-Pass",
+      "region": "KANTO",
+      "completed_flag": "got_tri_pass",
+      "target": "ONE_ISLAND", "steps": [{"area": "ONE_ISLAND", "room": "center", "at": [15, 6], "label": "Celio", "done": "got_tri_pass"}]
     },
     {
       "id": "sevii_m2",
-      "type": "SIDE",
+      "type": "MAIN",
       "title": "Team Rocket on Mt. Ember",
-      "description": "Researchers on Mt. Ember saw Team Rocket digging for a gem. Chase them off!",
-      "condition": {
-        "flag": "met_celio",
-        "flag_not": "sevii_ember_rocket",
-        "required_region": "KANTO"
-      },
+      "description": "Researchers on Mt. Ember saw Team Rocket digging by the Ruby Path. Find the researchers at the foot of the mountain, then stop the diggers.",
+      "condition": {"flag": "got_tri_pass", "flag_not": "sevii_ember_rocket", "required_region": "KANTO"},
       "reward": "Story progress",
-      "region": "KANTO"
+      "region": "KANTO", "steps": [{"area": "MT_EMBER", "floor": 0, "at": [29, 45], "label": "Researchers", "done": "met_ember_researchers"}, {"area": "MT_EMBER", "floor": 0, "at": [41, 40], "label": "Grunt", "done": "ember_grunt_a"}, {"area": "MT_EMBER", "floor": 0, "at": [42, 40], "label": "Grunt", "done": "ember_grunt_b"}, {"area": "MT_EMBER", "floor": 0, "at": [40, 41], "label": "Jessie & James", "done": "sevii_ember_rocket"}], "target": "MT_EMBER"
     },
     {
       "id": "sevii_m3",
-      "type": "SIDE",
+      "type": "MAIN",
       "title": "Lost Lostelle",
-      "description": "Lostelle never came home from Three Island. Beat the bikers on Bond Bridge and search the Berry Forest.",
-      "condition": {
-        "flag": "heard_lostelle",
-        "flag_not": "rescued_lostelle",
-        "required_region": "KANTO"
-      },
-      "reward": "Rare Candy",
-      "region": "KANTO"
+      "description": "Lostelle never came home. Her father runs Two Island's Joyful Game Corner: hear him out, then clear the bikers off Three Island and search the Berry Forest past Bond Bridge.",
+      "condition": {"flag": "celio_has_ruby", "flag_not": "rescued_lostelle", "required_region": "KANTO"},
+      "reward": "Moon Stone",
+      "region": "KANTO", "steps": [{"area": "TWO_ISLAND", "room": "gamecorner", "at": [5, 5], "label": "Lostelle's dad", "done": "heard_lostelle"}, {"area": "THREE_ISLAND", "at": [8, 24], "label": "Bikers", "done": "beat_three_island_bikers"}, {"area": "BERRY_FOREST", "floor": 0, "at": [4, 8], "label": "Lostelle", "done": "rescued_lostelle"}], "completed_flag": "rescued_lostelle", "target": "TWO_ISLAND"
     },
     {
       "id": "sevii_m4",
-      "type": "SIDE",
+      "type": "MAIN",
       "title": "The Rainbow Pass",
       "description": "As Champion with the National Pokedex, ask Celio for the Rainbow Pass to Islands 4-7.",
-      "condition": {
-        "flag": [
-          "met_celio",
-          "beat_champion"
-        ],
-        "flag_not": "got_rainbow_pass",
-        "required_region": "KANTO"
-      },
+      "condition": {"flag": ["got_tri_pass", "beat_champion"], "flag_not": "got_rainbow_pass", "required_region": "KANTO"},
       "reward": "Rainbow Pass",
-      "region": "KANTO"
+      "region": "KANTO", "target": "ONE_ISLAND", "steps": [{"area": "ONE_ISLAND", "room": "center", "at": [15, 6], "label": "Celio", "done": "got_rainbow_pass"}]
     },
     {
       "id": "sevii_m5",
-      "type": "SIDE",
-      "title": "The Ruby and the Sapphire",
-      "description": "Stop Team Rocket in Icefall Cave, open the Dotted Hole on Six Island, then raid the Rocket Warehouse on Five Island.",
+      "type": "MAIN",
+      "title": "The Sapphire",
+      "description": "Celio still needs a Sapphire. Lorelei on Four Island knows of trouble in Icefall Cave; the Sapphire lies in the Dotted Hole on Six Island. The Rocket Warehouse on Five Isle Meadow opens with two passwords: one you heard on Mt. Ember, one from whoever takes the Sapphire.",
       "condition": {
         "item": "RAINBOW_PASS",
         "flag_not": "got_sevii_gems",
@@ -2253,11 +2126,11 @@
       "reward": "The Ruby and the Sapphire",
       "region": "KANTO",
       "completed_flag": "got_sevii_gems",
-      "target": "ROCKET_WAREHOUSE"
+      "target": "ROCKET_WAREHOUSE", "steps": [{"area": "FOUR_ISLAND", "room": "lorelei", "at": [7, 4], "label": "Lorelei", "done": "met_lorelei_sevii"}, {"area": "ICEFALL_CAVE", "floor": 1, "at": [12, 16], "label": "HM07", "done": {"any": ["got_waterfall_sevii", "sevii_icefall_cleared"]}}, {"area": "ICEFALL_CAVE", "floor": 3, "at": [11, 14], "label": "Jessie & James", "done": "sevii_icefall_cleared"}, {"area": "RUIN_VALLEY", "floor": 0, "at": [24, 24], "label": "Braille door", "done": {"any": ["dotted_hole_open", "sapphire_stolen"]}}, {"area": "DOTTED_HOLE", "floor": 5, "at": [7, 7], "label": "Sapphire", "done": "sapphire_stolen"}, {"area": "FIVE_ISLE_MEADOW", "floor": 0, "at": [12, 21], "label": "Passwords", "done": "warehouse_door_open"}, {"area": "ROCKET_WAREHOUSE", "floor": 0, "at": [22, 23], "label": "Door codes", "done": "warehouse_doors_open"}, {"area": "ROCKET_WAREHOUSE", "floor": 0, "at": [25, 11], "label": "Admin", "done": "sevii_warehouse_cleared"}, {"area": "ROCKET_WAREHOUSE", "floor": 0, "at": [27, 12], "label": "Sapphire", "done": "got_sevii_gems"}]
     },
     {
       "id": "sevii_m5b",
-      "type": "SIDE",
+      "type": "MAIN",
       "title": "Back to Celio",
       "description": "You have the Ruby and the Sapphire! Take them to Celio on One Island so he can finish the Network Machine.",
       "condition": {
@@ -2268,7 +2141,7 @@
       "reward": "Old Sea Map",
       "region": "KANTO",
       "completed_flag": "network_machine_fixed",
-      "target": "ONE_ISLAND"
+      "target": "ONE_ISLAND", "steps": [{"area": "ONE_ISLAND", "room": "center", "at": [15, 6], "label": "Celio", "done": "network_machine_fixed"}]
     },
     {
       "id": "sevii_m6",
@@ -2354,148 +2227,102 @@
       "region": "KANTO",
       "completed_flag": "birth_island_deoxys",
       "target": "BIRTH_ISLAND"
-    }
+    },
+    {"id": "sevii_m2b", "type": "MAIN", "title": "The Ruby", "region": "KANTO", "target": "MT_EMBER", "description": "Team Rocket was after a gem deep in the Ruby Path. Go in by the door the diggers were blocking, down to the room at the bottom.", "condition": {"flag": "sevii_ember_rocket", "flag_not": ["celio_has_ruby", "got_ruby_sevii"], "required_region": "KANTO"}, "reward": "Ruby", "completed_flag": "got_ruby_sevii", "steps": [{"area": "MT_EMBER", "floor": 12, "at": [7, 7], "label": "Ruby", "done": "got_ruby_sevii"}]},
+    {"id": "sevii_m2c", "type": "MAIN", "title": "Celio's Ruby", "region": "KANTO", "target": "ONE_ISLAND", "description": "You found the Ruby! Take it to Celio at One Island's Network Center.", "condition": {"item": "RUBY", "flag_not": "celio_has_ruby", "required_region": "KANTO"}, "completed_flag": "celio_has_ruby", "steps": [{"area": "ONE_ISLAND", "room": "center", "at": [15, 6], "label": "Celio", "done": "celio_has_ruby"}]},
+    {"id": "sevii_m4a", "type": "MAIN", "title": "The National Pokédex", "region": "KANTO", "target": "PALLET_TOWN", "description": "You're the Champion! Professor Oak in Pallet Town will upgrade your Pokédex to the National Pokédex once you've seen 60 kinds of Pokémon. Celio needs to see it before he'll give you the Rainbow Pass.", "condition": {"flag": ["beat_champion", "got_tri_pass"], "flag_not": "unlocked_national_dex", "required_region": "KANTO"}, "completed_flag": "unlocked_national_dex", "steps": [{"area": "PALLET_TOWN", "room": "lab", "at": [6, 3], "label": "Professor Oak", "done": "unlocked_national_dex"}]}
   ],
-  "SEVII_TREASURE_BEACH_PERCENTAGES": {"21": 28, "114": 28, "22": 19, "52": 10, "53": 5, "54": 5, "79": 5},
-  "SEVII_KINDLE_ROAD_PERCENTAGES": {
-    "77": 15,
-    "21": 15,
-    "22": 6,
-    "74": 15,
-    "75": 8,
-    "66": 10,
-    "126": 4,
-    "218": 10,
-    "129": 7,
-    "54": 10
-  },
-  "SEVII_MT_EMBER_PERCENTAGES": {
-    "74": 14,
-    "75": 12,
-    "77": 10,
-    "78": 5,
-    "126": 8,
-    "218": 14,
-    "219": 6,
-    "66": 12,
-    "67": 6,
-    "95": 8,
-    "21": 5
-  },
-  "SEVII_CAPE_BRINK_PERCENTAGES": {"43": 19, "21": 13, "44": 10, "22": 6, "52": 6, "53": 3, "54": 3, "55": 3, "69": 19, "70": 10, "79": 3, "80": 3},
-  "SEVII_BOND_BRIDGE_PERCENTAGES": {"16": 22, "43": 15, "17": 11, "44": 7, "52": 7, "48": 4, "53": 4, "54": 4, "69": 15, "70": 7, "79": 4},
-  "SEVII_BERRY_FOREST_PERCENTAGES": {
-    "96": 12,
-    "97": 6,
-    "43": 10,
-    "17": 10,
-    "54": 10,
-    "49": 8,
-    "204": 12,
-    "205": 5,
-    "206": 10,
-    "102": 10,
-    "191": 7
-  },
-  "SEVII_ICEFALL_CAVE_PERCENTAGES": {
-    "220": 14,
-    "221": 6,
-    "225": 12,
-    "215": 12,
-    "42": 12,
-    "86": 12,
-    "87": 6,
-    "124": 6,
-    "131": 3,
-    "90": 9,
-    "91": 3,
-    "238": 5
-  },
-  "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES": {
-    "198": 14,
-    "228": 12,
-    "229": 4,
-    "161": 10,
-    "162": 6,
-    "17": 10,
-    "52": 10,
-    "53": 5,
-    "194": 10,
-    "183": 10,
-    "184": 5,
-    "203": 4
-  },
-  "SEVII_WATER_LABYRINTH_PERCENTAGES": {
-    "194": 15,
-    "195": 8,
-    "183": 15,
-    "184": 6,
-    "72": 12,
-    "73": 6,
-    "60": 10,
-    "61": 6,
-    "186": 2,
-    "118": 10,
-    "119": 5,
-    "170": 5
-  },
-  "SEVII_LOST_CAVE_PERCENTAGES": {
-    "92": 14,
-    "93": 10,
-    "94": 3,
-    "200": 10,
-    "41": 12,
-    "42": 10,
-    "198": 10,
-    "228": 10,
-    "177": 8,
-    "178": 4
-  },
-  "SEVII_PATTERN_BUSH_PERCENTAGES": {
-    "214": 10,
-    "165": 8,
-    "166": 8,
-    "167": 8,
-    "168": 8,
-    "177": 12,
-    "178": 6,
-    "204": 10,
-    "193": 10,
-    "127": 6,
-    "48": 8,
-    "13": 6
-  },
-  "SEVII_RUIN_VALLEY_PERCENTAGES": {"177": 22, "21": 17, "22": 9, "52": 9, "193": 9, "194": 9, "53": 4, "54": 4, "202": 4, "183": 9, "79": 4},
-  "SEVII_SEVAULT_CANYON_PERCENTAGES": {
-    "246": 6,
-    "231": 12,
-    "232": 6,
-    "227": 10,
-    "74": 12,
-    "75": 8,
-    "104": 12,
-    "105": 6,
-    "207": 12,
-    "111": 10,
-    "66": 6
-  },
+  "SEVII_TREASURE_BEACH_PERCENTAGES": {"21": 30, "114": 30, "22": 20, "52": 10, "53": 5, "54": 3, "79": 2},
+  "SEVII_KINDLE_ROAD_PERCENTAGES": {"77": 30, "21": 25, "22": 10, "52": 10, "74": 10, "53": 5, "78": 5, "54": 3, "79": 2},
+  "SEVII_MT_EMBER_PERCENTAGES": {"74": 37, "218": 28, "66": 19, "126": 5, "77": 4, "67": 3, "22": 2, "21": 1, "78": 1},
+  "SEVII_CAPE_BRINK_PERCENTAGES": {"21": 20, "43": 15, "69": 15, "22": 10, "52": 10, "44": 8, "70": 7, "53": 5, "54": 3, "55": 3, "79": 2, "80": 2},
+  "SEVII_BOND_BRIDGE_PERCENTAGES": {"16": 30, "17": 15, "43": 10, "52": 10, "69": 10, "44": 5, "48": 5, "53": 5, "70": 5, "54": 3, "79": 2},
+  "SEVII_BERRY_FOREST_PERCENTAGES": {"17": 20, "16": 10, "44": 10, "48": 10, "70": 10, "96": 10, "43": 5, "49": 5, "69": 5, "97": 5, "102": 5, "54": 3, "79": 2},
+  "SEVII_ICEFALL_CAVE_PERCENTAGES": {"42": 25, "86": 25, "220": 25, "41": 10, "87": 10, "54": 2, "79": 1, "215": 1, "225": 1},
+  "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES": {"161": 30, "16": 20, "17": 15, "187": 15, "52": 10, "53": 5, "54": 3, "79": 2},
+  "SEVII_WATER_LABYRINTH_PERCENTAGES": {"72": 65, "187": 30, "73": 5},
+  "SEVII_LOST_CAVE_PERCENTAGES": {"93": 30, "92": 23, "41": 20, "42": 17, "198": 5, "200": 5},
+  "SEVII_PATTERN_BUSH_PERCENTAGES": {"167": 30, "14": 20, "214": 20, "10": 10, "13": 10, "11": 5, "165": 5},
+  "SEVII_RUIN_VALLEY_PERCENTAGES": {"177": 25, "21": 20, "22": 10, "52": 10, "193": 10, "53": 5, "183": 5, "194": 5, "202": 5, "54": 3, "79": 2},
+  "SEVII_SEVAULT_CANYON_PERCENTAGES": {"74": 20, "231": 20, "22": 10, "52": 10, "104": 10, "105": 10, "53": 5, "95": 5, "227": 5, "246": 5},
   "SEVII_TANOBY_RUINS_PERCENTAGES": {
     "201": 100
   },
   "THREE_ISLE_PORT_PERCENTAGES": {"206": 100},
   "RESORT_GORGEOUS_OLD_ROD_PERCENTAGES": {"129": 100},
-  "RESORT_GORGEOUS_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
-  "RESORT_GORGEOUS_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "RESORT_GORGEOUS_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "RESORT_GORGEOUS_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
   "MEMORIAL_PILLAR_OLD_ROD_PERCENTAGES": {"129": 100},
-  "MEMORIAL_PILLAR_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
-  "MEMORIAL_PILLAR_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "MEMORIAL_PILLAR_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "MEMORIAL_PILLAR_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
   "WATER_PATH_OLD_ROD_PERCENTAGES": {"129": 100},
-  "WATER_PATH_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
-  "WATER_PATH_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "WATER_PATH_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "WATER_PATH_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
   "OUTCAST_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
-  "OUTCAST_ISLAND_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
-  "OUTCAST_ISLAND_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "OUTCAST_ISLAND_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "OUTCAST_ISLAND_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
   "GREEN_PATH_OLD_ROD_PERCENTAGES": {"129": 100},
-  "GREEN_PATH_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
-  "GREEN_PATH_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1}
+  "GREEN_PATH_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "GREEN_PATH_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "FOUR_ISLAND_SURF_PERCENTAGES": {"183": 35, "194": 35, "54": 15, "79": 15},
+  "FOUR_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
+  "FOUR_ISLAND_GOOD_ROD_PERCENTAGES": {"60": 60, "118": 20, "129": 20},
+  "FOUR_ISLAND_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 3, "79": 2},
+  "ICEFALL_CAVE_SURF_PERCENTAGES": {"72": 47, "86": 30, "54": 8, "79": 7, "87": 3, "73": 2, "131": 1, "183": 1, "194": 1},
+  "ICEFALL_CAVE_OLD_ROD_PERCENTAGES": {"129": 100},
+  "ICEFALL_CAVE_GOOD_ROD_PERCENTAGES": {"60": 30, "98": 20, "116": 20, "129": 20, "118": 10},
+  "ICEFALL_CAVE_SUPER_ROD_PERCENTAGES": {"60": 20, "61": 20, "130": 15, "90": 10, "98": 10, "116": 10, "120": 10, "54": 2, "79": 1, "99": 1, "117": 1},
+  "FIVE_ISLAND_SURF_PERCENTAGES": {"72": 65, "187": 30, "73": 5},
+  "FIVE_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
+  "FIVE_ISLAND_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "FIVE_ISLAND_SUPER_ROD_PERCENTAGES": {"90": 20, "98": 20, "120": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "FIVE_ISLE_MEADOW_SURF_PERCENTAGES": {"72": 65, "187": 30, "73": 5},
+  "FIVE_ISLE_MEADOW_OLD_ROD_PERCENTAGES": {"129": 100},
+  "FIVE_ISLE_MEADOW_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "FIVE_ISLE_MEADOW_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "MEMORIAL_PILLAR_SURF_PERCENTAGES": {"72": 65, "187": 30, "73": 5},
+  "WATER_LABYRINTH_SURF_PERCENTAGES": {"72": 65, "187": 30, "73": 5},
+  "WATER_LABYRINTH_OLD_ROD_PERCENTAGES": {"129": 100},
+  "WATER_LABYRINTH_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "WATER_LABYRINTH_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "RESORT_GORGEOUS_SURF_PERCENTAGES": {"72": 65, "187": 30, "73": 5},
+  "ONE_ISLAND_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "ONE_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
+  "ONE_ISLAND_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "ONE_ISLAND_SUPER_ROD_PERCENTAGES": {"90": 20, "98": 20, "120": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "TREASURE_BEACH_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "TREASURE_BEACH_OLD_ROD_PERCENTAGES": {"129": 100},
+  "TREASURE_BEACH_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "TREASURE_BEACH_SUPER_ROD_PERCENTAGES": {"98": 40, "116": 39, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "KINDLE_ROAD_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "KINDLE_ROAD_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KINDLE_ROAD_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "KINDLE_ROAD_SUPER_ROD_PERCENTAGES": {"98": 40, "116": 39, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "CAPE_BRINK_SURF_PERCENTAGES": {"54": 48, "79": 47, "55": 3, "80": 2},
+  "CAPE_BRINK_OLD_ROD_PERCENTAGES": {"129": 100},
+  "CAPE_BRINK_GOOD_ROD_PERCENTAGES": {"60": 60, "118": 20, "129": 20},
+  "CAPE_BRINK_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 3, "79": 2},
+  "BOND_BRIDGE_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "BOND_BRIDGE_OLD_ROD_PERCENTAGES": {"129": 100},
+  "BOND_BRIDGE_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "BOND_BRIDGE_SUPER_ROD_PERCENTAGES": {"98": 40, "116": 39, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1},
+  "BERRY_FOREST_SURF_PERCENTAGES": {"54": 48, "79": 47, "55": 3, "80": 2},
+  "BERRY_FOREST_OLD_ROD_PERCENTAGES": {"129": 100},
+  "BERRY_FOREST_GOOD_ROD_PERCENTAGES": {"118": 60, "60": 20, "129": 20},
+  "BERRY_FOREST_SUPER_ROD_PERCENTAGES": {"118": 40, "119": 40, "130": 15, "54": 3, "79": 2},
+  "WATER_PATH_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "RUIN_VALLEY_SURF_PERCENTAGES": {"183": 50, "194": 50},
+  "RUIN_VALLEY_OLD_ROD_PERCENTAGES": {"129": 100},
+  "RUIN_VALLEY_GOOD_ROD_PERCENTAGES": {"60": 60, "118": 20, "129": 20},
+  "RUIN_VALLEY_SUPER_ROD_PERCENTAGES": {"60": 40, "61": 40, "130": 15, "54": 3, "79": 2},
+  "GREEN_PATH_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "OUTCAST_ISLAND_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "SEVEN_ISLAND_SURF_PERCENTAGES": {"72": 95, "73": 5},
+  "SEVEN_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
+  "SEVEN_ISLAND_GOOD_ROD_PERCENTAGES": {"116": 80, "129": 20},
+  "SEVEN_ISLAND_SUPER_ROD_PERCENTAGES": {"116": 40, "211": 40, "130": 15, "117": 4, "54": 1},
+  "TANOBY_RUINS_SURF_PERCENTAGES": {"72": 90, "73": 5, "226": 5},
+  "TANOBY_RUINS_OLD_ROD_PERCENTAGES": {"129": 100},
+  "TANOBY_RUINS_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
+  "TANOBY_RUINS_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1}
 }

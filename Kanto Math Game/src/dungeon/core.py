@@ -588,7 +588,8 @@ class Run:
             self._spawn_wild(floor, None if self.recipe.get("layout") else start_room)
         reach = distances(floor, floor.start)  # (loot lands where you can walk to it from here: never out on the water)
         for item in ([] if indoors else self.loot_for(self.rng)):
-            spot = next((s for s in (_free_tile(floor, self.rng) for _ in range(24)) if s in reach), None)
+            spot = next((s for s in (_free_tile(floor, self.rng) for _ in range(24)) if s in reach
+                         and not any((s[0] + dx, s[1] + dy) in floor.exits for dx, dy in DIRS)), None)   # (never beside a ladder or pad: you'd come out on its wrong side, the Pokemon Tower's 5F; 11-17)
             if spot and item:
                 floor.items[spot] = item
         for spot_id in [s for i, s in enumerate(self.tm_spots) if i % self.n_floors == index]:
@@ -741,7 +742,20 @@ class Run:
     def _beside(self, floor, spot):
         for dx, dy in DIRS:
             t = (spot[0] + dx, spot[1] + dy)
-            if floor.walkable(*t) and not floor.occupied(*t):
+            if not floor.walkable(*t):
+                continue
+            m = floor.mover_at(*t)
+            if m is not None and m.kind == "wild" and getattr(m, "size", 1) == 1 and t not in floor.exits and t not in floor.items and t not in floor.tm_spots:
+                # (a wild Pokemon on the landing spot steps aside: you always come out on the same side of a passage, the one
+                #  the Journal's marker plans for - Mt. Ember's Ruby Path, 11-17)
+                aside = next(((t[0] + ex, t[1] + ey) for ex, ey in DIRS if floor.walkable(t[0] + ex, t[1] + ey)
+                              and not floor.occupied(t[0] + ex, t[1] + ey) and (t[0] + ex, t[1] + ey) != spot), None)
+                if aside is None:
+                    floor.movers.remove(m)
+                else:
+                    m.x, m.y = aside
+                return t
+            if not floor.occupied(*t):
                 return t
         return floor.start
 

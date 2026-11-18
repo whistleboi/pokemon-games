@@ -385,6 +385,8 @@ class AbilityEffects:
         """An added effect's chance: Serene Grace doubles it; Sheer Force and Shield Dust stop it."""
         if self.ab(attacker) == "SHEERFORCE" or self.def_ab(attacker, defender) == "SHIELDDUST":
             return 0
+        if self.side(attacker).get("rainbow"):  # (Water + Fire Pledge, a doubles combination)
+            chance *= 2
         return chance * 2 if self.ab(attacker) == "SERENEGRACE" else chance
 
     def ability_recoil_blocked(self, mon):

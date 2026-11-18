@@ -12,6 +12,42 @@ from src.config import WHITE, BLACK, RED, GOLD
 from src.ui.mon_tags import fit_sprite
 
 
+def fly_ok(game, key):
+    """Can Fly take you there. Orange (Jordan 11-17): only places with a Pokemon Center (a walked one: its map has a
+    "center" room, a route's own town too: Desert Town; a menu-era one: a Heal option). Every other region: any town
+    you've visited."""
+    data = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(key) or {}
+    if str(data.get("region") or "").upper() != "ORANGE":
+        return True
+    from src.states.overworld import walk_town
+    m = walk_town.custom(game).get(key)
+    if m:
+        return "center" in (m.get("rooms") or {})
+    return any(str(o.get("action") or "").upper() == "HEAL" for o in data.get("explore_options") or [])
+
+
+def fly_name(game, key):
+    """The name Fly shows for a place: a route's own town its "fly_point" name (Desert Town on Route 64), else the area's."""
+    data = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(key) or {}
+    return (data.get("fly_point") or {}).get("name") or data.get("route_name") or key
+
+
+def fly_land(game, key):
+    """Fly's landing: the place itself (on a walked Orange island, outside its Center's door: walk_town._arrive; on a
+    route with a town of its own, its "fly_point" (Desert Town on Route 64, Jordan 11-17): outside that Center's door)."""
+    from src.states.overworld import AreaTransitionState
+    game.fly_landing, game.walk_town_pos = key, None
+    data = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(key) or {}
+    if data.get("fly_point") and data.get("area_type") != "town":
+        from src.states.overworld import walk_town
+        m = walk_town.custom(game).get(key) or {}
+        door = next((d for d, r in (m.get("inside") or {}).items() if r == data["fly_point"].get("room", "center")), None)
+        if door:
+            x, y = (int(v) for v in door.split(","))
+            game.arrive_floor = (key, 0, [x, y + 1])
+    game.change_state(AreaTransitionState(game, key))
+
+
 class FlyState(GameState):
     """Fly: every town you've visited, three columns, grouped by region (the
     region you're in first). The list scrolls like the PC: the mouse wheel, plus the arrow
@@ -40,8 +76,9 @@ class FlyState(GameState):
         cities = []
         prog = game.loader.area_data.get("STORY_PROGRESSION", {})
         for key, data in prog.items():
-            if (data.get("area_type") == "town" or data.get("fly_island")) and story.story_flags.get(f"visited_{key}"):   # (fly_island: Navel Rock, Birth Island)
-                cities.append((key, data.get("route_name", key)))
+            if (data.get("area_type") == "town" or data.get("fly_island") or data.get("fly_point")) \
+                    and story.story_flags.get(f"visited_{key}") and fly_ok(game, key):   # (fly_island: Navel Rock, Birth Island;
+                cities.append((key, fly_name(game, key)))                              #  fly_point: Desert Town, Route 64)
         if story.inventory.get("MT_SILVER_MAP", 0) > 0:
             silver_key = "SILVER_LEAGUE_PLATEAU"
             silver_name = prog.get(silver_key, {}).get("route_name", "Silver League")
@@ -81,7 +118,7 @@ class FlyState(GameState):
         if travel.held(self.game, travel.area_name(self.game, key), lambda: self.fly_to(key)):
             return
         from src.states.systems.fly_scene import FlyScene
-        self.game.change_state(FlyScene(self.game, lambda: self.game.change_state(AreaTransitionState(self.game, key))))
+        self.game.change_state(FlyScene(self.game, lambda: fly_land(self.game, key)))
 
     def start(self):
         for btn in (self.btn_back, self.btn_up, self.btn_down):

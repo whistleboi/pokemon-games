@@ -286,6 +286,7 @@ def _story_team(game, area_key, t_info):
 def _start_event_battle(game, area_key, t_info, flag):
     """A story NPC's trainer battle (team chosen by the region starter when it has a team_choice)."""
     from src.states.battle import TrainerBattleState, TrainerIntroState
+    from src.states.battle_double import battle_options
     t_info = _cast_trainer(game, t_info)
     if t_info.get("villain") and str(game.story_manager.get_current_region() or "") == "HOENN":
         from src.world import hoenn as _h   # (a scene's villain, written into a map: dressed as this version's team, like the data's)
@@ -303,7 +304,9 @@ def _start_event_battle(game, area_key, t_info, flag):
         trainer_name=_fill_names(game, t_info.get("name")),
         custom_dialogue={k: _resolve_lines(game, v) for k, v in dlg.items() if k != "intro"},
         rewards=dict(t_info.get("rewards") or {"balls": 3}), battle_type="event",
-        is_boss_battle=t_info.get("is_boss_battle", False), area_name=area_key, victory_flag=flag)
+        is_boss_battle=t_info.get("is_boss_battle", False), area_name=area_key, victory_flag=flag,
+        badge_reward=t_info.get("badge_reward"),   # (a Leader met on a map, not in a Gym: Danny atop Navel Mountain, Orange 5.7; 11-17)
+        options=battle_options(t_info))   # (a double battle, no switching...: src/states/battle_double.py)
     return TrainerIntroState(game, sprite, t_info.get("_intro_lines") or ["..."], battle)
 
 
@@ -347,6 +350,9 @@ def _run_story_event(state, key, check, show):
     lines = _resolve_lines(game, ev.get("lines") or [])
     if ev.get("puzzle"):  # a math minigame (Dotted Hole's braille, a Rocket door code...)
         _start_event_puzzle(state, ev, lines, show)
+        return
+    if ev.get("coin_guess"):   # (a coin hidden in one hand, guess which, so many times in a row: Trovitopolis's psychic, Orange
+        _coin_guess(state, ev, lines, show)   #  5.7, 11-17: {"rounds": 3}; all right: the event's "gift_item" and "flag")
         return
     if ev.get("battle"):
         t_info = dict(ev["battle"], _intro_lines=lines or None)
@@ -413,6 +419,8 @@ def _run_story_event(state, key, check, show):
         story.story_flags[_cf] = _n + 1
         story.inventory[_item] = story.inventory.get(_item, 0) + 1
         lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(_item).upper()}!")
+    if ev.get("show_request"):   # (Lady Selphy, Resort Gorgeous, FireRed: she wishes to see one of the Pokemon you've caught; bring
+        lines += _show_request(game, ev["show_request"])   #  it along and she gives one of her rewards at random, then wishes for another)
     for item, qty in (ev.get("gift_item") or {}).items():
         if item == "balls":
             story.balls_left = getattr(story, "balls_left", 0) + qty  # the one ball count
@@ -490,10 +498,28 @@ def _run_story_event(state, key, check, show):
         new.caught_region = story.get_current_region()
         if tr.get("item"):
             new.held_item = tr["item"]
+            from src.pokemon import items as _itemlib
+            if _itemlib.holdable(tr["item"]):   # (a held item's copy is the Bag's: the Stick can be taken off and given back)
+                story.add_item(tr["item"])
         story.player_team[mine] = new
         game.data.mark_seen(new.id)
         game.data.add_pokemon(new)
         lines.append(f"{old.display_name} was traded for {new.display_name}!")
+    if isinstance(ev.get("elevator"), dict):  # (any store's lift: {"area", "floors": [[label, room], ...], "lift_at": [x, y]}:
+        from src.states.systems.pick_list import PickListState   # Trovito Dept. Store's panel, Orange 5.7, 11-17)
+        from src.states.overworld import AreaTransitionState
+        el = ev["elevator"]
+
+        def ride_to(room):
+            if room is None:
+                show(_resolve_lines(game, ev.get("cancel") or ["The lift stays where it is."]))
+                return
+            label = next((f[0] for f in el["floors"] if f[1] == room), "")
+            game.walk_town_room = (el["area"], room)
+            game.walk_town_pos = (el["area"], tuple(el.get("lift_at") or (1, 2)), (0, 1))
+            game.change_state(AreaTransitionState(game, el["area"], initial_message=[f"The lift stops at {label}."]))
+        game.change_state(PickListState(game, state, "WHICH FLOOR?", [(f[0], f[1]) for f in el["floors"]], ride_to))
+        return
     if ev.get("elevator"):  # (Goldenrod Dept. Store's elevator attendant, Jordan 11-15 option B: the floors as a list)
         from src.states.systems.pick_list import PickListState
         floors = [("B1F", "B1F")] + [(f"{n}F", n) for n in range(1, 7)]
@@ -604,9 +630,9 @@ def _run_story_event(state, key, check, show):
         story.story_flags["goldenrod_raffle_day"] = today
         roll = _rnd.random()
         from src.pokemon import tms as _tms
-        tm_pool = [k for k in ("TM05", "TM03", "TM04", "TM25", "TM17", "TM18") if k in (_tms.all_tms(game) if hasattr(_tms, "all_tms") else [k])]
+        tm_pool = [k for k in ("TM068", "TM067", "TM069", "TM007", "TM075", "TM074") if k in (_tms.all_tms(game) if hasattr(_tms, "all_tms") else [k])]
         item = (_rnd.choice(["ORAN_BERRY", "PECHA_BERRY", "CHERI_BERRY", "RAWST_BERRY", "SITRUS_BERRY", "LUM_BERRY"]) if roll < 0.55 else
-                _rnd.choice(["GREAT_BALL", "ULTRA_BALL", "NEST_BALL", "LUXURY_BALL", "QUICK_BALL"]) if roll < 0.9 else _rnd.choice(tm_pool or ["TM05"]))
+                _rnd.choice(["GREAT_BALL", "ULTRA_BALL", "NEST_BALL", "LUXURY_BALL", "QUICK_BALL"]) if roll < 0.9 else _rnd.choice(tm_pool or ["TM068"]))
         story.inventory[item] = story.inventory.get(item, 0) + 1
         from src.pokemon import forms as _forms
         show([f"{game.player_name} paid $300.", "Clerk: Round and round it goes... and the winner is...",
@@ -708,7 +734,7 @@ def _run_story_event(state, key, check, show):
         from src.pokemon import evolution as _evo
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
         fond = lead is not None and (getattr(lead, "friendship", 0) >= _evo.FRIENDSHIP_CATCHES or getattr(lead, "affection", 0) >= 150)
-        tm = (ev.get("tms") or ["HTM27", "HTM21"])[0 if fond else 1]  # (Hoenn's own: Return TM27, Frustration TM21; "tms": a region's own keys)
+        tm = (ev.get("tms") or ["TM274", "TM273"])[0 if fond else 1]  # (Return, Frustration; "tms": the TMs a place gives instead)
         story.story_flags[key] = list(week)
         story.inventory[tm] = story.inventory.get(tm, 0) + 1
         lines += ([f"Your {lead.display_name} looks so happy with you. This TM's for you: Return!"] if fond
@@ -803,7 +829,11 @@ def _run_story_event(state, key, check, show):
                 show(_resolve_lines(game, ch.get("cancel") or ["Come back any time."]))
                 return
             story.story_flags[ch["flag"]] = v
-            show(_resolve_lines(game, ch.get("done") or ["All set!"]))
+            got = []
+            if ch.get("gift"):   # (the pick is an item you get: the Bay Cave's fossil, Helix or Dome, Orange 5.7; Jordan 11-17)
+                story.inventory[v] = story.inventory.get(v, 0) + 1
+                got = [f"{getattr(game, 'player_name', 'You')} found the {forms.item_label(v).upper()}!"]
+            show(_resolve_lines(game, got + list(ch.get("done") or ([] if got else ["All set!"]))))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ch.get("ask") or "WHICH ONE?", rows, picked)))
         return
     if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
@@ -833,10 +863,53 @@ def _run_story_event(state, key, check, show):
             to = ferry.get(story.last_area_key) or ferry.get(story.story_flags.get(f"ferry_from_{ship}"))
             if not to or to == ship:
                 to = next((v for v in ferry.values() if v != ship), story.last_area_key)
-        game.change_state(AreaTransitionState(game, to, initial_message=lines or None))
-        return
+        if ev.get("land"):   # ([room or None, x, y]: set down at that spot of the place, inside one of its rooms: Valencia Park's
+            room, lx, ly = ev["land"]   # Stun Spore takes you to the Center, Orange 5.7; 11-17)
+            game.walk_town_pos = (to, (int(lx), int(ly)), (0, -1))
+            game.walk_town_room = (to, room) if room else None
+        if ev.get("land_floor"):   # ([floor, x, y]: set down on that floor of a walked map, a room of a route being a floor:
+            fl, lx, ly = ev["land_floor"]   # Navel Mountain's cable car, station to station; Orange 5.7, 11-17)
+            game.arrive_floor = (to, int(fl), [int(lx), int(ly)])
+        game.change_state(AreaTransitionState(game, to, initial_message=lines or None, ride=ev.get("ride")))   # ("ride": a ride
+        return                                                                                       #  scene on the way, area_transition.ride_scene)
     show(lines or ["..."])
 
+
+
+def _coin_guess(state, ev, lines, show):
+    """Which hand is the coin in? Left or right, ev["coin_guess"]["rounds"] times in a row (a fresh hand each round). All
+    right: ev's "gift_item" and "flag" (the event run again without the game); one wrong: ev's "fail_guess" lines, and you
+    may try again any time. (Trovitopolis's psychic father, Orange 5.7, 11-17: the closest simple version of his test.)"""
+    import random as _rnd
+    from src.states.systems.pick_list import PickListState
+    game = state.game
+    rounds = int(ev["coin_guess"].get("rounds") or 3)
+
+    def ask(i):
+        if i == rounds:
+            done = dict(ev, coin_guess=None, lines=_resolve_lines(game, ev.get("win") or ["Correct every time!"]))
+            _run_story_event(state, done, lambda c: True, show)
+            return
+        coin = _rnd.choice(("LEFT", "RIGHT"))
+
+        def chose(v):
+            if v is None:
+                show(_resolve_lines(game, ev.get("cancel") or ["Come back any time."]))
+            elif v != coin:
+                show(_resolve_lines(game, ev.get("fail_guess") or ["Wrong hand!"]))
+            else:
+                say = getattr(state, "show_message", None) or getattr(state, "show_dialogue", None)
+                if i + 1 < rounds and say:
+                    say(_resolve_lines(game, ev.get("again") or ["Correct! Once more..."]), callback=lambda: ask(i + 1))
+                else:
+                    ask(i + 1)
+        game.change_state(PickListState(game, state, f"WHICH HAND? ({i + 1} of {rounds})", [("Left", "LEFT"), ("Right", "RIGHT")], chose))
+
+    say = getattr(state, "show_message", None) or getattr(state, "show_dialogue", None)
+    if lines and say:
+        say(lines, callback=lambda: ask(0))
+    else:
+        ask(0)
 
 def _choose_purify(state, lines, show):
     """Pick a party Pokemon at the Relic Stone. Shadow Pokemon are a variant: nothing is purified
@@ -963,6 +1036,38 @@ def _run_quiz(state, ev, lines, show):
         say(lines, callback=lambda: ask(0))
     else:
         ask(0)
+
+
+def _show_request(game, sr):
+    """A wish to see a Pokemon (FireRed's Lady Selphy, 11-17): {"flag": the story flag holding the species she wants now,
+    "rewards": [items, one at random], "max": highest species number (Kanto: 151), "ask" / "thanks": lines, {mon} = its name}.
+    The species is one of those in your Pokedex (FireRed picks among the Pokemon you've met); shown in your party, she rewards
+    you and picks another. The lines it adds."""
+    import json as _json, os as _os, random as _rnd
+    from src.pokemon import forms as _forms
+    story = game.story_manager
+    key = sr.get("flag") or "show_request"
+    top = int(sr.get("max") or 151)
+    dex = sorted({int(v.get("id", 0)) for v in (game.data.data.get("pokedex", {}) or {}).values() if 1 <= int(v.get("id", 0)) <= top})
+    want = int(story.story_flags.get(key) or 0)
+    if not want and dex:
+        want = _rnd.choice(dex)
+        story.story_flags[key] = want
+    if not want:
+        return list(sr.get("none") or ["Show me a Pokémon you've caught some time!"])
+    try:
+        names = _json.load(open(_os.path.join("assets", "pokemon_names.json"), encoding="utf-8"))
+    except (OSError, ValueError):
+        names = {}
+    mon = str(names.get(str(want), want)).title()
+    if not any(p and int(getattr(p, "id", 0) or 0) == want and not getattr(p, "is_egg", False) for p in story.player_team):
+        return [s.replace("{mon}", mon) for s in sr.get("ask") or ["I wish to see a {mon}. Do bring one!"]]
+    item = _rnd.choice(sr.get("rewards") or ["NUGGET"])
+    story.inventory[item] = story.inventory.get(item, 0) + 1
+    others = [s for s in dex if s != want] or dex
+    story.story_flags[key] = _rnd.choice(others)
+    out = [s.replace("{mon}", mon) for s in sr.get("thanks") or ["Oh, a {mon}! How lovely!"]]
+    return out + [f"{getattr(game, 'player_name', 'You')} received the {_forms.item_label(item).upper()}!"]
 
 
 def _tutor_price(game, move):

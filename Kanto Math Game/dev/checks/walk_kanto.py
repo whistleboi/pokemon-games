@@ -13,7 +13,6 @@ seen = report("BOULDER + CASCADE", S, seen)
 print("   FAIL" if "KANTO_SS_ANNE" in seen else "   OK", "S.S. Anne needs the S.S. Ticket")
 story.inventory["SS_TICKET"] = 1
 story.story_flags["visited_LAVENDER_TOWN"] = True  # (the Underground Path to Vermilion opens after Lavender: Jordan, 11-08)
-expansion_check("kanto side areas", ["KANTO_SS_ANNE"], S)
+# (11-17: the walked S.S. Anne has no menu gauntlet or gauntlet flag any more; kanto_maps and kanto_playthrough walk its story)
 print("   OK" if "VERMILLION_CITY" in links("KANTO_SS_ANNE") and "KANTO_SS_ANNE" in links("VERMILLION_CITY") else "   FAIL", "S.S. Anne <-> Vermilion")
-pool = PROG["KANTO_SS_ANNE"]["trainer_pool"]
-print("   OK" if pool[-1]["name"] == "{rival_name}" and pool[-1].get("is_boss_battle") else "   FAIL", "S.S. Anne ends on the rival")
+# (the rival on the ship is a scene on the walked map now, not the last of a trainer list: kanto_maps plays it)

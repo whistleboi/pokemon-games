@@ -122,6 +122,7 @@ class RouteEncounters:
         opponent_team = _story_team(self.game, self.game.story_manager.current_area_key, trainer_info)
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
+        from src.states.battle_double import battle_options
         trainer_sprite = _trainer_sprite(self.game, trainer_info.get("sprite"))  # rival art too
         dlg = trainer_info.get("dialogue") or {}
         battle_state = TrainerBattleState(
@@ -131,6 +132,7 @@ class RouteEncounters:
             is_boss_battle=trainer_info.get("is_boss_battle", False),
             rewards=dict(trainer_info["rewards"]) if trainer_info.get("rewards") else None,
             custom_dialogue={k: _resolve_lines(self.game, v) for k, v in dlg.items() if k != "intro"} or None,
+            options=battle_options(trainer_info),
         )
         intro_text = on_enter.get("dialogue_override") or (
             _resolve_lines(self.game, dlg["intro"]) if dlg.get("intro") else "Stop right there!")
@@ -332,6 +334,7 @@ class RouteEncounters:
         bg_file = self._get_battle_background_for_area()
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
+        from src.states.battle_double import battle_options
 
         trainer_sprite = _trainer_sprite(self.game, trainer_info.get("sprite"))
         battle_state = TrainerBattleState(
@@ -347,7 +350,8 @@ class RouteEncounters:
             is_boss_battle=trainer_info.get("is_boss_battle", False),
             area_name=area_key,
             victory_flag=victory_flag,
-            background_image=bg_file
+            background_image=bg_file,
+            options=battle_options(trainer_info),   # (Twins' double battle, no switching...: battle_double.py)
         )
         battle_state.frontier = frontier
 

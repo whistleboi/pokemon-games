@@ -220,6 +220,7 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
 
     def _initiate_gym_battle(self, trainer_data, victory_flag=None, trainer_index=None):
         from src.states.battle import TrainerBattleState, TrainerIntroState
+        from src.states.battle_double import battle_options
         team_ids = trainer_data.get("team", [])
         opponent_team = []
         for pid in team_ids:
@@ -255,7 +256,8 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
             victory_flag=victory_flag or trainer_data.get("victory_flag"),
             trainer_index=trainer_index,
             badge_reward=trainer_data.get("badge_reward"),
-            background_image=bg_file
+            background_image=bg_file,
+            options=battle_options(trainer_data),   # (a double battle, no switching...: battle_double.py)
         )
 
         intro_text = random.choice(trainer_data.get("dialogue", {}).get("intro", ["Prepare to battle!"]))

@@ -271,20 +271,16 @@ _m = st._wild_for_pool(_r.Random(2))
 _core.CURRENT_TILE = None
 check(_m is not None and str(_m.id) in _pool(_sp["HOENN_ROUTE_119"]["surf_pool_percentages"]), f"a wild Pokemon out on Route 119's water is a surfing one ({getattr(_m, 'id', None)})")
 
-print("== Hoenn's own TMs (ORAS numbering, Emerald's after 100)")
+print("== Hoenn's TMs: the one list (11-17: Scarlet/Violet's numbers in every region)")
 from src.pokemon import tms as _tms
-_ht = {k: v for k, v in _tms.table(g).items() if _tms.is_hoenn(k)}
-check(len([k for k in _ht if int(k[3:]) <= 100]) == 100 and len(_ht) == 108, f"ORAS's 100 and Emerald's 8 more ({len(_ht)})")
-check(_tms.move_of(g, "HTM24") == "THUNDERBOLT" and _tms.label(g, "HTM24") == "TM24 Thunderbolt", "TM24 is ORAS's Thunderbolt, shown as TM24")
-check(_tms.move_of(g, "HTM101") == "FOCUS-PUNCH", "TM101: Emerald's Focus Punch (ORAS has none)")
+check(_tms.move_of(g, "TM126") == "THUNDERBOLT" and _tms.label(g, "TM126") == "TM126 Thunderbolt", "Thunderbolt is TM126 here too")
 _reg = story.get_current_region
 story.get_current_region = lambda: "HOENN"
 _stock_h = _tms.mart_stock(g, 8)
 story.get_current_region = lambda: "KANTO"
 _stock_k = _tms.mart_stock(g, 8)
 story.get_current_region = _reg
-check(_stock_h and all(_tms.is_hoenn(k) for k in _stock_h), "Hoenn's Marts sell Hoenn's own TMs")
-check(_stock_k and not any(_tms.is_hoenn(k) for k in _stock_k), "Kanto's Marts sell Sword/Shield's")
+check(_stock_h and _stock_h == _stock_k, "Hoenn's Marts sell the same TMs as Kanto's")
 _gifts = set()
 for _a, _d in _sp.items():
     if not isinstance(_d, dict) or _d.get("region") != "HOENN":
@@ -292,22 +288,9 @@ for _a, _d in _sp.items():
     for _o in _d.get("route_menu", []):
         _ev = _o.get("event") if isinstance(_o, dict) else None
         if isinstance(_ev, dict):
-            _gifts |= {it for it in (_ev.get("gift_item") or {}) if _tms.is_tm(it)}
-check(_gifts and all(_tms.is_hoenn(k) for k in _gifts), f"every TM Hoenn's places give is Hoenn's own ({sorted(_gifts)[:6]}...)")
-check(_tms.move_of(g, "HTM23") == "SMACK-DOWN", "Cozmo's thanks: TM23 Smack Down")
-_linked, _area = set(story.linked_regions), story.current_area_key
-story.linked_regions = _linked - {"HOENN"}
-story.current_area_key = "MOSSDEEP_CITY"
-check(story.active_store == "HOENN", "a save with Hoenn's own Bag")
-_old = next(k for k in sorted(_tms.table(g)) if not _tms.is_hoenn(k) and _tms.hoenn_key(g, _tms.move_of(g, k)))
-_new = _tms.hoenn_key(g, _tms.move_of(g, _old))
-story.inventory[_old] = 1     # (a Sword/Shield TM bought in Hoenn before, one Hoenn has too)
-story.inventory["TM00"] = 1   # (Mega Punch: Hoenn has no TM for it)
-story.sync_key_items()
-check(story.inventory.get(_new) and _old not in story.inventory and story.inventory.get("TM00"),
-      f"loading it: its {_tms.label(g, _new)} ({_old} before) is Hoenn's own now; Mega Punch stays as it was")
-story.linked_regions = _linked
-story.current_area_key = _area
+            _gifts |= {it for it in (_ev.get("gift_item") or {}) if str(it).startswith(("TM", "HTM"))}
+check(_gifts and all(_tms.is_tm(k) for k in _gifts), f"every TM Hoenn's places give is on the one list ({sorted(_gifts)[:6]}...)")
+check(_tms.move_of(g, "TM179") == "SMACK-DOWN", "Cozmo's thanks: Smack Down (TM179)")
 
 print("== New Mauville's story (ORAS), in Mauville")
 for f in ("wattson_square_talk", "wattson_new_mauville_asked", "new_mauville_checked", "new_mauville_cleared"):
@@ -341,9 +324,9 @@ if comp:
     snap(st, "new_mauville")
 _hills = _mv["rooms"]["hills"]["people"]
 _w = next(p for p in _hills if "any" in p)["any"]
-check(_w[1]["event"].get("gift_item") == {"HTM24": 1} and _w[1]["event"].get("flag") == "new_mauville_cleared",
+check(_w[1]["event"].get("gift_item") == {"TM126": 1} and _w[1]["event"].get("flag") == "new_mauville_cleared",
       "back in Mauville Hills: Wattson gives TM24 Thunderbolt and the Journal's New Mauville is done")
-check(any(p.get("event", {}).get("gift_item") == {"HTM89": 1} for p in _hills if isinstance(p, dict) and "event" in p),
+check(any(p.get("event", {}).get("gift_item") == {"TM060": 1} for p in _hills if isinstance(p, dict) and "event" in p),
       "Mauville Hills' balcony: TM89 U-turn")
 
 from src.states.overworld import CityState

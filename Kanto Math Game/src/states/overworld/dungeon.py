@@ -131,6 +131,42 @@ FIGURE_ACTIONS = ("BOSS", "EVENT", "NPC", "HOENN_EVENT", "DAYCARE", "BERRY", "CA
 DECOR_C = {"slot": ((200, 60, 70), (250, 230, 120)), "counter": ((150, 100, 60), (204, 156, 100)),
            "poster": ((60, 60, 80), (236, 226, 200))}
 FACING_ROW = {(0, 1): 0, (-1, 0): 1, (1, 0): 2, (0, -1): 3}  # a sheet's rows: down, left, right, up
+# Forms whose sheet isn't named <species>_<FORM_MAP form>: the two-Mega Pokemon (their form is just "mega")
+FORM_SHEETS = {3002: "6_mega_x", 3003: "6_mega_y", 3007: "26_mega_x", 3008: "26_mega_y", 3020: "150_mega_x",
+               3021: "150_mega_y"}
+
+
+def follower_names(game, pokemon):
+    """The assets/dungeon/followers sheet names (no .png) to try for a Pokemon, best first (Jordan, 11-17: every
+    form its own sheet). A form: <species>_<form> (12_pinkan, 479_heat, 201_b, 6_mega_x), then its own id's
+    (2008: Alolan Diglett), then the species'. Works from a bare id too (a map's boss or "mon:9103"): an id of
+    2000 and up is looked up in FORM_MAP, a species with a form gets its id from there."""
+    raw = int(pokemon.id)
+    form = str(getattr(pokemon, "form", "normal") or "normal").lower()
+    species, own = raw, None
+    try:
+        fm = game.loader.area_data.get("FORM_MAP", {}) or {}
+    except AttributeError:
+        fm = {}
+    if raw >= 2000:
+        own = raw
+        entry = fm.get(str(raw)) or {}
+        meta = getattr(pokemon, "meta_id", None)
+        species = int(meta) if meta and int(meta) != raw else int(entry.get("id", raw))
+        if form == "normal" and entry.get("form"):
+            form = str(entry["form"]).lower()
+    elif form != "normal":
+        own = next((int(k) for k, m in fm.items() if int(m.get("id", 0)) == raw
+                    and str(m.get("form", "")).lower() == form), None)
+    names = [FORM_SHEETS[own]] if own in FORM_SHEETS else []
+    if form != "normal":
+        names.append(f"{species}_{form}")
+    if own:
+        names.append(str(own))
+    names.append(str(species))
+    if getattr(pokemon, "gender", None) == "F" and form == "normal":  # (Pikachu's heart tail: its own sheet)
+        names.insert(0, f"{species}_female")
+    return list(dict.fromkeys(names))
 
 # The Bug-Catching Contest: its balls and turns, prizes for 1st, 2nd, 3rd (and the rest), how a catch scores
 CONTEST_BALLS, CONTEST_TURNS = 20, 150
@@ -997,7 +1033,8 @@ class DungeonState(OverworldBattles, PlayState):
         _art_map = (getattr(self, "recipe", None) or {}).get("art") or {}
         indoors = {t for f in (_art_map.get("floors") or []) if f.get("indoors") for t in (f.get("people") or []) if isinstance(t, str)}
         for item in self.area_data.get("route_menu", []):
-            if item.get("action") not in FIGURE_ACTIONS or (item.get("door") and item.get("text") not in indoors):
+            if (item.get("action") not in FIGURE_ACTIONS and not (item.get("action") == "SHOP" and item.get("door") and item.get("text") in indoors)) \
+                    or (item.get("door") and item.get("text") not in indoors):   # (a SHOP stands only behind its built room's counter: Hamlin's Mart, Orange 11-18)
                 continue  # (a house's option is through its door, not someone standing about; unless its room is built: then they stand in it)
             if boss_in_way and item.get("action") == "BOSS":
                 continue  # (it sleeps across the way out: see _gate)
@@ -1185,6 +1222,24 @@ class DungeonState(OverworldBattles, PlayState):
         self._clear_boulders()
         self._floor_surf = None
         self.say(sw.get("on" if on else "off") or ["Click! Something moved somewhere."])
+
+    def press_secret(self, t):
+        """A secret switch pressed once (the floor's "secret_switches" {"x,y": {"flag", "lines", "done"}} on a "secret"
+        decor tile: Orange 5.7's island caves): sets its flag, and with it every gate the flag opens (its "barred", its
+        "picture_when"). Pressed already: its "done" words."""
+        sw = (self._here_art().get("secret_switches") or {}).get("%d,%d" % tuple(t)) or {}
+        flags = self.game.story_manager.story_flags
+        if not self._ready() or not sw.get("flag"):
+            return
+        self.walk_goal = None
+        if flags.get(sw["flag"]):
+            self.say(sw.get("done") or ["The switch has been pressed already."])
+            return
+        flags[sw["flag"]] = True
+        self._clear_boulders()
+        self._floor_surf = None
+        self._over_key = None
+        self.say(sw.get("lines") or ["Click! Something moved somewhere."])
 
     def _stand_in_img(self, look, bar):
         """A story stand-in's picture (a map's "barred" look): "sheet:<walking sheet>" (bar "face" u d l r, "march": running
@@ -1470,6 +1525,9 @@ class DungeonState(OverworldBattles, PlayState):
             return "PLAY SLOTS", self.play_slots
         if (self.recipe.get("gate") or {}).get("switch") and self._beside("decor:" + self.recipe["gate"]["switch"]):
             return "CHECK", self.push_switch
+        sec = self._beside("decor:secret") if self._here_art().get("secret_switches") else None
+        if sec:
+            return "CHECK", lambda: self.press_secret(sec)
         if self._here_art().get("switch") and self._beside("decor:statue"):
             return "CHECK", self.flip_statue
         if self._beside("water") and self._menu_item("FISH"):
@@ -1498,6 +1556,7 @@ class DungeonState(OverworldBattles, PlayState):
     def _try_move_puzzle(self, pz):
         if not self._ready():
             return
+        self._pose_start("field")   # (your own field-move pose, if you have one: Orange 5.7's Ash)
         if tuple(self.run.player) == tuple(pz["at"]):
             self._open_puzzle(pz)
         else:
@@ -1534,7 +1593,7 @@ class DungeonState(OverworldBattles, PlayState):
         """On deep, dark sea: Dive to the seabed floor, the same spot below."""
         if not self._ready():
             return
-        if self.game.story_manager.inventory.get("HM_DIVE", 0) <= 0:
+        if self.game.story_manager.inventory.get("HM_DIVE", 0) <= 0 and self.game.story_manager.inventory.get("SCUBA_GEAR", 0) <= 0:   # (Orange 5.7: the Scuba Gear dives, 11-18)
             self.say(["The sea is deep and dark here.", "A Pokemon could DIVE down to the seabed."])
             return
         plan = self._plan()
@@ -1596,6 +1655,12 @@ class DungeonState(OverworldBattles, PlayState):
     def fish_here(self):
         if self._ready() and self._beside("water") and self._menu_item("FISH"):
             self.walk_goal = None
+            if self._player_extra("fish"):   # (your own casting frames, Orange 5.7's Ash: face the water, cast, then the bite)
+                w = self._beside("water")
+                self.facing = (w[0] - self.run.player[0], w[1] - self.run.player[1])
+                self._pose_start("fish")
+                self._pose_then = self.action_fish
+                return
             self.action_fish()  # the route's own: a bite, a battle, then back to the map
 
     def headbutt_here(self):
@@ -1712,6 +1777,14 @@ class DungeonState(OverworldBattles, PlayState):
         travel.passing(self.game, lambda: self.action_exit_route(target))
 
     # ---------------------------------------------------------------- talking
+    def show_dialogue(self, lines, callback=None):
+        """The route menu's dialogue (a boss's lines before its battle: Berry Forest's Hypno), as say(): the box goes away when
+        it's done. (11-17: the route menu's own left it up, finished, with no callback: you could never move again.)"""
+        if self.game.current_state is not self and isinstance(getattr(self.game.current_state, "dialogue_box", None), type(self.dialogue_box)):
+            return super().show_dialogue(lines, callback)
+        self.say(lines, then=callback)
+        return self.dialogue_box
+
     def say(self, lines, then=None):
         def done():
             self.dialogue_box.visible = False
@@ -1725,7 +1798,8 @@ class DungeonState(OverworldBattles, PlayState):
 
     # ---------------------------------------------------------------- a step
     def _ready(self):
-        return self.mode == "MAP" and self.anim == 0 and not self.dialogue_box.visible and not getattr(self, "_scene_lock", False)
+        return self.mode == "MAP" and self.anim == 0 and not self.dialogue_box.visible and not getattr(self, "_scene_lock", False) \
+            and not getattr(self, "_pose_then", None)   # (mid-cast: see fish_here)
 
     braking = False  # (on a slope: you've braked (WAIT), and stay put till you move again)
 
@@ -1783,7 +1857,7 @@ class DungeonState(OverworldBattles, PlayState):
             self._rolling = False
 
     def _can_surf(self):
-        return self.game.story_manager.inventory.get("HM_SURF", 0) > 0
+        return __import__("src.world.hms", fromlist=["field"]).field(self.game.story_manager, "HM_SURF")   # (Kanto: with the Soul Badge, FireRed's rule)
 
     def _on_surf(self, t=None):
         f = self.run.floor
@@ -1839,6 +1913,8 @@ class DungeonState(OverworldBattles, PlayState):
         on_ice = self.run.player != before and self.run.player in getattr(self.run.floor, "ice", ())
         self.sliding = (dx, dy) if on_ice and not leaving else None
         swept = getattr(self.run.floor, "current", {}).get(self.run.player) if self.run.player != before and not leaving else None
+        if swept and self.run.player != before and self._whirl_pull(dx, dy):
+            swept = None  # (Orange 5.7: the Whirlpuller carries you straight across a flowing whirlpool, 11-17)
         if swept and (self.run.player[0] + swept[0], self.run.player[1] + swept[1]) != before:
             self.sliding = swept  # (a sea current: it carries you its own way, whichever way you came onto it; never straight back and forth)
         if self.sliding and tuple(self.run.player) in self._stop_tiles():
@@ -1859,7 +1935,7 @@ class DungeonState(OverworldBattles, PlayState):
             self.steps += 1
             self._lap_step()
             if not self._hidden_item(self.run.player):
-                self._cracked_floor(self.run.player)
+                self._cracked_floor(self.run.player) or self._thin_ice(self.run.player)
                 self._itemfinder(self.run.player)
             self._copy_step(dx, dy)
             self._note_area()
@@ -2147,6 +2223,24 @@ class DungeonState(OverworldBattles, PlayState):
         self.walk_goal = None
         self.say(["The cracked floor crumbled under your feet!", "You fell through to the floor below!"],
                  then=lambda: self._warp(to, x, y, land=True))
+        return True
+
+    def _thin_ice(self, t):
+        """Thin ice (a floor's "thin_ice" {"to": floor below, "tiles": ["x,y"]}, FireRed's Icefall Cave 1F): the first step
+        cracks it, a second step on the cracked tile drops you to the floor below, onto the same spot (11-17)."""
+        ti = self._here_art().get("thin_ice") or {}
+        if f"{t[0]},{t[1]}" not in set(ti.get("tiles") or ()):
+            return False
+        cracked = self.__dict__.setdefault("_ice_cracked", set())
+        key = (self.area_key, self.run.index, tuple(t))
+        if key not in cracked:
+            cracked.add(key)
+            self.flash("The thin ice cracked!")
+            return False
+        cracked.discard(key)
+        to, (x, y) = int(ti["to"]), t
+        self.walk_goal = None
+        self.say(["The thin ice gave way!", "You fell through to the floor below!"], then=lambda: self._warp(to, x, y, land=True))
         return True
 
     def _hidden_item(self, t):
@@ -2801,7 +2895,7 @@ class DungeonState(OverworldBattles, PlayState):
             return False
         if len(parts) == 1 and not story.story_flags.get(parts[0]):
             return False
-        if u.get("item_condition") and story.inventory.get(u["item_condition"], 0) <= 0:
+        if u.get("item_condition") and not __import__("src.world.hms", fromlist=["field"]).field(story, u["item_condition"]):
             return False
         if u.get("area_cleared"):  # (every trainer of another area beaten: the Meadow's grunts, for the Works Key)
             pool = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(u["area_cleared"]) or {}).get("trainer_pool") or []
@@ -2874,7 +2968,7 @@ class DungeonState(OverworldBattles, PlayState):
             if str(what).startswith(("boulder:", "crate:")) and flags.get(self._boulder_flag(t)):
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR
-            elif str(what).startswith("falls:") and self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0:
+            elif str(what).startswith("falls:") and __import__("src.world.hms", fromlist=["field"]).field(self.game.story_manager, "HM_WATERFALL"):
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.SURF  # (you climb it: water you Surf up)
             elif str(what).startswith("cut:") and __import__("src.world.hms", fromlist=["usable"]).usable(self.game.story_manager, "HM_CUT"):
@@ -2887,11 +2981,12 @@ class DungeonState(OverworldBattles, PlayState):
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (you hop across them on the Bicycle: the Jagged Pass's round stones)
                 self.__dict__.setdefault("_stones", set()).add(t)
-            elif str(what).startswith("crack:") and self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0 \
+            elif str(what).startswith("crack:") and __import__("src.world.hms", fromlist=["field"]).field(self.game.story_manager, "HM_ROCK_SMASH") \
                     and not (self.run.recipe.get("art") or {}).get("smash_wild"):   # (Soaring's Mirage spots: broken one at a time)
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (your Pokemon breaks it)
-            elif str(what).startswith("climb:") and self.game.story_manager.inventory.get("HM_ROCK_CLIMB", 0) > 0:
+            elif str(what).startswith("climb:") and (self.game.story_manager.inventory.get("HM_ROCK_CLIMB", 0) > 0
+                                                     or self.game.story_manager.inventory.get("CLIMB_KIT", 0) > 0):   # (Orange 5.7's Climb Kit: the same walls, 11-17)
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (you scale it)
             elif str(what).startswith("whirl:") and flags.get(self._boulder_flag(t)):
@@ -2899,11 +2994,27 @@ class DungeonState(OverworldBattles, PlayState):
                 f.tiles[t[1]][t[0]] = core.SURF  # (open water now)
                 self._floor_surf = None
 
+    def _whirl_pull(self, dx, dy):
+        """On a flowing whirlpool's tile (the map's "whirl": Orange 5.7's, ogen.py) with the Whirlpuller: True, and you're
+        carried on the way you came, through the whirlpool and off its far side (5.7's Whirlpuller: through a row of them)."""
+        m = self.run.recipe.get("art") or {}
+        if m.get("floors"):
+            m = m["floors"][self.run.index]
+        wh = {tuple(t) for t in m.get("whirl") or ()}
+        p = tuple(self.run.player)
+        if p not in wh or self.game.story_manager.inventory.get("WHIRLPULLER", 0) <= 0:
+            return False
+        if (p[0] - dx, p[1] - dy) not in wh:
+            self.flash("The Whirlpuller pulls you through the whirlpool!", 60)
+        self.sliding = (dx, dy)
+        return True
+
     def _whirlpool(self, t):
         """Walked into a whirlpool (Jordan, 11-09): it bars the way until you clear it with Whirlpool."""
         story = self.game.story_manager
-        if story.inventory.get("HM_WHIRLPOOL", 0) <= 0:
-            self.say(["A fierce whirlpool blocks the way!", "A Pokemon that knows Whirlpool could calm it."])
+        if story.inventory.get("HM_WHIRLPOOL", 0) <= 0 and story.inventory.get("WHIRLPULLER", 0) <= 0:   # (Orange 5.7's Whirlpuller does it too, 11-17)
+            self.say(["A fierce whirlpool blocks the way!", "A Pokemon that knows Whirlpool could calm it."
+                      if self.area_data.get("region") != "ORANGE" else "A Whirlpuller would get you across it."])
             return
         f = self.run.floor
         todo, seen = [t], {t}
@@ -2952,8 +3063,9 @@ class DungeonState(OverworldBattles, PlayState):
             self.say(["A heavy crate is in the way.", "Push it? Slide the numbers into order!"],
                      then=lambda: self.game.change_state(SlidePuzzleState(self.game, shoved)))
             return
-        if story.inventory.get("HM_STRENGTH", 0) <= 0:
-            self.say(["A huge boulder is in the way.", "A Pokemon that knows Strength could push it!"])
+        if not __import__("src.world.hms", fromlist=["field"]).field(self.game.story_manager, "HM_STRENGTH"):
+            _b = __import__("src.world.hms", fromlist=["badge_wanted"]).badge_wanted(story, "HM_STRENGTH")   # (you carry the HM: it's the badge that's missing)
+            self.say(["A huge boulder is in the way.", f"Strength can't be used here without the {_b} Badge." if _b else "A Pokemon that knows Strength could push it!"])
             return
         from src.states.slide_puzzle import SlidePuzzleState
 
@@ -2962,6 +3074,7 @@ class DungeonState(OverworldBattles, PlayState):
             self.game.change_state(self)
             if solved:
                 story.story_flags[self._boulder_flag(t)] = True
+                self._pose_start("field")   # (your own field-move pose through "used Strength!", if you have one: Orange 5.7's Ash)
                 sw = self._switch_for(t)
                 if sw:   # (it rolls onto its floor switch: Victory Road's, and the rock barrier it holds up drops)
                     story.story_flags[sw["flag"]] = True
@@ -2991,6 +3104,7 @@ class DungeonState(OverworldBattles, PlayState):
         f.tiles[t[1]][t[0]] = core.FLOOR
         self.__dict__.setdefault("_smashed", {}).setdefault(self.run.index, set()).add(t)
         self._floor_surf = None
+        self._pose_start("field")   # (your own field-move pose, if you have one: Orange 5.7's Ash)
         rng = random.Random()
         if rng.random() >= self.SMASH_WILD:
             self.say(["Your Pokemon used Rock Smash!", "The rock crumbled away."])
@@ -3034,7 +3148,7 @@ class DungeonState(OverworldBattles, PlayState):
             self.say(["Round stones, in a row.", "On a Bicycle, you could hop across them!"])
             return True
         if what.startswith("crack:"):
-            if m.get("smash_wild") and self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0:
+            if m.get("smash_wild") and __import__("src.world.hms", fromlist=["field"]).field(self.game.story_manager, "HM_ROCK_SMASH"):
                 self._smash(t)
                 return True
             self.say(["A cracked rock is in the way.", "A Pokemon that knows Rock Smash could break it."])
@@ -3043,7 +3157,8 @@ class DungeonState(OverworldBattles, PlayState):
             self.say(["A wall of rushing water!", "A Pokemon that knows Waterfall could climb it."])
             return True
         if what.startswith("climb:"):
-            self.say(["A steep rock wall, with footholds.", "A Pokemon that knows Rock Climb could scale it."])
+            self.say(["A steep rock wall, with footholds.", "A Pokemon that knows Rock Climb could scale it."
+                      if self.area_data.get("region") != "ORANGE" else "A Climb Kit would get you up it."])
             return True
         if what.startswith("hole:"):
             self.say(["There's a hole in the floor.", "A boulder pushed in would drop to the floor below."])
@@ -3165,6 +3280,10 @@ class DungeonState(OverworldBattles, PlayState):
     def update(self):
         if self.mode == "CATCH":
             return super().update()
+        then = getattr(self, "_pose_then", None)
+        if then and pygame.time.get_ticks() - (getattr(self, "_pose", None) or (None, 0))[1] >= 650:   # (the cast is out: now the bite)
+            self._pose_then = None
+            then()
         if hasattr(self, "run"):
             self._clear_boulders()
             if getattr(self, "_boss_synced", None) != self.run.index:   # (up or down a floor: a beaten boss's tile there is clear too, the Tower's 6F)
@@ -3256,7 +3375,7 @@ class DungeonState(OverworldBattles, PlayState):
             if m.get("smash_wild"):  # (rocks broken one at a time, a wild Pokemon behind some: Soaring's Mirage spots)
                 gone = self.__dict__.get("_smashed", {}).get(self.run.index, set())
                 grid = ["".join("." if c == "0" and (i, j) in gone else c for i, c in enumerate(row)) for j, row in enumerate(grid)]
-            elif self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0 and any("0" in row for row in grid):  # (cracked rocks, broken)
+            elif __import__("src.world.hms", fromlist=["field"]).field(self.game.story_manager, "HM_ROCK_SMASH") and any("0" in row for row in grid):  # (cracked rocks, broken)
                 grid = [row.replace("0", ".") for row in grid]
             if __import__("src.world.hms", fromlist=["usable"]).usable(self.game.story_manager, "HM_CUT") and any("2" in row for row in grid):  # (small trees, cut down)
                 grid = [row.replace("2", ".") for row in grid]
@@ -3413,11 +3532,7 @@ class DungeonState(OverworldBattles, PlayState):
 
         def sheet():
             base = os.path.join(self.game.assets.assets_dir, "dungeon", "followers")
-            ids = list(dict.fromkeys([int(pokemon.id), pid]))  # (a form's own sheet first: Paldean Tauros)
-            form = str(getattr(pokemon, "form", "normal") or "normal").lower()
-            names = ([f"{pid}_{form}"] if form != "normal" else []) + [str(i) for i in ids]  # (71_mega, 1017_water_mask)
-            if female:  # (Pikachu's heart tail: its own sheet, for the species that have one)
-                names.insert(0, f"{pid}_female")
+            names = follower_names(self.game, pokemon)  # (a form's own sheet first: 12_pinkan, 2055 Paldean Tauros)
             paths = [os.path.join(base, "shiny", f"{n}.png") for n in names] if shiny else []
             for path in paths + [os.path.join(base, f"{n}.png") for n in names]:
                 if os.path.isfile(path):
@@ -3432,7 +3547,7 @@ class DungeonState(OverworldBattles, PlayState):
                     return img, cw, ch, box
             return None
         form_key = str(getattr(pokemon, "form", "normal") or "normal").lower()
-        data = self._sprite(("follower_sheet", int(pokemon.id), form_key, shiny, female), sheet)
+        data = self._sprite(("follower_sheet", int(pokemon.id), pid, form_key, shiny, female), sheet)
         if not data:
             return None
 
@@ -3444,7 +3559,7 @@ class DungeonState(OverworldBattles, PlayState):
                 return self._jumbo(cell)
             k = self._trainer_scale()
             return pygame.transform.scale(cell, (cell.get_width() * k, cell.get_height() * k))
-        return self._sprite(("follower", int(pokemon.id), form_key, shiny, row, frame, female), make)
+        return self._sprite(("follower", int(pokemon.id), pid, form_key, shiny, row, frame, female), make)
 
     def _sheet_frame(self, sheet, facing=(0, 1), col=None, frame=0, height=None):
         """One cell of a Pokemon Journeys overworld sheet (4 x 4): a person's walking frame (col None: the
@@ -3468,6 +3583,8 @@ class DungeonState(OverworldBattles, PlayState):
         from src.pokemon import rowdy   # (Pokemon Yellow: with the rowdy Pikachu along, you ride its surfboard; Jordan's sheet, 11-16)
         pika = self._pika_surf(frame) if rowdy.in_party(self.game.story_manager) is not None else None
         base, pika_top = pika if pika else (self._sheet_frame("base_surf.png", self.facing, col=frame, height=int(TILE * 0.95)), None)
+        if not pika:   # (your own sitting frame, player_extra "surf": Orange 5.7's Ash, 11-17; on Pikachu's board you stand)
+            me = self._extra_frame("surf", self.facing, 0) or me
         bob = int(2 * math.sin(pygame.time.get_ticks() / 180))
         was, now = (self._on_surf(self.anim_from) if self.anim > 0 else True), self._on_surf()
         if was and now:  # riding: it moves with you
@@ -3551,6 +3668,61 @@ class DungeonState(OverworldBattles, PlayState):
         name = f"em_acro_{char}.png"
         return name if os.path.exists(os.path.join(self.game.assets.assets_dir, "dungeon", "characters", name)) else None
 
+    def _player_extra(self, kind):
+        """Your trainer's own sheet of a kind (dungeon_sprites.json "player_extra": bike, surf, fish, field, dive, run;
+        Orange Islands 5.7's Ash, 11-17), else None: the walking sheet as before."""
+        char = str(getattr(self.game, "player_character", "") or "red").lower()
+        return ((sprite_map(self.game).get("player_extra") or {}).get(char) or {}).get(kind) or None
+
+    def _extra_frame(self, kind, facing=(0, 1), col=0):
+        """One frame of your player_extra sheet (a 4 x 4 sheet, its row by the way you face, or a strip {file, cols, rows}),
+        at your walking sheet's own scale; cut round the cell's middle (a rod held out doesn't push you sideways), down
+        to its lowest pixel, like the walking frames. None without one."""
+        ent = self._player_extra(kind)
+        if not ent:
+            return None
+        name, cols, rows = (ent, 4, 4) if isinstance(ent, str) else (ent.get("file"), int(ent.get("cols", 4)), int(ent.get("rows", 4)))
+
+        def make():
+            d = os.path.join(self.game.assets.assets_dir, "dungeon", "characters")
+            img = pygame.image.load(os.path.join(d, name)).convert_alpha()
+            players = sprite_map(self.game).get("players") or {}
+            char = str(getattr(self.game, "player_character", "") or "red").lower()
+            walk = players.get(char) or players.get("female" if char in players.get("girls", []) else "male")
+            k = 2
+            if walk:   # (the walking sheet's scale, as _sheet_frame works it out: the same size of pixel)
+                w_img = pygame.image.load(os.path.join(d, walk))
+                w_box = w_img.subsurface((0, 0, w_img.get_width() // 4, w_img.get_height() // 4)).get_bounding_rect()
+                k = max(1, round((TILE + 22) / max(1, w_box.h)))
+            cw, ch = img.get_width() // cols, img.get_height() // rows
+            cell = img.subsurface(((col % cols) * cw, (FACING_ROW.get(facing, 0) if rows == 4 else 0) * ch, cw, ch))
+            box = cell.get_bounding_rect()
+            if not (box.w and box.h):
+                return None
+            half = max(cw // 2 - box.x, box.right - cw // 2)
+            part = cell.subsurface((cw // 2 - half, box.y, 2 * half, box.h))
+            return pygame.transform.scale(part, (part.get_width() * k, part.get_height() * k))
+        return self._sprite(("player_extra", name, facing, col % cols), make)
+
+    def _pose_start(self, kind):
+        """Show your own pose for a moment (player_extra "field": using a field move; "fish": casting), if you have one."""
+        if self._player_extra(kind):
+            self._pose = (kind, pygame.time.get_ticks())
+
+    def _pose_img(self):
+        """Your pose (see _pose_start) while it lasts: through its message, or a moment; a step ends it."""
+        pose = getattr(self, "_pose", None)
+        if not pose:
+            return None
+        t = pygame.time.get_ticks() - pose[1]
+        box = getattr(self, "dialogue_box", None)
+        if self.anim > 0 or (t > 1600 and not (box is not None and box.visible) and not getattr(self, "npc_active", False)):   # (npc_active: a town's message)
+            self._pose = None
+            return None
+        if pose[0] == "fish":   # (the cast: rod back, over, out, in the water; the way you face)
+            return self._extra_frame("fish", self.facing, min(3, t // 150))
+        return self._extra_frame(pose[0], self.facing, min(4, t // 110))   # (field: the Poke Ball out, held up)
+
     def _player_img(self):
         """You on the map: your trainer's Journeys overworld sprite (yours, else a boy's or a girl's),
         facing the way you go, its feet moving while you step. On the round stones: your wheelie (still) and hop."""
@@ -3568,6 +3740,15 @@ class DungeonState(OverworldBattles, PlayState):
         _surf = getattr(self, "_on_surf", None) if hasattr(self, "run") else None
         if _surf and (_surf() or (self.anim > 0 and _surf(self.anim_from))):
             frame = 0   # (riding a Pokemon on the water: you sit still, no walking steps - Jordan 11-16)
+        elif self._player_extra("field") or self._player_extra("fish") or self._player_extra("dive") or self._player_extra("run"):
+            # (your own sheets, player_extra: Orange 5.7's Ash, 11-17)
+            own = self._pose_img()
+            if own is None and hasattr(self, "run") and self._player_extra("dive") and self._plan().get("surface") is not None:
+                own = self._extra_frame("dive", self.facing, frame)   # (on the seabed: swimming)
+            if own is None and self.anim > 0 and self._player_extra("run") and getattr(self, "_may_run", None) and self._may_run():
+                own = self._extra_frame("run", self.facing, frame)   # (Shift held: running)
+            if own is not None:
+                return own
         return self._sheet_frame(sheet, self.facing, frame=frame)
 
     def _ring_spot(self, f):
@@ -4045,6 +4226,10 @@ class DungeonState(OverworldBattles, PlayState):
             drawn += self._surf_draw(me, pr, at, k)
         elif me is not None and stones and self._acro_sheet():  # (on the round stones: your own wheelie, Emerald's Acro Bike frames)
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
+        elif me is not None and self._player_extra("bike") and (stones or self._cycling() or (self.anim > 0 and self._cycling(self.anim_from))):
+            # (riding your own Bicycle sheet, player_extra "bike": Orange 5.7's Ash, 11-17; pedalling while you go)
+            ride = self._extra_frame("bike", self.facing, (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0) or me
+            drawn.append((pr.bottom, ride, ride.get_rect(midbottom=(pr.centerx, pr.bottom))))
         elif me is not None and (stones or self._cycling() or (self.anim > 0 and self._cycling(self.anim_from))):  # riding the Bicycle
             bike = self._bike_img()
             drawn.append((pr.bottom - 1, bike, bike.get_rect(midbottom=(pr.centerx, pr.bottom + (2 if self.facing[0] else 8)))))
@@ -4169,6 +4354,26 @@ class DungeonState(OverworldBattles, PlayState):
         if step:  # (the mission's own way-points in this place: Silph Co.'s Card Key, then the boardroom)
             self._guide_hit = step
             return step
+        # (the search over every floor is for regions led over their walked maps (guide.WALKED_REGIONS: Kanto): elsewhere the
+        #  marker stays as it was, on this floor's own people and ways out, till that region's playthrough check)
+        walked = bool(self.run.recipe.get("layout")) and guide.map_ways(self.game, self.area_key) is not None
+        if walked and mission:  # (a drawn map: someone the mission needs on any of its floors: the way to the nearest; 11-17)
+            wanted = {}
+            for i in range(self.run.n_floors):
+                for m in self.run.made(i).movers:
+                    if m.kind == "figure" and isinstance(m.payload, dict) and guide.advances_goal(self.game, self.area_key, m.payload, mission):
+                        wanted[(i, m.x, m.y)] = m.payload.get("text") or "Here"
+                    elif m.kind == "trainer" and need and isinstance(m.payload, tuple) and (m.payload[1] or {}).get("victory_flag") in need:
+                        wanted[(i, m.x, m.y)] = "Battle"
+            if wanted:
+                start = (self.run.index, *self.run.player)
+                fkey = (start, frozenset(wanted), tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags), sum(1 for v in story.story_flags.values() if v))
+                if getattr(self, "_fig_key", None) != fkey:
+                    self._fig_key, self._fig_hit = fkey, self._guide_route(start, frozenset(wanted), "Here")
+                if self._fig_hit:
+                    t, label = self._fig_hit
+                    self._guide_hit = (t, wanted.get((self.run.index, *t), label) if label == "Here" else label)
+                    return self._guide_hit
         for m in f.movers:  # someone here the mission needs
             if m.kind == "figure" and isinstance(m.payload, dict) and guide.advances_goal(self.game, self.area_key, m.payload):
                 self._guide_hit = ((m.x, m.y), m.payload.get("text") or "Here")
@@ -4182,6 +4387,23 @@ class DungeonState(OverworldBattles, PlayState):
             return None
         if self.run.n_floors == 1:  # (one floor: the map's own way out with the shortest trip, if the next stop isn't one)
             hop = guide.map_hop(self.game, f.exits.values()) or hop
+        _item = getattr(self, "exit_items", {}).get(hop) or {}
+        _cond = _item.get("condition")
+        if "no_trainers" in (_cond if isinstance(_cond, list) else [_cond]):  # (that way opens once every trainer here is beaten: Nugget Bridge: the nearest one left)
+            px, py = self.run.player
+            left = [m for m in f.movers if m.kind == "trainer"]
+            if left:
+                m = min(left, key=lambda m: abs(m.x - px) + abs(m.y - py))
+                self._guide_hit = ((m.x, m.y), "Battle")
+                return self._guide_hit
+        if walked:  # (a drawn map: the way out toward the next stop that you can walk to, over every floor and room: Mt. Moon's ladders; 11-17)
+            start = (self.run.index, *self.run.player)
+            wkey = (start, hop, (mission or {}).get("id"), tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags), sum(1 for v in story.story_flags.values() if v))
+            if getattr(self, "_way_key", None) != wkey:
+                self._way_key, self._way_hit = wkey, self._guide_way(start, hop, mission)
+            if self._way_hit:
+                self._guide_hit = self._way_hit
+                return self._guide_hit
         px, py = self.run.player
         spot = min((t for t, target in f.exits.items() if target == hop),
                    key=lambda t: abs(t[0] - px) + abs(t[1] - py), default=None)  # (the nearest of them)
@@ -4203,6 +4425,55 @@ class DungeonState(OverworldBattles, PlayState):
                     return self._guide_hit
         return None
 
+    def _guide_way(self, start, hop, mission):
+        """(tile, label) toward the way out of this place that leads on to the Journal's next stop, over its floors and
+        rooms. The next stop's own way out if this place has one you could get to (not the one you just came in by,
+        when it has another: Viridian Forest's two gates both lead to Route 2); else, of the ways out you could get
+        to, the one with the shortest trip on from there (Route 2's south half: through the Forest). When someone or
+        something stands in the way, the marker goes on that first (see _guide_route)."""
+        from src.world import guide
+        story, run = self.game.story_manager, self.run
+        prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
+        mid = (mission or {}).get("id")
+        if not hasattr(run, "_guide_entry"):  # (where you came in, and what the Journal said then)
+            run._guide_entry = (start, mid if getattr(self, "steps", 0) <= 1 else None)   # (only where you really came in: worked
+            #  out later, after walking about under another mission's step marker, it isn't a door to avoid: Fairchild, 11-17)
+        reach = self._step_route(start, frozenset(), None, reach=True, loose=True)
+        outs = {}
+        for i, x, y in reach:
+            t = run.made(i).exits.get((x, y))
+            if isinstance(t, str) and t in prog and (i, x, y) != start:
+                outs.setdefault(t, []).append((i, x, y))
+        if not outs:
+            return None
+        came = getattr(story, "last_area_key", None)
+        if hop in outs:
+            tiles = outs[hop]
+            (e_i, e_x, e_y), e_mid = run._guide_entry
+            if came == hop and e_mid == mid:
+                far = [t for t in tiles if t[0] != e_i or abs(t[1] - e_x) + abs(t[2] - e_y) > 6]
+                tiles = far or tiles
+        else:
+            goal, best = guide.goal_area(self.game), None
+            for t in sorted(outs):
+                path = [t] if t == goal else guide.path_to(self.game, t, goal)
+                if path and (best is None or (len(path), t == came) < best[0]):
+                    best = ((len(path), t == came), t)
+            if best is None:
+                return None
+            hop = best[1]
+            tiles = outs[hop]
+        return self._guide_route(start, frozenset(tiles), self._exit_label(hop))
+
+    def _guide_route(self, start, goals, label):
+        """(tile, label) to head for now, on the way from start to goals (one (floor, x, y) or a set): the goal itself or
+        the stairs / pad that starts the shortest way you can walk. With no way you can walk yet: whoever or whatever
+        stands across the shortest way there (someone to talk to, a boulder to push, the route's Pokemon asleep)."""
+        hit = self._step_route(start, goals, label)
+        if hit is None:
+            hit = self._step_route(start, goals, label, loose=True)
+        return hit
+
     def _guide_step(self, mission):
         """(tile, label) toward a Journal mission's next "steps" way-point in this place ({"floor", "at", "label",
         "done"}: Jordan, 11-14: Silph Co. guided floor by floor): on its floor, the spot itself; elsewhere, the stairs
@@ -4213,101 +4484,255 @@ class DungeonState(OverworldBattles, PlayState):
             return None
         story = self.game.story_manager
         step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
-                     and not guide._ok(story, s.get("done"))), None)
-        fl = step.get("floor") if step else None
+                     and not (s.get("done") and guide._ok(story, s["done"])) and guide._ok(story, s.get("when"))), None)
+        fl = step.get("floor", 0 if self.run.n_floors == 1 else None) if step else None
         if step and step.get("room"):  # (a room of the map, walked as a floor of its own: the S.S. Anne's Captain's cabin)
             fl = ((self.run.recipe.get("art") or {}).get("room_floors") or {}).get(step["room"])
-        if fl is None or not 0 <= fl < self.run.n_floors:
+        if fl is None or not 0 <= fl < self.run.n_floors or not step.get("at"):
             return None
         goal = (fl, *step["at"])
         start = (self.run.index, *self.run.player)
-        key = (start, goal, tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags))
+        key = (start, goal, tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags), sum(1 for v in story.story_flags.values() if v))
         if getattr(self, "_step_key", None) != key:
-            self._step_key, self._step_hit = key, self._step_route(start, goal, step.get("label") or "Here")
+            self._step_key, self._step_hit = key, self._guide_route(start, goal, step.get("label") or "Here")
         return self._step_hit
 
-    def _step_route(self, start, goal, label):
-        """The first tile to head for on the shortest way from start to beside goal ((floor, x, y) each)."""
+    def _step_route(self, start, goal, label, reach=False, loose=False):
+        """The first tile to head for on the shortest way from start to beside goal ((floor, x, y) each; goal can be a
+        set of them: the nearest is taken), by ways you can walk now: over ledges their one way, across water with
+        Surf, round people, and pressing a statue switch where that swings the gates the right way (the Pokemon
+        Mansion's: the search knows which way every gate stands after each press). reach: only how far you can get (the
+        set of every (floor, x, y)). loose: as if nobody and nothing that can be moved stood in the way (people, a
+        boulder with Strength, a rock barrier its boulder switch lowers, the route's Pokemon asleep): the way to the
+        first of those on the shortest way there."""
         from collections import deque
+        goals = goal if isinstance(goal, (set, frozenset)) else {goal}
+        goal = None
         art = self.run.recipe.get("art") or {}
         plans = art.get("floors") or [art]
         floors = [self.run.made(i) for i in range(self.run.n_floors)]
-        bars, opened = [], []   # (each floor's barred tiles as they stand now: a floor last seen before you had the key keeps its doors drawn shut)
+        plan_of = lambda i: plans[i] if i < len(plans) and isinstance(plans[i], dict) else {}
+        story = self.game.story_manager
+        strength = __import__("src.world.hms", fromlist=["field"]).field(story, "HM_STRENGTH")
+        surf = self._can_surf()
+        _hms = __import__("src.world.hms", fromlist=["field", "usable"])
+        clears = {k for k, on in (("falls", _hms.field(story, "HM_WATERFALL")), ("cut", _hms.usable(story, "HM_CUT")),
+                                  ("crack", _hms.field(story, "HM_ROCK_SMASH") and not art.get("smash_wild")),
+                                  ("climb", story.inventory.get("HM_ROCK_CLIMB", 0) > 0 or story.inventory.get("CLIMB_KIT", 0) > 0),
+                                  ("slope", story.inventory.get("BICYCLE", 0) > 0), ("stones", story.inventory.get("BICYCLE", 0) > 0)) if on}
+        # (what a floor drawn before you had the HM still shows, cleared the next time you stand on it: Icefall Cave's
+        #  entrance falls, seen first without Waterfall; 11-17)
+        press = [(plan_of(i).get("switch") or {}).get("flag") for i in range(len(floors))]   # (each floor's statue switch flag)
+        secrets = [{tuple(int(v) for v in k.split(",")): s["flag"] for k, s in (plan_of(i).get("secret_switches") or {}).items()}
+                   for i in range(len(floors))]   # (each floor's secret switches, pressed once: Orange 5.7's island caves)
+        flips = {f for f in press if f} | {f for s in secrets for f in s.values()}
+        duels = {f: names for f, (area, names) in (getattr(story, "TRAINER_FLAGS", None) or {}).items() if area == self.area_key}   # (a door that opens once these trainers are beaten: the Hideout's B4F)
+        bars, opened, soft, swing = [], [], [], []   # (each floor's barred tiles as they stand now: a floor last seen before you had the key keeps its doors drawn shut)
         for i in range(len(floors)):
-            plan, shut, gone = plans[i] if i < len(plans) and isinstance(plans[i], dict) else {}, set(), set()
+            plan, shut, gone, wait, turn = plan_of(i), set(), set(), {}, []
+            pushed = {sw["flag"]: sw for sw in plan.get("boulder_switches") or []}
             for bar in plan.get("barred", []):
-                met = self.game.story_manager.inventory.get(bar["item"], 0) > 0 if bar.get("item") else \
-                    self._until_met(bar["until"]) if bar.get("until") else bool(self.game.story_manager.story_flags.get(bar.get("flag")))
+                u = bar.get("until") if isinstance(bar.get("until"), dict) else {}
+                fc = str(u.get("flag_condition") or "").split()
+                if len(u) == 1 and fc and fc[-1] in flips:  # (a gate a statue switch swings: shut or open by how the switch stands)
+                    turn.append((frozenset(tuple(t) for t in bar.get("tiles", [])), fc[-1], len(fc) == 2))
+                    continue
+                met = story.inventory.get(bar["item"], 0) > 0 if bar.get("item") else \
+                    self._until_met(bar["until"]) if bar.get("until") else bool(story.story_flags.get(bar.get("flag")))
                 (gone if met else shut).update(tuple(t) for t in bar.get("tiles", []))
+                sw = pushed.get(u.get("flag_condition"))
+                if sw and not met:  # (a rock barrier: down once a boulder sits on its switch)
+                    wait.update({tuple(t): sw for t in bar.get("tiles", [])})
+                elif not met and u.get("flag_condition") in duels:
+                    wait.update({tuple(t): {"trainers": duels[u["flag_condition"]]} for t in bar.get("tiles", [])})
             bars.append(shut)
             opened.append(gone - shut)
+            soft.append(wait)
+            swing.append(turn)
+        gates = {}
 
-        def ok(i, x, y):
+        def swung(i, tog):
+            """(tiles shut, tiles open) of floor i's swinging gates, with the switches in tog pressed once more."""
+            if (i, tog) not in gates:
+                shut, free = set(), set()
+                for tiles, flag, neg in swing[i]:
+                    on = bool(story.story_flags.get(flag)) != (flag in tog)
+                    (free if on != neg else shut).update(tiles)
+                gates[(i, tog)] = (shut, free - shut)
+            return gates[(i, tog)]
+
+        def hard(i, x, y, tog=frozenset()):
+            """What stands on a tile that you can't walk through as things are (None: nothing)."""
             fl = floors[i]
-            return fl.inside(x, y) and (x, y) not in bars[i] and (fl.walkable(x, y) or (x, y) in opened[i] or (i, x, y) == goal)
+            shut, free = swung(i, tog) if swing[i] else ((), ())
+            if (x, y) in bars[i] or (x, y) in shut:
+                return "bar"
+            if not (fl.walkable(x, y) or (x, y) in opened[i] or (x, y) in free or str(fl.decor.get((x, y), "")).split(":")[0] in clears):
+                return "boulder" if str(fl.decor.get((x, y), "")).startswith("boulder:") else "wall"
+            m = fl.mover_at(x, y)
+            if m is not None and m.kind not in ("trainer", "wild"):
+                return "mover"
+            return "boss" if fl.exits.get((x, y)) == "BOSS" else None
 
-        stops = [{tuple(t) for t in (plans[i].get("stops") or [])} if i < len(plans) and isinstance(plans[i], dict) else set()
-                 for i in range(len(floors))]
+        def ok(i, x, y, tog):
+            fl = floors[i]
+            if not fl.inside(x, y):
+                return False
+            if (i, x, y) in goals:
+                return True
+            kind = hard(i, x, y, tog)
+            if kind in (None, "boss"):
+                return True
+            if not loose:
+                return False
+            return kind == "mover" or (kind == "boulder" and strength) or \
+                (kind == "bar" and (x, y) in soft[i] and (strength or "trainers" in soft[i][(x, y)]))
 
-        def slide(i, x, y, dx, dy):
-            """Where a step from (x, y) ends: on a spin tile or ice you're carried on (the Rocket Hideout's maze)."""
+        stops = [{tuple(t) for t in (plan_of(i).get("stops") or [])} for i in range(len(floors))]
+        thin = [(int((plan_of(i).get("thin_ice") or {}).get("to", -1)), {tuple(int(v) for v in k.split(",")) for k in (plan_of(i).get("thin_ice") or {}).get("tiles", [])})
+                for i in range(len(floors))]   # (FireRed's thin ice: crossed once; stepped on again, a drop to the floor below: 11-17)
+
+        _puller = self.game.story_manager.inventory.get("WHIRLPULLER", 0) > 0   # (Orange 5.7: through flowing whirlpools, _whirl_pull)
+        pulls = [({tuple(t) for t in (plan_of(i).get("whirl") or ())} if _puller else set()) for i in range(len(floors))]
+
+        def slide(i, x, y, tog, dx, dy):
+            """Where a step from (x, y) ends: over a ledge, or on a spin tile or ice you're carried on (the Rocket
+            Hideout's maze). None: no step that way."""
             fl, at, seen = floors[i], (x + dx, y + dy), set()
+            if str(fl.decor.get(at, "")) == "ledge:%d,%d" % (dx, dy):  # (a ledge, from its high side: you land beyond it)
+                over = (at[0] + dx, at[1] + dy)
+                return (i, *over, tog) if fl.inside(*over) and hard(i, *over, tog) is None else None
+            if not ok(i, *at, tog):
+                return None
+            if fl.tile(*at) == core.SURF and fl.tile(x, y) != core.SURF and not surf:
+                return None
             cur, ice = getattr(fl, "current", {}) or {}, getattr(fl, "ice", ()) or ()
+            wh = pulls[i]
             while at not in seen and at not in fl.exits and at not in stops[i]:
                 seen.add(at)
-                d = cur.get(at) or ((dx, dy) if at in ice else None)
+                d = ((dx, dy) if at in wh else None) or cur.get(at) or ((dx, dy) if at in ice else None)   # (the Whirlpuller's pull: straight on)
                 if not d:
                     break
                 nxt = (at[0] + d[0], at[1] + d[1])
-                if not ok(i, *nxt):
+                if not ok(i, *nxt, tog):
                     break
                 at, (dx, dy) = nxt, d
-            return (i, *at)
+            return (i, *at, tog)
 
-        def beside(i, x, y):
-            return [(i, x + dx, y + dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
+        def beside(i, spot, tog):
+            """Where you stand, come out of a passage at spot: as the game puts you (core.Run._beside). A wild Pokemon
+            that happens to stand there now doesn't count: it will have wandered off by the time you get there."""
+            fl = floors[i]
 
-        def onward(i, x, y):  # (a passage on this tile: where you come out)
+            def taken(x, y):
+                m = fl.mover_at(x, y)
+                return (x, y) in fl.exits or (x, y) in fl.items or (x, y) in fl.tm_spots or (m is not None and m.kind != "wild")
+            t = next(((spot[0] + dx, spot[1] + dy) for dx, dy in core.DIRS
+                      if fl.walkable(spot[0] + dx, spot[1] + dy) and not taken(spot[0] + dx, spot[1] + dy)), fl.start)
+            return [(i, t[0], t[1], tog)]
+
+        def ladders(i, kind):
+            return sorted((s for s, v in floors[i].exits.items() if v == kind), key=lambda s: (s[1], s[0]))
+
+        def onward(i, x, y, tog):  # (a passage on this tile: where you come out: ladders pair up in reading order, or by the floor's own "ladders")
             t = floors[i].exits.get((x, y))
             if t == core.STAIRS and i + 1 < len(floors):
-                return [n for s, v in floors[i + 1].exits.items() if v == core.STAIRS_UP for n in beside(i + 1, *s)]
+                mine, far, order = ladders(i, core.STAIRS), ladders(i + 1, core.STAIRS_UP), plan_of(i).get("ladders")
+                nth = mine.index((x, y))
+                nth = order[nth] if order and nth < len(order) else nth
+                return beside(i + 1, far[nth] if nth < len(far) else far[0], tog) if far else []
             if t == core.STAIRS_UP and i > 0:
-                return [n for s, v in floors[i - 1].exits.items() if v == core.STAIRS for n in beside(i - 1, *s)]
+                mine, far, order = ladders(i, core.STAIRS_UP), ladders(i - 1, core.STAIRS), plan_of(i - 1).get("ladders")
+                nth = mine.index((x, y))
+                nth = order.index(nth) if order and nth in order else nth
+                return beside(i - 1, far[nth] if nth < len(far) else far[0], tog) if far else []
             if isinstance(t, str) and t.startswith("WARP:"):
                 f2, x2, y2 = (int(v) for v in t.split(":")[1:4])
                 if 0 <= f2 < len(floors):
-                    return beside(f2, x2, y2)
+                    fl = floors[f2]
+                    if t.endswith(":fall") and (x2, y2) not in fl.exits and fl.walkable(x2, y2):
+                        return [(f2, x2, y2, tog)]   # (a hole: onto that very spot)
+                    return beside(f2, (x2, y2), tog)
             return []
 
-        prev, q, passed = {start: None}, deque([start]), set()
+        def statue(i, x, y):
+            """The statue switch beside a tile, or None."""
+            if not press[i]:
+                return None
+            return next(((x + dx, y + dy) for dx, dy in core.DIRS if floors[i].decor.get((x + dx, y + dy)) == "statue"), None)
+
+        first = (*start, frozenset())
+        prev, q, passed = {first: None}, deque([first]), set()
         while q:
             cur = q.popleft()
-            if cur == goal:
+            if cur[:3] in goals:
+                goal = cur
                 break
-            i, x, y = cur
-            through = cur != start and (x, y) in floors[i].exits   # (stairs or a pad: on through it)
-            nxt = onward(i, x, y) if through else \
-                [slide(i, x, y, dx, dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
+            i, x, y, tog = cur
+            through = cur != first and (x, y) in floors[i].exits and not (loose and floors[i].exits[(x, y)] == "BOSS")   # (stairs or a pad: on through it)
+            nxt = onward(i, x, y, tog) if through else [slide(i, x, y, tog, dx, dy) for dx, dy in core.DIRS]
+            if not through and thin[i][1]:   # (onto a thin-ice tile beside you, once more: down to the floor below, the same spot)
+                to = thin[i][0]
+                for dx, dy in core.DIRS:
+                    t2 = (x + dx, y + dy)
+                    if t2 in thin[i][1] and 0 <= to < len(floors) and floors[to].walkable(*t2):
+                        nxt.append((to, t2[0], t2[1], tog))
+            if not through and statue(i, x, y) is not None:  # (press it: every gate of its flag swings)
+                nxt.append((i, x, y, tog ^ {press[i]}))
+            if not through and secrets[i]:   # (a secret switch beside you, not yet pressed: press it once)
+                for dx, dy in core.DIRS:
+                    sf = secrets[i].get((x + dx, y + dy))
+                    if sf and sf not in tog and not story.story_flags.get(sf):
+                        nxt.append((i, x, y, tog | {sf}))
             for n in nxt:
-                if n not in prev:
+                if n is not None and n not in prev:
                     prev[n] = cur
                     if through:
                         passed.add(cur)
                     q.append(n)
-        if goal not in prev:   # (no way yet: a statue switch on this floor may swing the gates: the Pokémon Mansion's)
-            here = self.run.index
-            for t, kind in sorted(floors[here].decor.items()):
-                if kind == "statue" and any((here, t[0] + dx, t[1] + dy) in prev for dx, dy in core.DIRS):
-                    return (t, "Switch")
+        if reach:   # (asked only how far you can get: every tile, over every floor)
+            return {n[:3] for n in prev}
+        if goal is None:
             return None
         path, c = [], goal
         while c is not None:
             path.append(c)
             c = prev[c]
         path.reverse()
-        for a, b in zip(path, path[1:]):  # (the first passage on the way: the stairs or pad to take)
+        if loose:   # (who or what stands across the way: the way to the first of them)
+            for node in path[1:]:
+                kind = None if node[:3] in goals else hard(*node)
+                if kind is None:
+                    continue
+                i, x, y, _tog = node
+                if kind == "bar":
+                    sw = soft[i].get((x, y)) or {}
+                    if sw.get("trainers"):  # (the guards whose defeat opens it: the nearest still standing)
+                        guards = frozenset((j, m.x, m.y) for j, fl in enumerate(floors) for m in fl.movers if m.kind == "trainer"
+                                           and isinstance(m.payload, tuple) and ((m.payload[1] or {}).get("spot_name") or (m.payload[1] or {}).get("name")) in sw["trainers"])
+                        return self._step_route(start, guards, "Battle") if guards else None
+                    rocks = frozenset((i, bx, by) for bx, by in sw.get("boulders", []) if str(floors[i].decor.get((bx, by), "")).startswith("boulder:"))
+                    return self._step_route(start, rocks, "Boulder") if rocks else None
+                m = floors[i].mover_at(x, y)
+                name = "Boulder" if kind == "boulder" else (self.area_data.get("area_boss") or {}).get("name") or "In the way" if kind == "boss" \
+                    else (m.payload.get("text") if m is not None and isinstance(m.payload, dict) else None) or "In the way"
+                return self._step_route(start, node[:3], name)
+            return None
+        for a, b in zip(path, path[1:]):  # (the first thing to do on the way: a statue to press, the stairs or pad to take)
+            if a[3] != b[3]:
+                sf = next(iter(a[3] ^ b[3]))
+                spot = next((t for t, f in secrets[a[0]].items() if f == sf and abs(t[0] - a[1]) + abs(t[1] - a[2]) == 1), None) \
+                    or statue(*a[:3])
+                return (spot, "Switch") if a[0] == self.run.index else None
             if a in passed and prev.get(b) == a:
                 return ((a[1], a[2]), "To " + self._floor_name(b[0]) if b[0] != a[0] else "Warp") if a[0] == self.run.index else None
+            if b[0] != a[0] and a not in passed:   # (a drop through thin ice: the tile to step onto, again)
+                if a[0] != self.run.index:
+                    return None
+                if (b[1], b[2]) == tuple(self.run.player):   # (standing on it, cracked: off it, then back on)
+                    return ((a[1], a[2]), "Step off the cracked ice")
+                cracked = (self.area_key, a[0], (b[1], b[2])) in self.__dict__.get("_ice_cracked", ())
+                return ((b[1], b[2]), "Cracked ice: step on" if cracked else "Thin ice")
         return ((goal[1], goal[2]), label) if goal[0] == self.run.index else None
 
     def _draw_gate(self, screen, r, kind):

@@ -307,7 +307,7 @@ class TownMenu:
             return lambda p=opt_data.get("panel"): self.solve_alph_panel(p)
         if action == "TRAVEL":
             return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"),
-                                           heal=travel_heal(opt_data), ride=opt_data.get("door") == "cycle")
+                                           heal=travel_heal(opt_data), ride=opt_data.get("ride") or opt_data.get("door") == "cycle")
         return None
 
     def open_explore_menu(self):

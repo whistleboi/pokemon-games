@@ -4,7 +4,7 @@
   "EVER_GRANDE_CITY": {
    "explore_options": [
     {
-     "text": "TM29 PSYCHIC",
+     "text": "TM120 PSYCHIC",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -12,10 +12,10 @@
      "flag_condition": "not oras_ever_grande_city_2",
      "event": {
       "lines": [
-       "You found a TM29 PSYCHIC!"
+       "You found a TM120 PSYCHIC!"
       ],
       "gift_item": {
-       "HTM29": 1
+       "TM120": 1
       },
       "flag": "oras_ever_grande_city_2"
      }
@@ -48,7 +48,7 @@
        "Professor Cozmo: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM23": 1
+       "TM179": 1
       },
       "flag": "oras_fallarbor_town_3"
      },
@@ -79,14 +79,14 @@
        "Old woman: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM10": 1
+       "TM272": 1
       },
       "flag": "oras_fortree_city_2"
      },
      "flag_condition": "not oras_fortree_city_2"
     },
     {
-     "text": "TM86 GRASS KNOT",
+     "text": "TM081 GRASS KNOT",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -94,10 +94,10 @@
      "flag_condition": "not oras_fortree_city_3",
      "event": {
       "lines": [
-       "You found a TM86 GRASS KNOT!"
+       "You found a TM081 GRASS KNOT!"
       ],
       "gift_item": {
-       "HTM86": 1
+       "TM081": 1
       },
       "flag": "oras_fortree_city_3"
      }
@@ -111,7 +111,7 @@
        "Winona: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM19": 1
+       "TM268": 1
       },
       "flag": "oras_fortree_city_4"
      },
@@ -137,7 +137,7 @@
   "HOENN_FIERY_PATH": {
    "route_menu": [
     {
-     "text": "TM06 TOXIC",
+     "text": "TM175 TOXIC",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -145,10 +145,10 @@
      "flag_condition": "not oras_hoenn_fiery_path_1",
      "event": {
       "lines": [
-       "You found a TM06 TOXIC!"
+       "You found a TM175 TOXIC!"
       ],
       "gift_item": {
-       "HTM06": 1
+       "TM175": 1
       },
       "flag": "oras_hoenn_fiery_path_1"
      }
@@ -215,7 +215,7 @@
        "Hiker: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM70": 1
+       "TM291": 1
       },
       "flag": "oras_hoenn_granite_cave_1"
      },
@@ -488,7 +488,7 @@
      }
     },
     {
-     "text": "TM02 DRAGON CLAW",
+     "text": "TM078 DRAGON CLAW",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -496,10 +496,10 @@
      "flag_condition": "not oras_hoenn_meteor_falls_6",
      "event": {
       "lines": [
-       "You found a TM02 DRAGON CLAW!"
+       "You found a TM078 DRAGON CLAW!"
       ],
       "gift_item": {
-       "HTM02": 1
+       "TM078": 1
       },
       "flag": "oras_hoenn_meteor_falls_6"
      }
@@ -543,7 +543,7 @@
   "HOENN_MT_CHIMNEY": {
    "route_menu": [
     {
-     "text": "TM59 INCINERATE",
+     "text": "TM290 INCINERATE",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -551,10 +551,10 @@
      "flag_condition": "not oras_hoenn_mt_chimney_2",
      "event": {
       "lines": [
-       "You found a TM59 INCINERATE!"
+       "You found a TM290 INCINERATE!"
       ],
       "gift_item": {
-       "HTM59": 1
+       "TM290": 1
       },
       "flag": "oras_hoenn_mt_chimney_2"
      }
@@ -1466,7 +1466,7 @@
        "Youngster: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM49": 1
+       "TM277": 1
       },
       "flag": "oras_hoenn_route_104_8"
      },
@@ -2573,7 +2573,7 @@
      "flag_condition": "not oras_hoenn_route_111_11"
     },
     {
-     "text": "TM37 SANDSTORM",
+     "text": "TM051 SANDSTORM",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -2581,10 +2581,10 @@
      "flag_condition": "not oras_hoenn_route_111_12",
      "event": {
       "lines": [
-       "You found a TM37 SANDSTORM!"
+       "You found a TM051 SANDSTORM!"
       ],
       "gift_item": {
-       "HTM37": 1
+       "TM051": 1
       },
       "flag": "oras_hoenn_route_111_12"
      }
@@ -2857,7 +2857,7 @@
      }
     },
     {
-     "text": "TM32 DOUBLE TEAM",
+     "text": "TM275 DOUBLE TEAM",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -2865,10 +2865,10 @@
      "flag_condition": "not oras_hoenn_route_113_3",
      "event": {
       "lines": [
-       "You found a TM32 DOUBLE TEAM!"
+       "You found a TM275 DOUBLE TEAM!"
       ],
       "gift_item": {
-       "HTM32": 1
+       "TM275": 1
       },
       "flag": "oras_hoenn_route_113_3"
      }
@@ -3074,7 +3074,7 @@
        "Old man and his Poochyena: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM05": 1
+       "TM172": 1
       },
       "flag": "oras_hoenn_route_114_1"
      },
@@ -4322,7 +4322,7 @@
      }
     },
     {
-     "text": "TM62 ACROBATICS",
+     "text": "TM014 ACROBATICS",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -4330,10 +4330,10 @@
      "flag_condition": "not oras_hoenn_route_119_14",
      "event": {
       "lines": [
-       "You found a TM62 ACROBATICS!"
+       "You found a TM014 ACROBATICS!"
       ],
       "gift_item": {
-       "HTM62": 1
+       "TM014": 1
       },
       "flag": "oras_hoenn_route_119_14"
      }
@@ -5415,7 +5415,7 @@
        "Fairy Tale Girl: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM99": 1
+       "TM079": 1
       },
       "flag": "oras_hoenn_route_123_14"
      },
@@ -6595,7 +6595,7 @@
    ],
    "route_menu": [
     {
-     "text": "TM34 SLUDGE WAVE",
+     "text": "TM214 SLUDGE WAVE",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -6603,10 +6603,10 @@
      "flag_condition": "not oras_hoenn_route_132_1",
      "event": {
       "lines": [
-       "You found a TM34 SLUDGE WAVE!"
+       "You found a TM214 SLUDGE WAVE!"
       ],
       "gift_item": {
-       "HTM34": 1
+       "TM214": 1
       },
       "flag": "oras_hoenn_route_132_1"
      }
@@ -6761,7 +6761,7 @@
        "Psychic: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM77": 1
+       "TM203": 1
       },
       "flag": "oras_hoenn_route_133_2"
      },
@@ -6866,7 +6866,7 @@
    ],
    "route_menu": [
     {
-     "text": "TM80 ROCK SLIDE",
+     "text": "TM086 ROCK SLIDE",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -6874,10 +6874,10 @@
      "flag_condition": "not oras_hoenn_route_134_1",
      "event": {
       "lines": [
-       "You found a TM80 ROCK SLIDE!"
+       "You found a TM086 ROCK SLIDE!"
       ],
       "gift_item": {
-       "HTM80": 1
+       "TM086": 1
       },
       "flag": "oras_hoenn_route_134_1"
      }
@@ -6933,14 +6933,14 @@
        "Street Thug: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM85": 1
+       "TM270": 1
       },
       "flag": "oras_hoenn_safari_zone_1"
      },
      "flag_condition": "not oras_hoenn_safari_zone_1"
     },
     {
-     "text": "TM53 ENERGY BALL",
+     "text": "TM119 ENERGY BALL",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -6948,10 +6948,10 @@
      "flag_condition": "not oras_hoenn_safari_zone_2",
      "event": {
       "lines": [
-       "You found a TM53 ENERGY BALL!"
+       "You found a TM119 ENERGY BALL!"
       ],
       "gift_item": {
-       "HTM53": 1
+       "TM119": 1
       },
       "flag": "oras_hoenn_safari_zone_2"
      }
@@ -7008,7 +7008,7 @@
      }
     },
     {
-     "text": "TM93 WILD CHARGE",
+     "text": "TM147 WILD CHARGE",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -7016,10 +7016,10 @@
      "flag_condition": "not oras_hoenn_safari_zone_7",
      "event": {
       "lines": [
-       "You found a TM93 WILD CHARGE!"
+       "You found a TM147 WILD CHARGE!"
       ],
       "gift_item": {
-       "HTM93": 1
+       "TM147": 1
       },
       "flag": "oras_hoenn_safari_zone_7"
      }
@@ -7143,7 +7143,7 @@
      }
     },
     {
-     "text": "TM64 EXPLOSION",
+     "text": "TM281 EXPLOSION",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -7151,10 +7151,10 @@
      "flag_condition": "not oras_hoenn_sky_pillar_2",
      "event": {
       "lines": [
-       "You found a TM64 EXPLOSION!"
+       "You found a TM281 EXPLOSION!"
       ],
       "gift_item": {
-       "HTM64": 1
+       "TM281": 1
       },
       "flag": "oras_hoenn_sky_pillar_2"
      }
@@ -7284,7 +7284,7 @@
    ],
    "route_menu": [
     {
-     "text": "TM63 EMBARGO",
+     "text": "TM280 EMBARGO",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -7292,10 +7292,10 @@
      "flag_condition": "not oras_hoenn_ss_tidal_1",
      "event": {
       "lines": [
-       "You found a TM63 EMBARGO!"
+       "You found a TM280 EMBARGO!"
       ],
       "gift_item": {
-       "HTM63": 1
+       "TM280": 1
       },
       "flag": "oras_hoenn_ss_tidal_1"
      }
@@ -7472,7 +7472,7 @@
      }
     },
     {
-     "text": "TM97 DARK PULSE",
+     "text": "TM094 DARK PULSE",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -7480,10 +7480,10 @@
      "flag_condition": "not oras_hoenn_team_hideout_5",
      "event": {
       "lines": [
-       "You found a TM97 DARK PULSE!"
+       "You found a TM094 DARK PULSE!"
       ],
       "gift_item": {
-       "HTM97": 1
+       "TM094": 1
       },
       "flag": "oras_hoenn_team_hideout_5"
      }
@@ -7625,7 +7625,7 @@
      }
     },
     {
-     "text": "TM97 DARK PULSE ",
+     "text": "TM094 DARK PULSE ",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -7633,10 +7633,10 @@
      "flag_condition": "not oras_hoenn_team_hideout_14",
      "event": {
       "lines": [
-       "You found a TM97 DARK PULSE!"
+       "You found a TM094 DARK PULSE!"
       ],
       "gift_item": {
-       "HTM97": 1
+       "TM094": 1
       },
       "flag": "oras_hoenn_team_hideout_14"
      }
@@ -7900,7 +7900,7 @@
      }
     },
     {
-     "text": "TM35 FLAMETHROWER",
+     "text": "TM125 FLAMETHROWER",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -7908,10 +7908,10 @@
      "flag_condition": "not oras_hoenn_victory_road_7",
      "event": {
       "lines": [
-       "You found a TM35 FLAMETHROWER!"
+       "You found a TM125 FLAMETHROWER!"
       ],
       "gift_item": {
-       "HTM35": 1
+       "TM125": 1
       },
       "flag": "oras_hoenn_victory_road_7"
      }
@@ -7934,7 +7934,7 @@
      }
     },
     {
-     "text": "TM81 X-SCISSOR",
+     "text": "TM105 X-SCISSOR",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -7942,10 +7942,10 @@
      "flag_condition": "not oras_hoenn_victory_road_10",
      "event": {
       "lines": [
-       "You found a TM81 X-SCISSOR!"
+       "You found a TM105 X-SCISSOR!"
       ],
       "gift_item": {
-       "HTM81": 1
+       "TM105": 1
       },
       "flag": "oras_hoenn_victory_road_10"
      }
@@ -8078,7 +8078,7 @@
        "Black Belt: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM75": 1
+       "TM088": 1
       },
       "flag": "oras_lavaridge_town_1"
      },
@@ -8093,7 +8093,7 @@
        "Flannery: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM50": 1
+       "TM157": 1
       },
       "flag": "oras_lavaridge_town_3"
      },
@@ -8129,7 +8129,7 @@
        "Man: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM44": 1
+       "TM085": 1
       },
       "flag": "oras_lilycove_city_2"
      },
@@ -8144,7 +8144,7 @@
        "Man: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM88": 1
+       "TM070": 1
       },
       "flag": "oras_lilycove_city_3"
      },
@@ -8220,7 +8220,7 @@
      }
     },
     {
-     "text": "TM58 SKY DROP",
+     "text": "TM278 SKY DROP",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -8228,10 +8228,10 @@
      "flag_condition": "not oras_mauville_city_3",
      "event": {
       "lines": [
-       "You found a TM58 SKY DROP!"
+       "You found a TM278 SKY DROP!"
       ],
       "gift_item": {
-       "HTM58": 1
+       "TM278": 1
       },
       "flag": "oras_mauville_city_3"
      }
@@ -8245,7 +8245,7 @@
        "Girl: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM48": 1
+       "TM256": 1
       },
       "flag": "oras_mauville_city_4"
      },
@@ -8260,7 +8260,7 @@
        "Wattson: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM72": 1
+       "TM048": 1
       },
       "flag": "oras_mauville_city_5"
      },
@@ -8331,7 +8331,7 @@
      }
     },
     {
-     "text": "TM89 U-TURN",
+     "text": "TM060 U-TURN",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -8339,16 +8339,16 @@
      "flag_condition": "not oras_mauville_city_12",
      "event": {
       "lines": [
-       "You found a TM89 U-TURN!"
+       "You found a TM060 U-TURN!"
       ],
       "gift_item": {
-       "HTM89": 1
+       "TM060": 1
       },
       "flag": "oras_mauville_city_12"
      }
     },
     {
-     "text": "TM24 THUNDERBOLT",
+     "text": "TM126 THUNDERBOLT",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -8356,10 +8356,10 @@
      "flag_condition": "not oras_mauville_city_13",
      "event": {
       "lines": [
-       "You found a TM24 THUNDERBOLT!"
+       "You found a TM126 THUNDERBOLT!"
       ],
       "gift_item": {
-       "HTM24": 1
+       "TM126": 1
       },
       "flag": "oras_mauville_city_13"
      }
@@ -8419,7 +8419,7 @@
        "Woman: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM60": 1
+       "TM279": 1
       },
       "flag": "oras_mossdeep_city_4"
      },
@@ -8483,7 +8483,7 @@
        "Liza and Tate: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM04": 1
+       "TM129": 1
       },
       "flag": "oras_mossdeep_city_9"
      },
@@ -8521,7 +8521,7 @@
        "Man: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM03": 1
+       "TM054": 1
       },
       "flag": "oras_pacifidlog_town_1"
      },
@@ -8545,7 +8545,7 @@
      }
     },
     {
-     "text": "TM21 FRUSTRATION",
+     "text": "TM273 FRUSTRATION",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -8553,16 +8553,16 @@
      "flag_condition": "not oras_pacifidlog_town_3",
      "event": {
       "lines": [
-       "You found a TM21 FRUSTRATION!"
+       "You found a TM273 FRUSTRATION!"
       ],
       "gift_item": {
-       "HTM21": 1
+       "TM273": 1
       },
       "flag": "oras_pacifidlog_town_3"
      }
     },
     {
-     "text": "TM27 RETURN",
+     "text": "TM274 RETURN",
      "action": "EVENT",
      "color": "GOLD",
      "found": true,
@@ -8570,10 +8570,10 @@
      "flag_condition": "not oras_pacifidlog_town_4",
      "event": {
       "lines": [
-       "You found a TM27 RETURN!"
+       "You found a TM274 RETURN!"
       ],
       "gift_item": {
-       "HTM27": 1
+       "TM274": 1
       },
       "flag": "oras_pacifidlog_town_4"
      }
@@ -8587,7 +8587,7 @@
        "Man: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM56": 1
+       "TM043": 1
       },
       "flag": "oras_pacifidlog_town_5"
      },
@@ -8690,7 +8690,7 @@
        "Businessman: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM54": 1
+       "TM057": 1
       },
       "flag": "oras_rustboro_city_2"
      },
@@ -8750,7 +8750,7 @@
        "Roxanne: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM39": 1
+       "TM036": 1
       },
       "flag": "oras_rustboro_city_6"
      },
@@ -8861,7 +8861,7 @@
        "Team MagmaOR/AquaAS Grunt: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM46": 1
+       "TM018": 1
       },
       "flag": "oras_slateport_city_6"
      },
@@ -8880,7 +8880,7 @@
        "Collector: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM83": 1
+       "TM285": 1
       },
       "flag": "oras_sootopolis_city_3"
      },
@@ -8895,7 +8895,7 @@
        "Black Belt: Here, I want you to have this!"
       ],
       "gift_item": {
-       "HTM31": 1
+       "TM058": 1
       },
       "flag": "oras_sootopolis_city_4"
      },
@@ -8906,7 +8906,7 @@
  },
  "FIGURES": {
   "EVER_GRANDE_CITY:TM29 PSYCHIC": {
-   "item": "HTM29"
+   "item": "TM120"
   },
   "FALLARBOR_TOWN:Bug Maniac": {
    "sheet": "em_17.png"
@@ -8915,7 +8915,7 @@
    "sheet": "em_26.png"
   },
   "FORTREE_CITY:TM86 GRASS KNOT": {
-   "item": "HTM86"
+   "item": "TM081"
   },
   "FORTREE_CITY:Old woman": {
    "sheet": "em_22.png"
@@ -8927,7 +8927,7 @@
    "sheet": "em_5.png"
   },
   "HOENN_FIERY_PATH:TM06 TOXIC": {
-   "item": "HTM06"
+   "item": "TM175"
   },
   "HOENN_FIERY_PATH:FIRE STONE": {
    "item": "FIRE_STONE"
@@ -8969,7 +8969,7 @@
    "item": "STAR_PIECE"
   },
   "HOENN_METEOR_FALLS:TM02 DRAGON CLAW": {
-   "item": "HTM02"
+   "item": "TM078"
   },
   "HOENN_METEOR_FALLS:PP MAX": {
    "item": "PP_MAX"
@@ -8978,7 +8978,7 @@
    "item": "SUPER_REPEL"
   },
   "HOENN_MT_CHIMNEY:TM59 INCINERATE": {
-   "item": "HTM59"
+   "item": "TM290"
   },
   "HOENN_MT_PYRE:CLEANSE TAG": {
    "item": "CLEANSE_TAG"
@@ -9137,7 +9137,7 @@
    "item": "ELIXIR"
   },
   "HOENN_ROUTE_111:TM37 SANDSTORM": {
-   "item": "HTM37"
+   "item": "TM051"
   },
   "HOENN_ROUTE_111:Girl": {
    "sheet": "em_12.png"
@@ -9170,7 +9170,7 @@
    "item": "SUPER_REPEL"
   },
   "HOENN_ROUTE_113:TM32 DOUBLE TEAM": {
-   "item": "HTM32"
+   "item": "TM275"
   },
   "HOENN_ROUTE_113:MAX ETHER": {
    "item": "MAX_ETHER"
@@ -9305,7 +9305,7 @@
    "item": "RARE_CANDY"
   },
   "HOENN_ROUTE_119:TM62 ACROBATICS": {
-   "item": "HTM62"
+   "item": "TM014"
   },
   "HOENN_ROUTE_119:LEPPA BERRY": {
    "item": "LEPPA_BERRY"
@@ -9449,7 +9449,7 @@
    "item": "RARE_CANDY"
   },
   "HOENN_ROUTE_132:TM34 SLUDGE WAVE": {
-   "item": "HTM34"
+   "item": "TM214"
   },
   "HOENN_ROUTE_133:CALCIUM": {
    "item": "CALCIUM"
@@ -9458,7 +9458,7 @@
    "sheet": "em_45.png"
   },
   "HOENN_ROUTE_134:TM80 ROCK SLIDE": {
-   "item": "HTM80"
+   "item": "TM086"
   },
   "HOENN_RUSTURF_TUNNEL:POKE BALL": {
    "item": "POKE_BALLS"
@@ -9467,7 +9467,7 @@
    "item": "MAX_ETHER"
   },
   "HOENN_SAFARI_ZONE:TM53 ENERGY BALL": {
-   "item": "HTM53"
+   "item": "TM119"
   },
   "HOENN_SAFARI_ZONE:PROTEIN": {
    "item": "PROTEIN"
@@ -9479,7 +9479,7 @@
    "item": "ULTRA_BALL"
   },
   "HOENN_SAFARI_ZONE:TM93 WILD CHARGE": {
-   "item": "HTM93"
+   "item": "TM147"
   },
   "HOENN_SAFARI_ZONE:Street Thug": {
    "sheet": "em_31.png"
@@ -9497,7 +9497,7 @@
    "item": "DRAGON_SCALE"
   },
   "HOENN_SKY_PILLAR:TM64 EXPLOSION": {
-   "item": "HTM64"
+   "item": "TM281"
   },
   "HOENN_SKY_PILLAR:FULL RESTORE": {
    "item": "FULL_RESTORE"
@@ -9506,7 +9506,7 @@
    "item": "ULTRA_BALL"
   },
   "HOENN_SS_TIDAL:TM63 EMBARGO": {
-   "item": "HTM63"
+   "item": "TM280"
   },
   "HOENN_SS_TIDAL:SHARP BEAK": {
    "item": "SHARP_BEAK"
@@ -9524,7 +9524,7 @@
    "item": "NEST_BALL"
   },
   "HOENN_TEAM_HIDEOUT:TM97 DARK PULSE": {
-   "item": "HTM97"
+   "item": "TM094"
   },
   "HOENN_TEAM_HIDEOUT:NUGGET ": {
    "item": "NUGGET"
@@ -9551,7 +9551,7 @@
    "item": "NEST_BALL"
   },
   "HOENN_TEAM_HIDEOUT:TM97 DARK PULSE ": {
-   "item": "HTM97"
+   "item": "TM094"
   },
   "HOENN_TEAM_HIDEOUT:NUGGET   ": {
    "item": "NUGGET"
@@ -9575,13 +9575,13 @@
    "item": "MAX_ELIXIR"
   },
   "HOENN_VICTORY_ROAD:TM35 FLAMETHROWER": {
-   "item": "HTM35"
+   "item": "TM125"
   },
   "HOENN_VICTORY_ROAD:FULL RESTORE": {
    "item": "FULL_RESTORE"
   },
   "HOENN_VICTORY_ROAD:TM81 X-SCISSOR": {
-   "item": "HTM81"
+   "item": "TM105"
   },
   "HOENN_WEATHER_INSTITUTE:Scientist": {
    "sheet": "em_46.png"
@@ -9623,7 +9623,7 @@
    "item": "X_SPEED"
   },
   "MAUVILLE_CITY:TM58 SKY DROP": {
-   "item": "HTM58"
+   "item": "TM278"
   },
   "MAUVILLE_CITY:METRONOME": {
    "item": "METRONOME"
@@ -9632,10 +9632,10 @@
    "item": "ELIXIR"
   },
   "MAUVILLE_CITY:TM89 U-TURN": {
-   "item": "HTM89"
+   "item": "TM060"
   },
   "MAUVILLE_CITY:TM24 THUNDERBOLT": {
-   "item": "HTM24"
+   "item": "TM126"
   },
   "MAUVILLE_CITY:Girl": {
    "sheet": "em_12.png"
@@ -9677,10 +9677,10 @@
    "item": "BIG_PEARL"
   },
   "PACIFIDLOG_TOWN:TM21 FRUSTRATION": {
-   "item": "HTM21"
+   "item": "TM273"
   },
   "PACIFIDLOG_TOWN:TM27 RETURN": {
-   "item": "HTM27"
+   "item": "TM274"
   },
   "PACIFIDLOG_TOWN:Man": {
    "sheet": "em_17.png"

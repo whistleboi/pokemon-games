@@ -171,10 +171,20 @@ story.inventory.update({"SURF_BOARD": 1, "AIR_BALLOON": 1})
 story.inventory.pop("HM_FLY", None)
 story.inventory.pop("HM_CUT", None)
 story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL"]
+for _k in ("HM_SURF", "BIKE_VOUCHER", "COIN_CASE", "BICYCLE"):
+    story.inventory.pop(_k, None)
 story.sync_key_items()
 inv = story.inventory
-check(inv.get("HM_SURF") and not inv.get("HM_FLY") and not inv.get("HM_CUT"),
-      "Kanto's badges give HM Surf (Cut: the S.S. Anne's captain; Fly: the Route 16 house, Jordan 11-07)")
+check(not inv.get("HM_SURF") and not inv.get("HM_FLY") and not inv.get("HM_CUT"),
+      "Kanto's badges give no HM (Cut: the S.S. Anne's captain; Fly: the Route 16 house, Jordan 11-07; Surf: the Safari Zone's Secret House, 11-16)")
+check(not inv.get("BIKE_VOUCHER") and not inv.get("COIN_CASE") and inv.get("TOWN_MAP"),
+      "...nor the Bike Voucher or the Coin Case (the Fan Club chairman, Celadon's diner: FireRed's places, 11-16); the Town Map still comes")
+from src.world import hms as _hms
+inv["HM_SURF"] = 1
+check(_hms.usable(story, "HM_SURF") and _hms.field(story, "HM_SURF"), "HM Surf from the Secret House works with the Soul Badge")
+story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW"]
+check(not _hms.field(story, "HM_SURF") and _hms.badge_wanted(story, "HM_SURF") == "Soul", "...and not without it (FireRed's HM badges: hms.USE_BADGE)")
+story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL"]
 inv["HM_FLY"] = 1
 check(story.can_fly(), "with HM Fly: you can fly")
 check("SURF_BOARD" not in inv and "AIR_BALLOON" not in inv, "the old stand-ins are gone")

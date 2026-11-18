@@ -18,10 +18,9 @@ def check(c, m):
         fails.append(m)
 
 
-def _htm(old):
-    """Hoenn's own TM (11-14: ORAS numbering) for an old Sword/Shield-numbered key the checks were written with."""
-    from src.pokemon import tms as _t
-    return _t.hoenn_key(g, json.load(open("assets/tms.json", encoding="utf-8"))[old]["move"])
+def _htm(key):
+    """A TM key (11-17: one list in every region, so Hoenn's TMs are the same keys; kept so the checks read as before)."""
+    return key
 
 
 g.dungeon_routes = True; g.walk_towns = True
@@ -648,11 +647,11 @@ for _k in ("meteor_falls_cleared", "route114_rival_race", "got_tm_dig_114", "rou
            "meteor_falls_other_leader", "mt_chimney_boss_defeated", "mt_chimney_other_leader", "cozmo_thanked"):
     story.story_flags.pop(_k, None)
 story.story_flags["heard_cozmo"] = True
-_tm15 = story.inventory.pop(_htm("TM15"), None)
+_tm15 = story.inventory.pop(_htm("TM055"), None)
 st = open_map("HOENN_ROUTE_114", "FALLARBOR_TOWN")
 st.run.player, st.facing = (29, 6), (0, -1)
 st._read_sign(); tap(st)
-check(story.inventory.get(_htm("TM15"), 0) > 0, "Route 114: the Fossil Maniac's little brother gives you TM15 (Dig)")
+check(story.inventory.get(_htm("TM055"), 0) > 0, "Route 114: the Fossil Maniac's little brother gives you TM15 (Dig)")
 st.run.player, st.facing = (27, 37), (0, -1)
 st._read_sign()
 check(st.dialogue_box.visible and "Lanette" in " ".join(st.dialogue_box.text_lines), f"Route 114: Lanette at home ({st.dialogue_box.text_lines[:1]})")
@@ -678,7 +677,7 @@ check(len(_mf["floors"]) == 4 and _mf["floors"][0].get("parts") and _mf.get("fig
       "Meteor Falls: four floors from Emerald (no Steven's room); 1F's pockets reached from B1F; the comet's Jirachi in the deepest room")
 story.repel_routes = _rep
 if _tm15 is None:
-    story.inventory.pop(_htm("TM15"), None)
+    story.inventory.pop(_htm("TM055"), None)
 
 # after Meteor Falls (ORAS): Cozmo's thanks (TM100 Smack Down: a story gift, never sold), your rival's offer to go
 # back to Mauville together; Mt. Chimney's Lava Cookies
@@ -686,11 +685,11 @@ from src.pokemon import tms as _tms, items as _items
 for _k in ("cozmo_thanked", "rival_mauville_ride"):
     story.story_flags.pop(_k, None)
 story.story_flags["meteor_falls_cleared"] = True
-_t100 = story.inventory.pop(_htm("TM100"), None)
+_t100 = story.inventory.pop(_htm("TM179"), None)
 st = open_map("FALLARBOR_TOWN", "HOENN_ROUTE_114")
 _cz = next(o for o in st._door_options("cozmo") if o.get("target") == "professor_cozmo")
 st._get_callback_for_option(_cz)(); tap(st)
-check(story.inventory.get(_htm("TM100"), 0) > 0 and _tms.move_of(g, _htm("TM100")) == "SMACK-DOWN" and _htm("TM100") not in _tms.mart_stock(g, 8),
+check(story.inventory.get(_htm("TM179"), 0) > 0 and _tms.move_of(g, _htm("TM179")) == "SMACK-DOWN" and _htm("TM179") not in _tms.mart_stock(g, 8),
       "Fallarbor: Professor Cozmo thanks you with TM100 Smack Down (a story gift: not in any Mart)")
 st = open_map("FALLARBOR_TOWN", "HOENN_ROUTE_114")
 _rr = st._door_options("rivalride")
@@ -706,7 +705,7 @@ check(type(g.current_state).__name__ == "PokeMartState" and getattr(g.current_st
       and _items.MEDICINE["LAVA_COOKIE"].get("cure") == "all", "Mt. Chimney: the Lava Cookie lady sells Lava Cookies (200; they cure any status)")
 g.change_state(st)
 if _t100 is None:
-    story.inventory.pop(_htm("TM100"), None)
+    story.inventory.pop(_htm("TM179"), None)
 
 # ---- batch 8: Jagged Pass, Lavaridge Town, Route 118, Route 105 (ORAS, parts 9-10)
 for _k in ("got_tm_swords_dance", "got_lavaridge_egg", "got_charcoal", "got_good_rod_hoenn"):
@@ -724,7 +723,7 @@ def _talk8(st, at, face):
 
 
 _talk8(st, (16, 8), (0, -1))
-check(story.inventory.get(_htm("TM101"), 0) > 0, "Lavaridge: the dancing Black Belt gives TM101 Swords Dance (ORAS's TM75)")
+check(story.inventory.get(_htm("TM088"), 0) > 0, "Lavaridge: the dancing Black Belt gives TM101 Swords Dance (ORAS's TM75)")
 story.player_team = _team8[:5]
 _n8 = len(story.player_team)
 _talk8(st, (4, 8), (0, -1))
@@ -785,9 +784,9 @@ _wheelie = st._on_stones() and st._acro_sheet() == "em_acro_may.png" and st._pla
 g.player_character = _pc8
 check(_foot[0] == (21, 9) and "Bicycle" in _foot[1] and _hop and _wheelie,
       f"Jagged Pass: round stones stop you on foot ({_foot}); on the Bicycle you ride onto them, a wheelie on each and a hop between (Emerald's Acro Bike frames)")
-_tmf = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "TM43 FLAME CHARGE")
+_tmf = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "TM038 FLAME CHARGE")
 st._use_figure(_tmf); tap(st)
-check(story.inventory.get(_htm("TM102"), 0) > 0 and "TM69 ROCK POLISH" in _tm["HOENN_JAGGED_PASS"].get("people", []),
+check(story.inventory.get(_htm("TM038"), 0) > 0 and "TM282 ROCK POLISH" in _tm["HOENN_JAGGED_PASS"].get("people", []),
       "Jagged Pass: TM102 Flame Charge across the stones, TM103 Rock Polish on the west hill (story-gift TMs)")
 if _bk8 is None:
     story.inventory.pop("BICYCLE", None)
@@ -956,7 +955,7 @@ story.repel_routes = 9
 story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["STONE", "KNUCKLE", "DYNAMO", "HEAT", "BALANCE", "FEATHER"]))
 for _k in ("mt_pyre_cleared", "route121_grunts_ran", "mt_pyre_leader_left", "got_cleanse_tag", "got_eviolite_123", "got_tm28_123", "berry_master_123"):
     story.story_flags.pop(_k, None)
-for _k in ("CLEANSE_TAG", "EVIOLITE", _htm("TM28")):
+for _k in ("CLEANSE_TAG", "EVIOLITE", _htm("TM111")):
     story.inventory.pop(_k, None)
 _fig10 = lambda st, name: next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == name)
 st = open_map("HOENN_ROUTE_121", "HOENN_ROUTE_120")
@@ -1004,18 +1003,18 @@ st = open_map("HOENN_MT_PYRE", "HOENN_ROUTE_122")
 st.run.enter_floor(1); frames(2)
 check(_mv(st).get((22, 5)) == "TALK TO THE ELDERS", "Mt. Pyre summit: after the Admin, the elders by the altar")
 _tmp = json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_MT_PYRE"]
-check(_tmp["figure_floors"].get("TM30 SHADOW BALL") == 7 and _tmp["figure_floors"].get("SEA INCENSE") == 4 and _tmp["floors"][2].get("landings") == [[20, 9]], "Mt. Pyre: TM105 Shadow Ball on 6F, the Sea Incense on 3F; 1F's landing spot under 2F's hole")
+check(_tmp["figure_floors"].get("TM114 SHADOW BALL") == 7 and _tmp["figure_floors"].get("SEA INCENSE") == 4 and _tmp["floors"][2].get("landings") == [[20, 9]], "Mt. Pyre: TM105 Shadow Ball on 6F, the Sea Incense on 3F; 1F's landing spot under 2F's hole")
 st = open_map("HOENN_ROUTE_123", "HOENN_ROUTE_118")
 st._use_figure(_fig10(st, "Magikarp fan")); tap(st)
 check(story.inventory.get("EVIOLITE") == 1, "Route 123: the Magikarp fan by the pond gives an Eviolite")
 story.player_team = [p for p in _team10 if "GRASS" not in [str(t).upper() for t in (p.types or [])]] or [Pokemon(g.loader.fetch_specific(258), g.assets)]
 _gl = next(m for m in st.run.floor.movers if (m.x, m.y) == (108, 13))
 st._use_figure(_gl); tap(st)
-_no = story.inventory.get(_htm("TM28"))
+_no = story.inventory.get(_htm("TM111"))
 story.player_team = story.player_team + [Pokemon(g.loader.fetch_specific(252), g.assets)]
 st.dialogue_box.visible = False
 st._use_figure(_gl); tap(st)
-check(not _no and story.inventory.get(_htm("TM28")) == 1, "Route 123: the Grass lover gives TM28 Giga Drain only to a Trainer with a Grass type")
+check(not _no and story.inventory.get(_htm("TM111")) == 1, "Route 123: the Grass lover gives TM28 Giga Drain only to a Trainer with a Grass type")
 _b0 = sum(v for k, v in story.inventory.items() if k.endswith("_BERRY"))
 st.run.player, st.anim = (22, 7), 0
 st.dialogue_box.visible = False
@@ -1099,11 +1098,11 @@ st._go("dept_2", "ROOM:dept_3"); frames(2)
 st.player, st.facing, st.anim = (10, 4), (0, 1), 0
 st.step(0, 1); frames(2)
 _cs = g.current_state
-check(type(_cs).__name__ == "PokeMartState" and "GREAT_BALL" in (_cs.stock or []) and _htm("TM08") not in (_cs.stock or []),
+check(type(_cs).__name__ == "PokeMartState" and "GREAT_BALL" in (_cs.stock or []) and _htm("TM163") not in (_cs.stock or []),
       f"Lilycove: 2F's clerk across the counter sells his own shelf (Poke Balls, medicine) ({type(_cs).__name__})")
 g.change_state(st)
 _shelves = {o.get("text"): o.get("stock") for r in _tm2["LILYCOVE_CITY"]["rooms"].values() for o in r.get("people", []) if isinstance(o, dict) and o.get("stock")}
-check(_shelves.get("Attack TM clerk") == [_htm("TM109"), _htm("TM110"), _htm("TM111"), _htm("TM08")] and "X_ATTACK" in _shelves.get("Battle clerk", [])
+check(_shelves.get("Attack TM clerk") == [_htm("TM141"), _htm("TM166"), _htm("TM143"), _htm("TM163")] and "X_ATTACK" in _shelves.get("Battle clerk", [])
       and "CALCIUM" in _shelves.get("Vitamin clerk", [])
       and "LEMONADE" in _shelves.get("Rooftop stand", []) and "RED_POKEBLOCK" in _shelves.get("Contest clerk", []),
       f"Lilycove: each counter of the store sells its own kind of thing (2F travel and Trainer goods, 3F X items, 4F TMs, 5F Pokeblocks, rooftop drinks)")
@@ -1122,9 +1121,10 @@ check({"BIG_PEARL", "NUGGET"} <= set(_m._sellable()) and _m._price("NUGGET") // 
       "Valuables (Nugget, Big Pearl...) sell at any Mart for half their price")
 from src.pokemon import tms as _tmsm
 _tmd = _tmsm.table(g)
-check(all(_tmd[k].get("shop_only") for k in (_htm("TM109"), _htm("TM110"), _htm("TM111"))) and not set(_tmsm.mart_stock(g, 8)) & {_htm("TM109"), _htm("TM110"), _htm("TM111")}
-      and _tmd[_htm("TM108")]["move"] == "FROST-BREATH",
-      "TMs: Fire Blast, Thunder, Blizzard sold only at Lilycove's TM Corner; Frost Breath found in Shoal Cave")
+check([_tmd[k]["move"] for k in (_htm("TM141"), _htm("TM166"), _htm("TM143"))] == ["FIRE-BLAST", "THUNDER", "BLIZZARD"]
+      and {_htm("TM141"), _htm("TM166"), _htm("TM143")} <= set(_tmsm.mart_stock(g, 8)) | _tmsm.owned(story)
+      and _tmd[_htm("TM284")]["move"] == "FROST-BREATH",
+      "TMs: Fire Blast, Thunder, Blizzard at Lilycove's TM Corner (and every Mart by the League, 11-17); Frost Breath found in Shoal Cave")
 st._go("dept", "ROOM:dept_2"); frames(2)
 _loto = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Loto clerk")
 _before = sum(story.inventory.get(k, 0) for k in ("MOOMOO_MILK", "RARE_CANDY", "MASTER_BALL"))
@@ -1203,9 +1203,9 @@ st._get_callback_for_option(_md)()
 said = _play(st, 200)
 check(st.room == "move_deleter" and any("forgot how" in x for x in said), f"Lilycove: the Move Deleter has forgotten how to delete moves ({said[-1:]})")
 st._go("house_sleepy", "OUT:55,15"); frames(2)
-story.story_flags.pop("got_tm21_lilycove", None); story.inventory.pop(_htm("TM21"), None)
+story.story_flags.pop("got_tm21_lilycove", None); story.inventory.pop(_htm("TM085"), None)
 st._get_callback_for_option(next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Sleepy man"))(); tap(st)
-check(story.inventory.get(_htm("TM21")) == 1, "Lilycove: the sleepy man in the house by the Berry gentleman gives TM21 Rest")
+check(story.inventory.get(_htm("TM085")) == 1, "Lilycove: the sleepy man in the house by the Berry gentleman gives TM21 Rest")
 st._go("center", "OUT:24,14"); frames(2)
 _hp = story.player_team[0]; _hp.current_hp = 1
 st.player, st.facing, st.anim = (7, 4), (0, -1), 0
@@ -1517,7 +1517,7 @@ st.step(1, 0)
 said = _play(st, 3000)
 check(story.story_flags.get("route128_leaders_met") and any("Sootopolis" in x for x in said),
       f"Route 128: back on the surface, the two leaders and Steven send you on to Sootopolis ({said[-1:]})")
-check(all(k in json.load(open("assets/tms.json", encoding="utf-8")) for k in ("TM106", "TM107")),
+check(all(k in json.load(open("assets/tms.json", encoding="utf-8")) for k in ("TM149", "TM188")),
       "Seafloor Cavern: TM Earthquake and TM Scald to find (new TMs)")
 story.inventory.clear(); story.inventory.update(_inv15)
 story.story_flags.clear(); story.story_flags.update(_saved15)
@@ -1551,7 +1551,7 @@ check(_blocked and story.story_flags.get("sootopolis_wallace_met") and story.inv
       f"Sootopolis: Wallace keeps the Cave of Origin; he and Steven meet you, the Admin gives you the team's suit ({said[:1]})")
 st._go("brick_house", ""); frames(2)
 st._get_callback_for_option(next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Brick Break master"))(); tap(st)
-check(story.inventory.get(_htm("TM43")) == 1, "Sootopolis: the old man's TM Brick Break")
+check(story.inventory.get(_htm("TM058")) == 1, "Sootopolis: the old man's TM Brick Break")
 _co = _tm16["HOENN_CAVE_OF_ORIGIN"]["floors"]
 _seen16 = {0}
 _todo = [0]
@@ -1584,7 +1584,7 @@ _pg = Pokemon(g.loader.fetch_specific(383), g.assets); _pg.primal_ready = True
 _pf = _fm16.opponent_form(g.assets, _pg, False)
 check(_pf and _pf.get("form") == "primal", "Cave of Origin: the battle starts with the legend already in its Primal form")
 _aar = next(p for p in _tm16["HOENN_ROUTE_111"]["people"] if isinstance(p, dict) and p.get("text") == "Aarune")
-check(_aar["event"].get("gift_item") == {_htm("TM112"): 1} and json.load(open("assets/tms.json", encoding="utf-8"))["TM112"]["move"] == "SECRET-POWER"
+check(_aar["event"].get("gift_item") == {_htm("TM292"): 1} and json.load(open("assets/tms.json", encoding="utf-8"))["TM292"]["move"] == "SECRET-POWER"
       and any("Secret Bases" in x for x in _aar["event"]["lines"]),
       "Route 111: Aarune gives TM Secret Power; his Secret Bases aren't ready yet")
 story.inventory.clear(); story.inventory.update(_inv16)
@@ -1607,12 +1607,12 @@ _run_story_event(st, _p17("center", "Explosion tutor")["event"], lambda c: True,
 from src.pokemon import moves as _mv17
 check("EXPLOSION" in _mv17.move_pool(g, _geo), "Pacifidlog: the Center's tutor teaches Explosion (to a Geodude)")
 story.story_flags.pop("pacifidlog_friend_tm_week", None)
-story.inventory.pop(_htm("TM113"), None); story.inventory.pop(_htm("TM114"), None)
+story.inventory.pop(_htm("TM274"), None); story.inventory.pop(_htm("TM273"), None)
 _geo.friendship = 9
 _run_story_event(st, _p17("friend_house", "Friendly man")["event"], lambda c: True, lambda l, **k: None); tap(st)
-_ret = story.inventory.get(_htm("TM113"))
+_ret = story.inventory.get(_htm("TM274"))
 _run_story_event(st, _p17("friend_house", "Friendly man")["event"], lambda c: True, lambda l, **k: None); tap(st)
-check(_ret == 1 and not story.inventory.get(_htm("TM114")) and story.inventory.get(_htm("TM113")) == 1,
+check(_ret == 1 and not story.inventory.get(_htm("TM273")) and story.inventory.get(_htm("TM274")) == 1,
       "Pacifidlog: TM Return for a Pokemon that likes you, once a week")
 story.player_team = [Pokemon(g.loader.fetch_specific(371), g.assets)]
 story.story_flags.pop("pacifidlog_bagon_trade", None)
@@ -2365,7 +2365,7 @@ g.transitioning = False
 story.story_flags["beat_hoenn_champion"] = True
 st = open_map("HOENN_SCORCHED_SLAB", "HOENN_ROUTE_120")
 _fig23 = sorted(m.payload.get("text") for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict))
-check({"SEEK HEATRAN", "TM11 SUNNY DAY", "CHARIZARDITE Y"} <= set(_fig23),
+check({"SEEK HEATRAN", "TM049 SUNNY DAY", "CHARIZARDITE Y"} <= set(_fig23),
       f"Scorched Slab: Emerald's TM (Sunny Day), the Charizardite Y, and Heatran once you're Champion ({_fig23})")
 story.story_flags.clear(); story.story_flags.update(_saved23)
 story.inventory.clear(); story.inventory.update(_inv23)
@@ -2692,7 +2692,7 @@ check(any("relatively superior" in x for x in _said) and any("HP" in x and "can'
 _m0, _said = story.money, []
 story.story_flags.pop("got_tm87_annex", None); story.money = 500
 _rse(g.current_state, _fo["Lady in a jam"]["event"], lambda c: True, lambda l: _said.extend(l))
-check(story.money == 400 and story.inventory.get("HTM87", 0) >= 1, f"the Day Care Annex's lady: lend her $100, get TM87 Swagger ({story.money})")
+check(story.money == 400 and story.inventory.get("TM286", 0) >= 1, f"the Day Care Annex's lady: lend her $100, get TM87 Swagger ({story.money})")
 story.money = _m0
 _nol = _fr.BRAINS["factory"]
 story.story_flags["frontier_factory_wins"] = 5

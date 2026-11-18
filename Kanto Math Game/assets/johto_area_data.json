@@ -831,7 +831,7 @@
 
                 {"text": "Trader", "action": "EVENT", "door": "dept", "floor": 5, "flag_condition": "goldenrod_machop_trade", "event": {"lines": ["How's my old Machop doing? Training hard, I hope!"]}},
 
-                {"text": "TM lady", "action": "EVENT", "door": "dept", "floor": 5, "color": "GOLD", "condition": "weekday:sun", "event": {"lines": ["Oh, what a cute Pokemon! Let me see how it feels about you..."], "friend_tm": "goldenrod_friend_tm_week", "tms": ["TM113", "TM114"], "wait": ["I've already given you a TM this week. Come back next Sunday!"]}},
+                {"text": "TM lady", "action": "EVENT", "door": "dept", "floor": 5, "color": "GOLD", "condition": "weekday:sun", "event": {"lines": ["Oh, what a cute Pokemon! Let me see how it feels about you..."], "friend_tm": "goldenrod_friend_tm_week", "tms": ["TM274", "TM273"], "wait": ["I've already given you a TM this week. Come back next Sunday!"]}},
 
                 {"action": "EVENT", "event": {"lines": ["Tired? Have a drink from the vending machines. Your Pokemon will love them too!"]}, "text": "Man  ", "door": "dept", "floor": 6},
 
@@ -875,31 +875,31 @@
 
             "extra_stock": [
 
-                {"item": "TM05"},
+                {"item": "TM068"},
 
-                {"item": "TM03"},
+                {"item": "TM067"},
 
-                {"item": "TM04"},
+                {"item": "TM069"},
 
-                {"item": "TM25"},
+                {"item": "TM007"},
 
-                {"item": "TM94"},
+                {"item": "TM057"},
 
-                {"item": "TM17"},
+                {"item": "TM075"},
 
-                {"item": "TM18"},
+                {"item": "TM074"},
 
-                {"item": "TM11"},
+                {"item": "TM168"},
 
-                {"item": "TM109"},
+                {"item": "TM141"},
 
-                {"item": "TM110"},
+                {"item": "TM166"},
 
-                {"item": "TM111"},
+                {"item": "TM143"},
 
-                {"item": "TM08"},
+                {"item": "TM163"},
 
-                {"item": "TM132"}
+                {"item": "TM158"}
 
             ]
 
@@ -985,7 +985,7 @@
                 {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"},
                 {"text": "SOOTHE BELL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_soothe_bell_national_park_d22r0101_24_58", "event": {"lines": ["A Soothe Bell, lying in the grass."], "gift_item": {"SOOTHE_BELL": 1}, "flag": "got_soothe_bell_national_park_d22r0101_24_58"}},
                 {"text": "PARALYZE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_paralyze_heal_national_park_d22r0101_77_33", "event": {"lines": ["A Paralyze Heal, dropped by the path."], "gift_item": {"PARALYZE_HEAL": 1}, "flag": "got_paralyze_heal_national_park_d22r0101_77_33"}},
-                {"text": "TM15", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm15_national_park_d22r0101_81_16", "event": {"lines": ["A TM (Dig), tucked behind a tree."], "gift_item": {"TM15": 1}, "flag": "got_tm15_national_park_d22r0101_81_16"}}
+                {"text": "TM055", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm15_national_park_d22r0101_81_16", "event": {"lines": ["A TM (Dig), tucked behind a tree."], "gift_item": {"TM055": 1}, "flag": "got_tm15_national_park_d22r0101_81_16"}}
             ],
             "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]},
             "morning_pool_percentages": "JOHTO_NATIONAL_PARK_MORNING_PERCENTAGES"
@@ -1091,7 +1091,7 @@
 
                 {"text": "Orange Islands Ferry", "door": "harbor", "action": "EVENT", "color": "GOLD", "condition": {"any": ["not:beat_champion", "not:beat_johto_champion"]}, "event": {"lines": ["Sailor: This ferry sails south to the Orange Islands.", "It only takes the Champion of both Kanto and Johto. Come back when you've won both!"]}},
 
-                {"text": "TM63", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm63_olivine_city_t26_53_26", "event": {"lines": ["A TM (Drain-Punch), lying by the path."], "gift_item": {"TM63": 1}, "flag": "got_tm63_olivine_city_t26_53_26"}},
+                {"text": "TM073", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm63_olivine_city_t26_53_26", "event": {"lines": ["A TM (Drain-Punch), lying by the path."], "gift_item": {"TM073": 1}, "flag": "got_tm63_olivine_city_t26_53_26"}},
 
                 {"action": "EVENT", "color": "GOLD", "event": {"lines": ["Olivine's right on the sea, and where there's sea, there's fish! I've fished here thirty years.", "You look like you've got an angler's soul. Take this rod and try it for yourself!"], "gift_item": {"GOOD_ROD": 1}, "flag": "got_good_rod_olivine", "done": ["How's the fishing? Land the big one yet?"]}, "text": "Fishing Guru", "door": "guru"},
 
@@ -1315,7 +1315,7 @@
 
                 {"text": "ROUTE 28", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"], "color": "RED"},
 
-                {"text": "TM139", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm139_mt_silver_city_t31_8_21", "event": {"lines": ["A TM (Flamethrower), lying by the path."], "gift_item": {"TM139": 1}, "flag": "got_tm139_mt_silver_city_t31_8_21"}}
+                {"text": "TM125", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm139_mt_silver_city_t31_8_21", "event": {"lines": ["A TM (Flamethrower), lying by the path."], "gift_item": {"TM125": 1}, "flag": "got_tm139_mt_silver_city_t31_8_21"}}
 
             ],
 
@@ -1405,7 +1405,7 @@
 
                 {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_olivine_lighthouse_floors_d27r0105_2_13", "event": {"lines": ["An Ether, in a dark corner."], "gift_item": {"ETHER": 1}, "flag": "got_ether_olivine_lighthouse_floors_d27r0105_2_13"}},
 
-                {"text": "TM135", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm135_olivine_lighthouse_floors_d27r0106_11_3", "event": {"lines": ["A TM (Swagger), lying among the rocks."], "gift_item": {"TM135": 1}, "flag": "got_tm135_olivine_lighthouse_floors_d27r0106_11_3"}}
+                {"text": "TM286", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm135_olivine_lighthouse_floors_d27r0106_11_3", "event": {"lines": ["A TM (Swagger), lying among the rocks."], "gift_item": {"TM286": 1}, "flag": "got_tm135_olivine_lighthouse_floors_d27r0106_11_3"}}
 
             ]
 
@@ -1417,7 +1417,7 @@
             "trainer_pool": [],
             "route_menu": [
                 {"text": "Back Inside", "action": "EXIT", "target_area": "OLIVINE_LIGHTHOUSE_FLOORS", "condition": "can_exit", "color": "RED"},
-                {"text": "TM130", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm130_olivine_lighthouse_balcony_d27r0103_2_2", "event": {"lines": ["A TM (Charge-Beam), lying among the rocks."], "gift_item": {"TM130": 1}, "flag": "got_tm130_olivine_lighthouse_balcony_d27r0103_2_2"}}
+                {"text": "TM023", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm130_olivine_lighthouse_balcony_d27r0103_2_2", "event": {"lines": ["A TM (Charge-Beam), lying among the rocks."], "gift_item": {"TM023": 1}, "flag": "got_tm130_olivine_lighthouse_balcony_d27r0103_2_2"}}
             ]
         },
         "OLIVINE_LIGHTHOUSE": {
@@ -1549,10 +1549,10 @@
                 {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_kanto_route_27_r27_89_23", "event": {"lines": ["A Rare Candy, dropped by the path."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_kanto_route_27_r27_89_23"}},
 
 
-                {"text": "TM129", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm129_kanto_route_27_r27_139_10", "event": {"lines": ["A TM (Dragon-Claw), tucked behind a tree."], "gift_item": {"TM129": 1}, "flag": "got_tm129_kanto_route_27_r27_139_10"}},
+                {"text": "TM078", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm129_kanto_route_27_r27_139_10", "event": {"lines": ["A TM (Dragon-Claw), tucked behind a tree."], "gift_item": {"TM078": 1}, "flag": "got_tm129_kanto_route_27_r27_139_10"}},
 
 
-                {"text": "Thoughtful man", "action": "EVENT", "door": "tmhouse", "color": "GOLD", "event": {"lines": ["Off to the Pokemon League? Then your Pokemon had better trust you. Let me see your partner...", "Yes, the two of you are close. Take this TM - it's Sandstorm."], "gift_item": {"TM32": 1}, "flag": "got_tm32_route_27_house", "requires": ["lead_trusts_you"], "fail": ["Off to the Pokemon League? Then your Pokemon had better trust you. Let me see your partner...", "Hmm. It doesn't quite trust you yet. Spend more time together and come back."], "done": ["Sandstorm stirs up a storm of sand that hurts every Pokemon but Rock, Ground and Steel types."]}}
+                {"text": "Thoughtful man", "action": "EVENT", "door": "tmhouse", "color": "GOLD", "event": {"lines": ["Off to the Pokemon League? Then your Pokemon had better trust you. Let me see your partner...", "Yes, the two of you are close. Take this TM - it's Sandstorm."], "gift_item": {"TM051": 1}, "flag": "got_tm32_route_27_house", "requires": ["lead_trusts_you"], "fail": ["Off to the Pokemon League? Then your Pokemon had better trust you. Let me see your partner...", "Hmm. It doesn't quite trust you yet. Spend more time together and come back."], "done": ["Sandstorm stirs up a storm of sand that hurts every Pokemon but Rock, Ground and Steel types."]}}
 
 
             ],
@@ -1640,8 +1640,8 @@
                 {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
                 {"text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER_CITY", "condition": ["can_exit"], "color": "RED"},
                 {"text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"], "color": "RED"},
-                {"text": "Celebrity", "action": "EVENT", "door": "celebhouse", "color": "GOLD", "event": {"lines": ["Celebrity: You found my hideaway! I came out here to rest after years in the spotlight.", "Celebrity: Well, since you're not the press... Take this. My debut dress was inspired by this move: Steel Wing."], "gift_item": {"TM30": 1}, "flag": "got_tm30_route_28", "done": ["Celebrity: Shh! Not a word to anyone that I'm out here, all right?"]}},
-                {"text": "TM55", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm55_kanto_route_28_r28_33_8", "event": {"lines": ["A TM (Brine), lying in the grass."], "gift_item": {"TM55": 1}, "flag": "got_tm55_kanto_route_28_r28_33_8"}}
+                {"text": "Celebrity", "action": "EVENT", "door": "celebhouse", "color": "GOLD", "event": {"lines": ["Celebrity: You found my hideaway! I came out here to rest after years in the spotlight.", "Celebrity: Well, since you're not the press... Take this. My debut dress was inspired by this move: Steel Wing."], "gift_item": {"TM239": 1}, "flag": "got_tm30_route_28", "done": ["Celebrity: Shh! Not a word to anyone that I'm out here, all right?"]}},
+                {"text": "TM246", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm55_kanto_route_28_r28_33_8", "event": {"lines": ["A TM (Brine), lying in the grass."], "gift_item": {"TM246": 1}, "flag": "got_tm55_kanto_route_28_r28_33_8"}}
             ],
             "next_area": "MT_SILVER",
             "on_enter_event": null,
@@ -1946,7 +1946,7 @@
         
                 {"text": "GREAT BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_great_ball_johto_route_32_r32_3_113", "event": {"lines": ["A Great Ball, tucked behind a tree."], "gift_item": {"GREAT_BALL": 1}, "flag": "got_great_ball_johto_route_32_r32_3_113"}},
         
-                {"text": "TM50", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm50_johto_route_32_r32_27_151", "event": {"lines": ["A TM (Bullet-Seed), left near a ledge."], "gift_item": {"TM50": 1}, "flag": "got_tm50_johto_route_32_r32_27_151"}},
+                {"text": "TM056", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm50_johto_route_32_r32_27_151", "event": {"lines": ["A TM (Bullet-Seed), left near a ledge."], "gift_item": {"TM056": 1}, "flag": "got_tm50_johto_route_32_r32_27_151"}},
         
                 {"action": "EVENT", "color": "GOLD", "event": {"lines": ["This is a great spot for fishing! Watching everyone out there, don't you want to try?", "Here, take this Old Rod!"], "gift_item": {"OLD_ROD": 1}, "flag": "got_old_rod_johto", "done": ["Face the water and use the Rod. Watch closely, and reel in when something bites!"]}, "text": "Fishing guru", "door": "center"},
         
@@ -2162,7 +2162,7 @@
         
                 {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_johto_route_35_r35_28_61", "event": {"lines": ["An Ultra Ball, lying in the grass."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_johto_route_35_r35_28_61"}},
         
-                {"text": "TM57", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm57_johto_route_35_r35_23_21", "event": {"lines": ["A TM (Payback), dropped by the path."], "gift_item": {"TM57": 1}, "flag": "got_tm57_johto_route_35_r35_23_21"}},
+                {"text": "TM247", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm57_johto_route_35_r35_23_21", "event": {"lines": ["A TM (Payback), dropped by the path."], "gift_item": {"TM247": 1}, "flag": "got_tm57_johto_route_35_r35_23_21"}},
         
                 {"action": "EVENT", "event": {"lines": ["I hear Bug-type lovers come from all over for the Bug-Catching Contest in the National Park!"]}, "text": "Youngster", "door": "gate"},
         
@@ -2399,7 +2399,7 @@
                 {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
                 {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lax_incense_johto_route_39_r39_1_27", "event": {"lines": ["A Lax Incense, lying in the grass."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_lax_incense_johto_route_39_r39_1_27"}},
                 {"action": "EVENT", "event": {"lines": ["My Miltank's stopped giving milk. This farm's famous for its milk, and everyone wants a drink..."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "not moomoo_healed"},
-                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You made our Moomoo well again, hon! Our milk goes all the way to Kanto, so we were in real trouble. Here's something for your trouble."], "gift_item": {"TM136": 1}, "flag": "got_tm83_moomoo", "done": ["That's Natural Gift. Its power and type depend on the Berry your Pokemon's holding."], "requires": ["moomoo_healed"], "fail": ["Our milk goes all the way to Kanto. If Moomoo won't give milk, we're in a real fix."]}, "text": "Farmer's wife", "door": "farmhouse"},
+                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You made our Moomoo well again, hon! Our milk goes all the way to Kanto, so we were in real trouble. Here's something for your trouble."], "gift_item": {"TM303": 1}, "flag": "got_tm83_moomoo", "done": ["That's Natural Gift. Its power and type depend on the Berry your Pokemon's holding."], "requires": ["moomoo_healed"], "fail": ["Our milk goes all the way to Kanto. If Moomoo won't give milk, we're in a real fix."]}, "text": "Farmer's wife", "door": "farmhouse"},
                 {"text": "Moomoo Milk", "action": "SHOP", "door": "farmhouse", "flag_condition": "moomoo_healed", "stock": ["MOOMOO_MILK"]},
                 {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin", "door": "barn", "flag_condition": "not moomoo_healed"},
                 {"action": "EVENT", "event": {"lines": ["Thank you! Moomoo is totally healthy again!"]}, "text": "Twin", "door": "barn", "flag_condition": "moomoo_healed"},
@@ -2733,9 +2733,9 @@
         
                 {"text": "CHOICE SPECS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_choice_specs_lake_of_rage_t29_9_41", "event": {"lines": ["A Choice Specs, dropped by the path."], "gift_item": {"CHOICE_SPECS": 1}, "flag": "got_choice_specs_lake_of_rage_t29_9_41"}},
         
-                {"text": "TM112", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm112_lake_of_rage_t29_60_5", "event": {"lines": ["A TM (Secret-Power), tucked behind a tree."], "gift_item": {"TM112": 1}, "flag": "got_tm112_lake_of_rage_t29_60_5"}},
+                {"text": "TM292", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm112_lake_of_rage_t29_60_5", "event": {"lines": ["A TM (Secret-Power), tucked behind a tree."], "gift_item": {"TM292": 1}, "flag": "got_tm112_lake_of_rage_t29_60_5"}},
         
-                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["...You have strayed far to find me. Here I have meditated, and a new power has awakened within me. Let me share it with you."], "gift_item": {"TM104": 1}, "flag": "got_tm_hidden_power_lake", "done": ["It is Hidden Power. It draws out a power that sleeps inside every Pokemon."]}, "text": "Hermit", "door": "hiddenpower"},
+                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["...You have strayed far to find me. Here I have meditated, and a new power has awakened within me. Let me share it with you."], "gift_item": {"TM272": 1}, "flag": "got_tm_hidden_power_lake", "done": ["It is Hidden Power. It draws out a power that sleeps inside every Pokemon."]}, "text": "Hermit", "door": "hiddenpower"},
         
                 {"action": "EVENT", "event": {"lines": ["The Lake of Rage is a crater the rampaging Gyarados made. Me, I'm after the biggest Magikarp in it."], "size_record": true}, "text": "Fishing Guru", "door": "magikarphouse", "color": "GOLD"}
         
@@ -3031,7 +3031,7 @@
 
                 {"text": "AWAKENING", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_awakening_union_cave_d25r0102_27_30", "event": {"lines": ["An Awakening, in a dark corner."], "gift_item": {"AWAKENING": 1}, "flag": "got_awakening_union_cave_d25r0102_27_30"}},
 
-                {"text": "TM48", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm48_union_cave_d25r0103_25_43", "event": {"lines": ["A TM (Rock-Tomb), beside the cave wall."], "gift_item": {"TM48": 1}, "flag": "got_tm48_union_cave_d25r0103_25_43"}},
+                {"text": "TM036", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm48_union_cave_d25r0103_25_43", "event": {"lines": ["A TM (Rock-Tomb), beside the cave wall."], "gift_item": {"TM036": 1}, "flag": "got_tm48_union_cave_d25r0103_25_43"}},
 
                 {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_union_cave_d25r0103_17_73", "event": {"lines": ["An Elixir, left behind by a hiker."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_union_cave_d25r0103_17_73"}}
 
@@ -3103,7 +3103,7 @@
         
                 {"text": "X SPEED", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_speed_dark_cave_d42r0101_14_49", "event": {"lines": ["A X Speed, in a dark corner."], "gift_item": {"X_SPEED": 1}, "flag": "got_x_speed_dark_cave_d42r0101_14_49"}},
         
-                {"text": "TM94", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm94_dark_cave_d42r0101_42_44", "event": {"lines": ["A TM (False-Swipe), beside the cave wall."], "gift_item": {"TM94": 1}, "flag": "got_tm94_dark_cave_d42r0101_42_44"}}
+                {"text": "TM057", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm94_dark_cave_d42r0101_42_44", "event": {"lines": ["A TM (False-Swipe), beside the cave wall."], "gift_item": {"TM057": 1}, "flag": "got_tm94_dark_cave_d42r0101_42_44"}}
         
             ],
         
@@ -3231,7 +3231,7 @@
         
                 {"text": "Azalea Town", "action": "EXIT", "target_area": "AZALEA_TOWN", "condition": "can_exit", "color": "RED"},
         
-                {"text": "TM33", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm33_ilex_forest_d36r0101_42_73", "event": {"lines": ["A TM (Rain-Dance), among the roots."], "gift_item": {"TM33": 1}, "flag": "got_tm33_ilex_forest_d36r0101_42_73"}},
+                {"text": "TM050", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm33_ilex_forest_d36r0101_42_73", "event": {"lines": ["A TM (Rain-Dance), among the roots."], "gift_item": {"TM050": 1}, "flag": "got_tm33_ilex_forest_d36r0101_42_73"}},
         
                 {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_ilex_forest_d36r0101_27_42", "event": {"lines": ["A Revive, under a bush."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_ilex_forest_d36r0101_27_42"}},
         
@@ -3239,7 +3239,7 @@
         
                 {"text": "ANTIDOTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_antidote_ilex_forest_d36r0101_47_16", "event": {"lines": ["An Antidote, near a fallen log."], "gift_item": {"ANTIDOTE": 1}, "flag": "got_antidote_ilex_forest_d36r0101_47_16"}},
         
-                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["Oh, honey, you're filling a Pokedex? Then you'll battle all sorts of Pokemon. Try this TM for a change!"], "gift_item": {"TM122": 1}, "flag": "got_taunt_ilex_gate", "done": ["That's Taunt. For a while, the target can only use moves that hit."]}, "text": "Woman", "door": "gate"},
+                {"action": "EVENT", "color": "GOLD", "event": {"lines": ["Oh, honey, you're filling a Pokedex? Then you'll battle all sorts of Pokemon. Try this TM for a change!"], "gift_item": {"TM087": 1}, "flag": "got_taunt_ilex_gate", "done": ["That's Taunt. For a while, the target can only use moves that hit."]}, "text": "Woman", "door": "gate"},
         
                 {"action": "EVENT", "event": {"lines": ["Have you seen the shrine in the forest? It honours the protector who watches over the woods."]}, "text": "Girl", "door": "gate"},
         
@@ -3427,7 +3427,7 @@
         
                 {"text": "BELLCHIME TRAIL", "action": "EXIT", "target_area": "BELLCHIME_TRAIL", "condition": "can_exit", "color": "RED"},
         
-                {"text": "TM122", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm122_bell_tower_d17r0103_6_25", "event": {"lines": ["A TM (Taunt), by a pillar."], "gift_item": {"TM122": 1}, "flag": "got_tm122_bell_tower_d17r0103_6_25"}},
+                {"text": "TM087", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm122_bell_tower_d17r0103_6_25", "event": {"lines": ["A TM (Taunt), by a pillar."], "gift_item": {"TM087": 1}, "flag": "got_tm122_bell_tower_d17r0103_6_25"}},
         
                 {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_bell_tower_d17r0104_6_21", "event": {"lines": ["A Full Heal, in a corner of the floor."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_bell_tower_d17r0104_6_21"}},
         
@@ -3505,7 +3505,7 @@
         
                 {"text": "EXIT MOUNTAIN", "action": "EXIT", "target_area": "JOHTO_ROUTE_42", "condition": "can_exit", "color": "RED"},
         
-                {"text": "TM65", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm65_mt_mortar_d38r0101_34_20", "event": {"lines": ["A TM (Shadow-Claw), lying among the rocks."], "gift_item": {"TM65": 1}, "flag": "got_tm65_mt_mortar_d38r0101_34_20"}},
+                {"text": "TM061", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm65_mt_mortar_d38r0101_34_20", "event": {"lines": ["A TM (Shadow-Claw), lying among the rocks."], "gift_item": {"TM061": 1}, "flag": "got_tm65_mt_mortar_d38r0101_34_20"}},
         
                 {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_mt_mortar_d38r0101_67_30", "event": {"lines": ["An Ether, in a dark corner."], "gift_item": {"ETHER": 1}, "flag": "got_ether_mt_mortar_d38r0101_67_30"}},
         
@@ -3533,7 +3533,7 @@
         
                 {"text": "MAX POTION ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_potion_mt_mortar_d38r0103_29_34", "event": {"lines": ["A Max Potion, in a dark corner."], "gift_item": {"MAX_POTION": 1}, "flag": "got_max_potion_mt_mortar_d38r0103_29_34"}},
         
-                {"text": "TM121", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm121_mt_mortar_d38r0103_16_24", "event": {"lines": ["A TM (Aerial-Ace), beside the cave wall."], "gift_item": {"TM121": 1}, "flag": "got_tm121_mt_mortar_d38r0103_16_24"}},
+                {"text": "TM027", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm121_mt_mortar_d38r0103_16_24", "event": {"lines": ["A TM (Aerial-Ace), beside the cave wall."], "gift_item": {"TM027": 1}, "flag": "got_tm121_mt_mortar_d38r0103_16_24"}},
         
                 {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_mt_mortar_d38r0103_27_14", "event": {"lines": ["An Elixir, left behind by a hiker."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_mt_mortar_d38r0103_27_14"}},
         
@@ -3611,7 +3611,7 @@
         
                 {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_ice_path_d39r0101_53_35", "event": {"lines": ["A Protein, beside the cave wall."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_ice_path_d39r0101_53_35"}},
         
-                {"text": "TM64", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm64_ice_path_d39r0102_13_48", "event": {"lines": ["A TM (Avalanche), left behind by a hiker."], "gift_item": {"TM64": 1}, "flag": "got_tm64_ice_path_d39r0102_13_48"}},
+                {"text": "TM046", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm64_ice_path_d39r0102_13_48", "event": {"lines": ["A TM (Avalanche), left behind by a hiker."], "gift_item": {"TM046": 1}, "flag": "got_tm64_ice_path_d39r0102_13_48"}},
         
                 {"text": "NEVER MELT ICE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_never_melt_ice_ice_path_d39r0103_57_24", "event": {"lines": ["A Never Melt Ice, lying among the rocks."], "gift_item": {"NEVER_MELT_ICE": 1}, "flag": "got_never_melt_ice_ice_path_d39r0103_57_24"}},
         
@@ -3695,7 +3695,7 @@
         
                 {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_whirl_islands_d40r0106_14_27", "event": {"lines": ["A Max Elixir, in a dark corner."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_whirl_islands_d40r0106_14_27"}},
         
-                {"text": "TM137", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm137_whirl_islands_d40r0101_48_21", "event": {"lines": ["A TM (Pluck), lying among the rocks."], "gift_item": {"TM137": 1}, "flag": "got_tm137_whirl_islands_d40r0101_48_21"}}
+                {"text": "TM297", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm137_whirl_islands_d40r0101_48_21", "event": {"lines": ["A TM (Pluck), lying among the rocks."], "gift_item": {"TM297": 1}, "flag": "got_tm137_whirl_islands_d40r0101_48_21"}}
         
             ],
         
@@ -3775,9 +3775,9 @@
         
                 {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_rocket_hq_d35r0104_13_24", "event": {"lines": ["A Protein, in a dark corner."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_rocket_hq_d35r0104_13_24"}},
         
-                {"text": "TM23", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm23_rocket_hq_d35r0104_32_4", "event": {"lines": ["A TM (Thief), beside the cave wall."], "gift_item": {"TM23": 1}, "flag": "got_tm23_rocket_hq_d35r0104_32_4"}},
+                {"text": "TM018", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm23_rocket_hq_d35r0104_32_4", "event": {"lines": ["A TM (Thief), beside the cave wall."], "gift_item": {"TM018": 1}, "flag": "got_tm23_rocket_hq_d35r0104_32_4"}},
         
-                {"text": "TM123", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm123_rocket_hq_d35r0104_49_15", "event": {"lines": ["A TM (Snatch), left behind by a hiker."], "gift_item": {"TM123": 1}, "flag": "got_tm123_rocket_hq_d35r0104_49_15"}},
+                {"text": "TM299", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm123_rocket_hq_d35r0104_49_15", "event": {"lines": ["A TM (Snatch), left behind by a hiker."], "gift_item": {"TM299": 1}, "flag": "got_tm123_rocket_hq_d35r0104_49_15"}},
         
                 {"text": "X SP ATK", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_sp_atk_rocket_hq_d35r0104_27_18", "event": {"lines": ["A X Sp Atk, lying among the rocks."], "gift_item": {"X_SP_ATK": 1}, "flag": "got_x_sp_atk_rocket_hq_d35r0104_27_18"}}
         
@@ -3847,9 +3847,9 @@
 
                 {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_goldenrod_underground_d37r0103_24_22", "event": {"lines": ["An Ether, beside the cave wall."], "gift_item": {"ETHER": 1}, "flag": "got_ether_goldenrod_underground_d37r0103_24_22"}},
 
-                {"text": "TM133", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm133_goldenrod_underground_d37r0105_21_15", "event": {"lines": ["A TM (Embargo), lying among the rocks."], "gift_item": {"TM133": 1}, "flag": "got_tm133_goldenrod_underground_d37r0105_21_15"}},
+                {"text": "TM280", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm133_goldenrod_underground_d37r0105_21_15", "event": {"lines": ["A TM (Embargo), lying among the rocks."], "gift_item": {"TM280": 1}, "flag": "got_tm133_goldenrod_underground_d37r0105_21_15"}},
 
-                {"text": "TM134", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm134_goldenrod_underground_d37r0105_28_23", "event": {"lines": ["A TM (Sleep-Talk), in a dark corner."], "gift_item": {"TM134": 1}, "flag": "got_tm134_goldenrod_underground_d37r0105_28_23"}}
+                {"text": "TM070", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm134_goldenrod_underground_d37r0105_28_23", "event": {"lines": ["A TM (Sleep-Talk), in a dark corner."], "gift_item": {"TM070": 1}, "flag": "got_tm134_goldenrod_underground_d37r0105_28_23"}}
 
             ],
 
@@ -3915,7 +3915,7 @@
 
                 {"text": "GOLDENROD CITY", "action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"},
 
-                {"text": "TM131", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm131_radio_tower_d23r0104_25_7", "event": {"lines": ["A TM (Captivate), by a pillar."], "gift_item": {"TM131": 1}, "flag": "got_tm131_radio_tower_d23r0104_25_7"}}
+                {"text": "TM302", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm131_radio_tower_d23r0104_25_7", "event": {"lines": ["A TM (Captivate), by a pillar."], "gift_item": {"TM302": 1}, "flag": "got_tm131_radio_tower_d23r0104_25_7"}}
 
             ]
 
@@ -4187,7 +4187,7 @@
         
                 {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_mt_silver_d41r0103_15_45", "event": {"lines": ["An Escape Rope, beside the cave wall."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_mt_silver_d41r0103_15_45"}},
         
-                {"text": "TM140", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm140_mt_silver_d41r0104_5_4", "event": {"lines": ["A TM (Stealth-Rock), left behind by a hiker."], "gift_item": {"TM140": 1}, "flag": "got_tm140_mt_silver_d41r0104_5_4"}},
+                {"text": "TM116", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm140_mt_silver_d41r0104_5_4", "event": {"lines": ["A TM (Stealth-Rock), left behind by a hiker."], "gift_item": {"TM116": 1}, "flag": "got_tm140_mt_silver_d41r0104_5_4"}},
         
                 {"text": "EXPERT BELT", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_expert_belt_mt_silver_d41r0106_17_11", "event": {"lines": ["An Expert Belt, lying among the rocks."], "gift_item": {"EXPERT_BELT": 1}, "flag": "got_expert_belt_mt_silver_d41r0106_17_11"}},
         

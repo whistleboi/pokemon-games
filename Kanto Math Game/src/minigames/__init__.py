@@ -14,13 +14,14 @@ from src.minigames.timing import RhythmTiles, GymPong
 from src.minigames.chase import FishEscape
 from src.minigames.kanto import SurgeCans, KogaWalls, SabrinaWarps, BlaineQuiz
 from src.minigames.tiles import TilePuzzle
+from src.minigames.orange import CissyChallenge
 
 GAMES = {g.key: g for g in (PikaFly, PonytaDash, BerryCatch, RouteCrossing, EkansTrail, PokemonMatch,
                             VoltorbField, TypeClash, RhythmTiles, GymPong, FishEscape, TilePuzzle,
-                            SurgeCans, KogaWalls, SabrinaWarps, BlaineQuiz)}
+                            SurgeCans, KogaWalls, SabrinaWarps, BlaineQuiz, CissyChallenge)}
 # Gyms with their own challenge (Kanto's canon puzzles, drawn as games): always that one.
 GYM_GAMES = {"VERMILLION_CITY": "surge", "FUCHSIA_CITY": "koga", "SAFFRON_CITY": "sabrina",
-             "CINNABAR_ISLAND": "quiz"}
+             "CINNABAR_ISLAND": "quiz", "MIKAN_ISLAND": "cissy"}   # (Mikan: Cissy's Water Gun test and Lapras race, Jordan 11-17)
 
 # The games that suit a Gym's type (picked three times as often).
 SUITS = {

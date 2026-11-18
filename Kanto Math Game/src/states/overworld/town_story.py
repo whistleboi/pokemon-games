@@ -201,6 +201,23 @@ class TownStory:
             self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
             return
 
+        if story.get_current_region() == "KANTO" and story.story_flags.get("beat_champion") and not story.story_flags.get("unlocked_national_dex"):
+            # (FireRed, 11-17: after the Hall of Fame Oak upgrades your Pokedex to the National Dex once you've seen 60 kinds;
+            #  Celio's Rainbow Pass waits for it, the Sevii post-League trip's first step)
+            seen = len({int(s) for s in (self.game.data.data.get("seen_pokemon") or []) if str(s).isdigit() and 1 <= int(s) <= 151})
+            if seen >= 60:
+                story.story_flags["unlocked_national_dex"] = True
+                msg = ["Professor Oak: The Champion! I knew you had it in you!",
+                       f"Professor Oak: And you've seen {seen} kinds of Pokemon. Splendid! Let me upgrade your Pokedex.",
+                       "It's a National Pokedex now: it can record Pokemon from far beyond Kanto!",
+                       "Your Pokedex was upgraded to the NATIONAL DEX!",
+                       "Professor Oak: Celio on One Island has been asking after you, by the way."]
+            else:
+                msg = ["Professor Oak: The Champion! Congratulations!",
+                       f"Professor Oak: You've seen {seen} kinds of Pokemon. See 60 kinds, and I'll upgrade your Pokedex!"]
+            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
+            return
+
         from src.pokemon import rowdy
         if story.get_current_region() == "KANTO" and rowdy.can_get(story):
             # (Pokemon Yellow, Jordan 11-16: after Lt. Surge, Oak's rowdy Pikachu; the Journal's side mission sends you)
@@ -637,7 +654,7 @@ class TownStory:
     ORANGE_INVITE = ["...A letter has arrived from Professor Ivy of Valencia Island!",
                      "\"Kanto's new Champion! The Orange Islands have their own League, the Orange Crew.",
                      "If you'd like to start a new journey, I'll have a partner waiting for you.\"",
-                     "The S.S. Anne sails from Vermilion City to the Orange Islands whenever you're ready."]
+                     "A Rocket Blimp flies from Vermilion City's harbour to Valencia Island whenever you're ready."]
 
     ISLAND_CHAMPION = ["Drake: The Winner's Trophy is yours. You're the Orange League Champion!",
                        "Your name will be carved into the wall of Pummelo Stadium.",

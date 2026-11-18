@@ -1307,10 +1307,10 @@
       "sheet": "@rival"
     },
     "HOENN_JAGGED_PASS:TM69 ROCK POLISH": {
-      "item": "HTM69"
+      "item": "TM282"
     },
     "HOENN_JAGGED_PASS:TM43 FLAME CHARGE": {
-      "item": "HTM43"
+      "item": "TM038"
     },
     "HOENN_JAGGED_PASS:Lookout grunt": {
       "sheet": "@grunt"
@@ -1439,13 +1439,13 @@
       "sheet": "em_14.png"
     },
     "HOENN_MT_PYRE:TM61 WILL-O-WISP": {
-      "item": "HTM61"
+      "item": "TM107"
     },
     "HOENN_MT_PYRE:SEA INCENSE": {
       "item": "SEA_INCENSE"
     },
     "HOENN_MT_PYRE:TM30 SHADOW BALL": {
-      "item": "HTM30"
+      "item": "TM114"
     },
     "HOENN_MT_PYRE:Orb keeper": {
       "sheet": "em_22.png"
@@ -1928,7 +1928,7 @@
       "item": "ULTRA_BALL"
     },
     "HOENN_SAFARI_ZONE:TM22 SOLAR BEAM": {
-      "item": "HTM22"
+      "item": "TM168"
     },
     "HOENN_SAFARI_ZONE:Tired hiker": {
       "sheet": "em_19.png"
@@ -2156,10 +2156,10 @@
       "item": "ICE_HEAL"
     },
     "HOENN_SHOAL_CAVE:TM27 ICY WIND": {
-      "item": "TM27"
+      "item": "TM034"
     },
     "HOENN_SHOAL_CAVE:TM07 HAIL": {
-      "item": "HTM07"
+      "item": "TM241"
     },
     "HOENN_SHOAL_CAVE:NEVER-MELT ICE": {
       "item": "NEVER_MELT_ICE"
@@ -2168,10 +2168,10 @@
       "sheet": "@grunt"
     },
     "HOENN_SEAFLOOR_CAVERN:TM55 SCALD": {
-      "item": "HTM55"
+      "item": "TM188"
     },
     "HOENN_SEAFLOOR_CAVERN:TM26 EARTHQUAKE": {
-      "item": "HTM26"
+      "item": "TM149"
     },
     "HOENN_SEAFLOOR_CAVERN:Grunt": {
       "sheet": "@grunt"
@@ -2183,7 +2183,7 @@
       "sheet": "em_24.png"
     },
     "HOENN_SHOAL_CAVE:TM79 FROST BREATH": {
-      "item": "HTM79"
+      "item": "TM284"
     },
     "HOENN_SAFARI_ZONE:CALCIUM": {
       "item": "CALCIUM"
@@ -2663,7 +2663,7 @@
       "sheet": "em_31.png"
     },
     "HOENN_ABANDONED_SHIP:TM13 ICE BEAM": {
-      "item": "HTM13"
+      "item": "TM135"
     },
     "HOENN_ABANDONED_SHIP:LUXURY BALL": {
       "item": "LUXURY_BALL"
@@ -2672,7 +2672,7 @@
       "item": "SCANNER"
     },
     "HOENN_ABANDONED_SHIP:TM18 RAIN DANCE": {
-      "item": "HTM18"
+      "item": "TM050"
     },
     "HOENN_ABANDONED_SHIP:WATER STONE": {
       "item": "WATER_STONE"
@@ -3095,7 +3095,7 @@
       "item": "CLAW_FOSSIL"
     },
     "HOENN_SCORCHED_SLAB:TM11 SUNNY DAY": {
-      "item": "HTM11"
+      "item": "TM049"
     },
     "LILYCOVE_CITY:Ferry clerk": {
       "sheet": "em_21.png"
@@ -3185,16 +3185,16 @@
       "item": "STAR_PIECE"
     },
     "HOENN_MIRAGE_ISLANDS:TM91 5": {
-      "item": "HTM91"
+      "item": "TM093"
     },
     "HOENN_MIRAGE_ISLANDS:TM90 6": {
-      "item": "HTM90"
+      "item": "TM103"
     },
     "HOENN_MIRAGE_ISLANDS:RARE CANDY 7": {
       "item": "RARE_CANDY"
     },
     "HOENN_MIRAGE_ISLANDS:TM66 8": {
-      "item": "HTM66"
+      "item": "TM247"
     },
     "HOENN_CRESCENT_ISLE:HIDDEN ITEM": {
       "item": "POKE_BALL"
@@ -3218,7 +3218,7 @@
       "sheet": "em_127.png"
     },
     "MAUVILLE_CITY:TM89 U-TURN": {
-      "item": "HTM89"
+      "item": "TM060"
     },
     "HOENN_CRESCENT_ISLE:SOAR AWAY": {
       "pokemon": "eon"
@@ -3251,7 +3251,7 @@
       "item": "FULL_RESTORE"
     },
     "HOENN_MIRAGE_FOREST:TM74 3": {
-      "item": "HTM74"
+      "item": "TM180"
     },
     "HOENN_MIRAGE_FOREST:CALCIUM 4": {
       "item": "CALCIUM"
@@ -3269,7 +3269,7 @@
       "item": "IRON"
     },
     "HOENN_MIRAGE_CAVE:TM95 2": {
-      "item": "HTM95"
+      "item": "TM030"
     },
     "HOENN_MIRAGE_CAVE:YELLOW SHARD 3": {
       "item": "YELLOW_SHARD"
@@ -3290,7 +3290,7 @@
       "item": "PROTEIN"
     },
     "HOENN_MIRAGE_MOUNTAIN:TM84 2": {
-      "item": "HTM84"
+      "item": "TM083"
     },
     "HOENN_MIRAGE_MOUNTAIN:ZINC 3": {
       "item": "ZINC"
@@ -3416,40 +3416,40 @@
       "sheet": "em_45.png"
     },
     "HOENN_JAGGED_PASS:TM103 ROCK POLISH": {
-      "item": "TM103"
+      "item": "TM282"
     },
     "HOENN_JAGGED_PASS:TM102 FLAME CHARGE": {
-      "item": "TM102"
+      "item": "TM038"
     },
     "HOENN_MT_PYRE:TM38 WILL-O-WISP": {
-      "item": "TM38"
-    },
-    "HOENN_MT_PYRE:TM105 SHADOW BALL": {
-      "item": "TM105"
-    },
-    "HOENN_SAFARI_ZONE:TM11 SOLAR BEAM": {
-      "item": "TM11"
-    },
-    "HOENN_SHOAL_CAVE:TM35 HAIL": {
-      "item": "TM35"
-    },
-    "HOENN_SEAFLOOR_CAVERN:TM107 SCALD": {
       "item": "TM107"
     },
+    "HOENN_MT_PYRE:TM105 SHADOW BALL": {
+      "item": "TM114"
+    },
+    "HOENN_SAFARI_ZONE:TM11 SOLAR BEAM": {
+      "item": "TM168"
+    },
+    "HOENN_SHOAL_CAVE:TM35 HAIL": {
+      "item": "TM241"
+    },
+    "HOENN_SEAFLOOR_CAVERN:TM107 SCALD": {
+      "item": "TM188"
+    },
     "HOENN_SEAFLOOR_CAVERN:TM106 EARTHQUAKE": {
-      "item": "TM106"
+      "item": "TM149"
     },
     "HOENN_SHOAL_CAVE:TM108 FROST BREATH": {
-      "item": "TM108"
+      "item": "TM284"
     },
     "HOENN_ABANDONED_SHIP:TM115 ICE BEAM": {
-      "item": "TM115"
+      "item": "TM135"
     },
     "HOENN_ABANDONED_SHIP:TM33 RAIN DANCE": {
-      "item": "TM33"
+      "item": "TM050"
     },
     "HOENN_SCORCHED_SLAB:TM34 SUNNY DAY": {
-      "item": "TM34"
+      "item": "TM049"
     },
     "PALLET_TOWN:Girl": {
       "sheet": "fr_23.png"
@@ -4865,7 +4865,7 @@
       "sheet": "fr_28.png"
     },
     "CINNABAR_ISLAND:Scientist": {
-      "sheet": "fr_19.png"
+      "sheet": "fr_55.png"
     },
     "CINNABAR_ISLAND:Gym": {
       "sheet": "fr_86.png"
@@ -5132,13 +5132,13 @@
       "sheet": "fr_64.png"
     },
     "ONE_ISLAND:Give Celio the Gems": {
-      "sheet": "fr_73.png"
+      "sheet": "fr_89.png"
     },
     "ONE_ISLAND:Celio's Rainbow Pass": {
-      "sheet": "fr_73.png"
+      "sheet": "fr_89.png"
     },
     "ONE_ISLAND:Celio's Network Machine": {
-      "sheet": "fr_73.png"
+      "sheet": "fr_89.png"
     },
     "ONE_ISLAND:Girl": {
       "sheet": "fr_16.png"
@@ -5345,7 +5345,7 @@
       "sheet": "fr_53.png"
     },
     "THREE_ISLAND:Biker": {
-      "sheet": "fr_25.png"
+      "sheet": "fr_53.png"
     },
     "THREE_ISLAND:Stop the Biker Gang": {
       "sheet": "fr_53.png"
@@ -7017,12 +7017,2700 @@
     },
     "KANTO_ROUTE_28:TM55": {
       "item": "POKE_BALL"
+    },
+    "VIRIDIAN_CITY:Clerk": {
+      "sheet": "fr_68.png"
+    },
+    "CERULEAN_CITY:Policeman": {
+      "sheet": "fr_60.png"
+    },
+    "VERMILLION_CITY:Fan Club Chairman": {
+      "sheet": "fr_61.png"
+    },
+    "VERMILLION_CITY:Chairman": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_ROUTE_19:SURFIN' DUDE": {
+      "sheet": "fr_57.png"
+    },
+    "INDIGO_PLATEAU:Professor Oak": {
+      "sheet": "fr_71.png"
+    },
+    "POKEMON_MANSION:SECRET KEY": {
+      "item": "POKE_BALL"
+    },
+    "ONE_ISLAND:Celio's Tri-Pass": {
+      "sheet": "fr_89.png"
+    },
+    "VIRIDIAN_CITY:Black Belt Takashi": {
+      "sheet": "fr_54.png"
+    },
+    "VIRIDIAN_CITY:Cooltrainer Warren": {
+      "sheet": "fr_41.png"
+    },
+    "VIRIDIAN_CITY:Cooltrainer Samuel": {
+      "sheet": "fr_41.png"
+    },
+    "VIRIDIAN_CITY:Tamer Jason": {
+      "sheet": "fr_25.png"
+    },
+    "VIRIDIAN_CITY:Cooltrainer Yuji": {
+      "sheet": "fr_41.png"
+    },
+    "VIRIDIAN_CITY:Black Belt Kiyo": {
+      "sheet": "fr_54.png"
+    },
+    "VIRIDIAN_CITY:Black Belt Atsushi": {
+      "sheet": "fr_54.png"
+    },
+    "VIRIDIAN_CITY:Tamer Cole": {
+      "sheet": "fr_25.png"
+    },
+    "UNDERGROUND_PATH:Trader": {
+      "sheet": "fr_17.png"
+    },
+    "VERMILLION_CITY:Trader": {
+      "sheet": "fr_17.png"
+    },
+    "VERMILLION_CITY:Engineer Baily": {
+      "sheet": "fr_30.png"
+    },
+    "CINNABAR_ISLAND:Lab Trader": {
+      "sheet": "fr_28.png"
+    },
+    "CINNABAR_ISLAND:Old Trader": {
+      "sheet": "fr_33.png"
+    },
+    "CINNABAR_ISLAND:Young Trader": {
+      "sheet": "fr_19.png"
+    },
+    "SAFFRON_CITY:Karate Master Koichi": {
+      "sheet": "fr_54.png"
+    },
+    "SAFFRON_CITY:Fighting Dojo": {
+      "sheet": "fr_54.png"
+    },
+    "UNDERGROUND_PATH:Man": {
+      "sheet": "fr_30.png"
+    },
+    "UNDERGROUND_PATH:Woman": {
+      "sheet": "fr_28.png"
+    },
+    "KANTO_ROUTE_15:OAK'S AIDE": {
+      "sheet": "fr_55.png"
+    },
+    "FOUR_ISLAND:STAR PIECE": {
+      "item": "POKE_BALL"
+    },
+    "FOUR_ISLAND:Day-Care Man": {
+      "sheet": "fr_32.png"
+    },
+    "FOUR_ISLAND:Slushie boy": {
+      "sheet": "fr_27.png"
+    },
+    "FOUR_ISLAND:Island woman": {
+      "sheet": "fr_35.png"
+    },
+    "FOUR_ISLAND:STARDUST": {
+      "item": "POKE_BALL"
+    },
+    "FOUR_ISLAND:Hiding girl": {
+      "sheet": "fr_17.png"
+    },
+    "FOUR_ISLAND:Rival": {
+      "sheet": "fr_72.png"
+    },
+    "FOUR_ISLAND:Pokémon Day Care": {
+      "sheet": "fr_35.png"
+    },
+    "FOUR_ISLAND:Reader": {
+      "sheet": "fr_61.png"
+    },
+    "FOUR_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "FOUR_ISLAND:Egg man": {
+      "sheet": "fr_31.png"
+    },
+    "FOUR_ISLAND:Visitor": {
+      "sheet": "fr_25.png"
+    },
+    "FOUR_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "FOUR_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FOUR_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FOUR_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FOUR_ISLAND:Battle Lorelei": {
+      "sheet": "fr_77.png"
+    },
+    "FOUR_ISLAND:Lorelei's House": {
+      "sheet": "fr_77.png"
+    },
+    "FOUR_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "FOUR_ISLAND:Sticker girl": {
+      "sheet": "fr_25.png"
+    },
+    "FOUR_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "FOUR_ISLAND:Traveller": {
+      "sheet": "fr_39.png"
+    },
+    "FOUR_ISLAND:Shopper": {
+      "sheet": "fr_32.png"
+    },
+    "ICEFALL_CAVE:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "ICEFALL_CAVE:TAKE THE HM": {
+      "item": "POKE_BALL"
+    },
+    "ICEFALL_CAVE:NEVERMELTICE": {
+      "item": "POKE_BALL"
+    },
+    "ICEFALL_CAVE:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "ICEFALL_CAVE:STOP TEAM ROCKET": {
+      "sheet": "trchar026.png"
+    },
+    "ICEFALL_CAVE:Grunt": {
+      "sheet": "fr_49.png"
+    },
+    "ICEFALL_CAVE:Grunt ": {
+      "sheet": "fr_49.png"
+    },
+    "ICEFALL_CAVE:Lorelei": {
+      "sheet": "fr_77.png"
+    },
+    "FOUR_ISLAND:Body Slam Tutor": {
+      "sheet": "fr_27.png"
+    },
+    "FOUR_ISLAND:Bouncing boy": {
+      "sheet": "fr_27.png"
+    },
+    "MEMORIAL_PILLAR:Memorial man": {
+      "sheet": "fr_25.png"
+    },
+    "MEMORIAL_PILLAR:METAL COAT": {
+      "item": "POKE_BALL"
+    },
+    "FIVE_ISLAND:Fisherman": {
+      "sheet": "fr_57.png"
+    },
+    "FIVE_ISLAND:Little girl": {
+      "sheet": "fr_20.png"
+    },
+    "FIVE_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "FIVE_ISLAND:Collector": {
+      "sheet": "fr_42.png"
+    },
+    "FIVE_ISLAND:Chef": {
+      "sheet": "fr_59.png"
+    },
+    "FIVE_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "FIVE_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FIVE_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FIVE_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FIVE_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "FIVE_ISLAND:Housewife": {
+      "sheet": "fr_31.png"
+    },
+    "FIVE_ISLAND:Meadow owner": {
+      "sheet": "fr_32.png"
+    },
+    "FIVE_ISLE_MEADOW:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "FIVE_ISLE_MEADOW:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_WAREHOUSE:TM36": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_WAREHOUSE:PEARL": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_WAREHOUSE:BIG PEARL": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_WAREHOUSE:CONFRONT THE ADMIN": {
+      "sheet": "fr_49.png"
+    },
+    "ROCKET_WAREHOUSE:RECOVER THE GEMS": {
+      "item": "POKE_BALL"
+    },
+    "RESORT_GORGEOUS:Lady Selphy": {
+      "sheet": "fr_28.png"
+    },
+    "RESORT_GORGEOUS:Butler": {
+      "sheet": "fr_61.png"
+    },
+    "RESORT_GORGEOUS:SELPHY'S VILLA": {
+      "sheet": "fr_28.png"
+    },
+    "WATER_LABYRINTH:THE OLD MAN'S EGG": {
+      "sheet": "fr_61.png"
+    },
+    "LOST_CAVE:SILK SCARF": {
+      "item": "POKE_BALL"
+    },
+    "LOST_CAVE:LADY SELPHY": {
+      "sheet": "fr_28.png"
+    },
+    "LOST_CAVE:LAX INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "LOST_CAVE:THE BLACK FOG": {
+      "boss": true
+    },
+    "LOST_CAVE:SEA INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "LOST_CAVE:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "LOST_CAVE:SEARCH THE DARK": {
+      "item": "POKE_BALL"
+    },
+    "ONE_ISLAND:Bill": {
+      "sheet": "fr_73.png"
+    },
+    "MT_EMBER:ROCKET GRUNT": {
+      "sheet": "fr_49.png"
+    },
+    "TWO_ISLAND:Lostelle": {
+      "sheet": "fr_17.png"
+    },
+    "THREE_ISLAND:Islander ": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Islander": {
+      "sheet": "fr_25.png"
+    },
+    "THREE_ISLAND:Sailor": {
+      "sheet": "fr_62.png"
+    },
+    "THREE_ISLAND:Shopper": {
+      "sheet": "fr_20.png"
+    },
+    "BERRY_FOREST:FIND LOSTELLE": {
+      "sheet": "fr_17.png"
+    },
+    "ONE_ISLAND:Celio's Ruby": {
+      "sheet": "fr_89.png"
+    },
+    "MT_EMBER:JESSIE AND JAMES": {
+      "sheet": "trchar026.png"
+    },
+    "MT_EMBER:RUBY": {
+      "item": "POKE_BALL"
+    },
+    "WATER_PATH:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "WATER_PATH:DRAGON SCALE": {
+      "item": "POKE_BALL"
+    },
+    "WATER_PATH:HERACROSS FAN": {
+      "sheet": "fr_29.png"
+    },
+    "WATER_PATH:Tall man": {
+      "sheet": "fr_25.png"
+    },
+    "SIX_ISLAND:Hiker": {
+      "sheet": "fr_56.png"
+    },
+    "SIX_ISLAND:Stargazer": {
+      "sheet": "fr_19.png"
+    },
+    "SIX_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "SIX_ISLAND:Ruin hunter": {
+      "sheet": "fr_56.png"
+    },
+    "SIX_ISLAND:Rival": {
+      "sheet": "fr_72.png"
+    },
+    "SIX_ISLAND:Old man": {
+      "sheet": "fr_33.png"
+    },
+    "SIX_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "SIX_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SIX_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SIX_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SIX_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Seagallop to Seven Island": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "SIX_ISLAND:Ruin Maniac's Notes": {
+      "sheet": "fr_32.png"
+    },
+    "SIX_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "SIX_ISLAND:Old woman": {
+      "sheet": "fr_35.png"
+    },
+    "SIX_ISLAND:Young man": {
+      "sheet": "fr_40.png"
+    },
+    "RUIN_VALLEY:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "RUIN_VALLEY:Scientist": {
+      "sheet": "fr_55.png"
+    },
+    "RUIN_VALLEY:SUN STONE": {
+      "item": "POKE_BALL"
+    },
+    "RUIN_VALLEY:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "OUTCAST_ISLAND:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "SEVEN_ISLAND:Scientist": {
+      "sheet": "fr_55.png"
+    },
+    "SEVEN_ISLAND:Islander": {
+      "sheet": "fr_35.png"
+    },
+    "SEVEN_ISLAND:Swords Dance Tutor": {
+      "sheet": "fr_41.png"
+    },
+    "SEVEN_ISLAND:Old woman": {
+      "sheet": "fr_35.png"
+    },
+    "SEVEN_ISLAND:Girl": {
+      "sheet": "fr_22.png"
+    },
+    "SEVEN_ISLAND:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "SEVEN_ISLAND:Ruin hunter": {
+      "sheet": "fr_56.png"
+    },
+    "SEVEN_ISLAND:Fisherman": {
+      "sheet": "fr_57.png"
+    },
+    "SEVEN_ISLAND:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "SEVEN_ISLAND:Trainer": {
+      "sheet": "fr_29.png"
+    },
+    "SEVEN_ISLAND:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "SEVEN_ISLAND:Sailor": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "SEVEN_ISLAND:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SEVEN_ISLAND:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SEVEN_ISLAND:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "SEVEN_ISLAND:Seagallop to Vermilion City": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Seagallop to Two Island": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Seagallop to Three Island": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Seagallop to Five Island": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Seagallop to Six Island": {
+      "sheet": "fr_62.png"
+    },
+    "SEVEN_ISLAND:Seagallop to Faraway Island": {
+      "sheet": "fr_62.png"
+    },
+    "SEVAULT_CANYON:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "SEVAULT_CANYON:Black belt": {
+      "sheet": "fr_54.png"
+    },
+    "SEVAULT_CANYON:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "SEVAULT_CANYON:KING'S ROCK": {
+      "item": "POKE_BALL"
+    },
+    "SEVAULT_CANYON:Chansey dancer": {
+      "sheet": "fr_30.png"
+    },
+    "SEVAULT_CANYON:LUCKY PUNCH": {
+      "item": "POKE_BALL"
+    },
+    "SEVEN_ISLAND:Psychic Dario": {
+      "sheet": "fr_19.png"
+    },
+    "SEVEN_ISLAND:Psychic Rodette": {
+      "sheet": "fr_23.png"
+    },
+    "NAVEL_ROCK:SEEK LUGIA": {
+      "sheet": "fr_144.png"
+    },
+    "BIRTH_ISLAND:SAIL HOME": {
+      "sheet": "fr_62.png"
+    },
+    "VALENCIA_ISLAND:Old Rod fisherman": {
+      "sheet": "oi_57.png"
+    },
+    "VALENCIA_ISLAND:Lab visitor": {
+      "sheet": "oi_39.png"
+    },
+    "VALENCIA_ISLAND:Girl": {
+      "sheet": "oi_22.png"
+    },
+    "VALENCIA_ISLAND:Islander": {
+      "sheet": "oi_32.png"
+    },
+    "VALENCIA_ISLAND:Airport worker": {
+      "sheet": "oi_63.png"
+    },
+    "VALENCIA_ISLAND:Kanto blimp clerk": {
+      "sheet": "oi_69.png"
+    },
+    "VALENCIA_ISLAND:Blimp clerk": {
+      "sheet": "oi_69.png"
+    },
+    "VALENCIA_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "VALENCIA_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "VALENCIA_ISLAND:Lady": {
+      "sheet": "oi_20.png"
+    },
+    "VALENCIA_ISLAND:Gentleman": {
+      "sheet": "oi_19.png"
+    },
+    "VALENCIA_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "VALENCIA_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "VALENCIA_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "VALENCIA_ISLAND:Teacher": {
+      "sheet": "oi_28.png"
+    },
+    "VALENCIA_ISLAND:Student": {
+      "sheet": "oi_16.png"
+    },
+    "VALENCIA_ISLAND:Neighbour": {
+      "sheet": "oi_28.png"
+    },
+    "VALENCIA_ISLAND:Professor Ivy": {
+      "sheet": "oi_99.png"
+    },
+    "VALENCIA_ISLAND:Prof. Ivy": {
+      "sheet": "oi_99.png"
+    },
+    "VALENCIA_ISLAND:Aide": {
+      "sheet": "oi_101.png"
+    },
+    "VALENCIA_ISLAND:Brock": {
+      "sheet": "oi_80.png"
+    },
+    "VALENCIA_ISLAND:Brock ": {
+      "sheet": "oi_80.png"
+    },
+    "VALENCIA_ISLAND:Aide ": {
+      "sheet": "oi_101.png"
+    },
+    "VALENCIA_ISLAND:Aide  ": {
+      "sheet": "oi_101.png"
+    },
+    "VALENCIA_ISLAND:Mechanic": {
+      "sheet": "oi_63.png"
+    },
+    "VALENCIA_ISLAND:Traveller": {
+      "sheet": "oi_31.png"
+    },
+    "VALENCIA_PARK:Professor Ivy": {
+      "sheet": "oi_99.png"
+    },
+    "VALENCIA_PARK:Brock": {
+      "sheet": "oi_80.png"
+    },
+    "VALENCIA_PARK:POTION": {
+      "item": "POKE_BALL"
+    },
+    "TANGELO_JUNGLE:Collector": {
+      "sheet": "oi_18.png"
+    },
+    "TANGELO_JUNGLE:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "TANGELO_ISLAND:Visitor": {
+      "sheet": "oi_35.png"
+    },
+    "TANGELO_ISLAND:REVIVAL HERB": {
+      "item": "POKE_BALL"
+    },
+    "TANGELO_ISLAND:Lapras": {
+      "sheet": "oi_136.png"
+    },
+    "TANGELO_ISLAND:Woman": {
+      "sheet": "oi_32.png"
+    },
+    "TANGELO_ISLAND:Townsman": {
+      "sheet": "oi_62.png"
+    },
+    "TANGELO_ISLAND:Boy": {
+      "sheet": "oi_23.png"
+    },
+    "TANGELO_ISLAND:Reader": {
+      "sheet": "oi_25.png"
+    },
+    "TANGELO_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "TANGELO_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "TANGELO_ISLAND:Trainer": {
+      "sheet": "oi_17.png"
+    },
+    "TANGELO_ISLAND:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "TANGELO_ISLAND:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "TANGELO_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TANGELO_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TANGELO_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TANGELO_ISLAND:Shopper": {
+      "sheet": "oi_19.png"
+    },
+    "TANGELO_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "TANGELO_ISLAND:Kid": {
+      "sheet": "oi_16.png"
+    },
+    "TANGELO_ISLAND:Guide": {
+      "sheet": "oi_30.png"
+    },
+    "TANGELO_ISLAND:Old man": {
+      "sheet": "oi_24.png"
+    },
+    "TANGELO_ISLAND:Islander": {
+      "sheet": "oi_31.png"
+    },
+    "TANGELO_ISLAND:Cook": {
+      "sheet": "oi_59.png"
+    },
+    "MIKAN_ISLAND:Cissy's brother": {
+      "sheet": "oi_18.png"
+    },
+    "MIKAN_ISLAND:Cissy's brother ": {
+      "sheet": "oi_18.png"
+    },
+    "MIKAN_ISLAND:Islander": {
+      "sheet": "oi_27.png"
+    },
+    "MIKAN_ISLAND:Woman": {
+      "sheet": "oi_31.png"
+    },
+    "MIKAN_ISLAND:Man": {
+      "sheet": "oi_61.png"
+    },
+    "MIKAN_ISLAND:Gym": {
+      "sheet": "oi_83.png"
+    },
+    "MIKAN_ISLAND:Marcos": {
+      "sheet": "oi_38.png"
+    },
+    "MIKAN_ISLAND:Cheryl": {
+      "sheet": "oi_37.png"
+    },
+    "MIKAN_ISLAND:Isabelle": {
+      "sheet": "oi_44.png"
+    },
+    "MIKAN_ISLAND:Ed": {
+      "sheet": "oi_43.png"
+    },
+    "MIKAN_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "MIKAN_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "MIKAN_ISLAND:Boy": {
+      "sheet": "oi_24.png"
+    },
+    "MIKAN_ISLAND:Trainer": {
+      "sheet": "oi_40.png"
+    },
+    "MIKAN_ISLAND:Girl": {
+      "sheet": "oi_26.png"
+    },
+    "MIKAN_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MIKAN_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MIKAN_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MIKAN_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "MIKAN_ISLAND:Old man": {
+      "sheet": "oi_56.png"
+    },
+    "MIKAN_ISLAND:Kid": {
+      "sheet": "oi_51.png"
+    },
+    "MIKAN_ISLAND:Kid ": {
+      "sheet": "oi_51.png"
+    },
+    "MANDARIN_NORTH:Townsman": {
+      "sheet": "oi_27.png"
+    },
+    "MANDARIN_NORTH:Woman": {
+      "sheet": "oi_49.png"
+    },
+    "MANDARIN_NORTH:Rocket guard": {
+      "sheet": "oi_49.png"
+    },
+    "MANDARIN_NORTH:Officer Jenny": {
+      "sheet": "oi_60.png"
+    },
+    "MANDARIN_NORTH:Officer Jenny ": {
+      "sheet": "oi_60.png"
+    },
+    "MANDARIN_NORTH:Boy": {
+      "sheet": "oi_17.png"
+    },
+    "MANDARIN_NORTH:Shopper": {
+      "sheet": "oi_31.png"
+    },
+    "MANDARIN_NORTH:Businessman": {
+      "sheet": "oi_24.png"
+    },
+    "MANDARIN_NORTH:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "MANDARIN_NORTH:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "MANDARIN_NORTH:Girl": {
+      "sheet": "oi_39.png"
+    },
+    "MANDARIN_NORTH:Old man": {
+      "sheet": "oi_25.png"
+    },
+    "MANDARIN_NORTH:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MANDARIN_NORTH:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MANDARIN_NORTH:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MANDARIN_NORTH:Trainer": {
+      "sheet": "oi_42.png"
+    },
+    "MANDARIN_NORTH:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "MANDARIN_NORTH:Officer": {
+      "sheet": "oi_60.png"
+    },
+    "MANDARIN_NORTH:Burglar": {
+      "sheet": "oi_89.png"
+    },
+    "MANDARIN_NORTH:Man": {
+      "sheet": "oi_56.png"
+    },
+    "MANDARIN_NORTH:Mother": {
+      "sheet": "oi_28.png"
+    },
+    "MANDARIN_UNDERGROUND:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:IRON": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:JESSIE AND JAMES": {
+      "sheet": "oi_75.png"
+    },
+    "MANDARIN_UNDERGROUND:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:LIFT KEY": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_UNDERGROUND:BUTCH AND CASSIDY": {
+      "sheet": "oi_78.png"
+    },
+    "MANDARIN_NORTH:Climber": {
+      "sheet": "oi_56.png"
+    },
+    "SUNBURST_ISLAND:Islander": {
+      "sheet": "oi_32.png"
+    },
+    "SUNBURST_ISLAND:Marissa": {
+      "sheet": "oi_17.png"
+    },
+    "SUNBURST_ISLAND:Marissa ": {
+      "sheet": "oi_17.png"
+    },
+    "SUNBURST_ISLAND:Woman": {
+      "sheet": "oi_29.png"
+    },
+    "SUNBURST_ISLAND:Reader": {
+      "sheet": "oi_18.png"
+    },
+    "SUNBURST_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "SUNBURST_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "SUNBURST_ISLAND:Old woman": {
+      "sheet": "oi_35.png"
+    },
+    "SUNBURST_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "SUNBURST_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "SUNBURST_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "SUNBURST_ISLAND:Mateo": {
+      "sheet": "oi_210.png"
+    },
+    "SUNBURST_ISLAND:Show Mateo the Crystal Onix": {
+      "sheet": "oi_210.png"
+    },
+    "SUNBURST_ISLAND:Name Rater": {
+      "sheet": "oi_61.png"
+    },
+    "SUNBURST_ISLAND:Girl": {
+      "sheet": "oi_48.png"
+    },
+    "SUNBURST_ISLAND:Brick Break man": {
+      "sheet": "oi_22.png"
+    },
+    "CRYSTAL_CAVE:CHALLENGE CRYSTAL ONIX": {
+      "pokemon": 95
+    },
+    "CRYSTAL_CAVE:TM055": {
+      "item": "POKE_BALL"
+    },
+    "CRYSTAL_CAVE:HARD STONE": {
+      "item": "POKE_BALL"
+    },
+    "PINKAN_ISLAND:TM064": {
+      "item": "POKE_BALL"
+    },
+    "PINKAN_ISLAND:GARY": {
+      "sheet": "oi_72.png"
+    },
+    "PINKAN_ISLAND:GARY ": {
+      "sheet": "oi_72.png"
+    },
+    "PINKAN_ISLAND:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "PINKAN_ISLAND:Officer Jenny": {
+      "sheet": "oi_66.png"
+    },
+    "PINKAN_ISLAND:Officer ": {
+      "sheet": "oi_66.png"
+    },
+    "PINKAN_ISLAND:Officer": {
+      "sheet": "oi_66.png"
+    },
+    "FUKUHARA_ISLAND:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "FUKUHARA_ISLAND:Nurse Joy": {
+      "sheet": "oi_185.png"
+    },
+    "FUKUHARA_ISLAND:Digger": {
+      "sheet": "oi_109.png"
+    },
+    "FUKUHARA_ISLAND:Digger ": {
+      "sheet": "oi_109.png"
+    },
+    "FUKUHARA_ISLAND:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "BAY_CAVE:DOME FOSSIL": {
+      "item": "POKE_BALL"
+    },
+    "BAY_CAVE:TM001": {
+      "item": "POKE_BALL"
+    },
+    "BAY_CAVE:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_57:IRON": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_57:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "ORANGE_ROUTE_57:Marina": {
+      "sheet": "oi_110.png"
+    },
+    "FUKUHARA_ISLAND:Rhydon": {
+      "sheet": "oi_164.png"
+    },
+    "FUKUHARA_ISLAND:Rhydon ": {
+      "sheet": "oi_164.png"
+    },
+    "FUKUHARA_ISLAND:Machoke": {
+      "sheet": "oi_139.png"
+    },
+    "BAY_CAVE:TM192": {
+      "item": "POKE_BALL"
+    },
+    "KINNOW_ISLAND:Woman": {
+      "sheet": "oi_52.png"
+    },
+    "KINNOW_ISLAND:Man": {
+      "sheet": "oi_26.png"
+    },
+    "KINNOW_ISLAND:Old man": {
+      "sheet": "oi_35.png"
+    },
+    "KINNOW_ISLAND:Girl": {
+      "sheet": "oi_22.png"
+    },
+    "KINNOW_ISLAND:Man ": {
+      "sheet": "oi_48.png"
+    },
+    "KINNOW_ISLAND:Islander": {
+      "sheet": "oi_31.png"
+    },
+    "KINNOW_ISLAND:Boy": {
+      "sheet": "oi_17.png"
+    },
+    "KINNOW_ISLAND:Sailor": {
+      "sheet": "oi_62.png"
+    },
+    "KINNOW_ISLAND:Showboat": {
+      "sheet": "oi_69.png"
+    },
+    "KINNOW_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "KINNOW_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "KINNOW_ISLAND:Trainer": {
+      "sheet": "oi_40.png"
+    },
+    "KINNOW_ISLAND:Diver": {
+      "sheet": "oi_25.png"
+    },
+    "KINNOW_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "KINNOW_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "KINNOW_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "KINNOW_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "KINNOW_ISLAND:Clerk": {
+      "sheet": "oi_47.png"
+    },
+    "KINNOW_ISLAND:Tourist": {
+      "sheet": "oi_16.png"
+    },
+    "KINNOW_ISLAND:Fisherman": {
+      "sheet": "oi_57.png"
+    },
+    "KINNOW_ISLAND:Guest": {
+      "sheet": "oi_62.png"
+    },
+    "KINNOW_ISLAND:Dockworker": {
+      "sheet": "oi_63.png"
+    },
+    "ORANGE_ROUTE_58:Man": {
+      "sheet": "oi_105.png"
+    },
+    "ORANGE_ROUTE_58:Fisherman": {
+      "sheet": "oi_140.png"
+    },
+    "ORANGE_ROUTE_58:Hiker": {
+      "sheet": "oi_56.png"
+    },
+    "ORANGE_ROUTE_58:Trainer": {
+      "sheet": "oi_20.png"
+    },
+    "ORANGE_ROUTE_58:Old man": {
+      "sheet": "oi_35.png"
+    },
+    "KINNOW_ISLAND:Growlithe's owner": {
+      "sheet": "oi_32.png"
+    },
+    "KINNOW_ISLAND:Old friend": {
+      "sheet": "oi_62.png"
+    },
+    "ORANGE_ROUTE_58:Mankey": {
+      "sheet": "oi_144.png"
+    },
+    "ORANGE_ROUTE_58:Nurse Joy": {
+      "sheet": "oi_103.png"
+    },
+    "ORANGE_ROUTE_58:Big Magikarp": {
+      "sheet": "oi_140.png"
+    },
+    "ORANGE_ROUTE_58:Onix": {
+      "sheet": "oi_154.png"
+    },
+    "ORANGE_ROUTE_58:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "BAY_CAVE:FOSSIL": {
+      "item": "POKE_BALL"
+    },
+    "NAVEL_ISLAND:Old man": {
+      "sheet": "oi_32.png"
+    },
+    "NAVEL_ISLAND:Boy": {
+      "sheet": "oi_18.png"
+    },
+    "NAVEL_ISLAND:Man": {
+      "sheet": "oi_29.png"
+    },
+    "NAVEL_ISLAND:Swimmer": {
+      "sheet": "oi_44.png"
+    },
+    "NAVEL_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "NAVEL_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "NAVEL_ISLAND:Trainer": {
+      "sheet": "oi_41.png"
+    },
+    "NAVEL_ISLAND:Hiker": {
+      "sheet": "oi_42.png"
+    },
+    "NAVEL_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "NAVEL_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "NAVEL_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "NAVEL_ISLAND:Girl": {
+      "sheet": "oi_40.png"
+    },
+    "NAVEL_ISLAND:Scientist": {
+      "sheet": "oi_55.png"
+    },
+    "NAVEL_ISLAND:Trader": {
+      "sheet": "oi_27.png"
+    },
+    "MT_NAVEL:Danny": {
+      "sheet": "oi_82.png"
+    },
+    "MT_NAVEL:Hiker": {
+      "sheet": "oi_56.png"
+    },
+    "MT_NAVEL:NEVERMELTICE": {
+      "item": "POKE_BALL"
+    },
+    "MT_NAVEL:TM241": {
+      "item": "POKE_BALL"
+    },
+    "MT_NAVEL:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "MT_NAVEL:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "MT_NAVEL:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "MT_NAVEL:Cable car (foot)": {
+      "sheet": "oi_30.png"
+    },
+    "MT_NAVEL:Cable car (top)": {
+      "sheet": "oi_30.png"
+    },
+    "NAVEL_ISLAND:Young man": {
+      "sheet": "oi_39.png"
+    },
+    "SEVEN_GRAPEFRUITS:Ruby": {
+      "sheet": "oi_195.png"
+    },
+    "SEVEN_GRAPEFRUITS:Snorlax": {
+      "pokemon": 143
+    },
+    "SEVEN_GRAPEFRUITS:Supervisor": {
+      "sheet": "oi_25.png"
+    },
+    "SEVEN_GRAPEFRUITS:Supervisor ": {
+      "sheet": "oi_25.png"
+    },
+    "SEVEN_GRAPEFRUITS:Worker": {
+      "sheet": "oi_63.png"
+    },
+    "MORO_ISLAND:Kid": {
+      "sheet": "oi_16.png"
+    },
+    "MORO_ISLAND:Kid ": {
+      "sheet": "oi_16.png"
+    },
+    "MORO_ISLAND:Kid  ": {
+      "sheet": "oi_16.png"
+    },
+    "MORO_ISLAND:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "MORO_ISLAND:Woman": {
+      "sheet": "oi_31.png"
+    },
+    "MORO_ISLAND:Man": {
+      "sheet": "oi_25.png"
+    },
+    "MORO_ISLAND:Kid   ": {
+      "sheet": "oi_16.png"
+    },
+    "MORO_ISLAND:Kid    ": {
+      "sheet": "oi_16.png"
+    },
+    "MORO_ISLAND:Old woman": {
+      "sheet": "oi_23.png"
+    },
+    "MORO_ISLAND:Kid     ": {
+      "sheet": "oi_16.png"
+    },
+    "MORO_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "MORO_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "MORO_ISLAND:Boy": {
+      "sheet": "oi_18.png"
+    },
+    "MORO_ISLAND:Trainer": {
+      "sheet": "oi_24.png"
+    },
+    "MORO_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MORO_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MORO_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MORO_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "MORO_ISLAND:Shopper": {
+      "sheet": "oi_29.png"
+    },
+    "MORO_ISLAND:Bug catcher": {
+      "sheet": "oi_20.png"
+    },
+    "MORO_ISLAND:Sailor": {
+      "sheet": "oi_57.png"
+    },
+    "MORO_ISLAND:Move Deleter": {
+      "sheet": "oi_30.png"
+    },
+    "MORO_ISLAND:Lady": {
+      "sheet": "oi_35.png"
+    },
+    "MORO_ISLAND:Old man": {
+      "sheet": "oi_32.png"
+    },
+    "MORO_ISLAND:Visitor": {
+      "sheet": "oi_33.png"
+    },
+    "MORO_ISLAND:Archeologist": {
+      "sheet": "oi_109.png"
+    },
+    "MORO_ISLAND:Receptionist": {
+      "sheet": "oi_47.png"
+    },
+    "MORO_ISLAND:Receptionist ": {
+      "sheet": "oi_47.png"
+    },
+    "MORO_ISLAND:Researcher": {
+      "sheet": "oi_55.png"
+    },
+    "MORO_ISLAND:Fossil researcher": {
+      "sheet": "oi_55.png"
+    },
+    "MORO_ISLAND:Biker": {
+      "sheet": "oi_29.png"
+    },
+    "MORO_ISLAND:Father": {
+      "sheet": "oi_30.png"
+    },
+    "MORO_ISLAND:Little girl": {
+      "sheet": "oi_17.png"
+    },
+    "SEVEN_GRAPEFRUITS:SNORLAX": {
+      "pokemon": 143
+    },
+    "SEVEN_GRAPEFRUITS:Snorlax ": {
+      "pokemon": 143
+    },
+    "GOLDEN_ISLAND:Islander  ": {
+      "sheet": "oi_196.png"
+    },
+    "GOLDEN_ISLAND:Islander   ": {
+      "sheet": "oi_197.png"
+    },
+    "GOLDEN_ISLAND:Islander": {
+      "sheet": "oi_197.png"
+    },
+    "GOLDEN_ISLAND:Elder's son": {
+      "sheet": "oi_196.png"
+    },
+    "GOLDEN_ISLAND:Islander    ": {
+      "sheet": "oi_196.png"
+    },
+    "GOLDEN_ISLAND:Elder": {
+      "sheet": "oi_196.png"
+    },
+    "MURCOTT_ISLAND:Bug catcher ": {
+      "sheet": "oi_20.png"
+    },
+    "MURCOTT_ISLAND:Bug catcher": {
+      "sheet": "oi_20.png"
+    },
+    "MURCOTT_ISLAND:Woman": {
+      "sheet": "oi_28.png"
+    },
+    "MURCOTT_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "MURCOTT_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "MURCOTT_ISLAND:Tourist": {
+      "sheet": "oi_35.png"
+    },
+    "MURCOTT_ISLAND:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "MURCOTT_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MURCOTT_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MURCOTT_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MURCOTT_ISLAND:Bug hater": {
+      "sheet": "oi_104.png"
+    },
+    "MURCOTT_MEADOWS:SILVERPOWDER": {
+      "item": "POKE_BALL"
+    },
+    "MURCOTT_MEADOWS:Scyther ": {
+      "pokemon": 123
+    },
+    "MURCOTT_MEADOWS:Scyther   ": {
+      "pokemon": 123
+    },
+    "MURCOTT_MEADOWS:Scyther": {
+      "pokemon": 123
+    },
+    "MURCOTT_MEADOWS:Scyther  ": {
+      "pokemon": 123
+    },
+    "MURCOTT_MEADOWS:Scyther    ": {
+      "pokemon": 123
+    },
+    "MURCOTT_MEADOWS:Tracey ": {
+      "sheet": "oi_73.png"
+    },
+    "MURCOTT_MEADOWS:Youngster": {
+      "sheet": "oi_18.png"
+    },
+    "MURCOTT_MEADOWS:Hurt Scyther": {
+      "sheet": "oi_167.png"
+    },
+    "MURCOTT_MEADOWS:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "MURCOTT_MEADOWS:TM175": {
+      "item": "POKE_BALL"
+    },
+    "MURCOTT_MEADOWS:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "MURCOTT_MEADOWS:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "GOLDEN_ISLAND:Islander     ": {
+      "sheet": "oi_197.png"
+    },
+    "GOLDEN_ISLAND:Islander       ": {
+      "sheet": "oi_197.png"
+    },
+    "GOLDEN_ISLAND:Islander        ": {
+      "sheet": "oi_196.png"
+    },
+    "GOLDEN_ISLAND:Islander      ": {
+      "sheet": "oi_196.png"
+    },
+    "MURCOTT_ISLAND:Bug catcher  ": {
+      "sheet": "oi_20.png"
+    },
+    "MURCOTT_ISLAND:Bug catcher   ": {
+      "sheet": "oi_20.png"
+    },
+    "ORANGE_ROUTE_62:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "ORANGE_ROUTE_62:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "ORANGE_ROUTE_62:Swimmer": {
+      "sheet": "oi_43.png"
+    },
+    "MANDARIN_SOUTH:TM087": {
+      "item": "POKE_BALL"
+    },
+    "MANDARIN_SOUTH:Trainer": {
+      "sheet": "oi_41.png"
+    },
+    "MANDARIN_SOUTH:Woman": {
+      "sheet": "oi_23.png"
+    },
+    "MANDARIN_SOUTH:Man": {
+      "sheet": "oi_42.png"
+    },
+    "MANDARIN_SOUTH:Girl": {
+      "sheet": "oi_29.png"
+    },
+    "MANDARIN_SOUTH:Old man": {
+      "sheet": "oi_35.png"
+    },
+    "MANDARIN_SOUTH:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "MANDARIN_SOUTH:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "MANDARIN_SOUTH:Hiker": {
+      "sheet": "oi_27.png"
+    },
+    "MANDARIN_SOUTH:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MANDARIN_SOUTH:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MANDARIN_SOUTH:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "MANDARIN_SOUTH:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "MANDARIN_SOUTH:Boy": {
+      "sheet": "oi_26.png"
+    },
+    "MANDARIN_SOUTH:Camper": {
+      "sheet": "oi_54.png"
+    },
+    "MANDARIN_SOUTH:Diner": {
+      "sheet": "oi_27.png"
+    },
+    "MANDARIN_SOUTH:Waiter": {
+      "sheet": "oi_28.png"
+    },
+    "MANDARIN_SOUTH:Waitress": {
+      "sheet": "oi_59.png"
+    },
+    "MANDARIN_SOUTH:Lady": {
+      "sheet": "oi_47.png"
+    },
+    "MANDARIN_SOUTH:Fly man": {
+      "sheet": "oi_104.png"
+    },
+    "MANDARIN_SOUTH:Prima": {
+      "sheet": "oi_77.png"
+    },
+    "PINKAN_ISLAND:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "ORANGE_ROUTE_63:TM085": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_63:BLACK BELT": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_63:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "YAMBERA:Old man": {
+      "sheet": "oi_32.png"
+    },
+    "YAMBERA:Nidorino": {
+      "pokemon": 33
+    },
+    "YAMBERA:Nidorina": {
+      "pokemon": 30
+    },
+    "YAMBERA:Emily": {
+      "sheet": "oi_22.png"
+    },
+    "YAMBERA:Ralph": {
+      "sheet": "oi_18.png"
+    },
+    "YAMBERA:Woman": {
+      "sheet": "oi_59.png"
+    },
+    "YAMBERA:Tony": {
+      "pokemon": 32
+    },
+    "YAMBERA:Maria": {
+      "pokemon": 29
+    },
+    "YAMBERA:Traveller": {
+      "sheet": "oi_26.png"
+    },
+    "YAMBERA:Boy": {
+      "sheet": "oi_17.png"
+    },
+    "YAMBERA:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "YAMBERA:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "YAMBERA:Picnicker": {
+      "sheet": "oi_40.png"
+    },
+    "YAMBERA:Man": {
+      "sheet": "oi_30.png"
+    },
+    "YAMBERA:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "YAMBERA:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "YAMBERA:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "YAMBERA:Trader": {
+      "sheet": "oi_51.png"
+    },
+    "YAMBERA:Shock Wave man": {
+      "sheet": "oi_190.png"
+    },
+    "ORANGE_ROUTE_64:Magnemite    ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Tauros": {
+      "sheet": "oi_174.png"
+    },
+    "ORANGE_ROUTE_64:Magnemite   ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Ethan ": {
+      "sheet": "oi_198.png"
+    },
+    "ORANGE_ROUTE_64:Magnemite  ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Hiker": {
+      "sheet": "oi_23.png"
+    },
+    "ORANGE_ROUTE_64:Ethan": {
+      "sheet": "oi_198.png"
+    },
+    "ORANGE_ROUTE_64:Magnemite ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Tauros ": {
+      "sheet": "oi_174.png"
+    },
+    "ORANGE_ROUTE_64:Magnemite": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Jolteon": {
+      "sheet": "oi_208.png"
+    },
+    "ORANGE_ROUTE_64:Woman": {
+      "sheet": "oi_24.png"
+    },
+    "ORANGE_ROUTE_64:TM051": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_64:Man": {
+      "sheet": "oi_19.png"
+    },
+    "ORANGE_ROUTE_64:Number 6": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Jessie": {
+      "sheet": "oi_75.png"
+    },
+    "ORANGE_ROUTE_64:Team Rocket": {
+      "sheet": "oi_102.png"
+    },
+    "ORANGE_ROUTE_64:James": {
+      "sheet": "oi_74.png"
+    },
+    "ORANGE_ROUTE_64:SOFT SAND": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_64:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_64:TM049": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_64:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "ORANGE_ROUTE_64:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "ORANGE_ROUTE_64:Archeologist": {
+      "sheet": "oi_109.png"
+    },
+    "ORANGE_ROUTE_64:Picnicker": {
+      "sheet": "oi_40.png"
+    },
+    "ORANGE_ROUTE_64:Trader": {
+      "sheet": "oi_35.png"
+    },
+    "ORANGE_ROUTE_64:Camper": {
+      "sheet": "oi_39.png"
+    },
+    "ORANGE_ROUTE_64:Town Magnemite ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Town Tauros": {
+      "sheet": "oi_174.png"
+    },
+    "ORANGE_ROUTE_64:Town Magnemite": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Town Magnemite  ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Town Magnemite   ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Town Tauros ": {
+      "sheet": "oi_174.png"
+    },
+    "ORANGE_ROUTE_64:Town Magnemite    ": {
+      "sheet": "oi_142.png"
+    },
+    "ORANGE_ROUTE_64:Town Jolteon": {
+      "sheet": "oi_208.png"
+    },
+    "TROVITOPOLIS:Archeologist": {
+      "sheet": "oi_109.png"
+    },
+    "TROVITOPOLIS:Girl": {
+      "sheet": "oi_17.png"
+    },
+    "TROVITOPOLIS:Girl ": {
+      "sheet": "oi_17.png"
+    },
+    "TROVITOPOLIS:Man": {
+      "sheet": "oi_28.png"
+    },
+    "TROVITOPOLIS:Voter": {
+      "sheet": "oi_27.png"
+    },
+    "TROVITOPOLIS:Voter ": {
+      "sheet": "oi_27.png"
+    },
+    "TROVITOPOLIS:Woman": {
+      "sheet": "oi_32.png"
+    },
+    "TROVITOPOLIS:Officer Jenny": {
+      "sheet": "oi_66.png"
+    },
+    "TROVITOPOLIS:Officer Jenny ": {
+      "sheet": "oi_66.png"
+    },
+    "TROVITOPOLIS:Sewer guard": {
+      "sheet": "oi_60.png"
+    },
+    "TROVITOPOLIS:Sewer guard ": {
+      "sheet": "oi_60.png"
+    },
+    "TROVITOPOLIS:Sewer guard  ": {
+      "sheet": "oi_60.png"
+    },
+    "TROVITOPOLIS:Traveller": {
+      "sheet": "oi_29.png"
+    },
+    "TROVITOPOLIS:Porygon man": {
+      "sheet": "oi_52.png"
+    },
+    "TROVITOPOLIS:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "TROVITOPOLIS:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "TROVITOPOLIS:Gentleman": {
+      "sheet": "oi_41.png"
+    },
+    "TROVITOPOLIS:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TROVITOPOLIS:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TROVITOPOLIS:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TROVITOPOLIS:Receptionist": {
+      "sheet": "oi_48.png"
+    },
+    "TROVITOPOLIS:TM clerk": {
+      "sheet": "oi_68.png"
+    },
+    "TROVITOPOLIS:Shopper": {
+      "sheet": "oi_19.png"
+    },
+    "TROVITOPOLIS:Market clerk": {
+      "sheet": "oi_68.png"
+    },
+    "TROVITOPOLIS:Shopper ": {
+      "sheet": "oi_23.png"
+    },
+    "TROVITOPOLIS:Gamer": {
+      "sheet": "oi_51.png"
+    },
+    "TROVITOPOLIS:Gamer  ": {
+      "sheet": "oi_51.png"
+    },
+    "TROVITOPOLIS:Gamer ": {
+      "sheet": "oi_51.png"
+    },
+    "TROVITOPOLIS:Clerk": {
+      "sheet": "oi_68.png"
+    },
+    "TROVITOPOLIS:Kid": {
+      "sheet": "oi_17.png"
+    },
+    "TROVITOPOLIS:Boyfriend": {
+      "sheet": "oi_25.png"
+    },
+    "TROVITOPOLIS:Lady": {
+      "sheet": "oi_18.png"
+    },
+    "TROVITOPOLIS:Gift clerk": {
+      "sheet": "oi_68.png"
+    },
+    "TROVITOPOLIS:Battle item clerk": {
+      "sheet": "oi_68.png"
+    },
+    "TROVITOPOLIS:Scientist": {
+      "sheet": "oi_52.png"
+    },
+    "TROVITOPOLIS:Vitamin clerk": {
+      "sheet": "oi_68.png"
+    },
+    "TROVITOPOLIS:Vitamin fan": {
+      "sheet": "oi_62.png"
+    },
+    "TROVITOPOLIS:Mayor": {
+      "sheet": "oi_199.png"
+    },
+    "TROVITOPOLIS:Mayor ": {
+      "sheet": "oi_199.png"
+    },
+    "TROVITOPOLIS:Secretary": {
+      "sheet": "oi_48.png"
+    },
+    "TROVITOPOLIS:Secretary ": {
+      "sheet": "oi_48.png"
+    },
+    "TROVITOPOLIS:Psychic mother": {
+      "sheet": "oi_187.png"
+    },
+    "TROVITOPOLIS:Psychic father": {
+      "sheet": "oi_186.png"
+    },
+    "TROVITOPOLIS:Sewer fan": {
+      "sheet": "oi_33.png"
+    },
+    "TROVITOPOLIS_SEWERS:TM018": {
+      "item": "POKE_BALL"
+    },
+    "TROVITOPOLIS_SEWERS:SMOKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "TROVITOPOLIS_SEWERS:TM148": {
+      "item": "POKE_BALL"
+    },
+    "TROVITOPOLIS_SEWERS:Bulbasaur": {
+      "pokemon": 1
+    },
+    "TROVITOPOLIS_SEWERS:Sewer man": {
+      "sheet": "oi_55.png"
+    },
+    "TROVITA_ISLAND:Hot-air balloon": {
+      "sheet": "oi_207.png"
+    },
+    "TROVITA_ISLAND:TM007": {
+      "item": "POKE_BALL"
+    },
+    "TROVITA_ISLAND:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "TROVITA_ISLAND:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "TROVITA_ISLAND:Rudy's balloon": {
+      "sheet": "oi_207.png"
+    },
+    "TROVITA_ISLAND:Gym fan": {
+      "sheet": "oi_24.png"
+    },
+    "TROVITA_ISLAND:Gym fan ": {
+      "sheet": "oi_24.png"
+    },
+    "TROVITA_ISLAND:Man": {
+      "sheet": "oi_18.png"
+    },
+    "TROVITA_ISLAND:Islander": {
+      "sheet": "oi_35.png"
+    },
+    "TROVITA_ISLAND:Islander ": {
+      "sheet": "oi_35.png"
+    },
+    "TROVITA_ISLAND:Rudy": {
+      "sheet": "oi_84.png"
+    },
+    "TROVITA_ISLAND:Rudy  ": {
+      "sheet": "oi_84.png"
+    },
+    "TROVITA_ISLAND:George": {
+      "sheet": "oi_41.png"
+    },
+    "TROVITA_ISLAND:Mary": {
+      "sheet": "oi_42.png"
+    },
+    "TROVITA_ISLAND:Mahri": {
+      "sheet": "oi_17.png"
+    },
+    "TROVITA_ISLAND:Mahri ": {
+      "sheet": "oi_17.png"
+    },
+    "TROVITA_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "TROVITA_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "TROVITA_ISLAND:Cooltrainer": {
+      "sheet": "oi_42.png"
+    },
+    "TROVITA_ISLAND:Gentleman": {
+      "sheet": "oi_41.png"
+    },
+    "TROVITA_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TROVITA_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TROVITA_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TROVITA_ISLAND:Fisherman": {
+      "sheet": "oi_57.png"
+    },
+    "TROVITA_ISLAND:Move Tutor": {
+      "sheet": "oi_27.png"
+    },
+    "TROVITA_ISLAND:Rudy ": {
+      "sheet": "oi_84.png"
+    },
+    "TROVITA_ISLAND:Whirlpuller man": {
+      "sheet": "oi_35.png"
+    },
+    "FAIRCHILD_ISLAND:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "FAIRCHILD_ISLAND:SHARP BEAK": {
+      "item": "POKE_BALL"
+    },
+    "FAIRCHILD_ISLAND:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "FAIRCHILD_ISLAND:PIDGEOT": {
+      "item": "POKE_BALL"
+    },
+    "FAIRCHILD_ISLAND:TM239": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_68:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_68:Poliwrath": {
+      "sheet": "oi_159.png"
+    },
+    "ORANGE_ROUTE_68:Tad": {
+      "sheet": "oi_200.png"
+    },
+    "CLEOPATRA_ISLAND:TM272": {
+      "item": "POKE_BALL"
+    },
+    "CLEOPATRA_ISLAND:TM098": {
+      "item": "POKE_BALL"
+    },
+    "CLEOPATRA_ISLAND:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "SHAMOUTI_ISLAND:Tourist": {
+      "sheet": "oi_31.png"
+    },
+    "SHAMOUTI_ISLAND:Old man": {
+      "sheet": "oi_33.png"
+    },
+    "SHAMOUTI_ISLAND:Woman": {
+      "sheet": "oi_24.png"
+    },
+    "SHAMOUTI_ISLAND:Festival worker": {
+      "sheet": "oi_32.png"
+    },
+    "SHAMOUTI_ISLAND:Festival worker ": {
+      "sheet": "oi_27.png"
+    },
+    "SHAMOUTI_ISLAND:Festival worker  ": {
+      "sheet": "oi_25.png"
+    },
+    "SHAMOUTI_ISLAND:Slowking": {
+      "sheet": "oi_169.png"
+    },
+    "SHAMOUTI_ISLAND:Slowking ": {
+      "sheet": "oi_169.png"
+    },
+    "SHAMOUTI_ISLAND:Bookworm": {
+      "sheet": "oi_22.png"
+    },
+    "SHAMOUTI_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "SHAMOUTI_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "SHAMOUTI_ISLAND:Hiker": {
+      "sheet": "oi_39.png"
+    },
+    "SHAMOUTI_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "SHAMOUTI_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "SHAMOUTI_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "SHAMOUTI_ISLAND:Boy": {
+      "sheet": "oi_18.png"
+    },
+    "SHAMOUTI_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "SHAMOUTI_ISLAND:Trader": {
+      "sheet": "oi_41.png"
+    },
+    "SHAMOUTI_ISLAND:Trader ": {
+      "sheet": "oi_41.png"
+    },
+    "SHAMOUTI_ISLAND:Girl": {
+      "sheet": "oi_29.png"
+    },
+    "SHAMOUTI_ISLAND:Kindler": {
+      "sheet": "oi_90.png"
+    },
+    "SHAMOUTI_ISLAND:Melody": {
+      "sheet": "oi_216.png"
+    },
+    "SHAMOUTI_ISLAND:Islander": {
+      "sheet": "oi_24.png"
+    },
+    "SHAMOUTI_ISLAND:Islander ": {
+      "sheet": "oi_25.png"
+    },
+    "SHAMOUTI_ISLAND:Tourist   ": {
+      "sheet": "oi_29.png"
+    },
+    "SHAMOUTI_ISLAND:Tourist ": {
+      "sheet": "oi_30.png"
+    },
+    "SHAMOUTI_ISLAND:Tourist  ": {
+      "sheet": "oi_26.png"
+    },
+    "ASCORBIA_ISLAND:Wartortle": {
+      "sheet": "oi_179.png"
+    },
+    "ASCORBIA_ISLAND:Wartortle  ": {
+      "sheet": "oi_179.png"
+    },
+    "ASCORBIA_ISLAND:Wartortle    ": {
+      "sheet": "oi_179.png"
+    },
+    "ASCORBIA_ISLAND:Wartortle ": {
+      "sheet": "oi_179.png"
+    },
+    "ASCORBIA_ISLAND:Wartortle   ": {
+      "sheet": "oi_179.png"
+    },
+    "ASCORBIA_ISLAND:Girl": {
+      "sheet": "oi_23.png"
+    },
+    "ASCORBIA_ISLAND:Girl ": {
+      "sheet": "oi_23.png"
+    },
+    "ASCORBIA_ISLAND:HEAL POWDER": {
+      "item": "POKE_BALL"
+    },
+    "ASCORBIA_ISLAND:Walker": {
+      "sheet": "oi_61.png"
+    },
+    "ASCORBIA_ISLAND:Walker ": {
+      "sheet": "oi_61.png"
+    },
+    "ASCORBIA_ISLAND:Woman": {
+      "sheet": "oi_28.png"
+    },
+    "ASCORBIA_ISLAND:Man": {
+      "sheet": "oi_32.png"
+    },
+    "ASCORBIA_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "ASCORBIA_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "ASCORBIA_ISLAND:Old man": {
+      "sheet": "oi_18.png"
+    },
+    "ASCORBIA_ISLAND:Festival fan": {
+      "sheet": "oi_35.png"
+    },
+    "ASCORBIA_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "ASCORBIA_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "ASCORBIA_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "ASCORBIA_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "ASCORBIA_ISLAND:Shopper": {
+      "sheet": "oi_31.png"
+    },
+    "ASCORBIA_ISLAND:Shopper ": {
+      "sheet": "oi_26.png"
+    },
+    "ASCORBIA_ISLAND:Body Slam kid": {
+      "sheet": "oi_27.png"
+    },
+    "ASCORBIA_ISLAND:Kid": {
+      "sheet": "oi_27.png"
+    },
+    "ASCORBIA_ISLAND:Worried woman": {
+      "sheet": "oi_48.png"
+    },
+    "ASCORBIA_ISLAND:Woman ": {
+      "sheet": "oi_48.png"
+    },
+    "ASCORBIA_ISLAND:Captain Aidan": {
+      "sheet": "oi_201.png"
+    },
+    "ASCORBIA_FOREST:TM111": {
+      "item": "POKE_BALL"
+    },
+    "ASCORBIA_FOREST:Captain Aidan": {
+      "sheet": "oi_201.png"
+    },
+    "ASCORBIA_FOREST:TM056": {
+      "item": "POKE_BALL"
+    },
+    "ASCORBIA_FOREST:WHITE HERB": {
+      "item": "POKE_BALL"
+    },
+    "ASCORBIA_FOREST:TM299": {
+      "item": "POKE_BALL"
+    },
+    "ASCORBIA_FOREST:TM276": {
+      "item": "POKE_BALL"
+    },
+    "ASCORBIA_FOREST:Aidan": {
+      "sheet": "oi_201.png"
+    },
+    "VALENCIA_ISLAND:Talk to Mom": {
+      "sheet": "fr_88.png"
+    },
+    "ORANGE_ROUTE_69:Old man": {
+      "sheet": "oi_32.png"
+    },
+    "ORANGE_ROUTE_69:Fisherman": {
+      "sheet": "oi_57.png"
+    },
+    "BUTWAL_ISLAND:MENTAL HERB": {
+      "item": "POKE_BALL"
+    },
+    "BUTWAL_ISLAND:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "BUTWAL_ISLAND:Man": {
+      "sheet": "oi_24.png"
+    },
+    "BUTWAL_ISLAND:Gulzar": {
+      "sheet": "oi_202.png"
+    },
+    "BUTWAL_ISLAND:Gulzar ": {
+      "sheet": "oi_202.png"
+    },
+    "BUTWAL_ISLAND:Woman": {
+      "sheet": "oi_35.png"
+    },
+    "BUTWAL_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "BUTWAL_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "BUTWAL_ISLAND:Boy": {
+      "sheet": "oi_20.png"
+    },
+    "BUTWAL_ISLAND:Old man": {
+      "sheet": "oi_40.png"
+    },
+    "BUTWAL_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "BUTWAL_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "BUTWAL_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "BUTWAL_ISLAND:Rock Slide hiker": {
+      "sheet": "oi_56.png"
+    },
+    "KUMQUAT_ISLAND:Man": {
+      "sheet": "oi_19.png"
+    },
+    "KUMQUAT_ISLAND:Girl": {
+      "sheet": "oi_17.png"
+    },
+    "KUMQUAT_ISLAND:Woman": {
+      "sheet": "oi_35.png"
+    },
+    "KUMQUAT_ISLAND:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "KUMQUAT_ISLAND:Tracey ": {
+      "sheet": "oi_73.png"
+    },
+    "KUMQUAT_ISLAND:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "KUMQUAT_ISLAND:Misty ": {
+      "sheet": "oi_81.png"
+    },
+    "KUMQUAT_ISLAND:Girl ": {
+      "sheet": "oi_46.png"
+    },
+    "KUMQUAT_ISLAND:Sunbather": {
+      "sheet": "oi_45.png"
+    },
+    "KUMQUAT_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "KUMQUAT_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "KUMQUAT_ISLAND:Trainer ": {
+      "sheet": "oi_42.png"
+    },
+    "KUMQUAT_ISLAND:Trainer": {
+      "sheet": "oi_41.png"
+    },
+    "KUMQUAT_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "KUMQUAT_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "KUMQUAT_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "KUMQUAT_ISLAND:Boy": {
+      "sheet": "oi_16.png"
+    },
+    "KUMQUAT_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "KUMQUAT_ISLAND:Swords Dance man": {
+      "sheet": "oi_31.png"
+    },
+    "KUMQUAT_ISLAND:Return boy": {
+      "sheet": "oi_18.png"
+    },
+    "KUMQUAT_ISLAND:Frustration girl": {
+      "sheet": "oi_33.png"
+    },
+    "KUMQUAT_ISLAND:Bellhop": {
+      "sheet": "oi_69.png"
+    },
+    "KUMQUAT_ISLAND:Receptionist": {
+      "sheet": "oi_69.png"
+    },
+    "KUMQUAT_ISLAND:Receptionist ": {
+      "sheet": "oi_69.png"
+    },
+    "KUMQUAT_ISLAND:Receptionist  ": {
+      "sheet": "oi_69.png"
+    },
+    "KUMQUAT_ISLAND:Husband": {
+      "sheet": "oi_32.png"
+    },
+    "KUMQUAT_ISLAND:Iron Tail man": {
+      "sheet": "oi_190.png"
+    },
+    "KUMQUAT_ISLAND:Wife": {
+      "sheet": "oi_35.png"
+    },
+    "KUMQUAT_ISLAND:Luana": {
+      "sheet": "oi_85.png"
+    },
+    "KUMQUAT_ISLAND:Juggler": {
+      "sheet": "oi_188.png"
+    },
+    "KUMQUAT_ISLAND:Luana ": {
+      "sheet": "oi_85.png"
+    },
+    "KUMQUAT_ISLAND:Luana  ": {
+      "sheet": "oi_85.png"
+    },
+    "KUMQUAT_ISLAND:Oliver": {
+      "sheet": "oi_38.png"
+    },
+    "KUMQUAT_ISLAND:Kanae": {
+      "sheet": "oi_105.png"
+    },
+    "KUMQUAT_ISLAND:Dora": {
+      "sheet": "oi_37.png"
+    },
+    "KUMQUAT_ISLAND:Eiichiro": {
+      "sheet": "oi_54.png"
+    },
+    "SUNBURST_ISLAND:Noel": {
+      "sheet": "oi_108.png"
+    },
+    "SUNBURST_ISLAND:Bud": {
+      "sheet": "oi_39.png"
+    },
+    "SUNBURST_ISLAND:Blanche": {
+      "sheet": "oi_40.png"
+    },
+    "SUNBURST_ISLAND:Emma": {
+      "sheet": "oi_107.png"
+    },
+    "SUNBURST_ISLAND:Ayami": {
+      "sheet": "oi_105.png"
+    },
+    "ORANGE_ROUTE_70:Mega Punch man": {
+      "sheet": "oi_54.png"
+    },
+    "ORANGE_ROUTE_70:Mega Kick man": {
+      "sheet": "oi_54.png"
+    },
+    "ORANGE_ROUTE_71:Quackenpoker": {
+      "sheet": "oi_203.png"
+    },
+    "RIND_ISLAND:TM275": {
+      "item": "POKE_BALL"
+    },
+    "RIND_ISLAND:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_72:Woman": {
+      "sheet": "oi_35.png"
+    },
+    "SALVEYO_ISLAND:QUICK CLAW": {
+      "item": "POKE_BALL"
+    },
+    "SALVEYO_ISLAND:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "SALVEYO_ISLAND:Poliwag": {
+      "sheet": "oi_158.png"
+    },
+    "SALVEYO_ISLAND:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "SALVEYO_ISLAND:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "SALVEYO_ISLAND:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "ORANGE_ROUTE_70:Kid": {
+      "sheet": "oi_18.png"
+    },
+    "ORANGE_ROUTE_70:Girl": {
+      "sheet": "oi_22.png"
+    },
+    "ORANGE_ROUTE_70:Fossil hunter": {
+      "sheet": "oi_109.png"
+    },
+    "PUMMELO_ISLAND:Woman ": {
+      "sheet": "oi_30.png"
+    },
+    "PUMMELO_ISLAND:Boy": {
+      "sheet": "oi_24.png"
+    },
+    "PUMMELO_ISLAND:Fan": {
+      "sheet": "oi_41.png"
+    },
+    "PUMMELO_ISLAND:Old man": {
+      "sheet": "oi_32.png"
+    },
+    "PUMMELO_ISLAND:Girl": {
+      "sheet": "oi_17.png"
+    },
+    "PUMMELO_ISLAND:Old man ": {
+      "sheet": "oi_32.png"
+    },
+    "PUMMELO_ISLAND:Old man  ": {
+      "sheet": "oi_32.png"
+    },
+    "PUMMELO_ISLAND:Woman": {
+      "sheet": "oi_35.png"
+    },
+    "PUMMELO_ISLAND:Man": {
+      "sheet": "oi_19.png"
+    },
+    "PUMMELO_ISLAND:Misty": {
+      "sheet": "oi_81.png"
+    },
+    "PUMMELO_ISLAND:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "PUMMELO_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "PUMMELO_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "PUMMELO_ISLAND:Trainer": {
+      "sheet": "oi_42.png"
+    },
+    "PUMMELO_ISLAND:Trainer ": {
+      "sheet": "oi_41.png"
+    },
+    "PUMMELO_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "PUMMELO_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "PUMMELO_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "PUMMELO_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "PUMMELO_ISLAND:Substitute tutor": {
+      "sheet": "oi_186.png"
+    },
+    "PUMMELO_ISLAND:Seismic Toss tutor": {
+      "sheet": "oi_54.png"
+    },
+    "PUMMELO_ISLAND:Crunch tutor": {
+      "sheet": "oi_189.png"
+    },
+    "PUMMELO_ISLAND:Double-Edge tutor": {
+      "sheet": "oi_41.png"
+    },
+    "PUMMELO_ISLAND:Dragon Dance tutor": {
+      "sheet": "oi_212.png"
+    },
+    "PUMMELO_ISLAND:Uncle": {
+      "sheet": "oi_27.png"
+    },
+    "PUMMELO_ISLAND:Old woman": {
+      "sheet": "oi_52.png"
+    },
+    "PUMMELO_ISLAND:Dragon Tamer": {
+      "sheet": "oi_212.png"
+    },
+    "PUMMELO_ISLAND:Guard": {
+      "sheet": "oi_69.png"
+    },
+    "PUMMELO_ISLAND:Drake": {
+      "sheet": "oi_86.png"
+    },
+    "PUMMELO_ISLAND:Dragon fan": {
+      "sheet": "oi_212.png"
+    },
+    "PUMMELO_ISLAND:Stadium guard": {
+      "sheet": "oi_69.png"
+    },
+    "PUMMELO_ISLAND:Stadium guard ": {
+      "sheet": "oi_69.png"
+    },
+    "PUMMELO_ISLAND:Fan ": {
+      "sheet": "oi_42.png"
+    },
+    "PUMMELO_ISLAND:Fan  ": {
+      "sheet": "oi_42.png"
+    },
+    "PUMMELO_ISLAND:Fan   ": {
+      "sheet": "oi_25.png"
+    },
+    "PUMMELO_ISLAND:Camper": {
+      "sheet": "oi_39.png"
+    },
+    "PUMMELO_ISLAND:Man ": {
+      "sheet": "oi_23.png"
+    },
+    "TARROCO_ISLAND:TM025": {
+      "item": "POKE_BALL"
+    },
+    "TARROCO_ISLAND:Officer Jenny": {
+      "sheet": "oi_66.png"
+    },
+    "TARROCO_ISLAND:Man": {
+      "sheet": "oi_22.png"
+    },
+    "TARROCO_ISLAND:Bug Catcher": {
+      "sheet": "oi_20.png"
+    },
+    "TARROCO_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "TARROCO_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "TARROCO_ISLAND:Woman": {
+      "sheet": "oi_27.png"
+    },
+    "TARROCO_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TARROCO_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TARROCO_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "TARROCO_ISLAND:Old man": {
+      "sheet": "oi_25.png"
+    },
+    "TARROCO_ISLAND:Trader": {
+      "sheet": "oi_30.png"
+    },
+    "TARROCO_ISLAND:Trader ": {
+      "sheet": "oi_30.png"
+    },
+    "TARROCO_ISLAND:Girl": {
+      "sheet": "oi_17.png"
+    },
+    "TARROCO_ISLAND:Girl ": {
+      "sheet": "oi_17.png"
+    },
+    "HAMLIN_ISLAND:Boy": {
+      "sheet": "oi_52.png"
+    },
+    "HAMLIN_ISLAND:Poncho": {
+      "sheet": "oi_204.png"
+    },
+    "HAMLIN_ISLAND:ELECTRODE": {
+      "pokemon": 101
+    },
+    "HAMLIN_ISLAND:Man": {
+      "sheet": "oi_29.png"
+    },
+    "HAMLIN_ISLAND:Woman": {
+      "sheet": "oi_18.png"
+    },
+    "HAMLIN_ISLAND:Heal": {
+      "sheet": "oi_64.png"
+    },
+    "HAMLIN_ISLAND:Chansey": {
+      "sheet": "oi_115.png"
+    },
+    "HAMLIN_ISLAND:Link attendant": {
+      "sheet": "oi_65.png"
+    },
+    "HAMLIN_ISLAND:Trade attendant": {
+      "sheet": "oi_65.png"
+    },
+    "HAMLIN_ISLAND:Colosseum attendant": {
+      "sheet": "oi_65.png"
+    },
+    "HAMLIN_ISLAND:Shop": {
+      "sheet": "oi_68.png"
+    },
+    "HAMLIN_ISLAND:Harbor clerk": {
+      "sheet": "oi_62.png"
+    },
+    "HAMLIN_FIELDS:FOCUS BAND": {
+      "item": "POKE_BALL"
+    },
+    "HAMLIN_FIELDS:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "TARROCO_ISLAND:Eevee fan": {
+      "sheet": "oi_48.png"
+    },
+    "TARROCO_ISLAND:Islander": {
+      "sheet": "oi_22.png"
+    },
+    "HAMLIN_ISLAND:Townsman": {
+      "sheet": "oi_27.png"
+    },
+    "HAMLIN_ISLAND:Townswoman": {
+      "sheet": "oi_23.png"
+    },
+    "HAMLIN_ISLAND:Traveller": {
+      "sheet": "oi_42.png"
+    },
+    "SHAMOUTI_ISLAND:Misty ": {
+      "sheet": "oi_81.png"
+    },
+    "SHAMOUTI_ISLAND:Tracey ": {
+      "sheet": "oi_73.png"
+    },
+    "SHAMOUTI_ISLAND:Melody ": {
+      "sheet": "oi_216.png"
+    },
+    "FIRE_ISLAND:TM141": {
+      "item": "POKE_BALL"
+    },
+    "FIRE_ISLAND:FIRE SPHERE": {
+      "sheet": "oi_222.png"
+    },
+    "FIRE_ISLAND:MOLTRES": {
+      "pokemon": 146
+    },
+    "LAWRENCE_SHIP:Melody": {
+      "sheet": "oi_216.png"
+    },
+    "LIGHTNING_ISLAND:TM166": {
+      "item": "POKE_BALL"
+    },
+    "LIGHTNING_ISLAND:Melody": {
+      "sheet": "oi_216.png"
+    },
+    "LIGHTNING_ISLAND:LIGHTNING SPHERE": {
+      "sheet": "oi_223.png"
+    },
+    "LIGHTNING_ISLAND:ZAPDOS": {
+      "pokemon": 145
+    },
+    "ICE_ISLAND:TM143": {
+      "item": "POKE_BALL"
+    },
+    "ICE_ISLAND:ICE SPHERE": {
+      "sheet": "oi_224.png"
+    },
+    "ICE_ISLAND:ARTICUNO": {
+      "pokemon": 144
+    },
+    "ICE_ISLAND:LUGIA": {
+      "pokemon": 249
+    },
+    "VALENCIA_ISLAND:Tracey": {
+      "sheet": "oi_73.png"
+    },
+    "NEW_ISLAND:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:Ferry man": {
+      "sheet": "oi_62.png"
+    },
+    "NEW_ISLAND:TM114": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:IRON": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:MASTER BALL": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:MOON STONE": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:MEWTWO": {
+      "pokemon": 150
+    },
+    "NEW_ISLAND:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "NEW_ISLAND:MEW": {
+      "pokemon": 151
+    },
+    "SHOWBOAT:Sailor": {
+      "sheet": "oi_62.png"
+    },
+    "SHOWBOAT:Tourist": {
+      "sheet": "oi_31.png"
+    },
+    "SHOWBOAT:Girl": {
+      "sheet": "oi_16.png"
+    },
+    "SHOWBOAT:Fan": {
+      "sheet": "oi_17.png"
+    },
+    "SHOWBOAT:Fan ": {
+      "sheet": "oi_16.png"
+    },
+    "SHOWBOAT:Fan  ": {
+      "sheet": "oi_19.png"
+    },
+    "SHOWBOAT:Fan   ": {
+      "sheet": "oi_31.png"
+    },
+    "SHOWBOAT:Fan    ": {
+      "sheet": "oi_30.png"
+    },
+    "SHOWBOAT:Usher": {
+      "sheet": "oi_69.png"
+    },
+    "SHOWBOAT:Fan     ": {
+      "sheet": "oi_35.png"
+    },
+    "SHOWBOAT:Raichu": {
+      "pokemon": 26
+    },
+    "SHOWBOAT:Voice actor": {
+      "sheet": "oi_47.png"
+    },
+    "SHOWBOAT:Voice actor ": {
+      "sheet": "oi_28.png"
+    },
+    "SHOWBOAT:Kay": {
+      "sheet": "oi_194.png"
+    },
+    "SHOWBOAT:Voice actor  ": {
+      "sheet": "oi_26.png"
+    },
+    "SHOWBOAT:Sailor ": {
+      "sheet": "oi_62.png"
+    },
+    "SHOWBOAT:Gentleman": {
+      "sheet": "oi_27.png"
+    },
+    "SHOWBOAT:Old man": {
+      "sheet": "oi_61.png"
+    },
+    "SHOWBOAT:Girl ": {
+      "sheet": "oi_17.png"
+    },
+    "SHOWBOAT:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SHOWBOAT:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "SHOWBOAT:TM050": {
+      "item": "POKE_BALL"
+    },
+    "SHOWBOAT:Fan      ": {
+      "sheet": "oi_32.png"
+    },
+    "SHOWBOAT:Fan       ": {
+      "sheet": "oi_18.png"
+    },
+    "SHOWBOAT:Fan         ": {
+      "sheet": "oi_22.png"
+    },
+    "SHOWBOAT:Fan        ": {
+      "sheet": "oi_27.png"
+    },
+    "ORANGE_ROUTE_58:Nurse Joy ": {
+      "sheet": "oi_192.png"
+    },
+    "ORANGE_ROUTE_58:MYSTIC WATER": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_60:SPELL TAG": {
+      "item": "POKE_BALL"
+    },
+    "ORANGE_ROUTE_58:Shellder": {
+      "sheet": "oi_168.png"
     }
   },
   "townsperson": "NPC 17.png",
   "players": {
     "red": "trchar000_1.png",
-    "ash": "trchar000.png",
+    "ash": "ash_oi.png",
     "blue": "trchar002.png",
     "male": "trchar000_1.png",
     "female": "trchar001.png",
@@ -7036,6 +9724,32 @@
     ],
     "brendan": "em_0.png",
     "may": "em_89.png"
+  },
+  "player_extra": {
+    "_about": "Your trainer's own extra overworld sheets, by character (4 x 4 like a walking sheet, rows down/left/right/up; or {file, cols, rows}: a strip of frames). bike: riding (columns: still, pedal, still, pedal); surf: sitting on your Pokemon; fish: casting (4 frames a way); field: using a field move (Strength, Rock Smash); dive: swimming underwater; run: running. Anyone without one keeps the walking sheet (and the drawn Bicycle). Not used yet: vsseeker, vsseeker_bike (no VS Seeker), capback (the cap turned backwards).",
+    "ash": {
+      "bike": "ash_oi_bike.png",
+      "surf": "ash_oi_surf.png",
+      "fish": "ash_oi_fish.png",
+      "field": {
+        "file": "ash_oi_field.png",
+        "cols": 5,
+        "rows": 1
+      },
+      "dive": "ash_oi_dive.png",
+      "run": "ash_oi_run.png",
+      "vsseeker": {
+        "file": "ash_oi_vsseeker.png",
+        "cols": 9,
+        "rows": 1
+      },
+      "vsseeker_bike": {
+        "file": "ash_oi_vsseeker_bike.png",
+        "cols": 6,
+        "rows": 1
+      },
+      "capback": "ash_oi_capback.png"
+    }
   },
   "trainers_SINNOH": {
     "youngster.png": "pt_boy2.png",
@@ -7207,5 +9921,35 @@
     "team_rocket.png": "hg_rocketm.png",
     "twins.png": "hg_gsbabygirl1.png",
     "youngster.png": "hg_gsboy2.png"
+  },
+  "trainers_ORANGE": {
+    "bug_catcher.png": "oi_20.png",
+    "youngster.png": "oi_18.png",
+    "lass.png": "oi_22.png",
+    "fisherman.png": "oi_57.png",
+    "bird_keeper.png": "oi_104.png",
+    "swimmer_m.png": "oi_43.png",
+    "swimmer_f.png": "oi_44.png",
+    "tuber_f.png": "oi_34.png",
+    "firebreather.png": "oi_90.png",
+    "tuber_m.png": "oi_36.png",
+    "ruinmaniac.png": "oi_109.png",
+    "psychic_m.png": "oi_186.png",
+    "ranger_m.png": "oi_108.png",
+    "ranger_f.png": "oi_107.png",
+    "hiker.png": "oi_56.png",
+    "camper.png": "oi_39.png",
+    "picnicker.png": "oi_40.png",
+    "rocker.png": "oi_190.png",
+    "psychic_f.png": "oi_187.png",
+    "blue.png": "oi_72.png",
+    "rival.png": "oi_72.png",
+    "tamer.png": "oi_189.png",
+    "blackbelt.png": "oi_54.png",
+    "battle_girl.png": "oi_105.png",
+    "juggler.png": "oi_188.png",
+    "burglar.png": "oi_89.png",
+    "gentleman.png": "oi_61.png",
+    "sailor.png": "oi_62.png"
   }
 }

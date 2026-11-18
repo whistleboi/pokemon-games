@@ -23,6 +23,48 @@ def _players(game):
     return out
 
 
+def carrier(game):
+    """Who carries you (Jordan 11-17, game-wide): if you have ever caught a Pikachu (any region, even one in the PC: the
+    Pokedex's caught record), Pikachu's balloons (this scene's own: None); else the party Pokemon that knows Fly (else your
+    lead) carries you on the rope."""
+    story = getattr(game, "story_manager", None)
+    if caught_pikachu(game):
+        return None
+    team = [m for m in (getattr(story, "player_team", None) or []) if getattr(m, "id", 0)]
+    if not team:
+        return None
+    return next((m for m in team if "FLY" in (getattr(m, "moves", None) or [])), None) or team[0]
+
+
+def caught_pikachu(game):
+    """Has a Pikachu (any form: Pinkan, a cap...) ever been caught: the Pokedex's caught record, every region's."""
+    try:
+        dex = game.data.data.get("pokedex", {}) or {}
+    except AttributeError:
+        return False
+    return any(isinstance(v, dict) and (str(v.get("id")) == "25" or "PIKACHU" in str(v.get("name", "")).upper())
+               for v in dex.values())
+
+
+def carrier_frames(game):
+    """The carrier's following-Pokemon sheet (assets/dungeon/followers), its four steps facing right, doubled; None for
+    Pikachu's balloons."""
+    mon = carrier(game)
+    if mon is None:
+        return None
+    try:
+        from src.states.overworld.dungeon import follower_names
+        base = os.path.join(game.assets.assets_dir, "dungeon", "followers")
+        path = next((p for p in (os.path.join(base, f"{n}.png") for n in follower_names(game, mon)) if os.path.isfile(p)), None)
+        if not path:
+            return None
+        sheet = pygame.image.load(path).convert_alpha()
+        s = sheet.get_width() // 4
+        return [pygame.transform.scale(sheet.subsurface((i * s, 2 * s, s, s)), (s * 2, s * 2)) for i in range(4)]
+    except (pygame.error, OSError, ValueError, TypeError, ImportError):
+        return None
+
+
 class FlyScene(GameState):
     def __init__(self, game, go, style=None, riders=None, pump=None):
         super().__init__(game)
@@ -30,7 +72,7 @@ class FlyScene(GameState):
         self.style = style if style in LENGTH else random.choice(tuple(LENGTH))
         self.riders = riders or _players(game)
         self.snapshot = game.screen.copy()
-        self.frames = pikachu_frames(game, "pikachu")
+        self.frames = carrier_frames(game) or pikachu_frames(game, "pikachu")
         self.bg = None
         if self.style != "takeoff":
             name = "background.png" if self.style == "sky" else "mountain_bg.png"

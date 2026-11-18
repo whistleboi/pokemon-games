@@ -18,8 +18,14 @@ prog = g.loader.area_data["STORY_PROGRESSION"]
 
 print("1) canon levels: each region's own game")
 check(levels.CHAMPION_ACE["JOHTO"] == 50 and levels.CHAMPION_ACE["SINNOH"] == 66, "Lance 50 (HGSS), Cynthia 66 (BDSP)")
-check(levels.GYM_ACE["ORANGE"] == [levels.GYM_ACE["JOHTO"][i] for i in (1, 3, 5, 7)], "Orange Gyms = Johto Gyms 2/4/6/8")
-check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == levels.CHAMPION_ACE["JOHTO"], "Drake's ace = Lance's")
+# (Jordan 11-17: Orange uses Orange Islands Beta 5.7's own Orange Crew levels, not the old Johto 2/4/6/8 rule)
+check(levels.GYM_ACE["ORANGE"] == [22, 35, 40, 46] and levels.CHAMPION_ACE["ORANGE"] == 52,
+      "Orange Gym aces = 5.7's (Cissy 22, Danny 35, Rudy 40, Luana 46), Drake 52")
+_oi57 = {"MIKAN_ISLAND": (20, 22), "NAVEL_ISLAND": (30, 35), "TROVITA_ISLAND": (40, 40), "KUMQUAT_ISLAND": (46, 46), "PUMMELO_ISLAND": (50, 52)}   # (the Gyms rebuilt from 5.7 so far;
+#  Kumquat (Luana 46) joined with batch 18, Pummelo (Drake 50-52) with batch 20)
+for _k, (_lo, _hi) in _oi57.items():
+    _lv = prog[_k]["gym"]["leader"]["levels"]
+    check(min(_lv) == _lo and max(_lv) == _hi, f"{_k} leader at 5.7's levels {_lo}-{_hi}: {_lv}")
 check(levels.canon_area_level(g, "JOHTO_ROUTE_44") == 23, f"Route 44 at HGSS's 22-26: {levels.canon_area_level(g, 'JOHTO_ROUTE_44')}")
 story.player_team = [mk(6), mk(9), mk(3)]
 for _p, _l in zip(story.player_team, (40, 30, 5)):
@@ -1005,7 +1011,10 @@ def _floor(n):
 _p, _f1 = _floor(1)
 _p4, _f4 = _floor(4)
 check("UP TO 2F" in _f1 and "Lavender Town" in _f1 and not any("DOWN" in t for t in _f1), f"1F: up the stairs or out {_f1}")
-check("DOWN TO 3F" in _f4 and "Lavender Town" not in _f4 and not any("UP TO" in t for t in _f4), f"4F: the top {_f4}")
+# (11-14 on, the Tower is FireRed's seven walked floors, not four menu floors: kanto_maps walks it)
+_twr = json.load(open("assets/town_maps.json", encoding="utf-8"))["KANTO_POKEMON_TOWER"]
+check(len(_twr["floors"]) == 7 and _twr["floor_names"][-1] == "7F" and not _twr["floors"][-1].get("exits"),
+      f"7F is the top: FireRed's seven floors {_twr['floor_names']}")
 check(not any("BLACK FOG" in t for n in (1, 2, 3, 4) for t in _floor(n)[1]), "no Black Fog option on any floor")
 check(all(g.assets.get_journeys_background("routes", f"KANTO_POKEMON_TOWER_floor_{n}") for n in range(1, 5)),
       "each floor has its own picture")
@@ -1013,8 +1022,10 @@ _pool = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]["trainer_
 for _i, _t in enumerate(_pool):
     if _t.get("zone") == "floor_4":
         story.defeated_trainers.setdefault("KANTO_POKEMON_TOWER", set()).add(_i)
-check("CONFRONT GHOST" in _floor(3)[1] and "CONFRONT GHOST" not in _floor(4)[1],
-      "the ghost on the stairs at 3F, before Team Rocket's floor (Jordan, 11-07: as in the games)")
+_6f = _twr["floors"][5]
+check(any((b.get("until") or {}).get("flag_condition") == "tower_ghost_defeated" for b in _6f.get("barred", [])) and _6f.get("boss_spot")
+      and "MR. FUJI" in _twr["floors"][6].get("people", []),
+      "the ghost bars 6F's stairs up to Team Rocket's 7F, where Mr. Fuji is held (FireRed; Jordan 11-07: as in the games)")
 _tower = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]
 _chance = _tower["zone_ambush"]["chance"]
 _tower["zone_ambush"]["chance"] = 1.0
@@ -1289,19 +1300,14 @@ print("36) The Seafoam Islands by floor: 1F-B4F, Articuno at the bottom, out fro
 from src.states.overworld import PlayState as _PS36
 _saved36 = (dict(story.story_flags), story.current_area_key)
 story.current_area_key = "SEAFOAM_ISLANDS"
-for _z in ("1f", "b4f"):
-    story.story_flags["zone_SEAFOAM_ISLANDS"] = _z
-    _sf = _PS36(g); g.change_state(_sf); _sf.show_progression_menu()
-    _t = [b.text.replace("> ", "") for b in _sf.route_buttons]
-    _pool = _sf._base_wild_pool(_sf.area_data)
-    if _z == "1f":
-        check("UP TO B1F" not in _t and "DOWN TO B1F" in _t and any("EXIT" in x or "ROUTE 20" in x.upper() for x in _t)
-              and not any("ARTICUNO" in x for x in _t) and "7" in _pool and "87" not in _pool,
-              f"1F: down to B1F, the way out, no Articuno; Squirtle, no Dewgong ({_t})")
-    else:
-        _art = next(m for m in _sf.area_data["route_menu"] if "ARTICUNO" in m["text"])  # (after its trainers)
-        check("UP TO B3F" in _t and _sf._in_zone(_art) and not any("ROUTE 20" in x.upper() for x in _t)
-              and "87" in _pool and "131" in _pool, f"B4F: Articuno, no way out; Dewgong and Lapras ({_t})")
+# (11-14 on, Seafoam is FireRed's five walked floors; its wild Pokemon FRLG's own, 11-17: kanto_maps walks it)
+_sfm = json.load(open("assets/town_maps.json", encoding="utf-8"))["SEAFOAM_ISLANDS"]
+_sfa = g.loader.area_data["STORY_PROGRESSION"]["SEAFOAM_ISLANDS"]
+_sfp = g.loader.area_data[_sfa["wild_pool_percentages"]]
+check(len(_sfm["floors"]) == 5 and _sfm["floors"][0].get("exits", {}).get("n") == "KANTO_ROUTE_20"
+      and not any(f.get("exits") for f in _sfm["floors"][1:]), f"1F-B4F, the way out on 1F only {_sfm['floor_names']}")
+check((_sfm.get("figure_floors") or {}).get("CHALLENGE ARTICUNO") == 4 and "144" not in _sfp and {"86", "87"} <= set(_sfp),
+      "Articuno at the bottom (B4F), not in the wild; Seel and Dewgong in the cave")
 _pic = g.assets.get_journeys_background("routes", "SEAFOAM_ISLANDS_b3f")
 check(_pic is not None, "each floor has its picture")
 story.story_flags, story.current_area_key = _saved36
@@ -1320,10 +1326,10 @@ print("38) TMs (100, reusable) in Marts by badges, from Leaders and trainers; Ma
 from src.pokemon import tms as _tm
 from src.states.systems import PokeMartState as _Mart38, BagState as _Bag38
 _saved38 = (dict(story.inventory), story.current_area_key, dict(story.badges), list(story.player_team), story.money)
-_t = {k: d for k, d in _tm.table(g).items() if not d.get("gift") and not d.get("shop_only")}   # (TM100 on: story gifts, 11-12; shop-only TMs, 11-13)
-check(len(_t) == 100 and _t["TM24"]["move"] == "SNORE" and all(0 <= d["tier"] <= 8 for d in _t.values()),
-      f"Sword/Shield's TM00-TM99 ({len(_t)})")
-check(_tm.label(g, "TM05") == "TM05 Thunder Punch", f"named by their move ({_tm.label(g, 'TM05')})")
+_t = _tm.table(g)   # (11-17: one list everywhere, Scarlet/Violet's numbers, every TM ever)
+check(len(_t) > 229 and _t["TM238"]["move"] == "SNORE" and all(0 <= d["tier"] <= 8 for d in _t.values()),
+      f"Scarlet/Violet's TM001-TM229, then the older games' ({len(_t)})")
+check(_tm.label(g, "TM068") == "TM068 Thunder Punch", f"named by their move ({_tm.label(g, 'TM068')})")
 story.current_area_key = "VIRIDIAN_CITY"
 for _k in [k for k in story.inventory if _tm.is_tm(k)]:
     story.inventory.pop(_k)
@@ -1331,26 +1337,26 @@ story.badges["KANTO"] = []
 _low = _tm.mart_stock(g, 0)
 story.badges["KANTO"] = ["B"] * 8
 _all = _tm.mart_stock(g, 8)
-check(0 < len(_low) < 20 and len(_all) == 100, f"the Mart: {len(_low)} TMs at 0 badges, all 100 at 8")
+check(0 < len(_low) < 60 and len(_all) == len(_t), f"the Mart: {len(_low)} TMs at 0 badges, all {len(_all)} at 8")
 _mart = _Mart38(g, g.current_state); _mart.phase = "SHOP"; g.change_state(_mart)
 _cats = _mart._categories()
 check(_cats[:2] == ["BALLS", "MEDICINE"] and "TMs" in _cats, f"the Mart's tabs: {_cats}")
 _mart.set_category("TMs")
-check(all(_tm.is_tm(i) for i in _mart._list()) and _mart._price("TM24") <= 3000, "the TMs tab: TMs only, cheap")
+check(all(_tm.is_tm(i) for i in _mart._list()) and _mart._price("TM238") <= 3000, "the TMs tab: TMs only, cheap")
 story.money = 50000
-_mart.init_purchase("TM05"); _mart.max_qty()
+_mart.init_purchase("TM068"); _mart.max_qty()
 check(_mart.qty == 1, "one of each TM")
 _mart.confirm_purchase()
-check(story.inventory.get("TM05") == 1 and "TM05" not in _mart._list(), "bought: off the shelf")
+check(story.inventory.get("TM068") == 1 and "TM068" not in _mart._list(), "bought: off the shelf")
 _pk38 = Pokemon(g.loader.fetch_specific(25), g.assets); _pk38.level = 20
 _ch38 = Pokemon(g.loader.fetch_specific(129), g.assets)
 story.player_team = [_pk38, _ch38]
 _bag = _Bag38(g, g.current_state)
-check(_bag.item_works("TM05", _pk38) and not _bag.item_works("TM05", _ch38),
+check(_bag.item_works("TM068", _pk38) and not _bag.item_works("TM068", _ch38),
       "ABLE on Pikachu, NO EFFECT on Magikarp")
-_bag.selected_item = "TM05"; _bag.on_pokemon_select_tm(0)
-check("THUNDER-PUNCH" in (_pk38.move_pool or []) and story.inventory.get("TM05") == 1, "taught; the TM stays")
-check(_bag.item_works("TM05", _pk38) == ("THUNDER-PUNCH" not in _pk38.moves),
+_bag.selected_item = "TM068"; _bag.on_pokemon_select_tm(0)
+check("THUNDER-PUNCH" in (_pk38.move_pool or []) and story.inventory.get("TM068") == 1, "taught; the TM stays")
+check(_bag.item_works("TM068", _pk38) == ("THUNDER-PUNCH" not in _pk38.moves),
       "then ABLE only while it isn't one of its four (the TM unlocks it for the pool: Jordan, 11-04)")
 import random as _r38
 _rew = [_tm.reward(g, 3, "GYM_LEADER", ["ROCK"], rng=_r38.Random(i)) for i in range(5)]
@@ -1360,7 +1366,7 @@ _tr = sum(1 for i in range(200) if _tm.reward(g, 3, "YOUNGSTER", rng=_r38.Random
 check(40 < _tr < 110, f"route trainers often give one ({_tr}/200)")
 check(_tm.reward(g, 3, "WILD") is None, "wild Pokemon don't")
 _img_hm = g.assets.get_item_image("HM_WATERFALL")
-_img_tm = g.assets.get_item_image("TM05")
+_img_tm = g.assets.get_item_image("TM068")
 check(_img_hm is not None and _img_tm is not None, "every HM shows the HM disc; TMs their type's disc")
 story.inventory.clear(); story.inventory.update(_saved38[0])
 story.current_area_key, story.player_team, story.money = _saved38[1], _saved38[3], _saved38[4]
@@ -1568,8 +1574,8 @@ check("Mt. Ember" in _ms["desc"] and _ms["condition"].get("flag_not") == "MT_EMB
 _em = next(m for m in g.loader.area_data["STORY_PROGRESSION"]["MT_EMBER"]["route_menu"] if m.get("action") == "BOSS")
 check(_em["condition"] == "boss_not_defeated", "Mt. Ember's Moltres: no leftover volcano condition")
 _ci = g.loader.area_data["STORY_PROGRESSION"]["CINNABAR_ISLAND"]["travel_options"]
-check(any(o.get("target_area") == "ONE_ISLAND" and o.get("condition") == "has_item:TRI_PASS" for o in _ci),
-      "Cinnabar: the Seagallop to One Island, with the Tri-Pass")
+check(any(o.get("target_area") == "ONE_ISLAND" and "has_volcano_badge" in json.dumps(o.get("condition")) for o in _ci),
+      "Cinnabar: Bill's boat to One Island once Blaine is beaten (FireRed; Celio gives the Tri-Pass there, 11-17)")
 _f43 = dict(story.story_flags)
 story.story_flags["CINNABAR_VOLCANO_boss_defeated"] = True
 story.story_flags.pop("MT_EMBER_boss_defeated", None)
@@ -1632,15 +1638,10 @@ check(not any(o.get("condition") == "can_battle" for k in _sev46 for o in _sp46[
 _four = [o.get("action") for o in _sp46["FOUR_ISLAND"]["explore_options"]]
 check(_four.count("DAYCARE") == 1 and not any(o.get("target") == "day_care" for o in _sp46["FOUR_ISLAND"]["explore_options"]),
       "Four Island: one Day Care")
-_ch46 = next(o for o in _sp46["FOUR_ISLAND"]["explore_options"] if o.get("text") == "Contest Hall")
-from src.states import overworld as _ow46
-story.current_area_key = "FOUR_ISLAND"
-_cs46 = _ow46.CityState(g); g.change_state(_cs46)
-_cs46._get_callback_for_option(_ch46)()
-check(type(g.current_state).__name__ == "ContestHallState", f"its Contest Hall opens ({type(g.current_state).__name__})")
+check(not any(o.get("target") == "contest_hall" for k in _sev46 for o in _sp46[k].get("explore_options") or []),
+      "no Contest Hall on the Sevii Islands (Jordan 11-17: not FireRed's; Four Island's house is the Body Slam tutor's again)")
 for _a46, _t46, _f46 in (("THREE_ISLAND", "Stop the Biker Gang", "beat_three_island_bikers"),
-                         ("FOUR_ISLAND", "Battle Lorelei", "defeated_lorelei_sevii"),
-                         ("RESORT_GORGEOUS", "SELPHY'S VILLA", "visited_resort_gorgeous")):  # (Selphy's event is at her villa's door on Resort Gorgeous now, with the maps, 11-11)
+                         ("FOUR_ISLAND", "Battle Lorelei", "defeated_lorelei_sevii")):   # (11-17: Selphy stays, wishing to see your Pokemon: FireRed's)  # (Selphy's event is at her villa's door on Resort Gorgeous now, with the maps, 11-11)
     _o46 = next(o for o in _sp46[_a46].get("explore_options", []) + _sp46[_a46].get("route_menu", []) if o.get("text") == _t46)
     check(_o46.get("flag_condition") == f"not {_f46}", f"{_t46}: gone once done")
 check("THREE_ISLE_PATH" not in _sp46 and any(o.get("target_area") == "THREE_ISLE_PORT"
@@ -1935,8 +1936,8 @@ from src.states import overworld as _ow56
 _area56 = story.current_area_key; story.current_area_key = "ROCKET_WAREHOUSE"
 _p56 = _ow56.PlayState(g); g.change_state(_p56)
 story.story_flags["warehouse_doors_open"] = True
-check(not _p56._check_route_condition(_adm56["condition"], True, _adm56), "doors open, Rockets left: no Admin yet")
-check(_p56._check_route_condition(_adm56["condition"], False, _adm56), "every Rocket beaten: CONFRONT THE ADMIN")
+_req56 = (_adm56.get("event") or {}).get("requires") or []   # (11-17: the Admin's own event asks for the doors and his men beaten)
+check("warehouse_doors_open" in _req56 and "no_trainers" in _req56, f"the Admin waits for the doors and every Rocket ({_req56})")
 story.story_flags.pop("warehouse_doors_open", None); story.current_area_key = _area56
 from src.ui.trainer_card import facts_live as _fl56, facts_from_save as _fs56
 story.play_seconds = 2 * 3600 + 5 * 60 + 9

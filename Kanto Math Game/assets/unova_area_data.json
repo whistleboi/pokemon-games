@@ -1089,6 +1089,7 @@
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "SEEK HEATRAN", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not reversal_heatran", "boss": {"id": 485, "level": 68, "name": "Heatran", "victory_flag": "reversal_heatran", "lines": ["Heatran appears!"]}},
+        {"text": "SEARCH THE CAVE", "action": "EVENT", "color": "GOLD", "flag_condition": "not reversal_mountain_orbs", "event": {"lines": ["Two odd orbs sit among the hot rocks..."], "gift_item": {"FLAME_ORB": 1, "TOXIC_ORB": 1}, "flag": "reversal_mountain_orbs"}},
         {"text": "Lentimas Town", "action": "EXIT", "target_area": "LENTIMAS_TOWN", "condition": "can_exit", "color": "RED"},
         {"text": "Strange House", "action": "EXIT", "target_area": "STRANGE_HOUSE", "condition": "can_exit", "color": "RED"},
         {"text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}

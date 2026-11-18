@@ -83,10 +83,14 @@ class GimmickEffects:
 
     def terastallize(self, mon):
         """Turn into its Tera Type for the rest of the battle. Returns the lines."""
+        self._gimmicks()["tera_used"][self.side_of(mon)] = True
+        if int(getattr(mon, "id", 0) or 0) == 1024:   # (Terapagos: always Stellar, keeping its own types; 11-17)
+            mon._tera_types = list(mon.types or [])
+            mon._stellar = True
+            return [f"{self._label(mon)} terastallized!", "It became the Stellar type!"]
         t = zpower.tera_type(mon)
         mon._tera_types = list(mon.types or [])
         mon.types = [t]
-        self._gimmicks()["tera_used"][self.side_of(mon)] = True
         return [f"{self._label(mon)} terastallized!", f"It became the {t.title()} type!"]
 
     def activate_tera(self):
@@ -117,6 +121,8 @@ class GimmickEffects:
         of them."""
         types = attacker.types or []
         old = getattr(attacker, "_tera_types", None)
+        if old and getattr(attacker, "_stellar", False):   # (Stellar Terapagos: 2x on its own types, 1.2x on any other,
+            return 2.0 if move_type in old else 1.2       #  every time: its boost isn't used up as other Stellar ones are)
         if old:
             if move_type in types and move_type in old:
                 return 2.0
@@ -130,3 +136,4 @@ def end_battle(mon):
     if old is not None:
         mon.types = old
         del mon._tera_types
+    mon.__dict__.pop("_stellar", None)

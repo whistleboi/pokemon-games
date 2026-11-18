@@ -1,3 +1,4 @@
+import json
 
 from src.states import overworld as ow
 from src.states import gym_puzzles as gp
@@ -47,23 +48,23 @@ bad = [(k, o.get("target_area")) for k in ORANGE for o in (prog[k].get("travel_o
 check(not bad, f"every link leads somewhere {bad}")
 check(sum(len(prog[k].get("trainer_pool") or []) for k in ORANGE) >= 60, "the hack's route trainers")
 
-print("2) From Kanto: the S.S. Anne")
+print("2) From Kanto: the blimp (Jordan 11-17)")
 story.story_flags = {"beat_champion": True}
 story.badges = {"KANTO": ["x"] * 8, "JOHTO": []}
 story.current_area_key = "VERMILLION_CITY"
 story.starting_region = "KANTO"
-check("S.S. Anne to the Orange Islands" in travel_texts("VERMILLION_CITY"), "Kanto Champion: the S.S. Anne sails to Orange")
+check("Blimp to the Orange Islands" in travel_texts("VERMILLION_CITY"), "Kanto Champion: a Rocket Blimp flies to Orange (Jordan 11-17; was the S.S. Anne)")
 pick = RegionSelectionState(g, mode="move", return_state=ow.CityState(g))
-check("ORANGE" in pick.regions and pick._travel_only("ORANGE"), "Mom's picker sends a Kanto player to the S.S. Anne")
+check("ORANGE" in pick.regions and pick._travel_only("ORANGE"), "Mom's picker sends a Kanto player to the blimp")
 story.story_flags = {}
-check("S.S. Anne to the Orange Islands" not in travel_texts("VERMILLION_CITY"), "no title: no voyage")
+check("Blimp to the Orange Islands" not in travel_texts("VERMILLION_CITY"), "no title: no voyage")
 
-print("3) Gyms: the hack's Orange Crew")
+print("3) Gyms: the Orange Crew (Kumquat: 5.7's Luana, batch 18)")
 story.badges = {"ORANGE": []}
 story.player_team = [mk(6)]
 story.enter_region("ORANGE")
-for area, kind, want in (("MIKAN_ISLAND", "cissy", [(116, 15), (8, 18), (72, 13)]),
-                         ("KUMQUAT_ISLAND", "luana", [(65, 56), (105, 54), (105, 54), (103, 54)])):
+for area, kind, want in (("MIKAN_ISLAND", "cissy", [(117, 20), (9, 22)]),
+                         ("KUMQUAT_ISLAND", "luana", [(105, 46), (65, 46)])):
     story.current_area_key = area
     story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL"][:0 if area == "MIKAN_ISLAND" else 3]
     story.story_flags[f"gym_progress_{area}"] = len(prog[area]["gym"]["trainers"])
@@ -91,11 +92,12 @@ g.change_state(lobby)
 check(lobby.is_league, f"Pummelo is a league: {lobby.status_text}")
 lobby.challenge_gym()
 b = battle_of(g.current_state)
-check([p for p, _ in lineup(b)] == [132, 208, 94, 3, 125, 149], f"Drake, the hack's team (Kanto/Johto only): {lineup(b)}")
-check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == 50 and levels.CHAMPION_ACE["ORANGE"] == 50, "Drake's ace Lv 50 (Lance's, 10-29)")
+check([p for p, _ in lineup(b)] == [132, 95, 94, 3, 125, 149], f"Drake, 5.7's team (batch 20, 11-18): {lineup(b)}")
+check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == 52 and levels.CHAMPION_ACE["ORANGE"] == 52, "Drake's ace Lv 52 (5.7's, 11-17)")
 rival = [e["trainer"] for k in ORANGE for e in (prog[k].get("on_enter_event") or []) if isinstance(e, dict)
          and e["trainer"].get("name") == "{rival_name}"]
-check(len(rival) == 5 and all(set(t["team_choice"]) == {"1", "4", "7"} for t in rival), "rival Cross: 5 battles, by starter")
+check(not any(k in ("TANGELO_JUNGLE",) for k in ORANGE if any(e.get("trainer", {}).get("name") == "{rival_name}" for e in (prog[k].get("on_enter_event") or []) if isinstance(e, dict))),
+      f"no rival Cross in the areas rebuilt from 5.7 (DECISIONS 11-17; {len(rival)} menu-era battles left in areas not rebuilt yet)")
 
 print("5) Region rules")
 c = ow.CityState(g)
@@ -110,38 +112,20 @@ raw = g.loader.fetch_specific(9103)
 check(raw["name"] == "BUTTERFREE" and raw["form"] == "pinkan" and raw["img"], f"Pinkan form, plain name: {raw['name']}")
 raw = g.loader.fetch_specific(9201)
 check(raw["name"] == "CRYSTAL ONIX" and raw["types"] == ["ROCK", "ICE"], f"Crystal Onix: {raw['types']}")
-story.current_area_key = "PINKAN_RESERVE"
-ps = ow.PlayState(g)
-catch = next(o for o in prog["PINKAN_RESERVE"]["route_menu"] if o["action"] == "CATCH")
-story.inventory.pop("PINKAN_PERMIT", None)
-check(not ps._check_route_condition(catch["condition"], False), "no permit: can't catch Pinkan Pokemon")
-story.story_flags["met_pinkan_jenny"] = True
-rocket = next(o for o in prog["PINKAN_RESERVE"]["route_menu"] if o["text"] == "STOP TEAM ROCKET")
-g.change_state(ps)
-ow._run_story_event(ps, rocket["event"], lambda x: ps._check_route_condition(x, False), lambda l: None)
-check(lineup(battle_of(g.current_state))[0][0] == 24, "Team Rocket battle")
-story.story_flags["defeated_pinkan_rocket"] = True
-story.current_area_key = "PINKAN_ISLAND"
-cs = ow.CityState(g)
-permit = next(o for o in prog["PINKAN_ISLAND"]["explore_options"] if o["text"] == "Get the Research Permit")
-ow._run_story_event(cs, permit["event"], cs._check_menu_condition, lambda l: None)
-story.current_area_key = "PINKAN_RESERVE"
-check(ow.PlayState(g)._check_route_condition(catch["condition"], False), "permit: catching allowed")
-story.current_area_key = "SHAMOUTI_SHRINE"
-ps = ow.PlayState(g)
-lugia = next(o for o in prog["SHAMOUTI_SHRINE"]["route_menu"] if o["text"] == "CHALLENGE LUGIA")
-check(not ps._check_route_condition(lugia["condition"], False), "no song yet: no Lugia")
-for tr in ("FIRE_TREASURE", "ICE_TREASURE", "LIGHTNING_TREASURE"):
-    story.inventory[tr] = 1
-place = next(o for o in prog["SHAMOUTI_SHRINE"]["route_menu"] if o["text"] == "PLACE THE TREASURES")
-ow._run_story_event(ps, place["event"], lambda x: ps._check_route_condition(x, False), lambda l: None)
-check(ps._check_route_condition(lugia["condition"], False), "three treasures, the song: Lugia appears")
+# (11-17: Pinkan is 5.7's one wild island now; the old Reserve, its permit and its Rocket battle are gone: DECISIONS)
+_pk = g.loader.area_data.get(prog["PINKAN_ISLAND"].get("wild_pool_percentages"), {})
+check(prog["PINKAN_ISLAND"]["area_type"] == "wild_route" and "PINKAN_RESERVE" not in prog, "Pinkan: one wild island (5.7's Preserve)")
+check(sum(1 for s in _pk if 9101 <= int(s) <= 9135) == 35, "our 35 Pinkan forms live on Pinkan Island")
+# (11-18, batch 22: 5.7's spheres story replaces the menu's treasures and shrine: the shrine is Shamouti's own, Lugia sings
+#  and is not battled, the three birds are wild bosses on their islands afterwards: orange_maps section 17 plays it)
+check("SHAMOUTI_SHRINE" not in prog and all(prog[k]["area_boss"]["level"] == 50 and prog[k]["area_boss"]["catchable"]
+                                             for k in ("FIRE_ISLAND", "LIGHTNING_ISLAND", "ICE_ISLAND")),
+      "5.7's three islands, each with its legendary bird (Lv 50, catchable) after the story; no menu shrine")
 story.current_area_key = "VALENCIA_ISLAND"
 cs = ow.CityState(g)
-story.inventory.pop("GS_BALL", None)
-ivy = next(o for o in prog["VALENCIA_ISLAND"]["explore_options"] if o["text"] == "Professor Ivy's Lab")
-ow._run_story_event(cs, ivy["event"], cs._check_menu_condition, lambda l: None)
-check(story.inventory.get("GS_BALL") == 1, "Professor Ivy gives the GS Ball")
+ivy = next(o for o in prog["VALENCIA_ISLAND"]["explore_options"] if o["text"] == "Professor Ivy")   # (11-17, 5.7: Ivy mentions the GS Ball; no item)
+check("GS_BALL" not in json.dumps(ivy) and any("GS Ball" in l for st in ivy["event"]["stages"] for l in st.get("lines", [])),
+      "Professor Ivy mentions the GS Ball in a line, and gives no GS Ball (DECISIONS 11-17)")
 
 print("7) Visiting every Orange area")
 for k in ORANGE:

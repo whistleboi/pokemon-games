@@ -369,9 +369,8 @@ check(_tower.run.n_floors == 7 and "LAVENDER_TOWN" in _tower.run.floor.exits.val
 for _k in ("POWER_PLANT_boss_defeated",):
     story.story_flags.pop(_k, None)
 _pp = kanto("POWER_PLANT", came="KANTO_ROUTE_10")
-_pp_trainers = [i for i in range(len(_prog["POWER_PLANT"].get("trainer_pool", []))) if not story.is_trainer_defeated("POWER_PLANT", i)]
 _zap = [m for f in _pp.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
-check(_zap and _pp_trainers, "Power Plant: Zapdos is on the map before its trainers are beaten")
+check(_zap and not _prog["POWER_PLANT"].get("trainer_pool"), "Power Plant: Zapdos is on the map; no trainers here, as FireRed (ours were list-only, removed 11-17)")
 check(_pp._figure_img(_zap[0].payload) is not None, "...drawn with its followers sprite (Jordan 11-14: every overworld Pokemon)")
 story.story_flags.pop("mt_moon_nerd_defeated", None)
 _mm = kanto("MT_MOON", came="PEWTER_CITY")
@@ -1719,6 +1718,8 @@ check(numbers(1, _rr.Random(1)) == (3, list(range(1, 9))) and numbers(3, _rr.Ran
       and numbers(2, _rr.Random(1))[1][:2] == [2, 4], "the slide puzzle: 1-8 at Poke Ball, by 2s at Great, 4 x 4 from Ultra")
 _inv = dict(story.inventory)
 story.inventory.pop("HM_SURF", None); story.inventory.pop("HM_STRENGTH", None)
+_kb = list(story.badges.get("KANTO", []))   # (Kanto, 11-16: FireRed's HM badges, hms.USE_BADGE; from here on these tests are about the maps)
+story.badges["KANTO"] = _kb + [b for b in ("RAINBOW", "SOUL") if b not in _kb]
 _r19 = kanto("KANTO_ROUTE_19", came="FUCHSIA_CITY")
 _f = _r19.run.floor
 _bch = next((x, y) for y in range(_f.h) for x in range(_f.w) if _f.tile(x, y) == core.FLOOR
@@ -1728,9 +1729,13 @@ _r19.anim = 0
 _r19.step(0, 1)
 check(_r19.run.player == _bch and "Surf" in (_r19.toast or ""), "Route 19: the open sea needs Surf")
 story.inventory["HM_SURF"] = 1
+story.badges["KANTO"] = [b for b in story.badges["KANTO"] if b != "SOUL"]
+_r19.step(0, 1)
+check(_r19.run.player == _bch, "...nor with HM Surf alone: Kanto's Surf wants the Soul Badge (FireRed; Jordan 11-16)")
+story.badges["KANTO"] = story.badges["KANTO"] + ["SOUL"]
 _r19.step(0, 1)
 _r19.draw()
-check(_r19._on_surf() and _r19._beside("water") is not None, "...with HM Surf: out on the water (riding; fish anywhere)")
+check(_r19._on_surf() and _r19._beside("water") is not None, "...with HM Surf and the Soul Badge: out on the water (riding; fish anywhere)")
 _r20 = kanto("KANTO_ROUTE_20", came="KANTO_ROUTE_19")
 check(sum(1 for v in _r20.run.floor.exits.values() if v == "SEAFOAM_ISLANDS") == 2 and _r20._on_surf(),
       "Route 20: Seafoam's two mouths; in from Route 19, surfing")

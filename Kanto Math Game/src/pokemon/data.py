@@ -332,24 +332,24 @@ class Pokemon:
             "back_image": self.back_image,
             "sidebar_image": self.sidebar_image,
             "cry": self.cry,
-            "max_hp": self.max_hp,
-            "current_hp": self.current_hp,
             "form": self.form,
             "moves": list(getattr(self, "moves", [])),
+            "pp": dict(getattr(self, "pp", None) or {}),
         }
 
-        # Copy target (Takes HP, Stage, Typing, Appearance)
+        # Copy target (Stage, Typing, Appearance, moves, stats): everything but its own HP, as in the games
+        # (11-17; the battle gives each copied move 5 PP: battle_moves.mv_copied_pp)
         self.id = target.id
         self.name = target.name
         self.display_name = target.display_name
         self.types = target.types
-        self.base_stats = target.base_stats
+        stats = dict(target.base_stats or {})
+        if "HP" in (self.transformed_state["base_stats"] or {}):
+            stats["HP"] = self.transformed_state["base_stats"]["HP"]
+        self.base_stats = stats
         self.cry = target.cry
         self.form = target.form
         self.moves = list(getattr(target, "moves", []) or getattr(self, "moves", []))  # Transform copies moves
-
-        self.max_hp = target.max_hp
-        self.current_hp = target.current_hp
         self._stage_override = target.effective_stage
 
         if target.image:
@@ -374,15 +374,23 @@ class Pokemon:
         """Reverts a transformed Pokemon back to original state (and any Mega/Primal form)."""
         from src.pokemon.forms import revert_form
         revert_form(self)
+        self.undo_transform()
+
+    def undo_transform(self):
+        """Back to itself after transforming (switching out, the battle's end): its own looks, moves and PP. Its HP
+        stays as it is now (it never took the target's)."""
         if not hasattr(self, "transformed_state"):
             return
 
         state = self.transformed_state
         for key, value in state.items():
+            if key in ("max_hp", "current_hp"):   # (an older save's record: HP isn't put back)
+                continue
             setattr(self, key, value)
 
         if hasattr(self, "_stage_override"):
             del self._stage_override
+        self.__dict__.pop("_pp_cap", None)
 
         del self.transformed_state
 

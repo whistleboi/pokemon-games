@@ -260,14 +260,20 @@ c.visit_bill_johto()
 check(any(p.id == 133 for p in story.player_team), "Bill gives an Eevee in Goldenrod")
 
 print("HANDOFF S-1) the Fire Treasure can't be lost")
-story.current_area_key = "FIRE_ISLAND"
-story.story_flags["shamouti_moltres_calmed"] = True
-story.inventory.pop("FIRE_TREASURE", None)
-st = state_for("FIRE_ISLAND")
-sr = opt("FIRE_ISLAND", "SEARCH THE SHRINE")
-check(st._check_route_condition(sr["condition"], False), "calmed but no treasure: search the shrine again")
-run("FIRE_ISLAND", "SEARCH THE SHRINE")
-check(story.inventory.get("FIRE_TREASURE") == 1, "and it's there")
+# (11-18, Orange batch 22: the menu's Fire Island and its treasure are gone; 5.7's Fire Sphere is a story flag, taken once from
+#  its altar on the walked island, so it can't be lost: the check below only runs if the menu option comes back)
+if any(o.get("text") == "SEARCH THE SHRINE" for o in g.loader.area_data["STORY_PROGRESSION"]["FIRE_ISLAND"].get("route_menu", [])):
+    story.current_area_key = "FIRE_ISLAND"
+    story.story_flags["shamouti_moltres_calmed"] = True
+    story.inventory.pop("FIRE_TREASURE", None)
+    st = state_for("FIRE_ISLAND")
+    sr = opt("FIRE_ISLAND", "SEARCH THE SHRINE")
+    check(st._check_route_condition(sr["condition"], False), "calmed but no treasure: search the shrine again")
+    run("FIRE_ISLAND", "SEARCH THE SHRINE")
+    check(story.inventory.get("FIRE_TREASURE") == 1, "and it's there")
+else:
+    check(not any(o.get("text") == "SEARCH THE SHRINE" for o in g.loader.area_data["STORY_PROGRESSION"]["FIRE_ISLAND"].get("route_menu", [])),
+          "Fire Island is 5.7's walked island now: its sphere is a story flag (Orange batch 22)")
 
 print("Q-1) Mom never offers a region you've already played")
 from src.states.menus import RegionSelectionState

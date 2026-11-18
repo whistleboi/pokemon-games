@@ -553,6 +553,7 @@
         {"text": "Pokémon Center", "action": "HEAL"},
         {"text": "Shop", "action": "SHOP"},
         {"text": "CHALLENGE CHAMPIONSHIP CUP", "action": "GYM", "condition": "has_all_galar_badges", "color": "GOLD"},
+        {"text": "LOOK AROUND THE STADIUM", "action": "EVENT", "color": "GOLD", "condition": "has_all_galar_badges", "flag_condition": "not wyndon_stadium_orbs", "event": {"lines": ["Someone left two orbs behind in the stadium's changing room..."], "gift_item": {"FLAME_ORB": 1, "TOXIC_ORB": 1}, "flag": "wyndon_stadium_orbs"}},
         {"text": "Battle Tower: Leon", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_leon_battle_tower", "event": {"lines": ["Leon: Welcome to the Battle Tower! Let's have a champion time!"], "flag": "defeated_leon_battle_tower", "battle": {"name": "Leon", "class": "PKMN_TRAINER", "sprite": "leon.png", "is_boss_battle": true, "team": [681, 887, 537, 815, 6], "levels": [70, 68, 69, 70, 70], "team_choice": {"810": [681, 887, 537, 815, 6], "813": [681, 887, 866, 818, 6], "816": [681, 887, 464, 812, 6]}, "rewards": {"balls": 15}, "dialogue": {"intro": ["Leon: Welcome to the Battle Tower! Let's have a champion time!"], "player_won": ["Leon: What a battle! Again sometime!"]}}}, "condition": "beat_galar_champion"}
       ],
       "post_champion_events": [

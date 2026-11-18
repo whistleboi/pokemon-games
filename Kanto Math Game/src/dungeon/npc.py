@@ -366,7 +366,7 @@ class Scenes:
             m.face(h.npc_player())
             m.emote = 0 if s.get("trigger") == "talk" else 40
             st["steps"] = m.steps
-        self.playing = [s, "cast" if s.get("cast") else "notice", m, st]
+        self.playing = [s, "cast" if s.get("cast") or s.get("cast") == [] else "notice", m, st]   # ("cast": []: nobody, only the "call": your own thought stopping you, Orange 11-17)
         if s.get("call"):   # (heard first, before anyone walks in or turns: Oak's "Hey! Wait!")
             stage = self.playing[1]
             self.playing[1] = "pause"
@@ -494,10 +494,10 @@ class Scenes:
         me = h.npc_player()
         if stage == "cast":
             if self._cast_tick(s, st):
-                ev = str(s.get("then") or "")
-                if ev.startswith("event:"):
+                ev = s.get("event") if isinstance(s.get("event"), dict) else str(s.get("then") or "")   # (11-18: a written-out event too, as a "who" scene's)
+                if isinstance(ev, dict) or ev.startswith("event:"):
                     self.playing[1] = "pause"
-                    h.npc_event(ev[6:], lambda: self._resume("after"))
+                    h.npc_event(ev if isinstance(ev, dict) else ev[6:], lambda: self._resume("after"))
                 else:
                     self.playing[1] = "after"
             return
@@ -566,6 +566,8 @@ class Scenes:
                     return
             if s.get("push") and not (s.get("push_unless") and h.npc_flagged(s["push_unless"])):   # (not once they've let you by: paid the ticket)
                 h.npc_push(*s["push"])
+                if s.get("every") and s in self.list:   # (pushed back out: it stops you again the moment you step back in, even while they walk home)
+                    self.done_here.discard(self.list.index(s))
             after = s.get("after", "home") if m is not None else "stay"
             if after == "home":
                 m.walk(m.home, lambda t: h.npc_passable(t, m), beside=False)

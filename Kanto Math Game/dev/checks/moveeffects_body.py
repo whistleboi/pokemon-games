@@ -109,8 +109,8 @@ bulba = mk(1)
 bulba.level = 7
 bulba.moves = []
 check("GROWL" in movelib.ensure_moves(g, bulba), f"Bulbasaur Lv 7 knows Growl: {bulba.moves}")
-check(movelib.usable(movelib.info(g, "SWORDS-DANCE")) and not movelib.usable(movelib.info(g, "EXPLOSION")),
-      "status moves are learnable now (self-KO moves still aren't)")
+check(movelib.usable(movelib.info(g, "SWORDS-DANCE")) and movelib.usable(movelib.info(g, "EXPLOSION")),
+      "status moves are learnable now (self-KO moves too, since 11-17: the user faints in battle)")
 print("Encore (Jordan, 11-03): the foe repeats its last move for 3 turns")
 b = fresh()
 check(not any("encore" in l for l in use(b, "ENCORE")[1]), "no last move yet: it fails")

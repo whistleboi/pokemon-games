@@ -12,14 +12,14 @@
      [
       18,
       14,
-      "TM29 PSYCHIC"
+      "TM120 PSYCHIC"
      ]
     ]
    }
   },
   "figures": {
-   "TM29 PSYCHIC": {
-    "item": "HTM29"
+   "TM120 PSYCHIC": {
+    "item": "TM120"
    }
   }
  },
@@ -63,7 +63,7 @@
      [
       11,
       18,
-      "TM86 GRASS KNOT"
+      "TM081 GRASS KNOT"
      ],
      [
       37,
@@ -79,8 +79,8 @@
    }
   },
   "figures": {
-   "TM86 GRASS KNOT": {
-    "item": "HTM86"
+   "TM081 GRASS KNOT": {
+    "item": "TM081"
    }
   },
   "givers": {
@@ -96,7 +96,7 @@
      [
       7,
       32,
-      "TM06 TOXIC"
+      "TM175 TOXIC"
      ],
      [
       25,
@@ -107,8 +107,8 @@
    }
   },
   "figures": {
-   "TM06 TOXIC": {
-    "item": "HTM06"
+   "TM175 TOXIC": {
+    "item": "TM175"
    },
    "FIRE STONE": {
     "item": "FIRE_STONE"
@@ -270,7 +270,7 @@
      [
       21,
       19,
-      "TM02 DRAGON CLAW"
+      "TM078 DRAGON CLAW"
      ],
      [
       15,
@@ -301,8 +301,8 @@
    "STAR PIECE": {
     "item": "STAR_PIECE"
    },
-   "TM02 DRAGON CLAW": {
-    "item": "HTM02"
+   "TM078 DRAGON CLAW": {
+    "item": "TM078"
    },
    "PP MAX": {
     "item": "PP_MAX"
@@ -323,14 +323,14 @@
      [
       27,
       17,
-      "TM59 INCINERATE"
+      "TM290 INCINERATE"
      ]
     ]
    }
   },
   "figures": {
-   "TM59 INCINERATE": {
-    "item": "HTM59"
+   "TM290 INCINERATE": {
+    "item": "TM290"
    }
   }
  },
@@ -1444,7 +1444,7 @@
      [
       12,
       54,
-      "TM37 SANDSTORM"
+      "TM051 SANDSTORM"
      ]
     ],
     "hidden": {
@@ -1465,8 +1465,8 @@
    "ELIXIR": {
     "item": "ELIXIR"
    },
-   "TM37 SANDSTORM": {
-    "item": "HTM37"
+   "TM051 SANDSTORM": {
+    "item": "TM051"
    }
   },
   "givers": {
@@ -1613,7 +1613,7 @@
      [
       53,
       7,
-      "TM32 DOUBLE TEAM"
+      "TM275 DOUBLE TEAM"
      ],
      [
       15,
@@ -1642,8 +1642,8 @@
    "SUPER REPEL": {
     "item": "SUPER_REPEL"
    },
-   "TM32 DOUBLE TEAM": {
-    "item": "HTM32"
+   "TM275 DOUBLE TEAM": {
+    "item": "TM275"
    },
    "MAX ETHER": {
     "item": "MAX_ETHER"
@@ -2347,7 +2347,7 @@
      [
       36,
       92,
-      "TM62 ACROBATICS"
+      "TM014 ACROBATICS"
      ],
      [
       24,
@@ -2402,8 +2402,8 @@
    "RARE CANDY": {
     "item": "RARE_CANDY"
    },
-   "TM62 ACROBATICS": {
-    "item": "HTM62"
+   "TM014 ACROBATICS": {
+    "item": "TM014"
    },
    "LEPPA BERRY": {
     "item": "LEPPA_BERRY"
@@ -3653,14 +3653,14 @@
      [
       47,
       22,
-      "TM34 SLUDGE WAVE"
+      "TM214 SLUDGE WAVE"
      ]
     ]
    }
   },
   "figures": {
-   "TM34 SLUDGE WAVE": {
-    "item": "HTM34"
+   "TM214 SLUDGE WAVE": {
+    "item": "TM214"
    }
   }
  },
@@ -3817,14 +3817,14 @@
      [
       78,
       31,
-      "TM80 ROCK SLIDE"
+      "TM086 ROCK SLIDE"
      ]
     ]
    }
   },
   "figures": {
-   "TM80 ROCK SLIDE": {
-    "item": "HTM80"
+   "TM086 ROCK SLIDE": {
+    "item": "TM086"
    }
   }
  },
@@ -3869,7 +3869,7 @@
      [
       30,
       55,
-      "TM53 ENERGY BALL"
+      "TM119 ENERGY BALL"
      ],
      [
       24,
@@ -3889,7 +3889,7 @@
      [
       92,
       13,
-      "TM93 WILD CHARGE"
+      "TM147 WILD CHARGE"
      ]
     ],
     "hidden": {
@@ -3898,8 +3898,8 @@
    }
   },
   "figures": {
-   "TM53 ENERGY BALL": {
-    "item": "HTM53"
+   "TM119 ENERGY BALL": {
+    "item": "TM119"
    },
    "PROTEIN": {
     "item": "PROTEIN"
@@ -3910,8 +3910,8 @@
    "ULTRA BALL": {
     "item": "ULTRA_BALL"
    },
-   "TM93 WILD CHARGE": {
-    "item": "HTM93"
+   "TM147 WILD CHARGE": {
+    "item": "TM147"
    }
   },
   "givers": {
@@ -4005,7 +4005,7 @@
      [
       11,
       3,
-      "TM64 EXPLOSION"
+      "TM281 EXPLOSION"
      ],
      [
       9,
@@ -4024,8 +4024,8 @@
    "DRAGON SCALE": {
     "item": "DRAGON_SCALE"
    },
-   "TM64 EXPLOSION": {
-    "item": "HTM64"
+   "TM281 EXPLOSION": {
+    "item": "TM281"
    },
    "FULL RESTORE": {
     "item": "FULL_RESTORE"
@@ -4060,7 +4060,7 @@
      [
       16,
       5,
-      "TM63 EMBARGO"
+      "TM280 EMBARGO"
      ],
      [
       16,
@@ -4071,8 +4071,8 @@
    }
   },
   "figures": {
-   "TM63 EMBARGO": {
-    "item": "HTM63"
+   "TM280 EMBARGO": {
+    "item": "TM280"
    },
    "SHARP BEAK": {
     "item": "SHARP_BEAK"
@@ -4128,7 +4128,7 @@
      [
       21,
       5,
-      "TM97 DARK PULSE"
+      "TM094 DARK PULSE"
      ],
      [
       6,
@@ -4173,7 +4173,7 @@
      [
       7,
       4,
-      "TM97 DARK PULSE "
+      "TM094 DARK PULSE "
      ],
      [
       23,
@@ -4211,8 +4211,8 @@
    "NEST BALL": {
     "item": "NEST_BALL"
    },
-   "TM97 DARK PULSE": {
-    "item": "HTM97"
+   "TM094 DARK PULSE": {
+    "item": "TM094"
    },
    "NUGGET ": {
     "item": "NUGGET"
@@ -4238,8 +4238,8 @@
    "NEST BALL ": {
     "item": "NEST_BALL"
    },
-   "TM97 DARK PULSE ": {
-    "item": "HTM97"
+   "TM094 DARK PULSE ": {
+    "item": "TM094"
    },
    "NUGGET   ": {
     "item": "NUGGET"
@@ -4329,7 +4329,7 @@
      [
       16,
       34,
-      "TM35 FLAMETHROWER"
+      "TM125 FLAMETHROWER"
      ],
      [
       27,
@@ -4339,7 +4339,7 @@
      [
       18,
       24,
-      "TM81 X-SCISSOR"
+      "TM105 X-SCISSOR"
      ]
     ],
     "hidden": {
@@ -4360,14 +4360,14 @@
    "MAX ELIXIR": {
     "item": "MAX_ELIXIR"
    },
-   "TM35 FLAMETHROWER": {
-    "item": "HTM35"
+   "TM125 FLAMETHROWER": {
+    "item": "TM125"
    },
    "FULL RESTORE": {
     "item": "FULL_RESTORE"
    },
-   "TM81 X-SCISSOR": {
-    "item": "HTM81"
+   "TM105 X-SCISSOR": {
+    "item": "TM105"
    }
   }
  },
@@ -4523,7 +4523,7 @@
      [
       8,
       16,
-      "TM58 SKY DROP"
+      "TM278 SKY DROP"
      ],
      [
       21,
@@ -4558,12 +4558,12 @@
      [
       25,
       8,
-      "TM89 U-TURN"
+      "TM060 U-TURN"
      ],
      [
       2,
       7,
-      "TM24 THUNDERBOLT"
+      "TM126 THUNDERBOLT"
      ]
     ],
     "hidden": {
@@ -4577,8 +4577,8 @@
    "X SPEED": {
     "item": "X_SPEED"
    },
-   "TM58 SKY DROP": {
-    "item": "HTM58"
+   "TM278 SKY DROP": {
+    "item": "TM278"
    },
    "METRONOME": {
     "item": "METRONOME"
@@ -4586,11 +4586,11 @@
    "ELIXIR": {
     "item": "ELIXIR"
    },
-   "TM89 U-TURN": {
-    "item": "HTM89"
+   "TM060 U-TURN": {
+    "item": "TM060"
    },
-   "TM24 THUNDERBOLT": {
-    "item": "HTM24"
+   "TM126 THUNDERBOLT": {
+    "item": "TM126"
    }
   },
   "givers": {
@@ -4697,12 +4697,12 @@
      [
       8,
       18,
-      "TM21 FRUSTRATION"
+      "TM273 FRUSTRATION"
      ],
      [
       10,
       25,
-      "TM27 RETURN"
+      "TM274 RETURN"
      ],
      [
       8,
@@ -4716,11 +4716,11 @@
    "BIG PEARL": {
     "item": "BIG_PEARL"
    },
-   "TM21 FRUSTRATION": {
-    "item": "HTM21"
+   "TM273 FRUSTRATION": {
+    "item": "TM273"
    },
-   "TM27 RETURN": {
-    "item": "HTM27"
+   "TM274 RETURN": {
+    "item": "TM274"
    }
   },
   "givers": {

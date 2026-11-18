@@ -1,6 +1,35 @@
 # [REF-0017: Story Manager]
 import random
+import re
 from src.pokemon.data import Pokemon
+
+_TM_KEY = re.compile(r"^TM\d{3}$")
+
+
+class Bag(dict):
+    """A region's Bag: item -> how many. A TM is one item, never more (Jordan, 11-17: reusable, and a Bag never shows
+    more than one, however it was got or merged)."""
+
+    def __init__(self, *a, **k):
+        super().__init__()
+        self.update(*a, **k)
+
+    def __setitem__(self, key, qty):
+        if isinstance(key, str) and _TM_KEY.match(key) and isinstance(qty, (int, float)) and qty > 1:
+            qty = 1
+        super().__setitem__(key, qty)
+
+    def update(self, *a, **k):
+        for key, qty in dict(*a, **k).items():
+            self[key] = qty
+
+    def setdefault(self, key, default=None):
+        if key not in self:
+            self[key] = default
+        return self[key]
+
+    def copy(self):
+        return Bag(self)
 
 
 class StoryManager:
@@ -27,7 +56,7 @@ class StoryManager:
         self.badges = {"KANTO": [], "JOHTO": []}
         self.active_badge_region = "KANTO"
         self.defeated_trainers = {}
-        self.story_flags = {}
+        self.story_flags = {self.TM_NUMBERS_FLAG: True, self.TM_NUMBERS_V2_FLAG: True}   # (a new save: today's TM numbers)
         self.current_streak = 0
         self.money = 3000
         self.play_seconds = 0.0  # time played, for the Trainer Card (Game.run adds to it)
@@ -79,11 +108,14 @@ class StoryManager:
 
     @property
     def inventory(self):
-        return self._store()["bag"]
+        st = self._store()
+        if not isinstance(st["bag"], Bag):  # (a Bag made elsewhere, a merge or a co-op copy: one of each TM)
+            st["bag"] = Bag(st["bag"])
+        return st["bag"]
 
     @inventory.setter
     def inventory(self, value):
-        self._store()["bag"] = value if value is not None else {}
+        self._store()["bag"] = Bag(value or {})
 
     STARTING_BALLS = 5  # a region's Bag starts with these (each region keeps its own count)
 
@@ -113,7 +145,7 @@ class StoryManager:
         stores = self.__dict__.setdefault("region_stores", {})
         key = key or self.active_store
         if key not in stores:
-            stores[key] = {"team": [], "pc": [None] * 300, "bag": {"POKE_BALLS": self.STARTING_BALLS}}
+            stores[key] = {"team": [], "pc": [None] * 300, "bag": Bag({"POKE_BALLS": self.STARTING_BALLS})}
         return stores[key]
 
     def storage_region(self, region):
@@ -227,11 +259,12 @@ class StoryManager:
             merged["pc"] += [p for p in src["pc"] if p]
             for item, qty in src["bag"].items():
                 have = merged["bag"].get(item, 0)
-                keep_one = item in key_items or item.startswith("HM_")
+                keep_one = item in key_items or item.startswith("HM_") or bool(_TM_KEY.match(item))   # (TMs: one each)
                 merged["bag"][item] = max(have, qty) if keep_one else min(self.MAX_ITEMS, have + qty)
         if not merged["team"] and merged["pc"]:
             merged["team"], merged["pc"] = merged["pc"][:6], merged["pc"][6:]
         merged["pc"] += [None] * max(0, 300 - len(merged["pc"]))
+        merged["bag"] = Bag(merged["bag"])
         stores[self.LINKED] = merged
         self.linked_regions |= champs
         return sorted(new)
@@ -319,6 +352,9 @@ class StoryManager:
         if condition.startswith("party_has:"):
             pid = int(condition.split(":", 1)[1])
             return any(p and p.id == pid for p in self.player_team)
+        if condition.startswith("lead_friend:"):  # (your first Pokemon is this fond of you: FireRed's Water Labyrinth man and his Egg, 11-17)
+            lead = next((p for p in self.player_team if p and not getattr(p, "is_egg", False)), None)
+            return lead is not None and max(int(getattr(lead, "friendship", 0) or 0), int(getattr(lead, "affection", 0) or 0)) >= int(condition.split(":", 1)[1])
         if condition.startswith("party_only:"):  # the Sinjoh Ruins' Mystri Stage: a lone Arceus
             pid = int(condition.split(":", 1)[1])
             team = [p for p in self.player_team if p]
@@ -490,9 +526,9 @@ class StoryManager:
     MAX_ITEMS = 999  # the most of one item the Bag holds, as in the games
 
     def add_item(self, key, qty=1):
-        """Put items in the Bag (never past 999). Returns how many actually went in."""
+        """Put items in the Bag (never past 999; one of each TM). Returns how many actually went in."""
         have = self.inventory.get(key, 0)
-        added = max(0, min(qty, self.MAX_ITEMS - have))
+        added = max(0, min(qty, (1 if _TM_KEY.match(str(key)) else self.MAX_ITEMS) - have))
         self.inventory[key] = have + added
         return added
 
@@ -727,9 +763,12 @@ class StoryManager:
         "KALOS": {"options": [("SERENA", "serena"), ("CALEM", "calem")], "friend": ("SHAUNA", "shauna")},
         "ALOLA": {"options": [("HAU", "hau")], "friend": ("GLADION", "gladion")},
         "GALAR": {"options": [("HOP", "hop")]},
-        "ORANGE": {"options": [("CROSS", "cross")]},  # the Pokemon Orange hack's rival
         "PALDEA": {"options": [("NEMONA", "nemona")]},
+        "ORANGE": {"options": [("GARY", "blue")]},   # (5.7's Gary is your Kanto rival: SHARED_RIVAL)
     }
+    # Regions that share one rival (Jordan 11-17): Orange's "Gary" is whoever you picked as your Kanto rival, and a
+    # player who starts in Orange names the rival Kanto then uses. The first one picked is copied to the other.
+    SHARED_RIVAL = {"ORANGE": "KANTO", "KANTO": "ORANGE"}
 
     def rival_options(self, region):
         """(canon name, sprite key) choices for a region's rival; the first is the default, except
@@ -762,6 +801,9 @@ class StoryManager:
         region = region.upper()
         if region in self.region_rivals:
             return self.region_rivals[region]
+        twin = self.region_rivals.get(self.SHARED_RIVAL.get(region, ""))
+        if twin:   # (Orange and Kanto: the same rival, name and look)
+            return self.record_region_rival(region, twin["name"], twin["character"], chosen=twin.get("chosen", True))
         opts = self.rival_options(region) or [("RIVAL", "rival")]
         return self.record_region_rival(region, opts[0][0], opts[0][1], chosen=False)
 
@@ -790,6 +832,10 @@ class StoryManager:
             # older saves / the starting region: the rival the player picked at the start
             self.record_region_rival(start, getattr(game, "rival_name", "???"), game.rival_character)
         region = self.get_current_region().upper()
+        twin = self.region_rivals.get(self.SHARED_RIVAL.get(region, ""))
+        own = self.region_rivals.get(region)
+        if twin and twin.get("chosen") and (not own or not own.get("chosen") or own.get("character") == "rival"):
+            self.region_rivals.pop(region, None)   # (older Orange saves: the placeholder rival gives way to the Kanto one)
         if region not in self.region_rivals and region in self.RIVAL_CHOICES:
             self.assign_region_rival(region)
         r = self.region_rivals.get(region)
@@ -843,7 +889,8 @@ class StoryManager:
     def can_fly(self):
         """Fly from the menu: the HM, Alola's Ride Pager (Charizard Glide),
         Galar's Flying Taxi or Paldea's Koraidon / Miraidon (each region's own way, around gym 4)."""
-        return any(self.inventory.get(k, 0) > 0 for k in self.FLY_ITEMS)
+        from src.world import hms
+        return any(hms.field(self, k) for k in self.FLY_ITEMS)   # (Kanto: HM Fly with the Thunder Badge, FireRed's rule)
 
     def visited_regions(self):
         """Every region this save has been in: the starting region, any recorded visit, and
@@ -871,6 +918,10 @@ class StoryManager:
         self.story_flags[f"moved_to_{region.lower()}"] = True
         self.current_area_key = cfg.get("start_area", self.current_area_key)
         self.sync_rival()  # the new region's rival now, so its intro names the right one
+        _arr = cfg.get("arrive_room")  # ([room or None, x, y]: where a move sets you down on the walked map: Valencia's airport, Orange 11-17)
+        if _arr:
+            self.game.walk_town_pos = (cfg.get("start_area"), (int(_arr[1]), int(_arr[2])), (0, -1))
+            self.game.walk_town_room = (cfg.get("start_area"), _arr[0]) if _arr[0] else None
         if not self.story_flags.get(f"received_starter_{region.lower()}") and not self.starter_in_overworld(region):
             starters = lambda: StarterSelectionState(self.game, starter_ids=cfg.get("starters"), region=region)
             if self.needs_rival_choice(region):  # name the new region's rival before its starter screen
@@ -887,7 +938,8 @@ class StoryManager:
         else:
             town = self.game.loader.area_data["STORY_PROGRESSION"].get(cfg.get("start_area"), {}).get("route_name", region.title())
             message = f"Mom found a lovely new home in {town}! Welcome to the {region.title()} region!"
-        return AreaTransitionState(self.game, cfg.get("start_area"), initial_message=message.replace("{player_name}", self.game.player_name))
+        return AreaTransitionState(self.game, cfg.get("start_area"), initial_message=message.replace("{player_name}", self.game.player_name),
+                                   ride=cfg.get("arrive_ride"))   # (a ride scene on the way: the Rocket Blimp to Valencia, Orange 11-17)
 
     def has_badge(self, name):
         """True if a badge with this name was earned in any region ("COAL", "Coal_Badge"...)."""
@@ -1131,6 +1183,7 @@ class StoryManager:
         if area not in self.defeated_trainers:
             self.defeated_trainers[area] = set()
         self.defeated_trainers[area].add(index)
+        self.sync_trainer_flags(area)   # (a door that opens once its guards are beaten: the Rocket Hideout's B4F)
         self.story_flags.setdefault("trainers_beaten_on", {}).setdefault(area, {})[str(index)] = self._today()
 
     @staticmethod
@@ -1199,11 +1252,29 @@ class StoryManager:
     # Story flags that follow from others: set once any of the listed flags is set.
     # sinjoh_rite_done: the Sinjoh rite is over once one of the three gods has been met (beaten or
     # caught), so Cynthia's "Talk to Cynthia" intro (flag_condition "not sinjoh_rite_done") goes away.
-    DERIVED_FLAGS = {"sinjoh_rite_done": ("sinjoh_dialga", "sinjoh_palkia", "sinjoh_giratina")}
+    # hideout_b4f_door_open: Giovanni's door on the Rocket Hideout's B4F (FireRed: shut till both guards beside it are
+    # beaten); a save that already beat him has it open.
+    DERIVED_FLAGS = {"sinjoh_rite_done": ("sinjoh_dialga", "sinjoh_palkia", "sinjoh_giratina"),
+                     "hideout_b4f_door_open": ("hideout_giovanni_defeated",)}
+    # A flag set once every one of these trainers of an area is beaten (by "spot_name", else "name").
+    TRAINER_FLAGS = {"hideout_b4f_door_open": ("ROCKET_HIDEOUT", ("Grunt B4F 2", "Grunt B4F 3"))}
 
     def sync_story_flags(self):
         for flag, sources in self.DERIVED_FLAGS.items():
             if not self.story_flags.get(flag) and any(self.story_flags.get(f) for f in sources):
+                self.story_flags[flag] = True
+        self.sync_trainer_flags()
+
+    def sync_trainer_flags(self, area=None):
+        for flag, (where, names) in self.TRAINER_FLAGS.items():
+            if self.story_flags.get(flag) or (area and area != where):
+                continue
+            try:
+                pool = self.game.loader.area_data["STORY_PROGRESSION"][where]["trainer_pool"]
+            except (AttributeError, KeyError, TypeError):
+                continue
+            idx = [i for i, t in enumerate(pool) if (t.get("spot_name") or t.get("name")) in names]
+            if len(idx) >= len(names) and all(self.is_trainer_defeated(where, i) for i in idx):
                 self.story_flags[flag] = True
 
     RETIRED_ITEMS = ("SURF_BOARD", "AIR_BALLOON", "EXP_SHARE")  # (Exp. Share is an Option now: Jordan, 11-16)
@@ -1216,13 +1287,7 @@ class StoryManager:
         hms.give_for_badges(self)  # HMs from badges already won
         from src.world import soaring3d
         soaring3d.give_flute(self)  # the Eon Flute, for a save that met its Eon before the flute was in the game
-        if getattr(self, "active_store", None) == "HOENN" and getattr(self, "game", None) is not None:
-            from src.pokemon import tms   # (Hoenn's own TMs, 11-14: a Hoenn Bag's Sword/Shield TMs with a Hoenn number become Hoenn's)
-            for item in [k for k, q in self.inventory.items() if q and tms.is_tm(k) and not tms.is_hoenn(k)]:
-                new = tms.hoenn_key(self.game, tms.move_of(self.game, item))
-                if new:
-                    self.inventory[new] = max(self.inventory.get(new, 0), 1)
-                    del self.inventory[item]
+        self._migrate_tm_numbers()
         for item, qty in list(self.inventory.items()):  # an HM is never used up: one of each
             if str(item).startswith("HM_") and qty > 1:
                 self.inventory[item] = 1
@@ -1235,11 +1300,8 @@ class StoryManager:
         region_badge_items = {
             "KANTO": [
                 ("BOULDER", "TOWN_MAP"),
-                ("CASCADE", "BIKE_VOUCHER"),
-                ("RAINBOW", "COIN_CASE"),
-                ("VOLCANO", "VOLCANO_PASS"),
-                ("VOLCANO", "TRI_PASS"),  # Blaine: the Seagallop Ferry to the Sevii Islands
-                ("EARTH", "CERULEAN_CAVE_MAP"),
+                ("VOLCANO", "VOLCANO_PASS"),   # (the Bike Voucher, Coin Case and Tri-Pass are given where FireRed gives them:
+                ("EARTH", "CERULEAN_CAVE_MAP"),  #  the Fan Club chairman, Celadon's diner, Celio on One Island; Jordan 11-16)
             ],
             "JOHTO": [
                 ("ZEPHYR", "JOHTO_MAP"),
@@ -1326,8 +1388,6 @@ class StoryManager:
                     continue
                 if self.inventory.get(item, 0) > 0:
                     continue
-                if item == "BIKE_VOUCHER" and self.inventory.get("BICYCLE", 0) > 0:
-                    continue
                 print(f"Sync: Awarding {item} for {badge} ({region})!")
                 self.inventory[item] = 1
         # Paldea's gyms go in any order: Koraidon / Miraidon learn to fly at the 4th badge (Jordan).
@@ -1351,6 +1411,7 @@ class StoryManager:
         return mystery_dungeon.save_view(self, self._serialize())
 
     def _serialize(self):
+        self.story_flags["kanto_gifts_v2"] = True   # (written by a game whose key items sit at FireRed's places: _migrate_kanto_start)
         return {
             "current_area_key": self.current_area_key,
             "badges": self.badges,
@@ -1601,6 +1662,40 @@ class StoryManager:
         self._migrate_hoenn_start()
         self._migrate_kanto_start()
         self._migrate_sinnoh_start()
+        self._migrate_tm_numbers()
+
+    # TMs went to one list in every region on Scarlet/Violet's numbers (Jordan, 11-17). Older saves hold Sword/Shield's
+    # TM00-TM99, the story's TM100-TM141 and Hoenn's HTM01...: each becomes the TM with its move, once (an old "TM100"
+    # and today's TM100 are different moves, hence the flag), one of each in every Bag.
+    # Then (v2, the same day) Legends: Z-A's own TMs moved after the older games' ones: a save made on the first list
+    # holds its TM230-TM348 keys ("v1:TM230"... in assets/tm_legacy.json), converted by move, once.
+    TM_NUMBERS_FLAG = "tm_numbers_sv"
+    TM_NUMBERS_V2_FLAG = "tm_numbers_v2"
+
+    def _migrate_tm_numbers(self):
+        f = self.story_flags
+        if (f.get(self.TM_NUMBERS_FLAG) and f.get(self.TM_NUMBERS_V2_FLAG)) or getattr(self, "game", None) is None:
+            return
+        from src.pokemon import tms
+        first = not f.get(self.TM_NUMBERS_FLAG)  # (keys from before Scarlet/Violet's numbers: straight to today's)
+        bags = [st["bag"] for st in self.region_stores.values()]
+        bags += [led.get("items") or {} for led in (f.get("coop_ledgers") or {}).values() if isinstance(led, dict)]
+        for bag in bags:
+            if first:
+                olds = [k for k in list(bag) if isinstance(k, str) and (k.startswith("HTM") or k.startswith("TM"))
+                        and k[3 if k.startswith("HTM") else 2:].isdigit()]
+            else:  # (the first list's TM230 on)
+                olds = [k for k in list(bag) if tms.is_tm(k) and int(k[2:]) >= tms.V1_FIRST_CHANGED]
+            moved = {}
+            for old in olds:
+                qty = bag.pop(old)
+                new = tms.legacy_key(self.game, old if first else "v1:" + old)
+                if new and qty:
+                    moved[new] = 1
+            bag.update(moved)  # (after: an old key can be another one's new key)
+        for key, st in self.region_stores.items():
+            st["bag"] = Bag(st["bag"])
+        f[self.TM_NUMBERS_FLAG] = f[self.TM_NUMBERS_V2_FLAG] = True
 
     # The ORAS opening (Birch on Route 101, the rival on Route 103, the Pokedex) came after
     # saves that already have a Hoenn starter: those count it as done.
@@ -1647,6 +1742,24 @@ class StoryManager:
         if (f.get("game_corner_cleared") and not f.get("tower_ghost_defeated")
                 and self.inventory.get("SILPH_SCOPE", 0) <= 0 and self.get_current_region() == "KANTO"):
             self.inventory["SILPH_SCOPE"] = 1
+        # The Secret Key became the Mansion's basement item ball (FireRed; 11-16): in a save from before, the Burglar who
+        # used to hand it over has been beaten. (Saves written since carry kanto_gifts_v2: see _serialize.)
+        if not f.get("kanto_gifts_v2") and f.get("got_secret_key"):
+            f["mansion_simon_beaten"] = True
+        f["kanto_gifts_v2"] = True
+        # FireRed's missing Gym trainers joined four Gyms' lists (11-17), and a Gym counts as won once its progress is
+        # past its list: a Gym whose badge is already held stays won. The Fighting Dojo's master is a battle now: a save
+        # that already has his prize has beaten him.
+        try:
+            prog = self.game.loader.area_data["STORY_PROGRESSION"]
+        except (AttributeError, KeyError, TypeError):
+            prog = {}
+        for area, badge in (("VIRIDIAN_CITY", "EARTH"), ("VERMILLION_CITY", "THUNDER"), ("CELADON_CITY", "RAINBOW"), ("SAFFRON_CITY", "MARSH")):
+            n = len(((prog.get(area) or {}).get("gym") or {}).get("trainers") or [])
+            if n and badge in self.badges.get("KANTO", []) and 0 < f.get(f"gym_progress_{area}", 0) <= n:
+                f[f"gym_progress_{area}"] = n + 1
+        if f.get("dojo_gift_1"):
+            f["dojo_master_beaten"] = True
 
     def _migrate_sinnoh_start(self):
         """The BDSP opening (Lake Verity's briefcase and the Starly, then Rowan's Pokedex before any

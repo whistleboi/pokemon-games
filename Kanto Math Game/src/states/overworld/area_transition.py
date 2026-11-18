@@ -53,6 +53,34 @@ def _ride_pictures():
         return None
 
 
+RIDE_SCENE_FRAMES = 180   # one leg of a ride scene, if its own "frames" doesn't say
+
+
+def ride_scene(game, ride):
+    """A ride scene shown on the way (Orange 5.7, 11-17: the blimp over the clouds, the parachute drop, Navel's cable car):
+    a ride name from the area data's "RIDE_SCENES" or the scene itself, {"legs": [leg, ...]}. A leg: "picture" (assets path,
+    or a list of layers drawn in order), "sprite" (assets path), "from" / "to" (tiles of 16 pixels: the sprite stands on that
+    tile, as a map's people do), "frames", "camera" ([x, y]: a fixed view; else the view follows the sprite). None when the
+    ride is unknown or its pictures are missing: the trip goes on without it."""
+    spec = (game.loader.area_data.get("RIDE_SCENES") or {}).get(ride) if isinstance(ride, str) else ride
+    if not isinstance(spec, dict):
+        return None
+    base = game.assets.assets_dir
+    legs = []
+    try:
+        for leg in spec.get("legs") or [spec]:
+            layers = leg["picture"] if isinstance(leg["picture"], list) else [leg["picture"]]
+            pics = [pygame.image.load(os.path.join(base, *p.split("/"))).convert_alpha() for p in layers]
+            pic = pygame.Surface(pics[0].get_size())
+            for im in pics:
+                pic.blit(im, (0, 0))
+            legs.append(dict(leg, pic=pic, img=pygame.image.load(os.path.join(base, *leg["sprite"].split("/"))).convert_alpha(),
+                             frames=int(leg.get("frames") or RIDE_SCENE_FRAMES)))
+    except Exception:
+        return None
+    return legs or None
+
+
 # [REF-0042: Area Transition Logic]
 class AreaTransitionState(GameState):
     def __init__(self, game, next_area_key, initial_message=None, heal=None, ride=False):
@@ -60,10 +88,13 @@ class AreaTransitionState(GameState):
         super().__init__(game)
         self.next_area_key = next_area_key
         self.timer = 75
-        self.ride = _ride_pictures() if ride else None  # (Orre's motorbike: across the desert on the way, as the fan game does)
+        self.scene = ride_scene(game, ride) if ride and ride is not True else None   # (a ride scene: the blimp, the cable car...)
+        self.ride = _ride_pictures() if ride is True else None  # (Orre's motorbike: across the desert on the way, as the fan game does)
         self.ride_t = 0
         if self.ride:
             self.timer = RIDE_FRAMES
+        if self.scene:
+            self.timer = sum(leg["frames"] for leg in self.scene)
         self.wait_for_dialogue = bool(initial_message)
         self.bg = None
         from src.world import mystery_dungeon   # (out of the Giant Volcano some other way, an Escape Rope or Fly: yourself again)
@@ -139,12 +170,17 @@ class AreaTransitionState(GameState):
 
     def handle_events(self, events):
         for event in events:
+            if (self.scene and self.dialogue_box.is_finished and self.ride_t > 20
+                    and event.type in (pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN)):
+                self.timer = min(self.timer, 1)   # (a ride scene can be skipped once its words are read)
             self.dialogue_box.handle_event(event)
 
     def update(self):
         from src.states.overworld.route import PlayState
         from src.states.overworld.town import CityState
         self.dialogue_box.update()
+        if self.scene:
+            self.ride_t += 1
         if self.npc_sprite:
             target_x = self.game.width // 2
             if not self.dialogue_box.is_finished:
@@ -212,8 +248,36 @@ class AreaTransitionState(GameState):
         y = top // 2 - big.get_height() // 2 + (2 if (self.ride_t // 4) % 2 else 0)
         self.game.screen.blit(big, (x, y))
 
+    def _draw_scene(self):
+        """One frame of a ride scene: the leg playing now, its sprite moved from "from" to "to", the view on the sprite (or
+        the leg's fixed "camera"), the picture scaled up so ten tiles fill the height above the words."""
+        t = self.ride_t
+        leg = self.scene[-1]
+        for lg in self.scene:
+            if t < lg["frames"]:
+                leg = lg
+                break
+            t -= lg["frames"]
+        f = min(1.0, t / max(1, leg["frames"]))
+        (x0, y0), (x1, y1) = leg["from"], leg["to"]
+        sx, sy = (x0 + (x1 - x0) * f) * 16 + 8, (y0 + (y1 - y0) * f) * 16 + 16
+        top = self.dialogue_box.rect.top
+        k = max(1.0, top / 160.0)
+        vw, vh = min(leg["pic"].get_width(), int(self.game.width / k)), min(leg["pic"].get_height(), int(top / k))
+        cx, cy = ((leg["camera"][0] * 16 + 8, leg["camera"][1] * 16 + 8) if leg.get("camera") else (sx, sy - leg["img"].get_height() / 2))
+        vx = int(max(0, min(leg["pic"].get_width() - vw, cx - vw / 2)))
+        vy = int(max(0, min(leg["pic"].get_height() - vh, cy - vh / 2)))
+        view = leg["pic"].subsurface((vx, vy, vw, vh)).copy()
+        img = leg["img"]
+        view.blit(img, (int(sx - img.get_width() / 2) - vx, int(sy - img.get_height()) - vy))
+        self.game.screen.fill(BLACK)
+        out = pygame.transform.scale(view, (int(vw * k), int(vh * k)))
+        self.game.screen.blit(out, ((self.game.width - out.get_width()) // 2, 0))
+
     def draw(self):
-        if self.ride:
+        if self.scene:
+            self._draw_scene()
+        elif self.ride:
             self._draw_ride()
         elif self.bg:
             self.game.screen.blit(self.bg, (0, 0))

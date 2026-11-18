@@ -8,8 +8,8 @@ The story (Bulbapedia's ORAS walkthrough, part 18), in our words:
   you up to his flat in Mauville Hills (scene in MAUVILLE_CITY).
 - In the flat he scans your eyes for the security system and asks you to run the check on New Mauville's computer.
 - In New Mauville, the computer (where Wattson used to stand to battle) runs the check.
-- Back in the flat, Wattson thanks you with TM24 Thunderbolt (Hoenn's own, HTM24).
-Mauville Hills also has the frightened Collector and the balcony's TM89 U-turn. The loan shark's Lopunnite is already the
+- Back in the flat, Wattson thanks you with TM126 Thunderbolt (Hoenn's own, HTM24).
+Mauville Hills also has the frightened Collector and the balcony's TM060 U-turn. The loan shark's Lopunnite is already the
 Man in a Suit's, outside.
 
 These are applied over Emerald's maps (emerald.py is written by hgen.py; this file adds to it).
@@ -40,14 +40,14 @@ HILLS_ROOM = {
             {"text": "Wattson", "action": "EVENT", "condition": ["new_mauville_checked", "not:new_mauville_cleared"],
              "event": {"lines": ["Wattson: All clear, you say? Wahahaha! Splendid!",
                                  "Wattson: Here, this is for you. Thunderbolt suits a Trainer with spark!"],
-                       "gift_item": {"HTM24": 1}, "flag": "new_mauville_cleared"}},
+                       "gift_item": {"TM126": 1}, "flag": "new_mauville_cleared"}},
             {"text": "Wattson", "action": "EVENT", "condition": "wattson_new_mauville_asked",
              "event": {"lines": ["Wattson: The computer is in New Mauville's back room. Its door is at the east end of town!"]}},
             {"text": "Wattson", "action": "EVENT",
              "event": {"lines": ["Wattson: Wahahaha! Mauville Hills is a fine place to live. You can see the whole city!"]}},
         ]},
-        {"text": "TM89 U-TURN", "action": "EVENT", "found": True, "flag_condition": "not got_tm89_hills",
-         "event": {"lines": ["Something was left out on the balcony... It's TM89 U-turn!"], "gift_item": {"HTM89": 1},
+        {"text": "TM060 U-TURN", "action": "EVENT", "found": True, "flag_condition": "not got_tm89_hills",
+         "event": {"lines": ["Something was left out on the balcony... It's TM060 U-turn!"], "gift_item": {"TM060": 1},
                    "flag": "got_tm89_hills"}},
         {"text": "Collector", "action": "EVENT",
          "event": {"lines": ["Collector: Eek! Oh, it's only you.",

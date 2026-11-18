@@ -290,18 +290,17 @@ EON = "SOAR AWAY"   # (your Eon, waiting: its figure is drawn as the one that ca
 # ORAS's places for each kind of daily Mirage spot, in src/world/soaring.DAILY's order, and the item each hides
 # (Bulbapedia's tables; the PP items are left out: this game has no PP).
 MIRAGE_ITEMS = {
-    "island": [None, "BIG_PEARL", "STAR_PIECE", None, "HTM91", "HTM90", "RARE_CANDY", "HTM66"],
-    "forest": [None, "FULL_RESTORE", "HTM74", "CALCIUM", "HYPER_POTION", "MAX_REVIVE", "GREEN_SHARD", "IRON"],
-    "cave": [None, "HTM95", "YELLOW_SHARD", "CARBOS", None, "RARE_CANDY", "FULL_HEAL", "BIG_PEARL"],
-    "mountain": ["PROTEIN", "HTM84", "ZINC", "RED_SHARD", "RARE_CANDY", "FULL_RESTORE", "BLUE_SHARD", "MAX_REVIVE"],
+    "island": [None, "BIG_PEARL", "STAR_PIECE", None, "TM093", "TM103", "RARE_CANDY", "TM247"],
+    "forest": [None, "FULL_RESTORE", "TM180", "CALCIUM", "HYPER_POTION", "MAX_REVIVE", "GREEN_SHARD", "IRON"],
+    "cave": [None, "TM030", "YELLOW_SHARD", "CARBOS", None, "RARE_CANDY", "FULL_HEAL", "BIG_PEARL"],
+    "mountain": ["PROTEIN", "TM083", "ZINC", "RED_SHARD", "RARE_CANDY", "FULL_RESTORE", "BLUE_SHARD", "MAX_REVIVE"],
 }
 
 
 def item_text(kind, i):
     """An item option's text on the map ("ZINC" ...; each unique in its area: the place's number after it)."""
     item = MIRAGE_ITEMS[kind][i]
-    shown = item[1:] if item.startswith("HTM") else item   # (Hoenn's own TMs show as "TM91")
-    return f"{shown.replace('_', ' ')} {i + 1}"
+    return f"{item.replace('_', ' ')} {i + 1}"
 
 
 def _items(kind):

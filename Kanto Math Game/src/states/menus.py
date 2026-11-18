@@ -416,8 +416,8 @@ class RegionSelectionState(GameState):
         "JOHTO": ["Mom: Johto? Oh, that's right next door! No need to move house for that.",
                   "From the Pokemon League's Reception Gate, follow Route 26 and Route 27 east to New Bark Town.",
                   "Or take the S.S. Aqua from Vermilion City to Olivine City with your S.S. Ticket!"],
-        "ORANGE": ["Mom: The Orange Islands? Then you'll need a ship!",
-                   "The S.S. Anne sails from Vermilion City to Valencia Island. Board it when you're ready.",
+        "ORANGE": ["Mom: The Orange Islands? Then you'll need to fly!",
+                   "A Rocket Blimp leaves from Vermilion City's harbour for Valencia Island. Board it when you're ready.",
                    "Professor Ivy will meet you there with a new partner."],
         "KANTO": ["Mom: Kanto? That's just next door! You can travel there yourself.",
                   "From New Bark Town, take Route 27 west to the Reception Gate, then Route 22 to Viridian City.",
@@ -902,6 +902,9 @@ class StarterSelectionState(GameState):
 
     def complete_selection(self):
         chosen_pokemon_obj = self.starters[self.selected_idx].max_ivs()  # the starter is a gift: perfect IVs
+        if self.region_cfg.get("starter_level"):  # (a region's partner at its own level: Orange's Lv 10, 5.7's Pikachu; Jordan 11-17)
+            from src.world import levels as _lv
+            _lv.set_team([chosen_pokemon_obj], [int(self.region_cfg["starter_level"])], exact=True)
         if chosen_pokemon_obj.cry:
             chosen_pokemon_obj.cry.play()
 

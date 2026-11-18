@@ -176,6 +176,9 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "CHOICE_BAND": {"price": 4000, "text": "Held: Attack goes up by half, but its holder can only use the first move it picks."},
         "CHOICE_SCARF": {"price": 4000, "text": "Held: Speed goes up by half, but its holder can only use the first move it picks."},
         "MACHO_BRACE": {"price": 3000, "text": "Held: its holder earns twice the effort points from battles, but its Speed is halved."},
+        "LUCKY_EGG": {"price": 200, "text": "Held: its holder earns half again as much XP from battles."},   # (Kanto: Route 15's aide, for fifty kinds caught; 11-17)
+        "LUCKY_PUNCH": {"price": 10, "text": "Held by Chansey: a pair of gloves. Its moves land critical hits far more often."},   # (FireRed: Sevault Canyon's Chansey house; 11-17)
+        "STICK": {"price": 200, "text": "Held by Farfetch'd: a leek stalk. Its moves land critical hits far more often."},   # (FireRed: Vermilion's traded Farfetch'd holds it; 11-17)
         "METRONOME": {"price": 4000, "text": "Held: using the same move again and again makes it stronger."},
         "BIG_ROOT": {"price": 4000, "text": "Held: moves that drain HP give its holder more back."},
         "SAFETY_GOGGLES": {"price": 4000, "text": "Held: its holder takes no sandstorm damage, and powder moves don't affect it."},
@@ -190,7 +193,11 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "BLUE_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Beauty condition counts for more."},
         "PINK_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Cute condition counts for more."},
         "GREEN_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Clever condition counts for more."},
-        "YELLOW_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Tough condition counts for more."}}
+        "YELLOW_SCARF": {"price": 100, "text": "Held in a Contest: its holder's Tough condition counts for more."},
+        # (11-17: for Fling, Trick and Psycho Shift, as in the games. Where to get them: Reversal Mountain (B2W2),
+        # Ula'ula Meadow / Resolution Cave (USUM), Wyndon Stadium (SwSh), Levincia's shop (SV, 15,000))
+        "FLAME_ORB": {"price": 15000, "text": "Held: it burns its holder at the end of a turn. Flung, it burns the foe."},
+        "TOXIC_ORB": {"price": 15000, "text": "Held: it badly poisons its holder at the end of a turn. Flung, it poisons the foe."}}
 # Items that are used up when their effect happens (berries too): the holder's copy leaves the Bag.
 CONSUMED = {"POWER_HERB", "WHITE_HERB", "MENTAL_HERB"}
 # Held berries (Gen 4 on): eaten in battle when their moment comes.
@@ -248,6 +255,14 @@ def held_boost(pokemon, move_type):
     """How much a held item powers up a move of this type (1.0: not at all)."""
     t = HELD_BOOSTS.get(getattr(pokemon, "held_item", None))
     return HELD_BOOST if t and t == str(move_type).upper() else 1.0
+
+
+XP_HELD = {"LUCKY_EGG": 1.5}   # (held: the holder's battle XP is multiplied, as in the games)
+
+
+def xp_held_mult(pokemon):
+    """How much a held item multiplies its holder's battle XP (1.0: not at all)."""
+    return XP_HELD.get(getattr(pokemon, "held_item", None), 1.0)
 
 
 def friend_gain(pokemon, n):
@@ -468,6 +483,15 @@ for _k, (_id, _t, _who) in ORB_BOOSTS.items():
 for _k, _t in DRIVES.items():
     HELD[_k] = {"price": 1000, "text": f"Held by Genesect: its Techno Blast becomes {_t.title()} type."}
 PLATE_TYPES = {k: t for k, t in HELD_BOOSTS.items() if k.endswith("_PLATE")}  # (and Judgment takes the Plate's type)
+# Ogerpon's masks (Scarlet / Violet's Teal Mask DLC; 11-17): held by Ogerpon, it takes that mask's form (Grass and the
+# mask's type, the mask's Ability), its moves hit 1.2x harder and Ivy Cudgel takes the mask's type. No mask: the
+# Teal Mask form (Grass, Defiant). Ogerpon's mask can't be knocked off or stolen (battle_moves._removable).
+OGERPON_MASKS = {"WELLSPRING_MASK": "WATER", "HEARTHFLAME_MASK": "FIRE", "CORNERSTONE_MASK": "ROCK"}
+MASK_ABILITY = {"WATER": "WATERABSORB", "FIRE": "MOLDBREAKER", "ROCK": "STURDY"}
+MASK_ART = {"WATER": "1017_water_mask.png", "FIRE": "1017_fire_mask.png", "ROCK": "1017_rock_mask.png"}   # (sprites/pokemon/altform)
+MASK_BOOST = 1.2
+for _k, _t in OGERPON_MASKS.items():
+    HELD[_k] = {"price": 0, "text": f"Held by Ogerpon: it wears this mask, turns {_t.title()} type too and its moves hit harder."}
 
 # Story and key items: what each is for (the Bag shows it). Kept short, in our own words.
 STORY_TEXT = {
@@ -528,6 +552,11 @@ STORY_TEXT = {
     "SECRET_POTION": "A medicine that cures a sick Pokemon. The lighthouse's Ampharos needs it.",
     "TEA": "A cup of tea for the thirsty guards.",
     "LIFT_KEY": "A key for the lift.",
+    "CLIMB_KIT": "A climber's kit for scaling rocky walls. Danny's mountain on Navel Island needs it.",   # (Orange 5.7, 11-17)
+    "PICKAXE": "A digger's pickaxe. It breaks small rocks, and maybe a fossil inside.",   # (Orange 5.7: Fukuhara's Nurse Joy, 11-17)
+    "SHOWBOAT_PASS": "A pass for the Pokemon Showboat, docked at Kinnow. Board as often as you like.",   # (Orange 5.7, 11-17)
+    "SCUBA_GEAR": "Diving gear from Nurse Joy. Where the sea is deep, you can go underwater.",   # (Orange 5.7: Route 58, 11-17)
+    "WHIRLPULLER": "A gadget that pulls a whirlpool apart, so you can cross it. A gift on Trovita Island.",   # (Orange 5.7, 11-17)
     "SECRET_KEY": "A key for the locked Gym door.",
     "STORAGE_KEY": "A key to the ship's storage room.",
     "RM_1_KEY": "A key to cabin 1.", "RM_2_KEY": "A key to cabin 2.", "RM_4_KEY": "A key to cabin 4.", "RM_6_KEY": "A key to cabin 6.",

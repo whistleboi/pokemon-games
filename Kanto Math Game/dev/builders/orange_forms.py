@@ -143,12 +143,12 @@ sp = d["STORY_PROGRESSION"]
 for o in sp["SUNBURST_ISLAND"]["explore_options"]:
     ev = o.get("event") or {}
     if ev.get("flag") == "got_mateo_gift":
-        ev["gift_item"] = {"AMULET_COIN": 1, "CRYSTAL_STONE": 1}
+        ev["gift_item"] = {"AMULET_COIN": 1}   # (Jordan 11-17: the Crystal Stone is gone)
         line = "And this Crystal Stone: an Onix that touches it turns to living crystal, like the one in the cave!"
         if line not in ev["lines"]:
             ev["lines"].append(line)
 # Pummelo Island's Mart (the Orange League island) sells Crystal Stones after the League.
-sp["PUMMELO_ISLAND"]["extra_stock"] = [{"item": "CRYSTAL_STONE", "condition": "beat_orange_champion"}]
+# (Jordan 11-17: no Crystal Stone: Pummelo sells none)
 with open(p, "w", encoding="utf-8", newline="") as f:
     f.write(json.dumps(d, indent=2, ensure_ascii=False))
 
@@ -176,8 +176,7 @@ for form, table in (("pinkan", PINKAN), ("valencia", {sid: base for sid, base, *
         m = re.search(r'("%s": \{)' % item, s)
         if f'"{key}"' not in s[m.end():m.end() + 2000].split("}")[0]:
             s = s[:m.end()] + f'"{key}": "{target}", ' + s[m.end():]
-if '"CRYSTAL_STONE"' not in s:
-    s = s.replace('        "METAL_COAT": {', '        "CRYSTAL_STONE": {"ONIX": "ONIX_CRYSTAL"},\n        "METAL_COAT": {', 1)
+# (Jordan 11-17: no Crystal Stone evolution: the Crystal Onix is caught in the Crystal Cave, as 5.7 has it)
 json.loads(s)
 open(p, "w", encoding="utf-8", newline="").write(s)
 

@@ -105,7 +105,11 @@ check(t.doors.get((6, 7)) == "home" and t.doors.get((15, 7)) == "rival" and t.do
       f"...your house, the rival's, the Lab at FireRed's doors {sorted(t.doors.items())}; five signs")
 check(tstep(t, (7, 16), (0, 1)) == (7, 16) and "Surf" in t.toast, f"...the pond is in the way without Surf ({t.toast!r})")
 story.inventory["HM_SURF"] = 1
-check(tstep(t, (7, 16), (0, 1)) == (7, 17), "...and crossed with it")
+_bk = list(story.badges.get("KANTO", [])); story.badges["KANTO"] = [b for b in _bk if b != "SOUL"]
+check(tstep(t, (7, 16), (0, 1)) == (7, 16), "...nor with HM Surf alone: Kanto's Surf wants the Soul Badge (FireRed; Jordan 11-16)")
+story.badges["KANTO"] = story.badges["KANTO"] + ["SOUL"]
+check(tstep(t, (7, 16), (0, 1)) == (7, 17), "...and crossed with it and the Soul Badge")
+story.badges["KANTO"] = _bk
 story.inventory.pop("HM_SURF", None)
 # (11-14: rebuilt by the Hoenn method: FireRed's own layer over you, roofs and treetops, instead of our drawn roof edges)
 check(any(o.get("kind") == "picture" and "fr_top/" in str(o.get("f")) for o, _i, _a in t.overheads), "...FireRed's own roofs and treetops are drawn over you (overheads)")
@@ -1019,7 +1023,7 @@ t = town("ONE_ISLAND", "KINDLE_ROAD")
 check(isinstance(t, _WTS) and (t.w, t.h) == (24, 20) and t.player[0] >= 21 and set(t.exits.values()) == {"KINDLE_ROAD", "TREASURE_BEACH"},
       f"One Island: FireRed's 24 x 20; in from Kindle Road on the east {t.player}")
 enter(t, (14, 5))
-check(t.room == "center" and t.people[(5, 2)].get("action") == "SHOP" and t.people[(6, 2)].get("action") == "HEAL" and "any" in t.people[(14, 6)],
+check(t.room == "center" and t.people[(5, 2)].get("action") == "SHOP" and t.people[(6, 2)].get("action") == "HEAL" and "any" in t.people[(15, 6)],
       f"...the Network Center: FireRed's own room (batch 27), the nurse and the shop's clerk across the counter, Celio by his machine ({t.room})")
 t._go(None, "OUT:14,5")
 g.walk_town_room = None

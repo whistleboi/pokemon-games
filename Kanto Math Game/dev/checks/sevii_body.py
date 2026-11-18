@@ -4,7 +4,10 @@ story.story_flags, story.inventory = {"received_starter_kanto": True, "received_
 check("Seagallop to One Island" not in travel("VERMILLION_CITY"), "no Tri-Pass: no ferry")
 story.badges["KANTO"].append("VOLCANO")
 story.sync_key_items()
-check(story.inventory.get("TRI_PASS") == 1, "the Volcano Badge brings the Tri-Pass (old saves too)")
+# (11-17, FireRed: the Volcano Badge opens Bill's boat from Cinnabar; Celio on One Island gives the Tri-Pass)
+check(not story.inventory.get("TRI_PASS") and "Seagallop to One Island" in travel("CINNABAR_ISLAND") and "Seagallop to One Island" not in travel("VERMILLION_CITY"),
+      "the Volcano Badge: Bill's boat from Cinnabar to One Island; no Tri-Pass yet, so no ferry from Vermilion")
+story.inventory["TRI_PASS"] = 1; story.story_flags["got_tri_pass"] = True   # (Celio's gift: kanto_gates plays it)
 t = travel("VERMILLION_CITY")
 check("Seagallop to One Island" in t and "Seagallop to Four Island" not in t, "Vermilion: Seagallop to One Island")
 t = travel("ONE_ISLAND")
@@ -26,8 +29,17 @@ check("193" not in regional_forms.restrict(g, {"193": 10, "16": 10}), "but not o
 
 print("3) Mt. Ember and Moltres")
 run("MT_EMBER", "TALK TO THE RESEARCHERS")
-run("MT_EMBER", "CHASE OFF TEAM ROCKET")
-check(lineup(battle_of(g.current_state))[0] == (109, 42), "Team Rocket on Mt. Ember")
+run("MT_EMBER", "CHASE OFF TEAM ROCKET")   # (11-17: FireRed's two diggers first, Grunt 538 and Grunt 537, then the old build's pair)
+check(lineup(battle_of(g.current_state)) == [(19, 35), (20, 35), (27, 35), (28, 35)], "Mt. Ember: FireRed's second digger (Rattata, Raticate, Sandshrew, Sandslash 35)")
+run("MT_EMBER", "ROCKET GRUNT")
+check(lineup(battle_of(g.current_state)) == [(104, 37), (105, 37)], "...FireRed's first digger (Cubone, Marowak 37)")
+story.story_flags["ember_grunt_a"] = story.story_flags["ember_grunt_b"] = True
+run("MT_EMBER", "JESSIE AND JAMES")
+check(lineup(battle_of(g.current_state)) == [(24, 37), (110, 37), (52, 37)], "...then Jessie & James (Jordan 11-17: in place of the old Rocket pair)")
+run("MT_EMBER", "RUBY")
+check(story.inventory.get("RUBY") == 1, "the Ruby, at the bottom of the Ruby Path (FireRed's first trip)")
+run("ONE_ISLAND", "Celio's Ruby")
+check(story.story_flags.get("celio_has_ruby") and not story.inventory.get("RUBY"), "Celio takes the Ruby")
 st = state_for("MT_EMBER")
 mol = opt("MT_EMBER", "CHALLENGE MOLTRES")
 check(st._check_route_condition(mol["condition"], False), "Moltres at the summit")
@@ -38,8 +50,11 @@ check(not prog["CINNABAR_VOLCANO"].get("area_boss") and not prog["MT_MOON"].get(
 print("4) Two and Three Island: Lostelle, bikers, the tutor")
 run("TWO_ISLAND", "Lostelle's Dad")
 check(not ow.CityState(g)._check_menu_condition(opt("THREE_ISLAND", "Bond Bridge")["condition"]), "bikers block Bond Bridge")
+run("THREE_ISLAND", "Stop the Biker Gang")   # (11-17: FireRed's three Goons one after another, then Cue Ball Paxton)
+check(lineup(battle_of(g.current_state)) == [(109, 37), (88, 37)], "the first Biker Goon (Koffing, Grimer 37)")
+story.story_flags.update({"three_goon_1": True, "three_goon_2": True, "three_goon_3": True})
 run("THREE_ISLAND", "Stop the Biker Gang")
-check(lineup(battle_of(g.current_state))[-1] == (89, 46), "biker boss Paxton")
+check(lineup(battle_of(g.current_state)) == [(110, 39), (89, 39)], "...their boss, Cue Ball Paxton (Weezing, Muk 39)")
 story.story_flags["beat_three_island_bikers"] = True
 story.current_area_key = "THREE_ISLAND"
 check(ow.CityState(g)._check_menu_condition(opt("THREE_ISLAND", "Bond Bridge")["condition"]), "bridge open")
@@ -59,24 +74,25 @@ check(story.inventory.get("RAINBOW_PASS") == 1, "Celio gives the Rainbow Pass")
 check("Seagallop to Seven Island" in travel("ONE_ISLAND"), "Rainbow Pass: Islands 4-7")
 run("FOUR_ISLAND", "Lorelei's House")
 run("ICEFALL_CAVE", "STOP TEAM ROCKET")
-check(isinstance(g.current_state, TrainerIntroState), "Icefall Cave Rocket battle")
+check(isinstance(g.current_state, TrainerIntroState) and lineup(battle_of(g.current_state)) == [(110, 38), (24, 38), (52, 38)], "Icefall Cave: Jessie & James (in place of FireRed's Grunt)")
 check("Rocket Warehouse" not in travel("FIVE_ISLAND"), "warehouse hidden until the Sapphire is stolen")
-run("DOTTED_HOLE", "READ THE BRAILLE", solve=False)
-check(not story.story_flags.get("dotted_hole_open"), "wrong braille: still sealed")
-run("DOTTED_HOLE", "READ THE BRAILLE")
-check(story.story_flags.get("dotted_hole_open"), "braille solved: open")
+import json as _json
+_rv = _json.load(open("assets/town_maps.json", encoding="utf-8"))["RUIN_VALLEY"].get("barred", [])
+check(any((b.get("open_with") or {}).get("flag") == "dotted_hole_open" and "has_item:HM_CUT" in (b.get("open_with") or {}).get("condition", []) for b in _rv),
+      "the Dotted Hole's door: braille outside, opened with Cut (FireRed; Jordan 11-17)")
+story.story_flags["dotted_hole_open"] = True   # (the walk itself is in sevii_maps)
 run("DOTTED_HOLE", "TAKE THE SAPPHIRE")
 check("Rocket Warehouse" in travel("FIVE_ISLAND"), "Gideon steals it: warehouse open")
 run("ROCKET_WAREHOUSE", "UNLOCK THE DOORS")
 run("ROCKET_WAREHOUSE", "CONFRONT THE ADMIN")
 from src.world import levels
 _arch = lineup(battle_of(g.current_state))
-check(_arch[-1] == (112, 59), f"Admin Archer at his own levels (canon, 10-29) {_arch}")
+check(_arch == [(42, 53), (110, 54), (229, 55)], f"the Warehouse's last Admin with FireRed's team and levels (11-17: Golbat, Weezing, Houndoom) {_arch}")
 story.story_flags["sevii_warehouse_cleared"] = True
 run("ROCKET_WAREHOUSE", "RECOVER THE GEMS")
 run("ONE_ISLAND", "Give Celio the Gems")
 check(story.story_flags.get("network_machine_fixed") and story.inventory.get("OLD_SEA_MAP") == 1
-      and not story.inventory.get("RUBY"), "Network Machine fixed, Old Sea Map")
+      and not story.inventory.get("SAPPHIRE"), "the Sapphire from the Warehouse: Network Machine fixed, Old Sea Map")
 check("Seagallop to Faraway Island" in travel("ONE_ISLAND"), "ferry to Faraway Island")
 
 print("6) Seven Island and Mew")
@@ -109,7 +125,7 @@ for k in SEVII:
     except Exception as e:
         check(False, f"{k}: {type(e).__name__} {e}")
 missions = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("sevii")]
-check(len(missions) == 12 and all(m["region"] == "KANTO" for m in missions), "12 Sevii journal entries (Back to Celio, the Unown of Tanoby and the legendaries too)")
+check(len(missions) == 15 and all(m["region"] == "KANTO" for m in missions), "15 Sevii journal entries (11-17: + the Ruby, Celio's Ruby, the National Pokedex; Back to Celio, the Unown of Tanoby and the legendaries too)")
 # areas_09_sevii.patch: the seven added Sevii areas, linked both ways and opening cleanly
 NEW7 = ["CANYON_ENTRANCE", "GREEN_PATH", "OUTCAST_ISLAND", "SEVII_ALTERING_CAVE", "WATER_PATH", "MEMORIAL_PILLAR", "RESORT_GORGEOUS"]
 def _tg(k): return {o.get("target_area") for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", []) if o.get("target_area")}

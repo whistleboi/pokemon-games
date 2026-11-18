@@ -1,12 +1,14 @@
 """HMs (Kanto through Kalos): each Gym hands out the HM its badge unlocks in the games, and the
-story gates check for the HM (Cut trees, Surf routes, Flash caves, Whirlpool...). Kanto's follow
-when FRLG hands them out: Cut after Cerulean, Fly by Celadon (gym 4), Surf in Fuchsia.
+story gates check for the HM (Cut trees, Surf routes, Flash caves, Whirlpool...). Kanto's are all
+story gifts, where FireRed hands them out (Cut: the S.S. Anne's captain; Flash: Route 2's aide; Fly:
+Route 16's house; Surf: the Safari Zone's Secret House; Strength: the Warden), each used outside
+battle only with FireRed's badge (USE_BADGE; Jordan 11-16).
 
 Alola, Galar and Paldea have no HMs; their gates use their own story steps instead."""
 
 # Region -> badge (normalised, see _norm) -> HM item key. Badges without one are left out.
 HM_BY_BADGE = {
-    "KANTO": {"SOUL": "HM_SURF"},  # (Cut: the S.S. Anne's captain; Fly: Route 16's house; Strength: the Warden. 11-07)
+    "KANTO": {},  # (all story gifts: Cut the S.S. Anne's captain, Fly Route 16's house, Strength the Warden 11-07; Surf the Safari Zone's Secret House 11-16)
     "JOHTO": {
               },   # (Waterfall: an item ball in the Ice Path, HGSS)
     # (Hoenn's Rock Smash, Strength and Fly are story gifts before their badges: Wally's uncle in Mauville,
@@ -23,7 +25,8 @@ HM_BY_BADGE = {
 
 # HMs handed out by the story, used only once a badge allows it (HGSS: Elder Li's Flash works after the Zephyr Badge, the
 # charcoal maker's Cut after the Hive Badge; Jordan 11-15: "true to cannon").
-USE_BADGE = {"JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE", "HM_ROCK_SMASH": "ZEPHYR", "HM_SURF": "FOG", "HM_STRENGTH": "PLAIN", "HM_FLY": "STORM", "HM_WHIRLPOOL": "GLACIER", "HM_WATERFALL": "RISING"}}   # (Surf: the Dance Theater's gentleman, HGSS)   # (Rock Smash: the man on Route 36, after Sudowoodo)
+USE_BADGE = {"KANTO": {"HM_CUT": "CASCADE", "HM_FLY": "THUNDER", "HM_SURF": "SOUL", "HM_STRENGTH": "RAINBOW", "HM_FLASH": "BOULDER", "HM_ROCK_SMASH": "MARSH", "HM_WATERFALL": "VOLCANO"},   # (FireRed's own; Jordan 11-16)
+             "JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE", "HM_ROCK_SMASH": "ZEPHYR", "HM_SURF": "FOG", "HM_STRENGTH": "PLAIN", "HM_FLY": "STORM", "HM_WHIRLPOOL": "GLACIER", "HM_WATERFALL": "RISING"}}   # (Surf: the Dance Theater's gentleman, HGSS)   # (Rock Smash: the man on Route 36, after Sudowoodo)
 
 
 def usable(story, item):
@@ -32,6 +35,36 @@ def usable(story, item):
         return False
     need = USE_BADGE.get(str(story.get_current_region()).upper(), {}).get(item)
     return not need or any(_norm(b) == need for b in story.badges.get(str(story.get_current_region()).upper(), []))
+
+
+# Regions where EVERY map test of an HM asks for its badge too (Kanto, 11-16). Elsewhere the tests that only ever asked
+# for the item (Surf on a route, Strength, Rock Smash, Waterfall, Fly) still do, till that region's own pass.
+FIELD_STRICT = {"KANTO"}
+
+# Field moves a region's game uses by the move alone, with no HM item (Orange Islands 5.7: Route L's swimmer teaches Waterfall
+# and a Pokemon that knows it climbs Butwal's falls; 11-18). {region: {our HM item: the move}}
+FIELD_BY_MOVE = {"ORANGE": {"HM_WATERFALL": "WATERFALL"}}
+
+
+def field(story, item):
+    """Can it be used on the map here: usable() in a FIELD_STRICT region, else just carried."""
+    if item == "HM_ROCK_SMASH" and story.inventory.get("PICKAXE", 0) > 0:   # (Orange 5.7's Pickaxe breaks the same rocks, 11-17)
+        return True
+    if item in FIELD_BY_MOVE.get(str(story.get_current_region()).upper(), {}) and any(
+            p and FIELD_BY_MOVE[str(story.get_current_region()).upper()][item] in [str(m).upper().replace("-", "_") for m in (getattr(p, "moves", None) or [])]
+            for p in (story.player_team or [])):
+        return True   # (Orange 5.7 has no HM for it: a Pokemon that knows the move climbs the falls, Route 62's tutor; 11-18)
+    if str(story.get_current_region()).upper() in FIELD_STRICT:
+        return usable(story, item)
+    return story.inventory.get(item, 0) > 0
+
+
+def badge_wanted(story, item):
+    """The badge still missing for an HM you carry (its name, 'Rainbow'), else None."""
+    if story.inventory.get(item, 0) <= 0 or usable(story, item):
+        return None
+    need = USE_BADGE.get(str(story.get_current_region()).upper(), {}).get(item)
+    return need.title() if need else None
 
 
 # A badge that hands out a second HM (not canon). Johto's Rising Badge also gives Rock Climb, so a Johto

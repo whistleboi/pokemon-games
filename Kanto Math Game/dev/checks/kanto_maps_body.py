@@ -97,6 +97,7 @@ for key in BUILT:
     a = _area.get(key, {})
     _parts = m["floors"] if m.get("floors") else [m]
     targets = set(v for f in _parts for v in f.get("exits", {}).values() if not str(v).startswith(("ROOM:", "OUT:")))   # (a room's stairs and doors stay inside the place)
+    targets = targets or set(v for f in (m.get("rooms") or {}).values() for v in f.get("exits", {}).values() if not str(v).startswith(("ROOM:", "OUT:")))   # (no way out but a room's: Birth Island's harbour boat, 11-17)
     known = {o.get("target_area") or o.get("target") for o in a.get("travel_options", []) + a.get("route_menu", []) + a.get("explore_options", [])}
     check(targets <= known, f"{key}: every way out on the map is a way out in the story data {sorted(targets - known)}")
     came = sorted(targets)[0] if targets else key
@@ -104,9 +105,10 @@ for key in BUILT:
     is_town = isinstance(st, _WTS)
     w, h = (st.w, st.h) if is_town else (st.run.floor.w, st.run.floor.h)
     _here = _parts[st.run.index] if (not is_town and m.get("floors") and st.run.index < len(_parts)) else m
-    check((w, h) == (len(_here["art"][0]), len(_here["art"])) and (is_town or isinstance(st, DungeonState)),
+    _sizes = {(len(f["art"][0]), len(f["art"])) for f in [_here] + ([] if is_town else [r for r in (m.get("rooms") or {}).values() if came in r.get("exits", {}).values()])}   # (you can land in a room: Birth Island's harbour)
+    check((w, h) in _sizes and (is_town or isinstance(st, DungeonState)),
           f"{key}: opens on its FireRed map ({w} x {h}, {'town' if is_town else 'route'}), in from {came}")
-    check(all("fr_ground/" in json.dumps(f.get("roofs", {})) for f in _parts), f"{key}: drawn from FireRed's own picture (every floor)")
+    check(key == "THREE_ISLE_PORT" or all("fr_ground/" in json.dumps(f.get("roofs", {})) for f in _parts), f"{key}: drawn from FireRed's own picture (every floor)")   # (Three Isle Path: the old build's dug tunnel, FireRed's file has it undug; k_batch36)
     grid = _here["art"]
     if m.get("floors"):   # (a place of floors: every ladder and passage lands on a real tile of a floor that exists)
         _bad = [(i, k, to) for i, f in enumerate(m["floors"]) for k, to in (f.get("links") or {}).items()
@@ -580,7 +582,7 @@ check(story.money == 100 and any(p.id == 129 for p in story.player_team), f"...t
 mm = open_map("MT_MOON", "KANTO_ROUTE_3")
 check(mm.run.index == 0 and mm.run.player[1] >= 34, f"Mt. Moon: in at 1F's mouth ({mm.run.index}, {mm.run.player})")
 _items = {m.payload.get("text") for m in mm.run.floor.movers if m.kind == "figure"}
-check({"MOON STONE", "TM50", "RARE CANDY"} <= _items, f"...FireRed's item balls on 1F ({sorted(_items)[:6]})")
+check({"MOON STONE", "TM056", "RARE CANDY"} <= _items, f"...FireRed's item balls on 1F ({sorted(_items)[:6]})")
 story.story_flags.pop("mt_moon_nerd_defeated", None)
 for _k in ("took_dome_fossil", "took_helix_fossil"):
     story.story_flags.pop(_k, None)
@@ -607,7 +609,7 @@ check(story.story_flags.get("mt_moon_nerd_defeated") and _fos == [("TAKE DOME FO
 # B1F's far mouth comes out on Route 4, by its own mouth; Route 4's Roar, then Cerulean
 r4 = open_map("KANTO_ROUTE_4", "MT_MOON")
 check(abs(r4.run.player[0] - 10) <= 2 and r4.run.player[1] <= 7, f"Route 4: out of Mt. Moon's far mouth ({r4.run.player})")
-check(_figure(r4, "TM120") == (45, 5), f"...FireRed's TM (Roar, our TM120) on the ledge ({_figure(r4, 'TM120')})")
+check(_figure(r4, "TM172") == (45, 5), f"...FireRed's TM (Roar, our TM120) on the ledge ({_figure(r4, 'TM172')})")
 check("CERULEAN_CITY" in set(r4.run.floor.exits.values()), "...and east to Cerulean City")
 story.badges["KANTO"] = []
 
@@ -629,7 +631,7 @@ if _b is not None:
     g.change_state(_b); _b.player_won = True; _b.exit_battle(); play(lambda: isinstance(g.current_state, PlayState), 600)
 # the burgled house: in at the front, out through the hole at the back, and the Grunt in the yard
 story.story_flags.pop("got_tm_dig_cerulean", None)
-story.inventory.pop("TM15", None)
+story.inventory.pop("TM055", None)
 ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
 ce.player = (30, 12); ce.anim = 0
 walk(ce, "u")
@@ -645,7 +647,7 @@ check(isinstance(g.current_state, TrainerIntroState) and _b and [p.id for p in _
       f"...out through the hole in the back wall: the Grunt in the yard rounds on you (Machop, Drowzee) ({type(g.current_state).__name__})")
 if _b is not None:
     g.change_state(_b); _b.player_won = True; _b.exit_battle(); play(lambda: isinstance(g.current_state, _WTS), 600)
-check(story.inventory.get("TM15") == 1 and story.story_flags.get("got_tm_dig_cerulean"), "...beaten, he hands back TM28 Dig (our TM15)")
+check(story.inventory.get("TM055") == 1 and story.story_flags.get("got_tm_dig_cerulean"), "...beaten, he hands back TM28 Dig (our TM15)")
 # the trade house: Poliwhirl for Jynx
 story.story_flags.pop("cerulean_jynx_trade", None)
 story.player_team = [mk(61)] + story.player_team[:1]
@@ -669,7 +671,14 @@ check(ce.room == "gym" and _pp.get("Picnicker Diana") == (4, 7) and _pp.get("Swi
 ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
 check(any(o.get("text") == "Cave guard" for o in ce._people().values()), "Cerulean Cave's guard stands by its mouth")
 story.story_flags["beat_champion"] = True   # (checked on the open map: arriving as Champion brings Mom's call first)
-check(not any(o.get("text") == "Cave guard" for o in ce._people().values()), "...and steps aside once you're Champion")
+_nm = story.story_flags.pop("network_machine_fixed", None); _vc = story.story_flags.pop("visited_CERULEAN_CAVE", None)
+check(any(o.get("text") == "Cave guard" for o in ce._people().values()), "...stays for a Champion who hasn't done the Sevii network job (FireRed; Jordan 11-16)")
+story.story_flags["network_machine_fixed"] = True
+check(not any(o.get("text") == "Cave guard" for o in ce._people().values()), "...and steps aside once you're Champion and Celio's Network Machine works")
+for _k, _v in (("network_machine_fixed", _nm), ("visited_CERULEAN_CAVE", _vc)):
+    story.story_flags.pop(_k, None)
+    if _v:
+        story.story_flags[_k] = _v
 story.story_flags.pop("beat_champion", None)
 # Bill: a Clefairy by his machine till you've helped him, then himself
 story.story_flags.pop("got_ss_ticket_bill", None)
@@ -895,13 +904,13 @@ check(dc.run.index == 2 and "Old man" in {m.payload.get("text") for m in dc.run.
       f"Diglett's Cave: in from Route 11, the hut and its old man ({dc.run.index})")
 _floor(dc, 1)
 _tr = sorted(_trainers(dc))
-check((dc.run.floor.w, dc.run.floor.h) == (85, 80) and len(_tr) == 3, f"...the cave itself, FireRed's 85 x 80 tunnel, the data's three trainers in it ({_tr})")
+check((dc.run.floor.w, dc.run.floor.h) == (85, 80) and len(_tr) == 0, f"...the cave itself, FireRed's 85 x 80 tunnel; no trainers in it, as FireRed (the data's three were removed 11-17) ({_tr})")
 dc2 = open_map("DIGGLETT_CAVE", "KANTO_ROUTE_2")
 check(dc2.run.index == 0 and "KANTO_ROUTE_2" in json.dumps(dc2.recipe["art"]["floors"][0].get("exits")), f"...and its Route 2 end ({dc2.run.index})")
 # Route 9: FireRed's Cut tree, its TM
 story.inventory.pop("HM_CUT", None)
 r9 = open_map("KANTO_ROUTE_9", "CERULEAN_CITY")
-check(_figure(r9, "TM121") == (12, 17), f"Route 9: FireRed's TM (Aerial Ace, our TM121) at its spot ({_figure(r9, 'TM121')})")
+check(_figure(r9, "TM027") == (12, 17), f"Route 9: FireRed's TM (Aerial Ace, our TM121) at its spot ({_figure(r9, 'TM027')})")
 _cut = r9.run.floor.tile(2, 8)
 check(not r9.run.floor.walkable(2, 8) or r9.run.player != (2, 8), f"...the Cut tree at its west end ({_cut!r})")
 story.badges["KANTO"] = []
@@ -978,7 +987,7 @@ play(lambda: any("thirsty" in s for s in said) and r8._ready(), 900)
 check(any("thirsty" in s for s in said) and r8.run.player[0] >= 4, f"...heading for Saffron without a drink, the guard calls you back ({r8.run.player})")
 r7 = open_map("KANTO_ROUTE_7", "CELADON_CITY")
 _t = _trainers(r7)
-check(r7.run.player[0] <= 2 and set(_t) == {"Alpesh", "Kelly", "Nancy"}, f"Route 7: in from Celadon at its west edge, the data's three trainers along it ({_t})")
+check(r7.run.player[0] <= 2 and not _t and not _area["KANTO_ROUTE_7"]["trainer_pool"], f"Route 7: in from Celadon at its west edge; no trainers, as FireRed (Kelly, Nancy and Alpesh removed 11-17, Jordan) ({_t})")
 _quiet(r7)
 _rf = r7.recipe["art"]["room_floors"]
 r7.run.player = (14, 10)
@@ -1117,9 +1126,9 @@ r12.step(0, 1); play(lambda: g.current_state._ready(), 300)
 check(tuple(r12.run.player) == (14, 69) and any("asleep" in s for s in said), f"...without the Poké Flute he won't budge ({said[:1]})")
 _rf = r12.recipe["art"]["room_floors"]
 _floor(r12, _rf["gate_2"])
-_had = story.inventory.get("TM113", 0)
+_had = story.inventory.get("TM274", 0)
 _use(r12, (7, 6), (0, -1))
-check(story.inventory.get("TM113", 0) == _had + 1, "...upstairs in the lookout, the girl gives you TM113 Return (FireRed's TM27)")
+check(story.inventory.get("TM274", 0) == _had + 1, "...upstairs in the lookout, the girl gives you TM113 Return (FireRed's TM27)")
 story.story_flags["KANTO_ROUTE_12_boss_defeated"] = True
 r12 = open_map("KANTO_ROUTE_12", "LAVENDER_TOWN"); _quiet(r12); frames(2)
 _lo = story.inventory.get("LEFTOVERS", 0)
@@ -1130,7 +1139,7 @@ for _k, _v in _sf.items():
     story.story_flags.pop(_k, None)
     if _v is not None:
         story.story_flags[_k] = _v
-story.inventory.pop("TM113", None) if not _had else None
+story.inventory.pop("TM274", None) if not _had else None
 if _fl is not None:
     story.inventory["POKE_FLUTE"] = _fl
 
@@ -1201,7 +1210,12 @@ check(_pp.get("Visit Copycat") == (9, 6), "...the Copycat in her room upstairs")
 _pp = _room_of(sa, "psychic")
 check(_pp.get("Mr. Psychic") == (7, 4), "...Mr. Psychic (FireRed's TM29 Psychic)")
 _pp = _room_of(sa, "dojo")
-check(_pp.get("Fighting Dojo") == (6, 5) and sum(1 for n in _pp if n and n.startswith("Black Belt")) == 4, "...the Fighting Dojo: the Karate Master and FireRed's four Black Belts")
+check((_pp.get("Fighting Dojo") or _pp.get("Karate Master Koichi")) == (6, 5) and sum(1 for n in _pp if n and n.startswith("Black Belt")) == 4, "...the Fighting Dojo: the Karate Master and FireRed's four Black Belts")
+_dj = {t["name"]: t for t in _area["SAFFRON_CITY"]["dojo_trainers"]}
+_ko = next(o for o in _area["SAFFRON_CITY"]["explore_options"] if o.get("text") == "Karate Master Koichi")["event"]["battle"]
+check(_dj["Black Belt Aaron"]["levels"] == [36] and (_ko["team"], _ko["levels"]) == ([106, 107], [37, 37])
+      and [t["levels"] for t in _area["SAFFRON_CITY"]["gym"]["trainers"]] == [[34, 34], [38], [33, 33, 33], [31, 31, 31, 31], [38], [33, 33, 33], [34, 34]],
+      "...FireRed's levels: the Dojo's Black Belts, the master's Hitmonlee and Hitmonchan (a battle before his prize, 11-17), Sabrina's seven Gym trainers")
 story.story_flags.pop("silph_co_cleared", None)
 if _sc is not None:
     story.story_flags["silph_co_cleared"] = _sc
@@ -1219,7 +1233,9 @@ for _i in range(11):
     _n.append(len(_ms))
     for m in _ms:
         _who[m.payload[1].get("spot_name") or m.payload[1]["name"]] = (_i, m.x, m.y)
-check(_n == [1, 3, 2, 3, 4, 2, 5, 3, 3, 2, 4], f"...FireRed's trainers floor by floor, the data's among them, and Yellow's Jessie & James on 11F ({_n})")
+check(_n == [1, 4, 2, 3, 4, 3, 5, 3, 3, 2, 4], f"...FireRed's trainers floor by floor (Connor on 2F and Taylor on 6F since 11-17), the data's among them, and Yellow's Jessie & James on 11F ({_n})")
+check(_who.get("Scientist Connor") == (1, 5, 19) and _who.get("Scientist Taylor") == (5, 9, 11) and _who.get("Scientist Rodney") == (3, 14, 8) and _who.get("Scientist Joshua") == (6, 3, 13),
+      f"...FireRed's four Scientists on their own tiles: Connor 2F, Rodney 4F, Taylor 6F, Joshua 7F")
 check(_who.get("Grunt 3F") == (2, 25, 9) and _who.get("Admin Proton") == (7, 28, 5) and _who.get("Archer") == (8, 15, 18),
       f"...the data's on the floors their words name: the warp-panel grunt on 3F, Proton on 8F, Archer on 9F ({_who.get('Admin Proton')}, {_who.get('Archer')})")
 check(_who.get("{rival_name}") == (6, 2, 6) and _who.get("Giovanni") == (10, 6, 11) and _who.get("Executive Ariana") == (10, 16, 12),
@@ -1385,11 +1401,14 @@ def _vr_reach(i, frm):
 
 def _vr_push(i, t):
     _floor(vr, i)
+    _bk = list(story.badges.get("KANTO", []))
+    story.badges["KANTO"] = _bk + [b for b in ("RAINBOW",) if b not in _bk]   # (Kanto, 11-16: Strength works with the Rainbow Badge, FireRed's rule)
     vr._boulder(t)
     play(lambda: isinstance(g.current_state, _SPS), 300)
     if isinstance(g.current_state, _SPS):
         g.current_state._finish(True)
     play(lambda: g.current_state is vr and not vr.dialogue_box.visible, 300)
+    story.badges["KANTO"] = _bk
 
 
 _pic = lambda i: _vart._version_file(vr.recipe["art"]["floors"][i]["roofs"]["_picture"])
@@ -1512,10 +1531,11 @@ for _k, _v in _hsave.items():
     if _v is not None:
         story.story_flags[_k] = _v
 
-# ---- Surf and rods (11-16): every Kanto area with water has FireRed's own Surf table and rod tables (its wild headers)
+# ---- Surf and rods (11-16): every Kanto area with water has FireRed's own Surf table and rod tables (its wild headers);
+# 11-17: LeafGreen's species beside FireRed's (kwild.py: Slowpoke for Psyduck, Krabby for Horsea, Staryu for Shellder...)
 import random as _wr
 import src.dungeon.core as _wc
-for _wa, _wwant in (("KANTO_ROUTE_21", {72}), ("SEAFOAM_ISLANDS", {86, 116, 87, 54, 55}), ("SAFARI_ZONE", {54})):
+for _wa, _wwant in (("KANTO_ROUTE_21", {72}), ("SEAFOAM_ISLANDS", {86, 116, 87, 54, 55, 98, 79, 80}), ("SAFARI_ZONE", {54, 79})):
     _wp = open_map(_wa, "PALLET_TOWN" if _wa == "KANTO_ROUTE_21" else "KANTO_ROUTE_20" if _wa == "SEAFOAM_ISLANDS" else "FUCHSIA_CITY")
     _wt0, _wc.CURRENT_TILE = _wc.CURRENT_TILE, _wc.SURF
     _got = set()
@@ -1523,16 +1543,16 @@ for _wa, _wwant in (("KANTO_ROUTE_21", {72}), ("SEAFOAM_ISLANDS", {86, 116, 87, 
         _m = _wp._wild_for_pool(_wr.Random(_k))
         _got.add(int(getattr(_m, "id", _m)) if _m is not None else None)
     _wc.CURRENT_TILE = _wt0
-    check(_got and _got <= _wwant, f"{_wa}: out on the water, only FireRed's surfing Pokemon ({sorted(map(str, _got))})")
+    check(_got and _got <= _wwant, f"{_wa}: out on the water, only FireRed's and LeafGreen's surfing Pokemon ({sorted(map(str, _got))})")
 _wp = open_map("KANTO_ROUTE_10", "CERULEAN_CITY")
-check(set(_wp._fishing_pool("SUPER_ROD")) == {"116", "130", "54"} and set(_wp._fishing_pool("OLD_ROD")) == {"129"},
-      f"Route 10: FireRed's rods (Super Rod: Horsea, Gyarados, Psyduck) ({_wp._fishing_pool('SUPER_ROD')})")
+check(set(_wp._fishing_pool("SUPER_ROD")) == {"116", "98", "130", "54", "79"} and set(_wp._fishing_pool("OLD_ROD")) == {"129"},
+      f"Route 10: FireRed's and LeafGreen's rods (Super Rod: Horsea / Krabby, Gyarados, Psyduck / Slowpoke) ({_wp._fishing_pool('SUPER_ROD')})")
 
 # ---- batch 27: the Sevii Islands begin (One Island, Treasure Beach, Kindle Road, Mt. Ember), from FireRed's pictures
 oi = open_map("ONE_ISLAND", "KINDLE_ROAD")
 check((oi.w, oi.h) == (24, 20) and "fr_ground/3_12" in json.dumps(oi.town_map), "One Island: FireRed's own picture")
 _pp = _room_of(oi, "center")
-check(_pp.get("Heal") == (6, 2) and (14, 6) in [p for n, p in _pp.items() if n and n.startswith(("Give Celio", "Celio's"))], f"...the Network Center: the nurse across her counter, Celio by his machine ({_pp})")
+check(_pp.get("Heal") == (6, 2) and (15, 6) in [p for n, p in _pp.items() if n and n.startswith(("Give Celio", "Celio's"))] and _pp.get("Bill") == (14, 6), f"...the Network Center: the nurse across her counter, Celio by his machine ({_pp})")
 _pp = _room_of(oi, "harbor")
 check(any(p == (8, 6) for p in _pp.values()), f"...the harbour: the Seagallop's sailor on the pier ({_pp})")
 kr = open_map("KINDLE_ROAD", "ONE_ISLAND")
@@ -1562,7 +1582,7 @@ check(_pp.get("Joyful Game Corner") == (4, 2) and (5, 5) in _pp.values(), f"...t
 _bk = story.story_flags.pop("beat_three_island_bikers", None)
 th = open_map("THREE_ISLAND", "BOND_BRIDGE")
 _pp = {o.get("text"): p for p, o in th._people().items()}
-check((th.w, th.h) == (48, 60) and _pp.get("Stop the Biker Gang") == (8, 24) and sum(1 for n in _pp if n and n.startswith("Biker")) == 9
+check((th.w, th.h) == (48, 60) and _pp.get("Stop the Biker Gang") == (8, 24) and sum(1 for n in _pp if n and n.startswith("Biker")) == 8 and _pp.get("Islander") == (7, 24)
       and "THREE_ISLE_PORT" in set(th.town_map["exits"].values()),
       f"Three Island: the town over its port, as the game joins them; the bikers in the road and on the pier; Three Isle Path's mouth ({sum(1 for n in _pp if n and n.startswith('Biker'))})")
 story.story_flags["beat_three_island_bikers"] = True
@@ -1573,15 +1593,20 @@ if _bk is not None:
     story.story_flags["beat_three_island_bikers"] = _bk
 bb = open_map("BOND_BRIDGE", "THREE_ISLAND")
 check(len(_trainers(bb)) == 6, f"Bond Bridge: FireRed's six trainers ({len(_trainers(bb))})")
+_hl = {k: story.story_flags.pop(k, None) for k in ("heard_lostelle", "rescued_lostelle")}
+story.story_flags["heard_lostelle"] = True   # (she's there once her dad has told you she's lost)
 bf = open_map("BERRY_FOREST", "BOND_BRIDGE")
-check((bf.run.floor.w, bf.run.floor.h) == (57, 47) and bf._here_art().get("boss_spot") == [4, 8], "Berry Forest: FireRed's picture; Lostelle's spot where FireRed has her")
+for _k, _v in _hl.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None: story.story_flags[_k] = _v
+check((bf.run.floor.w, bf.run.floor.h) == (57, 47) and _figure(bf, "FIND LOSTELLE") == (4, 8), "Berry Forest: FireRed's picture; Lostelle where FireRed has her (talk to her: the Hypno)")
 
 # ---- Silph Co. in the Journal (Jordan, 11-14: "very clearly guided"): three steps, the marker floor by floor
-_sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated")
+_sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated", "fuji_rescued")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}
 _ck = story.inventory.pop("CARD_KEY", None)
 _tm0 = story.tracked_mission
-story.story_flags["tower_ghost_defeated"] = True
+story.story_flags["tower_ghost_defeated"] = story.story_flags["fuji_rescued"] = True   # (11-17: Silph opens at Mr. Fuji's rescue, and so does its Journal step)
 story.current_area_key = "SAFFRON_CITY"
 _sb, _tea = list(story.badges.get("KANTO", [])), story.inventory.get("TEA")
 story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL"]; story.inventory["TEA"] = 1
@@ -1671,7 +1696,10 @@ _steps = [
     ("Mr. Fuji saved: to his house in Lavender", _journal(4, ["tower_ghost_defeated", "fuji_rescued"]), ("m8", "LAVENDER_TOWN")),
     ("the Poké Flute: south to Fuchsia", _journal(4, [], ["POKE_FLUTE"]), "m10"),
     ("Fuchsia: Koga", _journal(4, ["visited_FUCHSIA_CITY"]), "m11"),
-    ("five badges, no Tea: Celadon Mansion", _journal(5), ("k_tea", "CELADON_CITY")),
+    ("five badges: the Safari Zone's Secret House, for Surf (a MAIN step, 11-17)", _journal(5), ("k_surf", "SAFARI_ZONE")),
+    ("Surf: the Warden's Gold Teeth, in the Safari Zone", _journal(5, ["got_hm_surf_kanto"], ["HM_SURF"]), ("k_teeth", "SAFARI_ZONE")),
+    ("the Gold Teeth: back to the Warden for Strength", _journal(5, ["got_gold_teeth"], ["GOLD_TEETH"]), ("k_teeth", "FUCHSIA_CITY")),
+    ("Surf and Strength, no Tea: Celadon Mansion", _journal(5, ["got_hm_strength_kanto"], ["HM_STRENGTH"]), ("k_tea", "CELADON_CITY")),
     ("the Tea: Silph Co.", _journal(5, ["got_tea"], ["TEA"]), ("s_silph", "SILPH_CITY")),
     ("the Card Key: the boardroom", _journal(5, ["got_card_key"], ["CARD_KEY"]), ("s_silph2", "SILPH_CITY")),
     ("Silph freed: the President", _journal(5, ["silph_co_cleared"]), ("s_silph3", "SILPH_CITY")),
@@ -1679,7 +1707,8 @@ _steps = [
     ("six badges: by sea to Cinnabar", _journal(6), "m13"),
     ("Cinnabar: the Gym's key is in the Mansion", _journal(6, ["visited_CINNABAR_ISLAND"]), ("k_mansion", "POKEMON_MANSION")),
     ("the Secret Key: Blaine's quiz Gym", _journal(6, ["got_secret_key"]), ("m14", "CINNABAR_ISLAND")),
-    ("seven badges: Viridian's Gym", _journal(7), ("m15", "VIRIDIAN_CITY")),
+    ("seven badges: Bill's trip to the Sevii Islands first (Jordan 11-17: Sevii's first trip is MAIN, before Giovanni)", _journal(7), ("sevii_m1", "ONE_ISLAND")),
+    ("the first Sevii trip done: Viridian's Gym", _journal(7, ["got_tri_pass", "sevii_ember_rocket", "got_ruby_sevii", "celio_has_ruby", "rescued_lostelle"]), ("m15", "VIRIDIAN_CITY")),
     ("eight badges: the League", _journal(8), "m16"),
 ]
 for _what, (_id, _to), _want in _steps:
@@ -1721,9 +1750,9 @@ check(_journal(6, ["visited_CINNABAR_ISLAND"])[0] == "k_mansion", "...on Cinnaba
 story.story_flags.pop("got_secret_key", None)
 ma = open_map("POKEMON_MANSION", "CINNABAR_ISLAND"); ma._guide_key = ma._step_key = None
 _g1 = ma._guide_spot()
-_floor(ma, 2); ma.run.player = (7, 15); ma._guide_key = ma._step_key = None
+_floor(ma, 3); ma.run.player = (4, 9); ma._guide_key = ma._step_key = ma._fig_key = None   # (11-17: the Secret Key is FireRed's item ball in the basement; the marker finds it by the mission's flag, over every floor)
 _g3 = ma._guide_spot()
-check(_g1 is not None and _g3 == ((7, 13), "Burglar"), f"...in the Mansion the marker leads on (1F: {_g1}), and on 3F onto the burglar ({_g3})")
+check(_g1 is not None and _g3 == ((5, 7), "SECRET KEY"), f"...in the Mansion the marker leads on (1F: {_g1}), and in the basement onto the Secret Key ({_g3})")
 story.story_flags.pop("mansion_switch", None)
 if _ms is not None:
     story.story_flags["mansion_switch"] = _ms
@@ -1817,7 +1846,10 @@ check(_pk is not None and "MIMIC" in _mvT.move_pool(g, story.player_team[0]) and
 # Silph Co. 2F: Thunder Wave (once she's given the Up-Grade hint, when there's one to give)
 _se = next(o for o in _area["SILPH_CITY"]["route_menu"] if o.get("text") == "TALK TO EMPLOYEE")
 story.story_flags.pop("frlg_tutor_thunder_wave", None)
-_w = _teachT(_se["event"], [35], flags=["silph_upgrade_hint"])
+for _try in range(8):   # (a new Clefairy sometimes already has Thunder Wave in its moves: then there is nobody to teach; try another)
+    _w = _teachT(_se["event"], [35], flags=["silph_upgrade_hint"])
+    if story.story_flags.get("frlg_tutor_thunder_wave"):
+        break
 check("THUNDER-WAVE" in _mvT.move_pool(g, story.player_team[0]) and story.story_flags.get("frlg_tutor_thunder_wave"), f"Silph Co. 2F: the employee teaches Thunder Wave ({_w[:1]})")
 # Mt. Ember: the researchers, then Explosion
 _me = next(o for o in g.loader.area_data["STORY_PROGRESSION"]["MT_EMBER"]["route_menu"] if o.get("text") == "TALK TO THE RESEARCHERS")
@@ -1827,6 +1859,135 @@ check("EXPLOSION" in _mvT.move_pool(g, story.player_team[0]) and story.story_fla
 story.story_flags.clear(); story.story_flags.update(_savedT)
 story.inventory.clear(); story.inventory.update(_invT)
 story.player_team, story.money = _teamT, _moneyT
+
+# ---- Kanto check fixes: canon content (11-17): FireRed's Gym trainers, levels, trades, hidden items, wild tables
+from src.states.overworld import _run_story_event as _rseC
+
+
+def _roomC(key, room):
+    r = _tm[key]["rooms"][room] if room else _tm[key]
+    spots = [(x, y) for y, row in enumerate(r["art"]) for x, c in enumerate(row) if c == "N"]
+    out = {}
+    for at, p in zip(spots, r.get("people") or []):
+        for q in (p if isinstance(p, list) else [p]):
+            out[q if isinstance(q, str) else q.get("text")] = (at, q)
+    return r, out
+
+
+_r, _pp = _roomC("VIRIDIAN_CITY", "gym")
+_vg = {"Black Belt Takashi": ((10, 2), [38, 38, 38]), "Cooltrainer Yuji": ((12, 10), [38] * 5), "Black Belt Atsushi": ((11, 14), [40, 40]), "Tamer Jason": ((10, 10), [43]),
+       "Tamer Cole": ((2, 21), [39, 39]), "Black Belt Kiyo": ((3, 11), [43]), "Cooltrainer Samuel": ((6, 8), [37, 37, 38, 39, 39]), "Cooltrainer Warren": ((13, 7), [37, 37, 38, 39, 39])}
+check(all(n in _pp and _pp[n][0] == at and _pp[n][1]["event"]["battle"]["levels"] == lv for n, (at, lv) in _vg.items()),
+      f"Viridian Gym: FireRed's eight trainers on FireRed's tiles with FireRed's levels ({sorted(n for n in _vg if n not in _pp)})")
+check([t["name"] for t in _area["VIRIDIAN_CITY"]["gym"]["trainers"]] == [_pp[n][1]["event"]["battle"]["name"] for n in sorted(_vg, key=lambda n: int(_pp[n][1]["event"]["flag"].rsplit("_", 1)[1]))],
+      "...each one's flag number is his place in the data's gym.trainers")
+check(_r.get("hidden") == {"2,2": "MACHO_BRACE"} and _tm["SAFFRON_CITY"]["rooms"]["copycat_2"].get("hidden") == {"2,1": "NUGGET"}
+      and _tm["VERMILLION_CITY"]["rooms"]["harbor"].get("hidden") == {"58,28": "LAVA_COOKIE"},
+      "FireRed's hidden Macho Brace (Viridian Gym), Nugget (Copycat's room) and Lava Cookie (Vermilion's dock)")
+for _k, _room, _want in (("VERMILLION_CITY", "gym", {"Engineer Baily": [21, 21], "Sailor Dwayne": [21, 21], "Gentleman Tucker": [23]}),
+                         ("CELADON_CITY", "gym", {"Lass Kay": [23, 23], "Beauty Bridget": [21] * 4, "Picnicker Tina": [24, 24], "Beauty Tamia": [24, 24], "Beauty Lori": [24], "Lass Lisa": [23, 23], "Cooltrainer Mary": [22] * 5}),
+                         ("SAFFRON_CITY", "dojo", {"Black Belt Hitoshi": [31] * 3, "Black Belt Hideki": [32, 32], "Black Belt Aaron": [36], "Black Belt Mike": [31] * 3})):
+    _r, _pp = _roomC(_k, _room)
+    _dt = {t["name"]: t for t in (_area[_k]["gym"]["trainers"] if _room == "gym" else _area[_k]["dojo_trainers"])}
+    check(all(n in _pp and _pp[n][1]["event"]["battle"]["levels"] == lv and _dt[n]["levels"] == lv and _dt[n]["team"] == _pp[n][1]["event"]["battle"]["team"] for n, lv in _want.items()),
+          f"{_k} {_room}: every trainer standing there has FireRed's team and levels, the same in the data ({len(_want)})")
+# the six trades FireRed has that ours lacked: the person stands on FireRed's tile and trades
+_savedC, _teamC, _hereC = dict(story.story_flags), list(story.player_team), story.current_area_key
+for _k, _room, _who, _at, _want, _give, _where in (("KANTO_ROUTE_2", "house", "TRADER", (7, 2), 63, 122, "route_menu"), ("VERMILLION_CITY", "house_n", "Trader", (4, 4), 21, 83, "explore_options"),
+                                                  ("UNDERGROUND_PATH", None, "Trader", (5, 6), 32, 29, "explore_options"), ("CINNABAR_ISLAND", "lab_meet", "Old Trader", (4, 6), 26, 101, "explore_options"),
+                                                  ("CINNABAR_ISLAND", "lab_meet", "Lab Trader", (10, 5), 48, 114, "explore_options"), ("CINNABAR_ISLAND", "lab_test", "Young Trader", (11, 8), 77, 86, "explore_options")):
+    _r, _pp = _roomC(_k, _room)
+    _o = next(o for o in _area[_k][_where] if o.get("text") == _who)
+    _said = []
+    story.story_flags.pop(_o["event"]["flag"], None)
+    story.player_team = [Pokemon(g.loader.fetch_specific(_want), g.assets, size_mult=2.5)]
+    story.player_team[0].level = 20
+    story.current_area_key = _k
+    _rseC(g.current_state, _o["event"], lambda c: story.special_condition(c) if story.special_condition(c) is not None else bool(story.story_flags.get(c)), _said.append)
+    _got = story.player_team[0]
+    check(_who in _pp and _pp[_who][0] == _at and _got.id == _give and _got.level == 20 and story.story_flags.get(_o["event"]["flag"]),
+          f"{_k}: FireRed's trade on FireRed's tile {_at}: a #{_want} for the #{_give} ({_got.id}, {_said[-1][-1:] if _said else None})")
+    if _give == 29:
+        check(getattr(_got, "held_item", None) == "TINY_MUSHROOM", "...the Nidoran comes holding a TinyMushroom (FireRed)")
+    if _give == 83:   # (11-17, Jordan: the Stick is in; the Bag holds its copy, as for every held item)
+        check(getattr(_got, "held_item", None) == "STICK" and story.inventory.get("STICK") == 1, f"...the Farfetch'd comes holding the Stick (FireRed) ({getattr(_got, 'held_item', None)}, in the Bag: {story.inventory.get('STICK')})")
+        story.inventory.pop("STICK", None)
+    _said.clear()
+    _rseC(g.current_state, _o["event"], lambda c: True, _said.append)
+    check(story.player_team[0].id == _give and len(story.player_team) == 1 and bool(_said), f"...asked again, the trader only asks after it ({_said[-1] if _said else None})")
+story.story_flags.clear(); story.story_flags.update(_savedC)
+story.player_team, story.current_area_key = _teamC, _hereC
+# wild tables: FireRed's and LeafGreen's species together, no others but the dex extras kept (kwild_extra.json)
+_wd = g.loader.area_data
+check(set(_wd["KANTO_ROUTE_8_PERCENTAGES"]) >= {"16", "52", "23", "27", "58", "37"} and "122" not in _wd["KANTO_ROUTE_2_PERCENTAGES"]
+      and set(_wd["VIRIDIAN_FOREST_PERCENTAGES"]) == {"10", "13", "14", "11", "25"} and set(_wd["KANTO_POKEMON_TOWER_PERCENTAGES"]) >= {"92", "93", "104"}
+      and "41" not in _wd["KANTO_POKEMON_TOWER_PERCENTAGES"], "wild tables: FireRed's and LeafGreen's species together (Route 8, Viridian Forest, the Tower), none of our old extras")
+_off = [k for k in _wd if k.endswith("_PERCENTAGES") and isinstance(_wd[k], dict) and "TREE" not in k and not k.startswith(("KANTO_ROUTE_26", "KANTO_ROUTE_27", "KANTO_ROUTE_28"))
+        and k.startswith(("KANTO_ROUTE_", "SAFARI", "SEAFOAM", "MT_MOON", "ROCK_TUNNEL", "VICTORY", "CERULEAN_CAVE", "POKEMON_MANSION", "VIRIDIAN_FOREST", "DIGGLETT", "POWER_PLANT")) and sum(_wd[k].values()) != 100]
+check(not _off, f"...every rebuilt table adds up to 100 ({_off})")
+_seaC = ("PALLET_TOWN", "VIRIDIAN_CITY", "CERULEAN_CITY", "VERMILLION_CITY", "CELADON_CITY", "FUCHSIA_CITY", "CINNABAR_ISLAND")
+check("120" not in _wd["KANTO_ROUTE_19_SUPER_ROD_PERCENTAGES"] and sum(_wd["KANTO_ROUTE_19_SUPER_ROD_PERCENTAGES"].values()) == 100
+      and all("120" in _wd[f"{k}_SUPER_ROD_PERCENTAGES"] and _area[k].get("can_fish") for k in ("PALLET_TOWN", "VERMILLION_CITY", "CINNABAR_ISLAND")),
+      "no dex extra is left (11-17): Staryu is where LeafGreen has it, on the Super Rod at Pallet, Vermilion and Cinnabar (towns you can fish in), not on Route 19")
+check(all(_area[k].get("can_fish") and all(f"{k}_{r}_ROD_PERCENTAGES" in _wd for r in ("OLD", "GOOD", "SUPER")) for k in _seaC),
+      "the seven water towns can be fished in (can_fish, with their three rod tables)")
+check(all(_area[k].get("can_fish") and any(o.get("action") == "FISH" for o in _area[k]["route_menu"]) for k in ("KANTO_ROUTE_4", "KANTO_ROUTE_6", "KANTO_ROUTE_22", "CERULEAN_CAVE", "SEAFOAM_ISLANDS")),
+      "Routes 4, 6 and 22, Cerulean Cave and the Seafoam Islands can be fished in (FireRed has rod tables there)")
+check(all(f"{k}_SURF_PERCENTAGES" in _wd for k in ("PALLET_TOWN", "VIRIDIAN_CITY", "CERULEAN_CITY", "VERMILLION_CITY", "CELADON_CITY", "FUCHSIA_CITY", "CINNABAR_ISLAND", "KANTO_ROUTE_4"))
+      and _area["KANTO_ROUTE_4"].get("surf_pool_percentages") == "KANTO_ROUTE_4_SURF_PERCENTAGES" and "KANTO_ROUTE_4_SUPER_ROD_PERCENTAGES" in _wd,
+      "the seven water towns and Route 4 have a Surf table of their own (and Route 4 its rods)")
+
+# ---- Kanto follow-up decisions (11-17, Jordan; kanto_handoff/kanto_check/DECISIONS.md "Follow-up answers")
+_spF = {t["name"]: t for t in _area["SILPH_CITY"]["trainer_pool"]}
+_wantF = {"Admin Proton": ([42, 89, 110], [30] * 3), "Archer": ([110, 24, 131], [31] * 3), "Executive Ariana": ([45, 91, 24, 53], [33] * 4)}
+check(all(_spF[n]["team"] == tm and _spF[n].get("levels") == lv for n, (tm, lv) in _wantF.items()),
+      f"Silph Co.'s story trainers have fixed levels: Proton 3 x 30, Archer 3 x 31, Ariana 4 x 33, their species kept ({ {n: _spF[n].get('levels') for n in _wantF} })")
+check(not [k for k, a in _area.items() if isinstance(a, dict) and any(t.get("name") == "Alpesh" for t in a.get("trainer_pool") or [])] and "Alpesh" not in json.dumps(_tm["KANTO_ROUTE_7"]),
+      "Alpesh is gone from Route 7 (the data and the map)")
+# the Stick: Farfetch'd's own held item, two critical-hit stages (the games' rule); the Lucky Egg: half again the XP
+import random as _rndF
+from src.pokemon import items as _itF
+_bF = battle("VERMILLION_CITY", 83, 19)
+_pF, _fF = _bF.player_pokemon, _bF.opponent_pokemon
+_realF = _rndF.random
+
+
+def _critF(mon, item):
+    mon.held_item = item
+    _rndF.random = lambda: 0.3   # (between a plain hit's 1 in 24 and two stages' 1 in 2)
+    try:
+        _bF._calculate_damage(mon, _fF, 40, 1.0)
+    finally:
+        _rndF.random = _realF
+    return _bF._last_was_crit
+
+
+check(_bF.held_crit(_pF) == 0 and not _critF(_pF, None) and _critF(_pF, "STICK") and _bF.held_crit(_pF) == 2,
+      "the Stick: Farfetch'd holding it lands critical hits two stages more often (1 in 2, not 1 in 24)")
+_rtF = mk(19)
+_bF.player_pokemon = _rtF
+check(not _critF(_rtF, "STICK") and _bF.held_crit(_rtF) == 0, "...and it does nothing for any other Pokemon (a Rattata)")
+_bF.player_pokemon = _pF
+check(_itF.holdable("STICK") and _itF.holdable("LUCKY_EGG") and "Farfetch'd" in _itF.describe("STICK") and "XP" in _itF.describe("LUCKY_EGG"),
+      "the Stick and the Lucky Egg can be held, and the Bag says what each does")
+
+
+def _xpF(item):
+    b = battle("VERMILLION_CITY", 83, 20)
+    b.player_pokemon.level, b.opponent_pokemon.level = 10, 40
+    b.player_pokemon.held_item = item
+    lines = b._award_battle_xp()
+    return next((int(w) for l in lines if " gained " in l and " XP" in l for w in l.replace("!", "").split() if w.isdigit()), 0)
+
+
+_plainF, _eggF = _xpF(None), _xpF("LUCKY_EGG")
+check(_plainF > 20 and abs(_eggF - _plainF * 1.5) <= 1, f"the Lucky Egg: its holder earns half again the XP from a battle ({_plainF} -> {_eggF})")
+_o15 = next((o for o in _area["KANTO_ROUTE_15"]["route_menu"] if o.get("text") == "OAK'S AIDE"), {})
+check(_o15.get("door") == "gate_2" and _o15.get("event", {}).get("requires") == ["caught_kanto:50"] and _o15["event"].get("gift_item") == {"LUCKY_EGG": 1}
+      and _tm["KANTO_ROUTE_15"]["rooms"]["gate_2"]["people"] == ["OAK'S AIDE"],
+      "Route 15's aide (the gatehouse's upstairs, FireRed's spot) gives a Lucky Egg for fifty kinds caught (played in kanto_gates)")
+check(_tm["VIRIDIAN_CITY"]["rooms"]["gym"].get("hidden_when") == {"2,2": ["has_badge:EARTH"]}, "Viridian Gym's hidden Macho Brace waits for the Earth Badge (played in kanto_gates)")
+story.current_area_key = "PALLET_TOWN"
 
 
 print(f"##### {len(fails)} failures")

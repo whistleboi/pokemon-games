@@ -53,8 +53,13 @@ class RegionMapState(GameState):
         story = game.story_manager
         data = map_data(game)
         prog = game.loader.area_data.get("STORY_PROGRESSION", {})
-        self.names = {k: a.get("route_name") or k.replace("_", " ").title() for k, a in prog.items()}
-        self.visited = {k for k in data["points"] if story.story_flags.get(f"visited_{k}")}
+        self.names = {k: (a.get("fly_point") or {}).get("name") or a.get("route_name") or k.replace("_", " ").title()
+                      for k, a in prog.items()}   # (a route's own town by its name: Desert Town on Route 64)
+        _own = {k for e in (data.get("region_maps") or {}).values() for k in (e.get("points") or {})}   # (a region's own town map's points too: Orange's)
+        self.visited = {k for k in set(data["points"]) | _own if story.story_flags.get(f"visited_{k}")}
+        if fly:   # (Orange, Jordan 11-17: only islands with a Pokemon Center)
+            from src.states.systems.fly_map import fly_ok
+            self.visited = {k for k in self.visited if fly_ok(game, k)}
         here_view = view_of(game, story.current_area_key)
         views = {view_of(game, k) for k in self.visited} | ({here_view} if here_view else set())
         order = list(data.get("views", {}))
@@ -174,12 +179,12 @@ class RegionMapState(GameState):
         if self.selected == self.game.story_manager.current_area_key:
             self.go_back()
             return
-        from src.states.overworld import AreaTransitionState
         from src.coop import travel
         key = self.selected
 
         def go():
-            self.game.change_state(AreaTransitionState(self.game, key))
+            from src.states.systems.fly_map import fly_land
+            fly_land(self.game, key)
 
         def fly():
             from src.states.systems.fly_scene import FlyScene

@@ -186,8 +186,11 @@ class MoveAnimation:
                 k = 1 / max(1, tw["left"])
                 for key, goal in tw["to"].items():
                     cur = layer[key]
-                    layer[key] = [a + (b - a) * k for a, b in zip(cur, goal)] if isinstance(goal, list) \
-                        else cur + (goal - cur) * k
+                    if isinstance(goal, list):  # (a part left unset in the animation's data keeps where it is)
+                        layer[key] = [a if b is None else b if a is None else a + (b - a) * k
+                                      for a, b in zip(cur, goal)]
+                    elif goal is not None and cur is not None:
+                        layer[key] = cur + (goal - cur) * k
                 tw["left"] -= 1
                 if tw["left"] <= 0:
                     layer["tween"] = None

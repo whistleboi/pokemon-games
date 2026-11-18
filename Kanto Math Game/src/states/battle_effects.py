@@ -14,7 +14,8 @@ A mixin for TrainerBattleState:
 - status moves of every kind (stat moves, confusion, healing, swagger, field moves, a set of unique
   moves) and the added effects of damaging moves (stat changes, confusion, trapping, rampage).
 
-usable_status(d) says which status moves the game can use (src/pokemon/moves.py learns only those)."""
+usable_status(d) says which status moves this file runs itself; the rest have their own mechanic in
+battle_moves.py (every move can be learned now)."""
 import random
 
 STAGE_STATS = ("ATTACK", "DEFENSE", "SPATK", "SPDEF", "SPEED", "ACCURACY", "EVASION")
@@ -28,6 +29,12 @@ PROTECT = {"PROTECT", "DETECT", "KINGS-SHIELD", "SPIKY-SHIELD", "BANEFUL-BUNKER"
 RAMPAGE = {"THRASH", "OUTRAGE", "PETAL-DANCE", "RAGING-FURY"}
 CANT_ESCAPE = {"MEAN-LOOK", "BLOCK", "SPIDER-WEB"}
 HAZARDS = {"SPIKES": "spikes", "TOXIC-SPIKES": "toxic_spikes", "STEALTH-ROCK": "stealth_rock", "STICKY-WEB": "sticky_web"}
+HAZARD_CAP = {"spikes": 3, "toxic_spikes": 2, "stealth_rock": 1, "sticky_web": 1}
+# Moves that clear entry hazards (Jordan, 11-17): Rapid Spin / Mortal Spin the user's side (after a hit), Defog both
+# sides (and the target's screens), Tidy Up both sides (and substitutes); Court Change swaps the two sides' conditions.
+HAZARD_CLEAR = {"RAPID-SPIN", "MORTAL-SPIN", "DEFOG", "TIDY-UP", "COURT-CHANGE"}
+SIDE_SWAP = ("spikes", "toxic_spikes", "stealth_rock", "sticky_web", "reflect", "light_screen", "aurora_veil",
+             "safeguard", "mist", "tailwind", "lucky_chant")
 SCREENS = {"REFLECT": ("reflect", 5, "Reflect"), "LIGHT-SCREEN": ("light_screen", 5, "Light Screen"),
            "AURORA-VEIL": ("aurora_veil", 5, "Aurora Veil"), "SAFEGUARD": ("safeguard", 5, "Safeguard"),
            "MIST": ("mist", 5, "the mist"), "TAILWIND": ("tailwind", 4, "the tailwind"),
@@ -46,8 +53,9 @@ UNIQUE = {"SPLASH", "CELEBRATE", "HOLD-HANDS", "TELEPORT", "FOCUS-ENERGY", "BELL
           "REFRESH", "PSYCH-UP", "TAUNT", "DISABLE", "ENCORE", "STRENGTH-SAP", "STOCKPILE", "HAZE", "TRICK-ROOM",
           "MUD-SPORT", "WATER-SPORT", "ROAR", "WHIRLWIND", "LASER-FOCUS", "JUNGLE-HEALING", "LUNAR-BLESSING",
           "TAKE-HEART", "TIDY-UP", "SHELL-SMASH", "FILLET-AWAY", "CLANGOROUS-SOUL", "NO-RETREAT",
-          "VICTORY-DANCE", "POWER-SWAP", "GUARD-SWAP", "SPEED-SWAP", "WONDER-ROOM", "MAGIC-ROOM", "IMPRISON"
-          } | PROTECT | CANT_ESCAPE | set(HAZARDS) | set(SCREENS) | WEATHER_HEAL | set(TERRAINS)
+          "VICTORY-DANCE", "POWER-SWAP", "GUARD-SWAP", "SPEED-SWAP", "WONDER-ROOM", "MAGIC-ROOM", "IMPRISON",
+          "DEFOG", "COURT-CHANGE"} | PROTECT | CANT_ESCAPE | set(HAZARDS) | set(SCREENS) | WEATHER_HEAL | set(TERRAINS)
+# (11-17: every other status move has its own mechanic in battle_moves.py, so every move can be learned now.)
 SUPPORTED_AILMENTS = {"paralysis", "sleep", "freeze", "burn", "poison", "confusion", "infatuation", "trap",
                       "leech-seed", "yawn", "perish-song", "ingrain", "disable"}
 
@@ -111,14 +119,17 @@ class MoveEffects:
         """Stat stages and volatile conditions end when a Pokemon leaves the field (the field
         conditions of each side stay)."""
         active = {id(self.player_pokemon), id(self.opponent_pokemon)}
+        self.mv_left_field(active)  # (types changed for the battle, Transform: back as they were)
         for table in (self._fx()["stages"], self._fx()["vol"]):
             for k in [k for k in table if k not in active]:
                 table.pop(k)
 
     # ------------------------------------------------------------------ terrains
     def grounded(self, mon):
-        if mon and self.held_grounded(mon):  # (an Iron Ball pulls it down)
+        if mon and self.forced_grounded(mon):  # (an Iron Ball, Smack Down, Gravity, Ingrain pull it down)
             return True
+        if mon and (self.vol(mon).get("magnet_rise") or self.vol(mon).get("telekinesis")):
+            return False
         return bool(mon) and "FLYING" not in (mon.types or []) and self.ab(mon) != "LEVITATE"
 
     def terrain(self):
@@ -147,6 +158,8 @@ class MoveEffects:
 
     def terrain_blocks_status(self, target, ailment):
         """Misty Terrain stops every status (and confusion); Electric Terrain stops sleep."""
+        if ailment == "sleep" and self.field().get("uproar"):  # (an uproar keeps everyone awake)
+            return True
         kind = self.terrain()
         if not kind or not self.grounded(target):
             return False
@@ -161,7 +174,10 @@ class MoveEffects:
         return stage_mult(s)
 
     def acc_mult(self, attacker, defender):
-        s = max(-6, min(6, self.stages(attacker)["ACCURACY"] - self.stages(defender)["EVASION"]))
+        evasion = self.stages(defender)["EVASION"]
+        if evasion > 0 and (self.vol(defender).get("identified") or self.vol(defender).get("miracle_eye")):
+            evasion = 0  # (Foresight, Odor Sleuth, Miracle Eye)
+        s = max(-6, min(6, self.stages(attacker)["ACCURACY"] - evasion))
         return acc_stage_mult(s)
 
     def speed_mult(self, mon):
@@ -174,6 +190,8 @@ class MoveEffects:
             mult *= 2
         if a == "QUICKFEET" and getattr(mon, "status", None):
             mult *= 1.5
+        if self.side(mon).get("swamp"):  # (Grass + Water Pledge, a doubles combination)
+            mult *= 0.25
         return mult * self.held_speed_mult(mon)  # (Choice Scarf, Iron Ball, Macho Brace, Quick Powder)
 
     def change_stages(self, mon, changes, by_foe=False):
@@ -196,6 +214,7 @@ class MoveEffects:
                 lines.append(f"{label}'s {name} won't go any {'higher' if n > 0 else 'lower'}!")
                 continue
             dropped = dropped or new < st[stat]
+            self.vol(mon)["raised_turn" if new > st[stat] else "lowered_turn"] = getattr(self, "turn_count", 0)  # (Lash Out, Burning Jealousy)
             st[stat] = new
             lines.append(f"{label}'s {name} {(RISE if n > 0 else FALL)[min(3, abs(n))]}")
         lines += self.ability_after_drop(mon, by_foe, dropped)  # Defiant, Competitive
@@ -231,12 +250,18 @@ class MoveEffects:
     NO_ENCORE = {"ENCORE", "STRUGGLE", "TRANSFORM", "MIMIC", "METRONOME", "SKETCH", "SLEEP-TALK"}
 
     def forced_effect_move(self, mon):
-        """A rampage keeps going (Thrash, Outrage) whatever was picked, and so does an Encore (the
-        same move again, for 3 turns)."""
+        """A rampage keeps going (Thrash, Outrage) whatever was picked, and so do Rollout, Uproar and Bide, and an
+        Encore (the same move again, for 3 turns)."""
         v = self.vol(mon)
         r = v.get("rampage")
         if r:
             return r[0]
+        if v.get("rollout_lock"):
+            return v["rollout_lock"]
+        if v.get("uproar"):
+            return "UPROAR"
+        if v.get("bide"):
+            return "BIDE"
         enc = v.get("encore")
         return enc[0] if enc else None
 
@@ -251,7 +276,7 @@ class MoveEffects:
         dis = v.get("disabled")
         if dis and dis[0] == name:
             return f"{self._label(mon)}'s {name.replace('-', ' ')} is disabled!"
-        return None
+        return self.mv_blocked(mon, name, d)  # (Torment, Heal Block, Throat Chop, Gravity...: battle_moves.py)
 
     def protected(self, attacker, defender, d):
         """Protect / Detect: moves aimed at the protected Pokemon fail this turn."""
@@ -271,9 +296,12 @@ class MoveEffects:
             if getattr(self, "_acts_second", None) == id(attacker) or random.random() >= (1 / 3) ** streak:
                 v["protect_streak"] = 0
                 return fail
-            v["protected"], v["protect_streak"] = True, streak + 1
+            v["protected"], v["protect_streak"] = name, streak + 1   # (which shield: its contact penalty)
             return [f"{att_label} protected itself!"]
         v["protect_streak"] = 0
+        own = self.mv_status(name, d, attacker, defender, att_label, def_label)  # (battle_moves.py)
+        if own is not None:
+            return own
         if name == "ENDURE":
             v["endure"] = True
             return [f"{att_label} braced itself!"]
@@ -289,17 +317,9 @@ class MoveEffects:
             fv["no_escape"] = True
             return [f"{def_label} can no longer escape!"]
         if name in HAZARDS:
-            key = HAZARDS[name]
-            foe_side = self.side(defender)
-            layers = foe_side.get(key, 0)
-            cap = {"spikes": 3, "toxic_spikes": 2}.get(key, 1)
-            if layers >= cap:
-                return fail
-            foe_side[key] = layers + 1
-            return {"spikes": ["Spikes were scattered around the foe's feet!"],
-                    "toxic_spikes": ["Poison spikes were scattered around the foe's feet!"],
-                    "stealth_rock": ["Pointed stones float in the air around the foe!"],
-                    "sticky_web": ["A sticky web spreads out on the ground around the foe!"]}[key]
+            return self.lay_hazard(HAZARDS[name], defender)
+        if name in ("DEFOG", "TIDY-UP", "COURT-CHANGE"):
+            return self.clear_hazards(name, attacker, defender, att_label, def_label)
         if name in SCREENS:
             key, turns, label = SCREENS[name]
             my_side = self.side(attacker)
@@ -334,10 +354,6 @@ class MoveEffects:
                 return fail
             v["imprison"] = True
             return [f"{att_label} sealed any moves its target shares with it!"]
-        if name == "FLING":
-            return [f"{att_label} has nothing to fling!"] + fail
-        if name == "HELPING-HAND":
-            return fail  # (no ally to help in a single battle)
         if name == "TRICK-ROOM":
             f = self.field()
             if f.get("trick_room"):
@@ -563,12 +579,8 @@ class MoveEffects:
             v = self.vol(attacker)
             if not v.get("rampage"):
                 v["rampage"] = [name, random.randint(2, 3)]
-        if name == "RAPID-SPIN" and damage:
-            v = self.vol(attacker)
-            v.pop("trapped", None)
-            v.pop("seeded", None)
-            for key in HAZARDS.values():
-                self.side(attacker).pop(key, None)
+        if name in ("RAPID-SPIN", "MORTAL-SPIN") and damage:
+            lines += self.clear_hazards(name, attacker, defender, att_label, def_label)
         return lines
 
     def end_rampage_turn(self, mon):
@@ -598,13 +610,75 @@ class MoveEffects:
         v["substitute"] = sub - damage
         return 0, [f"The substitute took damage for {def_label}!"]
 
+    # ------------------------------------------------------------------ entry hazards
+    def _team_word(self, mon):
+        """'your team' / 'the foe's team': the side mon is on."""
+        return "your team" if mon is self.player_pokemon else "the foe's team"
+
+    def lay_hazard(self, key, target):
+        """Spikes (3 layers), Toxic Spikes (2), Stealth Rock, Sticky Web on the target's side. Returns its lines."""
+        s = self.side(target)
+        layers = s.get(key, 0)
+        if layers >= HAZARD_CAP[key]:
+            return ["But it failed!"]
+        s[key] = layers + 1
+        team = self._team_word(target)
+        return {"spikes": [f"Spikes were scattered around {team}'s feet!"],
+                "toxic_spikes": [f"Poison spikes were scattered around {team}'s feet!"],
+                "stealth_rock": [f"Pointed stones float in the air around {team}!"],
+                "sticky_web": [f"A sticky web spreads out under {team}!"]}[key]
+
+    def clear_hazards(self, name, attacker, defender, att_label, def_label):
+        """Rapid Spin / Mortal Spin (the user's side; free of trapping and Leech Seed too), Defog (both sides, the
+        target's screens and the terrain; it lowers evasion), Tidy Up (both sides and the substitutes; Attack and Speed
+        up), Court Change (swaps the two sides' hazards, screens and tailwinds). Returns lines."""
+        mine, theirs = self.side(attacker), self.side(defender)
+        lines = []
+        if name == "COURT-CHANGE":
+            for key in SIDE_SWAP:
+                a, b = mine.pop(key, None), theirs.pop(key, None)
+                if b:
+                    mine[key] = b
+                if a:
+                    theirs[key] = a
+            return [f"{att_label} swapped the effects on each side of the field!"]
+        sides = [mine] if name in ("RAPID-SPIN", "MORTAL-SPIN") else [mine, theirs]
+        gone = [key for s in sides for key in HAZARDS.values() if s.pop(key, None)]
+        shown = {"spikes": "spikes", "toxic_spikes": "poison spikes", "stealth_rock": "pointed stones",
+                 "sticky_web": "sticky web"}
+        for key in dict.fromkeys(gone):
+            lines.append(f"The {shown[key]} disappeared!")
+        if name in ("RAPID-SPIN", "MORTAL-SPIN"):
+            v = self.vol(attacker)
+            if v.pop("trapped", None):
+                lines.append(f"{att_label} got free!")
+            if v.pop("seeded", None):
+                lines.append(f"{att_label} shed Leech Seed!")
+            return lines
+        if name == "DEFOG":
+            for key in ("reflect", "light_screen", "aurora_veil", "safeguard", "mist"):
+                theirs.pop(key, None)
+            if self.terrain():
+                self.field().pop("terrain", None)
+                lines.append("The terrain faded away!")
+            drop = [] if self.vol(defender).get("substitute") else self.change_stages(defender, [["EVASION", -1]], by_foe=True)
+            return drop + lines
+        if name == "TIDY-UP":
+            for mon in (attacker, defender):
+                if self.vol(mon).pop("substitute", None):
+                    lines.append(f"{self._label(mon)}'s substitute faded!")
+            return (lines or ["Tidying up complete!"]) + self.change_stages(attacker, [["ATTACK", 1], ["SPEED", 1]])
+        return lines
+
     # ------------------------------------------------------------------ switch-in
     def entry_hazards(self, mon):
-        """Spikes, Toxic Spikes, Stealth Rock and Sticky Web hurt / slow a Pokemon switching in."""
+        """Spikes, Toxic Spikes, Stealth Rock and Sticky Web hurt / slow a Pokemon switching in (Jordan, 11-17).
+        Flying types and Levitate (not with an Iron Ball) are above Spikes, Toxic Spikes and Sticky Web; Magic Guard
+        takes no damage from them; a grounded Poison type soaks up Toxic Spikes."""
         s, label, lines = self.side(mon), self._label(mon), []
-        if not any(s.get(k) for k in HAZARDS.values()):
-            return lines  # (also: the battle's HP isn't set up yet when the first Pokemon come out)
-        flying = "FLYING" in (mon.types or []) or self.ab(mon) == "LEVITATE"
+        if not mon or not any(s.get(k) for k in HAZARDS.values()) or self._hp(mon) <= 0:
+            return lines
+        flying = not self.grounded(mon)
         mx = self._max_hp(mon)
         guard = self.ab(mon) == "MAGICGUARD"  # no damage from hazards (Toxic Spikes and Sticky Web still work)
         if s.get("stealth_rock") and not guard:  # 1/8 of max HP, times Rock's effectiveness on it
@@ -613,19 +687,24 @@ class MoveEffects:
             dmg = max(1, int(mx * chart.get_multiplier("ROCK", mon.types) / 8))
             self._adjust_hp(mon, -dmg)
             lines.append(f"Pointed stones dug into {label}!")
+            if self._hp(mon) <= 0:
+                return lines
         if s.get("spikes") and not flying and not guard:  # 1/8, 1/6, 1/4 for 1-3 layers
             dmg = max(1, mx // {1: 8, 2: 6, 3: 4}[s["spikes"]])
             self._adjust_hp(mon, -dmg)
             lines.append(f"{label} is hurt by the spikes!")
+            if self._hp(mon) <= 0:
+                return lines
         if s.get("toxic_spikes") and not flying:
             if "POISON" in (mon.types or []):
                 s.pop("toxic_spikes")
                 lines.append("The poison spikes disappeared from the ground!")
-            elif not getattr(mon, "status", None) and "STEEL" not in (mon.types or []):
+            elif not getattr(mon, "status", None) and "STEEL" not in (mon.types or []) and not s.get("safeguard") \
+                    and not self.terrain_blocks_status(mon, "poison") and not self.ability_status_immune(mon, "poison"):
                 mon.status = "toxic" if s["toxic_spikes"] >= 2 else "poison"
                 lines.append(f"{label} was {'badly ' if s['toxic_spikes'] >= 2 else ''}poisoned!")
         if s.get("sticky_web") and not flying:
-            lines += [f"{label} was caught in a sticky web!"] + self.change_stages(mon, [["SPEED", -1]])
+            lines += [f"{label} was caught in a sticky web!"] + self.change_stages(mon, [["SPEED", -1]], by_foe=True)
         return lines
 
     # ------------------------------------------------------------------ end of turn
@@ -701,6 +780,7 @@ class MoveEffects:
                 v["laser_focus"] -= 1
                 if v["laser_focus"] <= 0:
                     v.pop("laser_focus")
+        lines += self.mv_end_of_turn()  # (Future Sight, Nightmare, Salt Cure, the timers: battle_moves.py)
         for side_name in ("player", "opponent"):
             s = self._fx()["side"][side_name]
             team = "Your team's" if side_name == "player" else "The foe's"

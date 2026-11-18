@@ -5,6 +5,7 @@ effect mixins call these hooks:
   power / attack / defence / final damage: type boosters and Plates, Choice Band / Specs, Light Ball,
       Thick Club, Deep Sea Tooth / Scale, Metal Powder, Eviolite, Expert Belt, Metronome
   accuracy: Wide Lens (holder's moves), Bright Powder / Lax Incense (foe's moves at the holder)
+  critical hits: the Stick (Farfetch'd: two stages)
   speed and order: Choice Scarf, Iron Ball, Macho Brace, Quick Powder, Quick Claw, Lagging Tail, Full Incense
   moves: Choice items lock the first move picked; Power Herb skips a charge turn; King's Rock / Razor Fang flinch
   after hits: Rocky Helmet, Shell Bell, Big Root (more back from draining)
@@ -28,6 +29,7 @@ SPECIES_ITEMS = {  # held item -> (species ids, stat, multiplier)
     "METAL_POWDER": ({132}, ("DEFENSE",), 2.0),
     "QUICK_POWDER": ({132}, ("SPEED",), 2.0),
 }
+CRIT_ITEMS = {"STICK": ({83, 865}, 2), "LUCKY_PUNCH": ({113}, 2)}   # (11-17: the Lucky Punch, Chansey's, FireRed's Sevault Canyon)   # held item -> (species ids, critical-hit stages): the Stick, Farfetch'd's (and Sirfetch'd's) own
 SLOW_ITEMS = {"IRON_BALL", "MACHO_BRACE"}
 LAST_ITEMS = {"LAGGING_TAIL", "FULL_INCENSE"}
 FLINCH_ITEMS = {"KINGS_ROCK", "RAZOR_FANG"}
@@ -42,9 +44,9 @@ class HeldItemEffects:
     def held(self, mon):
         """The item a battler holds that works now (None: nothing, a Klutz holder, or a used-up item it no longer has)."""
         item = getattr(mon, "held_item", None)
-        if not item or self.ab(mon) == "KLUTZ" or self.vol(mon).get("embargo"):
+        if not item or self.ab(mon) == "KLUTZ" or self.vol(mon).get("embargo") or self.field().get("magic_room"):
             return None
-        if itemlib.consumed(item) and self._player_owns(mon):
+        if itemlib.consumed(item) and self._player_owns(mon) and self.vol(mon).get("borrowed") != item:
             story = self.game.story_manager
             if story.inventory.get(item, 0) <= 0:  # (its copy was used from the Bag since)
                 return None
@@ -58,7 +60,9 @@ class HeldItemEffects:
         """A used-up held item (a berry, an herb): gone from the holder (and, for yours, from the Bag)."""
         item = getattr(mon, "held_item", None)
         mon.held_item = None
-        if item and self._player_owns(mon):
+        if item and hasattr(self, "_consumed"):
+            self._consumed(mon, item)  # (Recycle can find it again; Belch counts a berry)
+        if item and self._player_owns(mon) and self.vol(mon).pop("borrowed", None) != item:
             inv = self.game.story_manager.inventory
             inv[item] = inv.get(item, 0) - 1
             if inv[item] <= 0:
@@ -78,6 +82,8 @@ class HeldItemEffects:
         orb = itemlib.ORB_BOOSTS.get(item)
         if orb and int(getattr(attacker, "id", 0) or 0) == orb[0] and t in orb[1]:
             mult *= 1.2  # (Adamant, Lustrous, Griseous Orb)
+        if item in itemlib.OGERPON_MASKS and int(getattr(attacker, "id", 0) or 0) == 1017:
+            mult *= itemlib.MASK_BOOST  # (Ogerpon's masks: every move)
         if item == "METRONOME":  # the same move again and again: +20% a time, up to double
             chain = self.vol(attacker).get("metronome_chain")
             if chain and chain[0] == name:
@@ -130,6 +136,12 @@ class HeldItemEffects:
         if name == "TECHNO-BLAST" and item in itemlib.DRIVES:
             return dict(d, type=itemlib.DRIVES[item])
         return d
+
+    def held_crit(self, attacker):
+        """Critical-hit stages from the holder's item (the Stick: +2, only for Farfetch'd and Sirfetch'd)."""
+        from src.pokemon.evolution import base_id
+        ids, stages = CRIT_ITEMS.get(self.held(attacker), ((), 0))
+        return stages if stages and (getattr(attacker, "id", None) in ids or base_id(attacker) in ids) else 0
 
     def held_acc_mult(self, attacker, defender):
         mult = 1.1 if self.held(attacker) == "WIDE_LENS" else 1.0
@@ -316,7 +328,11 @@ class HeldItemEffects:
         return lines
 
     def held_end_of_turn(self, mon):
-        """Leftovers: a sixteenth of its HP back, while it's standing and hurt. Returns lines."""
+        """Leftovers: a sixteenth of its HP back, while it's standing and hurt. A Flame Orb / Toxic Orb burns /
+        badly poisons its holder. Returns lines."""
+        orb = {"FLAME_ORB": "burn", "TOXIC_ORB": "toxic"}.get(self.held(mon))
+        if orb and self._hp(mon) > 0 and self._can_inflict(orb, mon):
+            return [self._inflict(orb, mon, self._label(mon))]
         if self.held(mon) != "LEFTOVERS":
             return []
         hp, mx = self._hp(mon), self._max_hp(mon)

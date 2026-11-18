@@ -11,10 +11,12 @@ from src.ui.dialogue import ClassicDialogueBox
 from src.pokemon.mechanics import TypeAdvantage
 from src.pokemon import forms
 from src.pokemon import catching
-from src.states.battle_effects import MoveEffects, usable_status
+from src.states.battle_effects import MoveEffects, usable_status, HAZARDS, HAZARD_CAP
 from src.states.battle_abilities import AbilityEffects
 from src.states.battle_items import HeldItemEffects
 from src.states.battle_gimmicks import GimmickEffects, end_battle as gimmick_end_battle
+from src.states.battle_moves import MoveMechanics, TARGET_DEFENSE, IGNORE_DEF_STAGES
+from src.states.battle_doubles import DoublesSlots
 from src.pokemon import balance
 from src.pokemon import moves as movelib
 from src.pokemon import pp as pplib
@@ -27,7 +29,16 @@ from src.config import WHITE, BLACK, GOLD, FPS
 
 
 # [REF-0024: Trainer Battle Core]
-class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEffects, GameState):
+class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffects, DoublesSlots, HeldItemEffects,
+                         GameState):
+    def __new__(cls, *args, **kwargs):
+        # A double battle (options {"double": True}) is its own class, so every caller that builds a trainer battle from
+        # data gets one by the flag alone (Luana now; Twins and tag battles later).
+        if cls is TrainerBattleState and (kwargs.get("options") or {}).get("double"):
+            from src.states.battle_double import DoubleBattleState
+            cls = DoubleBattleState
+        return super().__new__(cls)
+
     def __init__(
         self,
         game,
@@ -46,8 +57,14 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         badge_reward=None,
         background_image=None,
         starter_battle=False,
+        options=None,
     ):
         super().__init__(game)
+        # Battle options from the trainer's data (Jordan 11-18): "double" (two Pokemon a side: src/states/battle_double.py,
+        # see __new__), "no_switch" (you can't switch by choice: Drake's six-on-six, Orange 5.7 / the anime; a fainted
+        # Pokemon is still replaced; a string is the line shown instead of the usual one).
+        self.battle_options = dict(options or {})
+        self.no_switch = self.battle_options.get("no_switch") or False
         # First rival battle with starters: Normal-type starter moves, and a loss still moves the story on.
         self.starter_battle = starter_battle
 
@@ -293,13 +310,15 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         own_types = {t.upper() for t in self.player_pokemon.types}
         for i, name in enumerate(names[:4]):
-            d = movelib.info(self.game, name)
-            power = d.get("power") or 0
-            mtype = d.get("type")  # None for Struggle (typeless)
+            shown_name = self.mv_alias(self.player_pokemon, name)  # (Mimic: the move it copied)
+            d = movelib.info(self.game, shown_name)
+            power = self.mv_power_preview(self.player_pokemon, self.opponent_pokemon, shown_name, d)
+            mtype = self.mv_prepare(self.player_pokemon, self.opponent_pokemon, shown_name, d, preview=True).get("type") \
+                if shown_name != movelib.STRUGGLE else None  # None for Struggle (typeless)
             effect = None
             if name in movelib.WEIGHT_MOVES:  # (its power from the two Pokemon's weights)
                 power = movelib.weight_power(self.game, name, self.player_pokemon, self.opponent_pokemon)
-            if mtype and (power or name in movelib.FIXED_DAMAGE):
+            if mtype and (power or shown_name in movelib.FIXED_DAMAGE or self.mv_fixed_like(shown_name)):
                 eff = chart.get_multiplier(mtype, self.opponent_pokemon.types)
                 effect = "super" if eff > 1 else "weak" if 0 < eff < 1 else "none" if eff == 0 else None
                 detail = f"Pow {power}" if power else "Fixed"
@@ -315,7 +334,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             have = None if name == movelib.STRUGGLE or self.starter_battle else (
                 pplib.left(self.game, self.player_pokemon, name), pplib.max_pp(self.game, self.player_pokemon, name))
             pick = (lambda n=name: self.choose_move(n)) if not have or have[0] > 0 else (lambda n=name: self._no_pp(n))
-            btn = MoveButton((x, y, bw, bh), name.replace("-", " "), font, small,
+            btn = MoveButton((x, y, bw, bh), shown_name.replace("-", " "), font, small,
                              pick, mtype or "???",
                              self.TYPE_COLORS.get(mtype, (120, 120, 120)), detail, effect,
                              stab=bool(power and mtype) and mtype.upper() in own_types, pp=have)
@@ -413,6 +432,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         d = movelib.info(self.game, name)
         if name in movelib.WEIGHT_MOVES:
             d = dict(d, power=movelib.weight_power(self.game, name, attacker, defender))
+        else:
+            d = self.mv_prepare(attacker, defender, name, d, preview=True)
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         eff = chart.get_multiplier(d["type"], defender.types) if (d.get("power") or 0) else 1.0
         return name, d["type"], eff, d.get("category") or "PHYSICAL", d.get("power") or 0
@@ -431,6 +452,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                else getattr(self, "player_pokemon", None))
         if foe is not None and not any(self._move_can_affect(n, foe) for n in moves):
             return [movelib.STRUGGLE]  # nothing it knows can touch the foe: Struggle instead
+        v = self.vol(mon)
+        if v.get("tormented") and len(moves) > 1 and v.get("last_move") in moves:  # (Torment: not the same move twice)
+            moves = [n for n in moves if n != v.get("last_move")]
         return moves
 
     def _menu_moves(self, mon):
@@ -453,19 +477,32 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             return []
         return self.held_pp_empty(mon, name)
 
+    # Targets that aren't the foe: moves aimed at the user, its side or the whole field always do something
+    # (Stealth Rock, Swords Dance, Reflect, Trick Room...).
+    NOT_AT_FOE = ("user", "users-field", "user-and-allies", "all-allies", "ally", "user-or-ally", "entire-field",
+                  "opponents-field", "all-pokemon", "fainting-pokemon")
+
     def _move_can_affect(self, name, defender):
         """False only when a move can never do anything to this defender (type immunity, or
-        a status it can't get). Weather moves always do something."""
+        a status it can't get). Weather moves always do something, and so do moves for the user's
+        side or the field (a Pokemon with only Stealth Rock and Swords Dance doesn't Struggle)."""
         if name in movelib.WEATHER_MOVES or name == movelib.STRUGGLE:
             return True
         d = movelib.info(self.game, name)
+        if d.get("target") in self.NOT_AT_FOE:
+            return True
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         foe = self._foe_of(defender) if hasattr(self, "_foe_of") else None
         if foe and self.ability_immunity(foe, defender, d):
             return False  # its ability would take it (Volt Absorb, Levitate...)
-        if (d.get("power") or 0) or name in movelib.FIXED_DAMAGE or name in movelib.WEIGHT_MOVES:
+        if (d.get("power") or 0) or name in movelib.FIXED_DAMAGE or name in movelib.WEIGHT_MOVES \
+                or d.get("category") != "STATUS":
+            return chart.get_multiplier(d["type"], defender.types) != 0 or name in ("FOUND-POWER", "THOUSAND-ARROWS")
+        if d.get("ailment") in movelib.STATUSES and d.get("category_meta") == "ailment":
+            return self._status_move_works(d, defender, ignore_current=True)
+        if name in movelib.TYPE_CHECKED_STATUS:
             return chart.get_multiplier(d["type"], defender.types) != 0
-        return self._status_move_works(d, defender, ignore_current=True)
+        return True  # (stat moves, conditions, swaps...: they can work on it)
 
     def _forced_move(self, mon):
         """A two-turn move charged last turn fires now, whatever was picked."""
@@ -484,7 +521,10 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
 
     def _adjust_hp(self, mon, delta, floor=0):
         """Change a battler's HP from inside a move (recoil, drain). Like the games, recoil can
-        knock the user out; the faint is handled at the end of the action (_start_pending_faint)."""
+        knock the user out; the faint is handled at the end of the action (_start_pending_faint).
+        Heal Block (and Psychic Noise) stop HP coming back."""
+        if delta > 0 and self.vol(mon).get("heal_block"):
+            return
         if mon is self.player_pokemon:
             self.player_hp = max(min(floor, self.player_hp), min(self.player_max_hp, self.player_hp + delta))
             mon.current_hp = self.player_hp
@@ -501,8 +541,16 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             d = movelib.info(self.game, name)
             if name in movelib.WEIGHT_MOVES:
                 d = dict(d, power=movelib.weight_power(self.game, name, attacker, defender))
+            elif d.get("category") != "STATUS":
+                d = self.mv_prepare(attacker, defender, name, d, preview=True)  # (Gyro Ball, Reversal, Hex...)
             acc = (d.get("accuracy") or 100) / 100
-            if (d.get("power") or 0) > 0:
+            if self.mv_would_fail(attacker, defender, name, d):
+                score = 0
+            elif name in movelib.SELF_KO and d.get("category") != "STATUS":
+                score = 0 if self._hp(attacker) * 3 > self._max_hp(attacker) else d["power"] * acc  # (a last resort)
+            elif self.mv_fixed_like(name) or name in ("PSYWAVE",):
+                score = 50 * acc if chart.get_multiplier(d["type"], defender.types) else 0
+            elif (d.get("power") or 0) > 0:
                 wm = self._weather_type_mult(d["type"])
                 stab = 1.5 if d["type"] in (attacker.types or []) else 1.0
                 score = d["power"] * chart.get_multiplier(d["type"], defender.types) * stab * wm * acc
@@ -518,6 +566,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 score = self._status_score(name, d, attacker, defender) * acc
             if name in self.FIRST_TURN_ONLY:  # Fake Out: a sure flinch on its first turn, useless after
                 score = score * 2 if self._first_turn(attacker) else 0
+            if name == "PURSUIT":  # (a Pokemon likely to be pulled out is worth chasing: battle_moves.py)
+                score *= self.mv_ai_pursuit_mult(attacker, defender)
             scored.append((score, name))
         scored = [x for x in scored if x[0] > 0] or scored
         scored.sort(reverse=True)
@@ -529,6 +579,14 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         """How much an opponent wants a status move now (0 = useless here)."""
         meta, changes = d.get("category_meta"), d.get("stat_changes") or []
         hp_share = self._hp(attacker) / max(1, self._max_hp(attacker))
+        if name in HAZARDS:  # entry hazards: worth laying while the foe has Pokemon left to send out
+            if self.side(defender).get(HAZARDS[name], 0) >= HAZARD_CAP[HAZARDS[name]]:
+                return 0
+            bench = (sum(1 for p in self.game.story_manager.player_team if p and p.current_hp > 0) - 1
+                     if defender is self.player_pokemon else len(self.opponent_team) - self.current_opponent_idx - 1)
+            return 35 if bench > 0 else 0
+        if name in ("RAPID-SPIN", "DEFOG", "MORTAL-SPIN", "TIDY-UP") and any(self.side(attacker).get(k) for k in HAZARDS.values()):
+            return 40
         if meta == "heal" or name in ("REST", "MOONLIGHT", "MORNING-SUN", "SYNTHESIS", "ROOST"):
             return 70 if hp_share < 0.4 else 0
         if d.get("ailment") == "confusion" or meta == "swagger":
@@ -552,6 +610,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         d = movelib.info(self.game, name)
         if name in movelib.WEIGHT_MOVES:
             d = dict(d, power=movelib.weight_power(self.game, name, self.player_pokemon, self.opponent_pokemon))
+        else:
+            d = self.mv_prepare(self.player_pokemon, self.opponent_pokemon, name, d, preview=True)
         eff = chart.get_multiplier(d["type"], self.opponent_pokemon.types) if (d.get("power") or 0) else 1.0
         self.adv_opp = eff if eff > 0 else 1.0
         (self.opponent_move, self.opponent_attack_type, eff,
@@ -567,6 +627,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         for mon in (self.player_pokemon, self.opponent_pokemon):
             if mon and id(mon) not in seen:
                 seen.add(id(mon))
+                self._form_msgs.extend(self.mv_mask_form(mon))  # (Ogerpon's mask: its form, types and Ability)
+                self._form_msgs.extend(self.mv_on_entry(mon))  # (Healing Wish, Lunar Dance)
                 self._form_msgs.extend(self.entry_hazards(mon))
                 self._form_msgs.extend(self.ability_on_entry(mon))  # Intimidate, Drizzle...
         seen.intersection_update({id(self.player_pokemon), id(self.opponent_pokemon)})
@@ -632,9 +694,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 self.action_menu.set_visibility(False)
 
     def setup_battle_matchup(self, reset_opponent_hp=True):
-        self._check_forms()
-        self._ready_attacks()
-        # Real HP at each Pokemon's level; Dynamax raid bosses have double HP.
+        # Real HP at each Pokemon's level; Dynamax raid bosses have double HP. (Set before the switch-in effects:
+        # entry hazards hurt the Pokemon that just came out, not the one that left: Jordan, 11-17.)
         self.player_max_hp = self.player_pokemon.get_max_hp()
         foe = self.opponent_pokemon
         self.opp_hp_mult = forms.DYNAMAX_HP_MULT if forms.is_dynamax(foe) else 1
@@ -642,6 +703,15 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         self.player_hp = max(0, self.player_pokemon.current_hp)
         if reset_opponent_hp:
             self.opponent_hp = self.opp_max_hp
+        self._check_forms()
+        self._ready_attacks()
+
+    def _after_entry_lines(self):
+        """After the switch-in lines (hazards, Intimidate...): a Pokemon the hazards knocked out faints now,
+        else back to the menu."""
+        if (self.player_hp <= 0 or self.opponent_hp <= 0) and self._start_pending_faint():
+            return
+        self.return_to_menu()
 
     # ---- Weather (modern rules: lasts 5 turns, 8 with the matching rock) ----
     WEATHER_ROCKS = {"RAIN": "DAMP_ROCK", "SUN": "HEAT_ROCK", "SAND": "SMOOTH_ROCK", "SNOW": "ICY_ROCK"}
@@ -850,18 +920,24 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         Attack/Defense (or Sp. Atk/Sp. Def) stats at those levels, move power, weather,
         crits, the 85-100% roll, STAB and type."""
         special = category == "SPECIAL"
-        attack = attacker.stat_value("SPATK" if special else "ATTACK") * self.ability_attack_mult(attacker, special)
-        wonder = bool(self.field().get("wonder_room"))  # Wonder Room: Defense and Sp. Def swap
-        defense = defender.stat_value("SPDEF" if special != wonder else "DEFENSE") \
-            * self.ability_defense_mult(attacker, defender, special)
         cur = getattr(self, "_cur_move", None)
+        mname = cur[0] if cur else None
+        # Whose stat, and which (battle_moves.py): Foul Play uses the target's Attack, Body Press the user's
+        # Defense, Psyshock / Psystrike / Secret Sword the target's Defense; Power Trick / Split's numbers.
+        a_mon = defender if mname == "FOUL-PLAY" else attacker
+        a_stat = "DEFENSE" if mname == "BODY-PRESS" else "SPATK" if special else "ATTACK"
+        d_stat = "DEFENSE" if not special or mname in TARGET_DEFENSE else "SPDEF"
+        attack = self._bstat(a_mon, a_stat) * self.ability_attack_mult(attacker, special)
+        wonder = bool(self.field().get("wonder_room"))  # Wonder Room: Defense and Sp. Def swap
+        defense = self._bstat(defender, d_stat if not wonder else ("SPDEF" if d_stat == "DEFENSE" else "DEFENSE")) \
+            * self.ability_defense_mult(attacker, defender, d_stat == "SPDEF")
         if cur:  # the abilities that power up the move (Technician, Blaze, Iron Fist...)
             power = max(1, int(power * self.ability_power_mult(attacker, defender, cur[0], cur[1])
                                * self.terrain_power_mult(attacker, defender, cur[1])))
         types = defender.types or []
-        if special and self.weather == "SAND" and "ROCK" in types:
+        if d_stat == "SPDEF" and self.weather == "SAND" and "ROCK" in types:
             defense = defense * 3 // 2  # sandstorm: Rock types' Sp. Def x1.5
-        if not special and self.weather == "SNOW" and "ICE" in types:
+        if d_stat == "DEFENSE" and self.weather == "SNOW" and "ICE" in types:
             defense = defense * 3 // 2  # snow: Ice types' Defense x1.5
         crit = None
         roll = None
@@ -869,6 +945,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         if mode == "crit":
             crit_stage = (crit_stage or 0) + 1
         crit_stage = (crit_stage or 0) + self.vol(attacker).get("focus", 0)  # Focus Energy
+        crit_stage += self.held_crit(attacker)  # the Stick, held by Farfetch'd
         crit_stage, no_crit = self.ability_crit(attacker, defender, crit_stage)  # Super Luck, Battle Armor
         base = balance.CRIT_STAGES[max(0, min(int(crit_stage or 0), 3))]
         if attacker is self.player_pokemon:  # 5 hearts of affection: crits twice as often
@@ -877,13 +954,13 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             crit = random.random() < base
         if self.vol(attacker).get("laser_focus"):
             crit = True
-        if no_crit:
+        if no_crit or self.side(defender).get("lucky_chant"):
             crit = False
         # Stat stages (a critical hit ignores the attacker's drops and the defender's boosts).
         if not self.ability_ignores_stages(defender, attacker):  # (Unaware ignores the other's stages)
-            attack = attack * self.stat_mult(attacker, "SPATK" if special else "ATTACK", crit, True)
-        if not self.ability_ignores_stages(attacker, defender):
-            defense = defense * self.stat_mult(defender, "SPDEF" if special else "DEFENSE", crit, False)
+            attack = attack * self.stat_mult(a_mon, a_stat, crit, True)
+        if not self.ability_ignores_stages(attacker, defender) and mname not in IGNORE_DEF_STAGES:  # (Sacred Sword...)
+            defense = defense * self.stat_mult(defender, d_stat, crit, False)
         if mode == "weak":
             roll = random.randint(*self.WEAK_ROLL)
         elif mode == "max_roll":
@@ -992,6 +1069,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
     def on_item_used(self):
         """Called when an item is used from the bag during battle. Triggers opponent turn."""
         self.phase = "RESOLVE_TURN"
+        self.mv_turn_start({})
         self.turn_actions = [self.opponent_attack]
         self._turn_end_done = False
         self.game.change_state(self)
@@ -1012,6 +1090,27 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         else:
             return PlayState(self.game)
 
+    def _back_to_map(self):
+        """The map a wild battle goes back to: the route's walk as it was, or, for a battle begun on a town's
+        walked map ("back_to_town": fishing from its shore, 11-17), that town, where you stood."""
+        if getattr(self, "back_to_town", False):
+            from src.states.overworld import CityState
+            self.game.states["city"] = CityState(self.game)
+            return self.game.states["city"]
+        from src.states.overworld import PlayState
+        next_state = self._get_play_state_instance()
+        if hasattr(self, 'play_state_data') and self.play_state_data:
+            next_state = PlayState(self.game, restore_data=self.play_state_data)
+            self.game.states["play"] = next_state
+        return next_state
+
+    def _evolve_then(self, next_state):
+        """A party Pokemon ready to evolve does so first (True: the evolution scene has taken over)."""
+        if hasattr(next_state, "check_for_evolution"):
+            return next_state.check_for_evolution()
+        from src.states.overworld import evolve_ready_party
+        return evolve_ready_party(self.game, next_state)
+
     def return_to_menu(self):
         self.phase = "MENU"
         self.action_menu.set_visibility(True)
@@ -1019,6 +1118,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
 
     def handle_run(self):
         v = self.vol(self.player_pokemon)
+        if self.trainer_class == "WILD" and self.field().get("fairy_lock"):
+            self.show_message("No one can run away this turn!", callback=self.return_to_menu)
+            return
         if self.trainer_class == "WILD" and self.held_escape(self.player_pokemon):  # (a Smoke Ball: always)
             self.show_message(["Got away safely!"], callback=self.on_flee_complete)
             return
@@ -1061,20 +1163,25 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         self._settle_xp()
         pygame.event.clear()
 
-        from src.states.overworld import PlayState
-        next_state = self._get_play_state_instance()
-        if hasattr(self, 'play_state_data') and self.play_state_data:
-            next_state = PlayState(self.game, restore_data=self.play_state_data)
-            self.game.states["play"] = next_state
+        next_state = self._back_to_map()
 
-        if next_state.check_for_evolution():
+        if self._evolve_then(next_state):
             return
 
         self.game.change_state(next_state)
         if hasattr(next_state, "show_progression_menu"):
             next_state.show_progression_menu()
 
+    NO_SWITCH_TEXT = "No switching in this battle! Your Pokémon battles on until it faints."
+
+    def no_switch_text(self):
+        return self.no_switch if isinstance(self.no_switch, str) else self.NO_SWITCH_TEXT
+
     def open_party_menu(self):
+        if self.no_switch:   # (a "no_switch" battle: the menu's switch is shut; a fainted one is still replaced)
+            self.show_message([self.no_switch_text()], callback=self.return_to_menu)
+            return
+
         def on_switch_selected(slot_index):
             self.game.change_state(self)
             self.perform_switch(slot_index)
@@ -1089,6 +1196,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
 
     def perform_switch(self, slot_index, is_forced=False):
         team = self.game.story_manager.player_team
+        pursuit = self._pursuit_lines(is_forced)  # (the foe's Pursuit catches the one going out)
         self.old_pkmn = self.player_pokemon
         if self.old_pkmn and self.player_hp > 0:  # Natural Cure, Regenerator
             self.old_pkmn.current_hp = self.player_hp
@@ -1103,7 +1211,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         self.faint_anim.start(sprite, rect.topleft)
         self.fainting_side = "player_switch"
 
-        self.dialogue_box.reset(f"Come back, {self.old_pkmn.display_name}!")
+        self.dialogue_box.reset(pursuit + [f"Come back, {self.old_pkmn.display_name}!"])
         self.dialogue_box.set_visibility(True)
         self.action_menu.set_visibility(False)
         if self.math_ui:
@@ -1111,7 +1219,10 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
 
     def opponent_turn_after_switch(self):
         self.turn_actions.clear()
-        self.turn_actions.append(self.opponent_attack)
+        if getattr(self, "_pursued", False):  # (the foe's Pursuit already hit the one going out)
+            self._pursued = False
+        else:
+            self.turn_actions.append(self.opponent_attack)
         self.phase = "RESOLVE_TURN"
         self.feedback_timer = 0
         self.action_menu.set_visibility(False)
@@ -1169,7 +1280,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 battle_type=self.battle_type,
                 area_name=self.area_name,
                 victory_flag=self.victory_flag,
-                badge_reward=self.badge_reward
+                badge_reward=self.badge_reward,
+                options=self.battle_options,
             )
         self.game.ui_manager.add_element(self.dialogue_box)
         self.game.ui_manager.add_element(self.action_menu)
@@ -1256,8 +1368,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         theirs = movelib.info(self.game, self._forced_move(self.opponent_pokemon)
                               or self._ai_choose(self.opponent_pokemon, self.player_pokemon))
         self._foe_next_move = theirs["name"]
-        p_pri = mine.get("priority", 0) + self.ability_priority(self.player_pokemon, mine)  # Prankster...
-        o_pri = theirs.get("priority", 0) + self.ability_priority(self.opponent_pokemon, theirs)
+        self._form_msgs.extend(self.mv_turn_start({id(self.player_pokemon): mine["name"],
+                                                   id(self.opponent_pokemon): theirs["name"]}))  # (Focus Punch...)
+        p_pri = mine.get("priority", 0) + self.ability_priority(self.player_pokemon, mine) \
+            + self.mv_priority(self.player_pokemon, mine)  # Prankster, Grassy Glide...
+        o_pri = theirs.get("priority", 0) + self.ability_priority(self.opponent_pokemon, theirs) \
+            + self.mv_priority(self.opponent_pokemon, theirs)
         p_spd, o_spd = self._speed(self.player_pokemon), self._speed(self.opponent_pokemon)
         player_first = (p_pri > o_pri) or (p_pri == o_pri and (p_spd > o_spd or (p_spd == o_spd and random.random() < 0.5)))
         if p_pri == o_pri:   # (held items: a Quick Claw now and then goes first in its priority bracket, a Lagging Tail / Full Incense last)
@@ -1333,7 +1449,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         base_yield = (self.game.assets.movesets.get(str(base_id(foe)), {}).get("base_xp") or 100)
         messages = []
         cap = levels.xp_cap(self.game.story_manager)
-        from src.pokemon.items import gain_battle_evs
+        from src.pokemon.items import gain_battle_evs, xp_held_mult
         for p in earners:  # effort points: everyone who earns XP gets the foe's full yield (Gen 6 on), even at the cap
             if not getattr(p, "is_egg", False):
                 before = p.get_max_hp()
@@ -1344,7 +1460,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         for p in earners:
             my_level = self._level(p)
             gained = max(1, int(growth.battle_xp(base_yield, foe_level, my_level, trainer=trainer)
-                                * affection.xp_mult(p) * share_of[id(p)]))
+                                * affection.xp_mult(p) * xp_held_mult(p) * share_of[id(p)]))   # (a Lucky Egg's holder: half again)
             if my_level >= cap:
                 if p is lead and my_level < 100:  # (Lv 100 is as high as it goes: no warning)
                     messages.append(f"{p.display_name.upper()} can't grow past Lv {cap} until you beat the next Gym!")
@@ -1411,10 +1527,15 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             self._flinched.discard(id(mon))
             steady = self.change_stages(mon, [["SPEED", 1]]) if self.ab(mon) == "STEADFAST" else []
             return True, [f"{label} flinched and couldn't move!"] + steady
+        held_up = self.vol(mon).get("sky_dropped")
+        if held_up is not None and self.turn_count - held_up <= 1:
+            return True, [f"{label} can't move while it's held up in the air!"]
         st = getattr(mon, "status", None)
         if st == "sleep":
             if getattr(mon, "sleep_turns", 0) > 0:  # 1-3 turns it can't move, then it wakes and acts
                 mon.sleep_turns -= 1
+                if self._mv()["picked"].get(id(mon)) in ("SNORE", "SLEEP-TALK"):  # (they work while asleep)
+                    return False, [f"{label} is fast asleep."]
                 return True, [f"{label} is fast asleep."]
             mon.status = None
             return False, [f"{label} woke up!"]
@@ -1428,14 +1549,23 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         return False, []
 
     def _use_move(self, attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp):
-        """Run one move. Returns (damage dealt, message lines, was_effective_hit)."""
+        """Run one move. Returns (damage dealt, message lines, was_effective_hit). The move's own mechanics are in
+        battle_moves.py (MoveMechanics); this records what it did afterwards (mv_end_move)."""
+        dmg, lines, eff = self._run_move(attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp)
+        self.mv_end_move(attacker, defender, name, getattr(self, "_mv_last_d", None) or {}, dmg, lines)
+        return dmg, lines, eff
+
+    def _run_move(self, attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp):
         d = self.ability_move_type(attacker, self.held_move_type(attacker, name, movelib.info(self.game, name)))  # (Pixilate, Normalize...; a Plate for Judgment)
         if name in movelib.WEIGHT_MOVES:  # Low Kick, Grass Knot, Heavy Slam, Heat Crash: power from weight
             if forms.is_dynamax(defender):
                 return 0, [self.game.assets.get_text("used_move", name=att_label, move=name.replace("-", " ")),
                            "But it failed!"], False  # (a Dynamax Pokemon can't be weighed, as in the games)
             d = dict(d, power=movelib.weight_power(self.game, name, attacker, defender))
-        blocked = self.move_blocked(attacker, name, d)  # Taunt, Disable
+        d = self.ability_move_type(attacker, self.mv_prepare(attacker, defender, name, d))  # (variable power and type: battle_moves.py)
+        self._mv_last_d = d
+        self._mv_last_hit = (name, d.get("category"))
+        blocked = self.move_blocked(attacker, name, d)  # Taunt, Disable, Torment, Heal Block, Gravity...
         if blocked:
             return 0, [blocked], False
         self.vol(attacker)["last_move"] = name
@@ -1445,52 +1575,64 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         self._last_was_crit = False  # fixed-damage/charge/status turns never crit
         charging = self.__dict__.setdefault("_charging", {})
         herb = None
-        if name in movelib.TWO_TURN and charging.get(id(attacker)) != name \
-                and not (name in ("SOLAR-BEAM", "SOLAR-BLADE") and self.weather == "SUN"):
+        skip = self.mv_skips_charge(attacker, name)  # (Solar Beam in sun, Electro Shot in rain)
+        if name in movelib.TWO_TURN and charging.get(id(attacker)) != name and not skip:
             herb = self.held_skips_charge(attacker)  # (a Power Herb: it goes at once)
             if herb:
-                lines += [movelib.TWO_TURN[name].format(n=att_label)] + herb
-        if name in movelib.TWO_TURN and charging.get(id(attacker)) != name and not herb \
-                and not (name in ("SOLAR-BEAM", "SOLAR-BLADE") and self.weather == "SUN"):
+                lines += [movelib.TWO_TURN[name].format(n=att_label)] + herb + self.mv_charge_boost(attacker, name)
+        elif name in movelib.TWO_TURN and skip and charging.get(id(attacker)) != name:
+            lines += self.mv_charge_boost(attacker, name)
+        if name in movelib.TWO_TURN and charging.get(id(attacker)) != name and not herb and not skip:
+            failed, extra = self.mv_charge(attacker, defender, name)  # (Skull Bash's Defense; Sky Drop lifts the foe)
+            if failed:
+                return 0, lines + failed, False
             charging[id(attacker)] = name  # turn 1: charge (it uses the move again next turn)
             if name in movelib.SEMI_INVULNERABLE:  # up in the sky / underground until it strikes
                 self.__dict__.setdefault("_semi", {})[id(attacker)] = (name, self.turn_count)
-            return 0, [movelib.TWO_TURN[name].format(n=att_label)], False
+            return 0, [movelib.TWO_TURN[name].format(n=att_label)] + extra, False
         charging.pop(id(attacker), None)
         self.__dict__.setdefault("_semi", {}).pop(id(attacker), None)
+        if name == "SKY-DROP":  # (the foe it carried comes down with it)
+            self.vol(defender).pop("sky_dropped", None)
+            self._semi.pop(id(defender), None)
         semi_mult = 1
         semi = self._semi.get(id(defender))
         # Semi-invulnerable through the rest of the charge turn and the next turn (a wrong math answer
         # keeps the charge, but the cover doesn't last forever).
-        if semi and self.turn_count - semi[1] <= 1 and name not in movelib.WEATHER_MOVES:
+        if semi and self.turn_count - semi[1] <= 1 and name not in movelib.WEATHER_MOVES \
+                and not self.mv_sure_hit_semi(attacker, defender):
             hits = movelib.SEMI_INVULNERABLE[semi[0]]
             if name not in hits:
-                return 0, lines + [f"{def_label} avoided the attack!"], False
+                return 0, lines + [f"{def_label} avoided the attack!"] + self.mv_missed(attacker, defender, name, d, att_label), False
             semi_mult = hits[name]
         if name in self.FIRST_TURN_ONLY and not self._first_turn(attacker):
             return 0, lines + ["But it failed!"], False  # only on its first turn out
-        if self.protected(attacker, defender, d):
-            return 0, lines + [f"{def_label} protected itself!"], False
+        failed = self.mv_fails(attacker, defender, name, d, att_label, def_label)  # (Sucker Punch, Dream Eater...; Future Sight)
+        if failed is not None:
+            return 0, lines + failed, False
+        stopped, guard_lines = self.mv_protect(attacker, defender, name, d, att_label, def_label)  # Protect and its kin
+        lines += guard_lines
+        if stopped:
+            return 0, lines + self.mv_missed(attacker, defender, name, d, att_label), False
         acc = d.get("accuracy")
         if acc and d.get("target") != "user" and d.get("category_meta") != "ohko" \
-                and not self.ability_hits_always(attacker, defender) \
+                and not self.ability_hits_always(attacker, defender) and not d.get("_each_acc") \
+                and not self.mv_sure_hit(attacker, defender, name, d) \
                 and random.uniform(0, 100) >= acc * self.acc_mult(attacker, defender) \
-                * self.ability_acc_mult(attacker, defender, d) * self.held_acc_mult(attacker, defender):
-            return 0, lines + [f"{att_label}'s attack missed!"], False
+                * self.ability_acc_mult(attacker, defender, d) * self.held_acc_mult(attacker, defender) \
+                * self.mv_acc_mult(attacker, defender, name, d):
+            return 0, lines + [f"{att_label}'s attack missed!"] + self.mv_missed(attacker, defender, name, d, att_label), False
         if (defender is self.player_pokemon and attacker is not defender and name not in movelib.WEATHER_MOVES
                 and affection.evades(defender)):
             return 0, lines + [affection.EVADE_TEXT.format(n=def_label)], False
         if self.terrain() == "psychic" and attacker is not defender and self.grounded(defender) \
-                and d.get("priority", 0) + self.ability_priority(attacker, d) > 0 \
+                and d.get("priority", 0) + self.ability_priority(attacker, d) + self.mv_priority(attacker, d) > 0 \
                 and d.get("target") not in ("user", "users-field", "entire-field"):
             return 0, lines + [f"{def_label} is protected by the Psychic Terrain!"], False
         if name in movelib.SELF_KO and "DAMP" in (self.ab(attacker), self.ab(defender)):
             return 0, lines + ["A Damp ability stops it exploding!"], False
-        if name == "BEAT-UP":  # one hit from each healthy Pokemon in the party
-            team = (self.game.story_manager.player_team if attacker is self.player_pokemon
-                    else self.opponent_team) or [attacker]
-            n = max(1, sum(1 for p in team if p and p.current_hp > 0 and not getattr(p, "status", None)))
-            d = dict(d, power=5 + attacker.base_stats.get("ATTACK", 50) // 10, min_hits=n, max_hits=n)
+        if name == "MIND-BLOWN" and "DAMP" in (self.ab(attacker), self.ab(defender)):
+            return 0, lines + ["A Damp ability stops it exploding!"], False
         absorbed = self.ability_absorb(attacker, defender, d)  # Volt Absorb, Levitate, Soundproof, Sturdy...
         if absorbed:
             return 0, lines + absorbed, False
@@ -1500,16 +1642,23 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             self.set_weather(movelib.WEATHER_MOVES[name])
             self._weather_announced = True
             return 0, lines + [self.WEATHER_TEXT[self.weather][0]], False
-        if name in movelib.FIXED_DAMAGE:
+        if name in movelib.FIXED_DAMAGE or "_fixed" in d:  # (Seismic Toss...; Counter, Endeavor, Psywave, Bide: battle_moves.py)
             chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
-            if chart.get_multiplier(d["type"], defender.types) == 0:
+            if chart.get_multiplier(d["type"], defender.types) == 0 and not self.mv_effectiveness(
+                    attacker, defender, name, d, 0, chart):
                 return 0, lines + [f"It doesn't affect {def_label}..."], False
-            kind = movelib.FIXED_DAMAGE[name]
-            dmg = (self._level(attacker) if kind == "level" else max(1, defender_hp // 2) if kind == "half"
-                   else int(kind))
+            if "_fixed" in d:
+                dmg = d["_fixed"]
+            else:
+                kind = movelib.FIXED_DAMAGE[name]
+                dmg = (self._level(attacker) if kind == "level" else max(1, defender_hp // 2) if kind == "half"
+                       else int(kind))
             if attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak":
                 dmg = min(dmg, max(1, defender_max_hp * self.WRONG_ANSWER_CAP // 100))  # (see below)
-            return min(dmg, defender_hp), lines, False
+            dmg, sub_lines = self.absorb_with_substitute(defender, min(dmg, defender_hp), def_label)
+            if name == "FINAL-GAMBIT":
+                self._adjust_hp(attacker, -self._hp(attacker))
+            return dmg, lines + sub_lines, False
         if name == movelib.STRUGGLE:
             dmg = self._calculate_damage(attacker, defender, 50, 1.0, 1.0, category="PHYSICAL",
                                          move_type=None, defender_max_hp=defender_max_hp)
@@ -1519,19 +1668,24 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         if d.get("category_meta") == "ohko":  # Fissure, Guillotine, Horn Drill, Sheer Cold
             lv_a, lv_d = self._level(attacker), self._level(defender)
             chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
-            if chart.get_multiplier(d["type"], defender.types) == 0:
+            if chart.get_multiplier(d["type"], defender.types) == 0 or (name == "SHEER-COLD" and "ICE" in (defender.types or [])):
                 return 0, lines + [f"It doesn't affect {def_label}..."], False
-            if lv_a < lv_d or random.uniform(0, 100) >= 30 + lv_a - lv_d:
+            hit_at = 30 + lv_a - lv_d - (10 if name == "SHEER-COLD" and "ICE" not in (attacker.types or []) else 0)
+            if lv_a < lv_d or random.uniform(0, 100) >= hit_at:
                 return 0, lines + [f"{att_label}'s attack missed!"], False
             dmg = defender_hp
             if attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak":
                 dmg = min(dmg, max(1, defender_max_hp * self.WRONG_ANSWER_CAP // 100))
                 return dmg, lines + ["The answer was off, so it wasn't a one-hit KO."], False
             return dmg, lines + ["It's a one-hit KO!"], False
-        if not (d.get("power") or 0) or name == "FLING":
+        if not (d.get("power") or 0):
             if attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak" \
                     and random.random() < 0.5:
                 return 0, lines + ["The answer was off, so the move didn't work!"], False
+            attacker, defender, bounce = self.mv_redirect(attacker, defender, name, d)  # (Snatch, Magic Coat)
+            if bounce:
+                lines += bounce
+                att_label, def_label = self._label(attacker), self._label(defender)
             if d.get("ailment") in movelib.STATUSES and d.get("category_meta") == "ailment":
                 if self._status_move_works(d, defender) and not self.vol(defender).get("substitute") \
                         and not self.side(defender).get("safeguard"):
@@ -1541,37 +1695,55 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 return 0, lines + ["But it failed!"], False
             extra = self.status_effect(name, d, attacker, defender, att_label, def_label)
             pick = getattr(self, "_metronome", None)
-            if pick:  # Metronome: the random move runs now
+            if pick:  # Metronome (and Sleep Talk, Copycat, Nature Power...): the move runs now
                 self._metronome = None
                 dmg, more, eff = self._use_move(attacker, defender, pick, att_label, def_label,
                                                 defender_max_hp, defender_hp)
-                return dmg, lines + (extra or []) + more[1:], eff
+                return dmg, lines + (extra or []) + (more[1:] if name == "METRONOME" else more), eff
             if extra is not None:
                 return 0, lines + extra, False
             return 0, lines + ["But it failed!"], False
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         eff = chart.get_multiplier(d["type"], defender.types) if d.get("type") else 1.0
-        if eff == 0 and d.get("type") == "GROUND" and self.held_grounded(defender):  # (an Iron Ball: Flying no help)
-            eff = chart.get_multiplier("GROUND", [t for t in defender.types if t != "FLYING"] or ["NORMAL"])
+        eff = self.mv_effectiveness(attacker, defender, name, d, eff, chart)  # (Freeze-Dry, Flying Press, Smack Down, an Iron Ball...)
         eff = self.ability_effectiveness(attacker, defender, d, eff)  # Scrappy
+        if name == "FOUND-POWER":
+            eff = 1.0
         if eff == 0:
-            return 0, lines + [f"It doesn't affect {def_label}..."], False
+            return 0, lines + [f"It doesn't affect {def_label}..."] + self.mv_missed(attacker, defender, name, d, att_label), False
         if self.ability_wonder_guard(attacker, defender, eff):
             return 0, lines + [f"{def_label}'s Wonder Guard!", f"It doesn't affect {def_label}...",
                                "Only super-effective moves can hit it!"], False
-        weather_mult = self._weather_mult(d["type"], defender)
-        hits = d["max_hits"] if d.get("max_hits") and self.ab(attacker) == "SKILLLINK" else self._hit_count(d)
+        weather_mult = self.mv_weather_mult(name, self._weather_mult(d["type"], defender))
+        lines += self.mv_before_hit(attacker, defender, name, d, att_label, def_label)  # (Brick Break's screens...)
+        powers = d.get("_powers")
+        if powers:
+            hits = len(powers)
+        else:
+            hits = d["max_hits"] if d.get("max_hits") and self.ab(attacker) == "SKILLLINK" else self._hit_count(d)
         damage, crit_any, landed = 0, False, 0
         berry_half, berry_lines = self.held_resist_berry(attacker, defender, d, eff)  # (Occa, Passho, Wacan...)
         lines += berry_lines
         self._cur_move = (name, d)  # (for the abilities in the damage formula)
-        for _ in range(hits):  # multi-hit moves (Double Kick, Fury Attack...) roll each hit
-            dmg = self._calculate_damage(attacker, defender, d["power"], eff, weather_mult,
+        extra_mult = self.mv_hit_mult(attacker, defender, name, d, eff)
+        for i in range(hits):  # multi-hit moves (Double Kick, Fury Attack...) roll each hit
+            if d.get("_each_acc") and i > 0 and acc and not self.mv_sure_hit(attacker, defender, name, d) \
+                    and random.uniform(0, 100) >= acc * self.acc_mult(attacker, defender):
+                break  # (Triple Axel, Population Bomb: each hit can miss, and the rest stop)
+            if d.get("_each_acc") and i == 0 and acc and not self.mv_sure_hit(attacker, defender, name, d) \
+                    and random.uniform(0, 100) >= acc * self.acc_mult(attacker, defender) \
+                    * self.ability_acc_mult(attacker, defender, d) * self.held_acc_mult(attacker, defender):
+                self._cur_move = None
+                return 0, lines + [f"{att_label}'s attack missed!"], False
+            power = powers[i] if powers else d["power"]
+            dmg = self._calculate_damage(attacker, defender, power, eff, weather_mult,
                                          category=d.get("category") or "PHYSICAL", move_type=d["type"],
                                          defender_max_hp=defender_max_hp, crit_stage=d.get("crit_rate") or 0)
             if dmg and getattr(attacker, "status", None) == "burn" and d.get("category") == "PHYSICAL" \
-                    and self.ab(attacker) != "GUTS":
-                dmg = max(1, dmg // 2)  # burns halve physical attacks
+                    and self.ab(attacker) != "GUTS" and name != "FACADE":
+                dmg = max(1, dmg // 2)  # burns halve physical attacks (not Facade)
+            if dmg and extra_mult != 1:
+                dmg = max(1, int(dmg * extra_mult))
             if berry_half and landed == 0 and dmg:
                 dmg = max(1, dmg // 2)  # (the resist berry: the first hit)
             damage += dmg
@@ -1581,12 +1753,18 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 break
         self._last_was_crit = crit_any
         self._cur_move = None
+        if d.get("_present_heal"):  # Present: now and then a gift of HP instead
+            if self._hp(defender) >= self._max_hp(defender):
+                return 0, lines + [f"{def_label} can't receive the gift!"], False
+            self._adjust_hp(defender, max(1, self._max_hp(defender) // 4))
+            return 0, lines + [f"{def_label} regained health!"], False
         if semi_mult != 1 and damage:
             damage *= semi_mult  # Gust vs Fly, Earthquake vs Dig, Surf vs Dive: double damage
         if damage and attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak":
             # Jordan: a wrong answer can never take more than 49% of the foe's HP (all hits
             # together), so tapping answers at random can't knock anything out in one go.
             damage = min(damage, max(1, defender_max_hp * self.WRONG_ANSWER_CAP // 100))
+        damage = self.mv_damage_cap(attacker, defender, name, damage, defender_hp)  # (False Swipe)
         if damage and attacker is not defender:  # a Substitute takes the hit
             damage, sub_lines = self.absorb_with_substitute(defender, damage, def_label)
             lines += sub_lines
@@ -1634,13 +1812,15 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             d = dict(d, ailment="sleep" if _where in ("grass", "forest", "route") else "freeze" if _where in ("snow", "ice") else "paralysis")
         chance = self.ability_effect_chance(attacker, defender, d.get("ailment_chance") or 0)  # Serene Grace...
         if damage and damage < defender_hp and chance and self._can_inflict(d.get("ailment"), defender) \
-                and random.uniform(0, 100) < chance:
+                and not self.side(defender).get("safeguard") and random.uniform(0, 100) < chance:
             lines.append(self._inflict(d["ailment"], defender, def_label))
             lines += self.ability_synchronize(defender, d["ailment"], attacker)
-        if getattr(defender, "status", None) == "freeze" and d["type"] == "FIRE" and damage:
+        if getattr(defender, "status", None) == "freeze" and (d["type"] == "FIRE" or name in (
+                "SCALD", "SCORCHING-SANDS", "STEAM-ERUPTION", "MATCHA-GOTCHA")) and damage:
             defender.status = None
             lines.append(f"{def_label} thawed out!")
         lines += self.after_hit(name, d, attacker, defender, att_label, def_label, damage, damage < defender_hp)
+        lines += self.mv_after_damage(name, d, attacker, defender, att_label, def_label, damage, defender_hp)
         lines += self.ability_after_hit(attacker, defender, name, d, damage, damage >= defender_hp)
         if name in movelib.SELF_KO and self._hp(attacker) > 0:  # Self-Destruct, Explosion: the user faints
             self._adjust_hp(attacker, -self._hp(attacker))
@@ -1674,13 +1854,16 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         name, pp_lines = self._move_for_turn(mon, self.chosen_move)
         self.player_move = name.replace("-", " ")
         self._answer_used = None
-        damage, messages, _ = self._use_move(mon, self.opponent_pokemon, name, label,
+        target = self.opponent_pokemon
+        damage, messages, _ = self._use_move(mon, target, name, label,
                                              f"Foe {self.opponent_pokemon.display_name.upper()}",
                                              self.opp_max_hp // getattr(self, "opp_hp_mult", 1), self.opponent_hp)
         messages = pre + messages + pp_lines + self._answer_notes(label, damage) + self.end_rampage_turn(mon)
         self._answer_mode = None
-        self.opponent_hp = max(0, self.opponent_hp - damage)
-        self.opponent_pokemon.current_hp = self.opponent_hp
+        if target is self.opponent_pokemon:
+            self.opponent_hp = max(0, self.opponent_hp - damage)
+            self.opponent_pokemon.current_hp = self.opponent_hp
+            messages += self.mv_note_hit(mon, target, damage)  # (Counter, Rage, Destiny Bond...)
         messages += self.held_after_action()  # (held berries: HP, a condition, a pinch)
         if damage:
             mon.counters["attacks"] = mon.counters.get("attacks", 0) + 1
@@ -1706,6 +1889,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             self.phase = "MESSAGE"
 
         self._end_if_fled(messages)
+        self._queue_pending_switch()
         self._show_move_text(messages, lunge)
         self.feedback_timer = 30
 
@@ -1719,10 +1903,17 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         v = self.vol(mon)
         if v.get("rampage"):
             return v["rampage"][0], []
+        lock = v.get("rollout_lock") or ("UPROAR" if v.get("uproar") else None) or ("BIDE" if v.get("bide") else None)
+        if lock:  # (Rollout, Uproar, Bide go on without more PP)
+            return lock, []
         enc = v.get("encore")
         if enc and enc[0] != movelib.STRUGGLE and pplib.left(self.game, mon, enc[0]) <= 0:
             v.pop("encore", None)
         name = self.forced_effect_move(mon) or picked
+        if name == "MIMIC" and self.vol(mon).get("mimic"):  # (Mimic's slot uses the copied move, on Mimic's PP)
+            lines = self._spend_pp(mon, "MIMIC")
+            self.held_after_pick(mon, "MIMIC")
+            return self.vol(mon)["mimic"], lines
         locked = self.held_choice_lock(mon)  # (a Choice item: the move it's locked into, while it has PP)
         if locked and name != locked and locked in self._battle_moves(mon):
             name = locked
@@ -1830,11 +2021,15 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         damage, messages, _ = self._use_move(foe, mon, name, label, mon.display_name.upper(),
                                              self.player_max_hp, self.player_hp)
         messages = pre + messages + pp_lines + self.end_rampage_turn(foe)
+        if mon is not self.player_pokemon:   # (it switched out in the middle of the move: nothing more to apply)
+            damage = 0
         if damage >= self.player_hp > 1 and affection.endures(mon):
             damage = self.player_hp - 1
             messages.append(affection.ENDURE_TEXT.format(n=mon.display_name.upper()))
-        self.player_hp = max(0, self.player_hp - damage)
-        mon.current_hp = self.player_hp
+        if mon is self.player_pokemon:
+            self.player_hp = max(0, self.player_hp - damage)
+            mon.current_hp = self.player_hp
+            messages += self.mv_note_hit(foe, mon, damage)  # (Counter, Rage, Destiny Bond...)
         messages += self.held_after_action()  # (held berries: HP, a condition, a pinch)
         if damage:
             # For Runerigus / Basculegion: damage taken in this battle and overall.
@@ -1851,6 +2046,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             self.phase = "MESSAGE"
 
         self._end_if_fled(messages)
+        self._queue_pending_switch()
         self._show_move_text(messages, lunge)
         self.feedback_timer = 30
 
@@ -1937,12 +2133,19 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 for hm in hms.hms_for_badge(self.game.story_manager.get_current_region(), self.badge_reward):
                     if self.game.story_manager.inventory.get(hm, 0) <= 0:
                         msgs.append(f"You received {hms.item_name(hm)}! It opens new paths on your journey.")
+                _reg = str(self.game.story_manager.get_current_region()).upper()
+                if _reg in hms.FIELD_STRICT:   # (Kanto, FireRed's rule: the badge lets a move be used outside battle)
+                    for _hm, _b in hms.USE_BADGE.get(_reg, {}).items():
+                        if _b == hms._norm(self.badge_reward):
+                            msgs.append(f"With it, {hms.item_name(_hm)[3:]} can be used outside of battle!")
 
             money_reward = self._calc_money_reward()
             if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
                 money_reward *= 2
             if money_reward > 0:
                 msgs.append(f"You got ${money_reward:,} for winning!")
+            if self._mv()["money"]:
+                msgs.append(f"You picked up ${self._mv()['money']:,}!")  # (Pay Day's coins)
 
             candy = self._calc_candy_reward()
             if candy > 0:
@@ -2001,6 +2204,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
             self.game.story_manager.add_item(self._tm_reward(), 1)
         from src.pokemon import mega_clock
         kept = mega_clock.state(self.game).get("mon") if mega_clock.active(self.game) else None
+        coins = self.mv_battle_end()  # (types, items and Transform back as they were)
+        if coins and not lost:  # (Pay Day / Make It Rain)
+            self.game.story_manager.money += coins
         for p in self.game.story_manager.player_team:
             gimmick_end_battle(p)  # (a Terastallized Pokemon's own types)
             if p is not kept:  # (a Mega from the map stays one for the rest of its minute)
@@ -2361,12 +2567,15 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         if self.faint_anim.active:
             if self.faint_anim.update():
                 if self.fainting_side == "player_switch":
+                    self.mv_switched_out(self.player_pokemon)
                     self.player_pokemon = self.new_pkmn_switch
 
                     if self.check_ditto_transform():
                         pass
                     else:
                         self.setup_battle_matchup(reset_opponent_hp=False)
+                        self.mv_apply_baton(self.player_pokemon, getattr(self, "_baton", None))  # (Baton Pass)
+                        self._baton = None
                         self.setup_action_menu()
                         self.action_menu.set_visibility(False)
                         self.phase = "PLAYER_SUMMON"
@@ -2376,18 +2585,31 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 elif self.fainting_side == "player":
                     self.player_pokemon.current_hp = 0
                     can_continue = any(p.current_hp > 0 for p in self.game.story_manager.player_team)
-                    if can_continue:
+                    piv = self.__dict__.pop("_pivot_after_ko", None)
+                    if can_continue and piv and piv[0] is self.opponent_pokemon and self.opponent_hp > 0 \
+                            and self._bench(piv[0]):
+                        # (the foe's U-turn knocked yours out: it switches first, then you send one in)
+                        self._switch_foe_now(self._ai_switch_pick(self._bench(piv[0]), None), piv[1])
+                        self.phase = "MESSAGE"
+                        self.dialogue_box.callback = self.force_switch_menu
+                    elif can_continue:
                         self.force_switch_menu()
                     else:
                         self.trigger_outro(win=False)
                 else:
                     self.opponent_pokemon.current_hp = 0
+                    piv = self.__dict__.pop("_pivot_after_ko", None)
                     if self.trainer_class == "WILD":
                         self.trigger_outro(win=True)
                     else:
                         bench = any(p.current_hp > 0 and p is not self.player_pokemon
                                     for p in self.game.story_manager.player_team)
-                        if self.current_opponent_idx + 1 < len(self.opponent_team) and bench:
+                        if piv and piv[0] is self.player_pokemon and self.player_hp > 0 and bench \
+                                and self.current_opponent_idx + 1 < len(self.opponent_team):
+                            # (your U-turn knocked it out: you still switch, then the trainer sends its next one)
+                            self._pivot_then_next_foe = True
+                            self._pick_pivot(self._bench(self.player_pokemon), piv[1])
+                        elif self.current_opponent_idx + 1 < len(self.opponent_team) and bench and not self.no_switch:
                             self.phase = "SWITCH_PROMPT"
                             next_poke = self.opponent_team[self.current_opponent_idx + 1]
                             self._place_yes_no()
@@ -2453,6 +2675,10 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                     self.enemy_summon_anim = None
 
             if self.enemy_summon_anim is None and self.dialogue_box.is_finished:
+                if self._form_msgs and self.opponent_hp <= 0 < self.player_hp:  # (the hazards knocked it out as it came out)
+                    msgs, self._form_msgs = self._form_msgs, []
+                    self.show_message(msgs, callback=self._after_entry_lines)
+                    return
                 if self.player_hp <= 0 and self._start_pending_faint():
                     return  # our Pokemon went down to recoil on the KO turn
                 self.phase = "MENU"
@@ -2471,7 +2697,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 self.player_summon_anim.update()
                 if self.player_summon_anim.finished:
                     self.player_summon_anim = None
-                    if self.is_forced_switch:
+                    if getattr(self, "_mid_turn_switch", False):  # (U-turn, Baton Pass, Roar: the turn goes on)
+                        self._after_mid_turn_switch()
+                    elif self.is_forced_switch:
                         self.return_to_menu_after_forced_switch()
                     elif self.is_shift_switch:
                         self.on_switch_no()
@@ -2485,15 +2713,20 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
                 self.transform_anim_timer -= 1
 
             if self.transform_anim_timer <= 0 and self.dialogue_box.is_finished:
-                if self.transforming_side == 'player':
+                side = self.transforming_side
+                if side == 'player':
                     self.player_pokemon.transform_into(self.opponent_pokemon)
-                elif self.transforming_side == 'opponent':
+                    self.mv_copied_pp(self.player_pokemon)   # (5 PP for each copied move, as in the games)
+                elif side == 'opponent':
                     self.opponent_pokemon.transform_into(self.player_pokemon)
+                    self.mv_copied_pp(self.opponent_pokemon)
 
                 self.transforming_side = None
-                self.setup_battle_matchup()
+                self.setup_battle_matchup(reset_opponent_hp=side == 'opponent')   # (your Ditto coming in doesn't heal the foe)
 
-                if self.is_forced_switch:
+                if getattr(self, "_mid_turn_switch", False):
+                    self._after_mid_turn_switch()
+                elif self.is_forced_switch:
                     self.return_to_menu_after_forced_switch()
                 elif self.is_shift_switch:
                     self.opponent_turn_after_switch()
@@ -2509,7 +2742,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
 
         if self._form_msgs and self.phase == "MENU" and not self.dialogue_box.visible and self.math_ui:
             msgs, self._form_msgs = self._form_msgs, []
-            self.show_message(msgs, callback=self.return_to_menu)
+            self.show_message(msgs, callback=self._after_entry_lines)
 
         if self.dialogue_box.visible:
             self.dialogue_box.update()
@@ -2526,6 +2759,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
 
             if self.feedback_timer == 0:
                 self.dialogue_box.visible = False
+                if self._form_msgs and self.turn_actions and (self.player_hp <= 0 or self.opponent_hp <= 0):
+                    msgs, self._form_msgs = self._form_msgs, []  # (the hazards' lines before the faint they caused)
+                    self.dialogue_box.reset(msgs)
+                    self.dialogue_box.set_visibility(True)
+                    self.feedback_timer = 30
+                    return
                 if (self.player_hp <= 0 or self.opponent_hp <= 0) and self._start_pending_faint():
                     return
                 if self._form_msgs:
@@ -2564,6 +2803,19 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, HeldItemEf
         self.scr_shake_timer = self.anim_ctrl.impact_shake
         if self.pokemon_intro_timer > 0:
             self.pokemon_intro_timer -= 1
+
+    def _after_mid_turn_switch(self):
+        """A switch in the middle of the turn is done: the turn goes on, or, after a U-turn that knocked the
+        foe out, the trainer sends in its next Pokemon."""
+        self._mid_turn_switch = False
+        if self.__dict__.pop("_pivot_then_next_foe", False):
+            self.is_shift_switch = False
+            self.phase = "TRAINER_SLIDE_IN"
+            self.trainer_slide_offset = 300
+            self.show_trainer = True
+            return
+        self.phase = "RESOLVE_TURN"
+        self.feedback_timer = 0
 
     def on_switch_yes(self):
         self.btn_yes.set_visibility(False)
@@ -3057,13 +3309,9 @@ class WildBattleState(TrainerBattleState):
         self._settle_xp()
         if self._sos_continue():
             return
-        from src.states.overworld import PlayState
-        next_state = self._get_play_state_instance()
-        if hasattr(self, 'play_state_data') and self.play_state_data:
-            next_state = PlayState(self.game, restore_data=self.play_state_data)
-            self.game.states["play"] = next_state
+        next_state = self._back_to_map()
 
-        if next_state.check_for_evolution():
+        if self._evolve_then(next_state):
             return
         pygame.event.clear()
         self.game.change_state(next_state)
@@ -3286,11 +3534,19 @@ class TrainerIntroState(GameState):
             return
         self._start_foe_out()
 
+    def _out_names(self, side):
+        """The Pokemon a side sends out: one, or both in a double battle ("MAROWAK and ALAKAZAM")."""
+        ns = self.next_state
+        if getattr(ns, "is_doubles", False):
+            mons = [m for m in (ns.o_slots if side == "opponent" else ns.p_slots) if m is not None]
+        else:
+            mons = [ns.opponent_pokemon if side == "opponent" else ns.player_pokemon]
+        return " and ".join(m.display_name.upper() for m in mons)
+
     def _start_foe_out(self):
         self.phase = "FOE_OUT"
         self.t = 0
-        mon = self.next_state.opponent_pokemon
-        self.dialogue_box.reset([f"{self._foe_name()} sent out {mon.display_name.upper()}!"])
+        self.dialogue_box.reset([f"{self._foe_name()} sent out {self._out_names('opponent')}!"])
         self.dialogue_box.callback = None
         self.dialogue_box.visible = True
 
@@ -3298,8 +3554,7 @@ class TrainerIntroState(GameState):
         self.phase = "PLAYER_OUT"
         self.t = 0
         self.hold = 0
-        mon = self.next_state.player_pokemon
-        self.dialogue_box.reset([f"Go! {mon.display_name.upper()}!"])
+        self.dialogue_box.reset([f"Go! {self._out_names('player')}!"])
         self.dialogue_box.callback = None
         self.dialogue_box.visible = True
 
@@ -3336,7 +3591,10 @@ class TrainerIntroState(GameState):
 
         elif self.phase == "FOE_OUT":
             self.foe_gone = min(1.0, self.t / self.EXIT)
-            if self.foe_gone >= 1.0 and not self.enemy_summon:
+            if self.foe_gone >= 1.0 and getattr(self.next_state, "is_doubles", False):
+                if self.foe_box_in is None:   # (a double battle: both appear on their spots, battle_double.py draws them)
+                    self.foe_box_in = 0
+            elif self.foe_gone >= 1.0 and not self.enemy_summon:
                 self.enemy_summon = PokemonSummonAnimation(self.game, self.next_state.opponent_pokemon, "opponent")
             if self.enemy_summon:
                 self.enemy_summon.update()
@@ -3354,7 +3612,10 @@ class TrainerIntroState(GameState):
             if self.throw_frames and self.t <= throw:
                 self.player_sprite = self.throw_frames[min(len(self.throw_frames) - 1, self.t // self.THROW_STEP)]
             self.me_gone = min(1.0, max(0, self.t - throw) / self.EXIT)
-            if (self.me_gone >= 0.6 or (self.throw_frames and self.t >= throw - self.THROW_STEP))                     and not self.player_summon:
+            if self.me_gone >= 0.6 and getattr(self.next_state, "is_doubles", False):
+                if self.my_box_in is None:
+                    self.my_box_in = 0
+            elif (self.me_gone >= 0.6 or (self.throw_frames and self.t >= throw - self.THROW_STEP))                     and not self.player_summon:
                 self.player_summon = PokemonSummonAnimation(self.game, self.next_state.player_pokemon, "player",
                                                             use_back_sprite=True)
             if self.player_summon:
@@ -3438,6 +3699,12 @@ class TrainerIntroState(GameState):
 
         # The boxes slide in as each Pokemon appears.
         r = getattr(ns, "renderer", None)
+        if getattr(ns, "is_doubles", False):   # (two a side: the double battle draws each side as it comes out)
+            if self.foe_box_in is not None:
+                ns.draw_side(screen, "opponent", dx=-(1 - self._ease(self.foe_box_in / self.BOX_IN)) * w * 0.5)
+            if self.my_box_in is not None:
+                ns.draw_side(screen, "player", dx=(1 - self._ease(self.my_box_in / self.BOX_IN)) * w * 0.5)
+            r = None
         if r is not None and self.foe_box_in is not None:
             k = self._ease(self.foe_box_in / self.BOX_IN)
             r.draw_foe_box(screen, ns.opponent_pokemon, ns.opponent_hp, ns.opp_max_hp, dx=-(1 - k) * w * 0.5)

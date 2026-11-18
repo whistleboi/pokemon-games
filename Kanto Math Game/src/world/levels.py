@@ -54,7 +54,7 @@ GYM_ACE = {
     "UNOVA": [14, 20, 24, 30, 33, 39, 39, 48], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
     "ALOLA": [10, 16, 28, 44, 54], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
-    "ORANGE": [17, 25, 35, 41],
+    "ORANGE": [22, 35, 40, 46],   # (11-17: 5.7's Orange Crew, Cissy 22, Danny 35, Rudy 40, Luana 46)
     "ORRE": [16, 26, 36, 46],
 }
 ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (42, 47), "HOENN": (52, 55), "SINNOH": (57, 63),
@@ -64,7 +64,7 @@ ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (42, 47), "HOENN": (52, 55), "SINNOH":
 # battle only happens after the story.
 CHAMPION_ACE = {"KANTO": 63, "JOHTO": 50, "HOENN": 59, "SINNOH": 66, "UNOVA": 59, "KALOS": 68,
                 "ALOLA": 58, "GALAR": 65, "PALDEA": 62,
-                "ORANGE": 50, "ORRE": 60}
+                "ORANGE": 52, "ORRE": 60}   # (Orange 11-17: 5.7's Drake, Dragonite 52)
 # Once Drake is beaten, the Orange Gyms scale to the Orange Champion's post-game band: each Gym team
 # is lifted so its ace is Drake's rematch ace (Champion + 10).
 ORANGE_POSTGAME_ACE = CHAMPION_ACE["ORANGE"] + 10
@@ -331,8 +331,27 @@ def set_wild(game, pokemon, area_key):
         pokemon.current_hp = pokemon.get_max_hp()
     elif pokemon:
         pokemon.level = wild_level(game, area_key)
+        fixed = _game_levels(game, area_key)
+        if fixed:   # (the area's own game's levels for its grass / cave Pokemon: FireRed's Memorial Pillar Hoppip, 6-16)
+            pokemon.level = random.randint(*fixed)
         pokemon.current_hp = pokemon.get_max_hp()
     return pokemon
+
+
+def _game_levels(game, area_key):
+    """An area's "wild_levels" {"land": [lo, hi]} (11-17, Jordan: FireRed's own levels where ours stood far off), for
+    a wild Pokemon met on land (not while surfing): else None."""
+    try:
+        area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key) or {}
+        band = (area.get("wild_levels") or {}).get("land")
+        if not band:
+            return None
+        from src.dungeon import core
+        if core.CURRENT_TILE in (core.SURF, getattr(core, "WATER", None)):
+            return None
+        return int(band[0]), int(band[1])
+    except Exception:
+        return None
 
 
 def set_team(team, team_levels, exact=False):

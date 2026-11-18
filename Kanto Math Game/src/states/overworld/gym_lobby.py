@@ -74,7 +74,14 @@ def leader_in_room(state):
         state.show_message([f"{name}: Welcome, challenger! Before we battle, I want to play a game with you.",
                             f"{name}: Win it, and then we'll see how strong you really are!"], callback=lobby._start_challenge)
         return
-    state.show_message([f"{name}: Now then. Let's battle!"], callback=lobby.challenge_gym)
+    state.show_message([f"{name}: Now then. Let's battle!"], callback=lambda: _battle_from_room(game, lobby))
+
+
+def _battle_from_room(game, lobby):
+    """Start the lobby's next battle from a walked room. The last battle's start left game.transitioning set (only the
+    lobby screen cleared it), so the next room's member spoke and then nothing happened: Bruno, after Lorelei (11-16)."""
+    game.transitioning = False
+    lobby.challenge_gym()
 
 
 def league_member(state, opt):
@@ -96,7 +103,7 @@ def league_member(state, opt):
         return
     game.gym_room_return = story.current_area_key
     state.show_message([_fill_names(game, x) for x in (opt.get("lines") or [f"{name}: Welcome. Let's battle!"])],
-                       callback=lobby.challenge_gym)
+                       callback=lambda: _battle_from_room(game, lobby))
 
 
 class GymLobbyState(GameState):
@@ -311,6 +318,7 @@ class GymLobbyState(GameState):
 
         t_data = _cast_trainer(self.game, self.next_opponent.copy())
         from src.states.battle import TrainerBattleState, TrainerIntroState
+        from src.states.battle_double import battle_options
 
         is_leader = (self.next_opponent == self.leader)
         if self.area_key == "INDIGO_PLATEAU" and is_leader:
@@ -427,7 +435,8 @@ class GymLobbyState(GameState):
             custom_dialogue=t_data.get("dialogue", {}), rewards=t_data.get("rewards"),
             battle_type="gym", is_boss_battle=True, area_name=self.area_key,
             badge_reward=t_data.get("badge_reward"), background_image=bg_file,
-            victory_flag=t_data.get("victory_flag")  # Lance: beat_elite_four, Champion: beat_champion
+            victory_flag=t_data.get("victory_flag"),  # Lance: beat_elite_four, Champion: beat_champion
+            options=battle_options(t_data),   # (a double battle, no switching...: src/states/battle_double.py)
         )
 
         intro_text = random.choice(t_data.get("dialogue", {}).get("intro", ["Prepare to battle!"]))

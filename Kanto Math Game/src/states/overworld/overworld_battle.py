@@ -434,6 +434,8 @@ class OverworldView:
 
     def draw(self, screen, battle):
         from src.states.overworld.dungeon import TILE
+        if getattr(battle, "is_doubles", False):
+            return self._draw_doubles(screen, battle)
         play = self.play
         self._draw_map(screen)
         self._watch(battle)
@@ -471,3 +473,83 @@ class OverworldView:
                               shadow=(20, 20, 30), align="center")  # (beside it, clear of its name)
             f[3] -= 1
         self.fx = [f for f in self.fx if f[3] > 0]
+
+    # ---------------------------------------------------------------- a double battle on the map (battle_double.py)
+    def _double_rects(self, battle):
+        """{id(mon): (tile rect, mine?, mon)} for everyone out: each side's second Pokemon two tiles across the line
+        between the two sides (two tiles, so the HP bars over and under them never meet)."""
+        from src.states.overworld.dungeon import TILE
+        fr, mr = self.catch_points()[::-1]
+        fx, fy = self._face(self.mine, self.spot)
+        px, py = abs(fy), abs(fx)   # (across the line)
+        out = {}
+        for mine, base, slots in ((False, fr, battle.o_slots), (True, mr, battle.p_slots)):
+            for k, mon in enumerate(slots):
+                if mon is not None:
+                    out[id(mon)] = (base.move(px * 2 * TILE * k, py * 2 * TILE * k), mine, mon)
+        return out
+
+    def _draw_doubles(self, screen, battle):
+        from src.states.overworld.dungeon import TILE
+        play = self.play
+        self._draw_map(screen)
+        fonts = play.game.assets.fonts
+        spots = self._double_rects(battle)
+        for key, (r, mine, mon) in spots.items():   # (a hit: its number floats up beside it)
+            hp = mon.current_hp
+            was = self.last.get(key)
+            self.last[key] = hp
+            if was is not None and hp < was - 0.5:
+                self.fx.append([key, f"-{int(round(was - hp))}", (255, 140, 130) if mine else (255, 255, 255),
+                                int(FPS * 0.9)])
+        actor, hit = getattr(battle, "_d_actor", None), list(getattr(battle, "_d_hit", None) or [])
+        anim = getattr(battle, "move_anim", None)
+        lunging = getattr(getattr(battle, "anim_ctrl", None), "is_lunging", False)
+        now = (id(actor), id(anim)) if actor is not None and (anim is not None or lunging) else None
+        if now and now != self.anim_seen and hit and id(actor) in spots and id(hit[0]) in spots:
+            kind = str((getattr(actor, "types", None) or ["NORMAL"])[0]).upper()
+            self.shots.append([id(actor), TYPE_COLOR.get(kind, (255, 255, 255)), 0, id(hit[0])])
+        self.anim_seen = now
+        foe_face, my_face = self._face(self.spot, self.mine), self._face(self.mine, self.spot)
+        for key, (r, mine, mon) in spots.items():
+            if not battle._shown(mon):
+                continue
+            img = play._icon(mon, TILE + 8, flip=mine and self.spot[0] > self.mine[0], facing=my_face if mine else foe_face)
+            if img is not None:
+                screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
+            if mon.current_hp > 0:   # (a small bar on the map; the names and HP in the battle's own boxes, below)
+                bar = pygame.Rect(0, 0, TILE - 4, 8)
+                bar.midbottom = (r.centerx, r.top - 12)
+                if mine:
+                    bar.midtop = (r.centerx, r.bottom + 10)
+                k = max(0, mon.current_hp) / max(1, mon.get_max_hp())
+                col = (90, 220, 110) if k > 0.5 else (240, 200, 60) if k > 0.2 else (230, 70, 60)
+                pygame.draw.rect(screen, (20, 20, 30), bar.inflate(4, 4), border_radius=4)
+                pygame.draw.rect(screen, col, (bar.x, bar.y, int(bar.w * k), bar.h), border_radius=3)
+                if mine:
+                    pygame.draw.rect(screen, (120, 200, 255), bar.inflate(4, 4), 2, border_radius=4)
+        for s in self.shots:
+            if s[0] not in spots or s[3] not in spots:
+                s[2] = self.SHOT + 1
+                continue
+            a, b = spots[s[0]][0].center, spots[s[3]][0].center
+            k = min(1.0, s[2] / self.SHOT)
+            for j in range(4):
+                kk = max(0.0, k - j * 0.06)
+                pygame.draw.circle(screen, s[1], (int(a[0] + (b[0] - a[0]) * kk), int(a[1] + (b[1] - a[1]) * kk)), 10 - j * 2)
+            if k > 0.75:
+                pygame.draw.circle(screen, s[1], b, int(10 + (k - 0.75) * 120), 3)
+            s[2] += 1
+        self.shots = [s for s in self.shots if s[2] <= self.SHOT]
+        for f in self.fx:
+            if f[0] not in spots:
+                f[3] = 0
+                continue
+            r = spots[f[0]][0]
+            lift = int((FPS * 0.9 - f[3]) * 2)
+            theme.shadow_text(screen, f[1], fonts["label"], r.right + 34, r.top - lift // 2, color=f[2],
+                              shadow=(20, 20, 30), align="center")
+            f[3] -= 1
+        self.fx = [f for f in self.fx if f[3] > 0]
+        battle.draw_side(screen, "opponent", sprites=False)   # (the same four boxes as the CLASSIC style: never overlapping)
+        battle.draw_side(screen, "player", sprites=False)

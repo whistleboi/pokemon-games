@@ -22,8 +22,8 @@ TILE, STEP = dn.TILE, dn.STEP_FRAMES
 DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
-LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. COZMO'S HOUSE", "wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
-          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "assistant": "ASSISTANT'S HOUSE", "poketch": "POKETCH CO.", "gts": "GLOBAL TERMINAL", "tv": "JUBILIFE TV", "condo": "CONDOMINIUMS", "flower": "FLOWER SHOP", "library": "CANALAVE LIBRARY", "poffin": "POFFIN HOUSE", "ruins": "CELESTIC RUINS", "elder": "ELDER'S HOUSE", "lighthouse": "VISTA LIGHTHOUSE", "amity": "AMITY SQUARE", "museum": "MUSEUM", "bike": "BIKE SHOP", "mayor": "MAYOR'S HOUSE", "cycle": "YOUR BIKE", "realgam": "REALGAM TOWER",
+LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. COZMO'S HOUSE", "wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME", "fire_station": "FIRE STATION", "festival": "FESTIVAL HOUSE", "stadium": "PUMMELO STADIUM", "palace": "PALACE OF VICTORY",
+          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "assistant": "ASSISTANT'S HOUSE", "poketch": "POKETCH CO.", "gts": "GLOBAL TERMINAL", "tv": "JUBILIFE TV", "condo": "CONDOMINIUMS", "flower": "FLOWER SHOP", "library": "CANALAVE LIBRARY", "poffin": "POFFIN HOUSE", "ruins": "CELESTIC RUINS", "elder": "ELDER'S HOUSE", "lighthouse": "VISTA LIGHTHOUSE", "amity": "AMITY SQUARE", "museum": "MUSEUM", "bike": "BIKE SHOP", "mayor": "MAYOR'S HOUSE", "mayor_office": "MAYOR'S OFFICE", "cycle": "YOUR BIKE", "realgam": "REALGAM TOWER",
           "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
           "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",
           "game corner": "GAME CORNER", "prize corner": "PRIZE CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO.",
@@ -49,6 +49,8 @@ def important_person(opt):
     if opt.get("action") not in (None, "EVENT"):
         return True
     ev = opt.get("event") or {}
+    if ev.get("battle") and not opt.get("door") and set(ev) <= {"lines", "battle", "flag", "done", "requires", "fail"}:
+        return False   # (a trainer who only battles: no tag, as on the routes. 11-17, Jordan: Seven Island's Psychics)
     return opt.get("color") == "GOLD" or any(k in ev for k in _ERRANDS)
 
 
@@ -141,6 +143,10 @@ class WalkTownState(CityState):
     _sprite = dn.DungeonState._sprite
     _sheet_frame = dn.DungeonState._sheet_frame
     _player_img = dn.DungeonState._player_img
+    _player_extra = dn.DungeonState._player_extra   # (your own extra sheets: running, the fishing cast; Orange 5.7's Ash)
+    _extra_frame = dn.DungeonState._extra_frame
+    _pose_start = dn.DungeonState._pose_start
+    _pose_img = dn.DungeonState._pose_img
     _follower_img = dn.DungeonState._follower_img
     _icon = dn.DungeonState._icon
     _trainer_scale = dn.DungeonState._trainer_scale
@@ -465,6 +471,7 @@ class WalkTownState(CityState):
             hide()
         first, second = flags[tc["first"] + "_where"]
         if not flags.get(tc["first"]):
+            self._can_first, self._cans_tried = (i, set()) if i == first else (None, getattr(self, "_cans_tried", set()) | {i})  # (for the Journal's marker: which cans you've looked in)
             if i == first:
                 flags[tc["first"]] = True
                 self._from_art(self.town_map["rooms"][self.room])
@@ -478,6 +485,7 @@ class WalkTownState(CityState):
             self.show_message(["There's another switch under the trash!", "Click! The second electric lock opened! The door to the Leader is open!"])
         else:
             flags.pop(tc["first"], None)
+            self._can_first, self._cans_tried = None, set()
             hide()
             self._from_art(self.town_map["rooms"][self.room])
             self.show_message(["Nope, there's only trash in here.", "Hey! The electric locks were reset!"])
@@ -485,9 +493,9 @@ class WalkTownState(CityState):
 
     def _town_hidden(self, t):
         """An item hidden in town (the map's or room's "hidden" {"x,y": item}: the game's own hidden items, as on the
-        routes): found by stepping on its spot, or walking into it where it's solid. Once each."""
-        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
-        item = ((m or {}).get("hidden") or {}).get(f"{t[0]},{t[1]}")
+        routes): found by stepping on its spot, or walking into it where it's solid (or into whoever stands on it). Once each.
+        "hidden_when" {"x,y": conditions}: not there to find till they are met (Viridian Gym's Macho Brace, once Giovanni is beaten)."""
+        item = self._hidden_now().get(f"{t[0]},{t[1]}")
         story = self.game.story_manager
         flag = f"hidden_{self.area_key}_{getattr(self, 'room', None) or ''}_{t[0]}_{t[1]}"
         if not item or story.story_flags.get(flag):
@@ -502,12 +510,17 @@ class WalkTownState(CityState):
         self.show_message([f"Something was hidden here... You found a {_forms.item_label(item).upper()}!"])
         return True
 
+    def _hidden_now(self):
+        """This map's (or room's) hidden items that are there to find now: {"x,y": item}."""
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
+        when = (m or {}).get("hidden_when") or {}
+        return {k: v for k, v in ((m or {}).get("hidden") or {}).items() if k not in when or self._check_menu_condition(when[k])}
+
     def _itemfinder(self, here):
         """With the Itemfinder, a hidden item on screen makes it beep (once each visit)."""
         from src.world import itemfinder
-        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
         heard = self.__dict__.setdefault("_heard", {}).setdefault(getattr(self, "room", None) or "", set())
-        line = itemfinder.beep(self.game.story_manager, (m or {}).get("hidden"), here,
+        line = itemfinder.beep(self.game.story_manager, self._hidden_now(), here,
                                lambda x, y: f"hidden_{self.area_key}_{getattr(self, 'room', None) or ''}_{x}_{y}", heard)
         if line:
             self.flash(line, 150)
@@ -570,7 +583,7 @@ class WalkTownState(CityState):
                 return False
             if len(parts) == 1 and not story.story_flags.get(parts[0]):
                 return False
-        if opt.get("item_condition") and story.inventory.get(opt["item_condition"], 0) <= 0:
+        if opt.get("item_condition") and not __import__("src.world.hms", fromlist=["field"]).field(story, opt["item_condition"]):   # (an HM: Kanto asks for its badge too)
             return False
         return not opt.get("condition") or self._check_menu_condition(opt["condition"])
 
@@ -625,7 +638,12 @@ class WalkTownState(CityState):
         in by, else outside the Pokemon Center (or in the middle)."""
         story = self.game.story_manager
         was = getattr(self.game, "walk_town_pos", None)
-        if was and was[0] == self.area_key and self._open(was[1]):
+        landing, self.game.fly_landing = getattr(self.game, "fly_landing", None), None   # (Fly, Orange 11-17: down outside the Center's door)
+        fly_door = next((t for t, k in self.doors.items() if k == "center"), None) if landing == self.area_key else None
+        if fly_door and str(self.area_data.get("region") or "").upper() == "ORANGE":
+            spot = (fly_door[0], fly_door[1] + 1)
+            self.player, self.facing = (spot if self._open(spot) else self._nearest_open(spot)), (0, 1)
+        elif was and was[0] == self.area_key and self._open(was[1]):
             self.player, self.facing = tuple(was[1]), tuple(was[2])
         else:
             came = getattr(story, "last_area_key", None)  # (a loaded save hasn't come from anywhere)
@@ -681,7 +699,8 @@ class WalkTownState(CityState):
         return usable(self.game.story_manager, item)
 
     def _has_waterfall(self):
-        return self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0
+        from src.world.hms import field
+        return field(self.game.story_manager, "HM_WATERFALL")   # (Kanto: with the Volcano Badge, FireRed's rule)
 
     def _nearest_open(self, t):
         best = min(((x, y) for y in range(self.h) for x in range(self.w) if self._open((x, y)) and (x, y) not in self.exits),
@@ -782,6 +801,8 @@ class WalkTownState(CityState):
             return self._read(to)
         if to in self._people():
             self.walk_goal = None
+            if self._town_hidden(to):   # (an item hidden on the tile they stand on: found first, once)
+                return
             return self._talk(to)
         if getattr(self, "room", None) and 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.grid[to[1]][to[0]] == "m":
             across = (to[0] + dx, to[1] + dy)  # (someone behind a counter: talk across it, as in the original)
@@ -996,8 +1017,12 @@ class WalkTownState(CityState):
             cb()
 
     def _travel_option(self, target):
-        return next((o for o in self.area_data.get("travel_options", [])
-                     if (o.get("target_area") or o.get("target")) == target), None)
+        opt = next((o for o in self.area_data.get("travel_options", [])
+                    if (o.get("target_area") or o.get("target")) == target), None)
+        if opt is None:   # (a place listed with the town's own things to do: Cinnabar's Pokemon Mansion, whose door is a way out; 11-16)
+            opt = next((o for o in self.area_data.get("explore_options", [])
+                        if o.get("action") == "TRAVEL" and o.get("target_area") == target), None)
+        return opt
 
     def _leave(self, target):
         if str(target).startswith("OUT:"):  # (out of a room, back to the town)
@@ -1032,11 +1057,59 @@ class WalkTownState(CityState):
         self._remember()
 
     # ---------------------------------------------------------------- input
+    # ---------------------------------------------------------------- fishing from the town's shore (Jordan, 11-17: as the games)
+    def _fish_spot(self):
+        """The water beside you (the way you face first) that you can fish in, or None: the town has rod Pokemon (its
+        "can_fish"), you have a rod, and you're outdoors on our own map, or in a room of it that is out of doors (the
+        room's own "can_fish": Vermilion's harbour)."""
+        if not self.own_map or not self.area_data.get("can_fish"):
+            return None
+        if getattr(self, "room", None) and not ((self.town_map.get("rooms") or {}).get(self.room) or {}).get("can_fish"):
+            return None
+        inv = self.game.story_manager.inventory
+        if not any(inv.get(r, 0) > 0 for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD")):
+            return None
+        from src.dungeon import art
+        for dx, dy in [self.facing] + [d for d in DIRS if d != self.facing]:
+            x, y = self.player[0] + dx, self.player[1] + dy
+            if 0 <= x < self.w and 0 <= y < self.h and (self.grid[y][x] == "~" or self.grid[y][x] in art.SEA_CHARS or (x, y) in self.water_exits):
+                return (x, y)
+        return None
+
+    def _fishing_pool(self, rod):
+        from src.states.overworld.route_actions import RouteActions
+        return RouteActions._fishing_pool(self, rod)
+
+    def fish_here(self):
+        """Cast into the water beside you: a bite is a wild battle (the town's own rod Pokemon), then back here."""
+        spot = self._fish_spot()
+        if not spot or self._busy() or self.anim > 0:
+            return
+        from src.states.overworld.route_actions import RouteActions
+        self.walk_goal = None
+        self.facing = (spot[0] - self.player[0], spot[1] - self.player[1])
+        self._pose_start("fish")   # (your own casting frames, if you have them: Orange 5.7's Ash)
+        mon = RouteActions._fish_bite(self)
+        if mon is None:
+            return self.flash("Not even a nibble...")
+        self._remember()
+
+        def bite():
+            import random
+            from src.states.battle import WildBattleState
+            battle = WildBattleState(self.game, mon, self.area_key,
+                                     background_image=random.choice(["battle_ocean1.png", "battle_ocean2.png", "battle_ocean3.png"]))
+            battle.back_to_town = True
+            self.game.change_state(battle)
+        self.show_message(["Oh! A bite!"], callback=bite)
+
     def _buttons(self):
         side = dn.side_buttons(self.game)  # (stacked in the right band, beside the map)
         out = [(side[3].move(0, -70).inflate(0, -14).move(0, 7), "BAG", (198, 132, 60), self._open_bag),  # (Jordan, 11-12: the Bag one press away on the map, with the others)
                (side[3], theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
                (side[2], theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
+        if self._fish_spot():   # (beside the water with a rod, as on the routes)
+            out.append((side[1], "FISH", (232, 132, 40), self.fish_here))
         mega = self._map_mega_button()   # (Jordan 11-15: the MEGA button in towns too; the Mega's own clock carries between areas)
         if mega:
             r, label, col, fn, enabled, sub = mega
@@ -1094,6 +1167,8 @@ class WalkTownState(CityState):
                         self._talk(t)
                     elif t in self.doors:
                         self._enter(t)
+                    elif self._fish_spot() == t:
+                        self.fish_here()
                 elif e.key == pygame.K_p:
                     self._open_party()
                 elif e.key in (pygame.K_ESCAPE, pygame.K_m) and self.hud_buttons:
@@ -1119,6 +1194,10 @@ class WalkTownState(CityState):
                 if abs(goal[0] - self.player[0]) + abs(goal[1] - self.player[1]) == 1:
                     self.walk_goal = None
                     self.step(goal[0] - self.player[0], goal[1] - self.player[1])
+                    if self.player != goal and self.anim == 0 and not self._busy() and self._fish_spot() == goal \
+                            and not self._open(goal):
+                        self.toast_timer = 0   # (a tap on water beside you that you can't walk onto: fish, as on the routes)
+                        self.fish_here()
                 elif goal in self.doors or goal in self._people() or goal in self.signs or self._open(goal):
                     self.walk_goal = goal
                 self._map_press = True  # (held: it keeps walking toward the finger)
@@ -1386,6 +1465,23 @@ class WalkTownState(CityState):
             pygame.draw.circle(veil, (0, 0, 0, 250 - 40 * (i + 1)), (cx, cy), max(1, rad - i * TILE // 8))
         screen.blit(veil, view.topleft)
 
+    def _draw_story_weather(self, screen, view):
+        """Weather the story brings to a town, drawn over it outdoors (the area's "story_weather" with "show": "snow": Orange
+        5.7's storm over Shamouti during the spheres story; src/world/seasons.py story_weather): a grey sky and falling snow."""
+        from src.world import seasons
+        w = seasons.story_weather(self.game, self.area_key)
+        if not w or w.get("show") != "snow":
+            return
+        veil = pygame.Surface(view.size, pygame.SRCALPHA)
+        veil.fill((60, 70, 95, 95))
+        t = pygame.time.get_ticks()
+        for i in range(140):   # (each flake drifts down and a little sideways, wrapping round the view)
+            sp = 0.04 + (i % 5) * 0.012
+            x = (i * 137 + int(t * sp * 0.4) + int(6 * ((t // 400 + i) % 3))) % view.w
+            y = (i * 89 + int(t * sp)) % view.h
+            pygame.draw.circle(veil, (245, 248, 255, 220), (x, y), 2 if i % 3 else 3)
+        screen.blit(veil, view.topleft)
+
     def draw(self):
         # (Jordan, 11-12: no separate scene for someone you talk to: no other background, no picture sliding in. They speak from the map)
         screen = self.game.screen
@@ -1513,6 +1609,8 @@ class WalkTownState(CityState):
             self._draw_gates(screen, ox, oy)
         if getattr(self, "dark", None):
             self._draw_dark(screen, view, pr.center)
+        if self.room is None:
+            self._draw_story_weather(screen, view)
         if not self._busy():
             self._draw_guide(screen, at)
         screen.set_clip(None)
@@ -1557,12 +1655,18 @@ class WalkTownState(CityState):
         """(tile, label) for the Journal's tracked mission: a door or person here that does what it needs,
         else the nearest way out toward its next stop. None when there's nowhere to point."""
         from src.world import guide
-        key = (self.player, pygame.time.get_ticks() // 1000)
+        key = (self.player, getattr(self, "room", None), pygame.time.get_ticks() // 1000)
         if getattr(self, "_guide_key", None) == key:
             return self._guide_hit
         self._guide_key, self._guide_hit = key, None
         mission = guide.tracked_mission(self.game)
         if not mission:
+            return None
+        if getattr(self, "town_map", None):  # (our own maps: through the rooms too, 11-17)
+            aim = self._guide_aim(mission)
+            self._guide_hit = self._guide_toward(*aim) if aim else None
+            return self._guide_hit
+        if getattr(self, "room", None):   # (a room of the old picture towns: none there)
             return None
         px, py = self.player
         near = lambda t: abs(t[0] - px) + abs(t[1] - py)
@@ -1590,6 +1694,335 @@ class WalkTownState(CityState):
         if spot:
             self._guide_hit = (spot, self._exit_label(hop))
         return self._guide_hit
+
+    # The Journal's marker through a place and its rooms (Jordan, 11-17: "the marker always leads the next step").
+    # _guide_aim says where the mission's next thing is (a room of this place, or outside, and a tile); _guide_toward
+    # gives the tile to head for from where you stand: that tile, or the door / mat / stairs that starts the way to it.
+    def _guide_part(self, room):
+        """What a room of this place (None: the map itself) holds, read from its map without walking in: its ways out
+        {tile: target}, doors {tile: kind}, people {tile: option} and pads {tile: room}."""
+        from src.dungeon import art
+        cache = self.__dict__.setdefault("_guide_parts", {})
+        key = (room, getattr(self, "_cleared", ""), self._has("HM_SURF"), self._has_waterfall())
+        if key in cache:
+            return cache[key]
+        m = self.town_map["rooms"][room] if room else self.town_map
+        grid = m["art"]
+        for c in getattr(self, "_cleared", ""):
+            grid = [row.replace(c, ".") for row in grid]
+        kinds, ways = m.get("buildings", {}), m.get("exits", {})
+        part = {"exits": {}, "doors": {}, "people": {}, "pads": {}, "open": set(), "grid": grid, "stops": {tuple(t) for t in m.get("stops", [])}}
+        deep = art.SEA_CHARS if m.get("surf") else ""
+        for (x, y), letter in art.doors(grid).items():
+            target = ways.get(letter) or (ways.get("D") if kinds.get(letter) == "gate" else None)
+            if target:
+                part["exits"][(x, y)] = target
+            else:
+                part["doors"][(x, y)] = kinds.get(letter, "house")
+        names = list(m.get("people", []))
+        options = {o.get("text"): o for o in self.area_data.get("explore_options", [])}
+        for y, row in enumerate(grid):
+            for x, c in enumerate(row):
+                if c in art.EXIT_CHARS and c in ways:
+                    part["exits"][(x, y)] = ways[c]
+                elif c == "N" and names:
+                    who = names.pop(0)
+                    opt = who if isinstance(who, dict) else None if isinstance(who, list) else options.get(who)
+                    if isinstance(who, str) and who.startswith("door:"):
+                        opt = {"any": [o for o in self.area_data.get("explore_options", []) if option_kind(o) == who[5:]]
+                               + [dict(o, action="TRAVEL") for o in self.area_data.get("travel_options", []) if o.get("door") == who[5:]]}
+                    if isinstance(who, list):
+                        opt = {"any": [w if isinstance(w, dict) else options[w] for w in who if isinstance(w, dict) or w in options]}
+                    if opt:
+                        part["people"][(x, y)] = opt
+                if (key[3] if c == "$" else key[2] if c in deep else c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"])) \
+                        and (x, y) not in part["doors"]:
+                    part["open"].add((x, y))
+        part["open"] |= set(part["exits"])
+        for k, to in (m.get("links") or {}).items():  # (a pad: to its far pad in this room (""), or into another room)
+            part["pads"][tuple(int(v) for v in k.split(","))] = (to[0] if isinstance(to[0], str) else "", to[1], to[2])
+        cache[key] = part
+        return part
+
+    def _guide_passages(self, room):
+        """[(tile, the room it leads to (None: outside), what kind)] for a room's doors, mats, stairs and pads."""
+        part, out = self._guide_part(room), []
+        rooms = self.town_map.get("rooms") or {}
+        for t, target in part["exits"].items():
+            target = str(target)
+            if target.startswith("OUT:"):
+                out.append((t, None, "out"))
+            elif target.startswith("ROOM:"):
+                to = None if target[5:] == "MAIN" else target[5:]
+                if to is None or to in rooms:
+                    out.append((t, to, "stairs"))
+        if room is None:
+            for t in part["doors"]:
+                to = (self.town_map.get("inside") or {}).get("%d,%d" % t)
+                if to in rooms:
+                    out.append((t, to, "door"))
+        for t, (to, _x, _y) in part["pads"].items():
+            if to in rooms:
+                out.append((t, to, "pad"))
+        return out
+
+    def _guide_rooms(self):
+        """{room: (how many passages from where you are, the passage of this room that starts the way)}."""
+        here = getattr(self, "room", None)
+        seen, q = {here: (0, None)}, deque([here])
+        while q:
+            cur = q.popleft()
+            for t, to, kind in self._guide_passages(cur):
+                if to not in seen:
+                    seen[to] = (seen[cur][0] + 1, seen[cur][1] or (to, kind) if cur != here else (to, kind))
+                    q.append(to)
+        return seen
+
+    def _guide_aim(self, mission):
+        """(tiles, label) of what the tracked mission needs in this place, tiles a set of (room, tile) (room None: the
+        map itself): its next step's spot, else someone or a door that does what it needs, else the ways out toward
+        its next stop. None: nothing here."""
+        from src.world import guide
+        game, here = self.game, getattr(self, "room", None)
+        rooms = self.town_map.get("rooms") or {}
+        step = guide.current_step(game, mission)
+        if step and step.get("at") and "floor" not in step and (step.get("room") is None or step["room"] in rooms) \
+                and step.get("area", guide.mission_target(game, mission)) == self.area_key:
+            return ({(step.get("room"), tuple(step["at"]))}, step.get("label") or "Here")
+        reach = self._guide_rooms()
+        px, py = self.player
+        near = lambda t: abs(t[0] - px) + abs(t[1] - py)
+        for room in sorted(reach, key=lambda r: (reach[r][0], str(r))):
+            part = self._guide_part(room)
+            people = self._people() if room == here else \
+                {t: (next((o for o in opt["any"] if self._shown(o)), None) if "any" in opt else opt)
+                 for t, opt in part["people"].items() if self._shown(opt)}
+            for spot, opt in sorted(people.items(), key=lambda kv: near(kv[0])):
+                if opt and guide.advances_goal(game, self.area_key, opt, mission):
+                    return ({(room, spot)}, "Here")
+            if room is None:
+                for spot, kind in sorted(part["doors"].items(), key=lambda kv: near(kv[0])):
+                    if any(guide.advances_goal(game, self.area_key, o, mission) for o in self._door_options(kind)):
+                        return ({(room, spot)}, "Here")
+        ways = {}   # area -> {(room, tile)}: the ways out of the place, from any of its rooms; a door that is a place of its own
+        for room in reach:
+            part = self._guide_part(room)
+            for t, target in part["exits"].items():
+                if not str(target).startswith(("OUT:", "ROOM:")):
+                    ways.setdefault(target, set()).add((room, t))
+            for t, opt in part["people"].items():   # (whoever runs a way out from inside its building: the harbour's sailor and the boats)
+                for o in (opt["any"] if "any" in opt else [opt]):
+                    to = guide.leads_to(game, self.area_key, o) if self._shown(o) else None
+                    if to:
+                        ways.setdefault(to, set()).add((room, t))
+        if None in reach:
+            for t, kind in self._guide_part(None)["doors"].items():
+                for o in self._door_options(kind):
+                    to = guide.leads_to(game, self.area_key, o)
+                    if to and to not in ways:
+                        ways[to] = {(None, t)}
+        hop = guide.map_hop(game, list(ways))
+        if not hop or hop == self.area_key or hop not in ways:
+            return None
+        return (ways[hop], self._exit_label(hop))
+
+    def _guide_walk(self, goals):
+        """The shortest walk from where you stand to one of goals ({(room, tile)}), over this place's rooms: through
+        doors, mats, stairs and pads, round whoever and whatever stands in the way now. -> (the goal reached, the first
+        door / mat / stairs / pad on the way and its kind, or None when the goal is in this room), or None: no way."""
+        here = getattr(self, "room", None)
+        rooms = self.town_map.get("rooms") or {}
+        inside = self.town_map.get("inside") or {}
+        shut, parts = {}, {}   # room -> tiles nobody can stand on now: its people, whatever bars the way
+        P = lambda room: parts.get(room) or parts.setdefault(room, self._guide_part(room))
+        busy = set(self._people()) | set(self._rot_bars())   # (what bars the way as the story stands this moment: the map's own list is looked at afresh, a gate just opened counts)
+        for bar in getattr(self, "_bar_list", []):
+            if not self._bar_met(bar) and self._bar_here(bar):
+                busy.update(tuple(t) for t in bar.get("tiles", []))
+        surf, cut, fall = self._has("HM_SURF"), self._has("HM_CUT"), self._has_waterfall()
+        rows, ways = self.rows, self.exits
+
+        def closed(room):
+            if room not in shut:
+                part = P(room)
+                m = rooms[room] if room else self.town_map
+                no = {t for t, opt in part["people"].items() if self._shown(opt)}
+                for bar in m.get("barred", []):
+                    if not self._bar_met(bar) and self._bar_here(bar):
+                        no.update(tuple(t) for t in bar.get("tiles", []))
+                shut[room] = no
+            return shut[room]
+
+        def free(room, t):
+            if room == here:
+                x, y = t
+                if not (0 <= x < self.w and 0 <= y < self.h) or t in busy:
+                    return False
+                c = rows[y][x]
+                return c == "." or t in ways or (c == "o" and surf) or (c == "2" and cut) or (c == "$" and fall)
+            part = P(room)
+            return t in part["open"] and t not in closed(room)
+
+        def arrive(room, came):
+            """Where you stand in a room, come in by its way out that leads back to came (as _go does)."""
+            part = P(room)
+            if room is None and came.startswith("OUT:"):
+                x, y = (int(v) for v in came[4:].split(","))
+                return (x, y + 1) if free(None, (x, y + 1)) else (x, y - 1) if free(None, (x, y - 1)) else None
+            mats = sorted(t for t, target in part["exits"].items() if target == came)
+            if not mats:
+                return None
+            t = mats[len(mats) // 2]
+            return next(((t[0] + dx, t[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0))
+                         if free(room, (t[0] + dx, t[1] + dy)) and (t[0] + dx, t[1] + dy) not in part["exits"]), None)
+
+        def beyond(room, t):
+            """(where a door, mat, stairs or pad on t takes you, its kind), or None."""
+            part = P(room)
+            target = part["exits"].get(t)
+            if target is not None:
+                target = str(target)
+                if target.startswith("OUT:"):
+                    return ((None, arrive(None, target)), "out")
+                if target.startswith("ROOM:"):
+                    to = None if target[5:] == "MAIN" else target[5:]
+                    return ((to, arrive(to, "ROOM:" + (room or "MAIN"))), "stairs") if to is None or to in rooms else None
+                return None
+            if room is None and t in part["doors"]:
+                to = inside.get("%d,%d" % t)
+                return ((to, arrive(to, "OUT:%d,%d" % t)), "door") if to in rooms else None
+            if t in part["pads"]:
+                to, x, y = part["pads"][t]
+                to = room if to == "" else to
+                return ((to, (x, y)), "pad") if to == room or to in rooms else None
+            return None
+
+        start = (here, tuple(self.player))
+        prev, q = {start: None}, deque([start])
+        found = None
+        while q and found is None:
+            cur = q.popleft()
+            room, (x, y) = cur
+            part = P(room)
+            grid = part["grid"]
+            for dx, dy in DIRS:
+                n = (x + dx, y + dy)
+                if (room, n) in goals:
+                    found = (room, n)
+                    prev[found] = (cur, None)
+                    break
+                if 0 <= n[1] < len(grid) and 0 <= n[0] < len(grid[0]) and grid[n[1]][n[0]] == "m":   # (someone behind a counter: talked to across it)
+                    over = next(((room, (n[0] + k * dx, n[1] + k * dy)) for k in (1, 2) if (room, (n[0] + k * dx, n[1] + k * dy)) in goals), None)
+                    if over:
+                        found = over
+                        prev[found] = (cur, None)
+                        break
+                on = beyond(room, n)
+                if on is not None:
+                    dest, kind = on
+                    if dest[1] is not None and dest not in prev:
+                        prev[dest] = (cur, (n, kind))
+                        q.append(dest)
+                    continue
+                if n not in part["exits"] and n not in part["doors"] and free(room, n):
+                    if grid[n[1]][n[0]] in "3456":   # (a spin tile: it carries you its way till something stops you, or a stop tile does)
+                        way = {"3": (-1, 0), "4": (1, 0), "5": (0, -1), "6": (0, 1)}
+                        d = way[grid[n[1]][n[0]]]
+                        for _ in range(len(grid) * len(grid[0])):
+                            nxt = (n[0] + d[0], n[1] + d[1])
+                            if not free(room, nxt) or nxt in part["doors"]:
+                                break
+                            n = nxt
+                            if grid[n[1]][n[0]] in way:
+                                d = way[grid[n[1]][n[0]]]
+                            elif n in part["stops"] or n in part["exits"] or n in part["pads"]:
+                                break
+                        on = beyond(room, n) if n in part["exits"] else None
+                        if on is not None:
+                            if on[0][1] is not None and on[0] not in prev:
+                                prev[on[0]] = (cur, (n, on[1]))
+                                q.append(on[0])
+                            continue
+                    if (room, n) not in prev:
+                        prev[(room, n)] = (cur, None)
+                        q.append((room, n))
+        if found is None:
+            return None
+        first, node = None, found
+        while prev[node] is not None:
+            node, via = prev[node]
+            if via is not None:
+                first = via
+        return (found, first)
+
+    def _guide_toward(self, goals, label):
+        """The tile to head for now: the nearest of the goals you can walk to when it's in this room (a person: where
+        they stand now), else the door, mat, stairs or pad that starts the way to it. With no way you can walk yet:
+        what opens one in this room (a quiz machine, a trash can to search), else the goal itself, or the first
+        passage toward its room."""
+        here = getattr(self, "room", None)
+        mos = getattr(self, "motions", {})
+        live = lambda t: mos[t].pos if t in mos and not mos[t].gone else t   # (a person: where they stand now)
+        goals = {(r, live(tuple(t)) if r == here else tuple(t)) for r, t in goals}
+        px, py = self.player
+        near = lambda t: (abs(t[0] - px) + abs(t[1] - py), t)
+        names = {"out": "Way out", "stairs": "Stairs", "pad": "Warp", "door": "Here"}
+        if (here, tuple(self.player)) in goals:
+            return (tuple(self.player), label)
+        hit = self._guide_walk(goals)
+        if hit:
+            (room, tile), first = hit
+            if first is None:
+                return (tile, label)
+            if first[0] == tuple(self.player):   # (you're standing on the pad to take: step off it, then back on)
+                off = next(((px + dx, py + dy) for dx, dy in DIRS if self._open((px + dx, py + dy)) and (px + dx, py + dy) not in self.exits
+                            and (px + dx, py + dy) not in getattr(self, "links", {})), None)
+                if off:
+                    return (off, names[first[1]])
+            return (first[0], label if first[1] == "door" and room != here and len({r for r, _t in goals}) == 1
+                    and self._guide_rooms().get(room, (9, None))[0] == 1 else names[first[1]])
+        mine = sorted((t for r, t in goals if r == here), key=near)
+        if mine:   # (it's in this room, and there's no way to it yet)
+            unlock = self._guide_unlock()
+            return unlock or (mine[0], label)
+        rooms = self._guide_rooms()
+        room = min((r for r, _t in goals), key=lambda r: (rooms.get(r, (99, None))[0], str(r)))
+        first = rooms.get(room, (0, None))[1]
+        if not first:
+            return None
+        ways = {t for t, target in self.exits.items() if str(target).startswith(("OUT:", "ROOM:"))} | set(self.doors) | set(getattr(self, "room_links", {}))
+        tiles = [(t, kind) for t, to, kind in self._guide_passages(here) if to == first[0] and t in ways]
+        if not tiles:
+            return None
+        t, kind = min(tiles, key=lambda tk: near(tk[0]))
+        return (t, names.get(kind, "Here"))
+
+    def _guide_unlock(self):
+        """(tile, label) of what opens the way on in this room, when the Journal's spot can't be walked to yet: the
+        nearest quiz machine not answered that you can walk to (Cinnabar Gym's), the next trash can to search
+        (Vermilion Gym's: the marker goes from can to can, it doesn't know where the switches are)."""
+        px, py = self.player
+        near = lambda t: (abs(t[0] - px) + abs(t[1] - py), t)
+        flags = self.game.story_manager.story_flags
+        here = getattr(self, "room", None)
+        todo = [t for t, ev in getattr(self, "sign_events", {}).items()
+                if not flags.get((ev.get("event") or {}).get("flag")) and (near(t)[0] == 1 or self._guide_walk({(here, t)}))]
+        if todo:
+            return (min(todo, key=near), "Quiz")
+        room = (self.town_map.get("rooms") or {}).get(getattr(self, "room", None)) or {}
+        tc = room.get("trashcans")
+        if tc and not flags.get(tc["open"]):
+            cans, cols = [tuple(c) for c in tc["cans"]], int(tc.get("cols", 5))
+            tried = getattr(self, "_cans_tried", set())
+            left = [i for i in range(len(cans)) if i not in tried]
+            if flags.get(tc["first"]) and getattr(self, "_can_first", None) is not None:   # (the second switch is in a can next to the first)
+                r, c = divmod(self._can_first, cols)
+                beside = [rr * cols + cc for rr, cc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1))
+                          if 0 <= cc < cols and 0 <= rr and rr * cols + cc < len(cans)]
+                left = [i for i in beside if i not in tried] or beside
+            if left:
+                return (min((cans[i] for i in left), key=near), "Search")
+        return None
 
     def _guide_lift(self, t):
         """How high the Journal's arrow sits over a tile that already has a name tag (None: no tag there, so the arrow

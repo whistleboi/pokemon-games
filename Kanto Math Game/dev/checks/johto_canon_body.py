@@ -304,13 +304,13 @@ kenya = [o for o in gr["explore_options"] if o.get("text") == "Gate guard"]
 check(any((o.get("event") or {}).get("gift_pokemon") == 21 for o in kenya) and any("kenya_delivered" in (o.get("event") or {}).get("requires", []) for o in kenya),
       "Goldenrod's gate: the guard lends you Kenya (Spearow), and thanks you with an HP Up once the letter's delivered")
 r31man = [p for p in _tm["JOHTO_ROUTE_31"].get("people", []) if isinstance(p, dict) and p.get("text") == "Sleepy man"]
-check(r31man and r31man[0]["event"].get("requires") == ["got_kenya"] and r31man[0]["event"]["gift_item"].get("TM21"), "...the man on Route 31 reads it and gives you Rest")
+check(r31man and r31man[0]["event"].get("requires") == ["got_kenya"] and r31man[0]["event"]["gift_item"].get("TM085"), "...the man on Route 31 reads it and gives you Rest")
 rs = [p for p in _tm["JOHTO_ROUTE_36"].get("people", []) if isinstance(p, dict) and p.get("text") == "Rock Smash man"]
 check(rs and rs[0]["event"]["gift_item"].get("HM_ROCK_SMASH") and rs[0]["event"]["requires"] == ["defeated_sudowoodo"], "Route 36: Rock Smash from the man by the odd tree, once it's gone")
 dept5 = _tm["GOLDENROD_CITY"]["rooms"]["dept_5"].get("people", [])
 check(any("Trader" in str(p) for p in dept5) and any("TM lady" in str(p) for p in dept5), "Dept. Store 5F: the Machop trader and the Sunday TM lady")
 stock = {e["item"] for e in gr.get("extra_stock", [])}
-check({"TM05", "TM03", "TM04", "TM110", "TM111", "TM08", "TM132"} <= stock, f"...and the 5F TM Corner's TMs on the shelf ({sorted(stock)})")
+check({"TM068", "TM067", "TM069", "TM166", "TM143", "TM163", "TM158"} <= stock, f"...and the 5F TM Corner's TMs on the shelf ({sorted(stock)})")
 
 # ---- the Radio Card quiz, the radio, Buena, the Daily Drawing (Jordan 11-15)
 from src.states.systems.yes_no_quiz import YesNoQuizState, make_question
@@ -486,7 +486,7 @@ if _moo:
     check(_mid and story.story_flags.get("moomoo_healed") and not story.inventory.get("ORAN_BERRY"),
           "...the sick Miltank eats seven Oran Berries, one at a time, and gets well")
 _wife = next((o for o in _r39 if o.get("text") == "Farmer's wife"), {})
-check((_wife.get("event") or {}).get("gift_item", {}).get("TM136") and _wife["event"].get("requires") == ["moomoo_healed"],
+check((_wife.get("event") or {}).get("gift_item", {}).get("TM303") and _wife["event"].get("requires") == ["moomoo_healed"],
       "...the farmer's wife then gives TM Natural Gift, and the farm sells Moomoo Milk")
 _ol = _area["OLIVINE_CITY"]["explore_options"]
 _gift = lambda door, item: any(o.get("door") == door and (o.get("event") or {}).get("gift_item", {}).get(item) for o in _ol)
@@ -733,9 +733,9 @@ _talkN(_eld["event"])
 _dr = story.player_team[-1] if len(story.player_team) > _n0 else None
 check(_dr is not None and _dr.id == 147 and _dr.level == 15 and "EXTREME-SPEED" in _dr.moves, f"...then a Lv 15 Dratini that knows Extreme Speed ({_dr and (_dr.id, _dr.level, _dr.moves)})")
 _cl = next((p for p in (_tm["DRAGONS_DEN"]["floors"][1].get("people") or []) if isinstance(p, dict) and p.get("text") == "Clair"), None)
-story.inventory.pop("TM138", None)
+story.inventory.pop("TM115", None)
 _rseN(_sh, _cl["event"], lambda c: True, lambda l, **k: None) if _cl else None
-check(_cl is not None and _cl.get("condition") == "dragon_quiz_done" and story.inventory.get("TM138") == 1, "...and Clair gives TM138 Dragon Pulse in the Den")
+check(_cl is not None and _cl.get("condition") == "dragon_quiz_done" and story.inventory.get("TM115") == 1, "...and Clair gives TM138 Dragon Pulse in the Den")
 story.player_team = _keepN; story.story_flags.clear(); story.story_flags.update(_flN); story.badges.clear(); story.badges.update(_bN)
 
 # ---- N15 (11-16): the S.S. Aqua's HGSS story - the crewman's sleeping buddy (Sailor Stanly), the granddaughter's hide-and-seek and
@@ -801,9 +801,9 @@ if all(w in _aqP for w in _need):
     from src.pokemon import items as _itA
     check(all(_itA.HELD_BOOSTS.get(f"{p}_PLATE") for p in ("FLAME", "IRON", "DRACO")), "...each Plate boosts its type when held (Flame: Fire, Iron: Steel, Draco: Dragon)")
 story.story_flags.clear(); story.story_flags.update(_flA); story.badges.clear(); story.badges.update(_bA); story.inventory.clear(); story.inventory.update(_invA)
-_tm139 = json.load(open("assets/tms.json", encoding="utf-8")).get("TM139") or {}
+_tm139 = json.load(open("assets/tms.json", encoding="utf-8")).get("TM125") or {}
 _silver_balls = [o for o in _area["MT_SILVER_CITY"].get("explore_options", []) + _area["MT_SILVER_CITY"].get("route_menu", []) if o.get("found")]
-check(_tm139.get("move") == "FLAMETHROWER" and any("TM139" in json.dumps(o) for o in _silver_balls),
+check(_tm139.get("move") == "FLAMETHROWER" and any("TM125" in json.dumps(o) for o in _silver_balls),
       f"Mt. Silver: TM139 Flamethrower (HGSS TM35) lies outside the Pokemon Center ({[o['text'] for o in _silver_balls]})")
 _dome = _tm["POKEATHLON_DOME"]
 _rows = _dome["art"]
@@ -945,7 +945,7 @@ _low = _pN._check_route_condition("lead_trusts_you", False)
 _lead.friendship = _evoN.FRIENDSHIP_CATCHES
 _high = _pN._check_route_condition("lead_trusts_you", False)
 _lead.friendship, _lead.affection = _fr, _af
-check(not _low and _high and _tmman["event"]["requires"] == ["lead_trusts_you"] and "TM32" in _tmman["event"]["gift_item"],
+check(not _low and _high and _tmman["event"]["requires"] == ["lead_trusts_you"] and "TM051" in _tmman["event"]["gift_item"],
       "...the man on Route 27 gives TM Sandstorm only when your lead Pokemon trusts you")
 
 if fails:

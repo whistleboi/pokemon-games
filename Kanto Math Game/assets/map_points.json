@@ -1404,6 +1404,58 @@
     "PUMMELO_ISLAND": [
      185,
      277
+    ],
+    "TANGELO_ISLAND": [
+     227,
+     120
+    ],
+    "MANDARIN_NORTH": [
+     288,
+     120
+    ],
+    "KINNOW_ISLAND": [
+     268,
+     211
+    ],
+    "MORO_ISLAND": [
+     95,
+     228
+    ],
+    "MURCOTT_ISLAND": [
+     317,
+     235
+    ],
+    "MANDARIN_SOUTH": [
+     238,
+     276
+    ],
+    "YAMBERA": [
+     205,
+     186
+    ],
+    "ORANGE_ROUTE_64": [
+     175,
+     220
+    ],
+    "TROVITOPOLIS": [
+     126,
+     184
+    ],
+    "ASCORBIA_ISLAND": [
+     306,
+     176
+    ],
+    "BUTWAL_ISLAND": [
+     232,
+     228
+    ],
+    "TARROCO_ISLAND": [
+     277,
+     247
+    ],
+    "HAMLIN_ISLAND": [
+     279,
+     300
     ]
    }
   },

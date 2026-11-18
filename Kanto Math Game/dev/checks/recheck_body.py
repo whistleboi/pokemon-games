@@ -82,7 +82,9 @@ vr = prog["MT_SILVER_CITY"]["on_enter_event"]
 vr = (vr if isinstance(vr, list) else [vr])[0]["trainer"]
 check(vr["levels"] == [36, 38, 37, 37, 37, 40] and vr["team_choice"]["158"] == [215, 42, 82, 93, 64, 154],
       "Silver at Victory Road: HGSS team and levels (Serebii kanto/4th/victoryroad)")
-check(pool("KANTO_ROUTE_11") == {21, 23, 27, 96} and 122 in pool("KANTO_ROUTE_2"), "FRLG Route 11 pool; Mr. Mime on Route 2")
+check(pool("KANTO_ROUTE_11") == {21, 23, 27, 96} and 122 not in pool("KANTO_ROUTE_2")
+      and any((o.get("event") or {}).get("trade") == {"want": 63, "give": 122} for o in prog["KANTO_ROUTE_2"]["route_menu"]),
+      "FRLG Route 11 pool; Mr. Mime on Route 2 is FireRed's trade for an Abra, not a wild Pokemon (11-17)")
 check(prog["KANTO_ROUTE_24"]["route_name"] == "Nugget Bridge" and prog["KANTO_ROUTE_25"]["route_name"] == "Route 25"
       and prog["KANTO_ROUTE_24"]["trainer_pool"][-1]["name"] == "Team Rocket Grunt", "Nugget Bridge is Route 24")   # (the Grunt: the bridge's last, after its five)
 

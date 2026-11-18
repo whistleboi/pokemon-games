@@ -103,6 +103,9 @@ def area_weather(game, area_key, date=None):
     if override:
         return override["weather"]
     area = _areas(game).get(area_key, {})
+    told = story_weather(game, area_key)
+    if told:
+        return told["weather"]
     crisis = _hoenn_crisis(game, area_key, area)
     if crisis:
         return crisis
@@ -148,6 +151,16 @@ def _override(game, area_key, date):
     flags = getattr(story, "story_flags", None) or {}
     entry = (flags.get("weather_override") or {}).get(area_key)
     return entry if entry and entry.get("date") == date.isoformat() else None
+
+
+def story_weather(game, area_key):
+    """An area's weather while the story says so: its "story_weather" [{"when": [flag, "not:flag", ...], "weather", "show"}],
+    the first whose flags all stand (Orange 5.7's storm over Shamouti during the spheres story). None otherwise."""
+    flags = getattr(getattr(game, "story_manager", None), "story_flags", None) or {}
+    for w in (_areas(game).get(area_key) or {}).get("story_weather") or []:
+        if all((not flags.get(c[4:])) if str(c).startswith("not:") else flags.get(c) for c in w.get("when") or []):
+            return w
+    return None
 
 
 def _hoenn_crisis(game, area_key, area):

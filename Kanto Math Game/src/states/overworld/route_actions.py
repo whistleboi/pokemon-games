@@ -401,21 +401,14 @@ class RouteActions:
                 return data[key]
         return {}
 
-    def action_fish(self):
-        self.is_progression_paused = False
-        self.hide_menu_buttons()
-
-        self.rounds_completed += 1
-
+    def _fish_bite(self):
+        """What bites here on your best rod: a wild Pokemon at its level, or None (nothing lives in this water).
+        Shared by the routes and the walked towns (fishing from a town's shore, 11-17)."""
         inv = self.game.story_manager.inventory
         rod = next((r for r in ("SUPER_ROD", "GOOD_ROD") if inv.get(r, 0) > 0), "OLD_ROD")
         fishing_pool_pct = self._fishing_pool(rod)
-
         if not fishing_pool_pct:
-            self.show_dialogue(["Not even a nibble..."])
-            self.show_progression_menu()
-            return
-
+            return None
         fishing_pool_pct = seasons.adjust_pool(self.game, regional_forms.extend_pool(self.game, fishing_pool_pct),
                                                self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(fishing_pool_pct)
@@ -430,6 +423,19 @@ class RouteActions:
         if not levels.is_legendary(pokemon.id):
             pokemon.level = level
             pokemon.current_hp = pokemon.get_max_hp()
+        return pokemon
+
+    def action_fish(self):
+        self.is_progression_paused = False
+        self.hide_menu_buttons()
+
+        self.rounds_completed += 1
+
+        pokemon = self._fish_bite()
+        if pokemon is None:
+            self.show_dialogue(["Not even a nibble..."])
+            self.show_progression_menu()
+            return
 
         self.show_dialogue(["Oh! A bite!"], callback=None)
 

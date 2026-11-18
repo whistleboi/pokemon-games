@@ -157,6 +157,7 @@ def weight(game, mon):
         game._dex_info = info
     from src.pokemon.evolution import base_id
     kg = float((info.get(str(getattr(mon, "id", 0))) or info.get(str(base_id(mon))) or {}).get("weight") or 0)
+    kg = max(0.1, kg - 100 * getattr(mon, "_autotomized", 0)) if getattr(mon, "_autotomized", 0) else kg  # (Autotomize)
     return kg / 2 if getattr(mon, "held_item", None) == "FLOAT_STONE" else kg
 
 

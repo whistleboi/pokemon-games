@@ -279,7 +279,7 @@ class AssetManager:
         base = item_name.lower()
         if base.startswith("hm_"):  # every HM: the HM disc (Jordan, 11-03)
             base = "hm-disc"
-        elif (len(base) >= 4 and base.startswith("tm") and base[2:].isdigit()) or (base.startswith("htm") and base[3:].isdigit()):  # (TM00-TM99, the story gifts from TM100, Hoenn's own HTMs)  # a TM: its move type's disc
+        elif len(base) >= 4 and base.startswith("tm") and base[2:].isdigit():  # (TM001 on: one list in every region)  # a TM: its move type's disc
             from src.pokemon import tms
             from src.ui import theme
             info = tms.info(theme.GAME, item_name) if theme.GAME is not None else {}

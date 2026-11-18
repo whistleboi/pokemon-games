@@ -654,6 +654,7 @@
           "condition": "boss_not_defeated",
           "color": "GOLD"
         },
+        {"text": "SEARCH THE CAVE", "action": "EVENT", "color": "GOLD", "flag_condition": "not resolution_cave_toxic_orb", "event": {"lines": ["Something glints in a dark corner of the cave..."], "gift_item": {"TOXIC_ORB": 1}, "flag": "resolution_cave_toxic_orb"}},
         {
           "text": "Poni Meadow",
           "action": "EXIT",
@@ -1401,6 +1402,7 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "SEARCH THE FLOWERS", "action": "EVENT", "color": "GOLD", "flag_condition": "not ulaula_meadow_flame_orb", "event": {"lines": ["Something is tucked among the red flowers..."], "gift_item": {"FLAME_ORB": 1}, "flag": "ulaula_meadow_flame_orb"}},
         {"text": "Route 17", "action": "EXIT", "target_area": "ALOLA_ROUTE_17", "condition": "can_exit", "color": "RED"},
         {"text": "Route 16", "action": "EXIT", "target_area": "ALOLA_ROUTE_16", "condition": "can_exit", "color": "RED"},
         {"text": "Lake of the Sunne and Moone", "action": "EXIT", "target_area": "LAKE_OF_THE_SUNNE_MOONE", "condition": ["can_exit", "beat_alola_champion"], "color": "RED"}

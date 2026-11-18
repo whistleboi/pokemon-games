@@ -3,12 +3,10 @@
 Each Pokemon knows up to four moves, chosen from its level-up learnset
 (assets/pokemon_levels.json) using real move data (assets/moves.json, from PokeAPI).
 
-Only moves that work in this game are learned:
-  - damaging moves (power > 0, one-hit KO moves; not self-KO moves),
-  - weather moves (Rain Dance, Sunny Day, Sandstorm, Hail/Snowscape),
-  - status moves the battle runs (src/states/battle_effects.py): burn, paralysis, poison, sleep,
-    freeze, confusion and the other conditions, stat moves, healing, field moves and a set of
-    unique moves (Protect, Substitute, Rest, Metronome...).
+Every move works in battle (Jordan, 11-17: "Make all moves work"): damaging moves, weather, the status moves
+(src/states/battle_effects.py) and every move with a mechanic of its own (src/states/battle_moves.py: Gyro Ball,
+Counter, Baton Pass, Trick, Sleep Talk, Self-Destruct...). The doubles-only ones work as they would with no partner
+(src/states/battle_doubles.py). So every move in assets/moves.json can be learned.
 
 A new Pokemon knows the last four of those it learned by its level, like the games.
 
@@ -59,14 +57,77 @@ TWO_TURN = {"SOLAR-BEAM": "{n} took in sunlight!", "SOLAR-BLADE": "{n} took in s
             "BOUNCE": "{n} sprang up!", "METEOR-BEAM": "{n} is overflowing with space power!",
             "PHANTOM-FORCE": "{n} vanished instantly!", "SHADOW-FORCE": "{n} vanished instantly!",
             "FREEZE-SHOCK": "{n} became cloaked in a freezing light!", "ICE-BURN": "{n} became cloaked in freezing air!",
-            "ELECTRO-SHOT": "{n} absorbed electricity!"}
+            "ELECTRO-SHOT": "{n} absorbed electricity!", "SKY-DROP": "{n} took its target into the sky!",
+            "GEOMANCY": "{n} is absorbing power!"}
 # Semi-invulnerable while charging: which moves still hit, and their damage multiplier.
 _SKY = {"GUST": 2, "TWISTER": 2, "THUNDER": 1, "SKY-UPPERCUT": 1, "HURRICANE": 1, "SMACK-DOWN": 1}
-SEMI_INVULNERABLE = {"FLY": _SKY, "BOUNCE": _SKY, "DIG": {"EARTHQUAKE": 2, "MAGNITUDE": 2, "FISSURE": 1},
+SEMI_INVULNERABLE = {"FLY": _SKY, "BOUNCE": _SKY, "SKY-DROP": _SKY, "DIG": {"EARTHQUAKE": 2, "MAGNITUDE": 2, "FISSURE": 1},
                      "DIVE": {"SURF": 2, "WHIRLPOOL": 2}, "PHANTOM-FORCE": {}, "SHADOW-FORCE": {}}
 # Must rest a turn after hitting.
 RECHARGE = {"HYPER-BEAM", "GIGA-IMPACT", "BLAST-BURN", "HYDRO-CANNON", "FRENZY-PLANT", "ROCK-WRECKER",
             "ROAR-OF-TIME", "PRISMATIC-LASER", "METEOR-ASSAULT", "ETERNABEAM"}
+# What our PokeAPI copy leaves out for some moves (most of them Scarlet/Violet's, which it has no effect data for),
+# filled in as the games have them (11-17). Applied when the table loads.
+_DROP_SELF = {"category_meta": "damage-raise", "stat_chance": 100}
+_DROP_FOE = {"category_meta": "damage-lower", "stat_chance": 100}
+DATA_FIX = {
+    "AQUA-CUTTER": {"crit_rate": 1}, "AQUA-STEP": _DROP_SELF, "ARMOR-CANNON": _DROP_SELF,
+    "AXE-KICK": {"ailment": "confusion", "ailment_chance": 30, "category_meta": "damage-ailment"},
+    "BARB-BARRAGE": {"ailment": "poison", "ailment_chance": 50, "category_meta": "damage-ailment"},
+    "BITTER-BLADE": {"drain": 50, "category_meta": "damage-heal"},
+    "BITTER-MALICE": dict(_DROP_FOE, stat_changes=[["ATTACK", -1]]),
+    "BLEAKWIND-STORM": {"category_meta": "damage-lower", "stat_changes": [["SPEED", -1]], "stat_chance": 30},
+    "BLAZING-TORQUE": {"ailment": "burn", "ailment_chance": 30, "category_meta": "damage-ailment"},
+    "CEASELESS-EDGE": {"crit_rate": 1}, "CHILLING-WATER": _DROP_FOE,
+    "COMBAT-TORQUE": {"ailment": "paralysis", "ailment_chance": 30, "category_meta": "damage-ailment"},
+    "DIRE-CLAW": {"crit_rate": 1},
+    "ESPER-WING": dict(_DROP_SELF, crit_rate=1, stat_changes=[["SPEED", 1]]),
+    "FLOWER-TRICK": {"crit_rate": 6},
+    "HEADLONG-RUSH": dict(_DROP_SELF, stat_changes=[["DEFENSE", -1], ["SPDEF", -1]]),
+    "INFERNAL-PARADE": {"ailment": "burn", "ailment_chance": 30, "category_meta": "damage-ailment"},
+    "IVY-CUDGEL": {"crit_rate": 1}, "LUMINA-CRASH": _DROP_FOE,
+    "MAGICAL-TORQUE": {"ailment": "confusion", "ailment_chance": 30, "category_meta": "damage-ailment"},
+    "MAKE-IT-RAIN": _DROP_SELF,
+    "MALIGNANT-CHAIN": {"ailment": "toxic", "ailment_chance": 50, "category_meta": "damage-ailment"},
+    "MATCHA-GOTCHA": {"drain": 50, "ailment": "burn", "ailment_chance": 20, "category_meta": "damage-ailment"},
+    "MORTAL-SPIN": {"ailment": "poison", "ailment_chance": 100, "category_meta": "damage-ailment"},
+    "MOUNTAIN-GALE": {"flinch": 30},
+    "MYSTICAL-POWER": dict(_DROP_SELF, stat_changes=[["SPATK", 1]]),
+    "NOXIOUS-TORQUE": {"ailment": "poison", "ailment_chance": 30, "category_meta": "damage-ailment"},
+    "POUNCE": _DROP_FOE,
+    "PSYSHIELD-BASH": dict(_DROP_SELF, stat_changes=[["DEFENSE", 1]]),
+    "SANDSEAR-STORM": {"ailment": "burn", "ailment_chance": 20, "category_meta": "damage-ailment"},
+    "SPIN-OUT": _DROP_SELF,
+    "SPRINGTIDE-STORM": {"category_meta": "damage-lower", "stat_changes": [["ATTACK", -1]], "stat_chance": 30},
+    "STONE-AXE": {"crit_rate": 1},
+    "SYRUP-BOMB": {"stat_changes": [], "stat_chance": 0},   # (its Speed drops come each turn: battle_moves.py)
+    "TORCH-SONG": _DROP_SELF, "TRAILBLAZE": _DROP_SELF,
+    "TRIPLE-ARROWS": {"crit_rate": 1, "flinch": 30, "category_meta": "damage-lower",
+                      "stat_changes": [["DEFENSE", -1]], "stat_chance": 50},
+    "TRIPLE-DIVE": {"min_hits": 3, "max_hits": 3}, "TWIN-BEAM": {"min_hits": 2, "max_hits": 2},
+    "TACHYON-CUTTER": {"min_hits": 2, "max_hits": 2, "accuracy": None},
+    "UPPER-HAND": {"flinch": 100}, "WAVE-CRASH": {"drain": -33},
+    "WICKED-TORQUE": {"ailment": "sleep", "ailment_chance": 10, "category_meta": "damage-ailment"},
+    "WILDBOLT-STORM": {"ailment": "paralysis", "ailment_chance": 20, "category_meta": "damage-ailment"},
+    "ELECTRO-SHOT": {"stat_changes": [], "stat_chance": 0},   # (its Sp. Atk rise comes on the charge turn)
+    "METEOR-BEAM": {"stat_changes": [], "stat_chance": 0},
+    "TERA-BLAST": {"stat_changes": [], "stat_chance": 0},     # (Stellar only: there's no Stellar type here)
+    "TERA-STARSTORM": {"stat_changes": [], "stat_chance": 0},
+    # Effects the copy has wrong for singles play
+    "BURNING-JEALOUSY": {"ailment": "none", "ailment_chance": 0},   # (only on a foe whose stats rose: battle_moves.py)
+    "TAR-SHOT": {"category_meta": "unique"}, "TOXIC-THREAD": {"category_meta": "unique"},   # (no confusion)
+    "VENOM-DRENCH": {"category_meta": "unique"}, "CAPTIVATE": {"category_meta": "unique"},
+    "RAGING-FURY": {"min_turns": 2, "max_turns": 3},
+    "DRAGON-DARTS": {"min_hits": 2, "max_hits": 2},
+}
+# Older spellings some trainer movesets use.
+OLD_NAMES = {"BUBBLEBEAM": "BUBBLE-BEAM", "DRAGONBREATH": "DRAGON-BREATH", "FEATHERDANCE": "FEATHER-DANCE",
+             "GRASSWHISTLE": "GRASS-WHISTLE", "POISONPOWDER": "POISON-POWDER", "SONICBOOM": "SONIC-BOOM",
+             "SELFDESTRUCT": "SELF-DESTRUCT", "THUNDERPUNCH": "THUNDER-PUNCH", "THUNDERSHOCK": "THUNDER-SHOCK",
+             "SMOKESCREEN": "SMOKESCREEN", "SOFTBOILED": "SOFT-BOILED", "SOLARBEAM": "SOLAR-BEAM",
+             "HI-JUMP-KICK": "HIGH-JUMP-KICK", "VICEGRIP": "VISE-GRIP", "DOUBLESLAP": "DOUBLE-SLAP",
+             "DYNAMICPUNCH": "DYNAMIC-PUNCH", "EXTREMESPEED": "EXTREME-SPEED", "ANCIENTPOWER": "ANCIENT-POWER",
+             "FAINT-ATTACK": "FEINT-ATTACK"}
 
 
 def table(game):
@@ -78,6 +139,9 @@ def table(game):
                 cache = json.load(f)
         except OSError:
             cache = {}
+        for name, fix in DATA_FIX.items():
+            if name in cache:
+                cache[name] = dict(cache[name], **fix)
         game._move_table = cache
     return cache
 
@@ -86,24 +150,17 @@ def info(game, name):
     """Move data with its name (TACKLE stand-in if unknown)."""
     if name == STRUGGLE:
         return dict(STRUGGLE_DATA, name=name)
-    d = table(game).get(name) or table(game).get(FALLBACK) or {"type": "NORMAL", "power": 40, "accuracy": 100,
-                                                                "category": "PHYSICAL", "priority": 0}
+    d = table(game).get(name)
+    if d is None:   # (unknown: a Tackle stand-in, never learned)
+        d = dict(table(game).get(FALLBACK) or {"type": "NORMAL", "power": 40, "accuracy": 100, "category": "PHYSICAL",
+                                                "priority": 0}, _unknown=True)
     return dict(d, name=name)
 
 
 def usable(d):
-    """Can this game use the move? Damaging moves, one-hit KO moves, weather moves and the status
-    moves the battle runs (stat moves, conditions, healing, field moves...: battle_effects)."""
-    if d.get("name") in SELF_KO:
-        return False
-    if (d.get("power") or 0) > 0 or d.get("name") in FIXED_DAMAGE or d.get("name") in WEIGHT_MOVES or d.get("category_meta") == "ohko":
-        return True
-    if d.get("name") in WEATHER_MOVES:
-        return True
-    if d.get("category") == "STATUS" and d.get("ailment") in STATUSES and d.get("category_meta") == "ailment":
-        return True
-    from src.states.battle_effects import usable_status
-    return d.get("category") == "STATUS" and usable_status(d)
+    """Can this game use the move? Every move in assets/moves.json works now (11-17: Self-Destruct and Explosion
+    too: they were left out only while the battle couldn't make the user faint). Unknown names can't."""
+    return bool(d) and not d.get("_unknown") and d.get("name") not in ("STRUGGLE",)
 
 
 def _species(poke):
@@ -158,6 +215,7 @@ def preset_moves(game, poke, names):
     out = []
     for name in names:
         name = str(name).upper().replace(" ", "-")
+        name = OLD_NAMES.get(name, name)
         if name in known and usable(info(game, name)) and name not in out:
             out.append(name)
     for name in reversed(default_moves(game, poke)):

@@ -35,7 +35,11 @@ def ups(mon, move):
 
 
 def max_pp(game, mon, move):
-    """Base PP, plus a fifth of it for each PP Up (PP Max: three)."""
+    """Base PP, plus a fifth of it for each PP Up (PP Max: three). A move copied by Transform: 5 at most
+    (mon._pp_cap, set for the battle by battle_moves.mv_copied_pp)."""
+    cap = getattr(mon, "_pp_cap", None)
+    if cap and move in cap:
+        return cap[move]
     b = base_pp(game, move)
     return b + b * ups(mon, move) // 5
 

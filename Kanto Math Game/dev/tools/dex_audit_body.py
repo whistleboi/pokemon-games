@@ -115,8 +115,11 @@ for n, ts in EV.items():
 for region in regions:
     st = STARTS.get(region, {})
     lo, hi = st.get("dex_range", [0, 0]); extra = set(st.get("dex_extra", []))
-    dex = set(range(lo, hi + 1)) | extra
+    dex = (set(range(lo, hi + 1)) if hi else set()) | extra
     allowed = lambda t: t <= hi or t in extra
+    if st.get("dex_list"):   # (a dex that is a list, not a range: the Orange Islands' 120, plus its extras; 11-17, Jordan)
+        dex = set(st["dex_list"]) | extra
+        allowed = lambda t, _d=frozenset(dex): t in _d
     areas = [k for k in P if story.area_region(k) == region and isinstance(P[k], dict)]
     got = {}
     for k in areas:
