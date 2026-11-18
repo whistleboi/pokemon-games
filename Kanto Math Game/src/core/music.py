@@ -83,11 +83,19 @@ JINGLE_CUES = (
 FEMALE_CLASSES = {"LASS", "BEAUTY", "PICNICKER", "AROMA_LADY", "BATTLE_GIRL", "PARASOL_LADY", "SWIMMER_F",
                   "COOLTRAINER_F", "TWINS", "KIMONO_GIRL", "MEDIUM", "CHANNELER", "LADY", "NURSE", "IDOL",
                   "POKEFAN_F", "SCHOOL_KID_F", "PSYCHIC_F", "TUBER_F", "CRUSH_GIRL", "ACE_TRAINER_F",
-                  "SKIER", "MAID", "WAITRESS", "DANCER", "ARTIST_F", "VETERAN_F", "SCIENTIST_F"}
+                  "SKIER", "MAID", "WAITRESS", "DANCER", "ARTIST_F", "VETERAN_F", "SCIENTIST_F",
+                  "PICNIKER", "OFFICE_LADY", "PUNK_GIRL", "SCHOOLGIRL", "FESTIVAL_GIRL", "ACTRESS"}  # (+ 11-18)
 VILLAIN_WORDS = ("ROCKET", "MAGMA", "AQUA", "GALACTIC", "PLASMA", "FLARE", "SKULL", "MACRO", "YELL", "STAR",
-                 "CIPHER", "GRUNT", "ADMIN", "BOSS")
+                 "CIPHER", "GRUNT", "ADMIN", "BOSS", "SNAGEM")
 
 _current = None  # the game's MusicManager (for line_cue)
+
+
+def class_key(cls):
+    """A trainer class as the lists above spell it (11-18: the regions' data write "AROMA LADY", "SWIMMER♀",
+    "POKÉFAN♂"...): capitals, underscores, a female sign as _F, the male sign dropped."""
+    c = str(cls or "").upper().replace("É", "E").replace(" ", "_").replace("♀", "_F").replace("♂", "")
+    return c.replace("__", "_").strip("_")
 
 
 def line_cue(text):
@@ -106,6 +114,7 @@ class MusicManager:
         self.path = None      # the track playing
         self.jingle_channel = None  # a fanfare playing over the paused music
         self.pending = None   # what to play once the victory jingle ends
+        self.hof_until = 0    # (after a Champion win the Hall of Fame theme holds off the area music till then)
 
     def tracks(self, kind, region=None):
         files = getattr(self.game.assets, "sound_map", {})
@@ -124,7 +133,7 @@ class MusicManager:
         folder = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", "kanto")
         if not os.path.isdir(folder):
             return None
-        if kind == "title":
+        if kind in ("title", "hall_of_fame"):
             name = "hall_of_fame"
         elif kind in THEMES:
             name = THEMES[kind]
@@ -145,6 +154,9 @@ class MusicManager:
             return
         if self.kind == "victory" and kind != "victory" and pygame.mixer.music.get_busy():
             self.pending = kind  # let the jingle finish first
+            return
+        if self.kind == "hall_of_fame" and kind in ("town", "route") and pygame.time.get_ticks() < self.hof_until:
+            self.pending = kind  # (the Hall of Fame theme plays on over the walk to the Hall and the trip home)
             return
         region = None
         try:
@@ -196,15 +208,26 @@ class MusicManager:
         sound.set_volume(music_volume())
         self.jingle_channel = sound.play()
 
+    HOF_HOLD_MS = 45000
+
+    def hall_of_fame(self):
+        """A Champion beaten (any region): the Hall of Fame theme, held for a while over what comes next."""
+        self.pending = None
+        self.play("hall_of_fame", force=True)
+        self.hof_until = pygame.time.get_ticks() + self.HOF_HOLD_MS
+
     def update(self):
         """Each frame: once a fanfare ends, the music goes on from where it paused."""
+        if self.kind == "hall_of_fame" and self.pending and pygame.time.get_ticks() >= self.hof_until:
+            kind, self.pending = self.pending, None
+            self.play(kind)
         if self.jingle_channel is not None and not self.jingle_channel.get_busy():
             self.jingle_channel = None
             pygame.mixer.music.unpause()
 
     def encounter_kind(self, battle):
         """The 'eyes meet' theme for the trainer about to battle (None for leaders and the like)."""
-        cls = str(getattr(battle, "trainer_class", "") or "").upper()
+        cls = class_key(getattr(battle, "trainer_class", ""))
         name = str(getattr(battle, "trainer_name", "") or "").upper()
         if cls in ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "WILD", ""):
             return None

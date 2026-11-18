@@ -29,7 +29,7 @@ SPECIES_ITEMS = {  # held item -> (species ids, stat, multiplier)
     "METAL_POWDER": ({132}, ("DEFENSE",), 2.0),
     "QUICK_POWDER": ({132}, ("SPEED",), 2.0),
 }
-CRIT_ITEMS = {"STICK": ({83, 865}, 2), "LUCKY_PUNCH": ({113}, 2)}   # (11-17: the Lucky Punch, Chansey's, FireRed's Sevault Canyon)   # held item -> (species ids, critical-hit stages): the Stick, Farfetch'd's (and Sirfetch'd's) own
+CRIT_ITEMS = {"STICK": ({83, 865}, 2), "LUCKY_PUNCH": ({113}, 2), "SCOPE_LENS": (None, 1)}  # (11-18: the Scope Lens, any holder: Orange's Hamlin gift)   # (11-17: the Lucky Punch, Chansey's, FireRed's Sevault Canyon)   # held item -> (species ids, critical-hit stages): the Stick, Farfetch'd's (and Sirfetch'd's) own
 SLOW_ITEMS = {"IRON_BALL", "MACHO_BRACE"}
 LAST_ITEMS = {"LAGGING_TAIL", "FULL_INCENSE"}
 FLINCH_ITEMS = {"KINGS_ROCK", "RAZOR_FANG"}
@@ -141,7 +141,7 @@ class HeldItemEffects:
         """Critical-hit stages from the holder's item (the Stick: +2, only for Farfetch'd and Sirfetch'd)."""
         from src.pokemon.evolution import base_id
         ids, stages = CRIT_ITEMS.get(self.held(attacker), ((), 0))
-        return stages if stages and (getattr(attacker, "id", None) in ids or base_id(attacker) in ids) else 0
+        return stages if stages and (ids is None or getattr(attacker, "id", None) in ids or base_id(attacker) in ids) else 0
 
     def held_acc_mult(self, attacker, defender):
         mult = 1.1 if self.held(attacker) == "WIDE_LENS" else 1.0

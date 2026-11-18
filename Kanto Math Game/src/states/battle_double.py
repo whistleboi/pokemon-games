@@ -490,6 +490,7 @@ class DoubleBattleState(TrainerBattleState):
             targets = [chosen]
         self._spread_k = self.spread_mult(targets)
         messages, hit, first, foe_dmg = list(pre), [], True, 0
+        self._blast_after = [] if name in movelib.EXPLODE else None  # (Explosion hits every target, then the user faints)
         for t in targets:
             if self.side_of(t) != side:
                 self._focus_pair(mon, t)
@@ -523,6 +524,10 @@ class DoubleBattleState(TrainerBattleState):
             first = False
             if not self._alive(mon):
                 break
+        for m in (self._blast_after or [])[:1]:
+            if self._alive(m):
+                self._adjust_hp(m, -self._hp(m))
+        self._blast_after = None
         self._spread_k = 1.0
         messages += pp_lines
         if side == "player":

@@ -3881,7 +3881,8 @@ class DungeonState(OverworldBattles, PlayState):
             pid = species_named(self.game, item.get("text"))
         if pid is not None:
             boss = (item.get("boss") or self.area_data.get("area_boss") or {}) if item.get("action") == "BOSS" else {}  # (a shiny boss shiny on the map too: the Red Gyarados, the Giant Volcano's Moltres)
-            img = self._mon_img(pid, tuple(facing) if spec.get("face") else (0, 1), boss.get("form"), boss.get("is_shiny"))
+            turns = spec.get("face", item.get("action") != "BOSS")   # (11-18: a Pokemon standing about turns like a person, to you
+            img = self._mon_img(pid, tuple(facing) if turns else (0, 1), boss.get("form"), boss.get("is_shiny"))   #  as you talk; a boss keeps facing out)
             if img is not None:   # (every Pokemon on the maps: its following-Pokemon sheet, Jordan 11-14)
                 return img
             ow = (sm.get("pokemon") or {}).get(str(pid))

@@ -301,7 +301,8 @@ class PCState(GameState):
                 elif event.key == pygame.K_BACKSPACE:
                     self.search, self.result_page = self.search[:-1], 0
                 elif event.unicode and event.unicode.isprintable() and len(self.search) < 16:
-                    self.search, self.result_page = self.search + event.unicode, 0
+                    from src.utils import Utils
+                    self.search, self.result_page = (self.search + Utils.typable(self.game, event.unicode))[:16], 0
                 continue
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and self.filter_open:
                 self.toggle_filter_menu()  # a tap outside the filter menu closes it

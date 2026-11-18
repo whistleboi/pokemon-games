@@ -164,6 +164,7 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "LAX_INCENSE": {"price": 5000, "text": "Held: foes' moves miss its holder a little more often."},
         "BRIGHT_POWDER": {"price": 4000, "text": "Held: foes' moves miss its holder a little more often."},
         "WIDE_LENS": {"price": 4000, "text": "Held: its holder's moves hit a little more often."},
+        "SCOPE_LENS": {"price": 4000, "text": "Held: its holder's moves land critical hits more often."},
         "KINGS_ROCK": {"price": 5000, "text": "Held: its holder's attacks may make the foe flinch. (A Poliwhirl or Slowpoke may also evolve with it.)"},
         "RAZOR_FANG": {"price": 5000, "text": "Held: its holder's attacks may make the foe flinch."},
         "METAL_COAT": {"price": 2000, "text": "Held: its holder's Steel-type moves hit harder. (Onix and Scyther may also evolve with it.)"},

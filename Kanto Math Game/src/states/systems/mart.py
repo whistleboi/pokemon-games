@@ -217,6 +217,7 @@ class PokeMartState(GameState):
         self.card_h, self.cols = 52, 3  # (three columns of compact cards: fewer pages to turn)
         rows = max(1, (self.panel.h - 62 + 10) // (self.card_h + 10))
         self.items_per_page = rows * self.cols
+        self._build_tm_bar(fonts)
         # the quantity card
         self.qty_rect = pygame.Rect(0, 0, min(760, w - 60), 380)
         self.qty_rect.center = (w // 2, (self.panel.top + self.bottom_rect.top) // 2)
@@ -231,6 +232,116 @@ class PokeMartState(GameState):
                                      self.confirm_purchase, bg_color=theme.POKEMON, autosize=False)
         self.btn_no = CommandButton((q.centerx + 20, q.bottom - 76, 210, 60), "CANCEL", fonts["button"],
                                     self.cancel_purchase, bg_color=theme.BACK, autosize=False)
+
+    # ---------------------------------------------------------------- the TM shelf: sort and filter (Jordan, 11-18)
+    TM_SORTS = ("NUMBER", "POWER", "TYPE", "KIND")
+    TM_KINDS = ("ALL", "DAMAGING", "PHYSICAL", "SPECIAL", "STATUS")
+    TYPES = ("NORMAL", "FIRE", "WATER", "GRASS", "ELECTRIC", "ICE", "FIGHTING", "POISON", "GROUND", "FLYING",
+             "PSYCHIC", "BUG", "ROCK", "GHOST", "DRAGON", "DARK", "STEEL", "FAIRY")
+    TM_BAR_H = 56
+
+    def _build_tm_bar(self, fonts):
+        """With the TMs tab open: SORT (number, power, type, kind), TYPE (all or one type) and KIND (damaging,
+        physical, special, status) over the shelf. The choice is kept for the rest of the play session."""
+        saved = self.game.__dict__.get("_tm_shelf") or {}
+        self.tm_sort = saved.get("sort", "NUMBER")
+        self.tm_type = saved.get("type", "ALL")
+        self.tm_kind = saved.get("kind", "ALL")
+        self.type_open = False
+        p, gap = self.panel, 10
+        bw = (p.w - 2 * gap) // 3
+        mk = lambda k, cb: CommandButton((p.x + k * (bw + gap), p.y, bw, 46), "", fonts["label"], cb,
+                                         bg_color=theme.TAB_OFF, autosize=False)
+        self.btn_tm_sort = mk(0, self.cycle_tm_sort)
+        self.btn_tm_type = mk(1, self.toggle_type_menu)
+        self.btn_tm_kind = mk(2, self.cycle_tm_kind)
+        from src.states.battle import TrainerBattleState
+        chips = [("ALL", theme.BACK)] + [(t, TrainerBattleState.TYPE_COLORS.get(t, theme.TAB_OFF)) for t in self.TYPES]
+        cols, ch = 6, 50
+        cw = (p.w - (cols - 1) * gap) // cols
+        top = p.y + self.TM_BAR_H + 8
+        self.type_buttons = []
+        for k, (t, color) in enumerate(chips):
+            r, c = divmod(k, cols)
+            self.type_buttons.append(CommandButton((p.x + c * (cw + gap), top + r * (ch + gap), cw, ch), t,
+                                                   fonts["caption"], (lambda t=t: self.set_tm_type(t)),
+                                                   bg_color=color, autosize=False))
+        self._label_tm_bar()
+
+    def _label_tm_bar(self):
+        from src.states.battle import TrainerBattleState
+        self.btn_tm_sort.text = f"SORT: {self.tm_sort}"
+        self.btn_tm_type.text = f"TYPE: {self.tm_type}"
+        self.btn_tm_kind.text = f"KIND: {self.tm_kind}"
+        self.btn_tm_sort.bg_color = theme.TAB_OFF if self.tm_sort == "NUMBER" else theme.BAG
+        self.btn_tm_type.bg_color = theme.TAB_OFF if self.tm_type == "ALL" else TrainerBattleState.TYPE_COLORS.get(
+            self.tm_type, theme.BAG)
+        self.btn_tm_kind.bg_color = theme.TAB_OFF if self.tm_kind == "ALL" else theme.BAG
+        self.game.__dict__["_tm_shelf"] = {"sort": self.tm_sort, "type": self.tm_type, "kind": self.tm_kind}
+
+    def _tm_shelf_on(self):
+        return self.category == "TMs" and self.phase != "QTY"
+
+    def cycle_tm_sort(self):
+        self.tm_sort = self.TM_SORTS[(self.TM_SORTS.index(self.tm_sort) + 1) % len(self.TM_SORTS)]
+        self._tm_changed()
+
+    def cycle_tm_kind(self):
+        self.tm_kind = self.TM_KINDS[(self.TM_KINDS.index(self.tm_kind) + 1) % len(self.TM_KINDS)]
+        self._tm_changed()
+
+    def toggle_type_menu(self):
+        self.type_open = not self.type_open
+        self.refresh_buttons()
+
+    def set_tm_type(self, t):
+        self.tm_type = t
+        self.type_open = False
+        self._tm_changed()
+
+    def _tm_changed(self):
+        self.current_page = 0
+        self._label_tm_bar()
+        self.refresh_buttons()
+
+    def _tm_move(self, item):
+        """(type, power, kind) of a TM's move; kind is PHYSICAL, SPECIAL or STATUS."""
+        from src.pokemon import tms, moves as movelib
+        d = movelib.info(self.game, tms.move_of(self.game, item) or "")
+        kind = str(d.get("category") or "STATUS").upper()
+        mtype = str(d.get("type") or tms.info(self.game, item).get("type") or "NORMAL").upper()
+        return mtype, d.get("power") or 0, kind
+
+    def _tm_shelf(self, items):
+        """The TMs tab's list, filtered by type and kind, and sorted."""
+        rows = [(i, self._tm_move(i)) for i in items]
+        if self.tm_type != "ALL":
+            rows = [r for r in rows if r[1][0] == self.tm_type]
+        k = self.tm_kind
+        if k == "DAMAGING":
+            rows = [r for r in rows if r[1][2] != "STATUS"]
+        elif k != "ALL":
+            rows = [r for r in rows if r[1][2] == k]
+        kinds = {"PHYSICAL": 0, "SPECIAL": 1, "STATUS": 2}
+        order = {t: n for n, t in enumerate(self.TYPES)}
+        if self.tm_sort == "POWER":
+            rows.sort(key=lambda r: -r[1][1])
+        elif self.tm_sort == "TYPE":
+            rows.sort(key=lambda r: (order.get(r[1][0], 99), -r[1][1]))
+        elif self.tm_sort == "KIND":
+            rows.sort(key=lambda r: (kinds.get(r[1][2], 3), -r[1][1]))
+        return [i for i, _ in rows]
+
+    def _shelf_top(self):
+        return self.panel.y + (self.TM_BAR_H if self._tm_shelf_on() else 0)
+
+    def _page_size(self):
+        h = self.panel.bottom - 62 - self._shelf_top()
+        return max(1, (h + 10) // (self.card_h + 10)) * self.cols
+
+    def _list_unfiltered(self):
+        items = self._shop_items() if self.mode == "BUY" else self._sellable()
+        return [i for i in items if self.category_of(i) == self.category]
 
     def set_mode(self, mode):
         self.mode = mode
@@ -265,6 +376,7 @@ class PokeMartState(GameState):
     def set_category(self, cat):
         self.category = cat
         self.current_page = 0
+        self.type_open = False
         self.refresh_buttons()
 
     def _list(self):
@@ -272,7 +384,8 @@ class PokeMartState(GameState):
         cats = self._categories()
         if self.category not in cats:
             self.category = cats[0] if cats else None
-        return [i for i in items if self.category_of(i) == self.category]
+        items = [i for i in items if self.category_of(i) == self.category]
+        return self._tm_shelf(items) if self.category == "TMs" else items
 
     def prev_page(self):
         if self.current_page > 0:
@@ -280,7 +393,7 @@ class PokeMartState(GameState):
             self.refresh_buttons()
 
     def next_page(self):
-        if (self.current_page + 1) * self.items_per_page < len(self._list()):
+        if (self.current_page + 1) * self._page_size() < len(self._list()):
             self.current_page += 1
             self.refresh_buttons()
 
@@ -311,17 +424,26 @@ class PokeMartState(GameState):
             for b in self.qty_buttons + [self.btn_yes, self.btn_no]:
                 b.set_visibility(False)
             items = self._list()
-            pages = max(1, (len(items) + self.items_per_page - 1) // self.items_per_page)
+            self.items_per_page = per = self._page_size()
+            pages = max(1, (len(items) + per - 1) // per)
             self.current_page = min(self.current_page, pages - 1)
-            self.btn_prev.set_visibility(self.current_page > 0)
+            if self._tm_shelf_on():
+                for b in (self.btn_tm_sort, self.btn_tm_type, self.btn_tm_kind):
+                    ui.add_element(b)
+                if self.type_open:  # (the type chips cover the shelf till one is picked)
+                    for b in self.type_buttons:
+                        ui.add_element(b)
+                    items, pages = [], 1
+            self.btn_prev.set_visibility(self.current_page > 0 and pages > 1)
             self.btn_next.set_visibility(self.current_page < pages - 1)
             ui.add_element(self.btn_prev)
             ui.add_element(self.btn_next)
-            start = self.current_page * self.items_per_page
+            start = self.current_page * per
             col_w = (self.panel.w - 12 * (self.cols - 1)) // self.cols
-            for i, item in enumerate(items[start:start + self.items_per_page]):
+            top = self._shelf_top()
+            for i, item in enumerate(items[start:start + per]):
                 r, c = divmod(i, self.cols)
-                rect = (self.panel.x + c * (col_w + 12), self.panel.y + r * (self.card_h + 10), col_w, self.card_h)
+                rect = (self.panel.x + c * (col_w + 12), top + r * (self.card_h + 10), col_w, self.card_h)
                 btn = Button(rect, "", self.game.assets.fonts["tiny"],
                              lambda k=item: self.init_purchase(k), bg_color=(52, 98, 190), autosize=False)
                 btn.item_key = item
@@ -499,6 +621,18 @@ class PokeMartState(GameState):
                     hovered = btn.item_key
             items = self._list()
             pages = max(1, (len(items) + self.items_per_page - 1) // self.items_per_page)
+            if self._tm_shelf_on():
+                for b in (self.btn_tm_sort, self.btn_tm_type, self.btn_tm_kind):
+                    b.draw(screen)
+                if self.type_open:
+                    for b in self.type_buttons:
+                        b.draw(screen)
+                    items, pages = [None], 1
+                elif not items and self._list_unfiltered():
+                    theme.shadow_text(screen, "No TMs match. Change TYPE or KIND.", fonts["s_med"],
+                                      self.panel.centerx, self.panel.centery, color=(200, 206, 222),
+                                      shadow=theme.MENU_BG, align="center")
+                    items = [None]
             if not items:
                 msg = "Nothing in your Bag to sell." if self.mode == "SELL" else "Sold out!"
                 theme.shadow_text(screen, msg, fonts["s_med"], self.panel.centerx, self.panel.centery,
@@ -539,8 +673,19 @@ class PokeMartState(GameState):
         room = r.w - 56 - 12
         font = fonts["label"] if fonts["label"].size(name)[0] <= room else fonts["caption"]
         theme.shadow_text(screen, name, font, r.x + 56, r.y + 4)
-        theme.shadow_text(screen, f"In Bag: {self._have(item)}", fonts["caption"], r.x + 56, r.bottom - 22,
-                          color=(110, 116, 136))
+        from src.pokemon import tms
+        if tms.is_tm(item):  # (a TM: its move's type chip, then Physical / Special and the power, or Status)
+            from src.states.battle import TrainerBattleState
+            mtype, power, kind = self._tm_move(item)
+            chip = fonts["caption"].render(mtype, True, WHITE)
+            cr = pygame.Rect(r.x + 56, r.bottom - 24, chip.get_width() + 12, 20)
+            pygame.draw.rect(screen, TrainerBattleState.TYPE_COLORS.get(mtype, (120, 120, 120)), cr, border_radius=6)
+            screen.blit(chip, chip.get_rect(center=cr.center))
+            what = "Status" if kind == "STATUS" else f"{kind[:3].title()} {power or '-'}"
+            theme.shadow_text(screen, what, fonts["caption"], cr.right + 8, r.bottom - 22, color=(110, 116, 136))
+        else:
+            theme.shadow_text(screen, f"In Bag: {self._have(item)}", fonts["caption"], r.x + 56, r.bottom - 22,
+                              color=(110, 116, 136))
         theme.shadow_text(screen, label, fonts["caption"], r.right - 14, r.bottom - 22, color=(176, 120, 16),
                           align="right")
 

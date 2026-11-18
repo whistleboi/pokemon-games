@@ -163,6 +163,31 @@ b2 = _B(); b2.trainer_class, b2.trainer_name = "ROCKET", "Jessie and James"
 b3 = _B(); b3.trainer_class, b3.trainer_name = "GYM_LEADER", "Brock"
 check((mm.encounter_kind(b1), mm.encounter_kind(b2), mm.encounter_kind(b3)) == ("enc_female", "enc_jessie", None),
       "encounter themes by trainer")
+_kinds = {}
+for _c in ("AROMA LADY", "SWIMMER♀", "PSYCHIC♀", "PICNIKER", "OFFICE_LADY", "POKÉFAN♂", "HIKER", "TEAM_SNAGEM"):
+    _b = _B(); _b.trainer_class, _b.trainer_name = _c, "X"
+    _kinds[_c] = mm.encounter_kind(_b)
+check([_kinds[c] for c in _kinds] == ["enc_female"] * 5 + ["enc_male", "enc_male", "enc_rocket"],
+      f"class names however a region spells them (spaces, the female sign, Picniker; Snagem a villain) {_kinds}")
+check(mm.kanto_track("hall_of_fame", "HOENN").endswith("hall_of_fame.mp3"), "the Hall of Fame theme has its track (any region)")
+_plays = []
+_real_play = mm.play
+mm.play = lambda kind, force=False: (_plays.append(kind), setattr(mm, "kind", kind))
+mm.hall_of_fame()
+mm.play = _real_play
+check(_plays == ["hall_of_fame"] and mm.hof_until > pygame.time.get_ticks(), "a Champion win plays the Hall of Fame theme")
+mm.kind = "hall_of_fame"
+import pygame as _pg
+_was = _pg.mixer.get_init
+_pg.mixer.get_init = lambda: True
+mm.play("town")
+check(mm.pending == "town" and mm.kind == "hall_of_fame", "...held over the trip home (the town's music waits)")
+mm.hof_until, _again = 0, []
+mm.play = lambda kind, force=False: _again.append(kind)
+mm.update()
+mm.play = _real_play
+_pg.mixer.get_init = _was
+check(_again == ["town"], "...then the town's music comes back")
 
 print("10-26 batch: Fly, gym MENU, keyboard, PC names, Hoenn opening, ribbons")
 from src.states import overworld as ow

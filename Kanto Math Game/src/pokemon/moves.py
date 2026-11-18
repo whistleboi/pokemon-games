@@ -28,6 +28,7 @@ POWDER_MOVES = {"SLEEP-POWDER", "STUN-SPORE", "POISON-POWDER", "SPORE", "COTTON-
                 "MAGIC-POWDER", "POWDER"}  # Grass types are immune (Gen 6+)
 TYPE_CHECKED_STATUS = {"THUNDER-WAVE"}  # status moves the type chart applies to (Ground ignores it)
 SELF_KO = {"EXPLOSION", "SELF-DESTRUCT", "MISTY-EXPLOSION", "MEMENTO", "FINAL-GAMBIT", "HEALING-WISH"}
+EXPLODE = {"EXPLOSION", "SELF-DESTRUCT", "MISTY-EXPLOSION"}  # (the user faints once it uses one, hit or miss; Damp stops them)
 FALLBACK = "TACKLE"
 STRUGGLE = "STRUGGLE"  # used only when no known move can affect the foe
 STRUGGLE_DATA = {"type": None, "power": 50, "accuracy": None, "category": "PHYSICAL", "priority": 0,

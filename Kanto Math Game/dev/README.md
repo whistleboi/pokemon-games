@@ -27,7 +27,7 @@ Each suite is `harness_head.py` + `<name>_body.py` (a few also `sub_helpers_body
 | New-region maps | `kanto_maps`, `frlg`, `sevii_maps`, `johto_canon`, `hoenn_maps`, `sinnoh`, `orre_maps`, `dungeon` (shared map engine), `soaring`, `soaring3d`, `giant_volcano` |
 | Region starts | `kantostart`, `hoennstart`, `sinnohstart`, `smoke_regions.py` (every region starts) |
 | Reach walks | `walk_<region>.py` with `reach_lib.py` (`walk:<region>` in run.sh) |
-| Engine | `battle2`, `doubles`, `catch`, `items`, `items_pp`, `moveeffects`, `movepool`, `scaling`, `storage`, `slots`, `menus`, `ui`, `events`, `features`, `loops` |
+| Engine | `battle2`, `doubles`, `catch`, `items`, `items_pp`, `moveeffects`, `selfko`, `tmshop`, `savename`, `faces`, `movepool`, `scaling`, `storage`, `slots`, `menus`, `ui`, `events`, `features`, `loops` |
 | Old (menu) regions' data | `orange`, `orangeforms`, `decolore`, `sinjoh`, `dlc`, `lumiose`, `eterna`, `orre`, `shadows`, `sevii` (older Sevii story) |
 | Older fix batches | `batch3`-`batch6`, `fixes`, `bugs2`, `grokfix`, `recheck*`, `answers1023`, `canon1029`, `rivals`, `blockers`, `blackfog` |
 

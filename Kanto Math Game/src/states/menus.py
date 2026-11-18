@@ -298,7 +298,7 @@ class CharacterSelectionState(GameState):
                 elif event.key == pygame.K_RETURN:
                     self.confirm_selection()
                 elif len(self.input_name) < 12 and event.unicode.isprintable():
-                    self.input_name += event.unicode.upper()
+                    self.input_name = (self.input_name + Utils.typable(self.game, event.unicode.upper()))[:12]
 
     def confirm_selection(self):
         name = self.input_name.strip() or "TRAINER"
@@ -595,7 +595,7 @@ class RivalSelectionState(GameState):
                 elif event.key == pygame.K_RIGHT:
                     self._move(1)
                 elif len(self.input_name) < 12 and event.unicode.isprintable():
-                    self.input_name += event.unicode.upper()
+                    self.input_name = (self.input_name + Utils.typable(self.game, event.unicode.upper()))[:12]
 
     def confirm_selection(self):
         name = self.input_name.strip() or self.default_name()
@@ -1426,7 +1426,9 @@ class SaveState(GameState):
         self.selected_slot = slot or 0
         self.slot_list = None  # the paged slot picker, while choosing a different file
 
-        self.input_text = self.game.data.data.get("save_name", f"File {self.selected_slot + 1}")
+        self._name_typed = False  # (once you type, the name stays put when you change file)
+        self._home_slot = self.selected_slot  # (the file this game saves to by default)
+        self.input_text = self._default_name(self.selected_slot)
         self.input_active = True
         self.phase, self.timer = "ASK", 0
 
@@ -1476,9 +1478,22 @@ class SaveState(GameState):
         for btn in self.slot_list.buttons() + [self.btn_slots_back]:
             self.game.ui_manager.add_element(btn)
 
+    def _default_name(self, i):
+        """The name the box offers for file i: this game's own name for its own file (or the first free file, when
+        it was never saved to one); another file's name for a file it would replace; else "File N"."""
+        from src.core import save_slots
+        own = save_slots.slot_index(self.game.data.save_file)
+        stored = self.game.data.data.get("save_name")
+        if stored and i == (own if own is not None else self._home_slot):
+            return stored
+        info = save_slots.summary(save_slots.folder(self.game), i)
+        if info and not info.get("damaged") and info.get("name"):
+            return info["name"]
+        return f"File {i + 1}"
+
     def pick_slot(self, i):
-        if self.input_text == "File " + str(self.selected_slot + 1):  # untouched default name
-            self.input_text = "File " + str(i + 1)
+        if not self._name_typed:  # (a name you typed stays; otherwise the picked file's own)
+            self.input_text = self._default_name(i)
         self.selected_slot = i
         self.close_slots()
 
@@ -1549,7 +1564,9 @@ class SaveState(GameState):
                 elif event.key == pygame.K_ESCAPE:
                     self.cancel_input()
                 elif len(self.input_text) < 20 and event.unicode.isprintable():
-                    self.input_text += event.unicode
+                    typed = Utils.typable(self.game, event.unicode)
+                    self.input_text = (self.input_text + typed)[:20]
+                    self._name_typed = self._name_typed or bool(typed)
 
     def update(self):
         if self.phase == "SAVING":

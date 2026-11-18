@@ -178,6 +178,26 @@ class DummySound:
 
 
 # [REF-0045: MultiFont Class for Mixed Character Support]
+def _font_has(font, ch):
+    """True unless the font draws `ch` as its missing-glyph box (compared with a code point no font has)."""
+    if not ch.isprintable():
+        return False
+    try:
+        draw = pygame.font.Font.render
+        box, got = draw(font, "󰀀", False, (0, 0, 0)), draw(font, ch, False, (0, 0, 0))
+        return not (box.get_size() == got.get_size()
+                    and pygame.image.tobytes(box, "RGBA") == pygame.image.tobytes(got, "RGBA"))
+    except Exception:
+        return True
+
+
+def typable(game, text):
+    """The characters of a typed name the game's font can draw (a name showed a box: 11-18)."""
+    font = game.assets.fonts.get("label") if getattr(game, "assets", None) else None
+    can = getattr(font, "can_draw", None)
+    return "".join(c for c in text if (can(c) if can else c.isprintable()))
+
+
 class MultiFont:
     def __init__(self, primary_font, fallback_font):
         self.primary = primary_font
@@ -257,3 +277,15 @@ class MultiFont:
 
     def get_height(self):
         return self.primary.get_height()
+
+    def can_draw(self, ch):
+        """Does the game's font draw this character (not the empty box)? For typed names (11-18)."""
+        if ch in self.SPECIAL_CHARS:
+            return True
+        cache = self.__dict__.setdefault("_drawable", {})
+        if ch not in cache:
+            cache[ch] = _font_has(self.primary, ch)
+        return cache[ch]
+
+
+Utils.typable = staticmethod(typable)

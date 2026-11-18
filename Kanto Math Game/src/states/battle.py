@@ -1355,6 +1355,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         self.turn_actions.clear()
         self.turn_count += 1
         self._turn_end_done = False
+        self._blast_by = None
         if self.math_ui:
             self.math_ui.set_visibility(False)
         self._apply_transforms()
@@ -1551,7 +1552,17 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
     def _use_move(self, attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp):
         """Run one move. Returns (damage dealt, message lines, was_effective_hit). The move's own mechanics are in
         battle_moves.py (MoveMechanics); this records what it did afterwards (mv_end_move)."""
+        self._exploding = None
         dmg, lines, eff = self._run_move(attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp)
+        if self._exploding == id(attacker):
+            # Self-Destruct, Explosion, Misty Explosion (Gen 5 on): once used, the user faints even if the move
+            # missed, hit a Ghost or a Protect. Only Damp (or a move that never started: Taunt, sleep) stops it.
+            self._blast_by = attacker  # (who blew up: a double KO of both last Pokemon is their loss)
+            if self.__dict__.get("_blast_after") is not None:
+                self._blast_after.append(attacker)  # (a double battle: it faints once every target is hit)
+            elif self._hp(attacker) > 0:
+                self._adjust_hp(attacker, -self._hp(attacker))
+        self._exploding = None
         self.mv_end_move(attacker, defender, name, getattr(self, "_mv_last_d", None) or {}, dmg, lines)
         return dmg, lines, eff
 
@@ -1572,6 +1583,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         d, z_lines = self.z_convert(attacker, name, d)  # the Z-MOVE button: this move's Z-Move
         shown = d.get("_z_name") or name.replace("-", " ")
         lines = z_lines + [self.game.assets.get_text("used_move", name=att_label, move=shown)]
+        if name in movelib.EXPLODE:
+            self._exploding = id(attacker)
         self._last_was_crit = False  # fixed-damage/charge/status turns never crit
         charging = self.__dict__.setdefault("_charging", {})
         herb = None
@@ -1629,7 +1642,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                 and d.get("priority", 0) + self.ability_priority(attacker, d) + self.mv_priority(attacker, d) > 0 \
                 and d.get("target") not in ("user", "users-field", "entire-field"):
             return 0, lines + [f"{def_label} is protected by the Psychic Terrain!"], False
-        if name in movelib.SELF_KO and "DAMP" in (self.ab(attacker), self.ab(defender)):
+        if name in movelib.EXPLODE and "DAMP" in (self.ab(attacker), self.ab(defender)):
+            self._exploding = None  # (Damp: no blast, and the user doesn't faint)
             return 0, lines + ["A Damp ability stops it exploding!"], False
         if name == "MIND-BLOWN" and "DAMP" in (self.ab(attacker), self.ab(defender)):
             return 0, lines + ["A Damp ability stops it exploding!"], False
@@ -1822,7 +1836,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         lines += self.after_hit(name, d, attacker, defender, att_label, def_label, damage, damage < defender_hp)
         lines += self.mv_after_damage(name, d, attacker, defender, att_label, def_label, damage, defender_hp)
         lines += self.ability_after_hit(attacker, defender, name, d, damage, damage >= defender_hp)
-        if name in movelib.SELF_KO and self._hp(attacker) > 0:  # Self-Destruct, Explosion: the user faints
+        if name in movelib.SELF_KO and name not in movelib.EXPLODE and self._hp(attacker) > 0:  # (Explosion's kin: _use_move)
             self._adjust_hp(attacker, -self._hp(attacker))
         return damage, lines, eff > 1.0
 
@@ -1873,7 +1887,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                 mon.counters["crits"] = mon.counters.get("crits", 0) + 1
         lunge = "player" if not self._start_move_anim(mon, name, "player", messages) and damage else None
 
-        if self.opponent_hp <= 0 and self.catch_offer_ready():  # the catch window, once the HP bar is empty
+        if self.opponent_hp <= 0 and (self.player_hp > 0 or self._bench_left()) and self.catch_offer_ready():  # the catch window, once the HP bar is empty
+            # (not if your Pokemon went down with it: Explosion, recoil - it faints too, then the battle goes on or ends)
             self._xp_owed = True  # (paid at the very end: caught, or let go)
             self._show_move_text(messages, lunge, then=self.try_trigger_wild_catch_prompt)
             return
@@ -2057,10 +2072,31 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
     def try_trigger_wild_catch_prompt(self):
         return False
 
+    def _bench_left(self):
+        """Has the player a Pokemon able to battle besides the one out now?"""
+        return any(p is not None and p is not self.player_pokemon and p.current_hp > 0
+                   for p in self.game.story_manager.player_team)
+
+    def _both_last_down(self):
+        """The foe's faint is done and yours went down the same turn (Explosion, recoil), with none left to send in:
+        it faints too and the battle ends. As the games from Gen 5: whoever blew up loses (Self-Destruct, Explosion,
+        Misty Explosion); a recoil or Life Orb knockout is the attacker's win."""
+        if self.player_hp > 0 or not self.player_pokemon or self._bench_left():
+            return False
+        lost = self.__dict__.get("_blast_by") is self.player_pokemon or (
+            self.trainer_class != "WILD" and self.current_opponent_idx + 1 < len(self.opponent_team)
+            and any(p is not None and p.current_hp > 0 for p in self.opponent_team[self.current_opponent_idx + 1:]))
+        self.player_pokemon.current_hp = 0
+        self.phase = "MESSAGE"
+        self.dialogue_box.reset([f"{self.player_pokemon.display_name.upper()} fainted!"])
+        self.dialogue_box.set_visibility(True)
+        self.dialogue_box.callback = lambda: self.trigger_outro(win=not lost)
+        return True
+
     def _start_pending_faint(self):
         """A Pokemon knocked out by recoil, burn, poison or sandstorm (not by an attack, which
         starts its own faint) faints now. Returns True if a faint started."""
-        if self.opponent_hp <= 0 and self.opponent_pokemon and self.player_hp > 0 and self.catch_offer_ready():
+        if self.opponent_hp <= 0 and self.opponent_pokemon and (self.player_hp > 0 or self._bench_left())                 and self.catch_offer_ready():
             self.turn_actions.clear()  # (straight to the catch window: it stays in view, the XP comes last)
             self._xp_owed = True
             self.try_trigger_wild_catch_prompt()
@@ -2274,6 +2310,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                     story.story_flags[f"gym_progress_{key}"] = 0
             if vf == "beat_champion":
                 story.story_flags["beat_elite_four"] = True
+            if hasattr(self.game, "music"):
+                self.game.music.hall_of_fame()  # (the Hall of Fame theme after a Champion win, as on the title screen)
             home = story.get_region_start(story.get_current_region()).get("start_area") or "PALLET_TOWN"
             try:  # persist the title right away (Mom's call, exit dialogue, region select read it)
                 self.game.update_save_data()
@@ -2599,7 +2637,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                 else:
                     self.opponent_pokemon.current_hp = 0
                     piv = self.__dict__.pop("_pivot_after_ko", None)
-                    if self.trainer_class == "WILD":
+                    if self._both_last_down():
+                        pass
+                    elif self.trainer_class == "WILD":
                         self.trigger_outro(win=True)
                     else:
                         bench = any(p.current_hp > 0 and p is not self.player_pokemon
