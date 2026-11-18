@@ -104,6 +104,53 @@ def custom(game):
 _CUSTOM = {}
 
 
+def _flags_hold(game, when):
+    flags = getattr(getattr(game, "story_manager", None), "story_flags", None) or {}
+    return all((not flags.get(c[4:])) if str(c).startswith("not:") else flags.get(c) for c in (when or []))
+
+
+def story_map(game, key):
+    """The map an area is walked on now (Orange 5.7, 11-18): its own, or the one its "story_maps" [{"when": [flag,
+    "not:flag", ...], "map": {a whole map}}] swaps in while those flags stand, the first that does. The swapped-in map
+    is drawn in the same frame (same size, same tiles for the same spots: story data, scenes and the Journal's steps
+    need no change); its "view_top" keeps the view off rows it leaves empty. Shamouti in the storm: 5.7's 3.60, from
+    the force that carries you to the shrine until Lugia's song."""
+    m = custom(game).get(key)
+    if isinstance(m, dict):
+        flags = getattr(getattr(game, "story_manager", None), "story_flags", None) or {}
+        for sw in m.get("story_maps") or []:
+            if isinstance(sw.get("map"), dict) and _flags_hold(game, sw.get("when")) and (not sw.get("via") or flags.get(on_story_flag(key))):
+                return sw["map"]
+    return m
+
+
+def on_story_flag(key):
+    return "on_story_map_" + str(key)
+
+
+def mark_story_arrival(game, key, room=None):
+    """A story map with "via" (Orange 5.7, Jordan's Q59: the storm map 3.60 only by the caves, the festival house and the
+    force; Fly or the sea bring you to Shamouti as it is): arriving from one of its "via" areas, or out of one of its
+    "via_rooms", puts you on it (a story flag, kept in the save: back from a battle you're still there); arriving any
+    other way, on the place's own map."""
+    m = custom(game).get(key)
+    sws = [sw for sw in ((m or {}).get("story_maps") or []) if sw.get("via") or sw.get("via_rooms")] if isinstance(m, dict) else []
+    if not sws:
+        return
+    story = game.story_manager
+    sw = next((w for w in sws if _flags_hold(game, w.get("when"))), None)
+    if room is not None:   # (out of a building)
+        if sw and room in (sw.get("via_rooms") or []):
+            story.story_flags[on_story_flag(key)] = True
+        return
+    came = getattr(story, "last_area_key", None)
+    was = getattr(game, "walk_town_pos", None)
+    if sw and came in (sw.get("via") or []):
+        story.story_flags[on_story_flag(key)] = True
+    elif not (was and was[0] == key):
+        story.story_flags.pop(on_story_flag(key), None)
+
+
 def available(game, key):
     if not getattr(game, "walk_towns", os.environ.get("SDL_VIDEODRIVER") != "dummy"):
         return False
@@ -170,7 +217,8 @@ class WalkTownState(CityState):
         self.walk_goal = None
         self.toast, self.toast_timer, self.banner = "", 0, 120
         self.signs, self.water_exits, self.locked = {}, set(), {}
-        mine = custom(game).get(self.area_key)
+        mark_story_arrival(game, self.area_key)
+        mine = story_map(game, self.area_key)   # (its own map, or the one the story swaps in now: Shamouti in the storm)
         self.own_map = bool(mine)
         self.town_map, self.room = mine, None
         if mine:  # our own map (the way forward: Jordan, 11-06)
@@ -274,6 +322,26 @@ class WalkTownState(CityState):
         self._pic_now = art._version_file(_pic) if _pic else None
         self._npc_init(m)
 
+    def _swap_story_map(self):
+        """A flag changed which map the area is walked on (story_map: Lugia's song ends Shamouti's storm): the new one,
+        you standing where you were (the same frame), its people and scenes from the start."""
+        if not getattr(self, "own_map", False) or getattr(self, "room", None):
+            return
+        new = story_map(self.game, self.area_key)
+        if not isinstance(new, dict) or new is self.town_map:
+            return
+        keep, face = tuple(self.player), self.facing
+        self.town_map = new
+        self.__dict__.pop("_guide_parts", None)
+        self.game.__dict__.setdefault("_walk_town_imgs", {}).clear()
+        self._from_art(new)
+        self.player = keep if self._open(keep) else self._nearest_open(keep)
+        self.facing = face
+        self.anim = 0
+        self.anim_from = self.partner = self.partner_from = self.player
+        self._mini = None
+        self._remember()
+
     def _refresh_picture(self):
         """A flag changed the picture of the map you're on (the S.S. Anne sails out of the harbour): draw the new one,
         without starting its people and scenes over."""
@@ -365,6 +433,7 @@ class WalkTownState(CityState):
 
     def npc_flag(self, name):
         self.game.story_manager.story_flags[name] = True
+        self._swap_story_map()
         self._refresh_picture()
         # (a scene that moves the story on: stand-ins come and go at once, the Shroomish back beside its girl)
         self.barred = {tuple(t): bar for bar in getattr(self, "_bar_list", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
@@ -426,6 +495,37 @@ class WalkTownState(CityState):
         self._scene_lock = on
         if on:
             self.walk_goal = None
+        else:
+            self._cam_focus = None   # (the scene's over: the view back on you)
+            if hasattr(self, "_own_img"):   # (and the map drawn as it is again)
+                self.npc_picture(None)
+
+    def npc_ground(self, t):
+        """The map's character at a tile (what a scene's walker or swimmer may cross: npc.route), None off the map."""
+        x, y = t
+        return self.grid[y][x] if 0 <= y < len(self.grid) and 0 <= x < len(self.grid[0]) else None
+
+    def npc_look(self, t):
+        """A scene moves the view to a tile (None: back to you)."""
+        self._cam_focus = tuple(t) if t else None
+
+    def npc_picture(self, name):
+        """A scene draws the map with another picture of it (oi_ground/<name>.png and oi_top/<name>.png), None: its own again."""
+        from src.dungeon import art
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) or {}
+        if not hasattr(self, "_own_img"):
+            self._own_img = (self.map_img, self.overheads)
+        if not name:
+            self.map_img, self.overheads = self.__dict__.pop("_own_img")
+            return
+        roofs = dict(m.get("roofs") or {})
+        pic = dict(roofs.get("_picture") or {})
+        pic = {"f": f"oi_ground/{name}.png", "at": pic.get("at", [0, 0])}
+        roofs["_picture"] = pic
+        self.map_img = art.surface(self.grid, m.get("buildings", {}), TILE, roofs, m.get("theme"))
+        tops = [dict({k: v for k, v in o.items() if k not in ("when", "until", "by_version")}, f=f"oi_top/{name}.png") if o.get("kind") == "picture" else o
+                for o in m.get("overheads", [])]
+        self.overheads = [(o, *art.overhead(o, TILE)) for o in tops]
 
     def npc_open(self, t):
         return 0 <= t[0] < self.w and 0 <= t[1] < self.h and self.rows[t[1]][t[0]] == "." and t not in self.signs
@@ -722,7 +822,16 @@ class WalkTownState(CityState):
 
     def _go(self, room, came):
         """Into a room (or back out to the town: room None), arriving by the way out there that leads back to came."""
+        if room is None and getattr(self, "room", None):   # (out of a building the story map is entered by: the festival house)
+            mark_story_arrival(self.game, self.area_key, room=self.room)
+            new = story_map(self.game, self.area_key)
+            if isinstance(new, dict) and new is not self.town_map:
+                self.town_map = new
+                self.game.__dict__.setdefault("_walk_town_imgs", {}).clear()
         self.room = room
+        _dyn = ((self.town_map.get("rooms") or {}).get(room) or {}).get("dynamic_exit") if room else None
+        if _dyn and str(came).startswith("ROOM:"):   # (into a lift car: its doors are on the floor you came from, till it rides)
+            self.game.story_manager.story_flags[_dyn["flag"]] = came[5:]
         self.signs, self.water_exits = {}, set()
         self._mini = None
         self.walk_goal = None
@@ -737,7 +846,8 @@ class WalkTownState(CityState):
             self.player = spot if self._open(spot) else self._nearest_open(spot)
             self.facing = (0, -1) if back else (0, 1)
         else:
-            mats = [t for t, target in self.exits.items() if target == came]
+            came = ((self.town_map["rooms"][room] if room else self.town_map).get("arrive_as") or {}).get(came, came)   # (out of a lift car
+            mats = [t for t, target in self.exits.items() if target == came]   #  that rode up: at the floor's own lift door, Kumquat's)
             t = mats[len(mats) // 2] if mats else self._nearest_open((self.w // 2, self.h - 2))
             inward = next(((t[0] + dx, t[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0))
                            if self._open((t[0] + dx, t[1] + dy)) and (t[0] + dx, t[1] + dy) not in self.exits), t)
@@ -1027,6 +1137,8 @@ class WalkTownState(CityState):
     def _leave(self, target):
         if str(target).startswith("OUT:"):  # (out of a room, back to the town)
             return self._go(None, target)
+        if str(target).startswith("ROOM:") and self._car_floor(getattr(self, "room", None)):   # (out of a lift car: on the floor it's at)
+            target = "ROOM:" + self._car_floor(self.room)
         if str(target).startswith("ROOM:"):  # (stairs to another room of the building; "ROOM:MAIN" is the place's own first map)
             return self._go(None if target[5:] == "MAIN" else target[5:], "ROOM:" + (self.room or "MAIN"))
         opt = self._travel_option(target)
@@ -1125,15 +1237,18 @@ class WalkTownState(CityState):
 
     def _camera(self):
         px, py = self.player
-        if self.anim > 0:
+        if getattr(self, "_cam_focus", None):   # (a scene looking somewhere else: 5.7's camera pans)
+            px, py = self._cam_focus
+        elif self.anim > 0:
             k = 1 - self.anim / STEP
             fx, fy = self.anim_from
             px, py = fx + (px - fx) * k, fy + (py - fy) * k
         cx, cy = px * TILE + TILE / 2, py * TILE + TILE / 2
         W, H = self._view().size
         mw, mh = self.w * TILE, self.h * TILE  # (the map fills its frame: no black past its edges)
-        cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)
-        cy = mh / 2 if mh <= H else min(max(cy, H / 2), mh - H / 2)
+        top = int(((self.town_map or {}).get("view_top") or 0) if not getattr(self, "room", None) and isinstance(getattr(self, "town_map", None), dict) else 0) * TILE
+        cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)   # ("view_top": rows left empty above a swapped-in story map)
+        cy = (top + mh) / 2 if mh - top <= H else min(max(cy, top + H / 2), mh - H / 2)
         return cx, cy
 
     def _view(self):
@@ -1142,10 +1257,15 @@ class WalkTownState(CityState):
     def _origin(self):
         cx, cy = self._camera()
         v = self._view()
-        return int(v.centerx - cx), int(v.centery - cy)
+        return int(v.centerx - cx) + dn.shake_dx(self), int(v.centery - cy)
+
+    def shake(self, ms=700):
+        """The screen shakes a moment (a story scene's tremor)."""
+        self._shake_until = pygame.time.get_ticks() + int(ms)
 
     def _tile_at(self, pos):
         ox, oy = self._origin()
+        ox -= dn.shake_dx(self)
         return int((pos[0] - ox) // TILE), int((pos[1] - oy) // TILE)
 
     def _facing_tile(self):
@@ -1470,7 +1590,17 @@ class WalkTownState(CityState):
         5.7's storm over Shamouti during the spheres story; src/world/seasons.py story_weather): a grey sky and falling snow."""
         from src.world import seasons
         w = seasons.story_weather(self.game, self.area_key)
-        if not w or w.get("show") != "snow":
+        if not w or w.get("show") not in ("snow", "rain") or getattr(self, "room", None):
+            return
+        if w.get("show") == "rain":   # (5.7's heavy rain over Shamouti while you look for the Fire Sphere: dark sky, streaks)
+            veil = pygame.Surface(view.size, pygame.SRCALPHA)
+            veil.fill((30, 40, 60, 90))
+            t = pygame.time.get_ticks()
+            for i in range(160):
+                x = (i * 97 + int(t * 0.25)) % (view.w + 40) - 20
+                y = (i * 61 + int(t * (0.9 + (i % 4) * 0.1))) % view.h
+                pygame.draw.line(veil, (200, 215, 240, 170), (x, y), (x - 5, y + 14), 2)
+            screen.blit(veil, view.topleft)
             return
         veil = pygame.Surface(view.size, pygame.SRCALPHA)
         veil.fill((60, 70, 95, 95))
@@ -1542,7 +1672,7 @@ class WalkTownState(CityState):
             screen.blit(img, rect)
         for a in (self.scenes.actors if getattr(self, "scenes", None) else []):  # a scene's cast, walking in and out
             ax, ay = a["m"].at()
-            img = self._actor_img(a["sheet"], a["m"].facing, a["m"].frame())
+            img = self._actor_img(a["sheet"], a["m"].facing, a["m"].frame(), native=bool(a.get("native")))
             if img is not None:
                 r = pygame.Rect(int(ox + ax * TILE), int(oy + ay * TILE), TILE, TILE)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
@@ -1698,12 +1828,19 @@ class WalkTownState(CityState):
     # The Journal's marker through a place and its rooms (Jordan, 11-17: "the marker always leads the next step").
     # _guide_aim says where the mission's next thing is (a room of this place, or outside, and a tile); _guide_toward
     # gives the tile to head for from where you stand: that tile, or the door / mat / stairs that starts the way to it.
+    def _car_floor(self, room):
+        """A lift car's floor now (its "dynamic_exit" {"flag", "rooms", "default"}: Kumquat Hotel's, 5.7's 39.0), else None."""
+        dyn = ((self.town_map.get("rooms") or {}).get(room) or {}).get("dynamic_exit") if room and isinstance(getattr(self, "town_map", None), dict) else None
+        if not dyn:
+            return None
+        return str(self.game.story_manager.story_flags.get(dyn["flag"]) or dyn.get("default"))
+
     def _guide_part(self, room):
         """What a room of this place (None: the map itself) holds, read from its map without walking in: its ways out
         {tile: target}, doors {tile: kind}, people {tile: option} and pads {tile: room}."""
         from src.dungeon import art
         cache = self.__dict__.setdefault("_guide_parts", {})
-        key = (room, getattr(self, "_cleared", ""), self._has("HM_SURF"), self._has_waterfall())
+        key = (room, getattr(self, "_cleared", ""), self._has("HM_SURF"), self._has_waterfall(), id(self.town_map), self._car_floor(room))
         if key in cache:
             return cache[key]
         m = self.town_map["rooms"][room] if room else self.town_map
@@ -1713,6 +1850,8 @@ class WalkTownState(CityState):
         kinds, ways = m.get("buildings", {}), m.get("exits", {})
         part = {"exits": {}, "doors": {}, "people": {}, "pads": {}, "open": set(), "grid": grid, "stops": {tuple(t) for t in m.get("stops", [])}}
         deep = art.SEA_CHARS if m.get("surf") else ""
+        if m.get("dynamic_exit"):   # (a lift car: its doors open on the floor it's at now)
+            ways = {c: ("ROOM:" + self._car_floor(room) if str(v).startswith("ROOM:") else v) for c, v in ways.items()}
         for (x, y), letter in art.doors(grid).items():
             target = ways.get(letter) or (ways.get("D") if kinds.get(letter) == "gate" else None)
             if target:
@@ -1756,6 +1895,10 @@ class WalkTownState(CityState):
                 to = None if target[5:] == "MAIN" else target[5:]
                 if to is None or to in rooms:
                     out.append((t, to, "stairs"))
+        dyn = (rooms.get(room) or {}).get("dynamic_exit") if room else None
+        if dyn:   # (a lift car leads to every floor it serves: its attendant takes you there)
+            mat = next((t for t, target in part["exits"].items() if str(target).startswith("ROOM:")), None)
+            out += [(mat, to, "stairs") for to in dyn.get("rooms") or [] if mat is not None and to in rooms and to != self._car_floor(room)]
         if room is None:
             for t in part["doors"]:
                 to = (self.town_map.get("inside") or {}).get("%d,%d" % t)

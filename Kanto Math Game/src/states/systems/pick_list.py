@@ -13,6 +13,7 @@ class PickListState(GameState):
     def __init__(self, game, back, title, choices, done):
         super().__init__(game)
         self.back, self.title, self.done = back, title, done
+        self.choices = list(choices)   # ((label, value) pairs, as given)
         f = game.assets.fonts
         self.btn_back = CommandButton((16, 14, 140, 56), "BACK", f["button"], lambda: self.pick(None), bg_color=theme.BACK, autosize=False)
         self.rows = []

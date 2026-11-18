@@ -2,6 +2,7 @@
 # on 5.7's own picture, every way out known to the story data, everything reachable; then each batch's own things.
 #   bash dev/checks/run.sh orange_maps
 import json
+import os
 from collections import deque
 from src.states.overworld import PlayState, CityState
 from src.states.overworld.walk_town import WalkTownState as _WTS
@@ -579,7 +580,7 @@ _dl = g.loader.area_data["REGION_START"]["ORANGE"]["dex_list"]
 _drop = [171, 176, 177, 178, 179, 180, 183, 191, 192, 211, 218, 219, 223, 226, 231, 232]
 _ofile = json.load(open("assets/orange_area_data.json", encoding="utf-8"))
 _left = sorted({k for k, v in _ofile.items() if k.endswith("_PERCENTAGES") and isinstance(v, dict) and any(x.isdigit() and int(x) in _drop for x in v)})
-check(len(_dl) == 100 and not set(_drop) & set(_dl) and not _left,
+check(len(_dl) == 95 and not set(_drop) & set(_dl) and not _left,   # (95: batch 28's Q35 took Magby, Elekid, Tyrogue, Smoochum, Machamp off too)
       f"Orange dex: the 16 species 5.7 lacks are gone from the list and every Orange table ({len(_dl)}; {_left[:4]})")
 check(not {"MANDARIN_DESERT", "SUNRAY_CAVE"} & set(_ofile["STORY_PROGRESSION"]), "the menu-era Mandarin Desert and Sunray Cave are deleted")
 if "ORANGE_ROUTE_64" in BUILT:
@@ -711,8 +712,8 @@ if "SHAMOUTI_ISLAND" in BUILT:
     check(_s["area_type"] == "town" and not any(o.get("condition") == "beat_orange_champion" for o in _s.get("travel_options", []) if o.get("target_area") == "ORANGE_ROUTE_67"),
           "Shamouti is open before the League (5.7: the festival being got ready)")
     check(sorted((b["until"]["flag_condition"], tuple(b["tiles"][0])) for b in _tm["SHAMOUTI_ISLAND"]["barred"])
-          == [("heard_shamouti_legend", (42, 52)), ("shamouti_lugia_rose", (25, 67)), ("shamouti_palace_crash", (6, 59))],
-          "the three islands' caves open in 5.7's story order: Fire after Melody's play, Lightning after the crash, Ice after Lugia rises (batch 22)")
+          == [("heard_shamouti_legend", (6, 59)), ("heard_shamouti_legend", (42, 52)), ("shamouti_lugia_rose", (20, 60))],
+          "the three islands as 5.7 gates them (batch 28, Q31): Fire and Lightning's caves after Melody's play, Ice's stairs after Lugia rises")
     for _f in ("shamouti_chosen_one", "heard_shamouti_legend"):
         story.story_flags.pop(_f, None)
     story.story_flags.pop("beat_orange_champion", None)
@@ -770,6 +771,31 @@ if "VALENCIA_ISLAND" in BUILT:
     _hr = next((r for r, c in story.get_region_starts() if c.get("start_area") == "VALENCIA_ISLAND" and not c.get("travel_only")), None)
     check(_hr == "ORANGE", f"...and it counts as home (Valencia is Orange's start: Mom heals, keeps the rowdy Pikachu, offers the move) ({_hr})")
 
+def _ride_lift(st, to):
+    """(batch 29, Q61) From the lobby: into 5.7's one lift car, its attendant asks, pick `to`, out of its doors: (car room, where you are)."""
+    st._go("gym", "OUT:24,16"); tap(st); st.player = (3, 5); st.anim = 0; st.step(0, -1)
+    car = None
+    for _ in range(600):
+        c = g.current_state
+        if isinstance(c, _WTS) and c.room == "lift":
+            car = "lift"
+        if isinstance(c, _PLS):
+            c.pick(to); continue
+        if getattr(c, "npc_active", False):
+            tap(c, 3)
+        elif getattr(c, "dialogue_box", None) is not None and getattr(c.dialogue_box, "visible", False):
+            c.dialogue_box.advance()
+        c.update(); c.draw()
+        if car and isinstance(c, _WTS) and c.room == "lift" and story.story_flags.get("orange_kumquat_lift_floor") == to and not c.npc_active \
+                and not c._busy():
+            break
+    c = g.current_state
+    out = [t for t, v in c.exits.items() if str(v).startswith("ROOM:")]
+    if out:
+        c.player = (out[0][0], out[0][1] - 1); c.anim = 0; c.step(0, 1); frames(30); tap(c)
+    return car, g.current_state
+
+
 print("13) batch 18 (11-18): Route 69, Butwal (Gulzar, HM Cut, the falls), Kumquat (the hotel, Luana's battle)")
 if "ORANGE_ROUTE_69" in BUILT:
     check("ORANGE_ROUTE_69_EAST" not in _area, "the menu's second Route 69 (5.7 has one Route S) is gone")
@@ -824,8 +850,9 @@ if "KUMQUAT_ISLAND" in BUILT:
     check(any([3, 4] in b["tiles"] and b["until"] == {"flag_condition": "orange_luana_hotel"} for b in _ga.get("barred", [])),
           "the lift is for guests and challengers only till then (5.7's attendant)")
     st = open_map("KUMQUAT_ISLAND", "ORANGE_ROUTE_69")
-    st._go("gym", "OUT:24,16"); tap(st); st.player = (3, 5); st.anim = 0; st.step(0, -1); frames(30); tap(st)
-    check(g.current_state.room == "top_floor", f"...then the lift takes you up to the top floor ({g.current_state.room})")
+    _car, _c = _ride_lift(st, "top_floor")
+    check(_car == "lift" and g.current_state.room == "top_floor" and tuple(g.current_state.player) == (2, 6),
+          f"...then the lift (batch 28, Q8: 5.7's lift car) takes you up to the top floor ({_car}, {g.current_state.room}, {g.current_state.player})")
     _lu = next(o for o in _area["KUMQUAT_ISLAND"]["explore_options"] if o["text"] == "Luana ")
     check(_lu["event"]["battle"]["team"] == [105, 65] and _lu["event"]["battle"]["levels"] == [46, 46], "Luana: 5.7's Marowak and Alakazam, Lv 46")
     st = open_map("KUMQUAT_ISLAND", "ORANGE_ROUTE_69")
@@ -953,7 +980,7 @@ print("17) batch 22 (11-18): the spheres story after the League (Fire Island, La
 if "FIRE_ISLAND" in BUILT and _tm["FIRE_ISLAND"].get("floors"):
     _sp = ("shamouti_fire_sphere", "shamouti_fire_scene", "shamouti_palace_taken", "shamouti_palace_crash_seen", "shamouti_palace_crash",
            "shamouti_lightning_sphere", "shamouti_lightning_scene", "shamouti_lightning_done", "shamouti_lugia_rose", "shamouti_ice_sphere",
-           "shamouti_lugia_song")
+           "shamouti_lugia_song", "shamouti_sphere_set", "orange_lightning_birds_seen")
     for _f in _sp:
         story.story_flags.pop(_f, None)
     story.story_flags.update({"beat_orange_champion": True, "heard_shamouti_legend": True, "move_offer_orange": True})
@@ -981,11 +1008,11 @@ if "FIRE_ISLAND" in BUILT and _tm["FIRE_ISLAND"].get("floors"):
     _drive("shamouti_lightning_done")
     check(story.story_flags.get("shamouti_lightning_done") and story.current_area_key == "SHAMOUTI_ISLAND",
           f"...going back, the birds fight overhead and a force carries you to the shrine (9 -> 10) ({story.current_area_key})")
-    _play_scene("SHAMOUTI_ISLAND", (30, 32), (0, -1), "shamouti_lugia_rose", "ORANGE_ROUTE_67")
+    _play_scene("SHAMOUTI_ISLAND", (30, 32), (0, -1), "shamouti_lugia_rose", "LIGHTNING_ISLAND")   # (batch 29, Q59: come by the force)
     check(story.story_flags.get("shamouti_lugia_rose"), "...at the altar Lugia rises; Slowking sends you to Ice Island (10 -> 11)")
     _play_event("ICE_ISLAND", "ICE SPHERE")
     check(story.story_flags.get("shamouti_ice_sphere"), "...the Ice Sphere (11 -> 12)")
-    _play_scene("SHAMOUTI_ISLAND", (30, 32), (0, -1), "shamouti_lugia_song", "ORANGE_ROUTE_67")
+    _play_scene("SHAMOUTI_ISLAND", (30, 32), (0, -1), "shamouti_lugia_song", "ICE_ISLAND")   # (out of Ice Island's cave: the storm map)
     check(story.story_flags.get("shamouti_lugia_song"), "...the last sphere on the altar: Lugia's song calms the three birds (12 -> 13 -> 14)")
     st = open_map("FIRE_ISLAND", "SHAMOUTI_ISLAND")
     _figs = [i.get("text") for i in st._figure_items()]
@@ -1023,16 +1050,10 @@ if "NEW_ISLAND" in BUILT:
     check(story.current_area_key == "NEW_ISLAND", f"...and Hamlin's ferry takes you to New Island, the ride scene on the way ({story.current_area_key})")
     st = open_map("NEW_ISLAND", "HAMLIN_ISLAND")
     _figs = [i.get("text") for i in st._figure_items()]
-    check("MEWTWO" in _figs and "MEW" not in _figs, f"New Island: Mewtwo in the lab's back room (5.7's Lv 60); no Mew yet ({[f for f in _figs if f and f.isupper()]})")
-    for (_x, _y), _st, _flag in (((17, 14), (0, -1), "orange_mew_1"), ((24, 23), (0, -1), "orange_mew_2"), ((12, 18), (0, -1), "orange_mew_3"),
-                                 ((21, 18), (-1, 0), "orange_mew_found")):
-        g.arrive_floor = ("NEW_ISLAND", 4, [_x, _y])
-        st = open_map("NEW_ISLAND", "HAMLIN_ISLAND"); _calm(st)
-        st.run.player = (_x, _y); st.anim = 0; st.step(*_st)
-        _drive(_flag, n=600)
-    check(story.story_flags.get("orange_mew_found"), "...in the garden Mew darts past four times (5.7's 0x403E 0 -> 4)")
-    _figs = [i.get("text") for i in g.current_state._figure_items()]
-    check("MEW" in _figs, f"...then waits to battle (Lv 60) ({[f for f in _figs if f and f.isupper()]})")
+    check("MEWTWO" in _figs and "MEW" not in _figs, f"New Island: Mewtwo in the lab's back room (5.7's Lv 60) ({[f for f in _figs if f and f.isupper()]})")
+    _ni = json.dumps(_area["NEW_ISLAND"]) + json.dumps(_tm["NEW_ISLAND"])
+    check('"id": 151' not in _ni and "MEW\"" not in _ni.replace("MEWTWO", ""),
+          "...and no Mew anywhere on New Island (Jordan 11-18, Q41: Mew = Kanto #150 only); the garden is still 5.7's")
     story.story_flags.pop("shamouti_lugia_song", None)
 
 print("19) batch 24 (11-18): the Pokemon Showboat (the Pass, the play, Kay and her Raichu, the cabins)")
@@ -1092,6 +1113,7 @@ if "ORANGE_ROUTE_58" in BUILT and _tm["ORANGE_ROUTE_58"].get("floors"):
         st.dive_here(); tap(st)
         check(st.run.index == 0, f"...without the Scuba Gear you can't dive ({st.run.index})")
         story.inventory["SCUBA_GEAR"] = 1
+        story.story_flags["orange_joy_seabed"] = True   # (batch 28, Q48: she swims off as you first arrive: seen already here)
         st.dive_here(); frames(5)
         check(st.run.index == 1, f"...with it (Nurse Joy's gift) you dive to the seabed (floor {st.run.index})")
         st.surface_here(); frames(5)
@@ -1111,6 +1133,11 @@ def _press(st, at, face):
     st.say = lambda lines, then=None: (heard.extend(lines if isinstance(lines, list) else [lines]), real(lines, then))[1]
     try:
         act[1]()
+        tap(st)
+        if isinstance(g.current_state, _PLS):   # (batch 28, Q51: "Do you want to press it?" Yes)
+            heard.append("[" + g.current_state.title + "]")
+            g.current_state.pick(True)
+            tap(st)
     finally:
         del st.say
     tap(st)
@@ -1144,7 +1171,7 @@ if "FIRE_ISLAND" in BUILT and _tm["FIRE_ISLAND"]["floors"][0].get("secret_switch
     check(_hop and _hop[1] != "Switch", f"...then the marker leads straight up to the summit ({_hop})")
 if "LIGHTNING_ISLAND" in BUILT and _tm["LIGHTNING_ISLAND"]["floors"][0].get("secret_switches"):
     story.story_flags.pop("orange_lightning_switch", None)
-    story.story_flags["shamouti_palace_crash"] = True
+    story.story_flags.update({"shamouti_palace_crash": True, "orange_lightning_switch_a": True, "orange_lightning_switch_b": True})   # (the crash's: 5.7's var 3)
     st = open_map("LIGHTNING_ISLAND", "SHAMOUTI_ISLAND"); _calm(st)
     _pic = _tm["LIGHTNING_ISLAND"]["floors"][0]["roofs"]["_picture"]
     check(not st.run.floor.walkable(23, 7) and st.run.floor.walkable(32, 21) and _dart._version_file(_pic).endswith("1_81_shut.png"),
@@ -1191,20 +1218,243 @@ if "NEW_ISLAND" in BUILT and _tm["NEW_ISLAND"]["floors"][1].get("switch"):
 if _area.get("SHAMOUTI_ISLAND", {}).get("story_weather"):
     from src.world import seasons as _seas
     _was = {f: story.story_flags.get(f) for f in ("shamouti_lightning_done", "shamouti_lugia_song")}
-    story.story_flags.pop("shamouti_lightning_done", None); story.story_flags.pop("shamouti_lugia_song", None)
+    story.story_flags.pop("shamouti_lightning_done", None); story.story_flags.pop("shamouti_lugia_song", None); story.story_flags.pop("shamouti_sphere_set", None)
+    for _f in ("shamouti_palace_crash", "heard_shamouti_legend"):   # (batch 28: 5.7's rain and snow before the storm come with these)
+        _was[_f] = story.story_flags.pop(_f, None)
     _w0 = _seas.area_weather(g, "SHAMOUTI_ISLAND")
     story.story_flags["shamouti_lightning_done"] = True
+    st = open_map("SHAMOUTI_ISLAND", "LIGHTNING_ISLAND"); frames(3)   # (batch 29, Q59: by the force: the storm map, its snow)
     _w1 = _seas.area_weather(g, "SHAMOUTI_ISLAND")
-    st = open_map("SHAMOUTI_ISLAND", "ORANGE_ROUTE_67"); frames(3)
     _drawn = isinstance(st, _WTS) and (_seas.story_weather(g, "SHAMOUTI_ISLAND") or {}).get("show") == "snow"
-    story.story_flags["shamouti_lugia_song"] = True
+    story.story_flags["shamouti_sphere_set"] = True   # (batch 28: the storm ends as the Ice Sphere is set: 5.7's setweather 2)
     _w2 = _seas.area_weather(g, "SHAMOUTI_ISLAND")
+    story.story_flags.pop("shamouti_sphere_set", None)
     check(_w0 != "SNOW" and _w1 == "SNOW" and _w2 != "SNOW" and _drawn,
-          f"Shamouti's storm (5.7's 3.60, snow): from the force that carries you to the shrine until Lugia's song, snow falls on the town ({_w0}, {_w1}, {_w2})")
+          f"Shamouti's storm (5.7's 3.60, snow): from the force that carries you to the shrine until the Ice Sphere is set, snow falls ({_w0}, {_w1}, {_w2})")
     for _f, _v in _was.items():
         if _v:
             story.story_flags[_f] = _v
         else:
             story.story_flags.pop(_f, None)
+
+print("22) batch 28 (11-18): Jordan's answers: no Mew, 5.7's gating, switches that ask, the storm map, the hotel lift, scenes played out")
+from src.dungeon import npc as _npc
+from src.states.overworld import walk_town as _wt
+_SEEN = {"actors": 0, "shakes": 0, "looks": 0}
+_ct = _npc.Scenes._cast_tick
+
+
+def _ct_watch(self, s, st):   # (how many of a scene's cast were out at once: a scene played out, not told in lines)
+    r = _ct(self, s, st)
+    _SEEN["actors"] = max(_SEEN["actors"], len(self.actors) + sum(1 for a in st.get("by", {}).values() if a.get("person") and not a.get("ghost") and a["m"].path))
+    return r
+
+
+_npc.Scenes._cast_tick = _ct_watch
+
+
+def _played(key, at, step, flag, came, floor=None, n=6000):
+    _SEEN["actors"] = 0
+    if floor is not None:
+        g.arrive_floor = (key, floor, list(at))
+    w = _play_scene(key, at, step, flag, came, n=n)
+    return w is not None and story.story_flags.get(flag), _SEEN["actors"]
+
+
+_dl = g.loader.area_data["REGION_START"]["ORANGE"]["dex_list"]
+_isl = [g.loader.area_data.get(f"ORANGE_{k}_PERCENTAGES") or {} for k in ("FIRE_ISLAND", "LIGHTNING_ISLAND", "ICE_ISLAND")]
+check(not any(p in _dl for p in (68, 236, 238, 239, 240)) and not any(str(p) in t for t in _isl for p in (236, 238, 239, 240, 68)),
+      "Q35: no Magby, Elekid, Tyrogue, Machamp or Smoochum on the islands (5.7's own tables), and off the ORANGE dex (nothing else gives them; Machoke needs a Linking Cord)")
+_sh = _area["SHAMOUTI_ISLAND"]
+_tr = {o["target_area"]: o.get("condition") for o in _sh["travel_options"]}
+_bars = {tuple(t): b["until"]["flag_condition"] for b in _tm["SHAMOUTI_ISLAND"]["barred"] for t in b["tiles"]}
+check(_tr.get("LIGHTNING_ISLAND") == "heard_shamouti_legend" and _bars.get((6, 59)) == "heard_shamouti_legend" and _bars.get((20, 60)) == "shamouti_lugia_rose"
+      and (25, 67) not in _bars, f"Q31: 5.7's gating: Fire and Lightning's caves after Melody's play, Ice behind 5.7's rocks at its stairs (20-21,60) till Lugia rises ({_bars})")
+# the switches ask first (Q51): No leaves it, "Maybe later."
+for _f in ("orange_fire_switch_a", "orange_fire_switch_b", "orange_fire_switch_c", "orange_fire_switch_d"):
+    story.story_flags.pop(_f, None)
+story.story_flags["heard_shamouti_legend"] = True
+st = open_map("FIRE_ISLAND", "SHAMOUTI_ISLAND"); _calm(st)
+st.run.player = (44, 33); st.facing = (1, 0); st.anim = 0
+_act = st._act_here(); _heard = []
+_real = st.say
+st.say = lambda lines, then=None: (_heard.extend(lines if isinstance(lines, list) else [lines]), _real(lines, then))[1]
+_act[1](); tap(st)
+_asked = isinstance(g.current_state, _PLS) and g.current_state.title == "PRESS THE SWITCH?"
+if _asked:
+    g.current_state.pick(False); tap(st)
+del st.say
+check(_asked and not story.story_flags.get("orange_fire_switch_a") and "Maybe later." in _heard and any("press it" in h for h in _heard),
+      f"Q51: a secret switch asks first, as 5.7: No, and it's 'Maybe later.' ({_heard})")
+_w = _press(st, (44, 33), (1, 0))
+check(story.story_flags.get("orange_fire_switch_a") and getattr(st, "_shake_until", 0), f"...Yes: pressed, and the tremor shakes the screen (Q52) ({_w})")
+story.story_flags.pop("orange_fire_switch_a", None)
+# Lightning Island before the crash (5.7: open after the play; its own rocks and A / B)
+for _f in ("shamouti_palace_crash", "orange_lightning_switch_a", "orange_lightning_switch_b", "orange_lightning_switch"):
+    story.story_flags.pop(_f, None)
+st = open_map("LIGHTNING_ISLAND", "SHAMOUTI_ISLAND"); _calm(st)
+_fl = st.run.floor
+check(not _fl.walkable(23, 17) and not _fl.walkable(32, 21) and not _fl.walkable(37, 11) and _dart._version_file(_tm["LIGHTNING_ISLAND"]["floors"][0]["roofs"]["_picture"]).endswith("1_81_pre.png"),
+      "Lightning Island after the play, before the crash: 5.7's rocks shut (A's, B's, the crash's), drawn so")
+_press(st, (4, 34), (0, 1))
+check(story.story_flags.get("orange_lightning_switch_a") and st.run.floor.walkable(23, 17) and not st.run.floor.walkable(37, 11),
+      "...switch A (4,35) is yours to press then: its rocks move; the crash's stay shut")
+story.story_flags.pop("orange_lightning_switch_a", None)
+_pe = next(sc for sc in _tm["LAWRENCE_SHIP"]["floors"][0]["scenes"])["event"]
+check(set(_pe.get("also_flags") or []) == {"orange_lightning_switch_a", "orange_lightning_switch_b"}, "...and the palace's crash presses A and B (5.7's var 3)")
+# the storm map (Q57)
+_sm = (_tm["SHAMOUTI_ISLAND"].get("story_maps") or [{}])[0]
+check(_sm.get("when") == ["shamouti_lightning_done", "not:shamouti_sphere_set"] and "3_60f" in json.dumps(_sm.get("map", {}).get("roofs")) and _sm["map"].get("view_top") == 20,
+      "Q57: Shamouti's storm map is 5.7's 3.60 (in Shamouti's frame), from the force until the Ice Sphere is set")
+for _f in ("shamouti_lugia_rose", "shamouti_ice_sphere", "shamouti_sphere_set", "shamouti_lugia_song"):
+    story.story_flags.pop(_f, None)
+story.story_flags["shamouti_lightning_done"] = True
+st = open_map("SHAMOUTI_ISLAND", "LIGHTNING_ISLAND")
+_cx, _cy = st._camera() if isinstance(st, _WTS) else (0, 0)
+check(isinstance(st, _WTS) and st.town_map is _wt.story_map(g, "SHAMOUTI_ISLAND") and st.town_map is not _wt.custom(g).get("SHAMOUTI_ISLAND") and "3_60f" in st._pic_now
+      and _cy - st._view().h / 2 >= 20 * 48 - 1 and (0, 59) not in st.exits and any(t == "ICE_ISLAND" for t in st.exits.values()),
+      f"...walked on it: snowy ground, the sea frozen and walked on, the view kept off the empty north ({st._pic_now if isinstance(st, _WTS) else st})")
+_ok, _n = _played("SHAMOUTI_ISLAND", (30, 32), (0, -1), "shamouti_lugia_rose", "LIGHTNING_ISLAND")
+check(_ok and _n >= 3, f"...on it Lugia rises, the three birds fight over the frozen sea, played out ({_n} on the stage at once)")
+story.story_flags["shamouti_ice_sphere"] = True
+_ok, _n = _played("SHAMOUTI_ISLAND", (30, 32), (0, -1), "shamouti_lugia_song", "ICE_ISLAND")
+st = g.current_state
+check(_ok and story.story_flags.get("shamouti_sphere_set") and isinstance(st, _WTS) and st.town_map is _wt.custom(g).get("SHAMOUTI_ISLAND") and _n >= 3,
+      f"...the Ice Sphere set, the storm breaks: Shamouti as it was, and Lugia's song is played out there ({_n})")
+# Q59 (batch 29): only the caves, the festival house and the force lead to the storm map; Fly and the sea, to Shamouti as it is
+story.story_flags.pop("shamouti_ice_sphere", None); story.story_flags.pop("shamouti_sphere_set", None); story.story_flags.pop("shamouti_lugia_song", None)
+story.story_flags["shamouti_lugia_rose"] = True
+st = open_map("SHAMOUTI_ISLAND", "ORANGE_ROUTE_67")
+_by_sea = isinstance(st, _WTS) and st.town_map is _wt.custom(g).get("SHAMOUTI_ISLAND") and (20, 60) not in st.barred
+st._go("festival", "OUT:9,33"); frames(2); st._go(None, "OUT:9,33"); frames(2)
+_fest = st.town_map is _wt.story_map(g, "SHAMOUTI_ISLAND") and st.town_map is not _wt.custom(g).get("SHAMOUTI_ISLAND")
+st = open_map("SHAMOUTI_ISLAND", "FIRE_ISLAND")
+_cave = st.town_map is not _wt.custom(g).get("SHAMOUTI_ISLAND")
+check(_by_sea and _fest and _cave, f"Q59: by sea or Fly in the storm, Shamouti as it is (Ice Island's stairs open, as 5.7); out of the festival house or a cave, the storm map ({_by_sea}, {_fest}, {_cave})")
+# Q63: 5.7's own Lugia in its scenes, at its own size; the birds our followers
+_ls = [c for sc in (_tm["SHAMOUTI_ISLAND"]["story_maps"][0]["map"]["scenes"] + _tm["SHAMOUTI_ISLAND"]["scenes"]) for c in sc.get("cast") or []
+       if c.get("sheet") and ("138" in c["sheet"] or c["sheet"] == "mon:249")]
+check(_ls and all(c["sheet"] == "oi_138.png" and c.get("native") for c in _ls) and os.path.exists("assets/dungeon/characters/oi_138.png"),
+      f"Q63: Lugia flies as 5.7's own sprite (sheet 138, its own size) in its scenes; Moltres, Zapdos, Articuno stay our followers ({len(_ls)})")
+# Q64: the shrine's pillars light up in the song
+_pp = [c.get("picture") for c in _tm["SHAMOUTI_ISLAND"]["scenes"][-1]["cast"] if c.get("picture")]
+check(len(_pp) >= 7 and all(os.path.exists(f"assets/tiles/oi_ground/{p}.png") for p in set(_pp)), f"Q64: 5.7's pillar flashes are drawn during Lugia's song ({len(_pp)} flashes)")
+for _f in ("shamouti_lugia_rose", "shamouti_ice_sphere", "shamouti_sphere_set", "shamouti_lugia_song", "shamouti_lightning_done", "heard_shamouti_legend"):
+    story.story_flags.pop(_f, None)
+# the hotel lift (Q8)
+story.story_flags.update({"orange_luana_met": True, "orange_luana_hotel": True})
+_k = _tm["KUMQUAT_ISLAND"]["rooms"]
+check("lift" in _k and "lift_down" not in _k and "ROOM:lift" in _k["gym"]["exits"].values() and "ROOM:lift" in _k["top_floor"]["exits"].values()
+      and (_k["lift"].get("dynamic_exit") or {}).get("rooms") == ["gym", "top_floor"],
+      "Q8 / Q61: the Kumquat Hotel's lift is 5.7's one lift car (39.0), its doors on the floor its attendant picks")
+st = open_map("KUMQUAT_ISLAND", "ORANGE_ROUTE_69")
+_in, _c = _ride_lift(st, "top_floor")
+check(_in == "lift" and isinstance(_c, _WTS) and _c.room == "top_floor" and tuple(_c.player) == (2, 6),
+      f"...you walk into the car, its attendant asks which floor, and its doors open on the top floor ({_in}, {getattr(_c, 'room', None)}, {getattr(_c, 'player', None)})")
+_c._go("lift", "ROOM:top_floor"); frames(3); _tap = [0]
+for _ in range(300):   # (in again from the top floor: say nothing, BACK: its doors stay on the top floor)
+    _x = g.current_state
+    if isinstance(_x, _PLS):
+        _x.pick(None); continue
+    if getattr(_x, "npc_active", False):
+        tap(_x, 3)
+    _x.update(); _x.draw()
+    if isinstance(_x, _WTS) and not _x._busy() and not _x.npc_active:
+        break
+_c = g.current_state
+_out = [t for t, v in _c.exits.items() if str(v).startswith("ROOM:")]
+_c.player = (_out[0][0], _out[0][1] - 1); _c.anim = 0; _c.step(0, 1); frames(30); tap(_c)
+check(g.current_state.room == "top_floor", f"...and with no floor picked its doors open where you got in, as 5.7's dynamic warp ({g.current_state.room})")
+# scenes played out (Q44 and the rest)
+for _f in ("orange_showboat_show", "orange_showboat_seen"):
+    story.story_flags.pop(_f, None)
+_ok, _n = _played("SHOWBOAT", (22, 13), (0, -1), "orange_showboat_show", "KINNOW_ISLAND", floor=1)
+check(_ok and _n >= 4, f"Q44: the Showboat's play played out: Hitmonchan, Machoke, Abra and Clefable on the stage together ({_n})")
+story.story_flags["orange_kay_battle"] = True
+st = open_map("SHOWBOAT", "KINNOW_ISLAND")
+_fans = [p for p in _tm["SHOWBOAT"]["floors"][1]["people"] if isinstance(p, dict) and str(p.get("text", "")).startswith("Fan")]
+check(_fans and all(p.get("flag_condition") == "not orange_kay_battle" for p in _fans), "Q45: the theatre's fans and the voice actors leave after Kay's battle (5.7's hide flags)")
+story.story_flags.pop("orange_kay_battle", None)
+story.story_flags.update({"got_whirlpuller_trovita": True})
+story.story_flags.pop("orange_fairchild_rocket", None)
+_ok, _n = _played("FAIRCHILD_ISLAND", (42, 34), (0, 1), "orange_fairchild_rocket", "ORANGE_ROUTE_56")
+check(_ok and _n >= 3, f"Fairchild: Jessie, James and Meowth run past you, played out ({_n})")
+story.story_flags.pop("orange_wartortle_taken", None)
+_ok, _n = _played("ASCORBIA_ISLAND", (10, 22), (0, -1), "orange_wartortle_taken", "ORANGE_ROUTE_68")
+check(_ok and _n >= 1, f"Ascorbia: the Meowth balloon carries Team Wartortle off, Aidan runs up ({_n})")
+for _f in ("orange_hamlin_explosion", "orange_hamlin_electrode", "orange_hamlin_diglett", "orange_hamlin_fields"):
+    story.story_flags.pop(_f, None)
+_ok, _n = _played("HAMLIN_ISLAND", (13, 18), (1, 0), "orange_hamlin_explosion", "ORANGE_ROUTE_74")
+check(_ok and _n >= 1, f"Hamlin: an Electrode rolls up the street, played out ({_n})")
+story.story_flags["orange_hamlin_electrode"] = True
+_ok, _n = _played("HAMLIN_ISLAND", (13, 18), (1, 0), "orange_hamlin_diglett", "ORANGE_ROUTE_74")
+check(_ok and _n >= 8, f"...the Electrode close in, Poncho's Diglett and Dugtrio dig them away ({_n})")
+st = open_map("HAMLIN_FIELDS", "HAMLIN_ISLAND")
+_tp = _area["HAMLIN_FIELDS"]["trainer_pool"]
+check(all(t.get("when_flags") == ["orange_hamlin_diglett"] for t in _tp), "Q26: Hamlin Fields' four trainers come out with the Diglett scene (5.7)")
+_ok, _n = _played("HAMLIN_FIELDS", (11, 23), (-1, 0), "orange_hamlin_fields", "HAMLIN_ISLAND")
+check(_ok and _n >= 3, f"...in the Fields the Electrode roll about happily, Poncho comes over ({_n})")
+story.story_flags.pop("orange_joy_seabed", None)
+story.inventory["SCUBA_GEAR"] = 1
+g.arrive_floor = ("ORANGE_ROUTE_58", 1, [30, 15])
+_SEEN["actors"] = 0
+st = open_map("ORANGE_ROUTE_58", "KINNOW_ISLAND"); _calm(st)
+_drive("orange_joy_seabed", n=3000)
+check(story.story_flags.get("orange_joy_seabed") and _SEEN["actors"] >= 1, f"Q48: on the seabed Nurse Joy and her Shellder swim off as you arrive ({_SEEN['actors']})")
+story.inventory.pop("SCUBA_GEAR", None)
+# Q66 (batch 29): the last beats played out
+story.story_flags.pop("orange_park_done", None); story.story_flags.pop("orange_park_seen", None)
+g.arrive_floor = None
+st = open_map("VALENCIA_PARK", "VALENCIA_ISLAND"); _calm(st)
+_SEEN["actors"] = 0
+_iv = next((m for m in st.run.floor.movers if m.kind == "figure" and (m.payload or {}).get("text") == "Professor Ivy"), None)
+if _iv is not None:
+    st.run.player = (_iv.x - 1, _iv.y); st.facing = (1, 0); st.anim = 0   # (beside her: Brock stands below)
+    st.step(1, 0)   # (walk into her: talk)
+_drive("orange_park_done", n=5000)
+check(story.story_flags.get("orange_park_done") and _SEEN["actors"] >= 5, f"Q66: Valencia Park's Vileplume dance, the Stun Spore catches Raticate and Ivy, played out ({_SEEN['actors']})")
+story.story_flags.update({"orange_bulbasaur_found": True}); story.story_flags.pop("orange_mayor_exposed", None)
+_SEEN["actors"] = 0
+st = open_map("TROVITOPOLIS", "ORANGE_ROUTE_64"); st._go("mayor_office", "OUT:11,16"); frames(2)
+st.player = (7, 9); st.anim = 0; st.step(0, -1); _drive("orange_mayor_exposed", n=4000)
+check(story.story_flags.get("orange_mayor_exposed") and _SEEN["actors"] >= 3, f"...the Mayor's office: Jenny, Joy and the Bulbasaur ({_SEEN['actors']})")
+for _f in ("orange_quack_met", "orange_quack_rind", "orange_quack_ritual", "orange_quack_sea"):
+    story.story_flags.pop(_f, None)
+_ok, _n = _played("ORANGE_ROUTE_71", (19, 20), (0, -1), "orange_quack_met", "ORANGE_ROUTE_70")
+check(_ok and _n >= 4, f"...Quackenpoker's Magikarp swim for Rind Island ({_n})")
+_ok, _n = _played("RIND_ISLAND", (30, 33), (0, -1), "orange_quack_rind", "ORANGE_ROUTE_71")
+_ok2, _n2 = _played("RIND_ISLAND", (31, 12), (0, -1), "orange_quack_ritual", "ORANGE_ROUTE_71")
+_ok3, _n3 = _played("ORANGE_ROUTE_71", (19, 20), (0, -1), "orange_quack_sea", "RIND_ISLAND")
+check(_ok and _ok2 and _ok3 and min(_n, _n2, _n3) >= 3, f"...up the falls, the ritual at the lake (Gyarados), out to sea ({_n}, {_n2}, {_n3})")
+story.story_flags["orange_salveyo_asked"] = True; story.story_flags.pop("got_salveyo_weed", None)
+_ok, _n = _played("SALVEYO_ISLAND", (19, 23), (0, 1), "got_salveyo_weed", "ORANGE_ROUTE_72")
+check(_ok, f"...Salveyo's Poliwag dives and brings the weed ({_n})")
+story.story_flags.pop("orange_magnemite_seen", None)
+_ok, _n = _played("ORANGE_ROUTE_64", (74, 20), (0, 1), "orange_magnemite_seen", "YAMBERA")
+check(_ok and _n >= 4, f"...Route 64: Team Rocket haul their machine across the dunes, the Magnemite trailing ({_n})")
+for _f in ("orange_quack_met", "orange_quack_rind", "orange_quack_ritual", "orange_quack_sea", "orange_salveyo_asked", "got_salveyo_weed", "orange_magnemite_seen"):
+    story.story_flags.pop(_f, None)
+# Q15, Q21, Q28
+_q = next(o for o in _area["ORANGE_ROUTE_71"]["route_menu"] if o["text"] == "Quackenpoker")
+story.story_flags["orange_quack_met"] = True; story.story_flags.pop("orange_quack_ritual", None)
+st = open_map("ORANGE_ROUTE_71", "ORANGE_ROUTE_70")
+_away = "Quackenpoker" not in [i.get("text") for i in st._figure_items()]
+story.story_flags["orange_quack_ritual"] = True
+st = open_map("ORANGE_ROUTE_71", "ORANGE_ROUTE_70")
+check(_away and "Quackenpoker" in [i.get("text") for i in st._figure_items()], "Q15: Quackenpoker is away while he's up the river (5.7's hide flag), back after the ritual")
+for _f in ("orange_quack_met", "orange_quack_ritual"):
+    story.story_flags.pop(_f, None)
+_lg = _tm["PUMMELO_ISLAND"]["rooms"]["league"].get("barred") or []
+check(len([b for b in _lg if b.get("scenery")]) == 11, "Q21: the arena's eleven fans sit in the stands, scenery you can't reach or talk to")
+_ta = _tm["TARROCO_ISLAND"]
+check(_ta["art"][31][47] in _ta["exits"] and _tm["ORANGE_ROUTE_74"]["art"][31][0] in _tm["ORANGE_ROUTE_74"]["exits"],
+      "Q28: you can sail into Tarroco's south-east sea pocket from Route 74's row 31, as 5.7")
+
+print("23) batch 30 (11-18, Jordan's Q70): every scene's swimmers keep to water and its walkers to ground (flyers cross anything)")
+_osp = _u.spec_from_file_location("oscenepaths", os.path.join("..", "..", "kanto_handoff", "orange_rom_tools", "oscenepaths.py"))
+_osm = _u.module_from_spec(_osp); _osp.loader.exec_module(_osm)
+_bad = _osm.report(_oi.ORANGE)
+_n = sum(1 for _ in _osm.every_scene(_oi.ORANGE))
+check(not _bad, f"the moves of {_n} scenes, as the game routes them: no swimmer or walker on rock, shore or wall, none short of its stop ({_bad[:3]})")
 
 print(f"##### {len(fails)} failures")

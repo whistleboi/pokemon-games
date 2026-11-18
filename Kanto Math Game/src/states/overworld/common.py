@@ -483,6 +483,8 @@ def _run_story_event(state, key, check, show):
                 mon.moves = list(mv)[:_mvg.MAX_MOVES]
     if flag:
         story.story_flags[flag] = True
+    for f in ev.get("also_flags") or []:   # (more flags the same moment: 5.7's palace crash presses Lightning Island's two switches, 11-18)
+        story.story_flags[f] = True
     if ev.get("trade"):  # an in-game trade (Fortree's girl: a Spinda for her Skitty): your first one they want, for theirs
         tr = ev["trade"]   # {"want": species, "give": species, "item": what it holds}
         from src.pokemon.data import Pokemon
@@ -515,10 +517,20 @@ def _run_story_event(state, key, check, show):
                 show(_resolve_lines(game, ev.get("cancel") or ["The lift stays where it is."]))
                 return
             label = next((f[0] for f in el["floors"] if f[1] == room), "")
+            if el.get("car_flag"):   # (you ride in the car: its doors open on the floor picked; 5.7's dynamic warp, Kumquat Hotel)
+                moved = story.story_flags.get(el["car_flag"]) != room
+                story.story_flags[el["car_flag"]] = room
+                if moved and hasattr(state, "shake"):
+                    state.shake(500)
+                show(_resolve_lines(game, (el.get("ride") or ["The lift hums..."]) if moved else []) + [f"This is {label}."])
+                return
+            at = next((f[2] for f in el["floors"] if f[1] == room and len(f) > 2), None) or el.get("lift_at") or (1, 2)   # (a floor's own spot by its lift door: the Kumquat Hotel's, 11-18)
             game.walk_town_room = (el["area"], room)
-            game.walk_town_pos = (el["area"], tuple(el.get("lift_at") or (1, 2)), (0, 1))
+            game.walk_town_pos = (el["area"], tuple(at), (0, 1))
             game.change_state(AreaTransitionState(game, el["area"], initial_message=[f"The lift stops at {label}."]))
-        game.change_state(PickListState(game, state, "WHICH FLOOR?", [(f[0], f[1]) for f in el["floors"]], ride_to))
+        _pl = PickListState(game, state, "WHICH FLOOR?", [(f[0], f[1]) for f in el["floors"]], ride_to)
+        _pl.at_now = story.story_flags.get(el["car_flag"]) if el.get("car_flag") else None   # (the floor the car is at)
+        game.change_state(_pl)
         return
     if ev.get("elevator"):  # (Goldenrod Dept. Store's elevator attendant, Jordan 11-15 option B: the floors as a list)
         from src.states.systems.pick_list import PickListState

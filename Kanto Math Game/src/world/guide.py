@@ -91,12 +91,12 @@ def map_ways(game, area_key):
     """The areas a walked map leads to by its own ways out (its rooms' and floors' too), or None: no walked map here,
     or its region still goes by the menus' links."""
     try:
-        from src.states.overworld.walk_town import custom, available
+        from src.states.overworld.walk_town import story_map, available
     except Exception:
         return None
     if not available(game, area_key) or game.story_manager.area_region(area_key) not in WALKED_REGIONS:
         return None
-    m = custom(game).get(area_key)
+    m = story_map(game, area_key)   # (the map the story walks it on now: Shamouti in the storm, 11-18)
     if not isinstance(m, dict):
         return None
     key = (id(m), area_key)
@@ -126,8 +126,8 @@ def map_parts(game, area_key):
     east-west): [the areas each joined-up group of its rooms leads to, ...]. None: one group, or no walked map."""
     if map_ways(game, area_key) is None:
         return None
-    from src.states.overworld.walk_town import custom
-    m = custom(game).get(area_key)
+    from src.states.overworld.walk_town import story_map
+    m = story_map(game, area_key)
     key = (id(m), area_key)
     if key not in _PARTS:
         rooms = m.get("rooms") or {}

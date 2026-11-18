@@ -9705,6 +9705,9 @@
     },
     "ORANGE_ROUTE_58:Shellder": {
       "sheet": "oi_168.png"
+    },
+    "KUMQUAT_ISLAND:Lift attendant": {
+      "sheet": "oi_69.png"
     }
   },
   "townsperson": "NPC 17.png",

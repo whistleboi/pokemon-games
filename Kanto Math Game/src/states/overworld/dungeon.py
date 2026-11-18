@@ -255,6 +255,18 @@ def high_tide(now=None):
     return 3 <= h < 9 or 15 <= h < 21
 
 
+def shake_dx(state):
+    """The screen's sideways jolt while a map shakes (state._shake_until: a tremor, 5.7's special 0x136), else 0."""
+    until = getattr(state, "_shake_until", 0)
+    if not until:
+        return 0
+    now = pygame.time.get_ticks()
+    if now >= until:
+        state._shake_until = 0
+        return 0
+    return 4 if (now // 45) % 2 else -4
+
+
 def scene_sheet(game, token):
     """("mon:<species>" passes through: a Pokemon walking in a scene.) A scene's walking sheet: a file ("em_64.png"), or a token for someone who depends on the save (Jordan, 11-12):
     "@rival" (this save's rival, from trainers_<REGION>: Hoenn's Brendan or May), "@grunt" / "@grunt_f" (a villain of
@@ -1217,11 +1229,36 @@ class DungeonState(OverworldBattles, PlayState):
         if not self._ready() or not sw.get("flag"):
             return
         self.walk_goal = None
-        on = not flags.get(sw["flag"])
-        flags[sw["flag"]] = on
-        self._clear_boulders()
-        self._floor_surf = None
-        self.say(sw.get("on" if on else "off") or ["Click! Something moved somewhere."])
+
+        def press():
+            on = not flags.get(sw["flag"])
+            flags[sw["flag"]] = on
+            self._clear_boulders()
+            self._floor_surf = None
+            self.say(sw.get("on" if on else "off") or ["Click! Something moved somewhere."])
+        if sw.get("ask"):   # (asked first: "ask" lines, then yes / no; Orange 5.7's lab statues, 11-18)
+            self._ask_press(sw, press)
+            return
+        press()
+
+    PRESS_TITLE = "PRESS THE SWITCH?"
+
+    def _ask_press(self, sw, press):
+        """A switch that asks first (Orange 5.7, Jordan 11-18): its "ask" lines, then the game's yes / no list; No (or
+        BACK): its "later" lines ("Maybe later.")."""
+        from src.states.systems.pick_list import PickListState
+        ask = sw.get("ask") if isinstance(sw.get("ask"), list) else ["There's a secret switch here! Do you want to press it?"]
+
+        def answer(v):
+            if v:
+                press()
+            else:
+                self.say(sw.get("later") or ["Maybe later."])
+        self.say(ask, lambda: self.game.change_state(PickListState(self.game, self, self.PRESS_TITLE, [("Yes", True), ("No", False)], answer)))
+
+    def shake(self, ms=700):
+        """The screen shakes a moment (5.7's tremor as a switch moves the rocks: its special 0x136)."""
+        self._shake_until = pygame.time.get_ticks() + int(ms)
 
     def press_secret(self, t):
         """A secret switch pressed once (the floor's "secret_switches" {"x,y": {"flag", "lines", "done"}} on a "secret"
@@ -1235,11 +1272,19 @@ class DungeonState(OverworldBattles, PlayState):
         if flags.get(sw["flag"]):
             self.say(sw.get("done") or ["The switch has been pressed already."])
             return
-        flags[sw["flag"]] = True
-        self._clear_boulders()
-        self._floor_surf = None
-        self._over_key = None
-        self.say(sw.get("lines") or ["Click! Something moved somewhere."])
+
+        def press():
+            flags[sw["flag"]] = True
+            self._clear_boulders()
+            self._floor_surf = None
+            self._over_key = None
+            if sw.get("shake"):   # (5.7's small tremor: the screen shakes as the rocks move)
+                self.shake(sw["shake"] if isinstance(sw["shake"], int) and sw["shake"] > 1 else 700)
+            self.say(sw.get("lines") or ["Click! Something moved somewhere."])
+        if sw.get("ask"):   # (Jordan 11-18: asked first, as 5.7 does: "Do you want to press it?", No: "Maybe later.")
+            self._ask_press(sw, press)
+            return
+        press()
 
     def _stand_in_img(self, look, bar):
         """A story stand-in's picture (a map's "barred" look): "sheet:<walking sheet>" (bar "face" u d l r, "march": running
@@ -1417,8 +1462,11 @@ class DungeonState(OverworldBattles, PlayState):
         if not shown:  # (a battle or a scene of its own began instead: the scene carries on once you're back)
             then()
 
-    def _actor_img(self, sheet, facing, frame):
-        """A scene's walker: a person's walking sheet, or a Pokemon ("mon:<species>": its following sprite)."""
+    def _actor_img(self, sheet, facing, frame, native=False):
+        """A scene's walker: a person's walking sheet, or a Pokemon ("mon:<species>": its following sprite). native: drawn
+        at the source game's own size (its 16-pixel tiles as our tiles: 5.7's Lugia in flight, Orange 11-18)."""
+        if native and not str(sheet).startswith("mon:"):
+            return self._sheet_frame(sheet, facing, frame=frame, scale=max(1, round(TILE / 16)))
         if str(sheet).startswith("mon:"):
             class _Mon:  # (just what the walking sheet needs)
                 id, form, is_shiny, gender = int(str(sheet)[4:]), "normal", False, None
@@ -1440,11 +1488,26 @@ class DungeonState(OverworldBattles, PlayState):
         self.anim_from, self.anim = p, STEP_FRAMES
         self.partner_from, self.partner = self.partner, p
         self.run.player = t
+        self.run.reveal()   # (walked by a scene: you see where you go, 11-18)
 
     def npc_lock(self, on):
         self._scene_lock = on
         if on:
             self.walk_goal = None
+        if not on:
+            self._cam_focus = None   # (the scene's over: the view back on you)
+
+    def npc_ground(self, t):
+        """The map's character at a tile on this floor (npc.route), None off the map or with no drawn map."""
+        grid = (self._here_art() or {}).get("art") or []
+        x, y = t
+        return grid[y][x] if 0 <= y < len(grid) and 0 <= x < len(grid[0]) else None
+
+    def npc_look(self, t):
+        """A scene moves the view to a tile (None: back to you); what it looks at is seen (the fog lifts there)."""
+        self._cam_focus = tuple(t) if t else None
+        if t and hasattr(self, "run"):
+            self.run.reveal_at(int(t[0]), int(t[1]))
 
     def npc_open(self, t):
         f = self.run.floor
@@ -2714,7 +2777,9 @@ class DungeonState(OverworldBattles, PlayState):
     def _camera(self):
         """The pixel the screen is centred on (the player, mid-step)."""
         px, py = self.run.player
-        if self.anim > 0:
+        if getattr(self, "_cam_focus", None):   # (a scene looking somewhere else: 5.7's camera pans)
+            px, py = self._cam_focus
+        elif self.anim > 0:
             k = 1 - self.anim / STEP_FRAMES
             fx, fy = self.anim_from
             px, py = fx + (px - fx) * k, fy + (py - fy) * k
@@ -2738,10 +2803,11 @@ class DungeonState(OverworldBattles, PlayState):
     def _origin(self):
         cx, cy = self._camera()
         v = self._view()
-        return int(v.centerx - cx), int(v.centery - cy)
+        return int(v.centerx - cx) + shake_dx(self), int(v.centery - cy)
 
     def _tile_at(self, pos):
         ox, oy = self._origin()
+        ox -= shake_dx(self)
         return int((pos[0] - ox) // TILE), int((pos[1] - oy) // TILE)
 
     KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
@@ -3561,7 +3627,7 @@ class DungeonState(OverworldBattles, PlayState):
             return pygame.transform.scale(cell, (cell.get_width() * k, cell.get_height() * k))
         return self._sprite(("follower", int(pokemon.id), pid, form_key, shiny, row, frame, female), make)
 
-    def _sheet_frame(self, sheet, facing=(0, 1), col=None, frame=0, height=None):
+    def _sheet_frame(self, sheet, facing=(0, 1), col=None, frame=0, height=None, scale=None):
         """One cell of a Pokemon Journeys overworld sheet (4 x 4): a person's walking frame (col None: the
         columns are steps), or a Pokemon's (col: whose column), the row by the way it faces."""
         height = height or TILE + 22
@@ -3572,9 +3638,9 @@ class DungeonState(OverworldBattles, PlayState):
             cell = img.subsurface(((frame if col is None else col) * cw, FACING_ROW.get(facing, 0) * ch, cw, ch))
             box = cell.get_bounding_rect()
             cell = cell.subsurface(box) if box.w and box.h else cell
-            k = max(1, round(height / max(1, cell.get_height())))  # whole steps: crisp pixels
+            k = scale or max(1, round(height / max(1, cell.get_height())))  # whole steps: crisp pixels ("scale": a fixed one)
             return pygame.transform.scale(cell, (max(1, int(cell.get_width() * k)), max(1, int(cell.get_height() * k))))
-        return self._sprite(("sheet", sheet, facing, col, frame, height), make)
+        return self._sprite(("sheet", sheet, facing, col, frame, height, scale), make)
 
     def _surf_draw(self, me, pr, at, k):
         """(bottom, image, rect) for you surfing: the Pokemon carrying you (Pokemon Orre's base_surf sheet,
@@ -4176,7 +4242,7 @@ class DungeonState(OverworldBattles, PlayState):
             if not self.run.visible(int(round(ax)), int(round(ay))):  # (in the fog, like everyone else)
                 continue
             ar = at(int(round(ax)), int(round(ay))).move(int(round((ax - round(ax)) * TILE)), int(round((ay - round(ay)) * TILE)))
-            img = self._actor_img(a["sheet"], a["m"].facing, a["m"].frame())
+            img = self._actor_img(a["sheet"], a["m"].facing, a["m"].frame(), native=bool(a.get("native")))
             if img is not None:
                 screen.blit(img, img.get_rect(midbottom=(ar.centerx, ar.bottom - 2)))
         for er in emotes:  # (someone has noticed you: a "!" over them)

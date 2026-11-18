@@ -285,6 +285,15 @@ def settle(limit=9000):
                     if g.current_state is st:
                         st.exit_gym()
                 continue
+            if isinstance(st, _PLS) and st.title == "WHICH FLOOR?" and getattr(st, "at_now", None):   # (batch 29, Q61: a lift car:
+                _to = next(v for _l, v in st.choices if v != st.at_now)                              #  the other floor)
+                _say(f"[list: {st.title}: {_to}]")
+                st.pick(_to)
+                continue
+            if isinstance(st, _PLS) and st.title == "PRESS THE SWITCH?":   # (batch 28, Q51: a secret switch asks first: yes)
+                _say(f"[list: {st.title}: Yes]")
+                st.pick(True)
+                continue
             if isinstance(st, _PLS):   # (a list to pick from: a tutor's "who should learn it?": BACK, no thanks)
                 _say(f"[list: {st.title}: BACK]")
                 st.pick(None)

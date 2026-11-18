@@ -64,6 +64,7 @@ class Motion:
         self.timer = self.rng.randint(40, 200)
         self.emote = 0          # frames a "!" shows over their head
         self.gone = False       # walked off the map (a scene's "leave")
+        self.free_path = False  # (on a scene's own path: over anything)
 
     # ------------------------------------------------------------ what is drawn
     def moving(self):
@@ -103,6 +104,8 @@ class Motion:
         if self.moving():
             self.t = min(1.0, self.t + 1.0 / STEP)
             return False
+        if self.free_path:
+            free = lambda t: True
         if self.path:
             nxt = self.path[0]
             if free(nxt):
@@ -236,6 +239,44 @@ def trail(mo, ld, free):
             return
 
 
+def _ground_sets():
+    from src.dungeon import art
+    sea = set(art.SEA_CHARS)
+    return (set(art.OPEN) - sea) | {"D"}, sea | {"~", "$"}   # (a swimmer may climb a waterfall: Rind Island's Magikarp)
+
+
+LAND, WATER = _ground_sets()   # (map characters a walker may step on; a swimmer)
+
+
+def route(start, stops, ok, limit=30000):
+    """The tiles from start through each stop in turn, only over tiles ok(tile) allows (a stop that isn't: as near to it as
+    they can get), each leg the shortest way."""
+    out, cur = [], tuple(start)
+    for s in stops or []:
+        goal = tuple(s)
+        prev, todo = {cur: None}, deque([cur])
+        best, bd = cur, abs(goal[0] - cur[0]) + abs(goal[1] - cur[1])
+        while todo and len(prev) < limit:
+            c = todo.popleft()
+            d = abs(goal[0] - c[0]) + abs(goal[1] - c[1])
+            if d < bd:
+                best, bd = c, d
+            if c == goal:
+                break
+            for dx, dy in DIRS.values():
+                n = (c[0] + dx, c[1] + dy)
+                if n not in prev and ok(n):
+                    prev[n] = c
+                    todo.append(n)
+        leg, e = [], best
+        while e != cur:
+            leg.append(e)
+            e = prev[e]
+        out += leg[::-1]
+        cur = best
+    return out
+
+
 def spec_at(moves, spot):
     return (moves or {}).get("%d,%d" % tuple(spot))
 
@@ -268,6 +309,22 @@ class Scenes:
     "concurrent": true (sets off together with the one before: a chase), "lead": [[x, y, [lines]], ...] (after
     speaking they show you somewhere, you following a step behind, as a "who" scene's lead: Oak walking you to his Lab)}].
     Each walks in, turns to you, speaks, and walks off, in turn. Then the scene's own "then": "event:<key>" plays, if any.
+    Played-out scenes (Orange 5.7, Jordan 11-18: "every story scene played, not told in lines") add to a cast member:
+    "path": [[x, y], ...] the tiles they go by in turn, straight there, over anything ("fly": a bird, a beam, someone on a
+    stage: the path is the scene's own), instead of "to"; "face": "u" / "d" / "l" / "r" the way they look as they speak
+    (an actor on a stage) instead of turning to you; "wait": frames they stand before speaking; "shake": the screen shakes
+    as they speak (host.shake(ms), a tremor or a crash); "stay": true, they stay where they stand after speaking, till the
+    scene ends (a play's cast on the stage together); "leave_path": [[x, y], ...] the way they go off after speaking,
+    straight over anything (a bird flying off the map), then gone; "native": drawn at its own game's size (5.7's Lugia); "as": the number of an earlier cast member still on
+    (one who stayed): them again, for another line or move, instead of someone new. A cast member {"you": [[x, y], ...]}
+    is you: you walk that way a step at a time ("face": the way you look after; "lines": said when you get there).
+    A cast member {"person": an option's text}: someone already standing on the map ("path" moves them, straight over
+    anything; "gone": true, gone afterwards for this visit); the scene goes on without them if they aren't there.
+    A scene's own "shake": the screen shakes as it starts.
+    Any cast member's "picture": the map is drawn with that picture (a name in oi_ground / oi_top) from then till the scene
+    ends (None: its own again): 5.7's metatile flashes, the shrine's pillars lighting up (host.npc_picture).
+    Any cast member's "look": [x, y] moves the view to that tile as they set off (5.7's camera pans: host.npc_look),
+    "look": "you" back to you; the view comes back to you when the scene ends.
     A scene's "call": lines heard before anyone walks in (someone shouting from off the screen: "Hey! Wait!").
     A scene's "room": [name, x, y]: when it ends you are in that room of the town, standing there (towns only:
     host.npc_room; Oak's Lab, once he has walked you to its door). "mark": a flag set whenever it ends (an "every"
@@ -358,6 +415,8 @@ class Scenes:
     def start(self, s, m):
         h = self.host
         h.npc_lock(True)
+        if s.get("shake") and hasattr(h, "shake"):   # (a tremor as it starts: 5.7's special 0x136)
+            h.shake(s["shake"] if isinstance(s["shake"], int) and s["shake"] > 1 else 700)
         if s.get("trigger") != "talk" and hasattr(h, "npc_cue"):   # (Jordan, 11-13: a sound as a scene takes over, before anyone walks up)
             h.npc_cue()
         st = {"i": 0, "going": False, "steps": 0, "ci": 0, "phase": "spawn", "spawned": set(), "by": {}}
@@ -375,29 +434,123 @@ class Scenes:
     # ------------------------------------------------------------ the cast
     def _spawn(self, spec, seed):
         m = Motion(tuple(spec["from"]), {"m": "still"}, seed=seed)
-        a = {"m": m, "sheet": self.host.npc_sheet(spec.get("sheet", "")), "spec": spec, "goal": None}
+        if spec.get("face") in DIRS:
+            m.facing = DIRS[spec["face"]]
+        a = {"m": m, "sheet": self.host.npc_sheet(spec.get("sheet", "")), "spec": spec, "goal": None, "native": bool(spec.get("native"))}
         self.actors.append(a)
         return a
+
+    def way(self, spec, start, stops):
+        """A cast member's way through its stops (Jordan 11-18, Orange Q70): a flyer ("fly") straight over anything; a swimmer
+        ("swim") by water and a walker (anyone else) by ground they could walk on, round whatever is in between (each stop
+        they can't stand on: the nearest tile they can, on the way). "ground": "stage": straight, on a floor of its own (a
+        theatre's stage). Without the host's map (host.npc_ground), straight."""
+        h = self.host
+        if spec.get("fly") or spec.get("ground") == "stage" or not hasattr(h, "npc_ground"):
+            return self.straight(start, stops)
+        ok_chars = WATER if spec.get("swim") else LAND
+        return route(start, stops, lambda t: h.npc_ground(t) in ok_chars)
+
+    @staticmethod
+    def straight(start, stops):
+        """The tiles from start through each stop in turn, a step at a time (across, then up or down): a scene's own path."""
+        out, (x, y) = [], tuple(start)
+        for sx, sy in stops or []:
+            while x != sx:
+                x += 1 if sx > x else -1
+                out.append((x, y))
+            while y != sy:
+                y += 1 if sy > y else -1
+                out.append((x, y))
+        return out
 
     def _cast_tick(self, s, st):
         """One frame of the cast. True when the last of them has gone."""
         h = self.host
         me = h.npc_player()
         cast = s["cast"]
-        for a in list(self.actors):   # (everyone on the move keeps moving)
-            a["m"].tick(lambda t, a=a: h.npc_passable(t, a["m"]) or t == a["goal"])
+        for a in list(self.actors):   # (everyone on the move keeps moving; on a scene's own path, over anything)
+            if a["spec"].get("path") or a["spec"].get("fly") or a.get("off"):
+                free = lambda t: True
+            else:
+                free = lambda t, a=a: h.npc_passable(t, a["m"]) or t == a["goal"]
+            a["m"].tick(free)
         if st["ci"] >= len(cast):
+            for k in st.pop("kept", []):   # (the ones who stayed on go now)
+                if k in self.actors:
+                    self.actors.remove(k)
             return True
         spec = cast[st["ci"]]
         ph = st["phase"]
+        if ph == "spawn" and "you" in spec and "look" in spec and hasattr(h, "npc_look"):
+            h.npc_look(spec["look"] if isinstance(spec["look"], (list, tuple)) else None)
+        if ph == "spawn" and "you" in spec and "picture" in spec and hasattr(h, "npc_picture"):
+            h.npc_picture(spec["picture"])
+        if ph == "spawn" and "you" in spec and spec.get("shake") and hasattr(h, "shake"):
+            h.shake(spec["shake"] if isinstance(spec["shake"], int) and spec["shake"] > 1 else 700)
+        if ph == "spawn" and "you" in spec:   # (you walk: to your seat, to a door; a step at a time)
+            st["you"], st["you_t"], st["phase"] = self.straight(me, spec["you"]), 0, "you"
+            return False
+        if ph == "you":
+            st["you_t"] += 1
+            if st["you"] and st["you_t"] >= STEP + 2:
+                st["you_t"] = 0
+                h.npc_follow(st["you"].pop(0))
+                return False
+            if st["you"] or st["you_t"] < max(STEP + 2, int(spec.get("wait") or 0)):
+                return False
+            if spec.get("face") in DIRS:
+                d = DIRS[spec["face"]]
+                h.npc_face_player((me[0] + d[0], me[1] + d[1]))
+
+            def walked():
+                st["ci"] += 1
+                st["phase"] = "spawn" if st["ci"] < len(cast) and st["ci"] not in st["spawned"] else "in"
+            if spec.get("lines"):
+                st["phase"] = "you_talk"
+                h.npc_say(list(spec["lines"]), walked)
+            else:
+                walked()
+            return st["ci"] >= len(cast)
         if ph == "spawn":
             group = [st["ci"]] + [j for j in range(st["ci"] + 1, len(cast)) if all(cast[k].get("concurrent") for k in range(st["ci"] + 1, j + 1))]
             for j in group:
                 if j in st["spawned"]:
                     continue
                 st["spawned"].add(j)
+                if "picture" in cast[j] and hasattr(h, "npc_picture"):   # (the map drawn another way a moment: 5.7's setmetatile flashes)
+                    h.npc_picture(cast[j]["picture"])
+                if "look" in cast[j] and hasattr(h, "npc_look"):   # (the view moves there: the camera pans, 5.7's special 0x113)
+                    h.npc_look(cast[j]["look"] if isinstance(cast[j]["look"], (list, tuple)) else None)
+                if cast[j].get("person"):   # (someone standing on the map: they move, speak; the host draws them as ever)
+                    pm = h.npc_person(cast[j]["person"])
+                    if pm is None or pm.gone:   # (not here now: a stand-in nobody sees, so the scene goes on)
+                        st["by"][j] = {"m": Motion(tuple(me)), "sheet": None, "spec": cast[j], "goal": None, "person": True, "ghost": True}
+                        continue
+                    pm.hold = 10 ** 6
+                    st["by"][j] = {"m": pm, "sheet": None, "spec": cast[j], "goal": None, "person": True}
+                    if cast[j].get("path"):
+                        pm.free_path = True
+                        pm.path = self.way(cast[j], pm.pos, cast[j]["path"])
+                    continue
+                if cast[j].get("as") is not None and st["by"].get(cast[j]["as"]) is not None:   # (one already on, again: another line, another move)
+                    a = st["by"][cast[j]["as"]]
+                    if a in st.get("kept", []):
+                        st["kept"].remove(a)
+                    if a not in self.actors and not a.get("person"):
+                        self.actors.append(a)
+                    a["spec"], a["goal"] = cast[j], None
+                    st["by"][j] = a
+                    if cast[j].get("path"):
+                        a["m"].path = self.way(cast[j], a["m"].pos, cast[j]["path"])
+                        if a.get("person"):
+                            a["m"].free_path = True
+                    continue
                 a = self._spawn(cast[j], f"cast{j}")
                 st["by"][j] = a
+                if cast[j].get("path"):   # (their own way, straight over anything: a bird, an actor walking on stage)
+                    a["m"].path = self.way(cast[j], a["m"].pos, cast[j]["path"])
+                    continue
                 to = cast[j].get("to", "player")
                 a["goal"] = tuple(me) if to == "player" else tuple(to)
                 a["m"].walk(a["goal"], lambda t, a=a: h.npc_passable(t, a["m"]) or t == a["goal"], beside=(to == "player"))
@@ -405,14 +558,25 @@ class Scenes:
                     a["goal"] = None
             st["phase"] = "in"
             return False
+        if ph == "you_talk":
+            return False
         a = st["by"][st["ci"]]
         m = a["m"]
         if ph == "in":
             if not m.idle():
                 return False
-            if spec.get("to", "player") == "player" or spec.get("lines"):
+            if spec.get("wait") and st.get("waited", -1) != st["ci"]:   # (they stand a moment first)
+                st["wait_n"] = st.get("wait_n", 0) + 1
+                if st["wait_n"] < int(spec["wait"]):
+                    return False
+                st["waited"], st["wait_n"] = st["ci"], 0
+            if spec.get("face") in DIRS:   # (an actor speaking their part the way they face, not to you)
+                m.facing = DIRS[spec["face"]]
+            elif not spec.get("path") and not a.get("ghost") and (spec.get("to", "player") == "player" or spec.get("lines")):
                 m.face(me)
                 h.npc_face_player(m.pos)
+            if spec.get("shake") and hasattr(h, "shake"):   # (a tremor, a crash: the screen shakes)
+                h.shake(spec["shake"] if isinstance(spec["shake"], int) and spec["shake"] > 1 else 700)
             st["phase"] = "talk"
 
             def said():
@@ -462,6 +626,21 @@ class Scenes:
                 st["phase"] = "wait"
                 h.npc_say(list(lines), lambda: st.__setitem__("phase", "lead"))
             return False
+        if ph == "out" and spec.get("stay"):   # (they stay on, where they stand, till the scene is over)
+            st.setdefault("kept", []).append(a)
+            st["ci"] += 1
+            st["phase"] = "spawn" if st["ci"] < len(cast) and st["ci"] not in st["spawned"] else "in"
+            if st["ci"] >= len(cast):
+                for k in st.pop("kept", []):
+                    if k in self.actors:
+                        self.actors.remove(k)
+                return True
+            return False
+        if ph == "out" and spec.get("leave_path"):   # (off they go their own way, over anything, then gone)
+            a["off"] = True
+            m.path = self.way(spec, m.pos, spec["leave_path"])
+            st["phase"] = "leaving"
+            return False
         if ph == "out":
             leave = spec.get("leave")
             if leave:
@@ -475,8 +654,16 @@ class Scenes:
                 return False
             if a in self.actors:
                 self.actors.remove(a)
+            if a.get("person"):   # (someone of the map's: they stay where they got to, or are gone: "gone")
+                m.free_path, m.hold = False, 120
+                if a["spec"].get("gone") and not a.get("ghost"):
+                    m.gone, m.path = True, []
             st["ci"] += 1
             st["phase"] = "spawn" if st["ci"] < len(cast) and st["ci"] not in st["spawned"] else "in"
+            if st["ci"] >= len(cast):
+                for k in st.pop("kept", []):   # (the ones who stayed on go now)
+                    if k in self.actors:
+                        self.actors.remove(k)
             return st["ci"] >= len(cast)
         return False
 

@@ -263910,6 +263910,227 @@
     "d": "r"
    }
   },
+  "scenes": [
+   {
+    "trigger": "talk",
+    "who": "Professor Ivy",
+    "condition": [
+     "received_starter_orange",
+     "not:orange_park_done"
+    ],
+    "flag": "orange_park_seen",
+    "call": [
+     "Professor Ivy: You came! We're waiting for the Vileplume to mark their ground with pollen.",
+     "Professor Ivy: Wait here behind us and keep still... ... ..."
+    ],
+    "cast": [
+     {
+      "sheet": "mon:45",
+      "from": [
+       37,
+       11
+      ],
+      "path": [
+       [
+        37,
+        9
+       ],
+       [
+        41,
+        9
+       ],
+       [
+        41,
+        13
+       ],
+       [
+        37,
+        13
+       ],
+       [
+        37,
+        11
+       ]
+      ],
+      "stay": true,
+      "concurrent": false,
+      "look": [
+       37,
+       11
+      ]
+     },
+     {
+      "sheet": "mon:45",
+      "from": [
+       41,
+       11
+      ],
+      "path": [
+       [
+        41,
+        13
+       ],
+       [
+        37,
+        13
+       ],
+       [
+        37,
+        9
+       ],
+       [
+        41,
+        9
+       ],
+       [
+        41,
+        11
+       ]
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "mon:45",
+      "from": [
+       39,
+       13
+      ],
+      "path": [
+       [
+        37,
+        13
+       ],
+       [
+        37,
+        9
+       ],
+       [
+        41,
+        9
+       ],
+       [
+        41,
+        13
+       ],
+       [
+        39,
+        13
+       ]
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "mon:45",
+      "from": [
+       39,
+       9
+      ],
+      "path": [
+       [
+        41,
+        9
+       ],
+       [
+        41,
+        13
+       ],
+       [
+        37,
+        13
+       ],
+       [
+        37,
+        9
+       ],
+       [
+        39,
+        9
+       ]
+      ],
+      "stay": true,
+      "concurrent": true,
+      "lines": [
+       "Professor Ivy: There they are! Look, they're giving off Stun Spore!"
+      ]
+     },
+     {
+      "sheet": "oi_163.png",
+      "from": [
+       39,
+       11
+      ],
+      "to": [
+       39,
+       11
+      ],
+      "stay": true
+     },
+     {
+      "sheet": "mon:20",
+      "from": [
+       42,
+       17
+      ],
+      "path": [
+       [
+        42,
+        13
+       ],
+       [
+        40,
+        13
+       ],
+       [
+        40,
+        12
+       ]
+      ],
+      "stay": true,
+      "shake": 300,
+      "lines": [
+       "Raticate dashes in, right into the spores!"
+      ]
+     },
+     {
+      "person": "Professor Ivy",
+      "path": [
+       [
+        31,
+        10
+       ],
+       [
+        38,
+        10
+       ]
+      ],
+      "lines": [
+       "Professor Ivy: Oh no! My Raticate got caught in the Stun Spore... and so did I..."
+      ]
+     },
+     {
+      "person": "Brock",
+      "look": "you",
+      "lines": [
+       "Brock: Professor! We have to get you both to the Pokémon Center, right now!"
+      ]
+     }
+    ],
+    "event": {
+     "flag": "orange_park_done",
+     "travel": "VALENCIA_ISLAND",
+     "land": [
+      "center",
+      7,
+      6
+     ],
+     "lines": [
+      "You hurry to the Pokémon Center with Brock and the professor."
+     ]
+    }
+   }
+  ],
   "hidden": {
    "9,37": "PARALYZE_HEAL",
    "44,9": "ANTIDOTE"
@@ -274353,7 +274574,8 @@
        "lines": [
         "Shellder!"
        ]
-      }
+      },
+      "flag_condition": "not orange_joy_seabed"
      },
      "Nurse Joy ",
      "MYSTIC WATER"
@@ -276230,6 +276452,66 @@
       "d": "l"
      }
     },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "not:orange_joy_seabed"
+      ],
+      "flag": "orange_joy_seabed",
+      "cast": [
+       {
+        "person": "Nurse Joy ",
+        "look": [
+         32,
+         14
+        ],
+        "lines": [
+         "Nurse Joy is down here with a Shellder, in her own diving gear! ... ..."
+        ]
+       },
+       {
+        "person": "Shellder",
+        "path": [
+         [
+          31,
+          13
+         ],
+         [
+          41,
+          13
+         ]
+        ],
+        "gone": true
+       },
+       {
+        "person": "Nurse Joy ",
+        "lines": [
+         "She points up to the surface: she's heading back. Then she waves at the reef around you. Maybe you should look around."
+        ]
+       },
+       {
+        "person": "Nurse Joy ",
+        "path": [
+         [
+          32,
+          12
+         ],
+         [
+          27,
+          12
+         ],
+         [
+          27,
+          10
+         ]
+        ],
+        "gone": true,
+        "look": "you"
+       }
+      ]
+     }
+    ],
     "surface": 0,
     "pool": "ORANGE_ORANGE_ROUTE_58_3_54_PERCENTAGES",
     "hidden": {
@@ -285675,11 +285957,102 @@
      "not:orange_magnemite_seen"
     ],
     "flag": "orange_magnemite_seen",
-    "call": [
-     "Down the dunes, Team Rocket are hauling some strange machine...",
-     "Why would that Magnemite be following them?"
-    ],
-    "cast": []
+    "cast": [
+     {
+      "sheet": "oi_74.png",
+      "from": [
+       82,
+       24
+      ],
+      "path": [
+       [
+        69,
+        24
+       ],
+       [
+        69,
+        27
+       ]
+      ],
+      "look": [
+       73,
+       25
+      ],
+      "stay": true
+     },
+     {
+      "sheet": "oi_102.png",
+      "from": [
+       83,
+       24
+      ],
+      "path": [
+       [
+        70,
+        24
+       ],
+       [
+        70,
+        28
+       ],
+       [
+        69,
+        28
+       ]
+      ],
+      "concurrent": true,
+      "stay": true
+     },
+     {
+      "sheet": "oi_75.png",
+      "from": [
+       84,
+       24
+      ],
+      "path": [
+       [
+        71,
+        24
+       ],
+       [
+        71,
+        29
+       ],
+       [
+        69,
+        29
+       ]
+      ],
+      "concurrent": true,
+      "stay": true
+     },
+     {
+      "sheet": "oi_142.png",
+      "from": [
+       86,
+       24
+      ],
+      "path": [
+       [
+        68,
+        24
+       ],
+       [
+        68,
+        27
+       ]
+      ],
+      "stay": true,
+      "lines": [
+       "Down the dunes, Team Rocket are hauling some strange machine...",
+       "Why would that Magnemite be following them?"
+      ]
+     },
+     {
+      "you": [],
+      "look": "you"
+     }
+    ]
    },
    {
     "trigger": {
@@ -287185,17 +287558,177 @@
        "not:orange_mayor_exposed"
       ],
       "flag": "orange_mayor_exposed",
-      "cast": [],
-      "call": [
-       "Officer Jenny: Excuse me, we're in a meeting... You found a Bulbasaur in the sewers, and it belongs to the Mayor?",
-       "Nurse Joy: What a lively Bulbasaur! And look: its collar has the Mayor's campaign symbol on it.",
-       "Officer Jenny: Can you explain this, Mayor?",
-       "Mayor: I... I... This must be the Bulbasaur I left in the sewers when I was a boy.",
-       "Bulbasaur runs to the Mayor. Nurse Joy: After all these years, it's still happy to see you...",
-       "Mayor: Can we keep this between us? A scandal like this could cost me the election!",
-       "Officer Jenny: No, Mayor. The people of Trovitopolis have a right to know. I'll be going now.",
-       "Nurse Joy: I'll look after this Bulbasaur. It deserves better than someone who abandoned it.",
-       "Nurse Joy and Bulbasaur leave the office together."
+      "cast": [
+       {
+        "sheet": "oi_66.png",
+        "from": [
+         7,
+         6
+        ],
+        "to": [
+         7,
+         6
+        ],
+        "stay": true,
+        "lines": [
+         "Officer Jenny: Excuse me, we're in a meeting... You found a Bulbasaur in the sewers, and it belongs to the Mayor?"
+        ]
+       },
+       {
+        "sheet": "oi_209.png",
+        "from": [
+         8,
+         6
+        ],
+        "to": [
+         8,
+         6
+        ],
+        "stay": true,
+        "lines": [
+         "Nurse Joy: Where is that Bulbasaur now?"
+        ]
+       },
+       {
+        "sheet": "mon:1",
+        "from": [
+         7,
+         9
+        ],
+        "path": [
+         [
+          7,
+          8
+         ],
+         [
+          8,
+          8
+         ],
+         [
+          8,
+          7
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "Nurse Joy: What a lively Bulbasaur! And look: its collar has the Mayor's campaign symbol on it."
+        ]
+       },
+       {
+        "as": 0,
+        "stay": true,
+        "lines": [
+         "Officer Jenny: Can you explain this, Mayor?"
+        ]
+       },
+       {
+        "person": "Mayor",
+        "lines": [
+         "Mayor: I... I... This must be the Bulbasaur I left in the sewers when I was a boy."
+        ]
+       },
+       {
+        "as": 2,
+        "path": [
+         [
+          8,
+          8
+         ],
+         [
+          5,
+          8
+         ],
+         [
+          5,
+          3
+         ],
+         [
+          6,
+          3
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "Bulbasaur runs to the Mayor."
+        ]
+       },
+       {
+        "as": 1,
+        "stay": true,
+        "lines": [
+         "Nurse Joy: After all these years, it's still happy to see you..."
+        ]
+       },
+       {
+        "person": "Mayor",
+        "lines": [
+         "Mayor: Can we keep this between us? A scandal like this could cost me the election!"
+        ]
+       },
+       {
+        "as": 0,
+        "lines": [
+         "Officer Jenny: No, Mayor. The people of Trovitopolis have a right to know. I'll be going now."
+        ],
+        "leave_path": [
+         [
+          7,
+          9
+         ]
+        ]
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          6,
+          6
+         ],
+         [
+          6,
+          4
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "Nurse Joy: I'll look after this Bulbasaur. It deserves better than someone who abandoned it."
+        ]
+       },
+       {
+        "as": 1,
+        "leave_path": [
+         [
+          6,
+          8
+         ],
+         [
+          7,
+          8
+         ],
+         [
+          7,
+          9
+         ]
+        ]
+       },
+       {
+        "as": 2,
+        "leave_path": [
+         [
+          5,
+          8
+         ],
+         [
+          7,
+          8
+         ],
+         [
+          7,
+          9
+         ]
+        ],
+        "concurrent": true
+       }
       ]
      }
     ],
@@ -289104,10 +289637,71 @@
      "not:orange_fairchild_rocket"
     ],
     "flag": "orange_fairchild_rocket",
-    "cast": [],
-    "call": [
-     "Three figures come racing down the path and dash straight past you...",
-     "Jessie, James and Meowth! They look scared stiff. Where are those punks running from this time?"
+    "cast": [
+     {
+      "sheet": "oi_74.png",
+      "from": [
+       38,
+       30
+      ],
+      "path": [
+       [
+        38,
+        33
+       ],
+       [
+        52,
+        33
+       ]
+      ],
+      "look": [
+       44,
+       32
+      ]
+     },
+     {
+      "sheet": "oi_102.png",
+      "from": [
+       37,
+       30
+      ],
+      "path": [
+       [
+        37,
+        33
+       ],
+       [
+        52,
+        33
+       ]
+      ],
+      "concurrent": true
+     },
+     {
+      "sheet": "oi_75.png",
+      "from": [
+       36,
+       30
+      ],
+      "path": [
+       [
+        36,
+        33
+       ],
+       [
+        52,
+        33
+       ]
+      ],
+      "concurrent": true
+     },
+     {
+      "you": [],
+      "look": "you",
+      "lines": [
+       "Jessie, James and Meowth just raced past, scared stiff. Where are those punks running from this time?"
+      ]
+     }
     ]
    },
    {
@@ -289123,11 +289717,53 @@
      "not:orange_pidgeot_seen"
     ],
     "flag": "orange_pidgeot_seen",
-    "cast": [],
     "call": [
-     "What is this pile of branches? It looks like the nest of some gigantic bird...",
-     "A huge shadow sweeps over you. Was that... a Pidgeot?",
-     "It lands right beside its nest, glaring. It means to defend it!"
+     "What is this pile of branches? It looks like the nest of some gigantic bird..."
+    ],
+    "cast": [
+     {
+      "sheet": "mon:18",
+      "from": [
+       43,
+       6
+      ],
+      "path": [
+       [
+        43,
+        26
+       ]
+      ],
+      "look": [
+       43,
+       18
+      ],
+      "lines": [
+       "A huge shadow sweeps over you. Was that... a Pidgeot?"
+      ],
+      "fly": true
+     },
+     {
+      "sheet": "mon:18",
+      "from": [
+       35,
+       19
+      ],
+      "path": [
+       [
+        42,
+        19
+       ],
+       [
+        43,
+        19
+       ]
+      ],
+      "look": "you",
+      "lines": [
+       "It lands right beside its nest, glaring. It means to defend it!"
+      ],
+      "fly": true
+     }
     ]
    },
    {
@@ -290438,7 +291074,11 @@
     "at": [
      0,
      0
-    ]
+    ],
+    "until": {
+     "flag": "shamouti_lugia_rose",
+     "f": "oi_ground/3_14_iceshut.png"
+    }
    },
    "_signs_in_picture": true,
    "_buildings_in_picture": true
@@ -290782,73 +291422,461 @@
      "not:shamouti_chosen_one"
     ],
     "flag": "shamouti_chosen_one",
-    "cast": [],
     "call": [
-     "Hey! Tracey and Misty come running up. Tracey: Fancy seeing you here! Misty: They say a festival starts today.",
-     "Three islanders in strange masks walk up. A woman: Don't be scared, these are our Legend Festival costumes!",
-     "Woman: This year my little sister Melody plays the Festival Maiden. ...Ah, there she is!",
-     "Woman: And you're a Pokémon trainer? Then the old legend says you're the Chosen One! It's just for the tourists, really.",
-     "Melody: Hmm. I guess you'll do. Come to the Festival House on the south side of the island for tonight's banquet!"
-    ]
-   },
-   {
-    "trigger": {
-     "zone": [
-      29,
-      31,
-      31,
-      31
-     ]
-    },
-    "condition": [
-     "shamouti_lightning_done",
-     "not:shamouti_lugia_rose"
+     "Hey!"
     ],
-    "flag": "shamouti_lugia_rose",
+    "cast": [
+     {
+      "sheet": "oi_73.png",
+      "from": [
+       15,
+       29
+      ],
+      "path": [
+       [
+        14,
+        29
+       ],
+       [
+        14,
+        25
+       ]
+      ],
+      "face": "u",
+      "stay": true,
+      "look": [
+       15,
+       26
+      ],
+      "lines": [
+       "Tracey: Fancy seeing you here!"
+      ]
+     },
+     {
+      "sheet": "oi_81.png",
+      "from": [
+       16,
+       29
+      ],
+      "path": [
+       [
+        16,
+        25
+       ]
+      ],
+      "face": "u",
+      "stay": true,
+      "concurrent": true,
+      "lines": [
+       "Misty: They say a festival starts today!"
+      ]
+     },
+     {
+      "sheet": "oi_213.png",
+      "from": [
+       14,
+       30
+      ],
+      "path": [
+       [
+        14,
+        26
+       ]
+      ],
+      "face": "u",
+      "stay": true
+     },
+     {
+      "sheet": "oi_214.png",
+      "from": [
+       15,
+       30
+      ],
+      "path": [
+       [
+        15,
+        26
+       ]
+      ],
+      "face": "u",
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "oi_213.png",
+      "from": [
+       16,
+       30
+      ],
+      "path": [
+       [
+        16,
+        26
+       ]
+      ],
+      "face": "u",
+      "stay": true,
+      "concurrent": true,
+      "lines": [
+       "Three islanders in strange masks walk up. A woman: Don't be scared, these are our Legend Festival costumes!",
+       "Woman: This year my little sister Melody plays the Festival Maiden. ...Ah, there she is!"
+      ]
+     },
+     {
+      "sheet": "oi_216.png",
+      "from": [
+       15,
+       31
+      ],
+      "path": [
+       [
+        15,
+        27
+       ]
+      ],
+      "face": "u",
+      "stay": true
+     },
+     {
+      "as": 3,
+      "stay": true,
+      "lines": [
+       "Woman: And you're a Pokémon trainer? Then the old legend says you're the Chosen One! It's just for the tourists, really."
+      ]
+     },
+     {
+      "as": 5,
+      "lines": [
+       "Melody: Hmm. I guess you'll do. Come to the Festival House on the south side of the island for tonight's banquet!"
+      ],
+      "leave_path": [
+       [
+        15,
+        31
+       ]
+      ]
+     },
+     {
+      "as": 2,
+      "leave_path": [
+       [
+        14,
+        31
+       ]
+      ]
+     },
+     {
+      "as": 3,
+      "leave_path": [
+       [
+        15,
+        31
+       ]
+      ],
+      "concurrent": true
+     },
+     {
+      "as": 4,
+      "leave_path": [
+       [
+        16,
+        31
+       ]
+      ],
+      "concurrent": true
+     },
+     {
+      "as": 0,
+      "leave_path": [
+       [
+        14,
+        31
+       ]
+      ],
+      "concurrent": true
+     },
+     {
+      "as": 1,
+      "leave_path": [
+       [
+        16,
+        31
+       ]
+      ],
+      "concurrent": true,
+      "look": "you"
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      14,
+      37,
+      16,
+      37
+     ]
+    },
+    "condition": [
+     "shamouti_chosen_one",
+     "not:heard_shamouti_legend"
+    ],
+    "every": true,
     "cast": [],
     "call": [
-     "Slowking: Welcome, Chosen One. Set the spheres you carry on the altar.",
-     "You set the Fire Sphere and the Lightning Sphere in their hollows. They glow... but the third hollow stays dark.",
-     "Slowking: One sphere short. And look: the sea is freezing over.",
-     "Something vast rises through the ice: Lugia, the great guardian of the sea! It cries out, then sinks beneath the frozen waves.",
-     "Melody: The legend says its song alone will fail... Tracey: But the Chosen One can bring the spheres together. That's you!",
-     "Melody lifts her ocarina and plays the guardian's song. Out on the ice, Lugia answers.",
-     "Lugia: The song has restored my strength. But only when the spheres of fire, ice and lightning are aligned can my song calm the three.",
-     "Lugia: Only in the hands of the Chosen One will the Ice Sphere glow. The choice is yours.",
-     "Slowking: Ice Island is the southernmost of the three. Only you can restore the balance of the world!"
+     "Festival worker: Where are you going? No one goes to Fire, Lightning or Ice Island without a very good reason."
+    ],
+    "push": [
+     0,
+     -1
     ]
    },
    {
     "trigger": {
      "zone": [
       29,
+      38,
       31,
-      31,
-      31
+      38
      ]
     },
     "condition": [
-     "shamouti_ice_sphere",
+     "shamouti_chosen_one",
+     "not:heard_shamouti_legend"
+    ],
+    "every": true,
+    "cast": [],
+    "call": [
+     "Slowking: Where are you going? The three islands are only for those with a reason to be there."
+    ],
+    "push": [
+     0,
+     -1
+    ]
+   },
+   {
+    "trigger": "enter",
+    "condition": [
+     "shamouti_sphere_set",
      "not:shamouti_lugia_song"
     ],
     "flag": "shamouti_lugia_song",
-    "cast": [],
-    "call": [
-     "Slowking: You've brought the final sphere!",
-     "You set the Ice Sphere in its hollow. All three spheres blaze with light...",
-     "Lugia's song rolls out over the sea, and the three legendary birds fall silent. The storm breaks; the ice melts away.",
-     "Lugia: The beast of the sea has been tamed. The fate of the world could not have been in better hands. Thank you, Chosen One.",
-     "Slowking: Well done! You brought the spheres together and saved the world.",
-     "Melody: You did it! Fire, ice and lightning are in harmony again!",
-     "Tracey: What an adventure! Misty: And it all turned out fine, thanks to the Chosen One.",
-     "Tracey: Time we headed home. Misty: Who knows where we'll meet next!"
+    "cast": [
+     {
+      "you": [],
+      "picture": "3_14_pillar0",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar2",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar3",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar4",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar2",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar3",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar4",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar5",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar1",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillar0",
+      "wait": 14
+     },
+     {
+      "you": [],
+      "picture": "3_14_pillars",
+      "wait": 20,
+      "lines": [
+       "The six pillars round the shrine light up one after another..."
+      ]
+     },
+     {
+      "sheet": "mon:146",
+      "from": [
+       17,
+       33
+      ],
+      "path": [
+       [
+        17,
+        36
+       ]
+      ],
+      "look": [
+       25,
+       40
+      ],
+      "stay": true,
+      "fly": true
+     },
+     {
+      "sheet": "mon:145",
+      "from": [
+       39,
+       40
+      ],
+      "path": [
+       [
+        33,
+        40
+       ]
+      ],
+      "concurrent": true,
+      "stay": true,
+      "fly": true
+     },
+     {
+      "sheet": "mon:144",
+      "from": [
+       26,
+       46
+      ],
+      "path": [
+       [
+        26,
+        43
+       ]
+      ],
+      "concurrent": true,
+      "stay": true,
+      "fly": true
+     },
+     {
+      "sheet": "oi_138.png",
+      "native": true,
+      "from": [
+       13,
+       50
+      ],
+      "path": [
+       [
+        13,
+        42
+       ],
+       [
+        22,
+        42
+       ]
+      ],
+      "stay": true,
+      "lines": [
+       "Lugia rises from the sea and sings. Its song rolls out over the water..."
+      ],
+      "fly": true
+     },
+     {
+      "as": 11,
+      "leave_path": [
+       [
+        17,
+        20
+       ]
+      ],
+      "fly": true
+     },
+     {
+      "as": 12,
+      "leave_path": [
+       [
+        47,
+        40
+       ]
+      ],
+      "concurrent": true,
+      "fly": true
+     },
+     {
+      "as": 13,
+      "leave_path": [
+       [
+        26,
+        71
+       ]
+      ],
+      "concurrent": true,
+      "fly": true
+     },
+     {
+      "as": 14,
+      "stay": true,
+      "lines": [
+       "The three legendary birds fall silent and fly home.",
+       "Lugia: The beast of the sea has been tamed. The fate of the world could not have been in better hands. Thank you, Chosen One."
+      ],
+      "fly": true
+     },
+     {
+      "as": 14,
+      "leave_path": [
+       [
+        22,
+        50
+       ]
+      ],
+      "fly": true
+     },
+     {
+      "person": "Slowking",
+      "look": "you",
+      "lines": [
+       "Slowking: Well done! You brought the spheres together and saved the world."
+      ]
+     },
+     {
+      "person": "Melody ",
+      "lines": [
+       "Melody: You did it! Fire, ice and lightning are in harmony again!"
+      ]
+     },
+     {
+      "person": "Tracey ",
+      "lines": [
+       "Tracey: What an adventure! After all that, it's time we went home."
+      ]
+     },
+     {
+      "person": "Misty ",
+      "lines": [
+       "Misty: And it all turned out fine, thanks to the Chosen One. Who knows where we'll meet next!"
+      ]
+     }
     ]
    }
   ],
   "barred": [
    {
     "until": {
-     "flag_condition": "shamouti_palace_crash"
+     "flag_condition": "heard_shamouti_legend"
     },
     "look": "unseen",
     "lines": [
@@ -290862,18 +291890,22 @@
     ]
    },
    {
+    "tiles": [
+     [
+      20,
+      60
+     ],
+     [
+      21,
+      60
+     ]
+    ],
     "until": {
      "flag_condition": "shamouti_lugia_rose"
     },
     "look": "unseen",
     "lines": [
-     "A dark cave. The islanders say no one goes in there without a very good reason."
-    ],
-    "tiles": [
-     [
-      25,
-      67
-     ]
+     "Rocks block the way up onto Ice Island."
     ]
    },
    {
@@ -290907,7 +291939,11 @@
     "size": [
      48,
      72
-    ]
+    ],
+    "until": {
+     "flag": "shamouti_lugia_rose",
+     "f": "oi_top/3_14_iceshut.png"
+    }
    }
   ],
   "rooms": {
@@ -291504,7 +292540,637 @@
     "theme": "room",
     "title": "Festival House"
    }
-  }
+  },
+  "story_maps": [
+   {
+    "when": [
+     "shamouti_lightning_done",
+     "not:shamouti_sphere_set"
+    ],
+    "map": {
+     "art": [
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "ccccccc.................cccccccccccccccccccccccc",
+      "ccccccc................ccccccccccccccccccccccccc",
+      "ccccccc...............cccccccccccccccccccccccccc",
+      "cccccccccccccc...ccccccccccccccccccccccccccccccc",
+      "cccccccccccccc...ccccccccccccccccccccccccccccccc",
+      "ccccccccccccc......ccccccccccccccccccccccccccccc",
+      "ccccccccccccc......cccccccc.......cccccccccccccc",
+      "cccccccccccc................c...c.cccccccccccccc",
+      "cccccccccccc.........................ccccccccccc",
+      "cccccccccccc........cccc.............ccccccccccc",
+      "cccccccccccc........cccc.c..c!!!c..c.ccccccccccc",
+      "cccccccccccc......cccccc..........NN.ccccccccccc",
+      "cccccccccAcc......cccccc.............ccccccccccc",
+      "cccccccccDcc......ccccccc.........N..ccccccccccc",
+      "cccccccc..........ccccccc...c...c....ccccccccccc",
+      "cccccccc..........cccccccc....N....ccccccccccccc",
+      "cccccccc..........cccccccc.........ccccccccccccc",
+      "cccccccccccccc...ccccccccccc.....ccccccccccccccc",
+      "ccccccccc..................cc...cc..cccccccccccc",
+      "cccccccc............................cccccccccccc",
+      "cccccccc...........................ccccccccccccc",
+      "ccccccc............................ccccccccccccc",
+      "ccccccc...........................cccccccccccccc",
+      "cccccccc..........................cccccccccccccc",
+      "cccccccc.........................ccccccccccccccc",
+      "ccccccccc......................ccccccccccccccccc",
+      "ccccccccc.....................cccccccccccccccccc",
+      "ccccccccc.....................cccccccccccccccccc",
+      "cccccccccc....................cccccccccccccccccc",
+      "cccccccccccc..cc..............cccccccccccccccccc",
+      "cccccccccccc..cc..............cccccccccccccccccc",
+      "ccccccccccc....c..............cccccccccccccccccc",
+      "cccccccccccc...c...............cc......cccnccccc",
+      "cccccccccccc...c................c...........!ccc",
+      "cccccccccccc..cc................c...c........ccc",
+      "ccccccccccc...c.....................ccccc..ccccc",
+      "ccccccccccc...c.......................cccccccccc",
+      "cccccccccc...cc.......................cccccccccc",
+      "cccccccccc...ccc........cccccc.......ccccccccccc",
+      "cccccc>ccc..cccc......cccccccccccccccccccccccccc",
+      "ccc!........cccc..cc..cccccccccccccccccccccccccc",
+      "cccc.......ccccccccc..cccccccccccccccccccccccccc",
+      "ccccccccccccccccccc....ccccccccccccccccccccccccc",
+      "ccccccccccccccccccc...cccccccccccccccccccccccccc",
+      "ccccccccccccccccccc...cccccccccccccccccccccccccc",
+      "ccccccccccccccccccc...cccccccccccccccccccccccccc",
+      "cccccccccccccccccccc..cccccccccccccccccccccccccc",
+      "cccccccccccccccccccc..ccc<cccccccccccccccccccccc",
+      "cccccccccccccccccccc......!ccccccccccccccccccccc",
+      "cccccccccccccccccccc.......ccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc",
+      "cccccccccccccccccccccccccccccccccccccccccccccccc"
+     ],
+     "exits": {
+      "n": "FIRE_ISLAND",
+      "<": "ICE_ISLAND",
+      ">": "LIGHTNING_ISLAND"
+     },
+     "buildings": {
+      "A": "festival"
+     },
+     "roofs": {
+      "_picture": {
+       "f": "oi_ground/3_60f.png",
+       "at": [
+        0,
+        0
+       ]
+      },
+      "_signs_in_picture": true,
+      "_buildings_in_picture": true
+     },
+     "people": [
+      "Misty ",
+      "Tracey ",
+      "Melody ",
+      [
+       "Slowking",
+       "Slowking "
+      ]
+     ],
+     "signs": [
+      [
+       "THE ANCIENT PROPHECY",
+       "If fire, ice and lightning ever clash, the guardian of the sea will rise to calm them..."
+      ],
+      [
+       "THE ANCIENT PROPHECY",
+       "...but its song alone is not enough. A treasure from each isle must rest here."
+      ],
+      [
+       "THE ANCIENT PROPHECY",
+       "Three hollows in the altar stone, each the shape of a sphere."
+      ],
+      [
+       "FIRE ISLAND",
+       ""
+      ],
+      [
+       "LIGHTNING ISLAND",
+       ""
+      ],
+      [
+       "ICE ISLAND",
+       ""
+      ]
+     ],
+     "inside": {
+      "9,33": "festival"
+     },
+     "moves": {
+      "30,35": {
+       "m": "face",
+       "d": "d"
+      },
+      "34,31": {
+       "m": "face",
+       "d": "d"
+      },
+      "35,31": {
+       "m": "face",
+       "d": "d"
+      },
+      "34,33": {
+       "m": "face",
+       "d": "d"
+      }
+     },
+     "scenes": [
+      {
+       "trigger": {
+        "zone": [
+         29,
+         31,
+         31,
+         31
+        ]
+       },
+       "condition": [
+        "shamouti_lightning_done",
+        "not:shamouti_lugia_rose"
+       ],
+       "flag": "shamouti_lugia_rose",
+       "call": [
+        "Slowking: Welcome, Chosen One. Set the spheres you carry on the altar."
+       ],
+       "cast": [
+        {
+         "you": [],
+         "lines": [
+          "You set the Fire Sphere and the Lightning Sphere in their hollows. They glow... but the third hollow stays dark.",
+          "Slowking: One sphere short. And look: the sea has frozen over."
+         ]
+        },
+        {
+         "sheet": "mon:146",
+         "from": [
+          19,
+          56
+         ],
+         "path": [
+          [
+           19,
+           48
+          ]
+         ],
+         "look": [
+          21,
+          47
+         ],
+         "stay": true,
+         "fly": true
+        },
+        {
+         "sheet": "mon:145",
+         "from": [
+          17,
+          56
+         ],
+         "path": [
+          [
+           17,
+           50
+          ]
+         ],
+         "concurrent": true,
+         "stay": true,
+         "fly": true
+        },
+        {
+         "sheet": "mon:144",
+         "from": [
+          21,
+          56
+         ],
+         "path": [
+          [
+           21,
+           50
+          ]
+         ],
+         "concurrent": true,
+         "stay": true,
+         "shake": 600,
+         "lines": [
+          "Moltres, Zapdos and Articuno clash over the frozen sea!"
+         ],
+         "fly": true
+        },
+        {
+         "as": 1,
+         "path": [
+          [
+           19,
+           51
+          ],
+          [
+           19,
+           48
+          ]
+         ],
+         "stay": true,
+         "fly": true
+        },
+        {
+         "as": 2,
+         "path": [
+          [
+           21,
+           50
+          ],
+          [
+           17,
+           50
+          ]
+         ],
+         "concurrent": true,
+         "stay": true,
+         "fly": true
+        },
+        {
+         "as": 3,
+         "path": [
+          [
+           17,
+           49
+          ],
+          [
+           21,
+           49
+          ]
+         ],
+         "concurrent": true,
+         "stay": true,
+         "fly": true
+        },
+        {
+         "sheet": "oi_138.png",
+         "native": true,
+         "from": [
+          19,
+          48
+         ],
+         "path": [
+          [
+           19,
+           46
+          ]
+         ],
+         "stay": true,
+         "lines": [
+          "Something huge rises through the ice: Lugia, the great guardian of the sea!"
+         ],
+         "fly": true
+        },
+        {
+         "as": 7,
+         "path": [
+          [
+           19,
+           49
+          ]
+         ],
+         "shake": 400,
+         "lines": [
+          "Lugia cries out... then sinks back under the frozen waves."
+         ],
+         "fly": true
+        },
+        {
+         "person": "Slowking",
+         "look": "you",
+         "lines": [
+          "Slowking: There's only one hope. Only the Chosen One can bring the spheres together and help the guardian."
+         ]
+        },
+        {
+         "person": "Melody ",
+         "lines": [
+          "Melody: But the legend says its song alone will fail..."
+         ]
+        },
+        {
+         "person": "Misty ",
+         "lines": [
+          "Misty: It's right there in the legend: 'the earth shall turn to ash'..."
+         ]
+        },
+        {
+         "person": "Tracey ",
+         "lines": [
+          "Tracey: The legend's talking about you. You're the true Chosen One!"
+         ]
+        },
+        {
+         "person": "Melody ",
+         "lines": [
+          "Melody: Lugia... the sound it made is just like the song from the legend.",
+          "Melody lifts her ocarina and plays the guardian's song."
+         ]
+        },
+        {
+         "sheet": "oi_138.png",
+         "native": true,
+         "from": [
+          30,
+          44
+         ],
+         "path": [
+          [
+           30,
+           38
+          ]
+         ],
+         "look": [
+          30,
+          36
+         ],
+         "stay": true,
+         "lines": [
+          "Lugia: The song has restored my strength. But only when the spheres of fire, ice and lightning are aligned can my song calm the three.",
+          "Lugia: Only in the hands of the Chosen One will the Ice Sphere glow. The choice is yours."
+         ],
+         "fly": true
+        },
+        {
+         "as": 14,
+         "path": [
+          [
+           30,
+           44
+          ]
+         ],
+         "fly": true
+        },
+        {
+         "as": 4,
+         "leave_path": [
+          [
+           19,
+           60
+          ]
+         ],
+         "fly": true
+        },
+        {
+         "as": 5,
+         "leave_path": [
+          [
+           17,
+           60
+          ]
+         ],
+         "concurrent": true,
+         "fly": true
+        },
+        {
+         "as": 6,
+         "leave_path": [
+          [
+           21,
+           60
+          ]
+         ],
+         "concurrent": true,
+         "fly": true
+        },
+        {
+         "person": "Slowking",
+         "look": "you",
+         "lines": [
+          "Slowking: Ice Island is the southernmost of the three. With the sea frozen, you can walk there now.",
+          "Slowking: Only you can restore the balance of the world!"
+         ]
+        }
+       ]
+      },
+      {
+       "trigger": {
+        "zone": [
+         29,
+         31,
+         31,
+         31
+        ]
+       },
+       "condition": [
+        "shamouti_ice_sphere",
+        "not:shamouti_sphere_set"
+       ],
+       "flag": "shamouti_sphere_set",
+       "cast": [
+        {
+         "person": "Slowking",
+         "lines": [
+          "Slowking: You've brought the final sphere!"
+         ]
+        },
+        {
+         "you": [],
+         "shake": 600,
+         "lines": [
+          "You set the Ice Sphere in its hollow. All three spheres blaze with light...",
+          "The storm breaks. The ice melts away, and the snow with it."
+         ]
+        }
+       ]
+      }
+     ],
+     "parts": true,
+     "overheads": [
+      {
+       "kind": "picture",
+       "f": "oi_top/3_60f.png",
+       "at": [
+        0,
+        0
+       ],
+       "size": [
+        48,
+        72
+       ]
+      }
+     ],
+     "rooms": {
+      "festival": {
+       "art": [
+        "cccccccccccccccccccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc",
+        "c...............cccccccccccccccccccc",
+        ".................ccccccccccccccccccc",
+        "........N........ccccccccccccccccccc",
+        ".................ccccccccccccccccccc",
+        "c................ccccccccccccccccccc",
+        "....cc.....cc....ccccccccccccccccccc",
+        "....cc....NccN...ccccccccccccccccccc",
+        ".................ccccccccccccccccccc",
+        "c................ccccccccccccccccccc",
+        "...Ncc.....ccN...ccccccccccccccccccc",
+        "....ccN...Ncc....ccccccccccccccccccc",
+        ".................ccccccccccccccccccc",
+        "c......vvv......cccccccccccccccccccc",
+        "cccccccccccccccccccccccccccccccccccc"
+       ],
+       "exits": {
+        "v": "OUT:9,33"
+       },
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "oi_ground/1_47.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Melody",
+        {
+         "text": "Islander",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "Our Festival Maiden plays the ocarina better than anyone on the island."
+          ]
+         }
+        },
+        {
+         "text": "Islander ",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "The Legend Festival is the best night of the year on Shamouti."
+          ]
+         }
+        },
+        {
+         "text": "Tourist",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "We haven't missed a Legend Festival in ten years!"
+          ]
+         }
+        },
+        {
+         "text": "Tourist   ",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "I hear this year's Festival Maiden is new. She's watched the play a hundred times, though."
+          ]
+         }
+        },
+        {
+         "text": "Tourist ",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "Every year we come to Shamouti Island on holiday."
+          ]
+         }
+        },
+        {
+         "text": "Tourist  ",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "The food at the banquet is delicious!"
+          ]
+         }
+        }
+       ],
+       "moves": {
+        "10,14": {
+         "m": "face",
+         "d": "r"
+        },
+        "13,14": {
+         "m": "face",
+         "d": "l"
+        },
+        "3,17": {
+         "m": "face",
+         "d": "r"
+        },
+        "6,18": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,18": {
+         "m": "face",
+         "d": "r"
+        },
+        "13,17": {
+         "m": "face",
+         "d": "l"
+        },
+        "8,10": {
+         "m": "face",
+         "d": "d"
+        }
+       },
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "oi_top/1_47.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          36,
+          22
+         ]
+        }
+       ],
+       "theme": "room",
+       "title": "Festival House"
+      }
+     },
+     "view_top": 20
+    },
+    "via": [
+     "FIRE_ISLAND",
+     "LIGHTNING_ISLAND",
+     "ICE_ISLAND"
+    ],
+    "via_rooms": [
+     "festival"
+    ]
+   }
+  ]
  },
  "ASCORBIA_ISLAND": {
   "art": [
@@ -291853,10 +293519,33 @@
      "not:orange_wartortle_taken"
     ],
     "flag": "orange_wartortle_taken",
-    "call": [
-     "A balloon shaped like a Meowth lifts off from the fire station, with something dangling below it..."
-    ],
+    "shake": 500,
     "cast": [
+     {
+      "sheet": "oi_balloon.png",
+      "from": [
+       29,
+       12
+      ],
+      "path": [
+       [
+        29,
+        8
+       ],
+       [
+        40,
+        3
+       ]
+      ],
+      "look": [
+       26,
+       12
+      ],
+      "lines": [
+       "A balloon shaped like a Meowth floats up from the fire station, something dangling below it, and drifts off towards the forest..."
+      ],
+      "fly": true
+     },
      {
       "sheet": "oi_201.png",
       "from": [
@@ -291864,6 +293553,7 @@
        15
       ],
       "to": "player",
+      "look": "you",
       "lines": [
        "Man: What was that?! They took Team Wartortle!",
        "Man: You're a Pokémon trainer? Great! I'm Captain Aidan. Team Wartortle is the best firefighting squad in the islands.",
@@ -292841,16 +294531,220 @@
          "flag": "orange_wartortle_beaten",
          "lines": []
         }
+       },
+       {
+        "sheet": "oi_78.png",
+        "from": [
+         23,
+         5
+        ],
+        "to": [
+         23,
+         5
+        ],
+        "lines": [
+         "Cassidy: You're really getting on my nerves! Butch: We'll have to pull out... Both: But we'll be back!"
+        ],
+        "leave": [
+         27,
+         7
+        ]
+       },
+       {
+        "sheet": "oi_201.png",
+        "from": [
+         10,
+         23
+        ],
+        "to": [
+         20,
+         5
+        ],
+        "stay": true,
+        "lines": [
+         "Captain Aidan runs in. Aidan: They ran off in a flash! That was your doing, wasn't it?",
+         "Aidan: I found a shiny key on the floor on my way in... It fits!"
+        ]
+       },
+       {
+        "sheet": "mon:8",
+        "from": [
+         23,
+         4
+        ],
+        "path": [
+         [
+          23,
+          5
+         ],
+         [
+          21,
+          5
+         ],
+         [
+          21,
+          6
+         ]
+        ],
+        "stay": true,
+        "concurrent": false
+       },
+       {
+        "sheet": "mon:8",
+        "from": [
+         23,
+         4
+        ],
+        "path": [
+         [
+          23,
+          5
+         ],
+         [
+          22,
+          5
+         ],
+         [
+          22,
+          7
+         ]
+        ],
+        "stay": true,
+        "concurrent": true
+       },
+       {
+        "sheet": "mon:8",
+        "from": [
+         23,
+         4
+        ],
+        "path": [
+         [
+          23,
+          5
+         ],
+         [
+          23,
+          5
+         ],
+         [
+          23,
+          6
+         ]
+        ],
+        "stay": true,
+        "concurrent": true
+       },
+       {
+        "sheet": "mon:8",
+        "from": [
+         23,
+         4
+        ],
+        "path": [
+         [
+          23,
+          5
+         ],
+         [
+          24,
+          5
+         ],
+         [
+          24,
+          7
+         ]
+        ],
+        "stay": true,
+        "concurrent": true
+       },
+       {
+        "sheet": "mon:8",
+        "from": [
+         23,
+         4
+        ],
+        "path": [
+         [
+          23,
+          5
+         ],
+         [
+          25,
+          5
+         ],
+         [
+          25,
+          6
+         ]
+        ],
+        "stay": true,
+        "concurrent": true,
+        "lines": [
+         "Team Wartortle are free!"
+        ]
+       },
+       {
+        "as": 3,
+        "lines": [
+         "Aidan: Nobody's hurt. Back to town, everyone! A firefighter never leaves their post for long!"
+        ]
+       },
+       {
+        "as": 4,
+        "path": [
+         [
+          1,
+          7
+         ]
+        ],
+        "concurrent": false
+       },
+       {
+        "as": 5,
+        "path": [
+         [
+          1,
+          7
+         ]
+        ],
+        "concurrent": true
+       },
+       {
+        "as": 6,
+        "path": [
+         [
+          1,
+          7
+         ]
+        ],
+        "concurrent": true
+       },
+       {
+        "as": 7,
+        "path": [
+         [
+          1,
+          7
+         ]
+        ],
+        "concurrent": true
+       },
+       {
+        "as": 8,
+        "path": [
+         [
+          1,
+          7
+         ]
+        ],
+        "concurrent": true
        }
       ],
       "event": {
        "flag": "orange_wartortle_saved",
        "lines": [
-        "Cassidy: You're really getting on my nerves! Butch: We'll have to pull out... Both: But we'll be back!",
-        "Team Wartortle are still locked in the cage. Where would Team Rocket keep the key?",
-        "Captain Aidan runs in. Aidan: They ran off in a flash! That was your doing, wasn't it?",
-        "Aidan: I found a shiny key on the floor on my way in... It fits! Team Wartortle are free!",
-        "Aidan: Nobody's hurt. Back to town, everyone! A firefighter never leaves their post for long!"
+        "Team Wartortle are safe with their captain again."
        ]
       }
      }
@@ -294652,7 +296546,7 @@
     ],
     "exits": {
      "v": "OUT:24,16",
-     "n": "ROOM:top_floor"
+     "n": "ROOM:lift"
     },
     "buildings": {},
     "roofs": {
@@ -294799,7 +296693,7 @@
      "c.........c"
     ],
     "exits": {
-     "n": "ROOM:gym",
+     "n": "ROOM:lift",
      "^": "ROOM:arena"
     },
     "buildings": {},
@@ -294830,6 +296724,75 @@
     ],
     "theme": "room",
     "title": "Kumquat Hotel Top Floor"
+   },
+   "lift": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "N....cccccc",
+     ".....cccccc",
+     "..n..cccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:gym"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "oi_ground/39_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Lift attendant"
+    ],
+    "moves": {
+     "0,3": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "who": "Lift attendant",
+      "then": "talk",
+      "every": true
+     }
+    ],
+    "dynamic_exit": {
+     "flag": "orange_kumquat_lift_floor",
+     "rooms": [
+      "gym",
+      "top_floor"
+     ],
+     "default": "gym"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "oi_top/39_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Kumquat Hotel Lift"
    },
    "arena": {
     "art": [
@@ -295402,12 +297365,125 @@
      "not:orange_quack_met"
     ],
     "flag": "orange_quack_met",
-    "cast": [],
     "call": [
      "Man: If I'm right, one of the most amazing sights at sea is about to begin...",
-     "Man: Ah, company! Just in time for the rush hour! I'm Quincy T. Quackenpoker, Pokémon Watcher. I've given my life to Magikarp.",
-     "Quackenpoker: Look! There they are! A whole school of Magikarp, swimming for Rind Island!",
-     "Quackenpoker: A strong enough Magikarp can climb Rind Island's waterfalls. I'm following them upstream. Join me if you like!"
+     "Man: Ah, company! Just in time for the rush hour! I'm Quincy T. Quackenpoker, Pokémon Watcher. I've given my life to Magikarp."
+    ],
+    "cast": [
+     {
+      "sheet": "mon:129",
+      "from": [
+       28,
+       23
+      ],
+      "path": [
+       [
+        19,
+        23
+       ],
+       [
+        6,
+        23
+       ],
+       [
+        6,
+        14
+       ]
+      ],
+      "concurrent": false,
+      "look": [
+       20,
+       21
+      ],
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       27,
+       24
+      ],
+      "path": [
+       [
+        18,
+        24
+       ],
+       [
+        5,
+        24
+       ],
+       [
+        5,
+        15
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       29,
+       24
+      ],
+      "path": [
+       [
+        20,
+        24
+       ],
+       [
+        7,
+        24
+       ],
+       [
+        7,
+        15
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       28,
+       25
+      ],
+      "path": [
+       [
+        19,
+        25
+       ],
+       [
+        6,
+        25
+       ],
+       [
+        6,
+        16
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "person": "Quackenpoker",
+      "look": "you",
+      "lines": [
+       "Quackenpoker: Look! There they go! A whole school of Magikarp, swimming for Rind Island!",
+       "Quackenpoker: A strong enough Magikarp can climb Rind Island's waterfalls. I'm following them upstream. Join me if you like!"
+      ]
+     },
+     {
+      "person": "Quackenpoker",
+      "path": [
+       [
+        24,
+        14
+       ]
+      ],
+      "gone": true
+     }
     ]
    },
    {
@@ -295424,10 +297500,75 @@
      "not:orange_quack_sea"
     ],
     "flag": "orange_quack_sea",
-    "cast": [],
-    "call": [
-     "Quackenpoker: Hurry! Here they come! Magikarp and Gyarados together, swimming out to sea...",
-     "Quackenpoker: Whew, what a sight. It amazes me every year."
+    "cast": [
+     {
+      "sheet": "mon:130",
+      "from": [
+       6,
+       8
+      ],
+      "path": [
+       [
+        6,
+        22
+       ],
+       [
+        28,
+        24
+       ]
+      ],
+      "look": [
+       14,
+       18
+      ],
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       7,
+       9
+      ],
+      "path": [
+       [
+        7,
+        23
+       ],
+       [
+        30,
+        25
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:130",
+      "from": [
+       5,
+       9
+      ],
+      "path": [
+       [
+        5,
+        24
+       ],
+       [
+        27,
+        26
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "person": "Quackenpoker",
+      "look": "you",
+      "lines": [
+       "Quackenpoker: Hurry! Here they come! Magikarp and Gyarados together, swimming out to sea...",
+       "Quackenpoker: Whew, what a sight. It amazes me every year."
+      ]
+     }
     ]
    },
    {
@@ -295444,10 +297585,75 @@
      "not:orange_quack_sea"
     ],
     "flag": "orange_quack_sea",
-    "cast": [],
-    "call": [
-     "Quackenpoker: Hurry! Here they come! Magikarp and Gyarados together, swimming out to sea...",
-     "Quackenpoker: Whew, what a sight. It amazes me every year."
+    "cast": [
+     {
+      "sheet": "mon:130",
+      "from": [
+       6,
+       8
+      ],
+      "path": [
+       [
+        6,
+        22
+       ],
+       [
+        28,
+        24
+       ]
+      ],
+      "look": [
+       14,
+       18
+      ],
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       7,
+       9
+      ],
+      "path": [
+       [
+        7,
+        23
+       ],
+       [
+        30,
+        25
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:130",
+      "from": [
+       5,
+       9
+      ],
+      "path": [
+       [
+        5,
+        24
+       ],
+       [
+        27,
+        26
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "person": "Quackenpoker",
+      "look": "you",
+      "lines": [
+       "Quackenpoker: Hurry! Here they come! Magikarp and Gyarados together, swimming out to sea...",
+       "Quackenpoker: Whew, what a sight. It amazes me every year."
+      ]
+     }
     ]
    }
   ],
@@ -295566,11 +297772,154 @@
      "not:orange_quack_rind"
     ],
     "flag": "orange_quack_rind",
-    "cast": [],
-    "call": [
-     "Quackenpoker: I'm glad you're interested in Magikarp! The Magikarp born round Rind Island swim out to sea as they grow.",
-     "Quackenpoker: Once a year they come home. Look, they're swimming up the waterfalls to prove they're strong enough!",
-     "Quackenpoker: Some don't make it and must try again next year. And what happens at the top? Come and see!"
+    "cast": [
+     {
+      "sheet": "oi_203.png",
+      "from": [
+       27,
+       30
+      ],
+      "to": [
+       27,
+       30
+      ],
+      "stay": true,
+      "lines": [
+       "Quackenpoker: I'm glad you're interested in Magikarp! The Magikarp born round Rind Island swim out to sea as they grow."
+      ]
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       24,
+       28
+      ],
+      "path": [
+       [
+        24,
+        20
+       ],
+       [
+        15,
+        20
+       ]
+      ],
+      "concurrent": false,
+      "look": [
+       22,
+       24
+      ],
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       22,
+       28
+      ],
+      "path": [
+       [
+        22,
+        20
+       ],
+       [
+        13,
+        20
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       23,
+       29
+      ],
+      "path": [
+       [
+        23,
+        21
+       ],
+       [
+        14,
+        21
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       21,
+       29
+      ],
+      "path": [
+       [
+        21,
+        21
+       ],
+       [
+        12,
+        21
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       22,
+       30
+      ],
+      "path": [
+       [
+        22,
+        22
+       ],
+       [
+        13,
+        22
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       24,
+       30
+      ],
+      "path": [
+       [
+        24,
+        22
+       ],
+       [
+        15,
+        22
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "as": 0,
+      "look": "you",
+      "lines": [
+       "Quackenpoker: Once a year they come home, swimming up the waterfalls to prove they're strong enough!",
+       "Quackenpoker: Some don't make it and must try again next year. And what happens at the top? Come and see!"
+      ],
+      "leave_path": [
+       [
+        27,
+        22
+       ]
+      ]
+     }
     ]
    },
    {
@@ -295587,12 +297936,253 @@
      "not:orange_quack_ritual"
     ],
     "flag": "orange_quack_ritual",
-    "cast": [],
-    "call": [
-     "Quackenpoker: Welcome to Rind Island Lake. This is where the Magikarp's evolution ritual happens, once a year.",
-     "You wait by the lake with Quackenpoker... The Magikarp circle the lake, faster and faster...",
-     "A flash of light! One Magikarp after another evolves into a mighty Gyarados!",
-     "Quackenpoker: They're heading back to sea! Let's catch them up before they leave the island!"
+    "cast": [
+     {
+      "sheet": "oi_203.png",
+      "from": [
+       27,
+       12
+      ],
+      "to": [
+       29,
+       11
+      ],
+      "stay": true,
+      "lines": [
+       "Quackenpoker: Welcome to Rind Island Lake. This is where the Magikarp's evolution ritual happens, once a year."
+      ]
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       15,
+       6
+      ],
+      "path": [
+       [
+        15,
+        8
+       ],
+       [
+        17,
+        8
+       ],
+       [
+        17,
+        6
+       ],
+       [
+        15,
+        6
+       ]
+      ],
+      "stay": true,
+      "concurrent": false,
+      "look": [
+       14,
+       9
+      ],
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       13,
+       6
+      ],
+      "path": [
+       [
+        13,
+        8
+       ],
+       [
+        15,
+        8
+       ],
+       [
+        15,
+        6
+       ],
+       [
+        13,
+        6
+       ]
+      ],
+      "stay": true,
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       11,
+       6
+      ],
+      "path": [
+       [
+        11,
+        8
+       ],
+       [
+        13,
+        8
+       ],
+       [
+        13,
+        6
+       ],
+       [
+        11,
+        6
+       ]
+      ],
+      "stay": true,
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:129",
+      "from": [
+       11,
+       8
+      ],
+      "path": [
+       [
+        11,
+        10
+       ],
+       [
+        13,
+        10
+       ],
+       [
+        13,
+        8
+       ],
+       [
+        11,
+        8
+       ]
+      ],
+      "stay": true,
+      "concurrent": true,
+      "lines": [
+       "The Magikarp circle the lake, faster and faster..."
+      ],
+      "swim": true
+     },
+     {
+      "as": 2,
+      "leave_path": [
+       [
+        13,
+        6
+       ]
+      ],
+      "swim": true
+     },
+     {
+      "as": 4,
+      "leave_path": [
+       [
+        11,
+        8
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "sheet": "mon:130",
+      "from": [
+       13,
+       6
+      ],
+      "to": [
+       13,
+       6
+      ],
+      "stay": true,
+      "shake": 500,
+      "swim": true
+     },
+     {
+      "sheet": "mon:130",
+      "from": [
+       11,
+       8
+      ],
+      "to": [
+       11,
+       8
+      ],
+      "stay": true,
+      "concurrent": true,
+      "lines": [
+       "A flash of light! One Magikarp after another evolves into a mighty Gyarados!"
+      ],
+      "swim": true
+     },
+     {
+      "as": 0,
+      "look": "you",
+      "stay": true,
+      "lines": [
+       "Quackenpoker: They're heading back to sea! Let's catch them up before they leave the island!"
+      ]
+     },
+     {
+      "as": 1,
+      "leave_path": [
+       [
+        15,
+        12
+       ]
+      ],
+      "swim": true
+     },
+     {
+      "as": 3,
+      "leave_path": [
+       [
+        13,
+        12
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "as": 7,
+      "leave_path": [
+       [
+        11,
+        12
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "as": 8,
+      "leave_path": [
+       [
+        11,
+        13
+       ]
+      ],
+      "concurrent": true,
+      "swim": true
+     },
+     {
+      "as": 0,
+      "leave_path": [
+       [
+        27,
+        12
+       ]
+      ]
+     }
     ]
    }
   ],
@@ -296136,11 +298726,59 @@
      "not:got_salveyo_weed"
     ],
     "flag": "got_salveyo_weed",
-    "cast": [],
-    "call": [
-     "The Poliwag sees you looking at the weed caught on its tail.",
-     "The Poliwag dives under the water...",
-     "It comes back with a mouthful of weed. The Poliwag wants you to have it! You got some Salveyo Weed."
+    "cast": [
+     {
+      "person": "Poliwag",
+      "lines": [
+       "The Poliwag sees you looking at the weed caught on its tail."
+      ]
+     },
+     {
+      "person": "Poliwag",
+      "path": [
+       [
+        19,
+        27
+       ]
+      ],
+      "lines": [
+       "The Poliwag dives under the water..."
+      ]
+     },
+     {
+      "as": 1,
+      "swim": true,
+      "path": [
+       [
+        19,
+        29
+       ],
+       [
+        16,
+        29
+       ],
+       [
+        19,
+        29
+       ],
+       [
+        19,
+        28
+       ]
+      ]
+     },
+     {
+      "as": 1,
+      "path": [
+       [
+        19,
+        26
+       ]
+      ],
+      "lines": [
+       "It comes back with a mouthful of weed. The Poliwag wants you to have it! You got some Salveyo Weed."
+      ]
+     }
     ]
    }
   ],
@@ -297694,6 +300332,195 @@
       "d": "d"
      }
     },
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        5
+       ]
+      ],
+      "look": "sheet:oi_22.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "look": "sheet:oi_41.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        4
+       ]
+      ],
+      "look": "sheet:oi_42.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        6
+       ]
+      ],
+      "look": "sheet:oi_25.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        7
+       ]
+      ],
+      "look": "sheet:oi_32.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        6
+       ]
+      ],
+      "look": "sheet:oi_39.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        4
+       ]
+      ],
+      "look": "sheet:oi_24.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        5
+       ]
+      ],
+      "look": "sheet:oi_26.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "sheet:oi_18.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "sheet:oi_35.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        8
+       ]
+      ],
+      "look": "sheet:oi_23.png",
+      "face": "d",
+      "scenery": true,
+      "until": {
+       "flag_condition": "orange_stands_never_empty"
+      },
+      "lines": [
+       "A fan cheers from the stands."
+      ]
+     }
+    ],
     "overheads": [
      {
       "kind": "picture",
@@ -298063,7 +300890,7 @@
    "<oooooooooo======cc===occcccccccccoooooooooooooo",
    "<oooooooooooo=======oooooooooooooooooooooooooo~~",
    "<oooooooooooooooooooooooooooooooooooooooooo~~o~~",
-   "ooooooooooooooooooooooooooooooooooooooooo~~~~~~o",
+   "ooooooooooooooooooooooooooooooooooooooooo~~~~~~>",
    "~~ooooooooooooooooooooooooooooooooooooooo~~oo~~o",
    "~~~~oooooooooooooooooooooooooooooooooooo~~oooooo",
    "<o~~oooooooooooooooooooooooooooooooooooo~~oooooo",
@@ -298296,6 +301123,10 @@
    "47,27": [
     0,
     27
+   ],
+   "47,31": [
+    0,
+    31
    ]
   },
   "moves": {
@@ -298691,7 +301522,7 @@
    "~~~~oo~~oo~~oooooooooooooooooooooooo~~~~",
    "~~oooooooooooooooooooooooooooooooooooo~~",
    "oooooooooooooooooooooooooooooooooooooooo",
-   "ooooooooooooooooooooooooooooooooooooooo>"
+   "<oooooooooooooooooooooooooooooooooooooo>"
   ],
   "exits": {
    "<": "TARROCO_ISLAND",
@@ -298805,6 +301636,10 @@
    "0,27": [
     47,
     27
+   ],
+   "0,31": [
+    47,
+    31
    ],
    "39,0": [
     0,
@@ -299134,10 +301969,28 @@
      "not:orange_hamlin_explosion"
     ],
     "flag": "orange_hamlin_explosion",
-    "cast": [],
+    "shake": 600,
     "call": [
-     "BOOM! Was that an explosion? Where did it come from?",
-     "An Electrode comes rolling up the street. It looks very angry!"
+     "BOOM! Was that an explosion? Where did it come from?"
+    ],
+    "cast": [
+     {
+      "sheet": "mon:101",
+      "from": [
+       22,
+       18
+      ],
+      "path": [
+       [
+        16,
+        18
+       ]
+      ],
+      "shake": 300,
+      "lines": [
+       "An Electrode comes rolling up the street. It looks very angry!"
+      ]
+     }
     ]
    },
    {
@@ -299154,15 +302007,227 @@
      "not:orange_hamlin_diglett"
     ],
     "flag": "orange_hamlin_diglett",
-    "cast": [],
-    "call": [
-     "More Electrode roll out from between the buildings... You're surrounded!",
-     "???: Don't move!",
-     "???: Go, Diglett! Take those Electrode underground!",
-     "Diglett and Dugtrio pop up all round you. In a flash they dig the Electrode away under the street!",
-     "Poncho: Well done, Diglett and Dugtrio! Return! ...I'm Poncho, the Diglett Rancher.",
-     "Poncho: Years ago an experiment to make energy went wrong here, and Electrode took over Hamlin. With all the explosions, everyone left the island.",
-     "Poncho: It's my job to clear them out safely. My Diglett are taking them to Hamlin Fields, east of town. Come and see!"
+    "shake": 500,
+    "cast": [
+     {
+      "sheet": "mon:101",
+      "from": [
+       18,
+       20
+      ],
+      "path": [
+       [
+        18,
+        17
+       ],
+       [
+        16,
+        17
+       ]
+      ],
+      "stay": true,
+      "concurrent": false,
+      "look": [
+       13,
+       18
+      ]
+     },
+     {
+      "sheet": "mon:101",
+      "from": [
+       9,
+       13
+      ],
+      "path": [
+       [
+        11,
+        13
+       ],
+       [
+        11,
+        16
+       ]
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "mon:101",
+      "from": [
+       8,
+       14
+      ],
+      "path": [
+       [
+        9,
+        14
+       ],
+       [
+        9,
+        18
+       ]
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "mon:101",
+      "from": [
+       11,
+       24
+      ],
+      "path": [
+       [
+        11,
+        20
+       ]
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "you": [],
+      "shake": 400,
+      "lines": [
+       "More Electrode roll out from between the buildings... You're surrounded!"
+      ]
+     },
+     {
+      "sheet": "oi_204.png",
+      "from": [
+       12,
+       18
+      ],
+      "to": [
+       12,
+       18
+      ],
+      "stay": true,
+      "lines": [
+       "???: Don't move!",
+       "???: Go, Diglett! Take those Electrode underground!"
+      ]
+     },
+     {
+      "sheet": "mon:51",
+      "from": [
+       15,
+       16
+      ],
+      "to": [
+       15,
+       16
+      ],
+      "stay": true,
+      "concurrent": false
+     },
+     {
+      "sheet": "mon:50",
+      "from": [
+       17,
+       19
+      ],
+      "to": [
+       17,
+       19
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "mon:50",
+      "from": [
+       10,
+       15
+      ],
+      "to": [
+       10,
+       15
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "mon:50",
+      "from": [
+       8,
+       17
+      ],
+      "to": [
+       8,
+       17
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "sheet": "mon:50",
+      "from": [
+       10,
+       19
+      ],
+      "to": [
+       10,
+       19
+      ],
+      "stay": true,
+      "concurrent": true
+     },
+     {
+      "you": [],
+      "lines": [
+       "Diglett and Dugtrio pop up all round you. In a flash they dig the Electrode away under the street!"
+      ]
+     },
+     {
+      "as": 0,
+      "concurrent": false
+     },
+     {
+      "as": 1,
+      "concurrent": true
+     },
+     {
+      "as": 2,
+      "concurrent": true
+     },
+     {
+      "as": 3,
+      "concurrent": true
+     },
+     {
+      "as": 6,
+      "concurrent": false
+     },
+     {
+      "as": 7,
+      "concurrent": true
+     },
+     {
+      "as": 8,
+      "concurrent": true
+     },
+     {
+      "as": 9,
+      "concurrent": true
+     },
+     {
+      "as": 10,
+      "concurrent": true
+     },
+     {
+      "as": 5,
+      "look": "you",
+      "lines": [
+       "Poncho: Well done, Diglett and Dugtrio! Return! ...I'm Poncho, the Diglett Rancher.",
+       "Poncho: Years ago an experiment to make energy went wrong here, and Electrode took over Hamlin. With all the explosions, everyone left the island.",
+       "Poncho: It's my job to clear them out safely. My Diglett are taking them to Hamlin Fields, east of town. Come and see!"
+      ],
+      "leave": [
+       25,
+       18
+      ]
+     }
     ]
    }
   ],
@@ -299665,12 +302730,89 @@
      "not:orange_hamlin_fields"
     ],
     "flag": "orange_hamlin_fields",
-    "cast": [],
-    "call": [
-     "Poncho: Hiya! Good to see you here. Isn't this a beautiful sight?",
-     "Out across the fields, the Electrode roll about in the grass, calm and happy.",
-     "Poncho: These wide open fields are perfect for Electrode. Here they relax, they're happy... and they stop exploding!",
-     "Poncho: My job here is done! With the Electrode moved, people can come back to Hamlin. I'm off to town to tell everyone the good news!"
+    "cast": [
+     {
+      "sheet": "mon:101",
+      "from": [
+       27,
+       26
+      ],
+      "path": [
+       [
+        33,
+        26
+       ],
+       [
+        33,
+        31
+       ],
+       [
+        26,
+        31
+       ]
+      ],
+      "look": [
+       24,
+       27
+      ],
+      "stay": true
+     },
+     {
+      "sheet": "mon:101",
+      "from": [
+       24,
+       31
+      ],
+      "path": [
+       [
+        30,
+        31
+       ],
+       [
+        30,
+        29
+       ]
+      ],
+      "concurrent": true,
+      "stay": true
+     },
+     {
+      "sheet": "mon:101",
+      "from": [
+       16,
+       22
+      ],
+      "path": [
+       [
+        16,
+        25
+       ],
+       [
+        19,
+        25
+       ]
+      ],
+      "concurrent": true,
+      "stay": true,
+      "lines": [
+       "Out across the fields, Electrode roll about in the grass, calm and happy."
+      ]
+     },
+     {
+      "sheet": "oi_204.png",
+      "from": [
+       17,
+       23
+      ],
+      "to": "player",
+      "look": "you",
+      "lines": [
+       "Poncho: Hiya! Good to see you here. Isn't this a beautiful sight?",
+       "Poncho: These wide open fields are perfect for Electrode. Here they relax, they're happy... and they stop exploding!",
+       "Poncho: My job here is done! With the Electrode moved, people can come back to Hamlin. I'm off to tell everyone the good news!"
+      ],
+      "leave": "back"
+     }
     ]
    }
   ],
@@ -299973,9 +303115,15 @@
     ],
     "secret_switches": {
      "45,33": {
+      "ask": [
+       "There's a secret switch here! Do you want to press it?"
+      ],
+      "later": [
+       "Maybe later."
+      ],
+      "shake": 700,
       "flag": "orange_fire_switch_a",
       "lines": [
-       "There's a secret switch here!",
        "You press it... A small tremor shakes the cave!"
       ],
       "done": [
@@ -299983,9 +303131,15 @@
       ]
      },
      "6,49": {
+      "ask": [
+       "There's a secret switch here! Do you want to press it?"
+      ],
+      "later": [
+       "Maybe later."
+      ],
+      "shake": 700,
       "flag": "orange_fire_switch_b",
       "lines": [
-       "There's a secret switch here!",
        "You press it... A small tremor shakes the cave!"
       ],
       "done": [
@@ -299993,9 +303147,15 @@
       ]
      },
      "51,13": {
+      "ask": [
+       "There's a secret switch here! Do you want to press it?"
+      ],
+      "later": [
+       "Maybe later."
+      ],
+      "shake": 700,
       "flag": "orange_fire_switch_c",
       "lines": [
-       "There's a secret switch here!",
        "You press it... A small tremor shakes the cave!"
       ],
       "done": [
@@ -300003,9 +303163,15 @@
       ]
      },
      "25,14": {
+      "ask": [
+       "There's a secret switch here! Do you want to press it?"
+      ],
+      "later": [
+       "Maybe later."
+      ],
+      "shake": 700,
       "flag": "orange_fire_switch_d",
       "lines": [
-       "There's a secret switch here!",
        "You press it... A small tremor shakes the cave!"
       ],
       "done": [
@@ -300171,14 +303337,94 @@
        "not:shamouti_palace_taken"
       ],
       "flag": "shamouti_fire_scene",
-      "cast": [],
       "call": [
-       "???: Hey! Wait for me!",
-       "Melody runs up. Melody: You found the Fire Sphere! But that's not why I came. The weather's been going strange, and not by chance. It's as if the elements are out of balance...",
-       "A crackle of lightning! Zapdos, the legendary bird of lightning, sweeps over the summit.",
-       "Melody: Zapdos? On Fire Island? This is Moltres' home! Where's Moltres gone?",
-       "A huge flying ship looms over the island. A beam of light pulls Zapdos up into it... Melody: What is that?!",
-       "The beam sweeps over you and Melody, and the ground drops away..."
+       "???: Hey! Wait for me!"
+      ],
+      "cast": [
+       {
+        "sheet": "oi_216.png",
+        "from": [
+         21,
+         42
+        ],
+        "to": "player",
+        "stay": true,
+        "lines": [
+         "Melody: You found the Fire Sphere! But that's not why I came. The weather keeps changing, and not by chance.",
+         "Melody: It's as if the elements have fallen out of balance..."
+        ]
+       },
+       {
+        "sheet": "mon:145",
+        "from": [
+         38,
+         34
+        ],
+        "path": [
+         [
+          21,
+          34
+         ],
+         [
+          12,
+          34
+         ]
+        ],
+        "look": [
+         18,
+         32
+        ],
+        "stay": true,
+        "shake": 400,
+        "lines": [
+         "A crackle of lightning! Zapdos, the legendary bird of lightning, sweeps over the summit.",
+         "Melody: Zapdos? Fire Island is Moltres' home! Where has Moltres gone?"
+        ],
+        "fly": true
+       },
+       {
+        "sheet": "oi_220.png",
+        "from": [
+         4,
+         14
+        ],
+        "path": [
+         [
+          12,
+          24
+         ]
+        ],
+        "look": [
+         15,
+         27
+        ],
+        "stay": true,
+        "shake": 600,
+        "lines": [
+         "A giant flying ship looms over the island! Melody: What is that?!"
+        ],
+        "fly": true
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          12,
+          26
+         ]
+        ],
+        "lines": [
+         "A beam of light pulls Zapdos up into the ship..."
+        ],
+        "fly": true
+       },
+       {
+        "as": 0,
+        "look": "you",
+        "lines": [
+         "The beam sweeps over you and Melody, and the ground drops away..."
+        ]
+       }
       ],
       "event": {
        "flag": "shamouti_palace_taken",
@@ -300188,6 +303434,7 @@
         8,
         11
        ],
+       "ride": "oi_palace_beam",
        "lines": [
         "You're inside the flying ship!"
        ]
@@ -300279,18 +303526,171 @@
        "not:shamouti_palace_crash"
       ],
       "flag": "shamouti_palace_crash_seen",
-      "cast": [],
-      "call": [
-       "Melody: Wha... what is this place?",
-       "Caged in the hall: Zapdos... and Moltres! And a carving on the wall: 'Disturb not the harmony of fire, ice or lightning...'",
-       "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning. Without Articuno, though, the set isn't complete.",
-       "Melody: That's disgusting! You treat Pokémon like things to collect!",
-       "Lawrence III: I'm no trainer, young lady. I am Lawrence III, a collector. I began with a single Mew card, and now I have all this!",
-       "Computer voice: Sensors show Articuno changing course.",
-       "Lawrence III: Excuse me. The last piece of the set is on its way. He hurries off."
+      "cast": [
+       {
+        "sheet": "mon:145",
+        "from": [
+         13,
+         10
+        ],
+        "to": [
+         13,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "Caged in the hall: Zapdos..."
+        ],
+        "fly": true
+       },
+       {
+        "sheet": "mon:146",
+        "from": [
+         3,
+         10
+        ],
+        "to": [
+         3,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "...and Moltres!"
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: Wha... what is this place?",
+         "Melody: There's a carving: 'Disturb not the harmony of fire, ice or lightning, lest these titans clash...'"
+        ]
+       },
+       {
+        "sheet": "oi_215.png",
+        "from": [
+         6,
+         3
+        ],
+        "path": [
+         [
+          6,
+          8
+         ],
+         [
+          8,
+          8
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning.",
+         "???: Without Articuno, though, the set isn't complete."
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: That's horrible! You treat Pokémon like things to collect!"
+        ]
+       },
+       {
+        "as": 3,
+        "lines": [
+         "Lawrence III: I'm no trainer, young lady. I'm Lawrence III, a collector. I began with a single Mew card...",
+         "Computer voice: Sensors show Articuno changing course.",
+         "Lawrence III: Excuse me. The last piece of the set is on its way."
+        ],
+        "leave_path": [
+         [
+          6,
+          8
+         ],
+         [
+          6,
+          3
+         ]
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
+         "Melody finds the cage controls. The cages swing open!"
+        ]
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          3,
+          12
+         ],
+         [
+          8,
+          12
+         ],
+         [
+          8,
+          4
+         ]
+        ],
+        "shake": 500,
+        "leave_path": [
+         [
+          8,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "as": 0,
+        "path": [
+         [
+          13,
+          12
+         ],
+         [
+          9,
+          12
+         ],
+         [
+          9,
+          4
+         ]
+        ],
+        "concurrent": true,
+        "leave_path": [
+         [
+          9,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "shake": 900,
+        "lines": [
+         "Melody: Moltres and Zapdos fought their way free!"
+        ]
+       },
+       {
+        "you": [],
+        "shake": 1500,
+        "lines": [
+         "The whole palace shakes... Melody: It's crashing! Hold on!"
+        ]
+       }
       ],
+      "call": [],
       "event": {
        "flag": "shamouti_palace_crash",
+       "also_flags": [
+        "orange_lightning_switch_a",
+        "orange_lightning_switch_b"
+       ],
        "travel": "LIGHTNING_ISLAND",
        "land_floor": [
         0,
@@ -300298,11 +303698,7 @@
         11
        ],
        "lines": [
-        "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
-        "Melody finds the cage controls. The cages swing open, and Moltres and Zapdos burst out of the hall!",
-        "The whole palace shakes... Melody: It's crashing! Hold on!",
-        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone.",
-        "Melody: We crash-landed on Lightning Island! Its sphere must be here somewhere. Hurry: if the three birds fight, the world will pay!"
+        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone."
        ]
       }
      },
@@ -300320,18 +303716,171 @@
        "not:shamouti_palace_crash"
       ],
       "flag": "shamouti_palace_crash_seen",
-      "cast": [],
-      "call": [
-       "Melody: Wha... what is this place?",
-       "Caged in the hall: Zapdos... and Moltres! And a carving on the wall: 'Disturb not the harmony of fire, ice or lightning...'",
-       "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning. Without Articuno, though, the set isn't complete.",
-       "Melody: That's disgusting! You treat Pokémon like things to collect!",
-       "Lawrence III: I'm no trainer, young lady. I am Lawrence III, a collector. I began with a single Mew card, and now I have all this!",
-       "Computer voice: Sensors show Articuno changing course.",
-       "Lawrence III: Excuse me. The last piece of the set is on its way. He hurries off."
+      "cast": [
+       {
+        "sheet": "mon:145",
+        "from": [
+         13,
+         10
+        ],
+        "to": [
+         13,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "Caged in the hall: Zapdos..."
+        ],
+        "fly": true
+       },
+       {
+        "sheet": "mon:146",
+        "from": [
+         3,
+         10
+        ],
+        "to": [
+         3,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "...and Moltres!"
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: Wha... what is this place?",
+         "Melody: There's a carving: 'Disturb not the harmony of fire, ice or lightning, lest these titans clash...'"
+        ]
+       },
+       {
+        "sheet": "oi_215.png",
+        "from": [
+         6,
+         3
+        ],
+        "path": [
+         [
+          6,
+          8
+         ],
+         [
+          8,
+          8
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning.",
+         "???: Without Articuno, though, the set isn't complete."
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: That's horrible! You treat Pokémon like things to collect!"
+        ]
+       },
+       {
+        "as": 3,
+        "lines": [
+         "Lawrence III: I'm no trainer, young lady. I'm Lawrence III, a collector. I began with a single Mew card...",
+         "Computer voice: Sensors show Articuno changing course.",
+         "Lawrence III: Excuse me. The last piece of the set is on its way."
+        ],
+        "leave_path": [
+         [
+          6,
+          8
+         ],
+         [
+          6,
+          3
+         ]
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
+         "Melody finds the cage controls. The cages swing open!"
+        ]
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          3,
+          12
+         ],
+         [
+          8,
+          12
+         ],
+         [
+          8,
+          4
+         ]
+        ],
+        "shake": 500,
+        "leave_path": [
+         [
+          8,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "as": 0,
+        "path": [
+         [
+          13,
+          12
+         ],
+         [
+          9,
+          12
+         ],
+         [
+          9,
+          4
+         ]
+        ],
+        "concurrent": true,
+        "leave_path": [
+         [
+          9,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "shake": 900,
+        "lines": [
+         "Melody: Moltres and Zapdos fought their way free!"
+        ]
+       },
+       {
+        "you": [],
+        "shake": 1500,
+        "lines": [
+         "The whole palace shakes... Melody: It's crashing! Hold on!"
+        ]
+       }
       ],
+      "call": [],
       "event": {
        "flag": "shamouti_palace_crash",
+       "also_flags": [
+        "orange_lightning_switch_a",
+        "orange_lightning_switch_b"
+       ],
        "travel": "LIGHTNING_ISLAND",
        "land_floor": [
         0,
@@ -300339,11 +303888,7 @@
         11
        ],
        "lines": [
-        "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
-        "Melody finds the cage controls. The cages swing open, and Moltres and Zapdos burst out of the hall!",
-        "The whole palace shakes... Melody: It's crashing! Hold on!",
-        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone.",
-        "Melody: We crash-landed on Lightning Island! Its sphere must be here somewhere. Hurry: if the three birds fight, the world will pay!"
+        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone."
        ]
       }
      },
@@ -300361,18 +303906,171 @@
        "not:shamouti_palace_crash"
       ],
       "flag": "shamouti_palace_crash_seen",
-      "cast": [],
-      "call": [
-       "Melody: Wha... what is this place?",
-       "Caged in the hall: Zapdos... and Moltres! And a carving on the wall: 'Disturb not the harmony of fire, ice or lightning...'",
-       "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning. Without Articuno, though, the set isn't complete.",
-       "Melody: That's disgusting! You treat Pokémon like things to collect!",
-       "Lawrence III: I'm no trainer, young lady. I am Lawrence III, a collector. I began with a single Mew card, and now I have all this!",
-       "Computer voice: Sensors show Articuno changing course.",
-       "Lawrence III: Excuse me. The last piece of the set is on its way. He hurries off."
+      "cast": [
+       {
+        "sheet": "mon:145",
+        "from": [
+         13,
+         10
+        ],
+        "to": [
+         13,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "Caged in the hall: Zapdos..."
+        ],
+        "fly": true
+       },
+       {
+        "sheet": "mon:146",
+        "from": [
+         3,
+         10
+        ],
+        "to": [
+         3,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "...and Moltres!"
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: Wha... what is this place?",
+         "Melody: There's a carving: 'Disturb not the harmony of fire, ice or lightning, lest these titans clash...'"
+        ]
+       },
+       {
+        "sheet": "oi_215.png",
+        "from": [
+         6,
+         3
+        ],
+        "path": [
+         [
+          6,
+          8
+         ],
+         [
+          8,
+          8
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning.",
+         "???: Without Articuno, though, the set isn't complete."
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: That's horrible! You treat Pokémon like things to collect!"
+        ]
+       },
+       {
+        "as": 3,
+        "lines": [
+         "Lawrence III: I'm no trainer, young lady. I'm Lawrence III, a collector. I began with a single Mew card...",
+         "Computer voice: Sensors show Articuno changing course.",
+         "Lawrence III: Excuse me. The last piece of the set is on its way."
+        ],
+        "leave_path": [
+         [
+          6,
+          8
+         ],
+         [
+          6,
+          3
+         ]
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
+         "Melody finds the cage controls. The cages swing open!"
+        ]
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          3,
+          12
+         ],
+         [
+          8,
+          12
+         ],
+         [
+          8,
+          4
+         ]
+        ],
+        "shake": 500,
+        "leave_path": [
+         [
+          8,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "as": 0,
+        "path": [
+         [
+          13,
+          12
+         ],
+         [
+          9,
+          12
+         ],
+         [
+          9,
+          4
+         ]
+        ],
+        "concurrent": true,
+        "leave_path": [
+         [
+          9,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "shake": 900,
+        "lines": [
+         "Melody: Moltres and Zapdos fought their way free!"
+        ]
+       },
+       {
+        "you": [],
+        "shake": 1500,
+        "lines": [
+         "The whole palace shakes... Melody: It's crashing! Hold on!"
+        ]
+       }
       ],
+      "call": [],
       "event": {
        "flag": "shamouti_palace_crash",
+       "also_flags": [
+        "orange_lightning_switch_a",
+        "orange_lightning_switch_b"
+       ],
        "travel": "LIGHTNING_ISLAND",
        "land_floor": [
         0,
@@ -300380,11 +304078,7 @@
         11
        ],
        "lines": [
-        "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
-        "Melody finds the cage controls. The cages swing open, and Moltres and Zapdos burst out of the hall!",
-        "The whole palace shakes... Melody: It's crashing! Hold on!",
-        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone.",
-        "Melody: We crash-landed on Lightning Island! Its sphere must be here somewhere. Hurry: if the three birds fight, the world will pay!"
+        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone."
        ]
       }
      },
@@ -300402,18 +304096,171 @@
        "not:shamouti_palace_crash"
       ],
       "flag": "shamouti_palace_crash_seen",
-      "cast": [],
-      "call": [
-       "Melody: Wha... what is this place?",
-       "Caged in the hall: Zapdos... and Moltres! And a carving on the wall: 'Disturb not the harmony of fire, ice or lightning...'",
-       "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning. Without Articuno, though, the set isn't complete.",
-       "Melody: That's disgusting! You treat Pokémon like things to collect!",
-       "Lawrence III: I'm no trainer, young lady. I am Lawrence III, a collector. I began with a single Mew card, and now I have all this!",
-       "Computer voice: Sensors show Articuno changing course.",
-       "Lawrence III: Excuse me. The last piece of the set is on its way. He hurries off."
+      "cast": [
+       {
+        "sheet": "mon:145",
+        "from": [
+         13,
+         10
+        ],
+        "to": [
+         13,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "Caged in the hall: Zapdos..."
+        ],
+        "fly": true
+       },
+       {
+        "sheet": "mon:146",
+        "from": [
+         3,
+         10
+        ],
+        "to": [
+         3,
+         10
+        ],
+        "stay": true,
+        "lines": [
+         "...and Moltres!"
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: Wha... what is this place?",
+         "Melody: There's a carving: 'Disturb not the harmony of fire, ice or lightning, lest these titans clash...'"
+        ]
+       },
+       {
+        "sheet": "oi_215.png",
+        "from": [
+         6,
+         3
+        ],
+        "path": [
+         [
+          6,
+          8
+         ],
+         [
+          8,
+          8
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "???: Well, this is a pleasure, if unexpected. Moltres, bird of fire. Zapdos, bird of lightning.",
+         "???: Without Articuno, though, the set isn't complete."
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: That's horrible! You treat Pokémon like things to collect!"
+        ]
+       },
+       {
+        "as": 3,
+        "lines": [
+         "Lawrence III: I'm no trainer, young lady. I'm Lawrence III, a collector. I began with a single Mew card...",
+         "Computer voice: Sensors show Articuno changing course.",
+         "Lawrence III: Excuse me. The last piece of the set is on its way."
+        ],
+        "leave_path": [
+         [
+          6,
+          8
+         ],
+         [
+          6,
+          3
+         ]
+        ]
+       },
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
+         "Melody finds the cage controls. The cages swing open!"
+        ]
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          3,
+          12
+         ],
+         [
+          8,
+          12
+         ],
+         [
+          8,
+          4
+         ]
+        ],
+        "shake": 500,
+        "leave_path": [
+         [
+          8,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "as": 0,
+        "path": [
+         [
+          13,
+          12
+         ],
+         [
+          9,
+          12
+         ],
+         [
+          9,
+          4
+         ]
+        ],
+        "concurrent": true,
+        "leave_path": [
+         [
+          9,
+          1
+         ]
+        ],
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "shake": 900,
+        "lines": [
+         "Melody: Moltres and Zapdos fought their way free!"
+        ]
+       },
+       {
+        "you": [],
+        "shake": 1500,
+        "lines": [
+         "The whole palace shakes... Melody: It's crashing! Hold on!"
+        ]
+       }
       ],
+      "call": [],
       "event": {
        "flag": "shamouti_palace_crash",
+       "also_flags": [
+        "orange_lightning_switch_a",
+        "orange_lightning_switch_b"
+       ],
        "travel": "LIGHTNING_ISLAND",
        "land_floor": [
         0,
@@ -300421,11 +304268,7 @@
         11
        ],
        "lines": [
-        "Melody: The legend... it's coming true! The birds have to be set free, or the titans will clash!",
-        "Melody finds the cage controls. The cages swing open, and Moltres and Zapdos burst out of the hall!",
-        "The whole palace shakes... Melody: It's crashing! Hold on!",
-        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone.",
-        "Melody: We crash-landed on Lightning Island! Its sphere must be here somewhere. Hurry: if the three birds fight, the world will pay!"
+        "...You come round on the ground. The flying palace slides over the edge of a ravine and is gone."
        ]
       }
      }
@@ -300512,6 +304355,32 @@
       ],
       "when": [
        {
+        "flag": "heard_shamouti_legend",
+        "f": "oi_ground/1_81_pre.png"
+       },
+       {
+        "flags": [
+         "heard_shamouti_legend",
+         "orange_lightning_switch_a"
+        ],
+        "f": "oi_ground/1_81_pre_a.png"
+       },
+       {
+        "flags": [
+         "heard_shamouti_legend",
+         "orange_lightning_switch_b"
+        ],
+        "f": "oi_ground/1_81_pre_b.png"
+       },
+       {
+        "flags": [
+         "heard_shamouti_legend",
+         "orange_lightning_switch_a",
+         "orange_lightning_switch_b"
+        ],
+        "f": "oi_ground/1_81_pre_ab.png"
+       },
+       {
         "flag": "shamouti_palace_crash",
         "f": "oi_ground/1_81_shut.png"
        },
@@ -300544,6 +304413,92 @@
       "d": "d"
      }
     },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "shamouti_palace_crash",
+       "not:shamouti_lightning_sphere",
+       "not:orange_lightning_birds_seen"
+      ],
+      "flag": "orange_lightning_birds_seen",
+      "cast": [
+       {
+        "person": "Melody",
+        "lines": [
+         "Melody: We crash-landed on Lightning Island! Its sphere must be here somewhere."
+        ]
+       },
+       {
+        "sheet": "mon:146",
+        "from": [
+         26,
+         6
+        ],
+        "path": [
+         [
+          38,
+          6
+         ],
+         [
+          38,
+          0
+         ]
+        ],
+        "look": [
+         32,
+         8
+        ],
+        "fly": true
+       },
+       {
+        "sheet": "mon:145",
+        "from": [
+         24,
+         7
+        ],
+        "path": [
+         [
+          38,
+          7
+         ],
+         [
+          38,
+          0
+         ]
+        ],
+        "concurrent": true,
+        "fly": true
+       },
+       {
+        "sheet": "mon:144",
+        "from": [
+         22,
+         8
+        ],
+        "path": [
+         [
+          38,
+          8
+         ],
+         [
+          38,
+          0
+         ]
+        ],
+        "concurrent": true,
+        "fly": true
+       },
+       {
+        "person": "Melody",
+        "look": "you",
+        "lines": [
+         "Melody: Moltres, Zapdos... and Articuno! Hurry: if the three birds fight, the world will pay!"
+        ]
+       }
+      ]
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -300595,25 +304550,148 @@
       "lines": [
        "Big rocks block the way."
       ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        17
+       ],
+       [
+        23,
+        17
+       ],
+       [
+        24,
+        17
+       ],
+       [
+        22,
+        18
+       ],
+       [
+        23,
+        18
+       ],
+       [
+        24,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "orange_lightning_switch_a"
+      },
+      "lines": [
+       "Big rocks block the way."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        31,
+        21
+       ],
+       [
+        32,
+        21
+       ],
+       [
+        33,
+        21
+       ],
+       [
+        31,
+        22
+       ],
+       [
+        32,
+        22
+       ],
+       [
+        33,
+        22
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "orange_lightning_switch_b"
+      },
+      "lines": [
+       "Big rocks block the way."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        36,
+        10
+       ],
+       [
+        37,
+        10
+       ],
+       [
+        37,
+        11
+       ],
+       [
+        37,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "shamouti_palace_crash"
+      },
+      "lines": [
+       "Big rocks block the way."
+      ]
      }
     ],
     "secret_switches": {
      "4,35": {
-      "flag": "shamouti_palace_crash",
+      "ask": [
+       "There's a secret switch here! Do you want to press it?"
+      ],
+      "later": [
+       "Maybe later."
+      ],
+      "shake": 700,
+      "flag": "orange_lightning_switch_a",
+      "lines": [
+       "You press it... A small tremor shakes the cave!"
+      ],
       "done": [
        "There's a secret switch here. It has already been pressed."
       ]
      },
      "42,21": {
-      "flag": "shamouti_palace_crash",
+      "ask": [
+       "There's a secret switch here! Do you want to press it?"
+      ],
+      "later": [
+       "Maybe later."
+      ],
+      "shake": 700,
+      "flag": "orange_lightning_switch_b",
+      "lines": [
+       "You press it... A small tremor shakes the cave!"
+      ],
       "done": [
        "There's a secret switch here. It has already been pressed."
       ]
      },
      "39,11": {
+      "ask": [
+       "There's a secret switch here! Do you want to press it?"
+      ],
+      "later": [
+       "Maybe later."
+      ],
+      "shake": 700,
       "flag": "orange_lightning_switch",
       "lines": [
-       "There's a secret switch here!",
        "You press it... A small tremor shakes the cave!"
       ],
       "done": [
@@ -300640,6 +304718,32 @@
        40
       ],
       "when": [
+       {
+        "flag": "heard_shamouti_legend",
+        "f": "oi_top/1_81_pre.png"
+       },
+       {
+        "flags": [
+         "heard_shamouti_legend",
+         "orange_lightning_switch_a"
+        ],
+        "f": "oi_top/1_81_pre_a.png"
+       },
+       {
+        "flags": [
+         "heard_shamouti_legend",
+         "orange_lightning_switch_b"
+        ],
+        "f": "oi_top/1_81_pre_b.png"
+       },
+       {
+        "flags": [
+         "heard_shamouti_legend",
+         "orange_lightning_switch_a",
+         "orange_lightning_switch_b"
+        ],
+        "f": "oi_top/1_81_pre_ab.png"
+       },
        {
         "flag": "shamouti_palace_crash",
         "f": "oi_top/1_81_shut.png"
@@ -300743,12 +304847,153 @@
        "not:shamouti_lightning_done"
       ],
       "flag": "shamouti_lightning_scene",
-      "cast": [],
-      "call": [
-       "Melody: Well done, you've got the Lightning Sphere! Now let's get off this island, fast!",
-       "Overhead, Moltres, Zapdos and Articuno clash in a storm of fire, ice and lightning.",
-       "Melody: The legendary birds are still fighting! ...Wait. That sound...",
-       "A deep, gentle song rolls in over the sea. A mysterious force lifts you off your feet..."
+      "cast": [
+       {
+        "sheet": "oi_216.png",
+        "from": [
+         23,
+         35
+        ],
+        "path": [
+         [
+          23,
+          30
+         ]
+        ],
+        "stay": true,
+        "lines": [
+         "Melody: Well done, you've got the Lightning Sphere! Now let's get off this island, fast!"
+        ]
+       },
+       {
+        "sheet": "mon:146",
+        "from": [
+         14,
+         17
+        ],
+        "path": [
+         [
+          22,
+          17
+         ],
+         [
+          22,
+          22
+         ]
+        ],
+        "look": [
+         22,
+         21
+        ],
+        "stay": true,
+        "fly": true
+       },
+       {
+        "sheet": "mon:145",
+        "from": [
+         14,
+         17
+        ],
+        "path": [
+         [
+          19,
+          17
+         ],
+         [
+          19,
+          21
+         ]
+        ],
+        "concurrent": true,
+        "stay": true,
+        "fly": true
+       },
+       {
+        "sheet": "mon:144",
+        "from": [
+         14,
+         17
+        ],
+        "path": [
+         [
+          25,
+          17
+         ],
+         [
+          25,
+          21
+         ]
+        ],
+        "concurrent": true,
+        "stay": true,
+        "shake": 600,
+        "lines": [
+         "Overhead, Moltres, Zapdos and Articuno clash in a storm of fire, ice and lightning!"
+        ],
+        "fly": true
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          22,
+          19
+         ],
+         [
+          22,
+          22
+         ]
+        ],
+        "stay": true,
+        "fly": true
+       },
+       {
+        "as": 2,
+        "path": [
+         [
+          20,
+          21
+         ],
+         [
+          19,
+          21
+         ]
+        ],
+        "concurrent": true,
+        "stay": true,
+        "fly": true
+       },
+       {
+        "as": 3,
+        "path": [
+         [
+          24,
+          21
+         ],
+         [
+          25,
+          21
+         ]
+        ],
+        "concurrent": true,
+        "stay": true,
+        "shake": 500,
+        "fly": true
+       },
+       {
+        "as": 0,
+        "look": "you",
+        "stay": true,
+        "lines": [
+         "Melody: The legendary birds are still fighting! ...Wait. That sound..."
+        ]
+       },
+       {
+        "you": [],
+        "lines": [
+         "A deep, gentle song rolls in over the sea. A mysterious force lifts you off your feet..."
+        ]
+       }
       ],
       "event": {
        "flag": "shamouti_lightning_done",
@@ -300758,8 +305003,9 @@
         30,
         32
        ],
+       "ride": "oi_force",
        "lines": [
-        "...and you land in front of Shamouti's shrine."
+        "...and you land in front of Shamouti's shrine. Snow is falling, and the sea is frozen!"
        ]
       }
      }
@@ -301276,13 +305522,17 @@
      }
     ],
     "switch": {
+     "ask": [
+      "A statue of a Pokémon... There's a secret switch on it! Do you want to press it?"
+     ],
+     "later": [
+      "Maybe later."
+     ],
      "flag": "orange_lab_switch_2",
      "on": [
-      "A statue of a Pokémon... There's a secret switch on it!",
       "Click! Somewhere in the lab, barriers moved."
      ],
      "off": [
-      "A statue of a Pokémon... There's a secret switch on it!",
       "Click! The barriers moved back."
      ]
     },
@@ -301500,13 +305750,17 @@
      }
     ],
     "switch": {
+     "ask": [
+      "A statue of a Pokémon... There's a secret switch on it! Do you want to press it?"
+     ],
+     "later": [
+      "Maybe later."
+     ],
      "flag": "orange_lab_switch_1",
      "on": [
-      "A statue of a Pokémon... There's a secret switch on it!",
       "Click! Somewhere in the lab, barriers moved."
      ],
      "off": [
-      "A statue of a Pokémon... There's a secret switch on it!",
       "Click! The barriers moved back."
      ]
     },
@@ -301651,13 +305905,17 @@
      }
     ],
     "switch": {
+     "ask": [
+      "A statue of a Pokémon... There's a secret switch on it! Do you want to press it?"
+     ],
+     "later": [
+      "Maybe later."
+     ],
      "flag": "orange_lab_switch_2",
      "on": [
-      "A statue of a Pokémon... There's a secret switch on it!",
       "Click! Somewhere in the lab, barriers moved."
      ],
      "off": [
-      "A statue of a Pokémon... There's a secret switch on it!",
       "Click! The barriers moved back."
      ]
     },
@@ -301705,7 +305963,7 @@
      "cccccccccccc\"\"\"c\"\".\"\"\".\"\"\"cccccccccccc",
      "cccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccccc",
      "ccccccccccc\"\".\"\"\"\"\"\"\"\"c\"\"\"\"ccccccccccc",
-     "cccccccccc\"\"\"\"\"\"\"\"\"\"N\"\"\"\".\"\"cccccccccc",
+     "cccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"cccccccccc",
      "cccccccccc\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"cccccccccc",
      "cccccccccc\"c\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccc",
      "cccccccccc\"\"\".\"\"\"\"\"\"\"\"\"\"c\"\"\"cccccccccc",
@@ -301737,9 +305995,6 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "people": [
-     "MEW"
-    ],
     "links": {
      "18,28": [
       0,
@@ -301752,89 +306007,6 @@
       5
      ]
     },
-    "moves": {
-     "20,17": {
-      "m": "face",
-      "d": "d"
-     }
-    },
-    "scenes": [
-     {
-      "trigger": {
-       "zone": [
-        17,
-        13,
-        17,
-        13
-       ]
-      },
-      "condition": [
-       "not:orange_mew_1"
-      ],
-      "flag": "orange_mew_1",
-      "cast": [],
-      "call": [
-       "A pink blur shoots past you! ...Mew?"
-      ]
-     },
-     {
-      "trigger": {
-       "zone": [
-        24,
-        22,
-        24,
-        22
-       ]
-      },
-      "condition": [
-       "orange_mew_1",
-       "not:orange_mew_2"
-      ],
-      "flag": "orange_mew_2",
-      "cast": [],
-      "call": [
-       "There it is again! Something giggles among the flowers."
-      ]
-     },
-     {
-      "trigger": {
-       "zone": [
-        12,
-        17,
-        12,
-        17
-       ]
-      },
-      "condition": [
-       "orange_mew_2",
-       "not:orange_mew_3"
-      ],
-      "flag": "orange_mew_3",
-      "cast": [],
-      "call": [
-       "A little pink Pokémon peeks out at you, then vanishes again."
-      ]
-     },
-     {
-      "trigger": {
-       "zone": [
-        20,
-        18,
-        20,
-        18
-       ]
-      },
-      "condition": [
-       "orange_mew_3",
-       "not:orange_mew_found"
-      ],
-      "flag": "orange_mew_found",
-      "cast": [],
-      "call": [
-       "Mew! It floats down right in front of you and stops. It wants to play... a battle!"
-      ]
-     }
-    ],
     "parts": true,
     "overheads": [
      {
@@ -301869,8 +306041,7 @@
    "MASTER BALL": 2,
    "MOON STONE": 2,
    "MEWTWO": 3,
-   "PP UP": 3,
-   "MEW": 4
+   "PP UP": 3
   }
  },
  "SHOWBOAT": {
@@ -302062,7 +306233,8 @@
        "lines": [
         "What an incredible show!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan ",
@@ -302071,7 +306243,8 @@
        "lines": [
         "One of the best performances I've ever seen!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan  ",
@@ -302080,7 +306253,8 @@
        "lines": [
         "What an incredible show!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan    ",
@@ -302089,7 +306263,8 @@
        "lines": [
         "What an incredible show!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan   ",
@@ -302098,7 +306273,8 @@
        "lines": [
         "One of the best performances I've ever seen!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan     ",
@@ -302107,7 +306283,8 @@
        "lines": [
         "One of the best performances I've ever seen!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan      ",
@@ -302116,7 +306293,8 @@
        "lines": [
         "What an incredible show!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      "Usher",
      {
@@ -302126,7 +306304,8 @@
        "lines": [
         "One of the best performances I've ever seen!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan         ",
@@ -302135,7 +306314,8 @@
        "lines": [
         "One of the best performances I've ever seen!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Fan        ",
@@ -302144,7 +306324,8 @@
        "lines": [
         "What an incredible show!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      }
     ],
     "links": {
@@ -302219,16 +306400,288 @@
        "not:orange_showboat_show"
       ],
       "flag": "orange_showboat_seen",
-      "cast": [],
       "call": [
-       "Usher: Hello there! Here for our new show, 'The Heroic Hitmonchan'? Take any seat in the front row.",
-       "You wait a moment... the lights go down, and the play begins: a Hitmonchan who dreams of being boxing champion.",
-       "Hitmonchan: I can't walk away. I have to stand here and fight, or I'd never forgive myself!",
-       "Machoke: Get ready to lose, because I'm going to be the champion!",
-       "The two trade punches... Machoke: Aaargh! ...I lost... Abra counts: 1... 2... 3... all the way to 10!",
-       "Hitmonchan: Hooray! Victory! Clefable: Congratulations, darling! Hitmonchan: I owe it all to you, my love!",
-       "Storyteller: And so Hitmonchan defeated its rival, Machoke.",
-       "Hmm... how can those Pokémon talk? The stage door beside the curtain is open a crack..."
+       "Usher: Hello there! Here for our new show, 'The Heroic Hitmonchan'? Take any seat in the front row."
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          16,
+          12
+         ],
+         [
+          16,
+          8
+         ],
+         [
+          12,
+          8
+         ],
+         [
+          12,
+          9
+         ]
+        ],
+        "face": "u",
+        "lines": [
+         "You take a seat in the front row. The lights go down..."
+        ]
+       },
+       {
+        "sheet": "mon:107",
+        "from": [
+         16,
+         5
+        ],
+        "path": [
+         [
+          16,
+          4
+         ],
+         [
+          9,
+          4
+         ]
+        ],
+        "face": "r",
+        "look": [
+         12,
+         6
+        ],
+        "stay": true,
+        "lines": [
+         "Hitmonchan: I can't walk away. I have to stand here and fight, or I'd never forgive myself!"
+        ],
+        "ground": "stage"
+       },
+       {
+        "sheet": "mon:67",
+        "from": [
+         16,
+         5
+        ],
+        "path": [
+         [
+          16,
+          4
+         ],
+         [
+          12,
+          4
+         ]
+        ],
+        "face": "l",
+        "concurrent": true,
+        "stay": true,
+        "lines": [
+         "Machoke: Get ready to lose, because I'm going to be the champion!"
+        ],
+        "ground": "stage"
+       },
+       {
+        "sheet": "mon:63",
+        "from": [
+         16,
+         5
+        ],
+        "path": [
+         [
+          16,
+          3
+         ],
+         [
+          10,
+          3
+         ]
+        ],
+        "face": "d",
+        "concurrent": true,
+        "stay": true,
+        "ground": "stage"
+       },
+       {
+        "sheet": "mon:36",
+        "from": [
+         16,
+         5
+        ],
+        "path": [
+         [
+          16,
+          2
+         ],
+         [
+          11,
+          2
+         ]
+        ],
+        "face": "d",
+        "concurrent": true,
+        "stay": true,
+        "ground": "stage"
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          11,
+          4
+         ]
+        ],
+        "face": "r",
+        "shake": 300,
+        "stay": true,
+        "lines": [
+         "The two trade punches!"
+        ],
+        "ground": "stage"
+       },
+       {
+        "as": 2,
+        "path": [
+         [
+          13,
+          4
+         ]
+        ],
+        "face": "l",
+        "shake": 300,
+        "stay": true,
+        "lines": [
+         "Machoke: Aaargh! ...I lost..."
+        ],
+        "ground": "stage"
+       },
+       {
+        "as": 3,
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Abra: 1... 2... 3... ... 9... 10! Hitmonchan is the winner!"
+        ],
+        "ground": "stage"
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          10,
+          4
+         ]
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Hitmonchan: Hooray! Victory!"
+        ],
+        "ground": "stage"
+       },
+       {
+        "as": 4,
+        "path": [
+         [
+          11,
+          3
+         ]
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Clefable: Congratulations, darling!"
+        ],
+        "ground": "stage"
+       },
+       {
+        "as": 1,
+        "face": "r",
+        "stay": true,
+        "lines": [
+         "Hitmonchan: I owe it all to you, my love!",
+         "Storyteller: And so Hitmonchan beat its rival, Machoke. The end!"
+        ],
+        "ground": "stage"
+       },
+       {
+        "as": 1,
+        "path": [
+         [
+          16,
+          4
+         ],
+         [
+          16,
+          5
+         ]
+        ],
+        "ground": "stage"
+       },
+       {
+        "as": 2,
+        "path": [
+         [
+          16,
+          4
+         ],
+         [
+          16,
+          5
+         ]
+        ],
+        "concurrent": true,
+        "ground": "stage"
+       },
+       {
+        "as": 3,
+        "path": [
+         [
+          16,
+          3
+         ],
+         [
+          16,
+          5
+         ]
+        ],
+        "concurrent": true,
+        "ground": "stage"
+       },
+       {
+        "as": 4,
+        "path": [
+         [
+          16,
+          3
+         ],
+         [
+          16,
+          5
+         ]
+        ],
+        "concurrent": true,
+        "ground": "stage"
+       },
+       {
+        "you": [
+         [
+          12,
+          8
+         ],
+         [
+          16,
+          8
+         ],
+         [
+          16,
+          6
+         ]
+        ],
+        "face": "u",
+        "look": "you",
+        "lines": [
+         "Hmm... how can those Pokémon talk? The stage door beside the curtain is open a crack..."
+        ]
+       }
       ],
       "event": {
        "flag": "orange_showboat_show",
@@ -302295,7 +306748,8 @@
        "lines": [
         "...  ...  (They're busy performing.)"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      {
       "text": "Voice actor ",
@@ -302304,7 +306758,8 @@
        "lines": [
         "Please stop bothering me. I'm performing right now!"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      },
      "Kay",
      {
@@ -302314,7 +306769,8 @@
        "lines": [
         "...  ...  (They're busy performing.)"
        ]
-      }
+      },
+      "flag_condition": "not orange_kay_battle"
      }
     ],
     "links": {
