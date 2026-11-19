@@ -741,7 +741,7 @@ class WalkTownState(CityState):
         was = getattr(self.game, "walk_town_pos", None)
         landing, self.game.fly_landing = getattr(self.game, "fly_landing", None), None   # (Fly, Orange 11-17: down outside the Center's door)
         fly_door = next((t for t, k in self.doors.items() if k == "center"), None) if landing == self.area_key else None
-        if fly_door and str(self.area_data.get("region") or "").upper() == "ORANGE":
+        if fly_door:   # (every region, 11-18: Fly lands you outside the Center)
             spot = (fly_door[0], fly_door[1] + 1)
             self.player, self.facing = (spot if self._open(spot) else self._nearest_open(spot)), (0, 1)
         elif was and was[0] == self.area_key and self._open(was[1]):

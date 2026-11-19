@@ -12,18 +12,28 @@ from src.config import WHITE, BLACK, RED, GOLD
 from src.ui.mon_tags import fit_sprite
 
 
-def fly_ok(game, key):
-    """Can Fly take you there. Orange (Jordan 11-17): only places with a Pokemon Center (a walked one: its map has a
-    "center" room, a route's own town too: Desert Town; a menu-era one: a Heal option). Every other region: any town
-    you've visited."""
+def has_center(game, key):
+    """A place with a Pokemon Center: a walked map with a "center" room or Center building (a route's too: Route 10,
+    Desert Town), or a menu-era place with a Heal option."""
     data = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(key) or {}
-    if str(data.get("region") or "").upper() != "ORANGE":
-        return True
     from src.states.overworld import walk_town
     m = walk_town.custom(game).get(key)
-    if m:
-        return "center" in (m.get("rooms") or {})
+    if isinstance(m, dict) and ("center" in (m.get("rooms") or {}) or "center" in (m.get("buildings") or {}).values()
+                                or "center" in (m.get("inside") or {}).values()):
+        return True
     return any(str(o.get("action") or "").upper() == "HEAL" for o in data.get("explore_options") or [])
+
+
+def fly_ok(game, key):
+    """Can Fly take you there (Jordan 11-17, set during Orange; every region 11-18): a place with a Pokemon Center, or
+    the region's home town (every game lets you fly home), or a Fly island (Navel Rock, Birth Island)."""
+    data = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(key) or {}
+    if data.get("fly_island"):
+        return True
+    region = str(data.get("region") or "KANTO").upper()
+    if key == (game.story_manager.get_region_start(region) or {}).get("start_area"):
+        return True
+    return has_center(game, key)
 
 
 def fly_name(game, key):
@@ -38,10 +48,10 @@ def fly_land(game, key):
     from src.states.overworld import AreaTransitionState
     game.fly_landing, game.walk_town_pos = key, None
     data = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(key) or {}
-    if data.get("fly_point") and data.get("area_type") != "town":
+    if data.get("area_type") != "town":   # (a route with a Center: Route 10, Desert Town on Route 64: outside its door)
         from src.states.overworld import walk_town
         m = walk_town.custom(game).get(key) or {}
-        door = next((d for d, r in (m.get("inside") or {}).items() if r == data["fly_point"].get("room", "center")), None)
+        door = next((d for d, r in (m.get("inside") or {}).items() if r == (data.get("fly_point") or {}).get("room", "center")), None)
         if door:
             x, y = (int(v) for v in door.split(","))
             game.arrive_floor = (key, 0, [x, y + 1])
@@ -76,7 +86,7 @@ class FlyState(GameState):
         cities = []
         prog = game.loader.area_data.get("STORY_PROGRESSION", {})
         for key, data in prog.items():
-            if (data.get("area_type") == "town" or data.get("fly_island") or data.get("fly_point")) \
+            if (data.get("area_type") == "town" or data.get("fly_island") or data.get("fly_point") or has_center(game, key)) \
                     and story.story_flags.get(f"visited_{key}") and fly_ok(game, key):   # (fly_island: Navel Rock, Birth Island;
                 cities.append((key, fly_name(game, key)))                              #  fly_point: Desert Town, Route 64)
         if story.inventory.get("MT_SILVER_MAP", 0) > 0:
