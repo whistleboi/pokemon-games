@@ -208,4 +208,29 @@ check(all(k in ms for k in ("hoenn_m1", "hoenn_m1b", "hoenn_m2", "hoenn_m2b", "h
 from src.states import contest as _ct
 rc = _ct.RibbonCaseState(g, city); g.change_state(rc); rc.draw()
 check(True, "the ribbon case draws")
+# ---- the out-of-work Move Reminder and Move Deleter (Jordan 11-18: kept, with a pool of cheeky grumbles)
+import json as _jq
+from src.world import quips as _quips
+from src.states.overworld import common as _cq
+_found = []
+for _f in ("hoenn_area_data.json", "johto_area_data.json", "orange_area_data.json", "town_maps.json"):
+    def _w(o):
+        if isinstance(o, dict):
+            if isinstance(o.get("event"), dict) and o["event"].get("quips"):
+                _found.append((str(o.get("text")), o["event"]))
+            for v in o.values():
+                _w(v)
+        elif isinstance(o, list):
+            for v in o:
+                _w(v)
+    _w(_jq.load(open(os.path.join("assets", _f), encoding="utf-8")))
+check(len(_found) == 6 and all(e["quips"] == ("move_reminder" if t == "Move Reminder" else "move_deleter") for t, e in _found),
+      f"all six Move Reminders and Deleters grumble ({sorted(t for t, _ in _found)})")
+_said = []
+for _ in range(12):
+    _cq._run_story_event(g.current_state, dict(_found[0][1]), lambda c: True, lambda ls: _said.append(tuple(ls)))
+_kind = _found[0][1]["quips"]
+check(all(list(x) in _quips.POOLS[_kind] for x in _said) and len(set(_said)) >= 3,
+      f"{_found[0][0]}: a line from its own pool each time, not always the same ({len(set(_said))} different in 12)")
+check(all(len(l) <= 120 for pool in _quips.POOLS.values() for q in pool for l in q), "every grumble fits the text box (120 characters a line at most)")
 print(f"##### menus: {fails} fails")

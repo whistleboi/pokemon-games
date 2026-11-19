@@ -320,6 +320,12 @@ def _run_story_event(state, key, check, show):
         stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")
                       and all(check(c) for c in st.get("requires", []))), None)
         ev = stage or {"lines": ev.get("done") or ["..."]}
+    if ev.get("quips"):   # (the out-of-work Move Reminder / Move Deleter: a different grumble each time; src/world/quips.py)
+        from src.world import quips
+        q = quips.pick(ev["quips"])
+        if q:
+            show(_resolve_lines(game, q))
+            return
     if ev.get("daily") and ev.get("flag"):  # (once a day, by the real clock: an Apricorn tree; HGSS, Jordan 11-15)
         import datetime
         today = f"{ev['flag']}@{datetime.date.today().isoformat()}"

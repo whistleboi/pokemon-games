@@ -23797,7 +23797,7 @@
      {
       "text": "Move Deleter",
       "action": "EVENT",
-      "event": {
+      "event": { "quips": "move_deleter",
        "lines": [
         "Uh... Oh, yes, I'm the Move Deleter. I can make Pokémon forget moves. Your team looks fine as it is, though!"
        ]
@@ -107992,7 +107992,7 @@
      {
       "text": "Move Deleter",
       "action": "EVENT",
-      "event": {
+      "event": { "quips": "move_deleter",
        "lines": [
         "Move Deleter: Hm? Oh, yes... I used to help Pokémon forget their moves.",
         "Move Deleter: But, well... I forgot how to do that!"
