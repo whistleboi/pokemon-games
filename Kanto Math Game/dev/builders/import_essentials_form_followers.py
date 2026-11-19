@@ -15,7 +15,7 @@ import os
 import shutil
 import sys
 
-SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Downloads")
+SRC = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Dad\Games\Python Games\pokemon-games\sources"
 EVERLASTING = os.path.join(SRC, "kalos", "(Beta v1.5) Pokemon Everlasting X Devastating Y",
                            "(Beta v1.5) Pokemon Everlasting X Devastating Y", "Graphics", "Characters")
 ZA_MEGAS = os.path.join(SRC, "ZA Megas-20261107T054444Z-1-001", "ZA Megas")

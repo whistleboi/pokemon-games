@@ -15,7 +15,7 @@ import sys
 os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
 import pygame
 
-SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Downloads")
+SRC = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Dad\Games\Python Games\pokemon-games\sources"
 OUT = os.path.join("assets", "dungeon", "followers")
 SINGLE = {"archaludon.png": "1018.png", "Ogerpon Teal Mask.png": "1017.png",
           "Ogerpon Wellspring Mask.png": "1017_water_mask.png", "Terapagos Terastal Form.png": "1024_terra.png",

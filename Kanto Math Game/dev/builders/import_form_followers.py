@@ -97,7 +97,7 @@ def forms_by_id():
 
 
 def main():
-    src = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Downloads")
+    src = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Dad\Games\Python Games\pokemon-games\sources"
     pygame.init()
     pygame.display.set_mode((8, 8))
     load = lambda n: pygame.image.load(os.path.join(src, n)).convert()

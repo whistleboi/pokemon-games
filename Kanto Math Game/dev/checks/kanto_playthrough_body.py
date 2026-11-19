@@ -1463,7 +1463,7 @@ for x in GATES:
         print(f"  [{x['mission']}, {x['badges']} badges] {x['from']} -> {x['to']}: {x['said'] or '(a toast, not caught)'}")
 
 # ---------------------------------------------------------------- second pass: FireRed's story things the Journal never names
-# (the saved walkthrough: Downloads/FRLG/Walkthrough_Pokemon FireRed and LeafGreen_Part N; reference only, nothing copied)
+# (the saved walkthrough: C:/Users/Dad/Games/Python Games/pokemon-games/sources/FRLG/Walkthrough_Pokemon FireRed and LeafGreen_Part N; reference only, nothing copied)
 import glob, re as _re
 THINGS = [   # (what, words to look for in a mission's text, how the run shows it was got: an item or a flag)
     ("Oak's Parcel -> Pokedex", ["parcel", "pokedex"], "flag:received_pokedex_kanto"),
@@ -1492,7 +1492,7 @@ THINGS = [   # (what, words to look for in a mission's text, how the run shows i
     ("Victory Road (Strength puzzles)", ["victory road"], "flag:visited_VICTORY_ROAD"),
     ("Elite Four and the Champion", ["elite four", "champion"], "flag:beat_champion"),
 ]
-_wk = sorted(glob.glob(os.path.join(os.path.expanduser("~"), "Downloads", "FRLG", "Walkthrough_*Part *html")))
+_wk = sorted(glob.glob(os.path.join(r"C:\Users\Dad\Games\Python Games\pokemon-games\sources", "FRLG", "Walkthrough_*Part *html")))
 _wtext = ""
 for _f in _wk:
     try:

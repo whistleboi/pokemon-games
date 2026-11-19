@@ -14,7 +14,7 @@ import re
 import shutil
 import sys
 
-SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Downloads")
+SRC = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Dad\Games\Python Games\pokemon-games\sources"
 OUT = os.path.join("assets", "dungeon", "followers")
 TYPOS = {"BANNETTE": "BANETTE", "CORVINIGHT": "CORVIKNIGHT", "HOUDOOM": "HOUNDOOM",
          "PIDGEOTTO": "PIDGEOT"}  # (the pack's own misspellings: Pidgeotto has no Mega, Mega Pidgeot is filed so)

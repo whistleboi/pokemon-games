@@ -16,7 +16,7 @@ import shutil
 import sys
 import zlib
 
-ORRE_GAME = os.path.join(os.path.expanduser("~"), "Downloads", "Pokemon_Orre_2.1.1", "Pokemon_Orre_2.1.1_reupload")
+ORRE_GAME = os.path.join(r"C:\Users\Dad\Games\Python Games\pokemon-games\sources\orre", "Pokemon_Orre_2.1.1", "Pokemon_Orre_2.1.1_reupload")
 DATA = os.path.join("assets", "orre_area_data.json")
 OUT = os.path.join("assets", "sprites", "trainers")
 

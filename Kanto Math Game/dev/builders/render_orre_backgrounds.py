@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rxdata  # noqa: E402
 from render_journeys_backgrounds import Journeys, map_path, mostly_void  # noqa: E402
 
-ORRE_GAME = os.path.join(os.path.expanduser("~"), "Downloads", "Pokemon_Orre_2.1.1", "Pokemon_Orre_2.1.1_reupload")
+ORRE_GAME = os.path.join(r"C:\Users\Dad\Games\Python Games\pokemon-games\sources\orre", "Pokemon_Orre_2.1.1", "Pokemon_Orre_2.1.1_reupload")
 # our area -> the fan game's map number (Data/MapNNN.rxdata)
 MAPS = {
     "OUTSKIRT_STAND": 32, "ORRE_DESERT": 16, "PHENAC_CITY": 42, "ORRE_POKE_SPOTS": 47, "PYRITE_TOWN": 82,
