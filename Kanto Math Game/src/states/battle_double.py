@@ -99,7 +99,7 @@ class DoubleBattleState(TrainerBattleState):
         opts = self.battle_options
         self.partner_team, self.foe_teams = [], []
         self.partner_name = self.foe2_name = None
-        self.partner_sprite = self.foe2_sprite = None
+        self.partner_sprite = self.foe2_sprite = self.partner_back = None
         if not (opts.get("partner") or opts.get("second_trainer")):
             return
         from src.states.overworld.common import _story_team, _trainer_sprite, _fill_names
@@ -111,6 +111,7 @@ class DoubleBattleState(TrainerBattleState):
                 p.current_hp = p.get_max_hp()
             self.partner_name = _fill_names(self.game, info.get("name") or "Partner")
             self.partner_sprite = _trainer_sprite(self.game, info.get("sprite"))
+            self.partner_back = self._back_sprite(info.get("sprite"))
         info = opts.get("second_trainer")
         if info and info.get("villain"):   # (a villain dressed as this Hoenn version's team: Tabitha or Matt)
             from src.world import hoenn as _h
@@ -127,6 +128,20 @@ class DoubleBattleState(TrainerBattleState):
             for k, v in (info.get("rewards") or {"balls": 3}).items():   # (both trainers pay out)
                 if isinstance(v, (int, float)):
                     self.rewards[k] = self.rewards.get(k, 0) + v
+
+    def _back_sprite(self, sprite):
+        """A partner seen from behind, beside you: assets/sprites/trainers/back/<its sprite> if it's there (Jordan's
+        list: kanto_handoff/PARTNER_BACK_SPRITES.md), else None (the front picture stands in)."""
+        import os
+        if not sprite:
+            return None
+        path = os.path.join(self.game.assets.trainers_dir, "back", os.path.basename(str(sprite)))
+        if not os.path.exists(path):
+            return None
+        try:
+            return pygame.image.load(path).convert_alpha()
+        except pygame.error:
+            return None
 
     def is_partner(self, mon):
         return mon is not None and self._has(self.__dict__.get("partner_team") or [], mon)

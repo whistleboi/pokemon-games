@@ -3515,7 +3515,8 @@ class TrainerIntroState(GameState):
         self.rival_sprite = self.trainer_sprite  # (older code reads it)
         # a tag battle (battle_double.py, 11-18): the second trainer beside the first, your partner beside you
         self.foe2_fit = self._fit(getattr(next_state, "foe2_sprite", None), h * 0.40)
-        self.partner_fit = self._fit(getattr(next_state, "partner_sprite", None), h * 0.40)
+        self.partner_fit = self._fit(getattr(next_state, "partner_back", None) or getattr(next_state, "partner_sprite", None),
+                                     h * (0.50 if getattr(next_state, "partner_back", None) else 0.40))   # (from behind, beside you, once its back sprite is in)
 
         team = [p for p in game.story_manager.player_team if p]
         self.player_party = [p.current_hp > 0 for p in team][:6]
