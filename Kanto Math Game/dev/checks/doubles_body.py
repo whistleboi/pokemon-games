@@ -618,4 +618,38 @@ check(isinstance(b, DoubleBattleState) and [p.id for p in b.partner_team] == [14
       and [p.id for p in b.foe_teams[1]] == [96, 88],
       f"Lance's Dragonite beside you; Ariana's Arbok, Gloom, Murkrow and the Grunt's Drowzee, Grimer ({b.partner_name}, {b.foe2_name})")
 
+print("17) Spear Pillar (Platinum): you and Barry against Mars and Jupiter")
+story.enter_region("SINNOH")
+_area0 = story.current_area_key
+story.current_area_key = "SPEAR_PILLAR"
+from src.world.story_events import EVENTS as _EV
+_sp = _EV["spear_pillar_commanders"]
+_mine = story.story_flags.get("starter_sinnoh")
+story.story_flags["starter_sinnoh"] = 390   # (you chose Chimchar: Barry has Empoleon and Rapidash)
+story.player_team = [mon(392, 60, ["SPLASH"]), mon(26, 60, ["SPLASH"])]
+b = _common._start_event_battle(g, "SPEAR_PILLAR", dict(_sp["battle"]), "spear_pillar_commanders").next_state
+check(isinstance(b, DoubleBattleState) and [p.id for p in b.partner_team] == [446, 78, 214, 407, 398, 395]
+      and [p.level for p in b.partner_team] == [40, 40, 42, 40, 42, 44],
+      f"Barry beside you, his team by your starter, at Platinum's levels ({b.partner_name}: {[p.id for p in b.partner_team]})")
+check([p.id for p in b.foe_teams[0]] == [436, 42, 432] and [p.id for p in b.foe_teams[1]] == [436, 42, 435]
+      and "Jupiter" in str(b.foe2_name) and "Mars" in str(b.trainer_name),
+      f"Mars's Bronzor, Golbat, Purugly and Jupiter's Bronzor, Golbat, Skuntank ({b.trainer_name}, {b.foe2_name})")
+story.story_flags["starter_sinnoh"] = 387
+b2 = _common._start_event_battle(g, "SPEAR_PILLAR", dict(_sp["battle"]), "spear_pillar_commanders").next_state
+check([p.id for p in b2.partner_team][-1] == 392, "Turtwig chosen: Barry's ace is Infernape")
+for p in story.player_team:
+    p.current_hp = 1
+b.player_won = True
+try:
+    b.exit_battle()
+except Exception as _e:
+    print("   (exit_battle:", type(_e).__name__, _e, ")")
+check(all(p.current_hp == p.get_max_hp() for p in story.player_team) and story.story_flags.get("spear_pillar_commanders"),
+      "after the win Barry heals your team, and the way to Cyrus is open")
+story.current_area_key = _area0
+if _mine is None:
+    story.story_flags.pop("starter_sinnoh", None)
+else:
+    story.story_flags["starter_sinnoh"] = _mine
+
 print(f"##### {fails} failures")

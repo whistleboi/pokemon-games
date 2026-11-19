@@ -2323,6 +2323,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         if self.victory_flag and not (self.battle_type == "gym" and not self.player_won):
             # (a lost gym/League match must not count: Lance's beat_elite_four, beat_champion)
             self.game.story_manager.story_flags[self.victory_flag] = True
+        if self.player_won and self.battle_options.get("heal_after"):   # (a tag partner patches your team up after: Barry at Spear Pillar)
+            from src.states.overworld.area_transition import heal_team
+            heal_team(self.game)
 
         if self.badge_reward:
             region = self.game.story_manager.get_current_region()

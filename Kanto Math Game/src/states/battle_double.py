@@ -135,6 +135,9 @@ class DoubleBattleState(TrainerBattleState):
         import os
         if not sprite:
             return None
+        for role in ("rival", "friend"):   # (the region's rival as partner: Barry at Spear Pillar is "{rival_character}")
+            if f"{{{role}_character}}" in str(sprite):
+                sprite = f"{str(getattr(self.game, role + '_character', '') or '').lower()}.png"
         path = os.path.join(self.game.assets.trainers_dir, "back", os.path.basename(str(sprite)))
         if not os.path.exists(path):
             return None

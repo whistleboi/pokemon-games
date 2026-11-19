@@ -185,13 +185,28 @@ EVENTS = {
                   "{rival_name}: She said they're taking all three lake Pokémon to their HQ in Veilstone City!",
                   "Team Galactic has the lake trio. Head to Veilstone City."],
         "requires": ["has_icicle_badge"], "flag": "galactic_lake_acuity_cleared"},
+    # Platinum's multi battle (11-18): you and Barry against Mars and Jupiter, their teams and levels from Platinum
+    # (Bulbapedia's walkthrough, part 17); Barry's team by your starter. Afterwards he heals your team, as in the game.
     "spear_pillar_commanders": {
         "lines": ["Mars and Jupiter block the way to the summit.",
-                  "Jupiter: Cyrus is about to make his new world. You won't interrupt him!"],
+                  "Jupiter: Cyrus is about to make his new world. You won't interrupt him!",
+                  "Barry: Hey, wait for me! Two against one? Not on my watch! We'll take them together!"],
         "requires": ["galactic_hq_cleared"], "flag": "spear_pillar_commanders",
-        "battle": {"name": "Commanders Mars and Jupiter", "class": "COMMANDER", "sprite": "mars.png",
-                   "team": [436, 42, 432, 435], "levels": [41, 42, 45, 46], "is_boss_battle": True,
-                   "dialogue": {"player_won": ["Mars: Ugh... Go, then. Cyrus will finish you himself."]}}},
+        "battle": {"name": "Commander Mars", "class": "COMMANDER", "sprite": "mars.png",
+                   "team": [436, 42, 432], "levels": [44, 44, 46], "is_boss_battle": True,
+                   "rewards": {"balls": 5},
+                   "battle_options": {
+                       "double": True, "heal_after": True,
+                       "partner": {"who": "barry", "name": "Barry", "class": "PKMN_TRAINER", "sprite": "barry.png",
+                                   "team": [446, 407, 214, 419, 398, 392],
+                                   "team_choice": {"387": [446, 407, 214, 419, 398, 392],
+                                                   "390": [446, 78, 214, 407, 398, 395],
+                                                   "393": [446, 78, 214, 419, 398, 389]},
+                                   "levels": [40, 40, 42, 40, 42, 44]},
+                       "second_trainer": {"name": "Commander Jupiter", "class": "COMMANDER", "sprite": "galactic_grunt.png",
+                                          "team": [436, 42, 435], "levels": [44, 44, 46], "rewards": {"balls": 3}}},
+                   "dialogue": {"player_won": ["Mars: Ugh... Go, then. Cyrus will finish you himself.",
+                                               "Barry: Here, let me patch up your team. Now go stop Cyrus!"]}}},
     "cyrus_spear_pillar": {
         "lines": ["sinnoh_spear_pillar_event"], "requires": ["galactic_hq_cleared", "spear_pillar_commanders"],
         "fail": ["A strange force blocks the summit. Free the lake guardians at Team Galactic HQ first."],
