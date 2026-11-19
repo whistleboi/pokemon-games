@@ -854,7 +854,7 @@
 
                 {"action": "EVENT", "event": {"lines": ["I keep losing, and my Pokemon keep fainting... Maybe that's why they don't like me much."]}, "text": "Man   ", "door": "friendship"},
 
-                {"action": "EVENT", "event": {"lines": ["Hello, hello! I'm the official Name Rater. Every Pokemon deserves a name to be proud of!"]}, "text": "Name Rater", "door": "namerater"},
+                {"action": "EVENT", "event": {"name_rater": true, "lines": ["Hello, hello! I'm the official Name Rater. Every Pokemon deserves a name to be proud of!", "Which of your Pokemon shall I rate?"]}, "text": "Name Rater", "door": "namerater"},
 
                 {"text": "Gate guard", "action": "EVENT", "door": "gate", "color": "GOLD", "flag_condition": "not got_kenya", "event": {"lines": ["Could you do me a favour? My friend's on Route 31, dozing by the pond. Please take him my Spearow, Kenya. She's carrying a letter for him!"], "gift_pokemon": 21, "flag": "got_kenya"}},
 

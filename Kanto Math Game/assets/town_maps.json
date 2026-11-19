@@ -13466,9 +13466,9 @@
      {
       "text": "Name Rater",
       "action": "EVENT",
-      "event": {
+      "event": { "name_rater": true,
        "lines": [
-        "Hello, hello! I'm the Name Rater. Hm! Your Pokémon have fine names already."
+        "Hello, hello! I'm the Name Rater. Shall I rate one of your Pokémon's names?"
        ]
       }
      }
@@ -94333,7 +94333,8 @@
   ],
   "inside": {
    "19,19": "center",
-   "13,26": "mart"
+   "13,26": "mart",
+   "5,19": "rater"
   },
   "edge_to": {
    "16,0": [
@@ -95183,6 +95184,53 @@
     ],
     "theme": "room",
     "title": "Poké Mart"
+   },
+   "rater": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "..........",
+     "cc........",
+     "cc......cc",
+     ".......Ncc",
+     "..........",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:5,19"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Name Rater",
+      "action": "EVENT",
+      "event": {
+       "name_rater": true,
+       "lines": [
+        "Name Rater: Hello, hello! I am the official Name Rater! Want me to rate the nicknames of your Pokémon?"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "theme": "room",
+    "title": "Name Rater's house"
    }
   }
  },
@@ -153938,7 +153986,7 @@
    "O": "bike",
    "P": "house",
    "Q": "house",
-   "R": "house",
+   "R": "rater",
    "S": "mart",
    "U": "gym",
    "V": "house"
@@ -155882,13 +155930,52 @@
     "people": [
      "Gym"
     ]
+   },
+   "rater": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cz..mmmmzcccc^..zc",
+     "c........cccc....c",
+     "c...mm...........c",
+     "c...mm...........c",
+     "c................c",
+     "c................c",
+     "c...mm...........c",
+     "c...mmN..........c",
+     "cc..............cc",
+     "cz.......v......zc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:59,36"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {}
+    },
+    "people": [
+     "Name Rater"
+    ]
    }
   },
   "inside": {
    "49,18": "center",
    "53,36": "mart",
    "54,27": "bike",
-   "56,50": "gym"
+   "56,50": "gym",
+   "59,36": "rater"
   }
  },
  "HEARTHOME_CITY": {
@@ -270175,9 +270262,9 @@
      {
       "text": "Name Rater",
       "action": "EVENT",
-      "event": {
+      "event": { "name_rater": true,
        "lines": [
-        "I'm the Name Rater! Your Pokémon's nicknames? Splendid, all of them!"
+        "I'm the Name Rater! Let me see one of your Pokémon. A name says everything!"
        ]
       }
      }

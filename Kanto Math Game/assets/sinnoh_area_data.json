@@ -2679,6 +2679,7 @@
         {"text": "Grand Underground", "target_area": "GRAND_UNDERGROUND"}
       ],
       "explore_options": [
+        {"text": "Name Rater", "action": "EVENT", "door": "rater", "event": {"name_rater": true, "lines": ["Name Rater: Hello, hello! I'm the Name Rater. Want me to rate your Pokemon's nicknames?"]}},
         {"text": "Heal", "action": "HEAL"},
         {"text": "Shop", "action": "SHOP"},
         {"text": "Gym", "action": "GYM"},

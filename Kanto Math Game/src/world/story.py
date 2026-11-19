@@ -467,7 +467,7 @@ class StoryManager:
             if target:
                 old = p.display_name.upper()
                 self.player_team[i] = self.change_species(p, target)
-                lines.append(f"{old} evolved into {self.player_team[i].display_name.upper()}!")
+                lines.append(f"{old} evolved into {self.player_team[i].species_name.upper()}!")
                 break
         return lines
 
@@ -1513,6 +1513,7 @@ class StoryManager:
             "tera_type": getattr(p, "tera_type", None), "held_item": getattr(p, "held_item", None),
             "pp": dict(getattr(p, "pp", None) or {}), "pp_ups": dict(getattr(p, "pp_ups", None) or {}),
             "special": getattr(p, "special", None),   # (one of a kind: "rowdy_pikachu", src/pokemon/rowdy.py)
+            "nickname": getattr(p, "nickname", None), "traded": bool(getattr(p, "traded", False)),   # (the Name Rater, 11-18)
         }
 
     TEMPORARY_FORMS = ("mega", "mega_x", "mega_y", "primal")
@@ -1538,6 +1539,9 @@ class StoryManager:
         if p_data.get("tera_type"):
             pokemon.tera_type = p_data["tera_type"]
         pokemon.held_item = p_data.get("held_item")
+        if p_data.get("nickname"):
+            pokemon.nickname = p_data["nickname"]
+        pokemon.traded = bool(p_data.get("traded"))
         pokemon.pp = dict(p_data.get("pp") or {})  # (older saves: full PP)
         pokemon.pp_ups = dict(p_data.get("pp_ups") or {})
         pokemon.condition.update(p_data.get("condition", {}))

@@ -24,6 +24,22 @@ def _fit_square(img, size):
 
 
 class Pokemon:
+    # Its name as shown: a nickname from the Name Rater (11-18) if it has one, else its species' (or form's) name. Kept
+    # through evolving, a form change, Mega Evolution and Transform: they set the species name underneath.
+    nickname = None
+
+    @property
+    def display_name(self):
+        return self.nickname or self.__dict__.get("_display_name", getattr(self, "name", ""))
+
+    @display_name.setter
+    def display_name(self, value):
+        self._display_name = value
+
+    @property
+    def species_name(self):
+        return self.__dict__.get("_display_name", getattr(self, "name", ""))
+
     def __init__(self, raw_data, assets, size_mult=3.5):
         self.id = raw_data["id"]
         self.meta_id = raw_data.get("meta_id", self.id)
@@ -325,7 +341,7 @@ class Pokemon:
         self.transformed_state = {
             "id": self.id,
             "name": self.name,
-            "display_name": self.display_name,
+            "display_name": self.species_name,   # (a nickname stays on top: Pokemon.display_name)
             "types": self.types,
             "base_stats": self.base_stats,
             "image": self.image,
@@ -341,7 +357,7 @@ class Pokemon:
         # (11-17; the battle gives each copied move 5 PP: battle_moves.mv_copied_pp)
         self.id = target.id
         self.name = target.name
-        self.display_name = target.display_name
+        self.display_name = target.species_name
         self.types = target.types
         stats = dict(target.base_stats or {})
         if "HP" in (self.transformed_state["base_stats"] or {}):

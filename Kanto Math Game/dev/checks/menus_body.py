@@ -237,4 +237,82 @@ _kind = _found[0][1]["quips"]
 check(all(list(x) in _quips.POOLS[_kind] for x in _said) and len(set(_said)) >= 3,
       f"{_found[0][0]}: a line from its own pool each time, not always the same ({len(set(_said))} different in 12)")
 check(all(len(l) <= 120 for pool in _quips.POOLS.values() for q in pool for l in q), "every grumble fits the text box (120 characters a line at most)")
+# ---- the Name Rater (Jordan 11-18: the only way to nickname; only Pokemon you caught)
+print("The Name Rater")
+from src.states.systems import name_rater as _nr
+_raters = []
+for _f in ("hoenn_area_data.json", "johto_area_data.json", "sinnoh_area_data.json", "town_maps.json"):
+    def _w2(o, where):
+        if isinstance(o, dict):
+            if isinstance(o.get("event"), dict) and o["event"].get("name_rater"):
+                _raters.append((where, o["event"]))
+            for k, v in o.items():
+                _w2(v, k if k.isupper() and k != "STORY_PROGRESSION" else where)
+        elif isinstance(o, list):
+            for v in o:
+                _w2(v, where)
+    _w2(_jq.load(open(os.path.join("assets", _f), encoding="utf-8")), "")
+_towns = sorted({w for w, _ in _raters})
+check({"LAVENDER_TOWN", "GOLDENROD_CITY", "SLATEPORT_CITY", "ETERNA_CITY", "SUNBURST_ISLAND"} <= set(_towns),
+      f"Name Raters in Lavender, Goldenrod, Slateport, Eterna and Sunburst ({_towns})")
+_tm = _jq.load(open("assets/town_maps.json", encoding="utf-8"))
+check(_tm["SLATEPORT_CITY"]["inside"].get("5,19") == "rater" and _tm["SLATEPORT_CITY"]["rooms"]["rater"]["people"][0]["event"].get("name_rater"),
+      "Slateport: Emerald's Name Rater's house behind its own door (5,19)")
+check(_tm["ETERNA_CITY"]["inside"].get("59,36") == "rater" and _tm["ETERNA_CITY"]["rooms"]["rater"]["people"] == ["Name Rater"],
+      "Eterna: the Condominiums' ground floor, the Name Rater inside (Platinum)")
+_ev = next(e for w, e in _raters if w == "LAVENDER_TOWN")
+_p1, _p2, _p3 = mk(25), mk(1), mk(4)
+_p2.traded = True
+story.player_team = [_p1, _p2, _p3]
+_said_nr = []
+_say = lambda ls: _said_nr.append(list(ls))
+city.show_message = lambda lines, callback=None: (_said_nr.append(list(lines)), callback and callback())
+_cq._run_story_event(city, dict(_ev), lambda c: True, _say)
+_pm = g.current_state
+check(type(_pm).__name__ == "PokemonPartyMenuState" and _pm.context == "rename" and _said_nr and "Name Rater" in _said_nr[0][0],
+      "talking to him: his lines, then the party list to pick from")
+_pm.on_select(1)
+check(g.current_state is city and any("trade" in l for l in _said_nr[-1]) and _p2.nickname is None,
+      "a Pokemon from a trade keeps its first Trainer's name")
+_cq._run_story_event(city, dict(_ev), lambda c: True, _say)
+g.current_state.on_select(0)
+_box = g.current_state
+check(type(_box).__name__ == "NameRaterState", "picking one you caught opens the name box")
+for ch in "Sparky":
+    _box.handle_events([pygame.event.Event(pygame.KEYDOWN, key=0, unicode=ch)])
+_box.draw()
+_box.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_RETURN, unicode="\r")])
+check(_p1.nickname == "Sparky" and _p1.display_name == "Sparky" and _p1.species_name.upper() == "PIKACHU" and g.current_state is city,
+      f"typing a name and OK: it's called that now ({_p1.display_name}, still a {_p1.species_name})")
+_rec = story._pokemon_record(_p1)
+_back = story._load_pokemon(_rec, g.loader)
+check(_back.nickname == "Sparky" and _back.display_name == "Sparky", "the nickname is saved and loads back")
+_back2 = story._load_pokemon(story._pokemon_record(_p2), g.loader)
+check(_back2.traded, "a traded Pokemon stays marked as traded after a save")
+_rai = story.change_species(_p1, 26)
+check(_rai.display_name == "Sparky" and _rai.species_name.upper() == "RAICHU", "evolving keeps the nickname (Raichu called Sparky)")
+from src.states.systems.evolution_scene import EvolutionState as _Evo
+import inspect as _insp
+check('"nickname", "traded"' in _insp.getsource(_Evo), "the evolution screen carries the nickname over too")
+_dit = mk(132); _dit.nickname = "Blob"
+_dit.transform_into(mk(6)); _mid = _dit.display_name
+_dit.undo_transform()
+check(_mid == "Blob" and _dit.display_name == "Blob" and _dit.species_name.upper() == "DITTO",
+      "a nicknamed Ditto keeps its name through Transform, and is a Ditto again after")
+_cq._run_story_event(city, dict(_ev), lambda c: True, _say)
+g.current_state.on_select(0)
+_box = g.current_state
+_box.text = ""
+_box.confirm()
+check(_p1.nickname is None and _p1.display_name.upper() == "PIKACHU", "an empty name gives it back its species' name")
+_cq._run_story_event(city, dict(_ev), lambda c: True, _say)
+g.current_state.on_select(0)
+g.current_state.text = "Zap"; g.current_state.cancel()
+check(_p1.nickname is None and g.current_state is city, "CANCEL leaves the name as it was")
+_egg = mk(172); _egg.is_egg = True; story.player_team.append(_egg)
+_cq._run_story_event(city, dict(_ev), lambda c: True, _say)
+g.current_state.on_select(3)
+check(g.current_state is city and any("Egg" in l for l in _said_nr[-1]), "an Egg can't be named yet")
+del city.show_message
+check(_nr.MAX_LEN == 12, "names up to 12 letters")
 print(f"##### menus: {fails} fails")

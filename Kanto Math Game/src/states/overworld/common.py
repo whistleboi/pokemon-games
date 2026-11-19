@@ -320,6 +320,10 @@ def _run_story_event(state, key, check, show):
         stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")
                       and all(check(c) for c in st.get("requires", []))), None)
         ev = stage or {"lines": ev.get("done") or ["..."]}
+    if ev.get("name_rater"):   # (rename a Pokemon you caught: src/states/systems/name_rater.py, 11-18)
+        from src.states.systems.name_rater import start as _rate
+        _rate(state, _resolve_lines(game, ev.get("lines") or []), show)
+        return
     if ev.get("quips"):   # (the out-of-work Move Reminder / Move Deleter: a different grumble each time; src/world/quips.py)
         from src.world import quips
         q = quips.pick(ev["quips"], name=ev.get("quip_as"))   # ("quip_as": FireRed calls its Reminder the Move Maniac)
@@ -517,6 +521,7 @@ def _run_story_event(state, key, check, show):
             from src.pokemon import items as _itemlib
             if _itemlib.holdable(tr["item"]):   # (a held item's copy is the Bag's: the Stick can be taken off and given back)
                 story.add_item(tr["item"])
+        new.traded = True   # (its first owner's: the Name Rater won't rename it, as in the games)
         story.player_team[mine] = new
         game.data.mark_seen(new.id)
         game.data.add_pokemon(new)
@@ -986,7 +991,7 @@ def _evolve_due(game, names):
         old_name = p.display_name.upper()
         story.player_team[i] = new = story.change_species(p, new_id)
         game.data.add_pokemon(new)
-        out.append(f"What? {old_name} evolved into {new.display_name.upper()}!")
+        out.append(f"What? {old_name} evolved into {new.species_name.upper()}!")
     return out
 
 
