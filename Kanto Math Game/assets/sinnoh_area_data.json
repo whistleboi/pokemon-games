@@ -988,7 +988,7 @@
           }
         },
         {
-          "name": "Young Couple Mike & Nat",
+          "battle_options": {"double": true}, "name": "Young Couple Mike & Nat",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [
@@ -1000,7 +1000,7 @@
           }
         },
         {
-          "name": "Belle & Pa Beth & Bob",
+          "battle_options": {"double": true}, "name": "Belle & Pa Beth & Bob",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [

@@ -516,7 +516,7 @@
           }
         },
         {
-          "name": "Young Couple Lea & Jed",
+          "battle_options": {"double": true}, "name": "Young Couple Lea & Jed",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [
@@ -1028,7 +1028,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "mossdeep_city.png", "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": ["mossdeep_gym.png", "mossdeep_gym_leader.png"] },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "DIVE_GEAR": 1, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"battle_options": {"double": true}, "name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "DIVE_GEAR": 1, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         {"text": "Route 124", "target_area": "HOENN_ROUTE_124"},
         {"text": "Route 125", "target_area": "HOENN_ROUTE_125"},
@@ -1821,7 +1821,7 @@
           "rewards": { "balls": 2 }
         },
         {
-          "name": "Sr. and Jr. Anna & Meg",
+          "battle_options": {"double": true}, "name": "Sr. and Jr. Anna & Meg",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [315, 315],
@@ -2667,7 +2667,7 @@
         {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [322, 261], "rewards": {"balls": 3}},
         {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [318, 261], "rewards": {"balls": 3}},
         {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 322], "rewards": {"balls": 10, "METEORITE": 1}, "is_boss_battle": true, "victory_flag": "meteor_falls_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [262, 322], "ALPHA_SAPPHIRE": [262, 318]}, "levels": [23, 23]},
-        {"name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "oldman.png", "team": [308, 282], "rewards": {"balls": 10}}
+        {"battle_options": {"double": true}, "name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "oldman.png", "team": [308, 282], "rewards": {"balls": 10}}
       ],
       "route_menu": [{"text": "AERODACTYLITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_aerodactylite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AERODACTYLITE!"], "gift_item": {"AERODACTYLITE": 1}, "flag": "got_aerodactylite"}}, {"text": "AN OLD WOMAN", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_salamencite", "event": {"lines": ["An old woman: My granddaughter loves this stone. I think you should have it.", "You found the SALAMENCITE!"], "gift_item": {"SALAMENCITE": 1}, "flag": "got_salamencite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },

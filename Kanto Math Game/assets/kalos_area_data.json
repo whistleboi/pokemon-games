@@ -719,7 +719,7 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Twins Nana & Nina",
+          "battle_options": {"double": true}, "name": "Twins Nana & Nina",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [
@@ -838,7 +838,7 @@
           }
         },
         {
-          "name": "Ace Duo Elina & Sean",
+          "battle_options": {"double": true}, "name": "Ace Duo Elina & Sean",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [

@@ -1662,7 +1662,7 @@
           }
         },
         {
-          "name": "Twins Lia & Lily",
+          "battle_options": {"double": true}, "name": "Twins Lia & Lily",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [

@@ -457,6 +457,29 @@ for _f, _names in _pairs.items():
                 _found[_t["name"]] = _t
 check(len(_found) == 14 and all(battle_options(t).get("double") for t in _found.values()),
       f"all 14 pairs are in the data, each marked double ({len(_found)}: {[n for n, t in _found.items() if not battle_options(t).get('double')]})")
+# (and every other region's: Twins, couples, Sis and Bro, Double Team... and Tate & Liza fight as a pair in their games;
+#  Orange's Jessie & James are one trainer in 5.7)
+import glob as _glob
+_single = []
+for _f in _glob.glob(os.path.join("assets", "*_area_data.json")):
+    def _walk(o):
+        if isinstance(o, dict):
+            if "class" in o and "team" in o and isinstance(o.get("name"), str) and "&" in o["name"] and o["name"] != "Jessie & James":
+                if not battle_options(o).get("double"):
+                    _single.append((os.path.basename(_f), o["name"]))
+            for v in o.values():
+                _walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                _walk(v)
+    _walk(_json.load(open(_f, encoding="utf-8")))
+check(not _single, f"every region's pairs are double battles (not yet: {_single})")
+_tl = _json.load(open(os.path.join("assets", "hoenn_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"]["MOSSDEEP_CITY"]["gym"]["leader"]
+story.player_team = [mon(9, 50, ["SURF"]), mon(26, 50, ["THUNDERBOLT"])]
+_b = TrainerBattleState(g, [mon(p_, l_, ["TACKLE"]) for p_, l_ in zip(_tl["team"], _tl["levels"])], trainer_class=_tl["class"],
+                        trainer_name=_tl["name"], options=battle_options(_tl))
+check(isinstance(_b, DoubleBattleState) and [p_.id for p_ in _b.o_slots] == [337, 338],
+      f"Tate & Liza: a double battle, Lunatone and Solrock together ({type(_b).__name__})")
 _t = _found.get("Eli & Anne")
 if _t:
     story.player_team = [mon(9, 40, ["SURF"]), mon(26, 40, ["THUNDERBOLT"])]

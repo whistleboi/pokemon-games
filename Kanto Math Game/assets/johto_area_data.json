@@ -353,7 +353,7 @@
                 {"name": "Poké Maniac Morgan", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [111, 112], "rewards": {"balls": 2}},
                 {"name": "Burglar Corey", "class": "BURGLAR", "sprite": "burglar.png", "team": [109, 126, 109, 109], "rewards": {"balls": 2}},
                 {"name": "Pokéfan Colin", "class": "POKEFAN", "sprite": "pokefan.png", "team": [225], "rewards": {"balls": 2}},
-                {"name": "Twins Meg & Peg", "class": "TWINS", "sprite": "twins.png", "team": [216, 231], "rewards": {"balls": 2}},
+                {"battle_options": {"double": true}, "name": "Twins Meg & Peg", "class": "TWINS", "sprite": "twins.png", "team": [216, 231], "rewards": {"balls": 2}},
                 {"name": "Pokéfan Georgia", "class": "POKEFAN", "sprite": "pokefan.png", "team": [161, 161, 161, 162, 161], "rewards": {"balls": 2}},
                 {"name": "Pokéfan Jeremy", "class": "POKEFAN", "sprite": "pokefan.png", "team": [52, 52, 52], "rewards": {"balls": 2}},
                 {"name": "Firebreather Lyle", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 136, 109], "rewards": {"balls": 2}},
@@ -450,8 +450,8 @@
             "trainer_pool": [
                 {"name": "Hiker Devin", "class": "HIKER", "sprite": "hiker.png", "team": [206, 206, 206], "rewards": {"balls": 5}},
                 {"name": "Camper Grant", "class": "CAMPER", "sprite": "camper.png", "team": [188, 183], "rewards": {"balls": 4}},
-                {"name": "Double Team Thom & Kae", "class": "TWINS", "sprite": "twins.png", "team": [125, 126], "rewards": {"balls": 4}},
-                {"name": "Young Couple Duff & Eda", "class": "TWINS", "sprite": "twins.png", "team": [95, 91], "rewards": {"balls": 4}}
+                {"battle_options": {"double": true}, "name": "Double Team Thom & Kae", "class": "TWINS", "sprite": "twins.png", "team": [125, 126], "rewards": {"balls": 4}},
+                {"battle_options": {"double": true}, "name": "Young Couple Duff & Eda", "class": "TWINS", "sprite": "twins.png", "team": [95, 91], "rewards": {"balls": 4}}
             ],
             "route_menu": [
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -718,7 +718,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"defeated_area": "SLOWPOKE_WELL", "fail_text": ["Bugsy is helping Kurt protect the Slowpoke! You must defeat every Rocket Grunt in the Well to bring him back to the Gym."]}, "trainers": [{"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [46], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [13, 14, 15], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "is_boss_battle": true, "team": [10, 13], "rewards": {"balls": 2}}, {"name": "Twins Amy & Mimi", "class": "TWINS", "sprite": "twins.png", "is_boss_battle": true, "team": [167, 165], "rewards": {"balls": 2}}], "leader": {"name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true, "team": [11, 14, 123], "levels": [15, 15, 17], "badge_reward": "HIVE", "rewards": {"balls": 5, "RARE_CANDY": 3}, "dialogue": {"intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."], "player_won": ["You really bugged me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"11": ["TACKLE"], "14": ["POISON-STING"], "123": ["U-TURN", "QUICK-ATTACK", "LEER", "FOCUS-ENERGY"]}}},
+            "gym": {"requirements": {"defeated_area": "SLOWPOKE_WELL", "fail_text": ["Bugsy is helping Kurt protect the Slowpoke! You must defeat every Rocket Grunt in the Well to bring him back to the Gym."]}, "trainers": [{"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [46], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [13, 14, 15], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "is_boss_battle": true, "team": [10, 13], "rewards": {"balls": 2}}, {"battle_options": {"double": true}, "name": "Twins Amy & Mimi", "class": "TWINS", "sprite": "twins.png", "is_boss_battle": true, "team": [167, 165], "rewards": {"balls": 2}}], "leader": {"name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true, "team": [11, 14, 123], "levels": [15, 15, 17], "badge_reward": "HIVE", "rewards": {"balls": 5, "RARE_CANDY": 3}, "dialogue": {"intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."], "player_won": ["You really bugged me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"11": ["TACKLE"], "14": ["POISON-STING"], "123": ["U-TURN", "QUICK-ATTACK", "LEER", "FOCUS-ENERGY"]}}},
 
             "travel_options": [
 
@@ -2275,9 +2275,9 @@
         
                 {"name": "Psychic Greg", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [96], "rewards": {"balls": 2}},
         
-                {"name": "Twins Ann & Anne", "class": "TWINS", "sprite": "twins.png", "team": [174, 174], "rewards": {"balls": 2}},
+                {"battle_options": {"double": true}, "name": "Twins Ann & Anne", "class": "TWINS", "sprite": "twins.png", "team": [174, 174], "rewards": {"balls": 2}},
         
-                {"name": "Twins Tori & Til", "class": "TWINS", "sprite": "twins.png", "team": [183, 179], "rewards": {"balls": 2}},
+                {"battle_options": {"double": true}, "name": "Twins Tori & Til", "class": "TWINS", "sprite": "twins.png", "team": [183, 179], "rewards": {"balls": 2}},
         
                 {"name": "Beauty Callie", "class": "BEAUTY", "sprite": "beauty.png", "team": [36, 40], "rewards": {"balls": 2}},
         
@@ -4104,7 +4104,7 @@
 
                 {"name": "Ace Trainer Piper", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [116, 116, 117], "rewards": {"balls": 2}},
 
-                {"name": "Twins Clea & Gil", "class": "TWINS", "sprite": "twins.png", "team": [147, 147], "rewards": {"balls": 2}}
+                {"battle_options": {"double": true}, "name": "Twins Clea & Gil", "class": "TWINS", "sprite": "twins.png", "team": [147, 147], "rewards": {"balls": 2}}
 
             ],
 
