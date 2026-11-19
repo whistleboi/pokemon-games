@@ -1669,6 +1669,20 @@ story.current_area_key = "CERULEAN_CITY"
 _BADGES = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"]
 
 
+def _no_strength():
+    """(11-19, ROADMAP_KANTO: at eight badges, a player who skipped Strength - where does the Journal lead?)"""
+    saved = {f: story.story_flags.pop(f, None) for f in ("got_hm_strength_kanto", "got_gold_teeth")}
+    inv = {i: story.inventory.pop(i, None) for i in ("HM_STRENGTH", "GOLD_TEETH")}
+    got = _journal(8)
+    for f, v in saved.items():
+        if v is not None:
+            story.story_flags[f] = v
+    for i, v in inv.items():
+        if v is not None:
+            story.inventory[i] = v
+    return got
+
+
 def _journal(n, flags=(), items=()):
     story.badges["KANTO"] = _BADGES[:n]
     for f in flags:
@@ -1710,6 +1724,7 @@ _steps = [
     ("seven badges: Bill's trip to the Sevii Islands first (Jordan 11-17: Sevii's first trip is MAIN, before Giovanni)", _journal(7), ("sevii_m1", "ONE_ISLAND")),
     ("the first Sevii trip done: Viridian's Gym", _journal(7, ["got_tri_pass", "sevii_ember_rocket", "got_ruby_sevii", "celio_has_ruby", "rescued_lostelle"]), ("m15", "VIRIDIAN_CITY")),
     ("eight badges: the League", _journal(8), "m16"),
+    ("eight badges but Strength skipped: the Warden's Teeth before Victory Road's boulders (11-19)", _no_strength(), "k_teeth"),
 ]
 for _what, (_id, _to), _want in _steps:
     _ok = _id == _want if isinstance(_want, str) else (_id, _to) == _want
@@ -1838,9 +1853,15 @@ for key, part, name, xy, move, can in (("KANTO_ROUTE_4", None, "Punching fan", (
     got = move in _mvT.move_pool(g, story.player_team[0])
     # (taught once: again, to another Pokemon, for money - Jordan 11-16: "permanent ... at an appropriate relative cost")
     from src.states.overworld.common import _tutor_price as _tpT
-    story.money = 10000; _saidT.clear(); _prevT = g.current_state
-    _teachT(who["event"], [can]) if who else []
-    _pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _prevT else None
+    for _tryT in range(6):   # (a fresh Pokemon may know the move already - Clefairy and Metronome: nobody to teach; try another)
+        story.money = 10000; _saidT.clear(); _prevT = g.current_state
+        _teachT(who["event"], [can]) if who else []
+        _pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _prevT else None
+        if _pk:
+            break
+    if _pk and getattr(_pk, "title", "") == "MOVE TUTOR":   # (11-19: a tutor whose move is a TM asks first - LEARN IT NOW, then the price)
+        _pk.done("teach")
+        _pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _pk else None
     if _pk:
         _pk.done(True)
     again = move in _mvT.move_pool(g, story.player_team[0]) and story.money == 10000 - _tpT(g, move)

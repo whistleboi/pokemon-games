@@ -1420,6 +1420,44 @@ if last := PER.get(STATE["mission"]):
     last["done"] = ENDED == "CHAMPION"
 shot("END_" + ENDED.replace(" ", "_"))
 
+# ---------------------------------------------------------------- the tour: the paths the story never walks (11-19, ROADMAP_KANTO)
+# After the title, with what the run has collected: each leg walked over the maps by the same rules (head_for: the maps'
+# own ways out, real steps, trainers fought, boulders pushed). A leg that doesn't get there is a finding (TOUR).
+TOUR_LEGS = [("FUCHSIA_CITY", "SEAFOAM_ISLANDS", "Fuchsia by sea to the Seafoam Islands"),
+             ("SEAFOAM_ISLANDS", "CINNABAR_ISLAND", "through the Seafoam Islands on to Cinnabar"),
+             ("CELADON_CITY", "KANTO_ROUTE_18", "Celadon down the Cycling Road to Route 18"),
+             ("CERULEAN_CITY", "POWER_PLANT", "Cerulean by Route 10's water to the Power Plant"),
+             ("CERULEAN_CITY", "CERULEAN_CAVE", "Route 24's river south down Cerulean's west water to Cerulean Cave", (17, 1))]
+TOUR = []
+if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
+    story.inventory.setdefault("BICYCLE", 1)
+    story.story_flags[f"move_offer_kanto"] = True   # (the title's "where next?" already asked)
+    for _a, _b, _what, *_at in TOUR_LEGS:
+        STATE["mission"] = "tour"
+        try:
+            put_at(_a)
+            if _at:   # (coming in another way: Cerulean from Route 24's river, on the water - FireRed's way to the cave)
+                g.walk_town_pos = (_a, tuple(_at[0]), (0, 1))
+                g.change_state(CityState(g))
+                settle()
+            _m, _ok, _n = {"id": "tour", "type": "SIDE", "text": _what, "target": _b}, False, 0
+            for _n in range(90):
+                if loc()[0] == _b:
+                    _ok = True
+                    break
+                _row = head_for(g.current_state, _m, _b)
+                if _row is None:
+                    break
+            _ok = _ok or loc()[0] == _b
+        except Exception:
+            crash("tour: " + _what)
+            _ok = False
+        TOUR.append({"leg": _what, "from": _a, "to": _b, "ok": _ok, "moves": _n, "ended": here()})
+        if not _ok:
+            FIND.append({"kind": "TOUR", "mission": "tour", "where": here(), "what": f"{_what}: didn't get there", "extra": None})
+            shot("TOUR_" + _b)
+        out(f"  tour: {_what}: {'there' if _ok else 'NOT REACHED'} ({_n} moves, at {here()})")
+
 # ---------------------------------------------------------------- the report
 print()
 print(f"==== KANTO PLAYTHROUGH: ended: {ENDED} | badges {story.badges.get('KANTO', [])} | at {here()} | mission {STATE['mission']}")
@@ -1518,11 +1556,14 @@ for what, words, how in THINGS:
     note = "" if mains else ("  <- no MAIN mission names it" + (" (a SIDE one does)" if sides else " (no mission at all)"))
     print(f"  {what:<52} {str(inw) if inw is not None else '-':>11}  {(', '.join(i + ('' if i in _shown else '(not shown)') for i in mains) or '-'):<40} {(', '.join(sides) or '-'):<26} {'yes' if got else 'NO'}{note}")
 
-nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG")) + (ENDED != "CHAMPION")
+print("==== the tour (the paths the story never walks):")
+for _t in TOUR:
+    print(f"  {'ok ' if _t['ok'] else 'NO '} {_t['leg']} ({_t['moves']} moves; ended at {_t['ended']})")
+nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR")) + (ENDED != "CHAMPION")
 json.dump({"ended": ENDED, "badges": story.badges.get("KANTO", []), "state": {k: (dict(v) if isinstance(v, collections.Counter) else v) for k, v in STATE.items() if k != "last_map"},
            "per": list(PER.values()), "find": [{k: v for k, v in f.items() if k not in ("key", "sig")} for f in FIND], "rows": ROWS,
            "never": [(m["id"], m.get("title") or m.get("text")) for m in never], "flags": sorted(k for k, v in story.story_flags.items() if v),
-           "gates": GATES, "second": SECOND, "when": time.strftime("%Y-%m-%d %H:%M"),
+           "gates": GATES, "second": SECOND, "tour": TOUR, "when": time.strftime("%Y-%m-%d %H:%M"),
            "inventory": dict(story.inventory), "seconds": round(time.time() - T0)},
           open(os.path.join(OUT, "result.json"), "w", encoding="utf-8"), indent=1, default=str)
 print(f"##### {nf} failures (stuck points, crashes, and not reaching the Champion: these are the findings)")

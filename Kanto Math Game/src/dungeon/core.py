@@ -811,6 +811,15 @@ class Run:
                 wild = next((m for m in f.movers if m.kind == "wild" and (m.x, m.y) == tuple(spot)), None)   # Mt. Moon's fossils)
                 if wild is not None:
                     f.movers.remove(wild)
+                if tuple(spot) in f.items:   # (11-19: a dropped item lay on it - 1 visit in 20 the Helix Fossil went elsewhere)
+                    to = _free_tile(f, self.rng)
+                    item = f.items.pop(tuple(spot))
+                    if to:
+                        f.items[to] = item
+                other = next((m for m in f.movers if m.kind not in ("figure", "wild") and (m.x, m.y) == tuple(spot)), None)
+                to = _free_tile(f, self.rng) if other is not None else None
+                if other is not None and to:
+                    other.x, other.y = to
             if spot is None or f.occupied(*spot):
                 spot = _free_tile(f, self.rng, far_from=f.start, min_dist=6) or _free_tile(f, self.rng)
             if spot:
@@ -830,7 +839,7 @@ class Run:
         f, events = self.floor, []
         px, py = self.player
         for m in list(f.movers):
-            if m.kind == "figure":
+            if m.kind in ("figure", "escort"):   # (an escort only moves with its leader: src/world/escorts.py)
                 continue
             if m.kind == "trainer":
                 if self._sees(m):

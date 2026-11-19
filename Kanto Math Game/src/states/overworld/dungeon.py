@@ -2106,6 +2106,12 @@ class DungeonState(OverworldBattles, PlayState):
                     return
                 self.say([self._stairs_line(self.run.index - 1)], then=self._ascend)
                 return
+            elif kind == "bump" and ev[1].kind == "escort":   # (Jessie & James's Meowth: talking to it is talking to them)
+                from src.world import escorts as _esc
+                lead = _esc.leader_of(ev[1])
+                if lead is not None and lead in self.run.floor.movers:
+                    self._handle([("bump", lead)])
+                return
             elif kind == "bump" and ev[1].kind == "figure":
                 self._use_figure(ev[1])
                 return
@@ -3437,6 +3443,8 @@ class DungeonState(OverworldBattles, PlayState):
         if hasattr(self, "run"):
             from src.world import poke_radar as _radar
             _radar.tick(self)   # (back from a radar meeting: the grass shakes again)
+            from src.world import escorts as _esc
+            _esc.sync(self)   # (who goes everywhere with someone: Jessie & James's Meowth, 11-19)
             self._clear_boulders()
             if getattr(self, "_boss_synced", None) != self.run.index:   # (up or down a floor: a beaten boss's tile there is clear too, the Tower's 6F)
                 self._boss_synced = self.run.index
@@ -3717,6 +3725,29 @@ class DungeonState(OverworldBattles, PlayState):
         """One cell of a Pokemon Journeys overworld sheet (4 x 4): a person's walking frame (col None: the
         columns are steps), or a Pokemon's (col: whose column), the row by the way it faces."""
         height = height or TILE + 22
+
+        if "+" in str(sheet):   # (a pair who always go together, side by side: "oi_74.png+oi_75.png" = Orange 5.7's James and Jessie;
+            def part(s):   #  Jordan 11-19 - Kanto's Jessie & James were one figure; "+mon:52": their Meowth follows them too, its follower sprite)
+                if s.startswith("mon:"):
+                    class _Mon:
+                        id, form, is_shiny, gender = int(s[4:]), "normal", False, None
+                    return self._follower_img(_Mon(), tuple(facing))
+                return self._sheet_frame(s, facing, col=col, frame=frame, height=height, scale=scale)
+
+            def make_pair():
+                parts = [p for p in (part(s) for s in str(sheet).split("+")) if p is not None]
+                gap = max(2, TILE // 14)
+                w, h = sum(p.get_width() for p in parts) + gap * (len(parts) - 1), max(p.get_height() for p in parts)
+                out = pygame.Surface((w, h), pygame.SRCALPHA)
+                x = 0
+                order = parts[::-1] if tuple(facing) == (1, 0) else parts   # (facing right, the second walks in front)
+                for p in order:
+                    out.blit(p, (x, h - p.get_height()))
+                    x += p.get_width() + gap
+                return out
+            if "mon:" in str(sheet):   # (a Pokemon in it steps all the time: made fresh each look)
+                return make_pair()
+            return self._sprite(("sheet_pair", sheet, facing, col, frame, height, scale), make_pair)
 
         def make():
             img = pygame.image.load(os.path.join(self.game.assets.assets_dir, "dungeon", "characters", sheet)).convert_alpha()
@@ -4289,6 +4320,14 @@ class DungeonState(OverworldBattles, PlayState):
                     pygame.draw.circle(screen, (255, 230, 90), (r.right - 8, r.y + 8), 5)
                 if m.alert:
                     theme.shadow_text(screen, "!", fonts["label"], r.right - 6, r.y - 18, color=(220, 60, 50))
+            elif m.kind == "escort":
+                from src.world import escorts as _esc
+                _lm = getattr(_esc.leader_of(m), "motion", None)
+                img = _esc.image(self, m, _lm.frame() if _lm is not None else 0)
+                if img:
+                    screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+                    _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
+                continue
             elif m.kind == "figure":
                 self._fit_jumbo(m)
                 if _ring is not None and m.payload.get("action") == "BOSS":

@@ -31,7 +31,7 @@
     "engineer.png": "trchar013.png",
     "juggler.png": "trchar020.png",
     "blackbelt.png": "trchar007.png",
-    "jessie_james.png": "trchar026.png",
+    "jessie_james.png": "oi_74.png",
     "proton.png": "trchar027.png",
     "archer.png": "trchar030.png",
     "ariana.png": "trchar029.png",
@@ -7049,7 +7049,7 @@
       "sheet": "fr_61.png"
     },
     "KANTO_ROUTE_19:SURFIN' DUDE": {
-      "sheet": "fr_57.png"
+      "sheet": "pt_beachboy.png"
     },
     "INDIGO_PLATEAU:Professor Oak": {
       "sheet": "fr_71.png"
@@ -7220,7 +7220,17 @@
       "item": "POKE_BALL"
     },
     "ICEFALL_CAVE:STOP TEAM ROCKET": {
-      "sheet": "trchar026.png"
+      "sheet": "oi_74.png",
+      "escorts": [
+        {
+          "sheet": "oi_75.png",
+          "name": "Jessie"
+        },
+        {
+          "sheet": "mon:52",
+          "name": "Meowth"
+        }
+      ]
     },
     "ICEFALL_CAVE:Grunt": {
       "sheet": "fr_49.png"
@@ -7382,7 +7392,17 @@
       "sheet": "fr_89.png"
     },
     "MT_EMBER:JESSIE AND JAMES": {
-      "sheet": "trchar026.png"
+      "sheet": "oi_74.png",
+      "escorts": [
+        {
+          "sheet": "oi_75.png",
+          "name": "Jessie"
+        },
+        {
+          "sheet": "mon:52",
+          "name": "Meowth"
+        }
+      ]
     },
     "MT_EMBER:RUBY": {
       "item": "POKE_BALL"
@@ -12818,6 +12838,25 @@
     "juggler.png": "oi_188.png",
     "burglar.png": "oi_89.png",
     "gentleman.png": "oi_61.png",
-    "sailor.png": "oi_62.png"
+    "sailor.png": "oi_62.png",
+    "jessie_james.png": "oi_49.png"
+  },
+  "escorts": {
+    "jessie_james.png": {
+      "names": [
+        "Jessie",
+        "James"
+      ],
+      "escorts": [
+        {
+          "sheet": "oi_75.png",
+          "name": "Jessie"
+        },
+        {
+          "sheet": "mon:52",
+          "name": "Meowth"
+        }
+      ]
+    }
   }
 }
