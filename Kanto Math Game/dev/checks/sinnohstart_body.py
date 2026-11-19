@@ -173,7 +173,7 @@ check(not flags.get("spear_pillar_resolved") and not isinstance(g.current_state,
       "Cyrus waits until Mars and Jupiter are beaten")
 sp_ = route("SPEAR_PILLAR")
 sp_.story_event("spear_pillar_commanders")
-check(battle_team(g.current_state) == [(436, 41), (42, 42), (432, 45), (435, 46)], "Mars and Jupiter")
+check(battle_team(g.current_state) == [(436, 44), (42, 44), (432, 46), (436, 44), (42, 44), (435, 46)], f"Mars and Jupiter: Platinum's tag battle, both teams (11-18) {battle_team(g.current_state)}")
 flags["spear_pillar_commanders"] = True
 sp_ = route("SPEAR_PILLAR")
 sp_.story_event("cyrus_spear_pillar")

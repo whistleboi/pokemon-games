@@ -91,7 +91,7 @@ check(isinstance(r, DungeonState) and r.run.n_floors == 2 and r.run.index == 0 a
       f"Lake Verity: the lake (50 x 44) and Verity Cavern under its island; in from the lakefront at the bottom {r.run.player}")
 check(sum(row.count(core.SURF) for row in f.tiles) > 600, "Lake Verity: the lake is Surf water")
 _lv = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))["LAKE_VERITY"]
-check(_lv["figure_floors"] == {"Confront Galactic at the Lake": 0, "Mesprit's Lair": 1} and _lv["floors"][1]["people"] == ["Mesprit's Lair"],
+check(_lv["figure_floors"].get("Confront Galactic at the Lake") == 0 and _lv["figure_floors"].get("Mesprit's Lair") == 1 and _lv["floors"][1]["people"] == ["Mesprit's Lair"],   # (11-19: the shore's item ball stands there too)
       "Lake Verity: Team Galactic stand on the shore, Mesprit inside the cavern")
 
 # ---- Sandgem Town

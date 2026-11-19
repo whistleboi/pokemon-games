@@ -9726,6 +9726,921 @@
     },
     "KUMQUAT_ISLAND:Lift attendant": {
       "sheet": "oi_69.png"
+    },
+    "LAKE_VERITY:TM141": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_202:POTION": {
+      "item": "POKE_BALL"
+    },
+    "JUBILIFE_CITY:POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_203:REPEL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_203:POKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_203:X DEFENSE": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_CITY:DIRE HIT": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_CITY:YELLOW SHARD": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_MINE:POKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_MINE:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_MINE:POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_204:SEA INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_204:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_204:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_204:TM056": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_204:AWAKENING": {
+      "item": "POKE_BALL"
+    },
+    "RAVAGED_PATH:TM036": {
+      "item": "POKE_BALL"
+    },
+    "RAVAGED_PATH:LUCK INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "RAVAGED_PATH:TM011": {
+      "item": "POKE_BALL"
+    },
+    "RAVAGED_PATH:POTION": {
+      "item": "POKE_BALL"
+    },
+    "FLOAROMA_MEADOW:MIRACLE SEED": {
+      "item": "POKE_BALL"
+    },
+    "FLOAROMA_MEADOW:LEAF STONE": {
+      "item": "POKE_BALL"
+    },
+    "FLOAROMA_MEADOW:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "FLOAROMA_MEADOW:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "VALLEY_WINDWORKS:TM126": {
+      "item": "POKE_BALL"
+    },
+    "VALLEY_WINDWORKS:POTION": {
+      "item": "POKE_BALL"
+    },
+    "VALLEY_WINDWORKS:ELECTIRIZER": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_205:HEAL BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_205:X SP DEF": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_205:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_205:REPEL": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST:NET BALL": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST:GREEN SHARD": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST:POTION": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_CITY:TM018": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_CITY:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_CITY:GUARD SPEC": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_206:POISON BARB": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_206:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_206:BURN HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_206:SUPER REPEL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_207:POKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_207:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_207:IRON": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_207:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_207:TIMER BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_208:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_208:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_208:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_209:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_209:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_209:TM239": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_209:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_209:TM111": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_209:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "LOST_TOWER:OVAL STONE": {
+      "item": "POKE_BALL"
+    },
+    "LOST_TOWER:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "LOST_TOWER:TM274": {
+      "item": "POKE_BALL"
+    },
+    "SOLACEON_TOWN:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "SOLACEON_TOWN:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SOLACEON_RUINS:MIND PLATE": {
+      "item": "POKE_BALL"
+    },
+    "SOLACEON_RUINS:ODD INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "SOLACEON_RUINS:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "SOLACEON_RUINS:HM DEFOG": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:SUPER REPEL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:NEST BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:SMOKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:WAVE INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:TM114": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_210:RED SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_215:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_215:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_215:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_215:TM298": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_215:FIST PLATE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_215:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "VEILSTONE_CITY:FULL INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "VEILSTONE_CITY:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "VEILSTONE_CITY:STAR PIECE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_214:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_214:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_214:RED SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_214:BIG ROOT": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_214:MAGMARIZER": {
+      "item": "POKE_BALL"
+    },
+    "VALOR_LAKEFRONT:TM270": {
+      "item": "POKE_BALL"
+    },
+    "VALOR_LAKEFRONT:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "VALOR_LAKEFRONT:IRON": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_213:TM027": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_213:YELLOW SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_213:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_213:WATER STONE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_213:TM172": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_213:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_213:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "PASTORIA_CITY:MYSTIC WATER": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:YELLOW SHARD": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:POKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:BLUE SHARD": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:GREEN SHARD": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:POKE BALL ": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:GREAT BALL ": {
+      "item": "POKE_BALL"
+    },
+    "GREAT_MARSH:RED SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:ROSE INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:TM049": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:GREEN SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:IRON": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:TM083": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:TM300": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:TM175": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:ELIXIR ": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_212:BLUE SHARD": {
+      "item": "POKE_BALL"
+    },
+    "OLD_CHATEAU:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "OLD_CHATEAU:BIG PEARL": {
+      "item": "POKE_BALL"
+    },
+    "OLD_CHATEAU:OLD GATEAU": {
+      "item": "POKE_BALL"
+    },
+    "OLD_CHATEAU:DREAD PLATE": {
+      "item": "POKE_BALL"
+    },
+    "OLD_CHATEAU:DREAD PLATE ": {
+      "item": "POKE_BALL"
+    },
+    "OLD_CHATEAU:TM103": {
+      "item": "POKE_BALL"
+    },
+    "WAYWARD_CAVE:TM149": {
+      "item": "POKE_BALL"
+    },
+    "WAYWARD_CAVE:TM275": {
+      "item": "POKE_BALL"
+    },
+    "WAYWARD_CAVE:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "WAYWARD_CAVE:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "WAYWARD_CAVE:GRIP CLAW": {
+      "item": "POKE_BALL"
+    },
+    "WAYWARD_CAVE:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "WAYWARD_CAVE:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:TM125": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:ROCK INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:FIRE STONE": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:BLUE SHARD": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:RED SHARD": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:GREEN SHARD": {
+      "item": "POKE_BALL"
+    },
+    "FUEGO_IRONWORKS:YELLOW SHARD": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:DAWN STONE": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:TM086": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:ADAMANT ORB": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:LUSTROUS ORB": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:TM282": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:ESCAPE ROPE ": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:TM078": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:ICE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:SOFT SAND": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:LIGHT CLAY": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "MT_CORONET_BASE:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_GALACTIC_BUILDING:X SPEED": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_GALACTIC_BUILDING:X SP ATK": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_GALACTIC_BUILDING:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_GALACTIC_BUILDING:BLUE SHARD": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_GALACTIC_BUILDING:UP GRADE": {
+      "item": "POKE_BALL"
+    },
+    "GALACTIC_WAREHOUSE:DUSK STONE": {
+      "item": "POKE_BALL"
+    },
+    "GALACTIC_WAREHOUSE:HM FLY": {
+      "item": "POKE_BALL"
+    },
+    "GALACTIC_WAREHOUSE:TM148": {
+      "item": "POKE_BALL"
+    },
+    "GALACTIC_WAREHOUSE:GALACTIC KEY": {
+      "item": "POKE_BALL"
+    },
+    "GALACTIC_WAREHOUSE:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "CELESTIC_TOWN:DRAGON FANG": {
+      "item": "POKE_BALL"
+    },
+    "CANALAVE_CITY:TM060": {
+      "item": "POKE_BALL"
+    },
+    "SNOWPOINT_CITY:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "SUNYSHORE_CITY:THUNDER STONE": {
+      "item": "POKE_BALL"
+    },
+    "SURVIVAL_AREA:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SURVIVAL_AREA:RED SHARD": {
+      "item": "POKE_BALL"
+    },
+    "RESORT_AREA:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_211:TM087": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_211:TM120": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_211:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_216:TM135": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_216:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_216:MENTAL HERB": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_216:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_216:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_216:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_217:HM ROCK CLIMB": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_217:IRON": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_217:TM241": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_217:BLUE SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_217:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_217:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "ACUITY_LAKEFRONT:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "ACUITY_LAKEFRONT:REAPER CLOTH": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_218:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_218:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_218:X ACCURACY": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_219:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_220:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_220:SPLASH PLATE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_220:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_221:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_221:TM105": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_221:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_221:PURE INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_222:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_222:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_222:QUICK BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_222:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_223:TM050": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_223:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_223:DIVE BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_223:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_224:RAZOR CLAW": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_224:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_224:DESTINY KNOT": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_224:REPEAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_224:PP MAX": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_224:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_224:UP GRADE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:RAZOR FANG": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:LAX INCENSE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:DUBIOUS DISC": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:DAWN STONE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_225:GREEN SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_226:TM119": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_226:CARBOS": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_226:LAGGING TAIL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_227:CHARCOAL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_227:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_227:YELLOW SHARD": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_228:PROTECTOR": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_228:IRON": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_228:SHINY STONE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_228:SHED SHELL": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_228:TM051": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_229:REAPER CLOTH": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_229:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_229:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_230:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "SINNOH_ROUTE_230:BLUE SHARD": {
+      "item": "POKE_BALL"
+    },
+    "MANIAC_TUNNEL:TM055": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:TM299": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:DUBIOUS DISC": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:GREEN SHARD": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:TM273": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:PROTEIN": {
+      "item": "POKE_BALL"
+    },
+    "TEAM_GALACTIC_HQ:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:DUSK BALL": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:MAX POTION": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:HP UP": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:RED SHARD": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:MAGNET": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:SHINY STONE": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:PROTECTOR": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:YELLOW SHARD": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "IRON_ISLAND:TM265": {
+      "item": "POKE_BALL"
+    },
+    "SNOWPOINT_TEMPLE:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "SNOWPOINT_TEMPLE:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:TM094": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:TM150": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:MAX REPEL": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:TM276": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:RAZOR CLAW": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:ZINC": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:TM115": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:FULL RESTORE ": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:DUSK STONE": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD_SINNOH:LEFTOVERS": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:LIFE ORB": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:MAX ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:FULL HEAL": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:PP UP": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:FULL RESTORE": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:TM157": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:MAX REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:IRON BALL": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:MAX ELIXIR ": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "STARK_MOUNTAIN:ULTRA BALL": {
+      "item": "POKE_BALL"
+    },
+    "FULLMOON_ISLAND:LUNAR WING": {
+      "item": "POKE_BALL"
+    },
+    "LAKE_VALOR:TM166": {
+      "item": "POKE_BALL"
+    },
+    "LAKE_ACUITY:TM143": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",
