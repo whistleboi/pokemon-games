@@ -1,6 +1,8 @@
 """The games' own rematch teams (11-18, Jordan: "add rematches for all regions", following the games; kanto_handoff/VS_SEEKER.md).
 
-    python dev/builders/build_rematches.py frlg <rematches.json> [--write]
+    python dev/builders/build_rematches.py frlg|em <rematches.json> [--write]
+em: Emerald's gRematchTable (hoenn_rom_tools/em_rematch.py): Hoenn's trainers; no story point holds a stage back, and
+rematches start at 5 badges ("needs": {"badges": 5}), as Emerald's Match Call.
 
 frlg: FireRed's VS Seeker table, read from Jordan's game file by kanto_handoff/kanto_rom_tools/frlg_rematch.py. Each
 entry is matched to our Kanto / Sevii trainer by class, name and first team; its rematch stages become the trainer's
@@ -14,8 +16,13 @@ import os
 import re
 import sys
 
-FILES = {"frlg": ["pokemon_area_data.json", "sevii_area_data.json"]}
-GATES = {"frlg": [None, None, "visited_CELADON_CITY", "visited_FUCHSIA_CITY", "beat_champion", "sevii_warehouse_cleared"]}
+FILES = {"frlg": ["pokemon_area_data.json", "sevii_area_data.json"], "em": ["hoenn_area_data.json", "hoenn_oras.json"]}
+GATES = {"frlg": [None, None, "visited_CELADON_CITY", "visited_FUCHSIA_CITY", "beat_champion", "sevii_warehouse_cleared"],
+         "em": [None] * 6}   # (Emerald: no story point holds a stage back; rematches start at 5 badges: "needs")
+SOURCE = {"frlg": "FireRed", "em": "Emerald"}
+NEEDS = {"em": {"badges": 5}}   # (Emerald's Match Call: rematches only once you have 5 badges)
+TOP = {"pokemon_area_data.json": 151, "sevii_area_data.json": 251, "hoenn_area_data.json": 386, "hoenn_oras.json": 386}
+BY_NAME = {"em"}   # (Hoenn's trainers are ORAS's (hoenn_oras.json "add_trainers"), their classes renamed: matched by name)
 CLASS_ALIAS = {"POKMANIAC": "POKEMANIAC", "POKEMANIAC": "POKEMANIAC", "BREEDER": "POKEMONBREEDER", "RANGER": "POKEMONRANGER",
                "GAMER": "GAMBLER"}
 
@@ -34,9 +41,10 @@ def main(kind, rows_path, write):
     for f in FILES[kind]:
         path = os.path.join("assets", f)
         texts[f] = open(path, "rb").read().decode("utf-8")
-        sp = json.loads(texts[f])["STORY_PROGRESSION"]
+        data = json.loads(texts[f])
+        sp = data.get("STORY_PROGRESSION") or data.get("AREAS") or {}
         for area, a in sp.items():
-            for i, t in enumerate((a.get("trainer_pool") or []) if isinstance(a, dict) else []):
+            for i, t in enumerate(((a.get("trainer_pool") or []) + (a.get("add_trainers") or [])) if isinstance(a, dict) else []):
                 if isinstance(t, dict) and isinstance(t.get("team"), list) and t["team"] and isinstance(t["team"][0], int):
                     ours.setdefault((norm_class(t.get("class")), str(t.get("name", "")).upper()), []).append((f, area, i, t))
             # (11-18: a trainer battle written into a town, met once: Seven Island's Psychics Dario and Rodette. Its name
@@ -51,14 +59,18 @@ def main(kind, rows_path, write):
     edits = {f: [] for f in texts}
     for e in rows:
         first = e["slots"][0]
-        cands = ours.get((norm_class(first[1]), first[2].upper()), [])
+        cands = ours.get((norm_class(first[1]), first[2].upper()), []) or [
+            o for k, v in ours.items() if k[0] == norm_class(first[1]) and k[1].endswith(" " + first[2].upper()) for o in v]
+        if not cands and kind in BY_NAME:
+            cands = [o for k, v in ours.items() if k[1] == first[2].upper() or k[1].endswith(" " + first[2].upper()) for o in v]
         sp0 = [m[0] for m in first[3]]
-        pick = [o for o in cands if o[3]["team"] == sp0] or [o for o in cands if set(o[3]["team"]) & set(sp0)]
+        pick = [o for o in cands if o[3]["team"] == sp0] or [o for o in cands if set(o[3]["team"]) & set(sp0)] or (
+            cands if kind in BY_NAME and len(cands) == 1 else [])   # (ORAS's first team differs from Emerald's: the one trainer of that name)
         if len(pick) != 1:
             miss.append((first[1], first[2], sp0, len(pick)))
             continue
         f, area, i, t = pick[0]
-        top = 151 if f == "pokemon_area_data.json" else 251
+        top = TOP.get(f, 251)
         tiers = []
         for s, slot in enumerate(e["slots"][1:6], start=1):
             if slot is None:
@@ -77,7 +89,10 @@ def main(kind, rows_path, write):
             tiers.append(tier)
         if not any(tiers):
             continue
-        edits[f].append((area, i, t, {"source": "FireRed" if kind == "frlg" else kind, "tiers": tiers}))
+        rem = {"source": SOURCE.get(kind, kind), "tiers": tiers}
+        if NEEDS.get(kind):
+            rem["needs"] = NEEDS[kind]
+        edits[f].append((area, i, t, rem))
         done.append((area, t.get("name"), [None if x is None else x["levels"] for x in tiers]))
     for f, ed in edits.items():
         s = texts[f]

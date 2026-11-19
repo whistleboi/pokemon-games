@@ -16,7 +16,7 @@ CHARGE = 100          # (steps on the maps before it works again: FireRed's)
 READY_CHANCE = 0.7    # (each beaten trainer in view, each use: FireRed's 70%, pokefirered vs_seeker.c)
 # Regions whose games' own rematch teams are in our data ("rematch" tiers; Johto: the phone's): there, only trainers
 # with them want a rematch, as in the games (FireRed shows an "X" for the rest). Elsewhere every route trainer does.
-TABLE_REGIONS = {"KANTO", "SEVII", "JOHTO"}
+TABLE_REGIONS = {"KANTO", "SEVII", "JOHTO", "HOENN"}   # (Hoenn: Emerald's table, 11-18)
 SEE = 9               # (how far "in view" reaches, in tiles)
 GIFT_AT = {"KANTO": "VERMILLION_CITY", "SEVII": "VERMILLION_CITY", "SINNOH": "SINNOH_ROUTE_207",
            "ORANGE": "KINNOW_ISLAND"}   # (Orange 5.7: a trainer in Kinnow's Pokemon Center)
@@ -142,7 +142,11 @@ def town_rematch(game, area, ev):
 
 def _has_rematch(story, area, info):
     """Would this trainer rematch at all? In a region with the games' tables: only those with a team there."""
-    if str(story.area_region(area)).upper() not in TABLE_REGIONS:
+    region = str(story.area_region(area)).upper()
+    need = (info.get("rematch") or {}).get("needs") or {}
+    if need.get("badges") and len(story.badges.get(region, [])) < int(need["badges"]):
+        return False   # (Emerald: rematches only once you have 5 badges, as its Match Call)
+    if region not in TABLE_REGIONS:
         return True
     return bool((info.get("rematch") or {}).get("tiers") or (info.get("phone") or {}).get("tiers"))
 

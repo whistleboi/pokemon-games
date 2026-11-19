@@ -1109,7 +1109,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_101_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [262], "levels": [27]}, {"team": [277, 262], "levels": [28, 30]}, {"team": [277, 264, 262], "levels": [31, 29, 33]}, {"team": [277, 264, 262], "levels": [34, 32, 36]}], "needs": {"badges": 5}},
           "name": "Youngster Calvin",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
@@ -1247,7 +1247,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_104_PERCENTAGES", "surf_pool_percentages": "HOENN_ROUTE_104_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [264], "levels": [27]}, {"team": [264], "levels": [30]}, {"team": [264], "levels": [33]}, {"team": [264], "levels": [36], "team_moves": [["WITHDRAW", "FURY-SWIPES", "MUD-SPORT", "ODOR-SLEUTH"]]}], "needs": {"badges": 5}},
           "name": "Lady Cindy",
           "class": "LASS",
           "sprite": "beauty.png",
@@ -1255,7 +1255,7 @@
           "rewards": { "balls": 5, "NUGGET": 1 },
           "is_boss_battle": true
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [264], "levels": [27]}, {"team": [264], "levels": [30]}, {"team": [264], "levels": [33]}, {"team": [264], "levels": [36], "team_moves": [["WITHDRAW", "FURY-SWIPES", "MUD-SPORT", "ODOR-SLEUTH"]]}], "needs": {"badges": 5}},
           "name": "Rich Boy Winston",
           "class": "YOUNGSTER",
           "sprite": "richboy.png",
@@ -1332,7 +1332,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_106_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [72, 130, 130], "levels": [24, 27, 27]}, {"team": [130, 318, 72, 130], "levels": [29, 26, 26, 29]}, {"team": [130, 318, 73, 130], "levels": [31, 30, 30, 31]}, {"team": [130, 319, 130, 73], "levels": [33, 33, 33, 35]}], "needs": {"badges": 5}},
           "name": "Fisherman Elliot",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
@@ -1386,7 +1386,7 @@
           "team": [72, 118],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [319], "levels": [30]}, {"team": [319], "levels": [33]}, {"team": [120, 319], "levels": [34, 36]}, {"team": [121, 319], "levels": [37, 39]}], "needs": {"badges": 5}},
           "name": "Swimmer Tony",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -1473,14 +1473,14 @@
           "team": [278, 66],
           "rewards": { "balls": 3 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [264], "levels": [27], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [30], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [33], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [36], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}], "needs": {"badges": 5}},
           "name": "Tuber Ricky",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
           "team": [118, 118, 129],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [183, 183], "levels": [26, 26]}, {"team": [183, 183], "levels": [29, 29]}, {"team": [183, 183], "levels": [32, 32]}, {"team": [184, 184], "levels": [35, 35]}], "needs": {"badges": 5}},
           "name": "Tuber Lola",
           "class": "LASS",
           "sprite": "lass.png",
@@ -1511,7 +1511,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_110_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {"name": "Biker Edwin", "class": "BIKER", "sprite": "biker.png", "team": [309, 310], "rewards": {"balls": 3}},
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [271, 274], "levels": [26, 26]}, {"team": [271, 274], "levels": [29, 29]}, {"team": [271, 274], "levels": [32, 32]}, {"team": [272, 275], "levels": [35, 35]}], "needs": {"badges": 5}},"name": "Biker Edwin", "class": "BIKER", "sprite": "biker.png", "team": [309, 310], "rewards": {"balls": 3}},
         {"name": "Triathlete Alyssa", "class": "TRIATHLETE", "sprite": "triathlete_f.png", "team": [118], "rewards": {"balls": 3}},
         {"name": "Triathlete Dylan", "class": "TRIATHLETE", "sprite": "triathlete_m.png", "team": [118], "rewards": {"balls": 3}},
         {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [320, 285, 256], "rewards": {"balls": 10}, "victory_flag": "defeated_rival_110", "dialogue": {"intro": ["{rival_name}: {player_name}! Let's see how much you've grown!"], "player_won": ["{rival_name}: You beat me again! Mauville City is just up ahead."], "player_lost": ["{rival_name}: Ha! Better luck next time!"]}, "movesets": {"320": ["WATER-GUN", "ROLLOUT", "WHIRLPOOL", "ASTONISH"], "285": ["STUN-SPORE", "LEECH-SEED", "MEGA-DRAIN", "HEADBUTT"], "256": ["SAND-ATTACK", "PECK", "DOUBLE-KICK", "FLAME-CHARGE"], "218": ["EMBER", "ROCK-THROW", "HARDEN", "INCINERATE"], "259": ["MUD-SLAP", "FORESIGHT", "MUD-BOMB", "BIDE"], "253": ["QUICK-ATTACK", "MEGA-DRAIN", "FURY-CUTTER", "PURSUIT"]}, "team_choice": {"252": [320, 285, 256], "255": [285, 218, 259], "258": [218, 320, 253]}, "levels": [18, 18, 20]}
@@ -1555,7 +1555,7 @@
           "team": [74, 75, 322],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [309, 320, 296], "levels": [26, 26, 26]}, {"team": [310, 320, 296], "levels": [29, 29, 29]}, {"team": [310, 320, 296], "levels": [32, 32, 32]}, {"team": [310, 320, 297], "levels": [35, 35, 35]}], "needs": {"badges": 5}},
           "name": "Cooltrainer Wilton",
           "class": "COOLTRAINER",
           "sprite": "acetrainer_m.png",
@@ -1585,7 +1585,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_112_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [74, 74, 74, 75], "levels": [24, 24, 24, 24]}, {"team": [74, 74, 75, 75], "levels": [27, 27, 27, 27]}, {"team": [74, 75, 75, 75], "levels": [30, 30, 30, 30]}, {"team": [75, 75, 75, 76], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},
           "name": "Hiker Trent",
           "class": "HIKER",
           "sprite": "hiker.png",
@@ -1635,7 +1635,7 @@
           "team": [327, 327],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [322], "levels": [29], "team_moves": [["EMBER", "TACKLE", "MAGNITUDE", "SUNNY-DAY"]]}, {"team": [322], "levels": [32], "team_moves": [["EMBER", "TAKE-DOWN", "MAGNITUDE", "SUNNY-DAY"]]}, {"team": [315, 322], "levels": [34, 34], "team_moves": [["LEECH-SEED", "MEGA-DRAIN", "GRASS-WHISTLE", "SUNNY-DAY"], ["FLAMETHROWER", "TAKE-DOWN", "MAGNITUDE", "SUNNY-DAY"]]}, {"team": [315, 323], "levels": [37, 37], "team_moves": [["LEECH-SEED", "GIGA-DRAIN", "SOLAR-BEAM", "SUNNY-DAY"], ["FLAMETHROWER", "TAKE-DOWN", "EARTHQUAKE", "SUNNY-DAY"]]}], "needs": {"badges": 5}},
           "name": "Parasol Lady Madeline",
           "class": "LASS",
           "sprite": "beauty.png",
@@ -1696,7 +1696,7 @@
           "team": [333, 333],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [305], "levels": [27]}, {"team": [305, 111], "levels": [29, 29]}, {"team": [305, 111], "levels": [32, 32]}, {"team": [306, 112], "levels": [35, 35]}], "needs": {"badges": 5}},
           "name": "Pokemaniac Steve",
           "class": "POKEMANIAC",
           "sprite": "supernerd.png",
@@ -1728,7 +1728,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_115_PERCENTAGES", "surf_pool_percentages": "HOENN_ROUTE_115_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [67], "levels": [27]}, {"team": [66, 67], "levels": [29, 29]}, {"team": [66, 67, 67], "levels": [31, 31, 31]}, {"team": [66, 67, 67, 68], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},
           "name": "Black Belt Nob",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
@@ -1781,7 +1781,7 @@
           "team": [285, 285],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [280, 307], "levels": [26, 26]}, {"team": [281, 307], "levels": [29, 29]}, {"team": [281, 308], "levels": [32, 32]}, {"team": [281, 354, 308], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
           "name": "School Kid Jerry",
           "class": "SCHOOL_KID",
           "sprite": "school_kid_m.png",
@@ -1820,21 +1820,21 @@
           "team": [118],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [263, 296], "levels": [28, 30], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}, {"team": [263, 296], "levels": [31, 33], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}, {"team": [264, 296], "levels": [34, 36], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}, {"team": [264, 297], "levels": [36, 38], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}], "needs": {"badges": 5}},
           "battle_options": {"double": true}, "name": "Sr. and Jr. Anna & Meg",
           "class": "TWINS",
           "sprite": "twins.png",
           "team": [315, 315],
           "rewards": { "balls": 5 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [294, 264, 304, 262, 277, 296], "levels": [22, 22, 22, 22, 22, 22]}, {"team": [294, 264, 304, 262, 277, 297], "levels": [25, 25, 25, 25, 25, 25]}, {"team": [294, 264, 304, 262, 277, 297], "levels": [28, 28, 28, 28, 28, 28]}, {"team": [294, 264, 305, 262, 277, 297], "levels": [31, 31, 31, 31, 31, 31]}], "needs": {"badges": 5}},
           "name": "Pokémon Breeder Isaac",
           "class": "COOLTRAINER",
           "sprite": "acetrainer_m.png",
           "team": [263, 278, 285],
           "rewards": { "balls": 4 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [84], "levels": [28]}, {"team": [84], "levels": [31]}, {"team": [85], "levels": [34]}, {"team": [85], "levels": [37]}], "needs": {"badges": 5}},
           "name": "Triathlete Maria",
           "class": "TRIATHLETE",
           "sprite": "triathlete_f.png",
@@ -1874,7 +1874,7 @@
           "team": [17, 22],
           "rewards": { "balls": 3 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [81, 293, 81], "levels": [25, 25, 25]}, {"team": [81, 294, 81], "levels": [28, 28, 28]}, {"team": [82, 294, 82], "levels": [31, 31, 31]}, {"team": [82, 295, 82], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
           "name": "Guitarist Dalton",
           "class": "GUITARIST",
           "sprite": "guitarist.png",
@@ -1915,7 +1915,7 @@
           "team": [164, 277],
           "rewards": { "balls": 3 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [44, 315], "levels": [30, 30]}, {"team": [44, 315], "levels": [33, 33]}, {"team": [44, 315], "levels": [36, 36]}, {"team": [182, 315], "levels": [39, 39]}], "needs": {"badges": 5}},
           "name": "Pokémon Ranger Catherine",
           "class": "COOLTRAINER",
           "sprite": "acetrainer_f.png",
@@ -1951,7 +1951,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_120_PERCENTAGES", "surf_pool_percentages": "HOENN_ROUTE_120_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [177, 333], "levels": [32, 32]}, {"team": [177, 334], "levels": [35, 35]}, {"team": [177, 334], "levels": [38, 38]}, {"team": [334, 178], "levels": [41, 41]}], "needs": {"badges": 5}},
           "name": "Bird Keeper Robert",
           "class": "BIRD_KEEPER",
           "sprite": "bird_keeper.png",
@@ -2009,14 +2009,14 @@
           "team": [353, 355],
           "rewards": { "balls": 5 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [352, 336], "levels": [35, 35], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}, {"team": [352, 336], "levels": [38, 38], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}, {"team": [352, 336], "levels": [41, 41], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}, {"team": [352, 336], "levels": [44, 44], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}], "needs": {"badges": 5}},
           "name": "Beauty Jessica",
           "class": "BEAUTY",
           "sprite": "beauty.png",
           "team": [352, 352],
           "rewards": { "balls": 3 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [310], "levels": [34]}, {"team": [264, 310], "levels": [36, 36], "team_moves": [["HEADBUTT", "SAND-ATTACK", "ODOR-SLEUTH", "FURY-SWIPES"], ["QUICK-ATTACK", "SPARK", "ODOR-SLEUTH", "ROAR"]]}, {"team": [264, 310], "levels": [39, 39], "team_moves": [["HEADBUTT", "SAND-ATTACK", "ODOR-SLEUTH", "FURY-SWIPES"], ["QUICK-ATTACK", "SPARK", "ODOR-SLEUTH"]]}, {"team": [264, 55, 310], "levels": [41, 41, 41], "team_moves": [["HEADBUTT", "SAND-ATTACK", "ODOR-SLEUTH", "FURY-SWIPES"], ["FURY-SWIPES", "DISABLE", "CONFUSION", "PSYCH-UP"], ["QUICK-ATTACK", "SPARK", "ODOR-SLEUTH", "ROAR"]]}], "needs": {"badges": 5}},
           "name": "Gentleman Walter",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
@@ -2085,7 +2085,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_123_PERCENTAGES", "surf_pool_percentages": "HOENN_ROUTE_123_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [64, 338], "levels": [33, 33]}, {"team": [64, 338], "levels": [38, 38]}, {"team": [64, 338], "levels": [41, 41]}, {"team": [338, 65], "levels": [45, 45]}], "needs": {"badges": 5}},
           "name": "Psychic Cameron",
           "class": "PSYCHIC",
           "sprite": "supernerd.png",
@@ -2151,7 +2151,7 @@
           "team": [319],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [320], "levels": [38]}, {"team": [320], "levels": [41]}, {"team": [120, 320], "levels": [43, 43]}, {"team": [370, 320, 121], "levels": [45, 45, 45]}], "needs": {"badges": 5}},
           "name": "Swimmer Jenny",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -2179,7 +2179,7 @@
       "wild_pool_percentages": "HOENN_ROUTE_125_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [278, 72, 67], "levels": [36, 36, 36]}, {"team": [279, 72, 67], "levels": [39, 39, 39]}, {"team": [279, 72, 67], "levels": [42, 42, 42]}, {"team": [279, 67, 73], "levels": [45, 45, 45]}], "needs": {"badges": 5}},
           "name": "Swimmer Ernest",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2233,7 +2233,7 @@
           "team": [119, 170],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [120, 120], "levels": [37, 37]}, {"team": [278, 120, 120], "levels": [39, 39, 39]}, {"team": [279, 120, 120], "levels": [41, 41, 41]}, {"team": [279, 121, 121], "levels": [43, 43, 43]}], "needs": {"badges": 5}},
           "name": "Swimmer Pablo",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2301,14 +2301,14 @@
       "wild_pool_percentages": "HOENN_ROUTE_128_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [120], "levels": [39]}, {"team": [120], "levels": [42]}, {"team": [121], "levels": [45]}, {"team": [121], "levels": [48]}], "needs": {"badges": 5}},
           "name": "Swimmer Isaiah",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
           "team": [72, 73],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [120], "levels": [39]}, {"team": [120], "levels": [42]}, {"team": [121], "levels": [45]}, {"team": [121], "levels": [48]}], "needs": {"badges": 5}},
           "name": "Swimmer Katelyn",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -2600,7 +2600,7 @@
       "min_rounds": 3,
       "trainer_pool": [
         {"name": "Bug Catcher Lyle", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 265, 265], "rewards": {"balls": 2}},
-        {"name": "Bug Catcher James", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 267], "rewards": {"balls": 2}},
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [291], "levels": [27]}, {"team": [269, 291], "levels": [29, 29]}, {"team": [283, 269, 291], "levels": [31, 31, 31]}, {"team": [283, 291, 269, 291], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},"name": "Bug Catcher James", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 267], "rewards": {"balls": 2}},
         {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [261], "rewards": {"balls": 5}, "is_boss_battle": true, "victory_flag": "woods_boss_defeated", "villain": "grunt", "levels": [9], "dialogue": {"player_won": "hoenn_woods_won"}}
       ],
       "route_menu": [{"text": "SCIZORITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_scizorite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SCIZORITE!"], "gift_item": {"SCIZORITE": 1}, "flag": "got_scizorite"}}, 
@@ -2667,7 +2667,7 @@
         {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [322, 261], "rewards": {"balls": 3}},
         {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [318, 261], "rewards": {"balls": 3}},
         {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 322], "rewards": {"balls": 10, "METEORITE": 1}, "is_boss_battle": true, "victory_flag": "meteor_falls_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [262, 322], "ALPHA_SAPPHIRE": [262, 318]}, "levels": [23, 23]},
-        {"battle_options": {"double": true}, "name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "oldman.png", "team": [308, 282], "rewards": {"balls": 10}}
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [308, 297], "levels": [43, 43], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [46, 46], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [49, 49], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [52, 52], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}], "needs": {"badges": 5}},"battle_options": {"double": true}, "name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "oldman.png", "team": [308, 282], "rewards": {"balls": 10}}
       ],
       "route_menu": [{"text": "AERODACTYLITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_aerodactylite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AERODACTYLITE!"], "gift_item": {"AERODACTYLITE": 1}, "flag": "got_aerodactylite"}}, {"text": "AN OLD WOMAN", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_salamencite", "event": {"lines": ["An old woman: My granddaughter loves this stone. I think you should have it.", "You found the SALAMENCITE!"], "gift_item": {"SALAMENCITE": 1}, "flag": "got_salamencite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2702,7 +2702,7 @@
           "rewards": { "balls": 3 },
           "villain": "grunt"
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [285, 44, 333], "levels": [25, 25, 25]}, {"team": [286, 44, 333], "levels": [28, 28, 28]}, {"team": [286, 44, 333], "levels": [31, 31, 31]}, {"team": [286, 45, 334], "levels": [40, 40, 40]}], "needs": {"badges": 5}},
           "name": "Picnicker Diana",
           "class": "PICNIKER",
           "sprite": "picknicker.png",
@@ -2835,7 +2835,7 @@
           "team": [121, 319],
           "rewards": { "balls": 3 }
         },
-        {
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [320, 116], "levels": [34, 34]}, {"team": [370, 320, 117], "levels": [36, 36, 36]}, {"team": [370, 320, 117], "levels": [38, 38, 38]}, {"team": [370, 321, 230], "levels": [40, 40, 40]}], "needs": {"badges": 5}},
           "name": "Beauty Thalia",
           "class": "BEAUTY",
           "sprite": "beauty.png",

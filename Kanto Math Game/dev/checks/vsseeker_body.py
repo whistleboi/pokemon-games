@@ -120,4 +120,26 @@ g.change_state(t)
 story.story_flags["vs_seeker_steps"] = vs_seeker.CHARGE
 t.player = (3, 3)
 _far = vs_seeker.use_town(t); check(not any(l.endswith("wants a rematch!") for l in _far), f"far from them: nobody answers ({_far}, at {t.player})")
+print("5) Hoenn: Emerald's rematch stages, from 5 badges on (its Match Call), the next one each win")
+story.enter_region("HOENN")
+_hp = g.loader.area_data["STORY_PROGRESSION"]
+_em = next((a_, i_, t_) for a_, a in _hp.items() if isinstance(a, dict) and story.area_region(a_) == "HOENN"
+           for i_, t_ in enumerate(a.get("trainer_pool") or []) if isinstance(t_, dict) and (t_.get("rematch") or {}).get("source") == "Emerald"
+           and sum(1 for x in t_["rematch"]["tiers"] if x) >= 2)
+_ea, _ei, _et = _em
+_n_em = sum(1 for a_, a in _hp.items() if isinstance(a, dict) for t_ in (a.get("trainer_pool") or []) if isinstance(t_, dict) and (t_.get("rematch") or {}).get("source") == "Emerald")
+check(_n_em >= 50, f"{_n_em} Hoenn trainers carry Emerald's stages")
+story.badges["HOENN"] = ["STONE", "KNUCKLE", "DYNAMO", "HEAT"]
+check(not vs_seeker._has_rematch(story, _ea, _et), f"{_et['name']}: no rematch with 4 badges")
+story.badges["HOENN"].append("BALANCE")
+check(vs_seeker._has_rematch(story, _ea, _et), "...with 5, yes")
+story.story_flags.get("vs_stage", {}).pop(f"{_ea}|{_ei}", None)
+vs_seeker._ready(story).setdefault(_ea, {})[str(_ei)] = story._today()
+_r1 = vs_seeker.rematch(g, _ea, _ei, dict(_et))
+_t = [x for x in _et["rematch"]["tiers"] if x]
+check(_r1["levels"] == _t[0]["levels"], f"first rematch: Emerald's first stage ({_r1['levels']})")
+vs_seeker.won(story, _ea, _ei, _r1["_vs_stage"])
+vs_seeker._ready(story).setdefault(_ea, {})[str(_ei)] = story._today()
+_r2 = vs_seeker.rematch(g, _ea, _ei, dict(_et))
+check(_r2["levels"] == _t[1]["levels"], f"won: the next stage at once, nothing holds it back ({_r2['levels']})")
 print("FAILURES:", fails)

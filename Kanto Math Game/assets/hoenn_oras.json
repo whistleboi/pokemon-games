@@ -259,7 +259,7 @@
   },
   "HOENN_JAGGED_PASS": {
    "add_trainers": [
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [307, 296], "levels": [30, 30]}, {"team": [308, 297], "levels": [33, 33]}, {"team": [308, 297], "levels": [36, 36]}, {"team": [308, 297], "levels": [39, 39]}], "needs": {"badges": 5}},
      "name": "Expert Shelby",
      "class": "PKMN_TRAINER",
      "sprite": "acetrainer_m.png",
@@ -276,7 +276,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [263, 276], "levels": [26, 26]}, {"team": [264, 277], "levels": [29, 29]}, {"team": [27, 277, 264], "levels": [31, 31, 31]}, {"team": [277, 28, 264], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
      "name": "Camper Ethan",
      "class": "CAMPER",
      "sprite": "camper.png",
@@ -595,7 +595,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [302, 325], "levels": [31, 31]}, {"team": [325, 302], "levels": [35, 35]}, {"team": [325, 302], "levels": [40, 40]}, {"team": [355, 302, 326], "levels": [42, 42, 42]}], "needs": {"badges": 5}},
      "name": "Hex Maniac Valerie",
      "class": "PSYCHIC",
      "sprite": "channeler.png",
@@ -1205,7 +1205,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [311, 312], "levels": [27, 27]}, {"team": [311, 312], "levels": [30, 30]}, {"team": [311, 312], "levels": [33, 33], "team_moves": [["SPARK", "CHARGE", "FAKE-TEARS", "HELPING-HAND"], ["SPARK", "CHARGE", "CHARM", "HELPING-HAND"]]}, {"team": [311, 312], "levels": [36, 36], "team_moves": [["THUNDER", "CHARGE", "FAKE-TEARS", "HELPING-HAND"], ["THUNDER", "CHARGE", "CHARM", "HELPING-HAND"]]}], "needs": {"badges": 5}},
      "name": "Twins Amy & Liv",
      "class": "TWINS",
      "sprite": "twins.png",
@@ -1222,7 +1222,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [300], "levels": [29]}, {"team": [300], "levels": [32]}, {"team": [301], "levels": [35]}, {"team": [301], "levels": [38]}], "needs": {"badges": 5}},
      "name": "Poké Fan Miguel",
      "class": "POKEFAN",
      "sprite": "pokefan_f.png",
@@ -1323,7 +1323,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [271, 285], "levels": [26, 26]}, {"team": [271, 286], "levels": [29, 29]}, {"team": [271, 286], "levels": [32, 32]}, {"team": [277, 271, 286], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
      "name": "Lass Haley",
      "class": "LASS",
      "sprite": "lass.png",
@@ -1967,7 +1967,7 @@
   },
   "HOENN_ROUTE_110": {
    "add_trainers": [
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [311, 312], "levels": [26, 26]}, {"team": [311, 312], "levels": [29, 29]}, {"team": [311, 312], "levels": [32, 32]}, {"team": [311, 312], "levels": [35, 35]}], "needs": {"badges": 5}},
      "name": "Poké Fan Isabel",
      "class": "POKEFAN",
      "sprite": "pokefan_f.png",
@@ -2097,7 +2097,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [81], "levels": [30]}, {"team": [81], "levels": [33]}, {"team": [82], "levels": [36]}, {"team": [82], "levels": [39]}], "needs": {"badges": 5}},
      "name": "Triathlete Benjamin",
      "class": "TRIATHLETE",
      "sprite": "triathlete_f.png",
@@ -2324,7 +2324,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [278, 322, 315], "levels": [26, 26, 26]}, {"team": [279, 322, 315], "levels": [29, 29, 29]}, {"team": [279, 322, 315], "levels": [32, 32, 32]}, {"team": [279, 323, 315], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
      "name": "Ace Trainer Brooke",
      "class": "COOLTRAINER",
      "sprite": "acetrainer_m.png",
@@ -2403,7 +2403,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [28], "levels": [27], "team_moves": [["DIG", "SLASH", "SAND-ATTACK", "POISON-STING"]]}, {"team": [28], "levels": [30], "team_moves": [["DIG", "SLASH", "SAND-ATTACK", "POISON-STING"]]}, {"team": [28], "levels": [33], "team_moves": [["DIG", "SLASH", "SAND-ATTACK", "POISON-STING"]]}, {"team": [28], "levels": [36], "team_moves": [["DIG", "SLASH", "SAND-ATTACK", "POISON-STING"]]}], "needs": {"badges": 5}},
      "name": "Ruin Maniac Dusty",
      "class": "RUIN_MANIAC",
      "sprite": "ruinmaniac.png",
@@ -2803,7 +2803,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [109, 109, 109, 109], "levels": [24, 24, 24, 26], "team_moves": [["POISON-GAS", "TACKLE", "SLUDGE", "SELF-DESTRUCT"], ["POISON-GAS", "TACKLE", "SLUDGE"], ["POISON-GAS", "TACKLE", "SLUDGE", "SELF-DESTRUCT"], ["TACKLE", "SLUDGE"]]}, {"team": [109, 109, 109, 109], "levels": [27, 27, 27, 29], "team_moves": [["POISON-GAS", "TACKLE", "SLUDGE", "SELF-DESTRUCT"], ["POISON-GAS", "TACKLE", "SLUDGE", "SELF-DESTRUCT"], ["POISON-GAS", "TACKLE", "SLUDGE"], ["TACKLE", "SLUDGE"]]}, {"team": [109, 109, 109, 109], "levels": [30, 30, 30, 32], "team_moves": [["POISON-GAS", "TACKLE", "SLUDGE"], ["POISON-GAS", "TACKLE", "SLUDGE"], ["POISON-GAS", "TACKLE", "SLUDGE"], ["TACKLE", "SLUDGE"]]}, {"team": [109, 109, 109, 110], "levels": [33, 33, 33, 35], "team_moves": [["POISON-GAS", "TACKLE", "SLUDGE"], ["POISON-GAS", "TACKLE", "SLUDGE"], ["POISON-GAS", "TACKLE", "SLUDGE"], ["DESTINY-BOND", "TACKLE", "SLUDGE"]]}], "needs": {"badges": 5}},
      "name": "Ninja Boy Lao",
      "class": "NINJA_BOY",
      "sprite": "ninja_boy.png",
@@ -3011,7 +3011,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [218, 278], "levels": [26, 26]}, {"team": [218, 279], "levels": [29, 29]}, {"team": [218, 279], "levels": [32, 32]}, {"team": [219, 279], "levels": [35, 35]}], "needs": {"badges": 5}},
      "name": "Kindler Bernie",
      "class": "KINDLER",
      "sprite": "kindler.png",
@@ -3215,7 +3215,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [297], "levels": [33], "team_moves": [["ARM-THRUST", "KNOCK-OFF", "SAND-ATTACK", "DIG"]]}, {"team": [297], "levels": [36], "team_moves": [["ARM-THRUST", "KNOCK-OFF", "SAND-ATTACK", "DIG"]]}, {"team": [297], "levels": [39], "team_moves": [["ARM-THRUST", "BELLY-DRUM", "SAND-ATTACK", "DIG"]]}, {"team": [297], "levels": [42], "team_moves": [["ARM-THRUST", "BELLY-DRUM", "SAND-ATTACK", "DIG"]]}], "needs": {"badges": 5}},
      "name": "Expert Timothy",
      "class": "PKMN_TRAINER",
      "sprite": "acetrainer_m.png",
@@ -3400,7 +3400,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [285, 293], "levels": [26, 26]}, {"team": [285, 294], "levels": [29, 29]}, {"team": [286, 294], "levels": [32, 32]}, {"team": [286, 295], "levels": [35, 35]}], "needs": {"badges": 5}},
      "name": "Schoolkid Karen",
      "class": "SCHOOL_KID",
      "sprite": "school_kid_m.png",
@@ -3618,7 +3618,7 @@
     }
    },
    "add_trainers": [
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [278, 285, 183, 315, 300, 118], "levels": [22, 22, 22, 22, 22, 22]}, {"team": [279, 286, 183, 315, 301, 118], "levels": [25, 25, 25, 25, 25, 25]}, {"team": [279, 286, 183, 315, 301, 118], "levels": [28, 28, 28, 28, 28, 28]}, {"team": [279, 286, 184, 315, 301, 119], "levels": [31, 31, 31, 31, 31, 31]}], "needs": {"badges": 5}},
      "name": "Pokémon Breeder Lydia",
      "class": "COOLTRAINER",
      "sprite": "acetrainer_m.png",
@@ -3734,7 +3734,7 @@
   },
   "HOENN_ROUTE_118": {
    "add_trainers": [
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [285, 315], "levels": [26, 26]}, {"team": [285, 44, 315], "levels": [28, 28, 28]}, {"team": [285, 44, 315], "levels": [31, 31, 31]}, {"team": [286, 44, 315], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
      "name": "Aroma Lady Rose",
      "class": "BEAUTY",
      "sprite": "beauty.png",
@@ -4013,7 +4013,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [286], "levels": [31]}, {"team": [286], "levels": [34]}, {"team": [286], "levels": [37]}, {"team": [352, 286], "levels": [39, 39]}], "needs": {"badges": 5}},
      "name": "Pokémon Ranger Jackson",
      "class": "COOLTRAINER",
      "sprite": "acetrainer_f.png",
@@ -6044,7 +6044,7 @@
      },
      "oras": true
     },
-    {
+    { "rematch": {"source": "Emerald", "tiers": [{"team": [67, 67], "levels": [37, 37]}, {"team": [296, 67, 67], "levels": [39, 39, 39]}, {"team": [297, 67, 67], "levels": [41, 41, 41]}, {"team": [297, 68, 68], "levels": [43, 43, 43]}], "needs": {"badges": 5}},
      "name": "Black Belt Koji",
      "class": "BLACKBELT",
      "sprite": "blackbelt.png",
