@@ -347,6 +347,16 @@ class StoryManager:
             days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
             want = [d.strip()[:3].lower() for d in condition.split(":", 1)[1].split(",")]
             return days[datetime.date.today().weekday()] in want
+        if condition.startswith("daily_pick:"):  # ("daily_pick:<group>:<of>:<pick>:<i>": today's <pick> of <of>, the same all day - Platinum's
+            import datetime, random             #  restaurant: five of its nine diner pairs each day, 11-19)
+            _g, of, pick, i = condition.split(":", 1)[1].split(":")
+            today = random.Random(f"{_g}@{datetime.date.today().isoformat()}").sample(range(int(of)), int(pick))
+            return int(i) in today
+        if condition.startswith("time:"):  # (the real clock: "time:night" 8pm-6am, "time:day" otherwise - Platinum's night patrol on Routes 212 and 222, 11-19)
+            import datetime
+            hour = datetime.datetime.now().hour
+            night = hour < 6 or hour >= 20
+            return night if condition.split(":", 1)[1].strip().lower() == "night" else not night
         if condition.startswith("caught_kanto:"):  # (kinds of Kanto Pokemon caught: Route 2's aide wants ten before HM Flash, FireRed)
             return self.kanto_caught_count() >= int(condition.split(":", 1)[1])
         if condition.startswith("party_has:"):
@@ -1210,6 +1220,8 @@ class StoryManager:
         if info.get("when_flags") and not all(self.has_badge(f[6:]) if str(f).startswith("badge:") else self.story_flags.get(f)
                                               for f in info["when_flags"]):
             return False
+        if info.get("gone_flags") and any(self.story_flags.get(f) for f in info["gone_flags"]):   # (11-19: gone once the story moves on -
+            return False                                                                             #  Platinum's grunts at Lake Verity, on Mt. Coronet)
         if not self.is_trainer_defeated(area, index):
             return True
         cls = str(info.get("class", "")).upper()

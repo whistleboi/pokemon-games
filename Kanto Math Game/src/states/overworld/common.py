@@ -361,7 +361,7 @@ def _run_story_event(state, key, check, show):
                 show(_resolve_lines(game, rowdy.mood_lines(pk)))
                 return
         if ev.get("tutor") and not ev["tutor"].get("choices"):   # (a once-only tutor, used: again, for money; Jordan 11-16)
-            _tutor_again(state, ev, show)
+            _tutor_or_tm(state, ev, [], lambda _h: _tutor_again(state, ev, show))
             return
         show(_resolve_lines(game, ev.get("done") or ev.get("lines") or ["..."]))
         return
@@ -517,6 +517,8 @@ def _run_story_event(state, key, check, show):
         mine = next((i for i, p in enumerate(story.player_team) if p and p.id == int(tr["want"]) and not getattr(p, "is_egg", False)
                      and getattr(p, "special", None) != "rowdy_pikachu"), None)   # (Yellow's partner is never traded)
         if mine is None:
+            if flag:   # (no trade made: they'll ask again next time - 11-19, a failed ask used to use the trade up)
+                story.story_flags.pop(flag, None)
             show(_resolve_lines(game, ev.get("fail") or ["You don't have the Pokemon they want."]))
             return
         old = story.player_team[mine]
@@ -530,6 +532,8 @@ def _run_story_event(state, key, check, show):
             if _itemlib.holdable(tr["item"]):   # (a held item's copy is the Bag's: the Stick can be taken off and given back)
                 story.add_item(tr["item"])
         new.traded = True   # (its first owner's: the Name Rater won't rename it, as in the games)
+        if tr.get("nickname"):   # (its first owner's name for it: Platinum's Kazza, Charap, Gaspar, Foppa; 11-19)
+            new.nickname = tr["nickname"]
         story.player_team[mine] = new
         game.data.mark_seen(new.id)
         game.data.add_pokemon(new)
@@ -741,19 +745,24 @@ def _run_story_event(state, key, check, show):
         lines += _give_badge(game, ev["give_badge"])
     if ev.get("tutor"):  # a move tutor (Pacifidlog's Explosion man): {"move", "like": a TM move whose learners can learn it too,
         tu = ev["tutor"]   #   "choices": [moves] for a menu (Crystal's Goldenrod tutor), "min_friend": it must love you (Grandma Wilma),
-        if ev.get("tutor_repeat"):   #   "coins", "take": items}; you pick which Pokemon learns it (Jordan 11-16)
-            _tutor_again(state, ev, show)
-            return
-        if tu.get("choices"):
-            from src.states.systems.pick_list import PickListState
-            def chose(mv):
-                if mv is None:
-                    show(_resolve_lines(game, ev.get("cancel") or ["Come back any time!"]))
-                    return
-                _tutor_flow(state, dict(tu, move=mv, like=mv), ev, [], show)
-            game.change_state(PickListState(game, state, "WHICH MOVE?", [(m.replace("-", " "), m) for m in tu["choices"]], chose))
-            return
-        _tutor_flow(state, tu, ev, lines, show, flag=flag)
+                           #   "coins", "take": items}; you pick which Pokemon learns it (Jordan 11-16)
+
+        def teach(head):
+            if ev.get("tutor_repeat"):
+                _tutor_again(state, ev, show)
+                return
+            if tu.get("choices"):
+                from src.states.systems.pick_list import PickListState
+
+                def chose(mv):
+                    if mv is None:
+                        show(_resolve_lines(game, ev.get("cancel") or ["Come back any time!"]))
+                        return
+                    _tutor_flow(state, dict(tu, move=mv, like=mv, take=(tu.get("costs") or {}).get(mv, tu.get("take"))), ev, [], show)   # ("costs": each move's own price - Platinum's Shards)
+                game.change_state(PickListState(game, state, "WHICH MOVE?", [(m.replace("-", " "), m) for m in tu["choices"]], chose))
+                return
+            _tutor_flow(state, tu, ev, head, show, flag=flag)
+        _tutor_or_tm(state, ev, lines, teach)   # (their moves as TMs too: learn now, or buy the TM - Jordan 11-19)
         return
     if ev.get("friend_check"):  # (Goldenrod's friendship checker, HGSS: how your first Pokemon feels about you)
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
@@ -1174,6 +1183,35 @@ def _tutor_flow(state, tu, ev, head, show, flag=None, price=0):
     _say_then(state, list(head), pick)
 
 
+def _tutor_or_tm(state, ev, head, teach):
+    """A tutor whose moves are TMs too (src/pokemon/tutors.py; Jordan 11-19: "have the tutors sell the TMs"): their lines,
+    then LEARN IT NOW (teach(head lines left to say)) or BUY THE TM (a shop of just their TMs). No TM: straight to teach."""
+    from src.pokemon import tutors
+    from src.states.systems.pick_list import PickListState
+    from src.states.systems.mart import PokeMartState
+    game = state.game
+    tms_ = tutors.tutor_event_tms(game, ev)
+    if not tms_:
+        teach(head)
+        return
+
+    def chose(v):
+        if v == "teach":
+            teach([])
+        elif v == "buy":
+            from src.pokemon import tms as _tms
+            left = [t for t in tms_ if t not in _tms.owned(game.story_manager)]
+            if not left:
+                _say_then(state, ["You have that TM already! It teaches the move as often as you like."], lambda: None)
+                return
+            game.change_state(PokeMartState(game, state, stock=left, tutor_sale=True))
+        else:
+            _say_then(state, _resolve_lines(game, ev.get("cancel") or ["Come back any time!"]), lambda: None)
+    word = "THE TM" if len(tms_) == 1 else "THE TMs"
+    _say_then(state, _resolve_lines(game, list(head)),
+              lambda: game.change_state(PickListState(game, state, "MOVE TUTOR", [("LEARN IT NOW", "teach"), ("BUY " + word, "buy")], chose)))
+
+
 def _tutor_again(state, ev, show):
     """A tutor who has taught their move already (FireRed's teach once): again, to any Pokemon, for money."""
     from src.states.systems.pick_list import PickListState
@@ -1232,6 +1270,10 @@ def _tutor_teach(game, tu, ev, who=None):
         if _gc.coins(story) < int(tu["coins"]):
             return ["\x00fail", f"That'll be {tu['coins']} coins... You only have {_gc.coins(story)}. Win some at the Game Corner first!"]
         _gc.add_coins(story, -int(tu["coins"]))
+    short = {i: q for i, q in (tu.get("take") or {}).items() if story.inventory.get(i, 0) < q}
+    if short:   # (Platinum's Shard tutors: you need the Shards first; 11-19)
+        want = ", ".join(f"{q} {i.replace('_', ' ').title()}{'s' if q > 1 else ''}" for i, q in (tu.get("take") or {}).items())
+        return ["\x00fail", f"For {tu['move'].replace('-', ' ').title()} I'll need {want}. Come back when you have them!"]
     who = who if who in can else can[0]
     _mv.move_pool(game, who).append(tu["move"])
     if len(who.moves) < _mv.MAX_MOVES:

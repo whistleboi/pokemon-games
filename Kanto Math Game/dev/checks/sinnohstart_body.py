@@ -169,8 +169,9 @@ for lake in ("LAKE_VERITY", "LAKE_VALOR", "LAKE_ACUITY"):
 flags["galactic_hq_cleared"] = True
 sp_ = route("SPEAR_PILLAR")
 sp_.story_event("cyrus_spear_pillar")
-check(not flags.get("spear_pillar_resolved") and not isinstance(g.current_state, TrainerIntroState),
-      "Cyrus waits until Mars and Jupiter are beaten")
+_who_sp = getattr(getattr(g.current_state, "next_state", None), "trainer_name", None) if isinstance(g.current_state, TrainerIntroState) else None
+check(not flags.get("spear_pillar_resolved") and (_who_sp is None or "Grunt" in str(_who_sp)),
+      f"Cyrus waits until Mars and Jupiter are beaten (11-19: Platinum's grunts on the way up come first: {_who_sp})")
 sp_ = route("SPEAR_PILLAR")
 sp_.story_event("spear_pillar_commanders")
 check(battle_team(g.current_state) == [(436, 44), (42, 44), (432, 46), (436, 44), (42, 44), (435, 46)], f"Mars and Jupiter: Platinum's tag battle, both teams (11-18) {battle_team(g.current_state)}")

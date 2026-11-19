@@ -258,7 +258,7 @@ check({"LAVENDER_TOWN", "GOLDENROD_CITY", "SLATEPORT_CITY", "ETERNA_CITY", "SUNB
 _tm = _jq.load(open("assets/town_maps.json", encoding="utf-8"))
 check(_tm["SLATEPORT_CITY"]["inside"].get("5,19") == "rater" and _tm["SLATEPORT_CITY"]["rooms"]["rater"]["people"][0]["event"].get("name_rater"),
       "Slateport: Emerald's Name Rater's house behind its own door (5,19)")
-check(_tm["ETERNA_CITY"]["inside"].get("59,36") == "rater" and _tm["ETERNA_CITY"]["rooms"]["rater"]["people"] == ["Name Rater"],
+check(_tm["ETERNA_CITY"]["inside"].get("59,36") == "rater" and "Name Rater" in _tm["ETERNA_CITY"]["rooms"]["rater"]["people"],   # (11-19: the Condominiums' residents live there too)
       "Eterna: the Condominiums' ground floor, the Name Rater inside (Platinum)")
 _ev = next(e for w, e in _raters if w == "LAVENDER_TOWN")
 _p1, _p2, _p3 = mk(25), mk(1), mk(4)

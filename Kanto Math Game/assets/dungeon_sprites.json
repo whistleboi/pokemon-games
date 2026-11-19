@@ -10641,6 +10641,1863 @@
     },
     "LAKE_ACUITY:TM143": {
       "item": "POKE_BALL"
+    },
+    "TWINLEAF_TOWN:Woman": {
+      "sheet": "pt_woman1.png"
+    },
+    "TWINLEAF_TOWN:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "TWINLEAF_TOWN:Man": {
+      "sheet": "pt_man2.png"
+    },
+    "SINNOH_ROUTE_201:Man": {
+      "sheet": "pt_man1.png"
+    },
+    "SINNOH_ROUTE_201:Mart worker": {
+      "sheet": "pt_shopm1.png"
+    },
+    "SINNOH_ROUTE_201:Boy": {
+      "sheet": "pt_boy1.png"
+    },
+    "SINNOH_ROUTE_201:Girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "SANDGEM_TOWN:Boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "SANDGEM_TOWN:Man": {
+      "sheet": "pt_man1.png"
+    },
+    "SANDGEM_TOWN:Woman": {
+      "sheet": "pt_woman1.png"
+    },
+    "SINNOH_ROUTE_202:Boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "JUBILIFE_CITY:Woman": {
+      "sheet": "pt_woman3.png"
+    },
+    "JUBILIFE_CITY:Man": {
+      "sheet": "pt_man3.png"
+    },
+    "JUBILIFE_CITY:Boy": {
+      "sheet": "pt_boy1.png"
+    },
+    "JUBILIFE_CITY:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "JUBILIFE_CITY:Old man": {
+      "sheet": "pt_oldman1.png"
+    },
+    "JUBILIFE_CITY:Boy ": {
+      "sheet": "pt_boy1.png"
+    },
+    "JUBILIFE_CITY:Old man ": {
+      "sheet": "pt_oldman1.png"
+    },
+    "JUBILIFE_CITY:Man ": {
+      "sheet": "pt_man3.png"
+    },
+    "JUBILIFE_CITY:Kid trading": {
+      "sheet": "pt_dsboy.png"
+    },
+    "JUBILIFE_CITY:Kid trading ": {
+      "sheet": "pt_dsboy.png"
+    },
+    "OREBURGH_GATE:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "OREBURGH_CITY:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "OREBURGH_CITY:Girl": {
+      "sheet": "pt_girl3.png"
+    },
+    "OREBURGH_CITY:Woman": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "OREBURGH_CITY:Boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "OREBURGH_CITY:Worker": {
+      "sheet": "pt_workman.png"
+    },
+    "OREBURGH_CITY:Worker ": {
+      "sheet": "pt_workman.png"
+    },
+    "OREBURGH_CITY:Camper": {
+      "sheet": "pt_campboy.png"
+    },
+    "OREBURGH_CITY:Worker  ": {
+      "sheet": "pt_workman.png"
+    },
+    "OREBURGH_CITY:Worker   ": {
+      "sheet": "pt_workman.png"
+    },
+    "OREBURGH_CITY:Man": {
+      "sheet": "pt_man2.png"
+    },
+    "OREBURGH_CITY:Girl ": {
+      "sheet": "pt_girl2.png"
+    },
+    "OREBURGH_CITY:Machop": {
+      "pokemon": 66
+    },
+    "OREBURGH_CITY:Machop ": {
+      "pokemon": 66
+    },
+    "OREBURGH_CITY:Machop  ": {
+      "pokemon": 66
+    },
+    "OREBURGH_CITY:Girl  ": {
+      "sheet": "pt_girl2.png"
+    },
+    "OREBURGH_MINE:Worker": {
+      "sheet": "pt_workman.png"
+    },
+    "OREBURGH_MINE:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "OREBURGH_MINE:Machop": {
+      "pokemon": 66
+    },
+    "OREBURGH_MINE:Machop ": {
+      "pokemon": 66
+    },
+    "OREBURGH_MINE:Machop  ": {
+      "pokemon": 66
+    },
+    "SINNOH_ROUTE_203:Girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "SINNOH_ROUTE_204:Boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "SINNOH_ROUTE_204:Boy ": {
+      "sheet": "pt_boy2.png"
+    },
+    "SINNOH_ROUTE_204:Teacher": {
+      "sheet": "pt_woman3.png"
+    },
+    "FLOAROMA_TOWN:Woman": {
+      "sheet": "pt_woman1.png"
+    },
+    "FLOAROMA_TOWN:Girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "FLOAROMA_TOWN:Girl ": {
+      "sheet": "pt_girl1.png"
+    },
+    "FLOAROMA_TOWN:Camper": {
+      "sheet": "pt_campboy.png"
+    },
+    "FLOAROMA_TOWN:Woman ": {
+      "sheet": "pt_woman2.png"
+    },
+    "FLOAROMA_MEADOW:Honey man": {
+      "sheet": "pt_middleman1.png"
+    },
+    "VALLEY_WINDWORKS:Windworks dad": {
+      "sheet": "pt_assistantm.png"
+    },
+    "VALLEY_WINDWORKS:Drifloon": {
+      "pokemon": 425
+    },
+    "SINNOH_ROUTE_205:Boy": {
+      "sheet": "pt_boy3.png"
+    },
+    "SINNOH_ROUTE_205:Boy ": {
+      "sheet": "pt_boy2.png"
+    },
+    "ETERNA_FOREST:Boy": {
+      "sheet": "pt_boy3.png"
+    },
+    "ETERNA_CITY:Man": {
+      "sheet": "pt_man1.png"
+    },
+    "ETERNA_CITY:Old man": {
+      "sheet": "pt_oldman1.png"
+    },
+    "ETERNA_CITY:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "ETERNA_CITY:Woman": {
+      "sheet": "pt_woman1.png"
+    },
+    "ETERNA_CITY:Woman ": {
+      "sheet": "pt_woman3.png"
+    },
+    "ETERNA_CITY:Boy": {
+      "sheet": "pt_boy3.png"
+    },
+    "ETERNA_CITY:Woman  ": {
+      "sheet": "pt_woman1.png"
+    },
+    "ETERNA_CITY:Boy ": {
+      "sheet": "pt_boy3.png"
+    },
+    "ETERNA_CITY:Fisherman": {
+      "sheet": "pt_fishing.png"
+    },
+    "ETERNA_GALACTIC_BUILDING:Clefairy": {
+      "pokemon": 35
+    },
+    "ETERNA_GALACTIC_BUILDING:Owner": {
+      "sheet": "pt_middleman1.png"
+    },
+    "ETERNA_GALACTIC_BUILDING:Buneary": {
+      "pokemon": 427
+    },
+    "SINNOH_ROUTE_206:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "SINNOH_ROUTE_207:Cyclist": {
+      "sheet": "pt_cyclem.png"
+    },
+    "SINNOH_ROUTE_208:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "HEARTHOME_CITY:Visitor": {
+      "sheet": "pt_fishing.png"
+    },
+    "HEARTHOME_CITY:Man": {
+      "sheet": "pt_middleman1.png"
+    },
+    "HEARTHOME_CITY:Mom": {
+      "sheet": "pt_woman1.png"
+    },
+    "HEARTHOME_CITY:Baby": {
+      "sheet": "pt_baby.png"
+    },
+    "HEARTHOME_CITY:Man ": {
+      "sheet": "pt_man1.png"
+    },
+    "HEARTHOME_CITY:Woman": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "HEARTHOME_CITY:Mr. Goods": {
+      "sheet": "pt_artist.png"
+    },
+    "HEARTHOME_CITY:Girl": {
+      "sheet": "pt_girl2.png"
+    },
+    "HEARTHOME_CITY:Girl ": {
+      "sheet": "pt_girl2.png"
+    },
+    "HEARTHOME_CITY:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "HEARTHOME_CITY:Pachirisu": {
+      "pokemon": 417
+    },
+    "HEARTHOME_CITY:Man  ": {
+      "sheet": "pt_middleman1.png"
+    },
+    "HEARTHOME_CITY:Hiker ": {
+      "sheet": "pt_mount.png"
+    },
+    "HEARTHOME_CITY:Woman ": {
+      "sheet": "pt_woman1.png"
+    },
+    "HEARTHOME_CITY:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "HEARTHOME_CITY:Baby ": {
+      "sheet": "pt_baby.png"
+    },
+    "HEARTHOME_CITY:Dad": {
+      "sheet": "pt_man1.png"
+    },
+    "HEARTHOME_CITY:Artist": {
+      "sheet": "pt_artist.png"
+    },
+    "HEARTHOME_CITY:Black Belt ": {
+      "sheet": "pt_fighter.png"
+    },
+    "SINNOH_ROUTE_209:Man": {
+      "sheet": "pt_middleman1.png"
+    },
+    "SINNOH_ROUTE_209:Fisherman": {
+      "sheet": "pt_fishing.png"
+    },
+    "SINNOH_ROUTE_209:Jogger": {
+      "sheet": "pt_sportsman.png"
+    },
+    "SINNOH_ROUTE_209:Jogger ": {
+      "sheet": "pt_sportsman.png"
+    },
+    "LOST_TOWER:Woman": {
+      "sheet": "pt_woman1.png"
+    },
+    "LOST_TOWER:Woman ": {
+      "sheet": "pt_woman1.png"
+    },
+    "LOST_TOWER:Old woman": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "LOST_TOWER:Old woman ": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "SOLACEON_TOWN:Cowgirl": {
+      "sheet": "pt_cowgirl.png"
+    },
+    "SOLACEON_TOWN:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "SOLACEON_TOWN:Farmer": {
+      "sheet": "pt_farmer.png"
+    },
+    "SOLACEON_TOWN:Cowgirl ": {
+      "sheet": "pt_cowgirl.png"
+    },
+    "SOLACEON_TOWN:Ruin Maniac": {
+      "sheet": "pt_explore.png"
+    },
+    "SOLACEON_TOWN:Farmer ": {
+      "sheet": "pt_farmer.png"
+    },
+    "SOLACEON_RUINS:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "SINNOH_ROUTE_210:Girl": {
+      "sheet": "pt_woman3.png"
+    },
+    "SINNOH_ROUTE_210:Jogger": {
+      "sheet": "pt_sportsman.png"
+    },
+    "SINNOH_ROUTE_210:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "SINNOH_ROUTE_215:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "SINNOH_ROUTE_215:Jogger": {
+      "sheet": "pt_sportsman.png"
+    },
+    "SINNOH_ROUTE_215:Jogger ": {
+      "sheet": "pt_sportsman.png"
+    },
+    "VEILSTONE_CITY:Man": {
+      "sheet": "pt_man2.png"
+    },
+    "VEILSTONE_CITY:Man ": {
+      "sheet": "pt_middleman1.png"
+    },
+    "VEILSTONE_CITY:Girl": {
+      "sheet": "pt_girl2.png"
+    },
+    "VEILSTONE_CITY:Lady": {
+      "sheet": "pt_gorggeousw.png"
+    },
+    "VEILSTONE_CITY:Girl ": {
+      "sheet": "pt_girl2.png"
+    },
+    "VEILSTONE_CITY:Tough guy": {
+      "sheet": "pt_badman.png"
+    },
+    "VEILSTONE_CITY:Man  ": {
+      "sheet": "pt_man2.png"
+    },
+    "VEILSTONE_CITY:Tough guy ": {
+      "sheet": "pt_badman.png"
+    },
+    "VEILSTONE_CITY:Girl  ": {
+      "sheet": "pt_girl2.png"
+    },
+    "VEILSTONE_CITY:Traveler": {
+      "sheet": "pt_man2.png"
+    },
+    "PASTORIA_CITY:Picnicker": {
+      "sheet": "pt_picnicgirl.png"
+    },
+    "PASTORIA_CITY:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "PASTORIA_CITY:Clefairy": {
+      "pokemon": 35
+    },
+    "PASTORIA_CITY:Man": {
+      "sheet": "pt_man3.png"
+    },
+    "PASTORIA_CITY:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "PASTORIA_CITY:Scientist": {
+      "sheet": "pt_assistantm.png"
+    },
+    "PASTORIA_CITY:Woman": {
+      "sheet": "pt_woman2.png"
+    },
+    "PASTORIA_CITY:Parasol lady": {
+      "sheet": "pt_ambrella.png"
+    },
+    "PASTORIA_CITY:Big man ": {
+      "sheet": "pt_bigman.png"
+    },
+    "PASTORIA_CITY:Man ": {
+      "sheet": "pt_man3.png"
+    },
+    "GREAT_MARSH:Ruin Maniac": {
+      "sheet": "pt_explore.png"
+    },
+    "GREAT_MARSH:Parasol lady": {
+      "sheet": "pt_ambrella.png"
+    },
+    "GREAT_MARSH:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "GREAT_MARSH:Boy": {
+      "sheet": "pt_boy3.png"
+    },
+    "GREAT_MARSH:Boy ": {
+      "sheet": "pt_boy2.png"
+    },
+    "GREAT_MARSH:Man": {
+      "sheet": "pt_man3.png"
+    },
+    "SINNOH_ROUTE_211:Man": {
+      "sheet": "pt_man3.png"
+    },
+    "SINNOH_ROUTE_212:Boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "SINNOH_ROUTE_212:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "SINNOH_ROUTE_212:Policeman": {
+      "sheet": "pt_policeman.png"
+    },
+    "SINNOH_ROUTE_212:Policeman ": {
+      "sheet": "pt_policeman.png"
+    },
+    "SINNOH_ROUTE_212:Policeman  ": {
+      "sheet": "pt_policeman.png"
+    },
+    "SINNOH_ROUTE_212:Policeman   ": {
+      "sheet": "pt_policeman.png"
+    },
+    "SINNOH_ROUTE_212:Boy ": {
+      "sheet": "pt_boy1.png"
+    },
+    "SINNOH_ROUTE_212:Lady": {
+      "sheet": "pt_gorggeousw.png"
+    },
+    "SINNOH_ROUTE_212:Big man ": {
+      "sheet": "pt_bigman.png"
+    },
+    "SINNOH_ROUTE_212:Policeman    ": {
+      "sheet": "pt_policeman.png"
+    },
+    "SINNOH_ROUTE_213:Fisherman": {
+      "sheet": "pt_fishing.png"
+    },
+    "SINNOH_ROUTE_213:Woman": {
+      "sheet": "pt_woman2.png"
+    },
+    "SINNOH_ROUTE_213:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "VALOR_LAKEFRONT:Cameraman": {
+      "sheet": "pt_cameraman.png"
+    },
+    "VALOR_LAKEFRONT:Cameraman ": {
+      "sheet": "pt_cameraman.png"
+    },
+    "SINNOH_ROUTE_217:Skier": {
+      "sheet": "pt_girl4.png"
+    },
+    "SNOWPOINT_CITY:Woman": {
+      "sheet": "pt_woman5.png"
+    },
+    "SNOWPOINT_CITY:Boy": {
+      "sheet": "pt_boy4.png"
+    },
+    "SNOWPOINT_CITY:Girl": {
+      "sheet": "pt_girl4.png"
+    },
+    "SNOWPOINT_CITY:Sailor": {
+      "sheet": "pt_seaman.png"
+    },
+    "SNOWPOINT_CITY:Temple guard": {
+      "sheet": "pt_woman5.png"
+    },
+    "SNOWPOINT_CITY:Girl ": {
+      "sheet": "pt_girl4.png"
+    },
+    "CANALAVE_CITY:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "CANALAVE_CITY:Girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "CANALAVE_CITY:Psyduck": {
+      "pokemon": 54
+    },
+    "CANALAVE_CITY:Man": {
+      "sheet": "pt_man1.png"
+    },
+    "CANALAVE_CITY:Woman": {
+      "sheet": "pt_woman3.png"
+    },
+    "CANALAVE_CITY:Old man": {
+      "sheet": "pt_oldman2.png"
+    },
+    "CELESTIC_TOWN:Old man": {
+      "sheet": "pt_oldman1.png"
+    },
+    "CELESTIC_TOWN:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "CELESTIC_TOWN:Old woman": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "CELESTIC_TOWN:Woman": {
+      "sheet": "pt_woman3.png"
+    },
+    "SINNOH_ROUTE_218:Coach": {
+      "sheet": "pt_man2.png"
+    },
+    "SINNOH_ROUTE_218:Clefairy": {
+      "pokemon": 35
+    },
+    "SINNOH_ROUTE_218:Clefairy ": {
+      "pokemon": 35
+    },
+    "SINNOH_ROUTE_218:Pikachu": {
+      "pokemon": 25
+    },
+    "SINNOH_ROUTE_218:Pikachu ": {
+      "pokemon": 25
+    },
+    "SINNOH_ROUTE_218:Fisherman": {
+      "sheet": "pt_fishing.png"
+    },
+    "SINNOH_ROUTE_222:Fisherman": {
+      "sheet": "pt_fishing.png"
+    },
+    "SINNOH_ROUTE_222:Rich Boy": {
+      "sheet": "pt_gorggeousm.png"
+    },
+    "SINNOH_ROUTE_222:Policeman": {
+      "sheet": "pt_policeman.png"
+    },
+    "SUNYSHORE_CITY:Sailor": {
+      "sheet": "pt_seaman.png"
+    },
+    "SUNYSHORE_CITY:Woman": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "SUNYSHORE_CITY:Woman ": {
+      "sheet": "pt_woman1.png"
+    },
+    "SUNYSHORE_CITY:Worker": {
+      "sheet": "pt_workman.png"
+    },
+    "SUNYSHORE_CITY:Sailor ": {
+      "sheet": "pt_seaman.png"
+    },
+    "VICTORY_ROAD_SINNOH:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "SINNOH_ROUTE_229:Man": {
+      "sheet": "pt_middleman1.png"
+    },
+    "SINNOH_ROUTE_230:Fisherman": {
+      "sheet": "pt_fishing.png"
+    },
+    "SINNOH_ROUTE_230:Gentleman": {
+      "sheet": "pt_gorggeousm.png"
+    },
+    "FIGHT_AREA:Sailor": {
+      "sheet": "pt_seaman.png"
+    },
+    "FIGHT_AREA:Fisherman": {
+      "sheet": "pt_fishing.png"
+    },
+    "FIGHT_AREA:Man": {
+      "sheet": "pt_man1.png"
+    },
+    "FIGHT_AREA:Man ": {
+      "sheet": "pt_man3.png"
+    },
+    "FIGHT_AREA:Woman": {
+      "sheet": "pt_woman3.png"
+    },
+    "FIGHT_AREA:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "FIGHT_AREA:Girl": {
+      "sheet": "pt_girl2.png"
+    },
+    "FIGHT_AREA:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "FIGHT_AREA:Man  ": {
+      "sheet": "pt_man3.png"
+    },
+    "FIGHT_AREA:Black Belt ": {
+      "sheet": "pt_fighter.png"
+    },
+    "SURVIVAL_AREA:Ruin Maniac": {
+      "sheet": "pt_explore.png"
+    },
+    "SURVIVAL_AREA:Girl": {
+      "sheet": "pt_girl2.png"
+    },
+    "SURVIVAL_AREA:Boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "SURVIVAL_AREA:Cameraman": {
+      "sheet": "pt_cameraman.png"
+    },
+    "RESORT_AREA:Lady": {
+      "sheet": "pt_woman2.png"
+    },
+    "RESORT_AREA:Lady ": {
+      "sheet": "pt_woman2.png"
+    },
+    "RESORT_AREA:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "RESORT_AREA:Woman": {
+      "sheet": "pt_woman3.png"
+    },
+    "RESORT_AREA:Swimmer": {
+      "sheet": "pt_swimmerm.png"
+    },
+    "GALACTIC_WAREHOUSE:Scientist": {
+      "sheet": "pt_assistantm.png"
+    },
+    "TEAM_GALACTIC_HQ:Scientist": {
+      "sheet": "pt_assistantm.png"
+    },
+    "TEAM_GALACTIC_HQ:Scientist ": {
+      "sheet": "pt_assistantm.png"
+    },
+    "TEAM_GALACTIC_HQ:Scientist  ": {
+      "sheet": "pt_assistantw.png"
+    },
+    "MANIAC_TUNNEL:Ruin Maniac": {
+      "sheet": "pt_bigman.png"
+    },
+    "HEARTHOME_CITY:Hiker  ": {
+      "sheet": "pt_mount.png"
+    },
+    "SANDGEM_TOWN:Shopper": {
+      "sheet": "pt_boy1.png"
+    },
+    "SANDGEM_TOWN:Shopper ": {
+      "sheet": "pt_man1.png"
+    },
+    "SANDGEM_TOWN:Center visitor": {
+      "sheet": "pt_man1.png"
+    },
+    "SANDGEM_TOWN:Old man": {
+      "sheet": "pt_oldman1.png"
+    },
+    "SANDGEM_TOWN:Girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "SANDGEM_TOWN:Lab aide": {
+      "sheet": "pt_assistantm.png"
+    },
+    "SANDGEM_TOWN:Lab aide ": {
+      "sheet": "pt_assistantw.png"
+    },
+    "SANDGEM_TOWN:Grandpa": {
+      "sheet": "pt_oldman1.png"
+    },
+    "JUBILIFE_CITY:GTS clerk": {
+      "sheet": "pt_woman6.png"
+    },
+    "JUBILIFE_CITY:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "JUBILIFE_CITY:Boy  ": {
+      "sheet": "pt_boy3.png"
+    },
+    "JUBILIFE_CITY:Trader": {
+      "sheet": "pt_man2.png"
+    },
+    "JUBILIFE_CITY:Old man  ": {
+      "sheet": "pt_oldman1.png"
+    },
+    "JUBILIFE_CITY:Globe fan": {
+      "sheet": "pt_man3.png"
+    },
+    "JUBILIFE_CITY:Lady": {
+      "sheet": "pt_woman2.png"
+    },
+    "JUBILIFE_CITY:Ranked player": {
+      "sheet": "pt_picnicgirl.png"
+    },
+    "JUBILIFE_CITY:Guide boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "JUBILIFE_CITY:Terminal clerk": {
+      "sheet": "pt_woman6.png"
+    },
+    "JUBILIFE_CITY:Center visitor": {
+      "sheet": "pt_woman3.png"
+    },
+    "JUBILIFE_CITY:Kid": {
+      "sheet": "pt_boy1.png"
+    },
+    "JUBILIFE_CITY:Little girl ": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "JUBILIFE_CITY:Developer": {
+      "sheet": "pt_assistantm.png"
+    },
+    "JUBILIFE_CITY:Receptionist": {
+      "sheet": "pt_woman6.png"
+    },
+    "JUBILIFE_CITY:Girl ": {
+      "sheet": "pt_girl1.png"
+    },
+    "JUBILIFE_CITY:Shopper": {
+      "sheet": "pt_man2.png"
+    },
+    "JUBILIFE_CITY:Shopper ": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "JUBILIFE_CITY:Shopper  ": {
+      "sheet": "pt_woman2.png"
+    },
+    "OREBURGH_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "OREBURGH_CITY:Center visitor": {
+      "sheet": "pt_woman3.png"
+    },
+    "OREBURGH_CITY:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "OREBURGH_CITY:Gentleman": {
+      "sheet": "pt_gentleman.png"
+    },
+    "OREBURGH_CITY:Kid": {
+      "sheet": "pt_dsboy.png"
+    },
+    "OREBURGH_CITY:Kid ": {
+      "sheet": "pt_dsboy.png"
+    },
+    "OREBURGH_CITY:Shopper": {
+      "sheet": "pt_mount.png"
+    },
+    "OREBURGH_CITY:Shopper ": {
+      "sheet": "pt_bigman.png"
+    },
+    "OREBURGH_CITY:Visitor": {
+      "sheet": "pt_mount.png"
+    },
+    "OREBURGH_CITY:Little girl ": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "OREBURGH_CITY:Boy ": {
+      "sheet": "pt_boy1.png"
+    },
+    "OREBURGH_CITY:Museum guide": {
+      "sheet": "pt_woman3.png"
+    },
+    "OREBURGH_CITY:Visitor ": {
+      "sheet": "pt_woman1.png"
+    },
+    "OREBURGH_CITY:Big man": {
+      "sheet": "pt_bigman.png"
+    },
+    "OREBURGH_CITY:Old man ": {
+      "sheet": "pt_oldman1.png"
+    },
+    "OREBURGH_MINE:Miner": {
+      "sheet": "pt_workman.png"
+    },
+    "FLOAROMA_TOWN:Shopper": {
+      "sheet": "pt_woman2.png"
+    },
+    "FLOAROMA_TOWN:Shopper ": {
+      "sheet": "pt_girl3.png"
+    },
+    "FLOAROMA_TOWN:Center visitor": {
+      "sheet": "pt_girl2.png"
+    },
+    "FLOAROMA_TOWN:Center visitor ": {
+      "sheet": "pt_middleman1.png"
+    },
+    "FLOAROMA_TOWN:Florist": {
+      "sheet": "pt_woman1.png"
+    },
+    "ETERNA_CITY:Kid": {
+      "sheet": "pt_boy1.png"
+    },
+    "ETERNA_CITY:Center visitor": {
+      "sheet": "pt_girl2.png"
+    },
+    "ETERNA_CITY:Shopper": {
+      "sheet": "pt_man2.png"
+    },
+    "ETERNA_CITY:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "ETERNA_CITY:Shop helper": {
+      "sheet": "pt_boy2.png"
+    },
+    "ETERNA_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "HEARTHOME_CITY:Square guide": {
+      "sheet": "pt_woman6.png"
+    },
+    "HEARTHOME_CITY:Pikachu's friend": {
+      "sheet": "pt_woman2.png"
+    },
+    "HEARTHOME_CITY:Pikachu": {
+      "pokemon": 25
+    },
+    "HEARTHOME_CITY:Upset man": {
+      "sheet": "pt_fighter.png"
+    },
+    "HEARTHOME_CITY:Contest fan": {
+      "sheet": "pt_woman3.png"
+    },
+    "HEARTHOME_CITY:Clown": {
+      "sheet": "pt_clown.png"
+    },
+    "HEARTHOME_CITY:Contest girl": {
+      "sheet": "pt_girl3.png"
+    },
+    "HEARTHOME_CITY:Gentleman": {
+      "sheet": "pt_gorggeousm.png"
+    },
+    "HEARTHOME_CITY:Center visitor": {
+      "sheet": "pt_boy2.png"
+    },
+    "HEARTHOME_CITY:Lady": {
+      "sheet": "pt_lady.png"
+    },
+    "HEARTHOME_CITY:Center visitor ": {
+      "sheet": "pt_man2.png"
+    },
+    "HEARTHOME_CITY:Poffin chef": {
+      "sheet": "pt_idol.png"
+    },
+    "HEARTHOME_CITY:Old woman": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "HEARTHOME_CITY:Old man": {
+      "sheet": "pt_oldman2.png"
+    },
+    "HEARTHOME_CITY:Poffin girl": {
+      "sheet": "pt_girl3.png"
+    },
+    "HEARTHOME_CITY:Shopper": {
+      "sheet": "pt_mount.png"
+    },
+    "HEARTHOME_CITY:Shopper ": {
+      "sheet": "pt_woman2.png"
+    },
+    "SOLACEON_TOWN:Old man": {
+      "sheet": "pt_oldman2.png"
+    },
+    "SOLACEON_TOWN:Girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "SOLACEON_TOWN:Explorer": {
+      "sheet": "pt_explore.png"
+    },
+    "VEILSTONE_CITY:Slots fan": {
+      "sheet": "pt_woman2.png"
+    },
+    "VEILSTONE_CITY:Player": {
+      "sheet": "pt_middleman1.png"
+    },
+    "VEILSTONE_CITY:Big player": {
+      "sheet": "pt_bigman.png"
+    },
+    "VEILSTONE_CITY:Player ": {
+      "sheet": "pt_man2.png"
+    },
+    "VEILSTONE_CITY:Worker": {
+      "sheet": "pt_workman.png"
+    },
+    "VEILSTONE_CITY:Slots fan ": {
+      "sheet": "pt_woman2.png"
+    },
+    "VEILSTONE_CITY:Maylene's dad": {
+      "sheet": "pt_middleman1.png"
+    },
+    "VEILSTONE_CITY:Center visitor": {
+      "sheet": "pt_boy1.png"
+    },
+    "PASTORIA_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "PASTORIA_CITY:Shopper": {
+      "sheet": "pt_boy3.png"
+    },
+    "PASTORIA_CITY:Shopper ": {
+      "sheet": "pt_girl3.png"
+    },
+    "PASTORIA_CITY:Black Belt  ": {
+      "sheet": "pt_fighter.png"
+    },
+    "PASTORIA_CITY:Girl  ": {
+      "sheet": "pt_girl3.png"
+    },
+    "SNOWPOINT_CITY:Shopper": {
+      "sheet": "pt_boy2.png"
+    },
+    "SNOWPOINT_CITY:Shopper ": {
+      "sheet": "pt_girl4.png"
+    },
+    "SNOWPOINT_CITY:Center visitor": {
+      "sheet": "pt_girl1.png"
+    },
+    "SNOWPOINT_CITY:Center visitor ": {
+      "sheet": "pt_girl2.png"
+    },
+    "SNOWPOINT_CITY:Psyduck": {
+      "pokemon": 54
+    },
+    "SNOWPOINT_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "CANALAVE_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "CANALAVE_CITY:Girl ": {
+      "sheet": "pt_girl1.png"
+    },
+    "CANALAVE_CITY:Woman ": {
+      "sheet": "pt_woman1.png"
+    },
+    "CANALAVE_CITY:Researcher": {
+      "sheet": "pt_assistantm.png"
+    },
+    "CANALAVE_CITY:Librarian": {
+      "sheet": "pt_woman6.png"
+    },
+    "CANALAVE_CITY:Reader": {
+      "sheet": "pt_girl1.png"
+    },
+    "CELESTIC_TOWN:Girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "CELESTIC_TOWN:Old woman ": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "CELESTIC_TOWN:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "CELESTIC_TOWN:Trust man": {
+      "sheet": "pt_middleman1.png"
+    },
+    "SUNYSHORE_CITY:Shopper": {
+      "sheet": "pt_explore.png"
+    },
+    "SUNYSHORE_CITY:Shopper ": {
+      "sheet": "pt_seaman.png"
+    },
+    "SUNYSHORE_CITY:Old man": {
+      "sheet": "pt_oldman2.png"
+    },
+    "SUNYSHORE_CITY:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "SUNYSHORE_CITY:Center visitor": {
+      "sheet": "pt_middleman2.png"
+    },
+    "SUNYSHORE_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "FIGHT_AREA:Center visitor": {
+      "sheet": "pt_man2.png"
+    },
+    "FIGHT_AREA:Waitress": {
+      "sheet": "pt_waitress.png"
+    },
+    "FIGHT_AREA:Black Belt  ": {
+      "sheet": "pt_fighter.png"
+    },
+    "FIGHT_AREA:Clown": {
+      "sheet": "pt_clown.png"
+    },
+    "FIGHT_AREA:Shopping lady": {
+      "sheet": "pt_lady.png"
+    },
+    "SURVIVAL_AREA:Center visitor": {
+      "sheet": "pt_man3.png"
+    },
+    "SURVIVAL_AREA:Old Trainer": {
+      "sheet": "pt_oldman1.png"
+    },
+    "SURVIVAL_AREA:Storyteller": {
+      "sheet": "pt_mystery.png"
+    },
+    "SURVIVAL_AREA:Shopper": {
+      "sheet": "pt_woman3.png"
+    },
+    "SURVIVAL_AREA:Mountain man": {
+      "sheet": "pt_mount.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Old Trainer": {
+      "sheet": "pt_middleman1.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Lost Trainer": {
+      "sheet": "pt_woman3.png"
+    },
+    "TWINLEAF_TOWN:Neighbor": {
+      "sheet": "pt_man2.png"
+    },
+    "TWINLEAF_TOWN:Grandma": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "TWINLEAF_TOWN:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "SANDGEM_TOWN:Neighbor": {
+      "sheet": "pt_man1.png"
+    },
+    "SANDGEM_TOWN:Neighbor ": {
+      "sheet": "pt_woman1.png"
+    },
+    "JUBILIFE_CITY:Fancy grandma": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "JUBILIFE_CITY:Pachirisu": {
+      "pokemon": 417
+    },
+    "JUBILIFE_CITY:Pikachu": {
+      "pokemon": 25
+    },
+    "JUBILIFE_CITY:Item lady": {
+      "sheet": "pt_woman2.png"
+    },
+    "JUBILIFE_CITY:Moves kid": {
+      "sheet": "pt_boy3.png"
+    },
+    "JUBILIFE_CITY:Man  ": {
+      "sheet": "pt_man1.png"
+    },
+    "JUBILIFE_CITY:Girl  ": {
+      "sheet": "pt_girl1.png"
+    },
+    "JUBILIFE_CITY:Big man ": {
+      "sheet": "pt_bigman.png"
+    },
+    "JUBILIFE_CITY:Rooftop lady": {
+      "sheet": "pt_woman2.png"
+    },
+    "JUBILIFE_CITY:TV staff": {
+      "sheet": "pt_woman2.png"
+    },
+    "JUBILIFE_CITY:TV staff ": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "JUBILIFE_CITY:Store owner": {
+      "sheet": "pt_middleman2.png"
+    },
+    "JUBILIFE_CITY:Lottery clerk": {
+      "sheet": "pt_woman5.png"
+    },
+    "JUBILIFE_CITY:Visitor": {
+      "sheet": "pt_man3.png"
+    },
+    "JUBILIFE_CITY:Idol": {
+      "sheet": "pt_idol.png"
+    },
+    "JUBILIFE_CITY:Studio staff": {
+      "sheet": "pt_badman.png"
+    },
+    "JUBILIFE_CITY:Records guide": {
+      "sheet": "pt_woman2.png"
+    },
+    "JUBILIFE_CITY:Lottery fan": {
+      "sheet": "pt_woman2.png"
+    },
+    "JUBILIFE_CITY:Records fan": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "JUBILIFE_CITY:TV producer": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "JUBILIFE_CITY:Photo hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "JUBILIFE_CITY:Photo fan": {
+      "sheet": "pt_man1.png"
+    },
+    "JUBILIFE_CITY:Little girl  ": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "JUBILIFE_CITY:Trainer": {
+      "sheet": "pt_man3.png"
+    },
+    "JUBILIFE_CITY:Helpful girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "JUBILIFE_CITY:Pachirisu ": {
+      "pokemon": 417
+    },
+    "JUBILIFE_CITY:Boy   ": {
+      "sheet": "pt_boy2.png"
+    },
+    "JUBILIFE_CITY:Woman  ": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "JUBILIFE_CITY:Woman   ": {
+      "sheet": "pt_woman1.png"
+    },
+    "JUBILIFE_CITY:Nickname fan": {
+      "sheet": "pt_middleman1.png"
+    },
+    "JUBILIFE_CITY:Teacher": {
+      "sheet": "pt_woman3.png"
+    },
+    "JUBILIFE_CITY:Student": {
+      "sheet": "pt_boy2.png"
+    },
+    "JUBILIFE_CITY:Student ": {
+      "sheet": "pt_girl1.png"
+    },
+    "JUBILIFE_CITY:Student  ": {
+      "sheet": "pt_boy2.png"
+    },
+    "JUBILIFE_CITY:Student   ": {
+      "sheet": "pt_boy1.png"
+    },
+    "JUBILIFE_CITY:Student    ": {
+      "sheet": "pt_girl3.png"
+    },
+    "JUBILIFE_CITY:Trade boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "JUBILIFE_CITY:Pikachu ": {
+      "pokemon": 25
+    },
+    "JUBILIFE_CITY:Dreamer": {
+      "sheet": "pt_middleman2.png"
+    },
+    "JUBILIFE_CITY:Traveler": {
+      "sheet": "pt_man3.png"
+    },
+    "JUBILIFE_CITY:Traveler ": {
+      "sheet": "pt_woman2.png"
+    },
+    "JUBILIFE_CITY:Big man  ": {
+      "sheet": "pt_bigman.png"
+    },
+    "JUBILIFE_CITY:Girl   ": {
+      "sheet": "pt_girl1.png"
+    },
+    "OREBURGH_CITY:Man  ": {
+      "sheet": "pt_man1.png"
+    },
+    "OREBURGH_CITY:Boy  ": {
+      "sheet": "pt_boy2.png"
+    },
+    "OREBURGH_CITY:Mom": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "OREBURGH_CITY:Worker    ": {
+      "sheet": "pt_workman.png"
+    },
+    "OREBURGH_CITY:Sister": {
+      "sheet": "pt_girl3.png"
+    },
+    "OREBURGH_CITY:Dusk girl": {
+      "sheet": "pt_girl1.png"
+    },
+    "OREBURGH_CITY:Yellow": {
+      "pokemon": 54
+    },
+    "OREBURGH_CITY:Psyduck": {
+      "pokemon": 54
+    },
+    "OREBURGH_CITY:Little kid": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "OREBURGH_CITY:Flag kid": {
+      "sheet": "pt_boy1.png"
+    },
+    "OREBURGH_CITY:Mom ": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "OREBURGH_CITY:Color fan": {
+      "sheet": "pt_boy2.png"
+    },
+    "OREBURGH_CITY:Woman  ": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "OREBURGH_CITY:Pikachu": {
+      "pokemon": 25
+    },
+    "OREBURGH_CITY:Rock fan": {
+      "sheet": "pt_girl3.png"
+    },
+    "OREBURGH_CITY:Hiker  ": {
+      "sheet": "pt_mount.png"
+    },
+    "OREBURGH_CITY:Man   ": {
+      "sheet": "pt_middleman1.png"
+    },
+    "OREBURGH_CITY:Hiker   ": {
+      "sheet": "pt_mount.png"
+    },
+    "OREBURGH_CITY:Old Trainer": {
+      "sheet": "pt_man3.png"
+    },
+    "OREBURGH_CITY:Twinkle boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "OREBURGH_CITY:Gentleman ": {
+      "sheet": "pt_gentleman.png"
+    },
+    "OREBURGH_CITY:Engineer": {
+      "sheet": "pt_assistantm.png"
+    },
+    "OREBURGH_CITY:Engineer ": {
+      "sheet": "pt_assistantm.png"
+    },
+    "OREBURGH_CITY:Grandma": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "OREBURGH_CITY:Trade fan": {
+      "sheet": "pt_man1.png"
+    },
+    "OREBURGH_CITY:Man    ": {
+      "sheet": "pt_man2.png"
+    },
+    "OREBURGH_CITY:Pachirisu fan": {
+      "sheet": "pt_woman1.png"
+    },
+    "OREBURGH_CITY:Geodude fan": {
+      "sheet": "pt_bigman.png"
+    },
+    "OREBURGH_CITY:Miner": {
+      "sheet": "pt_workman.png"
+    },
+    "OREBURGH_CITY:Mom  ": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "OREBURGH_CITY:Little girl  ": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "OREBURGH_CITY:Tour worker": {
+      "sheet": "pt_workman.png"
+    },
+    "FLOAROMA_TOWN:Honey lady": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "FLOAROMA_TOWN:Honey man": {
+      "sheet": "pt_middleman1.png"
+    },
+    "FLOAROMA_TOWN:Storyteller": {
+      "sheet": "pt_woman1.png"
+    },
+    "FLOAROMA_TOWN:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "FLOAROMA_TOWN:Clefairy": {
+      "pokemon": 35
+    },
+    "ETERNA_CITY:Old man  ": {
+      "sheet": "pt_oldman1.png"
+    },
+    "ETERNA_CITY:Old woman": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "ETERNA_CITY:Man   ": {
+      "sheet": "pt_man1.png"
+    },
+    "ETERNA_CITY:Herb fan": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "ETERNA_CITY:Old man   ": {
+      "sheet": "pt_oldman1.png"
+    },
+    "HEARTHOME_CITY:Box maker": {
+      "sheet": "pt_girl2.png"
+    },
+    "HEARTHOME_CITY:Cleaner": {
+      "sheet": "pt_middleman2.png"
+    },
+    "HEARTHOME_CITY:Contest lady": {
+      "sheet": "pt_gorggeousw.png"
+    },
+    "HEARTHOME_CITY:Shroomish": {
+      "pokemon": 285
+    },
+    "HEARTHOME_CITY:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "HEARTHOME_CITY:Poet": {
+      "sheet": "pt_explore.png"
+    },
+    "HEARTHOME_CITY:Craftsman": {
+      "sheet": "pt_oldman2.png"
+    },
+    "HEARTHOME_CITY:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "HEARTHOME_CITY:Old woman ": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "HEARTHOME_CITY:Thinker": {
+      "sheet": "pt_woman3.png"
+    },
+    "HEARTHOME_CITY:Kind woman": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "HEARTHOME_CITY:Lady ": {
+      "sheet": "pt_gorggeousw.png"
+    },
+    "HEARTHOME_CITY:Mystic": {
+      "sheet": "pt_mystery.png"
+    },
+    "HEARTHOME_CITY:Elder": {
+      "sheet": "pt_oldman1.png"
+    },
+    "HEARTHOME_CITY:Chairman": {
+      "sheet": "pt_gentleman.png"
+    },
+    "HEARTHOME_CITY:Fan Club member": {
+      "sheet": "pt_woman2.png"
+    },
+    "HEARTHOME_CITY:Psyduck": {
+      "pokemon": 54
+    },
+    "HEARTHOME_CITY:Buneary": {
+      "pokemon": 427
+    },
+    "HEARTHOME_CITY:Clefairy": {
+      "pokemon": 35
+    },
+    "HEARTHOME_CITY:Day care mom": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "HEARTHOME_CITY:Baby  ": {
+      "sheet": "pt_baby.png"
+    },
+    "HEARTHOME_CITY:Pikachu  ": {
+      "pokemon": 25
+    },
+    "HEARTHOME_CITY:Big sister": {
+      "sheet": "pt_girl2.png"
+    },
+    "HEARTHOME_CITY:Little boy ": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "HEARTHOME_CITY:Little girl ": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "HEARTHOME_CITY:Girl  ": {
+      "sheet": "pt_girl1.png"
+    },
+    "HEARTHOME_CITY:Quiet boy": {
+      "sheet": "pt_boy1.png"
+    },
+    "SOLACEON_TOWN:Rancher": {
+      "sheet": "pt_cowgirl.png"
+    },
+    "SOLACEON_TOWN:Reporter": {
+      "sheet": "pt_man1.png"
+    },
+    "SOLACEON_TOWN:Old woman": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "SOLACEON_TOWN:Girl  ": {
+      "sheet": "pt_girl1.png"
+    },
+    "SOLACEON_TOWN:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "SOLACEON_TOWN:Seal lady": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "SOLACEON_TOWN:Shopper": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "SOLACEON_TOWN:Shopper ": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "VEILSTONE_CITY:Hidden Power man": {
+      "sheet": "pt_man2.png"
+    },
+    "VEILSTONE_CITY:Old man": {
+      "sheet": "pt_oldman2.png"
+    },
+    "VEILSTONE_CITY:Boy  ": {
+      "sheet": "pt_boy2.png"
+    },
+    "VEILSTONE_CITY:Pachirisu": {
+      "pokemon": 417
+    },
+    "VEILSTONE_CITY:Sad clown": {
+      "sheet": "pt_clown.png"
+    },
+    "VEILSTONE_CITY:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "VEILSTONE_CITY:Myth fan": {
+      "sheet": "pt_woman3.png"
+    },
+    "VEILSTONE_CITY:Old woman": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "VEILSTONE_CITY:Buneary": {
+      "pokemon": 427
+    },
+    "VEILSTONE_CITY:Neighbor": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "PASTORIA_CITY:Tram worker": {
+      "sheet": "pt_assistantm.png"
+    },
+    "PASTORIA_CITY:Psyduck": {
+      "pokemon": 54
+    },
+    "PASTORIA_CITY:Kid": {
+      "sheet": "pt_dsboy.png"
+    },
+    "PASTORIA_CITY:Errand boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "PASTORIA_CITY:Girl   ": {
+      "sheet": "pt_girl2.png"
+    },
+    "PASTORIA_CITY:Pachirisu": {
+      "pokemon": 417
+    },
+    "PASTORIA_CITY:Berry hiker": {
+      "sheet": "pt_woman1.png"
+    },
+    "PASTORIA_CITY:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "SNOWPOINT_CITY:Proud dad": {
+      "sheet": "pt_man3.png"
+    },
+    "SNOWPOINT_CITY:Trendy old man": {
+      "sheet": "pt_oldman1.png"
+    },
+    "CANALAVE_CITY:Girl  ": {
+      "sheet": "pt_girl1.png"
+    },
+    "CANALAVE_CITY:Dock worker": {
+      "sheet": "pt_woman3.png"
+    },
+    "CELESTIC_TOWN:Glasses man": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "CELESTIC_TOWN:Man  ": {
+      "sheet": "pt_middleman1.png"
+    },
+    "CELESTIC_TOWN:Small boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "CELESTIC_TOWN:Happiny": {
+      "pokemon": 440
+    },
+    "CELESTIC_TOWN:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "SUNYSHORE_CITY:Digger": {
+      "sheet": "pt_girl2.png"
+    },
+    "SUNYSHORE_CITY:Clown": {
+      "sheet": "pt_clown.png"
+    },
+    "SUNYSHORE_CITY:Trap expert": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "SUNYSHORE_CITY:Digger lady": {
+      "sheet": "pt_woman1.png"
+    },
+    "SUNYSHORE_CITY:Sphere kid": {
+      "sheet": "pt_boy2.png"
+    },
+    "SUNYSHORE_CITY:Base kid": {
+      "sheet": "pt_boy2.png"
+    },
+    "SUNYSHORE_CITY:Fun kid": {
+      "sheet": "pt_boy2.png"
+    },
+    "SUNYSHORE_CITY:Old resident": {
+      "sheet": "pt_oldman2.png"
+    },
+    "SUNYSHORE_CITY:Old woman": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "FIGHT_AREA:Watcher": {
+      "sheet": "pt_middleman1.png"
+    },
+    "FIGHT_AREA:Boy": {
+      "sheet": "pt_boy1.png"
+    },
+    "FIGHT_AREA:Boy ": {
+      "sheet": "pt_boy2.png"
+    },
+    "FIGHT_AREA:Old man": {
+      "sheet": "pt_oldman2.png"
+    },
+    "FIGHT_AREA:Torchic": {
+      "pokemon": 255
+    },
+    "FIGHT_AREA:Old woman": {
+      "sheet": "pt_oldwoman2.png"
+    },
+    "FIGHT_AREA:Item Expert": {
+      "sheet": "pt_badman.png"
+    },
+    "SURVIVAL_AREA:Storyteller ": {
+      "sheet": "pt_oldman1.png"
+    },
+    "SURVIVAL_AREA:Black Belt": {
+      "sheet": "pt_fighter.png"
+    },
+    "SURVIVAL_AREA:Hermit": {
+      "sheet": "pt_mystery.png"
+    },
+    "RESORT_AREA:TV fan": {
+      "sheet": "pt_bigman.png"
+    },
+    "RESORT_AREA:Old man": {
+      "sheet": "pt_oldman2.png"
+    },
+    "RESORT_AREA:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "RESORT_AREA:Boutique clerk": {
+      "sheet": "pt_shopw1.png"
+    },
+    "RESORT_AREA:Rich lady": {
+      "sheet": "pt_middlewoman2.png"
+    },
+    "RESORT_AREA:Fancy lady": {
+      "sheet": "pt_gorggeousw.png"
+    },
+    "RESORT_AREA:Skitty": {
+      "pokemon": 300
+    },
+    "RESORT_AREA:Psyduck": {
+      "pokemon": 54
+    },
+    "RESORT_AREA:Gentleman": {
+      "sheet": "pt_gorggeousm.png"
+    },
+    "RESORT_AREA:Idol": {
+      "sheet": "pt_idol.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Challenger": {
+      "sheet": "pt_woman3.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:League fan": {
+      "sheet": "pt_man2.png"
+    },
+    "FLOAROMA_MEADOW:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "FLOAROMA_MEADOW:Little boy": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "SINNOH_ROUTE_205:Kind lady": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "SINNOH_ROUTE_205:Repel boy": {
+      "sheet": "pt_boy3.png"
+    },
+    "SINNOH_ROUTE_208:Forgetful girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "SINNOH_ROUTE_208:Mulch lady": {
+      "sheet": "pt_woman1.png"
+    },
+    "SINNOH_ROUTE_212:Shard girl": {
+      "sheet": "pt_woman2.png"
+    },
+    "SINNOH_ROUTE_212:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "SINNOH_ROUTE_213:Romantic": {
+      "sheet": "pt_woman3.png"
+    },
+    "SINNOH_ROUTE_213:Desk clerk": {
+      "sheet": "pt_policeman.png"
+    },
+    "SINNOH_ROUTE_213:Traveler": {
+      "sheet": "pt_middleman2.png"
+    },
+    "SINNOH_ROUTE_213:Clown": {
+      "sheet": "pt_clown.png"
+    },
+    "SINNOH_ROUTE_213:Fortune teller": {
+      "sheet": "pt_mystery.png"
+    },
+    "SINNOH_ROUTE_213:Guitarist": {
+      "sheet": "pt_man2.png"
+    },
+    "SINNOH_ROUTE_213:Suite guest": {
+      "sheet": "pt_gorggeousm.png"
+    },
+    "SINNOH_ROUTE_213:His wife": {
+      "sheet": "pt_gorggeousw.png"
+    },
+    "VALOR_LAKEFRONT:Waiter": {
+      "sheet": "pt_waiter.png"
+    },
+    "VALOR_LAKEFRONT:Retired gentleman": {
+      "sheet": "pt_gentleman.png"
+    },
+    "VALOR_LAKEFRONT:His wife": {
+      "sheet": "pt_lady.png"
+    },
+    "VALOR_LAKEFRONT:Chef's son": {
+      "sheet": "pt_gorggeousm.png"
+    },
+    "VALOR_LAKEFRONT:His date": {
+      "sheet": "pt_gorggeousw.png"
+    },
+    "VALOR_LAKEFRONT:Reporter": {
+      "sheet": "pt_reporter.png"
+    },
+    "VALOR_LAKEFRONT:TV cameraman": {
+      "sheet": "pt_cameraman.png"
+    },
+    "VALOR_LAKEFRONT:Painter": {
+      "sheet": "pt_artist.png"
+    },
+    "VALOR_LAKEFRONT:Model": {
+      "sheet": "pt_woman2.png"
+    },
+    "VALOR_LAKEFRONT:Stock wizard": {
+      "sheet": "pt_gorggeousm.png"
+    },
+    "VALOR_LAKEFRONT:His girlfriend": {
+      "sheet": "pt_woman2.png"
+    },
+    "VALOR_LAKEFRONT:Shy man": {
+      "sheet": "pt_bigman.png"
+    },
+    "VALOR_LAKEFRONT:Alison": {
+      "sheet": "pt_woman1.png"
+    },
+    "VALOR_LAKEFRONT:Dad": {
+      "sheet": "pt_oldman1.png"
+    },
+    "VALOR_LAKEFRONT:Daughter": {
+      "sheet": "pt_girl1.png"
+    },
+    "VALOR_LAKEFRONT:Proud mom": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "VALOR_LAKEFRONT:Her son": {
+      "sheet": "pt_boy1.png"
+    },
+    "VALOR_LAKEFRONT:Food scientist": {
+      "sheet": "pt_assistantm.png"
+    },
+    "VALOR_LAKEFRONT:His partner": {
+      "sheet": "pt_woman1.png"
+    },
+    "VALOR_LAKEFRONT:Director": {
+      "sheet": "pt_director.png"
+    },
+    "SINNOH_ROUTE_217:Hiker": {
+      "sheet": "pt_mount.png"
+    },
+    "SINNOH_ROUTE_217:Quiet woman": {
+      "sheet": "pt_woman1.png"
+    },
+    "SINNOH_ROUTE_222:Pikachu fan": {
+      "sheet": "pt_middleman1.png"
+    },
+    "SINNOH_ROUTE_222:Pikachu": {
+      "pokemon": 25
+    },
+    "SINNOH_ROUTE_222:Pikachu ": {
+      "pokemon": 25
+    },
+    "SINNOH_ROUTE_222:Pikachu  ": {
+      "pokemon": 25
+    },
+    "SINNOH_ROUTE_222:Pikachu   ": {
+      "pokemon": 25
+    },
+    "SINNOH_ROUTE_222:Pikachu    ": {
+      "pokemon": 25
+    },
+    "SINNOH_ROUTE_228:Old man": {
+      "sheet": "pt_gentleman.png"
+    },
+    "SINNOH_ROUTE_227:Granny": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "SINNOH_ROUTE_226:Meister": {
+      "sheet": "pt_mount.png"
+    },
+    "SINNOH_ROUTE_225:Worker": {
+      "sheet": "pt_workman.png"
+    },
+    "SINNOH_ROUTE_221:Visitor": {
+      "sheet": "pt_woman2.png"
+    },
+    "SINNOH_ROUTE_221:Fan": {
+      "sheet": "pt_boy2.png"
+    },
+    "SINNOH_ROUTE_216:Lodge owner": {
+      "sheet": "pt_mount.png"
+    },
+    "SINNOH_ROUTE_216:Skier": {
+      "sheet": "pt_girl4.png"
+    },
+    "SINNOH_ROUTE_210:Cafe waitress": {
+      "sheet": "pt_farmer.png"
+    },
+    "SINNOH_ROUTE_210:Cafe owner": {
+      "sheet": "pt_oldman2.png"
+    },
+    "OREBURGH_CITY:Youngster Jonathon": {
+      "sheet": "pt_boy2.png"
+    },
+    "OREBURGH_CITY:Youngster Darius": {
+      "sheet": "pt_boy2.png"
+    },
+    "VEILSTONE_CITY:Black Belt Colby": {
+      "sheet": "pt_fighter.png"
+    },
+    "VEILSTONE_CITY:Black Belt Darren": {
+      "sheet": "pt_fighter.png"
+    },
+    "VEILSTONE_CITY:Black Belt Jeffery": {
+      "sheet": "pt_fighter.png"
+    },
+    "VEILSTONE_CITY:Black Belt Rafael": {
+      "sheet": "pt_fighter.png"
+    },
+    "PASTORIA_CITY:Tuber Jacky": {
+      "sheet": "pt_beachboy.png"
+    },
+    "PASTORIA_CITY:Sailor Damian": {
+      "sheet": "pt_seaman.png"
+    },
+    "PASTORIA_CITY:Tuber Caitlyn": {
+      "sheet": "pt_beachgirl.png"
+    },
+    "PASTORIA_CITY:Sailor Samson": {
+      "sheet": "pt_seaman.png"
+    },
+    "PASTORIA_CITY:Fisherman Erick": {
+      "sheet": "pt_fishing.png"
+    },
+    "PASTORIA_CITY:Fisherman Walter": {
+      "sheet": "pt_fishing.png"
+    },
+    "SNOWPOINT_CITY:Ace Trainer Anton": {
+      "sheet": "pt_man5.png"
+    },
+    "SNOWPOINT_CITY:Ace Trainer Savannah": {
+      "sheet": "pt_woman5.png"
+    },
+    "SNOWPOINT_CITY:Ace Trainer Alicia": {
+      "sheet": "pt_woman5.png"
+    },
+    "SNOWPOINT_CITY:Ace Trainer Isaiah": {
+      "sheet": "pt_man5.png"
+    },
+    "SNOWPOINT_CITY:Ace Trainer Brenna": {
+      "sheet": "pt_woman5.png"
+    },
+    "SNOWPOINT_CITY:Ace Trainer Sergio": {
+      "sheet": "pt_man5.png"
+    },
+    "CANALAVE_CITY:Black Belt David": {
+      "sheet": "pt_fighter.png"
+    },
+    "CANALAVE_CITY:Worker Jackson": {
+      "sheet": "pt_workman.png"
+    },
+    "CANALAVE_CITY:Worker Gary": {
+      "sheet": "pt_workman.png"
+    },
+    "CANALAVE_CITY:Black Belt Ricky": {
+      "sheet": "pt_fighter.png"
+    },
+    "CANALAVE_CITY:Ace Trainer Cesar": {
+      "sheet": "pt_man3.png"
+    },
+    "CANALAVE_CITY:Worker Gerardo": {
+      "sheet": "pt_workman.png"
+    },
+    "CANALAVE_CITY:Ace Trainer Breanna": {
+      "sheet": "pt_woman3.png"
+    },
+    "SINNOH_ROUTE_222:Poké Kid Janet": {
+      "sheet": "pt_pikachu.png"
+    },
+    "SUNYSHORE_CITY:School Kid Tiera": {
+      "sheet": "pt_girl3.png"
+    },
+    "ETERNA_CITY:Lass Caroline": {
+      "sheet": "pt_girl1.png"
+    },
+    "ETERNA_CITY:Aroma Lady Jenna": {
+      "sheet": "pt_woman1.png"
+    },
+    "ETERNA_CITY:Aroma Lady Angela": {
+      "sheet": "pt_woman1.png"
+    },
+    "SINNOH_ROUTE_212:Shard tutor": {
+      "sheet": "pt_mount.png"
+    },
+    "SURVIVAL_AREA:Shard tutor": {
+      "sheet": "pt_mount.png"
+    },
+    "SNOWPOINT_CITY:Shard tutor": {
+      "sheet": "pt_mount.png"
+    },
+    "SINNOH_ROUTE_210:Grandma Wilma": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "SINNOH_ROUTE_228:Old master": {
+      "sheet": "pt_oldman1.png"
+    },
+    "ETERNA_CITY:Herb Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "ETERNA_CITY:Trade girl": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "ETERNA_CITY:Superintendent": {
+      "sheet": "pt_middleman1.png"
+    },
+    "ETERNA_CITY:Old lady": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "ETERNA_CITY:Neighbor": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "ETERNA_CITY:Recycle fan": {
+      "sheet": "pt_oldman1.png"
+    },
+    "ETERNA_CITY:Old Trainer": {
+      "sheet": "pt_middleman1.png"
+    },
+    "ETERNA_CITY:Flag kid": {
+      "sheet": "pt_boy1.png"
+    },
+    "ETERNA_CITY:Contest girl": {
+      "sheet": "pt_boy3.png"
+    },
+    "ETERNA_CITY:Trap kid": {
+      "sheet": "pt_babyboy1.png"
+    },
+    "OREBURGH_CITY:Trade girl": {
+      "sheet": "pt_girl3.png"
+    },
+    "SNOWPOINT_CITY:Trade lady": {
+      "sheet": "pt_woman2.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -10726,7 +12583,76 @@
     "sage.png": "pt_oldman1.png",
     "sage2.png": "pt_oldman2.png",
     "master.png": "pt_bigfour4.png",
-    "rival.png": "pt_rivel.png"
+    "rival.png": "pt_rivel.png",
+    "pt_youngster.png": "pt_boy2.png",
+    "pt_lass.png": "pt_girl1.png",
+    "pt_camper.png": "pt_campboy.png",
+    "pt_picnicker.png": "pt_picnicgirl.png",
+    "pt_bug_catcher.png": "pt_boy3.png",
+    "pt_aroma_lady.png": "pt_woman1.png",
+    "pt_twins.png": "pt_babygirl1.png",
+    "pt_hiker.png": "pt_mount.png",
+    "pt_battle_girl.png": "pt_girl2.png",
+    "pt_fisherman.png": "pt_fishing.png",
+    "pt_cyclist_m.png": "pt_cyclem.png",
+    "pt_cyclist_f.png": "pt_cyclew.png",
+    "pt_black_belt.png": "pt_fighter.png",
+    "pt_artist.png": "pt_artist.png",
+    "pt_breeder_m.png": "pt_man1.png",
+    "pt_breeder_f.png": "pt_woman1.png",
+    "pt_cowgirl.png": "pt_cowgirl.png",
+    "pt_jogger.png": "pt_sportsman.png",
+    "pt_pokefan_m.png": "pt_middleman1.png",
+    "pt_pokefan_f.png": "pt_middlewoman1.png",
+    "pt_poke_kid.png": "pt_pikachu.png",
+    "pt_young_couple.png": "pt_woman2.png",
+    "pt_ace_trainer_m.png": "pt_man3.png",
+    "pt_ace_trainer_f.png": "pt_woman3.png",
+    "pt_waitress.png": "pt_waitress.png",
+    "pt_veteran.png": "pt_oldman1.png",
+    "pt_ninja_boy.png": "pt_babyboy1.png",
+    "pt_dragon_tamer.png": "pt_man3.png",
+    "pt_bird_keeper.png": "pt_woman3.png",
+    "pt_double_team.png": "pt_man3.png",
+    "pt_rich_boy.png": "pt_gorggeousm.png",
+    "pt_lady.png": "pt_gorggeousw.png",
+    "pt_gentleman.png": "pt_gentleman.png",
+    "pt_socialite.png": "pt_lady.png",
+    "pt_beauty.png": "pt_woman2.png",
+    "pt_collector.png": "pt_bigman.png",
+    "pt_policeman.png": "pt_policeman.png",
+    "pt_ranger_m.png": "pt_man3.png",
+    "pt_ranger_f.png": "pt_woman3.png",
+    "pt_scientist.png": "pt_assistantm.png",
+    "pt_swimmer_m.png": "pt_swimmerm.png",
+    "pt_swimmer_f.png": "pt_swimmerw.png",
+    "pt_tuber_m.png": "pt_beachboy.png",
+    "pt_tuber_f.png": "pt_beachgirl.png",
+    "pt_sailor.png": "pt_seaman.png",
+    "pt_ruin_maniac.png": "pt_explore.png",
+    "pt_psychic_m.png": "pt_mystery.png",
+    "pt_psychic_f.png": "pt_mystery.png",
+    "pt_pi.png": "pt_gorggeousm.png",
+    "pt_guitarist.png": "pt_man2.png",
+    "pt_ace_trainer_snow_m.png": "pt_man5.png",
+    "pt_ace_trainer_snow_f.png": "pt_woman5.png",
+    "pt_skier_m.png": "pt_skierm.png",
+    "pt_skier_f.png": "pt_skierw.png",
+    "pt_roughneck.png": "pt_badman.png",
+    "pt_worker.png": "pt_workman.png",
+    "pt_school_kid_m.png": "pt_boy1.png",
+    "pt_school_kid_f.png": "pt_girl3.png",
+    "pt_belle_and_pa.png": "pt_farmer.png",
+    "pt_rancher.png": "pt_farmer.png",
+    "pt_parasol_lady.png": "pt_ambrella.png",
+    "pt_cameraman.png": "pt_cameraman.png",
+    "pt_reporter.png": "pt_reporter.png",
+    "pt_clown.png": "pt_clown.png",
+    "pt_idol.png": "pt_idol.png",
+    "pt_waiter.png": "pt_waiter.png",
+    "pt_maid.png": "pt_maid.png",
+    "pt_interviewers.png": "pt_reporter.png",
+    "pt_sis_and_bro.png": "pt_boy2.png"
   },
   "trainers_ORRE": {
     "acetrainer_m.png": "orre_trainer_ace_trainer.png",

@@ -205,7 +205,7 @@ check({"center", "mart", "flower"} <= set(t.doors.values()) and all(t._door_opti
 r = route("FLOAROMA_MEADOW", "FLOAROMA_TOWN")
 f = r.run.floor
 check(isinstance(r, DungeonState) and (f.w, f.h) == (64, 64) and r.run.player[1] >= 50 and r.run.player[0] <= 15
-      and set(f.exits.values()) == {"FLOAROMA_TOWN", "FUEGO_IRONWORKS"} and sum(v == "ledge:0,1" for v in f.decor.values()) >= 30,
+      and {v for v in f.exits.values() if not str(v).startswith("WARP:")} == {"FLOAROMA_TOWN", "FUEGO_IRONWORKS"} and sum(v == "ledge:0,1" for v in f.decor.values()) >= 30,
       f"Floaroma Meadow: 64 x 64; in from Floaroma at the south-west gap {r.run.player}; the long ledge hops south")
 
 # ---- every Sinnoh map: it opens as a walked map, and coming in from each neighbour puts you by that neighbour's way out
@@ -390,7 +390,9 @@ _spin = sum(row.count(c) for row in _tm["FUEGO_IRONWORKS"]["floors"][1]["art"] f
 r._descend(); frames(r, 2)
 _cur = r.run.floor.current
 check(_spin >= 50 and len(_cur) == _spin and set(_cur.values()) == {(-1, 0), (1, 0), (0, -1), (0, 1)}, f"Fuego Ironworks: {_spin} spin tiles carry you across its floor, all four ways")
-_p0 = next(p for p, v in sorted(_cur.items()) if r.run.floor.walkable(p[0] - v[0], p[1] - v[1]) and (p[0] - v[0], p[1] - v[1]) not in _cur)
+story.repel_routes = max(getattr(story, "repel_routes", 0), 1)   # (11-19: no wild Pokemon on the step, and a spin tile nobody
+_p0 = next(p for p, v in sorted(_cur.items()) if r.run.floor.walkable(p[0] - v[0], p[1] - v[1]) and (p[0] - v[0], p[1] - v[1]) not in _cur   #  is standing on or near - the
+           and not any(abs(m.x - p[0]) + abs(m.y - p[1]) <= 3 for m in r.run.floor.movers if m.kind != "player"))   #  Ironworks' people walk about)
 r.run.player = (_p0[0] - _cur[_p0][0], _p0[1] - _cur[_p0][1])
 r.step(*_cur[_p0]) if hasattr(r, "step") else None
 for _q in range(120):
@@ -606,15 +608,15 @@ check(_rooms_seen >= 50, f"Sinnoh's town rooms walked into and out of: {_rooms_s
 t = town("SANDGEM_TOWN", "SINNOH_ROUTE_201")
 _d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["SANDGEM_TOWN"]["inside"].items() if n == "lab")
 _enter_door(t, _d)
-check(t.room == "lab" and [o.get("target") for o in t.people.values()] == ["professor_rowan"], f"Sandgem: Prof. Rowan stands in his lab ({t.room}, {[o.get('text') for o in t.people.values()]})")
+check(t.room == "lab" and [o.get("target") for o in t.people.values() if o.get("target")] == ["professor_rowan"], f"Sandgem: Prof. Rowan stands in his lab (with Platinum's lab aides) ({t.room}, {[o.get('text') for o in t.people.values()]})")
 t = town("OREBURGH_CITY", "SINNOH_ROUTE_203")
 _d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["OREBURGH_CITY"]["inside"].items() if n == "gym")
 _enter_door(t, _d)
-check(t.room == "gym" and [str(o.get("action")).upper() for o in t.people.values()] == ["GYM"], f"Oreburgh Gym: the Leader inside is the Gym challenge ({t.room}, {[o.get('action') for o in t.people.values()]})")
+check(t.room == "gym" and [str(o.get("action")).upper() for o in t.people.values()].count("GYM") == 1, f"Oreburgh Gym: the Leader inside is the Gym challenge ({t.room}, {[o.get('action') for o in t.people.values()]})")
 _d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["OREBURGH_CITY"]["inside"].items() if n == "center")
 t._go(None, "OUT:%d,%d" % next(tuple(int(v) for v in d.split(",")) for d, n in _tm["OREBURGH_CITY"]["inside"].items() if n == "gym"))
 _enter_door(t, _d)
-check(t.room == "center" and [str(o.get("action")).upper() for o in t.people.values()] == ["HEAL"], f"Oreburgh's Pokemon Center: the nurse inside heals ({t.room})")
+check(t.room == "center" and [str(o.get("action")).upper() for o in t.people.values()].count("HEAL") == 1, f"Oreburgh's Pokemon Center: the nurse inside heals ({t.room})")
 
 g.walk_towns = False
 print(f"##### {fails} failures")

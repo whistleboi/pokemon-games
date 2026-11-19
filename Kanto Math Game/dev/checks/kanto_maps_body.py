@@ -1788,6 +1788,27 @@ def _atT(key, part, name):
         if isinstance(p, dict) and p.get("text") == name:
             return xy, p
     return None, None
+def _pick_teach(st):
+    """(11-19) A tutor whose move is a TM too asks first: LEARN IT NOW or BUY THE TM - a player picks LEARN IT NOW."""
+    for _ in range(80):
+        cs = g.current_state
+        if type(cs).__name__ == "PickListState" and getattr(cs, "title", "") == "MOVE TUTOR":
+            if hasattr(cs.back, "start"):
+                cs.pick("teach")
+            else:   # (the test's stand-in state: straight to the choice)
+                cs.done("teach")
+            return True
+        if getattr(st, "npc_active", False):
+            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+            st.update()
+        elif getattr(getattr(st, "dialogue_box", None), "visible", False):
+            st.dialogue_box.advance()
+            st.update()
+        else:
+            return False
+    return False
+
+
 def _teachT(ev, team, flags=()):
     said = []
     story.player_team = [mk(i) for i in team]
@@ -1795,6 +1816,7 @@ def _teachT(ev, team, flags=()):
         story.story_flags[f] = True
     _rseT(_stT, ev, lambda c: (story.inventory.get(c[9:], 0) > 0) if c.startswith("has_item:") else
           (not story.story_flags.get(c[4:])) if c.startswith("not:") else bool(story.story_flags.get(c)), lambda l, **k: said.extend(l))
+    _pick_teach(_stT)
     return said
 _savedT, _invT, _teamT, _moneyT = dict(story.story_flags), dict(story.inventory), list(story.player_team), story.money
 for key, part, name, xy, move, can in (("KANTO_ROUTE_4", None, "Punching fan", (25, 3), "MEGA-PUNCH", 66),

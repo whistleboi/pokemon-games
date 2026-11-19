@@ -1605,6 +1605,11 @@ def _p17(room, name):
 _geo = Pokemon(g.loader.fetch_specific(74), g.assets); _geo.level = 20
 story.player_team = [_geo]
 _run_story_event(st, _p17("center", "Explosion tutor")["event"], lambda c: True, lambda l, **k: None); tap(st)
+for _ in range(40):   # (11-19: the tutor asks first - LEARN IT NOW or BUY THE TM; a player learns it now)
+    if type(g.current_state).__name__ == "PickListState" and getattr(g.current_state, "title", "") == "MOVE TUTOR":
+        g.current_state.pick("teach"); tap(st)
+        break
+    tap(st)
 from src.pokemon import moves as _mv17
 check("EXPLOSION" in _mv17.move_pool(g, _geo), "Pacifidlog: the Center's tutor teaches Explosion (to a Geodude)")
 story.story_flags.pop("pacifidlog_friend_tm_week", None)
@@ -2749,6 +2754,8 @@ if _hid:
     _before = story.inventory.get(_hid[1], 0)
     st._hidden_item((_hx, _hy)); tap(st)
 check(_hid and story.inventory.get(_hid[1], 0) == _before + 1, f"Route 104: a hidden item found by stepping on its spot ({_hid})")
+_rep119 = getattr(story, "repel_routes", 0)
+story.repel_routes = 9   # (11-19: no wild Pokemon on the test's steps in the grass - one jumping out made Greg miss his copy now and then)
 st = open_map("HOENN_ROUTE_119", "HOENN_ROUTE_118")
 frames(3)
 _greg = next((m for m in st.run.floor.movers if m.kind == "trainer" and "Greg" in str(m.payload)), None)
@@ -2768,6 +2775,7 @@ if _mo:
                 break
         if _moved:
             break
+story.repel_routes = _rep119
 check(_mo is not None and _mo.kind == "copy" and _moved,
       f"Route 119: the Mimic Circle: Bug Catcher Greg copies your steps ({getattr(_mo, 'kind', None)}, moved {_moved})")
 story.story_flags.clear(); story.story_flags.update(_savedO)

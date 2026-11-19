@@ -207,9 +207,13 @@ story.current_area_key = "POKEMON_MANSION"
 _pm = PlayState(g)
 _pm._get_route_callback(next(o for o in prog["POKEMON_MANSION"]["route_menu"] if o["text"] == "BURGLAR SIMON"))()
 bt = g.current_state.next_state
-check(bt.opponent_team[-1].level == 36, "Mansion burglar battle")
+_simon = next(o for o in prog["POKEMON_MANSION"]["route_menu"] if o["text"] == "BURGLAR SIMON")["event"]["battle"]
+check([p.level for p in bt.opponent_team] == _simon["levels"] and _simon["levels"] == [38], "Mansion burglar battle (FireRed's team)")
 bt.player_won = True; bt.exit_battle()
-check(story.inventory.get("SECRET_KEY") == 1 and story.story_flags.get("got_secret_key"), "it gives the Secret Key")
+# (11-17, Kanto decisions: the Secret Key is FireRed's item ball in the Mansion basement, not the burglar's)
+check(not story.inventory.get("SECRET_KEY") and any("SECRET" in str(o.get("text", "")).upper() and o.get("found")
+                                                  for o in prog["POKEMON_MANSION"]["route_menu"]),
+      "the Secret Key isn't his: it lies in the basement, as in FireRed")
 story.current_area_key = "KANTO_ROUTE_16"; p16 = PlayState(g); p16.rounds_completed = 9
 cy = next(o for o in prog["KANTO_ROUTE_16"]["route_menu"] if o.get("target") == "KANTO_ROUTE_17")
 check(not p16._check_route_condition(cy["condition"], False, cy), "Cycling Road needs a Bicycle")

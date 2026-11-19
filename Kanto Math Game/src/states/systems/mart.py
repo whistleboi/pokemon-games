@@ -15,11 +15,13 @@ from src.pokemon import items as itemlib
 
 # [REF-0034: PokeMart System]
 class PokeMartState(GameState):
-    def __init__(self, game, previous_state, stock=None):
-        """stock: sell only these items (e.g. a Contest Hall's Pokéblock stand)."""
+    def __init__(self, game, previous_state, stock=None, tutor_sale=False):
+        """stock: sell only these items (e.g. a Contest Hall's Pokéblock stand). tutor_sale: a move tutor selling their
+        moves' TMs (src/pokemon/tutors.py): the one shop that sells those."""
         super().__init__(game)
         self.previous_state = previous_state
         self.stock = stock
+        self.tutor_sale = tutor_sale
         self.phase = "SHOP"
         self.shop_buttons = []
         self.current_page = 0
@@ -53,7 +55,12 @@ class PokeMartState(GameState):
     NEVER_SOLD = {"UPGRADE", "UP_GRADE", "CRYSTAL_STONE"}
 
     def _shop_items(self):
-        return [i for i in self._stock_items() if i not in self.NEVER_SOLD] + self._extra_stock()
+        items = [i for i in self._stock_items() if i not in self.NEVER_SOLD] + self._extra_stock()
+        if not self.tutor_sale:   # (Jordan 11-19: a TM whose move a tutor in this region teaches is sold by that tutor only)
+            from src.pokemon import tutors
+            only_tutor = tutors.tutor_tms(self.game)
+            items = [i for i in items if i not in only_tutor]
+        return items
 
     def _extra_stock(self):
         """An area's own extra shelf ("extra_stock": [{"item", "condition"}]): Pummelo Island sells the
