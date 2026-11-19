@@ -6,6 +6,7 @@ from src.states.overworld import AreaTransitionState
 from src.states.overworld.soaring3d import Soaring3DState
 from src.states.battle import WildBattleState
 from src.world import soaring3d as S3
+from src.states.overworld import soaring3d as SS
 
 fails = []
 
@@ -50,7 +51,10 @@ def place(st, x, z, heading=0.0, alt=1800.0):
 g.dungeon_routes = True              # (the walked-routes option on, as in play)
 flags = story.story_flags
 flags["beat_hoenn_champion"] = True
-for k in ("MOSSDEEP_CITY", "SLATEPORT_CITY", "DEWFORD_TOWN", "LILYCOVE_CITY"):
+HOENN_TOWNS = ("LITTLEROOT_TOWN", "OLDALE_TOWN", "PETALBURG_CITY", "RUSTBORO_CITY", "DEWFORD_TOWN", "SLATEPORT_CITY",
+               "MAUVILLE_CITY", "VERDANTURF_TOWN", "FALLARBOR_TOWN", "LAVARIDGE_TOWN", "FORTREE_CITY", "LILYCOVE_CITY",
+               "MOSSDEEP_CITY", "SOOTOPOLIS_CITY", "PACIFIDLOG_TOWN", "EVER_GRANDE_CITY")
+for k in HOENN_TOWNS:                # (a Champion has been all over Hoenn: none of it under the clouds)
     flags[f"visited_{k}"] = True
 story.current_area_key = "MOSSDEEP_CITY"
 
@@ -121,11 +125,78 @@ def views(st, pre=""):
     st.bank, st.pitch = 0.0, 0.0
 
 
-check(S3.GROUND == "map" and st.on_map, "the ground is the 2D version's map")
+check(S3.GROUND == "world" and st.world is not None and st.clouds is not None,
+      "the ground is the world (Hoenn, Johto, Kanto, Sevii, Orange as Jordan's world map has them)")
 mx, mz = S3.TOWNS["MOSSDEEP_CITY"]
 check(abs(mx - (401 * S3.MAP_SCALE + S3.MAP_X0)) < 1 and abs(mz - (129 * S3.MAP_SCALE + S3.MAP_Z0)) < 1,
       "its towns are the map picture's own points")
 views(st)
+
+print("== the world: only where you've been (Jordan, 11-18)")
+check(isinstance(st.levels[0].img, SS.Tiled) and isinstance(st.levels[1].img, SS.Tiled),
+      "its two finest pictures are read a tile at a time (phone memory)")
+check(len(st.levels[0].img.tiles) <= SS.Tiled.KEEP, f"only the tiles near you are kept ({len(st.levels[0].img.tiles)})")
+gx, gz = S3.TOWNS["GOLDENROD_CITY"]
+check(st._locked(gx, gz) and not st._locked(*S3.TOWNS["MAUVILLE_CITY"]),
+      "a Hoenn player's Johto is under clouds; Hoenn isn't")
+check(len(st.wall) > 50, f"a cloud bank stands along the edge ({len(st.wall)} clouds)")
+ex, ez = S3.TOWNS["EVER_GRANDE_CITY"]
+place(st, ex, ez, heading=90, alt=2200)
+st.mode = "FLY"
+turned = False
+for i in range(400):
+    st.update()
+    if st.flash_t > 0 and "clouds" in st.flash_text:
+        turned = True
+        break
+check(turned and not st._locked(st.x, st.z), "flying east into the clouds turns you back before you're in them")
+shot("cloud_bank")
+st.mode = "FLY"
+st._ask_land()
+check(st.ask_line.startswith("Land at") and any(S3.town_name(k) in st.ask_line for k in HOENN_TOWNS),
+      f"over Hoenn, LAND is the nearest Hoenn town ({st.ask_line})")
+st._fly_on()
+import json as _json
+pts = _json.load(open(os.path.join("assets", "map_points.json"), encoding="utf-8"))["region_maps"]
+for k in pts["JOHTO"]["points"]:
+    flags[f"visited_{k}"] = True
+g.soaring3d_state = None
+story.current_area_key = "MOSSDEEP_CITY"
+g.change_state(AreaTransitionState(g, S3.AREA))
+st = run_transition()
+check(isinstance(st, Soaring3DState) and not st._locked(gx, gz), "been to Johto: its sky is clear")
+place(st, gx, gz + 9000, heading=0, alt=2400)
+shot("johto")
+place(st, gx, gz, heading=0)
+st._ask_land()
+check("Goldenrod" in st.ask_line, f"over Johto, LAND offers Johto's town below, as Fly would ({st.ask_line})")
+st._fly_on()
+check(st._locked(*S3.TOWNS["PALLET_TOWN"]) and st._locked(*S3.TOWNS["VALENCIA_ISLAND"]), "Kanto and Orange still under clouds")
+
+print("== the flute in another region (Jordan, 11-18: a Champion of two may soar from anywhere)")
+flags["visited_VERMILLION_CITY"] = flags["visited_PALLET_TOWN"] = True
+g.soaring3d_state = None
+story.current_area_key = "VERMILLION_CITY"
+check(S3.flute_block(story) is None, "the flute plays in Vermilion")
+g.change_state(AreaTransitionState(g, S3.AREA))
+st = run_transition()
+check(isinstance(st, Soaring3DState), f"up from Kanto: the flight ({type(st).__name__})")
+check(str(story.get_current_region()).upper() == "KANTO", f"soaring keeps the region you came from ({story.get_current_region()})")
+vx, vz = S3.TOWNS["VERMILLION_CITY"]
+check(abs(st.x - vx) < 4000 and abs(st.z - vz) < 4000, "you start over Vermilion")
+st._ask_land()
+check("Vermil" in st.ask_line, f"LAND offers Vermilion ({st.ask_line})")
+st._fly_on()
+place(st, *S3.TOWNS["PALLET_TOWN"])
+st._ask_land()
+check("Pallet" in st.ask_line, f"Pallet, Kanto's home town, may be landed in as Fly may ({st.ask_line})")
+st._ask_event(pygame.event.Event(pygame.KEYDOWN, key=pygame.K_RETURN, mod=0, unicode=""))
+landed = run_transition()
+check(story.current_area_key == "PALLET_TOWN", f"LAND sets you down in Pallet Town ({story.current_area_key})")
+g.soaring3d_state = None
+story.current_area_key = "MOSSDEEP_CITY"
+g.change_state(AreaTransitionState(g, S3.AREA))
+st = run_transition()
 
 print("== a flock")
 place(st, 0, 6000)

@@ -14,7 +14,7 @@ import math
 
 AREA = "HOENN_SOARING_IN_THE_SKY"
 FLUTE = "EON_FLUTE"
-FLUTE_TEXT = "Play it outside in Hoenn and your Eon friend comes to fly you high over the region."
+FLUTE_TEXT = "Play it outside and your Eon friend comes to fly you high over the regions you know."
 
 
 # ---------------------------------------------------------------- the Eon Flute (ORAS: Steven gives it at Southern Island)
@@ -31,9 +31,9 @@ def give_flute(story):
 
 
 def flute_block(story):
-    """Why the Eon Flute can't be played here (a line to show), or None."""
-    if str(story.get_current_region() or "").upper() != "HOENN":
-        return "Your Eon friend can't hear the flute this far from Hoenn."
+    """Why the Eon Flute can't be played here (a line to show), or None. It plays in any region (Jordan, 11-18: whoever
+    has their Mega Latias / Latios in another region is a Champion of two, so may soar there and land there too);
+    the flight's area is a border area (assets/hoenn_area_data.json "border"), so going up keeps the region you're in."""
     area = story.get_current_area_data() or {}
     if area.get("indoors") or area.get("battle_type") in ("indoor", "cave"):
         return "There's no open sky here. Try it outside!"
@@ -41,11 +41,18 @@ def flute_block(story):
         return "You're already soaring!"
     return None
 
-# Which ground you fly over (Jordan, 11-14: "use that map instead of the blurry one"):
-#   "map"  - the 2D version's ground: the game's own Hoenn map picture redrawn in our pixel style
-#            (assets/soaring3d/map_ground.png, from hoenn-soaring-2d's dev/builders/make_soaring_ground.py);
-#   "oras" - Omega Ruby's own sky map, baked (ground.jpg, ground_far.jpg).
-GROUND = "map"
+# Which ground you fly over (Jordan, 11-14: "use that map instead of the blurry one"; 11-18: one big world):
+#   "world" - Hoenn, Johto, Kanto, the Sevii and Orange Islands as one ground, placed as Jordan's world map has them
+#             (assets/soaring3d/world, dev/builders/make_soaring_world.py); only where you've been is clear, the rest
+#             is under clouds (cover_open below). Hoenn is the same size and in the same place as on the "map" ground;
+#   "map"   - the 2D version's ground: the game's own Hoenn map picture redrawn in our pixel style
+#             (assets/soaring3d/map_ground.png, from hoenn-soaring-2d's dev/builders/make_soaring_ground.py);
+#   "oras"  - Omega Ruby's own sky map, baked (ground.jpg, ground_far.jpg).
+# A missing world falls back to "map".
+GROUND = "world"
+# Which world: "world", placed as the game's own world map (Pokemon Journeys', assets/world_map 2.png): Jordan's pick
+# (11-18) over duskl1ghtness's map ("world_dusk": make_soaring_world.py --layout=dusk builds it, not kept in assets).
+WORLD = "world"
 # Who carries you (Jordan, 11-14: "the 2D sprite but still your 3D coordinating"):
 #   "sprite" - Jordan's Mega Latias / Latios from behind, the 2D version's (assets/soaring3d/mega_lati*_back.png);
 #   "model"  - Omega Ruby's own models, baked at 5 banks x 3 pitches (eon_<id>_<bank>_<pitch>.png).
@@ -102,13 +109,60 @@ SKY_PLACES = [
      "flags": ["soaring_tornadus", "soaring_thundurus", "soaring_landorus"]},
 ]
 
-# The places on the ground in use (use_ground sets them): towns, Mirage places (look, at), the sky's legends
-TOWNS, LAND_SPOTS, SKY_SPOTS = {}, {}, []
+# The places on the ground in use (use_ground sets them): towns, Mirage places (look, at), the sky's legends.
+# LAND_TOWNS: the towns LAND can set you down in (on the world: every region's, Jordan 11-18; the flight lets you land
+# where Fly would: a town you've been to with a Pokemon Center, or a region's home town: fly_map.fly_ok).
+TOWNS, LAND_SPOTS, SKY_SPOTS, LAND_TOWNS = {}, {}, [], set()
 
 
-def use_ground(ground, town_px=None):
-    """Put every place on this ground ("map" or "oras"); town_px: map_points.json's Hoenn points."""
-    global TOWNS, LAND_SPOTS, SKY_SPOTS
+# ---------------------------------------------------------------- the world ground (GROUND = "world")
+def world_meta(assets_dir):
+    """assets/soaring3d/world/world.json (make_soaring_world.py), or None if the world isn't built."""
+    import json
+    import os
+    try:
+        with open(os.path.join(assets_dir, "soaring3d", WORLD, "world.json"), encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
+def world_point(meta, sx, sy):
+    """A point on the world's town-map-sized picture (world.json's map_px frame) in world units."""
+    ox, oz = meta["origin"]
+    u = meta["unit_per_map_px"]
+    return ox + sx * u, oz + sy * u
+
+
+def world_rect(meta):
+    """The world ground's rect in world units (x0, z0, x1, z1)."""
+    ox, oz = meta["origin"]
+    u = meta["unit_per_map_px"]
+    w, h = meta["map_px"]
+    return ox, oz, ox + w * u, oz + h * u
+
+
+def cover_open(meta, flags):
+    """Which towns' patches of the world are clear (Jordan, 11-18: "soaring should only allow to reach the areas the
+    player has been to"): the numbers (world.json's seeds) of the towns you've been to."""
+    towns = {i for i, (key, _region, _x, _y) in enumerate(meta["seeds"]) if flags.get(f"visited_{key}")}
+    # open sea far from any town goes with its nearest region: clear once you've been anywhere in that region
+    regions = meta.get("regions") or []
+    known = {meta["seeds"][i][1] for i in towns}
+    return towns | {meta.get("sea_of", 200) + n for n, r in enumerate(regions) if r in known}
+
+
+def use_ground(ground, town_px=None, meta=None):
+    """Put every place on this ground ("world", "map" or "oras"); town_px: map_points.json's Hoenn points; meta: the
+    world's world.json."""
+    global TOWNS, LAND_SPOTS, SKY_SPOTS, LAND_TOWNS
+    if ground == "world" and meta:
+        TOWNS = {key: world_point(meta, x, y) for key, _region, x, y in meta["seeds"]}
+        LAND_TOWNS = {key for key, _region, _x, _y in meta["seeds"]}   # (any region's: the flight keeps Fly's rule)
+        LAND_SPOTS = {k: (look, map_xy(px)) for k, (look, _at, px) in SPOT_PLACES.items()}
+        SKY_SPOTS = [dict(s, at=map_xy(s["px"])) for s in SKY_PLACES]
+        return
+    LAND_TOWNS = set(ORAS_TOWNS)
     if ground == "map":
         TOWNS = {k: map_xy(p) for k, p in (town_px or {}).items() if k in ORAS_TOWNS} or dict(ORAS_TOWNS)
         LAND_SPOTS = {k: (look, map_xy(px)) for k, (look, _at, px) in SPOT_PLACES.items()}

@@ -270,6 +270,7 @@
       "area_type": "wild_route",
       "route_name": "Soaring in the Sky",
       "region": "HOENN",
+      "border": true,
       "battle_type": "field",
       "wild_pool_percentages": "HOENN_SOARING_IN_THE_SKY_PERCENTAGES",
       "min_rounds": 2,

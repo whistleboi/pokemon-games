@@ -44,6 +44,8 @@ HUD_H = 76
 SPRITE_SCALE = 5                 # Jordan's 31 x 30 back sprites, five times (as in the 2D version)
 SPRITE_ROLL = 22.0               # degrees the sprite leans at full turn
 WILD_EVERY = (FPS * 5, FPS * 9)
+WALL_ALTS = (300, 1600, 2900, 4200)  # heights of the cloud bank's rows (it stands from the ground to above ALT_MAX)
+WALL_SEEN = 32000                    # how far off the cloud bank is drawn
 _cache = {}
 
 
@@ -89,6 +91,53 @@ def rift_picture(size=256):
         pygame.draw.lines(s, (90, 40, 150, 230), False, pts, 2)
     pygame.draw.circle(s, (6, 0, 14, 255), (int(c), int(c)), int(c * 0.2))
     return s
+
+
+def _soft_disc(d):
+    """A white disc, opaque in the middle and fading out to its rim (to round off a square of cloud texture)."""
+    key = ("disc", d)
+    if key not in _cache:
+        s = pygame.Surface((d, d), pygame.SRCALPHA)
+        for i in range(24, 0, -1):
+            k = i / 24
+            s_a = int(255 * min(1.0, (1 - k) * 2.2))
+            pygame.draw.circle(s, (255, 255, 255, s_a), (d // 2, d // 2), max(1, int(d / 2 * k)))
+        _cache[key] = s
+    return _cache[key]
+
+
+def oras_storm_picture(game, seed=7, w=320, h=180):
+    """The black storm cloud from Omega Ruby's own thundercloud textures (its cloud masses, darkened as the game tints
+    them), in round puffs with a lighter top; None if they're missing."""
+    texs = [t for t in (_load(game, "oras_kumo03.png"), _load(game, "oras_kumo01.png")) if t is not None]
+    if not texs:
+        return None
+    rng = random.Random(seed)
+    s = pygame.Surface((w, h), pygame.SRCALPHA)
+    puffs = [(rng.randint(w // 6, 5 * w // 6), rng.randint(h // 3, 2 * h // 3), rng.randint(h // 5, h // 3))
+             for _ in range(11)]
+    for col, dy, grow in (((34, 30, 48, 170), 8, 10), ((64, 58, 86, 255), 0, 2), ((110, 104, 138, 235), -6, -8)):
+        for x, y, r in puffs:
+            d = max(4, 2 * (r + grow) + 16)
+            p = pygame.transform.smoothscale(rng.choice(texs), (d, d))
+            p.blit(_soft_disc(d), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+            p.fill(col, special_flags=pygame.BLEND_RGBA_MULT)
+            s.blit(p, (x - d // 2, y + dy - d // 2))
+    return s
+
+
+def oras_rift_layers(game):
+    """(glow, streaks) for the Dimensional Rift: Essentials' portal glow and Omega Ruby's rift streaks tinted violet;
+    None if missing."""
+    glow, uv = _load(game, "portal_glow.png", alpha=False), _load(game, "oras_rift_streaks.png")
+    if glow is None or uv is None:
+        return None
+    st = pygame.transform.smoothscale(uv, (256, 256))
+    st.fill((200, 130, 255, 255), special_flags=pygame.BLEND_RGBA_MULT)
+    st2 = pygame.transform.rotate(st, 90)                 # (a second turn of streaks: fuller)
+    st.blit(st2, st2.get_rect(center=(128, 128)))
+    st.blit(_soft_disc(256), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+    return glow, st
 
 
 def mount(game):
@@ -155,10 +204,169 @@ class Level:
         sq = pygame.Surface((2 * c, 2 * c))
         sq.fill(self.sea)
         px, pz = (x - self.x0) / self.s, (z - self.z0) / self.s
-        sq.blit(self.img, (c - int(px), c - int(pz)))
+        if isinstance(self.img, Tiled):
+            self.img.draw(sq, (c - int(px), c - int(pz)))
+        else:
+            sq.blit(self.img, (c - int(px), c - int(pz)))
         self.surf = pygame.transform.rotate(sq, heading)
         self.at = (int(px) * self.s + self.x0, int(pz) * self.s + self.z0, heading)  # (the pixel it's centred on)
         return self.surf
+
+
+class Tiled:
+    """A ground picture too big to keep whole on a phone (the world's finest two): 512-pixel tiles
+    (assets/soaring3d/world/<name>_<col>_<row>.png), read when the flight first needs them, clouded as they're read,
+    and dropped again once far away."""
+    KEEP = 20
+
+    def __init__(self, folder, name, size, tile, cover, level):
+        self.folder, self.name, self.size, self.tile = folder, name, size, tile
+        self.cover, self.level = cover, level
+        self.tiles = {}
+
+    def get_width(self):
+        return self.size[0]
+
+    def get_height(self):
+        return self.size[1]
+
+    def _tile(self, col, row):
+        key = (col, row)
+        if key not in self.tiles:
+            try:
+                img = pygame.image.load(os.path.join(self.folder, f"{self.name}_{col}_{row}.png")).convert()
+            except (pygame.error, FileNotFoundError):
+                img = None
+            if img is not None and self.cover is not None:
+                self.cover.cover(img, self.level, col * self.tile, row * self.tile)
+            if len(self.tiles) >= self.KEEP:            # (the oldest one goes)
+                self.tiles.pop(next(iter(self.tiles)))
+            self.tiles[key] = img
+        return self.tiles[key]
+
+    def draw(self, dest, at):
+        """Blit the picture onto dest with its top-left at `at` (as dest.blit would), reading only the tiles that show."""
+        ax, ay = at
+        t = self.tile
+        c0, c1 = max(0, -ax // t), min((self.size[0] - 1) // t, (dest.get_width() - ax) // t)
+        r0, r1 = max(0, -ay // t), min((self.size[1] - 1) // t, (dest.get_height() - ay) // t)
+        for row in range(r0, r1 + 1):
+            for col in range(c0, c1 + 1):
+                img = self._tile(col, row)
+                if img is not None:
+                    dest.blit(img, (ax + col * t, ay + row * t))
+
+
+class Clouds:
+    """Clouds over every part of the world you haven't been to (Jordan, 11-18): each patch of ground belongs to a town
+    (world/cells.png, its town's number per pixel; 255 = no town's, open sea far from all); a patch stays under
+    clouds until you've been to its town. The ground pictures are clouded once, as they're read (no cost a frame):
+    the cloud-tops are Omega Ruby's own (its cloud mass and its cloud-from-above), faded in over the edge."""
+    BASE = (206, 218, 238)
+
+    def __init__(self, game, meta, open_ids):
+        folder = os.path.join(game.assets.assets_dir, "soaring3d", S3.WORLD)
+        self.cells = pygame.image.load(os.path.join(folder, "cells.png"))
+        self.cell = meta["cell"]                       # town-map pixels a cell
+        self.open = set(open_ids)
+        m = self.cells.copy()
+        m.set_palette([(0, 0, 0) if i in self.open else (255, 255, 255) for i in range(256)])
+        m = m.convert()
+        w, h = m.get_size()                            # (blurred a little: a soft edge, not a staircase)
+        m = pygame.transform.smoothscale(pygame.transform.smoothscale(m, (max(1, w // 4), max(1, h // 4))), (w, h))
+        self.mask = m
+        self.top = _load(game, "oras_cloud_top.png")
+        self.mass = _load(game, "oras_kumo03.png")
+        self.textures = {}
+
+    def open_box(self):
+        """(x0, y0, x1, y1) in town-map pixels round every clear cell, or None."""
+        w, h = self.cells.get_size()
+        xs, ys = [], []
+        for cy in range(0, h, 4):
+            for cx in range(0, w, 4):
+                if self.cells.get_at((cx, cy))[0] in self.open:
+                    xs.append(cx)
+                    ys.append(cy)
+        if not xs:
+            return None
+        c = self.cell
+        return min(xs) * c, min(ys) * c, (max(xs) + 4) * c, (max(ys) + 4) * c
+
+    def locked(self, mx, my):
+        """Is this town-map pixel of the world under cloud?"""
+        cx, cy = int(mx // self.cell), int(my // self.cell)
+        if not (0 <= cx < self.cells.get_width() and 0 <= cy < self.cells.get_height()):
+            return True
+        return self.cells.get_at((cx, cy))[0] not in self.open
+
+    def texture(self, level, w, h):
+        """Cloud-tops as seen from above, w x h, at this level's size (the same clouds the same size on every level)."""
+        key = (level, w, h)
+        if key not in self.textures:
+            s = pygame.Surface((w, h))
+            s.fill(self.BASE)
+            for img, period in [] if level >= 3 else ((self.mass, 256), (self.top, 512)):    # (periods that fit a tile: no seams)
+                if img is None:
+                    continue
+                p = max(8, period >> level)
+                t = pygame.transform.smoothscale(img, (p, p))
+                for y in range(0, h, p):
+                    for x in range(0, w, p):
+                        s.blit(t, (x, y))
+            if len(self.textures) > 8:
+                self.textures.clear()
+            self.textures[key] = s
+        return self.textures[key]
+
+    def cover(self, img, level, gx, gy):
+        """Cloud this piece of a ground picture in place (level 0 = 4 pixels a town-map pixel, each level half that;
+        (gx, gy): where the piece's top-left is in its level's picture)."""
+        per = 4 * self.cell / (2 ** level)              # the level's pixels a cell
+        w, h = img.get_size()
+        r = pygame.Rect(int(gx // per), int(gy // per), max(1, int(math.ceil(w / per))), max(1, int(math.ceil(h / per))))
+        r = r.clip(self.mask.get_rect())
+        if r.w <= 0 or r.h <= 0:
+            img.fill(self.BASE)
+            return
+        sub = self.mask.subsurface(r)
+        avg = pygame.transform.average_color(sub)
+        if avg[0] <= 1:
+            return                                      # (nothing clouded here)
+        m = pygame.transform.smoothscale(sub, (max(1, int(r.w * per)), max(1, int(r.h * per))))
+        mask = pygame.Surface((w, h))
+        mask.fill((255, 255, 255))
+        mask.blit(m, (int(r.x * per - gx), int(r.y * per - gy)))
+        cloud = self.texture(level, w, h).copy()
+        if avg[0] < 254:
+            ground = img.copy()
+            ground.blit(mask, (0, 0), special_flags=pygame.BLEND_MULT)
+            img.blit(ground, (0, 0), special_flags=pygame.BLEND_SUB)          # the ground, less where it's cloud
+            cloud.blit(mask, (0, 0), special_flags=pygame.BLEND_MULT)
+            img.blit(cloud, (0, 0), special_flags=pygame.BLEND_ADD)           # ... and the cloud there instead
+        else:
+            img.blit(cloud, (0, 0))
+
+    def wall(self, meta, rng, step=6):
+        """The cloud bank along the edge of where you may fly: billboards standing on the cloud side of every edge,
+        (world x, z) each, every `step` cells."""
+        out = []
+        w, h = self.cells.get_size()
+        lock = {}
+
+        def is_locked(cx, cy):
+            if (cx, cy) not in lock:
+                lock[(cx, cy)] = not (0 <= cx < w and 0 <= cy < h) or self.cells.get_at((cx, cy))[0] not in self.open
+            return lock[(cx, cy)]
+
+        for cy in range(0, h, step):
+            for cx in range(0, w, step):
+                if not is_locked(cx, cy):
+                    continue
+                if any(not is_locked(cx + dx, cy + dy) for dx, dy in ((step, 0), (-step, 0), (0, step), (0, -step))):
+                    mx, my = (cx + rng.uniform(-0.4, 0.4) * step) * self.cell, (cy + rng.uniform(-0.4, 0.4) * step) * self.cell
+                    out.append(S3.world_point(meta, mx, my))
+        return out
 
 
 class Soaring3DState(PlayState):
@@ -182,8 +390,16 @@ class Soaring3DState(PlayState):
         self.eon_imgs = {}
         self.rider = self._rider()
         came = getattr(story, "last_area_key", None) or "MOSSDEEP_CITY"
-        start = S3.TOWNS.get(came) or S3.LAND_SPOTS.get(came, (None, None))[1] or S3.TOWNS.get("MOSSDEEP_CITY", (0, 0))
+        start = S3.TOWNS.get(came) or S3.LAND_SPOTS.get(came, (None, None))[1]
+        self.far = start is None                 # (the flute played in a region not on the world: off to the skies we know)
+        start = start or S3.TOWNS.get("MOSSDEEP_CITY", (0, 0))
         self.x, self.z = float(start[0]), float(start[1]) + 2500   # (a little south, looking north at it)
+        if self._locked(self.x, self.z):        # (never start inside the clouds: the nearest town you've been to)
+            flags = story.story_flags
+            seen = [k for k in S3.TOWNS if flags.get(f"visited_{k}") and not self._locked(*S3.TOWNS[k])]
+            if seen:
+                k, _d = S3.nearest_town(self.x, self.z, set(seen))
+                self.x, self.z = S3.TOWNS[k]
         self.heading = 0.0       # degrees, 0 = north, clockwise
         self.alt = 1800.0
         self.speed = SPEEDS[1]
@@ -196,7 +412,8 @@ class Soaring3DState(PlayState):
         self.fast_held = False
         self.wilds = []
         self.next_wild = FPS * 2
-        self.flash_text, self.flash_t = f"You're soaring on {self.eon_name}!", FPS * 3
+        self.flash_text, self.flash_t = (f"{self.eon_name} flew you far over the sea, to skies you know!" if self.far
+                                         else f"You're soaring on {self.eon_name}!"), FPS * 3
         self.pool = self._get_wild_pool(self.area_data) or {"278": 1}
         self._refresh_spots()
 
@@ -210,14 +427,20 @@ class Soaring3DState(PlayState):
             pass
         self.levels = []
         self.sea = SEA
-        near = _load(self.game, "map_ground.png", alpha=False) if S3.GROUND == "map" else None
-        self.on_map = near is not None
-        if self.on_map:
+        self.world = S3.world_meta(self.game.assets.assets_dir) if S3.GROUND == "world" else None
+        self.clouds, self.wall = None, []
+        near = _load(self.game, "map_ground.png", alpha=False) if S3.GROUND in ("map", "world") else None
+        self.on_map = near is not None or self.world is not None
+        if self.world is not None:
+            self._setup_world()
+        elif self.on_map:
             S3.use_ground("map", self._map_points())
         else:                     # Omega Ruby's sky map (chosen, or the map picture is missing)
             S3.use_ground("oras")
             near = _load(self.game, "ground.jpg", alpha=False)
-        if self.on_map:
+        if self.world is not None:
+            pass                  # (set up above)
+        elif self.on_map:
             # the 2D version's map: crisp pixels, so its halves are picked, not blended; its own sea all round
             rect = S3.map_ground_rect(*near.get_size())
             self.sea = tuple(near.get_at((4, 4)))[:3]
@@ -252,7 +475,8 @@ class Soaring3DState(PlayState):
         self.minimap = None
         if self.mm_src is not None:               # the mini-map: Hoenn itself, not the open sea round it
             src = self.mm_src
-            self.minimap = pygame.transform.smoothscale(src, (240, int(240 * src.get_height() / src.get_width())))
+            mw = 300 if self.world is not None else 240
+            self.minimap = pygame.transform.smoothscale(src, (mw, int(mw * src.get_height() / src.get_width())))
         self.banks = tuple(meta.get("banks", (-50, -25, 0, 25, 50)))
         self.pitches = tuple(meta.get("pitches", (-25, 0, 25)))
         self.view = pygame.Surface((self.RW, self.RH))
@@ -277,7 +501,72 @@ class Soaring3DState(PlayState):
         for y in range(90):
             self.haze.fill(HAZE + (int(235 * (1 - y / 90) ** 1.6),), (0, y, self.RW, 1))
         self.rift_img = rift_picture()
-        self.storm_img = storm_picture()
+        self.storm_img = oras_storm_picture(self.game) or storm_picture()
+        self.rift_layers = oras_rift_layers(self.game)     # (Omega Ruby's rift streaks over a glow; None: ours)
+        self._wall_cache = {}
+
+    def _setup_world(self):
+        """The world ground (Jordan, 11-18): the five regions as his world map has them, clouded where you haven't been.
+        Its finest two pictures are tiles read as needed; the coarser two are whole (and the mini-map)."""
+        meta = self.world
+        S3.use_ground("world", meta=meta)
+        # the cloud bank's pictures: Omega Ruby's horizon clouds and its soft puff
+        self.wall_pics = []
+        for name in ("cloud_a.png", "cloud_b.png", "oras_puff.png"):
+            p = _load(self.game, name)
+            if p is not None:                    # (rounded off: no square corners or flat edges against the sky)
+                p = p.copy()
+                p.blit(pygame.transform.smoothscale(_soft_disc(128), p.get_size()), (0, 0),
+                       special_flags=pygame.BLEND_RGBA_MULT)
+                self.wall_pics.append(p)
+        folder = os.path.join(self.game.assets.assets_dir, "soaring3d", S3.WORLD)
+        flags = self.game.story_manager.story_flags
+        opened = S3.cover_open(meta, flags)
+        # (a save that has no town marked as visited would be all cloud: then nothing is hidden)
+        self.clouds = Clouds(self.game, meta, opened) if opened else None
+        rect = S3.world_rect(meta)
+        self.sea = Clouds.BASE if self.clouds is not None else SEA   # (past the farthest picture: more cloud)
+        w, h = meta["ground_px"]
+        tile = meta["tile"]
+        self.levels.append(Level(Tiled(folder, "t0", (w, h), tile, self.clouds, 0), rect, CROP, self.sea))
+        self.levels.append(Level(Tiled(folder, "t1", (w // 2, h // 2), tile, self.clouds, 1), rect, CROP, self.sea))
+        whole = []
+        for name, level in (("w2.png", 2), ("w3.png", 3)):
+            try:
+                img = pygame.image.load(os.path.join(folder, name)).convert()
+            except (pygame.error, FileNotFoundError):
+                continue
+            if self.clouds is not None:
+                self.clouds.cover(img, level, 0, 0)
+            whole.append(img)
+            self.levels.append(Level(img, rect, CROP, self.sea))
+        self.bounds = rect
+        self.mm_src, self.mm_rect = None, rect
+        if whole:                      # the mini-map: where you may fly and a little round it, not the whole cloud sea
+            img = whole[-1]
+            k = img.get_width() / (rect[2] - rect[0])
+            box = self.clouds.open_box() if self.clouds is not None else None
+            if box:
+                bx0, bz0, bx1, bz1 = (S3.world_point(meta, box[0], box[1]) + S3.world_point(meta, box[2], box[3]))
+                pad = 6000
+                cut = pygame.Rect(int((bx0 - pad - rect[0]) * k), int((bz0 - pad - rect[1]) * k),
+                                  int((bx1 - bx0 + 2 * pad) * k), int((bz1 - bz0 + 2 * pad) * k)).clip(img.get_rect())
+                self.mm_src = img.subsurface(cut)
+                self.mm_rect = (rect[0] + cut.x / k, rect[1] + cut.y / k, rect[0] + cut.right / k, rect[1] + cut.bottom / k)
+            else:
+                self.mm_src = img
+        if self.clouds is None:
+            return
+        self.wall = [(x, z, alt + self.rng.uniform(-250, 250), self.rng.choice(self.wall_pics), self.rng.uniform(4200, 6400))
+                     for x, z in self.clouds.wall(meta, self.rng) for alt in WALL_ALTS] if self.wall_pics else []
+
+    def _locked(self, x, z):
+        """Is this spot (world units) under the clouds of somewhere you haven't been?"""
+        if self.clouds is None:
+            return False
+        ox, oz = self.world["origin"]
+        u = self.world["unit_per_map_px"]
+        return self.clouds.locked((x - ox) / u, (z - oz) / u)
 
     def _map_points(self):
         try:
@@ -328,7 +617,14 @@ class Soaring3DState(PlayState):
         names = {k: (progression.get(k) or {}).get("route_name") for k in S3.LAND_SPOTS}
         self.land = S3.mark_beacons(S3.land_spots(self.area_data, flags, names), progression, flags)
         self.skyspots = S3.sky_spots(self.area_data, flags)
+        if self.clouds is not None:            # (nothing shows through the clouds)
+            self.land = [s for s in self.land if not self._locked(*s["at"])]
+            self.skyspots = [s for s in self.skyspots if not self._locked(*s["at"])]
         self.visited = {k for k in S3.TOWNS if flags.get(f"visited_{k}")}
+        # LAND sets you down where Fly could: a town you've been to with a Center, or a region's home town (any region
+        # on the world, Jordan 11-18; landing in another region's town is a trip there, as Fly's is)
+        from src.states.systems.fly_map import fly_ok
+        self.land_towns = {k for k in self.visited if k in S3.LAND_TOWNS and fly_ok(self.game, k)}
 
     # ---------------------------------------------------------------- the route underneath
     def _back_from_battle(self):
@@ -423,10 +719,23 @@ class Soaring3DState(PlayState):
         self.mode = "FLY"
 
     def _ask_land(self):
-        key, _d = S3.nearest_town(self.x, self.z, self.visited)
-        name = S3.town_name(key)
-        self._ask_box(None, f"Land at {name}?", "LAND",
-                      lambda: self._land(key, f"{self.eon_name} set you down at {name}."), no="KEEP FLYING")
+        key, _d = S3.nearest_town(self.x, self.z, self.land_towns or set(S3.LAND_TOWNS))
+        name = self._town_name(key)
+        self._ask_box(None, f"Land at {name}?", "LAND", lambda: self._land_town(key), no="KEEP FLYING")
+
+    def _town_name(self, key):
+        try:
+            from src.states.systems.fly_map import fly_name
+            return S3.town_name(fly_name(self.game, key))
+        except Exception:
+            return S3.town_name(key)
+
+    def _land_town(self, key):
+        """Down at a town, as Fly lands you (outside its Center where it has one; into its region, as Fly goes)."""
+        self.game.soaring3d_state = None
+        self.mode = "GONE"
+        from src.states.systems.fly_map import fly_land
+        fly_land(self.game, key)
 
     def _land(self, key, line=None):
         self.game.soaring3d_state = None
@@ -509,6 +818,7 @@ class Soaring3DState(PlayState):
         self.x += f[0] * self.speed
         self.z += f[1] * self.speed
         self._edge()
+        self._cloud_bank(f)
         self._spawn()
         self._move_wilds()
         self._check_spots()
@@ -524,6 +834,16 @@ class Soaring3DState(PlayState):
             self.heading = math.degrees(math.atan2(cx - self.x, -(cz - self.z))) % 360
             self.flash_text, self.flash_t = "You can't fly any farther! Turning back...", FPS * 2
 
+    def _cloud_bank(self, f):
+        """The clouds over where you haven't been (Jordan, 11-18): flying into them turns you back, as the edge does."""
+        if self.clouds is None or not self._locked(self.x + f[0] * 1500, self.z + f[1] * 1500):
+            return
+        self.x -= f[0] * self.speed * 2
+        self.z -= f[1] * self.speed * 2
+        self.heading = (self.heading + 180) % 360
+        self.bank = 0.0
+        self.flash_text, self.flash_t = "Thick clouds! You haven't been there yet. Turning back...", FPS * 2
+
     def _spawn(self):
         self.next_wild -= 1
         if self.next_wild > 0 or len(self.wilds) >= 3:
@@ -533,6 +853,8 @@ class Soaring3DState(PlayState):
         pid = int(Utils.weighted_random_choice(self.pool))
         f, r = self._vectors()
         ahead, side = self.rng.uniform(6000, 9000), self.rng.uniform(-2500, 2500)
+        if self._locked(self.x + f[0] * ahead + r[0] * side, self.z + f[1] * ahead + r[1] * side):
+            return                              # (none come out of the clouds)
         self.wilds.append({"pid": pid, "x": self.x + f[0] * ahead + r[0] * side, "z": self.z + f[1] * ahead + r[1] * side,
                            "alt": max(ALT_MIN, min(ALT_MAX, self.alt + self.rng.uniform(-500, 500))),
                            "dx": self.rng.uniform(-30, 30), "dz": self.rng.uniform(-30, 30), "ph": self.rng.random() * 6,
@@ -666,11 +988,20 @@ class Soaring3DState(PlayState):
             p = self._project(w["x"], w["z"], w["alt"])
             if p:
                 things.append((p[3], "wild", w, p))
+        for b in self.wall:
+            if abs(b[0] - self.x) < WALL_SEEN and abs(b[1] - self.z) < WALL_SEEN:
+                p = self._project(b[0], b[1], b[2])
+                if p and p[3] < WALL_SEEN:
+                    things.append((p[3], "wall", b, p))
         for _d, kind, s, (sx, sy, k, ahead) in sorted(things, key=lambda t: -t[0]):
             if ahead > 40000 or not (-400 < sx < self.RW + 400):
                 continue
             fade = max(0, min(255, int(255 * (1 - (ahead - 22000) / 18000)))) if ahead > 22000 else 255
-            if kind == "land":
+            if kind == "wall":
+                self._draw_wall_cloud(view, s, sx, sy, k, ahead)
+            elif kind == "rift" and self.rift_layers:
+                self._draw_rift(view, sx, sy, max(8, int(2600 * k)), fade)
+            elif kind == "land":
                 self._draw_land_spot(view, s, sx, sy, k, fade)
             elif kind in ("rift", "storm"):
                 img = self.rift_img if kind == "rift" else self.storm_img
@@ -693,6 +1024,39 @@ class Soaring3DState(PlayState):
                     ox = (i - (s["n"] - 1) / 2) * size * 0.7
                     oy = (abs(i - (s["n"] - 1) / 2)) * size * 0.25
                     view.blit(img, img.get_rect(center=(int(sx + ox), int(sy + oy + bob))))
+
+    def _draw_wall_cloud(self, view, b, sx, sy, k, ahead):
+        """One cloud of the bank over where you haven't been: thinner far off, so the bank comes up out of the haze."""
+        _x, _z, _alt, img, size = b
+        w = int(size * k)
+        if w < 4 or w > 2600 or not (-w < sx < self.RW + w):
+            return
+        w = max(4, w // 6 * 6)
+        key = (id(img), w)
+        pic = self._wall_cache.get(key)
+        if pic is None:
+            if len(self._wall_cache) > 400:
+                self._wall_cache.clear()
+            pic = self._wall_cache[key] = pygame.transform.smoothscale(img, (w, max(2, w * img.get_height() // img.get_width())))
+        a = 255 if ahead < WALL_SEEN * 0.6 else max(0, int(255 * (WALL_SEEN - ahead) / (WALL_SEEN * 0.4)))
+        pic.set_alpha(a)
+        view.blit(pic, pic.get_rect(center=(int(sx), int(sy))))
+
+    def _draw_rift(self, view, sx, sy, size, fade):
+        """The Dimensional Rift: Omega Ruby's own rift streaks (tinted violet, as the game tints them) turning in a glow."""
+        if size > 1400:
+            return
+        glow, streaks = self.rift_layers
+        g = pygame.transform.smoothscale(glow, (int(size * 1.4), int(size * 1.4)))
+        if fade < 255:
+            g.fill((fade, fade, fade), special_flags=pygame.BLEND_MULT)
+        view.blit(g, g.get_rect(center=(int(sx), int(sy))), special_flags=pygame.BLEND_ADD)
+        st = pygame.transform.smoothscale(streaks, (size, size))
+        for turn, a in ((self.t * 4, 1.0), (-self.t * 3 + 45, 0.7)):
+            r = pygame.transform.rotate(st, turn % 360)
+            r.set_alpha(int(fade * a))
+            view.blit(r, r.get_rect(center=(int(sx), int(sy))))
+        pygame.draw.circle(view, (8, 0, 18), (int(sx), int(sy)), max(2, int(size * 0.13)))
 
     def _draw_land_spot(self, view, s, sx, sy, k, fade):
         """A Mirage place: a glowing ring on the ground, a shaft of light, and the red beacon while a legend's there."""
@@ -752,7 +1116,7 @@ class Soaring3DState(PlayState):
         theme.draw_textbox(screen, bar)
         theme.shadow_text(screen, "Soaring in the Sky", fonts["button"], bar.x + 20,
                           bar.centery - fonts["button"].get_height() // 2)
-        key, _d = S3.nearest_town(self.x, self.z)
+        key, _d = S3.nearest_town(self.x, self.z, self.visited)
         theme.shadow_text(screen, f"Near {S3.town_name(key)}   Height {int(self.alt / 10) * 10}", fonts["label"],
                           bar.right - 20, bar.centery - 12, align="right")
         mouse = pygame.mouse.get_pos()
