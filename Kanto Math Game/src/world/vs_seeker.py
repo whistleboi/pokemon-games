@@ -13,7 +13,10 @@ import random
 
 ITEM = "VS_SEEKER"
 CHARGE = 100          # (steps on the maps before it works again: FireRed's)
-READY_CHANCE = 1 / 3  # (each beaten trainer in view, each use)
+READY_CHANCE = 0.7    # (each beaten trainer in view, each use: FireRed's 70%, pokefirered vs_seeker.c)
+# Regions whose games' own rematch teams are in our data ("rematch" tiers; Johto: the phone's): there, only trainers
+# with them want a rematch, as in the games (FireRed shows an "X" for the rest). Elsewhere every route trainer does.
+TABLE_REGIONS = {"KANTO", "SEVII", "JOHTO"}
 SEE = 9               # (how far "in view" reaches, in tiles)
 GIFT_AT = {"KANTO": "VERMILLION_CITY", "SEVII": "VERMILLION_CITY", "SINNOH": "SINNOH_ROUTE_207",
            "ORANGE": "KINNOW_ISLAND"}   # (Orange 5.7: a trainer in Kinnow's Pokemon Center)
@@ -57,7 +60,7 @@ def use(state):
     for idx, info in enumerate(pool):
         if not isinstance(info, dict) or not story.beaten_today(area, idx) or is_ready(story, area, idx):
             continue
-        if not _route_trainer(story, info):
+        if not _route_trainer(story, info) or not _has_rematch(story, area, info):
             continue
         spot = next((floor.spots.get(f"trainer:{n}") for n in (info.get("spot_name"), info.get("name")) if n and floor.spots.get(f"trainer:{n}")), None)
         if spot is None or tuple(spot) in taken or abs(spot[0] - px) + abs(spot[1] - py) > SEE:
@@ -75,6 +78,27 @@ def use(state):
     return ["You used the VS Seeker!"] + [f"{n} wants a rematch!" for n in back]
 
 
+def _has_rematch(story, area, info):
+    """Would this trainer rematch at all? In a region with the games' tables: only those with a team there."""
+    if str(story.area_region(area)).upper() not in TABLE_REGIONS:
+        return True
+    return bool((info.get("rematch") or {}).get("tiers") or (info.get("phone") or {}).get("tiers"))
+
+
+def stage_for(story, area, index, info):
+    """The rematch stage (index into "rematch" tiers) a trainer uses now, as FireRed picks it: the next stage you
+    haven't beaten; if that stage waits for a story point not reached ("unlock"), the one before it. -1: its first team."""
+    tiers = (info.get("rematch") or {}).get("tiers") or []
+    done = int((story.story_flags.get("vs_stage") or {}).get(f"{area}|{index}", -1))
+    nxt = next((j for j in range(done + 1, len(tiers)) if tiers[j]), None)
+    if nxt is None:   # (every stage beaten: the last one again)
+        return max((j for j, t in enumerate(tiers) if t), default=-1)
+    gate = tiers[nxt].get("unlock")
+    if gate and not story.story_flags.get(gate):
+        return max((j for j in range(nxt) if tiers[j]), default=-1)
+    return nxt
+
+
 def _route_trainer(story, info):
     cls = str(info.get("class", "")).upper()
     return not (info.get("is_boss_battle") or info.get("victory_flag") or info.get("villain")
@@ -88,6 +112,17 @@ def rematch(game, area, index, info):
     if not is_ready(story, area, index):
         return info
     out = dict(info, _vs_rematch=True)
+    if (info.get("rematch") or {}).get("tiers"):   # (the games' own stages: FireRed's)
+        j = stage_for(story, area, index, info)
+        out["_vs_stage"] = j
+        if j >= 0:
+            tier = info["rematch"]["tiers"][j]
+            out.update(team=list(tier["team"]), levels=list(tier["levels"]))
+            out.pop("movesets", None)
+            out.pop("team_moves", None)
+            if tier.get("team_moves"):
+                out["team_moves"] = [list(m) for m in tier["team_moves"]]
+        return _bigger_reward(info, out)
     tiers = (info.get("phone") or {}).get("tiers") or []
     if tiers:
         from src.world import phone
@@ -100,17 +135,27 @@ def rematch(game, area, index, info):
         top = max(1, min(100, levels.story_level_cap(story) - 2))
         n = len(out.get("team") or [])
         out["levels"] = [max(old[i] if i < len(old) else 1, top - (n - 1 - i)) for i in range(n)]
+    return _bigger_reward(info, out)
+
+
+def _bigger_reward(info, out):
+    """Rewards bigger than the first win, growing with the rematch's levels (Jordan's answer)."""
+    old = list(info.get("levels") or [])
     before = sum(old) / len(old) if old else 0
-    after = sum(out["levels"]) / max(1, len(out["levels"]))
+    after = sum(out.get("levels") or old or [0]) / max(1, len(out.get("levels") or old or [0]))
     k = max(1.5, after / before) if before else 1.5   # (bigger than the first win: grows with the rematch's level)
     out["rewards"] = {key: (max(1, int(round(v * k))) if isinstance(v, (int, float)) else v)
                       for key, v in (info.get("rewards") or {"balls": 3}).items()}
     return out
 
 
-def won(story, area, index):
-    """A rematch won: it goes back to waiting (the next use of the VS Seeker, or tomorrow)."""
+def won(story, area, index, stage=None):
+    """A rematch won: it goes back to waiting (the next use of the VS Seeker, or tomorrow); the stage it used is
+    beaten (FireRed: the next rematch is the next stage)."""
     _ready(story).get(area, {}).pop(str(index), None)
+    if stage is not None and stage >= 0:
+        st = story.story_flags.setdefault("vs_stage", {})
+        st[f"{area}|{index}"] = max(int(st.get(f"{area}|{index}", -1)), stage)
     wins = story.story_flags.setdefault("vs_wins", {})
     wins[f"{area}|{index}"] = wins.get(f"{area}|{index}", 0) + 1
 

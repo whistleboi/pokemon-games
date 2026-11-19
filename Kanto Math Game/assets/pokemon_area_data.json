@@ -2819,14 +2819,14 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "lass.png", "name": "Sally", "class": "LASS", "team": [19, 29], "levels": [10, 10], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Ben", "class": "YOUNGSTER", "team": [19, 23], "levels": [11, 11], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Greg", "class": "BUG_CATCHER", "team": [13, 14, 10, 11], "levels": [9, 9, 9, 9], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Colton", "class": "BUG_CATCHER", "team": [10, 13, 10], "levels": [10, 10, 10], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "James", "class": "BUG_CATCHER", "team": [10, 11], "levels": [11, 11], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Janice", "class": "LASS", "team": [16, 16], "levels": [9, 9], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Calvin", "class": "YOUNGSTER", "team": [21], "levels": [14], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Robin", "class": "LASS", "team": [39], "levels": [14], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 29], "levels": [10, 10]}]}, "sprite": "lass.png", "name": "Sally", "class": "LASS", "team": [19, 29], "levels": [10, 10], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 23], "levels": [17, 17]}, null, {"team": [20, 23], "levels": [28, 28], "unlock": "visited_FUCHSIA_CITY"}, {"team": [20, 24], "levels": [48, 48], "unlock": "beat_champion"}]}, "sprite": "youngster.png", "name": "Ben", "class": "YOUNGSTER", "team": [19, 23], "levels": [11, 11], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [13, 14, 10, 11], "levels": [9, 9, 9, 9]}]}, "sprite": "bug_catcher.png", "name": "Greg", "class": "BUG_CATCHER", "team": [13, 14, 10, 11], "levels": [9, 9, 9, 9], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [11, 13, 11], "levels": [19, 19, 19]}, null, {"team": [12, 14, 12], "levels": [27, 27, 27], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [12, 15, 12], "levels": [51, 54, 51], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "bug_catcher.png", "name": "Colton", "class": "BUG_CATCHER", "team": [10, 13, 10], "levels": [10, 10, 10], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [10, 11], "levels": [11, 11]}]}, "sprite": "bug_catcher.png", "name": "James", "class": "BUG_CATCHER", "team": [10, 11], "levels": [11, 11], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [17, 17], "levels": [20, 20]}, null, {"team": [17, 17], "levels": [28, 28], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "lass.png", "name": "Janice", "class": "LASS", "team": [16, 16], "levels": [9, 9], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [21], "levels": [14]}]}, "sprite": "youngster.png", "name": "Calvin", "class": "YOUNGSTER", "team": [21], "levels": [14], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [39], "levels": [14]}]}, "sprite": "lass.png", "name": "Robin", "class": "LASS", "team": [39], "levels": [14], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "MAGIKARP SALESMAN", "action": "EVENT", "flag_condition": "not got_magikarp_mtmoon", "event": {"requires": ["party_room"], "fail": ["Man: Hey, your team's full! Come back when you've got room for a fantastic Pokémon!"], "lines": ["Man: Psst, kid! Want a MAGIKARP? Just 500, and it's yours!", "Man: ...Pleasure doing business with you. No refunds!"], "pay": 500, "gift_pokemon": 129, "gift_level": 5, "flag": "got_magikarp_mtmoon"}},{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
@@ -2850,7 +2850,7 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "lass.png", "name": "Crissy", "class": "LASS", "team": [46, 46, 47], "levels": [31, 31, 31], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [46, 46, 47], "levels": [31, 31, 31]}]}, "sprite": "lass.png", "name": "Crissy", "class": "LASS", "team": [46, 46, 47], "levels": [31, 31, 31], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "TM172", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm120_route4", "event": {"lines": ["A TM, lying on the ledge! It's Roar."], "gift_item": {"TM172": 1}, "flag": "got_tm120_route4"}},
@@ -2902,12 +2902,12 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "bug_catcher.png", "name": "Keigo", "class": "BUG_CATCHER", "team": [13, 10, 13], "levels": [16, 16, 16], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Ricky", "class": "CAMPER", "team": [7], "levels": [20], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Nancy", "class": "PICNICKER", "team": [19, 25], "levels": [16, 16], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Elijah", "class": "BUG_CATCHER", "team": [12], "levels": [20], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Isabelle", "class": "PICNICKER", "team": [16, 16, 16], "levels": [16, 16, 16], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Jeff", "class": "CAMPER", "team": [21, 20], "levels": [16, 16], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [13, 10, 13], "levels": [16, 16, 16]}]}, "sprite": "bug_catcher.png", "name": "Keigo", "class": "BUG_CATCHER", "team": [13, 10, 13], "levels": [16, 16, 16], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [7], "levels": [22]}, null, {"team": [8], "levels": [30], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [8], "levels": [55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "camper.png", "name": "Ricky", "class": "CAMPER", "team": [7], "levels": [20], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 25], "levels": [16, 16]}]}, "sprite": "picnicker.png", "name": "Nancy", "class": "PICNICKER", "team": [19, 25], "levels": [16, 16], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [12], "levels": [20]}]}, "sprite": "bug_catcher.png", "name": "Elijah", "class": "BUG_CATCHER", "team": [12], "levels": [20], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [17, 17, 16], "levels": [21, 21, 18]}, null, {"team": [17, 17, 17], "levels": [29, 29, 26], "unlock": "visited_FUCHSIA_CITY"}, {"team": [17, 17, 18], "levels": [47, 47, 50], "unlock": "beat_champion"}]}, "sprite": "picnicker.png", "name": "Isabelle", "class": "PICNICKER", "team": [16, 16, 16], "levels": [16, 16, 16], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [21, 20], "levels": [21, 21]}, null, {"team": [22, 20], "levels": [29, 29], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [22, 20], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "camper.png", "name": "Jeff", "class": "CAMPER", "team": [21, 20], "levels": [16, 16], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "GUARD", "action": "EVENT", "event": {"lines": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -2956,18 +2956,18 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "gambler.png", "name": "Stan", "class": "GAMBLER", "team": [60, 60, 61], "levels": [22, 22, 22], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Paige", "class": "LASS", "team": [29, 30], "levels": [23, 23], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Eli & Anne", "class": "TWINS", "battle_options": {"double": true}, "team": [35, 39], "levels": [22, 22], "rewards": { "balls": 3 } },
-        { "sprite": "supernerd.png", "name": "Leslie", "class": "SUPER_NERD", "team": [109], "levels": [26], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Andrea", "class": "LASS", "team": [52, 52, 52], "levels": [24, 24, 24], "rewards": { "balls": 3 } },
-        { "sprite": "supernerd.png", "name": "Aidan", "class": "SUPER_NERD", "team": [100, 109, 100, 81], "levels": [20, 20, 20, 20], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Megan", "class": "LASS", "team": [16, 19, 32, 52, 25], "levels": [19, 19, 19, 19, 19], "rewards": { "balls": 3 } },
-        { "sprite": "supernerd.png", "name": "Glenn", "class": "SUPER_NERD", "team": [88, 89, 88], "levels": [22, 22, 22], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Julia", "class": "LASS", "team": [35, 35], "levels": [22, 22], "rewards": { "balls": 3 } },
-        { "sprite": "gambler.png", "name": "Rich", "class": "GAMBLER", "team": [58, 37], "levels": [24, 24], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Ricardo", "class": "BIKER", "team": [109, 109, 88], "levels": [22, 22, 23], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Jaren", "class": "BIKER", "team": [88, 88], "levels": [24, 24], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [60, 60, 61], "levels": [22, 22, 22]}]}, "sprite": "gambler.png", "name": "Stan", "class": "GAMBLER", "team": [60, 60, 61], "levels": [22, 22, 22], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [29, 30], "levels": [23, 23]}]}, "sprite": "lass.png", "name": "Paige", "class": "LASS", "team": [29, 30], "levels": [23, 23], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [35, 39], "levels": [28, 28], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "lass.png", "name": "Eli & Anne", "class": "TWINS", "battle_options": {"double": true}, "team": [35, 39], "levels": [22, 22], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109], "levels": [26], "team_moves": [["SLUDGE", "SMOKESCREEN", "SMOG", "SELF-DESTRUCT"]]}]}, "sprite": "supernerd.png", "name": "Leslie", "class": "SUPER_NERD", "team": [109], "levels": [26], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [52, 52, 52], "levels": [24, 24, 24]}]}, "sprite": "lass.png", "name": "Andrea", "class": "LASS", "team": [52, 52, 52], "levels": [24, 24, 24], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [100, 109, 100, 81], "levels": [20, 20, 20, 20], "team_moves": [["SONIC-BOOM", "SCREECH", "TACKLE", "CHARGE"], ["SLUDGE", "SMOG", "TACKLE", "POISON-GAS"], ["SONIC-BOOM", "SCREECH", "TACKLE", "CHARGE"], ["SONIC-BOOM", "SUPERSONIC", "THUNDER-SHOCK", "TACKLE"]]}]}, "sprite": "supernerd.png", "name": "Aidan", "class": "SUPER_NERD", "team": [100, 109, 100, 81], "levels": [20, 20, 20, 20], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, {"team": [17, 20, 32, 52, 25], "levels": [22, 22, 23, 21, 22], "unlock": "visited_CELADON_CITY"}, null, {"team": [18, 20, 33, 53, 26], "levels": [46, 47, 47, 47, 48], "unlock": "beat_champion"}]}, "sprite": "lass.png", "name": "Megan", "class": "LASS", "team": [16, 19, 32, 52, 25], "levels": [19, 19, 19, 19, 19], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [89, 89, 89], "levels": [28, 28, 28], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "supernerd.png", "name": "Glenn", "class": "SUPER_NERD", "team": [88, 89, 88], "levels": [22, 22, 22], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [35, 35], "levels": [22, 22]}]}, "sprite": "lass.png", "name": "Julia", "class": "LASS", "team": [35, 35], "levels": [22, 22], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [58, 37], "levels": [30, 30], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "gambler.png", "name": "Rich", "class": "GAMBLER", "team": [58, 37], "levels": [24, 24], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109, 109, 88], "levels": [22, 22, 23], "team_moves": [["SLUDGE", "SMOG", "TACKLE", "POISON-GAS"], ["SLUDGE", "SMOG", "TACKLE", "POISON-GAS"], ["MINIMIZE", "SLUDGE", "DISABLE", "POUND"]]}]}, "sprite": "biker.png", "name": "Ricardo", "class": "BIKER", "team": [109, 109, 88], "levels": [22, 22, 23], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [89, 89], "levels": [28, 30], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "biker.png", "name": "Jaren", "class": "BIKER", "team": [88, 88], "levels": [24, 24], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "GUARD", "action": "EVENT", "event": {"lines": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2992,15 +2992,15 @@
       "can_fish": true,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "bug_catcher.png", "name": "Brent", "class": "BUG_CATCHER", "team": [15, 15], "levels": [19, 19], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Brice", "class": "HIKER", "team": [74, 66, 74], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Drew", "class": "CAMPER", "team": [19, 27, 23, 27], "levels": [19, 19, 19, 19], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Chris", "class": "CAMPER", "team": [58, 4], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Conner", "class": "BUG_CATCHER", "team": [10, 13, 48], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Caitlin", "class": "PICNICKER", "team": [52], "levels": [23], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Alicia", "class": "PICNICKER", "team": [43, 69, 43, 69], "levels": [18, 18, 18, 18], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Alan", "class": "HIKER", "team": [74, 95], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Jeremy", "class": "HIKER", "team": [66, 95], "levels": [20, 20], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [15, 15], "levels": [19, 19]}]}, "sprite": "bug_catcher.png", "name": "Brent", "class": "BUG_CATCHER", "team": [15, 15], "levels": [19, 19], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [74, 66, 74], "levels": [20, 20, 20]}]}, "sprite": "hiker.png", "name": "Brice", "class": "HIKER", "team": [74, 66, 74], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 27, 23, 27], "levels": [19, 19, 19, 19]}]}, "sprite": "camper.png", "name": "Drew", "class": "CAMPER", "team": [19, 27, 23, 27], "levels": [19, 19, 19, 19], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, {"team": [58, 4], "levels": [24, 24], "unlock": "visited_CELADON_CITY"}, {"team": [58, 5], "levels": [29, 29], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [59, 5], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "camper.png", "name": "Chris", "class": "CAMPER", "team": [58, 4], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [10, 13, 48], "levels": [20, 20, 20]}]}, "sprite": "bug_catcher.png", "name": "Conner", "class": "BUG_CATCHER", "team": [10, 13, 48], "levels": [20, 20, 20], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [52], "levels": [23]}]}, "sprite": "picnicker.png", "name": "Caitlin", "class": "PICNICKER", "team": [52], "levels": [23], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, {"team": [52], "levels": [25], "unlock": "visited_CELADON_CITY"}, {"team": [53], "levels": [30], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [53], "levels": [55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "picnicker.png", "name": "Alicia", "class": "PICNICKER", "team": [43, 69, 43, 69], "levels": [18, 18, 18, 18], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [74, 95], "levels": [21, 21], "team_moves": [["MAGNITUDE", "ROCK-THROW", "MUD-SPORT", "DEFENSE-CURL"], ["HARDEN", "ROCK-THROW", "BIND", "SCREECH"]]}]}, "sprite": "hiker.png", "name": "Alan", "class": "HIKER", "team": [74, 95], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [67, 95], "levels": [30, 28], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "hiker.png", "name": "Jeremy", "class": "HIKER", "team": [66, 95], "levels": [20, 20], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "TM027", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm121_route9", "event": {"lines": ["A TM, lying by the hill! It's Aerial Ace."], "gift_item": {"TM027": 1}, "flag": "got_tm121_route9"}},
@@ -3026,8 +3026,8 @@
       "can_fish": true,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "picnicker.png", "name": "Heidi", "class": "PICNICKER", "team": [25, 35], "levels": [20, 20], "rewards": { "balls": 3 } },
-        { "sprite": "pokemaniac.png", "name": "Mark", "class": "POKEMANIAC", "team": [111, 108], "levels": [29, 29], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [25, 35], "levels": [20, 20]}]}, "sprite": "picnicker.png", "name": "Heidi", "class": "PICNICKER", "team": [25, 35], "levels": [20, 20], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [111, 108], "levels": [33, 33], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [112, 108], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "pokemaniac.png", "name": "Mark", "class": "POKEMANIAC", "team": [111, 108], "levels": [29, 29], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
         {"text": "OAK'S AIDE", "action": "EVENT", "door": "center", "color": "GOLD", "event": {"requires": ["caught_kanto:20"], "fail": ["Aide: There you are! I'm one of Professor Oak's aides.", "Aide: Show me twenty kinds of Pokémon caught and I'll give you something from the Professor."], "lines": ["Aide: There you are! I'm one of Professor Oak's aides.", "Aide: Twenty kinds of Pokémon! Then this is yours: an Everstone.", "A Pokémon holding it won't evolve. Handy if you like it just the way it is!"], "gift_item": {"EVERSTONE": 1}, "flag": "got_everstone_kanto", "done": ["Aide: Give the Everstone to a Pokémon to hold, and it won't evolve."]}},
@@ -3043,10 +3043,10 @@
       "on_enter_event": null
     },
     "KANTO_ROUTE_10_SOUTH": {"area_type": "wild_route", "route_name": "Route 10", "region": "KANTO", "battle_type": "grass", "wild_pool_percentages": "KANTO_ROUTE_10_PERCENTAGES", "level": 15, "min_rounds": 0, "trainer_pool": [
-        { "sprite": "picnicker.png", "name": "Carol", "class": "PICNICKER", "team": [16, 17], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Clark", "class": "HIKER", "team": [74, 95], "levels": [21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Trent", "class": "HIKER", "team": [95, 75], "levels": [19, 19], "rewards": { "balls": 3 } },
-        { "sprite": "pokemaniac.png", "name": "Herman", "class": "POKEMANIAC", "team": [104, 79], "levels": [20, 20], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 17], "levels": [21, 21]}]}, "sprite": "picnicker.png", "name": "Carol", "class": "PICNICKER", "team": [16, 17], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [74, 95], "levels": [21, 21], "team_moves": [["MAGNITUDE", "ROCK-THROW", "MUD-SPORT", "DEFENSE-CURL"], ["HARDEN", "ROCK-THROW", "BIND", "SCREECH"]]}]}, "sprite": "hiker.png", "name": "Clark", "class": "HIKER", "team": [74, 95], "levels": [21, 21], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [95, 75], "levels": [31, 31], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "hiker.png", "name": "Trent", "class": "HIKER", "team": [95, 75], "levels": [19, 19], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [105, 80], "levels": [29, 29], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [105, 80], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "pokemaniac.png", "name": "Herman", "class": "POKEMANIAC", "team": [104, 79], "levels": [20, 20], "rewards": { "balls": 3 } }
       ], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "ROCK TUNNEL", "action": "EXIT", "target": "ROCK_TUNNEL", "condition": "can_exit", "color": "RED"}, {"text": "LAVENDER TOWN", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED"}], "next_area": "LAVENDER_TOWN"},
 
     "POWER_PLANT": {
@@ -3097,16 +3097,16 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "gambler.png", "name": "Darian", "class": "GAMBLER", "team": [58, 37], "levels": [18, 18], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Eddie", "class": "YOUNGSTER", "team": [23], "levels": [21], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Dillon", "class": "YOUNGSTER", "team": [27, 41], "levels": [19, 19], "rewards": { "balls": 3 } },
-        { "sprite": "engineer.png", "name": "Braxton", "class": "ENGINEER", "team": [81], "levels": [21], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Dave", "class": "YOUNGSTER", "team": [32, 33], "levels": [18, 18], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Yasu", "class": "YOUNGSTER", "team": [19, 19, 20], "levels": [17, 17, 17], "rewards": { "balls": 3 } },
-        { "sprite": "gambler.png", "name": "Jasper", "class": "GAMBLER", "team": [69, 43], "levels": [18, 18], "rewards": { "balls": 3 } },
-        { "sprite": "gambler.png", "name": "Dirk", "class": "GAMBLER", "team": [100, 81], "levels": [18, 18], "rewards": { "balls": 3 } },
-        { "sprite": "gambler.png", "name": "Hugo", "class": "GAMBLER", "team": [60, 116], "levels": [18, 18], "rewards": { "balls": 3 } },
-        { "sprite": "engineer.png", "name": "Bernie", "class": "ENGINEER", "team": [81, 81, 82], "levels": [18, 18, 18], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [58, 37], "levels": [29, 29], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "gambler.png", "name": "Darian", "class": "GAMBLER", "team": [58, 37], "levels": [18, 18], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [23], "levels": [21]}]}, "sprite": "youngster.png", "name": "Eddie", "class": "YOUNGSTER", "team": [23], "levels": [21], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [27, 41], "levels": [19, 19]}]}, "sprite": "youngster.png", "name": "Dillon", "class": "YOUNGSTER", "team": [27, 41], "levels": [19, 19], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [81], "levels": [21]}]}, "sprite": "engineer.png", "name": "Braxton", "class": "ENGINEER", "team": [81], "levels": [21], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [32, 33], "levels": [18, 18]}]}, "sprite": "youngster.png", "name": "Dave", "class": "YOUNGSTER", "team": [32, 33], "levels": [18, 18], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, {"team": [19, 20, 20], "levels": [22, 22, 22], "unlock": "visited_CELADON_CITY"}, null, {"team": [20, 20, 20], "levels": [47, 47, 47], "unlock": "beat_champion"}]}, "sprite": "youngster.png", "name": "Yasu", "class": "YOUNGSTER", "team": [19, 19, 20], "levels": [17, 17, 17], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [69, 43], "levels": [18, 18]}]}, "sprite": "gambler.png", "name": "Jasper", "class": "GAMBLER", "team": [69, 43], "levels": [18, 18], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [100, 81], "levels": [18, 18]}]}, "sprite": "gambler.png", "name": "Dirk", "class": "GAMBLER", "team": [100, 81], "levels": [18, 18], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [60, 116], "levels": [18, 18]}]}, "sprite": "gambler.png", "name": "Hugo", "class": "GAMBLER", "team": [60, 116], "levels": [18, 18], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [82, 82, 82], "levels": [28, 28, 28], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "engineer.png", "name": "Bernie", "class": "ENGINEER", "team": [81, 81, 82], "levels": [18, 18, 18], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Route 12 is ahead. I hear a huge Pokemon sleeps on its pier."]}}, 
         {"text": "OAK'S AIDE", "action": "EVENT", "door": "gate_2", "color": "GOLD", "event": {"requires": ["caught_kanto:30"], "fail": ["Aide: Hello again! I'm another of Professor Oak's aides.", "Aide: Catch thirty kinds of Pokémon and I'll give you something handy. Keep at it!"], "lines": ["Aide: Hello again! I'm another of Professor Oak's aides.", "Aide: Thirty kinds of Pokémon! The Professor asked me to give you this: the Itemfinder.", "It beeps when something's hidden nearby. Lots of things lie buried out there!"], "gift_item": {"ITEMFINDER": 1}, "flag": "got_itemfinder_kanto", "done": ["Aide: The Itemfinder beeps whenever a hidden item is close. Walk around until you find it!"]}},
@@ -3138,14 +3138,14 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "fisherman.png", "name": "Ned", "class": "FISHERMAN", "team": [118, 60, 118], "levels": [22, 22, 22], "rewards": { "balls": 3 } },
-        { "sprite": "fisherman.png", "name": "Chip", "class": "FISHERMAN", "team": [72, 118], "levels": [24, 24], "rewards": { "balls": 3 } },
-        { "sprite": "fisherman.png", "name": "Hank", "class": "FISHERMAN", "team": [118], "levels": [27], "rewards": { "balls": 3 } },
-        { "sprite": "fisherman.png", "name": "Elliot", "class": "FISHERMAN", "team": [60, 90, 118, 116], "levels": [21, 21, 21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Gia & Jes", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [32, 29], "levels": [24, 24], "rewards": { "balls": 3 } },
-        { "sprite": "rocker.png", "name": "Luca", "class": "ROCKER", "team": [100, 101], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Justin", "class": "CAMPER", "team": [32, 33], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "fisherman.png", "name": "Andrew", "class": "FISHERMAN", "team": [129, 129], "levels": [24, 24], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [118, 60, 118], "levels": [22, 22, 22]}]}, "sprite": "fisherman.png", "name": "Ned", "class": "FISHERMAN", "team": [118, 60, 118], "levels": [22, 22, 22], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [72, 118], "levels": [24, 24]}]}, "sprite": "fisherman.png", "name": "Chip", "class": "FISHERMAN", "team": [72, 118], "levels": [24, 24], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [118], "levels": [27]}]}, "sprite": "fisherman.png", "name": "Hank", "class": "FISHERMAN", "team": [118], "levels": [27], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [61, 91, 119, 117], "levels": [28, 28, 28, 28], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "fisherman.png", "name": "Elliot", "class": "FISHERMAN", "team": [60, 90, 118, 116], "levels": [21, 21, 21, 21], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [30, 33], "levels": [30, 30], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [34, 31], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "youngster.png", "name": "Gia & Jes", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [32, 29], "levels": [24, 24], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [101, 101], "levels": [33, 33], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "rocker.png", "name": "Luca", "class": "ROCKER", "team": [100, 101], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [32, 33], "levels": [29, 29]}]}, "sprite": "camper.png", "name": "Justin", "class": "CAMPER", "team": [32, 33], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [129, 129], "levels": [24, 24]}]}, "sprite": "fisherman.png", "name": "Andrew", "class": "FISHERMAN", "team": [129, 129], "levels": [24, 24], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "TM098", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm124_route12", "event": {"lines": ["A TM, lying by the fence! It's Skill Swap."], "gift_item": {"TM098": 1}, "flag": "got_tm124_route12"}},
         {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_route12", "event": {"lines": ["An Iron! It raises a Pokémon's Defense."], "gift_item": {"IRON": 1}, "flag": "got_iron_route12"}},
@@ -3197,16 +3197,16 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "birdkeeper.png", "name": "Perry", "class": "BIRD_KEEPER", "team": [21, 16, 16, 21, 21], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Alma", "class": "PICNICKER", "team": [118, 60, 116], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "beauty.png", "name": "Sheila", "class": "BEAUTY", "team": [35, 52], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "beauty.png", "name": "Lola", "class": "BEAUTY", "team": [19, 25, 19], "levels": [27, 27, 27], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Jared", "class": "BIKER", "team": [109, 109, 109], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Valerie", "class": "PICNICKER", "team": [60, 60], "levels": [30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Gwen", "class": "PICNICKER", "team": [16, 52, 16, 17], "levels": [27, 27, 27, 27], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Susie", "class": "PICNICKER", "team": [16, 52, 19, 25, 52], "levels": [24, 24, 24, 24, 24], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Sebastian", "class": "BIRD_KEEPER", "team": [16, 17], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Robert", "class": "BIRD_KEEPER", "team": [16, 17, 21, 22], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [21, 16, 16, 21, 21], "levels": [25, 25, 25, 25, 25]}]}, "sprite": "birdkeeper.png", "name": "Perry", "class": "BIRD_KEEPER", "team": [21, 16, 16, 21, 21], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [118, 60, 116], "levels": [28, 28, 28]}]}, "sprite": "picnicker.png", "name": "Alma", "class": "PICNICKER", "team": [118, 60, 116], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [35, 53], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "beauty.png", "name": "Sheila", "class": "BEAUTY", "team": [35, 52], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 25, 19], "levels": [27, 27, 27]}]}, "sprite": "beauty.png", "name": "Lola", "class": "BEAUTY", "team": [19, 25, 19], "levels": [27, 27, 27], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109, 109, 109], "levels": [28, 28, 28], "team_moves": [["SMOKESCREEN", "SLUDGE", "SMOG", "POISON-GAS"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"]]}]}, "sprite": "biker.png", "name": "Jared", "class": "BIKER", "team": [109, 109, 109], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [60, 60], "levels": [30, 30]}]}, "sprite": "picnicker.png", "name": "Valerie", "class": "PICNICKER", "team": [60, 60], "levels": [30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 52, 16, 17], "levels": [27, 27, 27, 27]}]}, "sprite": "picnicker.png", "name": "Gwen", "class": "PICNICKER", "team": [16, 52, 16, 17], "levels": [27, 27, 27, 27], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [17, 52, 20, 25, 52], "levels": [27, 27, 27, 27, 27], "unlock": "visited_FUCHSIA_CITY"}, {"team": [17, 53, 20, 25, 53], "levels": [47, 47, 47, 47, 47], "unlock": "beat_champion"}, {"team": [18, 53, 20, 26, 53], "levels": [52, 52, 52, 52, 52], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "picnicker.png", "name": "Susie", "class": "PICNICKER", "team": [16, 52, 19, 25, 52], "levels": [24, 24, 24, 24, 24], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 17], "levels": [29, 29]}]}, "sprite": "birdkeeper.png", "name": "Sebastian", "class": "BIRD_KEEPER", "team": [16, 17], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [17, 17, 22, 22], "levels": [28, 28, 28, 28], "unlock": "visited_FUCHSIA_CITY"}, {"team": [18, 18, 22, 22], "levels": [47, 47, 47, 47], "unlock": "beat_champion"}]}, "sprite": "birdkeeper.png", "name": "Robert", "class": "BIRD_KEEPER", "team": [16, 17, 21, 22], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3229,17 +3229,17 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "birdkeeper.png", "name": "Carter", "class": "BIRD_KEEPER", "team": [16, 84, 17], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Mitch", "class": "BIRD_KEEPER", "team": [16, 21, 16, 22], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Beck", "class": "BIRD_KEEPER", "team": [17, 22], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Marlon", "class": "BIRD_KEEPER", "team": [21, 84, 22], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Isaac", "class": "BIKER", "team": [88, 88, 109], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Malik", "class": "BIKER", "team": [109, 88], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Donald", "class": "BIRD_KEEPER", "team": [83], "levels": [33], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Gerald", "class": "BIKER", "team": [109, 89], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Lukas", "class": "BIKER", "team": [109, 109, 88, 109], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Benny", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Kiri & Jan", "class": "TWINS", "battle_options": {"double": true}, "team": [4, 7], "levels": [29, 29], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 84, 17], "levels": [28, 28, 28]}]}, "sprite": "birdkeeper.png", "name": "Carter", "class": "BIRD_KEEPER", "team": [16, 84, 17], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 21, 16, 22], "levels": [26, 26, 26, 26]}]}, "sprite": "birdkeeper.png", "name": "Mitch", "class": "BIRD_KEEPER", "team": [16, 21, 16, 22], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [17, 22], "levels": [29, 29]}]}, "sprite": "birdkeeper.png", "name": "Beck", "class": "BIRD_KEEPER", "team": [17, 22], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [22, 84, 22], "levels": [30, 30, 30], "unlock": "visited_FUCHSIA_CITY"}, {"team": [22, 85, 22], "levels": [48, 48, 48], "unlock": "beat_champion"}]}, "sprite": "birdkeeper.png", "name": "Marlon", "class": "BIRD_KEEPER", "team": [21, 84, 22], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [88, 88, 109], "levels": [28, 28, 28], "team_moves": [["SCREECH", "MINIMIZE", "SLUDGE", "DISABLE"], ["SCREECH", "MINIMIZE", "SLUDGE", "DISABLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"]]}]}, "sprite": "biker.png", "name": "Isaac", "class": "BIKER", "team": [88, 88, 109], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109, 88], "levels": [29, 29], "team_moves": [["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SCREECH", "MINIMIZE", "SLUDGE", "DISABLE"]]}]}, "sprite": "biker.png", "name": "Malik", "class": "BIKER", "team": [109, 88], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [83], "levels": [33]}]}, "sprite": "birdkeeper.png", "name": "Donald", "class": "BIRD_KEEPER", "team": [83], "levels": [33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109, 89], "levels": [29, 29], "team_moves": [["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SCREECH", "MINIMIZE", "SLUDGE", "DISABLE"]]}]}, "sprite": "biker.png", "name": "Gerald", "class": "BIKER", "team": [109, 89], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [109, 109, 89, 110], "levels": [47, 47, 47, 47], "unlock": "beat_champion"}]}, "sprite": "biker.png", "name": "Lukas", "class": "BIKER", "team": [109, 109, 88, 109], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [22, 22], "levels": [32, 32], "unlock": "visited_FUCHSIA_CITY"}, {"team": [22, 22], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "birdkeeper.png", "name": "Benny", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [4, 7], "levels": [29, 29]}]}, "sprite": "lass.png", "name": "Kiri & Jan", "class": "TWINS", "battle_options": {"double": true}, "team": [4, 7], "levels": [29, 29], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3261,17 +3261,17 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "picnicker.png", "name": "Celia", "class": "PICNICKER", "team": [35], "levels": [33], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Ron & Mya", "class": "CRUSH_KIN", "battle_options": {"double": true}, "team": [107, 106], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Becky", "class": "PICNICKER", "team": [25, 26], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Edwin", "class": "BIRD_KEEPER", "team": [17, 83, 84, 16], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
-        { "sprite": "beauty.png", "name": "Olivia", "class": "BEAUTY", "team": [1, 2], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "beauty.png", "name": "Grace", "class": "BEAUTY", "team": [17, 40], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Alex", "class": "BIKER", "team": [109, 88, 110], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Yazmin", "class": "PICNICKER", "team": [69, 43, 114], "levels": [29, 29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Kindra", "class": "PICNICKER", "team": [44, 43, 43], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Ernest", "class": "BIKER", "team": [109, 109, 110, 109, 88], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Chester", "class": "BIRD_KEEPER", "team": [85, 84, 84], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [35], "levels": [33]}]}, "sprite": "picnicker.png", "name": "Celia", "class": "PICNICKER", "team": [35], "levels": [33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [107, 106], "levels": [33, 33], "unlock": "visited_FUCHSIA_CITY"}, {"team": [107, 106], "levels": [51, 51], "unlock": "beat_champion"}, {"team": [107, 106], "levels": [56, 56], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "youngster.png", "name": "Ron & Mya", "class": "CRUSH_KIN", "battle_options": {"double": true}, "team": [107, 106], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [25, 26], "levels": [32, 32], "unlock": "visited_FUCHSIA_CITY"}, {"team": [25, 26], "levels": [49, 49], "unlock": "beat_champion"}, {"team": [26, 26], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "picnicker.png", "name": "Becky", "class": "PICNICKER", "team": [25, 26], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [17, 83, 84, 16], "levels": [26, 26, 26, 26]}]}, "sprite": "birdkeeper.png", "name": "Edwin", "class": "BIRD_KEEPER", "team": [17, 83, 84, 16], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [1, 2], "levels": [29, 29]}]}, "sprite": "beauty.png", "name": "Olivia", "class": "BEAUTY", "team": [1, 2], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [18, 40], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "beauty.png", "name": "Grace", "class": "BEAUTY", "team": [17, 40], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109, 88, 110], "levels": [28, 28, 28], "team_moves": [["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SCREECH", "MINIMIZE", "SLUDGE", "DISABLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"]]}]}, "sprite": "biker.png", "name": "Alex", "class": "BIKER", "team": [109, 88, 110], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [69, 43, 114], "levels": [29, 29, 29]}]}, "sprite": "picnicker.png", "name": "Yazmin", "class": "PICNICKER", "team": [69, 43, 114], "levels": [29, 29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [44, 43, 43], "levels": [28, 28, 28]}]}, "sprite": "picnicker.png", "name": "Kindra", "class": "PICNICKER", "team": [44, 43, 43], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109, 109, 110, 109, 88], "levels": [25, 25, 25, 25, 25], "team_moves": [["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["MINIMIZE", "SLUDGE", "DISABLE", "POUND"]]}]}, "sprite": "biker.png", "name": "Ernest", "class": "BIKER", "team": [109, 109, 110, 109, 88], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [85, 85, 84], "levels": [30, 30, 30], "unlock": "visited_FUCHSIA_CITY"}, {"team": [85, 85, 85], "levels": [48, 48, 48], "unlock": "beat_champion"}]}, "sprite": "birdkeeper.png", "name": "Chester", "class": "BIRD_KEEPER", "team": [85, 84, 84], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "TM050", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm33_route15", "event": {"lines": ["A TM, lying in the grass! It's Rain Dance."], "gift_item": {"TM050": 1}, "flag": "got_tm33_route15"}},
         {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Fuchsia City is west. Don't miss the Safari Zone!"]}}, 
@@ -3347,13 +3347,13 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png", "name": "Lea & Jed", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [78, 38], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Ruben", "class": "BIKER", "team": [110, 109, 110], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "cueball.png", "name": "Luke", "class": "CUE_BALL", "team": [56, 66], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Lao", "class": "BIKER", "team": [88, 109], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "cueball.png", "name": "Camron", "class": "CUE_BALL", "team": [56, 66], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Hideo", "class": "BIKER", "team": [110], "levels": [33], "rewards": { "balls": 3 } },
-        { "sprite": "cueball.png", "name": "Koji", "class": "CUE_BALL", "team": [66, 56, 66], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [78, 38], "levels": [29, 29]}]}, "sprite": "youngster.png", "name": "Lea & Jed", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [78, 38], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [110, 110, 110], "levels": [48, 48, 48], "unlock": "beat_champion"}]}, "sprite": "biker.png", "name": "Ruben", "class": "BIKER", "team": [110, 109, 110], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [56, 66], "levels": [29, 29]}]}, "sprite": "cueball.png", "name": "Luke", "class": "CUE_BALL", "team": [56, 66], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [88, 109], "levels": [29, 29], "team_moves": [["SCREECH", "MINIMIZE", "SLUDGE", "DISABLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"]]}]}, "sprite": "biker.png", "name": "Lao", "class": "BIKER", "team": [88, 109], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [57, 67], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "cueball.png", "name": "Camron", "class": "CUE_BALL", "team": [56, 66], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [110], "levels": [33]}]}, "sprite": "biker.png", "name": "Hideo", "class": "BIKER", "team": [110], "levels": [33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [66, 56, 66], "levels": [28, 28, 28]}]}, "sprite": "cueball.png", "name": "Koji", "class": "CUE_BALL", "team": [66, 56, 66], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "OAK'S AIDE", "action": "EVENT", "door": "gate_2", "color": "GOLD", "event": {"requires": ["caught_kanto:40"], "fail": ["Aide: Hi! I'm one of Professor Oak's aides.", "Aide: Catch forty kinds of Pokémon and I've got a reward for you from the Professor!"], "lines": ["Aide: Hi! I'm one of Professor Oak's aides.", "Aide: Forty kinds! Wow! Here, this is from the Professor: an Amulet Coin.", "Battles pay double when your team carries it!"], "gift_item": {"AMULET_COIN": 1}, "flag": "got_amulet_coin_kanto", "done": ["Aide: With the Amulet Coin, your battles pay out twice as much. Spend it well!"]}},
         {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: The Cycling Road is downhill all the way. Bicycles only!"]}}, {"text": "CYCLIST", "action": "EVENT", "event": {"lines": ["Cyclist: No Bicycle? The Bike Shop is in Cerulean City."]}}, {"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
@@ -3378,16 +3378,16 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "cueball.png", "name": "Isaiah", "class": "CUE_BALL", "team": [66, 68], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Virgil", "class": "BIKER", "team": [110, 109, 110], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "cueball.png", "name": "Raul", "class": "CUE_BALL", "team": [56, 57], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Billy", "class": "BIKER", "team": [89], "levels": [33], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Nikolas", "class": "BIKER", "team": [100, 100], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "cueball.png", "name": "Jamal", "class": "CUE_BALL", "team": [56, 56, 68, 66], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
-        { "sprite": "cueball.png", "name": "Zeek", "class": "CUE_BALL", "team": [67], "levels": [33], "rewards": { "balls": 3 } },
-        { "sprite": "cueball.png", "name": "Corey", "class": "CUE_BALL", "team": [57, 67], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "Jaxon", "class": "BIKER", "team": [110, 89], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "biker.png", "name": "William", "class": "BIKER", "team": [109, 110, 109, 109, 110], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [67, 68], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "cueball.png", "name": "Isaiah", "class": "CUE_BALL", "team": [66, 68], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [110, 109, 110], "levels": [28, 28, 28], "team_moves": [["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"]]}]}, "sprite": "biker.png", "name": "Virgil", "class": "BIKER", "team": [110, 109, 110], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [56, 57], "levels": [29, 29]}]}, "sprite": "cueball.png", "name": "Raul", "class": "CUE_BALL", "team": [56, 57], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [89], "levels": [33]}]}, "sprite": "biker.png", "name": "Billy", "class": "BIKER", "team": [89], "levels": [33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [100, 100], "levels": [29, 29], "team_moves": [["SPARK", "SONIC-BOOM", "SCREECH", "CHARGE"], ["SPARK", "SONIC-BOOM", "SCREECH", "CHARGE"]]}]}, "sprite": "biker.png", "name": "Nikolas", "class": "BIKER", "team": [100, 100], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [56, 56, 68, 66], "levels": [26, 26, 26, 26]}]}, "sprite": "cueball.png", "name": "Jamal", "class": "CUE_BALL", "team": [56, 56, 68, 66], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [67], "levels": [33]}]}, "sprite": "cueball.png", "name": "Zeek", "class": "CUE_BALL", "team": [67], "levels": [33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [57, 68], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "cueball.png", "name": "Corey", "class": "CUE_BALL", "team": [57, 67], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [110, 89], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "biker.png", "name": "Jaxon", "class": "BIKER", "team": [110, 89], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [109, 110, 109, 109, 110], "levels": [25, 25, 25, 25, 25], "team_moves": [["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SMOG", "TACKLE"], ["SMOKESCREEN", "SLUDGE", "SELF-DESTRUCT", "TACKLE"]]}]}, "sprite": "biker.png", "name": "William", "class": "BIKER", "team": [109, 110, 109, 109, 110], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3410,9 +3410,9 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "birdkeeper.png", "name": "Wilton", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Jacob", "class": "BIRD_KEEPER", "team": [21, 21, 22, 21], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [85], "levels": [34], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [21, 22], "levels": [29, 29]}]}, "sprite": "birdkeeper.png", "name": "Wilton", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, {"team": [22, 21, 22, 21], "levels": [28, 28, 28, 28], "unlock": "visited_FUCHSIA_CITY"}, {"team": [22, 22, 22, 22], "levels": [47, 47, 47, 47], "unlock": "beat_champion"}]}, "sprite": "birdkeeper.png", "name": "Jacob", "class": "BIRD_KEEPER", "team": [21, 21, 22, 21], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [85], "levels": [34]}]}, "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [85], "levels": [34], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "Trader", "action": "EVENT", "door": "gate_2", "color": "GOLD", "flag_condition": "not route18_lickitung_trade", "event": {"requires": ["party_has:55"], "fail": ["Man: I'm looking for a Golduck. Got one? I'll trade you my Lickitung for it!"], "lines": ["Man: A Golduck! Will you trade it for my Lickitung? Thanks a lot!"], "trade": {"want": 55, "give": 108}, "flag": "route18_lickitung_trade"}},
         {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Riding up the Cycling Road is hard work. Take it slow!"]}}, 
@@ -3438,17 +3438,17 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "swimmer_m.png", "name": "Richard", "class": "SWIMMER", "team": [72, 90], "levels": [30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Reece", "class": "SWIMMER", "team": [118, 116, 120], "levels": [29, 29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Tony", "class": "SWIMMER", "team": [116, 116], "levels": [30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "David", "class": "SWIMMER", "team": [118, 90, 119], "levels": [29, 29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Douglas", "class": "SWIMMER", "team": [116, 72, 72, 118], "levels": [27, 27, 27, 27], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Matthew", "class": "SWIMMER", "team": [60, 61], "levels": [30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Lia & Luc", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [118, 119], "levels": [30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Axle", "class": "SWIMMER", "team": [72, 72, 120, 116, 73], "levels": [27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_f.png", "name": "Anya", "class": "SWIMMER", "team": [60, 118, 119, 118, 60], "levels": [27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_f.png", "name": "Alice", "class": "SWIMMER", "team": [118, 119], "levels": [30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_f.png", "name": "Connie", "class": "SWIMMER", "team": [120, 120, 120], "levels": [29, 29, 29], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [72, 90], "levels": [30, 30]}]}, "sprite": "swimmer_m.png", "name": "Richard", "class": "SWIMMER", "team": [72, 90], "levels": [30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [118, 116, 120], "levels": [29, 29, 29]}]}, "sprite": "swimmer_m.png", "name": "Reece", "class": "SWIMMER", "team": [118, 116, 120], "levels": [29, 29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [117, 117], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "swimmer_m.png", "name": "Tony", "class": "SWIMMER", "team": [116, 116], "levels": [30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [118, 90, 119], "levels": [29, 29, 29]}]}, "sprite": "swimmer_m.png", "name": "David", "class": "SWIMMER", "team": [118, 90, 119], "levels": [29, 29, 29], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [116, 72, 72, 118], "levels": [27, 27, 27, 27]}]}, "sprite": "swimmer_m.png", "name": "Douglas", "class": "SWIMMER", "team": [116, 72, 72, 118], "levels": [27, 27, 27, 27], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [61, 62], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "swimmer_m.png", "name": "Matthew", "class": "SWIMMER", "team": [60, 61], "levels": [30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [118, 119], "levels": [30, 30]}]}, "sprite": "youngster.png", "name": "Lia & Luc", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [118, 119], "levels": [30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [72, 72, 120, 116, 73], "levels": [27, 27, 27, 27, 27]}]}, "sprite": "swimmer_m.png", "name": "Axle", "class": "SWIMMER", "team": [72, 72, 120, 116, 73], "levels": [27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [60, 118, 119, 118, 60], "levels": [27, 27, 27, 27, 27]}]}, "sprite": "swimmer_f.png", "name": "Anya", "class": "SWIMMER", "team": [60, 118, 119, 118, 60], "levels": [27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [119, 119], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "swimmer_f.png", "name": "Alice", "class": "SWIMMER", "team": [118, 119], "levels": [30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [120, 120, 120], "levels": [29, 29, 29]}]}, "sprite": "swimmer_f.png", "name": "Connie", "class": "SWIMMER", "team": [120, 120, 120], "levels": [29, 29, 29], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "SURFIN' DUDE", "action": "EVENT", "door": "beach", "event": {"minigame": "pikachu_beach", "lines": ["Surfin' Dude: Yo! Welcome to the Summer Beach House, dude!", "Surfin' Dude: I ride the waves with my Pikachu. Surfing Pikachu are the raddest!"]}},
@@ -3474,16 +3474,16 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "swimmer_f.png", "name": "Nora", "class": "SWIMMER", "team": [90, 90, 91], "levels": [30, 30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "birdkeeper.png", "name": "Roger", "class": "BIRD_KEEPER", "team": [22, 22, 17], "levels": [30, 30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Barry", "class": "SWIMMER", "team": [90, 91], "levels": [31, 31], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Dean", "class": "SWIMMER", "team": [120], "levels": [35], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_f.png", "name": "Shirley", "class": "SWIMMER", "team": [117, 116, 117], "levels": [30, 30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_f.png", "name": "Melissa", "class": "SWIMMER", "team": [60, 119], "levels": [31, 31], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_f.png", "name": "Tiffany", "class": "SWIMMER", "team": [119], "levels": [35], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Darrin", "class": "SWIMMER", "team": [116, 116, 117, 116], "levels": [28, 28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Missy", "class": "PICNICKER", "team": [118, 119], "levels": [31, 31], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Irene", "class": "PICNICKER", "team": [72, 116, 86], "levels": [30, 30, 30], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [90, 90, 91], "levels": [30, 30, 30]}]}, "sprite": "swimmer_f.png", "name": "Nora", "class": "SWIMMER", "team": [90, 90, 91], "levels": [30, 30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [22, 22, 17], "levels": [30, 30, 30]}]}, "sprite": "birdkeeper.png", "name": "Roger", "class": "BIRD_KEEPER", "team": [22, 22, 17], "levels": [30, 30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [90, 91], "levels": [31, 31]}]}, "sprite": "swimmer_m.png", "name": "Barry", "class": "SWIMMER", "team": [90, 91], "levels": [31, 31], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [120], "levels": [35]}]}, "sprite": "swimmer_m.png", "name": "Dean", "class": "SWIMMER", "team": [120], "levels": [35], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [117, 116, 117], "levels": [30, 30, 30]}]}, "sprite": "swimmer_f.png", "name": "Shirley", "class": "SWIMMER", "team": [117, 116, 117], "levels": [30, 30, 30], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [61, 119], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "swimmer_f.png", "name": "Melissa", "class": "SWIMMER", "team": [60, 119], "levels": [31, 31], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [119], "levels": [35]}]}, "sprite": "swimmer_f.png", "name": "Tiffany", "class": "SWIMMER", "team": [119], "levels": [35], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [117, 117, 117, 117], "levels": [52, 52, 52, 52], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "swimmer_m.png", "name": "Darrin", "class": "SWIMMER", "team": [116, 116, 117, 116], "levels": [28, 28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [119, 119], "levels": [49, 49], "unlock": "beat_champion"}, {"team": [119, 119], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "picnicker.png", "name": "Missy", "class": "PICNICKER", "team": [118, 119], "levels": [31, 31], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [72, 116, 86], "levels": [30, 30, 30]}]}, "sprite": "picnicker.png", "name": "Irene", "class": "PICNICKER", "team": [72, 116, 86], "levels": [30, 30, 30], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3509,15 +3509,15 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "fisherman.png", "name": "Wade", "class": "FISHERMAN", "team": [129, 129, 129, 129, 129, 129], "levels": [27, 27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
-        { "sprite": "fisherman.png", "name": "Ronald", "class": "FISHERMAN", "team": [119, 118, 119, 119], "levels": [28, 28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Lil & Ian", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [117, 121], "levels": [33, 33], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Spencer", "class": "SWIMMER", "team": [117, 73], "levels": [33, 33], "rewards": { "balls": 3 } },
-        { "sprite": "fisherman.png", "name": "Claude", "class": "FISHERMAN", "team": [90, 91], "levels": [31, 31], "rewards": { "balls": 3 } },
-        { "sprite": "fisherman.png", "name": "Nolan", "class": "FISHERMAN", "team": [119, 118], "levels": [33, 33], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Jack", "class": "SWIMMER", "team": [121], "levels": [37], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Roland", "class": "SWIMMER", "team": [61, 72, 117], "levels": [32, 32, 32], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Jerome", "class": "SWIMMER", "team": [120, 8], "levels": [33, 33], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [129, 129, 129, 129, 129, 129], "levels": [47, 47, 47, 47, 47, 47], "unlock": "beat_champion"}]}, "sprite": "fisherman.png", "name": "Wade", "class": "FISHERMAN", "team": [129, 129, 129, 129, 129, 129], "levels": [27, 27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [119, 118, 119, 119], "levels": [28, 28, 28, 28]}]}, "sprite": "fisherman.png", "name": "Ronald", "class": "FISHERMAN", "team": [119, 118, 119, 119], "levels": [28, 28, 28, 28], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [117, 121], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [117, 121], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "youngster.png", "name": "Lil & Ian", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [117, 121], "levels": [33, 33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [117, 73], "levels": [33, 33]}]}, "sprite": "swimmer_m.png", "name": "Spencer", "class": "SWIMMER", "team": [117, 73], "levels": [33, 33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [90, 91], "levels": [31, 31]}]}, "sprite": "fisherman.png", "name": "Claude", "class": "FISHERMAN", "team": [90, 91], "levels": [31, 31], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [119, 118], "levels": [33, 33]}]}, "sprite": "fisherman.png", "name": "Nolan", "class": "FISHERMAN", "team": [119, 118], "levels": [33, 33], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [121], "levels": [50], "unlock": "beat_champion"}]}, "sprite": "swimmer_m.png", "name": "Jack", "class": "SWIMMER", "team": [121], "levels": [37], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [61, 72, 117], "levels": [32, 32, 32]}]}, "sprite": "swimmer_m.png", "name": "Roland", "class": "SWIMMER", "team": [61, 72, 117], "levels": [32, 32, 32], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [120, 8], "levels": [33, 33]}]}, "sprite": "swimmer_m.png", "name": "Jerome", "class": "SWIMMER", "team": [120, 8], "levels": [33, 33], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3604,12 +3604,12 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "camper.png", "name": "Ethan", "class": "CAMPER", "team": [56], "levels": [18], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Shane", "class": "CAMPER", "team": [19, 23], "levels": [14, 14], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Reli", "class": "LASS", "team": [32, 29], "levels": [16, 16], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Timmy", "class": "YOUNGSTER", "team": [27, 23], "levels": [14, 14], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Ali", "class": "LASS", "team": [16, 43, 69], "levels": [12, 12, 12], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Cale", "class": "BUG_CATCHER", "team": [10, 13, 11, 14], "levels": [10, 10, 10, 10], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [56], "levels": [18]}]}, "sprite": "camper.png", "name": "Ethan", "class": "CAMPER", "team": [56], "levels": [18], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 23], "levels": [14, 14]}]}, "sprite": "camper.png", "name": "Shane", "class": "CAMPER", "team": [19, 23], "levels": [14, 14], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 29], "levels": [20, 20]}, null, {"team": [17, 30], "levels": [28, 28], "unlock": "visited_FUCHSIA_CITY"}]}, "sprite": "lass.png", "name": "Reli", "class": "LASS", "team": [32, 29], "levels": [16, 16], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [20, 23, 41], "levels": [19, 19, 19]}, null, {"team": [20, 23, 42], "levels": [27, 27, 27], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [20, 24, 42], "levels": [52, 52, 52], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "youngster.png", "name": "Timmy", "class": "YOUNGSTER", "team": [27, 23], "levels": [14, 14], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 43, 69], "levels": [12, 12, 12]}]}, "sprite": "lass.png", "name": "Ali", "class": "LASS", "team": [16, 43, 69], "levels": [12, 12, 12], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [10, 13, 11, 14], "levels": [10, 10, 10, 10]}]}, "sprite": "bug_catcher.png", "name": "Cale", "class": "BUG_CATCHER", "team": [10, 13, 11, 14], "levels": [10, 10, 10, 10], "rewards": { "balls": 3 } },
         {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [23, 41], "levels": [15, 15], "rewards": {"balls": 8}, "is_boss_battle": true, "dialogue": {"intro": ["Congratulations! You beat our five contest trainers! Here's a nugget...", "...Now, how about joining Team Rocket? No? Then I'll make you!"], "player_won": ["Arrgh! You're good. You'd have made a great Rocket..."], "player_lost": ["Heh. Think about it!"]}}
       ],
       "route_menu": [
@@ -3638,15 +3638,15 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png", "name": "Joey", "class": "YOUNGSTER", "team": [19, 21], "levels": [15, 15], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Franklin", "class": "HIKER", "team": [66, 74], "levels": [15, 15], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Dan", "class": "YOUNGSTER", "team": [79], "levels": [17], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Flint", "class": "CAMPER", "team": [19, 23], "levels": [14, 14], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Chad", "class": "YOUNGSTER", "team": [23, 27], "levels": [14, 14], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Haley", "class": "LASS", "team": [43, 16, 43], "levels": [13, 13, 13], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Wayne", "class": "HIKER", "team": [95], "levels": [17], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Kelsey", "class": "PICNICKER", "team": [32, 29], "levels": [15, 15], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Nob", "class": "HIKER", "team": [74, 74, 66, 74], "levels": [13, 13, 13, 13], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 21], "levels": [15, 15]}]}, "sprite": "youngster.png", "name": "Joey", "class": "YOUNGSTER", "team": [19, 21], "levels": [15, 15], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, {"team": [67, 75], "levels": [25, 25], "unlock": "visited_CELADON_CITY"}]}, "sprite": "hiker.png", "name": "Franklin", "class": "HIKER", "team": [66, 74], "levels": [15, 15], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [79], "levels": [17]}]}, "sprite": "youngster.png", "name": "Dan", "class": "YOUNGSTER", "team": [79], "levels": [17], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [19, 23], "levels": [14, 14]}]}, "sprite": "camper.png", "name": "Flint", "class": "CAMPER", "team": [19, 23], "levels": [14, 14], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [23, 27], "levels": [20, 20]}, null, {"team": [24, 27], "levels": [28, 28], "unlock": "visited_FUCHSIA_CITY"}, {"team": [24, 28], "levels": [48, 48], "unlock": "beat_champion"}]}, "sprite": "youngster.png", "name": "Chad", "class": "YOUNGSTER", "team": [23, 27], "levels": [14, 14], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [43, 16, 43], "levels": [13, 13, 13]}]}, "sprite": "lass.png", "name": "Haley", "class": "LASS", "team": [43, 16, 43], "levels": [13, 13, 13], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [95], "levels": [17]}]}, "sprite": "hiker.png", "name": "Wayne", "class": "HIKER", "team": [95], "levels": [17], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [32, 29], "levels": [21, 21]}, null, {"team": [33, 30], "levels": [29, 29], "unlock": "visited_FUCHSIA_CITY"}, {"team": [33, 30], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "picnicker.png", "name": "Kelsey", "class": "PICNICKER", "team": [32, 29], "levels": [15, 15], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [74, 74, 66, 74], "levels": [13, 13, 13, 13]}]}, "sprite": "hiker.png", "name": "Nob", "class": "HIKER", "team": [74, 74, 66, 74], "levels": [13, 13, 13, 13], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "TM292", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm112_route25", "event": {"lines": ["A TM, tucked behind the trees! It's Secret Power."], "gift_item": {"TM292": 1}, "flag": "got_tm112_route25"}},

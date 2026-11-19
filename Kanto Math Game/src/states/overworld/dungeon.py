@@ -1805,7 +1805,9 @@ class DungeonState(OverworldBattles, PlayState):
                     self.run.remove(mover)
                     from src.world import vs_seeker as _vs
                     if _vs.is_ready(self.game.story_manager, self.area_key, idx):   # (a VS Seeker rematch won)
-                        _vs.won(self.game.story_manager, self.area_key, idx)
+                        _pool0 = self.area_data.get("trainer_pool", [])
+                        _vs.won(self.game.story_manager, self.area_key, idx,
+                                _vs.stage_for(self.game.story_manager, self.area_key, idx, _pool0[idx] if 0 <= idx < len(_pool0) else {}))
                     from src.world import phone as _phone   # (a phone trainer asks for your number; a rematch's gift is given)
                     _pool = self.area_data.get("trainer_pool", [])
                     _info = _pool[idx] if 0 <= idx < len(_pool) and isinstance(_pool[idx], dict) else {}

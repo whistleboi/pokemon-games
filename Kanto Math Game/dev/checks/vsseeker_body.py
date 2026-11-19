@@ -60,13 +60,31 @@ for _ in range(vs_seeker.CHARGE):
     vs_seeker.step(story)
 check(vs_seeker.charge(story) == vs_seeker.CHARGE, "100 steps: charged again")
 
-print("3) the rematch: stronger, a bigger reward; won, it goes back to waiting")
-i = back[0].payload[0]
-info = pool[i]
-re = vs_seeker.rematch(g, area, i, dict(info))
-check(min(re["levels"]) >= min(info["levels"]) and sum(re["levels"]) > sum(info["levels"]),
-      f"{info['name']}: levels {info['levels']} -> {re['levels']}")
-check(re["rewards"].get("balls", 0) > (info.get("rewards") or {}).get("balls", 0), f"reward {info.get('rewards')} -> {re['rewards']}")
-vs_seeker.won(story, area, i)
-check(not vs_seeker.is_ready(story, area, i) and not story.trainer_on_map(area, i, info), "won: gone till the next use or tomorrow")
+print("3) FireRed's own rematch stages: the next one you haven't beaten, held back till its story point")
+ben_i = next(k for k, t in enumerate(pool) if isinstance(t, dict) and t.get("name") == "Ben")
+ben = pool[ben_i]
+check((ben.get("rematch") or {}).get("source") == "FireRed", f"Youngster Ben carries FireRed's stages ({[None if t is None else t['levels'] for t in ben['rematch']['tiers']]})")
+for k in ("visited_CELADON_CITY", "visited_FUCHSIA_CITY", "beat_champion", "vs_stage"):
+    story.story_flags.pop(k, None)
+vs_seeker._ready(story).setdefault(area, {})[str(ben_i)] = story._today()
+re1 = vs_seeker.rematch(g, area, ben_i, dict(ben))
+check(re1["levels"] == [17, 17], f"first rematch: FireRed's Lv 17 team ({re1['levels']})")
+check(re1["rewards"].get("balls", 0) > (ben.get("rewards") or {}).get("balls", 0), f"...a bigger reward ({ben.get('rewards')} -> {re1['rewards']})")
+vs_seeker.won(story, area, ben_i, re1["_vs_stage"])
+vs_seeker._ready(story).setdefault(area, {})[str(ben_i)] = story._today()
+check(vs_seeker.rematch(g, area, ben_i, dict(ben))["levels"] == [17, 17], "next stage still locked: the Lv 17 team again")
+story.story_flags["visited_CELADON_CITY"] = True
+check(vs_seeker.rematch(g, area, ben_i, dict(ben))["levels"] == [17, 17], "Celadon reached: still Lv 17 (Ben's Lv 28 team is FireRed's 3rd stage, held till Fuchsia)")
+story.story_flags["visited_FUCHSIA_CITY"] = True
+re2 = vs_seeker.rematch(g, area, ben_i, dict(ben))
+check(re2["levels"] == [28, 28], f"Fuchsia reached: the Lv 28 team ({re2['levels']})")
+vs_seeker.won(story, area, ben_i, re2["_vs_stage"])
+vs_seeker._ready(story).setdefault(area, {})[str(ben_i)] = story._today()   # (called back again)
+check(vs_seeker.rematch(g, area, ben_i, dict(ben))["levels"] == [28, 28], "the Lv 48 team waits for the Champion: Lv 28 again")
+story.story_flags["beat_champion"] = True
+check(vs_seeker.rematch(g, area, ben_i, dict(ben))["levels"] == [48, 48], "after the Champion: the Lv 48 team")
+vs_seeker.won(story, area, ben_i, 3)
+check(not vs_seeker.is_ready(story, area, ben_i), "won: gone till the next use or tomorrow")
+plain = {"name": "Nobody", "class": "YOUNGSTER", "team": [19], "levels": [5]}
+check(not vs_seeker._has_rematch(story, area, plain), "a Kanto trainer FireRed gives no rematch never wants one (FireRed's X)")
 print("FAILURES:", fails)
