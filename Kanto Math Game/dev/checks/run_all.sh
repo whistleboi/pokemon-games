@@ -8,7 +8,7 @@ O=$C/out
 mkdir -p "$O"
 export PYTHONIOENCODING=utf-8
 HELPED="grokfix storage dlc sevii decolore sinjoh orre"
-PLAIN="canon1029 menus items items_pp moveeffects selfko tmshop savename faces townsea aiswitch flyrule vsseeker rivals hoennstart kantostart sinnohstart recheck recheck_uk recheck_agh recheck_pkt recheck_orre lumiose scaling movepool blackfog blockers bugs2 shadows orangeforms answers1023 slots orange batch6 batch5 ui batch4 batch3 fixes battle2 doubles events features loops eterna catch dungeon frlg sevii_maps sinnoh orre_maps hoenn_maps johto_canon giant_volcano kanto_maps soaring soaring3d rowdy_pikachu yellow_kanto"   # (the map suites: each region's walkable maps)
+PLAIN="canon1029 menus items items_pp moveeffects selfko tmshop savename faces townsea aiswitch flyrule vsseeker partners rivals hoennstart kantostart sinnohstart recheck recheck_uk recheck_agh recheck_pkt recheck_orre lumiose scaling movepool blackfog blockers bugs2 shadows orangeforms answers1023 slots orange batch6 batch5 ui batch4 batch3 fixes battle2 doubles events features loops eterna catch dungeon frlg sevii_maps sinnoh orre_maps hoenn_maps johto_canon giant_volcano kanto_maps soaring soaring3d rowdy_pikachu yellow_kanto"   # (the map suites: each region's walkable maps)
 for t in $HELPED; do cat $C/harness_head.py $C/sub_helpers_body.py $C/${t}_body.py > $O/check_$t.py; done
 for t in $PLAIN; do cat $C/harness_head.py $C/${t}_body.py > $O/check_$t.py; done
 for t in $HELPED $PLAIN; do

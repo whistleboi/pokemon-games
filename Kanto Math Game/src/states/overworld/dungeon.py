@@ -1108,6 +1108,10 @@ class DungeonState(OverworldBattles, PlayState):
     COMPANIONS = {"ROCKET_HQ": {"names": ("Lance", "Dragonite"), "while": ["defeated_red_gyarados"], "until": "got_hm_whirlpool_lance"}}
 
     def _companions(self):
+        from src.world import walk_partners   # (Platinum's walking partners: Cheryl, Mira, Riley, Buck, Marley)
+        wp = walk_partners.active(self.game.story_manager, getattr(self, "area_key", None))
+        if wp:
+            return (walk_partners.figure(wp),)
         c = self.COMPANIONS.get(getattr(self, "area_key", None))
         flags = self.game.story_manager.story_flags
         if not c or not all(flags.get(f) for f in c["while"]) or flags.get(c["until"]):
@@ -1119,6 +1123,12 @@ class DungeonState(OverworldBattles, PlayState):
         self._ctrail = [here] * 4
         self._ctrail_from = list(self._ctrail)
         self._hide_followed()
+        if hasattr(self, "run"):   # (a new floor: Buck waits at the door of Heatran's chamber)
+            from src.world import walk_partners
+            said = walk_partners.on_floor(self.game.story_manager, self.area_key, self.run.index)
+            if said:
+                self.say(said)
+                self._sync_figures()
 
     def _hide_followed(self):
         """While they walk with you, their figures standing on the floors step off."""
@@ -1138,6 +1148,11 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _talk_companion(self, who):
         """Talking to someone walking with you: this floor's line of theirs (their figure's), else a word in passing."""
+        from src.world import walk_partners
+        wp = walk_partners.active(self.game.story_manager, self.area_key)
+        if wp and walk_partners.figure(wp) == who:
+            self.say(list(walk_partners.PARTNERS[wp].get("chat") or ["..."]))
+            return
         art = (getattr(self, "recipe", None) or {}).get("art") or {}
         fl = art["floors"][self.run.index] if art.get("floors") and self.run.index < len(art["floors"]) else art
         item = next((p for p in (fl.get("people") or []) if isinstance(p, dict) and str(p.get("text", "")).strip() == who
@@ -1837,6 +1852,14 @@ class DungeonState(OverworldBattles, PlayState):
         self._sync_figures()
 
     def _leave(self, target):
+        from src.world import walk_partners   # (a walking partner says goodbye where Platinum has them, or waits)
+        said = walk_partners.on_leave(self.game.story_manager, self.area_key, target)
+        if said:
+            self.say(said, then=lambda: self._leave_now(target))
+            return
+        self._leave_now(target)
+
+    def _leave_now(self, target):
         self.game.dungeon_state = None
         boat = self.area_data.get("boat_home") or {}   # (an island two regions share: the boat takes you back the way you came,
         if target == boat.get("dock"):                 #  Navel Rock and Birth Island: Lilycove from Hoenn, One Island from Sevii)
@@ -2473,6 +2496,19 @@ class DungeonState(OverworldBattles, PlayState):
         self.pending = ("wild", mover)
         self.mode = "MAP"
         self.rounds_completed += 1
+        from src.world import walk_partners
+        wp = walk_partners.active(self.game.story_manager, self.area_key)
+        if wp:   # (a partner with you: wild Pokemon come two at a time, as in Platinum)
+            other = self._make_wild(random.Random(), (mover.x, mover.y))
+            if other is not None:
+                from src.states.battle_wild_double import WildDoubleBattleState
+                battle = WildDoubleBattleState(self.game, [mover.payload, other], self.area_key,
+                                               partner=walk_partners.battle_partner(wp),
+                                               background_image=self._get_battle_background_for_area())
+                battle.play_state_data = self._play_data()
+                pygame.event.clear()
+                self.game.change_state(battle)
+                return
         battle = WildBattleState(self.game, mover.payload, self.area_key,
                                  background_image=self._get_battle_background_for_area())
         battle.play_state_data = self._play_data()

@@ -76,6 +76,24 @@
     ]
   },
   "figures": {
+    "ETERNA_FOREST:Cheryl": {
+      "sheet": "pt_seven1.png"
+    },
+    "IRON_ISLAND:Team Up with Riley": {
+      "sheet": "pt_seven2.png"
+    },
+    "VICTORY_ROAD_SINNOH:Marley": {
+      "sheet": "pt_seven3.png"
+    },
+    "STARK_MOUNTAIN:Buck": {
+      "sheet": "pt_seven4.png"
+    },
+    "WAYWARD_CAVE:Mira": {
+      "sheet": "pt_seven5.png"
+    },
+    "IRON_ISLAND:Galactic Grunts": {
+      "sheet": "pt_gingam.png"
+    },
     "KANTO_POKEMON_TOWER:GHOST": {
       "draw": "ghost"
     },

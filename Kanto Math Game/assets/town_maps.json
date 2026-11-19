@@ -183865,7 +183865,7 @@
    "cc\"\"\"\"\"\"\"\"......TTTT\"\"\"\"ccTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTT\"\"..TTTTTTTT\"\"cc",
    "cc\"\"\"\"\"\"\"\"......TTTT\"\"\"\"ccTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTT\"\"..TTTTTTTT\"\"cc",
    "cc\"\"\"\"\"\"\"\".......!..\"\"\"\"ccTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"\"......TTTTTTTT\"\"..TTTTTT\"\"\"\"cc",
-   "cc\"\"\"\"\"\"\"\".....ssss.\"\"\"\"ccTTTTTTTTTTcc\"\"\"\"\"\"\"\"\".......TTTTTTTT\"\"..TTTTTT\"\"\"\"cc",
+   "cc\"\"\"\"\"\"\"\".....sNss.\"\"\"\"ccTTTTTTTTTTcc\"\"\"\"\"\"\"\"\".......TTTTTTTT\"\"..TTTTTT\"\"\"\"cc",
    "ccccccccccccTT.ssss.TTccccTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"....\"\"\"\"\"\"\"\"cc",
    "ccccccccccccTT......TTccccTTTTTTTTTTcc.\"\"\"\"\"..............\"\"\"\"\"\"....\"\"\"\"\"\"\"\"cc",
    "TTTTTTTTTTccTTTTnnTTTTccTTTTTTTTTTTTcccccccccccccccc................\"\"\"\"\"\"\"\"cc",
@@ -187692,6 +187692,9 @@
     "ETERNA FOREST",
     "West: Eterna City."
    ]
+  ],
+  "people": [
+   "Cheryl"
   ]
  },
  "SINNOH_ROUTE_206": {
@@ -215599,7 +215602,7 @@
      "ccr...ccccccccccccccccccr...cccccccccccccccr...cccccccccccccccccccccc.......r.............cccccc",
      "cc....cccccccccccccccccc....ccccccccccccccc....ccccccccccccccccccccccr.....rcccccccccc....cccccc",
      "cc....cccccccccccccccccc....ccccccccccccccc....cccccccccccccccccccccc.......cccccccccc....cccccc",
-     "cc....cccccccccccccccccc....ccccccccccccccc....cccccccccccccccccccccc.......cccccccccc....cccccc",
+     "cc....cccccccccccccccccc....ccccccccccccccc....cccccccccccccccccccccc...N...cccccccccc....cccccc",
      "ccX..Xcccccccccccccccccc....ccccccccccccccc....cccccccccccccccccccccc.......cccccccccc....cccccc",
      "cc......cccccc.............r.............r.............rccccccccccccc...r...cccccccccc....cccccc",
      "cc......cccccc............0.............r...............cccccccccccccccccccccccccccccc....cccccc",
@@ -215684,7 +215687,10 @@
        0
       ]
      }
-    }
+    },
+    "people": [
+     "Mira"
+    ]
    },
    {
     "art": [
@@ -215820,7 +215826,8 @@
    "Youngster Wayne": 0,
    "Hiker Reginald": 0,
    "Collector Terry": 0,
-   "Picnicker Ana": 0
+   "Picnicker Ana": 0,
+   "Mira": 0
   },
   "roofs": {
    "_bridge": "wood"
@@ -231855,7 +231862,7 @@
      "ccccccc...c.......cc..c...cccc..........cc",
      "ccccccc...c......c.cc.c...cccc.ccccc..cccc",
      "ccccccc...c..ccccc...cc...cccc.c......cccc",
-     "ccccccc..........c........cccc.c......cccc",
+     "ccccccc..........c.N......cccc.c......cccc",
      "ccccccc..........c........cccc.ccccc..cccc",
      "cccccccccccccccrrr....cccccccc........cccc",
      "ccccccccccccccrrrr...ccccccccccccccccccccc",
@@ -231871,7 +231878,8 @@
     ],
     "parts": true,
     "people": [
-     "Team Up with Riley"
+     "Team Up with Riley",
+     "Galactic Grunts"
     ],
     "theme": "cave",
     "roofs": {
@@ -232419,7 +232427,8 @@
    "The house"
   ],
   "figure_floors": {
-   "Team Up with Riley": 3
+   "Team Up with Riley": 3,
+   "Galactic Grunts": 3
   },
   "roofs": {
    "A": {
@@ -233203,7 +233212,7 @@
      "cc......cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "cc......cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "cc......cccooooooooooooooorcc...............ccccccccccccccc",
-     "cc-.....cccooooooooooooooo.cc...............ccccccccccccccc",
+     "cc-...N.cccooooooooooooooo.cc...............ccccccccccccccc",
      "cc.........ooooooooooooooo.cccccccccccccccccccccccccccccccc",
      "cc.........ooooooooooooooo.cccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -233231,7 +233240,10 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     "Marley"
+    ]
    },
    {
     "art": [
@@ -233283,7 +233295,8 @@
   ],
   "figure_floors": {
    "Ace Trainer Pierce": 0,
-   "Ace Trainer Alicia": 0
+   "Ace Trainer Alicia": 0,
+   "Marley": 4
   },
   "roofs": {
    "_bridge": "wood"
@@ -233660,7 +233673,7 @@
      "cccccccc.c.c.ccccccc..crr....................rrrr...rrrr........rrr...........cccccc..cccccccc",
      "cccccccc.c.c.ccccccc/ccrrr....................................................cccccc..cccccccc",
      "cccccccc.c.c.ccccccc/ccccccccccccccccccc...cccccccccccccc.cccccccccccccccccccccccccc..cccccccc",
-     "cccccccc.c.c.ccccccc/ccccccccccccccccccc...cccccccccccccc.cccccccccccccccccccccccccc..cccccccc",
+     "cccccccc.c.c.ccccccc/ccccccccccccccccccc.N.cccccccccccccc.cccccccccccccccccccccccccc..cccccccc",
      "cccccccc.c.c.ccccccc/ccccccccccccccccccc...cccccccccccccc.cccccccccccccccccccccccccc..cccccccc",
      "cccccccc.c.c.ccccccc/cccccccccccccccccccc.ccccccccccccccc.cccccccccccccccccccccccccc..cccccccc",
      "cccccccc.c.c.ccccccc/cccccccccccccccccccc.ccccccccccccccc.cccccccccccccccccccccccccc.rcccccccc",
@@ -233704,7 +233717,10 @@
        0
       ]
      }
-    }
+    },
+    "people": [
+     "Buck"
+    ]
    },
    {
     "art": [
@@ -233762,7 +233778,8 @@
    "Heatran's chamber"
   ],
   "figure_floors": {
-   "Face Heatran": 3
+   "Face Heatran": 3,
+   "Buck": 2
   },
   "buildings": {
    "A": "house"

@@ -1065,4 +1065,9 @@ def battle_options(t_info):
     for key in ("double", "no_switch"):
         if (t_info or {}).get(key):
             opts.setdefault(key, t_info[key])
+    from src.ui import theme   # (a walking partner with you: a pair battles you both, and they heal you after; walk_partners.py)
+    story = getattr(theme.GAME, "story_manager", None)
+    if story is not None:
+        from src.world import walk_partners
+        opts = walk_partners.trainer_options(story, opts)
     return opts

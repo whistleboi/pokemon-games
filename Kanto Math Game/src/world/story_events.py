@@ -217,9 +217,20 @@ EVENTS = {
                    "dialogue": {"player_won": ["Cyrus: ...My new world... is gone.",
                                                "Cyrus: Then I will find another way. Alone.",
                                                "The legendary Pokemon still stirs at the top of the Spear Pillar..."]}}},
+    # Platinum's walking partners (11-18, src/world/walk_partners.py): talk to them and they walk with you.
+    **{f"walk_{_k}": {"walk_partner": _k} for _k in ("cheryl", "mira", "riley", "buck", "marley")},
+    # Iron Island B2F (Platinum): you and Riley against two Galactic Grunts, their teams from Platinum; then the Riolu Egg
     "riley_iron_island": {
-        "lines": ["sinnoh_riley_intro"], "flag": "riley_iron_island_cleared",
-        "battle": _t(GRUNT_G, team=[42, 435], rewards={"POKEMON_447": 1},
+        "lines": ["Two Galactic Grunts are blocking the passage!",
+                  "Grunt: Huh? Who let you down here? Get 'em!"],
+        "requires": ["walk_riley_met"],
+        "fail": ["Galactic Grunts are guarding the passage. Somebody stronger should come along..."],
+        "flag": "riley_iron_island_cleared",
+        "battle": _t(GRUNT_G, team=[41, 228, 42], levels=[34, 34, 34], rewards={"POKEMON_447": 1},
+                     battle_options={"double": True, "heal_after": True,
+                                     "partner": {"name": "Riley", "class": "PKMN_TRAINER", "sprite": "riley.png",
+                                                 "team": [448], "levels": [41]},
+                                     "second_trainer": _t(GRUNT_G, team=[431, 453, 434], levels=[34, 34, 34])},
                      dialogue={"player_won": ["sinnoh_riley_egg"]})},
 
     # ---------------- Unova (Black / White) ----------------

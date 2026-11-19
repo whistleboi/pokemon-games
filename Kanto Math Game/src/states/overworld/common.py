@@ -320,6 +320,14 @@ def _run_story_event(state, key, check, show):
         stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")
                       and all(check(c) for c in st.get("requires", []))), None)
         ev = stage or {"lines": ev.get("done") or ["..."]}
+    if ev.get("walk_partner"):   # (Platinum's walking partners: they walk with you from here; src/world/walk_partners.py)
+        from src.world import walk_partners as _wp
+        said = _wp.join(story, ev["walk_partner"])
+        for fn in ("_reset_trail", "_sync_figures"):   # (on a walked map: their figure steps off and they fall in behind)
+            if hasattr(state, fn):
+                getattr(state, fn)()
+        show(said)
+        return
     if ev.get("name_rater"):   # (rename a Pokemon you caught: src/states/systems/name_rater.py, 11-18)
         from src.states.systems.name_rater import start as _rate
         _rate(state, _resolve_lines(game, ev.get("lines") or []), show)

@@ -1141,6 +1141,7 @@
         }
       ],
       "route_menu": [
+        {"text": "Mira", "action": "NPC", "target": "walk_mira", "flag_condition": "not walk_mira_done", "color": "GOLD"},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -2985,6 +2986,7 @@
       "min_rounds": 2,
       "backgrounds": { "main": "eterna_forest.png", "battle": "battle_eterna_forest.png" },
       "route_menu": [
+        {"text": "Cheryl", "action": "NPC", "target": "walk_cheryl", "flag_condition": "not walk_cheryl_done", "color": "GOLD"},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Old Chateau", "action": "EXIT", "target_area": "OLD_CHATEAU", "condition": "can_exit", "color": "GOLD" },
@@ -3134,10 +3136,11 @@
         {
           "text": "Team Up with Riley",
           "action": "NPC",
-          "target": "riley_iron_island",
+          "target": "walk_riley",
           "flag_condition": "not riley_iron_island_cleared",
           "color": "GOLD"
         },
+        {"text": "Galactic Grunts", "action": "NPC", "target": "riley_iron_island", "flag_condition": "not riley_iron_island_cleared", "color": "GOLD"},
         { "text": "Canalave City", "action": "EXIT", "target_area": "CANALAVE_CITY", "condition": "can_exit", "color": "RED" }
       ]
     },
@@ -3267,6 +3270,7 @@
         }
       ],
       "route_menu": [
+        {"text": "Marley", "action": "NPC", "target": "walk_marley", "flag_condition": "not walk_marley_done", "color": "GOLD"},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -4114,6 +4118,7 @@
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
+        {"text": "Buck", "action": "NPC", "target": "walk_buck", "flag_condition": "not walk_buck_done", "color": "GOLD"},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Face Heatran", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
