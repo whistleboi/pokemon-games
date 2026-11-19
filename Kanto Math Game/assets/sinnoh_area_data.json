@@ -1,4 +1,40 @@
 {
+  "CANALAVE_CITY_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "CELESTIC_TOWN_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "PASTORIA_CITY_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "ETERNA_CITY_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "TWINLEAF_TOWN_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "SINNOH_ROUTE_222_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "SINNOH_ROUTE_218_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "SINNOH_ROUTE_214_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "SINNOH_ROUTE_213_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "SINNOH_ROUTE_212_SURF_PERCENTAGES": {"54": 45, "194": 45, "55": 5, "195": 5},
+  "SINNOH_ROUTE_210_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "SINNOH_ROUTE_209_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "SINNOH_ROUTE_208_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "SINNOH_ROUTE_205_SURF_PERCENTAGES": {"54": 45, "72": 30, "278": 15, "55": 5, "73": 2, "279": 2},
+  "SINNOH_ROUTE_204_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "SINNOH_ROUTE_203_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "VICTORY_ROAD_SINNOH_SURF_PERCENTAGES": {"42": 95, "131": 5},
+  "VALLEY_WINDWORKS_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "GREAT_MARSH_SURF_PERCENTAGES": {"194": 60, "183": 30, "54": 5, "195": 5},
+  "IRON_ISLAND_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "MT_CORONET_BASE_SURF_PERCENTAGES": {"41": 90, "42": 10},
+  "LAKE_ACUITY_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "LAKE_VALOR_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "LAKE_VERITY_SURF_PERCENTAGES": {"54": 90, "55": 10},
+  "SINNOH_ROUTE_219_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "SINNOH_ROUTE_221_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "SINNOH_ROUTE_225_SURF_PERCENTAGES": {"55": 70, "61": 30},
+  "SINNOH_ROUTE_226_SURF_PERCENTAGES": {"279": 60, "86": 15, "363": 15, "73": 5, "87": 2, "364": 2},
+  "SINNOH_ROUTE_227_SURF_PERCENTAGES": {"61": 70, "60": 30},
+  "SINNOH_ROUTE_228_SURF_PERCENTAGES": {"61": 70, "60": 30},
+  "SINNOH_ROUTE_229_SURF_PERCENTAGES": {"278": 70, "279": 30},
+  "SINNOH_ROUTE_224_SURF_PERCENTAGES": {"279": 65, "73": 35},
+  "FUEGO_IRONWORKS_SURF_PERCENTAGES": {"72": 60, "278": 30, "73": 5, "279": 5},
+  "RAVAGED_PATH_SURF_PERCENTAGES": {"41": 60, "54": 30, "42": 5, "55": 5},
+  "SINNOH_POKEMON_LEAGUE_SURF_PERCENTAGES": {"73": 65, "279": 35},
+  "SUNYSHORE_CITY_SURF_PERCENTAGES": {"73": 60, "279": 30, "458": 10},
   "SINNOH_OLD_ROD_POOL_PERCENTAGES": {"129": 80, "72": 20},
   "SINNOH_GOOD_ROD_POOL_PERCENTAGES": {"129": 25, "456": 30, "118": 25, "339": 20},
   "SINNOH_SUPER_ROD_POOL_PERCENTAGES": {"130": 15, "457": 20, "119": 15, "340": 20, "223": 15, "211": 15},
@@ -710,7 +746,7 @@
       ],
       "next_area": "SINNOH_ROUTE_214"
     },
-    "RAVAGED_PATH": {
+    "RAVAGED_PATH": {"surf_pool_percentages": "RAVAGED_PATH_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Ravaged Path",
       "region": "SINNOH",
@@ -748,7 +784,7 @@
       ],
       "next_area": "SINNOH_ROUTE_204"
     },
-    "FUEGO_IRONWORKS": {
+    "FUEGO_IRONWORKS": {"surf_pool_percentages": "FUEGO_IRONWORKS_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Fuego Ironworks",
       "region": "SINNOH",
@@ -1216,7 +1252,7 @@
       ],
       "next_area": "FIGHT_AREA"
     },
-    "SINNOH_ROUTE_224": {
+    "SINNOH_ROUTE_224": {"surf_pool_percentages": "SINNOH_ROUTE_224_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 224",
       "region": "SINNOH",
@@ -1501,7 +1537,7 @@
       "explore_options": [],
       "next_area": "SINNOH_ROUTE_229"
     },
-    "SINNOH_ROUTE_229": {
+    "SINNOH_ROUTE_229": {"surf_pool_percentages": "SINNOH_ROUTE_229_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 229",
       "region": "SINNOH",
@@ -1613,7 +1649,7 @@
       ],
       "next_area": "SINNOH_ROUTE_228"
     },
-    "SINNOH_ROUTE_228": {
+    "SINNOH_ROUTE_228": {"surf_pool_percentages": "SINNOH_ROUTE_228_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 228",
       "region": "SINNOH",
@@ -1768,7 +1804,7 @@
       ],
       "next_area": "SINNOH_ROUTE_226"
     },
-    "SINNOH_ROUTE_227": {
+    "SINNOH_ROUTE_227": {"surf_pool_percentages": "SINNOH_ROUTE_227_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 227",
       "region": "SINNOH",
@@ -1861,7 +1897,7 @@
       ],
       "next_area": "SINNOH_ROUTE_226"
     },
-    "SINNOH_ROUTE_226": {
+    "SINNOH_ROUTE_226": {"surf_pool_percentages": "SINNOH_ROUTE_226_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 226",
       "region": "SINNOH",
@@ -2012,7 +2048,7 @@
       ],
       "next_area": "SINNOH_ROUTE_225"
     },
-    "SINNOH_ROUTE_225": {
+    "SINNOH_ROUTE_225": {"surf_pool_percentages": "SINNOH_ROUTE_225_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 225",
       "region": "SINNOH",
@@ -2197,7 +2233,7 @@
       ],
       "next_area": "SNOWPOINT_CITY"
     },
-    "SINNOH_ROUTE_221": {
+    "SINNOH_ROUTE_221": {"surf_pool_percentages": "SINNOH_ROUTE_221_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 221",
       "region": "SINNOH",
@@ -2447,7 +2483,7 @@
       ],
       "next_area": "SINNOH_ROUTE_219"
     },
-    "SINNOH_ROUTE_219": {
+    "SINNOH_ROUTE_219": {"surf_pool_percentages": "SINNOH_ROUTE_219_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 219",
       "region": "SINNOH",
@@ -2526,7 +2562,7 @@
       ],
       "next_area": "SANDGEM_TOWN"
     },
-    "TWINLEAF_TOWN": {
+    "TWINLEAF_TOWN": {"surf_pool_percentages": "TWINLEAF_TOWN_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Twinleaf Town",
       "region": "SINNOH",
@@ -2628,7 +2664,7 @@
       "next_area": "SINNOH_ROUTE_205",
       "on_enter_event": null
     },
-    "ETERNA_CITY": {
+    "ETERNA_CITY": {"surf_pool_percentages": "ETERNA_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Eterna City",
       "region": "SINNOH",
@@ -2722,7 +2758,7 @@
       "department_store": true,
         "extra_stock": [{"item": "UPGRADE"}]
     },
-    "PASTORIA_CITY": {
+    "PASTORIA_CITY": {"surf_pool_percentages": "PASTORIA_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Pastoria City",
       "region": "SINNOH",
@@ -2742,7 +2778,7 @@
       ],
       "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [396, 418, 315, 391], "team_choice": {"387": [396, 418, 315, 391], "390": [396, 315, 77, 394], "393": [396, 418, 77, 388]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_pastoria", "dialogue": {"intro": ["Oh! {player_name}! I'm heading to Lake Valor after this — BATTLE FIRST!"], "player_won": ["Every time! I'll beat you at the lakes though!"], "player_lost": ["Lake Valor, here I come — AND I BEAT YOU!"]}, "levels": [26, 26, 27, 31]}, "condition": "has_cobble_badge", "flag_check": "defeated_rival_pastoria"}
     },
-    "CELESTIC_TOWN": {
+    "CELESTIC_TOWN": {"surf_pool_percentages": "CELESTIC_TOWN_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Celestic Town",
       "region": "SINNOH",
@@ -2782,7 +2818,7 @@
         "flag_check": "defeated_cyrus_celestic"
       }
     },
-    "CANALAVE_CITY": {
+    "CANALAVE_CITY": {"surf_pool_percentages": "CANALAVE_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Canalave City",
       "region": "SINNOH",
@@ -2826,7 +2862,7 @@
       ],
       "on_enter_event": null
     },
-    "SUNYSHORE_CITY": {
+    "SUNYSHORE_CITY": {"surf_pool_percentages": "SUNYSHORE_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Sunyshore City",
       "region": "SINNOH",
@@ -2845,7 +2881,7 @@
       ],
       "on_enter_event": null
     },
-    "SINNOH_POKEMON_LEAGUE": {
+    "SINNOH_POKEMON_LEAGUE": {"surf_pool_percentages": "SINNOH_POKEMON_LEAGUE_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Sinnoh Pokémon League",
       "region": "SINNOH",
@@ -2865,7 +2901,7 @@
       ],
         "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [398, 419, 214, 407, 143, 392], "team_choice": {"387": [398, 419, 214, 407, 143, 392], "390": [398, 407, 214, 78, 143, 395], "393": [398, 419, 214, 78, 143, 389]}, "rewards": {"balls": 10}, "dialogue": {"intro": "sinnoh_barry_rival_intro", "player_won": "sinnoh_barry_rival_won", "player_lost": "sinnoh_barry_rival_lost"}, "levels": [49, 49, 51, 49, 52, 55]}, "condition": "has_8_sinnoh_badges", "flag_check": "defeated_rival_victory_road"}
     },
-    "LAKE_VERITY": {
+    "LAKE_VERITY": {"surf_pool_percentages": "LAKE_VERITY_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Lake Verity",
       "region": "SINNOH",
@@ -2884,7 +2920,7 @@
       "area_boss": { "id": 481, "name": "Mesprit", "victory_flag": "LAKE_VERITY_boss_defeated" },
         "starter_event": {"walk_up": {"look": "sheet:pt_doctor.png", "with": "sheet:pt_heroine.png", "flag": "sinnoh_rowan_walked_up", "lines": ["Professor Rowan walks over and picks up his briefcase.", "Professor Rowan: ...Hm."]}, "lines": ["{rival_name}: Did you see the red Gyarados on TV? There must be a Pokémon like that in our lake too!", "At Lake Verity you find Professor Rowan and his assistant. They leave in a hurry, forgetting a briefcase.", "Suddenly, wild STARLY swoop down from the trees!", "{rival_name}: The briefcase! There are Poké Balls inside... pick one, quick!"], "boss": {"id": 396, "name": "Starly", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "sinnoh_starly_driven_off", "lines": ["The wild STARLY dives at you!"], "won": ["The STARLY flew off!", "Professor Rowan comes back for his briefcase: 'You used my Pokémon?... Hm.'", "Professor Rowan: 'Come and see me at my lab in Sandgem Town.'", "{rival_name}: Phew! Let's head home first. I want a battle!"]}, "return_to": "TWINLEAF_TOWN", "return_until": "defeated_rival_sinnoh_starter"}
     },
-    "LAKE_VALOR": {
+    "LAKE_VALOR": {"surf_pool_percentages": "LAKE_VALOR_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Lake Valor",
       "region": "SINNOH",
@@ -2903,7 +2939,7 @@
       ],
       "area_boss": { "id": 482, "level": 50, "name": "Azelf", "victory_flag": "LAKE_VALOR_boss_defeated" }
     },
-    "LAKE_ACUITY": {
+    "LAKE_ACUITY": {"surf_pool_percentages": "LAKE_ACUITY_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Lake Acuity",
       "region": "SINNOH",
@@ -2966,7 +3002,7 @@
       "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Encounter Rotom", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_old_chateau", "boss": {"id": 10501, "name": "Black Fog", "level": 24, "no_catch": true, "victory_flag": "black_fog_banished_old_chateau", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED"}],
       "area_boss": { "id": 479, "name": "Rotom", "victory_flag": "OLD_CHATEAU_boss_defeated" }
     },
-    "MT_CORONET_BASE": {
+    "MT_CORONET_BASE": {"surf_pool_percentages": "MT_CORONET_BASE_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Mt. Coronet",
       "region": "SINNOH",
@@ -3081,7 +3117,7 @@
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" }
       ]
     },
-    "IRON_ISLAND": {
+    "IRON_ISLAND": {"surf_pool_percentages": "IRON_ISLAND_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Iron Island",
       "region": "SINNOH",
@@ -3132,7 +3168,7 @@
         {"text": "Maniac Tunnel", "action": "EXIT", "target_area": "MANIAC_TUNNEL", "condition": "can_exit", "color": "RED"}
       ]
     },
-    "GREAT_MARSH": {
+    "GREAT_MARSH": {"surf_pool_percentages": "GREAT_MARSH_SURF_PERCENTAGES", 
       "zones": [{"key": "area_1", "name": "Area 1"}, {"key": "area_2", "name": "Area 2"}, {"key": "area_3", "name": "Area 3"}, {"key": "area_4", "name": "Area 4"}, {"key": "area_5", "name": "Area 5"}, {"key": "area_6", "name": "Area 6"}],
       "zones_explore": true,
       "zone_pools": {"area_1": "SINNOH_GREAT_MARSH_AREA_1_PERCENTAGES", "area_2": "SINNOH_GREAT_MARSH_AREA_2_PERCENTAGES", "area_3": "SINNOH_GREAT_MARSH_AREA_3_PERCENTAGES", "area_4": "SINNOH_GREAT_MARSH_AREA_4_PERCENTAGES", "area_5": "SINNOH_GREAT_MARSH_AREA_5_PERCENTAGES", "area_6": "SINNOH_GREAT_MARSH_AREA_6_PERCENTAGES"},
@@ -3149,7 +3185,7 @@
         { "text": "Pastoria City", "action": "EXIT", "target_area": "PASTORIA_CITY", "condition": "can_exit", "color": "RED" }
       ]
     },
-    "VALLEY_WINDWORKS": {
+    "VALLEY_WINDWORKS": {"surf_pool_percentages": "VALLEY_WINDWORKS_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Valley Windworks",
       "region": "SINNOH",
@@ -3191,7 +3227,7 @@
         { "text": "BATTLE GALACTIC", "action": "GALACTIC_GAUNTLET", "flag_condition": "not windworks_cleared", "color": "GOLD" }
       ]
     },
-    "VICTORY_ROAD_SINNOH": {
+    "VICTORY_ROAD_SINNOH": {"surf_pool_percentages": "VICTORY_ROAD_SINNOH_SURF_PERCENTAGES", 
       "area_type": "dungeon",
       "route_name": "Victory Road",
       "region": "SINNOH",
@@ -3315,7 +3351,7 @@
       "night_pool_percentages": "SINNOH_ROUTE_202_NIGHT_PERCENTAGES",
       "berry_trees": ["ASPEAR_BERRY", "CHESTO_BERRY"]
     },
-    "SINNOH_ROUTE_203": {
+    "SINNOH_ROUTE_203": {"surf_pool_percentages": "SINNOH_ROUTE_203_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 203",
       "region": "SINNOH",
@@ -3359,7 +3395,7 @@
       "berry_trees": ["RAWST_BERRY", "CHERI_BERRY"],
         "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [396, 390], "team_choice": {"387": [396, 390], "390": [396, 393], "393": [396, 387]}, "levels": [7, 9], "rewards": {"balls": 5}, "dialogue": {"intro": ["{rival_name}: Hey, {player_name}! I've been waiting for you!", "I'm heading to Oreburgh for my first Gym badge. But first, a battle!"], "player_won": ["{rival_name}: What?! I'll have to train even harder!"], "player_lost": ["{rival_name}: Ha! I win! That'll be a million dollars, thanks!"]}}, "condition": "received_pokedex_sinnoh", "flag_check": "defeated_rival_route203"}
     },
-    "SINNOH_ROUTE_204": {
+    "SINNOH_ROUTE_204": {"surf_pool_percentages": "SINNOH_ROUTE_204_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 204",
       "region": "SINNOH",
@@ -3403,7 +3439,7 @@
       "night_pool_percentages": "SINNOH_ROUTE_204_NIGHT_PERCENTAGES",
       "berry_trees": ["PECHA_BERRY", "RAWST_BERRY"]
     },
-    "SINNOH_ROUTE_205": {
+    "SINNOH_ROUTE_205": {"surf_pool_percentages": "SINNOH_ROUTE_205_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 205",
       "region": "SINNOH",
@@ -3522,7 +3558,7 @@
       "next_area": "MT_CORONET_BASE",
       "berry_trees": ["PINAP_BERRY", "CHERI_BERRY"]
     },
-    "SINNOH_ROUTE_208": {
+    "SINNOH_ROUTE_208": {"surf_pool_percentages": "SINNOH_ROUTE_208_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 208",
       "region": "SINNOH",
@@ -3558,7 +3594,7 @@
       "night_pool_percentages": "SINNOH_ROUTE_208_NIGHT_PERCENTAGES",
       "berry_trees": ["NANAB_BERRY", "WEPEAR_BERRY", "PINAP_BERRY", "RAZZ_BERRY", "BLUK_BERRY"]
     },
-    "SINNOH_ROUTE_209": {
+    "SINNOH_ROUTE_209": {"surf_pool_percentages": "SINNOH_ROUTE_209_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 209",
       "region": "SINNOH",
@@ -3593,7 +3629,7 @@
       "next_area": "SOLACEON_TOWN",
       "berry_trees": ["RAZZ_BERRY", "BLUK_BERRY"]
     },
-    "SINNOH_ROUTE_210": {
+    "SINNOH_ROUTE_210": {"surf_pool_percentages": "SINNOH_ROUTE_210_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 210",
       "region": "SINNOH",
@@ -3682,7 +3718,7 @@
       ],
       "next_area": "CELESTIC_TOWN"
     },
-    "SINNOH_ROUTE_212": {
+    "SINNOH_ROUTE_212": {"surf_pool_percentages": "SINNOH_ROUTE_212_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 212",
       "region": "SINNOH",
@@ -3727,7 +3763,7 @@
       "weather": "RAIN",
       "berry_trees": ["NANAB_BERRY", "BLUK_BERRY", "PECHA_BERRY"]
     },
-    "SINNOH_ROUTE_213": {
+    "SINNOH_ROUTE_213": {"surf_pool_percentages": "SINNOH_ROUTE_213_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 213",
       "region": "SINNOH",
@@ -3763,7 +3799,7 @@
       "next_area": "PASTORIA_CITY",
       "berry_trees": ["SPELON_BERRY", "PAMTRE_BERRY", "WEPEAR_BERRY"]
     },
-    "SINNOH_ROUTE_214": {
+    "SINNOH_ROUTE_214": {"surf_pool_percentages": "SINNOH_ROUTE_214_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 214",
       "region": "SINNOH",
@@ -3903,7 +3939,7 @@
       "next_area": "SNOWPOINT_CITY",
       "weather": "SNOW"
     },
-    "SINNOH_ROUTE_218": {
+    "SINNOH_ROUTE_218": {"surf_pool_percentages": "SINNOH_ROUTE_218_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 218",
       "region": "SINNOH",
@@ -3939,7 +3975,7 @@
       "next_area": "CANALAVE_CITY",
       "berry_trees": ["PAMTRE_BERRY", "WATMEL_BERRY"]
     },
-    "SINNOH_ROUTE_222": {
+    "SINNOH_ROUTE_222": {"surf_pool_percentages": "SINNOH_ROUTE_222_SURF_PERCENTAGES", 
       "area_type": "wild_route",
       "route_name": "Route 222",
       "region": "SINNOH",

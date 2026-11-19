@@ -1,4 +1,11 @@
 {
+  "PACIFIDLOG_TOWN_SURF_PERCENTAGES": {"72": 50, "279": 35, "73": 15},
+  "SOOTOPOLIS_CITY_SURF_PERCENTAGES": {"129": 100},
+  "MOSSDEEP_CITY_SURF_PERCENTAGES": {"72": 50, "279": 35, "73": 15},
+  "LILYCOVE_CITY_SURF_PERCENTAGES": {"72": 65, "278": 30, "279": 5},
+  "SLATEPORT_CITY_SURF_PERCENTAGES": {"72": 65, "278": 30, "279": 5},
+  "DEWFORD_TOWN_SURF_PERCENTAGES": {"72": 65, "278": 30, "279": 5},
+  "PETALBURG_CITY_SURF_PERCENTAGES": {"183": 50, "184": 31, "283": 15, "284": 4},
   "HOENN_OLD_ROD_POOL_PERCENTAGES": {"129": 70, "72": 30},
   "HOENN_GOOD_ROD_POOL_PERCENTAGES": {"129": 30, "72": 20, "320": 25, "318": 25},
   "HOENN_SUPER_ROD_POOL_PERCENTAGES": {"320": 25, "319": 15, "341": 20, "120": 20, "130": 10, "349": 10},
@@ -762,7 +769,7 @@
       "next_area": "HOENN_ROUTE_102",
       "on_enter_event": null
     },
-    "PETALBURG_CITY": {
+    "PETALBURG_CITY": {"surf_pool_percentages": "PETALBURG_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Petalburg City",
       "region": "HOENN",
@@ -808,7 +815,7 @@
       "next_area": "HOENN_ROUTE_116",
       "on_enter_event": null
     },
-    "DEWFORD_TOWN": {
+    "DEWFORD_TOWN": {"surf_pool_percentages": "DEWFORD_TOWN_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Dewford Town",
       "region": "HOENN",
@@ -829,7 +836,7 @@
       "next_area": "HOENN_GRANITE_CAVE",
       "on_enter_event": null
     },
-    "SLATEPORT_CITY": {
+    "SLATEPORT_CITY": {"surf_pool_percentages": "SLATEPORT_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Slateport City",
       "region": "HOENN",
@@ -984,7 +991,7 @@
       "next_area": "HOENN_ROUTE_119",
       "on_enter_event": null
     },
-    "LILYCOVE_CITY": {
+    "LILYCOVE_CITY": {"surf_pool_percentages": "LILYCOVE_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Lilycove City",
       "region": "HOENN",
@@ -1015,7 +1022,7 @@
       "on_enter_event": null,
       "department_store": true
     },
-    "MOSSDEEP_CITY": {
+    "MOSSDEEP_CITY": {"surf_pool_percentages": "MOSSDEEP_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Mossdeep City",
       "region": "HOENN",
@@ -1039,7 +1046,7 @@
       "next_area": "HOENN_ROUTE_124",
       "on_enter_event": null
     },
-    "SOOTOPOLIS_CITY": {
+    "SOOTOPOLIS_CITY": {"surf_pool_percentages": "SOOTOPOLIS_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Sootopolis City",
       "region": "HOENN",
@@ -1059,7 +1066,7 @@
       "next_area": "HOENN_CAVE_OF_ORIGIN",
       "on_enter_event": null
     },
-    "PACIFIDLOG_TOWN": {
+    "PACIFIDLOG_TOWN": {"surf_pool_percentages": "PACIFIDLOG_TOWN_SURF_PERCENTAGES", 
       "area_type": "town",
       "route_name": "Pacifidlog Town",
       "region": "HOENN",

@@ -2958,7 +2958,7 @@
       "trainer_pool": [
         { "sprite": "gambler.png", "name": "Stan", "class": "GAMBLER", "team": [60, 60, 61], "levels": [22, 22, 22], "rewards": { "balls": 3 } },
         { "sprite": "lass.png", "name": "Paige", "class": "LASS", "team": [29, 30], "levels": [23, 23], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Eli & Anne", "class": "TWINS", "team": [35, 39], "levels": [22, 22], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Eli & Anne", "class": "TWINS", "battle_options": {"double": true}, "team": [35, 39], "levels": [22, 22], "rewards": { "balls": 3 } },
         { "sprite": "supernerd.png", "name": "Leslie", "class": "SUPER_NERD", "team": [109], "levels": [26], "rewards": { "balls": 3 } },
         { "sprite": "lass.png", "name": "Andrea", "class": "LASS", "team": [52, 52, 52], "levels": [24, 24, 24], "rewards": { "balls": 3 } },
         { "sprite": "supernerd.png", "name": "Aidan", "class": "SUPER_NERD", "team": [100, 109, 100, 81], "levels": [20, 20, 20, 20], "rewards": { "balls": 3 } },
@@ -3142,7 +3142,7 @@
         { "sprite": "fisherman.png", "name": "Chip", "class": "FISHERMAN", "team": [72, 118], "levels": [24, 24], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Hank", "class": "FISHERMAN", "team": [118], "levels": [27], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Elliot", "class": "FISHERMAN", "team": [60, 90, 118, 116], "levels": [21, 21, 21, 21], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Gia & Jes", "class": "YOUNG_COUPLE", "team": [32, 29], "levels": [24, 24], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Gia & Jes", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [32, 29], "levels": [24, 24], "rewards": { "balls": 3 } },
         { "sprite": "rocker.png", "name": "Luca", "class": "ROCKER", "team": [100, 101], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "camper.png", "name": "Justin", "class": "CAMPER", "team": [32, 33], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Andrew", "class": "FISHERMAN", "team": [129, 129], "levels": [24, 24], "rewards": { "balls": 3 } }
@@ -3239,7 +3239,7 @@
         { "sprite": "biker.png", "name": "Gerald", "class": "BIKER", "team": [109, 89], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "biker.png", "name": "Lukas", "class": "BIKER", "team": [109, 109, 88, 109], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Benny", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [29, 29], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Kiri & Jan", "class": "TWINS", "team": [4, 7], "levels": [29, 29], "rewards": { "balls": 3 } }
+        { "sprite": "lass.png", "name": "Kiri & Jan", "class": "TWINS", "battle_options": {"double": true}, "team": [4, 7], "levels": [29, 29], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3262,7 +3262,7 @@
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "picnicker.png", "name": "Celia", "class": "PICNICKER", "team": [35], "levels": [33], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Ron & Mya", "class": "CRUSH_KIN", "team": [107, 106], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Ron & Mya", "class": "CRUSH_KIN", "battle_options": {"double": true}, "team": [107, 106], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "picnicker.png", "name": "Becky", "class": "PICNICKER", "team": [25, 26], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Edwin", "class": "BIRD_KEEPER", "team": [17, 83, 84, 16], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
         { "sprite": "beauty.png", "name": "Olivia", "class": "BEAUTY", "team": [1, 2], "levels": [29, 29], "rewards": { "balls": 3 } },
@@ -3347,7 +3347,7 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png", "name": "Lea & Jed", "class": "YOUNG_COUPLE", "team": [78, 38], "levels": [29, 29], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Lea & Jed", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [78, 38], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "biker.png", "name": "Ruben", "class": "BIKER", "team": [110, 109, 110], "levels": [28, 28, 28], "rewards": { "balls": 3 } },
         { "sprite": "cueball.png", "name": "Luke", "class": "CUE_BALL", "team": [56, 66], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "biker.png", "name": "Lao", "class": "BIKER", "team": [88, 109], "levels": [29, 29], "rewards": { "balls": 3 } },
@@ -3444,7 +3444,7 @@
         { "sprite": "swimmer_m.png", "name": "David", "class": "SWIMMER", "team": [118, 90, 119], "levels": [29, 29, 29], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_m.png", "name": "Douglas", "class": "SWIMMER", "team": [116, 72, 72, 118], "levels": [27, 27, 27, 27], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_m.png", "name": "Matthew", "class": "SWIMMER", "team": [60, 61], "levels": [30, 30], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Lia & Luc", "class": "SIS_AND_BRO", "team": [118, 119], "levels": [30, 30], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Lia & Luc", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [118, 119], "levels": [30, 30], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_m.png", "name": "Axle", "class": "SWIMMER", "team": [72, 72, 120, 116, 73], "levels": [27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_f.png", "name": "Anya", "class": "SWIMMER", "team": [60, 118, 119, 118, 60], "levels": [27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_f.png", "name": "Alice", "class": "SWIMMER", "team": [118, 119], "levels": [30, 30], "rewards": { "balls": 3 } },
@@ -3511,7 +3511,7 @@
       "trainer_pool": [
         { "sprite": "fisherman.png", "name": "Wade", "class": "FISHERMAN", "team": [129, 129, 129, 129, 129, 129], "levels": [27, 27, 27, 27, 27, 27], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Ronald", "class": "FISHERMAN", "team": [119, 118, 119, 119], "levels": [28, 28, 28, 28], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Lil & Ian", "class": "SIS_AND_BRO", "team": [117, 121], "levels": [33, 33], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Lil & Ian", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [117, 121], "levels": [33, 33], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_m.png", "name": "Spencer", "class": "SWIMMER", "team": [117, 73], "levels": [33, 33], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Claude", "class": "FISHERMAN", "team": [90, 91], "levels": [31, 31], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Nolan", "class": "FISHERMAN", "team": [119, 118], "levels": [33, 33], "rewards": { "balls": 3 } },
@@ -4114,7 +4114,7 @@
         { "sprite": "juggler.png", "name": "Nelson", "class": "JUGGLER", "team": [96, 97, 64, 64], "levels": [41, 41, 41, 41], "rewards": { "balls": 3 } },
         { "sprite": "acetrainer_f.png", "name": "Alexa", "class": "COOLTRAINER", "team": [35, 39, 53, 87, 113], "levels": [42, 42, 42, 42, 42], "rewards": { "balls": 3 } },
         { "sprite": "acetrainer_m.png", "name": "George", "class": "COOLTRAINER", "team": [103, 28, 91, 101, 59], "levels": [42, 42, 42, 42, 42], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Ray & Tyra", "class": "COOL_COUPLE", "team": [31, 34], "levels": [45, 45], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Ray & Tyra", "class": "COOL_COUPLE", "battle_options": {"double": true}, "team": [31, 34], "levels": [45, 45], "rewards": { "balls": 3 } },
         { "sprite": "acetrainer_f.png", "name": "Caroline", "class": "COOLTRAINER", "team": [69, 70, 71, 46, 47], "levels": [42, 42, 42, 42, 42], "rewards": { "balls": 3 } },
         { "sprite": "acetrainer_m.png", "name": "Colby", "class": "COOLTRAINER", "team": [99, 61, 73, 117, 9], "levels": [41, 42, 42, 42, 43], "rewards": { "balls": 3 } }
       ],

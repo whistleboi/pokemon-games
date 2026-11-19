@@ -95,9 +95,25 @@ check(st.rows[_lap[1] - 1][_lap[0]] == "." and st.rows[_lap[1] - 2][_lap[0]] == 
       f"Tangelo: the tile north of Lapras {_lap} is waded, from the shore")
 check(not st._has("HM_SURF") and st._open((_lap[0], _lap[1] - 1)), "Tangelo: ...and it's open without Surf")
 
-print("4) a room's pool is left as it is (swimmers stand in Cerulean Gym's)")
-_cg = _tm["CERULEAN_CITY"]["rooms"]["gym"]
-check(not _cg.get("surf") and any(c in _art.SEA_CHARS for r in _cg["art"] for c in r), "Cerulean Gym's pool: not marked surf, so walked as before")
+print("4) a Gym's pool needs Surf too (FireRed's and Orange 5.7's own water, behaviour 0x15), and Misty is reached on foot")
+story.story_flags["visited_BILLS_HOUSE"] = True
+story.inventory.pop("HM_SURF", None)
+st = town("CERULEAN_CITY", "KANTO")
+st._go("gym", "")
+for _ in range(5):
+    st.update()
+st = g.current_state
+_pool = [(x, y) for y, r in enumerate(st.rows) for x, c in enumerate(r) if c == "o"]
+check(getattr(st, "room", None) == "gym" and len(_pool) > 100, f"Cerulean Gym: its pool ({len(_pool)} tiles) is Surf water")
+_seen, _todo = {tuple(st.player)}, [tuple(st.player)]
+while _todo:
+    _x, _y = _todo.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _t = (_x + _dx, _y + _dy)
+        if _t not in _seen and 0 <= _t[0] < st.w and 0 <= _t[1] < st.h and st.rows[_t[1]][_t[0]] == ".":
+            _seen.add(_t); _todo.append(_t)
+check(any((8 + dx, 6 + dy) in _seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))),
+      f"Cerulean Gym: Misty (8, 6) is reached on foot, round the pool (FireRed's walkway) from {st.player}")
 
 print("5) wild Pokemon on a town's water: its own Surf table, else the nearest water's, else Tentacool")
 fails_before = fails
@@ -141,4 +157,16 @@ type(st).SURF_RATE = _keep
 check(isinstance(g.current_state, _WTS), "with a Repel going, no wild Pokemon on the water")
 story.repel_routes = 0
 story.inventory.pop("HM_SURF", None)
+
+print("6) Sinnoh's water: its routes' and towns' own Surf tables (BDSP, from Bulbapedia); towns surfed in the games have Surf water")
+_sd = json.load(open(os.path.join("assets", "sinnoh_area_data.json"), encoding="utf-8"))
+_ssp = _sd["STORY_PROGRESSION"]
+_have = [k for k in ("SINNOH_ROUTE_213", "SINNOH_ROUTE_222", "LAKE_VERITY", "GREAT_MARSH", "TWINLEAF_TOWN", "CANALAVE_CITY", "SUNYSHORE_CITY")
+         if _ssp[k].get("surf_pool_percentages") in _sd]
+check(len(_have) == 7, f"Sinnoh routes, lakes and towns have Surf tables ({_have})")
+check(set(_sd["SINNOH_ROUTE_222_SURF_PERCENTAGES"]) <= {"72", "73", "278", "279"} and "72" in _sd["SINNOH_ROUTE_222_SURF_PERCENTAGES"],
+      f"Route 222's water: Tentacool, Wingull and their evolutions ({_sd['SINNOH_ROUTE_222_SURF_PERCENTAGES']})")
+check(all(not any("~" in r for r in _tm[k]["art"]) and any("o" in r for r in _tm[k]["art"])
+          for k in ("CANALAVE_CITY", "CELESTIC_TOWN", "ETERNA_CITY", "PASTORIA_CITY", "TWINLEAF_TOWN")),
+      "Canalave, Celestic, Eterna, Pastoria and Twinleaf's water is Surf water (it was a pond you couldn't enter)")
 print("FAILURES:", fails)

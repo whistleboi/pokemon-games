@@ -259,8 +259,8 @@ class WalkTownState(CityState):
                 self.exits[(x, y)] = target
             else:
                 self.doors[(x, y)] = kinds.get(letter, "house")
-        deep = art.SEA_CHARS if m.get("surf", not getattr(self, "room", None)) else ""  # (a town's sea is crossed with Surf, as on the routes (11-18: every town, not only those
-        wade = {tuple(t) for t in m.get("wade", [])}   # marked "surf"; "surf": false walks it); a room's pool only if marked. "wade": sea tiles walked anyway, Tangelo's to Lapras)
+        deep = art.SEA_CHARS if m.get("surf", True) else ""  # (a town's water is crossed with Surf, as on the routes (11-18: every town and room, as in the games: Cerulean
+        wade = {tuple(t) for t in m.get("wade", [])}   # and Mikan Gyms' pools too); "surf": false walks it. "wade": water tiles walked anyway, Tangelo's to Lapras)
         self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else "o" if c in deep and (x, y) not in wade else "2" if c == "2" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
                      for y, row in enumerate(grid)]
         self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
@@ -1945,7 +1945,7 @@ class WalkTownState(CityState):
             grid = [row.replace(c, ".") for row in grid]
         kinds, ways = m.get("buildings", {}), m.get("exits", {})
         part = {"exits": {}, "doors": {}, "people": {}, "pads": {}, "open": set(), "grid": grid, "stops": {tuple(t) for t in m.get("stops", [])}}
-        deep = art.SEA_CHARS if m.get("surf", not room) else ""   # (as _from_art: a town's sea needs Surf, a room's pool only if marked)
+        deep = art.SEA_CHARS if m.get("surf", True) else ""   # (as _from_art: water needs Surf)
         wade = {tuple(t) for t in m.get("wade", [])}
         if m.get("dynamic_exit"):   # (a lift car: its doors open on the floor it's at now)
             ways = {c: ("ROOM:" + self._car_floor(room) if str(v).startswith("ROOM:") else v) for c, v in ways.items()}

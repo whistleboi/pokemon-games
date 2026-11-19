@@ -1,4 +1,5 @@
 {
+  "JOHTO_RUINS_OF_ALPH_SURF_PERCENTAGES": {"194": 60, "195": 40},
   "JOHTO_CLIFF_CAVE_PERCENTAGES": { "42": 20, "74": 21, "66": 11, "95": 11, "98": 11, "99": 11, "67": 4, "194": 4, "195": 4, "75": 3 },
   "JOHTO_ROUTE_48_PERCENTAGES": { "128": 21, "44": 20, "58": 16, "83": 13, "187": 11, "22": 10, "203": 5, "50": 4 },
   "JOHTO_ROUTE_47_PERCENTAGES": { "132": 32, "241": 15, "72": 15, "83": 10, "86": 8, "164": 5, "20": 4, "21": 4, "44": 4, "22": 3 },
@@ -629,7 +630,7 @@
 
         },
 
-        "RUINS_OF_ALPH": {
+        "RUINS_OF_ALPH": {"surf_pool_percentages": "JOHTO_RUINS_OF_ALPH_SURF_PERCENTAGES", 
 
             "area_type": "town",
 

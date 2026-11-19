@@ -137,7 +137,7 @@
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "beauty.png", "name": "Rose", "class": "AROMA_LADY", "team": [191, 192], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Miu & Mia", "class": "TWINS", "team": [25, 25], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Miu & Mia", "class": "TWINS", "battle_options": {"double": true}, "team": [25, 25], "levels": [50, 50], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_m.png", "name": "Samir", "class": "SWIMMER", "team": [130], "levels": [50], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_f.png", "name": "Denise", "class": "SWIMMER", "team": [170, 171], "levels": [49, 49], "rewards": { "balls": 3 } },
         { "sprite": "juggler.png", "name": "Edward", "class": "JUGGLER", "team": [100, 100, 101, 122], "levels": [46, 46, 47, 48], "rewards": { "balls": 3 } },
@@ -242,7 +242,7 @@
         { "sprite": "fisherman.png", "name": "Tylor", "class": "FISHERMAN", "team": [211, 211], "levels": [49, 49], "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [89, 42, 20], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_m.png", "name": "Mymo", "class": "SWIMMER", "team": [99, 8], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_f.png", "name": "Ava & Geb", "class": "SIS_AND_BRO", "team": [61, 121], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Ava & Geb", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [61, 121], "levels": [50, 50], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_f.png", "name": "Nicole", "class": "SWIMMER", "team": [183], "levels": [50], "rewards": { "balls": 3 } }
       ],
       "level": 55,
@@ -364,7 +364,7 @@
         { "sprite": "juggler.png", "name": "Mason", "class": "JUGGLER", "team": [100, 204, 100, 204], "levels": [47, 47, 47, 47], "rewards": { "balls": 3 } },
         { "sprite": "ranger_m.png", "name": "Madeline", "class": "POKEMON_RANGER", "team": [44, 45], "levels": [51, 51], "rewards": { "balls": 3 } },
         { "sprite": "ranger_m.png", "name": "Nicolas", "class": "POKEMON_RANGER", "team": [70, 71], "levels": [51, 51], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Eve & Jon", "class": "YOUNG_COUPLE", "team": [55, 54], "levels": [50, 50], "rewards": { "balls": 3 } }
+        { "sprite": "lass.png", "name": "Eve & Jon", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [55, 54], "levels": [50, 50], "rewards": { "balls": 3 } }
       ],
       "level": 41,
       "subregion": "SEVII",
@@ -589,7 +589,7 @@
         { "sprite": "battle_girl.png", "name": "Sharon", "class": "CRUSH_GIRL", "team": [56, 57], "levels": [37, 37], "rewards": { "balls": 3 } },
         { "sprite": "blackbelt.png", "name": "Hugh", "class": "BLACKBELT", "team": [66, 67], "levels": [37, 37], "rewards": { "balls": 3 } },
         { "sprite": "blackbelt.png", "name": "Shea", "class": "BLACKBELT", "team": [66, 67], "levels": [38, 38], "rewards": { "balls": 3 } },
-        { "sprite": "battle_girl.png", "name": "Mik & Kia", "class": "CRUSH_KIN", "team": [67, 57], "levels": [39, 39], "rewards": { "balls": 3 } },
+        { "sprite": "battle_girl.png", "name": "Mik & Kia", "class": "CRUSH_KIN", "battle_options": {"double": true}, "team": [67, 57], "levels": [39, 39], "rewards": { "balls": 3 } },
         { "sprite": "swimmer_m.png", "name": "Garrett", "class": "SWIMMER", "team": [90, 91, 8], "levels": [35, 35, 38], "rewards": { "balls": 3 } },
         { "sprite": "camper.png", "name": "Bryce", "class": "CAMPER", "team": [33, 20, 28], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
         { "sprite": "battle_girl.png", "name": "Tanya", "class": "CRUSH_GIRL", "team": [106, 107], "levels": [38, 38], "rewards": { "balls": 3 } },
@@ -1018,7 +1018,7 @@
       "min_rounds": 2,
       "trainer_pool": [
         { "sprite": "swimmer_f.png", "name": "Tisha", "class": "SWIMMER", "team": [99], "levels": [38], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Joy & Meg", "class": "TWINS", "team": [35, 35], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Joy & Meg", "class": "TWINS", "battle_options": {"double": true}, "team": [35, 35], "levels": [37, 37], "rewards": { "balls": 3 } },
         { "sprite": "beauty.png", "name": "Nikki", "class": "AROMA_LADY", "team": [69, 70], "levels": [37, 37], "rewards": { "balls": 3 } },
         { "sprite": "beauty.png", "name": "Violet", "class": "AROMA_LADY", "team": [1, 2, 2], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
         { "sprite": "school_kid_f.png", "name": "Alexis", "class": "TUBER", "team": [120, 120, 98, 98], "levels": [34, 34, 34, 34], "rewards": { "balls": 3 } },
@@ -1950,7 +1950,7 @@
       "battle_type": "mountain",
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "acetrainer_m.png", "name": "Lex & Nya", "class": "COOL_COUPLE", "team": [241, 128], "levels": [52, 52], "rewards": { "balls": 3 } },
+        { "sprite": "acetrainer_m.png", "name": "Lex & Nya", "class": "COOL_COUPLE", "battle_options": {"double": true}, "team": [241, 128], "levels": [52, 52], "rewards": { "balls": 3 } },
         { "sprite": "ranger_m.png", "name": "Jackson", "class": "POKEMON_RANGER", "team": [114, 102, 103], "levels": [49, 49, 49], "rewards": { "balls": 3 } },
         { "sprite": "ranger_m.png", "name": "Katelyn", "class": "POKEMON_RANGER", "team": [113], "levels": [52], "rewards": { "balls": 3 } },
         { "sprite": "blackbelt.png", "name": "Evan", "class": "TAMER", "team": [28, 108, 217], "levels": [48, 48, 49], "rewards": { "balls": 3 } },

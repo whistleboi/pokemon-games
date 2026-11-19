@@ -302,6 +302,7 @@ _w = next(((x, y), dx) for (x, y) in sorted(f.bridge) for dx in (-1, 1)
 r.run.player = (_wx + _wd, _wy); r.run.deck = True
 r.anim_from = r.partner = r.partner_from = r.run.player
 f.seen |= {(x, y) for x in range(f.w) for y in range(f.h)}
+f.movers = [m for m in f.movers if abs(m.x - _wx) > 6 or abs(m.y - _wy) > 6]   # (nobody wandering into the tiles looked at)
 
 
 def _bare(tiles):
@@ -465,6 +466,7 @@ _g = _tm["SINNOH_ROUTE_217"]["art"]
 _sn = next(((x, y), (dx, dy)) for y, row in enumerate(_g) for x, c in enumerate(row) if c == "8" for dx, dy in core.DIRS
            if 0 <= y - dy < len(_g) and 0 <= x - dx < len(row) and _g[y - dy][x - dx] == "." and r.run.floor.walkable(x - dx, y - dy) and not r.run.floor.occupied(x - dx, y - dy))
 (_sx, _sy), (_dx, _dy) = _sn
+r.run.floor.movers = [m for m in r.run.floor.movers if abs(m.x - _sx) > 4 or abs(m.y - _sy) > 4]   # (11-18: a wild Pokemon wandering in made this flaky)
 r.run.player = (_sx - _dx, _sy - _dy); r.anim = 0
 r.step(_dx, _dy)
 _slow = r.anim

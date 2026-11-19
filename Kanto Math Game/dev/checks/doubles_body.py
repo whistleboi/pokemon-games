@@ -442,4 +442,26 @@ if type(g.current_state).__name__ == "PokemonPartyMenuState":
     run(bd)
     check(bd.player_pokemon is story.player_team[1] and bd.phase == "MENU", f"...BLASTOISE comes in ({bd.player_pokemon.display_name}, {bd.phase})")
 
+# ---- the games' own pairs (11-18): FireRed / LeafGreen's double-battle trainers (the trainer table's double flag),
+# Kanto and Sevii: Twins, Young / Cool Couples, Sis and Bro, Crush Kin
+print("10) FireRed's pairs are double battles")
+import json as _json
+_pairs = {"pokemon_area_data.json": ["Eli & Anne", "Ray & Tyra", "Gia & Jes", "Kiri & Jan", "Ron & Mya", "Lea & Jed", "Lia & Luc", "Lil & Ian"],
+          "sevii_area_data.json": ["Mik & Kia", "Joy & Meg", "Ava & Geb", "Miu & Mia", "Eve & Jon", "Lex & Nya"]}
+_found = {}
+for _f, _names in _pairs.items():
+    _d = _json.load(open(os.path.join("assets", _f), encoding="utf-8"))
+    for _a in _d["STORY_PROGRESSION"].values():
+        for _t in (_a.get("trainer_pool") or []) if isinstance(_a, dict) else []:
+            if isinstance(_t, dict) and _t.get("name") in _names:
+                _found[_t["name"]] = _t
+check(len(_found) == 14 and all(battle_options(t).get("double") for t in _found.values()),
+      f"all 14 pairs are in the data, each marked double ({len(_found)}: {[n for n, t in _found.items() if not battle_options(t).get('double')]})")
+_t = _found.get("Eli & Anne")
+if _t:
+    story.player_team = [mon(9, 40, ["SURF"]), mon(26, 40, ["THUNDERBOLT"])]
+    _team = [mon(pid, lv, ["TACKLE"]) for pid, lv in zip(_t["team"], _t["levels"])]
+    _b = TrainerBattleState(g, _team, trainer_class=_t["class"], trainer_name=_t["name"], options=battle_options(_t))
+    check(isinstance(_b, DoubleBattleState) and len(_b.o_slots) == 2, f"Twins Eli & Anne: a double battle, both their Pokemon out ({type(_b).__name__})")
+
 print(f"##### {fails} failures")
