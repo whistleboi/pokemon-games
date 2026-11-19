@@ -16,7 +16,7 @@ CHARGE = 100          # (steps on the maps before it works again: FireRed's)
 READY_CHANCE = 0.7    # (each beaten trainer in view, each use: FireRed's 70%, pokefirered vs_seeker.c)
 # Regions whose games' own rematch teams are in our data ("rematch" tiers; Johto: the phone's): there, only trainers
 # with them want a rematch, as in the games (FireRed shows an "X" for the rest). Elsewhere every route trainer does.
-TABLE_REGIONS = {"KANTO", "SEVII", "JOHTO", "HOENN", "SINNOH"}   # (Hoenn: Emerald's table; Sinnoh: Platinum's; 11-18)
+TABLE_REGIONS = {"KANTO", "SEVII", "JOHTO", "HOENN", "SINNOH", "ORANGE"}   # (Hoenn: Emerald's; Sinnoh: Platinum's; Orange: 5.7's; 11-18)
 CHANCE = {"SINNOH": 0.5}   # (Platinum's VS Seeker: 50% a trainer, pokeplatinum vs_seeker.c; elsewhere FireRed's 70%)
 SEE = 9               # (how far "in view" reaches, in tiles)
 GIFT_AT = {"KANTO": "VERMILLION_CITY", "SEVII": "VERMILLION_CITY", "SINNOH": "SINNOH_ROUTE_207",

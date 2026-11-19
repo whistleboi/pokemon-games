@@ -174,4 +174,16 @@ check(_tri()["levels"] == [45], "Giratina caught or beaten: level 3, Staraptor L
 story.story_flags.pop("visited_CELESTIC_TOWN", None)
 story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
 check(vs_seeker._unlocked(story, ["badge:RELIC", "visited_CELESTIC_TOWN"]), "...level 2 also opens with Fantina's Relic Badge")
+print("7) Orange: 5.7's table, its first team again (5.7 filled every rematch slot with it)")
+story.enter_region("ORANGE")
+_op = g.loader.area_data["STORY_PROGRESSION"]
+_oa, _oi, _ot = next((a_, i_, t_) for a_, a in _op.items() if isinstance(a, dict) and story.area_region(a_) == "ORANGE"
+                     for i_, t_ in enumerate(a.get("trainer_pool") or []) if isinstance(t_, dict) and (t_.get("rematch") or {}).get("source") == "Orange 5.7")
+_n_oi = sum(1 for a_, a in _op.items() if isinstance(a, dict) for t_ in (a.get("trainer_pool") or []) if isinstance(t_, dict) and (t_.get("rematch") or {}).get("source") == "Orange 5.7")
+check(_n_oi >= 170, f"{_n_oi} Orange trainers carry 5.7's rematch")
+vs_seeker._ready(story).setdefault(_oa, {})[str(_oi)] = story._today()
+_r = vs_seeker.rematch(g, _oa, _oi, dict(_ot))
+check(_r["team"] == _ot["team"] and _r.get("levels") == _ot.get("levels") and _r["rewards"].get("balls", 0) > (_ot.get("rewards") or {}).get("balls", 0),
+      f"{_ot['name']}: the same team ({_r['team']}), a bigger reward ({_ot.get('rewards')} -> {_r['rewards']})")
+check(not vs_seeker._has_rematch(story, _oa, {"name": "Nobody", "class": "YOUNGSTER", "team": [19], "levels": [5]}), "an Orange trainer 5.7 gives no rematch never wants one")
 print("FAILURES:", fails)
