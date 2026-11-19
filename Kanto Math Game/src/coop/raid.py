@@ -193,6 +193,8 @@ def finish(game, host):
     from src.pokemon import growth
     from src.pokemon.evolution import base_id
     from src.world import levels
+    from src.pokemon import affection
+    from src.pokemon.items import xp_held_mult
     battle = getattr(game, "coop_raid_battle", None)
     game.coop_raid_battle = None
     if battle is None:
@@ -206,7 +208,9 @@ def finish(game, host):
         if won:
             for e in roster._state(host)["lent"].get(pid, []):
                 if e["mon"].current_hp > 0 and e["mon"].level < cap:
-                    e["mon"].gain_xp(max(1, int(growth.battle_xp(base, foe.level, e["mon"].level, trainer=False))), cap)
+                    _m = e["mon"]   # (as in an ordinary battle: affection's bonus, a Lucky Egg's half again; 11-18)
+                    _m.gain_xp(max(1, int(growth.battle_xp(base, foe.level, _m.level, trainer=False)
+                                          * affection.xp_mult(_m) * xp_held_mult(_m))), cap)
         if pid in host.guests:
             roster.lend(game, host, pid, [], replace=True)
             host.send(pid, {"t": "event", "raid_over": True, "won": bool(won)})

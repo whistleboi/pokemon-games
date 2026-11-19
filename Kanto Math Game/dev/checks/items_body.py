@@ -113,6 +113,28 @@ g.change_state(bag)
 bag.use_item("ESCAPE_ROPE")
 check(type(g.current_state).__name__ == "AreaTransitionState" and not story.inventory.get("ESCAPE_ROPE"),
       f"Escape Rope leads out of Mt. Moon -> {getattr(g.current_state, 'next_area_key', None)}")
+# ---- a Lucky Egg in a co-op raid (11-18, roadmap bug: raid XP skipped it): half again, as in an ordinary battle
+from src.coop import raid as _raid, roster as _roster
+
+
+class _Host:
+    guests = {}
+
+
+def _raid_xp(held):
+    m = mk(129); m.level = 20; m.xp = 0; m.held_item = held; m.affection = 0
+    foe = mk(130); foe.level = 30
+    b = type("B", (), {})(); b.opponent_pokemon, b.opponent_hp, b.player_won = foe, 0, True
+    b.coop_raid = {"humans": {"p1": {}}, "turn": 1, "until": 0, "said": False}
+    h = _Host(); _roster._state(h)["lent"]["p1"] = [{"mon": m}]
+    g.coop_raid_battle = b
+    _raid.finish(g, h)
+    return m.level * 100000 + m.xp, m
+
+
+_plain, _ = _raid_xp(None)
+_egg, _ = _raid_xp("LUCKY_EGG")
+check(_egg > _plain, f"a raid: the Lucky Egg's holder earns more XP ({_plain} -> {_egg})")
 print("FAILURES:", fails)
 
 print("Catch window (Jordan's to-do): bosses are sure, other fails halved; Poke Balls per Bag")
