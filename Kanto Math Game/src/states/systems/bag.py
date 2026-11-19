@@ -851,6 +851,12 @@ class BagState(GameState):
                 town.show_message(vs_seeker.use_town(town))
                 return
             walk = getattr(self.game, "dungeon_state", None)
+            if (walk is None or getattr(walk, "area_key", None) != story.current_area_key or not hasattr(walk, "run")) \
+                    and hasattr(town, "trigger_trainer_battle") and not hasattr(town, "run"):   # (a route played from its menu)
+                from src.world import vs_seeker
+                self.game.change_state(town)
+                town.show_message(vs_seeker.use_menu(town)) if hasattr(town, "show_message") else self._back_to_bag(vs_seeker.use_menu(town))
+                return
             if walk is None or getattr(walk, "area_key", None) != story.current_area_key or not hasattr(walk, "run"):
                 self._back_to_bag(["Use the VS SEEKER out on a route."])
                 return

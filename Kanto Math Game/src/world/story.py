@@ -1180,6 +1180,12 @@ class StoryManager:
         return bool(gone and self.story_flags.get(gone))
 
     def mark_trainer_defeated(self, area, index):
+        try:   # (a VS Seeker rematch won: that stage counts; src/world/vs_seeker.py)
+            from src.world import vs_seeker
+            if getattr(self, "game", None) is not None:
+                vs_seeker.on_defeated(self, area, index)
+        except Exception:
+            pass
         if area not in self.defeated_trainers:
             self.defeated_trainers[area] = set()
         self.defeated_trainers[area].add(index)

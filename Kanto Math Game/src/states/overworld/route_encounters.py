@@ -250,7 +250,9 @@ class RouteEncounters:
         if specific_index is not None:
             trainer_idx = specific_index
         else:
-            available = [
+            from src.world import vs_seeker as _vs   # (trainers the VS Seeker called back come first, 11-18)
+            available = [i for i in range(len(trainer_pool)) if _vs.is_ready(self.game.story_manager, area_key, i)
+                         and self._in_zone(trainer_pool[i])] + [
                 i
                 for i in range(len(trainer_pool))
                 if not self.game.story_manager.is_trainer_defeated(area_key, i) and self._in_zone(trainer_pool[i])

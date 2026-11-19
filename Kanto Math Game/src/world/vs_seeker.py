@@ -82,6 +82,39 @@ def use(state):
 # ---- in a town (Jordan 11-18: "Vs seeker in towns for just those 2"): a trainer battle written into a town that has
 # the games' rematch stages (only Seven Island's Psychics Dario and Rodette, FireRed's): used in that town, they may want
 # a rematch; talk to them for it. Keyed "town:<their battle's flag>".
+def use_menu(state):
+    """Used on a route played from its menu (the regions without route maps yet: Unova, Kalos, Alola, Galar,
+    Paldea): every trainer beaten there is in view; each that rematches has the usual chance. Lines to show."""
+    story = state.game.story_manager
+    left = CHARGE - charge(story)
+    if left > 0:
+        return [f"The VS Seeker's battery needs charging. Walk {left} more step{'s' if left != 1 else ''}."]
+    story.story_flags["vs_seeker_steps"] = 0
+    area = story.current_area_key
+    pool = (state.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area) or {}).get("trainer_pool") or []
+    back = []
+    for idx, info in enumerate(pool):
+        if (not isinstance(info, dict) or not story.is_trainer_defeated(area, idx) or is_ready(story, area, idx)
+                or not _route_trainer(story, info) or not _has_rematch(story, area, info)):
+            continue
+        if random.random() >= CHANCE.get(str(story.area_region(area)).upper(), READY_CHANCE):
+            continue
+        _ready(story).setdefault(area, {})[str(idx)] = story._today()
+        back.append(info.get("name", "A trainer"))
+    if not back:
+        return ["You used the VS Seeker...", "Nobody around wants a rematch right now."]
+    return ["You used the VS Seeker!"] + [f"{n} wants a rematch!" for n in back] + ["(Battle trainers on this route to meet them.)"]
+
+
+def on_defeated(story, area, index):
+    """A trainer beaten (story.mark_trainer_defeated: maps and menus alike): a VS Seeker rematch won counts."""
+    if not is_ready(story, area, index):
+        return
+    pool = (story.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area) or {}).get("trainer_pool") or []
+    info = pool[index] if 0 <= index < len(pool) and isinstance(pool[index], dict) else {}
+    won(story, area, index, stage_for(story, area, index, info))
+
+
 def town_key(ev):
     return f"town:{ev.get('flag')}"
 
@@ -152,9 +185,92 @@ def _has_rematch(story, area, info):
     return bool((info.get("rematch") or {}).get("tiers") or (info.get("phone") or {}).get("tiers"))
 
 
+# ---- made-up stronger teams (Jordan 11-18: the regions whose games have no rematch teams, and Orange, whose 5.7 table
+# only repeats the first team). Ours, built when the battle starts, the same every time for a trainer:
+# 5 stages: 1-4 at a quarter, half, three-quarters and all of the region's badges, 5 after its Champion. A stage's top
+# level is the ace of the last Gym reached then (the Champion's ace + 5 for stage 5), never under the trainer's own
+# levels + 3 a stage; each Pokemon evolves as far as its level allows (the region's own rules); every other stage adds
+# one from the route's wild Pokemon, up to six.
+MADE_REGIONS = {"ORANGE", "UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA", "ORRE"}
+MADE_STAGES = 5
+
+
+def _made(story, area, info):
+    region = str(story.area_region(area)).upper()
+    src = (info.get("rematch") or {}).get("source")
+    return region in MADE_REGIONS and (not (info.get("rematch") or {}).get("tiers") or src == "Orange 5.7")
+
+
+def _made_unlocked(story, region):
+    """[bool] x 5: which made-up stages are open now."""
+    import math
+    from src.world import levels
+    n = len(story.get_region_gym_badges(region) or []) or len(levels.gym_aces(region)) or 8
+    have = len(story.badges.get(region, []))
+    out = [have >= math.ceil(n * (k + 1) / 4) for k in range(4)]
+    out.append(bool(story.is_region_champion(region)))
+    return out
+
+
+def _made_stage(story, area, index):
+    region = str(story.area_region(area)).upper()
+    open_ = _made_unlocked(story, region)
+    done = int((story.story_flags.get("vs_stage") or {}).get(f"{area}|{index}", -1))
+    nxt = min(done + 1, MADE_STAGES - 1)
+    if open_[nxt]:
+        return nxt
+    return max((j for j in range(nxt) if open_[j]), default=-1)
+
+
+def _evolve_up(game, pid, level, rng):
+    """The species evolved as far as this level allows (a branch picked the same way every time: Eevee)."""
+    from src.pokemon import evolution
+    data = evolution._data(game)
+    pairs, mins = data.get("pairs", {}), data.get("min_level", {})
+    for _ in range(3):
+        nxt = sorted(int(k.split(">")[1]) for k in pairs if k.split(">")[0] == str(pid)
+                     and int(mins.get(k.split(">")[1], 999)) <= level and evolution.evolution_allowed(game, int(k.split(">")[1])))
+        if not nxt:
+            break
+        pid = rng.choice(nxt)
+    return pid
+
+
+def made_team(game, area, index, info, k):
+    """(team, levels) of made-up stage k for this trainer."""
+    from src.world import levels
+    story = game.story_manager
+    region = str(story.area_region(area)).upper()
+    rng = random.Random(f"{area}|{index}|{info.get('name')}|{k}")
+    base = [int(x) for x in (info.get("team") or []) if isinstance(x, int) or str(x).isdigit()]
+    base_lv = list(info.get("levels") or [])
+    aces = levels.gym_aces(region)
+    n = len(story.get_region_gym_badges(region) or []) or len(aces) or 8
+    import math
+    if k >= 4:
+        top = levels.CHAMPION_ACE.get(region, 60) + 5
+    else:
+        b = max(1, math.ceil(n * (k + 1) / 4))
+        top = aces[min(b, len(aces)) - 1] - 2 if aces else 20 + 8 * k
+    size = min(6, len(base) + (k + 1) // 2)
+    team = list(base)
+    pool = (game.loader.area_data.get("STORY_PROGRESSION", {}).get(area) or {}).get("wild_pool_percentages")
+    wild = [int(x) for x in (game.loader.area_data.get(pool) or {}) if str(x).isdigit() and int(x) < 2000] if pool else []
+    while len(team) < size:
+        team.append(rng.choice(wild) if wild else rng.choice(base or [19]))
+    lv = []
+    for i in range(len(team)):
+        own = base_lv[i] if i < len(base_lv) else (base_lv[-1] if base_lv else 10)
+        lv.append(max(own + 3 * (k + 1), top - (len(team) - 1 - i)))
+    team = [_evolve_up(game, p, l, rng) for p, l in zip(team, lv)]
+    return team, [min(100, x) for x in lv]
+
+
 def stage_for(story, area, index, info):
     """The rematch stage (index into "rematch" tiers) a trainer uses now, as FireRed picks it: the next stage you
     haven't beaten; if that stage waits for a story point not reached ("unlock"), the one before it. -1: its first team."""
+    if _made(story, area, info):
+        return _made_stage(story, area, index)
     tiers = (info.get("rematch") or {}).get("tiers") or []
     done = int((story.story_flags.get("vs_stage") or {}).get(f"{area}|{index}", -1))
     nxt = next((j for j in range(done + 1, len(tiers)) if tiers[j]), None)
@@ -190,6 +306,15 @@ def rematch(game, area, index, info):
     if not is_ready(story, area, index):
         return info
     out = dict(info, _vs_rematch=True)
+    if _made(story, area, info):   # (our own stronger teams: Orange, and the regions whose games have none)
+        j = _made_stage(story, area, index)
+        out["_vs_stage"] = j
+        if j >= 0:
+            team, lv = made_team(game, area, index, info, j)
+            out.update(team=team, levels=lv)
+            out.pop("movesets", None)
+            out.pop("team_moves", None)
+        return _bigger_reward(info, out)
     if (info.get("rematch") or {}).get("tiers"):   # (the games' own stages: FireRed's)
         j = stage_for(story, area, index, info)
         out["_vs_stage"] = j

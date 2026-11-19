@@ -186,4 +186,62 @@ _r = vs_seeker.rematch(g, _oa, _oi, dict(_ot))
 check(_r["team"] == _ot["team"] and _r.get("levels") == _ot.get("levels") and _r["rewards"].get("balls", 0) > (_ot.get("rewards") or {}).get("balls", 0),
       f"{_ot['name']}: the same team ({_r['team']}), a bigger reward ({_ot.get('rewards')} -> {_r['rewards']})")
 check(not vs_seeker._has_rematch(story, _oa, {"name": "Nobody", "class": "YOUNGSTER", "team": [19], "levels": [5]}), "an Orange trainer 5.7 gives no rematch never wants one")
+print("8) made-up stronger teams (Jordan: Orange, and the regions whose games have none): 5 stages, by badges and the Champion")
+story.enter_region("ORANGE")
+story.badges["ORANGE"] = []
+for _k in [k for k in (story.story_flags.get("vs_stage") or {}) if k.startswith(f"{_oa}|")]:
+    story.story_flags["vs_stage"].pop(_k)
+_ot2 = dict(_ot)
+vs_seeker._ready(story).setdefault(_oa, {})[str(_oi)] = story._today()
+_r0 = vs_seeker.rematch(g, _oa, _oi, dict(_ot2))
+check(_r0["_vs_stage"] == -1 and _r0["team"] == _ot2["team"], f"{_ot2['name']}, no badges: its own team ({_r0['team']})")
+_n_or = len(story.get_region_gym_badges("ORANGE") or []) or 4
+story.badges["ORANGE"] = ["B%d" % i for i in range(_n_or)]
+_seen = []
+for _k in range(4):
+    _r = vs_seeker.rematch(g, _oa, _oi, dict(_ot2))
+    _seen.append((_r["_vs_stage"], len(_r["team"]), max(_r["levels"])))
+    vs_seeker.won(story, _oa, _oi, _r["_vs_stage"])
+    vs_seeker._ready(story).setdefault(_oa, {})[str(_oi)] = story._today()
+check([x[0] for x in _seen] == [0, 1, 2, 3] and _seen[-1][2] > _seen[0][2] and _seen[-1][1] >= _seen[0][1],
+      f"all badges: stages 1-4 one win at a time, stronger each time ((stage, size, top level): {_seen})")
+check(vs_seeker.rematch(g, _oa, _oi, dict(_ot2))["_vs_stage"] == 3, "stage 5 waits for the Champion")
+story.story_flags["beat_orange_champion"] = True
+_old_champ = story.is_region_champion
+story.is_region_champion = lambda r: True
+_r5 = vs_seeker.rematch(g, _oa, _oi, dict(_ot2))
+story.is_region_champion = _old_champ
+check(_r5["_vs_stage"] == 4 and max(_r5["levels"]) >= 52, f"after the Champion: stage 5 ({_r5['team']}, {_r5['levels']})")
+check(vs_seeker.made_team(g, _oa, _oi, _ot2, 2) == vs_seeker.made_team(g, _oa, _oi, _ot2, 2), "the same team every time")
+story.enter_region("UNOVA")
+_ua, _ui, _ut = next((a_, i_, t_) for a_, a in g.loader.area_data["STORY_PROGRESSION"].items()
+                     if isinstance(a, dict) and story.area_region(a_) == "UNOVA" and a.get("wild_pool_percentages")
+                     for i_, t_ in enumerate(a.get("trainer_pool") or []) if isinstance(t_, dict) and vs_seeker._route_trainer(story, t_)
+                     and isinstance((t_.get("team") or [None])[0], int))
+check(vs_seeker._has_rematch(story, _ua, _ut), f"Unova: every route trainer rematches ({_ut['name']})")
+story.badges["UNOVA"] = ["B%d" % i for i in range(8)]
+vs_seeker._ready(story).setdefault(_ua, {})[str(_ui)] = story._today()
+_ru = vs_seeker.rematch(g, _ua, _ui, dict(_ut))
+check(_ru["_vs_stage"] >= 0 and len(_ru["team"]) >= len(_ut["team"]), f"{_ut['name']}: a stronger team ({_ut['team']} -> {_ru['team']} {_ru['levels']})")
+
+print("9) on a route played from its menu (Unova...): the VS Seeker calls beaten trainers back; the next trainer battle is one")
+_ma = _ua
+_mp = g.loader.area_data["STORY_PROGRESSION"][_ma]["trainer_pool"]
+for _i in range(len(_mp)):
+    story.mark_trainer_defeated(_ma, _i)
+story.current_area_key = _ma
+_ms = PlayState(g, classic=True) if "classic" in PlayState.__new__.__code__.co_varnames else None
+class _Fake:
+    def __init__(self):
+        self.game = g
+story.story_flags["vs_seeker_steps"] = vs_seeker.CHARGE
+_vs_ready_before = dict((story.story_flags.get("vs_ready") or {}).get(_ma, {}))
+story.story_flags.setdefault("vs_ready", {})[_ma] = {}
+_lines = vs_seeker.use_menu(_Fake())
+_ready_n = len(story.story_flags["vs_ready"][_ma])
+check(_ready_n >= 1 and any(l.endswith("wants a rematch!") for l in _lines), f"used: {_ready_n} want a rematch ({_lines[:2]})")
+_first_ready = int(next(iter(story.story_flags["vs_ready"][_ma])))
+story.mark_trainer_defeated(_ma, _first_ready)
+check(not vs_seeker.is_ready(story, _ma, _first_ready) and (story.story_flags.get("vs_stage") or {}).get(f"{_ma}|{_first_ready}") is not None,
+      "beating one (on the map or from the menu) counts the rematch: its stage is recorded, it waits again")
 print("FAILURES:", fails)
