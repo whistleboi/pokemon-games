@@ -185,8 +185,10 @@ check("KANTO_ROUTE_3" not in [o["target_area"] for o in opts], "Pewter -> Route 
 story.badges["KANTO"] = ["BOULDER"]
 c, opts = town_opts("PEWTER_CITY", "travel_options")
 check("KANTO_ROUTE_3" in [o["target_area"] for o in opts], "open after the Boulder Badge")
-c, opts = town_opts("CERULEAN_CITY", "travel_options")
-check("KANTO_ROUTE_9" not in [o["target_area"] for o in opts], "Route 9 closed before Cut")
+# (11-19: as FireRed, Route 9's gate is the Cut tree on its map (2,8: kanto_gates walks it), not a closed road out of Cerulean)
+_r9 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_r9 = (_r9.get("maps", _r9)["KANTO_ROUTE_9"].get("floors") or [_r9.get("maps", _r9)["KANTO_ROUTE_9"]])[0]["art"]
+check(_r9[8][2] == "2", "Route 9 shut before Cut: FireRed's small tree at its west end")
 story.current_area_key = "KANTO_ROUTE_7"; p7 = PlayState(g); p7.rounds_completed = 9
 sf = next(o for o in prog["KANTO_ROUTE_7"]["route_menu"] if o.get("target") == "SAFFRON_CITY")
 check(not p7._check_route_condition(sf["condition"], False, sf), "Saffron gate closed without Tea")

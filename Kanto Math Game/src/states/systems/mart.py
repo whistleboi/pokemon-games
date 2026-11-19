@@ -50,7 +50,8 @@ class PokeMartState(GameState):
 
     WEATHER_ROCKS = {"RAIN": "DAMP_ROCK", "SUN": "HEAT_ROCK", "SAND": "SMOOTH_ROCK", "SNOW": "ICY_ROCK"}
 
-    # Never on an ordinary shelf. The Up-Grade is sold only at Veilstone (Sinnoh) and the Crystal Stone
+    # Never on an ordinary shelf. The Up-Grade is sold at Veilstone (Sinnoh), given by Silph Co.'s scientist after the Sevii story
+    # (Jordan 11-19) and a Goldenrod Game Corner prize; the Crystal Stone
     # only at Pummelo (Orange Islands), through those areas' "extra_stock".
     NEVER_SOLD = {"UPGRADE", "UP_GRADE", "CRYSTAL_STONE"}
 

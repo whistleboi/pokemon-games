@@ -980,7 +980,7 @@ class WalkTownState(CityState):
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)
-        if to not in self.exits and self._surf_wild(to):
+        if to not in self.exits and (self._surf_wild(to) or self._grass_wild(to)):
             return
         if to in self.exits:
             self.walk_goal = None
@@ -1179,7 +1179,8 @@ class WalkTownState(CityState):
         """The water beside you (the way you face first) that you can fish in, or None: the town has rod Pokemon (its
         "can_fish"), you have a rod, and you're outdoors on our own map, or in a room of it that is out of doors (the
         room's own "can_fish": Vermilion's harbour)."""
-        if not self.own_map or not self.area_data.get("can_fish"):
+        from src.states.overworld.route_actions import RouteActions as _RA
+        if not self.own_map or not _RA.fishable(self.game, self.area_key, self.area_data):
             return None
         if getattr(self, "room", None) and not ((self.town_map.get("rooms") or {}).get(self.room) or {}).get("can_fish"):
             return None
@@ -1263,12 +1264,45 @@ class WalkTownState(CityState):
         cells = [c for r in m["art"] for c in r]
         return bool(cells) and sum(c in art.SEA_CHARS for c in cells) * 2 > len(cells)
 
+    GRASS_RATE = 0.1   # (a town's tall grass: about one step in ten, like a route's)
+
+    def _grass_wild(self, to):
+        """A town's own tall grass (the area's "grass_pool_percentages"; 11-19, Jordan: the Ruins of Alph's outside grass has
+        SoulSilver's Natu and Smeargle, its Unown only inside). Not in a building, not with a Repel going. True if a battle starts."""
+        import random
+        from src.utils import Utils
+        from src.world import levels
+        from src.pokemon.data import Pokemon
+        if getattr(self, "room", None) or self.anim_from == to or getattr(self.game.story_manager, "repel_routes", 0) > 0:
+            return False
+        data = self.game.loader.area_data
+        name = (data.get("STORY_PROGRESSION", {}).get(self.area_key) or {}).get("grass_pool_percentages")
+        pool = data.get(name) if name else None
+        if not isinstance(pool, dict) or not pool or (getattr(self, "grid", None) or self.rows)[to[1]][to[0]] != '"' or random.random() >= self.GRASS_RATE:
+            return False
+        raw = self.game.loader.fetch_specific(int(Utils.weighted_random_choice(pool)))
+        if not raw:
+            return False
+        mon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, mon, self.area_key)
+        self.walk_goal = None
+        self.anim = 0
+        self._remember()
+        from src.states.battle import WildBattleState
+        battle = WildBattleState(self.game, mon, self.area_key)
+        battle.back_to_town = True
+        self.game.change_state(battle)
+        return True
+
     def _surf_mon(self):
         """A wild Pokemon from this town's water, at its place's level."""
         from src.utils import Utils
         from src.world import seasons, levels, regional_forms
         from src.pokemon.data import Pokemon
         pool, level_key = self._surf_table()
+        if level_key == self.area_key:
+            from src.world import swarms as _swarms   # (a swarm on this town's water, 11-19)
+            pool = _swarms.adjust(self.game, pool, self.area_key, "surf")
         pool = seasons.adjust_pool(self.game, regional_forms.extend_pool(self.game, pool), self.area_key)
         if not pool:
             return None

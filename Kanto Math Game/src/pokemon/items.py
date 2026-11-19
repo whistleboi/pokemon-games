@@ -77,6 +77,7 @@ FIELD = {
     "BLACK_FLUTE": {"repel": 1, "keep": True, "price": 400, "text": "A black glass flute. Its tune keeps wild Pokemon away for the next route."},
     "WHITE_FLUTE": {"attract": True, "keep": True, "price": 500, "text": "A white glass flute. Play it out on a route to draw in three wild Pokemon."},
     # (11-18: src/world/vs_seeker.py) not sold: given at Vermilion / Route 207, else after a region's 2nd badge
+    "POKE_RADAR": {"radar": True, "keep": True, "price": 0, "text": "Use it in tall grass: patches nearby shake, and rare Pokemon may jump out. Keep meeting the same kind to build a chain. It charges as you walk."},
     "VS_SEEKER": {"seeker": True, "keep": True, "price": 0, "text": "Use it out on a route: trainers you've beaten today may want a rematch. It recharges as you walk."},
 }
 BALL_PRICES = {"POKE_BALLS": 1000, "GREAT_BALL": 600, "ULTRA_BALL": 800, "PREMIER_BALL": 20, "NET_BALL": 1000,

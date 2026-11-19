@@ -519,4 +519,109 @@ _hq = _grunts12("TEAM_GALACTIC_HQ")
 check(len(_hq) == 8 and all(t.get("levels") for _i, t in _hq) and any(t["sprite"] == "pt_galactic_grunt_f.png" for _i, t in _hq + _lv),
       f"Galactic HQ: Platinum's 8 grunts, levels exact; the women grunts in Platinum's own portrait ({[t['levels'] for _i, t in _hq][:3]})")
 story.story_flags.clear(); story.story_flags.update(_sv12)
+
+print("13) swarms (src/world/swarms.py): Platinum's 22, one a day once you have the National Pokedex; Sandgem's news")
+from src.world import swarms as _sw
+from src.states.overworld.route_encounters import RouteEncounters as _RS13
+_sv13 = dict(story.story_flags)
+story.story_flags.pop("unlocked_national_dex", None)
+check(_sw.today(story, "SINNOH") is None and _sw.news(g) is None, "no swarms before the National Pokedex")
+story.story_flags["unlocked_national_dex"] = True
+_t1, _t2 = _sw.today(story, "SINNOH"), _sw.today(story, "SINNOH")
+_days = {_sw.today(story, "SINNOH", day="2026-12-%02d" % d)[0] for d in range(1, 29)}
+check(_t1 == _t2 and _t1[0] in _sw.SWARMS["SINNOH"] and len(_days) >= 8, f"one swarm a day, the same all day ({_t1}); {len(_days)} different places over 28 days")
+_area, _sp = _t1
+story.current_area_key = _area
+_rs = _RS13.__new__(_RS13); _rs.game = g; _rs.area_data = _AD[_area]
+_rs._zone = lambda: None
+_pool = _rs._get_wild_pool(_AD[_area])
+_share = _pool.get(str(_sp), 0) / max(1, sum(_pool.values()))
+_other = next(k for k in _sw.SWARMS["SINNOH"] if k != _area)
+story.current_area_key = _other
+_rs.area_data = _AD[_other]
+_pool2 = _rs._get_wild_pool(_AD[_other])
+check(0.35 <= _share <= 0.45 and str(_sw.SWARMS["SINNOH"][_other]) not in _pool2,
+      f"{_area}: {_sp} is {_share:.0%} of the grass today; {_other} has no swarm Pokemon today")
+_kid = next(q for q in _tm["SANDGEM_TOWN"]["rooms"]["assistant"]["people"] if isinstance(q, dict) and q.get("text") == "Little sibling")
+_said13 = []
+from src.states.overworld.common import _run_story_event as _rse13
+_rse13(p, _kid["event"], lambda c: True, lambda l, **k: _said13.extend(l))
+_nm13 = str(g.loader.fetch_specific(int(_sp))["name"]).replace("-", " ").title()
+check(any(_nm13 in l and _sw.place_name(_area) in l for l in _said13), f"Sandgem: the little sibling saw it on the news ({_said13[:1]})")
+story.story_flags.clear(); story.story_flags.update(_sv13)
+
+print("14) the Poke Radar (src/world/poke_radar.py): Rowan's gift after the National Pokedex; shaking grass, chains")
+from src.world import poke_radar as _pr
+from src.dungeon import core as _core14
+_sv14 = dict(story.story_flags)
+_aide = next(q for q in _tm["SANDGEM_TOWN"]["rooms"]["lab"]["people"] if isinstance(q, dict) and q.get("text") == "Lab aide ")
+story.inventory.pop("POKE_RADAR", None)
+story.story_flags.pop(_aide["event"]["flag"], None)
+story.story_flags.pop("unlocked_national_dex", None)
+_rse11(p, _aide["event"], lambda c: True, lambda l, **k: None)
+_no = story.inventory.get("POKE_RADAR", 0)
+story.story_flags["unlocked_national_dex"] = True
+_rse11(p, _aide["event"], lambda c: True, lambda l, **k: None)
+check(_aide["event"].get("requires") == ["unlocked_national_dex"] and story.inventory.get("POKE_RADAR") == 1,
+      "Sandgem's lab: the POKE RADAR once you have the National Pokedex (the test's save already counts as having it)")
+_rep14 = getattr(story, "repel_routes", 0)
+story.repel_routes = 9
+story.player_team = [mk(392)]
+r = enter("SINNOH_ROUTE_229", came_from("SINNOH_ROUTE_229"))
+f = r.run.floor
+for m in [m for m in f.movers if m.kind == "wild"]:
+    f.movers.remove(m)
+_g = [(x, y) for y in range(f.h) for x in range(f.w) if f.tile(x, y) == _core14.GRASS
+      and sum(f.tile(x + a, y + b) == _core14.GRASS for a in range(-3, 4) for b in range(-3, 4)) >= 40]
+r.run.player = _g[len(_g) // 2]; r.anim = 0
+story.radar_steps = 10
+_btn = [b for b in r._buttons() if b[1] == "RADAR"]
+check(_btn and not _btn[0][4], f"in the grass: a RADAR button, still charging ({_btn[0][5] if _btn else None})")
+story.radar_steps = _pr.CHARGE
+r.use_radar(); talk(r)
+_st = r._radar
+f.seen.update((x, y) for y in range(f.h) for x in range(f.w))
+frames(4)
+pygame.image.save(pygame.display.get_surface(), os.path.join(OUT, "radar.png"))
+check(len(_st["patches"]) == 4 and all(f.tile(*t) == _core14.GRASS for t in _st["patches"]) and _pr.charge(story) == 0,
+      f"used: 4 patches of grass shake, the radar recharges ({sorted(_st['patches'])})")
+_rp = set(g.loader.area_data[_AD["SINNOH_ROUTE_229"]["radar_pool_percentages"]])
+check({"48", "49"} <= _rp, "Route 229's radar pool has Platinum's radar-only Venonat and Venomoth")
+
+
+def _into_patch(t):
+    for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)):
+        nb = (t[0] - dx, t[1] - dy)
+        if f.walkable(*nb) and nb not in r._radar["patches"] and f.mover_at(*nb) is None:
+            r.run.player = nb; r.anim = 0; r.sliding = None; r.hop = None
+            r.step(dx, dy)
+            return True
+    return False
+
+
+_sp = 48
+for t in list(_st["patches"]):
+    _st["patches"][t]["species"] = _sp
+_t0 = next(iter(_st["patches"]))
+_into_patch(_t0)
+_met = r.encounter.payload.id if r.encounter else None
+check(r.mode == "CHOICE" and _met == _sp and _st["chain"] == 1, f"into a shaking patch: a wild Venonat jumps out (chain {_st['chain']})")
+r.run.remove(r.encounter); r.encounter = None; r.mode = "MAP"
+frames(2)
+check(len(_st["patches"]) >= 1, f"after the meeting the grass shakes again by itself ({len(_st['patches'])} patches)")
+for t in list(_st["patches"]):
+    _st["patches"][t]["species"] = _sp
+_into_patch(next(iter(_st["patches"])))
+check(_st["chain"] == 2, f"the same kind again: the chain grows ({_st['chain']})")
+r.run.remove(r.encounter); r.encounter = None; r.mode = "MAP"
+frames(2)
+_off = next(((x, y) for y in range(f.h) for x in range(f.w) if f.walkable(x, y) and (x, y) not in _st["patches"]
+             and abs(x - r.run.player[0]) + abs(y - r.run.player[1]) == 1 and f.mover_at(x, y) is None), None)
+if _off:
+    r.anim = 0; r.sliding = None; r.hop = None; r.walk_goal = None
+    r.step(_off[0] - r.run.player[0], _off[1] - r.run.player[1])
+check(_st["chain"] == 0 and not _st["patches"], "a step anywhere else: the chain breaks")
+check(_pr._shiny_chance(40) >= 1 / 200 and _pr._shiny_chance(0) < 1 / 4000, "shiny patches likelier with the chain (1 in 200 at 40)")
+story.repel_routes = _rep14
+story.story_flags.clear(); story.story_flags.update(_sv14)
 print(f"##### {fails} fails")

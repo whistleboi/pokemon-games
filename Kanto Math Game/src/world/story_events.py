@@ -308,8 +308,7 @@ EVENTS = {
                    "team": [51, 31, 34, 112], "level": 45,
                    "dialogue": {"player_won": ["Giovanni: ...Team Rocket is finished. For now.",
                                                "Giovanni vanished into the mist of the falls."]}}},
-    "dragon_elder": {"lines": ["dragon_elder_pass"], "requires": ["has_rising_badge"],
-                     "fail": ["dragon_elder_intro"]},
+    # ("dragon_elder", the old menu button's Elder, left 11-19: the Dragon Shrine's walked Elder took over in Johto N13)
 
     # ---------------- Hoenn (Omega Ruby / Alpha Sapphire) ----------------
     # The opening (dev/builders/build_hoenn_story.py): Birch isn't at his lab until he's been saved

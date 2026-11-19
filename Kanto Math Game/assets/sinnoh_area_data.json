@@ -391,6 +391,36 @@
   "VICTORY_ROAD_SINNOH_GOOD_ROD_PERCENTAGES": {"129": 100},
   "VICTORY_ROAD_SINNOH_OLD_ROD_PERCENTAGES": {"129": 100},
   "VICTORY_ROAD_SINNOH_SUPER_ROD_PERCENTAGES": {"130": 100},
+  "ETERNA_CITY_RADAR_PERCENTAGES": {"399": 23, "406": 22, "265": 8, "401": 8, "266": 8, "268": 8, "267": 1, "269": 1, "79": 22},
+  "ETERNA_FOREST_RADAR_PERCENTAGES": {"406": 23, "427": 19, "265": 8, "401": 8, "399": 8, "266": 4, "268": 4, "92": 3, "267": 1, "269": 1, "290": 22},
+  "FUEGO_IRONWORKS_RADAR_PERCENTAGES": {"126": 23, "81": 23, "419": 20, "423": 12, "304": 22},
+  "LAKE_VALOR_RADAR_PERCENTAGES": {"397": 27, "400": 27, "55": 12, "54": 12, "202": 22},
+  "LAKE_VERITY_RADAR_PERCENTAGES": {"396": 39, "399": 39, "202": 22},
+  "SINNOH_ROUTE_201_RADAR_PERCENTAGES": {"396": 39, "399": 31, "401": 8, "32": 11, "29": 11},
+  "SINNOH_ROUTE_202_RADAR_PERCENTAGES": {"399": 31, "403": 23, "396": 16, "401": 8, "161": 22},
+  "SINNOH_ROUTE_205_RADAR_PERCENTAGES": {"422": 51, "418": 12, "399": 8, "417": 8, "187": 22},
+  "SINNOH_ROUTE_206_RADAR_PERCENTAGES": {"74": 23, "77": 16, "207": 16, "66": 16, "402": 8, "343": 22},
+  "SINNOH_ROUTE_207_RADAR_PERCENTAGES": {"66": 27, "74": 23, "77": 20, "401": 8, "234": 22},
+  "SINNOH_ROUTE_208_RADAR_PERCENTAGES": {"406": 23, "399": 16, "400": 16, "280": 12, "315": 12, "235": 22},
+  "SINNOH_ROUTE_209_RADAR_PERCENTAGES": {"400": 23, "315": 20, "397": 16, "280": 16, "113": 4, "281": 22},
+  "SINNOH_ROUTE_210_RADAR_PERCENTAGES": {"123": 12, "77": 9, "397": 8, "74": 8, "333": 8, "400": 8, "307": 8, "315": 6, "66": 6, "67": 4, "113": 2, "241": 6, "128": 6, "371": 12},
+  "SINNOH_ROUTE_211_RADAR_PERCENTAGES": {"307": 31, "433": 17, "399": 8, "436": 9, "75": 8, "66": 6, "67": 12, "236": 12},
+  "SINNOH_ROUTE_212_RADAR_PERCENTAGES": {"422": 17, "315": 14, "195": 12, "183": 9, "397": 8, "281": 8, "418": 6, "453": 4, "235": 12, "88": 12},
+  "SINNOH_ROUTE_213_RADAR_PERCENTAGES": {"422": 27, "418": 20, "441": 16, "278": 16, "277": 22},
+  "SINNOH_ROUTE_214_RADAR_PERCENTAGES": {"75": 27, "111": 23, "74": 16, "228": 12, "261": 22},
+  "SINNOH_ROUTE_217_RADAR_PERCENTAGES": {"459": 31, "220": 27, "215": 20, "221": 22},
+  "SINNOH_ROUTE_221_RADAR_PERCENTAGES": {"419": 20, "203": 20, "315": 20, "185": 20, "33": 11, "30": 11},
+  "SINNOH_ROUTE_222_RADAR_PERCENTAGES": {"125": 23, "419": 16, "441": 8, "278": 8, "81": 8, "404": 8, "279": 4, "82": 4, "180": 22},
+  "SINNOH_ROUTE_225_RADAR_PERCENTAGES": {"22": 23, "67": 20, "75": 16, "20": 12, "21": 4, "19": 4, "57": 20, "56": 2},
+  "SINNOH_ROUTE_226_RADAR_PERCENTAGES": {"67": 20, "75": 16, "22": 16, "278": 12, "20": 12, "19": 4, "57": 20, "56": 2},
+  "SINNOH_ROUTE_227_RADAR_PERCENTAGES": {"323": 16, "112": 16, "22": 16, "75": 12, "110": 8, "227": 4, "322": 4, "111": 4, "324": 22},
+  "SINNOH_ROUTE_229_RADAR_PERCENTAGES": {"315": 35, "166": 16, "313": 8, "314": 8, "16": 4, "267": 4, "269": 4, "49": 20, "48": 2},
+  "SINNOH_ROUTE_230_RADAR_PERCENTAGES": {"279": 23, "419": 20, "69": 16, "315": 8, "44": 4, "70": 4, "278": 4, "175": 22},
+  "STARK_MOUNTAIN_RADAR_PERCENTAGES": {"219": 15, "112": 16, "75": 12, "110": 16, "42": 11, "323": 5, "22": 5, "111": 3, "218": 4, "227": 2, "322": 2, "109": 3, "324": 8},
+  "VALLEY_WINDWORKS_RADAR_PERCENTAGES": {"422": 35, "418": 20, "403": 16, "417": 8, "179": 22},
+  "VALOR_LAKEFRONT_RADAR_PERCENTAGES": {"400": 23, "203": 20, "397": 20, "402": 8, "228": 8, "33": 11, "30": 11},
+  "MT_CORONET_BASE_RADAR_PERCENTAGES": {"75": 11, "308": 14, "433": 16, "436": 6, "307": 10, "67": 12, "35": 5, "437": 5, "460": 5, "299": 4, "74": 3, "459": 3, "42": 7, "66": 4, "41": 3, "359": 1, "173": 1, "294": 8},
+  "SINNOH_ROUTE_204_RADAR_PERCENTAGES": {"396": 21, "399": 21, "406": 17, "403": 17, "265": 8, "401": 8, "191": 12},
   "STORY_PROGRESSION": {
     "GRAND_UNDERGROUND": {
       "area_type": "dungeon",
@@ -551,7 +581,8 @@
         "next_area": "SINNOH_ROUTE_213",
         "day_pool_percentages": "VALOR_LAKEFRONT_DAY_PERCENTAGES",
         "night_pool_percentages": "VALOR_LAKEFRONT_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [20, 22]}
+        "wild_levels": {"land": [20, 22]},
+        "radar_pool_percentages": "VALOR_LAKEFRONT_RADAR_PERCENTAGES"
     },
     "ACUITY_LAKEFRONT": {
         "area_type": "wild_route",
@@ -666,7 +697,8 @@
         "next_area": "FLOAROMA_MEADOW",
         "night_pool_percentages": "FUEGO_IRONWORKS_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [28, 30]},
-        "berry_trees": ["KELPSY_BERRY", "SITRUS_BERRY", "WEPEAR_BERRY"]
+        "berry_trees": ["KELPSY_BERRY", "SITRUS_BERRY", "WEPEAR_BERRY"],
+        "radar_pool_percentages": "FUEGO_IRONWORKS_RADAR_PERCENTAGES"
     },
     "FLOAROMA_MEADOW": {
         "area_type": "wild_route",
@@ -903,7 +935,8 @@
         "next_area": "SINNOH_ROUTE_229",
         "night_pool_percentages": "SINNOH_ROUTE_230_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [18, 52]},
-        "surf_pool_percentages": "SINNOH_ROUTE_230_SURF_PERCENTAGES"
+        "surf_pool_percentages": "SINNOH_ROUTE_230_SURF_PERCENTAGES",
+        "radar_pool_percentages": "SINNOH_ROUTE_230_RADAR_PERCENTAGES"
     },
     "RESORT_AREA": {
         "area_type": "town",
@@ -950,7 +983,8 @@
         "next_area": "SINNOH_ROUTE_228",
         "day_pool_percentages": "SINNOH_ROUTE_229_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_229_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [20, 52]}
+        "wild_levels": {"land": [20, 52]},
+        "radar_pool_percentages": "SINNOH_ROUTE_229_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_228": {
         "surf_pool_percentages": "SINNOH_ROUTE_228_SURF_PERCENTAGES",
@@ -1014,7 +1048,8 @@
         ],
         "next_area": "SINNOH_ROUTE_226",
         "night_pool_percentages": "SINNOH_ROUTE_227_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [22, 56]}
+        "wild_levels": {"land": [22, 56]},
+        "radar_pool_percentages": "SINNOH_ROUTE_227_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_226": {
         "surf_pool_percentages": "SINNOH_ROUTE_226_SURF_PERCENTAGES",
@@ -1046,7 +1081,8 @@
         ],
         "next_area": "SURVIVAL_AREA",
         "night_pool_percentages": "SINNOH_ROUTE_226_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [20, 53]}
+        "wild_levels": {"land": [20, 53]},
+        "radar_pool_percentages": "SINNOH_ROUTE_226_RADAR_PERCENTAGES"
     },
     "SURVIVAL_AREA": {
         "area_type": "town",
@@ -1104,7 +1140,8 @@
         "next_area": "FIGHT_AREA",
         "night_pool_percentages": "SINNOH_ROUTE_225_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [20, 52]},
-        "berry_trees": ["KELPSY_BERRY", "TAMATO_BERRY"]
+        "berry_trees": ["KELPSY_BERRY", "TAMATO_BERRY"],
+        "radar_pool_percentages": "SINNOH_ROUTE_225_RADAR_PERCENTAGES"
     },
     "FIGHT_AREA": {
         "area_type": "town",
@@ -1153,7 +1190,8 @@
         "next_area": "SINNOH_ROUTE_220",
         "night_pool_percentages": "SINNOH_ROUTE_221_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [28, 30]},
-        "berry_trees": ["HONDEW_BERRY", "LEPPA_BERRY", "MAGO_BERRY", "PECHA_BERRY"]
+        "berry_trees": ["HONDEW_BERRY", "LEPPA_BERRY", "MAGO_BERRY", "PECHA_BERRY"],
+        "radar_pool_percentages": "SINNOH_ROUTE_221_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_220": {
         "area_type": "wild_route",
@@ -1360,7 +1398,8 @@
         "wild_pool_percentages": "ETERNA_CITY_PERCENTAGES",
         "day_pool_percentages": "ETERNA_CITY_DAY_PERCENTAGES",
         "night_pool_percentages": "ETERNA_CITY_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [12, 15]}
+        "wild_levels": {"land": [12, 15]},
+        "radar_pool_percentages": "ETERNA_CITY_RADAR_PERCENTAGES"
     },
     "HEARTHOME_CITY": {
         "area_type": "town",
@@ -1603,7 +1642,8 @@
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 42, 198], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [33, 33, 36], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 3", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [228, 431], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [34, 36], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 4", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]}
         ],
-        "wild_levels": {"land": [2, 4]}
+        "wild_levels": {"land": [2, 4]},
+        "radar_pool_percentages": "LAKE_VERITY_RADAR_PERCENTAGES"
     },
     "LAKE_VALOR": {
         "surf_pool_percentages": "LAKE_VALOR_SURF_PERCENTAGES",
@@ -1624,7 +1664,8 @@
         ],
         "area_boss": {"id": 482, "level": 50, "name": "Azelf", "victory_flag": "LAKE_VALOR_boss_defeated"},
         "trainer_pool": [],
-        "wild_levels": {"land": [34, 36]}
+        "wild_levels": {"land": [34, 36]},
+        "radar_pool_percentages": "LAKE_VALOR_RADAR_PERCENTAGES"
     },
     "LAKE_ACUITY": {
         "surf_pool_percentages": "LAKE_ACUITY_SURF_PERCENTAGES",
@@ -1707,7 +1748,8 @@
             {"name": "Psychic Rachael", "class": "PSYCHIC", "sprite": "pt_psychic_f.png", "team": [54], "levels": [17], "rewards": {"balls": 2}}
         ],
         "wild_levels": {"land": [10, 12]},
-        "berry_trees": ["BLUK_BERRY", "CHERI_BERRY", "ORAN_BERRY", "RAZZ_BERRY"]
+        "berry_trees": ["BLUK_BERRY", "CHERI_BERRY", "ORAN_BERRY", "RAZZ_BERRY"],
+        "radar_pool_percentages": "ETERNA_FOREST_RADAR_PERCENTAGES"
     },
     "OLD_CHATEAU": {
         "area_type": "dungeon",
@@ -1782,7 +1824,8 @@
         ],
         "day_pool_percentages": "SINNOH_MT_CORONET_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_MT_CORONET_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [13, 40]}
+        "wild_levels": {"land": [13, 40]},
+        "radar_pool_percentages": "MT_CORONET_BASE_RADAR_PERCENTAGES"
     },
     "SPEAR_PILLAR": {
         "area_type": "dungeon",
@@ -1994,7 +2037,8 @@
             {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_valley_windworks_d02_22_20", "event": {"lines": ["A Potion, in a dark corner."], "gift_item": {"POTION": 1}, "flag": "got_potion_valley_windworks_d02_22_20"}},
             {"text": "ELECTIRIZER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_electirizer_valley_windworks_d02_8_9", "event": {"lines": ["An Electirizer, beside the cave wall."], "gift_item": {"ELECTIRIZER": 1}, "flag": "got_electirizer_valley_windworks_d02_8_9"}}
         ],
-        "wild_levels": {"land": [7, 9]}
+        "wild_levels": {"land": [7, 9]},
+        "radar_pool_percentages": "VALLEY_WINDWORKS_RADAR_PERCENTAGES"
     },
     "VICTORY_ROAD_SINNOH": {
         "surf_pool_percentages": "VICTORY_ROAD_SINNOH_SURF_PERCENTAGES",
@@ -2085,7 +2129,8 @@
         "day_pool_percentages": "SINNOH_ROUTE_201_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_201_NIGHT_PERCENTAGES",
         "berry_trees": ["CHERI_BERRY", "PECHA_BERRY"],
-        "wild_levels": {"land": [2, 3]}
+        "wild_levels": {"land": [2, 3]},
+        "radar_pool_percentages": "SINNOH_ROUTE_201_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_202": {
         "area_type": "wild_route",
@@ -2112,7 +2157,8 @@
         "day_pool_percentages": "SINNOH_ROUTE_202_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_202_NIGHT_PERCENTAGES",
         "berry_trees": ["ASPEAR_BERRY", "CHESTO_BERRY"],
-        "wild_levels": {"land": [2, 4]}
+        "wild_levels": {"land": [2, 4]},
+        "radar_pool_percentages": "SINNOH_ROUTE_202_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_203": {
         "surf_pool_percentages": "SINNOH_ROUTE_203_SURF_PERCENTAGES",
@@ -2181,7 +2227,8 @@
         "day_pool_percentages": "SINNOH_ROUTE_204_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_204_NIGHT_PERCENTAGES",
         "berry_trees": ["PECHA_BERRY", "RAWST_BERRY"],
-        "wild_levels": {"land": [4, 8]}
+        "wild_levels": {"land": [4, 8]},
+        "radar_pool_percentages": "SINNOH_ROUTE_204_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_205": {
         "surf_pool_percentages": "SINNOH_ROUTE_205_SURF_PERCENTAGES",
@@ -2219,7 +2266,8 @@
         ],
         "next_area": "ETERNA_CITY",
         "berry_trees": ["ASPEAR_BERRY", "CHERI_BERRY", "CHESTO_BERRY", "ORAN_BERRY", "PECHA_BERRY", "RAZZ_BERRY"],
-        "wild_levels": {"land": [8, 12]}
+        "wild_levels": {"land": [8, 12]},
+        "radar_pool_percentages": "SINNOH_ROUTE_205_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_206": {
         "area_type": "wild_route",
@@ -2256,7 +2304,8 @@
         "day_pool_percentages": "SINNOH_ROUTE_206_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_206_NIGHT_PERCENTAGES",
         "berry_trees": ["BLUK_BERRY", "RAWST_BERRY", "RAZZ_BERRY"],
-        "wild_levels": {"land": [14, 16]}
+        "wild_levels": {"land": [14, 16]},
+        "radar_pool_percentages": "SINNOH_ROUTE_206_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_207": {
         "area_type": "wild_route",
@@ -2291,7 +2340,8 @@
         "berry_trees": ["PINAP_BERRY", "CHERI_BERRY"],
         "day_pool_percentages": "SINNOH_ROUTE_207_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_207_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [5, 7]}
+        "wild_levels": {"land": [5, 7]},
+        "radar_pool_percentages": "SINNOH_ROUTE_207_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_208": {
         "surf_pool_percentages": "SINNOH_ROUTE_208_SURF_PERCENTAGES",
@@ -2324,7 +2374,8 @@
         "next_area": "HEARTHOME_CITY",
         "night_pool_percentages": "SINNOH_ROUTE_208_NIGHT_PERCENTAGES",
         "berry_trees": ["BLUK_BERRY", "NANAB_BERRY", "PINAP_BERRY", "RAZZ_BERRY", "WEPEAR_BERRY"],
-        "wild_levels": {"land": [16, 18]}
+        "wild_levels": {"land": [16, 18]},
+        "radar_pool_percentages": "SINNOH_ROUTE_208_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_209": {
         "surf_pool_percentages": "SINNOH_ROUTE_209_SURF_PERCENTAGES",
@@ -2362,7 +2413,8 @@
         "next_area": "SOLACEON_TOWN",
         "berry_trees": ["BLUK_BERRY", "CHESTO_BERRY", "LEPPA_BERRY", "RAZZ_BERRY"],
         "night_pool_percentages": "SINNOH_ROUTE_209_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [16, 18]}
+        "wild_levels": {"land": [16, 18]},
+        "radar_pool_percentages": "SINNOH_ROUTE_209_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_210": {
         "surf_pool_percentages": "SINNOH_ROUTE_210_SURF_PERCENTAGES",
@@ -2415,7 +2467,8 @@
         "day_pool_percentages": "SINNOH_ROUTE_210_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_210_NIGHT_PERCENTAGES",
         "berry_trees": ["AGUAV_BERRY", "ASPEAR_BERRY", "CHESTO_BERRY", "PINAP_BERRY", "RAZZ_BERRY", "SITRUS_BERRY", "WEPEAR_BERRY", "WIKI_BERRY"],
-        "wild_levels": {"land": [18, 26]}
+        "wild_levels": {"land": [18, 26]},
+        "radar_pool_percentages": "SINNOH_ROUTE_210_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_211": {
         "area_type": "wild_route",
@@ -2447,7 +2500,8 @@
         "next_area": "CELESTIC_TOWN",
         "night_pool_percentages": "SINNOH_ROUTE_211_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [12, 28]},
-        "berry_trees": ["ASPEAR_BERRY", "GREPA_BERRY", "IAPAPA_BERRY", "PECHA_BERRY"]
+        "berry_trees": ["ASPEAR_BERRY", "GREPA_BERRY", "IAPAPA_BERRY", "PECHA_BERRY"],
+        "radar_pool_percentages": "SINNOH_ROUTE_211_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_212": {
         "surf_pool_percentages": "SINNOH_ROUTE_212_SURF_PERCENTAGES",
@@ -2509,7 +2563,8 @@
         "berry_trees": ["ASPEAR_BERRY", "BLUK_BERRY", "NANAB_BERRY", "PECHA_BERRY", "PINAP_BERRY", "SITRUS_BERRY"],
         "day_pool_percentages": "SINNOH_ROUTE_212_DAY_PERCENTAGES",
         "night_pool_percentages": "SINNOH_ROUTE_212_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [16, 20]}
+        "wild_levels": {"land": [16, 20]},
+        "radar_pool_percentages": "SINNOH_ROUTE_212_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_213": {
         "surf_pool_percentages": "SINNOH_ROUTE_213_SURF_PERCENTAGES",
@@ -2550,7 +2605,8 @@
         "next_area": "PASTORIA_CITY",
         "berry_trees": ["AGUAV_BERRY", "IAPAPA_BERRY", "PAMTRE_BERRY", "RAWST_BERRY", "SPELON_BERRY", "WEPEAR_BERRY"],
         "night_pool_percentages": "SINNOH_ROUTE_213_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [20, 22]}
+        "wild_levels": {"land": [20, 22]},
+        "radar_pool_percentages": "SINNOH_ROUTE_213_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_214": {
         "surf_pool_percentages": "SINNOH_ROUTE_214_SURF_PERCENTAGES",
@@ -2589,7 +2645,8 @@
         "next_area": "VEILSTONE_CITY",
         "night_pool_percentages": "SINNOH_ROUTE_214_NIGHT_PERCENTAGES",
         "berry_trees": ["CHERI_BERRY", "CHESTO_BERRY", "DURIN_BERRY", "POMEG_BERRY", "RAZZ_BERRY", "SITRUS_BERRY", "WATMEL_BERRY"],
-        "wild_levels": {"land": [22, 24]}
+        "wild_levels": {"land": [22, 24]},
+        "radar_pool_percentages": "SINNOH_ROUTE_214_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_215": {
         "area_type": "wild_route",
@@ -2699,7 +2756,8 @@
         "next_area": "SNOWPOINT_CITY",
         "weather": "SNOW",
         "night_pool_percentages": "SINNOH_ROUTE_217_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [34, 36]}
+        "wild_levels": {"land": [34, 36]},
+        "radar_pool_percentages": "SINNOH_ROUTE_217_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_218": {
         "surf_pool_percentages": "SINNOH_ROUTE_218_SURF_PERCENTAGES",
@@ -2771,7 +2829,8 @@
         "next_area": "SUNYSHORE_CITY",
         "berry_trees": ["AGUAV_BERRY", "BELUE_BERRY", "DURIN_BERRY", "MAGO_BERRY", "QUALOT_BERRY", "SPELON_BERRY", "WIKI_BERRY"],
         "night_pool_percentages": "SINNOH_ROUTE_222_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [40, 42]}
+        "wild_levels": {"land": [40, 42]},
+        "radar_pool_percentages": "SINNOH_ROUTE_222_RADAR_PERCENTAGES"
     },
     "SINNOH_ROUTE_223": {
         "area_type": "wild_route",
@@ -2914,7 +2973,8 @@
         "area_boss": {"id": 485, "level": 70, "name": "Heatran", "victory_flag": "STARK_MOUNTAIN_boss_defeated"},
         "next_area": "SUNYSHORE_CITY",
         "night_pool_percentages": "SINNOH_STARK_MOUNTAIN_NIGHT_PERCENTAGES",
-        "wild_levels": {"land": [22, 58]}
+        "wild_levels": {"land": [22, 58]},
+        "radar_pool_percentages": "STARK_MOUNTAIN_RADAR_PERCENTAGES"
     },
     "FULLMOON_ISLAND": {
         "area_type": "dungeon",

@@ -12498,6 +12498,12 @@
     },
     "SNOWPOINT_CITY:Trade lady": {
       "sheet": "pt_woman2.png"
+    },
+    "SANDGEM_TOWN:Little sibling": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "JOHTO_ROUTE_43:BLACK APRICORN TREE": {
+      "pic": "tiles/ss/ow_bonguri_bk.png"
     }
   },
   "townsperson": "NPC 17.png",

@@ -30,13 +30,14 @@ def pool(area):
 
 print("1) critical / high")
 check("JOHTO_ROUTE_38" in links("ECRUTEAK_CITY") and "JOHTO_ROUTE_36" not in links("ECRUTEAK_CITY"), "Ecruteak: Route 38, not Route 36")
-rt = prog["RADIO_TOWER"]["trainer_pool"]
-check([t["name"] for t in rt][-4:] == ["Executive Petrel", "Executive Proton", "Executive Ariana", "Executive Archer"]
-      and rt[-1].get("victory_flag") == "radio_tower_cleared" and rt[-4]["team"] == [109, 109, 109, 110, 109, 109],
+# (11-19: the walked maps added SoulSilver's own grunts after the Executives, so they're found by name, in order, not as the pool's last)
+rt = [t for t in prog["RADIO_TOWER"]["trainer_pool"] if t["name"].startswith("Executive")]
+check([t["name"] for t in rt] == ["Executive Petrel", "Executive Proton", "Executive Ariana", "Executive Archer"]
+      and rt[-1].get("victory_flag") == "radio_tower_cleared" and rt[0]["team"] == [109, 109, 109, 110, 109, 109],
       "Radio Tower: Petrel (6 Pokemon), Proton, Ariana, Archer last")
-hq = prog["ROCKET_HQ"]["trainer_pool"]
-check(hq[-1]["name"] == "Executive Ariana" and hq[-1]["team"] == [24, 44, 198] and hq[-2]["name"] == "Executive Petrel",
-      "Rocket HQ: Petrel, then Ariana (Arbok, Gloom, Murkrow)")
+hq = [t for t in prog["ROCKET_HQ"]["trainer_pool"] if t["name"].startswith("Executive")]
+check(hq[-1]["name"] == "Executive Ariana" and hq[-1]["team"] == [24, 44, 198] and hq[-1].get("victory_flag") == "rocket_hq_cleared"
+      and hq[-2]["name"] == "Executive Petrel", "Rocket HQ: Petrel, then Ariana (Arbok, Gloom, Murkrow)")
 kim = prog["ECRUTEAK_DANCE_THEATER"]["trainer_pool"]
 check([t["team"][0] for t in kim] == [196, 135, 197, 134, 136] and all(t.get("levels") == [38] for t in kim),
       "Kimono Girls: the five Eeveelutions at Lv 38")

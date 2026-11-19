@@ -317,8 +317,8 @@ def _run_story_event(state, key, check, show):
     story = game.story_manager
     ev = key if isinstance(key, dict) else story_events.get(key)
     if ev.get("stages"):  # one NPC through the story: the first stage that is ready and not done
-        stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")
-                      and all(check(c) for c in st.get("requires", []))), None)
+        stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")   # ("ready": when the stage comes,
+                      and all(check(c) for c in st.get("ready", st.get("requires", [])))), None)   #  its "requires" then say "not yet")
         ev = stage or {"lines": ev.get("done") or ["..."]}
     if ev.get("walk_partner"):   # (Platinum's walking partners: they walk with you from here; src/world/walk_partners.py)
         from src.world import walk_partners as _wp
@@ -511,6 +511,12 @@ def _run_story_event(state, key, check, show):
         story.story_flags[flag] = True
     for f in ev.get("also_flags") or []:   # (more flags the same moment: 5.7's palace crash presses Lightning Island's two switches, 11-18)
         story.story_flags[f] = True
+    if ev.get("swarm_news"):   # (Sandgem's little sibling: today's swarm from the TV news, once you have the National Pokedex - Platinum)
+        from src.world import swarms as _swarms
+        said = _swarms.news(game)
+        if said:
+            show(_resolve_lines(game, said))
+            return
     if ev.get("trade"):  # an in-game trade (Fortree's girl: a Spinda for her Skitty): your first one they want, for theirs
         tr = ev["trade"]   # {"want": species, "give": species, "item": what it holds}
         from src.pokemon.data import Pokemon
@@ -623,6 +629,12 @@ def _run_story_event(state, key, check, show):
                                  "Incredible! " + str(inch(total)) + " inches! The record's yours now!",
                                  "Now THAT is a Magikarp! A new record, no doubt about it!"]),
                     "Here, take this as a prize.", f"{getattr(game, 'player_name', 'You')} received an ETHER!"]
+            fp = ev.get("first_prize")   # (Crystal's Elixir, on top: the first record you ever set - 11-19, the Johto re-audit)
+            if fp and not flags.get("magikarp_first_prize"):
+                flags["magikarp_first_prize"] = True
+                story.inventory[fp] = story.inventory.get(fp, 0) + 1
+                out += ["And since it's your first record, take this too!",
+                        f"{getattr(game, 'player_name', 'You')} received an {fp.replace('_', ' ')}!"]
         else:
             out.append(_rnd.choice([f"Hmm... Not bad, but the record is {inch(record)} inches.",
                                     f"Close, but no record. The one to beat is {inch(record)} inches.",
@@ -876,11 +888,33 @@ def _run_story_event(state, key, check, show):
             if v is None:
                 show(_resolve_lines(game, ch.get("cancel") or ["Come back any time."]))
                 return
+            price = int(ch.get("price") or 0)   # (a pick that costs money: Trovitopolis's rooftop Egg seller, pokeorange; 11-19)
+            if price and story.money < price:
+                show(_resolve_lines(game, ch.get("poor") or ["You don't have enough money."]))
+                return
+            if ch.get("egg") and len([p for p in story.player_team if p]) >= 6:
+                show(_resolve_lines(game, ch.get("full") or ["Your party is full. Make room first!"]))
+                return
+            story.money -= price
             story.story_flags[ch["flag"]] = v
+            if ev.get("flag") and ev.get("flag") != ch["flag"]:   # (the event's own flag too: once a day for Gateon's Eevee expert, 11-19)
+                story.story_flags[ev["flag"]] = True
             got = []
             if ch.get("gift"):   # (the pick is an item you get: the Bay Cave's fossil, Helix or Dome, Orange 5.7; Jordan 11-17)
                 story.inventory[v] = story.inventory.get(v, 0) + 1
                 got = [f"{getattr(game, 'player_name', 'You')} found the {forms.item_label(v).upper()}!"]
+            elif ch.get("pokemon"):   # (the pick is a Pokemon: Professor Birch's bag on Route 101, ORAS's other starters; 11-19)
+                got = [story_events.gift_pokemon(game, int(v), ch.get("level", 5), None)]
+            elif ch.get("egg"):   # (the pick is an Egg to hatch: the rooftop seller's babies)
+                from src.pokemon import breeding
+                from src.pokemon.data import Pokemon
+                egg = Pokemon(game.loader.fetch_specific(int(v)), game.assets, size_mult=2.5)
+                egg.level, egg.xp = 1, 0
+                egg.caught_region = story.get_current_region()
+                egg.moves, egg.move_pool = [], []
+                breeding.make_unhatched(game, egg)
+                story.player_team.append(egg)
+                got = [f"{getattr(game, 'player_name', 'You')} received an Egg!"]
             show(_resolve_lines(game, got + list(ch.get("done") or ([] if got else ["All set!"]))))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ch.get("ask") or "WHICH ONE?", rows, picked)))
         return

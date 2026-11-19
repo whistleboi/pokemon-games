@@ -2379,6 +2379,10 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                     story.story_flags[f"gym_progress_{key}"] = 0
             if vf == "beat_champion":
                 story.story_flags["beat_elite_four"] = True
+            _hof = f"hall_of_fame_count_{region.lower()}"   # (how many times you've entered this region's Hall of Fame: ORAS's
+            story.story_flags[_hof] = int(story.story_flags.get(_hof, 0) or 0) + 1   #  second-time gifts; 11-19)
+            if story.story_flags[_hof] >= 2:
+                story.story_flags[f"hall_of_fame_twice_{region.lower()}"] = True
             if hasattr(self.game, "music"):
                 self.game.music.hall_of_fame()  # (the Hall of Fame theme after a Champion win, as on the title screen)
             home = story.get_region_start(story.get_current_region()).get("start_area") or "PALLET_TOWN"

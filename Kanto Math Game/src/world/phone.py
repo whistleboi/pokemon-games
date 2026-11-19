@@ -63,10 +63,17 @@ def rematch_info(game, area, index, info):
         return info
     tier = info["phone"]["tiers"][t]
     out = dict(info, team=list(tier["team"]), levels=list(tier["levels"]), _phone_tier=t)
-    gift = tier.get("gift")
-    if gift and not story.story_flags.get(f"phone_gift_{_key(area, info)}|{t}"):
-        out["rewards"] = dict(info.get("rewards") or {}, **gift)
-        out["_phone_gift"] = f"phone_gift_{_key(area, info)}|{t}"
+    # (that tier's gift, and any earlier tier's you skipped by waiting: Vance's Carbos is on his second rematch - 11-19)
+    rewards, flags = dict(info.get("rewards") or {}), []
+    for i, tr in enumerate(info["phone"]["tiers"][:t + 1]):
+        f = f"phone_gift_{_key(area, info)}|{i}"
+        if tr.get("gift") and not story.story_flags.get(f):
+            for item, n in tr["gift"].items():
+                rewards[item] = rewards.get(item, 0) + n
+            flags.append(f)
+    if flags:
+        out["rewards"] = rewards
+        out["_phone_gift"] = flags if len(flags) > 1 else flags[0]
     return out
 
 

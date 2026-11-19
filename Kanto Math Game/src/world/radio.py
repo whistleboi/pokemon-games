@@ -91,6 +91,14 @@ def _talk(game):
         for sp in pool:
             if str(sp).isdigit() and int(sp) < 1000:
                 places.append((int(sp), a.get("route_name") or key.replace("_", " ").title()))
+    from src.world import swarms as _swarms   # (HGSS: Pokemon Talk tells of today's swarm, after the National Pokedex - 11-19)
+    sw = _swarms.today(story, region)
+    if sw:
+        name = str((game.loader.fetch_specific(int(sw[1])) or {}).get("name", "a Pokemon")).replace("-", " ").title()
+        how = {"surf": ", out on the water", "good_rod": ", on the end of a fishing line", "super_rod": ", deep in the water - bring a Super Rod"}.get(_swarms.kind_today(story, region), "")
+        return ["Mary: It's Pokemon Talk with Professor Oak!",
+                f"Prof. Oak: Big news! There's a swarm of {name} at {_swarms.place_name(sw[0])} today{how}!",
+                "Mary: Hurry, everyone! See you next time!"]
     if not places:
         return ["Pokemon Talk: ...the signal's too weak here."]
     sp, where = random.choice(places)

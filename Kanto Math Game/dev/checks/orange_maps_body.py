@@ -314,7 +314,8 @@ if "MT_NAVEL" in BUILT:
     check(_dn["sprite"] == "danny_oi.png" and _os.path.isfile("assets/sprites/trainers/danny_oi.png"), "Danny: 5.7's own battle picture (trainer pic 119)")
     check(not {"37", "27", "41", "42"} & set(g.loader.area_data["ORANGE_MT_NAVEL_PERCENTAGES"]), "Navel Mountain: the old menu extras (Vulpix, Sandshrew, Zubat, Golbat) dropped")
 if "SEVEN_GRAPEFRUITS" in BUILT:
-    check(not {"187", "188", "179", "180"} & set(g.loader.area_data["ORANGE_SEVEN_GRAPEFRUITS_PERCENTAGES"]), "the Grapefruits: the old menu extras (Hoppip, Skiploom, Mareep, Flaaffy) dropped")
+    # (11-19, Jordan: the old pokeorange hack's Gen 2 species back where it had them - Mareep, Flaaffy, Skiploom here; Hoppip on Pinkan)
+    check({"188", "179", "180"} <= set(g.loader.area_data["ORANGE_SEVEN_GRAPEFRUITS_PERCENTAGES"]), "the Grapefruits: the hack's Mareep, Flaaffy and Skiploom (11-19)")
 if "MORO_ISLAND" in BUILT:
     story.story_flags.pop("got_tm_hydro_pump_moro", None); story.inventory.pop("TM142", None)
     _play_event("MORO_ISLAND", "Sailor")
@@ -580,8 +581,10 @@ _dl = g.loader.area_data["REGION_START"]["ORANGE"]["dex_list"]
 _drop = [171, 176, 177, 178, 179, 180, 183, 191, 192, 211, 218, 219, 223, 226, 231, 232]
 _ofile = json.load(open("assets/orange_area_data.json", encoding="utf-8"))
 _left = sorted({k for k, v in _ofile.items() if k.endswith("_PERCENTAGES") and isinstance(v, dict) and any(x.isdigit() and int(x) in _drop for x in v)})
-check(len(_dl) == 95 and not set(_drop) & set(_dl) and not _left,   # (95: batch 28's Q35 took Magby, Elekid, Tyrogue, Smoochum, Machamp off too)
-      f"Orange dex: the 16 species 5.7 lacks are gone from the list and every Orange table ({len(_dl)}; {_left[:4]})")
+_ext = g.loader.area_data["REGION_START"]["ORANGE"]["dex_extra"]   # (11-19, Jordan: the hack's species back, the dex only what Orange gives)
+_back = [171, 176, 179, 180, 183, 191, 192, 211, 218, 219, 223, 226, 231, 232]
+check(len(_dl) == 95 and not set(_drop) & set(_dl) and set(_back) <= set(_ext) and not {177, 178} & set(_ext) and len(_left) >= 8,
+      f"Orange dex: 5.7's list stays 95; the old hack's species are back as extras and in their tables, Natu and Xatu not ({len(_dl)}; {_left[:4]})")
 check(not {"MANDARIN_DESERT", "SUNRAY_CAVE"} & set(_ofile["STORY_PROGRESSION"]), "the menu-era Mandarin Desert and Sunray Cave are deleted")
 if "ORANGE_ROUTE_64" in BUILT:
     story.story_flags["orange_magnemite_saved"] = True

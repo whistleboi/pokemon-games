@@ -14891,7 +14891,7 @@
      ".............ccc....ccc.............",
      "..............................cc...c",
      "............X.................cc....",
-     "....................................",
+     "........................N...........",
      "...................................c",
      "........nn.............c..c..c..c...",
      "cccccccncccccccccccccccccccccccccccc"
@@ -14920,6 +14920,29 @@
         "Welcome to Silph Co. The President's office is the boardroom on 11F."
        ]
       }
+     },
+     {
+      "text": "Silph scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Scientist: You're the one who fixed the Network Machine on One Island! Now trades link up with the whole world.",
+        "Scientist: Here, take this. Silph made it - a Porygon holding it evolves into Porygon2!"
+       ],
+       "requires": [
+        "network_machine_fixed"
+       ],
+       "fail": [
+        "Scientist: We're working on a way to link with faraway islands. If only the Network Machine on One Island worked..."
+       ],
+       "gift_item": {
+        "UPGRADE": 1
+       },
+       "flag": "got_upgrade_silph",
+       "done": [
+        "Scientist: Porygon2 was made to explore space. Take good care of it!"
+       ]
+      }
      }
     ],
     "signs": [
@@ -14940,6 +14963,10 @@
     },
     "moves": {
      "3,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "24,18": {
       "m": "face",
       "d": "d"
      }
@@ -16974,7 +17001,8 @@
    "ZINC": 10,
    "Scientist Connor": 1,
    "Scientist Rodney": 3,
-   "Scientist Joshua": 6
+   "Scientist Joshua": 6,
+   "Silph scientist": 0
   }
  },
  "KANTO_ROUTE_8": {
@@ -41231,7 +41259,8 @@
         "trade": {
          "want": 69,
          "give": 95,
-         "item": "PERSIM_BERRY"
+         "item": "PERSIM_BERRY",
+         "nickname": "Rocky"
         },
         "flag": "violet_onix_trade"
        }
@@ -48210,7 +48239,9 @@
         ],
         "trade": {
          "want": 96,
-         "give": 66
+         "give": 66,
+         "item": "MACHO_BRACE",
+         "nickname": "Muscle"
         },
         "flag": "goldenrod_machop_trade"
        }
@@ -69036,7 +69067,7 @@
    "TTTTTTooooooooTT...X\"\"\"TT....ccc",
    "TTTTTTooooooooTT....\"\"\"TT....ccc",
    "....TTooooooooTT....\"\"\"TT....ccc",
-   ".T..TToooooooo\"\"..TT\"\"\"TT....ccc",
+   ".N..TToooooooo\"\"..TT\"\"\"TT....ccc",
    "....TToooooooo\"\"\".TT\"\"\"TT.==.ccc",
    "TT..TTooooooooX\"\"\"TT\"\".TT====ccc",
    "TT.2..oooooooo\"\"\"\"TT\"\".TT====ccr",
@@ -69179,6 +69210,32 @@
    }
   ],
   "people": [
+   {
+    "text": "BLACK APRICORN TREE",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "It's an Apricorn tree. Black Apricorns grow on it.",
+      "You picked a Black Apricorn!"
+     ],
+     "gift_item": {
+      "BLK_APRICORN": 1
+     },
+     "flag": "apricorn_johto_route_43_1_29",
+     "done": [
+      "There's nothing left to pick today. Come back tomorrow!"
+     ],
+     "requires": [
+      "has_item:APRICORN_BOX"
+     ],
+     "fail": [
+      "It's an Apricorn tree, heavy with black fruit. You've nothing to carry one in."
+     ],
+     "daily": true
+    },
+    "color": "GOLD",
+    "no_tag": true
+   },
    "ULTRA BALL",
    {
     "text": "Gate guard",
@@ -69190,7 +69247,7 @@
       "I owe whoever did it. Here, you look like a Trainer who'd use this. It's Sludge Bomb!"
      ],
      "gift_item": {
-      "None": 1
+      "TM148": 1
      },
      "flag": "got_tm_sludge_bomb_route43",
      "done": [
@@ -88116,7 +88173,7 @@
    "\"\"\"\"\".......\"\"\"\"\"\"cc",
    "cc\"\"..c____cc\"\"\"\"...",
    "cc____c....cccc.....",
-   "cc.........cccc.N...",
+   "cc.......N.cccc.N...",
    "cccc.!.....cc\"\".....",
    "cccc.......\"\"\"\"\"....",
    "cccc.......\"\"\"\"\"\"...",
@@ -88146,6 +88203,146 @@
    "_buildings_in_picture": true
   },
   "people": [
+   {
+    "text": "Professor Birch",
+    "action": "EVENT",
+    "color": "GOLD",
+    "condition": "beat_hoenn_champion",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "beat_hoenn_champion"
+       ],
+       "requires": [
+        "party_room"
+       ],
+       "flag": "hoenn_birch_johto_starter",
+       "lines": [
+        "Prof. Birch: Phew, there you are! A colleague sent me Pokemon from Johto.",
+        "Prof. Birch: A Champion like you should raise one. Pick any one of them!"
+       ],
+       "fail": [
+        "Prof. Birch: Your party's full! Make some room, then come and pick one."
+       ],
+       "choose": {
+        "flag": "hoenn_birch_johto_starter",
+        "ask": "WHICH JOHTO POKEMON?",
+        "pokemon": true,
+        "level": 5,
+        "choices": [
+         {
+          "text": "CHIKORITA",
+          "value": 152
+         },
+         {
+          "text": "CYNDAQUIL",
+          "value": 155
+         },
+         {
+          "text": "TOTODILE",
+          "value": 158
+         }
+        ],
+        "cancel": [
+         "Prof. Birch: Take your time. They'll wait in my bag."
+        ],
+        "done": [
+         "Prof. Birch: Raise it well! It came all the way from Johto."
+        ]
+       }
+      },
+      {
+       "ready": [
+        "hoenn_birch_johto_starter",
+        "delta_episode_cleared"
+       ],
+       "requires": [
+        "party_room"
+       ],
+       "flag": "hoenn_birch_unova_starter",
+       "lines": [
+        "Prof. Birch: You saved the whole world from that meteor! Some Pokemon from Unova just arrived, too.",
+        "Prof. Birch: Choose one to take with you!"
+       ],
+       "fail": [
+        "Prof. Birch: Your party's full! Make some room, then come and pick one."
+       ],
+       "choose": {
+        "flag": "hoenn_birch_unova_starter",
+        "ask": "WHICH UNOVA POKEMON?",
+        "pokemon": true,
+        "level": 5,
+        "choices": [
+         {
+          "text": "SNIVY",
+          "value": 495
+         },
+         {
+          "text": "TEPIG",
+          "value": 498
+         },
+         {
+          "text": "OSHAWOTT",
+          "value": 501
+         }
+        ],
+        "cancel": [
+         "Prof. Birch: Take your time. They'll wait in my bag."
+        ],
+        "done": [
+         "Prof. Birch: Raise it well! It came all the way from Unova."
+        ]
+       }
+      },
+      {
+       "ready": [
+        "hoenn_birch_unova_starter",
+        "hall_of_fame_twice_hoenn"
+       ],
+       "requires": [
+        "party_room"
+       ],
+       "flag": "hoenn_birch_sinnoh_starter",
+       "lines": [
+        "Prof. Birch: The Hall of Fame again! Professor Rowan in Sinnoh sent these. Pick one!"
+       ],
+       "fail": [
+        "Prof. Birch: Your party's full! Make some room, then come and pick one."
+       ],
+       "choose": {
+        "flag": "hoenn_birch_sinnoh_starter",
+        "ask": "WHICH SINNOH POKEMON?",
+        "pokemon": true,
+        "level": 5,
+        "choices": [
+         {
+          "text": "TURTWIG",
+          "value": 387
+         },
+         {
+          "text": "CHIMCHAR",
+          "value": 390
+         },
+         {
+          "text": "PIPLUP",
+          "value": 393
+         }
+        ],
+        "cancel": [
+         "Prof. Birch: Take your time. They'll wait in my bag."
+        ],
+        "done": [
+         "Prof. Birch: Raise it well! It came all the way from Sinnoh."
+        ]
+       }
+      }
+     ],
+     "done": [
+      "Prof. Birch: Pokemon from all over, all with you. Your Pokedex must be something!"
+     ]
+    }
+   },
    {
     "text": "Youngster",
     "action": "EVENT",
@@ -88209,6 +88406,10 @@
      1,
      0
     ]
+   },
+   "9,8": {
+    "m": "face",
+    "d": "d"
    }
   },
   "scenes": [
@@ -101455,17 +101656,44 @@
     "text": "Egg lady",
     "action": "EVENT",
     "event": {
-     "lines": [
-      "Egg lady: I have an Egg here. Please take it with you on your travels!"
+     "stages": [
+      {
+       "lines": [
+        "Egg lady: I have an Egg here. Please take it with you on your travels!"
+       ],
+       "requires": [
+        "party_room"
+       ],
+       "fail": [
+        "Egg lady: Oh, your party is full. Make room, and you can have my Egg!"
+       ],
+       "gift_egg": 360,
+       "flag": "got_lavaridge_egg",
+       "done": [
+        "Egg lady: Take good care of that Egg. Lots of walking helps it hatch!"
+       ]
+      },
+      {
+       "ready": [
+        "got_lavaridge_egg",
+        "cave_of_origin_cleared"
+       ],
+       "requires": [
+        "party_room"
+       ],
+       "lines": [
+        "Egg lady: Oh, it's you! The weather's calmed down at last. I've found another Egg - will you take this one too?"
+       ],
+       "fail": [
+        "Egg lady: Your party's full again! Make room, and this Egg is yours."
+       ],
+       "gift_egg": 175,
+       "flag": "got_lavaridge_togepi_egg",
+       "done": [
+        "Egg lady: Two Eggs from me! Take good care of them both."
+       ]
+      }
      ],
-     "requires": [
-      "party_room"
-     ],
-     "fail": [
-      "Egg lady: Oh, your party is full. Make room, and you can have my Egg!"
-     ],
-     "gift_egg": 360,
-     "flag": "got_lavaridge_egg",
      "done": [
       "Egg lady: Take good care of that Egg. Lots of walking helps it hatch!"
      ]
@@ -142076,9 +142304,25 @@
       "action": "EVENT",
       "event": {
        "lines": [
+        "I'm Roseanne, the Professor's assistant. He built the new Pokedex with a professor from Kanto!",
+        "A National Pokedex! The Professor asked me to give you this when you got one.",
+        "It's the POKE RADAR. Use it in tall grass, and the grass nearby will shake. Rare Pokemon may jump out!"
+       ],
+       "gift_item": {
+        "POKE_RADAR": 1
+       },
+       "flag": "got_poke_radar_sandgem_town",
+       "done": [
+        "Keep meeting the same kind with the POKE RADAR, and you might find a rare-colored one!"
+       ],
+       "requires": [
+        "unlocked_national_dex"
+       ],
+       "fail": [
         "I'm Roseanne, the Professor's assistant. He built the new Pokedex with a professor from Kanto!"
        ]
-      }
+      },
+      "color": "GOLD"
      }
     ]
    },
@@ -142090,7 +142334,7 @@
      "cmm.mcccc^.mc",
      "c....cccc...c",
      "c....mm.....c",
-     "c...........c",
+     "c...N.......c",
      "c..mmN......c",
      "c..mm.......c",
      "cc.N.......cc",
@@ -142344,6 +142588,16 @@
      }
     },
     "people": [
+     {
+      "text": "Little sibling",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You're making a Pokedex for the Professor? Just like my big sibling! Go for it!"
+       ],
+       "swarm_news": true
+      }
+     },
      "Talk to Dawn/Lucas",
      {
       "text": "Grandpa",
@@ -282352,7 +282606,7 @@
      "cccccccccccccccc",
      "cccccccccccccccc",
      "cc............cc",
-     "c.............cc",
+     "c.......N.....cc",
      "c.........c....c",
      "c.......ccccc.cc",
      "c.......ccccc.cc",
@@ -282369,6 +282623,29 @@
     },
     "buildings": {},
     "people": [
+     {
+      "text": "Duking",
+      "action": "EVENT",
+      "color": "GOLD",
+      "event": {
+       "lines": [
+        "Duking: You got my Plusle back from Miror B.! I owe you everything.",
+        "Duking: It wants to go with you. Take good care of it, kid."
+       ],
+       "requires": [
+        "orre_miror_cave"
+       ],
+       "fail": [
+        "Duking: Miror B. took my Plusle... I can't even think straight."
+       ],
+       "gift_pokemon": 311,
+       "level": 13,
+       "flag": "orre_duking_plusle",
+       "done": [
+        "Duking: Plusle's happy with you. That's all I wanted."
+       ]
+      }
+     },
      {
       "text": "Boy",
       "action": "EVENT",
@@ -283518,7 +283795,7 @@
      "c.c..............cc",
      "c.c..............cc",
      "c.cc.............cc",
-     "c................cc",
+     "c.........N......cc",
      "c................vc",
      "c................cc",
      "c................cc",
@@ -283531,7 +283808,48 @@
      "v": "OUT:13,52"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Eevee expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I know all about Eevee! It can become so many things.",
+        "Here, take a stone to evolve yours. Which one? Come back tomorrow for another!"
+       ],
+       "flag": "xd_eevee_stone_day",
+       "choose": {
+        "flag": "xd_eevee_stone",
+        "ask": "WHICH STONE?",
+        "gift": true,
+        "choices": [
+         {
+          "text": "WATER STONE (Vaporeon)",
+          "value": "WATER_STONE"
+         },
+         {
+          "text": "THUNDER STONE (Jolteon)",
+          "value": "THUNDER_STONE"
+         },
+         {
+          "text": "FIRE STONE (Flareon)",
+          "value": "FIRE_STONE"
+         }
+        ],
+        "cancel": [
+         "Come back when you've made up your mind!"
+        ],
+        "done": [
+         "Eevee in the sun becomes Espeon, under the moon Umbreon - if it really loves you!"
+        ]
+       },
+       "done": [
+        "That's today's stone! Come back tomorrow and I'll have another for you."
+       ],
+       "daily": true
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -291052,7 +291370,7 @@
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
      "c..........c.......c.......c",
-     "c....N.....c.......c.......c",
+     "c....N.....c.......c....N..c",
      "cccccc.cccccccccc.cccc.ccccc",
      "c.........................Xc",
      "c..........................c",
@@ -291071,7 +291389,8 @@
     },
     "parts": true,
     "people": [
-     "BATTLE CIPHER ADMIN LOVRINA"
+     "BATTLE CIPHER ADMIN LOVRINA",
+     "LEAF STONE"
     ],
     "trainer_spots": [
      "Cipher Peon Corla",
@@ -291122,7 +291441,8 @@
    "Cipher Peon Greesix": 2,
    "BATTLE CIPHER ADMIN LOVRINA": 3,
    "Cipher Peon Corla": 3,
-   "Cipher Peon Javion": 3
+   "Cipher Peon Javion": 3,
+   "LEAF STONE": 3
   },
   "theme": "tunnel"
  },
@@ -291668,7 +291988,7 @@
      "c1.........c.........c",
      "c..........?.........c",
      "c..........c.........c",
-     "c........N.c.........c",
+     "c........N.c.....N...c",
      "cccccccccccccccccccccc"
     ],
     "exits": {},
@@ -291681,7 +292001,8 @@
     },
     "parts": true,
     "people": [
-     "BONSLY"
+     "BONSLY",
+     "FIRE STONE"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -291710,7 +292031,8 @@
    "SNAG AGAIN": 1,
    "REST IN THE BED": 2,
    "Cipher Peon Smarton": 2,
-   "BONSLY": 5
+   "BONSLY": 5,
+   "FIRE STONE": 5
   },
   "theme": "tunnel"
  },
@@ -299503,7 +299825,7 @@
    "~~oo=.==oooooooooo~~oooo",
    "~~ooX====ooooooooo~~oooo",
    "o~~oo====oooooooooo~~ooo",
-   "o~~oo=====ooooooooo~~ooo",
+   "o~~oo=N===ooooooooo~~ooo",
    "oo~~o=cc==oooooooooo~~oo",
    "oo~~o==!=ooooooooooo~~oo",
    "o~~ooo===oooooooooo~~ooo",
@@ -299738,6 +300060,9 @@
      40
     ]
    }
+  ],
+  "people": [
+   "HO-OH"
   ]
  },
  "MIKAN_ISLAND": {
@@ -300675,7 +301000,15 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Cissy uses Water Pokémon. My Ground and Rock ones don't stand a chance!"
+        "Old man: You're off to beat Cissy? Ground and Rock types won't help you there...",
+        "Old man: But this one fights with its fists! Take my Tyrogue - it's raring to go."
+       ],
+       "gift_pokemon": 236,
+       "gift_level": 8,
+       "gift_held": "BLACK_BELT",
+       "flag": "orange_got_tyrogue",
+       "done": [
+        "Old man: Cissy uses Water Pokemon. My Ground and Rock ones don't stand a chance!"
        ]
       }
      }
@@ -321062,7 +321395,7 @@
      "ccccccccccccccccccc",
      "ccccccccccccccccccc",
      "c........cccccccccc",
-     "c...............ccc",
+     "c.....N.........ccc",
      "c...cc..........ccc",
      "c...cc.........nccc",
      "c...............ccc",
@@ -321103,7 +321436,74 @@
      }
     ],
     "theme": "room",
-    "title": "Trovito Dept. Store Roof"
+    "title": "Trovito Dept. Store Roof",
+    "people": [
+     {
+      "text": "Egg seller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Old lady: The Day Care sends me Eggs they can't place. $2,000 each - which baby would you like?"
+       ],
+       "choose": {
+        "flag": "orange_roof_egg_last",
+        "ask": "WHICH EGG? ($2,000)",
+        "egg": true,
+        "price": 2000,
+        "choices": [
+         {
+          "text": "TOGEPI",
+          "value": 175
+         },
+         {
+          "text": "SMOOCHUM",
+          "value": 238
+         },
+         {
+          "text": "PICHU",
+          "value": 172
+         },
+         {
+          "text": "MAGBY",
+          "value": 240
+         },
+         {
+          "text": "IGGLYBUFF",
+          "value": 174
+         },
+         {
+          "text": "HAPPINY",
+          "value": 440
+         },
+         {
+          "text": "ELEKID",
+          "value": 239
+         },
+         {
+          "text": "CLEFFA",
+          "value": 173
+         },
+         {
+          "text": "AZURILL",
+          "value": 298
+         }
+        ],
+        "poor": [
+         "Old lady: Oh dear, that's not enough money. Eggs are $2,000."
+        ],
+        "full": [
+         "Old lady: Your party's full, dear. Make room for the Egg first."
+        ],
+        "cancel": [
+         "Old lady: Come back any time. There are always more Eggs."
+        ],
+        "done": [
+         "Old lady: Pleasure doing business! Keep it warm and walk a lot."
+        ]
+       }
+      }
+     }
+    ]
    },
    "lift": {
     "art": [
@@ -324228,7 +324628,7 @@
    "oo~~ooooooo==.\"ccccc\"\"===ooo~~~~ooooooooocccccccccccc=========.=cccccccccccccc~~ooooo======oooooooooooooooooooooooooooooooo~~oo~~oooooooooo~~ooo",
    "~~~~oooooo===\"\"ccccN\"\"=X=ooooo~~~~oo~~ooocccccccccccc=cc.==========ccccccccccoooooooo==cc=oooooooooooooooo===========oooooo~~~~~~oooooooooo~~ooo",
    "~~oooooooo=c=\"\"\"\"cc\"\"\"=.=ooooooo~~~~~~o~~cccccccccccc========c=====ccccccccccoooooooooo===oooooooooooooo==X=.......===ooooooo~~ooooooooooooo~~oo",
-   "<ooooooooo===\"\"\"\"\"\"\"\"\"===ooooooooo~~o~~~~ccccccc=========N=N=======cccccccooooooooooooooooooooooooooooo===..cc.\"\"\"\".==oooooooooooooooooooooo~~oo",
+   "<ooooooooo==N\"\"\"\"\"\"\"\"\"===ooooooooo~~o~~~~ccccccc=========N=N=======cccccccooooooooooooooooooooooooooooo===..cc.\"\"\"\".==oooooooooooooooooooooo~~oo",
    "<oooooooooo====\"\"\"\"\"====oooooooXooooo~~oooocccc====.=========.=cc===ccccccooooooooooooooooooooooooooooo=c=cccc\"\"\"\"\"\"==ooooooooooooooooooooo~~ooo",
    "<oooooooooo=============ooooooooooooooooooooccooo====================ccccoooooooooooooooooooooooooooooo===ccc\"\"\"\"\"\"\"==ooooooooooooooooooooo~~ooo",
    "<oooooooooooo=========ooooooooooooooooooooooooooooooo===========oooooccccoooooooooooooooooooooooooooooo======\"\"\"\"\"\"\"==oooooooooooooooooooo~~oooo",
@@ -324265,6 +324665,7 @@
   },
   "people": [
    "ZINC",
+   "POLITOED",
    {
     "text": "Poliwrath",
     "action": "EVENT",
@@ -334244,7 +334645,7 @@
    "ooooooooo~~oo====oooooooooooooooo~~~~~~ooo=c===ooooooo~~oo~~~~oo~~oo~~ooooooooo>",
    "ooooooo~~~~ooXcc=oooooooooooooooooo~~oooo===X==ooooooooooooo~~~~~~~~~~~~ooooooo>",
    "ooooooo~~ooo==!==oooooooooooooooooooooooo=====oooooooooooooooo~~oo~~oo~~~~oo~~o>",
-   "oooooo~~oo======oooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~~~~~",
+   "oooooo~~oo===N==oooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~~~~~",
    "oooooo~~oo==.==ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~oo~~",
    "ooooo~~ooo====ooooooooooooooooooooooooooooooooooooooooooooooXooooooooooooooooooo",
    "ooooo~~ooooooooooooooooooooooooooXooooooooooooooooooooooooooooooooooooooooooooo>",
@@ -334548,6 +334949,9 @@
      32
     ]
    }
+  ],
+  "people": [
+   "CELEBI"
   ]
  },
  "TARROCO_ISLAND": {

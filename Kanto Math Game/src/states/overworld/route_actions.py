@@ -386,6 +386,15 @@ class RouteActions:
         }
         self.show_dialogue(["Diving deep into the blue..."], callback=lambda: self.game.change_state(battle_state))
 
+    @staticmethod
+    def fishable(game, area_key, area):
+        """Can you fish here (11-19): the area says so ("can_fish"), or it has its own rod table from its game
+        (<AREA>_<ROD>_PERCENTAGES) - most walked routes never got the old menu's FISH button, so their fish were lost."""
+        if (area or {}).get("can_fish"):
+            return True
+        data = game.loader.area_data
+        return any(f"{area_key}_{r}_PERCENTAGES" in data for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD"))
+
     def _fishing_pool(self, rod):
         """This area's own rod pool where the games have one (e.g. KANTO_ROUTE_21_SUPER_ROD_PERCENTAGES,
         from Serebii PokeEarth), else the region's (UNOVA_SUPER_ROD_POOL_PERCENTAGES), else its weaker
@@ -398,7 +407,8 @@ class RouteActions:
         for key in ([f"{area}_{r}_PERCENTAGES" for r in tried] + [f"{region}_{r}_POOL_PERCENTAGES" for r in tried]
                     + [f"{rod}_POOL_PERCENTAGES"]):
             if data.get(key):
-                return data[key]
+                from src.world import swarms as _swarms   # (a swarm on the line: Violet's Whiscash, SoulSilver; 11-19)
+                return _swarms.adjust(self.game, data[key], area, rod.lower())
         return {}
 
     def _fish_bite(self):

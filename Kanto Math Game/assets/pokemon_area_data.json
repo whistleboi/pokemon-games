@@ -777,7 +777,7 @@
       "travel_options": [
         {"text": "Route 4", "target_area": "KANTO_ROUTE_4"},
         {"text": "Route 5", "target_area": "KANTO_ROUTE_5"},
-        {"text": "Route 9", "target_area": "KANTO_ROUTE_9", "condition": ["has_item:HM_CUT", "has_cascade_badge"]},
+        {"text": "Route 9", "target_area": "KANTO_ROUTE_9"},
         {"text": "Route 24", "target_area": "KANTO_ROUTE_24"},
         {"text": "Bill's House", "target_area": "BILLS_HOUSE", "flag_condition": "visited_BILLS_HOUSE"},
         {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},

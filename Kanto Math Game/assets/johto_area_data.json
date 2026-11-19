@@ -111,6 +111,7 @@
     "JOHTO_ROUTE_32_MORNING_PERCENTAGES": {"69": 28, "179": 20, "19": 19, "23": 15, "187": 10, "41": 5, "16": 2, "2001": 1},
     "JOHTO_ROUTE_33_MORNING_PERCENTAGES": {"187": 34, "19": 25, "21": 20, "23": 15, "41": 5, "2001": 1},
     "JOHTO_ROUTE_34_MORNING_PERCENTAGES": {"96": 39, "19": 28, "209": 12, "63": 8, "16": 8, "132": 4, "2001": 1},
+    "JOHTO_RUINS_OF_ALPH_GRASS_PERCENTAGES": {"177": 90, "235": 10},
     "JOHTO_RUINS_OF_ALPH_DAY_PERCENTAGES": {"201": 100},
     "JOHTO_RUINS_OF_ALPH_MORNING_PERCENTAGES": {"177": 90, "235": 10},
     "JOHTO_RUINS_OF_ALPH_NIGHT_PERCENTAGES": {"177": 90, "235": 10},
@@ -124,15 +125,15 @@
     "JOHTO_UNION_CAVE_MORNING_PERCENTAGES": {"41": 26, "74": 23, "19": 17, "27": 10, "20": 10, "95": 7, "42": 6, "2001": 1},
     "JOHTO_UNION_CAVE_NIGHT_PERCENTAGES": {"41": 26, "74": 23, "19": 17, "27": 10, "20": 10, "95": 7, "42": 6, "2001": 1},
     "JOHTO_ROUTE_35_MORNING_PERCENTAGES": {"29": 24, "32": 24, "96": 16, "209": 12, "63": 8, "58": 8, "16": 4, "132": 3, "193": 1},
-    "JOHTO_ROUTE_36_MORNING_PERCENTAGES": {"29": 23, "32": 23, "16": 20, "165": 12, "37": 4, "234": 4, "58": 4, "177": 10},
+    "JOHTO_ROUTE_36_MORNING_PERCENTAGES": {"29": 26, "32": 26, "16": 22, "165": 13, "37": 5, "234": 4, "58": 4},
     "JOHTO_NATIONAL_PARK_MORNING_PERCENTAGES": {"32": 21, "13": 18, "10": 18, "16": 14, "14": 11, "11": 11, "165": 7},
     "JOHTO_ROUTE_37_MORNING_PERCENTAGES": {"16": 38, "234": 29, "165": 20, "37": 5, "58": 5, "166": 2, "2001": 1},
     "JOHTO_BELL_TOWER_DAY_PERCENTAGES": {"19": 99, "2001": 1},
     "JOHTO_BELL_TOWER_MORNING_PERCENTAGES": {"19": 99, "2001": 1},
     "JOHTO_BELL_TOWER_NIGHT_PERCENTAGES": {"92": 79, "19": 20, "2001": 1},
-    "JOHTO_BURNED_TOWER_DAY_PERCENTAGES": {"19": 33, "109": 34, "41": 6, "126": 4, "20": 2, "2001": 1, "2002": 1, "218": 10, "228": 9},
-    "JOHTO_BURNED_TOWER_MORNING_PERCENTAGES": {"19": 35, "109": 34, "41": 6, "20": 2, "126": 2, "2001": 1, "2002": 1, "218": 10, "228": 9},
-    "JOHTO_BURNED_TOWER_NIGHT_PERCENTAGES": {"19": 35, "109": 34, "41": 6, "20": 2, "126": 2, "2001": 1, "2002": 1, "218": 10, "228": 9},
+    "JOHTO_BURNED_TOWER_DAY_PERCENTAGES": {"109": 42, "19": 41, "41": 8, "126": 5, "20": 2, "2001": 1, "2002": 1},
+    "JOHTO_BURNED_TOWER_MORNING_PERCENTAGES": {"19": 43, "109": 42, "41": 8, "20": 3, "126": 2, "2001": 1, "2002": 1},
+    "JOHTO_BURNED_TOWER_NIGHT_PERCENTAGES": {"19": 43, "109": 42, "41": 8, "20": 3, "126": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_38_MORNING_PERCENTAGES": {"20": 26, "81": 19, "52": 14, "19": 14, "83": 9, "241": 5, "17": 5, "128": 4, "209": 2, "2001": 1, "2002": 1},
     "JOHTO_ROUTE_39_MORNING_PERCENTAGES": {"20": 27, "81": 19, "52": 14, "19": 14, "83": 9, "241": 5, "128": 5, "17": 5, "2001": 1, "2002": 1},
     "JOHTO_WHIRL_ISLANDS_DAY_PERCENTAGES": {"98": 50, "41": 30, "86": 15, "42": 5},
@@ -348,7 +349,7 @@
                 {"name": "Ace Trainer Shaye", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [135, 114, 128], "rewards": {"balls": 5}},
                 {"name": "Ace Trainer Carol", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [101, 121, 38], "rewards": {"balls": 5}},
                 {"name": "Beauty Cassie", "class": "BEAUTY", "sprite": "beauty.png", "team": [45, 12], "rewards": {"balls": 4}},
-                {"name": "Gentleman Edward", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [53], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "ss_aqua_cleared"},
+                {"name": "Gentleman Edward", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [53], "rewards": {"balls": 10}, "is_boss_battle": true},
                 {"name": "Hiker Noland", "class": "HIKER", "sprite": "hiker.png", "team": [436, 76], "rewards": {"balls": 2}},
                 {"name": "Poké Maniac Morgan", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [111, 112], "rewards": {"balls": 2}},
                 {"name": "Burglar Corey", "class": "BURGLAR", "sprite": "burglar.png", "team": [109, 126, 109, 109], "rewards": {"balls": 2}},
@@ -368,7 +369,7 @@
                 {"name": "Sailor Kenneth", "class": "SAILOR", "sprite": "sailor.png", "team": [66, 66, 62, 66], "rewards": {"balls": 2}},
                 {"name": "School Kid Nate", "class": "SCHOOL_KID", "sprite": "school_kid.png", "team": [166, 103], "rewards": {"balls": 2}},
                 {"name": "School Kid Ricky", "class": "SCHOOL_KID", "sprite": "school_kid.png", "team": [190, 132], "rewards": {"balls": 2}},
-                {"name": "Teacher Shirley", "class": "TEACHER", "sprite": "teacher.png", "team": [441, 39], "rewards": {"balls": 2}}
+                {"name": "Teacher Shirley", "class": "TEACHER", "sprite": "teacher.png", "team": [441, 39], "rewards": {"balls": 2}, "victory_flag": "ss_aqua_cleared"}
             ],
             "route_menu": [
                 {"text": "BATTLE THROUGH THE CABINS", "action": "GALACTIC_GAUNTLET", "flag_condition": "not ss_aqua_cleared", "color": "GOLD"},
@@ -612,7 +613,7 @@
 
                 {"action": "EVENT", "event": {"lines": ["A Pokemon you trade for grows fast. But without the right Badge, it might not listen to you."]}, "text": "Man", "door": "tradehouse"},
 
-                {"text": "Kyle", "action": "EVENT", "door": "tradehouse", "color": "GOLD", "flag_condition": "not violet_onix_trade", "event": {"requires": ["party_has:69"], "fail": ["Kyle: I collect Pokemon. Got a Bellsprout? I'd trade my Onix for one!"], "lines": ["Kyle: A Bellsprout! Will you swap it for my Onix, Rocky? Thanks a lot!"], "trade": {"want": 69, "give": 95, "item": "PERSIM_BERRY"}, "flag": "violet_onix_trade"}},
+                {"text": "Kyle", "action": "EVENT", "door": "tradehouse", "color": "GOLD", "flag_condition": "not violet_onix_trade", "event": {"requires": ["party_has:69"], "fail": ["Kyle: I collect Pokemon. Got a Bellsprout? I'd trade my Onix for one!"], "lines": ["Kyle: A Bellsprout! Will you swap it for my Onix, Rocky? Thanks a lot!"], "trade": {"want": 69, "give": 95, "item": "PERSIM_BERRY", "nickname": "Rocky"}, "flag": "violet_onix_trade"}},
 
                 {"text": "Kyle", "action": "EVENT", "door": "tradehouse", "flag_condition": "violet_onix_trade", "event": {"lines": ["Kyle: How's Rocky doing? My new Bellsprout and I are getting along great!"]}},
 
@@ -630,7 +631,7 @@
 
         },
 
-        "RUINS_OF_ALPH": {"surf_pool_percentages": "JOHTO_RUINS_OF_ALPH_SURF_PERCENTAGES", 
+        "RUINS_OF_ALPH": {"surf_pool_percentages": "JOHTO_RUINS_OF_ALPH_SURF_PERCENTAGES", "grass_pool_percentages": "JOHTO_RUINS_OF_ALPH_GRASS_PERCENTAGES", 
 
             "area_type": "town",
 
@@ -828,7 +829,7 @@
 
                 {"action": "EVENT", "event": {"lines": ["On Sundays a lady comes to check on people's Pokemon. She even gives away TMs!"]}, "text": "Girl ", "door": "dept", "floor": 5},
 
-                {"text": "Trader", "action": "EVENT", "door": "dept", "floor": 5, "color": "GOLD", "flag_condition": "not goldenrod_machop_trade", "event": {"requires": ["party_has:96"], "fail": ["I collect Pokemon. Got a Drowzee? I'd trade my Machop for one!"], "lines": ["A Drowzee! Will you swap it for my Machop? Thanks a lot!"], "trade": {"want": 96, "give": 66}, "flag": "goldenrod_machop_trade"}},
+                {"text": "Trader", "action": "EVENT", "door": "dept", "floor": 5, "color": "GOLD", "flag_condition": "not goldenrod_machop_trade", "event": {"requires": ["party_has:96"], "fail": ["I collect Pokemon. Got a Drowzee? I'd trade my Machop for one!"], "lines": ["A Drowzee! Will you swap it for my Machop? Thanks a lot!"], "trade": {"want": 96, "give": 66, "item": "MACHO_BRACE", "nickname": "Muscle"}, "flag": "goldenrod_machop_trade"}},
 
                 {"text": "Trader", "action": "EVENT", "door": "dept", "floor": 5, "flag_condition": "goldenrod_machop_trade", "event": {"lines": ["How's my old Machop doing? Training hard, I hope!"]}},
 
@@ -972,9 +973,9 @@
             "min_rounds": 0,
             "trainer_pool": [
                 {"name": "Lass Krise", "class": "LASS", "sprite": "lass.png", "team": [43, 104], "rewards": {"balls": 2}},
-                {"name": "School Kid Jack", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [43, 100], "rewards": {"balls": 2}},
+                {"name": "School Kid Jack", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [43, 100], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [44, 100], "levels": [29, 17]}, {"team": [45, 101], "levels": [38, 31]}, {"team": [101, 45, 59], "levels": [43, 52, 52]}], "call": ["It's Jack! I've been studying the type chart. Battle me at the National Park!"]}},
                 {"name": "Pokefan William", "class": "POKEFAN", "sprite": "pokefan_m.png", "team": [26], "rewards": {"balls": 2}},
-                {"name": "Pokefan Beverly", "class": "POKEFAN", "sprite": "pokefan_f.png", "team": [209], "rewards": {"balls": 2}}
+                {"name": "Pokefan Beverly", "class": "POKEFAN", "sprite": "pokefan_f.png", "team": [209], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [209], "levels": [31], "gift": {"NUGGET": 1}}, {"team": [210], "levels": [43]}, {"team": [210], "levels": [53]}], "call": ["Hello, it's Beverly! My Snubbull got a gift for you. Come to the National Park!"]}}
             ],
             "route_menu": [
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -1104,7 +1105,7 @@
 
                 {"action": "EVENT", "event": {"lines": ["Training going well? In the mountains you sometimes find Pokemon nobody's ever seen before, you know."]}, "text": "Sailor  ", "door": "cafe"},
 
-                {"text": "Trader", "action": "EVENT", "door": "krabbytrade", "color": "GOLD", "event": {"lines": ["I'm looking for a Krabby! Would you trade one for my Voltorb, Billy? He's holding a Berry, too."], "trade": {"want": 98, "give": 100, "item": "CHERI_BERRY"}, "flag": "olivine_krabby_trade", "done": ["The Krabby you traded me is doing great! I hope Billy is too."]}},
+                {"text": "Trader", "action": "EVENT", "door": "krabbytrade", "color": "GOLD", "event": {"lines": ["I'm looking for a Krabby! Would you trade one for my Voltorb, Billy? He's holding a Berry, too."], "trade": {"want": 98, "give": 100, "item": "CHERI_BERRY", "nickname": "Billy"}, "flag": "olivine_krabby_trade", "done": ["The Krabby you traded me is doing great! I hope Billy is too."]}},
 
                 {"action": "EVENT", "event": {"lines": ["Whenever I'm naughty, Daddy says he'll send me away!"]}, "text": "Little girl", "door": "islandhouse"},
 
@@ -1266,7 +1267,7 @@
 
                 {"action": "EVENT", "event": {"lines": ["DRATINI: Draa!"]}, "text": "Dratini", "door": "dratinihouse"},
 
-                {"text": "Trader", "action": "EVENT", "door": "dodriotrade", "color": "GOLD", "event": {"lines": ["Dragonair is so cute, but I don't have one! Will you trade yours for my Dodrio, Doris? She's holding something nice."], "trade": {"want": 148, "give": 85, "item": "SMOKE_BALL"}, "flag": "blackthorn_dodrio_trade", "done": ["Your Dragonair's so cute! How's Doris doing?"]}},
+                {"text": "Trader", "action": "EVENT", "door": "dodriotrade", "color": "GOLD", "event": {"lines": ["Dragonair is so cute, but I don't have one! Will you trade yours for my Dodrio, Doris? She's holding something nice."], "trade": {"want": 148, "give": 85, "item": "SMOKE_BALL", "nickname": "Doris"}, "flag": "blackthorn_dodrio_trade", "done": ["Your Dragonair's so cute! How's Doris doing?"]}},
 
                 {"action": "EVENT", "event": { "quips": "move_deleter","lines": ["Um... who did you say I was again? ...Oh, right! I'm the Move Deleter! Or I was.", "Back in my day, a Pokemon could only remember four moves. FOUR! You'd come to me in tears to make room for a new one.", "Now your Pokemon keep every move they ever learn, and you just pick four from the Summary. Nobody needs forgetting anymore.", "...What was I saying? Oh, never mind. I forgot."]}, "text": "Move Deleter", "door": "movehouse"},
 
@@ -1376,7 +1377,7 @@
 
                 {"name": "Gentleman Alfred", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [164], "rewards": {"balls": 2}},
 
-                {"name": "Sailor Huey", "class": "SAILOR", "sprite": "sailor.png", "team": [60, 61], "rewards": {"balls": 2}},
+                {"name": "Sailor Huey", "class": "SAILOR", "sprite": "sailor.png", "team": [60, 61], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [61, 61], "levels": [34, 36]}, {"team": [61, 62], "levels": [38, 41]}, {"team": [186, 62], "levels": [48, 52]}], "call": ["Ahoy, it's Huey! My Pokemon and I are ready. Come to the Lighthouse!"]}},
 
                 {"name": "Sailor Kent", "class": "SAILOR", "sprite": "sailor.png", "team": [98, 98], "rewards": {"balls": 2}},
 
@@ -1493,7 +1494,7 @@
             "trainer_pool": [
 
 
-                {"sprite": "acetrainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [58, 30, 120], "rewards": {"balls": 5}},
+                {"sprite": "acetrainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [58, 30, 120], "rewards": {"balls": 5}, "phone": {"tiers": [{"team": [58, 30, 120], "levels": [38, 36, 38]}, {"team": [59, 31, 121], "levels": [47, 43, 47]}, {"team": [59, 31, 121], "levels": [54, 53, 56]}], "call": ["It's Reena! I'm stronger now. Rematch on Route 27?"]}},
 
 
                 {"sprite": "acetrainer_f.png", "name": "Ace Trainer Megan", "class": "COOLTRAINER", "team": [1, 2, 3], "rewards": {"balls": 5}},
@@ -1508,7 +1509,7 @@
                 {"sprite": "swimmer_m.png", "name": "Swimmer Glenn", "class": "SWIMMER", "team": [73, 121], "rewards": {"balls": 3}},
 
 
-                {"name": "Bird Keeper Jose", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [83], "rewards": {"balls": 2}},
+                {"name": "Bird Keeper Jose", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [83], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [83], "levels": [44], "gift": {"STAR_PIECE": 1}}, {"team": [83, 83], "levels": [38, 45]}, {"team": [83, 83, 83], "levels": [50, 52, 53]}], "call": ["Jose here! My Farfetch'd found something sparkly for you. Route 27!"]}},
 
 
                 {"name": "Psychic Eli", "class": "PSYCHIC", "sprite": "psychic.png", "team": [121, 102, 203], "rewards": {"balls": 2}}
@@ -1602,7 +1603,7 @@
                 {"name": "Fisherman Scott", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211, 211, 119], "rewards": {"balls": 2}},
                 {"name": "Psychic Vernon", "class": "PSYCHIC", "sprite": "psychic.png", "team": [196], "rewards": {"balls": 2}},
                 {"name": "Ace Trainer Joyce", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [25, 9], "rewards": {"balls": 2}},
-                {"name": "Ace Trainer Gaven", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [71, 99, 136], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Gaven", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [71, 99, 136], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [71, 99, 136], "levels": [34, 34, 34]}, {"team": [71, 99, 136], "levels": [38, 39, 38]}, {"team": [71, 99, 136], "levels": [52, 49, 50]}], "call": ["Gaven here. I've trained hard on Route 26. Come test my team!"]}},
                 {"name": "Ace Trainer Jake", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [47, 55, 134], "rewards": {"balls": 2}},
                 {"name": "Ace Trainer Jamie", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [78, 180], "rewards": {"balls": 2}}
             ],
@@ -2131,7 +2132,7 @@
         
                 {"name": "Camper Ivan", "class": "CAMPER", "sprite": "camper.png", "team": [50, 41, 50], "rewards": {"balls": 2}},
         
-                {"name": "Bug Catcher Arnie", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [48], "rewards": {"balls": 2}},
+                {"name": "Bug Catcher Arnie", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [48], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [48], "levels": [36]}, {"team": [49], "levels": [43]}, {"team": [290, 49], "levels": [45, 56]}], "call": ["Arnie here! I caught a really neat bug on Route 35. Come see how strong my team's gotten!"]}},
         
                 {"name": "Firebreather Walt", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [126, 126], "rewards": {"balls": 2}},
         
@@ -2207,7 +2208,7 @@
         
                 {"name": "Psychic Mark", "class": "PSYCHIC", "sprite": "psychic.png", "team": [63, 63, 64], "rewards": {"balls": 2}},
         
-                {"name": "School Kid Alan", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [114], "rewards": {"balls": 2}},
+                {"name": "School Kid Alan", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [114], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [114, 193], "levels": [32, 30], "gift": {"FIRE_STONE": 1}}, {"team": [178, 465, 195, 469], "levels": [32, 36, 32, 34]}, {"team": [178, 465, 195, 469], "levels": [47, 54, 47, 54]}], "call": ["It's Alan! I studied up on battling. Meet me on Route 36! Oh, and I found something for you."]}},
         
                 {"name": "Bug Catcher Ken", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 11, 12], "rewards": {"balls": 2}},
         
@@ -2335,13 +2336,13 @@
             
                 {"name": "Sailor Harry", "class": "SAILOR", "sprite": "sailor.png", "team": [194], "rewards": {"balls": 2}},
             
-                {"name": "Lass Dana", "class": "LASS", "sprite": "lass.png", "team": [180, 54], "rewards": {"balls": 2}},
+                {"name": "Lass Dana", "class": "LASS", "sprite": "lass.png", "team": [180, 54], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [180, 54], "levels": [32, 31], "gift": {"THUNDER_STONE": 1}}, {"team": [55, 181], "levels": [36, 38]}, {"team": [55, 181], "levels": [51, 54]}], "call": ["Hi, it's Dana! I've got a present for you, and my team's ready for a rematch. Route 38!"]}},
             
                 {"name": "Beauty Valerie", "class": "BEAUTY", "sprite": "beauty.png", "team": [187, 188], "rewards": {"balls": 2}},
             
                 {"name": "Bird Keeper Toby", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [84, 84, 84], "rewards": {"balls": 2}},
             
-                {"name": "School Kid Chad", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [122], "rewards": {"balls": 2}}
+                {"name": "School Kid Chad", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [122], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [122, 81], "levels": [29, 30]}, {"team": [122, 82], "levels": [39, 38]}, {"team": [122, 82], "levels": [46, 56]}], "call": ["Chad here! I learned a new strategy in class. Let's battle on Route 38!"]}}
             
             ],
             
@@ -2374,44 +2375,83 @@
         },
         
         "JOHTO_ROUTE_39": {
+        
             "region": "JOHTO",
+        
             "area_type": "wild_route",
+        
             "route_name": "Route 39",
+        
             "battle_type": "grass",
+        
             "wild_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES",
+        
             "day_pool_percentages": "JOHTO_ROUTE_39_DAY_PERCENTAGES",
+        
             "night_pool_percentages": "JOHTO_ROUTE_39_NIGHT_PERCENTAGES",
+        
             "has_trees": true,
+        
             "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES",
+        
             "min_rounds": 2,
+        
             "trainer_pool": [
+        
                 {"name": "Psychic Norman", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}},
+        
                 {"name": "Sailor Eugene", "class": "SAILOR", "sprite": "sailor.png", "team": [61, 20, 98], "rewards": {"balls": 2}},
-                {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}},
+        
+                {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [216, 25], "levels": [24, 30], "gift": {"NUGGET": 1}}, {"team": [172, 216, 25, 216], "levels": [13, 15, 37, 29]}, {"team": [172, 216, 25, 217], "levels": [18, 22, 39, 47]}], "call": ["It's Derek! My Pikachu is the cutest ever. I found something shiny for you - come to Route 39!"]}},
+        
                 {"name": "Pokefan Ruth", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}},
+        
                 {"name": "Psychic Nelson", "class": "PSYCHIC", "sprite": "psychic.png", "team": [79, 79], "rewards": {"balls": 2}}
+        
             ],
+        
             "route_menu": [
+        
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        
                 {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        
                 {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"},
+        
                 {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
+        
                 {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_lax_incense_johto_route_39_r39_1_27", "event": {"lines": ["A Lax Incense, lying in the grass."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_lax_incense_johto_route_39_r39_1_27"}},
+        
                 {"action": "EVENT", "event": {"lines": ["My Miltank's stopped giving milk. This farm's famous for its milk, and everyone wants a drink..."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "not moomoo_healed"},
+        
                 {"action": "EVENT", "color": "GOLD", "event": {"lines": ["You made our Moomoo well again, hon! Our milk goes all the way to Kanto, so we were in real trouble. Here's something for your trouble."], "gift_item": {"TM303": 1}, "flag": "got_tm83_moomoo", "done": ["That's Natural Gift. Its power and type depend on the Berry your Pokemon's holding."], "requires": ["moomoo_healed"], "fail": ["Our milk goes all the way to Kanto. If Moomoo won't give milk, we're in a real fix."]}, "text": "Farmer's wife", "door": "farmhouse"},
+        
                 {"text": "Moomoo Milk", "action": "SHOP", "door": "farmhouse", "flag_condition": "moomoo_healed", "stock": ["MOOMOO_MILK"]},
+        
                 {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin", "door": "barn", "flag_condition": "not moomoo_healed"},
+        
                 {"action": "EVENT", "event": {"lines": ["Thank you! Moomoo is totally healthy again!"]}, "text": "Twin", "door": "barn", "flag_condition": "moomoo_healed"},
+        
                 {"action": "EVENT", "event": {"lines": ["Moomoo is sick... She needs lots of Oran Berries."]}, "text": "Twin ", "door": "barn", "flag_condition": "not moomoo_healed"},
+        
                 {"action": "EVENT", "event": {"lines": ["Moomoo's all better! We sell her milk at the house. Don't forget to drop by!"]}, "text": "Twin ", "door": "barn", "flag_condition": "moomoo_healed"},
+        
                 {"text": "Moomoo", "action": "EVENT", "door": "barn", "color": "GOLD", "event": {"lines": ["MOOMOO: ...Moo... Its cry is weak."], "feed": {"item": "ORAN_BERRY", "need": 7, "count": "moomoo_berries", "flag": "moomoo_healed", "fail": ["It looks hungry. Maybe a Berry would help?"], "more": ["It still looks weak. It needs more Berries."], "well": ["MOOMOO: Mooo! It's brimming with energy again!"]}, "done": ["MOOMOO: Mooo! It's brimming with energy."]}},
+        
                 {"action": "EVENT", "event": {"lines": ["My Miltank's milking again, thanks to you! Here, have a bottle any time."]}, "text": "Farmer", "door": "farmhouse", "flag_condition": "moomoo_healed"}
+        
             ],
+        
             "next_area": "OLIVINE_CITY",
+        
             "radio_sounds": {"hoenn": [311, 312], "sinnoh": [403, 403]},
+        
             "morning_pool_percentages": "JOHTO_ROUTE_39_MORNING_PERCENTAGES"
+        
         },
         
         "JOHTO_ROUTE_40": {
@@ -2564,7 +2604,7 @@
         
                 {"name": "Hiker Anthony", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
         
-                {"name": "Fisherman Tully", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211], "rewards": {"balls": 2}}
+                {"name": "Fisherman Tully", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [211], "levels": [33], "gift": {"WATER_STONE": 1}}, {"team": [118, 118, 211], "levels": [30, 30, 38]}, {"team": [119, 119, 211], "levels": [41, 50, 53]}], "call": ["Tully here! I fished up something odd for you, and my team's in top form. Route 42!"]}}
         
             ],
         
@@ -2630,11 +2670,11 @@
         
             "trainer_pool": [
         
-                {"name": "Picnicker Tiffany", "class": "PICNIKER", "sprite": "lass.png", "team": [35], "rewards": {"balls": 2}},
+                {"name": "Picnicker Tiffany", "class": "PICNIKER", "sprite": "lass.png", "team": [35], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [35], "levels": [34], "gift": {"POKE_DOLL": 1}}, {"team": [36], "levels": [41]}, {"team": [36], "levels": [61]}], "call": ["Hi, it's Tiffany! My Clefairy's so strong now. I have a little gift for you too. Route 43!"]}},
         
                 {"name": "Camper Spencer", "class": "YOUNGSTER", "sprite": "camper.png", "team": [27, 28, 41], "rewards": {"balls": 2}},
         
-                {"name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [30, 33], "rewards": {"balls": 2}},
+                {"name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [30, 33], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [30, 33, 130], "levels": [32, 34, 32]}, {"team": [130, 108, 30, 33], "levels": [41, 38, 38, 43]}, {"team": [130, 108, 31, 34], "levels": [48, 40, 58, 58]}], "call": ["It's Brent! I've added rare Pokemon to my team. Come battle me on Route 43!"]}},
         
                 {"name": "Pokemaniac Ron", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [147], "rewards": {"balls": 2}},
         
@@ -2738,7 +2778,7 @@
         
                 {"action": "EVENT", "color": "GOLD", "event": {"lines": ["...You have strayed far to find me. Here I have meditated, and a new power has awakened within me. Let me share it with you."], "gift_item": {"TM272": 1}, "flag": "got_tm_hidden_power_lake", "done": ["It is Hidden Power. It draws out a power that sleeps inside every Pokemon."]}, "text": "Hermit", "door": "hiddenpower"},
         
-                {"action": "EVENT", "event": {"lines": ["The Lake of Rage is a crater the rampaging Gyarados made. Me, I'm after the biggest Magikarp in it."], "size_record": true}, "text": "Fishing Guru", "door": "magikarphouse", "color": "GOLD"}
+                {"action": "EVENT", "event": {"lines": ["The Lake of Rage is a crater the rampaging Gyarados made. Me, I'm after the biggest Magikarp in it."], "size_record": true, "first_prize": "ELIXIR"}, "text": "Fishing Guru", "door": "magikarphouse", "color": "GOLD"}
         
             ],
         
@@ -2768,7 +2808,7 @@
 
                 {"name": "Psychic Phil", "class": "PSYCHIC", "sprite": "psychic.png", "team": [177, 64], "rewards": {"balls": 2}},
 
-                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}},
+                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"POKE_BALL": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
 
                 {"name": "Cooltrainer Allen", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [147, 148, 6], "rewards": {"balls": 2}},
 
@@ -2778,7 +2818,7 @@
 
                 {"name": "Pokemaniac Zach", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [111], "rewards": {"balls": 2}},
 
-                {"name": "Bird Keeper Vance", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [163, 17], "rewards": {"balls": 2}},
+                {"name": "Bird Keeper Vance", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [163, 17], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [163, 17], "levels": [33, 32]}, {"team": [17, 18, 164], "levels": [37, 38, 42], "gift": {"CARBOS": 1}}, {"team": [18, 18, 164], "levels": [56, 44, 54]}], "call": ["Vance here! My birds are flying higher than ever. Rematch on Route 44?"]}},
 
                 {"name": "Ace Trainer Cybil", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [179, 182], "rewards": {"balls": 2}},
 
@@ -2840,9 +2880,9 @@
         
                 {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75, 76], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Parry", "class": "HIKER", "sprite": "hiker.png", "team": [95], "rewards": {"balls": 2}},
+                {"name": "Hiker Parry", "class": "HIKER", "sprite": "hiker.png", "team": [95], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [95, 75], "levels": [38, 35]}, {"team": [208, 75], "levels": [41, 37], "gift": {"IRON": 1}}, {"team": [208, 76], "levels": [56, 52]}], "call": ["Parry here! I'm all fired up! Battle me on Route 45!"]}},
         
-                {"name": "Blackbelt Kenji", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [67], "rewards": {"balls": 2}},
+                {"name": "Blackbelt Kenji", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [67], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [95, 106, 95, 67], "levels": [27, 32, 27, 32], "gift": {"PP_UP": 1}}, {"team": [95, 68, 95, 106], "levels": [30, 37, 33, 41]}, {"team": [95, 68, 95, 106], "levels": [41, 53, 49, 53]}], "call": ["Kenji here! My training's done. Come face me on Route 45!"]}},
         
                 {"name": "Hiker Timothy", "class": "HIKER", "sprite": "hiker.png", "team": [50, 51], "rewards": {"balls": 2}},
         
@@ -2922,7 +2962,7 @@
         
                 {"name": "Camper Ted", "class": "CAMPER", "sprite": "camper.png", "team": [56], "rewards": {"balls": 2}},
         
-                {"name": "Picnicker Erin", "class": "PICNIKER", "sprite": "lass.png", "team": [77, 43], "rewards": {"balls": 2}},
+                {"name": "Picnicker Erin", "class": "PICNIKER", "sprite": "lass.png", "team": [77, 43], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [44, 78], "levels": [32, 41]}, {"team": [182, 192, 78], "levels": [46, 39, 48], "gift": {"CALCIUM": 1}}, {"team": [421, 192, 182, 78], "levels": [42, 46, 49, 53]}], "call": ["Hi, it's Erin! My Pokemon want a rematch. Come to Route 46!"]}},
         
                 {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}}
         
@@ -3012,7 +3052,7 @@
 
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
 
-                {"text": "CHALLENGE LAPRAS", "action": "BOSS", "condition": "boss_available", "color": "CYAN"},
+                {"text": "CHALLENGE LAPRAS", "action": "BOSS", "condition": ["boss_available", "weekday:fri"], "color": "CYAN"},
 
                 {"text": "Route 32", "action": "EXIT", "target_area": "JOHTO_ROUTE_32", "condition": "can_exit", "color": "RED"},
 
@@ -4449,9 +4489,9 @@
     "JOHTO_ROUTE_35_NIGHT_PERCENTAGES": {"29": 27, "32": 27, "96": 18, "63": 9, "54": 9, "163": 4, "132": 4, "193": 2},
     "JOHTO_ROUTE_35_DAY_PERCENTAGES": {"29": 24, "32": 24, "96": 16, "209": 12, "63": 8, "58": 8, "16": 4, "132": 3, "193": 1},
     
-    "JOHTO_ROUTE_36_PERCENTAGES": { "234": 25, "29": 12, "32": 12, "58": 10, "37": 10, "16": 9, "163": 9, "177": 8, "235": 5 },
-    "JOHTO_ROUTE_36_NIGHT_PERCENTAGES": {"29": 22, "32": 23, "163": 19, "167": 12, "37": 4, "234": 4, "58": 4, "92": 2, "177": 10},
-    "JOHTO_ROUTE_36_DAY_PERCENTAGES": {"29": 28, "32": 27, "16": 18, "37": 7, "58": 6, "234": 4, "177": 10},
+    "JOHTO_ROUTE_36_PERCENTAGES": {"234": 27, "29": 13, "32": 13, "58": 11, "37": 11, "16": 10, "163": 10, "235": 5},
+    "JOHTO_ROUTE_36_NIGHT_PERCENTAGES": {"32": 26, "29": 24, "163": 21, "167": 13, "37": 5, "234": 5, "58": 4, "92": 2},
+    "JOHTO_ROUTE_36_DAY_PERCENTAGES": {"29": 31, "32": 30, "16": 20, "37": 8, "58": 7, "234": 4},
     
     "JOHTO_ROUTE_37_PERCENTAGES": { "16": 18, "19": 18, "58": 13, "37": 13, "167": 10, "165": 10, "234": 9, "198": 8, "2001": 1 },
     "JOHTO_ROUTE_37_NIGHT_PERCENTAGES": {"163": 37, "234": 29, "167": 19, "37": 5, "58": 5, "164": 2, "168": 2, "2001": 1},
@@ -4483,7 +4523,7 @@
     
     "JOHTO_ICE_PATH_PERCENTAGES": { "220": 35, "42": 22, "124": 13, "225": 10, "215": 10, "238": 10 },
     
-    "JOHTO_BURNED_TOWER_PERCENTAGES": { "19": 20, "41": 16, "109": 14, "20": 7, "110": 7, "126": 5, "218": 10, "228": 9, "240": 5, "155": 5, "2001": 1, "2002": 1 },
+    "JOHTO_BURNED_TOWER_PERCENTAGES": {"19": 24, "41": 19, "109": 18, "20": 9, "110": 9, "126": 7, "240": 6, "155": 6, "2001": 1, "2002": 1},
     
     "JOHTO_BELL_TOWER_PERCENTAGES": { "92": 50, "19": 29, "93": 15, "200": 5, "2001": 1 },
     
@@ -4515,13 +4555,13 @@
 
     "JOHTO_SAFARI_POOL": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216, 152],
 
-    "JOHTO_SAFARI_PERCENTAGES": {"39": 4, "81": 4, "161": 4, "19": 3, "74": 3, "69": 3, "27": 3, "63": 2, "203": 2, "20": 2, "187": 2, "191": 2, "183": 2, "194": 2, "30": 2, "33": 2, "41": 2, "82": 2, "79": 2, "98": 2, "80": 2, "109": 2, "95": 2, "28": 2, "235": 1, "234": 1, "188": 1, "35": 1, "29": 1, "32": 1, "128": 1, "111": 1, "42": 1, "75": 1, "126": 1, "202": 1, "84": 1, "21": 1, "83": 1, "132": 1, "54": 1, "195": 1, "55": 1, "16": 1, "200": 1, "122": 1, "92": 1, "93": 1, "46": 1, "198": 1, "96": 1, "97": 1, "110": 1, "23": 1, "24": 1, "88": 1, "43": 1, "44": 1, "115": 1, "66": 1, "22": 1, "67": 1, "108": 1, "246": 1, "104": 1, "105": 1},
+    "JOHTO_SAFARI_PERCENTAGES": {"39": 4, "81": 4, "161": 4, "19": 3, "74": 3, "69": 3, "27": 3, "63": 2, "203": 2, "20": 2, "187": 2, "191": 2, "183": 2, "194": 2, "30": 2, "33": 2, "41": 2, "82": 2, "79": 2, "98": 2, "80": 2, "109": 2, "95": 2, "28": 2, "235": 1, "234": 1, "188": 1, "35": 1, "29": 1, "32": 1, "128": 1, "111": 1, "42": 1, "75": 1, "126": 1, "202": 1, "84": 1, "21": 1, "83": 1, "132": 1, "54": 1, "195": 1, "55": 1, "16": 1, "200": 1, "122": 1, "92": 1, "93": 1, "46": 1, "198": 1, "96": 1, "97": 1, "110": 1, "23": 1, "24": 1, "88": 1, "43": 1, "44": 1, "115": 1, "66": 1, "22": 1, "67": 1, "108": 1, "246": 1, "104": 1, "105": 1, "228": 1},
 
     "JOHTO_SAFARI_PLAINS_PERCENTAGES": {"63": 30, "203": 27, "19": 20, "20": 10, "235": 7, "234": 6},
 
     "JOHTO_SAFARI_MEADOW_PERCENTAGES": {"39": 37, "187": 23, "191": 10, "183": 10, "194": 10, "188": 7, "35": 3},
 
-    "JOHTO_SAFARI_SAVANNAH_PERCENTAGES": {"29": 20, "32": 20, "128": 20, "30": 10, "33": 10, "41": 10, "111": 7, "42": 3},
+    "JOHTO_SAFARI_SAVANNAH_PERCENTAGES": {"29": 20, "32": 20, "128": 20, "30": 10, "33": 10, "41": 10, "111": 7, "42": 3, "228": 5},
 
     "JOHTO_SAFARI_PEAK_PERCENTAGES": {"74": 40, "81": 20, "75": 13, "82": 13, "126": 7, "202": 7},
 

@@ -25,6 +25,7 @@ seen = report("Sudowoodo", S, seen)
 story.story_flags["defeated_rival_burned_tower"] = True
 seen = report("Burned Tower rival (Morty?)", S, seen)
 badge(R, "FOG")
+story.inventory["HM_SURF"] = 1   # (11-19: the HMs come from people on the maps now - the Kimono Girls' Surf, Lance's Whirlpool, Ice Path's Waterfall)
 seen = report("FOG (+Surf)", S, seen)
 badge(R, "STORMBADGE")
 story.story_flags["ampharos_cured"] = True
@@ -33,8 +34,10 @@ badge(R, "MINERAL")
 story.story_flags["defeated_red_gyarados"] = True
 seen = report("MINERAL + Red Gyarados (Rocket HQ?)", S, seen)
 story.story_flags["rocket_hq_cleared"] = True
+story.inventory["HM_WHIRLPOOL"] = 1
 seen = report("Rocket HQ cleared (Pryce?)", S, seen)
 badge(R, "GLACIER")
+story.inventory["HM_WATERFALL"] = 1
 story.story_flags["radio_tower_cleared"] = True
 seen = report("GLACIER + Radio Tower (Route 44?)", S, seen)
 badge(R, "RISING")

@@ -1568,6 +1568,10 @@ class DungeonState(OverworldBattles, PlayState):
         for item in self.area_data.get("route_menu", []):
             if item.get("action") == action and self._check_route_condition(item.get("condition"), False, item):
                 return item
+        if action == "FISH":   # (no FISH button in the area's menu: any area with rod Pokemon still lets you cast - 11-19)
+            item = {"text": "FISH", "action": "FISH", "condition": "can_fish"}
+            if self._check_route_condition("can_fish", False, item):
+                return item
         return None
 
     def _beside(self, kind):
@@ -1775,6 +1779,9 @@ class DungeonState(OverworldBattles, PlayState):
         if own:  # (this floor's own Pokemon: the seabed's)
             area = {k: v for k, v in dict(area, wild_pool_percentages=own).items() if k != "zone_pools"}
         pool = self._get_wild_pool(area)
+        if pool and own_kind == "surf_pool_percentages" and area.get("wild_pool_percentages") == self.area_data.get(own_kind):
+            from src.world import swarms as _swarms   # (a swarm out on the water: Route 27's Luvdisc, SoulSilver; 11-19)
+            pool = _swarms.adjust(self.game, pool, self.area_key, "surf")
         if not pool:
             return None
         pid = int(Utils.weighted_random_choice(pool))
@@ -1828,7 +1835,9 @@ class DungeonState(OverworldBattles, PlayState):
                     _info = _pool[idx] if 0 <= idx < len(_pool) and isinstance(_pool[idx], dict) else {}
                     _re = _phone.rematch_info(self.game, self.area_key, idx, _info)
                     if _re.get("_phone_gift"):
-                        self.game.story_manager.story_flags[_re["_phone_gift"]] = True
+                        _pg = _re["_phone_gift"]
+                        for _f in (_pg if isinstance(_pg, list) else [_pg]):
+                            self.game.story_manager.story_flags[_f] = True
                     _lines = _phone.register_after_win(self.game, self.area_key, _info)
                     if _lines:
                         self._phone_say = _lines
@@ -2035,6 +2044,12 @@ class DungeonState(OverworldBattles, PlayState):
             self._contest_tick()
             if getattr(self, "safari", None) and self.safari["steps"] > 0:
                 self.safari["steps"] -= 1
+            from src.world import poke_radar as _radar
+            if _radar.on_step(self):   # (into a shaking patch: a wild Pokemon jumps out; Platinum's Poke Radar, 11-19)
+                return
+            from src.world import dexnav as _dexnav
+            if _dexnav.on_step(self):   # (onto a hidden Pokemon's spot: ORAS's DexNav, Hoenn; 11-19)
+                return
         self._handle(events)
 
     def wait_turn(self):
@@ -2801,7 +2816,28 @@ class DungeonState(OverworldBattles, PlayState):
                    "FISH": "the water here", "HEADBUTT": "this tree", "TALK": "the clerk",
                    "PLAY SLOTS": "this machine"}.get(act[0])
             buttons.append((side[4], act[0], (232, 132, 40), act[1], True, sub))
+        elif hasattr(self, "run") and self._radar_ready():   # (the Poke Radar, in tall grass: Platinum's)
+            from src.world import poke_radar as _radar
+            n = _radar.charge(self.game.story_manager)
+            buttons.append((side[4], "RADAR", (90, 170, 80), self.use_radar, n >= _radar.CHARGE,
+                            "ready" if n >= _radar.CHARGE else f"{_radar.CHARGE - n} steps"))
         return buttons
+
+    def _radar_ready(self):
+        from src.world import poke_radar as _radar
+        from src.dungeon import core as _core
+        story = self.game.story_manager
+        return (_radar.owned(story) and not self.contest and self.run.floor.tile(*self.run.player) == _core.GRASS
+                and not (getattr(self, "_radar", None) or {}).get("patches"))
+
+    def use_radar(self):
+        """The Poke Radar (the Bag or the RADAR button): four patches of grass nearby shake (src/world/poke_radar.py)."""
+        if not self._ready():
+            return
+        from src.world import poke_radar as _radar
+        said = _radar.shake(self)
+        if said:
+            self.say(said)
 
     def _honey_note(self):
         """The HONEY button's small line: how much you have (or Sweet Scent's turn)."""
@@ -3399,6 +3435,8 @@ class DungeonState(OverworldBattles, PlayState):
             self._pose_then = None
             then()
         if hasattr(self, "run"):
+            from src.world import poke_radar as _radar
+            _radar.tick(self)   # (back from a radar meeting: the grass shakes again)
             self._clear_boulders()
             if getattr(self, "_boss_synced", None) != self.run.index:   # (up or down a floor: a beaten boss's tile there is clear too, the Tower's 6F)
                 self._boss_synced = self.run.index
@@ -4156,6 +4194,10 @@ class DungeonState(OverworldBattles, PlayState):
             if (x, y) in f.seen:
                 img = self._item_img(key) or self._ball_img()
                 screen.blit(img, img.get_rect(center=at(x, y).center))
+        from src.world import poke_radar as _radar
+        _radar.draw(self, screen, at)   # (the Poke Radar's shaking grass)
+        from src.world import dexnav as _dexnav
+        _dexnav.draw(self, screen, at)   # (a hidden Pokemon's tail in the grass, ripples on the water)
         bob = int(3 * math.sin(pygame.time.get_ticks() / 180))
         for (x, y) in f.tm_spots:
             if (x, y) in f.seen:

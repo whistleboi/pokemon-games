@@ -388,7 +388,11 @@ class RouteEncounters:
             pool = dict(pool)
             for sp in extra:
                 pool[str(sp)] = pool.get(str(sp), 0) + max(1, round(sum(pool.values()) * 0.1))
-        return seasons.adjust_pool(self.game, pool, self.game.story_manager.current_area_key)
+        key = self.game.story_manager.current_area_key
+        if pool and area_data.get("wild_pool_percentages") == (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(key) or {}).get("wild_pool_percentages"):
+            from src.world import swarms as _swarms   # (today's swarm, in the grass only: Platinum; 11-19)
+            pool = _swarms.adjust(self.game, pool, key)
+        return seasons.adjust_pool(self.game, pool, key)
 
     def _base_wild_pool(self, area_data):
         """Returns the percentage pool dict for the current area, respecting day/night splits."""

@@ -396,7 +396,8 @@ class RouteMenu:
         if condition == "can_fish":
             inv = self.game.story_manager.inventory
             has_rod = any(inv.get(r, 0) > 0 for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD"))
-            return has_rod and self.area_data.get("can_fish", False)
+            from src.states.overworld.route_actions import RouteActions as _RA
+            return has_rod and _RA.fishable(self.game, getattr(self, "area_key", None) or self.game.story_manager.current_area_key, self.area_data)
         if condition == "can_battle":
             return True
         if condition == "has_EON_TICKET":

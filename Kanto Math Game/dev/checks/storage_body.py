@@ -138,7 +138,9 @@ t = ow.AreaTransitionState(g, "OLIVINE_CITY")
 story.current_area_key = t.next_area_key
 g.change_state(ow.CityState(g))
 st = g.current_state
-check(isinstance(st, StarterSelectionState) and st.region == "JOHTO", f"arrival opens the Johto starter choice ({type(st).__name__})")
+# (11-19: Johto's starter comes from Professor Elm in his lab now, as HGSS - REGION_START "starter_in_town" - not a screen on arrival)
+check(story.starter_in_overworld("JOHTO") and not isinstance(st, StarterSelectionState) and not story.story_flags.get("received_starter_johto"),
+      f"arrival opens Johto itself; Professor Elm hands over the starter in his lab ({type(st).__name__})")
 story.player_team = [mk(155)]
 story.story_flags["received_starter_johto"] = True
 check(story.pending_starter() is None and "pending_starter" not in story.story_flags, "nothing pending once you have a starter")

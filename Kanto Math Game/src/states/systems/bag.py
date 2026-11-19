@@ -888,6 +888,14 @@ class BagState(GameState):
             self.game.change_state(walk)
             walk.use_scent("HONEY" if item == "HONEY" else item)  # (the White Flute: played, not used up)
             return
+        if "radar" in data:  # the Poke Radar (Platinum): on a route's map, in tall grass, the grass nearby shakes
+            walk = getattr(self.game, "dungeon_state", None)
+            if walk is None or getattr(walk, "area_key", None) != story.current_area_key or not hasattr(walk, "run"):
+                self._back_to_bag(["Use the POKE RADAR out on a route, in tall grass."])
+                return
+            self.game.change_state(walk)
+            walk.use_radar()
+            return
         if "seeker" in data:  # the VS Seeker: on a route's map, back to it; beaten trainers nearby may want a rematch
             town = self.previous_state
             if hasattr(town, "_people") and hasattr(town, "player") and not hasattr(town, "run"):   # (in a walked town: Dario, Rodette)

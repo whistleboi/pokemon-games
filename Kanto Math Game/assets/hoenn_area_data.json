@@ -1103,7 +1103,7 @@
       "next_area": "HOENN_VICTORY_ROAD",
       "on_enter_event": null
     },
-    "HOENN_ROUTE_101": {
+    "HOENN_ROUTE_101": { "dexnav_pool_percentages": "HOENN_ROUTE_101_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 101",
       "battle_type": "grass",
@@ -1158,7 +1158,7 @@
       "region": "HOENN",
         "starter_event": {"walk_up": {"look": "sheet:em_64.png", "flag": "hoenn_birch_walked_up", "lines": ["Professor Birch hurries over and picks up his bag.", "Professor Birch: Whew... you saved me! I'm Birch, the Pokemon Professor.", "Professor Birch: Let's head back to my lab in Littleroot Town!"]}, "lines": ["Help! Somebody, help me!", "A man is running in circles... a wild POOCHYENA is chasing him!", "Professor Birch: You there! Please help me!"], "boss": {"id": 261, "name": "Poochyena", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "hoenn_birch_rescued", "lines": ["The wild POOCHYENA turns to face you!"], "won": ["The POOCHYENA ran off into the tall grass!"]}, "return_to": "LITTLEROOT_TOWN", "return_until": "hoenn_birch_thanked"}
     },
-    "HOENN_ROUTE_102": {
+    "HOENN_ROUTE_102": { "dexnav_pool_percentages": "HOENN_ROUTE_102_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 102",
       "battle_type": "grass",
@@ -1197,7 +1197,7 @@
       "next_area": "PETALBURG_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_103": {
+    "HOENN_ROUTE_103": { "dexnav_pool_percentages": "HOENN_ROUTE_103_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 103",
       "battle_type": "grass",
@@ -1241,7 +1241,7 @@
       "next_area": "OLDALE_TOWN",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_104": {
+    "HOENN_ROUTE_104": { "dexnav_pool_percentages": "HOENN_ROUTE_104_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 104",
       "battle_type": "grass",
@@ -1286,7 +1286,7 @@
       "next_area": "RUSTBORO_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_105": {
+    "HOENN_ROUTE_105": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_105_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 105",
       "battle_type": "ocean",
@@ -1326,7 +1326,7 @@
       "next_area": "HOENN_ROUTE_106",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_106": {
+    "HOENN_ROUTE_106": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_106_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 106",
       "battle_type": "ocean",
@@ -1373,7 +1373,7 @@
       "next_area": "DEWFORD_TOWN",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_107": {
+    "HOENN_ROUTE_107": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_107_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 107",
       "battle_type": "ocean",
@@ -1412,7 +1412,7 @@
       "next_area": "HOENN_ROUTE_108",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_108": {
+    "HOENN_ROUTE_108": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_108_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 108",
       "battle_type": "ocean",
@@ -1453,7 +1453,7 @@
       "next_area": "HOENN_ROUTE_109",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_109": {
+    "HOENN_ROUTE_109": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_109_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 109",
       "battle_type": "ocean",
@@ -1505,7 +1505,7 @@
       "next_area": "SLATEPORT_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_110": {
+    "HOENN_ROUTE_110": { "dexnav_pool_percentages": "HOENN_ROUTE_110_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 110",
       "battle_type": "grass",
@@ -1528,7 +1528,7 @@
       "next_area": "MAUVILLE_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_111": {
+    "HOENN_ROUTE_111": { "dexnav_pool_percentages": "HOENN_ROUTE_111_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 111",
       "battle_type": "sand",
@@ -1579,7 +1579,7 @@
       "region": "HOENN",
       "weather": "SAND"
     },
-    "HOENN_ROUTE_112": {
+    "HOENN_ROUTE_112": { "dexnav_pool_percentages": "HOENN_ROUTE_112_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 112",
       "battle_type": "grass",
@@ -1622,7 +1622,7 @@
       "next_area": "LAVARIDGE_TOWN",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_113": {
+    "HOENN_ROUTE_113": { "dexnav_pool_percentages": "HOENN_ROUTE_113_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 113",
       "battle_type": "grass",
@@ -1669,7 +1669,7 @@
       "next_area": "FALLARBOR_TOWN",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_114": {
+    "HOENN_ROUTE_114": { "dexnav_pool_percentages": "HOENN_ROUTE_114_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 114",
       "battle_type": "grass",
@@ -1722,7 +1722,7 @@
       "next_area": "FALLARBOR_TOWN",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_115": {
+    "HOENN_ROUTE_115": { "dexnav_pool_percentages": "HOENN_ROUTE_115_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 115",
       "battle_type": "grass",
@@ -1761,7 +1761,7 @@
       "next_area": "RUSTBORO_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_116": {
+    "HOENN_ROUTE_116": { "dexnav_pool_percentages": "HOENN_ROUTE_116_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 116",
       "battle_type": "grass",
@@ -1807,7 +1807,7 @@
       "next_area": "HOENN_RUSTURF_TUNNEL",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_117": {
+    "HOENN_ROUTE_117": { "dexnav_pool_percentages": "HOENN_ROUTE_117_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 117",
       "battle_type": "grass",
@@ -1854,7 +1854,7 @@
       "next_area": "VERDANTURF_TOWN",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_118": {
+    "HOENN_ROUTE_118": { "dexnav_pool_percentages": "HOENN_ROUTE_118_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 118",
       "battle_type": "grass",
@@ -1996,7 +1996,7 @@
       "region": "HOENN",
       "weather": "RAIN"
     },
-    "HOENN_ROUTE_121": {
+    "HOENN_ROUTE_121": { "dexnav_pool_percentages": "HOENN_ROUTE_121_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 121",
       "battle_type": "grass",
@@ -2037,7 +2037,7 @@
       "next_area": "LILYCOVE_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_122": {
+    "HOENN_ROUTE_122": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_122_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 122",
       "battle_type": "ocean",
@@ -2131,7 +2131,7 @@
       "next_area": "HOENN_ROUTE_122",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_124": {
+    "HOENN_ROUTE_124": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_124_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 124",
       "battle_type": "ocean",
@@ -2173,7 +2173,7 @@
       "next_area": "MOSSDEEP_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_125": {
+    "HOENN_ROUTE_125": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_125_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 125",
       "battle_type": "ocean",
@@ -2213,7 +2213,7 @@
       "next_area": "MOSSDEEP_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_126": {
+    "HOENN_ROUTE_126": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_126_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 126",
       "battle_type": "ocean",
@@ -2253,7 +2253,7 @@
       "next_area": "SOOTOPOLIS_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_127": {
+    "HOENN_ROUTE_127": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_127_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 127",
       "battle_type": "ocean",
@@ -2295,7 +2295,7 @@
       "next_area": "HOENN_ROUTE_128",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_128": {
+    "HOENN_ROUTE_128": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_128_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 128",
       "battle_type": "ocean",
@@ -2349,7 +2349,7 @@
       "next_area": "EVER_GRANDE_CITY",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_129": {
+    "HOENN_ROUTE_129": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_129_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 129",
       "battle_type": "ocean",
@@ -2389,7 +2389,7 @@
       "next_area": "HOENN_ROUTE_130",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_130": {
+    "HOENN_ROUTE_130": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_130_DEXNAV_SURF_PERCENTAGES",
       "mirage": {"area": "HOENN_MIRAGE_ISLAND"}, "area_type": "wild_route",
       "route_name": "Route 130",
       "battle_type": "ocean",
@@ -2428,7 +2428,7 @@
       "next_area": "HOENN_ROUTE_131",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_131": {
+    "HOENN_ROUTE_131": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_131_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 131",
       "battle_type": "ocean",
@@ -2468,7 +2468,7 @@
       "next_area": "PACIFIDLOG_TOWN",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_132": {
+    "HOENN_ROUTE_132": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_132_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 132",
       "battle_type": "ocean",
@@ -2509,7 +2509,7 @@
       "next_area": "HOENN_ROUTE_133",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_133": {
+    "HOENN_ROUTE_133": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_133_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 133",
       "battle_type": "ocean",
@@ -2551,7 +2551,7 @@
       "next_area": "HOENN_ROUTE_134",
       "region": "HOENN"
     },
-    "HOENN_ROUTE_134": {
+    "HOENN_ROUTE_134": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_134_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Route 134",
       "battle_type": "ocean",
@@ -2593,7 +2593,7 @@
       "next_area": "SLATEPORT_CITY",
       "region": "HOENN"
     },
-    "HOENN_PETALBURG_WOODS": {
+    "HOENN_PETALBURG_WOODS": { "dexnav_pool_percentages": "HOENN_PETALBURG_WOODS_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
       "route_name": "Petalburg Woods",
       "battle_type": "forest",
@@ -2636,7 +2636,7 @@
       "next_area": "VERDANTURF_TOWN",
       "region": "HOENN"
     },
-    "HOENN_GRANITE_CAVE": {
+    "HOENN_GRANITE_CAVE": { "dexnav_pool_percentages": "HOENN_GRANITE_CAVE_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
       "route_name": "Granite Cave",
       "battle_type": "cave",
@@ -2658,7 +2658,7 @@
       "next_area": "HOENN_ROUTE_106",
       "region": "HOENN"
     },
-    "HOENN_METEOR_FALLS": {
+    "HOENN_METEOR_FALLS": { "dexnav_pool_percentages": "HOENN_METEOR_FALLS_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
       "route_name": "Meteor Falls",
       "battle_type": "cave",
@@ -2681,7 +2681,7 @@
       "next_area": "HOENN_ROUTE_114",
       "region": "HOENN"
     },
-    "HOENN_JAGGED_PASS": {
+    "HOENN_JAGGED_PASS": { "dexnav_pool_percentages": "HOENN_JAGGED_PASS_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
       "route_name": "Jagged Pass",
       "battle_type": "mountain",
@@ -2724,7 +2724,7 @@
       "next_area": "HOENN_MT_CHIMNEY",
       "region": "HOENN"
     },
-    "HOENN_FIERY_PATH": {
+    "HOENN_FIERY_PATH": { "dexnav_pool_percentages": "HOENN_FIERY_PATH_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
       "route_name": "Fiery Path",
       "battle_type": "cave",
@@ -2888,7 +2888,7 @@
       "next_area": "HOENN_ROUTE_108",
       "region": "HOENN"
     },
-    "HOENN_SAFARI_ZONE": {
+    "HOENN_SAFARI_ZONE": { "dexnav_pool_percentages": "HOENN_SAFARI_ZONE_DEXNAV_PERCENTAGES",
       "zones": [{"key": "area_1", "name": "Area 1"}, {"key": "area_2", "name": "Area 2"}, {"key": "area_3", "name": "Area 3"}, {"key": "area_4", "name": "Area 4"}, {"key": "area_5", "name": "Area 5"}, {"key": "area_6", "name": "Area 6"}],
       "zones_explore": true,
       "zone_pools": {"area_1": "HOENN_SAFARI_ZONE_AREA_1_PERCENTAGES", "area_2": "HOENN_SAFARI_ZONE_AREA_2_PERCENTAGES", "area_3": "HOENN_SAFARI_ZONE_AREA_3_PERCENTAGES", "area_4": "HOENN_SAFARI_ZONE_AREA_4_PERCENTAGES", "area_5": "HOENN_SAFARI_ZONE_AREA_5_PERCENTAGES", "area_6": "HOENN_SAFARI_ZONE_AREA_6_PERCENTAGES"},
@@ -2896,6 +2896,9 @@
       "route_name": "Safari Zone",
       "battle_type": "grass",
       "wild_pool_percentages": "HOENN_SAFARI_ZONE_PERCENTAGES",
+      "surf_pool_percentages": "HOENN_SAFARI_ZONE_SURF_PERCENTAGES",
+      "rock_smash_pool_percentages": "HOENN_SAFARI_ZONE_ROCK_SMASH_PERCENTAGES",
+      "can_fish": true,
       "min_rounds": 3,
       "trainer_pool": [],
       "route_menu": [{"text": "TM168 SOLAR BEAM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm11_safari", "event": {"lines": ["There's a TM on the bank by the pond!"], "gift_item": {"TM168": 1}, "flag": "got_tm11_safari"}}, {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_safari", "event": {"lines": ["Someone left a Calcium out here!"], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_safari"}}, {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_safari", "event": {"lines": ["A Max Revive was hidden past the pond!"], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_safari"}}, {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_safari", "event": {"lines": ["There's a Nugget between the ledges!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_safari"}}, {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_pearl_safari", "event": {"lines": ["A Big Pearl is lying in the grass!"], "gift_item": {"BIG_PEARL": 1}, "flag": "got_big_pearl_safari"}}, {"text": "ABSOLITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_absolite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABSOLITE!"], "gift_item": {"ABSOLITE": 1}, "flag": "got_absolite"}}, 
@@ -2908,7 +2911,7 @@
       "safari_game": {"balls": 30, "steps": 500},
       "region": "HOENN"
     },
-    "HOENN_SHOAL_CAVE": { "cleared_flag": "shoal_cave_cleared",
+    "HOENN_SHOAL_CAVE": { "dexnav_pool_percentages": "HOENN_SHOAL_CAVE_DEXNAV_PERCENTAGES", "cleared_flag": "shoal_cave_cleared",
       "area_type": "dungeon",
       "route_name": "Shoal Cave",
       "battle_type": "cave",
@@ -3031,7 +3034,7 @@
       "next_area": "PACIFIDLOG_TOWN",
       "region": "HOENN"
     },
-    "HOENN_MT_PYRE": {
+    "HOENN_MT_PYRE": { "dexnav_pool_percentages": "HOENN_MT_PYRE_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
       "route_name": "Mt. Pyre",
       "battle_type": "indoor",
@@ -3670,6 +3673,50 @@
   "HOENN_METEOR_FALLS_GOOD_ROD_PERCENTAGES": {"118": 105, "129": 180, "339": 15},
   "HOENN_METEOR_FALLS_OLD_ROD_PERCENTAGES": {"118": 105, "129": 195},
   "HOENN_METEOR_FALLS_SURF_PERCENTAGES": {"41": 80, "42": 164, "338": 56, "337": 56},
+  "HOENN_SAFARI_ZONE_SURF_PERCENTAGES": {"54": 58, "195": 2, "183": 15, "194": 22, "55": 3},
+  "HOENN_SAFARI_ZONE_OLD_ROD_PERCENTAGES": {"129": 70, "118": 30},
+  "HOENN_SAFARI_ZONE_GOOD_ROD_PERCENTAGES": {"129": 60, "118": 35, "223": 5},
+  "HOENN_SAFARI_ZONE_SUPER_ROD_PERCENTAGES": {"118": 62, "119": 15, "223": 20, "224": 3},
+  "HOENN_SAFARI_ZONE_ROCK_SMASH_PERCENTAGES": {"74": 80, "213": 20},
+  "HOENN_FIERY_PATH_DEXNAV_PERCENTAGES": {"50": 10, "236": 10, "524": 10},
+  "HOENN_GRANITE_CAVE_DEXNAV_PERCENTAGES": {"95": 10, "532": 10, "610": 10},
+  "HOENN_JAGGED_PASS_DEXNAV_PERCENTAGES": {"56": 10, "77": 10, "236": 10},
+  "HOENN_METEOR_FALLS_DEXNAV_PERCENTAGES": {"35": 10, "621": 10, "633": 10},
+  "HOENN_MT_PYRE_DEXNAV_PERCENTAGES": {"58": 10, "436": 10, "605": 10},
+  "HOENN_PETALBURG_WOODS_DEXNAV_PERCENTAGES": {"46": 10, "546": 10, "708": 10},
+  "HOENN_ROUTE_101_DEXNAV_PERCENTAGES": {"506": 10, "540": 10, "570": 10},
+  "HOENN_ROUTE_102_DEXNAV_PERCENTAGES": {"506": 10, "535": 10, "574": 10},
+  "HOENN_ROUTE_103_DEXNAV_PERCENTAGES": {"422": 10, "441": 10, "506": 10},
+  "HOENN_ROUTE_104_DEXNAV_PERCENTAGES": {"441": 10, "519": 10, "540": 10},
+  "HOENN_ROUTE_105_DEXNAV_SURF_PERCENTAGES": {"98": 10, "592": 10, "690": 10, "692": 10},
+  "HOENN_ROUTE_106_DEXNAV_SURF_PERCENTAGES": {"98": 10, "592": 10, "690": 10, "692": 10},
+  "HOENN_ROUTE_107_DEXNAV_SURF_PERCENTAGES": {"98": 10, "592": 10, "690": 10, "692": 10},
+  "HOENN_ROUTE_108_DEXNAV_SURF_PERCENTAGES": {"98": 10, "592": 10, "690": 10, "692": 10},
+  "HOENN_ROUTE_109_DEXNAV_SURF_PERCENTAGES": {"98": 10, "592": 10, "690": 10, "692": 10},
+  "HOENN_ROUTE_110_DEXNAV_PERCENTAGES": {"422": 10, "441": 10, "568": 10},
+  "HOENN_ROUTE_111_DEXNAV_PERCENTAGES": {"443": 10, "551": 10, "557": 10},
+  "HOENN_ROUTE_112_DEXNAV_PERCENTAGES": {"77": 10, "236": 10, "538": 10, "539": 10},
+  "HOENN_ROUTE_113_DEXNAV_PERCENTAGES": {"559": 10, "626": 10, "707": 10},
+  "HOENN_ROUTE_114_DEXNAV_PERCENTAGES": {"200": 10, "451": 10, "535": 10},
+  "HOENN_ROUTE_115_DEXNAV_PERCENTAGES": {"35": 10, "200": 10, "519": 10},
+  "HOENN_ROUTE_116_DEXNAV_PERCENTAGES": {"133": 10, "519": 10, "595": 10},
+  "HOENN_ROUTE_117_DEXNAV_PERCENTAGES": {"19": 10, "535": 10, "585": 10},
+  "HOENN_ROUTE_118_DEXNAV_PERCENTAGES": {"20": 10, "190": 10, "404": 10},
+  "HOENN_ROUTE_121_DEXNAV_PERCENTAGES": {"97": 10, "190": 10, "605": 10},
+  "HOENN_ROUTE_122_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_124_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_125_DEXNAV_SURF_PERCENTAGES": {"86": 10, "456": 10, "592": 10},
+  "HOENN_ROUTE_126_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_127_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_128_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_129_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_130_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_131_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_132_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_133_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_ROUTE_134_DEXNAV_SURF_PERCENTAGES": {"456": 10, "592": 10, "594": 10},
+  "HOENN_SAFARI_ZONE_DEXNAV_PERCENTAGES": {"14": 10, "17": 10, "427": 10},
+  "HOENN_SHOAL_CAVE_DEXNAV_PERCENTAGES": {"87": 10, "225": 10, "613": 10},
   "HOENN_SAFARI_ZONE_PERCENTAGES": {"44": 40, "84": 40, "54": 27, "190": 7, "191": 7, "179": 5, "216": 5, "25": 3, "203": 3, "178": 3, "202": 3, "111": 3, "214": 3, "232": 3, "127": 3, "163": 2, "167": 2, "165": 2, "207": 1, "209": 1, "234": 1, "204": 1, "228": 1, "241": 1},
   "HOENN_SAFARI_ZONE_AREA_1_PERCENTAGES": {"25": 20, "44": 60, "54": 40, "84": 60, "203": 20},
   "HOENN_SAFARI_ZONE_AREA_2_PERCENTAGES": {"44": 60, "54": 40, "84": 60, "178": 20, "202": 20},

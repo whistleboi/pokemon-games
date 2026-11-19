@@ -154,6 +154,23 @@ re = phone.rematch_info(g, "JOHTO_ROUTE_30", joey_i, joey)
 check(call and "Joey" in " ".join(call) and re.get("team") == [20] and re.get("levels") == [34],
       f"...later his Raticate (lv 34, SoulSilver's rematch) is ready: he calls, and you meet that team ({re.get('team')}, {re.get('levels')})")
 check(phone.ring(g, "VIOLET_CITY") == [], "...one call a team")
+# (11-19, the re-audit: every SoulSilver phone trainer; a gift on a team you skipped by waiting still comes - Vance's Carbos)
+_phones = {t["name"] for a in _area.values() for t in (a.get("trainer_pool") or []) if isinstance(t, dict) and t.get("phone")}
+check(len(_phones) >= 26 and {"Bird Keeper Vance", "Hiker Parry", "Picnicker Erin", "Fisherman Wilton", "Pokefan Beverly"} <= _phones,
+      f"Phone: SoulSilver's phone trainers all have rematch teams ({len(_phones)})")
+vance_i, vance = next((i, t) for i, t in enumerate(_area["JOHTO_ROUTE_44"]["trainer_pool"]) if t["name"] == "Bird Keeper Vance")
+check(vance["phone"]["tiers"][1].get("gift") == {"CARBOS": 1}, "...Vance's second rematch has his Carbos")
+phone.register_after_win(g, "JOHTO_ROUTE_44", vance)
+story.mark_trainer_defeated("JOHTO_ROUTE_44", vance_i)
+_lvl = __import__("src.world.levels", fromlist=["x"])
+_save_cap = _lvl.story_level_cap
+_lvl.story_level_cap = lambda st: 100
+try:
+    re = phone.rematch_info(g, "JOHTO_ROUTE_44", vance_i, vance)
+finally:
+    _lvl.story_level_cap = _save_cap
+check(re.get("_phone_tier") == 2 and (re.get("rewards") or {}).get("CARBOS") == 1 and "phone_gift_JOHTO_ROUTE_44|Bird Keeper Vance|1" in str(re.get("_phone_gift")),
+      f"...met only at his strongest team, he still hands over the Carbos ({re.get('_phone_tier')}, {re.get('rewards')})")
 
 # ---- givers in the data
 li = next(t for t in _area["SPROUT_TOWER"]["trainer_pool"] if t["name"] == "Elder Li")
@@ -161,7 +178,7 @@ check(li["rewards"].get("HM_FLASH") and li["team"] == [69, 69, 163], "Elder Li: 
 from src.world.hms import hm_for_badge
 check(hm_for_badge("JOHTO", "ZEPHYR") is None and hm_for_badge("JOHTO", "HIVE") is None, "...Flash and Cut come from the story now (Elder Li, the charcoal maker), not the badges")
 kyle = [o for o in _area["VIOLET_CITY"]["explore_options"] if o.get("text") == "Kyle"]
-check(any((o.get("event") or {}).get("trade") == {"want": 69, "give": 95, "item": "PERSIM_BERRY"} for o in kyle), "Violet: Kyle trades his Onix for a Bellsprout")
+check(any((o.get("event") or {}).get("trade") == {"want": 69, "give": 95, "item": "PERSIM_BERRY", "nickname": "Rocky"} for o in kyle), "Violet: Kyle trades his Onix (Rocky) for a Bellsprout")
 
 # ---- Johto starts as HGSS does (Jordan 11-15: "ensure the johto region starts the same as the games, with the same scenes")
 from src.states.menus import StarterSelectionState as _SSS, region_opening_state
@@ -604,9 +621,18 @@ story.player_team = [_k]
 _k.ivs = {"HP": 31, "ATTACK": 31, "DEFENSE": 30, "SPATK": 30, "SPDEF": 20, "SPEED": 20}   # (162: a record)
 _said = []
 _eth = story.inventory.get("ETHER", 0)
-_run_story_event(g.current_state, {"lines": [], "size_record": True}, lambda c: True, lambda ls: _said.extend(ls))
+_elx = story.inventory.get("ELIXIR", 0)
+_save_fp = story.story_flags.pop("magikarp_first_prize", None)
+_run_story_event(g.current_state, {"lines": [], "size_record": True, "first_prize": "ELIXIR"}, lambda c: True, lambda ls: _said.extend(ls))
 check(story.story_flags.get("magikarp_record") == 162 and story.inventory.get("ETHER", 0) == _eth + 1 and not any("IV" in x for x in _said),
       f"Lake of Rage: the Fishing Guru measures your Magikarp; a new record wins an Ether ({_said[1:2]})")
+check(story.inventory.get("ELIXIR", 0) == _elx + 1 and story.story_flags.get("magikarp_first_prize"),
+      "...and the first record also wins Crystal's Elixir")
+story.inventory["ELIXIR"] = _elx
+if _save_fp is None:
+    story.story_flags.pop("magikarp_first_prize", None)
+else:
+    story.story_flags["magikarp_first_prize"] = _save_fp
 _k.ivs = {"HP": 31, "ATTACK": 31, "DEFENSE": 25, "SPATK": 25, "SPDEF": 20, "SPEED": 3}
 _said = []
 _run_story_event(g.current_state, {"lines": [], "size_record": True}, lambda c: True, lambda ls: _said.extend(ls))
@@ -947,6 +973,49 @@ _high = _pN._check_route_condition("lead_trusts_you", False)
 _lead.friendship, _lead.affection = _fr, _af
 check(not _low and _high and _tmman["event"]["requires"] == ["lead_trusts_you"] and "TM051" in _tmman["event"]["gift_item"],
       "...the man on Route 27 gives TM Sandstorm only when your lead Pokemon trusts you")
+
+# ---- 11-19, Jordan: "Put unknown only inside of the ruins not outside"; Slugma and Houndour somewhere in Johto's first playthrough
+_ad = g.loader.area_data
+_ruins = _ad["STORY_PROGRESSION"]["RUINS_OF_ALPH"]
+check(_ad[_ruins["grass_pool_percentages"]] == {"177": 90, "235": 10} and set(_ad[_ruins["wild_pool_percentages"]]) == {"201"},
+      "Ruins of Alph: the outside grass has SoulSilver's Natu and Smeargle; Unown are the inside's (Explore Ruins) only")
+_rs = open_map("RUINS_OF_ALPH", "JOHTO_ROUTE_32")
+_grass = [(x, y) for y, r in enumerate(_rs.grid) for x, c in enumerate(r) if c == '"' and _rs.rows[y][x] == "."]
+_met, _off = set(), 0
+_rate, _rs.GRASS_RATE = _rs.GRASS_RATE, 1.0
+import random as _rnd
+_rnd.seed(7)
+for _ in range(30):
+    g.change_state(_rs)
+    _rs.anim_from = (_grass[0][0] + 1, _grass[0][1])
+    if _rs._grass_wild(_grass[0]):
+        _met.add(getattr(getattr(g.current_state, "opponent_pokemon", None), "id", None))
+g.change_state(_rs)
+_path = next((x, y) for y, r in enumerate(_rs.grid) for x, c in enumerate(r) if c == "=" and _rs.rows[y][x] == ".")
+_rs.anim_from = (_path[0], _path[1] - 1)
+_off = _rs._grass_wild(_path)
+_rs.GRASS_RATE = _rate
+check(_grass and _met and _met <= {177, 235} and not _off,
+      f"...walking in that grass meets them ({sorted(x for x in _met if x)}), and nothing on the stone paths")
+_bt = _ad["STORY_PROGRESSION"]["BURNED_TOWER"]
+check(not any({"218", "228"} & set(_ad.get(_bt.get(f)) or {}) for f in ("wild_pool_percentages", "morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")),
+      "Burned Tower: no Slugma or Houndour (HG/SS don't have them there)")
+from src.states.overworld.common import PRIMO_EGGS
+check(218 in PRIMO_EGGS and _ad["JOHTO_SAFARI_SAVANNAH_PERCENTAGES"].get("228"),
+      "...Slugma comes from Primo's Egg in Violet, Houndour from the Safari Zone's Savannah (both before the League)")
+check(not {"177"} & set(_ad[_ad["STORY_PROGRESSION"]["JOHTO_ROUTE_36"]["wild_pool_percentages"]]), "Route 36: no stand-in Natu (it's in the Ruins' grass)")
+
+# ---- 11-19, the Johto re-audit: SoulSilver's trades (a/1/1/2: nicknames from its text bank 200, held items) and Friday's Lapras
+_tr = {}
+for _k in ("VIOLET_CITY", "GOLDENROD_CITY", "OLIVINE_CITY", "BLACKTHORN_CITY"):
+    for _o in _area[_k].get("explore_options", []):
+        if (_o.get("event") or {}).get("trade"):
+            _t = _o["event"]["trade"]
+            _tr[_t["give"]] = (_t.get("nickname"), _t.get("item"))
+check(_tr == {95: ("Rocky", "PERSIM_BERRY"), 66: ("Muscle", "MACHO_BRACE"), 100: ("Billy", "CHERI_BERRY"), 85: ("Doris", "SMOKE_BALL")},
+      f"Johto's trades: SoulSilver's nicknames and held items (Rocky, Muscle with his Macho Brace, Billy, Doris) ({_tr})")
+_lap = next(o for o in _area["UNION_CAVE"]["route_menu"] if o.get("text") == "CHALLENGE LAPRAS")
+check("weekday:fri" in _lap["condition"], "Union Cave's Lapras: Fridays only, as HGSS")
 
 if fails:
     print("FAILS:", len(fails))

@@ -3134,7 +3134,8 @@
                 30
               ],
               "rewards": {
-                "balls": 3
+                "balls": 3,
+                "SUN_STONE": 1
               },
               "dialogue": {
                 "player_won": [
@@ -3385,6 +3386,22 @@
             ],
             "flag": "xd_id_card"
           }
+        },
+        {
+          "text": "LEAF STONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "flag_condition": "not xd_leaf_stone_cipher_lab",
+          "event": {
+            "lines": [
+              "A Leaf Stone, left on a lab bench. You took it."
+            ],
+            "gift_item": {
+              "LEAF_STONE": 1
+            },
+            "flag": "xd_leaf_stone_cipher_lab"
+          }
         }
       ],
       "next_area": "GATEON_PORT",
@@ -3557,6 +3574,22 @@
               "It hops into your arms. Take it back to her at ONBS."
             ],
             "flag": "xd_bonsly_found"
+          }
+        },
+        {
+          "text": "FIRE STONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "flag_condition": "not xd_fire_stone_libra",
+          "event": {
+            "lines": [
+              "Inside an item box in the hold: a Fire Stone!"
+            ],
+            "gift_item": {
+              "FIRE_STONE": 1
+            },
+            "flag": "xd_fire_stone_libra"
           }
         }
       ],

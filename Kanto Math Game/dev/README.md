@@ -24,7 +24,7 @@ Each suite is `harness_head.py` + `<name>_body.py` (a few also `sub_helpers_body
 
 | Kind | Suites |
 |---|---|
-| New-region maps | `kanto_maps`, `frlg`, `sevii_maps`, `johto_canon`, `hoenn_maps`, `sinnoh`, `sinnohfolk` (Sinnoh townspeople), `orre_maps`, `dungeon` (shared map engine), `soaring`, `soaring3d`, `giant_volcano` |
+| New-region maps | `kanto_maps`, `frlg`, `sevii_maps`, `johto_canon`, `hoenn_maps`, `sinnoh`, `sinnohfolk` (Sinnoh townspeople), `orre_maps`, `dungeon` (shared map engine), `soaring`, `soaring3d`, `giant_volcano`, `canon_species` (every species the source games give in one playthrough: fishing on walked routes, Johto swarms, Orre stones/Plusle, Orange Linking Cord/Tauros, Hoenn Safari water, Lavaridge's Togepi Egg) |
 | Region starts | `kantostart`, `hoennstart`, `sinnohstart`, `smoke_regions.py` (every region starts) |
 | Reach walks | `walk_<region>.py` with `reach_lib.py` (`walk:<region>` in run.sh) |
 | Engine | `battle2`, `doubles`, `catch`, `items`, `items_pp`, `moveeffects`, `selfko`, `tmshop`, `savename`, `faces`, `townsea`, `aiswitch`, `flyrule`, `vsseeker`, `partners`, `movepool`, `scaling`, `storage`, `slots`, `menus`, `ui`, `events`, `features`, `loops` |

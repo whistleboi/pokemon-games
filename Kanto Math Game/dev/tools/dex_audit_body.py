@@ -46,6 +46,10 @@ def ids_in(o, out, why, where):
                 out.setdefault(int(v), set()).add(f"egg:{where}")
             elif k == "trade" and isinstance(v, dict) and str(v.get("give", "")).isdigit():
                 out.setdefault(int(v["give"]), set()).add(f"trade:{where}")
+            elif k == "choose" and isinstance(v, dict) and (v.get("pokemon") or v.get("egg")):   # (pick a Pokemon or an Egg: Birch's bag, the rooftop seller)
+                for c in v.get("choices") or []:
+                    if str(c.get("value")).isdigit():
+                        out.setdefault(int(c["value"]), set()).add(f"pick:{where}")
             elif k == "catch_id" and str(v).isdigit():
                 out.setdefault(int(v), set()).add(f"catch:{where}")
             elif re.match(r"POKEMON_(\d+)$", str(k)):
@@ -54,8 +58,8 @@ def ids_in(o, out, why, where):
                 for x in v["team"]:
                     out.setdefault(int(x), set()).add(f"boss:{where}")
             else:
-                if isinstance(v, str) and v in SE and (where, v) not in SEEN:
-                    SEEN.add((where, v)); ids_in(SE[v], out, "story", f"{where}/{v}")
+                if isinstance(v, str) and v in SE and (where.split("/")[0], v) not in SEEN:   # (one visit an event an area: events can name each other)
+                    SEEN.add((where.split("/")[0], v)); ids_in(SE[v], out, "story", f"{where}/{v}")
                 ids_in(v, out, why, where)
     elif isinstance(o, list):
         for x in o:
@@ -83,8 +87,9 @@ RULES = json.load(open("assets/pokemon_levels.json", encoding="utf-8"))["pairs"]
 ITEM_KEYS = ("gift_item", "stock", "extra_stock", "hidden", "rewards", "gift_cycle", "items")
 
 
-def items_in(o, out):
+def items_in(o, out, _seen=None):
     """Every item key this data can hand over: gifts, rewards, shop stock, hidden items, found balls."""
+    _seen = set() if _seen is None else _seen
     if isinstance(o, dict):
         for k, v in o.items():
             if k in ("gift_item", "rewards") and isinstance(v, dict):
@@ -97,12 +102,15 @@ def items_in(o, out):
                 out.update(str(x) for x in v.values())
             elif k == "gift_cycle" and isinstance(v, list):
                 out.update(str(x) for x in v)
-            elif isinstance(v, str) and v in SE:
-                items_in(SE[v], out)
-            items_in(v, out)
+            elif k == "choose" and isinstance(v, dict) and v.get("gift"):   # (pick one item: Gateon's Eevee expert, the Bay Cave fossil)
+                out.update(str(c.get("value")) for c in v.get("choices") or [])
+            elif isinstance(v, str) and v in SE and v not in _seen:   # (each story event once: they can name each other)
+                _seen.add(v)
+                items_in(SE[v], out, _seen)
+            items_in(v, out, _seen)
     elif isinstance(o, list):
         for x in o:
-            items_in(x, out)
+            items_in(x, out, _seen)
 
 
 PRE = {}
@@ -128,8 +136,9 @@ for region in regions:
             if "pool" in f and isinstance(v, (str, dict)):
                 for pid in pool_ids(v):
                     got.setdefault(pid, set()).add(f"wild:{k}")
+        _fishable = a.get("can_fish") or any(f"{k}_{r}_PERCENTAGES" in A for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD"))   # (route_actions.fishable, 11-19)
         for rod in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD"):
-            if a.get("can_fish"):
+            if _fishable:
                 for nm in (f"{k}_{rod}_PERCENTAGES", f"{region}_{rod}_POOL_PERCENTAGES"):
                     for pid in pool_ids(nm):
                         got.setdefault(pid, set()).add(f"fish:{k}")
@@ -150,6 +159,22 @@ for region in regions:
         from src.world import odd_egg as _odd
         for pid in _odd.SPECIES:
             got.setdefault(pid, set()).add("odd egg")
+        from src.states.overworld.common import PRIMO_EGGS   # (Violet Center's Primo: Mareep, Wooper, Slugma Eggs - 11-19)
+        for pid in PRIMO_EGGS:
+            got.setdefault(pid, set()).add("Primo's Egg")
+    from src.world import swarms as _sw   # (swarms, after the National Dex: src/world/swarms.py - a species, or (kind, species))
+    for _a, e in (_sw.SWARMS.get(region) or {}).items():
+        got.setdefault(int(_sw._entry(e)[1]), set()).add(f"swarm:{_a}")
+    _fm = A.get("FORM_MAP") or {}
+    for k in areas:
+        for _stn, sps in ((P[k].get("radio_sounds") or {}).items()):   # (HGSS's Hoenn / Sinnoh Sound on the radio: src/world/radio.py)
+            for pid in sps or []:
+                got.setdefault(int(pid), set()).add(f"radio {_stn}:{k}")
+        for sh in P[k].get("shadow_pool") or []:   # (Orre: Shadow Pokemon snagged from trainers, purified to the species)
+            sid = str(sh.get("id") if isinstance(sh, dict) else sh)
+            pid = (_fm.get(sid) or {}).get("id") if sid in _fm else (int(sid) if sid.isdigit() and int(sid) < 1000 else None)
+            if pid:
+                got.setdefault(int(pid), set()).add(f"snag:{k}")
     for pid, why in CODE_GIFTS.get(region, {}).items():
         got.setdefault(pid, set()).add(why)
     if region == "HOENN":
@@ -200,3 +225,18 @@ for region in regions:
             hint = "evolves from " + ", ".join(f"{I2N.get(p, p)}#{p}{'(have)' if p in reach else ''}" for p in sorted(pre))
         print(f"   #{pid:<4} {I2N.get(pid, '?'):14} {hint}{'  NEEDS ' + need_item[pid] + ' (not found in this region)' if pid in need_item else ''}")
     print("   only by evolving/breeding (no direct source):", len([p for p in dex & reach if p not in base]))
+    # (11-19: everything this region offers, not only its dex - for the canon-vs-ours comparison: <scratch>/obtainable_<REGION>.json)
+    every = set(base); changed = True
+    while changed:
+        changed = False
+        for pid in list(every):
+            for t in evo_targets(pid):
+                it = (RULES.get(f"{pid}>{t}") or {}).get("item"); it = {"UP_GRADE": "UPGRADE"}.get(it, it)
+                if (not it or it in have_items) and t not in every:
+                    every.add(t); got.setdefault(t, set()).add(f"evolve:{I2N.get(pid, pid)}"); changed = True
+            if daycare:
+                for p in PRE.get(pid, ()):
+                    if p not in every:
+                        every.add(p); got.setdefault(p, set()).add(f"breed:{I2N.get(pid, pid)}"); changed = True
+    json.dump({str(p): sorted(got.get(p, [])) for p in sorted(every) if 0 < p < 1000},
+              open(f"{S}/obtainable_{region}.json", "w", encoding="utf-8"), indent=0)
