@@ -78,6 +78,68 @@ def use(state):
     return ["You used the VS Seeker!"] + [f"{n} wants a rematch!" for n in back]
 
 
+# ---- in a town (Jordan 11-18: "Vs seeker in towns for just those 2"): a trainer battle written into a town that has
+# the games' rematch stages (only Seven Island's Psychics Dario and Rodette, FireRed's): used in that town, they may want
+# a rematch; talk to them for it. Keyed "town:<their battle's flag>".
+def town_key(ev):
+    return f"town:{ev.get('flag')}"
+
+
+def _town_battles(state):
+    """[(tile, event)] of the town's people with a battle that has rematch stages, already beaten."""
+    story = state.game.story_manager
+    out = []
+    for t, opt in state._people().items():
+        for o in (opt.get("any") or [opt]) if isinstance(opt, dict) else []:
+            ev = o.get("event") if isinstance(o, dict) else None
+            if isinstance(ev, dict) and (ev.get("battle") or {}).get("rematch") and ev.get("flag") and story.story_flags.get(ev["flag"]):
+                out.append((tuple(t), ev))
+    return out
+
+
+def settle_town(story, area):
+    """A town rematch won (its battle set "vs_won|area|key"): that stage is beaten, the trainer waits again."""
+    for k in [k for k in story.story_flags if k.startswith(f"vs_won|{area}|")]:
+        story.story_flags.pop(k)
+        key = k.split("|", 2)[2]
+        stage = (story.story_flags.get("vs_stage_pending") or {}).pop(f"{area}|{key}", None)
+        won(story, area, key, stage)
+
+
+def use_town(state):
+    """Used in a walked town: lines to show. Only battles with the games' rematch stages answer (Dario and Rodette)."""
+    story = state.game.story_manager
+    left = CHARGE - charge(story)
+    if left > 0:
+        return [f"The VS Seeker's battery needs charging. Walk {left} more step{'s' if left != 1 else ''}."]
+    story.story_flags["vs_seeker_steps"] = 0
+    settle_town(story, state.area_key)
+    px, py = state.player
+    back = []
+    for t, ev in _town_battles(state):
+        if abs(t[0] - px) + abs(t[1] - py) > SEE or is_ready(story, state.area_key, town_key(ev)):
+            continue
+        if random.random() >= READY_CHANCE:
+            continue
+        _ready(story).setdefault(state.area_key, {})[town_key(ev)] = story._today()
+        back.append(ev["battle"].get("name", "A trainer"))
+    if not back:
+        return ["You used the VS Seeker...", "Nobody around wants a rematch right now."]
+    return ["You used the VS Seeker!"] + [f"{n} wants a rematch!" for n in back]
+
+
+def town_rematch(game, area, ev):
+    """Talking to a town trainer the VS Seeker called: (battle info, its win flag) for the rematch, else None."""
+    story = game.story_manager
+    settle_town(story, area)
+    key = town_key(ev)
+    if not is_ready(story, area, key):
+        return None
+    info = rematch(game, area, key, dict(ev["battle"]))
+    story.story_flags.setdefault("vs_stage_pending", {})[f"{area}|{key}"] = info.get("_vs_stage")
+    return info, f"vs_won|{area}|{key}"
+
+
 def _has_rematch(story, area, info):
     """Would this trainer rematch at all? In a region with the games' tables: only those with a team there."""
     if str(story.area_region(area)).upper() not in TABLE_REGIONS:

@@ -844,6 +844,12 @@ class BagState(GameState):
             walk.use_scent("HONEY" if item == "HONEY" else item)  # (the White Flute: played, not used up)
             return
         if "seeker" in data:  # the VS Seeker: on a route's map, back to it; beaten trainers nearby may want a rematch
+            town = self.previous_state
+            if hasattr(town, "_people") and hasattr(town, "player") and not hasattr(town, "run"):   # (in a walked town: Dario, Rodette)
+                from src.world import vs_seeker
+                self.game.change_state(town)
+                town.show_message(vs_seeker.use_town(town))
+                return
             walk = getattr(self.game, "dungeon_state", None)
             if walk is None or getattr(walk, "area_key", None) != story.current_area_key or not hasattr(walk, "run"):
                 self._back_to_bag(["Use the VS SEEKER out on a route."])

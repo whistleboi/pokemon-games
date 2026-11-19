@@ -264,6 +264,13 @@ for _ in range(400):   # (the box tapped on; where you stand read the moment you
         _land = tuple(p.run.player); break
 check(not _first and _was == 1 and _second and p.run.index == 2 and _land == (9, 9),
       f"...FireRed's thin ice: the first step cracks it, the second drops you to B1F on the same spot (floor {p.run.index}, landed on {_land})")
+from src.dungeon import core as _core   # (11-18: a wild Pokemon standing on the landing spot made this land a tile off now and then)
+_f2 = p.run.made(2)
+_f2.movers = [m for m in _f2.movers if (m.x, m.y) != (9, 9)]
+_wm = _core.Mover("wild", 9, 9, None)
+_f2.movers.append(_wm)
+p.run.warp(2, 9, 9, land=True)
+check(tuple(p.run.player) == (9, 9) and (_wm.x, _wm.y) != (9, 9), f"...a wild Pokemon on the landing spot steps aside: you land on it ({p.run.player}, it's at {(_wm.x, _wm.y)})")
 
 # Green Path is two halves joined only through Pattern Bush (as in FireRed): each of the Bush's mouths brings you out on its own side
 for _i, _side in ((0, "west"), (5, "east")):

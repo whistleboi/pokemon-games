@@ -1742,6 +1742,12 @@ class WalkTownState(CityState):
                 drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
             if mo and mo.emote > 0:  # (they've noticed you: a "!" over them, drawn after everyone)
                 emotes.append((r.centerx - 4, r.y - 34))
+            _ev = next((o["event"] for o in ((opt.get("any") or [opt]) if isinstance(opt, dict) else [])
+                        if isinstance(o, dict) and isinstance(o.get("event"), dict) and (o["event"].get("battle") or {}).get("rematch")), None)
+            if _ev is not None:   # (the VS Seeker called it back: Seven Island's Psychics; a "!" over them)
+                from src.world import vs_seeker as _vsm
+                if _vsm.is_ready(self.game.story_manager, self.area_key, _vsm.town_key(_ev)):
+                    emotes.append((r.centerx - 4, r.y - 34))
         k = 1 - self.anim / STEP if self.anim > 0 else 1
         lead = self.follower()
         me = self._player_img()

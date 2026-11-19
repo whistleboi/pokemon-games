@@ -87,4 +87,37 @@ vs_seeker.won(story, area, ben_i, 3)
 check(not vs_seeker.is_ready(story, area, ben_i), "won: gone till the next use or tomorrow")
 plain = {"name": "Nobody", "class": "YOUNGSTER", "team": [19], "levels": [5]}
 check(not vs_seeker._has_rematch(story, area, plain), "a Kanto trainer FireRed gives no rematch never wants one (FireRed's X)")
+print("4) in a town, just Seven Island's Psychics Dario and Rodette (FireRed's one rematch each, after the Sevii quest)")
+from src.states.overworld import CityState as _CS
+from src.states.overworld import common as _common
+from src.states.battle import TrainerIntroState as _TIS
+g.walk_towns = True
+story.enter_region("KANTO")
+story.story_flags.update({"beat_dario_seven": True, "sevii_warehouse_cleared": True})
+for _k in [k for k in (story.story_flags.get("vs_ready") or {}).get("SEVEN_ISLAND", {})]:
+    story.story_flags["vs_ready"]["SEVEN_ISLAND"].pop(_k)
+story.current_area_key, story.last_area_key = "SEVEN_ISLAND", None
+g.walk_town_pos = None; g.walk_town_room = None
+t = _CS(g); g.change_state(t)
+for _ in range(3):
+    g.current_state.update()
+t = g.current_state
+_d = next(((tile, ev) for tile, ev in vs_seeker._town_battles(t) if ev["battle"]["name"] == "Psychic Dario"), None)
+check(_d is not None, f"Dario stands in Seven Island, beaten, with FireRed's rematch stage ({_d[0] if _d else None})")
+t.player = (_d[0][0], _d[0][1] + 1)
+story.story_flags["vs_seeker_steps"] = vs_seeker.CHARGE
+lines = vs_seeker.use_town(t)
+check(any("Psychic Dario wants a rematch" in l for l in lines) and vs_seeker.is_ready(story, "SEVEN_ISLAND", vs_seeker.town_key(_d[1])), f"used beside him: {lines}")
+_common._run_story_event(t, _d[1], lambda c: True, lambda ls: None)
+intro = g.current_state
+b = getattr(intro, "next_state", None)
+check(isinstance(intro, _TIS) and [p_.id for p_ in b.opponent_team] == [203] and b.opponent_team[0].level == 56,
+      f"talk to him: FireRed's rematch, Girafarig Lv 56 ({type(intro).__name__}, {[(p_.id, p_.level) for p_ in getattr(b, 'opponent_team', [])]})")
+story.story_flags[f"vs_won|SEVEN_ISLAND|{vs_seeker.town_key(_d[1])}"] = True   # (the battle won)
+vs_seeker.settle_town(story, "SEVEN_ISLAND")
+check(not vs_seeker.is_ready(story, "SEVEN_ISLAND", vs_seeker.town_key(_d[1])), "won: he waits for the VS Seeker again")
+g.change_state(t)
+story.story_flags["vs_seeker_steps"] = vs_seeker.CHARGE
+t.player = (3, 3)
+_far = vs_seeker.use_town(t); check(not any(l.endswith("wants a rematch!") for l in _far), f"far from them: nobody answers ({_far}, at {t.player})")
 print("FAILURES:", fails)

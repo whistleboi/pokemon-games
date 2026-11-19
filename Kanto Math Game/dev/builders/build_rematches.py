@@ -39,6 +39,14 @@ def main(kind, rows_path, write):
             for i, t in enumerate((a.get("trainer_pool") or []) if isinstance(a, dict) else []):
                 if isinstance(t, dict) and isinstance(t.get("team"), list) and t["team"] and isinstance(t["team"][0], int):
                     ours.setdefault((norm_class(t.get("class")), str(t.get("name", "")).upper()), []).append((f, area, i, t))
+            # (11-18: a trainer battle written into a town, met once: Seven Island's Psychics Dario and Rodette. Its name
+            #  carries its class ("Psychic Dario"); the VS Seeker calls it back in town: src/world/vs_seeker.py use_town)
+            for o in (a.get("explore_options") or []) if isinstance(a, dict) else []:
+                t = ((o.get("event") or {}).get("battle") if isinstance(o, dict) and isinstance(o.get("event"), dict) else None)
+                if isinstance(t, dict) and isinstance(t.get("team"), list) and t["team"] and isinstance(t["team"][0], int):
+                    words = str(t.get("name", "")).split()
+                    if len(words) > 1:
+                        ours.setdefault((norm_class(t.get("class")), words[-1].upper()), []).append((f, area, "town", t))
     done, miss = [], []
     edits = {f: [] for f in texts}
     for e in rows:
@@ -83,14 +91,23 @@ def main(kind, rows_path, write):
                 pos = s.find(key, pos + 1)
                 if pos < 0 or pos > a1:
                     break
-                b = s.rfind("{", 0, pos)
-                try:
-                    obj, end = json.JSONDecoder().raw_decode(s[b:])
-                except ValueError:
+                b, obj = pos, None
+                for _ in range(40):   # (back to the brace of the object this "name" belongs to, past an earlier run's stages)
+                    b = s.rfind("{", 0, b)
+                    try:
+                        cand, _end = json.JSONDecoder().raw_decode(s[b:])
+                    except ValueError:
+                        continue
+                    if isinstance(cand, dict) and cand.get("name") == t.get("name"):
+                        obj = cand
+                        break
+                if obj is None:
                     continue
-                if obj.get("team") == t.get("team") and obj.get("class") == t.get("class") and "rematch" not in obj:
-                    found = b
+                if obj.get("team") == t.get("team") and obj.get("class") == t.get("class"):
+                    found = b if "rematch" not in obj else "already"
                     break
+            if found == "already":   # (written by an earlier run)
+                continue
             if found is None:
                 print("   (couldn't place)", area, t.get("name"))
                 continue

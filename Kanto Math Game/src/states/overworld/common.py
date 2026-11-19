@@ -327,6 +327,14 @@ def _run_story_event(state, key, check, show):
             story.story_flags.pop(k)   # (yesterday's picking forgotten: one flag a tree)
         ev = dict(ev, flag=today)
     flag = ev.get("flag")
+    if flag and story.story_flags.get(flag) and (ev.get("battle") or {}).get("rematch"):   # (the VS Seeker called it back: Dario, Rodette)
+        from src.world import vs_seeker
+        re = vs_seeker.town_rematch(game, story.current_area_key, ev)
+        if re:
+            info, won_flag = re
+            game.change_state(_start_event_battle(game, story.current_area_key,
+                                                  dict(info, _intro_lines=["Rematch! Show me how much stronger you've become!"]), won_flag))
+            return
     if flag and story.story_flags.get(flag):
         if ev.get("pikachu_mood"):   # (Yellow's Celadon Mansion lady: how much your Pikachu likes you; Jordan 11-16)
             from src.pokemon import rowdy

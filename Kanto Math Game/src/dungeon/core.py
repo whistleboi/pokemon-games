@@ -767,6 +767,16 @@ class Run:
             self.enter_floor(len(self.floors))
         self.enter_floor(index)
         floor = self.floors[index]
+        m = floor.mover_at(x, y) if land else None
+        if m is not None and m.kind == "wild" and getattr(m, "size", 1) == 1:
+            # (a wild Pokemon on the landing spot steps aside: you always come down on the very spot, as in FireRed. It made
+            #  Icefall Cave's thin-ice check land you a tile off now and then: the wild ones are placed at random; 11-18)
+            aside = next(((x + dx, y + dy) for dx, dy in DIRS if floor.walkable(x + dx, y + dy)
+                          and not floor.occupied(x + dx, y + dy)), None)
+            if aside is None:
+                floor.movers.remove(m)
+            else:
+                m.x, m.y = aside
         land = land and (x, y) not in floor.exits and floor.walkable(x, y) and not floor.occupied(x, y)   # (a plain spot, not a passage: a hole's landing)
         self.player = (x, y) if land else self._beside(floor, (x, y))
         self.reveal()
