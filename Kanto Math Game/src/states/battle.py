@@ -1366,6 +1366,11 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             self._answer_mode = "weak"
         mine = movelib.info(self.game, self._forced_move(self.player_pokemon)
                             or self.chosen_move or self._battle_moves(self.player_pokemon)[0])
+        swap = self._ai_switch_choice()   # (a trainer pulls out a Pokemon in a bad spot, 11-18)
+        if swap is not None:
+            self._foe_switch_to = swap
+            self.turn_actions += [self.opponent_switch, self.player_attack]   # (a switch goes before any move)
+            return
         theirs = movelib.info(self.game, self._forced_move(self.opponent_pokemon)
                               or self._ai_choose(self.opponent_pokemon, self.player_pokemon))
         self._foe_next_move = theirs["name"]
@@ -1390,6 +1395,67 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             self.turn_actions.append(self.raid_allies_attack)
             from src.coop import raid as coop_raid
             coop_raid.on_turn(self)  # (co-op: friends' answers first)
+
+    # ------------------------------------------------------------------ a trainer switching by choice (11-18)
+    AI_SWITCH_CHANCE = (0.2, 0.5)   # (an ordinary trainer, a boss: Gym Leaders, rivals, the League...)
+
+    def _foe_can_switch(self, foe):
+        """Not held: bound, Mean Look / Block, Ingrain, or your Shadow Tag / Arena Trap / Magnet Pull (Ghosts slip free)."""
+        if "GHOST" in (foe.types or []):
+            return True
+        v = self.vol(foe)
+        if v.get("no_escape") or v.get("trapped") or v.get("ingrain"):
+            return False
+        a = self.ab(self.player_pokemon)
+        grounded = "FLYING" not in (foe.types or []) and self.ab(foe) != "LEVITATE"
+        return not (a == "SHADOWTAG" and self.ab(foe) != "SHADOWTAG" or a == "ARENATRAP" and grounded
+                    or a == "MAGNETPULL" and "STEEL" in (foe.types or []))
+
+    def _ai_switch_choice(self):
+        """A trainer's Pokemon in a bad spot goes back, as trainers do in the games: yours has a super-effective hit on it,
+        it has nothing super effective on yours, and someone on the bench takes your moves at half or less. Sometimes
+        (a boss more often), not two turns running, never in a wild battle, a double battle or under a no-switch rule.
+        Returns the team index to send out, or None."""
+        foe, mine = self.opponent_pokemon, self.player_pokemon
+        if (isinstance(self, WildBattleState) or len([p for p in self.opponent_team if p]) < 2 or getattr(self, "is_doubles", False) or self.no_switch
+                or getattr(self, "raid_allies", None) or foe is None or mine is None or self.opponent_hp <= 0
+                or self.player_hp <= 0 or self._forced_move(foe) or self.__dict__.get("_charging", {}).get(id(foe))):
+            return None
+        if self.turn_count - self.__dict__.get("_ai_switched_turn", -9) < 2 or self.opponent_hp < self.opp_max_hp // 4:
+            return None
+        bench = self._bench(foe)
+        if not bench or not self._foe_can_switch(foe):
+            return None
+        from src.pokemon.mechanics import TypeAdvantage
+        chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
+
+        def best(attacker, target):
+            hits = [chart.get_multiplier(d.get("type"), target.types or []) for d in
+                    (movelib.info(self.game, m) for m in (getattr(attacker, "moves", None) or [])) if (d.get("power") or 0)]
+            return max(hits or [1.0])
+        if best(mine, foe) < 2 or best(foe, mine) >= 2:
+            return None
+        safe = [j for j in bench if best(mine, self.opponent_team[j]) <= 0.5]
+        if not safe:
+            return None
+        if random.random() >= self.AI_SWITCH_CHANCE[1 if self.is_boss_battle else 0]:
+            return None
+        return self._ai_switch_pick(safe, mine)
+
+    def opponent_switch(self):
+        """The trainer's switch, first in the turn. A Pursuit you picked catches the one leaving, at double power."""
+        j = self.__dict__.pop("_foe_switch_to", None)
+        if j is None or self.opponent_hp <= 0:
+            return
+        self._ai_switched_turn = self.turn_count
+        if (self.chosen_move or "").upper() == "PURSUIT" and self.player_attack in self.turn_actions and self.player_hp > 0:
+            self.turn_actions.remove(self.player_attack)
+            self._mv_call_boost = 2.0
+            self.turn_actions.insert(0, lambda: self._switch_foe_now(j) if self.opponent_hp > 0 else None)
+            self.player_attack()
+            self.__dict__.pop("_mv_call_boost", None)
+            return
+        self._switch_foe_now(j)
 
     FIRST_TURN_ONLY = ("FAKE-OUT", "FIRST-IMPRESSION")
 
