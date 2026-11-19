@@ -173,6 +173,41 @@ check("Goldenrod" in st.ask_line, f"over Johto, LAND offers Johto's town below, 
 st._fly_on()
 check(st._locked(*S3.TOWNS["PALLET_TOWN"]) and st._locked(*S3.TOWNS["VALENCIA_ISLAND"]), "Kanto and Orange still under clouds")
 
+print("== the birds of each region, the region's name, lightning, long names (Jordan, 11-18)")
+import random as _random
+_rng = _random.Random(3)
+for reg in ("KANTO", "JOHTO", "HOENN", "SEVII", "ORANGE"):
+    got = [S3.sky_wild(reg, _rng) for _ in range(300)]
+    flocks, solos = S3.SKY_BIRDS[reg]
+    check(all((n >= 3 and p in flocks) or (n == 1 and p in solos) for p, n in got),
+          f"{reg}: flocks of 3 or more of its own birds, its strong ones alone")
+    share = sum(1 for _p, n in got if n == 1) / len(got)
+    check(0.04 < share < 0.25, f"{reg}: a strong one alone now and then ({share:.2f})")
+check(st._region_at(*S3.TOWNS["GOLDENROD_CITY"]) == "JOHTO" and st._region_at(*S3.TOWNS["MAUVILLE_CITY"]) == "HOENN",
+      "the flight knows which region it's over")
+st.next_wild = 0
+place(st, *S3.TOWNS["GOLDENROD_CITY"])
+st.next_wild = 0
+st.wilds = []
+for _ in range(40):
+    st._spawn()
+    if st.wilds:
+        break
+w = st.wilds[0] if st.wilds else {}
+check(w.get("pid") in set(S3.SKY_BIRDS["JOHTO"][0]) | set(S3.SKY_BIRDS["JOHTO"][1]),
+      f"over Johto, Johto's birds fly ({w.get('pid')})")
+st.wilds = []
+st.region_now, st.banner_t = "HOENN", 0
+for _ in range(30):
+    st.t += 1
+    st._watch_region()
+check(st.banner_t > 0 and st.banner == ("Johto", "Leaving Hoenn"), f"crossing into Johto shows its name ({st.banner})")
+shot("region_name")
+st.banner_t = 0
+check(len(SS.lightning_bolts(g)) == 5, "the storm's lightning is Thundercage's forked bolts")
+font, text = SS.fit_text(g.assets.fonts, ("Near Ecruteak Dance Theater   Height 3800",), 200)
+check(font.size(text)[0] <= 200, f"a long name is fitted to the room it has ({text})")
+
 print("== the flute in another region (Jordan, 11-18: a Champion of two may soar from anywhere)")
 flags["visited_VERMILLION_CITY"] = flags["visited_PALLET_TOWN"] = True
 g.soaring3d_state = None

@@ -46,6 +46,7 @@ SPRITE_ROLL = 22.0               # degrees the sprite leans at full turn
 WILD_EVERY = (FPS * 5, FPS * 9)
 WALL_ALTS = (300, 1600, 2900, 4200)  # heights of the cloud bank's rows (it stands from the ground to above ALT_MAX)
 WALL_SEEN = 32000                    # how far off the cloud bank is drawn
+BANNER_T = FPS * 4                   # how long a region's name shows when you fly into it
 _cache = {}
 
 
@@ -91,6 +92,37 @@ def rift_picture(size=256):
         pygame.draw.lines(s, (90, 40, 150, 230), False, pts, 2)
     pygame.draw.circle(s, (6, 0, 14, 255), (int(c), int(c)), int(c * 0.2))
     return s
+
+
+def fit_text(fonts, texts, room, sizes=("label", "caption")):
+    """(font, text) of the first of these texts that fits `room` pixels in the first font size it fits; else the last
+    text cut short with "...", in the smallest size."""
+    for name in sizes:
+        for t in texts:
+            if fonts[name].size(t)[0] <= room:
+                return fonts[name], t
+    font, t = fonts[sizes[-1]], texts[-1]
+    while t and font.size(t + "...")[0] > room:
+        t = t[:-1]
+    return font, t.rstrip() + "..."
+
+
+def lightning_bolts(game):
+    """The forked lightning bolts in Thundercage's frames (assets/move_animations/graphics/GEN8- Thundercage.png, 192-pixel
+    cells: the three that strike down out of a glow, and the two thin ones), each cut to its own box."""
+    key = ("bolts",)
+    if key not in _cache:
+        out = []
+        try:
+            sheet = pygame.image.load(os.path.join(game.assets.assets_dir, "move_animations", "graphics",
+                                                   "GEN8- Thundercage.png")).convert_alpha()
+            for col, row in ((1, 1), (2, 1), (3, 1), (3, 0), (4, 0)):
+                cell = sheet.subsurface((col * 192, row * 192, 192, 192))
+                out.append(cell.subsurface(cell.get_bounding_rect()).copy())
+        except (pygame.error, FileNotFoundError, ValueError):
+            out = []
+        _cache[key] = out
+    return _cache[key]
 
 
 def _soft_disc(d):
@@ -268,6 +300,7 @@ class Clouds:
         folder = os.path.join(game.assets.assets_dir, "soaring3d", S3.WORLD)
         self.cells = pygame.image.load(os.path.join(folder, "cells.png"))
         self.cell = meta["cell"]                       # town-map pixels a cell
+        self.meta = meta
         self.open = set(open_ids)
         m = self.cells.copy()
         m.set_palette([(0, 0, 0) if i in self.open else (255, 255, 255) for i in range(256)])
@@ -278,6 +311,20 @@ class Clouds:
         self.top = _load(game, "oras_cloud_top.png")
         self.mass = _load(game, "oras_kumo03.png")
         self.textures = {}
+
+    def region_at(self, mx, my):
+        """The region a town-map pixel of the world belongs to (its town's, or its sea's), or None."""
+        cx, cy = int(mx // self.cell), int(my // self.cell)
+        if not (0 <= cx < self.cells.get_width() and 0 <= cy < self.cells.get_height()):
+            return None
+        i = self.cells.get_at((cx, cy))[0]
+        seeds, regions = self.meta["seeds"], self.meta.get("regions") or []
+        if i < len(seeds):
+            return seeds[i][1]
+        sea = self.meta.get("sea_of", 200)
+        if sea <= i < sea + len(regions):
+            return regions[i - sea]
+        return None
 
     def open_box(self):
         """(x0, y0, x1, y1) in town-map pixels round every clear cell, or None."""
@@ -412,6 +459,7 @@ class Soaring3DState(PlayState):
         self.fast_held = False
         self.wilds = []
         self.next_wild = FPS * 2
+        self.region_now, self.region_seen, self.banner, self.banner_t = None, 0, None, 0
         self.flash_text, self.flash_t = (f"{self.eon_name} flew you far over the sea, to skies you know!" if self.far
                                          else f"You're soaring on {self.eon_name}!"), FPS * 3
         self.pool = self._get_wild_pool(self.area_data) or {"278": 1}
@@ -559,6 +607,66 @@ class Soaring3DState(PlayState):
             return
         self.wall = [(x, z, alt + self.rng.uniform(-250, 250), self.rng.choice(self.wall_pics), self.rng.uniform(4200, 6400))
                      for x, z in self.clouds.wall(meta, self.rng) for alt in WALL_ALTS] if self.wall_pics else []
+
+    def _region_at(self, x, z):
+        """The region (world.json's name) under this spot (world units), or None (off the world, or no region's)."""
+        if self.clouds is None:
+            return None
+        ox, oz = self.world["origin"]
+        u = self.world["unit_per_map_px"]
+        return self.clouds.region_at((x - ox) / u, (z - oz) / u)
+
+    def _watch_region(self):
+        """Crossing into another region (Jordan, 11-18: "subtle transparent labeling ... when a player is leaving the
+        region"): its name fades in over the view, with where you've left. A region counts once you've been over it a
+        moment (no flicker along a border)."""
+        if self.t % 6:
+            return
+        here = self._region_at(self.x, self.z)
+        if here is None or here == self.region_now:
+            self.region_seen = 0
+            return
+        self.region_seen += 1
+        if self.region_now is not None and self.region_seen < 3:
+            return
+        self.banner = (S3.REGION_NAMES.get(here, here.title()),
+                       f"Leaving {S3.REGION_NAMES.get(self.region_now, self.region_now.title())}" if self.region_now else "")
+        self.banner_t = BANNER_T
+        self.region_now, self.region_seen = here, 0
+
+    def _draw_banner(self, screen):
+        """The region's name, large and see-through, fading in and out (never in the way of the flight)."""
+        if self.banner_t <= 0 or not self.banner:
+            return
+        self.banner_t -= 1
+        t = BANNER_T - self.banner_t
+        a = min(1.0, t / (FPS * 0.6), self.banner_t / (FPS * 1.2))
+        name, left = self.banner
+        fonts = self.game.assets.fonts
+        y = int(self.H * 0.27)
+        big = fonts["big"].render(name, True, (255, 255, 255))
+        small = fonts["button"].render(left, True, (235, 240, 255)) if left else None
+        h = big.get_height() + (small.get_height() + 4 if small else 0) + 22
+        w = max(big.get_width(), small.get_width() if small else 0) + 140
+        band = pygame.Surface((w, h), pygame.SRCALPHA)           # (a soft dark band: readable over white cloud too)
+        for i in range(h):
+            edge = min(i, h - 1 - i) / (h / 2)
+            band.fill((16, 24, 52, int(95 * a * min(1.0, edge * 2.2))), (0, i, w, 1))
+        sides = pygame.Surface((w, 1), pygame.SRCALPHA)           # (and soft at the ends)
+        for i in range(w):
+            sides.set_at((i, 0), (255, 255, 255, int(255 * min(1.0, min(i, w - 1 - i) / 70))))
+        band.blit(pygame.transform.scale(sides, (w, h)), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+        top = y - h // 2
+        screen.blit(band, (self.W // 2 - w // 2, top))
+        cy = top + 11
+        if small:
+            for img, dx, k in ((fonts["button"].render(left, True, (10, 14, 30)), 2, 0.55), (small, 0, 0.8)):
+                img.set_alpha(int(255 * k * a))
+                screen.blit(img, img.get_rect(midtop=(self.W // 2 + dx, cy + dx)))
+            cy += small.get_height() + 4
+        for img, dx, k in ((fonts["big"].render(name, True, (10, 14, 30)), 3, 0.6), (big, 0, 0.85)):
+            img.set_alpha(int(255 * k * a))
+            screen.blit(img, img.get_rect(midtop=(self.W // 2 + dx, cy + dx)))
 
     def _locked(self, x, z):
         """Is this spot (world units) under the clouds of somewhere you haven't been?"""
@@ -819,6 +927,7 @@ class Soaring3DState(PlayState):
         self.z += f[1] * self.speed
         self._edge()
         self._cloud_bank(f)
+        self._watch_region()
         self._spawn()
         self._move_wilds()
         self._check_spots()
@@ -845,20 +954,25 @@ class Soaring3DState(PlayState):
         self.flash_text, self.flash_t = "Thick clouds! You haven't been there yet. Turning back...", FPS * 2
 
     def _spawn(self):
+        """Flyers ahead: the birds of the region they're over (S3.SKY_BIRDS, Jordan 11-18), in flocks of three or more,
+        now and then one strong flyer alone, higher up."""
         self.next_wild -= 1
         if self.next_wild > 0 or len(self.wilds) >= 3:
             return
         self.next_wild = self.rng.randint(*WILD_EVERY)
-        from src.utils import Utils
-        pid = int(Utils.weighted_random_choice(self.pool))
         f, r = self._vectors()
         ahead, side = self.rng.uniform(6000, 9000), self.rng.uniform(-2500, 2500)
-        if self._locked(self.x + f[0] * ahead + r[0] * side, self.z + f[1] * ahead + r[1] * side):
+        wx, wz = self.x + f[0] * ahead + r[0] * side, self.z + f[1] * ahead + r[1] * side
+        if self._locked(wx, wz):
             return                              # (none come out of the clouds)
-        self.wilds.append({"pid": pid, "x": self.x + f[0] * ahead + r[0] * side, "z": self.z + f[1] * ahead + r[1] * side,
-                           "alt": max(ALT_MIN, min(ALT_MAX, self.alt + self.rng.uniform(-500, 500))),
+        pool = {int(k): v for k, v in (self.pool or {}).items()}
+        pid, n = S3.sky_wild(self._region_at(wx, wz) or "HOENN", self.rng, fallback=pool)
+        if not pid:
+            return
+        lift = self.rng.uniform(400, 900) if n == 1 else self.rng.uniform(-500, 500)
+        self.wilds.append({"pid": pid, "x": wx, "z": wz, "alt": max(ALT_MIN, min(ALT_MAX, self.alt + lift)),
                            "dx": self.rng.uniform(-30, 30), "dz": self.rng.uniform(-30, 30), "ph": self.rng.random() * 6,
-                           "n": self.rng.choice((1, 2, 3))})
+                           "n": n})
 
     def _move_wilds(self):
         keep = []
@@ -907,6 +1021,7 @@ class Soaring3DState(PlayState):
         self._draw_things(view, hy)
         pygame.transform.scale(view, (self.W, self.H), screen)
         self._draw_me(screen)
+        self._draw_banner(screen)
         self._draw_hud(screen)
         if self.mode == "ASK" and self.ask:
             self._draw_ask(screen)
@@ -1013,9 +1128,7 @@ class Soaring3DState(PlayState):
                     pic.set_alpha(fade)
                     view.blit(pic, pic.get_rect(center=(int(sx), int(sy))))
                 if kind == "storm" and (self.t // 3) % 7 == 0 and size > 20:
-                    pts = [(sx - size * 0.05, sy + size * 0.1), (sx + size * 0.04, sy + size * 0.25),
-                           (sx - size * 0.03, sy + size * 0.27), (sx + size * 0.06, sy + size * 0.45)]
-                    pygame.draw.lines(view, (255, 240, 120), False, pts, max(1, size // 60))
+                    self._draw_lightning(view, sx, sy, size, fade)
             else:
                 size = max(6, min(200, int(380 * k)))
                 img = follower(self.game, s["pid"], size, row=0, frame=self.t // 4)   # (flying at you)
@@ -1041,6 +1154,27 @@ class Soaring3DState(PlayState):
         a = 255 if ahead < WALL_SEEN * 0.6 else max(0, int(255 * (WALL_SEEN - ahead) / (WALL_SEEN * 0.4)))
         pic.set_alpha(a)
         view.blit(pic, pic.get_rect(center=(int(sx), int(sy))))
+
+    def _draw_lightning(self, view, sx, sy, size, fade):
+        """A fork of lightning out of the storm cloud: the forked bolts of Thundercage (Pokemon Orre 2.1.1's move
+        animations), a different one each flash; the old drawn zigzag if the sheet is missing."""
+        bolts = lightning_bolts(self.game)
+        if not bolts:
+            pts = [(sx - size * 0.05, sy + size * 0.1), (sx + size * 0.04, sy + size * 0.25),
+                   (sx - size * 0.03, sy + size * 0.27), (sx + size * 0.06, sy + size * 0.45)]
+            pygame.draw.lines(view, (255, 240, 120), False, pts, max(1, size // 60))
+            return
+        flash = self.t // 21
+        bolt = bolts[flash % len(bolts)]
+        h = max(8, int(size * 0.55))
+        w = max(4, int(h * bolt.get_width() / bolt.get_height()))
+        if h > 900:
+            return
+        pic = pygame.transform.smoothscale(bolt, (w, h))
+        if fade < 255:
+            pic.set_alpha(fade)
+        x = sx + ((flash * 37) % 7 - 3) * size * 0.04           # (striking from a different part of the cloud)
+        view.blit(pic, (int(x - w / 2), int(sy + size * 0.08)))   # (its see-through pixels are white: no adding)
 
     def _draw_rift(self, view, sx, sy, size, fade):
         """The Dimensional Rift: Omega Ruby's own rift streaks (tinted violet, as the game tints them) turning in a glow."""
@@ -1114,11 +1248,13 @@ class Soaring3DState(PlayState):
         fonts = self.game.assets.fonts
         bar = pygame.Rect(12, 8, self.W - 214, HUD_H - 16)
         theme.draw_textbox(screen, bar)
-        theme.shadow_text(screen, "Soaring in the Sky", fonts["button"], bar.x + 20,
-                          bar.centery - fonts["button"].get_height() // 2)
+        title = "Soaring in the Sky"
+        theme.shadow_text(screen, title, fonts["button"], bar.x + 20, bar.centery - fonts["button"].get_height() // 2)
         key, _d = S3.nearest_town(self.x, self.z, self.visited)
-        theme.shadow_text(screen, f"Near {S3.town_name(key)}   Height {int(self.alt / 10) * 10}", fonts["label"],
-                          bar.right - 20, bar.centery - 12, align="right")
+        room = bar.w - 60 - fonts["button"].size(title)[0]        # (a long town name never runs over the title)
+        town, height = self._town_name(key), f"Height {int(self.alt / 10) * 10}"
+        font, text = fit_text(fonts, (f"Near {town}   {height}", f"{town}   {height}", town), room)
+        theme.shadow_text(screen, text, font, bar.right - 20, bar.centery - font.get_height() // 2, align="right")
         mouse = pygame.mouse.get_pos()
         r = self._land_rect()
         theme.command_button(screen, r, "LAND", fonts["button"], theme.BACK, hover=r.collidepoint(mouse))
@@ -1154,7 +1290,9 @@ class Soaring3DState(PlayState):
         card = pygame.Rect(0, 0, 760, 200)
         card.center = (self.W // 2, HUD_H + 90)
         theme.draw_textbox(screen, card)
-        theme.shadow_text(screen, self.ask_line, fonts["button"], card.centerx, card.y + 26, align="center")
+        font, text = fit_text(fonts, (self.ask_line,), card.w - 48, ("button", "label"))
+        theme.shadow_text(screen, text, font, card.centerx, card.y + 26 + (fonts["button"].get_height() - font.get_height()) // 2,
+                          align="center")
         mouse = pygame.mouse.get_pos()
         for rect, label, colour, _fn in buttons:
             theme.command_button(screen, rect, label, fonts["button"], colour, hover=rect.collidepoint(mouse))

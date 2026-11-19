@@ -109,6 +109,36 @@ SKY_PLACES = [
      "flags": ["soaring_tornadus", "soaring_thundurus", "soaring_landorus"]},
 ]
 
+# The wild Pokemon flying over each region (Jordan, 11-18: "a generation's birds would only be over that area of the
+# map"; normal flyers in flocks of at least three, the stronger ones now and then alone). Each region's own generation,
+# from the birds its own wild tables have (Orange's: 5.7's Kanto birds). {region: (flocks, solos)}, {species: weight}.
+SKY_BIRDS = {
+    "KANTO": ({16: 40, 21: 35, 17: 15, 83: 10}, {18: 45, 22: 45, 142: 7, 149: 3}),
+    "SEVII": ({21: 40, 16: 25, 177: 20, 198: 15}, {22: 45, 178: 30, 227: 25}),
+    "JOHTO": ({163: 35, 165: 25, 177: 20, 198: 20}, {164: 40, 178: 25, 227: 25, 166: 10}),
+    "HOENN": ({278: 35, 276: 35, 333: 30}, {279: 30, 277: 30, 334: 25, 357: 12, 373: 3}),
+    "ORANGE": ({16: 40, 21: 35, 17: 15, 83: 10}, {18: 50, 22: 45, 149: 5}),
+}
+SOLO = 0.12            # how often what comes is one strong flyer on its own, not a flock
+FLOCK = (3, 5)         # how many fly together
+REGION_NAMES = {"HOENN": "Hoenn", "JOHTO": "Johto", "KANTO": "Kanto", "SEVII": "Sevii Islands",
+                "ORANGE": "Orange Islands"}
+
+
+def sky_wild(region, rng, fallback=None):
+    """(species, how many) for the next flyers over this region: a flock of FLOCK, or now and then (SOLO) one strong
+    flyer alone. fallback: the area's own pool, for a sky with no birds of its own."""
+    flocks, solos = SKY_BIRDS.get(region, (fallback or {}, {}))
+    if not flocks and not solos:
+        return None, 0
+    if solos and (rng.random() < SOLO or not flocks):
+        pool, n = solos, 1
+    else:
+        pool, n = flocks, rng.randint(*FLOCK)
+    keys = list(pool)
+    return int(rng.choices(keys, [pool[k] for k in keys])[0]), n
+
+
 # The places on the ground in use (use_ground sets them): towns, Mirage places (look, at), the sky's legends.
 # LAND_TOWNS: the towns LAND can set you down in (on the world: every region's, Jordan 11-18; the flight lets you land
 # where Fly would: a town you've been to with a Pokemon Center, or a region's home town: fly_map.fly_ok).
