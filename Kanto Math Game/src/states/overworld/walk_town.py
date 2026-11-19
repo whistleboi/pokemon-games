@@ -972,6 +972,8 @@ class WalkTownState(CityState):
         self.partner_from, self.partner = self.partner, self.player
         self.player = to
         self.steps += 1
+        from src.world import vs_seeker as _vs
+        _vs.step(self.game.story_manager)
         self._remember()
         if not self._town_hidden(to):
             self._itemfinder(to)
@@ -1419,8 +1421,8 @@ class WalkTownState(CityState):
         self._npc_tick()
         if not self._busy() and getattr(self, "_phone_area", None) != self.area_key:   # (the phone: a call as you arrive; src/world/phone.py)
             self._phone_area = self.area_key
-            from src.world import phone as _phone
-            _lines = _phone.ring(self.game, self.area_key)
+            from src.world import phone as _phone, vs_seeker as _vs
+            _lines = _phone.ring(self.game, self.area_key) or _vs.gift(self.game, self.area_key)   # (the VS Seeker: Vermilion, or a 2nd badge)
             if _lines:
                 self.show_message(_lines)
         if self.toast_timer > 0:

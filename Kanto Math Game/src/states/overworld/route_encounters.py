@@ -264,6 +264,8 @@ class RouteEncounters:
         if not info:   # (a registered phone trainer met again: its stronger team from the games; src/world/phone.py)
             from src.world import phone as _phone
             trainer_info = _phone.rematch_info(self.game, self.game.story_manager.current_area_key, trainer_idx, trainer_info)
+            from src.world import vs_seeker as _vs   # (called back by the VS Seeker: its rematch team, a bigger reward)
+            trainer_info = _vs.rematch(self.game, self.game.story_manager.current_area_key, trainer_idx, trainer_info)
         trainer_class = trainer_info.get("class", "YOUNGSTER")
         # Names like "{rival_name}" and text keys are filled in, as story battles do.
         trainer_name = _fill_names(self.game, trainer_info.get("name"))

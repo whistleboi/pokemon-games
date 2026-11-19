@@ -843,6 +843,14 @@ class BagState(GameState):
             self.game.change_state(walk)
             walk.use_scent("HONEY" if item == "HONEY" else item)  # (the White Flute: played, not used up)
             return
+        if "seeker" in data:  # the VS Seeker: on a route's map, back to it; beaten trainers nearby may want a rematch
+            walk = getattr(self.game, "dungeon_state", None)
+            if walk is None or getattr(walk, "area_key", None) != story.current_area_key or not hasattr(walk, "run"):
+                self._back_to_bag(["Use the VS SEEKER out on a route."])
+                return
+            self.game.change_state(walk)
+            walk.use_vs_seeker()
+            return
         if "repel" in data:
             if getattr(story, "repel_routes", 0) > 0:
                 self._back_to_bag([f"A Repel is already working ({story.repel_routes} more routes)."])

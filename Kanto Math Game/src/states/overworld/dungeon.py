@@ -1803,6 +1803,9 @@ class DungeonState(OverworldBattles, PlayState):
                 idx = mover.payload[0]
                 if self.game.story_manager.beaten_today(self.area_key, idx):
                     self.run.remove(mover)
+                    from src.world import vs_seeker as _vs
+                    if _vs.is_ready(self.game.story_manager, self.area_key, idx):   # (a VS Seeker rematch won)
+                        _vs.won(self.game.story_manager, self.area_key, idx)
                     from src.world import phone as _phone   # (a phone trainer asks for your number; a rematch's gift is given)
                     _pool = self.area_data.get("trainer_pool", [])
                     _info = _pool[idx] if 0 <= idx < len(_pool) and isinstance(_pool[idx], dict) else {}
@@ -1996,6 +1999,8 @@ class DungeonState(OverworldBattles, PlayState):
             self.partner_from, self.partner = self.partner, before  # it steps where you were
             self._ctrail_from = list(self._ctrail); self._ctrail = [before] + self._ctrail[:3]   # (companions: a step behind each other)
             self.steps += 1
+            from src.world import vs_seeker as _vs
+            _vs.step(self.game.story_manager)   # (the VS Seeker charges as you walk)
             self._lap_step()
             if not self._hidden_item(self.run.player):
                 self._cracked_floor(self.run.player) or self._thin_ice(self.run.player)
@@ -2554,8 +2559,8 @@ class DungeonState(OverworldBattles, PlayState):
             return
         if getattr(self, "_phone_area", None) != self.area_key:
             self._phone_area = self.area_key
-            from src.world import phone
-            lines = phone.ring(self.game, self.area_key)
+            from src.world import phone, vs_seeker
+            lines = phone.ring(self.game, self.area_key) or vs_seeker.gift(self.game, self.area_key)
             if lines:
                 self.say(lines)
 
@@ -2615,6 +2620,11 @@ class DungeonState(OverworldBattles, PlayState):
             lines.append(f"{best} is yours to keep!")
         self.say(lines, then=(lambda: self._leave(self.exit_items and next(iter(self.exit_items)) or "NATIONAL_PARK"))
                  if then_leave else None)
+
+    def use_vs_seeker(self):
+        """The VS Seeker used here (from the Bag): some trainers you beat today in view come back for a rematch."""
+        from src.world import vs_seeker
+        self.say(vs_seeker.use(self))
 
     def use_scent(self, source=None):
         """Draw in three wild Pokemon: Sweet Scent (a party Pokemon's, once a floor) or Honey (source "HONEY":
@@ -4176,6 +4186,8 @@ class DungeonState(OverworldBattles, PlayState):
         # wild Pokemon and trainers you can see
         emotes = []
         _movers_drawn = []   # (redrawn over the top layer when their feet aren't under it: art.over_uncovered)
+        from src.world import vs_seeker as _vsm   # (a trainer the VS Seeker called back: a red "!" over it)
+        _vs_ready = lambda m: m.kind == "trainer" and isinstance(m.payload, tuple) and _vsm.is_ready(self.game.story_manager, self.area_key, m.payload[0])
         _ring = self._ring_spot(f)   # (Soaring's Mirage spots: Hoopa's ring at the back, empty on a quiet visit)
         if _ring and self.run.visible(*_ring):
             self._draw_ring(screen, at(*_ring))
@@ -4237,6 +4249,8 @@ class DungeonState(OverworldBattles, PlayState):
                     _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - lift))))
                 else:
                     pygame.draw.circle(screen, (90, 90, 160), r.center, TILE // 3)
+                if _vs_ready(m):   # (the VS Seeker called it back: it wants a rematch)
+                    theme.shadow_text(screen, "!", fonts["label"], r.right - 6, r.y - 22, color=(230, 70, 60))
                 # which way it's looking
                 fx, fy = m.facing
                 tip = (r.centerx + fx * (TILE // 2 + 6), r.centery + fy * (TILE // 2 + 6))
