@@ -37,9 +37,14 @@ POOLS = {
 }
 
 
-def pick(kind, rng=None):
-    """One of a pool's quips (a list of lines); None for an unknown pool."""
+def pick(kind, rng=None, name=None):
+    """One of a pool's quips (a list of lines); None for an unknown pool. name: who says it, if not the pool's own
+    title (FireRed's Move Maniac on Two Island is its Move Reminder)."""
     pool = POOLS.get(kind)
     if not pool:
         return None
-    return list((rng or random).choice(pool))
+    lines = list((rng or random).choice(pool))
+    if name:
+        own = {"move_reminder": "Move Reminder:", "move_deleter": "Move Deleter:"}.get(kind)
+        lines = [l.replace(own, name + ":", 1) if own else l for l in lines]
+    return lines

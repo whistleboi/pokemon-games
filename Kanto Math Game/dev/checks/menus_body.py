@@ -213,7 +213,7 @@ import json as _jq
 from src.world import quips as _quips
 from src.states.overworld import common as _cq
 _found = []
-for _f in ("hoenn_area_data.json", "johto_area_data.json", "orange_area_data.json", "town_maps.json"):
+for _f in ("hoenn_area_data.json", "johto_area_data.json", "orange_area_data.json", "sinnoh_area_data.json", "town_maps.json"):
     def _w(o):
         if isinstance(o, dict):
             if isinstance(o.get("event"), dict) and o["event"].get("quips"):
@@ -224,8 +224,12 @@ for _f in ("hoenn_area_data.json", "johto_area_data.json", "orange_area_data.jso
             for v in o:
                 _w(v)
     _w(_jq.load(open(os.path.join("assets", _f), encoding="utf-8")))
-check(len(_found) == 6 and all(e["quips"] == ("move_reminder" if t == "Move Reminder" else "move_deleter") for t, e in _found),
-      f"all six Move Reminders and Deleters grumble ({sorted(t for t, _ in _found)})")
+check(len(_found) == 9 and all(e["quips"] == ("move_reminder" if t in ("Move Reminder", "Move Maniac") else "move_deleter") for t, e in _found),
+      f"all nine Move Reminders and Deleters grumble, Sinnoh's and Two Island's Move Maniac too ({sorted(t for t, _ in _found)})")
+_mm = next(e for t, e in _found if t == "Move Maniac")
+_said_mm = []
+_cq._run_story_event(g.current_state, dict(_mm), lambda c: True, lambda ls: _said_mm.append(ls))
+check(_said_mm and _said_mm[0][0].startswith("Move Maniac:"), f"Two Island: FireRed's Move Maniac says it as himself ({_said_mm[0][:1] if _said_mm else None})")
 _said = []
 for _ in range(12):
     _cq._run_story_event(g.current_state, dict(_found[0][1]), lambda c: True, lambda ls: _said.append(tuple(ls)))

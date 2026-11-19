@@ -2771,6 +2771,7 @@
         { "text": "Great Marsh", "target_area": "GREAT_MARSH" }
       ],
       "explore_options": [
+        {"text": "Move Reminder", "action": "EVENT", "door": "reminder", "event": {"quips": "move_reminder", "lines": ["Move Reminder: I can help a Pokemon remember a move... wait, they already remember everything? Since when?"]}},
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -2832,6 +2833,7 @@
         { "text": "Newmoon Island", "target_area": "NEWMOON_ISLAND", "condition": "beat_sinnoh_champion", "item_condition": "MEMBER_CARD" }
       ],
       "explore_options": [
+        {"text": "Move Deleter", "action": "EVENT", "door": "deleter", "event": {"quips": "move_deleter", "lines": ["Move Deleter: I'm the Move Deleter. I used to make Pokemon forget moves. Now I mostly forget my own lines."]}},
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },

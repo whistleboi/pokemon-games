@@ -35096,7 +35096,7 @@
      {
       "text": "Move Maniac",
       "action": "EVENT",
-      "event": {
+      "event": { "quips": "move_reminder", "quip_as": "Move Maniac",
        "lines": [
         "I'm the Move Maniac! I know every move a Pokémon can learn."
        ]
@@ -165386,7 +165386,7 @@
    "C": "house",
    "E": "house",
    "F": "gym",
-   "G": "house",
+   "G": "reminder",
    "H": "house",
    "I": "house",
    "J": "mart",
@@ -169639,12 +169639,47 @@
     "people": [
      "Heal"
     ]
+   },
+   "reminder": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "c.....mmmmc",
+     "c.........c",
+     "c..mmN....c",
+     "c..mm.....c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:25,35"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {}
+    },
+    "people": [
+     "Move Reminder"
+    ]
    }
   },
   "inside": {
    "13,27": "gym",
    "25,44": "mart",
-   "24,15": "center"
+   "24,15": "center",
+   "25,35": "reminder"
   },
   "parts": true
  },
@@ -170537,7 +170572,7 @@
    "J": "house",
    "K": "house",
    "L": "gym",
-   "M": "house",
+   "M": "deleter",
    "O": "house",
    "P": "mart",
    "Q": "house",
@@ -173555,13 +173590,48 @@
       }
      ]
     }
+   },
+   "deleter": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "c.....mmmmc",
+     "c.........c",
+     "c..mm.....c",
+     "c.Nmm.....c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:21,28"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {}
+    },
+    "people": [
+     "Move Deleter"
+    ]
    }
   },
   "inside": {
    "7,27": "gym",
    "26,18": "center",
    "21,36": "mart",
-   "5,14": "library"
+   "5,14": "library",
+   "21,28": "deleter"
   }
  },
  "SNOWPOINT_CITY": {

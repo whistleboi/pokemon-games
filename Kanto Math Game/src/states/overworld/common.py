@@ -322,7 +322,7 @@ def _run_story_event(state, key, check, show):
         ev = stage or {"lines": ev.get("done") or ["..."]}
     if ev.get("quips"):   # (the out-of-work Move Reminder / Move Deleter: a different grumble each time; src/world/quips.py)
         from src.world import quips
-        q = quips.pick(ev["quips"])
+        q = quips.pick(ev["quips"], name=ev.get("quip_as"))   # ("quip_as": FireRed calls its Reminder the Move Maniac)
         if q:
             show(_resolve_lines(game, q))
             return
