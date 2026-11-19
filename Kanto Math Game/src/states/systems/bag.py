@@ -12,6 +12,7 @@ from src.pokemon.contest import feed_pokeblock, POKEBLOCKS, MAX_CONDITION
 from src.pokemon import items as itemlib
 from src.pokemon import pp as pplib
 from src.pokemon import forms
+from src.pokemon import cases
 from src.states.systems.evolution_scene import EvolutionState
 from src.states.systems.party_menu import PokemonPartyMenuState
 from src.states.systems.town_services import UnownReportState
@@ -64,9 +65,11 @@ class BagState(GameState):
                                             bg_color=theme.ACCENT["bag"], autosize=False)
 
         self.item_buttons = []
+        self.case_open = None   # (a collection case opened: its contents instead of the pocket's; src/pokemon/cases.py)
         self.refresh_buttons()
 
-    POCKETS = ("ITEMS", "MEDICINE", "POKE BALLS", "BERRIES", "TMs & HMs", "KEY ITEMS")
+    # (TMs and HMs are kept in the TM Case, in Key Items, as in FireRed: Jordan 11-18, collection cases)
+    POCKETS = ("ITEMS", "MEDICINE", "POKE BALLS", "BERRIES", "KEY ITEMS")
     BATTLE_POCKETS = ("MEDICINE", "POKE BALLS", "BERRIES", "BATTLE ITEMS")
     MEDICINE = tuple(itemlib.MEDICINE) + tuple(k for k in pplib.PP_ITEMS if not k.endswith("_BERRY"))
     BATTLE_ITEMS = ("DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK") + tuple(itemlib.BATTLE)
@@ -99,7 +102,18 @@ class BagState(GameState):
         return "ITEMS"
 
     def pocket_items(self, pocket):
-        """(item, qty) in a pocket, in a fixed order."""
+        """(item, qty) in a pocket, in a fixed order. Out of battle, each collection case with anything in it stands
+        for its items as one card (qty: how many kinds); an open case lists what's inside."""
+        inv = self.game.story_manager.inventory
+        if self.case_open:
+            return cases.contents(self.case_open, inv)
+        out = self._pocket_items(pocket)
+        if self.context == "battle":
+            return out
+        have = [(c, len(cases.contents(c, inv))) for c in cases.owned(inv) if cases.pocket(c) == pocket]
+        return have + [(k, q) for k, q in out if not cases.case_of(k)]
+
+    def _pocket_items(self, pocket):
         inv = self.game.story_manager.inventory
         out = []
         if pocket == "POKE BALLS":
@@ -127,17 +141,25 @@ class BagState(GameState):
                 or key == "EVERSTONE" or key in self.evo_keys or key in POKEBLOCKS or tms.is_tm(key)
                 or bool(zpower.shard_type(key)) or key in zpower.CRYSTAL_TYPE or key in itemlib.HELD)
 
+    def open_case(self, case):
+        self.case_open = case
+        self.item_page = 0
+        self.refresh_buttons()
+
     def open_pocket(self, i):
+        self.case_open = None
         self.current_page = i
         self.item_page = 0
         self.refresh_buttons()
 
     def prev_page(self):
+        self.case_open = None
         self.current_page = (self.current_page - 1) % len(self.pages)
         self.item_page = 0
         self.refresh_buttons()
 
     def next_page(self):
+        self.case_open = None
         self.current_page = (self.current_page + 1) % len(self.pages)
         self.item_page = 0
         self.refresh_buttons()
@@ -147,6 +169,11 @@ class BagState(GameState):
         self.refresh_buttons()
 
     def go_back(self):
+        if self.case_open:   # (BACK closes an open case first)
+            self.case_open = None
+            self.item_page = 0
+            self.refresh_buttons()
+            return
         self.game.change_state(self.previous_state)
 
     def start(self):
@@ -160,6 +187,11 @@ class BagState(GameState):
             self.game.ui_manager.add_element(btn)
         for btn in self.item_buttons:
             self.game.ui_manager.add_element(btn)
+        if self.context != "battle":   # (a case you've just started filling: told once)
+            new = cases.new_cases(self.game.story_manager)
+            if new:
+                self.game.show_dialogue([f"New in your Bag: the {cases.name(c)}! Your {cases.WHAT.get(c, 'items')} are kept in it."
+                                         for c in new])
 
     def refresh_buttons(self):
         for btn in self.item_buttons:
@@ -170,6 +202,8 @@ class BagState(GameState):
 
         for i, tab in enumerate(self.pocket_tabs):  # the open pocket stands out
             tab.bg_color = theme.ACCENT["bag"] if i == self.current_page else theme.TAB_OFF
+        if self.case_open and not cases.contents(self.case_open, self.game.story_manager.inventory):
+            self.case_open = None   # (its last item used up)
         items_to_show = self.pocket_items(self.pages[self.current_page])
 
         cols, gap, btn_h = 2, 12, 58
@@ -191,6 +225,17 @@ class BagState(GameState):
             x = self.list_rect.x + col * (col_w + gap)
             y = self.list_rect.y + row * (btn_h + gap)
 
+            if cases.is_case(item_key):   # (a collection case: opens to its contents)
+                inside = cases.contents(item_key, self.game.story_manager.inventory)
+                icon = self.game.assets.get_item_image(item_key)
+                for k, _q in inside:   # (no picture of its own: the first thing inside that has one)
+                    if icon is not None:
+                        break
+                    icon = self.game.assets.get_item_image(k)
+                self.item_buttons.append(ItemCard((x, y, col_w, btn_h), cases.name(item_key), qty,
+                                                  self.game.assets.fonts["label"], (lambda c=item_key: self.open_case(c)),
+                                                  icon=icon, usable=True, key=item_key))
+                continue
             can_use = (qty > 0 or item_key == "EVERSTONE") and self.usable(item_key)
             callback = ((lambda k=item_key: self.use_item(k)) if can_use
                         else (lambda k=item_key: self.no_use(k)))
@@ -1031,7 +1076,8 @@ class BagState(GameState):
         screen = self.game.screen
         f = self.game.assets.fonts
         accent = theme.ACCENT["bag"]
-        theme.menu_background(screen, accent, "BAG", f["button"], title_x=176)
+        title = f"BAG: {cases.name(self.case_open).upper()}" if self.case_open else "BAG"
+        theme.menu_background(screen, accent, title, f["button"], title_x=176)
         Utils.draw_text_outline(screen, f"${self.game.story_manager.money}", f["button"], WHITE,
                                 self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
                                 outline_color=theme.shade(accent, 0.45), thickness=3)
@@ -1041,11 +1087,15 @@ class BagState(GameState):
 
         mouse = pygame.mouse.get_pos()
         hovered = next((b for b in self.item_buttons if b.rect.collidepoint(mouse)), None)
-        if hovered is not None:
+        if hovered is not None and cases.is_case(hovered.key):
+            line = f"{hovered.name}: {cases.describe(hovered.key, self.game.story_manager.inventory)}"
+        elif hovered is not None:
             from src.pokemon import items as itemlib_
             text = itemlib_.describe(hovered.key) or (
                 "Tap to use it." if hovered.usable else "Tap to see when it's used.")
             line = f"{hovered.name}: {text}"
+        elif self.case_open:
+            line = f"In the {cases.name(self.case_open)}: tap an item to use it. BACK closes the case."
         else:
             line = "Tap an item to use it."
         bf = f["label"]

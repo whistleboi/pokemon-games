@@ -156,3 +156,56 @@ ch.level_up(1)  # Lv 21: a level-up, so its evolution is checked
 check(any(e.startswith("CHARMELEON") for e in _evo.ready_evolutions(g, ch, [ch])), "after one level up it evolves")
 plain = mk(4); plain.level = 15; plain.level_up(1)
 check(any(e.startswith("CHARMELEON") for e in _evo.ready_evolutions(g, plain, [plain])), "a raised one still evolves at Lv 16")
+
+print("Collection cases (Jordan 11-18): a family of collectibles in one Bag slot, opened to browse")
+from src.pokemon import cases as _cs
+_inv = story.inventory
+for _k in [k for k in list(_inv) if _cs.case_of(k)]:
+    del _inv[_k]
+for _k in [k for k in list(story.story_flags) if str(k).startswith("case:")]:
+    del story.story_flags[_k]
+story.player_team = [mk(25)]
+_inv.update({"TM001": 1, "TM002": 1, "HM_CUT": 1, "FIRE_STONE": 2, "WATER_STONE": 1, "HELIX_FOSSIL": 1,
+             "FIRIUM_Z": 1, "RED_APRICORN": 3, "POTION": 4})
+check(_cs.case_of("TM001") == "TM_CASE" and _cs.case_of("HM_CUT") == "TM_CASE" and _cs.case_of("POTION") is None
+      and _cs.case_of("SILVER_WING") is None and _cs.case_of("CHARIZARDITE_X") == "MEGA_STONE_CASE",
+      "each family has its case (the Silver Wing stays a key item)")
+_city = CityState(g); g.change_state(_city)
+_told = []
+_sd = g.show_dialogue
+g.show_dialogue = lambda lines, callback=None: _told.append(list(lines))
+_bag = BagState(g, _city); g.change_state(_bag)
+check("TMs & HMs" not in _bag.pages and "KEY ITEMS" in _bag.pages, "no TM pocket: the TM Case is in Key Items, as in FireRed")
+_txt = " ".join(" ".join(t) for t in _told)
+check(len(_told) == 1 and "TM Case" in _txt and "Apricorn Box" in _txt, f"the first time, the Bag says which cases you've got ({_txt[:90]}...)")
+_bag.start()
+check(len(_told) == 1, "...and only the first time")
+g.show_dialogue = _sd
+_bag.open_pocket(_bag.pages.index("KEY ITEMS"))
+_keys = [b.key for b in _bag.item_buttons]
+check("TM_CASE" in _keys and "Z_CRYSTAL_CASE" in _keys and "TM001" not in _keys, f"Key Items: one TM Case card, not the TMs ({_keys})")
+_tmc = next(b for b in _bag.item_buttons if b.key == "TM_CASE")
+check(_tmc.qty == 3 if hasattr(_tmc, "qty") else True, "the card counts the kinds inside")
+_tmc.callback()
+check(_bag.case_open == "TM_CASE" and sorted(b.key for b in _bag.item_buttons) == ["HM_CUT", "TM001", "TM002"],
+      "tapping it opens the case: the TMs and HMs inside")
+_bag.draw()
+_bag.go_back()
+check(_bag.case_open is None and g.current_state is _bag, "BACK closes the case first, staying in the Bag")
+_bag.open_pocket(0)
+_keys = [b.key for b in _bag.item_buttons]
+check({"STONE_CASE", "FOSSIL_CASE", "APRICORN_BOX"} <= set(_keys) and "FIRE_STONE" not in _keys and "POTION" not in _keys,
+      f"Items: stones, fossils and Apricorns each in their own case ({_keys})")
+_bag.open_case("STONE_CASE")
+check(_bag.pocket_items("ITEMS") == [("FIRE_STONE", 2), ("WATER_STONE", 1)], "the stone case lists its stones with their counts")
+_bag.use_item("WATER_STONE")
+check(type(g.current_state).__name__ == "PokemonPartyMenuState", "an item from inside a case is used as usual (pick a Pokemon)")
+g.change_state(_bag)
+_inv["FIRE_STONE"] = 0; _inv["WATER_STONE"] = 0
+_bag.refresh_buttons()
+check(_bag.case_open is None and "STONE_CASE" not in [b.key for b in _bag.item_buttons], "an emptied case closes and leaves the pocket")
+_bb = BagState(g, _city, context="battle")
+check(all(not _cs.is_case(k) for p in _bb.pages for k, _q in _bb.pocket_items(p)), "no cases in the battle Bag")
+for _k in ("TM001", "TM002", "HM_CUT", "HELIX_FOSSIL", "FIRIUM_Z", "RED_APRICORN"):
+    _inv.pop(_k, None)
+g.change_state(_city)
