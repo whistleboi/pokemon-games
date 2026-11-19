@@ -487,4 +487,135 @@ if _t:
     _b = TrainerBattleState(g, _team, trainer_class=_t["class"], trainer_name=_t["name"], options=battle_options(_t))
     check(isinstance(_b, DoubleBattleState) and len(_b.o_slots) == 2, f"Twins Eli & Anne: a double battle, both their Pokemon out ({type(_b).__name__})")
 
+
+# ---- tag battles (11-18): a partner's Pokemon in your second slot, run by the AI; two trainers on the other side
+print("11) a tag battle: your partner beside you, two trainers against you")
+story.enter_region("HOENN")
+story.current_area_key = "MOSSDEEP_CITY"
+_tag = {"name": "Maxie", "class": "MAGMA_LEADER", "sprite": "maxie.png", "team": [229, 323], "levels": [30, 30],
+        "rewards": {"balls": 2},
+        "battle_options": {"double": True,
+                           "partner": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [376, 306], "levels": [80, 80]},
+                           "second_trainer": {"name": "Tabitha", "class": "MAGMA_ADMIN", "sprite": "tabitha.png", "team": [324, 262],
+                                              "levels": [28, 28], "rewards": {"balls": 3}}}}
+_me1, _me2 = mon(260, 90, ["SPLASH"]), mon(26, 90, ["SPLASH"])   # (you splash: Steven does the fighting)
+story.player_team = [_me1, _me2]
+LOG.clear()
+intro = _common._start_event_battle(g, "MOSSDEEP_CITY", dict(_tag), "test_tag_battle")
+b = intro.next_state
+check(isinstance(b, DoubleBattleState) and b.partner_name == "Steven" and b.foe2_name == "Tabitha",
+      f"a double battle with a partner and a second trainer ({type(b).__name__}, {b.partner_name}, {b.foe2_name})")
+check(b.p_slots[0] is _me1 and b.is_partner(b.p_slots[1]) and b.p_slots[1].id == 376,
+      f"your SWAMPERT and Steven's METAGROSS ({[p.id for p in b.p_slots]})")
+check([p.id for p in b.o_slots] == [229, 324] and len(b.opponent_team) == 4,
+      f"Maxie's HOUNDOOM and Tabitha's TORKOAL, each its own trainer's ({[p.id for p in b.o_slots]})")
+check(b.side_of(b.p_slots[1]) == "player" and b.rewards.get("balls") == 5, f"the partner's on your side; both trainers pay ({b.rewards})")
+g.change_state(intro)
+for _ in range(400):   # (a picture of the challenge: both trainers, you and your partner)
+    intro.update()
+    if intro.phase == "CHALLENGE" and intro.t > 40:
+        break
+shot("tag_intro.png")
+for _ in range(2000):   # (the send-out: a ball onto each foe's spot; a picture as the second one lands)
+    if intro.dialogue_box.visible and not intro.dialogue_box.is_finished:
+        LOG.append(tuple(intro.dialogue_box.text_lines))
+        click(intro.dialogue_box.rect.center)
+    intro.update()
+    _sm = intro.__dict__.get("_summons", {}).get("opponent") or []
+    if len(_sm) == 2 and _sm[1].phase == 1:
+        shot("tag_sendout.png")
+        break
+check(len(intro.__dict__.get("_summons", {}).get("opponent") or []) == 2, "the send-out: a ball thrown onto each foe's spot")
+run(b, 4000)
+check(len(intro.__dict__.get("_summons", {}).get("player") or []) == 2, "...and onto each of your side's (yours and Steven's)")
+_said = lines()
+check(any("challenged by MAXIE AND TABITHA" in l for l in _said), f"\"You are challenged by Maxie and Tabitha!\" ({[l for l in _said if 'challenged' in l]})")
+check(any(l == "TABITHA sent out TORKOAL!" for l in _said) and any(l == "STEVEN sent out METAGROSS!" for l in _said),
+      f"each trainer sends out its own, Steven his ({[l for l in _said if 'sent out' in l]})")
+shot("tag_intro_done.png")
+check(g.current_state is b and b.phase == "MENU" and b._slot_turn == 0, f"you choose for your own Pokemon only ({b.phase}, slot {b._slot_turn})")
+_turns = 0
+_all = []
+for _ in range(60):
+    if g.current_state is not b and b.phase == "D_PICK" and hasattr(g.current_state, "on_select"):
+        g.current_state.on_select(next(i for i, p in enumerate(story.player_team) if p.current_hp > 0))   # (yours fainted: send the next)
+        run(b, 3000, until=lambda: g.current_state is b and b.phase == "MENU" and not b.dialogue_box.visible)
+        continue
+    if g.current_state is not b or b.phase != "MENU":
+        break
+    LOG.clear()
+    fight(b, "SPLASH")
+    _turns += 1
+    run(b, 3000, until=lambda: g.current_state is b and b.phase == "MENU" and not b.dialogue_box.visible)
+    _all += lines()
+    if not any(p is not None and p.current_hp > 0 for p in b.opponent_team):
+        break
+check(not any(p.current_hp > 0 for p in b.opponent_team) and _me1.current_hp >= 0,
+      f"you only splashed: Steven's Pokemon picked their own moves and beat all four ({_turns} turns; left {[p.current_hp for p in b.opponent_team]}; mine {[p.current_hp for p in b.p_slots if p]}; stopped in {type(g.current_state).__name__} {b.phase})")
+check(_me1.xp > 0 and not any("METAGROSS gained" in l or "SKARMORY gained" in l for l in _all), f"your Pokemon earn XP, Steven's don't ({_me1.xp})")
+check(not any(p.current_hp > 0 for p in b.opponent_team),
+      f"the battle plays to the end ({_turns} turns; foes left {[p.current_hp for p in b.opponent_team]})")
+check(story.player_team == [_me1, _me2], "Steven's Pokemon never join your party")
+
+print("12) the Mossdeep Space Center: Steven beside you against the leader and an admin (Emerald's multi battle)")
+_boss = next(t for t in g.loader.area_data["STORY_PROGRESSION"]["HOENN_SPACE_CENTER"]["trainer_pool"]
+             if t.get("victory_flag") == "space_center_cleared")
+for _ver, _want, _mons in (("OMEGA_RUBY", "MAGMA ADMIN TABITHA", [323, 262, 42]), ("ALPHA_SAPPHIRE", "AQUA ADMIN MATT", [319, 262, 42])):
+    story.story_flags["hoenn_version"] = _ver
+    intro = _common._start_event_battle(g, "HOENN_SPACE_CENTER", dict(_boss), "space_center_cleared")
+    b = intro.next_state
+    _second = [p.id for p in b.foe_teams[1]] if b.foe_teams else []
+    check(isinstance(b, DoubleBattleState) and b.partner_name == "Steven" and [p.id for p in b.partner_team] == [375, 227, 306]
+          and str(b.foe2_name).upper() == _want and _second == _mons,
+          f"{_ver}: Steven's Metang, Skarmory, Aggron beside you; {b.trainer_name} and {b.foe2_name} ({_second}) against you")
+story.story_flags["hoenn_version"] = "OMEGA_RUBY"
+print("14) Intimidate in a double battle lowers both foes' Attack")
+story.enter_region("ORANGE")
+_gy = mon(130, 50, ["SPLASH"])
+bb = fresh_double([19, 20], [30, 30], [mon(26, 50, ["SPLASH"]), mon(25, 50, ["SPLASH"]), _gy])
+bb.vol(_gy)["ability"] = "INTIMIDATE"
+bb._switch_in("player", 0, _gy, called_back=True)
+check([bb.stages(f)["ATTACK"] for f in bb.o_slots] == [-1, -1], f"GYARADOS's Intimidate: both foes' Attack -1 ({[bb.stages(f)['ATTACK'] for f in bb.o_slots]})")
+check(bb.stages(bb.p_slots[1])["ATTACK"] == 0, "...and not its partner's")
+
+print("15) Wide Guard and Mat Block guard your side for one turn")
+_wg, _mate = mon(68, 50, ["WIDE-GUARD", "SPLASH"]), mon(143, 60, ["SPLASH"])
+bb = fresh_double([55, 55], [40, 40], [_wg, _mate], moves="SURF")
+_hp0 = (_wg.current_hp, _mate.current_hp)
+fight(bb, "WIDE-GUARD"); fight(bb, "SPLASH")
+run(bb, 3000, until=lambda: g.current_state is bb and bb.phase == "MENU" and not bb.dialogue_box.visible)
+check((_wg.current_hp, _mate.current_hp) == _hp0, f"Wide Guard: both foes' Surf hits nobody ({_hp0} -> {(_wg.current_hp, _mate.current_hp)})")
+fight(bb, "SPLASH"); fight(bb, "SPLASH")
+run(bb, 3000, until=lambda: g.current_state is bb and bb.phase == "MENU" and not bb.dialogue_box.visible)
+check(_wg.current_hp < _hp0[0] or _mate.current_hp < _hp0[1], f"...and next turn it's gone: Surf hits ({(_wg.current_hp, _mate.current_hp)})")
+_mb, _mate = mon(106, 50, ["MAT-BLOCK", "SPLASH"]), mon(143, 60, ["SPLASH"])
+bb = fresh_double([66, 66], [40, 40], [_mb, _mate], moves="TACKLE")
+_hp0 = (_mb.current_hp, _mate.current_hp)
+fight(bb, "MAT-BLOCK"); fight(bb, "SPLASH")
+run(bb, 3000, until=lambda: g.current_state is bb and bb.phase == "MENU" and not bb.dialogue_box.visible)
+check((_mb.current_hp, _mate.current_hp) == _hp0, f"Mat Block on the first turn: both Tackles blocked ({(_mb.current_hp, _mate.current_hp)})")
+
+print("16) Pursuit: switching out a Pokemon a foe's Pursuit is aimed at, it's hit first, at double power")
+_ala, _steel, _bench = mon(65, 60, ["SPLASH"]), mon(208, 60, ["SPLASH"]), mon(143, 60, ["SPLASH"])
+bb = fresh_double([198, 198], [15, 15], [_ala, _steel, _bench], moves="PURSUIT")
+_hp_a = _ala.current_hp
+LOG.clear()
+bb.open_party_menu()
+g.current_state.on_select(2)                      # (ALAKAZAM out, SNORLAX in)
+fight(bb, "SPLASH")                               # (STEELIX splashes)
+run(bb, 3000, until=lambda: g.current_state is bb and bb.phase == "MENU" and not bb.dialogue_box.visible)
+_said = lines()
+_go = next((i for i, l in enumerate(_said) if l == "Go! SNORLAX!"), None)
+_hit = next((i for i, l in enumerate(_said) if "PURSUIT" in l.upper()), None)
+check(_ala.current_hp < _hp_a and _hit is not None and (_go is None or _hit < _go) and bb.p_slots[0] is not _ala,
+      f"ALAKAZAM is hit by Pursuit before it goes ({_hp_a} -> {_ala.current_hp}); then SNORLAX comes in ({[l for l in _said if 'Pursuit' in l or 'PURSUIT' in l or 'Go!' in l][:4]})")
+
+print("13) the Rocket HQ (HeartGold / SoulSilver): you and Lance against Ariana and a Grunt")
+story.enter_region("JOHTO")
+_ari = next(t for t in g.loader.area_data["STORY_PROGRESSION"]["ROCKET_HQ"]["trainer_pool"] if t.get("victory_flag") == "rocket_hq_cleared")
+b = _common._start_event_battle(g, "ROCKET_HQ", dict(_ari), "rocket_hq_cleared").next_state
+check(isinstance(b, DoubleBattleState) and [p.id for p in b.partner_team] == [149] and [p.id for p in b.foe_teams[0]] == [24, 44, 198]
+      and [p.id for p in b.foe_teams[1]] == [96, 88],
+      f"Lance's Dragonite beside you; Ariana's Arbok, Gloom, Murkrow and the Grunt's Drowzee, Grimer ({b.partner_name}, {b.foe2_name})")
+
 print(f"##### {fails} failures")

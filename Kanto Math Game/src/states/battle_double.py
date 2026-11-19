@@ -18,6 +18,11 @@ How it plays (the games' rules, our math):
 - A fainted Pokemon is replaced at the end of the turn (the trainer's next; yours from the party list). With only one
   Pokemon able to battle, you battle with one (the games' rule), and a side that runs out battles on with one.
 
+Tag battles (11-18): options "partner" {name, class, sprite, team, levels} put a partner's Pokemon in your second slot,
+run by the AI (Steven at Mossdeep, Lance at the Rocket base...); "second_trainer" {the same} put a second trainer on the
+other side, each with its own slot (Twins-style pairs are one trainer). Each slot refills from its owner's team only;
+an owner who runs out leaves that slot empty. You lose when your own Pokemon are out (as in Emerald); only yours earn XP.
+
 The single-battle engine is reused as it is: the battle's "focused pair" (`player_pokemon` / `opponent_pokemon` and
 their HP mirrors) is pointed at whoever is acting and its target (`_focus`), and each Pokemon's own `current_hp` is
 the truth. The helpers that asked "is this the player's Pokemon?" by `is self.player_pokemon` (side, label, HP,
@@ -58,13 +63,20 @@ class DoubleBattleState(TrainerBattleState):
     def __init__(self, game, opponent_data, *args, **kwargs):
         super().__init__(game, opponent_data, *args, **kwargs)
         story = game.story_manager
+        self._tag_teams()
         able = [p for p in story.player_team if p is not None and p.current_hp > 0]
-        self.p_slots = [able[0] if able else self.player_pokemon, able[1] if len(able) > 1 else None]
+        if self.partner_team:   # (a tag battle: your first Pokemon and your partner's)
+            self.p_slots = [able[0] if able else self.player_pokemon, self.partner_team[0]]
+        else:
+            self.p_slots = [able[0] if able else self.player_pokemon, able[1] if len(able) > 1 else None]
         for p in self.opponent_team:   # (a trainer's Pokemon start at full HP, as each foe does in a single battle)
             if p is not None:
                 p.current_hp = p.get_max_hp()
         foes = [p for p in self.opponent_team if p is not None]
-        self.o_slots = [foes[0] if foes else None, foes[1] if len(foes) > 1 else None]
+        if self.foe_teams:   # (two trainers: each sends out its first)
+            self.o_slots = [next(iter(t), None) for t in self.foe_teams]
+        else:
+            self.o_slots = [foes[0] if foes else None, foes[1] if len(foes) > 1 else None]
         self.current_opponent_idx = min(1, len(foes) - 1)
         self._plans, self._act_of = {}, {}
         self._d_down, self._d_faint_queue = set(), []
@@ -80,6 +92,70 @@ class DoubleBattleState(TrainerBattleState):
         if self.phase == "MENU":
             self._slot_turn = self._next_input_slot(-1) or 0
             self._focus(self.p_slots[self._slot_turn], self._first_foe())
+
+    # ================================================================== tag battles: whose Pokemon is whose
+    def _tag_teams(self):
+        """The partner's team and the second trainer's, from the battle options (their data, as a trainer's)."""
+        opts = self.battle_options
+        self.partner_team, self.foe_teams = [], []
+        self.partner_name = self.foe2_name = None
+        self.partner_sprite = self.foe2_sprite = None
+        if not (opts.get("partner") or opts.get("second_trainer")):
+            return
+        from src.states.overworld.common import _story_team, _trainer_sprite, _fill_names
+        area = getattr(self, "area_name", None) or self.game.story_manager.current_area_key
+        info = opts.get("partner")
+        if info:
+            self.partner_team = [p for p in _story_team(self.game, area, dict(info)) if p is not None]
+            for p in self.partner_team:
+                p.current_hp = p.get_max_hp()
+            self.partner_name = _fill_names(self.game, info.get("name") or "Partner")
+            self.partner_sprite = _trainer_sprite(self.game, info.get("sprite"))
+        info = opts.get("second_trainer")
+        if info and info.get("villain"):   # (a villain dressed as this Hoenn version's team: Tabitha or Matt)
+            from src.world import hoenn as _h
+            v = _h.VERSIONS.get(_h.version(self.game.story_manager))
+            if v:
+                info = _h._villain(dict(info), v)
+        if info:
+            first = [p for p in self.opponent_team if p is not None]
+            second = [p for p in _story_team(self.game, area, dict(info)) if p is not None]
+            self.foe_teams = [first, second]
+            self.opponent_team = first + second
+            self.foe2_name = _fill_names(self.game, info.get("name") or info.get("class") or "Trainer")
+            self.foe2_sprite = _trainer_sprite(self.game, info.get("sprite"))
+            for k, v in (info.get("rewards") or {"balls": 3}).items():   # (both trainers pay out)
+                if isinstance(v, (int, float)):
+                    self.rewards[k] = self.rewards.get(k, 0) + v
+
+    def is_partner(self, mon):
+        return mon is not None and self._has(self.__dict__.get("partner_team") or [], mon)
+
+    def _owner(self, mon):
+        """Which slot's owner a Pokemon belongs to: 1 for the partner's and the second trainer's, else 0."""
+        if self.is_partner(mon):
+            return 1
+        teams = self.__dict__.get("foe_teams") or []
+        return 1 if len(teams) > 1 and self._has(teams[1], mon) else 0
+
+    def _slot_team(self, side, k):
+        """The team that fills slot k: the partner's / that trainer's in a tag battle, else the side's whole team."""
+        if side == "player":
+            return self.partner_team if (self.partner_team and k == 1) else self.game.story_manager.player_team
+        return self.foe_teams[k] if self.foe_teams else self.opponent_team
+
+    def _slot_bench(self, side, k):
+        """(team, indices into it) of who can come into slot k."""
+        team = self._slot_team(side, k)
+        out = self.p_slots + self.o_slots
+        return team, [i for i, p in enumerate(team) if p is not None and p.current_hp > 0 and not self._has(out, p)]
+
+    def owner_name(self, side, k):
+        if side == "opponent" and k == 1 and self.foe2_name:
+            return self.foe2_name
+        if side == "player" and k == 1 and self.partner_name:
+            return self.partner_name
+        return self._trainer_word() if side == "opponent" else None
 
     # ================================================================== who's out
     @staticmethod
@@ -130,7 +206,7 @@ class DoubleBattleState(TrainerBattleState):
     def side_of(self, mon):
         if "p_slots" not in self.__dict__:
             return super().side_of(mon)
-        return "player" if self._has(self.game.story_manager.player_team, mon) else "opponent"
+        return "player" if (self._has(self.game.story_manager.player_team, mon) or self.is_partner(mon)) else "opponent"
 
     def _label(self, mon):
         return mon.display_name.upper() if self.side_of(mon) == "player" else f"Foe {mon.display_name.upper()}"
@@ -197,11 +273,12 @@ class DoubleBattleState(TrainerBattleState):
     def _bench(self, mon):
         if "p_slots" not in self.__dict__:
             return super()._bench(mon)
-        if self.side_of(mon) == "player":
-            return [i for i, p in enumerate(self.game.story_manager.player_team)
-                    if p is not None and p.current_hp > 0 and not self._has(self.p_slots, p)]
-        return [j for j, p in enumerate(self.opponent_team)
-                if p is not None and p.current_hp > 0 and not self._has(self.o_slots, p)]
+        side = self.side_of(mon)
+        if side == "opponent" and self.foe_teams:   # (indices into the whole opponent_team, as the engine reads them)
+            mine = self.foe_teams[self._owner(mon)]
+            return [j for j, p in enumerate(self.opponent_team) if p is not None and p.current_hp > 0
+                    and self._has(mine, p) and not self._has(self.o_slots, p)]
+        return self._slot_bench(side, self._owner(mon))[1]
 
     def action_for(self, mon):
         return self._act_of.get(id(mon)) if mon is not None else None
@@ -241,7 +318,7 @@ class DoubleBattleState(TrainerBattleState):
     # ================================================================== choosing, one Pokemon at a time
     def _next_input_slot(self, after):
         for k in range(after + 1, 2):
-            if self._alive(self.p_slots[k]):
+            if self._alive(self.p_slots[k]) and not self.is_partner(self.p_slots[k]):
                 return k
         return None
 
@@ -388,10 +465,12 @@ class DoubleBattleState(TrainerBattleState):
 
     # ================================================================== the turn
     def _ai_plan(self, foe):
-        """A trainer's Pokemon picks its move and its target: the strongest hit it has on either of yours."""
+        """A trainer's Pokemon (or your partner's) picks its move and its target: the strongest hit it has on either
+        of the other side's."""
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         best = None
-        for t in self.battlers("player"):
+        other = "opponent" if self.side_of(foe) == "player" else "player"
+        for t in self.battlers(other):
             self._focus_pair(foe, t)
             name = self._forced_move(foe) or self._ai_choose(foe, t)
             d = movelib.info(self.game, name)
@@ -424,7 +503,7 @@ class DoubleBattleState(TrainerBattleState):
         self._acts_second = None
         self.__dict__.pop("_order_override", None)
         self._note_first_turns()
-        for foe in self.battlers("opponent"):
+        for foe in self.battlers("opponent") + [m for m in self.battlers("player") if self.is_partner(m)]:
             plan = self._ai_plan(foe)
             if plan:
                 self._plans[id(foe)] = plan
@@ -447,6 +526,8 @@ class DoubleBattleState(TrainerBattleState):
         if plan is None or not self._alive(mon) or not (self._has(self.p_slots, mon) or self._has(self.o_slots, mon)):
             return
         if plan["kind"] == "switch":
+            if self._pursued_first(mon):   # (a foe's Pursuit aimed at it strikes first, at double power; then it goes)
+                return
             return self._switch_in("player", plan["slot"], plan["new"], called_back=True)
         if plan["kind"] != "move":
             return
@@ -461,7 +542,10 @@ class DoubleBattleState(TrainerBattleState):
             chosen = self.battlers(other)[0]
         self._focus_pair(mon, chosen)
         label = self._label(mon)
-        if side == "player":
+        mine = side == "player" and not self.is_partner(mon)
+        if side == "player" and not mine:
+            self.chosen_move, self._answer_mode = plan["move"], None
+        if mine:
             self.chosen_move, self._answer_mode = plan["move"], plan.get("mode")
             cap, lv = self._obey_level(), self._level(mon)
             if lv > cap and random.random() < (lv - cap) / (lv + cap):
@@ -530,7 +614,7 @@ class DoubleBattleState(TrainerBattleState):
         self._blast_after = None
         self._spread_k = 1.0
         messages += pp_lines
-        if side == "player":
+        if mine:
             messages += self._answer_notes(label, foe_dmg)
         messages += self.end_rampage_turn(mon)
         self._answer_mode = None
@@ -542,6 +626,26 @@ class DoubleBattleState(TrainerBattleState):
         self._d_pending_switches()
         self._show_move_text(messages, lunge)
         self.feedback_timer = 30
+
+    def _pursued_first(self, mon):
+        """You switch mon out: a foe that picked Pursuit at it (and hasn't moved) hits it first, at double power, as in
+        the games (Gen 4 on; 11-18: in a double battle the switch always went first). True if it struck: the switch
+        comes after it (if mon is still standing)."""
+        for foe in self.battlers("opponent"):
+            fp = self._plans.get(id(foe)) or {}
+            act = self._act_of.get(id(foe))
+            if fp.get("kind") != "move" or fp.get("move") != "PURSUIT" or act not in self.turn_actions:
+                continue
+            if fp.get("target") is not None and fp.get("target") is not mon:
+                continue
+            fp["target"] = mon
+            self.turn_actions.remove(act)
+            self.turn_actions.insert(0, lambda m=mon: self._act(m))   # (then the switch, unless it fainted)
+            self._mv_call_boost = 2.0
+            act()
+            self.__dict__.pop("_mv_call_boost", None)
+            return True
+        return False
 
     @staticmethod
     def _for_target(line, t):
@@ -570,7 +674,8 @@ class DoubleBattleState(TrainerBattleState):
                 j = random.choice(bench) if kind == "force" else self._ai_switch_pick(bench, self._first_foe("player"))
                 new = self.opponent_team[j]
             else:
-                new = self.game.story_manager.player_team[random.choice(bench) if kind == "force" else bench[0]]
+                team = self._slot_team(side, self._owner(mon))
+                new = team[random.choice(bench) if kind == "force" else bench[0]]
             self.turn_actions.insert(0, lambda s=side, k=k, n=new, b=baton, f=kind == "force":
                                      self._switch_in(s, k, n, called_back=True, baton=b, dragged=f))
 
@@ -578,13 +683,14 @@ class DoubleBattleState(TrainerBattleState):
         """new takes slot k (a switch, a replacement after a faint, or a pivot move). Shows the lines."""
         slots = self._slots(side)
         old = slots[k]
-        who = self._trainer_word()
+        who = self.owner_name(side, k) or self._trainer_word()
+        theirs = side == "opponent" or self.is_partner(new) or self.is_partner(old)
         lines = []
         if old is not None and old.current_hp > 0 and called_back:
             self.ability_on_switch_out(old)
             self.mv_switched_out(old)
-            lines.append(f"Come back, {old.display_name.upper()}!" if side == "player"
-                         else f"{who} withdrew {old.display_name.upper()}!")
+            lines.append(f"{who} withdrew {old.display_name.upper()}!" if theirs
+                         else f"Come back, {old.display_name.upper()}!")
         if old is not None:
             self.__dict__.get("_out_since", {}).pop(id(old), None)
         slots[k] = new
@@ -592,8 +698,8 @@ class DoubleBattleState(TrainerBattleState):
         if dragged:
             lines = [f"{self._label(new)} was dragged out!"]
         else:
-            lines.append(f"Go! {new.display_name.upper()}!" if side == "player"
-                         else f"{who} sent out {new.display_name.upper()}!")
+            lines.append(f"{who} sent out {new.display_name.upper()}!" if theirs
+                         else f"Go! {new.display_name.upper()}!")
         self._focus_pair(new, None)
         self._check_forms()
         if baton:
@@ -602,7 +708,7 @@ class DoubleBattleState(TrainerBattleState):
         self._form_msgs = []
         lines += self._collect_faints()   # (entry hazards can knock it out)
         if side == "player":
-            self._xp_participants = [m for m in self.battlers("player")]
+            self._xp_participants = [m for m in self.battlers("player") if not self.is_partner(m)]
         self._say(lines)
 
     def _trainer_word(self):
@@ -625,7 +731,7 @@ class DoubleBattleState(TrainerBattleState):
                 if act in self.turn_actions:
                     self.turn_actions.remove(act)
                 if side == "opponent":
-                    mine = self.battlers("player")
+                    mine = [m for m in self.battlers("player") if not self.is_partner(m)]   # (the partner's earn nothing)
                     if mine:
                         keep = (self.player_pokemon, self.opponent_pokemon)
                         self._focus(mine[0], mon)
@@ -685,14 +791,19 @@ class DoubleBattleState(TrainerBattleState):
         True while one is being sent out."""
         for k, mon in enumerate(self.o_slots):
             if mon is None or mon.current_hp <= 0:
-                bench = self._bench(self.o_slots[1 - k] or mon or self.opponent_team[0])
+                team, bench = self._slot_bench("opponent", k)
                 if bench:
-                    self._switch_in("opponent", k, self.opponent_team[bench[0]])
+                    self._switch_in("opponent", k, team[bench[0]])
                     return True
-        team = self.game.story_manager.player_team
         for k, mon in enumerate(self.p_slots):
-            if (mon is None or mon.current_hp <= 0) and self._bench(team[0] if team else None):
-                self._pick_replacement(k)
+            if mon is None or mon.current_hp <= 0:
+                team, bench = self._slot_bench("player", k)
+                if not bench:
+                    continue
+                if team is self.partner_team:   # (your partner sends out its next)
+                    self._switch_in("player", k, team[bench[0]])
+                else:
+                    self._pick_replacement(k)
                 return True
         return False
 
@@ -713,7 +824,7 @@ class DoubleBattleState(TrainerBattleState):
             self._switch_in("player", k, p)
 
         def cancel():
-            chosen(self._bench(team[0])[0])
+            chosen(self._slot_bench("player", k)[1][0])
 
         from src.states.systems import PokemonPartyMenuState
         self.game.change_state(PokemonPartyMenuState(self.game, previous_state=self, context="forced_switch",
@@ -912,8 +1023,11 @@ class DoubleBattleState(TrainerBattleState):
                     self._draw_mon(screen, mon)
         if self.trainer_sprite is not None and self.show_trainer:
             w, h = self.game.width, self.game.height
+            two = self.foe2_sprite is not None
             screen.blit(self.trainer_sprite, self.trainer_sprite.get_rect(
-                center=(w * 0.78 + self.trainer_slide_offset, h * 0.26)))
+                center=(w * (0.70 if two else 0.78) + self.trainer_slide_offset, h * 0.26)))
+            if two:
+                screen.blit(self.foe2_sprite, self.foe2_sprite.get_rect(center=(w * 0.88 + self.trainer_slide_offset, h * 0.26)))
         if self.move_anim:
             self.move_anim.draw(screen)
         self._draw_weather(screen)

@@ -712,6 +712,9 @@ class MoveEffects:
         """Leech Seed, trapping, Curse, Ingrain / Aqua Ring, Yawn, Wish, Perish Song, and the field
         timers. Returns lines."""
         lines = []
+        for s in self._fx()["side"].values():   # (Quick / Wide Guard, Crafty Shield, Mat Block: one turn only; they never cleared, 11-18)
+            for key in ("quick_guard", "wide_guard", "crafty_shield", "mat_block"):
+                s.pop(key, None)
         for mon in (self.player_pokemon, self.opponent_pokemon):
             if not mon or self._hp(mon) <= 0:
                 continue

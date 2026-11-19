@@ -3738,7 +3738,7 @@
         
                 {"name": "Executive Petrel", "class": "ROCKET", "sprite": "petrel.png", "team": [41, 20, 109], "levels": [22, 24, 22], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Petrel: Hah! Fooled you. I'm no Giovanni, but I'm still an Executive of Team Rocket!"], "player_won": ["Petrel: Fine. The password? Go figure it out yourself!"]}},
         
-                {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 44, 198], "rewards": {"balls": 5, "RARE_CANDY": 1}, "victory_flag": "rocket_hq_cleared", "levels": [25, 25, 27], "is_boss_battle": true},
+                {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 44, 198], "rewards": {"balls": 5, "RARE_CANDY": 1}, "battle_options": {"double": true, "partner": {"name": "Lance", "class": "CHAMPION", "sprite": "lance.png", "team": [149], "levels": [40]}, "second_trainer": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [96, 88], "levels": [18, 20], "rewards": {"balls": 2}}}, "victory_flag": "rocket_hq_cleared", "levels": [25, 25, 27], "is_boss_battle": true},
         
                 {"name": "Scientist Gregg", "class": "SCIENTIST", "sprite": "scientist.png", "team": [81, 81, 81], "rewards": {"balls": 2}},
         

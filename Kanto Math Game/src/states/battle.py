@@ -3513,6 +3513,9 @@ class TrainerIntroState(GameState):
         if len(back) > 1 and self.player_sprite:
             self.throw_frames = [pygame.transform.scale(f, self.player_sprite.get_size()) for f in back]
         self.rival_sprite = self.trainer_sprite  # (older code reads it)
+        # a tag battle (battle_double.py, 11-18): the second trainer beside the first, your partner beside you
+        self.foe2_fit = self._fit(getattr(next_state, "foe2_sprite", None), h * 0.40)
+        self.partner_fit = self._fit(getattr(next_state, "partner_sprite", None), h * 0.40)
 
         team = [p for p in game.story_manager.player_team if p]
         self.player_party = [p.current_hp > 0 for p in team][:6]
@@ -3532,13 +3535,15 @@ class TrainerIntroState(GameState):
         k = height / max(1, ink.height)
         return pygame.transform.scale(img, (max(1, int(img.get_width() * k)), max(1, int(img.get_height() * k))))
 
-    def _foe_name(self):
+    def _foe_name(self, both=True):
         ns = self.next_state
         name = getattr(ns, "trainer_name", None)
         if not name:
             name = getattr(ns, "trainer_class", "TRAINER")
             if name == "RIVAL":
                 name = getattr(self.game, "rival_name", None) or getattr(self.game, "rival_character", "BLUE")
+        if both and getattr(ns, "foe2_name", None):   # (two trainers: "You are challenged by A and B!")
+            return f"{name} and {ns.foe2_name}".upper()
         return str(name).upper()
 
     @staticmethod
@@ -3586,7 +3591,12 @@ class TrainerIntroState(GameState):
     def _start_foe_out(self):
         self.phase = "FOE_OUT"
         self.t = 0
-        self.dialogue_box.reset([f"{self._foe_name()} sent out {self._out_names('opponent')}!"])
+        ns = self.next_state
+        if getattr(ns, "foe2_name", None):   # (each trainer sends out its own)
+            self.dialogue_box.reset([f"{(ns.owner_name('opponent', k) or self._foe_name(False)).upper()} sent out {m.display_name.upper()}!"
+                                     for k, m in enumerate(ns.o_slots) if m is not None])
+        else:
+            self.dialogue_box.reset([f"{self._foe_name()} sent out {self._out_names('opponent')}!"])
         self.dialogue_box.callback = None
         self.dialogue_box.visible = True
 
@@ -3594,7 +3604,13 @@ class TrainerIntroState(GameState):
         self.phase = "PLAYER_OUT"
         self.t = 0
         self.hold = 0
-        self.dialogue_box.reset([f"Go! {self._out_names('player')}!"])
+        ns = self.next_state
+        if getattr(ns, "partner_name", None):   # (yours, then your partner's)
+            mine, theirs = ns.p_slots[0], ns.p_slots[1]
+            self.dialogue_box.reset([f"Go! {mine.display_name.upper()}!"] +
+                                    ([f"{ns.partner_name.upper()} sent out {theirs.display_name.upper()}!"] if theirs else []))
+        else:
+            self.dialogue_box.reset([f"Go! {self._out_names('player')}!"])
         self.dialogue_box.callback = None
         self.dialogue_box.visible = True
 
@@ -3632,7 +3648,7 @@ class TrainerIntroState(GameState):
         elif self.phase == "FOE_OUT":
             self.foe_gone = min(1.0, self.t / self.EXIT)
             if self.foe_gone >= 1.0 and getattr(self.next_state, "is_doubles", False):
-                if self.foe_box_in is None:   # (a double battle: both appear on their spots, battle_double.py draws them)
+                if self.foe_box_in is None and self._slot_summons("opponent"):   # (a double battle: a ball onto each spot, 11-18)
                     self.foe_box_in = 0
             elif self.foe_gone >= 1.0 and not self.enemy_summon:
                 self.enemy_summon = PokemonSummonAnimation(self.game, self.next_state.opponent_pokemon, "opponent")
@@ -3653,7 +3669,7 @@ class TrainerIntroState(GameState):
                 self.player_sprite = self.throw_frames[min(len(self.throw_frames) - 1, self.t // self.THROW_STEP)]
             self.me_gone = min(1.0, max(0, self.t - throw) / self.EXIT)
             if self.me_gone >= 0.6 and getattr(self.next_state, "is_doubles", False):
-                if self.my_box_in is None:
+                if self.my_box_in is None and self._slot_summons("player"):
                     self.my_box_in = 0
             elif (self.me_gone >= 0.6 or (self.throw_frames and self.t >= throw - self.THROW_STEP))                     and not self.player_summon:
                 self.player_summon = PokemonSummonAnimation(self.game, self.next_state.player_pokemon, "player",
@@ -3669,6 +3685,23 @@ class TrainerIntroState(GameState):
                     if self.hold >= self.HOLD:
                         self.dialogue_box.visible = False
                         self.game.change_state(self.next_state)
+
+    def _slot_summons(self, side):
+        """A double battle's send-out: a ball onto each of the side's spots, the second a moment after the first.
+        Plays them; True once all have opened."""
+        anims = self.__dict__.setdefault("_summons", {})
+        if side not in anims:
+            from src.vfx.animations import SlotSummonAnimation
+            ns = self.next_state
+            anims[side] = []
+            for k, mon in enumerate(ns.o_slots if side == "opponent" else ns.p_slots):
+                img, rect = ns._sprite_at(mon) if mon is not None else (None, None)
+                if img is not None:
+                    anims[side].append(SlotSummonAnimation(self.game, mon, side, img, rect, delay=10 * len(anims[side])))
+        for a in anims[side]:
+            if not a.finished:
+                a.update()
+        return all(a.finished for a in anims[side])
 
     # ------------------------------------------------------------------ drawing
     def _party_bar(self, screen, party, side, k):
@@ -3719,6 +3752,9 @@ class TrainerIntroState(GameState):
             fx, fy = self._foe_pos()
             pad = self.foe_sprite.get_height() - self.foe_sprite.get_bounding_rect().bottom
             screen.blit(self.foe_sprite, self.foe_sprite.get_rect(midbottom=(int(fx), int(fy + pad))))
+            if self.foe2_fit:   # (the second trainer, a step behind and to the side)
+                pad2 = self.foe2_fit.get_height() - self.foe2_fit.get_bounding_rect().bottom
+                screen.blit(self.foe2_fit, self.foe2_fit.get_rect(midbottom=(int(fx + w * 0.13), int(fy + pad2 - 6))))
         if self.enemy_summon:
             self.enemy_summon.draw(screen)
 
@@ -3726,6 +3762,8 @@ class TrainerIntroState(GameState):
         if self.player_sprite and self.me_gone < 1.0:
             mx, my = self._me_pos()
             screen.blit(self.player_sprite, self.player_sprite.get_rect(midbottom=(int(mx), int(my))))
+            if self.partner_fit:   # (your partner beside you)
+                screen.blit(self.partner_fit, self.partner_fit.get_rect(midbottom=(int(mx + w * 0.18), int(my - self.game.height * 0.12))))
         if self.player_summon:
             self.player_summon.draw(screen)
 
@@ -3740,6 +3778,10 @@ class TrainerIntroState(GameState):
         # The boxes slide in as each Pokemon appears.
         r = getattr(ns, "renderer", None)
         if getattr(ns, "is_doubles", False):   # (two a side: the double battle draws each side as it comes out)
+            for side, box_in in (("opponent", self.foe_box_in), ("player", self.my_box_in)):
+                if box_in is None:   # (the balls on their way, then the Pokemon growing out of them)
+                    for a in self.__dict__.get("_summons", {}).get(side, []):
+                        a.draw(screen)
             if self.foe_box_in is not None:
                 ns.draw_side(screen, "opponent", dx=-(1 - self._ease(self.foe_box_in / self.BOX_IN)) * w * 0.5)
             if self.my_box_in is not None:

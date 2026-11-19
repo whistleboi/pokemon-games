@@ -115,13 +115,17 @@ class AbilityEffects:
             lines.append(self.WEATHER_TEXT[self.weather][0])
         elif a == "INTIMIDATE" and foe:
             lines.append(f"{label}'s Intimidate!")
-            fa = self.ab(foe)
-            if fa in INTIMIDATE_PROOF:
-                lines.append(f"{self._label(foe)}'s {self.ab_name(foe)} kept its Attack from falling!")
-            else:
-                lines += self.change_stages(foe, [["ATTACK", -1]], by_foe=True)
-            if fa == "RATTLED":
-                lines += self.change_stages(foe, [["SPEED", 1]])
+            foes = [foe]
+            if getattr(self, "is_doubles", False):   # (a double battle: every foe out, 11-18)
+                foes = self.battlers("opponent" if self.side_of(mon) == "player" else "player") or [foe]
+            for foe in foes:
+                fa = self.ab(foe)
+                if fa in INTIMIDATE_PROOF:
+                    lines.append(f"{self._label(foe)}'s {self.ab_name(foe)} kept its Attack from falling!")
+                else:
+                    lines += self.change_stages(foe, [["ATTACK", -1]], by_foe=True)
+                if fa == "RATTLED":
+                    lines += self.change_stages(foe, [["SPEED", 1]])
         elif a == "DOWNLOAD" and foe:
             dfn = foe.stat_value("DEFENSE") * self.stat_mult(foe, "DEFENSE")
             sdf = foe.stat_value("SPDEF") * self.stat_mult(foe, "SPDEF")

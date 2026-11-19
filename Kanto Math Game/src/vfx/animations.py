@@ -311,3 +311,42 @@ class PokemonSummonAnimation:
             surface.blit(img, img.get_rect(midbottom=sprite_rect(self.game, sprite, self.side_key).midbottom))
         else:
             surface.blit(sprite, sprite_rect(self.game, sprite, self.side_key))
+
+
+class SlotSummonAnimation(PokemonSummonAnimation):
+    """The same send-out onto one spot of a double battle (11-18): the ball lands on that slot's spot (img drawn at
+    rect, as battle_double.py draws it); `delay` frames first, so the second ball follows the first."""
+
+    def __init__(self, game, pokemon, side, img, rect, delay=0):
+        super().__init__(game, pokemon, side)
+        self.img, self.rect, self.delay = img, rect, delay
+        self.spot = (rect.centerx, rect.centery)
+        self.target_x = self.spot[0]
+
+    def _sprite(self):
+        return self.img
+
+    def update(self):
+        if self.delay > 0:
+            self.delay -= 1
+            return
+        super().update()
+
+    def draw(self, surface):
+        if self.delay > 0 or self.img is None:
+            return
+        if self.phase == 0:
+            ball = pygame.transform.rotate(self.ball, self.angle)
+            surface.blit(ball, ball.get_rect(center=(int(self.ball_x), int(self.ball_y))))
+            return
+        if self.phase == 1:
+            k = min(1.0, self.timer / self.OPEN)
+            ring = pygame.Surface((240, 240), pygame.SRCALPHA)
+            pygame.draw.circle(ring, (255, 255, 255, int(200 * (1 - k))), (120, 120), int(30 + 90 * k), 6)
+            surface.blit(ring, ring.get_rect(center=self.spot))
+            scale = 0.2 + 0.8 * (1 - (1 - k) ** 2)
+            w, h = self.img.get_size()
+            img = pygame.transform.smoothscale(white_silhouette(self.img, 1 - k), (max(1, int(w * scale)), max(1, int(h * scale))))
+            surface.blit(img, img.get_rect(midbottom=self.rect.midbottom))
+        else:
+            surface.blit(self.img, self.rect)

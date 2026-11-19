@@ -688,6 +688,8 @@ class MoveMechanics:
             return True, [f"Wide Guard protected {def_label}!"]
         if aimed and fs.get("crafty_shield") and d.get("category") == "STATUS" and target != "opponents-field":
             return True, [f"Crafty Shield protected {def_label}!"]
+        if aimed and fs.get("mat_block") and d.get("category") != "STATUS" and self.side_of(attacker) != self.side_of(defender):
+            return True, [f"{def_label} was blocked by the kicked-up mat!"]   # (Mat Block: every damaging move, the first turn)
         kind = fv.get("protected")
         if not kind or not self.protected(attacker, defender, d):
             return False, []
@@ -1596,14 +1598,13 @@ class MoveMechanics:
             return [f"{att_label} waits for a target to make a move!"]
         if name in ("QUICK-GUARD", "WIDE-GUARD", "CRAFTY-SHIELD", "MAT-BLOCK"):
             key = name.lower().replace("-", "_")
-            if name == "MAT-BLOCK":
-                if not self._first_turn(attacker):
-                    return [FAIL]
-                key = "wide_guard"
-            self.side(attacker)[key] = True
+            if name == "MAT-BLOCK" and not self._first_turn(attacker):
+                return [FAIL]
+            self.side(attacker)[key] = True   # (this turn only: effects_end_of_turn clears the guards, 11-18)
             return [{"quick_guard": f"Quick Guard protected {team_word.lower()}!",
                      "wide_guard": f"Wide Guard protected {team_word.lower()}!",
-                     "crafty_shield": f"Crafty Shield protected {team_word.lower()}!"}[key]]
+                     "crafty_shield": f"Crafty Shield protected {team_word.lower()}!",
+                     "mat_block": f"{att_label} intends to flip up a mat and block incoming attacks!"}[key]]
         if name == "MAGNET-RISE":
             if v.get("magnet_rise") or self.forced_grounded(attacker):
                 return [FAIL]

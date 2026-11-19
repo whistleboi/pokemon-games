@@ -100,8 +100,8 @@ def _fill(value, words):
 
 def _villain(trainer, v):
     """Dress a villain trainer in the chosen team's colours."""
-    role = trainer.get("villain")
-    if not role or not v:
+    role = (trainer.get("villain_by_version") or {}).get((v or {}).get("key")) or trainer.get("villain")
+    if not role or not v:   # ("villain_by_version": a different role per version: the Space Center's Tabitha / Matt, 11-18)
         return trainer
     trainer.setdefault("spot_name", trainer.get("name"))  # (its own spot on a walking map is under the name the data gives it)
     if role == "grunt":
