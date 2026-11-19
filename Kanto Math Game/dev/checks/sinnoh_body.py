@@ -292,6 +292,43 @@ check(_under and _out[0][0] != "blocked", f"Route 206: from the route below you 
 r.run.player = (_bx, _by); r.run.deck = True                     # up on the deck...
 _off = r.run.step(_dx, 0)
 check(_off[0][0] == "blocked", "Route 206: up on the Cycling Road you can't step off its side")
+# (11-18: under the wide Cycling Road every bridge tile you and your Pokemon overlap is drawn back over you, not just
+#  the one at your feet; it's in the Platinum picture, so the map's own tile is copied back)
+from src.states.overworld.dungeon import TILE
+_w = next(((x, y), dx) for (x, y) in sorted(f.bridge) for dx in (-1, 1)
+          if (x + dx, y) not in f.bridge and f.walkable(x + dx, y) and f.tiles[y][x + dx] != core.SURF
+          and (x - dx, y) in f.bridge and (x - 2 * dx, y) in f.bridge and (x, y - 1) in f.bridge and (x - dx, y - 1) in f.bridge)
+(_wx, _wy), _wd = _w
+r.run.player = (_wx + _wd, _wy); r.run.deck = True
+r.anim_from = r.partner = r.partner_from = r.run.player
+f.seen |= {(x, y) for x in range(f.w) for y in range(f.h)}
+
+
+def _bare(tiles):
+    """Each tile on screen is just the map (nobody drawn over it)."""
+    ox, oy = r._origin()
+    out = []
+    for tx, ty in tiles:
+        a = pygame.Surface((TILE, TILE)); a.blit(g.screen, (0, 0), pygame.Rect(ox + tx * TILE, oy + ty * TILE, TILE, TILE))
+        b = pygame.Surface((TILE, TILE)); b.blit(r._floor_surf, (0, 0), pygame.Rect(tx * TILE, ty * TILE, TILE, TILE))
+        out.append(pygame.image.tobytes(a, "RGB") == pygame.image.tobytes(b, "RGB"))
+    return out
+
+
+_mid = None
+for _s in range(2):
+    r.step(-_wd, 0)
+    if _s == 1:
+        r.anim = max(1, r.anim // 2); r.draw()
+        _mid = _bare([r.anim_from, r.run.player, (r.run.player[0], _wy - 1), (r.anim_from[0], _wy - 1)])
+    for _q in range(20):
+        r.update()
+r.banner = 0; r.draw()
+_cov = _bare([r.run.player, (r.run.player[0], _wy - 1), tuple(r.partner)])
+check(r.run.deck is False and all(_cov) and _mid and all(_mid),
+      f"Route 206: under the Cycling Road you, your head and your Pokemon are all hidden, mid-step too ({_w} {_cov} {_mid})")
+r.run.deck = True; r.draw()
+check(not all(_bare([r.run.player, (r.run.player[0], _wy - 1)])), "Route 206: up on the Cycling Road at the same spot you're drawn over it")
 t = town("CANALAVE_CITY", "SINNOH_ROUTE_218")
 _br = sorted(k for k, v in t.bridge.items() if v == (1, 0))        # (the pier by the boats is a short one of its own, running north-south)
 check(len(_br) >= 20, f"Canalave City: the drawbridge is a two-level bridge running east-west ({len(_br)} tiles)")

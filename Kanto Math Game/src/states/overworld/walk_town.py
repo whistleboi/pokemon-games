@@ -259,8 +259,9 @@ class WalkTownState(CityState):
                 self.exits[(x, y)] = target
             else:
                 self.doors[(x, y)] = kinds.get(letter, "house")
-        deep = art.SEA_CHARS if m.get("surf") else ""  # (a map with "surf": its sea is crossed with Surf, as on the routes; else a town's sea is walked like its ground, as before)
-        self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else "o" if c in deep else "2" if c == "2" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
+        deep = art.SEA_CHARS if m.get("surf", not getattr(self, "room", None)) else ""  # (a town's sea is crossed with Surf, as on the routes (11-18: every town, not only those
+        wade = {tuple(t) for t in m.get("wade", [])}   # marked "surf"; "surf": false walks it); a room's pool only if marked. "wade": sea tiles walked anyway, Tangelo's to Lapras)
+        self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else "o" if c in deep and (x, y) not in wade else "2" if c == "2" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
                      for y, row in enumerate(grid)]
         self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
         # a warp pad (tile 1 with the map's "links" {"x,y": [floor, x, y]}, as on the routes): step on it and you stand on its far pad
@@ -977,6 +978,8 @@ class WalkTownState(CityState):
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)
+        if to not in self.exits and self._surf_wild(to):
+            return
         if to in self.exits:
             self.walk_goal = None
             self._leave(self.exits[to])
@@ -1187,6 +1190,92 @@ class WalkTownState(CityState):
             if 0 <= x < self.w and 0 <= y < self.h and (self.grid[y][x] == "~" or self.grid[y][x] in art.SEA_CHARS or (x, y) in self.water_exits):
                 return (x, y)
         return None
+
+    SURF_RATE = 0.05   # (a wild Pokemon each step on a town's water: about one in twenty, near the games' own sea rate)
+    COMMON_SURF = {"72": 85, "73": 15}   # (the last resort: Tentacool, now and then Tentacruel, as on almost every sea)
+
+    def _surf_wild(self, to):
+        """Surfing on a town's water (11-18, Jordan: "if a player is able to Surf it in the game ... able to Surf it in
+        our game"): a wild Pokemon now and then, as out at sea. Not on the first step in, not in a building, not with a
+        Repel going. Returns True if a battle starts."""
+        import random
+        if getattr(self, "room", None) or self.anim_from == to or getattr(self.game.story_manager, "repel_routes", 0) > 0:
+            return False
+        rows = self.rows
+        x0, y0 = self.anim_from
+        if rows[to[1]][to[0]] != "o" or rows[y0][x0] != "o" or random.random() >= self.SURF_RATE:
+            return False
+        mon = self._surf_mon()
+        if mon is None:
+            return False
+        self.walk_goal = None
+        self.anim = 0
+        self._remember()
+        from src.states.battle import WildBattleState
+        battle = WildBattleState(self.game, mon, self.area_key,
+                                 background_image=random.choice(["battle_ocean1.png", "battle_ocean2.png", "battle_ocean3.png"]))
+        battle.back_to_town = True
+        self.game.change_state(battle)
+        return True
+
+    def _surf_table(self):
+        """(pool {id: weight}, the area its levels come from) for this town's water: its own Surf table; else the
+        nearest place its ways out lead to with one (a sea route's whole table, out by the water); else Tentacool."""
+        data = self.game.loader.area_data
+        places = data.get("STORY_PROGRESSION", {})
+
+        def own(key, by_sea=False):
+            entry = places.get(key) or {}
+            for name in (entry.get("surf_pool_percentages"), f"{key}_SURF_PERCENTAGES"):
+                if name and isinstance(data.get(name), dict) and data[name]:
+                    return data[name]
+            if by_sea and isinstance(data.get(entry.get("wild_pool_percentages")), dict):
+                return data[entry["wild_pool_percentages"]] or None
+            return None
+        pool = own(self.area_key)
+        if pool:
+            return pool, self.area_key
+        seen, todo = {self.area_key}, [(self.area_key, 0)]
+        maps = custom(self.game)
+        while todo:   # (the nearest water a step or two out: the next route, then the one past it)
+            key, depth = todo.pop(0)
+            m = maps.get(key) if isinstance(maps.get(key), dict) else {}
+            exits = dict(m.get("exits") or {})
+            for c, target in sorted(exits.items(), key=lambda kv: kv[0] not in "wu"):
+                if not isinstance(target, str) or target in seen or target.startswith(("ROOM:", "OUT:")):
+                    continue
+                seen.add(target)
+                pool = own(target, by_sea=(c in "wu" or self._sea_route(target)))
+                if pool:
+                    return pool, target
+                if depth < 2:
+                    todo.append((target, depth + 1))
+        return dict(self.COMMON_SURF), self.area_key
+
+    def _sea_route(self, key):
+        """A route that is mostly sea (its whole table is what you meet surfing: Hoenn's Route 124)."""
+        m = custom(self.game).get(key)
+        if not isinstance(m, dict) or "art" not in m:
+            return False
+        from src.dungeon import art
+        cells = [c for r in m["art"] for c in r]
+        return bool(cells) and sum(c in art.SEA_CHARS for c in cells) * 2 > len(cells)
+
+    def _surf_mon(self):
+        """A wild Pokemon from this town's water, at its place's level."""
+        from src.utils import Utils
+        from src.world import seasons, levels, regional_forms
+        from src.pokemon.data import Pokemon
+        pool, level_key = self._surf_table()
+        pool = seasons.adjust_pool(self.game, regional_forms.extend_pool(self.game, pool), self.area_key)
+        if not pool:
+            return None
+        raw = self.game.loader.fetch_specific(int(Utils.weighted_random_choice(pool)))
+        if not raw:
+            return None
+        mon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, mon, level_key)
+        return mon
 
     def _fishing_pool(self, rod):
         from src.states.overworld.route_actions import RouteActions
@@ -1654,6 +1743,7 @@ class WalkTownState(CityState):
         k = 1 - self.anim / STEP if self.anim > 0 else 1
         lead = self.follower()
         me = self._player_img()
+        _mine_rects = []   # (you and your Pokemon: (rect, from, to), drawn under a bridge you pass beneath)
         pr = pygame.Rect(0, 0, TILE, TILE)
         fx, fy = self.anim_from
         tx, ty = self.player
@@ -1666,8 +1756,10 @@ class WalkTownState(CityState):
             img = self._icon(lead, TILE, flip=(tx > bx), facing=way)
             if img is not None:
                 drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
+                _mine_rects.append((drawn[-1][2], tuple(self.partner_from), tuple(self.partner)))
         if me is not None:
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
+            _mine_rects.append((drawn[-1][2], tuple(self.anim_from) if self.anim > 0 else tuple(self.player), tuple(self.player)))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
         for a in (self.scenes.actors if getattr(self, "scenes", None) else []):  # a scene's cast, walking in and out
@@ -1702,10 +1794,14 @@ class WalkTownState(CityState):
                 continue
             from src.dungeon import art
             art.blocker(screen, at(_t), _look)
-        if getattr(self, "bridge", None) and not self.deck and tuple(self.player) in self.bridge:  # (passing under a bridge: it goes over your head)
-            art.bridge(screen, at(tuple(self.player)), "|" if self.bridge[tuple(self.player)] == (0, 1) else ";")
+        if getattr(self, "bridge", None):  # (passing under a bridge: it goes over your head, every tile you overlap)
+            from src.dungeon import art as _ab
+            _under = [rc for rc, fr_, to_ in _mine_rects if _ab.under_bridge(self.bridge, fr_, to_, self.deck)]
+            _ab.bridge_over(screen, self.bridge, _under, (ox, oy), TILE, self.map_img)
         for _o, img, (bx, by) in getattr(self, "overheads", []):  # (solid, over you: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
+        from src.dungeon import art as _art
+        _art.over_uncovered(screen, drawn, [(img, at_) for _o, img, at_ in getattr(self, "overheads", [])], (ox, oy))
         # the buildings' names over their doors, who the people are, where the ways out go
         _named = []   # (a building with several door tiles, the Dept. Store's two: its name once)
         for spot, kind in sorted(self.doors.items()):
@@ -1849,7 +1945,8 @@ class WalkTownState(CityState):
             grid = [row.replace(c, ".") for row in grid]
         kinds, ways = m.get("buildings", {}), m.get("exits", {})
         part = {"exits": {}, "doors": {}, "people": {}, "pads": {}, "open": set(), "grid": grid, "stops": {tuple(t) for t in m.get("stops", [])}}
-        deep = art.SEA_CHARS if m.get("surf") else ""
+        deep = art.SEA_CHARS if m.get("surf", not room) else ""   # (as _from_art: a town's sea needs Surf, a room's pool only if marked)
+        wade = {tuple(t) for t in m.get("wade", [])}
         if m.get("dynamic_exit"):   # (a lift car: its doors open on the floor it's at now)
             ways = {c: ("ROOM:" + self._car_floor(room) if str(v).startswith("ROOM:") else v) for c, v in ways.items()}
         for (x, y), letter in art.doors(grid).items():
@@ -1874,7 +1971,7 @@ class WalkTownState(CityState):
                         opt = {"any": [w if isinstance(w, dict) else options[w] for w in who if isinstance(w, dict) or w in options]}
                     if opt:
                         part["people"][(x, y)] = opt
-                if (key[3] if c == "$" else key[2] if c in deep else c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"])) \
+                if (key[3] if c == "$" else key[2] if c in deep and (x, y) not in wade else c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"])) \
                         and (x, y) not in part["doors"]:
                     part["open"].add((x, y))
         part["open"] |= set(part["exits"])

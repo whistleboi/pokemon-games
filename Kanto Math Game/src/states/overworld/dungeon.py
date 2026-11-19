@@ -4175,6 +4175,7 @@ class DungeonState(OverworldBattles, PlayState):
                     pygame.draw.rect(screen, (220, 50, 50) if k4 % 2 else (245, 245, 245), (r.x + 4 + k4 * (r.w - 8) // 4, r.centery - 8, (r.w - 8) // 4, 10))
         # wild Pokemon and trainers you can see
         emotes = []
+        _movers_drawn = []   # (redrawn over the top layer when their feet aren't under it: art.over_uncovered)
         _ring = self._ring_spot(f)   # (Soaring's Mirage spots: Hoopa's ring at the back, empty on a quiet visit)
         if _ring and self.run.visible(*_ring):
             self._draw_ring(screen, at(*_ring))
@@ -4191,6 +4192,7 @@ class DungeonState(OverworldBattles, PlayState):
             if m.kind == "wild":
                 img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
+                _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom + 4))))
                 if m.payload.is_shiny:
                     pygame.draw.circle(screen, (255, 230, 90), (r.right - 8, r.y + 8), 5)
                 if m.alert:
@@ -4209,6 +4211,7 @@ class DungeonState(OverworldBattles, PlayState):
                     continue
                 if img:
                     screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+                    _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
                 else:
                     pygame.draw.circle(screen, (200, 170, 60), r.center, TILE // 3)
                 theme.shadow_text(screen, "!", fonts["label"], r.right - 4, r.y - 20, color=(250, 210, 60))
@@ -4231,6 +4234,7 @@ class DungeonState(OverworldBattles, PlayState):
                     lift = 16 + bob
                 if img:
                     screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - lift)))
+                    _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - lift))))
                 else:
                     pygame.draw.circle(screen, (90, 90, 160), r.center, TILE // 3)
                 # which way it's looking
@@ -4266,6 +4270,7 @@ class DungeonState(OverworldBattles, PlayState):
         surfing = self._on_surf() or (self.anim > 0 and self._on_surf(self.anim_from))
         _mine = len(drawn)   # (from here: you and your Pokemon, drawn again over the top layer while you're up on a bridge)
         _partner_at = None
+        _trail = {}   # (index in drawn: (from, to) tiles, for your Pokemon and companions)
         if lead and self.partner != self.run.player and me is not None and not self._backdrop and not surfing:
             # (a battle draws its own; while you surf your Pokemon is the one carrying you)
             _partner_at = len(drawn)
@@ -4276,6 +4281,7 @@ class DungeonState(OverworldBattles, PlayState):
             way = (look[0] - tx, look[1] - ty)
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
             img = self._icon(lead, TILE, flip=(self.run.player[0] > tx), facing=way)
+            _trail[len(drawn)] = (self.partner_from, self.partner)
             drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
         for _ci, _who in enumerate(self._companions() if me is not None and not self._backdrop and not surfing else ()):
             (fx, fy), (tx, ty) = self._ctrail_from[_ci + 1], self._ctrail[_ci + 1]
@@ -4288,6 +4294,7 @@ class DungeonState(OverworldBattles, PlayState):
             img = (self._mon_img(149, way) if _who == "Dragonite"
                    else self._figure_img({"text": _who}, way, (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0))
             if img is not None:
+                _trail[len(drawn)] = (self._ctrail_from[_ci + 1], self._ctrail[_ci + 1])
                 drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
         if me is not None and surfing:  # on the sea: you ride your Pokemon (a hop on and off)
             drawn += self._surf_draw(me, pr, at, k)
@@ -4344,13 +4351,22 @@ class DungeonState(OverworldBattles, PlayState):
             screen.blit(img, rect)
         spans = getattr(self.run.floor, "bridge", None)
         _pic = ((self.run.recipe.get("art") or {}).get("roofs") or {}).get("_picture")  # (a map drawn from its game's picture: its own top layer goes over you)
-        if spans and not self.run.deck and self.run.recipe.get("art") and not _pic:  # (passing under a log bridge: it goes over your head)
-            from src.dungeon import art as _art
-            for t in {self.run.player, self.anim_from if self.anim > 0 else self.run.player}:
-                if t in spans:
-                    _art.bridge(screen, at(*t), "|" if spans[t] == (0, 1) else ";")
+        if spans and self.run.recipe.get("art") and not (_pic and self._overheads()):  # (passing under a bridge: it goes over your head; a picture with its own top layer: that does)
+            from src.dungeon import art as _art   # (every tile you, your Pokemon and companions overlap: a wide bridge too)
+            _fr = self.anim_from if self.anim > 0 else self.run.player
+            _under = []
+            for _i, (_b, _img, _rect) in enumerate(_me_drawn):
+                _ft = _trail.get(_i + _mine)
+                if _ft is None:
+                    if _art.under_bridge(spans, _fr, self.run.player, self.run.deck):
+                        _under.append(_rect)
+                elif _art.under_bridge(spans, _ft[0], _ft[1], self.run.deck):
+                    _under.append(_rect)
+            _art.bridge_over(screen, spans, _under, (ox, oy), TILE, getattr(self, "_floor_surf", None))
         for img, (bx, by) in self._overheads():  # (what passes over your head: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
+        from src.dungeon import art as _art_o
+        _art_o.over_uncovered(screen, _movers_drawn + drawn, self._overheads(), (ox, oy))   # (a roof edge no longer hides the head of someone just south of it)
         if spans and self.run.deck and _pic:   # (up on a bridge of a map drawn from its game's picture (Route 120's): the
             _here = {self.run.player, self.anim_from if self.anim > 0 else self.run.player}   # bridge's top layer is under you)
             if _here & set(spans):

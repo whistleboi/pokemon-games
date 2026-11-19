@@ -87,6 +87,8 @@ _SWAPPED = False  # (a snow or marsh map is being drawn: its ground is not the s
 _SCALED = {}
 ROOM_KINDS = {}  # what each piece of furniture is (the map's roofs "_kinds" {"x,y": "crate" | "bed" | "table" | ...}): drawn as that, in its _things colour
 ROOM_THINGS = {}  # a room's furniture colours, tile by tile (the map's roofs "_things" {"x,y": colour}: its m tiles, coloured after the original)
+FURNITURE_STYLE = None  # whose furniture drawings this map uses: its roofs "_furniture" if it names one, else the region you're in (11-18)
+FURNITURE_OWN = {}  # {(region, kind): draw(surf, r, col, same)}: a region's own drawing of a kind, used over the shared one (furniture_drawing)
 BRIDGE_LOOKS = {None: ((168, 124, 140), (112, 78, 96), (204, 164, 176), (96, 64, 80)),
                 "wood": ((176, 124, 72), (124, 84, 50), (206, 160, 104), (112, 76, 46)),
                 "steel": ((150, 156, 168), (104, 110, 124), (196, 202, 212), (84, 90, 104)),
@@ -251,6 +253,8 @@ def surface(art, kinds, tile, roofs=None, theme=None):
     covered = {(o["r"][0] + a, o["r"][1] + b) for o in OBJECTS if "r" in o for a in range(o["r"][2]) for b in range(o["r"][3])}
     models = bool((roofs or {}).get("_models")) and bool(OBJECTS)  # (this map's buildings and furniture are the real game's own models: nothing of ours drawn for them)
     ROOM_KINDS = (roofs or {}).get("_kinds") or {}
+    global FURNITURE_STYLE
+    FURNITURE_STYLE = (roofs or {}).get("_furniture") or _region_now()
     global ROOM_GLASS, ROOM_RUG
     ROOM_GLASS = set((roofs or {}).get("_glass") or [])
     ROOM_RUG = (roofs or {}).get("_rug")
@@ -1062,6 +1066,26 @@ def fitting(surf, o, tile, ox=0, oy=0):
         pygame.draw.circle(surf, (200, 228, 255), (cx, cy - u), max(2, b // 5))
 
 
+def over_uncovered(screen, drawn, overs, origin):
+    """After the overhead layer: draw again everyone whose feet aren't under it (11-18). The layer goes over the whole
+    map, so a roof's bottom edge hid the head of someone standing just south of it (Orre's note, as RPG Maker draws it);
+    whoever stands under a roof, a bridge or the treetops (their feet covered) stays out of view, as before.
+    drawn: [(sort key, image, rect)] as blitted; overs: [(image, (x px, y px))] blitted at origin + (x, y)."""
+    if not overs:
+        return
+    ox, oy = origin
+    for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
+        fx, fy = rect.centerx, rect.bottom - 6   # (the feet)
+        hidden = False
+        for oimg, (bx, by) in overs:
+            x, y = fx - ox - bx, fy - oy - by
+            if 0 <= x < oimg.get_width() and 0 <= y < oimg.get_height() and oimg.get_at((x, y))[3] > 40:
+                hidden = True
+                break
+        if not hidden:
+            screen.blit(img, rect)
+
+
 def overhead(o, tile):
     """What passes over your head: (image, (x px, y px)). o: {"kind": "rail", "rect": [x, y, w, h]} in tiles; you walk
     underneath it (Goldenrod's Magnet Train line over the main road). The image takes in the shadow it casts below."""
@@ -1541,8 +1565,31 @@ def _object(surf, kind, foot, tile):
     surf.blit(pic, (foot.centerx - pic.get_width() // 2, foot.bottom - pic.get_height()))
 
 
+def _region_now():
+    """The region you're in (None headless or before a game): whose furniture drawings a map uses."""
+    try:
+        from src.ui import theme
+        return str(theme.GAME.story_manager.get_current_region()).upper()
+    except Exception:
+        return None
+
+
+def furniture_drawing(region, kind):
+    """Give one region its own drawing of a furniture kind (11-18: the kinds were shared, so a change for one region's
+    rooms showed in all). Use as a decorator: @furniture_drawing("ORRE", "bed") def _orre_bed(surf, r, col, same): ...
+    Every other region keeps the shared drawing in _furniture."""
+    def put(fn):
+        FURNITURE_OWN[(str(region).upper(), kind)] = fn
+        return fn
+    return put
+
+
 def _furniture(surf, r, kind, col, same):
-    """A piece of furniture on its tile, drawn as what it is in its own colour (same(dx, dy): the same kind stands on that side, so they join)."""
+    """A piece of furniture on its tile, drawn as what it is in its own colour (same(dx, dy): the same kind stands on that side, so they join).
+    A region's own drawing of the kind (furniture_drawing) comes first; this is the shared one."""
+    own = FURNITURE_OWN.get((FURNITURE_STYLE, kind))
+    if own is not None:
+        return own(surf, r, col, same)
     t = r.w
     dark, lite = tuple(v * 2 // 3 for v in col), tuple(min(255, v + 40) for v in col)
     deep = tuple(v // 2 for v in col)
@@ -2237,6 +2284,35 @@ def bridge(surf, r, c):
     else:
         pygame.draw.rect(surf, rail, (deck.x, r.y, 3, tile))
         pygame.draw.rect(surf, rail, (deck.right - 3, r.y, 3, tile))
+
+
+def under_bridge(spans, frm, to, deck):
+    """Is a figure stepping frm -> to (tiles) passing under a bridge? Only on a bridge tile; going across its line =
+    underneath, along it = on the deck; standing still, the level you're on (deck)."""
+    ft = to if to in spans else frm
+    if ft not in spans:
+        return False
+    d = (abs(to[0] - frm[0]), abs(to[1] - frm[1]))
+    return (d != spans[ft]) if d != (0, 0) else not deck
+
+
+def bridge_over(screen, spans, rects, origin, tile, base=None):
+    """Passing under a bridge (11-18): draw the bridge again over every bridge tile these figures overlap. Only the tile
+    at your feet was redrawn, so under a wide bridge (Sinnoh's Cycling Road) your head, in the tile above, and your
+    Pokemon behind you showed on top of the deck. rects: the figures' image rects; origin: the map's (x, y) on screen;
+    base: the map's own image, its tile copied back (a map drawn from its game's picture has the bridge in the picture)."""
+    ox, oy = origin
+    done = set()
+    for r in rects:
+        for ty in range((r.top - oy) // tile, (r.bottom - 1 - oy) // tile + 1):
+            for tx in range((r.left - ox) // tile, (r.right - 1 - ox) // tile + 1):
+                t = (tx, ty)
+                if t in spans and t not in done:
+                    done.add(t)
+                    if base is not None:
+                        screen.blit(base, (ox + tx * tile, oy + ty * tile), pygame.Rect(tx * tile, ty * tile, tile, tile))
+                    else:
+                        bridge(screen, pygame.Rect(ox + tx * tile, oy + ty * tile, tile, tile), "|" if spans[t] == (0, 1) else ";")
 
 
 def blocker(surf, r, look):
