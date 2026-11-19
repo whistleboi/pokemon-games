@@ -16,7 +16,8 @@ CHARGE = 100          # (steps on the maps before it works again: FireRed's)
 READY_CHANCE = 0.7    # (each beaten trainer in view, each use: FireRed's 70%, pokefirered vs_seeker.c)
 # Regions whose games' own rematch teams are in our data ("rematch" tiers; Johto: the phone's): there, only trainers
 # with them want a rematch, as in the games (FireRed shows an "X" for the rest). Elsewhere every route trainer does.
-TABLE_REGIONS = {"KANTO", "SEVII", "JOHTO", "HOENN"}   # (Hoenn: Emerald's table, 11-18)
+TABLE_REGIONS = {"KANTO", "SEVII", "JOHTO", "HOENN", "SINNOH"}   # (Hoenn: Emerald's table; Sinnoh: Platinum's; 11-18)
+CHANCE = {"SINNOH": 0.5}   # (Platinum's VS Seeker: 50% a trainer, pokeplatinum vs_seeker.c; elsewhere FireRed's 70%)
 SEE = 9               # (how far "in view" reaches, in tiles)
 GIFT_AT = {"KANTO": "VERMILLION_CITY", "SEVII": "VERMILLION_CITY", "SINNOH": "SINNOH_ROUTE_207",
            "ORANGE": "KINNOW_ISLAND"}   # (Orange 5.7: a trainer in Kinnow's Pokemon Center)
@@ -65,7 +66,7 @@ def use(state):
         spot = next((floor.spots.get(f"trainer:{n}") for n in (info.get("spot_name"), info.get("name")) if n and floor.spots.get(f"trainer:{n}")), None)
         if spot is None or tuple(spot) in taken or abs(spot[0] - px) + abs(spot[1] - py) > SEE:
             continue
-        if random.random() >= READY_CHANCE:
+        if random.random() >= CHANCE.get(str(story.area_region(area)).upper(), READY_CHANCE):
             continue
         _ready(story).setdefault(area, {})[str(idx)] = story._today()
         facing = (0, 1) if spot[1] < py else (0, -1) if spot[1] > py else ((1, 0) if spot[0] < px else (-1, 0))
@@ -160,9 +161,20 @@ def stage_for(story, area, index, info):
     if nxt is None:   # (every stage beaten: the last one again)
         return max((j for j, t in enumerate(tiers) if t), default=-1)
     gate = tiers[nxt].get("unlock")
-    if gate and not story.story_flags.get(gate):
+    if gate and not _unlocked(story, gate):
         return max((j for j in range(nxt) if tiers[j]), default=-1)
     return nxt
+
+
+def _unlocked(story, gate):
+    """A stage's story point reached: a flag, "badge:NAME", or a list of them (any one: Platinum's level 2 opens with
+    Fantina's badge or on reaching Celestic Town)."""
+    for g in (gate if isinstance(gate, list) else [gate]):
+        if str(g).startswith("badge:") and story.has_badge(g[6:]):
+            return True
+        if not str(g).startswith("badge:") and story.story_flags.get(g):
+            return True
+    return False
 
 
 def _route_trainer(story, info):

@@ -1,6 +1,7 @@
 """The games' own rematch teams (11-18, Jordan: "add rematches for all regions", following the games; kanto_handoff/VS_SEEKER.md).
 
-    python dev/builders/build_rematches.py frlg|em <rematches.json> [--write]
+    python dev/builders/build_rematches.py frlg|em|plat <rematches.json> [--write]
+plat: Platinum's table (kanto_handoff/sinnoh_map_tools/plat_rematch.py); "unlock" may list several (any one opens it).
 em: Emerald's gRematchTable (hoenn_rom_tools/em_rematch.py): Hoenn's trainers; no story point holds a stage back, and
 rematches start at 5 badges ("needs": {"badges": 5}), as Emerald's Match Call.
 
@@ -16,13 +17,18 @@ import os
 import re
 import sys
 
-FILES = {"frlg": ["pokemon_area_data.json", "sevii_area_data.json"], "em": ["hoenn_area_data.json", "hoenn_oras.json"]}
+FILES = {"frlg": ["pokemon_area_data.json", "sevii_area_data.json"], "em": ["hoenn_area_data.json", "hoenn_oras.json"],
+         "plat": ["sinnoh_area_data.json"]}
 GATES = {"frlg": [None, None, "visited_CELADON_CITY", "visited_FUCHSIA_CITY", "beat_champion", "sevii_warehouse_cleared"],
-         "em": [None] * 6}   # (Emerald: no story point holds a stage back; rematches start at 5 badges: "needs")
-SOURCE = {"frlg": "FireRed", "em": "Emerald"}
+         "em": [None] * 6,   # (Emerald: no story point holds a stage back; rematches start at 5 badges: "needs")
+         # (Platinum, Jordan's milestones 11-18: 2 Fantina beaten or Celestic reached, 3 Giratina, 4 Hall of Fame, 5 Heatran)
+         "plat": [None, None, ["badge:RELIC", "visited_CELESTIC_TOWN"], "TURNBACK_CAVE_boss_defeated", "beat_sinnoh_champion",
+                  "STARK_MOUNTAIN_boss_defeated"]}
+SOURCE = {"frlg": "FireRed", "em": "Emerald", "plat": "Platinum"}
 NEEDS = {"em": {"badges": 5}}   # (Emerald's Match Call: rematches only once you have 5 badges)
-TOP = {"pokemon_area_data.json": 151, "sevii_area_data.json": 251, "hoenn_area_data.json": 386, "hoenn_oras.json": 386}
-BY_NAME = {"em"}   # (Hoenn's trainers are ORAS's (hoenn_oras.json "add_trainers"), their classes renamed: matched by name)
+TOP = {"pokemon_area_data.json": 151, "sevii_area_data.json": 251, "hoenn_area_data.json": 386, "hoenn_oras.json": 386,
+       "sinnoh_area_data.json": 493}
+BY_NAME = {"em", "plat"}   # (Hoenn's trainers are ORAS's (hoenn_oras.json "add_trainers"), their classes renamed: matched by name)
 CLASS_ALIAS = {"POKMANIAC": "POKEMANIAC", "POKEMANIAC": "POKEMANIAC", "BREEDER": "POKEMONBREEDER", "RANGER": "POKEMONRANGER",
                "GAMER": "GAMBLER"}
 
@@ -34,6 +40,9 @@ def norm_class(c):
 
 def main(kind, rows_path, write):
     rows = json.load(open(rows_path, encoding="utf-8"))["entries"]
+    if kind == "plat":   # (sinnoh_map_tools/plat_rematch.py: {"class", "name", "base", "slots"}: into the rows' own shape)
+        rows = [{"slots": [[0, e["class"] or "", e["name"], e["base"] or []]] + [None if x is None else [0, e["class"], e["name"], x]
+                                                                                 for x in e["slots"]]} for e in rows]
     moves = {re.sub(r"[^A-Z]", "", k): k for k in json.load(open(os.path.join("assets", "moves.json"), encoding="utf-8"))}
     gates = GATES[kind]
     ours = {}
@@ -87,7 +96,7 @@ def main(kind, rows_path, write):
             if gates[s]:
                 tier["unlock"] = gates[s]
             tiers.append(tier)
-        if not any(tiers):
+        if not any(tiers) and kind != "plat":   # (Platinum's "no unique rematches": its first team again, still a rematch)
             continue
         rem = {"source": SOURCE.get(kind, kind), "tiers": tiers}
         if NEEDS.get(kind):

@@ -142,4 +142,36 @@ vs_seeker.won(story, _ea, _ei, _r1["_vs_stage"])
 vs_seeker._ready(story).setdefault(_ea, {})[str(_ei)] = story._today()
 _r2 = vs_seeker.rematch(g, _ea, _ei, dict(_et))
 check(_r2["levels"] == _t[1]["levels"], f"won: the next stage at once, nothing holds it back ({_r2['levels']})")
+print("6) Sinnoh: Platinum's rematch levels, unlocked at its milestones (Jordan: Fantina or Celestic, Giratina, Hall of Fame, Heatran)")
+story.enter_region("SINNOH")
+_sp = g.loader.area_data["STORY_PROGRESSION"]
+_ta, _ti, _tt = next((a_, i_, t_) for a_, a in _sp.items() if isinstance(a, dict) for i_, t_ in enumerate(a.get("trainer_pool") or [])
+                     if isinstance(t_, dict) and t_.get("name") == "Youngster Tristan")
+check((_tt.get("rematch") or {}).get("source") == "Platinum", f"Youngster Tristan carries Platinum's levels ({[None if x is None else x['levels'] for x in _tt['rematch']['tiers']]})")
+check(vs_seeker.CHANCE.get("SINNOH") == 0.5, "Platinum's 50% chance a trainer wants a rematch")
+for k in ("visited_CELESTIC_TOWN", "TURNBACK_CAVE_boss_defeated", "beat_sinnoh_champion", "STARK_MOUNTAIN_boss_defeated"):
+    story.story_flags.pop(k, None)
+story.badges["SINNOH"] = []
+story.story_flags.get("vs_stage", {}).pop(f"{_ta}|{_ti}", None)
+
+
+def _tri():
+    vs_seeker._ready(story).setdefault(_ta, {})[str(_ti)] = story._today()
+    return vs_seeker.rematch(g, _ta, _ti, dict(_tt))
+
+
+_r = _tri()
+check(_r["team"] == [397] and _r["levels"] == [24], f"level 1: Staravia Lv 24 ({_r['team']}, {_r['levels']})")
+vs_seeker.won(story, _ta, _ti, _r["_vs_stage"])
+check(_tri()["levels"] == [24], "level 2 waits: Fantina not beaten, Celestic not reached")
+story.story_flags["visited_CELESTIC_TOWN"] = True
+_r = _tri()
+check(_r["team"] == [398] and _r["levels"] == [35], f"Celestic Town reached: level 2, Staraptor Lv 35 ({_r['levels']})")
+vs_seeker.won(story, _ta, _ti, _r["_vs_stage"])
+check(_tri()["levels"] == [35], "level 3 waits for Giratina")
+story.story_flags["TURNBACK_CAVE_boss_defeated"] = True
+check(_tri()["levels"] == [45], "Giratina caught or beaten: level 3, Staraptor Lv 45")
+story.story_flags.pop("visited_CELESTIC_TOWN", None)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
+check(vs_seeker._unlocked(story, ["badge:RELIC", "visited_CELESTIC_TOWN"]), "...level 2 also opens with Fantina's Relic Badge")
 print("FAILURES:", fails)

@@ -1260,7 +1260,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_224_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Ruben",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -1272,7 +1272,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [200, 94], "levels": [58, 62], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Psychic Maxwell",
           "class": "PSYCHIC",
           "sprite": "psychic.png",
@@ -1284,7 +1284,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Black Belt Carl",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
@@ -1296,7 +1296,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [291, 359, 289], "levels": [59, 59, 62], "team_moves": [["BATON-PASS", "SWORDS-DANCE", "SILVER-WIND"], ["TAUNT", "QUICK-ATTACK"], ["COUNTER", "AERIAL-ACE"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Veteran Armando",
           "class": "VETERAN",
           "sprite": "veteran.png",
@@ -1309,7 +1309,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [97, 65], "levels": [59, 61], "team_moves": [["HYPNOSIS", "PSYCHIC", "SHADOW-BALL", "DREAM-EATER"], ["RECOVER", "PSYCHIC", "CALM-MIND", "SHADOW-BALL"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Psychic Brittney",
           "class": "PSYCHIC",
           "sprite": "psychic_m.png",
@@ -1321,7 +1321,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Jamie",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -1332,7 +1332,7 @@
             "balls": 3
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ruin Maniac Larry",
           "class": "RUIN_MANIAC",
           "sprite": "larry.png",
@@ -1343,7 +1343,7 @@
             "balls": 3
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [334, 230], "levels": [60, 60], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Dragon Tamer Hayden",
           "class": "DRAGON_TAMER",
           "sprite": "dragon_tamer.png",
@@ -1401,7 +1401,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_230_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [224, 186], "levels": [58, 60], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Swimmer Glenn",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -1413,7 +1413,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [370, 222, 131], "levels": [57, 58, 59], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Swimmer Joanna",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -1425,7 +1425,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Kurt",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -1438,7 +1438,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Sophia",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -1450,7 +1450,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Sam",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -1462,7 +1462,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Mallory",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -1546,7 +1546,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_229_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Pkmn Ranger Deshawn",
           "class": "POKEMON_RANGER",
           "sprite": "ranger_m.png",
@@ -1559,7 +1559,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Felix",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -1571,7 +1571,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Dana",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -1583,7 +1583,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Sandra",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -1658,7 +1658,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_228_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Jose",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -1671,7 +1671,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [28, 423, 344], "levels": [59, 59, 60], "team_moves": [["SLASH", "DIG"], ["MUDDY-WATER", "RECOVER", "BODY-SLAM", "PROTECT"], ["EARTHQUAKE", "PSYCHIC", "ANCIENT-POWER", "COSMIC-POWER"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Ace Trainer Moira",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -1684,7 +1684,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [335, 103, 62], "levels": [58, 60, 62], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Pkmn Ranger Kyler",
           "class": "POKEMON_RANGER",
           "sprite": "ranger_m.png",
@@ -1697,7 +1697,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Pkmn Ranger Krista",
           "class": "POKEMON_RANGER",
           "sprite": "ranger_m.png",
@@ -1709,7 +1709,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Dragon Tamer Keegan",
           "class": "DRAGON_TAMER",
           "sprite": "dragon_tamer.png",
@@ -1721,7 +1721,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [178, 475], "levels": [60, 60], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Psychic Corbin",
           "class": "PSYCHIC",
           "sprite": "psychic.png",
@@ -1733,7 +1733,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Meagan",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -1745,7 +1745,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [237, 297, 68], "levels": [59, 59, 59], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Black Belt Davon",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
@@ -1812,7 +1812,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_227_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [128], "levels": [63], "team_moves": [["EARTHQUAKE"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Ace Trainer Saul",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -1823,7 +1823,7 @@
             "balls": 3
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Pkmn Ranger Felicia",
           "class": "POKEMON_RANGER",
           "sprite": "ranger_m.png",
@@ -1835,7 +1835,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Black Belt Griffin",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
@@ -1847,7 +1847,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Mikayla",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -1906,7 +1906,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_226_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Lydia",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -1919,7 +1919,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Graham",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -1931,7 +1931,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Bird Keeper Geneva",
           "class": "BIRD_KEEPER",
           "sprite": "bird_keeper.png",
@@ -1943,7 +1943,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Dragon Tamer Stanley",
           "class": "DRAGON_TAMER",
           "sprite": "dragon_tamer.png",
@@ -1955,7 +1955,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Wade",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2057,7 +2057,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_225_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [121, 330], "levels": [61, 62], "team_moves": [["WATER-PULSE", "RECOVER", "PSYCHIC", "SWIFT"], ["DRAGON-CLAW", "EARTHQUAKE", "SCREECH"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Ace Trainer Rodolfo",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -2069,7 +2069,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [264, 12, 24], "levels": [60, 60, 60], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Pkmn Ranger Ashlee",
           "class": "POKEMON_RANGER",
           "sprite": "ranger_m.png",
@@ -2081,7 +2081,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [83, 277, 18], "levels": [57, 59, 61], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Bird Keeper Audrey",
           "class": "BIRD_KEEPER",
           "sprite": "bird_keeper.png",
@@ -2094,7 +2094,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [80, 199], "levels": [58, 62], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Psychic Daisy",
           "class": "PSYCHIC",
           "sprite": "psychic.png",
@@ -2106,7 +2106,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [334, 445], "levels": [59, 61], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Dragon Tamer Geoffrey",
           "class": "DRAGON_TAMER",
           "sprite": "dragon_tamer.png",
@@ -2118,7 +2118,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, {"team": [181, 357], "levels": [61, 62], "team_moves": [["SIGNAL-BEAM", "FIRE-PUNCH"], ["EARTHQUAKE", "SILVER-WIND"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Ace Trainer Deanna",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -2130,7 +2130,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Pkmn Ranger Dwayne",
           "class": "POKEMON_RANGER",
           "sprite": "ranger_m.png",
@@ -2143,7 +2143,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Ace Trainer Quinn",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -2241,7 +2241,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_221_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Dillon",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2253,7 +2253,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Vanessa",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -2264,7 +2264,7 @@
             "balls": 3
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Fisherman Cory",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
@@ -2277,7 +2277,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, {"team": [468], "levels": [54], "unlock": "beat_sinnoh_champion"}, null]},
           "name": "Collector Ivan",
           "class": "POKEMANIAC",
           "sprite": "pokemaniac.png",
@@ -2288,7 +2288,7 @@
             "balls": 3
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, {"team": [398, 203], "levels": [54, 55], "team_moves": [["TAKE-DOWN", "ENDEAVOR", "QUICK-ATTACK"], ["PSYCHIC", "CRUNCH", "THUNDER-WAVE"]], "unlock": "beat_sinnoh_champion"}, null]},
           "name": "Ace Trainer Jake",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -2300,7 +2300,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, {"team": [421, 184, 428], "levels": [52, 52, 56], "team_moves": [["SOLAR-BEAM", "MAGICAL-LEAF", "PETAL-DANCE", "SUNNY-DAY"], ["ICE-BEAM", "DOUBLE-EDGE"], ["DIZZY-PUNCH", "JUMP-KICK", "QUICK-ATTACK", "BOUNCE"]], "unlock": "beat_sinnoh_champion"}, null]},
           "name": "Ace Trainer Shannon",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -2355,7 +2355,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_220_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Erik",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2366,7 +2366,7 @@
             "balls": 3
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Vincent",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -2378,7 +2378,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Jessica",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2392,7 +2392,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Erica",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -2403,7 +2403,7 @@
             "balls": 3
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Adrian",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2416,7 +2416,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Katelyn",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -2429,7 +2429,7 @@
             "balls": 5
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Claire",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2492,7 +2492,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_219_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Tuber Trenton",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
@@ -2504,7 +2504,7 @@
             "balls": 4
           }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Tuber Mariel",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
@@ -3279,7 +3279,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_201_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [{"team": [404, 400], "levels": [22, 22]}, {"team": [404, 400, 75], "levels": [32, 32, 32], "unlock": ["badge:RELIC", "visited_CELESTIC_TOWN"]}, null, {"team": [405, 400, 76, 398], "levels": [50, 50, 50, 50], "unlock": "beat_sinnoh_champion"}, null]},
           "name": "Youngster Dallas",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
@@ -3316,21 +3316,21 @@
       "wild_pool_percentages": "SINNOH_ROUTE_202_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Youngster Tyler",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
           "team": [396, 399],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Lass Natalie",
           "class": "LASS",
           "sprite": "lass.png",
           "team": [403],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [{"team": [269, 402], "levels": [21, 23]}, {"team": [269, 402, 123], "levels": [30, 32, 34], "unlock": ["badge:RELIC", "visited_CELESTIC_TOWN"]}, null, {"team": [269, 402, 212], "levels": [49, 51, 53], "unlock": "beat_sinnoh_champion"}, null]},
           "name": "Bug Catcher Brandon",
           "class": "BUG_CATCHER",
           "sprite": "bug_catcher.png",
@@ -3359,14 +3359,14 @@
       "wild_pool_percentages": "SINNOH_ROUTE_203_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [{"team": [397], "levels": [24]}, {"team": [398], "levels": [35], "unlock": ["badge:RELIC", "visited_CELESTIC_TOWN"]}, {"team": [398], "levels": [45], "unlock": "TURNBACK_CAVE_boss_defeated"}, null, null]},
           "name": "Youngster Tristan",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
           "team": [396, 403],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Lass Kaitlin",
           "class": "LASS",
           "sprite": "lass.png",
@@ -3403,7 +3403,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_204_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Bug Catcher Garrett",
           "class": "BUG_CATCHER",
           "sprite": "bug_catcher.png",
@@ -3448,21 +3448,21 @@
       "wild_pool_percentages": "SINNOH_ROUTE_205_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Fisherman Andrew",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
           "team": [129, 418],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Hiker Daniel",
           "class": "HIKER",
           "sprite": "hiker.png",
           "team": [74, 95],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Lass Holly",
           "class": "LASS",
           "sprite": "lass.png",
@@ -3501,7 +3501,7 @@
           "team": [402, 434],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Cyclist Rachel",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -3531,7 +3531,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_207_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, {"team": [95, 208], "levels": [32, 34], "unlock": ["badge:RELIC", "visited_CELESTIC_TOWN"]}, {"team": [208, 208], "levels": [42, 44], "unlock": "TURNBACK_CAVE_boss_defeated"}, null, {"team": [323, 208, 232], "levels": [56, 59, 59], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Hiker Theodore",
           "class": "HIKER",
           "sprite": "hiker.png",
@@ -3566,14 +3566,14 @@
       "wild_pool_percentages": "SINNOH_ROUTE_208_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Hiker Justin",
           "class": "HIKER",
           "sprite": "hiker.png",
           "team": [95, 74],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, {"team": [421], "levels": [35], "unlock": ["badge:RELIC", "visited_CELESTIC_TOWN"]}, {"team": [421], "levels": [45], "team_moves": [["SOLAR-BEAM", "SUNNY-DAY", "LEECH-SEED", "MAGICAL-LEAF"]], "unlock": "TURNBACK_CAVE_boss_defeated"}, null, {"team": [187, 421, 182], "levels": [58, 58, 58], "team_moves": [["STUN-SPORE", "SUNNY-DAY", "GIGA-DRAIN", "AERIAL-ACE"], ["SOLAR-BEAM", "SUNNY-DAY", "LEECH-SEED", "MAGICAL-LEAF"], ["PETAL-DANCE", "ATTRACT", "STUN-SPORE", "MAGICAL-LEAF"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Beauty Melissa",
           "class": "BEAUTY",
           "sprite": "beauty.png",
@@ -3637,7 +3637,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_210_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, {"team": [119], "levels": [48], "team_moves": [["HORN-DRILL", "FLAIL"]], "unlock": "TURNBACK_CAVE_boss_defeated"}, null, {"team": [119], "levels": [64], "team_moves": [["HORN-DRILL", "FLAIL"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Ace Trainer Carlos",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
@@ -3651,7 +3651,7 @@
           "team": [64, 64],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Bird Keeper Sebastian",
           "class": "BIRD_KEEPER",
           "sprite": "bird_keeper.png",
@@ -3741,7 +3741,7 @@
           "team": [453, 422],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, {"team": [215], "levels": [45], "unlock": "TURNBACK_CAVE_boss_defeated"}, {"team": [215], "levels": [54], "unlock": "beat_sinnoh_champion"}, null]},
           "name": "Gentleman Edward",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
@@ -3772,14 +3772,14 @@
       "wild_pool_percentages": "SINNOH_ROUTE_213_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Swimmer Evan",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
           "team": [278, 278],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Sailor Raul",
           "class": "SAILOR",
           "sprite": "sailor.png",
@@ -3807,7 +3807,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_214_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, {"team": [315, 281, 108], "levels": [44, 44, 45], "team_moves": [["GIGA-DRAIN", "LEECH-SEED", "TOXIC"], ["PSYCHIC", "MAGICAL-LEAF", "CALM-MIND", "DOUBLE-TEAM"], ["SUPERSONIC", "STOMP", "ROLLOUT", "DEFENSE-CURL"]], "unlock": "TURNBACK_CAVE_boss_defeated"}, null, {"team": [407, 282, 463], "levels": [59, 61, 61], "team_moves": [["GIGA-DRAIN", "LEECH-SEED", "TOXIC"], ["PSYCHIC", "MAGICAL-LEAF", "CALM-MIND", "DOUBLE-TEAM"], ["SUPERSONIC", "STOMP", "SCREECH"]], "unlock": "STARK_MOUNTAIN_boss_defeated"}]},
           "name": "Ace Trainer Maya",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
@@ -3880,7 +3880,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_216_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Skier Lexie",
           "class": "LASS",
           "sprite": "lass.png",
@@ -3948,7 +3948,7 @@
       "wild_pool_percentages": "SINNOH_ROUTE_218_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, null, null]},
           "name": "Fisherman Zachary",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
@@ -3998,7 +3998,7 @@
           "team": [457, 419],
           "rewards": { "balls": 2 }
         },
-        {
+        { "rematch": {"source": "Platinum", "tiers": [null, null, null, {"team": [130, 130, 224], "levels": [51, 51, 51], "unlock": "beat_sinnoh_champion"}, null]},
           "name": "Fisherman Miguel",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
