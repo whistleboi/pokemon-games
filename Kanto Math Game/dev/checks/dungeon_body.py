@@ -505,7 +505,8 @@ check(_me.run.n_floors == 13, "Mt. Ember: FireRed's 13 floors: the mountain, the
 
 # every region (Jordan, 11-05: each region's maps checked against its games)
 _want = {"HAINA_DESERT": "desert", "DESERT_RESORT": "desert", "ASADO_DESERT": "desert", "GLASEADO_MOUNTAIN": "snow",
-         "HOENN_TRACKLESS_FOREST": "forest", "PLEDGE_GROVE": "forest", "SPROUT_TOWER": "field", "MOUNT_LANAKILA": "snow"}  # (Sprout Tower: our own exact floors now)
+         "HOENN_TRACKLESS_FOREST": "forest", "SPROUT_TOWER": "field", "MOUNT_LANAKILA": "snow"}  # (Sprout Tower: our own exact floors now;
+# Pledge Grove: Black 2's own map and picture since 11-20, unova suites)
 _got = {k: _dg.recipe_for(g, k).get("style") for k in _want}
 check(_got == _want, f"each region's places look like its game's {[(k, v) for k, v in _got.items() if _want[k] != v]}")
 _fl = {k: _dg.recipe_for(g, k).get("floors") for k in ("UNION_CAVE", "BELL_TOWER", "MT_CORONET_BASE", "CHARGESTONE_CAVE", "REFLECTION_CAVE")}

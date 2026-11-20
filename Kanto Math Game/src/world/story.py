@@ -342,6 +342,16 @@ class StoryManager:
             return str(getattr(self, "starting_region", "")).upper() == want or bool(self.story_flags.get(f"moved_to_{want.lower()}"))
         if condition.startswith("playing_region:"):  # (the region of this playthrough here - at the League Reception Gate, the one you came from: its guard checks Johto's Badges on a Johto run)
             return self.get_current_region() == condition.split(":", 1)[1].upper()
+        if condition.startswith("friend:"):   # (the second rival you picked: "friend:cheren" - Unova's BW rival, 11-20)
+            want = condition.split(":", 1)[1].lower()
+            reg = self.region_rivals.get(self.get_current_region(), {}) or {}
+            return str(reg.get("friend_character") or getattr(self.game, "friend_character", "") or "").lower() == want
+        if condition.startswith("season:"):   # (the season, Unova's month-by-month calendar: src/world/seasons.py; Route 20's
+            from src.world import seasons as _seasons   #  autumn leaves, its autumn-only Rangers and items, 11-20)
+            return _seasons.current_season() in [x.strip().upper() for x in condition.split(":", 1)[1].split(",")]
+        if condition.startswith("habitat:"):   # (B2W2's Habitat List: every species of that place's wild tables seen or caught -
+            area = condition.split(":", 1)[1]   #  the Virbank Complex girl's Great Balls, 11-20)
+            return self.habitat_done(area)
         if condition.startswith("weekday:"):  # (the real clock's day: "weekday:tue", "weekday:fri" - HGSS's Week Siblings, Friday's Lapras; Jordan 11-15)
             import datetime
             days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
@@ -397,6 +407,8 @@ class StoryManager:
             return self.sinjoh_dragons_received() < self.sinjoh_dragons_allowed()
         if condition.startswith("visited_region:"):  # (Silph Co.'s employee, once you've been to Johto)
             return condition.split(":", 1)[1].upper() in self.visited_regions()
+        if condition.startswith("unova_version:"):  # Black 2 / White 2 only (src/world/unova_version.py)
+            return self.story_flags.get("unova_version") == condition.split(":", 1)[1]
         if condition.startswith("hoenn_version:"):  # Omega Ruby / Alpha Sapphire only (Marine / Terra Cave)
             return self.story_flags.get("hoenn_version") == condition.split(":", 1)[1]
         return None
@@ -579,6 +591,23 @@ class StoryManager:
         return self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(
             self.current_area_key, {}
         )
+
+    def habitat_done(self, area_key):
+        """B2W2's Habitat List filled in for a place: every species in its wild tables (any season, any kind) seen or caught."""
+        if not getattr(self, "game", None):
+            return False
+        area = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+        want = set()
+        from src.world import wild_tables as _wt
+        for season in _wt.tables(area).values():
+            for kind in season.values():
+                want.update(int(s[0]) for s in kind)
+        if not want:
+            return False
+        data = self.game.data.data
+        have = {int(x) for x in data.get("seen_pokemon", [])}
+        have |= {int(v.get("id", k)) for k, v in (data.get("pokedex") or {}).items() if isinstance(v, dict)}
+        return want <= have
 
     def get_active_missions(self):
         """Returns a list of missions whose conditions are currently met."""
@@ -769,7 +798,8 @@ class StoryManager:
         "JOHTO": {"options": [("SILVER", "silver")]},
         "HOENN": {"options": [("MAY", "may"), ("BRENDAN", "brendan")]},
         "SINNOH": {"options": [("BARRY", "barry")]},
-        "UNOVA": {"options": [("CHEREN", "cheren"), ("BIANCA", "bianca")], "friend": "other"},
+        "UNOVA": {"options": [("HUGH", "hugh")],   # (B2W2's rival, Jordan 11-19; 11-20: BW's rival a second pick, Cheren or Bianca,
+                  "friend_options": [("CHEREN", "cheren"), ("BIANCA", "bianca")]},   #  battling you where BW has their battles)
         "KALOS": {"options": [("SERENA", "serena"), ("CALEM", "calem")], "friend": ("SHAUNA", "shauna")},
         "ALOLA": {"options": [("HAU", "hau")], "friend": ("GLADION", "gladion")},
         "GALAR": {"options": [("HOP", "hop")]},
@@ -789,17 +819,21 @@ class StoryManager:
 
     def default_friend(self, region, character):
         """(name, sprite key) of a region's second friend, given the rival's sprite key."""
+        picks = self.RIVAL_CHOICES.get(region.upper(), {}).get("friend_options")
+        if picks:   # (picked on the rival screen: Unova's BW rival; the first until then)
+            return picks[0]
         friend = self.RIVAL_CHOICES.get(region.upper(), {}).get("friend")
         if friend == "other":
             return next(((n, c) for n, c in self.RIVAL_CHOICES[region.upper()]["options"] if c != character),
                         (None, None))
         return friend or (None, None)
 
-    def record_region_rival(self, region, name, character, friend_name=None, chosen=True):
+    def record_region_rival(self, region, name, character, friend_name=None, chosen=True, friend_character=None):
         """The rival (and second friend) for a region. chosen: the player picked them on the
         rival screen (otherwise the region asks when the player arrives)."""
         region = region.upper()
         fname, fchar = self.default_friend(region, character)
+        fchar = friend_character or fchar
         self.region_rivals[region] = {"name": name, "character": character,
                                       "friend_name": friend_name or fname, "friend_character": fchar,
                                       "chosen": chosen,

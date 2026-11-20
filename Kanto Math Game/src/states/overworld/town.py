@@ -355,6 +355,11 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
             from src.states.hoenn import HoennVersionState
             self.game.change_state(HoennVersionState(self.game, lambda: CityState(self.game)))
             return
+        from src.world import unova_version as _uv
+        if _uv.needs_choice(self.game.story_manager):   # (Black 2 or White 2, the first time you're in Unova: Jordan 11-20)
+            from src.states.unova import UnovaVersionState
+            self.game.change_state(UnovaVersionState(self.game, lambda: CityState(self.game)))
+            return
         if self.game.story_manager.needs_rival_choice():  # this region's rival, picked and named
             from src.states.menus import RivalSelectionState
             self.game.change_state(RivalSelectionState(

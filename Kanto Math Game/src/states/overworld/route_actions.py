@@ -414,6 +414,15 @@ class RouteActions:
     def _fish_bite(self):
         """What bites here on your best rod: a wild Pokemon at its level, or None (nothing lives in this water).
         Shared by the routes and the walked towns (fishing from a town's shore, 11-17)."""
+        from src.world import wild_tables as _wt   # (the place's own game's fishing slots: B2W2 has one rod, the Super Rod;
+        _area = (self.game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(self.game.story_manager.current_area_key) or {}
+        _kind = "fish_ripple" if getattr(self, "_fish_ripple", False) and _wt.has(_area, "fish_ripple") else "fish"   # (rippling water)
+        if _wt.has(_area, _kind):   #  its own levels, whatever rod you hold; 11-20)
+            pid, lv = _wt.pick(_area, _kind)
+            pokemon = Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=3.125)
+            pokemon.level = lv
+            pokemon.current_hp = pokemon.get_max_hp()
+            return pokemon
         inv = self.game.story_manager.inventory
         rod = next((r for r in ("SUPER_ROD", "GOOD_ROD") if inv.get(r, 0) > 0), "OLD_ROD")
         fishing_pool_pct = self._fishing_pool(rod)

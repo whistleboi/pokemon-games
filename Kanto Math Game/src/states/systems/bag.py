@@ -896,6 +896,10 @@ class BagState(GameState):
             self.game.change_state(walk)
             walk.use_radar()
             return
+        if "medals" in data:  # the Medal Box (B2W2's Medal Rally): the Medals you have
+            from src.world import medals
+            self._back_to_bag(medals.summary(story))
+            return
         if "seeker" in data:  # the VS Seeker: on a route's map, back to it; beaten trainers nearby may want a rematch
             town = self.previous_state
             if hasattr(town, "_people") and hasattr(town, "player") and not hasattr(town, "run"):   # (in a walked town: Dario, Rodette)

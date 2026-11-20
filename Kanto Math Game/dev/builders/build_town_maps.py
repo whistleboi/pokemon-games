@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # (the game folder: src.dungeon.art, for whose door is whose)
 
 # One file a region (dev/builders/town_maps/<region>.py), in story order.
-REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii", "orre", "orange", "made"]   # (made: the map maker's, from its Export; orange: 5.7, 11-17)
+REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii", "orre", "orange", "unova", "made"]   # (unova: B2W2 via RMXP, 11-19; made: the map maker's, from its Export; orange: 5.7, 11-17)
 
 
 ONLY = next((a.split("=", 1)[1].split(",") for a in sys.argv[1:] if a.startswith("--only=")), None)
@@ -87,6 +87,9 @@ def reachable(key, m):
     if not exits:  # (the only way out a parked motorbike, kind "cycle": Orre's towns, left by riding)
         bikes = {k for k, v in m.get("buildings", {}).items() if v == "cycle"}
         exits = [(x, y) for x, y in cells("D") if any(art[y + b][x + a] in bikes for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= y + b < h and 0 <= x + a < w)]
+    if not exits:  # (the only way out a gatehouse room's far door: Aspertia's gate to Route 19, B2W2 11-19)
+        _gate = {r for r, room in (m.get("rooms") or {}).items() if any(not str(v).startswith(("OUT:", "ROOM:")) for v in (room.get("exits") or {}).values())}
+        exits = [tuple(int(v) for v in d.split(",")) for d, r in (m.get("inside") or {}).items() if r in _gate]
     if not exits and m.get("landings"):  # (an island you're flown to and from: Soaring's Mirage spots, from the spot you land on)
         exits = [tuple(t) for t in m["landings"]]
     assert exits, f"{key}: no way out"
@@ -123,7 +126,18 @@ def reachable(key, m):
     at = lambda x, y: art[y][x] if 0 <= y < h and 0 <= x < w else "c"
     over2 = lambda t: m.get("theme") == "room" and any(at(t[0] + dx, t[1] + dy) == "m" and at(t[0] + 2 * dx, t[1] + 2 * dy) == "m" and (t[0] + 3 * dx, t[1] + 3 * dy) in seen
                                                        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))  # (a counter two tiles deep)
-    cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch) if not near(t) and not (ch == "N" and (over(t) or over2(t)))]
+    # (someone or an item on a shore you surf to: the Resort Area's Nugget, 11-20. Reached over the water, "~")
+    wet, todo = set(seen), list(seen)
+    while todo:
+        x, y = todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (x + dx, y + dy)
+            if 0 <= n[0] < w and 0 <= n[1] < h and n not in wet and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] == "~"):
+                wet.add(n)
+                todo.append(n)
+    by_surf = lambda t: any((t[0] + dx, t[1] + dy) in wet for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+    cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch)
+            if not near(t) and not (ch == "N" and (over(t) or over2(t) or by_surf(t)))]
     assert not cut, f"{key}: out of reach {cut[:6]}"
 
 

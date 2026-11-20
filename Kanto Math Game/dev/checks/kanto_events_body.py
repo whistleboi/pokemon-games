@@ -389,7 +389,7 @@ print("13) A new game's opening talk: the professor knows your name and your riv
 from src.states.intro_speech import IntroSpeechState, INTROS
 g.player_name, g.rival_name = "ASH", "GARY"
 _ok = []
-for _reg in ("KANTO", "JOHTO", "HOENN", "SINNOH", "ORANGE", "ORRE"):
+for _reg in ("KANTO", "JOHTO", "HOENN", "SINNOH", "ORANGE", "ORRE", "UNOVA"):
     _d = []
     _is = IntroSpeechState(g, _reg, lambda: _d.append(1))
     _lines = []

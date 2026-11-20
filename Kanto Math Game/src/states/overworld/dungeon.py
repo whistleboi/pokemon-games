@@ -73,6 +73,14 @@ FRAME_BLACK = (0, 0, 0)
 SIDE_W = 140  # (the right band's buttons)
 
 
+def _flat_people(people):
+    """A map's people, a spot's list of several (one at a time, by their conditions) laid out one by one."""
+    out = []
+    for p in people or []:
+        out.extend(p if isinstance(p, list) else [p])
+    return out
+
+
 def map_view(game):
     """The part of the screen the walked map is drawn in."""
     W, H = game.width, game.height
@@ -520,7 +528,10 @@ def art_recipe(m):
             elif c == "N" and people:  # someone standing: a route option's figure, by its text (or a passer-by of the map's own: {"text", "action": "EVENT", ...})
                 ch = chr(0x2500 + len(people))
                 who = people.pop(0)
-                legend[ch] = {"figure": who.get("text") if isinstance(who, dict) else who}
+                if isinstance(who, list):   # (one spot, several people in turn, by their conditions: Route 20's Hiker Jerome, 11-20)
+                    legend[ch] = {"figure": [w.get("text") if isinstance(w, dict) else w for w in who]}
+                else:
+                    legend[ch] = {"figure": who.get("text") if isinstance(who, dict) else who}
                 out.append(ch)
             elif c == "D":  # a door: a way out (the building's own, or a gatehouse's), else walked into
                 letter = doors.get((x, y))
@@ -662,9 +673,9 @@ def recipe_for(game, area_key):
     ways out, wide open."""
     all_ = recipes(game)
     recipe = dict(all_.get("DEFAULT", {}))
-    from src.states.overworld.walk_town import custom
-    mine = custom(game).get(area_key)
-    area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+    from src.states.overworld.walk_town import custom, story_map
+    mine = story_map(game, area_key) if (custom(game).get(area_key) or {}).get("story_maps") else custom(game).get(area_key)   # (a route's
+    area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})   # other map while its conditions stand: Route 20 in autumn, 11-20)
     if mine and area.get("area_type") != "town":  # our own map (Jordan, 11-06: the Johto pilot's Route 29)
         recipe.update(all_.get(area_key) or {})
         if mine.get("rooms"):  # (buildings you walk into: each room a floor of its own; everyone else stays outside)
@@ -1080,7 +1091,7 @@ class DungeonState(OverworldBattles, PlayState):
         for _i, _f in (enumerate(_art_map["floors"]) if _art_map.get("floors") else [(None, _art_map)]):
             _keep = self.__dict__.setdefault("_floor_folk", {})  # (the same dict each time: figures are kept by identity)
             out += [_keep.setdefault(id(p), dict(p, _floor=_i)) if _i is not None else p
-                    for p in (_f.get("people") or []) if isinstance(p, dict) and p.get("text") and self.npc_shown(p)]
+                    for p in _flat_people(_f.get("people")) if isinstance(p, dict) and p.get("text") and self.npc_shown(p)]
         return out + self._arrival_figures()
 
     def _arrival_figures(self):
@@ -1155,7 +1166,7 @@ class DungeonState(OverworldBattles, PlayState):
             return
         art = (getattr(self, "recipe", None) or {}).get("art") or {}
         fl = art["floors"][self.run.index] if art.get("floors") and self.run.index < len(art["floors"]) else art
-        item = next((p for p in (fl.get("people") or []) if isinstance(p, dict) and str(p.get("text", "")).strip() == who
+        item = next((p for p in _flat_people(fl.get("people")) if isinstance(p, dict) and str(p.get("text", "")).strip() == who
                      and self.npc_shown(p)), None)
         if item is not None:
             class _M:   # (as a standing figure would be)
@@ -1510,7 +1521,10 @@ class DungeonState(OverworldBattles, PlayState):
         if on:
             self.walk_goal = None
         if not on:
+            if getattr(self, "_cam_focus", None):
+                self._cam_ease_until = pygame.time.get_ticks() + 1500   # (gliding back to you)
             self._cam_focus = None   # (the scene's over: the view back on you)
+            self._scene_zoom = None   # (and the camera back to its usual distance)
 
     def npc_ground(self, t):
         """The map's character at a tile on this floor (npc.route), None off the map or with no drawn map."""
@@ -1520,6 +1534,7 @@ class DungeonState(OverworldBattles, PlayState):
 
     def npc_look(self, t):
         """A scene moves the view to a tile (None: back to you); what it looks at is seen (the fog lifts there)."""
+        self._cam_ease_until = pygame.time.get_ticks() + 1500   # (it glides there)
         self._cam_focus = tuple(t) if t else None
         if t and hasattr(self, "run"):
             self.run.reveal_at(int(t[0]), int(t[1]))
@@ -1737,6 +1752,8 @@ class DungeonState(OverworldBattles, PlayState):
     def fish_here(self):
         if self._ready() and self._beside("water") and self._menu_item("FISH"):
             self.walk_goal = None
+            from src.world import phenomena as _phen
+            self._fish_ripple = _phen.is_ripple(self, self._beside("water"))   # (casting into rippling water: its own bites)
             if self._player_extra("fish"):   # (your own casting frames, Orange 5.7's Ash: face the water, cast, then the bite)
                 w = self._beside("water")
                 self.facing = (w[0] - self.run.player[0], w[1] - self.run.player[1])
@@ -1759,6 +1776,7 @@ class DungeonState(OverworldBattles, PlayState):
         if spot is not None and getattr(self, "per_floor", 1) > 1 and self.zones:
             index = self.run.index if hasattr(self, "run") else 0  # (the first floor, while the walk is made)
             story.story_flags[flag] = self.zones[self._zone_index(index, spot[0], spot[1])]
+        self._wild_spot = tuple(spot) if spot is not None else None   # (where it will stand: dark grass or not, 11-20)
         try:
             return self._wild_for_pool(rng)
         finally:
@@ -1768,6 +1786,11 @@ class DungeonState(OverworldBattles, PlayState):
     def _wild_for_pool(self, rng, kind=None):
         """kind "smash": the area's Rock Smash Pokemon; on a sea tile (core.CURRENT_TILE) its surfing Pokemon (Jordan,
         11-14: the games' own pools, "rock_smash_pool_percentages" / "surf_pool_percentages"), else its usual pool."""
+        from src.world import wild_tables as _wt
+        if _wt.tables(self.area_data) and kind != "smash":   # (the place's own game's slots, levels and seasons: B2W2's, 11-20)
+            got = self._from_wild_tables(rng)
+            if got is not None:
+                return got
         area = self.area_data
         own_kind = {"smash": "rock_smash_pool_percentages", "surf": "surf_pool_percentages"}.get(
             kind or ("surf" if core.CURRENT_TILE in (core.SURF, core.WATER) else None))
@@ -1790,6 +1813,29 @@ class DungeonState(OverworldBattles, PlayState):
             return None
         p = Pokemon(raw, self.game.assets, size_mult=3.125)
         levels.set_wild(self.game, p, self.area_key)
+        return p
+
+    def _dark_tiles(self):
+        art = (getattr(getattr(self, "run", None), "recipe", None) or getattr(self, "recipe", None) or {}).get("art") or {}
+        return {tuple(t) for t in (art.get("dark_grass") or [])}
+
+    def _from_wild_tables(self, rng):
+        """A wild Pokemon from the area's "wild_tables" (src/world/wild_tables.py): on the water its surfing slots, in dark
+        grass its dark grass slots, at a phenomenon its own (rustling grass, rippling water), else the tall grass's."""
+        from src.world import wild_tables as _wt
+        on_water = core.CURRENT_TILE in (core.SURF, getattr(core, "WATER", None))
+        kind = getattr(self, "_phenom_kind", None) or ("surf" if on_water else
+                                                       "dark" if getattr(self, "_wild_spot", None) in self._dark_tiles() else "grass")
+        got = _wt.pick(self.area_data, kind, rng) or (_wt.pick(self.area_data, "grass", rng) if kind in ("dark", "rustle") else None)
+        if got is None:
+            return None
+        pid, level = got
+        raw = self.game.loader._fetch_raw(id_pool=[pid], area_data=self.area_data)
+        if not raw or raw.get("id", 0) == 0:
+            return None
+        p = Pokemon(raw, self.game.assets, size_mult=3.125)
+        p.level = level
+        p.current_hp = p.get_max_hp()
         return p
 
     # ---------------------------------------------------------------- coming and going
@@ -2049,6 +2095,9 @@ class DungeonState(OverworldBattles, PlayState):
                 return
             from src.world import dexnav as _dexnav
             if _dexnav.on_step(self):   # (onto a hidden Pokemon's spot: ORAS's DexNav, Hoenn; 11-19)
+                return
+            from src.world import phenomena as _phen
+            if _phen.on_step(self):   # (into rustling grass, onto rippling water: B2W2's phenomena, 11-20)
                 return
         self._handle(events)
 
@@ -2975,12 +3024,66 @@ class DungeonState(OverworldBattles, PlayState):
         if hasattr(self, "run") and (self.run.recipe.get("image") or self.run.recipe.get("art")):  # (no black past it)
             W, H = self._view().size
             mw, mh = self.run.floor.w * TILE, self.run.floor.h * TILE
+            top = 0
+            _zone = None if (focus or getattr(self, "_cam_focus", None)) else self._cam_zone(px, py)
+            if _zone:   # (a strip where Black 2's camera moves as you cross it: the view slides with you)
+                cx, cy = cx + _zone[1][0] * TILE, cy + _zone[1][1] * TILE
+            c3 = getattr(self, "cam3d", None)
+            if c3 and not focus:   # (B2W2's camera: the view follows you up and down the stairs, and shows the raised ground)
+                cy -= c3.lift(px, py) * TILE
+                top, mh = c3.span()
             cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)
-            cy = mh / 2 if mh <= H else min(max(cy, H / 2), mh - H / 2)
+            cy = (top + mh) / 2 if mh - top <= H else min(max(cy, top + H / 2), mh - H / 2)
+        ease = getattr(self, "_cam_ease", None)
+        if ease is not None:   # (a scene's pan: the view glides there and back)
+            return ease
         return cx, cy
+
+    def _cam_tick(self):
+        """Once a frame (as the towns' walk_town.WalkTownState._cam_tick): a scene's pan glides, the zoom eases."""
+        now = pygame.time.get_ticks()
+        if getattr(self, "_cam_focus", None) or now < getattr(self, "_cam_ease_until", 0):
+            self._cam_ease = None
+            goal = self._camera()
+            cur = getattr(self, "_cam_cur", None) or goal
+            cur = (cur[0] + (goal[0] - cur[0]) * 0.12, cur[1] + (goal[1] - cur[1]) * 0.12)
+            if abs(cur[0] - goal[0]) < 1 and abs(cur[1] - goal[1]) < 1 and not getattr(self, "_cam_focus", None):
+                self._cam_ease_until = 0
+            self._cam_ease = self._cam_cur = cur
+        else:
+            self._cam_ease = None
+            self._cam_cur = self._camera()
+        want = getattr(self, "_scene_zoom", None) or self._zoom_goal()
+        z = getattr(self, "zoom", 1.0)
+        self.zoom = want if abs(want - z) < 0.004 else z + (want - z) * 0.1
+
+    def _zoom_goal(self):
+        """The map's own zoom ("camera_zoom"), or a camera zone's where you stand ("cameras" [{"rect", "zoom"}])."""
+        m = (self.run.recipe.get("art") or {}) if hasattr(self, "run") else {}
+        if self._backdrop or self.mode == "CATCH":
+            return 1.0
+        px, py = self.run.player
+        if self.anim > 0:
+            k = 1 - self.anim / STEP_FRAMES
+            fx, fy = self.anim_from
+            px, py = fx + (px - fx) * k, fy + (py - fy) * k
+        _zone = self._cam_zone(px, py)
+        return _zone[0] if _zone else float(m.get("camera_zoom") or 1.0)
+
+    def _cam_zone(self, fx, fy):
+        """(zoom, pan) of the map's camera zone at (fx, fy), else None (camera3d.camera_zone)."""
+        m = (self.run.recipe.get("art") or {}) if hasattr(self, "run") else {}
+        from src.dungeon import camera3d as _c3
+        return _c3.camera_zone(m.get("cameras"), fx, fy)
+
+    def npc_zoom(self, z):
+        """A scene moves the camera in or out (None or 1: back to the map's)."""
+        self._scene_zoom = float(z) if z and float(z) != 1.0 else None
 
     def _view(self):
         """Where the map is drawn: the frame (the whole screen under an OVERWORLD-style battle)."""
+        if getattr(self, "_view_override", None) is not None:   # (drawing zoomed: the smaller picture scaled into the frame)
+            return self._view_override
         if self._backdrop:
             return self.game.screen.get_rect()
         return map_view(self.game)
@@ -2991,8 +3094,20 @@ class DungeonState(OverworldBattles, PlayState):
         return int(v.centerx - cx) + shake_dx(self), int(v.centery - cy)
 
     def _tile_at(self, pos):
-        ox, oy = self._origin()
+        z = getattr(self, "zoom", 1.0)
+        if abs(z - 1.0) > 0.01:   # (zoomed: the point in the map's own picture first)
+            v = self._view()
+            self._view_override = pygame.Rect(0, 0, round(v.w / z), round(v.h / z))
+            try:
+                ox, oy = self._origin()
+            finally:
+                self._view_override = None
+            pos = ((pos[0] - v.x) / z, (pos[1] - v.y) / z)
+        else:
+            ox, oy = self._origin()
         ox -= shake_dx(self)
+        if getattr(self, "cam3d", None):   # (raised ground is drawn higher: the tile whose lifted square is under the finger)
+            return self.cam3d.tile_at(pos[0] - ox, pos[1] - oy)
         return int((pos[0] - ox) // TILE), int((pos[1] - oy) // TILE)
 
     KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
@@ -3641,6 +3756,15 @@ class DungeonState(OverworldBattles, PlayState):
             own_roofs = m["floors"][self.run.index].get("roofs") if m.get("floors") else None  # (a floor's own room look: its floor and wall colours, its furniture)
             self._floor_surf = _art.surface(grid, m.get("buildings", {}), TILE, own_roofs or m.get("roofs"), own or m.get("theme"))
             self._floor_index = self.run.index
+            _roofs = own_roofs or m.get("roofs") or {}
+            self.cam3d = None   # (B2W2's maps: seen as the DS camera sees them, src/dungeon/camera3d.py)
+            if _roofs.get("_cam"):
+                from src.dungeon import camera3d as _c3
+                try:
+                    self.cam3d = _c3.Cam3D(_roofs["_cam"], _roofs.get("_objects") or [], TILE, len(grid[0]), len(grid), set(_art.doors(grid)))
+                except (pygame.error, OSError, KeyError, ValueError):
+                    self.cam3d = None
+            self.shadows = bool(_roofs.get("_shadows"))
             return
         if self.run.recipe.get("image"):  # a real map: its own picture, a tile for a tile
             path = os.path.join(self.game.assets.assets_dir or "", "walk_routes", f"{self.run.recipe['image']}.png")
@@ -3648,6 +3772,7 @@ class DungeonState(OverworldBattles, PlayState):
             self._floor_surf = pygame.transform.scale(img, (f.w * TILE, f.h * TILE))
             self._floor_index = self.run.index
             return
+        self.cam3d, self.shadows = None, False
         floor_c, grass_c, wall_c, top_c = COLORS.get(f.style, COLORS["field"])
         surf = pygame.Surface((f.w * TILE, f.h * TILE))
         surf.fill(wall_c)
@@ -3754,12 +3879,14 @@ class DungeonState(OverworldBattles, PlayState):
         return icon(self.game, pokemon.id, size, flip=flip)
 
     def _trainer_scale(self):
-        """The whole-number scale your trainer's sheet is drawn at (the Pokemon use the same)."""
+        """The whole-number scale the following Pokemon are drawn at: the one a Journeys trainer sheet ("male") is drawn at,
+        the size their sheets were made to stand beside. (Not whichever player sheet comes first: Black 2's Nate is a
+        shorter sprite drawn at 3x, which made every follower half as big again; Jordan 11-20.)"""
         if not hasattr(self, "_t_scale"):
             self._t_scale = 2
             try:
                 players = sprite_map(self.game).get("players") or {}
-                sheet = next(iter(v for v in players.values() if isinstance(v, str)), None)
+                sheet = players.get("male") or next(iter(v for v in players.values() if isinstance(v, str)), None)
                 if sheet:
                     img = pygame.image.load(os.path.join(self.game.assets.assets_dir, "dungeon", "characters", sheet))
                     cell = img.subsurface((0, 0, img.get_width() // 4, img.get_height() // 4))
@@ -4223,22 +4350,59 @@ class DungeonState(OverworldBattles, PlayState):
         if self.mode == "CATCH":
             return super().draw()
         screen = self.game.screen
-        W, H = self.game.width, self.game.height
-        f = self.run.floor
         view = self._view()
+        fonts = self.game.assets.fonts
         screen.fill(FRAME_BLACK)
-        screen.fill((10, 14, 24), view)  # (the fog's colour: the unknown edge of the map)
-        screen.set_clip(view)  # (the map stays in its frame)
         if self._floor_index != self.run.index or self._floor_surf is None:
             self._render_floor()
+        z = getattr(self, "zoom", 1.0)
+        if abs(z - 1.0) > 0.01 and not self._backdrop:   # (the camera in closer or further: drawn smaller, scaled into the frame)
+            small = pygame.Rect(0, 0, max(1, round(view.w / z)), max(1, round(view.h / z)))
+            off = pygame.Surface(small.size)
+            self._view_override = small
+            try:
+                self._cam_tick()
+                at0 = self._draw_world(off, small, fonts)
+            finally:
+                self._view_override = None
+            screen.blit(pygame.transform.smoothscale(off, view.size), view.topleft)
+
+            def at(x, y):
+                r = at0(x, y)
+                return pygame.Rect(view.x + round(r.x * z), view.y + round(r.y * z), round(r.w * z), round(r.h * z))
+        else:
+            self._cam_tick()
+            at = self._draw_world(screen, view, fonts)
+        if self._backdrop:  # (only the map: an OVERWORLD-style battle is drawn over it)
+            return
+        self._draw_rest(screen, view, fonts, at)
+
+    def _draw_world(self, screen, view, fonts):
+        """The map in its frame (draw() adds the frame, the HUD, the encounter): its tile-to-screen function."""
+        f = self.run.floor
+        screen.fill((10, 14, 24), view)  # (the fog's colour: the unknown edge of the map)
+        screen.set_clip(view)  # (the map stays in its frame)
         ox, oy = self._origin()
-        screen.blit(self._floor_surf, (ox, oy))
+        c3 = getattr(self, "cam3d", None)
+
+        def lp(fx, fy):   # (how many px the ground there is raised on screen: B2W2's terraces and stairs)
+            return round(c3.lift(fx, fy) * TILE) if c3 else 0
+
+        if c3:
+            c3.draw_ground(screen, ox, oy)
+        else:
+            screen.blit(self._floor_surf, (ox, oy))
         x0, y0 = max(0, (view.x - ox) // TILE - 1), max(0, (view.y - oy) // TILE - 1)
         x1, y1 = min(f.w, (view.right - ox) // TILE + 2), min(f.h, (view.bottom - oy) // TILE + 2)
-        fonts = self.game.assets.fonts
+        if c3:   # (raised ground is drawn higher: tiles further down the map can show at the top of the frame)
+            y1 = min(f.h, y1 + int(c3.top // TILE) + 2)
+        _shadow = None
+        if getattr(self, "shadows", False):
+            from src.dungeon import camera3d as _c3s
+            _shadow = _c3s.shadow(TILE)
 
         def at(x, y):
-            return pygame.Rect(ox + x * TILE, oy + y * TILE, TILE, TILE)
+            return pygame.Rect(ox + x * TILE, oy + y * TILE - lp(x, y), TILE, TILE)
 
         self._draw_tap_marks(screen, at)
 
@@ -4331,6 +4495,8 @@ class DungeonState(OverworldBattles, PlayState):
         _radar.draw(self, screen, at)   # (the Poke Radar's shaking grass)
         from src.world import dexnav as _dexnav
         _dexnav.draw(self, screen, at)   # (a hidden Pokemon's tail in the grass, ripples on the water)
+        from src.world import phenomena as _phen
+        _phen.draw(self, screen, at)   # (rustling grass, rippling water: B2W2's phenomena)
         bob = int(3 * math.sin(pygame.time.get_ticks() / 180))
         for (x, y) in f.tm_spots:
             if (x, y) in f.seen:
@@ -4415,6 +4581,8 @@ class DungeonState(OverworldBattles, PlayState):
                 r = r.move(int(round((ax - m.x) * TILE)), int(round((ay - m.y) * TILE)))
                 if mo.emote > 0:
                     emotes.append(r)
+            if _shadow is not None:   # (B2W2's oval under everyone's feet)
+                screen.blit(_shadow, _shadow.get_rect(center=(r.centerx, r.bottom - 3)))
             if m.kind == "wild":
                 img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
@@ -4557,6 +4725,19 @@ class DungeonState(OverworldBattles, PlayState):
         elif lead:  # (no trainer sprite: your lead Pokemon walks for you)
             img = self._icon(lead, TILE + 8, flip=(self.facing[0] > 0), facing=self.facing)
             drawn.append((pr.bottom, img, img.get_rect(center=(pr.centerx, pr.centery - 4))))
+        _feet = {}
+        if c3 or _shadow is not None:   # (lifted by the ground under you, smoothly mid-step; a shadow at your feet)
+            for _i in range(_mine, len(drawn)):
+                _k0, _img0, _rc = drawn[_i]
+                _ft = _trail.get(_i)
+                if _ft is None:
+                    (_a, _b), (_c, _d) = (self.anim_from if self.anim > 0 else self.run.player), self.run.player
+                else:
+                    (_a, _b), (_c, _d) = _ft
+                _L = lp(_a + (_c - _a) * k, _b + (_d - _b) * k)
+                _rc.move_ip(0, -_L)
+                if _i == _mine or _ft is not None or _i == len(drawn) - 1:
+                    _feet[id(_rc)] = (_rc.centerx, _rc.bottom - 2)
         _me_drawn = drawn[_mine:]
         wk = getattr(self, "_walker", None)
         if wk:  # (someone walking up to you: between two tiles of their path)
@@ -4585,8 +4766,16 @@ class DungeonState(OverworldBattles, PlayState):
                     way2 = (-way2[0], -way2[1])
                 img2 = self._sheet_frame(wk["with"], way2, frame=int(j * 2) % 4 if (wk["i"] < len(wk["path"]) - 1 or wk.get("leaving")) and j > 0 else 0)
                 drawn.append((y2, img2, img2.get_rect(midbottom=(int(x2), int(y2) - 2))))
-        for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
+        _extra = c3.buildings_drawn(ox, oy, view) if c3 else []   # (the buildings, the trees and lamp posts: in depth order with you)
+        for _b, img, rect in sorted(drawn + _extra, key=lambda t: t[0]):
+            if _shadow is not None and id(rect) in _feet:
+                screen.blit(_shadow, _shadow.get_rect(center=_feet[id(rect)]))
             screen.blit(img, rect)
+        if _extra:   # (someone standing in front of a building or a tree, drawn before it: drawn again over it)
+            for _mk, _mimg, _mrect in _movers_drawn:
+                _mr = pygame.Rect(_mrect)
+                if any(_ek < _mk and _mr.colliderect(pygame.Rect(_ep, _ei.get_size())) for _ek, _ei, _ep in _extra):
+                    screen.blit(_mimg, _mrect)
         spans = getattr(self.run.floor, "bridge", None)
         _pic = ((self.run.recipe.get("art") or {}).get("roofs") or {}).get("_picture")  # (a map drawn from its game's picture: its own top layer goes over you)
         if spans and self.run.recipe.get("art") and not (_pic and self._overheads()):  # (passing under a bridge: it goes over your head; a picture with its own top layer: that does)
@@ -4635,10 +4824,14 @@ class DungeonState(OverworldBattles, PlayState):
                         screen.fill((10, 14, 24), at(gx, gy))
         if self._backdrop:  # (only the map: an OVERWORLD-style battle is drawn over it)
             screen.set_clip(None)
-            return
+            return at
         if self.mode == "MAP":
             self._draw_guide(screen, at)
         screen.set_clip(None)
+        return at
+
+    def _draw_rest(self, screen, view, fonts, at):
+        """Over the map: its frame, the HUD, the encounter, the dialogue."""
         draw_frame(screen, view)
         self._draw_hud(screen)
         self._draw_qparty(screen)

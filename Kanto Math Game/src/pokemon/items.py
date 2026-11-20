@@ -79,6 +79,7 @@ FIELD = {
     # (11-18: src/world/vs_seeker.py) not sold: given at Vermilion / Route 207, else after a region's 2nd badge
     "POKE_RADAR": {"radar": True, "keep": True, "price": 0, "text": "Use it in tall grass: patches nearby shake, and rare Pokemon may jump out. Keep meeting the same kind to build a chain. It charges as you walk."},
     "VS_SEEKER": {"seeker": True, "keep": True, "price": 0, "text": "Use it out on a route: trainers you've beaten today may want a rematch. It recharges as you walk."},
+    "MEDAL_BOX": {"medals": True, "keep": True, "price": 0, "text": "A box for the Medals Mr. Medal gives you. Open it to see them."},   # (B2W2's Medal Rally, starter set: src/world/medals.py; 11-20)
 }
 BALL_PRICES = {"POKE_BALLS": 1000, "GREAT_BALL": 600, "ULTRA_BALL": 800, "PREMIER_BALL": 20, "NET_BALL": 1000,
                "DIVE_BALL": 1000, "NEST_BALL": 1000, "REPEAT_BALL": 1000, "TIMER_BALL": 1000, "QUICK_BALL": 1000,
@@ -187,6 +188,7 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "BIG_ROOT": {"price": 4000, "text": "Held: moves that drain HP give its holder more back."},
         "SAFETY_GOGGLES": {"price": 4000, "text": "Held: its holder takes no sandstorm damage, and powder moves don't affect it."},
         "ROCKY_HELMET": {"price": 4000, "text": "Held: a foe that touches its holder with a move gets hurt. (Lets your Pokemon Headbutt trees, too.)"},
+        "STICKY_BARB": {"price": 200, "text": "Held: it hurts its holder every turn, and sticks to a foe that touches it."},   # (B2W2: Route 20, autumn; 11-20)
         "WHITE_HERB": {"price": 4000, "text": "Held: if its holder's stats are lowered, it puts them back. Used up."},
         "FLOAT_STONE": {"price": 1000, "text": "Held: its holder weighs half as much."},
         "HEAT_ROCK": {"price": 4000, "text": "Held: sunshine its holder calls lasts eight turns. Use it in battle to call sunshine."},

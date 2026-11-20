@@ -412,36 +412,34 @@ check(any("Foe MEOWTH USED FAKE OUT" in l for l in _log) and any("flinched" in l
       f"the foe uses it on its first turn {_log}")
 _log = _turn(_b)
 check(not any("FAKE OUT" in l for l in _log), f"and not after {_log}")
-print("13) Unova's Journal: the Black/White story in order, then its side quests (Jordan, 10-30)")
+print("13) Unova's Journal: Black 2 / White 2's story in order, then its side quests (Jordan, 10-30; B2W2's story 11-19)")
 from src.world import guide as _guide
 _saved = (dict(story.story_flags), {r: list(b) for r, b in story.badges.items()}, story.current_area_key)
-story.current_area_key = "NUVEMA_TOWN"
+story.current_area_key = "ASPERTIA_CITY"
 story.badges["UNOVA"] = []
 for _k in list(story.story_flags):
     if not _k.startswith("visited_") or _k[8:] in g.loader.area_data["STORY_PROGRESSION"]:
         story.story_flags.pop(_k)
-_steps = [  # (what happens, the main mission shown after it)
-    (None, "unova_m1"), ("defeated_rival_nuvema", "unova_m2"), ("heard_n_accumula", "unova_m3"),
-    ("defeated_n_route2", "unova_m4"), ("got_elemental_monkey", "unova_m5"),
-    ("TRIO", "unova_m6"), ("BASIC", "unova_m7"), ("plasma_nacrene_cleared", "unova_m8"),
-    ("plasma_pinwheel_cleared", "unova_m9"), ("plasma_castelia_cleared", "unova_m10"), ("INSECT", "unova_m11"),
-    ("met_n_nimbasa", "unova_m12"), ("BOLT", "unova_m13"), ("QUAKE", "unova_m14"), ("defeated_n_chargestone", "unova_m15"),
-    ("JET", "unova_m16"), ("FREEZE", "unova_m17"), ("plasma_dragonspiral_cleared", "unova_m18"),
-    ("heard_dragon_stones", "unova_m19"), ("LEGEND", "unova_m20"), ("beat_alder", "unova_m21"), ("defeated_n_castle", "unova_m22"),
-    ("beat_unova_champion", None)]
+_steps = [  # (what happens, the main mission shown after it; walkable Unova follows B2W2, built batch by batch: 11-20, batch 2)
+    (None, "b2_m1"), (["b2_mom_talk", "received_starter_unova", "b2_send_off"], "b2_m2"), ("b2_route19_lesson", "b2_m3"),
+    ("b2_floccesy_met", "b2_m4"), ("b2_ranch_owners", "b2_m5"), ("b2_herdier_found", "b2_m6"), ("b2_alder_training", "b2_m7"),
+    (["BASIC", "b2_basic_badge"], "b2_m8"), ("b2_virbank_arrived", "b2_m9"), (["TOXIC", "b2_toxic_badge"], "b2_m10"),
+    ("b2_first_film", "b2_m11"), ("b2_virbank_dock", "b2_m12"), ("b2_r20_hugh", "b2_m13"), ("b2_sailed_castelia", None)]
 _got = []
 for _what, _want in _steps:
-    if _what and _what.isupper():
-        story.badges["UNOVA"].append(_what)
-    elif _what:
-        story.story_flags[_what] = True
+    for _w in (_what if isinstance(_what, list) else [_what] if _what else []):
+        if _w.isupper():
+            story.badges["UNOVA"].append(_w)
+        else:
+            story.story_flags[_w] = True
     _main = [m["id"] for m in story.get_active_missions() if m["type"] == "MAIN"]
     _got.append((_main[0] if _main else None) == _want)
     if not _got[-1]:
         print("      after", _what, "shows", _main, "wanted", _want)
-check(all(_got), "each story step shows the next mission")
+check(all(_got), "each story step shows the next mission (Black/White's old menu chain never shows)")
 _done = {m["id"] for m in story.get_all_journal_entries() if m["status"] == "COMPLETED"}
-check({f"unova_m{i}" for i in range(1, 23)} <= _done, f"all 22 story missions marked done {sorted(_done)[:5]}")
+check({f"b2_m{i}" for i in range(1, 14)} <= _done, f"every story mission so far marked done {sorted(_done)[:5]}")
+story.story_flags["beat_unova_champion"] = story.story_flags["beat_alder"] = True   # (the League: its batch; the side quests open after it)
 _side = [m["id"] for m in story.get_active_missions() if m["type"] == "SIDE"]
 check(len(_side) >= 12, f"after the story, side quests open {_side}")
 _ms = g.loader.area_data["JOURNAL_MISSIONS"]
