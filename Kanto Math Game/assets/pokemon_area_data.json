@@ -82,8 +82,8 @@
     "STARTER_IDS": [1, 4, 7],
     "SHINY_ODDS": { "BASE": 0.01, "CHARM": 0.02, "DEV": 0.25 },
     "PLAYABLE_CHARACTERS": [
-      "red", "ethan", "lyra", "brendan", "may", "lucas", "dawn",
-      "hilbert", "hilda", "nate", "rosa", "blue", "silver", "ash"
+      "red", "leaf", "ethan", "lyra", "brendan", "may", "lucas", "dawn",
+      "hilbert", "hilda", "nate", "rosa", "blue", "silver", "ash", "wes"
     ],
 
     "CHALLENGER_POOL": [
@@ -689,9 +689,9 @@
       "explore_options": [{"text": "Daisy", "action": "EVENT", "door": "rival", "event": {"lines": ["Daisy: Hi there! My little brother is off training again.", "Whenever your Pokemon look tired, a short rest makes all the difference. Good luck out there!"]}}, 
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
         { "text": "Talk to Mom", "action": "NPC", "target": "mom" },
-        {"text": "Bulbasaur's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds BULBASAUR, the Grass-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
-        {"text": "Squirtle's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds SQUIRTLE, the Water-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
-        {"text": "Charmander's Poke Ball", "action": "EVENT", "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds CHARMANDER, the Fire-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
+        {"text": "Bulbasaur's Poke Ball", "action": "EVENT", "no_tag": true, "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds BULBASAUR, the Grass-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
+        {"text": "Squirtle's Poke Ball", "action": "EVENT", "no_tag": true, "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds SQUIRTLE, the Water-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
+        {"text": "Charmander's Poke Ball", "action": "EVENT", "no_tag": true, "flag_condition": "not received_starter_kanto", "event": {"requires": ["kanto_lab_intro"], "fail": ["A Poké Ball sits on the table. It's Professor Oak's: better not touch it without asking."], "lines": ["This Poké Ball holds CHARMANDER, the Fire-type Pokémon.", "Professor Oak: Let's have a proper look at all three before you decide!"], "starter": "KANTO"}},
             {"text": "Show Oak your Pokedex", "action": "EVENT", "color": "GOLD", "event": {"requires": ["caught_range:1-251"], "fail": ["Professor Oak: Catch every Pokemon from Kanto and Johto, all 251 of them,", "and come show me your Pokedex. I'll have something special for you!"], "lines": ["Professor Oak: All 251 Pokemon of Kanto and Johto... You did it!", "You're a true Pokemon Master of research. Please, take this.", "It's the Shiny Charm! Shiny Pokemon will appear more often now."], "gift_item": {"SHINY_CHARM": 1}, "flag": "got_shiny_charm", "done": ["Professor Oak: Shiny Pokemon are such a treat to see. Keep up the great work!"]}, "flag_condition": "not got_shiny_charm"}
         ],
       "next_area": "KANTO_ROUTE_1",

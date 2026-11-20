@@ -611,14 +611,26 @@ class RivalSelectionState(GameState):
             friend_name = name
         self.finish(self.rival_name, friend_name)
 
+    def _after_level(self, region, starter_ids):
+        """The math level picked: the professor's opening talk by name (11-19; tests turn it off: game.intro_scenes), then the
+        region's own start (its opening scene, or the starter screen)."""
+        go = lambda: self.game.change_state(region_opening_state(self.game, region) or StarterSelectionState(
+            self.game, starter_ids=starter_ids, region=region))
+        from src.states.intro_speech import IntroSpeechState, INTROS
+        if getattr(self.game, "intro_scenes", True) and str(region).upper() in INTROS:
+            self.game.change_state(IntroSpeechState(self.game, region, go))
+        else:
+            go()
+
     def finish(self, rival_name, friend_name=None):
         story = self.game.story_manager
-        char_key = self.options[self.selected_idx][1]
-        story.record_region_rival(self.region, rival_name, char_key, friend_name=friend_name)
-        self.game.rival_name, self.game.rival_character = rival_name, char_key
-        self.game.rival_true_name = rival_name.upper()
-        if story.get_current_region() == self.region:
-            story.sync_rival()
+        if rival_name is not None:   # (None: a region whose games have no rival - Orre - goes straight on)
+            char_key = self.options[self.selected_idx][1]
+            story.record_region_rival(self.region, rival_name, char_key, friend_name=friend_name)
+            self.game.rival_name, self.game.rival_character = rival_name, char_key
+            self.game.rival_true_name = rival_name.upper()
+            if story.get_current_region() == self.region:
+                story.sync_rival()
         if self.on_done:
             self.on_done()
             return
@@ -628,19 +640,16 @@ class RivalSelectionState(GameState):
         self.game.change_state(
             DifficultySelectionState(
                 self.game,
-                on_confirm=lambda: self.game.change_state(
-                    region_opening_state(self.game, region) or StarterSelectionState(
-                        self.game,
-                        starter_ids=starter_ids,
-                        region=region
-                    )
-                ),
-                on_back=lambda: self.game.change_state(RivalSelectionState(self.game)),
+                on_confirm=lambda: self._after_level(region, starter_ids),
+                on_back=lambda: self.game.change_state(RivalSelectionState(self.game) if region in self.game.story_manager.RIVAL_CHOICES
+                                                       else RegionSelectionState(self.game)),   # (Orre: no rival screen to go back to)
             )
         )
 
     def update(self):
-        pass
+        if self.region not in self.game.story_manager.RIVAL_CHOICES and not getattr(self, "_skipped", False):
+            self._skipped = True   # (11-19, Orre: Colosseum and XD have no rival - no placeholder "RIVAL" screen)
+            self.finish(None)
 
     def draw(self):
         from src.ui import theme

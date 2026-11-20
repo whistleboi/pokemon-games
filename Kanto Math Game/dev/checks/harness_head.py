@@ -15,6 +15,8 @@ from src.states.battle import WildBattleState
 from src.states.systems import PokeMartState, BagState
 
 g = gm.Game()
+g.intro_scenes = False   # (the professor's opening talk is played by its own check, not every suite's new game)
+g.quick_scenes = True    # (long timed scenes, the Hall of Fame, run fast-forwarded in the checks)
 g.start_new_game(); g.player_name, g.player_character = "ASH", "red"
 rs = RegionSelectionState(g); rs.selected_idx = rs.regions.index("HOENN"); rs.confirm_selection()
 g.current_state.input_name = "GARY"; g.current_state.confirm_selection(); g.current_state.on_confirm()

@@ -249,6 +249,13 @@ def settle(limit=9000):
             if isinstance(st, TrainerBattleState):
                 _win(st)
                 continue
+            if type(st).__name__ in ("HallOfFameState", "IntroSpeechState"):   # (11-19: the Hall of Fame / the opening talk - tap on, as a player does)
+                if not STATE.get("hof_seen") and type(st).__name__ == "HallOfFameState":
+                    STATE["hof_seen"] = True
+                    _say("[Hall of Fame: the team shown, Mom's call]")
+                st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+                st.update(); st.draw()
+                continue
             if isinstance(st, _SPS):
                 STATE["puzzles"] += 1
                 _say("[slide puzzle solved]")

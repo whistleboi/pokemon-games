@@ -12536,6 +12536,8 @@
     "blue": "trchar002.png",
     "male": "trchar000_1.png",
     "female": "trchar001.png",
+    "leaf": "trchar001.png",
+    "wes": "orre_wes.png",
     "girls": [
       "lyra",
       "may",
@@ -12548,7 +12550,10 @@
     "may": "em_89.png"
   },
   "player_extra": {
-    "_about": "Your trainer's own extra overworld sheets, by character (4 x 4 like a walking sheet, rows down/left/right/up; or {file, cols, rows}: a strip of frames). bike: riding (columns: still, pedal, still, pedal); surf: sitting on your Pokemon; fish: casting (4 frames a way); field: using a field move (Strength, Rock Smash); dive: swimming underwater; run: running. Anyone without one keeps the walking sheet (and the drawn Bicycle). Not used yet: vsseeker, vsseeker_bike (no VS Seeker), capback (the cap turned backwards).",
+    "_about": "Your trainer's own extra overworld sheets, by character (4 x 4 like a walking sheet, rows down/left/right/up; or {file, cols, rows}: a strip of frames). bike: riding (columns: still, pedal, still, pedal); surf: sitting on your Pokemon; fish: casting (4 frames a way); field: using a field move (Strength, Rock Smash); dive: swimming underwater; run: running. Anyone without one keeps the walking sheet (and the drawn Bicycle). vsseeker / vsseeker_bike: holding up the VS Seeker (FireRed's own frames for Red and Leaf, 11-19; \"scale\": 2, FireRed's pixels beside Journeys' walking sheets). Not used yet: capback (the cap turned backwards).",
+    "wes": {"bike": "orre_wes_bike.png", "surf": "orre_wes_surf.png", "run": "orre_wes_run.png"},
+    "red": {"vsseeker": {"file": "fr_red_vsseeker.png", "cols": 9, "rows": 1, "scale": 2}, "vsseeker_bike": {"file": "fr_red_vsseeker_bike.png", "cols": 6, "rows": 1, "scale": 2}},
+    "leaf": {"vsseeker": {"file": "fr_leaf_vsseeker.png", "cols": 9, "rows": 1, "scale": 2}, "vsseeker_bike": {"file": "fr_leaf_vsseeker_bike.png", "cols": 6, "rows": 1, "scale": 2}},
     "ash": {
       "bike": "ash_oi_bike.png",
       "surf": "ash_oi_surf.png",

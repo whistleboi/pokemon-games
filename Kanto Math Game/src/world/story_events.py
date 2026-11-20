@@ -42,8 +42,8 @@ def _t(base, **kw):
 EVENTS = {
     "giant_volcano_fall": {"scene": "giant_volcano_fall"},  # (the Giant Volcano easter egg: src/world/mystery_dungeon.py)
     # ---------------- Kanto: the Hall of Fame (FireRed 1.80), after the Champion: your team recorded, then home
-    "kanto_hall_of_fame": {"lines": ["You returned home to share your victory!"], "clear": ["hall_of_fame_due_INDIGO_PLATEAU"],
-                           "travel": "PALLET_TOWN"},
+    "kanto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
+                           "clear": ["hall_of_fame_due_INDIGO_PLATEAU"], "travel": "PALLET_TOWN"},
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
     "johto_elm_starter": {"starter": "JOHTO"},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)

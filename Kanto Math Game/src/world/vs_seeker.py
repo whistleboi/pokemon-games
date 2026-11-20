@@ -47,17 +47,25 @@ def is_ready(story, area, index):
 
 def use(state):
     """Used on a route map (a DungeonState): lines to show. Some beaten trainers in view come back for a rematch."""
+    return seek(state)["lines"]
+
+
+def seek(state):
+    """The VS Seeker used on a route map, as FireRed plays it (11-19, Jordan: "build Vs Seeker screens and animations"):
+    {"charged": False, "lines"} when the battery is low; else {"charged": True, "lines", "rematch": [movers back for a
+    rematch: their "!!"], "seen": [(mover, "!" for a trainer you haven't beaten yet, "X" for one beaten who won't battle
+    again yet)]}. The map plays the pose and the bubbles (dungeon.use_vs_seeker), then the lines."""
     story = state.game.story_manager
     left = CHARGE - charge(story)
     if left > 0:
-        return [f"The VS Seeker's battery needs charging. Walk {left} more step{'s' if left != 1 else ''}."]
+        return {"charged": False, "lines": [f"The VS Seeker's battery needs charging. Walk {left} more step{'s' if left != 1 else ''}."]}
     story.story_flags["vs_seeker_steps"] = 0
     from src.dungeon import core
     run, area = state.run, state.area_key
     floor, (px, py) = run.floor, run.player
     pool = state.area_data.get("trainer_pool", [])
     taken = {(m.x, m.y) for m in floor.movers} | {run.player}
-    back = []
+    back, movers = [], []
     for idx, info in enumerate(pool):
         if not isinstance(info, dict) or not story.beaten_today(area, idx) or is_ready(story, area, idx):
             continue
@@ -74,9 +82,22 @@ def use(state):
         floor.movers.append(m)
         taken.add(tuple(spot))
         back.append(info.get("name", "A trainer"))
+        movers.append(m)
+    seen = []   # (the others in view react too, as in FireRed: "!" not beaten yet, "X" beaten and not ready)
+    for m in floor.movers:
+        if m.kind != "trainer" or m in movers or not isinstance(m.payload, tuple) or abs(m.x - px) + abs(m.y - py) > SEE:
+            continue
+        if hasattr(run, "visible") and not run.visible(m.x, m.y):
+            continue
+        i = m.payload[0]
+        if is_ready(story, area, i):
+            continue
+        seen.append((m, "X" if story.is_trainer_defeated(area, i) else "!"))
     if not back:
-        return ["You used the VS Seeker...", "Nobody around wants a rematch right now."]
-    return ["You used the VS Seeker!"] + [f"{n} wants a rematch!" for n in back]
+        lines = ["You used the VS Seeker...", "Nobody around wants a rematch right now."]
+    else:
+        lines = ["You used the VS Seeker!"] + [f"{n} wants a rematch!" for n in back]
+    return {"charged": True, "lines": lines, "rematch": movers, "seen": seen}
 
 
 # ---- in a town (Jordan 11-18: "Vs seeker in towns for just those 2"): a trainer battle written into a town that has

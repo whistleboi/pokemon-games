@@ -2680,10 +2680,93 @@ class DungeonState(OverworldBattles, PlayState):
         self.say(lines, then=(lambda: self._leave(self.exit_items and next(iter(self.exit_items)) or "NATIONAL_PARK"))
                  if then_leave else None)
 
+    # The VS Seeker as FireRed plays it (11-19, Jordan: "build Vs Seeker screens and animations"): you turn to face us and
+    # hold it up (FireRed's own frames: player_extra "vsseeker" / "vsseeker_bike"), then every trainer in view reacts with
+    # a speech bubble - "!!" one back for a rematch (they step out as it pops), "!" one you haven't beaten, "X" one beaten
+    # who won't battle again yet - and then the message. Nothing else moves while it plays.
+    VS_RAISE = [0, 4, 5, 6, 7, 8]          # (FireRed's walking pose: still, then the device out and up; each 100 ms)
+    VS_RAISE_BIKE = [0, 2, 3, 4, 5, 5]     # (on the Bicycle)
+    VS_POP, VS_HOLD = 600, 1300            # (the bubbles pop when it's up; then they stay a moment before the message)
+
     def use_vs_seeker(self):
-        """The VS Seeker used here (from the Bag): some trainers you beat today in view come back for a rematch."""
+        """The VS Seeker used here (from the Bag or its button): some trainers you beat today in view come back."""
         from src.world import vs_seeker
-        self.say(vs_seeker.use(self))
+        res = vs_seeker.seek(self)
+        if not res.get("charged"):
+            self.say(res["lines"])
+            return
+        for m in res["rematch"]:
+            m._vs_hidden = True   # (they step out as the bubbles pop)
+        self.facing = (0, 1)
+        self._vs_anim = {"t": pygame.time.get_ticks(), "res": res, "popped": False,
+                         "bike": bool(hasattr(self, "run") and self._cycling())}
+
+    def _vs_tick(self):
+        a = getattr(self, "_vs_anim", None)
+        if not a:
+            return
+        t = pygame.time.get_ticks() - a["t"]
+        if t >= self.VS_POP and not a["popped"]:
+            a["popped"] = True
+            for m in a["res"]["rematch"]:
+                m._vs_hidden = False
+            snd = getattr(self.game.assets, "alert_sfx", None)
+            if snd is not None and (a["res"]["rematch"] or a["res"]["seen"]):
+                try:
+                    snd.play()
+                except Exception:
+                    pass
+        if t >= self.VS_POP + self.VS_HOLD:
+            self._vs_anim = None
+            self.say(a["res"]["lines"])
+
+    def _vs_pose(self):
+        """Your VS Seeker frame while it plays (None without the sheet: you just face us)."""
+        a = getattr(self, "_vs_anim", None)
+        if not a:
+            return None
+        seq = self.VS_RAISE_BIKE if a["bike"] else self.VS_RAISE
+        k = min(len(seq) - 1, (pygame.time.get_ticks() - a["t"]) // 100)
+        return self._extra_frame("vsseeker_bike" if a["bike"] else "vsseeker", (0, 1), seq[k]) \
+            or (self._extra_frame("vsseeker", (0, 1), self.VS_RAISE[k]) if a["bike"] else None)
+
+    def _vs_bubbles(self):
+        """{mover: kind} with a bubble over them now: "!!", "!", "X"."""
+        a = getattr(self, "_vs_anim", None)
+        if not a or not a["popped"]:
+            return {}
+        out = {m: "!!" for m in a["res"]["rematch"]}
+        out.update({m: k for m, k in a["res"]["seen"]})
+        return out
+
+    def _draw_vs_bubble(self, screen, r, kind):
+        """FireRed's emote bubble over someone: white, black-edged, a little tail, the mark inside; it pops up."""
+        a = getattr(self, "_vs_anim", None)
+        age = pygame.time.get_ticks() - a["t"] - self.VS_POP if a else 999
+        px = 3   # (one of the bubble's pixels on screen)
+        pop = min(1.0, 0.45 + age / 220)
+        w, h = int(12 * px * pop), int(11 * px * pop)
+        if w < 6:
+            return
+        bob = -2 if (age // 180) % 2 else 0
+        box = pygame.Rect(0, 0, w, h)
+        box.midbottom = (r.centerx + px * 2, r.y - px * 2 + bob)
+        pygame.draw.rect(screen, (24, 24, 24), box.inflate(px * 2, px * 2), border_radius=px * 2)
+        pygame.draw.rect(screen, (250, 250, 250), box, border_radius=px * 2)
+        tail = [(box.x + px * 2, box.bottom - 1), (box.x + px * 5, box.bottom - 1), (box.x + px * 2, box.bottom + px * 3)]
+        pygame.draw.polygon(screen, (24, 24, 24), [(tail[0][0] - px, tail[0][1]), (tail[1][0] + px, tail[1][1]), (tail[2][0] - px, tail[2][1] + px)])
+        pygame.draw.polygon(screen, (250, 250, 250), tail)
+        if pop < 1.0:
+            return
+        ink = (200, 40, 40) if kind == "!!" else (24, 24, 24)
+        cx, top = box.centerx, box.y + px * 2
+        if kind == "X":
+            pygame.draw.line(screen, ink, (cx - px * 2, top), (cx + px * 2, top + px * 6), px + 1)
+            pygame.draw.line(screen, ink, (cx + px * 2, top), (cx - px * 2, top + px * 6), px + 1)
+            return
+        for dx in ((-px * 2, px * 2) if kind == "!!" else (0,)):
+            pygame.draw.rect(screen, ink, (cx + dx - px // 2 - 1, top, px + 1, px * 4))
+            pygame.draw.rect(screen, ink, (cx + dx - px // 2 - 1, top + px * 5, px + 1, px + 1))
 
     def use_scent(self, source=None):
         """Draw in three wild Pokemon: Sweet Scent (a party Pokemon's, once a floor) or Honey (source "HONEY":
@@ -2822,12 +2905,24 @@ class DungeonState(OverworldBattles, PlayState):
                    "FISH": "the water here", "HEADBUTT": "this tree", "TALK": "the clerk",
                    "PLAY SLOTS": "this machine"}.get(act[0])
             buttons.append((side[4], act[0], (232, 132, 40), act[1], True, sub))
+        elif hasattr(self, "run") and self._vs_button():   # (the VS Seeker registered, as FireRed's Select button: 11-19)
+            from src.world import vs_seeker as _vsb
+            n = _vsb.charge(self.game.story_manager)
+            buttons.append((side[4], "VS SEEKER", (200, 70, 60), self.use_vs_seeker, n >= _vsb.CHARGE,
+                            "ready" if n >= _vsb.CHARGE else f"{_vsb.CHARGE - n} steps"))
         elif hasattr(self, "run") and self._radar_ready():   # (the Poke Radar, in tall grass: Platinum's)
             from src.world import poke_radar as _radar
             n = _radar.charge(self.game.story_manager)
             buttons.append((side[4], "RADAR", (90, 170, 80), self.use_radar, n >= _radar.CHARGE,
                             "ready" if n >= _radar.CHARGE else f"{_radar.CHARGE - n} steps"))
         return buttons
+
+    def _vs_button(self):
+        """The VS SEEKER button: you have it, here has trainers, and the Poke Radar doesn't want that spot."""
+        from src.world import vs_seeker as _vsb
+        story = self.game.story_manager
+        return (_vsb.has(story) and not self.contest and bool(self.area_data.get("trainer_pool"))
+                and not getattr(self, "_vs_anim", None) and not self._radar_ready())
 
     def _radar_ready(self):
         from src.world import poke_radar as _radar
@@ -2907,6 +3002,8 @@ class DungeonState(OverworldBattles, PlayState):
         if self.mode == "CATCH":
             return super().handle_events(events)
         if getattr(self, "_walker", None) and (not self._walker.get("spoke") or self._walker.get("leaving")):  # (someone is walking up to you, or off again: wait for them)
+            return
+        if getattr(self, "_vs_anim", None):   # (the VS Seeker is playing: wait for it)
             return
         events = [e for e in events if not self._qp_event(e)]  # (the POKEMON button and its list first)
         for e in events:
@@ -3436,6 +3533,7 @@ class DungeonState(OverworldBattles, PlayState):
     def update(self):
         if self.mode == "CATCH":
             return super().update()
+        self._vs_tick()   # (the VS Seeker playing: the pose, the bubbles, then its message)
         then = getattr(self, "_pose_then", None)
         if then and pygame.time.get_ticks() - (getattr(self, "_pose", None) or (None, 0))[1] >= 650:   # (the cast is out: now the bite)
             self._pose_then = None
@@ -3865,6 +3963,7 @@ class DungeonState(OverworldBattles, PlayState):
         if not ent:
             return None
         name, cols, rows = (ent, 4, 4) if isinstance(ent, str) else (ent.get("file"), int(ent.get("cols", 4)), int(ent.get("rows", 4)))
+        big = 1 if isinstance(ent, str) else int(ent.get("scale", 1))   # (a sheet drawn at half the walking sheet's pixel size: FireRed's frames beside Journeys' Red)
 
         def make():
             d = os.path.join(self.game.assets.assets_dir, "dungeon", "characters")
@@ -3884,7 +3983,7 @@ class DungeonState(OverworldBattles, PlayState):
                 return None
             half = max(cw // 2 - box.x, box.right - cw // 2)
             part = cell.subsurface((cw // 2 - half, box.y, 2 * half, box.h))
-            return pygame.transform.scale(part, (part.get_width() * k, part.get_height() * k))
+            return pygame.transform.scale(part, (part.get_width() * k * big, part.get_height() * k * big))
         return self._sprite(("player_extra", name, facing, col % cols), make)
 
     def _pose_start(self, kind):
@@ -3914,6 +4013,9 @@ class DungeonState(OverworldBattles, PlayState):
         if acro:
             k = 1 - self.anim / STEP_FRAMES if self.anim > 0 else 0
             return self._sheet_frame(acro, self.facing, frame=(0 if self.anim == 0 else 1 if k < 0.5 else 3))
+        vs = self._vs_pose() if getattr(self, "_vs_anim", None) else None
+        if vs is not None:   # (holding up the VS Seeker: FireRed's own frames)
+            return vs
         players = sprite_map(self.game).get("players") or {}
         char = str(getattr(self.game, "player_character", "") or "red").lower()
         sheet = players.get(char) or players.get("female" if char in players.get("girls", []) else "male")
@@ -4302,8 +4404,9 @@ class DungeonState(OverworldBattles, PlayState):
         _ring = self._ring_spot(f)   # (Soaring's Mirage spots: Hoopa's ring at the back, empty on a quiet visit)
         if _ring and self.run.visible(*_ring):
             self._draw_ring(screen, at(*_ring))
+        _bubbles = self._vs_bubbles()
         for m in f.movers:
-            if not self.run.visible(m.x, m.y) or m is self._ow_foe:
+            if not self.run.visible(m.x, m.y) or m is self._ow_foe or getattr(m, "_vs_hidden", False):
                 continue
             r = at(m.x, m.y)
             mo = getattr(m, "motion", None)
@@ -4368,7 +4471,9 @@ class DungeonState(OverworldBattles, PlayState):
                     _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - lift))))
                 else:
                     pygame.draw.circle(screen, (90, 90, 160), r.center, TILE // 3)
-                if _vs_ready(m):   # (the VS Seeker called it back: it wants a rematch)
+                if m in _bubbles:   # (the VS Seeker just used: its bubble, FireRed's)
+                    self._draw_vs_bubble(screen, r, _bubbles[m])
+                elif _vs_ready(m):   # (the VS Seeker called it back: it wants a rematch)
                     theme.shadow_text(screen, "!", fonts["label"], r.right - 6, r.y - 22, color=(230, 70, 60))
                 # which way it's looking
                 fx, fy = m.facing

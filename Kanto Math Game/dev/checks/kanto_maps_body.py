@@ -60,7 +60,9 @@ def play(until, n=3000):
         if until():
             return True
         st = g.current_state
-        if getattr(st, "npc_active", False):
+        if type(st).__name__ in ("HallOfFameState", "IntroSpeechState"):   # (11-19: animated scenes - tap on, as a player does)
+            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        elif getattr(st, "npc_active", False):
             _note(st)
             st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
         elif not isinstance(st, _WTS) and getattr(st, "dialogue_box", None) is not None and getattr(st.dialogue_box, "visible", False):

@@ -418,6 +418,17 @@ def _run_story_event(state, key, check, show):
         from src.world import mystery_dungeon
         mystery_dungeon.fall(game)
         return
+    if ev.get("scene") == "hall_of_fame":   # (the Hall of Fame: the team one by one, the group, Mom's call - then on; 11-19)
+        from src.states.hall_of_fame import HallOfFameState
+        from src.states.overworld import AreaTransitionState
+        for c in ev.get("clear") or []:
+            story.story_flags.pop(c, None)
+        to = ev.get("travel")
+        after = list(lines or [])
+        game.change_state(HallOfFameState(game, story.get_current_region(),
+                                          lambda said: game.change_state(AreaTransitionState(game, to, initial_message=said + after))
+                                          if to else show(said + after)))
+        return
     if ev.get("scene") == "wally_catch":  # Wally catches his Ralts (src/states/hoenn.py)
         from src.states.hoenn import WallyCatchState
 

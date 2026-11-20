@@ -2400,7 +2400,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                 back_to_room(self.game, CityState(self.game))
                 return
             from src.states.overworld import AreaTransitionState
-            self.game.change_state(AreaTransitionState(self.game, home, initial_message="You returned home to share your victory!"))
+            from src.states.hall_of_fame import HallOfFameState   # (the team one by one, the group, Mom's call: 11-19)
+            self.game.change_state(HallOfFameState(self.game, region, lambda said: self.game.change_state(
+                AreaTransitionState(self.game, home, initial_message=said + ["You returned home to share your victory!"]))))
             return
 
         if self.battle_type == "gym":

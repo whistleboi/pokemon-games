@@ -339,6 +339,73 @@ for area, came, who, want, give, nick, item in (("KANTO_ROUTE_2", "VIRIDIAN_CITY
     check(new is not None and want not in ids and str(nm).upper() == nick and (item is None or getattr(new, "held_item", None) == item),
           f"{area}: {who} - your #{want} for #{give} {nick}{' holding ' + item if item else ''} ({(w or [])[:1]}, {ids}, {nm}, {getattr(new, 'held_item', None)})")
 
+print("11) The VS Seeker as FireRed plays it: the pose, the bubbles, then the message (11-19)")
+from src.world import vs_seeker as _V
+story.inventory["VS_SEEKER"] = 1
+story.story_flags["vs_seeker_steps"] = _V.CHARGE
+g.player_character = "red"
+ace()
+p = route("KANTO_ROUTE_3", "PEWTER_CITY")
+_tr = sorted([m for m in p.run.floor.movers if m.kind == "trainer"], key=lambda m: abs(m.x - p.run.player[0]) + abs(m.y - p.run.player[1]))
+if _tr:
+    p.run.player = (_tr[0].x, _tr[0].y + 2) if p.run.floor.walkable(_tr[0].x, _tr[0].y + 2) else p.run.player
+    story.mark_trainer_defeated("KANTO_ROUTE_3", _tr[0].payload[0])
+    p.run.floor.movers.remove(_tr[0])
+_rc, _ch = _V.READY_CHANCE, dict(_V.CHANCE)
+_V.READY_CHANCE = 1.0; _V.CHANCE.clear()
+_btn = "VS SEEKER" in [b[1] for b in p._buttons()]
+p.use_vs_seeker()
+_pose = p._player_img() is not None and p._vs_pose() is not None
+_hidden = all(getattr(m, "_vs_hidden", False) for m in p._vs_anim["res"]["rematch"])
+p._vs_anim["t"] -= p.VS_POP + 10
+p.update()
+_bub = dict(p._vs_bubbles())
+p._vs_anim["t"] -= p.VS_HOLD
+p.update()
+_said = list(p.dialogue_box.text_lines) if p.dialogue_box.visible else []
+_V.READY_CHANCE = _rc; _V.CHANCE.update(_ch)
+check(_btn and _pose and _hidden and "!!" in _bub.values() and _said[:1] == ["You used the VS Seeker!"],
+      f"...a VS SEEKER button; Red holds it up (FireRed's frames); the rematch steps out with \"!!\", others in view get \"!\"; then the message ({_btn}, {_pose}, {sorted(set(_bub.values()))}, {_said[:2]})")
+play()
+
+print("12) The Hall of Fame: the team, the record, Mom's call (11-19)")
+from src.states.hall_of_fame import HallOfFameState, records as _hof_records
+story.player_team = [mk(i) for i in (6, 25, 131)]
+_n0 = len(_hof_records(g))
+_out = []
+_hs = HallOfFameState(g, "KANTO", lambda ls: _out.extend(ls + ["(done)"]))
+g.current_state = _hs
+for _ in range(4000):
+    if _out:
+        break
+    _hs.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    _hs.update(); _hs.draw()
+_rec = _hof_records(g)[-1] if len(_hof_records(g)) > _n0 else {}
+check(len(_hof_records(g)) == _n0 + 1 and [m["id"] for m in _rec.get("team", [])] == [6, 25, 131] and _rec.get("region") == "KANTO"
+      and _out[-1:] == ["(done)"] and any("pack your bags" in l for l in _hs.call_lines),
+      f"...each Pokemon, the group, the music cut and Mom's call to pack for the move; the team saved in this save's records ({_rec.get('team') and len(_rec['team'])}, {_hs.call_lines[1:2]})")
+
+print("13) A new game's opening talk: the professor knows your name and your rival's (11-19)")
+from src.states.intro_speech import IntroSpeechState, INTROS
+g.player_name, g.rival_name = "ASH", "GARY"
+_ok = []
+for _reg in ("KANTO", "JOHTO", "HOENN", "SINNOH", "ORANGE", "ORRE"):
+    _d = []
+    _is = IntroSpeechState(g, _reg, lambda: _d.append(1))
+    _lines = []
+    for _ in range(400):
+        if _d:
+            break
+        _who, _txt = _is._line()
+        if _txt and (not _lines or _lines[-1] != _txt):
+            _lines.append(_txt)
+        _is.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        _is.update(); _is.draw()
+        if _who == "out":
+            _is.t_line -= 5000
+    _ok.append((_reg, bool(_d) and any("ASH" in l for l in _lines) and (_reg in ("JOHTO", "ORRE") or any("GARY" in l for l in _lines))))
+check(all(o for _, o in _ok), f"...every region's opening plays through, by name ({_ok})")
+
 story.story_flags.clear(); story.story_flags.update(_flags0)
 story.inventory.clear(); story.inventory.update(_inv0)
 story.player_team, story.money = _team0, _money0
