@@ -2707,5 +2707,2641 @@
 "lox": 53,
 "loy": 74,
 "foot": 1.04
+},
+"29_147_0": {
+"name": "zone 29 model 147",
+"ox": 38,
+"oy": 282,
+"lean": 30,
+"step": 0.02,
+"lox": 85,
+"loy": 282,
+"foot": 1.36
+},
+"29_146_0": {
+"name": "zone 29 model 146",
+"ox": 38,
+"oy": 280,
+"lean": 30,
+"step": 0.02,
+"lox": 85,
+"loy": 280,
+"foot": 1.36
+},
+"29_148_0": {
+"name": "zone 29 model 148",
+"ox": 39,
+"oy": 293,
+"lean": 30,
+"step": 0.02,
+"lox": 85,
+"loy": 293,
+"foot": 0.86
+},
+"30_156_0": {
+"name": "zone 30 model 156",
+"ox": 16,
+"oy": 50,
+"lean": 30,
+"step": 0.02,
+"lox": 33,
+"loy": 50,
+"foot": 0.41
+},
+"30_195_0": {
+"name": "zone 30 model 195",
+"ox": 49,
+"oy": 147,
+"lean": 30,
+"step": 0.02,
+"lox": 87,
+"loy": 147,
+"foot": 0.96
+},
+"30_197_0": {
+"name": "zone 30 model 197",
+"ox": 116,
+"oy": 163,
+"lean": 30,
+"step": 0.02,
+"lox": 134,
+"loy": 163,
+"foot": 3.89
+},
+"31_195_0": {
+"name": "zone 31 model 195",
+"ox": 49,
+"oy": 171,
+"lean": 30,
+"step": 0.02,
+"lox": 87,
+"loy": 171,
+"foot": 0.96
+},
+"31_204_0": {
+"name": "zone 31 model 204",
+"ox": 135,
+"oy": 1160,
+"lean": 30,
+"step": 0.02,
+"lox": 493,
+"loy": 1160,
+"foot": 9.84
+},
+"32_195_0": {
+"name": "zone 32 model 195",
+"ox": 49,
+"oy": 256,
+"lean": 30,
+"step": 0.02,
+"lox": 87,
+"loy": 256,
+"foot": 0.96
+},
+"33_195_0": {
+"name": "zone 33 model 195",
+"ox": 49,
+"oy": 245,
+"lean": 30,
+"step": 0.02,
+"lox": 87,
+"loy": 245,
+"foot": 0.96
+},
+"34_195_0": {
+"name": "zone 34 model 195",
+"ox": 49,
+"oy": 168,
+"lean": 30,
+"step": 0.02,
+"lox": 87,
+"loy": 168,
+"foot": 0.96
+},
+"34_293_0": {
+"name": "zone 34 model 293",
+"ox": 2,
+"oy": 629,
+"lean": 30,
+"step": 0.02,
+"lox": 234,
+"loy": 629,
+"foot": 3.92
+},
+"35_262_49152": {
+"name": "zone 35 model 262",
+"ox": 3,
+"oy": 246,
+"lean": 30,
+"step": 0.02,
+"lox": 49,
+"loy": 246,
+"foot": 0.19
+},
+"35_195_0": {
+"name": "zone 35 model 195",
+"ox": 49,
+"oy": 359,
+"lean": 30,
+"step": 0.02,
+"lox": 87,
+"loy": 359,
+"foot": 0.96
+},
+"28_194_0": {
+"name": "zone 28 model 194",
+"ox": 951,
+"oy": 539,
+"lean": 30,
+"step": 0.02,
+"lox": 1013,
+"loy": 539,
+"foot": 29.58
+},
+"28_234_47695": {
+"name": "zone 28 model 234",
+"ox": 8,
+"oy": 153,
+"lean": 30,
+"step": 0.02,
+"lox": 65,
+"loy": 153,
+"foot": 1.49
+},
+"28_93_7827": {
+"name": "zone 28 model 93",
+"ox": 15,
+"oy": 77,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 77,
+"foot": 0.88
+},
+"28_234_61531": {
+"name": "zone 28 model 234",
+"ox": 46,
+"oy": 123,
+"lean": 30,
+"step": 0.02,
+"lox": 103,
+"loy": 123,
+"foot": 0.56
+},
+"36_196_59710": {
+"name": "zone 36 model 196",
+"ox": 48,
+"oy": 89,
+"lean": 30,
+"step": 0.02,
+"lox": 73,
+"loy": 89,
+"foot": 1.27
+},
+"36_209_0": {
+"name": "zone 36 model 209",
+"ox": 198,
+"oy": 207,
+"lean": 30,
+"step": 0.02,
+"lox": 216,
+"loy": 207,
+"foot": 7.83
+},
+"36_292_0": {
+"none": true
+},
+"37_196_0": {
+"name": "zone 37 model 196",
+"ox": 41,
+"oy": 86,
+"lean": 30,
+"step": 0.02,
+"lox": 78,
+"loy": 86,
+"foot": 0.78
+},
+"37_208_32768": {
+"name": "zone 37 model 208",
+"ox": 115,
+"oy": 238,
+"lean": 30,
+"step": 0.02,
+"lox": 133,
+"loy": 238,
+"foot": 6.56
+},
+"37_292_0": {
+"none": true
+},
+"38_196_0": {
+"name": "zone 38 model 196",
+"ox": 41,
+"oy": 86,
+"lean": 30,
+"step": 0.02,
+"lox": 78,
+"loy": 86,
+"foot": 0.78
+},
+"38_318_32768": {
+"name": "zone 38 model 318",
+"ox": 115,
+"oy": 233,
+"lean": 30,
+"step": 0.02,
+"lox": 144,
+"loy": 233,
+"foot": 7.04
+},
+"38_292_0": {
+"none": true
+},
+"39_196_0": {
+"name": "zone 39 model 196",
+"ox": 41,
+"oy": 86,
+"lean": 30,
+"step": 0.02,
+"lox": 78,
+"loy": 86,
+"foot": 0.78
+},
+"39_205_0": {
+"name": "zone 39 model 205",
+"ox": 233,
+"oy": 660,
+"lean": 30,
+"step": 0.02,
+"lox": 273,
+"loy": 660,
+"foot": 26.88
+},
+"39_292_0": {
+"none": true
+},
+"40_196_16384": {
+"name": "zone 40 model 196",
+"ox": 21,
+"oy": 87,
+"lean": 30,
+"step": 0.02,
+"lox": 68,
+"loy": 87,
+"foot": 1.24
+},
+"40_292_0": {
+"none": true
+},
+"40_206_0": {
+"name": "zone 40 model 206",
+"ox": 261,
+"oy": 133,
+"lean": 30,
+"step": 0.02,
+"lox": 279,
+"loy": 133,
+"foot": 3.57
+},
+"41_99_0": {
+"name": "zone 41 model 99",
+"ox": 41,
+"oy": 218,
+"lean": 30,
+"step": 0.02,
+"lox": 126,
+"loy": 218,
+"foot": 1.18
+},
+"41_127_0": {
+"name": "zone 41 model 127",
+"ox": 49,
+"oy": 161,
+"lean": 30,
+"step": 0.02,
+"lox": 116,
+"loy": 161,
+"foot": 1.5
+},
+"41_34_0": {
+"name": "zone 41 model 34",
+"ox": 43,
+"oy": 143,
+"lean": 30,
+"step": 0.02,
+"lox": 82,
+"loy": 143,
+"foot": 1.21
+},
+"41_0_0": {
+"name": "zone 41 model 0",
+"ox": 24,
+"oy": 105,
+"lean": 30,
+"step": 0.02,
+"lox": 60,
+"loy": 105,
+"foot": 0.43
+},
+"41_54_16384": {
+"name": "zone 41 model 54",
+"ox": 17,
+"oy": 108,
+"lean": 30,
+"step": 0.02,
+"lox": 55,
+"loy": 108,
+"foot": 1.38
+},
+"41_13_0": {
+"name": "zone 41 model 13",
+"ox": 21,
+"oy": 52,
+"lean": 30,
+"step": 0.02,
+"lox": 40,
+"loy": 52,
+"foot": 0.62
+},
+"41_36_16384": {
+"name": "zone 41 model 36",
+"ox": 15,
+"oy": 40,
+"lean": 30,
+"step": 0.02,
+"lox": 31,
+"loy": 40,
+"foot": 0.38
+},
+"41_36_49152": {
+"name": "zone 41 model 36",
+"ox": 13,
+"oy": 40,
+"lean": 30,
+"step": 0.02,
+"lox": 23,
+"loy": 40,
+"foot": 0.38
+},
+"41_37_0": {
+"name": "zone 41 model 37",
+"ox": 17,
+"oy": 61,
+"lean": 30,
+"step": 0.02,
+"lox": 33,
+"loy": 61,
+"foot": 0.88
+},
+"41_19_0": {
+"name": "zone 41 model 19",
+"ox": 17,
+"oy": 96,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 96,
+"foot": 0.6
+},
+"42_92_0": {
+"name": "zone 42 model 92",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 32,
+"foot": 0.31
+},
+"42_94_0": {
+"none": true
+},
+"42_30_32768": {
+"name": "zone 42 model 30",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 27,
+"loy": 60,
+"foot": 1.45
+},
+"42_30_0": {
+"name": "zone 42 model 30",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 60,
+"foot": 1.45
+},
+"42_8_0": {
+"name": "zone 42 model 8",
+"ox": 15,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 27,
+"loy": 33,
+"foot": 0.45
+},
+"42_8_16384": {
+"name": "zone 42 model 8",
+"ox": 15,
+"oy": 24,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 24,
+"foot": 0.44
+},
+"42_8_49152": {
+"name": "zone 42 model 8",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 32,
+"foot": 0.5
+},
+"42_8_32768": {
+"name": "zone 42 model 8",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 22,
+"loy": 33,
+"foot": 0.45
+},
+"42_20_0": {
+"name": "zone 42 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"42_19_0": {
+"name": "zone 42 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"43_38_49152": {
+"name": "zone 43 model 38",
+"ox": 13,
+"oy": 21,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 21,
+"foot": 0.44
+},
+"43_78_0": {
+"name": "zone 43 model 78",
+"ox": 33,
+"oy": 52,
+"lean": 30,
+"step": 0.02,
+"lox": 73,
+"loy": 52,
+"foot": 0.06
+},
+"43_77_0": {
+"name": "zone 43 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"43_80_0": {
+"name": "zone 43 model 80",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"43_8_16384": {
+"name": "zone 43 model 8",
+"ox": 15,
+"oy": 24,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 24,
+"foot": 0.44
+},
+"43_8_49152": {
+"name": "zone 43 model 8",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 32,
+"foot": 0.5
+},
+"43_79_0": {
+"name": "zone 43 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"43_78_16384": {
+"name": "zone 43 model 78",
+"ox": 3,
+"oy": 82,
+"lean": 30,
+"step": 0.02,
+"lox": 43,
+"loy": 82,
+"foot": 1.0
+},
+"44_77_0": {
+"name": "zone 44 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"44_129_0": {
+"name": "zone 44 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"44_2_0": {
+"name": "zone 44 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"44_35_0": {
+"name": "zone 44 model 35",
+"ox": 16,
+"oy": 34,
+"lean": 30,
+"step": 0.02,
+"lox": 38,
+"loy": 34,
+"foot": 0.3
+},
+"44_95_0": {
+"none": true
+},
+"44_33_49152": {
+"name": "zone 44 model 33",
+"ox": 48,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 58,
+"loy": 29,
+"foot": 0.45
+},
+"44_79_0": {
+"name": "zone 44 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"44_74_0": {
+"name": "zone 44 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"44_19_0": {
+"name": "zone 44 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"45_129_0": {
+"name": "zone 45 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"45_81_0": {
+"name": "zone 45 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"45_82_0": {
+"name": "zone 45 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"45_19_0": {
+"name": "zone 45 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"45_2_0": {
+"name": "zone 45 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"45_9_0": {
+"name": "zone 45 model 9",
+"ox": 9,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 27,
+"loy": 29,
+"foot": 0.34
+},
+"45_31_0": {
+"name": "zone 45 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 39,
+"loy": 60,
+"foot": 1.51
+},
+"45_9_49152": {
+"name": "zone 45 model 9",
+"ox": 12,
+"oy": 31,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 31,
+"foot": 0.47
+},
+"45_9_16384": {
+"name": "zone 45 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"45_74_0": {
+"name": "zone 45 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"45_9_32768": {
+"name": "zone 45 model 9",
+"ox": 16,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 24,
+"loy": 29,
+"foot": 0.34
+},
+"45_6_0": {
+"name": "zone 45 model 6",
+"ox": 41,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.51
+},
+"45_126_49152": {
+"name": "zone 45 model 126",
+"ox": 6,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 74,
+"foot": 1.04
+},
+"46_129_0": {
+"name": "zone 46 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"46_77_0": {
+"name": "zone 46 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"46_82_0": {
+"name": "zone 46 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"46_81_0": {
+"name": "zone 46 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"46_19_0": {
+"name": "zone 46 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"46_92_0": {
+"name": "zone 46 model 92",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 32,
+"foot": 0.31
+},
+"46_126_16384": {
+"name": "zone 46 model 126",
+"ox": 17,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 74,
+"foot": 1.04
+},
+"46_6_32768": {
+"name": "zone 46 model 6",
+"ox": 46,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.5
+},
+"46_20_0": {
+"name": "zone 46 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"46_9_16384": {
+"name": "zone 46 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"46_31_32768": {
+"name": "zone 46 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 60,
+"foot": 1.51
+},
+"46_126_49152": {
+"name": "zone 46 model 126",
+"ox": 6,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 74,
+"foot": 1.04
+},
+"46_6_49152": {
+"name": "zone 46 model 6",
+"ox": 17,
+"oy": 56,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 56,
+"foot": 1.41
+},
+"46_94_0": {
+"none": true
+},
+"46_95_0": {
+"none": true
+},
+"46_74_0": {
+"name": "zone 46 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"47_77_0": {
+"name": "zone 47 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"47_129_0": {
+"name": "zone 47 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"47_2_0": {
+"name": "zone 47 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"47_35_0": {
+"name": "zone 47 model 35",
+"ox": 16,
+"oy": 34,
+"lean": 30,
+"step": 0.02,
+"lox": 38,
+"loy": 34,
+"foot": 0.3
+},
+"47_95_0": {
+"none": true
+},
+"47_33_49152": {
+"name": "zone 47 model 33",
+"ox": 48,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 58,
+"loy": 29,
+"foot": 0.45
+},
+"47_79_0": {
+"name": "zone 47 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"47_74_0": {
+"name": "zone 47 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"47_19_0": {
+"name": "zone 47 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"48_129_0": {
+"name": "zone 48 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"48_77_0": {
+"name": "zone 48 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"48_82_0": {
+"name": "zone 48 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"48_81_0": {
+"name": "zone 48 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"48_19_0": {
+"name": "zone 48 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"48_92_0": {
+"name": "zone 48 model 92",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 32,
+"foot": 0.31
+},
+"48_126_16384": {
+"name": "zone 48 model 126",
+"ox": 17,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 74,
+"foot": 1.04
+},
+"48_6_32768": {
+"name": "zone 48 model 6",
+"ox": 46,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.5
+},
+"48_20_0": {
+"name": "zone 48 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"48_9_16384": {
+"name": "zone 48 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"48_31_32768": {
+"name": "zone 48 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 60,
+"foot": 1.51
+},
+"48_126_49152": {
+"name": "zone 48 model 126",
+"ox": 6,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 74,
+"foot": 1.04
+},
+"48_6_49152": {
+"name": "zone 48 model 6",
+"ox": 17,
+"oy": 56,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 56,
+"foot": 1.41
+},
+"48_94_0": {
+"none": true
+},
+"48_95_0": {
+"none": true
+},
+"48_74_0": {
+"name": "zone 48 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"49_77_0": {
+"name": "zone 49 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"49_129_0": {
+"name": "zone 49 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"49_2_0": {
+"name": "zone 49 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"49_35_0": {
+"name": "zone 49 model 35",
+"ox": 16,
+"oy": 34,
+"lean": 30,
+"step": 0.02,
+"lox": 38,
+"loy": 34,
+"foot": 0.3
+},
+"49_95_0": {
+"none": true
+},
+"49_33_49152": {
+"name": "zone 49 model 33",
+"ox": 48,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 58,
+"loy": 29,
+"foot": 0.45
+},
+"49_79_0": {
+"name": "zone 49 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"49_74_0": {
+"name": "zone 49 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"49_19_0": {
+"name": "zone 49 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"50_129_0": {
+"name": "zone 50 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"50_77_0": {
+"name": "zone 50 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"50_82_0": {
+"name": "zone 50 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"50_81_0": {
+"name": "zone 50 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"50_19_0": {
+"name": "zone 50 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"50_92_0": {
+"name": "zone 50 model 92",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 32,
+"foot": 0.31
+},
+"50_126_16384": {
+"name": "zone 50 model 126",
+"ox": 17,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 74,
+"foot": 1.04
+},
+"50_6_32768": {
+"name": "zone 50 model 6",
+"ox": 46,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.5
+},
+"50_20_0": {
+"name": "zone 50 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"50_9_16384": {
+"name": "zone 50 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"50_31_32768": {
+"name": "zone 50 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 60,
+"foot": 1.51
+},
+"50_126_49152": {
+"name": "zone 50 model 126",
+"ox": 6,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 74,
+"foot": 1.04
+},
+"50_6_49152": {
+"name": "zone 50 model 6",
+"ox": 17,
+"oy": 56,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 56,
+"foot": 1.41
+},
+"50_94_0": {
+"none": true
+},
+"50_95_0": {
+"none": true
+},
+"50_74_0": {
+"name": "zone 50 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"51_20_49152": {
+"name": "zone 51 model 20",
+"ox": 18,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.45
+},
+"51_8_49152": {
+"name": "zone 51 model 8",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 32,
+"foot": 0.5
+},
+"54_77_0": {
+"name": "zone 54 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"54_129_0": {
+"name": "zone 54 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"54_2_0": {
+"name": "zone 54 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"54_35_0": {
+"name": "zone 54 model 35",
+"ox": 16,
+"oy": 34,
+"lean": 30,
+"step": 0.02,
+"lox": 38,
+"loy": 34,
+"foot": 0.3
+},
+"54_95_0": {
+"none": true
+},
+"54_33_49152": {
+"name": "zone 54 model 33",
+"ox": 48,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 58,
+"loy": 29,
+"foot": 0.45
+},
+"54_79_0": {
+"name": "zone 54 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"54_74_0": {
+"name": "zone 54 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"54_19_0": {
+"name": "zone 54 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"55_129_0": {
+"name": "zone 55 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"55_77_0": {
+"name": "zone 55 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"55_82_0": {
+"name": "zone 55 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"55_81_0": {
+"name": "zone 55 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"55_19_0": {
+"name": "zone 55 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"55_92_0": {
+"name": "zone 55 model 92",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 32,
+"foot": 0.31
+},
+"55_126_16384": {
+"name": "zone 55 model 126",
+"ox": 17,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 74,
+"foot": 1.04
+},
+"55_6_32768": {
+"name": "zone 55 model 6",
+"ox": 46,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.5
+},
+"55_20_0": {
+"name": "zone 55 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"55_9_16384": {
+"name": "zone 55 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"55_31_32768": {
+"name": "zone 55 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 60,
+"foot": 1.51
+},
+"55_126_49152": {
+"name": "zone 55 model 126",
+"ox": 6,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 74,
+"foot": 1.04
+},
+"55_6_49152": {
+"name": "zone 55 model 6",
+"ox": 17,
+"oy": 56,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 56,
+"foot": 1.41
+},
+"55_94_0": {
+"none": true
+},
+"55_95_0": {
+"none": true
+},
+"55_74_0": {
+"name": "zone 55 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"56_77_0": {
+"name": "zone 56 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"56_129_0": {
+"name": "zone 56 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"56_2_0": {
+"name": "zone 56 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"56_35_0": {
+"name": "zone 56 model 35",
+"ox": 16,
+"oy": 34,
+"lean": 30,
+"step": 0.02,
+"lox": 38,
+"loy": 34,
+"foot": 0.3
+},
+"56_95_0": {
+"none": true
+},
+"56_33_49152": {
+"name": "zone 56 model 33",
+"ox": 48,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 58,
+"loy": 29,
+"foot": 0.45
+},
+"56_79_0": {
+"name": "zone 56 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"56_74_0": {
+"name": "zone 56 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"56_19_0": {
+"name": "zone 56 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"58_77_0": {
+"name": "zone 58 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"58_129_0": {
+"name": "zone 58 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"58_2_0": {
+"name": "zone 58 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"58_35_0": {
+"name": "zone 58 model 35",
+"ox": 16,
+"oy": 34,
+"lean": 30,
+"step": 0.02,
+"lox": 38,
+"loy": 34,
+"foot": 0.3
+},
+"58_95_0": {
+"none": true
+},
+"58_33_49152": {
+"name": "zone 58 model 33",
+"ox": 48,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 58,
+"loy": 29,
+"foot": 0.45
+},
+"58_79_0": {
+"name": "zone 58 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"58_74_0": {
+"name": "zone 58 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"58_19_0": {
+"name": "zone 58 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"59_129_0": {
+"name": "zone 59 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"59_81_0": {
+"name": "zone 59 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"59_82_0": {
+"name": "zone 59 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"59_19_0": {
+"name": "zone 59 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"59_2_0": {
+"name": "zone 59 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"59_9_0": {
+"name": "zone 59 model 9",
+"ox": 9,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 27,
+"loy": 29,
+"foot": 0.34
+},
+"59_31_0": {
+"name": "zone 59 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 39,
+"loy": 60,
+"foot": 1.51
+},
+"59_9_49152": {
+"name": "zone 59 model 9",
+"ox": 12,
+"oy": 31,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 31,
+"foot": 0.47
+},
+"59_9_16384": {
+"name": "zone 59 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"59_74_0": {
+"name": "zone 59 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"59_9_32768": {
+"name": "zone 59 model 9",
+"ox": 16,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 24,
+"loy": 29,
+"foot": 0.34
+},
+"59_6_0": {
+"name": "zone 59 model 6",
+"ox": 41,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.51
+},
+"59_126_49152": {
+"name": "zone 59 model 126",
+"ox": 6,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 74,
+"foot": 1.04
+},
+"60_77_0": {
+"name": "zone 60 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"60_129_0": {
+"name": "zone 60 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"60_2_0": {
+"name": "zone 60 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"60_35_0": {
+"name": "zone 60 model 35",
+"ox": 16,
+"oy": 34,
+"lean": 30,
+"step": 0.02,
+"lox": 38,
+"loy": 34,
+"foot": 0.3
+},
+"60_95_0": {
+"none": true
+},
+"60_33_49152": {
+"name": "zone 60 model 33",
+"ox": 48,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 58,
+"loy": 29,
+"foot": 0.45
+},
+"60_79_0": {
+"name": "zone 60 model 79",
+"ox": 19,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 62,
+"foot": 0.69
+},
+"60_74_0": {
+"name": "zone 60 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"60_19_0": {
+"name": "zone 60 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"61_129_0": {
+"name": "zone 61 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"61_81_0": {
+"name": "zone 61 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"61_82_0": {
+"name": "zone 61 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"61_19_0": {
+"name": "zone 61 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"61_2_0": {
+"name": "zone 61 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"61_9_0": {
+"name": "zone 61 model 9",
+"ox": 9,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 27,
+"loy": 29,
+"foot": 0.34
+},
+"61_31_0": {
+"name": "zone 61 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 39,
+"loy": 60,
+"foot": 1.51
+},
+"61_9_49152": {
+"name": "zone 61 model 9",
+"ox": 12,
+"oy": 31,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 31,
+"foot": 0.47
+},
+"61_9_16384": {
+"name": "zone 61 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"61_74_0": {
+"name": "zone 61 model 74",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 29,
+"loy": 33,
+"foot": 0.5
+},
+"61_9_32768": {
+"name": "zone 61 model 9",
+"ox": 16,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 24,
+"loy": 29,
+"foot": 0.34
+},
+"61_6_0": {
+"name": "zone 61 model 6",
+"ox": 41,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.51
+},
+"61_126_49152": {
+"name": "zone 61 model 126",
+"ox": 6,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 74,
+"foot": 1.04
+},
+"494_129_0": {
+"name": "zone 494 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"494_81_0": {
+"name": "zone 494 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"494_82_0": {
+"name": "zone 494 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"494_126_0": {
+"name": "zone 494 model 126",
+"ox": 34,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 65,
+"loy": 62,
+"foot": 0.16
+},
+"494_92_0": {
+"name": "zone 494 model 92",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 32,
+"foot": 0.31
+},
+"494_0_0": {
+"name": "zone 494 model 0",
+"ox": 24,
+"oy": 71,
+"lean": 30,
+"step": 0.02,
+"lox": 60,
+"loy": 71,
+"foot": 0.43
+},
+"494_9_16384": {
+"name": "zone 494 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"494_31_32768": {
+"name": "zone 494 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 60,
+"foot": 1.51
+},
+"494_31_0": {
+"name": "zone 494 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 39,
+"loy": 60,
+"foot": 1.51
+},
+"494_9_49152": {
+"name": "zone 494 model 9",
+"ox": 12,
+"oy": 31,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 31,
+"foot": 0.47
+},
+"494_126_16384": {
+"name": "zone 494 model 126",
+"ox": 17,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 74,
+"foot": 1.04
+},
+"494_81_49152": {
+"name": "zone 494 model 81",
+"ox": 23,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 59,
+"foot": 0.57
+},
+"494_6_0": {
+"name": "zone 494 model 6",
+"ox": 41,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 32,
+"foot": 0.51
+},
+"494_9_32768": {
+"name": "zone 494 model 9",
+"ox": 16,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 24,
+"loy": 29,
+"foot": 0.34
+},
+"494_20_0": {
+"name": "zone 494 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"496_20_0": {
+"name": "zone 496 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"497_20_0": {
+"name": "zone 497 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"52_143_0": {
+"name": "zone 52 model 143",
+"ox": 38,
+"oy": 40,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 40,
+"foot": 0.14
+},
+"52_77_0": {
+"name": "zone 52 model 77",
+"ox": 17,
+"oy": 25,
+"lean": 30,
+"step": 0.02,
+"lox": 36,
+"loy": 25,
+"foot": 0.12
+},
+"52_16_0": {
+"name": "zone 52 model 16",
+"ox": 23,
+"oy": 47,
+"lean": 30,
+"step": 0.02,
+"lox": 37,
+"loy": 47,
+"foot": 1.25
+},
+"52_20_0": {
+"name": "zone 52 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"52_19_0": {
+"name": "zone 52 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"52_12_0": {
+"name": "zone 52 model 12",
+"ox": 34,
+"oy": 65,
+"lean": 30,
+"step": 0.02,
+"lox": 67,
+"loy": 65,
+"foot": 0.16
+},
+"52_2_0": {
+"name": "zone 52 model 2",
+"ox": 41,
+"oy": 49,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 49,
+"foot": 0.62
+},
+"52_8_16384": {
+"name": "zone 52 model 8",
+"ox": 15,
+"oy": 24,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 24,
+"foot": 0.44
+},
+"52_8_49152": {
+"name": "zone 52 model 8",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 28,
+"loy": 32,
+"foot": 0.5
+},
+"52_142_0": {
+"name": "zone 52 model 142",
+"ox": 38,
+"oy": 40,
+"lean": 30,
+"step": 0.02,
+"lox": 70,
+"loy": 40,
+"foot": 0.14
+},
+"52_8_0": {
+"name": "zone 52 model 8",
+"ox": 15,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 27,
+"loy": 33,
+"foot": 0.45
+},
+"52_14_0": {
+"name": "zone 52 model 14",
+"ox": 13,
+"oy": 65,
+"lean": 30,
+"step": 0.02,
+"lox": 51,
+"loy": 65,
+"foot": 0.19
+},
+"52_15_0": {
+"name": "zone 52 model 15",
+"ox": 17,
+"oy": 62,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 62,
+"foot": 0.31
+},
+"52_8_32768": {
+"name": "zone 52 model 8",
+"ox": 17,
+"oy": 33,
+"lean": 30,
+"step": 0.02,
+"lox": 22,
+"loy": 33,
+"foot": 0.45
+},
+"57_129_0": {
+"name": "zone 57 model 129",
+"ox": 29,
+"oy": 93,
+"lean": 30,
+"step": 0.02,
+"lox": 71,
+"loy": 93,
+"foot": 0.56
+},
+"57_81_0": {
+"name": "zone 57 model 81",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"57_82_0": {
+"name": "zone 57 model 82",
+"ox": 13,
+"oy": 59,
+"lean": 30,
+"step": 0.02,
+"lox": 50,
+"loy": 59,
+"foot": 0.69
+},
+"57_92_0": {
+"name": "zone 57 model 92",
+"ox": 15,
+"oy": 32,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 32,
+"foot": 0.31
+},
+"57_20_0": {
+"name": "zone 57 model 20",
+"ox": 13,
+"oy": 29,
+"lean": 30,
+"step": 0.02,
+"lox": 26,
+"loy": 29,
+"foot": 0.52
+},
+"57_9_16384": {
+"name": "zone 57 model 9",
+"ox": 12,
+"oy": 26,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 26,
+"foot": 0.24
+},
+"57_31_32768": {
+"name": "zone 57 model 31",
+"ox": 18,
+"oy": 60,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 60,
+"foot": 1.51
+},
+"57_9_49152": {
+"name": "zone 57 model 9",
+"ox": 12,
+"oy": 31,
+"lean": 30,
+"step": 0.02,
+"lox": 25,
+"loy": 31,
+"foot": 0.47
+},
+"57_94_0": {
+"none": true
+},
+"57_126_16384": {
+"name": "zone 57 model 126",
+"ox": 17,
+"oy": 74,
+"lean": 30,
+"step": 0.02,
+"lox": 53,
+"loy": 74,
+"foot": 1.04
+},
+"57_19_0": {
+"name": "zone 57 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"252_19_0": {
+"name": "zone 252 model 19",
+"ox": 17,
+"oy": 67,
+"lean": 30,
+"step": 0.02,
+"lox": 54,
+"loy": 67,
+"foot": 0.6
+},
+"235_24_0": {
+"name": "zone 235 model 24",
+"ox": 57,
+"oy": 65,
+"lean": 30,
+"step": 0.02,
+"lox": 67,
+"loy": 65,
+"foot": 1.5
+},
+"235_209_0": {
+"name": "zone 235 model 209",
+"ox": 198,
+"oy": 206,
+"lean": 30,
+"step": 0.02,
+"lox": 216,
+"loy": 206,
+"foot": 7.83
+},
+"235_153_0": {
+"name": "zone 235 model 153",
+"ox": 19,
+"oy": 46,
+"lean": 30,
+"step": 0.02,
+"lox": 39,
+"loy": 46,
+"foot": 0.5
+},
+"235_240_0": {
+"name": "zone 235 model 240",
+"ox": 153,
+"oy": 231,
+"lean": 30,
+"step": 0.02,
+"lox": 237,
+"loy": 231,
+"foot": 3.75
+},
+"235_156_0": {
+"name": "zone 235 model 156",
+"ox": 16,
+"oy": 40,
+"lean": 30,
+"step": 0.02,
+"lox": 33,
+"loy": 40,
+"foot": 0.41
+},
+"235_155_0": {
+"name": "zone 235 model 155",
+"ox": 27,
+"oy": 77,
+"lean": 30,
+"step": 0.02,
+"lox": 73,
+"loy": 77,
+"foot": 0.25
+},
+"237_7_49152": {
+"name": "zone 237 model 7",
+"ox": 13,
+"oy": 57,
+"lean": 30,
+"step": 0.02,
+"lox": 23,
+"loy": 57,
+"foot": 1.38
 }
 }

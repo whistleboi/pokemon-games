@@ -207,8 +207,8 @@ check(set(_tm["VIRBANK_CITY"]["rooms"]) == {"gate_w", "center", "house_ne", "nur
       "Virbank's rooms: both gates, the Center, three houses, the ship terminal, the Gym's lobby and stage")
 check(set(_tm["POKESTAR_STUDIOS"]["rooms"]) == {"studio", "studio_vfx", "theater"}, "Pokestar Studios: the soundstage, its effects room, the theater")
 _va = _tm["VIRBANK_CITY"]["art"]
-check(_va[13][11] == "." and _va[18][16] == "." and _va[30][21] == ".",
-      "Virbank's upper level from the file's second walk layer: walkable over the stair corner, the lane's edges, the pier")
+check(_va[11][11] == ";" and _va[13][11] == "." and _va[18][18] == "|" and _va[30][24] == ";",
+      "Virbank's lower level from the file's second walk layer: underpasses beneath the main street, the lane and the pier street")
 _ca = _tm["VIRBANK_COMPLEX"]["art"]
 check(all(_ca[y][8] == "|" for y in range(30, 35)) and _ca[44][23] == ";" and "m" not in "".join(_ca),
       "the Complex's raised walkways over the grass (bridges: along on top, across underneath); no counters on a route")
@@ -250,13 +250,14 @@ put(25, 3, (0, -1)); step(0, -1)
 play(idle, 600)
 check(pos()[1] >= 3 and any("Auditions" in x or "pass" in x for x in said), f"no badge: the guard keeps you off the studios' road ({pos()})")
 put(11, 14, (0, -1))
-step(0, -1, 7)
-check(pos() == (11, 7), f"up the bridge over the main street, to the stairway corner ({pos()})")
+step(0, -1, 3)
+check(pos() == (11, 11) and not g.current_state.deck, f"through the underpass beneath the main street ({pos()}, deck {g.current_state.deck})")
+shot("02b_underpass")
+step(0, -1, 4)
+check(pos() == (11, 7), f"...up to the sunken stairway corner ({pos()})")
 put(8, 10, (1, 0))
 step(1, 0, 6)
-check(pos() == (14, 10), f"along the street under that bridge ({pos()})")
-put(11, 11, (0, 1)); g.current_state.deck = False
-shot("02b_under_bridge")
+check(pos() == (14, 10) and g.current_state.deck, f"along the street over it ({pos()}, deck {g.current_state.deck})")
 
 print("4) Roxie's Gym")
 t = town("VIRBANK_CITY", "gym", (8, 5))

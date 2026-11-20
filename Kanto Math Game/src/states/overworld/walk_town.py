@@ -1977,8 +1977,8 @@ class WalkTownState(CityState):
                 continue
             from src.dungeon import art
             art.blocker(screen, at(_t), _look)
-        if getattr(self, "bridge", None) and not getattr(self, "cam3d", None):  # (passing under a bridge: it goes over your head, every
-            #  tile you overlap. Not through the DS camera (Unova, 11-20): its picture has no bridge layer of its own to lay over you)
+        if getattr(self, "bridge", None):  # (passing under a bridge: it goes over your head, every tile you overlap; Virbank's
+            #  underpass beneath its main street too, 11-20)
             from src.dungeon import art as _ab
             _under = [rc for rc, fr_, to_ in _mine_rects if _ab.under_bridge(self.bridge, fr_, to_, self.deck)]
             _ab.bridge_over(screen, self.bridge, _under, (ox, oy), TILE, self.map_img)
