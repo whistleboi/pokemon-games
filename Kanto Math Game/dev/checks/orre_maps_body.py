@@ -123,24 +123,25 @@ check(walk_to(t, (_bike[0], _bike[1] - 1)), f"walk down the main street to the b
 _now = [o["target_area"] for o in t._door_options("cycle")]
 story.story_flags["got_snag_machine"] = True
 _later = [o["target_area"] for o in t._door_options("cycle")]
-check(_now == [] and _later == ["PYRITE_TOWN"], f"  the bike rides to Pyrite only once you have the Snag Machine ({_now} -> {_later})")
+check("PYRITE_TOWN" not in _now and "PYRITE_TOWN" in _later and "OUTSKIRT_STAND" in _now,
+      f"  the bike rides back to the Stand any time, to Pyrite once Phenac's guards are beaten ({_now} -> {_later})")
 story.story_flags.pop("got_snag_machine", None)
 
 # ---- people: at the fan game's own spots, with the fan game's own sheets
 t = town("PHENAC_CITY", "ORRE_DESERT")
 _texts = [(o.get("text") if "any" not in o else "/".join(x.get("text") for x in o["any"])) for o in t.people.values()]
-_missing = [k for k in _texts if not (_sp["figures"].get(f"PHENAC_CITY:{k}") or {}).get("sheet")]
-_files = [v["sheet"] for k, v in _sp["figures"].items() if k.startswith("PHENAC_CITY:")]
+_missing = [k for k in _texts if not ((_sp["figures"].get(f"PHENAC_CITY:{k}") or {}).get("sheet") or (_sp["figures"].get(f"PHENAC_CITY:{k}") or {}).get("pic"))]
+_files = [v["sheet"] for k, v in _sp["figures"].items() if k.startswith("PHENAC_CITY:") and "sheet" in v]   # (the sack is a picture: "pic")
 check(not _missing and all(os.path.exists(f"assets/dungeon/characters/{f}") for f in _files),
       f"every person in Phenac and its rooms has the fan game's own sheet ({len(_files)} sheets; without one: {_missing})")
-check("Trouble at the Fountain" in [o.get("text") for o in t._people().values()] and "Meet Rui" not in [o.get("text") for o in t._people().values()],
-      "the Cipher Peons stand at the fountain; Rui is not there yet")
-story.story_flags["phenac_cipher_beaten"] = True
+check("Shady Guy Folly" in [o.get("text") for o in t._people().values()] and "A big sack" not in [o.get("text") for o in t._people().values()],
+      "Folly stands by the bike with the sack still shut (Colosseum's opening; orre_pilot plays it)")
+story.story_flags["orre_phenac_folly"] = True
 t = town("PHENAC_CITY", "ORRE_DESERT")
-check("Meet Rui" in [o.get("text") for o in t._people().values()], "after the Peons are beaten, Rui waits at the town's foot")
-story.story_flags.pop("phenac_cipher_beaten", None)
-_rui = next(s for s, o in t.people.items() if o.get("text") == "Meet Rui")
-check(path(t, tuple(t.player), _rui) is not None, f"  and you can walk up to her at {_rui}")
+check("A big sack" in [o.get("text") for o in t._people().values()], "after Folly is beaten, the sack (Rui) waits at the town's foot")
+_rui = next(s for s, o in t.people.items() if o.get("text") == "A big sack")
+check(path(t, tuple(t.player), _rui) is not None, f"  and you can walk up to it at {_rui}")
+story.story_flags.pop("orre_phenac_folly", None)
 
 # ---- out the east gate to the Desert Trail
 t = town("PHENAC_CITY", "PYRITE_TOWN")

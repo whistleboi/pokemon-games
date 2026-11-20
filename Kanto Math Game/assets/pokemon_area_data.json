@@ -478,6 +478,11 @@
     "FAIRY": {
         "FIRE": 0.5, "FIGHTING": 2.0, "POISON": 0.5, "DRAGON": 2.0,
         "DARK": 2.0, "STEEL": 0.5
+    },
+    "SHADOW": {
+        "NORMAL": 2.0, "FIRE": 2.0, "WATER": 2.0, "ELECTRIC": 2.0, "GRASS": 2.0, "ICE": 2.0,
+        "FIGHTING": 2.0, "POISON": 2.0, "GROUND": 2.0, "FLYING": 2.0, "PSYCHIC": 2.0, "BUG": 2.0,
+        "ROCK": 2.0, "GHOST": 2.0, "DRAGON": 2.0, "STEEL": 2.0, "DARK": 2.0, "FAIRY": 2.0
     }
   },
   "AFTER_STARTER_RIVAL": {

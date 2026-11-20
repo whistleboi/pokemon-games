@@ -108,6 +108,7 @@ story.purify_slot(0)
 check(story.story_flags.get("purified_line_153") and story.player_team[0].id == 154,
       "purifying a Shadow Meganium counts for the Bayleef line")
 story.inventory["SNAG_MACHINE"] = 1
+story.story_flags["got_snag_machine"] = True   # (Snag menus open once Phenac's guards are beaten: the pilot, 11-20)
 story.current_area_key = "ORRE_DESERT"
 for s_ in orre["ORRE_DESERT"]["shadow_pool"]:
     story.story_flags[s_["flag"]] = True

@@ -440,6 +440,7 @@ class DoubleBattleState(TrainerBattleState):
         mode = getattr(self, "_answer_mode", None)
         if not player_was_correct and mode is None:
             mode = "weak"
+        self._shadow_turn()   # (Hyper Mode: battle_shadow.py)
         mon = self.player_pokemon
         self._plans[id(mon)] = {"kind": "move", "mon": mon, "move": self.chosen_move,
                                 "target": self._pending_target, "mode": mode, "form": self.form_armed}
@@ -955,7 +956,7 @@ class DoubleBattleState(TrainerBattleState):
 
     def _shown(self, mon):
         """Drawn: standing, or just hit 0 and not yet sunk (its faint comes after the text)."""
-        if mon is None or mon is self._d_fainting:
+        if mon is None or mon is self._d_fainting or self._snag_hides(mon):
             return False
         return mon.current_hp > 0 or self._has(self._d_faint_queue, mon) or (
             self._move_seq is not None and (mon is self._d_actor or self._has(self._d_hit, mon)))
@@ -1057,12 +1058,13 @@ class DoubleBattleState(TrainerBattleState):
         if self.phase == "D_FAINT" and self._d_fanim.active:
             self._d_fanim.draw(screen)
         self.game.ui_manager.draw(screen)
+        self._snag_draw(screen)
 
 
 def battle_options(t_info):
     """A trainer's battle options from its data: "battle_options": {...}, or "double" / "no_switch" on the trainer."""
     opts = dict((t_info or {}).get("battle_options") or {})
-    for key in ("double", "no_switch"):
+    for key in ("double", "no_switch", "music"):   # ("music": the battle's own track, e.g. "orre/willie_battle")
         if (t_info or {}).get(key):
             opts.setdefault(key, t_info[key])
     from src.ui import theme   # (a walking partner with you: a pair battles you both, and they heal you after; walk_partners.py)

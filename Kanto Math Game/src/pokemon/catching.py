@@ -168,6 +168,9 @@ def _caught_before(game, pid):
 def catch_rate(game, target):
     """The species' catch rate (forms such as Shadow or Pinkan Pokemon use their species')."""
     from src.pokemon.evolution import base_id
+    snag = ((game.loader.area_data.get("SHADOW_DATA") or {}).get(str(target.id)) or {}).get("catch_rate")
+    if snag:   # (a Shadow Pokemon's own snag rate, from the Colosseum / XD disc)
+        return max(1, int(snag))
     sets = game.assets.movesets
     rate = (sets.get(str(target.id)) or {}).get("capture_rate")
     if rate is None:

@@ -33,6 +33,7 @@ check(s["ATTACK"] == b["DEFENSE"] and s["DEFENSE"] == b["ATTACK"]
 
 # Snag: one button per area, next un-snagged Shadow each time, hidden when the area is done.
 story.inventory["SNAG_MACHINE"] = 1
+story.story_flags["got_snag_machine"] = True   # (Snag menus open once Phenac's guards are beaten: the pilot, 11-20)
 story.story_flags["cipher_defeated"] = True
 story.current_area_key = "ORRE_DESERT"
 p = PlayState(g); g.change_state(p); p.show_progression_menu()

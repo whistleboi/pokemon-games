@@ -424,7 +424,11 @@ class StoryManager:
             m = form_map.get(str(p.id)) or {}
             if m.get("form") != "shadow":
                 return p
+            if getattr(p, "shadow", None) and p.shadow.get("gauge", 0) > 0:   # (its heart isn't open yet: Q8)
+                return p
             self._note_purified(p.id)
+            from src.world import shadow as _shadow
+            _shadow.purified(p)   # (its own moves back, the gauge gone)
             new = self.change_species(p, int(m["id"]))
             new.friendship = max(new.friendship, 100)  # a purified heart opens up to its trainer
             names.append(new.name.upper())
@@ -1526,6 +1530,7 @@ class StoryManager:
             "pp": dict(getattr(p, "pp", None) or {}), "pp_ups": dict(getattr(p, "pp_ups", None) or {}),
             "special": getattr(p, "special", None),   # (one of a kind: "rowdy_pikachu", src/pokemon/rowdy.py)
             "nickname": getattr(p, "nickname", None), "traded": bool(getattr(p, "traded", False)),   # (the Name Rater, 11-18)
+            "shadow": dict(p.shadow) if getattr(p, "shadow", None) else None,   # (Orre's Heart Gauge: src/world/shadow.py)
         }
 
     TEMPORARY_FORMS = ("mega", "mega_x", "mega_y", "primal")
@@ -1554,6 +1559,9 @@ class StoryManager:
         if p_data.get("nickname"):
             pokemon.nickname = p_data["nickname"]
         pokemon.traded = bool(p_data.get("traded"))
+        if p_data.get("shadow"):   # (a snagged Shadow Pokemon's Heart Gauge)
+            from src.world import shadow as _shadow
+            _shadow.from_record(pokemon, p_data["shadow"])
         pokemon.pp = dict(p_data.get("pp") or {})  # (older saves: full PP)
         pokemon.pp_ups = dict(p_data.get("pp_ups") or {})
         pokemon.condition.update(p_data.get("condition", {}))

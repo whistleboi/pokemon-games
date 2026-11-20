@@ -538,6 +538,48 @@
     "PHENAC_CITY:Meet Rui": {
       "sheet": "orre_partner_rui.png"
     },
+    "OUTSKIRT_STAND:Rider Willie": {
+      "sheet": "orre_trainer_rider_willie.png"
+    },
+    "PHENAC_CITY:Shady Guy Folly": {
+      "sheet": "orre_folly.png"
+    },
+    "PHENAC_CITY:Shady Guy Trudly": {
+      "sheet": "orre_trainer_burglar.png"
+    },
+    "PHENAC_CITY:A big sack": {
+      "pic": "dungeon/characters/orre_sack.png"
+    },
+    "PHENAC_CITY:Team Snagem Wakin": {
+      "sheet": "orre_trainer_fun_old_man.png"
+    },
+    "PHENAC_CITY:Mayor Es Cade": {
+      "sheet": "orre_es_cade.png"
+    },
+    "PHENAC_CITY:Miror B.": {
+      "sheet": "orre_miror_b.png"
+    },
+    "PHENAC_CITY:Miror B. Peon Folly": {
+      "sheet": "orre_folly.png"
+    },
+    "PHENAC_CITY:Miror B. Peon Trudly": {
+      "sheet": "orre_trainer_burglar.png"
+    },
+    "PHENAC_CITY:Fun Old Man Drig": {
+      "sheet": "orre_trainer_fun_old_man.png"
+    },
+    "PHENAC_CITY:Roller Boy Kaib": {
+      "sheet": "orre_trainer_youngster.png"
+    },
+    "PHENAC_CITY:Mystery Troop Verde": {
+      "sheet": "orre_trainer_cipher_greesix.png"
+    },
+    "PHENAC_CITY:Mystery Troop Rosso": {
+      "sheet": "orre_trainer_cipher_redsix.png"
+    },
+    "PHENAC_CITY:Mystery Troop Bluno": {
+      "sheet": "orre_trainer_cipher_blusix.png"
+    },
     "PHENAC_CITY:A boy with his Poliwrath": {
       "sheet": "orre_npc_27.png"
     },

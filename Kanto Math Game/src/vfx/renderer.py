@@ -201,6 +201,9 @@ class BattleRenderer:
         """Orre's Shadow Pokemon roll in dark fog, as in Pokemon Orre (src/vfx/animations.py)."""
         story = getattr(self.game, "story_manager", None)
         if story is not None and story.is_shadow(pokemon):
+            from src.world import shadow   # (Orre, Q10: only once Rui or the Aura Reader is with you)
+            if not shadow.aura_visible(self.game):
+                return
             from src.vfx.animations import draw_shadow_fog
             draw_shadow_fog(screen, rect, pygame.time.get_ticks(), self.game.assets.assets_dir)
 

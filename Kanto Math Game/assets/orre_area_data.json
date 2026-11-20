@@ -63,6 +63,12 @@
           "door": "cycle",
           "target_area": "ORRE_DESERT",
           "condition": "received_starter_orre"
+        },
+        {
+          "text": "Phenac City",
+          "door": "cycle",
+          "target_area": "PHENAC_CITY",
+          "condition": "orre_beat_willie"
         }
       ],
       "next_area": "ORRE_DESERT"
@@ -122,6 +128,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -132,6 +139,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -367,6 +375,11 @@
         }
       ],
       "travel_options": [
+        {
+          "text": "Outskirt Stand",
+          "door": "cycle",
+          "target_area": "OUTSKIRT_STAND"
+        },
         {
           "text": "Desert Trail",
           "target_area": "ORRE_DESERT"
@@ -910,6 +923,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -920,6 +934,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -1163,6 +1178,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -1173,6 +1189,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -1299,6 +1316,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -1309,6 +1327,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -1421,6 +1440,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -1431,6 +1451,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -2046,6 +2067,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -2056,6 +2078,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -2322,6 +2345,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -2332,6 +2356,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -2821,6 +2846,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -2831,6 +2857,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -3307,6 +3334,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -3317,6 +3345,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -3530,6 +3559,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -3540,6 +3570,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -3718,6 +3749,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -3728,6 +3760,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -4010,6 +4043,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -4020,6 +4054,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -4206,6 +4241,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -4216,6 +4252,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -4544,6 +4581,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -4554,6 +4592,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -5031,6 +5070,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -5041,6 +5081,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -5240,6 +5281,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -5250,6 +5292,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -5449,10 +5492,10 @@
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
-          "id": 9376,
-          "name": "Shadow Scizor",
-          "flag": "snagged_shadow_scizor",
-          "trainer": "a Cipher trainer"
+          "id": 9337,
+          "name": "Shadow Scyther",
+          "flag": "snagged_shadow_scyther",
+          "trainer": "Cipher Peon Leden"
         },
         {
           "id": 9343,
@@ -5551,10 +5594,10 @@
           "trainer": "Cipher Peon Geftal"
         },
         {
-          "id": 9337,
-          "name": "Shadow Scyther",
-          "flag": "snagged_shadow_scyther",
-          "trainer": "Cipher Peon Leden"
+          "id": 9376,
+          "name": "Shadow Scizor",
+          "flag": "snagged_shadow_scizor",
+          "trainer": "a Cipher trainer"
         },
         {
           "id": 9332,
@@ -5803,6 +5846,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_left"
           ]
         },
@@ -5813,6 +5857,7 @@
           "color": "PURPLE",
           "condition": [
             "has_item:SNAG_MACHINE",
+            "got_snag_machine",
             "shadows_cleared"
           ]
         },
@@ -5836,9 +5881,12 @@
     }
   },
   "JOURNAL_MISSIONS": [
-    {"id": "orre_m1", "type": "MAIN", "title": "Welcome to Orre", "description": "Orre is a desert region with no wild Pokémon in the grass. Rider Willie wants a battle at Outskirt Stand. Show him your partner!", "condition": {"required_region": "ORRE", "flag_not": "orre_beat_willie"}, "region": "ORRE", "completed_flag": "orre_beat_willie", "target": "OUTSKIRT_STAND"},
-    {"id": "orre_m2", "type": "MAIN", "title": "Trouble at the Fountain", "description": "Cross the Desert Trail to Phenac City. Men in strange uniforms are scaring people at the fountain!", "condition": {"required_region": "ORRE", "flag": "orre_beat_willie", "flag_not": "phenac_cipher_beaten"}, "region": "ORRE", "completed_flag": "phenac_cipher_beaten", "target": "PHENAC_CITY"},
-    {"id": "orre_m3", "type": "MAIN", "title": "The Snag Machine", "description": "Talk to Rui in Phenac City. She can see Shadow Pokémon. With the Snag Machine you can catch them from Cipher's trainers and save them!", "condition": {"required_region": "ORRE", "flag": "phenac_cipher_beaten", "flag_not": "got_snag_machine"}, "region": "ORRE", "completed_flag": "got_snag_machine", "target": "PHENAC_CITY", "reward": "Snag Machine"},
+    {"id": "orre_m1", "type": "MAIN", "title": "Welcome to Orre", "description": "You rode into the Outskirt Stand at dawn. A rider is sitting at the far end of the diner. Talk to him!", "condition": {"required_region": "ORRE", "flag_not": "orre_beat_willie"}, "region": "ORRE", "completed_flag": "orre_beat_willie", "target": "OUTSKIRT_STAND"},
+    {"id": "orre_m2", "type": "MAIN", "title": "Trouble in Phenac", "description": "Willie said to sharpen your skills in Phenac City. Ride there. Those men with the sack were headed the same way...", "condition": {"required_region": "ORRE", "flag": "orre_beat_willie", "flag_not": ["orre_rui_joined", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_rui_joined", "target": "PHENAC_CITY"},
+    {"id": "orre_m2b", "type": "MAIN", "title": "The Mayor of Phenac", "description": "Rui saw Pokémon with a dark aura. Take her to Mayor Es Cade. His house is on the west side of town.", "condition": {"required_region": "ORRE", "flag": "orre_rui_joined", "flag_not": ["orre_met_mayor", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_met_mayor", "target": "PHENAC_CITY"},
+    {"id": "orre_m2c", "type": "MAIN", "title": "Poké Balls", "description": "Your Snag Machine can catch Shadow Pokémon, but you have no Poké Balls. Ask the bartender at the Outskirt Stand.", "condition": {"required_region": "ORRE", "flag": "orre_wakin", "flag_not": ["orre_got_balls", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_got_balls", "target": "OUTSKIRT_STAND"},
+    {"id": "orre_m2d", "type": "MAIN", "title": "Trouble at the Mayor's", "description": "Something's wrong at the Mayor's house in Phenac City! Hurry back.", "condition": {"required_region": "ORRE", "flag": "orre_got_balls", "flag_not": ["orre_raid_trudly", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_raid_trudly", "target": "PHENAC_CITY"},
+    {"id": "orre_m3", "type": "MAIN", "title": "Phenac's Guards", "description": "Three men in strange outfits are guarding Phenac's ways out, each with a Shadow Pokémon. Beat one and snag its Pokémon!", "condition": {"required_region": "ORRE", "flag": "orre_raid_trudly", "flag_not": "got_snag_machine"}, "region": "ORRE", "completed_flag": "got_snag_machine", "target": "PHENAC_CITY"},
     {"id": "orre_m4", "type": "MAIN", "title": "Pyrite Colosseum", "description": "Pyrite Town is rough, but its Colosseum gives a badge. Snag Shadow Pokémon in the Pyrite Building, then win the tournament!", "condition": {"required_region": "ORRE", "flag": "got_snag_machine", "region_badges_less": 1}, "region": "ORRE", "completed_badge": "PYRITE", "target": "PYRITE_TOWN", "reward": "Pyrite Badge"},
     {"id": "orre_m5", "type": "MAIN", "title": "Miror B. in Pyrite Cave", "description": "Cipher Admin Miror B. is hiding in Pyrite Cave with Shadow Pokémon. Dance your way past him!", "condition": {"required_region": "ORRE", "region_badges_min": 1, "flag_not": "orre_miror_cave"}, "region": "ORRE", "completed_flag": "orre_miror_cave", "target": "PYRITE_CAVE"},
     {"id": "orre_m6", "type": "MAIN", "title": "The Relic Stone", "description": "Pyrite Cave leads to Agate Village. Visit the village elder. The Relic Stone there can open a Shadow Pokémon's heart.", "condition": {"required_region": "ORRE", "flag": "orre_miror_cave", "flag_not": "met_agate_elder"}, "region": "ORRE", "completed_flag": "met_agate_elder", "target": "AGATE_VILLAGE"},
@@ -5865,6 +5913,8 @@
       "order": 3.5,
       "subtitle": "COLOSSEUM / XD / ORRE",
       "start_area": "OUTSKIRT_STAND",
+      "starter_levels": {"196": 25, "197": 26},
+      "starter_moves": {"196": ["CONFUSION", "RETURN", "REFLECT", "HELPING-HAND"], "197": ["BITE", "SECRET-POWER", "TAUNT", "SNATCH"]},
       "dex_extra": [],
       "starters": [
         196,
@@ -7063,5 +7113,137 @@
       "{other} doesn't want to be left behind! It bounds after {lead} and joins your team too.",
       "With {lead} and {other} at your side, your journey through Orre begins!"
     ]
+  },
+  "SHADOW_DATA": {
+    "9301": {"game": "xd", "heart": 4000, "catch_rate": 90, "level": 33, "caught_level": 30, "moves": ["SHADOW-RUSH", "SHADOW-MIST"]},
+    "9302": {"game": "xd", "heart": 4500, "catch_rate": 90, "level": 33, "caught_level": 30, "moves": ["SHADOW-BLITZ", "SHADOW-HOLD"]},
+    "9303": {"game": "xd", "heart": 4000, "catch_rate": 120, "level": 33, "caught_level": 30, "moves": ["SHADOW-BLITZ", "SHADOW-PANIC"]},
+    "9304": {"game": "xd", "heart": 6000, "catch_rate": 127, "level": 37, "caught_level": 34, "moves": ["SHADOW-RUSH", "SHADOW-DOWN"]},
+    "9305": {"game": "xd", "heart": 4500, "catch_rate": 255, "level": 25, "caught_level": 22, "moves": ["SHADOW-BLITZ", "SHADOW-PANIC"]},
+    "9306": {"game": "xd", "heart": 5000, "catch_rate": 90, "level": 36, "caught_level": 33, "moves": ["SHADOW-RUSH", "SHADOW-HALF"]},
+    "9307": {"game": "xd", "heart": 2000, "catch_rate": 190, "level": 21, "caught_level": 18, "moves": ["SHADOW-WAVE", "SHADOW-HOLD"]},
+    "9308": {"game": "xd", "heart": 4000, "catch_rate": 190, "level": 31, "caught_level": 28, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9309": {"game": "xd", "heart": 4000, "catch_rate": 120, "level": 35, "caught_level": 32, "moves": ["SHADOW-RUSH", "SHADOW-MIST"]},
+    "9310": {"game": "xd", "heart": 5000, "catch_rate": 100, "level": 43, "caught_level": 40, "moves": ["SHADOW-BREAK", "SHADOW-SHED", "SHADOW-SKY"]},
+    "9311": {"game": "xd", "heart": 3500, "catch_rate": 255, "level": 25, "caught_level": 22, "moves": ["SHADOW-RUSH", "SHADOW-HOLD"]},
+    "9312": {"game": "xd", "heart": 6500, "catch_rate": 120, "level": 36, "caught_level": 33, "moves": ["SHADOW-RAVE", "SHADOW-MIST"]},
+    "9313": {"game": "xd", "heart": 6000, "catch_rate": 80, "level": 37, "caught_level": 34, "moves": ["SHADOW-RUSH", "SHADOW-STORM"]},
+    "9314": {"game": "xd", "heart": 4000, "catch_rate": 190, "level": 31, "caught_level": 28, "moves": ["SHADOW-BLITZ", "SHADOW-WAVE"]},
+    "9315": {"game": "xd", "heart": 7500, "catch_rate": 90, "level": 45, "caught_level": 42, "moves": ["SHADOW-STORM", "SHADOW-RUSH", "SHADOW-SKY"]},
+    "9316": {"game": "xd", "heart": 4000, "catch_rate": 120, "level": 35, "caught_level": 32, "moves": ["SHADOW-RAVE", "SHADOW-HOLD"]},
+    "9317": {"game": "xd", "heart": 6000, "catch_rate": 110, "level": 41, "caught_level": 40, "moves": ["SHADOW-RAVE", "SHADOW-DOWN", "SHADOW-SKY"]},
+    "9318": {"game": "xd", "heart": 4500, "catch_rate": 110, "level": 31, "caught_level": 30, "moves": ["SHADOW-RAVE", "SHADOW-HOLD", "SHADOW-SKY"]},
+    "9319": {"game": "xd", "heart": 5500, "catch_rate": 80, "level": 39, "caught_level": 36, "moves": ["SHADOW-BREAK", "SHADOW-SKY", "SHADOW-PANIC"]},
+    "9320": {"game": "xd", "heart": 8000, "catch_rate": 90, "level": 37, "caught_level": 34, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9321": {"game": "xd", "heart": 3500, "catch_rate": 190, "level": 27, "caught_level": 23, "moves": ["SHADOW-WAVE", "SHADOW-MIST"]},
+    "9322": {"game": "xd", "heart": 3000, "catch_rate": 190, "level": 26, "caught_level": 23, "moves": ["SHADOW-BLITZ", "SHADOW-HOLD"]},
+    "9323": {"game": "xd", "heart": 4000, "catch_rate": 190, "level": 32, "caught_level": 29, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9324": {"game": "xd", "heart": 5500, "catch_rate": 80, "level": 37, "caught_level": 34, "moves": ["SHADOW-STORM", "SHADOW-DOWN"]},
+    "9325": {"game": "xd", "heart": 2500, "catch_rate": 190, "level": 22, "caught_level": 19, "moves": ["SHADOW-RUSH", "SHADOW-PANIC"]},
+    "9326": {"game": "xd", "heart": 9000, "catch_rate": 80, "level": 47, "caught_level": 46, "moves": ["SHADOW-STORM", "SHADOW-SHED", "SHADOW-HOLD", "SHADOW-END"]},
+    "9327": {"game": "xd", "heart": 6500, "catch_rate": 110, "level": 47, "caught_level": 44, "moves": ["SHADOW-END", "SHADOW-PANIC"]},
+    "9328": {"game": "xd", "heart": 7000, "catch_rate": 90, "level": 41, "caught_level": 38, "moves": ["SHADOW-RUSH", "SHADOW-DOWN", "SHADOW-HALF"]},
+    "9329": {"game": "xd", "heart": 6000, "catch_rate": 90, "level": 41, "caught_level": 38, "moves": ["SHADOW-RUSH", "SHADOW-DOWN"]},
+    "9330": {"game": "xd", "heart": 5000, "catch_rate": 90, "level": 41, "caught_level": 38, "moves": ["SHADOW-RUSH", "SHADOW-PANIC"]},
+    "9331": {"game": "xd", "heart": 7000, "catch_rate": 100, "level": 47, "caught_level": 46, "moves": ["SHADOW-END", "SHADOW-DOWN", "SHADOW-PANIC", "SHADOW-HOLD"]},
+    "9332": {"game": "xd", "heart": 4000, "catch_rate": 70, "level": 42, "caught_level": 39, "moves": ["SHADOW-RAVE", "SHADOW-HOLD"]},
+    "9333": {"game": "xd", "heart": 4000, "catch_rate": 90, "level": 33, "caught_level": 30, "moves": ["SHADOW-RAVE", "SHADOW-HOLD"]},
+    "9334": {"game": "xd", "heart": 6000, "catch_rate": 90, "level": 38, "caught_level": 35, "moves": ["SHADOW-RUSH", "SHADOW-MIST"]},
+    "9335": {"game": "xd", "heart": 7500, "catch_rate": 110, "level": 44, "caught_level": 41, "moves": ["SHADOW-STORM", "SHADOW-BREAK", "SHADOW-MIST"]},
+    "9336": {"game": "xd", "heart": 6500, "catch_rate": 90, "level": 45, "caught_level": 42, "moves": ["SHADOW-STORM", "SHADOW-SHED"]},
+    "9337": {"game": "xd", "heart": 8000, "catch_rate": 90, "level": 43, "caught_level": 40, "moves": ["SHADOW-RUSH", "SHADOW-MIST"]},
+    "9338": {"game": "xd", "heart": 7000, "catch_rate": 90, "level": 46, "caught_level": 43, "moves": ["SHADOW-BREAK", "SHADOW-MIST", "SHADOW-HALF", "SHADOW-STORM"]},
+    "9339": {"game": "xd", "heart": 7000, "catch_rate": 90, "level": 39, "caught_level": 36, "moves": ["SHADOW-RAVE", "SHADOW-RUSH", "SHADOW-SHED"]},
+    "9340": {"game": "xd", "heart": 7000, "catch_rate": 90, "level": 38, "caught_level": 35, "moves": ["SHADOW-BREAK", "SHADOW-SHED"]},
+    "9341": {"game": "xd", "heart": 9000, "catch_rate": 80, "level": 47, "caught_level": 46, "moves": ["SHADOW-RUSH", "SHADOW-HOLD", "SHADOW-SHED", "SHADOW-SKY"]},
+    "9342": {"game": "xd", "heart": 6000, "catch_rate": 80, "level": 47, "caught_level": 44, "moves": ["SHADOW-STORM", "SHADOW-SHED", "SHADOW-SKY"]},
+    "9343": {"game": "xd", "heart": 9000, "catch_rate": 70, "level": 46, "caught_level": 43, "moves": ["SHADOW-END", "SHADOW-SHED"]},
+    "9344": {"game": "xd", "heart": 10000, "catch_rate": 25, "level": 50, "caught_level": 50, "moves": ["SHADOW-CHILL", "SHADOW-SHED", "SHADOW-SKY", "SHADOW-RUSH"]},
+    "9345": {"game": "xd", "heart": 10000, "catch_rate": 25, "level": 50, "caught_level": 50, "moves": ["SHADOW-BOLT", "SHADOW-SHED", "SHADOW-SKY", "SHADOW-RUSH"]},
+    "9346": {"game": "xd", "heart": 10000, "catch_rate": 25, "level": 50, "caught_level": 50, "moves": ["SHADOW-FIRE", "SHADOW-SHED", "SHADOW-HOLD", "SHADOW-RUSH"]},
+    "9347": {"game": "xd", "heart": 9000, "catch_rate": 45, "level": 57, "caught_level": 55, "moves": ["SHADOW-RUSH", "SHADOW-DOWN", "SHADOW-SHED", "SHADOW-STORM"]},
+    "9348": {"game": "col", "heart": 3000, "catch_rate": 180, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9349": {"game": "col", "heart": 3000, "catch_rate": 180, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9350": {"game": "col", "heart": 3000, "catch_rate": 180, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9351": {"game": "col", "heart": 5000, "catch_rate": 90, "level": 33, "moves": ["SHADOW-RUSH"]},
+    "9352": {"game": "col", "heart": 3000, "catch_rate": 90, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9353": {"game": "xd", "heart": 2500, "catch_rate": 255, "level": 11, "caught_level": 10, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9354": {"game": "col", "heart": 6000, "catch_rate": 90, "level": 40, "moves": ["SHADOW-RUSH"]},
+    "9355": {"game": "xd", "heart": 1500, "catch_rate": 255, "level": 17, "caught_level": 14, "moves": ["SHADOW-BLITZ", "SHADOW-MIST"]},
+    "9356": {"game": "col", "heart": 6000, "catch_rate": 90, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9357": {"game": "xd", "heart": 4500, "catch_rate": 190, "level": 25, "caught_level": 30, "moves": ["SHADOW-RAVE", "SHADOW-SHED"]},
+    "9358": {"game": "col", "heart": 5000, "catch_rate": 45, "level": 20, "moves": ["SHADOW-RUSH"]},
+    "9359": {"game": "xd", "heart": 2500, "catch_rate": 190, "level": 25, "caught_level": 22, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9360": {"game": "xd", "heart": 1500, "catch_rate": 235, "level": 17, "caught_level": 17, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9361": {"game": "col", "heart": 3000, "catch_rate": 120, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9362": {"game": "col", "heart": 10000, "catch_rate": 65, "level": 35, "moves": ["SHADOW-RUSH"]},
+    "9363": {"game": "col", "heart": 3000, "catch_rate": 120, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9364": {"game": "col", "heart": 6000, "catch_rate": 45, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9365": {"game": "col", "heart": 7000, "catch_rate": 120, "level": 45, "moves": ["SHADOW-RUSH"]},
+    "9366": {"game": "col", "heart": 5000, "catch_rate": 75, "level": 33, "moves": ["SHADOW-RUSH"]},
+    "9367": {"game": "col", "heart": 4000, "catch_rate": 90, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9368": {"game": "col", "heart": 6000, "catch_rate": 30, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9369": {"game": "col", "heart": 4000, "catch_rate": 90, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9370": {"game": "xd", "heart": 2500, "catch_rate": 190, "level": 23, "caught_level": 20, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9371": {"game": "col", "heart": 6000, "catch_rate": 75, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9372": {"game": "col", "heart": 5000, "catch_rate": 190, "level": 33, "moves": ["SHADOW-RUSH"]},
+    "9373": {"game": "col", "heart": 6000, "catch_rate": 60, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9374": {"game": "col", "heart": 6000, "catch_rate": 75, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9375": {"game": "col", "heart": 5000, "catch_rate": 45, "level": 33, "moves": ["SHADOW-RUSH"]},
+    "9377": {"game": "col", "heart": 7000, "catch_rate": 190, "level": 45, "moves": ["SHADOW-RUSH"]},
+    "9378": {"game": "col", "heart": 7000, "catch_rate": 45, "level": 45, "moves": ["SHADOW-RUSH"]},
+    "9379": {"game": "col", "heart": 6000, "catch_rate": 60, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9380": {"game": "xd", "heart": 3000, "catch_rate": 120, "level": 11, "caught_level": 11, "moves": ["SHADOW-BLITZ", "SHADOW-MIST"]},
+    "9381": {"game": "col", "heart": 7000, "catch_rate": 60, "level": 45, "moves": ["SHADOW-RUSH"]},
+    "9382": {"game": "col", "heart": 4000, "catch_rate": 190, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9383": {"game": "xd", "heart": 5500, "catch_rate": 120, "level": 40, "caught_level": 38, "moves": ["SHADOW-RAVE", "SHADOW-SHED"]},
+    "9384": {"game": "xd", "heart": 2500, "catch_rate": 225, "level": 25, "caught_level": 22, "moves": ["SHADOW-BLITZ", "SHADOW-WAVE"]},
+    "9385": {"game": "col", "heart": 6000, "catch_rate": 75, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9386": {"game": "col", "heart": 4000, "catch_rate": 190, "level": 20, "moves": ["SHADOW-RUSH"]},
+    "9387": {"game": "col", "heart": 7000, "catch_rate": 45, "level": 45, "moves": ["SHADOW-RUSH"]},
+    "9388": {"game": "col", "heart": 5000, "catch_rate": 90, "level": 33, "moves": ["SHADOW-RUSH"]},
+    "9389": {"game": "col", "heart": 13000, "catch_rate": 15, "level": 47, "moves": ["SHADOW-RUSH"]},
+    "9390": {"game": "xd", "heart": 1500, "catch_rate": 225, "level": 17, "caught_level": 17, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9391": {"game": "col", "heart": 7000, "catch_rate": 45, "level": 48, "moves": ["SHADOW-RUSH"]},
+    "9392": {"game": "col", "heart": 6000, "catch_rate": 45, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9393": {"game": "col", "heart": 7000, "catch_rate": 45, "level": 45, "moves": ["SHADOW-RUSH"]},
+    "9394": {"game": "col", "heart": 6000, "catch_rate": 45, "level": 38, "moves": ["SHADOW-RUSH"]},
+    "9395": {"game": "col", "heart": 7000, "catch_rate": 45, "level": 48, "moves": ["SHADOW-RUSH"]},
+    "9396": {"game": "col", "heart": 13000, "catch_rate": 15, "level": 40, "moves": ["SHADOW-RUSH"]},
+    "9397": {"game": "col", "heart": 13000, "catch_rate": 15, "level": 40, "moves": ["SHADOW-RUSH"]},
+    "9398": {"game": "col", "heart": 13000, "catch_rate": 15, "level": 40, "moves": ["SHADOW-RUSH"]},
+    "9399": {"game": "col", "heart": 20000, "catch_rate": 10, "level": 55, "moves": ["SHADOW-RUSH"]},
+    "9400": {"game": "xd", "heart": 12000, "catch_rate": 3, "level": 53, "caught_level": 50, "moves": ["SHADOW-BLAST", "SHADOW-SHED", "SHADOW-DOWN", "SHADOW-STORM"]},
+    "9401": {"game": "xd", "heart": 2500, "catch_rate": 255, "level": 11, "caught_level": 10, "moves": ["SHADOW-BLITZ", "SHADOW-HOLD"]},
+    "9402": {"game": "xd", "heart": 1500, "catch_rate": 255, "level": 17, "caught_level": 17, "moves": ["SHADOW-WAVE", "SHADOW-HOLD"]},
+    "9403": {"game": "xd", "heart": 7000, "catch_rate": 90, "level": 46, "caught_level": 43, "moves": ["SHADOW-BREAK", "SHADOW-SKY", "SHADOW-HALF", "SHADOW-MIST"]},
+    "9404": {"game": "xd", "heart": 2200, "catch_rate": 235, "level": 23, "caught_level": 20, "moves": ["SHADOW-WAVE", "SHADOW-HOLD"]},
+    "9405": {"game": "xd", "heart": 1800, "catch_rate": 255, "level": 18, "caught_level": 15, "moves": ["SHADOW-BLITZ", "SHADOW-MIST"]},
+    "9406": {"game": "col", "heart": 3000, "catch_rate": 255, "level": 30, "moves": ["SHADOW-RUSH"]},
+    "9407": {"game": "xd", "heart": 4000, "catch_rate": 255, "level": 29, "caught_level": 26, "moves": ["SHADOW-WAVE", "SHADOW-MIST"]},
+    "9408": {"game": "xd", "heart": 2500, "catch_rate": 120, "level": 21, "caught_level": 18, "moves": ["SHADOW-RUSH", "SHADOW-WAVE"]},
+    "9409": {"game": "xd", "heart": 7000, "catch_rate": 90, "level": 36, "caught_level": 33, "moves": ["SHADOW-BLITZ", "SHADOW-HOLD"]},
+    "9410": {"game": "xd", "heart": 2500, "catch_rate": 120, "level": 25, "caught_level": 22, "moves": ["SHADOW-RUSH", "SHADOW-WAVE"]},
+    "9411": {"game": "col", "heart": 5000, "catch_rate": 180, "level": 33, "moves": ["SHADOW-RUSH"]},
+    "9412": {"game": "xd", "heart": 7000, "catch_rate": 80, "level": 47, "caught_level": 44, "moves": ["SHADOW-END", "SHADOW-MIST", "SHADOW-SKY"]},
+    "9413": {"game": "xd", "heart": 3000, "catch_rate": 150, "level": 25, "caught_level": 22, "moves": ["SHADOW-WAVE", "SHADOW-SHED"]},
+    "9414": {"game": "xd", "heart": 1500, "catch_rate": 225, "level": 17, "caught_level": 17, "moves": ["SHADOW-BLITZ", "SHADOW-HOLD"]},
+    "9415": {"game": "xd", "heart": 1700, "catch_rate": 225, "level": 18, "caught_level": 15, "moves": ["SHADOW-BLITZ", "SHADOW-HOLD"]},
+    "9416": {"game": "xd", "heart": 1500, "catch_rate": 255, "level": 17, "caught_level": 14, "moves": ["SHADOW-BLITZ", "SHADOW-SHED"]},
+    "9417": {"game": "col", "heart": 6000, "catch_rate": 120, "level": 43, "moves": ["SHADOW-RUSH"]},
+    "9418": {"game": "col", "heart": 5000, "catch_rate": 255, "level": 33, "moves": ["SHADOW-RUSH"]},
+    "9419": {"game": "xd", "heart": 6500, "catch_rate": 80, "level": 39, "caught_level": 36, "moves": ["SHADOW-BREAK", "SHADOW-MIST", "SHADOW-RAVE"]},
+    "9420": {"game": "xd", "heart": 5000, "catch_rate": 90, "level": 31, "caught_level": 28, "moves": ["SHADOW-RUSH", "SHADOW-MIST"]},
+    "9421": {"game": "xd", "heart": 5000, "catch_rate": 100, "level": 28, "caught_level": 25, "moves": ["SHADOW-WAVE", "SHADOW-SHED", "SHADOW-SKY"]},
+    "9422": {"game": "xd", "heart": 7500, "catch_rate": 90, "level": 44, "caught_level": 41, "moves": ["SHADOW-RAVE", "SHADOW-PANIC", "SHADOW-SKY"]},
+    "9423": {"game": "xd", "heart": 1500, "catch_rate": 255, "level": 17, "caught_level": 17, "moves": ["SHADOW-BLITZ", "SHADOW-MIST"]},
+    "9424": {"game": "xd", "heart": 7000, "catch_rate": 90, "level": 39, "caught_level": 37, "moves": ["SHADOW-RUSH", "SHADOW-HOLD"]},
+    "9425": {"game": "xd", "heart": 2200, "catch_rate": 190, "level": 22, "caught_level": 19, "moves": ["SHADOW-WAVE", "SHADOW-HOLD"]},
+    "9426": {"game": "col", "heart": 7000, "catch_rate": 45, "level": 49, "moves": ["SHADOW-RUSH"]},
+    "9427": {"game": "col", "heart": 7000, "catch_rate": 30, "level": 48, "moves": ["SHADOW-RUSH"]},
+    "9428": {"game": "xd", "heart": 2500, "catch_rate": 190, "level": 23, "caught_level": 20, "moves": ["SHADOW-WAVE", "SHADOW-SHED"]},
+    "9429": {"game": "xd", "heart": 1500, "catch_rate": 255, "level": 17, "caught_level": 17, "moves": ["SHADOW-WAVE", "SHADOW-MIST"]},
+    "9430": {"game": "xd", "heart": 9000, "catch_rate": 80, "level": 51, "caught_level": 50, "moves": ["SHADOW-RUSH", "SHADOW-HOLD"]},
+    "9431": {"game": "col", "heart": 15000, "catch_rate": 15, "level": 50, "moves": ["SHADOW-RUSH"]}
   }
 }

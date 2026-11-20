@@ -1112,6 +1112,9 @@ class DungeonState(OverworldBattles, PlayState):
         wp = walk_partners.active(self.game.story_manager, getattr(self, "area_key", None))
         if wp:
             return (walk_partners.figure(wp),)
+        from src.world import rui as _rui   # (Orre: Rui walks with you from Phenac on, Q4)
+        if _rui.active(self.game.story_manager):
+            return (_rui.NAME,)
         c = self.COMPANIONS.get(getattr(self, "area_key", None))
         flags = self.game.story_manager.story_flags
         if not c or not all(flags.get(f) for f in c["while"]) or flags.get(c["until"]):
@@ -1148,7 +1151,10 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _talk_companion(self, who):
         """Talking to someone walking with you: this floor's line of theirs (their figure's), else a word in passing."""
-        from src.world import walk_partners
+        from src.world import walk_partners, rui as _rui
+        if who == _rui.NAME and _rui.active(self.game.story_manager):
+            self.say(_rui.chat(self.game.story_manager))
+            return
         wp = walk_partners.active(self.game.story_manager, self.area_key)
         if wp and walk_partners.figure(wp) == who:
             self.say(list(walk_partners.PARTNERS[wp].get("chat") or ["..."]))
@@ -4530,7 +4536,8 @@ class DungeonState(OverworldBattles, PlayState):
             way = (ahead[0] - tx, ahead[1] - ty)
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
             img = (self._mon_img(149, way) if _who == "Dragonite"
-                   else self._figure_img({"text": _who}, way, (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0))
+                   else self._sheet_frame("orre_partner_rui.png", way, frame=(1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0)
+                   if _who == "Rui" else self._figure_img({"text": _who}, way, (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0))
             if img is not None:
                 _trail[len(drawn)] = (self._ctrail_from[_ci + 1], self._ctrail[_ci + 1])
                 drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))

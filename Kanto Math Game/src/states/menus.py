@@ -936,6 +936,15 @@ class StarterSelectionState(GameState):
         self.game.data.add_pokemon(chosen_pokemon_obj)
         # Orre (Jordan, 11-01): the partners won't be split up; the one not chosen comes along too.
         others = [p for i, p in enumerate(self.starters) if i != self.selected_idx]             if self.region_cfg.get("partners_join") else []
+        lv_by = self.region_cfg.get("starter_levels") or {}   # (Orre: Colosseum's Espeon Lv 25, Umbreon Lv 26)
+        mv_by = self.region_cfg.get("starter_moves") or {}    # (and their fixed moves, from the disc)
+        if lv_by or mv_by:
+            from src.world import levels as _lv
+            for p in [chosen_pokemon_obj] + others:
+                if str(p.id) in lv_by:
+                    _lv.set_team([p], [int(lv_by[str(p.id)])], exact=True)
+                if str(p.id) in mv_by:
+                    p.moves = list(mv_by[str(p.id)])
         for i, other in enumerate(others, 1):
             if len(team) < 6:
                 team.insert(i, other)
@@ -1021,8 +1030,16 @@ class StarterSelectionState(GameState):
             return
         if self.uses_town_rival:
             from src.states.overworld import AreaTransitionState
-            self.game.change_state(AreaTransitionState(
-                self.game, self.region_cfg.get("start_area")))
+            go = lambda: self.game.change_state(AreaTransitionState(self.game, self.region_cfg.get("start_area")))
+            if self.region == "ORRE":   # (Colosseum's opening: the Snag Machine taken, the hideout blown, the ride in - Q2)
+                story = self.game.story_manager
+                story.inventory["SNAG_MACHINE"] = 1
+                story.story_flags["orre_opening_seen"] = True
+                if getattr(self.game, "intro_scenes", True):
+                    from src.states.orre_opening import OrreOpeningState
+                    self.game.change_state(OrreOpeningState(self.game, go))
+                    return
+            go()
             return
 
         if self.region == "JOHTO":

@@ -117,8 +117,16 @@ class EvolutionState(GameState):
             if self.timer <= 0:
                 self.phase = "FLASH"
                 self.timer = 20
+                evo_id, evo_form = self.evolution_id, self.next_form
+                if evo_form == "shadow":   # (Orre: a Shadow evolves into its own Shadow form, e.g. 9602 Shadow Meganium, so the
+                    fm = self.game.loader.area_data.get("FORM_MAP", {})   # Relic Stone and the Shadow checks know it - Jordan's rule, 11-20)
+                    fid = next((k for k, v in fm.items() if v.get("form") == "shadow" and int(v.get("id", 0)) == int(evo_id)
+                                and k not in (self.game.loader.area_data.get("SHADOW_DATA") or {})), None) \
+                        or next((k for k, v in fm.items() if v.get("form") == "shadow" and int(v.get("id", 0)) == int(evo_id)), None)
+                    if fid:
+                        evo_id, evo_form = int(fid), "normal"
                 raw_data = self.game.loader.fetch_specific(
-                    self.evolution_id, form=self.next_form,
+                    evo_id, form=evo_form,
                     is_shiny=self.pokemon.is_shiny
                 )
                 self.evolved_pokemon_obj = Pokemon(
@@ -127,7 +135,8 @@ class EvolutionState(GameState):
                 # What the Pokémon has earned stays with it through evolution.
                 for attr in ("level", "xp", "friendship", "affection", "everstone", "counters", "condition", "sheen", "ribbons",
                              "gmax_factor", "caught_region", "ivs", "moves", "move_pool", "status", "ability_slot",
-                             "gender", "tera_type", "held_item", "pp", "pp_ups", "nickname", "traded"):
+                             "gender", "tera_type", "held_item", "pp", "pp_ups", "nickname", "traded",
+                             "shadow"):   # (Orre: a Shadow Pokemon evolves still Shadow, its Heart Gauge kept - Jordan's rule, 11-20)
                     if hasattr(self.pokemon, attr):
                         setattr(self.evolved_pokemon_obj, attr, getattr(self.pokemon, attr))
 

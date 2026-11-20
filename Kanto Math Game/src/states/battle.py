@@ -17,6 +17,7 @@ from src.states.battle_items import HeldItemEffects
 from src.states.battle_gimmicks import GimmickEffects, end_battle as gimmick_end_battle
 from src.states.battle_moves import MoveMechanics, TARGET_DEFENSE, IGNORE_DEF_STAGES
 from src.states.battle_doubles import DoublesSlots
+from src.states.battle_shadow import ShadowBattle
 from src.pokemon import balance
 from src.pokemon import moves as movelib
 from src.pokemon import pp as pplib
@@ -29,7 +30,7 @@ from src.config import WHITE, BLACK, GOLD, FPS
 
 
 # [REF-0024: Trainer Battle Core]
-class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffects, DoublesSlots, HeldItemEffects,
+class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMechanics, MoveEffects, DoublesSlots, HeldItemEffects,
                          GameState):
     def __new__(cls, *args, **kwargs):
         # A double battle (options {"double": True}) is its own class, so every caller that builds a trainer battle from
@@ -389,6 +390,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                 lines = all_dialogue.get(self.trainer_class, {}).get("player_won", [])
                 default_win_text = f"Player defeated {self.trainer_name or self.trainer_class}!"
                 text = random.choice(lines) if lines else default_win_text
+            extra = self._shadow_after()   # (Shadow Pokemon that fought open their hearts a little)
+            if extra:
+                text = (list(text) if isinstance(text, list) else [text]) + extra
 
             self.phase = "VICTORY_TEXT"
             self.dialogue_box.is_finished = False
@@ -935,6 +939,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             power = max(1, int(power * self.ability_power_mult(attacker, defender, cur[0], cur[1])
                                * self.terrain_power_mult(attacker, defender, cur[1])))
         types = defender.types or []
+        if move_type == "SHADOW":   # (XD's Shadow moves: x2 on ordinary Pokemon - the chart - but x0.5 on Shadow ones)
+            from src.world import shadow
+            effectiveness = shadow.damage_mult(self.game, attacker, defender, move_type)
         if d_stat == "SPDEF" and self.weather == "SAND" and "ROCK" in types:
             defense = defense * 3 // 2  # sandstorm: Rock types' Sp. Def x1.5
         if d_stat == "DEFENSE" and self.weather == "SNOW" and "ICE" in types:
@@ -1056,6 +1063,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             + ([("TERA", self.activate_tera, (90, 190, 220))] if self.tera_option() else []),
         )
         self.action_menu.set_visibility(True)
+        self._shadow_menu()
 
         if hasattr(self, 'game') and self.game.ui_manager:
 
@@ -1117,6 +1125,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         self.dialogue_box.set_visibility(False)
 
     def handle_run(self):
+        if self._shadow_call():   # (CALL, with your Shadow Pokemon out in a trainer battle)
+            return
         v = self.vol(self.player_pokemon)
         if self.trainer_class == "WILD" and self.field().get("fairy_lock"):
             self.show_message("No one can run away this turn!", callback=self.return_to_menu)
@@ -1364,6 +1374,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         self._note_first_turns()
         if not player_was_correct and getattr(self, "_answer_mode", None) is None:
             self._answer_mode = "weak"
+        self._shadow_turn()   # (a Shadow Pokemon may go into Hyper Mode: battle_shadow.py)
         mine = movelib.info(self.game, self._forced_move(self.player_pokemon)
                             or self.chosen_move or self._battle_moves(self.player_pokemon)[0])
         swap = self._ai_switch_choice()   # (a trainer pulls out a Pokemon in a bad spot, 11-18)
@@ -2522,7 +2533,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             move_anim=self.move_anim, keep_battlers=bool(getattr(self, "_move_seq", None)),
             fainting_side="player" if is_summoning_player else (self.fainting_side if (self.phase == "FAINT_ANIM_RUNNING" or self.phase == "RETRACT_ANIM") else None),
             trainer_x_offset=self.trainer_slide_offset,
-            hide_opponent=is_summoning_enemy
+            hide_opponent=is_summoning_enemy or self._snag_hides()
         )
         self._draw_weather(screen)
 
@@ -2538,6 +2549,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             self._draw_raid_allies(screen)
 
         self.game.ui_manager.draw(screen)
+        self._snag_draw(screen)
 
     def _draw_raid_allies(self, screen):
         """The Max Raid teammates, small, down the left: each trainer's name and Pokemon."""
@@ -2666,6 +2678,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                 box.advance()
 
     def update(self):
+        if self._snag_update():   # (a snag playing: battle_shadow.py)
+            return
         self._auto_text()
         self.anim_ctrl.update()
         if self._hold_for_move_anim():

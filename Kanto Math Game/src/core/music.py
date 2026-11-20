@@ -64,6 +64,21 @@ for _n in (24, 25):
     KANTO_AREAS[f"KANTO_ROUTE_{_n}"] = "route_24"
 KANTO_KINDS = {"wild": "wild_pokemon_battle", "trainer": "trainer_battle", "gym": "gym_battle",
                "final": "final_battle", "gym_lobby": "pokemon_gym", "victory": "victory_trainer"}
+# Orre (assets/music/orre, XD's tracks from the Orre 2.1.1 fan game; Jordan 11-20, Q16): each place's theme and Orre's
+# battle themes; places XD has no theme for take the nearest one. A trainer battle with a villain plays Cipher's theme.
+ORRE_AREAS = {
+    "OUTSKIRT_STAND": "outskirt_stand", "PHENAC_CITY": "phenac_city", "PRESTIGE_PRECEPT_CENTER": "pre_gym",
+    "PYRITE_TOWN": "pyrite_town", "PYRITE_BUILDING": "pyrite_town", "PYRITE_CAVE": "the_under", "THE_UNDER": "the_under",
+    "UNDER_COLOSSEUM": "orre_colosseum", "AGATE_VILLAGE": "agate_village", "RELIC_CAVE": "relic_forest",
+    "RELIC_FOREST": "relic_forest", "MT_BATTLE": "mt_battle", "GATEON_PORT": "gateon_port", "POKEMON_HQ_LAB": "gateon_port",
+    "KAMINKO_HOUSE": "gateon_port", "SS_LIBRA": "world_map", "XD_ONBS": "onbs", "SNAGEM_HIDEOUT": "snagem_hideout",
+    "SHADOW_PKMN_LAB": "cipher_key_lair", "XD_CIPHER_LAB": "cipher_key_lair", "XD_CIPHER_KEY_LAIR": "cipher_key_lair",
+    "ORRE_COLOSSEUM": "orre_colosseum", "REALGAM_TOWER": "realgam_tower", "CIPHER_COMMAND": "realgam_tower",
+    "DEEP_COLOSSEUM": "orre_colosseum", "XD_CITADARK_ISLE": "citadark_isle", "ORRE_DESERT": "world_map",
+    "ORRE_POKE_SPOTS": "poke_spot", "OASIS_POKE_SPOT": "poke_spot", "CAVE_POKE_SPOT": "poke_spot",
+}
+ORRE_KINDS = {"wild": "wild_battle", "trainer": "trainer_battle", "gym": "colosseum_battle", "final": "evice_battle",
+              "victory": "victory", "villain": "cipher_battle", "center": "pokemon_center", "gym_lobby": "orre_colosseum"}
 # Screen music from the same soundtrack, in every region.
 THEMES = {"center": "pokemon_center", "lab": "oak_lab", "oak": "professor_oak", "home": "home",
           "game_corner": "game_corner", "evolution": "evolution", "enc_male": "male_trainer_appears",
@@ -133,6 +148,8 @@ class MusicManager:
         folder = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", "kanto")
         if not os.path.isdir(folder):
             return None
+        if region == "ORRE" and kind not in ("title", "hall_of_fame"):
+            return self.orre_track(kind)
         if kind in ("title", "hall_of_fame"):
             name = "hall_of_fame"
         elif kind in THEMES:
@@ -147,6 +164,29 @@ class MusicManager:
             name = KANTO_KINDS.get(kind)
         path = os.path.join(folder, f"{name}.mp3") if name else None
         return path if path and os.path.isfile(path) else None
+
+    def orre_track(self, kind):
+        """Orre's own track for this kind of music here, or None (the shared screen themes then)."""
+        folder = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", "orre")
+        if kind in ("town", "route"):
+            name = ORRE_AREAS.get(getattr(self.game.story_manager, "current_area_key", ""))
+        else:
+            name = ORRE_KINDS.get(kind)
+        path = os.path.join(folder, f"{name}.ogg") if name else None
+        return path if path and os.path.isfile(path) else None
+
+    def play_file(self, name, loop=True):
+        """A scene's own track by name (assets/music/<region>/<name>.ogg, e.g. "orre/miror_b")."""
+        path = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", *f"{name}.ogg".split("/"))
+        if not pygame.mixer.get_init() or not os.path.isfile(path) or (path == self.path and pygame.mixer.music.get_busy()):
+            return
+        try:
+            pygame.mixer.music.load(path)
+            pygame.mixer.music.set_volume(music_volume())
+            pygame.mixer.music.play(-1 if loop else 0)
+            self.kind, self.path = "scene", path
+        except Exception as e:
+            print(f"Music: couldn't play {path}: {e}")
 
     def play(self, kind, force=False):
         """Switch to this kind of music (no restart if the same track is already playing)."""
@@ -264,11 +304,18 @@ class MusicManager:
         from src.states.menus import MainMenuState
         if isinstance(state, WildBattleState):
             kind = "gym" if getattr(state, "is_boss_battle", False) else "wild"
+        elif type(state).__name__ == "TrainerIntroState" and self._orre() and isinstance(getattr(state, "next_state", None), TrainerBattleState):
+            return self.for_state(state.next_state)   # (Orre: XD has no "eyes meet" themes; the battle's own track starts)
         elif isinstance(state, TrainerBattleState):
+            track = (getattr(state, "battle_options", None) or {}).get("music")
+            if track:   # (a battle with its own theme: Willie, Miror B.)
+                return self.play_file(track)
             big = (state.battle_type == "gym" or getattr(state, "is_boss_battle", False)
                    or state.trainer_class in ("GYM_LEADER", "ELITE_FOUR", "CHAMPION"))
             kind = ("final" if state.trainer_class in ("ELITE_FOUR", "CHAMPION")
                     else "gym" if big else "trainer")
+            if kind == "trainer" and self._orre() and any(w in class_key(state.trainer_class) for w in VILLAIN_WORDS + ("PEON",)):
+                kind = "villain"   # (Orre: Cipher's and Snagem's battles have their own theme)
         elif isinstance(state, GymLobbyState):
             kind = "gym_lobby"
         elif type(state).__name__ in ("PokeCenterState", "CenterInsideState"):
@@ -295,6 +342,12 @@ class MusicManager:
         else:
             return
         self.play(kind)
+
+    def _orre(self):
+        try:
+            return self.game.story_manager.get_current_region() == "ORRE"
+        except Exception:
+            return False
 
     @staticmethod
     def _end_event():

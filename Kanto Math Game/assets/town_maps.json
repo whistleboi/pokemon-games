@@ -281383,7 +281383,7 @@
    "cccccccccccccccccccc.ccccccccc....ccccccc...cccccccccccc",
    "cccccccc.............ADAccccccc.................cccccccc",
    "cccccccc.........ccc.c.cccccccc.cc..ccc.........cccccccc",
-   "cccccccc.................N........cc............cccccccc",
+   "cccccccc..........................cc............cccccccc",
    "cccccccc...cc..................c................cccccccc",
    "cccccccc........cc......c..cc.cNc.......ccc.....cccccccc",
    "cccccccc........................................cccccccc",
@@ -281408,7 +281408,6 @@
    "B": "cycle"
   },
   "people": [
-   "CHALLENGE WILLIE",
    "Pokemon Center"
   ],
   "signs": [],
@@ -281431,7 +281430,7 @@
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccc..cc",
      "cccccccccc.ccccc.ccc..........",
-     "cccccNccc.....................",
+     "cccccNccc..................N..",
      "ccc.c.cNc.....................",
      "c...................cc.......c",
      "c............................c",
@@ -281450,11 +281449,83 @@
     "people": [
      "Poke Mart",
      {
+      "text": "Rider Willie",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "orre_beat_willie",
+         "lines": [
+          "On the diner's TV: \"...an explosion lit up the desert last night. Team Snagem's hideout is in ruins.\"",
+          "Rider Willie: Wild, huh? Hey, you rode in on that bike outside? You look like you know your way round a battle.",
+          "Rider Willie: How about it? Me and my Zigzagoon, two on two!"
+         ],
+         "battle": {
+          "name": "Rider Willie",
+          "class": "RIDER",
+          "sprite": "orre_rider_willie.png",
+          "team": [
+           263,
+           263
+          ],
+          "levels": [
+           24,
+           24
+          ],
+          "team_moves": [
+           [
+            "TACKLE",
+            "GROWL"
+           ],
+           [
+            "TACKLE",
+            "TAIL-WHIP"
+           ]
+          ],
+          "rewards": {
+           "balls": 0
+          },
+          "double": true,
+          "music": "orre/willie_battle",
+          "dialogue": {
+           "player_won": [
+            "Rider Willie: Whoa! You're the real deal!"
+           ],
+           "player_lost": [
+            "Rider Willie: Ha! Better luck next time!"
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Rider Willie: You're too good for this place. Go sharpen your skills in Phenac City!",
+        "Rider Willie: It's the town with the big fountain. You can't miss it."
+       ]
+      }
+     },
+     {
       "text": "Diner",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "The food's good, and it's the only place for miles."
+       "stages": [
+        {
+         "requires": [
+          "orre_wakin"
+         ],
+         "flag": "orre_got_balls",
+         "lines": [
+          "Bartender: Poke Balls? Nobody sells those in Orre these days. There's hardly a wild Pokemon left out here.",
+          "Bartender: I've got a few lying around, though. Here, take these on the house.",
+          "You received 5 POKE BALLS!"
+         ],
+         "gift_item": {
+          "POKE_BALL": 5
+         }
+        }
+       ],
+       "done": [
+        "Bartender: The food's good, and it's the only place for miles."
        ]
       }
      },
@@ -281512,6 +281583,92 @@
      32
     ]
    }
+  ],
+  "scenes": [
+   {
+    "trigger": "enter",
+    "condition": "not:orre_os_shady",
+    "flag": "orre_os_shady",
+    "cast": [
+     {
+      "sheet": "orre_folly.png",
+      "from": [
+       22,
+       13
+      ],
+      "path": [
+       [
+        22,
+        17
+       ]
+      ],
+      "stay": true,
+      "wait": 6,
+      "lines": [
+       "Two men hurry out of the diner, hauling a big sack between them. The sack wriggles!"
+      ]
+     },
+     {
+      "sheet": "orre_trainer_burglar.png",
+      "from": [
+       22,
+       13
+      ],
+      "path": [
+       [
+        23,
+        17
+       ]
+      ],
+      "stay": true,
+      "concurrent": true,
+      "lines": [
+       "???: Quick! Into the truck before anybody sees us!"
+      ]
+     },
+     {
+      "as": 0,
+      "path": [
+       [
+        22,
+        17
+       ],
+       [
+        47,
+        17
+       ]
+      ],
+      "leave_path": [
+       [
+        52,
+        17
+       ]
+      ],
+      "lines": []
+     },
+     {
+      "as": 1,
+      "path": [
+       [
+        23,
+        18
+       ],
+       [
+        47,
+        18
+       ]
+      ],
+      "leave_path": [
+       [
+        52,
+        18
+       ]
+      ],
+      "concurrent": true,
+      "lines": []
+     }
+    ]
+   }
   ]
  },
  "PHENAC_CITY": {
@@ -281537,7 +281694,7 @@
    "cccccccccccccccccccccccccN.ccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccN.ccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccc..ccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccc..ccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccN.ccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccc..ccccccccccccccccccccccccc",
    "ccccccccccccccccc.....ccc..ccccccccccccccccccccccccc",
    "cccccccccccccc.........cc..ccccccccccccccccccccccccc",
@@ -281547,8 +281704,8 @@
    "ccccccccccccc.c......................ccccccccccccccc",
    "ccccccccccBDB.c......................ccCDCcccccccccc",
    "cccccccc....!.c........cccccc........c......cccccccc",
-   "cccccccc...............cccccc...............>ccccccc",
-   "cccccccc...............cccccc..............Ncccccccc",
+   "cccccccc...............cccccc.............N.>ccccccc",
+   "cccccccc....N..........cccccc..............Ncccccccc",
    "cccccccc......c........!EDDE.........c......cccccccc",
    "cccccccc..N...cc....................cc......cccccccc",
    "cccccccc.......cc..................cc.......cccccccc",
@@ -281560,7 +281717,7 @@
    "ccccccccccccccccccccccccc..ccccccccccccccccccccccccc",
    "cccccccccccc.cccccccccccc..ccccccccccccccccccccccccc",
    "cccccccc.....FDFccccccccc..ccccccccccccccccccccccccc",
-   "ccccccccc......Ncc..........N.....cccccccccccccccccc",
+   "ccccccccc......Ncc..........N.N...cccccccccccccccccc",
    "ccccccccccccc..cc..................ccccccccccccccccc",
    "ccccccccccccc.cc....................cccccccccccccccc",
    "ccccccccccccc.c........cccccc........ccccccccccccccc",
@@ -281568,16 +281725,16 @@
    "cccccccc...NN........cccccccccc..........ccccccccccc",
    "cccccccc.............cccccccccc..........ccccccccccc",
    "cccccccc......c.......cccccccc.......c......cccccccc",
-   "cccccccc......c........cccccc........c......cccccccc",
-   "cccccccc......cc......N...N.........cc......cccccccc",
+   "cccccccc......c........cccccc......N.c......cccccccc",
+   "cccccccc......cc......N.............cc......cccccccc",
    "cccccccc.......cc..................cc.......cccccccc",
    "cccccccc........cc................cc........cccccccc",
    "cccccccc........c.ccccccc..ccccccccc........cccccccc",
    "cccccccc....................!...............cccccccc",
-   "ccccccccc................N.................ccccccccc",
-   "ccccccccccc..............................ccccccccccc",
-   "cccccccccccccccc....................cccccccccccccccc",
-   "ccccccccccccccccccccccccc..ccccccccccccccccccccccccc",
+   "ccccccccc..................................ccccccccc",
+   "ccccccccccc.............NN...............ccccccccccc",
+   "cccccccccccccccc..........N.........cccccccccccccccc",
+   "cccccccccccccccccccccccccN.ccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccc..ccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccIDIccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -281618,6 +281775,163 @@
      "lines": [
       "Jigglypuff hums a little tune."
      ]
+    }
+   },
+   {
+    "text": "Mystery Troop Bluno",
+    "action": "EVENT",
+    "flag_condition": "not got_snag_machine",
+    "condition": "orre_raid_trudly",
+    "event": {
+     "flag": "got_snag_machine",
+     "lines": [
+      "Mystery Troop Bluno: Miror B.'s orders. Nobody leaves Phenac while we're here!",
+      "Rui: That Pokemon has the dark aura! Snag it, quick, before it's too late!"
+     ],
+     "battle": {
+      "name": "Mystery Troop Bluno",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_blue.png",
+      "team": [
+       9350,
+       88,
+       325
+      ],
+      "levels": [
+       30,
+       26,
+       24
+      ],
+      "team_moves": [
+       [
+        "SHADOW-RUSH",
+        "RAIN-DANCE",
+        "SCARY-FACE",
+        "BITE"
+       ],
+       [
+        "SLUDGE",
+        "SCREECH"
+       ],
+       [
+        "PSYWAVE",
+        "TORMENT"
+       ]
+      ],
+      "rewards": {
+       "balls": 0
+      },
+      "double": true,
+      "dialogue": {
+       "player_won": [
+        "Mystery Troop Bluno: Retreat! Everybody out of Phenac!",
+        "Rui: They've gone! The way out of town is clear."
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "Mystery Troop Rosso",
+    "action": "EVENT",
+    "flag_condition": "not got_snag_machine",
+    "condition": "orre_raid_trudly",
+    "event": {
+     "flag": "got_snag_machine",
+     "lines": [
+      "Mystery Troop Rosso: Miror B.'s orders. Nobody leaves Phenac while we're here!",
+      "Rui: That Pokemon has the dark aura! Snag it, quick, before it's too late!"
+     ],
+     "battle": {
+      "name": "Mystery Troop Rosso",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_red.png",
+      "team": [
+       9349,
+       88,
+       325
+      ],
+      "levels": [
+       30,
+       26,
+       24
+      ],
+      "team_moves": [
+       [
+        "SHADOW-RUSH",
+        "SUNNY-DAY",
+        "SMOKESCREEN",
+        "DIG"
+       ],
+       [
+        "SLUDGE",
+        "SCREECH"
+       ],
+       [
+        "PSYWAVE",
+        "TORMENT"
+       ]
+      ],
+      "rewards": {
+       "balls": 0
+      },
+      "double": true,
+      "dialogue": {
+       "player_won": [
+        "Mystery Troop Rosso: Retreat! Everybody out of Phenac!",
+        "Rui: They've gone! The way out of town is clear."
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "Team Snagem Wakin",
+    "action": "EVENT",
+    "flag_condition": "not orre_wakin",
+    "condition": [
+     "not:got_snag_machine",
+     "orre_met_mayor"
+    ],
+    "event": {
+     "flag": "orre_wakin",
+     "lines": [
+      "Team Snagem Wakin: Well, well. If it isn't the traitor who blew up our hideout!",
+      "Rui: Traitor? You were with Team Snagem?",
+      "Team Snagem Wakin: That machine on your arm belongs to the boss. Hand it over!"
+     ],
+     "battle": {
+      "name": "Team Snagem Wakin",
+      "class": "SNAGEM",
+      "sprite": "orre_snagem_grunt.png",
+      "team": [
+       341,
+       109
+      ],
+      "levels": [
+       25,
+       27
+      ],
+      "team_moves": [
+       [
+        "BUBBLE",
+        "VICE-GRIP"
+       ],
+       [
+        "POISON-GAS",
+        "TACKLE"
+       ]
+      ],
+      "rewards": {
+       "balls": 0
+      },
+      "double": true,
+      "dialogue": {
+       "player_won": [
+        "Team Snagem Wakin: Gah! The boss won't let this go, you hear me?"
+       ]
+      }
+     }
     }
    },
    {
@@ -281675,6 +281989,55 @@
     }
    },
    {
+    "text": "Fun Old Man Drig",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_drig",
+       "lines": [
+        "Fun Old Man Drig: Heh heh! These old bones still love a good battle. Two on two!"
+       ],
+       "battle": {
+        "name": "Fun Old Man Drig",
+        "class": "FUN_OLD_MAN",
+        "sprite": "orre_fun_old_man_drig.png",
+        "team": [
+         163,
+         161
+        ],
+        "levels": [
+         25,
+         25
+        ],
+        "team_moves": [
+         [
+          "PECK",
+          "HYPNOSIS"
+         ],
+         [
+          "SCRATCH",
+          "DEFENSE-CURL"
+         ]
+        ],
+        "rewards": {
+         "balls": 0
+        },
+        "double": true,
+        "dialogue": {
+         "player_won": [
+          "Fun Old Man Drig: My, my! You young folks are something else."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Fun Old Man Drig: My, my! You young folks are something else."
+     ]
+    }
+   },
+   {
     "text": "A boy with his Poliwrath",
     "action": "EVENT",
     "event": {
@@ -281693,6 +282056,55 @@
     }
    },
    {
+    "text": "Roller Boy Kaib",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_kaib",
+       "lines": [
+        "Roller Boy Kaib: Out of my way! ...Or battle me, I guess. That works too!"
+       ],
+       "battle": {
+        "name": "Roller Boy Kaib",
+        "class": "ROLLER_BOY",
+        "sprite": "orre_roller_boy_kaib.png",
+        "team": [
+         265,
+         266
+        ],
+        "levels": [
+         25,
+         25
+        ],
+        "team_moves": [
+         [
+          "TACKLE",
+          "STRING-SHOT"
+         ],
+         [
+          "TACKLE",
+          "HARDEN"
+         ]
+        ],
+        "rewards": {
+         "balls": 0
+        },
+        "double": true,
+        "dialogue": {
+         "player_won": [
+          "Roller Boy Kaib: Aw, man. I'm going back to skating."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Roller Boy Kaib: Aw, man. I'm going back to skating."
+     ]
+    }
+   },
+   {
     "text": "Runner",
     "action": "EVENT",
     "event": {
@@ -281701,8 +282113,139 @@
      ]
     }
    },
-   "Trouble at the Fountain",
-   "Meet Rui"
+   {
+    "text": "Shady Guy Trudly",
+    "action": "EVENT",
+    "flag_condition": "not orre_phenac_folly",
+    "event": {
+     "lines": [
+      "Shady Guy Trudly: Folly, deal with this kid!"
+     ]
+    },
+    "condition": [
+     "not:got_snag_machine"
+    ]
+   },
+   {
+    "text": "Shady Guy Folly",
+    "action": "EVENT",
+    "flag_condition": "not orre_phenac_folly",
+    "event": {
+     "flag": "orre_phenac_folly",
+     "lines": [
+      "Shady Guy Folly: Hey! What are you looking at? This sack's none of your business!"
+     ],
+     "battle": {
+      "name": "Shady Guy Folly",
+      "class": "SHADY_GUY",
+      "sprite": "orre_folly.png",
+      "team": [
+       293,
+       293
+      ],
+      "levels": [
+       24,
+       25
+      ],
+      "team_moves": [
+       [
+        "POUND",
+        "UPROAR"
+       ],
+       [
+        "POUND",
+        "HOWL"
+       ]
+      ],
+      "rewards": {
+       "balls": 0
+      },
+      "double": true,
+      "dialogue": {
+       "player_won": [
+        "Shady Guy Folly: No way! Forget the sack, let's get out of here!"
+       ]
+      }
+     }
+    },
+    "condition": [
+     "not:got_snag_machine"
+    ]
+   },
+   {
+    "text": "A big sack",
+    "action": "EVENT",
+    "flag_condition": "not orre_rui_joined",
+    "condition": [
+     "not:got_snag_machine",
+     "orre_phenac_folly"
+    ],
+    "event": {
+     "flag": "orre_rui_joined",
+     "lines": [
+      "The sack is tied shut, and something inside is moving. You undo the rope...",
+      "???: Thank you! I thought I'd never get out of there!",
+      "Rui: I'm Rui. Those men grabbed me because I saw something I shouldn't have.",
+      "Rui: Their Pokemon... some of them had a dark glow around them. Like their hearts were shut tight.",
+      "Rui: Nobody believes me, but I can see it. Please, let me come with you! The Mayor has to hear about this.",
+      "Rui joined you! (She can see the dark aura of Shadow Pokemon.)"
+     ]
+    }
+   },
+   {
+    "text": "Mystery Troop Verde",
+    "action": "EVENT",
+    "flag_condition": "not got_snag_machine",
+    "condition": "orre_raid_trudly",
+    "event": {
+     "flag": "got_snag_machine",
+     "lines": [
+      "Mystery Troop Verde: Miror B.'s orders. Nobody leaves Phenac while we're here!",
+      "Rui: That Pokemon has the dark aura! Snag it, quick, before it's too late!"
+     ],
+     "battle": {
+      "name": "Mystery Troop Verde",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_green.png",
+      "team": [
+       9348,
+       88,
+       325
+      ],
+      "levels": [
+       30,
+       26,
+       24
+      ],
+      "team_moves": [
+       [
+        "SHADOW-RUSH",
+        "SUNNY-DAY",
+        "SYNTHESIS",
+        "RAZOR-LEAF"
+       ],
+       [
+        "SLUDGE",
+        "SCREECH"
+       ],
+       [
+        "PSYWAVE",
+        "TORMENT"
+       ]
+      ],
+      "rewards": {
+       "balls": 0
+      },
+      "double": true,
+      "dialogue": {
+       "player_won": [
+        "Mystery Troop Verde: Retreat! Everybody out of Phenac!",
+        "Rui: They've gone! The way out of town is clear."
+       ]
+      }
+     }
+    }
+   }
   ],
   "signs": [
    [
@@ -281968,11 +282511,11 @@
      "c...............^ccc",
      "c................ccc",
      "c..........c.......c",
-     "c..........c.......c",
+     "c........N.c.......c",
      "c..........ccc.....c",
      "c..................c",
-     "c..................c",
-     "c..................c",
+     "c...........N......c",
+     "c.........N...N....c",
      "c..................c",
      "c............c.....c",
      "c.................cc",
@@ -281984,7 +282527,172 @@
      "v": "OUT:11,29"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Mayor Es Cade",
+      "action": "EVENT",
+      "condition": {
+       "any": [
+        "not:orre_raid_told",
+        "orre_raid_trudly"
+       ]
+      },
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "orre_rui_joined"
+         ],
+         "flag": "orre_met_mayor",
+         "lines": [
+          "Mayor Es Cade: Welcome to Phenac, the jewel of the desert! I'm the mayor here.",
+          "Rui: Mayor, people are carrying off Pokemon with a dark aura around them! Their hearts look shut tight!",
+          "Mayor Es Cade: Shadow Pokemon... I've heard whispers of them. Pokemon made to fight and nothing else.",
+          "Mayor Es Cade: Leave it to me. In the meantime, why not try Phenac Stadium, up north? Strong trainers gather there."
+         ]
+        }
+       ],
+       "done": [
+        "Mayor Es Cade: The Stadium is at the top of the town. Off you go!"
+       ]
+      }
+     },
+     {
+      "text": "Miror B.",
+      "action": "EVENT",
+      "flag_condition": "not orre_raid_mirorb",
+      "condition": [
+       "not:got_snag_machine",
+       "orre_raid_told"
+      ],
+      "event": {
+       "flag": "orre_raid_mirorb",
+       "lines": [
+        "Miror B.: Oh-ho! Visitors! You've arrived just as the party's ending!",
+        "Miror B.: The mayor was such a dull host. My peons will keep you company. Ciao!",
+        "Miror B. dances out of the room, and his peons step forward..."
+       ]
+      }
+     },
+     {
+      "text": "Miror B. Peon Folly",
+      "action": "EVENT",
+      "flag_condition": "not orre_raid_folly",
+      "condition": [
+       "not:got_snag_machine",
+       "orre_raid_told"
+      ],
+      "event": {
+       "flag": "orre_raid_folly",
+       "requires": [
+        "orre_raid_mirorb"
+       ],
+       "fail": [
+        "Miror B. Peon Folly: Hey! The boss is talking. Wait your turn!"
+       ],
+       "lines": [
+        "Miror B. Peon Folly: It's you again! I've been promoted since then, so watch out!"
+       ],
+       "battle": {
+        "name": "Miror B. Peon Folly",
+        "class": "CIPHER_PEON",
+        "sprite": "orre_folly_peon.png",
+        "team": [
+         293,
+         270
+        ],
+        "levels": [
+         26,
+         25
+        ],
+        "team_moves": [
+         [
+          "POUND",
+          "UPROAR",
+          "ASTONISH"
+         ],
+         [
+          "ABSORB",
+          "GROWL",
+          "ASTONISH"
+         ]
+        ],
+        "rewards": {
+         "balls": 0
+        },
+        "double": true,
+        "dialogue": {
+         "player_won": [
+          "Miror B. Peon Folly: Not again! Trudly, you're up!"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "text": "Miror B. Peon Trudly",
+      "action": "EVENT",
+      "flag_condition": "not orre_raid_trudly",
+      "condition": [
+       "not:got_snag_machine",
+       "orre_raid_told"
+      ],
+      "event": {
+       "flag": "orre_raid_trudly",
+       "requires": [
+        "orre_raid_folly"
+       ],
+       "fail": [
+        "Miror B. Peon Trudly: Folly gets first go. Then you're mine!"
+       ],
+       "lines": [
+        "Miror B. Peon Trudly: Folly's useless. Let me show you a real Pokemon!",
+        "Rui: Look out! That Makuhita... it has the dark aura. It's a Shadow Pokemon!",
+        "Rui: Weaken it, then throw a Poke Ball. Your Snag Machine will catch it!"
+       ],
+       "battle": {
+        "name": "Miror B. Peon Trudly",
+        "class": "CIPHER_PEON",
+        "sprite": "orre_trudly_peon.png",
+        "team": [
+         355,
+         167,
+         9406
+        ],
+        "levels": [
+         25,
+         25,
+         30
+        ],
+        "team_moves": [
+         [
+          "NIGHT-SHADE",
+          "LEER"
+         ],
+         [
+          "CONSTRICT",
+          "STRING-SHOT"
+         ],
+         [
+          "SHADOW-RUSH",
+          "FORESIGHT",
+          "FOCUS-ENERGY",
+          "VITAL-THROW"
+         ]
+        ],
+        "rewards": {
+         "balls": 0
+        },
+        "double": true,
+        "dialogue": {
+         "player_won": [
+          "Miror B. Peon Trudly: Argh! Miror B. is going to be so mad..."
+         ]
+        }
+       }
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -282184,6 +282892,73 @@
     "size": [
      52,
      70
+    ]
+   }
+  ],
+  "scenes": [
+   {
+    "who": "Shady Guy Folly",
+    "trigger": "enter",
+    "approach": true,
+    "condition": [
+     "not:got_snag_machine",
+     "not:orre_phenac_folly"
+    ],
+    "flag": "orre_phenac_met_folly",
+    "then": "talk",
+    "lines": [
+     "Two men are dragging a big, wriggling sack across the square. One of them spots you..."
+    ]
+   },
+   {
+    "who": "Team Snagem Wakin",
+    "trigger": {
+     "zone": [
+      9,
+      30,
+      14,
+      32
+     ]
+    },
+    "approach": true,
+    "condition": [
+     "not:got_snag_machine",
+     "orre_met_mayor",
+     "not:orre_wakin"
+    ],
+    "flag": "orre_wakin_met",
+    "then": "talk",
+    "lines": [
+     "An old man in a Team Snagem jacket blocks your way."
+    ],
+    "after_lines": [
+     "Rui: So that's a Snag Machine on your arm... It can catch other trainers' Pokemon?",
+     "Rui: Then we can rescue the Shadow Pokemon! We just need Poke Balls.",
+     "Rui: The bartender at the Outskirt Stand might have some. Let's go!"
+    ]
+   },
+   {
+    "trigger": "enter",
+    "condition": [
+     "not:got_snag_machine",
+     "orre_got_balls",
+     "not:orre_raid_told"
+    ],
+    "flag": "orre_raid_told",
+    "cast": [
+     {
+      "sheet": "orre_npc_05.png",
+      "from": [
+       25,
+       57
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Man: You're back! Something terrible's happening at the Mayor's house!",
+       "Man: Men in strange outfits barged in, and they haven't come out!"
+      ]
+     }
     ]
    }
   ]

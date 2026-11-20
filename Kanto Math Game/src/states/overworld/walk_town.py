@@ -488,6 +488,7 @@ class WalkTownState(CityState):
             return
         self.facing = (t[0] - self.player[0], t[1] - self.player[1])
         self.anim_from, self.anim = self.player, STEP
+        self.rui_from, self.rui = getattr(self, "rui", self.partner), self.partner   # (Orre: Rui, a step behind your Pokemon)
         self.partner_from, self.partner = self.partner, self.player
         self.player = t
         self._remember()
@@ -969,6 +970,7 @@ class WalkTownState(CityState):
         self.anim_from, self.anim = self.player, STEP
         if grid and 0 <= to[1] < len(grid) and 0 <= to[0] < len(grid[to[1]]) and grid[to[1]][to[0]] in "89":
             self.anim = STEP * 2  # (deep snow, marsh mud: each step takes twice as long)
+        self.rui_from, self.rui = getattr(self, "rui", self.partner), self.partner   # (Orre: Rui, a step behind your Pokemon)
         self.partner_from, self.partner = self.partner, self.player
         self.player = to
         self.steps += 1
@@ -1799,6 +1801,18 @@ class WalkTownState(CityState):
             if img is not None:
                 drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
                 _mine_rects.append((drawn[-1][2], tuple(self.partner_from), tuple(self.partner)))
+        from src.world import rui as _rui
+        if me is not None and _rui.active(self.game.story_manager):   # (Rui walking with you through Orre, Q4)
+            rb, ra = tuple(getattr(self, "rui", self.partner)), tuple(getattr(self, "rui_from", self.partner))
+            if abs(rb[0] - self.partner[0]) + abs(rb[1] - self.partner[1]) > 2:   # (a new map or a jump: she catches up)
+                self.rui = self.rui_from = rb = ra = tuple(self.partner)
+            if rb != tuple(self.partner) and rb != tuple(self.player):
+                rr = pygame.Rect(int(ox + (ra[0] + (rb[0] - ra[0]) * k) * TILE), int(oy + (ra[1] + (rb[1] - ra[1]) * k) * TILE), TILE, TILE)
+                way = (self.partner[0] - rb[0], self.partner[1] - rb[1])
+                way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
+                ri = self._sheet_frame(_rui.SHEET, way, frame=(1 + 2 * (getattr(self, "steps", 0) % 2)) if self.anim > 0 else 0)
+                if ri is not None:
+                    drawn.append((rr.bottom, ri, ri.get_rect(midbottom=(rr.centerx, rr.bottom - 2))))
         if me is not None:
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
             _mine_rects.append((drawn[-1][2], tuple(self.anim_from) if self.anim > 0 else tuple(self.player), tuple(self.player)))
