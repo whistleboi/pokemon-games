@@ -167,4 +167,7 @@ def mark_trainer_team(team, trainer_info):
         if p and moves:
             p.preset_moves = list(moves)
             p.moves = []
+    for p, item in zip(team, (trainer_info or {}).get("team_items") or []):   # (held items by slot: Orre's discs, 11-20)
+        if p and item:
+            p.held_item = item
     return team

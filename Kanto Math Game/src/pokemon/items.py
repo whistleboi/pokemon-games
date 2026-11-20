@@ -572,6 +572,10 @@ STORY_TEXT = {
     "ICE_MELTER": "Melts thick ice in your way.",
     "ROCK_SMASHER": "Breaks rocks in your way.",
     "SNAG_MACHINE": "Lets you snatch Shadow Pokemon from other trainers.",
+    "GEAR": "A big gear from the windmill that powers Pyrite Colosseum.",   # (Colosseum: Silva hid it at the Construction Lot)
+    "JAIL_KEY": "The key to the cells in Pyrite's police station.",
+    "EIN_FILE_H": "One of Cipher scientist Ein's files: notes on Shadow Pokemon and their Hyper Mode.",
+    "EIN_FILE_S": "One of Cipher scientist Ein's files: notes on how Shadow Pokemon are snagged.",
     "TIDAL_BELL": "A bell that rings like the tide.",
     "RUBY": "A gem as red as fire.", "SAPPHIRE": "A gem as blue as the sea.",
     "FIRE_TREASURE": "The Fire Island's sacred treasure.",

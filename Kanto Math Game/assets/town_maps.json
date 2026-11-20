@@ -283003,7 +283003,7 @@
    "cccccccccccccccccccccc....c..ccccccccccccccccc",
    "cccccccccccccccccccccc.......c.ccccccccccccccc",
    "cccccccccccccccccccccc..........cccccccccccccc",
-   "ccccccccccccccccccccc............ccccccccccccc",
+   "ccccccccccccccccccccc...N........ccccccccccccc",
    "cccccccccccccccccccc...............ccccccccccc",
    "ccccccccccccccccccc................ccccccccccc",
    "ccccccccccccccccccc.............c.cccccccccccc",
@@ -283013,7 +283013,7 @@
    "ccccccccccccccccccccccccc...cccccccccccccccccc",
    "ccccccccccccccccccccccccc...cccccccccccccccccc",
    "ccccccccccccccccccccccccc...cccccccccccccccccc",
-   "ccccccccccccccccccccccccc...cccccccccccccccccc",
+   "ccccccccccccccccccccccccc.N.cccccccccccccccccc",
    "ccccccccccccccccccccccccc...cccccccccccccccccc",
    "ccccccccccccccccccccccccc...cccccccccccccccccc",
    "ccccccccccccccccccccccccc...cccccccccccccccccc",
@@ -283025,11 +283025,11 @@
    "ccccccccccccccccccc...................cccccccc",
    "ccccccccccccccccccc........cccc.......cccccccc",
    "ccccccccccccccccccc.......cccccc......cccccccc",
-   "cccccccccccccccc..........ccccccc.cccccccccccc",
-   "ccccccccccccccc...........cccccccccccccccccccc",
-   "ccccccccccccccc...........cccccccccccccccccccc",
-   "ccccccccccccccc..........ccccccccccccccccccccc",
-   "ccccccccccccccc.........cccccccccccccccccccccc",
+   "cccccccccccccccc.N........ccccccc.cccccccccccc",
+   "cccccccccccccccN....N.....cccccccccccccccccccc",
+   "cccccccccccccccN..N...N...cccccccccccccccccccc",
+   "ccccccccccccccc.N..N.....ccccccccccccccccccccc",
+   "ccccccccccccccc......N..cccccccccccccccccccccc",
    "cccccccccccccccccc......cccccccccccccccccccccc",
    "ccccccccccccccccccc.....cccccccccccccccccccccc",
    "ccccccccccccccccccc.....cccccccccccccccccccccc",
@@ -283064,7 +283064,7 @@
    "ccccccccccccccccccccccccc............ccccccccc",
    "cccccccccccccccccccccccccc......c....ccccccccc",
    "ccccccccccccccccccccccccc............ccccccccc",
-   "ccccccccccccccccccccccccc............ccccccccc",
+   "ccccccccccccccccccccccccc.....N......ccccccccc",
    "cccccccccccccccccccccccccccc.....ccccccccccccc",
    "ccccccccccccccccccccccccccccc...cccccccccccccc",
    "cccccccccccccccccccccccccccccKDKcccccccccccccc",
@@ -283098,6 +283098,609 @@
   },
   "people": [
    {
+    "text": "Thug",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_heard_cail",
+       "lines": [
+        "Thug: You here for the tournament? Ha! The real prize in this town is what Cail's got.",
+        "Thug: Beat him and he hands out an awesome Pokemon. He's hanging around the bottom of town."
+       ]
+      }
+     ],
+     "done": [
+      "Thug: Cail's down at the bottom of town. Go get your prize, if you can."
+     ]
+    }
+   },
+   {
+    "text": "Cipher Peon Nore",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_beat_nore",
+       "lines": [
+        "Cipher Peon Nore: Psst, champ! Follow me. We've got a special prize for winners like you...",
+        "Cipher Peon Nore: Wait... You're the one who's been giving Miror B. all that trouble!",
+        "Rui: That Yanma has the dark aura!"
+       ],
+       "battle": {
+        "name": "Cipher Peon Nore",
+        "class": "CIPHER_PEON",
+        "sprite": "orre_cipher_peon.png",
+        "team": [
+         9366,
+         204,
+         290,
+         283
+        ],
+        "levels": [
+         33,
+         32,
+         31,
+         32
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "DETECT",
+          "SUPERSONIC",
+          "SONIC-BOOM"
+         ],
+         [
+          "TACKLE",
+          "RAPID-SPIN",
+          "BIDE"
+         ],
+         [
+          "LEECH-LIFE",
+          "DIG"
+         ],
+         [
+          "BUBBLE",
+          "FORESIGHT",
+          "QUICK-ATTACK"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "music": "orre/cipher_battle",
+        "dialogue": {
+         "player_won": [
+          "Cipher Peon Nore: Gah! Miror B. is going to dance all over me..."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Cipher Peon Nore: ..."
+     ]
+    },
+    "condition": "has_pyrite_badge",
+    "flag_condition": "not orre_beat_nore"
+   },
+   {
+    "text": "Chaser Emok",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_emok",
+       "lines": [
+        "Chaser Emok: This is the duel square. Nobody walks through without a fight!"
+       ],
+       "battle": {
+        "name": "Chaser Emok",
+        "class": "CHASER",
+        "sprite": "orre_chaser_m.png",
+        "team": [
+         316,
+         41
+        ],
+        "levels": [
+         27,
+         27
+        ],
+        "team_moves": [
+         [
+          "SLUDGE",
+          "YAWN",
+          "ACID-ARMOR",
+          "THIEF"
+         ],
+         [
+          "GUST",
+          "ASTONISH",
+          "LEECH-LIFE",
+          "THIEF"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Chaser Emok: Okay, okay, you can walk through."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Chaser Emok: Okay, okay, you can walk through."
+     ]
+    }
+   },
+   {
+    "text": "Chaser Calda",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_calda",
+       "lines": [
+        "Chaser Calda: Fresh face! Let's see what you've got."
+       ],
+       "battle": {
+        "name": "Chaser Calda",
+        "class": "CHASER",
+        "sprite": "orre_chaser_f.png",
+        "team": [
+         161,
+         276,
+         287
+        ],
+        "levels": [
+         25,
+         25,
+         26
+        ],
+        "team_moves": [
+         [
+          "SCRATCH",
+          "DEFENSE-CURL",
+          "THIEF"
+         ],
+         [
+          "PECK",
+          "GROWL",
+          "QUICK-ATTACK"
+         ],
+         [
+          "SCRATCH",
+          "AMNESIA",
+          "PURSUIT"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Chaser Calda: Not bad. Not bad at all."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Chaser Calda: Not bad. Not bad at all."
+     ]
+    }
+   },
+   {
+    "text": "Bandana Guy Divel",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_divel",
+       "lines": [
+        "Bandana Guy Divel: A strange dude gave me a new Pokemon. He wasn't so bad after all!"
+       ],
+       "battle": {
+        "name": "Bandana Guy Divel",
+        "class": "BANDANA_GUY",
+        "sprite": "orre_chaser_m.png",
+        "team": [
+         9367,
+         54
+        ],
+        "levels": [
+         30,
+         29
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "MUD-SHOT",
+          "AMNESIA",
+          "SLAM"
+         ],
+         [
+          "CONFUSION",
+          "TAIL-WHIP",
+          "DISABLE",
+          "SCRATCH"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Bandana Guy Divel: Aw, man."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Bandana Guy Divel: Aw, man."
+     ]
+    }
+   },
+   {
+    "text": "St.Performer Diogo",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_diogo",
+       "lines": [
+        "St.Performer Diogo: Step right up! My Pokemon and I put on the best show in Pyrite!"
+       ],
+       "battle": {
+        "name": "St. Performer Diogo",
+        "class": "STPERFORMER",
+        "sprite": "orre_street_performer.png",
+        "team": [
+         9361,
+         285
+        ],
+        "levels": [
+         30,
+         26
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "THUNDERBOLT",
+          "THUNDER-WAVE",
+          "COTTON-SPORE"
+         ],
+         [
+          "TACKLE",
+          "STUN-SPORE",
+          "ABSORB"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "St.Performer Diogo: That's showbiz, I guess."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "St.Performer Diogo: That's showbiz, I guess."
+     ]
+    }
+   },
+   {
+    "text": "Bodybuilder Hader",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_hader",
+       "lines": [
+        "Bodybuilder Hader: Heard you won the Colosseum. Let's see if it was luck!"
+       ],
+       "battle": {
+        "name": "Bodybuilder Hader",
+        "class": "BODYBUILDER",
+        "sprite": "orre_bodybuilder.png",
+        "team": [
+         374,
+         304
+        ],
+        "levels": [
+         34,
+         35
+        ],
+        "team_moves": [
+         [
+          "TAKE-DOWN"
+         ],
+         [
+          "HEADBUTT",
+          "METAL-SOUND"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Bodybuilder Hader: No luck about it. You're the real thing."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Bodybuilder Hader: No luck about it. You're the real thing."
+     ]
+    },
+    "condition": "has_pyrite_badge"
+   },
+   {
+    "text": "Rider Leba",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_leba",
+       "lines": [
+        "Rider Leba: I won this Pokemon in a battle at the Colosseum. Let's try it out!"
+       ],
+       "battle": {
+        "name": "Rider Leba",
+        "class": "RIDER",
+        "sprite": "orre_rider.png",
+        "team": [
+         9363,
+         43,
+         269
+        ],
+        "levels": [
+         30,
+         26,
+         26
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "SYNTHESIS",
+          "SLEEP-POWDER",
+          "COTTON-SPORE"
+         ],
+         [
+          "ABSORB",
+          "SLEEP-POWDER",
+          "SWEET-SCENT",
+          "ACID"
+         ],
+         [
+          "TACKLE",
+          "CONFUSION",
+          "POISON-STING",
+          "GUST"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Rider Leba: Huh. My prize didn't help much."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Rider Leba: Huh. My prize didn't help much."
+     ]
+    }
+   },
+   {
+    "text": "Roller Boy Lon",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_lon",
+       "lines": [
+        "Roller Boy Lon: Some dude gave me a really strong Pokemon. Afraid?"
+       ],
+       "battle": {
+        "name": "Roller Boy Lon",
+        "class": "ROLLER_BOY",
+        "sprite": "orre_roller_boy_kaib.png",
+        "team": [
+         9382,
+         298,
+         174,
+         333
+        ],
+        "levels": [
+         30,
+         27,
+         28,
+         27
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "SUNNY-DAY",
+          "YAWN",
+          "ROCK-THROW"
+         ],
+         [
+          "SING",
+          "TAIL-WHIP",
+          "WATER-GUN"
+         ],
+         [
+          "SING",
+          "CHARM",
+          "POUND"
+         ],
+         [
+          "SING",
+          "GROWL",
+          "PECK"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Roller Boy Lon: Whoa. You're strong!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Roller Boy Lon: Whoa. You're strong!"
+     ]
+    }
+   },
+   {
+    "text": "Rider Nover",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_nover",
+       "lines": [
+        "Rider Nover: Some guy gave me a really strong Pokemon. Wanna see it?"
+       ],
+       "battle": {
+        "name": "Rider Nover",
+        "class": "RIDER",
+        "sprite": "orre_rider.png",
+        "team": [
+         9352,
+         165,
+         278
+        ],
+        "levels": [
+         30,
+         27,
+         27
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "STEEL-WING",
+          "HYPNOSIS",
+          "REFLECT"
+         ],
+         [
+          "TACKLE",
+          "SAFEGUARD",
+          "COMET-PUNCH"
+         ],
+         [
+          "WATER-GUN",
+          "GROWL",
+          "GUST"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Rider Nover: My Noctowl... it just kept attacking. Was that normal?"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Rider Nover: My Noctowl... it just kept attacking. Was that normal?"
+     ]
+    }
+   },
+   {
+    "text": "Rider Vant",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_sq_vant",
+       "lines": [
+        "Rider Vant: My new Pokemon gives me the creeps. Good thing it fights for me!"
+       ],
+       "battle": {
+        "name": "Rider Vant",
+        "class": "RIDER",
+        "sprite": "orre_rider.png",
+        "team": [
+         9369,
+         300,
+         263
+        ],
+        "levels": [
+         30,
+         28,
+         28
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "PSYBEAM",
+          "CONFUSE-RAY",
+          "MEAN-LOOK"
+         ],
+         [
+          "TICKLE",
+          "GROWL",
+          "TACKLE"
+         ],
+         [
+          "TICKLE",
+          "TAIL-WHIP",
+          "HEADBUTT"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "team_items": [
+         "SPELL_TAG",
+         null,
+         null
+        ],
+        "dialogue": {
+         "player_won": [
+          "Rider Vant: Ugh, you're tough."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Rider Vant: Ugh, you're tough."
+     ]
+    }
+   },
+   {
     "text": "Shopper",
     "action": "EVENT",
     "event": {
@@ -283112,6 +283715,73 @@
     "event": {
      "lines": [
       "Haven't seen you before. Keep your Poke Balls close in this town."
+     ]
+    }
+   },
+   {
+    "text": "Rogue Cail",
+    "action": "EVENT",
+    "event": {
+     "requires": [
+      "orre_heard_cail"
+     ],
+     "flag": "orre_beat_cail",
+     "lines": [
+      "Rogue Cail: So you heard about my prize? Win, and maybe you get to see it up close."
+     ],
+     "battle": {
+      "name": "Rogue Cail",
+      "class": "ROGUE",
+      "sprite": "orre_snagem_grunt.png",
+      "team": [
+       9351,
+       280,
+       273,
+       66
+      ],
+      "levels": [
+       33,
+       29,
+       29,
+       29
+      ],
+      "team_moves": [
+       [
+        "SHADOW-RUSH",
+        "IRON-TAIL",
+        "HELPING-HAND",
+        "QUICK-ATTACK"
+       ],
+       [
+        "CONFUSION",
+        "IMPRISON"
+       ],
+       [
+        "ROCK-SMASH",
+        "BIDE"
+       ],
+       [
+        "KARATE-CHOP",
+        "FOCUS-ENERGY",
+        "STRENGTH"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0
+      },
+      "music": "orre/cipher_battle",
+      "dialogue": {
+       "player_won": [
+        "Rogue Cail: Tch. Fine, fine."
+       ]
+      }
+     },
+     "fail": [
+      "Rogue Cail: Get lost. I don't battle nobodies."
+     ],
+     "done": [
+      "Rogue Cail: Don't you have somewhere else to be?"
      ]
     }
    }
@@ -283291,11 +283961,11 @@
      "cccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccc",
      "cccccccccc.mNm...c.ccccccccccccccccc",
-     "c..........ccc.....ccccccccccccccccc",
+     "c..........cccN....ccccccccccccccccc",
      "c..........ccc.....ccccccccccccccccc",
      "c..................ccccccccccccccccc",
      "cc.................c......c........c",
-     "cc.................c...............c",
+     "cc.................c..........N....c",
      "c..................................c",
      "cc.................c...............c",
      "cc................cc.......ccc.....c",
@@ -283310,7 +283980,46 @@
     },
     "buildings": {},
     "people": [
-     "Pyrite's Sheriff"
+     "Pyrite's Sheriff",
+     {
+      "text": "Jail Key",
+      "action": "EVENT",
+      "flag_condition": "not orre_got_jail_key",
+      "event": {
+       "flag": "orre_got_jail_key",
+       "lines": [
+        "There's a key on the desk... You took the JAIL KEY!"
+       ],
+       "gift_item": {
+        "JAIL_KEY": 1
+       }
+      }
+     },
+     {
+      "text": "Prisoner",
+      "action": "EVENT",
+      "event": {
+       "requires": [
+        "orre_got_jail_key"
+       ],
+       "flag": "orre_jail_prisoner",
+       "lines": [
+        "Prisoner: Hey! Is that the key? Get me out of here!",
+        "You unlocked the cell.",
+        "Prisoner: Thanks, pal. Here, take this. I won't be needing it where I'm going.",
+        "You received TM18 (THIEF)!"
+       ],
+       "gift_item": {
+        "TM018": 1
+       },
+       "fail": [
+        "Prisoner: Psst! The sheriff keeps the key on his desk. Get me out of here!"
+       ],
+       "done": [
+        "(The cell is empty now.)"
+       ]
+      }
+     }
     ],
     "signs": [],
     "roofs": {
@@ -283418,8 +284127,8 @@
      "c.......ccccc.cc",
      "c.......ccccc.cc",
      "c.........N....c",
-     "cc.............c",
-     "cc.............c",
+     "cc..N..........c",
+     "cc..........N..c",
      "cc............cc",
      "cc............cc",
      "ccccccvccccccccc",
@@ -283433,23 +284142,23 @@
      {
       "text": "Duking",
       "action": "EVENT",
-      "color": "GOLD",
       "event": {
-       "lines": [
-        "Duking: You got my Plusle back from Miror B.! I owe you everything.",
-        "Duking: It wants to go with you. Take good care of it, kid."
+       "stages": [
+        {
+         "requires": [
+          "orre_got_gear"
+         ],
+         "flag": "orre_power_on",
+         "lines": [
+          "Duking: You found the Gear? So Silva really did take it... I trusted that boy.",
+          "Duking: You two are no ordinary trainers. Here, help me set it back in the windmill.",
+          "You put the GEAR back in place. The windmill creaks, then turns. Pyrite Colosseum has power again!",
+          "Duking: Go on up to the Colosseum. Show this town what a real trainer looks like."
+         ]
+        }
        ],
-       "requires": [
-        "orre_miror_cave"
-       ],
-       "fail": [
-        "Duking: Miror B. took my Plusle... I can't even think straight."
-       ],
-       "gift_pokemon": 311,
-       "level": 13,
-       "flag": "orre_duking_plusle",
        "done": [
-        "Duking: Plusle's happy with you. That's all I wanted."
+        "Duking: Leave me be. ...Hm? You're still here?"
        ]
       }
      },
@@ -283459,6 +284168,26 @@
       "event": {
        "lines": [
         "Duking used to keep this town in line. Now he hardly comes out."
+       ]
+      }
+     },
+     {
+      "text": "Silva",
+      "action": "EVENT",
+      "flag_condition": "not orre_power_out",
+      "event": {
+       "lines": [
+        "Silva: Duking won't do anything about Miror B.! Everyone just lets that afro creep walk all over Pyrite!",
+        "Silva: I'm Silva. If nobody else will stand up to Cipher, I will."
+       ]
+      }
+     },
+     {
+      "text": "Marcia",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Marcia: I'm Marcia. Duking looks after us kids here. Leave him be, okay? He's got a lot on his mind."
        ]
       }
      }
@@ -283651,6 +284380,202 @@
     "size": [
      46,
      100
+    ]
+   }
+  ],
+  "scenes": [
+   {
+    "trigger": "enter",
+    "condition": "not:orre_pyrite_cop",
+    "flag": "orre_pyrite_cop",
+    "cast": [
+     {
+      "sheet": "orre_npc_01.png",
+      "from": [
+       29,
+       80
+      ],
+      "path": [
+       [
+        29,
+        83
+       ]
+      ],
+      "stay": true,
+      "lines": [
+       "Officer: You there! Did you just take something from that stall?"
+      ]
+     },
+     {
+      "sheet": "orre_trainer_burglar.png",
+      "from": [
+       31,
+       80
+      ],
+      "path": [
+       [
+        31,
+        83
+       ]
+      ],
+      "stay": true,
+      "concurrent": true,
+      "lines": [
+       "Thief: Me? Officer, I'd never! Look, my hands are empty."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Officer: Hm. Well, all right then. Off you go."
+      ],
+      "leave_path": [
+       [
+        29,
+        70
+       ]
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Thief: Heh heh heh... Too easy."
+      ],
+      "leave_path": [
+       [
+        33,
+        78
+       ],
+       [
+        36,
+        78
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      10,
+      66,
+      18,
+      69
+     ]
+    },
+    "condition": [
+     "orre_beat_cail",
+     "not:orre_power_out"
+    ],
+    "flag": "orre_power_out",
+    "cast": [
+     {
+      "sheet": "orre_trainer_scientist.png",
+      "from": [
+       12,
+       65
+      ],
+      "path": [
+       [
+        12,
+        67
+       ]
+      ],
+      "stay": true,
+      "lines": [
+       "A man in a lab coat stumbles out of Duking's door and falls flat.",
+       "Scientist: Ugh... It's Silva... He took the Gear right out of the windmill!",
+       "Scientist: Without the windmill there's no power. The Colosseum is dark!"
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Rui: Silva? He must have gone off somewhere with it. Let's look around Orre!"
+      ],
+      "leave_path": [
+       [
+        12,
+        65
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "who": "Cipher Peon Nore",
+    "trigger": {
+     "zone": [
+      24,
+      28,
+      28,
+      37
+     ]
+    },
+    "approach": true,
+    "condition": [
+     "has_pyrite_badge",
+     "not:orre_beat_nore"
+    ],
+    "flag": "orre_nore_met",
+    "then": "talk"
+   },
+   {
+    "trigger": "enter",
+    "condition": [
+     "orre_beat_nore",
+     "not:orre_plusle_taken"
+    ],
+    "flag": "orre_plusle_taken",
+    "cast": [
+     {
+      "sheet": "orre_npc_duking.png",
+      "from": [
+       26,
+       38
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Duking: There you are! So that's where they've been handing out Shadow Pokemon to the winners...",
+       "Duking: And there's worse. My Plusle... Miror B.'s gang took her!",
+       "Rui: Then we'll get her back. Cipher's hideout is right by the bridge: the Pyrite Building!"
+      ]
+     }
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      32,
+      40
+     ]
+    ],
+    "look": "sheet:orre_trainer_cipher_grunt.png",
+    "face": "d",
+    "until": {
+     "condition": "has_pyrite_badge"
+    },
+    "lines": [
+     "Cipher Peon: Members only! Come back when you're somebody, like a Colosseum champ."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      33,
+      40
+     ]
+    ],
+    "look": "sheet:orre_trainer_cipher_grunt.png",
+    "face": "d",
+    "until": {
+     "condition": "has_pyrite_badge"
+    },
+    "lines": [
+     "Cipher Peon: You heard him. Beat it!"
     ]
    }
   ]
@@ -286365,20 +287290,20 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cc.cccc....cccc.ccccccccc.cccccccc1cc.cccccccccccccccc",
      "cc..............ccccccccc...........c................c",
-     "c...............c...................c................c",
-     "c..ccc..........c...................c............cc.cc",
+     "c...X...........c...................c...N............c",
+     "c..ccc..........c...N...............c............cc.cc",
      "c..ccc..............................................cc",
      "c..ccc..........c...................c...............cc",
-     "c...............c...................c................c",
+     "c...X...........c...................c................c",
      "c...............c...................ccc..........ccccc",
      "cc..............c...................ccc............ccc",
      "cccccccc.ccccccccccccccccccccc.c.ccccccccccccccccccccc",
      "cccccccc.ccccccccccccccccccccccccccccccccccccccccccccc",
      "cc.cc...c.cccc..c.cccc.c....cc...cccc.cccccccccccccc.c",
      "c...............c......ccc..cc....ccc................c",
-     "c...............c......ccc.ccc.....cc................c",
+     "c...............c......ccc.ccc.....cc...N............c",
      "c..ccc..........c...................c............cc.cc",
-     "c..ccc..............................................cc",
+     "c.Nccc..............................................cc",
      "c..ccc..........c...................c...............cc",
      "c...............c...................c..............ccc",
      "cc..............ccc.................ccc..........ccccc",
@@ -286397,8 +287322,16 @@
      ]
     },
     "parts": true,
-    "people": [],
-    "trainer_spots": [],
+    "people": [
+     "Great Balls",
+     "Hunter Doken",
+     "Ein File H",
+     "Revive"
+    ],
+    "trainer_spots": [
+     "Hunter Toti",
+     "Bodybuilder Elidi"
+    ],
     "roofs": {
      "_picture": {
       "f": "orre_ground/101.png",
@@ -286429,11 +287362,11 @@
     "art": [
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccc.ccc.ccc.ccc..ccccccc.ccc....c1c.cc...ccccccc.cccc",
+     "ccccc.ccc.ccc.ccc..ccccccc.ccc....c1c.cc...cccccccNcccc",
      "c.ccc.ccc.ccc.ccc..Xccccc.......N.....c.c....cccc...ccc",
      "c.ccc.ccc.ccc.ccc.....c...............c..X...X.......cc",
-     "c..X...........................NXX...........X.......Xc",
-     "c.....................c...............c.............ccc",
+     "c..X...........................NXX...........X.N.....Xc",
+     "c.........N.........N.c...............c.............ccc",
      "c.....................ccc.............c.............ccc",
      "c.....................ccc.............ccc.............c",
      "cc....cc..............cc.............cccc.......cc...cc",
@@ -286449,8 +287382,12 @@
     },
     "parts": true,
     "people": [
+     "Miror B. Peon Reath",
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "Miror B. Peon Ferma",
+     "Ein File S",
+     "Hyper Potions"
     ],
     "trainer_spots": [
      "Chaser Kai",
@@ -286494,8 +287431,18 @@
    "2F"
   ],
   "figure_floors": {
+   "Hunter Doken": 0,
+   "Ein File H": 0,
+   "Great Balls": 0,
+   "Revive": 0,
+   "Hunter Toti": 0,
+   "Bodybuilder Elidi": 0,
    "SNAG SHADOW POKEMON": 1,
    "SNAG AGAIN": 1,
+   "Miror B. Peon Reath": 1,
+   "Miror B. Peon Ferma": 1,
+   "Ein File S": 1,
+   "Hyper Potions": 1,
    "Chaser Kai": 1,
    "Roller Boy Pike": 1,
    "Bandana Guy Geats": 1,
@@ -342391,5 +343338,71 @@
    "Michael": 12,
    "TM050": 12
   }
+ },
+ "CONSTRUCTION_LOT": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "c............ccc",
+     "cc..ccccccc..N.c",
+     "c...ccccccc....c",
+     "ccc.ccccccc.c.cc",
+     "ccc...........cc",
+     "cccc...........c",
+     "cc.c.........ccc",
+     "cc........c..ccc",
+     "c...........cccc",
+     "c.............cc",
+     "ccccccc..ccccccc",
+     "cccccc....cccccc",
+     "cccccc....cccccc",
+     "cccccccvc.cccccc",
+     "cccccccccccccccc"
+    ],
+    "exits": {
+     "v": "PYRITE_TOWN"
+    },
+    "links": {},
+    "parts": true,
+    "people": [
+     "The Gear"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/135.png",
+      "at": [
+       17,
+       17
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/135.png",
+      "at": [
+       17,
+       17
+      ],
+      "size": [
+       16,
+       17
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "Construction Lot"
+  ],
+  "figure_floors": {
+   "The Gear": 0
+  },
+  "theme": "tunnel"
  }
 }

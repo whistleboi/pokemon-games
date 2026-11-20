@@ -76,6 +76,81 @@
     ]
   },
   "figures": {
+    "PYRITE_TOWN:Bodybuilder Hader": {
+      "sheet": "orre_trainer_bodybuilder.png"
+    },
+    "PYRITE_TOWN:Duking": {
+      "sheet": "orre_npc_duking.png"
+    },
+    "PYRITE_BUILDING:Hunter Doken": {
+      "sheet": "orre_trainer_hunter_m.png"
+    },
+    "PYRITE_BUILDING:Ein File H": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_BUILDING:Great Balls": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_BUILDING:Revive": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_BUILDING:Miror B. Peon Reath": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_BUILDING:Miror B. Peon Ferma": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_BUILDING:Ein File S": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_BUILDING:Hyper Potions": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_TOWN:Chaser Calda": {
+      "sheet": "orre_trainer_chaser_f.png"
+    },
+    "PYRITE_TOWN:Chaser Emok": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
+    "PYRITE_TOWN:Rider Nover": {
+      "sheet": "orre_trainer_rider.png"
+    },
+    "PYRITE_TOWN:St.Performer Diogo": {
+      "sheet": "orre_trainer_street_performer.png"
+    },
+    "PYRITE_TOWN:Rider Leba": {
+      "sheet": "orre_trainer_rider.png"
+    },
+    "PYRITE_TOWN:Bandana Guy Divel": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
+    "PYRITE_TOWN:Rider Vant": {
+      "sheet": "orre_trainer_rider.png"
+    },
+    "PYRITE_TOWN:Roller Boy Lon": {
+      "sheet": "orre_trainer_youngster.png"
+    },
+    "PYRITE_TOWN:Thug": {
+      "sheet": "orre_trainer_burglar.png"
+    },
+    "PYRITE_TOWN:Rogue Cail": {
+      "sheet": "orre_trainer_biker.png"
+    },
+    "PYRITE_TOWN:Cipher Peon Nore": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_TOWN:Silva": {
+      "sheet": "orre_npc_02.png"
+    },
+    "PYRITE_TOWN:Marcia": {
+      "sheet": "orre_trainer_twins.png"
+    },
+    "PYRITE_TOWN:Prisoner": {
+      "sheet": "orre_trainer_burglar.png"
+    },
+    "PYRITE_TOWN:Jail Key": {
+      "item": "POKE_BALL"
+    },
     "ETERNA_FOREST:Cheryl": {
       "sheet": "pt_seven1.png"
     },
@@ -564,6 +639,9 @@
     },
     "PHENAC_CITY:Miror B. Peon Trudly": {
       "sheet": "orre_trainer_burglar.png"
+    },
+    "CONSTRUCTION_LOT:The Gear": {
+      "sheet": "orre_object_ball.png"
     },
     "PHENAC_CITY:Super Potion ball": {
       "item": "POKE_BALL"

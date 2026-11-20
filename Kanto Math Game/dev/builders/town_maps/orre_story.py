@@ -225,6 +225,126 @@ MART_GIRL = {"text": "Girl", "action": "EVENT", "event": {"lines": [
     "Girl: Someone at the Outskirt Stand might still have a few."]}}
 
 
+# ================================================================== batch 1: Pyrite (Colosseum parts 3-4; BATCH_1.md)
+import json as _json
+import os as _os
+
+_TRAINERS = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "data", "orre_trainers.json")
+
+
+def T(key, **kw):
+    """A disc trainer's battle (dev/builders/data/orre_trainers.json, made by kanto_handoff/orre_rom_tools/otrainers.py)."""
+    b = dict(_json.load(open(_TRAINERS, encoding="utf-8"))[key])
+    b.pop("disc", None)
+    b.update(kw)
+    return b
+
+
+def _fight(text, key, flag, intro, won, done=None, **kw):
+    """Someone who battles once (a disc trainer), then says a word."""
+    return dict({"text": text, "action": "EVENT", "event": {"stages": [{
+        "flag": flag, "lines": intro if isinstance(intro, list) else [intro],
+        "battle": T(key, dialogue={"player_won": [won]})}], "done": [done or won]}}, **kw)
+
+
+SQUARE = {   # (the duel square: the fan game's own spots, map 82; Colosseum's trainers, their first battles)
+    (15, 46): _fight("Chaser Calda", "col:51", "orre_sq_calda", "Chaser Calda: Fresh face! Let's see what you've got.",
+                     "Chaser Calda: Not bad. Not bad at all."),
+    (17, 45): _fight("Chaser Emok", "col:54", "orre_sq_emok", "Chaser Emok: This is the duel square. Nobody walks through without a fight!",
+                     "Chaser Emok: Okay, okay, you can walk through."),
+    (19, 48): _fight("Rider Nover", "col:57", "orre_sq_nover", "Rider Nover: Some guy gave me a really strong Pokemon. Wanna see it?",
+                     "Rider Nover: My Noctowl... it just kept attacking. Was that normal?"),
+    (15, 47): _fight("St.Performer Diogo", "col:63", "orre_sq_diogo", "St.Performer Diogo: Step right up! My Pokemon and I put on the best show in Pyrite!",
+                     "St.Performer Diogo: That's showbiz, I guess."),
+    (22, 47): _fight("Rider Leba", "col:69", "orre_sq_leba", "Rider Leba: I won this Pokemon in a battle at the Colosseum. Let's try it out!",
+                     "Rider Leba: Huh. My prize didn't help much."),
+    (20, 46): _fight("Bandana Guy Divel", "col:75", "orre_sq_divel", "Bandana Guy Divel: A strange dude gave me a new Pokemon. He wasn't so bad after all!",
+                     "Bandana Guy Divel: Aw, man."),
+    (21, 49): _fight("Rider Vant", "col:81", "orre_sq_vant", "Rider Vant: My new Pokemon gives me the creeps. Good thing it fights for me!",
+                     "Rider Vant: Ugh, you're tough."),
+    (16, 48): _fight("Roller Boy Lon", "col:87", "orre_sq_lon", "Roller Boy Lon: Some dude gave me a really strong Pokemon. Afraid?",
+                     "Roller Boy Lon: Whoa. You're strong!"),
+    (18, 47): _fight("Bodybuilder Hader", "col:775", "orre_sq_hader", "Bodybuilder Hader: Heard you won the Colosseum. Let's see if it was luck!",
+                     "Bodybuilder Hader: No luck about it. You're the real thing.", condition="has_pyrite_badge"),   # (the disc's later Pyrite battle)
+}
+THUG = {"text": "Thug", "action": "EVENT", "event": {"stages": [{"flag": "orre_heard_cail", "lines": [
+    "Thug: You here for the tournament? Ha! The real prize in this town is what Cail's got.",
+    "Thug: Beat him and he hands out an awesome Pokemon. He's hanging around the bottom of town."]}],
+    "done": ["Thug: Cail's down at the bottom of town. Go get your prize, if you can."]}}
+CAIL = {"text": "Rogue Cail", "action": "EVENT", "event": {   # ("requires" + "fail": not yet; "done": after - plain event, not stages)
+    "requires": ["orre_heard_cail"], "flag": "orre_beat_cail",
+    "lines": ["Rogue Cail: So you heard about my prize? Win, and maybe you get to see it up close."],
+    "battle": T("col:93", dialogue={"player_won": ["Rogue Cail: Tch. Fine, fine."]}),
+    "fail": ["Rogue Cail: Get lost. I don't battle nobodies."],
+    "done": ["Rogue Cail: Don't you have somewhere else to be?"]}}
+COP_SCENE = {"trigger": "enter", "condition": "not:orre_pyrite_cop", "flag": "orre_pyrite_cop",
+             "cast": [{"sheet": "orre_npc_01.png", "from": [29, 80], "path": [[29, 83]], "stay": True,
+                       "lines": ["Officer: You there! Did you just take something from that stall?"]},
+                      {"sheet": "orre_trainer_burglar.png", "from": [31, 80], "path": [[31, 83]], "stay": True, "concurrent": True,
+                       "lines": ["Thief: Me? Officer, I'd never! Look, my hands are empty."]},
+                      {"as": 0, "lines": ["Officer: Hm. Well, all right then. Off you go."], "leave_path": [[29, 70]]},
+                      {"as": 1, "lines": ["Thief: Heh heh heh... Too easy."], "leave_path": [[33, 78], [36, 78]]}]}
+POWER_SCENE = {"trigger": {"zone": [10, 66, 18, 69]}, "condition": ["orre_beat_cail", "not:orre_power_out"], "flag": "orre_power_out",
+               "cast": [{"sheet": "orre_trainer_scientist.png", "from": [12, 65], "path": [[12, 67]], "stay": True,
+                         "lines": ["A man in a lab coat stumbles out of Duking's door and falls flat.",
+                                   "Scientist: Ugh... It's Silva... He took the Gear right out of the windmill!",
+                                   "Scientist: Without the windmill there's no power. The Colosseum is dark!"]},
+                        {"as": 0, "lines": ["Rui: Silva? He must have gone off somewhere with it. Let's look around Orre!"],
+                         "leave_path": [[12, 65]]}]}
+NORE = _fight("Cipher Peon Nore", "col:99", "orre_beat_nore",
+              ["Cipher Peon Nore: Psst, champ! Follow me. We've got a special prize for winners like you...",
+               "Cipher Peon Nore: Wait... You're the one who's been giving Miror B. all that trouble!",
+               "Rui: That Yanma has the dark aura!"],
+              "Cipher Peon Nore: Gah! Miror B. is going to dance all over me...",
+              done="Cipher Peon Nore: ...", condition="has_pyrite_badge", flag_condition="not orre_beat_nore")
+BRIDGE_SCENE = {"who": "Cipher Peon Nore", "trigger": {"zone": [24, 28, 28, 37]}, "approach": True,
+                "condition": ["has_pyrite_badge", "not:orre_beat_nore"], "flag": "orre_nore_met", "then": "talk"}
+PLUSLE_SCENE = {"trigger": "enter", "condition": ["orre_beat_nore", "not:orre_plusle_taken"], "flag": "orre_plusle_taken",
+                "cast": [{"sheet": "orre_npc_duking.png", "from": [26, 38], "to": "player", "leave": "back",
+                          "lines": ["Duking: There you are! So that's where they've been handing out Shadow Pokemon to the winners...",
+                                    "Duking: And there's worse. My Plusle... Miror B.'s gang took her!",
+                                    "Rui: Then we'll get her back. Cipher's hideout is right by the bridge: the Pyrite Building!"]}]}
+SILVA = {"text": "Silva", "action": "EVENT", "flag_condition": "not orre_power_out", "event": {"lines": [
+    "Silva: Duking won't do anything about Miror B.! Everyone just lets that afro creep walk all over Pyrite!",
+    "Silva: I'm Silva. If nobody else will stand up to Cipher, I will."]}}
+MARCIA = {"text": "Marcia", "action": "EVENT", "event": {"lines": [
+    "Marcia: I'm Marcia. Duking looks after us kids here. Leave him be, okay? He's got a lot on his mind."]}}
+DUKING_STAGES = {"text": "Duking", "action": "EVENT", "event": {"stages": [
+    {"requires": ["orre_got_gear"], "flag": "orre_power_on",
+     "lines": ["Duking: You found the Gear? So Silva really did take it... I trusted that boy.",
+               "Duking: You two are no ordinary trainers. Here, help me set it back in the windmill.",
+               "You put the GEAR back in place. The windmill creaks, then turns. Pyrite Colosseum has power again!",
+               "Duking: Go on up to the Colosseum. Show this town what a real trainer looks like."]}],
+    "done": ["Duking: Leave me be. ...Hm? You're still here?"]}}
+JAIL_KEY = {"text": "Jail Key", "action": "EVENT", "flag_condition": "not orre_got_jail_key",
+            "event": {"flag": "orre_got_jail_key", "lines": ["There's a key on the desk... You took the JAIL KEY!"], "gift_item": {"JAIL_KEY": 1}}}
+PRISONER = {"text": "Prisoner", "action": "EVENT", "event": {
+    "requires": ["orre_got_jail_key"], "flag": "orre_jail_prisoner",
+    "lines": ["Prisoner: Hey! Is that the key? Get me out of here!",
+              "You unlocked the cell.", "Prisoner: Thanks, pal. Here, take this. I won't be needing it where I'm going.",
+              "You received TM18 (THIEF)!"],
+    "gift_item": {"TM018": 1},
+    "fail": ["Prisoner: Psst! The sheriff keeps the key on his desk. Get me out of here!"],
+    "done": ["(The cell is empty now.)"]}}
+
+
+def _pyrite(maps):
+    m = maps["PYRITE_TOWN"]
+    _set_people(m, {**SQUARE, (24, 23): THUG, (30, 84): CAIL, (26, 33): NORE})
+    m["scenes"] = [COP_SCENE, POWER_SCENE, BRIDGE_SCENE, PLUSLE_SCENE]
+    m["barred"] = list(m.get("barred") or []) + [   # (Cipher's hideout: shut till you've won the Colosseum - Colosseum's order)
+        {"tiles": [[32, 40]], "look": "sheet:orre_trainer_cipher_grunt.png", "face": "d", "until": {"condition": "has_pyrite_badge"},
+         "lines": ["Cipher Peon: Members only! Come back when you're somebody, like a Colosseum champ."]},
+        {"tiles": [[33, 40]], "look": "sheet:orre_trainer_cipher_grunt.png", "face": "d", "until": {"condition": "has_pyrite_badge"},
+         "lines": ["Cipher Peon: You heard him. Beat it!"]}]
+    dk = m["rooms"]["duking"]
+    now = _people_at(dk)
+    now = {s: (DUKING_STAGES if (p.get("text") if isinstance(p, dict) else p) == "Duking" else p) for s, p in now.items()}
+    dk["people"] = [now[s] for s in sorted(now, key=lambda s: (s[1], s[0]))]
+    _set_people(dk, {(4, 8): SILVA, (12, 9): MARCIA})
+    _set_people(m["rooms"]["sheriff"], {(14, 3): JAIL_KEY, (30, 7): PRISONER})
+
+
 OLD_SAVE = "not:got_snag_machine"   # (a save already past this stretch: none of it plays again)
 
 
@@ -246,6 +366,8 @@ def _past_guard(m):
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
+    if "PYRITE_TOWN" in maps:
+        _pyrite(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

@@ -72,7 +72,7 @@ check(type(g.current_state).__name__ != "PokemonPartyMenuState" and "None of the
       "nothing in the party to purify")
 
 print("4) Tournaments, story gates, the League and Jirachi")
-for town, gate in (("PYRITE_TOWN", "got_snag_machine"), ("UNDER_COLOSSEUM", "orre_dakim_mt_battle"),
+for town, gate in (("PYRITE_TOWN", "orre_power_on"), ("UNDER_COLOSSEUM", "orre_dakim_mt_battle"),   # (Pyrite: the windmill's power, batch 1)
                    ("PHENAC_CITY", "orre_snattle_phenac"), ("ORRE_COLOSSEUM", "beat_gonzap")):
     req = prog[town]["gym"]["requirements"]
     check(req.get("flag") == gate, f"{town}: its tournament opens after {gate}")
