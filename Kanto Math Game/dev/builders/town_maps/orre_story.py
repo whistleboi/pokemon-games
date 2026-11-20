@@ -314,8 +314,12 @@ DUKING_STAGES = {"text": "Duking", "action": "EVENT", "event": {"stages": [
      "lines": ["Duking: You found the Gear? So Silva really did take it... I trusted that boy.",
                "Duking: You two are no ordinary trainers. Here, help me set it back in the windmill.",
                "You put the GEAR back in place. The windmill creaks, then turns. Pyrite Colosseum has power again!",
-               "Duking: Go on up to the Colosseum. Show this town what a real trainer looks like."]}],
-    "done": ["Duking: Leave me be. ...Hm? You're still here?"]}}
+               "Duking: Go on up to the Colosseum. Show this town what a real trainer looks like."]},
+    # (his Plusle, back from Miror B.: the gift that was already Duking's - CANON_SPECIES.md - kept as his next step)
+    {"requires": ["orre_miror_cave"], "flag": "orre_duking_plusle", "gift_pokemon": 311, "gift_level": 13,
+     "lines": ["Duking: You got my Plusle back from Miror B.! I owe you everything.",
+               "Duking: It wants to go with you. Take good care of it, kid."]}],
+    "done": ["Duking: Pyrite's been rough lately. Keep your eyes open, kid."]}}
 JAIL_KEY = {"text": "Jail Key", "action": "EVENT", "flag_condition": "not orre_got_jail_key",
             "event": {"flag": "orre_got_jail_key", "lines": ["There's a key on the desk... You took the JAIL KEY!"], "gift_item": {"JAIL_KEY": 1}}}
 PRISONER = {"text": "Prisoner", "action": "EVENT", "event": {
@@ -331,7 +335,7 @@ PRISONER = {"text": "Prisoner", "action": "EVENT", "event": {
 def _pyrite(maps):
     m = maps["PYRITE_TOWN"]
     _set_people(m, {**SQUARE, (24, 23): THUG, (30, 84): CAIL, (26, 33): NORE})
-    m["scenes"] = [COP_SCENE, POWER_SCENE, BRIDGE_SCENE, PLUSLE_SCENE]
+    m["scenes"] = [COP_SCENE, POWER_SCENE, BRIDGE_SCENE, PLUSLE_SCENE, FATEEN_SCENE]
     m["barred"] = list(m.get("barred") or []) + [   # (Cipher's hideout: shut till you've won the Colosseum - Colosseum's order)
         {"tiles": [[32, 40]], "look": "sheet:orre_trainer_cipher_grunt.png", "face": "d", "until": {"condition": "has_pyrite_badge"},
          "lines": ["Cipher Peon: Members only! Come back when you're somebody, like a Colosseum champ."]},
@@ -343,6 +347,38 @@ def _pyrite(maps):
     dk["people"] = [now[s] for s in sorted(now, key=lambda s: (s[1], s[0]))]
     _set_people(dk, {(4, 8): SILVA, (12, 9): MARCIA})
     _set_people(m["rooms"]["sheriff"], {(14, 3): JAIL_KEY, (30, 7): PRISONER})
+
+
+# ================================================================== batch 2: Pyrite Cave, Agate (Colosseum part 5; BATCH_2.md)
+FATEEN_SCENE = {"trigger": {"zone": [27, 83, 33, 86]}, "condition": ["orre_miror_cave", "not:orre_fateen"], "flag": "orre_fateen",
+                "cast": [{"sheet": "orre_npc_fortune_lady.png", "from": [25, 76], "to": "player", "leave": "back",
+                          "lines": ["Fateen: Leaving so soon? Wait. I see something in the north... a village by the falls, and trouble coming to it.",
+                                    "Rui: In the north... that's Agate Village! My grandparents live there.",
+                                    "Rui: Let's ride to Agate. I want to make sure they're all right."]}]}
+SKOF = _fight("Fun Old Man Skof", "col:191", "orre_agate_skof", "Fun Old Man Skof: These old bones still have a battle or two in them!",
+              "Fun Old Man Skof: Heh heh. That's what I call a workout.")
+DURY = _fight("Cooltrainer Dury", "col:201", "orre_agate_dury", "Cooltrainer Dury: Agate's the place to train. The air's clean and the battles are fair.",
+              "Cooltrainer Dury: You trained hard to get that good.")
+QUICK_CLAW = {"text": "Quick Claw", "action": "EVENT", "flag_condition": "not orre_agate_quick_claw",
+              "event": {"flag": "orre_agate_quick_claw", "lines": ["You found a QUICK CLAW!"], "gift_item": {"QUICK_CLAW": 1}}}
+EIN_FILE_C = {"text": "Ein File C", "action": "EVENT", "flag_condition": "not orre_ein_file_c", "condition": "orre_beat_skrub",
+              "event": {"flag": "orre_ein_file_c", "lines": ["Skrub dropped something by the Relic Stone... You found EIN FILE C!"],
+                        "gift_item": {"EIN_FILE_C": 1}}}
+BELUH = {"text": "Beluh", "action": "EVENT", "event": {"stages": [{
+    "requires": ["orre_beat_skrub"], "flag": "orre_beluh_tablet",
+    "lines": ["Beluh: You saved my husband! Thank you, both of you.",
+              "Beluh: The Relic Stone can open a Shadow Pokemon's heart, once its gauge is empty. Take your Pokemon there.",
+              "Beluh: And there was an e-mail for you, Rui... Something about Mt. Battle being attacked!"]}],
+    "done": ["Beluh: Rui, dear, you look so grown up. Take care of each other."]}}
+CAVE_GUARD = {"tiles": [[36, 27]], "look": "sheet:orre_npc_10.png", "face": "d", "until": {"condition": "met_agate_elder"},
+              "lines": ["Man: Sorry, nobody goes into the Relic Cave. The elder's orders."]}
+
+
+def _agate(maps):
+    m = maps["AGATE_VILLAGE"]
+    _set_people(m, {(52, 22): SKOF, (70, 27): DURY, (60, 27): QUICK_CLAW, (37, 28): EIN_FILE_C})
+    m["barred"] = list(m.get("barred") or []) + [CAVE_GUARD]
+    _set_people(m["rooms"]["elder"], {(3, 5): BELUH})
 
 
 OLD_SAVE = "not:got_snag_machine"   # (a save already past this stretch: none of it plays again)
@@ -368,6 +404,8 @@ def apply(maps):
         _outskirt(maps)
     if "PYRITE_TOWN" in maps:
         _pyrite(maps)
+    if "AGATE_VILLAGE" in maps:
+        _agate(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

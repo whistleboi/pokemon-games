@@ -284155,10 +284155,22 @@
           "You put the GEAR back in place. The windmill creaks, then turns. Pyrite Colosseum has power again!",
           "Duking: Go on up to the Colosseum. Show this town what a real trainer looks like."
          ]
+        },
+        {
+         "requires": [
+          "orre_miror_cave"
+         ],
+         "flag": "orre_duking_plusle",
+         "gift_pokemon": 311,
+         "gift_level": 13,
+         "lines": [
+          "Duking: You got my Plusle back from Miror B.! I owe you everything.",
+          "Duking: It wants to go with you. Take good care of it, kid."
+         ]
         }
        ],
        "done": [
-        "Duking: Leave me be. ...Hm? You're still here?"
+        "Duking: Pyrite's been rough lately. Keep your eyes open, kid."
        ]
       }
      },
@@ -284543,6 +284555,37 @@
       ]
      }
     ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      27,
+      83,
+      33,
+      86
+     ]
+    },
+    "condition": [
+     "orre_miror_cave",
+     "not:orre_fateen"
+    ],
+    "flag": "orre_fateen",
+    "cast": [
+     {
+      "sheet": "orre_npc_fortune_lady.png",
+      "from": [
+       25,
+       76
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Fateen: Leaving so soon? Wait. I see something in the north... a village by the falls, and trouble coming to it.",
+       "Rui: In the north... that's Agate Village! My grandparents live there.",
+       "Rui: Let's ride to Agate. I want to make sure they're all right."
+      ]
+     }
+    ]
    }
   ],
   "barred": [
@@ -284604,13 +284647,13 @@
    "cccccccc.....cc...ccccccccccc.......ccccccc.ccc..ccc....ccccccccccccc.....ccccccccccc",
    "cccccccc..c..cc...cccccccccc.......cccBDBcc.............ccccccccccccccccccccccccccccc",
    "cccccccc..ccccc...ccCDCccc..............................cEDEccccccccccccccccccccccccc",
-   "cccccccc..FDFcc........c........cccccccccccccccccccc.........cc....ccc.c.cccccccccccc",
+   "cccccccc..FDFcc........c........ccccccccccccccccccccN........cc....ccc.c.cccccccccccc",
    "cccccccc....ccc.................cccccccccccccccccccc.........cc....cc.....ccccccccccc",
    "cccccccc.....ccccccc............cccccccccccccccccccc...cccc..cc..N.cc.....ccccccccccc",
    "cccccccc.......ccccc............ccccccccccccccccccccccccc..........cc....cccccccccccc",
    "cccccccc.......cGDGcc..c........cccHDHccccccccccccccccccc................cccccccccccc",
-   "cccccccc............c..c........cc...........cc........cc................cccccccccccc",
-   "cccccccc............c..ccccccccccc...........cc..ccccc.cc..........cc..cccccccccccccc",
+   "cccccccc............c..c........cc...........cc........cc...N.........N..cccccccccccc",
+   "cccccccc............c..ccccccccccc...N.......cc..ccccc.cc..........cc..cccccccccccccc",
    "cccccccc............c..ccccccccccc.......cccccc..ccccc.ccccc.......cc..cccccccccccccc",
    "ccccccccccccccccccc..............c.......cccccc..cIDIc.cccc.......Ncc.ccccccccccccccc",
    "cccccccccccccccccccc.............c.ccccccc.............ccc.........cc.ccccccccccccccc",
@@ -284657,12 +284700,153 @@
   },
   "people": [
    {
+    "text": "Fun Old Man Skof",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_agate_skof",
+       "lines": [
+        "Fun Old Man Skof: These old bones still have a battle or two in them!"
+       ],
+       "battle": {
+        "name": "Fun Old Man Skof",
+        "class": "FUN_OLD_MAN",
+        "sprite": "orre_fun_old_man.png",
+        "team": [
+         66,
+         273,
+         162
+        ],
+        "levels": [
+         34,
+         35,
+         34
+        ],
+        "team_moves": [
+         [
+          "LOW-KICK",
+          "SECRET-POWER"
+         ],
+         [
+          "NATURE-POWER",
+          "GROWTH"
+         ],
+         [
+          "CUT",
+          "SECRET-POWER"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Fun Old Man Skof: Heh heh. That's what I call a workout."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Fun Old Man Skof: Heh heh. That's what I call a workout."
+     ]
+    }
+   },
+   {
     "text": "Old man",
     "action": "EVENT",
     "event": {
      "lines": [
       "My Pokemon train their punches by the falls every morning."
      ]
+    }
+   },
+   {
+    "text": "Quick Claw",
+    "action": "EVENT",
+    "flag_condition": "not orre_agate_quick_claw",
+    "event": {
+     "flag": "orre_agate_quick_claw",
+     "lines": [
+      "You found a QUICK CLAW!"
+     ],
+     "gift_item": {
+      "QUICK_CLAW": 1
+     }
+    }
+   },
+   {
+    "text": "Cooltrainer Dury",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "orre_agate_dury",
+       "lines": [
+        "Cooltrainer Dury: Agate's the place to train. The air's clean and the battles are fair."
+       ],
+       "battle": {
+        "name": "Cooltrainer Dury",
+        "class": "COOLTRAINER",
+        "sprite": "orre_cool_trainer_m.png",
+        "team": [
+         277,
+         111,
+         192
+        ],
+        "levels": [
+         39,
+         39,
+         40
+        ],
+        "team_moves": [
+         [
+          "WING-ATTACK",
+          "REFRESH",
+          "SECRET-POWER"
+         ],
+         [
+          "ROCK-SLIDE",
+          "DIG",
+          "SECRET-POWER"
+         ],
+         [
+          "NATURE-POWER",
+          "GROWTH"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Cooltrainer Dury: You trained hard to get that good."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Cooltrainer Dury: You trained hard to get that good."
+     ]
+    }
+   },
+   {
+    "text": "Ein File C",
+    "action": "EVENT",
+    "flag_condition": "not orre_ein_file_c",
+    "condition": "orre_beat_skrub",
+    "event": {
+     "flag": "orre_ein_file_c",
+     "lines": [
+      "Skrub dropped something by the Relic Stone... You found EIN FILE C!"
+     ],
+     "gift_item": {
+      "EIN_FILE_C": 1
+     }
     }
    },
    {
@@ -284902,7 +285086,7 @@
      "cc..cccccccccc",
      "c.....c......c",
      "cc....c.ccc..c",
-     "cc....cc.N...c",
+     "cc.N..cc.N...c",
      "c......c.....c",
      "cc.....c....cc",
      "cc...^cc....cc",
@@ -284917,6 +285101,28 @@
     },
     "buildings": {},
     "people": [
+     {
+      "text": "Beluh",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "orre_beat_skrub"
+         ],
+         "flag": "orre_beluh_tablet",
+         "lines": [
+          "Beluh: You saved my husband! Thank you, both of you.",
+          "Beluh: The Relic Stone can open a Shadow Pokemon's heart, once its gauge is empty. Take your Pokemon there.",
+          "Beluh: And there was an e-mail for you, Rui... Something about Mt. Battle being attacked!"
+         ]
+        }
+       ],
+       "done": [
+        "Beluh: Rui, dear, you look so grown up. Take care of each other."
+       ]
+      }
+     },
      "Village Elder"
     ],
     "signs": [],
@@ -285147,6 +285353,24 @@
     "size": [
      85,
      60
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      36,
+      27
+     ]
+    ],
+    "look": "sheet:orre_npc_10.png",
+    "face": "d",
+    "until": {
+     "condition": "met_agate_elder"
+    },
+    "lines": [
+     "Man: Sorry, nobody goes into the Relic Cave. The elder's orders."
     ]
    }
   ]
@@ -286592,15 +286816,15 @@
      "cccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccc",
      "c..............ccccccc..........1c",
-     "c...X..........ccccccc...........c",
+     "c...X..........ccccccc.........N.c",
      "c......X.......ccccccc...........c",
      "ccc......ccccccccccccc.....X.....c",
-     "ccc......ccccccccccccc...........c",
+     "ccc..N...ccccccccccccc...........c",
      "ccc......cccccccccccccccc......ccc",
-     "ccc......cccccccccccccccc......ccc",
+     "ccc......cccccccccccccccc..X...ccc",
      "ccc......cccccccccccccccc......ccc",
      "c...........X..................ccc",
-     "c..............................ccc",
+     "c.N.......X....................ccc",
      "c......ccccccccccccccccccccccccccc",
      "c......ccccccccccccccccccccccccccc",
      "cc.v.ccccccccccccccccccccccccccccc"
@@ -286616,12 +286840,18 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "Ultra Balls",
+     "Full Heal",
+     "Hyper Potions"
+    ],
     "trainer_spots": [
      "Rider Twan",
      "St.Performer Simes",
      "Chaser Rehan",
-     "Bandana Guy Noxy"
+     "Rider Sosh",
+     "Bandana Guy Noxy",
+     "Hunter Meli"
     ],
     "roofs": {
      "_picture": {
@@ -286654,10 +286884,10 @@
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "c1.......cccccccccccccccccccccc.....cc",
-     "c........cccccccccccXcccccccccc.....cc",
-     "c........cccccccccccccccccccccc......c",
+     "c........ccccccccccccccccccccccX...Ncc",
+     "c......X.cccccccccccccccccccccc......c",
      "c.....ccccccccccccccccccccccccccc....c",
-     "c...c.ccccccccccccccccccccccccccc.X..c",
+     "c..Nc.ccccccccccccccccccccccccccc.X..c",
      "c.....ccccccccccccccccccccccccccc...1c",
      "cccccccccccccccccccccccccccccccccccccc"
     ],
@@ -286675,9 +286905,13 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "Max Potion",
+     "Ethers"
+    ],
     "trainer_spots": [
      "Hunter Valen",
+     "Hunter Zalo",
      "Chaser Maiz"
     ],
     "roofs": {
@@ -286710,11 +286944,11 @@
     "art": [
      "ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc",
-     "c..........1ccccc...........c",
-     "c...........ccccc.....X.....c",
-     "c.....X.....ccccc...........c",
-     "c..NN.......................c",
-     "c......................1....c",
+     "c........N.1ccccc..........Nc",
+     "c.N.........ccccc.....X.....c",
+     "c.....X.....ccccc........X..c",
+     "c..NN...............N.......c",
+     "c...............X......1....c",
      "ccccccccccccccccccccccccccccc"
     ],
     "exits": {},
@@ -286732,12 +286966,18 @@
     },
     "parts": true,
     "people": [
+     "Iron",
+     "Zinc",
+     "Carbos",
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "Protein"
     ],
     "trainer_spots": [
      "Roller Boy Evat",
-     "Rider Derid"
+     "Rider Derid",
+     "Cipher Peon Sema",
+     "Chaser Mela"
     ],
     "roofs": {
      "_picture": {
@@ -286770,9 +287010,9 @@
      "cccccccccccccccccccc",
      "c........ccccccccccc",
      "c........ccc.....ccc",
+     "c................N.c",
      "c..................c",
-     "c..................c",
-     "c..................c",
+     "c................N.c",
      "c..................c",
      "c..............cc..c",
      "c.c.......cccccccccc",
@@ -286784,7 +287024,7 @@
      "c........ccccccccccc",
      "c.cc......cccccccccc",
      "c.cc.......c.c.c.c.c",
-     "c......c......N....c",
+     "c......c....N.N....c",
      "c.....ccc.........cc",
      "c......c..........cc",
      "cccccccc1ccccccccccc",
@@ -286800,6 +287040,9 @@
     },
     "parts": true,
     "people": [
+     "Macho Brace",
+     "Ein File P",
+     "Snatch box",
      "PYRITE CAVE: MIROR B."
     ],
     "trainer_spots": [],
@@ -286837,17 +287080,34 @@
    "Miror B.'s Room"
   ],
   "figure_floors": {
+   "Ultra Balls": 0,
+   "Full Heal": 0,
+   "Hyper Potions": 0,
    "Rider Twan": 0,
    "St.Performer Simes": 0,
    "Chaser Rehan": 0,
    "Bandana Guy Noxy": 0,
+   "Rider Sosh": 0,
+   "Hunter Meli": 0,
+   "Ethers": 1,
+   "Max Potion": 1,
    "Hunter Valen": 1,
    "Chaser Maiz": 1,
+   "Hunter Zalo": 1,
    "SNAG SHADOW POKEMON": 2,
    "SNAG AGAIN": 2,
+   "Carbos": 2,
+   "Zinc": 2,
+   "Protein": 2,
+   "Iron": 2,
    "Roller Boy Evat": 2,
    "Rider Derid": 2,
-   "PYRITE CAVE: MIROR B.": 3
+   "Chaser Mela": 2,
+   "Cipher Peon Sema": 2,
+   "PYRITE CAVE: MIROR B.": 3,
+   "Snatch box": 3,
+   "Macho Brace": 3,
+   "Ein File P": 3
   },
   "theme": "tunnel"
  },
@@ -287136,21 +287396,21 @@
     "art": [
      "cccccccccccccccccccc",
      "cccccccccccccccccccc",
-     "cccccccc.....ccccccc",
-     "cccccccc......cccccc",
+     "cccccccc..N..ccccccc",
+     "cccccccc..N...cccccc",
      "cccccccc.......ccccc",
      "cccccccc.......ccccc",
      "cccccccc...........c",
      "cccccc..........cccc",
      "cccccc...........ccc",
-     "cccccc...........ccc",
+     "cccNcc...........ccc",
      "cc.............ccccc",
      "cc............ccc.cc",
      "cc...........ccc..1c",
      "cc..........ccc..ccc",
      "cc......cc..ccc..ccc",
      "cc.....ccc..c.....cc",
-     "ccc..cccc.........cc",
+     "ccc.Ncccc.........cc",
      "ccccccc..........ccc",
      "cccc.cc..........ccc",
      "cccc..NN........cccc",
@@ -287165,8 +287425,8 @@
      "cc.........ccccccccc",
      "ccc........ccccccccc",
      "ccc........ccccccccc",
-     "ccc........ccccccccc",
-     "ccc.........cccccccc",
+     "ccc.....X..ccccccccc",
+     "ccc....X.X..cccccccc",
      "cccc........cccccccc",
      "ccccc........ccccccc",
      "cccccc.......ccccccc",
@@ -287186,10 +287446,18 @@
     },
     "parts": true,
     "people": [
+     "Eagun",
+     "Cipher Peon Skrub",
+     "Ultra Balls",
+     "Silk Scarf",
      "SNAG AGAIN",
      "SNAG SHADOW POKEMON"
     ],
-    "trainer_spots": [],
+    "trainer_spots": [
+     "Cipher Peon Kass",
+     "Cipher Peon Doven",
+     "Cipher Peon Silton"
+    ],
     "roofs": {
      "_picture": {
       "f": "orre_ground/112.png",
@@ -287278,7 +287546,14 @@
   ],
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
-   "SNAG AGAIN": 0
+   "SNAG AGAIN": 0,
+   "Eagun": 0,
+   "Cipher Peon Skrub": 0,
+   "Silk Scarf": 0,
+   "Ultra Balls": 0,
+   "Cipher Peon Doven": 0,
+   "Cipher Peon Silton": 0,
+   "Cipher Peon Kass": 0
   },
   "theme": "tunnel"
  },

@@ -139,7 +139,12 @@ def meet(st, text):
         else:
             return None
     else:
-        hit = lambda fl: next((m for m in fl.movers if m.kind in ("figure", "trainer") and isinstance(m.payload, dict) and m.payload.get("text") == text), None)
+        def _who(m):   # (a figure's payload is its option; a trainer's is (index, its data))
+            pl = m.payload
+            if isinstance(pl, tuple) and len(pl) > 1 and isinstance(pl[1], dict):
+                return pl[1].get("name")
+            return pl.get("text") if isinstance(pl, dict) else None
+        hit = lambda fl: next((m for m in fl.movers if m.kind in ("figure", "trainer") and _who(m) == text), None)
         if hit(st.run.floor) is None:
             for i in range(st.run.n_floors):
                 if hit(st.run.made(i)) is not None:

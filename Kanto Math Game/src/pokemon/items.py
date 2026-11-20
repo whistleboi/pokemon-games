@@ -576,6 +576,8 @@ STORY_TEXT = {
     "JAIL_KEY": "The key to the cells in Pyrite's police station.",
     "EIN_FILE_H": "One of Cipher scientist Ein's files: notes on Shadow Pokemon and their Hyper Mode.",
     "EIN_FILE_S": "One of Cipher scientist Ein's files: notes on how Shadow Pokemon are snagged.",
+    "EIN_FILE_P": "One of Cipher scientist Ein's files: notes on how a Shadow Pokemon's heart is purified.",
+    "EIN_FILE_C": "One of Cipher scientist Ein's files: notes on Cipher and its Shadow Pokemon factory.",
     "TIDAL_BELL": "A bell that rings like the tide.",
     "RUBY": "A gem as red as fire.", "SAPPHIRE": "A gem as blue as the sea.",
     "FIRE_TREASURE": "The Fire Island's sacred treasure.",

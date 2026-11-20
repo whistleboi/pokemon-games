@@ -194,6 +194,7 @@ for _key in _orre:
     check(set(o["target_area"] for o in _tv if t._shown(o)) <= set(_rides), f"  {_key}: the bike offers the rides open now {_rides}")
 
 # ---- Agate's cave mouth: purify at the Relic Stone, or go into the cave; Gateon's sailor: the boat
+story.story_flags["met_agate_elder"] = story.story_flags["orre_beat_skrub"] = True   # (both open after Eagun and Skrub: batch 2)
 t = town("AGATE_VILLAGE", "PYRITE_CAVE")
 _rel = [o.get("text") for o in t._door_options("relic")]
 check("Purify at the Relic Stone" in _rel and any(o.get("target_area") == "RELIC_CAVE" for o in t._door_options("relic")),

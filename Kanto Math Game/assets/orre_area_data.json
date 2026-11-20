@@ -629,6 +629,17 @@
           "door": "cycle",
           "target_area": "XD_ONBS",
           "condition": "xd_lovrina_beaten"
+        },
+        {
+          "text": "Agate Village",
+          "door": "cycle",
+          "target_area": "AGATE_VILLAGE",
+          "condition": {
+            "any": [
+              "orre_fateen",
+              "met_agate_elder"
+            ]
+          }
         }
       ],
       "next_area": "PHENAC_CITY",
@@ -1563,16 +1574,152 @@
       "min_rounds": 0,
       "trainer_pool": [
         {
-          "name": "St.Performer Simes",
+          "name": "St. Performer Simes",
           "class": "STPERFORMER",
           "sprite": "orre_street_performer.png",
           "team": [
             347,
             270
           ],
+          "levels": [
+            32,
+            32
+          ],
+          "team_moves": [
+            [
+              "WATER-GUN",
+              "HARDEN",
+              "SCRATCH"
+            ],
+            [
+              "ABSORB",
+              "GROWL",
+              "ASTONISH"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           }
+        },
+        {
+          "name": "Chaser Maiz",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            109,
+            280,
+            285
+          ],
+          "levels": [
+            32,
+            31,
+            32
+          ],
+          "team_moves": [
+            [
+              "SMOG",
+              "POISON-GAS",
+              "THIEF"
+            ],
+            [
+              "CONFUSION",
+              "GROWL",
+              "THIEF"
+            ],
+            [
+              "MEGA-DRAIN",
+              "POISON-POWDER",
+              "HEADBUTT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Hunter Valen",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+            270,
+            293,
+            287
+          ],
+          "levels": [
+            32,
+            33,
+            32
+          ],
+          "team_moves": [
+            [
+              "ABSORB",
+              "GROWL",
+              "ASTONISH",
+              "MIST"
+            ],
+            [
+              "STOMP",
+              "SCREECH",
+              "SUPERSONIC",
+              "ROAR"
+            ],
+            [
+              "SCRATCH",
+              "AMNESIA",
+              "COVET",
+              "FEINT-ATTACK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Rider Twan",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            9411,
+            371,
+            322
+          ],
+          "levels": [
+            33,
+            33,
+            32
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "DETECT",
+              "CALM-MIND",
+              "CONFUSION"
+            ],
+            [
+              "HEADBUTT",
+              "EMBER",
+              "BITE",
+              "DRAGON-BREATH"
+            ],
+            [
+              "EMBER",
+              "DIG",
+              "FOCUS-ENERGY",
+              "TAKE-DOWN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            "TWISTEDSPOON",
+            null,
+            null
+          ]
         },
         {
           "name": "Chaser Rehan",
@@ -1584,65 +1731,82 @@
             361,
             287
           ],
+          "levels": [
+            32,
+            31,
+            32,
+            31
+          ],
+          "team_moves": [
+            [
+              "BLOCK",
+              "DEFENSE-CURL",
+              "TACKLE"
+            ],
+            [
+              "ABSORB",
+              "GROWL",
+              "MIST",
+              "THIEF"
+            ],
+            [
+              "BLOCK",
+              "ICY-WIND",
+              "BITE"
+            ],
+            [
+              "SCRATCH",
+              "YAWN",
+              "AMNESIA",
+              "ENCORE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           }
         },
         {
           "name": "Bandana Guy Noxy",
           "class": "BANDANA_GUY",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_m.png",
           "team": [
             270,
             270,
             270,
-            270,
-            326
+            270
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Chaser Maiz",
-          "class": "CHASER",
-          "sprite": "orre_chaser_f.png",
-          "team": [
-            109,
-            280,
-            285
+          "levels": [
+            32,
+            33,
+            33,
+            33
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Rider Twan",
-          "class": "RIDER",
-          "sprite": "orre_rider.png",
-          "team": [
-            307,
-            372,
-            323,
-            211
+          "team_moves": [
+            [
+              "ABSORB",
+              "ASTONISH",
+              "GROWL"
+            ],
+            [
+              "ABSORB",
+              "ASTONISH",
+              "SWEET-SCENT"
+            ],
+            [
+              "BULLET-SEED",
+              "ASTONISH",
+              "WATER-SPORT"
+            ],
+            [
+              "BULLET-SEED",
+              "ASTONISH",
+              "MIST"
+            ]
           ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Hunter Valen",
-          "class": "HUNTER",
-          "sprite": "orre_hunter_f.png",
-          "team": [
-            270,
-            293,
-            287,
-            225,
-            178
-          ],
-          "rewards": {
-            "balls": 3
+            "balls": 2
           }
         },
         {
@@ -1653,8 +1817,27 @@
             270,
             271
           ],
+          "levels": [
+            32,
+            33
+          ],
+          "team_moves": [
+            [
+              "WATER-GUN",
+              "ABSORB",
+              "GROWL",
+              "ASTONISH"
+            ],
+            [
+              "MEGA-DRAIN",
+              "FURY-SWIPES",
+              "GROWL",
+              "ASTONISH"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           }
         },
         {
@@ -1666,9 +1849,228 @@
             353,
             109
           ],
+          "levels": [
+            30,
+            33,
+            30
+          ],
+          "team_moves": [
+            [
+              "TACKLE",
+              "RAPID-SPIN",
+              "BIDE"
+            ],
+            [
+              "FORESIGHT",
+              "NIGHT-SHADE"
+            ],
+            [
+              "SLUDGE",
+              "POISON-GAS",
+              "SMOKESCREEN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           }
+        },
+        {
+          "name": "Hunter Zalo",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+            9418,
+            270,
+            374,
+            271
+          ],
+          "levels": [
+            33,
+            31,
+            32,
+            32
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "MIRROR-MOVE",
+              "SING",
+              "SAFEGUARD"
+            ],
+            [
+              "WATER-GUN",
+              "ABSORB",
+              "GROWL",
+              "ASTONISH"
+            ],
+            [
+              "TAKE-DOWN"
+            ],
+            [
+              "WATER-GUN",
+              "MEGA-DRAIN",
+              "FURY-ATTACK",
+              "ASTONISH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Rider Sosh",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            9372,
+            179,
+            331
+          ],
+          "levels": [
+            33,
+            34,
+            34
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "SPITE",
+              "GLARE",
+              "YAWN"
+            ],
+            [
+              "THUNDER-SHOCK",
+              "TACKLE",
+              "COTTON-SPORE"
+            ],
+            [
+              "ABSORB",
+              "PIN-MISSILE",
+              "GROWTH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Hunter Meli",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+            263,
+            263,
+            264
+          ],
+          "levels": [
+            32,
+            32,
+            33
+          ],
+          "team_moves": [
+            [
+              "HEADBUTT",
+              "GROWL",
+              "TAIL-WHIP",
+              "SAND-ATTACK"
+            ],
+            [
+              "FURY-SWIPES",
+              "GROWL",
+              "TAIL-WHIP",
+              "ODOR-SLEUTH"
+            ],
+            [
+              "HEADBUTT",
+              "GROWL",
+              "SAND-ATTACK",
+              "PIN-MISSILE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Chaser Mela",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            177,
+            72,
+            216
+          ],
+          "levels": [
+            33,
+            32,
+            32
+          ],
+          "team_moves": [
+            [
+              "THIEF",
+              "FUTURE-SIGHT",
+              "LEER",
+              "PECK"
+            ],
+            [
+              "THIEF",
+              "WRAP",
+              "ACID",
+              "BUBBLE-BEAM"
+            ],
+            [
+              "THIEF",
+              "LICK",
+              "LEER",
+              "SCRATCH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cipher Peon Sema",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            363,
+            345,
+            269
+          ],
+          "levels": [
+            34,
+            32,
+            33
+          ],
+          "team_moves": [
+            [
+              "AURORA-BEAM",
+              "GROWL",
+              "WATER-GUN"
+            ],
+            [
+              "ASTONISH",
+              "CONSTRICT",
+              "ACID"
+            ],
+            [
+              "PSYBEAM",
+              "POISON-STING",
+              "TACKLE",
+              "GUST"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         }
       ],
       "shadow_pool": [
@@ -1705,34 +2107,82 @@
           "flag_condition": "not orre_miror_cave",
           "event": {
             "lines": [
-              "Miror B.: Ah-ha! A trainer dancing into MY hideout? My Ludicolo will show you some real moves!"
+              "Music fills the room. A man with a huge afro is dancing, four Ludicolo dancing beside him.",
+              "Miror B.: Stop the music! ...Well, well. The famous snag-happy kid, here in my little hideaway.",
+              "Miror B.: You want Plusle back? Then dance with me! Ludicolo, let's groove!"
             ],
             "flag": "orre_miror_cave",
             "battle": {
               "name": "Cipher Admin Miror B.",
               "class": "CIPHER_ADMIN",
               "sprite": "orre_trainer_miror_b.png",
-              "is_boss_battle": true,
               "team": [
-                185,
+                9362,
+                272,
                 272,
                 272,
                 272
               ],
+              "levels": [
+                35,
+                29,
+                30,
+                28,
+                31
+              ],
+              "team_moves": [
+                [
+                  "SHADOW-RUSH",
+                  "FLAIL",
+                  "BLOCK",
+                  "LOW-KICK"
+                ],
+                [
+                  "ABSORB",
+                  "WATER-GUN",
+                  "ASTONISH",
+                  "RAIN-DANCE"
+                ],
+                [
+                  "MEGA-DRAIN",
+                  "WATER-GUN",
+                  "FURY-SWIPES",
+                  "RAIN-DANCE"
+                ],
+                [
+                  "RAZOR-LEAF",
+                  "ICE-BEAM",
+                  "ASTONISH",
+                  "RAIN-DANCE"
+                ],
+                [
+                  "MEGA-DRAIN",
+                  "DIVE",
+                  "LEECH-SEED",
+                  "RAIN-DANCE"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 8
+                "balls": 0
               },
+              "team_items": [
+                "HARD_STONE",
+                null,
+                null,
+                null,
+                null
+              ],
+              "music": "orre/miror_b_battle",
+              "is_boss_battle": true,
               "dialogue": {
                 "player_won": [
-                  "Miror B.: Unbelievable! Fine, go to Agate Village. See if I care!"
+                  "Miror B.: My rhythm... it's been broken! Ludicolo, we're leaving!",
+                  "Miror B. and his Ludicolo dance away. Behind where they stood, Plusle sits shivering.",
+                  "Silva and Duking burst in. Duking: Plusle! You found her!",
+                  "Duking scoops Plusle up and heads home to Pyrite."
                 ]
-              },
-              "levels": [
-                19,
-                20,
-                20,
-                21
-              ]
+              }
             }
           }
         },
@@ -1743,7 +2193,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "orre_miror_cave"
           ]
         },
         {
@@ -1754,7 +2205,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "orre_miror_cave"
           ]
         },
         {
@@ -1762,6 +2214,180 @@
           "action": "TRAINER",
           "condition": "has_trainers",
           "color": "GREEN"
+        },
+        {
+          "text": "Snatch box",
+          "action": "EVENT",
+          "flag_condition": "not orre_miror_tm_snatch",
+          "event": {
+            "flag": "orre_miror_tm_snatch",
+            "gift_item": {
+              "TM299": 1
+            },
+            "lines": [
+              "Miror B. left a box behind... You found TM299 (SNATCH)!"
+            ],
+            "requires": [
+              "orre_miror_cave"
+            ],
+            "fail": [
+              "A box, locked tight. Miror B.'s dancers are guarding it."
+            ]
+          }
+        },
+        {
+          "text": "Macho Brace",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_macho_brace",
+          "event": {
+            "flag": "orre_pc_macho_brace",
+            "gift_item": {
+              "MACHO_BRACE": 1
+            },
+            "lines": [
+              "You found a MACHO BRACE!"
+            ]
+          }
+        },
+        {
+          "text": "Ein File P",
+          "action": "EVENT",
+          "flag_condition": "not orre_ein_file_p",
+          "event": {
+            "flag": "orre_ein_file_p",
+            "gift_item": {
+              "EIN_FILE_P": 1
+            },
+            "lines": [
+              "You found EIN FILE P!"
+            ]
+          }
+        },
+        {
+          "text": "Hyper Potions",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_hyper_potions",
+          "event": {
+            "flag": "orre_pc_hyper_potions",
+            "gift_item": {
+              "HYPER_POTION": 2
+            },
+            "lines": [
+              "You found 2 HYPER POTIONS!"
+            ]
+          }
+        },
+        {
+          "text": "Ethers",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_ethers",
+          "event": {
+            "flag": "orre_pc_ethers",
+            "gift_item": {
+              "ETHER": 3
+            },
+            "lines": [
+              "You found 3 ETHERS!"
+            ]
+          }
+        },
+        {
+          "text": "Ultra Balls",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_ultra_balls",
+          "event": {
+            "flag": "orre_pc_ultra_balls",
+            "gift_item": {
+              "ULTRA_BALL": 3
+            },
+            "lines": [
+              "You found 3 ULTRA BALLS!"
+            ]
+          }
+        },
+        {
+          "text": "Full Heal",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_full_heal",
+          "event": {
+            "flag": "orre_pc_full_heal",
+            "gift_item": {
+              "FULL_HEAL": 1
+            },
+            "lines": [
+              "You found a FULL HEAL!"
+            ]
+          }
+        },
+        {
+          "text": "Max Potion",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_max_potion",
+          "event": {
+            "flag": "orre_pc_max_potion",
+            "gift_item": {
+              "MAX_POTION": 1
+            },
+            "lines": [
+              "You found a MAX POTION!"
+            ]
+          }
+        },
+        {
+          "text": "Carbos",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_carbos",
+          "event": {
+            "flag": "orre_pc_carbos",
+            "gift_item": {
+              "CARBOS": 1
+            },
+            "lines": [
+              "You found a CARBOS!"
+            ]
+          }
+        },
+        {
+          "text": "Zinc",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_zinc",
+          "event": {
+            "flag": "orre_pc_zinc",
+            "gift_item": {
+              "ZINC": 1
+            },
+            "lines": [
+              "You found a ZINC!"
+            ]
+          }
+        },
+        {
+          "text": "Protein",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_protein",
+          "event": {
+            "flag": "orre_pc_protein",
+            "gift_item": {
+              "PROTEIN": 1
+            },
+            "lines": [
+              "You found a PROTEIN!"
+            ]
+          }
+        },
+        {
+          "text": "Iron",
+          "action": "EVENT",
+          "flag_condition": "not orre_pc_iron",
+          "event": {
+            "flag": "orre_pc_iron",
+            "gift_item": {
+              "IRON": 1
+            },
+            "lines": [
+              "You found an IRON!"
+            ]
+          }
         },
         {
           "text": "Pyrite Town",
@@ -1792,7 +2418,10 @@
       "level": 19,
       "has_gym": false,
       "explore_options": [
-        { "text": "Pokémon Day Care", "action": "DAYCARE" },
+        {
+          "text": "Pokémon Day Care",
+          "action": "DAYCARE"
+        },
         {
           "text": "Pokemon Center",
           "action": "HEAL"
@@ -1807,9 +2436,11 @@
           "color": "GOLD",
           "event": {
             "lines": [
-              "Elder Eagun: So you're the trainer who saved Pyrite. Rui told me everything.",
-              "The Relic Stone in our forest can open a Shadow Pokemon's heart. Use it whenever you need.",
-              "Cipher's leader hides in Realgam Tower. When you're ready, end this."
+              "Rui: Grandpa! Grandma! It's me!",
+              "Eagun: Rui! What a surprise. And who's this? A trainer with a sharp look in the eye.",
+              "Rui tells them about the Shadow Pokemon, their hearts shut tight...",
+              "A man bursts in. Man: Elder! Some men in strange outfits pushed right past me and into the Relic Cave!",
+              "Eagun: The Relic Stone! Nobody touches that stone while I'm around. Come on!"
             ],
             "flag": "met_agate_elder"
           }
@@ -1825,6 +2456,12 @@
               "Some trainers keep their Shadow Pokemon as they are. Choose one to purify, or none."
             ],
             "purify": "choose"
+          },
+          "condition": {
+            "any": [
+              "orre_beat_skrub",
+              "orre_dakim_mt_battle"
+            ]
           }
         }
       ],
@@ -1837,7 +2474,8 @@
         {
           "text": "Relic Cave",
           "door": "relic",
-          "target_area": "RELIC_CAVE"
+          "target_area": "RELIC_CAVE",
+          "condition": "met_agate_elder"
         },
         {
           "text": "Relic Forest",
@@ -1852,7 +2490,13 @@
         {
           "text": "Mt. Battle",
           "door": "cycle",
-          "target_area": "MT_BATTLE"
+          "target_area": "MT_BATTLE",
+          "condition": {
+            "any": [
+              "orre_beat_skrub",
+              "orre_dakim_mt_battle"
+            ]
+          }
         }
       ],
       "next_area": "PYRITE_CAVE"
@@ -1864,7 +2508,100 @@
       "level": 20,
       "battle_type": "cave",
       "min_rounds": 0,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Doven",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            363,
+            318
+          ],
+          "levels": [
+            33,
+            34
+          ],
+          "team_moves": [
+            [
+              "SURF",
+              "ROCK-SMASH"
+            ],
+            [
+              "SURF",
+              "SECRET-POWER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Silton",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            285,
+            331
+          ],
+          "levels": [
+            34,
+            34
+          ],
+          "team_moves": [
+            [
+              "MEGA-DRAIN",
+              "HEADBUTT",
+              "GROWTH"
+            ],
+            [
+              "FEINT-ATTACK",
+              "PIN-MISSILE",
+              "GROWTH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Kass",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            343,
+            280,
+            281
+          ],
+          "levels": [
+            35,
+            35,
+            35
+          ],
+          "team_moves": [
+            [
+              "CONFUSION",
+              "COSMIC-POWER"
+            ],
+            [
+              "CONFUSION",
+              "CALM-MIND"
+            ],
+            [
+              "CONFUSION",
+              "CALM-MIND"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        }
+      ],
       "shadow_pool": [
         {
           "id": 9394,
@@ -1881,7 +2618,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "orre_beat_skrub"
           ]
         },
         {
@@ -1892,8 +2630,120 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "orre_beat_skrub"
           ]
+        },
+        {
+          "text": "Eagun",
+          "action": "EVENT",
+          "flag_condition": "not orre_beat_skrub",
+          "event": {
+            "lines": [
+              "Eagun lies beaten on the cave floor. Eagun: Ugh... That peon's Shadow Pokemon is no ordinary Pokemon..."
+            ]
+          }
+        },
+        {
+          "text": "Cipher Peon Skrub",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_beat_skrub",
+          "event": {
+            "flag": "orre_beat_skrub",
+            "lines": [
+              "Cipher Peon Skrub: Ha! The old man thought he could stop me. Now it's your turn, kid!",
+              "Rui: That Hitmontop has the dark aura!"
+            ],
+            "battle": {
+              "name": "Cipher Peon Skrub",
+              "class": "CIPHER_PEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                9394,
+                366,
+                74,
+                360
+              ],
+              "levels": [
+                38,
+                36,
+                36,
+                37
+              ],
+              "team_moves": [
+                [
+                  "SHADOW-RUSH",
+                  "AGILITY",
+                  "FOCUS-ENERGY",
+                  "TRIPLE-KICK"
+                ],
+                [
+                  "WATERFALL",
+                  "WHIRLPOOL",
+                  "IRON-DEFENSE"
+                ],
+                [
+                  "ROCK-THROW",
+                  "DIG",
+                  "DOUBLE-EDGE"
+                ],
+                [
+                  "SAFEGUARD",
+                  "COUNTER",
+                  "MIRROR-COAT",
+                  "DESTINY-BOND"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "team_items": [
+                "BLACK_BELT",
+                null,
+                null,
+                null
+              ],
+              "music": "orre/cipher_battle",
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Cipher Peon Skrub: You'll regret this! Cipher always gets its way!",
+                  "Skrub runs, dropping a file on the way. Eagun gets back on his feet.",
+                  "Eagun: You've got real strength. Come home with us. There's something you should know about the Relic Stone."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "Silk Scarf",
+          "action": "EVENT",
+          "flag_condition": "not orre_rc_silk_scarf",
+          "event": {
+            "flag": "orre_rc_silk_scarf",
+            "gift_item": {
+              "SILK_SCARF": 1
+            },
+            "lines": [
+              "You found a SILK SCARF!"
+            ]
+          }
+        },
+        {
+          "text": "Ultra Balls",
+          "action": "EVENT",
+          "flag_condition": "not orre_rc_ultra_balls",
+          "event": {
+            "flag": "orre_rc_ultra_balls",
+            "gift_item": {
+              "ULTRA_BALL": 2
+            },
+            "lines": [
+              "You found 2 ULTRA BALLS!"
+            ]
+          }
         },
         {
           "text": "Agate Village",
@@ -6456,8 +7306,9 @@
     {"id": "orre_m4c", "type": "MAIN", "title": "Pyrite Colosseum", "description": "The windmill turns again and the Colosseum has power. Win its four rounds for the Pyrite Badge!", "condition": {"required_region": "ORRE", "flag": "orre_power_on", "region_badges_less": 1}, "region": "ORRE", "completed_badge": "PYRITE", "target": "PYRITE_TOWN", "reward": "Pyrite Badge"},
     {"id": "orre_m4d", "type": "MAIN", "title": "Cipher's Hideout", "description": "Miror B.'s gang took Duking's Plusle! Their hideout is the Pyrite Building, by the bridge. Get to the roof, then past the guard to Pyrite Cave.", "condition": {"required_region": "ORRE", "region_badges_min": 1, "flag_not": ["orre_beat_doken", "orre_miror_cave"]}, "region": "ORRE", "completed_flag": "orre_beat_doken", "target": "PYRITE_BUILDING"},
     {"id": "orre_m5", "type": "MAIN", "title": "Miror B. in Pyrite Cave", "description": "Cipher Admin Miror B. is hiding in Pyrite Cave with Shadow Pokémon. Dance your way past him!", "condition": {"required_region": "ORRE", "region_badges_min": 1, "flag": "orre_beat_doken", "flag_not": "orre_miror_cave"}, "region": "ORRE", "completed_flag": "orre_miror_cave", "target": "PYRITE_CAVE"},
-    {"id": "orre_m6", "type": "MAIN", "title": "The Relic Stone", "description": "Pyrite Cave leads to Agate Village. Visit the village elder. The Relic Stone there can open a Shadow Pokémon's heart.", "condition": {"required_region": "ORRE", "flag": "orre_miror_cave", "flag_not": "met_agate_elder"}, "region": "ORRE", "completed_flag": "met_agate_elder", "target": "AGATE_VILLAGE"},
-    {"id": "orre_m7", "type": "MAIN", "title": "Dakim at Mt. Battle", "description": "Cipher Admin Dakim is attacking Mt. Battle, next to Agate Village. Stop him!", "condition": {"required_region": "ORRE", "flag": "met_agate_elder", "flag_not": "orre_dakim_mt_battle"}, "region": "ORRE", "completed_flag": "orre_dakim_mt_battle", "target": "MT_BATTLE"},
+    {"id": "orre_m6", "type": "MAIN", "title": "Agate Village", "description": "Fateen saw trouble coming to Agate Village, where Rui's grandparents live. Ride north and visit the elder's house.", "condition": {"required_region": "ORRE", "flag": "orre_miror_cave", "flag_not": "met_agate_elder"}, "region": "ORRE", "completed_flag": "met_agate_elder", "target": "AGATE_VILLAGE"},
+    {"id": "orre_m6b", "type": "MAIN", "title": "The Relic Cave", "description": "Cipher's men pushed into the Relic Cave, and Rui's grandfather Eagun went after them. Follow him in!", "condition": {"required_region": "ORRE", "flag": "met_agate_elder", "flag_not": ["orre_beat_skrub", "orre_dakim_mt_battle"]}, "region": "ORRE", "completed_flag": "orre_beat_skrub", "target": "RELIC_CAVE"},
+    {"id": "orre_m7", "type": "MAIN", "title": "Dakim at Mt. Battle", "description": "Cipher Admin Dakim is attacking Mt. Battle, next to Agate Village. Stop him!", "condition": {"required_region": "ORRE", "flag": "orre_beat_skrub", "flag_not": "orre_dakim_mt_battle"}, "region": "ORRE", "completed_flag": "orre_dakim_mt_battle", "target": "MT_BATTLE"},
     {"id": "orre_m8", "type": "MAIN", "title": "Into The Under", "description": "Below Pyrite Town is a hidden city called The Under. Cipher runs it! Go down from Pyrite and shut it down.", "condition": {"required_region": "ORRE", "flag": "orre_dakim_mt_battle", "flag_not": "cleared_the_under"}, "region": "ORRE", "completed_flag": "cleared_the_under", "target": "THE_UNDER"},
     {"id": "orre_m9", "type": "MAIN", "title": "Under Colosseum", "description": "The Under has its own Colosseum. Win its tournament for the second badge!", "condition": {"required_region": "ORRE", "flag": "cleared_the_under", "region_badges_min": 1, "region_badges_less": 2}, "region": "ORRE", "completed_badge": "UNDER", "target": "UNDER_COLOSSEUM", "reward": "Under Badge"},
     {"id": "orre_m10", "type": "MAIN", "title": "Ein's Shadow Pokémon Lab", "description": "Cipher makes Shadow Pokémon in a secret lab. Find Cipher Admin Ein and stop the machines!", "condition": {"required_region": "ORRE", "region_badges_min": 2, "flag_not": "orre_ein_lab"}, "region": "ORRE", "completed_flag": "orre_ein_lab", "target": "SHADOW_PKMN_LAB"},

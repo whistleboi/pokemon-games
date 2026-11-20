@@ -76,6 +76,69 @@
     ]
   },
   "figures": {
+    "AGATE_VILLAGE:Fun Old Man Skof": {
+      "sheet": "orre_trainer_fun_old_man.png"
+    },
+    "AGATE_VILLAGE:Cooltrainer Dury": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "AGATE_VILLAGE:Quick Claw": {
+      "item": "POKE_BALL"
+    },
+    "AGATE_VILLAGE:Ein File C": {
+      "item": "POKE_BALL"
+    },
+    "AGATE_VILLAGE:Beluh": {
+      "sheet": "orre_npc_matron.png"
+    },
+    "PYRITE_CAVE:Ultra Balls": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Full Heal": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Hyper Potions": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Ethers": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Max Potion": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Carbos": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Zinc": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Protein": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Iron": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Snatch box": {
+      "sheet": "orre_object_chest.png"
+    },
+    "PYRITE_CAVE:Macho Brace": {
+      "sheet": "orre_object_ball.png"
+    },
+    "PYRITE_CAVE:Ein File P": {
+      "sheet": "orre_object_ball.png"
+    },
+    "RELIC_CAVE:Eagun": {
+      "sheet": "orre_npc_eagun2.png"
+    },
+    "RELIC_CAVE:Cipher Peon Skrub": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "RELIC_CAVE:Silk Scarf": {
+      "sheet": "orre_object_ball.png"
+    },
+    "RELIC_CAVE:Ultra Balls": {
+      "sheet": "orre_object_ball.png"
+    },
     "PYRITE_TOWN:Bodybuilder Hader": {
       "sheet": "orre_trainer_bodybuilder.png"
     },
