@@ -565,6 +565,9 @@
     "PHENAC_CITY:Miror B. Peon Trudly": {
       "sheet": "orre_trainer_burglar.png"
     },
+    "PHENAC_CITY:Super Potion ball": {
+      "item": "POKE_BALL"
+    },
     "PHENAC_CITY:Fun Old Man Drig": {
       "sheet": "orre_trainer_fun_old_man.png"
     },

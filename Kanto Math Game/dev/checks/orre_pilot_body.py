@@ -319,6 +319,14 @@ check(F.get("got_snag_machine") and F.get("snagged_shadow_bayleef"), "a guard be
 t = town("PHENAC_CITY", "OUTSKIRT_STAND")
 check(not [o for o in t._people().values() if "Mystery Troop" in str(o.get("text"))], "the other two guards are gone")
 
+t = town("PHENAC_CITY", "OUTSKIRT_STAND")
+sp = story.inventory.get("SUPER_POTION", 0)
+meet(t, "Super Potion ball")
+check(story.inventory.get("SUPER_POTION", 0) == sp + 3 and F.get("orre_phenac_superpotion"), "3 Super Potions by the bike, once")
+t = town("PHENAC_CITY", "OUTSKIRT_STAND")
+said_m = meet(t, "Girl") or []
+check(any("nobody sells them" in ln for ln in said_m), f"the Mart: Orre's shops sell no Poke Balls ({said_m[:1]})")
+
 print("6) An older save already past Phenac sees none of it again")
 story.story_flags = {"got_snag_machine": True, "orre_beat_willie": True}
 t = town("PHENAC_CITY", "OUTSKIRT_STAND")

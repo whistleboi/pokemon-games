@@ -281735,7 +281735,7 @@
    "ccccccccccc.............NN...............ccccccccccc",
    "cccccccccccccccc..........N.........cccccccccccccccc",
    "cccccccccccccccccccccccccN.ccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccc..ccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccc.Nccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccIDIccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -282245,6 +282245,20 @@
       }
      }
     }
+   },
+   {
+    "text": "Super Potion ball",
+    "action": "EVENT",
+    "flag_condition": "not orre_phenac_superpotion",
+    "event": {
+     "flag": "orre_phenac_superpotion",
+     "lines": [
+      "You found 3 SUPER POTIONS!"
+     ],
+     "gift_item": {
+      "SUPER_POTION": 3
+     }
+    }
    }
   ],
   "signs": [
@@ -282402,7 +282416,8 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "I don't have a Pokemon yet, but I like looking at the Poke Balls."
+        "Girl: You want Poke Balls? You won't find any here. There are hardly any wild Pokemon in Orre, so nobody sells them.",
+        "Girl: Someone at the Outskirt Stand might still have a few."
        ]
       }
      },

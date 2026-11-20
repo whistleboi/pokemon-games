@@ -213,6 +213,16 @@ def _phenac(maps):
     ] + RAID_SCENES
     mayor = m["rooms"]["mayor"]
     _set_people(mayor, {(9, 6): ES_CADE, (12, 9): MIROR_B, (10, 10): FOLLY_2, (14, 10): TRUDLY_2})
+    _set_people(m, {(26, 62): SUPER_POTIONS})   # (Colosseum: 3 Super Potions below the green peon's spot, by the bike)
+    mart = m["rooms"]["mart"]   # (Colosseum: upstairs, someone tells you Orre's Marts sell no Poke Balls)
+    mart["people"] = [MART_GIRL if isinstance(p, dict) and p.get("text") == "Girl" else p for p in mart["people"]]
+
+
+SUPER_POTIONS = {"text": "Super Potion ball", "action": "EVENT", "flag_condition": "not orre_phenac_superpotion",
+                 "event": {"flag": "orre_phenac_superpotion", "lines": ["You found 3 SUPER POTIONS!"], "gift_item": {"SUPER_POTION": 3}}}
+MART_GIRL = {"text": "Girl", "action": "EVENT", "event": {"lines": [
+    "Girl: You want Poke Balls? You won't find any here. There are hardly any wild Pokemon in Orre, so nobody sells them.",
+    "Girl: Someone at the Outskirt Stand might still have a few."]}}
 
 
 OLD_SAVE = "not:got_snag_machine"   # (a save already past this stretch: none of it plays again)

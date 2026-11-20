@@ -130,7 +130,7 @@ story.story_flags.pop("got_snag_machine", None)
 # ---- people: at the fan game's own spots, with the fan game's own sheets
 t = town("PHENAC_CITY", "ORRE_DESERT")
 _texts = [(o.get("text") if "any" not in o else "/".join(x.get("text") for x in o["any"])) for o in t.people.values()]
-_missing = [k for k in _texts if not ((_sp["figures"].get(f"PHENAC_CITY:{k}") or {}).get("sheet") or (_sp["figures"].get(f"PHENAC_CITY:{k}") or {}).get("pic"))]
+_missing = [k for k in _texts if not any((_sp["figures"].get(f"PHENAC_CITY:{k}") or {}).get(w) for w in ("sheet", "pic", "item"))]   # (the sack: a picture; an item ball)
 _files = [v["sheet"] for k, v in _sp["figures"].items() if k.startswith("PHENAC_CITY:") and "sheet" in v]   # (the sack is a picture: "pic")
 check(not _missing and all(os.path.exists(f"assets/dungeon/characters/{f}") for f in _files),
       f"every person in Phenac and its rooms has the fan game's own sheet ({len(_files)} sheets; without one: {_missing})")
