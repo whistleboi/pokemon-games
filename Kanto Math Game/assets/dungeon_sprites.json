@@ -7051,6 +7051,9 @@
     "KANTO_ROUTE_19:SURFIN' DUDE": {
       "sheet": "pt_beachboy.png"
     },
+    "THREE_ISLE_PORT:PROSPECTOR": {
+      "sheet": "fr_27.png"
+    },
     "INDIGO_PLATEAU:Professor Oak": {
       "sheet": "fr_71.png"
     },

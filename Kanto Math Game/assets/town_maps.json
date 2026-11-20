@@ -13466,7 +13466,8 @@
      {
       "text": "Name Rater",
       "action": "EVENT",
-      "event": { "name_rater": true,
+      "event": {
+       "name_rater": true,
        "lines": [
         "Hello, hello! I'm the Name Rater. Shall I rate one of your Pokémon's names?"
        ]
@@ -23825,7 +23826,8 @@
      {
       "text": "Move Deleter",
       "action": "EVENT",
-      "event": { "quips": "move_deleter",
+      "event": {
+       "quips": "move_deleter",
        "lines": [
         "Uh... Oh, yes, I'm the Move Deleter. I can make Pokémon forget moves. Your team looks fine as it is, though!"
        ]
@@ -35124,7 +35126,9 @@
      {
       "text": "Move Maniac",
       "action": "EVENT",
-      "event": { "quips": "move_reminder", "quip_as": "Move Maniac",
+      "event": {
+       "quips": "move_reminder",
+       "quip_as": "Move Maniac",
        "lines": [
         "I'm the Move Maniac! I know every move a Pokémon can learn."
        ]
@@ -108268,7 +108272,8 @@
      {
       "text": "Move Deleter",
       "action": "EVENT",
-      "event": { "quips": "move_deleter",
+      "event": {
+       "quips": "move_deleter",
        "lines": [
         "Move Deleter: Hm? Oh, yes... I used to help Pokémon forget their moves.",
         "Move Deleter: But, well... I forgot how to do that!"
@@ -272468,18 +272473,33 @@
    {
     "art": [
      "cccccccccccccccccccccccccccccc",
-     "cccccccccccccccccc....N...cccc",
-     "cccc.ccccccccccccccc.cccc.cccc",
-     "cc...................ccc..cccc",
-     "cc.<.cccccccccccccccccccc.cccc",
-     "ccccccccccccccccccccccccc1cccc",
+     "cccccccccccccccccccc......cccc",
+     "cccc.ccccccccccccccc.ccNc..ccc",
+     "ccc..................ccc..cccc",
+     "cc.<.ccccccccccc.cccccccc.cccc",
+     "cccccccccccccccccccccccc.1.ccc",
      "cccccccccccccccccccccccccccccc"
     ],
     "exits": {
      "<": "THREE_ISLAND"
     },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_134.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "parts": true,
     "theme": "cave",
+    "hidden": {
+     "21,3": "NUGGET"
+    },
     "links": {
      "25,5": [
       1,
@@ -272489,10 +272509,7 @@
     },
     "people": [
      "PROSPECTOR"
-    ],
-    "hidden": {
-     "20,3": "NUGGET"
-    }
+    ]
    },
    {
     "art": [
@@ -298346,10 +298363,10 @@
  },
  "TANGELO_ISLAND": {
   "wade": [
-    [
-      31,
-      14
-    ]
+   [
+    31,
+    14
+   ]
   ],
   "art": [
    "^o~~^^^^^^^^^o~~oo^^ooo^cccccccccccccccccccccccc",
@@ -304125,7 +304142,8 @@
      {
       "text": "Name Rater",
       "action": "EVENT",
-      "event": { "name_rater": true,
+      "event": {
+       "name_rater": true,
        "lines": [
         "I'm the Name Rater! Let me see one of your Pokémon. A name says everything!"
        ]

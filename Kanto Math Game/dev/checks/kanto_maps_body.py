@@ -108,7 +108,12 @@ for key in BUILT:
     _sizes = {(len(f["art"][0]), len(f["art"])) for f in [_here] + ([] if is_town else [r for r in (m.get("rooms") or {}).values() if came in r.get("exits", {}).values()])}   # (you can land in a room: Birth Island's harbour)
     check((w, h) in _sizes and (is_town or isinstance(st, DungeonState)),
           f"{key}: opens on its FireRed map ({w} x {h}, {'town' if is_town else 'route'}), in from {came}")
-    check(key == "THREE_ISLE_PORT" or all("fr_ground/" in json.dumps(f.get("roofs", {})) for f in _parts), f"{key}: drawn from FireRed's own picture (every floor)")   # (Three Isle Path: the old build's dug tunnel, FireRed's file has it undug; k_batch36)
+    check(all("fr_ground/" in json.dumps(f.get("roofs", {})) for f in (_parts[:1] if key == "THREE_ISLE_PORT" else _parts)), f"{key}: drawn from FireRed's own picture (every floor)")   # (Three Isle Path, 11-19: the tunnel is FireRed's dug layout 319; its grass pocket stays the old build's - k_batch36)
+    if key == "THREE_ISLE_PORT":   # (11-19: FireRed's dug tunnel, its prospector and hidden Nugget on FireRed's own tiles)
+        _t0 = _parts[0]
+        check("2_134" in json.dumps(_t0.get("roofs", {})) and _t0["art"][2][23] == "N" and (_t0.get("hidden") or {}).get("21,3") == "NUGGET"
+              and (_t0.get("links") or {}).get("25,5") == [1, 12, 2],
+              "Three Isle Path: FireRed's dug tunnel (layout 319), the prospector at (23,2), the hidden Nugget at (21,3), the east mouth down to the grass pocket")
     grid = _here["art"]
     if m.get("floors"):   # (a place of floors: every ladder and passage lands on a real tile of a floor that exists)
         _bad = [(i, k, to) for i, f in enumerate(m["floors"]) for k, to in (f.get("links") or {}).items()
