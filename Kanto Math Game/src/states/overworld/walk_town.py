@@ -2211,10 +2211,10 @@ class WalkTownState(CityState):
         x, y = int(round(fx)), int(round(fy))
         if hasattr(sc, "walk_heights"):   # (the ground you walk on, worked out over the whole place once: 11-21)
             memo = self.__dict__.setdefault("_live_ground", {})
-            if id(sc) not in memo:
+            if (id(sc), getattr(self, "room", None)) not in memo:   # (per room: the Gym's three floors share one scene)
                 near = lambda a, b: float(lift[b][a]) / k + float(cam.get("base") or 0.0) if 0 <= b < len(lift) and 0 <= a < len(lift[b]) else None
-                memo[id(sc)] = sc.walk_heights([(a, b) for b in range(self.h) for a in range(self.w) if self.rows[b][a] != "#" or (a, b) in self.people], near)
-            G = memo[id(sc)]
+                memo[(id(sc), getattr(self, "room", None))] = sc.walk_heights([(a, b) for b in range(self.h) for a in range(self.w) if self.rows[b][a] != "#" or (a, b) in self.people], near)
+            G = memo[(id(sc), getattr(self, "room", None))]
             own = G.get((x, y))
             if own is not None:   # (blended between the tiles around you, so a kerb is a slope mid-step, not a snap)
                 x0, y0 = int(math.floor(fx)), int(math.floor(fy))

@@ -227,4 +227,23 @@ for _room in ("mode_street", "castelia_street", "narrow_street", "gym_street", "
         if "cone" in str(_who).lower():
             check(_H.get(_p, t._live_height(*_p)) < 1.0, f"the Casteliacone seller stands in the street, not on her awning ({round(t._live_height(*_p), 2)})")
 
+# 11-21 (Jordan: "camera angles inside of buildings"): every Castelia room drawn from Black 2's own interior camera
+import json as _json
+_cm = _json.load(open("assets/town_maps.json", encoding="utf-8"))["CASTELIA_CITY"]["rooms"]
+_flat = []
+for _room, _r in _cm.items():
+    if not str(((_r.get("roofs") or {}).get("_picture") or {}).get("f") or "").startswith("b2_ground/"):
+        continue
+    t = town(_room)
+    if not t._live():
+        _flat.append(_room)
+check(not _flat, f"every Castelia room in the live 3D view (not the flat picture): {_flat}")
+t = town("studio")
+check(t._live() and t._live()[0].indoor and not live3d.scene(g, 28).indoor, "a room is drawn on black, the streets under the sky")
+for _room, _lv in (("gym", 0.0), ("gym_10", 10.0), ("gym_20", 20.0)):
+    t = town(_room)
+    _op = [(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))]
+    _off = [p for p in _op if abs(t._live_height(*p) - _lv) > 0.6]
+    check(t._live() and not _off, f"the Gym's {_room}: you stand on its own floor ({_lv}) everywhere ({_off[:4]})")
+
 print(f"##### {len(fails)} failures")

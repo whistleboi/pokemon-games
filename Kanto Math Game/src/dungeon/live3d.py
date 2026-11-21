@@ -123,6 +123,7 @@ class Scene:
         self._covers = {}
         self.lo, self.hi = lo, hi
         self.cam = np.array(data["cam"], "f4") if "cam" in data.files else None   # (export3d.camera: Black 2's camera here)
+        self.indoor = bool(int(data["indoor"])) if "indoor" in data.files else False   # (a room: black round it, 11-21)
         self.fbo = None
         self._sprites = {}
 
@@ -165,7 +166,8 @@ class Scene:
         piers, else a building model's lowest (stairs, a ramp); [] with none."""
         out = []
         self._top(x, y, "_kind0", lambda ys: out.extend(float(v) for v in ys) or 0.0)
-        land = sorted({round(v, 3) for v in out if -1.0 < v < 8.0}) or sorted({round(v, 3) for v in out if v < 8.0})   # (not the sea, nor a roof over a hole)
+        cap = 1e9 if getattr(self, "indoor", False) else 8.0   # (outdoors a roof over a hole isn't ground; a room's upper floors are: the Gym's at 10 and 20)
+        land = sorted({round(v, 3) for v in out if -1.0 < v < cap}) or sorted({round(v, 3) for v in out if v < cap})   # (not the sea, nor a roof over a hole)
         if not land:
             low = self._top(x, y, "_kind1", min)
             land = [low] if low is not None else []
@@ -179,6 +181,10 @@ class Scene:
         import heapq
         tiles = set(tiles)
         S = {t: self.surfaces(*t) for t in tiles}
+        levels = {hint(*t) for t in tiles} if hint else set()
+        if len(levels) == 1 and None not in levels:   # (one height for the whole floor: a level of a stacked room, the Gym's)
+            lv = levels.pop()
+            return {t: min(ys, key=lambda v: abs(v - lv)) for t, ys in S.items() if ys}
         H, todo = {}, []
         for t, ys in S.items():
             if ys and ys[-1] - ys[0] < 1.0:   # (one surface, or a road and its kerb: settled, the one the place's heights say)
@@ -256,6 +262,8 @@ class Scene:
         fbo.use()
         ctx.enable(_CTX["mgl"].DEPTH_TEST | _CTX["mgl"].BLEND)
         ctx.blend_func = _CTX["mgl"].SRC_ALPHA, _CTX["mgl"].ONE_MINUS_SRC_ALPHA
+        if self.indoor:
+            sky = (0, 0, 0)
         fbo.clear(sky[0] / 255, sky[1] / 255, sky[2] / 255, 1.0, depth=1.0)
         mvp = _mvp(size, cam)
         prog["mvp"].write(mvp.T.astype("f4").tobytes())
@@ -377,14 +385,11 @@ def _panes(rgba, reach=12):
         return rgba
     h, w = a.shape
     near = []
+    P = np.pad(a, reach)   # (frame looked for within reach; past the picture's edge counts as none, 11-21: a 7-wide picture)
     for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
         hit = np.zeros_like(a)
         for k in range(1, reach + 1):
-            sh = np.zeros_like(a)
-            ys, xs = slice(max(0, -dy * k), h - max(0, dy * k)), slice(max(0, -dx * k), w - max(0, dx * k))
-            yd, xd = slice(max(0, dy * k), h - max(0, -dy * k)), slice(max(0, dx * k), w - max(0, -dx * k))
-            sh[ys, xs] = a[yd, xd]
-            hit |= sh
+            hit |= P[reach + dy * k:reach + dy * k + h, reach + dx * k:reach + dx * k + w]
         near.append(hit)
     pane = hole & near[0] & near[1] & near[2] & near[3]
     if not pane.any():
