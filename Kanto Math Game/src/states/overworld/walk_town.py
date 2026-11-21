@@ -1093,6 +1093,9 @@ class WalkTownState(CityState):
             if arm is not None and not self._turn_gate(arm, (dx, dy)):
                 self.walk_goal = None
                 return self.flash("The gate won't turn that way.", 80)
+        if self._level_edge(tuple(self.player), tuple(to)):   # (a drop between two levels: no stepping off it, as in Black 2)
+            self.walk_goal = None
+            return
         from src.coop import roster
         if roster.host_tethered(self.game, to):
             self.walk_goal = None
@@ -1246,7 +1249,7 @@ class WalkTownState(CityState):
                 return out[::-1] + ([goal] if goal in self.doors or goal in people else [])
             for dx, dy in DIRS:
                 nxt = (cur[0] + dx, cur[1] + dy)
-                if nxt not in prev and self._open(nxt) and (nxt not in self.exits or nxt == goal):
+                if nxt not in prev and self._open(nxt) and (nxt not in self.exits or nxt == goal) and not self._level_edge(cur, nxt):
                     prev[nxt] = cur
                     q.append(nxt)
         return []
@@ -2258,6 +2261,39 @@ class WalkTownState(CityState):
             return float(lift[y][x]) / k + float(cam.get("base") or 0.0)
         return float(cam.get("base") or 0.0)
 
+    LEVEL_STEP = 1.5   # (tiles: more than this between two neighbours' ground is a drop, not a step)
+
+    def _level_edge(self, a, b):
+        """True when stepping a -> b goes off one level onto another (11-21, Jordan: "Yes, block them"): Black 2 never
+        lets you step between two tiles at different heights, while the walk map only says walkable or not, so you
+        could step straight off a street down onto Virbank's canal walkway, 4 tiles below. A drop only where the live 3D
+        view's ground (on a PC that draws it) and Black 2's own heights both say so; ledges, bridges, ways out and doors
+        are never edges."""
+        if not self._live():
+            return False
+        for t in (a, b):
+            if not (0 <= t[1] < self.h and 0 <= t[0] < self.w) or self.rows[t[1]][t[0]] != "." or t in self.exits or t in self.doors:
+                return False
+            if (getattr(self, "town_map", None) or {}) and self._art_char(t) not in ".":
+                return False
+            if any(self._art_char((t[0] + dx, t[1] + dy)) in "|;" for dx, dy in DIRS):   # (beside a bridge: under it or onto
+                return False   # it, two levels the height map can't tell apart: Virbank's underpass beneath the main street)
+        if abs(self._live_height(*a) - self._live_height(*b)) <= self.LEVEL_STEP:
+            return False
+        # (and Black 2's own heights agree: the 3D ground alone misread seat tops in Pokestar's theater and a patch on
+        # the way up to Aspertia's Outlook, and would have cut them off)
+        cam = self._live()[1]
+        lift, k = cam.get("lift") or [], float(cam.get("lift_k") or 1.0) or 1.0
+        b2 = [lift[t[1]][t[0]] / k if 0 <= t[1] < len(lift) and 0 <= t[0] < len(lift[t[1]]) else None for t in (a, b)]
+        return None not in b2 and abs(b2[0] - b2[1]) > self.LEVEL_STEP
+
+    def _art_char(self, t):
+        """The map's own letter at t (a ledge, a bridge...), not the walk rows' "."."""
+        tm = self.town_map if isinstance(getattr(self, "town_map", None), dict) else {}
+        m = (tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm
+        art = (m or {}).get("art") or []
+        return art[t[1]][t[0]] if 0 <= t[1] < len(art) and 0 <= t[0] < len(art[t[1]]) else "."
+
     def _live_feet(self):
         """Where you are now (tiles, mid-step too)."""
         k = 1 - self.anim / STEP if self.anim > 0 else 1
@@ -2276,6 +2312,9 @@ class WalkTownState(CityState):
             fx, fy = self._live_feet()
         px, pz = fx + 0.5, fy + 0.5
         py = self._live_height(fx, fy)
+        _z = None if getattr(self, "_cam_focus", None) else self._cam_zone(fx, fy)
+        if _z:   # (a moving strip from the game file: the view slides as you cross it, Aspertia's Outlook, 11-21)
+            px, pz = px + _z[1][0], pz + _z[1][1]
         yaw = 0.0
         if len(c) >= 8:   # (the avenue: the camera circles the city's middle, looking in at it from beyond you)
             goal = math.degrees(math.atan2(px - c[6], pz - c[7]))

@@ -170,7 +170,9 @@ class Scene:
         piers, else a building model's lowest (stairs, a ramp); [] with none."""
         out = []
         self._top(x, y, "_kind0", lambda ys: out.extend(float(v) for v in ys) or 0.0)
-        cap = 1e9 if getattr(self, "indoor", False) else 8.0   # (outdoors a roof over a hole isn't ground; a room's upper floors are: the Gym's at 10 and 20)
+        if out:   # (a building piece's flat tops count too: Aspertia's Outlook, its stairs and deck a building over the ground, 11-21)
+            self._top(x, y, "_kind1", lambda ys: out.extend(float(v) for v in ys if v > min(out) + 0.2) or 0.0)
+        cap = 1e9   # (no height limit, 11-21: Aspertia's Outlook deck is 9 up; the roof over Narrow Street's hole it was for is a filled patch now)
         land = sorted({round(v, 3) for v in out if -1.0 < v < cap}) or sorted({round(v, 3) for v in out if v < cap})   # (not the sea, nor a roof over a hole)
         if not land:
             low = self._top(x, y, "_kind1", min)

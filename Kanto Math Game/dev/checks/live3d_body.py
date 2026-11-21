@@ -321,4 +321,76 @@ t = place("VIRBANK_CITY", "nursery")
 _op = [(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))]
 check(t._live() and all(t._live()[0].surfaces(*p) for p in _op), "Virbank's nursery: its model lined up with its walk grid (it sat 10 tiles off)")
 
+# 11-21 (Jordan: "Run the remaining castelia checks for the 45 earlier places, and remember those going forward")
+_high, _slow = [], []
+import time as _time
+for _area, _m in _all.items():
+    if not isinstance(_m, dict):
+        continue
+    for _rn, _r in [(None, _m)] + list((_m.get("rooms") or {}).items()):
+        _f = str(((_r.get("roofs") or {}).get("_picture") or {}).get("f") or "") if isinstance(_r, dict) else ""
+        if not _f.startswith("b2_ground/"):
+            continue
+        t = place(_area, _rn)
+        if not t._live():
+            continue
+        for _p in t.people:   # (nobody up on an awning, a roof or a counter: level with the ground beside them)
+            _nb = [t._live_height(*q) for q in ((_p[0] + 1, _p[1]), (_p[0] - 1, _p[1]), (_p[0], _p[1] + 1), (_p[0], _p[1] - 1)) if t._open(q)]
+            if _nb and t._live_height(*_p) - max(_nb) > 1.5:
+                _high.append((_area, _rn, _p, round(t._live_height(*_p), 1)))
+        _t0 = _time.time()
+        for _ in range(10):
+            t.draw()
+        if (_time.time() - _t0) / 10 > 0.04:
+            _slow.append((_area, _rn))
+check(not _high, f"nobody in Unova stands up on an awning, a roof or a counter ({_high[:4]})")
+check(not _slow, f"every live place draws a frame in under 40 ms ({_slow[:4]})")
+t = place("ASPERTIA_CITY", None, (3, 8))
+check(abs(t._live_height(3, 8) - 9.0) < 0.5 and t._cam_zone(3, 8),
+      f"Aspertia's Outlook: up its stairs, on its deck ({round(t._live_height(3, 8), 1)}), the camera sliding north over the edge")
+
+# 11-21 (Jordan: "Yes, block them"): no stepping off one level onto another (both the 3D ground and Black 2's heights
+# say it's a drop), and nothing you need cut off by it
+t = place("VIRBANK_CITY", None, (15, 19))
+t.step(-1, 0); settle(20)
+check(tuple(g.current_state.player) == (15, 19), f"Virbank: no stepping off the street down onto the canal walkway, 3.5 below ({g.current_state.player})")
+t = g.current_state
+_pp = t._path((14, 19))
+check(t._level_edge((15, 19), (14, 19)) and (not _pp or _pp[0] != (14, 19)),
+      f"...and a tapped path won't drop straight off either (it goes the long way round, under the bridge: {len(_pp)} steps)")
+_lost = []
+for _area, _m in _all.items():
+    if not isinstance(_m, dict):
+        continue
+    for _rn, _r in [(None, _m)] + list((_m.get("rooms") or {}).items()):
+        _f = str(((_r.get("roofs") or {}).get("_picture") or {}).get("f") or "") if isinstance(_r, dict) else ""
+        if not _f.startswith("b2_ground/"):
+            continue
+        t = place(_area, _rn)
+        if not t._live():
+            continue
+        _N = ((0, 1), (0, -1), (1, 0), (-1, 0))
+
+        def _reach(block):
+            seen, todo = set(), []
+            for e in list(t.exits) + list(t.doors):
+                for dx, dy in _N:
+                    q = (e[0] + dx, e[1] + dy)
+                    if t._open(q) and q not in t.exits:
+                        seen.add(q); todo.append(q)
+            while todo:
+                x, y = todo.pop()
+                for dx, dy in _N:
+                    q = (x + dx, y + dy)
+                    if q in seen or not t._open(q) or q in t.exits or q in t.doors or (block and t._level_edge((x, y), q)):
+                        continue
+                    seen.add(q); todo.append(q)
+            return seen
+        _b, _a = _reach(False), _reach(True)
+        _near = lambda T, S: any((T[0] + dx, T[1] + dy) in S for dx, dy in _N)
+        _lost += [(_area, _rn, k, e) for k, es in (("exit", t.exits), ("door", t.doors), ("person", t.people)) for e in es if _near(e, _b) and not _near(e, _a)]
+check(not _lost, f"blocking the drops cuts nobody and no way out off ({_lost[:4]})")
+t = place("ASPERTIA_CITY", None, (3, 8))
+check(any(t._open(q) for q in ((4, 6),)) and not t._level_edge((10, 21), (11, 21)), "Aspertia: the way up to the Outlook (and Bianca) stays open")
+
 print(f"##### {len(fails)} failures")
