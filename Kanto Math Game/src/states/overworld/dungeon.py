@@ -3652,6 +3652,9 @@ class DungeonState(OverworldBattles, PlayState):
         then = getattr(self, "_pose_then", None)
         if then and pygame.time.get_ticks() - (getattr(self, "_pose", None) or (None, 0))[1] >= 650:   # (the cast is out: now the bite)
             self._pose_then = None
+        if hasattr(self, "run") and self.run.player:   # (where you stand, kept for the save file: Continue puts you back here; Jordan 11-20)
+            self.game.last_spot = {"area": self.area_key, "kind": "map", "floor": int(self.run.index),
+                                   "x": int(self.run.player[0]), "y": int(self.run.player[1]), "face": list(getattr(self, "facing", (0, 1)))}
             then()
         if hasattr(self, "run"):
             from src.world import poke_radar as _radar

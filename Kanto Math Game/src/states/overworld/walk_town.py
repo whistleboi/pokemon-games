@@ -838,6 +838,8 @@ class WalkTownState(CityState):
     def _remember(self):
         self.game.walk_town_pos = (self.area_key, self.player, self.facing)
         self.game.walk_town_room = (self.area_key, self.room) if getattr(self, "room", None) else None
+        self.game.last_spot = {"area": self.area_key, "kind": "town", "room": getattr(self, "room", None),   # (for the save file:
+                               "x": int(self.player[0]), "y": int(self.player[1]), "face": list(self.facing)}   #  Continue puts you back; 11-20)
 
     # ---------------------------------------------------------------- rooms (Jordan, 11-11: the insides of a town's buildings, walked)
     # A town map's "rooms" {name: a map of its own (art, people, signs, theme "room")} and "inside" {"x,y" of a door: room name}.

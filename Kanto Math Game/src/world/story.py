@@ -52,6 +52,7 @@ class StoryManager:
         self.game_started = False
         self.checkpoint = None
         self.current_area_key = "PALLET_TOWN"
+        self.last_area_key = None   # (where you came from; a loaded save starts with none: Continue onto a route map, 11-20)
         self.species_evolution_xp = {}
         self.badges = {"KANTO": [], "JOHTO": []}
         self.active_badge_region = "KANTO"

@@ -274,6 +274,11 @@ class Game:
         self.data.data["story"]["player_name"] = self.player_name
         self.data.data["story"]["player_char"] = self.player_character
         self.data.data["story"]["rival_char"] = self.rival_character
+        spot = getattr(self, "last_spot", None)   # (where you stand on a walked map: town, room, route or floor; Jordan 11-20)
+        if spot and spot.get("area") == self.story_manager.current_area_key:
+            self.data.data["story"]["spot"] = dict(spot)
+        else:
+            self.data.data["story"].pop("spot", None)
 
     def load_game_data(self):
         story_data = self.data.data.get("story")
@@ -297,6 +302,7 @@ class Game:
 
         area_key = self.story_manager.current_area_key
         area_info = self.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+        self._restore_spot(story_data.get("spot"), area_key)
         if area_info.get("area_type") == "town":
             self.states["city"] = CityState(self)
             self.change_state(self.states["city"])
@@ -304,6 +310,22 @@ class Game:
             self.states["play"] = PlayState(self)
             self.change_state(self.states["play"])
         return True
+
+    def _restore_spot(self, spot, area_key):
+        """Back where you saved: on a town's map or in one of its rooms (walk_town), or on a route's or a cave's floor
+        (dungeon: arrive_floor). A spot for another place, or none (an older save), leaves the usual arrival."""
+        self.walk_town_pos = self.walk_town_room = self.arrive_floor = None
+        self.last_spot = None
+        if not isinstance(spot, dict) or spot.get("area") != area_key:
+            return
+        x, y = int(spot.get("x", 0)), int(spot.get("y", 0))
+        face = tuple(spot.get("face") or (0, 1))
+        if spot.get("kind") == "town":
+            self.walk_town_pos = (area_key, (x, y), face)
+            self.walk_town_room = (area_key, spot["room"]) if spot.get("room") else None
+        elif spot.get("kind") == "map":
+            self.arrive_floor = (area_key, int(spot.get("floor", 0)), [x, y])
+        self.last_spot = dict(spot)
 
     FADE_FRAMES = 6  # ~0.25 s crossfade between screens
 
