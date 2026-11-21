@@ -148,6 +148,10 @@ g.live3d_headless = False
 play(lambda: False, 3)
 check(t._live() is None, "headless without the checks' say-so: flat (the other suites draw as ever)")
 g.live3d_headless = True
+_np, live3d.np = live3d.np, None   # (a Python without numpy, as on Jordan's PC 11-21: flat, never a crash)
+t = town("plaza", (21, 30)); play(lambda: False, 3)
+check(t.room == "plaza" and t.live is None and t._live_cam is None, "no numpy: the plaza loads and draws flat")
+live3d.np = _np
 from src.states.systems.options import OptionsState
 o = OptionsState(g, t, lambda: None)
 o.tab = o.tabs.index("SCREEN & SOUND")

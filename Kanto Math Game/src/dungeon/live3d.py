@@ -15,8 +15,12 @@ everything solid (kind 3).
 import math
 import os
 
-import numpy as np
 import pygame
+
+try:   # (numpy and moderngl are only for the live camera: without them the game draws the flat pictures)
+    import numpy as np
+except ImportError:
+    np = None
 
 _CTX = {}
 _SCENES = {}
@@ -52,6 +56,8 @@ void main() {
 
 def available(game=None):
     """True when the live camera can draw here (a real window and a card that does OpenGL 3.3)."""
+    if np is None:
+        return False
     if os.environ.get("SDL_VIDEODRIVER") == "dummy" and not getattr(game, "live3d_headless", False):
         return False
     return _context() is not None
@@ -282,6 +288,8 @@ def framed(target, pitch_deg, fov, px_per_tile, height, yaw_deg=0.0):
 
 def zone_camera(zone_file):
     """(pitch, field of view) degrees of a zone's own camera (its scene's "cam": pitch, distance, fov, ...)."""
+    if np is None:
+        raise ValueError("no numpy: no live camera")
     cam = np.load(zone_file)["cam"]
     return float(cam[0]), float(cam[2])
 
