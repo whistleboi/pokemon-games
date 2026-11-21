@@ -2309,6 +2309,9 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         return self._tm_won
 
     def exit_battle(self, lost=False):
+        if getattr(self, "battle_cd", None) is not None:   # (a Battle CD: your own team back before anything else - src/world/battle_cd.py)
+            from src.world import battle_cd
+            self._cd_said = battle_cd.after_battle(self.game, self, bool(self.player_won and not lost))
         if self.starter_battle:   # (the opening rival battle: your team is healed afterwards, won or lost: Jordan, 11-15)
             for p in self.game.story_manager.player_team:
                 if p:
@@ -2487,7 +2490,16 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self.game.states["play"] = PlayState(self.game, restore_data=play_state_data)
             next_state = self.game.states["play"]
 
-        if getattr(self, "frontier", None):  # a Battle Frontier streak's battle: the streak goes on, ends, or a Symbol
+        if getattr(self, "battle_cd", None) is not None:   # (a Battle CD's result, said back in the lab)
+            said = getattr(self, "_cd_said", None)
+            if said and next_state is not None:   # (a walked town speaks with npc_say; a menu place with show_dialogue)
+                if hasattr(next_state, "say"):
+                    next_state.say(said)
+                elif hasattr(next_state, "npc_say"):
+                    next_state.npc_say(said, lambda: None)
+                else:
+                    next_state.show_dialogue(said)
+        elif getattr(self, "frontier", None):  # a Battle Frontier streak's battle: the streak goes on, ends, or a Symbol
             from src.world import frontier
             said = frontier.after_battle(self.game, self.frontier, bool(self.player_won and not lost))
             if said and next_state is not None:

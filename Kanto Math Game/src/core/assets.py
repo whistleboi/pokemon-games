@@ -279,6 +279,8 @@ class AssetManager:
         base = item_name.lower()
         if base.startswith("hm_"):  # every HM: the HM disc (Jordan, 11-03)
             base = "hm-disc"
+        elif base.startswith("battle_cd_"):  # (XD's Battle CDs: one disc picture for all 50)
+            base = "battle-cd"
         elif len(base) >= 4 and base.startswith("tm") and base[2:].isdigit():  # (TM001 on: one list in every region)  # a TM: its move type's disc
             from src.pokemon import tms
             from src.ui import theme

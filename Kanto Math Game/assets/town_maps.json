@@ -284104,7 +284104,7 @@
      "cc...............ccc",
      "c.................cc",
      "ccN...........Ncc..c",
-     "c..................c",
+     "c.........N........c",
      "cc.................c",
      "cc................cc",
      "ccc..............ccc",
@@ -284134,6 +284134,22 @@
         "These are dark days in Pyrite. Folk keep their doors shut."
        ]
       }
+     },
+     {
+      "text": "Battle CD 40",
+      "action": "EVENT",
+      "flag_condition": "not got_battle_cd_40",
+      "event": {
+       "flag": "got_battle_cd_40",
+       "gift_item": {
+        "BATTLE_CD_40": 1
+       },
+       "lines": [
+        "On the bookshelf: You found Battle CD 40!",
+        "It can be played on the Battle CD player at the Pokemon HQ Lab."
+       ]
+      },
+      "condition": "beat_orre_champion"
      }
     ],
     "signs": [],
@@ -284173,7 +284189,7 @@
      "c.........c....c",
      "c.......ccccc.cc",
      "c.......ccccc.cc",
-     "c.........N....c",
+     "c......N..N....c",
      "cc..N..........c",
      "cc..........N..c",
      "cc............cc",
@@ -284218,6 +284234,21 @@
        ],
        "done": [
         "Duking: Pyrite's been rough lately. Keep your eyes open, kid."
+       ]
+      }
+     },
+     {
+      "text": "Battle CD 22",
+      "action": "EVENT",
+      "flag_condition": "not got_battle_cd_22",
+      "event": {
+       "flag": "got_battle_cd_22",
+       "gift_item": {
+        "BATTLE_CD_22": 1
+       },
+       "lines": [
+        "On Duking's bookshelf: You found Battle CD 22!",
+        "It can be played on the Battle CD player at the Pokemon HQ Lab."
        ]
       }
      },
@@ -285322,7 +285353,7 @@
      "c............c",
      "c..N.........c",
      "c.Ncc.....cc.c",
-     "c............c",
+     "c......N.....c",
      "c............c",
      "cc...........c",
      "cc..........cc",
@@ -285349,6 +285380,21 @@
       "event": {
        "lines": [
         "My Wobbuffet won't leave my side these days."
+       ]
+      }
+     },
+     {
+      "text": "Battle CD 14",
+      "action": "EVENT",
+      "flag_condition": "not got_battle_cd_14",
+      "event": {
+       "flag": "got_battle_cd_14",
+       "gift_item": {
+        "BATTLE_CD_14": 1
+       },
+       "lines": [
+        "The house's Wobbuffet was sitting on something: You found Battle CD 14!",
+        "It can be played on the Battle CD player at the Pokemon HQ Lab."
        ]
       }
      }
@@ -285460,16 +285506,16 @@
    "ccccccccc..cccccc..ccccccccccccccccccccccccccc..ccccc.ccccc..cccccccccccccc",
    "ccccccccc..cccccc..ccccccccccccccccccccccccccc..cccc...cccc..cccccccccccccc",
    "ccccccccc..cccc....ccccccccccccccccccccccccccc.....N.........cccccccccccccc",
-   "ccccccccc..cccc....ccccccccccccccccccccccccccc...............cccccccccccccc",
+   "ccccccccc..cccc....ccccccccccccccccccccccccccc...N...........cccccccccccccc",
    "ccccccccc..cccc....ccccccccccccccccccccccccccc...............cccccccccccccc",
    "cccccccc...cccc....ccccccccccccccccccccccccccc...............cccccccccccccc",
    "cccccccc............cccccccccccccccccccccccccc........ccccc..cccccccccccccc",
-   "ccccccccc..cccc.....ccc...ccc...cccccccccccccc........ccccc..cccccccccccccc",
+   "ccccccccc..cccc.....cccNN.ccc.N.cccccccccccccc........ccccc..cccccccccccccc",
    "cccccccc...cccc.....ccc...ccc...cccccccccccccc........ccccc..cccccccccccccc",
    "cccccccc...cccc.....ccc...ccc...cccccccccccccc........ccccc..cccccccccccccc",
    "cccccccc...ccBD.....ccc...ccc...ccccccccccccccc.......cCDCc..cccccccccccccc",
    "cccccccc.c.cccc......c.....c.....c...........................cccccccccccccc",
-   "cccccccc.cccc................................................cccccccccccccc",
+   "cccccccc.cccc....N...........................................cccccccccccccc",
    "cccccccc.cccc................................................cccccccccccccc",
    "cccccccc.cccc................................................cccccccccccccc",
    "cccccccc.cccc......................................cccccccc..cccccccccccccc",
@@ -285508,6 +285554,262 @@
   "people": [
    "door:harbor",
    "The Cipher Rumor",
+   {
+    "text": "Navigator Berk",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_gateon_berk",
+       "lines": [
+        "Navigator Berk: The Krabby Club's for sailors. Prove you belong!"
+       ],
+       "battle": {
+        "name": "Navigator Berk",
+        "class": "NAVIGATOR",
+        "sprite": "orre_sailor.png",
+        "team": [
+         278,
+         270
+        ],
+        "levels": [
+         46,
+         46
+        ],
+        "team_moves": [
+         [
+          "WATER-GUN",
+          "GROWL"
+         ],
+         [
+          "GROWL",
+          "ASTONISH"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+40 (disc ace 6)",
+        "dialogue": {
+         "player_won": [
+          "Navigator Berk: Fair enough. In you go."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Navigator Berk: Fair enough. In you go."
+     ]
+    }
+   },
+   {
+    "text": "Casual Guy Cyle",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_gateon_cyle",
+       "lines": [
+        "Casual Guy Cyle: The bridges work again! First one across gets a battle - that's you!"
+       ],
+       "battle": {
+        "name": "Casual Guy Cyle",
+        "class": "CASUAL_GUY",
+        "sprite": "orre_chaser_m.png",
+        "team": [
+         276,
+         9353
+        ],
+        "levels": [
+         43,
+         48
+        ],
+        "team_moves": [
+         [
+          "PECK",
+          "GROWL"
+         ],
+         [
+          "PSYBEAM",
+          "REFRESH",
+          "AERIAL-ACE",
+          "SUPERSONIC"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+37 (disc ace 11)",
+        "dialogue": {
+         "player_won": [
+          "Casual Guy Cyle: Huh. My Ledyba felt... strange."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Casual Guy Cyle: Huh. My Ledyba felt... strange."
+     ]
+    },
+    "condition": "xd_gateon_bridges"
+   },
+   {
+    "text": "Bodybuilder Kilen",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_gateon_kilen",
+       "lines": [
+        "Bodybuilder Kilen: I climbed the lighthouse every day while the bridge was out. Now, fight!"
+       ],
+       "battle": {
+        "name": "Bodybuilder Kilen",
+        "class": "BODYBUILDER",
+        "sprite": "orre_bodybuilder.png",
+        "team": [
+         41,
+         9401
+        ],
+        "levels": [
+         43,
+         48
+        ],
+        "team_moves": [
+         [
+          "SUPERSONIC",
+          "LEECH-LIFE"
+         ],
+         [
+          "DIG",
+          "HEAL-BELL",
+          "POISON-FANG",
+          "HOWL"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+37 (disc ace 11)",
+        "dialogue": {
+         "player_won": [
+          "Bodybuilder Kilen: Lost to a kid. Back up the lighthouse I go."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Bodybuilder Kilen: Lost to a kid. Back up the lighthouse I go."
+     ]
+    },
+    "condition": "xd_gateon_bridges"
+   },
+   {
+    "text": "Chaser Laken",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_gateon_laken",
+       "lines": [
+        "Chaser Laken: I race the ferries along the pier. Race me in a battle!"
+       ],
+       "battle": {
+        "name": "Chaser Laken",
+        "class": "CHASER",
+        "sprite": "orre_chaser_f.png",
+        "team": [
+         333,
+         349
+        ],
+        "levels": [
+         46,
+         46
+        ],
+        "team_moves": [
+         [
+          "GROWL",
+          "PECK"
+         ],
+         [
+          "TACKLE",
+          "SPLASH"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+40 (disc ace 6)",
+        "dialogue": {
+         "player_won": [
+          "Chaser Laken: You're fast."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Chaser Laken: You're fast."
+     ]
+    }
+   },
+   {
+    "text": "Sailor Bost",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_gateon_bost",
+       "lines": [
+        "Sailor Bost: Oh, the sea, the sea... You've heard of me, haven't you? No? Then I'll show you!"
+       ],
+       "battle": {
+        "name": "Sailor Bost",
+        "class": "SAILOR",
+        "sprite": "orre_sailor.png",
+        "team": [
+         293,
+         183
+        ],
+        "levels": [
+         46,
+         46
+        ],
+        "team_moves": [
+         [
+          "POUND"
+         ],
+         [
+          "TACKLE",
+          "DEFENSE-CURL"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0,
+         "TM240": 1
+        },
+        "fit": "+40 (disc ace 6)",
+        "dialogue": {
+         "player_won": [
+          "Sailor Bost: Here, take this. TM240: Attract. Make 'em swoon!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Sailor Bost: Here, take this. TM240: Attract. Make 'em swoon!"
+     ]
+    }
+   },
    {
     "text": "Woman",
     "action": "EVENT",
@@ -285648,7 +285950,7 @@
      "cc..cc.............................c",
      "c....c.............................c",
      "c....c.............................c",
-     "c....c.........................cc..c",
+     "c....c............N............cc..c",
      "c....c....c.......c.......cccccccccc",
      "c....c...ccc.....ccc......cccccccccc",
      "cc........c.......c....c.ccccccccccc",
@@ -285669,7 +285971,23 @@
      "v": "OUT:53,30"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Battle CD 06",
+      "action": "EVENT",
+      "flag_condition": "not got_battle_cd_06",
+      "event": {
+       "flag": "got_battle_cd_06",
+       "gift_item": {
+        "BATTLE_CD_06": 1
+       },
+       "lines": [
+        "On the desk: You found Battle CD 06!",
+        "It can be played on the Battle CD player at the Pokemon HQ Lab."
+       ]
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -285888,7 +286206,7 @@
      "cccccccccc......ccc",
      "cccccccc........ccc",
      "cccccccc.........cc",
-     "cccccccc.........cc",
+     "cccccccc..N......cc",
      "cc...............cc",
      "c................vc",
      "c...cc...........cc",
@@ -285902,7 +286220,53 @@
      "v": "OUT:14,43"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Perr",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "not:xd_lily_asked"
+         ],
+         "lines": [
+          "Perr: Welcome to the Parts Shop! If it's got gears, we've got it."
+         ]
+        },
+        {
+         "requires": [
+          "xd_lily_asked",
+          "not:xd_perr_asked"
+         ],
+         "flag": "xd_perr_asked",
+         "lines": [
+          "Perr: A Machine Part for the Purify Chamber? We've got one in the stockroom, but Dad has the key.",
+          "Perr: Dad - Makan - went to Kaminko's House. He fixes the old man's inventions. It's up the road north of town."
+         ]
+        },
+        {
+         "requires": [
+          "xd_makan_back",
+          "not:has_item:MACHINE_PART",
+          "not:xd_machine_part_given"
+         ],
+         "gift_item": {
+          "MACHINE_PART": 1
+         },
+         "flag": "xd_machine_part",
+         "lines": [
+          "Makan: Here's your Machine Part. Tell Lily it's on the house.",
+          "Makan: And while I was at it, I got Gateon's movable bridges working again. Have a look around!"
+         ]
+        }
+       ],
+       "done": [
+        "Perr: Come back any time!"
+       ]
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -285950,6 +286314,137 @@
     "size": [
      75,
      70
+    ]
+   }
+  ],
+  "scenes": [
+   {
+    "trigger": "enter",
+    "condition": [
+     "xd_lily_asked",
+     "not:xd_zook_scene"
+    ],
+    "flag": "xd_zook_scene",
+    "cast": [
+     {
+      "sheet": "orre_npc_cute_hair_girl.png",
+      "from": [
+       30,
+       56
+      ],
+      "path": [
+       [
+        30,
+        50
+       ]
+      ],
+      "face": "u",
+      "stay": true,
+      "lines": [
+       "Jovi: Gateon Port! Come on, the Parts Shop is this w- oof!"
+      ]
+     },
+     {
+      "sheet": "orre_trainer_biker.png",
+      "from": [
+       30,
+       46
+      ],
+      "path": [
+       [
+        30,
+        49
+       ]
+      ],
+      "face": "d",
+      "stay": true,
+      "lines": [
+       "Thug Zook: Watch where you're going, brat! Maybe my Zangoose should teach you some manners..."
+      ]
+     },
+     {
+      "sheet": "orre_trainer_gentleman.png",
+      "from": [
+       36,
+       50
+      ],
+      "path": [
+       [
+        32,
+        50
+       ]
+      ],
+      "face": "l",
+      "stay": true,
+      "lines": [
+       "Mr. Verich: That will do. Gateon Port is no place for bullies."
+      ]
+     },
+     {
+      "sheet": "orre_trainer_psychic_m.png",
+      "from": [
+       37,
+       51
+      ],
+      "path": [
+       [
+        32,
+        51
+       ]
+      ],
+      "face": "l",
+      "stay": true,
+      "lines": [
+       "Ardos: Alakazam. ...It's over. Your Zangoose is in no state to fight."
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Thug Zook: Grr... This isn't over!"
+      ],
+      "leave_path": [
+       [
+        30,
+        40
+       ]
+      ]
+     },
+     {
+      "as": 2,
+      "lines": [
+       "Mr. Verich: Children should be careful. Orre is full of... surprises. Good day."
+      ],
+      "leave_path": [
+       [
+        44,
+        50
+       ]
+      ]
+     },
+     {
+      "as": 3,
+      "lines": [],
+      "leave_path": [
+       [
+        44,
+        51
+       ]
+      ],
+      "concurrent": true
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Jovi: Who were THEY? ...Anyway! Parts Shop!"
+      ],
+      "leave_path": [
+       [
+        30,
+        56
+       ]
+      ]
+     }
     ]
    }
   ]
@@ -286531,7 +287026,7 @@
    "cccccccccccccccccccc",
    "cccccccccADAcccccccc",
    "ccccccccc...cccccccc",
-   "ccccccccc...cccccccc",
+   "ccccccccc.N.cccccccc",
    "ccccccccc...cccccccc",
    "ccccccccc...cccccccc",
    "cccccccccBDBcccccccc",
@@ -286547,7 +287042,53 @@
    "A": "lab",
    "B": "cycle"
   },
-  "people": [],
+  "people": [
+   {
+    "text": "Spy Naps",
+    "action": "EVENT",
+    "condition": [
+     "xd_kidnap_seen"
+    ],
+    "flag_condition": "not xd_krane_taken",
+    "event": {
+     "flag": "xd_krane_taken",
+     "lines": [
+      "Spy Naps: A hero, huh? My Teddiursa will tear you apart!"
+     ],
+     "battle": {
+      "name": "Spy Naps",
+      "class": "SPY",
+      "sprite": "orre_cipher_peon.png",
+      "team": [
+       9380
+      ],
+      "levels": [
+       47
+      ],
+      "team_moves": [
+       [
+        "RETURN",
+        "REFRESH",
+        "LICK",
+        "METAL-CLAW"
+       ]
+      ],
+      "double": false,
+      "rewards": {
+       "balls": 0
+      },
+      "music": "orre/cipher_battle",
+      "fit": "+36 (disc ace 11)",
+      "dialogue": {
+       "player_won": [
+        "Spy Naps: My Teddiursa... you snagged it?! Forget it - the Professor's what we came for!",
+        "The men shove Krane into a car and race off down the pipe road."
+       ]
+      }
+     }
+    }
+   }
+  ],
   "signs": [],
   "roofs": {
    "_picture": {
@@ -286570,12 +287111,12 @@
      "c............c",
      "ccc...N....^cc",
      ".cc........^cc",
-     ".............c",
+     "...N.....N...c",
      ".............c",
      "ccccc...cccccc",
      ".............c",
-     "....N...N....c",
-     ".............c",
+     "....N...N..N.c",
+     "..........N..c",
      "c...........cc",
      "ccccccvccccccc",
      "cccccccccccccc"
@@ -286587,8 +287128,135 @@
     "buildings": {},
     "people": [
      "Professor Krane",
+     {
+      "text": "Battle CD player",
+      "action": "EVENT",
+      "event": {
+       "battle_cd_player": true,
+       "lines": [
+        "The Battle CD player. Each CD is a battle puzzle, with a team lent for it."
+       ]
+      }
+     },
+     {
+      "text": "Lily",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "not:xd_krane_taken"
+         ],
+         "lines": [
+          "Lily: I'm Lily. I run the Pokemon HQ Lab with Professor Krane."
+         ]
+        },
+        {
+         "requires": [
+          "xd_krane_taken",
+          "not:xd_lily_asked"
+         ],
+         "flag": "xd_lily_asked",
+         "lines": [
+          "Lily: Thank you for trying... They've taken the Professor. He was close to finishing the Purify Chamber.",
+          "Lily: It can open a Shadow Pokemon's heart. Cipher must not have it.",
+          "Lily: We still need one Machine Part. Gateon Port's Parts Shop should have it - ask for Perr.",
+          "Jovi: I'm coming too! Professor Krane always lets me help!"
+         ]
+        },
+        {
+         "requires": [
+          "has_item:MACHINE_PART",
+          "not:xd_machine_part_given"
+         ],
+         "flag": "xd_machine_part_given",
+         "take_item": {
+          "MACHINE_PART": 1
+         },
+         "lines": [
+          "Lily: The Machine Part! Jovi, run it down to the Chamber.",
+          "Datan: Lily! I traced Cipher's car. It went to the old Shadow Pokemon Lab, out in the desert.",
+          "Lily: The lab Cipher abandoned five years ago... They've opened it again. Wes, please - bring the Professor home."
+         ]
+        },
+        {
+         "requires": [
+          "xd_lovrina_beaten",
+          "not:xd_krane_home"
+         ],
+         "flag": "xd_krane_home",
+         "lines": [
+          "Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it."
+         ]
+        }
+       ],
+       "done": [
+        "Lily: The Professor's working day and night on the Purify Chamber."
+       ]
+      }
+     },
      "Pokemon Center",
-     "Lab Assistant"
+     "Lab Assistant",
+     {
+      "text": "Supertrainer Aferd",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_aferd",
+         "lines": [
+          "Supertrainer Aferd: I test the lab's training data. Spar with me?"
+         ],
+         "battle": {
+          "name": "Super Trainer Aferd",
+          "class": "SUPERTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+           161
+          ],
+          "levels": [
+           45
+          ],
+          "team_moves": [
+           [
+            "DEFENSE-CURL",
+            "SCRATCH"
+           ]
+          ],
+          "double": false,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+40 (disc ace 5)",
+          "dialogue": {
+           "player_won": [
+            "Supertrainer Aferd: Good data. Thanks!"
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Supertrainer Aferd: The Professor says strong trainers make the best data."
+       ]
+      }
+     },
+     {
+      "text": "Battle CD 33",
+      "action": "EVENT",
+      "flag_condition": "not got_battle_cd_33",
+      "event": {
+       "flag": "got_battle_cd_33",
+       "gift_item": {
+        "BATTLE_CD_33": 1
+       },
+       "lines": [
+        "On a bookshelf: You found Battle CD 33!",
+        "It can be played on the Battle CD player at the Pokemon HQ Lab."
+       ]
+      },
+      "condition": "beat_orre_champion"
+     }
     ],
     "signs": [],
     "roofs": {
@@ -286684,6 +287352,51 @@
     "size": [
      20,
      20
+    ]
+   }
+  ],
+  "scenes": [
+   {
+    "trigger": "enter",
+    "condition": [
+     "orre_ein_lab",
+     "not:xd_kidnap_seen",
+     "not:xd_lovrina_beaten"
+    ],
+    "flag": "xd_kidnap_seen",
+    "cast": [
+     {
+      "sheet": "orre_trainer_cipher_grunt.png",
+      "from": [
+       10,
+       9
+      ],
+      "path": [
+       [
+        10,
+        10
+       ]
+      ],
+      "face": "d",
+      "stay": true,
+      "lines": [
+       "Three men in Cipher uniforms burst out of the lab, dragging an old man in a white coat.",
+       "Spy Naps: Move it, Professor! Our boss wants a word about that Purify Chamber of yours."
+      ]
+     },
+     {
+      "sheet": "orre_npc_04.png",
+      "from": [
+       10,
+       9
+      ],
+      "to": "player",
+      "wait": 20,
+      "lines": [
+       "Lily: Professor Krane! ...You! You're a trainer, aren't you? Please, stop them!"
+      ],
+      "stay": true
+     }
     ]
    }
   ]
@@ -294060,9 +294773,9 @@
      "c.......c1ccccc....cccc",
      "c..cc..............cccc",
      "c.c................cccc",
-     "c.............c.......c",
+     "c..X...X...X..c.X.....c",
      "c.....................c",
-     "c.....................c",
+     "c....X.......X........c",
      "c......ccvc.........ccc",
      "c.......cc............c",
      "ccccccccccccccccccccccc"
@@ -294079,7 +294792,14 @@
     },
     "parts": true,
     "people": [],
-    "trainer_spots": [],
+    "trainer_spots": [
+     "Cipher Peon Resix",
+     "Cipher Peon Browsix",
+     "Cipher Peon Yellosix",
+     "Cipher Peon Greesix",
+     "Cipher Peon Blusix",
+     "Cipher Peon Purpsix"
+    ],
     "roofs": {
      "_picture": {
       "f": "orre_ground/142.png",
@@ -294113,14 +294833,14 @@
      "c..........c...............c",
      "c..........c..X..........1.c",
      "cccc.ccccccccccc.ccccc.ccccc",
-     "c.....c..........c.........c",
+     "c.....c........N.c.........c",
      "c.....c....X.....c....NN...c",
      "c.ccccccc.cccccccccc.c.ccccc",
      "c......c.................X.c",
      "c......c...................c",
      "cccccc.cccccc.cccccc.ccccccc",
-     "c..........................c",
-     "c..........................c",
+     "c.............N............c",
+     "c....X.....................c",
      "ccccccccccccc1cccccccccccccc"
     ],
     "exits": {},
@@ -294138,13 +294858,16 @@
     },
     "parts": true,
     "people": [
+     "REVIVE",
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "ETHER"
     ],
     "trainer_spots": [
-     "Cipher Peon Resix",
-     "Cipher Peon Blusix",
-     "Cipher Peon Browsix"
+     "Cipher Peon Corla",
+     "Cipher R&D Tekot",
+     "Cipher Peon Javion",
+     "Cipher R&D Mesak"
     ],
     "roofs": {
      "_picture": {
@@ -294176,14 +294899,14 @@
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "c1.........c.....N..c......c",
+     "c1.........c.....N..c..N...c",
      "c..........c...X....c...X..c",
      "ccccc.cccccccccc.cccccc.cccc",
-     "c..........................c",
-     "c..........................c",
+     "c......N...................c",
+     "c.....X....................c",
      "ccc.ccccccc.ccccccc.cccccc.c",
      "c.......c..........c.......c",
-     "c...X...c..........c......1c",
+     "c...X...c.....X....c..X...1c",
      "cccccccccccccccccccccccccccc"
     ],
     "exits": {},
@@ -294201,12 +294924,17 @@
     },
     "parts": true,
     "people": [
+     "SUPER POTIONS",
+     "GREAT BALL",
      "ID CARD"
     ],
     "trainer_spots": [
-     "Cipher Peon Yellosix",
-     "Cipher Peon Purpsix",
-     "Cipher Peon Greesix"
+     "Cipher Peon Nexir",
+     "Cipher Peon Solox",
+     "Cipher Peon Digor",
+     "Cipher Peon Crink",
+     "Cipher R&D Morbit",
+     "Cipher Peon Meda"
     ],
     "roofs": {
      "_picture": {
@@ -294255,14 +294983,14 @@
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "c..........c.......c.......c",
-     "c....N.....c.......c....N..c",
+     "c..N.......c.......c.......c",
+     "c....N.N...c.......c...X...c",
      "cccccc.cccccccccc.cccc.ccccc",
-     "c.........................Xc",
+     "c.................N.......Xc",
      "c..........................c",
      "ccccccc.ccccccccc.cccccccccc",
-     "c1.........................c",
-     "c.....X....................c",
+     "c1...........N.............c",
+     "c.....X............X...X...c",
      "cccccccccccccccccccccccccccc"
     ],
     "exits": {},
@@ -294275,12 +295003,18 @@
     },
     "parts": true,
     "people": [
+     "PROFESSOR KRANE",
      "BATTLE CIPHER ADMIN LOVRINA",
+     "CIPHER PEON NAPS",
+     "BATTLE CD 42",
      "LEAF STONE"
     ],
     "trainer_spots": [
-     "Cipher Peon Corla",
-     "Cipher Peon Javion"
+     "Cipher R&D Elrok",
+     "Cipher R&D Coffy",
+     "Cipher Peon Cabol",
+     "Cipher Peon Nopia",
+     "Cipher R&D Klots"
     ],
     "roofs": {
      "_picture": {
@@ -294316,19 +295050,39 @@
    "B2F"
   ],
   "figure_floors": {
+   "Cipher Peon Resix": 0,
+   "Cipher Peon Blusix": 0,
+   "Cipher Peon Browsix": 0,
+   "Cipher Peon Yellosix": 0,
+   "Cipher Peon Purpsix": 0,
+   "Cipher Peon Greesix": 0,
    "SNAG SHADOW POKEMON": 1,
    "SNAG AGAIN": 1,
-   "Cipher Peon Resix": 1,
-   "Cipher Peon Blusix": 1,
-   "Cipher Peon Browsix": 1,
+   "REVIVE": 1,
+   "ETHER": 1,
+   "Cipher Peon Corla": 1,
+   "Cipher R&D Tekot": 1,
+   "Cipher Peon Javion": 1,
+   "Cipher R&D Mesak": 1,
    "ID CARD": 2,
-   "Cipher Peon Yellosix": 2,
-   "Cipher Peon Purpsix": 2,
-   "Cipher Peon Greesix": 2,
+   "SUPER POTIONS": 2,
+   "GREAT BALL": 2,
+   "Cipher Peon Nexir": 2,
+   "Cipher Peon Solox": 2,
+   "Cipher Peon Digor": 2,
+   "Cipher Peon Crink": 2,
+   "Cipher R&D Morbit": 2,
+   "Cipher Peon Meda": 2,
    "BATTLE CIPHER ADMIN LOVRINA": 3,
-   "Cipher Peon Corla": 3,
-   "Cipher Peon Javion": 3,
-   "LEAF STONE": 3
+   "CIPHER PEON NAPS": 3,
+   "PROFESSOR KRANE": 3,
+   "LEAF STONE": 3,
+   "BATTLE CD 42": 3,
+   "Cipher R&D Elrok": 3,
+   "Cipher R&D Coffy": 3,
+   "Cipher Peon Cabol": 3,
+   "Cipher Peon Nopia": 3,
+   "Cipher R&D Klots": 3
   },
   "theme": "tunnel"
  },
@@ -294993,11 +295747,11 @@
      "c.ccc.....c.c.cccccc",
      "c................ccc",
      "c................ccc",
-     "c.ccc..............c",
-     "c.ccc....N.........c",
+     "c.ccc.........N....c",
+     "c.ccc....N...N.....c",
      "c..................c",
      "c................1cc",
-     "c................ccc",
+     "c...N............ccc",
      "ccccccccc1cccccccccc",
      "cccccccccccccccccccc"
     ],
@@ -295016,7 +295770,10 @@
     },
     "parts": true,
     "people": [
-     "Dr. Kaminko"
+     "BATTLE CD 50",
+     "Dr. Kaminko",
+     "BATTLE CD 49",
+     "MAKAN"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -295179,7 +295936,7 @@
      "ccc.....N..........c",
      "c..................c",
      "c................ccc",
-     "c................1cc",
+     "c......N.........1cc",
      "c................ccc",
      "cccccccccccccccccccc"
     ],
@@ -295193,7 +295950,8 @@
     },
     "parts": true,
     "people": [
-     "Jovi"
+     "Jovi",
+     "BATTLE CD 23"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -295232,8 +295990,12 @@
   "figure_floors": {
    "KAMINKO'S HOUSE: CHOBIN": 0,
    "Dr. Kaminko": 1,
+   "MAKAN": 1,
+   "BATTLE CD 49": 1,
+   "BATTLE CD 50": 1,
    "The Robo Kyogre": 2,
-   "Jovi": 3
+   "Jovi": 3,
+   "BATTLE CD 23": 3
   },
   "theme": "tunnel"
  },

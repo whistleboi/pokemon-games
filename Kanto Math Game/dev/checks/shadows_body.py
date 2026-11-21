@@ -57,6 +57,7 @@ c = CityState(g); g.change_state(c); c.open_travel_menu()
 # (the button toward the Journal's next mission starts "> ": the way to Lovrina's lab, 11-01)
 check("Gateon Port" in [b.text.lstrip("> ") for b in c.hover_buttons], "Gateon Port opens after Ein's lab")
 story.current_area_key = "GATEON_PORT"
+story.story_flags["xd_machine_part_given"] = True   # (11-20, Orre batch 5a: the Cipher Lab joins the map once Datan has traced Cipher's car)
 c = CityState(g); g.change_state(c); c.open_travel_menu()
 t = [b.text.lstrip("> ") for b in c.hover_buttons]
 check("Cipher Lab" in t and "ONBS Building" not in t, f"XD lairs gated: {t}")

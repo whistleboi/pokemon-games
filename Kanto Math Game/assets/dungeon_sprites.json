@@ -76,6 +76,87 @@
     ]
   },
   "figures": {
+    "POKEMON_HQ_LAB:Spy Naps": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "POKEMON_HQ_LAB:Lily": {
+      "sheet": "orre_npc_04.png"
+    },
+    "POKEMON_HQ_LAB:Supertrainer Aferd": {
+      "sheet": "orre_trainer_ace_trainer.png"
+    },
+    "POKEMON_HQ_LAB:Battle CD player": {
+      "item": "BATTLE_CD_01"
+    },
+    "POKEMON_HQ_LAB:Battle CD 33": {
+      "item": "BATTLE_CD_33"
+    },
+    "GATEON_PORT:Perr": {
+      "sheet": "orre_npc_24.png"
+    },
+    "GATEON_PORT:Navigator Berk": {
+      "sheet": "orre_trainer_sailor.png"
+    },
+    "GATEON_PORT:Sailor Bost": {
+      "sheet": "orre_trainer_sailor.png"
+    },
+    "GATEON_PORT:Chaser Laken": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
+    "GATEON_PORT:Casual Guy Cyle": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
+    "GATEON_PORT:Bodybuilder Kilen": {
+      "sheet": "orre_trainer_bodybuilder.png"
+    },
+    "GATEON_PORT:Battle CD 06": {
+      "item": "BATTLE_CD_06"
+    },
+    "AGATE_VILLAGE:Battle CD 14": {
+      "item": "BATTLE_CD_14"
+    },
+    "PYRITE_TOWN:Battle CD 22": {
+      "item": "BATTLE_CD_22"
+    },
+    "PYRITE_TOWN:Battle CD 40": {
+      "item": "BATTLE_CD_40"
+    },
+    "XD_CIPHER_LAB:BATTLE CD 42": {
+      "item": "BATTLE_CD_42"
+    },
+    "KAMINKO_HOUSE:BATTLE CD 49": {
+      "item": "BATTLE_CD_49"
+    },
+    "KAMINKO_HOUSE:BATTLE CD 50": {
+      "item": "BATTLE_CD_50"
+    },
+    "KAMINKO_HOUSE:BATTLE CD 23": {
+      "item": "BATTLE_CD_23"
+    },
+    "XD_CIPHER_LAB:REVIVE": {
+      "item": "REVIVE"
+    },
+    "XD_CIPHER_LAB:ETHER": {
+      "item": "ETHER"
+    },
+    "XD_CIPHER_LAB:SUPER POTIONS": {
+      "item": "SUPER_POTION"
+    },
+    "XD_CIPHER_LAB:GREAT BALL": {
+      "item": "GREAT_BALL"
+    },
+    "XD_CIPHER_LAB:CIPHER PEON NAPS": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_LAB:PROFESSOR KRANE": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "XD_CIPHER_LAB:LEAF STONE": {
+      "item": "LEAF_STONE"
+    },
+    "KAMINKO_HOUSE:MAKAN": {
+      "sheet": "orre_npc_24.png"
+    },
     "PYRITE_TOWN:Miror B. Peon Reath (asleep)": {
       "sheet": "orre_trainer_cipher_grunt.png"
     },

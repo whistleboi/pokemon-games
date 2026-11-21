@@ -929,6 +929,21 @@ def _run_story_event(state, key, check, show):
             show(_resolve_lines(game, got + list(ch.get("done") or ([] if got else ["All set!"]))))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ch.get("ask") or "WHICH ONE?", rows, picked)))
         return
+    if ev.get("battle_cd_player"):   # (XD's Battle CDs, played at the HQ Lab: pick one you own - src/world/battle_cd.py)
+        from src.world import battle_cd
+        from src.states.systems.pick_list import PickListState
+        can = battle_cd.choices(game)
+        if not can:
+            show(lines + ["You don't have any Battle CDs yet. They're hidden all over Orre."])
+            return
+
+        def play(key):
+            if key is None:
+                show(["The Battle CD player hums quietly."])
+                return
+            _say_then(state, battle_cd.describe(game, key), lambda: game.change_state(battle_cd.start(game, key)))
+        _say_then(state, lines, lambda: game.change_state(PickListState(game, state, "WHICH CD?", can, play)))
+        return
     if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
         from src.states.systems.pick_list import PickListState
         from src.states.overworld import AreaTransitionState

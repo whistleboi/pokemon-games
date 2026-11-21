@@ -471,6 +471,150 @@ def _under(maps):
                                        "lines": ["KA-BOOM! The charge went off too soon - the door is blown wide open!"]}]}]
 
 
+# ================================================================== batch 5a: XD's opening act with Wes (BATCH_5A.md)
+# Jordan 11-20: Wes reaches the HQ Lab (after Ein's Lab) as Naps carries Professor Krane off; Lily asks for help; the
+# Machine Part from Gateon's Parts Shop (Perr's dad Makan is at Kaminko's, past Chobin); Datan traces Cipher's car to the
+# Cipher Lab. XD's teams, raised to fit (DECISIONS: levels keep climbing). The words are ours.
+LILY, JOVI, NAPS = "orre_npc_04.png", "orre_npc_cute_hair_girl.png", "orre_trainer_cipher_grunt.png"
+KIDNAP_SCENE = {"trigger": "enter", "condition": ["orre_ein_lab", "not:xd_kidnap_seen", "not:xd_lovrina_beaten"], "flag": "xd_kidnap_seen",
+                "cast": [{"sheet": NAPS, "from": [10, 9], "path": [[10, 10]], "face": "d", "stay": True,
+                          "lines": ["Three men in Cipher uniforms burst out of the lab, dragging an old man in a white coat.",
+                                    "Spy Naps: Move it, Professor! Our boss wants a word about that Purify Chamber of yours."]},
+                         {"sheet": LILY, "from": [10, 9], "to": "player", "wait": 20,
+                          "lines": ["Lily: Professor Krane! ...You! You're a trainer, aren't you? Please, stop them!"], "stay": True}]}
+NAPS_FIGHT = {"text": "Spy Naps", "action": "EVENT", "condition": ["xd_kidnap_seen"], "flag_condition": "not xd_krane_taken",
+              "event": {"flag": "xd_krane_taken", "lines": ["Spy Naps: A hero, huh? My Teddiursa will tear you apart!"],
+                        "battle": T("xd:Story:17", dialogue={"player_won": [
+                            "Spy Naps: My Teddiursa... you snagged it?! Forget it - the Professor's what we came for!",
+                            "The men shove Krane into a car and race off down the pipe road."]})}}
+LILY_LAB = {"text": "Lily", "action": "EVENT", "event": {"stages": [
+    {"requires": ["not:xd_krane_taken"], "lines": ["Lily: I'm Lily. I run the Pokemon HQ Lab with Professor Krane."]},
+    {"requires": ["xd_krane_taken", "not:xd_lily_asked"], "flag": "xd_lily_asked",
+     "lines": ["Lily: Thank you for trying... They've taken the Professor. He was close to finishing the Purify Chamber.",
+               "Lily: It can open a Shadow Pokemon's heart. Cipher must not have it.",
+               "Lily: We still need one Machine Part. Gateon Port's Parts Shop should have it - ask for Perr.",
+               "Jovi: I'm coming too! Professor Krane always lets me help!"]},
+    {"requires": ["has_item:MACHINE_PART", "not:xd_machine_part_given"], "flag": "xd_machine_part_given",
+     "take_item": {"MACHINE_PART": 1},
+     "lines": ["Lily: The Machine Part! Jovi, run it down to the Chamber.",
+               "Datan: Lily! I traced Cipher's car. It went to the old Shadow Pokemon Lab, out in the desert.",
+               "Lily: The lab Cipher abandoned five years ago... They've opened it again. Wes, please - bring the Professor home."]},
+    {"requires": ["xd_lovrina_beaten", "not:xd_krane_home"], "flag": "xd_krane_home",
+     "lines": ["Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it."]}],
+    "done": ["Lily: The Professor's working day and night on the Purify Chamber."]}}
+AFERD = {"text": "Supertrainer Aferd", "action": "EVENT", "event": {"stages": [{
+    "flag": "xd_aferd", "lines": ["Supertrainer Aferd: I test the lab's training data. Spar with me?"],
+    "battle": T("xd:Story:8", dialogue={"player_won": ["Supertrainer Aferd: Good data. Thanks!"]})}],
+    "done": ["Supertrainer Aferd: The Professor says strong trainers make the best data."]}}
+
+ZOOK_SCENE = {"trigger": "enter", "condition": ["xd_lily_asked", "not:xd_zook_scene"], "flag": "xd_zook_scene",
+              "cast": [{"sheet": JOVI, "from": [30, 56], "path": [[30, 50]], "face": "u", "stay": True,
+                        "lines": ["Jovi: Gateon Port! Come on, the Parts Shop is this w- oof!"]},
+                       {"sheet": "orre_trainer_biker.png", "from": [30, 46], "path": [[30, 49]], "face": "d", "stay": True,
+                        "lines": ["Thug Zook: Watch where you're going, brat! Maybe my Zangoose should teach you some manners..."]},
+                       {"sheet": "orre_trainer_gentleman.png", "from": [36, 50], "path": [[32, 50]], "face": "l", "stay": True,
+                        "lines": ["Mr. Verich: That will do. Gateon Port is no place for bullies."]},
+                       {"sheet": "orre_trainer_psychic_m.png", "from": [37, 51], "path": [[32, 51]], "face": "l", "stay": True,
+                        "lines": ["Ardos: Alakazam. ...It's over. Your Zangoose is in no state to fight."]},
+                       {"as": 1, "lines": ["Thug Zook: Grr... This isn't over!"], "leave_path": [[30, 40]]},
+                       {"as": 2, "lines": ["Mr. Verich: Children should be careful. Orre is full of... surprises. Good day."],
+                        "leave_path": [[44, 50]]},
+                       {"as": 3, "lines": [], "leave_path": [[44, 51]], "concurrent": True},
+                       {"as": 0, "lines": ["Jovi: Who were THEY? ...Anyway! Parts Shop!"], "leave_path": [[30, 56]]}]}
+PERR = {"text": "Perr", "action": "EVENT", "event": {"stages": [
+    {"requires": ["not:xd_lily_asked"], "lines": ["Perr: Welcome to the Parts Shop! If it's got gears, we've got it."]},
+    {"requires": ["xd_lily_asked", "not:xd_perr_asked"], "flag": "xd_perr_asked",
+     "lines": ["Perr: A Machine Part for the Purify Chamber? We've got one in the stockroom, but Dad has the key.",
+               "Perr: Dad - Makan - went to Kaminko's House. He fixes the old man's inventions. It's up the road north of town."]},
+    {"requires": ["xd_makan_back", "not:has_item:MACHINE_PART", "not:xd_machine_part_given"], "gift_item": {"MACHINE_PART": 1},
+     "flag": "xd_machine_part",
+     "lines": ["Makan: Here's your Machine Part. Tell Lily it's on the house.",
+               "Makan: And while I was at it, I got Gateon's movable bridges working again. Have a look around!"]}],
+    "done": ["Perr: Come back any time!"]}}
+
+GATEON_TRAINERS = {
+    (49, 36): _fight("Navigator Berk", "xd:Story:11", "xd_gateon_berk", "Navigator Berk: The Krabby Club's for sailors. Prove you belong!",
+                     "Navigator Berk: Fair enough. In you go."),
+    (17, 45): _fight("Sailor Bost", "xd:Story:13", "xd_gateon_bost",
+                     "Sailor Bost: Oh, the sea, the sea... You've heard of me, haven't you? No? Then I'll show you!",
+                     "Sailor Bost: Here, take this. TM240: Attract. Make 'em swoon!"),
+    (30, 40): _fight("Chaser Laken", "xd:Story:16", "xd_gateon_laken", "Chaser Laken: I race the ferries along the pier. Race me in a battle!",
+                     "Chaser Laken: You're fast."),
+    (23, 40): _fight("Casual Guy Cyle", "xd:Story:12", "xd_gateon_cyle", "Casual Guy Cyle: The bridges work again! First one across gets a battle - that's you!",
+                     "Casual Guy Cyle: Huh. My Ledyba felt... strange.", condition="xd_gateon_bridges"),
+    (24, 40): _fight("Bodybuilder Kilen", "xd:Story:14", "xd_gateon_kilen", "Bodybuilder Kilen: I climbed the lighthouse every day while the bridge was out. Now, fight!",
+                     "Bodybuilder Kilen: Lost to a kid. Back up the lighthouse I go.", condition="xd_gateon_bridges"),
+}
+GATEON_TRAINERS[(17, 45)]["event"]["stages"][0]["battle"]["rewards"] = {"balls": 0, "TM240": 1}   # (a battle's prize: a gift on its stage isn't handed out)
+
+
+def _xd5a(maps):
+    if "POKEMON_HQ_LAB" in maps:
+        m = maps["POKEMON_HQ_LAB"]
+        m["scenes"] = list(m.get("scenes") or []) + [KIDNAP_SCENE]
+        _set_people(m, {(10, 10): NAPS_FIGHT})
+        _set_people(m["rooms"]["lab"], {(9, 6): LILY_LAB, (11, 10): AFERD})
+    if "GATEON_PORT" in maps:
+        m = maps["GATEON_PORT"]
+        m["scenes"] = list(m.get("scenes") or []) + [ZOOK_SCENE]
+        _set_people(m, GATEON_TRAINERS)
+        _set_people(m["rooms"]["bikeshop"], {(10, 5): PERR})
+
+
+# ------------------------------------------------------------------ batch 5a: Battle CDs (kanto_handoff/orre_check/BATTLE_CDS.md)
+# The player at the HQ Lab (src/world/battle_cd.py); the CDs in the places built so far, where XD hides them (Serebii's list).
+def CD_PICK(n, where, cond=None):
+    o = {"text": f"Battle CD {n}", "action": "EVENT", "flag_condition": f"not got_battle_cd_{n}",
+         "event": {"flag": f"got_battle_cd_{n}", "gift_item": {f"BATTLE_CD_{n}": 1},
+                   "lines": [f"{where} You found Battle CD {n}!", "It can be played on the Battle CD player at the Pokemon HQ Lab."]}}
+    if cond:
+        o["condition"] = cond
+    return o
+
+
+CD_PLAYER = {"text": "Battle CD player", "action": "EVENT", "event": {
+    "battle_cd_player": True, "lines": ["The Battle CD player. Each CD is a battle puzzle, with a team lent for it."]}}
+
+
+def _free_spot(m, near=None):
+    """An open floor tile with open ground around it and nobody on it (near a point, else the room's middle)."""
+    art = m["art"]
+    taken = set(_people_at(m))
+    exits = {(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c not in ".,N" and c in (m.get("exits") or {})}
+    h, w = len(art), len(art[0])
+    cx, cy = near or (w // 2, h // 2)
+    ok = []
+    for y in range(1, h - 1):
+        for x in range(1, w - 1):
+            if art[y][x] != "." or (x, y) in taken:
+                continue
+            if sum(art[y + dy][x + dx] == "." for dx in (-1, 0, 1) for dy in (-1, 0, 1)) < 8:
+                continue
+            if any(abs(x - ex) + abs(y - ey) < 3 for ex, ey in exits) or any(abs(x - tx) + abs(y - ty) < 2 for tx, ty in taken):
+                continue
+            ok.append((abs(x - cx) + abs(y - cy), y, x))
+    _d, y, x = min(ok)
+    return (x, y)
+
+
+def _battle_cds(maps):
+    if "POKEMON_HQ_LAB" in maps:
+        lab = maps["POKEMON_HQ_LAB"]["rooms"]["lab"]
+        _set_people(lab, {_free_spot(lab, (3, 6)): CD_PLAYER})
+        _set_people(lab, {_free_spot(lab, (12, 10)): CD_PICK("33", "On a bookshelf:", "beat_orre_champion")})
+    if "GATEON_PORT" in maps:
+        r = maps["GATEON_PORT"]["rooms"]["krabby"]
+        _set_people(r, {_free_spot(r): CD_PICK("06", "On the desk:")})
+    if "AGATE_VILLAGE" in maps:
+        r = maps["AGATE_VILLAGE"]["rooms"]["house_centre"]
+        _set_people(r, {_free_spot(r): CD_PICK("14", "The house's Wobbuffet was sitting on something:")})
+    if "PYRITE_TOWN" in maps:
+        r = maps["PYRITE_TOWN"]["rooms"]["duking"]
+        _set_people(r, {_free_spot(r): CD_PICK("22", "On Duking's bookshelf:")})
+        r = maps["PYRITE_TOWN"]["rooms"]["house_tower"]
+        _set_people(r, {_free_spot(r): CD_PICK("40", "On the bookshelf:", "beat_orre_champion")})
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -480,6 +624,8 @@ def apply(maps):
         _agate(maps)
     if "THE_UNDER" in maps:
         _under(maps)
+    _xd5a(maps)
+    _battle_cds(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

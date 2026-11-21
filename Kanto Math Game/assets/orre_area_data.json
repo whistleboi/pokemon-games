@@ -10733,7 +10733,8 @@
         {
           "text": "Cipher Lab",
           "door": "cycle",
-          "target_area": "XD_CIPHER_LAB"
+          "target_area": "XD_CIPHER_LAB",
+          "condition": "xd_machine_part_given"
         },
         {
           "text": "S.S. Libra",
@@ -10789,7 +10790,8 @@
             ],
             "gift_pokemon": 133,
             "flag": "got_krane_eevee"
-          }
+          },
+          "condition": "xd_lovrina_beaten"
         },
         {
           "text": "Purify Chamber",
@@ -10844,32 +10846,42 @@
           "flag_condition": "not kaminko_chobin",
           "event": {
             "lines": [
-              "Chobin: Halt, burglar! Nobody sneaks into Dr. Kaminko's manor while I'm on guard!"
+              "Kaminko Aide Chobin: Halt, burglar! Nobody steals Dr. Kaminko's genius on my watch!"
             ],
+            "flag": "kaminko_chobin",
             "battle": {
               "name": "Kaminko Aide Chobin",
-              "class": "RESEARCHER",
-              "sprite": "orre_scientist.png",
+              "class": "KAMINKO_AIDE",
+              "sprite": "orre_chaser_m.png",
               "team": [
                 191,
-                130
+                129
               ],
               "levels": [
-                29,
-                30
+                47,
+                47
               ],
+              "team_moves": [
+                [
+                  "ABSORB",
+                  "GROWTH"
+                ],
+                [
+                  "SPLASH"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 3,
-                "SUN_STONE": 1
+                "balls": 0
               },
               "dialogue": {
                 "player_won": [
-                  "Chobin: Oh! You're just a kid. Sorry about that. Come on in!"
+                  "Chobin: Wait - you're just a kid! You're looking for Makan? He's inside."
                 ]
               }
-            },
-            "flag": "kaminko_chobin"
-          }
+            }
+          },
+          "condition": "xd_perr_asked"
         },
         {
           "text": "Dr. Kaminko",
@@ -10900,6 +10912,68 @@
           }
         },
         {
+          "text": "BATTLE CD 49",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_49",
+          "event": {
+            "lines": [
+              "In Chobin's room: Battle CD 49!"
+            ],
+            "flag": "got_battle_cd_49",
+            "gift_item": {
+              "BATTLE_CD_49": 1
+            }
+          }
+        },
+        {
+          "text": "BATTLE CD 50",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_50",
+          "event": {
+            "lines": [
+              "On Kaminko's bookshelf: Battle CD 50!"
+            ],
+            "flag": "got_battle_cd_50",
+            "gift_item": {
+              "BATTLE_CD_50": 1
+            }
+          }
+        },
+        {
+          "text": "BATTLE CD 23",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_23",
+          "event": {
+            "lines": [
+              "On the floor of the underground room: Battle CD 23!"
+            ],
+            "flag": "got_battle_cd_23",
+            "gift_item": {
+              "BATTLE_CD_23": 1
+            }
+          }
+        },
+        {
+          "text": "MAKAN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "kaminko_chobin",
+          "flag_condition": "not xd_makan_back",
+          "event": {
+            "flag": "xd_makan_back",
+            "also_flags": [
+              "xd_gateon_bridges"
+            ],
+            "lines": [
+              "Makan: Perr sent you? A Machine Part for Lily? Of course!",
+              "Makan: I'll head back to the shop with the key. And I'll fix Gateon's movable bridges on the way."
+            ]
+          }
+        },
+        {
           "text": "Gateon Port",
           "action": "EXIT",
           "target_area": "GATEON_PORT",
@@ -10924,12 +10998,37 @@
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_red.png",
           "team": [
-            228,
-            218,
-            322
+            9390,
+            218
           ],
+          "levels": [
+            44,
+            41
+          ],
+          "team_moves": [
+            [
+              "FEINT-ATTACK",
+              "CHARM",
+              "EMBER",
+              "ROAR"
+            ],
+            [
+              "EMBER",
+              "SMOG"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "dialogue": {
+            "intro": [
+              "Resix: We are the Hexagon Brothers! Behold our colour!"
+            ],
+            "player_won": [
+              "Resix: Our formation... broken!"
+            ]
           }
         },
         {
@@ -10939,10 +11038,42 @@
           "team": [
             116,
             118,
-            363
+            9429
           ],
+          "levels": [
+            38,
+            39,
+            44
+          ],
+          "team_moves": [
+            [
+              "SMOKESCREEN",
+              "WATER-GUN"
+            ],
+            [
+              "PECK",
+              "WATER-SPORT",
+              "TAIL-WHIP"
+            ],
+            [
+              "AURORA-BEAM",
+              "CHARM",
+              "WATER-GUN",
+              "MUD-SLAP"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "dialogue": {
+            "intro": [
+              "Blusix: We are the Hexagon Brothers! Behold our colour!"
+            ],
+            "player_won": [
+              "Blusix: Our formation... broken!"
+            ]
           }
         },
         {
@@ -10950,11 +11081,38 @@
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_brown.png",
           "team": [
-            343,
+            9423,
             163
           ],
+          "levels": [
+            44,
+            41
+          ],
+          "team_moves": [
+            [
+              "ROCK-TOMB",
+              "REFRESH",
+              "MUD-SLAP",
+              "PSYBEAM"
+            ],
+            [
+              "PECK",
+              "TACKLE",
+              "GROWL"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "dialogue": {
+            "intro": [
+              "Browsix: We are the Hexagon Brothers! Behold our colour!"
+            ],
+            "player_won": [
+              "Browsix: Our formation... broken!"
+            ]
           }
         },
         {
@@ -10962,12 +11120,44 @@
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_yellow.png",
           "team": [
-            179,
+            9360,
             309,
             170
           ],
+          "levels": [
+            44,
+            39,
+            38
+          ],
+          "team_moves": [
+            [
+              "BODY-SLAM",
+              "HEAL-BELL",
+              "THUNDER-SHOCK",
+              "THUNDER-WAVE"
+            ],
+            [
+              "HOWL",
+              "TACKLE",
+              "LEER"
+            ],
+            [
+              "SUPERSONIC",
+              "WATER-GUN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "dialogue": {
+            "intro": [
+              "Yellosix: We are the Hexagon Brothers! Behold our colour!"
+            ],
+            "player_won": [
+              "Yellosix: Our formation... broken!"
+            ]
           }
         },
         {
@@ -10977,11 +11167,50 @@
           "team": [
             109,
             88,
-            316,
+            9414,
             72
           ],
+          "levels": [
+            37,
+            38,
+            44,
+            37
+          ],
+          "team_moves": [
+            [
+              "SMOG",
+              "TACKLE",
+              "POISON-GAS"
+            ],
+            [
+              "DISABLE",
+              "POISON-GAS",
+              "POUND"
+            ],
+            [
+              "SHOCK-WAVE",
+              "SING",
+              "SLUDGE",
+              "TOXIC"
+            ],
+            [
+              "SUPERSONIC",
+              "POISON-STING",
+              "SAFEGUARD"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "dialogue": {
+            "intro": [
+              "Purpsix: We are the Hexagon Brothers! Behold our colour!"
+            ],
+            "player_won": [
+              "Purpsix: Our formation... broken!"
+            ]
           }
         },
         {
@@ -10994,10 +11223,56 @@
             285,
             270,
             204,
-            273
+            9402
           ],
+          "levels": [
+            36,
+            36,
+            36,
+            35,
+            36,
+            44
+          ],
+          "team_moves": [
+            [
+              "SWEET-SCENT",
+              "ABSORB"
+            ],
+            [
+              "POISON-STING",
+              "ABSORB",
+              "LEER"
+            ],
+            [
+              "ABSORB",
+              "TACKLE"
+            ],
+            [
+              "ASTONISH",
+              "GROWL"
+            ],
+            [
+              "TACKLE"
+            ],
+            [
+              "GIGA-DRAIN",
+              "REFRESH",
+              "BULLET-SEED",
+              "SECRET-POWER"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "dialogue": {
+            "intro": [
+              "Greesix: We are the Hexagon Brothers! Behold our colour!"
+            ],
+            "player_won": [
+              "Greesix: Our formation... broken!"
+            ]
           }
         },
         {
@@ -11008,9 +11283,63 @@
             355,
             300
           ],
+          "levels": [
+            41,
+            41
+          ],
+          "team_moves": [
+            [
+              "FORESIGHT",
+              "NIGHT-SHADE"
+            ],
+            [
+              "TACKLE",
+              "TAIL-WHIP"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Tekot",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            366,
+            341,
+            41
+          ],
+          "levels": [
+            40,
+            41,
+            42
+          ],
+          "team_moves": [
+            [
+              "IRON-DEFENSE",
+              "CLAMP",
+              "WATER-GUN"
+            ],
+            [
+              "LEER",
+              "VICE-GRIP",
+              "HARDEN",
+              "BUBBLE"
+            ],
+            [
+              "ASTONISH",
+              "SUPERSONIC",
+              "LEECH-LIFE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Javion",
@@ -11020,9 +11349,495 @@
             84,
             276
           ],
+          "levels": [
+            40,
+            41
+          ],
+          "team_moves": [
+            [
+              "PECK",
+              "GROWL"
+            ],
+            [
+              "GROWL",
+              "QUICK-ATTACK"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Mesak",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            347,
+            345
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "MUD-SPORT",
+              "HARDEN",
+              "SCRATCH"
+            ],
+            [
+              "ACID",
+              "ASTONISH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Nexir",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            220,
+            353,
+            9355
+          ],
+          "levels": [
+            41,
+            40,
+            44
+          ],
+          "team_moves": [
+            [
+              "TACKLE",
+              "ODOR-SLEUTH"
+            ],
+            [
+              "NIGHT-SHADE",
+              "SCREECH",
+              "KNOCK-OFF"
+            ],
+            [
+              "DIG",
+              "REFRESH",
+              "SIGNAL-BEAM",
+              "NIGHT-SHADE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Solox",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            280,
+            100,
+            371,
+            9416
+          ],
+          "levels": [
+            42,
+            43,
+            43,
+            44
+          ],
+          "team_moves": [
+            [
+              "DOUBLE-TEAM",
+              "CONFUSION",
+              "GROWL",
+              "REFLECT"
+            ],
+            [
+              "SONIC-BOOM",
+              "SCREECH",
+              "TACKLE",
+              "CHARGE"
+            ],
+            [
+              "LEER",
+              "BITE",
+              "RAGE"
+            ],
+            [
+              "TAKE-DOWN",
+              "CHARM",
+              "DIG",
+              "EMBER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            null,
+            null,
+            null,
+            "CHARCOAL"
+          ],
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Digor",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            63,
+            66,
+            349,
+            296
+          ],
+          "levels": [
+            44,
+            43,
+            43,
+            43
+          ],
+          "team_moves": [
+            [
+              "REFLECT",
+              "THUNDER-PUNCH",
+              "ICE-PUNCH"
+            ],
+            [
+              "KARATE-CHOP",
+              "FOCUS-ENERGY",
+              "LEER",
+              "LOW-KICK"
+            ],
+            [
+              "TACKLE",
+              "SPLASH",
+              "LIGHT-SCREEN"
+            ],
+            [
+              "FOCUS-ENERGY",
+              "ARM-THRUST",
+              "SAND-ATTACK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Crink",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            361,
+            339
+          ],
+          "levels": [
+            41,
+            41
+          ],
+          "team_moves": [
+            [
+              "BITE",
+              "LEER"
+            ],
+            [
+              "WATER-GUN",
+              "WATER-SPORT",
+              "MUD-SPORT",
+              "MUD-SLAP"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Morbit",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            325,
+            270,
+            120
+          ],
+          "levels": [
+            43,
+            41,
+            41
+          ],
+          "team_moves": [
+            [
+              "PSYBEAM",
+              "ODOR-SLEUTH",
+              "PSYWAVE"
+            ],
+            [
+              "ASTONISH",
+              "ABSORB",
+              "GROWL"
+            ],
+            [
+              "RAPID-SPIN",
+              "WATER-GUN",
+              "HARDEN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Meda",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            177,
+            290,
+            320
+          ],
+          "levels": [
+            43,
+            41,
+            42
+          ],
+          "team_moves": [
+            [
+              "NIGHT-SHADE",
+              "LEER",
+              "PECK"
+            ],
+            [
+              "SCRATCH",
+              "SAND-ATTACK",
+              "LEECH-LIFE"
+            ],
+            [
+              "GROWL",
+              "WATER-GUN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Elrok",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            333,
+            360,
+            222
+          ],
+          "levels": [
+            44,
+            43,
+            42
+          ],
+          "team_moves": [
+            [
+              "GROWL",
+              "PECK"
+            ],
+            [
+              "MIRROR-COAT",
+              "COUNTER",
+              "SAFEGUARD"
+            ],
+            [
+              "BUBBLE",
+              "HARDEN",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Coffy",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            269,
+            278,
+            204,
+            211
+          ],
+          "levels": [
+            41,
+            44,
+            43,
+            42
+          ],
+          "team_moves": [
+            [
+              "GUST",
+              "CONFUSION"
+            ],
+            [
+              "GROWL",
+              "SUPERSONIC",
+              "WATER-GUN"
+            ],
+            [
+              "TACKLE"
+            ],
+            [
+              "TACKLE",
+              "HARDEN",
+              "POISON-STING"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Cabol",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            9415,
+            81,
+            54,
+            223
+          ],
+          "levels": [
+            45,
+            42,
+            42,
+            43
+          ],
+          "team_moves": [
+            [
+              "WATER-PULSE",
+              "REFRESH",
+              "SCARY-FACE",
+              "BITE"
+            ],
+            [
+              "TACKLE",
+              "THUNDER-SHOCK"
+            ],
+            [
+              "WATER-SPORT",
+              "TAIL-WHIP",
+              "SCRATCH"
+            ],
+            [
+              "LOCK-ON",
+              "WATER-GUN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            "BLACKGLASSES",
+            null,
+            null,
+            null
+          ],
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Nopia",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            39,
+            358,
+            206
+          ],
+          "levels": [
+            42,
+            44,
+            43
+          ],
+          "team_moves": [
+            [
+              "DISABLE",
+              "POUND",
+              "DEFENSE-CURL"
+            ],
+            [
+              "CONFUSION",
+              "ASTONISH",
+              "SAFEGUARD",
+              "WRAP"
+            ],
+            [
+              "GLARE",
+              "YAWN",
+              "DEFENSE-CURL",
+              "RAGE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Klots",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            209,
+            352,
+            9405
+          ],
+          "levels": [
+            43,
+            43,
+            45
+          ],
+          "team_moves": [
+            [
+              "BITE",
+              "CHARM",
+              "SCARY-FACE"
+            ],
+            [
+              "SCRATCH",
+              "BIND",
+              "ASTONISH"
+            ],
+            [
+              "FALSE-SWIPE",
+              "REFRESH",
+              "MEGA-DRAIN",
+              "STUN-SPORE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         }
       ],
       "route_menu": [
@@ -11033,7 +11848,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "xd_lovrina_beaten"
           ]
         },
         {
@@ -11044,7 +11860,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "xd_lovrina_beaten"
           ]
         },
         {
@@ -11054,43 +11871,268 @@
           "color": "GREEN"
         },
         {
+          "text": "CIPHER PEON NAPS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lab_naps",
+          "event": {
+            "lines": [
+              "Cipher Peon Naps: You again! You snagged my Teddiursa - this time I've got a real team!"
+            ],
+            "flag": "xd_lab_naps",
+            "battle": {
+              "name": "Cipher Peon Naps",
+              "class": "CIPHER_PEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                198,
+                111,
+                287,
+                374
+              ],
+              "levels": [
+                45,
+                45,
+                45,
+                45
+              ],
+              "team_moves": [
+                [
+                  "PURSUIT",
+                  "ASTONISH",
+                  "PECK"
+                ],
+                [
+                  "HORN-ATTACK",
+                  "MUD-SLAP",
+                  "TAIL-WHIP"
+                ],
+                [
+                  "SCRATCH",
+                  "FEINT-ATTACK"
+                ],
+                [
+                  "TAKE-DOWN"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/cipher_battle",
+              "dialogue": {
+                "player_won": [
+                  "Naps: Not again..."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "PROFESSOR KRANE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_krane_rescued",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:xd_lab_naps"
+                ],
+                "lines": [
+                  "Professor Krane is tied to a chair. A Cipher Peon stands guard over him."
+                ]
+              },
+              {
+                "requires": [
+                  "xd_lab_naps"
+                ],
+                "flag": "xd_krane_rescued",
+                "lines": [
+                  "Professor Krane: You're from the Lab? Thank goodness!",
+                  "Professor Krane: They wanted the Purify Chamber's secrets... and they kept talking about 'XD001'. A Shadow Pokemon unlike any other.",
+                  "Professor Krane: Let's get out of here before they come back."
+                ]
+              }
+            ]
+          }
+        },
+        {
           "text": "BATTLE CIPHER ADMIN LOVRINA",
           "action": "EVENT",
           "color": "GOLD",
+          "condition": "xd_krane_rescued",
+          "flag_condition": "not xd_lovrina_beaten",
           "event": {
             "lines": [
-              "Cipher Admin Lovrina: You found my lab? My lovely Shadow Pokemon will deal with you!"
+              "A woman with long pink hair blocks the way, R&D Tekot behind her."
             ],
+            "flag": "xd_lovrina_beaten",
             "battle": {
               "name": "Cipher Admin Lovrina",
               "class": "CIPHER_ADMIN",
-              "sprite": "beauty.png",
+              "sprite": "orre_cipher_peon.png",
               "team": [
-                282,
-                368,
+                370,
+                267,
                 315,
-                83,
-                334
+                9408
               ],
               "levels": [
-                32,
-                32,
-                33,
-                34,
-                34
+                47,
+                46,
+                46,
+                48
               ],
+              "team_moves": [
+                [
+                  "WATER-GUN",
+                  "TACKLE",
+                  "CHARM",
+                  "ATTRACT"
+                ],
+                [
+                  "THIEF",
+                  "GUST",
+                  "ABSORB",
+                  "ATTRACT"
+                ],
+                [
+                  "LEECH-SEED",
+                  "MEGA-DRAIN",
+                  "PIN-MISSILE",
+                  "POISON-STING"
+                ],
+                [
+                  "SECRET-POWER",
+                  "SWEET-KISS",
+                  "ATTRACT",
+                  "SHOCK-WAVE"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 12
+                "balls": 0
               },
+              "music": "orre/admin_battle",
+              "is_boss_battle": true,
               "dialogue": {
+                "intro": [
+                  "Lovrina: Leaving already, cutie? With MY Professor?",
+                  "Lovrina: Join Cipher and help me with XD001... No? Then I'll just have to beat you!"
+                ],
                 "player_won": [
-                  "Lovrina: Ugh! Fine, the ONBS building is next. Not that it'll help you!"
+                  "Lovrina: Ugh! My beautiful Delcatty! ...Fine. Keep the old man. XD001 doesn't need him anymore!",
+                  "Lovrina sweeps out, R&D Tekot scurrying after her."
                 ]
               }
-            },
-            "flag": "xd_lovrina_beaten"
-          },
-          "flag_condition": "not xd_lovrina_beaten"
+            }
+          }
+        },
+        {
+          "text": "ID CARD",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_id_card",
+          "event": {
+            "lines": [
+              "On the table: an ID Card. The lift down should read it."
+            ],
+            "flag": "xd_id_card",
+            "gift_item": {
+              "ID_CARD": 1
+            }
+          }
+        },
+        {
+          "text": "REVIVE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lab_revive",
+          "event": {
+            "lines": [
+              "A Revive."
+            ],
+            "flag": "xd_lab_revive",
+            "gift_item": {
+              "REVIVE": 1
+            }
+          }
+        },
+        {
+          "text": "ETHER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lab_ether",
+          "event": {
+            "lines": [
+              "An Ether."
+            ],
+            "flag": "xd_lab_ether",
+            "gift_item": {
+              "ETHER": 1
+            }
+          }
+        },
+        {
+          "text": "SUPER POTIONS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lab_super_potions",
+          "event": {
+            "lines": [
+              "3 Super Potions in a box."
+            ],
+            "flag": "xd_lab_super_potions",
+            "gift_item": {
+              "SUPER_POTION": 3
+            }
+          }
+        },
+        {
+          "text": "GREAT BALL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lab_great_ball",
+          "event": {
+            "lines": [
+              "A Great Ball."
+            ],
+            "flag": "xd_lab_great_ball",
+            "gift_item": {
+              "GREAT_BALL": 1
+            }
+          }
+        },
+        {
+          "text": "LEAF STONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_leaf_stone_cipher_lab",
+          "event": {
+            "lines": [
+              "A Leaf Stone, left by Krane's chair."
+            ],
+            "flag": "xd_leaf_stone_cipher_lab",
+            "gift_item": {
+              "LEAF_STONE": 1
+            }
+          }
+        },
+        {
+          "text": "BATTLE CD 42",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_42",
+          "event": {
+            "lines": [
+              "On the table by Krane's chair: Battle CD 42!"
+            ],
+            "flag": "got_battle_cd_42",
+            "gift_item": {
+              "BATTLE_CD_42": 1
+            }
+          }
         },
         {
           "text": "Gateon Port",
@@ -11100,35 +12142,6 @@
             "can_exit"
           ],
           "color": "RED"
-        },
-        {
-          "text": "ID CARD",
-          "action": "EVENT",
-          "color": "GOLD",
-          "flag_condition": "not xd_id_card",
-          "event": {
-            "lines": [
-              "On the table: a Cipher ID Card.",
-              "You took it. The locked lift will take it."
-            ],
-            "flag": "xd_id_card"
-          }
-        },
-        {
-          "text": "LEAF STONE",
-          "action": "EVENT",
-          "color": "GOLD",
-          "found": true,
-          "flag_condition": "not xd_leaf_stone_cipher_lab",
-          "event": {
-            "lines": [
-              "A Leaf Stone, left on a lab bench. You took it."
-            ],
-            "gift_item": {
-              "LEAF_STONE": 1
-            },
-            "flag": "xd_leaf_stone_cipher_lab"
-          }
         }
       ],
       "next_area": "GATEON_PORT",
@@ -13601,7 +14614,9 @@
     {"id": "orre_m8d", "type": "MAIN", "title": "After Venus", "description": "Venus ran down the studio's back stairs to the old subway. Follow her, and find the key to the Shadow Pokemon Lab's main gate.", "condition": {"required_region": "ORRE", "flag": "cleared_the_under", "flag_not": "orre_maingate_key"}, "region": "ORRE", "completed_flag": "orre_maingate_key", "target": "THE_UNDER"},
     {"id": "orre_m9", "type": "MAIN", "title": "Under Colosseum", "description": "The Under has its own Colosseum. Win its tournament for the second badge!", "condition": {"required_region": "ORRE", "flag": "orre_maingate_key", "region_badges_min": 1, "region_badges_less": 2}, "region": "ORRE", "completed_badge": "UNDER", "target": "UNDER_COLOSSEUM", "reward": "Under Badge"},
     {"id": "orre_m10", "type": "MAIN", "title": "Ein's Shadow Pokémon Lab", "description": "Cipher makes Shadow Pokémon in a secret lab. Find Cipher Admin Ein and stop the machines!", "condition": {"required_region": "ORRE", "region_badges_min": 2, "flag_not": "orre_ein_lab"}, "region": "ORRE", "completed_flag": "orre_ein_lab", "target": "SHADOW_PKMN_LAB"},
-    {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Ein's notes point to Gateon Port. Professor Krane's lab is there, and Cipher has a lab of its own. Beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "orre_ein_lab", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
+    {"id": "orre_m10b", "type": "MAIN", "title": "Trouble at the HQ Lab", "description": "Professor Krane's Pokemon HQ Lab, near Gateon Port, works on purifying Shadow Pokemon. Pay it a visit.", "condition": {"required_region": "ORRE", "flag": "orre_ein_lab", "flag_not": ["xd_krane_taken", "xd_lovrina_beaten"]}, "region": "ORRE", "completed_flag": "xd_krane_taken", "target": "POKEMON_HQ_LAB"},
+    {"id": "orre_m10c", "type": "MAIN", "title": "A Machine Part", "description": "Cipher took Professor Krane. Lily needs a Machine Part for the Purify Chamber: ask Perr at Gateon Port's Parts Shop. His dad Makan is at Kaminko's House.", "condition": {"required_region": "ORRE", "flag": "xd_krane_taken", "flag_not": ["xd_machine_part_given", "xd_lovrina_beaten"]}, "region": "ORRE", "completed_flag": "xd_machine_part_given", "target": "GATEON_PORT"},
+    {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Datan traced Cipher's car to the old Shadow Pokemon Lab, reopened as the Cipher Lab. Rescue Professor Krane and beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "xd_machine_part_given", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
     {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Cipher took over Orre's TV station in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_lovrina_beaten", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
     {"id": "orre_m13", "type": "MAIN", "title": "Snattle at Phenac Stadium", "description": "Phenac's old mayor, Snattle, is really a Cipher Admin! He's waiting at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
     {"id": "orre_m14", "type": "MAIN", "title": "Phenac Stadium", "description": "Now win Phenac Stadium's tournament for the third badge!", "condition": {"required_region": "ORRE", "flag": "orre_snattle_phenac", "region_badges_min": 2, "region_badges_less": 3}, "region": "ORRE", "completed_badge": "PHENAC", "target": "PHENAC_CITY", "reward": "Phenac Badge"},
