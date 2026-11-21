@@ -97,6 +97,49 @@ def _picture(z, outdoor):
     return roofs
 
 
+B2_CENTERS = {41, 435, 443, 454}   # (Castelia, Aspertia, Floccesy, Virbank: one model, its counter ring 3 tiles below)
+
+
+def _no_drops(z, rows, exit_chars):
+    """A room's walkable patches you could only reach by a drop (11-21, the live 3D audit): Black 2 joins two tiles only
+    at about the same height (its own heights, GEO lift), while our walk map joined every walkable tile, so every Center
+    let you step off its upper floor down behind the counter, 3 tiles below. Tiles are joined where the height changes
+    by 1.5 tiles at most (stairs climb a step a tile); a patch that can't reach a way out that way is closed (people
+    standing there stay: they're talked to across the counter)."""
+    g = GEO[str(z)]
+    lift, k = g.get("lift"), float((g.get("cam") or {}).get("lift_k") or 0)
+    if z not in B2_CENTERS or not lift or not k or not exit_chars:   # (Centers only: elsewhere the heights often don't line
+        return   # up with the walk rows, and the 3D model showed no drop at what they'd cut off: offices, the cafe, labs, 11-21)
+    h, w = len(rows), len(rows[0])
+    hgt = lambda x, y: lift[y][x] / k
+    walk = lambda x, y: rows[y][x] == "." or rows[y][x] in exit_chars
+    seen = set()
+    todo = [(x, y) for y in range(h) for x in range(w) if rows[y][x] in exit_chars]
+    seen.update(todo)
+    while todo:
+        x, y = todo.pop()
+        for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+            if 0 <= q[0] < w and 0 <= q[1] < h and q not in seen and walk(*q) and abs(hgt(*q) - hgt(x, y)) <= 1.5:
+                seen.add(q)
+                todo.append(q)
+    # each cut-off patch closed only when small (the counter ring: 13 tiles): a big one means the heights don't line up
+    # with this room's walk rows (Virbank's north gate: three columns read 5 tiles up), so it stays open
+    total = sum(1 for y in range(h) for x in range(w) if walk(x, y))
+    left = {(x, y) for y in range(h) for x in range(w) if rows[y][x] == "." and (x, y) not in seen}
+    while left:
+        part, todo = set(), [left.pop()]
+        while todo:
+            x, y = todo.pop()
+            part.add((x, y))
+            for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if q in left:
+                    left.discard(q)
+                    todo.append(q)
+        if len(part) <= 20 and len(part) <= 0.15 * total:
+            for x, y in part:
+                rows[y][x] = "c"
+
+
 def room(z, people, signs, out_door, stairs=None, exits_extra=None, scenes=None, extra_people=()):
     """A building's room: its way out ("v", across its door mat) leads back below out_door; stairs: {zone: "ROOM:name"}.
     extra_people: [(x, y, option)] someone the file doesn't stand there (Hugh in Virbank's terminal, off the counter's spot)."""
@@ -116,6 +159,7 @@ def room(z, people, signs, out_door, stairs=None, exits_extra=None, scenes=None,
                 if 0 <= d["x"] + k < len(rows[0]) and 0 <= d["y"] + j < len(rows):
                     rows[d["y"] + j][d["x"] + k] = ch
         exits[ch] = tgt
+    _no_drops(z, rows, set(exits))
     m = {"theme": "room", "art": ["".join(r) for r in rows], "exits": exits, "buildings": {}, "roofs": _picture(z, False), "people": ppl}
     if sg:
         m["signs"] = sg
@@ -1353,6 +1397,8 @@ def castelia_room(z, people, signs, extra_people=(), scenes=None, lift=None, tit
                     rows[d["y"] + j][d["x"] + k] = ch
         exits[ch] = tgt
     _thin(rows, set(exits))
+    if not 28 <= z <= 40:   # (rooms only: not the streets and piers, marked indoor in the file, nor Burgh's Gym (29), its floors reached by the threads)
+        _no_drops(z, rows, set(exits))
     m = {"theme": "room", "art": ["".join(r) for r in rows], "exits": exits, "buildings": {}, "roofs": _picture(z, g["outdoor"]),
          "people": ppl}
     if sg:

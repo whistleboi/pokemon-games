@@ -258,4 +258,67 @@ g.change_state(CityState(g)); settle()
 t = g.current_state
 check(t.room == "center" and t._reaches_out(tuple(t.player)), f"a spot saved shut in behind the Mart counter: back at the Center's door ({t.player})")
 
+# 11-21 (Jordan: "Do the three live 3D todos for the earlier Unova places"): every Unova place built before Castelia
+import os as _os
+import numpy as _np
+
+
+def place(area, room=None, at=None):
+    story.current_area_key = area
+    story.story_flags["visited_" + area] = True
+    g.walk_town_pos = None
+    g.walk_town_room = (area, room) if room else None
+    g.change_state(CityState(g)); settle(4)
+    t = g.current_state
+    if room and getattr(t, "room", None) != room:
+        t._go(room, None); settle(3)
+        t = g.current_state
+    if at:
+        t.player = t.anim_from = t.partner = t.partner_from = at; t._remember(); t._live_yaw = None; settle(12)
+    return g.current_state
+
+
+_all = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_flatp, _holed, _skyp = [], [], []
+for _area, _m in _all.items():
+    if not isinstance(_m, dict):
+        continue
+    for _rn, _r in [(None, _m)] + list((_m.get("rooms") or {}).items()):
+        _f = str(((_r.get("roofs") or {}).get("_picture") or {}).get("f") or "") if isinstance(_r, dict) else ""
+        if not _f.startswith("b2_ground/") or int(_os.path.splitext(_os.path.basename(_f))[0]) < 427:
+            continue
+        t = place(_area, _rn)
+        _name = _area + ("/" + _rn if _rn else "")
+        if not t._live():
+            _flatp.append(_name)
+            continue
+        _sc = t._live()[0]
+        _op = [(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))]
+        if not _sc.covers(_op):
+            _holed.append(_name)
+        if not _sc.indoor and _rn is None:   # (outdoors: from each corner, the land round it, not the sky)
+            for _c in (min(_op, key=lambda p: p[0] + p[1]), max(_op, key=lambda p: p[0] + p[1]),
+                       min(_op, key=lambda p: p[0] - p[1]), max(_op, key=lambda p: p[0] - p[1])):
+                t.player = t.anim_from = t.partner = t.partner_from = _c; t._remember(); t._live_yaw = None; settle(6)
+                t.draw()
+                _px = pygame.surfarray.array3d(pygame.display.get_surface().subsurface((298, 86, 826, 624))).astype(int)
+                _sky = float((_np.abs(_px - _np.array([150, 190, 235])).sum(2) < 12).mean())
+                if _sky > 0.2:
+                    _skyp.append((_name, _c, round(_sky, 2)))
+check(not _flatp, f"every Unova place built before Castelia opens in the live 3D view ({_flatp})")
+check(not _holed, f"...with ground under every tile you walk on ({_holed})")
+check(not _skyp, f"...and from an outdoor place's corners, the land round it, not the sky (its world-map neighbours) ({_skyp[:4]})")
+for _area in ("ASPERTIA_CITY", "FLOCCESY_TOWN", "VIRBANK_CITY", "CASTELIA_CITY"):
+    t = place(_area, "center")
+    check(not any(t._open(p) for p in ((5, 8), (9, 8), (6, 10), (12, 17))),
+          f"{_area}'s Center: no stepping off the upper floor behind the counter, nor into the pocket behind the Mart's")
+t = place("UNOVA_ROUTE_20")
+_op = [(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))]
+_H = {p: t._live_height(*p) for p in _op}
+_cl = [(p, q) for p in _H for q in ((p[0] + 1, p[1]), (p[0], p[1] + 1)) if q in _H and abs(_H[p] - _H[q]) > 1.5]
+check(len(_cl) <= 15, f"Route 20: you walk its terraces, not halfway up their cliffs (a cliff's face isn't ground): {len(_cl)} big steps")
+t = place("VIRBANK_CITY", "nursery")
+_op = [(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))]
+check(t._live() and all(t._live()[0].surfaces(*p) for p in _op), "Virbank's nursery: its model lined up with its walk grid (it sat 10 tiles off)")
+
 print(f"##### {len(fails)} failures")

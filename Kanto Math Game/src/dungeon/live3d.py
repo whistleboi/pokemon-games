@@ -5,7 +5,8 @@ picture stays (available() says which).
 
 Scenes: assets/b2_3d/<zone>.npz (kanto_handoff/unova_map_tools/export3d.py): per texture its picture, its triangles'
 corners (x, y up, z, in tiles from the zone's top-left, the walk grid's units) and its kind (0 ground, 1 building,
-2 shadow sheet, 4 backdrop past a side street's edges: seen from inside only, never walked on). People are drawn into the same scene as upright sprites (billboards), so buildings hide them.
+2 shadow sheet, 4 backdrop past a side street's edges: seen from inside only, never walked on, 5 scenery: the
+world-map blocks round an outdoor place, drawn but never walked on). People are drawn into the same scene as upright sprites (billboards), so buildings hide them.
 
 What the export leaves out, put back on loading (11-21): an atlas's unused space is a key colour (230, 57, 255), drawn
 see-through; a light sheet (a lamp's glow, the piers' clouds: one pale colour on a see-through picture) is translucent on
@@ -116,7 +117,7 @@ class Scene:
             vbo = ctx.buffer(verts.tobytes())
             vao = ctx.vertex_array(prog, [(vbo, "3f 2f", "pos", "uv")])
             self.parts.append((kind, tex, vao))
-            if kind in (0, 1) and (rgba[..., 3] == GLASS[3]).any():
+            if kind in (0, 1, 5) and (rgba[..., 3] == GLASS[3]).any():
                 self.__dict__.setdefault("_glass", []).append((tex, vao))
         self.parts.sort(key=lambda p: (p[0] == 2) + 2 * (p[0] == 3))   # (shadow sheets after the solid, light sheets last)
         self._flat = np.concatenate(solid)[:, :, [0, 2]] if solid else np.zeros((0, 3, 2), "f4")   # (seen from above: for covers())
@@ -144,6 +145,9 @@ class Scene:
         T = self.__dict__.get(which + "_tris")
         if T is None:
             T = np.concatenate(getattr(self, which)) if getattr(self, which, None) else np.zeros((0, 3, 3), "f4")
+            if len(T):   # (only what you could stand on: a cliff's or a kerb's face, seen from above a thin sliver, caught a
+                n = np.cross(T[:, 1] - T[:, 0], T[:, 2] - T[:, 0])   # tile's middle and stood Route 20's terrace feet
+                T = T[np.abs(n[:, 1]) > 0.35 * np.maximum(1e-9, np.linalg.norm(n, axis=1))]   # halfway up the cliff, 11-21)
             self.__dict__[which + "_tris"] = T
         if True:
             p = np.array([x + 0.5, y + 0.5], "f4")
@@ -278,7 +282,7 @@ class Scene:
             if kind == 2:
                 ctx.depth_mask = False
             tex.use(0)
-            prog["kind"].value = min(kind, 1) if kind == 4 else kind
+            prog["kind"].value = 1 if kind in (4, 5) else kind   # (backdrop and scenery: drawn as a building's pieces)
             if kind == 4:   # (the backdrop past a street's edges: one-sided, seen only from inside, 11-21)
                 ctx.enable(_CTX["mgl"].CULL_FACE)
             vao.render()
@@ -405,7 +409,7 @@ def _fix(kind, rgba, verts):
     rgba[np.all(rgba[..., :3] == KEY, axis=-1), 3] = 0
     if kind == 2:
         return kind, rgba, verts
-    if kind in (0, 1) and len(verts) and float(verts[:, 1].max()) > 6.0:
+    if kind in (0, 1, 5) and len(verts) and float(verts[:, 1].max()) > 6.0:
         rgba = _panes(rgba)
     a = rgba[..., 3]
     seen = rgba[a > 0][:, :3]
