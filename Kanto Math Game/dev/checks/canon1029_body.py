@@ -470,27 +470,26 @@ story.badges["ORRE"] = []
 for _k in list(story.story_flags):
     if not _k.startswith("visited_"):
         story.story_flags.pop(_k)
-_steps = [(None, 1), ("orre_beat_willie", 2), ("phenac_cipher_beaten", 3), ("got_snag_machine", 4), ("PYRITE", 5),
-          ("orre_miror_cave", 6), ("met_agate_elder", 7), ("orre_dakim_mt_battle", 8), ("cleared_the_under", 9),
-          ("UNDER", 10), ("orre_ein_lab", 11), ("xd_lovrina_beaten", 12), ("xd_exol_beaten", 13),
-          ("orre_snattle_phenac", 14), ("PHENAC", 15), ("beat_gonzap", 16), ("ORRE", 17), ("xd_gorigan_beaten", 18),
-          ("beat_orre_champion", None)]
+_mains = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("orre_m")]   # (11-20: every step in the file's
+_steps = [(None, _mains[0]["id"])] + [(m.get("completed_flag") or m.get("completed_badge"),   #  order, the batches' sub-steps too)
+                                      _mains[i + 1]["id"] if i + 1 < len(_mains) else None) for i, m in enumerate(_mains)]
 _ok = True
-for _what, _n in _steps:
+for _what, _want in _steps:
     if _what and _what.isupper():
         story.badges["ORRE"].append(_what)
     elif _what:
         story.story_flags[_what] = True
+        for _also in {"orre_met_mayor": ["orre_wakin"], "orre_beat_cail": ["orre_power_out"]}.get(_what, []):   # (what the story sets
+            story.story_flags[_also] = True                                                                 #  between: Wakin, the power cut)
     _main = [m["id"] for m in story.get_active_missions() if m["type"] == "MAIN"]
-    _want = f"orre_m{_n}" if _n else None
     if (_main[0] if _main else None) != _want:
         _ok = False
         print("      after", _what, "shows", _main, "wanted", _want)
 check(_ok, "each story step shows the next mission")
 _done = {m["id"] for m in story.get_all_journal_entries() if m["status"] == "COMPLETED"}
-check({f"orre_m{i}" for i in range(1, 19)} <= _done, "all 18 story missions marked done")
+check({m["id"] for m in _mains} <= _done, f"all {len(_mains)} story missions marked done")
 _side = [m["id"] for m in story.get_active_missions() if m["type"] == "SIDE"]
-check({"orre_s2", "orre_s3", "orre_s5"} <= set(_side), f"after the title: Mt. Battle, Jirachi, Citadark Isle {_side}")
+check({"orre_s2a", "orre_s3", "orre_s5"} <= set(_side), f"after the title: Mt. Battle's 100, Jirachi, Citadark Isle {_side}")
 _ms = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("orre_")]
 check(all(m.get("target") in g.loader.area_data["STORY_PROGRESSION"] for m in _ms), "every Orre mission points somewhere real")
 story.story_flags, _b, story.current_area_key = _saved

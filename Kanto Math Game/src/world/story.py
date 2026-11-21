@@ -1229,7 +1229,8 @@ class StoryManager:
         if not self.is_trainer_defeated(area, index):
             return True
         cls = str(info.get("class", "")).upper()
-        special = info.get("is_boss_battle") or info.get("victory_flag") or info.get("villain") or any(w in cls for w in self.NOT_ROUTE_TRAINERS)
+        special = info.get("is_boss_battle") or info.get("victory_flag") or info.get("villain") or info.get("stays_beaten") \
+            or any(w in cls for w in self.NOT_ROUTE_TRAINERS)   # (stays_beaten: Mt. Battle's climb, back only when you start over)
         if not special and self.beaten_today(area, index):   # (beaten today: back only if the VS Seeker called it, 11-18)
             from src.world import vs_seeker
             return vs_seeker.is_ready(self, area, index)

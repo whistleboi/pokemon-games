@@ -76,6 +76,45 @@
     ]
   },
   "figures": {
+    "MT_BATTLE:MT. BATTLE RECEPTION": {
+      "sheet": "orre_npc_15.png"
+    },
+    "MT_BATTLE:MT. BATTLE NURSE": {
+      "sheet": "orre_npc_16.png"
+    },
+    "MT_BATTLE:AREA LEADER VANDER": {
+      "sheet": "orre_trainer_blackbelt.png"
+    },
+    "MT_BATTLE:REST POINT 1": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 2": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 3": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 4": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 5": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 6": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 7": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 8": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:REST POINT 9": {
+      "sheet": "orre_npc_21.png"
+    },
+    "MT_BATTLE:MT. BATTLE MASTER": {
+      "sheet": "orre_trainer_blackbelt.png"
+    },
     "PYRITE_CAVE:Cipher Peon Mirakle B.": {
       "sheet": "orre_trainer_cipher_grunt.png"
     },
@@ -1001,7 +1040,7 @@
       "sheet": "orre_trainer_cipher_grunt.png"
     },
     "MT_BATTLE:START OVER FROM AREA 1": {
-      "sheet": "orre_npc_15.png"
+      "sheet": "orre_npc_10.png"
     },
     "MT_BATTLE:DAKIM ATTACKS MT. BATTLE": {
       "sheet": "orre_trainer_cipher_grunt.png"
@@ -12909,7 +12948,10 @@
     "orre_scientist.png": "orre_trainer_scientist.png",
     "orre_snagem_grunt.png": "orre_trainer_burglar.png",
     "orre_street_performer.png": "orre_trainer_street_performer.png",
-    "roughneck.png": "orre_trainer_biker.png"
+    "roughneck.png": "orre_trainer_biker.png",
+    "orre_beauty.png": "orre_trainer_beauty_2.png",
+    "orre_athlete.png": "orre_trainer_athlete_2.png",
+    "orre_matron.png": "orre_trainer_old_lady.png"
   },
   "trainers_HOENN": {
     "youngster.png": "em_35.png",

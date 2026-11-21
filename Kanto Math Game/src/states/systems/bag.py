@@ -298,6 +298,10 @@ class BagState(GameState):
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_pp))
             return
+        if item_key == "TIME_FLUTE" and self.context != "battle":  # (Orre: Vander's flute purifies one Shadow Pokemon at once, a single use)
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_time_flute))
+            return
         if item_key == "GRACIDEA":  # Shaymin's Sky Forme (in the daytime), and back
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_gracidea))
@@ -604,6 +608,19 @@ class BagState(GameState):
         rec["form"] = "sky" if sky else "normal"
         party[slot_index] = story._load_pokemon(rec, self.game.loader)
         self._back_to_bag([f"{p.display_name} changed its form!", "It's in its Sky Forme now!" if sky else "It's back in its Land Forme."])
+
+    def on_pokemon_select_time_flute(self, slot_index):
+        """The Time Flute (Colosseum): a Shadow Pokemon is purified on the spot, however closed its heart; the flute is used up."""
+        story = self.game.story_manager
+        party = story.player_team
+        if slot_index >= len(party) or party[slot_index] is None or not story.is_shadow(party[slot_index]):
+            self._back_to_bag(["It won't have any effect."])
+            return
+        from src.states.overworld.common import _evolve_due
+        story.inventory.pop("TIME_FLUTE", None)
+        name = story.purify_slot(slot_index)
+        self._back_to_bag(["The Time Flute's song rang out...", "A Pokemon of time drifted down and touched it.",
+                           f"{name}'s heart opened! It's no longer a Shadow Pokemon.", "The flute crumbled away."] + _evolve_due(self.game, [name]))
 
     def on_pokemon_select_ev_berry(self, slot_index):
         party = self.game.story_manager.player_team

@@ -932,7 +932,9 @@ def _run_story_event(state, key, check, show):
     if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
         from src.states.systems.pick_list import PickListState
         from src.states.overworld import AreaTransitionState
-        can = [(o["text"], o["to"]) for o in ev["travel_choices"] if all(check(c) for c in o.get("requires", []))]
+        _ok = [o for o in ev["travel_choices"] if all(check(c) for c in o.get("requires", []))]
+        can = [(o["text"], "@" + o["text"] if o.get("land_floor") else o["to"]) for o in _ok]   # ("land_floor": [floor, x, y] - Mt. Battle's
+        lands = {"@" + o["text"]: (o["to"], o["land_floor"]) for o in _ok if o.get("land_floor")}   #  reception, back up to an area you reached)
         if not can:
             show(lines or ["..."])
             return
@@ -941,6 +943,9 @@ def _run_story_event(state, key, check, show):
             if to is None:
                 show(_resolve_lines(game, ev.get("cancel") or ["Take care out there."]))
                 return
+            if to in lands:
+                to, _land = lands[to]
+                game.arrive_floor = (to, int(_land[0]), [int(_land[1]), int(_land[2])])
             game.change_state(AreaTransitionState(game, to))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ev.get("ask") or "WHERE TO?", can, go)))
         return

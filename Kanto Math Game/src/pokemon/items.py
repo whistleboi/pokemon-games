@@ -578,6 +578,8 @@ STORY_TEXT = {
     "EIN_FILE_S": "One of Cipher scientist Ein's files: notes on how Shadow Pokemon are snagged.",
     "EIN_FILE_P": "One of Cipher scientist Ein's files: notes on how a Shadow Pokemon's heart is purified.",
     "EIN_FILE_C": "One of Cipher scientist Ein's files: notes on Cipher and its Shadow Pokemon factory.",
+    "TIME_FLUTE": "Vander's flute. Its song can open one Shadow Pokemon's heart at once - it can be played only once.",   # (Colosseum: Mt. Battle, after Dakim)
+    "F_DISK": "A disk Dakim dropped at Mt. Battle. It's marked F.",   # (Colosseum: it moves a floating platform in The Under)
     "TIDAL_BELL": "A bell that rings like the tide.",
     "RUBY": "A gem as red as fire.", "SAPPHIRE": "A gem as blue as the sea.",
     "FIRE_TREASURE": "The Fire Island's sacred treasure.",

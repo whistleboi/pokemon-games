@@ -64,11 +64,11 @@ check(ev.evolution_id == 792 and ev.phase == "START", "choosing Lunala evolves i
 gift = next(o for o in SP["ALTAR_SUNNE_MOONE"]["route_menu"] if o.get("text") == "LILLIE'S GIFT")
 check(gift["event"]["gift_pokemon"] == 790 and gift["condition"] == "ALTAR_boss_defeated", "Lillie gives a second Cosmoem")
 
-# Mt. Battle: 40 trainers, the Master, and starting over.
+# Mt. Battle: its trainers, the Master, and starting over (11-20, Orre batch 3: XD's 100 + Colosseum's 9; orre_b3 plays it).
 mt = SP["MT_BATTLE"]
-check(len(mt["trainer_pool"]) == 40 and any(o["text"] == "MT. BATTLE MASTER" for o in mt["route_menu"]), "Mt. Battle: 40 + Master")
+check(len(mt["trainer_pool"]) == 109 and any(o["text"] == "MT. BATTLE MASTER" for o in mt["route_menu"]), "Mt. Battle: 109 + Master")
 story.current_area_key = "MT_BATTLE"
-for i in range(40):
+for i in range(109):
     story.mark_trainer_defeated("MT_BATTLE", i)
 story.story_flags["mt_battle_master_beaten"] = True
 c = CityState(g)

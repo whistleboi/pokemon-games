@@ -288651,12 +288651,12 @@
      "ccccccccc....ccccccccc",
      "cccccccc.c..c...cccccc",
      ".ccccccc.c.Nc...ccccc.",
-     "......................",
+     "....N.................",
      "......................",
      "c....................c",
      "......................",
      ".....cc........cc.....",
-     "c....cc........cc....c",
+     "c....cc........ccN...c",
      "c....................c",
      "cccccccccc11cccccccccc",
      "cccccccccccccccccccccc"
@@ -288676,6 +288676,8 @@
     },
     "parts": true,
     "people": [
+     "MT. BATTLE RECEPTION",
+     "MT. BATTLE NURSE",
      "START OVER FROM AREA 1"
     ],
     "trainer_spots": [],
@@ -288714,8 +288716,8 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc..NNNccc...cc",
-     "ccc...........cc",
+     "cccNXNNNccc...cc",
+     "ccc...N.......cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
      "cccccccccccc.ccc",
@@ -288726,7 +288728,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -288739,7 +288741,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -288751,7 +288753,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -288763,7 +288765,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -288776,7 +288778,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -288801,7 +288803,7 @@
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
      "cccccccccc..X..c",
-     "cccccccccc....Nc",
+     "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
      "cccccccccccc.ccc",
@@ -288939,16 +288941,23 @@
     },
     "parts": true,
     "people": [
+     "AREA LEADER VANDER",
      "DAKIM ATTACKS MT. BATTLE",
      "SNAG SHADOW POKEMON",
      "SNAG AGAIN",
      "F-DISK"
     ],
     "trainer_spots": [
-     "Area 1 Researcher Lena",
-     "Area 1 Teacher Dax",
-     "Area 1 Chaser Mira",
-     "Area 1 Rider Kai"
+     "Area 1 Trainer 10",
+     "Area 1 Trainer 9",
+     "Area 1 Trainer 8",
+     "Area 1 Trainer 7",
+     "Area 1 Trainer 6",
+     "Area 1 Trainer 5",
+     "Area 1 Trainer 4",
+     "Area 1 Trainer 3",
+     "Area 1 Trainer 2",
+     "Area 1 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -288974,6 +288983,24 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 1 ",
+       "flag_condition": "orre_dakim_mt_battle"
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -288988,7 +289015,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -289019,7 +289046,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 1"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -289056,7 +289085,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -289068,7 +289097,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -289081,7 +289110,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -289093,7 +289122,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -289105,7 +289134,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -289118,7 +289147,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -289282,10 +289311,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 2 Hunter Vale",
-     "Area 2 Bodybuilder Oren",
-     "Area 2 Cooltrainer Tess",
-     "Area 2 Cooltrainer Rook"
+     "Area 2 Trainer 10",
+     "Area 2 Trainer 9",
+     "Area 2 Trainer 8",
+     "Area 2 Trainer 7",
+     "Area 2 Trainer 6",
+     "Area 2 Trainer 5",
+     "Area 2 Trainer 4",
+     "Area 2 Trainer 3",
+     "Area 2 Trainer 2",
+     "Area 2 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -289311,6 +289346,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 2 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -289325,7 +289377,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -289356,7 +289408,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 2"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -289393,7 +289447,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -289405,7 +289459,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -289418,7 +289472,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -289430,7 +289484,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -289442,7 +289496,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -289455,7 +289509,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -289619,10 +289673,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 3 Researcher Bram",
-     "Area 3 Teacher Sora",
-     "Area 3 Chaser Pike",
-     "Area 3 Rider Juno"
+     "Area 3 Trainer 10",
+     "Area 3 Trainer 9",
+     "Area 3 Trainer 8",
+     "Area 3 Trainer 7",
+     "Area 3 Trainer 6",
+     "Area 3 Trainer 5",
+     "Area 3 Trainer 4",
+     "Area 3 Trainer 3",
+     "Area 3 Trainer 2",
+     "Area 3 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -289648,6 +289708,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 3 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -289662,7 +289739,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -289693,7 +289770,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 3"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -289730,7 +289809,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -289742,7 +289821,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -289755,7 +289834,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -289767,7 +289846,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -289779,7 +289858,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -289792,7 +289871,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -289956,10 +290035,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 4 Hunter Tor",
-     "Area 4 Bodybuilder Ivy",
-     "Area 4 Cooltrainer Cyr",
-     "Area 4 Cooltrainer Nell"
+     "Area 4 Trainer 10",
+     "Area 4 Trainer 9",
+     "Area 4 Trainer 8",
+     "Area 4 Trainer 7",
+     "Area 4 Trainer 6",
+     "Area 4 Trainer 5",
+     "Area 4 Trainer 4",
+     "Area 4 Trainer 3",
+     "Area 4 Trainer 2",
+     "Area 4 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -289985,6 +290070,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 4 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -289999,7 +290101,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -290030,7 +290132,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 4"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -290067,7 +290171,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -290079,7 +290183,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -290092,7 +290196,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -290104,7 +290208,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -290116,7 +290220,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -290129,7 +290233,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -290293,10 +290397,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 5 Researcher Quill",
-     "Area 5 Teacher Rin",
-     "Area 5 Chaser Hale",
-     "Area 5 Rider Esme"
+     "Area 5 Trainer 10",
+     "Area 5 Trainer 9",
+     "Area 5 Trainer 8",
+     "Area 5 Trainer 7",
+     "Area 5 Trainer 6",
+     "Area 5 Trainer 5",
+     "Area 5 Trainer 4",
+     "Area 5 Trainer 3",
+     "Area 5 Trainer 2",
+     "Area 5 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -290322,6 +290432,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 5 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -290336,7 +290463,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -290367,7 +290494,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 5"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -290404,7 +290533,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -290416,7 +290545,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -290429,7 +290558,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -290441,7 +290570,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -290453,7 +290582,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -290466,7 +290595,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -290630,10 +290759,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 6 Hunter Gil",
-     "Area 6 Bodybuilder Faye",
-     "Area 6 Cooltrainer Moss",
-     "Area 6 Cooltrainer Lark"
+     "Area 6 Trainer 10",
+     "Area 6 Trainer 9",
+     "Area 6 Trainer 8",
+     "Area 6 Trainer 7",
+     "Area 6 Trainer 6",
+     "Area 6 Trainer 5",
+     "Area 6 Trainer 4",
+     "Area 6 Trainer 3",
+     "Area 6 Trainer 2",
+     "Area 6 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -290659,6 +290794,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 6 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -290673,7 +290825,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -290704,7 +290856,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 6"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -290741,7 +290895,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -290753,7 +290907,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -290766,7 +290920,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -290778,7 +290932,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -290790,7 +290944,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -290803,7 +290957,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -290967,10 +291121,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 7 Researcher Brin",
-     "Area 7 Teacher Ash",
-     "Area 7 Chaser Wren",
-     "Area 7 Rider Sage"
+     "Area 7 Trainer 10",
+     "Area 7 Trainer 9",
+     "Area 7 Trainer 8",
+     "Area 7 Trainer 7",
+     "Area 7 Trainer 6",
+     "Area 7 Trainer 5",
+     "Area 7 Trainer 4",
+     "Area 7 Trainer 3",
+     "Area 7 Trainer 2",
+     "Area 7 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -290996,6 +291156,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 7 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -291010,7 +291187,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -291041,7 +291218,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 7"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -291078,7 +291257,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -291090,7 +291269,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -291103,7 +291282,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -291115,7 +291294,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -291127,7 +291306,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -291140,7 +291319,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -291304,10 +291483,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 8 Hunter Fern",
-     "Area 8 Bodybuilder Ezra",
-     "Area 8 Cooltrainer Dina",
-     "Area 8 Cooltrainer Cole"
+     "Area 8 Trainer 10",
+     "Area 8 Trainer 9",
+     "Area 8 Trainer 8",
+     "Area 8 Trainer 7",
+     "Area 8 Trainer 6",
+     "Area 8 Trainer 5",
+     "Area 8 Trainer 4",
+     "Area 8 Trainer 3",
+     "Area 8 Trainer 2",
+     "Area 8 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -291333,6 +291518,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 8 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -291347,7 +291549,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -291378,7 +291580,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 8"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -291415,7 +291619,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -291427,7 +291631,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -291440,7 +291644,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -291452,7 +291656,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -291464,7 +291668,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -291477,7 +291681,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -291641,10 +291845,16 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Area 9 Researcher Jett",
-     "Area 9 Teacher Isla",
-     "Area 9 Chaser Holt",
-     "Area 9 Rider Gale"
+     "Area 9 Trainer 10",
+     "Area 9 Trainer 9",
+     "Area 9 Trainer 8",
+     "Area 9 Trainer 7",
+     "Area 9 Trainer 6",
+     "Area 9 Trainer 5",
+     "Area 9 Trainer 4",
+     "Area 9 Trainer 3",
+     "Area 9 Trainer 2",
+     "Area 9 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -291670,6 +291880,23 @@
        126
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        4
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 9 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
+     }
     ]
    },
    {
@@ -291684,7 +291911,7 @@
      "c....................c",
      "c....................c",
      "c.....1.......cc.....c",
-     "c.............cc.....c",
+     "c.............ccN....c",
      "c....................c",
      "c........c..c........c",
      "cc.......c..c.......cc",
@@ -291715,7 +291942,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "REST POINT 9"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -291746,12 +291975,12 @@
    {
     "art": [
      "cccccccccccccccc",
-     "cccccccccccccccc",
+     "cccccNcccccccccc",
      "cccc...ccccccccc",
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc..N..ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc11.cc",
      "cccc...ccccc.ccc",
@@ -291763,7 +291992,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc11.cc",
@@ -291776,7 +292005,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccc...ccc.....c",
+     "cccc...ccc..X..c",
      "cccc...........c",
      "cccc11.ccc.....c",
      "ccccc.ccccc...cc",
@@ -291788,7 +292017,7 @@
      "ccccc.cccccccccc",
      "ccccc.cccccccccc",
      "cccc...ccccccccc",
-     "ccc.....ccc...cc",
+     "ccc..X..ccc...cc",
      "ccc...........cc",
      "ccc.....ccc.11cc",
      "cccc...ccccc.ccc",
@@ -291800,7 +292029,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cccccccccc.....c",
+     "cccccccccc..X..c",
      "cccccccccc.....c",
      "cccccccccc.....c",
      "ccccccccccc.11cc",
@@ -291813,7 +292042,7 @@
      "cccccccccccc.ccc",
      "cccccccccccc.ccc",
      "ccccccccccc...cc",
-     "cc...ccccc.....c",
+     "cc...ccccc..X..c",
      "cc.............c",
      "cc11.ccccc.....c",
      "ccc.ccccccc...cc",
@@ -291974,10 +292203,16 @@
      "MT. BATTLE MASTER"
     ],
     "trainer_spots": [
-     "Area 10 Hunter Nash",
-     "Area 10 Bodybuilder Maya",
-     "Area 10 Cooltrainer Lyle",
-     "Area 10 Cooltrainer Kira"
+     "Area 10 Trainer 10",
+     "Area 10 Trainer 9",
+     "Area 10 Trainer 8",
+     "Area 10 Trainer 7",
+     "Area 10 Trainer 6",
+     "Area 10 Trainer 5",
+     "Area 10 Trainer 4",
+     "Area 10 Trainer 3",
+     "Area 10 Trainer 2",
+     "Area 10 Trainer 1"
     ],
     "roofs": {
      "_picture": {
@@ -292002,6 +292237,23 @@
        16,
        125
       ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        3
+       ]
+      ],
+      "until": {
+       "trainers_beaten": "Area 10 "
+      },
+      "lines": [
+       "Mt. Battle staff: Beat every trainer in this area, then you may go up."
+      ],
+      "look": "sheet:orre_npc_15.png"
      }
     ]
    }
@@ -292030,52 +292282,124 @@
    "Area 10"
   ],
   "figure_floors": {
+   "MT. BATTLE RECEPTION": 1,
+   "MT. BATTLE NURSE": 1,
    "START OVER FROM AREA 1": 1,
    "DAKIM ATTACKS MT. BATTLE": 2,
    "SNAG SHADOW POKEMON": 2,
    "SNAG AGAIN": 2,
+   "AREA LEADER VANDER": 2,
    "F-DISK": 2,
-   "Area 1 Rider Kai": 2,
-   "Area 1 Chaser Mira": 2,
-   "Area 1 Teacher Dax": 2,
-   "Area 1 Researcher Lena": 2,
-   "Area 2 Cooltrainer Rook": 4,
-   "Area 2 Cooltrainer Tess": 4,
-   "Area 2 Bodybuilder Oren": 4,
-   "Area 2 Hunter Vale": 4,
-   "Area 3 Rider Juno": 6,
-   "Area 3 Chaser Pike": 6,
-   "Area 3 Teacher Sora": 6,
-   "Area 3 Researcher Bram": 6,
-   "Area 4 Cooltrainer Nell": 8,
-   "Area 4 Cooltrainer Cyr": 8,
-   "Area 4 Bodybuilder Ivy": 8,
-   "Area 4 Hunter Tor": 8,
-   "Area 5 Rider Esme": 10,
-   "Area 5 Chaser Hale": 10,
-   "Area 5 Teacher Rin": 10,
-   "Area 5 Researcher Quill": 10,
-   "Area 6 Cooltrainer Lark": 12,
-   "Area 6 Cooltrainer Moss": 12,
-   "Area 6 Bodybuilder Faye": 12,
-   "Area 6 Hunter Gil": 12,
-   "Area 7 Rider Sage": 14,
-   "Area 7 Chaser Wren": 14,
-   "Area 7 Teacher Ash": 14,
-   "Area 7 Researcher Brin": 14,
-   "Area 8 Cooltrainer Cole": 16,
-   "Area 8 Cooltrainer Dina": 16,
-   "Area 8 Bodybuilder Ezra": 16,
-   "Area 8 Hunter Fern": 16,
-   "Area 9 Rider Gale": 18,
-   "Area 9 Chaser Holt": 18,
-   "Area 9 Teacher Isla": 18,
-   "Area 9 Researcher Jett": 18,
+   "Area 1 Trainer 1": 2,
+   "Area 1 Trainer 2": 2,
+   "Area 1 Trainer 3": 2,
+   "Area 1 Trainer 4": 2,
+   "Area 1 Trainer 5": 2,
+   "Area 1 Trainer 6": 2,
+   "Area 1 Trainer 7": 2,
+   "Area 1 Trainer 8": 2,
+   "Area 1 Trainer 9": 2,
+   "Area 1 Trainer 10": 2,
+   "REST POINT 1": 3,
+   "Area 2 Trainer 1": 4,
+   "Area 2 Trainer 2": 4,
+   "Area 2 Trainer 3": 4,
+   "Area 2 Trainer 4": 4,
+   "Area 2 Trainer 5": 4,
+   "Area 2 Trainer 6": 4,
+   "Area 2 Trainer 7": 4,
+   "Area 2 Trainer 8": 4,
+   "Area 2 Trainer 9": 4,
+   "Area 2 Trainer 10": 4,
+   "REST POINT 2": 5,
+   "Area 3 Trainer 1": 6,
+   "Area 3 Trainer 2": 6,
+   "Area 3 Trainer 3": 6,
+   "Area 3 Trainer 4": 6,
+   "Area 3 Trainer 5": 6,
+   "Area 3 Trainer 6": 6,
+   "Area 3 Trainer 7": 6,
+   "Area 3 Trainer 8": 6,
+   "Area 3 Trainer 9": 6,
+   "Area 3 Trainer 10": 6,
+   "REST POINT 3": 7,
+   "Area 4 Trainer 1": 8,
+   "Area 4 Trainer 2": 8,
+   "Area 4 Trainer 3": 8,
+   "Area 4 Trainer 4": 8,
+   "Area 4 Trainer 5": 8,
+   "Area 4 Trainer 6": 8,
+   "Area 4 Trainer 7": 8,
+   "Area 4 Trainer 8": 8,
+   "Area 4 Trainer 9": 8,
+   "Area 4 Trainer 10": 8,
+   "REST POINT 4": 9,
+   "Area 5 Trainer 1": 10,
+   "Area 5 Trainer 2": 10,
+   "Area 5 Trainer 3": 10,
+   "Area 5 Trainer 4": 10,
+   "Area 5 Trainer 5": 10,
+   "Area 5 Trainer 6": 10,
+   "Area 5 Trainer 7": 10,
+   "Area 5 Trainer 8": 10,
+   "Area 5 Trainer 9": 10,
+   "Area 5 Trainer 10": 10,
+   "REST POINT 5": 11,
+   "Area 6 Trainer 1": 12,
+   "Area 6 Trainer 2": 12,
+   "Area 6 Trainer 3": 12,
+   "Area 6 Trainer 4": 12,
+   "Area 6 Trainer 5": 12,
+   "Area 6 Trainer 6": 12,
+   "Area 6 Trainer 7": 12,
+   "Area 6 Trainer 8": 12,
+   "Area 6 Trainer 9": 12,
+   "Area 6 Trainer 10": 12,
+   "REST POINT 6": 13,
+   "Area 7 Trainer 1": 14,
+   "Area 7 Trainer 2": 14,
+   "Area 7 Trainer 3": 14,
+   "Area 7 Trainer 4": 14,
+   "Area 7 Trainer 5": 14,
+   "Area 7 Trainer 6": 14,
+   "Area 7 Trainer 7": 14,
+   "Area 7 Trainer 8": 14,
+   "Area 7 Trainer 9": 14,
+   "Area 7 Trainer 10": 14,
+   "REST POINT 7": 15,
+   "Area 8 Trainer 1": 16,
+   "Area 8 Trainer 2": 16,
+   "Area 8 Trainer 3": 16,
+   "Area 8 Trainer 4": 16,
+   "Area 8 Trainer 5": 16,
+   "Area 8 Trainer 6": 16,
+   "Area 8 Trainer 7": 16,
+   "Area 8 Trainer 8": 16,
+   "Area 8 Trainer 9": 16,
+   "Area 8 Trainer 10": 16,
+   "REST POINT 8": 17,
+   "Area 9 Trainer 1": 18,
+   "Area 9 Trainer 2": 18,
+   "Area 9 Trainer 3": 18,
+   "Area 9 Trainer 4": 18,
+   "Area 9 Trainer 5": 18,
+   "Area 9 Trainer 6": 18,
+   "Area 9 Trainer 7": 18,
+   "Area 9 Trainer 8": 18,
+   "Area 9 Trainer 9": 18,
+   "Area 9 Trainer 10": 18,
+   "REST POINT 9": 19,
    "MT. BATTLE MASTER": 20,
-   "Area 10 Cooltrainer Kira": 20,
-   "Area 10 Cooltrainer Lyle": 20,
-   "Area 10 Bodybuilder Maya": 20,
-   "Area 10 Hunter Nash": 20
+   "Area 10 Trainer 1": 20,
+   "Area 10 Trainer 2": 20,
+   "Area 10 Trainer 3": 20,
+   "Area 10 Trainer 4": 20,
+   "Area 10 Trainer 5": 20,
+   "Area 10 Trainer 6": 20,
+   "Area 10 Trainer 7": 20,
+   "Area 10 Trainer 8": 20,
+   "Area 10 Trainer 9": 20,
+   "Area 10 Trainer 10": 20
   },
   "theme": "tunnel"
  },

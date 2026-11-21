@@ -3106,576 +3106,4986 @@
       "min_rounds": 1,
       "trainer_pool": [
         {
-          "name": "Area 1 Rider Kai",
+          "name": "Rider Turo",
           "class": "RIDER",
           "sprite": "orre_rider.png",
           "team": [
-            231,
-            263
+            328,
+            322,
+            27
           ],
+          "levels": [
+            35,
+            34,
+            35
+          ],
+          "team_moves": [
+            [
+              "DIG",
+              "SAND-ATTACK",
+              "BITE"
+            ],
+            [
+              "EMBER",
+              "MAGNITUDE",
+              "STOMP"
+            ],
+            [
+              "SCRATCH",
+              "SAND-ATTACK",
+              "POISON-STING"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 1 Trainer 1",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 1 Chaser Mira",
-          "class": "CHASER",
-          "sprite": "orre_chaser_f.png",
-          "team": [
-            203,
-            128
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 1 Teacher Dax",
-          "class": "TEACHER",
-          "sprite": "beauty.png",
-          "team": [
-            320,
-            223
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 1 Researcher Lena",
-          "class": "RESEARCHER",
-          "sprite": "orre_scientist.png",
-          "team": [
-            220,
-            258
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 2 Cooltrainer Rook",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_m.png",
-          "team": [
-            222,
-            211
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 2 Cooltrainer Tess",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_f.png",
-          "team": [
-            27,
-            311
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 2 Bodybuilder Oren",
-          "class": "BODYBUILDER",
-          "sprite": "orre_bodybuilder2.png",
-          "team": [
-            190,
-            60
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 2 Hunter Vale",
-          "class": "HUNTER",
-          "sprite": "orre_hunter_f.png",
-          "team": [
-            225,
-            234
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 3 Rider Juno",
-          "class": "RIDER",
-          "sprite": "orre_rider.png",
-          "team": [
-            220,
-            234
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 3 Chaser Pike",
-          "class": "CHASER",
-          "sprite": "orre_chaser_f.png",
-          "team": [
-            77,
-            357
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 3 Teacher Sora",
-          "class": "TEACHER",
-          "sprite": "beauty.png",
-          "team": [
-            170,
-            352
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 3 Researcher Bram",
-          "class": "RESEARCHER",
-          "sprite": "orre_scientist.png",
-          "team": [
-            193,
-            276
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 4 Cooltrainer Nell",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_m.png",
-          "team": [
-            358,
-            234,
-            318
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 4 Cooltrainer Cyr",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_f.png",
-          "team": [
-            304,
-            358,
-            311
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 4 Bodybuilder Ivy",
-          "class": "BODYBUILDER",
-          "sprite": "orre_bodybuilder2.png",
-          "team": [
-            41,
-            300,
-            131
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 4 Hunter Tor",
-          "class": "HUNTER",
-          "sprite": "orre_hunter_f.png",
-          "team": [
-            309,
-            255,
-            258
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 5 Rider Esme",
-          "class": "RIDER",
-          "sprite": "orre_rider.png",
-          "team": [
-            58,
-            183,
-            131
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 5 Chaser Hale",
-          "class": "CHASER",
-          "sprite": "orre_chaser_f.png",
-          "team": [
-            309,
-            263,
-            261
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 5 Teacher Rin",
-          "class": "TEACHER",
-          "sprite": "beauty.png",
-          "team": [
-            19,
-            98,
-            209
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 5 Researcher Quill",
-          "class": "RESEARCHER",
-          "sprite": "orre_scientist.png",
-          "team": [
-            193,
-            41,
-            258
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 6 Cooltrainer Lark",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_m.png",
-          "team": [
-            133,
-            312,
-            357
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 6 Cooltrainer Moss",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_f.png",
-          "team": [
-            331,
-            207,
-            58
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 6 Bodybuilder Faye",
-          "class": "BODYBUILDER",
-          "sprite": "orre_bodybuilder2.png",
-          "team": [
-            163,
-            211,
-            359
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 6 Hunter Gil",
+          "name": "Hunter Drovic",
           "class": "HUNTER",
           "sprite": "orre_hunter_m.png",
           "team": [
-            95,
-            349,
-            371
+            220,
+            343,
+            246
           ],
+          "levels": [
+            35,
+            36,
+            37
+          ],
+          "team_moves": [
+            [
+              "POWDER-SNOW",
+              "DIG",
+              "AMNESIA"
+            ],
+            [
+              "MUD-SLAP",
+              "CONFUSION",
+              "COSMIC-POWER"
+            ],
+            [
+              "ROCK-SMASH",
+              "DIG",
+              "BITE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 1 Trainer 2",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 7 Rider Sage",
+          "name": "Rider Kimit",
           "class": "RIDER",
           "sprite": "orre_rider.png",
           "team": [
-            142,
-            206,
-            215,
-            361
+            27,
+            74,
+            322
           ],
+          "levels": [
+            37,
+            36,
+            36
+          ],
+          "team_moves": [
+            [
+              "SWIFT",
+              "DIG"
+            ],
+            [
+              "ROCK-THROW",
+              "MAGNITUDE"
+            ],
+            [
+              "EMBER",
+              "MAGNITUDE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 1 Trainer 3",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 7 Chaser Wren",
+          "name": "Rider Riden",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            204,
+            343,
+            228,
+            75
+          ],
+          "levels": [
+            35,
+            35,
+            37,
+            37
+          ],
+          "team_moves": [
+            [
+              "ROCK-SMASH",
+              "TACKLE"
+            ],
+            [
+              "PSYBEAM",
+              "DIG"
+            ],
+            [
+              "EMBER",
+              "BITE"
+            ],
+            [
+              "ROCK-THROW",
+              "MAGNITUDE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 4",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Hunter Telia",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+            328,
+            339,
+            328,
+            345
+          ],
+          "levels": [
+            38,
+            36,
+            38,
+            36
+          ],
+          "team_moves": [
+            [
+              "DIG",
+              "BITE",
+              "STRENGTH",
+              "SANDSTORM"
+            ],
+            [
+              "WATER-GUN",
+              "MAGNITUDE",
+              "SPARK",
+              "SANDSTORM"
+            ],
+            [
+              "DIG",
+              "FEINT-ATTACK",
+              "GUST",
+              "SANDSTORM"
+            ],
+            [
+              "ACID",
+              "ASTONISH",
+              "INGRAIN",
+              "SANDSTORM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 5",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "St. Performer Nortz",
+          "class": "STPERFORMER",
+          "sprite": "orre_street_performer.png",
+          "team": [
+            331,
+            327,
+            64
+          ],
+          "levels": [
+            37,
+            37,
+            37
+          ],
+          "team_moves": [
+            [
+              "TEETER-DANCE",
+              "SAND-ATTACK",
+              "NEEDLE-ARM"
+            ],
+            [
+              "TEETER-DANCE",
+              "ASSIST",
+              "PSYBEAM"
+            ],
+            [
+              "KINESIS",
+              "ENCORE",
+              "FUTURE-SIGHT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 6",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Hunter Weeg",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+            75,
+            329,
+            28
+          ],
+          "levels": [
+            36,
+            37,
+            37
+          ],
+          "team_moves": [
+            [
+              "ROCK-THROW",
+              "MAGNITUDE",
+              "DEFENSE-CURL",
+              "STRENGTH"
+            ],
+            [
+              "DIG",
+              "BITE",
+              "GUST",
+              "ROCK-TOMB"
+            ],
+            [
+              "DIG",
+              "ROCK-TOMB",
+              "POISON-STING"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 7",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cipher Peon Kison",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            228,
+            281,
+            109,
+            355
+          ],
+          "levels": [
+            37,
+            36,
+            37,
+            36
+          ],
+          "team_moves": [
+            [
+              "FIRE-SPIN",
+              "BITE",
+              "TORMENT",
+              "WILL-O-WISP"
+            ],
+            [
+              "CONFUSION",
+              "CALM-MIND",
+              "DISABLE",
+              "WILL-O-WISP"
+            ],
+            [
+              "SLUDGE",
+              "SHOCK-WAVE",
+              "MEMENTO",
+              "WILL-O-WISP"
+            ],
+            [
+              "FEINT-ATTACK",
+              "FORESIGHT",
+              "DISABLE",
+              "WILL-O-WISP"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "spot_name": "Area 1 Trainer 8",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cipher Peon Berin",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            74,
+            74,
+            28
+          ],
+          "levels": [
+            36,
+            36,
+            38
+          ],
+          "team_moves": [
+            [
+              "SELF-DESTRUCT",
+              "ROCK-THROW"
+            ],
+            [
+              "SELF-DESTRUCT",
+              "DIG"
+            ],
+            [
+              "DIG",
+              "SLASH",
+              "FLAIL",
+              "PROTECT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "spot_name": "Area 1 Trainer 9",
+          "gone_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Beauty Miru",
+          "class": "BEAUTY",
+          "sprite": "orre_beauty.png",
+          "team": [
+            265,
+            278
+          ],
+          "levels": [
+            34,
+            34
+          ],
+          "team_moves": [
+            [
+              "TACKLE",
+              "STRING-SHOT",
+              "POISON-STING"
+            ],
+            [
+              "WATER-GUN",
+              "GROWL",
+              "SUPERSONIC"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Dude Cridel",
+          "class": "CASUAL_DUDE",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            341,
+            333
+          ],
+          "levels": [
+            34,
+            35
+          ],
+          "team_moves": [
+            [
+              "BUBBLE",
+              "HARDEN"
+            ],
+            [
+              "PECK",
+              "GROWL",
+              "ASTONISH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Bardo",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            84,
+            325
+          ],
+          "levels": [
+            35,
+            35
+          ],
+          "team_moves": [
+            [
+              "PURSUIT",
+              "PECK",
+              "GROWL"
+            ],
+            [
+              "PSYWAVE",
+              "ODOR-SLEUTH",
+              "SPLASH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Navigator Robell",
+          "class": "NAVIGATOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            163
+          ],
+          "levels": [
+            36
+          ],
+          "team_moves": [
+            [
+              "PECK",
+              "FORESIGHT",
+              "GROWL",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Fun Old Man Kabin",
+          "class": "FUN_OLD_MAN",
+          "sprite": "orre_fun_old_man.png",
+          "team": [
+            285
+          ],
+          "levels": [
+            36
+          ],
+          "team_moves": [
+            [
+              "LEECH-SEED",
+              "STUN-SPORE",
+              "TACKLE",
+              "ABSORB"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Matron Ezella",
+          "class": "MATRON",
+          "sprite": "orre_matron.png",
+          "team": [
+            261,
+            191
+          ],
+          "levels": [
+            36,
+            36
+          ],
+          "team_moves": [
+            [
+              "SAND-ATTACK",
+              "HOWL",
+              "TACKLE"
+            ],
+            [
+              "GROWTH",
+              "ABSORB"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Dude Horbit",
+          "class": "CASUAL_DUDE",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            167,
+            276
+          ],
+          "levels": [
+            36,
+            37
+          ],
+          "team_moves": [
+            [
+              "CONSTRICT",
+              "SCARY-FACE",
+              "STRING-SHOT",
+              "POISON-STING"
+            ],
+            [
+              "QUICK-ATTACK",
+              "FOCUS-ENERGY",
+              "GROWL",
+              "PECK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Beauty Eloff",
+          "class": "BEAUTY",
+          "sprite": "orre_beauty.png",
+          "team": [
+            204,
+            290,
+            283
+          ],
+          "levels": [
+            37,
+            36,
+            36
+          ],
+          "team_moves": [
+            [
+              "SELF-DESTRUCT",
+              "PROTECT",
+              "TACKLE"
+            ],
+            [
+              "SAND-ATTACK",
+              "LEECH-LIFE",
+              "HARDEN",
+              "SCRATCH"
+            ],
+            [
+              "QUICK-ATTACK",
+              "BUBBLE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Dibsin",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_f.png",
+          "team": [
+            152,
+            300,
+            343
+          ],
+          "levels": [
+            37,
+            36,
+            36
+          ],
+          "team_moves": [
+            [
+              "REFLECT",
+              "RAZOR-LEAF",
+              "GROWL",
+              "TACKLE"
+            ],
+            [
+              "ATTRACT",
+              "TAIL-WHIP",
+              "TACKLE",
+              "GROWL"
+            ],
+            [
+              "PSYBEAM",
+              "MUD-SLAP",
+              "RAPID-SPIN",
+              "HARDEN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 1 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Area Leader Vander",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            66,
+            263,
+            293
+          ],
+          "levels": [
+            38,
+            37,
+            37
+          ],
+          "team_moves": [
+            [
+              "KARATE-CHOP",
+              "FOCUS-ENERGY",
+              "LEER",
+              "LOW-KICK"
+            ],
+            [
+              "HEADBUTT",
+              "TAIL-WHIP",
+              "GROWL",
+              "ROCK-SMASH"
+            ],
+            [
+              "ASTONISH",
+              "UPROAR",
+              "POUND",
+              "WATER-PULSE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 5
+          },
+          "spot_name": "Area 1 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle",
+            "orre_time_flute"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Vander: Area 1 is yours. The way up is open!"
+            ]
+          }
+        },
+        {
+          "name": "Chaser Dabil",
           "class": "CHASER",
           "sprite": "orre_chaser_f.png",
           "team": [
-            125,
-            328,
-            142,
-            222
+            155
           ],
+          "levels": [
+            37
+          ],
+          "team_moves": [
+            [
+              "EMBER",
+              "SMOKESCREEN",
+              "LEER",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 2 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 7 Teacher Ash",
-          "class": "TEACHER",
-          "sprite": "beauty.png",
+          "name": "Chaser Cidlor",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
           "team": [
-            341,
-            331,
-            125,
-            327
+            177,
+            194
           ],
+          "levels": [
+            37,
+            38
+          ],
+          "team_moves": [
+            [
+              "NIGHT-SHADE",
+              "LEER",
+              "PECK"
+            ],
+            [
+              "SLAM",
+              "TAIL-WHIP",
+              "WATER-GUN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 2 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 7 Researcher Brin",
+          "name": "Sailor Gratin",
+          "class": "SAILOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            360,
+            213
+          ],
+          "levels": [
+            39,
+            38
+          ],
+          "team_moves": [
+            [
+              "ENCORE",
+              "CHARM",
+              "SPLASH"
+            ],
+            [
+              "WRAP",
+              "WITHDRAW",
+              "CONSTRICT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 2 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Researcher Hardig",
           "class": "RESEARCHER",
           "sprite": "orre_scientist.png",
           "team": [
-            307,
-            98,
-            349,
-            276
+            273,
+            165
           ],
+          "levels": [
+            39,
+            38
+          ],
+          "team_moves": [
+            [
+              "NATURE-POWER",
+              "GROWTH",
+              "HARDEN",
+              "BIDE"
+            ],
+            [
+              "SUPERSONIC",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 2 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 8 Cooltrainer Cole",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_m.png",
-          "team": [
-            325,
-            293,
-            352,
-            142
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 8 Cooltrainer Dina",
-          "class": "COOLTRAINER",
-          "sprite": "orre_cool_trainer_f.png",
-          "team": [
-            120,
-            27,
-            349,
-            206
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 8 Bodybuilder Ezra",
-          "class": "BODYBUILDER",
-          "sprite": "orre_bodybuilder2.png",
-          "team": [
-            125,
-            322,
-            193,
-            220
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 8 Hunter Fern",
+          "name": "Hunter Goling",
           "class": "HUNTER",
           "sprite": "orre_hunter_f.png",
           "team": [
-            299,
-            203,
-            109,
-            261
+            209,
+            349,
+            158
           ],
+          "levels": [
+            39,
+            39,
+            37
+          ],
+          "team_moves": [
+            [
+              "BITE",
+              "CHARM",
+              "TAIL-WHIP",
+              "SCARY-FACE"
+            ],
+            [
+              "SPLASH"
+            ],
+            [
+              "RAGE",
+              "LEER",
+              "SCRATCH"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 2 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 9 Rider Gale",
+          "name": "Chaser Jeol",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
+          "team": [
+            255,
+            179
+          ],
+          "levels": [
+            39,
+            39
+          ],
+          "team_moves": [
+            [
+              "EMBER",
+              "FOCUS-ENERGY",
+              "GROWL",
+              "SCRATCH"
+            ],
+            [
+              "THUNDER-SHOCK",
+              "GROWL",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 2 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Rider Echart",
           "class": "RIDER",
           "sprite": "orre_rider.png",
           "team": [
-            241,
-            347,
-            216,
-            207
+            280
           ],
+          "levels": [
+            40
+          ],
+          "team_moves": [
+            [
+              "DOUBLE-TEAM",
+              "CONFUSION",
+              "GROWL"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 2 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 9 Chaser Holt",
-          "class": "CHASER",
-          "sprite": "orre_chaser_m.png",
+          "name": "Bodybuilder Delf",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
           "team": [
-            79,
-            125,
-            58,
-            311
+            218,
+            266
           ],
+          "levels": [
+            40,
+            35
+          ],
+          "team_moves": [
+            [
+              "ROCK-THROW",
+              "EMBER",
+              "SMOG",
+              "YAWN"
+            ],
+            [
+              "HARDEN",
+              "TACKLE",
+              "STRING-SHOT",
+              "POISON-STING"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 2 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 9 Teacher Isla",
-          "class": "TEACHER",
-          "sprite": "beauty.png",
+          "name": "Bodybuilder Dolam",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
           "team": [
-            216,
-            120,
-            234,
-            163
+            246,
+            175,
+            265
           ],
+          "levels": [
+            36,
+            36,
+            38
+          ],
+          "team_moves": [
+            [
+              "SANDSTORM",
+              "LEER",
+              "BITE"
+            ],
+            [
+              "SWEET-KISS",
+              "METRONOME",
+              "CHARM",
+              "GROWL"
+            ],
+            [
+              "POISON-STING",
+              "STRING-SHOT",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           },
-          "is_boss_battle": false
+          "spot_name": "Area 2 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 9 Researcher Jett",
-          "class": "RESEARCHER",
-          "sprite": "orre_scientist.png",
-          "team": [
-            241,
-            133,
-            60,
-            220
-          ],
-          "rewards": {
-            "balls": 3
-          },
-          "is_boss_battle": false
-        },
-        {
-          "name": "Area 10 Cooltrainer Kira",
-          "class": "COOLTRAINER",
+          "name": "Area Leader Eldof",
+          "class": "AREA_LEADER",
           "sprite": "orre_cool_trainer_m.png",
           "team": [
-            216,
-            215,
-            296,
-            315,
-            185,
-            325
+            258,
+            278,
+            270
           ],
+          "levels": [
+            40,
+            37,
+            40
+          ],
+          "team_moves": [
+            [
+              "BIDE",
+              "WATER-PULSE",
+              "MUD-SLAP",
+              "GROWL"
+            ],
+            [
+              "SUPERSONIC",
+              "WATER-GUN",
+              "GROWL",
+              "WATER-PULSE"
+            ],
+            [
+              "NATURE-POWER",
+              "ABSORB",
+              "WATER-PULSE",
+              "ASTONISH"
+            ]
+          ],
+          "double": true,
           "rewards": {
             "balls": 5
           },
-          "is_boss_battle": true
+          "spot_name": "Area 2 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Eldof: Area 2 is yours. The way up is open!"
+            ]
+          }
         },
         {
-          "name": "Area 10 Cooltrainer Lyle",
+          "name": "Sailor Grestly",
+          "class": "SAILOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            26
+          ],
+          "levels": [
+            39
+          ],
+          "team_moves": [
+            [
+              "THUNDERBOLT",
+              "SLAM",
+              "THUNDER-WAVE",
+              "DOUBLE-TEAM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Navigator Folop",
+          "class": "NAVIGATOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            118,
+            176
+          ],
+          "levels": [
+            41,
+            40
+          ],
+          "team_moves": [
+            [
+              "HORN-ATTACK",
+              "SUPERSONIC",
+              "WATER-SPORT",
+              "FLAIL"
+            ],
+            [
+              "ANCIENT-POWER",
+              "YAWN",
+              "SWEET-KISS",
+              "METRONOME"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Dude Kwane",
+          "class": "CASUAL_DUDE",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            231,
+            180,
+            109
+          ],
+          "levels": [
+            39,
+            39,
+            40
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "ODOR-SLEUTH",
+              "FLAIL",
+              "DEFENSE-CURL"
+            ],
+            [
+              "THUNDER-SHOCK",
+              "THUNDER-WAVE",
+              "TACKLE",
+              "GROWL"
+            ],
+            [
+              "SLUDGE",
+              "TACKLE",
+              "SMOKESCREEN",
+              "SMOG"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Guy Napol",
+          "class": "CASUAL_GUY",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            262,
+            299
+          ],
+          "levels": [
+            39,
+            40
+          ],
+          "team_moves": [
+            [
+              "BITE",
+              "SWAGGER",
+              "SAND-ATTACK",
+              "TACKLE"
+            ],
+            [
+              "ROCK-SLIDE",
+              "THUNDER-WAVE",
+              "HARDEN",
+              "BLOCK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Koiyt",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
+          "team": [
+            345
+          ],
+          "levels": [
+            39
+          ],
+          "team_moves": [
+            [
+              "INGRAIN",
+              "ACID",
+              "CONSTRICT",
+              "ASTONISH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Rider Atill",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            216,
+            205
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "FEINT-ATTACK",
+              "SCRATCH",
+              "FAKE-TEARS",
+              "LICK"
+            ],
+            [
+              "TAKE-DOWN",
+              "PROTECT",
+              "RAPID-SPIN",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Curmudgeon Metson",
+          "class": "CURMUDGEON",
+          "sprite": "orre_fun_old_man.png",
+          "team": [
+            222,
+            264,
+            228
+          ],
+          "levels": [
+            40,
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "SPIKE-CANNON",
+              "BUBBLE-BEAM",
+              "REFRESH",
+              "RECOVER"
+            ],
+            [
+              "ODOR-SLEUTH",
+              "HEADBUTT",
+              "PIN-MISSILE",
+              "MUD-SPORT"
+            ],
+            [
+              "BITE",
+              "EMBER",
+              "SMOG",
+              "LEER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Jespon",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            284,
+            341
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "GUST",
+              "BUBBLE-BEAM",
+              "SWEET-SCENT",
+              "QUICK-ATTACK"
+            ],
+            [
+              "VICE-GRIP",
+              "BUBBLE-BEAM",
+              "KNOCK-OFF",
+              "HARDEN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 3 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Mopar",
           "class": "COOLTRAINER",
           "sprite": "orre_cool_trainer_f.png",
           "team": [
-            311,
-            355,
-            209,
-            285,
-            270,
-            357
+            195,
+            364
           ],
+          "levels": [
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "WATER-PULSE",
+              "AMNESIA",
+              "MUD-SHOT",
+              "SLAM"
+            ],
+            [
+              "AURORA-BEAM",
+              "BODY-SLAM",
+              "WATER-GUN",
+              "ENCORE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 5
+            "balls": 2
           },
-          "is_boss_battle": true
+          "spot_name": "Area 3 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
         },
         {
-          "name": "Area 10 Bodybuilder Maya",
-          "class": "BODYBUILDER",
-          "sprite": "orre_bodybuilder2.png",
+          "name": "Area Leader Taria",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
           "team": [
-            95,
-            261,
-            19,
-            320,
-            315,
-            241
+            162,
+            327,
+            309
           ],
+          "levels": [
+            40,
+            40,
+            41
+          ],
+          "team_moves": [
+            [
+              "SLAM",
+              "HELPING-HAND",
+              "QUICK-ATTACK",
+              "SHOCK-WAVE"
+            ],
+            [
+              "DIZZY-PUNCH",
+              "PSYBEAM",
+              "HYPNOSIS",
+              "SHOCK-WAVE"
+            ],
+            [
+              "SPARK",
+              "SHOCK-WAVE",
+              "LEER",
+              "THUNDER-WAVE"
+            ]
+          ],
+          "double": true,
           "rewards": {
             "balls": 5
           },
-          "is_boss_battle": true
+          "spot_name": "Area 3 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Taria: Area 3 is yours. The way up is open!"
+            ]
+          }
         },
         {
-          "name": "Area 10 Hunter Nash",
+          "name": "Chaser Atles",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
+          "team": [
+            72,
+            111
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "BUBBLE-BEAM",
+              "ACID",
+              "SUPERSONIC",
+              "CONSTRICT"
+            ],
+            [
+              "ROCK-BLAST",
+              "TAIL-WHIP",
+              "SCARY-FACE",
+              "FURY-ATTACK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Beauty Niven",
+          "class": "BEAUTY",
+          "sprite": "orre_beauty.png",
+          "team": [
+            281
+          ],
+          "levels": [
+            40
+          ],
+          "team_moves": [
+            [
+              "GROWL",
+              "CALM-MIND",
+              "DOUBLE-TEAM",
+              "MAGICAL-LEAF"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Fopaw",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            370,
+            294
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "ATTRACT",
+              "CHARM",
+              "WATER-GUN",
+              "AGILITY"
+            ],
+            [
+              "STOMP",
+              "SUPERSONIC",
+              "ASTONISH",
+              "HOWL"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Matron Petil",
+          "class": "MATRON",
+          "sprite": "orre_matron.png",
+          "team": [
+            374,
+            222,
+            211
+          ],
+          "levels": [
+            40,
+            41,
+            40
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN"
+            ],
+            [
+              "BUBBLE-BEAM",
+              "SPIKE-CANNON",
+              "RECOVER",
+              "CONFUSE-RAY"
+            ],
+            [
+              "REVENGE",
+              "PIN-MISSILE",
+              "WATER-GUN",
+              "SPIKES"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Beauty Nevah",
+          "class": "BEAUTY",
+          "sprite": "orre_beauty.png",
+          "team": [
+            358,
+            331
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "YAWN",
+              "UPROAR",
+              "TAKE-DOWN",
+              "CONFUSION"
+            ],
+            [
+              "LEECH-SEED",
+              "INGRAIN",
+              "ABSORB",
+              "PIN-MISSILE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Selor",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            88
+          ],
+          "levels": [
+            40
+          ],
+          "team_moves": [
+            [
+              "SCREECH",
+              "MINIMIZE",
+              "SLUDGE",
+              "DISABLE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Super Trainer Pixen",
+          "class": "SUPERTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            352,
+            207
+          ],
+          "levels": [
+            41,
+            40
+          ],
+          "team_moves": [
+            [
+              "PSYBEAM",
+              "FEINT-ATTACK",
+              "SCRATCH",
+              "BIND"
+            ],
+            [
+              "FEINT-ATTACK",
+              "QUICK-ATTACK",
+              "HARDEN",
+              "SAND-ATTACK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Newscaster Edin",
+          "class": "NEWSCASTER",
+          "sprite": "pt_reporter.png",
+          "team": [
+            44,
+            168,
+            193
+          ],
+          "levels": [
+            40,
+            41,
+            41
+          ],
+          "team_moves": [
+            [
+              "ACID",
+              "POISON-POWDER",
+              "SWEET-SCENT",
+              "ABSORB"
+            ],
+            [
+              "STRING-SHOT",
+              "NIGHT-SHADE",
+              "POISON-STING",
+              "SIGNAL-BEAM"
+            ],
+            [
+              "HYPNOSIS",
+              "QUICK-ATTACK",
+              "FORESIGHT",
+              "SONIC-BOOM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Roze",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_f.png",
+          "team": [
+            75,
+            274
+          ],
+          "levels": [
+            40,
+            42
+          ],
+          "team_moves": [
+            [
+              "ROLLOUT",
+              "DEFENSE-CURL",
+              "MAGNITUDE",
+              "ROCK-THROW"
+            ],
+            [
+              "FAKE-OUT",
+              "NATURE-POWER",
+              "TORMENT",
+              "FEINT-ATTACK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 4 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Area Leader Boyden",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            347,
+            40,
+            237
+          ],
+          "levels": [
+            41,
+            41,
+            40
+          ],
+          "team_moves": [
+            [
+              "METAL-CLAW",
+              "WATER-GUN",
+              "FACADE",
+              "TOXIC"
+            ],
+            [
+              "SING",
+              "SWEET-KISS",
+              "FACADE",
+              "DISABLE"
+            ],
+            [
+              "FOCUS-ENERGY",
+              "ROLLING-KICK",
+              "FACADE",
+              "RAPID-SPIN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 5
+          },
+          "spot_name": "Area 4 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Boyden: Area 4 is yours. The way up is open!"
+            ]
+          }
+        },
+        {
+          "name": "Researcher Hombol",
+          "class": "RESEARCHER",
+          "sprite": "orre_scientist.png",
+          "team": [
+            271,
+            75
+          ],
+          "levels": [
+            42,
+            42
+          ],
+          "team_moves": [
+            [
+              "THIEF",
+              "GROWL",
+              "FURY-SWIPES",
+              "FAKE-OUT"
+            ],
+            [
+              "ROCK-BLAST",
+              "MUD-SPORT",
+              "DEFENSE-CURL",
+              "MAGNITUDE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Jiler",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            301,
+            44,
+            168
+          ],
+          "levels": [
+            42,
+            42,
+            42
+          ],
+          "team_moves": [
+            [
+              "DOUBLE-EDGE",
+              "CHARM",
+              "ATTRACT",
+              "ASSIST"
+            ],
+            [
+              "MOONLIGHT",
+              "ACID",
+              "SLEEP-POWDER",
+              "STUN-SPORE"
+            ],
+            [
+              "FURY-SWIPES",
+              "LEECH-LIFE",
+              "NIGHT-SHADE",
+              "SCARY-FACE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Navigator Carlon",
+          "class": "NAVIGATOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            320,
+            166,
+            237,
+            188
+          ],
+          "levels": [
+            42,
+            42,
+            42,
+            42
+          ],
+          "team_moves": [
+            [
+              "ROLLOUT",
+              "REST",
+              "MIST",
+              "WATER-PULSE"
+            ],
+            [
+              "SWIFT",
+              "REFLECT",
+              "SAFEGUARD",
+              "LIGHT-SCREEN"
+            ],
+            [
+              "AGILITY",
+              "COUNTER",
+              "ROLLING-KICK",
+              "QUICK-ATTACK"
+            ],
+            [
+              "MEGA-DRAIN",
+              "COTTON-SPORE",
+              "LEECH-SEED",
+              "SLEEP-POWDER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Kuxor",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
+          "team": [
+            215,
+            253,
+            372
+          ],
+          "levels": [
+            42,
+            42,
+            42
+          ],
+          "team_moves": [
+            [
+              "AGILITY",
+              "TAUNT",
+              "FEINT-ATTACK",
+              "SCREECH"
+            ],
+            [
+              "ABSORB",
+              "AGILITY",
+              "LEAF-BLADE",
+              "SCREECH"
+            ],
+            [
+              "DRAGON-BREATH",
+              "PROTECT",
+              "EMBER",
+              "HEADBUTT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Hunter Lesk",
           "class": "HUNTER",
           "sprite": "orre_hunter_f.png",
           "team": [
-            223,
-            21,
-            56,
-            193,
-            363,
-            296
+            26,
+            274
           ],
+          "levels": [
+            42,
+            42
+          ],
+          "team_moves": [
+            [
+              "THUNDERBOLT",
+              "QUICK-ATTACK",
+              "THUNDER-WAVE",
+              "DOUBLE-TEAM"
+            ],
+            [
+              "RAZOR-WIND",
+              "FEINT-ATTACK",
+              "TORMENT",
+              "HARDEN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Rider Mobid",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            284,
+            256,
+            195
+          ],
+          "levels": [
+            43,
+            43,
+            43
+          ],
+          "team_moves": [
+            [
+              "MIST",
+              "AGILITY",
+              "BUBBLE-BEAM",
+              "QUICK-ATTACK"
+            ],
+            [
+              "FLAMETHROWER",
+              "SLASH",
+              "SAND-ATTACK",
+              "BULK-UP"
+            ],
+            [
+              "EARTHQUAKE",
+              "YAWN",
+              "AMNESIA",
+              "MUD-SHOT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Blist",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
+          "team": [
+            159,
+            185,
+            281,
+            294
+          ],
+          "levels": [
+            43,
+            43,
+            43,
+            42
+          ],
+          "team_moves": [
+            [
+              "SLASH",
+              "SCARY-FACE",
+              "BITE",
+              "WATER-GUN"
+            ],
+            [
+              "FEINT-ATTACK",
+              "MIMIC",
+              "ROCK-SLIDE",
+              "LOW-KICK"
+            ],
+            [
+              "HYPNOSIS",
+              "DOUBLE-TEAM",
+              "PSYCHIC",
+              "CALM-MIND"
+            ],
+            [
+              "SCREECH",
+              "REST",
+              "SLEEP-TALK",
+              "SUPERSONIC"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Sailor Knook",
+          "class": "SAILOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            156,
+            67,
+            364
+          ],
+          "levels": [
+            43,
+            43,
+            43
+          ],
+          "team_moves": [
+            [
+              "SWIFT",
+              "FLAME-WHEEL",
+              "SMOKESCREEN",
+              "LEER"
+            ],
+            [
+              "CROSS-CHOP",
+              "VITAL-THROW",
+              "FORESIGHT",
+              "FOCUS-ENERGY"
+            ],
+            [
+              "ICE-BALL",
+              "BODY-SLAM",
+              "HAIL",
+              "AURORA-BEAM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Dude Burdon",
+          "class": "CASUAL_DUDE",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            153,
+            320,
+            200
+          ],
+          "levels": [
+            43,
+            43,
+            43
+          ],
+          "team_moves": [
+            [
+              "RAZOR-LEAF",
+              "BODY-SLAM",
+              "LIGHT-SCREEN",
+              "POISON-POWDER"
+            ],
+            [
+              "WATER-SPOUT",
+              "REST",
+              "MIST",
+              "ROLLOUT"
+            ],
+            [
+              "PAIN-SPLIT",
+              "PSYBEAM",
+              "SPITE",
+              "CONFUSE-RAY"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 5 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Area Leader Calus",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            253,
+            262,
+            259,
+            256,
+            302
+          ],
+          "levels": [
+            43,
+            43,
+            43,
+            43,
+            43
+          ],
+          "team_moves": [
+            [
+              "ROCK-TOMB",
+              "SLAM",
+              "LEAF-BLADE",
+              "SCREECH"
+            ],
+            [
+              "TAKE-DOWN",
+              "BITE",
+              "SAND-ATTACK",
+              "SWAGGER"
+            ],
+            [
+              "PROTECT",
+              "MUDDY-WATER",
+              "MUD-SHOT",
+              "ROCK-TOMB"
+            ],
+            [
+              "ROCK-TOMB",
+              "DOUBLE-KICK",
+              "EMBER",
+              "SLASH"
+            ],
+            [
+              "CONFUSE-RAY",
+              "FAKE-OUT",
+              "ROCK-TOMB",
+              "NIGHT-SHADE"
+            ]
+          ],
+          "double": true,
           "rewards": {
             "balls": 5
           },
-          "is_boss_battle": true
+          "spot_name": "Area 5 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Calus: Area 5 is yours. The way up is open!"
+            ]
+          }
+        },
+        {
+          "name": "Fun Old Man Doost",
+          "class": "FUN_OLD_MAN",
+          "sprite": "orre_fun_old_man.png",
+          "team": [
+            111,
+            231
+          ],
+          "levels": [
+            43,
+            43
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "HORN-DRILL",
+              "ROCK-BLAST",
+              "SCARY-FACE"
+            ],
+            [
+              "ENDURE",
+              "ROLLOUT",
+              "TAKE-DOWN",
+              "FLAIL"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Curmudgeon Jimer",
+          "class": "CURMUDGEON",
+          "sprite": "orre_fun_old_man.png",
+          "team": [
+            322,
+            331,
+            305,
+            228
+          ],
+          "levels": [
+            43,
+            43,
+            44,
+            43
+          ],
+          "team_moves": [
+            [
+              "FLAMETHROWER",
+              "EARTHQUAKE",
+              "AMNESIA",
+              "TAKE-DOWN"
+            ],
+            [
+              "COTTON-SPORE",
+              "NEEDLE-ARM",
+              "SPIKES",
+              "FEINT-ATTACK"
+            ],
+            [
+              "PROTECT",
+              "IRON-TAIL",
+              "TAKE-DOWN",
+              "ROAR"
+            ],
+            [
+              "FLAMETHROWER",
+              "FEINT-ATTACK",
+              "ODOR-SLEUTH",
+              "BITE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Matron Crex",
+          "class": "MATRON",
+          "sprite": "orre_matron.png",
+          "team": [
+            180,
+            64,
+            329
+          ],
+          "levels": [
+            43,
+            42,
+            44
+          ],
+          "team_moves": [
+            [
+              "LIGHT-SCREEN",
+              "COTTON-SPORE",
+              "THUNDER-WAVE",
+              "THUNDER-SHOCK"
+            ],
+            [
+              "RECOVER",
+              "PSYCHIC",
+              "ROLE-PLAY",
+              "FUTURE-SIGHT"
+            ],
+            [
+              "SCREECH",
+              "DRAGON-BREATH",
+              "CRUNCH",
+              "SAND-TOMB"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Feeply",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            375,
+            247
+          ],
+          "levels": [
+            43,
+            44
+          ],
+          "team_moves": [
+            [
+              "PSYCHIC",
+              "PURSUIT",
+              "SCARY-FACE",
+              "METAL-CLAW"
+            ],
+            [
+              "SCARY-FACE",
+              "THRASH",
+              "ROCK-SLIDE",
+              "SCREECH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Rider Jacen",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            355,
+            292,
+            358,
+            109
+          ],
+          "levels": [
+            43,
+            43,
+            44,
+            44
+          ],
+          "team_moves": [
+            [
+              "WILL-O-WISP",
+              "CURSE",
+              "PURSUIT",
+              "CONFUSE-RAY"
+            ],
+            [
+              "SHADOW-BALL",
+              "CONFUSE-RAY",
+              "SPITE",
+              "MIND-READER"
+            ],
+            [
+              "SAFEGUARD",
+              "HEAL-BELL",
+              "DOUBLE-EDGE",
+              "PSYWAVE"
+            ],
+            [
+              "EXPLOSION",
+              "HAZE",
+              "SMOKESCREEN",
+              "SLUDGE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Newscaster Dibel",
+          "class": "NEWSCASTER",
+          "sprite": "pt_reporter.png",
+          "team": [
+            264,
+            162,
+            352
+          ],
+          "levels": [
+            44,
+            44,
+            45
+          ],
+          "team_moves": [
+            [
+              "SLASH",
+              "COVET",
+              "FURY-SWIPES",
+              "MUD-SPORT"
+            ],
+            [
+              "FOLLOW-ME",
+              "SLAM",
+              "HELPING-HAND",
+              "FURY-SWIPES"
+            ],
+            [
+              "SUBSTITUTE",
+              "SLASH",
+              "SCREECH",
+              "PSYBEAM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Kevy",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            40,
+            288
+          ],
+          "levels": [
+            44,
+            44
+          ],
+          "team_moves": [
+            [
+              "DOUBLE-SLAP",
+              "DEFENSE-CURL",
+              "DISABLE",
+              "SING"
+            ],
+            [
+              "FOCUS-PUNCH",
+              "COUNTER",
+              "SLASH",
+              "ENDURE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Gabsen",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            269,
+            347,
+            205,
+            345
+          ],
+          "levels": [
+            44,
+            44,
+            45,
+            45
+          ],
+          "team_moves": [
+            [
+              "TOXIC",
+              "SILVER-WIND",
+              "LIGHT-SCREEN",
+              "WHIRLWIND"
+            ],
+            [
+              "FURY-CUTTER",
+              "ANCIENT-POWER",
+              "PROTECT",
+              "METAL-CLAW"
+            ],
+            [
+              "EXPLOSION",
+              "BIDE",
+              "RAPID-SPIN",
+              "TAKE-DOWN"
+            ],
+            [
+              "ANCIENT-POWER",
+              "AMNESIA",
+              "CONFUSE-RAY",
+              "INGRAIN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Degin",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_f.png",
+          "team": [
+            222,
+            366,
+            176
+          ],
+          "levels": [
+            44,
+            44,
+            45
+          ],
+          "team_moves": [
+            [
+              "MIRROR-COAT",
+              "ROCK-BLAST",
+              "SPIKE-CANNON",
+              "BUBBLE-BEAM"
+            ],
+            [
+              "IRON-DEFENSE",
+              "WHIRLPOOL",
+              "WATER-GUN",
+              "CLAMP"
+            ],
+            [
+              "DOUBLE-EDGE",
+              "SAFEGUARD",
+              "WISH",
+              "FOLLOW-ME"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 6 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Area Leader Hampy",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            338,
+            337,
+            351,
+            295
+          ],
+          "levels": [
+            44,
+            44,
+            43,
+            45
+          ],
+          "team_moves": [
+            [
+              "SOLAR-BEAM",
+              "OVERHEAT",
+              "SUNNY-DAY",
+              "COSMIC-POWER"
+            ],
+            [
+              "ICE-BEAM",
+              "PSYCHIC",
+              "COSMIC-POWER",
+              "HYPNOSIS"
+            ],
+            [
+              "WEATHER-BALL",
+              "THUNDERBOLT",
+              "SUNNY-DAY",
+              "SOLAR-BEAM"
+            ],
+            [
+              "ROAR",
+              "HYPER-BEAM",
+              "SOLAR-BEAM",
+              "OVERHEAT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 5
+          },
+          "spot_name": "Area 6 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Hampy: Area 6 is yours. The way up is open!"
+            ]
+          }
+        },
+        {
+          "name": "Chaser Melin",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
+          "team": [
+            277,
+            42,
+            198
+          ],
+          "levels": [
+            57,
+            58,
+            59
+          ],
+          "team_moves": [
+            [
+              "QUICK-ATTACK",
+              "AERIAL-ACE",
+              "RETURN",
+              "ENDEAVOR"
+            ],
+            [
+              "BITE",
+              "POISON-FANG",
+              "CONFUSE-RAY",
+              "AIR-CUTTER"
+            ],
+            [
+              "CONFUSE-RAY",
+              "TAUNT",
+              "FEINT-ATTACK",
+              "NIGHT-SHADE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Hunter Gibson",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+            311,
+            312,
+            17,
+            51
+          ],
+          "levels": [
+            58,
+            57,
+            59,
+            60
+          ],
+          "team_moves": [
+            [
+              "ENCORE",
+              "PROTECT",
+              "THUNDER",
+              "RAIN-DANCE"
+            ],
+            [
+              "ENCORE",
+              "PROTECT",
+              "THUNDER",
+              "HELPING-HAND"
+            ],
+            [
+              "QUICK-ATTACK",
+              "FRUSTRATION",
+              "FEATHER-DANCE",
+              "WING-ATTACK"
+            ],
+            [
+              "TRI-ATTACK",
+              "SLASH",
+              "ROCK-SLIDE",
+              "EARTHQUAKE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Newscaster Idlon",
+          "class": "NEWSCASTER",
+          "sprite": "pt_reporter.png",
+          "team": [
+            264,
+            162,
+            288,
+            125
+          ],
+          "levels": [
+            58,
+            59,
+            60,
+            60
+          ],
+          "team_moves": [
+            [
+              "BELLY-DRUM",
+              "REST",
+              "SLASH",
+              "SHADOW-BALL"
+            ],
+            [
+              "REST",
+              "FOLLOW-ME",
+              "DOUBLE-EDGE",
+              "HELPING-HAND"
+            ],
+            [
+              "SLASH",
+              "SHADOW-BALL",
+              "COUNTER",
+              "FOCUS-PUNCH"
+            ],
+            [
+              "THUNDERBOLT",
+              "BRICK-BREAK",
+              "SCREECH",
+              "SWIFT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Hobol",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            291,
+            189,
+            308,
+            26
+          ],
+          "levels": [
+            58,
+            59,
+            60,
+            61
+          ],
+          "team_moves": [
+            [
+              "SILVER-WIND",
+              "DOUBLE-TEAM",
+              "SLASH",
+              "SWORDS-DANCE"
+            ],
+            [
+              "MEGA-DRAIN",
+              "ENCORE",
+              "LEECH-SEED",
+              "SLEEP-POWDER"
+            ],
+            [
+              "HIGH-JUMP-KICK",
+              "DETECT",
+              "HIDDEN-POWER",
+              "ROCK-TOMB"
+            ],
+            [
+              "QUICK-ATTACK",
+              "THUNDERBOLT",
+              "ENCORE",
+              "THUNDER-WAVE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Keller",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            169,
+            310,
+            254,
+            101,
+            121
+          ],
+          "levels": [
+            59,
+            60,
+            60,
+            61,
+            61
+          ],
+          "team_moves": [
+            [
+              "HAZE",
+              "POISON-FANG",
+              "SHADOW-BALL",
+              "AIR-CUTTER"
+            ],
+            [
+              "BITE",
+              "THUNDER",
+              "THUNDER-WAVE",
+              "ROAR"
+            ],
+            [
+              "QUICK-ATTACK",
+              "LEAF-BLADE",
+              "DRAGON-CLAW",
+              "DETECT"
+            ],
+            [
+              "MIRROR-COAT",
+              "EXPLOSION",
+              "THUNDERBOLT",
+              "LIGHT-SCREEN"
+            ],
+            [
+              "PSYCHIC",
+              "HYDRO-PUMP",
+              "RECOVER",
+              "COSMIC-POWER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Fun Old Man Ebilo",
+          "class": "FUN_OLD_MAN",
+          "sprite": "orre_fun_old_man.png",
+          "team": [
+            315,
+            327,
+            267
+          ],
+          "levels": [
+            57,
+            58,
+            59
+          ],
+          "team_moves": [
+            [
+              "SLUDGE-BOMB",
+              "PETAL-DANCE",
+              "LEECH-SEED",
+              "SWEET-SCENT"
+            ],
+            [
+              "HYPNOSIS",
+              "DOUBLE-EDGE",
+              "SHADOW-BALL",
+              "TEETER-DANCE"
+            ],
+            [
+              "SILVER-WIND",
+              "GIGA-DRAIN",
+              "ATTRACT",
+              "ENDURE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Matron Tulon",
+          "class": "MATRON",
+          "sprite": "orre_matron.png",
+          "team": [
+            55,
+            181,
+            368,
+            82
+          ],
+          "levels": [
+            58,
+            58,
+            59,
+            60
+          ],
+          "team_moves": [
+            [
+              "HYDRO-PUMP",
+              "RAIN-DANCE",
+              "DISABLE",
+              "CONFUSION"
+            ],
+            [
+              "FIRE-PUNCH",
+              "THUNDER",
+              "LIGHT-SCREEN",
+              "COTTON-SPORE"
+            ],
+            [
+              "PSYCHIC",
+              "HYDRO-PUMP",
+              "AMNESIA",
+              "RAIN-DANCE"
+            ],
+            [
+              "TRI-ATTACK",
+              "THUNDER",
+              "METAL-SOUND",
+              "THUNDER-WAVE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Curmudgeon Okor",
+          "class": "CURMUDGEON",
+          "sprite": "orre_fun_old_man.png",
+          "team": [
+            44,
+            192,
+            45
+          ],
+          "levels": [
+            58,
+            59,
+            60
+          ],
+          "team_moves": [
+            [
+              "PETAL-DANCE",
+              "MOONLIGHT",
+              "SUNNY-DAY",
+              "STUN-SPORE"
+            ],
+            [
+              "FLAIL",
+              "SOLAR-BEAM",
+              "SUNNY-DAY",
+              "GRASS-WHISTLE"
+            ],
+            [
+              "SLUDGE-BOMB",
+              "MOONLIGHT",
+              "STUN-SPORE",
+              "SOLAR-BEAM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Guy Ebzor",
+          "class": "CASUAL_GUY",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            281,
+            203,
+            64,
+            337
+          ],
+          "levels": [
+            58,
+            59,
+            60,
+            61
+          ],
+          "team_moves": [
+            [
+              "DREAM-EATER",
+              "HYPNOSIS",
+              "THUNDERBOLT",
+              "CALM-MIND"
+            ],
+            [
+              "PSYBEAM",
+              "THUNDERBOLT",
+              "STOMP",
+              "CRUNCH"
+            ],
+            [
+              "RECOVER",
+              "PSYCHIC",
+              "REFLECT",
+              "THUNDER-WAVE"
+            ],
+            [
+              "PSYCHIC",
+              "ICE-BEAM",
+              "HYPNOSIS",
+              "COSMIC-POWER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 7 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Area Leader Nocon",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            282,
+            157,
+            196,
+            229,
+            65
+          ],
+          "levels": [
+            59,
+            60,
+            60,
+            61,
+            61
+          ],
+          "team_moves": [
+            [
+              "PSYCHIC",
+              "ICE-PUNCH",
+              "CALM-MIND",
+              "SHADOW-BALL"
+            ],
+            [
+              "QUICK-ATTACK",
+              "FLAMETHROWER",
+              "THUNDER-PUNCH",
+              "CRUSH-CLAW"
+            ],
+            [
+              "CALM-MIND",
+              "PSYCHIC",
+              "BITE",
+              "LIGHT-SCREEN"
+            ],
+            [
+              "FLAMETHROWER",
+              "CRUNCH",
+              "ROAR",
+              "SLUDGE-BOMB"
+            ],
+            [
+              "CALM-MIND",
+              "PSYCHIC",
+              "ENCORE",
+              "THUNDER-PUNCH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 5
+          },
+          "spot_name": "Area 7 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Nocon: Area 7 is yours. The way up is open!"
+            ]
+          }
+        },
+        {
+          "name": "Sailor Ordes",
+          "class": "SAILOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            269,
+            352,
+            166
+          ],
+          "levels": [
+            62,
+            62,
+            63
+          ],
+          "team_moves": [
+            [
+              "TOXIC",
+              "SILVER-WIND",
+              "LIGHT-SCREEN",
+              "SUBSTITUTE"
+            ],
+            [
+              "ANCIENT-POWER",
+              "SUBSTITUTE",
+              "SCREECH",
+              "DOUBLE-TEAM"
+            ],
+            [
+              "DOUBLE-EDGE",
+              "AGILITY",
+              "BATON-PASS",
+              "SWORDS-DANCE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Navigator Ovun",
+          "class": "NAVIGATOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            271,
+            226,
+            72
+          ],
+          "levels": [
+            63,
+            63,
+            62
+          ],
+          "team_moves": [
+            [
+              "FAKE-OUT",
+              "ICE-PUNCH",
+              "MEGA-DRAIN",
+              "HYDRO-PUMP"
+            ],
+            [
+              "CONFUSE-RAY",
+              "WATER-PULSE",
+              "WING-ATTACK",
+              "RAIN-DANCE"
+            ],
+            [
+              "HYDRO-PUMP",
+              "SCREECH",
+              "BARRIER",
+              "SLUDGE-BOMB"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Adeson",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            182,
+            176,
+            237,
+            334
+          ],
+          "levels": [
+            64,
+            64,
+            63,
+            63
+          ],
+          "team_moves": [
+            [
+              "PETAL-DANCE",
+              "SOLAR-BEAM",
+              "MOONLIGHT",
+              "SUNNY-DAY"
+            ],
+            [
+              "FOLLOW-ME",
+              "ENCORE",
+              "WISH",
+              "ATTRACT"
+            ],
+            [
+              "TRIPLE-KICK",
+              "DETECT",
+              "COUNTER",
+              "DIG"
+            ],
+            [
+              "DRAGON-CLAW",
+              "PERISH-SONG",
+              "DRAGON-DANCE",
+              "SKY-ATTACK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Robit",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            344,
+            326,
+            346,
+            73
+          ],
+          "levels": [
+            64,
+            64,
+            64,
+            63
+          ],
+          "team_moves": [
+            [
+              "ANCIENT-POWER",
+              "MUD-SLAP",
+              "ROCK-TOMB",
+              "DIG"
+            ],
+            [
+              "PSYCHIC",
+              "CONFUSE-RAY",
+              "BOUNCE",
+              "TOXIC"
+            ],
+            [
+              "CONFUSE-RAY",
+              "ANCIENT-POWER",
+              "ACID",
+              "MIRROR-COAT"
+            ],
+            [
+              "HYDRO-PUMP",
+              "SCREECH",
+              "SUPERSONIC",
+              "MIRROR-COAT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Noxon",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            197,
+            272,
+            350,
+            144,
+            378
+          ],
+          "levels": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "team_moves": [
+            [
+              "CONFUSE-RAY",
+              "SCREECH",
+              "RAIN-DANCE",
+              "FEINT-ATTACK"
+            ],
+            [
+              "FAKE-OUT",
+              "GIGA-DRAIN",
+              "HYDRO-PUMP",
+              "NATURE-POWER"
+            ],
+            [
+              "HYDRO-PUMP",
+              "RECOVER",
+              "ATTRACT",
+              "MIRROR-COAT"
+            ],
+            [
+              "ICE-BEAM",
+              "MIND-READER",
+              "SHEER-COLD",
+              "WATER-PULSE"
+            ],
+            [
+              "LOCK-ON",
+              "ICE-BEAM",
+              "ICY-WIND",
+              "ZAP-CANNON"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Worker Releo",
+          "class": "WORKER",
+          "sprite": "pt_worker.png",
+          "team": [
+            217,
+            211,
+            168
+          ],
+          "levels": [
+            61,
+            60,
+            60
+          ],
+          "team_moves": [
+            [
+              "THRASH",
+              "FACADE",
+              "SLASH",
+              "FEINT-ATTACK"
+            ],
+            [
+              "HYDRO-PUMP",
+              "DESTINY-BOND",
+              "TAKE-DOWN",
+              "TOXIC"
+            ],
+            [
+              "SLUDGE-BOMB",
+              "STRING-SHOT",
+              "PSYCHIC",
+              "NIGHT-SHADE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Dude Cark",
+          "class": "CASUAL_DUDE",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            112,
+            85,
+            338
+          ],
+          "levels": [
+            62,
+            61,
+            61
+          ],
+          "team_moves": [
+            [
+              "DOUBLE-EDGE",
+              "MEGAHORN",
+              "ROCK-BLAST",
+              "EARTHQUAKE"
+            ],
+            [
+              "DRILL-PECK",
+              "TRI-ATTACK",
+              "AGILITY",
+              "REST"
+            ],
+            [
+              "ROCK-SLIDE",
+              "SOLAR-BEAM",
+              "COSMIC-POWER",
+              "SUNNY-DAY"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Beauty Minot",
+          "class": "BEAUTY",
+          "sprite": "orre_beauty.png",
+          "team": [
+            262,
+            275,
+            319,
+            342
+          ],
+          "levels": [
+            62,
+            62,
+            61,
+            61
+          ],
+          "team_moves": [
+            [
+              "SHADOW-BALL",
+              "BITE",
+              "SCARY-FACE",
+              "SWAGGER"
+            ],
+            [
+              "FEINT-ATTACK",
+              "TORMENT",
+              "EXTRASENSORY",
+              "LEECH-SEED"
+            ],
+            [
+              "SWAGGER",
+              "SCREECH",
+              "CRUNCH",
+              "HYDRO-PUMP"
+            ],
+            [
+              "GUILLOTINE",
+              "ANCIENT-POWER",
+              "CRUNCH",
+              "CRABHAMMER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Lask",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_f.png",
+          "team": [
+            286,
+            260,
+            248,
+            348
+          ],
+          "levels": [
+            62,
+            62,
+            62,
+            62
+          ],
+          "team_moves": [
+            [
+              "SPORE",
+              "GIGA-DRAIN",
+              "DYNAMIC-PUNCH",
+              "FOCUS-PUNCH"
+            ],
+            [
+              "ICE-BEAM",
+              "HYDRO-PUMP",
+              "PROTECT",
+              "EARTHQUAKE"
+            ],
+            [
+              "CRUNCH",
+              "THRASH",
+              "EARTHQUAKE",
+              "DRAGON-DANCE"
+            ],
+            [
+              "PROTECT",
+              "ANCIENT-POWER",
+              "SLASH",
+              "EARTHQUAKE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 8 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Area Leader Naday",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            257,
+            130,
+            373,
+            68,
+            214
+          ],
+          "levels": [
+            62,
+            62,
+            62,
+            61,
+            62
+          ],
+          "team_moves": [
+            [
+              "SLASH",
+              "BLAZE-KICK",
+              "SKY-UPPERCUT",
+              "BULK-UP"
+            ],
+            [
+              "DRAGON-DANCE",
+              "BODY-SLAM",
+              "THRASH",
+              "HYPER-BEAM"
+            ],
+            [
+              "DRAGON-CLAW",
+              "CRUNCH",
+              "PROTECT",
+              "FIRE-BLAST"
+            ],
+            [
+              "CROSS-CHOP",
+              "ROCK-TOMB",
+              "BULK-UP",
+              "EARTHQUAKE"
+            ],
+            [
+              "BRICK-BREAK",
+              "BODY-SLAM",
+              "MEGAHORN",
+              "BULK-UP"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 5
+          },
+          "spot_name": "Area 8 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Naday: Area 8 is yours. The way up is open!"
+            ]
+          }
+        },
+        {
+          "name": "Sailor Hols",
+          "class": "SAILOR",
+          "sprite": "orre_sailor.png",
+          "team": [
+            202,
+            88,
+            317,
+            295
+          ],
+          "levels": [
+            63,
+            63,
+            63,
+            63
+          ],
+          "team_moves": [
+            [
+              "DESTINY-BOND",
+              "ENCORE",
+              "MIRROR-COAT",
+              "COUNTER"
+            ],
+            [
+              "DISABLE",
+              "SLUDGE-BOMB",
+              "SHADOW-PUNCH",
+              "SCREECH"
+            ],
+            [
+              "SLUDGE-BOMB",
+              "SWALLOW",
+              "SPIT-UP",
+              "STOCKPILE"
+            ],
+            [
+              "HYPER-VOICE",
+              "SUPERSONIC",
+              "REST",
+              "HYPER-BEAM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Albah",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            320,
+            184,
+            351,
+            321
+          ],
+          "levels": [
+            64,
+            64,
+            64,
+            64
+          ],
+          "team_moves": [
+            [
+              "WATER-SPOUT",
+              "AMNESIA",
+              "RAIN-DANCE",
+              "HYDRO-PUMP"
+            ],
+            [
+              "ICE-PUNCH",
+              "RAIN-DANCE",
+              "DOUBLE-EDGE",
+              "HYDRO-PUMP"
+            ],
+            [
+              "WEATHER-BALL",
+              "THUNDER",
+              "EMBER",
+              "WATER-GUN"
+            ],
+            [
+              "WATER-SPOUT",
+              "AMNESIA",
+              "HYDRO-PUMP",
+              "REST"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Guy Ginner",
+          "class": "CASUAL_GUY",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            340,
+            292,
+            171,
+            195
+          ],
+          "levels": [
+            64,
+            64,
+            64,
+            65
+          ],
+          "team_moves": [
+            [
+              "WATER-GUN",
+              "FUTURE-SIGHT",
+              "EARTHQUAKE",
+              "PROTECT"
+            ],
+            [
+              "SHADOW-BALL",
+              "AERIAL-ACE",
+              "CONFUSE-RAY",
+              "FURY-SWIPES"
+            ],
+            [
+              "SPARK",
+              "CONFUSE-RAY",
+              "PROTECT",
+              "HYDRO-PUMP"
+            ],
+            [
+              "ANCIENT-POWER",
+              "MUD-SHOT",
+              "YAWN",
+              "EARTHQUAKE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Rider Copin",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            362,
+            357,
+            365,
+            206
+          ],
+          "levels": [
+            66,
+            66,
+            66,
+            66
+          ],
+          "team_moves": [
+            [
+              "CRUNCH",
+              "BLIZZARD",
+              "PROTECT",
+              "TOXIC"
+            ],
+            [
+              "SWEET-SCENT",
+              "MAGICAL-LEAF",
+              "EARTHQUAKE",
+              "SOLAR-BEAM"
+            ],
+            [
+              "BODY-SLAM",
+              "BLIZZARD",
+              "PROTECT",
+              "ENCORE"
+            ],
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "SCREECH",
+              "SUNNY-DAY"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Koren",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            297,
+            289,
+            40
+          ],
+          "levels": [
+            67,
+            67,
+            67
+          ],
+          "team_moves": [
+            [
+              "BELLY-DRUM",
+              "ARM-THRUST",
+              "SEISMIC-TOSS",
+              "ICE-PUNCH"
+            ],
+            [
+              "HYPER-BEAM",
+              "COUNTER",
+              "ENCORE",
+              "COVET"
+            ],
+            [
+              "SHADOW-BALL",
+              "SING",
+              "HYPER-VOICE",
+              "PSYCH-UP"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Casual Dude Laks",
+          "class": "CASUAL_DUDE",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            366,
+            205,
+            111,
+            279
+          ],
+          "levels": [
+            63,
+            63,
+            63,
+            63
+          ],
+          "team_moves": [
+            [
+              "IRON-DEFENSE",
+              "WHIRLPOOL",
+              "DIVE",
+              "CLAMP"
+            ],
+            [
+              "DOUBLE-EDGE",
+              "PROTECT",
+              "EXPLOSION",
+              "EARTHQUAKE"
+            ],
+            [
+              "MEGAHORN",
+              "ROCK-BLAST",
+              "CRUSH-CLAW",
+              "EARTHQUAKE"
+            ],
+            [
+              "ICE-BEAM",
+              "WING-ATTACK",
+              "PROTECT",
+              "HYDRO-PUMP"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Kippen",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            372,
+            219,
+            375,
+            324,
+            109
+          ],
+          "levels": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "team_moves": [
+            [
+              "DOUBLE-EDGE",
+              "DRAGON-BREATH",
+              "BITE",
+              "HEADBUTT"
+            ],
+            [
+              "FLAMETHROWER",
+              "YAWN",
+              "BODY-SLAM",
+              "ROCK-SLIDE"
+            ],
+            [
+              "AERIAL-ACE",
+              "AGILITY",
+              "METEOR-MASH",
+              "HYPER-BEAM"
+            ],
+            [
+              "HEAT-WAVE",
+              "FLAMETHROWER",
+              "BODY-SLAM",
+              "SLUDGE-BOMB"
+            ],
+            [
+              "MEMENTO",
+              "DESTINY-BOND",
+              "TOXIC",
+              "SMOKESCREEN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Hunter Nasom",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_f.png",
+          "team": [
+            28,
+            76,
+            241
+          ],
+          "levels": [
+            65,
+            65,
+            67
+          ],
+          "team_moves": [
+            [
+              "SANDSTORM",
+              "SAND-TOMB",
+              "EARTHQUAKE",
+              "SAND-ATTACK"
+            ],
+            [
+              "DOUBLE-EDGE",
+              "BRICK-BREAK",
+              "EARTHQUAKE",
+              "SELF-DESTRUCT"
+            ],
+            [
+              "PROTECT",
+              "BODY-SLAM",
+              "DOUBLE-TEAM",
+              "MILK-DRINK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Super Trainer Nimblis",
+          "class": "SUPERTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            110,
+            204,
+            273,
+            185,
+            75,
+            299
+          ],
+          "levels": [
+            64,
+            63,
+            63,
+            63,
+            63,
+            63
+          ],
+          "team_moves": [
+            [
+              "MEMENTO",
+              "EXPLOSION",
+              "HAZE",
+              "PROTECT"
+            ],
+            [
+              "EXPLOSION",
+              "DOUBLE-EDGE",
+              "SPIKES",
+              "PROTECT"
+            ],
+            [
+              "EXPLOSION",
+              "SUNNY-DAY",
+              "PROTECT",
+              "NATURE-POWER"
+            ],
+            [
+              "EXPLOSION",
+              "DOUBLE-EDGE",
+              "MIMIC",
+              "BLOCK"
+            ],
+            [
+              "EXPLOSION",
+              "DOUBLE-EDGE",
+              "BRICK-BREAK",
+              "EARTHQUAKE"
+            ],
+            [
+              "EXPLOSION",
+              "ZAP-CANNON",
+              "BLOCK",
+              "LOCK-ON"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 9 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Area Leader Ragen",
+          "class": "AREA_LEADER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            377,
+            306,
+            376,
+            207,
+            227
+          ],
+          "levels": [
+            67,
+            67,
+            67,
+            65,
+            65
+          ],
+          "team_moves": [
+            [
+              "ANCIENT-POWER",
+              "EARTHQUAKE",
+              "SUPERPOWER",
+              "HYPER-BEAM"
+            ],
+            [
+              "DOUBLE-EDGE",
+              "AERIAL-ACE",
+              "PROTECT",
+              "IRON-TAIL"
+            ],
+            [
+              "AERIAL-ACE",
+              "METEOR-MASH",
+              "SHADOW-BALL",
+              "PSYCHIC"
+            ],
+            [
+              "GUILLOTINE",
+              "AERIAL-ACE",
+              "HYPER-BEAM",
+              "PROTECT"
+            ],
+            [
+              "SANDSTORM",
+              "SPIKES",
+              "AERIAL-ACE",
+              "WHIRLWIND"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 5
+          },
+          "spot_name": "Area 9 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Area Leader Ragen: Area 9 is yours. The way up is open!"
+            ]
+          }
+        },
+        {
+          "name": "Researcher Newin",
+          "class": "RESEARCHER",
+          "sprite": "orre_scientist.png",
+          "team": [
+            272,
+            230,
+            368,
+            367,
+            171,
+            350
+          ],
+          "levels": [
+            66,
+            66,
+            66,
+            66,
+            66,
+            66
+          ],
+          "team_moves": [
+            [
+              "ICE-BEAM",
+              "GIGA-DRAIN",
+              "HYDRO-PUMP",
+              "THUNDER-PUNCH"
+            ],
+            [
+              "ICE-BEAM",
+              "DRAGON-BREATH",
+              "HYDRO-PUMP",
+              "RAIN-DANCE"
+            ],
+            [
+              "PSYCHIC",
+              "ICE-BEAM",
+              "HYDRO-PUMP",
+              "RAIN-DANCE"
+            ],
+            [
+              "CRUNCH",
+              "ICE-BEAM",
+              "HYDRO-PUMP",
+              "RAIN-DANCE"
+            ],
+            [
+              "HYDRO-PUMP",
+              "THUNDER",
+              "CONFUSE-RAY",
+              "RAIN-DANCE"
+            ],
+            [
+              "ICE-BEAM",
+              "HYDRO-PUMP",
+              "RAIN-DANCE",
+              "RECOVER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 1",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Fun Old Man Roben",
+          "class": "FUN_OLD_MAN",
+          "sprite": "orre_fun_old_man.png",
+          "team": [
+            248,
+            332,
+            28,
+            207,
+            306
+          ],
+          "levels": [
+            66,
+            66,
+            66,
+            66,
+            66
+          ],
+          "team_moves": [
+            [
+              "CRUNCH",
+              "ROCK-SLIDE",
+              "EARTHQUAKE",
+              "PROTECT"
+            ],
+            [
+              "FEINT-ATTACK",
+              "NEEDLE-ARM",
+              "LEECH-SEED",
+              "DOUBLE-TEAM"
+            ],
+            [
+              "BRICK-BREAK",
+              "CRUSH-CLAW",
+              "EARTHQUAKE",
+              "SANDSTORM"
+            ],
+            [
+              "AERIAL-ACE",
+              "SAND-ATTACK",
+              "EARTHQUAKE",
+              "GUILLOTINE"
+            ],
+            [
+              "DOUBLE-EDGE",
+              "IRON-TAIL",
+              "PROTECT",
+              "ROCK-TOMB"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 2",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Chaser Rillian",
+          "class": "CHASER",
+          "sprite": "orre_chaser_f.png",
+          "team": [
+            196,
+            197,
+            244,
+            245,
+            243
+          ],
+          "levels": [
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "team_moves": [
+            [
+              "PSYCHIC",
+              "BITE",
+              "GROWL",
+              "CALM-MIND"
+            ],
+            [
+              "CONFUSE-RAY",
+              "HELPING-HAND",
+              "FEINT-ATTACK",
+              "ATTRACT"
+            ],
+            [
+              "BODY-SLAM",
+              "BITE",
+              "FIRE-BLAST",
+              "SWAGGER"
+            ],
+            [
+              "WATERFALL",
+              "ICE-BEAM",
+              "BITE",
+              "CALM-MIND"
+            ],
+            [
+              "QUICK-ATTACK",
+              "THUNDERBOLT",
+              "CRUNCH",
+              "REFLECT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 3",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Bodybuilder Solog",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            254,
+            260,
+            257,
+            154,
+            160,
+            157
+          ],
+          "levels": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "team_moves": [
+            [
+              "LEAF-BLADE",
+              "DETECT",
+              "CRUNCH",
+              "THUNDER-PUNCH"
+            ],
+            [
+              "ICE-BEAM",
+              "HYDRO-PUMP",
+              "PROTECT",
+              "EARTHQUAKE"
+            ],
+            [
+              "SLASH",
+              "THUNDER-PUNCH",
+              "FIRE-BLAST",
+              "SKY-UPPERCUT"
+            ],
+            [
+              "BODY-SLAM",
+              "REFLECT",
+              "LIGHT-SCREEN",
+              "LEECH-SEED"
+            ],
+            [
+              "BRICK-BREAK",
+              "SLASH",
+              "HYDRO-PUMP",
+              "EARTHQUAKE"
+            ],
+            [
+              "THUNDER-PUNCH",
+              "FIRE-BLAST",
+              "PROTECT",
+              "SMOKESCREEN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 4",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Worker Saken",
+          "class": "WORKER",
+          "sprite": "pt_worker.png",
+          "team": [
+            130,
+            112,
+            121,
+            226,
+            310
+          ],
+          "levels": [
+            68,
+            68,
+            68,
+            68,
+            68
+          ],
+          "team_moves": [
+            [
+              "DRAGON-DANCE",
+              "FLAIL",
+              "ENDURE",
+              "EARTHQUAKE"
+            ],
+            [
+              "MEGAHORN",
+              "EARTHQUAKE",
+              "ROCK-BLAST",
+              "PROTECT"
+            ],
+            [
+              "ICE-BEAM",
+              "THUNDERBOLT",
+              "HYDRO-PUMP",
+              "PROTECT"
+            ],
+            [
+              "CONFUSE-RAY",
+              "WING-ATTACK",
+              "HYDRO-PUMP",
+              "RAIN-DANCE"
+            ],
+            [
+              "CRUNCH",
+              "THUNDER",
+              "RAIN-DANCE",
+              "PROTECT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 5",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Newscaster Sivil",
+          "class": "NEWSCASTER",
+          "sprite": "pt_reporter.png",
+          "team": [
+            291,
+            176,
+            348,
+            286,
+            217,
+            241
+          ],
+          "levels": [
+            68,
+            68,
+            68,
+            68,
+            68,
+            68
+          ],
+          "team_moves": [
+            [
+              "SWORDS-DANCE",
+              "PROTECT",
+              "BATON-PASS",
+              "SILVER-WIND"
+            ],
+            [
+              "FOLLOW-ME",
+              "ATTRACT",
+              "YAWN",
+              "WISH"
+            ],
+            [
+              "AERIAL-ACE",
+              "BODY-SLAM",
+              "ROCK-BLAST",
+              "EARTHQUAKE"
+            ],
+            [
+              "SPORE",
+              "BRICK-BREAK",
+              "SLUDGE-BOMB",
+              "BODY-SLAM"
+            ],
+            [
+              "BODY-SLAM",
+              "AERIAL-ACE",
+              "BRICK-BREAK",
+              "EARTHQUAKE"
+            ],
+            [
+              "BODY-SLAM",
+              "SHADOW-BALL",
+              "EARTHQUAKE",
+              "PSYCH-UP"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 6",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Flostin",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            169,
+            277,
+            214,
+            297,
+            68
+          ],
+          "levels": [
+            69,
+            69,
+            69,
+            69,
+            69
+          ],
+          "team_moves": [
+            [
+              "SLUDGE-BOMB",
+              "AERIAL-ACE",
+              "SHADOW-BALL",
+              "TOXIC"
+            ],
+            [
+              "FACADE",
+              "AERIAL-ACE",
+              "TOXIC",
+              "HYPER-BEAM"
+            ],
+            [
+              "FACADE",
+              "BRICK-BREAK",
+              "MEGAHORN",
+              "EARTHQUAKE"
+            ],
+            [
+              "FACADE",
+              "FAKE-OUT",
+              "CROSS-CHOP",
+              "ROCK-TOMB"
+            ],
+            [
+              "FACADE",
+              "CROSS-CHOP",
+              "COUNTER",
+              "ROCK-TOMB"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 7",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Cooltrainer Tetil",
+          "class": "COOLTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            275,
+            189,
+            229,
+            351,
+            330
+          ],
+          "levels": [
+            69,
+            69,
+            69,
+            69,
+            69
+          ],
+          "team_moves": [
+            [
+              "FAKE-OUT",
+              "SHADOW-BALL",
+              "BRICK-BREAK",
+              "EXPLOSION"
+            ],
+            [
+              "SUNNY-DAY",
+              "SLEEP-POWDER",
+              "ENCORE",
+              "PROTECT"
+            ],
+            [
+              "FLAMETHROWER",
+              "CRUNCH",
+              "ENDURE",
+              "REVERSAL"
+            ],
+            [
+              "SUNNY-DAY",
+              "WEATHER-BALL",
+              "SOLAR-BEAM",
+              "PROTECT"
+            ],
+            [
+              "FIRE-BLAST",
+              "EARTHQUAKE",
+              "SOLAR-BEAM",
+              "PROTECT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 8",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Super Trainer Libal",
+          "class": "SUPERTRAINER",
+          "sprite": "orre_cool_trainer_m.png",
+          "team": [
+            101,
+            377,
+            362,
+            292,
+            379,
+            378
+          ],
+          "levels": [
+            70,
+            70,
+            70,
+            70,
+            70,
+            70
+          ],
+          "team_moves": [
+            [
+              "EXPLOSION",
+              "THUNDERBOLT",
+              "REFLECT"
+            ],
+            [
+              "EXPLOSION",
+              "ANCIENT-POWER",
+              "COUNTER",
+              "BODY-SLAM"
+            ],
+            [
+              "EXPLOSION",
+              "ICE-BEAM",
+              "CRUNCH",
+              "PROTECT"
+            ],
+            [
+              "SILVER-WIND",
+              "SHADOW-BALL",
+              "CONFUSE-RAY",
+              "SWORDS-DANCE"
+            ],
+            [
+              "EXPLOSION",
+              "SUPERPOWER",
+              "EARTHQUAKE",
+              "PROTECT"
+            ],
+            [
+              "EXPLOSION",
+              "THUNDERBOLT",
+              "ICE-BEAM",
+              "PROTECT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "spot_name": "Area 10 Trainer 9",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true
+        },
+        {
+          "name": "Mt. Battle Master Battlus",
+          "class": "MT_BTLMASTER",
+          "sprite": "orre_mt_battle_master.png",
+          "team": [
+            356,
+            381,
+            380,
+            373,
+            376,
+            289
+          ],
+          "levels": [
+            70,
+            70,
+            70,
+            70,
+            70,
+            70
+          ],
+          "team_moves": [
+            [
+              "IMPRISON",
+              "SHADOW-BALL",
+              "ICE-BEAM",
+              "PROTECT"
+            ],
+            [
+              "PSYCHIC",
+              "DRAGON-CLAW",
+              "ICE-BEAM",
+              "THUNDERBOLT"
+            ],
+            [
+              "PSYCHIC",
+              "DRAGON-CLAW",
+              "WATERFALL",
+              "CALM-MIND"
+            ],
+            [
+              "AERIAL-ACE",
+              "BODY-SLAM",
+              "FIRE-BLAST",
+              "EARTHQUAKE"
+            ],
+            [
+              "SHADOW-BALL",
+              "AERIAL-ACE",
+              "METEOR-MASH",
+              "EARTHQUAKE"
+            ],
+            [
+              "HYPER-BEAM",
+              "SHADOW-BALL",
+              "EARTHQUAKE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 10
+          },
+          "spot_name": "Area 10 Trainer 10",
+          "when_flags": [
+            "orre_dakim_mt_battle"
+          ],
+          "stays_beaten": true,
+          "dialogue": {
+            "player_won": [
+              "Battlus: One hundred trainers... You have conquered Mt. Battle!"
+            ]
+          },
+          "victory_flag": "mt_battle_battlus"
         }
       ],
       "route_menu": [
@@ -3686,7 +8096,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "orre_dakim_mt_battle"
           ]
         },
         {
@@ -3697,7 +8108,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "orre_dakim_mt_battle"
           ]
         },
         {
@@ -3705,6 +8117,439 @@
           "action": "TRAINER",
           "condition": "has_trainers",
           "color": "GREEN"
+        },
+        {
+          "text": "DAKIM ATTACKS MT. BATTLE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_dakim_mt_battle",
+          "event": {
+            "lines": [
+              "A huge man in a Cipher uniform stands over a beaten trainer: Area Leader Vander.",
+              "Dakim: Ha! That's Mt. Battle's best? Pathetic!",
+              "Dakim: ...What are you looking at? You want some too? Entei, let's go!"
+            ],
+            "flag": "orre_dakim_mt_battle",
+            "battle": {
+              "name": "Cipher Admin Dakim",
+              "class": "CIPHER_ADMIN",
+              "sprite": "blackbelt.png",
+              "team": [
+                9397,
+                375,
+                259,
+                76,
+                323
+              ],
+              "levels": [
+                40,
+                37,
+                36,
+                38,
+                38
+              ],
+              "team_moves": [
+                [
+                  "SHADOW-RUSH",
+                  "SUNNY-DAY",
+                  "LEER",
+                  "BITE"
+                ],
+                [
+                  "METAL-CLAW",
+                  "PSYCHIC",
+                  "EARTHQUAKE",
+                  "PROTECT"
+                ],
+                [
+                  "MUDDY-WATER",
+                  "MUD-SHOT",
+                  "STOMP",
+                  "MUD-SLAP"
+                ],
+                [
+                  "ROCK-THROW",
+                  "EARTHQUAKE",
+                  "DOUBLE-EDGE",
+                  "PROTECT"
+                ],
+                [
+                  "FLAMETHROWER",
+                  "EARTHQUAKE",
+                  "TAKE-DOWN",
+                  "PROTECT"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/admin_battle",
+              "is_boss_battle": true,
+              "dialogue": {
+                "intro": [
+                  "Dakim: Mt. Battle belongs to Cipher now! Out of my way!"
+                ],
+                "player_won": [
+                  "Dakim: Grr... Beaten by a kid?!",
+                  "Two figures drop down from a ledge: Skrub, and a woman in a Cipher uniform.",
+                  "Skrub: Dakim! Enough. We're pulling out.",
+                  "Dakim: Hmph. Next time, kid, I crush you!",
+                  "Dakim leaps clean off the platform and is gone. Something clatters where he stood."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "F-DISK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_dakim_mt_battle",
+          "flag_condition": "not orre_f_disk",
+          "event": {
+            "lines": [
+              "Dakim dropped something as he fled: a disk marked F."
+            ],
+            "flag": "orre_f_disk",
+            "gift_item": {
+              "F_DISK": 1
+            }
+          }
+        },
+        {
+          "text": "AREA LEADER VANDER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_dakim_mt_battle",
+          "flag_condition": "not orre_time_flute",
+          "event": {
+            "lines": [
+              "Vander: Ugh... that brute caught me cold. Thanks for driving him off.",
+              "Vander: Those Pokemon of Cipher's - their hearts are shut, aren't they? Take this.",
+              "Vander: The Time Flute. They say its song opens a Shadow Pokemon's heart in an instant. Only once, mind.",
+              "Vander: Once I've caught my breath, I'm back at my post. Come and climb!"
+            ],
+            "flag": "orre_time_flute",
+            "gift_item": {
+              "TIME_FLUTE": 1
+            }
+          }
+        },
+        {
+          "text": "MT. BATTLE RECEPTION",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Reception: Welcome to Mt. Battle! Ten areas, ten trainers in each. Beat them all to go up.",
+              "Reception: Rest at the top of an area, and next time you can start from the one after it."
+            ],
+            "ask": "START FROM?",
+            "cancel": [
+              "Reception: Come back when you're ready!"
+            ],
+            "travel_choices": [
+              {
+                "text": "AREA 1",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  2,
+                  4,
+                  123
+                ]
+              },
+              {
+                "text": "AREA 2",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  4,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_1"
+                ]
+              },
+              {
+                "text": "AREA 3",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  6,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_2"
+                ]
+              },
+              {
+                "text": "AREA 4",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  8,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_3"
+                ]
+              },
+              {
+                "text": "AREA 5",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  10,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_4"
+                ]
+              },
+              {
+                "text": "AREA 6",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  12,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_5"
+                ]
+              },
+              {
+                "text": "AREA 7",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  14,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_6"
+                ]
+              },
+              {
+                "text": "AREA 8",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  16,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_7"
+                ]
+              },
+              {
+                "text": "AREA 9",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  18,
+                  4,
+                  123
+                ],
+                "requires": [
+                  "mt_battle_rest_8"
+                ]
+              },
+              {
+                "text": "AREA 10",
+                "to": "MT_BATTLE",
+                "land_floor": [
+                  20,
+                  4,
+                  122
+                ],
+                "requires": [
+                  "mt_battle_rest_9"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "MT. BATTLE NURSE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Nurse: Let me look after your Pokemon.",
+              "Your Pokemon are fully healed!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "REST POINT 1",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 1 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 2."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_1"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 2",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 2 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 3."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_2"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 3",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 3 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 4."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_3"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 4",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 4 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 5."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_4"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 5",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 5 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 6."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_5"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 6",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 6 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 7."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_6"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 7",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 7 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 8."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_7"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 8",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 8 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 9."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_8"
+            ]
+          }
+        },
+        {
+          "text": "REST POINT 9",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle staff: Area 9 cleared? Rest here a while.",
+              "Your Pokemon are fully healed!",
+              "Mt. Battle staff: From now on, the lobby can send you straight to Area 10."
+            ],
+            "heal": true,
+            "also_flags": [
+              "mt_battle_rest_9"
+            ]
+          }
+        },
+        {
+          "text": "START OVER FROM AREA 1",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_dakim_mt_battle",
+          "event": {
+            "lines": [
+              "Mt. Battle's trainers are ready for another round. Back to Area 1!"
+            ],
+            "reset_area": true,
+            "clear_flags": [
+              "mt_battle_rest_1",
+              "mt_battle_rest_2",
+              "mt_battle_rest_3",
+              "mt_battle_rest_4",
+              "mt_battle_rest_5",
+              "mt_battle_rest_6",
+              "mt_battle_rest_7",
+              "mt_battle_rest_8",
+              "mt_battle_rest_9",
+              "mt_battle_battlus",
+              "mt_battle_master_beaten"
+            ]
+          }
         },
         {
           "text": "MT. BATTLE MASTER",
@@ -3745,64 +8590,11 @@
             },
             "flag": "mt_battle_master_beaten"
           },
-          "condition": "beat_orre_champion",
+          "condition": [
+            "beat_orre_champion",
+            "mt_battle_battlus"
+          ],
           "flag_condition": "not mt_battle_master_beaten"
-        },
-        {
-          "text": "START OVER FROM AREA 1",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Mt. Battle's trainers are ready for another round. Back to Area 1!"
-            ],
-            "reset_area": true,
-            "clear_flags": [
-              "mt_battle_master_beaten"
-            ]
-          },
-          "condition": "mt_battle_master_beaten"
-        },
-        {
-          "text": "DAKIM ATTACKS MT. BATTLE",
-          "action": "EVENT",
-          "color": "GOLD",
-          "flag_condition": "not orre_dakim_mt_battle",
-          "event": {
-            "lines": [
-              "Dakim: Mt. Battle belongs to Cipher now! Out of my way!"
-            ],
-            "flag": "orre_dakim_mt_battle",
-            "battle": {
-              "name": "Cipher Admin Dakim",
-              "class": "PKMN_TRAINER",
-              "sprite": "blackbelt.png",
-              "is_boss_battle": true,
-              "team": [
-                375,
-                259,
-                76,
-                323
-              ],
-              "levels": [
-                23,
-                24,
-                24,
-                25
-              ],
-              "rewards": {
-                "balls": 6
-              },
-              "dialogue": {
-                "intro": [
-                  "Dakim: Mt. Battle belongs to Cipher now! Out of my way!"
-                ],
-                "player_won": [
-                  "Dakim: Grr... You'll pay for that at Realgam!"
-                ]
-              }
-            }
-          }
         },
         {
           "text": "Agate Village",
@@ -3812,20 +8604,6 @@
             "can_exit"
           ],
           "color": "RED"
-        },
-        {
-          "text": "F-DISK",
-          "action": "EVENT",
-          "color": "GOLD",
-          "flag_condition": "not orre_f_disk",
-          "event": {
-            "lines": [
-              "Dakim dropped something as he fled: a disk marked F.",
-              "You took the F-Disk."
-            ],
-            "flag": "orre_f_disk"
-          },
-          "condition": "orre_dakim_mt_battle"
         }
       ],
       "next_area": "AGATE_VILLAGE",
@@ -7513,7 +12291,8 @@
     {"id": "orre_m6", "type": "MAIN", "title": "Agate Village", "description": "Fateen saw trouble coming to Agate Village, where Rui's grandparents live. Ride north and visit the elder's house.", "condition": {"required_region": "ORRE", "flag": "orre_miror_cave", "flag_not": "met_agate_elder"}, "region": "ORRE", "completed_flag": "met_agate_elder", "target": "AGATE_VILLAGE"},
     {"id": "orre_m6b", "type": "MAIN", "title": "The Relic Cave", "description": "Cipher's men pushed into the Relic Cave, and Rui's grandfather Eagun went after them. Follow him in!", "condition": {"required_region": "ORRE", "flag": "met_agate_elder", "flag_not": ["orre_beat_skrub", "orre_dakim_mt_battle"]}, "region": "ORRE", "completed_flag": "orre_beat_skrub", "target": "RELIC_CAVE"},
     {"id": "orre_m7", "type": "MAIN", "title": "Dakim at Mt. Battle", "description": "Cipher Admin Dakim is attacking Mt. Battle, next to Agate Village. Stop him!", "condition": {"required_region": "ORRE", "flag": "orre_beat_skrub", "flag_not": "orre_dakim_mt_battle"}, "region": "ORRE", "completed_flag": "orre_dakim_mt_battle", "target": "MT_BATTLE"},
-    {"id": "orre_m8", "type": "MAIN", "title": "Into The Under", "description": "Below Pyrite Town is a hidden city called The Under. Cipher runs it! Go down from Pyrite and shut it down.", "condition": {"required_region": "ORRE", "flag": "orre_dakim_mt_battle", "flag_not": "cleared_the_under"}, "region": "ORRE", "completed_flag": "cleared_the_under", "target": "THE_UNDER"},
+    {"id": "orre_m7b", "type": "MAIN", "title": "Vander's Thanks", "description": "Dakim fled Mt. Battle. Talk to Area Leader Vander, the trainer Dakim beat, at the top of Area 1.", "condition": {"required_region": "ORRE", "flag": "orre_dakim_mt_battle", "flag_not": ["orre_time_flute", "cleared_the_under"]}, "region": "ORRE", "completed_flag": "orre_time_flute", "target": "MT_BATTLE"},
+    {"id": "orre_m8", "type": "MAIN", "title": "Into The Under", "description": "Below Pyrite Town is a hidden city called The Under. Cipher runs it! Go down from Pyrite and shut it down.", "condition": {"required_region": "ORRE", "flag": ["orre_dakim_mt_battle", "orre_time_flute"], "flag_not": "cleared_the_under"}, "region": "ORRE", "completed_flag": "cleared_the_under", "target": "THE_UNDER"},
     {"id": "orre_m9", "type": "MAIN", "title": "Under Colosseum", "description": "The Under has its own Colosseum. Win its tournament for the second badge!", "condition": {"required_region": "ORRE", "flag": "cleared_the_under", "region_badges_min": 1, "region_badges_less": 2}, "region": "ORRE", "completed_badge": "UNDER", "target": "UNDER_COLOSSEUM", "reward": "Under Badge"},
     {"id": "orre_m10", "type": "MAIN", "title": "Ein's Shadow Pokémon Lab", "description": "Cipher makes Shadow Pokémon in a secret lab. Find Cipher Admin Ein and stop the machines!", "condition": {"required_region": "ORRE", "region_badges_min": 2, "flag_not": "orre_ein_lab"}, "region": "ORRE", "completed_flag": "orre_ein_lab", "target": "SHADOW_PKMN_LAB"},
     {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Ein's notes point to Gateon Port. Professor Krane's lab is there, and Cipher has a lab of its own. Beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "orre_ein_lab", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
@@ -7525,7 +12304,8 @@
     {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher's last base is under Gateon Port. Beat Cipher Admin Gorigan to learn where their leader is.", "condition": {"required_region": "ORRE", "region_badges_min": 4, "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is Evice, the man who built Realgam Tower. Beat his admins and then Evice himself to save Orre!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": "beat_orre_champion"}, "region": "ORRE", "completed_flag": "beat_orre_champion", "target": "REALGAM_TOWER", "reward": "Orre Champion"},
     {"id": "orre_s1", "type": "SIDE", "title": "Professor Krane's Eevee", "description": "Professor Krane works at the Pokémon HQ Lab in Gateon Port. Pay him a visit!", "condition": {"required_region": "ORRE", "visited": "GATEON_PORT", "flag_not": "got_krane_eevee"}, "region": "ORRE", "completed_flag": "got_krane_eevee", "target": "GATEON_PORT"},
-    {"id": "orre_s2", "type": "SIDE", "title": "Mt. Battle", "description": "After the title, Mt. Battle Master Vander waits at the top of Mt. Battle, near Agate Village. Climb all 10 areas to reach him!", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "mt_battle_master_beaten"}, "region": "ORRE", "completed_flag": "mt_battle_master_beaten", "target": "MT_BATTLE", "reward": "Battle practice"},
+    {"id": "orre_s2", "type": "SIDE", "title": "Mt. Battle", "description": "After the title, Vander waits at the very top of Mt. Battle, past Battlus in Area 10. Climb up and face him!", "condition": {"required_region": "ORRE", "flag": ["beat_orre_champion", "mt_battle_battlus"], "flag_not": "mt_battle_master_beaten"}, "region": "ORRE", "completed_flag": "mt_battle_master_beaten", "target": "MT_BATTLE", "reward": "Battle practice"},
+    {"id": "orre_s2a", "type": "SIDE", "title": "Mt. Battle's 100", "description": "Mt. Battle, near Agate Village: ten areas, ten trainers in each. Climb them all and beat Mt. Battle Master Battlus! Rest at the top of each area to start from the next one.", "condition": {"required_region": "ORRE", "flag": "orre_time_flute", "flag_not": "mt_battle_battlus"}, "region": "ORRE", "completed_flag": "mt_battle_battlus", "target": "MT_BATTLE", "reward": "Battle practice"},
     {"id": "orre_s3", "type": "SIDE", "title": "The Wishing Star", "description": "Cipher's files mention a wishing star near Agate's Relic Stone. Look in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_jirachi_caught"}, "region": "ORRE", "completed_flag": "orre_jirachi_caught", "target": "RELIC_FOREST", "reward": "Jirachi"},
     {"id": "orre_s4", "type": "SIDE", "title": "Ho-Oh's Blessing", "description": "Purify every Shadow Pokémon at the Relic Stone. Then a rainbow Pokémon may appear in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "orre_all_purified", "flag_not": "orre_ho_oh_caught"}, "region": "ORRE", "completed_flag": "orre_ho_oh_caught", "target": "RELIC_FOREST", "reward": "Ho-Oh"},
     {"id": "orre_s5", "type": "SIDE", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil! Sail from Gateon Port to Citadark Isle and beat his three admins, then Greevil.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokémon"}

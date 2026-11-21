@@ -3160,6 +3160,15 @@ class DungeonState(OverworldBattles, PlayState):
             pool = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(u["area_cleared"]) or {}).get("trainer_pool") or []
             if len(story.defeated_trainers.get(u["area_cleared"], set())) < len(pool):
                 return False
+        if u.get("trainers_beaten"):  # (Mt. Battle: the way up opens once this area's trainers - the ones here now - are all beaten;
+            pre, flags = str(u["trainers_beaten"]), story.story_flags   #  by their spot names, "Area 3 ", so starting over shuts it again)
+            for i, t in enumerate(self.area_data.get("trainer_pool", [])):
+                if not str(t.get("spot_name") or t.get("name") or "").startswith(pre):
+                    continue
+                if any(not flags.get(f) for f in t.get("when_flags") or []) or any(flags.get(f) for f in t.get("gone_flags") or []):
+                    continue
+                if not story.is_trainer_defeated(self.area_key, i):
+                    return False
         cond = u.get("condition")
         return all(self._check_route_condition(c, False, u) for c in (cond if isinstance(cond, list) else [cond] if cond else []))
 
