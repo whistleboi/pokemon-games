@@ -909,6 +909,14 @@ class WalkTownState(CityState):
             mats = [t for t, target in self.exits.items() if target == came]   #  that rode up: at the floor's own lift door, Kumquat's)
             if not mats and room and str(came).startswith("OUT:"):   # (in by a door: at the room's way back out, wherever it is in the
                 mats = [t for t, target in self.exits.items() if target == "ROOM:" + (_was or "MAIN")]   # grid, 11-21: Castelia's Center
+                if not mats:   # (a way out marked a tile or two off its door, 38 rooms + Floccesy's Center: the one nearest the door)
+                    _dx, _dy = (int(v) for v in str(came)[4:].split(","))
+                    _outs = {}
+                    for t, target in self.exits.items():
+                        if str(target).startswith("OUT:"):
+                            ox, oy = (int(v) for v in target[4:].split(","))
+                            _outs.setdefault(abs(ox - _dx) + abs(oy - _dy), []).append(t)
+                    mats = _outs[min(_outs)] if _outs and (min(_outs) <= 3 or len(_outs) == 1) else []
             t = (min(mats, key=lambda m: abs(m[0] - self.w // 2) + abs(m[1] - (self.h - 2))) if str(came).startswith("OUT:")
                  else mats[len(mats) // 2]) if mats else self._nearest_open((self.w // 2, self.h - 2))
             inward = next(((t[0] + dx, t[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0))
