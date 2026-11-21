@@ -969,15 +969,37 @@ class WalkTownState(CityState):
     def flash(self, text, frames=90):
         self.toast, self.toast_timer = text, frames
 
-    def step(self, dx, dy):
+    def step(self, dx, dy, by_key=False):
+        """One step (dx, dy) on the map. by_key: an arrow key, a way on screen: on the avenue it is turned by the live
+        camera and follows the road's bend, and you face the key (11-21: a tapped path's or a scene's steps are the map's
+        own ways, never turned)."""
         if self._busy() or self.anim > 0:
             return
-        turned = self._curve_step(dx, dy)   # (the avenue: along its curve, by the camera's way)
+        turned = self._curve_step(dx, dy) if by_key else None   # (the avenue: along its curve, by the camera's way)
         if turned is not None:
-            if turned is True:
-                return
-            dx, dy = turned
+            key = (dx, dy)
+            if turned is not True:
+                self._step_tile(*turned)
+            self._key_face = (key, tuple(self.facing))   # (drawn facing the key while the map's facing is this one)
+            return
+        self._key_face = None
         return self._step_tile(dx, dy)
+
+    def _live_me_face(self):
+        """The way you're drawn facing in the live view: the arrow key you pressed (while the map's facing is still the one
+        it gave), else your facing turned with the camera."""
+        kf = getattr(self, "_key_face", None)
+        return kf[0] if kf and kf[1] == tuple(self.facing) else self._live_face(tuple(self.facing))
+
+    def _live_face(self, face):
+        """A facing on the map as the live camera shows it: turned with the avenue's camera, to the nearest of four."""
+        yaw = getattr(self, "_live_yaw", None)
+        if not yaw or not face:
+            return face
+        a = math.radians(yaw)
+        wx, wz = face
+        dx, dy = wx * math.cos(a) - wz * math.sin(a), wx * math.sin(a) + wz * math.cos(a)
+        return (1 if dx > 0 else -1, 0) if abs(dx) >= abs(dy) else (0, 1 if dy > 0 else -1)
 
     def _curve_step(self, dx, dy):
         """Black 2's avenue (Jordan 11-20, "follow the curve"): where the live camera circles the city, a key means a way
@@ -1621,7 +1643,7 @@ class WalkTownState(CityState):
             if e.type == pygame.KEYDOWN:
                 if e.key in KEYS:
                     self.walk_goal = None
-                    self.step(*KEYS[e.key])
+                    self.step(*KEYS[e.key], by_key=True)
                 elif e.key in (pygame.K_SPACE, pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_f):
                     t = self._facing_tile()
                     if t in self.signs:
@@ -1690,7 +1712,7 @@ class WalkTownState(CityState):
             way = held_way(KEYS)
             if way:
                 self.walk_goal = None
-                return self.step(*way)
+                return self.step(*way, by_key=True)
             at = held_pointer() if getattr(self, "_map_press", False) else None
             if at is None:
                 self._map_press = False
@@ -2226,7 +2248,7 @@ class WalkTownState(CityState):
         by_pos = {mo.pos: mo for mo in mos.values() if not mo.gone}
         for spot, opt in people.items():
             mo = by_pos.get(spot)
-            img = self._figure_img(opt, mo.facing, mo.frame()) if mo else self._figure_img(opt)
+            img = self._figure_img(opt, self._live_face(mo.facing if mo else (0, 1)), mo.frame() if mo else 0)
             fx, fy = mo.at() if mo else spot
             put(img, fx, fy)
             if mo and mo.emote > 0:   # (they've noticed you: a "!" over them)
@@ -2237,7 +2259,12 @@ class WalkTownState(CityState):
                 from src.world import vs_seeker as _vsm
                 if _vsm.is_ready(self.game.story_manager, self.area_key, _vsm.town_key(_ev)):
                     emotes.append((fx, fy))
-        me = self._player_img()
+        _face = self.facing
+        self.facing = self._live_me_face()
+        try:
+            me = self._player_img()
+        finally:
+            self.facing = _face
         mfx, mfy = self._live_feet()
         pose = self._ride_pose() if getattr(self, "_ride", None) else None
         lead = None if pose else self.follower()
@@ -2254,10 +2281,11 @@ class WalkTownState(CityState):
             tx, ty = self.player
             way = (tx - bx, ty - by)
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
-            put(self._icon(lead, TILE, flip=(tx > bx), facing=way), ax + (bx - ax) * k, ay + (by - ay) * k)
+            way = self._live_face(way)
+            put(self._icon(lead, TILE, flip=(way[0] > 0) if way[0] else (tx > bx), facing=way), ax + (bx - ax) * k, ay + (by - ay) * k)
         for a in (self.scenes.actors if getattr(self, "scenes", None) else []):
             ax, ay = a["m"].at()
-            put(self._actor_img(a["sheet"], a["m"].facing, a["m"].frame(), native=bool(a.get("native"))), ax, ay)
+            put(self._actor_img(a["sheet"], self._live_face(a["m"].facing), a["m"].frame(), native=bool(a.get("native"))), ax, ay)
         flat_bars = []   # (someone or something in the way: a sprite stood in the scene, else drawn over it)
         for _t, _bar in getattr(self, "barred", {}).items():
             _look = str(_bar.get("look") or "person")

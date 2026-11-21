@@ -50,7 +50,7 @@ def town(room=None, at=None):
 def walk(dx, dy, n):
     out = []
     for _ in range(n):
-        settle(1); g.current_state.step(dx, dy); settle(16)
+        settle(1); g.current_state.step(dx, dy, by_key=True); settle(16)
         out.append(tuple(g.current_state.player))
     return out
 
@@ -101,6 +101,25 @@ check(y1 is not None and y2 is not None and y1 > 20 and y2 < -25, f"the camera s
 pygame.image.save(pygame.display.get_surface(), f"{S}/live3d_02_avenue.png")
 up = walk(0, -1, 2)
 check(up[0][0] > path[-1][0] or up[0][1] < path[-1][1], f"up: in toward the city ({path[-1]} -> {up})")
+
+print("3b) on the bend: you face the key you press; others turn with the camera; taps aren't turned (Jordan 11-21)")
+t = town(None, (31, 70)); settle(60)
+yaw = t._live_yaw
+for key in ((-1, 0), (0, -1), (1, 0), (0, 1)):
+    settle(20); t = g.current_state; t.step(*key, by_key=True); settle(4)
+    check(t._live_me_face() == key, f"key {key} at the west bend (camera {yaw:.0f} degrees): drawn facing {t._live_me_face()}, the map's facing {tuple(t.facing)}")
+settle(20)
+check(t._live_face((0, -1)) == (0, -1) or abs(yaw) < 45, "the map's north, turned by under 45 degrees, still looks up")
+t = town(None, (31, 70)); settle(60)
+start = tuple(t.player)
+_open = [(start[0] + dx, start[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0)) if t._open((start[0] + dx, start[1] + dy))]
+goal = _open[0]
+t.walk_goal = goal; settle(30)
+check(tuple(g.current_state.player) == goal, f"a tapped tile next to you, on the bend: you step straight onto it ({start} -> {goal}: at {tuple(g.current_state.player)})")
+t = town(None, (31, 70)); settle(60)
+far = (30, 65)
+t.walk_goal = far; settle(400)
+check(tuple(g.current_state.player) == far, f"a tapped tile up the west side: you walk there ({far}: at {tuple(g.current_state.player)})")
 
 print("4) a scene's zoom, shadows, the Options switch, no numpy (11-21)")
 t = town("gym_street", (21, 50))
