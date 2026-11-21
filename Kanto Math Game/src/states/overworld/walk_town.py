@@ -2155,10 +2155,13 @@ class WalkTownState(CityState):
         name = os.path.splitext(os.path.basename(pic))[0]
         if not pic.startswith("b2_ground/") or not name.isdigit():
             return None
-        from src.dungeon import live3d
-        if not live3d.has_scene(self.game, int(name)) or not live3d.available(self.game):
+        try:   # (any trouble with the card or its libraries: the baked picture, never a crash)
+            from src.dungeon import live3d
+            if not live3d.has_scene(self.game, int(name)) or not live3d.available(self.game):
+                return None
+            sc = live3d.scene(self.game, int(name))
+        except Exception:
             return None
-        sc = live3d.scene(self.game, int(name))
         if sc is None or sc.cam is None:
             return None
         self._live_got = (sc, roofs.get("_cam") or {})

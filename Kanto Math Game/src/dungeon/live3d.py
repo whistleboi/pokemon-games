@@ -10,8 +10,12 @@ corners (x, y up, z, in tiles from the zone's top-left, the walk grid's units) a
 import math
 import os
 
-import numpy as np
 import pygame
+
+try:   # (numpy and moderngl are only on a PC set up for the live camera: without them, the baked pictures)
+    import numpy as np
+except ImportError:
+    np = None
 
 _CTX = {}
 _SCENES = {}
@@ -44,6 +48,8 @@ void main() {
 
 def available(game=None):
     """True when the live camera can draw here (a real window and a card that does OpenGL 3.3)."""
+    if np is None:
+        return False
     if os.environ.get("SDL_VIDEODRIVER") == "dummy" and not getattr(game, "live3d_headless", False):
         return False
     return _context() is not None
