@@ -3868,7 +3868,9 @@ class DungeonState(OverworldBattles, PlayState):
             cell = img.subsurface(((frame if col is None else col) * cw, FACING_ROW.get(facing, 0) * ch, cw, ch))
             box = cell.get_bounding_rect()
             cell = cell.subsurface(box) if box.w and box.h else cell
-            k = scale or max(1, round(height / max(1, cell.get_height())))  # whole steps: crisp pixels ("scale": a fixed one)
+            tall = cell.get_height() if col is not None else max(cell.get_height(), int(ch * 0.8))   # (11-20: something short in
+            k = scale or max(1, round(height / max(1, tall)))  # its frame - an item ball - keeps its size beside people, not blown up to their height)
+            # (whole steps: crisp pixels; "scale": a fixed one)
             return pygame.transform.scale(cell, (max(1, int(cell.get_width() * k)), max(1, int(cell.get_height() * k))))
         return self._sprite(("sheet", sheet, facing, col, frame, height, scale), make)
 

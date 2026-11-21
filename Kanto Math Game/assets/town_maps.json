@@ -283965,12 +283965,12 @@
      "c..........ccc.....ccccccccccccccccc",
      "c..................ccccccccccccccccc",
      "cc.................c......c........c",
-     "cc.................c..........N....c",
+     "cc.................c..........N..N.c",
      "c..................................c",
      "cc.................c...............c",
      "cc................cc.......ccc.....c",
      "cccccccccvcccccccccc.......ccc.....c",
-     "cccccccccccccccccccc...............c",
+     "cccccccccccccccccccc.............N.c",
      "ccccccccccccccccccccc..............c",
      "ccccccccccccccccccccc..............c",
      "cccccccccccccccccccccccccccccccccccc"
@@ -284017,6 +284017,53 @@
        ],
        "done": [
         "(The cell is empty now.)"
+       ]
+      }
+     },
+     {
+      "text": "Miror B. Peon Reath (asleep)",
+      "action": "EVENT",
+      "condition": "orre_dakim_mt_battle",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "not:orre_got_jail_key"
+         ],
+         "lines": [
+          "Two of Miror B.'s peons, locked in a cell. One is fast asleep, a key on her belt.",
+          "The cell's locked. The sheriff keeps a key on his desk..."
+         ]
+        },
+        {
+         "requires": [
+          "orre_got_jail_key",
+          "not:orre_elevator_key"
+         ],
+         "flag": "orre_elevator_key",
+         "gift_item": {
+          "ELEVATOR_KEY": 1
+         },
+         "lines": [
+          "You unlock the cell. Reath is fast asleep, snoring.",
+          "On her belt hangs a key marked ELEVATOR. You ease it off...",
+          "You got the ELEVATOR KEY! It must work the Pyrite Building's giant lift."
+         ]
+        }
+       ],
+       "done": [
+        "Reath: Zzz... Miror B.... more music... zzz..."
+       ]
+      }
+     },
+     {
+      "text": "Miror B. Peon Ferma",
+      "action": "EVENT",
+      "condition": "orre_dakim_mt_battle",
+      "event": {
+       "lines": [
+        "Ferma: Duking caught us fair and square. Hmph.",
+        "Ferma: The cell's open? ...Where would I even go? I'll wait for Miror B."
        ]
       }
      }
@@ -287580,8 +287627,8 @@
      "cc..............c...................ccc............ccc",
      "cccccccc.ccccccccccccccccccccc.c.ccccccccccccccccccccc",
      "cccccccc.ccccccccccccccccccccccccccccccccccccccccccccc",
-     "cc.cc...c.cccc..c.cccc.c....cc...cccc.cccccccccccccc.c",
-     "c...............c......ccc..cc....ccc................c",
+     "cc.cc...c.cccc..c.cccc.c....cc...cccc.ccccccccc^cccc.c",
+     "c...............c......ccc..cc....ccc..........N.....c",
      "c...............c......ccc.ccc.....cc...N............c",
      "c..ccc..........c...................c............cc.cc",
      "c.Nccc..............................................cc",
@@ -287593,7 +287640,8 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "PYRITE_TOWN"
+     "v": "PYRITE_TOWN",
+     "^": "THE_UNDER"
     },
     "links": {
      "34,2": [
@@ -287606,6 +287654,7 @@
     "people": [
      "Great Balls",
      "Hunter Doken",
+     "CHASER KAI AT THE LIFT",
      "Ein File H",
      "Revive"
     ],
@@ -287636,6 +287685,26 @@
        54,
        24
       ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        47,
+        13
+       ]
+      ],
+      "until": {
+       "condition": [
+        "has_item:ELEVATOR_KEY",
+        "orre_kai_lift"
+       ]
+      },
+      "lines": [
+       "The giant lift down. Its panel is locked: it needs an Elevator Key."
+      ],
+      "look": "barrier"
      }
     ]
    },
@@ -287716,6 +287785,7 @@
    "Ein File H": 0,
    "Great Balls": 0,
    "Revive": 0,
+   "CHASER KAI AT THE LIFT": 0,
    "Hunter Toti": 0,
    "Bodybuilder Elidi": 0,
    "SNAG SHADOW POKEMON": 1,
@@ -292414,7 +292484,7 @@
      "cccc.cccccccc.ccccccccccccccccc",
      "cccc.cccccccc.ccccccccccccccccc",
      "cccc..c11c..c.ccccccccccccccccc",
-     "cccc........c.ccccccccccccccccc",
+     "cccc......N.c.ccccccccccccccccc",
      "cccccccccc..ccccccccccccccccccc",
      "cccccccccc.cccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc",
@@ -292426,10 +292496,10 @@
      "cccccccccc..ccccccccc.........c",
      "cccccccccc..ccccccc1c.........c",
      "cccc.....c........<...........c",
-     "cccc.c...................cccc.c",
+     "cccc.c..................Ncccc.c",
      "cc1c.....................cccc.c",
-     "c.....ccc.........cccc...cccc.c",
-     "c........................cccc.c",
+     "c.....ccc.........cccc...cccN.c",
+     "c.......................Ncccc.c",
      "cccccccccc...ccccc.......cccc.c",
      "cccccccccc...ccccc.......cccc.c",
      "cccccc11cc...cc1cc.......cccc.c",
@@ -292442,7 +292512,7 @@
      "ccccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "^": "PYRITE_TOWN",
+     "^": "PYRITE_BUILDING",
      "<": "UNDER_COLOSSEUM"
     },
     "links": {
@@ -292499,6 +292569,10 @@
     },
     "parts": true,
     "people": [
+     "FLOATING PLATFORM",
+     "CIPHER PEON KLOAK",
+     "SILVA",
+     "CIPHER PEON DAGUR",
      "SNAG SHADOW POKEMON",
      "SNAG AGAIN"
     ],
@@ -292539,11 +292613,14 @@
        ]
       ],
       "until": {
-       "flag_condition": "orre_f_disk"
+       "condition": [
+        "orre_f_disk",
+        "orre_r_disk"
+       ]
       },
       "lines": [
-       "The floating platform to the studio won't move.",
-       "It needs a disk marked F."
+       "The floating platform to the studio won't budge.",
+       "Its slot takes disks: F sends it forward, R sends it right."
       ],
       "look": "barrier"
      },
@@ -292555,13 +292632,41 @@
        ]
       ],
       "until": {
-       "flag_condition": "orre_f_disk"
+       "condition": [
+        "orre_f_disk",
+        "orre_r_disk"
+       ]
       },
       "lines": [
-       "The floating platform to the studio won't move.",
-       "It needs a disk marked F."
+       "The floating platform to the studio won't budge.",
+       "Its slot takes disks: F sends it forward, R sends it right."
       ],
       "look": "barrier"
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "not:orre_under_spies"
+      ],
+      "flag": "orre_under_spies",
+      "cast": [
+       {
+        "sheet": "orre_npc_02.png",
+        "from": [
+         4,
+         31
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "Every screen in the Under lights up. Venus, all pink and smiles:",
+         "Venus: Darlings, there are SPIES in the Under! Turn them in within thirty seconds!",
+         "Under kid: Spies? Ha. Nobody down here would tell Venus a thing. Welcome to the Under."
+        ]
+       }
+      ]
      }
     ]
    },
@@ -292573,19 +292678,19 @@
      "ccc.............c",
      "cc1...cccc......c",
      "cc1.............c",
-     "ccc..c.N..c.....c",
+     "ccc..c.N..c..N..c",
      "c....cccccc.....c",
      "c...............c",
      "c..............cc",
-     "c.........cX....c",
+     "c.........c.....c",
      "c.c.Xc..........c",
      "c...............c",
      "cc..............c",
      "c...............c",
      "c.....ccccc.ccccc",
-     "c.....ccX.....ccc",
+     "c.....cc......ccc",
      "c......c......ccc",
-     "cc....c........cc",
+     "cc....cN.......cc",
      "cc11ccccccccccccc",
      "ccccccccccccccccc"
     ],
@@ -292619,12 +292724,12 @@
     },
     "parts": true,
     "people": [
-     "SHUT DOWN THE UNDER"
+     "SHUT DOWN THE UNDER",
+     "EIN FILE F",
+     "RARE CANDIES"
     ],
     "trainer_spots": [
-     "Cipher Peon Dagur",
-     "Chaser Gurks",
-     "Cipher Peon Kloak"
+     "Chaser Gurks"
     ],
     "roofs": {
      "_picture": {
@@ -292657,31 +292762,31 @@
      "ccccccccccccccccccc",
      "ccccccccccccccccccc",
      "cc.......ccc...cccc",
-     "cc1....N....N.....c",
+     "cc1...............c",
      "ccc...............c",
      "c.................c",
-     "c.................>",
+     "c.................1",
      "c.................c",
      "c.................c",
      "c.................c",
      "ccc.............ccc",
      "ccccccccccccccccccc"
     ],
-    "exits": {
-     ">": "SHADOW_PKMN_LAB"
-    },
+    "exits": {},
     "links": {
      "2,3": [
       1,
       2,
       5
+     ],
+     "18,6": [
+      10,
+      1,
+      2
      ]
     },
     "parts": true,
-    "people": [
-     "MAINGATE KEY",
-     "U-DISK"
-    ],
+    "people": [],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -292708,22 +292813,39 @@
       ]
      }
     ],
-    "barred": [
+    "scenes": [
      {
-      "tiles": [
-       [
-        18,
-        6
-       ]
+      "trigger": "enter",
+      "condition": [
+       "cleared_the_under",
+       "not:orre_venus_fled"
       ],
-      "until": {
-       "flag_condition": "orre_u_disk"
-      },
-      "lines": [
-       "The way on is sealed.",
-       "A slot here takes a disk marked U."
-      ],
-      "look": "barrier"
+      "flag": "orre_venus_fled",
+      "cast": [
+       {
+        "sheet": "orre_trainer_cipher_venus.png",
+        "from": [
+         2,
+         2
+        ],
+        "path": [
+         [
+          17,
+          6
+         ]
+        ],
+        "face": "u",
+        "lines": [
+         "Venus: You'll never catch me! The subway's mine!"
+        ],
+        "leave_path": [
+         [
+          18,
+          6
+         ]
+        ]
+       }
+      ]
      }
     ]
    },
@@ -292866,7 +292988,7 @@
      "ccccccccccccccccccccc",
      "cc....c...........1cc",
      "c.................ccc",
-     "c...................c",
+     "c......N............c",
      "c.............cc....c",
      "cccc..........c...c.c",
      "cccc..........ccccc.c",
@@ -292890,7 +293012,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "BOY WITH A PART"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -293038,8 +293162,8 @@
      "ccccccccccc",
      "ccccccccccc",
      "cc..ccc..cc",
-     "c.........c",
-     "c.......1cc",
+     "c.N.N.....c",
+     "c.....N.1cc",
      "c.c.....1cc",
      "c.cc......c",
      "ccccc....cc",
@@ -293065,7 +293189,11 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "MEGG",
+     "NETT",
+     "BITT"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -293145,6 +293273,344 @@
       ]
      }
     ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c1..............c",
+     "c...........X...c",
+     "c...............c",
+     "ccccccccccccc...c",
+     "ccccccccccccc...c",
+     "c...............c",
+     "c...X...........c",
+     "c...............c",
+     "c...ccccccccccccc",
+     "c...ccccccccccccc",
+     "c...............c",
+     "c..........X....c",
+     "c...............c",
+     "ccccccccccccc...c",
+     "ccccccccccccc...c",
+     "c..............Nc",
+     "c...X...........c",
+     "c1..............c",
+     "ccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "1,19": [
+      11,
+      1,
+      2
+     ],
+     "1,2": [
+      2,
+      18,
+      6
+     ]
+    },
+    "parts": true,
+    "people": [
+     "ULTRA BALLS"
+    ],
+    "trainer_spots": [
+     "Hunter Frena",
+     "Chaser Liaks",
+     "Bodybuilder Lonia",
+     "Rider Nelis"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/under_subway_1.png",
+      "at": [
+       2,
+       1
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/under_subway_1.png",
+      "at": [
+       2,
+       1
+      ],
+      "size": [
+       17,
+       21
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "c1....................c",
+     "c........N............c",
+     "c.....................c",
+     "c.N...................c",
+     "c.....................c",
+     "c...N.................c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "ccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "1,2": [
+      10,
+      1,
+      19
+     ]
+    },
+    "parts": true,
+    "people": [
+     "MAN IN DARK GLASSES",
+     "SUBWAY KEY",
+     "SUBWAY TRAIN"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/under_subway_2.png",
+      "at": [
+       2,
+       1
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/under_subway_2.png",
+      "at": [
+       2,
+       1
+      ],
+      "size": [
+       23,
+       15
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "cleared_the_under",
+       "not:orre_venus_station"
+      ],
+      "flag": "orre_venus_station",
+      "cast": [
+       {
+        "sheet": "orre_trainer_cipher_venus.png",
+        "from": [
+         7,
+         4
+        ],
+        "to": [
+         9,
+         4
+        ],
+        "lines": [
+         "Venus: Still following me? How tiresome. Boys!"
+        ],
+        "stay": true
+       },
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         10,
+         3
+        ],
+        "to": [
+         11,
+         3
+        ],
+        "lines": [
+         "Cipher Peon: This way, Venus! Over the tracks!"
+        ],
+        "stay": true
+       },
+       {
+        "as": 0,
+        "lines": [
+         "Venus: Ta-ta, darling!"
+        ],
+        "leave_path": [
+         [
+          21,
+          13
+         ]
+        ]
+       },
+       {
+        "as": 1,
+        "lines": [],
+        "leave_path": [
+         [
+          21,
+          13
+         ]
+        ],
+        "concurrent": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "cccccccccccccccccccc..c",
+     "c...N.................c",
+     "c.....................c",
+     "ccccccccccc.ccccccccccc",
+     "c.........c...........c",
+     "c....N....c...........c",
+     "c.........c.......N...c",
+     "c.....................c",
+     "ccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {},
+    "parts": true,
+    "people": [
+     "SUBWAY TRAIN BACK",
+     "MAINGATE KEY",
+     "U-DISK"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/under_subway_3.png",
+      "at": [
+       2,
+       1
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/under_subway_3.png",
+      "at": [
+       2,
+       1
+      ],
+      "size": [
+       23,
+       16
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        11,
+        10
+       ]
+      ],
+      "until": {
+       "flag_condition": "orre_subway_bomb"
+      },
+      "lines": [
+       "The door's locked from the other side."
+      ],
+      "look": "barrier"
+     }
+    ],
+    "landings": [
+     [
+      4,
+      9
+     ]
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "not:orre_subway_bomb"
+      ],
+      "flag": "orre_subway_bomb",
+      "cast": [
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         9,
+         9
+        ],
+        "to": [
+         10,
+         9
+        ],
+        "lines": [
+         "Cipher Peon: The kid's on the train! Set the charge on the door!"
+        ],
+        "stay": true
+       },
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         13,
+         9
+        ],
+        "to": [
+         12,
+         9
+        ],
+        "lines": [
+         "Cipher Peon: Done! Nobody's getting through that. Run!"
+        ],
+        "stay": true
+       },
+       {
+        "as": 0,
+        "lines": [],
+        "leave_path": [
+         [
+          21,
+          2
+         ]
+        ]
+       },
+       {
+        "as": 1,
+        "shake": 900,
+        "leave_path": [
+         [
+          21,
+          2
+         ]
+        ],
+        "lines": [
+         "KA-BOOM! The charge went off too soon - the door is blown wide open!"
+        ]
+       }
+      ]
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -293157,18 +293623,38 @@
    "Junk Shop 2F",
    "Shop",
    "Kids Grid",
-   "Kids Grid Basement"
+   "Kids Grid Basement",
+   "Subway Stairway",
+   "Subway Station",
+   "Far Station"
   ],
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
+   "SILVA": 0,
+   "FLOATING PLATFORM": 0,
+   "CIPHER PEON KLOAK": 0,
+   "CIPHER PEON DAGUR": 0,
    "Hunter Zada": 0,
    "SHUT DOWN THE UNDER": 1,
-   "Cipher Peon Kloak": 1,
-   "Cipher Peon Dagur": 1,
+   "RARE CANDIES": 1,
+   "EIN FILE F": 1,
    "Chaser Gurks": 1,
-   "U-DISK": 2,
-   "MAINGATE KEY": 2
+   "BOY WITH A PART": 5,
+   "NETT": 8,
+   "BITT": 8,
+   "MEGG": 8,
+   "ULTRA BALLS": 10,
+   "Hunter Frena": 10,
+   "Chaser Liaks": 10,
+   "Bodybuilder Lonia": 10,
+   "Rider Nelis": 10,
+   "MAN IN DARK GLASSES": 11,
+   "SUBWAY KEY": 11,
+   "SUBWAY TRAIN": 11,
+   "SUBWAY TRAIN BACK": 12,
+   "MAINGATE KEY": 12,
+   "U-DISK": 12
   },
   "theme": "tunnel"
  },
@@ -293179,7 +293665,7 @@
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
      "c.....................c",
-     "c.......ccccccc.......c",
+     "c.....N.ccccccc.......c",
      "c.......ccccccc......cc",
      "c..c.c..c.ccccc...c...c",
      "c.......c1ccccc....cccc",
@@ -293188,7 +293674,7 @@
      "c.............c.......c",
      "c.....................c",
      "c.....................c",
-     "c......ccvc.........ccc",
+     "c.N....ccvc.........ccc",
      "c.......cc............c",
      "ccccccccccccccccccccccc"
     ],
@@ -293203,7 +293689,10 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "FULL HEALS",
+     "REVIVES"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -293253,17 +293742,17 @@
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "c..........c...............c",
+     "c.N........c...............c",
      "c..........c..X..........1.c",
      "cccc.ccccccccccc.ccccc.ccccc",
-     "c.....c........N.c.........c",
+     "c.....c........N.c.......N.c",
      "c.....c....X.....c....NN...c",
      "c.ccccccc.cccccccccc.c.ccccc",
-     "c......c.................X.c",
+     "c......c...N.............X.c",
      "c......c...................c",
      "cccccc.cccccc.cccccc.ccccccc",
-     "c.............N............c",
      "c..........................c",
+     "c....X.....................c",
      "ccccccccccccc1cccccccccccccc"
     ],
     "exits": {},
@@ -293281,15 +293770,18 @@
     },
     "parts": true,
     "people": [
+     "PP UPS",
      "CARD KEY",
+     "SHUTTER SWITCH",
      "SNAG SHADOW POKEMON",
      "SNAG AGAIN",
      "DNA SAMPLE (1)"
     ],
     "trainer_spots": [
      "Researcher Myron",
+     "Researcher Lethco",
      "Cipher Peon Cole",
-     "Cipher Peon Lare"
+     "Researcher Odlow"
     ],
     "roofs": {
      "_picture": {
@@ -293331,6 +293823,22 @@
        "The lift won't move without a Card Key."
       ],
       "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        4,
+        4
+       ]
+      ],
+      "until": {
+       "flag_condition": "orre_lab_shutter"
+      },
+      "lines": [
+       "A shutter is down over this door.",
+       "A switch somewhere must raise it."
+      ],
+      "look": "barrier"
      }
     ]
    },
@@ -293338,14 +293846,14 @@
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "c1.........c........c......c",
+     "c1.........c.....N..c..N...c",
      "c..........c...X....c...X..c",
      "ccccc.cccccccccc.cccccc.cccc",
-     "c..........................c",
-     "c..........................c",
+     "c......N...................c",
+     "c.....X....................c",
      "ccc.ccccccc.ccccccc.cccccc.c",
-     "c.....N.c.....N....c.......c",
-     "c...X...c..........c......1c",
+     "c.......c..........c.......c",
+     "c...X...c.....X....c......1c",
      "cccccccccccccccccccccccccccc"
     ],
     "exits": {},
@@ -293363,13 +293871,16 @@
     },
     "parts": true,
     "people": [
-     "DOWN ST. KEY",
-     "DNA SAMPLE (2)"
+     "DNA SAMPLE (2)",
+     "ELIXIRS",
+     "DOWN ST. KEY"
     ],
     "trainer_spots": [
+     "Researcher Coren",
+     "Researcher Dubik",
+     "Cipher Peon Lare",
      "Cipher Peon Vana",
-     "Researcher Odlow",
-     "Researcher Coren"
+     "Cipher Peon Tanie"
     ],
     "roofs": {
      "_picture": {
@@ -293418,8 +293929,8 @@
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "c..........c.......c.......c",
-     "c....N.....c.......c.......c",
+     "c........N.c.N.....c.......c",
+     "c....N.N...c.......c...X...c",
      "cccccc.cccccccccc.cccc.ccccc",
      "c.........................Xc",
      "c..........................c",
@@ -293438,12 +293949,16 @@
     },
     "parts": true,
     "people": [
+     "DATA ROM",
+     "FULL RESTORE",
      "SHADOW POKEMON LAB: EIN",
+     "CIPHER PEON SKRUB",
      "DNA SAMPLE (3)"
     ],
     "trainer_spots": [
      "Cipher Peon Lesar",
-     "Researcher Dubik"
+     "Cipher Peon Remil",
+     "Researcher Kotan"
     ],
     "roofs": {
      "_picture": {
@@ -293487,7 +294002,7 @@
       },
       "lines": [
        "The analyzer's door is shut.",
-       "It opens for three DNA samples."
+       "It asks for a password: three Pokemon. The DNA samples hold the answer."
       ],
       "look": "barrier"
      }
@@ -293501,22 +294016,34 @@
    "B2F"
   ],
   "figure_floors": {
+   "REVIVES": 0,
+   "FULL HEALS": 0,
    "SNAG SHADOW POKEMON": 1,
    "SNAG AGAIN": 1,
+   "SHUTTER SWITCH": 1,
+   "PP UPS": 1,
    "CARD KEY": 1,
    "DNA SAMPLE (1)": 1,
    "Researcher Myron": 1,
+   "Researcher Lethco": 1,
    "Cipher Peon Cole": 1,
-   "Cipher Peon Lare": 1,
+   "Researcher Odlow": 1,
    "DOWN ST. KEY": 2,
    "DNA SAMPLE (2)": 2,
-   "Cipher Peon Vana": 2,
-   "Researcher Odlow": 2,
+   "ELIXIRS": 2,
    "Researcher Coren": 2,
+   "Researcher Dubik": 2,
+   "Cipher Peon Lare": 2,
+   "Cipher Peon Vana": 2,
+   "Cipher Peon Tanie": 2,
    "SHADOW POKEMON LAB: EIN": 3,
+   "CIPHER PEON SKRUB": 3,
    "DNA SAMPLE (3)": 3,
+   "DATA ROM": 3,
+   "FULL RESTORE": 3,
    "Cipher Peon Lesar": 3,
-   "Researcher Dubik": 3
+   "Cipher Peon Remil": 3,
+   "Researcher Kotan": 3
   },
   "theme": "tunnel"
  },

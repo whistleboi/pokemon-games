@@ -331,6 +331,18 @@ PRISONER = {"text": "Prisoner", "action": "EVENT", "event": {
     "fail": ["Prisoner: Psst! The sheriff keeps the key on his desk. Get me out of here!"],
     "done": ["(The cell is empty now.)"]}}
 
+# (batch 4: after Dakim, Duking has caught two of Miror B.'s peons - in the sheriff's cells. Reath sleeps; her Elevator Key
+#  is on her belt: Colosseum part 6. Ferma stays put even with the cell open.)
+REATH_CELL = {"text": "Miror B. Peon Reath (asleep)", "action": "EVENT", "condition": "orre_dakim_mt_battle", "event": {"stages": [
+    {"requires": ["not:orre_got_jail_key"], "lines": ["Two of Miror B.'s peons, locked in a cell. One is fast asleep, a key on her belt.",
+                                                     "The cell's locked. The sheriff keeps a key on his desk..."]},
+    {"requires": ["orre_got_jail_key", "not:orre_elevator_key"], "flag": "orre_elevator_key", "gift_item": {"ELEVATOR_KEY": 1},
+     "lines": ["You unlock the cell. Reath is fast asleep, snoring.", "On her belt hangs a key marked ELEVATOR. You ease it off...",
+               "You got the ELEVATOR KEY! It must work the Pyrite Building's giant lift."]}],
+    "done": ["Reath: Zzz... Miror B.... more music... zzz..."]}}
+FERMA_CELL = {"text": "Miror B. Peon Ferma", "action": "EVENT", "condition": "orre_dakim_mt_battle", "event": {"lines": [
+    "Ferma: Duking caught us fair and square. Hmph.", "Ferma: The cell's open? ...Where would I even go? I'll wait for Miror B."]}}
+
 
 def _pyrite(maps):
     m = maps["PYRITE_TOWN"]
@@ -346,7 +358,7 @@ def _pyrite(maps):
     now = {s: (DUKING_STAGES if (p.get("text") if isinstance(p, dict) else p) == "Duking" else p) for s, p in now.items()}
     dk["people"] = [now[s] for s in sorted(now, key=lambda s: (s[1], s[0]))]
     _set_people(dk, {(4, 8): SILVA, (12, 9): MARCIA})
-    _set_people(m["rooms"]["sheriff"], {(14, 3): JAIL_KEY, (30, 7): PRISONER})
+    _set_people(m["rooms"]["sheriff"], {(14, 3): JAIL_KEY, (30, 7): PRISONER, (33, 7): REATH_CELL, (33, 12): FERMA_CELL})
 
 
 # ================================================================== batch 2: Pyrite Cave, Agate (Colosseum part 5; BATCH_2.md)
@@ -399,6 +411,66 @@ def _past_guard(m):
         _past_guard(r)
 
 
+# ================================================================== batch 4: The Under and its subway (Colosseum part 6; BATCH_4.md)
+# Played-out scenes on The Under's floors (dungeon floor "scenes", src/dungeon/npc.py); its people and battles are route
+# options in orre_area_data.json (kanto_handoff/orre_rom_tools/obatch4.py). Floors: 0 the Under, 2 the studio basement,
+# 10 the subway stairway, 11 the station, 12 the far station (reached only by train: its "landings").
+REACH = ".,N"
+
+
+def _open(fl):
+    return [(x, y) for y, r in enumerate(fl["art"]) for x, c in enumerate(r) if c in REACH]
+
+
+def _link_to(fl, floor):
+    return next((tuple(map(int, k.split(","))) for k, v in (fl.get("links") or {}).items() if v[0] == floor), None)
+
+
+def _near(fl, t, far=False):
+    """The open tile nearest t (or farthest from it)."""
+    op = [u for u in _open(fl) if fl["art"][u[1]][u[0]] != "N"]
+    return (max if far else min)(op, key=lambda u: abs(u[0] - t[0]) + abs(u[1] - t[1]))
+
+
+def _under(maps):
+    fl = maps["THE_UNDER"]["floors"]
+    VENUS, PEON, LOCAL = "orre_trainer_cipher_venus.png", "orre_trainer_cipher_grunt.png", "orre_npc_02.png"
+    up = next(((x, y) for y, r in enumerate(fl[0]["art"]) for x, c in enumerate(r) if c == "^"), (15, 15))
+    fl[0]["scenes"] = [{"trigger": "enter", "condition": ["not:orre_under_spies"], "flag": "orre_under_spies",
+                        "cast": [{"sheet": LOCAL, "from": list(_near(fl[0], up, far=True)), "to": "player", "leave": "back",
+                                  "lines": ["Every screen in the Under lights up. Venus, all pink and smiles:",
+                                            "Venus: Darlings, there are SPIES in the Under! Turn them in within thirty seconds!",
+                                            "Under kid: Spies? Ha. Nobody down here would tell Venus a thing. Welcome to the Under."]}]}]
+    door = _link_to(fl[2], 10)
+    if door:
+        fl[2]["scenes"] = [{"trigger": "enter", "condition": ["cleared_the_under", "not:orre_venus_fled"], "flag": "orre_venus_fled",
+                            "cast": [{"sheet": VENUS, "from": list(_near(fl[2], door, far=True)), "path": [list(_near(fl[2], door))],
+                                      "face": "u", "lines": ["Venus: You'll never catch me! The subway's mine!"], "leave_path": [list(door)]}]}]
+    q = _link_to(fl[11], 10) or (4, 3)
+    far = _near(fl[11], q, far=True)
+    fl[11]["scenes"] = [{"trigger": "enter", "condition": ["cleared_the_under", "not:orre_venus_station"], "flag": "orre_venus_station",
+                         "cast": [{"sheet": VENUS, "from": list(_near(fl[11], (q[0] + 6, q[1] + 2))), "to": list(_near(fl[11], (q[0] + 8, q[1] + 2))),
+                                   "lines": ["Venus: Still following me? How tiresome. Boys!"], "stay": True},
+                                  {"sheet": PEON, "from": list(_near(fl[11], (q[0] + 9, q[1] + 1))), "to": list(_near(fl[11], (q[0] + 10, q[1] + 1))),
+                                   "lines": ["Cipher Peon: This way, Venus! Over the tracks!"], "stay": True},
+                                  {"as": 0, "lines": ["Venus: Ta-ta, darling!"], "leave_path": [list(far)]},
+                                  {"as": 1, "lines": [], "leave_path": [list(far)], "concurrent": True}]}]
+    back = next(((x, y) for y, r in enumerate(fl[12]["art"]) for x, c in enumerate(r) if c == "N"), None)
+    if back:
+        land = _near(fl[12], (back[0], back[1] + 1))
+        fl[12]["landings"] = [list(land)]
+        bars = [b for b in fl[12].get("barred") or []]
+        boom = bars[0]["tiles"][0] if bars else list(land)
+        fl[12]["scenes"] = [{"trigger": "enter", "condition": ["not:orre_subway_bomb"], "flag": "orre_subway_bomb",
+                             "cast": [{"sheet": PEON, "from": list(_near(fl[12], (boom[0] - 2, boom[1] - 1))), "to": list(_near(fl[12], (boom[0] - 1, boom[1] - 1))),
+                                       "lines": ["Cipher Peon: The kid's on the train! Set the charge on the door!"], "stay": True},
+                                      {"sheet": PEON, "from": list(_near(fl[12], (boom[0] + 2, boom[1] - 1))), "to": list(_near(fl[12], (boom[0] + 1, boom[1] - 1))),
+                                       "lines": ["Cipher Peon: Done! Nobody's getting through that. Run!"], "stay": True},
+                                      {"as": 0, "lines": [], "leave_path": [list(_near(fl[12], land, far=True))]},
+                                      {"as": 1, "shake": 900, "leave_path": [list(_near(fl[12], land, far=True))],
+                                       "lines": ["KA-BOOM! The charge went off too soon - the door is blown wide open!"]}]}]
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -406,6 +478,8 @@ def apply(maps):
         _pyrite(maps)
     if "AGATE_VILLAGE" in maps:
         _agate(maps)
+    if "THE_UNDER" in maps:
+        _under(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

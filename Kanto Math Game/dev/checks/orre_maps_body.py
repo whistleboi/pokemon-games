@@ -293,12 +293,12 @@ def _bars(area, came, floor):
 
 
 for _area, _came, _fl, _flags in (("SHADOW_PKMN_LAB", "THE_UNDER", 0, ["orre_maingate_key"]),
-                                   ("SHADOW_PKMN_LAB", "THE_UNDER", 1, ["orre_card_key"]),
+                                   ("SHADOW_PKMN_LAB", "THE_UNDER", 1, ["orre_lab_shutter", "orre_card_key"]),   # (batch 4: the Shutter Switch too)
                                    ("SHADOW_PKMN_LAB", "THE_UNDER", 2, ["orre_down_st_key"]),
                                    ("SHADOW_PKMN_LAB", "THE_UNDER", 3, ["orre_dna_1", "orre_dna_2", "orre_dna_3"]),
                                    ("XD_CIPHER_LAB", "GATEON_PORT", 2, ["xd_id_card"]),
-                                   ("THE_UNDER", "PYRITE_TOWN", 0, ["orre_f_disk"]),
-                                   ("THE_UNDER", "PYRITE_TOWN", 2, ["orre_u_disk"])):
+                                   ("THE_UNDER", "PYRITE_TOWN", 0, ["orre_f_disk", "orre_r_disk"]),   # (batch 4: F forward, R right)
+                                   ("THE_UNDER", "PYRITE_TOWN", 12, ["orre_subway_bomb"])):   # (batch 4: the far station's blown door)
     for _f in _flags:
         story.story_flags.pop(_f, None)
     _shut = _bars(_area, _came, _fl)

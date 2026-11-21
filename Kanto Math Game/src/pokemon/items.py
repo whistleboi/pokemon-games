@@ -580,6 +580,16 @@ STORY_TEXT = {
     "EIN_FILE_C": "One of Cipher scientist Ein's files: notes on Cipher and its Shadow Pokemon factory.",
     "TIME_FLUTE": "Vander's flute. Its song can open one Shadow Pokemon's heart at once - it can be played only once.",   # (Colosseum: Mt. Battle, after Dakim)
     "F_DISK": "A disk Dakim dropped at Mt. Battle. It's marked F.",   # (Colosseum: it moves a floating platform in The Under)
+    "EIN_FILE_F": "One of Cipher scientist Ein's files: notes on Cipher's admins and their Shadow Pokemon.",
+    "ELEVATOR_KEY": "The key to the Pyrite Building's giant lift down to The Under.",   # (Colosseum: lifted off Miror B.'s peon Reath in the jail)
+    "POWER_UP_PART": "A part the Kids Grid needs to get their network running again.",
+    "R_DISK": "A disk marked R. In The Under's floating platform, it sends the platform right.",
+    "U_DISK": "A disk marked U. In The Under's floating platform, it sends the platform up.",
+    "SUBWAY_KEY": "The key that starts The Under's old subway train.",
+    "MAINGATE_KEY": "The key to the Shadow Pokemon Lab's main gate.",
+    "LAB_CARD_KEY": "A card key that works the Shadow Pokemon Lab's lift.",
+    "DOWN_ST_KEY": "The key to the Shadow Pokemon Lab's lift down to its lowest floor.",
+    "DATA_ROM": "Ein's Data ROM. Someone like Nett could read what's on it.",
     "TIDAL_BELL": "A bell that rings like the tide.",
     "RUBY": "A gem as red as fire.", "SAPPHIRE": "A gem as blue as the sea.",
     "FIRE_TREASURE": "The Fire Island's sacred treasure.",

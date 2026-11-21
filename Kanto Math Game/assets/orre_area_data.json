@@ -622,7 +622,7 @@
           "text": "The Under",
           "door": "cycle",
           "target_area": "THE_UNDER",
-          "condition": "orre_dakim_mt_battle"
+          "condition": "visited_THE_UNDER"
         },
         {
           "text": "ONBS Building",
@@ -1517,6 +1517,51 @@
             "lines": [
               "You found 3 HYPER POTIONS!"
             ]
+          }
+        },
+        {
+          "text": "CHASER KAI AT THE LIFT",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_dakim_mt_battle",
+          "flag_condition": "not orre_kai_lift",
+          "event": {
+            "lines": [
+              "Chaser Kai: This lift goes down to the Under. Cipher's orders: nobody gets on.",
+              "Chaser Kai: You want past? Beat me first!"
+            ],
+            "flag": "orre_kai_lift",
+            "battle": {
+              "name": "Chaser Kai",
+              "class": "CHASER",
+              "sprite": "orre_chaser_m.png",
+              "team": [
+                231,
+                329
+              ],
+              "levels": [
+                38,
+                38
+              ],
+              "team_moves": [
+                [
+                  "TAKE-DOWN",
+                  "ROCK-SMASH",
+                  "ODOR-SLEUTH",
+                  "FLAIL"
+                ],
+                [
+                  "SAND-TOMB",
+                  "SAND-ATTACK",
+                  "BITE",
+                  "GUST"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              }
+            }
           }
         },
         {
@@ -8634,8 +8679,41 @@
             39,
             353
           ],
+          "levels": [
+            35,
+            34,
+            35,
+            35
+          ],
+          "team_moves": [
+            [
+              "DOUBLE-SLAP",
+              "GROWL",
+              "TAIL-WHIP",
+              "CHARM"
+            ],
+            [
+              "ACID",
+              "RAZOR-LEAF",
+              "SWEET-SCENT",
+              "CUT"
+            ],
+            [
+              "DOUBLE-SLAP",
+              "DEFENSE-CURL",
+              "DISABLE",
+              "CHARM"
+            ],
+            [
+              "ASTONISH",
+              "KNOCK-OFF",
+              "SNATCH",
+              "FEINT-ATTACK"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           }
         },
         {
@@ -8647,91 +8725,236 @@
             349,
             321
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Kloak",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            166,
-            167,
-            313
+          "levels": [
+            36,
+            36,
+            40
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Dagur",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            168,
-            44,
-            314
+          "team_moves": [
+            [
+              "SPLASH",
+              "TACKLE"
+            ],
+            [
+              "SPLASH",
+              "TACKLE"
+            ],
+            [
+              "SURF",
+              "STRENGTH",
+              "ASTONISH"
+            ]
           ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           }
         },
         {
           "name": "Hunter Frena",
           "class": "HUNTER",
-          "sprite": "orre_hunter_f.png",
+          "sprite": "orre_hunter_m.png",
           "team": [
             216,
             39,
             285,
-            207
+            9373
           ],
+          "levels": [
+            37,
+            36,
+            35,
+            43
+          ],
+          "team_moves": [
+            [
+              "FAKE-TEARS",
+              "FEINT-ATTACK",
+              "TORMENT",
+              "LICK"
+            ],
+            [
+              "FAKE-TEARS",
+              "FEINT-ATTACK",
+              "WATER-PULSE",
+              "DOUBLE-SLAP"
+            ],
+            [
+              "FAKE-TEARS",
+              "GROWTH",
+              "HEADBUTT",
+              "MEGA-DRAIN"
+            ],
+            [
+              "SHADOW-RUSH",
+              "FEINT-ATTACK",
+              "SAND-ATTACK",
+              "POISON-STING"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "when_flags": [
+            "cleared_the_under"
+          ]
         },
         {
           "name": "Chaser Liaks",
           "class": "CHASER",
-          "sprite": "orre_chaser_f.png",
+          "sprite": "orre_chaser_m.png",
           "team": [
-            234,
+            9392,
             44,
             281,
             315
           ],
+          "levels": [
+            43,
+            38,
+            37,
+            38
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "ASTONISH",
+              "HYPNOSIS",
+              "LEER"
+            ],
+            [
+              "SLEEP-POWDER",
+              "ACID",
+              "FLAIL",
+              "RAZOR-LEAF"
+            ],
+            [
+              "HYPNOSIS",
+              "CALM-MIND",
+              "SHOCK-WAVE",
+              "PSYCHIC"
+            ],
+            [
+              "GRASS-WHISTLE",
+              "COTTON-SPORE",
+              "PIN-MISSILE",
+              "MAGICAL-LEAF"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "when_flags": [
+            "cleared_the_under"
+          ]
         },
         {
           "name": "Bodybuilder Lonia",
           "class": "BODYBUILDER",
           "sprite": "orre_bodybuilder.png",
           "team": [
-            221,
+            9385,
             206,
             224,
             284
           ],
+          "levels": [
+            43,
+            39,
+            38,
+            39
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "ENDURE",
+              "ODOR-SLEUTH",
+              "DIG"
+            ],
+            [
+              "GLARE",
+              "WATER-PULSE",
+              "ICE-BEAM",
+              "HEADBUTT"
+            ],
+            [
+              "THUNDER-WAVE",
+              "FOCUS-ENERGY",
+              "PSYBEAM",
+              "OCTAZOOKA"
+            ],
+            [
+              "STUN-SPORE",
+              "WHIRLWIND",
+              "PSYBEAM",
+              "BUBBLE-BEAM"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "team_items": [
+            "SOFT_SAND",
+            null,
+            null,
+            null
+          ],
+          "when_flags": [
+            "cleared_the_under"
+          ]
         },
         {
           "name": "Rider Nelis",
           "class": "RIDER",
           "sprite": "orre_rider.png",
           "team": [
-            215,
+            9379,
             336,
             222,
             294
           ],
+          "levels": [
+            43,
+            40,
+            41,
+            41
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "FEINT-ATTACK",
+              "SCREECH",
+              "FURY-SWIPES"
+            ],
+            [
+              "SWAGGER",
+              "SCREECH",
+              "DIG",
+              "BODY-SLAM"
+            ],
+            [
+              "CONFUSE-RAY",
+              "SCREECH",
+              "SPIKE-CANNON",
+              "SURF"
+            ],
+            [
+              "SWAGGER",
+              "SCREECH",
+              "BRICK-BREAK",
+              "STRENGTH"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "when_flags": [
+            "cleared_the_under"
+          ]
         }
       ],
       "route_menu": [
@@ -8742,7 +8965,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "cleared_the_under"
           ]
         },
         {
@@ -8753,7 +8977,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "cleared_the_under"
           ]
         },
         {
@@ -8766,41 +8991,490 @@
           "text": "SHUT DOWN THE UNDER",
           "action": "EVENT",
           "color": "GOLD",
+          "flag_condition": "not cleared_the_under",
           "event": {
             "lines": [
-              "Cipher Admin Venus: How dare you march into my studio!",
-              "My Shadow Pokemon are beautiful, and you'll see how beautiful in battle!"
+              "The studio lights blaze. Venus is about to go on air.",
+              "Venus: Hm? Who let you in? ...Wait. You're the spies!"
             ],
+            "flag": "cleared_the_under",
             "battle": {
               "name": "Cipher Admin Venus",
               "class": "CIPHER_ADMIN",
-              "sprite": "beauty.png",
+              "sprite": "orre_venus.png",
               "team": [
-                350,
-                182,
-                26,
-                40,
-                200
+                9398,
+                301,
+                45,
+                354,
+                208
               ],
               "levels": [
-                25,
-                25,
-                26,
-                27,
-                27
+                40,
+                45,
+                44,
+                45,
+                45
               ],
+              "team_moves": [
+                [
+                  "SHADOW-RUSH",
+                  "RAIN-DANCE",
+                  "LEER",
+                  "GUST"
+                ],
+                [
+                  "ATTRACT",
+                  "WATER-PULSE",
+                  "THUNDERBOLT",
+                  "DOUBLE-EDGE"
+                ],
+                [
+                  "ATTRACT",
+                  "STUN-SPORE",
+                  "ACID",
+                  "GIGA-DRAIN"
+                ],
+                [
+                  "ATTRACT",
+                  "CURSE",
+                  "PSYCHIC",
+                  "SHADOW-BALL"
+                ],
+                [
+                  "ATTRACT",
+                  "TAUNT",
+                  "ROCK-SLIDE",
+                  "EARTHQUAKE"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 15
+                "balls": 0
               },
+              "music": "orre/admin_battle",
+              "is_boss_battle": true,
               "dialogue": {
+                "intro": [
+                  "Venus: Spies, in MY studio? On my big day?!",
+                  "Venus: Very well. Let all of Orre watch me win!"
+                ],
                 "player_won": [
-                  "Venus: My makeup... ruined! Fine, The Under is yours!"
+                  "Venus: No, no, NO! This is not how my show ends!",
+                  "Venus spins round and runs from the studio, down the back stairs."
                 ]
               }
-            },
-            "flag": "cleared_the_under"
+            }
+          }
+        },
+        {
+          "text": "RARE CANDIES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_under_candies",
+          "event": {
+            "lines": [
+              "Three Rare Candies, tucked under the newsreader's desk."
+            ],
+            "flag": "orre_under_candies",
+            "gift_item": {
+              "RARE_CANDY": 3
+            }
+          }
+        },
+        {
+          "text": "EIN FILE F",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_ein_file_f",
+          "event": {
+            "lines": [
+              "Venus dropped a file as she ran: Ein File F."
+            ],
+            "flag": "orre_ein_file_f",
+            "gift_item": {
+              "EIN_FILE_F": 1
+            }
           },
-          "flag_condition": "not cleared_the_under"
+          "condition": "cleared_the_under"
+        },
+        {
+          "text": "BOY WITH A PART",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "flag": "orre_power_up_part",
+            "gift_item": {
+              "POWER_UP_PART": 1
+            },
+            "lines": [
+              "Boy: You're not from down here, are you? Then you're no friend of Venus.",
+              "Boy: Here - the Power Up Part. Take it to Nett. His house has the dish on the roof.",
+              "On the shop's TV: a man in a suit, Nascour, talks with Venus... and a scientist. Ein.",
+              "Nascour: Ein, your Shadow Pokemon research must go on. Venus, keep the Under in line.",
+              "Ein: Of course. My files will see to it. ...The screen goes dark."
+            ],
+            "done": [
+              "Boy: Nett's house is the one with the dish on the roof. Go on!"
+            ]
+          }
+        },
+        {
+          "text": "NETT",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:orre_power_up_part",
+                  "not:orre_kids_grid"
+                ],
+                "lines": [
+                  "Nett: Who are you? Kids Grid business only. Unless you've got the Power Up Part..."
+                ]
+              },
+              {
+                "requires": [
+                  "orre_power_up_part",
+                  "not:orre_kids_grid"
+                ],
+                "flag": "orre_kids_grid",
+                "take_item": {
+                  "POWER_UP_PART": 1
+                },
+                "lines": [
+                  "Nett: The Power Up Part? You're on our side! We're the Kids Grid. Venus runs this town on TV, and we hate it.",
+                  "Nett: With this, our network's back up. Megg, take their P*DA number!",
+                  "Megg: Got it! We'll send you anything we hear.",
+                  "A shout from outside: \"We caught the spy!\" ...They've locked up Silva!"
+                ]
+              },
+              {
+                "requires": [
+                  "has_item:DATA_ROM",
+                  "not:orre_data_rom_given"
+                ],
+                "flag": "orre_data_rom_given",
+                "take_item": {
+                  "DATA_ROM": 1
+                },
+                "lines": [
+                  "Nett: Ein's Data ROM? Let me crack it... It's a list of every Shadow Pokemon Cipher made!",
+                  "Nett: Someone erased most of it. But it points to one place: Realgam Tower."
+                ]
+              }
+            ],
+            "done": [
+              "Nett: The Kids Grid is watching Venus. We'll tell you anything we find."
+            ]
+          }
+        },
+        {
+          "text": "BITT",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Bitt: Venus thinks everyone in the Under loves her. Ha!"
+            ]
+          }
+        },
+        {
+          "text": "MEGG",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Megg: I keep the Kids Grid's address book. You're in it now!"
+            ]
+          }
+        },
+        {
+          "text": "CIPHER PEON KLOAK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_kids_grid",
+          "flag_condition": "not orre_under_kloak",
+          "event": {
+            "lines": [
+              "Cipher Peon Kloak: The spy's in the cage, nice and tight. Hey... you're not from the Under either!"
+            ],
+            "flag": "orre_under_kloak",
+            "battle": {
+              "name": "Cipher Peon Kloak",
+              "class": "CIPHER_PEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                9354,
+                167,
+                313
+              ],
+              "levels": [
+                40,
+                39,
+                38
+              ],
+              "team_moves": [
+                [
+                  "SHADOW-RUSH",
+                  "BATON-PASS",
+                  "SAFEGUARD",
+                  "SUPERSONIC"
+                ],
+                [
+                  "SPIDER-WEB",
+                  "FLASH",
+                  "POISON-STING",
+                  "NIGHT-SHADE"
+                ],
+                [
+                  "CONFUSE-RAY",
+                  "DOUBLE-TEAM",
+                  "QUICK-ATTACK",
+                  "SIGNAL-BEAM"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/cipher_battle",
+              "dialogue": {
+                "player_won": [
+                  "Kloak: Ugh... Dagur, get them!"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "CIPHER PEON DAGUR",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_under_kloak",
+          "flag_condition": "not orre_under_dagur",
+          "event": {
+            "lines": [
+              "Cipher Peon Dagur: You beat Kloak? Then you're mine!"
+            ],
+            "flag": "orre_under_dagur",
+            "battle": {
+              "name": "Cipher Peon Dagur",
+              "class": "CIPHER_PEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                168,
+                44,
+                314
+              ],
+              "levels": [
+                38,
+                39,
+                40
+              ],
+              "team_moves": [
+                [
+                  "SPIDER-WEB",
+                  "FLASH",
+                  "PSYBEAM",
+                  "NIGHT-SHADE"
+                ],
+                [
+                  "STUN-SPORE",
+                  "ACID",
+                  "CUT",
+                  "RAZOR-LEAF"
+                ],
+                [
+                  "FLATTER",
+                  "QUICK-ATTACK",
+                  "SILVER-WIND",
+                  "SHOCK-WAVE"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/cipher_battle"
+            }
+          }
+        },
+        {
+          "text": "SILVA",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_kids_grid",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:orre_under_dagur"
+                ],
+                "lines": [
+                  "Silva: (through the bars) Watch those two peons. Deal with them and come back."
+                ]
+              },
+              {
+                "requires": [
+                  "orre_under_dagur",
+                  "not:orre_r_disk"
+                ],
+                "flag": "orre_r_disk",
+                "gift_item": {
+                  "R_DISK": 1
+                },
+                "lines": [
+                  "Silva: (through the bars) The door's locked, and they took the key. Don't worry about me.",
+                  "Silva: I snatched this off a peon before they grabbed me: the R-Disk. The floating platform takes it.",
+                  "Silva: F sends it forward, R sends it right. Right is Venus's studio. Go!"
+                ]
+              }
+            ],
+            "done": [
+              "Silva: I'll get out of here somehow. Go stop Venus!"
+            ]
+          }
+        },
+        {
+          "text": "FLOATING PLATFORM",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "orre_u_disk",
+                  "not:orre_windmill_flute"
+                ],
+                "flag": "orre_windmill_flute",
+                "gift_item": {
+                  "TIME_FLUTE": 1
+                },
+                "lines": [
+                  "You slot the U-Disk in. The platform rises... up and up, through a hatch...",
+                  "It stops inside Pyrite's windmill! On a ledge lies a flute that hums with time: another Time Flute!",
+                  "The platform sinks back down to the Under."
+                ]
+              }
+            ],
+            "done": [
+              "The floating platform. Its slot takes disks: F sends it forward, R right, U up."
+            ]
+          }
+        },
+        {
+          "text": "ULTRA BALLS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_subway_ultra_balls",
+          "event": {
+            "lines": [
+              "Four Ultra Balls on the landing."
+            ],
+            "flag": "orre_subway_ultra_balls",
+            "gift_item": {
+              "ULTRA_BALL": 4
+            }
+          }
+        },
+        {
+          "text": "MAN IN DARK GLASSES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Man in dark glasses: A woman in pink just tore past with two of those uniforms. Took the tracks on foot.",
+              "Man in dark glasses: This train runs to the old depot. Needs a key, though."
+            ]
+          }
+        },
+        {
+          "text": "SUBWAY KEY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_subway_key",
+          "event": {
+            "lines": [
+              "Venus dropped something outside the station: the Subway Key."
+            ],
+            "flag": "orre_subway_key",
+            "gift_item": {
+              "SUBWAY_KEY": 1
+            }
+          },
+          "condition": "cleared_the_under"
+        },
+        {
+          "text": "SUBWAY TRAIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "has_item:SUBWAY_KEY"
+            ],
+            "lines": [
+              "You turn the Subway Key in the cab. The engine wheezes into life..."
+            ],
+            "travel": "THE_UNDER",
+            "land_floor": [
+              12,
+              4,
+              9
+            ],
+            "ride": "orre_subway",
+            "fail": [
+              "The train's cab is locked. It needs a key."
+            ]
+          }
+        },
+        {
+          "text": "SUBWAY TRAIN BACK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "The train rattles back to the station."
+            ],
+            "travel": "THE_UNDER",
+            "land_floor": [
+              11,
+              5,
+              7
+            ],
+            "ride": "orre_subway"
+          }
+        },
+        {
+          "text": "MAINGATE KEY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_maingate_key",
+          "event": {
+            "lines": [
+              "Something glints in the rubble past the blown door: the Maingate Key."
+            ],
+            "flag": "orre_maingate_key",
+            "gift_item": {
+              "MAINGATE_KEY": 1
+            }
+          }
+        },
+        {
+          "text": "U-DISK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_u_disk",
+          "event": {
+            "lines": [
+              "Behind the crates, a disk marked U."
+            ],
+            "flag": "orre_u_disk",
+            "gift_item": {
+              "U_DISK": 1
+            }
+          }
         },
         {
           "text": "Pyrite Town",
@@ -8829,32 +9503,6 @@
             "has_under_badge"
           ],
           "color": "RED"
-        },
-        {
-          "text": "U-DISK",
-          "action": "EVENT",
-          "color": "GOLD",
-          "flag_condition": "not orre_u_disk",
-          "event": {
-            "lines": [
-              "A disk marked U lies by the old subway door.",
-              "You took the U-Disk."
-            ],
-            "flag": "orre_u_disk"
-          }
-        },
-        {
-          "text": "MAINGATE KEY",
-          "action": "EVENT",
-          "color": "GOLD",
-          "flag_condition": "not orre_maingate_key",
-          "event": {
-            "lines": [
-              "Something glints by the broken door: the Maingate Key.",
-              "You took it."
-            ],
-            "flag": "orre_maingate_key"
-          }
         }
       ],
       "next_area": "PYRITE_TOWN",
@@ -9047,14 +9695,69 @@
           "sprite": "orre_scientist.png",
           "team": [
             100,
-            100,
-            97,
-            334,
-            141,
-            78
+            100
           ],
+          "levels": [
+            38,
+            38
+          ],
+          "team_moves": [
+            [
+              "TACKLE",
+              "SONIC-BOOM",
+              "SPARK"
+            ],
+            [
+              "SWIFT",
+              "SONIC-BOOM",
+              "SPARK"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "dialogue": {
+            "player_won": [
+              "Myron: Eek! I'm out of here!",
+              "He bolts, dropping a Card Key."
+            ]
+          }
+        },
+        {
+          "name": "Researcher Lethco",
+          "class": "RESEARCHER",
+          "sprite": "orre_scientist.png",
+          "team": [
+            81,
+            170,
+            309
+          ],
+          "levels": [
+            37,
+            38,
+            39
+          ],
+          "team_moves": [
+            [
+              "THUNDER-SHOCK",
+              "METAL-SOUND",
+              "FRUSTRATION"
+            ],
+            [
+              "WATER-GUN",
+              "SPARK",
+              "FRUSTRATION"
+            ],
+            [
+              "SHOCK-WAVE",
+              "BITE",
+              "FRUSTRATION"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
           }
         },
         {
@@ -9062,15 +9765,152 @@
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            190,
+            9364,
             162,
             223,
-            351,
-            335,
-            31
+            351
           ],
+          "levels": [
+            43,
+            37,
+            39,
+            41
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "BATON-PASS",
+              "TICKLE",
+              "FURY-SWIPES"
+            ],
+            [
+              "FLAMETHROWER",
+              "SURF",
+              "RAIN-DANCE"
+            ],
+            [
+              "FLAMETHROWER",
+              "SURF",
+              "RAIN-DANCE",
+              "SUNNY-DAY"
+            ],
+            [
+              "WEATHER-BALL",
+              "HAIL",
+              "RAIN-DANCE",
+              "SUNNY-DAY"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Researcher Odlow",
+          "class": "RESEARCHER",
+          "sprite": "orre_scientist.png",
+          "team": [
+            81,
+            101,
+            82
+          ],
+          "levels": [
+            38,
+            39,
+            39
+          ],
+          "team_moves": [
+            [
+              "THUNDER",
+              "TACKLE",
+              "METAL-SOUND",
+              "SWIFT"
+            ],
+            [
+              "THUNDER",
+              "TACKLE",
+              "SCREECH",
+              "SELF-DESTRUCT"
+            ],
+            [
+              "THUNDER",
+              "TACKLE",
+              "SCREECH",
+              "SWIFT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Researcher Coren",
+          "class": "RESEARCHER",
+          "sprite": "orre_scientist.png",
+          "team": [
+            81,
+            101,
+            82
+          ],
+          "levels": [
+            39,
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "THUNDER",
+              "TACKLE",
+              "METAL-SOUND"
+            ],
+            [
+              "THUNDER",
+              "TACKLE",
+              "SCREECH"
+            ],
+            [
+              "THUNDER",
+              "TACKLE",
+              "SCREECH"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Researcher Dubik",
+          "class": "RESEARCHER",
+          "sprite": "orre_scientist.png",
+          "team": [
+            101,
+            101
+          ],
+          "levels": [
+            37,
+            37
+          ],
+          "team_moves": [
+            [
+              "EXPLOSION",
+              "SCREECH",
+              "SPARK",
+              "SONIC-BOOM"
+            ],
+            [
+              "EXPLOSION",
+              "SCREECH",
+              "SPARK",
+              "SWIFT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
           }
         },
         {
@@ -9081,92 +9921,275 @@
             318,
             274,
             228,
-            198,
-            237,
-            130
+            9368
           ],
+          "levels": [
+            38,
+            38,
+            38,
+            43
+          ],
+          "team_moves": [
+            [
+              "BITE",
+              "RAGE",
+              "SCARY-FACE",
+              "WATER-PULSE"
+            ],
+            [
+              "FEINT-ATTACK",
+              "QUICK-ATTACK",
+              "GROWTH",
+              "NATURE-POWER"
+            ],
+            [
+              "BITE",
+              "SECRET-POWER",
+              "ROAR",
+              "FIRE-SPIN"
+            ],
+            [
+              "SHADOW-RUSH",
+              "FEINT-ATTACK",
+              "MEAN-LOOK",
+              "NIGHT-SHADE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Vana",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            205,
+            9371,
             41,
             333,
-            247,
-            53,
-            214
+            247
           ],
+          "levels": [
+            43,
+            40,
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "EXPLOSION",
+              "PROTECT",
+              "BIDE"
+            ],
+            [
+              "WING-ATTACK",
+              "ASTONISH",
+              "QUICK-ATTACK",
+              "POISON-FANG"
+            ],
+            [
+              "TAKE-DOWN",
+              "PURSUIT",
+              "SAFEGUARD",
+              "FLY"
+            ],
+            [
+              "STOMP",
+              "BITE",
+              "SCREECH",
+              "DIG"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
-          "name": "Researcher Odlow",
-          "class": "RESEARCHER",
-          "sprite": "orre_scientist.png",
+          "name": "Cipher Peon Tanie",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
           "team": [
-            81,
-            101,
-            82,
-            230,
-            310,
-            211
+            9374,
+            264,
+            288
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Researcher Coren",
-          "class": "RESEARCHER",
-          "sprite": "orre_scientist.png",
-          "team": [
-            81,
-            101,
-            82,
-            243,
-            199,
-            169
+          "levels": [
+            43,
+            38,
+            39
           ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "BITE",
+              "SCARY-FACE",
+              "ROAR"
+            ],
+            [
+              "HEADBUTT",
+              "PIN-MISSILE",
+              "TAIL-WHIP",
+              "ODOR-SLEUTH"
+            ],
+            [
+              "FURY-SWIPES",
+              "AERIAL-ACE",
+              "AMNESIA",
+              "ROAR"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Lesar",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            168,
+            9356,
             111,
-            253,
-            142,
-            128,
-            121
+            253
           ],
+          "levels": [
+            43,
+            40,
+            40
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "SPIDER-WEB",
+              "SCARY-FACE",
+              "LEECH-LIFE"
+            ],
+            [
+              "ROCK-SLIDE",
+              "DIG",
+              "ROAR",
+              "TAKE-DOWN"
+            ],
+            [
+              "MEGA-DRAIN",
+              "PURSUIT",
+              "LEER",
+              "SLAM"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "team_items": [
+            "SILVERPOWDER",
+            null,
+            null
+          ],
+          "music": "orre/cipher_battle"
         },
         {
-          "name": "Researcher Dubik",
+          "name": "Cipher Peon Remil",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            9417,
+            277,
+            352,
+            64
+          ],
+          "levels": [
+            43,
+            43,
+            43,
+            42
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "CRUNCH",
+              "SCREECH",
+              "SAND-TOMB"
+            ],
+            [
+              "FLY",
+              "QUICK-ATTACK",
+              "REFRESH",
+              "MIRROR-MOVE"
+            ],
+            [
+              "STRENGTH",
+              "DIG",
+              "AERIAL-ACE",
+              "LICK"
+            ],
+            [
+              "PSYBEAM",
+              "SKILL-SWAP",
+              "ROLE-PLAY",
+              "KINESIS"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            "DRAGON_FANG",
+            null,
+            null,
+            null
+          ],
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Researcher Kotan",
           "class": "RESEARCHER",
           "sprite": "orre_scientist.png",
           "team": [
             101,
-            101,
-            310,
-            85,
-            121,
-            131
+            82,
+            181
           ],
+          "levels": [
+            42,
+            40,
+            41
+          ],
+          "team_moves": [
+            [
+              "RAIN-DANCE",
+              "THUNDER",
+              "CHARGE",
+              "SWIFT"
+            ],
+            [
+              "THUNDER",
+              "METAL-SOUND",
+              "SWIFT"
+            ],
+            [
+              "RAIN-DANCE",
+              "THUNDER",
+              "REFLECT",
+              "TAKE-DOWN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          },
+          "dialogue": {
+            "player_won": [
+              "Kotan: You'll never reach Ein! ...The alarm! Hit the alarm!",
+              "Sirens wail through the lab."
+            ]
           }
         }
       ],
@@ -9243,7 +10266,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "orre_ein_lab"
           ]
         },
         {
@@ -9254,7 +10278,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "orre_ein_lab"
           ]
         },
         {
@@ -9270,35 +10295,73 @@
           "flag_condition": "not orre_ein_lab",
           "event": {
             "lines": [
-              "Ein: You found my laboratory. Then you'll become my next experiment!"
+              "Behind the analyzer door: Cipher Admin Ein, among his machines."
             ],
             "flag": "orre_ein_lab",
             "battle": {
               "name": "Cipher Admin Ein",
-              "class": "PKMN_TRAINER",
-              "sprite": "scientist.png",
-              "is_boss_battle": true,
+              "class": "CIPHER_ADMIN",
+              "sprite": "orre_scientist.png",
               "team": [
+                9396,
                 171,
                 334,
                 367,
                 42
               ],
               "levels": [
-                29,
-                30,
-                30,
-                31
+                40,
+                47,
+                46,
+                47,
+                48
               ],
+              "team_moves": [
+                [
+                  "SHADOW-RUSH",
+                  "RAIN-DANCE",
+                  "LEER",
+                  "QUICK-ATTACK"
+                ],
+                [
+                  "HYDRO-PUMP",
+                  "THUNDER",
+                  "CONFUSE-RAY",
+                  "RAIN-DANCE"
+                ],
+                [
+                  "FLY",
+                  "ICE-BEAM",
+                  "PURSUIT",
+                  "TOXIC"
+                ],
+                [
+                  "SURF",
+                  "CONFUSE-RAY",
+                  "BITE",
+                  "RAIN-DANCE"
+                ],
+                [
+                  "WING-ATTACK",
+                  "CONFUSE-RAY",
+                  "BITE",
+                  "TOXIC"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 6
+                "balls": 0
               },
+              "music": "orre/admin_battle",
+              "is_boss_battle": true,
               "dialogue": {
                 "intro": [
-                  "Ein: You found my laboratory. Then you'll become my next experiment!"
+                  "Ein: My Shadow Pokemon are perfect fighting machines. And you've been setting them free?"
                 ],
                 "player_won": [
-                  "Ein: My research... ruined!"
+                  "Ein: Impossible... My research...",
+                  "Ein: This changes nothing. Cipher's plan is already in motion!",
+                  "Ein flees through a back door. Something glints on his desk."
                 ]
               }
             }
@@ -9306,13 +10369,147 @@
           "condition": "has_under_badge"
         },
         {
-          "text": "The Under",
-          "action": "EXIT",
-          "target_area": "THE_UNDER",
-          "condition": [
-            "can_exit"
-          ],
-          "color": "RED"
+          "text": "CIPHER PEON SKRUB",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_lab_skrub",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:snagged_shadow_hitmontop"
+                ],
+                "flag": "orre_lab_skrub",
+                "lines": [
+                  "Skrub: You again! This time I'm ready!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Skrub",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    9394,
+                    366,
+                    75,
+                    202
+                  ],
+                  "levels": [
+                    38,
+                    43,
+                    44,
+                    42
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "AGILITY",
+                      "FOCUS-ENERGY",
+                      "TRIPLE-KICK"
+                    ],
+                    [
+                      "WATERFALL",
+                      "WHIRLPOOL",
+                      "IRON-DEFENSE",
+                      "BLIZZARD"
+                    ],
+                    [
+                      "ROCK-SLIDE",
+                      "MAGNITUDE",
+                      "BRICK-BREAK",
+                      "STRENGTH"
+                    ],
+                    [
+                      "COUNTER",
+                      "MIRROR-COAT",
+                      "SAFEGUARD",
+                      "DESTINY-BOND"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0
+                  },
+                  "team_items": [
+                    "BLACK_BELT",
+                    null,
+                    null,
+                    null
+                  ],
+                  "music": "orre/cipher_battle"
+                }
+              },
+              {
+                "requires": [
+                  "snagged_shadow_hitmontop"
+                ],
+                "flag": "orre_lab_skrub",
+                "lines": [
+                  "Skrub: You again! You took my Hitmontop, but I've got more!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Skrub",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    308,
+                    366,
+                    75,
+                    202
+                  ],
+                  "levels": [
+                    41,
+                    43,
+                    44,
+                    42
+                  ],
+                  "team_moves": [
+                    [
+                      "HIGH-JUMP-KICK",
+                      "PSYCHIC",
+                      "ROCK-TOMB",
+                      "SECRET-POWER"
+                    ],
+                    [
+                      "WATERFALL",
+                      "WHIRLPOOL",
+                      "IRON-DEFENSE",
+                      "BLIZZARD"
+                    ],
+                    [
+                      "ROCK-SLIDE",
+                      "MAGNITUDE",
+                      "BRICK-BREAK",
+                      "STRENGTH"
+                    ],
+                    [
+                      "COUNTER",
+                      "MIRROR-COAT",
+                      "SAFEGUARD",
+                      "DESTINY-BOND"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0
+                  },
+                  "music": "orre/cipher_battle"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "SHUTTER SWITCH",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_lab_shutter",
+          "event": {
+            "lines": [
+              "One of the computers has a big switch marked SHUTTER. You press it.",
+              "Somewhere a shutter rattles up."
+            ],
+            "flag": "orre_lab_shutter"
+          }
         },
         {
           "text": "CARD KEY",
@@ -9321,10 +10518,12 @@
           "flag_condition": "not orre_card_key",
           "event": {
             "lines": [
-              "A fleeing researcher dropped a Card Key.",
-              "You took it."
+              "The fleeing researcher dropped a Card Key."
             ],
-            "flag": "orre_card_key"
+            "flag": "orre_card_key",
+            "gift_item": {
+              "LAB_CARD_KEY": 1
+            }
           }
         },
         {
@@ -9334,10 +10533,12 @@
           "flag_condition": "not orre_down_st_key",
           "event": {
             "lines": [
-              "On the table: the Down St. Key.",
-              "You took it."
+              "On the table: the Down St. Key."
             ],
-            "flag": "orre_down_st_key"
+            "flag": "orre_down_st_key",
+            "gift_item": {
+              "DOWN_ST_KEY": 1
+            }
           }
         },
         {
@@ -9347,7 +10548,7 @@
           "flag_condition": "not orre_dna_1",
           "event": {
             "lines": [
-              "A DNA sample in a sealed case. The analyzer will want it."
+              "A DNA sample in a sealed case. Its label: AIPOM."
             ],
             "flag": "orre_dna_1"
           }
@@ -9359,7 +10560,7 @@
           "flag_condition": "not orre_dna_2",
           "event": {
             "lines": [
-              "A second DNA sample in a sealed case."
+              "A second DNA sample. Its label: MURKROW."
             ],
             "flag": "orre_dna_2"
           }
@@ -9371,10 +10572,111 @@
           "flag_condition": "not orre_dna_3",
           "event": {
             "lines": [
-              "The third DNA sample. Now the analyzer's door should open."
+              "The third DNA sample. Its label: FORRETRESS.",
+              "Aipom, Murkrow, Forretress: that must be the analyzer's password."
             ],
             "flag": "orre_dna_3"
           }
+        },
+        {
+          "text": "REVIVES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_lab_revives",
+          "event": {
+            "lines": [
+              "Round the back of the lab: 3 Revives."
+            ],
+            "flag": "orre_lab_revives",
+            "gift_item": {
+              "REVIVE": 3
+            }
+          }
+        },
+        {
+          "text": "FULL HEALS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_lab_full_heals",
+          "event": {
+            "lines": [
+              "By the fence: 2 Full Heals."
+            ],
+            "flag": "orre_lab_full_heals",
+            "gift_item": {
+              "FULL_HEAL": 2
+            }
+          }
+        },
+        {
+          "text": "PP UPS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_lab_pp_ups",
+          "event": {
+            "lines": [
+              "Hidden behind the PC's wall: 3 PP Ups."
+            ],
+            "flag": "orre_lab_pp_ups",
+            "gift_item": {
+              "PP_UP": 3
+            }
+          }
+        },
+        {
+          "text": "ELIXIRS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_lab_elixirs",
+          "event": {
+            "lines": [
+              "2 Elixirs."
+            ],
+            "flag": "orre_lab_elixirs",
+            "gift_item": {
+              "ELIXIR": 2
+            }
+          }
+        },
+        {
+          "text": "FULL RESTORE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_lab_full_restore",
+          "event": {
+            "lines": [
+              "A Full Restore."
+            ],
+            "flag": "orre_lab_full_restore",
+            "gift_item": {
+              "FULL_RESTORE": 1
+            }
+          }
+        },
+        {
+          "text": "DATA ROM",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_data_rom",
+          "event": {
+            "lines": [
+              "On Ein's desk: a Data ROM. Nett could read this."
+            ],
+            "flag": "orre_data_rom",
+            "gift_item": {
+              "DATA_ROM": 1
+            }
+          },
+          "condition": "orre_ein_lab"
+        },
+        {
+          "text": "The Under",
+          "action": "EXIT",
+          "target_area": "THE_UNDER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ],
       "next_area": "THE_UNDER"
@@ -12292,8 +13594,12 @@
     {"id": "orre_m6b", "type": "MAIN", "title": "The Relic Cave", "description": "Cipher's men pushed into the Relic Cave, and Rui's grandfather Eagun went after them. Follow him in!", "condition": {"required_region": "ORRE", "flag": "met_agate_elder", "flag_not": ["orre_beat_skrub", "orre_dakim_mt_battle"]}, "region": "ORRE", "completed_flag": "orre_beat_skrub", "target": "RELIC_CAVE"},
     {"id": "orre_m7", "type": "MAIN", "title": "Dakim at Mt. Battle", "description": "Cipher Admin Dakim is attacking Mt. Battle, next to Agate Village. Stop him!", "condition": {"required_region": "ORRE", "flag": "orre_beat_skrub", "flag_not": "orre_dakim_mt_battle"}, "region": "ORRE", "completed_flag": "orre_dakim_mt_battle", "target": "MT_BATTLE"},
     {"id": "orre_m7b", "type": "MAIN", "title": "Vander's Thanks", "description": "Dakim fled Mt. Battle. Talk to Area Leader Vander, the trainer Dakim beat, at the top of Area 1.", "condition": {"required_region": "ORRE", "flag": "orre_dakim_mt_battle", "flag_not": ["orre_time_flute", "cleared_the_under"]}, "region": "ORRE", "completed_flag": "orre_time_flute", "target": "MT_BATTLE"},
-    {"id": "orre_m8", "type": "MAIN", "title": "Into The Under", "description": "Below Pyrite Town is a hidden city called The Under. Cipher runs it! Go down from Pyrite and shut it down.", "condition": {"required_region": "ORRE", "flag": ["orre_dakim_mt_battle", "orre_time_flute"], "flag_not": "cleared_the_under"}, "region": "ORRE", "completed_flag": "cleared_the_under", "target": "THE_UNDER"},
-    {"id": "orre_m9", "type": "MAIN", "title": "Under Colosseum", "description": "The Under has its own Colosseum. Win its tournament for the second badge!", "condition": {"required_region": "ORRE", "flag": "cleared_the_under", "region_badges_min": 1, "region_badges_less": 2}, "region": "ORRE", "completed_badge": "UNDER", "target": "UNDER_COLOSSEUM", "reward": "Under Badge"},
+    {"id": "orre_m7c", "type": "MAIN", "title": "The Elevator Key", "description": "Duking caught two of Miror B.'s peons; they're in the cells at Pyrite's sheriff's office. Take the Jail Key from the desk and see what they're carrying.", "condition": {"required_region": "ORRE", "flag": "orre_time_flute", "flag_not": ["orre_elevator_key", "cleared_the_under"]}, "region": "ORRE", "completed_flag": "orre_elevator_key", "target": "PYRITE_TOWN"},
+    {"id": "orre_m8", "type": "MAIN", "title": "Into The Under", "description": "The Elevator Key works the Pyrite Building's giant lift down to The Under, a town Venus runs from her TV studio. Find the kids fighting her: the Kids Grid.", "condition": {"required_region": "ORRE", "flag": "orre_elevator_key", "flag_not": ["orre_kids_grid", "cleared_the_under"]}, "region": "ORRE", "completed_flag": "orre_kids_grid", "target": "THE_UNDER"},
+    {"id": "orre_m8b", "type": "MAIN", "title": "Silva in a Cage", "description": "The Under's Cipher peons locked Silva up as a spy. Deal with his two guards and talk to him.", "condition": {"required_region": "ORRE", "flag": "orre_kids_grid", "flag_not": ["orre_r_disk", "cleared_the_under"]}, "region": "ORRE", "completed_flag": "orre_r_disk", "target": "THE_UNDER"},
+    {"id": "orre_m8c", "type": "MAIN", "title": "Venus's Studio", "description": "With the F-Disk and the R-Disk, the floating platform reaches Venus's TV studio. Beat Cipher Admin Venus!", "condition": {"required_region": "ORRE", "flag": "orre_r_disk", "flag_not": "cleared_the_under"}, "region": "ORRE", "completed_flag": "cleared_the_under", "target": "THE_UNDER"},
+    {"id": "orre_m8d", "type": "MAIN", "title": "After Venus", "description": "Venus ran down the studio's back stairs to the old subway. Follow her, and find the key to the Shadow Pokemon Lab's main gate.", "condition": {"required_region": "ORRE", "flag": "cleared_the_under", "flag_not": "orre_maingate_key"}, "region": "ORRE", "completed_flag": "orre_maingate_key", "target": "THE_UNDER"},
+    {"id": "orre_m9", "type": "MAIN", "title": "Under Colosseum", "description": "The Under has its own Colosseum. Win its tournament for the second badge!", "condition": {"required_region": "ORRE", "flag": "orre_maingate_key", "region_badges_min": 1, "region_badges_less": 2}, "region": "ORRE", "completed_badge": "UNDER", "target": "UNDER_COLOSSEUM", "reward": "Under Badge"},
     {"id": "orre_m10", "type": "MAIN", "title": "Ein's Shadow Pokémon Lab", "description": "Cipher makes Shadow Pokémon in a secret lab. Find Cipher Admin Ein and stop the machines!", "condition": {"required_region": "ORRE", "region_badges_min": 2, "flag_not": "orre_ein_lab"}, "region": "ORRE", "completed_flag": "orre_ein_lab", "target": "SHADOW_PKMN_LAB"},
     {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Ein's notes point to Gateon Port. Professor Krane's lab is there, and Cipher has a lab of its own. Beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "orre_ein_lab", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
     {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Cipher took over Orre's TV station in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_lovrina_beaten", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
@@ -12304,6 +13610,7 @@
     {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher's last base is under Gateon Port. Beat Cipher Admin Gorigan to learn where their leader is.", "condition": {"required_region": "ORRE", "region_badges_min": 4, "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is Evice, the man who built Realgam Tower. Beat his admins and then Evice himself to save Orre!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": "beat_orre_champion"}, "region": "ORRE", "completed_flag": "beat_orre_champion", "target": "REALGAM_TOWER", "reward": "Orre Champion"},
     {"id": "orre_s1", "type": "SIDE", "title": "Professor Krane's Eevee", "description": "Professor Krane works at the Pokémon HQ Lab in Gateon Port. Pay him a visit!", "condition": {"required_region": "ORRE", "visited": "GATEON_PORT", "flag_not": "got_krane_eevee"}, "region": "ORRE", "completed_flag": "got_krane_eevee", "target": "GATEON_PORT"},
+    {"id": "orre_s1b", "type": "SIDE", "title": "Ein's Data ROM", "description": "Ein left a Data ROM on his desk. Take it to Nett at the Kids Grid in The Under.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom", "flag_not": "orre_data_rom_given"}, "region": "ORRE", "completed_flag": "orre_data_rom_given", "target": "THE_UNDER"},
     {"id": "orre_s2", "type": "SIDE", "title": "Mt. Battle", "description": "After the title, Vander waits at the very top of Mt. Battle, past Battlus in Area 10. Climb up and face him!", "condition": {"required_region": "ORRE", "flag": ["beat_orre_champion", "mt_battle_battlus"], "flag_not": "mt_battle_master_beaten"}, "region": "ORRE", "completed_flag": "mt_battle_master_beaten", "target": "MT_BATTLE", "reward": "Battle practice"},
     {"id": "orre_s2a", "type": "SIDE", "title": "Mt. Battle's 100", "description": "Mt. Battle, near Agate Village: ten areas, ten trainers in each. Climb them all and beat Mt. Battle Master Battlus! Rest at the top of each area to start from the next one.", "condition": {"required_region": "ORRE", "flag": "orre_time_flute", "flag_not": "mt_battle_battlus"}, "region": "ORRE", "completed_flag": "mt_battle_battlus", "target": "MT_BATTLE", "reward": "Battle practice"},
     {"id": "orre_s3", "type": "SIDE", "title": "The Wishing Star", "description": "Cipher's files mention a wishing star near Agate's Relic Stone. Look in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_jirachi_caught"}, "region": "ORRE", "completed_flag": "orre_jirachi_caught", "target": "RELIC_FOREST", "reward": "Jirachi"},
@@ -13516,6 +14823,7 @@
       "With {lead} and {other} at your side, your journey through Orre begins!"
     ]
   },
+  "RIDE_SCENES": {"orre_subway": {"legs": [{"picture": "tiles/orre/ride_subway.png", "sprite": "tiles/orre/ride_train.png", "from": [72, 12], "to": [4, 12], "frames": 200}]}},
   "SHADOW_DATA": {
     "9301": {"game": "xd", "heart": 4000, "catch_rate": 90, "level": 33, "caught_level": 30, "moves": ["SHADOW-RUSH", "SHADOW-MIST"]},
     "9302": {"game": "xd", "heart": 4500, "catch_rate": 90, "level": 33, "caught_level": 30, "moves": ["SHADOW-BLITZ", "SHADOW-HOLD"]},

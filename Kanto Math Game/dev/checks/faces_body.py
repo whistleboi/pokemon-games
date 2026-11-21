@@ -26,6 +26,10 @@ for area, region in (("PHENAC_CITY", "ORRE"), ("GATEON_PORT", "ORRE"), ("PALLET_
         opt = ppl.get(mo.pos)
         if not opt:
             continue
+        from src.states.overworld.dungeon import sprite_map as _sm
+        _spec = (_sm(g).get("figures") or {}).get(f"{area}:{opt.get('text')}") or {}
+        if _spec.get("item") or "object" in str(_spec.get("sheet", "")):   # (a thing, not a person: a sack, an item ball - one way only)
+            continue
         tried += 1
         imgs = {pygame.image.tobytes(st._figure_img(opt, f, 0), "RGBA") for f in ((0, 1), (-1, 0), (1, 0), (0, -1))}
         if len(imgs) == 4:

@@ -76,6 +76,84 @@
     ]
   },
   "figures": {
+    "PYRITE_TOWN:Miror B. Peon Reath (asleep)": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_TOWN:Miror B. Peon Ferma": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:CIPHER PEON KLOAK": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:CIPHER PEON DAGUR": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:EIN FILE F": {
+      "item": "EIN_FILE_F"
+    },
+    "PYRITE_BUILDING:CHASER KAI AT THE LIFT": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
+    "THE_UNDER:SILVA": {
+      "sheet": "orre_npc_02.png"
+    },
+    "THE_UNDER:FLOATING PLATFORM": {
+      "sheet": "orre_door_lift.png"
+    },
+    "THE_UNDER:RARE CANDIES": {
+      "item": "RARE_CANDY"
+    },
+    "THE_UNDER:BOY WITH A PART": {
+      "sheet": "orre_npc_02.png"
+    },
+    "THE_UNDER:NETT": {
+      "sheet": "orre_npc_02.png"
+    },
+    "THE_UNDER:BITT": {
+      "sheet": "orre_npc_02.png"
+    },
+    "THE_UNDER:MEGG": {
+      "sheet": "orre_npc_cute_hair_girl.png"
+    },
+    "THE_UNDER:ULTRA BALLS": {
+      "item": "ULTRA_BALL"
+    },
+    "THE_UNDER:MAN IN DARK GLASSES": {
+      "sheet": "orre_npc_15.png"
+    },
+    "THE_UNDER:SUBWAY KEY": {
+      "item": "SUBWAY_KEY"
+    },
+    "THE_UNDER:SUBWAY TRAIN": {
+      "sheet": "orre_door_lift.png"
+    },
+    "THE_UNDER:SUBWAY TRAIN BACK": {
+      "sheet": "orre_door_lift.png"
+    },
+    "SHADOW_PKMN_LAB:REVIVES": {
+      "item": "REVIVE"
+    },
+    "SHADOW_PKMN_LAB:FULL HEALS": {
+      "item": "FULL_HEAL"
+    },
+    "SHADOW_PKMN_LAB:SHUTTER SWITCH": {
+      "sheet": "orre_door_lift.png"
+    },
+    "SHADOW_PKMN_LAB:PP UPS": {
+      "item": "PP_UP"
+    },
+    "SHADOW_PKMN_LAB:ELIXIRS": {
+      "item": "ELIXIR"
+    },
+    "SHADOW_PKMN_LAB:CIPHER PEON SKRUB": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SHADOW_PKMN_LAB:DATA ROM": {
+      "item": "DATA_ROM"
+    },
+    "SHADOW_PKMN_LAB:FULL RESTORE": {
+      "item": "FULL_RESTORE"
+    },
     "MT_BATTLE:MT. BATTLE RECEPTION": {
       "sheet": "orre_npc_15.png"
     },
@@ -140,40 +218,40 @@
       "sheet": "orre_npc_matron.png"
     },
     "PYRITE_CAVE:Ultra Balls": {
-      "sheet": "orre_object_ball.png"
+      "item": "ULTRA_BALL"
     },
     "PYRITE_CAVE:Full Heal": {
-      "sheet": "orre_object_ball.png"
+      "item": "FULL_HEAL"
     },
     "PYRITE_CAVE:Hyper Potions": {
-      "sheet": "orre_object_ball.png"
+      "item": "HYPER_POTION"
     },
     "PYRITE_CAVE:Ethers": {
-      "sheet": "orre_object_ball.png"
+      "item": "ETHER"
     },
     "PYRITE_CAVE:Max Potion": {
-      "sheet": "orre_object_ball.png"
+      "item": "MAX_POTION"
     },
     "PYRITE_CAVE:Carbos": {
-      "sheet": "orre_object_ball.png"
+      "item": "CARBOS"
     },
     "PYRITE_CAVE:Zinc": {
-      "sheet": "orre_object_ball.png"
+      "item": "ZINC"
     },
     "PYRITE_CAVE:Protein": {
-      "sheet": "orre_object_ball.png"
+      "item": "PROTEIN"
     },
     "PYRITE_CAVE:Iron": {
-      "sheet": "orre_object_ball.png"
+      "item": "IRON"
     },
     "PYRITE_CAVE:Snatch box": {
       "sheet": "orre_object_chest.png"
     },
     "PYRITE_CAVE:Macho Brace": {
-      "sheet": "orre_object_ball.png"
+      "item": "MACHO_BRACE"
     },
     "PYRITE_CAVE:Ein File P": {
-      "sheet": "orre_object_ball.png"
+      "item": "EIN_FILE_P"
     },
     "RELIC_CAVE:Eagun": {
       "sheet": "orre_npc_eagun2.png"
@@ -182,10 +260,10 @@
       "sheet": "orre_trainer_cipher_grunt.png"
     },
     "RELIC_CAVE:Silk Scarf": {
-      "sheet": "orre_object_ball.png"
+      "item": "SILK_SCARF"
     },
     "RELIC_CAVE:Ultra Balls": {
-      "sheet": "orre_object_ball.png"
+      "item": "ULTRA_BALL"
     },
     "PYRITE_TOWN:Bodybuilder Hader": {
       "sheet": "orre_trainer_bodybuilder.png"
@@ -197,13 +275,13 @@
       "sheet": "orre_trainer_hunter_m.png"
     },
     "PYRITE_BUILDING:Ein File H": {
-      "sheet": "orre_object_ball.png"
+      "item": "EIN_FILE_H"
     },
     "PYRITE_BUILDING:Great Balls": {
-      "sheet": "orre_object_ball.png"
+      "item": "GREAT_BALL"
     },
     "PYRITE_BUILDING:Revive": {
-      "sheet": "orre_object_ball.png"
+      "item": "REVIVE"
     },
     "PYRITE_BUILDING:Miror B. Peon Reath": {
       "sheet": "orre_trainer_cipher_grunt.png"
@@ -212,10 +290,10 @@
       "sheet": "orre_trainer_cipher_grunt.png"
     },
     "PYRITE_BUILDING:Ein File S": {
-      "sheet": "orre_object_ball.png"
+      "item": "EIN_FILE_S"
     },
     "PYRITE_BUILDING:Hyper Potions": {
-      "sheet": "orre_object_ball.png"
+      "item": "HYPER_POTION"
     },
     "PYRITE_TOWN:Chaser Calda": {
       "sheet": "orre_trainer_chaser_f.png"
@@ -752,10 +830,10 @@
       "sheet": "orre_trainer_burglar.png"
     },
     "CONSTRUCTION_LOT:The Gear": {
-      "sheet": "orre_object_ball.png"
+      "item": "GEAR"
     },
     "PHENAC_CITY:Super Potion ball": {
-      "item": "POKE_BALL"
+      "item": "SUPER_POTION"
     },
     "PHENAC_CITY:Fun Old Man Drig": {
       "sheet": "orre_trainer_fun_old_man.png"
@@ -1127,31 +1205,31 @@
       "sheet": "orre_trainer_cipher_grunt.png"
     },
     "MT_BATTLE:F-DISK": {
-      "sheet": "orre_object_ball.png"
+      "item": "F_DISK"
     },
     "THE_UNDER:U-DISK": {
-      "sheet": "orre_object_ball.png"
+      "item": "U_DISK"
     },
     "THE_UNDER:MAINGATE KEY": {
-      "sheet": "orre_object_ball.png"
+      "item": "MAINGATE_KEY"
     },
     "SHADOW_PKMN_LAB:CARD KEY": {
-      "sheet": "orre_object_ball.png"
+      "item": "LAB_CARD_KEY"
     },
     "SHADOW_PKMN_LAB:DNA SAMPLE (1)": {
-      "sheet": "orre_object_ball.png"
+      "item": "DNA_SAMPLE"
     },
     "SHADOW_PKMN_LAB:DOWN ST. KEY": {
-      "sheet": "orre_object_ball.png"
+      "item": "DOWN_ST_KEY"
     },
     "SHADOW_PKMN_LAB:DNA SAMPLE (2)": {
-      "sheet": "orre_object_ball.png"
+      "item": "DNA_SAMPLE"
     },
     "SHADOW_PKMN_LAB:DNA SAMPLE (3)": {
-      "sheet": "orre_object_ball.png"
+      "item": "DNA_SAMPLE"
     },
     "XD_CIPHER_LAB:ID CARD": {
-      "sheet": "orre_object_ball.png"
+      "item": "ID_CARD"
     },
     "XD_ONBS:BONSLY'S GIRL": {
       "sheet": "orre_npc_04.png"

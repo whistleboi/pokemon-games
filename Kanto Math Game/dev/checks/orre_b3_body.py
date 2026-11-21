@@ -298,7 +298,7 @@ check(all(p._check_route_condition(c, False, master) for c in master["condition"
 
 print("7) The Journal")
 jm = {m["id"]: m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("orre_")}
-check(jm["orre_m7b"]["completed_flag"] == "orre_time_flute" and jm["orre_m8"]["condition"]["flag"] == ["orre_dakim_mt_battle", "orre_time_flute"],
+check(jm["orre_m7b"]["completed_flag"] == "orre_time_flute" and jm["orre_m7c"]["condition"]["flag"] == "orre_time_flute",   # (batch 4: then the Elevator Key)
       "Vander's thanks is a step; The Under follows it")
 check(jm["orre_s2a"]["completed_flag"] == "mt_battle_battlus", "the 100 is a side step")
 
