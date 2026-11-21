@@ -17,7 +17,7 @@ import os
 
 import pygame
 
-try:   # (numpy and moderngl are only for the live camera: without them the game draws the flat pictures)
+try:   # (numpy and moderngl are only on a PC set up for the live camera: without them, the baked pictures)
     import numpy as np
 except ImportError:
     np = None
@@ -69,7 +69,7 @@ def _context():
             import moderngl
             try:
                 ctx = moderngl.create_standalone_context()
-            except Exception:   # (no X display: Linux's EGL, a desktop with Wayland or none)
+            except Exception:   # (no X display: Linux's EGL)
                 ctx = moderngl.create_standalone_context(backend="egl")
             prog = ctx.program(vertex_shader=VERT, fragment_shader=FRAG)
             _CTX["ctx"], _CTX["prog"], _CTX["mgl"] = ctx, prog, moderngl
@@ -103,6 +103,7 @@ class Scene:
             self.parts.append((kind, tex, vao))
         self.parts.sort(key=lambda p: (p[0] == 2) + 2 * (p[0] == 3))   # (shadow sheets after the solid, light sheets last)
         self.lo, self.hi = lo, hi
+        self.cam = np.array(data["cam"], "f4") if "cam" in data.files else None   # (export3d.camera: Black 2's camera here)
         self.fbo = None
         self._sprites = {}
 
@@ -216,19 +217,16 @@ class Scene:
         ctx.depth_mask = True
         vao.release(); buf.release()
 
-    def unproject(self, size, cam, pos, plane_y):
-        """The ground point (x, z) tiles under a point on the picture, on the level plane_y; None off toward the sky."""
+    def pick(self, size, cam, sx, sy, plane_y):
+        """The point (tiles) on the level plane y = plane_y under screen point (sx, sy): (x, y, z), or None."""
         inv = np.linalg.inv(_mvp(size, cam))
-        nx, ny = pos[0] / size[0] * 2 - 1, 1 - pos[1] / size[1] * 2
-        a, b = inv @ np.array([nx, ny, -1.0, 1.0]), inv @ np.array([nx, ny, 1.0, 1.0])
+        nx, ny = 2 * sx / size[0] - 1, 1 - 2 * sy / size[1]
+        a = inv @ np.array([nx, ny, -1.0, 1.0]); b = inv @ np.array([nx, ny, 1.0, 1.0])
         a, b = a[:3] / a[3], b[:3] / b[3]
         if abs(b[1] - a[1]) < 1e-9:
             return None
         t = (plane_y - a[1]) / (b[1] - a[1])
-        if t < 0:
-            return None
-        p = a + (b - a) * t
-        return float(p[0]), float(p[2])
+        return tuple(a + (b - a) * t) if t >= 0 else None
 
     def project(self, size, cam, point):
         """Where a point (tiles) lands on the picture, (x, y) px, or None behind the camera."""
@@ -277,21 +275,6 @@ def _mvp(size, cam):
     yax = np.cross(zax, xax)
     view = np.array([[*xax, -xax @ eye], [*yax, -yax @ eye], [*zax, -zax @ eye], [0, 0, 0, 1]], "f8")
     return proj @ view
-
-
-def framed(target, pitch_deg, fov, px_per_tile, height, yaw_deg=0.0):
-    """Black 2's camera (its pitch and field of view) at the distance where a tile at the target is px_per_tile across on a
-    picture height px tall: the flat map's scale (TILE times the zoom), so the people stay their usual size."""
-    dist = height / (2 * math.tan(math.radians(fov) / 2) * max(1e-3, px_per_tile))
-    return follow(target[0], target[1], target[2], pitch_deg, dist, yaw_deg, fov)
-
-
-def zone_camera(zone_file):
-    """(pitch, field of view) degrees of a zone's own camera (its scene's "cam": pitch, distance, fov, ...)."""
-    if np is None:
-        raise ValueError("no numpy: no live camera")
-    cam = np.load(zone_file)["cam"]
-    return float(cam[0]), float(cam[2])
 
 
 def follow(px, py, pz, pitch_deg, dist, yaw_deg=0.0, fov=30.0):
