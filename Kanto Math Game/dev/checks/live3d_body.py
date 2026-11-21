@@ -90,6 +90,13 @@ v = t._view()
 tile = t._tile_at((v.centerx, v.centery + 120))
 check(abs(tile[0] - t.player[0]) <= 3 and tile[1] > t.player[1], f"a tap below you picks a tile below you ({tile}, you at {t.player})")
 
+print("2b) a scene with holes where you walk stays flat (Jordan 11-21: dropped under the avenue's middle)")
+for room, at_, whole in ((None, (64, 67), False), ("route4_street", None, False), ("narrow_street", None, False),
+                          ("gym_street", (21, 50), True), ("castelia_street", None, True), ("prime_pier", None, True)):
+    t = town(room, at_)
+    check((t._live() is not None) == whole, f"{room or 'the avenue'}: {'live' if whole else 'flat, its 3D scene has holes'} ({t._live() is not None})")
+live3d.ALLOW_HOLES = True   # (the avenue's camera and walking, tried on its scene as it is)
+
 print("3) the avenue: the camera circles the city's middle; your keys follow the road's bend")
 t = town(None, (64, 67))
 y1 = (settle(40), g.current_state._live_yaw)[1]
@@ -120,6 +127,17 @@ t = town(None, (31, 70)); settle(60)
 far = (30, 65)
 t.walk_goal = far; settle(400)
 check(tuple(g.current_state.player) == far, f"a tapped tile up the west side: you walk there ({far}: at {tuple(g.current_state.player)})")
+
+live3d.ALLOW_HOLES = False
+
+print("3c) out of the Center, the Battle Company, Passerby Analytics: back at their door (Jordan 11-21: sent to the entry stairs)")
+for door, room in (((64, 66), "center"), ((39, 69), "battle_co"), ((26, 45), "passerby")):
+    t = town(None, (door[0], door[1] + 1))
+    t._go(room, "OUT:%d,%d" % door); settle(5); t = g.current_state
+    way = next(xy for xy, v in t.exits.items() if v == "ROOM:MAIN")
+    t._leave("ROOM:MAIN"); settle(5); t = g.current_state
+    check(t.room is None and abs(t.player[0] - door[0]) + abs(t.player[1] - door[1]) <= 2,
+          f"out of {room}: by its door {door} ({tuple(t.player)})")
 
 print("4) a scene's zoom, shadows, the Options switch, no numpy (11-21)")
 t = town("gym_street", (21, 50))

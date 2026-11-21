@@ -26,6 +26,7 @@ _CTX = {}
 _SCENES = {}
 KEY = (230, 57, 255)   # (an atlas's unused space)
 LIGHT_ALPHA = 0.42     # (a light sheet: the lamps' glow, the clouds)
+ALLOW_HOLES = False    # (the checks: draw a scene with holes anyway, to try its camera)
 
 VERT = """
 #version 330
@@ -89,12 +90,15 @@ class Scene:
         ctx, prog, mgl = _context(), _CTX["prog"], _CTX["mgl"]
         data = np.load(path)
         self.parts = []
+        solid = []
         lo, hi = np.full(3, 1e9, np.float32), np.full(3, -1e9, np.float32)
         for key in sorted(k for k in data.files if k.startswith("v")):
             i = key[1:]
             verts = data["v" + i].astype("f4")
             lo, hi = np.minimum(lo, verts[:, :3].min(0)), np.maximum(hi, verts[:, :3].max(0))
             kind, rgba, verts = _fix(int(data["k" + i]), data["t" + i], verts)
+            if kind in (0, 1):
+                solid.append(verts[:, :3].reshape(-1, 3, 3))
             tex = ctx.texture((rgba.shape[1], rgba.shape[0]), 4, np.ascontiguousarray(rgba).tobytes())
             tex.filter = (mgl.NEAREST, mgl.NEAREST)
             tex.repeat_x = tex.repeat_y = True
@@ -102,10 +106,40 @@ class Scene:
             vao = ctx.vertex_array(prog, [(vbo, "3f 2f", "pos", "uv")])
             self.parts.append((kind, tex, vao))
         self.parts.sort(key=lambda p: (p[0] == 2) + 2 * (p[0] == 3))   # (shadow sheets after the solid, light sheets last)
+        self._flat = np.concatenate(solid)[:, :, [0, 2]] if solid else np.zeros((0, 3, 2), "f4")   # (seen from above: for covers())
+        self._covers = {}
         self.lo, self.hi = lo, hi
         self.cam = np.array(data["cam"], "f4") if "cam" in data.files else None   # (export3d.camera: Black 2's camera here)
         self.fbo = None
         self._sprites = {}
+
+    def covers(self, tiles):
+        """True when every tile (x, y) given has the scene's ground (or a building's floor) under its middle: a scene
+        exported with holes where you walk would show the sky there and drop you through it (11-21)."""
+        if ALLOW_HOLES:
+            return True
+        key = hash(tuple(sorted(tiles)))
+        if key not in self._covers:
+            self._covers[key] = not self.holes(tiles)
+        return self._covers[key]
+
+    def holes(self, tiles):
+        """The tiles given with nothing of the scene under their middles."""
+        tris = self._flat
+        out = []
+        for x, y in tiles:
+            p = np.array([x + 0.5, y + 0.5], "f4")
+            a, b, c = tris[:, 0], tris[:, 1], tris[:, 2]
+            v0, v1, v2 = c - a, b - a, p - a
+            d00, d01, d11 = (v0 * v0).sum(1), (v0 * v1).sum(1), (v1 * v1).sum(1)
+            d20, d21 = (v2 * v0).sum(1), (v2 * v1).sum(1)
+            den = d00 * d11 - d01 * d01
+            ok = np.abs(den) > 1e-9
+            den = np.where(ok, den, 1.0)
+            u, v = (d11 * d20 - d01 * d21) / den, (d00 * d21 - d01 * d20) / den
+            if not (ok & (u >= -1e-3) & (v >= -1e-3) & (u + v <= 1 + 1e-3)).any():
+                out.append((x, y))
+        return out
 
     def _target(self, size):
         ctx = _context()

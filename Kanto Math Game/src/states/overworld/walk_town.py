@@ -871,6 +871,10 @@ class WalkTownState(CityState):
         self.walk_goal = None
         self._ice_cracked = set()  # (the ice is whole again each time you come in)
         self._from_art(self.town_map["rooms"][room] if room else self.town_map)
+        if room is None and str(came).startswith("ROOM:") and came not in self.exits.values():   # (out of a building whose
+            _door = next((k for k, v in (self.town_map.get("inside") or {}).items() if v == came[5:]), None)   # way out says the
+            if _door:   # map but which is walked into by its door: out at that door, not the map's bottom (Castelia's Center, 11-21)
+                came = "OUT:" + _door
         if room is None and came.startswith("OUT:"):  # back outside: below the door you went in by
             x, y = (int(v) for v in came.split(":", 1)[1].split(","))
             spot = (x, y + 1)
@@ -2187,6 +2191,8 @@ class WalkTownState(CityState):
             return None
         if sc is None or sc.cam is None:
             return None
+        if not sc.covers([(x, y) for y in range(self.h) for x in range(self.w) if self._open((x, y))]):
+            return None   # (a scene exported with holes where you can walk: the avenue's middle, 11-21: the baked picture till it's whole)
         self._live_got = (sc, roofs.get("_cam") or {})
         self._live_yaw = None
         return self._live_got
