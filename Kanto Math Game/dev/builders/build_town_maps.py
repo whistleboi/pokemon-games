@@ -137,7 +137,7 @@ def reachable(key, m):
                 todo.append(n)
     by_surf = lambda t: any((t[0] + dx, t[1] + dy) in wet for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
     cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch)
-            if not near(t) and not (ch == "N" and (over(t) or over2(t) or by_surf(t)))]
+            if not near(t) and not (ch == "N" and (over(t) or over2(t) or by_surf(t))) and not (ch == "D" and by_surf(t))]   # (a door you surf to: the Castelia Sewers in summer)
     assert not cut, f"{key}: out of reach {cut[:6]}"
 
 

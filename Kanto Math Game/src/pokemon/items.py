@@ -34,6 +34,7 @@ MEDICINE = {
     "HEAL_POWDER": {"cure": "all", "price": 300, "text": "A very bitter powder. Cures any status condition."},
     "REVIVAL_HERB": {"revive": 1.0, "price": 2800, "text": "A very bitter herb. Revives a fainted Pokemon with all its HP."},
     "LAVA_COOKIE": {"cure": "all", "price": 200, "text": "Mt. Chimney's own treat, baked with volcanic ash. Cures any status condition."},
+    "CASTELIACONE": {"cure": "all", "price": 100, "text": "Castelia City's famous soft-serve ice cream. Cures any status condition."},   # (B2W2, 11-20)
     "REVIVE": {"revive": 0.5, "price": 2000, "text": "Revives a fainted Pokemon with half its HP."},
     "MAX_REVIVE": {"revive": 1.0, "price": 4000, "text": "Revives a fainted Pokemon with all its HP."},
     "RARE_CANDY": {"price": 10000, "text": "Raises a Pokemon's level by one."},
@@ -189,6 +190,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "SAFETY_GOGGLES": {"price": 4000, "text": "Held: its holder takes no sandstorm damage, and powder moves don't affect it."},
         "ROCKY_HELMET": {"price": 4000, "text": "Held: a foe that touches its holder with a move gets hurt. (Lets your Pokemon Headbutt trees, too.)"},
         "STICKY_BARB": {"price": 200, "text": "Held: it hurts its holder every turn, and sticks to a foe that touches it."},   # (B2W2: Route 20, autumn; 11-20)
+        "BLACK_SLUDGE": {"price": 200, "text": "Held: a Poison-type holder gets back a little HP every turn. Any other is hurt by it."},   # (B2W2: the Castelia Sewers; 11-20)
+        "POISON_GEM": {"price": 200, "text": "Held: its holder's first Poison-type move hits harder. Then it's used up."},   # (B2W2: the Castelia Sewers, hidden; 11-20)
         "WHITE_HERB": {"price": 4000, "text": "Held: if its holder's stats are lowered, it puts them back. Used up."},
         "FLOAT_STONE": {"price": 1000, "text": "Held: its holder weighs half as much."},
         "HEAT_ROCK": {"price": 4000, "text": "Held: sunshine its holder calls lasts eight turns. Use it in battle to call sunshine."},

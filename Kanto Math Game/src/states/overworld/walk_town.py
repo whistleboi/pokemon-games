@@ -279,6 +279,7 @@ class WalkTownState(CityState):
                            if isinstance(to[0], str)}  # (a pad into another room, the same spot there: Lavaridge Gym's sand holes)
         self.stops = {tuple(t) for t in m.get("stops", [])}  # (where a spin tile's slide ends: Viridian Gym's stop tiles)
         self.switches = m.get("switches")  # (floor switches: step on one and every barrier flips: Mauville Gym)
+        self.cocoons = dict(m.get("cocoons") or {})  # (Castelia Gym's cocoons, Black 2: walk into one facing a way and its thread carries you on: "x,y,d": [room, x, y, face, condition])
         self.dark = m.get("dark")  # (a dark room: only a circle round you lit, wider with each of its flags: Dewford Gym's trainers)
         # someone standing in the way till the story moves on (the map's "barred", as on the routes: Snowpoint Temple's guard)
         self._bar_list = m.get("barred", [])
@@ -891,7 +892,73 @@ class WalkTownState(CityState):
 
     # ---------------------------------------------------------------- walking
     def _busy(self):
-        return self.npc_active or bool(self.hover_menu_active) or getattr(self, "_scene_lock", False)
+        return self.npc_active or bool(self.hover_menu_active) or getattr(self, "_scene_lock", False) or bool(getattr(self, "_ride", None))
+
+    def _cocoon_ride(self, c):
+        """Into a cocoon: its silk thread pulls you up or down to another floor (Castelia Gym, Black 2's gym_insect overlay)."""
+        room, x, y = c[0], int(c[1]), int(c[2])
+        face = {"u": (0, -1), "d": (0, 1), "l": (-1, 0), "r": (1, 0)}.get(c[3] if len(c) > 3 else "d", (0, 1))
+        self.walk_goal = None
+        into = (self.player[0] + self.facing[0], self.player[1] + self.facing[1])
+        self._ride = {"n": 0, "room": room, "to": (x, y), "face": face, "into": into, "moved": False}   # (played out: _ride_tick, drawn in draw)
+
+    RIDE_IN, RIDE_GO, RIDE_OUT = 26, 22, 26   # (frames: drawn into the cocoon, along the thread, out of the other)
+
+    def _ride_tick(self):
+        r = self._ride
+        r["n"] += 1
+        if r["n"] == self.RIDE_IN + self.RIDE_GO // 2 and not r["moved"]:   # (halfway along the thread: the other floor)
+            r["moved"] = True
+            if r["room"] != getattr(self, "room", None):
+                self._go(r["room"], "COCOON")
+            self.player = self.anim_from = self.partner = self.partner_from = r["to"]
+            self.facing = r["face"]
+            self.anim = 0
+            self._remember()
+        if r["n"] >= self.RIDE_IN + self.RIDE_GO + self.RIDE_OUT:
+            self._ride = None
+
+    def _ride_pose(self):
+        """(dx, dy tiles from your tile, scale, hidden) for the cocoon ride now."""
+        r = self._ride
+        n = r["n"]
+        if n < self.RIDE_IN:   # (pulled in: toward the cocoon, shrinking into it)
+            t = n / self.RIDE_IN
+            ix, iy = r["into"][0] - self.player[0], r["into"][1] - self.player[1]
+            return ix * t * 0.9, iy * t * 0.9 - 0.4 * t * (1 - t) * 4, max(0.08, 1 - t * 0.95), False
+        if n < self.RIDE_IN + self.RIDE_GO:
+            return 0, 0, 0, True
+        t = (n - self.RIDE_IN - self.RIDE_GO) / self.RIDE_OUT   # (set down: out of the cocoon in front of you)
+        fx, fy = self.facing
+        return fx * (1 - t), fy * (1 - t) - 0.4 * t * (1 - t) * 4, 0.08 + 0.92 * t, False
+
+    def _draw_ride_silk(self, screen, ox, oy):
+        """Silk round the cocoon as it pulls you in or lets you out; along the thread, the view streams with silk."""
+        import math
+        r = self._ride
+        n = r["n"]
+        view = self._view()
+        if self.RIDE_IN <= n < self.RIDE_IN + self.RIDE_GO:
+            t = (n - self.RIDE_IN) / self.RIDE_GO
+            veil = pygame.Surface(view.size, pygame.SRCALPHA)
+            veil.fill((246, 246, 252, int(235 * math.sin(math.pi * t))))
+            up = -1 if r["face"][1] <= 0 else 1
+            for i in range(22):   # (threads streaming past)
+                x = (i * 53 + 17) % view.w
+                y = int(((i * 97 + n * 38 * up) % (view.h + 120)) - 60)
+                pygame.draw.line(veil, (150, 158, 190, 255), (x, y), (x + 6, y + 110), 6)
+                pygame.draw.line(veil, (255, 255, 255, 255), (x, y), (x + 6, y + 110), 2)
+            screen.blit(veil, view.topleft)
+            return
+        cx, cy = (r["into"] if n < self.RIDE_IN else (self.player[0] + self.facing[0], self.player[1] + self.facing[1]))
+        px, py = int(ox + (cx + 0.5) * TILE), int(oy + (cy + 0.5) * TILE)
+        spin = n * 0.35
+        for i in range(6):   # (the cocoon's silk winding round)
+            a = spin + i * math.pi / 3
+            rad = TILE * (0.55 + 0.15 * math.sin(n * 0.4 + i))
+            box = pygame.Rect(px - rad, py - rad, rad * 2, rad * 2)
+            pygame.draw.arc(screen, (120, 128, 160), box.inflate(4, 4), a, a + 1.1, 6)   # (an outline: silk shows on the white floor)
+            pygame.draw.arc(screen, (250, 250, 255), box, a, a + 1.1, 3)
 
     def flash(self, text, frames=90):
         self.toast, self.toast_timer = text, frames
@@ -901,6 +968,9 @@ class WalkTownState(CityState):
             return
         self.facing = (dx, dy)
         to = (self.player[0] + dx, self.player[1] + dy)
+        _coc = getattr(self, "cocoons", None) and self.cocoons.get("%d,%d,%s" % (to[0], to[1], {(0, -1): "u", (0, 1): "d", (-1, 0): "l", (1, 0): "r"}[(dx, dy)]))
+        if _coc and (len(_coc) < 5 or not _coc[4] or self._check_menu_condition(_coc[4])):
+            return self._cocoon_ride(_coc)
         if getattr(self, "turnstiles", None):
             arm = self._gate_edges().get(frozenset((tuple(self.player), tuple(to))))
             if arm is not None and not self._turn_gate(arm, (dx, dy)):
@@ -1542,6 +1612,8 @@ class WalkTownState(CityState):
         if self.npc_active:
             return super().update()
         self._npc_tick()
+        if getattr(self, "_ride", None):   # (riding a cocoon's thread: Castelia Gym)
+            return self._ride_tick()
         if not self._busy() and getattr(self, "_phone_area", None) != self.area_key:   # (the phone: a call as you arrive; src/world/phone.py)
             self._phone_area = self.area_key
             from src.world import phone as _phone, vs_seeker as _vs
@@ -1910,11 +1982,20 @@ class WalkTownState(CityState):
         k = 1 - self.anim / STEP if self.anim > 0 else 1
         lead = self.follower()
         me = self._player_img()
+        _pose = self._ride_pose() if getattr(self, "_ride", None) else None
+        if _pose:   # (the cocoon ride: you shrink into one cocoon and grow out of the other; your Pokemon rides in your Ball)
+            lead = None
+            if _pose[3] or me is None:
+                me = None
+            else:
+                me = pygame.transform.smoothscale(me, (max(1, int(me.get_width() * _pose[2])), max(1, int(me.get_height() * _pose[2]))))
         _mine_rects = []   # (you and your Pokemon: (rect, from, to), drawn under a bridge you pass beneath)
         pr = pygame.Rect(0, 0, TILE, TILE)
         fx, fy = self.anim_from
         tx, ty = self.player
         pr.topleft = (int(ox + (fx + (tx - fx) * k) * TILE), int(oy + (fy + (ty - fy) * k) * TILE))
+        if _pose:
+            pr.move_ip(int(_pose[0] * TILE), int(_pose[1] * TILE))
         _me_key = pr.bottom
         pr.y -= lp(fx + (tx - fx) * k, fy + (ty - fy) * k)   # (up and down the stairs, smoothly)
         self._me_drawn = (pr.copy(), (ox, oy))   # (where you were drawn, for the checks)
@@ -1953,6 +2034,8 @@ class WalkTownState(CityState):
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
         for ex, ey in emotes:
             theme.shadow_text(screen, "!", fonts["label"], ex, ey, color=(230, 60, 50))
+        if getattr(self, "_ride", None):
+            self._draw_ride_silk(screen, ox, oy)
         for _t, _bar in getattr(self, "barred", {}).items():
             _look = str(_bar.get("look") or "person")
             if _look == "unseen":  # (something invisible in the way: Fortree's Kecleon, till the Devon Scope)

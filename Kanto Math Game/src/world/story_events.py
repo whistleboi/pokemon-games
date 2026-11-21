@@ -91,6 +91,17 @@ EVENTS = {
         "Mom: That's all! Call... well, I'll call you. Take care!"]},
     "b2_cut": {"gift_item": {"HM_CUT": 1}, "flag": "b2_got_cut"},   # (Roxie's thanks at the docks: HM01 Cut)
     "b2_first_film": {"scene": "pokestar", "script": "brycen_man", "flag": "b2_first_film"},   # (Pokestar Studios: your first film)
+    # (batch 3a, 11-20: the Castelia Sewers. You and Hugh against two Plasma Grunts (B2W2's teams); Hugh's HM04 Strength)
+    "b2_sewer_plasma": {"flag": "b2_sewer_plasma_battled", "battle": {
+        "name": "Team Plasma Grunt", "class": "PLASMA", "sprite": "b2_plasma_grunt_m.png", "team": [551], "levels": [16],
+        "rewards": {"balls": 3},
+        "battle_options": {"double": True,
+                           "partner": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": [499, 519],
+                                       "levels": [20, 18], "team_choice": {"495": [499, 519], "498": [502, 519], "501": [496, 519]}},
+                           "second_trainer": {"name": "Team Plasma Grunt", "class": "PLASMA", "sprite": "b2_plasma_grunt_m.png",
+                                              "team": [559], "levels": [16], "rewards": {"balls": 3}}},
+        "dialogue": {"player_won": ["Team Plasma: They're really tough!"], "player_lost": ["Team Plasma: Hand them over!"]}}},
+    "b2_strength": {"gift_item": {"HM_STRENGTH": 1}, "flag": "b2_got_strength"},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)
     "hq_alarm_1": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_1",
         "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 41], "levels": [18, 18],
@@ -263,7 +274,7 @@ EVENTS = {
                                                "Cyrus: Then I will find another way. Alone.",
                                                "The legendary Pokemon still stirs at the top of the Spear Pillar..."]}}},
     # Platinum's walking partners (11-18, src/world/walk_partners.py): talk to them and they walk with you.
-    **{f"walk_{_k}": {"walk_partner": _k} for _k in ("cheryl", "mira", "riley", "buck", "marley")},
+    **{f"walk_{_k}": {"walk_partner": _k} for _k in ("cheryl", "mira", "riley", "buck", "marley", "hugh")},
     # Iron Island B2F (Platinum): you and Riley against two Galactic Grunts, their teams from Platinum; then the Riolu Egg
     "riley_iron_island": {
         "lines": ["Two Galactic Grunts are blocking the passage!",

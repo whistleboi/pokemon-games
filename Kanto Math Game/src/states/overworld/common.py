@@ -700,7 +700,7 @@ def _run_story_event(state, key, check, show):
         sal = ev["salon"]; today = _dt.date.today().isoformat()
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
         if story.story_flags.get(sal["key"]) == today:
-            show(["Sorry, one haircut a day. Come back tomorrow!"])
+            show(sal.get("again") or ["Sorry, one haircut a day. Come back tomorrow!"])
             return
         if lead is None:
             show(["Bring a Pokemon along and I'll make it look wonderful!"])
@@ -708,7 +708,7 @@ def _run_story_event(state, key, check, show):
         story.story_flags[sal["key"]] = today
         from src.pokemon import items as _items
         _items.friend_gain(lead, int(sal.get("gain", 5)))
-        show(_resolve_lines(game, lines + [f"Snip, snip... There! {lead.display_name} looks happier already!"]))
+        show(_resolve_lines(game, lines + [(sal.get("said") or "Snip, snip... There! {mon} looks happier already!").replace("{mon}", lead.display_name)]))
         return
     if ev.get("photo"):  # (the Memorial Photo Studio, option B: a picture of your team, kept in your Trainer stats)
         import datetime as _dt
@@ -973,6 +973,21 @@ def _run_story_event(state, key, check, show):
                 got = [f"{getattr(game, 'player_name', 'You')} received an Egg!"]
             show(_resolve_lines(game, got + list(ch.get("done") or ([] if got else ["All set!"]))))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ch.get("ask") or "WHICH ONE?", rows, picked)))
+        return
+    if ev.get("lift"):   # (a building's lift, Black 2's Castelia towers, 11-20: [[floor label, room, x, y], ...]: pick a floor, step out there)
+        from src.states.systems.pick_list import PickListState
+        here = getattr(state, "room", None)
+        rows = [(f[0], f) for f in ev["lift"] if f[1] != here]
+
+        def ride(f):
+            game.change_state(state)
+            if f is None or not hasattr(state, "_go"):
+                return
+            state._go(f[1], "LIFT")
+            state.player = state.anim_from = state.partner = state.partner_from = (int(f[2]), int(f[3]))
+            state.facing = (0, 1)
+            state._remember()
+        _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ev.get("ask") or "WHICH FLOOR?", rows, ride)))
         return
     if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
         from src.states.systems.pick_list import PickListState

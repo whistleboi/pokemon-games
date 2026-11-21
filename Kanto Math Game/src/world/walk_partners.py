@@ -58,6 +58,18 @@ PARTNERS = {
                "end_exits": ["SINNOH_ROUTE_224"], "end_flag": None,
                "farewell": ["Marley: ...Thanks. You were... all right."],
                "gift": {}, "wait": ["Marley: ...I'll wait."]},
+    # (Black 2 / White 2, 11-20: Hugh through the Castelia Sewers. He battles wild Pokemon beside you, not trainers (B2W2),
+    # and heals your team after every battle. His team by your starter, as at the Sewers' Plasma battle: the one strong
+    # against yours, evolved, and his Pidove. He leaves once Team Plasma is beaten (the scene there: b2_sewer_plasma).)
+    "hugh": {"name": "{rival_name}", "area": "CASTELIA_SEWERS", "figure": "{rival_name}", "sheet": "b2_hugh.png", "sprite": "hugh.png",
+             "team": [499, 519], "levels": [20, 18], "team_choice": {"495": [499, 519], "498": [502, 519], "501": [496, 519]},
+             "join": ["{rival_name}: {player_name}! You've got to get tougher! I can't take them all on by myself...",
+                      "{rival_name}: Don't worry, I'll keep our Pokemon healed. Come on, let's find Team Plasma!",
+                      "{rival_name} joined you! He'll battle wild Pokemon beside you and heal your team after every battle."],
+             "chat": ["{rival_name}: If you don't get strong, you can't protect what matters to you!"],
+             "end_exits": [], "end_flag": "b2_sewer_plasma_battled",
+             "farewell": [], "gift": {},
+             "wait": ["{rival_name}: Stepping out for a minute? I'll wait here. Don't be long!"]},
 }
 BY_FIGURE = {(p["area"], p["figure"]): k for k, p in PARTNERS.items()}
 
@@ -84,7 +96,10 @@ def figure(key):
 def battle_partner(key):
     """Their side of a tag battle (battle_double.py's "partner")."""
     p = PARTNERS[key]
-    return {"name": p["name"], "class": "PKMN_TRAINER", "sprite": p["sprite"], "team": list(p["team"]), "levels": list(p["levels"])}
+    out = {"name": p["name"], "class": "PKMN_TRAINER", "sprite": p["sprite"], "team": list(p["team"]), "levels": list(p["levels"])}
+    if p.get("team_choice"):   # (a team by your starter: Hugh's)
+        out["team_choice"] = dict(p["team_choice"])
+    return out
 
 
 def join(story, key):

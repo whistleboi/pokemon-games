@@ -349,6 +349,11 @@ class StoryManager:
         if condition.startswith("season:"):   # (the season, Unova's month-by-month calendar: src/world/seasons.py; Route 20's
             from src.world import seasons as _seasons   #  autumn leaves, its autumn-only Rangers and items, 11-20)
             return _seasons.current_season() in [x.strip().upper() for x in condition.split(":", 1)[1].split(",")]
+        if condition.startswith("seen_at_least:"):   # (species seen or caught: Castelia's Pokemon fanatic and his Eviolite, 40; 11-20)
+            data = self.game.data.data if getattr(self, "game", None) else {}
+            have = {int(x) for x in data.get("seen_pokemon", [])}
+            have |= {int(v.get("id", k)) for k, v in (data.get("pokedex") or {}).items() if isinstance(v, dict)}
+            return len(have) >= int(condition.split(":", 1)[1])
         if condition.startswith("habitat:"):   # (B2W2's Habitat List: every species of that place's wild tables seen or caught -
             area = condition.split(":", 1)[1]   #  the Virbank Complex girl's Great Balls, 11-20)
             return self.habitat_done(area)

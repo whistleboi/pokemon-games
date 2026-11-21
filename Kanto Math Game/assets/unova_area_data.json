@@ -2,6 +2,21 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "CASTELIA_EMPTY_LOT_PERCENTAGES": {
+    "19": 30,
+    "546": 18,
+    "548": 18,
+    "519": 15,
+    "427": 8,
+    "300": 8,
+    "133": 5
+  },
+  "CASTELIA_SEWERS_SUPER_ROD_PERCENTAGES": {
+    "88": 100
+  },
+  "CASTELIA_SEWERS_SURF_PERCENTAGES": {
+    "88": 100
+  },
   "VIRBANK_COMPLEX_OUTSIDE_SUPER_ROD_PERCENTAGES": {
     "456": 65,
     "98": 30,
@@ -6123,24 +6138,230 @@
       "area_type": "town",
       "route_name": "Castelia City",
       "region": "UNOVA",
-      "backgrounds": { "main": "castelia_city.png", "pokecenter": "castelia_center.png", "gym": "castelia_gym.png" },
+      "backgrounds": {
+        "main": "castelia_city.png",
+        "pokecenter": "castelia_center.png",
+        "gym": "castelia_gym.png"
+      },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [544, 557, 542], "levels": [22, 22, 24], "dialogue": {"intro": ["Burgh: This gym is my canvas, and this battle — our masterpiece!", "I'm Burgh, the Castelia Gym Leader.", "Bug-types have a delicate beauty, but don't mistake that for weakness!"], "player_won": ["Burgh: Sublime! You've earned the Insect Badge!", "Here — take this TM. Use it as you see fit. Create something beautiful!"], "player_lost": ["Burgh: Not quite the composition I hoped to see.", "Return when your moves flow with more intention."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "INSECT", "movesets": {"544": ["SCREECH", "PURSUIT", "POISON-TAIL", "STRUGGLE-BUG"], "557": ["SAND-ATTACK", "FEINT-ATTACK", "SMACK-DOWN", "STRUGGLE-BUG"], "542": ["PROTECT", "STRING-SHOT", "RAZOR-LEAF", "STRUGGLE-BUG"]}}, "requirements": {"badges": 2, "flag": "plasma_castelia_cleared", "fail_text": "Burgh is helping chase Team Plasma from Castelia's sewers. Clear the sewers first!"}},
+      "gym": {
+        "requirements": {
+          "flag": "b2_sewers_done",
+          "fail_text": "Burgh isn't back at his Gym yet."
+        },
+        "trainers": [
+          {
+            "name": "Harlequin Clarence",
+            "class": "HARLEQUIN",
+            "sprite": "b2_harlequin.png",
+            "team": [
+              540,
+              540
+            ],
+            "levels": [
+              20,
+              20
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "dialogue": {
+              "intro": [
+                "Welcome to the cocoons! Hope you don't get tangled up!"
+              ],
+              "player_won": [
+                "All wrapped up... in defeat!"
+              ]
+            }
+          },
+          {
+            "name": "Harlequin Jack",
+            "class": "HARLEQUIN",
+            "sprite": "b2_harlequin.png",
+            "team": [
+              415,
+              541
+            ],
+            "levels": [
+              20,
+              20
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "dialogue": {
+              "intro": [
+                "Ta-da! Bugs and clowns, the best show in town!"
+              ],
+              "player_won": [
+                "The show's over? Already?"
+              ]
+            }
+          },
+          {
+            "name": "Harlequin Gary",
+            "class": "HARLEQUIN",
+            "sprite": "b2_harlequin.png",
+            "team": [
+              540,
+              415,
+              557
+            ],
+            "levels": [
+              19,
+              19,
+              19
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "dialogue": {
+              "intro": [
+                "Which way did you come in? The cocoons care, you know!"
+              ],
+              "player_won": [
+                "Ooh, you found the right thread!"
+              ]
+            }
+          },
+          {
+            "name": "Harlequin Anders",
+            "class": "HARLEQUIN",
+            "sprite": "b2_harlequin.png",
+            "team": [
+              557,
+              541
+            ],
+            "levels": [
+              20,
+              20
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "dialogue": {
+              "intro": [
+                "When the cocoon breaks open, the one that pops out is... me!"
+              ],
+              "player_won": [
+                "Hiding makes battle instincts dull..."
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Burgh",
+          "class": "GYM_LEADER",
+          "sprite": "b2_burgh.png",
+          "team": [
+            541,
+            557,
+            542
+          ],
+          "levels": [
+            22,
+            22,
+            24
+          ],
+          "held_items": {
+            "542": "SITRUS_BERRY"
+          },
+          "is_boss_battle": true,
+          "badge_reward": "INSECT",
+          "victory_flag": "b2_insect_badge",
+          "rewards": {
+            "balls": 5,
+            "TM015": 1
+          },
+          "movesets": {
+            "541": [
+              "STRING-SHOT",
+              "RAZOR-LEAF",
+              "STRUGGLE-BUG",
+              "PROTECT"
+            ],
+            "557": [
+              "SMACK-DOWN",
+              "FEINT-ATTACK",
+              "ROCK-POLISH",
+              "STRUGGLE-BUG"
+            ],
+            "542": [
+              "RAZOR-LEAF",
+              "CUT",
+              "STRING-SHOT",
+              "STRUGGLE-BUG"
+            ]
+          },
+          "dialogue": {
+            "intro": [
+              "Burgh: Good work back there in the sewers! My Bug Pokemon are scurrying to battle you.",
+              "Burgh: Dwebble's round little eyes are cute! And my ace, Leavanny, sews clothes for other Pokemon out of leaves!",
+              "Burgh: Well now... let's get right to it!"
+            ],
+            "player_won": [
+              "Burgh: Oh hoo... You're very strong indeed! Here, the Insect Badge. It suits you!",
+              "Burgh: With three Badges, Pokemon up to Lv. 40 will obey you, even traded ones.",
+              "Burgh: And take TM015 Struggle Bug, too. It lowers the Sp. Atk of whatever it hits. The little things count!"
+            ],
+            "player_lost": [
+              "Burgh: A lovely effort! Come back when your Pokemon are ready."
+            ]
+          }
+        }
+      },
       "travel_options": [
-        {"text": "Route 4", "target_area": "UNOVA_ROUTE_4", "condition": "has_insect_badge"},
-        {"text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST"},
-        {"text": "Unity Tower", "target_area": "UNITY_TOWER"},
-        {"text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS"},
-        {"text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion"},
-        {"text": "Ferry to the Decolore Islands", "long_ride": true, "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."},
-        {"text": "Virbank City", "target_area": "VIRBANK_CITY"},
-        {"text": "Skyarrow Bridge", "target_area": "SKYARROW_BRIDGE"}
+        {
+          "text": "Route 4",
+          "target_area": "UNOVA_ROUTE_4",
+          "condition": "has_insect_badge"
+        },
+        {
+          "text": "Pinwheel Forest",
+          "target_area": "PINWHEEL_FOREST"
+        },
+        {
+          "text": "Unity Tower",
+          "target_area": "UNITY_TOWER"
+        },
+        {
+          "text": "Castelia Sewers",
+          "target_area": "CASTELIA_SEWERS"
+        },
+        {
+          "text": "Liberty Garden (Ferry)",
+          "target_area": "LIBERTY_GARDEN",
+          "condition": "beat_unova_champion"
+        },
+        {
+          "text": "Ferry to the Decolore Islands",
+          "long_ride": true,
+          "target_area": "DECOLORE_FERRY",
+          "condition": "beat_unova_champion",
+          "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."
+        },
+        {
+          "text": "Virbank City",
+          "target_area": "VIRBANK_CITY"
+        },
+        {
+          "text": "Skyarrow Bridge",
+          "target_area": "SKYARROW_BRIDGE"
+        }
       ],
       "explore_options": [
-        {"text": "Pokémon Center", "action": "HEAL"},
-        {"text": "Department Store", "action": "SHOP"},
-        {"text": "Clear the Sewers with Burgh", "action": "NPC", "target": "burgh_sewers", "condition": "has_basic_badge", "flag_condition": "not plasma_castelia_cleared", "color": "GOLD"},
-        {"text": "Challenge Gym", "action": "GYM"}
+        {
+          "text": "Pokémon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Department Store",
+          "action": "SHOP"
+        },
+        {
+          "text": "Challenge Gym",
+          "action": "GYM"
+        }
       ],
       "next_area": "UNOVA_ROUTE_4",
       "on_enter_event": null,
@@ -6530,45 +6751,861 @@
       "battle_type": "indoor",
       "wild_pool_percentages": "UNOVA_CASTELIA_SEWERS_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": { "main": "castelia_sewers.png", "battle": "battle_castelia_sewers.png" },
+      "backgrounds": {
+        "main": "castelia_sewers.png",
+        "battle": "battle_castelia_sewers.png"
+      },
       "trainer_pool": [
         {
-          "name": "Plasma Grunt",
-          "class": "PLASMA",
-          "sprite": "plasma_grunt.png",
-          "team": [509, 568],
-          "rewards": { "balls": 3 },
+          "name": "Janitor Felix",
+          "class": "JANITOR",
+          "sprite": "janitor.png",
+          "team": [
+            506,
+            568
+          ],
+          "levels": [
+            16,
+            16
+          ],
+          "rewards": {
+            "balls": 3
+          },
           "dialogue": {
-            "intro": ["Team Plasma owns these sewers!"],
-            "player_won": ["Fall back!"],
-            "player_lost": ["For Lord Ghetsis!"]
+            "intro": [
+              "Sweeping up down here is my job. Battling too!"
+            ],
+            "player_won": [
+              "Swept clean away..."
+            ]
           }
         },
         {
-          "name": "Plasma Grunt",
-          "class": "PLASMA",
-          "sprite": "plasma_grunt.png",
-          "team": [543, 551],
-          "rewards": { "balls": 3 },
+          "name": "Janitor Brady",
+          "class": "JANITOR",
+          "sprite": "janitor.png",
+          "team": [
+            183,
+            573
+          ],
+          "levels": [
+            31,
+            31
+          ],
+          "rewards": {
+            "balls": 3
+          },
           "dialogue": {
-            "intro": ["You won't stop Team Plasma!"],
-            "player_won": ["How dare you..."],
-            "player_lost": ["Liberation is justice!"]
+            "intro": [
+              "The water's low, so I can finally clean these channels!"
+            ],
+            "player_won": [
+              "You're a real cleanup crew!"
+            ]
+          }
+        },
+        {
+          "name": "Worker Zack",
+          "class": "WORKER",
+          "sprite": "b2_worker.png",
+          "team": [
+            529
+          ],
+          "levels": [
+            17
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "We keep the sewers running. Want a taste of hard work?"
+            ],
+            "player_won": [
+              "Back to work for me..."
+            ]
+          }
+        },
+        {
+          "name": "Worker Scott",
+          "class": "WORKER",
+          "sprite": "b2_worker.png",
+          "team": [
+            532
+          ],
+          "levels": [
+            17
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "My Timburr's been hauling pipes all day. It's warmed up!"
+            ],
+            "player_won": [
+              "Phew! Time for a break."
+            ]
+          }
+        },
+        {
+          "name": "Doctor Heath",
+          "class": "DOCTOR",
+          "sprite": "b2_doctor.png",
+          "team": [
+            540
+          ],
+          "levels": [
+            17
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "I check on the workers' health down here. And battle!"
+            ],
+            "player_won": [
+              "Doctor's orders: rest your Pokemon."
+            ]
+          }
+        },
+        {
+          "name": "Scientist Clarke",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_m.png",
+          "team": [
+            81
+          ],
+          "levels": [
+            17
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "The electric current down here is fascinating!"
+            ],
+            "player_won": [
+              "My hypothesis was wrong..."
+            ]
+          }
+        },
+        {
+          "name": "Scientist Caroline",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_f.png",
+          "team": [
+            88
+          ],
+          "levels": [
+            17
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "I study the sludge in these channels. So does my Grimer!"
+            ],
+            "player_won": [
+              "Results: you win."
+            ]
           }
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         {
-          "text": "BATTLE PLASMA",
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
           "action": "TRAINER",
           "condition": "has_trainers",
-          "color": "GOLD",
-          "flag_condition": "not plasma_castelia_cleared"
+          "color": "GREEN"
         },
-        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" },
-        {"text": "Relic Passage", "action": "EXIT", "target_area": "RELIC_PASSAGE", "condition": "can_exit", "color": "RED"}
-      ]
+        {
+          "text": "Castelia City",
+          "action": "EXIT",
+          "target_area": "CASTELIA_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "The Empty Lot",
+          "action": "EXIT",
+          "target_area": "CASTELIA_EMPTY_LOT",
+          "condition": "can_exit",
+          "color": "RED"
+        }, {"text": "Relic Passage", "action": "EXIT", "target_area": "RELIC_PASSAGE", "condition": "can_exit", "color": "RED"}
+      ],
+      "next_area": "CASTELIA_CITY",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              19,
+              0,
+              20,
+              14,
+              14
+            ],
+            [
+              41,
+              0,
+              20,
+              14,
+              14
+            ],
+            [
+              19,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              41,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              19,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              41,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              88,
+              0,
+              5,
+              15,
+              15
+            ],
+            [
+              88,
+              0,
+              5,
+              17,
+              17
+            ],
+            [
+              19,
+              0,
+              4,
+              17,
+              17
+            ],
+            [
+              41,
+              0,
+              4,
+              17,
+              17
+            ],
+            [
+              19,
+              0,
+              1,
+              17,
+              17
+            ],
+            [
+              41,
+              0,
+              1,
+              17,
+              17
+            ]
+          ],
+          "surf": [
+            [
+              88,
+              0,
+              60,
+              5,
+              15
+            ],
+            [
+              88,
+              0,
+              30,
+              5,
+              15
+            ],
+            [
+              88,
+              0,
+              5,
+              5,
+              15
+            ],
+            [
+              88,
+              0,
+              4,
+              5,
+              15
+            ],
+            [
+              88,
+              0,
+              1,
+              5,
+              15
+            ]
+          ],
+          "ripple": [
+            [
+              88,
+              0,
+              60,
+              5,
+              20
+            ],
+            [
+              88,
+              0,
+              30,
+              5,
+              20
+            ],
+            [
+              88,
+              0,
+              5,
+              5,
+              20
+            ],
+            [
+              89,
+              0,
+              4,
+              5,
+              20
+            ],
+            [
+              89,
+              0,
+              1,
+              5,
+              20
+            ]
+          ],
+          "fish": [
+            [
+              88,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              88,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              88,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              88,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              88,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              88,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              88,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              89,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              89,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              89,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          14,
+          17
+        ]
+      },
+      "surf_pool_percentages": "CASTELIA_SEWERS_SURF_PERCENTAGES"
+    },
+    "CASTELIA_EMPTY_LOT": {
+      "area_type": "wild_route",
+      "route_name": "Empty Lot",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "CASTELIA_EMPTY_LOT_PERCENTAGES",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Castelia Sewers",
+          "action": "EXIT",
+          "target_area": "CASTELIA_SEWERS",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "CASTELIA_SEWERS",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              19,
+              0,
+              20,
+              15,
+              15
+            ],
+            [
+              546,
+              0,
+              10.0,
+              15,
+              15
+            ],
+            [
+              548,
+              0,
+              10.0,
+              15,
+              15
+            ],
+            [
+              519,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              427,
+              0,
+              5.0,
+              15,
+              15
+            ],
+            [
+              300,
+              0,
+              5.0,
+              15,
+              15
+            ],
+            [
+              19,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              546,
+              0,
+              5.0,
+              16,
+              16
+            ],
+            [
+              548,
+              0,
+              5.0,
+              16,
+              16
+            ],
+            [
+              519,
+              0,
+              5,
+              16,
+              16
+            ],
+            [
+              427,
+              0,
+              2.5,
+              16,
+              16
+            ],
+            [
+              300,
+              0,
+              2.5,
+              16,
+              16
+            ],
+            [
+              546,
+              0,
+              2.0,
+              17,
+              17
+            ],
+            [
+              548,
+              0,
+              2.0,
+              17,
+              17
+            ],
+            [
+              133,
+              0,
+              4,
+              18,
+              18
+            ],
+            [
+              546,
+              0,
+              0.5,
+              17,
+              17
+            ],
+            [
+              548,
+              0,
+              0.5,
+              17,
+              17
+            ],
+            [
+              133,
+              0,
+              1,
+              18,
+              18
+            ]
+          ],
+          "dark": [
+            [
+              19,
+              0,
+              20,
+              16,
+              16
+            ],
+            [
+              546,
+              0,
+              10.0,
+              16,
+              16
+            ],
+            [
+              548,
+              0,
+              10.0,
+              16,
+              16
+            ],
+            [
+              519,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              427,
+              0,
+              5.0,
+              16,
+              16
+            ],
+            [
+              300,
+              0,
+              5.0,
+              16,
+              16
+            ],
+            [
+              19,
+              0,
+              10,
+              17,
+              17
+            ],
+            [
+              546,
+              0,
+              5.0,
+              17,
+              17
+            ],
+            [
+              548,
+              0,
+              5.0,
+              17,
+              17
+            ],
+            [
+              519,
+              0,
+              5,
+              17,
+              17
+            ],
+            [
+              427,
+              0,
+              2.5,
+              17,
+              17
+            ],
+            [
+              300,
+              0,
+              2.5,
+              17,
+              17
+            ],
+            [
+              546,
+              0,
+              2.0,
+              18,
+              18
+            ],
+            [
+              548,
+              0,
+              2.0,
+              18,
+              18
+            ],
+            [
+              133,
+              0,
+              4,
+              19,
+              19
+            ],
+            [
+              546,
+              0,
+              0.5,
+              18,
+              18
+            ],
+            [
+              548,
+              0,
+              0.5,
+              18,
+              18
+            ],
+            [
+              133,
+              0,
+              1,
+              19,
+              19
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              15,
+              15
+            ],
+            [
+              531,
+              0,
+              20,
+              15,
+              15
+            ],
+            [
+              531,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              531,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              531,
+              0,
+              10,
+              17,
+              17
+            ],
+            [
+              531,
+              0,
+              10,
+              17,
+              17
+            ],
+            [
+              531,
+              0,
+              5,
+              18,
+              18
+            ],
+            [
+              531,
+              0,
+              5,
+              18,
+              18
+            ],
+            [
+              428,
+              0,
+              2.0,
+              18,
+              18
+            ],
+            [
+              301,
+              0,
+              2.0,
+              18,
+              18
+            ],
+            [
+              547,
+              0,
+              2.0,
+              18,
+              18
+            ],
+            [
+              549,
+              0,
+              2.0,
+              18,
+              18
+            ],
+            [
+              428,
+              0,
+              0.5,
+              18,
+              18
+            ],
+            [
+              301,
+              0,
+              0.5,
+              18,
+              18
+            ],
+            [
+              547,
+              0,
+              0.5,
+              18,
+              18
+            ],
+            [
+              549,
+              0,
+              0.5,
+              18,
+              18
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          15,
+          18
+        ]
+      }
     },
     "DESERT_RESORT": {
       "area_type": "dungeon",
@@ -8225,6 +9262,10 @@
     {"id": "b2_m11", "type": "MAIN", "title": "Trouble at the Docks", "description": "Roxie and {rival_name} have Team Plasma cornered on Virbank's pier, east of the Gym. Help them out!", "condition": {"required_region": "UNOVA", "flag": "b2_first_film", "flag_not": "b2_virbank_dock"}, "completed_flag": "b2_virbank_dock", "target": "VIRBANK_CITY"},
     {"id": "b2_m12", "type": "MAIN", "title": "The Runaway Grunt", "description": "One Grunt fled west to Route 20. Climb the steps in the middle of the route, then look south in a small clearing.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_dock", "flag_not": "b2_r20_hugh"}, "completed_flag": "b2_r20_hugh", "target": "UNOVA_ROUTE_20"},
     {"id": "b2_m13", "type": "MAIN", "title": "The Ship to Castelia", "description": "Pop Roxie is back on Virbank's pier. Board his ship at the terminal for Castelia City.", "condition": {"required_region": "UNOVA", "flag": "b2_r20_hugh", "flag_not": "b2_sailed_castelia"}, "completed_flag": "b2_sailed_castelia", "target": "VIRBANK_CITY"},
+    {"id": "b2_m14", "type": "MAIN", "title": "The Big City", "description": "Castelia City! Its Gym is on Gym Street, up from the waterfront. Go and see Gym Leader Burgh.", "condition": {"required_region": "UNOVA", "flag": "b2_castelia_arrived", "flag_not": "b2_burgh_away"}, "completed_flag": "b2_burgh_away", "target": "CASTELIA_CITY"},
+    {"id": "b2_m15", "type": "MAIN", "title": "Iris's Hunch", "description": "Burgh is away. Iris thinks Team Plasma could be hiding by Thumb Pier, east along the waterfront.", "condition": {"required_region": "UNOVA", "flag": "b2_burgh_away", "flag_not": "b2_thumb_scene"}, "completed_flag": "b2_thumb_scene", "target": "CASTELIA_CITY"},
+    {"id": "b2_m16", "type": "MAIN", "title": "Into the Sewers", "description": "{rival_name} ran into the Castelia Sewers from Thumb Pier. Follow him, then climb the north stairs after Team Plasma.", "condition": {"required_region": "UNOVA", "flag": "b2_thumb_scene", "flag_not": "b2_sewers_done"}, "completed_flag": "b2_sewers_done", "target": "CASTELIA_SEWERS"},
+    {"id": "b2_m17", "type": "MAIN", "title": "Burgh's Gym", "description": "Burgh is back at the Castelia Gym on Gym Street. Find your way through the cocoons to him.", "condition": {"required_region": "UNOVA", "flag": "b2_sewers_done", "flag_not": "b2_insect_badge"}, "completed_flag": "b2_insect_badge", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
@@ -8294,7 +9335,11 @@
   "UNOVA_WELLSPRING_CAVE_PERCENTAGES": {"524": 50, "527": 50, "529": 5},
   "UNOVA_PINWHEEL_FOREST_PERCENTAGES": {"535": 20, "519": 22, "532": 10, "539": 2, "538": 2, "546": 9, "540": 18, "543": 8, "548": 9, "531": 5, "541": 5, "544": 3, "520": 3, "511": 2, "513": 2, "515": 2, "547": 1, "549": 1},
   "UNOVA_LOSTLORN_FOREST_PERCENTAGES": {"546": 18, "541": 35, "520": 15, "543": 15, "548": 18, "531": 5, "587": 3, "511": 3, "513": 3, "515": 3, "521": 2, "542": 2, "547": 2, "549": 2},
-  "UNOVA_CASTELIA_SEWERS_PERCENTAGES": {"19": 45, "41": 45, "88": 10},
+  "UNOVA_CASTELIA_SEWERS_PERCENTAGES": {
+    "19": 45,
+    "41": 45,
+    "88": 10
+  },
   "UNOVA_DESERT_RESORT_PERCENTAGES": {"551": 40, "554": 30, "556": 10, "559": 5, "557": 10, "561": 5},
   "UNOVA_RELIC_CASTLE_PERCENTAGES": {"551": 11, "562": 11, "552": 30, "563": 27, "28": 7, "95": 3, "344": 11},
   "UNOVA_COLD_STORAGE_PERCENTAGES": {"507": 35, "582": 30, "572": 20, "532": 15, "531": 5, "573": 2, "508": 2},

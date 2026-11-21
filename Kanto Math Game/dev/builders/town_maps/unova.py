@@ -54,10 +54,11 @@ def _place(z, people, signs, extra_people=(), counters=None):
                 a, b = (x + dx, y + dy), (x + 2 * dx, y + 2 * dy)
                 if 0 <= b[0] < w and 0 <= b[1] < h and rows[a[1]][a[0]] == "c" and rows[b[1]][b[0]] == ".":
                     rows[a[1]][a[0]] = "m"
-    sg = []
+    sg, _sign_at = [], set()
     for s in g["signs"]:
         lines = signs.get((s["x"], s["y"])) or signs.get(s["script"])
-        if lines and 0 <= s["x"] < w and 0 <= s["y"] < h:
+        if lines and 0 <= s["x"] < w and 0 <= s["y"] < h and (s["x"], s["y"]) not in _sign_at:   # (one sign a tile: a rail zone's copies meet)
+            _sign_at.add((s["x"], s["y"]))
             rows[s["y"]][s["x"]] = "!"
             sg.append((s["y"], s["x"], lines))
     return rows, [o for _y, _x, o in sorted(spots, key=lambda t: (t[0], t[1]))], [l for _y, _x, l in sorted(sg)], g["doors"]
@@ -1030,9 +1031,10 @@ VIRBANK = town(
                                    {"text": "Pop Roxie", "action": "EVENT", "condition": ["b2_pop_roxie_back", "not:b2_sailed_castelia"],
                                     "_look": "sheet:b2_c359.png",
                                     "event": {"lines": ["Pop Roxie: Ahoy! Shall we set sail for Castelia City? Please, step this way!"],
-                                              "flag": "b2_sailed_castelia", "travel": "CASTELIA_CITY"}},
+                                              "flag": "b2_sailed_castelia", "travel": "CASTELIA_CITY", "land": ["prime_pier", 14, 11]}},
                                    {"text": "Pop Roxie ", "action": "EVENT", "condition": ["b2_sailed_castelia"], "_look": "sheet:b2_c359.png",
-                                    "event": {"lines": ["Pop Roxie: Off to Castelia City again? All aboard!"], "travel": "CASTELIA_CITY"}}],
+                                    "event": {"lines": ["Pop Roxie: Off to Castelia City again? All aboard!"], "travel": "CASTELIA_CITY",
+                                              "land": ["prime_pier", 14, 11]}}],
                                0: _say("Sailor by the door", "The ship to Castelia City leaves from here! It crosses seas too rough for Pokemon to swim."),
                                1: _say("Old woman on the bench", "Your life is your own. Work hard at one thing, or try lots of different things!"),
                                },
@@ -1284,6 +1286,810 @@ POKESTAR = town(
 
 
 
+
+# ====================================================================================================== batch 3a (11-20)
+# Castelia City, Black 2's way: the waterfront avenue (zone 28, walked on the game's rails: rails.py) is the town; every
+# street, pier and building is a room through its own camera (Jordan 11-20: "each street its own camera"). Doors pair
+# exactly by the game's own warp numbers (castelia_room). Part 1: the city, the ship's arrival, the Harlequin Hunt, Burgh
+# away and Iris to Thumb Pier. Part 2 (to come): the Sewers with Hugh, Burgh's Gym, Colress.
+# Story flags: b2_sailed_castelia (Virbank's ship) -> b2_castelia_arrived (the pier: Hugh's Xtransceiver) ->
+# b2_burgh_away (Gym Street: Clyde and Iris) -> b2_iris_thumb (the avenue) -> b2_thumb_scene (Thumb Pier: Hugh runs in).
+
+CASTELIA_ROOMS = {30: "plaza", 31: "gym_street", 32: "route4_street", 33: "mode_street", 34: "castelia_street",
+                  35: "narrow_street", 36: "liberty_pier", 37: "unity_pier", 38: "prime_pier", 39: "cruise_dock",
+                  40: "thumb_pier", 41: "center", 42: "passerby", 43: "studio", 44: "battle_co", 45: "battle_co_47",
+                  46: "battle_co_55", 47: "gf_lobby", 48: "game_freak", 49: "r4_west", 50: "r4_west_47", 53: "cafe",
+                  54: "cs_west", 55: "cs_west_11", 56: "gs_west", 57: "medal_office", 58: "r4_north", 59: "r4_north_47",
+                  60: "r4_south", 61: "r4_south_47", 494: "fennel", 51: "gate_route4", 252: "bridge_gate",
+                  29: "gym", 488: "gym_burgh"}
+CASTELIA_AREAS = {495: "CASTELIA_SEWERS", 326: "UNOVA_ROUTE_4", 551: "UNOVA_ROUTE_4"}
+_EXIT_CHARS = "v^<>ghijklqtyz"
+
+
+def _thin(rows, chars):
+    """A doorway box several tiles deep (the game's warp strips): only its tiles touching open ground stay a way out; the
+    rest become wall (a way out is walked into from the ground beside it)."""
+    h, w = len(rows), len(rows[0])
+    keep = set()
+    for y in range(h):
+        for x in range(w):
+            if rows[y][x] in chars and any(0 <= y + dy < h and 0 <= x + dx < w and rows[y + dy][x + dx] in ".N\"\""
+                                           for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                keep.add((x, y))
+    for y in range(h):
+        for x in range(w):
+            if rows[y][x] in chars and (x, y) not in keep:
+                rows[y][x] = "c"
+
+
+def _castelia_target(d):
+    to = d["to"]
+    if to == 28:
+        return "ROOM:MAIN"
+    if to in CASTELIA_ROOMS:
+        return "ROOM:" + CASTELIA_ROOMS[to]
+    return CASTELIA_AREAS.get(to)
+
+
+def castelia_room(z, people, signs, extra_people=(), scenes=None, lift=None, title=None, **more):
+    """A Castelia street, pier or building: each of its doors leads where the game's own warp does (the avenue, another
+    room, the Sewers...). lift: [[label, room, x, y], ...]: the lift doors (the zone's two lift signs at the top wall)."""
+    g = GEO[str(z)]
+    sg_lines = dict(signs)
+    lift_tiles = [s for s in g["signs"] if 10405 <= s["script"] <= 10418] if lift else []
+    for s in lift_tiles:
+        sg_lines[(s["x"], s["y"])] = ["The lift."]
+    rows, ppl, sg, doors = _place(z, people, sg_lines, extra_people, counters=not g["outdoor"])
+    exits, chars = {}, {}
+    for d in doors:
+        tgt = _castelia_target(d)
+        if not tgt:
+            continue
+        ch = chars.get(tgt) or _EXIT_CHARS[len(chars)]
+        chars[tgt] = ch
+        for k in range(max(1, d["w"])):
+            for j in range(max(1, d.get("h", 1))):
+                if 0 <= d["x"] + k < len(rows[0]) and 0 <= d["y"] + j < len(rows):
+                    rows[d["y"] + j][d["x"] + k] = ch
+        exits[ch] = tgt
+    _thin(rows, set(exits))
+    m = {"theme": "room", "art": ["".join(r) for r in rows], "exits": exits, "buildings": {}, "roofs": _picture(z, g["outdoor"]),
+         "people": ppl}
+    if sg:
+        m["signs"] = sg
+    if scenes:
+        m["scenes"] = scenes
+    if lift and not exits:   # (a floor reached only by the lift: it's where you step out)
+        m["landings"] = [[f[2], f[3]] for f in lift if f[1] == CASTELIA_ROOMS.get(z)]
+    if lift:
+        m["sign_events"] = {"%d,%d" % (s["x"], s["y"]): {"text": "Lift", "action": "EVENT", "event": {"lift": lift}} for s in lift_tiles}
+    if title:
+        m["title"] = title
+    m.update(_camera(z))
+    m.update(more)
+    return m
+
+
+def _gift(label, lines, item, flag, done, count=1, **kw):
+    gift = {"balls": count} if item == "balls" else {item: count}
+    out = {"text": label, "action": "EVENT", "event": {"lines": list(lines), "gift_item": gift, "flag": flag, "done": list(done)}}
+    out.update(kw)
+    return out
+
+
+def _clerk_battle(label, name, cls, sprite, team, levels, hi, won, flag, gift=None):
+    ev = {"lines": [hi], "flag": flag, "done": [won],
+          "battle": {"name": name, "class": cls, "sprite": sprite, "team": team, "levels": levels, "rewards": dict({"balls": 2}, **(gift or {})),
+                     "dialogue": {"player_won": [won]}}}
+    return {"text": label, "action": "EVENT", "event": ev}
+
+
+HUNT = ["b2_hunt_medal", "b2_hunt_passerby", "b2_hunt_battleco"]
+
+
+def _hunted(label, place, flag):
+    """One of the Castelia Harlequin Hunt's three hidden Harlequins (B2W2)."""
+    return [{"text": label, "action": "EVENT", "condition": ["b2_hunt_start", "not:" + flag], "_look": "sheet:b2_c54.png", "event": {
+                "lines": ["I'm from the Castelia Harlequin Hunt! You found the %s Harlequin! All riiight!" % place], "flag": flag}},
+            _say(label + " ", "Enjoy Castelia City! Every corner has something to see.", _look="sheet:b2_c54.png",
+                 condition=[{"any": ["not:b2_hunt_start", flag]}])]
+
+
+BATTLE_CO_LIFT = [["1F", "battle_co", 6, 2], ["47F", "battle_co_47", 6, 1], ["55F", "battle_co_55", 6, 2]]
+GF_LIFT = [["1F", "gf_lobby", 6, 2], ["22F", "game_freak", 6, 2]]
+R4W_LIFT = [["1F", "r4_west", 6, 2], ["47F", "r4_west_47", 6, 2]]
+CSW_LIFT = [["1F", "cs_west", 6, 2], ["11F", "cs_west_11", 6, 2]]
+GSW_LIFT = [["1F", "gs_west", 6, 2], ["2F", "medal_office", 6, 2], ["3F", "fennel", 6, 2]]
+R4N_LIFT = [["1F", "r4_north", 6, 2], ["47F", "r4_north_47", 6, 1]]
+R4S_LIFT = [["1F", "r4_south", 6, 2], ["47F", "r4_south_47", 6, 1]]
+
+CASTELIA_PEOPLE = {   # (the avenue: Oceanfront Road)
+    12: _say("Iris", "Iris: Thumb Pier's just past here! Come on, come on!", condition=["b2_burgh_away", "not:b2_thumb_scene"],
+             _look="sheet:b2_c355.png"),
+    1: _say("Clerk by the railing", "When I fall asleep in my bed... when my Pokemon lands a critical hit... So many things make me happy!"),
+    5: _say("Clerk on her break", "I'm a battling Clerk! If I don't give up, I'll win someday!"),
+    6: _say("Tired clerk", "Everyone's faces blend together... Is that because I'm tired?"),
+    7: _say("Clerk with a coffee", "When you're tired, rest! Don't force yourself to be cheerful."),
+    9: _say("Clerk thinking", "Should I change my Pokemon's moves, or its held item?"),
+    10: _say("Clerk looking out to sea", "Living among so many people... do you have to like everyone, or just yourself?"),
+    3: _say("Man by the steps", "I wonder what Castelia was like before it got this big."),
+    2: _say("Clerk on the corner", "The Pokemon and the people here are so full of life!"),
+    8: _say("Battle Company clerk", "The Battle Company needs people for focus testing. Confident Trainers, come and try it!"),
+    4: _say("Clerk by the bay", "Seasons and trends always pass..."),
+    11: [{"text": "Harlequin", "action": "EVENT", "condition": ["not:b2_hunt_start"], "event": {
+             "lines": ["Welcome to Castelia City! It's the Castelia Harlequin Hunt!",
+                       "First time here? Here, have this! Get around the city in style!",
+                       "{player_name} received a Bicycle!",
+                       "The rules are simple: find the three Harlequins hiding in the city. The Medal Office, Passerby Analytics HQ, and the Battle Company!"],
+             "gift_item": {"BICYCLE": 1}, "flag": "b2_hunt_start"}},
+         {"text": "Harlequin ", "action": "EVENT", "condition": HUNT, "event": {
+             "lines": ["You found all three! You've completed the Castelia Harlequin Hunt! Here's your prize!"],
+             "gift_item": {"RARE_CANDY": 1}, "flag": "b2_hunt_done",
+             "done": ["The Hunt's a way to make more people love Castelia City! Come back any time!"]}},
+         _say("Harlequin  ", "Still hunting? The Medal Office, Passerby Analytics HQ and the Battle Company!",
+              condition=["b2_hunt_start", {"any": ["not:" + f for f in HUNT]}])],
+}
+CASTELIA_SIGNS = {(70, 37): ["CASTELIA CITY", "A city of grandeur."], 3: ["AHEAD: CASTELIA STREET", "Ocean side: Cruise Dock"],
+                  4: ["AHEAD: MODE STREET", "Ocean side: Prime Pier"], 5: ["AHEAD: NARROW STREET", "Ocean side: Unity Pier"],
+                  6: ["AHEAD: POKEMON GYM", "Ocean side: Liberty Pier"], 7: ["PASSERBY ANALYTICS HQ", "...people pass by as they walk along."],
+                  8: ["BATTLE COMPANY", "Talented Trainers welcome!"]}
+CASTELIA_SCENES = [
+    # Iris waits by the way to Thumb Pier (the game's trigger: 77, 39-44)
+    {"trigger": {"zone": [76, 38, 79, 45]}, "condition": ["b2_burgh_away", "not:b2_iris_thumb"], "flag": "b2_iris_thumb",
+     "cast": [{"person": "Iris", "face": "d", "lines": ["Iris: Hey, c'mon! Thumb Pier's past here!",
+                                                     "Iris: Suspicious places in Castelia? There's really only one that comes to mind!",
+                                                     "Iris: This way! This way! Come and look!"], "leave_path": [[76, 31]], "gone": True}]},
+]
+
+# --- the avenue's ways into its streets and piers: the game's own warp boxes (the doors to 41, 42, 44 are buildings)
+_ave_edges, _ave_to = {}, {}
+for _d in GEO["28"]["doors"]:
+    _t = _castelia_target(_d)
+    if not _t or _d["to"] in (41, 42, 44):
+        continue
+    _ch = _ave_to.get(_t) or "ghijklqtyz<>"[len(_ave_to)]
+    _ave_to[_t] = _ch
+    _ave_edges.setdefault(_ch, (_t, []))[1].extend((_d["x"] + k, _d["y"] + j) for k in range(_d["w"]) for j in range(_d["h"]))
+
+PRIME_PIER_SCENES = [
+    {"trigger": "enter", "condition": ["b2_sailed_castelia", "not:b2_castelia_arrived"], "flag": "b2_castelia_arrived",
+     "cast": [{"person": "Pop Roxie", "face": "r", "lines": ["Pop Roxie: Everyone, we've arrived at Castelia City!"]},
+              {"sheet": "b2_hugh.png", "from": [12, 9], "to": "player",
+               "lines": ["{rival_name}: So this is Castelia City... It's way bigger than I'd heard!",
+                         "{rival_name}: Doesn't matter. I'll find Team Plasma wherever they run!",
+                         "{rival_name}: Oh yeah, {player_name}! Let's register each other's Xtransceiver numbers.",
+                         "{rival_name}: Back in Aspertia we never needed to. We could just see each other!",
+                         "{player_name} registered {rival_name} in the Xtransceiver!"],
+               "leave": [13, 1]}]},
+]
+GYM_STREET_SCENES = [
+    # Burgh's away: Clyde at the Gym, then Iris (the game's script 2 at the Gym door)
+    {"trigger": {"zone": [19, 44, 25, 52]}, "condition": ["b2_castelia_arrived", "not:b2_burgh_away"], "flag": "b2_burgh_away",
+     "cast": [{"person": "Clyde", "face": "l",
+               "lines": ["Clyde: If you're looking for Gym Leader Burgh, he said there might be trouble, and off he went!",
+                         "Clyde: Feel free to go and look for him!"], "stay": True},
+              {"sheet": "b2_c355.png", "from": [16, 62], "to": "player", "stay": True,
+               "lines": ["???: Huh? Burgh vanished again?"]},
+              {"person": "Clyde", "face": "l", "lines": ["Clyde: Oh! Hello, Iris. Something came up, and Burgh isn't here right now."]},
+              {"as": 1, "lines": ["Iris: Hmm... Isn't Burgh always vanishing? He says he's got artist's block and wanders off.",
+                                  "Iris: Hi! Who are you? ...Looking for Team Plasma? But they broke up two years ago!",
+                                  "Iris: Doesn't matter! You've got a problem, so I'll help!",
+                                  "Iris: Hmm... where would suspicious people go to hide?",
+                                  "Iris: ...That's it! That might be where they are!"], "leave": [16, 62]},
+              {"person": "Clyde", "face": "l",
+               "lines": ["Clyde: Good grief... Burgh and Iris are so alike.",
+                         "Clyde: Looks like she went round the corner, toward the Pokemon Center. Follow the street down to the sea, then east!"]}]},
+    # the Gym's shut till Burgh's back (after the Sewers)
+    {"trigger": {"zone": [24, 48, 24, 48]}, "condition": ["not:b2_sewers_done"], "every": True,
+     "cast": [], "call": ["Clyde: Sorry! Burgh isn't here right now."], "push": [-1, 0]},
+]
+THUMB_PIER_SCENES = [
+    # Iris shows you the way into the Sewers; Hugh runs in (the game's triggers: 4, 9-18 and 9-11, 19)
+    {"trigger": {"zone": [2, 8, 8, 19]}, "condition": ["b2_iris_thumb", "not:b2_thumb_scene"], "flag": "b2_thumb_scene",
+     "cast": [{"person": "Iris ", "face": "l",
+               "lines": ["Iris: You can get into the sewers from here! Seems pretty suspicious, right?"], "stay": True},
+              {"sheet": "b2_hugh.png", "from": [1, 14], "to": "player",
+               "lines": ["{rival_name}: {player_name}! Did you find Team Plasma?!",
+                         "{rival_name}: ...Not yet? Then the only place I haven't checked is...",
+                         "{rival_name}: {player_name}! Help me out!"], "leave": [19, 17]},
+              {"as": 0, "lines": ["Iris: Yep! The sewers are a perfect hiding place. Go on, after him!"]}]},
+]
+
+CASTELIA = town(
+    28, CASTELIA_PEOPLE, CASTELIA_SIGNS,
+    {41: ("center", "center"), 44: ("house", "battle_co"), 42: ("house", "passerby")}, rooms={
+        "prime_pier": castelia_room(38, {
+            0: [_say("Pop Roxie", "Pop Roxie: Ahoy! Back to Virbank City? Step this way!", condition=["not:b2_castelia_arrived"]),
+                {"text": "Pop Roxie ", "action": "EVENT", "condition": ["b2_castelia_arrived"], "event": {
+                    "lines": ["Pop Roxie: Ahoy! Shall we sail for Virbank City? Please, step this way!"],
+                    "travel": "VIRBANK_CITY", "land": ["terminal", 6, 7]}}],
+            2: _ball("Poke Ball at the pier's end", "HEART_SCALE", "b2_castelia_heart_scale", name="a Heart Scale"),
+            3: _say("Woman by the water", "That's a strange ship out there. A sailing ship, these days?"),
+            4: _say("Man by the rail", "When you just can't take it any more, scream at the ocean!")},
+            {}, scenes=PRIME_PIER_SCENES, title="Prime Pier"),
+        "thumb_pier": castelia_room(40, {
+            1: _say("Iris ", "Iris: The sewers are right there! Go on!", condition=["b2_iris_thumb", "not:b2_sewers_done"],
+                    _look="sheet:b2_c355.png"),
+            0: _say("Sewer worker", "Because of the tide, the Castelia Sewers can't always be entered the same way. It depends on the season."),
+            3: _say("Man on the pier", "Thumbs up! Stick out your thumb and curl your fingers. It means OK... or well done!")},
+            {}, scenes=THUMB_PIER_SCENES, title="Thumb Pier"),
+        "unity_pier": castelia_room(37, {
+            1: _say("Ship attendant", "This is the ship for Unity Tower, where Trainers from around the world gather.",
+                    "It only sails for Trainers who've traded with someone far away. Not today, sorry!"),
+            0: _gift("Girl on the pier", ["We're all tied together by destiny. But we each choose our own red thread.", "That's why I want you to have this!"],
+                     "DESTINY_KNOT", "b2_castelia_destiny_knot", ["If a Pokemon holding it falls in love, the other one does too!"])},
+            {}, title="Unity Pier"),
+        "liberty_pier": castelia_room(36, {
+            0: _say("Boy on the pier", "Liberty Garden, huh? Long ago a rich man hid an amazing Pokemon there: Victini!"),
+            2: _say("Old man on the pier", "Ho ho! Team Plasma fell apart because they wanted to misuse power like Victini's."),
+            1: {"text": "Liberty Garden sailor", "action": "EVENT", "event": {
+                "lines": ["Would you like to sail to Liberty Garden? Your timing's perfect. All aboard!"], "travel": "LIBERTY_GARDEN"}}},
+            {}, title="Liberty Pier"),
+        "cruise_dock": castelia_room(39, {
+            0: _say("Royal Unova attendant", "Welcome to the Royal Unova! It sails once a day, in the evening.",
+                    "Trainers who love to battle fill its cabins. Please come back in the evening!")},
+            {}, title="Cruise Dock"),
+        "plaza": castelia_room(30, {1: _say("Old man by the fountain", "If you want to be strong, battle lots of Trainers, and get to know your Pokemon well!")},
+                               {1: ["CENTRAL PLAZA", "Ahead: Route 4"]}, title="Central Plaza"),
+        "gym_street": castelia_room(31, {
+            1: _say("Clerk on Gym Street", "Wanting to get stronger as a Trainer is good! Play with your Pokemon, or work with them!"),
+            2: _say("Woman with a Palpitoad", "My little Palpitoad is utterly charming! When I come home tired, it cheers me right up."),
+            3: _say("Trainer by the Gym", "When it comes to loving my Pokemon, I won't lose to anybody!"),
+            4: _say("Girl with Potions", "I've got plenty of Potions! With them, I bet I can beat the Gym Leader!"),
+            5: _say("Clerk going home", "If I only had five Badges, I could buy Ultra Balls...")},
+            {1: ["CASTELIA CITY POKEMON GYM", "Leader: Burgh", "Premier Insect Artist"]}, scenes=GYM_STREET_SCENES, title="Gym Street",
+            extra_people=[(22, 47, _say("Clyde", "Clyde: Burgh isn't here right now, I'm afraid.", condition=["not:b2_sewers_done"],
+                                        _look="sheet:b2_c187.png"))]),   # (beside the Gym's door, not in it: the scene below turns you back)
+        "route4_street": castelia_room(32, {
+            0: _say("Woman by the gate", "Nimbasa City has the Pokemon Musical. It never goes well for me, but I'll keep trying!"),
+            1: [_say("Man on the street", "Trainers and Pokemon make an amazing team! They dug out the ruins on Route 4!",
+                     condition=["not:unova_version:WHITE_2"]),
+                _say("Man on the street ", "Trainers and Pokemon make an amazing team! They built that row of new buildings on Route 4!",
+                     condition=["unova_version:WHITE_2"])]},
+            {1: ["ROUTE 4 AHEAD"]}, title="Street to Route 4"),
+        "mode_street": castelia_room(33, {
+            0: {"text": "Casteliacone seller", "action": "EVENT", "condition": ["not:season:WINTER"], "event": {
+                "lines": ["Castelia's famous Casteliacone! The perfect souvenir! Just $100."],
+                "pay": 100, "gift_item": {"CASTELIACONE": 1}, "daily": True, "flag": "b2_casteliacone",
+                "done": ["You bought today's last one! Please come again tomorrow!"]}},
+            3: _say("Boy in the line", "Boy oh boy! If the Champion buys them, they've got to be cool!", condition=["not:season:WINTER"]),
+            4: _say("Girl in the line", "I can't wait to eat one!", condition=["not:season:WINTER"]),
+            5: _say("Hiker in the line", "My daughter asked me to get them for her... but look at this line!", condition=["not:season:WINTER"]),
+            6: _say("Clerk in the line", "The line gets really long. But it's worth the wait!", condition=["not:season:WINTER"])},
+            {2: ["CASTELIA'S FAMOUS CASTELIACONE"], 1: ["STUDIO CASTELIA"]}, title="Mode Street",
+            extra_people=[(13, 36, _say("Woman in the line", "I came all the way from Anville Town on the train just to get one!",
+                                        condition=["not:season:WINTER"]))]),
+        "castelia_street": castelia_room(34, {}, {1: ["GAME FREAK"]}, title="Castelia Street"),
+        "narrow_street": castelia_room(35, {
+            0: {"text": "Man by the dumpsters", "action": "EVENT", "event": {
+                "lines": ["Where did I put those sunglasses...? Ah, found them!",
+                          "And you really ought to have more light to see by. Take this. It'll help in dark places."],
+                "gift_item": {"TM291": 1}, "flag": "b2_castelia_tm291",
+                "done": ["Flash lowers your opponent's accuracy. Use it twice and they'll hardly ever hit!"]}},
+            1: _say("Dancer", "Grin! Ehehehe..."), 2: _say("Dancer ", "Hey, yo! Yeah!")},
+            {1: ["CAFE SONATA"]}, title="Narrow Street"),
+        "center": castelia_room(41, {
+            3: {"text": "Pokémon Center", "action": "HEAL"}, 0: {"text": "Shop", "action": "SHOP"},
+            2: _say("Clerk ", "Welcome! Everyday items on this side."), 1: _say("Clerk  ", "Specialty Poke Balls are over here!"),
+            7: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+            4: _say("Boy with questions", "I want to know everyone's favourite kind of Pokemon!"),
+            5: _say("Woman by the door", "Fennel's moved to Castelia City! She's a professor researching Pokemon Trainers."),
+            8: _say("Nurse by the PC", "Want to heal your Pokemon? The counter's right there!"),
+            9: _say("Audino", "Audino: Au-di-no?"),
+            10: _say("Man by the stairs", "Upstairs there's a big globe. People mark where they're from on it."),
+            11: _say("Clerk by the window", "Castelia's so busy, I come in here just for the quiet.")},
+            {}, title="Pokemon Center"),
+        "battle_co": castelia_room(44, {
+            0: _say("Receptionist", "People here have Pokemon battles, not arguments! Upstairs, be ready for a challenge."),
+            1: _say("Clerk by the lift", "Welcome! For the lift, use the buttons on or beside its door."),
+            3: _say("Janitor", "I'm the janitor. I keep everything spick and span!",
+                    "Have your Pokemon share Exp. Points? You can switch Exp. Share on in the Options. Handy, isn't it?"),
+            2: [_gift("Ace Trainer by the window", ["A Pokedex! Coooool! Your first partner was Snivy? Then this is for you!"], "MIRACLE_SEED", "b2_bc_starter_item",
+                      ["Lots of items work when a Pokemon holds them. Keep an eye out!"], condition=["party_has:495"]),
+                _gift("Ace Trainer by the window ", ["A Pokedex! Coooool! Your first partner was Tepig? Then this is for you!"], "CHARCOAL", "b2_bc_starter_item",
+                      ["Lots of items work when a Pokemon holds them. Keep an eye out!"], condition=["party_has:498", "not:party_has:495"]),
+                _gift("Ace Trainer by the window  ", ["A Pokedex! Coooool! Your first partner was Oshawott? Then this is for you!"], "MYSTIC_WATER",
+                      "b2_bc_starter_item", ["Lots of items work when a Pokemon holds them. Keep an eye out!"],
+                      condition=["party_has:501", "not:party_has:495", "not:party_has:498"]),
+                _say("Ace Trainer by the window   ", "Which Pokemon did you start with? Bring it along and show me!",
+                     condition=["not:party_has:495", "not:party_has:498", "not:party_has:501"])],
+            4: _hunted("Harlequin in the lobby", "Battle Company", "b2_hunt_battleco")},
+            {1: ["Burgh's signature is scrawled in the corner of the painting."]}, lift=BATTLE_CO_LIFT, title="Battle Company"),
+        "battle_co_47": castelia_room(45, {
+            0: _gift("Developer", ["I'm in charge of development! Since you came for a company tour, have this!"], "SCOPE_LENS", "b2_bc_scope_lens",
+                     ["A Pokemon holding a Scope Lens lands critical hits more often!"]),
+            1: _clerk_battle("Clerk Clemens", "Clerk Clemens", "CLERK", "b2_worker.png", [58], [16], "A company tour? Anyway, let's battle!",
+                             "What power! Take this present: Quick Balls work best at the very start of a battle.", "b2_bc_clemens", {"QUICK_BALL": 2}),
+            3: _clerk_battle("Clerk Warren", "Clerk Warren", "CLERK", "b2_worker.png", [183], [16], "Here for Pokemon practice? Happy to help!",
+                             "With skills like that, you'll get the most out of these Timer Balls!", "b2_bc_warren", {"TIMER_BALL": 5}),
+            4: _clerk_battle("Clerk Gilligan", "Clerk Gilligan", "CLERK", "b2_worker.png", [519], [17], "Work hard, battle harder!",
+                             "I lost... back to my desk.", "b2_bc_gilligan"),
+            5: _clerk_battle("Clerk Britney", "Clerk Britney", "CLERK", "b2_worker.png", [406], [16], "A visitor! Let's see what you've got!",
+                             "Wow, you're good!", "b2_bc_britney"),
+            2: _ball("Poke Ball by the desks", "GUARD_SPEC", "b2_bc_guard_spec", name="a Guard Spec.")},
+            {}, lift=BATTLE_CO_LIFT, title="Battle Company 47F"),
+        "battle_co_55": castelia_room(46, {
+            0: _ball("Poke Ball in the corner", "ETHER", "b2_bc_ether", name="an Ether"),
+            1: _say("Boy by the window", "Think 'when I win it's my Pokemon, when I lose it's me'. That might make you stronger."),
+            2: _clerk_battle("President", "Battle Company President", "GENTLEMAN", "gentleman.png", [133, 507], [17, 17],
+                             "Oh! You're the Trainer I met at the entrance! I'll show you how much this company has researched Pokemon and Trainers!",
+                             "I lost... You were strong. My dream as president? A device that lets people talk to Pokemon!", "b2_bc_president")},
+            {}, lift=BATTLE_CO_LIFT, title="Battle Company 55F"),
+        "passerby": castelia_room(42, {
+            0: _say("Passerby Analytics leader", "Welcome to Passerby Analytics HQ! We survey the people you pass by.",
+                    "Our surveys need lots of passers-by from far and wide, so there's no work for you just yet."),
+            12: _hunted("Harlequin at the desks", "Passerby Analytics HQ", "b2_hunt_passerby"),
+            10: _say("Statistician", "What do people like? What's popular? Surveys tell us!"),
+            11: _say("Statistician ", "Hello! A cheerful greeting is important, isn't it?"),
+            1: _say("Statistician  ", "Do you know the ranks of statisticians? Finish requests and you move up!"),
+            2: _say("Statistician   ", "People pass by as they walk along... and we count them!")},
+            {}, title="Passerby Analytics HQ"),
+        "studio": castelia_room(43, {
+            0: _say("Curator", "We're showing works by up-and-coming young artists!"),
+            1: _say("Visitor", "In Castelia City, the Pokemon Gym itself is Burgh's artwork!"),
+            2: {"text": "Painter", "action": "EVENT", "event": {
+                "lines": ["I'm not the artist Burgh is, but I love painting. Show me a Pokemon to paint today!",
+                          "Inspiring! Thank you! Take a Berry as thanks."],
+                "gift_cycle": ["CHERI_BERRY", "CHESTO_BERRY", "PECHA_BERRY", "RAWST_BERRY", "ASPEAR_BERRY"], "daily": True, "flag": "b2_studio_berry",
+                "done": ["As long as the artist enjoys making it, good or bad doesn't matter. Come back tomorrow!"]}}},
+            {1: ["Title: 'White and Black Dragons'"], 2: ["Title: 'Sin and Money Stack Up'"], 3: ["Title: 'Ugly Truth'"],
+             4: ["Title: 'Vanished Hero'"], 5: ["Title: 'Eternal Ideals'"], 6: ["Title: 'Two Beings - A Meeting That Must Occur'"],
+             10: ["Title: 'The Recipient'"], 11: ["Title: 'The Moving Pokemon'"], 12: ["Title: 'A Gift'"]}, title="Studio Castelia"),
+        "gf_lobby": castelia_room(47, {
+            0: _say("Medal Rally boy", "You're in the Medal Rally too? Let's see who collects more!"),
+            1: _say("Boy with a Roggenrola", "My Roggenrola's Ability is Sturdy! One hit at full HP can't knock it out!"),
+            2: _say("Roggenrola", "Roggenrola: Sturrr!"),
+            3: _say("Woman in the lobby", "Item maniacs are odd! They'll pay far more than normal for ordinary items!")},
+            {}, lift=GF_LIFT, title="Castelia Street building"),
+        "game_freak": castelia_room(48, {
+            0: _ball("Poke Ball by the server", "REVIVE", "b2_gf_revive", name="a Revive"),
+            1: _say("Game Director", "Hello! I'm the Game Director. You're filling your Pokedex! When it's full, come and show me!"),
+            9: _say("Programmer", "A game is something you think up, program, and at the end, hope for! Work! Work!"),
+            2: _say("Graphic Designer", "To draw something I've never seen, I have to look at lots of things. Lots!"),
+            8: {"text": "Morimoto", "action": "EVENT", "event": {
+                "lines": ["Morimoto: A tip for getting strong? Lots of battles! Well, let's begin!"], "daily": True, "flag": "b2_gf_morimoto",
+                "done": ["Morimoto: You think about battles really carefully. Come back tomorrow!"],
+                "battle": {"name": "GAME FREAK Morimoto", "class": "PKMN_TRAINER", "sprite": "gentleman.png", "team": [511, 513, 515],
+                           "levels": [14, 14, 14], "rewards": {"balls": 3},
+                           "dialogue": {"player_won": ["Morimoto: I lost, but I learned a lot from you. That was fun!"]}}}},
+            5: {"text": "Nishino", "action": "EVENT", "event": {
+                "lines": ["Nishino: I like to win with my favourite Pokemon!"], "daily": True, "flag": "b2_gf_nishino",
+                "done": ["Nishino: Your Pokemon really trust you. Let's battle again tomorrow!"],
+                "battle": {"name": "GAME FREAK Nishino", "class": "PKMN_TRAINER", "sprite": "lass.png", "team": [35], "levels": [16],
+                           "rewards": {"balls": 3}, "dialogue": {"player_won": ["Nishino: Aww! What great Pokemon!"]}}}},
+            7: _say("Planner", "I'm Snorlax. No, no, I'm the Planner! Leftovers are important, aren't they?"),
+            4: _say("Sound Designer", "I just woke up. I wonder what kind of music people like."),
+            6: _say("Staff", "It's cold in here because the server has to stay cool."),
+            3: _say("Staff ", "I'm thinking up, er... a new plan for, er... a game.")},
+            {}, lift=GF_LIFT, title="Game Freak 22F"),
+        "cs_west": castelia_room(54, {
+            1: _say("Laughing man", "My Pokemon and I love to laugh! When one of us starts, we both do! Gwa ha ha!"),
+            2: _say("His Pokemon", "Gahoohoo!"), 0: _say("Receptionist ", "What do you like on TV? I like the lady and Watchy Watchog!"),
+            3: _say("Boy", "Once my Poke Ball only shook once before it caught the Pokemon!"),
+            4: _say("Girl", "That happens sometimes! I call it a critical capture. Catch lots of Pokemon and it happens more!")},
+            {}, lift=CSW_LIFT, title="Castelia Street west building"),
+        "cs_west_11": castelia_room(55, {
+            1: _gift("Guitarist", ["Are you getting enough sleep? You won't feel better without rest! Here, take this!"], "TM085", "b2_castelia_tm085",
+                     ["My Pokemon hold Chesto Berries. They rest, feel better, and wake right up!"]),
+            0: _say("Curious man", "I'm a 'curiosee'! I'm curious about everything, and check every place I go!"),
+            2: _say("Pokemon", "Whooon!")},
+            {}, lift=CSW_LIFT, title="Castelia Street west building 11F"),
+        "gs_west": castelia_room(56, {
+            0: _say("Receptionist  ", "Floor two is the Medal Office. Floor three is Professor Fennel's lab."),
+            1: _say("Feeling Reader", "I'm the Feeling Reader. People take Feeling Checks on their C-Gear together. I'll read yours one day!"),
+            2: {"text": "Name Rater", "action": "EVENT", "event": {"lines": ["I'm the Name Rater! Shall I look at one of your Pokemon's names?"],
+                                                                   "name_rater": True}},
+            3: {"text": "Pokemon groomer", "action": "EVENT", "event": {
+                "lines": ["Hello! If you'd like, I'll give your Pokemon a massage."],
+                "salon": {"key": "b2_castelia_massage", "gain": 10, "said": "There, all done! The massage has made {mon} friendlier with you!",
+                          "again": ["Sorry! I'm worn out from the last massage. Please come back tomorrow!"]}}},
+            4: _say("Pokemon ", "Faafoon!"),
+            5: _say("Woman by the desk", "You can't rename a Pokemon you got from someone else. Its name holds their wishes!")},
+            {}, lift=GSW_LIFT, title="Gym Street west building"),
+        "medal_office": castelia_room(57, {
+            3: _hunted("Harlequin in the Medal Office", "Medal Office", "b2_hunt_medal"),
+            1: _say("Medal fan", "Medals for everything you do! I want them all!"),
+            0: _say("Medal fan ", "Mr. Medal remembers every Medal you've earned."),
+            2: _say("Medal fan  ", "Collect lots of Medals and something good happens. I heard!")},
+            {}, lift=GSW_LIFT, title="Medal Office",
+            extra_people=[(9, 3, {"text": "Mr. Medal ", "action": "EVENT", "_look": "sheet:b2_c360.png", "event": {"medal_rally": True}})]),
+        "fennel": castelia_room(494, {
+            0: _say("Fennel", "Hi there, Trainer! I'm Fennel. I'm researching Pokemon Trainers, and the dreams of sleeping Pokemon!",
+                    "My Game Sync research needs Trainers from all over the world, so it'll have to wait for now."),
+            1: [{"text": "Amanita", "action": "EVENT", "event": {
+                    "lines": ["I'm Amanita. I look after the PC Boxes! How are they working for you?",
+                              "Oh! I have a bunch of Eevee. Would you take one for me? It came from a friend in Kanto!"],
+                    "gift_pokemon": 133, "gift_level": 10, "flag": "b2_castelia_eevee",
+                    "done": ["Eevee can evolve in so many ways! Catch lots of Pokemon and use the Boxes!"]}}],
+            2: _say("Fennel's assistant", "I'm Fennel's assistant. Pokemon dreams... someday we'll be able to visit them!")},
+            {}, lift=GSW_LIFT, title="Fennel's Lab"),
+        "cafe": castelia_room(53, {
+            1: _gift("Cafe manager", ["Your first visit to our cafe, isn't it? Please... give this to your dear Pokemon."], "MOOMOO_MILK",
+                     "b2_cafe_moomoo", ["You came all this way. Enjoy..."]),
+            0: _say("Guitarist in the cafe", "A beautiful melody makes people happy. A sad one makes them sorrowful. That's the power of melodies..."),
+            2: _say("Regular", "I've been letting my tired mind relax in this cafe all day..."),
+            3: _say("Clerk in the cafe", "Listen to him play... It reminds me of home."),
+            4: _say("Woman in the cafe", "You can't change your family, but you can change how you get along.")},
+            {}, title="Cafe Sonata"),
+        "r4_west": castelia_room(49, {
+            3: _gift("Old man", ["Travelling Trainer! Here's an amulet to keep you smiling!"], "AMULET_COIN", "b2_castelia_amulet",
+                     ["A Pokemon holding it in battle earns you more prize money!"]),
+            0: _say("Hiker by the window", "My friend worries about everyone's health on journeys, so he nicknames every Pokemon he trades 'Gesundheit'!"),
+            2: _say("Gesundheit", "Gesundheit: ...Pan?"),
+            1: _say("Receptionist   ", "Mr. Lock... He was a mysterious man...")},
+            {}, lift=R4W_LIFT, title="Street to Route 4 west building"),
+        "r4_west_47": castelia_room(50, {
+            0: _say("Clerk 47F", "I want Pokemon in the new office... but I can't say so in front of my girlfriend."),
+            1: _say("Woman by the window ", "My Pokemon... where did it go...?"),
+            2: _say("Guard", "Even before Poke Balls, people and Pokemon were good friends. I hope that lasts."),
+            3: _say("Clerk 47F ", "Missing Pokemon... even if it's Team Plasma, we don't know where they are.")},
+            {}, lift=R4W_LIFT, title="Street to Route 4 west building 47F"),
+        "r4_north": castelia_room(58, {
+            0: {"text": "Pokemon fanatic", "action": "EVENT", "condition": ["seen_at_least:40"], "event": {
+                "lines": ["I'm a Pokemon fanatic. Famous in Castelia, too! Oh, a Pokedex! You've seen 40 kinds or more? Wonderful! Take this!"],
+                "gift_item": {"EVIOLITE": 1}, "flag": "b2_castelia_eviolite",
+                "done": ["Eviolite raises Defense and Sp. Def, but only for a Pokemon that can still evolve!"]}},
+            1: _say("Man by the door", "I've been thinking about starting a new business... but it's such a chore."),
+            2: _say("Patrat", "Squeak!"), 3: _say("Girl by the Patrat", "My Patrat's Ability is Run Away! It can always escape wild Pokemon!"),
+            4: _say("Clerk by the desk", "What kinds of Abilities do your Pokemon have?"),
+            5: _say("Clerk by the desk ", "A service that teaches Pokemon moves? There are people who already do that?"),
+            6: _say("Art lover", "Magnificent! Burgh's paintings are magnificent!")},
+            {}, lift=R4N_LIFT, title="Street to Route 4 north building"),
+        "r4_north_47": castelia_room(59, {
+            0: _ball("Poke Ball by the window", "CHARCOAL", "b2_castelia_charcoal", name="a Charcoal"),
+            1: _say("Man scared of heights", "When I look down on the city from up here, I tremble. I-I'm scared of heights..."),
+            2: _say("Badge expert", "The Basic Badge makes Pokemon up to Lv. 20 obey. Each Badge raises it by ten!"),
+            3: _say("Pokemon  ", "Hwoof hwoof!")},
+            {}, lift=R4N_LIFT, title="Street to Route 4 north building 47F"),
+        "r4_south": castelia_room(60, {
+            0: _say("Lift guard", "Going up? I need to check you first. Frisk, frisk... Nothing suspicious. OK, you can go!"),
+            2: _say("Man by the lift", "I'm invited to a party, but the guard by the lift wants to pat me down. Or is that my imagination?"),
+            3: _say("Clerk by the lift", "Where are you from? Aspertia City? It's lovely! That Outlook is fantastic!"),
+            1: _say("Girl by the lift", "I talked with lots of people upstairs. It was fun!")},
+            {}, lift=R4S_LIFT, title="Street to Route 4 south building"),
+        "r4_south_47": castelia_room(61, {
+            4: _gift("Girl at the party", ["Ohh, your Pokemon are so charming! I want cute ones too... Here, use this!"], "TM240", "b2_castelia_tm240",
+                     ["Attract makes Pokemon of the opposite gender fall in love!"]),
+            0: _say("Party host", "Welcome! Welcome to my party! Enjoy talking with everyone!"),
+            1: _say("Guest", "Ich habe mir ein Auto gekauft! I bought a car! Now the next town is close, even without Badges!"),
+            2: _say("Guest ", "Hello. Have you tried a Casteliacone yet?"),
+            3: _say("Dancer at the party", "Check out my moves! I learned these at the Musical Theater in the next city!"),
+            5: _say("Woman at the party", "Did you see what Elesa, the supermodel, was wearing?"),
+            6: _say("Woman at the party ", "Whatever Elesa wears is stunning!"),
+            7: _say("Guest  ", "My boyfriend's so slow getting up, I asked his Pokemon to wake him!"),
+            8: _say("Guest   ", "Ciao! Having a good time? Don't be shy. Talk to anyone!"),
+            9: _say("Guest    ", "It's hard to get up the morning after a fun day like this."),
+            10: _say("Guest     ", "My Pokemon sings instead of an alarm clock... and I never wake up!"),
+            11: _say("Guest      ", "First time here! But this view makes me feel right at home!")},
+            {}, lift=R4S_LIFT, title="Street to Route 4 south building 47F"),
+        "gate_route4": castelia_room(51, {
+            0: _say("Gate guard", "Nimbasa City is at the end of Route 4."),
+            1: _say("Woman in the gate", "The Pokemon Breeder on Route 4 challenges every Trainer she sees. That's Route 4 for you!"),
+            3: _say("Harlequin in the gate", "It's the Castelia Harlequin Hunt! Have you found them all?", _look="sheet:b2_c54.png")},
+            {}, title="Castelia Gate"),
+        "bridge_gate": castelia_room(252, {}, {}, title="Bridge Gate"),
+    },
+    edges=_ave_edges,
+    scenes=CASTELIA_SCENES,
+    split=True,   # (the rails' grid leaves pockets by the mouths: each way out checked from itself)
+)
+_art = [list(r) for r in CASTELIA["art"]]
+_thin(_art, set(_ave_to.values()))
+for _y, _r in enumerate(_art):   # (a building's door the rails stop short of: the tile in front of it opened onto the road)
+    for _x, _c in enumerate(_r):
+        if _c == "D" and not any(_art[_y + dy][_x + dx] in ".N" for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0))
+                                 if 0 <= _y + dy < len(_art) and 0 <= _x + dx < len(_r)):
+            if _y + 1 < len(_art) and _art[_y + 1][_x] == "c":
+                _art[_y + 1][_x] = "."
+CASTELIA["art"] = ["".join(r) for r in _art]
+
+
+# ------------------------------------------------------------------------------------------------- Burgh's Gym (29, 488)
+# Black 2's own gimmick (kanto_handoff/unova_map_tools/castelia_gym.py -> castelia_gym.json: overlay 91 "gym_insect.c"):
+# three floors over one footprint (ground, silk at 10, silk at 20 tiles up: the room's own floor model), cocoons joined by
+# threads: walk into a cocoon facing the thread's way and it carries you to the other end (walk_town "cocoons"). Burgh's
+# room (488) is reached by the lower-left top cocoon entered from its left; its two holes drop you back (left: the ground
+# by the north-west pillar; bottom: the cocoon you came by). The ground's north-west pillar (8, 4) also goes up to Burgh:
+# the game checks a flag first; here, once you hold the Insect Badge (our reading of it). Route (B2W2's walkthrough):
+# centre cocoon -> the web -> right tower -> the top right -> lower-right cocoon (Jack pops out) -> down by the east pillar
+# (Gary) -> the east pillar from its right -> the top middle -> left -> the lower left (Anders) -> from its left: Burgh.
+GYM_DATA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "castelia_gym.json"), encoding="utf-8"))
+GYM_ROOM = {0: "gym", 10: "gym_10", 20: "gym_20"}
+_D = {"u": (0, -1), "d": (0, 1), "l": (-1, 0), "r": (1, 0)}
+_GYM_BOX = {(11, 3): (10, 1, 3, 4), (20, 5): (19, 3, 3, 4), (4, 14): (3, 13, 3, 3), (25, 15): (24, 13, 3, 4),   # (the game's boxes)
+            (3, 3): (2, 2, 3, 3), (28, 3): (27, 2, 3, 3), (16, 11): (15, 10, 3, 2)}   # (the rings on the towers, and the web's)
+
+
+def _gym_blocked(level):
+    """The cocoon tiles on a floor (walked into, not onto)."""
+    out = set()
+    for t in GYM_DATA["threads"]:
+        x, lv, z = t["from"]
+        if t["zone"] == 29 and lv == level and (x, z) in _GYM_BOX and level:
+            bx, by, bw, bh = _GYM_BOX[(x, z)]
+            out |= {(bx + i, by + j) for i in range(bw) for j in range(bh)}
+    return out
+
+
+def _gym_stand(t):
+    """Where you stand to walk into a thread's start: back from it along the way in, off the cocoon."""
+    x, lv, z = t["from"]
+    dx, dy = _D[t["face"]]
+    rows, blocked = GYM_DATA["floors"][str(lv)], _gym_blocked(lv)
+    for k in (1, 2, 3, 4):
+        s = (x - dx * k, z - dy * k)
+        if rows[s[1]][s[0]] == "." and s not in blocked:
+            return s
+    return None
+
+
+def _gym_landing(q):
+    """Where a thread sets you down at q = (x, level, z): where you'd stand to ride it back, else the nearest open tile."""
+    for t in GYM_DATA["threads"]:
+        if t["zone"] == 29 and t["from"] == list(q) and t["face"] in _D:
+            s = _gym_stand(t)
+            if s:
+                return s, t["face"]
+    rows, blocked = GYM_DATA["floors"][str(q[1])], _gym_blocked(q[1])
+    best = min(((x, y) for y in range(len(rows)) for x in range(len(rows[0])) if rows[y][x] == "." and (x, y) not in blocked),
+               key=lambda p: abs(p[0] - q[0]) + abs(p[1] - q[2]))
+    return best, "d"
+
+
+def _gym_cocoons(level):
+    """{"x,y,face": [room, x, y, face, condition]} for one floor: the tiles you walk into (the cocoon's and the one before it)."""
+    out = {}
+    for t in GYM_DATA["threads"]:
+        x, lv, z = t["from"]
+        if t["zone"] != 29 or lv != level or t["face"] not in _D:
+            continue
+        dx, dy = _D[t["face"]]
+        if t["leaves"]:   # (into Burgh's room: the lower-left top cocoon from its left, the ground's north-west pillar)
+            land, face, cond = ((15, 19), "u", None) if (x, z) == (4, 14) else ((9, 14), "d", ["b2_insect_badge"])
+            ride = ["gym_burgh", land[0], land[1], face] + ([cond] if cond else [])
+        else:
+            (lx, ly), face = _gym_landing(tuple(t["to"]))
+            ride = [GYM_ROOM[t["to"][1]], lx, ly, face]
+        stand = _gym_stand(t)
+        for k in range(1, 4):
+            tile = (stand[0] + dx * k, stand[1] + dy * k)
+            out["%d,%d,%s" % (tile[0], tile[1], t["face"])] = ride
+            if tile == (x, z):
+                break
+    return out
+
+
+def _gym_floor(level, people, signs=None, scenes=None, extra_people=(), title=None):
+    m = castelia_room(29, people, signs or {}, extra_people=extra_people, scenes=scenes, title=title or "Castelia Gym")
+    rows, blocked = GYM_DATA["floors"][str(level)], _gym_blocked(level)
+    art = [list(r) for r in m["art"]]
+    for y, r in enumerate(art):
+        for x, c in enumerate(r):
+            if c in "N!X" or c in m["exits"]:
+                continue
+            art[y][x] = "." if rows[y][x] == "." and (x, y) not in blocked else "c"
+    m["art"] = ["".join(r) for r in art]
+    if level:   # (no door up here: you arrive by the threads)
+        m["art"] = ["".join("c" if c in m["exits"] else c for c in r) for r in m["art"]]
+        m["exits"] = {}
+    m["cocoons"] = _gym_cocoons(level)
+    cam = m["roofs"].get("_cam")
+    if cam:   # (you're drawn standing on this floor's silk)
+        k = float(GYM_GEO_K) * level
+        m["roofs"]["_cam"] = dict(cam, lift=[[k] * len(r) for r in cam["lift"]])
+    return m
+
+
+GYM_GEO_K = GEO["29"]["cam"]["lift_k"]
+
+
+def _harlequin(label, name, team, levels, hi, won, n, **kw):
+    out = {"text": label, "action": "EVENT", "event": {
+        "lines": [name + ": " + hi], "flag": "gym_trainer_CASTELIA_CITY_%d" % n, "done": [name + ": " + won],
+        "battle": {"name": name, "class": "HARLEQUIN", "sprite": "b2_harlequin.png", "team": team, "levels": levels,
+                   "rewards": {"balls": 2}, "dialogue": {"player_won": [name + ": " + won]}}}}
+    out.update(kw)
+    return out
+
+
+GYM_CASTELIA = _gym_floor(0, {
+    4: {"text": "Clyde", "action": "EVENT", "event": {
+        "lines": ["Clyde: Hello! You must be tired, wandering Castelia's crowded streets after Team Plasma and the Gym Leader.",
+                  "Clyde: So here, take this!"],
+        "gift_item": {"FRESH_WATER": 1}, "flag": "b2_clyde_castelia",
+        "done": ["Clyde: This Gym's theme is cocoons! Go inside one and ride its thread up.",
+                 "Clyde: The threads all lead to Burgh... eventually!"]}},
+    1: _harlequin("Harlequin Gary", "Harlequin Gary", [540, 415, 557], [19, 19, 19],
+                  "Which side did you come in by? The cocoons care, you know!", "Ooh, you found the right thread!", 3)},
+    {(14, 17): ["CASTELIA POKEMON GYM", "Leader: Burgh"], (18, 17): ["CASTELIA POKEMON GYM", "Leader: Burgh"]})
+GYM_CASTELIA_10 = _gym_floor(10, {
+    2: _harlequin("Harlequin Clarence", "Harlequin Clarence", [540, 540], [20, 20],
+                  "Welcome to the cocoons! Hope you don't get tangled up!", "All wrapped up... in defeat!", 1)})
+GYM_CASTELIA_20 = _gym_floor(20, {
+    3: _harlequin("Harlequin Anders", "Harlequin Anders", [557, 541], [20, 20],
+                  "Hiding makes your battle instincts dull, you know!", "Hiding makes battle instincts dull... I'll remember that.", 4)},
+    scenes=[   # (Jack hides in the lower-right cocoon and pops out as you come by: the game's trigger 24, 17)
+        {"trigger": {"zone": [23, 17, 26, 17]}, "condition": ["not:gym_trainer_CASTELIA_CITY_2"], "flag": "gym_jack_popped",
+         "cast": [{"sheet": "b2_c54.png", "from": [25, 16], "to": "player", "stay": True,
+                   "lines": ["Harlequin Jack: When the cocoon breaks open, the one that pops out is... me!",
+                             "Harlequin Jack: And on that note, battle me!"],
+                   "event": {"flag": "gym_trainer_CASTELIA_CITY_2", "battle": {
+                       "name": "Harlequin Jack", "class": "HARLEQUIN", "sprite": "b2_harlequin.png", "team": [415, 541], "levels": [20, 20],
+                       "rewards": {"balls": 2}, "dialogue": {"player_won": ["Harlequin Jack: Back into my cocoon I go..."]}}}}]}])
+GYM_BURGH = castelia_room(488, {
+    0: [{"text": "Gym", "action": "GYM", "_look": "sheet:b2_c225.png", "condition": ["not:b2_insect_badge"]},
+        _say("Burgh", "Burgh: How many discoveries have you made since you set out?",
+             "Burgh: I fell for Bug Pokemon as a kid. I drew them, battled with them... and I still find new things.",
+             "Burgh: A world shared with Pokemon is a world swarming with mysteries.", condition=["b2_insect_badge"])]},
+    {}, title="Burgh's Studio")
+GYM_BURGH["cocoons"] = {"%d,%d,%s" % (x, y, f): ride for (x, y), ride in (((9, 13), ["gym", 8, 6, "d"]), ((15, 20), ["gym_20", 4, 16, "d"]))
+                        for f in "udlr"}   # (its holes: any way in, you drop)
+GYM_BURGH["scenes"] = [{"trigger": "enter", "condition": ["not:b2_burgh_hello"], "flag": "b2_burgh_hello",
+                        "cast": [{"person": "Gym", "face": "d",
+                                  "lines": ["Burgh: Good work back there in the sewers! My Bug Pokemon are scurrying with excitement.",
+                                            "Burgh: Dwebble's round little eyes are cute! And my ace, Leavanny, sews leaf clothes for other Pokemon.",
+                                            "Burgh: Well now... let's get right to it!"]}]}]
+
+_lands = {}   # (where the threads set you down: each floor's landings, for the reach check)
+for _r in (GYM_CASTELIA, GYM_CASTELIA_10, GYM_CASTELIA_20, GYM_BURGH):
+    for _ride in _r["cocoons"].values():
+        _lands.setdefault(_ride[0], set()).add((_ride[1], _ride[2]))
+for _name, _r in (("gym", GYM_CASTELIA), ("gym_10", GYM_CASTELIA_10), ("gym_20", GYM_CASTELIA_20), ("gym_burgh", GYM_BURGH)):
+    _r["landings"] = [list(t) for t in sorted(_lands.get(_name, ()))]
+CASTELIA["rooms"].update({"gym": GYM_CASTELIA, "gym_10": GYM_CASTELIA_10, "gym_20": GYM_CASTELIA_20, "gym_burgh": GYM_BURGH})
+
+
+# ------------------------------------------------------------------------------------------------- the Castelia Sewers
+# 495, in from Thumb Pier's door (89, 20). Black 2's story: Hugh waits inside and walks with you (walk_partners "hugh":
+# wild Pokemon two at a time, beside you; he heals your team after every battle); up the north stairs two Plasma Grunts:
+# you and Hugh against them; Burgh turns up, Hugh gives you HM04 Strength and goes; Colress watches from the tunnel; Burgh
+# heads back to his Gym (b2_sewers_done: Clyde lets you in). The water: high in spring and summer, low in autumn and winter
+# (the game swaps the zone's whole map: camview.SEASONAL 495; rmxp_import builds both). Side rooms: two empty manhole
+# rooms (496, 497), the medicine scientists (498, 499: a gift a day), Back Street (501: the boss trio); the Empty Lot (500)
+# is an area of its own (its grass). The tunnel north (51, 0) is the Relic Passage: a later batch.
+# Story flags: b2_thumb_scene -> walk_hugh (he joins) -> b2_sewer_plasma_battled -> b2_sewers_done.
+OUTSIDE.update({496: 495, 497: 495, 498: 495, 499: 495, 501: 495})
+SEWER_TRAINERS = {13: ("Janitor Felix", 3), 18: ("Janitor Brady", 3), 14: ("Worker Zack", 3), 16: ("Worker Scott", 3),
+                  12: ("Doctor Heath", 3), 17: ("Scientist Clarke", 3), 15: ("Scientist Caroline", 3)}
+SEWER_PEOPLE = {
+    0: {"text": "{rival_name}", "action": "EVENT", "condition": ["b2_thumb_scene", "not:b2_sewer_plasma_battled"],
+        "event": {"walk_partner": "hugh"}},
+    1: _say("Plasma Grunt", "Team Plasma: What do you want?", condition=["not:b2_sewers_done"]),
+    2: _say("Plasma Grunt ", "Team Plasma: Get lost, kid!", condition=["not:b2_sewers_done"]),
+    21: [_say("Worker by the channel", "Waitasecond! I dropped something down here! Just wait till I find it!",
+              condition=["not:b2_sewers_done"]),
+         _say("Worker by the channel ", "Phew... I finally made it back here.",
+              "Going further in? There's nothing back there but Trainers.", condition=["b2_sewers_done"])],
+    22: _say("Man in the tunnel", "The sewers carry Castelia's rain out to sea. When the water's high, it fills the channels."),
+    3: _ball("Poke Ball by the Doctor", "LEFTOVERS", "b2_sewer_leftovers", name="the Leftovers"),
+    4: _ball("Poke Ball by the Grunts", "TWISTED_SPOON", "b2_sewer_twisted_spoon", name="a TwistedSpoon"),
+    5: _ball("Poke Ball in the west channel", "RARE_BONE", "b2_sewer_rare_bone", name="a Rare Bone"),
+    6: _ball("Poke Ball in the south", "X_SP_ATK", "b2_sewer_x_special", name="an X Sp. Atk"),
+    7: _ball("Poke Ball on the island", "X_SP_DEF", "b2_sewer_x_sp_def", name="an X Sp. Def"),
+    8: _ball("Poke Ball by the south-west stairs", "PEARL", "b2_sewer_pearl", name="a Pearl"),
+    9: _ball("Poke Ball by the north stairs", "HEART_SCALE", "b2_sewer_heart_scale", name="a Heart Scale"),
+    10: _ball("Poke Ball in the far south", "BLACK_SLUDGE", "b2_sewer_black_sludge", name="Black Sludge"),
+    11: _ball("Poke Ball past the Scientist", "TM276", "b2_sewer_tm276", name="TM276 Torment"),
+}
+SEWER_SCENES = [
+    # Hugh's waiting just inside (the game's trigger: 83, 20-21): he walks with you from here
+    {"who": "{rival_name}", "trigger": {"zone": [82, 19, 84, 21]}, "condition": ["b2_thumb_scene", "not:walk_hugh_met"],
+     "flag": "b2_sewer_hugh_met", "approach": True,
+     "lines": ["{rival_name}: So this is the sewer... It's not as stinky as I expected.",
+               "{rival_name}: Still... Pokemon live everywhere, don't they?"], "then": "talk"},
+    # the north walkway: two Plasma Grunts (the game's trigger: 49-52, 9)
+    {"trigger": {"zone": [49, 8, 52, 10]}, "condition": ["walk_hugh", "not:b2_sewer_plasma_battled"], "flag": "b2_sewer_plasma_met",
+     "cast": [{"person": "Plasma Grunt", "face": "d", "lines": ["{player_name}: Hey!", "Team Plasma: What do you want?"], "stay": True},
+              {"person": "Plasma Grunt ", "face": "d",
+               "lines": ["{rival_name}: Team Plasma! You villains!",
+                         "Team Plasma: Villains? Don't get in the way of our plan to liberate Pokemon!",
+                         "{rival_name}: Liberate? You're just thieves! And you use stolen Pokemon like tools!",
+                         "Team Plasma: Shaddap! Hand over your Pokemon!",
+                         "{rival_name}: Let's do this, {player_name}!"],
+               "then": "event:b2_sewer_plasma", "stay": True}]},
+    # after the battle: the Grunts run; Burgh; Hugh's thanks (Strength) and he's off; Colress; Burgh heads home
+    {"trigger": {"zone": [44, 2, 56, 12]}, "condition": ["b2_sewer_plasma_battled", "not:b2_sewers_done"], "flag": "b2_sewers_done",
+     "cast": [{"person": "Plasma Grunt", "face": "d", "lines": ["Team Plasma: They're really tough! Whatever. We've got the Pokemon we need!",
+                                                                 "Team Plasma: Now, we flee!"], "leave_path": [[50, 3], [51, 1]], "gone": True},
+              {"person": "Plasma Grunt ", "leave_path": [[52, 3], [51, 1]], "gone": True},
+              {"sheet": "b2_hugh.png", "from": [52, 11], "to": "player", "stay": True,
+               "lines": ["{rival_name}: Tch! They run off like Patrat!", "{rival_name}: Let's go further in! There might be more of them!"]},
+              {"sheet": "b2_c225.png", "from": [41, 7], "to": "player", "stay": True,
+               "lines": ["???: I don't think that's necessary, you two."]},
+              {"as": 2, "lines": ["{rival_name}: Could you be... Gym Leader Burgh?"]},
+              {"as": 3, "lines": ["Burgh: Yessir! The very same. And I've looked: nobody suspicious back there!",
+                                  "Burgh: I'm worried about Team Plasma too. But shall we get out of here? This sewer's bugging me."]},
+              {"as": 2, "lines": ["{rival_name}: Huh... Didn't you and the other Gym Leaders fight Team Plasma two years ago?",
+                                  "{rival_name}: {player_name}, thanks for your help. Here, use this!"],
+               "event": {"gift_item": {"HM_STRENGTH": 1}, "flag": "b2_got_strength", "lines": ["{player_name} received HM04 Strength!"]}},
+              {"as": 2, "lines": ["{rival_name}: I'll find the rest of those Plasma punks. I'll never forgive Pokemon thieves!"],
+               "leave": [88, 20]},
+              {"as": 3, "lines": ["Burgh: He's gone..."]},
+              {"sheet": "b2_c250.png", "from": [51, 1], "to": "player", "stay": True,
+               "lines": ["???: You there! That was an excellent demonstration of battling.",
+                         "???: The way you drew out your Pokemon's power against Team Plasma... Astounding. Interesting, too. I see..."],
+               "leave": [51, 1]},
+              {"as": 3, "lines": ["Burgh: Who... was that?",
+                                  "Burgh: Well, no matter. You can stay and train down here. Or come challenge me, the Gym Leader!",
+                                  "Burgh: Be seeing you!"], "leave": [41, 7]}]},
+]
+
+
+def _lab(label, items, key, hi):
+    """The sewer scientists' medicine (B2W2): one a day, the day's experiment deciding which."""
+    return {"text": label, "action": "EVENT", "event": {"lines": list(hi), "daily_gift": {
+        "key": key, "items": items, "wait": ["I run my experiments every day. Come back tomorrow and see how it went!"]}}}
+
+
+SEWERS = route(
+    495, SEWER_PEOPLE, {},
+    exits={">": ("CASTELIA_CITY", [(89, 20), (89, 21)]), "<": ("CASTELIA_EMPTY_LOT", [(45, 19), (45, 20)]),
+           "^": ("RELIC_PASSAGE", [(51, 0)])},
+    trainers=SEWER_TRAINERS, scenes=SEWER_SCENES,
+    hidden={"1,48": "ULTRA_BALL", "28,73": "POISON_GEM", "50,44": "NUGGET", "52,69": "MAX_REPEL", "19,84": "HP_UP"},
+    rooms={
+        "manhole_w": room(496, {}, {}, (11, 31)),
+        "manhole_e": room(497, {}, {}, (49, 31)),
+        "lab_m": room(498, {0: _lab("Scientist", ["ANTIDOTE", "ANTIDOTE", "ANTIDOTE", "FULL_HEAL", "FULL_HEAL", "FULL_RESTORE"],
+                                    "b2_sewer_lab_m", ["I'm making medicine from the toxins down here in the sewers.",
+                                                       "Here's what today's experiment made. Take it!"])}, {}, (18, 18)),
+        "lab_f": room(499, {0: _lab("Scientist ", ["POTION", "POTION", "POTION", "SUPER_POTION", "SUPER_POTION", "REVIVE"],
+                                    "b2_sewer_lab_f", ["Lots of toxins build up in the sewers. I think I can make medicine from them!",
+                                                       "Here's what today's experiment made. You can have it!"])}, {}, (30, 31)),
+        "back_street": room(501, {
+            0: _ball("Poke Ball by the trucks", "BLACK_GLASSES", "b2_back_street_glasses", name="BlackGlasses"),
+            1: _ball("Poke Ball by the gate", "REPEL", "b2_back_street_repel", name="a Repel"),
+            4: _clerk_battle("Roughneck Ricky", "Roughneck Ricky", "ROUGHNECK", "b2_roughneck.png", [559], [32],
+                             "Hey! This is our secret spot! You can't come waltzing in like you own the place!",
+                             "You aren't one of us... But I don't mind tough Trainers. Beat all three of us, and maybe you're in.",
+                             "b2_back_ricky"),
+            3: _clerk_battle("Dancer Jean-Paul", "Dancer Jean-Paul", "DANCER", "b2_dancer.png", [554], [32],
+                             "This worn-out lot is our paradise! No stranger's trashing it!",
+                             "Your battling's got a tight rhythm... I was grooving along before I knew it!", "b2_back_jean_paul"),
+            2: [_say("Guitarist Tina", "Tina: If you want to battle me, you'll have to beat Jean-Paul first!", condition=["not:b2_back_jean_paul"]),
+                dict(_clerk_battle("Guitarist Tina ", "Guitarist Tina", "GUITARIST", "b2_guitarist.png", [552, 510], [33, 33],
+                                   "You made my crew cry! I'm paying you back in spades!",
+                                   "People like you deserve a Medal... OK. You're the new boss of this lot!", "b2_back_tina"),
+                     condition=["b2_back_jean_paul"])]},
+            {}, (25, 1)),
+    },
+    inside={"11,31": "manhole_w", "49,31": "manhole_e", "18,18": "lab_m", "30,31": "lab_f", "25,1": "back_street", "26,1": "back_street"},
+)
+
+
+def _doors(m, inside):
+    for _xy in inside:
+        _x, _y = (int(v) for v in _xy.split(","))
+        m["art"][_y] = m["art"][_y][:_x] + "D" + m["art"][_y][_x + 1:]
+
+
+_doors(SEWERS, SEWERS["inside"])
+# the east manhole (49, 31) and Scientist Caroline's pocket: walled off by the high water in spring and summer
+SEWERS["art"][31] = SEWERS["art"][31][:49] + "c" + SEWERS["art"][31][50:]
+SEWERS["inside"] = {k: v for k, v in SEWERS["inside"].items() if k != "49,31"}
+# Janitor Brady (38, 20) is there in autumn and winter only (B2W2): off the spring-and-summer map
+_bx, _by = 38, 20
+SEWERS["art"][_by] = SEWERS["art"][_by][:_bx] + "." + SEWERS["art"][_by][_bx + 1:]
+SEWERS["trainer_spots"] = [t for t in SEWERS["trainer_spots"] if t != "Janitor Brady"]
+SEWERS["moves"].pop("38,20", None)
+# (autumn and winter, the low-water map: you walk the channel floors; the west walkways stay up out of reach (B2W2: Back
+# Street and that side are spring-and-summer places), so their doors are left off; the east manhole opens instead)
+_LOW_OFF = ("25,1", "26,1", "18,18", "11,31")
+for _sm in SEWERS.get("story_maps") or []:
+    _sm["map"]["inside"] = {k: v for k, v in dict(SEWERS["inside"], **{"49,31": "manhole_e"}).items() if k not in _LOW_OFF}
+    _doors(_sm["map"], _sm["map"]["inside"])
+
+# ------------------------------------------------------------------------------------------------- the Empty Lot
+# 500: up the stairs from the Sewers (its door 10, 14-16): a little park, tall and dark grass, a Miracle Seed.
+EMPTY_LOT = route(
+    500, {0: _ball("Poke Ball in the park", "MIRACLE_SEED", "b2_empty_lot_seed", name="a Miracle Seed"),
+          1: _say("Man in the lot", "Apparently, this is where it all began for Castelia City.")},
+    {}, exits={">": ("CASTELIA_SEWERS", [(10, 14), (10, 15), (10, 16)])},
+)
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
-        "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR}
+        "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
+        "CASTELIA_CITY": CASTELIA,
+        "CASTELIA_SEWERS": SEWERS, "CASTELIA_EMPTY_LOT": EMPTY_LOT}

@@ -16,7 +16,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(GAME), "..", "kanto_handoff", "u
 sys.path.insert(0, os.path.join(GAME, "..", "..", "kanto_handoff", "unova_map_tools"))
 
 PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "FLOCCESY_RANCH_OUTSIDE": 444,
-          "FLOCCESY_RANCH": 445, "VIRBANK_CITY": 448, "VIRBANK_COMPLEX_OUTSIDE": 456, "VIRBANK_COMPLEX": 457}
+          "FLOCCESY_RANCH": 445, "VIRBANK_CITY": 448, "VIRBANK_COMPLEX_OUTSIDE": 456, "VIRBANK_COMPLEX": 457,
+          "CASTELIA_SEWERS": 495, "CASTELIA_EMPTY_LOT": 500}
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 
