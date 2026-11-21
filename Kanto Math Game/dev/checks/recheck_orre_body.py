@@ -45,7 +45,7 @@ for name, team in (("Cipher Admin Dakim", [229, 330, 205, 340, 344]), ("Cipher A
                    ("Grand Master Greevil", [310, 277, 121, 210, 334, 142]), ("Pree Champion Justy", [27, 331, 207, 192, 184, 299]),
                    ("Cipher Admin Miror B.", [348, 272, 272, 55, 294]), ("Cipher Nascour", [65, 282, 178, 356, 365, 257]),
                    ("Cipher Admin Snattle", [375, 195, 212, 338, 351, 121]), ("Cipher Admin Ardos", [277, 65, 230, 214, 125, 286]),
-                   ("Cipher Admin Eldes", [291, 310, 373, 330, 105, 131]), ("Snagem Head Gonzap", [227, 342, 348, 68, 286, 210])):
+                   ("Cipher Admin Eldes", [291, 310, 373, 330, 105, 131]), ("Snagem Head Gonzap", [101, 274, 45, 340, 227])):
     t = [x for x in find(name) if x["team"] == team]  # (Dakim, Ein and Snattle also have earlier story battles; Lovrina: her Cipher Lab
     #  battle from the XD disc since batch 5a - her later team comes with Citadark, batch 8)
     check(t and len(t[0]["levels"]) == len(team), f"{name}")

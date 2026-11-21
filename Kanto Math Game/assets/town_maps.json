@@ -281389,7 +281389,7 @@
    "cccccccc........................................cccccccc",
    "cccccccc..........................ccc...........cccccccc",
    "cccccccc........................................cccccccc",
-   "cccccccc...................................cc...cccccccc",
+   "cccccccc................N.....N............cc...cccccccc",
    "cccccccc............cc..........................cccccccc",
    "cccccccc............cBDB........................cccccccc",
    "cccccccc.............cc.........................cccccccc",
@@ -281408,7 +281408,153 @@
    "B": "cycle"
   },
   "people": [
-   "Pokemon Center"
+   "Pokemon Center",
+   {
+    "text": "Rider Willie (again)",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_willie_again",
+       "lines": [
+        "Willie: You again! I've been training. Four Pokemon this time!"
+       ],
+       "battle": {
+        "name": "Rider Willie",
+        "class": "RIDER",
+        "sprite": "orre_rider_willie.png",
+        "team": [
+         263,
+         263,
+         264,
+         264
+        ],
+        "levels": [
+         53,
+         53,
+         55,
+         55
+        ],
+        "team_moves": [
+         [
+          "PIN-MISSILE",
+          "MUD-SPORT",
+          "HEADBUTT",
+          "SAND-ATTACK"
+         ],
+         [
+          "PIN-MISSILE",
+          "DIG",
+          "HEADBUTT",
+          "SAND-ATTACK"
+         ],
+         [
+          "WATER-PULSE",
+          "ICY-WIND",
+          "MUD-SLAP",
+          "HEADBUTT"
+         ],
+         [
+          "SHOCK-WAVE",
+          "SWIFT",
+          "DIG",
+          "HEADBUTT"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+29 (disc ace 26)",
+        "dialogue": {
+         "player_won": [
+          "Willie: Wild... You're the real deal."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Willie: Wild... You're the real deal."
+     ]
+    },
+    "condition": "xd_hordel"
+   },
+   {
+    "text": "Wanderer Miror B.",
+    "action": "EVENT",
+    "condition": "xd_pregym_freed",
+    "flag_condition": "not xd_miror_outskirt",
+    "event": {
+     "flag": "xd_miror_outskirt",
+     "lines": [
+      "Folly: Miror B.! It's that kid again!",
+      "Miror B.: The snagger! Let's see if you can keep up with THIS rhythm!"
+     ],
+     "battle": {
+      "name": "Wanderer Miror B.",
+      "class": "WANDERER",
+      "sprite": "orre_trainer_miror_b.png",
+      "team": [
+       271,
+       271,
+       271,
+       9407,
+       272
+      ],
+      "levels": [
+       54,
+       54,
+       54,
+       57,
+       54
+      ],
+      "team_moves": [
+       [
+        "RAIN-DANCE",
+        "MEGA-DRAIN",
+        "WATER-GUN",
+        "ASTONISH"
+       ],
+       [
+        "GROWL",
+        "MEGA-DRAIN",
+        "WATER-GUN",
+        "ASTONISH"
+       ],
+       [
+        "RAIN-DANCE",
+        "MEGA-DRAIN",
+        "WATER-GUN",
+        "FIRE-PUNCH"
+       ],
+       [
+        "THUNDERBOLT",
+        "HELPING-HAND",
+        "THUNDER-WAVE",
+        "ROCK-SLIDE"
+       ],
+       [
+        "RAIN-DANCE",
+        "MEGA-DRAIN",
+        "WATER-GUN",
+        "ASTONISH"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0
+      },
+      "fit": "+28 (disc ace 29)",
+      "music": "orre/miror_b_battle",
+      "dialogue": {
+       "player_won": [
+        "Miror B.: My Nosepass... You snagged it?! Folly, Trudly - we dance away!"
+       ]
+      }
+     }
+    }
+   }
   ],
   "signs": [],
   "roofs": {
@@ -281433,7 +281579,7 @@
      "cccccNccc..................N..",
      "ccc.c.cNc.....................",
      "c...................cc.......c",
-     "c............................c",
+     "c..............N.............c",
      "c..........................ccc",
      "cN.......................c.ccc",
      "c.............c.c.cc.c.c.c.ccc",
@@ -281526,6 +281672,33 @@
        ],
        "done": [
         "Bartender: The food's good, and it's the only place for miles."
+       ]
+      }
+     },
+     {
+      "text": "Researcher Hordel",
+      "action": "EVENT",
+      "condition": "xd_pregym_freed",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "not:xd_hordel"
+         ],
+         "flag": "xd_hordel",
+         "gift_shadow": {
+          "id": 9357,
+          "level": 55
+         },
+         "lines": [
+          "Hordel: You're Wes? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
+          "Hordel: A Togepi from their factory. Its heart is shut. Please - open it.",
+          "Hordel: And one more thing: Team Snagem is back in their old hideout, out in the desert. I'll mark it on your map."
+         ]
+        }
+       ],
+       "done": [
+        "Hordel: Take good care of that Togepi."
        ]
       }
      },
@@ -281704,12 +281877,12 @@
    "ccccccccccccc.c......................ccccccccccccccc",
    "ccccccccccBDB.c......................ccCDCcccccccccc",
    "cccccccc....!.c........cccccc........c......cccccccc",
-   "cccccccc...............cccccc.............N.>ccccccc",
+   "cccccccc...............cccccc............NN.>ccccccc",
    "cccccccc....N..........cccccc..............Ncccccccc",
    "cccccccc......c........!EDDE.........c......cccccccc",
    "cccccccc..N...cc....................cc......cccccccc",
    "cccccccc.......cc..................cc.......cccccccc",
-   "cccccccc......c.cc................cc.c......cccccccc",
+   "cccccccc......c.cc........N.......cc.c......cccccccc",
    "cccccccc.........cccccccc..cccccccc.....NN..cccccccc",
    "cccccccc.....c.cccccccccc..cccccccccc.......cccccccc",
    "cccccccc...cccccccccccccc..cccccccccccccc...cccccccc",
@@ -281718,20 +281891,20 @@
    "cccccccccccc.cccccccccccc..ccccccccccccccccccccccccc",
    "cccccccc.....FDFccccccccc..ccccccccccccccccccccccccc",
    "ccccccccc......Ncc..........N.N...cccccccccccccccccc",
-   "ccccccccccccc..cc..................ccccccccccccccccc",
-   "ccccccccccccc.cc....................cccccccccccccccc",
+   "ccccccccccccc..cc.......N..........ccccccccccccccccc",
+   "ccccccccccccc.cc.N.N.........N....N.cccccccccccccccc",
    "ccccccccccccc.c........cccccc........ccccccccccccccc",
    "ccccccccGDGcc.c.......cccccccc.......ccHDHcccccccccc",
    "cccccccc...NN........cccccccccc..........ccccccccccc",
-   "cccccccc.............cccccccccc..........ccccccccccc",
+   "cccccccc.............cccccccccc........N.ccccccccccc",
    "cccccccc......c.......cccccccc.......c......cccccccc",
    "cccccccc......c........cccccc......N.c......cccccccc",
    "cccccccc......cc......N.............cc......cccccccc",
-   "cccccccc.......cc..................cc.......cccccccc",
+   "cccccccc.......cc.......N..........cc.......cccccccc",
    "cccccccc........cc................cc........cccccccc",
    "cccccccc........c.ccccccc..ccccccccc........cccccccc",
    "cccccccc....................!...............cccccccc",
-   "ccccccccc..................................ccccccccc",
+   "ccccccccc...N....N....N....N....N....N.....ccccccccc",
    "ccccccccccc.............NN...............ccccccccccc",
    "cccccccccccccccc..........N.........cccccccccccccccc",
    "cccccccccccccccccccccccccN.ccccccccccccccccccccccccc",
@@ -281829,6 +282002,33 @@
        ]
       }
      }
+    }
+   },
+   {
+    "text": "Gate lady",
+    "action": "EVENT",
+    "condition": "xd_bonsly_found",
+    "event": {
+     "stages": [
+      {
+       "requires": [
+        "not:xd_gate_cds"
+       ],
+       "flag": "xd_gate_cds",
+       "gift_item": {
+        "BATTLE_CD_01": 1,
+        "BATTLE_CD_07": 1,
+        "BATTLE_CD_20": 1
+       },
+       "lines": [
+        "Gate lady: Welcome to Phenac! Everything is perfectly normal here. Have some Battle CDs. Go to Realgam Tower and play them!",
+        "You got Battle CDs 01, 07 and 20!"
+       ]
+      }
+     ],
+     "done": [
+      "Gate lady: Everything's perfectly normal. Perfectly."
+     ]
     }
    },
    {
@@ -281953,6 +282153,77 @@
     }
    },
    {
+    "text": "Cipher Peon Ertlig",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_ertlig",
+       "lines": [
+        "Cipher Peon Ertlig: The stadium's closed. Snattle's orders!"
+       ],
+       "battle": {
+        "name": "Cipher Peon Ertlig",
+        "class": "CIPHER_PEON",
+        "sprite": "orre_cipher_peon.png",
+        "team": [
+         261,
+         81,
+         120,
+         359
+        ],
+        "levels": [
+         50,
+         49,
+         49,
+         49
+        ],
+        "team_moves": [
+         [
+          "ROAR",
+          "SAND-ATTACK",
+          "BITE"
+         ],
+         [
+          "THUNDER-SHOCK",
+          "SONIC-BOOM",
+          "SUPERSONIC"
+         ],
+         [
+          "CAMOUFLAGE",
+          "WATER-GUN",
+          "RAPID-SPIN"
+         ],
+         [
+          "BITE",
+          "TAUNT",
+          "QUICK-ATTACK"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "music": "orre/cipher_battle",
+        "fit": "+28 (disc ace 22)",
+        "dialogue": {
+         "player_won": [
+          "Cipher Peon Ertlig: Fine, go. You'll regret it."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Cipher Peon Ertlig: Fine, go. You'll regret it."
+     ]
+    },
+    "condition": [
+     "xd_fostin",
+     "not:orre_snattle_phenac"
+    ]
+   },
+   {
     "text": "Bird Keeper",
     "action": "EVENT",
     "event": {
@@ -282038,6 +282309,302 @@
     }
    },
    {
+    "text": "'Justy' (Browsix)",
+    "action": "EVENT",
+    "condition": [
+     "xd_fenton",
+     "not:orre_snattle_phenac"
+    ],
+    "flag_condition": "not xd_impostor_browsix",
+    "event": {
+     "flag": "xd_impostor_browsix",
+     "lines": [
+      "Justy: I'm Justy of the Pre Gym! ...Probably. Battle me!"
+     ],
+     "battle": {
+      "name": "Cipher Peon Browsix",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_brown.png",
+      "team": [
+       164,
+       288
+      ],
+      "levels": [
+       48,
+       48
+      ],
+      "team_moves": [
+       [
+        "PECK",
+        "TACKLE",
+        "GROWL"
+       ],
+       [
+        "FURY-SWIPES",
+        "SCRATCH",
+        "YAWN"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0,
+       "BATTLE_CD_16": 1
+      },
+      "music": "orre/cipher_battle",
+      "fit": "+28 (disc ace 20)",
+      "dialogue": {
+       "player_won": [
+        "'Justy': Our perfect disguise! ...I'm Browsix, of the Hexagon Brothers. Curses!",
+        "He dropped Battle CD 16!"
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "'Justy' (Resix)",
+    "action": "EVENT",
+    "condition": [
+     "xd_fenton",
+     "not:orre_snattle_phenac"
+    ],
+    "flag_condition": "not xd_impostor_resix",
+    "event": {
+     "flag": "xd_impostor_resix",
+     "lines": [
+      "Justy: I'm Justy of the Pre Gym! ...Probably. Battle me!"
+     ],
+     "battle": {
+      "name": "Cipher Peon Resix",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_red.png",
+      "team": [
+       218,
+       322
+      ],
+      "levels": [
+       48,
+       48
+      ],
+      "team_moves": [
+       [
+        "EMBER",
+        "SMOG",
+        "ROCK-THROW",
+        "LIGHT-SCREEN"
+       ],
+       [
+        "GROWL",
+        "EMBER",
+        "TACKLE"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0,
+       "BATTLE_CD_19": 1
+      },
+      "music": "orre/cipher_battle",
+      "fit": "+28 (disc ace 20)",
+      "dialogue": {
+       "player_won": [
+        "'Justy': Our perfect disguise! ...I'm Resix, of the Hexagon Brothers. Curses!",
+        "He dropped Battle CD 19!"
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "'Justy' (Blusix)",
+    "action": "EVENT",
+    "condition": [
+     "xd_fenton",
+     "not:orre_snattle_phenac"
+    ],
+    "flag_condition": "not xd_impostor_blusix",
+    "event": {
+     "flag": "xd_impostor_blusix",
+     "lines": [
+      "Justy: I'm Justy of the Pre Gym! ...Probably. Battle me!"
+     ],
+     "battle": {
+      "name": "Cipher Peon Blusix",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_blue.png",
+      "team": [
+       116,
+       118,
+       374
+      ],
+      "levels": [
+       48,
+       48,
+       47
+      ],
+      "team_moves": [
+       [
+        "LEER",
+        "SMOKESCREEN",
+        "WATER-GUN"
+       ],
+       [
+        "PECK",
+        "TAIL-WHIP",
+        "WATER-SPORT"
+       ],
+       [
+        "TAKE-DOWN"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0,
+       "BATTLE_CD_08": 1
+      },
+      "music": "orre/cipher_battle",
+      "fit": "+28 (disc ace 20)",
+      "dialogue": {
+       "player_won": [
+        "'Justy': Our perfect disguise! ...I'm Blusix, of the Hexagon Brothers. Curses!",
+        "He dropped Battle CD 08!"
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "'Justy' (Yellosix)",
+    "action": "EVENT",
+    "condition": [
+     "xd_fenton",
+     "not:orre_snattle_phenac"
+    ],
+    "flag_condition": "not xd_impostor_yellosix",
+    "event": {
+     "flag": "xd_impostor_yellosix",
+     "lines": [
+      "Justy: I'm Justy of the Pre Gym! ...Probably. Battle me!"
+     ],
+     "battle": {
+      "name": "Cipher Peon Yellosix",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_yellow.png",
+      "team": [
+       309,
+       170,
+       81
+      ],
+      "levels": [
+       48,
+       48,
+       48
+      ],
+      "team_moves": [
+       [
+        "SPARK",
+        "QUICK-ATTACK",
+        "HOWL",
+        "LEER"
+       ],
+       [
+        "WATER-GUN",
+        "FLAIL",
+        "SUPERSONIC",
+        "THUNDER-WAVE"
+       ],
+       [
+        "SONIC-BOOM",
+        "SUPERSONIC",
+        "THUNDER-SHOCK",
+        "TACKLE"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0,
+       "BATTLE_CD_28": 1
+      },
+      "music": "orre/cipher_battle",
+      "fit": "+28 (disc ace 20)",
+      "dialogue": {
+       "player_won": [
+        "'Justy': Our perfect disguise! ...I'm Yellosix, of the Hexagon Brothers. Curses!",
+        "He dropped Battle CD 28!"
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "'Justy' (Purpsix)",
+    "action": "EVENT",
+    "condition": [
+     "xd_fenton",
+     "not:orre_snattle_phenac"
+    ],
+    "flag_condition": "not xd_impostor_purpsix",
+    "event": {
+     "flag": "xd_impostor_purpsix",
+     "lines": [
+      "Justy: I'm Justy of the Pre Gym! ...Probably. Battle me!"
+     ],
+     "battle": {
+      "name": "Cipher Peon Purpsix",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_purple.png",
+      "team": [
+       109,
+       88,
+       72,
+       41
+      ],
+      "levels": [
+       48,
+       48,
+       48,
+       48
+      ],
+      "team_moves": [
+       [
+        "POISON-GAS",
+        "SMOG",
+        "TACKLE"
+       ],
+       [
+        "MINIMIZE",
+        "SLUDGE",
+        "DISABLE",
+        "HARDEN"
+       ],
+       [
+        "ACID",
+        "SAFEGUARD",
+        "SUPERSONIC",
+        "POISON-STING"
+       ],
+       [
+        "BITE",
+        "ASTONISH",
+        "SUPERSONIC",
+        "LEECH-LIFE"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0
+      },
+      "music": "orre/cipher_battle",
+      "fit": "+28 (disc ace 20)",
+      "dialogue": {
+       "player_won": [
+        "'Justy': Our perfect disguise! ...I'm Purpsix, of the Hexagon Brothers. Curses!"
+       ]
+      }
+     }
+    }
+   },
+   {
     "text": "A boy with his Poliwrath",
     "action": "EVENT",
     "event": {
@@ -282053,6 +282620,78 @@
      "lines": [
       "Poliwrath yawns."
      ]
+    }
+   },
+   {
+    "text": "'Justy' (Greesix)",
+    "action": "EVENT",
+    "condition": [
+     "xd_fenton",
+     "not:orre_snattle_phenac"
+    ],
+    "flag_condition": "not xd_impostor_greesix",
+    "event": {
+     "flag": "xd_impostor_greesix",
+     "lines": [
+      "Justy: I'm Justy of the Pre Gym! ...Probably. Battle me!"
+     ],
+     "battle": {
+      "name": "Cipher Peon Greesix",
+      "class": "CIPHER_PEON",
+      "sprite": "orre_cipher_green.png",
+      "team": [
+       43,
+       331,
+       285,
+       270,
+       204
+      ],
+      "levels": [
+       46,
+       46,
+       47,
+       47,
+       48
+      ],
+      "team_moves": [
+       [
+        "SWEET-SCENT",
+        "ABSORB"
+       ],
+       [
+        "SAND-ATTACK",
+        "LEECH-SEED",
+        "POISON-STING",
+        "ABSORB"
+       ],
+       [
+        "MEGA-DRAIN",
+        "LEECH-SEED",
+        "ABSORB",
+        "TACKLE"
+       ],
+       [
+        "NATURE-POWER",
+        "ASTONISH",
+        "GROWL"
+       ],
+       [
+        "TAKE-DOWN",
+        "TACKLE"
+       ]
+      ],
+      "double": true,
+      "rewards": {
+       "balls": 0
+      },
+      "music": "orre/cipher_battle",
+      "fit": "+28 (disc ace 20)",
+      "dialogue": {
+       "player_won": [
+        "'Justy': Our perfect disguise! ...I'm Greesix, of the Hexagon Brothers. Curses!"
+       ]
+      }
+     }
     }
    },
    {
@@ -282112,6 +282751,399 @@
       "Running laps round the fountain is the best way to start the day!"
      ]
     }
+   },
+   {
+    "text": "Runner's Castform",
+    "action": "EVENT",
+    "condition": "orre_snattle_phenac",
+    "flag_condition": "not got_battle_cd_15",
+    "event": {
+     "flag": "got_battle_cd_15",
+     "gift_item": {
+      "BATTLE_CD_15": 1
+     },
+     "lines": [
+      "The runner's Castform has something stuck to it... Battle CD 15! 'Take it,' he puffs, 'I don't play.'"
+     ]
+    }
+   },
+   {
+    "text": "Fun Old Man Eroll",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_ph_105",
+       "lines": [
+        "Eroll: Phenac's back to normal! Let's celebrate with a battle!"
+       ],
+       "battle": {
+        "name": "Fun Old Man Eroll",
+        "class": "FUN_OLD_MAN",
+        "sprite": "orre_fun_old_man.png",
+        "team": [
+         163,
+         161,
+         41
+        ],
+        "levels": [
+         51,
+         51,
+         51
+        ],
+        "team_moves": [
+         [
+          "REFLECT",
+          "HYPNOSIS",
+          "PECK",
+          "FORESIGHT"
+         ],
+         [
+          "HELPING-HAND",
+          "FURY-SWIPES",
+          "QUICK-ATTACK",
+          "DEFENSE-CURL"
+         ],
+         [
+          "WING-ATTACK",
+          "BITE",
+          "ASTONISH",
+          "SUPERSONIC"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+28 (disc ace 23)",
+        "dialogue": {
+         "player_won": [
+          "Eroll: Well battled!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Eroll: Well battled!"
+     ]
+    },
+    "condition": "orre_snattle_phenac"
+   },
+   {
+    "text": "Cooltrainer Equin",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_ph_106",
+       "lines": [
+        "Equin: The Pre Gym's open again, and I'm in top form!"
+       ],
+       "battle": {
+        "name": "Cooltrainer Equin",
+        "class": "COOLTRAINER",
+        "sprite": "orre_cool_trainer_m.png",
+        "team": [
+         215,
+         325,
+         327
+        ],
+        "levels": [
+         51,
+         51,
+         51
+        ],
+        "team_moves": [
+         [
+          "FEINT-ATTACK",
+          "SCREECH",
+          "QUICK-ATTACK",
+          "TAUNT"
+         ],
+         [
+          "PSYCH-UP",
+          "PSYBEAM",
+          "ODOR-SLEUTH",
+          "PSYWAVE"
+         ],
+         [
+          "HYPNOSIS",
+          "PSYBEAM",
+          "FEINT-ATTACK",
+          "UPROAR"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+28 (disc ace 23)",
+        "dialogue": {
+         "player_won": [
+          "Equin: Well battled!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Equin: Well battled!"
+     ]
+    },
+    "condition": "orre_snattle_phenac"
+   },
+   {
+    "text": "Cooltrainer Quelor",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_ph_129",
+       "lines": [
+        "Quelor: Fancy a match by the water?"
+       ],
+       "battle": {
+        "name": "Cooltrainer Quelor",
+        "class": "COOLTRAINER",
+        "sprite": "orre_cool_trainer_m.png",
+        "team": [
+         165,
+         325,
+         182
+        ],
+        "levels": [
+         49,
+         49,
+         49
+        ],
+        "team_moves": [
+         [
+          "COMET-PUNCH",
+          "SUPERSONIC",
+          "TACKLE",
+          "DOUBLE-TEAM"
+         ],
+         [
+          "PSYCH-UP",
+          "PSYBEAM",
+          "ODOR-SLEUTH",
+          "PSYWAVE"
+         ],
+         [
+          "MAGICAL-LEAF",
+          "STUN-SPORE",
+          "SWEET-SCENT",
+          "ABSORB"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+28 (disc ace 21)",
+        "dialogue": {
+         "player_won": [
+          "Quelor: Well battled!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Quelor: Well battled!"
+     ]
+    },
+    "condition": "orre_snattle_phenac"
+   },
+   {
+    "text": "Cooltrainer Teslor",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_ph_130",
+       "lines": [
+        "Teslor: Phenac's trainers are the best in Orre. Prove me wrong!"
+       ],
+       "battle": {
+        "name": "Cooltrainer Teslor",
+        "class": "COOLTRAINER",
+        "sprite": "orre_cool_trainer_f.png",
+        "team": [
+         192,
+         162,
+         264
+        ],
+        "levels": [
+         50,
+         50,
+         50
+        ],
+        "team_moves": [
+         [
+          "INGRAIN",
+          "RAZOR-LEAF",
+          "DOUBLE-TEAM",
+          "POUND"
+         ],
+         [
+          "HELPING-HAND",
+          "FURY-SWIPES",
+          "QUICK-ATTACK",
+          "DOUBLE-TEAM"
+         ],
+         [
+          "MUD-SPORT",
+          "ODOR-SLEUTH",
+          "DOUBLE-TEAM",
+          "HEADBUTT"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+28 (disc ace 22)",
+        "dialogue": {
+         "player_won": [
+          "Teslor: Well battled!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Teslor: Well battled!"
+     ]
+    },
+    "condition": "orre_snattle_phenac"
+   },
+   {
+    "text": "Supertrainer Nopel",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_ph_131",
+       "lines": [
+        "Nopel: Super by name, super by nature!"
+       ],
+       "battle": {
+        "name": "Super Trainer Nopel",
+        "class": "SUPERTRAINER",
+        "sprite": "orre_cool_trainer_m.png",
+        "team": [
+         352,
+         184,
+         193
+        ],
+        "levels": [
+         51,
+         51,
+         51
+        ],
+        "team_moves": [
+         [
+          "DOUBLE-TEAM",
+          "PSYBEAM",
+          "FURY-SWIPES",
+          "FEINT-ATTACK"
+         ],
+         [
+          "BUBBLE-BEAM",
+          "ROLLOUT",
+          "WATER-GUN",
+          "DOUBLE-TEAM"
+         ],
+         [
+          "SONIC-BOOM",
+          "DOUBLE-TEAM",
+          "QUICK-ATTACK",
+          "FORESIGHT"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+28 (disc ace 23)",
+        "dialogue": {
+         "player_won": [
+          "Nopel: Well battled!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Nopel: Well battled!"
+     ]
+    },
+    "condition": "orre_snattle_phenac"
+   },
+   {
+    "text": "Matron Kalus",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_ph_132",
+       "lines": [
+        "Kalus: My Plusle and Minun want to play!"
+       ],
+       "battle": {
+        "name": "Matron Kalus",
+        "class": "MATRON",
+        "sprite": "orre_matron.png",
+        "team": [
+         311,
+         312,
+         359
+        ],
+        "levels": [
+         52,
+         52,
+         52
+        ],
+        "team_moves": [
+         [
+          "DOUBLE-TEAM",
+          "SPARK",
+          "HELPING-HAND",
+          "QUICK-ATTACK"
+         ],
+         [
+          "DOUBLE-TEAM",
+          "SPARK",
+          "HELPING-HAND",
+          "QUICK-ATTACK"
+         ],
+         [
+          "BITE",
+          "DOUBLE-TEAM",
+          "QUICK-ATTACK",
+          "TAUNT"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+28 (disc ace 24)",
+        "dialogue": {
+         "player_won": [
+          "Kalus: Well battled!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Kalus: Well battled!"
+     ]
+    },
+    "condition": "orre_snattle_phenac"
    },
    {
     "text": "Shady Guy Trudly",
@@ -282459,13 +283491,13 @@
      "c....ccccc.ccc.ccccc....c",
      "c....ccccc.....ccccc....c",
      "c....cccccc...cccccc....c",
-     "c....cccccc...cccccc....c",
+     "c....cccccc.N.cccccc....c",
      "c....cccccc...cccccc....c",
      "c.......................c",
-     "c.......................c",
+     "c.....N..N.....N..N.....c",
      "c.......................c",
      "ccccccccccc...ccccccccccc",
-     "ccccccccccc...ccccccccccc",
+     "ccccccccccc.N.ccccccccccc",
      "ccccccccccc...ccccccccccc",
      "ccccccccccc...ccccccccccc",
      "cccccccccccc.cccccccccccc",
@@ -282481,7 +283513,383 @@
      [
       "PHENAC STADIUM: SNATTLE",
       "Phenac Stadium"
-     ]
+     ],
+     {
+      "text": "Battle CD 44",
+      "action": "EVENT",
+      "condition": "orre_snattle_phenac",
+      "flag_condition": "not got_battle_cd_44",
+      "event": {
+       "flag": "got_battle_cd_44",
+       "gift_item": {
+        "BATTLE_CD_44": 1
+       },
+       "lines": [
+        "On the empty stadium's floor: Battle CD 44!"
+       ]
+      }
+     },
+     {
+      "text": "Cipher Peon Exinn",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_st_exinn",
+         "lines": [
+          "Cipher Peon Exinn: Ambush! Get the kid!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Exinn",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           336,
+           9428,
+           42,
+           262
+          ],
+          "levels": [
+           48,
+           51,
+           50,
+           49
+          ],
+          "team_moves": [
+           [
+            "SCREECH",
+            "POISON-TAIL",
+            "BITE",
+            "LICK"
+           ],
+           [
+            "WATER-PULSE",
+            "SING",
+            "BITE",
+            "ICY-WIND"
+           ],
+           [
+            "LEECH-LIFE",
+            "BITE",
+            "ASTONISH",
+            "SCREECH"
+           ],
+           [
+            "HOWL",
+            "BITE",
+            "SAND-ATTACK",
+            "TACKLE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+28 (disc ace 23)",
+          "dialogue": {
+           "player_won": [
+            "Exinn: Ugh..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Exinn: Ugh..."
+       ]
+      },
+      "condition": [
+       "xd_ertlig",
+       "not:orre_snattle_phenac"
+      ]
+     },
+     {
+      "text": "Cipher Peon Gonrag",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_st_gonrag",
+         "lines": [
+          "Cipher Peon Gonrag: Two on one - sort of!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Gonrag",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           198,
+           9370,
+           168
+          ],
+          "levels": [
+           50,
+           51,
+           50
+          ],
+          "team_moves": [
+           [
+            "HAZE",
+            "PURSUIT",
+            "ASTONISH",
+            "PECK"
+           ],
+           [
+            "PIN-MISSILE",
+            "REFRESH",
+            "SPIKES",
+            "COUNTER"
+           ],
+           [
+            "NIGHT-SHADE",
+            "POISON-STING",
+            "SCARY-FACE",
+            "LEECH-LIFE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+28 (disc ace 23)",
+          "dialogue": {
+           "player_won": [
+            "Gonrag: Ugh..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Gonrag: Ugh..."
+       ]
+      },
+      "condition": [
+       "xd_ertlig",
+       "not:orre_snattle_phenac"
+      ]
+     },
+     {
+      "text": "Cipher Peon Faltly",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_st_faltly",
+         "lines": [
+          "Cipher Peon Faltly: You won't reach the boss!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Faltly",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           358,
+           234,
+           9322
+          ],
+          "levels": [
+           51,
+           51,
+           54
+          ],
+          "team_moves": [
+           [
+            "UPROAR",
+            "TAKE-DOWN",
+            "CONFUSION",
+            "ASTONISH"
+           ],
+           [
+            "TACKLE",
+            "ASTONISH",
+            "LEER"
+           ],
+           [
+            "SLUDGE-BOMB",
+            "HELPING-HAND",
+            "SHADOW-PUNCH",
+            "MINIMIZE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+28 (disc ace 26)",
+          "dialogue": {
+           "player_won": [
+            "Faltly: Ugh..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Faltly: Ugh..."
+       ]
+      },
+      "condition": [
+       "xd_ertlig",
+       "not:orre_snattle_phenac"
+      ]
+     },
+     {
+      "text": "Cipher Peon Egrog",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_st_egrog",
+         "lines": [
+          "Cipher Peon Egrog: Snattle sent me to deal with you. Personally!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Egrog",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           163,
+           75,
+           316,
+           9321
+          ],
+          "levels": [
+           53,
+           54,
+           54,
+           55
+          ],
+          "team_moves": [
+           [
+            "FORESIGHT",
+            "GROWL",
+            "PECK",
+            "FACADE"
+           ],
+           [
+            "ROCK-THROW",
+            "BRICK-BREAK",
+            "DIG",
+            "MUD-SPORT"
+           ],
+           [
+            "POUND",
+            "WATER-PULSE",
+            "SLUDGE",
+            "SHOCK-WAVE"
+           ],
+           [
+            "SURF",
+            "HELPING-HAND",
+            "SAFEGUARD",
+            "ICE-BEAM"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "team_items": [
+           null,
+           null,
+           null,
+           "MYSTIC_WATER"
+          ],
+          "music": "orre/cipher_battle",
+          "fit": "+28 (disc ace 27)",
+          "dialogue": {
+           "player_won": [
+            "Egrog: Ugh..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Egrog: Ugh..."
+       ]
+      },
+      "condition": [
+       "xd_ertlig",
+       "not:orre_snattle_phenac"
+      ]
+     },
+     {
+      "text": "Cipher Peon Ezin",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_st_ezin",
+         "lines": [
+          "Cipher Peon Ezin: The stadium belongs to Snattle now!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Ezin",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           279,
+           309,
+           9305
+          ],
+          "levels": [
+           51,
+           51,
+           53
+          ],
+          "team_moves": [
+           [
+            "MIST",
+            "WING-ATTACK",
+            "SUPERSONIC",
+            "WATER-GUN"
+           ],
+           [
+            "SPARK",
+            "QUICK-ATTACK",
+            "HOWL",
+            "LEER"
+           ],
+           [
+            "FALSE-SWIPE",
+            "BATON-PASS",
+            "LEER",
+            "AERIAL-ACE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "team_items": [
+           "SHARP_BEAK",
+           null,
+           "SHARP_BEAK"
+          ],
+          "music": "orre/cipher_battle",
+          "fit": "+28 (disc ace 25)",
+          "dialogue": {
+           "player_won": [
+            "Ezin: Ugh..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Ezin: Ugh..."
+       ]
+      },
+      "condition": [
+       "xd_ertlig",
+       "not:orre_snattle_phenac"
+      ]
+     }
     ],
     "signs": [
      [
@@ -282524,11 +283932,11 @@
      "cccccccccccccccccccc",
      "cccc.cc...........cc",
      "c...............^ccc",
-     "c................ccc",
+     "c.N..............ccc",
      "c..........c.......c",
      "c........N.c.......c",
      "c..........ccc.....c",
-     "c..................c",
+     "c.........N........c",
      "c...........N......c",
      "c.........N...N....c",
      "c..................c",
@@ -282543,6 +283951,80 @@
     },
     "buildings": {},
     "people": [
+     {
+      "text": "Cipher Peon Fenton",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_fenton",
+         "lines": [
+          "Cipher Peon Fenton: Nobody leaves the mayor's house!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Fenton",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           118,
+           318,
+           109,
+           262
+          ],
+          "levels": [
+           49,
+           49,
+           49,
+           49
+          ],
+          "team_moves": [
+           [
+            "HORN-ATTACK",
+            "SUPERSONIC",
+            "WATER-SPORT",
+            "TAIL-WHIP"
+           ],
+           [
+            "SCARY-FACE",
+            "FOCUS-ENERGY",
+            "RAGE",
+            "BITE"
+           ],
+           [
+            "SLUDGE",
+            "TACKLE",
+            "SMOG"
+           ],
+           [
+            "ODOR-SLEUTH",
+            "BITE",
+            "SAND-ATTACK",
+            "HOWL"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+28 (disc ace 21)",
+          "dialogue": {
+           "player_won": [
+            "Cipher Peon Fenton: Ugh. The Justys will get you!"
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Cipher Peon Fenton: Ugh. The Justys will get you!"
+       ]
+      },
+      "condition": [
+       "xd_secretary",
+       "not:orre_snattle_phenac"
+      ]
+     },
      {
       "text": "Mayor Es Cade",
       "action": "EVENT",
@@ -282569,6 +284051,80 @@
        ],
        "done": [
         "Mayor Es Cade: The Stadium is at the top of the town. Off you go!"
+       ]
+      }
+     },
+     {
+      "text": "Mayor's secretary",
+      "action": "EVENT",
+      "condition": [
+       "xd_bonsly_found",
+       "not:orre_snattle_phenac"
+      ],
+      "flag_condition": "not xd_secretary",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "not:has_item:MUSIC_DISC"
+         ],
+         "lines": [
+          "Secretary: The mayor is busy. Very busy. Upstairs is off limits.",
+          "Secretary: It's so dull in here... If only I had some music."
+         ]
+        },
+        {
+         "requires": [
+          "has_item:MUSIC_DISC"
+         ],
+         "flag": "xd_secretary",
+         "take_item": {
+          "MUSIC_DISC": 1
+         },
+         "lines": [
+          "Secretary: A Music Disc? How lovely! ...La la la...",
+          "While she dances, you slip upstairs. The mayor's office is empty. A note lies on the desk:",
+          "'Justy - Cipher means to take Phenac. They'll wear our faces. I must-' The note stops there. Es Cade is nowhere to be seen.",
+          "Secretary: Snooping, are we? Then you've seen too much!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Pellim",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           185,
+           366
+          ],
+          "levels": [
+           48,
+           49
+          ],
+          "team_moves": [
+           [
+            "LOW-KICK",
+            "FLAIL",
+            "ROCK-THROW"
+           ],
+           [
+            "IRON-DEFENSE",
+            "WHIRLPOOL",
+            "WATER-GUN",
+            "CLAMP"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+28 (disc ace 21)",
+          "dialogue": {
+           "player_won": [
+            "Cipher Peon Pellim: My disguise... Fenton, get the kid!"
+           ]
+          }
+         }
+        }
        ]
       }
      },
@@ -282741,9 +284297,9 @@
      "cccccccccccccccccccc",
      "cccccccccccccccccccc",
      "cccccc........c.cc.c",
-     "c...c^..........cc.c",
-     "cc..cc.............c",
-     "c.................cc",
+     "c...c^...N......cc.c",
+     "cc..cc..N..........c",
+     "c......N..........cc",
      "cc................cc",
      "cc.................c",
      "c..................c",
@@ -282757,7 +284313,53 @@
      "^": "ROOM:mayor"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Battle CD 27",
+      "action": "EVENT",
+      "condition": "xd_secretary",
+      "flag_condition": "not got_battle_cd_27",
+      "event": {
+       "flag": "got_battle_cd_27",
+       "gift_item": {
+        "BATTLE_CD_27": 1
+       },
+       "lines": [
+        "Under the mayor's desk: Battle CD 27!"
+       ]
+      }
+     },
+     {
+      "text": "Battle CD 12",
+      "action": "EVENT",
+      "condition": "xd_secretary",
+      "flag_condition": "not got_battle_cd_12",
+      "event": {
+       "flag": "got_battle_cd_12",
+       "gift_item": {
+        "BATTLE_CD_12": 1
+       },
+       "lines": [
+        "On the mayor's bookshelf: Battle CD 12!"
+       ]
+      }
+     },
+     {
+      "text": "Battle CD 32",
+      "action": "EVENT",
+      "condition": "xd_secretary",
+      "flag_condition": "not got_battle_cd_32",
+      "event": {
+       "flag": "got_battle_cd_32",
+       "gift_item": {
+        "BATTLE_CD_32": 1
+       },
+       "lines": [
+        "In the mayor's cabinet: Battle CD 32!"
+       ]
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -282796,8 +284398,8 @@
      "cccccc......cc",
      "ccccccccc.cccc",
      "cccccc.c...ccc",
-     "c............c",
-     "c............c",
+     "c......N.....c",
+     "c.N..........c",
      "c............c",
      "c........cc..c",
      "cccvccc..cc..c",
@@ -282809,7 +284411,46 @@
      "v": "OUT:40,29"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Music lover",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "xd_bonsly_found",
+          "not:xd_music_disc"
+         ],
+         "flag": "xd_music_disc",
+         "gift_item": {
+          "MUSIC_DISC": 1
+         },
+         "lines": [
+          "Music lover: The mayor's secretary wants music? Here, take this Music Disc. Phenac's been so quiet lately."
+         ]
+        }
+       ],
+       "done": [
+        "Music lover: Music makes everything better. Even whatever's going on in this town."
+       ]
+      }
+     },
+     {
+      "text": "Battle CD 10",
+      "action": "EVENT",
+      "flag_condition": "not got_battle_cd_10",
+      "event": {
+       "flag": "got_battle_cd_10",
+       "gift_item": {
+        "BATTLE_CD_10": 1
+       },
+       "lines": [
+        "On the bookshelf: Battle CD 10!"
+       ]
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -287877,20 +289518,20 @@
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
      "cccccc....ccc....cccccc",
-     "ccccc.............ccccc",
-     "ccccc.............ccccc",
+     "ccccc.....N.......ccccc",
+     "ccccc..N..........ccccc",
      "cccc....ccccccc....cccc",
      "cX.....cc..1..cc.....cc",
      "c.cX...c.......c......c",
      "c.cX...c.......c...cc.c",
      "c.X....c....NN.c...c1.c",
      "c......c.......c...cc.c",
-     "cc.cc..cc.....cc......c",
-     "c.......ccc.ccc.......c",
+     "cc.ccN.cc.....cc......c",
+     "c.....N.ccc.ccc.......c",
      "c.................cc.cc",
      "c.....................c",
-     "c.....................c",
-     "c.....................c",
+     "c.......N.............c",
+     "c................N....c",
      "cc...................cc",
      "cccccccccccvccccccccccc",
      "ccccccccccccccccccccccc"
@@ -287912,14 +289553,20 @@
     },
     "parts": true,
     "people": [
+     "PRE GYM LEADER JUSTY",
+     "CIPHER PEON FOSTIN",
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "LADY GWIN",
+     "RICH BOY DUGO",
+     "COOLTRAINER BOTAN",
+     "COOLTRAINER LIQUI"
     ],
     "trainer_spots": [
-     "Cipher Peon Exinn",
-     "Cipher Peon Gonrag",
-     "Cipher Peon Ertlig",
-     "Cipher Peon Forgs"
+     "Cipher Peon Forgs",
+     "Cipher Peon Kapen",
+     "Cipher Peon Ezoor",
+     "Cipher Peon Greck"
     ],
     "roofs": {
      "_picture": {
@@ -287945,6 +289592,23 @@
        20
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        11,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "orre_snattle_phenac"
+      },
+      "lines": [
+       "The lift to the basement is locked. It needs an Elevator Key."
+      ]
+     }
     ]
    },
    {
@@ -287955,13 +289619,13 @@
      "ccc.c.............cc...cc",
      ".c..........X.....c....cc",
      "....................X....",
-     ".....X...................",
+     ".........................",
      ".........................",
      ".........................",
      ".......................c.",
-     ".........................",
+     "........................N",
      "ccc......................",
-     ".c.......................",
+     ".c.......N...............",
      ".........................",
      ".........................",
      "ccccc....................",
@@ -287969,7 +289633,7 @@
      "ccccccccc...ccc..........",
      "cccccccccc...c...........",
      "ccccccccc................",
-     "cccccccc..............X..",
+     "cccccccc.................",
      "ccccc....................",
      ".........................",
      ".ccc.....................",
@@ -287986,12 +289650,13 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "BATTLE CD 35",
+     "PHENAC'S TOWNSFOLK"
+    ],
     "trainer_spots": [
-     "Cipher Peon Ezoor",
-     "Cipher Peon Pellim",
-     "Cipher Peon Kapen",
-     "Cipher Peon Fenton"
+     "Cipher Peon Eloin",
+     "Cipher Peon Fasin"
     ],
     "roofs": {
      "_picture": {
@@ -288027,14 +289692,20 @@
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
-   "Cipher Peon Exinn": 0,
-   "Cipher Peon Gonrag": 0,
-   "Cipher Peon Ertlig": 0,
+   "COOLTRAINER BOTAN": 0,
+   "COOLTRAINER LIQUI": 0,
+   "RICH BOY DUGO": 0,
+   "LADY GWIN": 0,
+   "PRE GYM LEADER JUSTY": 0,
+   "CIPHER PEON FOSTIN": 0,
    "Cipher Peon Forgs": 0,
-   "Cipher Peon Ezoor": 1,
-   "Cipher Peon Pellim": 1,
-   "Cipher Peon Kapen": 1,
-   "Cipher Peon Fenton": 1
+   "Cipher Peon Kapen": 0,
+   "Cipher Peon Ezoor": 0,
+   "Cipher Peon Greck": 0,
+   "PHENAC'S TOWNSFOLK": 1,
+   "BATTLE CD 35": 1,
+   "Cipher Peon Eloin": 1,
+   "Cipher Peon Fasin": 1
   },
   "theme": "tunnel"
  },
@@ -289117,8 +290788,8 @@
     "parts": true,
     "people": [],
     "trainer_spots": [
-     "Cipher Peon Nore",
-     "Cipher Peon Kloak"
+     "Team Snagem Agrev",
+     "Team Snagem Jedo"
     ],
     "roofs": {
      "_picture": {
@@ -289152,25 +290823,25 @@
      "ccccccccccccccc",
      "ccccccc1.cccccc",
      "cccccc...c.cccc",
-     "cX.........cc.c",
+     "cX....N....cc.c",
      "c.............c",
      "ccXcccccccccccc",
      "cc...........cc",
      "c............Xc",
      "c.............c",
      "ccccccccccccXcc",
-     "c.............c",
-     "cN............c",
+     "c...........N.c",
+     "cN.N..........c",
      "c.............c",
      "ccNcccccccccccc",
      "cc...........cc",
-     "c............Xc",
+     "c.........N.NXc",
      "c.............c",
      "ccccccccccccXcc",
-     "ccccc.c..c....c",
+     "ccccc.c..c.N..c",
      "cc............c",
-     "c.............c",
-     "c.....c.c.....c",
+     "c..N..........c",
+     "c...X.c.c.....c",
      "cc...........cc",
      "ccccccc1ccccccc",
      "ccccccccccccccc"
@@ -289190,16 +290861,24 @@
     },
     "parts": true,
     "people": [
+     "LOCKED BOX",
+     "TM PSYCHIC",
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "PP UP",
+     "SNAG AGAIN",
+     "REVIVES",
+     "RARE CANDY",
+     "HYPER POTIONS",
+     "ULTRA BALLS"
     ],
     "trainer_spots": [
-     "Team Snagem Fuston",
-     "Cipher Peon Dioge",
-     "Team Snagem Niver",
-     "Cipher Peon Baila",
-     "Cipher Peon Verde",
-     "Cipher Peon Arton"
+     "Team Snagem Biden",
+     "Team Snagem Fudlo",
+     "Team Snagem Gaply",
+     "Team Snagem Golit",
+     "Team Snagem Jinok",
+     "Team Snagem Hobble",
+     "Team Snagem Wakin"
     ],
     "roofs": {
      "_picture": {
@@ -289245,7 +290924,7 @@
      "c.....c.....ccc..ccccccc",
      "c........c..ccc..ccccccc",
      "cc........c.ccc..ccccccc",
-     "c...........ccc..ccccccc",
+     "c.........N.ccc..ccccccc",
      "c..c.............ccccccc",
      "c.......c........ccccccc",
      "c...c.......cccccccccccc",
@@ -289271,7 +290950,8 @@
     },
     "parts": true,
     "people": [
-     "SNAGEM HIDEOUT: GONZAP"
+     "SNAGEM HIDEOUT: GONZAP",
+     "FULL HEALS"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -289307,17 +290987,26 @@
    "Gonzap's Room"
   ],
   "figure_floors": {
-   "Cipher Peon Nore": 0,
-   "Cipher Peon Kloak": 0,
+   "Team Snagem Agrev": 0,
+   "Team Snagem Jedo": 0,
    "SNAG SHADOW POKEMON": 1,
    "SNAG AGAIN": 1,
-   "Cipher Peon Baila": 1,
-   "Cipher Peon Arton": 1,
-   "Cipher Peon Dioge": 1,
-   "Team Snagem Niver": 1,
-   "Team Snagem Fuston": 1,
-   "Cipher Peon Verde": 1,
-   "SNAGEM HIDEOUT: GONZAP": 2
+   "Team Snagem Wakin": 1,
+   "ULTRA BALLS": 1,
+   "HYPER POTIONS": 1,
+   "REVIVES": 1,
+   "RARE CANDY": 1,
+   "PP UP": 1,
+   "TM PSYCHIC": 1,
+   "LOCKED BOX": 1,
+   "Team Snagem Golit": 1,
+   "Team Snagem Hobble": 1,
+   "Team Snagem Fudlo": 1,
+   "Team Snagem Gaply": 1,
+   "Team Snagem Biden": 1,
+   "Team Snagem Jinok": 1,
+   "SNAGEM HIDEOUT: GONZAP": 2,
+   "FULL HEALS": 2
   },
   "theme": "tunnel"
  },

@@ -193,7 +193,8 @@
           "target_area": "SNAGEM_HIDEOUT",
           "condition": [
             "can_exit",
-            "has_phenac_badge"
+            "has_phenac_badge",
+            "xd_hordel"
           ],
           "color": "RED"
         },
@@ -266,7 +267,13 @@
         {
           "text": "Phenac Stadium",
           "action": "GYM",
-          "color": "GOLD"
+          "color": "GOLD",
+          "condition": {
+            "any": [
+              "not:xd_bonsly_found",
+              "orre_snattle_phenac"
+            ]
+          }
         },
         {
           "text": "Trouble at the Fountain",
@@ -336,42 +343,84 @@
           "flag_condition": "not orre_snattle_phenac",
           "event": {
             "lines": [
-              "Snattle: As the former mayor, I welcome you... to your defeat!"
+              "Snattle has the stadium to himself, and Marcia cornered. 'Phenac's mayor? Don't make me laugh.'"
             ],
             "flag": "orre_snattle_phenac",
             "battle": {
               "name": "Cipher Admin Snattle",
-              "class": "PKMN_TRAINER",
-              "sprite": "gentleman.png",
-              "is_boss_battle": true,
+              "class": "CIPHER_ADMIN",
+              "sprite": "orre_cipher_peon.png",
               "team": [
                 171,
                 195,
-                337,
+                9421,
                 351,
                 375
               ],
               "levels": [
-                14,
-                14,
-                15,
-                16,
-                16
+                54,
+                54,
+                56,
+                55,
+                56
               ],
+              "team_moves": [
+                [
+                  "SHOCK-WAVE",
+                  "WATER-GUN",
+                  "FLAIL",
+                  "FACADE"
+                ],
+                [
+                  "ICE-PUNCH",
+                  "ROCK-TOMB",
+                  "SLAM",
+                  "WATER-GUN"
+                ],
+                [
+                  "PSYCHIC",
+                  "BATON-PASS",
+                  "RAIN-DANCE",
+                  "ROCK-TOMB"
+                ],
+                [
+                  "WEATHER-BALL",
+                  "WATER-PULSE",
+                  "SHOCK-WAVE",
+                  "ICY-WIND"
+                ],
+                [
+                  "SCARY-FACE",
+                  "METAL-CLAW",
+                  "CONFUSION",
+                  "THUNDER-PUNCH"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 6
+                "balls": 0
               },
+              "team_items": [
+                null,
+                null,
+                "HARD_STONE",
+                null,
+                null
+              ],
+              "music": "orre/admin_battle",
+              "is_boss_battle": true,
               "dialogue": {
                 "intro": [
-                  "Snattle: As the former mayor, I welcome you... to your defeat!"
+                  "Snattle: Little hero, on live TV! Let's give Orre a show!"
                 ],
                 "player_won": [
-                  "Snattle: How dare you!"
+                  "Snattle: On national television... How embarrassing! Ahem. Farewell!",
+                  "Snattle hurries off, dropping something: the Pre Gym's Elevator Key."
                 ]
               }
             }
           },
-          "condition": "xd_exol_beaten"
+          "condition": "xd_st_egrog"
         }
       ],
       "travel_options": [
@@ -416,64 +465,103 @@
             "name": "Cooltrainer Rewn",
             "class": "COLOSSEUM",
             "sprite": "orre_cool_trainer_m.png",
-            "is_boss_battle": true,
             "team": [
               258,
               41,
-              331,
-              270,
-              204,
-              273
+              331
             ],
             "levels": [
-              31,
-              31,
-              32,
-              32,
-              33,
-              33
+              54,
+              53,
+              53
             ],
+            "team_moves": [
+              [
+                "SURF",
+                "TACKLE"
+              ],
+              [
+                "ASTONISH",
+                "LEECH-LIFE"
+              ],
+              [
+                "PIN-MISSILE",
+                "ABSORB"
+              ]
+            ],
+            "double": true,
             "rewards": {
               "balls": 5
-            }
+            },
+            "is_boss_battle": true
           },
           {
             "name": "Cooltrainer Buna",
             "class": "COLOSSEUM",
             "sprite": "orre_cool_trainer_m.png",
-            "is_boss_battle": true,
             "team": [
               370,
               163,
               252
             ],
             "levels": [
-              31,
-              32,
-              33
+              53,
+              53,
+              54
             ],
+            "team_moves": [
+              [
+                "SURF",
+                "TACKLE"
+              ],
+              [
+                "TACKLE",
+                "PECK"
+              ],
+              [
+                "QUICK-ATTACK",
+                "MEGA-DRAIN"
+              ]
+            ],
+            "double": true,
             "rewards": {
               "balls": 5
-            }
+            },
+            "is_boss_battle": true
           },
           {
             "name": "Teacher Holen",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
-            "is_boss_battle": true,
+            "sprite": "orre_chaser_m.png",
             "team": [
               366,
               255,
               179
             ],
             "levels": [
-              31,
-              32,
-              33
+              53,
+              54,
+              53
             ],
+            "team_moves": [
+              [
+                "SURF",
+                "CLAMP"
+              ],
+              [
+                "SCRATCH",
+                "EMBER"
+              ],
+              [
+                "TACKLE",
+                "SHOCK-WAVE"
+              ]
+            ],
+            "double": true,
             "rewards": {
               "balls": 5
-            }
+            },
+            "is_boss_battle": true
           }
         ],
         "leader": {
@@ -484,14 +572,12 @@
           "team": [
             120,
             165,
-            172,
-            322
+            172
           ],
           "levels": [
-            34,
-            35,
-            35,
-            36
+            55,
+            55,
+            56
           ],
           "badge_reward": "PHENAC",
           "rewards": {
@@ -507,7 +593,21 @@
             "player_lost": [
               "So close! Train up and enter the next tournament."
             ]
-          }
+          },
+          "team_moves": [
+            [
+              "BUBBLE-BEAM",
+              "TACKLE"
+            ],
+            [
+              "COMET-PUNCH",
+              "SWIFT"
+            ],
+            [
+              "SHOCK-WAVE",
+              "DOUBLE-SLAP"
+            ]
+          ]
         },
         "requirements": {
           "badges": 2,
@@ -13585,47 +13685,6 @@
       "min_rounds": 0,
       "trainer_pool": [
         {
-          "name": "Cipher Peon Exinn",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            336,
-            361,
-            42,
-            262
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Gonrag",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            198,
-            204,
-            168
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Ertlig",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            261,
-            81,
-            120,
-            359
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
           "name": "Cipher Peon Forgs",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
@@ -13634,34 +13693,38 @@
             341,
             211
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Ezoor",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            353,
-            216,
-            222
+          "levels": [
+            49,
+            48,
+            49
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Pellim",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            185,
-            366
+          "team_moves": [
+            [
+              "TORMENT",
+              "NIGHT-SHADE",
+              "DISABLE"
+            ],
+            [
+              "BUBBLE-BEAM",
+              "LEER",
+              "VICE-GRIP",
+              "HARDEN"
+            ],
+            [
+              "WATER-GUN",
+              "MINIMIZE",
+              "HARDEN",
+              "POISON-STING"
+            ]
           ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_bonsly_found"
+          ]
         },
         {
           "name": "Cipher Peon Kapen",
@@ -13674,23 +13737,227 @@
             336,
             320
           ],
+          "levels": [
+            48,
+            49,
+            48,
+            49,
+            50
+          ],
+          "team_moves": [
+            [
+              "QUICK-ATTACK",
+              "THIEF",
+              "TACKLE"
+            ],
+            [
+              "REFLECT",
+              "LIGHT-SCREEN",
+              "ODOR-SLEUTH",
+              "PSYWAVE"
+            ],
+            [
+              "QUICK-ATTACK",
+              "TACKLE",
+              "CHARM",
+              "SWEET-SCENT"
+            ],
+            [
+              "SCREECH",
+              "POISON-TAIL",
+              "BITE",
+              "LICK"
+            ],
+            [
+              "WHIRLPOOL",
+              "ROLLOUT",
+              "WATER-GUN",
+              "GROWL"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_bonsly_found"
+          ]
         },
         {
-          "name": "Cipher Peon Fenton",
+          "name": "Cipher Peon Ezoor",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            118,
-            318,
-            109,
-            262
+            353,
+            216,
+            222
           ],
+          "levels": [
+            49,
+            49,
+            49
+          ],
+          "team_moves": [
+            [
+              "CURSE",
+              "NIGHT-SHADE",
+              "SPITE",
+              "SHOCK-WAVE"
+            ],
+            [
+              "FAKE-TEARS",
+              "FURY-SWIPES",
+              "DIG",
+              "LEER"
+            ],
+            [
+              "REFRESH",
+              "WATER-PULSE",
+              "DIG",
+              "LIGHT-SCREEN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_bonsly_found"
+          ]
+        },
+        {
+          "name": "Cipher Peon Greck",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            324,
+            274,
+            9384
+          ],
+          "levels": [
+            50,
+            51,
+            53
+          ],
+          "team_moves": [
+            [
+              "BODY-SLAM",
+              "FIRE-SPIN",
+              "SMOKESCREEN",
+              "EMBER"
+            ],
+            [
+              "FAKE-OUT",
+              "DIG",
+              "GIGA-DRAIN",
+              "TORMENT"
+            ],
+            [
+              "ANCIENT-POWER",
+              "CHARM",
+              "MIST",
+              "MUD-SHOT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            null,
+            null,
+            "NEVERMELTICE"
+          ],
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_bonsly_found"
+          ]
+        },
+        {
+          "name": "Cipher Peon Eloin",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            281,
+            264,
+            9359
+          ],
+          "levels": [
+            50,
+            48,
+            53
+          ],
+          "team_moves": [
+            [
+              "GROWL",
+              "CONFUSION"
+            ],
+            [
+              "ODOR-SLEUTH",
+              "SAND-ATTACK",
+              "HEADBUTT",
+              "TAIL-WHIP"
+            ],
+            [
+              "FUTURE-SIGHT",
+              "BATON-PASS",
+              "NIGHT-SHADE",
+              "AERIAL-ACE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_bonsly_found"
+          ]
+        },
+        {
+          "name": "Cipher Peon Fasin",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            223,
+            42,
+            9413
+          ],
+          "levels": [
+            50,
+            50,
+            53
+          ],
+          "team_moves": [
+            [
+              "WATER-GUN",
+              "AURORA-BEAM",
+              "SCREECH",
+              "LOCK-ON"
+            ],
+            [
+              "LEECH-LIFE",
+              "BITE",
+              "ASTONISH",
+              "SCREECH"
+            ],
+            [
+              "MAGICAL-LEAF",
+              "SWEET-KISS",
+              "GRASS-WHISTLE",
+              "LEECH-SEED"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_bonsly_found"
+          ]
         }
       ],
       "shadow_pool": [
@@ -13763,7 +14030,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "orre_snattle_phenac"
           ]
         },
         {
@@ -13774,7 +14042,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "orre_snattle_phenac"
           ]
         },
         {
@@ -13782,6 +14051,487 @@
           "action": "TRAINER",
           "condition": "has_trainers",
           "color": "GREEN"
+        },
+        {
+          "text": "COOLTRAINER BOTAN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Botan: Welcome to the Pre Gym! Every trainer in Phenac practises here."
+            ],
+            "flag": "orre_pregym_botan",
+            "battle": {
+              "name": "Cooltrainer Botan",
+              "class": "COOLTRAINER",
+              "sprite": "orre_cool_trainer_m.png",
+              "team": [
+                191,
+                187
+              ],
+              "levels": [
+                27,
+                26
+              ],
+              "team_moves": [
+                [
+                  "ABSORB",
+                  "GROWTH"
+                ],
+                [
+                  "BULLET-SEED",
+                  "TAIL-WHIP"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "dialogue": {
+                "player_won": [
+                  "Botan: Good form!"
+                ]
+              }
+            }
+          },
+          "flag_condition": "not orre_pregym_botan",
+          "condition": {
+            "any": [
+              "not:xd_bonsly_found",
+              "orre_snattle_phenac"
+            ]
+          }
+        },
+        {
+          "text": "COOLTRAINER LIQUI",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Liqui: Water types are my speciality. Let's see yours!"
+            ],
+            "flag": "orre_pregym_liqui",
+            "battle": {
+              "name": "Cooltrainer Liqui",
+              "class": "COOLTRAINER",
+              "sprite": "orre_cool_trainer_m.png",
+              "team": [
+                183,
+                283
+              ],
+              "levels": [
+                26,
+                27
+              ],
+              "team_moves": [
+                [
+                  "WATER-GUN",
+                  "DEFENSE-CURL"
+                ],
+                [
+                  "BUBBLE",
+                  "AGILITY"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "dialogue": {
+                "player_won": [
+                  "Liqui: Splendid!"
+                ]
+              }
+            }
+          },
+          "flag_condition": "not orre_pregym_liqui",
+          "condition": {
+            "any": [
+              "not:xd_bonsly_found",
+              "orre_snattle_phenac"
+            ]
+          }
+        },
+        {
+          "text": "RICH BOY DUGO",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Dugo: Daddy paid for my lessons. Watch this!"
+            ],
+            "flag": "orre_pregym_dugo",
+            "battle": {
+              "name": "Rich Boy Dugo",
+              "class": "RICH_BOY",
+              "sprite": "orre_rich_boy.png",
+              "team": [
+                328,
+                220
+              ],
+              "levels": [
+                27,
+                27
+              ],
+              "team_moves": [
+                [
+                  "SAND-TOMB",
+                  "SAND-ATTACK"
+                ],
+                [
+                  "DIG",
+                  "ODOR-SLEUTH"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "dialogue": {
+                "player_won": [
+                  "Dugo: I'm telling Daddy..."
+                ]
+              }
+            }
+          },
+          "flag_condition": "not orre_pregym_dugo",
+          "condition": {
+            "any": [
+              "not:xd_bonsly_found",
+              "orre_snattle_phenac"
+            ]
+          }
+        },
+        {
+          "text": "LADY GWIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Gwin: A lady never loses her composure. Or a battle."
+            ],
+            "flag": "orre_pregym_gwin",
+            "battle": {
+              "name": "Lady Gwin",
+              "class": "LADY",
+              "sprite": "orre_lady_gwin.png",
+              "team": [
+                74,
+                111
+              ],
+              "levels": [
+                27,
+                27
+              ],
+              "team_moves": [
+                [
+                  "ROCK-THROW",
+                  "DEFENSE-CURL"
+                ],
+                [
+                  "ROCK-TOMB",
+                  "TAIL-WHIP"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "dialogue": {
+                "player_won": [
+                  "Gwin: Composure... lost."
+                ]
+              }
+            }
+          },
+          "flag_condition": "not orre_pregym_gwin",
+          "condition": {
+            "any": [
+              "not:xd_bonsly_found",
+              "orre_snattle_phenac"
+            ]
+          }
+        },
+        {
+          "text": "PRE GYM LEADER JUSTY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "orre_snattle_phenac",
+                  "not:xd_justy"
+                ],
+                "flag": "xd_justy",
+                "lines": [
+                  "Justy: The Pre Gym is open again, thanks to you! Let me thank you the only way I know - a battle!"
+                ],
+                "battle": {
+                  "name": "Pregymleader Justy",
+                  "class": "PREGYMLEADER",
+                  "sprite": "orre_justy.png",
+                  "team": [
+                    331,
+                    28,
+                    207,
+                    299
+                  ],
+                  "levels": [
+                    56,
+                    56,
+                    56,
+                    56
+                  ],
+                  "team_moves": [
+                    [
+                      "FEINT-ATTACK",
+                      "NEEDLE-ARM",
+                      "SUBSTITUTE",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "SLASH",
+                      "DIG",
+                      "SANDSTORM",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "DIG",
+                      "SLASH",
+                      "SUBSTITUTE",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "ROCK-TOMB",
+                      "SHOCK-WAVE",
+                      "SANDSTORM",
+                      "DOUBLE-TEAM"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0,
+                    "TM275": 1,
+                    "LUM_BERRY": 1
+                  },
+                  "dialogue": {
+                    "player_won": [
+                      "Justy: Wonderful! Take TM275, Double Team, and a Lum Berry."
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "has_under_badge",
+                  "not:orre_justy_col",
+                  "not:xd_bonsly_found"
+                ],
+                "flag": "orre_justy_col",
+                "lines": [
+                  "Justy: You've earned two badges? Then the Pre Gym's leader will test you himself!"
+                ],
+                "battle": {
+                  "name": "Pregymleader Justy",
+                  "class": "PREGYMLEADER",
+                  "sprite": "orre_justy.png",
+                  "team": [
+                    27,
+                    331,
+                    207,
+                    192,
+                    184,
+                    299
+                  ],
+                  "levels": [
+                    41,
+                    41,
+                    41,
+                    40,
+                    40,
+                    42
+                  ],
+                  "team_moves": [
+                    [
+                      "DIG",
+                      "SWIFT",
+                      "SANDSTORM",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "NEEDLE-ARM",
+                      "FEINT-ATTACK",
+                      "SANDSTORM",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "DIG",
+                      "AERIAL-ACE",
+                      "SANDSTORM",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "MEGA-DRAIN",
+                      "INGRAIN",
+                      "HELPING-HAND",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "SURF",
+                      "RETURN",
+                      "LIGHT-SCREEN",
+                      "DOUBLE-TEAM"
+                    ],
+                    [
+                      "ROCK-SLIDE",
+                      "MAGNITUDE",
+                      "THUNDER-WAVE",
+                      "DOUBLE-TEAM"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0
+                  },
+                  "dialogue": {
+                    "player_won": [
+                      "Justy: You're ready for anything Orre throws at you."
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:has_under_badge",
+                  "not:xd_bonsly_found"
+                ],
+                "lines": [
+                  "Justy: I'm Justy, the Pre Gym's leader. Come back with the Under Badge, and I'll battle you myself."
+                ]
+              }
+            ],
+            "done": [
+              "Justy: The Pre Gym's doors are always open."
+            ]
+          },
+          "condition": {
+            "any": [
+              "not:xd_bonsly_found",
+              "orre_snattle_phenac"
+            ]
+          }
+        },
+        {
+          "text": "CIPHER PEON FOSTIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Fostin: You got past the boys upstairs? Fine. Beat me if you can!"
+            ],
+            "flag": "xd_fostin",
+            "battle": {
+              "name": "Cipher Peon Fostin",
+              "class": "CIPHER_PEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                64,
+                215,
+                200,
+                9311
+              ],
+              "levels": [
+                50,
+                50,
+                50,
+                53
+              ],
+              "team_moves": [
+                [
+                  "PSYBEAM",
+                  "THUNDER-PUNCH",
+                  "DOUBLE-TEAM",
+                  "ICE-PUNCH"
+                ],
+                [
+                  "FEINT-ATTACK",
+                  "AERIAL-ACE",
+                  "DOUBLE-TEAM",
+                  "FAKE-OUT"
+                ],
+                [
+                  "PSYBEAM",
+                  "SHOCK-WAVE",
+                  "ASTONISH",
+                  "THIEF"
+                ],
+                [
+                  "SLASH",
+                  "SING",
+                  "PAY-DAY",
+                  "BITE"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/cipher_battle",
+              "dialogue": {
+                "player_won": [
+                  "Fostin: Ugh... All right! The townsfolk we replaced are locked in the basement.",
+                  "Fostin: But the lift needs an Elevator Key, and Snattle has it. Good luck getting it from him!"
+                ]
+              }
+            }
+          },
+          "condition": [
+            "xd_bonsly_found",
+            "not:orre_snattle_phenac"
+          ],
+          "flag_condition": "not xd_fostin"
+        },
+        {
+          "text": "PHENAC'S TOWNSFOLK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:xd_pregym_freed"
+                ],
+                "flag": "xd_pregym_freed",
+                "lines": [
+                  "The townsfolk Cipher locked up pour out of the basement, blinking at the light.",
+                  "Justy: Thank you! They kept us down here while their peons wore our faces.",
+                  "Justy: The mayor? Es Cade wasn't with us... but he's been seen back in his office, not a scratch on him. Odd, isn't it?",
+                  "Justy: Take my P*DA number. And keep an eye on the desert - I heard shady types heading out that way."
+                ]
+              }
+            ],
+            "done": [
+              "Phenac's people are back in their homes. The Pre Gym's open again."
+            ]
+          },
+          "condition": "orre_snattle_phenac"
+        },
+        {
+          "text": "BATTLE CD 35",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_35",
+          "event": {
+            "lines": [
+              "Half-buried in the training floor's sand: Battle CD 35!"
+            ],
+            "flag": "got_battle_cd_35",
+            "gift_item": {
+              "BATTLE_CD_35": 1
+            }
+          },
+          "condition": "orre_snattle_phenac"
         },
         {
           "text": "Phenac City",
@@ -13804,115 +14554,468 @@
       "min_rounds": 0,
       "trainer_pool": [
         {
-          "name": "Cipher Peon Nore",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            267,
-            205,
-            291,
-            284
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Kloak",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            166,
-            313,
-            314,
-            367,
-            171,
-            350
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Baila",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            315,
-            45,
-            189
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Arton",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            225,
-            221,
-            362
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Dioge",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            214,
-            284,
-            205
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Team Snagem Niver",
+          "name": "Team Snagem Agrev",
           "class": "TEAM_SNAGEM",
           "sprite": "orre_snagem_grunt.png",
           "team": [
-            335,
-            253,
-            288,
-            111
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Team Snagem Fuston",
-          "class": "TEAM_SNAGEM",
-          "sprite": "orre_snagem_grunt.png",
-          "team": [
+            198,
+            43,
             42,
-            267,
-            225,
-            277
+            359
           ],
+          "levels": [
+            50,
+            50,
+            50,
+            51
+          ],
+          "team_moves": [
+            [
+              "HAZE",
+              "PECK",
+              "TAUNT",
+              "PURSUIT"
+            ],
+            [
+              "ACID",
+              "SWEET-SCENT",
+              "ABSORB",
+              "CUT"
+            ],
+            [
+              "LEECH-LIFE",
+              "BITE",
+              "TAUNT",
+              "SCREECH"
+            ],
+            [
+              "SCRATCH",
+              "BITE",
+              "RAZOR-WIND",
+              "TAUNT"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
-          "name": "Cipher Peon Verde",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
+          "name": "Team Snagem Jedo",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
           "team": [
-            153,
-            89,
-            326,
-            319
+            109,
+            43,
+            269,
+            211
           ],
+          "levels": [
+            50,
+            50,
+            50,
+            49
+          ],
+          "team_moves": [
+            [
+              "SMOKESCREEN",
+              "SLUDGE",
+              "TAUNT",
+              "THIEF"
+            ],
+            [
+              "CUT",
+              "SWEET-SCENT",
+              "ABSORB",
+              "ACID"
+            ],
+            [
+              "CONFUSION",
+              "LIGHT-SCREEN",
+              "THIEF",
+              "GUST"
+            ],
+            [
+              "WATER-GUN",
+              "SHOCK-WAVE",
+              "MINIMIZE",
+              "POISON-STING"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Snagem Golit",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+            223,
+            224,
+            28,
+            294,
+            342
+          ],
+          "levels": [
+            49,
+            50,
+            51,
+            50,
+            56
+          ],
+          "team_moves": [
+            [
+              "WATER-GUN",
+              "AURORA-BEAM",
+              "SWAGGER",
+              "LOCK-ON"
+            ],
+            [
+              "WATER-GUN",
+              "CONSTRICT",
+              "PSYBEAM",
+              "OCTAZOOKA"
+            ],
+            [
+              "SLASH",
+              "POISON-STING",
+              "SAND-ATTACK",
+              "SAFEGUARD"
+            ],
+            [
+              "SUPERSONIC",
+              "HOWL",
+              "TORMENT",
+              "UPROAR"
+            ],
+            [
+              "TAUNT",
+              "VICE-GRIP",
+              "ROCK-TOMB",
+              "HARDEN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Snagem Hobble",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+            203,
+            235,
+            279,
+            67
+          ],
+          "levels": [
+            50,
+            51,
+            49,
+            52
+          ],
+          "team_moves": [
+            [
+              "ODOR-SLEUTH",
+              "STOMP",
+              "CONFUSION",
+              "LIGHT-SCREEN"
+            ],
+            [
+              "COUNTER",
+              "TORMENT",
+              "MIRROR-COAT",
+              "TAUNT"
+            ],
+            [
+              "MIST",
+              "WATER-PULSE",
+              "WING-ATTACK",
+              "GROWL"
+            ],
+            [
+              "REVENGE",
+              "FORESIGHT",
+              "SEISMIC-TOSS",
+              "LEER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Snagem Fudlo",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+            75,
+            111,
+            234,
+            200,
+            357
+          ],
+          "levels": [
+            49,
+            50,
+            52,
+            52,
+            51
+          ],
+          "team_moves": [
+            [
+              "MUD-SPORT",
+              "ROCK-THROW",
+              "DEFENSE-CURL",
+              "DIG"
+            ],
+            [
+              "SCARY-FACE",
+              "FURY-ATTACK",
+              "STOMP",
+              "TAIL-WHIP"
+            ],
+            [
+              "STOMP",
+              "REFLECT",
+              "ASTONISH",
+              "LEER"
+            ],
+            [
+              "MEAN-LOOK",
+              "PSYWAVE",
+              "TORMENT",
+              "AERIAL-ACE"
+            ],
+            [
+              "WHIRLWIND",
+              "SWEET-SCENT",
+              "STOMP",
+              "RAZOR-LEAF"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Snagem Gaply",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+            168,
+            267,
+            215,
+            225,
+            178
+          ],
+          "levels": [
+            50,
+            52,
+            52,
+            52,
+            51
+          ],
+          "team_moves": [
+            [
+              "DIG",
+              "NIGHT-SHADE",
+              "LEECH-LIFE",
+              "SCARY-FACE"
+            ],
+            [
+              "WHIRLWIND",
+              "MEGA-DRAIN",
+              "MORNING-SUN",
+              "GUST"
+            ],
+            [
+              "FEINT-ATTACK",
+              "SCREECH",
+              "REFLECT",
+              "TAUNT"
+            ],
+            [
+              "PRESENT",
+              "ICY-WIND",
+              "THIEF",
+              "SWAGGER"
+            ],
+            [
+              "PECK",
+              "NIGHT-SHADE",
+              "LEER",
+              "REFLECT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Snagem Biden",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+            43,
+            169,
+            324,
+            182
+          ],
+          "levels": [
+            51,
+            50,
+            50,
+            50
+          ],
+          "team_moves": [
+            [
+              "CUT",
+              "SWEET-SCENT",
+              "ACID",
+              "ABSORB"
+            ],
+            [
+              "SCREECH",
+              "BITE",
+              "ASTONISH",
+              "TAUNT"
+            ],
+            [
+              "EMBER",
+              "FIRE-SPIN",
+              "SMOKESCREEN",
+              "ROCK-SLIDE"
+            ],
+            [
+              "MAGICAL-LEAF",
+              "SWEET-SCENT",
+              "CUT",
+              "GIGA-DRAIN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Snagem Jinok",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+            352,
+            190,
+            313,
+            193
+          ],
+          "levels": [
+            49,
+            50,
+            49,
+            49
+          ],
+          "team_moves": [
+            [
+              "FEINT-ATTACK",
+              "PSYBEAM",
+              "FURY-SWIPES",
+              "SCREECH"
+            ],
+            [
+              "TICKLE",
+              "TAIL-WHIP",
+              "ASTONISH",
+              "SCRATCH"
+            ],
+            [
+              "SIGNAL-BEAM",
+              "TAIL-GLOW",
+              "WATER-PULSE",
+              "THIEF"
+            ],
+            [
+              "AERIAL-ACE",
+              "SONIC-BOOM",
+              "DETECT",
+              "GIGA-DRAIN"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Snagem Wakin",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+            44,
+            44,
+            226,
+            205,
+            326
+          ],
+          "levels": [
+            52,
+            52,
+            52,
+            55,
+            56
+          ],
+          "team_moves": [
+            [
+              "GIGA-DRAIN",
+              "ACID",
+              "SWEET-SCENT",
+              "CUT"
+            ],
+            [
+              "ACID",
+              "SLEEP-POWDER",
+              "CUT",
+              "RAZOR-LEAF"
+            ],
+            [
+              "AERIAL-ACE",
+              "BUBBLE-BEAM",
+              "SUPERSONIC",
+              "TAKE-DOWN"
+            ],
+            [
+              "SPIKES",
+              "BODY-SLAM",
+              "PIN-MISSILE",
+              "DIG"
+            ],
+            [
+              "TAUNT",
+              "SHOCK-WAVE",
+              "LIGHT-SCREEN",
+              "PSYBEAM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         }
       ],
       "shadow_pool": [
@@ -13961,7 +15064,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "beat_orre_champion"
           ]
         },
         {
@@ -13972,7 +15076,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "beat_orre_champion"
           ]
         },
         {
@@ -13988,42 +15093,215 @@
           "flag_condition": "not beat_gonzap",
           "event": {
             "lines": [
-              "Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"
+              "Gonzap is waiting in his office."
             ],
             "flag": "beat_gonzap",
             "battle": {
               "name": "Snagem Head Gonzap",
-              "class": "SNAGEM",
+              "class": "SNAGEM_HEAD",
               "sprite": "orre_snagem_gonzap.png",
-              "is_boss_battle": true,
               "team": [
-                227,
-                342,
-                348,
-                68,
-                286,
-                210
+                101,
+                274,
+                45,
+                340,
+                227
               ],
               "levels": [
-                40,
-                40,
-                41,
-                41,
-                42,
-                42
+                54,
+                56,
+                54,
+                55,
+                56
               ],
+              "team_moves": [
+                [
+                  "SONIC-BOOM",
+                  "SPARK",
+                  "FACADE",
+                  "THIEF"
+                ],
+                [
+                  "FAKE-OUT",
+                  "FEINT-ATTACK",
+                  "AERIAL-ACE",
+                  "HYPER-BEAM"
+                ],
+                [
+                  "SLEEP-POWDER",
+                  "GIGA-DRAIN",
+                  "SWEET-SCENT",
+                  "HYPER-BEAM"
+                ],
+                [
+                  "WATER-PULSE",
+                  "ROCK-TOMB",
+                  "SPARK",
+                  "HYPER-BEAM"
+                ],
+                [
+                  "STEEL-WING",
+                  "SWIFT",
+                  "AERIAL-ACE",
+                  "HYPER-BEAM"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 12
+                "balls": 0,
+                "GONZAPS_KEY": 1
               },
+              "music": "orre/cipher_battle",
+              "is_boss_battle": true,
               "dialogue": {
                 "intro": [
-                  "Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"
+                  "Gonzap: Well, well. The kid who walked off with my Snag Machine.",
+                  "Gonzap: Snagem's back in business. Let's settle up!"
                 ],
                 "player_won": [
-                  "Gonzap: Ha! Fine, keep it. You've earned it."
+                  "Gonzap: Heh... You've grown, kid. Here - the key to the box downstairs. Consider us square."
                 ]
               }
             }
+          }
+        },
+        {
+          "text": "ULTRA BALLS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snagem_ultra",
+          "event": {
+            "lines": [
+              "3 Ultra Balls."
+            ],
+            "flag": "xd_snagem_ultra",
+            "gift_item": {
+              "ULTRA_BALL": 3
+            }
+          }
+        },
+        {
+          "text": "HYPER POTIONS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snagem_hyper",
+          "event": {
+            "lines": [
+              "2 Hyper Potions behind a broken vending machine."
+            ],
+            "flag": "xd_snagem_hyper",
+            "gift_item": {
+              "HYPER_POTION": 2
+            }
+          }
+        },
+        {
+          "text": "REVIVES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snagem_revives",
+          "event": {
+            "lines": [
+              "2 Revives."
+            ],
+            "flag": "xd_snagem_revives",
+            "gift_item": {
+              "REVIVE": 2
+            }
+          }
+        },
+        {
+          "text": "RARE CANDY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snagem_candy",
+          "event": {
+            "lines": [
+              "A Rare Candy."
+            ],
+            "flag": "xd_snagem_candy",
+            "gift_item": {
+              "RARE_CANDY": 1
+            }
+          }
+        },
+        {
+          "text": "PP UP",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snagem_pp_up",
+          "event": {
+            "lines": [
+              "A PP Up in the old jail cell."
+            ],
+            "flag": "xd_snagem_pp_up",
+            "gift_item": {
+              "PP_UP": 1
+            }
+          }
+        },
+        {
+          "text": "TM PSYCHIC",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snagem_tm_psychic",
+          "event": {
+            "lines": [
+              "Behind the stairs: TM120, Psychic!"
+            ],
+            "flag": "xd_snagem_tm_psychic",
+            "gift_item": {
+              "TM120": 1
+            }
+          }
+        },
+        {
+          "text": "FULL HEALS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snagem_full_heals",
+          "event": {
+            "lines": [
+              "2 Full Heals in the corner of Gonzap's office."
+            ],
+            "flag": "xd_snagem_full_heals",
+            "gift_item": {
+              "FULL_HEAL": 2
+            }
+          }
+        },
+        {
+          "text": "LOCKED BOX",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "has_item:GONZAPS_KEY",
+                  "not:xd_snagem_box"
+                ],
+                "flag": "xd_snagem_box",
+                "gift_item": {
+                  "TM114": 1
+                },
+                "lines": [
+                  "Gonzap's Key opens the box. Inside: TM114, Shadow Ball!"
+                ]
+              },
+              {
+                "requires": [
+                  "not:has_item:GONZAPS_KEY",
+                  "not:xd_snagem_box"
+                ],
+                "lines": [
+                  "A box with a heavy lock. Someone here must have the key."
+                ]
+              }
+            ],
+            "done": [
+              "The box is empty."
+            ]
           }
         },
         {
@@ -15629,9 +16907,11 @@
     {"id": "orre_m11c", "type": "MAIN", "title": "Duking's Poke Spots", "description": "Duking has found Poke Spots, where wild Pokemon appear. Meet him at the Rock Poke Spot off the Desert Trail, then the Oasis and the Cave.", "condition": {"required_region": "ORRE", "flag": "xd_nett_rom", "flag_not": ["xd_miror_cave", "xd_exol_beaten"]}, "region": "ORRE", "completed_flag": "xd_miror_cave", "target": "ORRE_POKE_SPOTS"},
     {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Cipher took over Orre's TV station in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_miror_cave", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
     {"id": "orre_m12b", "type": "MAIN", "title": "The S.S. Libra", "description": "Cipher took the S.S. Libra, and a little girl's Bonsly was aboard. The ship lies in the deep sand: Gateon's Parts Shop may know how to cross it.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": ["xd_bonsly_found", "orre_snattle_phenac"]}, "region": "ORRE", "completed_flag": "xd_bonsly_found", "target": "SS_LIBRA"},
-    {"id": "orre_m13", "type": "MAIN", "title": "Snattle at Phenac Stadium", "description": "Phenac's old mayor, Snattle, is really a Cipher Admin! He's waiting at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": ["xd_exol_beaten", "xd_bonsly_found"], "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
-    {"id": "orre_m14", "type": "MAIN", "title": "Phenac Stadium", "description": "Now win Phenac Stadium's tournament for the third badge!", "condition": {"required_region": "ORRE", "flag": "orre_snattle_phenac", "region_badges_min": 2, "region_badges_less": 3}, "region": "ORRE", "completed_badge": "PHENAC", "target": "PHENAC_CITY", "reward": "Phenac Badge"},
-    {"id": "orre_m15", "type": "MAIN", "title": "Snagem Hideout", "description": "Team Snagem's hideout is out in the desert. Their boss, Gonzap, has Shadow Pokémon too. Take him on!", "condition": {"required_region": "ORRE", "region_badges_min": 3, "flag_not": "beat_gonzap"}, "region": "ORRE", "completed_flag": "beat_gonzap", "target": "SNAGEM_HIDEOUT"},
+    {"id": "orre_m13", "type": "MAIN", "title": "Cipher's Phenac", "description": "Cipher is wearing Phenac's faces. Get the mayor's secretary some music, unmask the fake Justys, clear the Pre Gym, then face Cipher Admin Snattle at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": ["xd_exol_beaten", "xd_bonsly_found"], "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
+    {"id": "orre_m13b", "type": "MAIN", "title": "Free Phenac's People", "description": "Snattle dropped the Pre Gym's Elevator Key. Free the townsfolk Cipher locked in its basement.", "condition": {"required_region": "ORRE", "flag": "orre_snattle_phenac", "flag_not": ["xd_pregym_freed", "beat_gonzap"]}, "region": "ORRE", "completed_flag": "xd_pregym_freed", "target": "PRESTIGE_PRECEPT_CENTER"},
+    {"id": "orre_m14", "type": "MAIN", "title": "Phenac Stadium", "description": "Now win Phenac Stadium's tournament for the third badge!", "condition": {"required_region": "ORRE", "flag": "xd_pregym_freed", "region_badges_min": 2, "region_badges_less": 3}, "region": "ORRE", "completed_badge": "PHENAC", "target": "PHENAC_CITY", "reward": "Phenac Badge"},
+    {"id": "orre_m14b", "type": "MAIN", "title": "A Runaway at the Outskirt Stand", "description": "Someone who fled Cipher is waiting at the Outskirt Stand. Miror B. may be about, too.", "condition": {"required_region": "ORRE", "region_badges_min": 3, "flag_not": ["xd_hordel", "beat_gonzap"]}, "region": "ORRE", "completed_flag": "xd_hordel", "target": "OUTSKIRT_STAND"},
+    {"id": "orre_m15", "type": "MAIN", "title": "Snagem Hideout", "description": "Team Snagem's hideout is out in the desert. Their boss, Gonzap, has Shadow Pokémon too. Take him on!", "condition": {"required_region": "ORRE", "flag": "xd_hordel", "region_badges_min": 3, "flag_not": "beat_gonzap"}, "region": "ORRE", "completed_flag": "beat_gonzap", "target": "SNAGEM_HIDEOUT"},
     {"id": "orre_m16", "type": "MAIN", "title": "Orre Colosseum", "description": "The biggest tournament in Orre! Win it for the last badge.", "condition": {"required_region": "ORRE", "flag": "beat_gonzap", "region_badges_min": 3, "region_badges_less": 4}, "region": "ORRE", "completed_badge": "ORRE", "target": "ORRE_COLOSSEUM", "reward": "Orre Badge"},
     {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher's last base is under Gateon Port. Beat Cipher Admin Gorigan to learn where their leader is.", "condition": {"required_region": "ORRE", "region_badges_min": 4, "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is Evice, the man who built Realgam Tower. Beat his admins and then Evice himself to save Orre!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": "beat_orre_champion"}, "region": "ORRE", "completed_flag": "beat_orre_champion", "target": "REALGAM_TOWER", "reward": "Orre Champion"},

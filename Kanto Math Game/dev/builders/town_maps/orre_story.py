@@ -661,6 +661,126 @@ def _xd5b(maps):
         fl[0]["scenes"] = list(fl[0].get("scenes") or []) + [CAVE_SCENE]
 
 
+# ================================================================== batch 6: Phenac in Cipher's hands; the Outskirt Stand (BATCH_6.md)
+# XD part 4 with Wes, after the S.S. Libra: Cipher's peons wear the townsfolk's faces. The gate lady's Battle CDs; the Music Disc
+# for the mayor's secretary (a peon) and Es Cade's note to Justy (Jordan 11-21: Es Cade "missing", no Trest); the six Justy
+# impersonators (the Hexagon Brothers) with their CDs; Ertlig on the way to the stadium; the stadium's ambush and Snattle's
+# lackey. XD part 5: Miror B., Hordel's Shadow Togepi and Willie at the Outskirt Stand. XD's teams +28 (Snattle's ace 56).
+TAKEOVER = ["xd_bonsly_found", "not:orre_snattle_phenac"]
+MUSIC_MAN = {"text": "Music lover", "action": "EVENT", "event": {"stages": [
+    {"requires": ["xd_bonsly_found", "not:xd_music_disc"], "flag": "xd_music_disc", "gift_item": {"MUSIC_DISC": 1},
+     "lines": ["Music lover: The mayor's secretary wants music? Here, take this Music Disc. Phenac's been so quiet lately."]}],
+    "done": ["Music lover: Music makes everything better. Even whatever's going on in this town."]}}
+SECRETARY = {"text": "Mayor's secretary", "action": "EVENT", "condition": TAKEOVER, "flag_condition": "not xd_secretary",
+             "event": {"stages": [
+                 {"requires": ["not:has_item:MUSIC_DISC"], "lines": ["Secretary: The mayor is busy. Very busy. Upstairs is off limits.",
+                                                                     "Secretary: It's so dull in here... If only I had some music."]},
+                 {"requires": ["has_item:MUSIC_DISC"], "flag": "xd_secretary", "take_item": {"MUSIC_DISC": 1},
+                  "lines": ["Secretary: A Music Disc? How lovely! ...La la la...",
+                            "While she dances, you slip upstairs. The mayor's office is empty. A note lies on the desk:",
+                            "'Justy - Cipher means to take Phenac. They'll wear our faces. I must-' The note stops there. Es Cade is nowhere to be seen.",
+                            "Secretary: Snooping, are we? Then you've seen too much!"],
+                  "battle": T("xd:Story:91", dialogue={"player_won": ["Cipher Peon Pellim: My disguise... Fenton, get the kid!"]})}]}}
+FENTON = _fight("Cipher Peon Fenton", "xd:Story:92", "xd_fenton", "Cipher Peon Fenton: Nobody leaves the mayor's house!",
+                "Cipher Peon Fenton: Ugh. The Justys will get you!", condition=["xd_secretary", "not:orre_snattle_phenac"])
+GATE_LADY = {"text": "Gate lady", "action": "EVENT", "condition": "xd_bonsly_found", "event": {"stages": [
+    {"requires": ["not:xd_gate_cds"], "flag": "xd_gate_cds", "gift_item": {"BATTLE_CD_01": 1, "BATTLE_CD_07": 1, "BATTLE_CD_20": 1},
+     "lines": ["Gate lady: Welcome to Phenac! Everything is perfectly normal here. Have some Battle CDs. Go to Realgam Tower and play them!",
+               "You got Battle CDs 01, 07 and 20!"]}],
+    "done": ["Gate lady: Everything's perfectly normal. Perfectly."]}}
+IMPOSTORS = [("Resix", "xd:Story:118", "19"), ("Blusix", "xd:Story:119", "08"), ("Browsix", "xd:Story:120", "16"),
+             ("Yellosix", "xd:Story:121", "28"), ("Purpsix", "xd:Story:122", None), ("Greesix", "xd:Story:123", None)]
+
+
+def _impostor(name, key, cd):
+    won = [f"'Justy': Our perfect disguise! ...I'm {name}, of the Hexagon Brothers. Curses!"]
+    if cd:
+        won.append(f"He dropped Battle CD {cd}!")
+    rewards = {"balls": 0}
+    if cd:
+        rewards[f"BATTLE_CD_{cd}"] = 1
+    return {"text": f"'Justy' ({name})", "action": "EVENT", "condition": ["xd_fenton", "not:orre_snattle_phenac"],
+            "flag_condition": f"not xd_impostor_{name.lower()}",
+            "event": {"flag": f"xd_impostor_{name.lower()}", "lines": ["Justy: I'm Justy of the Pre Gym! ...Probably. Battle me!"],
+                      "battle": T(key, rewards=rewards, dialogue={"player_won": won})}}
+
+
+ERTLIG = _fight("Cipher Peon Ertlig", "xd:Story:96", "xd_ertlig", "Cipher Peon Ertlig: The stadium's closed. Snattle's orders!",
+                "Cipher Peon Ertlig: Fine, go. You'll regret it.", condition=["xd_fostin", "not:orre_snattle_phenac"])
+STADIUM = [("Cipher Peon Exinn", "xd:Story:88", "xd_st_exinn", "Cipher Peon Exinn: Ambush! Get the kid!"),
+           ("Cipher Peon Gonrag", "xd:Story:89", "xd_st_gonrag", "Cipher Peon Gonrag: Two on one - sort of!"),
+           ("Cipher Peon Ezin", "xd:Story:101", "xd_st_ezin", "Cipher Peon Ezin: The stadium belongs to Snattle now!"),
+           ("Cipher Peon Faltly", "xd:Story:102", "xd_st_faltly", "Cipher Peon Faltly: You won't reach the boss!"),
+           ("Cipher Peon Egrog", "xd:Story:103", "xd_st_egrog", "Cipher Peon Egrog: Snattle sent me to deal with you. Personally!")]
+PHENAC_XD_FOLK = [("Fun Old Man Eroll", "xd:Story:105", "Eroll: Phenac's back to normal! Let's celebrate with a battle!"),
+                  ("Cooltrainer Equin", "xd:Story:106", "Equin: The Pre Gym's open again, and I'm in top form!"),
+                  ("Cooltrainer Quelor", "xd:Story:129", "Quelor: Fancy a match by the water?"),
+                  ("Cooltrainer Teslor", "xd:Story:130", "Teslor: Phenac's trainers are the best in Orre. Prove me wrong!"),
+                  ("Supertrainer Nopel", "xd:Story:131", "Nopel: Super by name, super by nature!"),
+                  ("Matron Kalus", "xd:Story:132", "Kalus: My Plusle and Minun want to play!")]
+CD_15 = {"text": "Runner's Castform", "action": "EVENT", "condition": "orre_snattle_phenac", "flag_condition": "not got_battle_cd_15",
+         "event": {"flag": "got_battle_cd_15", "gift_item": {"BATTLE_CD_15": 1},
+                   "lines": ["The runner's Castform has something stuck to it... Battle CD 15! 'Take it,' he puffs, 'I don't play.'"]}}
+
+HORDEL = {"text": "Researcher Hordel", "action": "EVENT", "condition": "xd_pregym_freed", "event": {"stages": [
+    {"requires": ["not:xd_hordel"], "flag": "xd_hordel",
+     "gift_shadow": {"id": 9357, "level": 55},
+     "lines": ["Hordel: You're Wes? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
+               "Hordel: A Togepi from their factory. Its heart is shut. Please - open it.",
+               "Hordel: And one more thing: Team Snagem is back in their old hideout, out in the desert. I'll mark it on your map."]}],
+    "done": ["Hordel: Take good care of that Togepi."]}}
+MIROR_OUTSKIRT = {"text": "Wanderer Miror B.", "action": "EVENT", "condition": "xd_pregym_freed", "flag_condition": "not xd_miror_outskirt",
+                  "event": {"flag": "xd_miror_outskirt", "lines": ["Folly: Miror B.! It's that kid again!",
+                                                                    "Miror B.: The snagger! Let's see if you can keep up with THIS rhythm!"],
+                            "battle": T("xd:Story:134", music="orre/miror_b_battle", dialogue={
+                                "player_won": ["Miror B.: My Nosepass... You snagged it?! Folly, Trudly - we dance away!"]})}}
+WILLIE_AGAIN = _fight("Rider Willie (again)", "xd:Story:135", "xd_willie_again",
+                      "Willie: You again! I've been training. Four Pokemon this time!", "Willie: Wild... You're the real deal.",
+                      condition="xd_hordel")
+
+
+def _xd6(maps):
+    if "PHENAC_CITY" in maps:
+        m = maps["PHENAC_CITY"]
+        _set_people(m, {_free_spot(m, (42, 31)): GATE_LADY, _free_spot(m, (27, 40)): ERTLIG,
+                        _free_spot(m, (24, 54)): CD_15})
+        for i, (name, key, cd) in enumerate(IMPOSTORS):
+            _set_people(m, {_free_spot(m, (14 + 5 * i, 46)): _impostor(name, key, cd)})
+        for i, (text, key, intro) in enumerate(PHENAC_XD_FOLK):
+            _set_people(m, {_free_spot(m, (12 + 5 * i, 58)): _fight(text, key, f"xd_ph_{key.split(':')[-1]}", intro,
+                                                                    f"{text.split()[-1]}: Well battled!", condition="orre_snattle_phenac")})
+        rooms = m["rooms"]
+        _set_people(rooms["house_ne"], {_free_spot(rooms["house_ne"]): MUSIC_MAN})
+        _set_people(rooms["house_ne"], {_free_spot(rooms["house_ne"], (2, 3)): {
+            "text": "Battle CD 10", "action": "EVENT", "flag_condition": "not got_battle_cd_10",
+            "event": {"flag": "got_battle_cd_10", "gift_item": {"BATTLE_CD_10": 1}, "lines": ["On the bookshelf: Battle CD 10!"]}}})
+        _set_people(rooms["mayor"], {_free_spot(rooms["mayor"]): SECRETARY})
+        _set_people(rooms["mayor"], {_free_spot(rooms["mayor"], (2, 3)): FENTON})
+        for n, where in (("12", "On the mayor's bookshelf:"), ("27", "Under the mayor's desk:"), ("32", "In the mayor's cabinet:")):
+            r = rooms["mayor_2f"]
+            _set_people(r, {_free_spot(r, (3 + int(n) % 7, 4)): {
+                "text": f"Battle CD {n}", "action": "EVENT", "condition": "xd_secretary", "flag_condition": f"not got_battle_cd_{n}",
+                "event": {"flag": f"got_battle_cd_{n}", "gift_item": {f"BATTLE_CD_{n}": 1}, "lines": [f"{where} Battle CD {n}!"]}}})
+        gym = rooms["gym"]
+        for i, (text, key, flag, intro) in enumerate(STADIUM):
+            _set_people(gym, {_free_spot(gym, (6 + 3 * i, 12)): _fight(text, key, flag, intro, f"{text.split()[-1]}: Ugh...",
+                                                                       condition=["xd_ertlig", "not:orre_snattle_phenac"])})
+        _set_people(gym, {_free_spot(gym, (14, 6)): {
+            "text": "Battle CD 44", "action": "EVENT", "condition": "orre_snattle_phenac", "flag_condition": "not got_battle_cd_44",
+            "event": {"flag": "got_battle_cd_44", "gift_item": {"BATTLE_CD_44": 1}, "lines": ["On the empty stadium's floor: Battle CD 44!"]}}})
+    if "PRESTIGE_PRECEPT_CENTER" in maps:
+        fl = maps["PRESTIGE_PRECEPT_CENTER"]["floors"]
+        down = _link_to(fl[0], 1)
+        if down:
+            fl[0]["barred"] = list(fl[0].get("barred") or []) + [
+                {"tiles": [list(down)], "look": "unseen", "until": {"flag_condition": "orre_snattle_phenac"},   # (his key: a battle's also_flags aren't set)
+                 "lines": ["The lift to the basement is locked. It needs an Elevator Key."]}]
+    if "OUTSKIRT_STAND" in maps:
+        m = maps["OUTSKIRT_STAND"]
+        _set_people(m, {_free_spot(m, (30, 20)): MIROR_OUTSKIRT, _free_spot(m, (24, 20)): WILLIE_AGAIN})
+        _set_people(m["rooms"]["diner"], {_free_spot(m["rooms"]["diner"]): HORDEL})
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -673,6 +793,7 @@ def apply(maps):
     _xd5a(maps)
     _battle_cds(maps)
     _xd5b(maps)
+    _xd6(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

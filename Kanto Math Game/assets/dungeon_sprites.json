@@ -76,6 +76,147 @@
     ]
   },
   "figures": {
+    "PHENAC_CITY:Fun Old Man Eroll": {
+      "sheet": "orre_trainer_fun_old_man.png"
+    },
+    "PHENAC_CITY:Cooltrainer Equin": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PHENAC_CITY:Cooltrainer Quelor": {
+      "sheet": "orre_trainer_cooltrainer_f.png"
+    },
+    "PHENAC_CITY:Cooltrainer Teslor": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PHENAC_CITY:Supertrainer Nopel": {
+      "sheet": "orre_trainer_ace_trainer.png"
+    },
+    "PHENAC_CITY:Matron Kalus": {
+      "sheet": "orre_trainer_old_lady.png"
+    },
+    "PHENAC_CITY:Gate lady": {
+      "sheet": "orre_npc_04.png"
+    },
+    "PHENAC_CITY:Music lover": {
+      "sheet": "orre_npc_02.png"
+    },
+    "PHENAC_CITY:Mayor's secretary": {
+      "sheet": "orre_trainer_lady.png"
+    },
+    "PHENAC_CITY:Cipher Peon Fenton": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:Cipher Peon Ertlig": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:Runner's Castform": {
+      "item": "BATTLE_CD_15"
+    },
+    "OUTSKIRT_STAND:Researcher Hordel": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "OUTSKIRT_STAND:Wanderer Miror B.": {
+      "sheet": "orre_trainer_miror_b.png"
+    },
+    "OUTSKIRT_STAND:Rider Willie (again)": {
+      "sheet": "orre_trainer_rider_willie.png"
+    },
+    "PHENAC_CITY:Battle CD 10": {
+      "item": "BATTLE_CD_10"
+    },
+    "PHENAC_CITY:Battle CD 12": {
+      "item": "BATTLE_CD_12"
+    },
+    "PHENAC_CITY:Battle CD 27": {
+      "item": "BATTLE_CD_27"
+    },
+    "PHENAC_CITY:Battle CD 32": {
+      "item": "BATTLE_CD_32"
+    },
+    "PHENAC_CITY:Battle CD 44": {
+      "item": "BATTLE_CD_44"
+    },
+    "PHENAC_CITY:Cipher Peon Exinn": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:Cipher Peon Gonrag": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:Cipher Peon Ezin": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:Cipher Peon Faltly": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:Cipher Peon Egrog": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:'Justy' (Resix)": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PHENAC_CITY:'Justy' (Blusix)": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PHENAC_CITY:'Justy' (Browsix)": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PHENAC_CITY:'Justy' (Yellosix)": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PHENAC_CITY:'Justy' (Purpsix)": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PHENAC_CITY:'Justy' (Greesix)": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:COOLTRAINER BOTAN": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:COOLTRAINER LIQUI": {
+      "sheet": "orre_trainer_cooltrainer_f.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:RICH BOY DUGO": {
+      "sheet": "orre_trainer_rich_boy.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:LADY GWIN": {
+      "sheet": "orre_trainer_lady.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:PRE GYM LEADER JUSTY": {
+      "sheet": "orre_trainer_cooltrainer_m.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:CIPHER PEON FOSTIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:PHENAC'S TOWNSFOLK": {
+      "sheet": "orre_npc_04.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:BATTLE CD 35": {
+      "item": "BATTLE_CD_35"
+    },
+    "SNAGEM_HIDEOUT:ULTRA BALLS": {
+      "item": "ULTRA_BALL"
+    },
+    "SNAGEM_HIDEOUT:HYPER POTIONS": {
+      "item": "HYPER_POTION"
+    },
+    "SNAGEM_HIDEOUT:REVIVES": {
+      "item": "REVIVE"
+    },
+    "SNAGEM_HIDEOUT:RARE CANDY": {
+      "item": "RARE_CANDY"
+    },
+    "SNAGEM_HIDEOUT:PP UP": {
+      "item": "PP_UP"
+    },
+    "SNAGEM_HIDEOUT:TM PSYCHIC": {
+      "item": "TM120"
+    },
+    "SNAGEM_HIDEOUT:LOCKED BOX": {
+      "sheet": "orre_object_chest.png"
+    },
+    "SNAGEM_HIDEOUT:FULL HEALS": {
+      "item": "FULL_HEAL"
+    },
     "SS_LIBRA:FIRE STONE": {
       "item": "FIRE_STONE"
     },

@@ -936,6 +936,18 @@ def _run_story_event(state, key, check, show):
             show(_resolve_lines(game, got + list(ch.get("done") or ([] if got else ["All set!"]))))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ch.get("ask") or "WHICH ONE?", rows, picked)))
         return
+    if ev.get("gift_shadow"):   # (a Shadow Pokemon handed over, its heart shut like a snagged one's: Hordel's Togepi, XD)
+        from src.pokemon.data import Pokemon
+        from src.world import shadow as _sh
+        gs = ev["gift_shadow"]
+        mon = Pokemon(game.loader.fetch_specific(int(gs["id"])), game.assets, size_mult=2.5)
+        mon.level = int(gs.get("level") or mon.level)
+        mon.current_hp = mon.get_max_hp()
+        got = [ln.replace("Gotcha! ", "").replace("was snagged", "was handed over") for ln in _sh.receive_snagged(game, mon)]
+        if ev.get("flag"):
+            story.story_flags[ev["flag"]] = True
+        show(lines + got)
+        return
     if ev.get("miror_b"):   # (Orre: Miror B. with the Shadow Pokemon you missed - src/world/miror_radar.py)
         from src.world import miror_radar
         if miror_radar.where(game) != story.current_area_key:
