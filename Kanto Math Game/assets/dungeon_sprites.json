@@ -76,6 +76,81 @@
     ]
   },
   "figures": {
+    "CIPHER_COMMAND:OLD MAN": {
+      "sheet": "orre_trainer_fun_old_man.png"
+    },
+    "CIPHER_COMMAND:CIPHER ADMIN VENUS": {
+      "sheet": "orre_trainer_cipher_venus.png"
+    },
+    "CIPHER_COMMAND:CIPHER ADMIN EIN": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "CIPHER_COMMAND:CIPHER ADMIN MIROR B.": {
+      "sheet": "orre_trainer_miror_b.png"
+    },
+    "CIPHER_COMMAND:CIPHER ADMIN DAKIM": {
+      "sheet": "orre_trainer_blackbelt.png"
+    },
+    "CIPHER_COMMAND:HEALING MACHINE": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "CIPHER_COMMAND:LIFT (LEFT)": {
+      "sheet": "orre_door_lift.png"
+    },
+    "CIPHER_COMMAND:LIFT (MIDDLE)": {
+      "sheet": "orre_door_lift.png"
+    },
+    "CIPHER_COMMAND:LIFT (RIGHT)": {
+      "sheet": "orre_door_lift.png"
+    },
+    "CIPHER_COMMAND:LIFT TO THE ROOF": {
+      "sheet": "orre_door_lift.png"
+    },
+    "CIPHER_COMMAND:CIPHER PEON VERDE": {
+      "sheet": "orre_trainer_cipher_greesix.png"
+    },
+    "CIPHER_COMMAND:CIPHER PEON ROSSO": {
+      "sheet": "orre_trainer_cipher_redsix.png"
+    },
+    "CIPHER_COMMAND:CIPHER PEON BLUNO": {
+      "sheet": "orre_trainer_cipher_blusix.png"
+    },
+    "CIPHER_COMMAND:BLACK-SUITED MAN": {
+      "sheet": "orre_npc_15.png"
+    },
+    "CIPHER_COMMAND:Cipher Peon Arton": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "CIPHER_COMMAND:Cipher Peon Dioge": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "CIPHER_COMMAND:Cipher Peon Bopen": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "CIPHER_COMMAND:Chaser Trus": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
+    "CIPHER_COMMAND:Chaser Rugen": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
+    "CIPHER_COMMAND:Rider Kevel": {
+      "sheet": "orre_trainer_rider.png"
+    },
+    "CIPHER_COMMAND:Rider Elose": {
+      "sheet": "orre_trainer_rider.png"
+    },
+    "CIPHER_COMMAND:Bodybuilder Givern": {
+      "sheet": "orre_trainer_bodybuilder.png"
+    },
+    "REALGAM_TOWER:Hunter Aline": {
+      "sheet": "orre_trainer_pokemonranger_f.png"
+    },
+    "REALGAM_TOWER:St.Performer Luper": {
+      "sheet": "orre_trainer_street_performer.png"
+    },
+    "REALGAM_TOWER:Bandana Guy Klest": {
+      "sheet": "orre_trainer_chaser_m.png"
+    },
     "XD_CIPHER_KEY_LAIR:CRATE PANEL": {
       "sheet": "orre_door_lift.png"
     },

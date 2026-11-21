@@ -475,7 +475,10 @@ _steps = [(None, _mains[0]["id"])] + [(m.get("completed_flag") or m.get("complet
                                       _mains[i + 1]["id"] if i + 1 < len(_mains) else None) for i, m in enumerate(_mains)]
 _ok = True
 for _what, _want in _steps:
-    if _what and _what.isupper():
+    if isinstance(_what, list):   # (a step done once several flags are: Realgam's four keys, 11-21)
+        for _f in _what:
+            story.story_flags[_f] = True
+    elif _what and _what.isupper():
         story.badges["ORRE"].append(_what)
     elif _what:
         story.story_flags[_what] = True

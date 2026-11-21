@@ -83,14 +83,15 @@ g.change_state(c)
 said = []
 c.show_message = lambda lines, callback=None: said.append(lines)
 c.start_gym_battle()
-check(said and "four" in str(said[-1]), "Realgam sealed until all four tournaments")
+check(said and "lift" in str(said[-1]), "Realgam's rooftop sealed until the way up through the tower (batch 7b: Gonzap, then the roof lift)")
 story.badges["ORRE"].append("ORRE")
 story.story_flags["xd_gorigan_beaten"] = True
+story.story_flags["col_gonzap_realgam"] = True
 story.story_flags["gym_progress_REALGAM_TOWER"] = len(prog["REALGAM_TOWER"]["gym"]["trainers"])
 lobby = ow.GymLobbyState(g, None)
 g.change_state(lobby)
 lobby.challenge_gym()
-check([p for p, _ in lineup(battle_of(g.current_state))] == [306, 373, 68, 212, 289, 199], "Champion Evice")
+check([p for p, _ in lineup(battle_of(g.current_state))] == [9399, 373, 68, 212, 289, 199], "Champion Evice (Colosseum's team, his Shadow Tyranitar first: batch 7b)")
 check(prog["REALGAM_TOWER"]["gym"]["leader"]["victory_flag"] == "beat_orre_champion", "Evice's defeat makes you Orre's Champion")
 check("THE WISHING STAR" in menu("RELIC_FOREST") and "MEET JIRACHI" not in menu("RELIC_FOREST"), "no Jirachi yet")
 story.story_flags["beat_orre_champion"] = True

@@ -781,6 +781,29 @@ def _xd6(maps):
         _set_people(m["rooms"]["diner"], {_free_spot(m["rooms"]["diner"]): HORDEL})
 
 
+# ================================================================== batch 7b: Realgam Tower's lobby (BATCH_7B.md)
+# Colosseum part 8: the trainers in the tower's lobby (Aline, Luper, Klest, raised to fit); the door up to the rooftop arena
+# stays shut until Gonzap is beaten inside (the way up is the roof lift at the end of the Tower Halls).
+REALGAM_LOBBY = [("Hunter Aline", "col:418", "col_aline_realgam", "Hunter Aline: Realgam's lobby is my hunting ground!", "Hunter Aline: You got me."),
+                 ("St.Performer Luper", "col:419", "col_luper_realgam", "St.Performer Luper: Welcome to the greatest show in Orre!",
+                  "St.Performer Luper: The show's over..."),
+                 ("Bandana Guy Klest", "col:420", "col_klest_realgam", "Bandana Guy Klest: Nobody gets to the tower without going through me!",
+                  "Bandana Guy Klest: Okay, okay, go through.")]
+
+
+def _col7b(maps):
+    if "REALGAM_TOWER" not in maps:
+        return
+    room = maps["REALGAM_TOWER"]["rooms"]["realgam"]
+    for i, (text, key, flag, intro, won) in enumerate(REALGAM_LOBBY):
+        _set_people(room, {_free_spot(room, (4 + 6 * i, 6)): _fight(text, key, flag, intro, won)})
+    up = next(((x, y) for y, row in enumerate(room["art"]) for x, c in enumerate(row) if c == "^"), None)
+    if up:
+        room["barred"] = list(room.get("barred") or []) + [
+            {"tiles": [list(up)], "flag": "col_gonzap_realgam", "look": "unseen",
+             "lines": ["The door to the arena on the roof is locked. Cipher's people must be inside the tower."]}]
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -794,6 +817,7 @@ def apply(maps):
     _battle_cds(maps)
     _xd5b(maps)
     _xd6(maps)
+    _col7b(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

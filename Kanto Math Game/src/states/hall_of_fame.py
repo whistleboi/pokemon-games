@@ -237,12 +237,36 @@ class HallOfFameState(GameState):
                 self._big[key] = pygame.transform.scale(part, (max(1, int(part.get_width() * k)), int(h)))
         return self._big[key]
 
+    HALL_PICTURES = {"ORRE": os.path.join("assets", "tiles", "orre_ground", "161.png")}   # (the region's own hall, where it has one)
+
+    def _hall_picture(self, w, h):
+        if getattr(self, "_hall", None) is None:
+            self._hall = False
+            p = self.HALL_PICTURES.get(self.region)
+            if p and os.path.isfile(p):
+                try:
+                    img = pygame.image.load(p).convert()
+                    k = max(w / img.get_width(), h / img.get_height())
+                    img = pygame.transform.smoothscale(img, (int(img.get_width() * k) + 1, int(img.get_height() * k) + 1))
+                    out = pygame.Surface((w, h))
+                    out.blit(img, ((w - img.get_width()) // 2, (h - img.get_height()) // 2))
+                    dim = pygame.Surface((w, h), pygame.SRCALPHA)
+                    dim.fill((10, 12, 30, 150))
+                    out.blit(dim, (0, 0))
+                    self._hall = out
+                except pygame.error:
+                    self._hall = False
+        return self._hall or None
+
     def _backdrop(self, screen, t, light_x=None):
         w, h = screen.get_size()
         screen.fill((12, 14, 30))
         for i in range(0, h, 4):   # (the hall's dark gradient)
             c = 12 + int(26 * i / h)
             pygame.draw.rect(screen, (c, c + 2, c + 22), (0, i, w, 4))
+        hall = self._hall_picture(w, h)
+        if hall is not None:   # (Orre: Realgam Tower's rooftop Colosseum behind the team, dimmed - Jordan 11-20, Q5 "Realgam's look")
+            screen.blit(hall, (0, 0))
         lx = light_x if light_x is not None else w // 2
         glow = pygame.Surface((w, h), pygame.SRCALPHA)
         pygame.draw.polygon(glow, (255, 246, 210, 46), [(lx - 40, 0), (lx + 40, 0), (lx + 260, h), (lx - 260, h)])

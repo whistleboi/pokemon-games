@@ -17214,104 +17214,181 @@
       "gym": {
         "trainers": [
           {
-            "name": "Cipher Admin Miror B.",
-            "class": "ELITE_FOUR",
-            "sprite": "orre_trainer_miror_b.png",
-            "is_boss_battle": true,
+            "name": "Bodybuilder Jomas",
+            "class": "COLOSSEUM",
+            "sprite": "orre_bodybuilder.png",
             "team": [
-              348,
-              272,
-              272,
-              55,
-              294
+              9395,
+              335,
+              233
             ],
             "levels": [
-              53,
-              53,
-              54,
-              55,
-              55
+              64,
+              61,
+              61
             ],
+            "team_moves": [
+              [
+                "SHADOW-RUSH",
+                "MILK-DRINK",
+                "DEFENSE-CURL",
+                "ROLLOUT"
+              ],
+              [
+                "SLASH",
+                "DOUBLE-KICK",
+                "AERIAL-ACE",
+                "IRON-TAIL"
+              ],
+              [
+                "CONVERSION-2",
+                "TRI-ATTACK",
+                "PSYBEAM",
+                "ICE-BEAM"
+              ]
+            ],
+            "double": true,
             "rewards": {
-              "balls": 10
-            }
+              "balls": 5
+            },
+            "is_boss_battle": true
           },
           {
-            "name": "Cipher Admin Dakim",
-            "class": "ELITE_FOUR",
-            "sprite": "blackbelt.png",
-            "is_boss_battle": true,
+            "name": "Rider Delan",
+            "class": "COLOSSEUM",
+            "sprite": "orre_rider.png",
             "team": [
-              229,
-              330,
-              205,
-              340,
-              344
+              9427,
+              262,
+              319
             ],
             "levels": [
-              54,
-              54,
-              55,
-              56,
-              56
+              64,
+              62,
+              63
             ],
+            "team_moves": [
+              [
+                "SHADOW-RUSH",
+                "PERISH-SONG",
+                "SWORDS-DANCE",
+                "SLASH"
+              ],
+              [
+                "CRUNCH",
+                "TAKE-DOWN",
+                "IRON-TAIL",
+                "ROAR"
+              ],
+              [
+                "DIVE",
+                "CRUNCH",
+                "EARTHQUAKE",
+                "SLASH"
+              ]
+            ],
+            "double": true,
             "rewards": {
-              "balls": 10
-            }
+              "balls": 5
+            },
+            "is_boss_battle": true
           },
           {
-            "name": "Cipher Admin Venus",
-            "class": "ELITE_FOUR",
-            "sprite": "beauty.png",
-            "is_boss_battle": true,
+            "name": "Cipher Peon Nella",
+            "class": "COLOSSEUM",
+            "sprite": "orre_cipher_peon.png",
             "team": [
-              350,
-              182,
-              26,
-              40,
-              200
+              9391,
+              324,
+              219
             ],
             "levels": [
-              55,
-              55,
-              56,
-              57,
-              57
+              65,
+              64,
+              63
             ],
+            "team_moves": [
+              [
+                "SHADOW-RUSH",
+                "FEINT-ATTACK",
+                "HOWL",
+                "SMOG"
+              ],
+              [
+                "HEAT-WAVE",
+                "SLUDGE-BOMB",
+                "BODY-SLAM",
+                "IRON-TAIL"
+              ],
+              [
+                "HEAT-WAVE",
+                "ROCK-SLIDE",
+                "BODY-SLAM",
+                "ROCK-SMASH"
+              ]
+            ],
+            "double": true,
             "rewards": {
-              "balls": 10
-            }
+              "balls": 5
+            },
+            "music": "orre/cipher_battle",
+            "is_boss_battle": true
           },
           {
-            "name": "Cipher Admin Ein",
-            "class": "ELITE_FOUR",
-            "sprite": "scientist.png",
-            "is_boss_battle": true,
+            "name": "Cipher Peon Ston",
+            "class": "COLOSSEUM",
+            "sprite": "orre_cipher_peon.png",
             "team": [
-              310,
-              121,
-              112,
-              279,
-              169
+              9426,
+              45,
+              346,
+              332
             ],
             "levels": [
-              56,
-              56,
-              57,
-              58,
-              58
+              65,
+              64,
+              64,
+              65
             ],
+            "team_moves": [
+              [
+                "SHADOW-RUSH",
+                "SOLAR-BEAM",
+                "SYNTHESIS",
+                "MAGICAL-LEAF"
+              ],
+              [
+                "GIGA-DRAIN",
+                "SLUDGE-BOMB",
+                "CUT",
+                "PROTECT"
+              ],
+              [
+                "ANCIENT-POWER",
+                "GIGA-DRAIN",
+                "SLUDGE-BOMB",
+                "MIRROR-COAT"
+              ],
+              [
+                "NEEDLE-ARM",
+                "FEINT-ATTACK",
+                "STRENGTH",
+                "COUNTER"
+              ]
+            ],
+            "double": true,
             "rewards": {
-              "balls": 10
-            }
+              "balls": 5
+            },
+            "music": "orre/cipher_battle",
+            "is_boss_battle": true
           },
           {
             "name": "Cipher Nascour",
             "class": "ELITE_FOUR",
-            "sprite": "gentleman.png",
-            "is_boss_battle": true,
+            "sprite": "orre_chaser_m.png",
             "team": [
-              65,
+              9431,
               282,
               178,
               356,
@@ -17319,15 +17396,73 @@
               257
             ],
             "levels": [
-              57,
-              57,
-              58,
-              58,
-              59,
-              59
+              61,
+              66,
+              65,
+              66,
+              67,
+              65
             ],
+            "team_moves": [
+              [
+                "SHADOW-RUSH",
+                "HYPER-BEAM",
+                "IRON-DEFENSE",
+                "METAL-CLAW"
+              ],
+              [
+                "PSYCHIC",
+                "THUNDERBOLT",
+                "TAUNT",
+                "DESTINY-BOND"
+              ],
+              [
+                "PSYCHIC",
+                "DRILL-PECK",
+                "GIGA-DRAIN",
+                "CONFUSE-RAY"
+              ],
+              [
+                "SHADOW-BALL",
+                "PSYCHIC",
+                "CONFUSE-RAY",
+                "DESTINY-BOND"
+              ],
+              [
+                "ICE-BEAM",
+                "WATERFALL",
+                "BODY-SLAM",
+                "ATTRACT"
+              ],
+              [
+                "BLAZE-KICK",
+                "SKY-UPPERCUT",
+                "ROAR",
+                "SWAGGER"
+              ]
+            ],
+            "double": true,
             "rewards": {
               "balls": 10
+            },
+            "team_items": [
+              "METAL_COAT",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "music": "orre/cipher_battle",
+            "is_boss_battle": true,
+            "dialogue": {
+              "intro": [
+                "Nascour: So you are the one who has undone every plan of ours. I am Nascour, Cipher's director.",
+                "Nascour: Let us see whether your Pokemon can stand against my masterpiece."
+              ],
+              "player_won": [
+                "Nascour: Defeated... Forgive me, Master. I have failed you."
+              ]
             }
           }
         ],
@@ -17337,7 +17472,7 @@
           "sprite": "orre_leader_evice.png",
           "is_boss_battle": true,
           "team": [
-            306,
+            9399,
             373,
             68,
             212,
@@ -17345,12 +17480,12 @@
             199
           ],
           "levels": [
-            58,
-            58,
-            59,
-            59,
-            60,
-            60
+            62,
+            67,
+            68,
+            67,
+            67,
+            68
           ],
           "rewards": {
             "balls": 25,
@@ -17359,21 +17494,71 @@
           "victory_flag": "beat_orre_champion",
           "dialogue": {
             "intro": [
-              "Evice: So you're the meddler. Realgam Tower is mine, and so is Orre!"
+              "The floor of the arena splits open. Up rises... Phenac's mayor, Es Cade?!",
+              "Es Cade: Nascour, you fool. Must I do everything myself?",
+              "He tears away the kindly mayor's face. Beneath it: Evice, the head of Cipher!",
+              "Evice: I built Realgam Tower. I built Cipher. And I will have Orre. Come, then!"
             ],
             "player_won": [
-              "Evice: Impossible... Cipher is finished.",
-              "Rui: You did it! Every Shadow Pokemon can be saved now!"
+              "Evice: Impossible... My Cipher... my tower...",
+              "Rui: You did it! Cipher's finished - and every Shadow Pokemon can be saved now!"
             ],
             "player_lost": [
               "Evice: Cipher cannot be beaten! Leave my tower!"
             ]
-          }
+          },
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "CRUNCH",
+              "THUNDER",
+              "ROCK-SLIDE"
+            ],
+            [
+              "DRAGON-CLAW",
+              "AERIAL-ACE",
+              "DOUBLE-EDGE",
+              "DRAGON-DANCE"
+            ],
+            [
+              "CROSS-CHOP",
+              "EARTHQUAKE",
+              "ROCK-SLIDE",
+              "BULK-UP"
+            ],
+            [
+              "SILVER-WIND",
+              "METAL-CLAW",
+              "BATON-PASS",
+              "SWORDS-DANCE"
+            ],
+            [
+              "CRUSH-CLAW",
+              "EARTHQUAKE",
+              "AERIAL-ACE",
+              "BULK-UP"
+            ],
+            [
+              "WATER-PULSE",
+              "PSYCHIC",
+              "SHADOW-BALL",
+              "SKILL-SWAP"
+            ]
+          ],
+          "team_items": [
+            "NUGGET",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "double": true
         },
         "requirements": {
           "badges": 4,
-          "flag": "xd_gorigan_beaten",
-          "fail_text": "Realgam Tower's doors are sealed. Win all four tournaments first!"
+          "flag": "col_gonzap_realgam",
+          "fail_text": "Cipher's Colosseum is reached by the lift at the end of the Tower Halls."
         }
       }
     },
@@ -17386,43 +17571,49 @@
       "min_rounds": 0,
       "trainer_pool": [
         {
-          "name": "Cipher Peon Bopen",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            88,
-            269,
-            336
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Cipher Peon Baila",
-          "class": "CIPHER_PEON",
-          "sprite": "orre_cipher_peon.png",
-          "team": [
-            192,
-            44,
-            189
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
           "name": "Cipher Peon Arton",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            225,
+            9387,
             221,
             362
           ],
+          "levels": [
+            59,
+            56,
+            56
+          ],
+          "team_moves": [
+            [
+              "SHADOW-RUSH",
+              "BLIZZARD",
+              "ATTRACT",
+              "PRESENT"
+            ],
+            [
+              "BLIZZARD",
+              "MUD-SHOT",
+              "HORN-ATTACK",
+              "ROCK-SMASH"
+            ],
+            [
+              "BLIZZARD",
+              "BITE",
+              "EARTHQUAKE",
+              "HEADBUTT"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "team_items": [
+            "NEVERMELTICE",
+            null,
+            null
+          ],
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Dioge",
@@ -17431,51 +17622,84 @@
           "team": [
             284,
             168,
-            214
+            9378
           ],
+          "levels": [
+            56,
+            55,
+            59
+          ],
+          "team_moves": [
+            [
+              "SILVER-WIND",
+              "BUBBLE-BEAM",
+              "HAZE",
+              "WATER-SPORT"
+            ],
+            [
+              "SIGNAL-BEAM",
+              "SLUDGE-BOMB",
+              "DIG",
+              "NIGHT-SHADE"
+            ],
+            [
+              "SHADOW-RUSH",
+              "REVERSAL",
+              "ENDURE",
+              "COUNTER"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
-          "name": "Bandana Guy Klest",
-          "class": "BANDANA_GUY",
-          "sprite": "roughneck.png",
+          "name": "Chaser Trus",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
           "team": [
-            274,
-            75,
-            297,
-            271
+            67,
+            277,
+            38,
+            82
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Hunter Aline",
-          "class": "HUNTER",
-          "sprite": "orre_hunter_m.png",
-          "team": [
-            303,
-            375,
-            305
+          "levels": [
+            60,
+            60,
+            60,
+            60
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "St.Performer Luper",
-          "class": "STPERFORMER",
-          "sprite": "orre_street_performer.png",
-          "team": [
-            224,
-            211,
-            117,
-            160
+          "team_moves": [
+            [
+              "DYNAMIC-PUNCH",
+              "FORESIGHT",
+              "SMELLING-SALTS",
+              "COUNTER"
+            ],
+            [
+              "SKY-ATTACK",
+              "STEEL-WING",
+              "QUICK-ATTACK",
+              "FOCUS-ENERGY"
+            ],
+            [
+              "OVERHEAT",
+              "DIG",
+              "QUICK-ATTACK",
+              "FLAIL"
+            ],
+            [
+              "LOCK-ON",
+              "ZAP-CANNON",
+              "TRI-ATTACK",
+              "FLASH"
+            ]
           ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
           }
         },
         {
@@ -17487,8 +17711,183 @@
             195,
             232
           ],
+          "levels": [
+            59,
+            60,
+            59
+          ],
+          "team_moves": [
+            [
+              "DIG",
+              "AERIAL-ACE",
+              "STRENGTH",
+              "ROCK-TOMB"
+            ],
+            [
+              "DIVE",
+              "MUD-SHOT",
+              "BRICK-BREAK",
+              "ROCK-TOMB"
+            ],
+            [
+              "EARTHQUAKE",
+              "IRON-TAIL",
+              "HORN-ATTACK",
+              "ROCK-TOMB"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
+            "balls": 2
+          }
+        },
+        {
+          "name": "Rider Elose",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+            346,
+            164,
+            358,
+            317
+          ],
+          "levels": [
+            60,
+            59,
+            60,
+            59
+          ],
+          "team_moves": [
+            [
+              "STOCKPILE",
+              "SWALLOW",
+              "SPIT-UP",
+              "ANCIENT-POWER"
+            ],
+            [
+              "HYPNOSIS",
+              "DREAM-EATER",
+              "FORESIGHT",
+              "WING-ATTACK"
+            ],
+            [
+              "HYPNOSIS",
+              "DREAM-EATER",
+              "LIGHT-SCREEN",
+              "PSYWAVE"
+            ],
+            [
+              "STOCKPILE",
+              "SPIT-UP",
+              "YAWN",
+              "DREAM-EATER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Chaser Rugen",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+            372,
+            288
+          ],
+          "levels": [
+            60,
+            61
+          ],
+          "team_moves": [
+            [
+              "DRAGON-BREATH",
+              "HEADBUTT",
+              "SCARY-FACE",
+              "ROAR"
+            ],
+            [
+              "BODY-SLAM",
+              "AERIAL-ACE",
+              "FOCUS-ENERGY",
+              "COUNTER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cipher Peon Bopen",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            88,
+            269,
+            336
+          ],
+          "levels": [
+            59,
+            59,
+            60
+          ],
+          "team_moves": [
+            [
+              "SLUDGE",
+              "ACID-ARMOR",
+              "DIG",
+              "STRENGTH"
+            ],
+            [
+              "SLUDGE-BOMB",
+              "WHIRLWIND",
+              "GUST",
+              "PSYBEAM"
+            ],
+            [
+              "POISON-TAIL",
+              "SCREECH",
+              "BITE",
+              "IRON-TAIL"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Bodybuilder Givern",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+            294,
+            40
+          ],
+          "levels": [
+            61,
+            59
+          ],
+          "team_moves": [
+            [
+              "HYPER-VOICE",
+              "SCREECH",
+              "ASTONISH",
+              "ROAR"
+            ],
+            [
+              "HYPER-VOICE",
+              "FEINT-ATTACK",
+              "DISABLE",
+              "CHARM"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
           }
         }
       ],
@@ -17500,7 +17899,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "beat_orre_champion"
           ]
         },
         {
@@ -17511,7 +17911,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "beat_orre_champion"
           ]
         },
         {
@@ -17529,6 +17930,1335 @@
               "The files list the Shadow Pokemon Cipher made here.",
               "One note says: \"A wishing star fell near Agate's Relic Stone. Investigate.\"",
               "Another: \"Project XD: ship the new Shadow Pokemon through Gateon Port.\""
+            ]
+          }
+        },
+        {
+          "text": "OLD MAN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_oldman_realgam"
+                ],
+                "flag": "col_oldman_realgam",
+                "lines": [
+                  "Old man: My, my. A young trainer, all the way out here. You wouldn't be one of those Cipher folk, would you?",
+                  "You shake your head. No.",
+                  "Old man: ...Then you're the one they warned us about!",
+                  "The old man tears off his disguise. A Cipher Peon!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Baila",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    9365,
+                    44,
+                    189
+                  ],
+                  "levels": [
+                    58,
+                    54,
+                    55
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "SUNNY-DAY",
+                      "GROWTH",
+                      "INGRAIN"
+                    ],
+                    [
+                      "MOONLIGHT",
+                      "SUNNY-DAY",
+                      "SLEEP-POWDER",
+                      "GIGA-DRAIN"
+                    ],
+                    [
+                      "SYNTHESIS",
+                      "SUNNY-DAY",
+                      "SLEEP-POWDER",
+                      "GIGA-DRAIN"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 2
+                  },
+                  "music": "orre/cipher_battle",
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Baila: Some disguise... The Admins will stop you!"
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "A torn-off fake beard lies in the sand."
+            ]
+          },
+          "flag_condition": "not col_oldman_realgam"
+        },
+        {
+          "text": "CIPHER ADMIN VENUS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_venus_realgam",
+                  "not:snagged_shadow_suicune"
+                ],
+                "flag": "col_venus_realgam",
+                "lines": [
+                  "Venus: You again, darling? Realgam is my stage now. Let's make this pretty!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Venus",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_venus.png",
+                  "team": [
+                    9398,
+                    182,
+                    26,
+                    40,
+                    200
+                  ],
+                  "levels": [
+                    54,
+                    61,
+                    62,
+                    62,
+                    61
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "RAIN-DANCE",
+                      "LEER",
+                      "GUST"
+                    ],
+                    [
+                      "ATTRACT",
+                      "STUN-SPORE",
+                      "SLUDGE-BOMB",
+                      "GIGA-DRAIN"
+                    ],
+                    [
+                      "ATTRACT",
+                      "THUNDER-WAVE",
+                      "SWEET-KISS",
+                      "THUNDERBOLT"
+                    ],
+                    [
+                      "ATTRACT",
+                      "SWEET-KISS",
+                      "FLAMETHROWER",
+                      "BODY-SLAM"
+                    ],
+                    [
+                      "ATTRACT",
+                      "CONFUSE-RAY",
+                      "TAUNT",
+                      "PSYCHIC"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "BLUE_KEY": 1
+                  },
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Venus: How dreadful... Fine, take the Blue Key. It clashes with my outfit anyway.",
+                      "You got the Blue Key!"
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_venus_realgam",
+                  "snagged_shadow_suicune"
+                ],
+                "flag": "col_venus_realgam",
+                "lines": [
+                  "Venus: You again, darling? Realgam is my stage now. Let's make this pretty!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Venus",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_venus.png",
+                  "team": [
+                    350,
+                    182,
+                    26,
+                    40,
+                    200
+                  ],
+                  "levels": [
+                    62,
+                    61,
+                    62,
+                    62,
+                    61
+                  ],
+                  "team_moves": [
+                    [
+                      "ATTRACT",
+                      "CONFUSE-RAY",
+                      "BLIZZARD",
+                      "SURF"
+                    ],
+                    [
+                      "ATTRACT",
+                      "STUN-SPORE",
+                      "SLUDGE-BOMB",
+                      "GIGA-DRAIN"
+                    ],
+                    [
+                      "ATTRACT",
+                      "THUNDER-WAVE",
+                      "SWEET-KISS",
+                      "THUNDERBOLT"
+                    ],
+                    [
+                      "ATTRACT",
+                      "SWEET-KISS",
+                      "FLAMETHROWER",
+                      "BODY-SLAM"
+                    ],
+                    [
+                      "ATTRACT",
+                      "CONFUSE-RAY",
+                      "TAUNT",
+                      "PSYCHIC"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "BLUE_KEY": 1
+                  },
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Venus: How dreadful... Fine, take the Blue Key. It clashes with my outfit anyway.",
+                      "You got the Blue Key!"
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "You got the Blue Key!"
+            ]
+          }
+        },
+        {
+          "text": "CIPHER ADMIN EIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_ein_realgam",
+                  "not:snagged_shadow_raikou"
+                ],
+                "flag": "col_ein_realgam",
+                "lines": [
+                  "Ein: The one who wrecked my lab. Here, my Pokemon are perfected. Show me your data!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Ein",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    9396,
+                    121,
+                    112,
+                    279,
+                    169
+                  ],
+                  "levels": [
+                    53,
+                    62,
+                    63,
+                    62,
+                    61
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "RAIN-DANCE",
+                      "LEER",
+                      "QUICK-ATTACK"
+                    ],
+                    [
+                      "HYDRO-PUMP",
+                      "PSYCHIC",
+                      "RAIN-DANCE",
+                      "THUNDER"
+                    ],
+                    [
+                      "DIG",
+                      "ROCK-SLIDE",
+                      "PROTECT",
+                      "TOXIC"
+                    ],
+                    [
+                      "FLY",
+                      "SURF",
+                      "RAIN-DANCE",
+                      "TOXIC"
+                    ],
+                    [
+                      "FLY",
+                      "BITE",
+                      "PROTECT",
+                      "TOXIC"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "YELLOW_KEY": 1
+                  },
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Ein: Fascinating... and infuriating. The Yellow Key is yours.",
+                      "You got the Yellow Key!"
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_ein_realgam",
+                  "snagged_shadow_raikou"
+                ],
+                "flag": "col_ein_realgam",
+                "lines": [
+                  "Ein: The one who wrecked my lab. Here, my Pokemon are perfected. Show me your data!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Ein",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    310,
+                    121,
+                    112,
+                    279,
+                    169
+                  ],
+                  "levels": [
+                    63,
+                    62,
+                    63,
+                    62,
+                    61
+                  ],
+                  "team_moves": [
+                    [
+                      "THUNDER",
+                      "BITE",
+                      "PROTECT",
+                      "TOXIC"
+                    ],
+                    [
+                      "HYDRO-PUMP",
+                      "PSYCHIC",
+                      "RAIN-DANCE",
+                      "THUNDER"
+                    ],
+                    [
+                      "DIG",
+                      "ROCK-SLIDE",
+                      "PROTECT",
+                      "TOXIC"
+                    ],
+                    [
+                      "FLY",
+                      "SURF",
+                      "RAIN-DANCE",
+                      "TOXIC"
+                    ],
+                    [
+                      "FLY",
+                      "BITE",
+                      "PROTECT",
+                      "TOXIC"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "YELLOW_KEY": 1
+                  },
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Ein: Fascinating... and infuriating. The Yellow Key is yours.",
+                      "You got the Yellow Key!"
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "You got the Yellow Key!"
+            ]
+          }
+        },
+        {
+          "text": "CIPHER ADMIN MIROR B.",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_miror_realgam",
+                  "not:snagged_shadow_sudowoodo"
+                ],
+                "flag": "col_miror_realgam",
+                "lines": [
+                  "Miror B.: Hey hey HEY! Feel the groove of Realgam Tower! Let's dance!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Miror B.",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_trainer_miror_b.png",
+                  "team": [
+                    9362,
+                    272,
+                    272,
+                    55,
+                    294
+                  ],
+                  "levels": [
+                    51,
+                    60,
+                    61,
+                    61,
+                    62
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "FLAIL",
+                      "BLOCK",
+                      "LOW-KICK"
+                    ],
+                    [
+                      "GIGA-DRAIN",
+                      "WATERFALL",
+                      "ICE-BEAM",
+                      "RAIN-DANCE"
+                    ],
+                    [
+                      "GIGA-DRAIN",
+                      "DIVE",
+                      "LEECH-SEED",
+                      "RAIN-DANCE"
+                    ],
+                    [
+                      "SURF",
+                      "ICE-BEAM",
+                      "PSYCHIC",
+                      "BRICK-BREAK"
+                    ],
+                    [
+                      "TAKE-DOWN",
+                      "SHADOW-BALL",
+                      "EARTHQUAKE",
+                      "EXTRASENSORY"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "RED_KEY": 1
+                  },
+                  "team_items": [
+                    "HARD_STONE",
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Miror B.: My rhythm... gone! Take the Red Key and leave me to my sorrow!",
+                      "You got the Red Key!"
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_miror_realgam",
+                  "snagged_shadow_sudowoodo"
+                ],
+                "flag": "col_miror_realgam",
+                "lines": [
+                  "Miror B.: Hey hey HEY! Feel the groove of Realgam Tower! Let's dance!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Miror B.",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_trainer_miror_b.png",
+                  "team": [
+                    348,
+                    272,
+                    272,
+                    55,
+                    294
+                  ],
+                  "levels": [
+                    59,
+                    60,
+                    61,
+                    61,
+                    62
+                  ],
+                  "team_moves": [
+                    [
+                      "ROCK-SLIDE",
+                      "SLASH",
+                      "FURY-CUTTER",
+                      "AERIAL-ACE"
+                    ],
+                    [
+                      "GIGA-DRAIN",
+                      "WATERFALL",
+                      "ICE-BEAM",
+                      "RAIN-DANCE"
+                    ],
+                    [
+                      "GIGA-DRAIN",
+                      "DIVE",
+                      "LEECH-SEED",
+                      "RAIN-DANCE"
+                    ],
+                    [
+                      "SURF",
+                      "ICE-BEAM",
+                      "PSYCHIC",
+                      "BRICK-BREAK"
+                    ],
+                    [
+                      "TAKE-DOWN",
+                      "SHADOW-BALL",
+                      "EARTHQUAKE",
+                      "EXTRASENSORY"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "RED_KEY": 1
+                  },
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Miror B.: My rhythm... gone! Take the Red Key and leave me to my sorrow!",
+                      "You got the Red Key!"
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "You got the Red Key!"
+            ]
+          }
+        },
+        {
+          "text": "CIPHER ADMIN DAKIM",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_dakim_realgam",
+                  "not:snagged_shadow_entei"
+                ],
+                "flag": "col_dakim_realgam",
+                "lines": [
+                  "Dakim: I've waited for this! No mountain between us now. Smash!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Dakim",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    9397,
+                    330,
+                    205,
+                    340,
+                    344
+                  ],
+                  "levels": [
+                    57,
+                    63,
+                    62,
+                    63,
+                    63
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "SUNNY-DAY",
+                      "LEER",
+                      "BITE"
+                    ],
+                    [
+                      "FLAMETHROWER",
+                      "EARTHQUAKE",
+                      "SUNNY-DAY",
+                      "SOLAR-BEAM"
+                    ],
+                    [
+                      "DOUBLE-EDGE",
+                      "EARTHQUAKE",
+                      "PROTECT",
+                      "EXPLOSION"
+                    ],
+                    [
+                      "WATERFALL",
+                      "EARTHQUAKE",
+                      "PROTECT",
+                      "ICE-BEAM"
+                    ],
+                    [
+                      "PSYCHIC",
+                      "EARTHQUAKE",
+                      "SUNNY-DAY",
+                      "SOLAR-BEAM"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "GREEN_KEY": 1
+                  },
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Dakim: Grrr... I'm done. The Green Key. Take it!",
+                      "You got the Green Key!"
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_dakim_realgam",
+                  "snagged_shadow_entei"
+                ],
+                "flag": "col_dakim_realgam",
+                "lines": [
+                  "Dakim: I've waited for this! No mountain between us now. Smash!"
+                ],
+                "battle": {
+                  "name": "Cipher Admin Dakim",
+                  "class": "CIPHER_ADMIN",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    229,
+                    330,
+                    205,
+                    340,
+                    344
+                  ],
+                  "levels": [
+                    63,
+                    62,
+                    61,
+                    62,
+                    62
+                  ],
+                  "team_moves": [
+                    [
+                      "FIRE-BLAST",
+                      "PROTECT",
+                      "SUNNY-DAY",
+                      "SOLAR-BEAM"
+                    ],
+                    [
+                      "FLAMETHROWER",
+                      "EARTHQUAKE",
+                      "SUNNY-DAY",
+                      "SOLAR-BEAM"
+                    ],
+                    [
+                      "DOUBLE-EDGE",
+                      "EARTHQUAKE",
+                      "PROTECT",
+                      "EXPLOSION"
+                    ],
+                    [
+                      "WATERFALL",
+                      "EARTHQUAKE",
+                      "PROTECT",
+                      "ICE-BEAM"
+                    ],
+                    [
+                      "PSYCHIC",
+                      "EARTHQUAKE",
+                      "SUNNY-DAY",
+                      "SOLAR-BEAM"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3,
+                    "GREEN_KEY": 1
+                  },
+                  "music": "orre/admin_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Dakim: Grrr... I'm done. The Green Key. Take it!",
+                      "You got the Green Key!"
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "You got the Green Key!"
+            ]
+          }
+        },
+        {
+          "text": "HEALING MACHINE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "A Cipher healing machine. Your Pokemon are fully healed!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "CIPHER PEON VERDE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_verde_realgam",
+                  "not:snagged_shadow_bayleef"
+                ],
+                "flag": "col_verde_realgam",
+                "lines": [
+                  "Cipher Peon Verde: The Mystery Troop never gives up! Green means go!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Verde",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_green.png",
+                  "team": [
+                    9348,
+                    89,
+                    326
+                  ],
+                  "levels": [
+                    46,
+                    61,
+                    60
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "SUNNY-DAY",
+                      "SYNTHESIS",
+                      "RAZOR-LEAF"
+                    ],
+                    [
+                      "SLUDGE",
+                      "STRENGTH",
+                      "DIG",
+                      "ACID-ARMOR"
+                    ],
+                    [
+                      "PSYBEAM",
+                      "SHADOW-BALL",
+                      "BOUNCE",
+                      "FLASH"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "team_items": [
+                    "MIRACLE_SEED",
+                    null,
+                    null
+                  ],
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Verde: Stopped again..."
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_verde_realgam",
+                  "snagged_shadow_bayleef"
+                ],
+                "flag": "col_verde_realgam",
+                "lines": [
+                  "Cipher Peon Verde: The Mystery Troop never gives up! Green means go!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Verde",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_green.png",
+                  "team": [
+                    89,
+                    326
+                  ],
+                  "levels": [
+                    61,
+                    60
+                  ],
+                  "team_moves": [
+                    [
+                      "SLUDGE",
+                      "STRENGTH",
+                      "DIG",
+                      "ACID-ARMOR"
+                    ],
+                    [
+                      "PSYBEAM",
+                      "SHADOW-BALL",
+                      "BOUNCE",
+                      "FLASH"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Verde: Stopped again..."
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "Cipher Peon Verde: Stopped again..."
+            ]
+          }
+        },
+        {
+          "text": "CIPHER PEON ROSSO",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_rosso_realgam",
+                  "not:snagged_shadow_quilava"
+                ],
+                "flag": "col_rosso_realgam",
+                "lines": [
+                  "Cipher Peon Rosso: Red means danger - for you!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Rosso",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_red.png",
+                  "team": [
+                    9349,
+                    89,
+                    326
+                  ],
+                  "levels": [
+                    46,
+                    61,
+                    60
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "SUNNY-DAY",
+                      "SMOKESCREEN",
+                      "DIG"
+                    ],
+                    [
+                      "SLUDGE",
+                      "STRENGTH",
+                      "DIG",
+                      "ACID-ARMOR"
+                    ],
+                    [
+                      "PSYBEAM",
+                      "SHADOW-BALL",
+                      "BOUNCE",
+                      "FLASH"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "team_items": [
+                    "CHARCOAL",
+                    null,
+                    null
+                  ],
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Rosso: Not again..."
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_rosso_realgam",
+                  "snagged_shadow_quilava"
+                ],
+                "flag": "col_rosso_realgam",
+                "lines": [
+                  "Cipher Peon Rosso: Red means danger - for you!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Rosso",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_red.png",
+                  "team": [
+                    89,
+                    326
+                  ],
+                  "levels": [
+                    61,
+                    60
+                  ],
+                  "team_moves": [
+                    [
+                      "SLUDGE",
+                      "STRENGTH",
+                      "DIG",
+                      "ACID-ARMOR"
+                    ],
+                    [
+                      "PSYBEAM",
+                      "SHADOW-BALL",
+                      "BOUNCE",
+                      "FLASH"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Rosso: Not again..."
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "Cipher Peon Rosso: Not again..."
+            ]
+          }
+        },
+        {
+          "text": "CIPHER PEON BLUNO",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_bluno_realgam",
+                  "not:snagged_shadow_croconaw"
+                ],
+                "flag": "col_bluno_realgam",
+                "lines": [
+                  "Cipher Peon Bluno: Blue is the colour of victory! Or... it was."
+                ],
+                "battle": {
+                  "name": "Cipher Peon Bluno",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_blue.png",
+                  "team": [
+                    9350,
+                    89,
+                    326
+                  ],
+                  "levels": [
+                    46,
+                    61,
+                    60
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "RAIN-DANCE",
+                      "SCARY-FACE",
+                      "BITE"
+                    ],
+                    [
+                      "SLUDGE",
+                      "STRENGTH",
+                      "DIG",
+                      "ACID-ARMOR"
+                    ],
+                    [
+                      "PSYBEAM",
+                      "SHADOW-BALL",
+                      "BOUNCE",
+                      "FLASH"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "team_items": [
+                    "MYSTIC_WATER",
+                    null,
+                    null
+                  ],
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Bluno: Feeling blue..."
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_bluno_realgam",
+                  "snagged_shadow_croconaw"
+                ],
+                "flag": "col_bluno_realgam",
+                "lines": [
+                  "Cipher Peon Bluno: Blue is the colour of victory! Or... it was."
+                ],
+                "battle": {
+                  "name": "Cipher Peon Bluno",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_blue.png",
+                  "team": [
+                    89,
+                    326
+                  ],
+                  "levels": [
+                    61,
+                    60
+                  ],
+                  "team_moves": [
+                    [
+                      "SLUDGE",
+                      "STRENGTH",
+                      "DIG",
+                      "ACID-ARMOR"
+                    ],
+                    [
+                      "PSYBEAM",
+                      "SHADOW-BALL",
+                      "BOUNCE",
+                      "FLASH"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Bluno: Feeling blue..."
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "Cipher Peon Bluno: Feeling blue..."
+            ]
+          }
+        },
+        {
+          "text": "BLACK-SUITED MAN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_silva_realgam"
+                ],
+                "flag": "col_silva_realgam",
+                "lines": [
+                  "A man in a black suit and dark glasses leans over. 'Psst. Don't blow my cover.'",
+                  "Silva: It's me, Silva, from The Under. I snuck in to find out who's really running Cipher.",
+                  "Silva: The lifts at the end of the hall... only the one on the right works. Watch yourself."
+                ]
+              }
+            ],
+            "done": [
+              "Silva: (I'm not here.)"
+            ]
+          }
+        },
+        {
+          "text": "LIFT (LEFT)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "The lift's doors won't open."
+            ]
+          }
+        },
+        {
+          "text": "LIFT (MIDDLE)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "This lift isn't working either."
+            ]
+          }
+        },
+        {
+          "text": "LIFT (RIGHT)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:col_gonzap_realgam",
+                  "not:snagged_shadow_skarmory"
+                ],
+                "flag": "col_gonzap_realgam",
+                "lines": [
+                  "The lift's doors slide open... and out steps a familiar face!",
+                  "Gonzap: Well, if it isn't my old snagger. Evice pays better than you'd think, kid. Nothing personal!"
+                ],
+                "battle": {
+                  "name": "Snagem Head Gonzap",
+                  "class": "SNAGEM_HEAD",
+                  "sprite": "orre_snagem_gonzap.png",
+                  "team": [
+                    9389,
+                    342,
+                    127,
+                    297,
+                    275
+                  ],
+                  "levels": [
+                    59,
+                    64,
+                    64,
+                    65,
+                    65
+                  ],
+                  "team_moves": [
+                    [
+                      "SHADOW-RUSH",
+                      "DRILL-PECK",
+                      "METAL-SOUND",
+                      "AIR-CUTTER"
+                    ],
+                    [
+                      "CRABHAMMER",
+                      "STRENGTH",
+                      "SLUDGE-BOMB",
+                      "AERIAL-ACE"
+                    ],
+                    [
+                      "SUBMISSION",
+                      "EARTHQUAKE",
+                      "CUT",
+                      "FLAIL"
+                    ],
+                    [
+                      "BRICK-BREAK",
+                      "EARTHQUAKE",
+                      "FORESIGHT",
+                      "REVERSAL"
+                    ],
+                    [
+                      "GIGA-DRAIN",
+                      "FEINT-ATTACK",
+                      "SHADOW-BALL",
+                      "AERIAL-ACE"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "team_items": [
+                    "SHARP_BEAK",
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Gonzap: Bah! You always did have a knack for it. The roof's that way. Go on."
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:col_gonzap_realgam",
+                  "snagged_shadow_skarmory"
+                ],
+                "flag": "col_gonzap_realgam",
+                "lines": [
+                  "The lift's doors slide open... and out steps a familiar face!",
+                  "Gonzap: Well, if it isn't my old snagger. Evice pays better than you'd think, kid. Nothing personal!"
+                ],
+                "battle": {
+                  "name": "Snagem Head Gonzap",
+                  "class": "SNAGEM_HEAD",
+                  "sprite": "orre_snagem_gonzap.png",
+                  "team": [
+                    342,
+                    127,
+                    297,
+                    275
+                  ],
+                  "levels": [
+                    64,
+                    64,
+                    65,
+                    63
+                  ],
+                  "team_moves": [
+                    [
+                      "CRABHAMMER",
+                      "STRENGTH",
+                      "SLUDGE-BOMB",
+                      "AERIAL-ACE"
+                    ],
+                    [
+                      "SUBMISSION",
+                      "EARTHQUAKE",
+                      "CUT",
+                      "FLAIL"
+                    ],
+                    [
+                      "BRICK-BREAK",
+                      "EARTHQUAKE",
+                      "FORESIGHT",
+                      "REVERSAL"
+                    ],
+                    [
+                      "GIGA-DRAIN",
+                      "FEINT-ATTACK",
+                      "SHADOW-BALL",
+                      "AERIAL-ACE"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 3
+                  },
+                  "music": "orre/cipher_battle",
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Gonzap: Bah! You always did have a knack for it. The roof's that way. Go on."
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "The lift hums, empty now."
+            ]
+          }
+        },
+        {
+          "text": "LIFT TO THE ROOF",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "col_gonzap_realgam"
+                ],
+                "lines": [
+                  "The lift to the roof. Up there is Cipher's Colosseum - and no way to heal once the matches start."
+                ],
+                "elevator": {
+                  "area": "REALGAM_TOWER",
+                  "floors": [
+                    [
+                      "Cipher's Colosseum",
+                      "colosseum",
+                      [
+                        5,
+                        3
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "requires": [
+                  "not:col_gonzap_realgam"
+                ],
+                "lines": [
+                  "The lift to the roof won't come. Something's blocking it below."
+                ]
+              }
             ]
           }
         },
@@ -18348,7 +20078,9 @@
     {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher has a base in Gateon Port, the Key Lair. Get past the thug at its door.", "condition": {"required_region": "ORRE", "region_badges_min": 4, "flag_not": ["xd_lair_guards", "xd_gorigan_beaten"]}, "region": "ORRE", "completed_flag": "xd_lair_guards", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m17b", "type": "MAIN", "title": "The System Lever", "description": "Through the maze and the crate rooms: take the System Lever from its table, then put it in the Control Room's panel.", "condition": {"required_region": "ORRE", "flag": "xd_lair_guards", "flag_not": ["xd_lair_voltage", "xd_gorigan_beaten"]}, "region": "ORRE", "completed_flag": "xd_lair_voltage", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m17c", "type": "MAIN", "title": "Cipher Admin Gorigan", "description": "The power's up. Beat Smarton, then climb to Gorigan's hall and beat him to learn where Cipher's leader is.", "condition": {"required_region": "ORRE", "flag": "xd_lair_voltage", "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
-    {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is Evice, the man who built Realgam Tower. Beat his admins and then Evice himself to save Orre!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": "beat_orre_champion"}, "region": "ORRE", "completed_flag": "beat_orre_champion", "target": "REALGAM_TOWER", "reward": "Orre Champion"},
+    {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is behind Realgam Tower. Go in by the lobby's left door, cross the tower yard, and take the four coloured keys from Cipher's Admins in the Dome Halls.", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"]}, "region": "ORRE", "completed_flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "target": "CIPHER_COMMAND"},
+    {"id": "orre_m18b", "type": "MAIN", "title": "Inside the Tower", "description": "The four keys open the giant door. Get through the Tower Halls to the lifts at the far end.", "condition": {"required_region": "ORRE", "flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "flag_not": "col_gonzap_realgam"}, "region": "ORRE", "completed_flag": "col_gonzap_realgam", "target": "CIPHER_COMMAND"},
+    {"id": "orre_m18c", "type": "MAIN", "title": "Cipher's Colosseum", "description": "Ride the lift to the roof. Four matches, then Nascour, then Cipher's leader - and no healing in between. Stock up first!", "condition": {"required_region": "ORRE", "flag": "col_gonzap_realgam", "flag_not": "beat_orre_champion"}, "region": "ORRE", "completed_flag": "beat_orre_champion", "target": "REALGAM_TOWER", "reward": "Orre Champion"},
     {"id": "orre_s1", "type": "SIDE", "title": "Professor Krane's Eevee", "description": "Professor Krane works at the Pokémon HQ Lab in Gateon Port. Pay him a visit!", "condition": {"required_region": "ORRE", "visited": "GATEON_PORT", "flag_not": "got_krane_eevee"}, "region": "ORRE", "completed_flag": "got_krane_eevee", "target": "GATEON_PORT"},
     {"id": "orre_s1b", "type": "SIDE", "title": "Ein's Data ROM", "description": "Ein left a Data ROM on his desk. Take it to Nett at the Kids Grid in The Under.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom", "flag_not": "orre_data_rom_given"}, "region": "ORRE", "completed_flag": "orre_data_rom_given", "target": "THE_UNDER"},
     {"id": "orre_s2", "type": "SIDE", "title": "Mt. Battle", "description": "After the title, Vander waits at the very top of Mt. Battle, past Battlus in Area 10. Climb up and face him!", "condition": {"required_region": "ORRE", "flag": ["beat_orre_champion", "mt_battle_battlus"], "flag_not": "mt_battle_master_beaten"}, "region": "ORRE", "completed_flag": "mt_battle_master_beaten", "target": "MT_BATTLE", "reward": "Battle practice"},

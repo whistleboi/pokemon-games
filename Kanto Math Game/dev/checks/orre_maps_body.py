@@ -274,6 +274,7 @@ _same = [k for k, v in _kam["links"].items() if v[0] == 2]
 check(len(_same) >= 10, f"Kaminko's crane floor: {len(_same)} hook pads, each carrying you to its colour's twin")
 
 # ---- Realgam: the dome door opens the tower's lobby; its doors lead to the Tower Dome, Cipher's Colosseum and the Deep Colosseum
+story.story_flags["col_gonzap_realgam"] = True   # (the door up opens after Gonzap: batch 7b)
 t = town("REALGAM_TOWER", "PHENAC_CITY")
 _d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["REALGAM_TOWER"]["inside"].items() if n == "realgam")
 _in = walk_to(t, _d) and t.room == "realgam"

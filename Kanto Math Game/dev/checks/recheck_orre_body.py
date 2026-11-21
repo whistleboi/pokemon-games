@@ -40,10 +40,10 @@ def find(name):
 
 print("2) the bosses' teams from the games")
 for name, team in (("Cipher Admin Dakim", [229, 330, 205, 340, 344]), ("Cipher Admin Ein", [310, 121, 112, 279, 169]),
-                   ("Cipher Admin Venus", [350, 182, 26, 40, 200]), ("Cipher Head Evice", [306, 373, 68, 212, 289, 199]),
+                   ("Cipher Admin Venus", [350, 182, 26, 40, 200]), ("Cipher Head Evice", [9399, 373, 68, 212, 289, 199]),
                    ("Cipher Admin Lovrina", [370, 267, 315, 9408]), ("Cipher Admin Gorigan", [305, 364, 199, 217, 9313, 9324]),
                    ("Grand Master Greevil", [310, 277, 121, 210, 334, 142]), ("Pre Gym Leader Justy", [27, 331, 207, 192, 184, 299]),
-                   ("Cipher Admin Miror B.", [348, 272, 272, 55, 294]), ("Cipher Nascour", [65, 282, 178, 356, 365, 257]),
+                   ("Cipher Admin Miror B.", [348, 272, 272, 55, 294]), ("Cipher Nascour", [9431, 282, 178, 356, 365, 257]),
                    ("Cipher Admin Snattle", [375, 195, 212, 338, 351, 121]), ("Cipher Admin Ardos", [277, 65, 230, 214, 125, 286]),
                    ("Cipher Admin Eldes", [291, 310, 373, 330, 105, 131]), ("Snagem Head Gonzap", [101, 274, 45, 340, 227])):
     t = [x for x in find(name) if x["team"] == team]  # (Dakim, Ein and Snattle also have earlier story battles; Lovrina: her Cipher Lab

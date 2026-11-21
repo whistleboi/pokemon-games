@@ -288768,7 +288768,7 @@
      ".c..cc.c.cc.cc.c.cc.cc.c",
      "..c.......c.......c....c",
      ".......................c",
-     ".......................c",
+     "....N.....N.....N......c",
      ".......................c",
      "cccccccvcccccccccccccccc",
      "cccccccccccccccccccccccc"
@@ -288780,7 +288780,210 @@
      "v": "OUT:31,7"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Hunter Aline",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_aline_realgam",
+         "lines": [
+          "Hunter Aline: Realgam's lobby is my hunting ground!"
+         ],
+         "battle": {
+          "name": "Hunter Aline",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+           303,
+           375,
+           305
+          ],
+          "levels": [
+           58,
+           57,
+           59
+          ],
+          "team_moves": [
+           [
+            "ANCIENT-POWER",
+            "BRICK-BREAK",
+            "IRON-DEFENSE",
+            "STRENGTH"
+           ],
+           [
+            "METAL-CLAW",
+            "CONFUSION",
+            "IRON-DEFENSE",
+            "TAKE-DOWN"
+           ],
+           [
+            "IRON-TAIL",
+            "DIG",
+            "IRON-DEFENSE",
+            "TAKE-DOWN"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+18 (disc ace 41)",
+          "dialogue": {
+           "player_won": [
+            "Hunter Aline: You got me."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Hunter Aline: You got me."
+       ]
+      }
+     },
+     {
+      "text": "St.Performer Luper",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_luper_realgam",
+         "lines": [
+          "St.Performer Luper: Welcome to the greatest show in Orre!"
+         ],
+         "battle": {
+          "name": "St. Performer Luper",
+          "class": "STPERFORMER",
+          "sprite": "orre_street_performer.png",
+          "team": [
+           224,
+           211,
+           117,
+           160
+          ],
+          "levels": [
+           58,
+           59,
+           58,
+           59
+          ],
+          "team_moves": [
+           [
+            "DIVE",
+            "PSYBEAM",
+            "FOCUS-ENERGY",
+            "HAZE"
+           ],
+           [
+            "SURF",
+            "ASTONISH",
+            "SPIKES",
+            "TAKE-DOWN"
+           ],
+           [
+            "WATERFALL",
+            "TWISTER",
+            "FLAIL",
+            "SMOKESCREEN"
+           ],
+           [
+            "HYDRO-PUMP",
+            "SLASH",
+            "SCARY-FACE",
+            "EARTHQUAKE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+19 (disc ace 40)",
+          "dialogue": {
+           "player_won": [
+            "St.Performer Luper: The show's over..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "St.Performer Luper: The show's over..."
+       ]
+      }
+     },
+     {
+      "text": "Bandana Guy Klest",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_klest_realgam",
+         "lines": [
+          "Bandana Guy Klest: Nobody gets to the tower without going through me!"
+         ],
+         "battle": {
+          "name": "Bandana Guy Klest",
+          "class": "BANDANA_GUY",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+           274,
+           75,
+           297,
+           271
+          ],
+          "levels": [
+           56,
+           59,
+           58,
+           59
+          ],
+          "team_moves": [
+           [
+            "FAKE-OUT",
+            "FEINT-ATTACK",
+            "GIGA-DRAIN",
+            "EXPLOSION"
+           ],
+           [
+            "FOCUS-PUNCH",
+            "PROTECT",
+            "ROCK-THROW",
+            "SELF-DESTRUCT"
+           ],
+           [
+            "FAKE-OUT",
+            "FOCUS-PUNCH",
+            "DETECT",
+            "ARM-THRUST"
+           ],
+           [
+            "FAKE-OUT",
+            "BLIZZARD",
+            "NATURE-POWER",
+            "SWEET-SCENT"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+17 (disc ace 42)",
+          "dialogue": {
+           "player_won": [
+            "Bandana Guy Klest: Okay, okay, go through."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Bandana Guy Klest: Okay, okay, go through."
+       ]
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -288804,6 +289007,21 @@
       "size": [
        24,
        10
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        11,
+        1
+       ]
+      ],
+      "flag": "col_gonzap_realgam",
+      "look": "unseen",
+      "lines": [
+       "The door to the arena on the roof is locked. Cipher's people must be inside the tower."
       ]
      }
     ]
@@ -298799,17 +299017,17 @@
      "c...c.........c",
      "c.............c",
      "c.............c",
-     "c............Xc",
+     "c.............c",
      "c.............c",
      "c.....ccc....cc",
-     "c....ccccc...Xc",
-     "c.Xc.ccccc.c..c",
-     "c.....ccc.....c",
+     "c....ccccc....c",
+     "c..c.ccccc.c..c",
+     "c.....c1c.....c",
      "c....c........c",
      "c....N...NN...c",
-     "c.cX.........Xc",
-     "c.......X.....c",
-     "c...X......X..c",
+     "c.c.....N.....c",
+     "c.............c",
+     "c.............c",
      "cc..........ccc",
      "ccccccc1ccccccc",
      "ccccccccccccccc"
@@ -298820,24 +299038,21 @@
       0,
       5,
       1
+     ],
+     "7,15": [
+      2,
+      15,
+      12
      ]
     },
     "parts": true,
     "people": [
      "READ CIPHER'S FILES",
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "OLD MAN"
     ],
-    "trainer_spots": [
-     "Rider Kevel",
-     "Cipher Peon Baila",
-     "Cipher Peon Bopen",
-     "Cipher Peon Arton",
-     "Cipher Peon Dioge",
-     "St.Performer Luper",
-     "Bandana Guy Klest",
-     "Hunter Aline"
-    ],
+    "trainer_spots": [],
     "roofs": {
      "_picture": {
       "f": "orre_ground/160.png",
@@ -298863,24 +299078,199 @@
       ]
      }
     ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccc",
+     "c.....ccccccc..1..ccccccc.....c",
+     "c..N..ccccccc.....ccccccc..N..c",
+     "c.............................c",
+     "c.....ccccccc.....ccccccc.....c",
+     "ccccccc.....c.....c.....ccccccc",
+     "ccccccc..N.........X....ccccccc",
+     "ccccccc.....c..X..c.....ccccccc",
+     "c.....ccccccc.....ccccccc.....c",
+     "c.............................c",
+     "c..N..ccccccc.....ccccccc..N..c",
+     "c.....ccccccc..1..ccccccc.....c",
+     "ccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "15,2": [
+      3,
+      1,
+      11
+     ],
+     "15,12": [
+      1,
+      7,
+      15
+     ]
+    },
+    "parts": true,
+    "people": [
+     "CIPHER ADMIN VENUS",
+     "CIPHER ADMIN EIN",
+     "HEALING MACHINE",
+     "CIPHER ADMIN MIROR B.",
+     "CIPHER ADMIN DAKIM"
+    ],
+    "trainer_spots": [
+     "Cipher Peon Arton",
+     "Cipher Peon Dioge"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/realgam_in_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/realgam_in_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       31,
+       14
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        2
+       ]
+      ],
+      "until": {
+       "condition": [
+        "has_item:BLUE_KEY",
+        "has_item:YELLOW_KEY",
+        "has_item:RED_KEY",
+        "has_item:GREEN_KEY"
+       ]
+      },
+      "lines": [
+       "A giant door with four keyholes: blue, yellow, red and green."
+      ],
+      "look": "barrier"
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cN.....N.....N...c.......N.......c",
+     "c................c...X.......X...c",
+     "c.....N........N.c...............c",
+     "c................................c",
+     "cccccc.cccccccccc.ccccccccccc.cccc",
+     "c..........c.........c...........c",
+     "c...X......c....N....c.....X.....c",
+     "c..........c.........c...........c",
+     "c................................c",
+     "c1..........X.............X.....Nc",
+     "cccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "1,11": [
+      2,
+      15,
+      2
+     ]
+    },
+    "parts": true,
+    "people": [
+     "LIFT (LEFT)",
+     "LIFT (MIDDLE)",
+     "LIFT (RIGHT)",
+     "LIFT TO THE ROOF",
+     "CIPHER PEON VERDE",
+     "CIPHER PEON ROSSO",
+     "BLACK-SUITED MAN",
+     "CIPHER PEON BLUNO"
+    ],
+    "trainer_spots": [
+     "Chaser Trus",
+     "Rider Kevel",
+     "Rider Elose",
+     "Chaser Rugen",
+     "Cipher Peon Bopen",
+     "Bodybuilder Givern"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/realgam_in_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/realgam_in_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       34,
+       13
+      ]
+     }
+    ]
    }
   ],
   "floor_names": [
    "Dome",
-   "Tower Yard"
+   "Tower Yard",
+   "Dome Halls",
+   "Tower Halls"
   ],
   "figure_floors": {
    "READ CIPHER'S FILES": 1,
    "SNAG SHADOW POKEMON": 1,
    "SNAG AGAIN": 1,
-   "Cipher Peon Bopen": 1,
-   "Cipher Peon Baila": 1,
-   "Cipher Peon Arton": 1,
-   "Cipher Peon Dioge": 1,
-   "Bandana Guy Klest": 1,
-   "Hunter Aline": 1,
-   "St.Performer Luper": 1,
-   "Rider Kevel": 1
+   "OLD MAN": 1,
+   "CIPHER ADMIN VENUS": 2,
+   "CIPHER ADMIN EIN": 2,
+   "HEALING MACHINE": 2,
+   "CIPHER ADMIN MIROR B.": 2,
+   "CIPHER ADMIN DAKIM": 2,
+   "Cipher Peon Arton": 2,
+   "Cipher Peon Dioge": 2,
+   "LIFT (LEFT)": 3,
+   "LIFT (MIDDLE)": 3,
+   "LIFT (RIGHT)": 3,
+   "LIFT TO THE ROOF": 3,
+   "CIPHER PEON VERDE": 3,
+   "CIPHER PEON ROSSO": 3,
+   "BLACK-SUITED MAN": 3,
+   "CIPHER PEON BLUNO": 3,
+   "Chaser Trus": 3,
+   "Rider Kevel": 3,
+   "Rider Elose": 3,
+   "Chaser Rugen": 3,
+   "Cipher Peon Bopen": 3,
+   "Bodybuilder Givern": 3
   },
   "theme": "tunnel"
  },
