@@ -419,4 +419,19 @@ check(getattr(g.current_state, "room", None) == "gym" and tuple(g.current_state.
 put(8, 6, (0, -1)); step(0, -1); play(idle, 300)
 check(getattr(g.current_state, "room", None) == "gym_burgh", "with the badge, the north-west pillar goes back up to Burgh")
 
+print("11) after the badge: Colress in Central Plaza; the Bridge Gate")
+flags.pop("b2_colress_plaza", None); said.clear()
+t = town("CASTELIA_CITY", "plaza")
+play(lambda: flags.get("b2_colress_plaza") and idle(), 3000)
+check(flags.get("b2_colress_plaza") and any("Colress" in x for x in said) and any("Route 4" in x for x in said),
+      f"Colress looks at your team, names himself, and waits on Route 4 ({said[-2:]})")
+main = [m["id"] for m in story.get_active_missions() if m.get("type") == "MAIN"]
+check("b2_m19" in main, f"the Journal: Colress waits on Route 4 ({main})")
+t = town("CASTELIA_CITY", "bridge_gate")
+qc = story.inventory.get("QUICK_CLAW", 0)
+talk("Woman in the gate")
+check(story.inventory.get("QUICK_CLAW", 0) == qc + 1, "the Bridge Gate: a Quick Claw")
+said.clear(); talk("Worker by the bridge")
+check(any("inspecting" in x for x in said), "a Worker keeps the Skyarrow Bridge shut for its inspection")
+
 print(f"##### {len(fails)} failures")

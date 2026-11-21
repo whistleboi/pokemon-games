@@ -411497,7 +411497,7 @@
      "ccccccccccccc......ccccccccccccccccccccccc",
      "ccccccccccccc......ccccccccccccccccccccccc",
      "ccccccccccccc......ccccccccccccccccccccccc",
-     "ccccccccccc!c......ccccccccccccccccccccccc",
+     "ccccccccccc!c..N...ccccccccccccccccccccccc",
      "ccccccccc...............cccccccccccccccccc",
      "ccccc......................ccccccccccccccc",
      "cccc.........................ccccccccccccc",
@@ -413727,6 +413727,20 @@
     },
     "people": [
      {
+      "text": "Colress",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Colress: I'll be waiting on Route 4. It's just beyond here!"
+       ]
+      },
+      "condition": [
+       "b2_colress_plaza",
+       "not:b2_colress_route4"
+      ],
+      "_look": "sheet:b2_c250.png"
+     },
+     {
       "text": "Old man by the fountain",
       "action": "EVENT",
       "event": {
@@ -413742,6 +413756,39 @@
       "CENTRAL PLAZA",
       "Ahead: Route 4"
      ]
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "b2_insect_badge",
+       "not:b2_colress_plaza"
+      ],
+      "flag": "b2_colress_plaza",
+      "cast": [
+       {
+        "sheet": "b2_c250.png",
+        "from": [
+         15,
+         4
+        ],
+        "to": "player",
+        "stay": true,
+        "lines": [
+         "???: Oh, it's you again! If it's no trouble, may I take a look at your Pokemon?",
+         "???: ...Oh! How interesting! Your Pokemon shows more confidence than others of its kind.",
+         "???: And you're a Trainer with only three Badges... Somehow, you bring out your Pokemon's power!",
+         "Colress: Oh, excuse me! I'm a scientist. My name is Colress.",
+         "Colress: My research: bringing out the power of Pokemon. Is it the bond with their Trainer? Or some other way?",
+         "Colress: I'd like to test my theory by battling you. I'll be waiting on Route 4. It's just beyond here!"
+        ],
+        "leave": [
+         15,
+         1
+        ]
+       }
+      ]
+     }
     ],
     "title": "Central Plaza",
     "camera_zoom": 0.884
@@ -437938,14 +437985,14 @@
      "cccccccccccccc",
      "cccccccccccccc",
      "cccccccccccccc",
+     "cv..N....N..cc",
      "cv..........cc",
      "cv..........cc",
-     "cv..........cc",
-     "cccccccc....cc",
+     "ccccccmc...Ncc",
+     "ccccccNm....cc",
      "cccccc.c....cc",
-     "cccccc.c....cc",
      "cccccccc....cc",
-     "cccccccc...ccc",
+     "cccccccc.N.ccc",
      "cccccccc...ccc"
     ],
     "exits": {
@@ -438180,7 +438227,67 @@
      },
      "_shadows": true
     },
-    "people": [],
+    "people": [
+     {
+      "text": "Woman in the gate",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Quick! Take this!"
+       ],
+       "gift_item": {
+        "QUICK_CLAW": 1
+       },
+       "flag": "b2_bridge_quick_claw",
+       "done": [
+        "Let a Pokemon hold that Quick Claw, and sometimes it gets to move first in battle!"
+       ]
+      },
+      "_look": "sheet:b2_c53.png"
+     },
+     {
+      "text": "Harlequin in the gate ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Free-for-all! It's the Castelia Harlequin Hunt! Explore the city and find us all!"
+       ]
+      },
+      "_look": "sheet:b2_c54.png"
+     },
+     {
+      "text": "Tired traveller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I walked so far! My legs are sore! ...Um, you don't have to look."
+       ]
+      },
+      "_look": "sheet:b2_c22.png"
+     },
+     {
+      "text": "Gate receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hello! Cross the Skyarrow Bridge from this side and you'll reach Pinwheel Forest and Nacrene City.",
+        "The Skyarrow Bridge has been here a very long time."
+       ]
+      },
+      "_look": "sheet:b2_c76.png"
+     },
+     {
+      "text": "Worker by the bridge",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Please wait to cross. We're inspecting the Skyarrow Bridge to make sure it's strong enough.",
+        "It's the first inspection in a few years, so it may take a while. Thanks for your patience!"
+       ]
+      },
+      "_look": "sheet:b2_c67.png"
+     }
+    ],
     "title": "Bridge Gate"
    },
    "gym": {
