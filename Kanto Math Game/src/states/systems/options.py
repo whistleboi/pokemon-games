@@ -6,7 +6,7 @@ from src.states.base import GameState
 from src.ui import theme
 from src.ui.panels import CommandButton
 
-TABS = ("MATH", "GAMEPLAY", "TEXT & BATTLE", "SOUND")
+TABS = ("MATH", "GAMEPLAY", "TEXT & BATTLE", "SCREEN & SOUND")
 ROW_H, ROW_GAP = 72, 12
 
 
@@ -61,7 +61,9 @@ class OptionsState(GameState):
                     ("Battle intros", [(True, "On"), (False, "Off")], *self._pref("battle_intros"), "The transition into a battle."),
                     ("Screen fade", [(True, "On"), (False, "Off")], *self._pref("screen_fade"), "The quick fade between screens.")]
         vols = [(n, str(n)) for n in range(11)]
-        return [("Music volume", vols, *self._pref("music"), "0 is silent, 5 is the usual level."),
+        return [("3D camera", [(True, "Live"), (False, "Flat")], *self._pref("live3d"),
+                 "Black 2's towns seen through a moving 3D camera. Flat pictures if your device can't draw 3D."),
+                ("Music volume", vols, *self._pref("music"), "0 is silent, 5 is the usual level."),
                 ("Sound effects", vols, *self._pref("sfx"), "Cries and button sounds. New sounds use this right away.")]
 
     def _top(self):

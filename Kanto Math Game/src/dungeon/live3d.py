@@ -6,6 +6,11 @@ picture stays (available() says which).
 Scenes: assets/b2_3d/<zone>.npz (kanto_handoff/unova_map_tools/export3d.py): per texture its picture, its triangles'
 corners (x, y up, z, in tiles from the zone's top-left, the walk grid's units) and its kind (0 ground, 1 building,
 2 shadow sheet). People are drawn into the same scene as upright sprites (billboards), so buildings hide them.
+
+What the export leaves out, put back on loading (11-21): an atlas's unused space is a key colour (230, 57, 255), drawn
+see-through; a light sheet (a lamp's glow, the piers' clouds: one pale colour on a see-through picture) is translucent on
+the DS and its glow is a quarter circle mirrored into a whole one (its UVs run 0..2), so it is drawn mirrored, faint, after
+everything solid (kind 3).
 """
 import math
 import os
@@ -15,6 +20,8 @@ import pygame
 
 _CTX = {}
 _SCENES = {}
+KEY = (230, 57, 255)   # (an atlas's unused space)
+LIGHT_ALPHA = 0.42     # (a light sheet: the lamps' glow, the clouds)
 
 VERT = """
 #version 330
@@ -30,6 +37,7 @@ FRAG = """
 uniform sampler2D tex;
 uniform int kind;
 uniform vec3 tint;
+uniform float alpha;
 in vec2 v_uv;
 in float v_y;
 out vec4 color;
@@ -37,7 +45,7 @@ void main() {
     vec4 c = texture(tex, v_uv);
     if (c.a < 0.5) discard;
     if (kind == 2) { color = vec4(0.0, 0.0, 0.0, 0.38); return; }   // (a shadow sheet: darkens what's under it)
-    color = vec4(c.rgb * tint, 1.0);
+    color = vec4(c.rgb * tint, alpha);
 }
 """
 
@@ -53,7 +61,10 @@ def _context():
     if "ctx" not in _CTX:
         try:
             import moderngl
-            ctx = moderngl.create_standalone_context()
+            try:
+                ctx = moderngl.create_standalone_context()
+            except Exception:   # (no X display: Linux's EGL, a desktop with Wayland or none)
+                ctx = moderngl.create_standalone_context(backend="egl")
             prog = ctx.program(vertex_shader=VERT, fragment_shader=FRAG)
             _CTX["ctx"], _CTX["prog"], _CTX["mgl"] = ctx, prog, moderngl
         except Exception:
@@ -77,14 +88,14 @@ class Scene:
             i = key[1:]
             verts = data["v" + i].astype("f4")
             lo, hi = np.minimum(lo, verts[:, :3].min(0)), np.maximum(hi, verts[:, :3].max(0))
-            rgba = data["t" + i]
+            kind, rgba, verts = _fix(int(data["k" + i]), data["t" + i], verts)
             tex = ctx.texture((rgba.shape[1], rgba.shape[0]), 4, np.ascontiguousarray(rgba).tobytes())
             tex.filter = (mgl.NEAREST, mgl.NEAREST)
             tex.repeat_x = tex.repeat_y = True
             vbo = ctx.buffer(verts.tobytes())
             vao = ctx.vertex_array(prog, [(vbo, "3f 2f", "pos", "uv")])
-            self.parts.append((int(data["k" + i]), tex, vao))
-        self.parts.sort(key=lambda p: p[0] == 2)   # (shadow sheets last: they darken what's drawn)
+            self.parts.append((kind, tex, vao))
+        self.parts.sort(key=lambda p: (p[0] == 2) + 2 * (p[0] == 3))   # (shadow sheets after the solid, light sheets last)
         self.lo, self.hi = lo, hi
         self.fbo = None
         self._sprites = {}
@@ -112,9 +123,10 @@ class Scene:
         self._sprites[key] = (surf, tex)
         return tex
 
-    def render(self, size, cam, sprites=(), sky=(150, 190, 235)):
+    def render(self, size, cam, sprites=(), sky=(150, 190, 235), shadows=()):
         """The scene from cam (eye, target, fov degrees, up) at size (w, h): a pygame Surface. sprites: [(surface,
-        (x, y, z) of its feet in tiles, height in tiles)] stood upright facing the camera."""
+        (x, y, z) of its feet in tiles, height in tiles)] stood upright facing the camera; shadows: [(x, y, z)] the oval
+        under someone's feet, lying on the ground."""
         ctx, prog = _context(), _CTX["prog"]
         fbo = self._target(size)
         fbo.use()
@@ -124,15 +136,30 @@ class Scene:
         mvp = _mvp(size, cam)
         prog["mvp"].write(mvp.T.astype("f4").tobytes())
         prog["tint"].value = (1.0, 1.0, 1.0)
+        prog["alpha"].value = 1.0
+        light = []
         for kind, tex, vao in self.parts:
+            if kind == 3:
+                light.append((tex, vao))
+                continue
             if kind == 2:
                 ctx.depth_mask = False
             tex.use(0)
             prog["kind"].value = kind
             vao.render()
             ctx.depth_mask = True
+        if shadows:
+            self._draw_shadows(ctx, prog, shadows)
         if sprites:
             self._draw_sprites(ctx, prog, cam, sprites)
+        if light:   # (after people too: a lamp's glow over whoever stands by it)
+            ctx.depth_mask = False
+            prog["kind"].value, prog["alpha"].value = 3, LIGHT_ALPHA
+            for tex, vao in light:
+                tex.use(0)
+                vao.render()
+            ctx.depth_mask = True
+            prog["alpha"].value = 1.0
         raw = fbo.read(components=3)
         return pygame.transform.flip(pygame.image.frombuffer(raw, size, "RGB"), False, True)
 
@@ -162,12 +189,66 @@ class Scene:
             vao.render()
         vao.release(); buf.release()
 
+    def _draw_shadows(self, ctx, prog, spots):
+        """Each an oval on the ground (B2W2's: about two thirds of a tile across), darkening it as the shadow sheets do."""
+        if "shadow" not in _CTX:
+            img = pygame.Surface((32, 32), pygame.SRCALPHA)
+            pygame.draw.ellipse(img, (0, 0, 0, 255), img.get_rect())
+            _CTX["shadow"] = img
+        quads = []
+        for x, y, z in spots:
+            a, b = 0.31, 0.2
+            y += 0.03
+            quads.append([[x - a, y, z - b, 0, 0], [x + a, y, z - b, 1, 0], [x + a, y, z + b, 1, 1],
+                          [x - a, y, z - b, 0, 0], [x + a, y, z + b, 1, 1], [x - a, y, z + b, 0, 1]])
+        buf = ctx.buffer(np.array(quads, "f4").tobytes())
+        vao = ctx.vertex_array(prog, [(buf, "3f 2f", "pos", "uv")])
+        self._sprite(_CTX["shadow"]).use(0)
+        prog["kind"].value = 2
+        ctx.depth_mask = False
+        vao.render()
+        ctx.depth_mask = True
+        vao.release(); buf.release()
+
+    def unproject(self, size, cam, pos, plane_y):
+        """The ground point (x, z) tiles under a point on the picture, on the level plane_y; None off toward the sky."""
+        inv = np.linalg.inv(_mvp(size, cam))
+        nx, ny = pos[0] / size[0] * 2 - 1, 1 - pos[1] / size[1] * 2
+        a, b = inv @ np.array([nx, ny, -1.0, 1.0]), inv @ np.array([nx, ny, 1.0, 1.0])
+        a, b = a[:3] / a[3], b[:3] / b[3]
+        if abs(b[1] - a[1]) < 1e-9:
+            return None
+        t = (plane_y - a[1]) / (b[1] - a[1])
+        if t < 0:
+            return None
+        p = a + (b - a) * t
+        return float(p[0]), float(p[2])
+
     def project(self, size, cam, point):
         """Where a point (tiles) lands on the picture, (x, y) px, or None behind the camera."""
         p = _mvp(size, cam) @ np.array([point[0], point[1], point[2], 1.0])
         if p[3] <= 1e-6:
             return None
         return ((p[0] / p[3] + 1) * size[0] / 2, (1 - p[1] / p[3]) * size[1] / 2)
+
+
+def _fix(kind, rgba, verts):
+    """(kind, picture, corners) with what the export left out put back (see the top)."""
+    rgba = np.array(rgba, dtype=np.uint8)
+    rgba[np.all(rgba[..., :3] == KEY, axis=-1), 3] = 0
+    if kind == 2:
+        return kind, rgba, verts
+    a = rgba[..., 3]
+    seen = rgba[a > 0][:, :3]
+    if not len(seen) or not (a == 0).any() or seen.min() < 190 or len(np.unique(seen, axis=0)) > 2:
+        return kind, rgba, verts
+    verts = verts.copy()
+    for axis, col in ((1, 3), (0, 4)):   # (u: across the picture's width; v: down its height)
+        lo_, hi_ = verts[:, col].min(), verts[:, col].max()
+        if lo_ > -0.05 and 1.5 < hi_ < 2.1:   # (a quarter circle, mirrored into a whole one)
+            rgba = np.concatenate([rgba, np.flip(rgba, axis=axis)], axis=axis)
+            verts[:, col] /= 2
+    return 3, np.ascontiguousarray(rgba), verts
 
 
 def scene(game, zone):
@@ -190,6 +271,19 @@ def _mvp(size, cam):
     yax = np.cross(zax, xax)
     view = np.array([[*xax, -xax @ eye], [*yax, -yax @ eye], [*zax, -zax @ eye], [0, 0, 0, 1]], "f8")
     return proj @ view
+
+
+def framed(target, pitch_deg, fov, px_per_tile, height, yaw_deg=0.0):
+    """Black 2's camera (its pitch and field of view) at the distance where a tile at the target is px_per_tile across on a
+    picture height px tall: the flat map's scale (TILE times the zoom), so the people stay their usual size."""
+    dist = height / (2 * math.tan(math.radians(fov) / 2) * max(1e-3, px_per_tile))
+    return follow(target[0], target[1], target[2], pitch_deg, dist, yaw_deg, fov)
+
+
+def zone_camera(zone_file):
+    """(pitch, field of view) degrees of a zone's own camera (its scene's "cam": pitch, distance, fov, ...)."""
+    cam = np.load(zone_file)["cam"]
+    return float(cam[0]), float(cam[2])
 
 
 def follow(px, py, pz, pitch_deg, dist, yaw_deg=0.0, fov=30.0):

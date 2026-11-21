@@ -4,7 +4,7 @@ import os
 import pygame
 
 DEFAULTS = {"math_timer": "NORMAL", "text_speed": 3, "auto_text": 2, "move_anims": True, "battle_intros": True, "screen_fade": True,
-            "music": 5, "sfx": 5}
+            "music": 5, "sfx": 5, "live3d": True}
 
 
 def get(story, key):
