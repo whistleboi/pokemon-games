@@ -59,7 +59,9 @@ def _fight(b, n=8000):
         elif b.phase == "MENU" and not b.dialogue_box.visible:
             b.open_move_menu()
             names = [m.text.replace(" ", "-") for m in b.move_buttons if m.text]
-            best = max(names, key=lambda n: (_MV.get(n) or {}).get("power") or 0)   # (its strongest attack: the flow is under test)
+            odd = ("FUTURE-SIGHT", "DOOM-DESIRE", "LAST-RESORT", "SOLAR-BEAM", "HYPER-BEAM", "GIGA-IMPACT", "FOCUS-PUNCH", "SKY-ATTACK",
+                   "DREAM-EATER", "SNORE", "BELCH", "FLING", "NATURAL-GIFT", "SYNCHRONOISE", "EXPLOSION", "SELF-DESTRUCT")
+            best = max(names, key=lambda n: 0 if n in odd else ((_MV.get(n) or {}).get("power") or 0))   # (its strongest plain attack)
             b.choose_move(best)
         elif b.dialogue_box.visible:
             _note(b)
@@ -76,6 +78,10 @@ def play(n=3000):
     quiet = 0
     for _ in range(n):
         st = g.current_state
+        if type(st).__name__ == "PokemonPartyMenuState" and getattr(st, "on_select", None):   # (one fainted: send in the next able)
+            nxt = next((i for i, p in enumerate(story.player_team) if p and p.current_hp > 0 and p is not getattr(getattr(st, "previous_state", None), "player_pokemon", None)), 0)
+            st.on_select(nxt)
+            continue
         if hasattr(st, "math_ui") and hasattr(st, "phase"):
             _fight(st); quiet = 0
         elif getattr(st, "npc_active", False):

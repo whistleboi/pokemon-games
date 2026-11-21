@@ -76,6 +76,15 @@
     ]
   },
   "figures": {
+    "PYRITE_CAVE:Cipher Peon Mirakle B.": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_CAVE:Miror B. Peon Reath": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_CAVE:Miror B. Peon Ferma": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
     "AGATE_VILLAGE:Fun Old Man Skof": {
       "sheet": "orre_trainer_fun_old_man.png"
     },

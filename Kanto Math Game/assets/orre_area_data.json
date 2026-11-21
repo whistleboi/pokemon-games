@@ -2216,6 +2216,210 @@
           "color": "GREEN"
         },
         {
+          "text": "Cipher Peon Mirakle B.",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_mirakle_b",
+          "condition": [
+            "orre_miror_cave",
+            "not:beat_orre_champion"
+          ],
+          "event": {
+            "flag": "orre_mirakle_b",
+            "lines": [
+              "Mirakle B.: I'm Mirakle B.! Miror B.'s one true successor! And one day I'll have an afro just like his!"
+            ],
+            "battle": {
+              "name": "Cipher Peon Mirakle B.",
+              "class": "CIPHER_PEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                185,
+                101,
+                264,
+                119,
+                28
+              ],
+              "levels": [
+                39,
+                39,
+                39,
+                39,
+                39
+              ],
+              "team_moves": [
+                [
+                  "MIMIC",
+                  "FLAIL",
+                  "SELF-DESTRUCT",
+                  "PROTECT"
+                ],
+                [
+                  "SPARK",
+                  "LIGHT-SCREEN",
+                  "EXPLOSION",
+                  "PROTECT"
+                ],
+                [
+                  "HEADBUTT",
+                  "ROAR",
+                  "FLAIL",
+                  "PROTECT"
+                ],
+                [
+                  "WATERFALL",
+                  "HORN-ATTACK",
+                  "FLAIL",
+                  "PROTECT"
+                ],
+                [
+                  "SLASH",
+                  "AERIAL-ACE",
+                  "FLAIL",
+                  "PROTECT"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/miror_b_battle",
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Mirakle B.: No! My dream afro... you've crushed it!",
+                  "Mirakle B.: I don't care what anyone says. I'm still Miror B.'s heir!"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "Miror B. Peon Reath",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_cave_reath",
+          "condition": "beat_orre_champion",
+          "event": {
+            "flag": "orre_cave_reath",
+            "lines": [
+              "Miror B. Peon Reath: Miror B.'s gone, so this cave is ours now. And we've been training!"
+            ],
+            "battle": {
+              "name": "Miror B. Peon Reath",
+              "class": "MIROR_BPEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                119,
+                168,
+                370
+              ],
+              "levels": [
+                54,
+                53,
+                53
+              ],
+              "team_moves": [
+                [
+                  "AGILITY",
+                  "WATERFALL",
+                  "ICE-BEAM",
+                  "HORN-ATTACK"
+                ],
+                [
+                  "AGILITY",
+                  "LEECH-LIFE",
+                  "FURY-SWIPES",
+                  "NIGHT-SHADE"
+                ],
+                [
+                  "AGILITY",
+                  "DIVE",
+                  "SWEET-KISS",
+                  "FLAIL"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/cipher_battle",
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Miror B. Peon Reath: Still not enough..."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "Miror B. Peon Ferma",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_cave_ferma",
+          "condition": "beat_orre_champion",
+          "event": {
+            "flag": "orre_cave_ferma",
+            "lines": [
+              "Miror B. Peon Ferma: You again? This time we're ready for you!"
+            ],
+            "battle": {
+              "name": "Miror B. Peon Ferma",
+              "class": "MIROR_BPEON",
+              "sprite": "orre_cipher_peon.png",
+              "team": [
+                319,
+                193,
+                190,
+                162
+              ],
+              "levels": [
+                50,
+                53,
+                52,
+                51
+              ],
+              "team_moves": [
+                [
+                  "AGILITY",
+                  "WATERFALL",
+                  "BITE",
+                  "SKULL-BASH"
+                ],
+                [
+                  "WING-ATTACK",
+                  "SONIC-BOOM",
+                  "SUPERSONIC",
+                  "REVERSAL"
+                ],
+                [
+                  "AGILITY",
+                  "SWIFT",
+                  "ASTONISH"
+                ],
+                [
+                  "QUICK-ATTACK",
+                  "ASSIST",
+                  "HELPING-HAND",
+                  "FOLLOW-ME"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0
+              },
+              "music": "orre/cipher_battle",
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Miror B. Peon Ferma: Ugh! Miror B. would be so disappointed."
+                ]
+              }
+            }
+          }
+        },
+        {
           "text": "Snatch box",
           "action": "EVENT",
           "flag_condition": "not orre_miror_tm_snatch",

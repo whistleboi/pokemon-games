@@ -287025,7 +287025,7 @@
      "c.cc......cccccccccc",
      "c.cc.......c.c.c.c.c",
      "c......c....N.N....c",
-     "c.....ccc.........cc",
+     "c.....ccc...N..NN.cc",
      "c......c..........cc",
      "cccccccc1ccccccccccc",
      "cccccccccccccccccccc"
@@ -287043,7 +287043,10 @@
      "Macho Brace",
      "Ein File P",
      "Snatch box",
-     "PYRITE CAVE: MIROR B."
+     "PYRITE CAVE: MIROR B.",
+     "Miror B. Peon Ferma",
+     "Cipher Peon Mirakle B.",
+     "Miror B. Peon Reath"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -287107,7 +287110,10 @@
    "PYRITE CAVE: MIROR B.": 3,
    "Snatch box": 3,
    "Macho Brace": 3,
-   "Ein File P": 3
+   "Ein File P": 3,
+   "Cipher Peon Mirakle B.": 3,
+   "Miror B. Peon Reath": 3,
+   "Miror B. Peon Ferma": 3
   },
   "theme": "tunnel"
  },

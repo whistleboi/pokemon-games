@@ -58,7 +58,9 @@ def _fight(b, n=8000):
         elif b.phase == "MENU" and not b.dialogue_box.visible:
             b.open_move_menu()
             names = [m.text.replace(" ", "-") for m in b.move_buttons if m.text]
-            best = max(names, key=lambda n: (_MV.get(n) or {}).get("power") or 0)   # (its strongest attack: the flow is under test)
+            odd = ("FUTURE-SIGHT", "DOOM-DESIRE", "LAST-RESORT", "SOLAR-BEAM", "HYPER-BEAM", "GIGA-IMPACT", "FOCUS-PUNCH", "SKY-ATTACK",
+                   "DREAM-EATER", "SNORE", "BELCH", "FLING", "NATURAL-GIFT", "SYNCHRONOISE", "EXPLOSION", "SELF-DESTRUCT")
+            best = max(names, key=lambda n: 0 if n in odd else ((_MV.get(n) or {}).get("power") or 0))   # (its strongest plain attack)
             b.choose_move(best)
         elif b.dialogue_box.visible:
             _note(b)
@@ -75,6 +77,10 @@ def play(n=3000):
     quiet = 0
     for _ in range(n):
         st = g.current_state
+        if type(st).__name__ == "PokemonPartyMenuState" and getattr(st, "on_select", None):   # (one fainted: send in the next able)
+            nxt = next((i for i, p in enumerate(story.player_team) if p and p.current_hp > 0 and p is not getattr(getattr(st, "previous_state", None), "player_pokemon", None)), 0)
+            st.on_select(nxt)
+            continue
         if hasattr(st, "math_ui") and hasattr(st, "phase"):
             _fight(st); quiet = 0
         elif getattr(st, "npc_active", False):
@@ -222,6 +228,33 @@ for it, inv, n in (("Snatch box", "TM299", 1), ("Macho Brace", "MACHO_BRACE", 1)
     route("PYRITE_CAVE", "PYRITE_TOWN")
     meet(g.current_state, it)
     check(story.inventory.get(inv, 0) == before + n, f"{it} picked up")
+
+route("PYRITE_CAVE", "PYRITE_TOWN")
+meet(g.current_state, "Cipher Peon Mirakle B.")
+check(F.get("orre_mirakle_b"), "Mirakle B., Miror B.'s would-be successor, waits in his room afterwards")
+
+
+def _here(area, came, names):
+    p = route(area, came)
+    found = set()
+    for i in range(p.run.n_floors):
+        for m in p.run.made(i).movers:
+            pl = m.payload
+            n = pl[1].get("name") if isinstance(pl, tuple) and len(pl) > 1 and isinstance(pl[1], dict) else (pl.get("text") if isinstance(pl, dict) else None)
+            if n in names:
+                found.add(n)
+    return found
+
+
+F["beat_orre_champion"] = True
+F.pop("orre_mirakle_b", None)
+seen = _here("PYRITE_CAVE", "PYRITE_TOWN", {"Cipher Peon Mirakle B.", "Miror B. Peon Reath", "Miror B. Peon Ferma"})
+check(seen == {"Miror B. Peon Reath", "Miror B. Peon Ferma"}, f"after Evice: Reath and Ferma in his place, not Mirakle B. ({sorted(seen)})")
+for who, flag in (("Miror B. Peon Reath", "orre_cave_reath"), ("Miror B. Peon Ferma", "orre_cave_ferma")):
+    route("PYRITE_CAVE", "PYRITE_TOWN")
+    meet(g.current_state, who)
+    check(F.get(flag), f"{who}'s rematch")
+F.pop("beat_orre_champion", None)
 
 print("3) Back in Pyrite: Plusle, Fateen, the ride north")
 t = town("PYRITE_TOWN", "PYRITE_CAVE")
