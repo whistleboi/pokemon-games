@@ -298,6 +298,10 @@ class BagState(GameState):
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_pp))
             return
+        if item_key == "MIROR_RADAR" and self.context != "battle":   # (where Miror B. is today: src/world/miror_radar.py)
+            from src.world import miror_radar
+            self.game.show_dialogue(miror_radar.radar_lines(self.game))
+            return
         if item_key == "TIME_FLUTE" and self.context != "battle":  # (Orre: Vander's flute purifies one Shadow Pokemon at once, a single use)
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_time_flute))

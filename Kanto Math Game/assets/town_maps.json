@@ -283021,20 +283021,20 @@
    "cccccccccccccccccccccccc....cccccccccccccccccc",
    "ccccccccccccccccccccBDBc.....ccCDDCcc..ccccccc",
    "ccccccccccccccccccccc....c.........cc.cccccccc",
-   "ccccccccccccccccccccc..................ccccccc",
-   "ccccccccccccccccccc...................cccccccc",
+   "ccccccccccccccccccccc.......N..........ccccccc",
+   "ccccccccccccccccccc............N......cccccccc",
    "ccccccccccccccccccc........cccc.......cccccccc",
    "ccccccccccccccccccc.......cccccc......cccccccc",
    "cccccccccccccccc.N........ccccccc.cccccccccccc",
    "cccccccccccccccN....N.....cccccccccccccccccccc",
-   "cccccccccccccccN..N...N...cccccccccccccccccccc",
+   "cccccccccccccccN..N...N.N.cccccccccccccccccccc",
    "ccccccccccccccc.N..N.....ccccccccccccccccccccc",
    "ccccccccccccccc......N..cccccccccccccccccccccc",
-   "cccccccccccccccccc......cccccccccccccccccccccc",
-   "ccccccccccccccccccc.....cccccccccccccccccccccc",
-   "ccccccccccccccccccc.....cccccccccccccccccccccc",
+   "cccccccccccccccccc.N....cccccccccccccccccccccc",
+   "ccccccccccccccccccc..N..cccccccccccccccccccccc",
+   "ccccccccccccccccccc.N...cccccccccccccccccccccc",
    "ccccccccccccccccccc....ccccccccccccccccccccccc",
-   "ccccccccccccccccccc...cccccccccccccccccccccccc",
+   "ccccccccccccccccccc.N.cccccccccccccccccccccccc",
    "cccccccccccccccccc....cccccccccccccccccccccccc",
    "cccccccccccccccccc....cccccccccccccccccccccccc",
    "cccccccccccccccccc....cccccccccccccccccccccccc",
@@ -283184,6 +283184,129 @@
     },
     "condition": "has_pyrite_badge",
     "flag_condition": "not orre_beat_nore"
+   },
+   {
+    "text": "Chaser Labet",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_sq_67",
+       "lines": [
+        "Chaser Labet: My team's all rare finds. Bet you've never seen them."
+       ],
+       "battle": {
+        "name": "Chaser Labet",
+        "class": "CHASER",
+        "sprite": "orre_chaser_f.png",
+        "team": [
+         220,
+         371,
+         198,
+         366
+        ],
+        "levels": [
+         49,
+         49,
+         49,
+         49
+        ],
+        "team_moves": [
+         [
+          "POWDER-SNOW",
+          "ODOR-SLEUTH",
+          "TACKLE"
+         ],
+         [
+          "HEADBUTT",
+          "LEER",
+          "BITE",
+          "RAGE"
+         ],
+         [
+          "PURSUIT",
+          "ASTONISH",
+          "PECK"
+         ],
+         [
+          "IRON-DEFENSE",
+          "WHIRLPOOL",
+          "WATER-GUN",
+          "CLAMP"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+32 (disc ace 17)",
+        "dialogue": {
+         "player_won": [
+          "Chaser Labet: Rare finds, common loss."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Chaser Labet: Rare finds, common loss."
+     ]
+    },
+    "condition": "xd_lovrina_beaten"
+   },
+   {
+    "text": "Bodybuilder Doby",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_sq_68",
+       "lines": [
+        "Bodybuilder Doby: Muscles! Battles! Muscles!"
+       ],
+       "battle": {
+        "name": "Bodybuilder Doby",
+        "class": "BODYBUILDER",
+        "sprite": "orre_bodybuilder.png",
+        "team": [
+         66,
+         72
+        ],
+        "levels": [
+         48,
+         48
+        ],
+        "team_moves": [
+         [
+          "KARATE-CHOP",
+          "FOCUS-ENERGY",
+          "LIGHT-SCREEN",
+          "LOW-KICK"
+         ],
+         [
+          "CONSTRICT",
+          "SUPERSONIC",
+          "POISON-STING"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+31 (disc ace 17)",
+        "dialogue": {
+         "player_won": [
+          "Bodybuilder Doby: ...Muscles."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Bodybuilder Doby: ...Muscles."
+     ]
+    },
+    "condition": "xd_lovrina_beaten"
    },
    {
     "text": "Chaser Emok",
@@ -283512,6 +283635,76 @@
     }
    },
    {
+    "text": "Hunter Raling",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_sq_66",
+       "lines": [
+        "Hunter Raling: I hunt strong trainers. Found one!"
+       ],
+       "battle": {
+        "name": "Hunter Raling",
+        "class": "HUNTER",
+        "sprite": "orre_hunter_f.png",
+        "team": [
+         263,
+         293,
+         190,
+         206
+        ],
+        "levels": [
+         48,
+         48,
+         48,
+         48
+        ],
+        "team_moves": [
+         [
+          "ODOR-SLEUTH",
+          "SAND-ATTACK",
+          "TACKLE",
+          "TAIL-WHIP"
+         ],
+         [
+          "UPROAR",
+          "HOWL",
+          "ASTONISH"
+         ],
+         [
+          "SCRATCH",
+          "ASTONISH",
+          "SAND-ATTACK",
+          "TAIL-WHIP"
+         ],
+         [
+          "ROCK-SMASH",
+          "THIEF",
+          "DEFENSE-CURL",
+          "RAGE"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+31 (disc ace 17)",
+        "dialogue": {
+         "player_won": [
+          "Hunter Raling: You're the hunter, not me."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Hunter Raling: You're the hunter, not me."
+     ]
+    },
+    "condition": "xd_lovrina_beaten"
+   },
+   {
     "text": "Roller Boy Lon",
     "action": "EVENT",
     "event": {
@@ -283699,6 +283892,267 @@
       "Rider Vant: Ugh, you're tough."
      ]
     }
+   },
+   {
+    "text": "Worker Dobit",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_sq_63",
+       "lines": [
+        "Worker Dobit: On my break! A quick battle, then back to work."
+       ],
+       "battle": {
+        "name": "Worker Dobit",
+        "class": "WORKER",
+        "sprite": "pt_worker.png",
+        "team": [
+         325,
+         81,
+         322
+        ],
+        "levels": [
+         48,
+         48,
+         48
+        ],
+        "team_moves": [
+         [
+          "SPLASH",
+          "ODOR-SLEUTH",
+          "PSYWAVE",
+          "REFLECT"
+         ],
+         [
+          "THUNDER-SHOCK",
+          "SONIC-BOOM",
+          "METAL-SOUND",
+          "TACKLE"
+         ],
+         [
+          "EMBER",
+          "TACKLE",
+          "GROWL"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+32 (disc ace 16)",
+        "dialogue": {
+         "player_won": [
+          "Worker Dobit: Break's over."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Worker Dobit: Break's over."
+     ]
+    },
+    "condition": "xd_lovrina_beaten"
+   },
+   {
+    "text": "Chaser Finol",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_sq_64",
+       "lines": [
+        "Chaser Finol: The duel square's busy again since Cipher came back. Battle!"
+       ],
+       "battle": {
+        "name": "Chaser Finol",
+        "class": "CHASER",
+        "sprite": "orre_chaser_f.png",
+        "team": [
+         353,
+         165,
+         223,
+         175
+        ],
+        "levels": [
+         47,
+         47,
+         47,
+         48
+        ],
+        "team_moves": [
+         [
+          "NIGHT-SHADE",
+          "SCREECH",
+          "KNOCK-OFF"
+         ],
+         [
+          "COMET-PUNCH",
+          "SUPERSONIC",
+          "TACKLE",
+          "LIGHT-SCREEN"
+         ],
+         [
+          "LOCK-ON",
+          "WATER-GUN"
+         ],
+         [
+          "PECK",
+          "SWEET-KISS",
+          "CHARM"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+31 (disc ace 17)",
+        "dialogue": {
+         "player_won": [
+          "Chaser Finol: Busy and tough!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Chaser Finol: Busy and tough!"
+     ]
+    },
+    "condition": "xd_lovrina_beaten"
+   },
+   {
+    "text": "Rogue Cail",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_sq_62",
+       "lines": [
+        "Rogue Cail: Five years, and Pyrite's still my town. Let's see what you've learned!"
+       ],
+       "battle": {
+        "name": "Rogue Cail",
+        "class": "ROGUE",
+        "sprite": "orre_snagem_grunt.png",
+        "team": [
+         280,
+         209,
+         273,
+         228
+        ],
+        "levels": [
+         49,
+         49,
+         49,
+         49
+        ],
+        "team_moves": [
+         [
+          "GROWL",
+          "CONFUSION",
+          "LIGHT-SCREEN"
+         ],
+         [
+          "BITE",
+          "TACKLE",
+          "ROAR",
+          "SCARY-FACE"
+         ],
+         [
+          "BIDE",
+          "BULLET-SEED",
+          "GROWTH",
+          "HARDEN"
+         ],
+         [
+          "BITE",
+          "EMBER",
+          "ROAR",
+          "LEER"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "music": "orre/cipher_battle",
+        "fit": "+33 (disc ace 16)",
+        "dialogue": {
+         "player_won": [
+          "Rogue Cail: Heh. You've still got it."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Rogue Cail: Heh. You've still got it."
+     ]
+    },
+    "condition": "xd_lovrina_beaten"
+   },
+   {
+    "text": "Rider Dert",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_sq_65",
+       "lines": [
+        "Rider Dert: I ride in from the desert every day just for this."
+       ],
+       "battle": {
+        "name": "Rider Dert",
+        "class": "RIDER",
+        "sprite": "orre_rider.png",
+        "team": [
+         218,
+         177,
+         43
+        ],
+        "levels": [
+         48,
+         48,
+         48
+        ],
+        "team_moves": [
+         [
+          "ROCK-THROW",
+          "EMBER",
+          "SMOG",
+          "YAWN"
+         ],
+         [
+          "LIGHT-SCREEN",
+          "LEER",
+          "PECK"
+         ],
+         [
+          "ABSORB",
+          "STUN-SPORE",
+          "SWEET-SCENT"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+32 (disc ace 16)",
+        "dialogue": {
+         "player_won": [
+          "Rider Dert: Worth the ride."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Rider Dert: Worth the ride."
+     ]
+    },
+    "condition": "xd_lovrina_beaten"
    },
    {
     "text": "Shopper",
@@ -286247,6 +286701,17 @@
         },
         {
          "requires": [
+          "xd_bonsly_asked",
+          "not:xd_perr_grandpa"
+         ],
+         "flag": "xd_perr_grandpa",
+         "lines": [
+          "Perr: Cross the deep sand? Grandpa could do it - he rebuilds engines. He's at Kaminko's, down on the crane floor.",
+          "Perr: Chobin guards the way down. Tell him I sent you!"
+         ]
+        },
+        {
+         "requires": [
           "xd_makan_back",
           "not:has_item:MACHINE_PART",
           "not:xd_machine_part_given"
@@ -287185,8 +287650,12 @@
           "not:xd_krane_home"
          ],
          "flag": "xd_krane_home",
+         "gift_item": {
+          "XD_DATA_ROM": 1
+         },
          "lines": [
-          "Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it."
+          "Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it.",
+          "Professor Krane: Wes, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."
          ]
         }
        ],
@@ -287974,14 +288443,14 @@
      "cccccccccccccccc",
      "cccccccccccccccc",
      "cccc.cc.cc.ccccc",
-     "ccc........c.ccc",
+     "ccc...N....c.ccc",
      "c.............cc",
      "cc.............c",
      "cc.............c",
      "cc.....c.......c",
      "cc............cc",
      "ccc..N..N.....cc",
-     "ccc..........ccc",
+     "ccc........N.ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -287998,8 +288467,10 @@
     "links": {},
     "parts": true,
     "people": [
+     "WANDERER MIROR B.",
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "MIROR B. AT THE CAVE"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -288012,7 +288483,74 @@
      },
      "_signs_in_picture": true,
      "_buildings_in_picture": true
-    }
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "xd_spot_cave",
+       "not:xd_cave_folly"
+      ],
+      "flag": "xd_cave_folly",
+      "cast": [
+       {
+        "sheet": "orre_folly.png",
+        "from": [
+         6,
+         14
+        ],
+        "to": [
+         7,
+         12
+        ],
+        "face": "r",
+        "stay": true,
+        "lines": [
+         "Folly: This Miror B. Radar finds Miror B. anywhere, Trudly! He's gonna take us back for sure!"
+        ]
+       },
+       {
+        "sheet": "orre_trainer_burglar.png",
+        "from": [
+         9,
+         14
+        ],
+        "to": [
+         9,
+         12
+        ],
+        "face": "l",
+        "stay": true,
+        "lines": [
+         "Trudly: It's beeping! He's close! ...Huh? Who's that kid?"
+        ]
+       },
+       {
+        "as": 0,
+        "lines": [
+         "Folly: Uh-oh. Boss, it's that snagging kid!"
+        ],
+        "leave_path": [
+         [
+          6,
+          18
+         ]
+        ]
+       },
+       {
+        "as": 1,
+        "lines": [],
+        "leave_path": [
+         [
+          9,
+          18
+         ]
+        ],
+        "concurrent": true
+       }
+      ]
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -288020,7 +288558,9 @@
   ],
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
-   "SNAG AGAIN": 0
+   "SNAG AGAIN": 0,
+   "MIROR B. AT THE CAVE": 0,
+   "WANDERER MIROR B.": 0
   },
   "theme": "tunnel"
  },
@@ -288033,12 +288573,12 @@
      "cccc.cc.cc.ccccc",
      "ccc........c.ccc",
      "c.............cc",
-     "cc.............c",
+     "cc........N....c",
      "cc.............c",
      "cc.....c.......c",
      "cc............cc",
-     "ccc...........cc",
-     "ccc..........ccc",
+     "ccc........N..cc",
+     "ccc..N.......ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -288054,7 +288594,11 @@
     },
     "links": {},
     "parts": true,
-    "people": [],
+    "people": [
+     "WANDERER MIROR B.",
+     "REPORTER POFTY",
+     "DUKING AT THE ROCK"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -288086,7 +288630,11 @@
   "floor_names": [
    "Rock Poke Spot"
   ],
-  "figure_floors": {},
+  "figure_floors": {
+   "DUKING AT THE ROCK": 0,
+   "REPORTER POFTY": 0,
+   "WANDERER MIROR B.": 0
+  },
   "theme": "tunnel"
  },
  "OASIS_POKE_SPOT": {
@@ -288099,11 +288647,11 @@
      "cccccc....cc..cccc",
      "cccc........c.cccc",
      "ccc...........cccc",
-     "ccc............ccc",
+     "ccc...N........ccc",
      "cc.............ccc",
      "ccc............ccc",
      "cc......c......ccc",
-     "cc...............c",
+     "cc.....N.........c",
      "c..............ccc",
      "ccc.............cc",
      "ccccc........ccccc",
@@ -288121,7 +288669,10 @@
     },
     "links": {},
     "parts": true,
-    "people": [],
+    "people": [
+     "WANDERER MIROR B.",
+     "DUKING AT THE OASIS"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -288153,7 +288704,10 @@
   "floor_names": [
    "Oasis Poke Spot"
   ],
-  "figure_floors": {},
+  "figure_floors": {
+   "DUKING AT THE OASIS": 0,
+   "WANDERER MIROR B.": 0
+  },
   "theme": "tunnel"
  },
  "RELIC_CAVE": {
@@ -295097,7 +295651,7 @@
      "c..c....cc.N..c............c",
      "c..ccc..cc..N..............c",
      "c..ccc.ccc....c...........1c",
-     "c.............c............c",
+     "c.............c.......N....c",
      "cccccccccccccvcccccccccccccc"
     ],
     "exits": {
@@ -295113,7 +295667,8 @@
     "parts": true,
     "people": [
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "BATTLE CD 24"
     ],
     "trainer_spots": [
      "Cipher Peon Rett"
@@ -295150,12 +295705,12 @@
      "cccccccccccccccccccccccccccc",
      "c.cccccc..c.ccccc...c..cc..c",
      "c.cccccc..c.ccccc...c.cccc.c",
-     "c...X.....c.........c..X...c",
-     "c..........................c",
+     "c...X.....c....N....c..X...c",
+     "c...N......................c",
      "cccccc.ccccccccc.ccccccccc.c",
      "cccccc.ccccccccc.ccccccccc.c",
-     "c..........................c",
-     "c1........c.........c.....1c",
+     "c..............N.......X...c",
+     "c1........c.N.......c.....1c",
      "c.........c....X....c......c",
      "cccccccccccccccccccccccccccc"
     ],
@@ -295173,10 +295728,16 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "BATTLE CD 21",
+     "SECC",
+     "ETHER",
+     "KANDEE"
+    ],
     "trainer_spots": [
      "Cipher Peon Mocor",
      "Cipher Peon Torkin",
+     "Cipher Peon Lobar",
      "Cipher Peon Elox"
     ],
     "roofs": {
@@ -295210,14 +295771,14 @@
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
      "c.cccccc..c.ccccc...c..cc..c",
-     "c.cccccc..c.ccccc...c.cccc.c",
+     "c.ccccccN.c.ccccc...c.cccc.c",
      "c...X.....c.........c..X...c",
-     "c..........................c",
+     "c.............N....X.......c",
      "cccccc.ccccccccc.ccccccccc.c",
      "cccccc.ccccccccc.ccccccccc.c",
      "c..........................c",
      "c1........c....X....c.....1c",
-     "c.........c.........c......c",
+     "c......N..c.........c......c",
      "cccccccccccccccccccccccccccc"
     ],
     "exits": {},
@@ -295234,10 +295795,15 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "HP UP",
+     "REVIVE",
+     "KANDEE'S MOTHER"
+    ],
     "trainer_spots": [
      "Cipher Peon Rixor",
      "Cipher Peon Mesin",
+     "Cipher Peon Feldas",
      "Cipher Peon Dilly"
     ],
     "roofs": {
@@ -295270,10 +295836,10 @@
     "art": [
      "cccccccccccccccccccc",
      "cccccccccccccccccccc",
-     "c......cccccc......c",
+     "c......cccccc.N....c",
      "c.....NccccXc......c",
      "c..................c",
-     "c1..........N......c",
+     "c1....N.....N......c",
      "cccccccccccccccccccc"
     ],
     "exits": {},
@@ -295286,8 +295852,10 @@
     },
     "parts": true,
     "people": [
+     "BONSLY'S GRANDFATHER",
      "BATTLE CIPHER CMDR EXOL",
-     "BONSLY'S GIRL"
+     "BONSLY'S GIRL",
+     "NETT"
     ],
     "trainer_spots": [
      "Cipher Peon Edlos"
@@ -295328,15 +295896,27 @@
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
+   "BATTLE CD 24": 0,
    "Cipher Peon Rett": 0,
+   "SECC": 1,
+   "KANDEE": 1,
+   "ETHER": 1,
+   "BATTLE CD 21": 1,
+   "Cipher Peon Lobar": 1,
    "Cipher Peon Mocor": 1,
    "Cipher Peon Torkin": 1,
    "Cipher Peon Elox": 1,
+   "KANDEE'S MOTHER": 2,
+   "HP UP": 2,
+   "REVIVE": 2,
+   "Cipher Peon Feldas": 2,
    "Cipher Peon Rixor": 2,
    "Cipher Peon Mesin": 2,
    "Cipher Peon Dilly": 2,
    "BATTLE CIPHER CMDR EXOL": 3,
    "BONSLY'S GIRL": 3,
+   "NETT": 3,
+   "BONSLY'S GRANDFATHER": 3,
    "Cipher Peon Edlos": 3
   },
   "theme": "tunnel"
@@ -295420,8 +296000,8 @@
      "c........?.........?.....cc",
      "c........c....N....c.....cc",
      "cccc?ccccc.........ccc?cccc",
-     "c........c.........c.....cc",
-     "c...N....c.........c....1cc",
+     "c......N.c.........c.....cc",
+     "c...N....c...N.....c....1cc",
      "ccccccccccccccccccccccccccc"
     ],
     "exits": {},
@@ -295445,7 +296025,9 @@
     "parts": true,
     "people": [
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "BATTLE CD 18",
+     "SNAG AGAIN",
+     "IRON"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -295509,7 +296091,74 @@
      },
      "_signs_in_picture": true,
      "_buildings_in_picture": true
-    }
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "not:xd_libra_gorigan"
+      ],
+      "flag": "xd_libra_gorigan",
+      "cast": [
+       {
+        "sheet": "orre_trainer_bodybuilder.png",
+        "from": [
+         10,
+         3
+        ],
+        "to": [
+         10,
+         4
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "A huge man in a Cipher coat is shouting at two peons.",
+         "Cipher Admin Gorigan: You LOST a Pokemon? On a ship stuck in the sand?! Find it, or else!"
+        ]
+       },
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         12,
+         3
+        ],
+        "to": [
+         12,
+         4
+        ],
+        "face": "u",
+        "stay": true,
+        "lines": [
+         "Cipher Peon Snidle: S-sorry, Gorigan! ...Hey, a kid! Smarton, get them!"
+        ]
+       },
+       {
+        "as": 0,
+        "lines": [
+         "Gorigan: Hmph. Deal with it. I've got bigger things to do in the Key Lair."
+        ],
+        "leave_path": [
+         [
+          2,
+          4
+         ]
+        ]
+       },
+       {
+        "as": 1,
+        "lines": [],
+        "leave_path": [
+         [
+          2,
+          4
+         ]
+        ],
+        "concurrent": true
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -295520,7 +296169,7 @@
      "c......?...c........c",
      "c..........c....?...c",
      "cccc?ccccccc........c",
-     "c...........?.......c",
+     "c........N..?.......c",
      "c...................c",
      "ccccccccccccccccccccc"
     ],
@@ -295538,7 +296187,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "PP UPS"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -295575,7 +296226,7 @@
      "c......?...c........c",
      "c..........c....?...c",
      "cccc?ccccccc........c",
-     "c...........?.......c",
+     "c........N..?.......c",
      "c...................c",
      "ccccccccccccccccccccc"
     ],
@@ -295593,7 +296244,9 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "MAX ETHER"
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -295625,10 +296278,10 @@
     "art": [
      "cccccccccccccccccccccc",
      "cccccccccccccccccccccc",
-     "c1.........c.........c",
-     "c..........?.........c",
+     "c1.......N.c.........c",
+     "c..........?...N.....c",
      "c..........c.........c",
-     "c........N.c.....N...c",
+     "c..........c.........c",
      "cccccccccccccccccccccc"
     ],
     "exits": {},
@@ -295669,8 +296322,12 @@
   "figure_floors": {
    "SNAG SHADOW POKEMON": 1,
    "SNAG AGAIN": 1,
+   "BATTLE CD 18": 1,
+   "IRON": 1,
    "REST IN THE BED": 2,
    "Cipher Peon Smarton": 2,
+   "PP UPS": 3,
+   "MAX ETHER": 4,
    "BONSLY": 5,
    "FIRE STONE": 5
   },
@@ -295689,7 +296346,7 @@
      "..........ccccccc.........",
      ".......c..c.ccccc.........",
      "..........c1ccccc.........",
-     "............N.............",
+     "............N.N...........",
      "..........................",
      "..........................",
      "..........................",
@@ -295711,7 +296368,8 @@
     },
     "parts": true,
     "people": [
-     "KAMINKO'S HOUSE: CHOBIN"
+     "KAMINKO'S HOUSE: CHOBIN",
+     "CHOBIN AGAIN"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -295808,18 +296466,18 @@
      "ccccccccccccccccccccccccccc",
      "c1..ccccccccccc...ccccccccc",
      "c...cccc1..cccc...ccccccccc",
-     "c..1cccc...cccc1.1cccc..1cc",
-     "cccccccc..1ccccccccccc...cc",
+     "c..1cccc.N.cccc1.1cccc..1cc",
+     "cccccccc..1ccccccccccc.N.cc",
      "cccccccccccccccccccccc1..cc",
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc",
      "cc..1ccccccccccccc1..cccccc",
-     "cc...ccccc...ccccc...cccccc",
+     "cc...ccccc.N.ccccc...cccccc",
      "cc1..ccccc...ccccc..1cccccc",
      "cccccccccc..1cccccccccc1..c",
      "ccccccccccccccccccccccc.N.c",
-     "ccccccccccccccccccccccc...c",
+     "cccccccccccccccccccccccN..c",
      "ccccccccccccccccccccccccccc"
     ],
     "exits": {},
@@ -295897,7 +296555,11 @@
     },
     "parts": true,
     "people": [
-     "The Robo Kyogre"
+     "BATTLE CD 05",
+     "BATTLE CD 11",
+     "BATTLE CD 29",
+     "The Robo Kyogre",
+     "PERR'S GRANDFATHER"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -295989,11 +296651,16 @@
   ],
   "figure_floors": {
    "KAMINKO'S HOUSE: CHOBIN": 0,
+   "CHOBIN AGAIN": 0,
    "Dr. Kaminko": 1,
    "MAKAN": 1,
    "BATTLE CD 49": 1,
    "BATTLE CD 50": 1,
    "The Robo Kyogre": 2,
+   "PERR'S GRANDFATHER": 2,
+   "BATTLE CD 05": 2,
+   "BATTLE CD 11": 2,
+   "BATTLE CD 29": 2,
    "Jovi": 3,
    "BATTLE CD 23": 3
   },

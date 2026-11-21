@@ -76,6 +76,87 @@
     ]
   },
   "figures": {
+    "SS_LIBRA:FIRE STONE": {
+      "item": "FIRE_STONE"
+    },
+    "KAMINKO_HOUSE:PERR'S GRANDFATHER": {
+      "sheet": "orre_npc_10.png"
+    },
+    "KAMINKO_HOUSE:BATTLE CD 05": {
+      "item": "BATTLE_CD_05"
+    },
+    "KAMINKO_HOUSE:BATTLE CD 11": {
+      "item": "BATTLE_CD_11"
+    },
+    "KAMINKO_HOUSE:BATTLE CD 29": {
+      "item": "BATTLE_CD_29"
+    },
+    "CAVE_POKE_SPOT:MIROR B. AT THE CAVE": {
+      "sheet": "orre_trainer_miror_b.png"
+    },
+    "CAVE_POKE_SPOT:WANDERER MIROR B.": {
+      "sheet": "orre_trainer_miror_b.png"
+    },
+    "ORRE_POKE_SPOTS:DUKING AT THE ROCK": {
+      "sheet": "orre_npc_duking.png"
+    },
+    "ORRE_POKE_SPOTS:REPORTER POFTY": {
+      "sheet": "orre_npc_04.png"
+    },
+    "ORRE_POKE_SPOTS:WANDERER MIROR B.": {
+      "sheet": "orre_trainer_miror_b.png"
+    },
+    "OASIS_POKE_SPOT:DUKING AT THE OASIS": {
+      "sheet": "orre_npc_duking.png"
+    },
+    "OASIS_POKE_SPOT:WANDERER MIROR B.": {
+      "sheet": "orre_trainer_miror_b.png"
+    },
+    "XD_ONBS:BATTLE CD 24": {
+      "item": "BATTLE_CD_24"
+    },
+    "XD_ONBS:SECC": {
+      "sheet": "orre_npc_15.png"
+    },
+    "XD_ONBS:KANDEE": {
+      "sheet": "orre_npc_cute_hair_girl.png"
+    },
+    "XD_ONBS:ETHER": {
+      "item": "ETHER"
+    },
+    "XD_ONBS:BATTLE CD 21": {
+      "item": "BATTLE_CD_21"
+    },
+    "XD_ONBS:KANDEE'S MOTHER": {
+      "sheet": "orre_npc_04.png"
+    },
+    "XD_ONBS:HP UP": {
+      "item": "HP_UP"
+    },
+    "XD_ONBS:REVIVE": {
+      "item": "REVIVE"
+    },
+    "XD_ONBS:NETT": {
+      "sheet": "orre_npc_02.png"
+    },
+    "XD_ONBS:BONSLY'S GRANDFATHER": {
+      "sheet": "orre_npc_10.png"
+    },
+    "SS_LIBRA:BATTLE CD 18": {
+      "item": "BATTLE_CD_18"
+    },
+    "SS_LIBRA:IRON": {
+      "item": "IRON"
+    },
+    "SS_LIBRA:PP UPS": {
+      "item": "PP_UP"
+    },
+    "SS_LIBRA:MAX ETHER": {
+      "item": "MAX_ETHER"
+    },
+    "KAMINKO_HOUSE:CHOBIN AGAIN": {
+      "sheet": "orre_trainer_scientist.png"
+    },
     "POKEMON_HQ_LAB:Spy Naps": {
       "sheet": "orre_trainer_cipher_grunt.png"
     },

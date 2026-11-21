@@ -21,7 +21,9 @@ class RouteActions:
     def _next_shadow(self):
         """The next Shadow Pokemon in this area's shadow_pool that hasn't been snagged."""
         flags = self.game.story_manager.story_flags
-        return next((s for s in self.area_data.get("shadow_pool", []) if not flags.get(s["flag"])), None)
+        from src.world import miror_radar   # (one Miror B. has now - a missed one - isn't here any more)
+        return next((s for s in self.area_data.get("shadow_pool", []) if not flags.get(s["flag"])
+                     and not miror_radar.is_with_him(self.game, s["flag"])), None)
 
     def action_snag_shadow(self, repeat=False):
         """Orre: a Cipher trainer sends out the next Shadow Pokemon; weaken it and snag it. With

@@ -471,6 +471,9 @@ class RouteMenu:
                 return self.game.story_manager.story_flags.get(victory_flag, False)
             default_flag = f"{self.game.story_manager.current_area_key}_boss_defeated"
             return self.game.story_manager.story_flags.get(default_flag, False)
+        if condition == "miror_b_here":  # (Orre: Miror B. is at this Poke Spot today with Shadow Pokemon you missed)
+            from src.world import miror_radar
+            return miror_radar.where(self.game) == self.game.story_manager.current_area_key
         if condition == "shadows_left":  # Orre: a Shadow Pokemon here not yet snagged
             return self._next_shadow() is not None
         if condition == "shadows_cleared":  # every Shadow Pokemon here snagged: Cipher's stragglers

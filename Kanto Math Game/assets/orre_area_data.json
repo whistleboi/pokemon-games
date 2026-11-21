@@ -540,6 +540,52 @@
           "color": "GREEN"
         },
         {
+          "text": "DUKING AT THE ROCK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "xd_nett_rom",
+                  "not:xd_spot_oasis"
+                ],
+                "flag": "xd_spot_oasis",
+                "lines": [
+                  "Pofty: ...and here's the man who found them! Duking, how did you discover the Poke Spots?",
+                  "Duking: Fifteen years of looking, and hardly a wink of sleep! Put out a Poke Snack, and wild Pokemon come.",
+                  "Duking: Oh - it's you, kid! There's another one, an oasis near Pyrite. I'll meet you there."
+                ]
+              }
+            ],
+            "done": [
+              "Duking: Poke Spots! Who'd have thought, right here in Orre?"
+            ]
+          }
+        },
+        {
+          "text": "REPORTER POFTY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Pofty: Pofty, ONBS news! This scoop is going to make my career!"
+            ]
+          }
+        },
+        {
+          "text": "WANDERER MIROR B.",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "miror_b": true,
+            "lines": [
+              "A familiar tune... Miror B. is here, dancing with Shadow Pokemon!"
+            ]
+          },
+          "condition": "miror_b_here"
+        },
+        {
           "text": "Desert Trail",
           "action": "EXIT",
           "target_area": "ORRE_DESERT",
@@ -604,7 +650,8 @@
         {
           "text": "Oasis Poke Spot",
           "door": "cycle",
-          "target_area": "OASIS_POKE_SPOT"
+          "target_area": "OASIS_POKE_SPOT",
+          "condition": "xd_spot_oasis"
         },
         {
           "text": "Pyrite Cave",
@@ -1597,6 +1644,84 @@
           "action": "BATTLE",
           "condition": "can_battle",
           "color": "GREEN"
+        },
+        {
+          "text": "DUKING AT THE OASIS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:xd_spot_cave"
+                ],
+                "flag": "xd_spot_cave",
+                "lines": [
+                  "Duking: Made it! See the water? Pokemon love it here.",
+                  "Duking: If you catch a Trapinch, a Surskit or a Wooper, I'll trade you something rare for each.",
+                  "Duking: The last spot's a cave, up past Agate Village. Go have a look!"
+                ]
+              },
+              {
+                "requires": [
+                  "xd_spot_cave"
+                ],
+                "lines": [
+                  "Duking: Got a Trapinch, a Surskit or a Wooper for me?"
+                ],
+                "trade": [
+                  {
+                    "want": 328,
+                    "give": 307,
+                    "flag": "xd_duking_meditite",
+                    "moves": [
+                      "DYNAMIC-PUNCH",
+                      "CONFUSION",
+                      "SHADOW-BALL",
+                      "DETECT"
+                    ]
+                  },
+                  {
+                    "want": 283,
+                    "give": 213,
+                    "flag": "xd_duking_shuckle",
+                    "moves": [
+                      "TOXIC",
+                      "SUBSTITUTE",
+                      "SLUDGE-BOMB",
+                      "ENCORE"
+                    ]
+                  },
+                  {
+                    "want": 194,
+                    "give": 246,
+                    "flag": "xd_duking_larvitar",
+                    "moves": [
+                      "SANDSTORM",
+                      "DRAGON-DANCE",
+                      "BITE",
+                      "OUTRAGE"
+                    ]
+                  }
+                ],
+                "fail": [
+                  "Duking: Nothing yet? Trapinch, Surskit or Wooper - one of each, and something rare for each."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "WANDERER MIROR B.",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "miror_b": true,
+            "lines": [
+              "A familiar tune... Miror B. is here, dancing with Shadow Pokemon!"
+            ]
+          },
+          "condition": "miror_b_here"
         },
         {
           "text": "Pyrite Town",
@@ -2734,7 +2859,8 @@
         {
           "text": "Cave Poke Spot",
           "door": "cycle",
-          "target_area": "CAVE_POKE_SPOT"
+          "target_area": "CAVE_POKE_SPOT",
+          "condition": "xd_spot_cave"
         },
         {
           "text": "Mt. Battle",
@@ -3129,6 +3255,92 @@
           "action": "BATTLE",
           "condition": "can_battle",
           "color": "GREEN"
+        },
+        {
+          "text": "MIROR B. AT THE CAVE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Miror B.: Ooh, a cave with groove! And who's this? I've got a feeling you're trouble!",
+              "Miror B.: Let's dance!"
+            ],
+            "flag": "xd_miror_cave",
+            "battle": {
+              "name": "Wanderer Miror B.",
+              "class": "WANDERER",
+              "sprite": "orre_trainer_miror_b.png",
+              "team": [
+                271,
+                271,
+                271,
+                9325
+              ],
+              "levels": [
+                45,
+                45,
+                45,
+                50
+              ],
+              "team_moves": [
+                [
+                  "RAIN-DANCE",
+                  "MEGA-DRAIN",
+                  "WATER-GUN",
+                  "ASTONISH"
+                ],
+                [
+                  "THIEF",
+                  "MEGA-DRAIN",
+                  "WATER-GUN",
+                  "ASTONISH"
+                ],
+                [
+                  "RAIN-DANCE",
+                  "MEGA-DRAIN",
+                  "WATER-GUN",
+                  "ASTONISH"
+                ],
+                [
+                  "MIRROR-COAT",
+                  "REFRESH",
+                  "SPARK",
+                  "SWIFT"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0,
+                "MIROR_RADAR": 1
+              },
+              "team_items": [
+                null,
+                null,
+                null,
+                "MAGNET"
+              ],
+              "dialogue": {
+                "player_won": [
+                  "Miror B.: My groove! Folly, Trudly, we're leaving!",
+                  "Miror B. dances off... and drops something: the Miror B. Radar!"
+                ]
+              }
+            }
+          },
+          "condition": "xd_spot_cave",
+          "flag_condition": "not xd_miror_cave"
+        },
+        {
+          "text": "WANDERER MIROR B.",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "miror_b": true,
+            "lines": [
+              "A familiar tune... Miror B. is here, dancing with Shadow Pokemon!"
+            ]
+          },
+          "condition": "miror_b_here"
         },
         {
           "text": "Agate Village",
@@ -10739,7 +10951,8 @@
         {
           "text": "S.S. Libra",
           "door": "cycle",
-          "target_area": "SS_LIBRA"
+          "target_area": "SS_LIBRA",
+          "condition": "xd_scooter_sand"
         },
         {
           "text": "Cipher Key Lair",
@@ -10971,6 +11184,123 @@
               "Makan: Perr sent you? A Machine Part for Lily? Of course!",
               "Makan: I'll head back to the shop with the key. And I'll fix Gateon's movable bridges on the way."
             ]
+          }
+        },
+        {
+          "text": "CHOBIN AGAIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Chobin: Halt, burg- oh, it's you. Still, a battle's a battle!"
+            ],
+            "flag": "xd_chobin3",
+            "battle": {
+              "name": "Kaminko Aide Chobin",
+              "class": "KAMINKO_AIDE",
+              "sprite": "orre_chaser_m.png",
+              "team": [
+                191,
+                130
+              ],
+              "levels": [
+                51,
+                51
+              ],
+              "team_moves": [
+                [
+                  "INGRAIN",
+                  "MEGA-DRAIN",
+                  "GROWTH",
+                  "ABSORB"
+                ],
+                [
+                  "BITE",
+                  "THRASH"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 0,
+                "SUN_STONE": 1
+              },
+              "dialogue": {
+                "player_won": [
+                  "Chobin: Here, take this Sun Stone. The old man from the Parts Shop? He's down on the crane floor."
+                ]
+              }
+            }
+          },
+          "condition": "xd_perr_grandpa",
+          "flag_condition": "not xd_chobin3"
+        },
+        {
+          "text": "PERR'S GRANDFATHER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "xd_chobin3",
+                  "not:xd_scooter_sand"
+                ],
+                "flag": "xd_scooter_sand",
+                "lines": [
+                  "Old man: Perr sent you? The deep sand, eh? Bring me that scooter.",
+                  "Old man: ...There! Wide tires and a stronger engine. She'll cross any sand in Orre now."
+                ]
+              }
+            ],
+            "done": [
+              "Old man: Kaminko's inventions need a lot of looking after."
+            ]
+          },
+          "condition": "xd_chobin3"
+        },
+        {
+          "text": "BATTLE CD 05",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_05",
+          "event": {
+            "lines": [
+              "On a hook platform: Battle CD 05!"
+            ],
+            "flag": "got_battle_cd_05",
+            "gift_item": {
+              "BATTLE_CD_05": 1
+            }
+          }
+        },
+        {
+          "text": "BATTLE CD 11",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_11",
+          "event": {
+            "lines": [
+              "On a hook platform: Battle CD 11!"
+            ],
+            "flag": "got_battle_cd_11",
+            "gift_item": {
+              "BATTLE_CD_11": 1
+            }
+          }
+        },
+        {
+          "text": "BATTLE CD 29",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_29",
+          "event": {
+            "lines": [
+              "On a hook platform: Battle CD 29!"
+            ],
+            "flag": "got_battle_cd_29",
+            "gift_item": {
+              "BATTLE_CD_29": 1
+            }
           }
         },
         {
@@ -12232,9 +12562,43 @@
             216,
             109
           ],
+          "levels": [
+            52,
+            52,
+            52,
+            52
+          ],
+          "team_moves": [
+            [
+              "CONFUSE-RAY",
+              "WATER-PULSE",
+              "BITE",
+              "ROCK-TOMB"
+            ],
+            [
+              "PIN-MISSILE",
+              "THUNDER-PUNCH",
+              "NEEDLE-ARM",
+              "COUNTER"
+            ],
+            [
+              "FEINT-ATTACK",
+              "FAKE-TEARS",
+              "AERIAL-ACE",
+              "SLASH"
+            ],
+            [
+              "SMOKESCREEN",
+              "SLUDGE",
+              "SHOCK-WAVE",
+              "PSYBEAM"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         }
       ],
       "shadow_pool": [
@@ -12319,6 +12683,66 @@
           }
         },
         {
+          "text": "BATTLE CD 18",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_18",
+          "event": {
+            "lines": [
+              "On the lobby bookshelf: Battle CD 18!"
+            ],
+            "flag": "got_battle_cd_18",
+            "gift_item": {
+              "BATTLE_CD_18": 1
+            }
+          }
+        },
+        {
+          "text": "IRON",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_libra_iron",
+          "event": {
+            "lines": [
+              "An Iron in a box."
+            ],
+            "flag": "xd_libra_iron",
+            "gift_item": {
+              "IRON": 1
+            }
+          }
+        },
+        {
+          "text": "PP UPS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_libra_pp_ups",
+          "event": {
+            "lines": [
+              "2 PP Ups in a box."
+            ],
+            "flag": "xd_libra_pp_ups",
+            "gift_item": {
+              "PP_UP": 2
+            }
+          }
+        },
+        {
+          "text": "MAX ETHER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_libra_max_ether",
+          "event": {
+            "lines": [
+              "A Max Ether in a box."
+            ],
+            "flag": "xd_libra_max_ether",
+            "gift_item": {
+              "MAX_ETHER": 1
+            }
+          }
+        },
+        {
           "text": "FIRE STONE",
           "action": "EVENT",
           "color": "GOLD",
@@ -12353,9 +12777,28 @@
             318,
             339
           ],
+          "levels": [
+            43,
+            42
+          ],
+          "team_moves": [
+            [
+              "BITE",
+              "FOCUS-ENERGY"
+            ],
+            [
+              "MUD-SPORT",
+              "WATER-GUN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         },
         {
           "name": "Cipher Peon Mocor",
@@ -12366,22 +12809,83 @@
             309,
             88
           ],
+          "levels": [
+            43,
+            42,
+            43
+          ],
+          "team_moves": [
+            [
+              "BUBBLE",
+              "VICE-GRIP"
+            ],
+            [
+              "QUICK-ATTACK",
+              "HOWL",
+              "LEER"
+            ],
+            [
+              "SLUDGE",
+              "POUND",
+              "HARDEN",
+              "POUND"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         },
         {
-          "name": "Cipher Peon Torkin",
+          "name": "Cipher Peon Mesin",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            352,
-            283,
-            296
+            167,
+            267,
+            269,
+            9307
           ],
+          "levels": [
+            45,
+            44,
+            45,
+            46
+          ],
+          "team_moves": [
+            [
+              "NIGHT-SHADE",
+              "CONSTRICT",
+              "SCARY-FACE",
+              "STRING-SHOT"
+            ],
+            [
+              "ABSORB",
+              "GUST"
+            ],
+            [
+              "CONFUSION",
+              "GUST"
+            ],
+            [
+              "HEAT-WAVE",
+              "CHARM",
+              "EMBER",
+              "DIG"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         },
         {
           "name": "Cipher Peon Elox",
@@ -12392,9 +12896,38 @@
             72,
             358
           ],
+          "levels": [
+            45,
+            43,
+            45
+          ],
+          "team_moves": [
+            [
+              "FURY-ATTACK",
+              "PURSUIT",
+              "GROWL",
+              "PECK"
+            ],
+            [
+              "CONSTRICT",
+              "SUPERSONIC",
+              "ACID"
+            ],
+            [
+              "GROWL",
+              "CONFUSION",
+              "ASTONISH",
+              "SAFEGUARD"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         },
         {
           "name": "Cipher Peon Rixor",
@@ -12406,23 +12939,84 @@
             170,
             109
           ],
+          "levels": [
+            44,
+            45,
+            45,
+            45
+          ],
+          "team_moves": [
+            [
+              "WATER-GUN",
+              "POISON-STING",
+              "HARDEN"
+            ],
+            [
+              "HORN-ATTACK",
+              "STOMP",
+              "TAIL-WHIP"
+            ],
+            [
+              "WATER-GUN",
+              "THUNDER-WAVE",
+              "SUPERSONIC"
+            ],
+            [
+              "POISON-GAS",
+              "SMOG",
+              "TACKLE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         },
         {
-          "name": "Cipher Peon Mesin",
+          "name": "Cipher Peon Torkin",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            167,
-            267,
-            269,
-            37
+            352,
+            283,
+            9406
           ],
+          "levels": [
+            44,
+            46,
+            46
+          ],
+          "team_moves": [
+            [
+              "PSYBEAM",
+              "FURY-SWIPES",
+              "BIND"
+            ],
+            [
+              "WATER-SPORT",
+              "SWEET-SCENT",
+              "QUICK-ATTACK",
+              "BUBBLE"
+            ],
+            [
+              "BRICK-BREAK",
+              "REFRESH",
+              "ARM-THRUST",
+              "ROCK-TOMB"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         },
         {
           "name": "Cipher Peon Dilly",
@@ -12434,9 +13028,90 @@
             370,
             182
           ],
+          "levels": [
+            44,
+            43,
+            45,
+            46
+          ],
+          "team_moves": [
+            [
+              "YAWN",
+              "SLUDGE"
+            ],
+            [
+              "TACKLE",
+              "THUNDER-SHOCK",
+              "LIGHT-SCREEN"
+            ],
+            [
+              "AGILITY",
+              "WATER-GUN",
+              "SAFEGUARD",
+              "TACKLE"
+            ],
+            [
+              "MAGICAL-LEAF",
+              "STUN-SPORE",
+              "ABSORB"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
+        },
+        {
+          "name": "Cipher Peon Lobar",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            215,
+            193,
+            200,
+            9425
+          ],
+          "levels": [
+            45,
+            44,
+            45,
+            47
+          ],
+          "team_moves": [
+            [
+              "SCREECH",
+              "QUICK-ATTACK",
+              "SCRATCH",
+              "REFLECT"
+            ],
+            [
+              "SONIC-BOOM",
+              "FORESIGHT",
+              "QUICK-ATTACK"
+            ],
+            [
+              "PSYWAVE",
+              "ASTONISH"
+            ],
+            [
+              "SHADOW-BALL",
+              "HELPING-HAND",
+              "ASTONISH",
+              "CONFUSE-RAY"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         },
         {
           "name": "Cipher Peon Edlos",
@@ -12448,9 +13123,98 @@
             176,
             225
           ],
+          "levels": [
+            44,
+            45,
+            44,
+            46
+          ],
+          "team_moves": [
+            [
+              "DEFENSE-CURL",
+              "FURY-SWIPES",
+              "QUICK-ATTACK"
+            ],
+            [
+              "ODOR-SLEUTH",
+              "SAND-ATTACK",
+              "HEADBUTT",
+              "TAIL-WHIP"
+            ],
+            [
+              "PECK",
+              "SWEET-KISS",
+              "CHARM"
+            ],
+            [
+              "PRESENT",
+              "QUICK-ATTACK",
+              "ICY-WIND"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
+        },
+        {
+          "name": "Cipher Peon Feldas",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            64,
+            180,
+            288,
+            9404
+          ],
+          "levels": [
+            47,
+            47,
+            46,
+            48
+          ],
+          "team_moves": [
+            [
+              "PSYBEAM",
+              "DISABLE",
+              "CONFUSION"
+            ],
+            [
+              "THUNDER-WAVE",
+              "THUNDER-SHOCK",
+              "GROWL",
+              "TACKLE"
+            ],
+            [
+              "FURY-SWIPES",
+              "UPROAR",
+              "FOCUS-ENERGY"
+            ],
+            [
+              "SHOCK-WAVE",
+              "SING",
+              "REFLECT",
+              "CONFUSION"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            null,
+            null,
+            null,
+            "TWISTEDSPOON"
+          ],
+          "music": "orre/cipher_battle",
+          "when_flags": [
+            "xd_miror_cave"
+          ]
         }
       ],
       "route_menu": [
@@ -12461,7 +13225,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "xd_exol_beaten"
           ]
         },
         {
@@ -12472,7 +13237,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "xd_exol_beaten"
           ]
         },
         {
@@ -12487,43 +13253,276 @@
           "color": "GOLD",
           "event": {
             "lines": [
-              "Cipher Commander Exol: The Orre news station is ours. Shadow Pokemon on every channel!"
+              "A tall man in a Cipher coat has Nett and Bitt cornered on the roof."
             ],
+            "flag": "xd_exol_beaten",
             "battle": {
               "name": "Cipher Cmdr Exol",
-              "class": "CIPHER_ADMIN",
-              "sprite": "gentleman.png",
+              "class": "CIPHER_CMDR",
+              "sprite": "orre_cipher_peon.png",
               "team": [
-                303,
-                359,
-                330
+                294,
+                203,
+                9410,
+                26
               ],
               "levels": [
-                34,
-                35,
-                36
+                48,
+                48,
+                50,
+                48
               ],
+              "team_moves": [
+                [
+                  "STOMP",
+                  "UPROAR",
+                  "WATER-PULSE",
+                  "SEISMIC-TOSS"
+                ],
+                [
+                  "STOMP",
+                  "ODOR-SLEUTH",
+                  "CONFUSION",
+                  "SHOCK-WAVE"
+                ],
+                [
+                  "FALSE-SWIPE",
+                  "SING",
+                  "VICE-GRIP",
+                  "IRON-DEFENSE"
+                ],
+                [
+                  "SHOCK-WAVE",
+                  "QUICK-ATTACK",
+                  "DIG",
+                  "SEISMIC-TOSS"
+                ]
+              ],
+              "double": true,
               "rewards": {
-                "balls": 12
+                "balls": 0
               },
+              "music": "orre/cipher_battle",
+              "is_boss_battle": true,
               "dialogue": {
+                "intro": [
+                  "Cipher Cmdr Exol: The Data ROM is ours. And so is ONBS!"
+                ],
                 "player_won": [
-                  "Exol: Broadcast cut... The Key Lair in Pyrite holds the real secrets."
+                  "Exol: Bah! It doesn't matter. Cipher already has what it needs from this place!",
+                  "Exol storms off with the Data ROM."
                 ]
               }
-            },
-            "flag": "xd_exol_beaten"
+            }
           },
+          "condition": "xd_miror_cave",
           "flag_condition": "not xd_exol_beaten"
         },
         {
-          "text": "Pyrite Town",
-          "action": "EXIT",
-          "target_area": "PYRITE_TOWN",
-          "condition": [
-            "can_exit"
-          ],
-          "color": "RED"
+          "text": "SECC",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Secc: Welcome to ONBS, Orre's news station. Nett? He's up on the roof with the dish.",
+              "Secc: Mind the stairs - and if you see a little girl wandering about, her mother's on 3F."
+            ]
+          }
+        },
+        {
+          "text": "KANDEE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:xd_kandee_with_you"
+                ],
+                "flag": "xd_kandee_with_you",
+                "lines": [
+                  "Kandee: I can't find Mommy... She works here somewhere!",
+                  "Kandee takes your hand. She'll come with you."
+                ]
+              }
+            ],
+            "done": [
+              "Kandee: Is Mommy upstairs?"
+            ]
+          },
+          "flag_condition": "not xd_kandee_home"
+        },
+        {
+          "text": "KANDEE'S MOTHER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "xd_kandee_with_you",
+                  "not:xd_kandee_home"
+                ],
+                "flag": "xd_kandee_home",
+                "gift_item": {
+                  "SOOTHE_BELL": 1
+                },
+                "lines": [
+                  "Kandee: Mommy!",
+                  "Mother: Kandee! Oh, thank you for bringing her. Please, take this Soothe Bell."
+                ]
+              },
+              {
+                "requires": [
+                  "not:xd_kandee_with_you"
+                ],
+                "lines": [
+                  "Mother: My daughter Kandee was right here a minute ago... Have you seen her?"
+                ]
+              }
+            ],
+            "done": [
+              "Mother: Kandee won't leave my side now. Thank you again."
+            ]
+          }
+        },
+        {
+          "text": "NETT",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "has_item:XD_DATA_ROM",
+                  "not:xd_nett_rom"
+                ],
+                "flag": "xd_nett_rom",
+                "take_item": {
+                  "XD_DATA_ROM": 1
+                },
+                "lines": [
+                  "Nett: Professor Krane's data? Wes, right? I've heard all about you.",
+                  "Nett: Decoding this will take a while. Meantime, Duking's found something called Poke Spots.",
+                  "Nett: Wild Pokemon show up there - in Orre! He's at the Rock Poke Spot, off the Desert Trail."
+                ]
+              },
+              {
+                "requires": [
+                  "xd_exol_beaten",
+                  "not:xd_nett_libra"
+                ],
+                "flag": "xd_nett_libra",
+                "lines": [
+                  "Nett: They got away with the Data ROM... but I found something. The S.S. Libra that vanished? That was Cipher.",
+                  "Nett: And Cipher's planning something in Phenac City. We'll warn the mayor - after you help this family here."
+                ]
+              }
+            ],
+            "done": [
+              "Nett: The Kids Grid's on it. We'll mail your P*DA if we find anything."
+            ]
+          }
+        },
+        {
+          "text": "BONSLY'S GRANDFATHER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:xd_bonsly_asked"
+                ],
+                "flag": "xd_bonsly_asked",
+                "lines": [
+                  "Old man: You're the one who drove off Cipher? Please... my granddaughter's Bonsly was on the S.S. Libra.",
+                  "Old man: The ship's out in the deep sand. No scooter can cross it, they say..."
+                ]
+              }
+            ],
+            "done": [
+              "Old man: Gateon's Parts Shop fixes anything. Perhaps they could help with that scooter of yours."
+            ]
+          },
+          "condition": "xd_exol_beaten"
+        },
+        {
+          "text": "ETHER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_onbs_ether",
+          "event": {
+            "lines": [
+              "An Ether in an empty office."
+            ],
+            "flag": "xd_onbs_ether",
+            "gift_item": {
+              "ETHER": 1
+            }
+          },
+          "condition": "xd_miror_cave"
+        },
+        {
+          "text": "HP UP",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_onbs_hp_up",
+          "event": {
+            "lines": [
+              "An HP Up in a box."
+            ],
+            "flag": "xd_onbs_hp_up",
+            "gift_item": {
+              "HP_UP": 1
+            }
+          },
+          "condition": "xd_miror_cave"
+        },
+        {
+          "text": "REVIVE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_onbs_revive",
+          "event": {
+            "lines": [
+              "A Revive behind the make-up table."
+            ],
+            "flag": "xd_onbs_revive",
+            "gift_item": {
+              "REVIVE": 1
+            }
+          }
+        },
+        {
+          "text": "BATTLE CD 21",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_21",
+          "event": {
+            "lines": [
+              "On Secc's bookshelf: Battle CD 21!"
+            ],
+            "flag": "got_battle_cd_21",
+            "gift_item": {
+              "BATTLE_CD_21": 1
+            }
+          }
+        },
+        {
+          "text": "BATTLE CD 24",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_battle_cd_24",
+          "event": {
+            "lines": [
+              "On the reporter's bookshelf: Battle CD 24!"
+            ],
+            "flag": "got_battle_cd_24",
+            "gift_item": {
+              "BATTLE_CD_24": 1
+            }
+          }
         },
         {
           "text": "BONSLY'S GIRL",
@@ -12538,6 +13537,15 @@
             "flag": "xd_bonsly_home"
           },
           "condition": "xd_bonsly_found"
+        },
+        {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ],
       "next_area": "PYRITE_TOWN",
@@ -14617,8 +15625,11 @@
     {"id": "orre_m10b", "type": "MAIN", "title": "Trouble at the HQ Lab", "description": "Professor Krane's Pokemon HQ Lab, near Gateon Port, works on purifying Shadow Pokemon. Pay it a visit.", "condition": {"required_region": "ORRE", "flag": "orre_ein_lab", "flag_not": ["xd_krane_taken", "xd_lovrina_beaten"]}, "region": "ORRE", "completed_flag": "xd_krane_taken", "target": "POKEMON_HQ_LAB"},
     {"id": "orre_m10c", "type": "MAIN", "title": "A Machine Part", "description": "Cipher took Professor Krane. Lily needs a Machine Part for the Purify Chamber: ask Perr at Gateon Port's Parts Shop. His dad Makan is at Kaminko's House.", "condition": {"required_region": "ORRE", "flag": "xd_krane_taken", "flag_not": ["xd_machine_part_given", "xd_lovrina_beaten"]}, "region": "ORRE", "completed_flag": "xd_machine_part_given", "target": "GATEON_PORT"},
     {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Datan traced Cipher's car to the old Shadow Pokemon Lab, reopened as the Cipher Lab. Rescue Professor Krane and beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "xd_machine_part_given", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
-    {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Cipher took over Orre's TV station in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_lovrina_beaten", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
-    {"id": "orre_m13", "type": "MAIN", "title": "Snattle at Phenac Stadium", "description": "Phenac's old mayor, Snattle, is really a Cipher Admin! He's waiting at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
+    {"id": "orre_m11b", "type": "MAIN", "title": "Data for Nett", "description": "Professor Krane is home. Take his research data to Nett at the ONBS building in Pyrite Town.", "condition": {"required_region": "ORRE", "flag": "xd_lovrina_beaten", "flag_not": ["xd_nett_rom", "xd_exol_beaten"]}, "region": "ORRE", "completed_flag": "xd_nett_rom", "target": "PYRITE_TOWN"},
+    {"id": "orre_m11c", "type": "MAIN", "title": "Duking's Poke Spots", "description": "Duking has found Poke Spots, where wild Pokemon appear. Meet him at the Rock Poke Spot off the Desert Trail, then the Oasis and the Cave.", "condition": {"required_region": "ORRE", "flag": "xd_nett_rom", "flag_not": ["xd_miror_cave", "xd_exol_beaten"]}, "region": "ORRE", "completed_flag": "xd_miror_cave", "target": "ORRE_POKE_SPOTS"},
+    {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Cipher took over Orre's TV station in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_miror_cave", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
+    {"id": "orre_m12b", "type": "MAIN", "title": "The S.S. Libra", "description": "Cipher took the S.S. Libra, and a little girl's Bonsly was aboard. The ship lies in the deep sand: Gateon's Parts Shop may know how to cross it.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": ["xd_bonsly_found", "orre_snattle_phenac"]}, "region": "ORRE", "completed_flag": "xd_bonsly_found", "target": "SS_LIBRA"},
+    {"id": "orre_m13", "type": "MAIN", "title": "Snattle at Phenac Stadium", "description": "Phenac's old mayor, Snattle, is really a Cipher Admin! He's waiting at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": ["xd_exol_beaten", "xd_bonsly_found"], "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
     {"id": "orre_m14", "type": "MAIN", "title": "Phenac Stadium", "description": "Now win Phenac Stadium's tournament for the third badge!", "condition": {"required_region": "ORRE", "flag": "orre_snattle_phenac", "region_badges_min": 2, "region_badges_less": 3}, "region": "ORRE", "completed_badge": "PHENAC", "target": "PHENAC_CITY", "reward": "Phenac Badge"},
     {"id": "orre_m15", "type": "MAIN", "title": "Snagem Hideout", "description": "Team Snagem's hideout is out in the desert. Their boss, Gonzap, has Shadow Pokémon too. Take him on!", "condition": {"required_region": "ORRE", "region_badges_min": 3, "flag_not": "beat_gonzap"}, "region": "ORRE", "completed_flag": "beat_gonzap", "target": "SNAGEM_HIDEOUT"},
     {"id": "orre_m16", "type": "MAIN", "title": "Orre Colosseum", "description": "The biggest tournament in Orre! Win it for the last badge.", "condition": {"required_region": "ORRE", "flag": "beat_gonzap", "region_badges_min": 3, "region_badges_less": 4}, "region": "ORRE", "completed_badge": "ORRE", "target": "ORRE_COLOSSEUM", "reward": "Orre Badge"},

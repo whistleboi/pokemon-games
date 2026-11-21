@@ -499,8 +499,9 @@ LILY_LAB = {"text": "Lily", "action": "EVENT", "event": {"stages": [
      "lines": ["Lily: The Machine Part! Jovi, run it down to the Chamber.",
                "Datan: Lily! I traced Cipher's car. It went to the old Shadow Pokemon Lab, out in the desert.",
                "Lily: The lab Cipher abandoned five years ago... They've opened it again. Wes, please - bring the Professor home."]},
-    {"requires": ["xd_lovrina_beaten", "not:xd_krane_home"], "flag": "xd_krane_home",
-     "lines": ["Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it."]}],
+    {"requires": ["xd_lovrina_beaten", "not:xd_krane_home"], "flag": "xd_krane_home", "gift_item": {"XD_DATA_ROM": 1},
+     "lines": ["Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it.",
+               "Professor Krane: Wes, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."]}],
     "done": ["Lily: The Professor's working day and night on the Purify Chamber."]}}
 AFERD = {"text": "Supertrainer Aferd", "action": "EVENT", "event": {"stages": [{
     "flag": "xd_aferd", "lines": ["Supertrainer Aferd: I test the lab's training data. Spar with me?"],
@@ -526,6 +527,9 @@ PERR = {"text": "Perr", "action": "EVENT", "event": {"stages": [
     {"requires": ["xd_lily_asked", "not:xd_perr_asked"], "flag": "xd_perr_asked",
      "lines": ["Perr: A Machine Part for the Purify Chamber? We've got one in the stockroom, but Dad has the key.",
                "Perr: Dad - Makan - went to Kaminko's House. He fixes the old man's inventions. It's up the road north of town."]},
+    {"requires": ["xd_bonsly_asked", "not:xd_perr_grandpa"], "flag": "xd_perr_grandpa",
+     "lines": ["Perr: Cross the deep sand? Grandpa could do it - he rebuilds engines. He's at Kaminko's, down on the crane floor.",
+               "Perr: Chobin guards the way down. Tell him I sent you!"]},
     {"requires": ["xd_makan_back", "not:has_item:MACHINE_PART", "not:xd_machine_part_given"], "gift_item": {"MACHINE_PART": 1},
      "flag": "xd_machine_part",
      "lines": ["Makan: Here's your Machine Part. Tell Lily it's on the house.",
@@ -615,6 +619,48 @@ def _battle_cds(maps):
         _set_people(r, {_free_spot(r): CD_PICK("40", "On the bookshelf:", "beat_orre_champion")})
 
 
+# ================================================================== batch 5b: XD parts 3-5 (BATCH_5B.md)
+# Pyrite's duel square in XD's time (after Lovrina, raised to fit); the Cave Poke Spot's scene before Miror B.; Gorigan on
+# the S.S. Libra's bridge. Everything else of 5b is in orre_area_data.json (kanto_handoff/orre_rom_tools/obatch5b.py).
+XD_SQUARE = [("Rogue Cail", "xd:Story:62", "Rogue Cail: Five years, and Pyrite's still my town. Let's see what you've learned!", "Rogue Cail: Heh. You've still got it."),
+             ("Worker Dobit", "xd:Story:63", "Worker Dobit: On my break! A quick battle, then back to work.", "Worker Dobit: Break's over."),
+             ("Chaser Finol", "xd:Story:64", "Chaser Finol: The duel square's busy again since Cipher came back. Battle!", "Chaser Finol: Busy and tough!"),
+             ("Rider Dert", "xd:Story:65", "Rider Dert: I ride in from the desert every day just for this.", "Rider Dert: Worth the ride."),
+             ("Hunter Raling", "xd:Story:66", "Hunter Raling: I hunt strong trainers. Found one!", "Hunter Raling: You're the hunter, not me."),
+             ("Chaser Labet", "xd:Story:67", "Chaser Labet: My team's all rare finds. Bet you've never seen them.", "Chaser Labet: Rare finds, common loss."),
+             ("Bodybuilder Doby", "xd:Story:68", "Bodybuilder Doby: Muscles! Battles! Muscles!", "Bodybuilder Doby: ...Muscles.")]
+GORIGAN_SCENE = {"trigger": "enter", "condition": ["not:xd_libra_gorigan"], "flag": "xd_libra_gorigan",
+                 "cast": [{"sheet": "orre_trainer_bodybuilder.png", "from": [10, 3], "to": [10, 4], "face": "d", "stay": True,
+                           "lines": ["A huge man in a Cipher coat is shouting at two peons.",
+                                     "Cipher Admin Gorigan: You LOST a Pokemon? On a ship stuck in the sand?! Find it, or else!"]},
+                          {"sheet": "orre_trainer_cipher_grunt.png", "from": [12, 3], "to": [12, 4], "face": "u", "stay": True,
+                           "lines": ["Cipher Peon Snidle: S-sorry, Gorigan! ...Hey, a kid! Smarton, get them!"]},
+                          {"as": 0, "lines": ["Gorigan: Hmph. Deal with it. I've got bigger things to do in the Key Lair."],
+                           "leave_path": [[2, 4]]},
+                          {"as": 1, "lines": [], "leave_path": [[2, 4]], "concurrent": True}]}
+CAVE_SCENE = {"trigger": "enter", "condition": ["xd_spot_cave", "not:xd_cave_folly"], "flag": "xd_cave_folly",
+              "cast": [{"sheet": "orre_folly.png", "from": [6, 14], "to": [7, 12], "face": "r", "stay": True,
+                        "lines": ["Folly: This Miror B. Radar finds Miror B. anywhere, Trudly! He's gonna take us back for sure!"]},
+                       {"sheet": "orre_trainer_burglar.png", "from": [9, 14], "to": [9, 12], "face": "l", "stay": True,
+                        "lines": ["Trudly: It's beeping! He's close! ...Huh? Who's that kid?"]},
+                       {"as": 0, "lines": ["Folly: Uh-oh. Boss, it's that snagging kid!"], "leave_path": [[6, 18]]},
+                       {"as": 1, "lines": [], "leave_path": [[9, 18]], "concurrent": True}]}
+
+
+def _xd5b(maps):
+    if "PYRITE_TOWN" in maps:
+        m = maps["PYRITE_TOWN"]
+        for i, (text, key, intro, won) in enumerate(XD_SQUARE):
+            _set_people(m, {_free_spot(m, (13 + 3 * i, 52)): _fight(text, key, f"xd_sq_{key.split(':')[-1]}", intro, won,
+                                                                  condition="xd_lovrina_beaten")})
+    if "SS_LIBRA" in maps:
+        fl = maps["SS_LIBRA"]["floors"]
+        fl[2]["scenes"] = list(fl[2].get("scenes") or []) + [GORIGAN_SCENE]
+    if "CAVE_POKE_SPOT" in maps:
+        fl = maps["CAVE_POKE_SPOT"]["floors"]
+        fl[0]["scenes"] = list(fl[0].get("scenes") or []) + [CAVE_SCENE]
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -626,6 +672,7 @@ def apply(maps):
         _under(maps)
     _xd5a(maps)
     _battle_cds(maps)
+    _xd5b(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

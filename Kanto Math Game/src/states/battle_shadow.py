@@ -55,6 +55,10 @@ class ShadowBattle:
 
     def _shadow_after(self):
         """A won battle: the Shadow Pokemon that fought open their hearts a little (lines to add)."""
+        from src.world import miror_radar   # (Shadow Pokemon beaten unsnagged go to Miror B. once you hold his radar: XD's way)
+        for m in list(getattr(self, "opponent_team", None) or []):
+            if m is not None and shadow.is_shadow(self.game, m):
+                miror_radar.miss(self.game, m)
         return shadow.after_battle(self.game, self.game.story_manager.player_team, self.__dict__.get("_shadow_fought", []))
 
     # ------------------------------------------------------------ snagging

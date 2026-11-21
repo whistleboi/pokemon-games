@@ -530,6 +530,11 @@ def _run_story_event(state, key, check, show):
             return
     if ev.get("trade"):  # an in-game trade (Fortree's girl: a Spinda for her Skitty): your first one they want, for theirs
         tr = ev["trade"]   # {"want": species, "give": species, "item": what it holds}
+        if isinstance(tr, list):   # (several trades on offer, each once: the first you can make - Duking's three, XD; 11-20)
+            tr = next((t for t in tr if not story.story_flags.get(t.get("flag", ""))
+                       and any(p and p.id == int(t["want"]) for p in story.player_team)), None) or {"want": -1, "give": 0}
+            if tr.get("flag"):
+                story.story_flags[tr["flag"]] = True
         from src.pokemon.data import Pokemon
         mine = next((i for i, p in enumerate(story.player_team) if p and p.id == int(tr["want"]) and not getattr(p, "is_egg", False)
                      and getattr(p, "special", None) != "rowdy_pikachu"), None)   # (Yellow's partner is never traded)
@@ -549,6 +554,8 @@ def _run_story_event(state, key, check, show):
             if _itemlib.holdable(tr["item"]):   # (a held item's copy is the Bag's: the Stick can be taken off and given back)
                 story.add_item(tr["item"])
         new.traded = True   # (its first owner's: the Name Rater won't rename it, as in the games)
+        if tr.get("moves"):   # (its own moves, from the game: Duking's Larvitar knows Dragon Dance and Outrage)
+            new.moves = list(tr["moves"])
         if tr.get("nickname"):   # (its first owner's name for it: Platinum's Kazza, Charap, Gaspar, Foppa; 11-19)
             new.nickname = tr["nickname"]
         story.player_team[mine] = new
@@ -928,6 +935,13 @@ def _run_story_event(state, key, check, show):
                 got = [f"{getattr(game, 'player_name', 'You')} received an Egg!"]
             show(_resolve_lines(game, got + list(ch.get("done") or ([] if got else ["All set!"]))))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ch.get("ask") or "WHICH ONE?", rows, picked)))
+        return
+    if ev.get("miror_b"):   # (Orre: Miror B. with the Shadow Pokemon you missed - src/world/miror_radar.py)
+        from src.world import miror_radar
+        if miror_radar.where(game) != story.current_area_key:
+            show(lines + ["Nobody's here but the wind."])
+            return
+        _say_then(state, lines, lambda: game.change_state(_start_event_battle(game, story.current_area_key, miror_radar.battle_info(game), None)))
         return
     if ev.get("battle_cd_player"):   # (XD's Battle CDs, played at the HQ Lab: pick one you own - src/world/battle_cd.py)
         from src.world import battle_cd

@@ -133,8 +133,8 @@ lib = [o for o in _P["SS_LIBRA"]["route_menu"] if o.get("text") == "FIRE STONE"]
 check(lab and lab[0]["event"]["gift_item"] == {"LEAF_STONE": 1} and _TM["XD_CIPHER_LAB"]["figure_floors"].get("LEAF STONE") == 3
       and lib and lib[0]["event"]["gift_item"] == {"FIRE_STONE": 1} and _TM["SS_LIBRA"]["figure_floors"].get("FIRE STONE") == 5,
       "the Cipher Lab's Leaf Stone (B2F) and the S.S. Libra's Fire Stone (Hold 3) lie on their floors")
-ch = next(o for o in _P["KAMINKO_HOUSE"]["route_menu"] if "CHOBIN" in o["text"])
-check(ch["event"]["battle"]["rewards"].get("SUN_STONE") == 1, "Chobin hands over his Sun Stone when you beat him")
+ch = [o for o in _P["KAMINKO_HOUSE"]["route_menu"] if "CHOBIN" in o["text"]]   # (11-21: XD's third Chobin battle gives it - Orre batch 5b)
+check(any(o["event"]["battle"]["rewards"].get("SUN_STONE") == 1 for o in ch), "Chobin hands over his Sun Stone when you beat him")
 du = next(p for p in _TM["PYRITE_TOWN"]["rooms"]["duking"]["people"] if isinstance(p, dict) and p.get("text") == "Duking")
 story.story_flags.pop("orre_miror_cave", None); story.story_flags.pop("orre_duking_plusle", None)
 _said.clear()

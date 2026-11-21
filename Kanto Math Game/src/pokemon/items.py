@@ -592,6 +592,8 @@ STORY_TEXT = {
     "DATA_ROM": "Ein's Data ROM. Someone like Nett could read what's on it.",
     "MACHINE_PART": "The last part Professor Krane's Purify Chamber needs. From Gateon's Parts Shop.",
     "ID_CARD": "A Cipher ID Card. The Cipher Lab's lift reads it.",
+    "MIROR_RADAR": "Miror B.'s radar. Use it to see which Poke Spot he's dancing at, with the Shadow Pokemon you missed.",
+    "XD_DATA_ROM": "Professor Krane's research data, for Nett at ONBS in Pyrite.",
     "BATTLE_CD_01": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
     "BATTLE_CD_02": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
     "BATTLE_CD_03": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
