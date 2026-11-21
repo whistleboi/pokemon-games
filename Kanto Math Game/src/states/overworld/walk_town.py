@@ -767,6 +767,19 @@ class WalkTownState(CityState):
                 out.append(t)
         return out
 
+    def _reaches_out(self, start):
+        """True when a way out (an exit or a door) can be walked to from start."""
+        seen, todo = {start}, [start]
+        while todo:
+            x, y = todo.pop()
+            for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if q in self.exits or q in self.doors:
+                    return True
+                if q not in seen and self._open(q):
+                    seen.add(q)
+                    todo.append(q)
+        return False
+
     def _arrive(self):
         """Where you stand: as you left it (back from a building or a battle), else at the edge you came
         in by, else outside the Pokemon Center (or in the middle)."""
@@ -777,8 +790,13 @@ class WalkTownState(CityState):
         if fly_door:   # (every region, 11-18: Fly lands you outside the Center)
             spot = (fly_door[0], fly_door[1] + 1)
             self.player, self.facing = (spot if self._open(spot) else self._nearest_open(spot)), (0, 1)
-        elif was and was[0] == self.area_key and self._open(was[1]):
+        elif was and was[0] == self.area_key and self._open(was[1]) and (not self.room or not self.exits or self._reaches_out(tuple(was[1]))):
             self.player, self.facing = tuple(was[1]), tuple(was[2])
+        elif was and was[0] == self.area_key and self.room and self.exits:   # (saved shut in a room's pocket, 11-21: Castelia's
+            t = min(self.exits, key=lambda m: (self.exits[m] != "ROOM:MAIN", m[1] * -1))   # Center behind the Mart counter):
+            self.player = next(((t[0] + dx, t[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0))   # just inside its way out
+                                if self._open((t[0] + dx, t[1] + dy)) and (t[0] + dx, t[1] + dy) not in self.exits), t)
+            self.facing = (0, -1)
         else:
             came = getattr(story, "last_area_key", None)  # (a loaded save hasn't come from anywhere)
             edge = [t for t, target in self.exits.items() if target == came]
@@ -864,6 +882,7 @@ class WalkTownState(CityState):
             if isinstance(new, dict) and new is not self.town_map:
                 self.town_map = new
                 self.game.__dict__.setdefault("_walk_town_imgs", {}).clear()
+        _was = getattr(self, "room", None)   # (where you came from: a door brings you to the room's own way back there)
         self.room = room
         _dyn = ((self.town_map.get("rooms") or {}).get(room) or {}).get("dynamic_exit") if room else None
         if _dyn and str(came).startswith("ROOM:"):   # (into a lift car: its doors are on the floor you came from, till it rides)
@@ -888,7 +907,10 @@ class WalkTownState(CityState):
         else:
             came = ((self.town_map["rooms"][room] if room else self.town_map).get("arrive_as") or {}).get(came, came)   # (out of a lift car
             mats = [t for t, target in self.exits.items() if target == came]   #  that rode up: at the floor's own lift door, Kumquat's)
-            t = mats[len(mats) // 2] if mats else self._nearest_open((self.w // 2, self.h - 2))
+            if not mats and room and str(came).startswith("OUT:"):   # (in by a door: at the room's way back out, wherever it is in the
+                mats = [t for t, target in self.exits.items() if target == "ROOM:" + (_was or "MAIN")]   # grid, 11-21: Castelia's Center
+            t = (min(mats, key=lambda m: abs(m[0] - self.w // 2) + abs(m[1] - (self.h - 2))) if str(came).startswith("OUT:")
+                 else mats[len(mats) // 2]) if mats else self._nearest_open((self.w // 2, self.h - 2))
             inward = next(((t[0] + dx, t[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0))
                            if self._open((t[0] + dx, t[1] + dy)) and (t[0] + dx, t[1] + dy) not in self.exits), t)
             self.player = inward

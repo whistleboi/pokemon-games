@@ -246,4 +246,16 @@ for _room, _lv in (("gym", 0.0), ("gym_10", 10.0), ("gym_20", 20.0)):
     _off = [p for p in _op if abs(t._live_height(*p) - _lv) > 0.6]
     check(t._live() and not _off, f"the Gym's {_room}: you stand on its own floor ({_lv}) everywhere ({_off[:4]})")
 
+# 11-21 (Jordan: "entering the castelia pokemon center, It entered me behind the counter of the pokemart and I am now stuck")
+t = town(None, (64, 67))
+_door = next(d for d, k in t.doors.items() if k == "center")
+t._enter(_door); settle(5)
+t = g.current_state
+check(getattr(t, "room", None) == "center" and t._reaches_out(tuple(t.player)) and t.player[1] >= 17,
+      f"in by the Center's door: just inside it, free to walk out ({getattr(t, 'room', None)}, {t.player})")
+g.walk_town_pos, g.walk_town_room = ("CASTELIA_CITY", (12, 17), (0, 1)), ("CASTELIA_CITY", "center")
+g.change_state(CityState(g)); settle()
+t = g.current_state
+check(t.room == "center" and t._reaches_out(tuple(t.player)), f"a spot saved shut in behind the Mart counter: back at the Center's door ({t.player})")
+
 print(f"##### {len(fails)} failures")
