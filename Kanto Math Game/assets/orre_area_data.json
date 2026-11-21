@@ -15348,65 +15348,226 @@
       "gym": {
         "trainers": [
           {
-            "name": "Cooltrainer Botan",
+            "name": "Hunter Greel",
             "class": "COLOSSEUM",
-            "sprite": "orre_cool_trainer_m.png",
-            "is_boss_battle": true,
+            "sprite": "orre_hunter_f.png",
             "team": [
-              191,
-              187
+              47,
+              286,
+              80,
+              124,
+              229,
+              282
             ],
             "levels": [
-              41,
-              43
+              60,
+              60,
+              60,
+              60,
+              60,
+              60
             ],
+            "team_moves": [
+              [
+                "SPORE",
+                "AERIAL-ACE",
+                "GIGA-DRAIN",
+                "RETURN"
+              ],
+              [
+                "SPORE",
+                "SLUDGE-BOMB",
+                "FOCUS-PUNCH",
+                "SUBSTITUTE"
+              ],
+              [
+                "DREAM-EATER",
+                "SHADOW-BALL",
+                "FOCUS-PUNCH",
+                "YAWN"
+              ],
+              [
+                "DREAM-EATER",
+                "ICE-BEAM",
+                "PSYCHIC",
+                "LOVELY-KISS"
+              ],
+              [
+                "DREAM-EATER",
+                "FLAMETHROWER",
+                "CRUNCH",
+                "PURSUIT"
+              ],
+              [
+                "DREAM-EATER",
+                "THUNDERBOLT",
+                "ICE-PUNCH",
+                "HYPNOSIS"
+              ]
+            ],
+            "double": true,
             "rewards": {
               "balls": 5
-            }
+            },
+            "team_items": [
+              "QUICK_CLAW",
+              "BRIGHTPOWDER",
+              "LEFTOVERS",
+              "LAX_INCENSE",
+              "FOCUS_BAND",
+              "SCOPE_LENS"
+            ],
+            "is_boss_battle": true
           },
           {
-            "name": "Cooltrainer Liqui",
+            "name": "Rider Herlam",
             "class": "COLOSSEUM",
-            "sprite": "orre_cool_trainer_m.png",
-            "is_boss_battle": true,
+            "sprite": "orre_rider.png",
             "team": [
-              183,
-              283,
-              175
+              327,
+              199,
+              332,
+              108,
+              326,
+              235
             ],
             "levels": [
-              41,
-              42,
-              43
+              60,
+              60,
+              60,
+              60,
+              60,
+              60
             ],
+            "team_moves": [
+              [
+                "TEETER-DANCE",
+                "FLAIL",
+                "DIZZY-PUNCH",
+                "PROTECT"
+              ],
+              [
+                "YAWN",
+                "PSYCHIC",
+                "SURF",
+                "ICE-BEAM"
+              ],
+              [
+                "TEETER-DANCE",
+                "TOXIC",
+                "NEEDLE-ARM",
+                "DOUBLE-TEAM"
+              ],
+              [
+                "BODY-SLAM",
+                "SHADOW-BALL",
+                "EARTHQUAKE",
+                "BELLY-DRUM"
+              ],
+              [
+                "CONFUSE-RAY",
+                "PSYCHIC",
+                "ICE-PUNCH",
+                "FIRE-PUNCH"
+              ],
+              [
+                "TEETER-DANCE",
+                "LOCK-ON",
+                "SHEER-COLD",
+                "PROTECT"
+              ]
+            ],
+            "double": true,
             "rewards": {
               "balls": 5
-            }
+            },
+            "team_items": [
+              "FOCUS_BAND",
+              "SEA_INCENSE",
+              "MIRACLE_SEED",
+              "LEFTOVERS",
+              "LAX_INCENSE",
+              "BRIGHTPOWDER"
+            ],
+            "is_boss_battle": true
           },
           {
-            "name": "Rich Boy Dugo",
+            "name": "Navigator Lestor",
             "class": "COLOSSEUM",
-            "sprite": "orre_rich_boy.png",
-            "is_boss_battle": true,
+            "sprite": "orre_sailor.png",
             "team": [
-              328,
-              220,
-              41
+              234,
+              176,
+              178,
+              326,
+              26,
+              12
             ],
             "levels": [
-              41,
-              42,
-              43
+              60,
+              60,
+              60,
+              60,
+              60,
+              60
             ],
+            "team_moves": [
+              [
+                "THUNDER-WAVE",
+                "CONFUSE-RAY",
+                "STOMP",
+                "ATTRACT"
+              ],
+              [
+                "FOLLOW-ME",
+                "BODY-SLAM",
+                "SWEET-KISS",
+                "THUNDER-WAVE"
+              ],
+              [
+                "CONFUSE-RAY",
+                "THUNDER-WAVE",
+                "PSYCHIC",
+                "GIGA-DRAIN"
+              ],
+              [
+                "CONFUSE-RAY",
+                "EXTRASENSORY",
+                "ICE-PUNCH",
+                "FIRE-PUNCH"
+              ],
+              [
+                "VOLT-TACKLE",
+                "THUNDER-WAVE",
+                "SWEET-KISS",
+                "ENCORE"
+              ],
+              [
+                "STUN-SPORE",
+                "FLASH",
+                "PSYCHIC",
+                "GIGA-DRAIN"
+              ]
+            ],
+            "double": true,
             "rewards": {
               "balls": 5
-            }
+            },
+            "team_items": [
+              "SCOPE_LENS",
+              "LEFTOVERS",
+              "FOCUS_BAND",
+              "LUM_BERRY",
+              "LAX_INCENSE",
+              "BRIGHTPOWDER"
+            ],
+            "is_boss_battle": true
           }
         ],
         "leader": {
-          "name": "Pree Champion Justy",
+          "name": "Pre Gym Leader Justy",
           "class": "GYM_LEADER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_justy.png",
           "is_boss_battle": true,
           "team": [
             27,
@@ -15417,12 +15578,12 @@
             299
           ],
           "levels": [
-            44,
-            44,
-            45,
-            45,
-            46,
-            46
+            60,
+            60,
+            61,
+            61,
+            62,
+            62
           ],
           "badge_reward": "ORRE",
           "rewards": {
@@ -15430,15 +15591,16 @@
           },
           "dialogue": {
             "intro": [
-              "Welcome to the final round of the Orre Colosseum! The winner takes the Orre Badge!"
+              "Justy: The final of the Orre Colosseum! I trained at the Pre Gym for this. Give it everything!"
             ],
             "player_won": [
-              "You won the Orre Colosseum! Here's the Orre Badge!"
+              "Justy: What a final! The Orre Badge is yours, and you've earned every bit of it."
             ],
             "player_lost": [
-              "So close! Train up and enter the next tournament."
+              "Justy: Train up and enter the next tournament. I'll be waiting!"
             ]
-          }
+          },
+          "double": true
         },
         "requirements": {
           "badges": 3,
@@ -15456,21 +15618,6 @@
       "min_rounds": 0,
       "trainer_pool": [
         {
-          "name": "Thug Zook",
-          "class": "THUG",
-          "sprite": "roughneck.png",
-          "team": [
-            335,
-            84,
-            318,
-            336,
-            369
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
           "name": "Cipher Peon Grezle",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
@@ -15480,9 +15627,43 @@
             166,
             314
           ],
+          "levels": [
+            54,
+            54,
+            52,
+            55
+          ],
+          "team_moves": [
+            [
+              "CHARM",
+              "ATTRACT",
+              "SPARK",
+              "HELPING-HAND"
+            ],
+            [
+              "GUST",
+              "MEGA-DRAIN",
+              "AERIAL-ACE",
+              "SWIFT"
+            ],
+            [
+              "PSYBEAM",
+              "GIGA-DRAIN",
+              "LIGHT-SCREEN",
+              "ATTRACT"
+            ],
+            [
+              "ICE-PUNCH",
+              "ATTRACT",
+              "CHARM",
+              "WATER-PULSE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Humah",
@@ -15491,12 +15672,46 @@
           "team": [
             336,
             198,
-            66,
-            43
+            9308,
+            9314
           ],
+          "levels": [
+            53,
+            53,
+            55,
+            55
+          ],
+          "team_moves": [
+            [
+              "BITE",
+              "POISON-TAIL",
+              "WRAP",
+              "SNATCH"
+            ],
+            [
+              "NIGHT-SHADE",
+              "HAZE",
+              "PURSUIT",
+              "ASTONISH"
+            ],
+            [
+              "SPORE",
+              "REFRESH",
+              "SLASH",
+              "FALSE-SWIPE"
+            ],
+            [
+              "FLAMETHROWER",
+              "CHARM",
+              "BITE",
+              "TAKE-DOWN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Ibsol",
@@ -15508,9 +15723,43 @@
             178,
             313
           ],
+          "levels": [
+            54,
+            54,
+            55,
+            54
+          ],
+          "team_moves": [
+            [
+              "FAKE-TEARS",
+              "ATTRACT",
+              "SPARK",
+              "HELPING-HAND"
+            ],
+            [
+              "GUST",
+              "LIGHT-SCREEN",
+              "ATTRACT",
+              "CONFUSION"
+            ],
+            [
+              "LEER",
+              "NIGHT-SHADE",
+              "AERIAL-ACE",
+              "ATTRACT"
+            ],
+            [
+              "ATTRACT",
+              "SIGNAL-BEAM",
+              "TAIL-GLOW",
+              "SHOCK-WAVE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Kollo",
@@ -15522,38 +15771,197 @@
             171,
             369
           ],
+          "levels": [
+            55,
+            55,
+            55,
+            56
+          ],
+          "team_moves": [
+            [
+              "IRON-DEFENSE",
+              "WHIRLPOOL",
+              "WATER-GUN",
+              "CLAMP"
+            ],
+            [
+              "PSYBEAM",
+              "WATER-GUN",
+              "FOCUS-ENERGY",
+              "CONSTRICT"
+            ],
+            [
+              "SPARK",
+              "WATER-GUN",
+              "FLAIL",
+              "BUBBLE"
+            ],
+            [
+              "HARDEN",
+              "YAWN",
+              "ROCK-TOMB",
+              "WATER-GUN"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Gorog",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            90,
+            9323,
             111,
             317,
             42,
             319
           ],
+          "levels": [
+            56,
+            53,
+            53,
+            53,
+            54
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "REFRESH",
+              "SURF",
+              "AURORA-BEAM"
+            ],
+            [
+              "HORN-ATTACK",
+              "SCARY-FACE",
+              "DIG",
+              "STOMP"
+            ],
+            [
+              "AMNESIA",
+              "YAWN",
+              "SHOCK-WAVE",
+              "SLUDGE"
+            ],
+            [
+              "ASTONISH",
+              "WING-ATTACK",
+              "STEEL-WING",
+              "BITE"
+            ],
+            [
+              "RAGE",
+              "BITE",
+              "THIEF",
+              "FOCUS-ENERGY"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Jelstin",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            315,
+            187,
+            284,
+            182
+          ],
+          "levels": [
+            56,
+            56,
+            55,
+            56
+          ],
+          "team_moves": [
+            [
+              "ABSORB",
+              "MAGICAL-LEAF",
+              "MEGA-DRAIN",
+              "GROWTH"
+            ],
+            [
+              "SUNNY-DAY",
+              "REFLECT",
+              "MEGA-DRAIN",
+              "AERIAL-ACE"
+            ],
+            [
+              "WATER-SPORT",
+              "GUST",
+              "PSYBEAM",
+              "SWEET-SCENT"
+            ],
+            [
+              "MAGICAL-LEAF",
+              "SWEET-SCENT",
+              "SUBSTITUTE",
+              "ABSORB"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Lok",
           "class": "CIPHER_PEON",
           "sprite": "orre_cipher_peon.png",
           "team": [
-            15,
+            9302,
             162,
             176,
-            17
+            9303
           ],
+          "levels": [
+            57,
+            54,
+            55,
+            57
+          ],
+          "team_moves": [
+            [
+              "SLUDGE-BOMB",
+              "BATON-PASS",
+              "TWINEEDLE",
+              "SWORDS-DANCE"
+            ],
+            [
+              "SCRATCH",
+              "FOLLOW-ME"
+            ],
+            [
+              "BODY-SLAM",
+              "FOLLOW-ME"
+            ],
+            [
+              "WING-ATTACK",
+              "REFRESH",
+              "STEEL-WING",
+              "FEATHER-DANCE"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "team_items": [
+            "POISON_BARB",
+            null,
+            null,
+            null
+          ],
+          "music": "orre/cipher_battle"
         },
         {
           "name": "Cipher Peon Kleto",
@@ -15566,9 +15974,446 @@
             181,
             73
           ],
+          "levels": [
+            54,
+            55,
+            54,
+            55,
+            55
+          ],
+          "team_moves": [
+            [
+              "TAUNT",
+              "BITE",
+              "SCRATCH",
+              "SWORDS-DANCE"
+            ],
+            [
+              "TAUNT",
+              "BITE",
+              "SCRATCH",
+              "SWORDS-DANCE"
+            ],
+            [
+              "GROWL",
+              "FURY-ATTACK",
+              "HORN-ATTACK",
+              "DEFENSE-CURL"
+            ],
+            [
+              "THUNDER-SHOCK",
+              "FIRE-PUNCH",
+              "LIGHT-SCREEN",
+              "COTTON-SPORE"
+            ],
+            [
+              "WRAP",
+              "BUBBLE-BEAM",
+              "ACID",
+              "CONSTRICT"
+            ]
+          ],
+          "double": true,
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Flipis",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            358,
+            352,
+            164,
+            262
+          ],
+          "levels": [
+            55,
+            54,
+            54,
+            53
+          ],
+          "team_moves": [
+            [
+              "SAFEGUARD",
+              "UPROAR",
+              "TAKE-DOWN",
+              "CONFUSION"
+            ],
+            [
+              "SUBSTITUTE",
+              "PSYBEAM",
+              "SCREECH",
+              "FEINT-ATTACK"
+            ],
+            [
+              "AERIAL-ACE",
+              "REFLECT",
+              "TAKE-DOWN",
+              "CONFUSION"
+            ],
+            [
+              "ROAR",
+              "DIG",
+              "SHADOW-BALL",
+              "BITE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Targ",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            38,
+            189,
+            184,
+            9333,
+            9301
+          ],
+          "levels": [
+            54,
+            54,
+            56,
+            57,
+            57
+          ],
+          "team_moves": [
+            [
+              "TAIL-WHIP",
+              "SAFEGUARD",
+              "QUICK-ATTACK",
+              "EMBER"
+            ],
+            [
+              "SUNNY-DAY",
+              "GIGA-DRAIN",
+              "LEECH-SEED",
+              "AERIAL-ACE"
+            ],
+            [
+              "DEFENSE-CURL",
+              "ROLLOUT",
+              "BUBBLE-BEAM",
+              "TAIL-WHIP"
+            ],
+            [
+              "SOLAR-BEAM",
+              "MORNING-SUN",
+              "SUNNY-DAY",
+              "INGRAIN"
+            ],
+            [
+              "PSYCHIC",
+              "MORNING-SUN",
+              "SLEEP-POWDER",
+              "AERIAL-ACE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            null,
+            null,
+            null,
+            "MIRACLE_SEED",
+            null
+          ],
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Hospel",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            168,
+            203,
+            45,
+            234,
+            210
+          ],
+          "levels": [
+            54,
+            53,
+            55,
+            55,
+            55
+          ],
+          "team_moves": [
+            [
+              "LEECH-LIFE",
+              "NIGHT-SHADE",
+              "CONSTRICT",
+              "SCARY-FACE"
+            ],
+            [
+              "AGILITY",
+              "STOMP",
+              "CONFUSION",
+              "ODOR-SLEUTH"
+            ],
+            [
+              "MEGA-DRAIN",
+              "AROMATHERAPY",
+              "SWEET-SCENT",
+              "ACID"
+            ],
+            [
+              "STOMP",
+              "SAND-ATTACK",
+              "CALM-MIND",
+              "SHOCK-WAVE"
+            ],
+            [
+              "WATER-PULSE",
+              "TACKLE",
+              "BITE",
+              "BULK-UP"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Snidle",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            292,
+            202,
+            329,
+            9318
+          ],
+          "levels": [
+            55,
+            54,
+            59,
+            55
+          ],
+          "team_moves": [
+            [
+              "SCRATCH",
+              "AERIAL-ACE",
+              "LEECH-LIFE",
+              "DIG"
+            ],
+            [
+              "DESTINY-BOND",
+              "ENCORE",
+              "MIRROR-COAT",
+              "COUNTER"
+            ],
+            [
+              "DRAGON-BREATH",
+              "CRUNCH",
+              "SAND-TOMB",
+              "FEINT-ATTACK"
+            ],
+            [
+              "DOUBLE-EDGE",
+              "REFRESH",
+              "RAIN-DANCE",
+              "THUNDER"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            null,
+            null,
+            null,
+            "METAL_COAT"
+          ],
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Fudler",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            67,
+            76,
+            205,
+            226,
+            169
+          ],
+          "levels": [
+            55,
+            55,
+            55,
+            56,
+            55
+          ],
+          "team_moves": [
+            [
+              "BULK-UP",
+              "REVENGE",
+              "KARATE-CHOP",
+              "SEISMIC-TOSS"
+            ],
+            [
+              "ROCK-THROW",
+              "DEFENSE-CURL",
+              "ROLLOUT",
+              "MUD-SPORT"
+            ],
+            [
+              "BIDE",
+              "TAKE-DOWN",
+              "RAPID-SPIN",
+              "COUNTER"
+            ],
+            [
+              "BUBBLE",
+              "TAKE-DOWN",
+              "BUBBLE-BEAM",
+              "AGILITY"
+            ],
+            [
+              "WING-ATTACK",
+              "SCREECH",
+              "BITE",
+              "AERIAL-ACE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher Peon Angic",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+            55,
+            237,
+            297,
+            9309,
+            9316
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            59,
+            59
+          ],
+          "team_moves": [
+            [
+              "SCRATCH",
+              "AERIAL-ACE",
+              "CONFUSION",
+              "PSYCH-UP"
+            ],
+            [
+              "BULK-UP",
+              "RAPID-SPIN",
+              "TRIPLE-KICK",
+              "FOCUS-ENERGY"
+            ],
+            [
+              "BULK-UP",
+              "ARM-THRUST",
+              "VITAL-THROW",
+              "ROCK-SLIDE"
+            ],
+            [
+              "SILVER-WIND",
+              "REFRESH",
+              "SUBSTITUTE",
+              "PSYCHIC"
+            ],
+            [
+              "MAGICAL-LEAF",
+              "MORNING-SUN",
+              "SLUDGE-BOMB",
+              "SWEET-SCENT"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "team_items": [
+            null,
+            null,
+            null,
+            "SILVERPOWDER",
+            null
+          ],
+          "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Cipher R&D Acrod",
+          "class": "CIPHER_R&D",
+          "sprite": "orre_scientist.png",
+          "team": [
+            326,
+            117,
+            323,
+            119,
+            221
+          ],
+          "levels": [
+            58,
+            58,
+            59,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "PSYWAVE",
+              "PSYBEAM",
+              "PSYCH-UP",
+              "MAGIC-COAT"
+            ],
+            [
+              "TWISTER",
+              "WATER-GUN",
+              "LEER",
+              "SMOKESCREEN"
+            ],
+            [
+              "ROCK-SLIDE",
+              "FOCUS-ENERGY",
+              "TAKE-DOWN",
+              "EMBER"
+            ],
+            [
+              "WATER-SPORT",
+              "FLAIL",
+              "WATER-PULSE",
+              "HORN-ATTACK"
+            ],
+            [
+              "ICY-WIND",
+              "TAKE-DOWN",
+              "ENDURE",
+              "DIG"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 2
+          },
+          "music": "orre/cipher_battle"
         }
       ],
       "route_menu": [
@@ -15579,7 +16424,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_left"
+            "shadows_left",
+            "xd_gorigan_beaten"
           ]
         },
         {
@@ -15590,7 +16436,8 @@
           "condition": [
             "has_item:SNAG_MACHINE",
             "got_snag_machine",
-            "shadows_cleared"
+            "shadows_cleared",
+            "xd_gorigan_beaten"
           ]
         },
         {
@@ -15600,46 +16447,631 @@
           "color": "GREEN"
         },
         {
+          "text": "THUG ZOOK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "not:xd_zook_lair"
+                ],
+                "flag": "xd_zook_lair",
+                "lines": [
+                  "Thug Zook: You again?! This place is Cipher's, and I'm the door. Nobody gets by me!"
+                ],
+                "battle": {
+                  "name": "Thug Zook",
+                  "class": "THUG",
+                  "sprite": "orre_chaser_m.png",
+                  "team": [
+                    9420,
+                    84,
+                    318,
+                    336,
+                    369
+                  ],
+                  "levels": [
+                    55,
+                    50,
+                    50,
+                    50,
+                    50
+                  ],
+                  "team_moves": [
+                    [
+                      "BRICK-BREAK",
+                      "REFRESH",
+                      "COUNTER",
+                      "CRUSH-CLAW"
+                    ],
+                    [
+                      "PECK",
+                      "TRI-ATTACK",
+                      "PURSUIT"
+                    ],
+                    [
+                      "WATER-PULSE",
+                      "BITE",
+                      "RAGE"
+                    ],
+                    [
+                      "LICK",
+                      "BITE",
+                      "POISON-TAIL"
+                    ],
+                    [
+                      "TACKLE",
+                      "ROCK-TOMB",
+                      "WATER-GUN"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0
+                  },
+                  "team_items": [
+                    "SILK_SCARF",
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  "dialogue": {
+                    "player_won": [
+                      "Thug Zook: Not again... I'm outta here!",
+                      "Zook runs off."
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": []
+          },
+          "flag_condition": "not xd_zook_lair"
+        },
+        {
+          "text": "TEAM SNAGEM BIDEN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "xd_zook_lair",
+                  "not:xd_lair_guards"
+                ],
+                "flag": "xd_lair_guards",
+                "lines": [
+                  "Team Snagem Biden: Hey, snagger! Gonzap says Snagem owes you one. We'll take care of the guards.",
+                  "Team Snagem Biden: ...After I see you battle up close. Just one round!"
+                ],
+                "battle": {
+                  "name": "Team Snagem Biden",
+                  "class": "TEAM_SNAGEM",
+                  "sprite": "orre_snagem_grunt.png",
+                  "team": [
+                    43
+                  ],
+                  "levels": [
+                    51
+                  ],
+                  "team_moves": [
+                    [
+                      "GIGA-DRAIN"
+                    ]
+                  ],
+                  "double": false,
+                  "rewards": {
+                    "balls": 0
+                  },
+                  "music": "orre/cipher_battle",
+                  "dialogue": {
+                    "player_won": [
+                      "Team Snagem Biden: Ha! Fair enough. Snagem, go!",
+                      "Snagem's grunts rush the guards. The door to the Key Lair is clear!"
+                    ]
+                  }
+                }
+              },
+              {
+                "requires": [
+                  "not:xd_zook_lair"
+                ],
+                "lines": [
+                  "Team Snagem Biden: That thug's in the way. Shift him and we'll talk."
+                ]
+              }
+            ],
+            "done": [
+              "Team Snagem Biden: We'll hold the door. Go get 'em!"
+            ]
+          }
+        },
+        {
+          "text": "HYPER POTIONS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_hyper",
+          "event": {
+            "lines": [
+              "A box in the middle of the maze: 3 Hyper Potions."
+            ],
+            "flag": "xd_lair_hyper",
+            "gift_item": {
+              "HYPER_POTION": 3
+            }
+          }
+        },
+        {
+          "text": "REVIVES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_revives",
+          "event": {
+            "lines": [
+              "A box in the maze's far corner: 2 Revives."
+            ],
+            "flag": "xd_lair_revives",
+            "gift_item": {
+              "REVIVE": 2
+            }
+          }
+        },
+        {
+          "text": "ULTRA BALLS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_ultra",
+          "event": {
+            "lines": [
+              "3 Ultra Balls."
+            ],
+            "flag": "xd_lair_ultra",
+            "gift_item": {
+              "ULTRA_BALL": 3
+            }
+          }
+        },
+        {
+          "text": "RARE CANDY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_candy",
+          "event": {
+            "lines": [
+              "A Rare Candy."
+            ],
+            "flag": "xd_lair_candy",
+            "gift_item": {
+              "RARE_CANDY": 1
+            }
+          }
+        },
+        {
+          "text": "TM THUNDERBOLT",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_tm_thunderbolt",
+          "event": {
+            "lines": [
+              "In a box past the peons: TM126, Thunderbolt!"
+            ],
+            "flag": "xd_lair_tm_thunderbolt",
+            "gift_item": {
+              "TM126": 1
+            }
+          }
+        },
+        {
+          "text": "PP UP",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_pp_up",
+          "event": {
+            "lines": [
+              "A PP Up."
+            ],
+            "flag": "xd_lair_pp_up",
+            "gift_item": {
+              "PP_UP": 1
+            }
+          }
+        },
+        {
+          "text": "FULL RESTORE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_full_restore",
+          "event": {
+            "lines": [
+              "A Full Restore."
+            ],
+            "flag": "xd_lair_full_restore",
+            "gift_item": {
+              "FULL_RESTORE": 1
+            }
+          }
+        },
+        {
+          "text": "ELIXIR",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_elixir",
+          "event": {
+            "lines": [
+              "An Elixir."
+            ],
+            "flag": "xd_lair_elixir",
+            "gift_item": {
+              "ELIXIR": 1
+            }
+          }
+        },
+        {
+          "text": "FULL HEALS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_full_heals",
+          "event": {
+            "lines": [
+              "3 Full Heals, down the hall."
+            ],
+            "flag": "xd_lair_full_heals",
+            "gift_item": {
+              "FULL_HEAL": 3
+            }
+          }
+        },
+        {
+          "text": "HP UP",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_hp_up",
+          "event": {
+            "lines": [
+              "An HP Up."
+            ],
+            "flag": "xd_lair_hp_up",
+            "gift_item": {
+              "HP_UP": 1
+            }
+          }
+        },
+        {
+          "text": "MAX REVIVE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_max_revive",
+          "event": {
+            "lines": [
+              "Behind the moon door: a Max Revive!"
+            ],
+            "flag": "xd_lair_max_revive",
+            "gift_item": {
+              "MAX_REVIVE": 1
+            }
+          }
+        },
+        {
+          "text": "SYSTEM LEVER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_lair_lever",
+          "event": {
+            "lines": [
+              "On the table: a heavy lever with a plug on the end. It's marked 'SYSTEM'.",
+              "You took the System Lever!"
+            ],
+            "flag": "xd_lair_lever",
+            "gift_item": {
+              "SYSTEM_LEVER": 1
+            }
+          }
+        },
+        {
+          "text": "CRATE RESET PANEL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "A panel with one big button: 'CRATE RESET'. You press it...",
+              "The crates rumble back to where they started."
+            ],
+            "unset_flags": [
+              "boxes_XD_CIPHER_KEY_LAIR_2"
+            ]
+          }
+        },
+        {
+          "text": "CRATE PANEL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "A panel by the stairs: 'CRATE CONTROL'. You press it...",
+              "The crates by the doorway rumble aside. The way back is clear."
+            ],
+            "flag_values": {
+              "boxes_XD_CIPHER_KEY_LAIR_2": [
+                [
+                  11,
+                  6
+                ],
+                [
+                  17,
+                  7
+                ],
+                [
+                  4,
+                  10
+                ],
+                [
+                  6,
+                  11
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "text": "CONTROL PANEL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "has_item:SYSTEM_LEVER",
+                  "not:xd_lair_voltage"
+                ],
+                "flag": "xd_lair_voltage",
+                "take_item": {
+                  "SYSTEM_LEVER": 1
+                },
+                "shake": 900,
+                "lines": [
+                  "The System Lever fits the slot. You push it all the way up...",
+                  "The voltage needle swings into the red! The whole building shakes!",
+                  "Somewhere nearby, a door bangs open."
+                ]
+              },
+              {
+                "requires": [
+                  "not:has_item:SYSTEM_LEVER",
+                  "not:xd_lair_voltage"
+                ],
+                "lines": [
+                  "The Key Lair's power panel. There's an empty slot shaped like a lever."
+                ]
+              }
+            ],
+            "done": [
+              "The voltage needle sits in the red. The lair hums."
+            ]
+          }
+        },
+        {
+          "text": "CIPHER PEON SMARTON",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "xd_lair_voltage",
+                  "not:xd_smarton_lair"
+                ],
+                "flag": "xd_smarton_lair",
+                "lines": [
+                  "Cipher Peon Smarton stumbles out of a door, hair on end.",
+                  "Cipher Peon Smarton: Wh-who cranked the power?! YOU! From the S.S. Libra! This time I'll win!"
+                ],
+                "battle": {
+                  "name": "Cipher Peon Smarton",
+                  "class": "CIPHER_PEON",
+                  "sprite": "orre_cipher_peon.png",
+                  "team": [
+                    367,
+                    332,
+                    110,
+                    217,
+                    9306
+                  ],
+                  "levels": [
+                    60,
+                    59,
+                    59,
+                    59,
+                    60
+                  ],
+                  "team_moves": [
+                    [
+                      "SCARY-FACE",
+                      "WATER-PULSE",
+                      "BITE",
+                      "WHIRLPOOL"
+                    ],
+                    [
+                      "PIN-MISSILE",
+                      "LEER",
+                      "FEINT-ATTACK",
+                      "INGRAIN"
+                    ],
+                    [
+                      "HAZE",
+                      "SLUDGE",
+                      "SMOKESCREEN",
+                      "SMOG"
+                    ],
+                    [
+                      "FEINT-ATTACK",
+                      "FAKE-TEARS",
+                      "AERIAL-ACE",
+                      "SCRATCH"
+                    ],
+                    [
+                      "SLUDGE-BOMB",
+                      "REFRESH",
+                      "GLARE",
+                      "BITE"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0
+                  },
+                  "music": "orre/cipher_battle",
+                  "dialogue": {
+                    "player_won": [
+                      "Cipher Peon Smarton: Unbelievable... Fine! The shutter to Gorigan's hall is open. Go get flattened!"
+                    ]
+                  }
+                }
+              }
+            ],
+            "done": [
+              "Cipher Peon Smarton: My hair's never going to lie flat again..."
+            ]
+          },
+          "condition": "xd_lair_voltage"
+        },
+        {
           "text": "BATTLE CIPHER ADMIN GORIGAN",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
             "lines": [
-              "Cipher Admin Gorigan: Here's where Cipher keeps its keys. You'll go no further!"
+              "Gorigan waits in the middle of his hall, cracking his knuckles."
             ],
+            "flag": "xd_gorigan_beaten",
             "battle": {
               "name": "Cipher Admin Gorigan",
               "class": "CIPHER_ADMIN",
               "sprite": "orre_cipher_gorigan.png",
               "team": [
+                305,
+                364,
                 199,
                 217,
-                306,
-                365,
-                62,
-                122
+                9313,
+                9324
               ],
               "levels": [
-                49,
-                49,
-                50,
-                50,
-                51,
-                51
+                60,
+                60,
+                60,
+                60,
+                61,
+                61
               ],
+              "team_moves": [
+                [
+                  "EARTHQUAKE",
+                  "IRON-TAIL",
+                  "TAKE-DOWN",
+                  "PROTECT"
+                ],
+                [
+                  "AURORA-BEAM",
+                  "EARTHQUAKE",
+                  "WATER-PULSE",
+                  "BODY-SLAM"
+                ],
+                [
+                  "HEADBUTT",
+                  "EARTHQUAKE",
+                  "CONFUSION",
+                  "WATER-PULSE"
+                ],
+                [
+                  "SLASH",
+                  "EARTHQUAKE",
+                  "BRICK-BREAK",
+                  "PROTECT"
+                ],
+                [
+                  "CROSS-CHOP",
+                  "HELPING-HAND",
+                  "FOCUS-ENERGY",
+                  "REVERSAL"
+                ],
+                [
+                  "PSYCHIC",
+                  "BATON-PASS",
+                  "MEDITATE",
+                  "SHADOW-BALL"
+                ]
+              ],
+              "double": true,
               "rewards": {
                 "balls": 15
               },
+              "music": "orre/admin_battle",
+              "is_boss_battle": true,
               "dialogue": {
+                "intro": [
+                  "Gorigan: So you're the one who keeps wrecking Cipher's plans. My Pokemon and I will crush you flat!"
+                ],
                 "player_won": [
-                  "Gorigan: The key... to Citadark Isle. Take it, then. Greevil is waiting."
+                  "Gorigan: Hrrgh... I lost? To a kid?!"
                 ]
               }
-            },
-            "flag": "xd_gorigan_beaten"
+            }
           },
           "flag_condition": "not xd_gorigan_beaten",
-          "condition": "has_orre_badge"
+          "condition": "xd_smarton_lair"
+        },
+        {
+          "text": "GREEVIL'S SCREEN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "xd_gorigan_beaten",
+                  "not:xd_greevil_screen"
+                ],
+                "flag": "xd_greevil_screen",
+                "lines": [
+                  "The big screen on the wall flickers on. A large man in a feathered cloak looks out.",
+                  "???: Gorigan beaten as well. I am Greevil, Grand Master of Cipher.",
+                  "Greevil: Our true base is Citadark Isle, behind waves no ship can cross. And there waits XD001, my masterpiece.",
+                  "Greevil: Come, if you can. Hahaha!",
+                  "The screen goes dark."
+                ]
+              }
+            ],
+            "done": [
+              "The screen is dark."
+            ]
+          },
+          "condition": "xd_gorigan_beaten"
+        },
+        {
+          "text": "GORIGAN'S DESK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "requires": [
+                  "xd_gorigan_beaten",
+                  "not:xd_shadow_list"
+                ],
+                "flag": "xd_shadow_list",
+                "lines": [
+                  "On Gorigan's desk: Cipher's full list of the Shadow Pokemon they made.",
+                  "You copy it into your P*DA. Every last one of them can be found now."
+                ]
+              }
+            ],
+            "done": [
+              "Gorigan's desk is bare."
+            ]
+          },
+          "condition": "xd_gorigan_beaten"
         },
         {
           "text": "Gateon Port",
@@ -16912,8 +18344,10 @@
     {"id": "orre_m14", "type": "MAIN", "title": "Phenac Stadium", "description": "Now win Phenac Stadium's tournament for the third badge!", "condition": {"required_region": "ORRE", "flag": "xd_pregym_freed", "region_badges_min": 2, "region_badges_less": 3}, "region": "ORRE", "completed_badge": "PHENAC", "target": "PHENAC_CITY", "reward": "Phenac Badge"},
     {"id": "orre_m14b", "type": "MAIN", "title": "A Runaway at the Outskirt Stand", "description": "Someone who fled Cipher is waiting at the Outskirt Stand. Miror B. may be about, too.", "condition": {"required_region": "ORRE", "region_badges_min": 3, "flag_not": ["xd_hordel", "beat_gonzap"]}, "region": "ORRE", "completed_flag": "xd_hordel", "target": "OUTSKIRT_STAND"},
     {"id": "orre_m15", "type": "MAIN", "title": "Snagem Hideout", "description": "Team Snagem's hideout is out in the desert. Their boss, Gonzap, has Shadow Pokémon too. Take him on!", "condition": {"required_region": "ORRE", "flag": "xd_hordel", "region_badges_min": 3, "flag_not": "beat_gonzap"}, "region": "ORRE", "completed_flag": "beat_gonzap", "target": "SNAGEM_HIDEOUT"},
-    {"id": "orre_m16", "type": "MAIN", "title": "Orre Colosseum", "description": "The biggest tournament in Orre! Win it for the last badge.", "condition": {"required_region": "ORRE", "flag": "beat_gonzap", "region_badges_min": 3, "region_badges_less": 4}, "region": "ORRE", "completed_badge": "ORRE", "target": "ORRE_COLOSSEUM", "reward": "Orre Badge"},
-    {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher's last base is under Gateon Port. Beat Cipher Admin Gorigan to learn where their leader is.", "condition": {"required_region": "ORRE", "region_badges_min": 4, "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
+    {"id": "orre_m16", "type": "MAIN", "title": "Orre Colosseum", "description": "The biggest tournament in Orre! Beat three challengers, then Pre Gym Leader Justy in the final, for the last badge.", "condition": {"required_region": "ORRE", "flag": "beat_gonzap", "region_badges_min": 3, "region_badges_less": 4}, "region": "ORRE", "completed_badge": "ORRE", "target": "ORRE_COLOSSEUM", "reward": "Orre Badge"},
+    {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher has a base in Gateon Port, the Key Lair. Get past the thug at its door.", "condition": {"required_region": "ORRE", "region_badges_min": 4, "flag_not": ["xd_lair_guards", "xd_gorigan_beaten"]}, "region": "ORRE", "completed_flag": "xd_lair_guards", "target": "XD_CIPHER_KEY_LAIR"},
+    {"id": "orre_m17b", "type": "MAIN", "title": "The System Lever", "description": "Through the maze and the crate rooms: take the System Lever from its table, then put it in the Control Room's panel.", "condition": {"required_region": "ORRE", "flag": "xd_lair_guards", "flag_not": ["xd_lair_voltage", "xd_gorigan_beaten"]}, "region": "ORRE", "completed_flag": "xd_lair_voltage", "target": "XD_CIPHER_KEY_LAIR"},
+    {"id": "orre_m17c", "type": "MAIN", "title": "Cipher Admin Gorigan", "description": "The power's up. Beat Smarton, then climb to Gorigan's hall and beat him to learn where Cipher's leader is.", "condition": {"required_region": "ORRE", "flag": "xd_lair_voltage", "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is Evice, the man who built Realgam Tower. Beat his admins and then Evice himself to save Orre!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": "beat_orre_champion"}, "region": "ORRE", "completed_flag": "beat_orre_champion", "target": "REALGAM_TOWER", "reward": "Orre Champion"},
     {"id": "orre_s1", "type": "SIDE", "title": "Professor Krane's Eevee", "description": "Professor Krane works at the Pokémon HQ Lab in Gateon Port. Pay him a visit!", "condition": {"required_region": "ORRE", "visited": "GATEON_PORT", "flag_not": "got_krane_eevee"}, "region": "ORRE", "completed_flag": "got_krane_eevee", "target": "GATEON_PORT"},
     {"id": "orre_s1b", "type": "SIDE", "title": "Ein's Data ROM", "description": "Ein left a Data ROM on his desk. Take it to Nett at the Kids Grid in The Under.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom", "flag_not": "orre_data_rom_given"}, "region": "ORRE", "completed_flag": "orre_data_rom_given", "target": "THE_UNDER"},

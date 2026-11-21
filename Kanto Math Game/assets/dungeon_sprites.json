@@ -76,6 +76,66 @@
     ]
   },
   "figures": {
+    "XD_CIPHER_KEY_LAIR:CRATE PANEL": {
+      "sheet": "orre_door_lift.png"
+    },
+    "XD_CIPHER_KEY_LAIR:CONTROL PANEL": {
+      "sheet": "orre_door_lift.png"
+    },
+    "XD_CIPHER_KEY_LAIR:CRATE RESET PANEL": {
+      "sheet": "orre_door_lift.png"
+    },
+    "XD_CIPHER_KEY_LAIR:GORIGAN'S DESK": {
+      "sheet": "orre_door_lift.png"
+    },
+    "XD_CIPHER_KEY_LAIR:CIPHER PEON SMARTON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_KEY_LAIR:THUG ZOOK": {
+      "sheet": "orre_trainer_teamrocket_m.png"
+    },
+    "XD_CIPHER_KEY_LAIR:TEAM SNAGEM BIDEN": {
+      "sheet": "orre_trainer_team_aqua_grunt_m.png"
+    },
+    "XD_CIPHER_KEY_LAIR:HYPER POTIONS": {
+      "item": "HYPER_POTION"
+    },
+    "XD_CIPHER_KEY_LAIR:REVIVES": {
+      "item": "REVIVE"
+    },
+    "XD_CIPHER_KEY_LAIR:ULTRA BALLS": {
+      "item": "ULTRA_BALL"
+    },
+    "XD_CIPHER_KEY_LAIR:RARE CANDY": {
+      "item": "RARE_CANDY"
+    },
+    "XD_CIPHER_KEY_LAIR:TM THUNDERBOLT": {
+      "item": "TM126"
+    },
+    "XD_CIPHER_KEY_LAIR:PP UP": {
+      "item": "PP_UP"
+    },
+    "XD_CIPHER_KEY_LAIR:FULL RESTORE": {
+      "item": "FULL_RESTORE"
+    },
+    "XD_CIPHER_KEY_LAIR:ELIXIR": {
+      "item": "ELIXIR"
+    },
+    "XD_CIPHER_KEY_LAIR:FULL HEALS": {
+      "item": "FULL_HEAL"
+    },
+    "XD_CIPHER_KEY_LAIR:SYSTEM LEVER": {
+      "item": "SYSTEM_LEVER"
+    },
+    "XD_CIPHER_KEY_LAIR:HP UP": {
+      "item": "HP_UP"
+    },
+    "XD_CIPHER_KEY_LAIR:MAX REVIVE": {
+      "item": "MAX_REVIVE"
+    },
+    "XD_CIPHER_KEY_LAIR:GREEVIL'S SCREEN": {
+      "sheet": "orre_door_lift.png"
+    },
     "PHENAC_CITY:Fun Old Man Eroll": {
       "sheet": "orre_trainer_fun_old_man.png"
     },

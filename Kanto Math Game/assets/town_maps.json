@@ -291035,9 +291035,9 @@
      "c.........c",
      "c.........c",
      "c.........c",
-     "c.XXX..X..c",
+     "c......N..c",
      "c.........c",
-     "c..c..Xc..c",
+     "c..c..Nc..c",
      "c..c...c..c",
      "cccc...cccc",
      "cccc...cccc",
@@ -291055,7 +291055,7 @@
       16
      ],
      "6,4": [
-      2,
+      4,
       4,
       5
      ]
@@ -291063,15 +291063,11 @@
     "parts": true,
     "people": [
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "TEAM SNAGEM BIDEN",
+     "THUG ZOOK"
     ],
-    "trainer_spots": [
-     "Cipher Peon Humah",
-     "Cipher Peon Kollo",
-     "Cipher Peon Grezle",
-     "Cipher Peon Ibsol",
-     "Thug Zook"
-    ],
+    "trainer_spots": [],
     "roofs": {
      "_picture": {
       "f": "orre_ground/157.png",
@@ -291096,6 +291092,38 @@
        30
       ]
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        2
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_lair_guards"
+      },
+      "lines": [
+       "Cipher's guards block the door. Nobody gets in."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        6,
+        4
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_gorigan_beaten"
+      },
+      "lines": [
+       "A locked door. It must open from the inside."
+      ],
+      "look": "barrier"
+     }
     ]
    },
    {
@@ -291103,17 +291131,17 @@
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "cc1cccccccccccccccccccccc",
-     "c.......................c",
+     "c........N.....N........c",
      "c.......................c",
      "ccccccccccccccccccc.ccccc",
-     "c.............c...c...ccc",
-     "c.............c...c...ccc",
+     "c...........X.c.X.c...ccc",
+     "c.N...........c...c...ccc",
      "cc.ccccccccc.ccX.cccc.ccc",
      "c.........c.......c...ccc",
      "c.........c.......c...ccc",
      "cccccccX.ccccccccccc.cccc",
-     "c................c......c",
-     "c................c......c",
+     "c..N..X.......X..c......c",
+     "cN...............c.....Nc",
      "c.ccccccccccccc.ccccccX.c",
      "c............c..........c",
      "ccccccccccc1ccccccccccccc",
@@ -291128,16 +291156,27 @@
      ],
      "2,2": [
       2,
-      6,
-      13
+      1,
+      8
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     "ULTRA BALLS",
+     "TM THUNDERBOLT",
+     "PP UP",
+     "HYPER POTIONS",
+     "REVIVES",
+     "RARE CANDY"
+    ],
     "trainer_spots": [
-     "Cipher Peon Gorog",
      "Cipher Peon Lok",
-     "Cipher Peon Kleto"
+     "Cipher Peon Grezle",
+     "Cipher Peon Humah",
+     "Cipher Peon Ibsol",
+     "Cipher Peon Jelstin",
+     "Cipher Peon Gorog",
+     "Cipher Peon Kollo"
     ],
     "roofs": {
      "_picture": {
@@ -291167,6 +291206,209 @@
    },
    {
     "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cN......Nccccccc.......N......1c",
+     "c........ccccccc.........X.N...c",
+     "c...X....ccccccc.............N.c",
+     "c.N......ccccccc......X........c",
+     "c.....X..c..c..c...............c",
+     "c..............................c",
+     "c1.......c..c..c...............c",
+     "cccc.ccccccccccc...............c",
+     "cc......cccccccc...........ccccc",
+     "cc.c....cccccccc....X......c...c",
+     "cc..c...cccccccc...............c",
+     "cc......ccccccccN..........c..Nc",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "30,2": [
+      3,
+      1,
+      2
+     ],
+     "1,8": [
+      1,
+      2,
+      2
+     ]
+    },
+    "parts": true,
+    "people": [
+     "FULL RESTORE",
+     "ELIXIR",
+     "FULL HEALS",
+     "SYSTEM LEVER",
+     "CRATE PANEL",
+     "CRATE RESET PANEL",
+     "HP UP",
+     "MAX REVIVE"
+    ],
+    "trainer_spots": [
+     "Cipher Peon Snidle",
+     "Cipher Peon Kleto",
+     "Cipher Peon Targ",
+     "Cipher Peon Flipis",
+     "Cipher R&D Hospel"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/key_lair_in_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/key_lair_in_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       32,
+       15
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        27,
+        12
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_lair_moon_door"
+      },
+      "lines": [
+       "A steel door marked with a crescent moon. It won't open.",
+       "There must be a switch for it somewhere."
+      ],
+      "look": "barrier"
+     }
+    ],
+    "boxes": [
+     [
+      11,
+      7
+     ],
+     [
+      12,
+      7
+     ],
+     [
+      4,
+      10
+     ],
+     [
+      6,
+      11
+     ]
+    ],
+    "box_switches": [
+     {
+      "on": [
+       7,
+       12
+      ],
+      "flag": "xd_lair_moon_door",
+      "lines": [
+       "The crate slid onto the floor switch. Clunk!",
+       "Somewhere, the moon door slid open."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "c1.....c........c......c",
+     "c......c..X.....c..N...c",
+     "c..X...c........c..X...c",
+     "c......................c",
+     "c......c........c......c",
+     "c......ccc.cccccc......c",
+     "c...N..c........c....1.c",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "1,2": [
+      2,
+      30,
+      2
+     ],
+     "21,8": [
+      4,
+      6,
+      13
+     ]
+    },
+    "parts": true,
+    "people": [
+     "CONTROL PANEL",
+     "CIPHER PEON SMARTON"
+    ],
+    "trainer_spots": [
+     "Cipher Peon Fudler",
+     "Cipher Peon Angic",
+     "Cipher R&D Acrod"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/key_lair_in_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/key_lair_in_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       10
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_smarton_lair"
+      },
+      "lines": [
+       "The stairs up are shut behind a shutter."
+      ],
+      "look": "barrier"
+     }
+    ]
+   },
+   {
+    "art": [
      "ccccccccccccc",
      "ccccccccccccc",
      "cc.........cc",
@@ -291174,7 +291416,7 @@
      "c...........c",
      "c...1.N.....c",
      "c.c.......c.c",
-     "c.c.......c.c",
+     "c.N.......N.c",
      "c...........c",
      "c...........c",
      "c..c.....c..c",
@@ -291191,14 +291433,16 @@
       4
      ],
      "6,13": [
-      1,
-      2,
-      2
+      3,
+      21,
+      8
      ]
     },
     "parts": true,
     "people": [
-     "BATTLE CIPHER ADMIN GORIGAN"
+     "BATTLE CIPHER ADMIN GORIGAN",
+     "GREEVIL'S SCREEN",
+     "GORIGAN'S DESK"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -291231,20 +291475,49 @@
   "floor_names": [
    "Key Lair",
    "Labyrinth",
+   "Box Rooms",
+   "Control Room",
    "Gorigan's Hall"
   ],
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
-   "Thug Zook": 0,
-   "Cipher Peon Grezle": 0,
-   "Cipher Peon Humah": 0,
-   "Cipher Peon Ibsol": 0,
-   "Cipher Peon Kollo": 0,
+   "THUG ZOOK": 0,
+   "TEAM SNAGEM BIDEN": 0,
    "Cipher Peon Gorog": 1,
+   "Cipher Peon Jelstin": 1,
    "Cipher Peon Lok": 1,
-   "Cipher Peon Kleto": 1,
-   "BATTLE CIPHER ADMIN GORIGAN": 2
+   "HYPER POTIONS": 1,
+   "REVIVES": 1,
+   "ULTRA BALLS": 1,
+   "RARE CANDY": 1,
+   "TM THUNDERBOLT": 1,
+   "PP UP": 1,
+   "Cipher Peon Grezle": 1,
+   "Cipher Peon Humah": 1,
+   "Cipher Peon Ibsol": 1,
+   "Cipher Peon Kollo": 1,
+   "FULL RESTORE": 2,
+   "ELIXIR": 2,
+   "FULL HEALS": 2,
+   "SYSTEM LEVER": 2,
+   "CRATE PANEL": 2,
+   "CRATE RESET PANEL": 2,
+   "HP UP": 2,
+   "MAX REVIVE": 2,
+   "Cipher Peon Snidle": 2,
+   "Cipher Peon Kleto": 2,
+   "Cipher Peon Targ": 2,
+   "Cipher Peon Flipis": 2,
+   "Cipher R&D Hospel": 2,
+   "CONTROL PANEL": 3,
+   "CIPHER PEON SMARTON": 3,
+   "Cipher Peon Fudler": 3,
+   "Cipher Peon Angic": 3,
+   "Cipher R&D Acrod": 3,
+   "BATTLE CIPHER ADMIN GORIGAN": 4,
+   "GREEVIL'S SCREEN": 4,
+   "GORIGAN'S DESK": 4
   },
   "theme": "tunnel"
  },

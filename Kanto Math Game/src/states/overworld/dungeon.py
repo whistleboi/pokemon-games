@@ -2005,6 +2005,8 @@ class DungeonState(OverworldBattles, PlayState):
             self.walk_goal = None  # (the open sea: Surf it, Routes 19-21)
             self.flash("The sea is deep. You need Surf to cross it!", 100)
             return
+        if str(self.run.floor.decor.get(to, "")).startswith("box:"):   # (a crate you push by walking into it: XD's Key Lair, 11-21)
+            self._push_box(to, dx, dy)
         hopped = False
         if str(self.run.floor.decor.get(to, "")) == f"ledge:{dx},{dy}":  # (a ledge, from its high side: hop over it)
             over = (to[0] + dx, to[1] + dy)
@@ -3189,6 +3191,7 @@ class DungeonState(OverworldBattles, PlayState):
         """Boulders pushed aside stay out of the way (a story flag each)."""
         f = self.run.floor
         flags = self.game.story_manager.story_flags
+        self._place_boxes()
         for sw in self._switches():   # (a boulder sitting on its switch)
             t = tuple(sw["on"])
             if flags.get(sw["flag"]) and t not in f.decor:
@@ -3296,6 +3299,57 @@ class DungeonState(OverworldBattles, PlayState):
                     todo.append(n)
         self._clear_boulders()
         self.say(["Your Pokemon used Whirlpool!", "The water calmed. The way is clear!"])
+
+    # ---------------------------------------------------------------- crates you push (XD's Cipher Key Lair, Jordan 11-21)
+    # A floor's "boxes": [[x, y], ...] where its crates start; walk into one and it slides a tile ahead, if the tile beyond
+    # is plain open floor. Where they stand is kept (story flag boxes_<area>_<floor>: a list), so a solved room stays
+    # solved; "clear_flags" on that flag (the room's reset panel) puts them back. "box_switches": [{"on": [x, y], "flag",
+    # "lines"}]: a crate pushed onto the switch sets its flag for good (the moon door's "barred" until it).
+    def _box_key(self):
+        return f"boxes_{self.area_key}_{self.run.index}"
+
+    def _box_spots(self):
+        start = [list(t) for t in (self._here_art().get("boxes") or [])]
+        now = self.game.story_manager.story_flags.get(self._box_key())
+        return [tuple(t) for t in (now if isinstance(now, list) and len(now) == len(start) else start)]
+
+    def _place_boxes(self):
+        """Put this floor's crates where they stand now (and free the tiles they've left)."""
+        if not self._here_art().get("boxes"):
+            return
+        f = self.run.floor
+        spots = set(self._box_spots())
+        for t, what in list(f.decor.items()):
+            if str(what).startswith("box:") and t not in spots:
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.FLOOR
+        for t in spots:
+            if t not in f.decor:
+                f.decor[t] = f"box:{t[0]},{t[1]}"
+                f.tiles[t[1]][t[0]] = core.WALL
+
+    def _push_box(self, t, dx, dy):
+        """Walked into a crate: it slides one tile on, if that tile is open floor with nothing on it."""
+        f = self.run.floor
+        story = self.game.story_manager
+        to = (t[0] + dx, t[1] + dy)
+        art = self._here_art()
+        links = {tuple(int(v) for v in k.split(",")) for k in (art.get("links") or {})}
+        if not (0 <= to[0] < f.w and 0 <= to[1] < f.h) or f.tile(*to) != core.FLOOR or to in f.decor or f.mover_at(*to)                 or to in f.exits or to in f.items or to in f.tm_spots or to in links:
+            self.flash("It won't budge any further that way.")
+            return False
+        spots = self._box_spots()
+        spots[spots.index(tuple(t))] = to
+        story.story_flags[self._box_key()] = [list(u) for u in spots]
+        self._place_boxes()
+        for sw in art.get("box_switches") or []:
+            if tuple(sw["on"]) == to and not story.story_flags.get(sw["flag"]):
+                story.story_flags[sw["flag"]] = True
+                self._clear_boulders()
+                self._floor_surf = None
+                self._over_key = None
+                self.say(sw.get("lines") or ["The crate pressed the floor switch down.", "Something opened somewhere!"])
+        return True
 
     def _crate_img(self):
         """A crate as the region's own art draws it (assets/tiles/<folder>/ow_crate.png: Orre's, from the fan game's sheet),
@@ -3546,6 +3600,11 @@ class DungeonState(OverworldBattles, PlayState):
 
     # ---------------------------------------------------------------- each frame
     def update(self):
+        if getattr(self, "run", None) is not None and self._here_art().get("boxes"):
+            _bk = (self.run.index, tuple(self._box_spots()))
+            if getattr(self, "_boxes_seen", None) != _bk:
+                self._boxes_seen = _bk
+                self._place_boxes()
         if self.mode == "CATCH":
             return super().update()
         self._vs_tick()   # (the VS Seeker playing: the pose, the bubbles, then its message)
@@ -4355,6 +4414,16 @@ class DungeonState(OverworldBattles, PlayState):
                 glow = at(x, y).inflate(-8, -8)
                 pygame.draw.ellipse(screen, (255, 236, 140), glow, 3)
                 screen.blit(img, img.get_rect(center=(glow.centerx, glow.centery + bob)))
+        for sw in self._here_art().get("box_switches") or []:   # (a crate's floor switch: a steel plate, lit once pressed)
+            x, y = sw["on"]
+            if (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
+                r = at(x, y).inflate(-6, -6)
+                lit = self.game.story_manager.story_flags.get(sw.get("flag"))
+                pygame.draw.rect(screen, (70, 74, 92), r, border_radius=4)
+                pygame.draw.rect(screen, (250, 220, 110) if lit else (150, 156, 180), r, 2, border_radius=4)
+                c = r.center
+                pygame.draw.circle(screen, (250, 220, 110) if lit else (190, 196, 220), c, max(3, r.w // 4))
+                pygame.draw.circle(screen, (70, 74, 92), (c[0] + max(2, r.w // 8), c[1] - 1), max(3, r.w // 4))   # (a crescent moon)
         for (x, y), what in f.decor.items():  # boulders (Strength and the slide puzzle push them aside)
             if str(what).startswith("soil:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (soft soil and its Berry tree)
                 from src.world import berries as _berries
@@ -4370,7 +4439,7 @@ class DungeonState(OverworldBattles, PlayState):
                     p2 = pygame.transform.scale(_plant, (r.w, int(_plant.get_height() * k)))
                     screen.blit(p2, p2.get_rect(midbottom=(r.centerx, r.bottom - 2)))
                 continue
-            if str(what).startswith("crate:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (a crate: the map's own crate picture)
+            if str(what).startswith(("crate:", "box:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (a crate: the map's own crate picture)
                 r = at(x, y)
                 img = self._crate_img()
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom)))

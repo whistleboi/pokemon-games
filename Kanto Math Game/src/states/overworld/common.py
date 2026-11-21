@@ -474,6 +474,12 @@ def _run_story_event(state, key, check, show):
         story.defeated_trainers.pop(story.current_area_key, None)
         for f in ev.get("clear_flags", []):
             story.story_flags.pop(f, None)
+    for f in ev.get("unset_flags", []):   # (a reset panel: the Key Lair's crates back where they started, 11-21)
+        story.story_flags.pop(f, None)
+    for f, v in (ev.get("flag_values") or {}).items():   # (a flag set to a value: the Key Lair's far panel lays the crates out clear)
+        story.story_flags[f] = v
+    if ev.get("shake") and hasattr(state, "shake"):   # (the building shakes: the Key Lair's voltage raised, 11-21)
+        state.shake(ev["shake"] if isinstance(ev["shake"], int) and ev["shake"] > 1 else 700)
     lines += _teach_move(game, ev.get("teach"))
     lines += story.evolve_party(ev.get("evolve"))  # Kubfu at the Towers of Two Fists
     if ev.get("purify") == "choose":  # Orre's Relic Stone: purify one Shadow Pokemon, if you want to

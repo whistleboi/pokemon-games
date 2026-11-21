@@ -596,6 +596,7 @@ STORY_TEXT = {
     "XD_DATA_ROM": "Professor Krane's research data, for Nett at ONBS in Pyrite.",
     "MUSIC_DISC": "A disc of cheerful music. Phenac's mayor's secretary wanted some.",
     "GONZAPS_KEY": "Gonzap's key to a locked box in the Snagem Hideout.",
+    "SYSTEM_LEVER": "A heavy lever marked 'SYSTEM'. It fits the power panel in the Cipher Key Lair's Control Room.",
     "BATTLE_CD_01": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
     "BATTLE_CD_02": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
     "BATTLE_CD_03": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
