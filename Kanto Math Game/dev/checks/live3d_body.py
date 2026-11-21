@@ -90,17 +90,20 @@ v = t._view()
 tile = t._tile_at((v.centerx, v.centery + 120))
 check(abs(tile[0] - t.player[0]) <= 3 and tile[1] > t.player[1], f"a tap below you picks a tile below you ({tile}, you at {t.player})")
 
-print("2b) a scene with holes where you walk stays flat (Jordan 11-21: dropped under the avenue's middle)")
-for room, at_, whole in ((None, (64, 67), False), ("route4_street", None, False), ("narrow_street", None, False),
-                          ("gym_street", (21, 50), True), ("castelia_street", None, True), ("prime_pier", None, True)):
+print("2b) ground under every walkable tile (Jordan 11-21: dropped under the avenue's middle); a scene with holes stays flat")
+# (11-21 re-export: the avenue's holes were road pieces the skyline filter took out; Route 4's street was 12 rows out of
+#  line with its grid (the importer's crop); Narrow Street's mouth onto the plaza is filled from its own ground)
+for room, at_ in ((None, (64, 67)), ("route4_street", None), ("narrow_street", None), ("gym_street", (21, 50)),
+                  ("castelia_street", None), ("prime_pier", None)):
     t = town(room, at_)
-    check((t._live() is not None) == whole, f"{room or 'the avenue'}: {'live' if whole else 'flat, its 3D scene has holes'} ({t._live() is not None})")
-live3d.ALLOW_HOLES = True   # (the avenue's camera and walking, tried on its scene as it is)
+    check(t._live() is not None, f"{room or 'the avenue'}: whole, drawn live ({t._live() is not None})")
+_sc = live3d.scene(g, 31)
+check(not _sc.covers([(500, 500)]), "a tile with nothing under it counts as a hole (such a place would stay flat)")
 
 print("3) the avenue: the camera circles the city's middle; your keys follow the road's bend")
 t = town(None, (64, 67))
 y1 = (settle(40), g.current_state._live_yaw)[1]
-path = walk(-1, 0, 36)
+path = walk(-1, 0, 32)   # (32: still on the avenue; further on, the road runs into a street now that its mouths are ways in)
 y2 = (settle(60), g.current_state._live_yaw)[1]
 check(path[-1][0] <= 33 and path[-1][1] < 74 and any(p[1] == 74 for p in path),
       f"holding left from the Pokemon Center: round the south bend and up the west side ({path[0]} .. {path[-1]})")
@@ -110,20 +113,20 @@ up = walk(0, -1, 2)
 check(up[0][0] > path[-1][0] or up[0][1] < path[-1][1], f"up: in toward the city ({path[-1]} -> {up})")
 
 print("3b) on the bend: you face the key you press; others turn with the camera; taps aren't turned (Jordan 11-21)")
-t = town(None, (31, 70)); settle(60)
+t = town(None, (34, 74)); settle(60)   # (on the bend, clear of doors: "up" by a doorway now walks in, 11-21)
 yaw = t._live_yaw
 for key in ((-1, 0), (0, -1), (1, 0), (0, 1)):
     settle(20); t = g.current_state; t.step(*key, by_key=True); settle(4)
     check(t._live_me_face() == key, f"key {key} at the west bend (camera {yaw:.0f} degrees): drawn facing {t._live_me_face()}, the map's facing {tuple(t.facing)}")
 settle(20)
 check(t._live_face((0, -1)) == (0, -1) or abs(yaw) < 45, "the map's north, turned by under 45 degrees, still looks up")
-t = town(None, (31, 70)); settle(60)
+t = town(None, (34, 74)); settle(60)   # (on the bend, clear of doors: "up" by a doorway now walks in, 11-21)
 start = tuple(t.player)
 _open = [(start[0] + dx, start[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0)) if t._open((start[0] + dx, start[1] + dy))]
 goal = _open[0]
 t.walk_goal = goal; settle(30)
 check(tuple(g.current_state.player) == goal, f"a tapped tile next to you, on the bend: you step straight onto it ({start} -> {goal}: at {tuple(g.current_state.player)})")
-t = town(None, (31, 70)); settle(60)
+t = town(None, (34, 74)); settle(60)   # (on the bend, clear of doors: "up" by a doorway now walks in, 11-21)
 far = (30, 65)
 t.walk_goal = far; settle(400)
 check(tuple(g.current_state.player) == far, f"a tapped tile up the west side: you walk there ({far}: at {tuple(g.current_state.player)})")
@@ -169,4 +172,39 @@ g.live3d = False
 t = town("gym_street", (21, 50))
 check(t._live() is None, "with the live camera off, the baked picture is drawn")
 g.live3d = True
+print("5) the avenue's street mouths (Jordan 11-21: fell under the road there, couldn't get into the streets)")
+live3d.ALLOW_HOLES = False
+t = town(None, (64, 67))
+_m = t.town_map
+_ex = {}
+for _y, _r in enumerate(_m["art"]):
+    for _x, _c in enumerate(_r):
+        if _c in _m["exits"]:
+            _ex.setdefault(_m["exits"][_c], []).append((_x, _y))
+_sc = t._live()[0]
+_low = [(x, y) for y, r in enumerate(_m["art"]) for x, c in enumerate(r)
+        if c == "." and _sc.ground_at(x, y) is not None and abs(t._live_height(x, y) - _sc.ground_at(x, y)) > 0.05]
+check(not _low, f"you stand on the 3D road on every avenue tile (the steps down to the docks too: {_low[:6]})")
+for _room in ("ROOM:mode_street", "ROOM:castelia_street", "ROOM:narrow_street", "ROOM:gym_street"):
+    t = town(None, (64, 67))   # (back on the avenue each time)
+    _tiles = sorted(_ex.get(_room, []))
+    _in = None
+    for _t in _tiles:
+        for _dx, _dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+            _s = (_t[0] - _dx, _t[1] - _dy)
+            if _in or not t._open(_s) or _s in t.exits:
+                continue
+            for _key in ((0, -1), (0, 1), (-1, 0), (1, 0)):
+                t = town(None, _s)
+                settle(1)
+                try:
+                    t.step(*_key, by_key=True)
+                except TypeError:
+                    t.step(*_key)
+                settle(20)
+                if getattr(g.current_state, "room", None) == _room[5:]:
+                    _in = (_s, _key)
+                    break
+    check(_in is not None, f"into {_room[5:]} from the avenue with an arrow key ({_in})")
+
 print(f"##### {len(fails)} failures")

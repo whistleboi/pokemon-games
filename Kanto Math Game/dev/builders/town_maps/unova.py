@@ -1449,7 +1449,17 @@ for _d in GEO["28"]["doors"]:
         continue
     _ch = _ave_to.get(_t) or "ghijklqtyz<>"[len(_ave_to)]
     _ave_to[_t] = _ch
-    _ave_edges.setdefault(_ch, (_t, []))[1].extend((_d["x"] + k, _d["y"] + j) for k in range(_d["w"]) for j in range(_d["h"]))
+    _box = [(_d["x"] + k, _d["y"] + j) for k in range(_d["w"]) for j in range(_d["h"])]
+    _open_at = lambda x, y: 0 <= y < len(GEO["28"]["rows"]) and 0 <= x < len(GEO["28"]["rows"][y]) and GEO["28"]["rows"][y][x] == "."
+    _touch = lambda b: any(_open_at(x + dx, y + dy) for x, y in b for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+    if not _touch(_box):   # (the rails' road stops short of a warp box: Narrow Street's, x 30-32 with the road ending at 28:
+        for _n in range(1, 4):   #  slid onto the road's edge, or it is thinned away and the street can't be entered; 11-21)
+            _moved = next((m_ for m_ in ([(x - _n, y) for x, y in _box], [(x + _n, y) for x, y in _box], [(x, y - _n) for x, y in _box],
+                                         [(x, y + _n) for x, y in _box]) if _touch(m_)), None)
+            if _moved:
+                _box = _moved
+                break
+    _ave_edges.setdefault(_ch, (_t, []))[1].extend(_box)
 
 PRIME_PIER_SCENES = [
     {"trigger": "enter", "condition": ["b2_sailed_castelia", "not:b2_castelia_arrived"], "flag": "b2_castelia_arrived",

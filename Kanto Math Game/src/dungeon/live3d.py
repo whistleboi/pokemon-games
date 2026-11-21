@@ -99,6 +99,10 @@ class Scene:
             kind, rgba, verts = _fix(int(data["k" + i]), data["t" + i], verts)
             if kind in (0, 1):
                 solid.append(verts[:, :3].reshape(-1, 3, 3))
+            if kind == 0:
+                self.__dict__.setdefault("_kind0", []).append(verts[:, :3].reshape(-1, 3, 3))
+            elif kind == 1:   # (stairs, pier ramps: walked on where there's no ground of the block's own)
+                self.__dict__.setdefault("_kind1", []).append(verts[:, :3].reshape(-1, 3, 3))
             tex = ctx.texture((rgba.shape[1], rgba.shape[0]), 4, np.ascontiguousarray(rgba).tobytes())
             tex.filter = (mgl.NEAREST, mgl.NEAREST)
             tex.repeat_x = tex.repeat_y = True
@@ -112,6 +116,36 @@ class Scene:
         self.cam = np.array(data["cam"], "f4") if "cam" in data.files else None   # (export3d.camera: Black 2's camera here)
         self.fbo = None
         self._sprites = {}
+
+    def ground_at(self, x, y):
+        """The top of the scene's ground (kind 0) under tile (x, y)'s middle, in tiles, or None (cached per tile)."""
+        cache = self.__dict__.setdefault("_ground", {})
+        if (x, y) not in cache:
+            cache[(x, y)] = self._top(x, y, "_kind0", max)
+            if cache[(x, y)] is None:   # (no ground of its own: a building model's lowest surface there, stairs or a ramp)
+                cache[(x, y)] = self._top(x, y, "_kind1", min)
+        return cache[(x, y)]
+
+    def _top(self, x, y, which, pick):
+        T = self.__dict__.get(which + "_tris")
+        if T is None:
+            T = np.concatenate(getattr(self, which)) if getattr(self, which, None) else np.zeros((0, 3, 3), "f4")
+            self.__dict__[which + "_tris"] = T
+        if True:
+            p = np.array([x + 0.5, y + 0.5], "f4")
+            a, b, c = T[:, 0, [0, 2]], T[:, 1, [0, 2]], T[:, 2, [0, 2]]
+            v0, v1, v2 = c - a, b - a, p - a
+            d00, d01, d11 = (v0 * v0).sum(1), (v0 * v1).sum(1), (v1 * v1).sum(1)
+            d20, d21 = (v2 * v0).sum(1), (v2 * v1).sum(1)
+            den = d00 * d11 - d01 * d01
+            ok = np.abs(den) > 1e-9
+            den = np.where(ok, den, 1.0)
+            u, v = (d11 * d20 - d01 * d21) / den, (d00 * d21 - d01 * d20) / den
+            hit = ok & (u >= -1e-3) & (v >= -1e-3) & (u + v <= 1 + 1e-3)
+            if hit.any():
+                ys = T[:, 0, 1] * (1 - u - v) + T[:, 2, 1] * u + T[:, 1, 1] * v
+                return float(pick(ys[hit]))
+            return None
 
     def covers(self, tiles):
         """True when every tile (x, y) given has the scene's ground (or a building's floor) under its middle: a scene

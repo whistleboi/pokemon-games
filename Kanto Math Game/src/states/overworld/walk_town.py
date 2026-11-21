@@ -194,6 +194,8 @@ def option_kind(opt):
     return None
 
 
+MORE_EXIT_CHARS = set("ghijklqtyz")   # (more ways out where a map lists them in its "exits": Castelia's avenue and streets have up to
+#  ten; unova.py castelia_room. Without this they were walls: you couldn't walk into the streets, 11-21)
 LIVE_SPRITE = 1.5   # (people in the live 3D view: Black 2's 32-pixel characters stand two of its 16-pixel tiles tall)
 
 
@@ -303,7 +305,7 @@ class WalkTownState(CityState):
         options = {o.get("text"): o for o in self.area_data.get("explore_options", [])}
         for y, row in enumerate(grid):
             for x, c in enumerate(row):
-                if c in art.EXIT_CHARS and c in m.get("exits", {}):
+                if (c in art.EXIT_CHARS or c in MORE_EXIT_CHARS) and c in m.get("exits", {}):   # (MORE: Castelia's many ways out, 11-21)
                     self.exits[(x, y)] = m["exits"][c]
                     if c in "wu" or art.at_sea(grid, x, y):
                         self.water_exits.add((x, y))
@@ -1026,6 +1028,10 @@ class WalkTownState(CityState):
                     d = abs((math.atan2(ddy, ddx) - want + math.pi) % (2 * math.pi) - math.pi)
                     if d <= math.radians(70):
                         ways.append((d, ddx, ddy))
+        for _d, ddx, ddy in sorted(ways):   # (a way out or a door that way first: the alleys' mouths, 11-21)
+            t = (x + ddx, y + ddy)
+            if not (ddx and ddy) and _d <= math.radians(30) and (t in self.exits or t in self.doors):
+                return (ddx, ddy)
         for _d, ddx, ddy in sorted(ways):
             t = (x + ddx, y + ddy)
             if ddx and ddy:
@@ -2198,7 +2204,11 @@ class WalkTownState(CityState):
         return self._live_got
 
     def _live_height(self, fx, fy):
-        """The ground's height (tiles) under (fx, fy): from the place's own heights (its camera lift, per tile)."""
+        """The ground's height (tiles) under (fx, fy): the live scene's own road there (11-21: the flat picture's heights
+        have none at the avenue's street mouths and stood you under the road), else the place's camera lift, per tile."""
+        own = self._live()[0].ground_at(int(round(fx)), int(round(fy))) if hasattr(self._live()[0], "ground_at") else None
+        if own is not None:
+            return own
         cam = self._live()[1]
         lift, k = cam.get("lift") or [], float(cam.get("lift_k") or 1.0) or 1.0
         x, y = int(round(fx)), int(round(fy))
