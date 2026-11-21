@@ -1,0 +1,201 @@
+"""Live 3D (11-20, Jordan: Castelia's camera, "Live 3D camera"): a place's own Black 2 models drawn every frame from a
+moving camera on the graphics card, as the DS does: the view tilts and swings as you walk (the avenue's rail cameras,
+the streets' camera strips). PC only: it needs moderngl (an OpenGL 3.3 card); without it, or headless, the baked
+picture stays (available() says which).
+
+Scenes: assets/b2_3d/<zone>.npz (kanto_handoff/unova_map_tools/export3d.py): per texture its picture, its triangles'
+corners (x, y up, z, in tiles from the zone's top-left, the walk grid's units) and its kind (0 ground, 1 building,
+2 shadow sheet). People are drawn into the same scene as upright sprites (billboards), so buildings hide them.
+"""
+import math
+import os
+
+import numpy as np
+import pygame
+
+_CTX = {}
+_SCENES = {}
+
+VERT = """
+#version 330
+uniform mat4 mvp;
+in vec3 pos;
+in vec2 uv;
+out vec2 v_uv;
+out float v_y;
+void main() { gl_Position = mvp * vec4(pos, 1.0); v_uv = uv; v_y = pos.y; }
+"""
+FRAG = """
+#version 330
+uniform sampler2D tex;
+uniform int kind;
+uniform vec3 tint;
+in vec2 v_uv;
+in float v_y;
+out vec4 color;
+void main() {
+    vec4 c = texture(tex, v_uv);
+    if (c.a < 0.5) discard;
+    if (kind == 2) { color = vec4(0.0, 0.0, 0.0, 0.38); return; }   // (a shadow sheet: darkens what's under it)
+    color = vec4(c.rgb * tint, 1.0);
+}
+"""
+
+
+def available(game=None):
+    """True when the live camera can draw here (a real window and a card that does OpenGL 3.3)."""
+    if os.environ.get("SDL_VIDEODRIVER") == "dummy" and not getattr(game, "live3d_headless", False):
+        return False
+    return _context() is not None
+
+
+def _context():
+    if "ctx" not in _CTX:
+        try:
+            import moderngl
+            ctx = moderngl.create_standalone_context()
+            prog = ctx.program(vertex_shader=VERT, fragment_shader=FRAG)
+            _CTX["ctx"], _CTX["prog"], _CTX["mgl"] = ctx, prog, moderngl
+        except Exception:
+            _CTX["ctx"] = None
+    return _CTX["ctx"]
+
+
+def has_scene(game, zone):
+    return os.path.exists(os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d.npz" % int(zone)))
+
+
+class Scene:
+    """One zone's models on the card."""
+
+    def __init__(self, path):
+        ctx, prog, mgl = _context(), _CTX["prog"], _CTX["mgl"]
+        data = np.load(path)
+        self.parts = []
+        lo, hi = np.full(3, 1e9, np.float32), np.full(3, -1e9, np.float32)
+        for key in sorted(k for k in data.files if k.startswith("v")):
+            i = key[1:]
+            verts = data["v" + i].astype("f4")
+            lo, hi = np.minimum(lo, verts[:, :3].min(0)), np.maximum(hi, verts[:, :3].max(0))
+            rgba = data["t" + i]
+            tex = ctx.texture((rgba.shape[1], rgba.shape[0]), 4, np.ascontiguousarray(rgba).tobytes())
+            tex.filter = (mgl.NEAREST, mgl.NEAREST)
+            tex.repeat_x = tex.repeat_y = True
+            vbo = ctx.buffer(verts.tobytes())
+            vao = ctx.vertex_array(prog, [(vbo, "3f 2f", "pos", "uv")])
+            self.parts.append((int(data["k" + i]), tex, vao))
+        self.parts.sort(key=lambda p: p[0] == 2)   # (shadow sheets last: they darken what's drawn)
+        self.lo, self.hi = lo, hi
+        self.fbo = None
+        self._sprites = {}
+
+    def _target(self, size):
+        ctx = _context()
+        if self.fbo is None or self.fbo.size != size:
+            self.fbo = ctx.framebuffer(color_attachments=[ctx.texture(size, 4)], depth_attachment=ctx.depth_renderbuffer(size))
+        return self.fbo
+
+    def _sprite(self, surf):
+        """A pygame Surface as a texture (cached by the surface itself: the same frame, the same texture)."""
+        key = id(surf)
+        got = self._sprites.get(key)
+        if got is not None and got[0] is surf:
+            return got[1]
+        ctx, mgl = _context(), _CTX["mgl"]
+        raw = pygame.image.tobytes(surf, "RGBA", False)
+        tex = ctx.texture(surf.get_size(), 4, raw)
+        tex.filter = (mgl.NEAREST, mgl.NEAREST)
+        if len(self._sprites) > 400:
+            for _k, (_s, t) in list(self._sprites.items())[:200]:
+                t.release()
+                self._sprites.pop(_k, None)
+        self._sprites[key] = (surf, tex)
+        return tex
+
+    def render(self, size, cam, sprites=(), sky=(150, 190, 235)):
+        """The scene from cam (eye, target, fov degrees, up) at size (w, h): a pygame Surface. sprites: [(surface,
+        (x, y, z) of its feet in tiles, height in tiles)] stood upright facing the camera."""
+        ctx, prog = _context(), _CTX["prog"]
+        fbo = self._target(size)
+        fbo.use()
+        ctx.enable(_CTX["mgl"].DEPTH_TEST | _CTX["mgl"].BLEND)
+        ctx.blend_func = _CTX["mgl"].SRC_ALPHA, _CTX["mgl"].ONE_MINUS_SRC_ALPHA
+        fbo.clear(sky[0] / 255, sky[1] / 255, sky[2] / 255, 1.0, depth=1.0)
+        mvp = _mvp(size, cam)
+        prog["mvp"].write(mvp.T.astype("f4").tobytes())
+        prog["tint"].value = (1.0, 1.0, 1.0)
+        for kind, tex, vao in self.parts:
+            if kind == 2:
+                ctx.depth_mask = False
+            tex.use(0)
+            prog["kind"].value = kind
+            vao.render()
+            ctx.depth_mask = True
+        if sprites:
+            self._draw_sprites(ctx, prog, cam, sprites)
+        raw = fbo.read(components=3)
+        return pygame.transform.flip(pygame.image.frombuffer(raw, size, "RGB"), False, True)
+
+    def _draw_sprites(self, ctx, prog, cam, sprites):
+        eye, target = np.array(cam["eye"], "f4"), np.array(cam["target"], "f4")
+        fwd = target - eye
+        right = np.cross(fwd, np.array([0, 1, 0], "f4"))
+        right /= max(1e-6, np.linalg.norm(right))
+        prog["kind"].value = 1
+        rows = []
+        for surf, (x, y, z), h in sprites:
+            if surf is None:
+                continue
+            w = h * surf.get_width() / max(1, surf.get_height())
+            base = np.array([x, y, z], "f4")
+            r = right * (w / 2)
+            up = np.array([0, h, 0], "f4")
+            a, b, c, d = base - r, base + r, base + r + up, base - r + up
+            quad = np.array([[*a, 0, 1], [*b, 1, 1], [*c, 1, 0], [*a, 0, 1], [*c, 1, 0], [*d, 0, 0]], "f4")
+            rows.append((surf, quad))
+        rows.sort(key=lambda t: -float(np.linalg.norm(t[1][0, :3] - eye)))   # (far first)
+        buf = ctx.buffer(reserve=6 * 5 * 4)
+        vao = ctx.vertex_array(prog, [(buf, "3f 2f", "pos", "uv")])
+        for surf, quad in rows:
+            self._sprite(surf).use(0)
+            buf.write(quad.tobytes())
+            vao.render()
+        vao.release(); buf.release()
+
+    def project(self, size, cam, point):
+        """Where a point (tiles) lands on the picture, (x, y) px, or None behind the camera."""
+        p = _mvp(size, cam) @ np.array([point[0], point[1], point[2], 1.0])
+        if p[3] <= 1e-6:
+            return None
+        return ((p[0] / p[3] + 1) * size[0] / 2, (1 - p[1] / p[3]) * size[1] / 2)
+
+
+def scene(game, zone):
+    key = int(zone)
+    if key not in _SCENES:
+        _SCENES[key] = Scene(os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d.npz" % key)) if has_scene(game, key) else None
+    return _SCENES[key]
+
+
+def _mvp(size, cam):
+    w, h = size
+    fov = math.radians(cam.get("fov", 30.0))
+    f = 1 / math.tan(fov / 2)
+    near, far = 0.3, 400.0
+    proj = np.array([[f * h / w, 0, 0, 0], [0, f, 0, 0], [0, 0, (far + near) / (near - far), 2 * far * near / (near - far)], [0, 0, -1, 0]], "f8")
+    eye, target = np.array(cam["eye"], "f8"), np.array(cam["target"], "f8")
+    up = np.array(cam.get("up", (0, 1, 0)), "f8")
+    zax = eye - target; zax /= np.linalg.norm(zax)
+    xax = np.cross(up, zax); xax /= max(1e-9, np.linalg.norm(xax))
+    yax = np.cross(zax, xax)
+    view = np.array([[*xax, -xax @ eye], [*yax, -yax @ eye], [*zax, -zax @ eye], [0, 0, 0, 1]], "f8")
+    return proj @ view
+
+
+def follow(px, py, pz, pitch_deg, dist, yaw_deg=0.0, fov=30.0):
+    """A camera behind and above a point (tiles): looking down at pitch, from dist away, turned by yaw (0: from the
+    south, looking north as the DS camera does)."""
+    p, yw = math.radians(pitch_deg), math.radians(yaw_deg)
+    back = (math.sin(yw) * math.cos(p), math.sin(p), math.cos(yw) * math.cos(p))
+    eye = (px + back[0] * dist, py + back[1] * dist, pz + back[2] * dist)
+    return {"eye": eye, "target": (px, py, pz), "fov": fov}

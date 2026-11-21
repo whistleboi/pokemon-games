@@ -2071,6 +2071,12 @@ class WalkTownState(CityState):
             screen.blit(img, (ox + bx, oy + by))
         from src.dungeon import art as _art
         _art.over_uncovered(screen, drawn, [(img, at_) for _o, img, at_ in getattr(self, "overheads", [])], (ox, oy))
+        self._draw_tags(screen, view, fonts, at, people, pr.center)
+        screen.set_clip(None)
+
+    def _draw_tags(self, screen, view, fonts, at, people, centre):
+        """Over the map: the buildings' names, the ways out, who people are, gates, the dark, the weather, the guide (at(tile):
+        where a tile is on screen: the flat picture's, or the live camera's)."""
         # the buildings' names over their doors, who the people are, where the ways out go
         _named = []   # (a building with several door tiles, the Dept. Store's two: its name once)
         for spot, kind in sorted(self.doors.items()):
@@ -2101,14 +2107,13 @@ class WalkTownState(CityState):
             self._pill(screen, _fill_names(self.game, opt.get("who") or opt.get("text", "")).upper()[:28], at(spot).centerx,  # ("who": the person, when the option says what they offer)
                        at(spot).y - 34, fonts, taken)
         if getattr(self, "turnstiles", None):
-            self._draw_gates(screen, ox, oy)
+            self._draw_gates(screen, *self._origin())
         if getattr(self, "dark", None):
-            self._draw_dark(screen, view, pr.center)
+            self._draw_dark(screen, view, centre)
         if self.room is None:
             self._draw_story_weather(screen, view)
         if not self._busy():
             self._draw_guide(screen, at)
-        screen.set_clip(None)
 
     @staticmethod
     def _pill(screen, text, cx, bottom, fonts, taken=None):
