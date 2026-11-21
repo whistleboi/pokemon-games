@@ -182,8 +182,16 @@ for _y, _r in enumerate(_m["art"]):
         if _c in _m["exits"]:
             _ex.setdefault(_m["exits"][_c], []).append((_x, _y))
 _sc = t._live()[0]
+_lift, _lk = t._live()[1].get("lift") or [], float(t._live()[1].get("lift_k") or 1.0) or 1.0
+_near = lambda x, y: float(_lift[y][x]) / _lk + float(t._live()[1].get("base") or 0.0) if 0 <= y < len(_lift) and 0 <= x < len(_lift[y]) else None
+# (the street surface nearest the place's own heights, not an awning or ledge over it: 11-21)
 _low = [(x, y) for y, r in enumerate(_m["art"]) for x, c in enumerate(r)
-        if c == "." and _sc.ground_at(x, y) is not None and abs(t._live_height(x, y) - _sc.ground_at(x, y)) > 0.05]
+        if c == "." and _sc.surfaces(x, y) and min(abs(t._live_height(x, y) - v) for v in _sc.surfaces(x, y)) > 0.05]
+_land = lambda ys: min([v for v in ys if v > -1.0] or [99.0])   # (the lowest surface that isn't the sea)
+_awning = [(x, y) for y, r in enumerate(_m["art"]) for x, c in enumerate(r)
+           if c == "." and _sc._top(x, y, "_kind0", _land) is not None and abs(_near(x, y) or 0) < 1.0
+           and t._live_height(x, y) - _sc._top(x, y, "_kind0", _land) > 1.5]   # (on top of something, the street right under it)
+check(not _awning, f"nobody stands on an awning or ledge over the avenue: {_awning[:6]}")
 check(not _low, f"you stand on the 3D road on every avenue tile (the steps down to the docks too: {_low[:6]})")
 for _room in ("ROOM:mode_street", "ROOM:castelia_street", "ROOM:narrow_street", "ROOM:gym_street"):
     t = town(None, (64, 67))   # (back on the avenue each time)
@@ -206,5 +214,17 @@ for _room in ("ROOM:mode_street", "ROOM:castelia_street", "ROOM:narrow_street", 
                     _in = (_s, _key)
                     break
     check(_in is not None, f"into {_room[5:]} from the avenue with an arrow key ({_in})")
+
+# 11-21: walking a side street keeps you on its road: no awning, planter or roof underfoot, no hop between tiles
+for _room in ("mode_street", "castelia_street", "narrow_street", "gym_street", "route4_street"):
+    t = town(_room)
+    if not t._live():
+        continue
+    _H = {(x, y): t._live_height(x, y) for y in range(t.h) for x in range(t.w) if t.rows[y][x] != "#"}
+    _hop = [(p, q) for p in _H for q in ((p[0] + 1, p[1]), (p[0], p[1] + 1)) if q in _H and abs(_H[p] - _H[q]) > 0.7]
+    check(not _hop, f"{_room}: no sudden step between neighbouring tiles ({_hop[:4]})")
+    for _p, _who in t.people.items():
+        if "cone" in str(_who).lower():
+            check(_H.get(_p, t._live_height(*_p)) < 1.0, f"the Casteliacone seller stands in the street, not on her awning ({round(t._live_height(*_p), 2)})")
 
 print(f"##### {len(fails)} failures")

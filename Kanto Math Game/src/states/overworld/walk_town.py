@@ -2206,9 +2206,21 @@ class WalkTownState(CityState):
     def _live_height(self, fx, fy):
         """The ground's height (tiles) under (fx, fy): the live scene's own road there (11-21: the flat picture's heights
         have none at the avenue's street mouths and stood you under the road), else the place's camera lift, per tile."""
-        own = self._live()[0].ground_at(int(round(fx)), int(round(fy))) if hasattr(self._live()[0], "ground_at") else None
-        if own is not None:
-            return own
+        sc, cam = self._live()
+        lift, k = cam.get("lift") or [], float(cam.get("lift_k") or 1.0) or 1.0
+        x, y = int(round(fx)), int(round(fy))
+        if hasattr(sc, "walk_heights"):   # (the ground you walk on, worked out over the whole place once: 11-21)
+            memo = self.__dict__.setdefault("_live_ground", {})
+            if id(sc) not in memo:
+                near = lambda a, b: float(lift[b][a]) / k + float(cam.get("base") or 0.0) if 0 <= b < len(lift) and 0 <= a < len(lift[b]) else None
+                memo[id(sc)] = sc.walk_heights([(a, b) for b in range(self.h) for a in range(self.w) if self.rows[b][a] != "#" or (a, b) in self.people], near)
+            G = memo[id(sc)]
+            own = G.get((x, y))
+            if own is not None:   # (blended between the tiles around you, so a kerb is a slope mid-step, not a snap)
+                x0, y0 = int(math.floor(fx)), int(math.floor(fy))
+                ax, ay = fx - x0, fy - y0
+                c = [[G.get((x0 + i, y0 + j), own) for i in (0, 1)] for j in (0, 1)]
+                return (c[0][0] * (1 - ax) + c[0][1] * ax) * (1 - ay) + (c[1][0] * (1 - ax) + c[1][1] * ax) * ay
         cam = self._live()[1]
         lift, k = cam.get("lift") or [], float(cam.get("lift_k") or 1.0) or 1.0
         x, y = int(round(fx)), int(round(fy))

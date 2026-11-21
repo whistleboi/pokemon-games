@@ -5,7 +5,7 @@ picture stays (available() says which).
 
 Scenes: assets/b2_3d/<zone>.npz (kanto_handoff/unova_map_tools/export3d.py): per texture its picture, its triangles'
 corners (x, y up, z, in tiles from the zone's top-left, the walk grid's units) and its kind (0 ground, 1 building,
-2 shadow sheet). People are drawn into the same scene as upright sprites (billboards), so buildings hide them.
+2 shadow sheet, 4 backdrop past a side street's edges: seen from inside only, never walked on). People are drawn into the same scene as upright sprites (billboards), so buildings hide them.
 
 What the export leaves out, put back on loading (11-21): an atlas's unused space is a key colour (230, 57, 255), drawn
 see-through; a light sheet (a lamp's glow, the piers' clouds: one pale colour on a see-through picture) is translucent on
@@ -26,6 +26,7 @@ _CTX = {}
 _SCENES = {}
 KEY = (230, 57, 255)   # (an atlas's unused space)
 LIGHT_ALPHA = 0.42     # (a light sheet: the lamps' glow, the clouds)
+GLASS = (118, 146, 176, 190)   # (a tower's window pane: Black 2 leaves it open, an inner model behind; 11-21)
 ALLOW_HOLES = False    # (the checks: draw a scene with holes anyway, to try its camera)
 
 VERT = """
@@ -43,12 +44,18 @@ uniform sampler2D tex;
 uniform int kind;
 uniform vec3 tint;
 uniform float alpha;
+uniform int glass;
 in vec2 v_uv;
 in float v_y;
 out vec4 color;
 void main() {
     vec4 c = texture(tex, v_uv);
-    if (c.a < 0.5) discard;
+    if (glass == 1) {   // (a tower's window panes, after everything solid: tinted, what's inside still showing)
+        if (c.a < 0.05 || c.a > 0.95) discard;
+        color = vec4(c.rgb * tint, c.a);
+        return;
+    }
+    if (c.a < (kind < 2 ? 0.95 : 0.5)) discard;
     if (kind == 2) { color = vec4(0.0, 0.0, 0.0, 0.38); return; }   // (a shadow sheet: darkens what's under it)
     color = vec4(c.rgb * tint, alpha);
 }
@@ -109,6 +116,8 @@ class Scene:
             vbo = ctx.buffer(verts.tobytes())
             vao = ctx.vertex_array(prog, [(vbo, "3f 2f", "pos", "uv")])
             self.parts.append((kind, tex, vao))
+            if kind in (0, 1) and (rgba[..., 3] == GLASS[3]).any():
+                self.__dict__.setdefault("_glass", []).append((tex, vao))
         self.parts.sort(key=lambda p: (p[0] == 2) + 2 * (p[0] == 3))   # (shadow sheets after the solid, light sheets last)
         self._flat = np.concatenate(solid)[:, :, [0, 2]] if solid else np.zeros((0, 3, 2), "f4")   # (seen from above: for covers())
         self._covers = {}
@@ -117,14 +126,18 @@ class Scene:
         self.fbo = None
         self._sprites = {}
 
-    def ground_at(self, x, y):
-        """The top of the scene's ground (kind 0) under tile (x, y)'s middle, in tiles, or None (cached per tile)."""
+    def ground_at(self, x, y, near=None):
+        """The scene's ground (kind 0) under tile (x, y)'s middle, in tiles, or None (cached per tile): of the surfaces
+        there, the one nearest `near` (the place's own height map: the street, not an awning or a planter over it, 11-21),
+        else the highest; with no ground, a building model's lowest surface (stairs, a ramp)."""
         cache = self.__dict__.setdefault("_ground", {})
-        if (x, y) not in cache:
-            cache[(x, y)] = self._top(x, y, "_kind0", max)
-            if cache[(x, y)] is None:   # (no ground of its own: a building model's lowest surface there, stairs or a ramp)
-                cache[(x, y)] = self._top(x, y, "_kind1", min)
-        return cache[(x, y)]
+        key = (x, y, None if near is None else round(near, 1))
+        if key not in cache:
+            pick = max if near is None else (lambda ys: ys[np.argmin(np.abs(ys - near))])
+            cache[key] = self._top(x, y, "_kind0", pick)
+            if cache[key] is None:
+                cache[key] = self._top(x, y, "_kind1", min)
+        return cache[key]
 
     def _top(self, x, y, which, pick):
         T = self.__dict__.get(which + "_tris")
@@ -146,6 +159,42 @@ class Scene:
                 ys = T[:, 0, 1] * (1 - u - v) + T[:, 2, 1] * u + T[:, 1, 1] * v
                 return float(pick(ys[hit]))
             return None
+
+    def surfaces(self, x, y):
+        """Every walkable height under tile (x, y)'s middle, tiles: the ground's (kind 0) not counting the sea under the
+        piers, else a building model's lowest (stairs, a ramp); [] with none."""
+        out = []
+        self._top(x, y, "_kind0", lambda ys: out.extend(float(v) for v in ys) or 0.0)
+        land = sorted({round(v, 3) for v in out if -1.0 < v < 8.0}) or sorted({round(v, 3) for v in out if v < 8.0})   # (not the sea, nor a roof over a hole)
+        if not land:
+            low = self._top(x, y, "_kind1", min)
+            land = [low] if low is not None else []
+        return land
+
+    def walk_heights(self, tiles, hint=None):
+        """The ground you walk on over a place's open tiles {(x, y): height}, worked out once (11-21): tiles with a single
+        surface (or a road and its kerb) first, then outward a tile at a time from the lowest, each taking the surface nearest the neighbour it was reached from,
+        so the street runs on under an awning, a planter or a ledge over it, and stairs climb step by step; hint(x, y)
+        (the place's own height map) picks between a road and its kerb. Tiles cut off from the rest take their lowest."""
+        import heapq
+        tiles = set(tiles)
+        S = {t: self.surfaces(*t) for t in tiles}
+        H, todo = {}, []
+        for t, ys in S.items():
+            if ys and ys[-1] - ys[0] < 1.0:   # (one surface, or a road and its kerb: settled, the one the place's heights say)
+                h = hint(*t) if hint else None
+                H[t] = min(ys, key=lambda v: abs(v - h)) if h is not None else ys[-1]
+                heapq.heappush(todo, (H[t], t))
+        while todo:   # (lowest ground first: the street claims what it reaches before an awning or a planter can)
+            _h, (x, y) = heapq.heappop(todo)
+            for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if q in S and q not in H:
+                    H[q] = min(S[q], key=lambda v: abs(v - H[(x, y)])) if S[q] else H[(x, y)]   # (no ground: a hole, as its neighbour)
+                    heapq.heappush(todo, (H[q], q))
+        for t, ys in S.items():
+            if t not in H and ys:   # (cut off, as a seller boxed in by her stall: the lowest ground, not the awning)
+                H[t] = max(v for v in ys if v - ys[0] < 1.0)
+        return H
 
     def covers(self, tiles):
         """True when every tile (x, y) given has the scene's ground (or a building's floor) under its middle: a scene
@@ -212,6 +261,7 @@ class Scene:
         prog["mvp"].write(mvp.T.astype("f4").tobytes())
         prog["tint"].value = (1.0, 1.0, 1.0)
         prog["alpha"].value = 1.0
+        prog["glass"].value = 0
         light = []
         for kind, tex, vao in self.parts:
             if kind == 3:
@@ -220,13 +270,25 @@ class Scene:
             if kind == 2:
                 ctx.depth_mask = False
             tex.use(0)
-            prog["kind"].value = kind
+            prog["kind"].value = min(kind, 1) if kind == 4 else kind
+            if kind == 4:   # (the backdrop past a street's edges: one-sided, seen only from inside, 11-21)
+                ctx.enable(_CTX["mgl"].CULL_FACE)
             vao.render()
+            if kind == 4:
+                ctx.disable(_CTX["mgl"].CULL_FACE)
             ctx.depth_mask = True
         if shadows:
             self._draw_shadows(ctx, prog, shadows)
         if sprites:
             self._draw_sprites(ctx, prog, cam, sprites)
+        if getattr(self, "_glass", None):   # (window panes after the solid and the people: they tint what's behind)
+            ctx.depth_mask = False
+            prog["glass"].value = 1
+            for tex, vao in self._glass:
+                tex.use(0)
+                vao.render()
+            prog["glass"].value = 0
+            ctx.depth_mask = True
         if light:   # (after people too: a lamp's glow over whoever stands by it)
             ctx.depth_mask = False
             prog["kind"].value, prog["alpha"].value = 3, LIGHT_ALPHA
@@ -304,12 +366,42 @@ class Scene:
         return ((p[0] / p[3] + 1) * size[0] / 2, (1 - p[1] / p[3]) * size[1] / 2)
 
 
+def _panes(rgba, reach=12):
+    """A tall building's picture with its open window panes glazed (11-21): Black 2 cuts them out and sets an inner model
+    behind, made for its fixed camera; ours swings round and looked through them to the street. A pane is a see-through
+    texel (not the atlas's key colour) with the picture's own frame within `reach` texels on all four sides, so a
+    railing's gaps, a tree's edge and unused space stay open."""
+    a = rgba[..., 3] > 0
+    hole = ~a & ~np.all(rgba[..., :3] == KEY, axis=-1)
+    if not hole.any():
+        return rgba
+    h, w = a.shape
+    near = []
+    for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+        hit = np.zeros_like(a)
+        for k in range(1, reach + 1):
+            sh = np.zeros_like(a)
+            ys, xs = slice(max(0, -dy * k), h - max(0, dy * k)), slice(max(0, -dx * k), w - max(0, dx * k))
+            yd, xd = slice(max(0, dy * k), h - max(0, -dy * k)), slice(max(0, dx * k), w - max(0, -dx * k))
+            sh[ys, xs] = a[yd, xd]
+            hit |= sh
+        near.append(hit)
+    pane = hole & near[0] & near[1] & near[2] & near[3]
+    if not pane.any():
+        return rgba
+    rgba = rgba.copy()
+    rgba[pane] = GLASS
+    return rgba
+
+
 def _fix(kind, rgba, verts):
     """(kind, picture, corners) with what the export left out put back (see the top)."""
     rgba = np.array(rgba, dtype=np.uint8)
     rgba[np.all(rgba[..., :3] == KEY, axis=-1), 3] = 0
     if kind == 2:
         return kind, rgba, verts
+    if kind in (0, 1) and len(verts) and float(verts[:, 1].max()) > 6.0:
+        rgba = _panes(rgba)
     a = rgba[..., 3]
     seen = rgba[a > 0][:, :3]
     if not len(seen) or not (a == 0).any() or seen.min() < 190 or len(np.unique(seen, axis=0)) > 2:
