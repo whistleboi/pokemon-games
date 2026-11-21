@@ -48,6 +48,9 @@ MEDALS = [
     ("film_happy", "Happy Ending", "Get a happy ending at Pokestar Studios.", lambda s: _flags(s, "pokestar_happy_") >= 1),
     ("film_10", "Silver Screen", "Shoot 10 films at Pokestar Studios.", lambda s: int(s.story_flags.get("pokestar_films", 0) or 0) >= 10),
     ("star_10", "Big Star", "Reach the top Star Rank.", lambda s: int(s.story_flags.get("pokestar_rank", 0) or 0) >= 10),
+    # (batch 3a, 11-20: Castelia's Back Street, under the Sewers: Ricky, Jean-Paul, then Tina)
+    ("castelia_boss", "Castelia Boss", "Beat all three Trainers on Castelia's Back Street.",
+     lambda s: all(s.story_flags.get(f) for f in ("b2_back_ricky", "b2_back_jean_paul", "b2_back_tina"))),
 ]
 
 

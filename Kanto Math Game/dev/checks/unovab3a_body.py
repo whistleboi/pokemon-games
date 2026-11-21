@@ -434,4 +434,20 @@ check(story.inventory.get("QUICK_CLAW", 0) == qc + 1, "the Bridge Gate: a Quick 
 said.clear(); talk("Worker by the bridge")
 check(any("inspecting" in x for x in said), "a Worker keeps the Skyarrow Bridge shut for its inspection")
 
+print("12) the Castelia Boss Medal; Poke Balls at Black 2's size")
+from src.world import medals as _medals
+for f in ("b2_back_ricky", "b2_back_jean_paul", "b2_back_tina"):
+    flags.pop(f, None)
+_m = next(m for m in _medals.MEDALS if m[0] == "castelia_boss")
+check(not _m[3](story), "the Castelia Boss Medal: not before the Back Street trio")
+for f in ("b2_back_ricky", "b2_back_jean_paul", "b2_back_tina"):
+    flags[f] = True
+check(_m[3](story), "the Castelia Boss Medal: once Ricky, Jean-Paul and Tina are beaten")
+flags.pop("b2_sewer_twisted_spoon", None)
+d = route("CASTELIA_SEWERS", "CASTELIA_CITY", (85, 20, (-1, 0)))
+_ball_img = d._sheet_frame("b2_item_ball.png")
+_me_img = d._sheet_frame("b2_hugh.png")
+check(_ball_img.get_height() * 3 < _me_img.get_height(), f"an item ball drawn at Black 2's size beside a person ({_ball_img.get_size()} vs {_me_img.get_size()})")
+put(50, 11, (-1, 0)); shot("16_ball")
+
 print(f"##### {len(fails)} failures")

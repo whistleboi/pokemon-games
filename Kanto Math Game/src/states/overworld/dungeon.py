@@ -807,6 +807,10 @@ def ghost_figure():
     return img
 
 
+# (sheets drawn at their own size beside a person, not stretched to one: Black 2's item ball, Jordan 11-20)
+CELL_SIZED = {"b2_item_ball.png"}
+
+
 class DungeonState(OverworldBattles, PlayState):
 
     def __init__(self, game, restore_data=None, classic=False):
@@ -3648,13 +3652,13 @@ class DungeonState(OverworldBattles, PlayState):
     def update(self):
         if self.mode == "CATCH":
             return super().update()
+        if hasattr(self, "run") and self.run.player:   # (where you stand, kept for the save file: Continue puts you back here; Jordan 11-20)
+            self.game.last_spot = {"area": self.area_key, "kind": "map", "floor": int(self.run.index),
+                                   "x": int(self.run.player[0]), "y": int(self.run.player[1]), "face": list(getattr(self, "facing", (0, 1)))}
         self._vs_tick()   # (the VS Seeker playing: the pose, the bubbles, then its message)
         then = getattr(self, "_pose_then", None)
         if then and pygame.time.get_ticks() - (getattr(self, "_pose", None) or (None, 0))[1] >= 650:   # (the cast is out: now the bite)
             self._pose_then = None
-        if hasattr(self, "run") and self.run.player:   # (where you stand, kept for the save file: Continue puts you back here; Jordan 11-20)
-            self.game.last_spot = {"area": self.area_key, "kind": "map", "floor": int(self.run.index),
-                                   "x": int(self.run.player[0]), "y": int(self.run.player[1]), "face": list(getattr(self, "facing", (0, 1)))}
             then()
         if hasattr(self, "run"):
             from src.world import poke_radar as _radar
@@ -3983,7 +3987,7 @@ class DungeonState(OverworldBattles, PlayState):
             cell = img.subsurface(((frame if col is None else col) * cw, FACING_ROW.get(facing, 0) * ch, cw, ch))
             box = cell.get_bounding_rect()
             cell = cell.subsurface(box) if box.w and box.h else cell
-            k = scale or max(1, round(height / max(1, cell.get_height())))  # whole steps: crisp pixels ("scale": a fixed one)
+            k = scale or max(1, round(height / max(1, (ch if sheet in CELL_SIZED else cell.get_height()))))  # whole steps: crisp pixels ("scale": a fixed one)
             return pygame.transform.scale(cell, (max(1, int(cell.get_width() * k)), max(1, int(cell.get_height() * k))))
         return self._sprite(("sheet", sheet, facing, col, frame, height, scale), make)
 

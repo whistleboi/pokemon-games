@@ -8,6 +8,7 @@ people, its events, the Center, the Mart, the Gym), only reached by walking:
 The maps come from dev/builders/build_walk_towns.py (assets/walk_towns.json and assets/walk_towns/).
 CityState(game) is this when the town has a map (its __new__); headless, only with game.walk_towns = True."""
 import json
+import math
 import os
 from collections import deque
 
@@ -191,6 +192,9 @@ def option_kind(opt):
     if "mom" in t:
         return "home"
     return None
+
+
+LIVE_SPRITE = 1.5   # (people in the live 3D view: Black 2's 32-pixel characters stand two of its 16-pixel tiles tall)
 
 
 class WalkTownState(CityState):
@@ -968,6 +972,55 @@ class WalkTownState(CityState):
     def step(self, dx, dy):
         if self._busy() or self.anim > 0:
             return
+        turned = self._curve_step(dx, dy)   # (the avenue: along its curve, by the camera's way)
+        if turned is not None:
+            if turned is True:
+                return
+            dx, dy = turned
+        return self._step_tile(dx, dy)
+
+    def _curve_step(self, dx, dy):
+        """Black 2's avenue (Jordan 11-20, "follow the curve"): where the live camera circles the city, a key means a way
+        on screen (up: in toward the city, left / right: along the road), turned by the camera, and the step goes to the
+        neighbouring tile, diagonals too, that best keeps that way and is open: the road's bend is followed, not walked
+        into. Returns None (a plain step), (dx, dy) a plain step that way (a door, a person, a sign ahead: the usual
+        thing happens), or True (stepped diagonally, or nowhere to go: turned to face it)."""
+        live = self._live() if hasattr(self, "_live") else None
+        if not live or live[0].cam is None or len(live[0].cam) < 8:
+            return None
+        yaw = math.radians(getattr(self, "_live_yaw", None) or 0.0)
+        wx, wz = dx * math.cos(yaw) + dy * math.sin(yaw), -dx * math.sin(yaw) + dy * math.cos(yaw)
+        want = math.atan2(wz, wx)
+        face = (1 if wx > 0 else -1, 0) if abs(wx) >= abs(wz) else (0, 1 if wz > 0 else -1)
+        x, y = self.player
+        ways = []
+        for ddx in (-1, 0, 1):
+            for ddy in (-1, 0, 1):
+                if ddx or ddy:
+                    d = abs((math.atan2(ddy, ddx) - want + math.pi) % (2 * math.pi) - math.pi)
+                    if d <= math.radians(70):
+                        ways.append((d, ddx, ddy))
+        for _d, ddx, ddy in sorted(ways):
+            t = (x + ddx, y + ddy)
+            if ddx and ddy:
+                if t in self.exits or t in self.doors or t in self.signs or not self._open(t):
+                    continue
+                if not (self._open((x + ddx, y)) or self._open((x, y + ddy))):
+                    continue   # (no cutting a wall's corner)
+                self.facing = face
+                self.anim_from, self.anim = self.player, STEP
+                self.partner_from, self.partner = self.partner, self.player
+                self.player = t
+                self.steps += 1
+                self._remember()
+                return True
+            if self._open(t) or t in self.exits or t in self.doors or t in self.signs or t in self._people():
+                return (ddx, ddy)
+        self.facing = face
+        self.walk_goal = None
+        return True
+
+    def _step_tile(self, dx, dy):
         self.facing = (dx, dy)
         to = (self.player[0] + dx, self.player[1] + dy)
         _coc = getattr(self, "cocoons", None) and self.cocoons.get("%d,%d,%s" % (to[0], to[1], {(0, -1): "u", (0, 1): "d", (-1, 0): "l", (1, 0): "r"}[(dx, dy)]))
@@ -1538,6 +1591,10 @@ class WalkTownState(CityState):
         self._shake_until = pygame.time.get_ticks() + int(ms)
 
     def _tile_at(self, pos):
+        if self._live():   # (the live camera: the tile under the finger, on the ground where you stand)
+            v = self._view()
+            hit = self._live()[0].pick(v.size, self._live_cam(), pos[0] - v.x, pos[1] - v.y, self._live_height(*self.player))
+            return (int(hit[0] // 1), int(hit[2] // 1)) if hit else tuple(self.player)
         z = getattr(self, "zoom", 1.0)
         if abs(z - 1.0) > 0.01:   # (the camera zoomed: the point in the map's own picture first)
             v = self._view()
@@ -1906,7 +1963,7 @@ class WalkTownState(CityState):
         fonts = self.game.assets.fonts
         view = self._view()
         screen.fill(dn.FRAME_BLACK)
-        z = getattr(self, "zoom", 1.0)
+        z = 1.0 if self._live() else getattr(self, "zoom", 1.0)   # (the live camera has its own distance: no picture zoom)
         if abs(z - 1.0) > 0.01:   # (the camera in closer or further: the map drawn into a smaller or bigger picture, scaled into the frame)
             small = pygame.Rect(0, 0, max(1, round(view.w / z)), max(1, round(view.h / z)))
             off = pygame.Surface(small.size)
@@ -1933,6 +1990,10 @@ class WalkTownState(CityState):
         """The map in its frame: ground, people, buildings, tags, the guide (draw() adds the frame and the HUD)."""
         screen.fill((10, 14, 24), view)
         screen.set_clip(view)  # (the map stays in its frame)
+        if self._live():   # (Black 2's own models from a moving camera: Castelia, 11-20)
+            self._draw_world_live(screen, view, fonts)
+            screen.set_clip(None)
+            return
         ox, oy = self._origin()
         c3 = getattr(self, "cam3d", None)
 
@@ -2071,6 +2132,134 @@ class WalkTownState(CityState):
             screen.blit(img, (ox + bx, oy + by))
         from src.dungeon import art as _art
         _art.over_uncovered(screen, drawn, [(img, at_) for _o, img, at_ in getattr(self, "overheads", [])], (ox, oy))
+        self._draw_tags(screen, view, fonts, at, people, pr.center)
+        screen.set_clip(None)
+
+    # ---------------------------------------------------------------- the live 3D camera (Jordan 11-20: Castelia, "Live 3D camera")
+    # Where a place has Black 2's models exported (assets/b2_3d/<zone>.npz: kanto_handoff/unova_map_tools/export3d.py) and the
+    # card can draw them (src/dungeon/live3d.py), the map is drawn every frame from Black 2's own camera for it, following
+    # you: perspective, buildings turning as you pass, the avenue's camera swinging round its centre. People are drawn into
+    # the same scene. Off ("live3d": False on the game), headless, or with no card: the baked picture.
+    def _live(self):
+        """(scene, the place's camera data from its map) here, or None."""
+        if getattr(self.game, "live3d", True) is False:
+            return None
+        tm = getattr(self, "town_map", None)
+        m = ((tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm) if isinstance(tm, dict) else None
+        key = (id(m), getattr(self, "room", None))
+        if getattr(self, "_live_key", None) == key:
+            return self._live_got
+        self._live_key, self._live_got = key, None
+        roofs = (m or {}).get("roofs") or {}
+        pic = str((roofs.get("_picture") or {}).get("f") or "")
+        name = os.path.splitext(os.path.basename(pic))[0]
+        if not pic.startswith("b2_ground/") or not name.isdigit():
+            return None
+        from src.dungeon import live3d
+        if not live3d.has_scene(self.game, int(name)) or not live3d.available(self.game):
+            return None
+        sc = live3d.scene(self.game, int(name))
+        if sc is None or sc.cam is None:
+            return None
+        self._live_got = (sc, roofs.get("_cam") or {})
+        self._live_yaw = None
+        return self._live_got
+
+    def _live_height(self, fx, fy):
+        """The ground's height (tiles) under (fx, fy): from the place's own heights (its camera lift, per tile)."""
+        cam = self._live()[1]
+        lift, k = cam.get("lift") or [], float(cam.get("lift_k") or 1.0) or 1.0
+        x, y = int(round(fx)), int(round(fy))
+        if 0 <= y < len(lift) and 0 <= x < len(lift[y]):
+            return float(lift[y][x]) / k + float(cam.get("base") or 0.0)
+        return float(cam.get("base") or 0.0)
+
+    def _live_feet(self):
+        """Where you are now (tiles, mid-step too)."""
+        k = 1 - self.anim / STEP if self.anim > 0 else 1
+        fx, fy = self.anim_from
+        tx, ty = self.player
+        return fx + (tx - fx) * k, fy + (ty - fy) * k
+
+    def _live_cam(self):
+        """Black 2's camera for this place, following you: [pitch, distance, fov, look offset x y z, (centre x, z)]."""
+        from src.dungeon import live3d
+        sc, _cam = self._live()
+        c = [float(v) for v in sc.cam]
+        if getattr(self, "_cam_focus", None):   # (a scene looking somewhere else)
+            fx, fy = self._cam_focus
+        else:
+            fx, fy = self._live_feet()
+        px, pz = fx + 0.5, fy + 0.5
+        py = self._live_height(fx, fy)
+        yaw = 0.0
+        if len(c) >= 8:   # (the avenue: the camera circles the city's middle, looking in at it from beyond you)
+            goal = math.degrees(math.atan2(px - c[6], pz - c[7]))
+            cur = getattr(self, "_live_yaw", None)
+            if cur is None:
+                cur = goal
+            cur += ((goal - cur + 540) % 360 - 180) * 0.12
+            self._live_yaw = cur
+            yaw = cur
+        a = math.radians(yaw)
+        ox, oz = c[3] * math.cos(a) + c[5] * math.sin(a), -c[3] * math.sin(a) + c[5] * math.cos(a)
+        return live3d.follow(px + ox, py + c[4], pz + oz, c[0], c[1], yaw, c[2])
+
+    def _draw_world_live(self, screen, view, fonts):
+        sc, _cam = self._live()
+        cam = self._live_cam()
+        size = view.size
+        sprites = []
+        h = self._live_height
+
+        def put(img, fx, fy):
+            if img is not None:
+                sprites.append((img, (fx + 0.5, h(fx, fy), fy + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+        people = self._people()
+        mos = getattr(self, "motions", {})
+        by_pos = {mo.pos: mo for mo in mos.values() if not mo.gone}
+        for spot, opt in people.items():
+            mo = by_pos.get(spot)
+            img = self._figure_img(opt, mo.facing, mo.frame()) if mo else self._figure_img(opt)
+            fx, fy = mo.at() if mo else spot
+            put(img, fx, fy)
+        me = self._player_img()
+        mfx, mfy = self._live_feet()
+        pose = self._ride_pose() if getattr(self, "_ride", None) else None
+        lead = None if pose else self.follower()
+        if pose:
+            if pose[3] or me is None:
+                me = None
+            else:
+                me = pygame.transform.smoothscale(me, (max(1, int(me.get_width() * pose[2])), max(1, int(me.get_height() * pose[2]))))
+                mfx, mfy = mfx + pose[0], mfy + pose[1]
+        put(me, mfx, mfy)
+        if lead and self.partner != self.player:
+            k = 1 - self.anim / STEP if self.anim > 0 else 1
+            (ax, ay), (bx, by) = self.partner_from, self.partner
+            tx, ty = self.player
+            way = (tx - bx, ty - by)
+            way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
+            put(self._icon(lead, TILE, flip=(tx > bx), facing=way), ax + (bx - ax) * k, ay + (by - ay) * k)
+        for a in (self.scenes.actors if getattr(self, "scenes", None) else []):
+            ax, ay = a["m"].at()
+            put(self._actor_img(a["sheet"], a["m"].facing, a["m"].frame(), native=bool(a.get("native"))), ax, ay)
+        screen.blit(sc.render(size, cam, sprites), view.topleft)
+
+        def at(t):
+            p = sc.project(size, cam, (t[0] + 0.5, h(*t), t[1] + 0.55))
+            if p is None:
+                return pygame.Rect(-999, -999, TILE, TILE)
+            return pygame.Rect(int(view.x + p[0] - TILE / 2), int(view.y + p[1] - TILE), TILE, TILE)
+        me_at = at((int(round(mfx)), int(round(mfy))))
+        self._me_drawn = (me_at.copy(), (0, 0))
+        if getattr(self, "_ride", None) and self.RIDE_IN <= self._ride["n"] < self.RIDE_IN + self.RIDE_GO:
+            self._draw_ride_silk(screen, 0, 0)   # (along the thread: the streaming veil over the view)
+        self._draw_tags(screen, view, fonts, at, people, me_at.center)
+
+    def _draw_tags(self, screen, view, fonts, at, people, centre):
+        """Over the map: the buildings' names, the ways out, who people are, gates, the dark, the weather, the guide (at(tile):
+        where a tile is on screen: the flat picture's, or the live camera's)."""
         # the buildings' names over their doors, who the people are, where the ways out go
         _named = []   # (a building with several door tiles, the Dept. Store's two: its name once)
         for spot, kind in sorted(self.doors.items()):
@@ -2101,14 +2290,13 @@ class WalkTownState(CityState):
             self._pill(screen, _fill_names(self.game, opt.get("who") or opt.get("text", "")).upper()[:28], at(spot).centerx,  # ("who": the person, when the option says what they offer)
                        at(spot).y - 34, fonts, taken)
         if getattr(self, "turnstiles", None):
-            self._draw_gates(screen, ox, oy)
+            self._draw_gates(screen, *self._origin())
         if getattr(self, "dark", None):
-            self._draw_dark(screen, view, pr.center)
+            self._draw_dark(screen, view, centre)
         if self.room is None:
             self._draw_story_weather(screen, view)
         if not self._busy():
             self._draw_guide(screen, at)
-        screen.set_clip(None)
 
     @staticmethod
     def _pill(screen, text, cx, bottom, fonts, taken=None):
