@@ -5574,8 +5574,11 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             pygame.draw.rect(screen, theme.BAG, r, 2, border_radius=12)
             screen.blit(t, t.get_rect(center=r.center))
         if self.banner > 0 and self.mode == "MAP":
+            _fn = self._floor_name(self.run.index)
+            if " / " in _fn and self.zones:   # (a floor of several areas: the one you're in, not all of them in a row running off
+                _fn = self._zone_name(self._zone_index(self.run.index, *self.run.player))   # the screen: the Safari Zone, 11-22)
             word = theme.pokemon_word(self.area_data.get("route_name", "")) + \
-                (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and not self.area_data.get("route_name", "").endswith(self._floor_name(self.run.index)) else "")
+                (f"  {_fn}" if self.run.n_floors > 1 and not self.area_data.get("route_name", "").endswith(_fn) else "")
             t = fonts["big"].render(word, True, (255, 255, 255))
             r = t.get_rect(center=(map_view(self.game).centerx, int(H * 0.3))).inflate(60, 24)
             panel = pygame.Surface(r.size, pygame.SRCALPHA)

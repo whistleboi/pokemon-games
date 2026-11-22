@@ -185,6 +185,11 @@ class RouteLive:
                 put(self._item_img(key) or self._ball_img(), x, y)
         if getattr(sc, "bdhc", None) is not None:   # (SoulSilver's own obstacles: to the game they are people, not part of the map's
             for (x, y), what in f.decor.items():      #  model, so the scene has none; 11-22: Tohjo Falls' hidden room had lost its rocks)
+                if str(what).startswith("barrier:") and (x, y) in f.seen:   # (something barring the way, drawn as on the flat map:
+                    _look = str(getattr(self, "_bars", {}).get((x, y), {}).get("look") or "")   # the Warehouse's shutters, 11-22)
+                    if _look.startswith(("sheet:", "ow:", "mon:")):
+                        put(self._stand_in_img(_look, self._bars.get((x, y), {})), x, y)
+                    continue
                 thing = SS_THINGS.get(str(what).split(":")[0])
                 img = self._ss_thing(thing) if thing and (x, y) in f.seen else None
                 if img is not None:   # (on the game's own floor there: our map calls the tile a wall, whose height is under it)
