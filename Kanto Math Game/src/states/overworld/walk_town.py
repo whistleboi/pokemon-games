@@ -2417,7 +2417,7 @@ class WalkTownState(CityState):
                 _p = __import__("src.dungeon.live3d", fromlist=["prop"]).prop(self.game, _name)
                 if _p is not None:
                     sc.props.append((_p, (_px, h(int(_px), int(_pz)), _pz), _flip))
-        screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else ()), view.topleft)
+        screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else (), you=me), view.topleft)
 
         def at(t):
             p = sc.project(size, cam, (t[0] + 0.5, h(*t), sc.wz(*t) + 0.55))

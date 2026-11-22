@@ -27,6 +27,7 @@ _CTX = {}
 _SCENES = {}
 KEY = (230, 57, 255)   # (an atlas's unused space)
 LIGHT_ALPHA = 0.42     # (a light sheet: the lamps' glow, the clouds)
+YOU_ALPHA = 0.45       # (you, where something in front hides you: Scene.render's `you`, 11-22)
 GAP = (26, 30, 38)     # (behind a SoulSilver scene outdoors: see Scene.render)
 GLASS = (118, 146, 176, 190)   # (a tower's window pane: Black 2 leaves it open, an inner model behind; 11-21)
 ALLOW_HOLES = False    # (the checks: draw a scene with holes anyway, to try its camera)
@@ -392,10 +393,12 @@ class Scene:
         self._sprites[key] = (surf, tex)
         return tex
 
-    def render(self, size, cam, sprites=(), sky=(150, 190, 235), shadows=()):
+    def render(self, size, cam, sprites=(), sky=(150, 190, 235), shadows=(), you=None):
         """The scene from cam (eye, target, fov degrees, up) at size (w, h): a pygame Surface. sprites: [(surface,
         (x, y, z) of its feet in tiles, height in tiles)] stood upright facing the camera; shadows: [(x, y, z)] the oval
-        under someone's feet, lying on the ground."""
+        under someone's feet, lying on the ground. you: the player's own surface (one of sprites): where a building or
+        tree stands between it and the camera it still shows, faint (11-22: the Battle Frontier's Tower and Arcade hid you
+        whole, as on the DS; the game's camera, so kept, but you can always see where you are)."""
         ctx, prog = _context(), _CTX["prog"]
         fbo = self._target(size)
         fbo.use()
@@ -455,6 +458,15 @@ class Scene:
                 tex.use(0)
                 vao.render()
             prog["glass"].value = 0
+            ctx.depth_mask = True
+        mine = [s for s in sprites if you is not None and s[0] is you]
+        if mine:   # (you, behind something: only where hidden, drawn faint over it)
+            ctx.depth_mask = False
+            ctx.depth_func = ">"
+            prog["alpha"].value = YOU_ALPHA
+            self._draw_sprites(ctx, prog, cam, mine)
+            ctx.depth_func = "<"
+            prog["alpha"].value = 1.0
             ctx.depth_mask = True
         if light:   # (after people too: a lamp's glow over whoever stands by it)
             ctx.depth_mask = False

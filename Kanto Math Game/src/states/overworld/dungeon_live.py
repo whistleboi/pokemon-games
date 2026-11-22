@@ -209,7 +209,7 @@ class RouteLive:
             put(self._icon(lead, TILE, flip=(self.run.player[0] > bx), facing=way), ax + (bx - ax) * k, ay + (by - ay) * k)
         put(me, mfx, mfy, hop)
         screen.fill((0, 0, 0), view)
-        screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else ()), view.topleft)
+        screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else (), you=me), view.topleft)
 
         def at(x, y):
             p = sc.project(size, cam, (x + 0.5, h(x, y), sc.wz(x, y) + 0.55))

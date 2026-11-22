@@ -194,7 +194,8 @@ class TownMenu:
             return lambda: self.game.change_state(DaycareState(self.game, self))
         if action == "GAMECORNER":
             from src.states.overworld import dungeon
-            if dungeon.enabled(self.game, "CELADON_GAME_CORNER"):  # walk in (Jordan, 11-05)
+            # (walk in, Jordan 11-05; Celadon only: Goldenrod's counter walked you into Celadon's floor and out to Celadon, 11-22)
+            if getattr(self, "area_key", None) == "CELADON_CITY" and dungeon.enabled(self.game, "CELADON_GAME_CORNER"):
                 from src.states.overworld.area_transition import AreaTransitionState
                 return lambda: self.game.change_state(AreaTransitionState(self.game, "CELADON_GAME_CORNER"))
             from src.states.systems import GameCornerState
