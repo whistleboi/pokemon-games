@@ -2349,7 +2349,10 @@ RU_PEOPLE.update({
     9: _say("Sailor's boy", "My dad's a sailor on this ship! He says the Trainers move cabins every day."),
     6: _say("Man in the hall", "I come every evening. A different crowd every night!"),
 })
-ROYAL_UNOVA = route(52, RU_PEOPLE, {}, exits={}, landings=[[29, 17]])
+ROYAL_UNOVA = route(52, RU_PEOPLE, {}, exits={}, landings=[[29, 17]], scenes=[
+    # (the top of the stairs: the game's own trigger, script 28 (28-30, 10); Black 2 has no deck map, its stairs end here)
+    {"who": "Sailor at the deck stairs", "trigger": {"zone": [28, 10, 30, 10]}, "flag": "b2_ru_deck_note",
+     "lines": ["Sailor: The Royal Unova's famous observation deck is just up ahead!"]}])
 ROYAL_UNOVA["links"] = _ru_links()
 ROYAL_UNOVA["arrive"] = {"CASTELIA_CITY": [29, 17]}   # (aboard at the bow end of the hall, however you came)
 ROYAL_UNOVA["cruise"] = {

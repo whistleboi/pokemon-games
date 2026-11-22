@@ -491128,6 +491128,23 @@
     "_look": "sheet:b2_c14.png"
    }
   ],
+  "scenes": [
+   {
+    "who": "Sailor at the deck stairs",
+    "trigger": {
+     "zone": [
+      28,
+      10,
+      30,
+      10
+     ]
+    },
+    "flag": "b2_ru_deck_note",
+    "lines": [
+     "Sailor: The Royal Unova's famous observation deck is just up ahead!"
+    ]
+   }
+  ],
   "landings": [
    [
     29,

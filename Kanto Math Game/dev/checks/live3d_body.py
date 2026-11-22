@@ -454,4 +454,24 @@ t = g.current_state
 check(t._dl_live() and abs(t._dl_height(46, 19) - 4.5) < 0.3 and abs(t._dl_height(50, 19) - 0.5) < 0.3,
       f"the Sewers' stairs up to the Empty Lot: you climb them, not walk under them ({round(t._dl_height(46, 19), 1)})")
 
+# 11-21, batch 3a's leftovers: the piers on the sea (Liberty, Unity, Prime) keep their sea (no paving sheet laid over it),
+# and the clouds over them are see-through light sheets, not solid white; item balls carry no name tag
+_pier = [(z, k) for z in (36, 37, 38) for k, _t, _v in live3d.scene(g, z).parts if k == 4]
+check(not _pier, f"the piers on the sea have no paving sheet over the sea ({_pier[:3]})")
+check(any(k == 3 for k, _t, _v in live3d.scene(g, 38).parts), "Prime Pier's cloud layer is drawn see-through (a light sheet)")
+from src.states.overworld.walk_town import important_person as _imp
+_balls = [o for o in (json.load(open("assets/town_maps.json", encoding="utf-8"))["CASTELIA_CITY"]["rooms"]["prime_pier"]["people"])
+          if isinstance(o, dict) and str(o.get("_look", "")).endswith("item_ball.png")]
+check(_balls and not any(_imp(o) for o in _balls), "an item ball on the ground has no name tag")
+# the cocoon ride in the live view: the silk winds round you going in (Burgh's Gym)
+story.story_flags["b2_sewers_done"] = True
+t = town("gym", (16, 13))
+_silk = []
+_orig = t._draw_ride_silk
+t._draw_ride_silk = lambda *a, **k: (_silk.append(k.get("centre") is not None), _orig(*a, **k))
+t.facing = (0, -1); t.step(0, -1)
+for _ in range(10):
+    t.update(); t.draw()
+check(t._live() and _silk and all(_silk), f"the cocoon ride's silk is drawn in the live view, round the cocoon ({len(_silk)})")
+
 print(f"##### {len(fails)} failures")

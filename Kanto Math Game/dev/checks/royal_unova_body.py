@@ -93,6 +93,11 @@ check(story.money == 4000 and story.current_area_key == "ROYAL_UNOVA" and type(s
 check(tuple(s.run.player) == ru.BOARD_AT, f"...at the bow end of the hall ({tuple(s.run.player)})")
 check(s._dl_live(), "...in the live 3D view")
 
+s.run.player = s.anim_from = s.partner = s.partner_from = (29, 11); s.anim = 0; settle(3)
+said.clear(); s.step(0, -1); settle(60)
+check(story.story_flags.get("b2_ru_deck_note") and "observation deck" in heard(), "at the top of the stairs: the deck is just ahead (Black 2's own trigger)")
+s.run.player = s.anim_from = s.partner = s.partner_from = ru.BOARD_AT; s.anim = 0; settle(3)
+
 print("2) aboard: the crew and the cabins")
 day_list = ru.todays(s)
 check(len(day_list) == [4, 3, 4, 5, 4, 6, 7][day.weekday()], f"today ({DAY}) the game's number of Trainers sail ({day_list})")

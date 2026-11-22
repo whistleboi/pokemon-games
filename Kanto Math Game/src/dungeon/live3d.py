@@ -459,11 +459,11 @@ def _fix(kind, rgba, verts):
     rgba[np.all(rgba[..., :3] == KEY, axis=-1), 3] = 0
     if kind == 2:
         return kind, rgba, verts
-    if kind in (0, 1, 5) and len(verts) and float(verts[:, 1].max()) > 6.0:
-        rgba = _panes(rgba)
     a = rgba[..., 3]
     seen = rgba[a > 0][:, :3]
     if not len(seen) or not (a == 0).any() or seen.min() < 190 or len(np.unique(seen, axis=0)) > 2:
+        if kind in (0, 1, 5) and len(verts) and float(verts[:, 1].max()) > 6.0:   # (a light sheet is tested first: the piers'
+            rgba = _panes(rgba)   # cloud layer, 8 tiles up, had its gaps glazed into one solid white sheet, 11-21)
         return kind, rgba, verts
     verts = verts.copy()
     for axis, col in ((1, 3), (0, 4)):   # (u: across the picture's width; v: down its height)

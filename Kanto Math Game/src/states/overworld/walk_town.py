@@ -47,6 +47,8 @@ def important_person(opt):
         return any(important_person(o) for o in opt["any"])
     if not isinstance(opt, dict) or opt.get("found") or opt.get("no_tag"):   # (no_tag: a thing, not a person - an Apricorn tree)
         return False
+    if str(opt.get("_look") or "").endswith("item_ball.png"):   # (an item ball on the ground: a thing, no tag; Prime Pier's, 11-21)
+        return False
     if opt.get("action") not in (None, "EVENT"):
         return True
     ev = opt.get("event") or {}
@@ -974,8 +976,9 @@ class WalkTownState(CityState):
         fx, fy = self.facing
         return fx * (1 - t), fy * (1 - t) - 0.4 * t * (1 - t) * 4, 0.08 + 0.92 * t, False
 
-    def _draw_ride_silk(self, screen, ox, oy):
-        """Silk round the cocoon as it pulls you in or lets you out; along the thread, the view streams with silk."""
+    def _draw_ride_silk(self, screen, ox, oy, centre=None):
+        """Silk round the cocoon as it pulls you in or lets you out; along the thread, the view streams with silk.
+        centre(tile): the cocoon's middle on screen, from the live 3D camera (11-21); else the flat map's ox, oy."""
         import math
         r = self._ride
         n = r["n"]
@@ -993,7 +996,7 @@ class WalkTownState(CityState):
             screen.blit(veil, view.topleft)
             return
         cx, cy = (r["into"] if n < self.RIDE_IN else (self.player[0] + self.facing[0], self.player[1] + self.facing[1]))
-        px, py = int(ox + (cx + 0.5) * TILE), int(oy + (cy + 0.5) * TILE)
+        px, py = centre((cx, cy)) if centre else (int(ox + (cx + 0.5) * TILE), int(oy + (cy + 0.5) * TILE))
         spin = n * 0.35
         for i in range(6):   # (the cocoon's silk winding round)
             a = spin + i * math.pi / 3
@@ -2413,8 +2416,8 @@ class WalkTownState(CityState):
             theme.shadow_text(screen, "!", fonts["label"], r.centerx - 4, r.y - 34, color=(230, 60, 50))
         me_at = at((int(round(mfx)), int(round(mfy))))
         self._me_drawn = (me_at.copy(), (0, 0))
-        if getattr(self, "_ride", None) and self.RIDE_IN <= self._ride["n"] < self.RIDE_IN + self.RIDE_GO:
-            self._draw_ride_silk(screen, 0, 0)   # (along the thread: the streaming veil over the view)
+        if getattr(self, "_ride", None):   # (along the thread: the streaming veil; into and out of a cocoon: its silk winding round, 11-21)
+            self._draw_ride_silk(screen, 0, 0, centre=lambda t: (at(t).centerx, at(t).centery + TILE // 4))
         self._draw_tags(screen, view, fonts, at, people, me_at.center)
 
     def _draw_tags(self, screen, view, fonts, at, people, centre):
