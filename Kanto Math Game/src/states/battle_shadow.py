@@ -166,7 +166,10 @@ class ShadowBattle:
             if not any(p is not None and p.current_hp > 0 for p in self.opponent_team):
                 self.show_trainer, self.trainer_slide_offset = True, 0
                 return self.trigger_outro(win=True)
-            if not self.battlers("opponent"):
+            if not self.battlers("opponent"):   # (both of theirs out of the fight: the turn ends, its replacements come in
+                self.turn_actions = []           #  through the turn's own end, then your next turn - 11-21: snagging both of a
+                self._turn_end_done = True       #  pair left "sent out" on screen with nothing after it, Greevil's doubles)
+                self.phase = "D_RESOLVE"
                 self._replace_fainted()
                 return
             self._plan_done()

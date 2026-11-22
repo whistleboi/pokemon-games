@@ -42,15 +42,16 @@ print("2) the bosses' teams from the games")
 for name, team in (("Cipher Admin Dakim", [229, 330, 205, 340, 344]), ("Cipher Admin Ein", [310, 121, 112, 279, 169]),
                    ("Cipher Admin Venus", [350, 182, 26, 40, 200]), ("Cipher Head Evice", [9399, 373, 68, 212, 289, 199]),
                    ("Cipher Admin Lovrina", [370, 267, 315, 9408]), ("Cipher Admin Gorigan", [305, 364, 199, 217, 9313, 9324]),
-                   ("Grand Master Greevil", [310, 277, 121, 210, 334, 142]), ("Pre Gym Leader Justy", [27, 331, 207, 192, 184, 299]),
+                   ("Grand Master Greevil", [9331, 9346, 9326, 9341, 9344, 9345]), ("Pre Gym Leader Justy", [27, 331, 207, 192, 184, 299]),
                    ("Cipher Admin Miror B.", [348, 272, 272, 55, 294]), ("Cipher Nascour", [9431, 282, 178, 356, 365, 257]),
-                   ("Cipher Admin Snattle", [375, 195, 212, 338, 351, 121]), ("Cipher Admin Ardos", [277, 65, 230, 214, 125, 286]),
-                   ("Cipher Admin Eldes", [291, 310, 373, 330, 105, 131]), ("Snagem Head Gonzap", [101, 274, 45, 340, 227])):
+                   ("Cipher Admin Snattle", [375, 195, 212, 9422, 351, 9335]), ("Cipher Admin Ardos", [9403, 65, 230, 214, 9338, 9343]),
+                   ("Cipher Admin Eldes", [291, 9412, 9430, 330, 9327, 9342]), ("Snagem Head Gonzap", [101, 274, 45, 340, 227])):
     t = [x for x in find(name) if x["team"] == team]  # (Dakim, Ein and Snattle also have earlier story battles; Lovrina: her Cipher Lab
     #  battle from the XD disc since batch 5a - her later team comes with Citadark, batch 8)
     check(t and len(t[0]["levels"]) == len(team), f"{name}")
 gv = next(o for o in orre["XD_CITADARK_ISLE"]["route_menu"] if "GREEVIL" in o["text"])
-check({"xd_snattle_beaten", "xd_ardos_beaten", "xd_eldes_beaten"} <= set(gv["condition"]), "Greevil after Snattle, Ardos and Eldes")
+_st = gv["event"]["stages"]   # (batch 8a: XD's own order - Snattle, Ardos at the Dome's door, Eldes behind the glass, whose fall opens
+check(len(_st) == 2 and "xd_xd001" in _st[1]["requires"], "Greevil: XD001 first, then his six (the way up gated on the map: Ardos, the glass, Eldes)")
 
 print("3) the Poké Spots")
 pool = {p for k in ("ORRE_POKE_SPOTS", "OASIS_POKE_SPOT", "CAVE_POKE_SPOT") for p in data[orre[k]["wild_pool_percentages"]]}

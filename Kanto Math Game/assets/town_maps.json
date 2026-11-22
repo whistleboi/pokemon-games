@@ -289432,7 +289432,7 @@
      "cccccccccccccc",
      "cccccccccccccc",
      "....cc.......c",
-     "c............c",
+     "c......N.....c",
      "ccc...N....^cc",
      ".cc........^cc",
      "...N.....N...c",
@@ -289451,6 +289451,33 @@
     },
     "buildings": {},
     "people": [
+     {
+      "text": "Professor Krane (the stairs)",
+      "action": "EVENT",
+      "condition": "beat_orre_champion",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "not:xd_master_ball"
+         ],
+         "flag": "xd_master_ball",
+         "gift_item": {
+          "MASTER_BALL": 1
+         },
+         "lines": [
+          "Professor Krane: Wes, come with me. There's a staircase here even Lily rarely uses.",
+          "Professor Krane: Cipher has gathered on Citadark Isle. Greevil's 'XD001' - our readings say it's a Shadow Pokemon unlike any other.",
+          "Professor Krane: This is a Master Ball. There's only one. It catches any Pokemon without fail. Save it for XD001.",
+          "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, Wes."
+         ]
+        }
+       ],
+       "done": [
+        "Professor Krane: Save the Master Ball for XD001. Its heart... I fear only the Purify Chamber could reach it."
+       ]
+      }
+     },
      "Professor Krane",
      {
       "text": "Battle CD player",
@@ -291748,7 +291775,7 @@
      "c....................cccccccccccccccccc",
      "c....................cccccccccccccccccc",
      "c....................cccccccccccccccccc",
-     "c................Xccccccccccccccccccccc",
+     "c.................ccccccccccccccccccccc",
      "c........NN..........1ccccccccccccccccc",
      "c....................cccccccccccccccccc",
      "c.................ccccccccccccccccccccc",
@@ -291760,7 +291787,7 @@
      "ccc.........X.....................ccccc",
      "ccccccccccccc...ccccccccccccccccccccccc",
      "ccccccccccccc...ccccccccccccccccccccccc",
-     "c......c.....XXX.............Xcc......c",
+     "c.....Nc.....N...............Xc1......c",
      "c.....................................c",
      "ccccccccccccc......cccccccccccccccccccc",
      "cccccccccccccc.cc.ccccccccccccccccccccc",
@@ -291779,27 +291806,30 @@
     },
     "links": {
      "17,27": [
-      3,
+      6,
       22,
       17
      ],
      "21,6": [
       1,
-      9,
-      12
+      1,
+      13
+     ],
+     "31,17": [
+      4,
+      1,
+      2
      ]
     },
     "parts": true,
     "people": [
      "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "NAVIGATOR AT THE DOCK",
+     "PP MAX"
     ],
     "trainer_spots": [
-     "Cipher Peon Haben",
      "Cipher Peon Kleef",
-     "Chaser Furgy",
-     "Hunter Jetsal",
-     "Sailor Golos",
      "Navigator Abson"
     ],
     "roofs": {
@@ -291826,151 +291856,96 @@
        30
       ]
      }
-    ]
-   },
-   {
-    "art": [
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........c..cccccccccccccccc............",
-     ".........c1.cccccccccccccccc............",
-     ".........c..cccccccccccccccc............",
-     ".........c..cccccccccccccccc............",
-     ".........c...Xcccc.1.ccc..cc............",
-     ".........1......c.....c....1............",
-     ".........c...X..c.....c...cc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............",
-     ".........ccccccccccccccccccc............"
     ],
-    "exits": {},
-    "links": {
-     "10,8": [
-      2,
-      2,
-      3
-     ],
-     "9,12": [
-      0,
-      21,
-      6
-     ],
-     "27,12": [
-      3,
-      9,
-      12
-     ],
-     "19,11": [
-      2,
-      11,
-      6
-     ]
-    },
-    "parts": true,
-    "people": [],
-    "trainer_spots": [
-     "Cipher Peon Bastil",
-     "Cipher Peon Litnar"
-    ],
-    "roofs": {
-     "_picture": {
-      "f": "orre_ground/147.png",
-      "at": [
-       0,
-       0
-      ]
-     },
-     "_signs_in_picture": true,
-     "_buildings_in_picture": true
-    },
-    "overheads": [
+    "barred": [
      {
-      "kind": "picture",
-      "f": "orre_top/147.png",
-      "at": [
-       0,
-       0
+      "tiles": [
+       [
+        17,
+        27
+       ]
       ],
-      "size": [
-       40,
-       25
-      ]
+      "until": {
+       "flag_condition": "xd_greevil_beaten"
+      },
+      "lines": [
+       "A sealed door. It must open from inside the Dome."
+      ],
+      "look": "barrier"
      }
     ]
    },
    {
     "art": [
-     "ccccccccccccccccccccccc",
-     "ccccccccccccccccccccccc",
-     "c....................cc",
-     "c.1...................c",
-     "c.....................c",
-     "c.........ccccccccccccc",
-     "c.........c1........ccc",
-     "c.......1.c...1......cc",
-     "c.......1.c...1......cc",
-     "c.........c..........cc",
-     "c.........c..........cc",
-     "c.........c..........cc",
-     "c.........c..........cc",
-     "cc........c..........cc",
-     "ccccccccccccccccccccccc"
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cN....c.N.........c..............c.........c",
+     "c...........X.....c......X.......c...X.....c",
+     "ccccccc1............X......................c",
+     "c.....c.........X.c..........X...c.........c",
+     "cN.......N........c....N.........c..N......c",
+     "cccccccccccccccccccccccccccccccccccccccc..cc",
+     "cccccccccccccccccccccccccccccccccccccccc..cc",
+     "cccccccccccccccccccccccccccccccccccccccc..cc",
+     "cN..N...c.........c.X.............c.......Nc",
+     "c.......c....X....c...ccccccccc...c...X....c",
+     "c.......c.........c...ccccccccc...c........c",
+     "c1................N.......N................c",
+     "c...X...c.........c...ccccccccc...c........c",
+     "c.......c....X....c...ccccccccc...c.....X..c",
+     "c.X.....c.........c.............X.c.N......c",
+     "cccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
     "links": {
-     "8,7": [
-      1,
-      15,
-      12
+     "7,4": [
+      2,
+      2,
+      2
      ],
-     "8,8": [
-      1,
-      15,
-      13
-     ],
-     "2,3": [
-      1,
-      10,
-      8
-     ],
-     "11,6": [
-      1,
-      19,
-      11
-     ],
-     "14,7": [
-      1,
+     "1,13": [
+      0,
       21,
-      12
-     ],
-     "14,8": [
-      1,
-      21,
-      13
+      6
      ]
     },
     "parts": true,
-    "people": [],
-    "trainer_spots": [],
+    "people": [
+     "REVIVES",
+     "FULL RESTORES (WING)",
+     "WHITE HERBS",
+     "HYPER POTIONS (WING)",
+     "PP UP",
+     "ELIXIR",
+     "HEALING MACHINE",
+     "MAX ELIXIR",
+     "FULL RESTORES",
+     "CIPHER ADMIN LOVRINA",
+     "ULTRA BALLS",
+     "HYPER POTIONS"
+    ],
+    "trainer_spots": [
+     "Hunter Ibran",
+     "Chaser Nalix",
+     "Cipher Peon Jargo",
+     "Cipher Peon Grupel",
+     "Cipher Peon Leden",
+     "Rider Kulig",
+     "Cipher Peon Bastil",
+     "Sailor Golos",
+     "Cipher Peon Litnar",
+     "Chaser Furgy",
+     "Hunter Jetsal",
+     "Cipher Peon Grason",
+     "Cipher Peon Haben",
+     "Cipher Peon Geftal"
+    ],
     "roofs": {
      "_picture": {
-      "f": "orre_ground/148.png",
+      "f": "orre_ground/citadark_in_1.png",
       "at": [
-       8,
-       5
+       0,
+       0
       ]
      },
      "_signs_in_picture": true,
@@ -291979,15 +291954,784 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "orre_top/148.png",
+      "f": "orre_top/citadark_in_1.png",
       "at": [
-       8,
-       5
+       0,
+       0
       ],
       "size": [
-       23,
+       44,
+       18
+      ]
+     }
+    ],
+    "boxes": [
+     [
+      6,
+      3
+     ],
+     [
+      6,
+      6
+     ]
+    ],
+    "box_switches": []
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "c.1..ccccc......cccccccccccccccccc.....c",
+     "c....ccccc......cccccccccccccccccc...N.c",
+     "c....ccccc...X..cccccccccccccccccc.....c",
+     "c....ccccc......cccccccccccccccccccccccc",
+     "c....ccccc......cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccc...X...........ccc......c",
+     "ccccccccccccccc..ccccccccccc..ccc.X....c",
+     "ccccccccccccccc...........cc..ccc.....1c",
+     "ccccccccccccccc..cc.....N.cc..ccc......c",
+     "ccccccccccccccc..ccccccccccc..ccc.X....c",
+     "ccccccccccccccc...............ccc......c",
+     "cccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "2,2": [
+      1,
+      7,
+      4
+     ],
+     "38,10": [
+      3,
+      1,
+      6
+     ]
+    },
+    "parts": true,
+    "people": [
+     "MAX POTIONS",
+     "RARE CANDY"
+    ],
+    "trainer_spots": [
+     "Cipher Peon Kolest",
+     "Cipher Peon Kolin",
+     "Cipher Peon Karbon",
+     "Cipher Peon Petro"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/citadark_in_2.png",
+      "at": [
+       0,
+       1
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/citadark_in_2.png",
+      "at": [
+       0,
+       1
+      ],
+      "size": [
+       40,
        15
       ]
+     }
+    ],
+    "platforms": [
+     {
+      "track": [
+       [
+        5,
+        4
+       ],
+       [
+        6,
+        4
+       ],
+       [
+        7,
+        4
+       ],
+       [
+        8,
+        4
+       ],
+       [
+        9,
+        4
+       ]
+      ]
+     },
+     {
+      "track": [
+       [
+        16,
+        3
+       ],
+       [
+        17,
+        3
+       ],
+       [
+        18,
+        3
+       ],
+       [
+        19,
+        3
+       ],
+       [
+        20,
+        3
+       ],
+       [
+        21,
+        3
+       ],
+       [
+        22,
+        3
+       ],
+       [
+        23,
+        3
+       ],
+       [
+        24,
+        3
+       ],
+       [
+        25,
+        3
+       ],
+       [
+        26,
+        3
+       ],
+       [
+        27,
+        3
+       ],
+       [
+        28,
+        3
+       ],
+       [
+        29,
+        3
+       ],
+       [
+        30,
+        3
+       ],
+       [
+        31,
+        3
+       ],
+       [
+        32,
+        3
+       ],
+       [
+        33,
+        3
+       ]
+      ]
+     },
+     {
+      "track": [
+       [
+        12,
+        7
+       ],
+       [
+        12,
+        8
+       ],
+       [
+        13,
+        8
+       ],
+       [
+        14,
+        8
+       ]
+      ]
+     },
+     {
+      "track": [
+       [
+        30,
+        11
+       ],
+       [
+        31,
+        11
+       ],
+       [
+        32,
+        11
+       ]
+      ]
+     }
+    ],
+    "landings": [
+     [
+      4,
+      4
+     ],
+     [
+      10,
+      4
+     ],
+     [
+      12,
+      6
+     ],
+     [
+      15,
+      3
+     ],
+     [
+      15,
+      8
+     ],
+     [
+      29,
+      11
+     ],
+     [
+      33,
+      11
+     ],
+     [
+      34,
+      3
+     ]
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccc",
+     "c.......................................1c",
+     "c....N.............................N.....c",
+     "c......................................X.c",
+     "cccccccccccccccccccccccccccccccccccccccccc",
+     "c1....cccccc.......cccccc......cccc......c",
+     "c.....cccccc.......cccccc......cccc......c",
+     "c...X.cccccc.......cccccc......cccc......c",
+     "c.....cccccc.......cccccc......cccc......c",
+     "c.....ccccccccccccccccccc..N...cccc......c",
+     "c.....ccccccN..c..Ncccccc......cccc......c",
+     "cccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "1,6": [
+      2,
+      38,
+      10
+     ],
+     "40,2": [
+      4,
+      1,
+      8
+     ]
+    },
+    "parts": true,
+    "people": [
+     "MAX ETHERS",
+     "FULL HEALS",
+     "TIMER BALLS",
+     "MAX REVIVE",
+     "REVIVES (HOOK HALL)"
+    ],
+    "trainer_spots": [
+     "Cipher Peon Jaymi",
+     "Cipher Peon Gromlet"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/citadark_in_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/citadark_in_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       42,
+       13
+      ]
+     }
+    ],
+    "hooks": [
+     {
+      "colour": "yellow",
+      "a": [
+       5,
+       7
+      ],
+      "b": [
+       12,
+       7
+      ]
+     },
+     {
+      "colour": "pink",
+      "a": [
+       18,
+       7
+      ],
+      "b": [
+       25,
+       7
+      ]
+     },
+     {
+      "colour": "red",
+      "a": [
+       30,
+       8
+      ],
+      "b": [
+       35,
+       8
+      ]
+     },
+     {
+      "colour": "orange",
+      "a": [
+       13,
+       9
+      ],
+      "b": [
+       13,
+       11
+      ]
+     },
+     {
+      "colour": "cyan",
+      "a": [
+       17,
+       9
+      ],
+      "b": [
+       17,
+       11
+      ]
+     }
+    ],
+    "warps": [
+     {
+      "at": [
+       39,
+       6
+      ],
+      "to": [
+       37,
+       3
+      ],
+      "kind": "lift",
+      "lines": [
+       "The lift carries you up to the high gallery."
+      ]
+     },
+     {
+      "at": [
+       37,
+       4
+      ],
+      "to": [
+       39,
+       7
+      ],
+      "kind": "lift",
+      "lines": [
+       "The lift takes you back down to the hall."
+      ]
+     },
+     {
+      "at": [
+       10,
+       2
+      ],
+      "to": [
+       14,
+       11
+      ],
+      "kind": "drop",
+      "lines": [
+       "The glowing floor gives way - you drop to the hall below!"
+      ]
+     },
+     {
+      "at": [
+       30,
+       2
+      ],
+      "to": [
+       16,
+       11
+      ],
+      "kind": "drop",
+      "lines": [
+       "The glowing floor gives way - you drop to the hall below!"
+      ]
+     }
+    ],
+    "landings": [
+     [
+      5,
+      7
+     ],
+     [
+      12,
+      7
+     ],
+     [
+      13,
+      9
+     ],
+     [
+      13,
+      11
+     ],
+     [
+      14,
+      11
+     ],
+     [
+      16,
+      11
+     ],
+     [
+      17,
+      9
+     ],
+     [
+      17,
+      11
+     ],
+     [
+      18,
+      7
+     ],
+     [
+      25,
+      7
+     ],
+     [
+      30,
+      8
+     ],
+     [
+      35,
+      8
+     ],
+     [
+      37,
+      3
+     ],
+     [
+      39,
+      7
+     ]
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "c1.........cccccccccc.........cccc1c",
+     "c...N......c........c.........c....c",
+     "c..........c...1....c....N....c..X.c",
+     "c..........ccccc.cccc..............c",
+     "c.....X............................c",
+     "c...............N..................c",
+     "c1.................................c",
+     "cccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "1,8": [
+      3,
+      40,
+      2
+     ],
+     "15,4": [
+      5,
+      1,
+      4
+     ],
+     "34,2": [
+      5,
+      30,
+      4
+     ],
+     "1,2": [
+      0,
+      31,
+      17
+     ]
+    },
+    "parts": true,
+    "people": [
+     "CIPHER ADMIN SNATTLE",
+     "CIPHER ADMIN GORIGAN",
+     "CIPHER ADMIN ARDOS"
+    ],
+    "trainer_spots": [
+     "Cipher Peon Kolax",
+     "Cipher Peon Kimly"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/citadark_in_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/citadark_in_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       36,
+       10
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        4
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_ardos_citadark"
+      },
+      "lines": [
+       "Cipher's guards bar the Dome's door."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        16,
+        4
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_ardos_citadark"
+      },
+      "lines": [
+       "Cipher's guards bar the Dome's door."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        34,
+        2
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_gorigan_citadark"
+      },
+      "lines": [
+       "The lift into the Dome is locked."
+      ],
+      "look": "barrier"
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cN.N.................N.........c",
+     "c................N.............c",
+     "c1.........................X..1c",
+     "c..............................c",
+     "c1..X..................N.......c",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "1,4": [
+      4,
+      15,
+      4
+     ],
+     "30,4": [
+      4,
+      34,
+      2
+     ],
+     "1,6": [
+      6,
+      9,
+      12
+     ]
+    },
+    "parts": true,
+    "people": [
+     "HEALING MACHINE (DOME)",
+     "MAX REVIVE (DOME)",
+     "CIPHER'S BIG SCREEN",
+     "CIPHER ADMIN ELDES",
+     "BATTLE CD 46"
+    ],
+    "trainer_spots": [
+     "Cipher R&D Kaller",
+     "Cipher R&D Loket"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/citadark_in_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/citadark_in_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       32,
+       8
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        11,
+        2
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_eldes_beaten"
+      },
+      "lines": [
+       "A thick glass wall. Greevil watches you through it."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        11,
+        3
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_eldes_beaten"
+      },
+      "lines": [
+       "A thick glass wall. Greevil watches you through it."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        11,
+        4
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_eldes_beaten"
+      },
+      "lines": [
+       "A thick glass wall. Greevil watches you through it."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        11,
+        5
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_eldes_beaten"
+      },
+      "lines": [
+       "A thick glass wall. Greevil watches you through it."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        11,
+        6
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_eldes_beaten"
+      },
+      "lines": [
+       "A thick glass wall. Greevil watches you through it."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        1,
+        6
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_eldes_beaten"
+      },
+      "lines": [
+       "The lift up to the Dome's top won't move while the glass is down."
+      ],
+      "look": "barrier"
      }
     ]
    },
@@ -292004,9 +292748,9 @@
      ".........c..c..c............c",
      ".........c..c..c..cc.....cc.c",
      ".........c...............c..c",
-     ".........cc.........N.N.N...c",
+     ".........cc...........N.....c",
      ".........1..................c",
-     ".........c............N.....c",
+     ".........c..................c",
      ".........c..................c",
      ".........cc.................c",
      ".........c........cc.....cc.c",
@@ -292027,17 +292771,14 @@
       27
      ],
      "9,12": [
+      5,
       1,
-      27,
-      12
+      6
      ]
     },
     "parts": true,
     "people": [
-     "BATTLE CIPHER ADMIN SNATTLE",
-     "BATTLE GRAND MASTER GREEVIL",
-     "BATTLE CIPHER ADMIN ARDOS",
-     "BATTLE CIPHER ADMIN ELDES"
+     "GRAND MASTER GREEVIL"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -292069,25 +292810,72 @@
   ],
   "floor_names": [
    "Citadark Isle",
-   "Cave",
-   "Cave 2F",
-   "Cipher's Hall"
+   "Fortress",
+   "Volcano",
+   "Hook Hall",
+   "Outside the Dome",
+   "Dome 1F",
+   "Dome 2F"
   ],
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
+   "NAVIGATOR AT THE DOCK": 0,
+   "PP MAX": 0,
    "Navigator Abson": 0,
    "Cipher Peon Kleef": 0,
-   "Cipher Peon Haben": 0,
-   "Chaser Furgy": 0,
-   "Sailor Golos": 0,
-   "Hunter Jetsal": 0,
+   "REVIVES": 1,
+   "FULL RESTORES (WING)": 1,
+   "WHITE HERBS": 1,
+   "HYPER POTIONS (WING)": 1,
+   "PP UP": 1,
+   "ELIXIR": 1,
+   "HEALING MACHINE": 1,
+   "MAX ELIXIR": 1,
+   "FULL RESTORES": 1,
+   "ULTRA BALLS": 1,
+   "HYPER POTIONS": 1,
+   "CIPHER ADMIN LOVRINA": 1,
+   "Hunter Ibran": 1,
+   "Chaser Nalix": 1,
+   "Cipher Peon Jargo": 1,
+   "Cipher Peon Grupel": 1,
+   "Cipher Peon Leden": 1,
+   "Rider Kulig": 1,
    "Cipher Peon Bastil": 1,
+   "Sailor Golos": 1,
    "Cipher Peon Litnar": 1,
-   "BATTLE GRAND MASTER GREEVIL": 3,
-   "BATTLE CIPHER ADMIN SNATTLE": 3,
-   "BATTLE CIPHER ADMIN ARDOS": 3,
-   "BATTLE CIPHER ADMIN ELDES": 3
+   "Chaser Furgy": 1,
+   "Hunter Jetsal": 1,
+   "Cipher Peon Grason": 1,
+   "Cipher Peon Haben": 1,
+   "Cipher Peon Geftal": 1,
+   "MAX POTIONS": 2,
+   "RARE CANDY": 2,
+   "Cipher Peon Kolest": 2,
+   "Cipher Peon Kolin": 2,
+   "Cipher Peon Karbon": 2,
+   "Cipher Peon Petro": 2,
+   "MAX ETHERS": 3,
+   "FULL HEALS": 3,
+   "TIMER BALLS": 3,
+   "MAX REVIVE": 3,
+   "REVIVES (HOOK HALL)": 3,
+   "Cipher Peon Jaymi": 3,
+   "Cipher Peon Gromlet": 3,
+   "CIPHER ADMIN SNATTLE": 4,
+   "CIPHER ADMIN GORIGAN": 4,
+   "CIPHER ADMIN ARDOS": 4,
+   "Cipher Peon Kolax": 4,
+   "Cipher Peon Kimly": 4,
+   "HEALING MACHINE (DOME)": 5,
+   "MAX REVIVE (DOME)": 5,
+   "CIPHER'S BIG SCREEN": 5,
+   "BATTLE CD 46": 5,
+   "CIPHER ADMIN ELDES": 5,
+   "Cipher R&D Kaller": 5,
+   "Cipher R&D Loket": 5,
+   "GRAND MASTER GREEVIL": 6
   },
   "theme": "tunnel"
  },

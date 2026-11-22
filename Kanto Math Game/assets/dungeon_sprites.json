@@ -76,6 +76,15 @@
     ]
   },
   "figures": {
+    "XD_CITADARK_ISLE:PP MAX": {
+      "item": "PP_MAX"
+    },
+    "XD_CITADARK_ISLE:NAVIGATOR AT THE DOCK": {
+      "sheet": "orre_trainer_sailor.png"
+    },
+    "XD_CITADARK_ISLE:GRAND MASTER GREEVIL": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
     "CIPHER_COMMAND:OLD MAN": {
       "sheet": "orre_trainer_fun_old_man.png"
     },
@@ -13277,6 +13286,87 @@
     },
     "JOHTO_ROUTE_43:BLACK APRICORN TREE": {
       "pic": "tiles/ss/ow_bonguri_bk.png"
+    },
+    "XD_CITADARK_ISLE:REVIVES": {
+      "item": "REVIVE"
+    },
+    "XD_CITADARK_ISLE:FULL RESTORES (WING)": {
+      "item": "FULL_RESTORE"
+    },
+    "XD_CITADARK_ISLE:WHITE HERBS": {
+      "item": "WHITE_HERB"
+    },
+    "XD_CITADARK_ISLE:HYPER POTIONS (WING)": {
+      "item": "HYPER_POTION"
+    },
+    "XD_CITADARK_ISLE:PP UP": {
+      "item": "PP_UP"
+    },
+    "XD_CITADARK_ISLE:ELIXIR": {
+      "item": "ELIXIR"
+    },
+    "XD_CITADARK_ISLE:MAX ELIXIR": {
+      "item": "MAX_ELIXIR"
+    },
+    "XD_CITADARK_ISLE:FULL RESTORES": {
+      "item": "FULL_RESTORE"
+    },
+    "XD_CITADARK_ISLE:ULTRA BALLS": {
+      "item": "ULTRA_BALL"
+    },
+    "XD_CITADARK_ISLE:HYPER POTIONS": {
+      "item": "HYPER_POTION"
+    },
+    "XD_CITADARK_ISLE:MAX POTIONS": {
+      "item": "MAX_POTION"
+    },
+    "XD_CITADARK_ISLE:RARE CANDY": {
+      "item": "RARE_CANDY"
+    },
+    "XD_CITADARK_ISLE:MAX ETHERS": {
+      "item": "MAX_ETHER"
+    },
+    "XD_CITADARK_ISLE:FULL HEALS": {
+      "item": "FULL_HEAL"
+    },
+    "XD_CITADARK_ISLE:TIMER BALLS": {
+      "item": "TIMER_BALL"
+    },
+    "XD_CITADARK_ISLE:MAX REVIVE": {
+      "item": "MAX_REVIVE"
+    },
+    "XD_CITADARK_ISLE:REVIVES (HOOK HALL)": {
+      "item": "REVIVE"
+    },
+    "XD_CITADARK_ISLE:MAX REVIVE (DOME)": {
+      "item": "MAX_REVIVE"
+    },
+    "XD_CITADARK_ISLE:BATTLE CD 46": {
+      "item": "BATTLE_CD_46"
+    },
+    "XD_CITADARK_ISLE:HEALING MACHINE": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "XD_CITADARK_ISLE:HEALING MACHINE (DOME)": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "XD_CITADARK_ISLE:CIPHER'S BIG SCREEN": {
+      "sheet": "orre_door_lift.png"
+    },
+    "XD_CITADARK_ISLE:CIPHER ADMIN LOVRINA": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:CIPHER ADMIN SNATTLE": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:CIPHER ADMIN GORIGAN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:CIPHER ADMIN ARDOS": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:CIPHER ADMIN ELDES": {
+      "sheet": "orre_trainer_cipher_grunt.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -13301,9 +13391,39 @@
   },
   "player_extra": {
     "_about": "Your trainer's own extra overworld sheets, by character (4 x 4 like a walking sheet, rows down/left/right/up; or {file, cols, rows}: a strip of frames). bike: riding (columns: still, pedal, still, pedal); surf: sitting on your Pokemon; fish: casting (4 frames a way); field: using a field move (Strength, Rock Smash); dive: swimming underwater; run: running. Anyone without one keeps the walking sheet (and the drawn Bicycle). vsseeker / vsseeker_bike: holding up the VS Seeker (FireRed's own frames for Red and Leaf, 11-19; \"scale\": 2, FireRed's pixels beside Journeys' walking sheets). Not used yet: capback (the cap turned backwards).",
-    "wes": {"bike": "orre_wes_bike.png", "surf": "orre_wes_surf.png", "run": "orre_wes_run.png"},
-    "red": {"vsseeker": {"file": "fr_red_vsseeker.png", "cols": 9, "rows": 1, "scale": 2}, "vsseeker_bike": {"file": "fr_red_vsseeker_bike.png", "cols": 6, "rows": 1, "scale": 2}},
-    "leaf": {"vsseeker": {"file": "fr_leaf_vsseeker.png", "cols": 9, "rows": 1, "scale": 2}, "vsseeker_bike": {"file": "fr_leaf_vsseeker_bike.png", "cols": 6, "rows": 1, "scale": 2}},
+    "wes": {
+      "bike": "orre_wes_bike.png",
+      "surf": "orre_wes_surf.png",
+      "run": "orre_wes_run.png"
+    },
+    "red": {
+      "vsseeker": {
+        "file": "fr_red_vsseeker.png",
+        "cols": 9,
+        "rows": 1,
+        "scale": 2
+      },
+      "vsseeker_bike": {
+        "file": "fr_red_vsseeker_bike.png",
+        "cols": 6,
+        "rows": 1,
+        "scale": 2
+      }
+    },
+    "leaf": {
+      "vsseeker": {
+        "file": "fr_leaf_vsseeker.png",
+        "cols": 9,
+        "rows": 1,
+        "scale": 2
+      },
+      "vsseeker_bike": {
+        "file": "fr_leaf_vsseeker_bike.png",
+        "cols": 6,
+        "rows": 1,
+        "scale": 2
+      }
+    },
     "ash": {
       "bike": "ash_oi_bike.png",
       "surf": "ash_oi_surf.png",

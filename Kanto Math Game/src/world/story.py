@@ -450,6 +450,12 @@ class StoryManager:
         form_map = self.game.loader.area_data.get("FORM_MAP", {})
         return bool(p) and (form_map.get(str(p.id)) or {}).get("form") == "shadow"
 
+    # Shadow Pokemon only the Purify Chamber can open (XD's XD001, Shadow Lugia: Jordan 11-21, batch 8a); form ids
+    CHAMBER_ONLY = {9400}
+
+    def chamber_only(self, p):
+        return p is not None and getattr(p, "id", None) in self.CHAMBER_ONLY
+
     def purify_slot(self, i):
         """Purify the Shadow Pokemon in party slot i (the Relic Stone). Returns its new name."""
         p = self.player_team[i]

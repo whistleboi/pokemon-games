@@ -804,6 +804,24 @@ def _col7b(maps):
              "lines": ["The door to the arena on the roof is locked. Cipher's people must be inside the tower."]}]
 
 
+# ================================================================== batch 8a: before Citadark Isle (BATCH_8A.md)
+# XD part 7: after the title, Krane shows Wes a secret staircase in the lab and gives him the Master Ball (one in the game) -
+# for XD001, whose heart only the Purify Chamber can open (8b).
+KRANE_MASTER_BALL = {"text": "Professor Krane (the stairs)", "action": "EVENT", "condition": "beat_orre_champion", "event": {"stages": [
+    {"requires": ["not:xd_master_ball"], "flag": "xd_master_ball", "gift_item": {"MASTER_BALL": 1},
+     "lines": ["Professor Krane: Wes, come with me. There's a staircase here even Lily rarely uses.",
+               "Professor Krane: Cipher has gathered on Citadark Isle. Greevil's 'XD001' - our readings say it's a Shadow Pokemon unlike any other.",
+               "Professor Krane: This is a Master Ball. There's only one. It catches any Pokemon without fail. Save it for XD001.",
+               "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, Wes."]}],
+    "done": ["Professor Krane: Save the Master Ball for XD001. Its heart... I fear only the Purify Chamber could reach it."]}}
+
+
+def _xd8a(maps):
+    if "POKEMON_HQ_LAB" in maps:
+        lab = maps["POKEMON_HQ_LAB"]["rooms"]["lab"]
+        _set_people(lab, {_free_spot(lab, (6, 4)): KRANE_MASTER_BALL})
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -818,6 +836,7 @@ def apply(maps):
     _xd5b(maps)
     _xd6(maps)
     _col7b(maps)
+    _xd8a(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

@@ -1077,6 +1077,10 @@ def _choose_purify(state, lines, show):
         if i >= len(team) or not story.is_shadow(team[i]):
             back(["That Pokemon isn't a Shadow Pokemon. Nothing happened."])
             return
+        if story.chamber_only(team[i]):   # (XD001: the Relic Stone can't reach a heart shut this tight)
+            back(["The Relic Stone glows... but the darkness around XD001's heart doesn't move.",
+                  "Only a Purify Chamber could reach a heart shut this tight."])
+            return
         name = story.purify_slot(i)
         back([f"{name}'s heart opened! It's no longer a Shadow Pokemon."] + _evolve_due(game, [name]))
 

@@ -620,6 +620,9 @@ class BagState(GameState):
         if slot_index >= len(party) or party[slot_index] is None or not story.is_shadow(party[slot_index]):
             self._back_to_bag(["It won't have any effect."])
             return
+        if story.chamber_only(party[slot_index]):   # (XD001: not even Celebi's song; the Purify Chamber only)
+            self._back_to_bag(["The Time Flute's song rang out... but XD001's heart stayed shut.", "Only a Purify Chamber could reach it."])
+            return
         from src.states.overworld.common import _evolve_due
         story.inventory.pop("TIME_FLUTE", None)
         name = story.purify_slot(slot_index)

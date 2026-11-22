@@ -1905,7 +1905,8 @@ class DungeonState(OverworldBattles, PlayState):
     # ---------------------------------------------------------------- a step
     def _ready(self):
         return self.mode == "MAP" and self.anim == 0 and not self.dialogue_box.visible and not getattr(self, "_scene_lock", False) \
-            and not getattr(self, "_pose_then", None)   # (mid-cast: see fish_here)
+            and not getattr(self, "_pose_then", None) \
+            and not getattr(self, "_ride", None)   # (mid-cast: see fish_here; riding a platform or hook, or falling: Citadark 11-21)
 
     braking = False  # (on a slope: you've braked (WAIT), and stay put till you move again)
 
@@ -2007,6 +2008,8 @@ class DungeonState(OverworldBattles, PlayState):
             return
         if str(self.run.floor.decor.get(to, "")).startswith("box:"):   # (a crate you push by walking into it: XD's Key Lair, 11-21)
             self._push_box(to, dx, dy)
+        if self._board_platform(to):   # (a moving platform's track ahead of you: it carries you across: Citadark's volcano, 11-21)
+            return
         hopped = False
         if str(self.run.floor.decor.get(to, "")) == f"ledge:{dx},{dy}":  # (a ledge, from its high side: hop over it)
             over = (to[0] + dx, to[1] + dy)
@@ -2029,6 +2032,8 @@ class DungeonState(OverworldBattles, PlayState):
             self.sliding = None  # (a stop tile: a spin tile's slide ends here: the Rocket Hideout's maze)
         if self.sliding:
             self.walk_goal = None
+        if self.run.player != before and not leaving:
+            self._ride_from_tile(tuple(self.run.player))   # (onto a hook's pad, a glowing drop tile, a lift: Citadark, 11-21)
         if self.run.player != before:
             self.anim_from, self.anim = before, STEP_FRAMES
             _m = self.run.recipe.get("art") or {}
@@ -3351,6 +3356,142 @@ class DungeonState(OverworldBattles, PlayState):
                 self.say(sw.get("lines") or ["The crate pressed the floor switch down.", "Something opened somewhere!"])
         return True
 
+    # ---------------------------------------------------------------- rides: platforms, hooks, drops (Citadark Isle, Jordan 11-21)
+    # A floor's "platforms": [{"track": [[x, y], ...]}] - tiles over lava; the platform waits at one end; walk into either end
+    # and it carries you along to the other, where you step off onto the ground beside it. "hooks": [{"colour", "a": [x, y],
+    # "b": [x, y]}] - two pads across a pit; walk onto one and the hook lifts you over to the other. "warps": [{"at", "to",
+    # "kind": "drop" | "lift", "lines"}] - a glowing tile you drop through, or a lift, to another spot on the same floor.
+    HOOK_COLOURS = {"yellow": (240, 210, 60), "pink": (240, 130, 190), "red": (220, 70, 60), "orange": (240, 150, 50),
+                    "cyan": (80, 210, 230)}
+
+    def _rides(self, key):
+        return self._here_art().get(key) or []
+
+    def _platform_at(self):
+        return self.__dict__.setdefault("_platform_end", {})
+
+    def _board_platform(self, to):
+        for i, pl in enumerate(self._rides("platforms")):
+            track = [tuple(t) for t in pl["track"]]
+            if to not in (track[0], track[-1]) or tuple(self.run.player) in track:
+                continue
+            path = track if to == track[0] else track[::-1]
+            far = path[-1]
+            f = self.run.floor
+            off = next(((far[0] + dx, far[1] + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                        if (far[0] + dx, far[1] + dy) not in track and f.walkable(far[0] + dx, far[1] + dy)), None)
+            if off is None:
+                return False
+            self.walk_goal = None
+            self._ride = {"kind": "platform", "path": path + [off], "id": i, "end": 1 if to == track[0] else 0}
+            return True
+        return False
+
+    def _ride_from_tile(self, t):
+        if getattr(self, "_ride", None):
+            return
+        for hk in self._rides("hooks"):
+            a, b = tuple(hk["a"]), tuple(hk["b"])
+            if t in (a, b):
+                other = b if t == a else a
+                dx = (other[0] > t[0]) - (other[0] < t[0])
+                dy = (other[1] > t[1]) - (other[1] < t[1])
+                path, c = [], t
+                while c != other:
+                    c = (c[0] + dx, c[1] + dy)
+                    path.append(c)
+                self.walk_goal = None
+                self._ride = {"kind": "hook", "path": path, "colour": hk.get("colour", "yellow")}
+                return
+        for w in self._rides("warps"):
+            if tuple(w["at"]) == t:
+                self.walk_goal = None
+                self._ride = {"kind": w.get("kind", "drop"), "path": [tuple(w["to"])], "lines": w.get("lines")}
+                return
+
+    def _ride_step(self):
+        r = self._ride
+        if not r["path"]:
+            self._ride = None
+            if r["kind"] == "platform":
+                self._platform_at()[r["id"]] = r["end"]
+            self._reset_trail()
+            self.partner = self.partner_from = self.run.player
+            if r.get("lines"):
+                self.say(r["lines"])
+            return
+        nxt = r["path"].pop(0)
+        if r["kind"] in ("drop", "lift"):   # (you fall through, or the lift takes you: no walking between)
+            if r["kind"] == "drop" and hasattr(self, "shake"):
+                self.shake(300)
+            self.run.player = nxt
+            self.anim_from, self.anim = nxt, 0
+            self.run.floor.seen.add(nxt)
+            return
+        self.anim_from = tuple(self.run.player)
+        self.run.player = nxt
+        self.anim = STEP_FRAMES
+        if r["kind"] == "platform" and not r["path"]:
+            r["carried"] = True
+
+    def _draw_rides(self, screen, at, late=False):
+        """The hook pads and the glowing drop tiles (late=False); the platforms, where they wait or under you as they carry you
+        (late=True: after the map's top layer, whose lava would hide them - the player is drawn again over them after)."""
+        f = self.run.floor
+        if late:
+            return self._draw_platforms(screen, at)
+        r = getattr(self, "_ride", None)
+        t = pygame.time.get_ticks()
+        for hk in self._rides("hooks"):
+            col = self.HOOK_COLOURS.get(hk.get("colour"), (200, 200, 200))
+            for pad in (hk["a"], hk["b"]):
+                if tuple(pad) in f.seen:
+                    rr = at(*pad).inflate(-8, -8)
+                    pygame.draw.rect(screen, (60, 62, 72), rr, border_radius=5)
+                    pygame.draw.rect(screen, col, rr, 3, border_radius=5)
+        for w in self._rides("warps"):
+            if w.get("kind", "drop") == "drop" and tuple(w["at"]) in f.seen:
+                rr = at(*w["at"])
+                glow = pygame.Surface(rr.size, pygame.SRCALPHA)
+                a = 110 + int(70 * math.sin(t / 220))
+                pygame.draw.rect(glow, (90, 200, 255, max(0, min(255, a))), glow.get_rect().inflate(-4, -4), border_radius=6)
+                screen.blit(glow, rr)
+
+        if r and r["kind"] == "hook":
+            k = 1 - self.anim / STEP_FRAMES if self.anim else 1
+            fx, fy = self.anim_from
+            px, py = self.run.player
+            o = at(0, 0)
+            cx = (fx + (px - fx) * k) * TILE + TILE / 2 + o.x
+            cy = (fy + (py - fy) * k) * TILE + TILE / 2 + o.y
+            col = self.HOOK_COLOURS.get(r.get("colour"), (200, 200, 200))
+            pygame.draw.line(screen, (40, 40, 46), (int(cx), 0), (int(cx), int(cy) - TILE // 2), 3)
+            pygame.draw.circle(screen, col, (int(cx), int(cy) - TILE // 2), 6, 3)
+
+    def _draw_platforms(self, screen, at):
+        r = getattr(self, "_ride", None)
+
+        def plate(px, py):
+            rr = pygame.Rect(0, 0, TILE - 4, TILE - 10)
+            rr.center = (int(px), int(py) + 6)
+            pygame.draw.rect(screen, (96, 100, 112), rr, border_radius=4)
+            pygame.draw.rect(screen, (170, 176, 190), rr, 2, border_radius=4)
+            pygame.draw.line(screen, (60, 62, 72), (rr.left + 4, rr.bottom - 3), (rr.right - 4, rr.bottom - 3), 2)
+
+        riding_pl = r["id"] if r and r["kind"] == "platform" and not r.get("carried") else None
+        for i, pl in enumerate(self._rides("platforms")):
+            if i == riding_pl:
+                continue
+            end = self._platform_at().get(i, 0)
+            rr = at(*pl["track"][-1 if end else 0])
+            plate(rr.centerx, rr.centery)
+        if r and r["kind"] == "platform" and not r.get("carried"):
+            k = 1 - self.anim / STEP_FRAMES if self.anim else 1
+            fx, fy = self.anim_from
+            px, py = self.run.player
+            o = at(0, 0)
+            plate((fx + (px - fx) * k) * TILE + TILE / 2 + o.x, (fy + (py - fy) * k) * TILE + TILE / 2 + o.y)
+
     def _crate_img(self):
         """A crate as the region's own art draws it (assets/tiles/<folder>/ow_crate.png: Orre's, from the fan game's sheet),
         else a plain wooden box."""
@@ -3600,6 +3741,8 @@ class DungeonState(OverworldBattles, PlayState):
 
     # ---------------------------------------------------------------- each frame
     def update(self):
+        if getattr(self, "_ride", None) and getattr(self, "anim", 0) == 0 and getattr(self, "run", None) is not None:
+            self._ride_step()
         if getattr(self, "run", None) is not None and self._here_art().get("boxes"):
             _bk = (self.run.index, tuple(self._box_spots()))
             if getattr(self, "_boxes_seen", None) != _bk:
@@ -4414,6 +4557,7 @@ class DungeonState(OverworldBattles, PlayState):
                 glow = at(x, y).inflate(-8, -8)
                 pygame.draw.ellipse(screen, (255, 236, 140), glow, 3)
                 screen.blit(img, img.get_rect(center=(glow.centerx, glow.centery + bob)))
+        self._draw_rides(screen, at)
         for sw in self._here_art().get("box_switches") or []:   # (a crate's floor switch: a steel plate, lit once pressed)
             x, y = sw["on"]
             if (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
@@ -4690,6 +4834,10 @@ class DungeonState(OverworldBattles, PlayState):
             _art.bridge_over(screen, spans, _under, (ox, oy), TILE, getattr(self, "_floor_surf", None))
         for img, (bx, by) in self._overheads():  # (what passes over your head: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
+        if self._here_art().get("platforms"):   # (Citadark's platforms over the lava: above the map's top layer, you over them)
+            self._draw_rides(screen, lambda x, y: pygame.Rect(ox + x * TILE, oy + y * TILE, TILE, TILE), late=True)
+            for _b, _img, _rect in sorted(_me_drawn, key=lambda t: t[0]):
+                screen.blit(_img, _rect)
         from src.dungeon import art as _art_o
         _art_o.over_uncovered(screen, _movers_drawn + drawn, self._overheads(), (ox, oy))   # (a roof edge no longer hides the head of someone just south of it)
         if spans and self.run.deck and _pic:   # (up on a bridge of a map drawn from its game's picture (Route 120's): the
