@@ -956,6 +956,192 @@ def _xd8b(maps):
         _set_people(lobby, {(12, 3): dict(_voiced(*VOICES[3]), condition="xd_le_vc5")})   # (by the lobby's front desk)
 
 
+
+# ================================================================== batch 8c: Colosseum after the title (BATCH_8C.md)
+# Colosseum walkthrough part 9 (Jordan 11-21: raised to fit; the Deep Colosseum as rounds at a desk; Colosseum's missed
+# Shadows go to the Snagem raid; Realgam rematches any time, healed). Nett's tip (obatch8c.py) -> the kid behind Pyrite's
+# bookcase -> Cail -> the Snagem raid (the Shadows you missed, a coloured peon, six grunts) -> Nett -> Gurks on the Junk
+# Shop balcony -> the Lab's coloured peon -> Biden's Smeargle, Agrev's Ursaring, Gonzap's Skarmory and the D-Disk -> the
+# Deep Colosseum (The Under's floating platform). Fein at the Outskirt Stand once every other Colosseum Shadow is snagged.
+def C(i, **kw):
+    return T(f"c8c:{i}", **kw)
+
+
+def C2(with_shadow, without, flag, **kw):
+    """Colosseum's second chance: the team with the Shadow you missed, else the one without it."""
+    b = C(with_shadow, **kw)
+    b["if_snagged"] = {"flag": flag, "battle": C(without, **kw)}
+    return b
+
+
+def _spot(m, near=None):
+    """_free_spot, else any open tile with nobody beside it (narrow floors)."""
+    try:
+        return _free_spot(m, near)
+    except ValueError:
+        art = m["art"]
+        taken = set(_people_at(m))
+        cx, cy = near or (len(art[0]) // 2, len(art) // 2)
+        ok = [(abs(x - cx) + abs(y - cy), y, x) for y in range(1, len(art) - 1) for x in range(1, len(art[0]) - 1)
+              if art[y][x] == "." and all(abs(x - tx) + abs(y - ty) > 1 for tx, ty in taken)
+              and sum(art[y + dy][x + dx] == "." for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))) >= 3]
+        _d, y, x = min(ok)
+        return (x, y)
+
+
+CAIL_POST = {"text": "Rogue Cail", "action": "EVENT", "event": {"stages": [
+    {"requires": ["not:orre_heard_cail"], "lines": ["Rogue Cail: Get lost. I don't battle nobodies."]},
+    {"requires": ["orre_heard_cail"], "flag": "orre_beat_cail",
+     "lines": ["Rogue Cail: So you heard about my prize? Win, and maybe you get to see it up close."],
+     "battle": T("col:93", dialogue={"player_won": ["Rogue Cail: Tch. Fine, fine."]})},
+    {"requires": ["col_post_kid"], "flag": "col_cail_post",
+     "lines": ["Rogue Cail: Yeah, I battled a guy with one of those creepy Pokemon. So what? Beat me and I'll tell you more."],
+     "battle": C2(441, 442, "snagged_shadow_furret", dialogue={"player_won": [
+         "Rogue Cail: Alright, alright. He was one of Snagem's - they've moved back into their old hideout in the desert.",
+         "Rogue Cail: Half the trainers you let get away are holed up there too, if you ask me."]})}],
+    "done": ["Rogue Cail: Don't you have somewhere else to be?"]}}
+
+PYRITE_KID = {"text": "Kid (behind the bookcase)", "action": "EVENT", "condition": "beat_orre_champion", "event": {"stages": [
+    {"requires": ["col_post_nett"], "flag": "col_post_kid",
+     "lines": ["Kid: Shh! I'm hiding. I saw Cail battle a guy with a really scary Pokemon - all dark and glowing.",
+               "Kid: Cail's down at the bottom of town. Don't tell him I told you!"]}],
+    "done": ["Kid: This is my secret spot. Go away!"]}}
+
+RAID_MISSED = [   # (Colosseum's missed Shadows, back with their trainers: shown only while still missed)
+    ("Cipher Peon Nore", 102, "snagged_shadow_yanma"), ("Cipher Peon Skrub", 199, "snagged_shadow_hitmontop"),
+    ("Cipher Peon Kloak", 323, "snagged_shadow_ledian"), ("Hunter Frena", 332, "snagged_shadow_gligar"),
+    ("Chaser Liaks", 335, "snagged_shadow_stantler"), ("Bodybuilder Lonia", 338, "snagged_shadow_piloswine"),
+    ("Rider Nelis", 341, "snagged_shadow_sneasel"), ("Cipher Peon Baila", 410, "snagged_shadow_sunflora"),
+    ("Cipher Peon Arton", 413, "snagged_shadow_delibird"), ("Cipher Peon Dioge", 416, "snagged_shadow_heracross")]
+RAID_GRUNTS = [("Team Snagem Niver", 473), ("Team Snagem Fuston", 474), ("Team Snagem Colas", 475), ("Team Snagem Crudo", 476),
+               ("Team Snagem Driton", 477), ("Team Snagem Rions", 478)]
+
+
+def _raid_missed(text, i, flag):
+    return {"text": text, "action": "EVENT", "condition": ["col_cail_post", f"not:{flag}"], "event": {"stages": [
+        {"flag": f"col_raid_{i}", "lines": [f"{text.split()[-1]}: You! You let this one get away once. Not this time!"],
+         "battle": C(i, dialogue={"player_won": [f"{text.split()[-1]}: Ugh... I should have stayed lost."]})}],
+        "done": [f"{text.split()[-1]}: ..."]}}
+
+
+def _raid_grunt(text, i):
+    return _fight(text, f"c8c:{i}", f"col_raid_{i}", f"{text.split()[-1]}: Snagem's back in business! Who let you in?",
+                  f"{text.split()[-1]}: Business is bad...", condition="col_cail_post")
+
+
+def _coloured_peon(teams, cond):
+    return {"text": "Coloured Cipher Peon", "action": "EVENT", "condition": cond, "event": {
+        "col_peon": teams, "lines": [], "done": ["The peon's gone."]}}
+
+
+PEON_SNAGEM = {k: C(i) for k, i in (("bayleef", 816), ("quilava", 812), ("croconaw", 814))}
+PEON_LAB = {k: C(i) for k, i in (("bayleef", 817), ("quilava", 813), ("croconaw", 815))}
+
+GURKS_POST = {"text": "Gurks", "action": "EVENT", "condition": "col_post_nett2", "event": {"stages": [
+    {"flag": "col_gurks_post",
+     "lines": ["Gurks: Nett sent you? Yeah, I know things. Battle me first - my Wailord have been bored for weeks."],
+     "battle": C(456, dialogue={"player_won": [
+         "Gurks: Okay, okay! I battled a peon in a bright suit down here - with one of those Shadow Pokemon.",
+         "Gurks: Don't bother looking for him in The Under, though. He was headed for that old lab out past Phenac."]})}],
+    "done": ["Gurks: Nice view from up here, huh?"]}}
+
+SNAGEM_LATE = [   # (after Gurks: two Shadows that weren't anywhere before, and Gonzap with his Skarmory)
+    ("Snagem's Biden", 460, "snagged_shadow_smeargle", "Biden: The boss let me keep a special Smeargle. Wanna see what it can draw?"),
+    ("Snagem's Agrev", 461, "snagged_shadow_ursaring", "Agrev: My Ursaring's been waiting for a fight. A dark one.")]
+GONZAP_POST = {"text": "Snagem Head Gonzap", "action": "EVENT", "condition": "col_gurks_post", "event": {"stages": [
+    {"flag": "col_gonzap_post",
+     "lines": ["Gonzap: You again? Fine. Snagem's mine again and I'm not giving it up. Let's settle it!"],
+     "battle": C2(426, 427, "snagged_shadow_skarmory", is_boss_battle=True, rewards={"balls": 10, "D_DISK": 1}, dialogue={"player_won": [
+         "Gonzap: Ha... you never change. Here - I took this off a Cipher crate. A D-Disk.",
+         "Gonzap: Slot it into that floating thing in The Under. They say it goes down to a colosseum nobody's seen."]})}],
+    "done": ["Gonzap: Go see what's down there. Tell me if it's worth snagging."]}}
+
+DEEP_FINALS = {1: "Miror B.: Ooh, the deepest dance floor in Orre! Let's boogie!",
+               2: "Dakim: Down here, nobody holds back. Crush or be crushed!",
+               3: "Venus: Even here, I'm the star. Shall we put on a show?",
+               4: "Ein: My research continues, even in the dark. You'll make a fine test.",
+               5: "Agnol: So. You've come all the way down. I am the Deep King. Kneel - or battle."}
+DEEP_ADMINS = [(165, 166, "snagged_shadow_sudowoodo"), (214, 215, "snagged_shadow_entei"), (329, 330, "snagged_shadow_suicune"),
+               (406, 407, "snagged_shadow_raikou"), (378, 818, "snagged_shadow_shuckle")]
+DEEP_THREE = [[363, 364, 365], [366, 367, 368], [369, 370, 371], [372, 373, 374], [375, 376, 377]]
+
+
+def _deep_rounds():
+    out = []
+    for r, three in enumerate(DEEP_THREE):
+        rnd = [C(i) for i in three]
+        w, wo, flag = DEEP_ADMINS[r]
+        last = C2(w, wo, flag, is_boss_battle=True)
+        last["intro"] = [DEEP_FINALS[r + 1]]
+        rnd.append(last)
+        out.append(rnd)
+    return out
+
+
+DEEP_DESK = {"text": "Deep Colosseum desk", "action": "EVENT", "event": {
+    "xd_colosseum": {"rounds": _deep_rounds(), "cleared": "col_deep_cleared", "open": "col_gonzap_post", "all_flag": "col_deep_all",
+                     "name": "the Deep Colosseum",
+                     "prizes": [[None, None], ["SKILL-SWAP", None], [None, None], ["DRAGON-CLAW", None], [None, "Deep King's Equal"]],
+                     "money": [12000, 20936, 15000, 18118, 25000]},
+    "lines": ["A cloaked figure: Welcome to the Deep Colosseum. Five rounds. The Deep King waits at the bottom of them."]}}
+
+FEIN = {"text": "Shady man", "action": "EVENT", "condition": "col_fein_due", "event": {"stages": [
+    {"flag": "col_fein",
+     "lines": ["Shady man: Heh... You've snagged every Shadow Pokemon there is. Or so you think.",
+               "He tears off his coat. Underneath: a Cipher uniform!",
+               "Fein: Cipher Peon Fein, master of disguise! I kept one last Shadow Pokemon hidden - and you'll never take it!"],
+     "battle": C(472, name="Cipher Peon Fein", sprite="orre_cipher_peon.png", is_boss_battle=True, music="orre/cipher_battle",
+                 dialogue={"player_won": ["Fein: My disguise... my Togetic... all for nothing!"]})}],
+    "done": ["The man in the coat is long gone."]}}
+
+
+def _col8c(maps):
+    if "PYRITE_TOWN" in maps:
+        m = maps["PYRITE_TOWN"]
+        spots = [s for s, p in _people_at(m).items() if isinstance(p, dict) and p.get("text") == "Rogue Cail"
+                 and "orre_beat_cail" in str(p)]
+        if spots:
+            _set_people(m, {spots[0]: CAIL_POST})
+        r = m["rooms"]["house_tower"]
+        _set_people(r, {_spot(r, (16, 3)): PYRITE_KID})
+    if "SNAGEM_HIDEOUT" in maps:
+        fl = maps["SNAGEM_HIDEOUT"]["floors"]
+        for k, (text, i, flag) in enumerate(RAID_MISSED):
+            f = fl[1] if k < 6 else fl[2]
+            _set_people(f, {_spot(f, (3 + 2 * k, 6 + k)): _raid_missed(text, i, flag)})
+        for k, (text, i) in enumerate(RAID_GRUNTS):
+            f = fl[0] if k < 2 else fl[1]
+            _set_people(f, {_spot(f, (4 + 3 * k, 14)): _raid_grunt(text, i)})
+        _set_people(fl[1], {_spot(fl[1], (7, 20)): _coloured_peon(PEON_SNAGEM, ["col_cail_post", "col_peon_due"])})
+        for k, (text, i, flag, intro) in enumerate(SNAGEM_LATE):
+            ev = {"text": text, "action": "EVENT", "condition": ["col_gurks_post", f"not:{flag}"], "event": {"stages": [
+                {"flag": f"col_raid_{i}", "lines": [intro], "battle": C(i, dialogue={"player_won": [f"{text.split()[-1]}: Snagged... again."]})}],
+                "done": ["..."]}}
+            _set_people(fl[2], {_spot(fl[2], (6 + 8 * k, 12)): ev})
+        _set_people(fl[2], {_spot(fl[2], (12, 6)): GONZAP_POST})
+    if "THE_UNDER" in maps:
+        f = maps["THE_UNDER"]["floors"][6]   # (the Junk Shop's 2F: its balcony)
+        _set_people(f, {(14, 7): GURKS_POST})
+    if "SHADOW_PKMN_LAB" in maps:
+        f = maps["SHADOW_PKMN_LAB"]["floors"][3]   # (where Ein was)
+        _set_people(f, {_spot(f): _coloured_peon(PEON_LAB, ["col_gurks_post", "col_peon_due"])})
+    if "DEEP_COLOSSEUM" in maps:
+        f = maps["DEEP_COLOSSEUM"]["floors"][0]
+        f["art"] = [row.replace("X", ".") for row in f["art"]]   # (its standing trainers: now the desk's rounds)
+        f["trainer_spots"] = []
+        _set_people(f, {_spot(f, (13, 12)): DEEP_DESK})
+    if "OUTSKIRT_STAND" in maps:
+        m = maps["OUTSKIRT_STAND"]
+        _set_people(m, {_spot(m, (36, 22)): FEIN})
+    if "REALGAM_TOWER" in maps:
+        room = maps["REALGAM_TOWER"]["rooms"]["realgam"]
+        right = next(((x, y) for y, row in enumerate(room["art"]) for x, c in enumerate(row) if c == ">"), None)
+        if right:   # (the Deep Colosseum is reached from The Under's floating platform, as in Colosseum)
+            room["barred"] = list(room.get("barred") or []) + [
+                {"tiles": [list(right)], "look": "unseen", "until": {"flag_condition": "col_never"},
+                 "lines": ["A heavy door with no handle on this side."]}]
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -972,6 +1158,7 @@ def apply(maps):
     _col7b(maps)
     _xd8a(maps)
     _xd8b(maps)
+    _col8c(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

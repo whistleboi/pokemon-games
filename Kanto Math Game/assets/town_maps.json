@@ -281391,7 +281391,7 @@
    "cccccccc........................................cccccccc",
    "cccccccc................N.....N............cc...cccccccc",
    "cccccccc............cc..........................cccccccc",
-   "cccccccc............cBDB........................cccccccc",
+   "cccccccc............cBDB............N...........cccccccc",
    "cccccccc.............cc.........................cccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -281553,6 +281553,97 @@
        ]
       }
      }
+    }
+   },
+   {
+    "text": "Shady man",
+    "action": "EVENT",
+    "condition": "col_fein_due",
+    "event": {
+     "stages": [
+      {
+       "flag": "col_fein",
+       "lines": [
+        "Shady man: Heh... You've snagged every Shadow Pokemon there is. Or so you think.",
+        "He tears off his coat. Underneath: a Cipher uniform!",
+        "Fein: Cipher Peon Fein, master of disguise! I kept one last Shadow Pokemon hidden - and you'll never take it!"
+       ],
+       "battle": {
+        "name": "Cipher Peon Fein",
+        "class": "SHADY_GUY",
+        "sprite": "orre_cipher_peon.png",
+        "team": [
+         9358,
+         348,
+         350,
+         310,
+         229,
+         130
+        ],
+        "levels": [
+         34,
+         82,
+         82,
+         82,
+         82,
+         82
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "METRONOME",
+          "CHARM",
+          "SWEET-KISS"
+         ],
+         [
+          "ROCK-BLAST",
+          "SLASH",
+          "EARTHQUAKE",
+          "AERIAL-ACE"
+         ],
+         [
+          "HYDRO-PUMP",
+          "ICE-BEAM",
+          "DRAGON-BREATH",
+          "SAFEGUARD"
+         ],
+         [
+          "THUNDERBOLT",
+          "CRUNCH",
+          "THUNDER-WAVE",
+          "PROTECT"
+         ],
+         [
+          "FLAMETHROWER",
+          "CRUNCH",
+          "REVERSAL",
+          "PROTECT"
+         ],
+         [
+          "HYDRO-PUMP",
+          "EARTHQUAKE",
+          "STRENGTH",
+          "ROAR"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+14 (disc ace 68)",
+        "is_boss_battle": true,
+        "music": "orre/cipher_battle",
+        "dialogue": {
+         "player_won": [
+          "Fein: My disguise... my Togetic... all for nothing!"
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "The man in the coat is long gone."
+     ]
     }
    }
   ],
@@ -285817,63 +285908,194 @@
     "text": "Rogue Cail",
     "action": "EVENT",
     "event": {
-     "requires": [
-      "orre_heard_cail"
-     ],
-     "flag": "orre_beat_cail",
-     "lines": [
-      "Rogue Cail: So you heard about my prize? Win, and maybe you get to see it up close."
-     ],
-     "battle": {
-      "name": "Rogue Cail",
-      "class": "ROGUE",
-      "sprite": "orre_snagem_grunt.png",
-      "team": [
-       9351,
-       280,
-       273,
-       66
-      ],
-      "levels": [
-       33,
-       29,
-       29,
-       29
-      ],
-      "team_moves": [
-       [
-        "SHADOW-RUSH",
-        "IRON-TAIL",
-        "HELPING-HAND",
-        "QUICK-ATTACK"
+     "stages": [
+      {
+       "requires": [
+        "not:orre_heard_cail"
        ],
-       [
-        "CONFUSION",
-        "IMPRISON"
-       ],
-       [
-        "ROCK-SMASH",
-        "BIDE"
-       ],
-       [
-        "KARATE-CHOP",
-        "FOCUS-ENERGY",
-        "STRENGTH"
+       "lines": [
+        "Rogue Cail: Get lost. I don't battle nobodies."
        ]
-      ],
-      "double": true,
-      "rewards": {
-       "balls": 0
       },
-      "music": "orre/cipher_battle",
-      "dialogue": {
-       "player_won": [
-        "Rogue Cail: Tch. Fine, fine."
-       ]
+      {
+       "requires": [
+        "orre_heard_cail"
+       ],
+       "flag": "orre_beat_cail",
+       "lines": [
+        "Rogue Cail: So you heard about my prize? Win, and maybe you get to see it up close."
+       ],
+       "battle": {
+        "name": "Rogue Cail",
+        "class": "ROGUE",
+        "sprite": "orre_snagem_grunt.png",
+        "team": [
+         9351,
+         280,
+         273,
+         66
+        ],
+        "levels": [
+         33,
+         29,
+         29,
+         29
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "IRON-TAIL",
+          "HELPING-HAND",
+          "QUICK-ATTACK"
+         ],
+         [
+          "CONFUSION",
+          "IMPRISON"
+         ],
+         [
+          "ROCK-SMASH",
+          "BIDE"
+         ],
+         [
+          "KARATE-CHOP",
+          "FOCUS-ENERGY",
+          "STRENGTH"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "music": "orre/cipher_battle",
+        "dialogue": {
+         "player_won": [
+          "Rogue Cail: Tch. Fine, fine."
+         ]
+        }
+       }
+      },
+      {
+       "requires": [
+        "col_post_kid"
+       ],
+       "flag": "col_cail_post",
+       "lines": [
+        "Rogue Cail: Yeah, I battled a guy with one of those creepy Pokemon. So what? Beat me and I'll tell you more."
+       ],
+       "battle": {
+        "name": "Rogue Cail",
+        "class": "ROGUE",
+        "sprite": "orre_snagem_grunt.png",
+        "team": [
+         9351,
+         282,
+         275,
+         68
+        ],
+        "levels": [
+         48,
+         72,
+         71,
+         72
+        ],
+        "team_moves": [
+         [
+          "SHADOW-RUSH",
+          "IRON-TAIL",
+          "HELPING-HAND",
+          "QUICK-ATTACK"
+         ],
+         [
+          "PSYCHIC",
+          "THUNDERBOLT",
+          "LIGHT-SCREEN",
+          "REFLECT"
+         ],
+         [
+          "GIGA-DRAIN",
+          "FEINT-ATTACK",
+          "EXTRASENSORY",
+          "NATURE-POWER"
+         ],
+         [
+          "CROSS-CHOP",
+          "EARTHQUAKE",
+          "STRENGTH",
+          "ROCK-SLIDE"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "music": "orre/cipher_battle",
+        "fit": "+15 (disc ace 57)",
+        "dialogue": {
+         "player_won": [
+          "Rogue Cail: Alright, alright. He was one of Snagem's - they've moved back into their old hideout in the desert.",
+          "Rogue Cail: Half the trainers you let get away are holed up there too, if you ask me."
+         ]
+        },
+        "if_snagged": {
+         "flag": "snagged_shadow_furret",
+         "battle": {
+          "name": "Rogue Cail",
+          "class": "ROGUE",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+           210,
+           282,
+           275,
+           68
+          ],
+          "levels": [
+           71,
+           72,
+           71,
+           72
+          ],
+          "team_moves": [
+           [
+            "TAKE-DOWN",
+            "SHADOW-BALL",
+            "CRUNCH",
+            "SLUDGE-BOMB"
+           ],
+           [
+            "PSYCHIC",
+            "THUNDERBOLT",
+            "LIGHT-SCREEN",
+            "REFLECT"
+           ],
+           [
+            "GIGA-DRAIN",
+            "FEINT-ATTACK",
+            "EXTRASENSORY",
+            "NATURE-POWER"
+           ],
+           [
+            "CROSS-CHOP",
+            "EARTHQUAKE",
+            "STRENGTH",
+            "ROCK-SLIDE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+15 (disc ace 57)",
+          "dialogue": {
+           "player_won": [
+            "Rogue Cail: Alright, alright. He was one of Snagem's - they've moved back into their old hideout in the desert.",
+            "Rogue Cail: Half the trainers you let get away are holed up there too, if you ask me."
+           ]
+          }
+         }
+        }
+       }
       }
-     },
-     "fail": [
-      "Rogue Cail: Get lost. I don't battle nobodies."
      ],
      "done": [
       "Rogue Cail: Don't you have somewhere else to be?"
@@ -286196,7 +286418,7 @@
      "cccccccccccccccccccc",
      "cccccccccccccccccccc",
      "ccc^....c..c.....ccc",
-     "cc...............ccc",
+     "cc.............N.ccc",
      "c.................cc",
      "ccN...........Ncc..c",
      "c.........N........c",
@@ -286212,6 +286434,28 @@
     },
     "buildings": {},
     "people": [
+     {
+      "text": "Kid (behind the bookcase)",
+      "action": "EVENT",
+      "condition": "beat_orre_champion",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "col_post_nett"
+         ],
+         "flag": "col_post_kid",
+         "lines": [
+          "Kid: Shh! I'm hiding. I saw Cail battle a guy with a really scary Pokemon - all dark and glowing.",
+          "Kid: Cail's down at the bottom of town. Don't tell him I told you!"
+         ]
+        }
+       ],
+       "done": [
+        "Kid: This is my secret spot. Go away!"
+       ]
+      }
+     },
      {
       "text": "Old woman",
       "action": "EVENT",
@@ -289337,6 +289581,21 @@
       "look": "unseen",
       "lines": [
        "The door to the arena on the roof is locked. Cipher's people must be inside the tower."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "col_never"
+      },
+      "lines": [
+       "A heavy door with no handle on this side."
       ]
      }
     ]
@@ -293483,7 +293742,7 @@
      "c..........ccccc",
      "cccccc..cccccccc",
      "ccc....X...ccccc",
-     "ccc........ccccc",
+     "ccc.N..N...ccccc",
      "ccc........ccccc",
      "ccc........ccccc",
      "cccc.......ccccc",
@@ -293508,7 +293767,152 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     {
+      "text": "Team Snagem Niver",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_473",
+         "lines": [
+          "Niver: Snagem's back in business! Who let you in?"
+         ],
+         "battle": {
+          "name": "Team Snagem Niver",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+           335,
+           253,
+           288,
+           111
+          ],
+          "levels": [
+           74,
+           73,
+           73,
+           73
+          ],
+          "team_moves": [
+           [
+            "CRUSH-CLAW",
+            "DOUBLE-KICK",
+            "LEER",
+            "SHADOW-BALL"
+           ],
+           [
+            "CRUSH-CLAW",
+            "BRICK-BREAK",
+            "LEER",
+            "PURSUIT"
+           ],
+           [
+            "CRUSH-CLAW",
+            "REVERSAL",
+            "COUNTER",
+            "SHADOW-BALL"
+           ],
+           [
+            "CRUSH-CLAW",
+            "ROAR",
+            "TAIL-WHIP",
+            "ROCK-SMASH"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+21 (disc ace 53)",
+          "dialogue": {
+           "player_won": [
+            "Niver: Business is bad..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Niver: Business is bad..."
+       ]
+      },
+      "condition": "col_cail_post"
+     },
+     {
+      "text": "Team Snagem Fuston",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_474",
+         "lines": [
+          "Fuston: Snagem's back in business! Who let you in?"
+         ],
+         "battle": {
+          "name": "Team Snagem Fuston",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+           42,
+           267,
+           225,
+           277
+          ],
+          "levels": [
+           73,
+           73,
+           74,
+           74
+          ],
+          "team_moves": [
+           [
+            "BITE",
+            "GIGA-DRAIN",
+            "POISON-FANG",
+            "AERIAL-ACE"
+           ],
+           [
+            "STRING-SHOT",
+            "SHADOW-BALL",
+            "GIGA-DRAIN",
+            "AERIAL-ACE"
+           ],
+           [
+            "PRESENT",
+            "BLIZZARD",
+            "SPLASH",
+            "AERIAL-ACE"
+           ],
+           [
+            "FACADE",
+            "GROWL",
+            "ENDEAVOR",
+            "AERIAL-ACE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+20 (disc ace 54)",
+          "dialogue": {
+           "player_won": [
+            "Fuston: Business is bad..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Fuston: Business is bad..."
+       ]
+      },
+      "condition": "col_cail_post"
+     }
+    ],
     "trainer_spots": [
      "Team Snagem Agrev",
      "Team Snagem Jedo"
@@ -293549,19 +293953,19 @@
      "c.............c",
      "ccXcccccccccccc",
      "cc...........cc",
-     "c............Xc",
+     "c..N.N.N.N.N.Xc",
      "c.............c",
      "ccccccccccccXcc",
      "c...........N.c",
-     "cN.N..........c",
+     "cN.N...N.N.N..c",
      "c.............c",
      "ccNcccccccccccc",
      "cc...........cc",
-     "c.........N.NXc",
+     "c.......N.N.NXc",
      "c.............c",
      "ccccccccccccXcc",
      "ccccc.c..c.N..c",
-     "cc............c",
+     "cc.....N....N.c",
      "c..N..........c",
      "c...X.c.c.....c",
      "cc...........cc",
@@ -293584,13 +293988,930 @@
     "parts": true,
     "people": [
      "LOCKED BOX",
+     {
+      "text": "Cipher Peon Nore",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_yanma"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_102",
+         "lines": [
+          "Nore: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Nore",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           9366,
+           205,
+           291,
+           284
+          ],
+          "levels": [
+           52,
+           70,
+           74,
+           71
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "DETECT",
+            "SUPERSONIC",
+            "SONIC-BOOM"
+           ],
+           [
+            "PIN-MISSILE",
+            "REFLECT",
+            "LIGHT-SCREEN",
+            "SPIKES"
+           ],
+           [
+            "SILVER-WIND",
+            "DOUBLE-TEAM",
+            "SWORDS-DANCE",
+            "BATON-PASS"
+           ],
+           [
+            "SILVER-WIND",
+            "STUN-SPORE",
+            "HYDRO-PUMP",
+            "WHIRLWIND"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+19 (disc ace 55)",
+          "dialogue": {
+           "player_won": [
+            "Nore: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Nore: ..."
+       ]
+      }
+     },
+     {
+      "text": "Cipher Peon Skrub",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_hitmontop"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_199",
+         "lines": [
+          "Skrub: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Skrub",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           9394,
+           367,
+           76,
+           202
+          ],
+          "levels": [
+           59,
+           72,
+           73,
+           74
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "AGILITY",
+            "FOCUS-ENERGY",
+            "TRIPLE-KICK"
+           ],
+           [
+            "HYDRO-PUMP",
+            "WHIRLPOOL",
+            "IRON-DEFENSE",
+            "ICE-BEAM"
+           ],
+           [
+            "ROCK-SLIDE",
+            "EARTHQUAKE",
+            "BRICK-BREAK",
+            "DOUBLE-EDGE"
+           ],
+           [
+            "ENCORE",
+            "COUNTER",
+            "MIRROR-COAT",
+            "DESTINY-BOND"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "team_items": [
+           "BLACK_BELT",
+           null,
+           null,
+           null
+          ],
+          "music": "orre/cipher_battle",
+          "fit": "+21 (disc ace 53)",
+          "dialogue": {
+           "player_won": [
+            "Skrub: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Skrub: ..."
+       ]
+      }
+     },
+     {
+      "text": "Cipher Peon Kloak",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_ledian"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_323",
+         "lines": [
+          "Kloak: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Kloak",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           9354,
+           313,
+           314
+          ],
+          "levels": [
+           61,
+           74,
+           74
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "BATON-PASS",
+            "SAFEGUARD",
+            "SUPERSONIC"
+           ],
+           [
+            "SIGNAL-BEAM",
+            "SHADOW-BALL",
+            "AERIAL-ACE",
+            "TAIL-GLOW"
+           ],
+           [
+            "SILVER-WIND",
+            "THUNDERBOLT",
+            "FLATTER",
+            "HELPING-HAND"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+21 (disc ace 53)",
+          "dialogue": {
+           "player_won": [
+            "Kloak: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Kloak: ..."
+       ]
+      }
+     },
+     {
+      "text": "Hunter Frena",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_gligar"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_332",
+         "lines": [
+          "Frena: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Hunter Frena",
+          "class": "HUNTER",
+          "sprite": "orre_hunter_m.png",
+          "team": [
+           9373,
+           39,
+           285,
+           303
+          ],
+          "levels": [
+           65,
+           73,
+           74,
+           74
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "FEINT-ATTACK",
+            "SAND-ATTACK",
+            "POISON-STING"
+           ],
+           [
+            "FAKE-TEARS",
+            "THUNDER",
+            "FIRE-BLAST",
+            "PSYCHIC"
+           ],
+           [
+            "FAKE-TEARS",
+            "GIGA-DRAIN",
+            "SECRET-POWER",
+            "SLUDGE-BOMB"
+           ],
+           [
+            "FAKE-TEARS",
+            "VICE-GRIP",
+            "BRICK-BREAK",
+            "ASTONISH"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+22 (disc ace 52)",
+          "dialogue": {
+           "player_won": [
+            "Frena: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Frena: ..."
+       ]
+      }
+     },
+     {
+      "text": "Chaser Liaks",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_stantler"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_335",
+         "lines": [
+          "Liaks: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Chaser Liaks",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+           9392,
+           44,
+           189,
+           55
+          ],
+          "levels": [
+           64,
+           74,
+           73,
+           73
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "ASTONISH",
+            "HYPNOSIS",
+            "LEER"
+           ],
+           [
+            "SLEEP-POWDER",
+            "ACID",
+            "RAZOR-LEAF",
+            "BULLET-SEED"
+           ],
+           [
+            "SLEEP-POWDER",
+            "MEGA-DRAIN",
+            "AERIAL-ACE",
+            "FRUSTRATION"
+           ],
+           [
+            "HYPNOSIS",
+            "WATER-PULSE",
+            "CONFUSION",
+            "ROCK-SMASH"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+21 (disc ace 53)",
+          "dialogue": {
+           "player_won": [
+            "Liaks: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Liaks: ..."
+       ]
+      }
+     },
      "TM PSYCHIC",
      "SNAG SHADOW POKEMON",
      "PP UP",
+     {
+      "text": "Team Snagem Rions",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_478",
+         "lines": [
+          "Rions: Snagem's back in business! Who let you in?"
+         ],
+         "battle": {
+          "name": "Rider Rions",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+           264,
+           261,
+           262,
+           64
+          ],
+          "levels": [
+           73,
+           74,
+           70,
+           73
+          ],
+          "team_moves": [
+           [
+            "COVET",
+            "TAIL-WHIP",
+            "DIG",
+            "WATER-PULSE"
+           ],
+           [
+            "COVET",
+            "SNATCH",
+            "SWAGGER",
+            "BITE"
+           ],
+           [
+            "COVET",
+            "SNATCH",
+            "SWAGGER",
+            "BITE"
+           ],
+           [
+            "SNATCH",
+            "ROLE-PLAY",
+            "PSYBEAM",
+            "KINESIS"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+20 (disc ace 54)",
+          "dialogue": {
+           "player_won": [
+            "Rions: Business is bad..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Rions: Business is bad..."
+       ]
+      },
+      "condition": "col_cail_post"
+     },
+     {
+      "text": "Team Snagem Colas",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_475",
+         "lines": [
+          "Colas: Snagem's back in business! Who let you in?"
+         ],
+         "battle": {
+          "name": "Bodybuilder Colas",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+           247,
+           372,
+           318,
+           327
+          ],
+          "levels": [
+           74,
+           74,
+           71,
+           71
+          ],
+          "team_moves": [
+           [
+            "THRASH",
+            "BITE",
+            "ROCK-SLIDE",
+            "SCARY-FACE"
+           ],
+           [
+            "THRASH",
+            "DRAGON-BREATH",
+            "AERIAL-ACE",
+            "HEADBUTT"
+           ],
+           [
+            "THRASH",
+            "RAGE",
+            "DIVE",
+            "THIEF"
+           ],
+           [
+            "THRASH",
+            "FEINT-ATTACK",
+            "PSYBEAM",
+            "FLAIL"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+20 (disc ace 54)",
+          "dialogue": {
+           "player_won": [
+            "Colas: Business is bad..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Colas: Business is bad..."
+       ]
+      },
+      "condition": "col_cail_post"
+     },
+     {
+      "text": "Bodybuilder Lonia",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_piloswine"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_338",
+         "lines": [
+          "Lonia: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Bodybuilder Lonia",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+           9385,
+           206,
+           224,
+           180
+          ],
+          "levels": [
+           62,
+           70,
+           73,
+           74
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "ENDURE",
+            "ODOR-SLEUTH",
+            "DIG"
+           ],
+           [
+            "HEADBUTT",
+            "GLARE",
+            "ICE-BEAM",
+            "WATER-PULSE"
+           ],
+           [
+            "OCTAZOOKA",
+            "THUNDER-WAVE",
+            "PSYBEAM",
+            "FLAMETHROWER"
+           ],
+           [
+            "THUNDERBOLT",
+            "THUNDER-WAVE",
+            "TAKE-DOWN",
+            "ROCK-SMASH"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "team_items": [
+           "SOFT_SAND",
+           null,
+           null,
+           null
+          ],
+          "fit": "+19 (disc ace 55)",
+          "dialogue": {
+           "player_won": [
+            "Lonia: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Lonia: ..."
+       ]
+      }
+     },
      "SNAG AGAIN",
+     {
+      "text": "Team Snagem Crudo",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_476",
+         "lines": [
+          "Crudo: Snagem's back in business! Who let you in?"
+         ],
+         "battle": {
+          "name": "Bandana Guy Crudo",
+          "class": "BANDANA_GUY",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+           317,
+           110,
+           28,
+           264
+          ],
+          "levels": [
+           70,
+           71,
+           72,
+           74
+          ],
+          "team_moves": [
+           [
+            "PAIN-SPLIT",
+            "SLUDGE",
+            "BODY-SLAM",
+            "BULLET-SEED"
+           ],
+           [
+            "PAIN-SPLIT",
+            "SLUDGE",
+            "TAUNT",
+            "SHOCK-WAVE"
+           ],
+           [
+            "FLAIL",
+            "SLASH",
+            "SWIFT",
+            "SAND-TOMB"
+           ],
+           [
+            "FLAIL",
+            "ODOR-SLEUTH",
+            "SHOCK-WAVE",
+            "HEADBUTT"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+19 (disc ace 55)",
+          "dialogue": {
+           "player_won": [
+            "Crudo: Business is bad..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Crudo: Business is bad..."
+       ]
+      },
+      "condition": "col_cail_post"
+     },
      "REVIVES",
      "RARE CANDY",
      "HYPER POTIONS",
+     {
+      "text": "Coloured Cipher Peon",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "col_peon_due"
+      ],
+      "event": {
+       "col_peon": {
+        "bayleef": {
+         "name": "Cipher Peon Verde",
+         "class": "CIPHER_PEON",
+         "sprite": "orre_cipher_green.png",
+         "team": [
+          9348,
+          89,
+          326,
+          319
+         ],
+         "levels": [
+          50,
+          75,
+          74,
+          73
+         ],
+         "team_moves": [
+          [
+           "SHADOW-RUSH",
+           "SUNNY-DAY",
+           "SYNTHESIS",
+           "RAZOR-LEAF"
+          ],
+          [
+           "SLUDGE-BOMB",
+           "STRENGTH",
+           "DIG",
+           "ACID-ARMOR"
+          ],
+          [
+           "EXTRASENSORY",
+           "SHADOW-BALL",
+           "BOUNCE",
+           "PSYCH-UP"
+          ],
+          [
+           "WATERFALL",
+           "BITE",
+           "SKULL-BASH",
+           "TORMENT"
+          ]
+         ],
+         "double": true,
+         "rewards": {
+          "balls": 0
+         },
+         "team_items": [
+          "MIRACLE_SEED",
+          null,
+          null,
+          null
+         ],
+         "music": "orre/cipher_battle",
+         "fit": "+20 (disc ace 55)"
+        },
+        "quilava": {
+         "name": "Cipher Peon Rosso",
+         "class": "CIPHER_PEON",
+         "sprite": "orre_cipher_red.png",
+         "team": [
+          9349,
+          89,
+          326,
+          286
+         ],
+         "levels": [
+          50,
+          75,
+          74,
+          73
+         ],
+         "team_moves": [
+          [
+           "SHADOW-RUSH",
+           "SUNNY-DAY",
+           "SMOKESCREEN",
+           "DIG"
+          ],
+          [
+           "SLUDGE-BOMB",
+           "STRENGTH",
+           "DIG",
+           "ACID-ARMOR"
+          ],
+          [
+           "EXTRASENSORY",
+           "SHADOW-BALL",
+           "BOUNCE",
+           "PSYCH-UP"
+          ],
+          [
+           "GIGA-DRAIN",
+           "SKY-UPPERCUT",
+           "HEADBUTT",
+           "HELPING-HAND"
+          ]
+         ],
+         "double": true,
+         "rewards": {
+          "balls": 0
+         },
+         "team_items": [
+          "CHARCOAL",
+          null,
+          null,
+          null
+         ],
+         "music": "orre/cipher_battle",
+         "fit": "+20 (disc ace 55)"
+        },
+        "croconaw": {
+         "name": "Cipher Peon Bluno",
+         "class": "CIPHER_PEON",
+         "sprite": "orre_cipher_blue.png",
+         "team": [
+          9350,
+          89,
+          326,
+          323
+         ],
+         "levels": [
+          50,
+          75,
+          74,
+          73
+         ],
+         "team_moves": [
+          [
+           "SHADOW-RUSH",
+           "RAIN-DANCE",
+           "SCARY-FACE",
+           "BITE"
+          ],
+          [
+           "SLUDGE-BOMB",
+           "STRENGTH",
+           "DIG",
+           "ACID-ARMOR"
+          ],
+          [
+           "EXTRASENSORY",
+           "SHADOW-BALL",
+           "BOUNCE",
+           "PSYCH-UP"
+          ],
+          [
+           "FLAMETHROWER",
+           "MAGNITUDE",
+           "TAKE-DOWN",
+           "HOWL"
+          ]
+         ],
+         "double": true,
+         "rewards": {
+          "balls": 0
+         },
+         "team_items": [
+          "MYSTIC_WATER",
+          null,
+          null,
+          null
+         ],
+         "music": "orre/cipher_battle",
+         "fit": "+20 (disc ace 55)"
+        }
+       },
+       "lines": [],
+       "done": [
+        "The peon's gone."
+       ]
+      }
+     },
+     {
+      "text": "Team Snagem Driton",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_477",
+         "lines": [
+          "Driton: Snagem's back in business! Who let you in?"
+         ],
+         "battle": {
+          "name": "Team Snagem Driton",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+           117,
+           171,
+           279,
+           121
+          ],
+          "levels": [
+           74,
+           69,
+           72,
+           71
+          ],
+          "team_moves": [
+           [
+            "WATERFALL",
+            "DRAGON-BREATH",
+            "SMOKESCREEN",
+            "TWISTER"
+           ],
+           [
+            "DIVE",
+            "SPARK",
+            "SUPERSONIC",
+            "FLAIL"
+           ],
+           [
+            "SURF",
+            "FLY",
+            "THIEF",
+            "GUST"
+           ],
+           [
+            "WATERFALL",
+            "PSYCHIC",
+            "CAMOUFLAGE",
+            "MINIMIZE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+19 (disc ace 55)",
+          "dialogue": {
+           "player_won": [
+            "Driton: Business is bad..."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Driton: Business is bad..."
+       ]
+      },
+      "condition": "col_cail_post"
+     },
      "ULTRA BALLS"
     ],
     "trainer_spots": [
@@ -293635,8 +294956,8 @@
      "cccccccccccccc.c..c...cc",
      "cccccccccccccc......N..c",
      "ccccc.....c..c.........c",
-     "ccccc..................c",
-     "c....c.......c....c...cc",
+     "ccccc............N.N.N.c",
+     "c....c.....N.c.N..c...cc",
      "c.......c...cc.1..c...cc",
      "c...cccccccccccccccccccc",
      "c...cccccccccccccccccccc",
@@ -293644,10 +294965,10 @@
      "ccccccccccccccc..ccccccc",
      "ccccccccccccccc..ccccccc",
      "c.....c.....ccc..ccccccc",
-     "c........c..ccc..ccccccc",
+     "c.....N..c..ccc..ccccccc",
      "cc........c.ccc..ccccccc",
      "c.........N.ccc..ccccccc",
-     "c..c.............ccccccc",
+     "c..c...........N.ccccccc",
      "c.......c........ccccccc",
      "c...c.......cccccccccccc",
      "c......c...ccccccccccccc",
@@ -293673,7 +294994,612 @@
     "parts": true,
     "people": [
      "SNAGEM HIDEOUT: GONZAP",
-     "FULL HEALS"
+     {
+      "text": "Cipher Peon Baila",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_sunflora"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_410",
+         "lines": [
+          "Baila: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Baila",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           9365,
+           45,
+           189
+          ],
+          "levels": [
+           66,
+           72,
+           74
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "SUNNY-DAY",
+            "GROWTH",
+            "INGRAIN"
+           ],
+           [
+            "MOONLIGHT",
+            "SUNNY-DAY",
+            "SLEEP-POWDER",
+            "GIGA-DRAIN"
+           ],
+           [
+            "SYNTHESIS",
+            "SUNNY-DAY",
+            "SLEEP-POWDER",
+            "GIGA-DRAIN"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+21 (disc ace 53)",
+          "dialogue": {
+           "player_won": [
+            "Baila: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Baila: ..."
+       ]
+      }
+     },
+     {
+      "text": "Cipher Peon Arton",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_delibird"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_413",
+         "lines": [
+          "Arton: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Arton",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           9387,
+           221,
+           362
+          ],
+          "levels": [
+           64,
+           74,
+           73
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "BLIZZARD",
+            "ATTRACT",
+            "PRESENT"
+           ],
+           [
+            "BLIZZARD",
+            "MUD-SHOT",
+            "HORN-ATTACK",
+            "HAIL"
+           ],
+           [
+            "BLIZZARD",
+            "BITE",
+            "HEADBUTT",
+            "HAIL"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "team_items": [
+           "NEVERMELTICE",
+           null,
+           null
+          ],
+          "music": "orre/cipher_battle",
+          "fit": "+19 (disc ace 55)",
+          "dialogue": {
+           "player_won": [
+            "Arton: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Arton: ..."
+       ]
+      }
+     },
+     {
+      "text": "Cipher Peon Dioge",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_heracross"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_416",
+         "lines": [
+          "Dioge: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Cipher Peon Dioge",
+          "class": "CIPHER_PEON",
+          "sprite": "orre_cipher_peon.png",
+          "team": [
+           9378,
+           284,
+           205
+          ],
+          "levels": [
+           65,
+           74,
+           73
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "REVERSAL",
+            "ENDURE",
+            "COUNTER"
+           ],
+           [
+            "SILVER-WIND",
+            "AERIAL-ACE",
+            "HYDRO-PUMP",
+            "ICE-BEAM"
+           ],
+           [
+            "PIN-MISSILE",
+            "DOUBLE-EDGE",
+            "EARTHQUAKE",
+            "GIGA-DRAIN"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+20 (disc ace 54)",
+          "dialogue": {
+           "player_won": [
+            "Dioge: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Dioge: ..."
+       ]
+      }
+     },
+     {
+      "text": "Snagem Head Gonzap",
+      "action": "EVENT",
+      "condition": "col_gurks_post",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_gonzap_post",
+         "lines": [
+          "Gonzap: You again? Fine. Snagem's mine again and I'm not giving it up. Let's settle it!"
+         ],
+         "battle": {
+          "name": "Snagem Head Gonzap",
+          "class": "SNAGEM_HEAD",
+          "sprite": "orre_snagem_gonzap.png",
+          "team": [
+           9389,
+           342,
+           348,
+           68,
+           286,
+           210
+          ],
+          "levels": [
+           61,
+           78,
+           78,
+           78,
+           78,
+           78
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "DRILL-PECK",
+            "METAL-SOUND",
+            "AIR-CUTTER"
+           ],
+           [
+            "HYPER-BEAM",
+            "SWORDS-DANCE",
+            "AERIAL-ACE",
+            "BRICK-BREAK"
+           ],
+           [
+            "HYPER-BEAM",
+            "SWORDS-DANCE",
+            "ANCIENT-POWER",
+            "BRICK-BREAK"
+           ],
+           [
+            "HYPER-BEAM",
+            "BULK-UP",
+            "SUBMISSION",
+            "FORESIGHT"
+           ],
+           [
+            "HYPER-BEAM",
+            "BULK-UP",
+            "SKY-UPPERCUT",
+            "IRON-TAIL"
+           ],
+           [
+            "HYPER-BEAM",
+            "BULK-UP",
+            "SHADOW-BALL",
+            "BRICK-BREAK"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 10,
+           "D_DISK": 1
+          },
+          "team_items": [
+           "SHARP_BEAK",
+           null,
+           null,
+           null,
+           null,
+           null
+          ],
+          "music": "orre/cipher_battle",
+          "fit": "+14 (disc ace 64)",
+          "is_boss_battle": true,
+          "dialogue": {
+           "player_won": [
+            "Gonzap: Ha... you never change. Here - I took this off a Cipher crate. A D-Disk.",
+            "Gonzap: Slot it into that floating thing in The Under. They say it goes down to a colosseum nobody's seen."
+           ]
+          },
+          "if_snagged": {
+           "flag": "snagged_shadow_skarmory",
+           "battle": {
+            "name": "Snagem Head Gonzap",
+            "class": "SNAGEM_HEAD",
+            "sprite": "orre_snagem_gonzap.png",
+            "team": [
+             130,
+             342,
+             348,
+             68,
+             286,
+             210
+            ],
+            "levels": [
+             78,
+             78,
+             78,
+             78,
+             78,
+             78
+            ],
+            "team_moves": [
+             [
+              "HYPER-BEAM",
+              "DRAGON-DANCE",
+              "EARTHQUAKE",
+              "ROAR"
+             ],
+             [
+              "HYPER-BEAM",
+              "SWORDS-DANCE",
+              "AERIAL-ACE",
+              "BRICK-BREAK"
+             ],
+             [
+              "HYPER-BEAM",
+              "SWORDS-DANCE",
+              "ANCIENT-POWER",
+              "BRICK-BREAK"
+             ],
+             [
+              "HYPER-BEAM",
+              "BULK-UP",
+              "SUBMISSION",
+              "FORESIGHT"
+             ],
+             [
+              "HYPER-BEAM",
+              "BULK-UP",
+              "SKY-UPPERCUT",
+              "IRON-TAIL"
+             ],
+             [
+              "HYPER-BEAM",
+              "BULK-UP",
+              "SHADOW-BALL",
+              "BRICK-BREAK"
+             ]
+            ],
+            "double": true,
+            "rewards": {
+             "balls": 10,
+             "D_DISK": 1
+            },
+            "music": "orre/cipher_battle",
+            "fit": "+14 (disc ace 64)",
+            "is_boss_battle": true,
+            "dialogue": {
+             "player_won": [
+              "Gonzap: Ha... you never change. Here - I took this off a Cipher crate. A D-Disk.",
+              "Gonzap: Slot it into that floating thing in The Under. They say it goes down to a colosseum nobody's seen."
+             ]
+            }
+           }
+          }
+         }
+        }
+       ],
+       "done": [
+        "Gonzap: Go see what's down there. Tell me if it's worth snagging."
+       ]
+      }
+     },
+     {
+      "text": "Snagem's Agrev",
+      "action": "EVENT",
+      "condition": [
+       "col_gurks_post",
+       "not:snagged_shadow_ursaring"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_461",
+         "lines": [
+          "Agrev: My Ursaring's been waiting for a fight. A dark one."
+         ],
+         "battle": {
+          "name": "Team Snagem Agrev",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+           67,
+           259,
+           275,
+           9381
+          ],
+          "levels": [
+           73,
+           76,
+           71,
+           66
+          ],
+          "team_moves": [
+           [
+            "LOW-KICK",
+            "ROCK-TOMB",
+            "FOCUS-ENERGY",
+            "SEISMIC-TOSS"
+           ],
+           [
+            "MUD-SLAP",
+            "MUD-SHOT",
+            "MUDDY-WATER",
+            "ICE-BEAM"
+           ],
+           [
+            "TORMENT",
+            "FAKE-OUT",
+            "GIGA-DRAIN",
+            "FEINT-ATTACK"
+           ],
+           [
+            "SHADOW-RUSH",
+            "FEINT-ATTACK",
+            "FAKE-TEARS",
+            "LICK"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+21 (disc ace 55)",
+          "dialogue": {
+           "player_won": [
+            "Agrev: Snagged... again."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "..."
+       ]
+      }
+     },
+     {
+      "text": "Snagem's Biden",
+      "action": "EVENT",
+      "condition": [
+       "col_gurks_post",
+       "not:snagged_shadow_smeargle"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_460",
+         "lines": [
+          "Biden: The boss let me keep a special Smeargle. Wanna see what it can draw?"
+         ],
+         "battle": {
+          "name": "Team Snagem Biden",
+          "class": "TEAM_SNAGEM",
+          "sprite": "orre_snagem_grunt.png",
+          "team": [
+           9393,
+           235,
+           235,
+           235
+          ],
+          "levels": [
+           69,
+           74,
+           75,
+           76
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "SKETCH",
+            "TAIL-WHIP",
+            "DOUBLE-SLAP"
+           ],
+           [
+            "DESTINY-BOND",
+            "FOCUS-PUNCH",
+            "SPORE",
+            "DREAM-EATER"
+           ],
+           [
+            "THRASH",
+            "PETAL-DANCE",
+            "OUTRAGE",
+            "TEETER-DANCE"
+           ],
+           [
+            "SWEET-SCENT",
+            "DEFENSE-CURL",
+            "ICE-BALL",
+            "ROLLOUT"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "music": "orre/cipher_battle",
+          "fit": "+24 (disc ace 52)",
+          "dialogue": {
+           "player_won": [
+            "Biden: Snagged... again."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "..."
+       ]
+      }
+     },
+     "FULL HEALS",
+     {
+      "text": "Rider Nelis",
+      "action": "EVENT",
+      "condition": [
+       "col_cail_post",
+       "not:snagged_shadow_sneasel"
+      ],
+      "event": {
+       "stages": [
+        {
+         "flag": "col_raid_341",
+         "lines": [
+          "Nelis: You! You let this one get away once. Not this time!"
+         ],
+         "battle": {
+          "name": "Rider Nelis",
+          "class": "RIDER",
+          "sprite": "orre_rider.png",
+          "team": [
+           9379,
+           336,
+           222,
+           294
+          ],
+          "levels": [
+           64,
+           73,
+           71,
+           74
+          ],
+          "team_moves": [
+           [
+            "SHADOW-RUSH",
+            "FEINT-ATTACK",
+            "SCREECH",
+            "FURY-SWIPES"
+           ],
+           [
+            "SWAGGER",
+            "SCREECH",
+            "STOCKPILE",
+            "SPIT-UP"
+           ],
+           [
+            "CONFUSE-RAY",
+            "ROCK-SMASH",
+            "SPIKE-CANNON",
+            "DIG"
+           ],
+           [
+            "SWAGGER",
+            "SCREECH",
+            "BRICK-BREAK",
+            "STRENGTH"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+21 (disc ace 53)",
+          "dialogue": {
+           "player_won": [
+            "Nelis: Ugh... I should have stayed lost."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Nelis: ..."
+       ]
+      }
+     }
     ],
     "trainer_spots": [],
     "roofs": {
@@ -299763,7 +301689,7 @@
      "ccccccc.......cccc",
      "ccccccc......ccccc",
      "ccccc............c",
-     "ccccccc..........c",
+     "ccccccc.......N..c",
      "cc...............c",
      "cc.............ccc",
      "cccccccc1ccccccccc",
@@ -299788,7 +301714,64 @@
      ]
     },
     "parts": true,
-    "people": [],
+    "people": [
+     {
+      "text": "Gurks",
+      "action": "EVENT",
+      "condition": "col_post_nett2",
+      "event": {
+       "stages": [
+        {
+         "flag": "col_gurks_post",
+         "lines": [
+          "Gurks: Nett sent you? Yeah, I know things. Battle me first - my Wailord have been bored for weeks."
+         ],
+         "battle": {
+          "name": "Chaser Gurks",
+          "class": "CHASER",
+          "sprite": "orre_chaser_m.png",
+          "team": [
+           321,
+           321
+          ],
+          "levels": [
+           76,
+           76
+          ],
+          "team_moves": [
+           [
+            "WATER-SPOUT",
+            "SWAGGER",
+            "ROLLOUT",
+            "AMNESIA"
+           ],
+           [
+            "HYDRO-PUMP",
+            "SWAGGER",
+            "REST",
+            "SNORE"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+20 (disc ace 56)",
+          "dialogue": {
+           "player_won": [
+            "Gurks: Okay, okay! I battled a peon in a bright suit down here - with one of those Shadow Pokemon.",
+            "Gurks: Don't bother looking for him in The Under, though. He was headed for that old lab out past Phenac."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Gurks: Nice view from up here, huh?"
+       ]
+      }
+     }
+    ],
     "trainer_spots": [],
     "roofs": {
      "_picture": {
@@ -300644,7 +302627,7 @@
      "c........N.c.N.....c.......c",
      "c....N.N...c.......c...X...c",
      "cccccc.cccccccccc.cccc.ccccc",
-     "c.........................Xc",
+     "c.............N...........Xc",
      "c..........................c",
      "ccccccc.ccccccccc.cccccccccc",
      "c1...............N.........c",
@@ -300665,6 +302648,187 @@
      "FULL RESTORE",
      "SHADOW POKEMON LAB: EIN",
      "CIPHER PEON SKRUB",
+     {
+      "text": "Coloured Cipher Peon",
+      "action": "EVENT",
+      "condition": [
+       "col_gurks_post",
+       "col_peon_due"
+      ],
+      "event": {
+       "col_peon": {
+        "bayleef": {
+         "name": "Cipher Peon Verde",
+         "class": "CIPHER_PEON",
+         "sprite": "orre_cipher_green.png",
+         "team": [
+          9348,
+          89,
+          326,
+          319
+         ],
+         "levels": [
+          44,
+          77,
+          76,
+          75
+         ],
+         "team_moves": [
+          [
+           "SHADOW-RUSH",
+           "SUNNY-DAY",
+           "SYNTHESIS",
+           "RAZOR-LEAF"
+          ],
+          [
+           "SLUDGE-BOMB",
+           "FRUSTRATION",
+           "BRICK-BREAK",
+           "MINIMIZE"
+          ],
+          [
+           "PSYCHIC",
+           "SHADOW-BALL",
+           "PSYCH-UP",
+           "CONFUSE-RAY"
+          ],
+          [
+           "HYDRO-PUMP",
+           "CRUNCH",
+           "SLASH",
+           "SWAGGER"
+          ]
+         ],
+         "double": true,
+         "rewards": {
+          "balls": 0
+         },
+         "team_items": [
+          "MIRACLE_SEED",
+          null,
+          null,
+          null
+         ],
+         "music": "orre/cipher_battle",
+         "fit": "+14 (disc ace 63)"
+        },
+        "quilava": {
+         "name": "Cipher Peon Rosso",
+         "class": "CIPHER_PEON",
+         "sprite": "orre_cipher_red.png",
+         "team": [
+          9349,
+          89,
+          326,
+          286
+         ],
+         "levels": [
+          44,
+          77,
+          76,
+          75
+         ],
+         "team_moves": [
+          [
+           "SHADOW-RUSH",
+           "SUNNY-DAY",
+           "SMOKESCREEN",
+           "DIG"
+          ],
+          [
+           "SLUDGE-BOMB",
+           "FRUSTRATION",
+           "BRICK-BREAK",
+           "MINIMIZE"
+          ],
+          [
+           "PSYCHIC",
+           "SHADOW-BALL",
+           "PSYCH-UP",
+           "CONFUSE-RAY"
+          ],
+          [
+           "MIND-READER",
+           "DYNAMIC-PUNCH",
+           "IRON-TAIL",
+           "SWAGGER"
+          ]
+         ],
+         "double": true,
+         "rewards": {
+          "balls": 0
+         },
+         "team_items": [
+          "CHARCOAL",
+          null,
+          null,
+          null
+         ],
+         "music": "orre/cipher_battle",
+         "fit": "+14 (disc ace 63)"
+        },
+        "croconaw": {
+         "name": "Cipher Peon Bluno",
+         "class": "CIPHER_PEON",
+         "sprite": "orre_cipher_blue.png",
+         "team": [
+          9350,
+          89,
+          326,
+          323
+         ],
+         "levels": [
+          44,
+          77,
+          76,
+          75
+         ],
+         "team_moves": [
+          [
+           "SHADOW-RUSH",
+           "RAIN-DANCE",
+           "SCARY-FACE",
+           "BITE"
+          ],
+          [
+           "SLUDGE-BOMB",
+           "FRUSTRATION",
+           "BRICK-BREAK",
+           "MINIMIZE"
+          ],
+          [
+           "PSYCHIC",
+           "SHADOW-BALL",
+           "PSYCH-UP",
+           "CONFUSE-RAY"
+          ],
+          [
+           "FLAMETHROWER",
+           "EARTHQUAKE",
+           "ROCK-SLIDE",
+           "HOWL"
+          ]
+         ],
+         "double": true,
+         "rewards": {
+          "balls": 0
+         },
+         "team_items": [
+          "MYSTIC_WATER",
+          null,
+          null,
+          null
+         ],
+         "music": "orre/cipher_battle",
+         "fit": "+14 (disc ace 63)"
+        }
+       },
+       "lines": [],
+       "done": [
+        "The peon's gone."
+       ]
+      }
+     },
      "DNA SAMPLE (3)"
     ],
     "trainer_spots": [
@@ -302588,14 +304752,14 @@
      "ccccc......cc.cc......ccccc",
      "cccc...................cccc",
      "ccc.....................ccc",
-     "cc.....cc..X...X..cc.....cc",
+     "cc.....cc.........cc.....cc",
      "c.........................c",
-     "c........X.......X........c",
      "c.........................c",
-     "cc..cc...............cc..cc",
-     "ccc......X.......X......ccc",
+     "c.........................c",
+     "cc..cc.......N.......cc..cc",
+     "ccc.....................ccc",
      "cccc...................cccc",
-     "c.ccc..cc..X...X..cc..ccc.c",
+     "c.ccc..cc.........cc..ccc.c",
      "c..ccc...............ccc..c",
      "c...cccN...........Nccc...c",
      "c....ccc...........ccc....c",
@@ -302610,19 +304774,1337 @@
     "links": {},
     "parts": true,
     "people": [
+     {
+      "text": "Deep Colosseum desk",
+      "action": "EVENT",
+      "event": {
+       "xd_colosseum": {
+        "rounds": [
+         [
+          {
+           "name": "Hunter Dewig",
+           "class": "HUNTER",
+           "sprite": "orre_hunter_m.png",
+           "team": [
+            335,
+            274,
+            357
+           ],
+           "levels": [
+            75,
+            75,
+            76
+           ],
+           "team_moves": [
+            [
+             "RAZOR-WIND",
+             "LEER",
+             "FURY-CUTTER",
+             "FALSE-SWIPE"
+            ],
+            [
+             "RAZOR-WIND",
+             "FAKE-OUT",
+             "TORMENT",
+             "FALSE-SWIPE"
+            ],
+            [
+             "RAZOR-WIND",
+             "RAZOR-LEAF",
+             "GUST",
+             "SWEET-SCENT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+15 (disc ace 61)"
+          },
+          {
+           "name": "Bodybuilder Palen",
+           "class": "BODYBUILDER",
+           "sprite": "orre_bodybuilder.png",
+           "team": [
+            157,
+            288,
+            297
+           ],
+           "levels": [
+            75,
+            75,
+            76
+           ],
+           "team_moves": [
+            [
+             "FLAME-WHEEL",
+             "EARTHQUAKE",
+             "AERIAL-ACE",
+             "REVERSAL"
+            ],
+            [
+             "SLASH",
+             "SHADOW-BALL",
+             "ENDURE",
+             "REVERSAL"
+            ],
+            [
+             "VITAL-THROW",
+             "FORESIGHT",
+             "ENDURE",
+             "REVERSAL"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+14 (disc ace 62)"
+          },
+          {
+           "name": "Worker Toway",
+           "class": "WORKER",
+           "sprite": "pt_worker.png",
+           "team": [
+            228,
+            203,
+            85,
+            166
+           ],
+           "levels": [
+            75,
+            75,
+            75,
+            76
+           ],
+           "team_moves": [
+            [
+             "REST",
+             "FLAMETHROWER",
+             "BITE",
+             "COUNTER"
+            ],
+            [
+             "REST",
+             "PSYBEAM",
+             "STOMP",
+             "MAGIC-COAT"
+            ],
+            [
+             "REST",
+             "UPROAR",
+             "FLY",
+             "ENDEAVOR"
+            ],
+            [
+             "REST",
+             "SILVER-WIND",
+             "AERIAL-ACE",
+             "REFLECT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+13 (disc ace 63)"
+          },
+          {
+           "name": "Cipher Admin Miror B.",
+           "class": "CIPHER_ADMIN",
+           "sprite": "orre_trainer_miror_b.png",
+           "team": [
+            9362,
+            272,
+            272,
+            272,
+            295
+           ],
+           "levels": [
+            47,
+            75,
+            76,
+            77,
+            76
+           ],
+           "team_moves": [
+            [
+             "SHADOW-RUSH",
+             "FLAIL",
+             "BLOCK",
+             "LOW-KICK"
+            ],
+            [
+             "HYDRO-PUMP",
+             "GIGA-DRAIN",
+             "ICE-BEAM",
+             "RAIN-DANCE"
+            ],
+            [
+             "HYDRO-PUMP",
+             "GIGA-DRAIN",
+             "NATURE-POWER",
+             "RAIN-DANCE"
+            ],
+            [
+             "DIVE",
+             "GIGA-DRAIN",
+             "LEECH-SEED",
+             "RAIN-DANCE"
+            ],
+            [
+             "TAKE-DOWN",
+             "SHADOW-BALL",
+             "EARTHQUAKE",
+             "EXTRASENSORY"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "team_items": [
+            "HARD_STONE",
+            null,
+            null,
+            null,
+            null
+           ],
+           "music": "orre/admin_battle",
+           "fit": "+12 (disc ace 65)",
+           "is_boss_battle": true,
+           "if_snagged": {
+            "flag": "snagged_shadow_sudowoodo",
+            "battle": {
+             "name": "Cipher Admin Miror B.",
+             "class": "CIPHER_ADMIN",
+             "sprite": "orre_trainer_miror_b.png",
+             "team": [
+              348,
+              272,
+              272,
+              272,
+              295
+             ],
+             "levels": [
+              77,
+              75,
+              76,
+              77,
+              76
+             ],
+             "team_moves": [
+              [
+               "ROCK-SLIDE",
+               "METAL-CLAW",
+               "STRENGTH",
+               "AERIAL-ACE"
+              ],
+              [
+               "HYDRO-PUMP",
+               "GIGA-DRAIN",
+               "ICE-BEAM",
+               "RAIN-DANCE"
+              ],
+              [
+               "HYDRO-PUMP",
+               "GIGA-DRAIN",
+               "NATURE-POWER",
+               "RAIN-DANCE"
+              ],
+              [
+               "DIVE",
+               "GIGA-DRAIN",
+               "LEECH-SEED",
+               "RAIN-DANCE"
+              ],
+              [
+               "TAKE-DOWN",
+               "SHADOW-BALL",
+               "EARTHQUAKE",
+               "EXTRASENSORY"
+              ]
+             ],
+             "double": true,
+             "rewards": {
+              "balls": 0
+             },
+             "music": "orre/admin_battle",
+             "fit": "+12 (disc ace 65)",
+             "is_boss_battle": true
+            }
+           },
+           "intro": [
+            "Miror B.: Ooh, the deepest dance floor in Orre! Let's boogie!"
+           ]
+          }
+         ],
+         [
+          {
+           "name": "St. Performer Regol",
+           "class": "STPERFORMER",
+           "sprite": "orre_street_performer.png",
+           "team": [
+            101,
+            215,
+            189
+           ],
+           "levels": [
+            77,
+            77,
+            78
+           ],
+           "team_moves": [
+            [
+             "SPARK",
+             "CHARGE",
+             "SONIC-BOOM",
+             "FLASH"
+            ],
+            [
+             "BEAT-UP",
+             "ICY-WIND",
+             "CRUSH-CLAW",
+             "FAKE-OUT"
+            ],
+            [
+             "MEGA-DRAIN",
+             "HELPING-HAND",
+             "SYNTHESIS",
+             "COTTON-SPORE"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+17 (disc ace 61)"
+          },
+          {
+           "name": "Fun Old Man Gorbel",
+           "class": "FUN_OLD_MAN",
+           "sprite": "orre_fun_old_man.png",
+           "team": [
+            365,
+            259,
+            225
+           ],
+           "levels": [
+            77,
+            77,
+            78
+           ],
+           "team_moves": [
+            [
+             "ICE-BALL",
+             "SURF",
+             "ROCK-SMASH",
+             "YAWN"
+            ],
+            [
+             "ICE-BALL",
+             "MUDDY-WATER",
+             "MUD-SLAP",
+             "MUD-SPORT"
+            ],
+            [
+             "ICE-BALL",
+             "AERIAL-ACE",
+             "WATER-PULSE",
+             "PRESENT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+16 (disc ace 62)"
+          },
+          {
+           "name": "Bandana Guy Lobert",
+           "class": "BANDANA_GUY",
+           "sprite": "orre_chaser_m.png",
+           "team": [
+            178,
+            308,
+            184,
+            264
+           ],
+           "levels": [
+            77,
+            77,
+            77,
+            78
+           ],
+           "team_moves": [
+            [
+             "PSYCH-UP",
+             "AERIAL-ACE",
+             "PSYCHIC",
+             "STEEL-WING"
+            ],
+            [
+             "PSYCH-UP",
+             "BRICK-BREAK",
+             "PSYCHIC",
+             "SHADOW-BALL"
+            ],
+            [
+             "BELLY-DRUM",
+             "ROLLOUT",
+             "WATERFALL",
+             "DOUBLE-EDGE"
+            ],
+            [
+             "BELLY-DRUM",
+             "DIG",
+             "FURY-SWIPES",
+             "IRON-TAIL"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+15 (disc ace 63)"
+          },
+          {
+           "name": "Cipher Admin Dakim",
+           "class": "CIPHER_ADMIN",
+           "sprite": "orre_cipher_peon.png",
+           "team": [
+            9397,
+            344,
+            338,
+            330,
+            260
+           ],
+           "levels": [
+            54,
+            77,
+            78,
+            78,
+            79
+           ],
+           "team_moves": [
+            [
+             "SHADOW-RUSH",
+             "SUNNY-DAY",
+             "LEER",
+             "BITE"
+            ],
+            [
+             "PSYCHIC",
+             "EARTHQUAKE",
+             "SUNNY-DAY",
+             "SOLAR-BEAM"
+            ],
+            [
+             "ROCK-SLIDE",
+             "EARTHQUAKE",
+             "SUNNY-DAY",
+             "EXPLOSION"
+            ],
+            [
+             "FIRE-BLAST",
+             "EARTHQUAKE",
+             "SUNNY-DAY",
+             "SOLAR-BEAM"
+            ],
+            [
+             "MUDDY-WATER",
+             "EARTHQUAKE",
+             "PROTECT",
+             "ICE-BEAM"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "music": "orre/admin_battle",
+           "fit": "+14 (disc ace 65)",
+           "is_boss_battle": true,
+           "if_snagged": {
+            "flag": "snagged_shadow_entei",
+            "battle": {
+             "name": "Cipher Admin Dakim",
+             "class": "CIPHER_ADMIN",
+             "sprite": "orre_cipher_peon.png",
+             "team": [
+              229,
+              344,
+              338,
+              330,
+              260
+             ],
+             "levels": [
+              79,
+              77,
+              78,
+              78,
+              79
+             ],
+             "team_moves": [
+              [
+               "FIRE-BLAST",
+               "PROTECT",
+               "SUNNY-DAY",
+               "SOLAR-BEAM"
+              ],
+              [
+               "PSYCHIC",
+               "EARTHQUAKE",
+               "SUNNY-DAY",
+               "SOLAR-BEAM"
+              ],
+              [
+               "ROCK-SLIDE",
+               "EARTHQUAKE",
+               "SUNNY-DAY",
+               "EXPLOSION"
+              ],
+              [
+               "FIRE-BLAST",
+               "EARTHQUAKE",
+               "SUNNY-DAY",
+               "SOLAR-BEAM"
+              ],
+              [
+               "MUDDY-WATER",
+               "EARTHQUAKE",
+               "PROTECT",
+               "ICE-BEAM"
+              ]
+             ],
+             "double": true,
+             "rewards": {
+              "balls": 0
+             },
+             "music": "orre/admin_battle",
+             "fit": "+14 (disc ace 65)",
+             "is_boss_battle": true
+            }
+           },
+           "intro": [
+            "Dakim: Down here, nobody holds back. Crush or be crushed!"
+           ]
+          }
+         ],
+         [
+          {
+           "name": "Bodybuilder Varug",
+           "class": "BODYBUILDER",
+           "sprite": "orre_bodybuilder.png",
+           "team": [
+            67,
+            66,
+            217
+           ],
+           "levels": [
+            79,
+            79,
+            80
+           ],
+           "team_moves": [
+            [
+             "FACADE",
+             "TOXIC",
+             "EARTHQUAKE",
+             "ROLLING-KICK"
+            ],
+            [
+             "FACADE",
+             "TOXIC",
+             "ROCK-SLIDE",
+             "SUBMISSION"
+            ],
+            [
+             "FACADE",
+             "TOXIC",
+             "AERIAL-ACE",
+             "EARTHQUAKE"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+19 (disc ace 61)"
+          },
+          {
+           "name": "Rider Shatol",
+           "class": "RIDER",
+           "sprite": "orre_rider.png",
+           "team": [
+            75,
+            232,
+            40,
+            320
+           ],
+           "levels": [
+            78,
+            78,
+            79,
+            80
+           ],
+           "team_moves": [
+            [
+             "DOUBLE-TEAM",
+             "DEFENSE-CURL",
+             "ROLLOUT",
+             "MAGNITUDE"
+            ],
+            [
+             "DOUBLE-TEAM",
+             "DEFENSE-CURL",
+             "ROLLOUT",
+             "EARTHQUAKE"
+            ],
+            [
+             "DOUBLE-TEAM",
+             "DEFENSE-CURL",
+             "ROLLOUT",
+             "BODY-SLAM"
+            ],
+            [
+             "DOUBLE-TEAM",
+             "ROLLOUT",
+             "SURF",
+             "AMNESIA"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+17 (disc ace 63)"
+          },
+          {
+           "name": "Researcher Zogo",
+           "class": "RESEARCHER",
+           "sprite": "orre_scientist.png",
+           "team": [
+            210,
+            327,
+            301
+           ],
+           "levels": [
+            80,
+            80,
+            80
+           ],
+           "team_moves": [
+            [
+             "METRONOME",
+             "FLAMETHROWER",
+             "BITE",
+             "TAKE-DOWN"
+            ],
+            [
+             "WISH",
+             "ASSIST",
+             "DIZZY-PUNCH",
+             "TEETER-DANCE"
+            ],
+            [
+             "WISH",
+             "ASSIST",
+             "CHARM",
+             "DOUBLE-SLAP"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+18 (disc ace 62)"
+          },
+          {
+           "name": "Cipher Admin Venus",
+           "class": "CIPHER_ADMIN",
+           "sprite": "orre_venus.png",
+           "team": [
+            9398,
+            26,
+            154,
+            356,
+            242
+           ],
+           "levels": [
+            56,
+            79,
+            80,
+            80,
+            81
+           ],
+           "team_moves": [
+            [
+             "SHADOW-RUSH",
+             "RAIN-DANCE",
+             "LEER",
+             "GUST"
+            ],
+            [
+             "ATTRACT",
+             "THUNDER-WAVE",
+             "SWEET-KISS",
+             "THUNDERBOLT"
+            ],
+            [
+             "ATTRACT",
+             "LEECH-SEED",
+             "INGRAIN",
+             "GIGA-DRAIN"
+            ],
+            [
+             "ATTRACT",
+             "CONFUSE-RAY",
+             "WILL-O-WISP",
+             "SHADOW-PUNCH"
+            ],
+            [
+             "ATTRACT",
+             "WATER-PULSE",
+             "FLAMETHROWER",
+             "PSYCHIC"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "music": "orre/admin_battle",
+           "fit": "+16 (disc ace 65)",
+           "is_boss_battle": true,
+           "if_snagged": {
+            "flag": "snagged_shadow_suicune",
+            "battle": {
+             "name": "Cipher Admin Venus",
+             "class": "CIPHER_ADMIN",
+             "sprite": "orre_venus.png",
+             "team": [
+              350,
+              26,
+              154,
+              356,
+              242
+             ],
+             "levels": [
+              81,
+              79,
+              80,
+              80,
+              81
+             ],
+             "team_moves": [
+              [
+               "ATTRACT",
+               "CONFUSE-RAY",
+               "ICE-BEAM",
+               "HYDRO-PUMP"
+              ],
+              [
+               "ATTRACT",
+               "THUNDER-WAVE",
+               "SWEET-KISS",
+               "THUNDERBOLT"
+              ],
+              [
+               "ATTRACT",
+               "LEECH-SEED",
+               "INGRAIN",
+               "GIGA-DRAIN"
+              ],
+              [
+               "ATTRACT",
+               "CONFUSE-RAY",
+               "WILL-O-WISP",
+               "SHADOW-PUNCH"
+              ],
+              [
+               "ATTRACT",
+               "WATER-PULSE",
+               "FLAMETHROWER",
+               "PSYCHIC"
+              ]
+             ],
+             "double": true,
+             "rewards": {
+              "balls": 0
+             },
+             "music": "orre/admin_battle",
+             "fit": "+16 (disc ace 65)",
+             "is_boss_battle": true
+            }
+           },
+           "intro": [
+            "Venus: Even here, I'm the star. Shall we put on a show?"
+           ]
+          }
+         ],
+         [
+          {
+           "name": "Chaser Drook",
+           "class": "CHASER",
+           "sprite": "orre_chaser_m.png",
+           "team": [
+            274,
+            267,
+            189,
+            313
+           ],
+           "levels": [
+            81,
+            81,
+            82,
+            81
+           ],
+           "team_moves": [
+            [
+             "SOLAR-BEAM",
+             "NATURE-POWER",
+             "SYNTHESIS",
+             "SUNNY-DAY"
+            ],
+            [
+             "SOLAR-BEAM",
+             "SILVER-WIND",
+             "MORNING-SUN",
+             "SUNNY-DAY"
+            ],
+            [
+             "SOLAR-BEAM",
+             "SECRET-POWER",
+             "SYNTHESIS",
+             "SUNNY-DAY"
+            ],
+            [
+             "SOLAR-BEAM",
+             "SIGNAL-BEAM",
+             "MOONLIGHT",
+             "SUNNY-DAY"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+21 (disc ace 61)"
+          },
+          {
+           "name": "Roller Boy Dult",
+           "class": "ROLLER_BOY",
+           "sprite": "orre_roller_boy_kaib.png",
+           "team": [
+            171,
+            295,
+            224,
+            305
+           ],
+           "levels": [
+            81,
+            82,
+            82,
+            81
+           ],
+           "team_moves": [
+            [
+             "THUNDER-WAVE",
+             "THUNDERBOLT",
+             "DIVE",
+             "TAKE-DOWN"
+            ],
+            [
+             "SMELLING-SALTS",
+             "SHOCK-WAVE",
+             "HOWL",
+             "SHADOW-BALL"
+            ],
+            [
+             "THUNDER-WAVE",
+             "OCTAZOOKA",
+             "AURORA-BEAM",
+             "PSYBEAM"
+            ],
+            [
+             "SMELLING-SALTS",
+             "METAL-CLAW",
+             "METAL-SOUND",
+             "AERIAL-ACE"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+21 (disc ace 61)"
+          },
+          {
+           "name": "Hunter Ophel",
+           "class": "HUNTER",
+           "sprite": "orre_hunter_m.png",
+           "team": [
+            277,
+            342,
+            259
+           ],
+           "levels": [
+            81,
+            81,
+            82
+           ],
+           "team_moves": [
+            [
+             "ENDEAVOR",
+             "WING-ATTACK",
+             "QUICK-ATTACK",
+             "STEEL-WING"
+            ],
+            [
+             "ENDEAVOR",
+             "CRABHAMMER",
+             "DIG",
+             "BRICK-BREAK"
+            ],
+            [
+             "ENDEAVOR",
+             "MUDDY-WATER",
+             "MUD-SHOT",
+             "ICE-BEAM"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+19 (disc ace 63)"
+          },
+          {
+           "name": "Cipher Admin Ein",
+           "class": "CIPHER_ADMIN",
+           "sprite": "orre_cipher_peon.png",
+           "team": [
+            9396,
+            112,
+            226,
+            130,
+            169
+           ],
+           "levels": [
+            58,
+            81,
+            82,
+            82,
+            83
+           ],
+           "team_moves": [
+            [
+             "SHADOW-RUSH",
+             "RAIN-DANCE",
+             "LEER",
+             "QUICK-ATTACK"
+            ],
+            [
+             "EARTHQUAKE",
+             "ROCK-BLAST",
+             "PROTECT",
+             "TOXIC"
+            ],
+            [
+             "TWISTER",
+             "CONFUSE-RAY",
+             "TOXIC",
+             "RAIN-DANCE"
+            ],
+            [
+             "HYDRO-PUMP",
+             "EARTHQUAKE",
+             "THUNDER",
+             "RAIN-DANCE"
+            ],
+            [
+             "BITE",
+             "CONFUSE-RAY",
+             "PROTECT",
+             "TOXIC"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "music": "orre/admin_battle",
+           "fit": "+18 (disc ace 65)",
+           "is_boss_battle": true,
+           "if_snagged": {
+            "flag": "snagged_shadow_raikou",
+            "battle": {
+             "name": "Cipher Admin Ein",
+             "class": "CIPHER_ADMIN",
+             "sprite": "orre_cipher_peon.png",
+             "team": [
+              310,
+              112,
+              226,
+              130,
+              169
+             ],
+             "levels": [
+              83,
+              81,
+              82,
+              82,
+              83
+             ],
+             "team_moves": [
+              [
+               "THUNDER",
+               "BITE",
+               "PROTECT",
+               "TOXIC"
+              ],
+              [
+               "EARTHQUAKE",
+               "ROCK-BLAST",
+               "PROTECT",
+               "TOXIC"
+              ],
+              [
+               "TWISTER",
+               "CONFUSE-RAY",
+               "TOXIC",
+               "RAIN-DANCE"
+              ],
+              [
+               "HYDRO-PUMP",
+               "EARTHQUAKE",
+               "THUNDER",
+               "RAIN-DANCE"
+              ],
+              [
+               "BITE",
+               "CONFUSE-RAY",
+               "PROTECT",
+               "TOXIC"
+              ]
+             ],
+             "double": true,
+             "rewards": {
+              "balls": 0
+             },
+             "music": "orre/admin_battle",
+             "fit": "+18 (disc ace 65)",
+             "is_boss_battle": true
+            }
+           },
+           "intro": [
+            "Ein: My research continues, even in the dark. You'll make a fine test."
+           ]
+          }
+         ],
+         [
+          {
+           "name": "Rider Nelon",
+           "class": "RIDER",
+           "sprite": "orre_rider.png",
+           "team": [
+            116,
+            290,
+            353
+           ],
+           "levels": [
+            83,
+            84,
+            83
+           ],
+           "team_moves": [
+            [
+             "SURF",
+             "DRAGON-RAGE",
+             "SMOKESCREEN",
+             "FLAIL"
+            ],
+            [
+             "CUT",
+             "MUD-SLAP",
+             "LEECH-LIFE",
+             "SAND-ATTACK"
+            ],
+            [
+             "ASTONISH",
+             "KNOCK-OFF",
+             "SPITE",
+             "FLASH"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+20 (disc ace 64)"
+          },
+          {
+           "name": "Athlete Lorge",
+           "class": "ATHLETE",
+           "sprite": "orre_athlete.png",
+           "team": [
+            64,
+            352,
+            200,
+            117
+           ],
+           "levels": [
+            83,
+            84,
+            83,
+            84
+           ],
+           "team_moves": [
+            [
+             "PSYBEAM",
+             "FIRE-PUNCH",
+             "ROLE-PLAY",
+             "SNATCH"
+            ],
+            [
+             "SLASH",
+             "PSYBEAM",
+             "ANCIENT-POWER",
+             "FLAMETHROWER"
+            ],
+            [
+             "ASTONISH",
+             "PSYBEAM",
+             "SHOCK-WAVE",
+             "PAIN-SPLIT"
+            ],
+            [
+             "WATERFALL",
+             "DRAGON-RAGE",
+             "AGILITY",
+             "SECRET-POWER"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+19 (disc ace 65)"
+          },
+          {
+           "name": "Hunter Grons",
+           "class": "HUNTER",
+           "sprite": "orre_hunter_m.png",
+           "team": [
+            303,
+            198,
+            369
+           ],
+           "levels": [
+            83,
+            83,
+            84
+           ],
+           "team_moves": [
+            [
+             "SLUDGE-BOMB",
+             "ROCK-TOMB",
+             "BRICK-BREAK",
+             "TAUNT"
+            ],
+            [
+             "PURSUIT",
+             "WING-ATTACK",
+             "NIGHT-SHADE",
+             "SNATCH"
+            ],
+            [
+             "DIVE",
+             "ANCIENT-POWER",
+             "SKULL-BASH",
+             "YAWN"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+17 (disc ace 67)"
+          },
+          {
+           "name": "Deep King Agnol",
+           "class": "DEEP_KING",
+           "sprite": "orre_chaser_m.png",
+           "team": [
+            9377,
+            203,
+            302,
+            227,
+            292,
+            230
+           ],
+           "levels": [
+            60,
+            83,
+            84,
+            81,
+            83,
+            85
+           ],
+           "team_moves": [
+            [
+             "SHADOW-RUSH",
+             "SAFEGUARD",
+             "ENCORE",
+             "REST"
+            ],
+            [
+             "RETURN",
+             "PSYCHIC",
+             "THUNDERBOLT",
+             "LIGHT-SCREEN"
+            ],
+            [
+             "FEINT-ATTACK",
+             "SHADOW-BALL",
+             "AERIAL-ACE",
+             "CONFUSE-RAY"
+            ],
+            [
+             "STEEL-WING",
+             "DRILL-PECK",
+             "RETURN",
+             "SAND-ATTACK"
+            ],
+            [
+             "SILVER-WIND",
+             "SHADOW-BALL",
+             "DIG",
+             "CONFUSE-RAY"
+            ],
+            [
+             "HYDRO-PUMP",
+             "DRAGON-BREATH",
+             "ICE-BEAM",
+             "ATTRACT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "fit": "+15 (disc ace 70)",
+           "is_boss_battle": true,
+           "if_snagged": {
+            "flag": "snagged_shadow_shuckle",
+            "battle": {
+             "name": "Deep King Agnol",
+             "class": "DEEP_KING",
+             "sprite": "orre_chaser_m.png",
+             "team": [
+              203,
+              302,
+              227,
+              292,
+              230
+             ],
+             "levels": [
+              83,
+              84,
+              81,
+              83,
+              85
+             ],
+             "team_moves": [
+              [
+               "RETURN",
+               "PSYCHIC",
+               "THUNDERBOLT",
+               "LIGHT-SCREEN"
+              ],
+              [
+               "FEINT-ATTACK",
+               "SHADOW-BALL",
+               "AERIAL-ACE",
+               "CONFUSE-RAY"
+              ],
+              [
+               "STEEL-WING",
+               "DRILL-PECK",
+               "RETURN",
+               "SAND-ATTACK"
+              ],
+              [
+               "SILVER-WIND",
+               "SHADOW-BALL",
+               "DIG",
+               "CONFUSE-RAY"
+              ],
+              [
+               "HYDRO-PUMP",
+               "DRAGON-BREATH",
+               "ICE-BEAM",
+               "ATTRACT"
+              ]
+             ],
+             "double": true,
+             "rewards": {
+              "balls": 0
+             },
+             "fit": "+15 (disc ace 70)",
+             "is_boss_battle": true
+            }
+           },
+           "intro": [
+            "Agnol: So. You've come all the way down. I am the Deep King. Kneel - or battle."
+           ]
+          }
+         ]
+        ],
+        "cleared": "col_deep_cleared",
+        "open": "col_gonzap_post",
+        "all_flag": "col_deep_all",
+        "name": "the Deep Colosseum",
+        "prizes": [
+         [
+          null,
+          null
+         ],
+         [
+          "SKILL-SWAP",
+          null
+         ],
+         [
+          null,
+          null
+         ],
+         [
+          "DRAGON-CLAW",
+          null
+         ],
+         [
+          null,
+          "Deep King's Equal"
+         ]
+        ],
+        "money": [
+         12000,
+         20936,
+         15000,
+         18118,
+         25000
+        ]
+       },
+       "lines": [
+        "A cloaked figure: Welcome to the Deep Colosseum. Five rounds. The Deep King waits at the bottom of them."
+       ]
+      }
+     },
      "SNAG SHADOW POKEMON",
      "SNAG AGAIN"
     ],
-    "trainer_spots": [
-     "Fun Old Man Gorbel",
-     "Bandana Guy Lobert",
-     "Worker Toway",
-     "St.Performer Regol",
-     "Hunter Dewig",
-     "Bodybuilder Palen",
-     "Bodybuilder Varug",
-     "Rider Shatol"
-    ],
+    "trainer_spots": [],
     "roofs": {
      "_picture": {
       "f": "orre_ground/238.png",

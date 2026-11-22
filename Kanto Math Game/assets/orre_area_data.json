@@ -221,25 +221,29 @@
           "id": 9358,
           "name": "Shadow Togetic",
           "flag": "snagged_shadow_togetic",
-          "trainer": "Cipher Peon Fein"
+          "trainer": "Cipher Peon Fein",
+          "event_only": true
         },
         {
           "id": 9348,
           "name": "Shadow Bayleef",
           "flag": "snagged_shadow_bayleef",
-          "trainer": "Cipher Peon Verde"
+          "trainer": "Cipher Peon Verde",
+          "event_only": true
         },
         {
           "id": 9349,
           "name": "Shadow Quilava",
           "flag": "snagged_shadow_quilava",
-          "trainer": "Cipher Peon Rosso"
+          "trainer": "Cipher Peon Rosso",
+          "event_only": true
         },
         {
           "id": 9350,
           "name": "Shadow Croconaw",
           "flag": "snagged_shadow_croconaw",
-          "trainer": "Cipher Peon Bluno"
+          "trainer": "Cipher Peon Bluno",
+          "event_only": true
         },
         {
           "id": 9357,
@@ -9475,6 +9479,28 @@
                   "Nett: Ein's Data ROM? Let me crack it... It's a list of every Shadow Pokemon Cipher made!",
                   "Nett: Someone erased most of it. But it points to one place: Realgam Tower."
                 ]
+              },
+              {
+                "requires": [
+                  "beat_orre_champion",
+                  "not:col_post_nett"
+                ],
+                "flag": "col_post_nett",
+                "lines": [
+                  "Nett: Hey, champ! Got a tip from the Kids Grid. A kid in Pyrite says Cail battled someone with a Shadow Pokemon.",
+                  "Nett: The kid hides behind a bookcase in one of the houses up the hill. Go and ask him."
+                ]
+              },
+              {
+                "requires": [
+                  "col_cail_post",
+                  "not:col_post_nett2"
+                ],
+                "flag": "col_post_nett2",
+                "lines": [
+                  "Nett: Snagem's back in business? Figures. Listen - there's a guy called Gurks who knows things.",
+                  "Nett: He hangs out on the Junk Shop's balcony, upstairs. Ask him about Shadow Pokemon."
+                ]
               }
             ],
             "done": [
@@ -9668,6 +9694,15 @@
                   "You slot the U-Disk in. The platform rises... up and up, through a hatch...",
                   "It stops inside Pyrite's windmill! On a ledge lies a flute that hums with time: another Time Flute!",
                   "The platform sinks back down to the Under."
+                ]
+              },
+              {
+                "requires": [
+                  "has_item:D_DISK"
+                ],
+                "travel": "DEEP_COLOSSEUM",
+                "lines": [
+                  "You slot the D-Disk in. The platform shudders... and sinks, down past the Under's floor, down and down..."
                 ]
               }
             ],
@@ -15100,37 +15135,43 @@
           "id": 9365,
           "name": "Shadow Sunflora",
           "flag": "snagged_shadow_sunflora",
-          "trainer": "Cipher Peon Baila"
+          "trainer": "Cipher Peon Baila",
+          "event_only": true
         },
         {
           "id": 9387,
           "name": "Shadow Delibird",
           "flag": "snagged_shadow_delibird",
-          "trainer": "Cipher Peon Arton"
+          "trainer": "Cipher Peon Arton",
+          "event_only": true
         },
         {
           "id": 9378,
           "name": "Shadow Heracross",
           "flag": "snagged_shadow_heracross",
-          "trainer": "Cipher Peon Dioge"
+          "trainer": "Cipher Peon Dioge",
+          "event_only": true
         },
         {
           "id": 9389,
           "name": "Shadow Skarmory",
           "flag": "snagged_shadow_skarmory",
-          "trainer": "Snagem Head Gonzap"
+          "trainer": "Snagem Head Gonzap",
+          "event_only": true
         },
         {
           "id": 9393,
           "name": "Shadow Smeargle",
           "flag": "snagged_shadow_smeargle",
-          "trainer": "Team Snagem Biden"
+          "trainer": "Team Snagem Biden",
+          "event_only": true
         },
         {
           "id": 9381,
           "name": "Shadow Ursaring",
           "flag": "snagged_shadow_ursaring",
-          "trainer": "Team Snagem Agrev"
+          "trainer": "Team Snagem Agrev",
+          "event_only": true
         }
       ],
       "route_menu": [
@@ -17328,7 +17369,8 @@
             "rewards": {
               "balls": 5
             },
-            "is_boss_battle": true
+            "is_boss_battle": true,
+            "rematch_ace": 78
           },
           {
             "name": "Rider Delan",
@@ -17368,7 +17410,8 @@
             "rewards": {
               "balls": 5
             },
-            "is_boss_battle": true
+            "is_boss_battle": true,
+            "rematch_ace": 78
           },
           {
             "name": "Cipher Peon Nella",
@@ -17409,7 +17452,8 @@
               "balls": 5
             },
             "music": "orre/cipher_battle",
-            "is_boss_battle": true
+            "is_boss_battle": true,
+            "rematch_ace": 79
           },
           {
             "name": "Cipher Peon Ston",
@@ -17458,7 +17502,8 @@
               "balls": 5
             },
             "music": "orre/cipher_battle",
-            "is_boss_battle": true
+            "is_boss_battle": true,
+            "rematch_ace": 79
           },
           {
             "name": "Cipher Nascour",
@@ -17540,7 +17585,8 @@
               "player_won": [
                 "Nascour: Defeated... Forgive me, Master. I have failed you."
               ]
-            }
+            },
+            "rematch_ace": 80
           }
         ],
         "leader": {
@@ -17630,13 +17676,15 @@
             null,
             null
           ],
-          "double": true
+          "double": true,
+          "rematch_ace": 82
         },
         "requirements": {
           "badges": 4,
           "flag": "col_gonzap_realgam",
           "fail_text": "Cipher's Colosseum is reached by the lift at the end of the Tower Halls."
-        }
+        },
+        "rematch_heal": true
       }
     },
     "CIPHER_COMMAND": {
@@ -22166,151 +22214,17 @@
       "level": 68,
       "battle_type": "indoor",
       "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Hunter Dewig",
-          "class": "HUNTER",
-          "sprite": "orre_hunter_f.png",
-          "team": [
-            335,
-            274,
-            357
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Bodybuilder Palen",
-          "class": "BODYBUILDER",
-          "sprite": "orre_bodybuilder2.png",
-          "team": [
-            157,
-            288,
-            297
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Worker Toway",
-          "class": "WORKER",
-          "sprite": "orre_engineer.png",
-          "team": [
-            228,
-            203,
-            85,
-            166
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "St.Performer Regol",
-          "class": "STPERFORMER",
-          "sprite": "orre_street_performer.png",
-          "team": [
-            101,
-            215,
-            189
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Fun Old Man Gorbel",
-          "class": "FUN_OLD_MAN",
-          "sprite": "orre_fun_old_man.png",
-          "team": [
-            365,
-            259,
-            225
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Bandana Guy Lobert",
-          "class": "BANDANA_GUY",
-          "sprite": "roughneck.png",
-          "team": [
-            178,
-            308,
-            184,
-            264
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Bodybuilder Varug",
-          "class": "BODYBUILDER",
-          "sprite": "orre_bodybuilder.png",
-          "team": [
-            67,
-            66,
-            217
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Rider Shatol",
-          "class": "RIDER",
-          "sprite": "orre_rider.png",
-          "team": [
-            75,
-            232,
-            40,
-            320
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        }
-      ],
+      "trainer_pool": [],
       "shadow_pool": [
         {
           "id": 9377,
           "name": "Shadow Shuckle",
           "flag": "snagged_shadow_shuckle",
-          "trainer": "Deep King Agnol"
+          "trainer": "Deep King Agnol",
+          "event_only": true
         }
       ],
       "route_menu": [
-        {
-          "text": "SNAG SHADOW POKEMON",
-          "action": "SNAG",
-          "color": "PURPLE",
-          "condition": [
-            "has_item:SNAG_MACHINE",
-            "got_snag_machine",
-            "shadows_left"
-          ]
-        },
-        {
-          "text": "SNAG AGAIN",
-          "action": "SNAG",
-          "repeat": true,
-          "color": "PURPLE",
-          "condition": [
-            "has_item:SNAG_MACHINE",
-            "got_snag_machine",
-            "shadows_cleared"
-          ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
         {
           "text": "Realgam Tower",
           "action": "EXIT",
@@ -22377,7 +22291,10 @@
     {"id": "orre_s6", "type": "SIDE", "title": "Eagun's Challenge", "description": "Eagun wants a word with you outside the Pokemon HQ Lab.", "condition": {"required_region": "ORRE", "flag": "xd_greevil_beaten", "flag_not": "xd_eagun_lab"}, "region": "ORRE", "completed_flag": "xd_eagun_lab", "target": "POKEMON_HQ_LAB"},
     {"id": "orre_s6b", "type": "SIDE", "title": "The Orre Colosseum", "description": "Seven rounds of four battles at the Orre Colosseum, healed between battles. Each round's winner gets a TM.", "condition": {"required_region": "ORRE", "flag": "xd_eagun_lab", "flag_not": "xd_colo_all"}, "region": "ORRE", "completed_flag": "xd_colo_all", "target": "ORRE_COLOSSEUM", "reward": "TM Dragon Claw"},
     {"id": "orre_s6c", "type": "SIDE", "title": "XD001's Heart", "description": "XD001's heart is shut tight. Fill all nine sets of the HQ Lab's Purify Chamber at Max Tempo - four in each ring, each strong against the next - then put XD001 in.", "condition": {"required_region": "ORRE", "flag": "snagged_shadow_lugia", "flag_not": "xd_lugia_purified"}, "region": "ORRE", "completed_flag": "xd_lugia_purified", "target": "POKEMON_HQ_LAB"},
-    {"id": "orre_s6d", "type": "SIDE", "title": "Silent Pokemon", "description": "Beluh e-mailed: some of Agate Village's Pokemon have gone silent. Go and see her.", "condition": {"required_region": "ORRE", "flag": "xd_beluh_mail", "flag_not": "xd_lucky_egg"}, "region": "ORRE", "completed_flag": "xd_lucky_egg", "target": "AGATE_VILLAGE", "reward": "Lucky Egg"}
+    {"id": "orre_s6d", "type": "SIDE", "title": "Silent Pokemon", "description": "Beluh e-mailed: some of Agate Village's Pokemon have gone silent. Go and see her.", "condition": {"required_region": "ORRE", "flag": "xd_beluh_mail", "flag_not": "xd_lucky_egg"}, "region": "ORRE", "completed_flag": "xd_lucky_egg", "target": "AGATE_VILLAGE", "reward": "Lucky Egg"},
+    {"id": "orre_s7", "type": "SIDE", "title": "A Rumour in Pyrite", "description": "Nett has heard something about Cail and a Shadow Pokemon. A kid in Pyrite saw it - he's hiding behind a bookcase.", "condition": {"required_region": "ORRE", "flag": "col_post_nett", "flag_not": "col_cail_post"}, "region": "ORRE", "completed_flag": "col_cail_post", "target": "PYRITE_TOWN"},
+    {"id": "orre_s7b", "type": "SIDE", "title": "The Snagem Raid", "description": "Snagem is back in its desert hideout, with Shadow Pokemon you missed. Nett also mentioned Gurks, on the Junk Shop's balcony in The Under. Gonzap has something you'll want.", "condition": {"required_region": "ORRE", "flag": "col_cail_post", "flag_not": "col_gonzap_post"}, "region": "ORRE", "completed_flag": "col_gonzap_post", "target": "SNAGEM_HIDEOUT", "reward": "D-Disk"},
+    {"id": "orre_s7c", "type": "SIDE", "title": "The Deep Colosseum", "description": "Slot the D-Disk into The Under's floating platform. Five rounds wait at the bottom, and the Deep King after them.", "condition": {"required_region": "ORRE", "flag": "col_gonzap_post", "flag_not": "col_deep_all"}, "region": "ORRE", "completed_flag": "col_deep_all", "target": "THE_UNDER", "reward": "TM Dragon Claw"}
   ],
   "REGION_START": {
     "ORRE": {

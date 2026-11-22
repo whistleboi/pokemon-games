@@ -385,6 +385,9 @@ class StoryManager:
             return len([p for p in self.player_team if p]) < 6
         if condition == "all_unown_registered":
             return self.unown_forms_caught() >= len(self.UNOWN_FORMS)
+        if condition in ("col_peon_due", "col_fein_due"):   # (Colosseum after the title: a coloured peon still holding a
+            from src.world import col_post                    #  Johto starter; Fein at the Outskirt Stand - col_post.py)
+            return bool(col_post.peon(self.game)) if condition == "col_peon_due" else col_post.fein_due(self.game)
         if condition == "xd_miror_last_due":  # (XD: Miror B. atop Gateon's lighthouse with the last Shadow, Dragonite - xd_post.py)
             from src.world import xd_post
             return xd_post.last_due(self.game)

@@ -381,8 +381,19 @@ def _run_story_event(state, key, check, show):
     if ev.get("coin_guess"):   # (a coin hidden in one hand, guess which, so many times in a row: Trovitopolis's psychic, Orange
         _coin_guess(state, ev, lines, show)   #  5.7, 11-17: {"rounds": 3}; all right: the event's "gift_item" and "flag")
         return
+    if ev.get("col_peon"):   # (Colosseum after the title: the coloured peon with a Johto starter you missed - col_post.py)
+        from src.world import col_post
+        key = col_post.peon(game)
+        if not key:
+            show(_resolve_lines(game, ev.get("done") or ["Nobody's here now."]))
+            return
+        ev = dict(ev, battle=ev["col_peon"][key], col_peon=None,
+                  lines=[f"{col_post.peon_name(key)}: You again! You won't get this one!"] + list(ev.get("lines") or []))
+        lines = _resolve_lines(game, ev["lines"])
+        flag = None
     if ev.get("battle"):
-        t_info = dict(ev["battle"], _intro_lines=lines or None)
+        from src.world import col_post   # ("if_snagged": the team without the Shadow once it's snagged - Colosseum's second chance)
+        t_info = dict(col_post.second_chance(game, ev["battle"]), _intro_lines=lines or None)
         game.change_state(_start_event_battle(game, story.current_area_key, t_info, flag))
         return
     if ev.get("pay"):  # (an entry fee: the Pewter Museum's 50 ticket, FireRed; the Day Care Annex lady's $100 loan, ORAS)

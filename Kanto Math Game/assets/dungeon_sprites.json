@@ -13394,6 +13394,54 @@
     },
     "XD_ONBS:Shroomish": {
       "pokemon": 285
+    },
+    "PYRITE_TOWN:Kid (behind the bookcase)": {
+      "sheet": "orre_npc_02.png"
+    },
+    "SNAGEM_HIDEOUT:Coloured Cipher Peon": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SHADOW_PKMN_LAB:Coloured Cipher Peon": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:Snagem Head Gonzap": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:Chaser Gurks": {
+      "sheet": "orre_npc_07.png"
+    },
+    "DEEP_COLOSSEUM:Deep Colosseum desk": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "OUTSKIRT_STAND:Shady man": {
+      "sheet": "orre_npc_07.png"
+    },
+    "SNAGEM_HIDEOUT:Cipher Peon Nore": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:Cipher Peon Skrub": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:Cipher Peon Kloak": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:Cipher Peon Baila": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:Cipher Peon Arton": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:Cipher Peon Dioge": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:Gurks": {
+      "sheet": "orre_npc_07.png"
+    },
+    "SNAGEM_HIDEOUT:Snagem's Biden": {
+      "sheet": "orre_trainer_burglar.png"
+    },
+    "SNAGEM_HIDEOUT:Snagem's Agrev": {
+      "sheet": "orre_trainer_burglar.png"
     }
   },
   "townsperson": "NPC 17.png",

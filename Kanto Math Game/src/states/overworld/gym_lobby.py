@@ -137,6 +137,9 @@ class GymLobbyState(GameState):
             mode_text = "Rematch" if self.rematch else "League Challenge"
             if league_redo.league_open(game.story_manager, self.region):  # all 8 badges won again
                 self.redo, self.rematch, mode_text = True, False, "League Redo"
+            if self.rematch and self.gym_data.get("rematch_heal") and 0 < self.progress <= len(self.trainers):
+                from src.states.overworld.area_transition import heal_team   # (Realgam's rooftop rematches: healed between
+                heal_team(game)                                             #  battles - Jordan 11-21, Orre batch 8c)
 
             if self.progress < len(self.gauntlet):
                 self.next_opponent = self.gauntlet[self.progress]
@@ -419,6 +422,9 @@ class GymLobbyState(GameState):
             team_levels = [min(100, int(lv) + rematch_boost) for lv in team_levels]
         exact = bool(t_data.get("levels"))
         if self.is_league and getattr(self, "rematch", False) and not self.redo:
+            if t_data.get("rematch_ace"):   # (its rematch team raised to fit, keeping its spread: Realgam ~80, Orre batch 8c)
+                lift = max(0, int(t_data["rematch_ace"]) - max(int(x) for x in team_levels))
+                team_levels = [min(100, int(x) + lift) for x in team_levels]
             team_levels, exact = league_rematch_levels(self.game.story_manager, team_levels), True
         levels.set_team(opponent_team, team_levels, exact=exact)
 

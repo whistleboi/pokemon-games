@@ -39,7 +39,7 @@ story.current_area_key = "ORRE_DESERT"
 p = PlayState(g); g.change_state(p); p.show_progression_menu()
 btns = [b.text for b in p.route_buttons]
 check(btns.count("SNAG SHADOW POKEMON") == 1, f"one SNAG button: {btns}")
-pool = SP["ORRE_DESERT"]["shadow_pool"]
+pool = [e for e in SP["ORRE_DESERT"]["shadow_pool"] if not e.get("event_only")]   # (event_only: only its own battle has it, 11-21)
 check(p._next_shadow()["id"] == pool[0]["id"], "first snag is the area's first Shadow")
 story.story_flags[pool[0]["flag"]] = True
 check(p._next_shadow()["id"] == pool[1]["id"], "a snagged Shadow is skipped")

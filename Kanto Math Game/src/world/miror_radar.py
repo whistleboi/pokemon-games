@@ -48,6 +48,8 @@ def miss(game, mon):
     from src.world import xd_post
     if flag in xd_post.GREEVIL_FLAGS or int(mon.id) == 9400:   # (Greevil's own come back in his rematch, not with Miror B.)
         return
+    if (shadow.data_for(game, mon) or {}).get("game") == "col":   # (Colosseum's missed ones wait in the Snagem raid after the
+        return                                                    #  title, Colosseum's way: Jordan 11-21, batch 8c)
     held = missed(game)
     if not any(m[0] == flag for m in held):
         held.append([flag, int(mon.id), int(getattr(mon, "level", 50) or 50)])
