@@ -57,6 +57,11 @@ void main() {
         color = vec4(c.rgb * tint, c.a);
         return;
     }
+    if (kind == 3 && c.a < 0.999) {   // (a glow with its own see-through level: SoulSilver's stage spotlights, 11-22)
+        if (c.a < 0.02) discard;
+        color = vec4(c.rgb * tint, c.a);
+        return;
+    }
     if (c.a < (kind < 2 ? 0.95 : 0.5)) discard;
     if (kind == 2) { color = vec4(0.0, 0.0, 0.0, 0.38); return; }   // (a shadow sheet: darkens what's under it)
     color = vec4(c.rgb * tint, alpha);
