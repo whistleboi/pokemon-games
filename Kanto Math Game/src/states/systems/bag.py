@@ -74,7 +74,7 @@ class BagState(GameState):
     MEDICINE = tuple(itemlib.MEDICINE) + tuple(k for k in pplib.PP_ITEMS if not k.endswith("_BERRY"))
     BATTLE_ITEMS = ("DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK") + tuple(itemlib.BATTLE)
     # Usable from the Bag (anything else says there's no use for it right now).
-    USABLE_KEYS = ("TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL", "POKEBLOCK_KIT", "WAILMER_PAIL", "EON_FLUTE")
+    USABLE_KEYS = ("TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL", "POKEBLOCK_KIT", "WAILMER_PAIL", "EON_FLUTE", "DOWSING_MACHINE")
     USABLE_MEDICINE = ("POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY")
     # Key items the games keep in the Items pocket (held / stones / fossils).
     ITEM_POCKET_KEYS = ("ITE", "_FOSSIL", "OLD_AMBER", "_ORB", "_DRIVE", "ROCKY_HELMET", "SOOTHE_BELL", "AMULET_COIN")
@@ -419,6 +419,13 @@ class BagState(GameState):
                 return
             from src.states.berry_patch import PokeblockKitState
             self.game.change_state(PokeblockKitState(self.game, self))
+            return
+
+        if item_key == "DOWSING_MACHINE":   # (its screen on the map, on or off: src/world/itemfinder.py, 11-21)
+            flags = self.game.story_manager.story_flags
+            flags["dowsing_on"] = not flags.get("dowsing_on")
+            self._back_to_bag(["The Dowsing MCHN is on! Its rods swing toward buried items nearby."] if flags["dowsing_on"]
+                              else ["The Dowsing MCHN is off."])
             return
 
         if item_key == "WAILMER_PAIL":

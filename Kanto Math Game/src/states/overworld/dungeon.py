@@ -5483,6 +5483,12 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         view = map_view(self.game)
         bar = pygame.Rect(view.x, 12, view.w, 64)  # (over the map's frame)
         theme.draw_textbox(screen, bar)
+        from src.world import itemfinder as _ifd   # (the Dowsing MCHN's screen while it's on, 11-21)
+        if _ifd.dowsing_on(story) and hasattr(self, "run"):
+            _m = self.run.recipe.get("art") or {}
+            _m = (_m["floors"][self.run.index] if self.run.index < len(_m["floors"]) else {}) if _m.get("floors") else _m
+            _ifd.draw_dowsing(screen, pygame.Rect(view.x + 12, view.bottom - 112, 132, 100), _ifd.dowse(story, _m.get("hidden"), tuple(self.run.player),
+                              lambda x, y: f"hidden_{self.area_key}_{self.run.index}_{x}_{y}"), fonts)
         name = self.area_data.get("route_name", self.area_key.replace("_", " ").title())
         floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and self._floor_name(self.run.index) != name else ""   # (a floor named as the place itself, the Sewers': once, 11-21)
         if getattr(self, "per_floor", 1) > 1 and self.zones:  # (a wide floor: the area you're in)

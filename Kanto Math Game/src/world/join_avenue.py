@@ -86,6 +86,36 @@ def visitors(story):
     return d["visitors"]
 
 
+LOOKS = {"market": "b2_c52.png", "florist": "b2_c22.png", "cafe": "b2_c65.png", "dojo": "b2_c46.png", "antique": "b2_c44.png",
+         "raffle": "b2_c58.png", "salon": "b2_c96.png", "nursery": "b2_c33.png"}   # (Black 2 townsfolk matching each dream)
+
+
+# Black 2's own storefronts (zone 490's pack, models 189-212: three a kind, bigger as the shop's rank grows), stood in
+# each lot's alcove (5 x 7 tiles) by the live 3D view (kanto_handoff/unova_map_tools/props3d.py -> prop_490_<model>.npz)
+STOREFRONT = {"market": 189, "cafe": 192, "florist": 195, "antique": 198, "raffle": 201, "dojo": 204, "nursery": 207, "salon": 210}
+LOT_SIGNS = [(9, 9), (17, 16), (9, 23), (17, 30), (9, 37), (17, 44), (9, 51), (17, 58)]
+
+
+def storefronts(story):
+    """[(prop name, (x, z) of the model's origin in tiles, mirrored)] for every open shop."""
+    out = []
+    for n, lot in enumerate(data(story)["lots"]):
+        if not lot or n >= len(LOT_SIGNS):
+            continue
+        r = shop_rank(lot)
+        mid = STOREFRONT[lot["kind"]] + (0 if r <= 3 else 1 if r <= 7 else 2)
+        sx, sy = LOT_SIGNS[n]
+        left = sx < 13
+        out.append(("490_%d" % mid, (6.0 if left else 21.0, sy + 2.0), not left))
+    return out
+
+
+def visitor_is(story, slot, kind):
+    """Story condition "ja_visitor:<slot>:<kind>": today's visitor at that spot dreams of that kind (their look follows)."""
+    vs = visitors(story)
+    return 0 <= slot < len(vs) and vs[slot]["dream"] == kind
+
+
 def _grow(story, d, lot, amount):
     """Popularity for a shop and the avenue; the avenue's rank rewards as it climbs. Returns the reward lines."""
     before = rank(d)
@@ -114,19 +144,31 @@ def event(state, ev, lines, show):
         if story.story_flags.get("b2_join_manager"):
             show(["Owner: The avenue's in your hands now. I'm counting on you!"])
             return
-        story.story_flags["b2_join_manager"] = True
-        show(["Owner: Welcome to Join Avenue! It's brand new, and no shops have opened yet.",
-              "Owner: I run several avenues, and I'm far too busy for this one. Would you be its manager?",
-              f"Owner: You will? Wonderful! From today, {name} manages Join Avenue!",
-              "Owner: Visitors come every day. Hear their dreams, invite them to open shops, and recommend shops to them.",
-              "Owner: My assistants Jacci and Future will help you. Good luck, manager!"])
+        from src.states.systems.text_prompt import TextPromptState
+
+        def moved(text):
+            d["moved"] = text or "Wow!"
+            story.story_flags["b2_join_manager"] = True
+            show([f"Owner: \"{d['greeting']}\"... \"{d['moved']}\"... I knew it! Who else could manage this avenue?",
+                  f"Owner: From today, {name} manages Join Avenue!",
+                  "Owner: Visitors come every day. Hear their dreams, invite them to open shops, and recommend shops to them.",
+                  "Owner: My assistants Jacci and Future will help you. I must be off. Good luck, manager!"])
+
+        def greeting(text):
+            d["greeting"] = text or "Hello!"
+            _say_then(state, ["Owner: A fine greeting! And what would you say when something truly moves you?"],
+                      lambda: game.change_state(TextPromptState(game, state, "JOIN AVENUE", "When something truly moves you, you say...", moved)))
+        _say_then(state, ["Owner: Welcome to Join Avenue! It's brand new, and no shops have opened yet.",
+                          "Owner: I run several avenues, and I'm far too busy for this one. Would you be its manager?",
+                          "Owner: You will? Thank you! Tell me what kind of person you are. How would you greet everyone?"],
+                  lambda: game.change_state(TextPromptState(game, state, "JOIN AVENUE", "Your greeting for everyone...", greeting)))
         return
     if not story.story_flags.get("b2_join_manager"):
         show(["The avenue's still waiting for a manager. Try the office at the south end."])
         return
     if kind == "assistant":
         open_ = [l for l in d["lots"] if l]
-        show([f"Jacci: Join Avenue is rank {rank(d)}, manager! {len(open_)} of {LOTS} lots have shops.",
+        show([f"Jacci: {d.get('greeting') or 'Hello!'} Join Avenue is rank {rank(d)}, manager! {len(open_)} of {LOTS} lots have shops.",
               "Future: Visitors come every day. Invite them to open shops, and recommend the kind of shop they like!"]
              + ([f"Jacci: Next reward at rank {min(r for r in REWARDS if r > rank(d))}."] if any(r > rank(d) for r in REWARDS) else []))
         return
@@ -159,7 +201,8 @@ def event(state, ev, lines, show):
             if act == "invite":
                 d["lots"][n] = {"kind": v["dream"], "owner": v["name"], "pop": 0}
                 story.story_flags[f"ja_lot_{n}"] = True
-                show([f"{v['name']}: Really? I can open my {KINDS[v['dream']][0]} here? Thank you, manager!"] + _grow(story, d, d["lots"][n], 10))
+                show([f"{v['name']}: Really? I can open my {KINDS[v['dream']][0]} here? {d.get('moved') or 'Wow!'} Thank you, manager!"]
+                     + _grow(story, d, d["lots"][n], 10))
                 return
             lot = d["lots"][n]
             if lot["kind"] == v["likes"]:
@@ -168,7 +211,7 @@ def event(state, ev, lines, show):
             else:
                 show([f"{v['name']}: Hmm, a {KINDS[lot['kind']][0]}... not really my thing. I'll be going.",
                       f"(They seemed to want a {KINDS[v['likes']][0]}.)"] + _grow(story, d, None, 2))
-        _say_then(state, [f"Visitor {v['name']}: Hello! Is this Join Avenue? {dream}"],
+        _say_then(state, [f"Visitor {v['name']}: {d.get('greeting') or 'Hello!'} Is this Join Avenue? {dream}"],
                   lambda: game.change_state(PickListState(game, state, "MANAGER", choices, picked)))
         return
     if kind == "shop":

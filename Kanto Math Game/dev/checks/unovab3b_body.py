@@ -68,6 +68,11 @@ def walk_route(area, at=None, floor=0):
     return g.current_state
 
 
+def live3d_props_ok():
+    import os as _o
+    return all(_o.path.isfile("assets/b2_3d/prop_490_%d.npz" % m) for m in range(189, 213))
+
+
 def figure(t, text):
     return next((m for m in t.run.floor.movers if isinstance(getattr(m, "payload", None), dict)
                  and str(m.payload.get("text", "")).rstrip() == text), None)
@@ -193,8 +198,22 @@ story.current_area_key = "JOIN_AVENUE"
 g.walk_town_pos = ("JOIN_AVENUE", (13, 70), (0, -1)); g.walk_town_room = None
 said.clear(); g.change_state(CityState(g)); settle(5)
 t = g.current_state
-t.step(0, -1); settle(200)
-check(flags.get("b2_join_manager"), f"the owner meets you as you walk in and makes you manager ({heard()[:60]})")
+t.step(0, -1); settle(120)
+check(flags.get("b2_join_owner_met") and "come and talk" in heard(), "the owner walks up as you come in and calls you over")
+said.clear(); g.current_state._talk((13, 66))
+_asked = []
+for _ in range(400):
+    st = g.current_state
+    if type(st).__name__ == "TextPromptState":
+        _asked.append(st.question)
+        st.text = "Howdy!" if len(_asked) == 1 else "Whoa!"
+        st.confirm()
+    settle(1)
+    if flags.get("b2_join_manager") and len(_asked) >= 2:
+        break
+settle(60)
+check(flags.get("b2_join_manager") and len(_asked) == 2, f"talk to him: he asks your two phrases and makes you manager ({_asked})")
+check(ja.data(story).get("greeting") == "Howdy!" and ja.data(story).get("moved") == "Whoa!", "...and keeps them for the avenue's people to say")
 vs = ja.visitors(story)
 check(len(vs) == ja.VISITORS_A_DAY, f"{ja.VISITORS_A_DAY} visitors today, each with a dream")
 ev = {"join_avenue": "visitor", "slot": 0}
@@ -216,5 +235,28 @@ check(d["pop"] > pop and d["lots"][0]["pop"] > 0, "recommend a shop they like: t
 said.clear(); common._run_story_event(t, {"join_avenue": "shop", "lot": 0}, lambda c: True, lambda l: t.show_message(l)); settle(30)
 check(type(g.current_state).__name__ == "PokeMartState", f"the shop sells its goods ({type(g.current_state).__name__})")
 check("nursery" not in ja.kinds_open(story, d), "no Nursery before the Hall of Fame")
+check(any(p[0].startswith("490_189") for p in ja.storefronts(story)) and live3d_props_ok(), "lot 1's Market stands as Black 2's own storefront (its smallest, at shop rank 1)")
+_k = vs[0]["dream"]
+check(story.special_condition("ja_visitor:0:%s" % _k) and not story.special_condition("ja_visitor:0:%s" % ("dojo" if _k != "dojo" else "cafe")),
+      "a visitor looks the part of their dream (the spot's look follows today's dream)")
+
+print("8) Route 4's vending machine, the birds, the Dowsing MCHN's screen")
+t = walk_route("UNOVA_ROUTE_4", (14, 53))
+use(t, "Vending machine")
+check(type(g.current_state).__name__ == "PokeMartState" and "FRESH_WATER" in (g.current_state.stock or []), "the vending machine by the rest house sells drinks")
+g.change_state(t)
+flags["b2_r4_mandibuzz"] = True; flags.pop("legend_rematch_b2_r4_mandibuzz", None)
+check(not story.special_condition("legend_back:b2_r4_mandibuzz"), "a caught (or not yet beaten-and-gone) bird doesn't come back")
+flags["legend_rematch_b2_r4_mandibuzz"] = 1
+check(story.special_condition("legend_back:b2_r4_mandibuzz"), "a beaten, uncaught bird comes back (on its day: the weekday condition)")
+from src.states.systems.bag import BagState
+check("DOWSING_MACHINE" in BagState.USABLE_KEYS, "the Dowsing MCHN is used from the Bag")
+flags["dowsing_on"] = True
+check(itemfinder.dowsing_on(story) and itemfinder.dowse(story, {"56,35": "GROUND_GEM"}, (54, 35), lambda x, y: "nope") == (2, 0),
+      "switched on, its rods point at the buried item nearby (2 tiles east)")
+t = walk_route("DESERT_RESORT", (55, 36))
+t.draw()
+check(True, "...and its panel draws on the map")
+flags.pop("dowsing_on", None)
 
 print(f"##### {len(fails)} failures")

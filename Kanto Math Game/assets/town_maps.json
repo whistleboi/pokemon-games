@@ -491510,7 +491510,7 @@
    "ccccccccccccccc.....ccccccccccccccccccccccc.......cccccccccccccc",
    "ccccccccccccccc..N..ccccccccccccccccccccccc.......cccccccccccccc",
    "ccccccccccccccc.....ccccccccccccccccccccc!c..N....cccccccccccccc",
-   "ccccccccccccccc..................................ccccccccccccccc",
+   "ccccccccccccccN..................................ccccccccccccccc",
    "cccccccccccc......................................cccccccccccccc",
    "cccccccccccc......................................cccccccccccccc",
    "cccccccccccc..............X.......................cccccccccccccc",
@@ -500868,6 +500868,22 @@
     "_look": "sheet:b2_c19.png"
    },
    {
+    "text": "Vending machine",
+    "action": "EVENT",
+    "no_tag": true,
+    "_look": "sheet:b2_none.png",
+    "event": {
+     "lines": [
+      "A vending machine! Cold drinks, ready to go."
+     ],
+     "stock": [
+      "FRESH_WATER",
+      "SODA_POP",
+      "LEMONADE"
+     ]
+    }
+   },
+   {
     "text": "Poke Ball by the road",
     "action": "EVENT",
     "flag_condition": "not b2_r4_tm055",
@@ -500918,7 +500934,13 @@
     "color": "RED",
     "_look": "sheet:b2_c348.png",
     "condition": [
-     "weekday:thu"
+     "weekday:thu",
+     {
+      "any": [
+       "not:b2_r4_mandibuzz",
+       "legend_back:b2_r4_mandibuzz"
+      ]
+     }
     ],
     "boss": {
      "id": 630,
@@ -500937,7 +500959,13 @@
     "color": "RED",
     "_look": "sheet:b2_c4712.png",
     "condition": [
-     "weekday:mon"
+     "weekday:mon",
+     {
+      "any": [
+       "not:b2_r4_braviary",
+       "legend_back:b2_r4_braviary"
+      ]
+     }
     ],
     "boss": {
      "id": 628,
@@ -513788,7 +513816,13 @@
        "color": "RED",
        "_look": "sheet:b2_c4712.png",
        "condition": [
-        "weekday:mon"
+        "weekday:mon",
+        {
+         "any": [
+          "not:b2_r4_braviary",
+          "legend_back:b2_r4_braviary"
+         ]
+        }
        ],
        "boss": {
         "id": 628,
@@ -513807,7 +513841,13 @@
        "color": "RED",
        "_look": "sheet:b2_c348.png",
        "condition": [
-        "weekday:thu"
+        "weekday:thu",
+        {
+         "any": [
+          "not:b2_r4_mandibuzz",
+          "legend_back:b2_r4_mandibuzz"
+         ]
+        }
        ],
        "boss": {
         "id": 630,
@@ -532673,21 +532713,136 @@
      "lot": 4
     }
    },
-   {
-    "text": "Visitor 3",
-    "action": "EVENT",
-    "condition": [
-     "b2_join_manager"
-    ],
-    "_look": "sheet:b2_c27.png",
-    "event": {
-     "lines": [
-      "..."
+   [
+    {
+     "text": "Visitor 3 market",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:market"
      ],
-     "join_avenue": "visitor",
-     "slot": 2
+     "_look": "sheet:b2_c52.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
+    },
+    {
+     "text": "Visitor 3 florist",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:florist"
+     ],
+     "_look": "sheet:b2_c22.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
+    },
+    {
+     "text": "Visitor 3 cafe",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:cafe"
+     ],
+     "_look": "sheet:b2_c65.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
+    },
+    {
+     "text": "Visitor 3 dojo",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:dojo"
+     ],
+     "_look": "sheet:b2_c46.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
+    },
+    {
+     "text": "Visitor 3 antique",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:antique"
+     ],
+     "_look": "sheet:b2_c44.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
+    },
+    {
+     "text": "Visitor 3 raffle",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:raffle"
+     ],
+     "_look": "sheet:b2_c58.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
+    },
+    {
+     "text": "Visitor 3 salon",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:salon"
+     ],
+     "_look": "sheet:b2_c96.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
+    },
+    {
+     "text": "Visitor 3 nursery",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:2:nursery"
+     ],
+     "_look": "sheet:b2_c33.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 2
+     }
     }
-   },
+   ],
    {
     "text": "Shopkeeper on lot 6",
     "action": "EVENT",
@@ -532733,36 +532888,266 @@
      "lot": 7
     }
    },
-   {
-    "text": "Visitor 2",
-    "action": "EVENT",
-    "condition": [
-     "b2_join_manager"
-    ],
-    "_look": "sheet:b2_c30.png",
-    "event": {
-     "lines": [
-      "..."
+   [
+    {
+     "text": "Visitor 2 market",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:market"
      ],
-     "join_avenue": "visitor",
-     "slot": 1
-    }
-   },
-   {
-    "text": "Visitor 1",
-    "action": "EVENT",
-    "condition": [
-     "b2_join_manager"
-    ],
-    "_look": "sheet:b2_c31.png",
-    "event": {
-     "lines": [
-      "..."
+     "_look": "sheet:b2_c52.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
+    },
+    {
+     "text": "Visitor 2 florist",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:florist"
      ],
-     "join_avenue": "visitor",
-     "slot": 0
+     "_look": "sheet:b2_c22.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
+    },
+    {
+     "text": "Visitor 2 cafe",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:cafe"
+     ],
+     "_look": "sheet:b2_c65.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
+    },
+    {
+     "text": "Visitor 2 dojo",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:dojo"
+     ],
+     "_look": "sheet:b2_c46.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
+    },
+    {
+     "text": "Visitor 2 antique",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:antique"
+     ],
+     "_look": "sheet:b2_c44.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
+    },
+    {
+     "text": "Visitor 2 raffle",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:raffle"
+     ],
+     "_look": "sheet:b2_c58.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
+    },
+    {
+     "text": "Visitor 2 salon",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:salon"
+     ],
+     "_look": "sheet:b2_c96.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
+    },
+    {
+     "text": "Visitor 2 nursery",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:1:nursery"
+     ],
+     "_look": "sheet:b2_c33.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 1
+     }
     }
-   },
+   ],
+   [
+    {
+     "text": "Visitor 1 market",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:market"
+     ],
+     "_look": "sheet:b2_c52.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    },
+    {
+     "text": "Visitor 1 florist",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:florist"
+     ],
+     "_look": "sheet:b2_c22.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    },
+    {
+     "text": "Visitor 1 cafe",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:cafe"
+     ],
+     "_look": "sheet:b2_c65.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    },
+    {
+     "text": "Visitor 1 dojo",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:dojo"
+     ],
+     "_look": "sheet:b2_c46.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    },
+    {
+     "text": "Visitor 1 antique",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:antique"
+     ],
+     "_look": "sheet:b2_c44.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    },
+    {
+     "text": "Visitor 1 raffle",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:raffle"
+     ],
+     "_look": "sheet:b2_c58.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    },
+    {
+     "text": "Visitor 1 salon",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:salon"
+     ],
+     "_look": "sheet:b2_c96.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    },
+    {
+     "text": "Visitor 1 nursery",
+     "action": "EVENT",
+     "condition": [
+      "b2_join_manager",
+      "ja_visitor:0:nursery"
+     ],
+     "_look": "sheet:b2_c33.png",
+     "event": {
+      "lines": [
+       "..."
+      ],
+      "join_avenue": "visitor",
+      "slot": 0
+     }
+    }
+   ],
    {
     "text": "Assistant Future",
     "action": "EVENT",
@@ -533229,9 +533614,8 @@
     "flag": "b2_join_owner_met",
     "approach": true,
     "lines": [
-     "Owner: Hello there! Welcome to Join Avenue!"
-    ],
-    "then": "talk"
+     "Owner: Hello there! Welcome to Join Avenue! Please, come and talk to me!"
+    ]
    }
   ]
  }

@@ -339,6 +339,21 @@ class Scene:
             if kind == 4:
                 ctx.disable(_CTX["mgl"].CULL_FACE)
             ctx.depth_mask = True
+        for prop, (px_, py_, pz_), flip in getattr(self, "props", ()) or ():   # (models stood at run time: Join Avenue's
+            T = np.eye(4, dtype="f4")                                          #  storefronts on their lots, 11-21)
+            T[0, 0] = -1.0 if flip else 1.0
+            T[0, 3], T[1, 3], T[2, 3] = px_, py_, pz_
+            prog["mvp"].write((mvp @ T).T.astype("f4").tobytes())
+            if flip:
+                ctx.front_face = "cw"
+            for kind, tex, vao in prop.parts:
+                if kind in (2, 3):
+                    continue
+                tex.use(0)
+                prog["kind"].value = 1
+                vao.render()
+            ctx.front_face = "ccw"
+            prog["mvp"].write(mvp.T.astype("f4").tobytes())
         if shadows:
             self._draw_shadows(ctx, prog, shadows)
         if sprites:
@@ -472,6 +487,15 @@ def _fix(kind, rgba, verts):
             rgba = np.concatenate([rgba, np.flip(rgba, axis=axis)], axis=axis)
             verts[:, col] /= 2
     return 3, np.ascontiguousarray(rgba), verts
+
+
+def prop(game, name):
+    """A single model's little scene (kanto_handoff/unova_map_tools/props3d.py: assets/b2_3d/prop_<zone>_<model>.npz), or None."""
+    key = "prop:" + name
+    if key not in _SCENES:
+        path = os.path.join(game.assets.assets_dir or "assets", "b2_3d", "prop_%s.npz" % name)
+        _SCENES[key] = Scene(path) if os.path.exists(path) else None
+    return _SCENES[key]
 
 
 def scene(game, zone):

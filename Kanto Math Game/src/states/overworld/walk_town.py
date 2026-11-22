@@ -2396,6 +2396,13 @@ class WalkTownState(CityState):
                 put(_img, *_t)
             elif not _look.startswith("ribbon:"):
                 flat_bars.append((_t, _look))
+        sc.props = []
+        if self.area_key == "JOIN_AVENUE" and not getattr(self, "room", None):   # (its open shops' storefronts, Black 2's own: 11-21)
+            from src.world import join_avenue as _ja
+            for _name, (_px, _pz), _flip in _ja.storefronts(self.game.story_manager):
+                _p = __import__("src.dungeon.live3d", fromlist=["prop"]).prop(self.game, _name)
+                if _p is not None:
+                    sc.props.append((_p, (_px, h(int(_px), int(_pz)), _pz), _flip))
         screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else ()), view.topleft)
 
         def at(t):
@@ -2913,6 +2920,11 @@ class WalkTownState(CityState):
 
     def _draw_hud(self, screen, fonts):
         self._draw_journal(screen)
+        from src.world import itemfinder as _ifd   # (the Dowsing MCHN's screen while it's on, 11-21)
+        if _ifd.dowsing_on(self.game.story_manager):
+            _v = self._view()
+            _ifd.draw_dowsing(screen, pygame.Rect(_v.x + 12, _v.bottom - 112, 132, 100), _ifd.dowse(self.game.story_manager, self._hidden_now(), tuple(self.player),
+                              lambda x, y: f"hidden_{self.area_key}_{getattr(self, 'room', None) or ''}_{x}_{y}"), fonts)
         if not (getattr(self, "dark", None) and self.light_radius() is not None):  # (a dark room's map isn't given away)
             self._draw_minimap(screen)
         W, H = self.game.width, self.game.height

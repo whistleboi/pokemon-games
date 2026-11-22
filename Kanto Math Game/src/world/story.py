@@ -415,6 +415,13 @@ class StoryManager:
             return condition.split(":", 1)[1].upper() in self.visited_regions()
         if condition.startswith("unova_version:"):  # Black 2 / White 2 only (src/world/unova_version.py)
             return self.story_flags.get("unova_version") == condition.split(":", 1)[1]
+        if condition.startswith("ja_visitor:"):   # (Join Avenue: today's visitor at a spot dreams of that shop kind, 11-21)
+            from src.world import join_avenue
+            _s, _k = condition.split(":")[1:3]
+            return join_avenue.visitor_is(self, int(_s), _k)
+        if condition.startswith("legend_back:"):   # (a beaten, uncaught legend is back: Route 4's weekly birds on their day, 11-21)
+            from src.states.battle import legend_back
+            return legend_back(self.story_flags, condition.split(":", 1)[1])
         if condition.startswith("hoenn_version:"):  # Omega Ruby / Alpha Sapphire only (Marine / Terra Cave)
             return self.story_flags.get("hoenn_version") == condition.split(":", 1)[1]
         return None

@@ -381,6 +381,10 @@ def _run_story_event(state, key, check, show):
         from src.world import b2_errands
         b2_errands.event(state, ev, lines, show)
         return
+    if ev.get("stock") and not ev.get("battle"):   # (a vending machine, a stall: its own goods; Route 4's machine by the rest house, 11-21)
+        from src.states.systems import PokeMartState
+        _say_then(state, lines or ["..."], lambda: game.change_state(PokeMartState(game, state, stock=list(ev["stock"]))))
+        return
     if ev.get("join_avenue"):   # (Join Avenue, the manager game: src/world/join_avenue.py, 11-21)
         from src.world import join_avenue
         join_avenue.event(state, ev, lines, show)

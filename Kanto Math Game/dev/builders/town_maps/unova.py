@@ -2404,10 +2404,10 @@ R4_COLRESS_BYE = ["Colress: If only we could talk with Pokemon to bring out thei
 
 def _r4_birds(here, other):
     """The weekly Hidden Ability birds: this version's at its own spot, the other's beside it (both for everyone)."""
-    m = {"text": "Mandibuzz", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c348.png", "condition": ["weekday:thu"],
+    m = {"text": "Mandibuzz", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c348.png", "condition": ["weekday:thu", {"any": ["not:b2_r4_mandibuzz", "legend_back:b2_r4_mandibuzz"]}],
          "boss": {"id": 630, "name": "Mandibuzz", "level": 25, "ability": "WEAK-ARMOR", "victory_flag": "b2_r4_mandibuzz",
                   "lines": ["Kreeeee!"]}}
-    b = {"text": "Braviary", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c4712.png", "condition": ["weekday:mon"],
+    b = {"text": "Braviary", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c4712.png", "condition": ["weekday:mon", {"any": ["not:b2_r4_braviary", "legend_back:b2_r4_braviary"]}],
          "boss": {"id": 628, "name": "Braviary", "level": 25, "ability": "DEFIANT", "victory_flag": "b2_r4_braviary",
                   "lines": ["Ra ra ra ra!"]}}
     return (m, b) if here == "mandibuzz" else (b, m)
@@ -2458,6 +2458,8 @@ def _healer(n, label):
         "lines": ["You look worn out! Rest here a minute.", "Your Pokemon were fully healed!"], "heal": True}}}
 
 
+R4_VENDING = {"text": "Vending machine", "action": "EVENT", "no_tag": True, "_look": "sheet:b2_none.png",   # (model 155, by the rest house)
+              "event": {"lines": ["A vending machine! Cold drinks, ready to go."], "stock": ["FRESH_WATER", "SODA_POP", "LEMONADE"]}}
 R4_SIGNS = {1: ["ROUTE 4"], 2: ["TRAINER TIPS", "Each move has PP, its Power Points. A move with none left can't be used:",
                                 "that's a good time to head for a Pokemon Center!"],
             3: ["ROUTE 4", "Planned route-expansion area"],
@@ -2485,7 +2487,7 @@ ROUTE_4 = route(
               9: "Policeman Dell", 10: "Policeman Neagle", 8: "Roughneck Silvester", 7: "Roughneck Joey",
               6: "Youngster Sinclair", 5: "Biker Stanley", 3: "Hooligans Rob & Sal"},
     hidden={"22,64": "RED_SHARD", "25,80": "HYPER_POTION", "30,85": "STARDUST", "26,89": "YELLOW_SHARD", "11,95": "GREEN_SHARD"},
-    scenes=_B2_COLRESS_SCENES, extra_people=[(31, 89, _B2_OTHER)],
+    scenes=_B2_COLRESS_SCENES, extra_people=[(31, 89, _B2_OTHER), (14, 52, R4_VENDING)],
     rooms={
         "speed_house": room(327, _stat_room(327, 0, "b2_c31.png", "SPEED", "HEALTH_WING", "b2_r4_speed",
                                             {1: _say("Ace Trainer's brother", "My sister's crazy about Speed. Me? I like Attack.")}),
@@ -2688,8 +2690,11 @@ def _ja_keepers():
     return out
 
 
-JA_VISITOR = lambda i, look: {"text": "Visitor %d" % (i + 1), "action": "EVENT", "condition": ["b2_join_manager"],
-                              "_look": "sheet:" + look, "event": {"lines": ["..."], "join_avenue": "visitor", "slot": i}}
+JA_LOOKS = {"market": "b2_c52.png", "florist": "b2_c22.png", "cafe": "b2_c65.png", "dojo": "b2_c46.png", "antique": "b2_c44.png",
+            "raffle": "b2_c58.png", "salon": "b2_c96.png", "nursery": "b2_c33.png"}   # (= join_avenue.LOOKS: their look follows their dream)
+JA_VISITOR = lambda i, _look=None: [{"text": "Visitor %d %s" % (i + 1, k), "action": "EVENT", "condition": ["b2_join_manager", "ja_visitor:%d:%s" % (i, k)],
+                                     "_look": "sheet:" + look, "event": {"lines": ["..."], "join_avenue": "visitor", "slot": i}}
+                                    for k, look in JA_LOOKS.items()]
 JA_OWNER = {"text": "Join Avenue owner", "action": "EVENT", "condition": ["not:b2_join_manager"], "_look": "sheet:b2_c52.png",
             "event": {"lines": ["..."], "join_avenue": "owner"}}
 JOIN_AVENUE = town(
@@ -2710,7 +2715,7 @@ JOIN_AVENUE = town(
     extra_people=[(15, 40, JA_VISITOR(2, "b2_c27.png"))] + _ja_keepers(),
     edges={"^": ("NIMBASA_CITY", [(x, 5) for x in range(10, 17)]), "v": ("UNOVA_ROUTE_4", [(x, 74) for x in range(9, 18)])},
     scenes=[{"who": "Join Avenue owner", "trigger": {"zone": [9, 69, 18, 69]}, "condition": ["not:b2_join_manager"],
-             "flag": "b2_join_owner_met", "approach": True, "lines": ["Owner: Hello there! Welcome to Join Avenue!"], "then": "talk"}],
+             "flag": "b2_join_owner_met", "approach": True, "lines": ["Owner: Hello there! Welcome to Join Avenue! Please, come and talk to me!"]}],
 )
 JOIN_AVENUE["rooms"]["office"]["title"] = "Manager's Office"
 
