@@ -74,7 +74,7 @@ _tm = _json.load(open("assets/town_maps.json", encoding="utf-8"))
 _sp = _json.load(open("assets/dungeon_sprites.json", encoding="utf-8"))["figures"]
 
 print("1) the five, where Platinum stands them")
-for key, pt in WP.PARTNERS.items():
+for key, pt in [(k, WP.PARTNERS[k]) for k in ("cheryl", "mira", "riley", "buck", "marley")]:   # (Platinum's five; Hugh's in unovab3a)
     area = pt["area"]
     opt = next((o for o in _area_data[area]["route_menu"] if o.get("text") == pt["figure"]), None)
     m = _tm[area]

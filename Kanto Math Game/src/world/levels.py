@@ -25,8 +25,10 @@ GYM_ORDER = {
               "FORTREE_CITY", "MOSSDEEP_CITY", "SOOTOPOLIS_CITY"],
     "SINNOH": ["OREBURGH_CITY", "ETERNA_CITY", "VEILSTONE_CITY", "PASTORIA_CITY", "HEARTHOME_CITY",
                "CANALAVE_CITY", "SNOWPOINT_CITY", "SUNYSHORE_CITY"],
-    "UNOVA": ["STRIATON_CITY", "NACRENE_CITY", "CASTELIA_CITY", "NIMBASA_CITY", "DRIFTVEIL_CITY",
-              "MISTRALTON_CITY", "ICIRRUS_CITY", "OPELUCID_CITY"],
+    # (11-20: Black 2 / White 2's order, Unova becoming walkable from Aspertia; BW's Striaton, Nacrene and Icirrus Gyms
+    #  are BW-only now, kept for the post-game chapter Jordan picks: unova_check/DECISIONS.md)
+    "UNOVA": ["ASPERTIA_CITY", "VIRBANK_CITY", "CASTELIA_CITY", "NIMBASA_CITY", "DRIFTVEIL_CITY",
+              "MISTRALTON_CITY", "OPELUCID_CITY", "HUMILAU_CITY"],
     "KALOS": ["SANTALUNE_CITY", "CYLLAGE_CITY", "SHALOUR_CITY", "COUMARINE_CITY", "LUMIOSE_CITY",
               "LAVERRE_CITY", "ANISTAR_CITY", "SNOWBELLE_CITY"],
     "ALOLA": ["HAUOLI_CITY", "IKI_TOWN", "HEAHEA_CITY", "MALIE_CITY", "SEAFOLK_VILLAGE"],
@@ -51,7 +53,7 @@ GYM_ORDER = {
 GYM_ACE = {
     "KANTO": [14, 21, 24, 29, 43, 43, 47, 50], "JOHTO": [13, 17, 19, 25, 31, 35, 34, 41],
     "HOENN": [14, 16, 21, 28, 30, 35, 45, 46], "SINNOH": [14, 22, 30, 30, 36, 39, 42, 49],
-    "UNOVA": [14, 20, 24, 30, 33, 39, 39, 48], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
+    "UNOVA": [13, 18, 24, 30, 33, 39, 48, 51], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
     "ALOLA": [10, 16, 28, 44, 54], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
     "ORANGE": [22, 35, 40, 46],   # (11-17: 5.7's Orange Crew, Cissy 22, Danny 35, Rudy 40, Luana 46)

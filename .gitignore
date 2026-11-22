@@ -25,3 +25,7 @@ Kanto Math Game/dev/builders/bulbapedia_cache/
 
 # builders' check pictures (rebuilt on every run)
 Kanto Math Game/dev/builders/out/
+
+# save backups and one-off probe pictures (local only)
+**/game_data*.json.bak_*
+Kanto Math Game/probe.png

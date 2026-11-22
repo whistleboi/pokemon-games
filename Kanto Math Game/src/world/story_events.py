@@ -46,6 +46,68 @@ EVENTS = {
                            "clear": ["hall_of_fame_due_INDIGO_PLATEAU"], "travel": "PALLET_TOWN"},
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
     "johto_elm_starter": {"starter": "JOHTO"},
+    # ---------------- Unova (Black 2 / White 2's opening in Aspertia, Jordan 11-19; the scenes: dev/builders/town_maps/unova.py)
+    "b2_bianca_starter": {"starter": "UNOVA"},
+    "b2_pokedex": {"lines": ["{player_name} received the Pokedex!"], "flag": "received_pokedex_unova"},
+    "b2_hugh_battle": {"flag": "b2_hugh_battled", "battle": {
+        "name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": [498], "level": 5,
+        "team_choice": {"495": [498], "498": [501], "501": [495]},   # (his Egg: the one strong against yours)
+        "rewards": {"balls": 0},
+        "dialogue": {"player_won": ["{rival_name}: I lost... Battling a Trainer's nothing like fighting wild Pokemon!",
+                                    "{rival_name}: Still, now I know you're someone I can count on."],
+                     "player_lost": ["{rival_name}: Not bad for your first battle!"]}}},
+    "b2_bianca_balls": {"gift_item": {"balls": 10}, "flag": "b2_got_balls"},
+    "b2_running_shoes": {"lines": ["{player_name} got a pair of Running Shoes!"], "flag": "b2_running_shoes"},
+    "b2_town_map": {"lines": ["{player_name} took the Town Map for {rival_name}."], "flag": "b2_town_map"},   # (yours you already have: every region's, from the start)
+    # (batch 1, 11-20: Floccesy Ranch, Alder's students, Route 20, Aspertia after the badge; B2W2's teams and levels)
+    "b2_hugh_ranch": {"flag": "b2_hugh_ranch_battled", "battle": {
+        "name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": [498], "level": 8,
+        "team_choice": {"495": [498], "498": [501], "501": [495]},
+        "rewards": {"balls": 0},
+        "dialogue": {"player_won": ["{rival_name}: Not bad... You're thinking about how to bring out your Pokemon's strength."],
+                     "player_lost": ["{rival_name}: Ha! I'm getting stronger every day!"]}}},
+    "b2_ranch_potion": {"gift_item": {"POTION": 1}, "flag": "b2_ranch_potion"},
+    "b2_hugh_parlyz": {"gift_item": {"PARALYZE_HEAL": 1}, "flag": "b2_hugh_parlyz"},
+    "b2_grunt_tm": {"gift_item": {"TM273": 1}, "flag": "b2_grunt_tm273"},   # (B2W2's TM21 Frustration, thrown by the Grunt)
+    "b2_seymour": {"flag": "b2_seymour_battled", "battle": {
+        "name": "School Kid Seymour", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [515], "level": 9,
+        "team_choice": {"495": [515], "498": [511], "501": [513]},   # (the monkey strong against yours)
+        "rewards": {"balls": 2},
+        "dialogue": {"player_won": ["Boy: You really are tough!"], "player_lost": ["Boy: I did it! Did you see, Alder?"]}}},
+    "b2_cassie": {"flag": "b2_cassie_battled", "battle": {
+        "name": "School Kid Cassie", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [513], "level": 9,
+        "team_choice": {"495": [513], "498": [515], "501": [511]},
+        "rewards": {"balls": 2},
+        "dialogue": {"player_won": ["Girl: Type matchups really do matter..."], "player_lost": ["Girl: Type matchups win again!"]}}},
+    "b2_pecha": {"gift_item": {"PECHA_BERRY": 3}, "flag": "b2_cheren_pecha"},
+    "b2_medal_box": {"gift_item": {"MEDAL_BOX": 1}, "flag": "b2_medal_box"},   # (Floccesy: Mr. Medal; the Medal Rally starter set)
+    "b2_alder_oran": {"gift_item": {"ORAN_BERRY": 5}, "flag": "b2_alder_oran_berries"},   # (Route 19, Alder's second meeting)
+    "b2_bianca_return": {"gift_item": {"TM274": 1}, "flag": "b2_bianca_tm274"},   # (B2W2's TM27 Return; the C-Gear: online, left out)
+    # (batch 2, 11-20: Virbank City, the Complex, Roxie's Gym, Pokestar Studios, Team Plasma at the docks)
+    "b2_mom_call": {"scene": "xtransceiver", "caller": "Mom", "pic": "sheet:b2_mom.png", "flag": "b2_mom_called", "call": [
+        "Mom: Hi, {player_name}! Can you see me? I wanted to try this Xtransceiver out!",
+        "Mom: You're in Virbank City already? Then you have to see the Virbank Complex at night. The lights are beautiful!",
+        "Mom: Oh, and don't skip meals. Your Pokemon get hungry too, you know!",
+        "Mom: That's all! Call... well, I'll call you. Take care!"]},
+    "b2_cut": {"gift_item": {"HM_CUT": 1}, "flag": "b2_got_cut"},   # (Roxie's thanks at the docks: HM01 Cut)
+    "b2_first_film": {"scene": "pokestar", "script": "brycen_man", "flag": "b2_first_film"},   # (Pokestar Studios: your first film)
+    # (batch 3a, 11-20: the Castelia Sewers. You and Hugh against two Plasma Grunts (B2W2's teams); Hugh's HM04 Strength)
+    "b2_sewer_plasma": {"flag": "b2_sewer_plasma_battled", "battle": {
+        "name": "Team Plasma Grunt", "class": "PLASMA", "sprite": "b2_plasma_grunt_m.png", "team": [551], "levels": [16],
+        "rewards": {"balls": 3},
+        "battle_options": {"double": True,
+                           "partner": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": [499, 519],
+                                       "levels": [20, 18], "team_choice": {"495": [499, 519], "498": [502, 519], "501": [496, 519]}},
+                           "second_trainer": {"name": "Team Plasma Grunt", "class": "PLASMA", "sprite": "b2_plasma_grunt_m.png",
+                                              "team": [559], "levels": [16], "rewards": {"balls": 3}}},
+        "dialogue": {"player_won": ["Team Plasma: They're really tough!"], "player_lost": ["Team Plasma: Hand them over!"]}}},
+    "b2_strength": {"gift_item": {"HM_STRENGTH": 1}, "flag": "b2_got_strength"},
+    # (batch 3b, 11-21: Colress at the Crustle on Route 4; Bianca's Dowsing MCHN in the Castelia Gate)
+    "b2_colress_route4": {"flag": "b2_colress_r4", "battle": {
+        "name": "Colress", "class": "PKMN_TRAINER", "sprite": "b2_colress.png", "team": [81, 599], "levels": [21, 23],
+        "rewards": {"balls": 3}, "dialogue": {"player_won": ["Colress: I see!"], "player_lost": ["Colress: Hmm. Not yet, then."]}}},
+    "b2_colress_protein": {"gift_item": {"PROTEIN": 1}, "flag": "b2_colress_r4_protein"},
+    "b2_dowsing": {"gift_item": {"DOWSING_MACHINE": 1}, "flag": "b2_got_dowsing"},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)
     "hq_alarm_1": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_1",
         "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 41], "levels": [18, 18],
@@ -218,7 +280,7 @@ EVENTS = {
                                                "Cyrus: Then I will find another way. Alone.",
                                                "The legendary Pokemon still stirs at the top of the Spear Pillar..."]}}},
     # Platinum's walking partners (11-18, src/world/walk_partners.py): talk to them and they walk with you.
-    **{f"walk_{_k}": {"walk_partner": _k} for _k in ("cheryl", "mira", "riley", "buck", "marley")},
+    **{f"walk_{_k}": {"walk_partner": _k} for _k in ("cheryl", "mira", "riley", "buck", "marley", "hugh")},
     # Iron Island B2F (Platinum): you and Riley against two Galactic Grunts, their teams from Platinum; then the Riolu Egg
     "riley_iron_island": {
         "lines": ["Two Galactic Grunts are blocking the passage!",

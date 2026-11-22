@@ -327,10 +327,10 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
                 exits[(x, y)] = what["exit"]
             if what.get("decor"):
                 floor.decor[(x, y)] = what["decor"]
-            if what.get("figure"):
-                if what["figure"] not in floor.spots:
-                    floor.spots[what["figure"]] = (x, y)
-                floor.__dict__.setdefault("spot_queue", {}).setdefault(what["figure"], []).append((x, y))   # (several trainers of one name: each its own spot, in reading order)
+            for fig in (what["figure"] if isinstance(what.get("figure"), list) else [what["figure"]] if what.get("figure") else []):
+                if fig not in floor.spots:   # (a list: several people for one spot, one at a time: Route 20's Hiker Jerome)
+                    floor.spots[fig] = (x, y)
+                floor.__dict__.setdefault("spot_queue", {}).setdefault(fig, []).append((x, y))   # (several trainers of one name: each its own spot, in reading order)
     for t in map(tuple, plan.get("exit_order") or ()):  # (several mouths to one place that pair up out of reading order: these come last, in this order: Mt. Mortar's four)
         if t in exits:
             exits[t] = exits.pop(t)

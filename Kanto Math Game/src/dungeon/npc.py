@@ -324,7 +324,8 @@ class Scenes:
     Any cast member's "picture": the map is drawn with that picture (a name in oi_ground / oi_top) from then till the scene
     ends (None: its own again): 5.7's metatile flashes, the shrine's pillars lighting up (host.npc_picture).
     Any cast member's "look": [x, y] moves the view to that tile as they set off (5.7's camera pans: host.npc_look),
-    "look": "you" back to you; the view comes back to you when the scene ends.
+    "look": "you" back to you; the view comes back to you when the scene ends. "zoom": the camera moves in (1.4) or out
+    (0.8) as they set off, 1 back (host.npc_zoom: the DS games' scene cameras; back to normal when the scene ends).
     A scene's "call": lines heard before anyone walks in (someone shouting from off the screen: "Hey! Wait!").
     A scene's "room": [name, x, y]: when it ends you are in that room of the town, standing there (towns only:
     host.npc_room; Oak's Lab, once he has walked you to its door). "mark": a flag set whenever it ends (an "every"
@@ -484,6 +485,8 @@ class Scenes:
         ph = st["phase"]
         if ph == "spawn" and "you" in spec and "look" in spec and hasattr(h, "npc_look"):
             h.npc_look(spec["look"] if isinstance(spec["look"], (list, tuple)) else None)
+        if ph == "spawn" and "you" in spec and "zoom" in spec and hasattr(h, "npc_zoom"):
+            h.npc_zoom(spec["zoom"])
         if ph == "spawn" and "you" in spec and "picture" in spec and hasattr(h, "npc_picture"):
             h.npc_picture(spec["picture"])
         if ph == "spawn" and "you" in spec and spec.get("shake") and hasattr(h, "shake"):
@@ -522,6 +525,8 @@ class Scenes:
                     h.npc_picture(cast[j]["picture"])
                 if "look" in cast[j] and hasattr(h, "npc_look"):   # (the view moves there: the camera pans, 5.7's special 0x113)
                     h.npc_look(cast[j]["look"] if isinstance(cast[j]["look"], (list, tuple)) else None)
+                if "zoom" in cast[j] and hasattr(h, "npc_zoom"):   # (the camera in or out: B2W2's scene cameras)
+                    h.npc_zoom(cast[j]["zoom"])
                 if cast[j].get("person"):   # (someone standing on the map: they move, speak; the host draws them as ever)
                     pm = h.npc_person(cast[j]["person"])
                     if pm is None or pm.gone:   # (not here now: a stand-in nobody sees, so the scene goes on)

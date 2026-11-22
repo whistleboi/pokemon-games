@@ -347,6 +347,14 @@ for _a in _all:
         for _t in getattr(_f, "deep", ()):  # (deep sea: come up into it from the seabed by Dive: Route 124's rocky northern waters)
             if _t not in _reach:
                 _reach = {**_reach, **_reach_of(_f, _t)}
+        _grew = True
+        while _grew:   # (a door to elsewhere on this same floor: the Royal Unova's cabins, 11-21)
+            _grew = False
+            for _t, _v in list(_f.exits.items()):
+                _w = str(_v).split(":")
+                if _t in _reach and _w[0] == "WARP" and len(_w) == 4 and int(_w[1]) == _p.run.index and (int(_w[2]), int(_w[3])) not in _reach:
+                    _reach = {**_reach, **_reach_of(_f, (int(_w[2]), int(_w[3])))}
+                    _grew = True
         _drawn = bool(_dg.recipe_for(g, _a).get("layout"))  # (a drawn place's clerk stands behind its counter)
         if any(t not in _reach for t in list(_f.exits) + ([] if _drawn else [(m.x, m.y) for m in _f.movers])):
             _bad.append((_a, "out of reach"))
@@ -504,8 +512,9 @@ _me = kanto("MT_EMBER", came="KINDLE_ROAD")
 check(_me.run.n_floors == 13, "Mt. Ember: FireRed's 13 floors: the mountain, the Summit Path's three, the summit, the Ruby Path's eight")
 
 # every region (Jordan, 11-05: each region's maps checked against its games)
-_want = {"HAINA_DESERT": "desert", "DESERT_RESORT": "desert", "ASADO_DESERT": "desert", "GLASEADO_MOUNTAIN": "snow",
-         "HOENN_TRACKLESS_FOREST": "forest", "PLEDGE_GROVE": "forest", "SPROUT_TOWER": "field", "MOUNT_LANAKILA": "snow"}  # (Sprout Tower: our own exact floors now)
+_want = {"HAINA_DESERT": "desert", "ASADO_DESERT": "desert", "GLASEADO_MOUNTAIN": "snow",
+         "HOENN_TRACKLESS_FOREST": "forest", "SPROUT_TOWER": "field", "MOUNT_LANAKILA": "snow"}  # (Sprout Tower: our own exact floors now;
+# Pledge Grove: Black 2's own map and picture since 11-20, the Desert Resort since 11-21: unova suites)
 _got = {k: _dg.recipe_for(g, k).get("style") for k in _want}
 check(_got == _want, f"each region's places look like its game's {[(k, v) for k, v in _got.items() if _want[k] != v]}")
 _fl = {k: _dg.recipe_for(g, k).get("floors") for k in ("UNION_CAVE", "BELL_TOWER", "MT_CORONET_BASE", "CHARGESTONE_CAVE", "REFLECTION_CAVE")}

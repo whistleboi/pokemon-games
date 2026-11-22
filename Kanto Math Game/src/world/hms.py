@@ -17,8 +17,11 @@ HM_BY_BADGE = {
               "RAIN": "HM_WATERFALL"},
     "SINNOH": {"COAL": "HM_ROCK_SMASH", "FOREST": "HM_CUT", "COBBLE": "HM_FLY", "FEN": "HM_DEFOG",
                "RELIC": "HM_SURF", "MINE": "HM_STRENGTH", "ICICLE": "HM_ROCK_CLIMB", "BEACON": "HM_WATERFALL"},
-    "UNOVA": {"TRIO": "HM_CUT", "BASIC": "HM_STRENGTH", "BOLT": "HM_SURF", "QUAKE": "HM_FLY",
-              "FREEZE": "HM_WATERFALL", "LEGEND": "HM_DIVE"},
+    # (11-20, Black 2 / White 2: every HM is a story gift - Cut from Roxie at Virbank's docks, Strength from Hugh in the
+    #  Castelia Sewers, Fly from Bianca on Route 5, Surf from Cheren on Route 6, Waterfall from N at Victory Road, Dive from
+    #  Hugh in Undella after the League. Until each batch builds its gift, the badge just before stands in; Cut is the
+    #  docks event (batch 2). BW's table gave Cheren's Basic Badge Strength.)
+    "UNOVA": {"INSECT": "HM_STRENGTH", "BOLT": "HM_FLY", "QUAKE": "HM_SURF", "WAVE": "HM_WATERFALL"},
     "KALOS": {"BUG": "HM_CUT", "CLIFF": "HM_STRENGTH", "RUMBLE": "HM_SURF", "PLANT": "HM_FLY",
               "FAIRY": "HM_WATERFALL"},
 }

@@ -55,6 +55,13 @@ INTROS = {
         ("rival", "And I hear {rival} is somewhere out here too. Some things never change!"),
         ("player", "Come see me at my lab first. Your island adventure is about to begin!"),
         ("out", "")]),
+    "UNOVA": ("juniper", 572, ((240, 246, 252), (160, 196, 230)), [   # (Black 2 / White 2's opening: Juniper, then Aspertia, 11-19)
+        ("prof", "Hi there, {player}! I'm Professor Juniper. I study where Pokémon come from, here in the Unova region."),
+        ("mon", "Pokémon and people live side by side all over Unova, helping each other out. Some even battle together!"),
+        ("player", "You live in Aspertia City, {player}, way out on Unova's south-west corner. And today's a special day."),
+        ("rival", "Your neighbour {rival} already has a Pokémon, raised from an Egg. He's been itching for a partner on the road."),
+        ("player", "My assistant is on her way to see you right now. Your own story in Unova starts the moment you step outside!"),
+        ("out", "")]),
     "ORRE": (None, None, ((246, 236, 220), (214, 176, 132)), [
         ("player", "Orre. A dry land of desert and towns built in the sand, where trainers battle in colosseums."),
         ("player", "Something is wrong here. People say some Pokémon have had their hearts shut tight..."),
@@ -150,6 +157,8 @@ class IntroSpeechState(GameState):
             if self.region == "SINNOH":
                 p = os.path.join(self.game.assets.assets_dir, "sprites", "intro", "barry.png")
                 img = pygame.image.load(p).convert_alpha() if os.path.isfile(p) else None
+            if self.region == "UNOVA":   # (B2W2's rival is always Hugh, whatever you named him: Black 2's own picture)
+                img = self.game.assets.get_trainer_image("hugh.png")
             img = img or self.game.assets.get_trainer_image(f"{char}.png") or self.game.assets.get_player_image(char)
             self._cache[key] = self._fit(img, h)
         return self._cache[key]

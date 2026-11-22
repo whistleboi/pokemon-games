@@ -540,6 +540,10 @@ class RivalSelectionState(GameState):
         self.on_done = on_done
         self.options = story.rival_options(self.region) or [("RIVAL", "rival")]
         self.friend = story.RIVAL_CHOICES.get(self.region, {}).get("friend")
+        self.friend_options = list(story.RIVAL_CHOICES.get(self.region, {}).get("friend_options") or [])   # (a pick: Unova's BW rival)
+        self.friend_idx = 0
+        if self.friend_options:
+            self.friend = self.friend or "pick"
         self.step = "rival"
         self.selected_idx = 0
         self.input_name = ""
@@ -570,11 +574,17 @@ class RivalSelectionState(GameState):
         return self.options[self.selected_idx][0]
 
     def _friend(self):
+        if self.friend_options:
+            return self.friend_options[self.friend_idx]
         return self.game.story_manager.default_friend(self.region, self.options[self.selected_idx][1])
 
     def _move(self, d):
         if self.step == "rival" and len(self.options) > 1:
             self.selected_idx = (self.selected_idx + d) % len(self.options)
+        elif self.step == "friend" and len(self.friend_options) > 1:   # (Cheren or Bianca)
+            self.friend_idx = (self.friend_idx + d) % len(self.friend_options)
+            self.friend_sprite = self._sprite(self._friend()[1])
+            self.input_name = ""
 
     def handle_events(self, events):
         for event in events:
@@ -626,7 +636,10 @@ class RivalSelectionState(GameState):
         story = self.game.story_manager
         if rival_name is not None:   # (None: a region whose games have no rival - Orre - goes straight on)
             char_key = self.options[self.selected_idx][1]
-            story.record_region_rival(self.region, rival_name, char_key, friend_name=friend_name)
+            fchar = self._friend()[1] if self.friend_options else None
+            story.record_region_rival(self.region, rival_name, char_key, friend_name=friend_name, friend_character=fchar)
+            if fchar:
+                self.game.friend_character, self.game.friend_name = fchar, friend_name
             self.game.rival_name, self.game.rival_character = rival_name, char_key
             self.game.rival_true_name = rival_name.upper()
             if story.get_current_region() == self.region:
@@ -654,11 +667,11 @@ class RivalSelectionState(GameState):
     def draw(self):
         from src.ui import theme
         friend = self.step == "friend"
-        title = "NAME YOUR FRIEND" if friend else ("CHOOSE YOUR RIVAL" if len(self.options) > 1 else "YOUR RIVAL")
+        title = ("CHOOSE YOUR SECOND RIVAL" if friend and len(self.friend_options) > 1 else "NAME YOUR FRIEND") if friend else             ("CHOOSE YOUR RIVAL" if len(self.options) > 1 else "YOUR RIVAL")
         sprite = self.friend_sprite if friend else self.sprites[self.selected_idx]
-        arrows = (self.rect_left, self.rect_right) if not friend and len(self.options) > 1 else None
+        arrows = (self.rect_left, self.rect_right) if (not friend and len(self.options) > 1) or (friend and len(self.friend_options) > 1) else None
         label = "NEXT" if (not friend and self.friend) else "SELECT"
-        who = "your friend" if friend else "your rival"
+        who = ("your second rival" if self.friend_options else "your friend") if friend else "your rival"
         hint = (f"{self.region.title()}: " + ("Tap < > to pick " + who + ", then " if arrows else "")
                 + f"type a name for {who}, or keep the one shown.")
         _, self.name_rect, _ = _pick_screen(
@@ -691,6 +704,10 @@ def region_opening_state(game, region):
     if hoenn.needs_choice(story):  # Omega Ruby or Alpha Sapphire comes first
         from src.states.hoenn import HoennVersionState
         return HoennVersionState(game, arrive)
+    from src.world import unova_version as _uv
+    if _uv.needs_choice(story):  # Black 2 or White 2 comes first (Jordan 11-20: "like in Hoenn")
+        from src.states.unova import UnovaVersionState
+        return UnovaVersionState(game, arrive)
     return arrive()
 
 

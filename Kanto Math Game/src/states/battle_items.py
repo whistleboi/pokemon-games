@@ -79,6 +79,9 @@ class HeldItemEffects:
         t = d.get("type")
         if item in itemlib.HELD_BOOSTS and itemlib.HELD_BOOSTS[item] == str(t).upper():
             mult *= itemlib.HELD_BOOST
+        if item and str(item).endswith("_GEM") and str(item)[:-4] == str(t).upper() and (d.get("power") or 0) > 0:   # (a Gem: once, then used up; 1.5x, as in Black 2 / White 2)
+            mult *= 1.5
+            self.consume_held(attacker)
         orb = itemlib.ORB_BOOSTS.get(item)
         if orb and int(getattr(attacker, "id", 0) or 0) == orb[0] and t in orb[1]:
             mult *= 1.2  # (Adamant, Lustrous, Griseous Orb)
@@ -206,6 +209,10 @@ class HeldItemEffects:
                 and self.ab(attacker) != "MAGICGUARD":
             self._adjust_hp(attacker, -max(1, self._max_hp(attacker) // 6))
             lines.append(f"{self._label(attacker)} was hurt by the Rocky Helmet!")
+        if self.held(defender) == "STICKY_BARB" and "contact" in self._flags(name) and self._hp(attacker) > 0                 and not getattr(attacker, "held_item", None) and hasattr(self, "_get_item"):   # (it clings to whoever touches it;
+            self._lose_item(defender)                                                         #  B2W2: Route 20's autumn Barb, 11-20)
+            self._get_item(attacker, "STICKY_BARB")
+            lines.append(f"The Sticky Barb stuck to {self._label(attacker)}!")
         if self.held(attacker) == "SHELL_BELL" and self._hp(attacker) > 0:  # (an eighth of the damage back)
             self._adjust_hp(attacker, max(1, min(damage, defender_hp) // 8))
             lines.append(f"{self._label(attacker)} restored a little HP using its Shell Bell!")
@@ -333,6 +340,19 @@ class HeldItemEffects:
         orb = {"FLAME_ORB": "burn", "TOXIC_ORB": "toxic"}.get(self.held(mon))
         if orb and self._hp(mon) > 0 and self._can_inflict(orb, mon):
             return [self._inflict(orb, mon, self._label(mon))]
+        if self.held(mon) == "STICKY_BARB" and self._hp(mon) > 0 and self.ab(mon) != "MAGICGUARD":   # (an eighth a turn)
+            self._adjust_hp(mon, -max(1, self._max_hp(mon) // 8))
+            return [f"{self._label(mon)} was hurt by its Sticky Barb!"]
+        if self.held(mon) == "BLACK_SLUDGE" and self._hp(mon) > 0:   # (a Poison type heals as with Leftovers; any other loses an eighth)
+            if "POISON" in [str(x).upper() for x in (mon.types or [])]:
+                if self._hp(mon) >= self._max_hp(mon):
+                    return []
+                self._adjust_hp(mon, max(1, self._max_hp(mon) // 16))
+                return [f"{self._label(mon)} restored a little HP using its Black Sludge!"]
+            if self.ab(mon) == "MAGICGUARD":
+                return []
+            self._adjust_hp(mon, -max(1, self._max_hp(mon) // 8))
+            return [f"{self._label(mon)} was hurt by its Black Sludge!"]
         if self.held(mon) != "LEFTOVERS":
             return []
         hp, mx = self._hp(mon), self._max_hp(mon)

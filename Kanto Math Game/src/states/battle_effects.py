@@ -325,6 +325,8 @@ class MoveEffects:
             my_side = self.side(attacker)
             if my_side.get(key) or (name == "AURORA-VEIL" and getattr(self, "weather", None) != "SNOW"):
                 return fail
+            if key in ("reflect", "light_screen") and str(self._item_of(attacker) or "") == "LIGHT_CLAY":   # (Light Clay: 8 turns, B2W2 Route 4; 11-21)
+                turns = 8
             my_side[key] = turns
             team = "Your team" if attacker is self.player_pokemon else "The foe's team"
             return [f"{team} is covered by {label}!" if key != "tailwind" else f"The tailwind blew from behind {team.lower()}!"]
@@ -533,7 +535,7 @@ class MoveEffects:
         if ailment == "trap":
             if fv.get("trapped"):
                 return []
-            fv["trapped"] = (random.randint(4, 5), name.replace("-", " "))
+            fv["trapped"] = (7 if str(self._item_of(attacker) or "") == "GRIP_CLAW" else random.randint(4, 5), name.replace("-", " "))   # (Grip Claw: 7 turns)
             return [f"{def_label} was trapped by {name.replace('-', ' ').title()}!"]
         if ailment == "leech-seed":
             if "GRASS" in (defender.types or []) or fv.get("seeded"):

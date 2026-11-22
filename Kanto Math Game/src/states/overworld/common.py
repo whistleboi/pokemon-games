@@ -146,6 +146,9 @@ def _fill_names(game, text):
         from src.world import hoenn as _hoenn   # (Hoenn's scenes name the version's team and its leader: {team}, {leader}, {other_leader}...)
         for k, v in sorted(_hoenn.words(game.story_manager).items(), key=lambda kv: -len(kv[0])):
             text = text.replace("{" + k + "}", v)
+    if "{" in text and getattr(game, "story_manager", None) is not None and str(game.story_manager.get_current_region() or "") == "UNOVA":
+        from src.world import unova_version as _uv   # (Black 2 or White 2's names: {legend}, {kyurem}, {city}...)
+        text = _uv.fill(game.story_manager, text)
     if "{kanto_" in text:  # Mew's hint: Kanto species #1-150 only (other regions don't count)
         caught = game.story_manager.kanto_caught_count()
         text = text.replace("{kanto_caught}", str(caught)).replace("{kanto_missing}", str(150 - caught))
@@ -375,6 +378,22 @@ def _run_story_event(state, key, check, show):
         show(_resolve_lines(game, ev.get("fail") or ["You can't do that yet."]))
         return
     lines = _resolve_lines(game, ev.get("lines") or [])
+    if ev.get("stat_check") or ev.get("cry_quiz"):   # (Route 4's houses: a daily stat check, the Maid's cry quiz; src/world/b2_errands.py, 11-21)
+        from src.world import b2_errands
+        b2_errands.event(state, ev, lines, show)
+        return
+    if ev.get("stock") and not ev.get("battle"):   # (a vending machine, a stall: its own goods; Route 4's machine by the rest house, 11-21)
+        from src.states.systems import PokeMartState
+        _say_then(state, lines or ["..."], lambda: game.change_state(PokeMartState(game, state, stock=list(ev["stock"]))))
+        return
+    if ev.get("join_avenue"):   # (Join Avenue, the manager game: src/world/join_avenue.py, 11-21)
+        from src.world import join_avenue
+        join_avenue.event(state, ev, lines, show)
+        return
+    if ev.get("cruise"):   # (the Royal Unova: boarding, its crew's counts and hints, long talkers; src/world/royal_unova.py, 11-21)
+        from src.world import royal_unova
+        royal_unova.event(state, ev, lines, show)
+        return
     if ev.get("puzzle"):  # a math minigame (Dotted Hole's braille, a Rocket door code...)
         _start_event_puzzle(state, ev, lines, show)
         return
@@ -415,6 +434,9 @@ def _run_story_event(state, key, check, show):
         if getattr(state, "room", None) and hasattr(state, "player"):   # (back where you stood afterwards: Elm's Lab, HGSS)
             game.walk_town_pos = (state.area_key, tuple(state.player), (0, 1))
             game.walk_town_room = (state.area_key, state.room)
+        elif hasattr(state, "player") and hasattr(state, "area_key") and reg == "UNOVA":   # (outdoors: Bianca's case at the Aspertia Outlook, B2W2)
+            game.walk_town_pos = (state.area_key, tuple(state.player), (0, 1))
+            game.walk_town_room = None
         go = lambda: game.change_state(StarterSelectionState(game, starter_ids=ids, region=reg))
         if lines:
             state_show = getattr(state, "show_message", None) or getattr(state, "show_dialogue")
@@ -440,6 +462,33 @@ def _run_story_event(state, key, check, show):
         game.change_state(HallOfFameState(game, story.get_current_region(),
                                           lambda said: game.change_state(AreaTransitionState(game, to, initial_message=said + after))
                                           if to else show(said + after)))
+        return
+    if ev.get("scene") == "xtransceiver":   # a story call on the Xtransceiver (B2W2's video phone, src/states/xtransceiver.py; 11-20)
+        from src.states.xtransceiver import XtransceiverCallState
+
+        def hung_up():
+            if flag:
+                story.story_flags[flag] = True
+            if hasattr(state, "is_resuming"):
+                state.is_resuming = True
+            game.change_state(state)
+        game.change_state(XtransceiverCallState(game, state, _fill_names(game, ev.get("caller") or "???"), ev.get("pic"),
+                                                [_fill_names(game, x) for x in (ev.get("call") or lines or ["..."])], hung_up))
+        return
+    if ev.get("scene") == "pokestar":   # shoot a movie at Pokestar Studios (B2W2; src/states/pokestar.py; Jordan 11-20)
+        from src.states.pokestar import MovieState, SCRIPTS
+
+        def wrapped(said):
+            if flag:
+                story.story_flags[flag] = True
+            if hasattr(state, "is_resuming"):
+                state.is_resuming = True
+            game.change_state(state)
+            say = getattr(state, "show_message", None) or getattr(state, "show_dialogue", None)
+            if say and said:
+                say(list(said))
+        pick = next((s for s in SCRIPTS if s["key"] == ev.get("script")), None)
+        game.change_state(MovieState(game, None, pick, wrapped))
         return
     if ev.get("scene") == "wally_catch":  # Wally catches his Ralts (src/states/hoenn.py)
         from src.states.hoenn import WallyCatchState
@@ -692,7 +741,7 @@ def _run_story_event(state, key, check, show):
         sal = ev["salon"]; today = _dt.date.today().isoformat()
         lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
         if story.story_flags.get(sal["key"]) == today:
-            show(["Sorry, one haircut a day. Come back tomorrow!"])
+            show(sal.get("again") or ["Sorry, one haircut a day. Come back tomorrow!"])
             return
         if lead is None:
             show(["Bring a Pokemon along and I'll make it look wonderful!"])
@@ -700,7 +749,7 @@ def _run_story_event(state, key, check, show):
         story.story_flags[sal["key"]] = today
         from src.pokemon import items as _items
         _items.friend_gain(lead, int(sal.get("gain", 5)))
-        show(_resolve_lines(game, lines + [f"Snip, snip... There! {lead.display_name} looks happier already!"]))
+        show(_resolve_lines(game, lines + [(sal.get("said") or "Snip, snip... There! {mon} looks happier already!").replace("{mon}", lead.display_name)]))
         return
     if ev.get("photo"):  # (the Memorial Photo Studio, option B: a picture of your team, kept in your Trainer stats)
         import datetime as _dt
@@ -836,6 +885,15 @@ def _run_story_event(state, key, check, show):
         lines += ([f"Your {lead.display_name} looks so happy with you. This TM's for you: Return!"] if fond
                   else ["Your Pokemon doesn't seem very close to you... Here, this TM suits it: Frustration."])
         lines.append(f"{game.player_name} received {tm}!")
+    if ev.get("ball_swap"):  # your Poke Ball for their ball (Virbank Complex's Roughneck: a Great Ball, once a day - B2W2, 11-20)
+        if getattr(story, "balls_left", 0) <= 0:
+            show(_resolve_lines(game, ev.get("fail") or ["You don't have a Poke Ball to trade."]))
+            return
+        story.balls_left -= 1
+        give = ev["ball_swap"]
+        story.inventory[give] = story.inventory.get(give, 0) + 1
+        from src.pokemon import forms as _forms
+        lines.append(f"{game.player_name} traded a POKE BALL for the {_forms.item_label(give).upper()}!")
     if ev.get("swap"):  # a trade of items (Route 124's Treasure Hunter: a Shard for its evolution stone), as often as you like
         have = next((k for k in ev["swap"] if story.inventory.get(k, 0) > 0), None)
         if have is None:
@@ -862,6 +920,9 @@ def _run_story_event(state, key, check, show):
             word = ("It can't be beat!" if best == 31 else "It's fantastic!" if best >= 30 else "It's very good." if best >= 26
                     else "It's pretty good." if best >= 16 else "It's decent." if best >= 1 else "It's no good.")
             lines.append(f"Its best stat{'s are' if len(tops) > 1 else ' is'} {' and '.join(tops)}. {word}")
+    if ev.get("medal_rally"):  # Mr. Medal at a Pokemon Center: the Medals you've earned (B2W2; src/world/medals.py)
+        from src.world import medals
+        lines += medals.hand_out(story)
     if ev.get("badges"):  # Mossdeep's Hex Maniac: she reads your badges
         got = list(story.badges.get(story.get_current_region(), []) or [])
         lines.append(f"You have {len(got)} badge{'s' if len(got) != 1 else ''} here: " + ", ".join(str(b).title() for b in got) + "."
@@ -1019,6 +1080,21 @@ def _run_story_event(state, key, check, show):
                 return
             _say_then(state, battle_cd.describe(game, key), lambda: game.change_state(battle_cd.start(game, key)))
         _say_then(state, lines, lambda: game.change_state(PickListState(game, state, "WHICH CD?", can, play)))
+        return
+    if ev.get("lift"):   # (a building's lift, Black 2's Castelia towers, 11-20: [[floor label, room, x, y], ...]: pick a floor, step out there)
+        from src.states.systems.pick_list import PickListState
+        here = getattr(state, "room", None)
+        rows = [(f[0], f) for f in ev["lift"] if f[1] != here]
+
+        def ride(f):
+            game.change_state(state)
+            if f is None or not hasattr(state, "_go"):
+                return
+            state._go(f[1], "LIFT")
+            state.player = state.anim_from = state.partner = state.partner_from = (int(f[2]), int(f[3]))
+            state.facing = (0, 1)
+            state._remember()
+        _say_then(state, lines, lambda: game.change_state(PickListState(game, state, ev.get("ask") or "WHICH FLOOR?", rows, ride)))
         return
     if ev.get("travel_choices"):   # (a guide who takes you on: [{"text", "to", "requires": [...]}], the ones you may take; Mt. Silver)
         from src.states.systems.pick_list import PickListState

@@ -1,0 +1,132 @@
+"""python dev/builders/unova_wild.py : Black 2's own wild Pokemon for Unova's walkable places (11-20).
+
+Reads kanto_handoff/unova_map_tools/uwild.py (a/1/2/7, by each zone header's wild field) and writes each area's
+"wild_tables" (src/world/wild_tables.py: per season, per kind: grass, dark grass, rustling grass, surf, rippling water,
+fish, rippling fish; each slot with its own levels) into assets/unova_area_data.json, as text (the file's layout kept).
+The area's older pools follow from the same tables so the Pokedex's area lists agree: <AREA>_PERCENTAGES = its grass,
+"surf_pool_percentages" -> <AREA>_SURF_PERCENTAGES, <AREA>_SUPER_ROD_PERCENTAGES = its fishing (B2W2 has one rod).
+Add a place to PLACES as its batch is built."""
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+GAME = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(os.path.dirname(GAME), "..", "kanto_handoff", "unova_map_tools"))
+sys.path.insert(0, os.path.join(GAME, "..", "..", "kanto_handoff", "unova_map_tools"))
+
+PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "FLOCCESY_RANCH_OUTSIDE": 444,
+          "FLOCCESY_RANCH": 445, "VIRBANK_CITY": 448, "VIRBANK_COMPLEX_OUTSIDE": 456, "VIRBANK_COMPLEX": 457,
+          "CASTELIA_SEWERS": 495, "CASTELIA_EMPTY_LOT": 500,
+          "UNOVA_ROUTE_4": 326, "DESERT_RESORT_ENTRANCE": 157, "DESERT_RESORT": 158, "RELIC_CASTLE": 160}   # (batch 3b, 11-21)
+P = os.path.join(GAME, "assets", "unova_area_data.json")
+NL = "\r\n"
+
+
+def _block(text, key, indent):
+    pat = NL + " " * indent + json.dumps(key) + ": "
+    i = text.index(pat) + len(NL)
+    j = i + len(pat) - len(NL)
+    opener = text[j]
+    close = {"{": "}", "[": "]"}[opener]
+    depth, k, ins = 0, j, False
+    while True:
+        c = text[k]
+        if ins:
+            if c == "\\":
+                k += 2
+                continue
+            if c == '"':
+                ins = False
+        elif c == '"':
+            ins = True
+        elif c == opener:
+            depth += 1
+        elif c == close:
+            depth -= 1
+            if depth == 0:
+                return i, k + 1
+        k += 1
+
+
+def _dump(key, val, indent):
+    return " " * indent + json.dumps(key) + ": " + json.dumps(val, indent=2, ensure_ascii=False).replace("\n", NL + " " * indent)
+
+
+def _put(raw, key, val, indent, after=None):
+    """Replace "key": ... at this indent, or add it after the entry `after` (top level) / at the end of its block."""
+    if (NL + " " * indent + json.dumps(key) + ": ") in raw:
+        a, b = _block(raw, key, indent)
+        return raw[:a] + _dump(key, val, indent) + raw[b:]
+    a, b = _block(raw, after, indent)
+    return raw[:b] + "," + NL + _dump(key, val, indent) + raw[b:]
+
+
+def merged(tb, tw):
+    """One table for both versions (Jordan 11-20: the version pick changes the story, never the wild Pokemon; every species
+    in one playthrough): a slot where White 2 has another species splits in two, Black 2's and White 2's, each at half its
+    chance and at its own levels (the Virbank Complex: Magby and Elekid). A form-only difference (Basculin's stripes) keeps
+    Black 2's: our data has one Basculin."""
+    out = {}
+    for season, kinds in tb.items():
+        out[season] = {}
+        for kind, slots in kinds.items():
+            other = (tw.get(season) or tw.get("ALL") or {}).get(kind) or []
+            rows = []
+            for i, s in enumerate(slots):
+                w = other[i] if i < len(other) else None
+                if w and w[0] != s[0]:
+                    rows.append([s[0], s[1], s[2] / 2, s[3], s[4]])
+                    rows.append([w[0], w[1], w[2] / 2, w[3], w[4]])
+                else:
+                    rows.append(list(s))
+            out[season][kind] = rows
+    return out
+
+
+def main():
+    import g5map
+    import uwild
+    import nds5
+    Z = g5map.Zones()
+    ZW = g5map.Zones(nds5.W2)   # (White 2's file: its Pokemon go in the same tables, 11-20)
+    raw = open(P, encoding="utf-8", newline="").read()
+    data = json.loads(raw)
+    sp = data["STORY_PROGRESSION"]
+    for area, zid in PLACES.items():
+        t = uwild.tables(Z, zid)
+        a = sp[area]
+        if not t:
+            continue
+        t = merged(t, uwild.tables(ZW, zid))
+        a["wild_tables"] = t
+        a.pop("wild_tables_by_version", None)
+
+        def union(kind):
+            out = {}
+            for season in t.values():
+                for s, _f, c, _lo, _hi in season.get(kind) or []:
+                    out[str(s)] = out.get(str(s), 0) + c
+            total = sum(out.values()) or 1
+            return {k: max(1, round(v * 100 / total)) for k, v in sorted(out.items(), key=lambda kv: -kv[1])}
+        grass, surf, fish = union("grass"), union("surf"), union("fish")
+        if grass:
+            key = a.get("wild_pool_percentages") or f"{area}_PERCENTAGES"
+            a["wild_pool_percentages"] = key
+            raw = _put(raw, key, grass, 2, after="UNOVA_SUPER_ROD_POOL_PERCENTAGES")
+            lo = min(s[3] for season in t.values() for s in season.get("grass") or [])
+            hi = max(s[4] for season in t.values() for s in season.get("grass") or [])
+            a["wild_levels"] = {"land": [lo, hi]}
+        if surf:
+            a["surf_pool_percentages"] = f"{area}_SURF_PERCENTAGES"
+            raw = _put(raw, f"{area}_SURF_PERCENTAGES", surf, 2, after="UNOVA_SUPER_ROD_POOL_PERCENTAGES")
+        if fish:
+            raw = _put(raw, f"{area}_SUPER_ROD_PERCENTAGES", fish, 2, after="UNOVA_SUPER_ROD_POOL_PERCENTAGES")
+        raw = _put(raw, area, a, 4)
+        print(area, "seasons" if len(t) > 1 else "all year", {k: len(v) for k, v in next(iter(t.values())).items()})
+    json.loads(raw)
+    open(P, "w", encoding="utf-8", newline="").write(raw)
+
+
+if __name__ == "__main__":
+    main()
