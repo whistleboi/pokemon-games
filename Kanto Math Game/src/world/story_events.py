@@ -102,6 +102,12 @@ EVENTS = {
                                               "team": [559], "levels": [16], "rewards": {"balls": 3}}},
         "dialogue": {"player_won": ["Team Plasma: They're really tough!"], "player_lost": ["Team Plasma: Hand them over!"]}}},
     "b2_strength": {"gift_item": {"HM_STRENGTH": 1}, "flag": "b2_got_strength"},
+    # (batch 3b, 11-21: Colress at the Crustle on Route 4; Bianca's Dowsing MCHN in the Castelia Gate)
+    "b2_colress_route4": {"flag": "b2_colress_r4", "battle": {
+        "name": "Colress", "class": "PKMN_TRAINER", "sprite": "b2_colress.png", "team": [81, 599], "levels": [21, 23],
+        "rewards": {"balls": 3}, "dialogue": {"player_won": ["Colress: I see!"], "player_lost": ["Colress: Hmm. Not yet, then."]}}},
+    "b2_colress_protein": {"gift_item": {"PROTEIN": 1}, "flag": "b2_colress_r4_protein"},
+    "b2_dowsing": {"gift_item": {"DOWSING_MACHINE": 1}, "flag": "b2_got_dowsing"},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)
     "hq_alarm_1": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_1",
         "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 41], "levels": [18, 18],

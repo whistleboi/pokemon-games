@@ -377,6 +377,14 @@ def _run_story_event(state, key, check, show):
         show(_resolve_lines(game, ev.get("fail") or ["You can't do that yet."]))
         return
     lines = _resolve_lines(game, ev.get("lines") or [])
+    if ev.get("stat_check") or ev.get("cry_quiz"):   # (Route 4's houses: a daily stat check, the Maid's cry quiz; src/world/b2_errands.py, 11-21)
+        from src.world import b2_errands
+        b2_errands.event(state, ev, lines, show)
+        return
+    if ev.get("join_avenue"):   # (Join Avenue, the manager game: src/world/join_avenue.py, 11-21)
+        from src.world import join_avenue
+        join_avenue.event(state, ev, lines, show)
+        return
     if ev.get("cruise"):   # (the Royal Unova: boarding, its crew's counts and hints, long talkers; src/world/royal_unova.py, 11-21)
         from src.world import royal_unova
         royal_unova.event(state, ev, lines, show)

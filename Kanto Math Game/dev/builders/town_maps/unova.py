@@ -1833,7 +1833,14 @@ CASTELIA = town(
             0: _say("Gate guard", "Nimbasa City is at the end of Route 4."),
             1: _say("Woman in the gate", "The Pokemon Breeder on Route 4 challenges every Trainer she sees. That's Route 4 for you!"),
             3: _say("Harlequin in the gate", "It's the Castelia Harlequin Hunt! Have you found them all?", _look="sheet:b2_c54.png")},
-            {}, title="Castelia Gate"),
+            {}, title="Castelia Gate",
+            scenes=[{"trigger": "enter", "condition": ["b2_colress_plaza", "not:b2_got_dowsing"], "flag": "b2_bianca_gate",   # (3b: Bianca catches up)
+                     "cast": [{"sheet": "b2_bianca.png", "from": [5, 14], "to": "player", "gone": True, "leave_path": [[5, 14]],
+                               "lines": ["Bianca: Heeey! I saw you in the city and just had to catch up!",
+                                         "Bianca: Here, take this! It's a Dowsing MCHN!",
+                                         "Bianca: It finds places where items are hidden. Finding an item while you're looking for Pokemon is so exciting!",
+                                         "Bianca: Ooh, good luck!"],
+                               "then": "event:b2_dowsing"}]}]),
         "bridge_gate": castelia_room(252, {   # (Skyarrow Bridge, south: still being inspected; its batch opens it)
             0: _say("Gate receptionist", "Hello! Cross the Skyarrow Bridge from this side and you'll reach Pinwheel Forest and Nacrene City.",
                     "The Skyarrow Bridge has been here a very long time."),
@@ -2367,9 +2374,351 @@ for _xy in ROYAL_UNOVA["links"]:   # (each cabin door a doorway you step through
     ROYAL_UNOVA["art"][_y] = ROYAL_UNOVA["art"][_y][:_x] + "1" + ROYAL_UNOVA["art"][_y][_x + 1:]   # ("1": a passage, the map's "links")
 
 
+# ------------------------------------------------------------------------------------------------- Route 4 (batch 3b)
+# Black 2: 326, a new settlement (rooms 327/519, 520/521, 522/523, 524/525, rest house 328). White 2: 551, the same
+# cells with its own blocks (g5map.VERSION_ZONES): building stopped when ruins were found (rooms 526-530). The version
+# picked at the start decides which you walk (Jordan 11-21: both, by version). Both: Colress and the Crustle across the
+# road (his device wakes them; Magnemite, Klink; a Protein), Pokemon Breeder Irene by the gate, the weekly birds with
+# their Hidden Abilities (Jordan: both for everyone, each on its day - Mandibuzz Thursdays, Braviary Mondays).
+def _join(*ds):
+    out = {}
+    for d in ds:
+        out.update(d)
+    return out
+
+
+OUTSIDE.update({327: 326, 520: 326, 522: 326, 524: 326, 328: 326, 519: -1, 521: -1, 523: -1, 525: -1,
+                526: 551, 527: 551, 528: 551, 529: 551, 530: 551})
+R4_COLRESS_LINES = ["Colress: I've been waiting for you! Curious about what's behind me?",
+                    "Colress: Those aren't rocks. They're Crustle. Watch: this device of mine gives Pokemon energy..."]
+R4_COLRESS_AFTER = ["Colress: Were those Crustle just lying here, worn out, with their boulders on their backs?",
+                    "Colress: Team Plasma said Pokemon should be freed from people. I disagree: people should bring out the "
+                    "hidden power in Pokemon!",
+                    "Colress: I never asked your name... {player_name}. I'll remember it. Now, let me test whether you're a "
+                    "Trainer who can bring out that power!"]
+R4_COLRESS_WON = ["Colress: I see! Like the Gym Leaders and the Champion, you bring out a Pokemon's power by being kind to it.",
+                  "Colress: Thank you for your help. A token of my gratitude!"]
+R4_COLRESS_BYE = ["Colress: If only we could talk with Pokemon to bring out their power... No one could ever do that, could they?",
+                  "Colress: Well then, {player_name}, until we meet again."]
+
+
+def _r4_birds(here, other):
+    """The weekly Hidden Ability birds: this version's at its own spot, the other's beside it (both for everyone)."""
+    m = {"text": "Mandibuzz", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c348.png", "condition": ["weekday:thu"],
+         "boss": {"id": 630, "name": "Mandibuzz", "level": 25, "ability": "WEAK-ARMOR", "victory_flag": "b2_r4_mandibuzz",
+                  "lines": ["Kreeeee!"]}}
+    b = {"text": "Braviary", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c4712.png", "condition": ["weekday:mon"],
+         "boss": {"id": 628, "name": "Braviary", "level": 25, "ability": "DEFIANT", "victory_flag": "b2_r4_braviary",
+                  "lines": ["Ra ra ra ra!"]}}
+    return (m, b) if here == "mandibuzz" else (b, m)
+
+
+def _r4_colress(at, crustle, trigger, worker):
+    """Colress's scene and the Crustle across the road (the game's own trigger strip in front of him)."""
+    people = {n: {"text": "Crustle %d" % i, "action": "EVENT", "_look": "sheet:b2_c326.png", "condition": ["not:b2_colress_r4"],
+                  "event": {"lines": ["It's a huge boulder... It doesn't look like a Pokemon could move it."]}}
+              for i, n in enumerate(crustle)}
+    people[at] = {"text": "Colress", "action": "EVENT", "_look": "sheet:b2_c250.png", "condition": ["not:b2_colress_r4_done"],
+                  "event": {"lines": R4_COLRESS_LINES}}
+    people[worker] = [_say("Worker by the boulders", "Hey, Trainer! These boulders lined up across the road out of nowhere.",
+                           "And Strength won't budge them!", condition=["not:b2_colress_r4"]),
+                      _say("Worker by the boulders ", "Who knew they were Crustle? If you like Crustle, the Desert Resort is "
+                           "just past here!", condition=["b2_colress_r4"])]
+    scenes = [
+        {"who": "Colress", "trigger": {"zone": trigger}, "condition": ["not:b2_colress_r4"], "flag": "b2_colress_r4_met",
+         "approach": True, "lines": R4_COLRESS_LINES + R4_COLRESS_AFTER, "then": "event:b2_colress_route4"},
+        {"who": "Colress", "trigger": {"zone": trigger}, "condition": ["b2_colress_r4", "not:b2_colress_r4_done"],
+         "flag": "b2_colress_r4_done", "lines": R4_COLRESS_WON + R4_COLRESS_BYE, "then": "event:b2_colress_protein"}]
+    return people, scenes
+
+
+def _stat_room(z, who, look, stat, item, key, others=None):
+    p = {who: {"text": "Ace Trainer in the house", "action": "EVENT", "_look": "sheet:" + look,
+               "event": {"lines": ["..."], "stat_check": {"stat": stat, "item": item, "key": key}}}}
+    p.update(others or {})
+    return p
+
+
+def _cry_room(n, key):
+    return {n: {"text": "Maid who imitates cries", "action": "EVENT", "event": {"lines": ["..."], "cry_quiz": {"item": "POKE_TOY", "flag": key}}}}
+
+
+def _trade(n, label, want, give, flag, said_want):
+    return {n: {"text": label, "action": "EVENT", "event": {
+        "lines": [said_want, "Pokemon trade! Pokemon trade! Off they go, and back they come!"],
+        "trade": {"want": want, "give": give}, "flag": flag,
+        "fail": ["The Pokemon I want is %s. Come back with one!" % {546: "Cottonee", 548: "Petilil"}[want]],
+        "done": ["They were your %s and my %s. Now they're your %s and my %s!" % (
+            {546: "Cottonee", 548: "Petilil"}[want], {546: "Cottonee", 548: "Petilil"}[give],
+            {546: "Cottonee", 548: "Petilil"}[give], {546: "Cottonee", 548: "Petilil"}[want])]}}}
+
+
+def _healer(n, label):
+    return {n: {"text": label, "action": "EVENT", "event": {
+        "lines": ["You look worn out! Rest here a minute.", "Your Pokemon were fully healed!"], "heal": True}}}
+
+
+R4_SIGNS = {1: ["ROUTE 4"], 2: ["TRAINER TIPS", "Each move has PP, its Power Points. A move with none left can't be used:",
+                                "that's a good time to head for a Pokemon Center!"],
+            3: ["ROUTE 4", "Planned route-expansion area"],
+            8: ["ROUTE 4"], 9: ["DESERT RESORT AHEAD", "Right: Nimbasa City"],
+            6: ["TRAINER TIPS", "Each move has PP, its Power Points. A move with none left can't be used:",
+                "that's a good time to head for a Pokemon Center!"]}
+
+_B2_COLRESS, _B2_COLRESS_SCENES = _r4_colress(15, [12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24], [43, 104, 48, 104], 16)
+_B2_BIRD, _B2_OTHER = _r4_birds("mandibuzz", None)
+R4_B2_PEOPLE = _join(_B2_COLRESS, {
+    25: _B2_BIRD,
+    26: _ball("Poke Ball in the sand", "STARDUST", "b2_r4_stardust", name="a Stardust"),
+    27: _ball("Poke Ball by the road", "TM055", "b2_r4_tm055", name="TM055 Dig"),
+    28: _ball("Poke Ball in the expansion area", "GRIP_CLAW", "b2_r4_grip_claw", name="a Grip Claw"),
+    29: _ball("Poke Ball by the water", "MYSTIC_WATER", "b2_r4_mystic_water", name="a Mystic Water"),
+    30: _say("Woman by the road", "Places with ruins keep getting built over. Bits of our history get lost..."),
+    31: _say("Man by the gate", "The Relic Castle is being buried by the sand. Someday even the memory of it may be buried too."),
+    32: _say("Girl in the sand", "Look at the sand, Trainer! See how some of it is darker? Pokemon hide in the darker sand!"),
+})
+ROUTE_4 = route(
+    326, R4_B2_PEOPLE, R4_SIGNS,
+    exits={"^": ("JOIN_AVENUE", [(x, 10) for x in range(45, 48)]), "v": ("CASTELIA_CITY", [(x, 119) for x in range(45, 48)]),
+           "<": ("DESERT_RESORT_ENTRANCE", [(x, 32) for x in range(15, 20)])},
+    trainers={11: "Pokemon Breeder Irene", 1: "Fisherman Hubert", 0: "Fisherman Andrew", 2: "Policeman Braven",
+              9: "Policeman Dell", 10: "Policeman Neagle", 8: "Roughneck Silvester", 7: "Roughneck Joey",
+              6: "Youngster Sinclair", 5: "Biker Stanley", 3: "Hooligans Rob & Sal"},
+    hidden={"22,64": "RED_SHARD", "25,80": "HYPER_POTION", "30,85": "STARDUST", "26,89": "YELLOW_SHARD", "11,95": "GREEN_SHARD"},
+    scenes=_B2_COLRESS_SCENES, extra_people=[(31, 89, _B2_OTHER)],
+    rooms={
+        "speed_house": room(327, _stat_room(327, 0, "b2_c31.png", "SPEED", "HEALTH_WING", "b2_r4_speed",
+                                            {1: _say("Ace Trainer's brother", "My sister's crazy about Speed. Me? I like Attack.")}),
+                            {}, (50, 87), stairs={519: ("^", "ROOM:speed_house_2")}),
+        "speed_house_2": room(519, {0: _say("Woman upstairs", "We moved here because they said this place would grow..."),
+                                    1: _say("Man upstairs", "With the building stopped, guys like those hooligans hang around."),
+                                    2: _say("Girl upstairs", "I love it here! It's close to Castelia and Nimbasa both!")},
+                              {}, None, stairs={327: ("v", "ROOM:speed_house")}),
+        "trade_house": room(520, _join(_trade(2, "Lass who wants Cottonee", 546, 548, "b2_r4_trade",
+                                             "I'd love to trade my Petilil for a Cottonee!"),
+                                      {0: _say("Man by the TV", "Sandstorms are awful! But Rock-, Ground- and Steel-types "
+                                                 "come through them unhurt."),
+                                         1: _say("Herdier", "Grrrrr!")}),
+                            {}, (50, 78), stairs={521: ("^", "ROOM:trade_house_2")}),
+        "trade_house_2": room(521, {0: _say("Woman upstairs ", "When I'm sad, my Pokemon's round little eyes make it melt away."),
+                                    1: _say("Lillipup", "Yip! Yip!"),
+                                    2: _ball("Poke Ball by the TV", "WIDE_LENS", "b2_r4_wide_lens", name="a Wide Lens")},
+                              {}, None, stairs={520: ("v", "ROOM:trade_house")}),
+        "empty_house": room(522, {0: _say("Man in the empty house", "Hi! Welcome! Well... there's nothing here."),
+                                  2: _say("Boy in the empty house", "On Thursdays, some Pokemon fly in here."),
+                                  1: _say("Woman in the empty house", "Next to a big Pokemon, even I look slim!")},
+                            {}, (42, 68), stairs={523: ("^", "ROOM:empty_house_2")}),
+        "empty_house_2": room(523, {0: {"text": "Black Belt upstairs", "action": "EVENT", "flag_condition": "not b2_r4_sitrus",
+                                        "event": {"lines": ["Hmm? You've got sharp eyes, Trainer! Take these!",
+                                                            "Talk to lots of people, and good things happen!"],
+                                                  "gift_item": {"SITRUS_BERRY": 3}, "flag": "b2_r4_sitrus"}}},
+                              {}, None, stairs={522: ("v", "ROOM:empty_house")}),
+        "cry_house": room(524, _cry_room(0, "b2_r4_cry_quiz"), {}, (50, 57), stairs={525: ("^", "ROOM:cry_house_2")}),
+        "cry_house_2": room(525, {0: _say("Biker upstairs", "People call those hooligans brats, but they're just hanging out. "
+                                          "Never judge a book by its cover.")},
+                            {}, None, stairs={524: ("v", "ROOM:cry_house")}),
+        "rest_house": room(328, _join(_healer(1, "Woman in the rest house"), {0: _say("Mareep in the rest house", "Glugluglug!")}),
+                           {}, (10, 56)),
+    },
+    inside={"50,87": "speed_house", "50,78": "trade_house", "42,68": "empty_house", "50,57": "cry_house", "10,56": "rest_house"},
+)
+for _r, _t in (("speed_house_2", "Upstairs"), ("trade_house_2", "Upstairs"), ("empty_house_2", "Upstairs"), ("cry_house_2", "Upstairs")):
+    ROUTE_4["rooms"][_r]["title"] = _t
+_doors(ROUTE_4, ROUTE_4["inside"])
+
+_W2_COLRESS, _W2_COLRESS_SCENES = _r4_colress(14, [15, 16, 17, 18, 19, 20, 21, 22], [19, 98, 23, 98], 13)
+_W2_BIRD, _W2_OTHER = _r4_birds("braviary", None)
+R4_W2_PEOPLE = _join(_W2_COLRESS, {
+    12: _W2_BIRD,
+    23: _ball("Poke Ball by the water", "MYSTIC_WATER", "b2_r4_mystic_water", name="a Mystic Water"),
+    24: _ball("Poke Ball in the ruins", "STARDUST", "b2_r4_stardust", name="a Stardust"),
+    25: _ball("Poke Ball by the road", "TM055", "b2_r4_tm055", name="TM055 Dig"),
+    26: _ball("Poke Ball in the north-west ruins", "LIGHT_CLAY", "b2_r4_light_clay", name="a Light Clay"),
+    29: _say("Man by the freeway", "All I do is watch the cars go by on the freeway."),
+    28: _say("Man by the gate", "When the ruins turned up, the building stopped. You can't argue with that much history."),
+    27: _say("Girl in the sand", "Look at the sand, Trainer! See how some of it is darker? Pokemon hide in the darker sand!"),
+})
+ROUTE_4_W2 = route(
+    551, R4_W2_PEOPLE, R4_SIGNS,
+    exits={"^": ("JOIN_AVENUE", [(x, 10) for x in range(45, 48)]), "v": ("CASTELIA_CITY", [(x, 119) for x in range(45, 48)]),
+           "<": ("DESERT_RESORT_ENTRANCE", [(x, 32) for x in range(15, 20)])},
+    trainers={2: "Pokemon Breeder Irene", 0: "Fisherman Hubert", 1: "Fisherman Andrew", 3: "Backpacker Clifford",
+              5: "Twins Tara & Val", 4: "Rich Boy Keenan", 10: "Lady Lina", 7: "Backpacker Rachel", 9: "Pokefan Sachiko",
+              8: "Pokefan Norbert", 11: "Backpacker Roland"},
+    hidden={"14,84": "RED_SHARD", "16,70": "HYPER_POTION", "52,69": "STARDUST", "47,89": "YELLOW_SHARD", "44,63": "GREEN_SHARD"},
+    scenes=_W2_COLRESS_SCENES, extra_people=[(48, 65, _W2_OTHER)],
+    rooms={
+        "heal_house": room(527, _join(_healer(0, "Woman in the house"), {1: _say("Gothita in the house", "Gelloooo.")}),
+                           {}, (56, 68)),
+        "attack_house": room(529, _stat_room(529, 1, "b2_c30.png", "ATTACK", "SWIFT_WING", "b2_r4_attack",
+                                             {0: _say("Ace Trainer's sister", "My brother's crazy about Attack. Me? I like Speed.")}),
+                             {}, (34, 71)),
+        "trade_house": room(528, _join(_trade(2, "Youngster who wants Petilil", 548, 546, "b2_r4_trade",
+                                             "I'd love to trade my Cottonee for a Petilil!"),
+                                      {0: _say("Man by the TV", "Sandstorms are awful! But Rock-, Ground- and Steel-types "
+                                                 "come through them unhurt."),
+                                         1: _say("Herdier", "Grrrrr!"),
+                                         3: _ball("Poke Ball by the window", "BRIGHT_POWDER", "b2_r4_bright_powder", name="a BrightPowder")}),
+                           {}, (40, 71)),
+        "cry_house": room(530, _cry_room(0, "b2_r4_cry_quiz"), {}, (11, 80)),
+        "black_belt_house": room(526, {2: {"text": "Black Belt in the house", "action": "EVENT", "flag_condition": "not b2_r4_sitrus",
+                                           "event": {"lines": ["Hmm? You've got sharp eyes, Trainer! Take these!",
+                                                               "Go places, talk to people, and good things happen!"],
+                                                     "gift_item": {"SITRUS_BERRY": 3}, "flag": "b2_r4_sitrus"}},
+                                       0: _say("Boy in the house", "Every Monday, Pokemon fly in from somewhere."),
+                                       1: _say("Man in the house", "If Pokemon were freed and showed their true power... "
+                                               "would we end up battling for them someday?")},
+                                 {}, (48, 95)),
+    },
+    inside={"56,68": "heal_house", "34,71": "attack_house", "40,71": "trade_house", "11,80": "cry_house", "48,95": "black_belt_house"},
+)
+_doors(ROUTE_4_W2, ROUTE_4_W2["inside"])
+ROUTE_4["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": ROUTE_4_W2}]
+for _m in (ROUTE_4, ROUTE_4_W2):   # (the top-left corner is the desert entrance's own ground, zone 157: walled off here)
+    for _y in range(32):
+        _m["art"][_y] = "c" * 32 + _m["art"][_y][32:]
+
+# ------------------------------------------------------------------------------------------------- the Desert Resort (3b)
+# 157: the desert's entrance on the world map, off Route 4's north-west; its Route Gate (159) opens onto the desert
+# itself (158, a sandstorm, Nurse Mariah heals after her battle; the Ranger's Funfest Mission is dropped: he just talks).
+# Relic Castle (160, 161): only its top two floors open from the desert in Black 2 (Jordan 11-21: the deep floors come
+# with the Relic Passage, condensed).
+OUTSIDE.update({159: 157, 161: 160})
+DESERT_ENTRANCE = route(
+    157, {1: _say("Backpacker by the gate", "The Desert Resort is huge, and its Pokemon are strong. A perfect place to test yourself!"),
+          0: _say("Hiker by the gate", "Go through the gate and keep straight on. That's the way to the Relic Castle.")},
+    {(22, 11): ["DESERT RESORT AHEAD", "Nicer than the average desert!"]},
+    exits={"v": ("UNOVA_ROUTE_4", [(x, 31) for x in range(47, 52)])},
+    rooms={"gate": room(159, {1: _say("School Kid in the gate", "Wild Pokemon turn up almost anywhere in the desert, like in a cave.",
+                                      "But they don't hide in the pale sand. Walk there and you won't be bothered!"),
+                              0: _say("Gate guard", "The Relic Castle, out in the Desert Resort... You can tell time's been cruel to it.")},
+                        {}, (18, 8), exits_extra={158: ("^", "DESERT_RESORT")})},
+    inside={"18,8": "gate"},
+)
+DESERT_ENTRANCE["rooms"]["gate"]["title"] = "Route Gate"
+_doors(DESERT_ENTRANCE, DESERT_ENTRANCE["inside"])
+
+DESERT_PEOPLE = {
+    19: {"text": "Backpacker who wants water", "action": "EVENT", "flag_condition": "not b2_desert_soft_sand",
+         "event": {"lines": ["I came all the way out here to train... It'd be so much easier with a Water-type.",
+                             "You're only the second person to come out here and talk to me! I'm so touched. Take this!",
+                             "If a Pokemon holds Soft Sand, its Ground-type moves get stronger!"],
+                   "gift_item": {"SOFT_SAND": 1}, "flag": "b2_desert_soft_sand",
+                   "done": ["If a Pokemon holds Soft Sand, its Ground-type moves get stronger!"]}},
+    0: _say("Pokemon Ranger in the sand", "This desert keeps us Rangers busy! Watch out for the sandstorm out here."),
+    18: _say("Hiker in the dunes", "They say the Relic Castle was a city built by a hero of old and the dragon that went with them."),
+    20: _say("Treasure hunter", "A sea of sand and a castle buried in it! There must be treasure here!",
+             "It's been a year since my treasure sense went off... Living my dream every day. Is THAT the treasure?!"),
+    10: _ball("Poke Ball in the sand", "RED_SHARD", "b2_desert_red_shard", name="a Red Shard"),
+    11: _ball("Poke Ball by the rocks", "BLUE_SHARD", "b2_desert_blue_shard", name="a Blue Shard"),
+    12: _ball("Poke Ball in the east", "YELLOW_SHARD", "b2_desert_yellow_shard", name="a Yellow Shard"),
+    13: _ball("Poke Ball in the south-west", "MAX_ETHER", "b2_desert_max_ether", name="a Max Ether"),
+    14: _ball("Poke Ball in the south", "GREEN_SHARD", "b2_desert_green_shard", name="a Green Shard"),
+    15: _ball("Poke Ball near the nurse", "STARDUST", "b2_desert_stardust", name="a Stardust"),
+    16: _ball("Poke Ball by the castle", "HEART_SCALE", "b2_desert_heart_scale", name="a Heart Scale"),
+    17: _ball("Poke Ball in the north-west", "NUGGET", "b2_desert_nugget", name="a Nugget"),
+    5: [{"text": "Nurse Mariah ", "action": "EVENT", "condition": ["not:b2_desert_mariah"], "_look": "sheet:b2_c51.png",
+                            "event": {"lines": ["Nurse Mariah: Battling in a sandstorm? Then let's see how your team holds up!"],
+                                      "flag": "b2_desert_mariah",
+                                      "battle": {"name": "Nurse Mariah", "class": "NURSE", "sprite": "nurse.png", "team": [173],
+                                                 "levels": [22], "rewards": {"balls": 2},
+                                                 "dialogue": {"player_won": ["Nurse Mariah: Well done! Come back any time and "
+                                                                             "I'll heal your team."]}},
+                                      "done": ["Nurse Mariah: Come back any time and I'll heal your team."]}},
+        {"text": "Nurse Mariah", "action": "EVENT", "condition": ["b2_desert_mariah"],
+         "event": {"lines": ["Nurse Mariah: Let me take care of your Pokemon!", "Your Pokemon were fully healed!"], "heal": True}}],
+}
+DESERT_RESORT = route(
+    158, DESERT_PEOPLE, {},
+    exits={"v": ("DESERT_RESORT_ENTRANCE", [(x, 83) for x in range(82, 85)]), "^": ("RELIC_CASTLE", [(61, 29)])},
+    trainers={1: "Psychic Tommy", 2: "Backpacker Tami", 3: "Pokemon Ranger Anja", 4: "Pokemon Ranger Jaden",
+              6: "Psychic Future", 7: "Backpacker Walt", 8: "Backpacker Sam", 9: "Backpacker Clara"},
+    hidden={"56,35": "GROUND_GEM", "44,38": "RED_SHARD", "55,56": "BLUE_SHARD", "65,65": "STAR_PIECE", "24,82": "FIRE_STONE",
+            "76,24": "SUPER_REPEL"},
+)
+
+RELIC_CASTLE = route(
+    160, {1: _say("Hiker in the ruins", "Two things I've learned about quicksand: walk through the middle and you fall in.",
+                  "Run through it, and you fall in too!")},
+    {},
+    exits={"v": ("DESERT_RESORT", [(21, 21)])},
+    trainers={0: "Psychic Perry"},
+    rooms={"b1f": room(161, {0: _clerk_battle("Psychic Dua", "Psychic Dua", "PSYCHIC", "psychic_f.png", [574], [23],
+                                              "The castle's old power still lingers here. Can you feel it?",
+                                              "My mind's eye saw that coming... too late.", "b2_relic_dua"),
+                             1: _clerk_battle("Psychic Low", "Psychic Low", "PSYCHIC", "psychic_m.png", [577], [23],
+                                              "Down here, the sand whispers. It told me you were coming!",
+                                              "The sand didn't whisper that part.", "b2_relic_low"),
+                             2: _ball("Poke Ball in the sand", "TM036", "b2_relic_tm036", name="TM036 Rock Tomb")},
+                       {}, (20, 3))},
+    inside={"20,3": "b1f", "4,17": "b1f"},
+)
+RELIC_CASTLE["rooms"]["b1f"]["title"] = "B1F"
+RELIC_CASTLE["rooms"]["b1f"]["hidden"] = {"4,9": "HEART_SCALE"}
+# (the floors as the file pairs them: 1F (20,3) <-> B1F (20,3), 1F (4,17) <-> B1F (12,18). Row 7 by the top-right stairs
+#  is flowing sand at the hall's own height (lift -2.2 both sides): walkable. The two quicksand pits (the game's triggers
+#  2,9 and 11,10, 5x5) drop you to B1F's upper half, as Black 2's quicksand does)
+_rc = RELIC_CASTLE["art"]
+_rc[7] = _rc[7][:18] + "......" + _rc[7][24:]
+for _x, _y in ((4, 11), (13, 12)):
+    _rc[_y] = _rc[_y][:_x] + "1" + _rc[_y][_x + 1:]
+RELIC_CASTLE["links"] = {"4,11": [1, 8, 8], "13,12": [1, 8, 8]}
+_b1 = RELIC_CASTLE["rooms"]["b1f"]
+_b1["art"][18] = _b1["art"][18][:12] + "w" + _b1["art"][18][13:]
+_b1["exits"]["w"] = "OUT:4,17"
+_b1["land"] = {"4,17": [3, 16]}
+_b1["parts"] = True   # (two halves: the upper reached by the quicksand and its stairs, the lower by its own stairs)
+_doors(RELIC_CASTLE, RELIC_CASTLE["inside"])
+
+# ------------------------------------------------------------------------------------------------- Join Avenue (3b)
+# 490: the avenue, north of Route 4, south of Nimbasa; 491: the manager's office. The owner meets you as you walk in (the
+# game's trigger, row 69) and makes you manager (src/world/join_avenue.py: Black 2's offline rules, Jordan 11-21). Three
+# visitor spots and a shopkeeper at each of the 8 lots (the lot signs down the avenue).
+OUTSIDE.update({491: 490})
+JA_LOT_SIGNS = [(9, 9), (17, 16), (9, 23), (17, 30), (9, 37), (17, 44), (9, 51), (17, 58)]
+JA_KEEPER_LOOKS = ["b2_c24.png", "b2_c22.png", "b2_c33.png", "b2_c26.png", "b2_c44.png", "b2_c96.png", "b2_c58.png", "b2_c65.png"]
+
+
+def _ja_keepers():
+    out = []
+    for n, (sx, sy) in enumerate(JA_LOT_SIGNS):
+        kx = sx + 1 if sx < 13 else sx - 1
+        out.append((kx, sy + 1, {"text": "Shopkeeper on lot %d" % (n + 1), "action": "EVENT", "condition": ["ja_lot_%d" % n],
+                                 "_look": "sheet:" + JA_KEEPER_LOOKS[n], "event": {"lines": ["..."], "join_avenue": "shop", "lot": n}}))
+    return out
+
+
+JA_VISITOR = lambda i, look: {"text": "Visitor %d" % (i + 1), "action": "EVENT", "condition": ["b2_join_manager"],
+                              "_look": "sheet:" + look, "event": {"lines": ["..."], "join_avenue": "visitor", "slot": i}}
+JA_OWNER = {"text": "Join Avenue owner", "action": "EVENT", "condition": ["not:b2_join_manager"], "_look": "sheet:b2_c52.png",
+            "event": {"lines": ["..."], "join_avenue": "owner"}}
+JOIN_AVENUE = town(
+    490, {0: JA_OWNER,
+          3: _say("Assistant Jacci", "Jacci: Welcome! The owner's just over here.", condition=["not:b2_join_manager"]),
+          4: _say("Assistant Future", "Future: A brand-new avenue! Exciting, isn't it?", condition=["not:b2_join_manager"]),
+          1: JA_VISITOR(0, "b2_c31.png"), 2: JA_VISITOR(1, "b2_c30.png")},
+    {(9, 65): ["JOIN AVENUE", "Meet, discover, and have fun!"],
+     **{(x, y): ["JOIN AVENUE: LOT %d" % (n + 1), "A shop opens here when a visitor's dream comes true."]
+        for n, (x, y) in enumerate(JA_LOT_SIGNS)}},
+    {491: ("house", "office")},
+    {"office": room(491, {3: {"text": "Assistant Jacci ", "action": "EVENT", "event": {"lines": ["..."], "join_avenue": "assistant"}},
+                          2: _say("Assistant Future ", "Future: Invite visitors whose dreams you like, and recommend the shops they'll love!"),
+                          1: _say("Owner in the office", "Owner: Just stopping by to see how my avenue's doing! Keep it up, manager.",
+                                  condition=["b2_join_manager"]),
+                          0: _say("Receptionist", "Welcome to the manager's office. The manager's assistants are always here to help.")},
+                    {}, (8, 66))},
+    extra_people=[(15, 40, JA_VISITOR(2, "b2_c27.png"))] + _ja_keepers(),
+    edges={"^": ("NIMBASA_CITY", [(x, 5) for x in range(10, 17)]), "v": ("UNOVA_ROUTE_4", [(x, 74) for x in range(9, 18)])},
+    scenes=[{"who": "Join Avenue owner", "trigger": {"zone": [9, 69, 18, 69]}, "condition": ["not:b2_join_manager"],
+             "flag": "b2_join_owner_met", "approach": True, "lines": ["Owner: Hello there! Welcome to Join Avenue!"], "then": "talk"}],
+)
+JOIN_AVENUE["rooms"]["office"]["title"] = "Manager's Office"
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
         "CASTELIA_CITY": CASTELIA,
         "CASTELIA_SEWERS": SEWERS, "CASTELIA_EMPTY_LOT": EMPTY_LOT, "LIBERTY_GARDEN": LIBERTY_GARDEN,
-        "ROYAL_UNOVA": ROYAL_UNOVA}
+        "ROYAL_UNOVA": ROYAL_UNOVA,
+        "UNOVA_ROUTE_4": ROUTE_4, "DESERT_RESORT_ENTRANCE": DESERT_ENTRANCE, "DESERT_RESORT": DESERT_RESORT,
+        "RELIC_CASTLE": RELIC_CASTLE, "JOIN_AVENUE": JOIN_AVENUE}

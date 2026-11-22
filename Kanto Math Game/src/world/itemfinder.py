@@ -18,7 +18,9 @@ def _way(dx, dy):
 def beep(story, hidden, here, flag_of, heard):
     """The line to show when the Itemfinder picks up an item in `hidden` {"x,y": item} near `here`, else None.
     `flag_of(x, y)` is the item's found flag; `heard` a set of spots it has already beeped for (this visit)."""
-    if not hidden or (story.inventory or {}).get("ITEMFINDER", 0) <= 0:
+    inv = story.inventory or {}
+    dowse = inv.get("DOWSING_MACHINE", 0) > 0   # (Unova's own: Bianca's gift at the Castelia Gate, B2W2; 11-21)
+    if not hidden or (inv.get("ITEMFINDER", 0) <= 0 and not dowse):
         return None
     best = None
     for key in hidden:
@@ -34,4 +36,6 @@ def beep(story, hidden, here, flag_of, heard):
     if best is None:
         return None
     heard.add(best[0])
+    if dowse and inv.get("ITEMFINDER", 0) <= 0:
+        return f"The Dowsing MCHN is reacting! Something's buried {abs(best[1]) + abs(best[2])} steps to the {_way(best[1], best[2])}."
     return f"The Itemfinder is beeping! Something's hidden to the {_way(best[1], best[2])}."

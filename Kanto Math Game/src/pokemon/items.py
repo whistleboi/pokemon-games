@@ -194,6 +194,9 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "STICKY_BARB": {"price": 200, "text": "Held: it hurts its holder every turn, and sticks to a foe that touches it."},   # (B2W2: Route 20, autumn; 11-20)
         "BLACK_SLUDGE": {"price": 200, "text": "Held: a Poison-type holder gets back a little HP every turn. Any other is hurt by it."},   # (B2W2: the Castelia Sewers; 11-20)
         "POISON_GEM": {"price": 200, "text": "Held: its holder's first Poison-type move hits harder. Then it's used up."},   # (B2W2: the Castelia Sewers, hidden; 11-20)
+        "GROUND_GEM": {"price": 200, "text": "Held: its holder's first Ground-type move hits harder. Then it's used up."},   # (B2W2: the Desert Resort, hidden; 11-21)
+        "GRIP_CLAW": {"price": 4000, "text": "Held: its holder's binding moves, like Wrap, last 7 turns."},   # (B2W2 Route 4)
+        "LIGHT_CLAY": {"price": 4000, "text": "Held: its holder's Reflect and Light Screen last 8 turns."},   # (W2 Route 4)
         "WHITE_HERB": {"price": 4000, "text": "Held: if its holder's stats are lowered, it puts them back. Used up."},
         "FLOAT_STONE": {"price": 1000, "text": "Held: its holder weighs half as much."},
         "HEAT_ROCK": {"price": 4000, "text": "Held: sunshine its holder calls lasts eight turns. Use it in battle to call sunshine."},
@@ -291,7 +294,14 @@ VITAMINS = {"HP_UP": {"stat": "HP", "price": 9800, "text": "Raises a Pokemon's H
             "IRON": {"stat": "DEFENSE", "price": 9800, "text": "Raises a Pokemon's Defense a little, for good."},
             "CALCIUM": {"stat": "SPATK", "price": 9800, "text": "Raises a Pokemon's Sp. Atk a little, for good."},
             "ZINC": {"stat": "SPDEF", "price": 9800, "text": "Raises a Pokemon's Sp. Def a little, for good."},
-            "CARBOS": {"stat": "SPEED", "price": 9800, "text": "Raises a Pokemon's Speed a little, for good."}}
+            "CARBOS": {"stat": "SPEED", "price": 9800, "text": "Raises a Pokemon's Speed a little, for good."},
+            # (Black 2 / White 2's wings, 11-21: one effort point each, up to the stat's full 252 - Route 4's stat checks, the Marvelous Bridge)
+            "HEALTH_WING": {"stat": "HP", "ev": 1, "cap": 252, "price": 3000, "text": "A feather. Raises a Pokemon's HP very slightly."},
+            "MUSCLE_WING": {"stat": "ATTACK", "ev": 1, "cap": 252, "price": 3000, "text": "A feather. Raises a Pokemon's Attack very slightly."},
+            "RESIST_WING": {"stat": "DEFENSE", "ev": 1, "cap": 252, "price": 3000, "text": "A feather. Raises a Pokemon's Defense very slightly."},
+            "GENIUS_WING": {"stat": "SPATK", "ev": 1, "cap": 252, "price": 3000, "text": "A feather. Raises a Pokemon's Sp. Atk very slightly."},
+            "CLEVER_WING": {"stat": "SPDEF", "ev": 1, "cap": 252, "price": 3000, "text": "A feather. Raises a Pokemon's Sp. Def very slightly."},
+            "SWIFT_WING": {"stat": "SPEED", "ev": 1, "cap": 252, "price": 3000, "text": "A feather. Raises a Pokemon's Speed very slightly."}}
 # Apricorns (HGSS, Jordan 11-15, simplified): picked once a day from the trees with the Apricorn Box; Kurt makes each into his ball on the spot.
 APRICORN_BALL = {"RED_APRICORN": "LEVEL_BALL", "BLU_APRICORN": "LURE_BALL", "YLW_APRICORN": "MOON_BALL", "GRN_APRICORN": "FRIEND_BALL",
                  "PNK_APRICORN": "LOVE_BALL", "WHT_APRICORN": "FAST_BALL", "BLK_APRICORN": "HEAVY_BALL"}
@@ -367,9 +377,9 @@ def use_vitamin(pokemon, item):
     stat = VITAMINS[item]["stat"]
     evs = pokemon.__dict__.setdefault("evs", {})
     have, total = evs.get(stat, 0), sum(evs.values())
-    if have >= VITAMIN_CAP or total >= EV_TOTAL:
+    if have >= VITAMINS[item].get("cap", VITAMIN_CAP) or total >= EV_TOTAL:
         return False, "It won't have any effect."
-    gain = min(VITAMIN_EV, VITAMIN_CAP - have, EV_TOTAL - total)
+    gain = min(VITAMINS[item].get("ev", VITAMIN_EV), VITAMINS[item].get("cap", VITAMIN_CAP) - have, EV_TOTAL - total)
     before = pokemon.get_max_hp()
     evs[stat] = have + gain
     if stat == "HP":
@@ -545,6 +555,7 @@ STORY_TEXT = {
     "GOOD_ROD": "A good fishing rod. Fish where there's water.",
     "SUPER_ROD": "The best fishing rod. Fish where there's water.",
     "ITEMFINDER": "It beeps near hidden items.",
+    "DOWSING_MACHINE": "Unova's dowsing machine. It reacts to items buried nearby and says how far and which way.",
     "POKE_FLUTE": "Its tune wakes sleeping Pokemon, even big ones blocking the road.",
     "SQUIRT_BOTTLE": "A watering can that wakes a strange tree.",
     "POKE_NAV": "Hoenn's handy gadget: a map and a phone in one.",

@@ -1257,8 +1257,13 @@ class StoryManager:
         """Is this trainer out on the map? Beaten ones stay beaten; an ordinary route trainer is back the next day (real
         time; Jordan, 11-08). Enemy teams, rivals, gyms and story battles never come back. "when_flags": only once the
         story has got that far (the Space Center's invaders, after the Mind Badge)."""
-        if info.get("when_flags") and not all(self.has_badge(f[6:]) if str(f).startswith("badge:") else self.story_flags.get(f)
-                                              for f in info["when_flags"]):
+        def _holds(f):   # (a flag, "badge:X", or one of the story's own conditions: "unova_version:WHITE_2", Route 4's Trainers, 11-21)
+            f = str(f)
+            if f.startswith("badge:"):
+                return self.has_badge(f[6:])
+            sp = self.special_condition(f) if ":" in f else None
+            return bool(sp) if sp is not None else bool(self.story_flags.get(f))
+        if info.get("when_flags") and not all(_holds(f) for f in info["when_flags"]):
             return False
         if info.get("gone_flags") and any(self.story_flags.get(f) for f in info["gone_flags"]):   # (11-19: gone once the story moves on -
             return False                                                                             #  Platinum's grunts at Lake Verity, on Mt. Coronet)

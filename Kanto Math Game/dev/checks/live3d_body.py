@@ -399,7 +399,8 @@ from src.states.overworld import PlayState as _PS
 _rflat, _rcut, _rsky, _rslow = [], [], [], []
 _N4 = ((0, 1), (0, -1), (1, 0), (-1, 0))
 for _area in ("UNOVA_ROUTE_19", "UNOVA_ROUTE_20", "PLEDGE_GROVE", "FLOCCESY_RANCH", "FLOCCESY_RANCH_OUTSIDE", "CASTELIA_SEWERS",
-              "VIRBANK_COMPLEX", "VIRBANK_COMPLEX_OUTSIDE", "CASTELIA_EMPTY_LOT", "LIBERTY_GARDEN", "ROYAL_UNOVA"):
+              "VIRBANK_COMPLEX", "VIRBANK_COMPLEX_OUTSIDE", "CASTELIA_EMPTY_LOT", "LIBERTY_GARDEN", "ROYAL_UNOVA",
+              "UNOVA_ROUTE_4", "DESERT_RESORT_ENTRANCE", "DESERT_RESORT", "RELIC_CASTLE"):
     story.current_area_key = _area
     story.story_flags["visited_" + _area] = True
     g.walk_town_pos = g.walk_town_room = None
