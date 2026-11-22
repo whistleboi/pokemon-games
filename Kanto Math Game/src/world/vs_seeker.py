@@ -356,7 +356,7 @@ def rematch(game, area, index, info):
     old = list(info.get("levels") or [])
     if out.get("levels") == old or not out.get("levels"):
         from src.world import levels
-        top = max(1, min(100, levels.story_level_cap(story) - 2))
+        top = max(1, min(100, levels.story_ace(story) - 2))
         n = len(out.get("team") or [])
         out["levels"] = [max(old[i] if i < len(old) else 1, top - (n - 1 - i)) for i in range(n)]
     return _bigger_reward(info, out)

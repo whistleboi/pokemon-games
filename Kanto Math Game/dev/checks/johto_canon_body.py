@@ -163,12 +163,12 @@ check(vance["phone"]["tiers"][1].get("gift") == {"CARBOS": 1}, "...Vance's secon
 phone.register_after_win(g, "JOHTO_ROUTE_44", vance)
 story.mark_trainer_defeated("JOHTO_ROUTE_44", vance_i)
 _lvl = __import__("src.world.levels", fromlist=["x"])
-_save_cap = _lvl.story_level_cap
-_lvl.story_level_cap = lambda st: 100
+_save_cap = _lvl.story_ace
+_lvl.story_ace = lambda st: 100
 try:
     re = phone.rematch_info(g, "JOHTO_ROUTE_44", vance_i, vance)
 finally:
-    _lvl.story_level_cap = _save_cap
+    _lvl.story_ace = _save_cap
 check(re.get("_phone_tier") == 2 and (re.get("rewards") or {}).get("CARBOS") == 1 and "phone_gift_JOHTO_ROUTE_44|Bird Keeper Vance|1" in str(re.get("_phone_gift")),
       f"...met only at his strongest team, he still hands over the Carbos ({re.get('_phone_tier')}, {re.get('rewards')})")
 

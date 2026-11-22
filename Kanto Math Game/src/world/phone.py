@@ -32,7 +32,7 @@ def tier_ready(game, info):
     from src.world import levels
     tiers = (info.get("phone") or {}).get("tiers") or []
     story = game.story_manager
-    cap = levels.story_level_cap(story) if levels.cap_mode(story) == "STORY" else 100
+    cap = levels.story_ace(story) if levels.cap_mode(story) == "STORY" else 100
     ready = [i for i, t in enumerate(tiers) if min(t.get("levels") or [0]) <= cap]
     return ready[-1] if ready else None
 

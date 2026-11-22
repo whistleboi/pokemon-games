@@ -38,7 +38,7 @@ vr = levels._area_levels(g).get("VICTORY_ROAD", 0)
 check(vr > 14 and levels.area_level(g, "VICTORY_ROAD") == vr,
       f"Victory Road stays Lv {vr} for a Lv 14 lead: {levels.area_level(g, 'VICTORY_ROAD')}")
 lead.level = vr + 10
-_cap = levels.story_level_cap(story)
+_cap = levels.story_ace(story)   # (the lift and the bands follow the ace itself; the Exp. cap is ace + 2: Jordan 11-21)
 check(levels.is_postgame(story) or levels.area_level(g, "VICTORY_ROAD") == max(vr, _cap - 3),
       f"a lead at the level cap ({_cap}): the area rises to 3 under the cap, never below its own (Jordan 11-15) {levels.area_level(g, 'VICTORY_ROAD')}")
 lead.level = 3
@@ -56,10 +56,30 @@ _vw = [levels.wild_level(g, "VICTORY_ROAD") for _ in range(200)]
 check(min(_vw) >= vr - 2, f"...an area above the band keeps its own levels: Victory Road Lv {min(_vw)}-{max(_vw)}")
 weak.level = _first
 
-print("5) Gyms keep their canon levels; the cap after the last badge is the Champion's ace")
+print("5) Gyms keep their canon levels; the cap after the last badge is the Champion's ace + 2")
 check(levels.gym_team_levels("KANTO", "PEWTER_CITY", 2, "leader") == [12, 14], "Brock 12/14")
 story.badges = {"KANTO": ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"]}
 story.current_area_key = "VICTORY_ROAD"
-check(levels.story_level_cap(story) == levels.CHAMPION_ACE["KANTO"], f"cap {levels.story_level_cap(story)}")
+check(levels.story_level_cap(story) == levels.CHAMPION_ACE["KANTO"] + 2, f"cap = the Champion's ace + 2: {levels.story_level_cap(story)}")
 story.badges = {}
+
+print("6) every region: the cap is the next Leader's ace + 2, the Champion's ace + 2 after the last badge (Jordan 11-21)")
+_want = {"KANTO": [16, 23, 26, 31, 45, 45, 49, 52, 65], "JOHTO": [15, 19, 21, 27, 33, 37, 37, 43, 52],
+         "HOENN": [16, 18, 23, 30, 32, 37, 47, 48, 61], "SINNOH": [16, 24, 32, 32, 38, 41, 44, 51, 68],
+         "UNOVA": [15, 20, 26, 32, 35, 41, 50, 53, 61], "KALOS": [14, 27, 34, 36, 39, 44, 50, 61, 70],
+         "ALOLA": [12, 18, 30, 46, 56, 60], "ORANGE": [24, 37, 42, 48, 54], "ORRE": [18, 28, 38, 48, 62]}
+_area0, _mode0 = story.current_area_key, story.level_cap_mode
+story.level_cap_mode = "STORY"
+for _r, _caps in _want.items():
+    story.current_area_key = levels.GYM_ORDER[_r][0]
+    _got = []
+    for _n in range(len(_caps)):
+        story.badges = {_r: ["B%d" % i for i in range(_n)]}
+        _got.append(levels.story_level_cap(story) if story.get_current_region() == _r and not levels.is_postgame(story) else None)
+    check(_got == _caps, f"{_r}: caps by badge count {_got}")
+    story.badges = {_r: []}
+    check(levels.xp_cap(story) == _caps[0] and levels.story_ace(story) == _caps[0] - 2,
+          f"...Exp. stops at {levels.xp_cap(story)}; the wild lift, legends and rematches still follow the ace {levels.story_ace(story)}")
+story.badges = {}
+story.current_area_key, story.level_cap_mode = _area0, _mode0
 print("FAILURES:", fails)

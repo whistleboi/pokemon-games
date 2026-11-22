@@ -117,8 +117,8 @@ check(levels.canon_area_level(g, "UNION_CAVE") == 6 and levels.canon_area_level(
 story.player_team[0].level = 5  # (a team below an area: it stays at its own level)
 check(levels.area_level(g, "SLOWPOKE_WELL") == 7, "Slowpoke Well stays Lv 7 for a Lv 5 team")
 story.player_team[0].level = 15  # (a team above: the area keeps up, Jordan 11-07)
-_exp = (lambda _a: (levels.canon_area_level(g, _a) if levels.is_postgame(story) is False and levels.lead_level(g) < levels.story_level_cap(story)
-               else max(levels.canon_area_level(g, _a), levels.story_level_cap(story) - 3) if not levels.is_postgame(story)
+_exp = (lambda _a: (levels.canon_area_level(g, _a) if levels.is_postgame(story) is False and levels.lead_level(g) < levels.story_ace(story)
+               else max(levels.canon_area_level(g, _a), levels.story_ace(story) - 3) if not levels.is_postgame(story)
                else max(levels.canon_area_level(g, _a), levels.team_level(g))))("SLOWPOKE_WELL")
 check(levels.area_level(g, "SLOWPOKE_WELL") == _exp, f"...and with a Lv 15 lead: canon, or 3 under the cap once the lead has reached it (Jordan 11-15) {_exp}")
 story.player_team[0].level = 55
@@ -130,7 +130,7 @@ story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE"]
 cap5 = levels.story_level_cap(story)
 story.badges["JOHTO"].append("MINERAL")
 cap6 = levels.story_level_cap(story)
-check(cap5 == 35 and cap6 == 35, f"the cap never drops: 5 badges {cap5}, 6 badges {cap6} (HGSS: Jasmine 35, Pryce 34)")
+check(cap5 == 37 and cap6 == 37, f"the cap (ace + 2, Jordan 11-21) never drops: 5 badges {cap5}, 6 badges {cap6} (HGSS: Jasmine 35, Pryce 34)")
 story.level_cap_mode = "NONE"
 joey = [levels.trainer_level(g, "JOHTO_ROUTE_29") for _ in range(200)]
 check(max(joey) <= 6, f"Route 29 trainers top out at Lv {max(joey)}")   # (a Lv 5 team: areas keep up with your team (11-07), at most one over)
