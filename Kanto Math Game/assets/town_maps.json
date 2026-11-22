@@ -288723,7 +288723,7 @@
      "c...........cc",
      "cc..........cc",
      "c....cc.....cc",
-     "c....cc.....vc",
+     "c....cc.N...vc",
      "c...........cc",
      "c...........cc",
      "c.cc........cc",
@@ -288734,7 +288734,21 @@
      "v": "OUT:22,52"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Herbalist",
+      "action": "EVENT",
+      "event": {
+       "munchlax_owner": true,
+       "lines": [
+        "Herbalist: My Munchlax got out again? And ate all your snacks? Oh dear, oh dear. Here - these are for you."
+       ],
+       "done": [
+        "Herbalist: I grow the herbs, my Munchlax eats everything else. If it ever raids a snack tray of yours, tell me!"
+       ]
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -293102,7 +293116,7 @@
      "cc.....c.......c",
      "cc............cc",
      "ccc..N..N.....cc",
-     "ccc........N.ccc",
+     "ccc....N...N.ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -293122,6 +293136,15 @@
      "WANDERER MIROR B.",
      "SNAG SHADOW POKEMON",
      "SNAG AGAIN",
+     {
+      "text": "Snack tray",
+      "action": "EVENT",
+      "condition": "xd_spot_oasis",
+      "event": {
+       "snack_tray": true,
+       "lines": []
+      }
+     },
      "MIROR B. AT THE CAVE"
     ],
     "trainer_spots": [],
@@ -293230,7 +293253,7 @@
      "cc.....c.......c",
      "cc............cc",
      "ccc........N..cc",
-     "ccc..N.......ccc",
+     "ccc..N..N....ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -293249,7 +293272,16 @@
     "people": [
      "WANDERER MIROR B.",
      "REPORTER POFTY",
-     "DUKING AT THE ROCK"
+     "DUKING AT THE ROCK",
+     {
+      "text": "Snack tray",
+      "action": "EVENT",
+      "condition": "xd_spot_oasis",
+      "event": {
+       "snack_tray": true,
+       "lines": []
+      }
+     }
     ],
     "trainer_spots": [],
     "roofs": {
@@ -293304,7 +293336,7 @@
      "ccc............ccc",
      "cc......c......ccc",
      "cc.....N.........c",
-     "c..............ccc",
+     "c........N.....ccc",
      "ccc.............cc",
      "ccccc........ccccc",
      "cccc.........ccccc",
@@ -293323,7 +293355,16 @@
     "parts": true,
     "people": [
      "WANDERER MIROR B.",
-     "DUKING AT THE OASIS"
+     "DUKING AT THE OASIS",
+     {
+      "text": "Snack tray",
+      "action": "EVENT",
+      "condition": "xd_spot_oasis",
+      "event": {
+       "snack_tray": true,
+       "lines": []
+      }
+     }
     ],
     "trainer_spots": [],
     "roofs": {
@@ -355099,6 +355140,197 @@
   ],
   "figure_floors": {
    "The Gear": 0
+  },
+  "theme": "tunnel"
+ },
+ "ORRE_DESERT": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccc^^^ccccccccccccccccccccccccc}}}ccccc",
+     "cccccccccccc...ccccccccccccccccccccccccc...ccccc",
+     "c...c....c..........c.......cc.....c...........c",
+     "c......cc........c......c...cc.........c.......c",
+     "c.c....cc...............X...cc....c...........cc",
+     "c.ccc.c............c..........c................c",
+     "c.....c........................................c",
+     "c..............................................c",
+     "c..cc...c..........cccccc................c.....c",
+     "c..cc..............cccccc....c.................c",
+     "c........................ccc..........c....cc..c",
+     "c.c.....X........c.......ccc...............cc..c",
+     "<........................X.....................c",
+     "<..............................................>",
+     "c.c....NN.N..............c.....................>",
+     "c................c....cc...................cc..c",
+     "c.....c...............cc.....c.............cc..c",
+     "c..cc..................c.................c.....c",
+     "c..cc....c.......c.....ccc..c..................c",
+     "c.....................................cc...c...c",
+     "c....c...................c............cc.......c",
+     "c..............................................c",
+     "c..c....c.c.............................c......c",
+     "c.........ccc.......c.................c........c",
+     "cccccccccccccccccccccccccccccccc...ccccccccccccc",
+     "ccccccccccccccccccccccccccccccccvvvccccccccccccc"
+    ],
+    "exits": {
+     "<": "OUTSKIRT_STAND",
+     "^": "PHENAC_CITY",
+     "}": "ORRE_COLOSSEUM",
+     ">": "ORRE_POKE_SPOTS",
+     "v": "SNAGEM_HIDEOUT"
+    },
+    "links": {},
+    "parts": true,
+    "people": [
+     "SNAG SHADOW POKEMON",
+     "door:cycle",
+     "SNAG AGAIN"
+    ],
+    "trainer_spots": [
+     "Togepi",
+     "Shady Guy",
+     "Espeon | Umbreon"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/desert_trail_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/desert_trail_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       48,
+       26
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        40,
+        0
+       ]
+      ],
+      "until": {
+       "flag_condition": "beat_gonzap"
+      },
+      "lines": [
+       "The way to the Orre Colosseum. It's closed till the tournament opens."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        41,
+        0
+       ]
+      ],
+      "until": {
+       "flag_condition": "beat_gonzap"
+      },
+      "lines": [
+       "The way to the Orre Colosseum. It's closed till the tournament opens."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        42,
+        0
+       ]
+      ],
+      "until": {
+       "flag_condition": "beat_gonzap"
+      },
+      "lines": [
+       "The way to the Orre Colosseum. It's closed till the tournament opens."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        32,
+        25
+       ]
+      ],
+      "until": {
+       "condition": [
+        "has_phenac_badge",
+        "xd_hordel"
+       ]
+      },
+      "lines": [
+       "Sand blows across the track. You don't know the way to Snagem's hideout yet."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        33,
+        25
+       ]
+      ],
+      "until": {
+       "condition": [
+        "has_phenac_badge",
+        "xd_hordel"
+       ]
+      },
+      "lines": [
+       "Sand blows across the track. You don't know the way to Snagem's hideout yet."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        34,
+        25
+       ]
+      ],
+      "until": {
+       "condition": [
+        "has_phenac_badge",
+        "xd_hordel"
+       ]
+      },
+      "lines": [
+       "Sand blows across the track. You don't know the way to Snagem's hideout yet."
+      ],
+      "look": "barrier"
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "Desert Trail"
+  ],
+  "figure_floors": {
+   "SNAG SHADOW POKEMON": 0,
+   "SNAG AGAIN": 0,
+   "door:cycle": 0,
+   "Togepi": 0,
+   "Shady Guy": 0,
+   "Espeon | Umbreon": 0
   },
   "theme": "tunnel"
  }

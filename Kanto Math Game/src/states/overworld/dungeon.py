@@ -1760,6 +1760,13 @@ class DungeonState(OverworldBattles, PlayState):
     def _make_wild(self, rng, spot=None):
         """A wild Pokemon for the area (on a wide floor: for the part of it where it will stand)."""
         story = self.game.story_manager
+        from src.world import poke_snacks as _snacks
+        if self.area_key in _snacks.SPOTS:   # (a Poke Spot: only what came for the snacks, once - XD; Orre batch 8d)
+            if getattr(self, "_snack_spawned", False):   # (one visitor a visit: the map's other wild slots stay empty)
+                return None
+            mon = _snacks.visitor_mon(self.game, self.area_key)
+            self._snack_spawned = mon is not None
+            return mon
         flag = f"zone_{self.area_key}"
         keep = story.story_flags.get(flag)
         if spot is not None and getattr(self, "per_floor", 1) > 1 and self.zones:
@@ -1826,6 +1833,9 @@ class DungeonState(OverworldBattles, PlayState):
         self._ow_foe = None
         if mover is not None:
             if kind == "wild":
+                if getattr(mover.payload, "snack_visitor", None):   # (the snack tray's visitor: gone - Orre batch 8d)
+                    from src.world import poke_snacks as _snacks
+                    _snacks.visitor_gone(self.game, mover.payload.snack_visitor)
                 self.run.remove(mover)
             elif kind == "trainer":
                 idx = mover.payload[0]
@@ -2049,7 +2059,8 @@ class DungeonState(OverworldBattles, PlayState):
             from src.world import vs_seeker as _vs
             _vs.step(self.game.story_manager)   # (the VS Seeker charges as you walk)
             from src.world import shadow as _shadow, purify_chamber as _chamber
-            _said = _shadow.walked(self.game) + _chamber.walked(self.game)   # (Orre: walking opens a Shadow Pokemon's heart, with
+            from src.world import poke_snacks as _snacks
+            _said = _shadow.walked(self.game) + _chamber.walked(self.game) + _snacks.walked(self.game)   # (Orre: walking opens a Shadow Pokemon's heart, with
             if _said:                                                       #  you or in the Purify Chamber; 11-21 - the party's was
                 self.flash(_said[-1], 150)                                  #  never called before)
             self._lap_step()
@@ -2501,6 +2512,9 @@ class DungeonState(OverworldBattles, PlayState):
         mover, p = self.encounter, self.encounter.payload
         name = p.display_name.upper()
         self.run.remove(mover)
+        if getattr(p, "snack_visitor", None):   # (a Poke Spot's snack visitor: caught or gone - Orre batch 8d)
+            from src.world import poke_snacks as _snacks
+            _snacks.visitor_gone(self.game, p.snack_visitor)
         self.encounter = None
         if self.throw_result == "caught" and self.contest:
             if p.cry:

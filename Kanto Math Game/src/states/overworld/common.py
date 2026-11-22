@@ -982,6 +982,21 @@ def _run_story_event(state, key, check, show):
             info = dict(xd_post.greevil_battle(game, gr), _intro_lines=lines + list(gr.get("team_lines") or []))
         game.change_state(_start_event_battle(game, story.current_area_key, info, None))
         return
+    if ev.get("snack_tray"):   # (XD's Poke Snacks: a Poke Spot's tray - src/world/poke_snacks.py)
+        from src.world import poke_snacks
+        poke_snacks.tray_event(state, ev, lines, show)
+        return
+    if ev.get("munchlax_owner"):   # (Gateon's herbalist: his Munchlax ate your snacks - 10 back and a herb)
+        if not story.story_flags.get("munchlax_ate"):
+            show(_resolve_lines(game, ev.get("done") or ["..."]))
+            return
+        import random as _rnd
+        herb = _rnd.choice(["ENERGY_POWDER", "ENERGY_ROOT", "HEAL_POWDER", "REVIVAL_HERB"])
+        story.story_flags.pop("munchlax_ate", None)
+        story.add_item("POKE_SNACK", 10)
+        story.add_item(herb, 1)
+        show(_resolve_lines(game, lines + [f"{getattr(game, 'player_name', 'You')} received 10 Poke Snacks and a {forms.item_label(herb).upper()}!"]))
+        return
     if ev.get("xd_colosseum"):   # (XD's Orre Colosseum after the title: seven rounds of four - src/world/xd_colosseum.py)
         from src.world import xd_colosseum
         xd_colosseum.start(state, ev, lines, show)

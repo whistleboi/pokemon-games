@@ -2309,6 +2309,10 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         return self._tm_won
 
     def exit_battle(self, lost=False):
+        for _foe in (self.opponent_team or []):   # (a Poke Spot's snack visitor: battled, caught or run from - it's gone; Orre 8d)
+            if _foe is not None and getattr(_foe, "snack_visitor", None):
+                from src.world import poke_snacks
+                poke_snacks.visitor_gone(self.game, _foe.snack_visitor)
         if getattr(self, "battle_cd", None) is not None:   # (a Battle CD: your own team back before anything else - src/world/battle_cd.py)
             from src.world import battle_cd
             self._cd_said = battle_cd.after_battle(self.game, self, bool(self.player_won and not lost))
@@ -2358,6 +2362,10 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         if candy > 0:
             self.game.story_manager.add_item("RARE_CANDY", candy)
 
+        if not lost and self.player_won and self.is_trainer_battle and getattr(self, "battle_cd", None) is None:
+            from src.world import poke_snacks   # (Orre: a beaten trainer sometimes leaves a Poke Snack - XD; batch 8d)
+            if poke_snacks.trainer_reward(self.game):
+                pass
         reward_balls = self.rewards.get("balls", 3)
         catching = self.game.story_manager.catch_unlocked()
         if not catching or self.starter_battle:   # (no Poke Balls from the opening rival battle, or from any battle before the

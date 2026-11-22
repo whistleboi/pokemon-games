@@ -47,6 +47,25 @@ class JournalState(GameState):
         self.btn_guide = CommandButton((d.right - 24 - 240, d.bottom - 24 - 62, 240, 62), "GUIDE ME", f["button"],
                                        self.toggle_guide, bg_color=theme.RUN, autosize=False)
         self.guide_buttons = [self.btn_guide]
+        # Orre: the P*DA (its look, four tabs: src/states/systems/pda.py; Orre batch 8d)
+        self.tab, self.pda_scroll, self.tab_buttons = "journal", 0, []
+        self.pda = str(game.story_manager.get_current_region() or "").upper() == "ORRE"
+        if self.pda:
+            from src.states.systems import pda
+            x = game.width - 24
+            for key, label in reversed(pda.TABS):
+                w = max(120, f["label"].size(label)[0] + 30)
+                x -= w
+                self.tab_buttons.insert(0, (key, CommandButton((x, 18, w - 8, 48), label, f["label"], (lambda k=key: self.set_tab(k)),
+                                                               bg_color=pda.ACCENT, autosize=False)))
+                x -= 4
+
+    def set_tab(self, key):
+        self.tab, self.pda_scroll = key, 0
+        on = key == "journal"
+        self.btn_guide.set_visibility(on and bool(self._mission()) and self._mission()["status"] == "ACTIVE")
+        if on:
+            self._guide_layout()
 
     def row_rect(self, k):
         r = self.list_rect
@@ -54,6 +73,10 @@ class JournalState(GameState):
         return pygame.Rect(r.x + 12, r.y + 12 + k * (h + 8), r.w - 24, h)
 
     def scroll(self, step):
+        if getattr(self, "tab", "journal") != "journal":
+            from src.states.systems import pda
+            self.pda_scroll = max(0, min(max(0, len(pda.rows(self.game, self.tab)) - 1), self.pda_scroll + step))
+            return
         self.scroll_idx = max(0, min(max(0, len(self.missions) - self.ROWS), self.scroll_idx + step))
 
     def go_back(self):
@@ -64,6 +87,8 @@ class JournalState(GameState):
 
     def start(self):
         for btn in (self.btn_back, self.btn_up, self.btn_down, self.btn_guide):
+            self.game.ui_manager.add_element(btn)
+        for _k, btn in self.tab_buttons:
             self.game.ui_manager.add_element(btn)
         for m in self.missions:
             if m["id"] not in self.game.story_manager.notified_missions:
@@ -125,11 +150,38 @@ class JournalState(GameState):
         screen = self.game.screen
         f = self.game.assets.fonts
         accent = theme.ACCENT["journal"]
-        theme.menu_background(screen, accent, "JOURNAL", f["button"], title_x=176)
+        if self.pda:
+            from src.states.systems import pda
+            accent = pda.ACCENT
+            theme.menu_background(screen, accent, "P  DA", f["button"], title_x=176)
+            sx = 176 + f["button"].size("P ")[0] - f["button"].size(" ")[0] // 2   # (the font has no star: drawn between P and DA)
+            sy, r = theme.HEADER_H // 2, 9
+            import math as _m
+            pts = [(sx + (r if k % 2 == 0 else r * 0.45) * _m.cos(_m.pi / 2 + k * _m.pi / 5),
+                    sy - (r if k % 2 == 0 else r * 0.45) * _m.sin(_m.pi / 2 + k * _m.pi / 5)) for k in range(10)]
+            pygame.draw.polygon(screen, (255, 232, 120), pts)
+            for key, btn in self.tab_buttons:
+                btn.bg_color = theme.BAG if key == self.tab else pda.ACCENT
+            if self.tab != "journal":
+                full = self.list_rect.union(self.detail_rect)
+                total, shown = pda.draw(self, screen, full, self.pda_scroll)
+                self.btn_up.set_visibility(self.pda_scroll > 0)
+                self.btn_down.set_visibility(self.pda_scroll + shown < total)
+                self.btn_guide.set_visibility(False)
+                bf = f["s_med"]
+                theme.draw_textbox(screen, self.bar_rect)
+                hint = {"mail": "Your e-mail, newest first.", "snag": "Every Shadow Pokemon in Orre, and where it is.",
+                        "monitor": "Snacks on a Poke Spot's tray bring visitors."}[self.tab]
+                theme.shadow_text(screen, hint, bf, self.bar_rect.x + 32, self.bar_rect.centery - bf.get_height() // 2 - 2)
+                self.game.ui_manager.draw(screen)
+                return
+        else:
+            theme.menu_background(screen, accent, "JOURNAL", f["button"], title_x=176)
         active = sum(1 for m in self.missions if m["status"] == "ACTIVE")
-        Utils.draw_text_outline(screen, f"{active} active   {len(self.missions) - active} done", f["button"], WHITE,
-                                self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
-                                outline_color=theme.shade(accent, 0.45), thickness=3)
+        if not self.pda:
+            Utils.draw_text_outline(screen, f"{active} active   {len(self.missions) - active} done", f["button"], WHITE,
+                                    self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
+                                    outline_color=theme.shade(accent, 0.45), thickness=3)
         tracked = guide.tracked_mission(self.game)
         mouse = pygame.mouse.get_pos()
 

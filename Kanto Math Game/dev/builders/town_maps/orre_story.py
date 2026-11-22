@@ -1141,6 +1141,24 @@ def _col8c(maps):
                 {"tiles": [list(right)], "look": "unseen", "until": {"flag_condition": "col_never"},
                  "lines": ["A heavy door with no handle on this side."]}]
 
+# ================================================================== batch 8d: Poke Snacks (BATCH_8D.md)
+# XD's snack trays at the three Poke Spots (src/world/poke_snacks.py) and the Gateon herbalist whose Munchlax eats them.
+SNACK_TRAY = {"text": "Snack tray", "action": "EVENT", "condition": "xd_spot_oasis", "event": {"snack_tray": True, "lines": []}}
+HERBALIST = {"text": "Herbalist", "action": "EVENT", "event": {
+    "munchlax_owner": True,
+    "lines": ["Herbalist: My Munchlax got out again? And ate all your snacks? Oh dear, oh dear. Here - these are for you."],
+    "done": ["Herbalist: I grow the herbs, my Munchlax eats everything else. If it ever raids a snack tray of yours, tell me!"]}}
+
+
+def _xd8d(maps):
+    for key in ("ORRE_POKE_SPOTS", "OASIS_POKE_SPOT", "CAVE_POKE_SPOT"):
+        if key in maps:
+            f = maps[key]["floors"][0]
+            _set_people(f, {_spot(f): SNACK_TRAY})
+    if "GATEON_PORT" in maps:
+        r = maps["GATEON_PORT"]["rooms"]["house_small"]
+        _set_people(r, {_spot(r): HERBALIST})
+
 
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
@@ -1159,6 +1177,7 @@ def apply(maps):
     _xd8a(maps)
     _xd8b(maps)
     _col8c(maps)
+    _xd8d(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

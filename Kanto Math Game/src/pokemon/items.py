@@ -602,6 +602,7 @@ STORY_TEXT = {
     "GREEN_KEY": "A green key from Cipher Admin Dakim. One of four that open Realgam Tower's giant door.",
     "SYSTEM_LEVER": "A heavy lever marked 'SYSTEM'. It fits the power panel in the Cipher Key Lair's Control Room.",
     "D_DISK": "A disk Gonzap kept hidden. Slot it into the floating platform in The Under and it goes down - deep down.",
+    "POKE_SNACK": "A crunchy treat wild Pokemon love. Leave some on a Poke Spot's tray and see who comes to eat.",
     "VOICE_CASE": "Dr. Kaminko's Voice Case: a recorded cry that frees a Pokemon stuck in one of his Pokemon Translators.",
     "BATTLE_CD_01": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
     "BATTLE_CD_02": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",

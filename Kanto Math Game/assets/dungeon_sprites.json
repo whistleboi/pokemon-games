@@ -76,6 +76,12 @@
     ]
   },
   "figures": {
+    "ORRE_DESERT:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "ORRE_DESERT:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
     "XD_CITADARK_ISLE:PP MAX": {
       "item": "PP_MAX"
     },
@@ -13442,6 +13448,18 @@
     },
     "SNAGEM_HIDEOUT:Snagem's Agrev": {
       "sheet": "orre_trainer_burglar.png"
+    },
+    "ORRE_POKE_SPOTS:Snack tray": {
+      "item": "POKE_SNACK"
+    },
+    "OASIS_POKE_SPOT:Snack tray": {
+      "item": "POKE_SNACK"
+    },
+    "CAVE_POKE_SPOT:Snack tray": {
+      "item": "POKE_SNACK"
+    },
+    "GATEON_PORT:Herbalist": {
+      "sheet": "orre_npc_10.png"
     }
   },
   "townsperson": "NPC 17.png",

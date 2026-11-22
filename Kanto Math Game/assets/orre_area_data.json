@@ -161,6 +161,39 @@
           }
         },
         {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "door": "cycle",
+          "condition": [
+            "can_exit",
+            "got_snag_machine"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Gateon Port",
+          "action": "EXIT",
+          "target_area": "GATEON_PORT",
+          "door": "cycle",
+          "condition": [
+            "can_exit",
+            "orre_ein_lab"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "door": "cycle",
+          "condition": [
+            "can_exit",
+            "xd_gorigan_beaten"
+          ],
+          "color": "RED"
+        },
+        {
           "text": "Outskirt Stand",
           "action": "EXIT",
           "target_area": "OUTSKIRT_STAND",
@@ -22294,7 +22327,8 @@
     {"id": "orre_s6d", "type": "SIDE", "title": "Silent Pokemon", "description": "Beluh e-mailed: some of Agate Village's Pokemon have gone silent. Go and see her.", "condition": {"required_region": "ORRE", "flag": "xd_beluh_mail", "flag_not": "xd_lucky_egg"}, "region": "ORRE", "completed_flag": "xd_lucky_egg", "target": "AGATE_VILLAGE", "reward": "Lucky Egg"},
     {"id": "orre_s7", "type": "SIDE", "title": "A Rumour in Pyrite", "description": "Nett has heard something about Cail and a Shadow Pokemon. A kid in Pyrite saw it - he's hiding behind a bookcase.", "condition": {"required_region": "ORRE", "flag": "col_post_nett", "flag_not": "col_cail_post"}, "region": "ORRE", "completed_flag": "col_cail_post", "target": "PYRITE_TOWN"},
     {"id": "orre_s7b", "type": "SIDE", "title": "The Snagem Raid", "description": "Snagem is back in its desert hideout, with Shadow Pokemon you missed. Nett also mentioned Gurks, on the Junk Shop's balcony in The Under. Gonzap has something you'll want.", "condition": {"required_region": "ORRE", "flag": "col_cail_post", "flag_not": "col_gonzap_post"}, "region": "ORRE", "completed_flag": "col_gonzap_post", "target": "SNAGEM_HIDEOUT", "reward": "D-Disk"},
-    {"id": "orre_s7c", "type": "SIDE", "title": "The Deep Colosseum", "description": "Slot the D-Disk into The Under's floating platform. Five rounds wait at the bottom, and the Deep King after them.", "condition": {"required_region": "ORRE", "flag": "col_gonzap_post", "flag_not": "col_deep_all"}, "region": "ORRE", "completed_flag": "col_deep_all", "target": "THE_UNDER", "reward": "TM Dragon Claw"}
+    {"id": "orre_s7c", "type": "SIDE", "title": "The Deep Colosseum", "description": "Slot the D-Disk into The Under's floating platform. Five rounds wait at the bottom, and the Deep King after them.", "condition": {"required_region": "ORRE", "flag": "col_gonzap_post", "flag_not": "col_deep_all"}, "region": "ORRE", "completed_flag": "col_deep_all", "target": "THE_UNDER", "reward": "TM Dragon Claw"},
+    {"id": "orre_s8", "type": "SIDE", "title": "Poke Snacks", "description": "Put Poke Snacks on a Poke Spot's tray, then go somewhere else. Your P*DA's Spot Monitor beeps when something comes to eat - fast beeps mean a rare one. No snacks, no wild Pokemon.", "condition": {"required_region": "ORRE", "flag": "xd_spot_oasis", "flag_not": "snacks_from_duking"}, "region": "ORRE", "completed_flag": "snacks_from_duking", "target": "ORRE_POKE_SPOTS"}
   ],
   "REGION_START": {
     "ORRE": {
