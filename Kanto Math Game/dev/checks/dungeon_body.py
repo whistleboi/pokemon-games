@@ -1472,7 +1472,8 @@ for _k in ("NEW_BARK_TOWN", "CHERRYGROVE_CITY", "VIOLET_CITY", "AZALEA_TOWN", "C
         _seen = {_name}
         while True:  # (through the building's rooms by their stairs)
             _n += 1
-            if any(isinstance(o, dict) and str(o.get("action")).upper() == "GYM" for o in _t.people.values()):
+            if any(isinstance(q, dict) and str(q.get("action")).upper() == "GYM" for o in _t.people.values() if isinstance(o, dict)
+                   for q in o.get("any", [o])):   # (a Leader with stages, by the story: Cianwood's Chuck under the waterfall first, 11-22)
                 _gym = _t.room
             if not all(isinstance(o, dict) for o in _t.people.values()):
                 _bad.append((_d, _t.room, "someone with nothing to say"))

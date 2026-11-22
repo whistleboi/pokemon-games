@@ -2430,6 +2430,20 @@ class WalkTownState(CityState):
         for a in (self.scenes.actors if getattr(self, "scenes", None) else []):
             ax, ay = a["m"].at()
             put(self._actor_img(a["sheet"], self._live_face(a["m"].facing), a["m"].frame(), native=bool(a.get("native"))), ax, ay)
+        if getattr(sc, "bdhc", None) is not None and getattr(self, "grid", None):   # (SoulSilver's own small trees and cracked
+            from src.states.overworld.dungeon_live import SS_THINGS, SS_THING_K, RouteLive   # rocks: people to the game, so not in
+            for _y, _row in enumerate(self.grid):                                            # the scene's model; 11-22, as routes)
+                for _x, _c in enumerate(_row):
+                    _thing = {"2": SS_THINGS["cut"], "0": SS_THINGS["crack"]}.get(_c)
+                    if not _thing or _c in getattr(self, "_cleared", ""):
+                        continue
+                    _img = RouteLive._ss_thing(self, _thing)
+                    if _img is None:
+                        continue
+                    _near = [h(*q) for q in ((_x + 1, _y), (_x - 1, _y), (_x, _y + 1), (_x, _y - 1)) if self._open(q)]
+                    _want = sum(_near) / len(_near) if _near else h(_x, _y)
+                    _hy = min(sc.surfaces(_x, _y) or [h(_x, _y)], key=lambda v: abs(v - _want))
+                    sprites.append((_img, (_x + 0.5, _hy, sc.wz(_x, _y) + 0.55), _img.get_height() / 4 / 16 * SS_THING_K))
         flat_bars = []   # (someone or something in the way: a sprite stood in the scene, else drawn over it)
         for _t, _bar in getattr(self, "barred", {}).items():
             _look = str(_bar.get("look") or "person")

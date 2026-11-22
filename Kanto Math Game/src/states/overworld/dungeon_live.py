@@ -16,6 +16,8 @@ import pygame
 
 from src.ui import theme
 
+SS_THINGS = {"crack": "breakrock", "cut": "tree", "boulder": "rock"}   # (a map's obstacle -> SoulSilver's own picture, assets/tiles/ss/ow_<name>.png)
+SS_THING_K = 1.3     # (their height in tiles per 16 of the game's pixels: as tall beside a person as on the DS)
 LIVE_SPRITE = 1.5    # (as walk_town: a figure's height in tiles, per its picture's tiles)
 LEVEL_STEP = 1.5     # (tiles: more than this between two neighbours' ground is a drop, not a step)
 LIFT_STEP = 10.0     # (tiles: more than this is a lift carrying you, not a drop: 11-22, as walk_town)
@@ -105,6 +107,18 @@ class RouteLive:
         closer = max(0.25, float(getattr(self, "zoom", 1.0) or 1.0) / max(0.05, base))
         return live3d.follow(px + c[3], py + c[4], pz + c[5], c[0], c[1] / closer, 0.0, c[2])
 
+    def _ss_thing(self, name):
+        """SoulSilver's own picture of a thing on the map (a cracked rock, a boulder, a small tree), four times its size, crisp."""
+        cache = self.game.__dict__.setdefault("_ss_things", {})
+        if name not in cache:
+            import os
+            try:
+                img = pygame.image.load(os.path.join(self.game.assets.assets_dir, "tiles", "ss", f"ow_{name}.png")).convert_alpha()
+                cache[name] = pygame.transform.scale(img, (img.get_width() * 4, img.get_height() * 4))
+            except Exception:
+                cache[name] = None
+        return cache[name]
+
     # ------------------------------------------------------------------ walking
     def _level_edge(self, a, b):
         """True when a -> b steps off one level onto another: Black 2 never lets you step between two tiles at different
@@ -169,6 +183,15 @@ class RouteLive:
         for (x, y), key in f.items.items():   # (an item lying about)
             if (x, y) in f.seen:
                 put(self._item_img(key) or self._ball_img(), x, y)
+        if getattr(sc, "bdhc", None) is not None:   # (SoulSilver's own obstacles: to the game they are people, not part of the map's
+            for (x, y), what in f.decor.items():      #  model, so the scene has none; 11-22: Tohjo Falls' hidden room had lost its rocks)
+                thing = SS_THINGS.get(str(what).split(":")[0])
+                img = self._ss_thing(thing) if thing and (x, y) in f.seen else None
+                if img is not None:   # (on the game's own floor there: our map calls the tile a wall, whose height is under it)
+                    near = [h(*q) for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)) if f.walkable(*q)]
+                    want = sum(near) / len(near) if near else h(x, y)
+                    hy = min(sc.surfaces(x, y) or [h(x, y)], key=lambda v: abs(v - want))
+                    sprites.append((img, (x + 0.5, hy, sc.wz(x, y) + 0.55), img.get_height() / 4 / 16 * SS_THING_K))
         for m in f.movers:
             if not self.run.visible(m.x, m.y) or m is self._ow_foe or getattr(m, "_vs_hidden", False):
                 continue
