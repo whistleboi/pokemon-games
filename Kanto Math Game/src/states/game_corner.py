@@ -688,6 +688,88 @@ class PrizeCounterState(GameState):
         self.game.ui_manager.draw(screen)
 
 
+# ------------------------------------------------------------------------------------------ Battle Points
+class BPShopState(PrizeCounterState):
+    """A battle facility's Exchange Service Corner: items and TMs for Battle Points (src/world/battle_points.py), a page
+    of twelve at a time. shop: a key of battle_points.SHOPS (Jordan 11-22: Battle Points in every walkable region)."""
+    PER_PAGE = 12
+
+    def __init__(self, game, previous_state, shop=None, background=None, items=None, title=None):
+        from src.world import battle_points as bpl
+        GameState.__init__(self, game)
+        self.previous_state = previous_state
+        self.story = game.story_manager
+        self.bg = background
+        self.title = (title or bpl.SHOPS[shop][0]).upper()   # (items: [(key, BP)] of its own - a Battle Point tutor's TM)
+        self.list = [("ITEM", key, cost) for key, cost in (items if items is not None else bpl.stock(game, shop))]
+        self.page = 0
+        self.message = "What would you like? Prizes are paid for in Battle Points (BP)."
+        f = game.assets.fonts
+        self.btn_back = CommandButton((16, 14, 140, 56), "BACK", f["button"], self.leave, bg_color=theme.BACK, autosize=False)
+        pages = max(1, (len(self.list) + self.PER_PAGE - 1) // self.PER_PAGE)
+        self.btn_prev = CommandButton((16, game.height - 160, 150, 56), "< PREV", f["button"], lambda: self._turn(-1),
+                                      bg_color=theme.BACK, autosize=False, visible=pages > 1)
+        self.btn_next = CommandButton((game.width - 166, game.height - 160, 150, 56), "NEXT >", f["button"], lambda: self._turn(1),
+                                      bg_color=theme.BACK, autosize=False, visible=pages > 1)
+        self._lay_out()
+
+    def _turn(self, d):
+        pages = max(1, (len(self.list) + self.PER_PAGE - 1) // self.PER_PAGE)
+        self.page = (self.page + d) % pages
+        self._lay_out()
+
+    def _lay_out(self):
+        cols, w, h, gap = 4, 280, 140, 14
+        x0 = (self.game.width - (cols * w + (cols - 1) * gap)) // 2
+        here = self.list[self.page * self.PER_PAGE:(self.page + 1) * self.PER_PAGE]
+        self.cards = [(pygame.Rect(x0 + (i % cols) * (w + gap), 100 + (i // cols) * (h + gap), w, h), prize)
+                      for i, prize in enumerate(here)]
+
+    def _name(self, prize):
+        from src.pokemon import tms
+        what = prize[1]
+        return tms.label(self.game, what) if tms.is_tm(what) else str(what).replace("_", " ").title()
+
+    def _image(self, prize):
+        img = self.game.assets.get_item_image(prize[1])
+        if img is None:
+            return super()._image(prize)
+        return pygame.transform.smoothscale(img, (64, 64))
+
+    def buy(self, prize):
+        from src.world import battle_points as bpl
+        self.message = bpl.buy(self.game, prize[1], prize[2])
+
+    def start(self):
+        self.game.ui_manager.elements.clear()
+        for b in (self.btn_back, self.btn_prev, self.btn_next):
+            self.game.ui_manager.add_element(b)
+
+    def draw(self):
+        from src.world import battle_points as bpl
+        screen = self.game.screen
+        accent = (70, 130, 196)
+        theme.menu_background(screen, accent, self.title, self.game.assets.fonts["button"], title_x=176)
+        f = self.game.assets.fonts
+        Utils.draw_text_outline(screen, f"{bpl.bp(self.story):,} BP", f["button"], (255, 255, 255),
+                                self.game.width - 24, theme.HEADER_H // 2 - 4, align="right")
+        mouse = pygame.mouse.get_pos()
+        for rect, prize in self.cards:
+            theme.card(screen, rect, hover=rect.collidepoint(mouse), accent=accent)
+            img = self._image(prize)
+            screen.blit(img, img.get_rect(center=(rect.centerx, rect.y + 44)))
+            theme.shadow_text(screen, self._name(prize), f["caption"], rect.centerx, rect.y + 86, align="center")
+            theme.shadow_text(screen, f"{prize[2]} BP", f["caption"], rect.centerx, rect.y + 112, color=(50, 100, 170), align="center")
+        pages = max(1, (len(self.list) + self.PER_PAGE - 1) // self.PER_PAGE)
+        if pages > 1:
+            theme.shadow_text(screen, f"Page {self.page + 1} of {pages}", f["caption"], self.game.width // 2,
+                              self.game.height - 132, align="center")
+        bar = pygame.Rect(16, self.game.height - 86, self.game.width - 32, 78)
+        theme.draw_textbox(screen, bar)
+        theme.shadow_text(screen, self.message, f["s_med"], bar.x + 32, bar.centery - f["s_med"].get_height() // 2)
+        self.game.ui_manager.draw(screen)
+
+
 # ------------------------------------------------------------------------------------------ Blackjack
 RANKS = ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K")
 SUITS = ("spade", "heart", "diamond", "club")

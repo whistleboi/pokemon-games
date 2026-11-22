@@ -909,7 +909,7 @@ _hq = PlayState(g); g.change_state(_hq)
 _left = [m.payload.get("text") for fl in _hq.run.floors for m in fl.movers if m.kind == "figure" and isinstance(m.payload, dict)
          and m.payload.get("text", "").strip() in ("Lance", "Dragonite")]
 for _d in [(-1, 0), (-1, 0), (0, -1), (-1, 0), (1, 0), (0, 1), (-1, 0), (0, -1)]:   # (until three real steps: someone
-    if len(set(_hq._ctrail)) >= 3:                                                      # wandering can block one, 11-22)
+    if len(set(list(_hq._ctrail)[:3])) == 3:                                                    # wandering can block one, 11-22)
         break
     if _hq.run.floor.walkable(_hq.run.player[0] + _d[0], _hq.run.player[1] + _d[1]):
         _hq.step(*_d)

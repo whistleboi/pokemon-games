@@ -8481,6 +8481,8 @@
       "backgrounds": { "main": "battle_subway.png" },
       "route_menu": [
         { "text": "CHALLENGE SUBWAY", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD" },
+        { "text": "EXCHANGE: ITEMS", "action": "BP_SHOP", "shop": "b2w2_items", "color": "BLUE" },
+        { "text": "EXCHANGE: TMs", "action": "BP_SHOP", "shop": "b2w2_tms", "color": "BLUE" },
         { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
       ]
     },

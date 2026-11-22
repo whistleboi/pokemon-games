@@ -1,0 +1,2745 @@
+{
+ "_source": "Bulbapedia, List of Battle Frontier Trainers in Generation IV (Platinum / HeartGold / SoulSilver), read 11-22; sprites: Platinum's own portraits (pt_*)",
+ "trainers": [
+  {
+   "class": "Youngster",
+   "name": "Jim",
+   "sprite": "pt_youngster.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Youngster",
+   "name": "Erroll",
+   "sprite": "pt_youngster.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Youngster",
+   "name": "Casimir",
+   "sprite": "pt_youngster.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Lass",
+   "name": "Cameron",
+   "sprite": "pt_lass.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Lass",
+   "name": "Peaches",
+   "sprite": "pt_lass.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Lass",
+   "name": "Yasmin",
+   "sprite": "pt_lass.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Foster",
+   "sprite": "pt_school_kid_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Ken",
+   "sprite": "pt_school_kid_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Owen",
+   "sprite": "pt_school_kid_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Marcy",
+   "sprite": "pt_school_kid_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Shelly",
+   "sprite": "pt_school_kid_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Aspen",
+   "sprite": "pt_school_kid_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Rich Boy",
+   "name": "Matt",
+   "sprite": "pt_rich_boy.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Rich Boy",
+   "name": "Alvan",
+   "sprite": "pt_rich_boy.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Rich Boy",
+   "name": "Asa",
+   "sprite": "pt_rich_boy.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Lady",
+   "name": "Isabel",
+   "sprite": "pt_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Lady",
+   "name": "Nichole",
+   "sprite": "pt_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Lady",
+   "name": "Juanita",
+   "sprite": "pt_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Camper",
+   "name": "Bernard",
+   "sprite": "pt_camper.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Camper",
+   "name": "Herbert",
+   "sprite": "pt_camper.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Camper",
+   "name": "Colbert",
+   "sprite": "pt_camper.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Picnicker",
+   "name": "Maggie",
+   "sprite": "pt_picnicker.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Picnicker",
+   "name": "Melanie",
+   "sprite": "pt_picnicker.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Picnicker",
+   "name": "Ann",
+   "sprite": "pt_picnicker.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Tuber",
+   "name": "Manford",
+   "sprite": "pt_tuber_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Tuber",
+   "name": "Hank",
+   "sprite": "pt_tuber_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Tuber",
+   "name": "Percy",
+   "sprite": "pt_tuber_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Tuber",
+   "name": "Dakota",
+   "sprite": "pt_tuber_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Tuber",
+   "name": "Jenny",
+   "sprite": "pt_tuber_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Tuber",
+   "name": "Tia",
+   "sprite": "pt_tuber_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Malcolm",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Tad",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Concord",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Penny",
+   "sprite": "pt_idol.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Lana",
+   "sprite": "pt_idol.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Crimson",
+   "sprite": "pt_idol.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Ewan",
+   "sprite": "pt_pokefan_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Kane",
+   "sprite": "pt_pokefan_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Theo",
+   "sprite": "pt_pokefan_m.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Alexia",
+   "sprite": "pt_pokefan_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Luna",
+   "sprite": "pt_pokefan_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Celene",
+   "sprite": "pt_pokefan_f.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Waiter",
+   "name": "Cyan",
+   "sprite": "pt_waiter.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Waiter",
+   "name": "Indigo",
+   "sprite": "pt_waiter.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Waiter",
+   "name": "Orin",
+   "sprite": "pt_waiter.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Waitress",
+   "name": "Ashley",
+   "sprite": "pt_waitress.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Waitress",
+   "name": "Noelle",
+   "sprite": "pt_waitress.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Waitress",
+   "name": "Kandace",
+   "sprite": "pt_waitress.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Bug Catcher",
+   "name": "Floyd",
+   "sprite": "pt_bug_catcher.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Bug Catcher",
+   "name": "Hoffman",
+   "sprite": "pt_bug_catcher.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Bug Catcher",
+   "name": "Amadeus",
+   "sprite": "pt_bug_catcher.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Ninja Boy",
+   "name": "Shia",
+   "sprite": "pt_ninja_boy.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Ninja Boy",
+   "name": "Vincent",
+   "sprite": "pt_ninja_boy.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Ninja Boy",
+   "name": "Pierre",
+   "sprite": "pt_ninja_boy.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Poké Kid",
+   "name": "Alice",
+   "sprite": "pt_poke_kid.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Poké Kid",
+   "name": "Anita",
+   "sprite": "pt_poke_kid.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Poké Kid",
+   "name": "Allison",
+   "sprite": "pt_poke_kid.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Fisherman",
+   "name": "Kiefer",
+   "sprite": "pt_fisherman.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Fisherman",
+   "name": "Basil",
+   "sprite": "pt_fisherman.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Ruin Maniac",
+   "name": "Henrik",
+   "sprite": "pt_ruin_maniac.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Ruin Maniac",
+   "name": "Aubry",
+   "sprite": "pt_ruin_maniac.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Collector",
+   "name": "Upton",
+   "sprite": "pt_collector.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Collector",
+   "name": "Emil",
+   "sprite": "pt_collector.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Parasol Lady",
+   "name": "Bridget",
+   "sprite": "pt_parasol_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Parasol Lady",
+   "name": "Blanche",
+   "sprite": "pt_parasol_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Parasol Lady",
+   "name": "Colette",
+   "sprite": "pt_parasol_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Beauty",
+   "name": "Tiffany",
+   "sprite": "pt_beauty.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Beauty",
+   "name": "Britney",
+   "sprite": "pt_beauty.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Beauty",
+   "name": "Harmony",
+   "sprite": "pt_beauty.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Aroma Lady",
+   "name": "Lucy",
+   "sprite": "pt_aroma_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Aroma Lady",
+   "name": "Jackie",
+   "sprite": "pt_aroma_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Aroma Lady",
+   "name": "Kara",
+   "sprite": "pt_aroma_lady.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Bernie",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Curtis",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Bird Keeper",
+   "name": "Nancy",
+   "sprite": "pt_bird_keeper.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Bird Keeper",
+   "name": "Trinity",
+   "sprite": "pt_bird_keeper.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Bird Keeper",
+   "name": "Shawna",
+   "sprite": "pt_bird_keeper.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Sailor",
+   "name": "Layton",
+   "sprite": "pt_sailor.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Sailor",
+   "name": "Godwin",
+   "sprite": "pt_sailor.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Hiker",
+   "name": "Everett",
+   "sprite": "pt_hiker.png",
+   "cols": [
+    0
+   ]
+  },
+  {
+   "class": "Hiker",
+   "name": "Raiden",
+   "sprite": "pt_hiker.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Ada",
+   "sprite": "pt_idol.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Annie",
+   "sprite": "pt_idol.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Basia",
+   "sprite": "pt_idol.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Jogger",
+   "name": "Steve",
+   "sprite": "pt_jogger.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Jogger",
+   "name": "Dave",
+   "sprite": "pt_jogger.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Worker",
+   "name": "Shane",
+   "sprite": "pt_worker.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Worker",
+   "name": "Benji",
+   "sprite": "pt_worker.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Rancher",
+   "name": "Pierce",
+   "sprite": "pt_rancher.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Rancher",
+   "name": "Etienne",
+   "sprite": "pt_rancher.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Rancher",
+   "name": "Leon",
+   "sprite": "pt_rancher.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Cowgirl",
+   "name": "Doris",
+   "sprite": "pt_cowgirl.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Cowgirl",
+   "name": "Paisley",
+   "sprite": "pt_cowgirl.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Cowgirl",
+   "name": "Leslie",
+   "sprite": "pt_cowgirl.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Cameraman",
+   "name": "Hudson",
+   "sprite": "pt_cameraman.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Cameraman",
+   "name": "Xenon",
+   "sprite": "pt_cameraman.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Cameraman",
+   "name": "Amleth",
+   "sprite": "pt_cameraman.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Reporter",
+   "name": "Dot",
+   "sprite": "pt_reporter.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Reporter",
+   "name": "Marble",
+   "sprite": "pt_reporter.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Reporter",
+   "name": "Gingham",
+   "sprite": "pt_reporter.png",
+   "cols": [
+    0,
+    1
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Gaspar",
+   "sprite": "pt_cyclist_m.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Ignatio",
+   "sprite": "pt_cyclist_m.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Kaylene",
+   "sprite": "pt_cyclist_f.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Kaya",
+   "sprite": "pt_cyclist_f.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Black Belt",
+   "name": "Clement",
+   "sprite": "pt_black_belt.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Black Belt",
+   "name": "Mason",
+   "sprite": "pt_black_belt.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Battle Girl",
+   "name": "Kodi",
+   "sprite": "pt_battle_girl.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Battle Girl",
+   "name": "Aileen",
+   "sprite": "pt_battle_girl.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Black Belt",
+   "name": "Jericho",
+   "sprite": "pt_black_belt.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Black Belt",
+   "name": "Harris",
+   "sprite": "pt_black_belt.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Black Belt",
+   "name": "Soren",
+   "sprite": "pt_black_belt.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Battle Girl",
+   "name": "Trina",
+   "sprite": "pt_battle_girl.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Battle Girl",
+   "name": "Alta",
+   "sprite": "pt_battle_girl.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Battle Girl",
+   "name": "Ingrid",
+   "sprite": "pt_battle_girl.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Veteran",
+   "name": "Beck",
+   "sprite": "pt_veteran.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Veteran",
+   "name": "Eric",
+   "sprite": "pt_veteran.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Veteran",
+   "name": "Padgett",
+   "sprite": "pt_veteran.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Socialite",
+   "name": "Barbara",
+   "sprite": "pt_socialite.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Socialite",
+   "name": "Isabel",
+   "sprite": "pt_socialite.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Socialite",
+   "name": "Carmen",
+   "sprite": "pt_socialite.png",
+   "cols": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Alpha",
+   "sprite": "pt_psychic_m.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Beta",
+   "sprite": "pt_psychic_m.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Essie",
+   "sprite": "pt_psychic_m.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Amelia",
+   "sprite": "pt_psychic_f.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Celine",
+   "sprite": "pt_psychic_f.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Jillian",
+   "sprite": "pt_psychic_f.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Howard",
+   "sprite": "pt_breeder_m.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Derrell",
+   "sprite": "pt_breeder_m.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Baldwin",
+   "sprite": "pt_breeder_m.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Adriana",
+   "sprite": "pt_breeder_f.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Sonya",
+   "sprite": "pt_breeder_f.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Tatyana",
+   "sprite": "pt_breeder_f.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Gentleman",
+   "name": "Zante",
+   "sprite": "pt_gentleman.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Gentleman",
+   "name": "Giliam",
+   "sprite": "pt_gentleman.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Roughneck",
+   "name": "Rodney",
+   "sprite": "pt_roughneck.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Roughneck",
+   "name": "Rainier",
+   "sprite": "pt_roughneck.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Scientist",
+   "name": "Jean",
+   "sprite": "pt_scientist.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Scientist",
+   "name": "Brad",
+   "sprite": "pt_scientist.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Clown",
+   "name": "Francis",
+   "sprite": "pt_clown.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Clown",
+   "name": "Prescot",
+   "sprite": "pt_clown.png",
+   "cols": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Yardley",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Stavros",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Zane",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Kim",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Macy",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Faun",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Doyle",
+   "sprite": "pt_ranger_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Duke",
+   "sprite": "pt_ranger_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Deacon",
+   "sprite": "pt_ranger_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Mena",
+   "sprite": "pt_ranger_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Mercy",
+   "sprite": "pt_ranger_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Evita",
+   "sprite": "pt_ranger_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Dragon Tamer",
+   "name": "Harold",
+   "sprite": "pt_dragon_tamer.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Dragon Tamer",
+   "name": "Herman",
+   "sprite": "pt_dragon_tamer.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Dragon Tamer",
+   "name": "Emmett",
+   "sprite": "pt_dragon_tamer.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Dragon Tamer",
+   "name": "Erich",
+   "sprite": "pt_dragon_tamer.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Garvey",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Cruz",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Pamela",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Daniela",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "class": "Youngster",
+   "name": "Kaden",
+   "sprite": "pt_youngster.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Youngster",
+   "name": "Kolby",
+   "sprite": "pt_youngster.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Lass",
+   "name": "Karissa",
+   "sprite": "pt_lass.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Lass",
+   "name": "Liliana",
+   "sprite": "pt_lass.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Jonas",
+   "sprite": "pt_school_kid_m.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Keon",
+   "sprite": "pt_school_kid_m.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Chelsie",
+   "sprite": "pt_school_kid_f.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "School Kid",
+   "name": "Regina",
+   "sprite": "pt_school_kid_f.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Rich Boy",
+   "name": "Daulton",
+   "sprite": "pt_rich_boy.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Rich Boy",
+   "name": "Hanson",
+   "sprite": "pt_rich_boy.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Lady",
+   "name": "Amory",
+   "sprite": "pt_lady.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Lady",
+   "name": "Juliana",
+   "sprite": "pt_lady.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Bug Catcher",
+   "name": "Camui",
+   "sprite": "pt_bug_catcher.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Bug Catcher",
+   "name": "Orlando",
+   "sprite": "pt_bug_catcher.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Ninja Boy",
+   "name": "Zack",
+   "sprite": "pt_ninja_boy.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Ninja Boy",
+   "name": "Vance",
+   "sprite": "pt_ninja_boy.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Poké Kid",
+   "name": "Kyla",
+   "sprite": "pt_poke_kid.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Poké Kid",
+   "name": "Ruby",
+   "sprite": "pt_poke_kid.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Kiley",
+   "sprite": "pt_idol.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Utah",
+   "sprite": "pt_idol.png",
+   "cols": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "class": "Jogger",
+   "name": "Colt",
+   "sprite": "pt_jogger.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Jogger",
+   "name": "Tory",
+   "sprite": "pt_jogger.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Fisherman",
+   "name": "Farley",
+   "sprite": "pt_fisherman.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Fisherman",
+   "name": "Mark",
+   "sprite": "pt_fisherman.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Ruin Maniac",
+   "name": "Samuel",
+   "sprite": "pt_ruin_maniac.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Ruin Maniac",
+   "name": "Penn",
+   "sprite": "pt_ruin_maniac.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Collector",
+   "name": "Marquez",
+   "sprite": "pt_collector.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Collector",
+   "name": "Arnold",
+   "sprite": "pt_collector.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Fred",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Chase",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Bird Keeper",
+   "name": "McKenna",
+   "sprite": "pt_bird_keeper.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Bird Keeper",
+   "name": "Sally",
+   "sprite": "pt_bird_keeper.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Sailor",
+   "name": "Casper",
+   "sprite": "pt_sailor.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Sailor",
+   "name": "Derrian",
+   "sprite": "pt_sailor.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Hiker",
+   "name": "Monty",
+   "sprite": "pt_hiker.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Hiker",
+   "name": "Rocky",
+   "sprite": "pt_hiker.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Policeman",
+   "name": "Reggie",
+   "sprite": "pt_policeman.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Policeman",
+   "name": "Quincy",
+   "sprite": "pt_policeman.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "PI",
+   "name": "Neil",
+   "sprite": "pt_pi.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "PI",
+   "name": "Sergei",
+   "sprite": "pt_pi.png",
+   "cols": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "class": "Camper",
+   "name": "Freddy",
+   "sprite": "pt_camper.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Camper",
+   "name": "Andre",
+   "sprite": "pt_camper.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Picnicker",
+   "name": "Inga",
+   "sprite": "pt_picnicker.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Picnicker",
+   "name": "Tonya",
+   "sprite": "pt_picnicker.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Tobias",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Cecil",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Maranda",
+   "sprite": "pt_idol.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Helene",
+   "sprite": "pt_idol.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Simon",
+   "sprite": "pt_pokefan_m.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Turner",
+   "sprite": "pt_pokefan_m.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Europa",
+   "sprite": "pt_pokefan_f.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokéfan",
+   "name": "Pandora",
+   "sprite": "pt_pokefan_f.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Rancher",
+   "name": "Vern",
+   "sprite": "pt_rancher.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Rancher",
+   "name": "Boris",
+   "sprite": "pt_rancher.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cowgirl",
+   "name": "Carly",
+   "sprite": "pt_cowgirl.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cowgirl",
+   "name": "Ginger",
+   "sprite": "pt_cowgirl.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Peter",
+   "sprite": "pt_breeder_m.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Tyron",
+   "sprite": "pt_breeder_m.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Zorya",
+   "sprite": "pt_breeder_f.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Breeder",
+   "name": "Antonia",
+   "sprite": "pt_breeder_f.png",
+   "cols": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Sawyer",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Charlie",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Chloe",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Daphne",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Thad",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Lew",
+   "sprite": "pt_ace_trainer_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Opal",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ace Trainer",
+   "name": "Leda",
+   "sprite": "pt_ace_trainer_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Geoff",
+   "sprite": "pt_ranger_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Gunther",
+   "sprite": "pt_ranger_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Alma",
+   "sprite": "pt_ranger_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Pokémon Ranger",
+   "name": "Elise",
+   "sprite": "pt_ranger_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Dragon Tamer",
+   "name": "Harvey",
+   "sprite": "pt_dragon_tamer.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Dragon Tamer",
+   "name": "Nicolas",
+   "sprite": "pt_dragon_tamer.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Black Belt",
+   "name": "Fergus",
+   "sprite": "pt_black_belt.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Black Belt",
+   "name": "Ronni",
+   "sprite": "pt_black_belt.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Battle Girl",
+   "name": "Eve",
+   "sprite": "pt_battle_girl.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Battle Girl",
+   "name": "Mariane",
+   "sprite": "pt_battle_girl.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Veteran",
+   "name": "Costin",
+   "sprite": "pt_veteran.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Veteran",
+   "name": "Alfred",
+   "sprite": "pt_veteran.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Socialite",
+   "name": "Rioha",
+   "sprite": "pt_socialite.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Socialite",
+   "name": "Janice",
+   "sprite": "pt_socialite.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Denver",
+   "sprite": "pt_psychic_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Berkley",
+   "sprite": "pt_psychic_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Irene",
+   "sprite": "pt_psychic_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Psychic",
+   "name": "Sylvie",
+   "sprite": "pt_psychic_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Waiter",
+   "name": "Xander",
+   "sprite": "pt_waiter.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Waiter",
+   "name": "Warren",
+   "sprite": "pt_waiter.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Waitress",
+   "name": "Leslie",
+   "sprite": "pt_waitress.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Waitress",
+   "name": "Kathy",
+   "sprite": "pt_waitress.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cameraman",
+   "name": "Darren",
+   "sprite": "pt_cameraman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cameraman",
+   "name": "Skip",
+   "sprite": "pt_cameraman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Reporter",
+   "name": "Katie",
+   "sprite": "pt_reporter.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Reporter",
+   "name": "Elaine",
+   "sprite": "pt_reporter.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Clive",
+   "sprite": "pt_cyclist_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Ward",
+   "sprite": "pt_cyclist_m.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Hilda",
+   "sprite": "pt_cyclist_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Cyclist",
+   "name": "Vanita",
+   "sprite": "pt_cyclist_f.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "PI",
+   "name": "Ralph",
+   "sprite": "pt_pi.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "PI",
+   "name": "Conway",
+   "sprite": "pt_pi.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Kristi",
+   "sprite": "pt_idol.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Trista",
+   "sprite": "pt_idol.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Jogger",
+   "name": "Austin",
+   "sprite": "pt_jogger.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Jogger",
+   "name": "Dimitri",
+   "sprite": "pt_jogger.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Fisherman",
+   "name": "Delaney",
+   "sprite": "pt_fisherman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Fisherman",
+   "name": "Keaton",
+   "sprite": "pt_fisherman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Sailor",
+   "name": "Carlo",
+   "sprite": "pt_sailor.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Sailor",
+   "name": "Horatio",
+   "sprite": "pt_sailor.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Hiker",
+   "name": "Lyle",
+   "sprite": "pt_hiker.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Hiker",
+   "name": "Glen",
+   "sprite": "pt_hiker.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ruin Maniac",
+   "name": "Isadore",
+   "sprite": "pt_ruin_maniac.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Ruin Maniac",
+   "name": "Walton",
+   "sprite": "pt_ruin_maniac.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Roget",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Guitarist",
+   "name": "Iggy",
+   "sprite": "pt_guitarist.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Collector",
+   "name": "Leroy",
+   "sprite": "pt_collector.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Collector",
+   "name": "Newman",
+   "sprite": "pt_collector.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Roughneck",
+   "name": "Ross",
+   "sprite": "pt_roughneck.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Roughneck",
+   "name": "Ron",
+   "sprite": "pt_roughneck.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Scientist",
+   "name": "Irwin",
+   "sprite": "pt_scientist.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Scientist",
+   "name": "Flynn",
+   "sprite": "pt_scientist.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Gentleman",
+   "name": "Joachim",
+   "sprite": "pt_gentleman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Gentleman",
+   "name": "Karston",
+   "sprite": "pt_gentleman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Worker",
+   "name": "Boyce",
+   "sprite": "pt_worker.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Worker",
+   "name": "Tyrell",
+   "sprite": "pt_worker.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Clown",
+   "name": "Frank",
+   "sprite": "pt_clown.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Clown",
+   "name": "Enzo",
+   "sprite": "pt_clown.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Policeman",
+   "name": "Hugh",
+   "sprite": "pt_policeman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Policeman",
+   "name": "Kegan",
+   "sprite": "pt_policeman.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "PI",
+   "name": "Chester",
+   "sprite": "pt_pi.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "PI",
+   "name": "River",
+   "sprite": "pt_pi.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Bird Keeper",
+   "name": "Kira",
+   "sprite": "pt_bird_keeper.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Bird Keeper",
+   "name": "Eliza",
+   "sprite": "pt_bird_keeper.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Parasol Lady",
+   "name": "Angie",
+   "sprite": "pt_parasol_lady.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Parasol Lady",
+   "name": "Sami",
+   "sprite": "pt_parasol_lady.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Beauty",
+   "name": "Nadia",
+   "sprite": "pt_beauty.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Beauty",
+   "name": "Becky",
+   "sprite": "pt_beauty.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Aroma Lady",
+   "name": "Elisha",
+   "sprite": "pt_aroma_lady.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Aroma Lady",
+   "name": "Ambre",
+   "sprite": "pt_aroma_lady.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Cocoa",
+   "sprite": "pt_idol.png",
+   "cols": [
+    6,
+    7
+   ]
+  },
+  {
+   "class": "Idol",
+   "name": "Nissa",
+   "sprite": "pt_idol.png",
+   "cols": [
+    6,
+    7
+   ]
+  }
+ ]
+}

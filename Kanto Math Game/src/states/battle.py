@@ -1862,9 +1862,10 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         if damage >= defender_hp > 1 and self.vol(defender).get("endure"):
             damage = defender_hp - 1
             lines.append(f"{def_label} endured the hit!")
-        if damage >= defender_hp > 1 and attacker is not defender and self.held_endures(defender):  # (a held Focus Band: now and then it hangs on at 1 HP)
+        _band = self._item_name(self.held(defender)) if self.held(defender) in ("FOCUS_BAND", "FOCUS_SASH") else ""
+        if damage >= defender_hp > 1 and attacker is not defender and self.held_endures(defender):  # (a held Focus Band: now and then it hangs on at 1 HP; a Focus Sash, from full HP)
             damage = defender_hp - 1
-            lines.append(f"{def_label} hung on using its Focus Band!")
+            lines.append(f"{def_label} hung on using its {_band or 'Focus Band'}!")
         if landed > 1:
             lines.append(f"Hit {landed} times!")
         # Drain (Giga Drain +50) heals the user; negative drain is recoil (Take Down -25).
@@ -2489,6 +2490,11 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             said = frontier.after_battle(self.game, self.frontier, bool(self.player_won and not lost))
             if said and next_state is not None:
                 (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)(said)
+        elif area_key == "BATTLE_SUBWAY" and self.player_won and not lost:   # (Black 2 / White 2: Battle Points for a Subway win, 11-22)
+            from src.world import battle_points as _bp
+            got = _bp.add_bp(self.game.story_manager, _bp.WIN_BP)
+            if got and next_state is not None:
+                (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)([f"You earned {got} BP! You have {_bp.bp(self.game.story_manager)} BP."])
 
         if next_state and hasattr(next_state, "check_for_evolution"):
             if next_state.check_for_evolution():

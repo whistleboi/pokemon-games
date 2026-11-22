@@ -809,54 +809,41 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Arcade Star Dahlia",
-          "class": "FRONTIER_BRAIN",
-          "sprite": "master.png",
-          "team": [
-            308,
-            272,
-            477
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Castle Valet Darach",
-          "class": "FRONTIER_BRAIN",
-          "sprite": "master.png",
-          "team": [
-            395,
-            398,
-            229
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Tower Tycoon Palmer",
-          "class": "FRONTIER_BRAIN",
-          "sprite": "master.png",
-          "team": [
-            464,
-            350,
-            149
-          ],
-          "rewards": {
-            "balls": 10
-          },
-          "is_boss_battle": true,
-          "victory_flag": "sinnoh_battle_frontier_cleared"
-        }
-      ],
+      "trainer_pool": [],
       "route_menu": [
         {
-          "text": "TAKE THE FRONTIER CHALLENGE",
-          "action": "GALACTIC_GAUNTLET",
-          "flag_condition": "not sinnoh_battle_frontier_cleared",
+          "text": "Tower attendant",
+          "action": "FRONTIER",
+          "facility": "stower",
+          "door": "stower",
+          "color": "GOLD"
+        },
+        {
+          "text": "Factory attendant",
+          "action": "FRONTIER",
+          "facility": "sfactory",
+          "door": "sfactory",
+          "color": "GOLD"
+        },
+        {
+          "text": "Hall attendant",
+          "action": "FRONTIER",
+          "facility": "shall",
+          "door": "shall",
+          "color": "GOLD"
+        },
+        {
+          "text": "Castle attendant",
+          "action": "FRONTIER",
+          "facility": "scastle",
+          "door": "scastle",
+          "color": "GOLD"
+        },
+        {
+          "text": "Arcade attendant",
+          "action": "FRONTIER",
+          "facility": "sarcade",
+          "door": "sarcade",
           "color": "GOLD"
         },
         {

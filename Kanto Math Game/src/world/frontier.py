@@ -52,11 +52,31 @@ BRAIN_MOVES = {
                  "244": ["FIRE-BLAST", "SOLAR-BEAM", "HYPER-BEAM", "SUNNY-DAY"]}),
 }
 JOHTO_FIVE = ["jtower", "jfactory", "jhall", "jcastle", "jarcade"]
-FRONTIER_SEVEN = [f for f in BRAINS if f != "maison" and not f.startswith("j")]   # (the Symbols: the Maison gives none of its own)
+# Sinnoh's Battle Frontier (Platinum; Jordan 11-22: "that is the next place to build"): the same five facilities and Brains as
+# HeartGold / SoulSilver's (HGSS reused Platinum's Frontier: the same map, D32, its rooms tile for tile), its own streaks and Prints.
+SINNOH_FIVE = ["stower", "sfactory", "shall", "scastle", "sarcade"]
+for _j, _s in zip(JOHTO_FIVE, SINNOH_FIVE):
+    BRAINS[_s] = BRAINS[_j]
+    if _j in BRAIN_MOVES:
+        BRAIN_MOVES[_s] = BRAIN_MOVES[_j]
+GEN4 = set(JOHTO_FIVE) | set(SINNOH_FIVE)   # (Gen IV's facilities: its own trainers, Prints not Symbols)
+FRONTIER_SEVEN = [f for f in BRAINS if f != "maison" and f not in GEN4]   # (the Symbols: the Maison gives none of its own)
 NAMES = {"tower": "Battle Tower", "dome": "Battle Dome", "palace": "Battle Palace", "arena": "Battle Arena",
          "factory": "Battle Factory", "pike": "Battle Pike", "pyramid": "Battle Pyramid", "maison": "Battle Maison",
-         "jtower": "Battle Tower", "jfactory": "Battle Factory", "jhall": "Battle Hall", "jcastle": "Battle Castle", "jarcade": "Battle Arcade"}
+         "jtower": "Battle Tower", "jfactory": "Battle Factory", "jhall": "Battle Hall", "jcastle": "Battle Castle", "jarcade": "Battle Arcade",
+         "stower": "Battle Tower", "sfactory": "Battle Factory", "shall": "Battle Hall", "scastle": "Battle Castle", "sarcade": "Battle Arcade"}
 _DATA = None
+_DATA4 = None
+
+
+def data4(game):
+    """Platinum / HeartGold / SoulSilver's own Frontier trainers (assets/frontier_gen4.json: 300, none repeating Emerald's;
+    Jordan 11-22: "add the missing frontier trainers from johto"). Johto's facilities draw from these."""
+    global _DATA4
+    if _DATA4 is None:
+        with open(os.path.join(game.assets.assets_dir, "frontier_gen4.json"), encoding="utf-8") as f:
+            _DATA4 = json.load(f)
+    return _DATA4
 
 
 def data(game):
@@ -115,10 +135,11 @@ def next_trainer(game, fac):
         return info
     w = wins(game, fac)
     col = min(7, w // 7)   # (Emerald's columns: battles 1-7, 8-14, ... who may appear)
-    trainers = [t for t in data(game)["trainers"] if col in t["cols"]] or data(game)["trainers"]
+    pool = data4(game)["trainers"] if fac in GEN4 else data(game)["trainers"]   # (Johto and Sinnoh: Gen IV's own trainers)
+    trainers = [t for t in pool if col in t["cols"]] or pool
     t = random.choice(trainers)
     cls = t["class"].rstrip("♂♀")
-    return {"name": f"{cls} {t['name']}", "class": cls.upper().replace(" ", "_").replace("É", "E"),
+    return {"name": f"{cls} {t['name']}", "class": cls.upper().replace(" ", "_").replace("É", "E").replace("é", "E"),
             "sprite": t["sprite"], "team": _team(game, _groups(game, fac))}
 
 
@@ -154,21 +175,28 @@ def after_battle(game, fac, won):
         flags[key] = 0
         heal(game)
         return [f"Your streak ended at {w} win{'s' if w != 1 else ''}. Your team was healed. Try again any time!"]
+    from src.world import battle_points as _bp   # (Battle Points for every win, more for a Brain: 11-22)
     if not brain_next(game, fac):
         flags[key] = wins(game, fac) + 1
-        return []
+        got = _bp.add_bp(game.story_manager, _bp.WIN_BP)
+        return [f"You earned {got} BP! You have {_bp.bp(game.story_manager)} BP."] if got else []
     flags[key] = 0
     title, _s, _a, _b, sym = BRAINS[fac]
     first = not flags.get(f"frontier_{fac}_silver")
+    _bp.add_bp(game.story_manager, _bp.BRAIN_BP if first else _bp.BRAIN_GOLD_BP)
     flags[f"frontier_{fac}_silver" if first else f"frontier_{fac}_gold"] = True
-    _mark = "Print" if fac.startswith("j") else "Symbol"   # (HGSS: Prints)
+    _mark = "Print" if fac in GEN4 else "Symbol"   # (Platinum / HGSS: Prints)
     lines = [f"You beat {title}! You earned the {'Silver' if first else 'Gold'} {sym} {_mark}!"] if fac != "maison" else         [f"You beat {title}! Your name goes up on the Maison's wall of {'champions' if first else 'grand champions'}!"]
+    lines.append(f"You earned {_bp.BRAIN_BP if first else _bp.BRAIN_GOLD_BP} BP! You have {_bp.bp(game.story_manager)} BP.")
     if first:
         lines.append(f"Next time it's {AGAIN} wins in a row for a battle with the {'Chatelaine' if fac == 'maison' else 'Brain'}'s real team.")
     if fac.startswith("j") and all(flags.get(f"frontier_{f}_silver") for f in JOHTO_FIVE) and not flags.get("johto_battle_frontier_cleared"):
         flags["johto_battle_frontier_cleared"] = True
         lines.append("You hold a Silver Print from every facility in the Battle Frontier!")
-    if not fac.startswith("j") and all(flags.get(f"frontier_{f}_silver") for f in FRONTIER_SEVEN) and not flags.get("hoenn_battle_frontier_cleared"):
+    if fac in SINNOH_FIVE and all(flags.get(f"frontier_{f}_silver") for f in SINNOH_FIVE) and not flags.get("sinnoh_battle_frontier_cleared"):
+        flags["sinnoh_battle_frontier_cleared"] = True
+        lines.append("You hold a Silver Print from every facility in the Battle Frontier!")
+    if fac not in GEN4 and all(flags.get(f"frontier_{f}_silver") for f in FRONTIER_SEVEN) and not flags.get("hoenn_battle_frontier_cleared"):
         flags["hoenn_battle_frontier_cleared"] = True
         lines.append("You hold a Symbol from every facility in the Battle Frontier!")
     return lines

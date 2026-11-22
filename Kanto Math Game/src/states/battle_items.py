@@ -29,8 +29,8 @@ SPECIES_ITEMS = {  # held item -> (species ids, stat, multiplier)
     "METAL_POWDER": ({132}, ("DEFENSE",), 2.0),
     "QUICK_POWDER": ({132}, ("SPEED",), 2.0),
 }
-CRIT_ITEMS = {"STICK": ({83, 865}, 2), "LUCKY_PUNCH": ({113}, 2), "SCOPE_LENS": (None, 1)}  # (11-18: the Scope Lens, any holder: Orange's Hamlin gift)   # (11-17: the Lucky Punch, Chansey's, FireRed's Sevault Canyon)   # held item -> (species ids, critical-hit stages): the Stick, Farfetch'd's (and Sirfetch'd's) own
-SLOW_ITEMS = {"IRON_BALL", "MACHO_BRACE"}
+CRIT_ITEMS = {"STICK": ({83, 865}, 2), "LUCKY_PUNCH": ({113}, 2), "SCOPE_LENS": (None, 1), "RAZOR_CLAW": (None, 1)}  # (11-18: the Scope Lens, any holder: Orange's Hamlin gift)   # (11-17: the Lucky Punch, Chansey's, FireRed's Sevault Canyon)   # held item -> (species ids, critical-hit stages): the Stick, Farfetch'd's (and Sirfetch'd's) own
+SLOW_ITEMS = {"IRON_BALL", "MACHO_BRACE", "POWER_WEIGHT", "POWER_BRACER", "POWER_BELT", "POWER_LENS", "POWER_BAND", "POWER_ANKLET"}
 LAST_ITEMS = {"LAGGING_TAIL", "FULL_INCENSE"}
 FLINCH_ITEMS = {"KINGS_ROCK", "RAZOR_FANG"}
 HP_BERRIES = {"ORAN_BERRY": 10, "SITRUS_BERRY": 0.25, "BERRY_JUICE": 20}
@@ -97,6 +97,8 @@ class HeldItemEffects:
         item, mult = self.held(attacker), 1.0
         if item == ("CHOICE_SPECS" if special else "CHOICE_BAND"):
             mult *= 1.5
+        if item == ("WISE_GLASSES" if special else "MUSCLE_BAND"):   # (11-22, the Battle Point prizes: 10% more)
+            mult *= 1.1
         mult *= self._species_item(attacker, "SPATK" if special else "ATTACK")
         return mult
 
@@ -118,7 +120,8 @@ class HeldItemEffects:
         return 1.0
 
     def held_final_mult(self, attacker, defender, eff):
-        return 1.2 if eff > 1 and self.held(attacker) == "EXPERT_BELT" else 1.0
+        mult = 1.2 if eff > 1 and self.held(attacker) == "EXPERT_BELT" else 1.0
+        return mult * (1.3 if self.held(attacker) == "LIFE_ORB" else 1.0)   # (Life Orb: 30% more, a tenth of its HP a hit)
 
     def held_resist_berry(self, attacker, defender, d, eff):
         """A resist berry halves one hit: (True, lines) if it's eaten now."""
@@ -147,7 +150,7 @@ class HeldItemEffects:
         return stages if stages and (ids is None or getattr(attacker, "id", None) in ids or base_id(attacker) in ids) else 0
 
     def held_acc_mult(self, attacker, defender):
-        mult = 1.1 if self.held(attacker) == "WIDE_LENS" else 1.0
+        mult = 1.1 if self.held(attacker) == "WIDE_LENS" else 1.2 if self.held(attacker) == "ZOOM_LENS" else 1.0
         if self.held(defender) in ("BRIGHT_POWDER", "LAX_INCENSE"):
             mult *= 0.9
         return mult
@@ -213,6 +216,9 @@ class HeldItemEffects:
             self._lose_item(defender)                                                         #  B2W2: Route 20's autumn Barb, 11-20)
             self._get_item(attacker, "STICKY_BARB")
             lines.append(f"The Sticky Barb stuck to {self._label(attacker)}!")
+        if self.held(attacker) == "LIFE_ORB" and self._hp(attacker) > 0 and self.ab(attacker) != "MAGICGUARD":
+            self._adjust_hp(attacker, -max(1, self._max_hp(attacker) // 10))
+            lines.append(f"{self._label(attacker)} lost some of its HP!")
         if self.held(attacker) == "SHELL_BELL" and self._hp(attacker) > 0:  # (an eighth of the damage back)
             self._adjust_hp(attacker, max(1, min(damage, defender_hp) // 8))
             lines.append(f"{self._label(attacker)} restored a little HP using its Shell Bell!")
@@ -223,6 +229,9 @@ class HeldItemEffects:
 
     def held_endures(self, defender):
         """A Focus Band: now and then it hangs on at 1 HP."""
+        if self.held(defender) == "FOCUS_SASH" and self._hp(defender) >= self._max_hp(defender):   # (a Focus Sash: from full HP,
+            self.consume_held(defender)                                                             #  once, then used up)
+            return True
         return self.held(defender) == "FOCUS_BAND" and random.random() < 0.1
 
     # ------------------------------------------------------------------ conditions and stats

@@ -5083,7 +5083,7 @@ MAPS = {
                     "ccccccccccccccccccccccccc",
                     "ccccccccccccccccccccccccc",
                     "cmmmmcccm..mm.ccccccccmcc",
-                    "cmmNcccc......ccccccccmcc",
+                    "cmmccccc.N....ccccccccmcc",
                     "cmmccccc......ccccccccmcc",
                     "cmmccccc.m....ccccccccccc",
                     "cmmccccc...1..cmccccccccc",
@@ -8549,3 +8549,6 @@ MAPS = {
         "people": ["BLUE SHARD", "YELLOW SHARD", {"text": "Parasol lady", "action": "EVENT", "event": {"lines": ["The Pokemon here change from day to day. Have you noticed?"]}}, "POKE BALL", {"text": "Ruin Maniac", "action": "EVENT", "event": {"lines": ["Look through the binoculars upstairs before you go in. Find the Pokemon you want first!"]}}, {"text": "Big man", "action": "EVENT", "event": {"lines": ["Bait makes them stay but run sooner. Mud makes them stay longer but harder to catch. Hmm..."]}}, "GREEN SHARD", "GREAT BALL", {"text": "Boy", "action": "EVENT", "event": {"lines": ["Deep mud can trap your feet. Pokemon may jump out while you're stuck!"]}}, "POKE BALL ", "RED SHARD", "GREAT BALL ", {"text": "Boy ", "action": "EVENT", "event": {"lines": ["Going deep into the marsh? Ride the tram! It's quick!"]}}, {"text": "Man", "action": "EVENT", "event": {"lines": ["I found this on a Safari Game. I don't collect them, so it's yours."]}}],
     },
 }
+
+from . import sinnoh_frontier as _FRONTIER  # noqa: E402  (the Battle Frontier: Platinum's, built from Johto's same map, 11-22)
+_FRONTIER.apply(MAPS)
