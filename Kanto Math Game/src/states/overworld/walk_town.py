@@ -1143,6 +1143,9 @@ class WalkTownState(CityState):
             if 0 <= across[1] < self.h and 0 <= across[0] < self.w and self.grid[across[1]][across[0]] == "m" and far in self._people():
                 self.walk_goal = None
                 return self._talk(far)
+            if self._game_machine(to):   # (a Game Corner's machines: walk up to one and play, 11-22)
+                self.walk_goal = None
+                return self._play_machine()
         if to in self.doors:
             self.walk_goal = None
             return self._enter(to)
@@ -1303,6 +1306,30 @@ class WalkTownState(CityState):
             self.scenes.start(sc, None)
             return
         return self._read_plain(spot)
+
+    def _game_machine(self, t):
+        """True if t is one of a Game Corner's machines: in a room with the Game Corner's counter (a GAMECORNER person),
+        an "m" tile in a column of three or more (the machines stand in tall rows; counters and shelves are one or two deep).
+        Goldenrod's, 11-22: Jordan, "it should open the interior walkable building"."""
+        if not getattr(self, "room", None) or not any(str((o or {}).get("action", "")).upper() == "GAMECORNER" for o in self.people.values()):
+            return False
+        x, y = t
+        col = lambda yy: 0 <= yy < self.h and self.grid[yy][x] == "m"
+        if not col(y):
+            return False
+        up = down = 0
+        while col(y - up - 1):
+            up += 1
+        while col(y + down + 1):
+            down += 1
+        return up + down + 1 >= 3
+
+    def _play_machine(self):
+        """A Game Corner machine: Voltorb Flip, HeartGold and SoulSilver's game (Celadon's walk-in floor has its slots)."""
+        if self.game.story_manager.inventory.get("COIN_CASE", 0) <= 0:
+            return self.show_message(["The machine needs coins. You'll want a Coin Case to hold them."])
+        from src.states.game_corner import VoltorbFlipState
+        self.game.change_state(VoltorbFlipState(self.game, self))
 
     def _read_plain(self, spot):
         from src.states.overworld.common import _fill_names
