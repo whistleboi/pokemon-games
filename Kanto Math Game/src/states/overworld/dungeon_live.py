@@ -25,16 +25,19 @@ class RouteLive:
     # ------------------------------------------------------------------ the scene
     def _dl_live(self):
         """(scene, the map's camera data) when this floor has Black 2's models and the card can draw them, else None."""
-        key = (getattr(self, "_floor_index", None), id(getattr(self, "_live_roofs", None)))
+        roofs = getattr(self, "_live_roofs", None) or {}
+        _p = roofs.get("_picture") or {}
+        pic = str(_p.get("f") or "")
+        if _p.get("when") or _p.get("until"):   # (a picture that changes with a flag has its own scene too: Cianwood Gym's
+            from src.dungeon import art          #  waterfall, stopped by the switch at the top, 11-22)
+            pic = str(art._version_file(_p) or pic)
+        key = (getattr(self, "_floor_index", None), id(getattr(self, "_live_roofs", None)), pic)
         if getattr(self, "_dl_key", None) == key:
             return self._dl_got
         self._dl_key, self._dl_got = key, None
         from src.core import settings as _settings
         if getattr(self.game, "live3d", True) is False or not _settings.get(self.game.story_manager, "live3d"):
             return None
-        roofs = getattr(self, "_live_roofs", None) or {}
-        _p = roofs.get("_picture") or {}
-        pic = str(_p.get("f") or "")
         if not pic.startswith(("b2_ground/", "ss_ground/")):
             return None
         try:   # (any trouble with the card or its libraries: the flat picture, never a crash)

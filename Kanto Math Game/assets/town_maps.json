@@ -64453,14 +64453,14 @@
      "c..........cccN.........c",
      "cmmmm.mmmccmmmccmmmmmm.mc",
      "ccccc.cccmmmmmmmcccccc.cc",
-     "c..........mmm..........c",
+     "c.....N.................c",
      "cmm.mmmmmmmmmmmmmm.mmmmmc",
-     "c.......................c",
+     "c..........mmm...N......c",
      "cmmmmmmmm.cmmmcm.mmmm.mmc",
-     "ccccccccc.m...mc.cccc.ccc",
-     "c.......................c",
+     "ccccccccc.mmmmmc.cccc.ccc",
+     "c....N.....mmm..........c",
      "cmmmmm.mmmcmmmcmmm.mmmmmc",
-     "cccccc.cccmm.mmccc.cccccc",
+     "cccccc.cccmmNmmccc.cccccc",
      "c.......................c",
      "c.......................c",
      "c.......................c",
@@ -64863,6 +64863,16 @@
        183,
        240
       ],
+      "11,12": [
+       110,
+       183,
+       240
+      ],
+      "11,13": [
+       110,
+       183,
+       240
+      ],
       "11,14": [
        110,
        183,
@@ -64903,6 +64913,21 @@
        183,
        240
       ],
+      "12,10": [
+       110,
+       183,
+       240
+      ],
+      "12,12": [
+       110,
+       183,
+       240
+      ],
+      "12,13": [
+       110,
+       183,
+       240
+      ],
       "13,0": [
        154,
        127,
@@ -64939,6 +64964,16 @@
        240
       ],
       "13,10": [
+       110,
+       183,
+       240
+      ],
+      "13,12": [
+       110,
+       183,
+       240
+      ],
+      "13,13": [
        110,
        183,
        240
@@ -65306,13 +65341,171 @@
        1,
        0
       ],
-      "px": 32
+      "px": 32,
+      "when": [
+       {
+        "flag": "cianwood_gym_waterfall_off",
+        "f": "ss_ground/T24GYM0101_off.png"
+       }
+      ]
      },
      "_buildings_in_picture": true,
      "_signs_in_picture": true
     },
     "people": [
-     "Gym"
+     {
+      "text": "Black Belt Lung",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Black Belt Lung: You made it all the way up here? Then face my fists!"
+       ],
+       "flag": "gym_trainer_CIANWOOD_CITY_3",
+       "battle": {
+        "name": "Black Belt Lung",
+        "class": "BLACKBELT",
+        "sprite": "blackbelt.png",
+        "team": [
+         56,
+         56,
+         57
+        ],
+        "levels": [
+         23,
+         23,
+         25
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt Lung: My fists... they failed me!"
+         ]
+        }
+       },
+       "done": [
+        "Black Belt Lung: The red button over there stops the waterfall. Then Chuck will see you."
+       ]
+      }
+     },
+     {
+      "text": "Black Belt Nob",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Black Belt Nob: Hold it! Nobody gets past me to the top!"
+       ],
+       "flag": "gym_trainer_CIANWOOD_CITY_2",
+       "battle": {
+        "name": "Black Belt Nob",
+        "class": "BLACKBELT",
+        "sprite": "blackbelt.png",
+        "team": [
+         66,
+         67
+        ],
+        "levels": [
+         25,
+         25
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt Nob: Ugh! I lost my footing!"
+         ]
+        }
+       },
+       "done": [
+        "Black Belt Nob: I'm not moving. Go round by the east side and cross the bridge if you want the top."
+       ]
+      }
+     },
+     {
+      "text": "Black Belt Lao",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Black Belt Lao: Our Gym is a mountain! Climb it if you can!"
+       ],
+       "flag": "gym_trainer_CIANWOOD_CITY_1",
+       "battle": {
+        "name": "Black Belt Lao",
+        "class": "BLACKBELT",
+        "sprite": "blackbelt.png",
+        "team": [
+         107
+        ],
+        "levels": [
+         27
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt Lao: Hwaa! What power!"
+         ]
+        }
+       },
+       "done": [
+        "Black Belt Lao: Cross the bridge over the waterfall. The way up is on the far side."
+       ]
+      }
+     },
+     {
+      "text": "Black Belt Yoshi",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Black Belt Yoshi: Hah! You'll need strong legs to climb this Gym!"
+       ],
+       "flag": "gym_trainer_CIANWOOD_CITY_0",
+       "battle": {
+        "name": "Black Belt Yoshi",
+        "class": "BLACKBELT",
+        "sprite": "blackbelt.png",
+        "team": [
+         106
+        ],
+        "levels": [
+         27
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt Yoshi: My kicks weren't enough!"
+         ]
+        }
+       },
+       "done": [
+        "Black Belt Yoshi: Chuck trains under the waterfall all day. He can't hear a thing over that water."
+       ]
+      }
+     },
+     [
+      {
+       "text": "Chuck",
+       "action": "EVENT",
+       "flag_condition": "not cianwood_gym_waterfall_off",
+       "event": {
+        "lines": [
+         "Chuck is training under the roaring waterfall...",
+         "He doesn't seem to notice you at all.",
+         "Maybe the waterfall can be stopped from the top of the Gym."
+        ]
+       }
+      },
+      {
+       "text": "Gym",
+       "action": "GYM",
+       "flag_condition": "cianwood_gym_waterfall_off"
+      }
+     ]
     ],
     "overheads": [
      {
@@ -65326,9 +65519,119 @@
        25,
        26
       ],
-      "px": 32
+      "px": 32,
+      "when": [
+       {
+        "flag": "cianwood_gym_waterfall_off",
+        "f": "ss_top/T24GYM0101_off.png"
+       }
+      ]
      }
-    ]
+    ],
+    "moves": {
+     "14,5": {
+      "m": "look",
+      "d": "lr",
+      "s": 4
+     },
+     "6,8": {
+      "m": "face",
+      "d": "l",
+      "s": 4
+     },
+     "17,10": {
+      "m": "face",
+      "d": "r",
+      "s": 4
+     },
+     "5,13": {
+      "m": "look",
+      "d": "lr",
+      "s": 4
+     },
+     "12,15": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "scenes": [
+     {
+      "who": "Black Belt Lung",
+      "trigger": "sight",
+      "approach": true,
+      "then": "talk",
+      "after": "home",
+      "flag": "cianwood_gym_lung_spotted",
+      "flag_condition": "not gym_trainer_CIANWOOD_CITY_3"
+     },
+     {
+      "who": "Black Belt Nob",
+      "trigger": "sight",
+      "approach": true,
+      "then": "talk",
+      "after": "stay",
+      "flag": "cianwood_gym_nob_spotted",
+      "flag_condition": "not gym_trainer_CIANWOOD_CITY_2"
+     },
+     {
+      "who": "Black Belt Lao",
+      "trigger": "sight",
+      "approach": true,
+      "then": "talk",
+      "after": "home",
+      "flag": "cianwood_gym_lao_spotted",
+      "flag_condition": "not gym_trainer_CIANWOOD_CITY_1"
+     },
+     {
+      "who": "Black Belt Yoshi",
+      "trigger": "sight",
+      "approach": true,
+      "then": "talk",
+      "after": "home",
+      "flag": "cianwood_gym_yoshi_spotted",
+      "flag_condition": "not gym_trainer_CIANWOOD_CITY_0"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "cianwood_gym_waterfall_off"
+      },
+      "lines": [
+       "A big red button. It works the winch over the waterfall."
+      ],
+      "on_bump": {
+       "flag": "cianwood_gym_waterfall_off",
+       "lines": [
+        "You pressed the big red button!",
+        "The winch turned and the pipe rose... The waterfall stopped!"
+       ]
+      }
+     },
+     {
+      "tiles": [
+       [
+        9,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "when": {
+       "flag_condition": "cianwood_gym_waterfall_off"
+      },
+      "lines": [
+       "The button is pressed in. The waterfall has stopped."
+      ]
+     }
+    ],
+    "title": "Cianwood Gym"
    },
    "center": {
     "theme": "room",

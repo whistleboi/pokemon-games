@@ -7255,7 +7255,10 @@
       "sheet": "hg_middlewoman1.png"
     },
     "CIANWOOD_CITY:Gym": {
-      "sheet": "hg_gsfighter.png"
+      "sheet": "hg_gsleader5.png"
+    },
+    "CIANWOOD_CITY:Chuck": {
+      "sheet": "hg_gsleader5.png"
     },
     "CIANWOOD_CITY:Heal": {
       "sheet": "hg_pcwoman1.png"

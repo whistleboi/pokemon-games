@@ -2241,13 +2241,16 @@ class WalkTownState(CityState):
             return None   # (Options, SCREEN & SOUND: 3D camera Flat)
         tm = getattr(self, "town_map", None)
         m = ((tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm) if isinstance(tm, dict) else None
-        key = (id(m), getattr(self, "room", None))
-        if getattr(self, "_live_key", None) == key:
-            return self._live_got
-        self._live_key, self._live_got = key, None
         roofs = (m or {}).get("roofs") or {}
         _p = roofs.get("_picture") or {}
         pic = str(_p.get("f") or "")
+        if _p.get("when") or _p.get("until"):   # (a picture that changes with a flag has its own scene too: Cianwood Gym's
+            from src.dungeon import art          #  waterfall, stopped by the switch at the top, 11-22)
+            pic = str(art._version_file(_p) or pic)
+        key = (id(m), getattr(self, "room", None), pic)
+        if getattr(self, "_live_key", None) == key:
+            return self._live_got
+        self._live_key, self._live_got = key, None
         if not pic.startswith(("b2_ground/", "ss_ground/")):
             return None
         try:   # (any trouble with the card or its libraries: the baked picture, never a crash)
