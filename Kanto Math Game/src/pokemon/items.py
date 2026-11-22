@@ -601,6 +601,7 @@ STORY_TEXT = {
     "RED_KEY": "A red key from Cipher Admin Miror B. One of four that open Realgam Tower's giant door.",
     "GREEN_KEY": "A green key from Cipher Admin Dakim. One of four that open Realgam Tower's giant door.",
     "SYSTEM_LEVER": "A heavy lever marked 'SYSTEM'. It fits the power panel in the Cipher Key Lair's Control Room.",
+    "VOICE_CASE": "Dr. Kaminko's Voice Case: a recorded cry that frees a Pokemon stuck in one of his Pokemon Translators.",
     "BATTLE_CD_01": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
     "BATTLE_CD_02": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",
     "BATTLE_CD_03": "A Battle CD: a puzzle battle with a lent team. Play it on the Pokemon HQ Lab's Battle CD player.",

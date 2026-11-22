@@ -22,15 +22,16 @@ class RouteActions:
         """The next Shadow Pokemon in this area's shadow_pool that hasn't been snagged."""
         flags = self.game.story_manager.story_flags
         from src.world import miror_radar   # (one Miror B. has now - a missed one - isn't here any more)
-        return next((s for s in self.area_data.get("shadow_pool", []) if not flags.get(s["flag"])
-                     and not miror_radar.is_with_him(self.game, s["flag"])), None)
+        return next((s for s in self.area_data.get("shadow_pool", []) if not flags.get(s["flag"]) and not s.get("event_only")
+                     and not miror_radar.is_with_him(self.game, s["flag"])), None)   # ("event_only": only its own battle has it -
+                                                                                     #  Miror B.'s last Shadow Dragonite, 11-21)
 
     def action_snag_shadow(self, repeat=False):
         """Orre: a Cipher trainer sends out the next Shadow Pokemon; weaken it and snag it. With
         repeat (SNAG AGAIN, once an area is cleared; Jordan, 10-27, not in the games), a straggler
         brings back one of the area's Shadow Pokemon, so you can keep one Shadow and purify another."""
         if repeat:
-            pool = self.area_data.get("shadow_pool", [])
+            pool = [s for s in self.area_data.get("shadow_pool", []) if not s.get("event_only")]
             if pool:
                 s = random.choice(pool)
                 self.action_challenge_boss({

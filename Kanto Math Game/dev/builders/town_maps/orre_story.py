@@ -380,7 +380,15 @@ BELUH = {"text": "Beluh", "action": "EVENT", "event": {"stages": [{
     "requires": ["orre_beat_skrub"], "flag": "orre_beluh_tablet",
     "lines": ["Beluh: You saved my husband! Thank you, both of you.",
               "Beluh: The Relic Stone can open a Shadow Pokemon's heart, once its gauge is empty. Take your Pokemon there.",
-              "Beluh: And there was an e-mail for you, Rui... Something about Mt. Battle being attacked!"]}],
+              "Beluh: And there was an e-mail for you, Rui... Something about Mt. Battle being attacked!"]},
+    {"requires": ["xd_beluh_mail"], "flag": "xd_le_asked",   # (XD's Lucky Egg quest, batch 8b: after Orre Colosseum round 1)
+     "lines": ["Beluh: Wes, thank you for coming. Some of the village's Pokemon have stopped making any sound at all.",
+               "Beluh: Senilor's Wobbuffet was the first. His house is just down the hill, between ours and the Mart.",
+               "Beluh: Would you look into it? Eagun says you have a knack for helping Pokemon."]},
+    {"requires": ["xd_le_lotad"], "flag": "xd_lucky_egg", "gift_item": {"LUCKY_EGG": 1},
+     "lines": ["Beluh: Wobbuffet's chattering again, and the others too! And that Lotad was only shy? Ho ho!",
+               "Beluh: You've done the whole village a kindness. Please, take this Lucky Egg.",
+               "Beluh: A Pokemon holding it learns more from every battle. Use it well, Wes."]}],
     "done": ["Beluh: Rui, dear, you look so grown up. Take care of each other."]}}
 CAVE_GUARD = {"tiles": [[36, 27]], "look": "sheet:orre_npc_10.png", "face": "d", "until": {"condition": "met_agate_elder"},
               "lines": ["Man: Sorry, nobody goes into the Relic Cave. The elder's orders."]}
@@ -822,6 +830,132 @@ def _xd8a(maps):
         _set_people(lab, {_free_spot(lab, (6, 4)): KRANE_MASTER_BALL})
 
 
+
+# ================================================================== batch 8b: XD after Greevil (BATCH_8B.md)
+# XD part 8 (Jordan 11-21: XD's nine-chamber Purify Chamber, all seven Orre Colosseum rounds, raised to fit, the Lucky Egg
+# quest with the Voice Cases only). Eagun battles you outside the HQ Lab and the Colosseum opens; its desk runs the rounds
+# (src/world/xd_colosseum.py); Miror B. waits on Gateon's harbour wall with the last Shadow Pokemon (src/world/xd_post.py);
+# Beluh's quest: Senilor's silent Wobbuffet, the old man's translators, Kaminko's Voice Cases (his stages: obatch8b.py).
+EAGUN_LAB = {"text": "Eagun", "action": "EVENT", "condition": "xd_greevil_beaten", "event": {"stages": [
+    {"flag": "xd_eagun_lab",
+     "lines": ["Eagun: Wes! I heard you beat Greevil himself. Then you've earned this - one more battle, with me!",
+               "Eagun: My Pikachu and I haven't lost our spark. Show me everything!"],
+     "battle": T("xd:Story:222", dialogue={"player_won": [
+         "Eagun: Ha! You and your Pokemon fight as one. Listen - the Orre Colosseum is running again.",
+         "Eagun: Seven rounds, the strongest trainers in Orre. Go and show them what you've shown me."]})}],
+    "done": ["Eagun: The Orre Colosseum's waiting for you, Wes. Beluh sends her love."]}}
+
+COLO_FINALS = {1: "Lovrina: Wes! I'm here to win, not to make friends. My new Pokemon are perfect!",
+               2: "Snattle: The next governor of Orre doesn't lose twice. Watch me!",
+               3: "Gorigan: Hmph. The Colosseum's honest work. Let's see if you can beat me fair and square.",
+               4: "Chobin: My Robo Groudon's at home, but my Pokemon came! Prepare yourself!",
+               5: "Gonzap: Snagem's turned over a new leaf, kid. Doesn't mean I've gone soft!",
+               6: "Ardos: Grand Master Greevil is gone. My strength isn't. Face it!",
+               7: "Eldes: I hoped we'd meet here. No Cipher, no orders - only a battle. I won't hold back."}
+
+
+def _colo_rounds():
+    out = []
+    for r in range(1, 8):
+        rnd = []
+        for m in range(1, 5):
+            b = T(f"xdcolo:{r}:{m}")
+            if m == 4:
+                b["intro"] = [COLO_FINALS[r]]
+                b["is_boss_battle"] = True
+            rnd.append(b)
+        out.append(rnd)
+    return out
+
+
+COLOSSEUM_DESK = {"text": "Colosseum desk", "action": "EVENT", "condition": "beat_orre_champion", "event": {
+    "xd_colosseum": {"rounds": _colo_rounds()},
+    "lines": ["Clerk: Welcome to the Orre Colosseum! Seven rounds, four battles each, the toughest trainers in Orre."]}}
+
+MIROR_LAST = {"text": "Wanderer Miror B.", "action": "EVENT", "condition": "xd_miror_last_due", "event": {"stages": [
+    {"flag": "xd_miror_last",
+     "lines": ["Miror B.: Ooh, look who found me! Every Shadow Pokemon in Orre, snagged... all but one.",
+               "Miror B.: Remember the Key Lair? While you were busy, I took the best one for myself. Dragonite!",
+               "Miror B.: It's the last Shadow Pokemon there is. Want it? Then out-dance me!"],
+     "battle": T("xd:Story:221", music="orre/miror_b_battle", is_boss_battle=True, dialogue={"player_won": [
+         "Miror B.: No! My final number, ruined! I'm out of here!",
+         "Miror B. dashes for the stairs... and stops. He pulls a tiny gadget out of his hair.",
+         "Miror B.: A bug? In MY hair? So that's how you kept finding me! Hmph!",
+         "He crushes it under his heel and dances off."]})}],
+    "done": ["The harbour wall is empty. The wind smells of the sea."]}}
+
+SENILOR = {"text": "Senilor", "action": "EVENT", "event": {"stages": [
+    {"requires": ["xd_le_asked"], "flag": "xd_le_senilor",
+     "lines": ["Senilor: Beluh sent you? Bless her. It's my Wobbuffet - it hasn't made a sound in days.",
+               "Senilor: My son put a little machine on it, a 'Pokemon Translator'. An old man at the Pokemon Center gave it to us.",
+               "Senilor: Since then: nothing. Not a 'wob', not a 'buffet'."]},
+    {"requires": ["xd_le_kaminko_done"], "flag": "xd_le_spoken",
+     "lines": ["You tell Senilor what Dr. Kaminko said: no machine can do it - Wobbuffet needs to hear its own trainer.",
+               "Senilor: My voice? Well... I'll try. Wobbuffet! Hey! It's me, you big blue lump!",
+               "Wobbuffet: ...Wob... WOBBUFFET!",
+               "Senilor: It spoke! Ha ha! Thank you, Wes. Go and tell Beluh the good news."]}],
+    "done": ["Senilor: My Wobbuffet won't leave my side these days."]}}
+
+WOBBUFFET = {"text": "Wobbuffet", "action": "EVENT", "event": {"stages": [
+    {"requires": ["xd_le_vc4", "has_item:VOICE_CASE"], "flag": "xd_le_c4", "take_item": {"VOICE_CASE": 1},
+     "lines": ["You play the Voice Case for Wobbuffet. A recorded 'Wobbuffet!' fills the room...",
+               "...Wobbuffet sways. Not a sound. The Voice Case didn't work on it!"]}],
+    "done": ["Wobbuffet sways."]}}
+
+
+def _voice(text, n, poke_said):
+    """A Pokemon stuck in a translator: Kaminko's Voice Case n frees it."""
+    return {"text": text, "action": "EVENT", "condition": "xd_le_asked", "event": {"stages": [
+        {"requires": [f"xd_le_vc{n}", "has_item:VOICE_CASE"], "flag": f"xd_le_c{n}", "take_item": {"VOICE_CASE": 1},
+         "lines": [f"You play the Voice Case. The machine on {text} clicks off and drops away.", poke_said]}],
+        "done": [f"{text} is silent. A small machine is stuck to it."]}}
+
+
+VOICES = [("Combusken", 1, "Combusken: Combusken! Busken!"), ("Poochyena", 2, "Poochyena: Yip! Yip yip!"),
+          ("Taillow", 3, "Taillow: Tail-low!"), ("Shroomish", 5, "Shroomish: Shroo-mish!")]
+
+
+def _voiced(text, n, poke_said):
+    """Once freed it chatters (the "done" line follows the flag)."""
+    v = _voice(text, n, poke_said)
+    v["event"]["then"] = {"lines": [poke_said], "requires": [f"xd_le_c{n}"], "fail": v["event"]["done"]}
+    return v
+
+
+TRANSLATOR_MAN = {"text": "Old man", "action": "EVENT", "condition": "xd_le_asked", "event": {"stages": [
+    {"requires": ["xd_le_senilor"], "flag": "xd_le_oldman",
+     "lines": ["Old man: The translators? Aye, I handed a few out. Got them from a Dr. Kaminko, years ago.",
+               "Old man: Where he lives I couldn't tell you. Somewhere out in the desert, on the way to Gateon..."]}],
+    "done": ["Old man: I meant well, giving those out. Truly."]}}
+
+LOTAD = {"text": "Lotad", "action": "EVENT", "condition": "xd_le_asked", "event": {"stages": [
+    {"requires": ["xd_le_spoken"], "flag": "xd_le_lotad",
+     "lines": ["Lotad floats by the falls, silent. You look it over for a translator...",
+               "...There isn't one. This Lotad is just a very quiet Pokemon!"]}],
+    "done": ["Lotad bobs on the water without a sound."]}}
+
+
+def _xd8b(maps):
+    if "POKEMON_HQ_LAB" in maps:
+        m = maps["POKEMON_HQ_LAB"]
+        _set_people(m, {(9, 12): EAGUN_LAB})   # (the lab's front step: the strip is only three tiles wide)
+    if "ORRE_COLOSSEUM" in maps:
+        g = maps["ORRE_COLOSSEUM"]["rooms"]["gym"]
+        _set_people(g, {_free_spot(g, (8, 18)): COLOSSEUM_DESK})
+    if "GATEON_PORT" in maps:
+        _set_people(maps["GATEON_PORT"], {(58, 27): MIROR_LAST})   # (the north end of the harbour's east wall: XD's tower top)
+    if "AGATE_VILLAGE" in maps:
+        a = maps["AGATE_VILLAGE"]
+        rooms = a["rooms"]
+        _set_people(rooms["house_centre"], {(2, 5): SENILOR, (3, 4): WOBBUFFET})
+        _set_people(rooms["house_west"], {_free_spot(rooms["house_west"], (6, 6)): _voiced(*VOICES[0])})
+        _set_people(a, {(37, 13): _voiced(*VOICES[1]), (66, 8): _voiced(*VOICES[2]), (70, 23): LOTAD})
+        _set_people(rooms["center"], {_free_spot(rooms["center"], (3, 6)): TRANSLATOR_MAN})
+    if "XD_ONBS" in maps:
+        lobby = maps["XD_ONBS"]["floors"][0]
+        _set_people(lobby, {(12, 3): dict(_voiced(*VOICES[3]), condition="xd_le_vc5")})   # (by the lobby's front desk)
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -837,6 +971,7 @@ def apply(maps):
     _xd6(maps)
     _col7b(maps)
     _xd8a(maps)
+    _xd8b(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

@@ -21,7 +21,9 @@ KEY = "miror_b_missed"
 
 
 def has(story):
-    return story.inventory.get("MIROR_RADAR", 0) > 0
+    # (XD: once his last Shadow Pokemon, Dragonite, is snagged, Miror B. finds the radar's bug in his hair and smashes it -
+    #  src/world/xd_post.py, batch 8b)
+    return story.inventory.get("MIROR_RADAR", 0) > 0 and not story.story_flags.get("snagged_shadow_dragonite")
 
 
 def missed(game):
@@ -42,6 +44,9 @@ def miss(game, mon):
     from src.world import shadow
     flag = shadow.snag_flag(game, mon)
     if not flag or story.story_flags.get(flag):
+        return
+    from src.world import xd_post
+    if flag in xd_post.GREEVIL_FLAGS or int(mon.id) == 9400:   # (Greevil's own come back in his rematch, not with Miror B.)
         return
     held = missed(game)
     if not any(m[0] == flag for m in held):

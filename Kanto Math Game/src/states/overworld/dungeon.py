@@ -2048,6 +2048,10 @@ class DungeonState(OverworldBattles, PlayState):
             self.steps += 1
             from src.world import vs_seeker as _vs
             _vs.step(self.game.story_manager)   # (the VS Seeker charges as you walk)
+            from src.world import shadow as _shadow, purify_chamber as _chamber
+            _said = _shadow.walked(self.game) + _chamber.walked(self.game)   # (Orre: walking opens a Shadow Pokemon's heart, with
+            if _said:                                                       #  you or in the Purify Chamber; 11-21 - the party's was
+                self.flash(_said[-1], 150)                                  #  never called before)
             self._lap_step()
             if not self._hidden_item(self.run.player):
                 self._cracked_floor(self.run.player) or self._thin_ice(self.run.player)

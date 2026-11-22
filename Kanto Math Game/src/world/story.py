@@ -385,6 +385,9 @@ class StoryManager:
             return len([p for p in self.player_team if p]) < 6
         if condition == "all_unown_registered":
             return self.unown_forms_caught() >= len(self.UNOWN_FORMS)
+        if condition == "xd_miror_last_due":  # (XD: Miror B. atop Gateon's lighthouse with the last Shadow, Dragonite - xd_post.py)
+            from src.world import xd_post
+            return xd_post.last_due(self.game)
         if condition == "orre_all_purified":  # Colosseum's Ho-Oh: every Shadow Pokemon snagged, and each
             # Shadow line purified at least once (Jordan, 10-27: keeping Shadow Pokemon doesn't block it)
             prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
@@ -458,14 +461,21 @@ class StoryManager:
 
     def purify_slot(self, i):
         """Purify the Shadow Pokemon in party slot i (the Relic Stone). Returns its new name."""
-        p = self.player_team[i]
+        new = self.purified_copy(self.player_team[i])
+        self.player_team[i] = new
+        return new.name.upper()
+
+    def purified_copy(self, p):
+        """A Shadow Pokemon purified (the Relic Stone, the Purify Chamber): its ordinary species, its own moves back, the Heart
+        Gauge gone. (Before 11-21 the Relic Stone's copy kept the gauge record and SHADOW-RUSH: the record was copied over.)"""
+        from src.world import shadow as _shadow
         m = self.game.loader.area_data.get("FORM_MAP", {}).get(str(p.id)) or {}
         self._note_purified(p.id)
+        _shadow.purified(p)
         new = self.change_species(p, int(m["id"]))
         new.friendship = max(new.friendship, 100)  # a purified heart opens up to its trainer
-        self.player_team[i] = new
         self.game.data.add_pokemon(new)
-        return new.name.upper()
+        return new
 
     def change_species(self, p, new_id):
         """The same Pokemon as another species or form (purified, a tower evolution): it keeps

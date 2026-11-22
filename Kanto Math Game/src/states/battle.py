@@ -1325,7 +1325,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
                                 if self.player_won:
 
                                     self.exit_battle()
-                                elif self.starter_battle or getattr(self, "frontier", None):
+                                elif self.starter_battle or getattr(self, "frontier", None) or getattr(self, "xd_colo", None):
                                     self.continue_after_starter_loss()  # (healed, back where you were)
                                 else:
 
@@ -2490,7 +2490,14 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self.game.states["play"] = PlayState(self.game, restore_data=play_state_data)
             next_state = self.game.states["play"]
 
-        if getattr(self, "battle_cd", None) is not None:   # (a Battle CD's result, said back in the lab)
+        if getattr(self, "xd_colo", None) is not None:   # (XD's Orre Colosseum after the title: four in a row - src/world/xd_colosseum.py)
+            from src.world import xd_colosseum
+            nxt = xd_colosseum.after_battle(self.game, self.xd_colo, bool(self.player_won and not lost))
+            if callable(nxt):   # (the round's next battle, at once: no healing in between)
+                nxt()
+                return
+            self._cd_said = nxt   # (said back at the desk, the way a Battle CD's result is)
+        if getattr(self, "battle_cd", None) is not None or getattr(self, "xd_colo", None) is not None:   # (a Battle CD's result, said back in the lab)
             said = getattr(self, "_cd_said", None)
             if said and next_state is not None:   # (a walked town speaks with npc_say; a menu place with show_dialogue)
                 if hasattr(next_state, "say"):

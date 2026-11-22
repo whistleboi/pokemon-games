@@ -1439,7 +1439,7 @@
       "sheet": "orre_npc_07.png"
     },
     "AGATE_VILLAGE:Wobbuffet": {
-      "sheet": "orre_pokemon_17.png"
+      "pokemon": 202
     },
     "GATEON_PORT:The Cipher Rumor": {
       "sheet": "orre_trainer_sailor.png"
@@ -13367,6 +13367,33 @@
     },
     "XD_CITADARK_ISLE:CIPHER ADMIN ELDES": {
       "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "POKEMON_HQ_LAB:Eagun": {
+      "sheet": "orre_npc_eagun2.png"
+    },
+    "ORRE_COLOSSEUM:Colosseum desk": {
+      "sheet": "orre_npc_15.png"
+    },
+    "GATEON_PORT:Wanderer Miror B.": {
+      "sheet": "orre_trainer_miror_b.png"
+    },
+    "AGATE_VILLAGE:Senilor": {
+      "sheet": "orre_npc_07.png"
+    },
+    "AGATE_VILLAGE:Combusken": {
+      "pokemon": 256
+    },
+    "AGATE_VILLAGE:Poochyena": {
+      "pokemon": 261
+    },
+    "AGATE_VILLAGE:Taillow": {
+      "pokemon": 276
+    },
+    "AGATE_VILLAGE:Lotad": {
+      "pokemon": 270
+    },
+    "XD_ONBS:Shroomish": {
+      "pokemon": 285
     }
   },
   "townsperson": "NPC 17.png",

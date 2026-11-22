@@ -319,7 +319,8 @@ def _run_story_event(state, key, check, show):
     if ev.get("stages"):  # one NPC through the story: the first stage that is ready and not done
         stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")   # ("ready": when the stage comes,
                       and all(check(c) for c in st.get("ready", st.get("requires", [])))), None)   #  its "requires" then say "not yet")
-        ev = stage or {"lines": ev.get("done") or ["..."]}
+        ev = stage or ev.get("then") or {"lines": ev.get("done") or ["..."]}   # ("then": an event of its own once every stage
+                                                                               #  is done - Greevil's rematch, XD; 11-21)
     if ev.get("walk_partner"):   # (Platinum's walking partners: they walk with you from here; src/world/walk_partners.py)
         from src.world import walk_partners as _wp
         said = _wp.join(story, ev["walk_partner"])
@@ -960,6 +961,23 @@ def _run_story_event(state, key, check, show):
             show(lines + ["Nobody's here but the wind."])
             return
         _say_then(state, lines, lambda: game.change_state(_start_event_battle(game, story.current_area_key, miror_radar.battle_info(game), None)))
+        return
+    if ev.get("greevil_rematch"):   # (XD: Greevil again - XD001 first if it got away, else his team with your snagged ones'
+        from src.world import xd_post   #  stand-ins: src/world/xd_post.py)
+        gr = ev["greevil_rematch"]
+        if not story.story_flags.get("snagged_shadow_lugia") and gr.get("lugia"):
+            info = dict(gr["lugia"], _intro_lines=lines + list(gr.get("lugia_lines") or []))
+        else:
+            info = dict(xd_post.greevil_battle(game, gr), _intro_lines=lines + list(gr.get("team_lines") or []))
+        game.change_state(_start_event_battle(game, story.current_area_key, info, None))
+        return
+    if ev.get("xd_colosseum"):   # (XD's Orre Colosseum after the title: seven rounds of four - src/world/xd_colosseum.py)
+        from src.world import xd_colosseum
+        xd_colosseum.start(state, ev, lines, show)
+        return
+    if ev.get("purify_chamber"):   # (XD's Purify Chamber at the HQ Lab: nine sets, tempo, steps - src/world/purify_chamber.py)
+        from src.states.systems.purify_chamber import PurifyChamberState
+        _say_then(state, lines, lambda: game.change_state(PurifyChamberState(game, state, show)))
         return
     if ev.get("battle_cd_player"):   # (XD's Battle CDs, played at the HQ Lab: pick one you own - src/world/battle_cd.py)
         from src.world import battle_cd

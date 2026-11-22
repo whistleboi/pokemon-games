@@ -11112,10 +11112,10 @@
           "color": "GOLD",
           "event": {
             "lines": [
-              "Lily: The Purify Chamber is ready. Place a Shadow Pokemon inside and the others' warmth will open its heart.",
-              "Choose one to purify, or none."
+              "Lily: The Purify Chamber! Nine sets: a Shadow Pokemon in the middle, up to four others round it.",
+              "Lily: The better they work together round the ring, the faster the Shadow Pokemon's heart opens as you travel."
             ],
-            "purify": "choose"
+            "purify_chamber": true
           }
         },
         {
@@ -11200,7 +11200,83 @@
           "text": "Dr. Kaminko",
           "action": "EVENT",
           "event": {
-            "lines": [
+            "stages": [
+              {
+                "requires": [
+                  "xd_le_oldman"
+                ],
+                "flag": "xd_le_vc1",
+                "gift_item": {
+                  "VOICE_CASE": 1
+                },
+                "lines": [
+                  "Dr. Kaminko: My Pokemon Translator! One of my early inventions. Once it's on, it stays on.",
+                  "Dr. Kaminko: The only way to free a Pokemon is a Voice Case - a recording of its own cry. I can make one at a time.",
+                  "Dr. Kaminko: Here: a Combusken's. Isn't there a Combusken in the house at the far west of Agate?"
+                ]
+              },
+              {
+                "requires": [
+                  "xd_le_c1"
+                ],
+                "flag": "xd_le_vc2",
+                "gift_item": {
+                  "VOICE_CASE": 1
+                },
+                "lines": [
+                  "Dr. Kaminko: It worked? Of course it worked! Next, a Poochyena's - on the path behind Beluh's tree house."
+                ]
+              },
+              {
+                "requires": [
+                  "xd_le_c2"
+                ],
+                "flag": "xd_le_vc3",
+                "gift_item": {
+                  "VOICE_CASE": 1
+                },
+                "lines": [
+                  "Dr. Kaminko: Splendid! Now a Taillow's. It perches up by the waterfall, at the top of the village."
+                ]
+              },
+              {
+                "requires": [
+                  "xd_le_c3"
+                ],
+                "flag": "xd_le_vc4",
+                "gift_item": {
+                  "VOICE_CASE": 1
+                },
+                "lines": [
+                  "Dr. Kaminko: And finally the one that started it all: Senilor's Wobbuffet."
+                ]
+              },
+              {
+                "requires": [
+                  "xd_le_c4"
+                ],
+                "flag": "xd_le_vc5",
+                "gift_item": {
+                  "VOICE_CASE": 1
+                },
+                "lines": [
+                  "Dr. Kaminko: It didn't work on Wobbuffet? Hmm. HMM. Into the bin with that one.",
+                  "Your P*DA beeps: an e-mail from Megg at ONBS. \"My Shroomish has gone completely quiet. Can you help?\"",
+                  "Dr. Kaminko: Another one! Take this - a Shroomish's cry. ONBS is in Pyrite; she sits at the front desk."
+                ]
+              },
+              {
+                "requires": [
+                  "xd_le_c5"
+                ],
+                "flag": "xd_le_kaminko_done",
+                "lines": [
+                  "Dr. Kaminko: No more Voice Cases, I'm afraid. And for that Wobbuffet... no recording will do.",
+                  "Dr. Kaminko: It needs to hear its own trainer. Tell Senilor to speak to it himself!"
+                ]
+              }
+            ],
+            "done": [
               "Dr. Kaminko: A visitor! Behold my Robo Groudon. It doesn't move yet... but it will!",
               "Downstairs my crane carries you between the platforms. Step on the hook that matches the colour."
             ]
@@ -12724,7 +12800,8 @@
           "id": 9347,
           "name": "Shadow Dragonite",
           "flag": "snagged_shadow_dragonite",
-          "trainer": "Wanderer Miror B."
+          "trainer": "Wanderer Miror B. (the last Shadow Pokemon, Gateon Port)",
+          "event_only": true
         }
       ],
       "route_menu": [
@@ -21668,7 +21745,182 @@
             ],
             "done": [
               "Greevil: ...Leave me be."
-            ]
+            ],
+            "then": {
+              "requires": [
+                "xd_greevil_beaten"
+              ],
+              "fail": [
+                "Greevil: ...Leave me be."
+              ],
+              "lines": [
+                "Greevil: ...You again. Eldes says I should face what I've done. Very well - battle me."
+              ],
+              "greevil_rematch": {
+                "lugia": {
+                  "name": "Grand Master Greevil",
+                  "class": "GRAND_MASTER",
+                  "sprite": "orre_chaser_m.png",
+                  "team": [
+                    9400
+                  ],
+                  "levels": [
+                    78
+                  ],
+                  "team_moves": [
+                    [
+                      "PSYCHO-BOOST",
+                      "FEATHER-DANCE",
+                      "EARTHQUAKE",
+                      "HYDRO-PUMP"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0
+                  },
+                  "is_boss_battle": true
+                },
+                "lugia_lines": [
+                  "Greevil: XD001 came back to me. It won't leave my side - unless you take it."
+                ],
+                "shadows": {
+                  "name": "Grand Master Greevil",
+                  "class": "GRAND_MASTER",
+                  "sprite": "orre_chaser_m.png",
+                  "team": [
+                    9331,
+                    9346,
+                    9326,
+                    9341,
+                    9344,
+                    9345
+                  ],
+                  "levels": [
+                    72,
+                    75,
+                    72,
+                    72,
+                    75,
+                    75
+                  ],
+                  "team_moves": [
+                    [
+                      "MEGAHORN",
+                      "HELPING-HAND",
+                      "SCARY-FACE",
+                      "EARTHQUAKE"
+                    ],
+                    [
+                      "EXTRASENSORY",
+                      "MORNING-SUN",
+                      "WILL-O-WISP",
+                      "FLAMETHROWER"
+                    ],
+                    [
+                      "PSYCHIC",
+                      "REFRESH",
+                      "HYPNOSIS",
+                      "ANCIENT-POWER"
+                    ],
+                    [
+                      "EARTHQUAKE",
+                      "REFRESH",
+                      "TAIL-WHIP",
+                      "BODY-SLAM"
+                    ],
+                    [
+                      "EXTRASENSORY",
+                      "HEAL-BELL",
+                      "HAZE",
+                      "ICE-BEAM"
+                    ],
+                    [
+                      "EXTRASENSORY",
+                      "BATON-PASS",
+                      "METAL-SOUND",
+                      "THUNDERBOLT"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 10
+                  },
+                  "is_boss_battle": true,
+                  "dialogue": {
+                    "player_won": [
+                      "Greevil: Hmph. My son was right about you."
+                    ]
+                  }
+                },
+                "stand_ins": {
+                  "name": "Grand Master Greevil",
+                  "class": "GRAND_MASTER",
+                  "sprite": "orre_chaser_m.png",
+                  "team": [
+                    310,
+                    277,
+                    121,
+                    210,
+                    334,
+                    142
+                  ],
+                  "levels": [
+                    75,
+                    75,
+                    75,
+                    75,
+                    75,
+                    75
+                  ],
+                  "team_moves": [
+                    [
+                      "THUNDERBOLT",
+                      "CRUNCH",
+                      "QUICK-ATTACK",
+                      "IRON-TAIL"
+                    ],
+                    [
+                      "AERIAL-ACE",
+                      "STEEL-WING",
+                      "FACADE",
+                      "MUD-SLAP"
+                    ],
+                    [
+                      "PSYCHIC",
+                      "THUNDERBOLT",
+                      "ICE-BEAM",
+                      "SWIFT"
+                    ],
+                    [
+                      "EARTHQUAKE",
+                      "SHADOW-BALL",
+                      "BRICK-BREAK",
+                      "DOUBLE-EDGE"
+                    ],
+                    [
+                      "DRAGON-BREATH",
+                      "EARTHQUAKE",
+                      "AERIAL-ACE",
+                      "STEEL-WING"
+                    ],
+                    [
+                      "EARTHQUAKE",
+                      "ANCIENT-POWER",
+                      "AERIAL-ACE",
+                      "DOUBLE-EDGE"
+                    ]
+                  ],
+                  "double": true,
+                  "rewards": {
+                    "balls": 0
+                  }
+                },
+                "team_lines": [
+                  "Greevil: Those you snagged are gone from me. Others stand in their place."
+                ]
+              }
+            }
           }
         },
         {
@@ -22121,7 +22373,11 @@
     {"id": "orre_s3", "type": "SIDE", "title": "The Wishing Star", "description": "Cipher's files mention a wishing star near Agate's Relic Stone. Look in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_jirachi_caught"}, "region": "ORRE", "completed_flag": "orre_jirachi_caught", "target": "RELIC_FOREST", "reward": "Jirachi"},
     {"id": "orre_s4", "type": "SIDE", "title": "Ho-Oh's Blessing", "description": "Purify every Shadow Pokémon at the Relic Stone. Then a rainbow Pokémon may appear in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "orre_all_purified", "flag_not": "orre_ho_oh_caught"}, "region": "ORRE", "completed_flag": "orre_ho_oh_caught", "target": "RELIC_FOREST", "reward": "Ho-Oh"},
     {"id": "orre_s5", "type": "SIDE", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil, on Citadark Isle. Professor Krane has something for you first - visit the HQ Lab, then take the Robo Kyogre from Gateon Port.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": ["xd_greevil_beaten", "xd_master_ball"]}, "region": "ORRE", "completed_flag": "xd_master_ball", "target": "POKEMON_HQ_LAB", "reward": "Master Ball"},
-    {"id": "orre_s5b", "type": "SIDE", "title": "Citadark Isle", "description": "Climb Greevil's island: the fortress, the volcano's platforms, the hook hall, the Dome. XD001 waits at the top.", "condition": {"required_region": "ORRE", "flag": "xd_master_ball", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokemon"}
+    {"id": "orre_s5b", "type": "SIDE", "title": "Citadark Isle", "description": "Climb Greevil's island: the fortress, the volcano's platforms, the hook hall, the Dome. XD001 waits at the top.", "condition": {"required_region": "ORRE", "flag": "xd_master_ball", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokemon"},
+    {"id": "orre_s6", "type": "SIDE", "title": "Eagun's Challenge", "description": "Eagun wants a word with you outside the Pokemon HQ Lab.", "condition": {"required_region": "ORRE", "flag": "xd_greevil_beaten", "flag_not": "xd_eagun_lab"}, "region": "ORRE", "completed_flag": "xd_eagun_lab", "target": "POKEMON_HQ_LAB"},
+    {"id": "orre_s6b", "type": "SIDE", "title": "The Orre Colosseum", "description": "Seven rounds of four battles at the Orre Colosseum, healed between battles. Each round's winner gets a TM.", "condition": {"required_region": "ORRE", "flag": "xd_eagun_lab", "flag_not": "xd_colo_all"}, "region": "ORRE", "completed_flag": "xd_colo_all", "target": "ORRE_COLOSSEUM", "reward": "TM Dragon Claw"},
+    {"id": "orre_s6c", "type": "SIDE", "title": "XD001's Heart", "description": "XD001's heart is shut tight. Fill all nine sets of the HQ Lab's Purify Chamber at Max Tempo - four in each ring, each strong against the next - then put XD001 in.", "condition": {"required_region": "ORRE", "flag": "snagged_shadow_lugia", "flag_not": "xd_lugia_purified"}, "region": "ORRE", "completed_flag": "xd_lugia_purified", "target": "POKEMON_HQ_LAB"},
+    {"id": "orre_s6d", "type": "SIDE", "title": "Silent Pokemon", "description": "Beluh e-mailed: some of Agate Village's Pokemon have gone silent. Go and see her.", "condition": {"required_region": "ORRE", "flag": "xd_beluh_mail", "flag_not": "xd_lucky_egg"}, "region": "ORRE", "completed_flag": "xd_lucky_egg", "target": "AGATE_VILLAGE", "reward": "Lucky Egg"}
   ],
   "REGION_START": {
     "ORRE": {

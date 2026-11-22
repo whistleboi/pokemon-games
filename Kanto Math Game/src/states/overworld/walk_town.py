@@ -976,6 +976,10 @@ class WalkTownState(CityState):
         self.steps += 1
         from src.world import vs_seeker as _vs
         _vs.step(self.game.story_manager)
+        from src.world import shadow as _shadow, purify_chamber as _chamber
+        _said = _shadow.walked(self.game) + _chamber.walked(self.game)   # (Orre: walking opens Shadow hearts, with you or in the
+        if _said:                                                       #  Purify Chamber - src/states/overworld/dungeon.py too)
+            self.flash(_said[-1], 150)
         self._remember()
         if not self._town_hidden(to):
             self._itemfinder(to)
