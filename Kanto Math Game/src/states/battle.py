@@ -300,7 +300,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
         self.dialogue_box.set_visibility(False)
         box = Utils.get_full_dialogue_rect(self.game)
         names = self._menu_moves(self.player_pokemon)
-        pad, gap, back_w = 16, 10, 170
+        pad, gap, back_w = 16, 10, 300  # (the right column: the move's details over BACK)
         bw = (box.width - pad * 3 - back_w - gap) // 2
         bh = (box.height - pad * 2 - gap - 4) // 2
         font, small = self.game.assets.fonts["button"], self.game.assets.fonts["label"]
@@ -340,19 +340,27 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                              stab=bool(power and mtype) and mtype.upper() in own_types, pp=have)
             self.move_buttons.append(btn)
         from src.ui.panels import CommandButton
-        back = CommandButton((box.right - pad - back_w, box.y + pad, back_w, box.height - pad * 2 - 4), "BACK",
+        from src.ui.widgets import MoveInfoPanel
+        MoveButton.keyboard = self.game.keyboard
+        info_h = box.height - pad * 2 - 4 - 52 - gap
+        info = MoveInfoPanel((box.right - pad - back_w, box.y + pad, back_w, info_h), list(self.move_buttons),
+                             font, small)
+        back = CommandButton((box.right - pad - back_w, box.y + pad + info_h + gap, back_w, 52), "BACK",
                              self.game.assets.fonts["button"], self.close_move_menu, bg_color=(120, 124, 144),
                              autosize=False)
+        self._move_info = info  # (beside the buttons, not one of them)
+        self.game.ui_manager.add_element(info)
         self.move_buttons.append(back)
         for btn in self.move_buttons:
             self.game.ui_manager.add_element(btn)
 
     def _clear_move_buttons(self):
-        for btn in self.move_buttons + [getattr(self, "_move_backdrop", None)]:
+        for btn in self.move_buttons + [getattr(self, "_move_backdrop", None), getattr(self, "_move_info", None)]:
             if btn is not None and btn in self.game.ui_manager.elements:
                 self.game.ui_manager.elements.remove(btn)
         self.move_buttons = []
         self._move_backdrop = None
+        self._move_info = None
 
     def close_move_menu(self):
         self.form_armed = None
@@ -3495,7 +3503,7 @@ class WildBattleState(TrainerBattleState):
             from src.ui import theme
             ratio = max(0.0, min(1.0, self.catch_timer / self.game.story_manager.timer_frames(15)))
             bar = pygame.Rect(self.btn_yes.rect.x, self.btn_no.rect.bottom + 10, self.btn_yes.rect.w, 8)
-            pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=4)
+            pygame.draw.rect(screen, (22, 22, 28), bar, border_radius=4)
             pygame.draw.rect(screen, theme.BAG, (bar.x, bar.y, int(bar.w * ratio), bar.h), border_radius=4)
 
         if catching_now or (self.phase == "OUTRO" and self.catch_phase == "CAUGHT"):

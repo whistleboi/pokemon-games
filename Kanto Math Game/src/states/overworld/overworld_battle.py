@@ -284,7 +284,7 @@ class OverworldBattles:
             screen.blit(img, img.get_rect(center=(r.x + 30, r.centery)))
             heal = self._qp_heal_rect(r)
             best = self._qp_best(p)
-            pygame.draw.rect(screen, (220, 240, 225) if best else (225, 225, 230), heal, border_radius=8)
+            pygame.draw.rect(screen, (34, 74, 48) if best else (40, 40, 48), heal, border_radius=8)
             pygame.draw.rect(screen, (90, 200, 120) if best else (180, 180, 190), heal, 2, border_radius=8)
             pimg = self._item_img(best or "POTION", 28)
             if pimg is not None:
@@ -292,8 +292,8 @@ class OverworldBattles:
                     pimg = pimg.copy()
                     pimg.set_alpha(70)
                 screen.blit(pimg, pimg.get_rect(center=heal.center))
-            ink = (40, 40, 60) if ok else (160, 160, 170)
-            lv = fonts["small"].render(f"Lv{p.level}" if ok else "fainted", True, (110, 110, 130))
+            ink = (248, 248, 248) if ok else (130, 130, 142)
+            lv = fonts["small"].render(f"Lv{p.level}" if ok else "fainted", True, (176, 182, 200))
             right = heal.x - 8
             name = p.display_name.upper()  # (the whole top line: MEGA VENUSAUR fits)
             while len(name) > 3 and fonts["small"].size(name)[0] > right - (r.x + 58):

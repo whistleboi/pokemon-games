@@ -2048,8 +2048,7 @@ class WalkTownState(CityState):
         dn.draw_frame(screen, view)
         self._draw_hud(screen, fonts)
         if self.hover_menu_active and self.hover_bg_rect:
-            pygame.draw.rect(screen, (255, 255, 255), self.hover_bg_rect, border_radius=12)
-            pygame.draw.rect(screen, (0, 0, 0), self.hover_bg_rect, 6, border_radius=12)
+            theme.draw_panel(screen, self.hover_bg_rect, radius=12, tab=False)
         if self.npc_active and self.npc_dialogue:
             self.npc_dialogue.draw(screen)
         self.game.ui_manager.draw(screen)

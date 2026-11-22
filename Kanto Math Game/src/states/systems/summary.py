@@ -233,12 +233,7 @@ class PokemonDetailState(GameState):
         f = self.game.assets.fonts
         for t in self.pokemon.types or []:
             color = TrainerBattleState.TYPE_COLORS.get(t, (120, 120, 120))
-            chip = pygame.Rect(x, y, f["caption"].size(t.upper())[0] + 22, 28)
-            pygame.draw.rect(screen := self.game.screen, color, chip, border_radius=14)
-            pygame.draw.rect(screen, theme.shade(color, 0.6), chip, 2, border_radius=14)
-            Utils.draw_text_outline(screen, t.upper(), f["caption"], WHITE, chip.centerx, chip.centery,
-                                    outline_color=theme.shade(color, 0.5), thickness=2)
-            x = chip.right + 8
+            x += theme.type_tag(self.game.screen, t.upper(), color, f["caption"], x, y, h=28) + 6
 
     def _bar_line(self):
         """What the text box says for the tab on show."""
@@ -435,7 +430,7 @@ class PokemonDetailState(GameState):
             theme.shadow_text(screen, label, f["label"], x, y)
             theme.shadow_text(screen, str(value), f["label"], x + 200, y, align="right")
             bar = pygame.Rect(x + 214, y + 4, left.right - 20 - (40 if ivs else 0) - x - 214, 14)
-            pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=7)
+            pygame.draw.rect(screen, (22, 22, 28), bar.inflate(4, 4))
             share = p.iv(key) / 31 if ivs else self.stat_rating(key, value)
             fill = bar.copy()
             fill.width = max(4, int(bar.width * share))
@@ -452,7 +447,7 @@ class PokemonDetailState(GameState):
             if i < len(known):
                 self._move_card(r, known[i])
             else:
-                pygame.draw.rect(screen, theme.shade(theme.MENU_BG, 1.3), r, border_radius=12)
+                pygame.draw.polygon(screen, (30, 30, 36), theme.chamfer(r, 10, tl=False))
 
     def _move_card(self, rect, name, highlight=False):
         """A move in its type's colour (like the battle's move buttons): name, then type, category,
@@ -462,12 +457,14 @@ class PokemonDetailState(GameState):
         screen, fonts = self.game.screen, self.game.assets.fonts
         d = movelib.info(self.game, name)
         color = TrainerBattleState.TYPE_COLORS.get(d.get("type"), (120, 120, 120))
-        dark = theme.shade(color, 0.6)
-        pygame.draw.rect(screen, dark, rect.move(0, 4), border_radius=12)
-        pygame.draw.rect(screen, color, rect, border_radius=12)
-        pygame.draw.rect(screen, GOLD if highlight else (20, 20, 30), rect, 5 if highlight else 3, border_radius=12)
+        dark = (16, 16, 20)
+        # (the 11-21 look: a charcoal bar edged in the type's colour, like the battle's move buttons)
+        pts = theme.chamfer(rect, 12)
+        theme.alpha_poly(screen, (0, 0, 0), theme.chamfer(rect.move(3, 4), 12), 110)
+        pygame.draw.polygon(screen, theme.mix((38, 38, 44), color, 0.18), pts)
+        pygame.draw.polygon(screen, GOLD if highlight else color, pts, 4 if highlight else 3)
         Utils.draw_text_outline(screen, name.replace("-", " ").upper(), fonts["label"], WHITE,
-                                rect.x + 14, rect.y + 8, align="left", outline_color=dark, thickness=2)
+                                rect.x + 16, rect.y + 8, align="left", outline_color=dark, thickness=2)
         from src.pokemon import pp as pplib  # (PP left / most for a move it knows; the most for a pool move)
         p = self.pokemon
         top = pplib.max_pp(self.game, p, name)
@@ -476,10 +473,12 @@ class PokemonDetailState(GameState):
                                 (255, 110, 100) if have <= 0 else (255, 214, 90) if have * 4 <= top else WHITE,
                                 rect.right - 14, rect.y + 10, align="right", outline_color=dark, thickness=2)
         acc = f"{d['accuracy']}%" if d.get("accuracy") else "-"
-        detail = (f"{str(d.get('type', '')).title()}  {str(d.get('category', '')).title()}  "
-                  f"Pow {d.get('power') or '-'}  {acc}")
-        Utils.draw_text_outline(screen, detail, fonts["caption"], WHITE, rect.x + 14, rect.bottom - 26, align="left",
-                                outline_color=dark, thickness=2)
+        detail = f"{str(d.get('category', '')).title()}  Pow {d.get('power') or '-'}  {acc}"
+        tag_h = fonts["caption"].get_height() + 6
+        tw = theme.type_tag(screen, str(d.get("type", "???")).upper(), color, fonts["caption"], rect.x + 14,
+                            rect.bottom - tag_h - 8, h=tag_h)
+        theme.shadow_text(screen, detail, fonts["caption"], rect.x + 24 + tw, rect.bottom - 8 - tag_h // 2
+                          - fonts["caption"].get_height() // 2, color=theme.TEXT_DIM)
 
     def _draw_move_pool(self):
         """MOVES: its four moves (left), the rest of its move pool (right); tap a move, then a
@@ -501,7 +500,7 @@ class PokemonDetailState(GameState):
             if i < len(p.moves):
                 self._move_card(r, p.moves[i], highlight=(self.sel_slot == i))
             else:
-                pygame.draw.rect(screen, theme.shade(theme.MENU_BG, 1.3), r, border_radius=12)
+                pygame.draw.polygon(screen, (30, 30, 36), theme.chamfer(r, 10, tl=False))
                 pygame.draw.rect(screen, GOLD if self.sel_slot == i else theme.PANEL_EDGE, r, 3, border_radius=12)
                 Utils.draw_text_outline(screen, "- empty -", fonts["label"], LIGHT_GRAY, r.centerx, r.centery)
         choices = self._pool_choices()
@@ -538,7 +537,7 @@ class PokemonDetailState(GameState):
         theme.card(screen, rect)
         cond = getattr(p, "condition", None) or {}
         x, y = rect.x + 20, rect.y + 18
-        theme.shadow_text(screen, "CONDITION", f["label"], x, y, color=(110, 116, 136))
+        theme.shadow_text(screen, "CONDITION", f["label"], x, y, color=theme.TEXT_LABEL)
         y += 44
         rows = [(cat.title(), cond.get(cat, 0), CATEGORY_COLOR[cat]) for cat in CATEGORIES]
         rows.append(("Sheen", getattr(p, "sheen", 0), (170, 176, 196)))
@@ -546,13 +545,13 @@ class PokemonDetailState(GameState):
         for label, value, color in rows:
             theme.shadow_text(screen, label, f["label"], x, y)
             bar = pygame.Rect(bar_x, y + 4, rect.right - 20 - bar_x, 14)
-            pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=7)
+            pygame.draw.rect(screen, (22, 22, 28), bar.inflate(4, 4))
             fill = bar.copy()
             fill.width = int(bar.w * min(value, MAX_CONDITION) / MAX_CONDITION)
             if fill.width:
                 pygame.draw.rect(screen, color, fill, border_radius=7)
             y += 40
         ribbons = getattr(p, "ribbons", [])
-        theme.shadow_text(screen, f"Ribbons: {len(ribbons)}", f["label"], x, y + 6, color=(170, 120, 20))
+        theme.shadow_text(screen, f"Ribbons: {len(ribbons)}", f["label"], x, y + 6, color=(240, 184, 40))
         if p.name.upper() == "FEEBAS" and not feebas_ready(p):
             theme.shadow_text(screen, f"Needs Beauty {FEEBAS_BEAUTY} to evolve", f["caption"], x, y + 40)

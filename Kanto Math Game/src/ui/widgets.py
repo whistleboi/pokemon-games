@@ -159,66 +159,136 @@ class MoveButton(Button):
         self.effect = effect
         self.stab = stab
 
+    def is_on(self):
+        """The pointer or the keyboard highlight is on this move."""
+        if self.rect.collidepoint(pygame.mouse.get_pos()):
+            return True
+        kb = getattr(MoveButton, "keyboard", None)
+        return bool(kb and kb.active and kb.focus and kb.focus[0] == id(self))
+
+    def _badge(self, surface, cx, cy, rad):
+        """How well it works on the foe, as a badge: green !! super, orange arrow not very, grey X none."""
+        color = self.EFFECT[self.effect][0]
+        pygame.draw.circle(surface, (16, 16, 20), (cx, cy + 2), rad + 2)
+        pygame.draw.circle(surface, color, (cx, cy), rad)
+        pygame.draw.circle(surface, WHITE, (cx, cy), rad, 2)
+        if self.effect == "super":
+            for dx in (-4, 4):
+                pygame.draw.line(surface, WHITE, (cx + dx, cy - 7), (cx + dx, cy + 1), 3)
+                pygame.draw.circle(surface, WHITE, (cx + dx, cy + 6), 2)
+        elif self.effect == "weak":
+            pygame.draw.polygon(surface, WHITE, [(cx - 6, cy - 4), (cx + 6, cy - 4), (cx, cy + 6)])
+        else:
+            pygame.draw.line(surface, WHITE, (cx - 5, cy - 5), (cx + 5, cy + 5), 3)
+            pygame.draw.line(surface, WHITE, (cx + 5, cy - 5), (cx - 5, cy + 5), 3)
+
+    def draw(self, surface):
+        """Elite Battle's move buttons (Jordan's pick, 11-21): a charcoal body with cut ends in the
+        move type's colour, its type tag, the name and the PP left. The one you're on fills with
+        its type colour; a same-type move has a gold line inside the frame. Power, accuracy and how
+        well it works are in MoveInfoPanel beside them (when the screen has one); without one, the
+        power and accuracy go under the name."""
+        if not self.visible:
+            return
+        from src.ui import theme
+        r = self.rect
+        on = self.is_on()
+        col = tuple(self.type_color)[:3]
+        c = max(8, min(18, r.h // 3))
+        pts = theme.chamfer(r, c)
+        theme.alpha_poly(surface, (0, 0, 0), theme.chamfer(r.move(4, 4), c), 120)
+        body = theme.mix((34, 34, 40), col, 0.55 if on else 0.14)
+        pygame.draw.polygon(surface, body, pts)
+        for k in range(r.x + c, r.right - c, 8):  # the fine lines of Elite Battle's buttons
+            pygame.draw.line(surface, theme.mix(body, (255, 255, 255), 0.06), (k, r.y + 6), (k, r.bottom - 7))
+        pygame.draw.polygon(surface, (255, 255, 255) if on else col, pts, 3)
+        if self.stab:  # same type as the user: a gold line inside the frame
+            pygame.draw.polygon(surface, GOLD, theme.chamfer(r.inflate(-10, -10), max(4, c - 4)), 2)
+        small = self.small_font
+        two_rows = not getattr(self, "info_panel", False) and r.h >= 2 * small.get_height() + 30
+        tag_h = small.get_height() + 8
+        cy = r.y + 8 + tag_h // 2 if two_rows else r.centery
+        x = r.x + c + 2
+        x += theme.type_tag(surface, self.type_name.upper(), col, small, x, cy - tag_h // 2, h=tag_h) + 12
+        right = r.right - c - 4
+        if self.pp:  # PP left / most (red when empty, gold when low)
+            have, most = self.pp
+            pcol = (255, 110, 100) if have <= 0 else (255, 214, 90) if have * 4 <= most else WHITE
+            right -= theme.shadow_text(surface, f"{have}/{most}", small, right, cy - small.get_height() // 2,
+                                       color=pcol, align="right").w + 8
+            pp = small.render("PP", False, theme.TEXT_DIM)
+            surface.blit(pp, (right - pp.get_width(), cy - pp.get_height() // 2))
+            right -= pp.get_width() + 12
+        if self.effect in self.EFFECT:
+            rad = max(10, min(13, r.h // 5))
+            self._badge(surface, right - rad, cy, rad)
+            right -= 2 * rad + 10
+        name = self.text.upper()
+        name_font = self.font if self.font.size(name)[0] <= right - x else small
+        theme.shadow_text(surface, name, name_font, x, cy - name_font.get_height() // 2)
+        if two_rows and self.detail:
+            text = self.detail.replace("Sure hit", "--")
+            theme.shadow_text(surface, text, small, r.x + c + 2, r.bottom - small.get_height() - 8, color=theme.TEXT_DIM)
+
+
+class MoveInfoPanel(UIElement):
+    """Beside the FIGHT menu's moves (Elite Battle's info box): the move you're on, its type,
+    power, accuracy and, in words, how well it works on the foe (for pre-readers too: the badge)."""
+
+    def __init__(self, rect, buttons, font, small_font):
+        super().__init__(rect)
+        self.buttons = buttons
+        self.font, self.small = font, small_font
+        self.last = None
+        for b in buttons:
+            b.info_panel = True
+
+    def handle_event(self, event):
+        return False
+
     def draw(self, surface):
         if not self.visible:
             return
+        from src.ui import theme
         r = self.rect
-        hover = r.collidepoint(pygame.mouse.get_pos())
-        dark = self._shade(self.type_color, 0.6)
-        pygame.draw.rect(surface, dark, r.move(0, 5), border_radius=14)
-        pygame.draw.rect(surface, self._shade(self.type_color, 1.12) if hover else self.type_color, r, border_radius=14)
-        pygame.draw.rect(surface, GOLD if self.stab else (255, 255, 255) if hover else (20, 20, 30), r,
-                         4 if self.stab else 3, border_radius=14)
-        pp_w = 0
-        if self.pp:  # PP left / most, top right (red when empty, gold when low)
-            have, top = self.pp
-            pp_txt = f"PP {have}/{top}"
-            pp_w = self.small_font.size(pp_txt)[0] + 12
-            col = (255, 110, 100) if have <= 0 else (255, 214, 90) if have * 4 <= top else WHITE
-            right = r.right - (50 if self.effect in self.EFFECT else 14)
-            Utils.draw_text_outline(surface, pp_txt, self.small_font, col, right, r.y + 9, align="right",
-                                    outline_color=dark, thickness=2)
-        name_font = self.font if self.font.size(self.text.upper())[0] <= r.w - 70 - pp_w else self.small_font
-        Utils.draw_text_outline(surface, self.text.upper(), name_font, WHITE, r.x + 16, r.y + 6, align="left",
-                                outline_color=dark, thickness=2)
-        pill_txt = self.type_name.upper()
-        tw = self.small_font.size(pill_txt)[0]
-        pill = pygame.Rect(r.x + 14, r.bottom - 27, tw + 16, 23)
-        pygame.draw.rect(surface, dark, pill, border_radius=13)
-        pygame.draw.rect(surface, WHITE, pill, 2, border_radius=13)
-        Utils.draw_text_outline(surface, pill_txt, self.small_font, WHITE, pill.centerx, pill.centery,
-                                outline_color=dark, thickness=1)
-        if self.detail:
-            room = r.right - 12 - (pill.right + 10)
-            if self.effect in self.EFFECT:
-                room -= self.small_font.size(self.EFFECT[self.effect][1])[0] + 18
-            # the longest wording that fits beside the type label and the effect tag
-            short = self.detail.replace("  Acc ", " ").replace("Sure hit", "--")
-            text = next((t for t in (self.detail, short, short.replace("Pow ", ""))
-                         if self.small_font.size(t)[0] <= room), short.replace("Pow ", ""))
-            Utils.draw_text_outline(surface, text, self.small_font, WHITE, pill.right + 10, pill.y + 1,
-                                    align="left", outline_color=dark, thickness=2)
-        if self.effect in self.EFFECT:
-            color, word = self.EFFECT[self.effect]
-            cx, cy, rad = r.right - 24, r.y + 20, 13
-            pygame.draw.circle(surface, (20, 20, 30), (cx, cy + 2), rad + 2)
-            pygame.draw.circle(surface, color, (cx, cy), rad)
-            pygame.draw.circle(surface, WHITE, (cx, cy), rad, 2)
-            if self.effect == "super":
-                for dx in (-4, 4):
-                    pygame.draw.line(surface, WHITE, (cx + dx, cy - 7), (cx + dx, cy + 1), 3)
-                    pygame.draw.circle(surface, WHITE, (cx + dx, cy + 6), 2)
-            elif self.effect == "weak":
-                pygame.draw.polygon(surface, WHITE, [(cx - 6, cy - 4), (cx + 6, cy - 4), (cx, cy + 6)])
+        moves = [b for b in self.buttons if isinstance(b, MoveButton) and b.visible]
+        cur = next((b for b in moves if b.is_on()), None) or self.last or (moves[0] if moves else None)
+        self.last = cur
+        pts = theme.chamfer(r, 12, tl=False, br=True, tr=False, bl=False)
+        theme.alpha_poly(surface, (0, 0, 0), [(x + 4, y + 4) for x, y in pts], 110)
+        pygame.draw.polygon(surface, (24, 24, 30), pts)
+        if cur is None:
+            pygame.draw.polygon(surface, theme.PANEL_BORDER, pts, 3)
+            return
+        col = tuple(cur.type_color)[:3]
+        pygame.draw.polygon(surface, col, pts, 3)
+        small = self.small
+        lh = small.get_height() + 6
+        y = r.y + 10
+        parts = [p for p in (cur.detail or "").split("  ") if p]
+        rows = []
+        for p in parts:
+            if p.startswith("Pow "):
+                rows.append(("Power", p[4:]))
+            elif p.startswith("Acc "):
+                rows.append(("Accuracy", p[4:]))
+            elif p == "Sure hit":
+                rows.append(("Accuracy", "Never misses"))
+            elif p == "Fixed":
+                rows.append(("Power", "Fixed"))
             else:
-                pygame.draw.line(surface, WHITE, (cx - 5, cy - 5), (cx + 5, cy + 5), 3)
-                pygame.draw.line(surface, WHITE, (cx + 5, cy - 5), (cx - 5, cy + 5), 3)
-            tag_w = self.small_font.size(word)[0] + 14
-            tag = pygame.Rect(r.right - tag_w - 10, r.bottom - 27, tag_w, 23)
-            pygame.draw.rect(surface, WHITE, tag, border_radius=13)
-            pygame.draw.rect(surface, color, tag, 2, border_radius=13)
-            Utils.draw_text_outline(surface, word, self.small_font, color, tag.centerx, tag.centery,
-                                    outline_color=WHITE, thickness=1)
+                rows.append(("Kind", p))
+        for label, value in rows[:3]:
+            theme.shadow_text(surface, label, small, r.x + 14, y, color=theme.TEXT_LABEL)
+            theme.shadow_text(surface, value, small, r.right - 14, y, align="right")
+            y += lh
+        if cur.effect in cur.EFFECT:
+            ecol, word = cur.EFFECT[cur.effect]
+            word = {"SUPER!": "SUPER EFFECTIVE", "WEAK": "NOT VERY EFFECTIVE"}.get(word, word)
+            f = small if small.size(word)[0] <= r.w - 60 else small
+            cur._badge(surface, r.x + 24, r.bottom - 20, 11)
+            theme.shadow_text(surface, word, f, r.x + 44, r.bottom - 20 - f.get_height() // 2,
+                              color=theme.mix(ecol, (255, 255, 255), 0.35))
 
 
 # [REF-0010: Math Battle UI]
@@ -269,10 +339,14 @@ class MathAnswerGrid(UIElement):
         for i, r in enumerate(self.button_rects):
             fill = (marks or {}).get(i)
             hover = fill is None and r.collidepoint(mouse)
-            lip = r.move(0, 5)
-            pygame.draw.rect(surface, theme.TEXTBOX_FRAME, lip, border_radius=14)
-            pygame.draw.rect(surface, fill or ((236, 244, 255) if hover else WHITE), r, border_radius=14)
-            pygame.draw.rect(surface, theme.TEXTBOX_FRAME, r, 4, border_radius=14)
+            # (the 11-21 look: charcoal answer plates with cut corners, big white digits; the right
+            # answer fills green, a wrong pick red)
+            pts = theme.chamfer(r, 14)
+            theme.alpha_poly(surface, (0, 0, 0), theme.chamfer(r.move(4, 5), 14), 120)
+            pygame.draw.polygon(surface, fill or ((62, 62, 74) if hover else (44, 44, 52)), pts)
+            pygame.draw.line(surface, (255, 255, 255) if fill else (84, 84, 98), (r.x + 14, r.y + 3), (r.right - 15, r.y + 3), 2)
+            pygame.draw.polygon(surface, (255, 255, 255) if hover else theme.TEXTBOX_ACCENT if not fill else theme.shade(fill, 0.5),
+                                pts, 3)
             color = WHITE if fill else theme.TEXT
             text = self.button_texts[i]
             font = self.font
@@ -337,8 +411,9 @@ class MathBattleUI(UIElement):
         from src.ui import theme
         theme.draw_textbox(surface, self.rect)
         card = self.question_rect.inflate(-28, -36)
-        pygame.draw.rect(surface, (236, 242, 252), card, border_radius=14)
-        pygame.draw.rect(surface, theme.TEXTBOX_ACCENT, card, 3, border_radius=14)
+        pygame.draw.polygon(surface, (22, 22, 28), theme.chamfer(card, 14, tl=False))
+        pygame.draw.polygon(surface, theme.TEXTBOX_ACCENT, theme.chamfer(card, 14, tl=False), 3)
+        theme.slashes(surface, card.x + 12, card.y + 10, 12, theme.TEXTBOX_ACCENT)
         if self.feedback:
             self._draw_feedback(surface, card)
             return
@@ -383,7 +458,7 @@ class MathBattleUI(UIElement):
                     pts.append((x + math.cos(a) * rad, y + math.sin(a) * rad))
                 pygame.draw.polygon(surface, GOLD, pts)
         font = self.game.assets.fonts["dialog"]
-        color = (36, 140, 64) if fb["correct"] else theme.TEXT
+        color = (110, 230, 130) if fb["correct"] else theme.TEXT
         from src.ui.dialogue import wrap_text
         rows = wrap_text(fb["text"], font, card.width - 30)
         lh = font.get_linesize() + 6

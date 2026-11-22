@@ -108,43 +108,60 @@ class TrainerCard:
                 ("PLAY TIME", f"{secs // 3600}:{secs // 60 % 60:02d}"), ("CHAMPION TITLES", str(f["titles"]))]
 
     def draw(self, screen, c):
-        """The card in rect c (made for 764 x 448)."""
-        f, accent = self.game.assets.fonts, self.accent
-        pygame.draw.rect(screen, theme.shade(accent, 0.55), c.move(0, 6), border_radius=22)
-        pygame.draw.rect(screen, accent, c, border_radius=22)
-        pygame.draw.rect(screen, theme.shade(accent, 1.25), c, 4, border_radius=22)
-        Utils.draw_text_outline(screen, "TRAINER CARD", f["button"], WHITE, c.x + 28, c.y + 34, align="left",
-                                outline_color=theme.shade(accent, 0.45), thickness=3)
+        """The card in rect c (made for 764 x 448): Solar Eclipse's glossy card in the region's colour,
+        a faint ring watermark and a light streak, the facts on dark rows, the trainer on the right."""
+        f, accent = self.game.assets.fonts, tuple(self.accent)[:3]
+        cut = 18
+        theme.alpha_poly(screen, (0, 0, 0), theme.chamfer(c.move(6, 8), cut), 120)
+        pygame.draw.polygon(screen, theme.shade(accent, 0.45), theme.chamfer(c, cut))
+        body = c.inflate(-8, -8)
+        pygame.draw.polygon(screen, accent, theme.chamfer(body, cut - 3))
+        # the gloss: a lighter top half, a light diagonal streak, a faint ring
+        top = pygame.Surface(body.size, pygame.SRCALPHA)
+        pygame.draw.polygon(top, (255, 255, 255, 34), [(0, 0), (body.w, 0), (body.w, body.h // 3), (0, body.h // 2)])
+        pygame.draw.polygon(top, (255, 255, 255, 40), [(body.w * 0.62, 0), (body.w * 0.7, 0), (body.w * 0.48, body.h),
+                                                       (body.w * 0.40, body.h)])
+        pygame.draw.circle(top, (255, 255, 255, 22), (body.w // 2, body.h // 2 + 10), body.h // 3, 18)
+        screen.blit(top, body.topleft)
+        pygame.draw.polygon(screen, theme.mix(accent, (255, 255, 255), 0.5), theme.chamfer(body, cut - 3), 2)
+        theme.slashes(screen, c.x + 24, c.y + 22, 22, (255, 255, 255))
+        Utils.draw_text_outline(screen, "TRAINER CARD", f["button"], WHITE, c.x + 74, c.y + 34, align="left",
+                                outline_color=theme.shade(accent, 0.4), thickness=3)
         Utils.draw_text_outline(screen, f"IDNo. {self.facts['trainer_id']:05d}", f["label"], WHITE, c.right - 28,
-                                c.y + 34, align="right", outline_color=theme.shade(accent, 0.45), thickness=2)
+                                c.y + 34, align="right", outline_color=theme.shade(accent, 0.4), thickness=2)
 
         inner = pygame.Rect(c.x + 18, c.y + 64, c.w - 36, c.h - 82)
-        pygame.draw.rect(screen, (248, 248, 252), inner, border_radius=16)
-        # The facts on lined rows, the trainer on the right.
-        rows = pygame.Rect(inner.x + 22, inner.y + 16, inner.w - 300, 0)
+        # The facts on dark rows, the trainer on the right.
+        rows = pygame.Rect(inner.x + 4, inner.y + 8, inner.w - 286, 0)
         for k, (label, value) in enumerate(self.rows()):
             y = rows.y + k * 50
-            pygame.draw.line(screen, (214, 218, 232), (rows.x, y + 42), (rows.right, y + 42), 2)
-            theme.shadow_text(screen, label, f["label"], rows.x, y + 10, color=(110, 116, 140))
-            vf = f["s_med"] if f["s_med"].size(value)[0] <= rows.w - 190 else f["label"]
-            theme.shadow_text(screen, value, vf, rows.right, y + 6, align="right")
-        spot = pygame.Rect(inner.right - 262, inner.y + 12, 246, 262)
-        pygame.draw.rect(screen, theme.shade(accent, 1.6) if sum(accent) < 400 else (236, 238, 246), spot,
-                         border_radius=14)
+            row = pygame.Rect(rows.x, y, rows.w, 44)
+            theme.alpha_poly(screen, (10, 10, 16), theme.chamfer(row, 8, tl=False, br=True, tr=False, bl=False), 150)
+            pygame.draw.rect(screen, (255, 255, 255), (row.x, row.y, 5, row.h))
+            theme.shadow_text(screen, label, f["label"], row.x + 18, y + 22 - f["label"].get_height() // 2,
+                              color=theme.mix(accent, (255, 255, 255), 0.7))
+            vf = f["s_med"] if f["s_med"].size(value)[0] <= rows.w - 200 else f["label"]
+            theme.shadow_text(screen, value, vf, row.right - 14, y + 22 - vf.get_height() // 2, align="right")
+        spot = pygame.Rect(inner.right - 262, inner.y + 8, 258, 262)
+        theme.alpha_poly(screen, (10, 10, 16), theme.chamfer(spot, 14, tl=False), 120)
+        pygame.draw.polygon(screen, theme.mix(accent, (255, 255, 255), 0.4), theme.chamfer(spot, 14, tl=False), 2)
         if self.trainer_img:
             screen.blit(self.trainer_img, self.trainer_img.get_rect(midbottom=(spot.centerx, spot.bottom - 6)))
 
         # The region's badges along the bottom.
-        strip = pygame.Rect(inner.x + 14, inner.bottom - 84, inner.w - 28, 72)
-        pygame.draw.rect(screen, theme.shade(accent, 0.5), strip, border_radius=14)
+        strip = pygame.Rect(inner.x + 4, inner.bottom - 84, inner.w - 8, 76)
+        pygame.draw.polygon(screen, (24, 24, 30), theme.chamfer(strip, 12))
+        pygame.draw.polygon(screen, theme.shade(accent, 0.6), theme.chamfer(strip, 12), 2)
         if not self.badges:
             Utils.draw_text_outline(screen, "No Gym badges in this region", f["label"], WHITE, strip.centerx,
-                                    strip.centery, outline_color=theme.shade(accent, 0.3), thickness=2)
+                                    strip.centery, outline_color=(10, 10, 14), thickness=2)
             return
         step = strip.w / len(self.badges)
         for i, (sprite, earned) in enumerate(self.badges):
             cx = int(strip.x + step * (i + 0.5))
-            pygame.draw.circle(screen, theme.shade(accent, 0.35), (cx, strip.centery), 30)
+            pygame.draw.circle(screen, (40, 40, 48), (cx, strip.centery), 30)
+            pygame.draw.circle(screen, theme.mix(accent, (255, 255, 255), 0.3) if earned else (60, 60, 70),
+                               (cx, strip.centery), 30, 2)
             if sprite:
                 img = sprite.copy()
                 if not earned:
@@ -157,7 +174,8 @@ class TrainerCard:
         cell = w // 6
         for i in range(6):
             r = pygame.Rect(x + i * cell, y, cell - 6, cell - 6)
-            pygame.draw.rect(screen, theme.shade(theme.PANEL_BORDER, 0.8), r, border_radius=10)
+            pygame.draw.polygon(screen, (24, 24, 30), theme.chamfer(r, 8))
+            pygame.draw.polygon(screen, theme.PANEL_EDGE, theme.chamfer(r, 8), 1)
             icon = self.party_icons[i] if i < len(self.party_icons) else None
             if icon:
                 screen.blit(icon, icon.get_rect(center=r.center))

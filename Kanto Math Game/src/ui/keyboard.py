@@ -203,4 +203,5 @@ class KeyboardNav:
             return
         self.focus = (cur[0], cur[1])
         pulse = 2 + int(2 * (1 + math.sin(pygame.time.get_ticks() / 160)))
-        pygame.draw.rect(surface, HIGHLIGHT, cur[1].inflate(10 + pulse, 10 + pulse), 5, border_radius=14)
+        from src.ui import theme  # (the 11-21 look: the cut-corner frame)
+        pygame.draw.polygon(surface, HIGHLIGHT, theme.chamfer(cur[1].inflate(10 + pulse, 10 + pulse), 14), 5)

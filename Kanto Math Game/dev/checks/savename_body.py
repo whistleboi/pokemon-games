@@ -20,7 +20,7 @@ def key(ch, k=0):
 
 print("1) the font check")
 check(Utils.typable(g, "Ash é-1") == "Ash é-1", "letters, digits, space, é, - are kept")
-check(Utils.typable(g, "\U0001F600€☃ß") == "", "an emoji, €, ☃, ß (no glyph in the font) are dropped")
+check(Utils.typable(g, "\U0001F600€✓") == "", "an emoji, €, ✓ (no glyph in the font) are dropped")  # (Power Clear, 11-21: it has ß, ☃)
 
 print("2) the save screen's name follows the file")
 tmp = tempfile.mkdtemp(prefix="kmg_savename_")

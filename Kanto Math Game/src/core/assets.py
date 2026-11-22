@@ -505,6 +505,21 @@ class AssetManager:
         return None
 
     def _load_font(self, size, bold=False):
+        # The UI restyle (11-21, after Solar Eclipse): Power Clear drawn as a pixel font
+        # (src/ui/fonts.py PixelFont); the old Pokemon GSC font below stays as the backup.
+        pixel = Utils.get_actual_path(os.path.join(self.assets_dir, "fonts"), "power_clear_bold.ttf")
+        if os.path.exists(pixel):
+            try:
+                from src.ui.fonts import PixelFont
+                try:
+                    fallback = pygame.font.SysFont("Arial", size, bold=bold)
+                except Exception:
+                    fallback = pygame.font.Font(None, size)
+                font = PixelFont(pixel, size, fallback=fallback)
+                font.render("Test", False, WHITE)
+                return font
+            except Exception as e:
+                print(f"Failed to load font {pixel}: {e}")
         primary_font = None
         candidates = [  # the rebuilt font has a proper accented e (Pokémon)
             Utils.get_actual_path(self.assets_dir, "pokemon_gsc_rebuilt.ttf"),

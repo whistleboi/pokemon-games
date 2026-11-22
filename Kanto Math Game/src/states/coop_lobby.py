@@ -258,7 +258,7 @@ class CoopState(GameState):
         for i, f in enumerate(self.fields):
             r = f["rect"]
             self._say(f["label"], 90, r.y + 12)
-            pygame.draw.rect(screen, (250, 250, 250), r, border_radius=8)
+            pygame.draw.rect(screen, (24, 24, 30), r, border_radius=8)
             pygame.draw.rect(screen, theme.RUN if i == self.active else theme.TEXTBOX_FRAME, r, 4, border_radius=8)
             shown = "*" * len(f["text"]) if f["key"] == "password" and not self.reveal else f["text"]
             cursor = "_" if i == self.active and pygame.time.get_ticks() // 500 % 2 == 0 else ""

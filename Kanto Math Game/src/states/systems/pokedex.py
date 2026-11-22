@@ -88,7 +88,7 @@ NAME_GROUPS = ("ABC", "DEF", "GHI", "JKL", "MNO", "PQR", "STU", "VWX", "YZ")
 HEIGHTS = (0, 0.5, 1, 1.5, 2, 3, 5, 10, 20, 100)
 WEIGHTS = (0, 5, 10, 25, 50, 100, 200, 500, 1000, 10000)
 UNOWN_FORMS = ["normal"] + list("bcdefghijklmnopqrstuvwxyz") + ["exclamation", "question"]
-BASE, SHADOW = (88, 88, 80), (168, 184, 184)
+BASE, SHADOW = (248, 248, 248), (20, 20, 26)   # (the dark look: light text, dark shadow)
 WHITE_T, BLACK_T = (248, 248, 248), (0, 0, 0)
 ROW_H, ROWS_SHOWN = 32, 10   # the list's rows (Journeys' sizes)
 
@@ -154,8 +154,10 @@ class DexFrame:
     def img(self, name):
         if name not in self._imgs:
             try:
-                self._imgs[name] = pygame.image.load(os.path.join(self.game.assets.assets_dir, "pokedex",
-                                                                  name + ".png")).convert_alpha()
+                base = os.path.join(self.game.assets.assets_dir, "pokedex")
+                dark = os.path.join(base, "dark", name + ".png")  # (the 11-21 dark look: dev/builders/restyle_pokedex.py)
+                self._imgs[name] = pygame.image.load(dark if os.path.exists(dark) else
+                                                     os.path.join(base, name + ".png")).convert_alpha()
             except (pygame.error, FileNotFoundError):
                 self._imgs[name] = None
         return self._imgs[name]
@@ -181,13 +183,8 @@ class DexFrame:
             screen.fill((60, 60, 70))
             return
         x0, y0 = self.p(0, 0)
-        if x0 > 0:  # the sides: a dark grid
-            screen.fill((52, 54, 64))
-            cell = int(16 * self.k)
-            for x in range(x0 % cell, self.game.width, cell):
-                pygame.draw.line(screen, (64, 66, 78), (x, 0), (x, self.game.height))
-            for y in range(y0 % cell, self.game.height, cell):
-                pygame.draw.line(screen, (64, 66, 78), (0, y), (self.game.width, y))
+        if x0 > 0:  # the sides: the menus' drifting grid
+            theme.grid_background(screen)
         screen.blit(pic, (x0, y0))
 
     def text(self, screen, s, x, y, align=0, color=BASE, shadow=SHADOW, font=None):
@@ -680,8 +677,8 @@ class PokedexState(GameState):
         screen.blit(title, title.get_rect(center=(box.centerx, box.y + int(18 * fr.k))))
         for i, (v, r) in enumerate(cells):
             on = i == self.picking
-            pygame.draw.rect(screen, (255, 236, 150) if on else (248, 248, 248), r, border_radius=int(5 * fr.k))
-            pygame.draw.rect(screen, (24, 24, 24) if on else (168, 184, 184), r, max(2, int(fr.k)),
+            pygame.draw.rect(screen, (150, 40, 40) if on else (52, 52, 60), r, border_radius=int(5 * fr.k))
+            pygame.draw.rect(screen, (255, 255, 255) if on else (12, 12, 16), r, max(2, int(fr.k)),
                              border_radius=int(5 * fr.k))
             label = f.render(self.view_title(v), True, BASE)
             if label.get_width() > r.w - 12:
@@ -894,6 +891,7 @@ class DexEntryState(GameState):
             if os.path.isfile(path):
                 try:
                     foot = pygame.image.load(path).convert_alpha()
+                    foot.fill((236, 236, 240, 0), special_flags=pygame.BLEND_RGBA_ADD)  # (light on the dark page)
                 except pygame.error:
                     foot = None
             if foot is not None:

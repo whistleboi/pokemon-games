@@ -349,7 +349,7 @@ class PokeNavState(GameState):
             if p_id in caught_ids and self.game.assets.ui_ball:
                 screen.blit(pygame.transform.scale(self.game.assets.ui_ball, (20, 20)), (rect.right - 34, rect.y + 10))
             bar = pygame.Rect(rect.x + 74, rect.bottom - 20, rect.w - 74 - 90, 10)
-            pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=5)
+            pygame.draw.rect(screen, (22, 22, 28), bar, border_radius=5)
             pygame.draw.rect(screen, theme.BAG if rare else theme.POKEMON,
                              (bar.x, bar.y, max(4, int(bar.w * min(1.0, chance / 50))), bar.h), border_radius=5)
             theme.shadow_text(screen, f"{chance}%", f["label"], rect.right - 16, rect.bottom - 30, align="right")
