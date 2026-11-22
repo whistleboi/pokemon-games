@@ -807,7 +807,7 @@ class DungeonState(OverworldBattles, PlayState):
         story = game.story_manager
         self.area_key = story.current_area_key
         _ferry = (game.loader.area_data.get("STORY_PROGRESSION", {}).get(self.area_key) or {}).get("ferry") or {}
-        if story.last_area_key in _ferry:   # (a ferry: the port you boarded at, so its sailor still knows where you're bound after a reload)
+        if getattr(story, "last_area_key", None) in _ferry:   # (a ferry: the port you boarded at, so its sailor still knows where you're bound after a reload; a loaded save: none)
             story.story_flags[f"ferry_from_{self.area_key}"] = story.last_area_key
         self.recipe = recipe_for(game, self.area_key)
         if self.recipe.get("dark") and __import__("src.world.hms", fromlist=["usable"]).usable(story, "HM_FLASH"):  # (Flash lights a dark cave)
@@ -2170,8 +2170,10 @@ class DungeonState(OverworldBattles, PlayState):
             names = [self._zone_name(i) for i in range(index * per, min(len(self.zones), (index + 1) * per))]
             return " / ".join(names) if names else f"{index + 1}F"
         names = ((self.recipe.get("art") or {}).get("floor_names") or []) if hasattr(self, "recipe") else []
-        if index < len(names):  # (our map's own: Rock Tunnel's 1F, B1F, 1F)
+        if index < len(names) and names[index]:  # (our map's own: Rock Tunnel's 1F, B1F, 1F)
             return names[index]
+        if index < len(names):  # (a route's outdoors, with its rooms as floors: "To Route 2" from the Forest Gate, 11-21)
+            return self._exit_label(self.area_key)
         return f"B{index}F" if index and self._descending() else f"{index + 1}F"
 
     def _descending(self):
@@ -2269,6 +2271,8 @@ class DungeonState(OverworldBattles, PlayState):
                      or [f"A {name} is sound asleep, right in the way!", "It won't budge. Maybe a sound would wake it..."])
             return
         same = [t for t, v in self.run.floor.exits.items() if v == target]
+        _hit = getattr(self, "_guide_hit", None)   # (did the Journal's marker point this way? None: there was no marker; 11-21)
+        self.game.story_manager._guide_left = (self.area_key, target, None if not _hit else tuple(_hit[0]) in same)
         _to = (self._here_art() or {}).get("edge_to", {}).get("%d,%d" % tuple(self.run.player))
         self.game.arrive_edge = (self.area_key, target, tuple(_to)) if _to else None  # (out by an edge tile: in at its partner there)
         core.ENTRANCE_INDEX = same.index(tuple(self.run.player)) if tuple(self.run.player) in same else 0
@@ -5044,6 +5048,15 @@ class DungeonState(OverworldBattles, PlayState):
         if not hasattr(run, "_guide_entry"):  # (where you came in, and what the Journal said then)
             run._guide_entry = (start, mid if getattr(self, "steps", 0) <= 1 else None)   # (only where you really came in: worked
             #  out later, after walking about under another mission's step marker, it isn't a door to avoid: Fairchild, 11-17)
+            left = getattr(story, "_guide_left", None)   # (11-21: in by a door the marker didn't point to, against the way on:
+            if left and left[:2] == (getattr(story, "last_area_key", None), self.area_key) and left[2] is False:   # backtracking,
+                run._guide_entry = (start, None)   # so the way you came in by may well be the way on: Viridian Forest's north gate)
+            first = story.__dict__.setdefault("_guide_entries", {})   # (11-21: the FIRST way in on this mission, kept while the
+            #  game runs: out of Viridian Forest's north gate and back in, the way on is still north, not back south)
+            if run._guide_entry[1] and getattr(story, "last_area_key", None):   # (walked in, not a load)
+                run._guide_entry = first.setdefault((self.area_key, mid), run._guide_entry)
+            elif not run._guide_entry[1]:
+                run._guide_entry = first.get((self.area_key, mid), run._guide_entry)
         reach = self._step_route(start, frozenset(), None, reach=True, loose=True)
         outs = {}
         for i, x, y in reach:
