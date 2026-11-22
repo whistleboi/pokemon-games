@@ -13460,6 +13460,9 @@
     },
     "GATEON_PORT:Herbalist": {
       "sheet": "orre_npc_10.png"
+    },
+    "PYRITE_TOWN:HM Fly": {
+      "item": "HM_FLY"
     }
   },
   "townsperson": "NPC 17.png",

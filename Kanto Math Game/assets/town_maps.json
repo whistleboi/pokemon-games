@@ -284733,7 +284733,7 @@
    "cccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccADDAcccccccccccccccc",
    "cccccccccccccccccccccc....c..ccccccccccccccccc",
-   "cccccccccccccccccccccc.......c.ccccccccccccccc",
+   "cccccccccccccccccccccc..N....c.ccccccccccccccc",
    "cccccccccccccccccccccc..........cccccccccccccc",
    "ccccccccccccccccccccc...N........ccccccccccccc",
    "cccccccccccccccccccc...............ccccccccccc",
@@ -284829,6 +284829,21 @@
    "K": "cycle"
   },
   "people": [
+   {
+    "text": "HM Fly",
+    "action": "EVENT",
+    "flag_condition": "not orre_hm_fly",
+    "event": {
+     "flag": "orre_hm_fly",
+     "gift_item": {
+      "HM_FLY": 1
+     },
+     "lines": [
+      "Someone dropped a disc by the Colosseum's steps. It's HM Fly!",
+      "Win the Pyrite Colosseum's badge and your Pokemon can fly you to any town you've been to."
+     ]
+    }
+   },
    {
     "text": "Thug",
     "action": "EVENT",
@@ -288048,22 +288063,22 @@
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccc.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccc.N.cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccc....ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccc...cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccccccccccccccc...cccccccccccccc",
-   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccN..cccccccccccccc",
-   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccccccccc..cccccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccADAccc...cccccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccc.ccccc..cccccccccccccc",
-   "ccccccccc..cccccc..ccccccccccccccccccccccccccc..ccccc.ccccc..cccccccccccccc",
-   "ccccccccc..cccccc..ccccccccccccccccccccccccccc..ccccc.ccccc..cccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccN.cccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
+   "ccccccccc.ccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
+   "cccccccc.N.cccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
+   "cccccccc....ccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
+   "cccccccc...cccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
+   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
+   "cccccccc..cccccccccccccccccccccccccccccccccccccccccccccccc.....cccccccccccc",
+   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccc",
+   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccc",
+   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccccccccc....cccccccccccc",
+   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccADAccc.....cccccccccccc",
+   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccc.ccccc....cccccccccccc",
+   "ccccccccc..cccccc..ccccccccccccccccccccccccccc..ccccc.ccccc....cccccccccccc",
+   "ccccccccc..cccccc..ccccccccccccccccccccccccccc..ccccc.ccccc....cccccccccccc",
    "ccccccccc..cccccc..ccccccccccccccccccccccccccc..cccc...cccc..cccccccccccccc",
    "ccccccccc..cccc....ccccccccccccccccccccccccccc.....N.........cccccccccccccc",
    "ccccccccc..cccc....ccccccccccccccccccccccccccc...N...........cccccccccccccc",
@@ -288112,7 +288127,6 @@
    "H": "cycle"
   },
   "people": [
-   "door:harbor",
    {
     "text": "Wanderer Miror B.",
     "action": "EVENT",
@@ -288122,7 +288136,7 @@
       {
        "flag": "xd_miror_last",
        "lines": [
-        "Miror B.: Ooh, look who found me! Every Shadow Pokemon in Orre, snagged... all but one.",
+        "Miror B. strikes a pose at the lighthouse door. Miror B.: Ooh, look who found me! Every Shadow Pokemon in Orre, snagged... all but one.",
         "Miror B.: Remember the Key Lair? While you were busy, I took the best one for myself. Dragonite!",
         "Miror B.: It's the last Shadow Pokemon there is. Want it? Then out-dance me!"
        ],
@@ -288207,6 +288221,7 @@
      ]
     }
    },
+   "door:harbor",
    "The Cipher Rumor",
    {
     "text": "Navigator Berk",
@@ -288986,6 +289001,18 @@
    {
     "kind": "picture",
     "f": "orre_top/80.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     75,
+     70
+    ]
+   },
+   {
+    "kind": "picture",
+    "f": "orre_ride/gateon_lighthouse.png",
     "at": [
      0,
      0
@@ -355151,21 +355178,21 @@
      "cccccccccccc...ccccccccccccccccccccccccc...ccccc",
      "c...c....c..........c.......cc.....c...........c",
      "c......cc........c......c...cc.........c.......c",
-     "c.c....cc...............X...cc....c...........cc",
+     "c.c....cc...................cc....c...........cc",
      "c.ccc.c............c..........c................c",
      "c.....c........................................c",
      "c..............................................c",
      "c..cc...c..........cccccc................c.....c",
      "c..cc..............cccccc....c.................c",
      "c........................ccc..........c....cc..c",
-     "c.c.....X........c.......ccc...............cc..c",
-     "<........................X.....................c",
+     "c.c..............c.......ccc...............cc..c",
+     "<..............................................c",
      "<..............................................>",
-     "c.c....NN.N..............c.....................>",
+     "c.c....N..N..............c.....................>",
      "c................c....cc...................cc..c",
-     "c.....c...............cc.....c.............cc..c",
-     "c..cc..................c.................c.....c",
-     "c..cc....c.......c.....ccc..c..................c",
+     "c......ccNc...........cc.....c.............cc..c",
+     "c..cc..cccc............c.................c.....c",
+     "c..cc............c.....ccc..c..................c",
      "c.....................................cc...c...c",
      "c....c...................c............cc.......c",
      "c..............................................c",
@@ -355185,14 +355212,10 @@
     "parts": true,
     "people": [
      "SNAG SHADOW POKEMON",
-     "door:cycle",
-     "SNAG AGAIN"
+     "SNAG AGAIN",
+     "door:cycle"
     ],
-    "trainer_spots": [
-     "Togepi",
-     "Shady Guy",
-     "Espeon | Umbreon"
-    ],
+    "trainer_spots": [],
     "roofs": {
      "_picture": {
       "f": "orre_ground/desert_trail_1.png",
@@ -355327,10 +355350,7 @@
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
-   "door:cycle": 0,
-   "Togepi": 0,
-   "Shady Guy": 0,
-   "Espeon | Umbreon": 0
+   "door:cycle": 0
   },
   "theme": "tunnel"
  }

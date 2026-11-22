@@ -874,7 +874,7 @@ COLOSSEUM_DESK = {"text": "Colosseum desk", "action": "EVENT", "condition": "bea
 
 MIROR_LAST = {"text": "Wanderer Miror B.", "action": "EVENT", "condition": "xd_miror_last_due", "event": {"stages": [
     {"flag": "xd_miror_last",
-     "lines": ["Miror B.: Ooh, look who found me! Every Shadow Pokemon in Orre, snagged... all but one.",
+     "lines": ["Miror B. strikes a pose at the lighthouse door. Miror B.: Ooh, look who found me! Every Shadow Pokemon in Orre, snagged... all but one.",
                "Miror B.: Remember the Key Lair? While you were busy, I took the best one for myself. Dragonite!",
                "Miror B.: It's the last Shadow Pokemon there is. Want it? Then out-dance me!"],
      "battle": T("xd:Story:221", music="orre/miror_b_battle", is_boss_battle=True, dialogue={"player_won": [
@@ -943,7 +943,15 @@ def _xd8b(maps):
         g = maps["ORRE_COLOSSEUM"]["rooms"]["gym"]
         _set_people(g, {_free_spot(g, (8, 18)): COLOSSEUM_DESK})
     if "GATEON_PORT" in maps:
-        _set_people(maps["GATEON_PORT"], {(58, 27): MIROR_LAST})   # (the north end of the harbour's east wall: XD's tower top)
+        g = maps["GATEON_PORT"]   # (Jordan 11-21: a lighthouse at the north end of the east harbour wall - the slim white one from
+        #  the Journeys Johto sheet, assets/tiles/orre_ride/lighthouse.png, 3 x 8 tiles; Miror B. waits at its door: XD's tower)
+        #  It stands on the sandy wall's north tip (x60-62, rows 10-17: a full-map layer, orre_ride/gateon_lighthouse.png); the wall
+        #  itself (x61-62, rows 18-33) is opened to walk up to it.
+        for y in range(18, 34):
+            row = g["art"][y]
+            g["art"][y] = row[:61] + "".join("." if row[x] == "c" else row[x] for x in (61, 62)) + row[63:]
+        g["overheads"] = list(g.get("overheads") or []) + [{"kind": "picture", "f": "orre_ride/gateon_lighthouse.png", "at": [0, 0], "size": [75, 70]}]
+        _set_people(g, {(61, 18): MIROR_LAST})
     if "AGATE_VILLAGE" in maps:
         a = maps["AGATE_VILLAGE"]
         rooms = a["rooms"]
@@ -1159,6 +1167,20 @@ def _xd8d(maps):
         r = maps["GATEON_PORT"]["rooms"]["house_small"]
         _set_people(r, {_spot(r): HERBALIST})
 
+# ================================================================== Fly in Orre (Jordan 11-21: neither game has it)
+# HM Fly lies by the Pyrite Colosseum's steps, so it's found before the first badge; it flies once the Pyrite Badge is
+# won (src/world/hms.py USE_BADGE["ORRE"]).
+HM_FLY_PYRITE = {"text": "HM Fly", "action": "EVENT", "flag_condition": "not orre_hm_fly", "event": {
+    "flag": "orre_hm_fly", "gift_item": {"HM_FLY": 1},
+    "lines": ["Someone dropped a disc by the Colosseum's steps. It's HM Fly!",
+              "Win the Pyrite Colosseum's badge and your Pokemon can fly you to any town you've been to."]}}
+
+
+def _orre_fly(maps):
+    if "PYRITE_TOWN" in maps:
+        m = maps["PYRITE_TOWN"]
+        _set_people(m, {_spot(m, (24, 23)): HM_FLY_PYRITE})
+
 
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
@@ -1178,6 +1200,7 @@ def apply(maps):
     _xd8b(maps)
     _col8c(maps)
     _xd8d(maps)
+    _orre_fly(maps)
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])

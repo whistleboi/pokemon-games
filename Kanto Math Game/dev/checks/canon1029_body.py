@@ -1105,7 +1105,7 @@ story.player_team = [_mon(25, 47, ["TACKLE"]), _mon(150, 61, ["TACKLE"])]
 check(_bf.level(story) == 63, f"it's as strong as your ace: Lv {_bf.level(story)}")
 check(_ow28.league_rematch_levels(story, [55, 58, 60]) == [70, 70, 70], "rematches: everyone at least Lv 70")
 story.player_team = [_mon(150, 88, ["TACKLE"])]
-check(_ow28.league_rematch_levels(story, [72, 75, 78]) == [82, 85, 88], "and up to your ace once it's above 80")
+check(_ow28.league_rematch_levels(story, [72, 75, 78]) == [72, 75, 78], "and never raised to your ace (Jordan 11-21)")
 story.player_team = [_mon(150, 60, ["TACKLE"])]
 check(_lr28.redo_level(story) == 80, "the League Redo: at least Lv 80")
 story.player_team = [_mon(150, 93, ["TACKLE"])]

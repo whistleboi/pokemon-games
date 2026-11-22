@@ -75,17 +75,61 @@ class PurifyChamberState(GameState):
         self.view, self.note = i, ""
         self._build()
 
-    def _pick(self, then):
+    def _pick(self, then, want=None):
+        """Pick a Pokemon from your party or the PC (Jordan 11-21: PC too). then(src, mon): src ("party", i) or ("pc", slot)."""
+        from src.states.systems.pick_list import PickListState
+        story = self.game.story_manager
+        has_pc = any(p is not None and (want is None or want(p)) for p in story.pc_pokemon)
+
+        def where(v):
+            if v == "party":
+                self._pick_party(then)
+            elif v == "pc":
+                self._pick_pc(then, want, 0)
+        if not has_pc:
+            self._pick_party(then)
+            return
+        self.game.change_state(PickListState(self.game, self, "FROM WHERE?", [("YOUR PARTY", "party"), ("THE PC", "pc")], where))
+
+    def _pick_party(self, then):
         from src.states.systems import PokemonPartyMenuState
 
         def chose(i):
             self.game.change_state(self)
             team = self.game.story_manager.player_team
             if 0 <= i < len(team) and team[i]:
-                then(i, team[i])
+                then(("party", i), team[i])
 
         self.game.change_state(PokemonPartyMenuState(self.game, previous_state=self, context="use_item", on_select=chose,
                                                      on_cancel=lambda: self.game.change_state(self)))
+
+    PC_PAGE = 10
+
+    def _pick_pc(self, then, want, page):
+        """The PC's Pokemon that fit, ten to a page (MORE for the next)."""
+        from src.states.systems.pick_list import PickListState
+        story = self.game.story_manager
+        can = [(i, p) for i, p in enumerate(story.pc_pokemon) if p is not None and getattr(p, "id", 0) and (want is None or want(p))]
+        part = can[page * self.PC_PAGE:(page + 1) * self.PC_PAGE]
+        rows = [(f"{p.display_name.upper()} Lv{p.level}", i) for i, p in part]
+        if (page + 1) * self.PC_PAGE < len(can):
+            rows.append(("MORE...", "__more"))
+
+        def chose(v):
+            if v == "__more":
+                self._pick_pc(then, want, page + 1)
+            elif v is not None:
+                then(("pc", v), story.pc_pokemon[v])
+        self.game.change_state(PickListState(self.game, self, f"FROM THE PC ({page + 1})", rows, chose))
+
+    def _leave(self, src):
+        """The picked Pokemon leaves where it was (it's in the chamber now)."""
+        story = self.game.story_manager
+        kind, i = src if isinstance(src, tuple) else ("party", src)
+        if kind == "pc":
+            story.pc_pokemon[i] = None
+            return True
+        return self._leave_party(i)
 
     def _leave_party(self, i):
         team = self.game.story_manager.player_team
@@ -98,26 +142,26 @@ class PurifyChamberState(GameState):
     def _shadow_in(self):
         story = self.game.story_manager
 
-        def go(i, mon):
+        def go(src, mon):
             if not story.is_shadow(mon):
                 self.note = "Only a Shadow Pokemon goes in the middle."
             else:
                 said = pc.put_shadow(self.game, self.view, mon)
                 if said:
                     self.note = " ".join(said)
-                elif self._leave_party(i):
+                elif self._leave(src):
                     self.note = f"{self._name(story._pokemon_record(mon))} went into the chamber."
                     if pc.is_open(pc.sets(story)[self.view]["shadow"]):
                         self.note = "The nine sets' flow poured into XD001 - its heart opened at once!"
                 else:
                     pc.sets(story)[self.view]["shadow"] = None
             self._build()
-        self._pick(go)
+        self._pick(go, want=story.is_shadow)
 
     def _ring_in(self):
         story = self.game.story_manager
 
-        def go(i, mon):
+        def go(src, mon):
             if story.is_shadow(mon):
                 self.note = "Shadow Pokemon go in the middle, not the ring."
             elif getattr(mon, "is_egg", False) or getattr(mon, "unhatched", False):
@@ -126,39 +170,38 @@ class PurifyChamberState(GameState):
                 said = pc.put_ring(self.game, self.view, mon)
                 if said:
                     self.note = " ".join(said)
-                elif self._leave_party(i):
+                elif self._leave(src):
                     self.note = f"{mon.display_name.upper()} joined the ring."
                 else:
                     pc.sets(story)[self.view]["ring"].pop()
             self._build()
-        self._pick(go)
+        self._pick(go, want=lambda p: not story.is_shadow(p) and not getattr(p, "is_egg", False))
+
+    def _home(self, mon):
+        """Back to the party, or to the PC when the party's full. Returns where it went."""
+        story = self.game.story_manager
+        if len([p for p in story.player_team if p]) < 6:
+            story.player_team.append(mon)
+            return "your party"
+        story.deposit_to_pc(mon)
+        return "the PC"
 
     def _take_out(self):
         story = self.game.story_manager
-        if len([p for p in story.player_team if p]) >= 6:
-            self.note = "Your party is full."
-            self._build()
-            return
         s = pc.sets(story)[self.view]
         which = len(s["ring"]) - 1 if s.get("ring") else ("shadow" if s.get("shadow") else None)
         if which is None:
             self.note = "This set is empty."
         else:
             mon = pc.take(self.game, self.view, which)
-            story.player_team.append(mon)
-            self.note = f"{mon.display_name.upper()} came back to your party."
+            self.note = f"{mon.display_name.upper()} went back to {self._home(mon)}."
         self._build()
 
     def _purify(self):
-        story = self.game.story_manager
-        if len([p for p in story.player_team if p]) >= 6:
-            self.note = "Make room in your party first."
-            self._build()
-            return
         new = pc.purify(self.game, self.view)
         if new is not None:
-            story.player_team.append(new)
-            self.note = f"{new.display_name.upper()}'s heart opened! It's no longer a Shadow Pokemon."
+            to = self._home(new)
+            self.note = f"{new.display_name.upper()}'s heart opened! It's no longer a Shadow Pokemon." + (" (Sent to the PC.)" if to == "the PC" else "")
             if int(new.id) == 249:
                 self.note += " It can learn Feather Dance and Psycho Boost now."
         self._build()

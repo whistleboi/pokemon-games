@@ -80,47 +80,7 @@
       "level": 14,
       "battle_type": "desert",
       "min_rounds": 1,
-      "trainer_pool": [
-        {
-          "name": "Togepi",
-          "class": "TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            175
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Shady Guy",
-          "class": "SHADY",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            176,
-            348,
-            350,
-            310,
-            229,
-            130
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Espeon | Umbreon",
-          "class": "ESPEON_|",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            196,
-            197
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        }
-      ],
+      "trainer_pool": [],
       "route_menu": [
         {
           "text": "SNAG SHADOW POKEMON",

@@ -19,21 +19,17 @@ from src.states.overworld.common import (
 
 
 # [REF-0035: Gym Lobby State]
-# League rematches after the title (Jordan, 11-02): every Pokemon at least Lv 70; once your
-# strongest Pokemon is above Lv 80, the team rises with it (the ace matches yours).
+# League rematches after the title (Jordan, 11-02): every Pokemon at least Lv 70. (Until 11-21 the team also rose to match
+# your ace once it passed Lv 80; Jordan 11-21: "do not have the league rematch raise to meet the player's level anymore, in
+# any region" - their own levels now, never yours.)
 LEAGUE_REMATCH_MIN = 70
 
 
-LEAGUE_REMATCH_SCALE_FROM = 80
+LEAGUE_REMATCH_SCALE_FROM = 80   # (no longer used: kept for older imports)
 
 
 def league_rematch_levels(story, team_levels):
-    lv = [max(LEAGUE_REMATCH_MIN, int(x)) for x in team_levels]
-    ace = black_fog.ace_level(story)
-    if lv and ace > LEAGUE_REMATCH_SCALE_FROM and ace > max(lv):
-        lift = ace - max(lv)
-        lv = [min(100, x + lift) for x in lv]
-    return lv
+    return [max(LEAGUE_REMATCH_MIN, int(x)) for x in team_levels]
 
 
 def in_room(game):
@@ -376,10 +372,9 @@ class GymLobbyState(GameState):
         # Rematches after the title: the games' rematch teams where we have them (FireRed/LeafGreen
         # for Kanto, HeartGold/SoulSilver for Johto: "rematch" in the data), else 10 levels up.
         rematch_boost = 0
-        # A League rematch roster's non-League trainers (Galar's Marnie/Hop, Paldea's Nemona) are
-        # post-game rematches: they follow the post-game cap. The Elite Four and Champion don't.
-        cap_rematch = (getattr(self, "rematch", False) and not is_leader
-                       and t_data.get("class") not in levels.LEAGUE_CLASSES and not t_data.get("rematch"))
+        # A League rematch roster's non-League trainers (Galar's Marnie/Hop, Paldea's Nemona) used to follow the post-game cap
+        # (your party's top level); Jordan 11-21: no League rematch follows your level, in any region - they rise 10 like the rest.
+        cap_rematch = False
         if (getattr(self, "rematch", False) and not cap_rematch
                 and not (self.area_key == "INDIGO_PLATEAU" and is_leader)):
             rm = self.next_opponent.get("rematch")

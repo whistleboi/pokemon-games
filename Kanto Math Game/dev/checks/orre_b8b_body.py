@@ -523,10 +523,10 @@ if isinstance(st, PurifyChamberState):
     check(type(party).__name__ == "PokemonPartyMenuState", "picking goes to your party")
     party.on_cancel()
     st = g.current_state
-    st._pick = lambda then: then(len(story.player_team) - 1, story.player_team[-1])
+    st._pick = lambda then, want=None: then(("party", len(story.player_team) - 1), story.player_team[-1])
     st._shadow_in()
     check(PC.sets(story)[2]["shadow"] is not None and len(story.player_team) == 3, "the Shadow Pokemon went into set 3's middle")
-    st._pick = lambda then: then(0, story.player_team[0])
+    st._pick = lambda then, want=None: then(("party", 0), story.player_team[0])
     st._ring_in()
     check(len(PC.sets(story)[2]["ring"]) == 1 and len(story.player_team) == 2, "a party Pokemon joined its ring")
     for _ in range(60):
@@ -534,6 +534,16 @@ if isinstance(st, PurifyChamberState):
     check(st.angle > 30, "the ring turns round the middle")
     st._take_out()
     check(len(PC.sets(story)[2]["ring"]) == 0 and len(story.player_team) == 3, "taken back out to the party")
+    del st._pick   # (the real picker: from the PC, Jordan 11-21)
+    story.pc_pokemon[5] = mk(7)
+    st._ring_in()
+    where = g.current_state
+    check(type(where).__name__ == "PickListState" and [v for _l, v in where.choices] == ["party", "pc"], "RING IN asks: your party or the PC")
+    where.pick("pc")
+    page = g.current_state
+    check(type(page).__name__ == "PickListState" and 5 in [v for _l, v in page.choices], "the PC's page lists its Pokemon")
+    page.pick(5)
+    check(len(PC.sets(story)[2]["ring"]) == 1 and story.pc_pokemon[5] is None, "a PC Pokemon joins the ring and leaves its box")
     st._back(); st._back()
     check(not isinstance(g.current_state, PurifyChamberState), "BACK leaves the chamber")
 

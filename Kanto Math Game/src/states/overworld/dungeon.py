@@ -3385,6 +3385,23 @@ class DungeonState(OverworldBattles, PlayState):
     def _rides(self, key):
         return self._here_art().get(key) or []
 
+    def _ride_art(self, name, w, h):
+        """Ride art from the fan sheets (assets/tiles/orre_ride, Jordan 11-21): platform.png (Orre Mt. Battle's square lift),
+        pad_<colour>.png (Orre's coloured warp pads), hook.png (the Sinnoh crane's hook). None if missing: shapes are drawn."""
+        cache = self.__dict__.setdefault("_ride_art_cache", {})
+        key = (name, int(w), int(h))
+        if key not in cache:
+            img = None
+            try:
+                import os
+                path = os.path.join(self.game.assets.assets_dir, "tiles", "orre_ride", name)
+                if os.path.exists(path):
+                    img = pygame.transform.smoothscale(pygame.image.load(path).convert_alpha(), (int(w), int(h)))
+            except Exception:
+                img = None
+            cache[key] = img
+        return cache[key]
+
     def _platform_at(self):
         return self.__dict__.setdefault("_platform_end", {})
 
@@ -3464,7 +3481,12 @@ class DungeonState(OverworldBattles, PlayState):
             col = self.HOOK_COLOURS.get(hk.get("colour"), (200, 200, 200))
             for pad in (hk["a"], hk["b"]):
                 if tuple(pad) in f.seen:
-                    rr = at(*pad).inflate(-8, -8)
+                    rr = at(*pad)
+                    art = self._ride_art(f"pad_{hk.get('colour', 'yellow')}.png", rr.w, rr.h)
+                    if art is not None:   # (Orre's own coloured warp pads)
+                        screen.blit(art, rr)
+                        continue
+                    rr = rr.inflate(-8, -8)
                     pygame.draw.rect(screen, (60, 62, 72), rr, border_radius=5)
                     pygame.draw.rect(screen, col, rr, 3, border_radius=5)
         for w in self._rides("warps"):
@@ -3483,13 +3505,23 @@ class DungeonState(OverworldBattles, PlayState):
             cx = (fx + (px - fx) * k) * TILE + TILE / 2 + o.x
             cy = (fy + (py - fy) * k) * TILE + TILE / 2 + o.y
             col = self.HOOK_COLOURS.get(r.get("colour"), (200, 200, 200))
-            pygame.draw.line(screen, (40, 40, 46), (int(cx), 0), (int(cx), int(cy) - TILE // 2), 3)
-            pygame.draw.circle(screen, col, (int(cx), int(cy) - TILE // 2), 6, 3)
+            hook = self._ride_art("hook.png", TILE, TILE * 3)
+            if hook is not None:   # (the Sinnoh crane's hook and its striped cable, the hook at your shoulders; cable on up)
+                top = int(cy) - TILE // 3 - hook.get_height()
+                pygame.draw.line(screen, (40, 40, 46), (int(cx), 0), (int(cx), max(0, top + TILE // 2)), 3)
+                screen.blit(hook, (int(cx) - TILE * 7 // 8, top))   # (the crop's hook hangs at its right edge, 24-32 px of 32)
+            else:
+                pygame.draw.line(screen, (40, 40, 46), (int(cx), 0), (int(cx), int(cy) - TILE // 2), 3)
+                pygame.draw.circle(screen, col, (int(cx), int(cy) - TILE // 2), 6, 3)
 
     def _draw_platforms(self, screen, at):
         r = getattr(self, "_ride", None)
 
         def plate(px, py):
+            art = self._ride_art("platform.png", TILE, TILE * 3 // 2)
+            if art is not None:   # (Orre Mt. Battle's square lift: its deck under your feet, its underside hanging below)
+                screen.blit(art, (int(px) - TILE // 2, int(py) - TILE // 2 + 2))
+                return
             rr = pygame.Rect(0, 0, TILE - 4, TILE - 10)
             rr.center = (int(px), int(py) + 6)
             pygame.draw.rect(screen, (96, 100, 112), rr, border_radius=4)

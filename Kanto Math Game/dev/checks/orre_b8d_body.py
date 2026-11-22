@@ -245,7 +245,7 @@ check(g.current_state.run.player[1] <= 3, f"from Phenac you arrive at the north 
 st = g.current_state
 names = {m.payload.get("text") for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
 trs = [m for m in st.run.floor.movers if m.kind == "trainer"]
-check(len(trs) >= 1, f"the desert's trainers stand on it ({len(trs)})")
+check(len(trs) == 0, f"no trainers on the desert: neither game has any (Jordan 11-21; {len(trs)})")
 # the barred ways
 print("   people:", sorted(n for n in names if n))
 
@@ -360,6 +360,18 @@ snap("pda_monitor")
 j.set_tab("journal"); frames(2)
 check(j.tab == "journal", "back to the missions")
 story.current_area_key = "PALLET_TOWN"
+
+print("3b) Fly in Orre (Jordan 11-21: after the first badge; HM Fly before it, in Pyrite)")
+story.current_area_key = "PYRITE_TOWN"
+t = town("PYRITE_TOWN", "ORRE_DESERT")
+s = meet(t, "HM Fly")
+check(story.inventory.get("HM_FLY") == 1, "HM Fly by the Pyrite Colosseum's steps")
+story.badges = {"ORRE": []}
+check(not story.can_fly(), "no flying before the Pyrite Badge")
+story.badges = {"ORRE": ["PYRITE"]}
+check(story.can_fly(), "with the Pyrite Badge, Fly works")
+_dt = _TM["ORRE_DESERT"]["floors"][0]
+check(not any(p == "Togepi" or p == "Shady Guy" for p in _dt.get("trainer_spots", [])), "the desert's old placeholder trainers are gone")
 
 print("4) The Journal")
 J = {x["id"]: x for x in g.loader.area_data.get("JOURNAL_MISSIONS", [])}
