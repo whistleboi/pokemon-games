@@ -347,6 +347,14 @@ for _a in _all:
         for _t in getattr(_f, "deep", ()):  # (deep sea: come up into it from the seabed by Dive: Route 124's rocky northern waters)
             if _t not in _reach:
                 _reach = {**_reach, **_reach_of(_f, _t)}
+        _grew = True
+        while _grew:   # (a door to elsewhere on this same floor: the Royal Unova's cabins, 11-21)
+            _grew = False
+            for _t, _v in list(_f.exits.items()):
+                _w = str(_v).split(":")
+                if _t in _reach and _w[0] == "WARP" and len(_w) == 4 and int(_w[1]) == _p.run.index and (int(_w[2]), int(_w[3])) not in _reach:
+                    _reach = {**_reach, **_reach_of(_f, (int(_w[2]), int(_w[3])))}
+                    _grew = True
         _drawn = bool(_dg.recipe_for(g, _a).get("layout"))  # (a drawn place's clerk stands behind its counter)
         if any(t not in _reach for t in list(_f.exits) + ([] if _drawn else [(m.x, m.y) for m in _f.movers])):
             _bad.append((_a, "out of reach"))

@@ -3693,6 +3693,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         if self.mode == "MAP":
             self._contest_check()
             self._safari_check()
+            if self.area_key == "ROYAL_UNOVA":   # (the voyage's clock and whistles: src/world/royal_unova.py, 11-21)
+                __import__("src.world.royal_unova", fromlist=["tick"]).tick(self)
             self._phone_check()
             self._follow_hold()
             if self.sliding and self._ready():  # (still sliding on the ice)

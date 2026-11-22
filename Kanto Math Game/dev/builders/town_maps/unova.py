@@ -1579,11 +1579,10 @@ CASTELIA = town(
             0: _say("Boy on the pier", "Liberty Garden, huh? Long ago a rich man hid an amazing Pokemon there: Victini!"),
             2: _say("Old man on the pier", "Ho ho! Team Plasma fell apart because they wanted to misuse power like Victini's."),
             1: {"text": "Liberty Garden sailor", "action": "EVENT", "event": {
-                "lines": ["Would you like to sail to Liberty Garden? Your timing's perfect. All aboard!"], "travel": "LIBERTY_GARDEN"}}},
+                "lines": ["Would you like to sail to Liberty Garden? Your timing's perfect. All aboard!"], "travel": "LIBERTY_GARDEN", "land_floor": [0, 7, 12]}}},
             {}, title="Liberty Pier"),
         "cruise_dock": castelia_room(39, {
-            0: _say("Royal Unova attendant", "Welcome to the Royal Unova! It sails once a day, in the evening.",
-                    "Trainers who love to battle fill its cabins. Please come back in the evening!")},
+            0: {"text": "Royal Unova attendant", "action": "EVENT", "event": {"lines": ["..."], "cruise": "board"}}},   # (src/world/royal_unova.py)
             {}, title="Cruise Dock"),
         "plaza": castelia_room(30, {1: _say("Old man by the fountain", "If you want to be strong, battle lots of Trainers, and get to know your Pokemon well!"),
                                     0: _say("Colress", "Colress: I'll be waiting on Route 4. It's just beyond here!",
@@ -2166,8 +2165,208 @@ EMPTY_LOT = route(
 )
 
 
+# ------------------------------------------------------------------------------------------------- Liberty Garden
+# 235 the island (the boat from Liberty Pier ties up at Dock 1, west), 236 the lighthouse, 237 up its stairs the room
+# where the rich man kept Victini. B2W2 has no Team Plasma here: the islanders remember. Professor Juniper comes over if
+# you bring Victini, and Victini dances in its old room (zone 237's trigger, script 4). Jordan 11-21: Victini itself
+# waits in that room after the Champion (Black and White's spot, Lv 15).
+OUTSIDE.update({236: 235, 237: -1})
+VICTINI = {"text": "Victini", "action": "BOSS", "color": "RED", "_look": "sheet:b2_victini.png",
+           "boss": {"id": 494, "name": "Victini", "level": 15, "victory_flag": "LIBERTY_GARDEN_boss_defeated"},
+           "condition": ["beat_unova_champion", "not:LIBERTY_GARDEN_boss_defeated"]}
+LIBERTY_SCENES = [
+    # Juniper, out to see the island, spots Victini with you (text 300, 14-18)
+    {"trigger": "enter", "condition": ["party_has:494", "not:b2_liberty_juniper"], "flag": "b2_liberty_juniper",
+     "cast": [{"sheet": "b2_juniper.png", "from": [11, 11], "to": "player", "gone": True, "leave_path": [[11, 11], [11, 7]],
+               "lines": ["Professor Juniper: Oh? Is that... Victini?!",
+                         "Professor Juniper: In the Unova Pokedex, Victini was given a special number: zero.",
+                         "Professor Juniper: They say that number was chosen in the hope that Victini's knack for victory "
+                         "would be shared with whoever carries the Pokedex.",
+                         "Professor Juniper: How do you get along with your Pokemon? As your Pokedex fills, you'll find "
+                         "your own answer. That's what I'm hoping for. See you!"]}]},
+]
+VICTINI_ROOM_SCENES = [
+    # Victini, home again, wants out of its ball for a moment (text 302)
+    {"trigger": {"zone": [2, 8, 7, 9]}, "condition": ["party_has:494", "not:b2_liberty_dance"], "flag": "b2_liberty_dance",
+     "cast": [{"sheet": "b2_victini.png", "from": [4, 7], "to": "player", "gone": True,
+               "leave_path": [[5, 7], [5, 6], [4, 6], [4, 7]],
+               "lines": ["Victini is wriggling inside its Poke Ball... You let it out.",
+                         "Victini: Ta-ta-ta-tah!",
+                         "Victini went back into its Poke Ball, looking pleased with itself."]}]},
+]
+LIBERTY_GARDEN = route(
+    235, {0: {"text": "Liberty Garden sailor", "action": "EVENT", "event": {
+              "lines": ["Back to Castelia City? We cast off any minute now. Climb aboard!"],
+              "travel": "CASTELIA_CITY", "land": ["liberty_pier", 21, 12]}},
+          1: _say("Girl by the dock", "There's something about this island. Being here makes me feel stronger!"),
+          2: _say("Man on the path", "Have you heard? A rich man once hid a Pokemon on this island to keep it safe from bad people!"),
+          4: _say("Woman by the lighthouse", "I wonder how that Pokemon felt, shut away in a room for so long...",
+                  "It must have been very lonely."),
+          3: [_say("Man on the south walk ", "Wait... that Pokemon with you... Is that Victini, the Victory Pokemon?!",
+                   "Have you been winning and winning with its help? I wish I had your luck...", condition=["party_has:494"]),
+              _say("Man on the south walk", "Victini, the Victory Pokemon... They say it lends its Trainer amazing strength.",
+                   "I wonder who has that power now...", condition=["not:party_has:494"])],
+          5: _say("Woman on the east walk", "Pokemon do what their Trainers ask, without a second thought.",
+                  "And still some people try to use them for bad things!"),
+          6: _say("Boy in the trees", "Hardly any tourists come here these days. It's so boring...",
+                  "But if the other choice is people like Team Plasma, I'll take boring!")},
+    {8: ["LIBERTY GARDEN", "Two hundred years ago a very rich family bought this island and named it Liberty Garden:",
+         "a place where people and Pokemon can live freely."],
+     9: ["DOCK 2", "The tour boat leaves from Dock 1."],
+     10: ["The lighthouse shines with the light of freedom.", "Authorized personnel only."]},
+    exits={}, scenes=LIBERTY_SCENES,
+    rooms={
+        "lighthouse": room(236, {}, {}, (16, 19), stairs={237: ("^", "ROOM:victini_room")}),
+        "victini_room": room(237, {}, {}, None, stairs={236: ("v", "ROOM:lighthouse")}, extra_people=[(5, 6, VICTINI)],
+                             scenes=VICTINI_ROOM_SCENES),
+    },
+    inside={"16,19": "lighthouse"},
+    landings=[[7, 12]],   # (off the boat at Dock 1: the island's only way in and out is the sailor's boat)
+)
+LIBERTY_GARDEN["rooms"]["lighthouse"]["title"] = "Lighthouse"
+LIBERTY_GARDEN["rooms"]["victini_room"]["title"] = "Lighthouse Room"
+_doors(LIBERTY_GARDEN, LIBERTY_GARDEN["inside"])
+
+
+# ------------------------------------------------------------------------------------------------- the Royal Unova
+# 52: the evening cruise from the Cruise Dock (src/world/royal_unova.py: the clock, whistles, crew, prize). One map: the
+# corridors to the west (you board facing the bow, so port is the west half: 8 cabin doors, 4 blue; starboard the east:
+# 7, 2 blue), the cabins themselves to the east, each door paired with its cabin by the game's own warp numbers. Each
+# cabin's person is the day's Trainer (B2W2's teams, before and after the Hall of Fame), else a passenger or a long
+# talker (the next whistle blows when they finish). Which Trainers sail which day is our reading; the counts are the
+# game's: Mon 4, Tue 3, Wed 4, Thu 5, Fri 4, Sat 6, Sun 7.
+RU_DOORS = {g["warp"]: g for g in GEO["52"]["doors"]}
+
+
+def _ru_links():
+    rows = GEO["52"]["rows"]
+    out = {}
+    for d in GEO["52"]["doors"]:
+        t = RU_DOORS[d["to_warp"]]
+        land = next(((t["x"] + a, t["y"] + b) for a, b in ((0, 1), (0, -1), (1, 0), (-1, 0))
+                     if 0 <= t["y"] + b < len(rows) and 0 <= t["x"] + a < len(rows[0]) and rows[t["y"] + b][t["x"] + a] == "."), None)
+        if land:
+            out["%d,%d" % (d["x"], d["y"])] = [0, land[0], land[1]]
+    return out
+
+
+# (cabin person n: side, door colour) from the cabins' pictures and their doors' places
+RU_CABINS = {23: ("port", "blue"), 24: ("port", "blue"), 21: ("port", "blue"), 22: ("port", "blue"),
+             17: ("port", "red"), 20: ("port", "red"), 16: ("port", "red"), 14: ("port", "red"),
+             19: ("starboard", "blue"), 18: ("starboard", "blue"),
+             13: ("starboard", "red"), 12: ("starboard", "red"), 11: ("starboard", "red"), 15: ("starboard", "red"), 10: ("starboard", "red")}
+# Trainer: (cabin n, class, look, picture, days, B2W2 team before the Hall of Fame, after it, hello, beaten, off-day lines, talker?)
+RU_TRAINERS = {
+    "Mariana": (23, "ACE_TRAINER", "b2_c31.png", "b2_ace_trainer_f.png", "mon,wed,sun", ([81, 550], [18, 18]), ([479, 12, 594], [62, 62, 62]),
+                "A cruise and a battle: the perfect evening!", "Beaten on my night off... You're good.",
+                ["I'm just enjoying the river breeze tonight."], False),
+    "Henry": (19, "ACE_TRAINER", "b2_c30.png", "b2_ace_trainer_m.png", "tue,thu,sat,sun", ([507, 183], [18, 18]), ([128, 321], [63, 63]),
+              "I booked this cabin to train in peace. You'll do as a sparring partner!", "That settles it. I need more training.",
+              ["I'm resting up tonight. Even Ace Trainers need a day off."], False),
+    "Sibyl": (24, "LASS", "b2_c15.png", "b2_lass.png", "wed,fri,sat,sun", ([406, 540], [16, 16]), ([433, 413], [61, 61]),
+              "You found my cabin! Let's battle!", "Aww... I thought I'd win this time!",
+              ["Oh, hi! Want to hear about my trip? So first we went to Nimbasa, and the Musical was so cute, and then my friend said",
+               "we should ride the Ferris wheel, but I was scared, so we got ice cream instead, and the ice cream was the Casteliacone,",
+               "and it melted all over my hat, and then we saw the Battle Subway, and my friend said it's for really strong Trainers,",
+               "and I said I'm really strong, and she laughed, and then... wait, where was I? Oh! The cruise! It's lovely, isn't it?"], True),
+    "Brad": (12, "RICH_BOY", "b2_c58.png", "b2_rich_boy.png", "mon,thu,sat", ([504, 41], [16, 16]), ([190, 198], [61, 61]),
+             "Daddy bought me this cabin. Now I want a battle!", "Hmph! I'll just buy stronger Pokemon!",
+             ["Daddy says the Royal Unova is the finest ship in Unova. He should know: he bought the best cabin!"], False),
+    "Elizandra": (18, "LADY", "b2_c22.png", "b2_lady.png", "tue,fri,sun", ([509, 133], [16, 16]), ([52, 37, 133], [60, 60, 60]),
+                  "A battle aboard ship? How delightful!", "Oh my. That was rather exciting.",
+                  ["Such a lovely evening on the water, isn't it?"], False),
+    "Cassandra": (13, "SOCIALITE", "b2_c96.png", "b2_socialite.png", "wed,fri,sat,sun", ([509], [17]), ([510, 24], [61, 61]),
+                  "Darling! You've come to battle me? How charming!", "Oh, how dreadful... and in front of the other guests!",
+                  ["Darling, have you heard? The Lady down the hall bought a new hat in Castelia, and she wore it to dinner,",
+                   "and the Gentleman next door said it looked like a Swanna's nest, and she said his moustache looked like a Patrat's tail,",
+                   "and then the Rich Boy laughed so hard he spilled his juice on the captain, and the captain was ever so gracious,",
+                   "but I could tell he was furious, simply furious! Isn't a cruise wonderful? There's always something going on!"], True),
+    "Robert": (17, "GENTLEMAN", "b2_c44.png", "b2_gentleman.png", "wed,fri,sun", ([506], [17]), ([228, 164, 229], [60, 60, 60]),
+               "A Trainer aboard? Let us have a civilized battle.", "Splendid! A battle worthy of this fine ship.",
+               ["When I was young, I sailed on this very ship with my late wife. We danced on the deck until the sun came up.",
+                "She loved the lights of Castelia from the river. Every year since, I take this cruise on our anniversary.",
+                "The ship has changed, the city has grown, but the river is the same. I can almost hear the band playing...",
+                "Ah, forgive an old man's ramblings. Thank you for listening so patiently."], True),
+    "Tanya": (20, "MAID", "b2_c65.png", "b2_maid.png", "mon,thu,sat", ([239], [17]), ([587, 26], [61, 61]),
+              "Welcome! May I offer you... a battle?", "Thank you for the lovely battle. Please enjoy your cruise.", None, False),
+    "Chaz": (14, "CLERK", "b2_c52.png", "b2_clerk_m.png", "tue,thu,sun", ([543, 54], [16, 16]), ([168, 419], [61, 61]),
+             "A clerk needs a break too! Let's battle!", "Back to work tomorrow... after that, I need the rest.",
+             ["Ahh, an evening off. No meetings, no emails, just the river."], False),
+    "Abe": (21, "YOUNGSTER", "b2_c11.png", "b2_youngster.png", "mon,thu,sat", ([519, 504], [16, 16]), ([21, 264, 22], [60, 60, 60]),
+            "I snuck aboard to battle! Don't tell the captain!", "Aw, man! I'm getting off at the next stop!",
+            ["This ship is huge! I've been exploring all evening."], False),
+}
+RU_PASSENGERS = {   # (cabins with no Trainer: a passenger, or a long talker)
+    22: ("Backer", "b2_c59.png", ["Hey! I'm cheering for every Trainer aboard tonight! Go, go, go!",
+                                 "You know what I love most about cruises? The whistle! Every time it blows, I cheer!",
+                                 "And between whistles I cheer for the river, and the bridges, and the stars, and the captain,",
+                                 "and the cook, and the band, and the Pokemon, and YOU! Go, go, go! Woo! ...I'm a little hoarse now."], True),
+    16: ("Rich Boy", "b2_c58.png", ["My cabin is the biggest. Well, it's the same size as the others. But it feels bigger."], False),
+    11: ("Gentleman", "b2_c44.png", ["A fine evening for a cruise. The lights of the city are splendid from the water."], False),
+    15: ("Lady", "b2_c22.png", ["Did you know? The cook aboard used to work at a restaurant in Castelia. Or was it Nimbasa?",
+                               "No, I'm sure it was Castelia, because I remember the Casteliacone stand outside. Or was that Nacrene?",
+                               "Well, wherever it was, the soup is lovely. You simply must try the soup. Or the fish. Or both!",
+                               "Oh dear, have I been talking long? Mother always says I could talk a Chatot into silence."], True),
+    10: ("Socialite", "b2_c96.png", ["Darling, isn't the river divine at this hour?"], False),
+}
+
+
+def _ru_cabin(n):
+    out = []
+    for name, (cab, cls, look, pic, days, early, late, hi, won, off, talks) in RU_TRAINERS.items():
+        if cab != n:
+            continue
+        label = cls.replace("_", " ").title() + " " + name
+        flag = "b2_ru_" + name.lower()
+        for when, (team, lv), pad in (("not:beat_unova_champion", early, ""), ("beat_unova_champion", late, " ")):
+            o = dict(_clerk_battle(label + pad, label, cls, pic, team, lv, hi, won, flag), _look="sheet:" + look)
+            o["condition"] = ["weekday:" + days, when]
+            out.append(o)
+        if off:
+            o = _say("Passenger in %s's cabin" % name, *off, _look="sheet:" + look, condition=["not:weekday:" + days])
+            if talks:
+                o["event"]["cruise"] = "talker"
+            out.append(o)
+    if n in RU_PASSENGERS:
+        cls, look, lines, talks = RU_PASSENGERS[n]
+        o = _say("%s in cabin %d" % (cls, n), *lines, _look="sheet:" + look)
+        if talks:
+            o["event"]["cruise"] = "talker"
+        out.append(o)
+    return out
+
+
+RU_PEOPLE = {n: _ru_cabin(n) for n in RU_CABINS}
+RU_PEOPLE.update({
+    0: {"text": "Sailor by the stairs", "action": "EVENT", "event": {"lines": ["..."], "cruise": "crew"}},
+    1: {"text": "Sailor to port", "action": "EVENT", "event": {"lines": ["..."], "cruise": "port_hint"}},
+    4: {"text": "Sailor to starboard", "action": "EVENT", "event": {"lines": ["..."], "cruise": "blue_hint"}},
+    2: _say("Sailor in the west hall", "Sailor: Mind your step! We're passing under the Skyarrow Bridge soon."),
+    3: _say("Sailor at the deck stairs", "Sailor: We sail up the river as far as the Marvelous Bridge, then turn for home."),
+    5: _say("Boy in the corridor", "I keep getting lost! All these doors look the same!"),
+    7: _say("Girl in the corridor", "Some cabins have red doors and some have blue. I wonder who's behind them?"),
+    8: _say("Girl by the port cabins", "The whistle blows every so often. When it's blown five times, we're back in Castelia!"),
+    9: _say("Sailor's boy", "My dad's a sailor on this ship! He says the Trainers move cabins every day."),
+    6: _say("Man in the hall", "I come every evening. A different crowd every night!"),
+})
+ROYAL_UNOVA = route(52, RU_PEOPLE, {}, exits={}, landings=[[29, 17]])
+ROYAL_UNOVA["links"] = _ru_links()
+ROYAL_UNOVA["arrive"] = {"CASTELIA_CITY": [29, 17]}   # (aboard at the bow end of the hall, however you came)
+ROYAL_UNOVA["cruise"] = {
+    "days": {d: [t for t, v in RU_TRAINERS.items() if d in v[4].split(",")] for d in ("mon", "tue", "wed", "thu", "fri", "sat", "sun")},
+    "cabins": {t: {"side": RU_CABINS[v[0]][0], "door": RU_CABINS[v[0]][1], "flag": "b2_ru_" + t.lower()} for t, v in RU_TRAINERS.items()},
+    "prizes": {"mon": "LAVA_COOKIE", "tue": "BERRY_JUICE", "wed": "LAVA_COOKIE", "thu": "OLD_GATEAU", "fri": "LAVA_COOKIE",
+               "sat": "RAGECANDYBAR", "sun": "RARE_CANDY"},
+}
+assert [len(ROYAL_UNOVA["cruise"]["days"][d]) for d in ("mon", "tue", "wed", "thu", "fri", "sat", "sun")] == [4, 3, 4, 5, 4, 6, 7]
+for _xy in ROYAL_UNOVA["links"]:   # (each cabin door a doorway you step through)
+    _x, _y = (int(v) for v in _xy.split(","))
+    ROYAL_UNOVA["art"][_y] = ROYAL_UNOVA["art"][_y][:_x] + "1" + ROYAL_UNOVA["art"][_y][_x + 1:]   # ("1": a passage, the map's "links")
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
         "CASTELIA_CITY": CASTELIA,
-        "CASTELIA_SEWERS": SEWERS, "CASTELIA_EMPTY_LOT": EMPTY_LOT}
+        "CASTELIA_SEWERS": SEWERS, "CASTELIA_EMPTY_LOT": EMPTY_LOT, "LIBERTY_GARDEN": LIBERTY_GARDEN,
+        "ROYAL_UNOVA": ROYAL_UNOVA}

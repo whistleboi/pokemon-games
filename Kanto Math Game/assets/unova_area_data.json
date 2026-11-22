@@ -9201,14 +9201,26 @@
         {
           "text": "Find Victini",
           "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
+          "condition": ["boss_not_defeated", "beat_unova_champion"],
+          "color": "GOLD",
+          "not_on_map": true
         },
         { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "CASTELIA_CITY",
       "wild_pool_percentages": "UNOVA_LIBERTY_GARDEN_PERCENTAGES",
       "area_boss": { "id": 494, "level": 15, "name": "Victini", "victory_flag": "LIBERTY_GARDEN_boss_defeated" }
+    },
+    "ROYAL_UNOVA": {
+      "area_type": "dungeon",
+      "route_name": "Royal Unova",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [],
+      "next_area": "CASTELIA_CITY"
     },
     "P2_LABORATORY": {
       "area_type": "dungeon",

@@ -377,6 +377,10 @@ def _run_story_event(state, key, check, show):
         show(_resolve_lines(game, ev.get("fail") or ["You can't do that yet."]))
         return
     lines = _resolve_lines(game, ev.get("lines") or [])
+    if ev.get("cruise"):   # (the Royal Unova: boarding, its crew's counts and hints, long talkers; src/world/royal_unova.py, 11-21)
+        from src.world import royal_unova
+        royal_unova.event(state, ev, lines, show)
+        return
     if ev.get("puzzle"):  # a math minigame (Dotted Hole's braille, a Rocket door code...)
         _start_event_puzzle(state, ev, lines, show)
         return

@@ -91,6 +91,21 @@ def has_scene(game, zone):
     return os.path.exists(os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d.npz" % int(zone)))
 
 
+def _water(rgba, verts):
+    """A ground piece that is the sea: every triangle flat, with a blue texture (11-21: Liberty Garden's sea sheet runs
+    on under the whole island, 1.5 tiles below its grass, and the lowest-first height spread stood people on it, under
+    the dock)."""
+    ys = verts[:, 1].reshape(-1, 3)
+    if len(ys) == 0 or float((ys.max(1) - ys.min(1)).max()) > 0.05:
+        return False
+    px = rgba.reshape(-1, rgba.shape[-1])
+    px = px[px[:, 3] > 0] if px.shape[1] > 3 else px
+    if not len(px):
+        return False
+    r, g, b = (float(px[:, k].mean()) for k in range(3))
+    return b > r + 40 and b > g + 10
+
+
 class Scene:
     """One zone's models on the card."""
 
@@ -107,7 +122,9 @@ class Scene:
             kind, rgba, verts = _fix(int(data["k" + i]), data["t" + i], verts)
             if kind in (0, 1):
                 solid.append(verts[:, :3].reshape(-1, 3, 3))
-            if kind == 0:
+            if kind == 0 and _water(rgba, verts):   # (the sea, a flat blue sheet: stood on only where there's nothing above it,
+                self.__dict__.setdefault("_water", []).append(verts[:, :3].reshape(-1, 3, 3))   # Liberty Garden's runs under the island)
+            elif kind == 0:
                 self.__dict__.setdefault("_kind0", []).append(verts[:, :3].reshape(-1, 3, 3))
             elif kind == 1:   # (stairs, pier ramps: walked on where there's no ground of the block's own)
                 self.__dict__.setdefault("_kind1", []).append(verts[:, :3].reshape(-1, 3, 3))
@@ -137,6 +154,8 @@ class Scene:
         if key not in cache:
             pick = max if near is None else (lambda ys: ys[np.argmin(np.abs(ys - near))])
             cache[key] = self._top(x, y, "_kind0", pick)
+            if cache[key] is None:   # (the open sea)
+                cache[key] = self._top(x, y, "_water", pick)
             if cache[key] is None:
                 cache[key] = self._top(x, y, "_kind1", min)
         return cache[key]
@@ -170,6 +189,8 @@ class Scene:
         piers, else a building model's lowest (stairs, a ramp); [] with none."""
         out = []
         self._top(x, y, "_kind0", lambda ys: out.extend(float(v) for v in ys) or 0.0)
+        if not out:   # (the open sea: its own sheet only where no ground stands over it, 11-21)
+            self._top(x, y, "_water", lambda ys: out.extend(float(v) for v in ys) or 0.0)
         if out:   # (a building piece's flat tops count too: Aspertia's Outlook, its stairs and deck a building over the ground, 11-21)
             self._top(x, y, "_kind1", lambda ys: out.extend(float(v) for v in ys if v > min(out) + 0.2) or 0.0)
         cap = 1e9   # (no height limit, 11-21: Aspertia's Outlook deck is 9 up; the roof over Narrow Street's hole it was for is a filled patch now)
