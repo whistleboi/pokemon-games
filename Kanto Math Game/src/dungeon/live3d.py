@@ -27,6 +27,7 @@ _CTX = {}
 _SCENES = {}
 KEY = (230, 57, 255)   # (an atlas's unused space)
 LIGHT_ALPHA = 0.42     # (a light sheet: the lamps' glow, the clouds)
+GAP = (26, 30, 38)     # (behind a SoulSilver scene outdoors: see Scene.render)
 GLASS = (118, 146, 176, 190)   # (a tower's window pane: Black 2 leaves it open, an inner model behind; 11-21)
 ALLOW_HOLES = False    # (the checks: draw a scene with holes anyway, to try its camera)
 
@@ -109,15 +110,28 @@ def _water(rgba, verts):
 class Scene:
     """One zone's models on the card."""
 
-    def __init__(self, path):
+    def __init__(self, path, origin=None):
         ctx, prog, mgl = _context(), _CTX["prog"], _CTX["mgl"]
         data = np.load(path)
+        self.path = path
+        self.zshift = None
+        if origin == "grid":   # (a Johto room whose walk grid was moved to fit its baked picture: the export says how to put it
+            origin = [float(v) for v in data["grid_at"]]   # back (jexport3d.room_shift): wz(), tile_of(); KeyError: not exported so)
+            self.zshift = np.asarray(data["zshift"], "f4")
+        ox, oz = (float(origin[0]), float(origin[1])) if origin else (0.0, 0.0)   # (a map that is a crop of its zone: Johto's, 11-21)
+        if self.zshift is None and "at_fix" in data.files:   # (its maps' crop is rows off the game's own floor: jexport3d.at_fix,
+            ox, oz = ox + float(data["at_fix"][0]), oz + float(data["at_fix"][1])   # Olivine Lighthouse 2F and 5F, 11-22)
+        self.origin = (ox, oz)
+        self.bdhc = data["bdhc"] if "bdhc" in data.files else None   # (SoulSilver's own floor heights per zone tile: surfaces())
         self.parts = []
         solid = []
         lo, hi = np.full(3, 1e9, np.float32), np.full(3, -1e9, np.float32)
         for key in sorted(k for k in data.files if k.startswith("v")):
             i = key[1:]
             verts = data["v" + i].astype("f4")
+            if ox or oz:
+                verts[:, 0] -= ox
+                verts[:, 2] -= oz
             lo, hi = np.minimum(lo, verts[:, :3].min(0)), np.maximum(hi, verts[:, :3].max(0))
             kind, rgba, verts = _fix(int(data["k" + i]), data["t" + i], verts)
             if kind in (0, 1):
@@ -141,9 +155,46 @@ class Scene:
         self._covers = {}
         self.lo, self.hi = lo, hi
         self.cam = np.array(data["cam"], "f4") if "cam" in data.files else None   # (export3d.camera: Black 2's camera here)
+        self.raised = data["raise"] if "raise" in data.files else None   # (jexport3d.raise_grid)
+        self.clip = [float(v) for v in data["clip"]] if "clip" in data.files else None   # (the game's own near and far cut, tiles)
         self.indoor = bool(int(data["indoor"])) if "indoor" in data.files else False   # (a room: black round it, 11-21)
         self.fbo = None
         self._sprites = {}
+
+    def wz(self, fx, fy):
+        """Where grid position (fx, fy) stands in the scene, north-south (tiles): fy itself, but in a room whose walk grid
+        was moved for its baked picture (zshift: a raised back floor drawn rows higher) the real spot, blended mid-step."""
+        Z = self.zshift
+        if Z is None:
+            return fy
+        H, W = Z.shape
+        x0, y0 = int(math.floor(fx)), int(math.floor(fy))
+        ax, ay = fx - x0, fy - y0
+        g = lambda i, j: float(Z[min(H - 1, max(0, j)), min(W - 1, max(0, i))])
+        return fy + (g(x0, y0) * (1 - ax) + g(x0 + 1, y0) * ax) * (1 - ay) + (g(x0, y0 + 1) * (1 - ax) + g(x0 + 1, y0 + 1) * ax) * ay
+
+    def tile_of(self, wx, wz, near=None):
+        """The grid tile shown at scene spot (wx, wz): wz()'s way back (of two levels there, the one on `near`'s level)."""
+        x, y = int(wx // 1), int(wz // 1)
+        Z = self.zshift
+        if Z is None or not (0 <= x < Z.shape[1]):
+            return x, y
+        fits = [j for j in range(Z.shape[0]) if int(round(j + float(Z[j, x]))) == y]
+        if not fits:
+            return x, y
+        lv = float(Z[min(Z.shape[0] - 1, max(0, near[1])), min(Z.shape[1] - 1, max(0, near[0]))]) if near else 0.0
+        return x, min(fits, key=lambda j: abs(float(Z[j, x]) - lv))
+
+    def stacked(self, x, y):
+        """True where the game has two floors on tile (x, y), a level or more apart: a walkway over an arch, a path behind a
+        waterfall. Our walk grid has one tile for both, so such a tile is where levels cross, never a drop's edge."""
+        if self.bdhc is None:
+            return False
+        zx, zy = int(x + self.origin[0]), int(round(self.wz(x, y) + self.origin[1]))
+        if not (0 <= zy < self.bdhc.shape[0] and 0 <= zx < self.bdhc.shape[1]):
+            return False
+        vs = [float(v) for v in self.bdhc[zy, zx] if v == v]
+        return len(vs) > 1 and max(vs) - min(vs) >= 1.0
 
     def ground_at(self, x, y, near=None):
         """The scene's ground (kind 0) under tile (x, y)'s middle, in tiles, or None (cached per tile): of the surfaces
@@ -187,6 +238,20 @@ class Scene:
     def surfaces(self, x, y):
         """Every walkable height under tile (x, y)'s middle, tiles: the ground's (kind 0) not counting the sea under the
         piers, else a building model's lowest (stairs, a ramp); [] with none."""
+        if self.bdhc is not None:   # (the game's own floor heights: SoulSilver stands you on these, not on its models, 11-21)
+            zx, zy = int(x + self.origin[0]), int(round(self.wz(x, y) + self.origin[1]))
+            if 0 <= zy < self.bdhc.shape[0] and 0 <= zx < self.bdhc.shape[1]:
+                own = sorted({round(float(v), 3) for v in self.bdhc[zy, zx] if v == v})
+                if own:
+                    # (a tile OUR map lets you walk where the game has only its filler floor, well under the ground you see
+                    # (which has more ground under it): the Safari Zone's corner, Route 35's north-east strip, sunk to
+                    # the cap, 11-22. Then the ground's own top, when it is one low step above the game's floor.)
+                    if self.raised is not None and float(self.raised[zy, zx]) > 0:   # (only where the export marks it:
+                        return [round(float(self.raised[zy, zx]), 3)]                # jexport3d.RAISE, the zones the reviews named)
+                    return own
+            if self.__dict__.setdefault("_bdhc_any", bool((self.bdhc == self.bdhc).any())):
+                return []   # (no floor of the game's here, in a place that has floors: as the tile beside it, not a model's
+                # top: Route 47's cliff tiles stood between two levels, 11-22)
         out = []
         self._top(x, y, "_kind0", lambda ys: out.extend(float(v) for v in ys) or 0.0)
         if not out:   # (the open sea: its own sheet only where no ground stands over it, 11-21)
@@ -200,7 +265,7 @@ class Scene:
             land = [low] if low is not None else []
         return land
 
-    def walk_heights(self, tiles, hint=None):
+    def walk_heights(self, tiles, hint=None, high=(), low=()):
         """The ground you walk on over a place's open tiles {(x, y): height}, worked out once (11-21): tiles with a single
         surface (or a road and its kerb) first, then outward a tile at a time from the lowest, each taking the surface nearest the neighbour it was reached from,
         so the street runs on under an awning, a planter or a ledge over it, and stairs climb step by step; hint(x, y)
@@ -213,11 +278,26 @@ class Scene:
             lv = levels.pop()
             return {t: min(ys, key=lambda v: abs(v - lv)) for t, ys in S.items() if ys}
         H, todo = {}, []
+        up = 1
+        # (11-22, SoulSilver's floors: where two share a tile, our walk grid's own letter says which it means: `high`, a
+        # bridge's tiles, take the deck; `low`, water, the water under it. Routes 26, 47, 48: lowest-first alone put you
+        # under every bridge, highest-first alone lifted the water beside them onto the deck.)
+        high, low = set(high), set(low)
         for t, ys in S.items():
-            if ys and ys[-1] - ys[0] < 1.0:   # (one surface, or a road and its kerb: settled, the one the place's heights say)
+            if ys and (t in high or t in low):
+                H[t] = ys[-1] if t in high else ys[0]
+                heapq.heappush(todo, (H[t], t))
+            elif ys and self.bdhc is not None and ys[-1] - ys[0] >= 1.0:
+                # (two floors on a plain tile: the one the ground you SEE there lies on. The Safari Zone's raised grass has
+                # a second floor under it, and lowest-first sank you to your cap, 11-22)
+                top = self._top(t[0], int(round(self.wz(*t))), "_kind0", max)
+                if top is not None:
+                    H[t] = min(ys, key=lambda v: abs(v - top))
+                    heapq.heappush(todo, (H[t], t))
+            elif ys and ys[-1] - ys[0] < 1.0:   # (one surface, or a road and its kerb: settled, the one the place's heights say)
                 h = hint(*t) if hint else None
                 H[t] = min(ys, key=lambda v: abs(v - h)) if h is not None else ys[-1]
-                heapq.heappush(todo, (H[t], t))
+                heapq.heappush(todo, (up * H[t], t))
         seeds = list(todo)
         if hint:   # (Black 2's heights are followed only where they line up with the model: on tiles with one surface they
             # agree, give or take a fixed offset, at least 80% of the time; Pokestar's theater's and some rooms' don't, 11-21)
@@ -228,7 +308,7 @@ class Scene:
                     hint = None
         for gentle in (True, False):   # (first only along Black 2's gentle steps, then whatever is left, 11-21)
             if not gentle:
-                todo = [(H[t], t) for t in H]
+                todo = [(up * H[t], t) for t in H]
                 heapq.heapify(todo)
             while todo:   # (lowest ground first: the street claims what it reaches before an awning or a planter can)
                 _h, (x, y) = heapq.heappop(todo)
@@ -243,13 +323,13 @@ class Scene:
                         if S[q] and not getattr(self, "indoor", False) and min(abs(v - goal) for v in S[q]) > 1.0:   # (outdoors:
                             # a room's Black 2 heights often don't line up with its walk rows)
                             H[q] = goal   # (no surface of the model's near it: a walkway under a structure, the Complex's)
-                            heapq.heappush(todo, (H[q], q))
+                            heapq.heappush(todo, (up * H[q], q))
                             continue
                     elif known and gentle:
                         continue   # (a big jump in Black 2's heights: an awning's top marked over the street; reached later
                         # from a gentler side if there is one, else the nearest surface)
                     H[q] = min(S[q], key=lambda v: abs(v - goal)) if S[q] else H[(x, y)]   # (no ground: a hole, as its neighbour)
-                    heapq.heappush(todo, (H[q], q))
+                    heapq.heappush(todo, (up * H[q], q))
         del seeds
         for t, ys in S.items():
             if t not in H and ys:   # (cut off, as a seller boxed in by her stall: the lowest ground, not the awning)
@@ -318,7 +398,12 @@ class Scene:
         ctx.blend_func = _CTX["mgl"].SRC_ALPHA, _CTX["mgl"].ONE_MINUS_SRC_ALPHA
         if self.indoor:
             sky = (0, 0, 0)
+        elif self.bdhc is not None:   # (SoulSilver's places, 11-22: where two world-map blocks meet at different heights
+            sky = GAP                 # the game has no cliff face between them; a dark gap reads as shadow, sky-blue as a hole)
         fbo.clear(sky[0] / 255, sky[1] / 255, sky[2] / 255, 1.0, depth=1.0)
+        if self.clip and self.cam is not None and "clip" not in cam:   # (the game's own near and far cut, kept in step with a
+            k = float(np.linalg.norm(np.array(cam["eye"], "f8") - np.array(cam["target"], "f8"))) / max(1e-6, float(self.cam[1]))   # zoom)
+            cam = dict(cam, clip=(max(0.3, self.clip[0] * k), max(self.clip[1] * k, self.clip[1])))
         mvp = _mvp(size, cam)
         prog["mvp"].write(mvp.T.astype("f4").tobytes())
         prog["tint"].value = (1.0, 1.0, 1.0)
@@ -391,6 +476,13 @@ class Scene:
             base = np.array([x, y, z], "f4")
             r = right * (w / 2)
             up = np.array([0, h, 0], "f4")
+            if self.bdhc is not None:   # (SoulSilver's scenes, 11-22: a figure FACES the camera, as on the DS, so it looks the
+                # same height from any of the game's cameras. Upright, it shrank as the camera looked down: a little
+                # everywhere outdoors, to half height in the Battle Frontier's lobbies (59 degrees down). 0.77: what an
+                # upright figure shows from Black 2's usual 40 degrees, so both regions' people look alike.)
+                tilt = np.cross(right, fwd)
+                tilt /= max(1e-6, np.linalg.norm(tilt))
+                up = tilt * (h * 0.77) * (1 if tilt[1] >= 0 else -1)
             a, b, c, d = base - r, base + r, base + r + up, base - r + up
             quad = np.array([[*a, 0, 1], [*b, 1, 1], [*c, 1, 0], [*a, 0, 1], [*c, 1, 0], [*d, 0, 0]], "f4")
             rows.append((surf, quad))
@@ -505,11 +597,32 @@ def scene(game, zone):
     return _SCENES[key]
 
 
+def scene_of(game, pic, at=None, screen=False):
+    """The live scene behind a map's baked picture (its roofs "_picture": "f", "at"; "_screen": its grid was moved), or None: Black 2's
+    "b2_ground/<zone number>.png" -> assets/b2_3d, SoulSilver's "ss_ground/<ZONE>.png" -> assets/ss_3d (11-21:
+    kanto_handoff/johto_map_tools/jexport3d.py), moved by the map's crop of its zone ("at")."""
+    pic = str(pic or "")
+    name = os.path.splitext(os.path.basename(pic))[0]
+    if pic.startswith("b2_ground/") and name.isdigit():
+        return scene(game, int(name)) if has_scene(game, int(name)) else None
+    if pic.startswith("ss_ground/") and name:
+        at = "grid" if screen else (int(at[0]), int(at[1])) if at else (0, 0)   # (screen: a room whose grid was moved, Scene.wz)
+        key = ("ss", name, at)
+        if key not in _SCENES:
+            path = os.path.join(game.assets.assets_dir or "assets", "ss_3d", name + ".npz")
+            try:
+                _SCENES[key] = Scene(path, at) if os.path.exists(path) else None
+            except KeyError:   # (exported before its room's grid was known)
+                _SCENES[key] = None
+        return _SCENES[key]
+    return None
+
+
 def _mvp(size, cam):
     w, h = size
     fov = math.radians(cam.get("fov", 30.0))
     f = 1 / math.tan(fov / 2)
-    near, far = 0.3, 400.0
+    near, far = cam.get("clip") or (0.3, 400.0)
     proj = np.array([[f * h / w, 0, 0, 0], [0, f, 0, 0], [0, 0, (far + near) / (near - far), 2 * far * near / (near - far)], [0, 0, -1, 0]], "f8")
     eye, target = np.array(cam["eye"], "f8"), np.array(cam["target"], "f8")
     up = np.array(cam.get("up", (0, 1, 0)), "f8")

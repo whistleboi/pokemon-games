@@ -18,6 +18,7 @@ from src.ui import theme
 
 LIVE_SPRITE = 1.5    # (as walk_town: a figure's height in tiles, per its picture's tiles)
 LEVEL_STEP = 1.5     # (tiles: more than this between two neighbours' ground is a drop, not a step)
+LIFT_STEP = 10.0     # (tiles: more than this is a lift carrying you, not a drop: 11-22, as walk_town)
 
 
 class RouteLive:
@@ -32,22 +33,21 @@ class RouteLive:
         if getattr(self.game, "live3d", True) is False or not _settings.get(self.game.story_manager, "live3d"):
             return None
         roofs = getattr(self, "_live_roofs", None) or {}
-        pic = str((roofs.get("_picture") or {}).get("f") or "")
-        import os
-        name = os.path.splitext(os.path.basename(pic))[0]
-        if not pic.startswith("b2_ground/") or not name.isdigit():
+        _p = roofs.get("_picture") or {}
+        pic = str(_p.get("f") or "")
+        if not pic.startswith(("b2_ground/", "ss_ground/")):
             return None
         try:   # (any trouble with the card or its libraries: the flat picture, never a crash)
             from src.dungeon import live3d
-            if not live3d.has_scene(self.game, int(name)) or not live3d.available(self.game):
+            if not live3d.available(self.game):
                 return None
-            sc = live3d.scene(self.game, int(name))
+            sc = live3d.scene_of(self.game, pic, _p.get("at"), bool(roofs.get("_screen")) and pic.startswith("ss_ground/"))
         except Exception:
             return None
         if sc is None or sc.cam is None:
             return None
         f = self.run.floor
-        if not sc.covers([(x, y) for y in range(f.h) for x in range(f.w) if f.walkable(x, y)]):
+        if not sc.covers([(x, int(round(sc.wz(x, y)))) for y in range(f.h) for x in range(f.w) if f.walkable(x, y)]):   # (wz: a Johto room's moved grid, 11-21)
             return None
         self._dl_got = (sc, roofs.get("_cam") or {})
         self._dl_yaw = None
@@ -63,7 +63,10 @@ class RouteLive:
         if mk not in memo:
             f = self.run.floor
             near = lambda a, b: float(lift[b][a]) / k + base if 0 <= b < len(lift) and 0 <= a < len(lift[b]) else None
-            memo[mk] = sc.walk_heights([(x, y) for y in range(f.h) for x in range(f.w) if f.walkable(x, y) or (x, y) in f.exits], near)
+            _g = getattr(self, "_live_grid", None) or []
+            _ch = lambda t: _g[t[1]][t[0]] if t[1] < len(_g) and t[0] < len(_g[t[1]]) else "."
+            _ts = [(x, y) for y in range(f.h) for x in range(f.w) if f.walkable(x, y) or (x, y) in f.exits]
+            memo[mk] = sc.walk_heights(_ts, near, high=[t for t in _ts if _ch(t) in "|;"], low=[t for t in _ts if _ch(t) in "o~x"])   # (a bridge's deck, the water: 11-22)
         G = memo[mk]
         x, y = int(round(fx)), int(round(fy))
         own = G.get((x, y))
@@ -90,7 +93,7 @@ class RouteLive:
         c = [float(v) for v in sc.cam]
         focus = getattr(self, "_cam_focus", None)
         fx, fy = focus if focus else self._dl_feet()
-        px, pz = fx + 0.5, fy + 0.5
+        px, pz = fx + 0.5, sc.wz(fx, fy) + 0.5
         py = self._dl_height(fx, fy)
         zone = None if focus else self._cam_zone(fx, fy)
         if zone:   # (a moving strip from the game file: Route 4's, the view slides as you cross it)
@@ -118,8 +121,20 @@ class RouteLive:
                 q = (t[0] + dx, t[1] + dy)
                 if 0 <= q[1] < len(grid) and 0 <= q[0] < len(grid[q[1]]) and grid[q[1]][q[0]] in "|;":
                     return False
-        if abs(self._dl_height(*a) - self._dl_height(*b)) <= LEVEL_STEP:
+        _diff = abs(self._dl_height(*a) - self._dl_height(*b))
+        if _diff <= LEVEL_STEP:
             return False
+        if getattr(self._dl_live()[0], "bdhc", None) is not None:
+            # (SoulSilver's places, 11-22: the heights ARE the game's own floors, so the drop is real with no second
+            # opinion needed. The DS never lets you step between two floors far apart; our walk grid only says walkable,
+            # so in Goldenrod Gym you stepped straight from the floor up onto a walkway three levels over it. A LIFT is
+            # the one place the game carries you between far levels: more than LIFT_STEP apart is one (Violet Gym's
+            # platform, 29 levels), never an edge. Nor is a tile where the game has two floors, one over the other
+            # (Goldenrod Gym's walkway over the arch you pass under on the way to Whitney, Tohjo Falls' path behind the
+            # water): our grid has one tile for both, so levels cross there.)
+            if self._dl_live()[0].stacked(*a) or self._dl_live()[0].stacked(*b):
+                return False
+            return _diff <= LIFT_STEP
         cam = self._dl_live()[1]
         lift, k = cam.get("lift") or [], float(cam.get("lift_k") or 1.0) or 1.0
         b2 = [lift[t[1]][t[0]] / k if 0 <= t[1] < len(lift) and 0 <= t[0] < len(lift[t[1]]) else None for t in (a, b)]
@@ -130,7 +145,7 @@ class RouteLive:
         v = self._view()
         sc = self._dl_live()[0]
         hit = sc.pick(v.size, self._dl_cam(), pos[0] - v.x, pos[1] - v.y, self._dl_height(*self.run.player))
-        return (int(hit[0] // 1), int(hit[2] // 1)) if hit else tuple(self.run.player)
+        return sc.tile_of(hit[0], hit[2], tuple(self.run.player)) if hit else tuple(self.run.player)
 
     # ------------------------------------------------------------------ drawing
     def _draw_world_live(self, screen, view, fonts):
@@ -146,8 +161,8 @@ class RouteLive:
 
         def put(img, fx, fy, lift=0.0):
             if img is not None:
-                sprites.append((img, (fx + 0.5, h(fx, fy) + lift, fy + 0.55), img.get_height() / TILE * LIVE_SPRITE))
-                shadows.append((fx + 0.5, h(fx, fy), fy + 0.55))
+                sprites.append((img, (fx + 0.5, h(fx, fy) + lift, sc.wz(fx, fy) + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+                shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
         for (x, y), key in f.items.items():   # (an item lying about)
             if (x, y) in f.seen:
                 put(self._item_img(key) or self._ball_img(), x, y)
@@ -178,6 +193,15 @@ class RouteLive:
         hop = math.sin(math.pi * k) * 0.55 if self.hop and self.anim > 0 else 0.0
         me = self._player_img()
         lead = self.follower()
+        surfing = self._on_surf() or (self.anim > 0 and self._on_surf(self.anim_from))
+        if surfing and me is not None:   # (on the water you ride your Pokemon, as the flat map draws it: 11-22, the Johto
+            # review: "no Surf mount, you stand on the water". The same sheet, bobbing; you sit a little up on it.)
+            ride = self._sheet_frame("base_surf.png", self.facing, col=(pygame.time.get_ticks() // 160) % 4, height=int(TILE * 0.95))
+            me = self._extra_frame("surf", self.facing, 0) or me
+            if ride is not None:
+                put(ride, mfx, mfy - 0.02, 0.03 * math.sin(pygame.time.get_ticks() / 180))
+                hop += 0.3
+            lead = None
         if lead and self.partner != self.run.player and me is not None and not self._backdrop:
             (ax, ay), (bx, by) = self.partner_from, self.partner
             way = (self.run.player[0] - bx, self.run.player[1] - by)
@@ -188,7 +212,7 @@ class RouteLive:
         screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else ()), view.topleft)
 
         def at(x, y):
-            p = sc.project(size, cam, (x + 0.5, h(x, y), y + 0.55))
+            p = sc.project(size, cam, (x + 0.5, h(x, y), sc.wz(x, y) + 0.55))
             if p is None:
                 return pygame.Rect(-999, -999, TILE, TILE)
             return pygame.Rect(int(view.x + p[0] - TILE / 2), int(view.y + p[1] - TILE), TILE, TILE)

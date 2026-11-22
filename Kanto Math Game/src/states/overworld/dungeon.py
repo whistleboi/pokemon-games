@@ -5490,7 +5490,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             _ifd.draw_dowsing(screen, pygame.Rect(view.x + 12, view.bottom - 112, 132, 100), _ifd.dowse(story, _m.get("hidden"), tuple(self.run.player),
                               lambda x, y: f"hidden_{self.area_key}_{self.run.index}_{x}_{y}"), fonts)
         name = self.area_data.get("route_name", self.area_key.replace("_", " ").title())
-        floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and self._floor_name(self.run.index) != name else ""   # (a floor named as the place itself, the Sewers': once, 11-21)
+        floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and not name.endswith(self._floor_name(self.run.index)) else ""   # (a floor named as the place itself, the Sewers': once, 11-21; or as its last word, Goldenrod Tunnel's "Tunnel", 11-22)
         if getattr(self, "per_floor", 1) > 1 and self.zones:  # (a wide floor: the area you're in)
             floor_txt = "  " + self._zone_name(self._zone_index(self.run.index, self.run.player[0], self.run.player[1]))
         title = theme.pokemon_word(name) + floor_txt
@@ -5575,7 +5575,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             screen.blit(t, t.get_rect(center=r.center))
         if self.banner > 0 and self.mode == "MAP":
             word = theme.pokemon_word(self.area_data.get("route_name", "")) + \
-                (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and self._floor_name(self.run.index) != self.area_data.get("route_name", "") else "")
+                (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and not self.area_data.get("route_name", "").endswith(self._floor_name(self.run.index)) else "")
             t = fonts["big"].render(word, True, (255, 255, 255))
             r = t.get_rect(center=(map_view(self.game).centerx, int(H * 0.3))).inflate(60, 24)
             panel = pygame.Surface(r.size, pygame.SRCALPHA)

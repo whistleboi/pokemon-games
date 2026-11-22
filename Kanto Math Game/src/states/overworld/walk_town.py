@@ -1662,7 +1662,7 @@ class WalkTownState(CityState):
         if self._live():   # (the live camera: the tile under the finger, on the ground where you stand)
             v = self._view()
             hit = self._live()[0].pick(v.size, self._live_cam(), pos[0] - v.x, pos[1] - v.y, self._live_height(*self.player))
-            return (int(hit[0] // 1), int(hit[2] // 1)) if hit else tuple(self.player)
+            return self._live()[0].tile_of(hit[0], hit[2], tuple(self.player)) if hit else tuple(self.player)
         z = getattr(self, "zoom", 1.0)
         if abs(z - 1.0) > 0.01:   # (the camera zoomed: the point in the map's own picture first)
             v = self._view()
@@ -2219,20 +2219,20 @@ class WalkTownState(CityState):
             return self._live_got
         self._live_key, self._live_got = key, None
         roofs = (m or {}).get("roofs") or {}
-        pic = str((roofs.get("_picture") or {}).get("f") or "")
-        name = os.path.splitext(os.path.basename(pic))[0]
-        if not pic.startswith("b2_ground/") or not name.isdigit():
+        _p = roofs.get("_picture") or {}
+        pic = str(_p.get("f") or "")
+        if not pic.startswith(("b2_ground/", "ss_ground/")):
             return None
         try:   # (any trouble with the card or its libraries: the baked picture, never a crash)
             from src.dungeon import live3d
-            if not live3d.has_scene(self.game, int(name)) or not live3d.available(self.game):
+            if not live3d.available(self.game):
                 return None
-            sc = live3d.scene(self.game, int(name))
+            sc = live3d.scene_of(self.game, pic, _p.get("at"), bool(roofs.get("_screen")) and pic.startswith("ss_ground/"))
         except Exception:
             return None
         if sc is None or sc.cam is None:
             return None
-        if not sc.covers([(x, y) for y in range(self.h) for x in range(self.w) if self._open((x, y))]):
+        if not sc.covers([(x, int(round(sc.wz(x, y)))) for y in range(self.h) for x in range(self.w) if self._open((x, y))]):
             return None   # (a scene exported with holes where you can walk: the avenue's middle, 11-21: the baked picture till it's whole)
         self._live_got = (sc, roofs.get("_cam") or {})
         self._live_yaw = None
@@ -2248,7 +2248,9 @@ class WalkTownState(CityState):
             memo = self.__dict__.setdefault("_live_ground", {})
             if (id(sc), getattr(self, "room", None)) not in memo:   # (per room: the Gym's three floors share one scene)
                 near = lambda a, b: float(lift[b][a]) / k + float(cam.get("base") or 0.0) if 0 <= b < len(lift) and 0 <= a < len(lift[b]) else None
-                memo[(id(sc), getattr(self, "room", None))] = sc.walk_heights([(a, b) for b in range(self.h) for a in range(self.w) if self.rows[b][a] != "#" or (a, b) in self.people], near)
+                _ts = [(a, b) for b in range(self.h) for a in range(self.w) if self.rows[b][a] != "#" or (a, b) in self.people]
+                memo[(id(sc), getattr(self, "room", None))] = sc.walk_heights(_ts, near, high=[t for t in _ts if self._art_char(t) in "|;"],
+                                                                                  low=[t for t in _ts if self._art_char(t) in "o~x"])   # (a bridge's deck, the water: 11-22)
             G = memo[(id(sc), getattr(self, "room", None))]
             own = G.get((x, y))
             if own is not None:   # (blended between the tiles around you, so a kerb is a slope mid-step, not a snap)
@@ -2264,6 +2266,7 @@ class WalkTownState(CityState):
         return float(cam.get("base") or 0.0)
 
     LEVEL_STEP = 1.5   # (tiles: more than this between two neighbours' ground is a drop, not a step)
+    LIFT_STEP = 10.0   # (tiles: more than this is a lift carrying you, not a drop: Violet Gym's, 11-22)
 
     def _level_edge(self, a, b):
         """True when stepping a -> b goes off one level onto another (11-21, Jordan: "Yes, block them"): Black 2 never
@@ -2280,8 +2283,20 @@ class WalkTownState(CityState):
                 return False
             if any(self._art_char((t[0] + dx, t[1] + dy)) in "|;" for dx, dy in DIRS):   # (beside a bridge: under it or onto
                 return False   # it, two levels the height map can't tell apart: Virbank's underpass beneath the main street)
-        if abs(self._live_height(*a) - self._live_height(*b)) <= self.LEVEL_STEP:
+        _diff = abs(self._live_height(*a) - self._live_height(*b))
+        if _diff <= self.LEVEL_STEP:
             return False
+        if getattr(self._live()[0], "bdhc", None) is not None:
+            # (SoulSilver's places, 11-22: the heights ARE the game's own floors, so the drop is real with no second
+            # opinion needed. The DS never lets you step between two floors far apart; our walk grid only says walkable,
+            # so in Goldenrod Gym you stepped straight from the floor up onto a walkway three levels over it. A LIFT is
+            # the one place the game carries you between far levels: more than LIFT_STEP apart is one (Violet Gym's
+            # platform, 29 levels), never an edge. Nor is a tile where the game has two floors, one over the other
+            # (Goldenrod Gym's walkway over the arch you pass under on the way to Whitney, Tohjo Falls' path behind the
+            # water): our grid has one tile for both, so levels cross there.)
+            if self._live()[0].stacked(*a) or self._live()[0].stacked(*b):
+                return False
+            return _diff <= self.LIFT_STEP
         # (and Black 2's own heights agree: the 3D ground alone misread seat tops in Pokestar's theater and a patch on
         # the way up to Aspertia's Outlook, and would have cut them off)
         cam = self._live()[1]
@@ -2312,7 +2327,7 @@ class WalkTownState(CityState):
             fx, fy = self._cam_focus
         else:
             fx, fy = self._live_feet()
-        px, pz = fx + 0.5, fy + 0.5
+        px, pz = fx + 0.5, sc.wz(fx, fy) + 0.5   # (wz: a Johto room's moved grid put back on the real room, 11-21)
         py = self._live_height(fx, fy)
         _z = None if getattr(self, "_cam_focus", None) else self._cam_zone(fx, fy)
         if _z:   # (a moving strip from the game file: the view slides as you cross it, Aspertia's Outlook, 11-21)
@@ -2340,8 +2355,8 @@ class WalkTownState(CityState):
 
         def put(img, fx, fy):
             if img is not None:
-                sprites.append((img, (fx + 0.5, h(fx, fy), fy + 0.55), img.get_height() / TILE * LIVE_SPRITE))
-                shadows.append((fx + 0.5, h(fx, fy), fy + 0.55))
+                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+                shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
         people = self._people()
         mos = getattr(self, "motions", {})
         by_pos = {mo.pos: mo for mo in mos.values() if not mo.gone}
@@ -2405,7 +2420,7 @@ class WalkTownState(CityState):
         screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else ()), view.topleft)
 
         def at(t):
-            p = sc.project(size, cam, (t[0] + 0.5, h(*t), t[1] + 0.55))
+            p = sc.project(size, cam, (t[0] + 0.5, h(*t), sc.wz(*t) + 0.55))
             if p is None:
                 return pygame.Rect(-999, -999, TILE, TILE)
             return pygame.Rect(int(view.x + p[0] - TILE / 2), int(view.y + p[1] - TILE), TILE, TILE)
