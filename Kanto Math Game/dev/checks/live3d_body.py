@@ -393,4 +393,65 @@ check(not _lost, f"blocking the drops cuts nobody and no way out off ({_lost[:4]
 t = place("ASPERTIA_CITY", None, (3, 8))
 check(any(t._open(q) for q in ((4, 6),)) and not t._level_edge((10, 21), (11, 21)), "Aspertia: the way up to the Outlook (and Bianca) stays open")
 
+# 11-21 (Jordan: "Bring live 3D to the route walker first"): the route-type places, walked by the route walker
+# (dungeon.DungeonState + dungeon_live.RouteLive) as the game itself hands them out, not opened as towns
+from src.states.overworld import PlayState as _PS
+_rflat, _rcut, _rsky, _rslow = [], [], [], []
+_N4 = ((0, 1), (0, -1), (1, 0), (-1, 0))
+for _area in ("UNOVA_ROUTE_19", "UNOVA_ROUTE_20", "PLEDGE_GROVE", "FLOCCESY_RANCH", "FLOCCESY_RANCH_OUTSIDE", "CASTELIA_SEWERS",
+              "VIRBANK_COMPLEX", "VIRBANK_COMPLEX_OUTSIDE", "CASTELIA_EMPTY_LOT"):
+    story.current_area_key = _area
+    story.story_flags["visited_" + _area] = True
+    g.walk_town_pos = g.walk_town_room = None
+    g.change_state(_PS(g)); settle(6)
+    t = g.current_state
+    if type(t).__name__ != "DungeonState" or not t._dl_live():
+        _rflat.append((_area, type(t).__name__))
+        continue
+    _f = t.run.floor
+    _W = {(x, y) for y in range(_f.h) for x in range(_f.w) if _f.walkable(x, y)}
+
+    def _rreach(block):
+        seen, todo = set(), []
+        for e in _f.exits:
+            for dx, dy in _N4:
+                q = (e[0] + dx, e[1] + dy)
+                if q in _W:
+                    seen.add(q); todo.append(q)
+        while todo:
+            x, y = todo.pop()
+            for dx, dy in _N4:
+                q = (x + dx, y + dy)
+                if q in seen or q not in _W or (block and t._level_edge((x, y), q)):
+                    continue
+                seen.add(q); todo.append(q)
+        return seen
+    _b0, _b1 = _rreach(False), _rreach(True)
+    _nr = lambda T, S: T in S or any((T[0] + dx, T[1] + dy) in S for dx, dy in _N4)
+    _rcut += [(_area, m.kind, (m.x, m.y)) for m in _f.movers if _nr((m.x, m.y), _b0) and not _nr((m.x, m.y), _b1)]
+    _rcut += [(_area, "exit", e) for e in _f.exits if _nr(e, _b0) and not _nr(e, _b1)]
+    _op = sorted(_W)
+    for _c in (min(_op, key=lambda p: p[0] + p[1]), max(_op, key=lambda p: p[0] + p[1]),
+               min(_op, key=lambda p: p[0] - p[1]), max(_op, key=lambda p: p[0] - p[1])):
+        t.run.player = t.anim_from = t.partner = t.partner_from = _c; t.anim = 0
+        t.draw()
+        _px = pygame.surfarray.array3d(pygame.display.get_surface().subsurface(t._view())).astype(int)
+        _sky = float((_np.abs(_px - _np.array([150, 190, 235])).sum(2) < 12).mean())
+        if _sky > 0.2:
+            _rskyp = (_area, _c, round(_sky, 2)); _rsky.append(_rskyp)
+    _t0 = _time.time()
+    for _ in range(10):
+        t.draw()
+    if (_time.time() - _t0) / 10 > 0.04:
+        _rslow.append(_area)
+check(not _rflat, f"every Unova route-type place is walked in the live 3D view by the route walker, as in play ({_rflat})")
+check(not _rcut, f"...no drop blocked there cuts off a person or a way out ({_rcut[:4]})")
+check(not _rsky, f"...no sky from their corners (Floccesy Ranch, its own small map, gets its ground laid past its edges) ({_rsky[:4]})")
+check(not _rslow, f"...each under 40 ms a frame ({_rslow})")
+story.current_area_key = "CASTELIA_SEWERS"; g.walk_town_pos = g.walk_town_room = None
+g.change_state(_PS(g)); settle(6)
+t = g.current_state
+check(t._dl_live() and abs(t._dl_height(46, 19) - 4.5) < 0.3 and abs(t._dl_height(50, 19) - 0.5) < 0.3,
+      f"the Sewers' stairs up to the Empty Lot: you climb them, not walk under them ({round(t._dl_height(46, 19), 1)})")
+
 print(f"##### {len(fails)} failures")

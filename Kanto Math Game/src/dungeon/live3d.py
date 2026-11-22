@@ -197,12 +197,39 @@ class Scene:
                 h = hint(*t) if hint else None
                 H[t] = min(ys, key=lambda v: abs(v - h)) if h is not None else ys[-1]
                 heapq.heappush(todo, (H[t], t))
-        while todo:   # (lowest ground first: the street claims what it reaches before an awning or a planter can)
-            _h, (x, y) = heapq.heappop(todo)
-            for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
-                if q in S and q not in H:
-                    H[q] = min(S[q], key=lambda v: abs(v - H[(x, y)])) if S[q] else H[(x, y)]   # (no ground: a hole, as its neighbour)
+        seeds = list(todo)
+        if hint:   # (Black 2's heights are followed only where they line up with the model: on tiles with one surface they
+            # agree, give or take a fixed offset, at least 80% of the time; Pokestar's theater's and some rooms' don't, 11-21)
+            pairs = [(ys[0], hint(*t)) for t, ys in S.items() if len(ys) == 1 and hint(*t) is not None]
+            if len(pairs) >= 8:
+                off = sorted(a - b for a, b in pairs)[len(pairs) // 2]
+                if sum(1 for a, b in pairs if abs(a - b - off) <= 0.6) < 0.8 * len(pairs):
+                    hint = None
+        for gentle in (True, False):   # (first only along Black 2's gentle steps, then whatever is left, 11-21)
+            if not gentle:
+                todo = [(H[t], t) for t in H]
+                heapq.heapify(todo)
+            while todo:   # (lowest ground first: the street claims what it reaches before an awning or a planter can)
+                _h, (x, y) = heapq.heappop(todo)
+                for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                    if q not in S or q in H:
+                        continue
+                    goal = H[(x, y)]
+                    hp, hq = (hint(x, y), hint(*q)) if hint else (None, None)
+                    known = hp is not None and hq is not None
+                    if known and abs(hq - hp) <= 1.5:   # (Black 2's own heights step gently here: follow them, up a staircase
+                        goal += hq - hp   # and not under it: the Sewers' stairs to the Empty Lot, 11-21)
+                        if S[q] and not getattr(self, "indoor", False) and min(abs(v - goal) for v in S[q]) > 1.0:   # (outdoors:
+                            # a room's Black 2 heights often don't line up with its walk rows)
+                            H[q] = goal   # (no surface of the model's near it: a walkway under a structure, the Complex's)
+                            heapq.heappush(todo, (H[q], q))
+                            continue
+                    elif known and gentle:
+                        continue   # (a big jump in Black 2's heights: an awning's top marked over the street; reached later
+                        # from a gentler side if there is one, else the nearest surface)
+                    H[q] = min(S[q], key=lambda v: abs(v - goal)) if S[q] else H[(x, y)]   # (no ground: a hole, as its neighbour)
                     heapq.heappush(todo, (H[q], q))
+        del seeds
         for t, ys in S.items():
             if t not in H and ys:   # (cut off, as a seller boxed in by her stall: the lowest ground, not the awning)
                 H[t] = max(v for v in ys if v - ys[0] < 1.0)

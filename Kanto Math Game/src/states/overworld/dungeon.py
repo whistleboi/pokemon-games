@@ -811,7 +811,10 @@ def ghost_figure():
 CELL_SIZED = {"b2_item_ball.png"}
 
 
-class DungeonState(OverworldBattles, PlayState):
+from src.states.overworld.dungeon_live import RouteLive   # (the live 3D camera on the route maps, 11-21)
+
+
+class DungeonState(RouteLive, OverworldBattles, PlayState):
 
     def __init__(self, game, restore_data=None, classic=False):
         if getattr(self, "_dungeon_ready", False):  # the walk going on, back from a battle
@@ -2045,6 +2048,9 @@ class DungeonState(OverworldBattles, PlayState):
         self._clear_boulders()  # (one already pushed aside isn't in the way)
         before = self.run.player
         to = (before[0] + dx, before[1] + dy)
+        if self._level_edge(tuple(before), tuple(to)):   # (a drop between two levels: no stepping off it, as in Black 2)
+            self.walk_goal = None
+            return
         if self._on_surf(to) and not self._on_surf(before) and not self._can_surf():
             self.walk_goal = None  # (the open sea: Surf it, Routes 19-21)
             self.flash("The sea is deep. You need Surf to cross it!", 100)
@@ -3098,6 +3104,8 @@ class DungeonState(OverworldBattles, PlayState):
         return int(v.centerx - cx) + shake_dx(self), int(v.centery - cy)
 
     def _tile_at(self, pos):
+        if self._dl_live():   # (the live camera: the tile under the finger, on the ground where you stand)
+            return self._dl_tile_at(pos)
         z = getattr(self, "zoom", 1.0)
         if abs(z - 1.0) > 0.01:   # (zoomed: the point in the map's own picture first)
             v = self._view()
@@ -3764,6 +3772,7 @@ class DungeonState(OverworldBattles, PlayState):
             self._floor_surf = _art.surface(grid, m.get("buildings", {}), TILE, own_roofs or m.get("roofs"), own or m.get("theme"))
             self._floor_index = self.run.index
             _roofs = own_roofs or m.get("roofs") or {}
+            self._live_roofs, self._live_grid, self._live_map = _roofs, grid, m   # (the live 3D camera's: dungeon_live.py)
             self.cam3d = None   # (B2W2's maps: seen as the DS camera sees them, src/dungeon/camera3d.py)
             if _roofs.get("_cam"):
                 from src.dungeon import camera3d as _c3
@@ -4363,7 +4372,7 @@ class DungeonState(OverworldBattles, PlayState):
         if self._floor_index != self.run.index or self._floor_surf is None:
             self._render_floor()
         z = getattr(self, "zoom", 1.0)
-        if abs(z - 1.0) > 0.01 and not self._backdrop:   # (the camera in closer or further: drawn smaller, scaled into the frame)
+        if abs(z - 1.0) > 0.01 and not self._backdrop and not self._dl_live():   # (the camera in closer or further: drawn smaller, scaled into the frame; the live camera has its own distance)
             small = pygame.Rect(0, 0, max(1, round(view.w / z)), max(1, round(view.h / z)))
             off = pygame.Surface(small.size)
             self._view_override = small
@@ -4386,6 +4395,8 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _draw_world(self, screen, view, fonts):
         """The map in its frame (draw() adds the frame, the HUD, the encounter): its tile-to-screen function."""
+        if self._dl_live():   # (Black 2's own models from a moving camera: dungeon_live.py, 11-21)
+            return self._draw_world_live(screen, view, fonts)
         f = self.run.floor
         screen.fill((10, 14, 24), view)  # (the fog's colour: the unknown edge of the map)
         screen.set_clip(view)  # (the map stays in its frame)
@@ -5206,6 +5217,8 @@ class DungeonState(OverworldBattles, PlayState):
                     if sf and sf not in tog and not story.story_flags.get(sf):
                         nxt.append((i, x, y, tog | {sf}))
             for n in nxt:
+                if n is not None and not through and n[0] == i == self.run.index and self._level_edge((x, y), (n[1], n[2])):
+                    continue   # (no route off one level onto another: dungeon_live._level_edge)
                 if n is not None and n not in prev:
                     prev[n] = cur
                     if through:
@@ -5456,7 +5469,7 @@ class DungeonState(OverworldBattles, PlayState):
         bar = pygame.Rect(view.x, 12, view.w, 64)  # (over the map's frame)
         theme.draw_textbox(screen, bar)
         name = self.area_data.get("route_name", self.area_key.replace("_", " ").title())
-        floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 else ""
+        floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and self._floor_name(self.run.index) != name else ""   # (a floor named as the place itself, the Sewers': once, 11-21)
         if getattr(self, "per_floor", 1) > 1 and self.zones:  # (a wide floor: the area you're in)
             floor_txt = "  " + self._zone_name(self._zone_index(self.run.index, self.run.player[0], self.run.player[1]))
         title = theme.pokemon_word(name) + floor_txt
@@ -5541,7 +5554,7 @@ class DungeonState(OverworldBattles, PlayState):
             screen.blit(t, t.get_rect(center=r.center))
         if self.banner > 0 and self.mode == "MAP":
             word = theme.pokemon_word(self.area_data.get("route_name", "")) + \
-                (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 else "")
+                (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and self._floor_name(self.run.index) != self.area_data.get("route_name", "") else "")
             t = fonts["big"].render(word, True, (255, 255, 255))
             r = t.get_rect(center=(map_view(self.game).centerx, int(H * 0.3))).inflate(60, 24)
             panel = pygame.Surface(r.size, pygame.SRCALPHA)
