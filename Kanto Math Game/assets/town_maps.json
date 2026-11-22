@@ -47182,13 +47182,13 @@
      "ccccccccccccccccccccc",
      "ccccccccccccccccccccc",
      "cmm.mccNcmcz...mmzmcc",
-     "c...cccmccc.......mcc",
+     "c...cccmccc....N..mNc",
      "c.................ccc",
-     "c...cc...cc...cc..mcc",
-     "c...mm...mm...mm..ccc",
-     "c...mm...mm...mm..ccc",
-     "c...mm...mm...mm....c",
-     "c...mm...mm...mm....c",
+     "c...cc...cc...cc..mNc",
+     "c...mmN..mm...mm..ccc",
+     "c...mm...mm..Nmm..ccc",
+     "c..Nmm...mmN..mm....c",
+     "c...mm...mm...mmN...c",
      "c...................c",
      "c...................c",
      "cccccc...cccccccc...c",
@@ -47430,7 +47430,15 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Game Corner"
+     "Game Corner",
+     "Gambler",
+     "Prize Corner",
+     "Prize Corner ",
+     "Lady",
+     "Fisherman",
+     "Gentleman ",
+     "Clown",
+     "Youngster "
     ],
     "overheads": [
      {

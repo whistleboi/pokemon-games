@@ -790,6 +790,14 @@
                 {"text": "Gym", "action": "GYM"},
 
                 {"text": "Game Corner", "action": "GAMECORNER"},
+                {"text": "Prize Corner", "action": "PRIZES", "door": "game corner", "color": "GOLD"},
+                {"text": "Prize Corner ", "action": "PRIZES", "door": "game corner", "color": "GOLD"},
+                {"text": "Gambler", "action": "EVENT", "door": "game corner", "event": {"lines": ["Voltorb Flip is all about the numbers on the side. Read them right and you'll never flip a Voltorb... much."]}},
+                {"text": "Lady", "action": "EVENT", "door": "game corner", "event": {"lines": ["The higher the level, the more each card pays. And the more Voltorb hide under them!"]}},
+                {"text": "Fisherman", "action": "EVENT", "door": "game corner", "event": {"lines": ["Flipped a Voltorb on my very last card. Again!"]}},
+                {"text": "Gentleman ", "action": "EVENT", "door": "game corner", "event": {"lines": ["I'm saving my coins for a Porygon. The prize window has one for the patient."]}},
+                {"text": "Clown", "action": "EVENT", "door": "game corner", "event": {"lines": ["Shh! I'm on a winning streak, don't jinx it!"]}},
+                {"text": "Youngster ", "action": "EVENT", "door": "game corner", "event": {"lines": ["I want the Up-Grade for my Porygon. Only a few thousand coins to go..."]}},
 
                 {"text": "Radio Tower", "door": "radio", "action": "TRAVEL", "target_area": "RADIO_TOWER", "condition": "not:radio_takeover"},
 

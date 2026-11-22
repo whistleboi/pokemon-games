@@ -1096,6 +1096,9 @@ class WalkTownState(CityState):
             if arm is not None and not self._turn_gate(arm, (dx, dy)):
                 self.walk_goal = None
                 return self.flash("The gate won't turn that way.", 80)
+        if self._game_machine(to):   # (a Game Corner's machines: walk up to one and play, 11-22; before the level edge, the
+            self.walk_goal = None      #  machine's top stands higher than the floor)
+            return self._play_machine()
         if self._level_edge(tuple(self.player), tuple(to)):   # (a drop between two levels: no stepping off it, as in Black 2)
             self.walk_goal = None
             return
@@ -1143,9 +1146,6 @@ class WalkTownState(CityState):
             if 0 <= across[1] < self.h and 0 <= across[0] < self.w and self.grid[across[1]][across[0]] == "m" and far in self._people():
                 self.walk_goal = None
                 return self._talk(far)
-            if self._game_machine(to):   # (a Game Corner's machines: walk up to one and play, 11-22)
-                self.walk_goal = None
-                return self._play_machine()
         if to in self.doors:
             self.walk_goal = None
             return self._enter(to)
