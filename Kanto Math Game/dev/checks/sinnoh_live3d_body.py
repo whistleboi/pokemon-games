@@ -130,6 +130,8 @@ for key, rooms in PILOT.items():
         got = reach(opens, tuple(t.player))
         jump = [(a, b) for a in got for b in ((a[0] + 1, a[1]), (a[0], a[1] + 1)) if b in got
                 and not t._level_edge(a, b)   # (a step the game itself refuses: Platinum's floor heights, Oreburgh Gym's platforms)
+                and not (sc.stacked(*a) or sc.stacked(*b))   # (a two-floor tile: the level is the one you came in on, which a cold
+                                                             #  pair can't know - Oreburgh Gym's walkway; main 78976135)
                 and (abs(t._live_height(*a) - t._live_height(*b)) > 1.01 or abs(sc.wz(*a) - sc.wz(*b)) > 2.01)]
         check(not jump, f"{key} / {room}: no step between two neighbouring tiles jumps a level ({jump[:3]})")
         r_ = t._me_drawn[0]
