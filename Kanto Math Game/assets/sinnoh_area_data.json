@@ -3640,14 +3640,25 @@
       "id": "sinnoh_m7",
       "type": "MAIN",
       "title": "The Old Charm",
-      "description": "Cynthia has an Old Charm for her grandmother. Carry it north, through Solaceon and the fog of Route 210, to Celestic Town.",
+      "description": "Cynthia is at Valor Lakefront, east of Pastoria, with something for the Psyduck on Route 210. Then carry her Old Charm north, through Solaceon and the fog of Route 210, to Celestic Town.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 4,
         "flag_not": "delivered_old_charm"
       },
       "target": "CELESTIC_TOWN",
-      "completed_flag": "delivered_old_charm"
+      "completed_flag": "delivered_old_charm",
+      "steps": [
+        {
+          "area": "VALOR_LAKEFRONT",
+          "at": [
+            36,
+            54
+          ],
+          "label": "Cynthia",
+          "done": "sinnoh_secretpotion"
+        }
+      ]
     },
     {
       "id": "sinnoh_m10",

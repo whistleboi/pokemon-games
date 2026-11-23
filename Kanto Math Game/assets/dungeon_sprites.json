@@ -76,6 +76,7 @@
     ]
   },
   "figures": {
+    "VALOR_LAKEFRONT:Cynthia": {"sheet": "pt_champion.png"},
     "ETERNA_CITY:Cynthia": {"sheet": "pt_champion.png"},
     "JUBILIFE_CITY:TV staff  ": {"sheet": "pt_woman6.png"},
     "JUBILIFE_CITY:TV president": {"sheet": "pt_middleman2.png"},

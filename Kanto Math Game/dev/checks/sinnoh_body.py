@@ -482,8 +482,15 @@ check(len(_ps) == 4 and all(not r.run.floor.walkable(*t) for t in _ps) and _cel 
       f"Route 210: without the Fen Badge four Psyduck fill the path north, and Celestic can't be reached from Solaceon")
 frames(r, 3)
 story.badges["SINNOH"] = ["COAL", "FOREST", "RELIC", "COBBLE", "FEN", "MINE"]
+r, _ps1 = _blocked("SINNOH_ROUTE_210", "SOLACEON_TOWN", "psyduck")
+story.inventory["SECRET_POTION"] = 1   # (11-23 S3, Jordan: Platinum's rule - Cynthia's SecretPotion cures them, not the Fen Badge)
 r, _ps2 = _blocked("SINNOH_ROUTE_210", "SOLACEON_TOWN", "psyduck")
-check(not _ps2, f"Route 210: with the Fen Badge the Psyduck are gone ({story.badges['SINNOH']})")
+story.inventory.pop("SECRET_POTION", None)
+check(_ps1 and not _ps2, f"Route 210: the Psyduck stay till you have the SecretPotion, then they're gone ({len(_ps1)} -> {len(_ps2)})")
+_vl = _tm["VALOR_LAKEFRONT"]
+_cyv = [p for f in (_vl.get("floors") or [_vl]) for p in f.get("people") or [] if isinstance(p, dict) and p.get("text") == "Cynthia"]
+check(_cyv and _cyv[0]["event"].get("gift_item") == {"SECRET_POTION": 1} and "has_fen_badge" in _cyv[0]["condition"],
+      "Valor Lakefront: Cynthia gives the SecretPotion after the Fen Badge")
 story.story_flags.pop("windworks_cleared", None)
 story.inventory["HM_SURF"] = 0                                     # (you have no Surf this early: the river can't take you round them)
 r, _gr = _blocked("SINNOH_ROUTE_205", "FLOAROMA_TOWN")

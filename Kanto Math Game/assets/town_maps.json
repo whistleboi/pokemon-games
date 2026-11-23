@@ -235844,13 +235844,11 @@
      ]
     ],
     "look": "psyduck",
-    "until": {
-     "condition": "has_fen_badge"
-    },
     "lines": [
      "A group of Psyduck are holding their heads.",
-     "They won't budge. They seem to have a terrible headache..."
-    ]
+     "They have terrible headaches. A SecretPotion would help them..."
+    ],
+    "item": "SECRET_POTION"
    },
    {
     "tiles": [
@@ -242800,7 +242798,7 @@
    "TTTcccccccc/cccccccccccccccccceeeeeeeecckkcc........>",
    "Tcccccccccc/ccceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
    "TceeeaCCCCaeeeceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
-   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaaaa==aa==========>",
+   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaaNa==aa==========>",
    "TceeeaCDCCaeeeceeeeeaaaaaaaaa=aaaaaaaa==aa==========>",
    "cceeeaaaaaaeeeceeeeea!aaaaaeeceeeeeeeecckkcc........>",
    "cceeeeeaaeeeeeceeeeeeeaaaeeeeckkkkkkkkcckkcc........>",
@@ -244752,7 +244750,7 @@
     ],
     "look": "person",
     "until": {
-     "condition": "has_mine_badge"
+     "flag_condition": "canalave_library_meeting"
     },
     "lines": [
      "The way to the lake is closed for now.",
@@ -244787,7 +244785,29 @@
     }
    },
    "IRON",
-   "TM270"
+   "TM270",
+   {
+    "text": "Cynthia",
+    "action": "EVENT",
+    "condition": [
+     "has_fen_badge",
+     "not:sinnoh_secretpotion"
+    ],
+    "event": {
+     "lines": [
+      "Cynthia: A Team Galactic grunt just ran past me, muttering about a new world...",
+      "Cynthia: You're going north, past Solaceon? The Psyduck on Route 210 have terrible headaches and won't move.",
+      "Cynthia: Give them this SecretPotion. It works wonders."
+     ],
+     "gift_item": {
+      "SECRET_POTION": 1
+     },
+     "flag": "sinnoh_secretpotion",
+     "done": [
+      "Cynthia: The Psyduck are on Route 210, north of Solaceon Town. Good luck!"
+     ]
+    }
+   }
   ],
   "rooms": {
    "house_0101": {
