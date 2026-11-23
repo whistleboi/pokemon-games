@@ -319231,12 +319231,6 @@
   ]
  },
  "TANGELO_ISLAND": {
-  "wade": [
-   [
-    31,
-    14
-   ]
-  ],
   "art": [
    "^o~~^^^^^^^^^o~~oo^^ooo^cccccccccccccccccccccccc",
    "oo~~oooooooooo~~~~ooccc..ccccccccccccccccccccccc",
@@ -319778,7 +319772,33 @@
          "CHERI_BERRY",
          "CHERI_BERRY"
         ],
-        "is_boss_battle": true
+        "is_boss_battle": true,
+        "team_moves": [
+         [
+          "POISON-STING",
+          "GLARE",
+          "WRAP",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOKESCREEN",
+          "SMOG",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "WRAP",
+          "STOMP"
+         ],
+         [
+          "VINE-WHIP",
+          "SLEEP-POWDER",
+          "WRAP",
+          "RAZOR-LEAF"
+         ]
+        ]
        },
        "flag": "orange_jj_tangelo",
        "lines": []
@@ -320438,7 +320458,13 @@
     "theme": "room",
     "title": "House"
    }
-  }
+  },
+  "wade": [
+   [
+    31,
+    14
+   ]
+  ]
  },
  "ORANGE_ROUTE_49": {
   "art": [
@@ -324710,7 +324736,21 @@
          "CHERI_BERRY",
          "CHERI_BERRY"
         ],
-        "is_boss_battle": true
+        "is_boss_battle": true,
+        "team_moves": [
+         [
+          "CONFUSION",
+          "SLEEP-POWDER",
+          "FORESIGHT",
+          "TACKLE"
+         ],
+         [
+          "WATER-GUN",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "TACKLE"
+         ]
+        ]
        },
        "flag": "orange_tracey_battle_sunburst",
        "lines": [],
@@ -325012,10 +325052,10 @@
       "text": "Name Rater",
       "action": "EVENT",
       "event": {
-       "name_rater": true,
        "lines": [
         "I'm the Name Rater! Let me see one of your Pokémon. A name says everything!"
-       ]
+       ],
+       "name_rater": true
       }
      }
     ],
@@ -325716,7 +325756,33 @@
          "CHERI_BERRY",
          "CHERI_BERRY"
         ],
-        "is_boss_battle": true
+        "is_boss_battle": true,
+        "team_moves": [
+         [
+          "POISON-STING",
+          "GLARE",
+          "WRAP",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOKESCREEN",
+          "SMOG",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "WRAP",
+          "STOMP"
+         ],
+         [
+          "VINE-WHIP",
+          "SLEEP-POWDER",
+          "WRAP",
+          "RAZOR-LEAF"
+         ]
+        ]
        },
        "flag": "orange_jj_route55_battle",
        "lines": []
@@ -338168,7 +338234,27 @@
           "Tracey: Good battle! That's step one in making Scyther stronger.",
           "Tracey: I'm off to heal up. Something tells me we'll meet again soon!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "CONFUSION",
+          "SLEEP-POWDER",
+          "FORESIGHT",
+          "TACKLE"
+         ],
+         [
+          "WATER-GUN",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "TACKLE"
+         ],
+         [
+          "SLASH",
+          "SWORDS-DANCE",
+          "DOUBLE-TEAM",
+          "FURY-CUTTER"
+         ]
+        ]
        },
        "flag": "orange_murcott_tracey_battle",
        "lines": []
@@ -338849,7 +338935,45 @@
           "{rival_name}: You've got two Orange Crew badges? Same as me. Rudy's Gym is next, on Trovita Island. They say the battle's on a high cliff!",
           "{rival_name}: To get there you cross to the west side of Mandarin Island South first. Smell ya later!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "QUICK-ATTACK",
+          "DOUBLE-TEAM",
+          "REFLECT",
+          "TAKE-DOWN"
+         ],
+         [
+          "HORN-ATTACK",
+          "EARTHQUAKE",
+          "FOCUS-ENERGY",
+          "THRASH"
+         ],
+         [
+          "MEGA-PUNCH",
+          "ROCK-SMASH",
+          "DOUBLE-KICK",
+          "HYPER-BEAM"
+         ],
+         [
+          "FLAME-WHEEL",
+          "FIRE-SPIN",
+          "TAKE-DOWN",
+          "BITE"
+         ],
+         [
+          "MAGNITUDE",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "SELF-DESTRUCT"
+         ],
+         [
+          "HYDRO-PUMP",
+          "WITHDRAW",
+          "RAPID-SPIN",
+          "BITE"
+         ]
+        ]
        },
        "flag": "orange_gary_mandarin_battle",
        "lines": []
@@ -339702,7 +339826,33 @@
           "Jessie: No, no, no! James: We lost again?",
           "Meowth: Team Rocket's blasting off again!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "POISON-STING",
+          "GLARE",
+          "WRAP",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOG",
+          "SMOKESCREEN",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "WRAP",
+          "STOMP"
+         ],
+         [
+          "VINE-WHIP",
+          "SLEEP-POWDER",
+          "WRAP",
+          "RAZOR-LEAF"
+         ]
+        ]
        },
        "flag": "orange_route63_rocket_battle",
        "lines": []
@@ -343908,6 +344058,26 @@
          "TWISTED_SPOON",
          "SILK_SCARF",
          "NEVER_MELT_ICE"
+        ],
+        "team_moves": [
+         [
+          "CONFUSION",
+          "LEECH-SEED",
+          "REFLECT",
+          "STUN-SPORE"
+         ],
+         [
+          "SLASH",
+          "SAND-ATTACK",
+          "POISON-STING",
+          "DIG"
+         ],
+         [
+          "AURORA-BEAM",
+          "SUPERSONIC",
+          "SURF",
+          "PROTECT"
+         ]
         ]
        },
        "done": [
@@ -343951,6 +344121,26 @@
          "POISON_BARB",
          "CHARCOAL",
          "DRAGON_FANG"
+        ],
+        "team_moves": [
+         [
+          "ACID",
+          "SLEEP-POWDER",
+          "POISON-POWDER",
+          "RAZOR-LEAF"
+         ],
+         [
+          "EMBER",
+          "STOMP",
+          "TAIL-WHIP",
+          "FIRE-SPIN"
+         ],
+         [
+          "WATER-GUN",
+          "SMOKESCREEN",
+          "LEER",
+          "TWISTER"
+         ]
         ]
        },
        "done": [
@@ -345457,7 +345647,33 @@
           "Jessie: Not again! James: Beaten by a twerp twice in a row...",
           "Meowth: Team Rocket's blasting off again!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "ACID",
+          "GLARE",
+          "DIG",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOG",
+          "SMOKESCREEN",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "SLAM",
+          "STOMP"
+         ],
+         [
+          "RAZOR-LEAF",
+          "SLEEP-POWDER",
+          "SWORDS-DANCE",
+          "DOUBLE-EDGE"
+         ]
+        ]
        },
        "flag": "orange_route67_rocket_battle",
        "lines": []
@@ -349398,7 +349614,33 @@
             "Jessie: Oh no, not again!",
             "Team Rocket's blasting off again!"
            ]
-          }
+          },
+          "team_moves": [
+           [
+            "ACID",
+            "GLARE",
+            "DIG",
+            "BITE"
+           ],
+           [
+            "TACKLE",
+            "SMOG",
+            "SMOKESCREEN",
+            "SLUDGE"
+           ],
+           [
+            "LICK",
+            "SUPERSONIC",
+            "SLAM",
+            "STOMP"
+           ],
+           [
+            "RAZOR-LEAF",
+            "SLEEP-POWDER",
+            "SWORDS-DANCE",
+            "DOUBLE-EDGE"
+           ]
+          ]
          },
          "flag": "orange_ascorbia_jj_battle",
          "lines": []
@@ -349465,7 +349707,21 @@
            "player_won": [
             "Cassidy: Butch, I'm counting on you!"
            ]
-          }
+          },
+          "team_moves": [
+           [
+            "TACKLE",
+            "FOCUS-ENERGY",
+            "HYPER-FANG",
+            "SUPER-FANG"
+           ],
+           [
+            "BUBBLE-BEAM",
+            "ACID",
+            "SUPERSONIC",
+            "WRAP"
+           ]
+          ]
          },
          "flag": "orange_cassidy_ascorbia",
          "lines": []
@@ -349507,7 +349763,21 @@
            "player_won": [
             "Butch: No, no, no!"
            ]
-          }
+          },
+          "team_moves": [
+           [
+            "CLAMP",
+            "PROTECT",
+            "SUPERSONIC",
+            "AURORA-BEAM"
+           ],
+           [
+            "THRASH",
+            "FOCUS-ENERGY",
+            "SEISMIC-TOSS",
+            "DYNAMIC-PUNCH"
+           ]
+          ]
          },
          "flag": "orange_wartortle_beaten",
          "lines": []
@@ -350301,7 +350571,15 @@
          "player_lost": [
           "Gulzar: Ha! Grass-types rule the islands!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "SLUDGE-BOMB",
+          "SUNNY-DAY",
+          "SYNTHESIS",
+          "SOLAR-BEAM"
+         ]
+        ]
        },
        "flag": "orange_gulzar_battle",
        "lines": []
@@ -350800,6 +351078,14 @@
       "oi_trainer": 439,
       "held": [
        "BLACK_BELT"
+      ],
+      "team_moves": [
+       [
+        "THUNDER-PUNCH",
+        "ICE-PUNCH",
+        "FIRE-PUNCH",
+        "SKY-UPPERCUT"
+       ]
       ]
      },
      "flag": "orange_beat_kanae",
@@ -354376,7 +354662,45 @@
          "player_won": [
           "{rival_name}: Ooh no, how is this possible?!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "QUICK-ATTACK",
+          "DOUBLE-TEAM",
+          "REFLECT",
+          "TAKE-DOWN"
+         ],
+         [
+          "HORN-ATTACK",
+          "EARTHQUAKE",
+          "FOCUS-ENERGY",
+          "THRASH"
+         ],
+         [
+          "MEGA-PUNCH",
+          "ROCK-SMASH",
+          "DOUBLE-KICK",
+          "HYPER-BEAM"
+         ],
+         [
+          "FLAME-WHEEL",
+          "FIRE-BLAST",
+          "TAKE-DOWN",
+          "BITE"
+         ],
+         [
+          "MAGNITUDE",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "EXPLOSION"
+         ],
+         [
+          "HYDRO-PUMP",
+          "WITHDRAW",
+          "RAPID-SPIN",
+          "BITE"
+         ]
+        ]
        },
        "flag": "orange_rival_pummelo",
        "lines": []
