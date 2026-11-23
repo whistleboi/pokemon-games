@@ -115,5 +115,52 @@
       [25, {"items": {"GREAT_BALL": 10}}],
       [100, {"tm": "TM193", "items": {"ULTRA_BALL": 10}}],
       [250, {"tm": "TM180", "money": 10000}]]}
+  ],
+  "ORANGE": [
+    {"id": "dex", "name": "Pokedex Pages", "count": "dex", "desc": "Own different Orange Islands Pokemon: catch them, evolve them, trade for them.", "tiers": [
+      [25, {"money": 5000, "items": {"GREAT_BALL": 5}}],
+      [50, {"money": 5000, "items": {"ULTRA_BALL": 5}}],
+      [75, {"money": 5000, "tm": "TM218"}],
+      ["all", {"money": 10000, "items": {"MASTER_BALL": 1}}]]},
+    {"id": "islands", "name": "Island Hopper", "count": "places", "match": "ISLAND", "desc": "Set foot on as many of the Orange Islands as you can. Some are well hidden!", "tiers": [
+      [5, {"items": {"SUPER_POTION": 5}, "money": 2000}],
+      [15, {"tm": "TM208", "items": {"MAX_REPEL": 5}}],
+      ["all", {"tm": "TM165", "money": 10000}]]},
+    {"id": "types", "name": "Type Collector", "count": "types", "desc": "Own Orange Islands Pokemon of as many different types as you can.", "tiers": [
+      [6, {"tm": "TM203"}],
+      [12, {"tm": "TM257", "items": {"GREAT_BALL": 5}}],
+      ["all", {"tm": "TM198", "money": 5000}]]},
+    {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in the Orange Islands. Rematches count too!", "tiers": [
+      [25, {"money": 2000}],
+      [100, {"tm": "TM243", "money": 3000}],
+      [250, {"tm": "TM186", "money": 5000}]]},
+    {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk the islands' towns, routes and caves step by step.", "tiers": [
+      [5000, {"items": {"SUPER_POTION": 5}}],
+      [20000, {"tm": "TM196", "items": {"HYPER_POTION": 3}}],
+      [50000, {"tm": "TM342", "items": {"MAX_REVIVE": 2}}]]},
+    {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [
+      [1, {"items": {"RARE_CANDY": 2}}],
+      [5, {"tm": "TM260", "items": {"RARE_CANDY": 3}}],
+      [10, {"tm": "TM170", "money": 10000}]]},
+    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in the Orange Islands.", "tiers": [
+      [10, {"money": 2000}],
+      [25, {"tm": "TM228", "money": 3000}],
+      [50, {"tm": "TM210", "money": 5000}]]},
+    {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [
+      [10, {"items": {"NET_BALL": 5}}],
+      [40, {"tm": "TM316", "items": {"DIVE_BALL": 5}}],
+      [100, {"tm": "TM258", "items": {"NET_BALL": 10}}]]},
+    {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
+      [5, {"items": {"WATER_STONE": 1}}],
+      [20, {"tm": "TM289", "items": {"THUNDER_STONE": 1, "LEAF_STONE": 1}}],
+      [50, {"tm": "TM214", "items": {"FIRE_STONE": 1, "MOON_STONE": 1}}]]},
+    {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [
+      [1, {"money": 2000}],
+      [4, {"tm": "TM211", "items": {"WATER_STONE": 1}}],
+      [8, {"tm": "TM347", "money": 5000}]]},
+    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
+      [25, {"items": {"GREAT_BALL": 10}}],
+      [100, {"tm": "TM345", "items": {"ULTRA_BALL": 10}}],
+      [250, {"tm": "TM281", "money": 10000}]]}
   ]
 }

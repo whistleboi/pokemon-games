@@ -344,10 +344,92 @@ jn.set_tab("STORY"); jn.draw()
 pygame.image.save(g.screen, os.path.join(S, "quest_book_johto_story.png"))
 g.change_state(city)
 
+print("ORANGE: the book's data")
+ob = book["ORANGE"]
+oids = [c["mission"] for a in ob for c in a["chapters"]]
+check(all(i in jmissions for i in oids), "every Orange chapter's mission exists")
+check(all(c.get("title") and c.get("say") for a in ob for c in a["chapters"]), "every Orange chapter has a title and a page")
+UMBRELLA = {"orange_m2", "orange_m3"}   # (the old all-four-badges / League missions: always behind a more exact one)
+omain = [m["id"] for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["type"] == "MAIN" and m["id"].startswith("orange_")]
+check(sorted(set(omain) - set(oids) - UMBRELLA) == [], f"every Orange story mission is in the book (missing: {sorted(set(omain) - set(oids) - UMBRELLA)})")
+said = " ".join(c["say"] for a in ob for c in a["chapters"]).lower()
+check(not re.search(r"\b(because|so that|in order to)\b", said), "Orange's pages never spell out why")
+ok_ = [k for k, a in prog.items() if str(a.get("region", "")).upper() == "ORANGE"]
+oused = set(re.findall(r"TM\d{3}", json.dumps([prog[k] for k in ok_]) + json.dumps([tmaps[k] for k in ok_ if k in tmaps])))
+ogiven = []
+for f in ft["ORANGE"]:
+    for t in f["tiers"]:
+        r = t[1]
+        ogiven += [r["tm"]] if isinstance(r.get("tm"), str) else list(r.get("tm") or [])
+        check(all(_items.describe(i) for i in (r.get("items") or {})), f"{f['id']}: every reward item is real ({r.get('items')})")
+check(all(k in tms for k in ogiven), "every Orange Feat TM is a real TM")
+check(not (set(ogiven) & oused), f"no Orange Feat TM is also on Orange's maps / people ({sorted(set(ogiven) & oused)})")
+check(len(ogiven) == len(set(ogiven)), "no TM is given by two Orange Feats")
+check(not (set(ogiven) & set(tutors.tutor_tms(g, "ORANGE"))), "no Orange Feat TM is an Orange tutor's")
+
+print("ORANGE: chapters follow the story, Valencia to the Ice Sphere")
+story.starting_region = "ORANGE"
+story.badges = {r: [] for r in story.badges}
+story.badges["ORANGE"] = []
+for k in [k for k in story.story_flags if k.startswith(("visited_", "feat_"))]:
+    story.story_flags.pop(k)
+at("VALENCIA_ISLAND")
+city = CityState(g); g.change_state(city)
+
+
+def done_(cond):
+    if isinstance(cond, list):
+        for c in cond:
+            done_(c)
+    elif cond.startswith("has_item:"):
+        item(cond[9:])
+    else:
+        flags[cond] = True
+
+
+SCENES = {"orange_m0f": ["orange_met_misty", "orange_park_tourists"]}   # (Pokemon Park's scenes, met on the way to town)
+steps_done = 0
+for arc in ob:
+    for ch in arc["chapters"]:
+        m = jmissions[ch["mission"]]
+        want(quest_book._words(story, arc["title"]), quest_book._words(story, ch["title"]), f"[{m['id']}]")
+        if ch["mission"] == "orange_m2a":
+            jn = JournalState(g, city); g.change_state(jn); jn.set_tab("SIDE"); jn.draw()
+            check(any(r["mission"]["id"] == "orange_s_tyrogue" for r in jn.rows), "SIDE: Mikan's Tyrogue")
+            jn.set_tab("STORY"); jn.draw()
+            check(any(r["kind"] == "chapter" and r["title"] == "???" for r in jn.rows) or arc["chapters"][-1] is ch,
+                  "Orange: chapters still to come show as ???")
+            g.change_state(city)
+        for i in ch.get("steps") or []:
+            done_(m["steps"][i]["done"])
+        if not ch.get("steps") or ch["steps"][-1] == len(m.get("steps") or []) - 1:
+            for f in story.mission_flags(m):
+                flags[f] = True
+            if m.get("completed_badge"):
+                story.badges["ORANGE"].append(m["completed_badge"])
+            done_(SCENES.get(m["id"], []))
+            if m.get("target"):
+                at(m["target"])
+        steps_done += 1
+check(steps_done == len(oids), "every Orange chapter was played")
+check(all(a["state"] == "done" for a in quest_book.arcs(g)), "the whole Orange book is finished")
+isl = next(f for f in ft["ORANGE"] if f["id"] == "islands")
+n = feats.value(story, isl, "ORANGE")
+check(10 <= n < feats.goal(story, isl, isl["tiers"][-1], "ORANGE"), f"Island Hopper counts the islands you set foot on ({n})")
+paid = feats.pay(story)
+check(any("Island Hopper" in l for l in paid), f"Island Hopper Bronze paid ({[l for l in paid if 'Island' in l][:1]})")
+jn = JournalState(g, city); g.change_state(jn); jn.set_tab("FEATS"); jn.draw()
+check(len(jn.rows) == len(ft["ORANGE"]), "FEATS lists Orange's feats")
+jn.selected = next(i for i, r in enumerate(jn.rows) if r["feat"]["id"] == "islands"); jn.draw()
+pygame.image.save(g.screen, os.path.join(S, "quest_book_orange_feats.png"))
+jn.set_tab("STORY"); jn.draw()
+pygame.image.save(g.screen, os.path.join(S, "quest_book_orange_story.png"))
+g.change_state(city)
+
 print("Other regions: no book yet, each story mission an arc of its own")
-story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "ORANGE")
+story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "HOENN")
 a = quest_book.arcs(g)
-check(all(c.get("title") for x in a for c in x["chapters"]), f"Orange's missions show as arcs ({len(a)})")
+check(a and all(c.get("title") for x in a for c in x["chapters"]), f"Hoenn's missions show as arcs ({len(a)})")
 jn = JournalState(g, city); g.change_state(jn); jn.draw()
 jn.set_tab("FEATS"); jn.draw()
 check(jn.rows == [], "no Feats in a region without its list yet")

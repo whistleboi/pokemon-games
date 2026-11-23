@@ -5,7 +5,8 @@ a TM, an item, money, or a mix, more for the harder tiers.
 
 What a feat counts ("count"):
 - worked out from what you own: "dex" (species of the region's own Pokedex), "types" (types among them), "lv50" (Pokemon at
-  Lv. 50 or more in the region's party and PC), "math_streak" (the best run of right answers while in the region);
+  Lv. 50 or more in the region's party and PC), "math_streak" (the best run of right answers while in the region),
+  "places" (the region's places you've set foot in whose key has the feat's "match": Orange's islands, "ISLAND");
 - counted as you play, per region (StoryManager.feat_counts {region: {kind: n}}), by note(): "trainers", "steps", "fish",
   "finds" (Headbutt, Rock Smash), "evolved", "evo_items", "berries", "safari", any region's own event kinds.
 A tier is [goal, reward] with goal a number or "all" (the most there is: every species of the dex, every type in it);
@@ -68,6 +69,14 @@ def _types_of(story, ids):
     return {t for i in ids for t in (sets.get(str(i), {}) or {}).get("types", []) or []}
 
 
+def _places(story, feat, region):
+    """The region's places a "places" feat counts (keys with its "match" in them)."""
+    prog = story.game.loader.area_data.get("STORY_PROGRESSION", {})
+    match = str(feat.get("match") or "")
+    return [k for k, a in prog.items() if isinstance(a, dict) and str(a.get("region", "KANTO")).upper() == region
+            and match in k]
+
+
 def value(story, feat, region):
     """How far along a feat is."""
     kind = feat.get("count")
@@ -75,6 +84,8 @@ def value(story, feat, region):
         return len(_dex_ids(story, region) & _owned_ids(story))
     if kind == "types":
         return len(_types_of(story, _dex_ids(story, region) & _owned_ids(story)))
+    if kind == "places":
+        return sum(1 for k in _places(story, feat, region) if story.story_flags.get("visited_" + k))
     if kind == "lv50":
         if story.get_current_region() == region:
             mons = list(story.player_team) + list(story.pc_pokemon)
@@ -92,6 +103,8 @@ def goal(story, feat, tier, region):
             return len(_dex_ids(story, region))
         if feat.get("count") == "types":
             return len(_types_of(story, _dex_ids(story, region)))
+        if feat.get("count") == "places":
+            return len(_places(story, feat, region))
     return int(g)
 
 

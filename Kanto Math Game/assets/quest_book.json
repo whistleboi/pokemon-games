@@ -122,5 +122,81 @@
     {"title": "The Silent Summit", "chapters": [
       {"mission": "johto_m18", "title": "The Trainer in the Snow", "when": "beat_johto_champion", "done": "defeated_red", "say": "High on Mt. Silver, where the snow never stops, someone has been training alone for years. They say he never says a word."}
     ]}
+  ],
+  "ORANGE": [
+    {"title": "Welcome to the Orange Islands", "chapters": [
+      {"mission": "orange_m0a", "title": "Oranges and Sea Salt", "say": "Valencia Island smells of oranges and sea salt. Somewhere out on its western beach, a professor is waiting for you."},
+      {"mission": "orange_m0b", "title": "Prof. Ivy's Partner", "say": "Prof. Ivy's lab is full of Pokemon that look a little different out here. One Poke Ball on her desk is meant for you."},
+      {"mission": "orange_m0c", "title": "The Flowers of Valencia Park", "say": "Prof. Ivy is watching the wild Vileplume in the park. They look peaceful. They're not always."},
+      {"mission": "orange_m0d", "title": "A Cloud of Spores", "say": "Something went wrong in the park. The professor needs a Pokemon Center, fast."},
+      {"mission": "orange_m0e", "title": "A Ride in the Sky", "say": "The next island is over the sea, and there's no boat. But a blimp flies right over it..."},
+      {"mission": "orange_m0f", "title": "Dropping In", "say": "You landed in the middle of Tangelo's Pokemon Park. The town is somewhere to the west, past the trees."}
+    ]},
+    {"title": "The Lapras of Tangelo", "chapters": [
+      {"mission": "orange_m1a", "title": "Shouting by the Water", "say": "Someone is shouting at the north end of Tangelo Island. It doesn't sound like a happy shout."},
+      {"mission": "orange_m1b", "title": "The Hurt Lapras", "say": "A young Lapras, hurt and all alone. Tangelo's Nurse Joy is doing everything she can."},
+      {"mission": "orange_m1c", "title": "A Friend in the Pool", "say": "Lapras is resting in the pool behind the Pokemon Center. Someone else has their eye on it too."},
+      {"mission": "orange_m1d", "title": "Good News to Share", "say": "Lapras wants to come with you. Misty and Tracey will want to hear about this."},
+      {"mission": "orange_m1e", "title": "Riding the Waves", "say": "With Lapras, the whole sea is open. North across Route 50 lies Mikan Island, and the first Gym of the Orange Crew."}
+    ]},
+    {"title": "The Coral-Eye Badge", "chapters": [
+      {"mission": "orange_m2a", "title": "The First of the Crew", "say": "The Orange Crew don't battle like other Gyms. Mikan's Leader has tests for you before she'll even pick a Poke Ball."}
+    ]},
+    {"title": "Trouble in Mandarin", "chapters": [
+      {"mission": "orange_m2b", "title": "The Busy City", "say": "East along Route 53, Mandarin Island North is all crowds and noise. Something about it feels wrong."},
+      {"mission": "orange_m3a", "title": "Pokemon Gone Wild", "say": "Pokemon all over Mandarin are turning on their trainers. Officer Jenny wants to know why, and so do you."},
+      {"mission": "orange_m3b", "title": "The Giant Antenna", "say": "North of the city stands an old power plant with a huge antenna. It's been humming day and night."},
+      {"mission": "orange_m3c", "title": "A Climber's Thanks", "say": "Mandarin is calm again, and a climber in town wants to give you something. Then south, to an island made of glass."}
+    ]},
+    {"title": "Glass and Pink", "chapters": [
+      {"mission": "orange_m4a", "title": "The Crystal Cave", "say": "Sunburst Island is famous for glass. Tracey has heard of a Pokemon in its cave that light shines straight through."},
+      {"mission": "orange_m4b", "title": "Pink on the Horizon", "say": "South, then east, lies Pinkan Island, where they say every Pokemon is pink. Every single one."},
+      {"mission": "orange_m5a", "title": "The Pink Rhyhorn", "say": "Tracey is sketching a Rhyhorn the colour of candy. Pinkan's Pokemon are rare, and some people know it."},
+      {"mission": "orange_m5b", "title": "Poachers on Pinkan", "say": "Poachers have come to Pinkan, and the island's Pokemon are angry. A familiar face is out there too."},
+      {"mission": "orange_m5c", "title": "A Rival's Tip", "say": "{rival_name} says the next Gym is far to the east. The sea is wide, and the islands are getting fewer."}
+    ]},
+    {"title": "The Sea Ruby Badge", "chapters": [
+      {"mission": "orange_m6a", "title": "Fukuhara Crossing", "say": "Fukuhara Island lies on the way east. Beyond it, the route turns north toward a busy port."},
+      {"mission": "orange_m6b", "title": "The Port of Kinnow", "say": "Ships come and go from Kinnow all day. The next Gym is east of here, on an island that's mostly mountain."},
+      {"mission": "orange_m7a", "title": "The Mountain Gym", "say": "Navel Island has no Gym building. Its Leader is waiting at the very top of the mountain, and the only way up is to climb."}
+    ]},
+    {"title": "Bugs and Rivals", "chapters": [
+      {"mission": "orange_m8a", "title": "Past the Grapefruit Islands", "say": "Two badges. South from Navel, past seven little islands, lies Moro Island and its famous museum."},
+      {"mission": "orange_m9a", "title": "The Island of Bugs", "say": "Murcott Island is home to Bug Pokemon of every kind. Tracey can hardly wait."},
+      {"mission": "orange_m9b", "title": "The Biggest Island", "say": "South past the island of Farfetch'd lies Mandarin Island South, the biggest of the Orange Islands."},
+      {"mission": "orange_m9c", "title": "{rival_name} Again", "say": "Someone else is touring the Orange Islands. And they've been waiting for you on the north road."}
+    ]},
+    {"title": "The Spike Shell Badge", "chapters": [
+      {"mission": "orange_m10a", "title": "The Road to Yambera", "say": "Route 63 heads north from Mandarin South. Three familiar shadows are hiding along it."},
+      {"mission": "orange_m10b", "title": "Quiet Yambera", "say": "Yambera is a sleepy little village. Sleepy villages always have a story."},
+      {"mission": "orange_m10c", "title": "The Mandarin Desert", "say": "West of Yambera the ground turns to sand and heat. Something odd is happening out in the desert."},
+      {"mission": "orange_m10d", "title": "The Big City of Trovitopolis", "say": "Out of the desert and into the biggest city in the islands. Statues, shops, and a mayor who loves to make speeches."},
+      {"mission": "orange_m11a", "title": "West to Trovita", "say": "The third Gym is on Trovita Island, west along the beach and across the water."},
+      {"mission": "orange_m11b", "title": "A Gym in the Clouds", "say": "Trovita's Gym Leader has a better place for your battle in mind. Higher. Much higher."},
+      {"mission": "orange_m11c", "title": "Something Handy", "say": "Three badges. An islander said a Gym winner deserves something special for the sea. Better find out what."}
+    ]},
+    {"title": "The Jade Star Badge", "chapters": [
+      {"mission": "orange_m12a", "title": "Through the Whirlpools", "say": "Misty and Tracey went north. Fairchild Island's beach is ringed with whirlpools, and you've finally got a way through."},
+      {"mission": "orange_m12b", "title": "The Island of Giants", "say": "Everything on Fairchild Island is bigger. Much bigger. Team Rocket has noticed."},
+      {"mission": "orange_m12c", "title": "Route 67", "say": "Team Rocket ran off in a hurry. North of Fairchild, the sea road goes on."},
+      {"mission": "orange_m12d", "title": "North to Ascorbia", "say": "East along Route 68, then north. Ascorbia Island is known for its brave firefighters."},
+      {"mission": "orange_m13a", "title": "Team Wartortle", "say": "Ascorbia's firefighting squad has been carried off in a balloon. Their Captain is heading into the forest alone."},
+      {"mission": "orange_m13c", "title": "West to Kumquat", "say": "Ascorbia is safe again. West along Route 69 waits Kumquat Island, and the last Gym of the Orange Crew."},
+      {"mission": "orange_m14a", "title": "The Hotel Gym", "say": "Kumquat's Gym is hidden inside a grand hotel. Its Leader says a battle shows how well a trainer and their Pokemon really know each other."}
+    ]},
+    {"title": "The Orange League", "chapters": [
+      {"mission": "orange_m14b", "title": "Four Badges", "say": "All four Orange Crew badges. The Orange League waits on Pummelo Island, far to the south-west."},
+      {"mission": "orange_m15a", "steps": [0], "title": "One More Rival", "say": "Pummelo Island at last. But someone has been waiting on the path, and they're not here to cheer you on."},
+      {"mission": "orange_m15a", "steps": [1], "title": "The Palace of Victory", "say": "At the top of the island stands the Palace of Victory. The Champion of the Orange League is inside."},
+      {"mission": "orange_m15a", "steps": [2], "title": "Drake of Pummelo Stadium", "say": "Six Pokemon. No time limit. The Champion has never lost a full battle in his stadium."}
+    ]},
+    {"title": "The Legend of Shamouti", "chapters": [
+      {"mission": "orange_m16a", "title": "The Legend Festival", "say": "Shamouti Island is having a festival, and everyone's talking about an old legend. Something about a Chosen One."},
+      {"mission": "orange_m16b", "title": "The Fire Sphere", "say": "Three islands, three treasures, one shrine. The first is waiting in the heat of Fire Island."},
+      {"mission": "orange_m16c", "title": "The Flying Palace", "say": "A ship in the sky, and a collector who wants the rarest Pokemon of all. You're aboard now, whether you like it or not."},
+      {"mission": "orange_m16d", "title": "The Lightning Sphere", "say": "The palace has crashed on Lightning Island, and the three great birds are fighting. Hurry."},
+      {"mission": "orange_m16e", "title": "The Guardian of the Sea", "say": "Something carried you back to Shamouti's shrine. The sea is restless, and something deep beneath it is waking."},
+      {"mission": "orange_m16f", "title": "The Ice Sphere", "say": "One treasure is still missing, and only the Chosen One can bring it. Ice Island's cave is on Shamouti's south shore."}
+    ]}
   ]
 }
