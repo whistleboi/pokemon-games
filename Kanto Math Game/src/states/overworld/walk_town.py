@@ -2448,7 +2448,7 @@ class WalkTownState(CityState):
 
         def put(img, fx, fy):
             if img is not None:
-                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), dn.live_height(img, LIVE_SPRITE)))   # (a person: one adult height, 11-23)
                 shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
         people = self._people()
         mos = getattr(self, "motions", {})
@@ -2479,7 +2479,7 @@ class WalkTownState(CityState):
             if pose[3] or me is None:
                 me = None
             else:
-                me = pygame.transform.smoothscale(me, (max(1, int(me.get_width() * pose[2])), max(1, int(me.get_height() * pose[2]))))
+                me = dn.same_kind(pygame.transform.smoothscale(me, (max(1, int(me.get_width() * pose[2])), max(1, int(me.get_height() * pose[2])))), me)
                 mfx, mfy = mfx + pose[0], mfy + pose[1]
         put(me, mfx, mfy)
         if lead and self.partner != self.player:

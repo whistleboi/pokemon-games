@@ -77,5 +77,14 @@ if lv:
     if far:
         f2, a2 = shown(far)
         check(a2 > 0 and f2 >= 0.9 * a2, f"on open floor {far}: drawn whole ({f2} of {a2})")
+if lv:   # (11-23: people one height in the 3D world too - Johto saw them 1.5x too tall once they were 72 px on the map)
+    from src.states.overworld import dungeon as _dn
+    from src.states.overworld.walk_town import LIVE_SPRITE as _LS
+    me = t._player_img()
+    nurse = next((o for o in t.people.values()), None)
+    nimg = t._figure_img(nurse, (0, 1), 0) if nurse else None
+    hm, hn = _dn.live_height(me, _LS), (_dn.live_height(nimg, _LS) if nimg is not None else None)
+    check(me in _dn.PERSON_FRAMES and abs(hm - _dn.LIVE_PERSON) < 0.12, f"the player stands about {_dn.LIVE_PERSON} tiles in 3D ({hm:.2f})")
+    check(hn is not None and abs(hn - hm) < 0.3, f"and the nurse about the same ({hn if hn is None else round(hn, 2)} vs {hm:.2f})")
 g.walk_town_pos = g.walk_town_room = None
 print(f"##### {len(fails)} failures")
