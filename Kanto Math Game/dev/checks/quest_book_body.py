@@ -423,6 +423,7 @@ pools = {int(x) for k, v in g.loader.area_data.items() if k.startswith("ORANGE_"
 bosses = {int(a["area_boss"]["id"]) for k, a in prog.items() if k in ok_ and (a.get("area_boss") or {}).get("catchable")}
 check(len(ids) >= 50 and ids <= pools | bosses, f"Orange Variants: every form it counts can be caught in Orange ({sorted(ids - pools - bosses)})")
 check(feats.goal(story, orig, orig["tiers"][-1], "ORANGE") == len(ids), f"Orange Variants' last tier is all of them ({len(ids)})")
+check(9136 in ids and 9136 in pools, "Pinkan Scyther lives on Pinkan Island and counts (Jordan, 11-23)")
 dex = g.data.data.setdefault("pokedex", {})
 before = feats.value(story, orig, "ORANGE")
 for n, sid in enumerate(sorted(ids)[:10]):
