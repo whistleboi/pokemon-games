@@ -2532,6 +2532,42 @@
     "RUSTBORO_CITY:Twin girl": {
       "sheet": "em_6.png"
     },
+    "RUSTBORO_CITY:Teacher": {
+      "sheet": "em_48.png"
+    },
+    "RUSTBORO_CITY:Student": {
+      "sheet": "em_189.png"
+    },
+    "RUSTBORO_CITY:Student ": {
+      "sheet": "em_189.png"
+    },
+    "RUSTBORO_CITY:Thinking student": {
+      "sheet": "em_15.png"
+    },
+    "RUSTBORO_CITY:Studious girl": {
+      "sheet": "em_47.png"
+    },
+    "RUSTBORO_CITY:Berry fan": {
+      "sheet": "em_38.png"
+    },
+    "SLATEPORT_CITY:Fan Club chairman": {
+      "sheet": "em_48.png"
+    },
+    "SLATEPORT_CITY:Pokémon lover": {
+      "sheet": "em_26.png"
+    },
+    "SLATEPORT_CITY:Fan Club member": {
+      "sheet": "em_19.png"
+    },
+    "SLATEPORT_CITY:Fan Club member ": {
+      "sheet": "em_6.png"
+    },
+    "SLATEPORT_CITY:Boastful fan": {
+      "sheet": "em_65.png"
+    },
+    "SLATEPORT_CITY:Big sailor": {
+      "sheet": "em_17.png"
+    },
     "HOENN_ROUTE_116:Tunneler": {
       "sheet": "em_44.png"
     },

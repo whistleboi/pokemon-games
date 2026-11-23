@@ -158,6 +158,8 @@ for key in BUILT:
             _pairs.append((key, came))
 check(not _far, f"every rebuilt map: in from each way, you stand beside that way {_far[:4]}")
 _bad, _multi = [], 0
+_had_surf = story.inventory.get("HM_SURF", 0)
+story.inventory["HM_SURF"] = 1   # (sea mouths are crossed surfing: without Surf you're set down at the land mouth; Route 125 -> Mossdeep, 11-23)
 _twins = {(v.get("mirage") or {}).get("area") for v in _area.values() if (v.get("mirage") or {}).get("area")}
 for a, b in _pairs:
     for x, y in ((a, b), (b, a)):
@@ -179,18 +181,19 @@ for a, b in _pairs:
             back = arrive(x, y, j, len(tb), tile=tb[j] if tb else None)
             if not _near(_pos(back), m):
                 _bad.append((x, y, m[0], _pos(sb), _pos(back)))
+story.inventory["HM_SURF"] = _had_surf
 check(_multi >= 4 and not _bad, f"places joined several ways ({_multi} sides): out by each mouth and straight back, you're at that mouth again {_bad[:3]}")
 
 # every door in a rebuilt town opens something (a house is just a house; the Center and Mart: the shared rooms), but the
 # places not built yet (HANDOFF_HOENN_MAPS.md's gaps: Rustboro's Trainer's School, Slateport's Fan Club and its harbor's ferry)
-NOT_YET = {("RUSTBORO_CITY", "school"), ("SLATEPORT_CITY", "fanclub"), ("SLATEPORT_CITY", "harbor")}   # (Slateport's ferry: once the sub is taken)
+NOT_YET = set()   # (11-23, Hoenn H1: Rustboro's school, Slateport's Fan Club and harbour walked inside from Emerald's rooms)
 _shut = []
 for key in BUILT:
     if _area[key].get("area_type") != "town":
         continue
     st = arrive(key, sorted(_tm[key]["exits"].values())[0])
     for t, kind in st.doors.items():
-        if kind not in ("house", "center", "mart") and not st._door_options(kind) and (key, kind) not in NOT_YET:
+        if kind not in ("house", "center", "mart") and not st._door_options(kind) and not st._room_for(t) and (key, kind) not in NOT_YET:   # (a door into a room opens it)
             _shut.append((key, kind))
 check(not _shut, f"every door in a rebuilt town opens something {sorted(set(_shut))[:6]}")
 import os as _os

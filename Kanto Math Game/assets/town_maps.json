@@ -98167,7 +98167,7 @@
    "ccccccccccccccccccc.......cccccccccccccc",
    "ccccccccccccccccccc.....ccccccccccccc.cc",
    "cccccccccccccccccc............!........>",
-   "cccccccccccccccccc..N..................>",
+   "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.........N...........>",
    "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.....................>",
@@ -98249,7 +98249,6 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "Teacher",
    "Businessman",
    {
     "text": "Devon fan",
@@ -98384,7 +98383,8 @@
   "inside": {
    "27,19": "gym",
    "16,45": "mart",
-   "16,38": "center"
+   "16,38": "center",
+   "27,34": "school"
   },
   "edge_to": {
    "19,0": [
@@ -99123,6 +99123,159 @@
     ],
     "theme": "room",
     "title": "Rustboro Gym"
+   },
+   "school": {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "....!!!!....",
+     ".....N......",
+     ".....cc.....",
+     ".c.!....c.c.",
+     "...N....NN..",
+     ".c.c....c.c.",
+     "...N......N.",
+     ".c.c....c.c.",
+     ".....nn....."
+    ],
+    "exits": {
+     "n": "OUT:27,34"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Teacher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Teacher: Welcome to the Trainers' School! Here, take this Quick Claw.",
+        "Teacher: Held by a Pokémon, it sometimes lets it move first."
+       ],
+       "gift_item": {
+        "QUICK_CLAW": 1
+       },
+       "flag": "oras_rustboro_city_5",
+       "done": [
+        "Teacher: Study hard, and train your Pokémon even harder!"
+       ]
+      }
+     },
+     {
+      "text": "Berry fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Pokémon holding a Berry eats it when it needs it. Clever, right?"
+       ]
+      }
+     },
+     {
+      "text": "Student",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My friend and I are trading Pokémon right now. It's so exciting!"
+       ]
+      }
+     },
+     {
+      "text": "Student ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I always wanted a Seedot, and today I'm finally getting one!"
+       ]
+      }
+     },
+     {
+      "text": "Thinking student",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon can hold items, but they don't know what to do with a Potion. You have to use it for them."
+       ]
+      }
+     },
+     {
+      "text": "Studious girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A confused Pokémon may hit itself instead of the foe. Switching it out snaps it back to normal."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "The blackboard: Poison, Paralysis, Sleep, Burn and Freeze. A Pokémon keeps a status problem until it's healed."
+     ],
+     [
+      "The blackboard: Poison, Paralysis, Sleep, Burn and Freeze. A Pokémon keeps a status problem until it's healed."
+     ],
+     [
+      "The blackboard: Poison, Paralysis, Sleep, Burn and Freeze. A Pokémon keeps a status problem until it's healed."
+     ],
+     [
+      "The blackboard: Poison, Paralysis, Sleep, Burn and Freeze. A Pokémon keeps a status problem until it's healed."
+     ],
+     [
+      "A student's notebook: Catch Pokémon with Poké Balls. You can carry six. Look after them!"
+     ]
+    ],
+    "moves": {
+     "5,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,6": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "3,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "10,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "3,6": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Trainers' School"
    }
   }
  },
@@ -101070,7 +101223,7 @@
    "cccccccccccccccc.....ccccccccccccccccccc",
    "cccccccccccccccc.....ccccccccccccccccccc",
    "cccccccccccccccc.....ccccccccccccccccccc",
-   "cccccccccccccccc...N.cccccccccccccccccow",
+   "cccccccccccccccc.....cccccccccccccccccow",
    "cccccccccccccccc.....cccccccccccccccooow",
    "cccc....ccccc...c...c....cccccccooooooow",
    "cccc...ccccccc...........cccccccooooooow",
@@ -101082,7 +101235,7 @@
    "cccc............................cccccccc",
    "cccccccc..........cccc..........oooccccc",
    "cccccHcc..........cAccc..ooooooooccccccc",
-   "cccccDcc!.....N...cDcccooooooooooccccccc",
+   "cccccDcc!.........cDcccooooooooooccccccc",
    "cccc..................cooooooooooocccccc",
    "cccc..................cooooooooooocccccc",
    "cc..............!.....cooocccccccccccccc",
@@ -101101,10 +101254,10 @@
    "cc.cccc....cc.c......ccccccccccccccccccc",
    "cc.ccccc..ccc.c......ccccccccccccccccccc",
    "cc.cccc....Nc.c.....N...cc.ccccccccccccc",
-   "cc..ccN...ccc.c......N.!cCDccccccccccccc",
+   "cc..ccN...ccc.c........!cCDccccccccccccc",
    "cc..cc...cc.c.c..................ccccccc",
    "cc............c.......................cc",
-   "cc.....cc.....c.................N....Ncc",
+   "cc.....cc.....c......................Ncc",
    "cc.....cN.....c.....cccccccccc...ccccccc",
    "cccccNcc..ccccc.....cJcccccccc..cccccccc",
    "cc.c........ccc.....cDcccccccc..cccccccc",
@@ -101112,7 +101265,7 @@
    "cc.....cc.....c.N...........N...cccccccc",
    "cccc..ccc.cN.cc.....cccccccccccccccccccc",
    "ccc..........cc.....cccccccccccccccccccc",
-   "cc............c.N...cccccccccccccccccccc",
+   "cc............c.....cccccccccccccccccccc",
    "cc......cN....c.....cccccccccccccccccccc",
    "cccccNc.c.c.cc!.....cccccccc......N..ccc",
    "cc.c.................................ccc",
@@ -101152,7 +101305,6 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "Fan Club chairman ",
    {
     "text": "Weary hiker",
     "action": "EVENT",
@@ -101172,7 +101324,6 @@
     }
    },
    "Team MagmaOR/AquaAS Grunt",
-   "Fan Club chairman  ",
    {
     "text": "Nickname fan",
     "action": "EVENT",
@@ -101236,8 +101387,6 @@
      ]
     }
    },
-   "Fan Club chairman   ",
-   "Fan Club chairman",
    {
     "text": "Sailor",
     "action": "EVENT",
@@ -101284,7 +101433,6 @@
     }
    },
    "door:market",
-   "Fan Club chairman    ",
    {
     "text": "Big spender",
     "action": "EVENT",
@@ -101346,7 +101494,9 @@
   "inside": {
    "19,19": "center",
    "13,26": "mart",
-   "5,19": "rater"
+   "5,19": "rater",
+   "4,26": "fanclub",
+   "28,12": "harbor"
   },
   "edge_to": {
    "16,0": [
@@ -102243,6 +102393,222 @@
     },
     "theme": "room",
     "title": "Name Rater's house"
+   },
+   "fanclub": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccc..N...cccc",
+     "..............",
+     "...........N..",
+     ".N....N.......",
+     ".....cccc.....",
+     ".....cccc.....",
+     "...........N..",
+     "..............",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:4,26"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Pokémon lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon can tell how their Trainer feels. Love them, and they'll love you back."
+       ]
+      }
+     },
+     {
+      "text": "Fan Club member",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Let a Pokémon faint again and again, and it'll stop trusting you. Be kind!"
+       ]
+      }
+     },
+     {
+      "text": "Fan Club member ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon looked so happy when I gave it some Protein."
+       ]
+      }
+     },
+     {
+      "text": "Fan Club chairman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Fan Club chairman: I love seeing Pokémon that love their Trainers!",
+        "Fan Club chairman: You and your Pokémon get along so well. Here, these scarves are for them!"
+       ],
+       "gift_item": {
+        "RED_SCARF": 1,
+        "BLUE_SCARF": 1,
+        "PINK_SCARF": 1,
+        "GREEN_SCARF": 1,
+        "YELLOW_SCARF": 1
+       },
+       "flag": "slateport_fan_club_scarves",
+       "done": [
+        "Fan Club chairman: A scarf suits a well-loved Pokémon. Wear them with pride!"
+       ]
+      }
+     },
+     {
+      "text": "Boastful fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon totally rules! It's cooler than any Pokémon anywhere!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "11,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,5": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "11,8": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Fan Club"
+   },
+   "harbor": {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "...ccccccccccccccccccccc",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...cccc.Nccccccccccccccc",
+     ".................ccccccc",
+     ".N..N............ccccccc",
+     ".................ccccccc",
+     "...........nn....ccccccc"
+    ],
+    "exits": {
+     "n": "OUT:28,12"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "door:harbor",
+     {
+      "text": "Big sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I wanted to go with Captain Stern under the sea, but the sub's too small for me!"
+       ]
+      }
+     },
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A ship needs to know the weather to sail safely. The Weather Institute keeps an eye on it."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,12": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,12": {
+      "m": "face",
+      "d": "r"
+     },
+     "8,10": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Slateport Harbour"
    }
   }
  },
@@ -131567,7 +131933,8 @@
       "d": "udlr"
      }
     },
-    "parts": true
+    "parts": true,
+    "pool": "HOENN_SHOAL_CAVE_ICE_ROOM_PERCENTAGES"
    },
    {
     "art": [

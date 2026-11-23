@@ -4787,11 +4787,6 @@
       "Boy "
      ],
      [
-      20,
-      9,
-      "Teacher"
-     ],
-     [
       32,
       33,
       "Roxanne"
@@ -4816,7 +4811,6 @@
    "Businessman": "Businessman",
    "Ace Trainer": "Ace Trainer",
    "Boy ": "Boy",
-   "Teacher": "Teacher",
    "Roxanne": "Roxanne"
   }
  },
@@ -4824,31 +4818,6 @@
   "floors": {
    "0": {
     "people": [
-     [
-      32,
-      41,
-      "Fan Club chairman"
-     ],
-     [
-      19,
-      7,
-      "Fan Club chairman "
-     ],
-     [
-      14,
-      19,
-      "Fan Club chairman  "
-     ],
-     [
-      21,
-      38,
-      "Fan Club chairman   "
-     ],
-     [
-      16,
-      49,
-      "Fan Club chairman    "
-     ],
      [
       16,
       15,
@@ -4858,11 +4827,6 @@
    }
   },
   "givers": {
-   "Fan Club chairman": "Fan Club chairman",
-   "Fan Club chairman ": "Fan Club chairman",
-   "Fan Club chairman  ": "Fan Club chairman",
-   "Fan Club chairman   ": "Fan Club chairman",
-   "Fan Club chairman    ": "Fan Club chairman",
    "Team MagmaOR/AquaAS Grunt": "Team MagmaOR/AquaAS Grunt"
   }
  },

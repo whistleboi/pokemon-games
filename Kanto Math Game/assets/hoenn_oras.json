@@ -8727,21 +8727,6 @@
      "flag_condition": "not oras_rustboro_city_4"
     },
     {
-     "text": "Teacher",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Teacher: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "QUICK_CLAW": 1
-      },
-      "flag": "oras_rustboro_city_5"
-     },
-     "flag_condition": "not oras_rustboro_city_5"
-    },
-    {
      "text": "Roxanne",
      "action": "EVENT",
      "oras": true,
@@ -8777,81 +8762,6 @@
   },
   "SLATEPORT_CITY": {
    "explore_options": [
-    {
-     "text": "Fan Club chairman",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "RED_SCARF": 1
-      },
-      "flag": "oras_slateport_city_1"
-     },
-     "flag_condition": "not oras_slateport_city_1"
-    },
-    {
-     "text": "Fan Club chairman ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "BLUE_SCARF": 1
-      },
-      "flag": "oras_slateport_city_2"
-     },
-     "flag_condition": "not oras_slateport_city_2"
-    },
-    {
-     "text": "Fan Club chairman  ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "PINK_SCARF": 1
-      },
-      "flag": "oras_slateport_city_3"
-     },
-     "flag_condition": "not oras_slateport_city_3"
-    },
-    {
-     "text": "Fan Club chairman   ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "GREEN_SCARF": 1
-      },
-      "flag": "oras_slateport_city_4"
-     },
-     "flag_condition": "not oras_slateport_city_4"
-    },
-    {
-     "text": "Fan Club chairman    ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "YELLOW_SCARF": 1
-      },
-      "flag": "oras_slateport_city_5"
-     },
-     "flag_condition": "not oras_slateport_city_5"
-    },
     {
      "text": "Team MagmaOR/AquaAS Grunt",
      "action": "EVENT",
@@ -9712,26 +9622,8 @@
   "RUSTBORO_CITY:Boy ": {
    "sheet": "em_5.png"
   },
-  "RUSTBORO_CITY:Teacher": {
-   "sheet": "em_26.png"
-  },
   "RUSTBORO_CITY:Roxanne": {
    "sheet": "em_26.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman ": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman  ": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman   ": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman    ": {
-   "sheet": "em_17.png"
   },
   "SLATEPORT_CITY:Team MagmaOR/AquaAS Grunt": {
    "sheet": "em_26.png"
