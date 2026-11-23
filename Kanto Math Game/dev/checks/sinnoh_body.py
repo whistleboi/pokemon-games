@@ -829,5 +829,20 @@ check(_cy and _egg and story.story_flags.get("sinnoh_cynthia_egg") and (53, 29) 
       f"Eterna: Cynthia gives the Togepi Egg, then the way east is open ({_cy}, egg {_egg})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
 
+# ---- S3 (11-23): Eterna Gym's flower clock, Platinum's own walk tables (s_s3_eterna_gym.py)
+_sv = dict(story.story_flags)
+_cf = ["gym_trainer_ETERNA_CITY_1", "gym_trainer_ETERNA_CITY_2", "gym_trainer_ETERNA_CITY_3"]
+for _k in _cf:
+    story.story_flags.pop(_k, None)
+_open = []
+for _n in range(3):
+    t = town("ETERNA_CITY", "SINNOH_ROUTE_206")
+    t._go("gym", None); frames(t, 25)
+    _open.append(((11, 15) in t.barred, (20, 19) in t.barred))
+    story.story_flags[_cf[_n]] = True
+check(_open == [(True, True), (False, True), (True, False)],
+      f"Eterna Gym: the clock's hands move with each trainer beaten - (11,15) shut, open, shut; the east fountain row shut, shut, open ({_open})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")
