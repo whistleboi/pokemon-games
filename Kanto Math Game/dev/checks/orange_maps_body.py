@@ -899,8 +899,8 @@ if "ORANGE_ROUTE_71" in BUILT:
     _play_event("ORANGE_ROUTE_71", "Quackenpoker")
     check(story.inventory.get("DRAGON_FANG") == 1, "...and Quackenpoker gives you a Dragon Fang (4 -> 5)")
     _r70 = {o["text"]: o for o in _area["ORANGE_ROUTE_70"]["route_menu"]}
-    check(_r70["Mega Punch man"]["event"]["tutor"]["move"] == "MEGA_PUNCH" and _r70["Mega Kick man"]["event"]["tutor"]["move"] == "MEGA_KICK",
-          "Route 70: the Mega Punch and Mega Kick tutors")
+    check(_r70["Mega Punch man"]["event"]["tutor"]["move"] == "MEGA-PUNCH" and _r70["Mega Kick man"]["event"]["tutor"]["move"] == "MEGA-KICK",
+          "Route 70: the Mega Punch and Mega Kick tutors (our move keys, hyphenated: 11-23, orange_events plays them)")
 if "SALVEYO_ISLAND" in BUILT:
     for _f in ("orange_salveyo_asked", "got_salveyo_weed", "orange_tracey_healed"):
         story.story_flags.pop(_f, None)
