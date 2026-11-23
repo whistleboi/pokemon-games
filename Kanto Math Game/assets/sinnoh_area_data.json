@@ -495,10 +495,10 @@
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [453], "rewards": {"balls": 3}, "levels": [19], "spot_name": "Galactic Grunt 4"},
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_f.png", "team": [434, 453, 431], "rewards": {"balls": 5}, "levels": [16, 16, 16], "spot_name": "Galactic Grunt 5"},
             {"name": "Scientist Travon", "class": "SCIENTIST", "sprite": "pt_scientist.png", "team": [64], "levels": [20], "rewards": {"balls": 2}},
-            {"name": "Commander Jupiter", "class": "COMMANDER", "sprite": "galactic_grunt.png", "team": [41, 435], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "eterna_galactic_building_cleared"}
+            {"name": "Commander Jupiter", "class": "COMMANDER", "sprite": "galactic_grunt.png", "team": [41, 435], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_eterna_cleared"}
         ],
         "route_menu": [
-            {"text": "STORM THE BUILDING", "action": "GALACTIC_GAUNTLET", "flag_condition": "not eterna_galactic_building_cleared", "color": "GOLD"},
+            {"text": "STORM THE BUILDING", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_eterna_cleared", "color": "GOLD"},
             {"text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED"},
             {"text": "X SPEED", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_speed_eterna_galactic_building_c04r0202_3_12", "event": {"lines": ["A X Speed, lying among the rocks."], "gift_item": {"X_SPEED": 1}, "flag": "got_x_speed_eterna_galactic_building_c04r0202_3_12"}},
             {"text": "X SP ATK", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_sp_atk_eterna_galactic_building_c04r0203_10_8", "event": {"lines": ["A X Sp Atk, in a dark corner."], "gift_item": {"X_SP_ATK": 1}, "flag": "got_x_sp_atk_eterna_galactic_building_c04r0203_10_8"}},
@@ -3489,7 +3489,7 @@
       "id": "sinnoh_m5",
       "type": "MAIN",
       "title": "Cycling Road",
-      "description": "Collect your Bicycle at the Bike Shop, ride Cycling Road (Route 206) south, then east through Mt. Coronet to Hearthome City.",
+      "description": "Cynthia has something for you before you leave Eterna. Then collect your Bicycle at the Bike Shop, ride Cycling Road (Route 206) south, and go east through Mt. Coronet to Hearthome City.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 2,
@@ -3497,7 +3497,33 @@
         "flag": "galactic_eterna_cleared",
         "visited_not": "HEARTHOME_CITY"
       },
-      "target": "HEARTHOME_CITY"
+      "target": "HEARTHOME_CITY",
+      "steps": [
+        {
+          "area": "ETERNA_CITY",
+          "at": [
+            52,
+            30
+          ],
+          "label": "Cynthia",
+          "done": "sinnoh_cynthia_egg"
+        },
+        {
+          "area": "ETERNA_CITY",
+          "room": "bike",
+          "at": [
+            3,
+            4
+          ],
+          "label": "Bike Shop",
+          "done": "got_bicycle_sinnoh"
+        },
+        {
+          "area": "SINNOH_ROUTE_206",
+          "label": "Cycling Road",
+          "done": "visited_SINNOH_ROUTE_207"
+        }
+      ]
     },
     {
       "id": "sinnoh_m5b",

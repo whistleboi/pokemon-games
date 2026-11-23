@@ -807,5 +807,20 @@ if _pres:
 check(_pres and not _early and story.story_flags.get("got_poketch"), f"the Pokétch Company: the Pokétch only for all three Coupons (before {_early}, after {story.story_flags.get('got_poketch')})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv); story.badges["SINNOH"] = _badges
 
+# ---- S3 (11-23): Cynthia's Egg in Eterna (s_s3_eterna.py; Platinum's C04 script 27)
+_sv = dict(story.story_flags); _team = list(story.player_team)
+story.story_flags["galactic_eterna_cleared"] = True; story.story_flags.pop("sinnoh_cynthia_egg", None)
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+check((53, 29) in t.barred, "Eterna: after the Galactic building, a stop across the street east until Cynthia's Egg")
+_cy = next((s for s, o in t._people().items() if str(o.get("text")) == "Cynthia"), None)
+_n = len(story.player_team)
+if _cy:
+    t._talk(_cy); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_egg = len(story.player_team) == _n + 1 and getattr(story.player_team[-1], "is_egg", False) and story.player_team[-1].id == 175
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+check(_cy and _egg and story.story_flags.get("sinnoh_cynthia_egg") and (53, 29) not in t.barred,
+      f"Eterna: Cynthia gives the Togepi Egg, then the way east is open ({_cy}, egg {_egg})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
+
 g.walk_towns = False
 print(f"##### {fails} failures")

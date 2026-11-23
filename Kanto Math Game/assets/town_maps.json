@@ -176014,7 +176014,7 @@
    "cccccccc.oooooooooooooooo.....cccccccccckcccc.aaaaa.OODOOPPiQQk..................ccik.oooooocccc",
    "ccccccccccccccccccooooooo.....cccccccccckcccc.aaaaa!...i......k.....................k.oooooocccc",
    "ccccccccccccccccccN...........cccccccccckcccc.aaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkkkk.ooo...cccc",
-   "cccccccccccccccccccccccccccccccccccccccckcccc.aaaaaaaaaaaaaaaakccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccckcccc.aaaaaaNaaaaaaaaakccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccckcccc.aaaaaaaaaaaRRRRRkccccccccccccccccccccccccccccccccc",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccckcccc.aaaaa......RRRRRkcTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccckcccc.aaaaa......RRRRRkcTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
@@ -180626,6 +180626,26 @@
    },
    "GUARD SPEC",
    {
+    "text": "Cynthia",
+    "action": "EVENT",
+    "condition": [
+     "galactic_eterna_cleared",
+     "not:sinnoh_cynthia_egg"
+    ],
+    "event": {
+     "lines": [
+      "Cynthia: Oh, there you are! I was hoping to catch you before you left.",
+      "Cynthia: I'd like you to have this Pokemon Egg. Raise it well, and it will grow up strong and happy.",
+      "You received a Pokemon Egg!"
+     ],
+     "gift_egg": 175,
+     "flag": "sinnoh_cynthia_egg",
+     "done": [
+      "Cynthia: Keep the Egg with you as you travel. It will hatch before long."
+     ]
+    }
+   },
+   {
     "text": "Old man",
     "action": "EVENT",
     "event": {
@@ -180668,6 +180688,53 @@
     "event": {
      "lines": [
       "Have you been underground yet? Talk to the man by the Pokemon Center."
+     ]
+    }
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      53,
+      28
+     ],
+     [
+      53,
+      29
+     ],
+     [
+      53,
+      30
+     ],
+     [
+      53,
+      31
+     ],
+     [
+      53,
+      32
+     ],
+     [
+      53,
+      33
+     ]
+    ],
+    "look": "unseen",
+    "until_any": [
+     {
+      "flag_condition": "sinnoh_cynthia_egg"
+     },
+     {
+      "flag_condition": "not galactic_eterna_cleared"
+     }
+    ],
+    "lines": [
+     "Cynthia: Oh, wait! Don't leave just yet."
+    ],
+    "on_bump": {
+     "lines": [
+      "Cynthia: Oh, wait! Don't leave without this. I have something for you!"
      ]
     }
    }
@@ -267767,7 +267834,7 @@
      "c..-ccc.-ccccmm..mmmmmmcc",
      "c...ccc..ccccmm....mmmmcc",
      "c.....c....ccN.N.....N.cc",
-     "c...mmc.NN.mm.N........cc",
+     "c...mmc.NN.mm.X........cc",
      "c...mmc....mm..........cc",
      "c.....ccccccc...ccccccccc",
      "c.....ccccccc.N.ccccccccc",
@@ -267800,7 +267867,6 @@
      "UP GRADE",
      "BLUE SHARD",
      "REVIVE",
-     "STORM THE BUILDING",
      {
       "text": "Owner",
       "action": "EVENT",
@@ -268320,7 +268386,10 @@
        64
       ]
      }
-    }
+    },
+    "trainer_spots": [
+     "Commander Jupiter"
+    ]
    }
   ],
   "floor_names": [
@@ -268331,7 +268400,6 @@
   ],
   "figure_floors": {
    "Scientist Travon": 2,
-   "STORM THE BUILDING": 3,
    "X SPEED": 1,
    "X SP ATK": 2,
    "REVIVE": 3,
@@ -268344,7 +268412,8 @@
    "Galactic Grunt 2": 0,
    "Galactic Grunt 3": 1,
    "Galactic Grunt 4": 1,
-   "Galactic Grunt 5": 2
+   "Galactic Grunt 5": 2,
+   "Commander Jupiter": 3
   },
   "theme": "tunnel"
  },
