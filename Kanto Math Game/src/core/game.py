@@ -484,6 +484,8 @@ class Game:
         if hasattr(self, "music"):
             self.music.update()  # a fanfare that ended lets the music carry on
         self.current_state.draw()
+        from src.ui import challenge_clock   # (a facility's clock on the map: FireRed's Trainer Tower, 11-23)
+        challenge_clock.draw(self)
         if getattr(self, "coop_host", None):
             from src.coop import world as coop_world
             coop_world.draw(self)

@@ -416,7 +416,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             if self.starter_battle:
                 text = lines + ["Your partner is worn out, but that was a great first battle!",
                                 "Your team was healed. Time to set off on your journey!"]
-            elif getattr(self, "frontier", None):  # (a Battle Frontier streak: it ends, no whiting out)
+            elif getattr(self, "frontier", None) or getattr(self, "facility", None):  # (a Battle Frontier streak, a facility's battle: it ends, no whiting out)
                 text = lines + ["Player is out of usable Pokémon!"]
             else:
                 text = lines + ["Player is out of usable Pokémon!", "Player whited out!"]
@@ -1333,7 +1333,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
                                 if self.player_won:
 
                                     self.exit_battle()
-                                elif self.starter_battle or getattr(self, "frontier", None) or getattr(self, "xd_colo", None):
+                                elif self.starter_battle or getattr(self, "frontier", None) or getattr(self, "xd_colo", None) or getattr(self, "facility", None):
                                     self.continue_after_starter_loss()  # (healed, back where you were)
                                 else:
 
@@ -2511,6 +2511,17 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self.game.states["play"] = PlayState(self.game, restore_data=play_state_data)
             next_state = self.game.states["play"]
 
+        if isinstance(getattr(self, "facility", None), dict) and self.facility.get("world"):
+            # (a region's facility battle, 11-23 - FireRed's Trainer Tower first: no whiting out (healed, as the Frontier);
+            #  src/world/<world>.py after_battle(game, info, won) -> lines to say back on the map, or a function that
+            #  goes on itself (the next battle, a warp back to the lobby))
+            import importlib
+            nxt = importlib.import_module("src.world." + str(self.facility["world"])).after_battle(self.game, self.facility, bool(self.player_won and not lost))
+            if callable(nxt):
+                nxt()
+                return
+            if nxt and next_state is not None:
+                (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)(nxt)
         if getattr(self, "xd_colo", None) is not None:   # (XD's Orre Colosseum after the title: four in a row - src/world/xd_colosseum.py)
             from src.world import xd_colosseum
             nxt = xd_colosseum.after_battle(self.game, self.xd_colo, bool(self.player_won and not lost))
