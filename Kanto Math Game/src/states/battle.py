@@ -2314,6 +2314,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
                     p.heal_full()
         if not lost and self.player_won and self._tm_reward():
             self.game.story_manager.add_item(self._tm_reward(), 1)
+        if not lost and self.player_won and self.is_trainer_battle:
+            from src.world import feats as _feats
+            _feats.note(self.game.story_manager, "trainers")   # (a Feat: trainer battles won)
         from src.pokemon import mega_clock
         kept = mega_clock.state(self.game).get("mon") if mega_clock.active(self.game) else None
         coins = self.mv_battle_end()  # (types, items and Transform back as they were)

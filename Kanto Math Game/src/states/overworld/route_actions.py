@@ -340,6 +340,9 @@ class RouteActions:
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
         levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
+        from src.world import feats as _feats
+        _feats.note(self.game.story_manager, "finds")   # (a Feat: Pokemon found by Headbutt / Rock Smash)
+        _feats.note(self.game.story_manager, "headbutt")   # (Johto counts its Headbutt trees on their own)
 
         from src.states.battle import WildBattleState
         battle_state = WildBattleState(
@@ -458,6 +461,8 @@ class RouteActions:
             return
 
         self.show_dialogue(["Oh! A bite!"], callback=None)
+        from src.world import feats as _feats
+        _feats.note(self.game.story_manager, "fish")   # (a Feat: Pokemon fished up)
 
         bg_file = random.choice(["battle_ocean1.png", "battle_ocean2.png", "battle_ocean3.png"])
 

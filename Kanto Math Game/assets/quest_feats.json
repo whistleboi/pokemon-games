@@ -1,0 +1,166 @@
+{
+  "_about": "The Quest Book's Feats (src/world/feats.py): per region, feats with tiers [goal, reward, (older flag)]. Rewards: tm (one or a list), items {KEY: qty}, money; more for the harder tiers (Jordan, 11-22). The TMs are ones the region gives nowhere else (dev/checks/quest_book_body.py checks).",
+  "KANTO": [
+    {"id": "dex", "name": "Pokedex Pages", "count": "dex", "desc": "Own different Kanto Pokemon: catch them, evolve them, trade for them.", "tiers": [
+      [30, {"money": 5000, "items": {"GREAT_BALL": 5}}, "kanto_catch_30"],
+      [60, {"money": 5000, "items": {"ULTRA_BALL": 5}}, "kanto_catch_60"],
+      [90, {"money": 5000, "tm": "TM163"}, "kanto_catch_90"],
+      [120, {"money": 5000, "items": {"RARE_CANDY": 3}}, "kanto_catch_120"],
+      [150, {"money": 5000, "items": {"MASTER_BALL": 1}}, "kanto_catch_150"]]},
+    {"id": "types", "name": "Type Collector", "count": "types", "desc": "Own Kanto Pokemon of as many different types as you can.", "tiers": [
+      [6, {"tm": "TM032"}],
+      [12, {"tm": "TM114", "items": {"GREAT_BALL": 5}}],
+      ["all", {"tm": "TM129", "money": 5000}]]},
+    {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in Kanto. Rematches count too!", "tiers": [
+      [25, {"money": 2000}],
+      [100, {"tm": "TM150", "money": 3000}],
+      [250, {"tm": "TM149", "money": 5000}]]},
+    {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk Kanto's towns, routes and caves step by step.", "tiers": [
+      [5000, {"items": {"SUPER_POTION": 5}}],
+      [20000, {"tm": "TM004", "items": {"HYPER_POTION": 3}}],
+      [50000, {"tm": "TM265", "items": {"MAX_REVIVE": 2}}]]},
+    {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [
+      [1, {"items": {"RARE_CANDY": 2}}],
+      [5, {"tm": "TM158", "items": {"RARE_CANDY": 3}}],
+      [10, {"tm": "TM141", "money": 10000}]]},
+    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in Kanto.", "tiers": [
+      [10, {"money": 2000}],
+      [25, {"tm": "TM105", "money": 3000}],
+      [50, {"tm": "TM135", "money": 5000}]]},
+    {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [
+      [10, {"items": {"NET_BALL": 5}}],
+      [40, {"tm": "TM011", "items": {"LURE_BALL": 5}}],
+      [100, {"tm": "TM126", "items": {"NET_BALL": 10}}]]},
+    {"id": "finds", "name": "Treasure Hunter", "count": "finds", "desc": "Find wild Pokemon by Headbutting trees or smashing rocks.", "tiers": [
+      [5, {"items": {"GREAT_BALL": 5}}],
+      [20, {"tm": "TM111"}],
+      [50, {"tm": "TM119", "money": 5000}]]},
+    {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
+      [5, {"items": {"MOON_STONE": 1}}],
+      [20, {"tm": "TM083", "items": {"THUNDER_STONE": 1, "WATER_STONE": 1}}],
+      [50, {"tm": "TM125", "items": {"FIRE_STONE": 1, "LEAF_STONE": 1}}]]},
+    {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [
+      [1, {"money": 2000}],
+      [4, {"tm": "TM075", "items": {"MOON_STONE": 1}}],
+      [8, {"tm": "TM074", "money": 5000}]]},
+    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
+      [25, {"items": {"GREAT_BALL": 10}}],
+      [100, {"tm": "TM060", "items": {"ULTRA_BALL": 10}}],
+      [250, {"tm": "TM094", "money": 10000}]]},
+    {"id": "safari", "name": "Safari Explorer", "count": "safari", "desc": "Catch Pokemon in Fuchsia's Safari Zone with Safari Balls.", "tiers": [
+      [5, {"money": 3000}],
+      [15, {"tm": "TM175", "items": {"ULTRA_BALL": 5}}],
+      [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]}
+  ],
+  "JOHTO": [
+    {"id": "dex", "name": "Pokedex Pages", "count": "dex", "desc": "Own different Johto Pokemon: catch them, evolve them, hatch them, trade for them.", "tiers": [
+      [25, {"money": 5000, "items": {"GREAT_BALL": 5}}],
+      [50, {"money": 5000, "items": {"ULTRA_BALL": 5}}],
+      [75, {"money": 5000, "tm": "TM217"}],
+      [100, {"money": 5000, "items": {"RARE_CANDY": 3}}],
+      ["all", {"money": 10000, "items": {"MASTER_BALL": 1}}]]},
+    {"id": "types", "name": "Type Collector", "count": "types", "desc": "Own Johto Pokemon of as many different types as you can.", "tiers": [
+      [6, {"tm": "TM230"}],
+      [12, {"tm": "TM266", "items": {"GREAT_BALL": 5}}],
+      ["all", {"tm": "TM204", "money": 5000}]]},
+    {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in Johto. Rematches count too!", "tiers": [
+      [25, {"money": 2000}],
+      [100, {"tm": "TM167", "money": 3000}],
+      [250, {"tm": "TM192", "money": 5000}]]},
+    {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk Johto's towns, routes and caves step by step.", "tiers": [
+      [5000, {"items": {"SUPER_POTION": 5}}],
+      [20000, {"tm": "TM268", "items": {"HYPER_POTION": 3}}],
+      [50000, {"tm": "TM164", "items": {"MAX_REVIVE": 2}}]]},
+    {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [
+      [1, {"items": {"RARE_CANDY": 2}}],
+      [5, {"tm": "TM270", "items": {"RARE_CANDY": 3}}],
+      [10, {"tm": "TM306", "money": 10000}]]},
+    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in Johto.", "tiers": [
+      [10, {"money": 2000}],
+      [25, {"tm": "TM304", "money": 3000}],
+      [50, {"tm": "TM252", "money": 5000}]]},
+    {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [
+      [10, {"items": {"NET_BALL": 5}}],
+      [40, {"tm": "TM188", "items": {"LURE_BALL": 5}}],
+      [100, {"tm": "TM209", "items": {"NET_BALL": 10}}]]},
+    {"id": "headbutt", "name": "Tree Shaker", "count": "headbutt", "desc": "Headbutt trees until a wild Pokemon falls out.", "tiers": [
+      [5, {"items": {"GREAT_BALL": 5}}],
+      [20, {"tm": "TM326"}],
+      [50, {"tm": "TM271", "money": 5000}]]},
+    {"id": "smash", "name": "Rock Breaker", "count": "smash", "desc": "Find wild Pokemon hiding in rocks with Rock Smash.", "tiers": [
+      [3, {"items": {"DUSK_BALL": 5}}],
+      [10, {"tm": "TM282"}],
+      [25, {"tm": "TM220", "money": 5000}]]},
+    {"id": "apricorns", "name": "Apricorn Picker", "count": "apricorns", "desc": "Pick Apricorns from the trees around Johto. Kurt in Azalea makes them into balls.", "tiers": [
+      [10, {"money": 2000}],
+      [40, {"tm": "TM307", "items": {"ULTRA_BALL": 5}}],
+      [100, {"tm": "TM206", "money": 5000}]]},
+    {"id": "contests", "name": "Bug Catcher", "count": "contests", "desc": "Take part in the Bug-Catching Contest in the National Park.", "tiers": [
+      [1, {"items": {"GREAT_BALL": 5}}],
+      [5, {"tm": "TM300", "money": 2000}],
+      [10, {"tm": "TM219", "money": 5000}]]},
+    {"id": "contest_wins", "name": "Contest Champion", "count": "contest_wins", "desc": "Win first place in the Bug-Catching Contest.", "tiers": [
+      [1, {"money": 3000}],
+      [3, {"tm": "TM185", "items": {"ULTRA_BALL": 5}}],
+      [5, {"tm": "TM346", "money": 10000}]]},
+    {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
+      [5, {"items": {"SUN_STONE": 1}}],
+      [20, {"tm": "TM240", "items": {"KINGS_ROCK": 1}}],
+      [50, {"tm": "TM227", "items": {"METAL_COAT": 1, "DRAGON_SCALE": 1}}]]},
+    {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [
+      [1, {"money": 2000}],
+      [4, {"tm": "TM260", "items": {"SUN_STONE": 1}}],
+      [8, {"tm": "TM190", "money": 5000}]]},
+    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
+      [25, {"items": {"GREAT_BALL": 10}}],
+      [100, {"tm": "TM193", "items": {"ULTRA_BALL": 10}}],
+      [250, {"tm": "TM180", "money": 10000}]]}
+  ],
+  "ORANGE": [
+    {"id": "dex", "name": "Pokedex Pages", "count": "dex", "desc": "Own different Orange Islands Pokemon: catch them, evolve them, trade for them.", "tiers": [
+      [25, {"money": 5000, "items": {"GREAT_BALL": 5}}],
+      [50, {"money": 5000, "items": {"ULTRA_BALL": 5}}],
+      [75, {"money": 5000, "tm": "TM218"}],
+      ["all", {"money": 10000, "items": {"MASTER_BALL": 1}}]]},
+    {"id": "islands", "name": "Island Hopper", "count": "places", "match": "ISLAND", "desc": "Set foot on as many of the Orange Islands as you can. Some are well hidden!", "tiers": [
+      [5, {"items": {"SUPER_POTION": 5}, "money": 2000}],
+      [15, {"tm": "TM208", "items": {"MAX_REPEL": 5}}],
+      ["all", {"tm": "TM165", "money": 10000}]]},
+    {"id": "types", "name": "Type Collector", "count": "types", "desc": "Own Orange Islands Pokemon of as many different types as you can.", "tiers": [
+      [6, {"tm": "TM203"}],
+      [12, {"tm": "TM257", "items": {"GREAT_BALL": 5}}],
+      ["all", {"tm": "TM198", "money": 5000}]]},
+    {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in the Orange Islands. Rematches count too!", "tiers": [
+      [25, {"money": 2000}],
+      [100, {"tm": "TM243", "money": 3000}],
+      [250, {"tm": "TM186", "money": 5000}]]},
+    {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk the islands' towns, routes and caves step by step.", "tiers": [
+      [5000, {"items": {"SUPER_POTION": 5}}],
+      [20000, {"tm": "TM196", "items": {"HYPER_POTION": 3}}],
+      [50000, {"tm": "TM342", "items": {"MAX_REVIVE": 2}}]]},
+    {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [
+      [1, {"items": {"RARE_CANDY": 2}}],
+      [5, {"tm": "TM260", "items": {"RARE_CANDY": 3}}],
+      [10, {"tm": "TM170", "money": 10000}]]},
+    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in the Orange Islands.", "tiers": [
+      [10, {"money": 2000}],
+      [25, {"tm": "TM228", "money": 3000}],
+      [50, {"tm": "TM210", "money": 5000}]]},
+    {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [
+      [10, {"items": {"NET_BALL": 5}}],
+      [40, {"tm": "TM316", "items": {"DIVE_BALL": 5}}],
+      [100, {"tm": "TM258", "items": {"NET_BALL": 10}}]]},
+    {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
+      [5, {"items": {"WATER_STONE": 1}}],
+      [20, {"tm": "TM289", "items": {"THUNDER_STONE": 1, "LEAF_STONE": 1}}],
+      [50, {"tm": "TM214", "items": {"FIRE_STONE": 1, "MOON_STONE": 1}}]]},
+    {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [
+      [1, {"money": 2000}],
+      [4, {"tm": "TM211", "items": {"WATER_STONE": 1}}],
+      [8, {"tm": "TM347", "money": 5000}]]},
+    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
+      [25, {"items": {"GREAT_BALL": 10}}],
+      [100, {"tm": "TM345", "items": {"ULTRA_BALL": 10}}],
+      [250, {"tm": "TM281", "money": 10000}]]}
+  ]
+}

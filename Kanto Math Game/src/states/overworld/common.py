@@ -514,6 +514,9 @@ def _run_story_event(state, key, check, show):
             continue
         story.inventory[item] = story.inventory.get(item, 0) + qty
         lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
+        if item.endswith("_APRICORN"):
+            from src.world import feats as _feats
+            _feats.note(story, "apricorns", qty)   # (a Feat: Apricorns picked; Johto)
     for item, qty in (ev.get("take_item") or {}).items():
         story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
     if ev.get("heal"):  # a nurse in a building (Silph Co.): like a Pokemon Center

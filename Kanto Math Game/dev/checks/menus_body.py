@@ -133,16 +133,18 @@ check(mm.kanto_track("town", "JOHTO") is None, "other regions keep their own mus
 from src.states.menus import RegionSelectionState
 check("Sevii Islands" in RegionSelectionState.SUB_REGIONS["KANTO"], "the region cards list their sub-regions")
 
-print("Journal: a list and the picked mission in full")
+print("Journal (the Quest Book, 11-22): a list and the picked row in full")
 from src.states.systems import JournalState
-jn = JournalState(g, city); g.change_state(jn); jn.draw()
-if len(jn.missions) > 1:
-    tap(jn, jn.row_rect(1).center)
-    check(jn.selected == 1, "tapping a mission shows it")
+jn = JournalState(g, city); g.change_state(jn); jn.set_tab("SIDE"); jn.draw()
+live = [k for k in range(min(jn.ROWS, len(jn.rows) - jn.scroll_idx)) if (jn.missions[jn.scroll_idx + k] or {}).get("status") == "ACTIVE"]
+if live:
+    k = live[-1]
+    tap(jn, jn.row_rect(k).center)
+    check(jn.selected == jn.scroll_idx + k, "tapping an errand shows it")
     jn.toggle_guide()
     from src.world import guide
-    check((guide.tracked_mission(g) or {}).get("id") == jn.missions[1]["id"] and jn.btn_guide.text == "GUIDING",
-          "GUIDE ME follows the picked mission")
+    check((guide.tracked_mission(g) or {}).get("id") == jn.missions[jn.selected]["id"] and jn.btn_guide.text == "GUIDING",
+          "GUIDE ME follows the picked errand")
 jn.draw()
 
 print("The rest of the Kanto soundtrack: screen themes and fanfares")
