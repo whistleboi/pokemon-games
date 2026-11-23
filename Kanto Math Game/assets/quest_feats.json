@@ -223,6 +223,7 @@
     {"id": "grottoes", "name": "Grotto Explorer", "count": "grottoes", "desc": "Find what waits in Unova's Hidden Grottoes: through gaps in the trees, now and then something new.", "tiers": [[1, {"items": {"QUICK_BALL": 3}}], [10, {"tm": "TM098", "money": 3000}], [30, {"tm": "TM132", "money": 5000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [[5, {"items": {"WATER_STONE": 1}}], [20, {"tm": "TM162", "items": {"DUSK_STONE": 1, "SHINY_STONE": 1}}], [50, {"tm": "TM100", "items": {"DAWN_STONE": 1, "MOON_STONE": 1}}]]},
     {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM331", "items": {"SUN_STONE": 1}}], [8, {"tm": "TM252", "money": 5000}]]},
-    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM248", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM330", "money": 10000}]]}
+    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM248", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM330", "money": 10000}]]},
+    {"id": "subway", "name": "Subway Regular", "count": "subway", "desc": "Win Battle Subway battles in a row on any line from Gear Station: your best streak counts.", "tiers": [[7, {"money": 3000}], [21, {"items": {"RARE_CANDY": 2}}], [49, {"money": 10000, "items": {"MAX_REVIVE": 2}}]]}
   ]
 }

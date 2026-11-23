@@ -2793,7 +2793,11 @@ def _b2_battle(label, tid, flag, lines, won, done, name=None, **kw):
 
 NIMBASA_ROOMS = {62: "MAIN", 65: "center", 79: "stadium", 80: "stadium_stands", 84: "court", 85: "court_stands",
                  88: "house_w", 89: "house_w_2f", 94: "house_e", 95: "house_e_2f", 93: "institute", 91: "gate_w", 92: "gate_e",
-                 64: "park", 63: "gym", 585: "coaster"}
+                 64: "park", 63: "gym", 585: "coaster",
+                 # batch 4b: Gear Station (66), its eight platforms (67-74: the lines in the file's own order, text 76 lines 18-25),
+                 # the Subway car (75) and the lines' end station (76)
+                 66: "gear", 67: "plat_single", 68: "plat_double", 69: "plat_multi", 70: "plat_wifi", 71: "plat_super_single",
+                 72: "plat_super_double", 73: "plat_super_multi", 74: "plat_anville", 75: "car", 76: "subway_stop"}
 NIMBASA_AREAS = {329: "UNOVA_ROUTE_5", 383: "UNOVA_ROUTE_16", 490: "JOIN_AVENUE"}
 OUTSIDE.update({z: -1 for z in NIMBASA_ROOMS if z != 62})
 OUTSIDE.update({384: 383, 330: 329})   # (Route 16's Bridge Gate, Route 5's trailer)
@@ -3129,10 +3133,154 @@ NIMBASA_PARK = nimbasa_room(64, {
             {"who": "Gym guide outside", "trigger": {"zone": [70, 10, 72, 11]}, "condition": ["not:b2_elesa_coaster"], "every": True,
              "lines": ["The Gym Leader is out right now. Try the roller coaster building!"], "push": [0, 1]}])
 NIMBASA_PARK["rooms_note"] = "the park is a separate map (zone 64), as Castelia's streets"
+
+# ------------------------------------------------------------------------------------------ Gear Station, the Battle Subway
+# (batch 4b, 11-23; Jordan: "all lines", "Lv 50, as Black 2", "walk into the car"). Zone 66 is the round hall: eight stairways
+# down to the lines' platforms (67-74, in the file's own order of text 76: Single, Double, Multi, Wi-Fi, Super Single, Super
+# Double, Super Multi, Anville), its way out up the stairs (16, 37) to Nimbasa. On each platform the Depot Agent (n0, script
+# 10333) boards you; the train is the car room (75): the next Trainer walks in from the next car (a scene for each walking
+# look: Black 2's own class -> overworld table, overlay 12), and the battle follows. After seven, the line's end station (76).
+# All of it runs in src/world/battle_subway.py from assets/b2_subway.json (dev/builders/unova_subway.py). The Wi-Fi Train is
+# a link feature: its platform says so. The Brown Line (74) runs to Anville Town.
+_SUBWAY_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "assets", "b2_subway.json")
+SUBWAY = json.load(open(_SUBWAY_JSON, encoding="utf-8"))
+SUBWAY_LINES = {67: "single", 68: "double", 69: "multi", 71: "super_single", 72: "super_double", 73: "super_multi"}
+_LINE_NAME = {"single": "Single Train", "double": "Double Train", "multi": "Multi Train", "super_single": "Super Single Train",
+              "super_double": "Super Double Train", "super_multi": "Super Multi Train"}
+
+
+def _platform(z):
+    line = SUBWAY_LINES.get(z)
+    if line:
+        agent = {"text": "Depot Agent", "action": "EVENT", "event": {"world": "battle_subway", "board": line}}
+        title = "Platform: " + _LINE_NAME[line]
+    elif z == 70:
+        agent = _say("Depot Agent", "This is the platform for Wi-Fi Trains. They run on link play with Trainers far away.",
+                     "That train isn't running here. The other lines are all open!")
+        title = "Platform: Wi-Fi Train"
+    else:   # (the Brown Line: no battles, the local train out to Anville Town)
+        agent = {"text": "Depot Agent", "action": "EVENT", "event": {
+            "lines": ["Depot Agent: This is the platform for the train to Anville Town. It's a local train: no battles aboard!",
+                      "All aboard! ...The train rattles out of Nimbasa and across the countryside, all the way to Anville Town."],
+            "travel": "ANVILLE_TOWN", "land": [None, 21, 52]}}
+        title = "Platform: Anville Town"
+    ppl = {0: agent, 1: _say("Rail fan", "I come to watch the trains leave. Each line's car is different!"),
+           2: _say("Rail fan's friend", "Seven Trainers ride each train. Beat them all and the line goes on and on!")}
+    if z == 74:
+        ppl = {0: agent, 1: _say("Rail fan", "The Brown Line doesn't battle. It's a quiet local train out to Anville Town.")}
+    return nimbasa_room(z, ppl, {(6, 15): ["It's a subway map of the Unova region.", "Eight lines run from Gear Station."]},
+                        title=title)
+
+
+def _car_scenes():
+    """The car: whoever's next walks in from the next car's door and challenges you (one scene per walking look)."""
+    looks = sorted({t["walk"] for t in SUBWAY["trainers"].values() if t.get("walk")} | {"b2_c207.png", "b2_c107.png"})
+    return [{"trigger": "enter", "every": True, "condition": ["world:battle_subway:foe:" + w],
+             "cast": [{"sheet": w, "from": [15, 4], "to": "player", "lines": ["(The door to the next car slides open...)"],
+                       "then": "event:b2_subway_fight", "stay": True}]} for w in looks]
+
+
+GEAR = nimbasa_room(66, {
+    0: _say("Man by the map", "You can take the Battle Subway from Gear Station!"),
+    1: _say("Depot Agent", "The Battle Subway is where Trainers come to see who's strongest!"),
+    2: {"text": "Depot Agent by the stairs", "action": "EVENT",
+        "event": {"lines": ["The Battle Subway has seven lines in all! At first you can ride the Single, Double and Multi Trains.",
+                            "Beat a Subway Boss and that line's Super train opens. Those Trainers are really tough!"]}},
+    3: _say("Interviewer", "Hi, hi! I'm asking Trainers what they say before a battle, and how they feel when they win!",
+            "...You'd rather keep it a secret? That's fine! Good luck on the Subway!"),
+    4: _say("Ace Trainer", "I lost on the 20th Trainer again... One more and I'd have met the Subway Boss!"),
+}, {}, extra_people=[(12, 28, {"text": "Exchange: items", "action": "BP_SHOP", "shop": "b2w2_items", "color": "GOLD"}),
+                     (21, 28, {"text": "Exchange: TMs", "action": "BP_SHOP", "shop": "b2w2_tms", "color": "GOLD"})],
+    title="Gear Station")
+for _x in range(14, 18):   # (the stairs up to Nimbasa: the file's warp 8 goes "back where you came from")
+    GEAR["art"][37] = GEAR["art"][37][:_x] + "z" + GEAR["art"][37][_x + 1:]
+GEAR["exits"]["z"] = "ROOM:MAIN"   # (a letter of its own: nimbasa_room gives "v", "^"... to the platforms' stairways)
+CAR = nimbasa_room(75, {}, {}, scenes=_car_scenes(), title="Battle Subway train",   # (a passenger in a seat: a room with nobody
+                   extra_people=[(2, 1, _say("Passenger", "The rocking train softly rattles...",   # in it plays no scenes yet, Main's
+                                            "How many stops since we left Nimbasa?"))])         # inbox clean-main-unova-scenes-empty-room)
+SUBWAY_STOP = nimbasa_room(76, {
+    0: {"text": "Depot Agent", "action": "EVENT", "event": {"world": "battle_subway", "stop": True}},
+    1: {"text": "Depot Agent ", "action": "EVENT", "event": {"world": "battle_subway", "stop": True}},
+    2: _say("Trainer resting", "I'm taking a little rest here. These Trainers are tough!",
+            "I wonder how far I'll get with my skills."),
+}, {}, title="Battle Subway station")
+CAR["landings"] = [[8, 4]]              # (no door: the train's own ride puts you aboard and takes you off: battle_subway.py CAR)
+SUBWAY_STOP["landings"] = [[20, 12]]    # (the lines' end: off the train here, battle_subway.py STOP_AT)
+SUBWAY_ROOMS = {"gear": GEAR, "car": CAR, "subway_stop": SUBWAY_STOP}
+SUBWAY_ROOMS.update({NIMBASA_ROOMS[z]: _platform(z) for z in range(67, 75)})
+
+# -------------------------------------------------------------------------------------------------------------- Anville Town
+# (batch 4b, 11-23) Zone 418 (a map of its own, matrix 128), its houses 419-421. Reached only by the Brown Line from Gear
+# Station (the platform's Depot Agent; here the station's agent, n2, takes you back). Black 2's people by their own n:
+# the girl who lost her Pansage (it rode the wrong train: the Depot Agent outside Nimbasa's Musical Theater has it), the
+# Worker on the bridge (the turntable's car of the day: src/world/anville.py), the weekend crowd and its three traders
+# (Saturday / Sunday, not on the Hyperspeed Train's days), the flautist, and the lost-and-found Depot Agent's house (421).
+OUTSIDE.update({419: 418, 420: 418, 421: 418})
+NIMBASA_PANSAGE = {"text": "Depot Agent by the theater", "action": "EVENT", "condition": ["not:b2_pansage_back"], "event": {
+    "stages": [{"flag": "b2_pansage_back", "requires": ["b2_pansage_asked"],
+                "lines": ["Depot Agent: This Pansage got off a train all on its own. It keeps looking towards the Brown Line...",
+                          "A girl in Anville Town lost her Pansage? Then this must be it! Please take it home to her!",
+                          "(You take the Pansage with you, to bring it back to Anville Town.)"]}],
+    "then": {"lines": ["Depot Agent: A Pansage got off a train here all by itself. I wonder who it belongs to..."]}}}
+_WEEKEND = ["world:anville:weekend"]
+ANVILLE_PEOPLE = {
+    0: {"text": "Girl on the platform", "action": "EVENT", "event": {"stages": [
+        {"flag": "b2_pansage_asked", "lines": ["Oh, Pansage... where could you be?",
+                                                "We went to the amusement park in Nimbasa and saw a musical. But on the way home, "
+                                                "Pansage got on a different train!", "I wonder where it is now..."]},
+        {"flag": "b2_pansage_reward", "requires": ["b2_pansage_back"],
+         "lines": ["Oh! Pansage! You found it! Thank you so, so much. This isn't much, but please take it."],
+         "gift_item": {"BRIGHT_POWDER": 1}}],
+        "then": {"lines": ["My silly Pansage... A man with green hair told me Pansage's dream is to be a railroad conductor!",
+                           "But... can he really talk with Pokemon?"]}}},
+    15: _say("Pansage", "Pansage: Ook!", condition=["b2_pansage_reward"]),
+    1: {"text": "Worker on the bridge", "action": "EVENT", "event": {"world": "anville", "turntable": True,
+                                                                     "lines": ["Oh, are you curious about that train too?"]}},
+    2: {"text": "Depot Agent", "action": "EVENT", "event": {
+        "lines": ["Depot Agent: A train to Nimbasa City is leaving shortly. All aboard!",
+                  "...The train rolls back across the plains and into Gear Station."],
+        "travel": "NIMBASA_CITY", "land": ["plat_anville", 11, 14]}},
+    3: _say("Rich Boy", "This is a quiet town! Relax and stay for a while."),
+    4: {"text": "Traveller with a pack", "action": "EVENT", "condition": _WEEKEND, "event": {
+        "world": "anville", "trade": "REVIVE", "lines": ["Ah... I'm in trouble. I got so caught up in my trip, I ran out of Escape Ropes."]}},
+    5: {"text": "Collector", "action": "EVENT", "condition": _WEEKEND + ["world:anville:item:PP_UP"], "event": {
+        "world": "anville", "trade": "PP_UP", "lines": ["I collect Star Pieces! You, over there! Let's do business."]}},
+    6: {"text": "Lady by the tracks", "action": "EVENT", "condition": _WEEKEND, "event": {
+        "world": "anville", "trade": "FULL_RESTORE", "lines": ["With that face, I bet you have something I want. Poke Balls!"]}},
+    7: _say("Depot Agent on the bridge", "A lot of train cars come to rest here.", "If there are lots of people, I feel like the trains are happy!"),
+    8: _say("Hiker", "It's so lively on weekends! Me? I came to watch the trains.", condition=_WEEKEND),
+    9: _say("Woman", "You can trade all sorts of items here. It was surprisingly fun when I tried!", condition=_WEEKEND),
+    10: _say("Man with a camera", "I wanted a picture from exactly this angle!", condition=_WEEKEND),
+    11: _say("Boy by the fence", "The thing that turns the trains round is called a turntable!"),
+    12: _say("Little boy", "Trains are so cooool! My mom brought me, but now she's off taking pictures somewhere.", condition=_WEEKEND),
+    13: _say("Man", "On weekends, loads of people come to watch the trains. Do you trade items too?", condition=_WEEKEND),
+    14: _say("Girl", "If there are lots of people, I think the trains are happy!", condition=_WEEKEND),
+    16: _say("Flautist", "(A beautiful tune is spreading throughout the town...)"),
+}
+ANVILLE_SIGNS = {(20, 47): ["ANVILLE TOWN", "Rolling Out the Steel Rails"], (33, 37): ["It's a subway map of the Unova region."]}
+ANVILLE = town(
+    418, ANVILLE_PEOPLE, ANVILLE_SIGNS, {419: ("house", "house_n"), 420: ("house", "house_w"), 421: ("house", "lost_found")},
+    rooms={
+        "house_n": room(419, {0: _say("Woman by the window", "Maybe it's the design... trains run so fast and still feel so comfortable.",
+                                      "Every part working together. Simple, but so beautiful!"),
+                              1: _say("Man at the table", "Isn't it amazing? Just riding a train, you can see so many kinds of scenery."),
+                              2: _say("Nursery Aide", "Everyone in this town loves trains!")},
+                        {}, (40, 37)),
+        "house_w": room(420, {0: _say("Man by the shelf", "On weekends, item collectors gather here. They'll trade you for different items."),
+                              1: _say("Boy", "Everyone sure loves trains!"),
+                              2: _say("Old man", "One day I'll take the Subway Bosses Ingo and Emmet down!")},
+                        {}, (35, 47)),
+        "lost_found": room(421, {0: {"text": "Depot Agent", "action": "EVENT", "event": {"world": "anville", "lost_found": True}}},
+                           {}, (44, 47)),
+    },
+    title="Anville Town")
+ANVILLE["landings"] = [[21, 52]]   # (the station: in and out by the Brown Line only)
+
+
 NIMBASA = town(
     62, NIMBASA_PEOPLE, NIMBASA_SIGNS,
     {65: ("center", "center"), 79: ("house", "stadium"), 84: ("house", "court"), 88: ("house", "house_w"),
-     94: ("house", "house_e"), 93: ("house", "institute"), 91: ("gate", "gate_w"), 92: ("gate", "gate_e")},
+     94: ("house", "house_e"), 93: ("house", "institute"), 91: ("gate", "gate_w"), 92: ("gate", "gate_e"), 66: ("house", "gear")},
     rooms={
         "center": nimbasa_room(65, {
             0: {"text": "Pokémon Center", "action": "HEAL"}, 3: {"text": "Shop", "action": "SHOP"},
@@ -3218,9 +3366,10 @@ NIMBASA = town(
             1: _say("Woman in the gate", "Two years ago, a Zoroark hid its lair in Lostlorn Forest on Route 16."),
             2: _say("Man at the board", "This way leads to Route 16 and Marvelous Bridge!"),
         }, {1: ["ROUTE 16  -  NIMBASA CITY"]}, title="Nimbasa Gate"),
-        "park": NIMBASA_PARK, "gym": NIMBASA_GYM, "coaster": NIMBASA_COASTER,
+        "park": NIMBASA_PARK, "gym": NIMBASA_GYM, "coaster": NIMBASA_COASTER, **SUBWAY_ROOMS,
     },
     hidden={"18,49": "THUNDER_STONE"},
+    extra_people=[(50, 19, NIMBASA_PANSAGE)],
     edges={"v": ("JOIN_AVENUE", [(x, 63) for x in range(45, 48)]), "}": ("ROOM:park", [(52, y) for y in range(44, 49)])},
     scenes=NIMBASA_SCENES,
 )
@@ -3346,4 +3495,5 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "ROYAL_UNOVA": ROYAL_UNOVA,
         "UNOVA_ROUTE_4": ROUTE_4, "DESERT_RESORT_ENTRANCE": DESERT_ENTRANCE, "DESERT_RESORT": DESERT_RESORT,
         "RELIC_CASTLE": RELIC_CASTLE, "JOIN_AVENUE": JOIN_AVENUE,
-        "NIMBASA_CITY": NIMBASA, "UNOVA_ROUTE_16": ROUTE_16, "LOSTLORN_FOREST": LOSTLORN, "UNOVA_ROUTE_5": ROUTE_5}
+        "NIMBASA_CITY": NIMBASA, "UNOVA_ROUTE_16": ROUTE_16, "LOSTLORN_FOREST": LOSTLORN, "UNOVA_ROUTE_5": ROUTE_5,
+        "ANVILLE_TOWN": ANVILLE}
