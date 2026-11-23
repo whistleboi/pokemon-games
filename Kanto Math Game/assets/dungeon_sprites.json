@@ -14285,6 +14285,8 @@
   },
   "townsperson": "NPC 17.png",
   "players": {
+    "lucas": "pt_hero.png",
+    "dawn": "pt_heroine.png",
     "nate": "b2_nate.png",
     "rosa": "b2_rosa.png",
     "red": "trchar000_1.png",
@@ -14629,5 +14631,10 @@
         }
       ]
     }
+  },
+  "region_followers": {
+    "_about": "A region's own overworld sheets for its Pokemon (assets/dungeon/characters), by follower sheet name (species, species_form, form id), used before assets/dungeon/followers while you're in that region; anywhere else they're the fallback for a form the follower sheets lack (Jordan 11-23: a game-built region's own sheets first, followers as fallback; a form only one region drew follows you everywhere with that region's sheet). dungeon.region_sheet_paths.",
+    "ORANGE": {"249": "oi_138.png"},
+    "UNOVA": {"494": "b2_victini.png", "628": "b2_c4712.png", "630": "b2_c348.png"}
   }
 }

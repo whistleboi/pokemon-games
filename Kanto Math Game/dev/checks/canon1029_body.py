@@ -669,6 +669,7 @@ check(_lr.redo_region(story) is None, "one title: no League Redo yet")
 story.story_flags["beat_johto_champion"] = True
 check(_lr.redo_region(story) == "KANTO", "a second title opens Kanto's")
 story.current_area_key = "VIRIDIAN_CITY"
+story.catch_milestones()   # (a milestone still to pay is shown first, and the call waits a visit: clear it)
 _city = _CS21(g); g.change_state(_city)
 _said = " ".join(str(l) for l in (getattr(_city.dialogue_box, "text_lines", None) or [])) if getattr(_city, "dialogue_box", None) else ""
 check(story.story_flags.get("league_redo_told_KANTO") and "Professor Oak" in " ".join(_lr.call_lines(story, "KANTO")),
@@ -1119,10 +1120,14 @@ g.data.data["pokedex"] = {str(_i): {"id": _i} for _i in range(1, 65)}
 g.data.data["pokedex"].update({str(_i): {"id": _i} for _i in range(152, 182)})  # other regions don't count
 _m0 = story.money
 _lines = story.catch_milestones()
-check(story.story_flags.get("kanto_catch_30") and story.story_flags.get("kanto_catch_60")
-      and not story.story_flags.get("kanto_catch_90") and story.money - _m0 == 2 * story.CATCH_BONUS,   # (the bonus: $5,000 since 11-10)
-      f"64 Kanto species: the 30 and 60 bonuses ({_lines})")
-check(story.catch_milestones() == [] and story.money - _m0 == 2 * story.CATCH_BONUS, "and only once")
+from src.world import feats as _feats29
+if _feats29.feats(g, "KANTO"):   # (11-22: Kanto's catch bonuses are its Pokedex Feat now, Quest Book: no money milestones)
+    check(not story.story_flags.get("kanto_catch_30") and story.money == _m0, f"64 Kanto species: the Pokedex Feat counts them, no old bonus ({_lines})")
+else:
+    check(story.story_flags.get("kanto_catch_30") and story.story_flags.get("kanto_catch_60")
+          and not story.story_flags.get("kanto_catch_90") and story.money - _m0 == 2 * story.CATCH_BONUS,   # (the bonus: $5,000 since 11-10)
+          f"64 Kanto species: the 30 and 60 bonuses ({_lines})")
+    check(story.catch_milestones() == [] and story.money - _m0 == 2 * story.CATCH_BONUS, "and only once")
 _cm = {m["id"]: m for m in g.loader.area_data["JOURNAL_MISSIONS"] if str(m.get("id", "")).startswith("cm")}
 if _cm:
     _ui = story._prepare_mission_for_ui(_cm["cm90"])
@@ -1883,7 +1888,7 @@ for _k54, _a54 in _sp54.items():
         for _b54 in _bs54:
             if _b54.get("id") and _leg54(_b54["id"]):
                 _wins54[_b54.get("victory_flag") or f"{_k54}_boss_defeated"] = (_b54["name"], _k54)
-_done54 = {m.get("completed_flag") for m in _ms54.values()}
+_done54 = {f for m in _ms54.values() for f in story.mission_flags(m)}   # (a flag, or a list: a place's legends)
 check(set(_wins54) <= _done54, f"each Sevii legendary has a mission ({sorted(n for n, _ in _wins54.values())})")
 _fl54 = dict(story.story_flags); _area54 = story.current_area_key
 story.current_area_key = "SEVEN_ISLAND"
