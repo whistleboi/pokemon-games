@@ -166,10 +166,9 @@ for k in range(4):
 
 
 def ride(at, face):
-    # (in at the entrance, then put on the platform: a platform reached only by car isn't kept as your spot coming back to
-    # the room - a shared walk_town fix, sent to Main's inbox 11-23: clean-main-unova-room-landings)
-    st = town("NIMBASA_CITY", (14, 40), "coaster", face)
-    st.player, st.facing = tuple(at), face
+    # (straight onto the platform: a car-only platform is kept as your spot, by the room's "landings" - main 11-23)
+    st = town("NIMBASA_CITY", at, "coaster", face)
+    check(tuple(st.player) == tuple(at), f"back in the room on its platform {at}")
     st.step(*face)
     quiet = 0
     for _ in range(600):   # (the car moves a tile at a time: wait till the ride has stopped for a while)
@@ -183,7 +182,7 @@ def ride(at, face):
 
 
 check(ride((14, 40), (0, -1)) == (22, 40), "the entrance's car: off at the middle platform")
-st = town("NIMBASA_CITY", (14, 40), "coaster", (0, -1)); st.player = (29, 34); st.step(0, -1); settle(120)
+st = town("NIMBASA_CITY", (29, 34), "coaster", (0, -1)); st.step(0, -1); settle(120)
 check(flags.get("b2_coaster_sw0"), "the middle platform's switch flips")
 check(ride((22, 40), (0, -1)) == (16, 28), "...now the middle's car goes to the left platform")
 check(ride((16, 16), (0, -1)) == (16, 15), "the left platform's top car: no track yet (you just step to its edge)")
@@ -240,7 +239,10 @@ st = town("NIMBASA_CITY", (10, 59), "gym", (0, -1))
 r0 = st.light_radius()
 for _ in range(6):
     st.step(0, -1); settle(20)
-check(r0 is not None and flags.get("b2_elesa_lit1") and st.light_radius() > r0, "the first trigger lights the next stretch")
+check(r0 is not None and flags.get("b2_elesa_lit1"), "the first trigger lights the next stretch")
+_lit = [z for z in st.dark.get("lit", []) if z[4] is None or flags.get(z[4])]
+check(any(z[4] == "b2_elesa_lit1" for z in _lit) and not any(z[4] == "b2_elesa_lit2" for z in _lit),
+      "...that stretch only, up to its model (the next still dark)")
 check(tmaps["NIMBASA_CITY"]["rooms"]["gym"]["dark"].get("lit"), "the lit stretches are in the map, for main's section lighting")
 check(tmaps["LOSTLORN_FOREST"].get("hidden", {}).get("19,33") == "GRASS_GEM", "Lostlorn's hidden Grass Gem, where Black 2 hides it")
 import os as _os
