@@ -38527,6 +38527,7 @@
   ],
   "rooms": {
    "gate": {
+    "title": "Gate",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -40101,6 +40102,7 @@
   ],
   "rooms": {
    "apricornhouse": {
+    "title": "House",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -42209,6 +42211,7 @@
   ],
   "rooms": {
    "center": {
+    "title": "Pokémon Center",
     "theme": "room",
     "art": [
      "ccccccccccccccccc",
@@ -42370,6 +42373,7 @@
     ]
    },
    "center_2": {
+    "title": "Pokémon Center 2F",
     "theme": "room",
     "art": [
      "ccccccccccccccccc",
@@ -47666,6 +47670,7 @@
   ],
   "rooms": {
    "gate": {
+    "title": "Gate",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -47972,6 +47977,7 @@
   ],
   "rooms": {
    "daycare": {
+    "title": "Day-Care",
     "theme": "room",
     "art": [
      "cccccccc",
@@ -51766,6 +51772,7 @@
   ],
   "rooms": {
    "gate": {
+    "title": "Gate",
     "theme": "room",
     "art": [
      "cccccccccccccccccccccccccccccc",
@@ -63643,6 +63650,7 @@
   ],
   "rooms": {
    "farmhouse": {
+    "title": "Moomoo Farm",
     "theme": "room",
     "art": [
      "cccccccccccccc",
@@ -63806,6 +63814,7 @@
     ]
    },
    "barn": {
+    "title": "Barn",
     "theme": "room",
     "art": [
      "ccccccccccccccccccccc",
@@ -73964,6 +73973,7 @@
   },
   "rooms": {
    "hiddenpower": {
+    "title": "House",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -74082,6 +74092,7 @@
     ]
    },
    "magikarphouse": {
+    "title": "Fishing Guru House",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -80360,7 +80371,7 @@
      "ccc..oooooooooocooccoooooooooooocooccccccccccccccc",
      "cc...oooooooooccccoooooooooooooocooccccccccccccccc",
      "ccX..oooooooccccoooooooooooooooooooccccc.ccc..cccc",
-     "ccX..ooooooocoocoooooooooooooooooocccooc...c...ccc",
+     "cc...ooooooocoocoooooooooooooooooocccooc...c...ccc",
      "cc...qcooooccooooooooooooooooooooooccoo........ccc",
      "cc.N.qooooooocoooooooooooooooooooooccoo........ccc",
      "cc...qcoooooocooooooooo...oooooooocooooc...c..N.cc",
@@ -80406,8 +80417,7 @@
     "trainer_spots": [
      "Ace Trainer Kobe",
      "Ace Trainer Piper",
-     "Twins Clea & Gil",
-     "Cooltrainer Darin"
+     "Twins Clea & Gil"
     ],
     "signs": [
      [
@@ -80493,7 +80503,6 @@
    "B1F"
   ],
   "figure_floors": {
-   "Cooltrainer Darin": 1,
    "MAX ELIXIR": 1,
    "IRON": 1,
    "CALCIUM": 1,
@@ -81157,6 +81166,7 @@
   ],
   "rooms": {
    "tmhouse": {
+    "title": "House",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -81516,6 +81526,7 @@
   ],
   "rooms": {
    "resthouse": {
+    "title": "Rest House",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -89082,6 +89093,7 @@
   ],
   "rooms": {
    "center": {
+    "title": "Pokémon Center",
     "theme": "room",
     "art": [
      "ccccccccccccccccc",
@@ -89240,6 +89252,7 @@
     ]
    },
    "center_2": {
+    "title": "Pokémon Center 2F",
     "theme": "room",
     "art": [
      "ccccccccccccccccc",
@@ -89398,6 +89411,7 @@
     ]
    },
    "mart": {
+    "title": "Poké Mart",
     "theme": "room",
     "art": [
      "cccccccccccccc",
@@ -89621,6 +89635,7 @@
     ]
    },
    "tutors": {
+    "title": "Move Tutors",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -91420,6 +91435,7 @@
   },
   "rooms": {
    "center": {
+    "title": "Pokémon Center",
     "theme": "room",
     "art": [
      "ccccccccccccccccc",
@@ -91578,6 +91594,7 @@
     ]
    },
    "center_2": {
+    "title": "Pokémon Center 2F",
     "theme": "room",
     "art": [
      "ccccccccccccccccc",
@@ -313694,6 +313711,7 @@
   ],
   "rooms": {
    "celebhouse": {
+    "title": "Celebrity House",
     "theme": "room",
     "art": [
      "ccccccccccc",
@@ -313983,6 +314001,7 @@
   "rooms": {
    "jfactory": {
     "theme": "room",
+    "title": "Battle Factory",
     "art": [
      "cmmmccmcccmcccmmccccccccccc",
      "cmmmmmmmccmcccmmccccccccccc",
@@ -314502,6 +314521,7 @@
    },
    "jhall": {
     "theme": "room",
+    "title": "Battle Hall",
     "art": [
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc",
@@ -314597,6 +314617,7 @@
    },
    "jcastle": {
     "theme": "room",
+    "title": "Battle Castle",
     "art": [
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
@@ -314707,6 +314728,7 @@
    },
    "jarcade": {
     "theme": "room",
+    "title": "Battle Arcade",
     "art": [
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",

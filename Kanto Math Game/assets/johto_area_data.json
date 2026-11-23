@@ -4186,8 +4186,6 @@
 
             "trainer_pool": [
 
-                {"name": "Cooltrainer Darin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [148], "rewards": {"balls": 5, "DRATINI": 1}, "victory_flag": "received_den_dratini"},
-
                 {"name": "Ace Trainer Kobe", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [148], "rewards": {"balls": 2}},
 
                 {"name": "Ace Trainer Piper", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [116, 116, 117], "rewards": {"balls": 2}},
