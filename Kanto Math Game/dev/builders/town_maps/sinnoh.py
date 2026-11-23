@@ -7714,7 +7714,7 @@ MAPS = {
                     "ccccff........cc",
                     "ccff..........cc",
                     "ccff....N.....cc",
-                    "cccc..ff......cc",
+                    "cccc..ffN.....cc",
                     "cccc..........cc",
                     "ccccf.......cccc",
                     "ccccff......cccc",
