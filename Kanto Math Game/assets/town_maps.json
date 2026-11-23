@@ -94811,7 +94811,7 @@
    "cccccccccc^^cccccccc",
    "cccccccccc..cccccccc",
    "cc................cc",
-   "cc............N...cc",
+   "cc................cc",
    "....................",
    "..ccccc......ccccc..",
    "..ccccc......ccccc..",
@@ -94849,7 +94849,6 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "Mom ",
    {
     "text": "Little girl",
     "action": "EVENT",
@@ -94972,7 +94971,395 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "home": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc..c<cc",
+     "...........",
+     "..ccc......",
+     "...........",
+     "..Ncc......",
+     "...cc......",
+     "........nn."
+    ],
+    "exits": {
+     "n": "OUT:5,8",
+     "<": "ROOM:home_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/1_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      "Mom ",
+      {
+       "text": "Talk to Mom",
+       "action": "NPC",
+       "target": "mom"
+      }
+     ]
+    ],
+    "moves": {
+     "2,6": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/1_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Your house"
+   },
+   "home_2": {
+    "art": [
+     "ccccccccc",
+     "c!c!c!cnc",
+     ".........",
+     ".........",
+     ".........",
+     ".c.......",
+     ".........",
+     "........."
+    ],
+    "exits": {
+     "n": "ROOM:home"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/1_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "Your notebook. Adventure rule no. 1: check your Bag often!"
+     ],
+     [
+      "A game console. There's no time for games now!"
+     ],
+     [
+      "The wall clock. Mom set it to the right time for you."
+     ]
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/1_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Your room"
+   },
+   "rival": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cc<c..ccccc",
+     "...........",
+     "......ccc..",
+     "...........",
+     "......cc...",
+     "......ccN..",
+     ".nn........"
+    ],
+    "exits": {
+     "n": "OUT:14,8",
+     "<": "ROOM:rival_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/1_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mrs. Birch",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mrs. Birch: Oh, you must be our new neighbor! Welcome to Littleroot!",
+        "Mrs. Birch: {rival_name} is upstairs. Go on up and say hello!"
+       ],
+       "flag": "hoenn_met_neighbor",
+       "done": [
+        "Mrs. Birch: My husband and {rival_name} are wild about Pokémon. Like father, like child!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "8,7": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/1_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "{rival_name}'s house"
+   },
+   "rival_2": {
+    "art": [
+     "ccccccccc",
+     "cnccc!c!c",
+     ".........",
+     ".........",
+     "...N.....",
+     ".......c.",
+     ".........",
+     "........."
+    ],
+    "exits": {
+     "n": "ROOM:rival"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/1_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      {
+       "text": "{rival_name}",
+       "action": "EVENT",
+       "condition": [
+        "not:hoenn_rival_home_met",
+        "not:hoenn_birch_rescued"
+       ],
+       "event": {
+        "lines": [
+         "{rival_name}: Oh! You're the new kid who just moved in next door, right? I'm {rival_name}!",
+         "{rival_name}: My dad's Professor Birch. I help him study Pokémon out in the wild.",
+         "{rival_name}: Oh no, I promised I'd help him on Route 101! Sorry, I've got to go. See you around!"
+        ],
+        "flag": "hoenn_rival_home_met"
+       }
+      }
+     ]
+    ],
+    "signs": [
+     [
+      "A game console. It looks well used."
+     ],
+     [
+      "{rival_name}'s notebook. It's full of notes about Pokémon!"
+     ]
+    ],
+    "moves": {
+     "3,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/1_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "{rival_name}'s room"
+   },
+   "lab": {
+    "art": [
+     "ccccccccccccc",
+     "c!c!!cc!!cccc",
+     "c.c........cc",
+     "c...........c",
+     "......N..cc..",
+     ".............",
+     "cccc......cc.",
+     "!!!!......ccc",
+     ".........N...",
+     ".!.........!c",
+     "c!.........!.",
+     "cc.........cc",
+     "...c..nn....."
+    ],
+    "exits": {
+     "n": "OUT:7,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/1_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      {
+       "text": "Professor Birch",
+       "action": "NPC",
+       "target": "hoenn_birch_lab",
+       "condition": "hoenn_birch_rescued"
+      }
+     ],
+     {
+      "text": "Lab aide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Professor would rather be out in the field than at his desk. He's hardly ever here!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Shelves crammed with books about Pokémon."
+     ],
+     [
+      "A research PC. Better not mess with it."
+     ],
+     [
+      "A research PC. Better not mess with it."
+     ],
+     [
+      "A book far too hard to read."
+     ],
+     [
+      "A book far too hard to read."
+     ],
+     [
+      "Shelves crammed with books about Pokémon."
+     ],
+     [
+      "Shelves crammed with books about Pokémon."
+     ],
+     [
+      "Shelves crammed with books about Pokémon."
+     ],
+     [
+      "Shelves crammed with books about Pokémon."
+     ],
+     [
+      "A research PC. Better not mess with it."
+     ],
+     [
+      "A research PC. Better not mess with it."
+     ],
+     [
+      "A research PC. Better not mess with it."
+     ],
+     [
+      "A research PC. Better not mess with it."
+     ]
+    ],
+    "moves": {
+     "9,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "6,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/1_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Professor Birch's Lab"
+   }
+  },
+  "inside": {
+   "5,8": "home",
+   "14,8": "rival",
+   "7,16": "lab"
+  }
  },
  "HOENN_ROUTE_101": {
   "art": [

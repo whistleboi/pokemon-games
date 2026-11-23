@@ -8177,14 +8177,15 @@
      "oras": true,
      "event": {
       "lines": [
-       "Mom: Here, I want you to have this!"
+       "Mom: You beat your father at his own Gym? I'm so proud of you! Here, this Amulet Coin is for you."
       ],
       "gift_item": {
        "AMULET_COIN": 1
       },
       "flag": "oras_littleroot_town_2"
      },
-     "flag_condition": "not oras_littleroot_town_2"
+     "flag_condition": "not oras_littleroot_town_2",
+     "condition": "has_balance_badge"
     }
    ]
   },

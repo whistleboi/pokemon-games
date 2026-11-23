@@ -2415,6 +2415,24 @@
     "OLDALE_TOWN:Path to Route 102": {
       "sheet": "em_39.png"
     },
+    "LITTLEROOT_TOWN:Talk to Mom": {
+      "sheet": "em_215.png"
+    },
+    "LITTLEROOT_TOWN:Mom ": {
+      "sheet": "em_215.png"
+    },
+    "LITTLEROOT_TOWN:Mrs. Birch": {
+      "sheet": "em_26.png"
+    },
+    "LITTLEROOT_TOWN:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "LITTLEROOT_TOWN:Professor Birch": {
+      "sheet": "em_64.png"
+    },
+    "LITTLEROOT_TOWN:Lab aide": {
+      "sheet": "em_46.png"
+    },
     "LITTLEROOT_TOWN:Little girl": {
       "sheet": "em_6.png"
     },

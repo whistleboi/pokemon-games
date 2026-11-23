@@ -2804,5 +2804,45 @@ _ak = story.current_area_key; story.current_area_key = "HOENN_BATTLE_FRONTIER"
 check(any(p[1] == "LEFTOVERS" for p in _gcs.prizes_here(story)), "...with prizes of its own")
 story.current_area_key = _ak
 
+# Littleroot walked inside (H2, 11-23): your house (west, whoever you play), the rival's house, Birch's lab, from Emerald's rooms
+for _k in ("hoenn_birch_rescued", "hoenn_rival_home_met", "hoenn_met_neighbor", "oras_littleroot_town_2"):
+    story.story_flags.pop(_k, None)
+story.story_flags["hoenn_mom_sendoff"] = True   # (Mom's send-off on the square has played)
+_badges = {r: list(b) for r, b in story.badges.items()}
+story.badges["HOENN"] = [b for b in story.badges.get("HOENN", []) if "BALANCE" not in str(b).upper()]
+st = open_map("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+st.scenes.entered = True
+st.player, st.anim = (5, 9), 0
+st.step(0, -1); frames(2)
+check(st.room == "home", f"Littleroot: the west door is your house, walked inside ({st.room})")
+_coin = story.inventory.get("AMULET_COIN", 0)
+said = _press(st, (2, 5), (0, 1))
+check(story.inventory.get("AMULET_COIN", 0) == _coin and said, f"Littleroot: Mom is home (no Amulet Coin before Norman) ({said[:1]})")
+story.badges["HOENN"] = story.badges.get("HOENN", []) + ["BALANCE"]
+st._go("home", "OUT:5,8"); frames(2)
+said = _press(st, (2, 5), (0, 1))
+if st.hover_menu_active:   # (two things to say now: you pick "Mom" (the coin) from her menu, as with Kanto's Oak)
+    _mo = next(o for o in st.people[(2, 6)]["any"] if o.get("text") == "Mom ")
+    st.clear_hover_menu(); st._get_callback_for_option(_mo)(); said = _play(st)
+check(story.inventory.get("AMULET_COIN", 0) == _coin + 1 and any("father" in x for x in said), f"Littleroot: after the Balance Badge, Mom gives the Amulet Coin (ORAS) ({said[:1]})")
+check(_stairs(st, "ROOM:home_2") == "home_2", "Littleroot: up the stairs to your room")
+st._go(None, "ROOM:home"); frames(2)
+st.player, st.anim = (14, 9), 0
+st.step(0, -1); frames(2)
+check(st.room == "rival", f"Littleroot: the east door is the rival's house ({st.room})")
+said = _press(st, (8, 6), (0, 1))
+check(story.story_flags.get("hoenn_met_neighbor") and any("upstairs" in x for x in said), f"Littleroot: Mrs. Birch sends you upstairs ({said[:2]})")
+check(_stairs(st, "ROOM:rival_2") == "rival_2" and (3, 4) in st._people(), "Littleroot: the rival is in their room upstairs")
+said = _press(st, (3, 5), (0, -1))
+check(story.story_flags.get("hoenn_rival_home_met") and (3, 4) not in st._people(), f"Littleroot: the rival dashes off to help their dad ({said[-1:]})")
+st._go(None, "ROOM:rival"); frames(2)
+st.player, st.anim = (7, 17), 0
+st.step(0, -1); frames(2)
+check(st.room == "lab" and (6, 4) not in st._people(), f"Littleroot: Birch's lab, the Professor out on fieldwork ({st.room})")
+story.story_flags["hoenn_birch_rescued"] = True
+st._go("lab", "OUT:7,16"); frames(2)
+check((6, 4) in st._people(), "Littleroot: once he's been saved on Route 101, Birch is at his desk")
+story.badges.clear(); story.badges.update(_badges)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
