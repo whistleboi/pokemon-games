@@ -1558,13 +1558,14 @@ check(_aq.run.n_floors == 7 and {"OLIVINE_CITY", "VERMILLION_CITY"} <= set(map(s
       f"the S.S. Aqua: seven decks and cabins from SoulSilver; aboard from Olivine at {_aq.run.player}; gangway mats for Olivine and Vermilion")
 _fa = kanto("FRONTIER_ACCESS", came="JOHTO_ROUTE_40")
 _fa2 = kanto("FRONTIER_ACCESS", came="JOHTO_BATTLE_FRONTIER")
-check({"JOHTO_ROUTE_40", "JOHTO_BATTLE_FRONTIER"} == set(map(str, _fa.run.floor.exits.values())) and _fa.run.player[1] < _fa2.run.player[1],
-      f"Frontier Access: SoulSilver's gate hall; in from Route 40 at the north mat {_fa.run.player}, from the Frontier at the south doors {_fa2.run.player}")
+check({"JOHTO_ROUTE_40", "JOHTO_BATTLE_FRONTIER"} == {str(v) for v in _fa.run.floor.exits.values() if not str(v).startswith("WARP")}
+      and _fa.run.player[1] > _fa2.run.player[1],   # (11-22: SoulSilver's own Frontier Access, D32R0102 outdoors: Route 40 south, the Frontier north)
+      f"Frontier Access: SoulSilver's own (outdoors); in from Route 40 at the south gate {_fa.run.player}, from the Frontier at the north {_fa2.run.player}")
 _bfr = kanto("JOHTO_BATTLE_FRONTIER", came="FRONTIER_ACCESS")
 _bfk = {k for k in (_bfr.recipe.get("art") or {}).get("buildings", {}).values()}
-check((_bfr.run.floor.w, _bfr.run.floor.h) == (96, 96) and {v for v in _bfr.run.floor.exits.values() if not str(v).startswith("WARP")} == {"FRONTIER_ACCESS"}
-      and _bfr.run.player[1] <= 19 and {"jtower", "jfactory", "jhall", "jcastle", "jarcade"} <= _bfk,
-      f"the Battle Frontier (N18): SoulSilver's plaza; in from Frontier Access at {_bfr.run.player}; five facility doors {sorted(_bfk)}")
+check((_bfr.run.floors[0].w, _bfr.run.floors[0].h) == (96, 96) and _bfr._floor_name(_bfr.run.index) == "Gate"
+      and "FRONTIER_ACCESS" in {str(v) for v in _bfr.run.floor.exits.values()} and {"jtower", "jgate", "jfactory", "jhall", "jcastle", "jarcade"} <= _bfk,
+      f"the Battle Frontier (N18): SoulSilver's plaza; in from Frontier Access through the gate ({_bfr._floor_name(_bfr.run.index)}); the Tower north, five facility doors {sorted(_bfk)}")
 _bc = kanto("BUG_CONTEST", came="NATIONAL_PARK")
 check((_bc.run.floor.w, _bc.run.floor.h) == (96, 96) and set(map(str, _bc.run.floor.exits.values())) == {"NATIONAL_PARK"} and not [m for m in _bc.run.floor.movers if m.kind == "trainer"],
       "the Bug-Catching Contest: the National Park's own map, no trainers, every gate back to the park")

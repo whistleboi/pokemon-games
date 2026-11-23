@@ -201,6 +201,9 @@ class TownMenu:
             from src.states.systems import GameCornerState
             return lambda: self.game.change_state(GameCornerState
                                                   (self.game, self))
+        if action == "SCRATCH_OFF":  # the Battle Frontier's Scratch-Off stall: 1 BP for three cards (11-22)
+            from src.states.game_corner import ScratchOffState
+            return lambda: self.game.change_state(ScratchOffState(self.game, self))
         if action == "BP_SHOP":  # a battle facility's Exchange Service Corner: prizes for Battle Points (11-22)
             from src.states.game_corner import BPShopState
             return lambda: self.game.change_state(BPShopState(self.game, self, opt_data.get("shop", "emerald")))

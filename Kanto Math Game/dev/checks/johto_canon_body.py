@@ -924,7 +924,7 @@ story.story_flags.clear(); story.story_flags.update(_flL)
 print("N18: the Battle Frontier's five facilities (Jordan 11-16: real streaks per facility)")
 from src.world import frontier as _fr
 _bf = _tm["JOHTO_BATTLE_FRONTIER"]
-check(set((_bf.get("rooms") or {})) == set(_fr.JOHTO_FIVE) and all(
+check(set((_bf.get("rooms") or {})) == set(_fr.JOHTO_FIVE) | {"jgate"} and all(   # (11-22: and the gate, south, down to Frontier Access)
           any(isinstance(p, str) and "attendant" in p for p in _bf["rooms"][k].get("people", [])) for k in _fr.JOHTO_FIVE),
       f"the plaza's five lobbies, an attendant in each {sorted(_bf.get('rooms') or {})}")
 _flF = dict(story.story_flags)

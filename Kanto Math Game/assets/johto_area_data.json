@@ -4288,6 +4288,8 @@
             "min_rounds": 0,
             "trainer_pool": [],
             "route_menu": [
+                {"text": "POKEMON CENTER", "action": "CENTER", "door": "center", "color": "BLUE"},
+                {"text": "POKE MART", "action": "SHOP", "door": "mart", "color": "BLUE"},
                 {"text": "ROUTE 40", "action": "EXIT", "target": "JOHTO_ROUTE_40", "condition": "can_exit", "color": "RED"},
                 {"text": "BATTLE FRONTIER", "action": "EXIT", "target": "JOHTO_BATTLE_FRONTIER", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}
             ],

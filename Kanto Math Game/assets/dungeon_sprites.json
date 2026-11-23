@@ -76,6 +76,126 @@
     ]
   },
   "figures": {
+    "JOHTO_BATTLE_FRONTIER:Frontier guide": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Old lady": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Old man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Little girl": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Boy": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Little boy": {
+      "sheet": "hg_gsbabyboy1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Idol": {
+      "sheet": "hg_idol.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Tough guy": {
+      "sheet": "hg_badman.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Gentleman": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Big man": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Old gentleman": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Kid": {
+      "sheet": "hg_gsbabyboy1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Man": {
+      "sheet": "hg_gsman2.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Cowgirl": {
+      "sheet": "hg_cowgirl.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Fisherman": {
+      "sheet": "hg_fishing.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Picnicker": {
+      "sheet": "hg_picnicgirl.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Lady": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Job seeker": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Coach": {
+      "sheet": "hg_gsman3.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Angler": {
+      "sheet": "hg_fishing.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Frontier guide": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Old lady": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Old man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Little girl": {
+      "sheet": "hg_gsbabygirl1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Boy": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Little boy": {
+      "sheet": "hg_gsbabyboy1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Idol": {
+      "sheet": "hg_idol.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Tough guy": {
+      "sheet": "hg_badman.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Gentleman": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Big man": {
+      "sheet": "hg_gsbigman.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Old gentleman": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Kid": {
+      "sheet": "hg_gsbabyboy1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Man": {
+      "sheet": "hg_gsman2.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Cowgirl": {
+      "sheet": "hg_cowgirl.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Fisherman": {
+      "sheet": "hg_fishing.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Picnicker": {
+      "sheet": "hg_picnicgirl.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Lady": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Job seeker": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Coach": {
+      "sheet": "hg_gsman3.png"
+    },
+    "SINNOH_BATTLE_FRONTIER:Angler": {
+      "sheet": "hg_fishing.png"
+    },
     "ASPERTIA_CITY:Bianca": {"sheet": "b2_bianca.png"},
     "ASPERTIA_CITY:Boy at the school door": {"sheet": "b2_c11.png"},
     "ASPERTIA_CITY:Boy by the Outlook road": {"sheet": "b2_c14.png"},

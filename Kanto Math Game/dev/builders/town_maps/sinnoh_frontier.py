@@ -23,45 +23,26 @@ def _set(art, x, y, ch):
 
 
 def build(johto_maps):
-    j = johto_maps["JOHTO_BATTLE_FRONTIER"]
+    j = johto_maps["JOHTO_BATTLE_FRONTIER"]   # (11-22 later: Johto's is the right way round now - Tower north, gate south)
     e = copy.deepcopy(j)
-    art = list(e["art"])
-    # the Battle Tower's door at the top of the plaza (Johto's map had a way out there: Platinum's Tower)
-    for x, ch in ((47, "G"), (48, "D"), (49, "D"), (50, "G")):
-        _set(art, x, 17, ch)
-    e["art"] = art
     e["exits"] = {}
     e["buildings"] = {"A": "sgate", "G": "stower", "B": "sfactory", "C": "shall", "E": "scastle", "F": "sarcade"}
-    e["inside"] = {k: ROOMS.get(v, "sgate" if v == "jtower" else v) for k, v in j["inside"].items()}
-    e["inside"].update({"48,17": "stower", "49,17": "stower"})
+    names = dict(ROOMS, jtower="stower", jgate="sgate")
+    e["inside"] = {k: names.get(v, v) for k, v in j["inside"].items()}
     rooms = {}
     titles = {"sfactory": "Battle Factory", "shall": "Battle Hall", "scastle": "Battle Castle", "sarcade": "Battle Arcade"}
     for old, new in ROOMS.items():
         r = copy.deepcopy(j["rooms"][old])
         r["title"] = titles[new]
         rooms[new] = r
-    # the gate (D32R0101): the plaza up top, the Fight Area down the stairs at the bottom (the game's warps, zone row 20)
-    g = copy.deepcopy(j["rooms"]["jtower"])
-    w = len(g["art"][0])
-    art_g = list(g["art"])
-    last = max(y for y, row in enumerate(art_g) if "." in row)   # (the stairs: in the wall row under the room's last open row)
-    art_g[last + 1] = art_g[last + 1][:6] + "nnn" + art_g[last + 1][9:]
-    if last + 2 >= len(art_g):
-        art_g.append("c" * w)
-    g["art"] = art_g
-    g["exits"] = dict(g["exits"], n="FIGHT_AREA")
+    # the gate (D32R0101): the plaza up top, the Fight Area down its stairs (Johto's go to Frontier Access)
+    g = copy.deepcopy(j["rooms"]["jgate"])
+    g["exits"] = {ch: ("FIGHT_AREA" if v == "FRONTIER_ACCESS" else v) for ch, v in g["exits"].items()}
     g["people"] = [{"text": "Gate attendant", "action": "EVENT", "event": {"lines": [
         "Welcome to the Battle Frontier! Five facilities and their Frontier Brains are waiting for you.",
         "The way back to the Fight Area is down the stairs behind me."]}}]
-    g["title"] = "Gate"
-    g["land"] = {"48,52": [48, 50], "49,52": [49, 50]}   # (its door faces the plaza, north: out onto the tile above it, not below)
     rooms["sgate"] = g
-    # the Battle Tower's lobby (D31R0201): Johto's "Frontier Access" map was drawn from it; its lift (^) is behind the counter
-    fa = johto_maps["FRONTIER_ACCESS"]
-    t = {"theme": "room", "art": [row.replace("^", "c") for row in fa["art"]], "exits": {"v": "OUT:48,17"},
-         "buildings": {}, "roofs": copy.deepcopy(fa["roofs"]), "overheads": copy.deepcopy(fa.get("overheads") or []),
-         "people": ["Tower attendant"] + copy.deepcopy(fa.get("people") or [])[1:], "title": "Battle Tower"}
-    rooms["stower"] = t
+    rooms["stower"] = copy.deepcopy(j["rooms"]["jtower"])   # (the Battle Tower's lobby, D31R0201)
     e["rooms"] = rooms
     # the Exchange Service Corner's stalls: Platinum's lists (HGSS's without U-turn)
     e["people"] = [dict(p, shop={"hgss_items": "plat_items", "hgss_tms": "plat_tms"}.get(p.get("shop"), p.get("shop")))

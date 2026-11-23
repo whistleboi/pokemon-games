@@ -51,6 +51,13 @@ BRAIN_MOVES = {
                 {"395": ["SURF", "EARTHQUAKE", "BLIZZARD", "SIGNAL-BEAM"], "475": ["PSYCHO-CUT", "STONE-EDGE", "AERIAL-ACE", "X-SCISSOR"],
                  "244": ["FIRE-BLAST", "SOLAR-BEAM", "HYPER-BEAM", "SUNNY-DAY"]}),
 }
+# The Gen IV Brains' held items, in team order (Silver team, Gold team): Serebii's Pokearth Battle Frontier page for Platinum
+# (sources/sinnoh, Jordan 11-22); HGSS's Brains are the same people with the same sets.
+BRAIN_HELD = {
+    "jtower": (["FOCUS_BAND", "SHELL_BELL", "LUM_BERRY"], ["FOCUS_SASH", "LEFTOVERS", "BRIGHT_POWDER"]),
+    "jcastle": (["RAZOR_CLAW", "KINGS_ROCK", "FOCUS_SASH"], ["QUICK_CLAW", "SCOPE_LENS", "SHUCA_BERRY"]),
+    "jarcade": (["SALAC_BERRY", "MUSCLE_BAND", "IRON_BALL"], ["WHITE_HERB", "EXPERT_BELT", "BRIGHT_POWDER"]),
+}
 JOHTO_FIVE = ["jtower", "jfactory", "jhall", "jcastle", "jarcade"]
 # Sinnoh's Battle Frontier (Platinum; Jordan 11-22: "that is the next place to build"): the same five facilities and Brains as
 # HeartGold / SoulSilver's (HGSS reused Platinum's Frontier: the same map, D32, its rooms tile for tile), its own streaks and Prints.
@@ -59,6 +66,8 @@ for _j, _s in zip(JOHTO_FIVE, SINNOH_FIVE):
     BRAINS[_s] = BRAINS[_j]
     if _j in BRAIN_MOVES:
         BRAIN_MOVES[_s] = BRAIN_MOVES[_j]
+    if _j in BRAIN_HELD:
+        BRAIN_HELD[_s] = BRAIN_HELD[_j]
 GEN4 = set(JOHTO_FIVE) | set(SINNOH_FIVE)   # (Gen IV's facilities: its own trainers, Prints not Symbols)
 FRONTIER_SEVEN = [f for f in BRAINS if f != "maison" and f not in GEN4]   # (the Symbols: the Maison gives none of its own)
 NAMES = {"tower": "Battle Tower", "dome": "Battle Dome", "palace": "Battle Palace", "arena": "Battle Arena",
@@ -132,6 +141,8 @@ def next_trainer(game, fac):
                 "is_boss_battle": True, "rewards": {"balls": 5}}
         if fac in BRAIN_MOVES:
             info["movesets"] = dict(BRAIN_MOVES[fac][1 if is_gold else 0])
+        if fac in BRAIN_HELD:   # (their held items, by team slot)
+            info["held"] = list(BRAIN_HELD[fac][1 if is_gold else 0])
         return info
     w = wins(game, fac)
     col = min(7, w // 7)   # (Emerald's columns: battles 1-7, 8-14, ... who may appear)

@@ -174,4 +174,36 @@ for f in frontier.SINNOH_FIVE:
     said = frontier.after_battle(g, f, True)
 check(fl.get("sinnoh_battle_frontier_cleared") and any("every facility" in l for l in said) and not fl.get("frontier_jtower_gold"),
       "a Silver Print from all five: the Sinnoh Frontier cleared (Johto's Prints untouched)")
+
+print("8) the Brains' held items, the Scratch-Off, the plaza (Jordan 11-22: \"work on those still open items\")")
+from src.pokemon import forms as _forms
+for f in ("jtower", "stower"):
+    fl.pop(f"frontier_{f}_silver", None); fl[f"frontier_{f}_wins"] = frontier.goal(g, f)
+    info = frontier.next_trainer(g, f)
+    team = [Pokemon(g.loader.fetch_specific(i), g.assets) for i in info["team"]]
+    _forms.mark_trainer_team(team, info)
+    check([p.held_item for p in team] == ["FOCUS_BAND", "SHELL_BELL", "LUM_BERRY"], f"{f}: Palmer's Silver team holds Platinum's items {[p.held_item for p in team]}")
+import random as _rnd
+from src.states.game_corner import ScratchOffState, scratch_result, SCRATCH_DITTO
+check(scratch_result([25, 25, SCRATCH_DITTO]) == 25 and scratch_result([25, 175, 25]) is None, "a Ditto stands in for one; two kinds don't win")
+story.story_flags[bpl.BP_FLAG] = 1
+so = ScratchOffState(g, g.current_state, rng=_rnd.Random(1))
+check(bpl.bp(story) == 0 and so.cards_left == 2 and so.card, "1 BP: three cards (the first one out)")
+for _c in range(3):
+    sq = so.card["squares"]
+    lucky = max(set(sq), key=sq.count)
+    for i in [i for i, m in enumerate(sq) if m == lucky][:3]:
+        so.scratch(i)
+    so.next_card()
+check(len(so.won) == 3 and all(story.inventory.get(it, 0) >= n for it, n in so.won), f"three of a kind each time: its prize in the Bag {so.won}")
+so2 = ScratchOffState(g, g.current_state)
+check(so2.card is None and "1 BP" in so2.message, "no BP: no cards")
+story.current_area_key = "JOHTO_BATTLE_FRONTIER"; story.last_area_key = "FRONTIER_ACCESS"; story.starting_region = "JOHTO"
+g.walk_town_pos = g.walk_town_room = None
+t = _PS(g); g.change_state(t)
+fl0 = t.run.floors[0]
+acts = [m.payload for m in fl0.movers if isinstance(m.payload, dict)]
+check(sum(1 for a in acts if a.get("action") == "EVENT") >= 20 and any(a.get("action") == "SCRATCH_OFF" for a in acts),
+      f"the plaza: its folk and the Scratch-Off clerk ({len(acts)} people)")
+check(t._floor_name(t.run.index) == "Gate", f"in from Frontier Access: the gate, south ({t._floor_name(t.run.index)})")
 print(f"##### {len(fails)} failures")

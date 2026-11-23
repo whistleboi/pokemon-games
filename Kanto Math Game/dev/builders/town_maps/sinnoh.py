@@ -7058,7 +7058,7 @@ MAPS = {
                     "ccccr.........r.....cccccccccccccccccccc....rr....r......cc",
                     "ccccccccccccccc..ccccccccccccccccccccccc.................cc",
                     "ccccccccccccccc00ccccccccccccccccccccccccccccccccccccc..Xcc",
-                    "cccccccccc...)..rccccccccccccccccccccccccccccccccccccc..Xcc",
+                    "cccccccccc...)..rccccccccccccccccccccccccccccccccccccc...cc",
                     "cccccccccc...)...ccccccccccccccccccccccccccccccccccccc...cc",
                     "cccccccccc..cccr.ccccccccccccccccN....r....rr......rrr...cc",
                     "cccccccccc..ccc..cccccccccccccccc.....r.7...7...7...7....cc",
@@ -7081,7 +7081,7 @@ MAPS = {
                     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
                 ],
                 "parts": True,
-                "trainer_spots": ["Ace Trainer Pierce", "Ace Trainer Alicia", "Double Team Al & Kay", "Ace Trainer Omar", "Veteran Clayton", "Ace Trainer Sydney"],
+                "trainer_spots": ["Double Team Al & Kay", "Ace Trainer Omar", "Veteran Clayton", "Ace Trainer Sydney"],
                 "roofs": {"_bridge": "wood", "_look": {"floor": [119, 86, 57], "wall": [65, 54, 38]}, "_picture": {"f": "pt_ground/D09R0102.png", "at": [1, 1]}},
                 "hidden": {"44,33": "FULL_RESTORE", "10,22": "RARE_CANDY"},
                 "people": ["TM094", "MAX ELIXIR", "TM150", "FULL RESTORE"],
@@ -8552,3 +8552,4 @@ MAPS = {
 
 from . import sinnoh_frontier as _FRONTIER  # noqa: E402  (the Battle Frontier: Platinum's, built from Johto's same map, 11-22)
 _FRONTIER.apply(MAPS)
+

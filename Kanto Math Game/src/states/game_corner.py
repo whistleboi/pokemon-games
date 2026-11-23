@@ -770,6 +770,160 @@ class BPShopState(PrizeCounterState):
         self.game.ui_manager.draw(screen)
 
 
+# ------------------------------------------------------------------------------------------ Scratch-Off
+# HGSS / Platinum's Pokemon Scratch-Off Corner (Bulbapedia's Gen IV Battle Frontier, 11-22): 1 BP buys three cards; on each,
+# scratch three of its nine squares, three of the same Pokemon win that Pokemon's prize (a Ditto stands in for any one);
+# the prizes are a Nugget and three of the type-resist Berries (a new three each day).
+SCRATCH_MONS = (25, 175, 446, 54)   # (Pikachu, Togepi, Munchlax, Psyduck: the cards' four, each with its prize; easy to tell apart)
+SCRATCH_DITTO = 132
+SCRATCH_BERRIES = ("QUALOT_BERRY", "TAMATO_BERRY", "WACAN_BERRY", "CHOPLE_BERRY", "COBA_BERRY", "POMEG_BERRY", "HONDEW_BERRY",
+                   "OCCA_BERRY", "RINDO_BERRY", "KEBIA_BERRY", "PAYAPA_BERRY", "KELPSY_BERRY", "GREPA_BERRY", "PASSHO_BERRY",
+                   "YACHE_BERRY", "SHUCA_BERRY", "TANGA_BERRY", "CHARTI_BERRY", "COLBUR_BERRY", "KASIB_BERRY", "BABIRI_BERRY",
+                   "HABAN_BERRY", "CHILAN_BERRY")
+
+
+def scratch_prizes(day):
+    """{Pokemon: (item, how many)} for a day: the Nugget, and three Berries (3 each)."""
+    rng = random.Random(f"scratch:{day}")
+    berries = rng.sample(SCRATCH_BERRIES, 3)
+    mons = list(SCRATCH_MONS)
+    rng.shuffle(mons)
+    return {mons[0]: ("NUGGET", 1), mons[1]: (berries[0], 3), mons[2]: (berries[1], 3), mons[3]: (berries[2], 3)}
+
+
+def scratch_card(rng):
+    """Nine squares: the four Pokemon and a Ditto, the lucky one three times."""
+    mons = list(SCRATCH_MONS)
+    rng.shuffle(mons)
+    squares = [mons[0]] * 3 + [mons[1]] * 2 + [mons[2]] * 2 + [mons[3], SCRATCH_DITTO]
+    rng.shuffle(squares)
+    return squares
+
+
+def scratch_result(picked):
+    """The Pokemon three scratched squares win with (a Ditto counts as any), or None."""
+    real = [m for m in picked if m != SCRATCH_DITTO]
+    if len(picked) == 3 and real and all(m == real[0] for m in real):
+        return real[0]
+    return None
+
+
+class ScratchOffState(GameState):
+    """Three cards for 1 BP: scratch three squares on each (a quick flip as each opens); three of a kind wins its prize."""
+    SQ = 104
+
+    def __init__(self, game, previous_state, rng=None):
+        from src.world import battle_points as bpl
+        import datetime
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.story = game.story_manager
+        self.rng = rng or random.Random()
+        self.prizes = scratch_prizes(datetime.date.today().isoformat())
+        f = game.assets.fonts
+        self.btn_back = CommandButton((16, 14, 140, 56), "BACK", f["button"], self.leave, bg_color=theme.BACK, autosize=False)
+        self.btn_next = CommandButton((game.width - 236, game.height - 160, 220, 56), "NEXT CARD", f["button"], self.next_card,
+                                      bg_color=theme.POKEMON, autosize=False, visible=False)
+        self.cards_left, self.card, self.won = 0, None, []
+        if bpl.bp(self.story) < 1:
+            self.message = "A Scratch-Off costs 1 BP. Win some at the facilities!"
+        else:
+            bpl.add_bp(self.story, -1)
+            self.cards_left = 3
+            self.message = "Three cards for 1 BP! Scratch three squares on each."
+            self.next_card()
+
+    def next_card(self):
+        if self.cards_left <= 0:
+            return
+        self.cards_left -= 1
+        self.card = {"squares": scratch_card(self.rng), "open": {}, "done": False}
+        self.btn_next.set_visibility(False)
+
+    def _grid_rect(self, i):
+        gx = (self.game.width - 3 * self.SQ - 2 * 12) // 2 - 120
+        return pygame.Rect(gx + (i % 3) * (self.SQ + 12), 130 + (i // 3) * (self.SQ + 12), self.SQ, self.SQ)
+
+    def scratch(self, i):
+        c = self.card
+        if not c or c["done"] or i in c["open"] or len(c["open"]) >= 3:
+            return
+        c["open"][i] = pygame.time.get_ticks()
+        if len(c["open"]) == 3:
+            c["done"] = True
+            win = scratch_result([c["squares"][j] for j in c["open"]])
+            if win:
+                item, n = self.prizes[win]
+                self.story.add_item(item, n)
+                self.won.append((item, n))
+                _nm = item.replace('_', ' ').title()
+                self.message = f"Three of a kind! You won {n} {(_nm[:-1] + 'ies') if n > 1 and _nm.endswith('y') else _nm + ('s' if n > 1 else '')}!"
+            else:
+                self.message = "No match this time..."
+            if self.cards_left > 0:
+                self.btn_next.set_visibility(True)
+            else:
+                self.message += " That was your last card. Thanks for playing!"
+
+    def leave(self):
+        self.game.change_state(self.previous_state)
+
+    def start(self):
+        self.game.ui_manager.elements.clear()
+        for b_ in (self.btn_back, self.btn_next):
+            self.game.ui_manager.add_element(b_)
+
+    def handle_events(self, events):
+        for e in events:
+            if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1 and self.card:
+                for i in range(9):
+                    if self._grid_rect(i).collidepoint(e.pos):
+                        self.scratch(i)
+
+    def update(self):
+        pass
+
+    def draw(self):
+        from src.minigames.base import icon
+        from src.world import battle_points as bpl
+        screen = self.game.screen
+        accent = (200, 150, 60)
+        theme.menu_background(screen, accent, "SCRATCH-OFF", self.game.assets.fonts["button"], title_x=176)
+        f = self.game.assets.fonts
+        Utils.draw_text_outline(screen, f"{bpl.bp(self.story):,} BP", f["button"], (255, 255, 255),
+                                self.game.width - 24, theme.HEADER_H // 2 - 4, align="right")
+        now = pygame.time.get_ticks()
+        if self.card:
+            for i in range(9):
+                r = self._grid_rect(i)
+                t0 = self.card["open"].get(i)
+                k = 0.0 if t0 is None else min(1.0, (now - t0) / 220)   # (the flip: the silver layer narrows, the Pokemon widens)
+                w = int(r.w * abs(1 - 2 * k)) or 1
+                face = pygame.Rect(0, 0, w, r.h); face.center = r.center
+                if k < 0.5:
+                    pygame.draw.rect(screen, (190, 196, 206), face, border_radius=10)
+                    pygame.draw.rect(screen, (120, 126, 140), face, 3, border_radius=10)
+                else:
+                    pygame.draw.rect(screen, (250, 244, 228), face, border_radius=10)
+                    img = icon(self.game, self.card["squares"][i], 80)
+                    img = pygame.transform.scale(img, (max(1, int(img.get_width() * w / r.w)), img.get_height()))
+                    screen.blit(img, img.get_rect(center=r.center))
+        px = self.game.width - 400   # the prizes: who wins what
+        theme.shadow_text(screen, "PRIZES", f["label"], px, 120)
+        for n_, (mon, (item, cnt)) in enumerate(self.prizes.items()):
+            y = 160 + n_ * 76
+            screen.blit(icon(self.game, mon, 64), (px, y))
+            theme.shadow_text(screen, f"{item.replace('_', ' ').title()}{' x' + str(cnt) if cnt > 1 else ''}", f["caption"], px + 76, y + 22)
+        screen.blit(icon(self.game, SCRATCH_DITTO, 48), (px, 160 + 4 * 76))
+        theme.shadow_text(screen, "Ditto: counts as any one", f["caption"], px + 76, 160 + 4 * 76 + 14)
+        theme.shadow_text(screen, f"Cards left after this one: {self.cards_left}" if self.card else "", f["caption"],
+                          self.game.width // 2 - 120, self.game.height - 132, align="center")
+        bar = pygame.Rect(16, self.game.height - 86, self.game.width - 32, 78)
+        theme.draw_textbox(screen, bar)
+        theme.shadow_text(screen, self.message, f["s_med"], bar.x + 32, bar.centery - f["s_med"].get_height() // 2)
+        self.game.ui_manager.draw(screen)
+
+
 # ------------------------------------------------------------------------------------------ Blackjack
 RANKS = ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K")
 SUITS = ("spade", "heart", "diamond", "club")
