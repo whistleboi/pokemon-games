@@ -4503,7 +4503,7 @@
         {
             "id": "johto_s6", "type": "SIDE", "title": "To Kanto by Sea", "description": "Prof. Elm's ticket is good for the S.S. Aqua. It sails from Olivine City's harbour to Vermilion City, in Kanto.",
             "target": "OLIVINE_CITY",
-            "condition": { "start_region": "JOHTO", "flag": "got_ss_ticket_elm", "visited_not": "VERMILION_CITY" }
+            "condition": { "start_region": "JOHTO", "flag": "got_ss_ticket_elm", "visited_not": "VERMILLION_CITY" }
         },
         {
             "id": "johto_s1", "type": "SIDE", "title": "Ruins of Alph", "description": "The stones here hum with a strange frequency. Catch different forms of Unown to unlock the ruins' secrets.",

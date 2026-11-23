@@ -369,6 +369,8 @@ def settle(limit=9000):
             else:
                 name = type(st).__name__
                 STATE["seen_states"][name] += 1
+                if name == "RivalSelectionState" and STATE.get("mission") == "tour":
+                    return st
                 box = getattr(st, "dialogue_box", None)
                 if box is not None and getattr(box, "visible", False):
                     _note(st)
@@ -1550,7 +1552,54 @@ if last := PER.get(STATE["mission"]):
     last["done"] = ENDED == "CHAMPION"
 shot("END_" + ENDED.replace(" ", "_"))
 
+# ---------------------------------------------------------------- the tour: the paths the story never walks (11-19, ROADMAP_KANTO)
+# After the title, with what the run has collected: each leg walked over the maps by the same rules (head_for: the maps'
+# own ways out, real steps, trainers fought, boulders pushed). A leg that doesn't get there is a finding (TOUR).
+TOUR_LEGS = [("CIANWOOD_CITY", "CLIFF_EDGE_GATE", "Cianwood into the Cliff Edge Gate"),
+             ("CLIFF_EDGE_GATE", "JOHTO_ROUTE_47", "the Cliff Edge Gate down to Route 47"),
+             ("JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "Route 47 up to Route 48"),
+             ("JOHTO_ROUTE_48", "SAFARI_ZONE_GATE", "Route 48 to the Safari Zone Gate"),
+             ("JOHTO_ROUTE_47", "JOHTO_CLIFF_CAVE", "Route 47 into Cliff Cave"),
+             ("JOHTO_ROUTE_47", "JOHTO_EMBEDDED_TOWER", "Route 47 to the Embedded Tower (Rock Climb, after the title)"),
+             ("CIANWOOD_CITY", "WHIRL_ISLANDS", "Cianwood by sea to the Whirl Islands"),
+             ("OLIVINE_CITY", "FRONTIER_ACCESS", "Olivine down Route 40 to Frontier Access"),
+             ("FRONTIER_ACCESS", "JOHTO_BATTLE_FRONTIER", "Frontier Access into the Battle Frontier"),
+             ("VIOLET_CITY", "RUINS_OF_ALPH", "Violet to the Ruins of Alph"),
+             ("JOHTO_ROUTE_31", "DARK_CAVE", "Route 31 into Dark Cave"),
+             ("DARK_CAVE", "JOHTO_ROUTE_45", "through Dark Cave out to Route 45"),
+             ("BLACKTHORN_CITY", "JOHTO_ROUTE_46", "Blackthorn down Routes 45 and 46"),
+             ("JOHTO_ROUTE_46", "JOHTO_ROUTE_29", "Route 46 down to Route 29"),
+             ("JOHTO_ROUTE_42", "MT_MORTAR", "Route 42 into Mt. Mortar"),
+             ("GOLDENROD_CITY", "NATIONAL_PARK", "Goldenrod up Route 35 to the National Park"),
+             ("OLIVINE_CITY", "VERMILLION_CITY", "Olivine by the S.S. Aqua to Vermilion")]
 TOUR = []
+if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
+    story.inventory.setdefault("BICYCLE", 1)
+    story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
+    for _a, _b, _what, *_at in TOUR_LEGS:
+        STATE["mission"] = "tour"
+        try:
+            put_at(_a)
+            _m, _ok, _n = {"id": "tour", "type": "SIDE", "text": _what, "target": _b}, False, 0
+            for _n in range(90):
+                if _b == "VERMILLION_CITY" and type(g.current_state).__name__ in ("RivalSelectionState", "IntroSpeechState", "StarterSelectionState"):
+                    _ok = True   # (a Johto Champion landing in Kanto starts Kanto as a new region: Oak, the rival's name - Jordan 11-23, Q9)
+                    break
+                if loc()[0] == _b:
+                    _ok = True
+                    break
+                _row = head_for(g.current_state, _m, _b)
+                if _row is None:
+                    break
+            _ok = _ok or loc()[0] == _b
+        except Exception:
+            crash("tour: " + _what)
+            _ok = False
+        TOUR.append({"leg": _what, "from": _a, "to": _b, "ok": _ok, "moves": _n, "ended": here()})
+        if not _ok:
+            FIND.append({"kind": "TOUR", "mission": "tour", "where": here(), "what": f"{_what}: didn't get there", "extra": None})
+            shot("TOUR_" + _b)
+        out(f"  tour: {_what}: {'there' if _ok else 'NOT REACHED'} ({_n} moves, at {here()})")
 
 # ---------------------------------------------------------------- the report
 print()
