@@ -286109,18 +286109,18 @@
      "~~~~~~~~...~~~~~~~~~",
      "~~~~~~~~...~~~~~~~~~",
      "~~~~~~~~...~~~~~~~~~",
-     "~~~~~~~~.v.~~~~~~~~~",
-     "~~~~~~ccccccc~~~~~~~",
+     "~~~~~~~~.D.~~~~~~~~~",
+     "~~~~~~cccAccc~~~~~~~",
      "~~~~~~~ccccc~~~~~~~~",
      "~~~~~~~ccccc~~~~~~~~",
      "~~~~~~~~~~~~~~~~~~~~",
      "~~~~~~~~~~~~~~~~~~~~",
      "~~~~~~~~~~~~~~~~~~~~"
     ],
-    "exits": {
-     "v": "ONE_ISLAND"
+    "exits": {},
+    "buildings": {
+     "A": "house"
     },
-    "buildings": {},
     "roofs": {
      "_picture": {
       "f": "fr_ground/2_0.png",
@@ -286131,6 +286131,9 @@
      },
      "_signs_in_picture": true,
      "_buildings_in_picture": true
+    },
+    "inside": {
+     "9,16": "harbor"
     },
     "links": {
      "9,8": [
@@ -287066,6 +287069,58 @@
     ]
    }
   ],
+  "rooms": {
+   "harbor": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccncccccccc",
+     ".................",
+     "ccccccc...ccccccc",
+     "~~~~~~c.v.c~~~~~~",
+     "~~~~~~ccNcc~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:9,16",
+     "v": "ONE_ISLAND"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_59.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "SAIL HOME"
+    ],
+    "moves": {
+     "8,6": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "land": {
+     "9,16": [
+      9,
+      14
+     ]
+    },
+    "theme": "room",
+    "title": "Navel Rock Harbor"
+   }
+  },
   "theme": "cave",
   "floor_names": [
    "Navel Rock",
@@ -287218,6 +287273,12 @@
       "m": "face",
       "d": "u"
      }
+    },
+    "land": {
+     "15,24": [
+      15,
+      22
+     ]
     },
     "theme": "room",
     "title": "Birth Island Harbor"

@@ -152,7 +152,7 @@ ROUTES = [
     ("SEVAULT_CANYON", {"CANYON_ENTRANCE": (24, 80), "TANOBY_RUINS": (24, 80)}, {"CANYON_ENTRANCE", "TANOBY_RUINS"}, 7),
     ("TANOBY_RUINS", {"SEVAULT_CANYON": (144, 20)}, {"SEVAULT_CANYON"}, 4),
     ("LOST_CAVE", {"RESORT_GORGEOUS": (11, 11)}, {"RESORT_GORGEOUS"}, 2),
-    ("NAVEL_ROCK", {"ONE_ISLAND": (20, 23)}, {"ONE_ISLAND"}, 0),
+    ("NAVEL_ROCK", {"ONE_ISLAND": (17, 13)}, {"ONE_ISLAND"}, 0),   # (11-23, K2: you land in FireRed's harbour room, 2.59, and walk out onto the rock)
     ("BIRTH_ISLAND", {"ONE_ISLAND": (17, 13)}, {"ONE_ISLAND"}, 0),   # (11-17: you land in FireRed's harbour room, 2.58, and walk out onto the island)
     ("FARAWAY_ISLAND", {"ONE_ISLAND": (34, 46)}, {"ONE_ISLAND"}, 0),
 ]
@@ -331,7 +331,7 @@ REDRAWN = {"FOUR_ISLAND": ["3_15", "35_0", "35_1", "35_2", "35_3", "35_4", "35_5
            "DOTTED_HOLE": [f"1_{n}" for n in range(115, 121)], "GREEN_PATH": ["3_59"], "PATTERN_BUSH": ["1_121"], "OUTCAST_ISLAND": ["3_58"],
            "SEVII_ALTERING_CAVE": ["1_122"], "SEVEN_ISLAND": ["k_seven", "31_0", "31_1", "31_2", "31_3", "31_4", "31_6"],
            "CANYON_ENTRANCE": ["3_63"], "SEVAULT_CANYON": ["3_64", "2_35", "42_0"], "TANOBY_RUINS": ["3_65"] + [f"2_{n}" for n in range(27, 34)],
-           "NAVEL_ROCK": ["2_0", "2_36", "2_37", "2_38", "2_55"], "BIRTH_ISLAND": ["2_56", "2_58"]}
+           "NAVEL_ROCK": ["2_0", "2_36", "2_37", "2_38", "2_55", "2_59"], "BIRTH_ISLAND": ["2_56", "2_58"]}
 for _a, _pics in REDRAWN.items():
     _s = json.dumps(MAPS[_a])
     check(all(f"fr_ground/{_p}.png" in _s for _p in _pics), f"{_a}: drawn on FireRed's own pictures, every floor and room ({_pics})")
