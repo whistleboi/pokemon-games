@@ -3450,17 +3450,7 @@
         
             "area_boss": {"id": 250, "level": 60, "name": "Ho-Oh", "victory_flag": "caught_ho_oh"},
         
-            "trainer_pool": [
-        
-                {"name": "Sage Gaku", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}},
-        
-                {"name": "Sage Masa", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}},
-        
-                {"name": "Sage Koji", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}},
-        
-                {"name": "Sage Li", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": {"balls": 2}}
-        
-            ],
+            "trainer_pool": [],
         
             "route_menu": [
         
@@ -4271,11 +4261,16 @@
             "region": "JOHTO",
             "battle_type": "field",
             "min_rounds": 0,
-            "trainer_pool": [],
+            "trainer_pool": [
+                {"name": "Sage Gaku", "class": "SAGE", "sprite": "sage.png", "team": [164, 136], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Gaku: Halt! We are the Wise Trio, keepers of the Bell Tower.", "Sage Gaku: Before you pass, show us your strength!"], "player_won": ["Sage Gaku: Your strength is real. But Masa and Koji will test you too."], "player_lost": ["Sage Gaku: Not yet. Train, and come back."]}},
+                {"name": "Sage Masa", "class": "SAGE", "sprite": "sage2.png", "team": [164, 135], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Masa: Ho-Oh looks for a Trainer with a true heart.", "Sage Masa: Let me see the bond you share with your Pokemon!"], "player_won": ["Sage Masa: A fine bond indeed. Koji will be the last."], "player_lost": ["Sage Masa: Your heart is good, but your team is not ready."]}},
+                {"name": "Sage Koji", "class": "SAGE", "sprite": "sage.png", "team": [164, 134], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Koji: I am the last of the Wise Trio.", "Sage Koji: Beat me, and the way to the Bell Tower is open!"], "player_won": ["Sage Koji: You have bested all three of us.", "Sage Koji: Go on to the Bell Tower. We will meet you inside."], "player_lost": ["Sage Koji: The way stays shut. Come back stronger."]}}
+            ],
             "route_menu": [
                 {"text": "LISTEN TO THE BELL", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Autumn leaves drift along the trail. Somewhere above, a bell rings softly..."]}},
                 {"text": "ECRUTEAK CITY", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"},
-                {"text": "BELL TOWER", "action": "EXIT", "target": "BELL_TOWER", "condition": "can_exit", "color": "RED"}
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+                {"text": "BELL TOWER", "action": "EXIT", "target": "BELL_TOWER", "condition": ["can_exit", "no_trainers"], "color": "RED"}
             ],
             "next_area": "BELL_TOWER"
         },
@@ -4421,6 +4416,15 @@
             "id": "johto_m17", "type": "MAIN", "title": "Conquer the League", "description": "The Johto journey ends at the Indigo Plateau. Defeat the Elite Four and become the Johto Champion!",
             "condition": { "start_region": "JOHTO", "badges_min": 8, "flag_not": "beat_johto_champion" },
             "reward": "Champion Title"
+        },
+        {
+            "id": "johto_m17b", "type": "MAIN", "title": "The Wise Trio", "description": "Three sages, the Wise Trio, guard Bellchime Trail behind Ecruteak City's Bell Tower gate. Beat all three, then see Sage Li inside the Bell Tower: the Rainbow Wing opens the way to the top.",
+            "target": "BELLCHIME_TRAIL",
+            "condition": { "start_region": "JOHTO", "badges_min": 8, "item_not": "RAINBOW_WING" },
+            "completed_flag": ["wise_trio_beaten", "got_rainbow_wing"],
+            "steps": [{"area": "BELLCHIME_TRAIL", "floor": 0, "at": [11, 8], "label": "Wise Trio", "done": "wise_trio_beaten"},
+                      {"area": "BELL_TOWER", "floor": 0, "at": [5, 4], "label": "Sage Li", "done": "got_rainbow_wing"}],
+            "reward": "Rainbow Wing"
         },
         {
             "id": "johto_m18", "type": "MAIN", "title": "The Legend of Mt. Silver", "description": "You are the Champion, but a greater challenge awaits. Brave the heights of Mt. Silver to find the legendary trainer Red.",

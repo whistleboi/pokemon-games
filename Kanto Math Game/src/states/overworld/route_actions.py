@@ -284,13 +284,14 @@ class RouteActions:
         self.is_progression_paused = True
         self.hide_menu_buttons()
         inv = self.game.story_manager.inventory
-        # (Jordan 11-15: the Rainbow Wing for anyone who's beaten the sages; no need to have caught the three beasts)
+        # (Jordan 11-15: the Rainbow Wing for anyone who's beaten the sages - since 11-22 the Wise Trio, on Bellchime Trail; no need to have caught the three beasts)
         if inv.get("RAINBOW_WING", 0) > 0:
             lines = ["Sage Li: Seek the summit, chosen one."]
         else:
             lines = ["Sage Li: You have shown us your strength, and your bond with your Pokemon.",
                      "Sage Li: Take this Rainbow Wing. Ho-Oh waits at the top of the Bell Tower for the one who holds it."]
             inv["RAINBOW_WING"] = 1
+            self.game.story_manager.story_flags["got_rainbow_wing"] = True   # (the Journal's Wise Trio entry: its last step)
             if self.game.assets.heal_sfx: self.game.assets.heal_sfx.play()
 
         path = os.path.join(self.game.assets.sprites_dir, "png", "elder.png")

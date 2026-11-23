@@ -7023,6 +7023,15 @@
     "BELLCHIME_TRAIL:Sage  ": {
       "sheet": "hg_gsoldman1.png"
     },
+    "BELL_TOWER:Sage Gaku": {
+      "sheet": "hg_bozu.png"
+    },
+    "BELL_TOWER:Sage Koji": {
+      "sheet": "hg_bozu.png"
+    },
+    "BELL_TOWER:Sage Masa": {
+      "sheet": "hg_bozu.png"
+    },
     "ECRUTEAK_DANCE_THEATER:Rocket Grunt": {
       "sheet": "hg_rocketm.png"
     },
