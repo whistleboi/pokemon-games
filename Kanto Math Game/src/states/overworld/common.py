@@ -1284,13 +1284,17 @@ def _give_badge(game, badge):
 
 def _run_quiz(state, ev, lines, show):
     """Ask ev["quiz"]'s questions one menu at a time, then show ev["after"] lines (and give ev["give_badge"]).
-    Only the first time through counts for "<quiz_flag>_perfect" (HGSS: the Dratini knows Extreme Speed)."""
+    Only the first time through counts for "<quiz_flag>_perfect" (HGSS: the Dratini knows Extreme Speed).
+    "must_be_right": any wrong answer shows ev["wrong"] and sets nothing, so it can be asked again (Platinum's clowns)."""
     from src.states.systems.pick_list import PickListState
     game = state.game
     story = game.story_manager
     qs, right = ev["quiz"], []
 
     def ask(i):
+        if i == len(qs) and ev.get("must_be_right") and not all(right):   # (a wrong answer counts for nothing: ask again later -
+            show(_resolve_lines(game, ev.get("wrong") or ["That's not right. Try again!"]))   #  Platinum's Pokétch clowns, 11-23)
+            return
         if i == len(qs):
             flag = ev.get("quiz_flag") or "quiz_done"
             if not story.story_flags.get(flag):

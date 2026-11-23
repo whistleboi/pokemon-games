@@ -67,9 +67,38 @@ ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (42, 47), "HOENN": (52, 55), "SINNOH":
 CHAMPION_ACE = {"KANTO": 63, "JOHTO": 50, "HOENN": 59, "SINNOH": 66, "UNOVA": 59, "KALOS": 68,
                 "ALOLA": 58, "GALAR": 65, "PALDEA": 62,
                 "ORANGE": 52, "ORRE": 60}   # (Orange 11-17: 5.7's Drake, Dragonite 52)
-# Once Drake is beaten, the Orange Gyms scale to the Orange Champion's post-game band: each Gym team
-# is lifted so its ace is Drake's rematch ace (Champion + 10).
-ORANGE_POSTGAME_ACE = CHAMPION_ACE["ORANGE"] + 10
+# Once Drake is beaten, the Orange Gyms can be battled again; until 11-23 each Gym team was lifted so its ace was Drake's
+# made-up rematch ace (Champion + 10). Now (Jordan 11-23, main step M5) they rise by canon_league_boost, as every rematch
+# without the games' own team does.
+ORANGE_POSTGAME_ACE = CHAMPION_ACE["ORANGE"] + 10   # (no longer used: kept for older imports)
+# A League rematch's jump where the games have no rematch team of their own (Jordan 11-23: "the level jumps from 1st battle
+# to rematch ... ORAS league looks to be +20"): the average of these games' Elite Four + Champion rematches, each member's
+# rematch ace minus first-battle ace, each game counted once (Jordan picked HGSS, ORAS, Platinum, B2W2).
+LEAGUE_REMATCH_SOURCES = ("JOHTO", "HOENN", "SINNOH", "UNOVA")
+_LEAGUE_BOOST = {}
+
+
+def canon_league_boost(game):
+    """Levels a rematch gains where the games have none (about +17 today), measured once from the loaded League data:
+    each source region's League members with a "rematch" team ({"levels"}), rematch ace minus first ace, averaged per
+    region, then over the regions."""
+    if "b" not in _LEAGUE_BOOST:
+        per = {}
+        story = getattr(game, "story_manager", None)
+        for area, a in (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).items():
+            gy = a.get("gym") if isinstance(a, dict) else None
+            if not isinstance(gy, dict):
+                continue
+            reg = str(story.area_region(area) if story else a.get("region") or "").upper()
+            if reg not in LEAGUE_REMATCH_SOURCES:
+                continue
+            for t in [gy.get("leader")] + list(gy.get("trainers") or []):
+                rm = (t or {}).get("rematch") if isinstance(t, dict) else None
+                if isinstance(rm, dict) and rm.get("levels") and t.get("levels"):
+                    per.setdefault(reg, []).append(max(int(x) for x in rm["levels"]) - max(int(x) for x in t["levels"]))
+        vals = [sum(v) / len(v) for v in per.values() if v]
+        _LEAGUE_BOOST["b"] = int(round(sum(vals) / len(vals))) if vals else 17
+    return _LEAGUE_BOOST["b"]
 START_LEVEL = 3
 
 # Legendaries: the box legends and their peers are Lv 70, mythicals and the rest Lv 50.
@@ -404,11 +433,8 @@ def gym_role(trainer_class, is_leader):
     return "leader" if is_leader else "trainer"
 
 
-def orange_postgame_levels(gym_data, team_levels):
-    """After the Orange title: an Orange Gym's battles are lifted by the gap between its leader's ace
-    and ORANGE_POSTGAME_ACE (Drake's rematch ace), so the leader's ace is 73 and the Gym trainers
-    keep their distance below it."""
-    leader = (gym_data or {}).get("leader") or {}
-    lead = leader.get("levels") or [0]
-    delta = max(0, ORANGE_POSTGAME_ACE - max(int(x) for x in lead))
-    return [min(100, int(lv) + delta) for lv in team_levels]
+def orange_postgame_levels(gym_data, team_levels, boost=None):
+    """After the Orange title: an Orange Gym's battles again, every Pokemon up by the canon League rematch jump
+    (canon_league_boost; Jordan 11-23). boost: that number (gym_lobby passes it); None: the 11-23 measure, 17."""
+    boost = 17 if boost is None else int(boost)
+    return [min(100, int(lv) + boost) for lv in team_levels]
