@@ -3149,6 +3149,17 @@ _LINE_NAME = {"single": "Single Train", "double": "Double Train", "multi": "Mult
               "super_double": "Super Double Train", "super_multi": "Super Multi Train"}
 
 
+# The Brown Line's ride (11-23, closing 4b): the train cut from Black 2's own Anville picture (dev/builders/unova_trains.py),
+# pulling out of Gear Station's platform and into Anville's station, and back. Tiles of 16 pixels on half-size pictures.
+_R = "tiles/unova_rides/"
+BROWN_LINE_OUT = {"legs": [
+    {"picture": _R + "platform.png", "sprite": _R + "train_h.png", "from": [21, 11], "to": [42, 11], "camera": [24, 9], "frames": 150},
+    {"picture": _R + "anville.png", "sprite": _R + "train_v.png", "from": [24.5, 82], "to": [24.5, 63], "frames": 170}]}
+BROWN_LINE_BACK = {"legs": [
+    {"picture": _R + "anville.png", "sprite": _R + "train_v.png", "from": [24.5, 63], "to": [24.5, 82], "frames": 150},
+    {"picture": _R + "platform.png", "sprite": _R + "train_h.png", "from": [42, 11], "to": [21, 11], "camera": [24, 9], "frames": 170}]}
+
+
 def _platform(z):
     line = SUBWAY_LINES.get(z)
     if line:
@@ -3162,14 +3173,23 @@ def _platform(z):
         agent = {"text": "Depot Agent", "action": "EVENT", "event": {
             "lines": ["Depot Agent: This is the platform for the train to Anville Town. It's a local train: no battles aboard!",
                       "All aboard! ...The train rattles out of Nimbasa and across the countryside, all the way to Anville Town."],
-            "travel": "ANVILLE_TOWN", "land": [None, 21, 52]}}
+            "travel": "ANVILLE_TOWN", "land": [None, 21, 52], "ride": BROWN_LINE_OUT}}
         title = "Platform: Anville Town"
     ppl = {0: agent, 1: _say("Rail fan", "I come to watch the trains leave. Each line's car is different!"),
            2: _say("Rail fan's friend", "Seven Trainers ride each train. Beat them all and the line goes on and on!")}
     if z == 74:
         ppl = {0: agent, 1: _say("Rail fan", "The Brown Line doesn't battle. It's a quiet local train out to Anville Town.")}
-    return nimbasa_room(z, ppl, {(6, 15): ["It's a subway map of the Unova region.", "Eight lines run from Gear Station."]},
-                        title=title)
+    m = nimbasa_room(z, ppl, {(6, 15): ["It's a subway map of the Unova region.", "Eight lines run from Gear Station."]},
+                     title=title)
+    m["barred"] = PLATFORM_TRAIN
+    return m
+
+
+# (the train waiting on a platform's track: Black 2's own car, cut into tiles by dev/builders/unova_trains.py)
+_TRAIN_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "assets", "dungeon", "characters", "b2_train")
+PLATFORM_TRAIN = [{"tiles": [[13 + int(f.split("_c")[1][:-4]), 8 + int(f[1:f.index("_")])]], "look": "img:b2_train/" + f,
+                   "lines": ["The train waits at the platform, its doors open."]}
+                  for f in sorted(os.listdir(_TRAIN_DIR)) if f.endswith(".png")]
 
 
 def _car_scenes():
@@ -3239,7 +3259,7 @@ ANVILLE_PEOPLE = {
     2: {"text": "Depot Agent", "action": "EVENT", "event": {
         "lines": ["Depot Agent: A train to Nimbasa City is leaving shortly. All aboard!",
                   "...The train rolls back across the plains and into Gear Station."],
-        "travel": "NIMBASA_CITY", "land": ["plat_anville", 11, 14]}},
+        "travel": "NIMBASA_CITY", "land": ["plat_anville", 11, 14], "ride": BROWN_LINE_BACK}},
     3: _say("Rich Boy", "This is a quiet town! Relax and stay for a while."),
     4: {"text": "Traveller with a pack", "action": "EVENT", "condition": _WEEKEND, "event": {
         "world": "anville", "trade": "REVIVE", "lines": ["Ah... I'm in trouble. I got so caught up in my trip, I ran out of Escape Ropes."]}},

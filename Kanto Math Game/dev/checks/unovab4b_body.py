@@ -89,7 +89,7 @@ check(ingo["name"] == "Subway Boss Ingo" and [D["sets"][str(s)]["species"] for s
       "Ingo's Single Train team: Garbodor, Crustle, Klinklang (the file's)")
 check(D["trainers"]["301"]["name"].endswith("Nate") and D["trainers"]["304"]["name"].endswith("Rosa"), "Nate and Rosa: the Multi partners")
 miss = sorted({t["sprite"] for t in D["trainers"].values() if not os.path.isfile("assets/sprites/trainers/" + t["sprite"])})
-check(miss == ["clerk_f.png"], f"every class's Black 2 battle picture but the Clerk (F) ({miss})")
+check(not miss, f"every class's Black 2 battle picture, the Clerk (F) too (a/0/7/1 slot 47) ({miss})")
 miss = sorted({t["walk"] for t in D["trainers"].values() if t["walk"] and not os.path.isfile("assets/dungeon/characters/" + t["walk"])})
 check(not miss, f"every class's walking look ({miss})")
 from PIL import Image
@@ -192,7 +192,11 @@ settle(60)
 check(story.current_area_key == "ANVILLE_TOWN" and tuple(getattr(g.current_state, "player", ())) == (21, 52),
       f"the local train to Anville Town's station ({story.current_area_key}, {getattr(g.current_state, 'player', None)})")
 st = g.current_state
-talk(st, "Depot Agent"); settle(200)
+talk(st, "Depot Agent")
+for _ in range(900):   # (the ride scene plays first: out of Anville's station, into Gear Station)
+    settle(1)
+    if story.current_area_key == "NIMBASA_CITY" and getattr(g.current_state, "room", None):
+        break
 check(story.current_area_key == "NIMBASA_CITY" and getattr(g.current_state, "room", None) == "plat_anville",
       f"and back to Gear Station's Brown Line platform ({story.current_area_key}, {getattr(g.current_state, 'room', None)})")
 
@@ -242,6 +246,16 @@ anville.found_item(story); anville.found_item(story)
 item = flags.get("b2_lost_found_item"); n0 = story.inventory.get(item, 0)
 talk(g.current_state, "Depot Agent")
 check(item and story.inventory.get(item, 0) == n0 + 2, f"two trains won: two of what he found ({item})")
+
+print("9b) the trains: the Brown Line's ride, a train waiting at each platform (cut from Black 2's Anville picture)")
+plat = tmaps["NIMBASA_CITY"]["rooms"]["plat_single"]
+check(len(plat.get("barred", [])) > 40 and all(b["look"].startswith("img:b2_train/") for b in plat["barred"]), "the train on the platform's track")
+agent = [o for o in tmaps["NIMBASA_CITY"]["rooms"]["plat_anville"]["people"] if isinstance(o, dict) and o.get("text") == "Depot Agent"][0]
+from src.states.overworld.area_transition import ride_scene
+legs = ride_scene(g, agent["event"]["ride"])
+check(legs and len(legs) == 2, "the Brown Line's ride: out of Gear Station, into Anville's station")
+back = [o for o in tmaps["ANVILLE_TOWN"]["people"] if isinstance(o, dict) and o.get("text") == "Depot Agent"][0]
+check(ride_scene(g, back["event"]["ride"]), "and the ride back")
 
 print("10) the Quest Book, music")
 ids = {m["id"] for m in prog["JOURNAL_MISSIONS"]} if isinstance(prog.get("JOURNAL_MISSIONS"), list) else set(prog.get("JOURNAL_MISSIONS", {}))

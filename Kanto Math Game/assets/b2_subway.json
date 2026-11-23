@@ -6456,7 +6456,7 @@
 "name": "Clerk F Lara",
 "class": "CLERK_F",
 "class_id": 48,
-"sprite": "clerk_f.png",
+"sprite": "b2_clerk_f.png",
 "walk": "b2_c53.png",
 "pool": [
 171,
@@ -6503,7 +6503,7 @@
 "name": "Clerk F Elodie",
 "class": "CLERK_F",
 "class_id": 48,
-"sprite": "clerk_f.png",
+"sprite": "b2_clerk_f.png",
 "walk": "b2_c53.png",
 "pool": [
 171,
@@ -12119,7 +12119,7 @@
 "name": "Clerk F Velour",
 "class": "CLERK_F",
 "class_id": 48,
-"sprite": "clerk_f.png",
+"sprite": "b2_clerk_f.png",
 "walk": "b2_c53.png",
 "pool": [
 472,
@@ -12215,7 +12215,7 @@
 "name": "Clerk F Mohair",
 "class": "CLERK_F",
 "class_id": 48,
-"sprite": "clerk_f.png",
+"sprite": "b2_clerk_f.png",
 "walk": "b2_c53.png",
 "pool": [
 472,
@@ -19951,7 +19951,7 @@
 "name": "Clerk F Anette",
 "class": "CLERK_F",
 "class_id": 48,
-"sprite": "clerk_f.png",
+"sprite": "b2_clerk_f.png",
 "walk": "b2_c53.png",
 "pool": [
 647,
@@ -20047,7 +20047,7 @@
 "name": "Clerk F Anora",
 "class": "CLERK_F",
 "class_id": 48,
-"sprite": "clerk_f.png",
+"sprite": "b2_clerk_f.png",
 "walk": "b2_c53.png",
 "pool": [
 647,

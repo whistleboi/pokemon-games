@@ -573570,7 +573570,7 @@
            "rewards": {
             "balls": 2
            },
-           "sprite": "nursery_aide.png",
+           "sprite": "b2_nursery_aide.png",
            "team": [
             541
            ],
@@ -573599,7 +573599,7 @@
            "rewards": {
             "balls": 2
            },
-           "sprite": "nursery_aide.png",
+           "sprite": "b2_nursery_aide.png",
            "team": [
             541
            ],
@@ -573640,7 +573640,7 @@
            "rewards": {
             "balls": 2
            },
-           "sprite": "clerk_f.png",
+           "sprite": "b2_clerk_f.png",
            "team": [
             572
            ],
@@ -573669,7 +573669,7 @@
            "rewards": {
             "balls": 2
            },
-           "sprite": "clerk_f.png",
+           "sprite": "b2_clerk_f.png",
            "team": [
             572
            ],
@@ -588056,7 +588056,873 @@
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Single Train"
+    "title": "Platform: Single Train",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    },
    "plat_double": {
     "theme": "room",
@@ -588841,7 +589707,873 @@
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Double Train"
+    "title": "Platform: Double Train",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    },
    "plat_multi": {
     "theme": "room",
@@ -589626,7 +591358,873 @@
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Multi Train"
+    "title": "Platform: Multi Train",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    },
    "plat_wifi": {
     "theme": "room",
@@ -590413,7 +593011,873 @@
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Wi-Fi Train"
+    "title": "Platform: Wi-Fi Train",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    },
    "plat_super_single": {
     "theme": "room",
@@ -591188,7 +594652,873 @@
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Super Single Train"
+    "title": "Platform: Super Single Train",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    },
    "plat_super_double": {
     "theme": "room",
@@ -591963,7 +596293,873 @@
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Super Double Train"
+    "title": "Platform: Super Double Train",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    },
    "plat_super_multi": {
     "theme": "room",
@@ -592748,7 +597944,873 @@
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Super Multi Train"
+    "title": "Platform: Super Multi Train",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    },
    "plat_anville": {
     "theme": "room",
@@ -593526,12 +599588,912 @@
         null,
         21,
         52
-       ]
+       ],
+       "ride": {
+        "legs": [
+         {
+          "picture": "tiles/unova_rides/platform.png",
+          "sprite": "tiles/unova_rides/train_h.png",
+          "from": [
+           21,
+           11
+          ],
+          "to": [
+           42,
+           11
+          ],
+          "camera": [
+           24,
+           9
+          ],
+          "frames": 150
+         },
+         {
+          "picture": "tiles/unova_rides/anville.png",
+          "sprite": "tiles/unova_rides/train_v.png",
+          "from": [
+           24.5,
+           82
+          ],
+          "to": [
+           24.5,
+           63
+          ],
+          "frames": 170
+         }
+        ]
+       }
       },
       "_look": "sheet:b2_c68.png"
      }
     ],
-    "title": "Platform: Anville Town"
+    "title": "Platform: Anville Town",
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        8
+       ]
+      ],
+      "look": "img:b2_train/r0_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        9
+       ]
+      ],
+      "look": "img:b2_train/r1_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        10
+       ]
+      ],
+      "look": "img:b2_train/r2_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c0.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c1.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c10.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c11.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c12.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        26,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c13.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c14.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c15.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c16.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c17.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c2.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c3.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c4.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c5.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c6.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c7.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c8.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        11
+       ]
+      ],
+      "look": "img:b2_train/r3_c9.png",
+      "lines": [
+       "The train waits at the platform, its doors open."
+      ]
+     }
+    ]
    }
   },
   "inside": {
@@ -609857,7 +616819,41 @@
       "plat_anville",
       11,
       14
-     ]
+     ],
+     "ride": {
+      "legs": [
+       {
+        "picture": "tiles/unova_rides/anville.png",
+        "sprite": "tiles/unova_rides/train_v.png",
+        "from": [
+         24.5,
+         63
+        ],
+        "to": [
+         24.5,
+         82
+        ],
+        "frames": 150
+       },
+       {
+        "picture": "tiles/unova_rides/platform.png",
+        "sprite": "tiles/unova_rides/train_h.png",
+        "from": [
+         42,
+         11
+        ],
+        "to": [
+         21,
+         11
+        ],
+        "camera": [
+         24,
+         9
+        ],
+        "frames": 170
+       }
+      ]
+     }
     },
     "_look": "sheet:b2_c68.png"
    }

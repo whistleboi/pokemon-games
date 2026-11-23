@@ -11,7 +11,7 @@ What the file holds (read with kanto_handoff/unova_map_tools; the record layouts
 - overlay 12 at 0x216d9a8: 56 (class, overworld sprite) pairs: how each class looks walking into the car.
 Battle pictures: a/0/7/1 slots matched by eye 11-23 (school kids 4/5, waiter 8, waitress 9, nursery aide 13, preschoolers
 14 F / 15 M, fisherman 29, psychics 35/36, pilot 43, black belt 50, janitor 57, Pokefans 58/59, nurse 61, battle girl 63,
-parasol lady 64, biker 71: the animated ones from their parts sheet). Clerk (F) not found yet: the default picture.
+parasol lady 64, biker 71, clerk F 47 (class 48: the slots run one behind the classes here): the animated ones from their parts sheet).
 Who appears when (the community's tables, altissimo1's Battle Subway pages, 11-23): line Trainers 1-110 ride the normal
 trains, 111-300 the Super trains, by the battle's number in the streak (RANGES below). Every Pokemon at Lv 50 (Black 2's
 rule; Jordan 11-23: "Lv 50, as Black 2")."""

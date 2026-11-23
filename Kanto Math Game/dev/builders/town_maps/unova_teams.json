@@ -9,7 +9,7 @@
   "rewards": {
    "balls": 2
   },
-  "sprite": "clerk_f.png",
+  "sprite": "b2_clerk_f.png",
   "team": [
    572
   ]
@@ -411,7 +411,7 @@
   "rewards": {
    "balls": 2
   },
-  "sprite": "subway_boss.png",
+  "sprite": "b2_ingo.png",
   "team": [
    525
   ]
@@ -456,7 +456,7 @@
   "rewards": {
    "balls": 2
   },
-  "sprite": "nursery_aide.png",
+  "sprite": "b2_nursery_aide.png",
   "team": [
    541
   ]
