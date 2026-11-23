@@ -18557,7 +18557,7 @@
    "dept": {
     "art": [
      "ccccccccccccc",
-     "cccccccc!cccc",
+     "cccccc^c!cccc",
      "ccccn.....ccc",
      "cccc......ccc",
      "cccc......ccc",
@@ -18576,6 +18576,7 @@
     "exits": {
      "v": "OUT:11,14",
      "<": "OUT:15,14",
+     "^": "ROOM:lift",
      "n": "ROOM:dept_2"
     },
     "buildings": {},
@@ -18636,7 +18637,7 @@
    "dept_2": {
     "art": [
      "ccccccccccccc",
-     "cccc!cccccccc",
+     "cccc!c^cccccc",
      "cccn.....<ccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -18652,6 +18653,7 @@
      ".......cc.cc."
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept",
      "<": "ROOM:dept_3"
     },
@@ -18749,7 +18751,7 @@
    "dept_3": {
     "art": [
      "ccccccccccccc",
-     "cccccccc!cccc",
+     "cccccc^c!cccc",
      "ccc<.....nccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -18765,6 +18767,7 @@
      "c........N..c"
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept_2",
      "<": "ROOM:dept_4"
     },
@@ -18899,7 +18902,7 @@
    "dept_4": {
     "art": [
      "ccccccccccccc",
-     "cccc!cccccccc",
+     "cccc!c^cccccc",
      "cccn.....<ccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -18915,6 +18918,7 @@
      "cccccccc.cc.."
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept_3",
      "<": "ROOM:dept_5"
     },
@@ -19011,7 +19015,7 @@
    "dept_5": {
     "art": [
      "ccccccccccccc",
-     "cccccccc!cccc",
+     "cccccc^c!cccc",
      "ccc<.....nccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -19027,6 +19031,7 @@
      "c...........c"
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept_4",
      "<": "ROOM:dept_roof"
     },
@@ -19127,6 +19132,104 @@
     ],
     "theme": "room",
     "title": "Dept. Store 5F"
+   },
+   "lift": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "ROOM:dept"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "dynamic_exit": {
+     "flag": "celadon_lift_floor",
+     "rooms": [
+      "dept",
+      "dept_2",
+      "dept_3",
+      "dept_4",
+      "dept_5"
+     ],
+     "default": "dept"
+    },
+    "sign_events": {
+     "0,2": {
+      "text": "Lift panel",
+      "action": "EVENT",
+      "event": {
+       "cancel": [
+        "The lift stays where it is."
+       ],
+       "elevator": {
+        "area": "CELADON_CITY",
+        "car_flag": "celadon_lift_floor",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "1F",
+          "dept"
+         ],
+         [
+          "2F",
+          "dept_2"
+         ],
+         [
+          "3F",
+          "dept_3"
+         ],
+         [
+          "4F",
+          "dept_4"
+         ],
+         [
+          "5F",
+          "dept_5"
+         ]
+        ]
+       }
+      }
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
    },
    "dept_roof": {
     "art": [

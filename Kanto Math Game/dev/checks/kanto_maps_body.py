@@ -1910,6 +1910,26 @@ _, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")
 story.money = 1500; story.inventory.pop("POKE_DOLL", None)
 _teachT(_clk["event"], [25])
 check(story.inventory.get("POKE_DOLL") == 1 and story.money == 500, f"Celadon Dept. Store 4F: a Poke Doll for $1000 ({story.inventory.get('POKE_DOLL')}, {story.money})")
+# (11-23, K2: FireRed's walk-in lift in the Dept. Store - in at 3F's lift door, the panel, ride to 5F, out on 5F by its lift door)
+_ce = open_map("CELADON_CITY", "KANTO_ROUTE_7")
+_ce._go("dept_3", ""); frames(2)
+_ce.player = (6, 2); _ce.anim = 0
+walk(_ce, "u")
+_ce = g.current_state
+_inC = (getattr(_ce, "room", None), tuple(_ce.player))
+_ce.player = (0, 3); _ce.anim = 0; _ce.facing = (0, -1)
+_ce.step(0, -1); play(lambda: type(g.current_state).__name__ == "PickListState", 200)
+_pkC = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rowsC = [c[0] for c in _pkC.choices] if _pkC else []
+if _pkC:
+    _pkC.pick("dept_5")
+play(lambda: isinstance(g.current_state, _WTS) and not g.current_state._busy(), 300)
+_ce = g.current_state
+_ce.player = (2, 4); _ce.anim = 0
+walk(_ce, "d")
+_ce = g.current_state
+check(_inC[0] == "lift" and _rowsC == ["1F", "2F", "3F", "4F", "5F"] and _ce.room == "dept_5" and tuple(_ce.player) == (6, 2),
+      f"...its lift: in at 3F's lift door, the panel lists 1F-5F, the car stops at 5F and you step out by 5F's lift door ({_inC}, {_rowsC}, {_ce.room}, {_ce.player})")
 _cc = next(o for o in _area["SAFFRON_CITY"]["explore_options"] if o.get("text") == "Visit Copycat")
 story.story_flags.pop("frlg_tutor_mimic", None)
 _w = _teachT(_cc["event"], [129], flags=["got_magnet_pass"])
