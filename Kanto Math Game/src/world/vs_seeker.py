@@ -208,12 +208,68 @@ def _has_rematch(story, area, info):
 
 # ---- made-up stronger teams (Jordan 11-18: the regions whose games have no rematch teams, and Orange, whose 5.7 table
 # only repeats the first team). Ours, built when the battle starts, the same every time for a trainer:
-# 5 stages: 1-4 at a quarter, half, three-quarters and all of the region's badges, 5 after its Champion. A stage's top
-# level is the ace of the last Gym reached then (the Champion's ace + 5 for stage 5), never under the trainer's own
-# levels + 3 a stage; each Pokemon evolves as far as its level allows (the region's own rules); every other stage adds
-# one from the route's wild Pokemon, up to six.
+# 5 stages: 1-4 at a quarter, half, three-quarters and all of the region's badges, 5 after its Champion. The levels
+# (Jordan 11-23, main step M5: "establish a rebattle rule for regions that don't canonically have one"): each Pokemon is
+# the trainer's own level plus the average boost the canon rematch tables give at that stage (canon_boosts: Kanto /
+# Sevii's FireRed, Johto's SoulSilver phone, Hoenn's Emerald, Sinnoh's Platinum, each region weighted the same; about +9
+# a stage); each evolves as far as its level allows (the region's own rules); every other stage adds one from the
+# route's wild Pokemon, up to six.
 MADE_REGIONS = {"ORANGE", "UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA", "ORRE"}
 MADE_STAGES = 5
+CANON_REMATCH_REGIONS = ("KANTO", "SEVII", "JOHTO", "HOENN", "SINNOH")
+_BOOSTS = {}
+
+
+def canon_boosts(game):
+    """[levels] x MADE_STAGES: the average level boost of the canon rematch tables at each rematch stage. Stage k is a
+    trainer's k-th rematch team stronger than its first (a same-level repeat or an empty slot doesn't count); the boost
+    is that team's ace minus the first team's ace. Each region's average counts once (so one big table doesn't decide
+    it); a stage only one region's table reaches isn't used. Past the last such stage each stage adds the average step
+    so far. Measured once from the loaded data, so it follows the tables."""
+    if "b" in _BOOSTS:
+        return _BOOSTS["b"]
+    sp = game.loader.area_data.get("STORY_PROGRESSION", {}) or {}
+    story = game.story_manager
+    per = {}   # stage -> region -> [boosts]
+    for area, a in sp.items():
+        if not isinstance(a, dict):
+            continue
+        reg = str(story.area_region(area)).upper()
+        if reg not in CANON_REMATCH_REGIONS:
+            continue
+        for t in a.get("trainer_pool") or []:
+            if not isinstance(t, dict):
+                continue
+            rm = t.get("rematch") if isinstance(t.get("rematch"), dict) else {}
+            tiers = list(rm.get("tiers") or (t.get("phone") or {}).get("tiers") or [])
+            if t.get("levels"):
+                base = max(int(x) for x in t["levels"])
+            elif tiers and tiers[0] and tiers[0].get("levels"):   # (a phone trainer whose first team is its first tier)
+                base, tiers = max(int(x) for x in tiers[0]["levels"]), tiers[1:]
+            else:
+                continue
+            k = 0
+            for tr in tiers:
+                if not tr or not tr.get("levels"):
+                    continue
+                b = max(int(x) for x in tr["levels"]) - base
+                if b > 0:
+                    per.setdefault(k, {}).setdefault(reg, []).append(b)
+                    k += 1
+    out = []
+    for k in sorted(per):
+        regs = per[k]
+        if len(regs) < 2:
+            break
+        avg = sum(sum(v) / len(v) for v in regs.values()) / len(regs)
+        out.append(max(avg, (out[-1] + 1) if out else 1))
+    if not out:
+        out = [9.0]   # (no tables loaded: the 11-23 measure)
+    step = out[-1] / len(out)
+    while len(out) < MADE_STAGES:
+        out.append(out[-1] + step)
+    _BOOSTS["b"] = [int(round(x)) for x in out[:MADE_STAGES]]
+    return _BOOSTS["b"]
 
 
 def _made(story, area, info):
@@ -259,20 +315,10 @@ def _evolve_up(game, pid, level, rng):
 
 def made_team(game, area, index, info, k):
     """(team, levels) of made-up stage k for this trainer."""
-    from src.world import levels
-    story = game.story_manager
-    region = str(story.area_region(area)).upper()
     rng = random.Random(f"{area}|{index}|{info.get('name')}|{k}")
     base = [int(x) for x in (info.get("team") or []) if isinstance(x, int) or str(x).isdigit()]
     base_lv = list(info.get("levels") or [])
-    aces = levels.gym_aces(region)
-    n = len(story.get_region_gym_badges(region) or []) or len(aces) or 8
-    import math
-    if k >= 4:
-        top = levels.CHAMPION_ACE.get(region, 60) + 5
-    else:
-        b = max(1, math.ceil(n * (k + 1) / 4))
-        top = aces[min(b, len(aces)) - 1] - 2 if aces else 20 + 8 * k
+    boost = canon_boosts(game)[max(0, min(k, MADE_STAGES - 1))]   # (the canon tables' average at this stage: M5)
     size = min(6, len(base) + (k + 1) // 2)
     team = list(base)
     pool = (game.loader.area_data.get("STORY_PROGRESSION", {}).get(area) or {}).get("wild_pool_percentages")
@@ -280,9 +326,9 @@ def made_team(game, area, index, info, k):
     while len(team) < size:
         team.append(rng.choice(wild) if wild else rng.choice(base or [19]))
     lv = []
-    for i in range(len(team)):
-        own = base_lv[i] if i < len(base_lv) else (base_lv[-1] if base_lv else 10)
-        lv.append(max(own + 3 * (k + 1), top - (len(team) - 1 - i)))
+    for i in range(len(team)):   # (an added Pokemon: the trainer's top level)
+        own = int(base_lv[i]) if i < len(base_lv) else (max(int(x) for x in base_lv) if base_lv else 10)
+        lv.append(own + boost)
     team = [_evolve_up(game, p, l, rng) for p, l in zip(team, lv)]
     return team, [min(100, x) for x in lv]
 
