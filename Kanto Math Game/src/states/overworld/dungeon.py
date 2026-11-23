@@ -48,6 +48,7 @@ import json
 import math
 import os
 import random
+import weakref
 
 import pygame
 
@@ -838,6 +839,43 @@ def ghost_figure():
 
 # (sheets drawn at their own size beside a person, not stretched to one: Black 2's item ball, Jordan 11-20)
 CELL_SIZED = {"b2_item_ball.png"}
+# People from every sprite set stand one height (Jordan 11-23, Johto's 3D review: "the size difference between player and npc
+# is big"): each set draws an adult a different number of pixels tall (SoulSilver/Platinum 24, Black 2 28, the GBA sets 20,
+# the Pokemon Journeys and Orre sheets 40), and a whole-number scale per sheet left a Journeys player 1.6x SoulSilver's
+# people. A person-shaped frame from a known set is scaled so its set's adult comes out PERSON_H pixels tall (children stay
+# shorter, a big man taller); anything else - Pokemon, items, a set not listed - keeps the whole-number scale.
+PERSON_H = 72   # (Jordan's pick: about 1.3 tiles; SoulSilver's and Platinum's people at exactly 3x)
+SET_ADULT = (("hg_", 24), ("pt_", 24), ("b2_", 28), ("fr_", 20), ("em_", 20), ("oi_", 20), ("trchar", 40), ("NPC ", 40), ("orre_", 40))
+
+
+# Live 3D (11-23, Johto: people stood 1.5x too tall in 3D once they were 72 px on the map): the 3D view sizes a figure by its
+# picture, so a person's picture is remembered here as it's made, and stands LIVE_PERSON tiles tall for a PERSON_H adult in
+# the world, whatever its set (Black 2's people stood exactly that tall before; the DS shows people about 1.5 tiles).
+PERSON_FRAMES = weakref.WeakSet()
+LIVE_PERSON = 1.5
+
+
+def live_height(img, live_sprite):
+    """A figure's height in the 3D world, in tiles: a person by PERSON_H (one adult height for every set), else by its
+    picture's height (live_sprite tiles per tile of picture), as before."""
+    if img in PERSON_FRAMES:
+        return img.get_height() / PERSON_H * LIVE_PERSON
+    return img.get_height() / TILE * live_sprite
+
+
+def same_kind(new, old):
+    """new (a pose's scaled copy of old, say) counts as a person when old does. Returns new."""
+    if old is not None and new is not None and old in PERSON_FRAMES:
+        PERSON_FRAMES.add(new)
+    return new
+
+
+def person_scale(sheet, cw, ch):
+    """The scale for a person-shaped frame (taller than wide) of a known sprite set, else None."""
+    if ch < cw * 1.4:
+        return None
+    ref = next((r for p, r in SET_ADULT if str(sheet).startswith(p)), None)
+    return PERSON_H / ref if ref else None
 
 
 from src.states.overworld.dungeon_live import RouteLive   # (the live 3D camera on the route maps, 11-21)
@@ -4346,6 +4384,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
     def _sheet_frame(self, sheet, facing=(0, 1), col=None, frame=0, height=None, scale=None):
         """One cell of a Pokemon Journeys overworld sheet (4 x 4): a person's walking frame (col None: the
         columns are steps), or a Pokemon's (col: whose column), the row by the way it faces."""
+        as_person = height is None and scale is None and col is None   # (a person at the usual size: PERSON_H, by its set)
         height = height or TILE + 22
 
         if "+" in str(sheet):   # (a pair who always go together, side by side: "oi_74.png+oi_75.png" = Orange 5.7's James and Jessie;
@@ -4366,6 +4405,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 for p in order:
                     out.blit(p, (x, h - p.get_height()))
                     x += p.get_width() + gap
+                if any(p_ in PERSON_FRAMES for p_ in parts):   # (two people together: a person in 3D too)
+                    PERSON_FRAMES.add(out)
                 return out
             if "mon:" in str(sheet):   # (a Pokemon in it steps all the time: made fresh each look)
                 return make_pair()
@@ -4380,8 +4421,13 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             tall = cell.get_height() if col is not None else max(cell.get_height(), int(ch * 0.8))   # (11-20: something short in
             tall = ch if sheet in CELL_SIZED else tall   # its frame - an item ball - keeps its size beside people; Black 2's own ball sheet by its cell)
             k = scale or max(1, round(height / max(1, tall)))   # (whole steps: crisp pixels; "scale": a fixed one)
+            pk = person_scale(sheet, cw, ch) if as_person and sheet not in CELL_SIZED else None
+            if pk:   # (a person from a known set: its set's adult PERSON_H tall, 11-23)
+                out_ = pygame.transform.scale(cell, (max(1, round(cell.get_width() * pk)), max(1, round(cell.get_height() * pk))))
+                PERSON_FRAMES.add(out_)   # (and LIVE_PERSON tall in the 3D world)
+                return out_
             return pygame.transform.scale(cell, (max(1, int(cell.get_width() * k)), max(1, int(cell.get_height() * k))))
-        return self._sprite(("sheet", sheet, facing, col, frame, height, scale), make)
+        return self._sprite(("sheet", sheet, facing, col, frame, height, scale, as_person), make)
 
     def _surf_draw(self, me, pr, at, k):
         """(bottom, image, rect) for you surfing: the Pokemon carrying you (Pokemon Orre's base_surf sheet,
@@ -4501,7 +4547,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             if walk:   # (the walking sheet's scale, as _sheet_frame works it out: the same size of pixel)
                 w_img = pygame.image.load(os.path.join(d, walk))
                 w_box = w_img.subsurface((0, 0, w_img.get_width() // 4, w_img.get_height() // 4)).get_bounding_rect()
-                k = max(1, round((TILE + 22) / max(1, w_box.h)))
+                k = person_scale(walk, w_img.get_width() // 4, w_img.get_height() // 4) or max(1, round((TILE + 22) / max(1, w_box.h)))   # (as the
+                # walking frames are scaled: a known set's people at PERSON_H, 11-23)
             cw, ch = img.get_width() // cols, img.get_height() // rows
             cell = img.subsurface(((col % cols) * cw, (FACING_ROW.get(facing, 0) if rows == 4 else 0) * ch, cw, ch))
             box = cell.get_bounding_rect()
@@ -4509,7 +4556,10 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 return None
             half = max(cw // 2 - box.x, box.right - cw // 2)
             part = cell.subsurface((cw // 2 - half, box.y, 2 * half, box.h))
-            return pygame.transform.scale(part, (part.get_width() * k * big, part.get_height() * k * big))
+            out_ = pygame.transform.scale(part, (max(1, round(part.get_width() * k * big)), max(1, round(part.get_height() * k * big))))
+            if walk and person_scale(walk, w_img.get_width() // 4, w_img.get_height() // 4):
+                PERSON_FRAMES.add(out_)   # (your run / dive / fish frames: a person in 3D, as your walking ones)
+            return out_
         return self._sprite(("player_extra", name, facing, col % cols), make)
 
     def _pose_start(self, kind):

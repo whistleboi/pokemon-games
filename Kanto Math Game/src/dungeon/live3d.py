@@ -29,6 +29,7 @@ KEY = (230, 57, 255)   # (an atlas's unused space)
 LIGHT_ALPHA = 0.42     # (a light sheet: the lamps' glow, the clouds)
 YOU_ALPHA = 0.45       # (you, where something in front hides you: Scene.render's `you`, 11-22)
 GAP = (26, 30, 38)     # (behind a SoulSilver scene outdoors: see Scene.render)
+FEET_LEAD = 0.5        # (a figure's feet drawn this many tiles nearer than they stand, in SoulSilver's scenes: over the chair it sits on, 11-23)
 GLASS = (118, 146, 176, 190)   # (a tower's window pane: Black 2 leaves it open, an inner model behind; 11-21)
 ALLOW_HOLES = False    # (the checks: draw a scene with holes anyway, to try its camera)
 
@@ -512,6 +513,13 @@ class Scene:
                 c, d = [eye + (v - eye) * (float(np.dot(u - eye, fn)) / max(1e-3, float(np.dot(v - eye, fn))))
                         if float(np.dot(v - eye, fn)) > 1e-3 and float(np.dot(u - eye, fn)) > 1e-3 else v
                         for v, u in ((c, for_depth["c"]), (d, for_depth["d"]))]
+                # (11-23, Johto J4, Jordan: "Npcs are sitting through the chair": someone seated stands on the chair's own
+                # tile, and the seat's front edge, nearer the camera than their feet, covered their legs. The DS draws a
+                # seated person whole, over the chair. The feet corners slide the same way, FEET_LEAD tiles nearer along
+                # their own lines from the eye: on screen where they were, in front of the furniture on their own tile;
+                # anything a tile or more in front still covers them.)
+                a, b = [eye + (v - eye) * max(0.0, 1.0 - FEET_LEAD / max(1e-3, float(np.dot(v - eye, fn))))
+                        if float(np.dot(v - eye, fn)) > FEET_LEAD + 1e-3 else v for v in (a, b)]
             quad = np.array([[*a, 0, 1], [*b, 1, 1], [*c, 1, 0], [*a, 0, 1], [*c, 1, 0], [*d, 0, 0]], "f4")
             rows.append((surf, quad))
         rows.sort(key=lambda t: -float(np.linalg.norm(t[1][0, :3] - eye)))   # (far first)
