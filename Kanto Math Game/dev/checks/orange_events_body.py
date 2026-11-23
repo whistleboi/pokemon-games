@@ -2,7 +2,7 @@
 # through, pick, fight; then look at what you got. The data side is checked by orange_canon / orange_maps; this is the
 # player's side. Helpers (play, meet, place, team, ace) copied from kanto_events_body.py.
 #   bash dev/checks/run_par.sh orange_events
-import json
+import json, os
 from src.states.overworld import PlayState, CityState as _CS
 from src.states.overworld.walk_town import WalkTownState as _WTS
 from src.dungeon import core
@@ -341,6 +341,19 @@ for _ in range(4000):
 _rec = _hof_records(g)[-1] if len(_hof_records(g)) > _n0 else {}
 check(_out[-1:] == ["(done)"] and _rec.get("region") == "ORANGE" and [m["id"] for m in _rec.get("team", [])] == [131, 25, 143],
       f"...Lapras, Pikachu, Snorlax shown and saved as an Orange League win ({_rec.get('region')}, {len(_rec.get('team', []))})")
+
+print("7) Orange's own music (5.7's songs, rendered by omusic.py): the island's theme, a Center's, the battles")
+from src.core.music import MusicManager, REGION_MUSIC
+REGION_MUSIC.clear()
+_mm = getattr(g, "music", None) or MusicManager(g)
+_t = place("VALENCIA_ISLAND", "VALENCIA_PARK")
+_town = _mm.region_track("town", "ORANGE")
+_t._go("center", ""); frames(2)
+_cen = _mm.region_track("town", "ORANGE")
+_kinds = {k: _mm.region_track(k, "ORANGE") for k in ("wild", "trainer", "gym", "final", "victory")}
+_b = lambda p: os.path.basename(p) if p else None
+check(_b(_town) == "oi_314.ogg" and _b(_cen) == "oi_303.ogg" and all(_kinds.values()),
+      f"...Valencia plays 5.7's town theme, its Center the Center theme, and every battle kind has its track ({_b(_town)}, {_b(_cen)}, {[_b(v) for v in _kinds.values()]})")
 
 story.story_flags.clear(); story.story_flags.update(_flags0)
 story.inventory.clear(); story.inventory.update(_inv0)
