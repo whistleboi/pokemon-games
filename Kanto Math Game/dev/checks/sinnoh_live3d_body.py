@@ -180,6 +180,35 @@ for key in ROUTES:
         check(not jump, f"{key} floor {i}: no step jumps a level ({jump[:3]})")
         pygame.image.save(pygame.display.get_surface(), f"{S}/sinnoh_live3d_{key}_{i}.png")
 
+print("4b) S3: Eterna Gym's flower clock, live in each of its five states (the hands are Platinum's own models, turned)")
+CLOCK_FLAGS = ("gym_trainer_ETERNA_CITY_1", "gym_trainer_ETERNA_CITY_2", "gym_trainer_ETERNA_CITY_3")
+_had = {k: story.story_flags.get(k) for k in CLOCK_FLAGS}
+_badge = story.has_badge("Forest Badge") if hasattr(story, "has_badge") else None
+for s in range(4):   # (state 4 = after Gardenia: needs the badge, and its scene is checked the same way below)
+    for i, k in enumerate(CLOCK_FLAGS):
+        story.story_flags[k] = i < s
+    t = town("ETERNA_CITY", "gym")
+    if getattr(t, "room", None) != "gym":
+        check(False, f"clock state {s}: the Gym could not be entered by the check"); continue
+    lv = t._live()
+    from src.dungeon import art as _art
+    pic = _art._version_file(_TM["ETERNA_CITY"]["rooms"]["gym"]["roofs"]["_picture"]) or ""
+    check(bool(lv) and pic.endswith(f"_clock{s}.png"), f"clock state {s}: live, on its own scene ({pic})")
+    if not lv:
+        continue
+    sc = lv[0]
+    opens = {(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))}
+    check(not sc.holes([(x, int(round(sc.wz(x, y)))) for x, y in opens]), f"clock state {s}: floor under every tile you can walk ({len(opens)})")
+    settle(2)
+    pygame.image.save(pygame.display.get_surface(), f"{S}/sinnoh_live3d_eterna_clock{s}.png")
+for s in range(5):
+    check(live3d.scene_of(g, f"pt_ground/C04GYM0101_clock{s}.png", [0, 0]) is not None, f"clock state {s}: its scene was exported")
+for k, v in _had.items():
+    if v is None:
+        story.story_flags.pop(k, None)
+    else:
+        story.story_flags[k] = v
+
 print("5) the flat pictures stay when the live camera is off")
 g.live3d = False
 t = town("TWINLEAF_TOWN")
