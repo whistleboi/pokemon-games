@@ -34,7 +34,8 @@ def center_entrance(options):
 
 def center_background(game, state, type_suffix="center"):
     """A Pokemon Center's picture: the region's own Center for all its towns (Kalos), else the town's."""
-    shared = game.assets.get_region_building(game.story_manager.get_current_region(), type_suffix)
+    shared = game.assets.get_region_building(game.story_manager.get_current_region(), type_suffix,
+                                             game.story_manager.current_area_key)
     if shared:
         state.generic_bg = True  # Nurse Joy is in the picture
         return pygame.transform.scale(shared, (game.width, Utils.get_full_dialogue_rect(game).top))

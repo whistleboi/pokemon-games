@@ -395,11 +395,17 @@ class AssetManager:
     # Center has its shop inside (10-30); Orre's are Pokemon Orre's Phenac Center and Mart (11-01,
     # dev/builders/render_orre_backgrounds.py). Nurse Joy and the clerk are in the pictures.
     REGION_BUILDINGS = {"KALOS": {"center": "kalos_center.png", "mart": "kalos_center.png"},
-                        "ORRE": {"center": "orre_center.png", "mart": "orre_mart.png"}}
+                        "ORRE": {"center": "orre_center.png", "mart": "orre_mart.png"},
+                        # Johto's are SoulSilver's own Center and Mart, the rooms every Johto town walks in (11-22,
+                        # dev/builders/make_johto_buildings.py); the Goldenrod Dept. Store has its own floors.
+                        "JOHTO": {"center": "johto_center.png", "mart": "johto_mart.png"}}
 
-    def get_region_building(self, region, kind="center"):
-        """The region's shared Pokemon Center ('center') or shop ('mart') picture, or None."""
-        name = self.REGION_BUILDINGS.get(str(region or "").upper(), {}).get(kind)
+    # A town whose shop is not the region's one (Goldenrod's Dept. Store, its own ground floor in SoulSilver).
+    AREA_BUILDINGS = {"GOLDENROD_CITY": {"mart": "goldenrod_dept_store.png"}}
+
+    def get_region_building(self, region, kind="center", area=None):
+        """The region's shared Pokemon Center ('center') or shop ('mart') picture (a town's own first, AREA_BUILDINGS), or None."""
+        name = self.AREA_BUILDINGS.get(str(area or "").upper(), {}).get(kind) or             self.REGION_BUILDINGS.get(str(region or "").upper(), {}).get(kind)
         return self.get_background(name) if name else None
 
     # A Pokemon Center and Mart for the towns of a region (or sub-region) without their own picture, before
