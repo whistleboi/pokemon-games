@@ -281,6 +281,12 @@ def settle(limit=9000):
                     if g.current_state is st:
                         st.exit_gym()
                 continue
+            _lp = getattr(getattr(st, "back", None), "_lift_plan", None)
+            if isinstance(st, _PLS) and st.title == "WHICH FLOOR?" and _lp in [v for _l, v in st.choices]:   # (a lift's panel: the floor the marker
+                _say(f"[lift: {st.title}: {next(l for l, v in st.choices if v == _lp)}]")                    #  says, 'Lift to <floor>'; 11-23)
+                st.back._lift_plan = None
+                st.pick(_lp)
+                continue
             if isinstance(st, _PLS):   # (a list to pick from: a tutor's "who should learn it?": BACK, no thanks)
                 _say(f"[list: {st.title}: BACK]")
                 st.pick(None)

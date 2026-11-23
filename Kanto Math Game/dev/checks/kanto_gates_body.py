@@ -503,10 +503,28 @@ def _barred_floor(gid, key, came, floor, tiles, before, after, what, passed=None
 
 def g_hideout():
     title("hideout_elevator_lift_key", "Rocket Hideout: the elevator runs only with the Lift Key (elevator panel checks flag 0x2A5, set on picking the key up on B4F)")
-    _barred_floor("hideout_elevator_lift_key", "ROCKET_HIDEOUT", "CELADON_GAME_CORNER", 0, [(24, 25), (23, 25), (25, 25)],
-                  lambda: at("liftkey"), lambda: at("liftkey", also=True), "the elevator door on B1F")
-    _barred_floor("hideout_elevator_lift_key", "ROCKET_HIDEOUT", "CELADON_GAME_CORNER", 1, [(28, 16), (29, 16)],
-                  lambda: at("liftkey"), lambda: at("liftkey", also=True), "the elevator door on B2F")
+    # (11-23, K2: FireRed's walk-in lift - you walk into the car any time; its panel is the gate, as FireRed's checkflag)
+    for which, also in (("before", False), ("after", True)):
+        for floor, door in ((0, (24, 25)), (1, (28, 16))):
+            at("liftkey", also=also)
+            r = dun("ROCKET_HIDEOUT", "CELADON_GAME_CORNER", (0, 0), floor)
+            r.run.player = (door[0], door[1] + 1); r.anim_from = r.partner = r.run.player
+            go("u"); settle()
+            car = where()
+            r = g.current_state
+            r.run.player = (0, 3); r.anim_from = r.partner = r.run.player
+            said.clear()
+            r.facing = (0, -1); r.step(0, -1)
+            for _ in range(200):
+                if type(g.current_state).__name__ == "PickListState" or (hasattr(g.current_state, "_ready") and g.current_state._ready() and _ > 5):
+                    break
+                g.current_state.update(); g.current_state.draw()
+            pk = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+            rides = [c[0] for c in pk.choices] if pk else []
+            if pk:
+                pk.pick(None); settle()
+            ok = (pk is None and car[1] in (4, 5)) if which == "before" else ("B4F" in rides)
+            side("hideout_elevator_lift_key", which, ok, f"the lift on {'B1F' if floor == 0 else 'B2F'}: into its car {car}, its panel: {rides or said[:1]}")
 
 
 def g_hideout_door():

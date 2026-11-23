@@ -1077,12 +1077,26 @@ hq.run.floor.movers = [m for m in hq.run.floor.movers if m.kind not in ("wild", 
 story.inventory.pop("LIFT_KEY", None)
 hq.run.player = (24, 26); hq.anim = 0
 said.clear()
-hq.step(0, -1); play(lambda: g.current_state._ready(), 300)
-check(hq.run.index == 0 and any("key" in s.lower() for s in said + [hq.toast]), f"...the elevator won't move without the Lift Key ({hq.run.index}, {said[:1]}, {hq.toast!r})")
+hq.step(0, -1); play(lambda: g.current_state._ready(), 300)   # (11-23, K2: FireRed's walk-in lift - into the car, any time)
+_car = (hq.run.index, tuple(hq.run.player))
+hq.run.player = (0, 3); hq.anim = 0
+hq.step(0, -1); play(lambda: g.current_state._ready(), 300)   # (its panel, no Lift Key)
+check(_car[0] == 4 and hq.run.index == 4 and type(g.current_state).__name__ != "PickListState" and any("key" in s.lower() for s in said + [hq.toast]),
+      f"...into B1F's lift; its panel won't work without the Lift Key ({_car}, {said[-1:]}, {hq.toast!r})")
 story.inventory["LIFT_KEY"] = 1
-hq.run.player = (24, 26); hq.anim = 0
-hq.step(0, -1); play(lambda: g.current_state._ready(), 300)
-check(hq.run.index == 3 and abs(hq.run.player[0] - 20) <= 1 and hq.run.player[1] == 24, f"...with it: down to B4F's far side, Giovanni's, out in front of the lift ({hq.run.index}, {hq.run.player})")
+hq.run.player = (0, 3); hq.anim = 0
+hq.step(0, -1); play(lambda: type(g.current_state).__name__ == "PickListState", 200)
+_pkH = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+if _pkH:
+    _pkH.done(6)
+play(lambda: type(g.current_state).__name__ == "PlayState" and g.current_state._ready(), 600)
+hq = g.current_state
+_car4 = (hq.run.index, tuple(hq.run.player))
+hq.run.floor.movers = [m for m in hq.run.floor.movers if m.kind == "figure"]
+hq.anim = 0
+hq.step(0, 1); play(lambda: g.current_state._ready(), 300)
+check(_pkH is not None and [c[0] for c in _pkH.choices] == ["B1F", "B2F", "B4F"] and _car4 == (6, (2, 4)) and hq.run.index == 3 and tuple(hq.run.player) == (20, 24),
+      f"...with it, the panel: B1F, B2F, B4F; down to B4F's far side, Giovanni's, out in front of the lift ({_car4}, {hq.run.index}, {hq.run.player})")
 story.inventory.pop("LIFT_KEY", None)
 for _k, _v in _gcs.items():
     story.story_flags.pop(_k, None)
@@ -1650,8 +1664,8 @@ for _i in range(5):
     if _i in _up:
         si.run.player = _up[_i]
     _way.append(si._guide_spot())
-check([w and w[1] for w in _way] == ["To 2F", "To 3F", "To 4F", "To 5F", "Card Key"] and _way[4][0] == (22, 21),
-      f"...the marker: up the stairs floor by floor, then the Card Key itself ({_way})")
+check([w and w[1] for w in _way] == ["To Lift", "To 3F", "To 4F", "To 5F", "Card Key"] and _way[0][0] == (22, 3) and _way[4][0] == (22, 21),   # (11-23: from 1F the lift is the short way up)
+      f"...the marker: into 1F's lift (or up the stairs floor by floor), then the Card Key itself ({_way})")
 story.inventory["CARD_KEY"] = 1; story.story_flags["got_card_key"] = True
 _act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
 check("s_silph2" in _act and "3F" in _act["s_silph2"]["desc"] and "7F" in _act["s_silph2"]["desc"], "...then the next: 3F's door, the pads to 7F and 11F, Giovanni")
@@ -1661,7 +1675,7 @@ for _i, _at in ((0, (8, 19)), (2, (28, 3)), (6, (5, 5)), (10, (2, 6))):   # (1F'
     _floor(si, _i); si._guide_key = None; si._step_key = None
     si.run.player = _at
     _way[_i] = si._guide_spot()
-check(_way[0] and _way[0][1] == "To 2F" and _way[2] == ((13, 14), "To 7F") and _way[6] == ((5, 8), "To 11F") and _way[10] == ((6, 11), "Giovanni"),
+check(_way[0] == ((22, 3), "To Lift") and _way[2] == ((13, 14), "To 7F") and _way[6] == ((5, 8), "To 11F") and _way[10] == ((6, 11), "Giovanni"),
       f"...the marker: 3F's warp pad to 7F, 7F's to 11F, then Giovanni ({_way})")
 story.story_flags["silph_co_cleared"] = True
 _act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
@@ -1784,7 +1798,9 @@ check(all(_way) and _way[3][1] == "Lift Key", f"...in the Rocket Hideout the mar
 story.inventory["LIFT_KEY"] = 1
 _floor(hq, 0); hq._guide_key = hq._step_key = None
 _gs = hq._guide_spot()
-check(_gs and _gs[1] == "To B4F", f"......with the Lift Key, to the elevator, down to Giovanni ({_gs})")
+hq.run.enter_floor(4); hq.run.player = (2, 4); frames(2); hq._guide_key = hq._step_key = None
+_gs2 = hq._guide_spot()
+check(_gs and _gs[1] == "To Lift" and _gs2 == ((0, 2), "Lift to B4F"), f"......with the Lift Key, into the lift, its panel: down to Giovanni ({_gs}, {_gs2})")
 story.inventory.pop("LIFT_KEY", None)
 if _lk is not None:
     story.inventory["LIFT_KEY"] = _lk
