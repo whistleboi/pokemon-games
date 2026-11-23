@@ -14254,8 +14254,8 @@
      "cccccccccccccccccccc..cccccc",
      "cN........X.....cccc..cccccc",
      "c...............cccc..cccccc",
-     "c...cccccc........cc..cccccc",
-     "c...cccccc........cc..c111cc",
+     "c...cccccc........cc..cAcccc",
+     "c...cccccc........cc..cDDDcc",
      "c.................cc.......c",
      "c.................cc.X.....c",
      "c............ccccccccccccccc",
@@ -14268,7 +14268,9 @@
     "exits": {
      "n": "CELADON_GAME_CORNER"
     },
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_42.png",
@@ -14291,6 +14293,11 @@
      "Grunt B1F 4",
      "Grunt B1F 5"
     ],
+    "inside": {
+     "23,25": "lift_b1f",
+     "24,25": "lift_b1f",
+     "25,25": "lift_b1f"
+    },
     "links": {
      "17,2": [
       1,
@@ -14301,21 +14308,6 @@
       1,
       23,
       12
-     ],
-     "23,25": [
-      3,
-      20,
-      24
-     ],
-     "24,25": [
-      3,
-      20,
-      24
-     ],
-     "25,25": [
-      3,
-      20,
-      24
      ]
     },
     "moves": {
@@ -14328,31 +14320,6 @@
       "d": "d"
      }
     },
-    "barred": [
-     {
-      "tiles": [
-       [
-        23,
-        25
-       ],
-       [
-        24,
-        25
-       ],
-       [
-        25,
-        25
-       ]
-      ],
-      "look": "unseen",
-      "until": {
-       "item_condition": "LIFT_KEY"
-      },
-      "lines": [
-       "The elevator won't move. It needs a key..."
-      ]
-     }
-    ],
     "hidden": {
      "16,17": "PP_UP"
     },
@@ -14389,8 +14356,8 @@
      "....ccccc4.4.5..ccc....1cccccccc",
      ".ccc...c..6.3..5ccc.....cccccccc",
      "N..3...3.5..3cc.ccc.......cccccc",
-     ".cc.c.c.c.....c...........cccccc",
-     ".c....c.ccccc.c...........cc11cc",
+     ".cc.c.c.c.....c...........ccAccc",
+     ".c....c.ccccc.c...........ccDDcc",
      "..c.c5c.6...3.c................c",
      "..c.c.c5....3.c..cc............c",
      "..c.c5c...ccccc.cccccccccccccccc",
@@ -14398,7 +14365,9 @@
      "...ccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_43.png",
@@ -14419,6 +14388,10 @@
     "trainer_spots": [
      "Grunt B2F"
     ],
+    "inside": {
+     "28,16": "lift_b2f",
+     "29,16": "lift_b2f"
+    },
     "links": {
      "21,2": [
       2,
@@ -14434,16 +14407,6 @@
       0,
       15,
       30
-     ],
-     "28,16": [
-      3,
-      20,
-      24
-     ],
-     "29,16": [
-      3,
-      20,
-      24
      ]
     },
     "moves": {
@@ -14464,27 +14427,6 @@
       "d": "d"
      }
     },
-    "barred": [
-     {
-      "tiles": [
-       [
-        28,
-        16
-       ],
-       [
-        29,
-        16
-       ]
-      ],
-      "look": "unseen",
-      "until": {
-       "item_condition": "LIFT_KEY"
-      },
-      "lines": [
-       "The elevator won't move. It needs a key..."
-      ]
-     }
-    ],
     "stops": [
      [
       1,
@@ -14698,13 +14640,15 @@
      "cccccccccccccccc..cccccc",
      "ccc...............cccccc",
      "c.................cccccc",
-     "c....cccccc.......cccccc",
-     "c....cNcccc.......cc11cc",
+     "c....cccccc.......ccAccc",
+     "c....cNcccc.......ccDDcc",
      "c...........cc.........c",
      "c......................c"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_45.png",
@@ -14734,21 +14678,15 @@
      "Grunt B4F 2",
      "Grunt B4F 3"
     ],
+    "inside": {
+     "20,23": "lift_b4f",
+     "21,23": "lift_b4f"
+    },
     "links": {
      "11,15": [
       2,
       15,
       18
-     ],
-     "20,23": [
-      0,
-      24,
-      26
-     ],
-     "21,23": [
-      0,
-      24,
-      26
      ]
     },
     "moves": {
@@ -14777,29 +14715,6 @@
       "d": "d"
      }
     },
-    "hidden": {
-     "22,6": "NEST_BALL",
-     "16,6": "NET_BALL"
-    },
-    "parts": true,
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "fr_top/1_45.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       24,
-       26
-      ],
-      "until": {
-       "flag": "hideout_b4f_door_open",
-       "f": "fr_top/1_45_shut.png"
-      }
-     }
-    ],
     "barred": [
      {
       "tiles": [
@@ -14829,9 +14744,202 @@
        "The two Rockets standing guard must have a way to open it..."
       ]
      }
+    ],
+    "hidden": {
+     "22,6": "NEST_BALL",
+     "16,6": "NET_BALL"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_45.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       26
+      ],
+      "until": {
+       "flag": "hideout_b4f_door_open",
+       "f": "fr_top/1_45_shut.png"
+      }
+     }
     ]
    }
   ],
+  "rooms": {
+   "lift_b1f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     ".vv..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:24,25"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_46.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "HIDEOUT LIFT"
+    },
+    "land": {
+     "24,25": [
+      24,
+      24
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_46.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_b2f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     ".vv..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:28,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_46.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "HIDEOUT LIFT"
+    },
+    "land": {
+     "28,16": [
+      28,
+      15
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_46.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_b4f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     ".vv..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,23"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_46.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "HIDEOUT LIFT"
+    },
+    "land": {
+     "20,23": [
+      20,
+      22
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_46.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   }
+  },
   "theme": "ship",
   "floor_names": [
    "B1F",
@@ -14850,12 +14958,10 @@
    "Grunt B2F": 1,
    "X SPEED": 1,
    "MOON STONE": 1,
-   "TM087": 1,
    "SUPER POTION": 1,
    "Grunt B3F 1": 2,
    "Grunt B3F 2": 2,
    "RARE CANDY": 2,
-   "TM273": 2,
    "BLACK GLASSES": 2,
    "Grunt B4F 1": 3,
    "Jessie and James": 3,
@@ -14864,9 +14970,11 @@
    "LIFT KEY": 3,
    "GIOVANNI": 3,
    "SILPH SCOPE": 3,
-   "TM299": 3,
    "MAX ETHER": 3,
-   "CALCIUM": 3
+   "CALCIUM": 3,
+   "TM087": 1,
+   "TM273": 2,
+   "TM299": 3
   },
   "descend": true
  },

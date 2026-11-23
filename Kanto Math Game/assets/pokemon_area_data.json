@@ -2536,6 +2536,7 @@
             "flag": "game_corner_cleared"
           }
         },
+        {"text": "HIDEOUT LIFT", "action": "EVENT", "not_on_map": true, "event": {"requires": ["has_item:LIFT_KEY"], "fail": ["It appears to need a key."], "cancel": ["The lift stays where it is."], "elevator": {"area": "ROCKET_HIDEOUT", "ride": ["The lift hums..."], "floors": [["B1F", 4, [2, 4]], ["B2F", 5, [2, 4]], ["B4F", 6, [2, 4]]]}}},
         {
           "text": "BACK TO THE GAME CORNER",
           "action": "EXIT",
