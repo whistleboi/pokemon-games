@@ -650,6 +650,11 @@
           "condition": "visited_THE_UNDER"
         },
         {
+          "text": "ONBS",
+          "target_area": "XD_ONBS",
+          "condition": "xd_lovrina_beaten"
+        },
+        {
           "text": "ONBS Building",
           "door": "cycle",
           "target_area": "XD_ONBS",

@@ -117,10 +117,15 @@ story.story_flags["got_snag_machine"] = True   # (Snag menus open once Phenac's 
 story.current_area_key = "ORRE_DESERT"
 for s_ in orre["ORRE_DESERT"]["shadow_pool"]:
     story.story_flags[s_["flag"]] = True
+g.dungeon_routes = True   # (R1, 11-23: on the walked desert, as a player meets them - not the old route menu)
+story.last_area_key = "OUTSKIRT_STAND"
 st = PlayState(g)
 g.change_state(st)
-st.show_progression_menu()
-btns = [b.text for b in st.route_buttons]
-check("SNAG AGAIN" in btns and "SNAG SHADOW POKEMON" not in btns, f"area cleared: SNAG AGAIN for another copy {btns}")
+for _ in range(3):
+    g.current_state.update()
+st = g.current_state
+btns = [i.get("text") for i in getattr(st, "placed", [])]
+check(type(st).__name__ == "DungeonState" and "SNAG AGAIN" in btns and "SNAG SHADOW POKEMON" not in btns,
+      f"area cleared: SNAG AGAIN stands on the walked desert for another copy {btns}")
 
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

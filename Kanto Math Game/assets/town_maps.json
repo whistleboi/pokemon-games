@@ -291627,11 +291627,12 @@
    "cccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
+   "B": "XD_ONBS",
    "C": "PYRITE_BUILDING"
   },
   "buildings": {
    "A": "gym",
-   "B": "house",
+   "B": "gate",
    "C": "gate",
    "E": "hotel",
    "F": "mart",
@@ -293352,8 +293353,8 @@
      "cccccccccccccccc",
      "cccccccccccccccc",
      "cc............cc",
-     "c.......N.....cc",
-     "c.........c....c",
+     "c.............cc",
+     "c.........N....c",
      "c.......ccccc.cc",
      "c.......ccccc.cc",
      "c......N..N....c",
@@ -293833,6 +293834,9 @@
     ]
    }
   ],
+  "locked": {
+   "XD_ONBS": "A sign on the ONBS door: \"Closed for a live broadcast. No visitors today.\""
+  },
   "barred": [
    {
     "tiles": [
@@ -309064,9 +309068,11 @@
      "c....N....c...........c",
      "c.........c.......N...c",
      "c.....................c",
-     "ccccccccccccccccccccccc"
+     "ccccccccccccccc.v.ccccc"
     ],
-    "exits": {},
+    "exits": {
+     "v": "SHADOW_PKMN_LAB"
+    },
     "links": {},
     "parts": true,
     "people": [

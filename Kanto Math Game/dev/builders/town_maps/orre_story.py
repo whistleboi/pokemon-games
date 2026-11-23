@@ -348,6 +348,7 @@ def _pyrite(maps):
     m = maps["PYRITE_TOWN"]
     _set_people(m, {**SQUARE, (24, 23): THUG, (30, 84): CAIL, (26, 33): NORE})
     m["scenes"] = [COP_SCENE, POWER_SCENE, BRIDGE_SCENE, PLUSLE_SCENE, FATEEN_SCENE]
+    m["locked"] = dict(m.get("locked") or {}, XD_ONBS="A sign on the ONBS door: \"Closed for a live broadcast. No visitors today.\"")   # (R1: XD's ONBS door, Q21)
     m["barred"] = list(m.get("barred") or []) + [   # (Cipher's hideout: shut till you've won the Colosseum - Colosseum's order)
         {"tiles": [[32, 40]], "look": "sheet:orre_trainer_cipher_grunt.png", "face": "d", "until": {"condition": "has_pyrite_badge"},
          "lines": ["Cipher Peon: Members only! Come back when you're somebody, like a Colosseum champ."]},
