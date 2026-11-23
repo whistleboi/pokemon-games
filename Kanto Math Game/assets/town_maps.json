@@ -14876,8 +14876,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc!ccccc",
-     "cccccccccccccccccccccccccccccc.1cccc",
-     "cccccccccccccccccccccccccccccc..cccc",
+     "ccccccccccccccccccccccAccccccc.1cccc",
+     "ccccccccccccccccccccccDccccccc..cccc",
      "ccccccmccc..........................",
      "ccccccm.............................",
      "ccccccc.............................",
@@ -14900,7 +14900,9 @@
     "exits": {
      "n": "SAFFRON_CITY"
     },
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_47.png",
@@ -14955,6 +14957,9 @@
     "trainer_spots": [
      "Grunt 1F"
     ],
+    "inside": {
+     "22,3": "lift_1f"
+    },
     "links": {
      "31,2": [
       1,
@@ -14994,8 +14999,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      "ccc.....ccNcc.cc....................",
      "...........cc.......................",
      "..1........cc..1....................",
@@ -15016,7 +15021,9 @@
      "...........ccc............cc.......c"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_48.png",
@@ -15047,6 +15054,9 @@
      "Scientist Jerry",
      "Scientist Connor"
     ],
+    "inside": {
+     "22,3": "lift_2f"
+    },
     "links": {
      "28,2": [
       2,
@@ -15158,8 +15168,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      "ccc.................................",
      ".................................1..",
      "....1...............................",
@@ -15180,7 +15190,9 @@
      "...................................."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_49.png",
@@ -15218,6 +15230,9 @@
      "Grunt 3F",
      "Scientist Jose"
     ],
+    "inside": {
+     "22,3": "lift_3f"
+    },
     "links": {
      "28,2": [
       1,
@@ -15364,8 +15379,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      ".........cc........cc...............",
      ".ccccN.c.cc..cccc..cc...............",
      ".ccccccc.cc..cccc.1cc...............",
@@ -15386,7 +15401,9 @@
      "........................ccc........."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_50.png",
@@ -15428,6 +15445,9 @@
      "Grunt 4F 1",
      "Grunt 4F 2"
     ],
+    "inside": {
+     "22,3": "lift_4f"
+    },
     "links": {
      "28,2": [
       4,
@@ -15555,8 +15575,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      ".......cc........ccc................",
      ".......cc........................1..",
      ".c.c.c.cc..X........................",
@@ -15577,7 +15597,9 @@
      ".......ccX............N............."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_51.png",
@@ -15640,6 +15662,9 @@
      "Juggler Dalton",
      "Grunt 5F 1"
     ],
+    "inside": {
+     "22,3": "lift_5f"
+    },
     "links": {
      "28,2": [
       3,
@@ -15812,8 +15837,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc!ccccc",
-     "cccccccccccccc1.ccccccccc.1cccc",
-     "cccccccccccccc..ccccccccc..cccc",
+     "cccccccccccccc1.ccccAcccc.1cccc",
+     "cccccccccccccc..ccccDcccc..cccc",
      ".....cc........................",
      ".....cc..............X.......1.",
      "..1..cc....ccccccccccc..ccccc..",
@@ -15831,7 +15856,9 @@
      ".....cc........................"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_52.png",
@@ -15907,6 +15934,9 @@
      "Scientist Taylor",
      "Grunt 6F 2"
     ],
+    "inside": {
+     "20,3": "lift_6f"
+    },
     "links": {
      "14,2": [
       6,
@@ -16024,8 +16054,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccc!cccccccccc",
-     "ccccccccccccccccccc1.ccccc.1ccc",
-     "ccccccccccccccccccc..ccccc..ccc",
+     "ccccccccccccccccccc1.ccAcc.1ccc",
+     "ccccccccccccccccccc..ccDcc..ccc",
      ".....1cccccccX.cc..............",
      "......ccccccc..cc.......X......",
      "..Xcccccccccc..................",
@@ -16043,7 +16073,9 @@
      "....................cc........."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_53.png",
@@ -16104,6 +16136,9 @@
      "Scientist Joshua",
      "Grunt 7F 2"
     ],
+    "inside": {
+     "23,3": "lift_7f"
+    },
     "links": {
      "19,2": [
       5,
@@ -16250,8 +16285,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc!ccc",
-     "cccccccccccccccc1.ccccccccc.1cc",
-     "cccccccccccccccc..ccccccccc..cc",
+     "cccccccccccccccc1.ccccAcccc.1cc",
+     "cccccccccccccccc..ccccDcccc..cc",
      ".....cc..X..cc.................",
      "..N..cc.....cc..............X..",
      ".ccc.cc...1.cc...cccccccccccccc",
@@ -16269,7 +16304,9 @@
      "c.............................."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_54.png",
@@ -16317,6 +16354,9 @@
      "Admin Proton",
      "Grunt 8F"
     ],
+    "inside": {
+     "22,3": "lift_8f"
+    },
     "links": {
      "16,2": [
       8,
@@ -16432,8 +16472,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccc!ccccccccccccc",
-     "cccccccccccccccc1.1cccccccccccc",
-     "cccccccccccccccc...cccccccccccc",
+     "cccccccccccccccc1.1cccccAcccccc",
+     "cccccccccccccccc...cccccDcccccc",
      ".........1..cc.................",
      "............cc.................",
      ".Xcccccccccccc..ccccc..cccccc..",
@@ -16451,7 +16491,9 @@
      ".......cc...cc.Xcc....1cc......"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_55.png",
@@ -16481,6 +16523,9 @@
      "Scientist Ed",
      "Archer"
     ],
+    "inside": {
+     "24,3": "lift_9f"
+    },
     "links": {
      "16,2": [
       7,
@@ -16631,8 +16676,8 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccc!ccccccccc",
-     "cccccc1.1cccccccc",
-     "cccccc...cccccccc",
+     "cccccc1.1ccccAccc",
+     "cccccc...ccccDccc",
      ".................",
      ".................",
      ".......ccccc..ccc",
@@ -16650,7 +16695,9 @@
      "c......cc........"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_56.png",
@@ -16690,6 +16737,9 @@
      "Scientist Travis",
      "Grunt 10F"
     ],
+    "inside": {
+     "13,3": "lift_10f"
+    },
     "links": {
      "6,2": [
       10,
@@ -16792,8 +16842,8 @@
     "art": [
      "ccccccccccccccccc",
      "cccccccc!cccccccc",
-     "ccccccc1..ccccccc",
-     "ccccccc...ccccccc",
+     "ccccccc1..cccAccc",
+     "ccccccc...cccDccc",
      "...cc............",
      "..1cc............",
      "...cccccccccccc..",
@@ -16812,7 +16862,9 @@
      "..X....X.....cc.."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_57.png",
@@ -16853,6 +16905,9 @@
      "Grunt 11F",
      "Jessie and James"
     ],
+    "inside": {
+     "13,3": "lift_11f"
+    },
     "links": {
      "7,2": [
       9,
@@ -16933,6 +16988,624 @@
     ]
    }
   ],
+  "rooms": {
+   "lift_1f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_2f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_3f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_4f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_5f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_6f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "20,3": [
+      20,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_7f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:23,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "23,3": [
+      23,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_8f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_9f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:24,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "24,3": [
+      24,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_10f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:13,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "13,3": [
+      13,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_11f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:13,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "13,3": [
+      13,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   }
+  },
   "theme": "ship",
   "floor_names": [
    "1F",
@@ -16952,34 +17625,34 @@
    "Grunt 2F 1": 1,
    "Grunt 2F 2": 1,
    "Scientist Jerry": 1,
+   "Scientist Connor": 1,
    "TALK TO EMPLOYEE": 1,
    "Grunt 3F": 2,
    "Scientist Jose": 2,
    "HYPER POTION": 2,
-   "Scientist Taylor": 5,
+   "Scientist Rodney": 3,
    "Grunt 4F 1": 3,
    "Grunt 4F 2": 3,
    "MAX REVIVE": 3,
    "ESCAPE ROPE": 3,
    "FULL HEAL": 3,
-   "TM276": 3,
    "Scientist Beau": 4,
    "Grunt 5F 2": 4,
    "Juggler Dalton": 4,
    "Grunt 5F 1": 4,
    "PROTEIN": 4,
-   "TM192": 4,
    "CARD KEY": 4,
    "Grunt 6F 1": 5,
+   "Scientist Taylor": 5,
    "Grunt 6F 2": 5,
    "HP UP": 5,
    "X SP. ATK": 5,
    "Grunt 7F 3": 6,
    "Grunt 7F 1": 6,
    "{rival_name}": 6,
+   "Scientist Joshua": 6,
    "Grunt 7F 2": 6,
    "LAPRAS": 6,
-   "TM064": 6,
    "CALCIUM": 6,
    "Scientist Parker": 7,
    "Admin Proton": 7,
@@ -17000,9 +17673,9 @@
    "Jessie and James": 10,
    "VISIT THE PRESIDENT": 10,
    "ZINC": 10,
-   "Scientist Connor": 1,
-   "Scientist Rodney": 3,
-   "Scientist Joshua": 6,
+   "TM276": 3,
+   "TM192": 4,
+   "TM064": 6,
    "Silph scientist": 0
   }
  },
@@ -287114,7 +287787,7 @@
     "land": {
      "9,16": [
       9,
-      14
+      15
      ]
     },
     "theme": "room",
@@ -287277,7 +287950,7 @@
     "land": {
      "15,24": [
       15,
-      22
+      23
      ]
     },
     "theme": "room",

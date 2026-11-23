@@ -2258,6 +2258,7 @@
             "heal": true
           }
         },
+        {"text": "SILPH LIFT", "action": "EVENT", "not_on_map": true, "event": {"cancel": ["The lift stays where it is."], "elevator": {"area": "SILPH_CITY", "ride": ["The lift hums..."], "floors": [["1F", 11, [2, 4]], ["2F", 12, [2, 4]], ["3F", 13, [2, 4]], ["4F", 14, [2, 4]], ["5F", 15, [2, 4]], ["6F", 16, [2, 4]], ["7F", 17, [2, 4]], ["8F", 18, [2, 4]], ["9F", 19, [2, 4]], ["10F", 20, [2, 4]], ["11F", 21, [2, 4]]]}}},
         {
           "text": "TALK TO EMPLOYEE",
           "action": "EVENT",

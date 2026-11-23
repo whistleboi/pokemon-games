@@ -106,8 +106,8 @@ for key in BUILT:
     st = open_map(key, came)
     is_town = isinstance(st, _WTS)
     w, h = (st.w, st.h) if is_town else (st.run.floor.w, st.run.floor.h)
-    _here = _parts[st.run.index] if (not is_town and m.get("floors") and st.run.index < len(_parts)) else m
-    _sizes = {(len(f["art"][0]), len(f["art"])) for f in [_here] + ([] if is_town else [r for r in (m.get("rooms") or {}).values() if came in r.get("exits", {}).values()])}   # (you can land in a room: Birth Island's harbour)
+    _here = _parts[st.run.index] if (not is_town and m.get("floors") and st.run.index < len(_parts)) else None if (not is_town and m.get("floors")) else m   # (None: landed in a room of a map of floors - Navel Rock's harbour, 11-23)
+    _sizes = {(len(f["art"][0]), len(f["art"])) for f in ([_here] if _here else []) + ([] if is_town else [r for r in (m.get("rooms") or {}).values() if came in r.get("exits", {}).values()])}   # (you can land in a room: Birth Island's harbour)
     check((w, h) in _sizes and (is_town or isinstance(st, DungeonState)),
           f"{key}: opens on its FireRed map ({w} x {h}, {'town' if is_town else 'route'}), in from {came}")
     check(all("fr_ground/" in json.dumps(f.get("roofs", {})) for f in (_parts[:1] if key == "THREE_ISLE_PORT" else _parts)), f"{key}: drawn from FireRed's own picture (every floor)")   # (Three Isle Path, 11-19: the tunnel is FireRed's dug layout 319; its grass pocket stays the old build's - k_batch36)
@@ -116,7 +116,7 @@ for key in BUILT:
         check("2_134" in json.dumps(_t0.get("roofs", {})) and _t0["art"][2][23] == "N" and (_t0.get("hidden") or {}).get("21,3") == "NUGGET"
               and (_t0.get("links") or {}).get("25,5") == [1, 12, 2],
               "Three Isle Path: FireRed's dug tunnel (layout 319), the prospector at (23,2), the hidden Nugget at (21,3), the east mouth down to the grass pocket")
-    grid = _here["art"]
+    grid = (_here or {}).get("art") or []
     if m.get("floors"):   # (a place of floors: every ladder and passage lands on a real tile of a floor that exists)
         _bad = [(i, k, to) for i, f in enumerate(m["floors"]) for k, to in (f.get("links") or {}).items()
                 if not (0 <= to[0] < len(m["floors"]) and 0 <= to[2] < len(m["floors"][to[0]]["art"]) and 0 <= to[1] < len(m["floors"][to[0]]["art"][0]))]
@@ -1232,7 +1232,7 @@ _sf = ("silph_co_cleared", "got_card_key")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}
 _ck = story.inventory.pop("CARD_KEY", None)
 si = open_map("SILPH_CITY", "SAFFRON_CITY")
-check(si.run.n_floors == 11 and si.run.index == 0 and (si.run.floor.w, si.run.floor.h) == (36, 22), f"Silph Co.: FireRed's eleven floors, in at 1F ({si.run.n_floors}, {si.run.player})")
+check(si.run.n_floors == 22 and si.run.index == 0 and (si.run.floor.w, si.run.floor.h) == (36, 22), f"Silph Co.: FireRed's eleven floors (and a lift car for each, 11-23), in at 1F ({si.run.n_floors}, {si.run.player})")
 _n, _who = [], {}
 for _i in range(11):
     _floor(si, _i)
@@ -1257,6 +1257,27 @@ story.inventory["CARD_KEY"] = 1; story.story_flags["got_card_key"] = True
 si.run.player = (6, 9); si.anim = 0
 si.step(1, 0); play(lambda: g.current_state._ready(), 300)
 check(tuple(si.run.player) == (7, 9), f"...with the Card Key, through it ({si.run.player})")
+# (11-23, K2: FireRed's walk-in lift - in at 5F's lift door, press the panel, ride to 3F, step out by 3F's lift door)
+si.run.floor.movers = [m for m in si.run.floor.movers if m.kind not in ("wild", "trainer")]
+si.run.player = (22, 4); si.anim = 0; said.clear()
+si.step(0, -1); play(lambda: g.current_state._ready(), 300)
+_in5 = (si.run.index, tuple(si.run.player))
+si.run.floor.movers = [m for m in si.run.floor.movers if m.kind == "figure"]
+si.run.player = (0, 3); si.anim = 0
+si.step(0, -1); play(lambda: type(g.current_state).__name__ == "PickListState", 200)
+_pkL = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rows = [r[0] for r in _pkL.choices] if _pkL else []
+if _pkL:
+    _pkL.done(13)
+play(lambda: type(g.current_state).__name__ == "PlayState" and g.current_state._ready(), 600)
+si = g.current_state
+_in3 = (getattr(getattr(si, "run", None), "index", None), tuple(getattr(getattr(si, "run", None), "player", ())))
+si.run.floor.movers = [m for m in si.run.floor.movers if m.kind == "figure"]
+si.anim = 0
+si.step(0, 1); play(lambda: g.current_state._ready(), 300)
+_nearL = sorted((m.kind, m.x, m.y) for m in si.run.floor.movers if abs(m.x - 22) + abs(m.y - 4) <= 2)
+check(_in5 == (15, (2, 4)) and _pkL is not None and _in3 == (13, (2, 4)) and (si.run.index, tuple(si.run.player)) == (2, (22, 4)),
+      f"...FireRed's lift: in at 5F's lift door, the panel asks which floor, the car stops at 3F and you step out by 3F's lift door ({_in5}, {_rows[:3]}, {_in3}, {si.run.index}, {si.run.player}, near {_nearL})")
 _floor(si, 6)
 check(_figure(si, "LAPRAS") == (0, 7), f"...7F: the worker who gives you a Lapras ({_figure(si, 'LAPRAS')})")
 _floor(si, 8)
