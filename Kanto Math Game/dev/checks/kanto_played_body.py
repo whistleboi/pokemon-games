@@ -145,12 +145,15 @@ for _i, (_town, _came, _tm) in enumerate(GYMS):
     _won = []
     for _n in _trainers:
         FOUGHT.clear()
+        _pp = people(v) if isinstance(v, _WTS) else _pp   # (where they stand now: Viridian's trainers walk about)
+        if _n not in _pp:
+            _won.append(False); continue
         talk_to(v, _pp[_n]); v = g.current_state
         _f = (_ev[_n]["event"] or {}).get("flag")
         _won.append(bool(FOUGHT) and not FOUGHT[0][0].endswith("(UNFINISHED)") and (not _f or story.story_flags.get(_f)))
         FOUGHT.clear()
-        if isinstance(v, _WTS) and v.room == "gym":
-            talk_to(v, _pp[_n]); v = g.current_state
+        if isinstance(v, _WTS) and v.room == "gym" and _n in people(v):
+            talk_to(v, people(v)[_n]); v = g.current_state
         _won[-1] = _won[-1] and not FOUGHT   # (beaten: talking again is no second battle)
     _tms0 = tm_moves()
     FOUGHT.clear()
@@ -158,7 +161,8 @@ for _i, (_town, _came, _tm) in enumerate(GYMS):
     if isinstance(v, _WTS) and v.room != "gym":
         v._go("gym", ""); settle(); v = g.current_state
     for _try in range(2):   # (a scene first - Viridian's Jessie & James - then the Leader: talk again)
-        talk_to(g.current_state if isinstance(g.current_state, _WTS) else v, _pp.get("Gym"))
+        _v2 = g.current_state if isinstance(g.current_state, _WTS) else v
+        talk_to(_v2, people(_v2).get("Gym") or _pp.get("Gym"))
         if BADGES[_i] in story.badges["KANTO"]:
             break
     _got = {k: mv for k, (q, mv) in tm_moves().items() if q > (_tms0.get(k) or (0, None))[0]}
@@ -253,7 +257,7 @@ if _sailor:
 st = settle()
 check(bool(_picked) and story.current_area_key == "ONE_ISLAND", f"Cinnabar's harbour sailor: {_picked!r} with the Volcano Badge (no Tri-Pass yet): now {here()}")
 if story.current_area_key == "ONE_ISLAND" and isinstance(st, _WTS):
-    if st.room:
+    if st.room == "harbor":   # (still inside the harbour building: out, as a player walks out)
         st._go(None, "OUT:12,19"); st = settle()
     for _ in range(40):
         st = settle()
