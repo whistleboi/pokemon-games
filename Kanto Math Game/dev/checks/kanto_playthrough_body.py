@@ -96,11 +96,45 @@ try:
     _COMMIT = _sp.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, timeout=20).stdout.strip()
 except Exception:
     _COMMIT = "?"
+
+
+def _fingerprint():
+    """What a save depends on, as one short hash (Jordan 11-23: a save made before the region's story, maps or the shared
+    story code changed is stale - trainers are kept by their place in an area's list, gates and flags move): this region's
+    areas (STORY_PROGRESSION), its walked maps (town_maps.json) and its MAIN/SIDE missions, plus src/world/story.py and
+    src/world/guide.py. Kanto's run takes Sevii in with it."""
+    import hashlib
+    reg = str(story.starting_region or "KANTO").upper()
+    mine = {reg, "SEVII"} if reg == "KANTO" else {reg}
+    keys = sorted(k for k, a in AREAS.items() if isinstance(a, dict) and str(a.get("region") or "KANTO").upper() in mine)
+    try:
+        _tmf = json.load(open(os.path.join("assets", "town_maps.json"), encoding="utf-8"))
+        _tmf = _tmf.get("maps", _tmf)
+    except (OSError, ValueError):
+        _tmf = {}
+    ms = [m for m in g.loader.area_data.get("JOURNAL_MISSIONS", [])
+          if str(m.get("region") or (m.get("condition") or {}).get("required_region") or (m.get("condition") or {}).get("start_region") or "KANTO").upper() in mine]
+    h = hashlib.sha1()
+    h.update(json.dumps([[k, AREAS[k], _tmf.get(k)] for k in keys], sort_keys=True, default=str).encode())
+    h.update(json.dumps(ms, sort_keys=True, default=str).encode())
+    for _src in ("src/world/story.py", "src/world/guide.py"):
+        try:
+            h.update(open(_src, "rb").read())
+        except OSError:
+            pass
+    return h.hexdigest()[:12]
+
+
+FINGERPRINT = _fingerprint()
 if PT_FROM:
     try:
         _sv = json.load(open(os.path.join(SAVES, PT_FROM + ".json"), encoding="utf-8"))
     except (OSError, ValueError):
         _sv = None
+    if _sv and _sv.get("clean") and _sv.get("fp") != FINGERPRINT:   # (made before this region's story, maps or the story code changed)
+        print(f"== STALE SAVE {PT_FROM} (saved {_sv.get('when')} at commit {_sv.get('commit')}): the region or the story code changed since"
+              " - the run starts at the beginning and makes fresh saves", flush=True)
+        _sv = dict(_sv, clean=False, stale=True)
     if _sv and _sv.get("clean"):
         g.data.data = _sv["data"]
         g.load_game_data()
@@ -108,7 +142,7 @@ if PT_FROM:
         story = g.story_manager
         FROM_SAVE = PT_FROM
         print(f"== FROM SAVE {PT_FROM} (saved {_sv.get('when')} at commit {_sv.get('commit')}): the run plays on from there", flush=True)
-    else:
+    elif not (_sv or {}).get("stale"):
         print(f"== no clean save at {PT_FROM} yet ({'not clean' if _sv else 'none'}): the run starts at the beginning and makes the saves", flush=True)
 print(f"== STOP: {'none (the whole story)' if STOP_FROM is None else MAIN_ORDER[STOP_FROM] + ' (not built yet) and every MAIN mission after it'}", flush=True)
 
@@ -123,7 +157,7 @@ def _save_point(mid):
         os.makedirs(SAVES, exist_ok=True)
         with open(os.path.join(SAVES, mid + ".json"), "w", encoding="utf-8") as fh:
             json.dump({"data": g.data.data, "player": [g.player_name, g.player_character], "clean": clean, "when": time.strftime("%Y-%m-%d %H:%M"),
-                       "commit": _COMMIT, "from": FROM_SAVE, "at": here()}, fh, default=str)
+                       "commit": _COMMIT, "fp": FINGERPRINT, "from": FROM_SAVE, "at": here()}, fh, default=str)
     except Exception as e:
         print(f"   (no save point at {mid}: {type(e).__name__}: {e})", flush=True)
 

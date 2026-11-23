@@ -66,6 +66,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         # Pokemon is still replaced; a string is the line shown instead of the usual one).
         self.battle_options = dict(options or {})
         self.no_switch = self.battle_options.get("no_switch") or False
+        self._level_cap_apply()   # ("level_cap": N - yours above it battle at N, this battle only: Black 2's Battle Subway, Lv 50)
         # First rival battle with starters: Normal-type starter moves, and a loss still moves the story on.
         self.starter_battle = starter_battle
 
@@ -1178,6 +1179,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self._award_battle_xp()
 
     def on_flee_complete(self):
+        self._level_cap_restore()
         self._settle_xp()
         pygame.event.clear()
 
@@ -1518,6 +1520,8 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         """XP for the KO, as in the games: the Gen 7 formula with the foe's base XP yield and the
         level gap, 1.5x from trainers, 1.2x with strong affection, then growth.XP_BOOST for fast
         leveling, shared out by _xp_shares. Returns messages."""
+        if self.battle_options.get("level_cap"):   # (a level-capped battle gives no Exp.: Black 2's Battle Subway)
+            return []
         foe = self.opponent_pokemon
         foe_level = self._level(foe)
         trainer = self.trainer_class != "WILD"
@@ -2318,7 +2322,32 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self._tm_won = tms.reward(self.game, badges, cls, types) if self.player_won and not own else None   # not a random one too: 11-22)
         return self._tm_won
 
+    # ---- "level_cap" (Unova 11-23, Jordan: "Lv 50, as Black 2" for the Battle Subway): your Pokemon above the cap battle at
+    #      it - their stats worked out at that level - for this battle only, gain no Exp. here, and are put back as they were
+    #      (their own level and Exp., the same share of their HP) when the battle ends, won, lost or run from.
+    def _level_cap_apply(self):
+        cap = self.battle_options.get("level_cap")
+        self._cap_saved = []
+        if not cap:
+            return
+        cap = int(cap)
+        for p in getattr(self.game.story_manager, "player_team", None) or []:
+            if p is None or int(p.level) <= cap:
+                continue
+            share = (p.current_hp / max(1, p.get_max_hp())) if p.current_hp > 0 else 0.0
+            self._cap_saved.append((p, p.level, p.xp))
+            p.level = cap
+            p.current_hp = max(1, round(share * p.get_max_hp())) if share > 0 else 0
+
+    def _level_cap_restore(self):
+        for p, level, xp in getattr(self, "_cap_saved", None) or []:
+            share = (p.current_hp / max(1, p.get_max_hp())) if p.current_hp > 0 else 0.0
+            p.level, p.xp = level, xp
+            p.current_hp = max(1, round(share * p.get_max_hp())) if share > 0 else 0
+        self._cap_saved = []
+
     def exit_battle(self, lost=False):
+        self._level_cap_restore()
         for _foe in (self.opponent_team or []):   # (a Poke Spot's snack visitor: battled, caught or run from - it's gone; Orre 8d)
             if _foe is not None and getattr(_foe, "snack_visitor", None):
                 from src.world import poke_snacks
