@@ -1,4 +1,12 @@
-"""Headless smoke test: new game in every region, start sequence, then visit every area/gym in that region."""
+"""Headless smoke test: new game in every region, start sequence, then visit every area/gym in that region.
+python -X utf8 dev/checks/smoke_regions.py <game folder> [REGION ...]   (run_all.sh runs it)
+
+Rewritten 11-23: a region whose start is a walked map (its town in assets/town_maps.json: Kanto, Johto, Orange, Hoenn,
+Orre, Sinnoh, Unova) has its own checks for the opening - kantostart, johto_playthrough, orange_playthrough, hoennstart,
+orre_b1, sinnohstart, unovastart - so here it skips the old menu-era opening (the scripted Oak/Elm/rival flow it no longer
+has) and gets a plain fresh start instead: that region's save, its first starter at Lv 20. Every region then gets the
+sweep only this check does: every area and every Gym step built and started, the Badge Case, the Pokedex. The menu
+regions (Kalos, Alola, Galar, Paldea) still play their opening as before."""
 import os
 import sys
 import traceback
@@ -47,12 +55,77 @@ def attempt(label, fn):
         return None
 
 
+import json as _json  # noqa: E402
+_tm = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+WALKED = set(_tm.get("maps", _tm))   # (places with a walked map: a region starting on one has its own opening checks)
+
+
+def sweep(region, cfg):
+    story = game.story_manager
+    story.current_area_key = cfg["start_area"]
+    city = CityState(game)
+    game.change_state(city)
+    print("  re-enter start town ->", type(game.current_state).__name__)
+    for opt in city.area_data.get("explore_options", []):
+        cb = city._get_callback_for_option(opt)
+        if opt.get("action") in ("NPC", "RANDOM_NPC"):
+            if cb:
+                attempt(f"{region} npc {opt.get('text')}", cb)
+                lines = getattr(city.npc_dialogue, "text_lines", None)
+                print(f"  NPC '{opt.get('text')}': {str(lines)[:110]}")
+                city.npc_active = False
+            else:
+                print(f"  NPC '{opt.get('text')}': (hidden, no handler/text)")
+
+    areas = [k for k, a in game.loader.area_data["STORY_PROGRESSION"].items()
+             if str(a.get("region") or "KANTO").upper() == region]
+    gyms = 0
+    for k in areas:
+        story.current_area_key = k
+        a = game.loader.area_data["STORY_PROGRESSION"][k]
+        cls = CityState if a.get("area_type") == "town" else PlayState
+        s = attempt(f"{region} construct {k}", lambda: cls(game))
+        if s is not None:
+            attempt(f"{region} start {k}", lambda: game.change_state(s))
+        if a.get("gym"):
+            gyms += 1
+            for prog in range(len(a["gym"].get("trainers", [])) + 1):
+                story.story_flags[f"gym_progress_{k}"] = prog
+                game.transitioning = False
+                lobby = attempt(f"{region} gym {k}#{prog}", lambda: GymLobbyState(game))
+                if lobby:
+                    attempt(f"{region} challenge {k}#{prog}", lobby.challenge_gym)
+            story.story_flags[f"gym_progress_{k}"] = 0
+    story.badges[region] = story.get_region_gym_badges(region)[:3]
+    attempt(f"{region} badge case", lambda: BadgeCaseState(game, None).draw())
+    dex = attempt(f"{region} pokedex", lambda: PokedexState(game, None))
+    if dex:
+        dex.refresh_dex()
+        print(f"  dex entries: {len(dex.full_dex)}")
+    print(f"  visited {len(areas)} areas, {gyms} gyms; failures so far: {len(failures)}")
+
+
 for idx, (region, cfg) in enumerate(game.story_manager.get_region_starts()):
     if (ONLY and region not in ONLY) or cfg.get("travel_only"):
         continue
     print(f"\n===== {region}")
     game.start_new_game()
     game.player_name, game.player_character = "ASH", "red"
+    if cfg.get("start_area") in WALKED:
+        story = game.story_manager   # (a walked opening has its own checks: a plain fresh start, then the sweep)
+        story.starting_region = region
+        story.enter_region(region)
+        story.current_area_key = cfg["start_area"]
+        r = region.lower()
+        story.story_flags.update({f"received_starter_{r}": True, f"has_{r}_starter": True})
+        from src.pokemon.data import Pokemon
+        from src.world import levels as _levels
+        mon = Pokemon(game.loader.fetch_specific(int((cfg.get("starters") or [25])[0])), game.assets)
+        _levels.set_team([mon], [20], exact=True)
+        story.player_team = [mon]
+        print("  walked opening (its own checks): fresh start at", cfg["start_area"], "with", mon.name)
+        sweep(region, cfg)
+        continue
     rs = RegionSelectionState(game)
     rs.selected_idx = rs.regions.index(region)
     rs.confirm_selection()
@@ -110,47 +183,7 @@ for idx, (region, cfg) in enumerate(game.story_manager.get_region_starts()):
         if nxt.victory_flag:
             story.story_flags[nxt.victory_flag] = True
 
-    story.current_area_key = cfg["start_area"]
-    city = CityState(game)
-    game.change_state(city)
-    print("  re-enter start town ->", type(game.current_state).__name__)
-    for opt in city.area_data.get("explore_options", []):
-        cb = city._get_callback_for_option(opt)
-        if opt.get("action") in ("NPC", "RANDOM_NPC"):
-            if cb:
-                attempt(f"{region} npc {opt.get('text')}", cb)
-                lines = getattr(city.npc_dialogue, "text_lines", None)
-                print(f"  NPC '{opt.get('text')}': {str(lines)[:110]}")
-                city.npc_active = False
-            else:
-                print(f"  NPC '{opt.get('text')}': (hidden, no handler/text)")
-
-    areas = [k for k, a in game.loader.area_data["STORY_PROGRESSION"].items()
-             if str(a.get("region") or "KANTO").upper() == region]
-    gyms = 0
-    for k in areas:
-        story.current_area_key = k
-        a = game.loader.area_data["STORY_PROGRESSION"][k]
-        cls = CityState if a.get("area_type") == "town" else PlayState
-        s = attempt(f"{region} construct {k}", lambda: cls(game))
-        if s is not None:
-            attempt(f"{region} start {k}", lambda: game.change_state(s))
-        if a.get("gym"):
-            gyms += 1
-            for prog in range(len(a["gym"].get("trainers", [])) + 1):
-                story.story_flags[f"gym_progress_{k}"] = prog
-                game.transitioning = False
-                lobby = attempt(f"{region} gym {k}#{prog}", lambda: GymLobbyState(game))
-                if lobby:
-                    attempt(f"{region} challenge {k}#{prog}", lobby.challenge_gym)
-            story.story_flags[f"gym_progress_{k}"] = 0
-    story.badges[region] = story.get_region_gym_badges(region)[:3]
-    attempt(f"{region} badge case", lambda: BadgeCaseState(game, None).draw())
-    dex = attempt(f"{region} pokedex", lambda: PokedexState(game, None))
-    if dex:
-        dex.refresh_dex()
-        print(f"  dex entries: {len(dex.full_dex)}")
-    print(f"  visited {len(areas)} areas, {gyms} gyms; failures so far: {len(failures)}")
+    sweep(region, cfg)
 
 print(f"\n##### {len(failures)} failures")
 seen = set()
