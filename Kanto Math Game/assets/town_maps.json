@@ -23776,6 +23776,39 @@
       "d": "r"
      }
     },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        3,
+        3,
+        5,
+        3
+       ]
+      },
+      "every": true,
+      "condition": "not:kanto_safari_paid",
+      "cast": [],
+      "event": {
+       "world": "kanto_safari"
+      },
+      "push": [
+       0,
+       1
+      ],
+      "push_unless": "kanto_safari_paid"
+     },
+     {
+      "trigger": "enter",
+      "every": true,
+      "condition": "world:kanto_safari:back",
+      "cast": [],
+      "event": {
+       "world": "kanto_safari",
+       "back": true
+      }
+     }
+    ],
     "overheads": [
      {
       "kind": "picture",
@@ -24036,7 +24069,7 @@
        "battle": {
         "name": "Tamer Edgar",
         "class": "TAMER",
-        "sprite": "tamer.png",
+        "sprite": "fr_tamer.png",
         "team": [
          24,
          28,
@@ -24073,7 +24106,7 @@
        "battle": {
         "name": "Tamer Phil",
         "class": "TAMER",
-        "sprite": "tamer.png",
+        "sprite": "fr_tamer.png",
         "team": [
          28,
          24
@@ -24108,7 +24141,7 @@
        "battle": {
         "name": "Juggler Shawn",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          96,
          97
@@ -24143,7 +24176,7 @@
        "battle": {
         "name": "Juggler Kirk",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          96,
          96,
@@ -24183,7 +24216,7 @@
        "battle": {
         "name": "Juggler Nate",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          96,
          64
@@ -24218,7 +24251,7 @@
        "battle": {
         "name": "Juggler Kayden",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          97
         ],
@@ -24771,10 +24804,10 @@
       "text": "Move Deleter",
       "action": "EVENT",
       "event": {
-       "quips": "move_deleter",
        "lines": [
         "Uh... Oh, yes, I'm the Move Deleter. I can make Pokémon forget moves. Your team looks fine as it is, though!"
-       ]
+       ],
+       "quips": "move_deleter"
       }
      }
     ],

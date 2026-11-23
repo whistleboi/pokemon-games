@@ -75,14 +75,17 @@ check("Seagallop to Seven Island" in travel("ONE_ISLAND"), "Rainbow Pass: Island
 run("FOUR_ISLAND", "Lorelei's House")
 run("ICEFALL_CAVE", "STOP TEAM ROCKET")
 check(isinstance(g.current_state, TrainerIntroState) and lineup(battle_of(g.current_state)) == [(110, 38), (24, 38), (52, 38)], "Icefall Cave: Jessie & James (in place of FireRed's Grunt)")
-check("Rocket Warehouse" not in travel("FIVE_ISLAND"), "warehouse hidden until the Sapphire is stolen")
+def _wh_open():   # (11-23, K5: the walked way in, Five Isle Meadow's road north - the menu's Five Island shortcut is gone)
+    o = opt("FIVE_ISLE_MEADOW", "ROCKET WAREHOUSE")
+    return chk(state_for("FIVE_ISLE_MEADOW"))(o.get("condition"))
+check(not _wh_open(), "warehouse hidden until the Sapphire is stolen (Five Isle Meadow's way north)")
 import json as _json
 _rv = _json.load(open("assets/town_maps.json", encoding="utf-8"))["RUIN_VALLEY"].get("barred", [])
 check(any((b.get("open_with") or {}).get("flag") == "dotted_hole_open" and "has_item:HM_CUT" in (b.get("open_with") or {}).get("condition", []) for b in _rv),
       "the Dotted Hole's door: braille outside, opened with Cut (FireRed; Jordan 11-17)")
 story.story_flags["dotted_hole_open"] = True   # (the walk itself is in sevii_maps)
 run("DOTTED_HOLE", "TAKE THE SAPPHIRE")
-check("Rocket Warehouse" in travel("FIVE_ISLAND"), "Gideon steals it: warehouse open")
+check(_wh_open(), "Gideon steals it: warehouse open (Five Isle Meadow's way north)")
 run("ROCKET_WAREHOUSE", "UNLOCK THE DOORS")
 run("ROCKET_WAREHOUSE", "CONFRONT THE ADMIN")
 from src.world import levels

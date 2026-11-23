@@ -700,18 +700,10 @@
     "PALLET_TOWN": {
       "area_type": "town", "can_fish": true,
       "route_name": "Pallet Town",
-      "backgrounds": {
-        "main": "pallet_city.png",
-        "prof_oak_lab": "pallet_lab.png",
-        "mom_house": "pallet_mom.png"
-      },
       "has_gym": false,
       "travel_options": [
-        {"text": "Route 1", "npc": "professor_oak", "flag_condition": "not received_starter_kanto"},
         {"text": "Route 1", "target_area": "KANTO_ROUTE_1", "flag_condition": "received_starter_kanto"},
-        {"text": "Viridian City", "target_area": "VIRIDIAN_CITY", "flag_condition": "received_starter_kanto"},
-        {"text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "HM_SURF"},
-        {"text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND"}
+        {"text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "HM_SURF"}
       ],
       "explore_options": [{"text": "Daisy", "action": "EVENT", "door": "rival", "event": {"lines": ["Daisy: Hi there! My little brother is off training again.", "Whenever your Pokemon look tired, a short rest makes all the difference. Good luck out there!"]}}, 
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
@@ -736,7 +728,6 @@
       "area_type": "town", "can_fish": true,
       "route_name": "Viridian City",
       "backgrounds": {
-        "main": "viridian_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "battle_gym_viridian.png"
@@ -747,10 +738,7 @@
       "travel_options": [
         {"text": "Route 1", "target_area": "KANTO_ROUTE_1"},
         {"text": "Route 2", "target_area": "KANTO_ROUTE_2", "flag_condition": "received_pokedex_kanto"},
-        {"text": "Viridian Forest", "target_area": "VIRIDIAN_FOREST", "flag_condition": "received_pokedex_kanto"},
-        {"text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_PALLET_TOWN"},
-        {"text": "Route 22", "target_area": "KANTO_ROUTE_22"},
-        {"text": "Pewter City", "target_area": "PEWTER_CITY", "flag_condition": "visited_PEWTER_CITY"}
+        {"text": "Route 22", "target_area": "KANTO_ROUTE_22"}
       ],
       "explore_options": [{"text": "Lesson: Types", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: Every move has a type, and types beat each other like rock, paper, scissors.", "Water beats Fire, Fire beats Grass, Grass beats Water. Pick the move your foe is weak to!"]}}, {"text": "Lesson: Real-Time Battles", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: In real-time battles, tap a move and it recharges, the strong ones slower.", "You can walk while you fight! Your Pokemon follows you, and the foe follows it.", "Hit a foe from the side or from behind for extra damage. Moves reach 4 tiles."]}}, {"text": "Lesson: Catching", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: Knock out a wild Pokemon and you get a moment to throw a ball.", "Answer the math question to throw. A quick answer makes it easier to catch!"]}}, {"text": "Lesson: Mega Evolution", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: With a Key Stone and the right Mega Stone, your Pokemon can Mega Evolve.", "In real-time battles a Mega lasts a minute, then the Key Stone needs a short rest."]}}, {"text": "Lesson: Your Team", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: Tap POKEMON to see your team. Tap one to send it out or have it follow you.", "Right-click one, or tap its potion, to heal it with your best potion. Easy!"]}}, {"text": "Old Man's House", "action": "EVENT", "door": "oldman", "flag_condition": "got_rocky_helmet", "event": {"lines": ["Old man: Thanks for waking me, youngster! I needed that nap.", "That Rocky Helmet hurts any Pokemon that bumps into yours. Use it well!"]}}, 
         {"text": "Heal", "action": "HEAL"},
@@ -769,7 +757,6 @@
       "area_type": "town",
       "route_name": "Pewter City",
       "backgrounds": {
-        "main": "pewter_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "battle_gym_pewter.png"
@@ -779,8 +766,7 @@
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 3", "target_area": "KANTO_ROUTE_3", "condition": "has_boulder_badge" },
-        { "text": "Route 2", "target_area": "KANTO_ROUTE_2" },
-        { "text": "Viridian City", "target_area": "VIRIDIAN_CITY", "flag_condition": "visited_VIRIDIAN_CITY" }
+        { "text": "Route 2", "target_area": "KANTO_ROUTE_2" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -796,7 +782,6 @@
       "area_type": "town", "can_fish": true,
       "route_name": "Cerulean City",
       "backgrounds": {
-        "main": "cerulean_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "battle_gym_cerulean.png"
@@ -809,8 +794,6 @@
         {"text": "Route 5", "target_area": "KANTO_ROUTE_5"},
         {"text": "Route 9", "target_area": "KANTO_ROUTE_9"},
         {"text": "Route 24", "target_area": "KANTO_ROUTE_24"},
-        {"text": "Bill's House", "target_area": "BILLS_HOUSE", "flag_condition": "visited_BILLS_HOUSE"},
-        {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
         {"text": "Cerulean Cave", "target_area": "CERULEAN_CAVE", "condition": ["beat_champion", {"any": ["network_machine_fixed", "visited_CERULEAN_CAVE"]}]}
       ],
       "explore_options": [
@@ -828,14 +811,10 @@
 
     "BILLS_HOUSE": {
       "area_type": "town",
-      "backgrounds": {
-        "main": "bills_city.png"
-      },
       "has_gym": false,
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 25", "target_area": "KANTO_ROUTE_25" },
-        { "text": "CERULEAN CITY", "target_area": "CERULEAN_CITY" }
+        { "text": "Route 25", "target_area": "KANTO_ROUTE_25" }
       ],
       "explore_options": [
         { "text": "Talk to Bill", "action": "NPC", "target": "bill" }
@@ -848,9 +827,6 @@
       "area_type": "town",
       "route_name": "Underground Path",
       "battle_type": "indoor",
-      "backgrounds": {
-        "main": "underground_city.png"
-      },
       "has_gym": false,
       "trainer_encounter_rate": 0,
       "travel_options": [
@@ -871,7 +847,6 @@
       "area_type": "town", "can_fish": true,
       "route_name": "Vermilion City",
       "backgrounds": {
-        "main": "vermillion_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "battle_gym_vermillion.png"
@@ -882,10 +857,6 @@
       "travel_options": [
         { "text": "Route 6", "target_area": "KANTO_ROUTE_6" },
         { "text": "Route 11", "target_area": "KANTO_ROUTE_11" },
-        { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" },
-        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" },
-        { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
-        { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
             {"text": "S.S. Aqua to Olivine", "door": "harbor", "long_ride": true, "target_area": "OLIVINE_CITY", "condition": ["has_item:SS_TICKET", "beat_champion"], "message": "You board the S.S. Aqua. The ship sails west across the sea to Johto..."},
             {"text": "Blimp to the Orange Islands", "door": "harbor", "move_region": "ORANGE", "condition": ["beat_champion", "not:moved_to_orange"], "message": "You board a Rocket Blimp at the harbour. It floats south for hours over warm seas... and sets down at Valencia Island's airport!"},
             {"text": "Seagallop to One Island", "door": "harbor", "long_ride": true, "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "The Seagallop Ferry speeds south to the Sevii Islands. Next stop: One Island!"},
@@ -912,18 +883,13 @@
       "area_type": "town",
       "route_name": "Lavender Town",
       "backgrounds": {
-        "main": "lavender_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png"
       },
       "trainer_encounter_rate": 0,
       "travel_options": [{"text": "Route 10", "target_area": "KANTO_ROUTE_10_SOUTH"}, 
         {"text": "Route 8", "target_area": "KANTO_ROUTE_8"},
-        {"text": "Route 12", "target_area": "KANTO_ROUTE_12"},
-        {"text": "Rock Tunnel", "target_area": "ROCK_TUNNEL"},
-        {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
-        {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"},
-        {"text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY"}
+        {"text": "Route 12", "target_area": "KANTO_ROUTE_12"}
       ],
       "explore_options": [{"text": "Radio Tower", "action": "EVENT", "door": "radio", "condition": "power_plant_fixed", "event": {"lines": ["Director: Welcome to the Lavender Radio Tower! We're back on the air, thanks to you!", "Our first show: Math Quiz Hour! Here's a prize for our hero."], "gift_item": {"RARE_CANDY": 2}, "flag": "lavender_radio_visited", "done": ["Director: Tune in to Math Quiz Hour! Every answer counts!"]}}, 
         { "text": "Heal", "action": "HEAL" },
@@ -938,7 +904,6 @@
       "area_type": "town", "can_fish": true,
       "route_name": "Celadon City",
       "backgrounds": {
-        "main": "celadon_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "battle_gym_celadon.png"
@@ -948,9 +913,7 @@
       "trainer_encounter_rate": 0,
       "travel_options": [
         {"text": "Route 7", "target_area": "KANTO_ROUTE_7"},
-        {"text": "Route 16", "target_area": "KANTO_ROUTE_16"},
-        {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
-        {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"}
+        {"text": "Route 16", "target_area": "KANTO_ROUTE_16"}
       ],
       "explore_options": [
         {"text": "EEVEE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_eevee_celadon", "event": {"requires": ["party_room"], "fail": ["A Poké Ball sits on the table... but your team is full. Make room and come back!"], "lines": ["A Poké Ball sits on the table, with a note: \"Please look after this Eevee.\"", "You got an Eevee!"], "gift_pokemon": 133, "gift_level": 25, "flag": "got_eevee_celadon"}},
@@ -970,7 +933,6 @@
       "area_type": "town",
       "route_name": "Saffron City",
       "backgrounds": {
-        "main": "saffron_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "battle_gym_saffron.png"
@@ -983,10 +945,6 @@
         { "text": "Route 6", "target_area": "KANTO_ROUTE_6" },
         { "text": "Route 7", "target_area": "KANTO_ROUTE_7" },
         { "text": "Route 8", "target_area": "KANTO_ROUTE_8" },
-        { "text": "Celadon City", "target_area": "CELADON_CITY", "flag_condition": "visited_CELADON_CITY" },
-        { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" },
-        { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" },
-        { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
         { "text": "Silph Co.", "target_area": "SILPH_CITY", "condition": {"any": ["fuji_rescued", "visited_SILPH_CITY"]} },
             {"text": "Magnet Train to Goldenrod", "door": "station", "long_ride": true, "target_area": "GOLDENROD_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Goldenrod City in Johto!"}
         ],
@@ -1010,9 +968,6 @@
       "region": "KANTO",
       "battle_type": "indoor",
       "level": 34,
-      "backgrounds": {
-        "main": "silph_city.png"
-      },
       "zones": [
         {
           "key": "1f",
@@ -2364,9 +2319,6 @@
       "region": "KANTO",
       "battle_type": "indoor",
       "level": 20,
-      "backgrounds": {
-        "main": "celadon_game_corner.png"
-      },
       "trainer_encounter_rate": 0,
       "min_rounds": 0,
       "trainer_pool": [],
@@ -2409,9 +2361,6 @@
       "region": "KANTO",
       "battle_type": "indoor",
       "level": 22,
-      "backgrounds": {
-        "main": "celadon_game_corner.png"
-      },
       "zones": [
         {
           "key": "b1f",
@@ -2556,9 +2505,6 @@
       "region": "KANTO",
       "battle_type": "indoor",
       "level": 34,
-      "backgrounds": {
-        "main": "cinnabar_city.png"
-      },
       "wild_pool_percentages": "POKEMON_MANSION_PERCENTAGES",
       "trainer_encounter_rate": 0,
       "min_rounds": 0,
@@ -2644,7 +2590,6 @@
       "area_type": "town", "can_fish": true,
       "route_name": "Fuchsia City",
       "backgrounds": {
-        "main": "fuchsia_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "battle_gym_fuchsia.png"
@@ -2656,11 +2601,7 @@
         { "text": "Route 15", "target_area": "KANTO_ROUTE_15" },
         { "text": "Route 18", "target_area": "KANTO_ROUTE_18" },
         { "text": "Route 19", "target_area": "KANTO_ROUTE_19", "item_condition": "HM_SURF" },
-        { "text": "Safari Zone", "target_area": "SAFARI_ZONE" },
-        { "text": "Celadon City", "target_area": "CELADON_CITY", "flag_condition": "visited_CELADON_CITY" },
-        { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
-        { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" },
-        { "text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND" }        
+        { "text": "Safari Zone", "target_area": "SAFARI_ZONE" }
       ],
       "explore_options": [{"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rarecandy_warden", "event": {"lines": ["A Rare Candy, tucked behind the boulder!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rarecandy_warden"}},
         {"text": "Warden", "action": "EVENT", "door": "warden", "condition": ["not:has_item:GOLD_TEETH", "not:got_hm_strength_kanto"], "event": {"lines": ["Warden: Hif fuff hefifoo! Ahf hoo hoo...", "(He's lost his teeth! He keeps pointing at the Safari Zone.)"], "flag": "heard_warden_teeth", "done": ["Warden: Hif fuff hefifoo! (He points at the Safari Zone again.)"]}}, {"text": "Return the Gold Teeth", "action": "EVENT", "door": "warden", "condition": "has_item:GOLD_TEETH", "flag_condition": "not got_hm_strength_kanto", "event": {"lines": ["Warden: My teeth! You found my Gold Teeth! Thank you, thank you!", "I can talk again! Here, take this HM. Strength pushes big boulders out of your way!"], "take_item": {"GOLD_TEETH": 1}, "gift_item": {"HM_STRENGTH": 1}, "flag": "got_hm_strength_kanto"}}, {"text": "Fishing Guru's Brother", "action": "EVENT", "door": "brother", "event": {"lines": ["Fisherman: My big brother is the Fishing Guru in Vermilion. I love to fish too!", "Fishing is all about patience, like counting to a hundred. Take this Good Rod!"], "gift_item": {"GOOD_ROD": 1}, "flag": "got_good_rod_kanto", "done": ["Fisherman: The Good Rod pulls up bigger Pokemon than the Old Rod. Try it in the Safari Zone!"]}}, 
@@ -2676,7 +2617,6 @@
       "area_type": "town", "can_fish": true,
       "route_name": "Cinnabar Island",
       "backgrounds": {
-        "main": "cinnabar_island.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
         "gym": "cinnabar_city_gym.png",
@@ -2689,9 +2629,7 @@
         { "text": "Route 20", "target_area": "KANTO_ROUTE_20", "item_condition": "HM_SURF" },
         { "text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "HM_SURF" },
         { "text": "Enter Volcano", "target_area": "CINNABAR_VOLCANO", "item_condition": "VOLCANO_PASS" },
-        { "text": "Seagallop to One Island", "door": "harbor", "long_ride": true, "target_area": "ONE_ISLAND", "condition": {"any": ["has_volcano_badge", "has_item:TRI_PASS"]}, "message": "Bill waves you aboard the Seagallop Ferry. Next stop: One Island!" },
-        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"},
-        { "text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_KANTO_ROUTE_21" }
+        { "text": "Seagallop to One Island", "door": "harbor", "long_ride": true, "target_area": "ONE_ISLAND", "condition": {"any": ["has_volcano_badge", "has_item:TRI_PASS"]}, "message": "Bill waves you aboard the Seagallop Ferry. Next stop: One Island!" }
       ],
       "explore_options": [
         {"text": "Heal", "action": "HEAL"},
@@ -2734,7 +2672,6 @@
       "area_type": "town",
       "route_name": "Indigo Plateau",
       "backgrounds": {
-        "main": "indigo_city.png",
         "pokecenter": "indigo_city.png",
         "pokemart": "indigo_city.png",
           "gym": ["battle_elite_loreli.png", "battle_elite_bruno.png", "battle_elite_agatha.png", "battle_elite_lance.png", "battle_champion_kanto.png"]
