@@ -3264,8 +3264,7 @@ ROUTE_16["art"][15] = ROUTE_16["art"][15][:55] + "D" + ROUTE_16["art"][15][56:] 
 # Zone 385: the forest Zoroark hid with illusions two years ago. Breeder Galen battles again each visit; the Rangers give
 # Berries; the odd Backpacker gives TM95 Snarl and runs off as a Zoroark. Its Hidden Grotto (record 2) at the north-east.
 # Veteran Murphy, the Rare Candy and the Grass Gem are past the waterfall (Surf, Waterfall: the river's walk codes 0x3F / 0x40,
-# read since 11-23). Grass Gem: no key yet
-# (cleanup clean-main-unova-gen5-gems), left out till Main adds it.
+# read since 11-23). The Grass Gem (hidden at 19, 33): on main since 7eab28af (cleanup clean-main-unova-gen5-gems), placed 11-23.
 LOSTLORN = route(
     385, {4: _ball("Poke Ball in the stump", "ULTRA_BALL", "b2_lostlorn_ultra", name="an Ultra Ball"),
           5: _ball("Poke Ball in the dark grass", "RARE_CANDY", "b2_lostlorn_candy", name="a Rare Candy"),   # (above the falls: Surf, Waterfall)
@@ -3279,7 +3278,7 @@ LOSTLORN = route(
     {},
     exits={"v": ("UNOVA_ROUTE_16", [(12, 52), (13, 52)])},
     trainers={0: "Pokemon Breeder Galen", 1: "Pokemon Ranger Serenity", 2: "Pokemon Ranger Forrest", 3: "Veteran Murphy"},
-    hidden={"6,24": "LEAF_STONE"},
+    hidden={"6,24": "LEAF_STONE", "19,33": "GRASS_GEM"},
     rooms={"grotto": grotto_room(2, (22, 9))},
     inside={"22,9": "grotto"},
 )

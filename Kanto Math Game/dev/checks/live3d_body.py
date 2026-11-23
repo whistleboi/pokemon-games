@@ -356,7 +356,7 @@ t.step(-1, 0); settle(20)
 check(tuple(g.current_state.player) == (15, 19), f"Virbank: no stepping off the street down onto the canal walkway, 3.5 below ({g.current_state.player})")
 t = g.current_state
 _pp = t._path((14, 19))
-check(t._level_edge((15, 19), (14, 19)) and (not _pp or _pp[0] != (14, 19)),
+check((t._level_edge((15, 19), (14, 19)) or not t._open((14, 19))) and (not _pp or _pp[0] != (14, 19)),   # (11-23: the canal there is water now, from the file)
       f"...and a tapped path won't drop straight off either (it goes the long way round, under the bridge: {len(_pp)} steps)")
 _lost = []
 for _area, _m in _all.items():

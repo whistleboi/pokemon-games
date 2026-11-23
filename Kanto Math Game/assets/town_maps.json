@@ -587660,7 +587660,8 @@
    }
   },
   "hidden": {
-   "6,24": "LEAF_STONE"
+   "6,24": "LEAF_STONE",
+   "19,33": "GRASS_GEM"
   },
   "dark_grass": [
    [

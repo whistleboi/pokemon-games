@@ -242,6 +242,7 @@ for _ in range(6):
     st.step(0, -1); settle(20)
 check(r0 is not None and flags.get("b2_elesa_lit1") and st.light_radius() > r0, "the first trigger lights the next stretch")
 check(tmaps["NIMBASA_CITY"]["rooms"]["gym"]["dark"].get("lit"), "the lit stretches are in the map, for main's section lighting")
+check(tmaps["LOSTLORN_FOREST"].get("hidden", {}).get("19,33") == "GRASS_GEM", "Lostlorn's hidden Grass Gem, where Black 2 hides it")
 import os as _os
 _ingo = [o for o in json.dumps(tmaps).split('"sprite": ') if o.startswith('"b2_ingo.png"')]
 check(_ingo and _os.path.exists("assets/sprites/trainers/b2_ingo.png"),

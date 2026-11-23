@@ -1,22 +1,3 @@
-# (11-23: a walkable Unova place's way back is its map's own exits, its rooms' too - a gate, Route 16's Bridge Gate lift -
-#  not menu buttons, which rebuilt places no longer have. The shared helper reads only menus: Main's inbox, cleanup
-#  clean-main-unova-reach-walkable-exits.)
-import json as _json
-_TM = _json.load(open("assets/town_maps.json", encoding="utf-8"))
-_raw_menu = _raw_targets
-
-
-def _raw_targets(area):
-    out = list(_raw_menu(area))
-    m = _TM.get(area) or {}
-    for place in [m] + list((m.get("rooms") or {}).values()):
-        for t in (place.get("exits") or {}).values():
-            if isinstance(t, str) and t in PROG and t not in out:
-                out.append(t)
-    return out
-
-
-
 story.badges = {"UNOVA": []}
 story.inventory = {}
 story.story_flags = {"visited_NUVEMA_TOWN": True}
