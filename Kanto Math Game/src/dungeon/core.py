@@ -470,6 +470,17 @@ def pick_tm(seed, spot_id, tm_table, owned, badges):
 
 
 # ---------------------------------------------------------------- a walk through an area
+def beside_order(floor, spot):
+    """The sides of a passage you come out on, in the order tried: north, east, south, west, but a one-tile nook whose
+    only way on is back through the passage last (Mt. Silver 2F's mouth at (38,20) has one to its north: you come out
+    on the side the path goes on from, as in SoulSilver; 11-22). Run._beside and the guide's search both use it."""
+    def pocket(t):
+        return not any(floor.walkable(t[0] + ex, t[1] + ey) for ex, ey in DIRS if (t[0] + ex, t[1] + ey) != spot)
+    sides = [d for d in DIRS if floor.walkable(spot[0] + d[0], spot[1] + d[1])]
+    open_ = [d for d in sides if not pocket((spot[0] + d[0], spot[1] + d[1]))]
+    return open_ + [d for d in sides if d not in open_]
+
+
 class Run:
     """You walking through one area. make_wild(rng) -> a payload for a new wild Pokemon (the
     screen's own object); trainers: [(index, payload)] still to beat; spots: TM spot ids not taken."""
@@ -740,7 +751,7 @@ class Run:
         return self.others_act()
 
     def _beside(self, floor, spot):
-        for dx, dy in DIRS:
+        for dx, dy in beside_order(floor, spot):
             t = (spot[0] + dx, spot[1] + dy)
             if not floor.walkable(*t):
                 continue
