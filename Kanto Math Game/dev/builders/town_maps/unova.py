@@ -2757,6 +2757,454 @@ JOIN_AVENUE = town(
 )
 JOIN_AVENUE["rooms"]["office"]["title"] = "Manager's Office"
 
+
+# ====================================================================================================== batch 4a (11-23)
+# Nimbasa City (its Center, houses, gates, Big Stadium's and Small Court's lobbies, the amusement park, the Gym and the
+# Shining Roller Coaster), Route 16 (its Bridge Gate), Lostlorn Forest, Route 5 (Bianca's Fly, its Hidden Grotto, the
+# crowd at the drawbridge). Black 2's teams from its own trainer table (dev/builders/unova_trainers.py: the routes' pools,
+# and town_maps/unova_teams.json for the story and Gym battles, _b2). Jordan's calls: unova_check/DECISIONS.md "Batch 4".
+# Story flags in order: b2_nimbasa_gym_out (the guide at the Gym) -> b2_elesa_coaster (the roller coaster's lady) ->
+# gym_trainer_NIMBASA_CITY_1-3 -> b2_bolt_badge -> b2_nimbasa_plasma_battled -> b2_nimbasa_plasma (Hugh) -> b2_got_fly
+# (Route 5, Bianca) -> b2_charles (the drawbridge). Side: b2_subway_bosses (you and Rosa / Nate against Ingo and Emmet),
+# b2_nimbasa_rival (your picked BW rival's meeting). Batch 4b: Gear Station, the Battle Subway, Anville; 4c: the Musical,
+# Big Stadium / Small Court's daily athletes, the roller coaster's switches, the Dropped Item.
+# Zones: 62 the city, 63 the Gym, 64 the park, 65 the Center, 79/80 Big Stadium's lobby and stands, 84/85 Small Court's,
+# 88/89 and 94/95 houses, 91 / 92 the gates west (Route 5) and east (Route 16), 93 the Battle Institute, 585 the roller
+# coaster; 329 Route 5, 330 its trailer; 383 Route 16, 384 the Bridge Gate; 385 Lostlorn Forest, 386 its trailer.
+_TEAMS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "unova_teams.json"), encoding="utf-8"))
+
+
+def _b2(tid, **over):
+    """A battle from Black 2's own trainer table (dev/builders/unova_trainers.py writes unova_teams.json)."""
+    t = {k: v for k, v in _TEAMS[str(tid)].items() if k != "b2_id"}
+    t.update(over)
+    return t
+
+
+def _b2_battle(label, tid, flag, lines, won, done, name=None, **kw):
+    """A trainer standing in a room or park who battles when talked to (a Gym's catwalk, the roller coaster)."""
+    b = _b2(tid)
+    b["name"] = name or b["name"]
+    b["dialogue"] = {"player_won": list(won)}
+    out = {"text": label, "action": "EVENT", "event": {"lines": list(lines), "battle": b, "flag": flag, "done": list(done)}}
+    out.update(kw)
+    return out
+
+
+NIMBASA_ROOMS = {62: "MAIN", 65: "center", 79: "stadium", 80: "stadium_stands", 84: "court", 85: "court_stands",
+                 88: "house_w", 89: "house_w_2f", 94: "house_e", 95: "house_e_2f", 93: "institute", 91: "gate_w", 92: "gate_e",
+                 64: "park", 63: "gym", 585: "coaster"}
+NIMBASA_AREAS = {329: "UNOVA_ROUTE_5", 383: "UNOVA_ROUTE_16", 490: "JOIN_AVENUE"}
+OUTSIDE.update({z: -1 for z in NIMBASA_ROOMS if z != 62})
+OUTSIDE.update({384: 383, 330: 329})   # (Route 16's Bridge Gate, Route 5's trailer)
+
+
+def nimbasa_room(z, people, signs, extra_people=(), scenes=None, title=None, **more):
+    """A Nimbasa room or the park: each door leads where the game's own warp does (as Castelia's streets: castelia_room)."""
+    g = GEO[str(z)]
+    rows, ppl, sg, doors = _place(z, people, signs, extra_people, counters=not g["outdoor"])
+    exits, chars = {}, {}
+    for d in doors:
+        tgt = ("ROOM:" + NIMBASA_ROOMS[d["to"]]) if d["to"] in NIMBASA_ROOMS else NIMBASA_AREAS.get(d["to"])
+        if not tgt:
+            continue
+        ch = chars.get(tgt) or _EXIT_CHARS[len(chars)]
+        chars[tgt] = ch
+        for k in range(max(1, d["w"])):
+            for j in range(max(1, d.get("h", 1))):
+                if 0 <= d["x"] + k < len(rows[0]) and 0 <= d["y"] + j < len(rows):
+                    rows[d["y"] + j][d["x"] + k] = ch
+        exits[ch] = tgt
+    _thin(rows, set(exits))
+    if not g["outdoor"] and z != 63:
+        _no_drops(z, rows, set(exits))
+    m = {"theme": "room", "art": ["".join(r) for r in rows], "exits": exits, "buildings": {}, "roofs": _picture(z, g["outdoor"]),
+         "people": ppl}
+    if sg:
+        m["signs"] = sg
+    if scenes:
+        m["scenes"] = scenes
+    if title:
+        m["title"] = title
+    m.update(_camera(z))
+    m.update(more)
+    return m
+
+
+# ---------------------------------------------------------------------------------------------------------- Nimbasa City
+def _subway_bosses(who, pic, ids):
+    """You and Rosa / Nate (their team by your starter: Snivy, Tepig, Oshawott) against Ingo and Emmet."""
+    p = _b2(ids[0])
+    partner = {"name": who, "class": "PKMN_TRAINER", "sprite": pic, "team": p["team"], "levels": p["levels"],
+               "team_choice": {s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), ids)}}
+    return _b2(732, name="Subway Boss Ingo", sprite="subway_boss.png", rewards={"balls": 4},
+               battle_options={"double": True, "partner": partner, "second_trainer": _b2(733, rewards={"balls": 4})},
+               dialogue={"player_won": ["Ingo: Bravo! You and your Pokemon make a fine combination!",
+                                        "Emmet: I lost, but I had fun! Ride the subway and battle us there next time!"],
+                         "player_lost": ["Emmet: Follow the rules and drive safely! All aboard!"]})
+
+
+PLASMA_HERE = ["b2_bolt_badge", "not:b2_nimbasa_plasma"]            # (Team Plasma outside Big Stadium: after Elesa's badge)
+BOSSES_HERE = ["not:b2_subway_bosses"]                              # (Ingo and Emmet outside Gear Station, till you've battled)
+NIMBASA_PEOPLE = {
+    0: _say("Plasma Grunt", "Plasma Grunt: What are you looking at?", condition=PLASMA_HERE),
+    1: _say("Plasma Grunt ", "Plasma Grunt: Move along, kid.", condition=PLASMA_HERE),
+    2: _say("Plasma Grunt  ", "Plasma Grunt: We're just standing here. Is that a crime?", condition=PLASMA_HERE),
+    4: _say("Plasma Grunt   ", "Plasma Grunt: Trainers sure are unruly these days.", condition=PLASMA_HERE),
+    3: _say("{rival_name}", "{rival_name}: These are the creeps! Pokemon thieves, every one of them!", condition=PLASMA_HERE),
+    # the Subway Bosses and the Trainer who wants to take them on with you (a girl player: Nate; a boy: Rosa)
+    5: [{"text": "Rosa", "action": "EVENT", "_look": "sheet:b2_rosa.png", "condition": BOSSES_HERE + ["world:unova_story:male_player"],
+         "event": {"lines": ["Rosa: I came to test my skills on the Battle Subway, and the Subway Bosses are right here!",
+                             "Rosa: They'll battle, but only two on two. Will you team up with me? Please?",
+                             "Rosa: Thanks! I'm Rosa! Let's be the best partners ever!"],
+                   "flag": "b2_subway_bosses", "battle": _subway_bosses("Rosa", "b2_rosa.png", (363, 364, 365))}},
+        {"text": "Nate", "action": "EVENT", "_look": "sheet:b2_nate.png", "condition": BOSSES_HERE + ["world:unova_story:female_player"],
+         "event": {"lines": ["Nate: I came to test my skills on the Battle Subway, and the Subway Bosses are right here!",
+                             "Nate: They'll battle, but only two on two. Will you team up with me?",
+                             "Nate: Thanks! The name's Nate! Pokemon-fan teamwork is better than perfect!"],
+                   "flag": "b2_subway_bosses", "battle": _subway_bosses("Nate", "b2_nate.png", (360, 361, 362))}}],
+    6: _say("Subway Boss Ingo", "Ingo: I am Ingo, a Subway Boss. I usually battle aboard the trains that leave Gear Station.",
+            condition=BOSSES_HERE),
+    7: _say("Subway Boss Emmet", "Emmet: I'm Emmet. Subway Boss. I love Double Battles! Two Pokemon together!", condition=BOSSES_HERE),
+    10: _say("Athlete in the plaza", "Athletes and their Pokemon make a super team! See them play at Big Stadium and Small Court!"),
+    11: _say("Singer in the plaza", "Nimbasa City is full of plaaaces for toughening uuup your Pokemon!"),
+    12: _say("Nurse in the plaza", "I'd love to go to Anville Town some day. They say the trains go there from Gear Station."),
+    13: _say("Man by the avenue", "Every time I walk past Join Avenue, I wonder which new shop has opened."),
+    14: _say("Backpacker in the plaza", "Triple Battles and Rotation Battles need three Pokemon. I only have two partners so far!"),
+    15: _say("Little girl", "I was good, so I got to come to the amusement park! Pansear came too!"),
+    16: _say("Pansear", "Pansear: Raesnap!"),
+    17: _say("Boy in the plaza", "I rode the roller coaster and it went zoom, zoom! Just like Quick Attack!"),
+    18: _say("Woman in the plaza", "Nimbasa's Gym Leader, Elesa, is a fashion model! I'd love to see her walk the catwalk."),
+    19: _say("Woman by the Institute", "A Trainer! The woman of mystery at the Battle Institute tests Trainers' skills...",
+             "...over the wireless network, though. Come back when you've beaten the Champion!"),
+}
+NIMBASA_SIGNS = {1: ["NIMBASA CITY", "Lit by the flash of lightning!"], 2: ["BIG STADIUM", "Baseball, football and soccer"],
+                 3: ["SMALL COURT", "Tennis and basketball"], 4: ["BATTLE SUBWAY", "Battle and ride!"],
+                 5: ["MUSICAL THEATER", "Props, music, dance, excitement!"],
+                 6: ["TRAINER TIPS", "Games are played at set times in Big Stadium and Small Court.",
+                     "You might battle your favourite athlete!"],
+                 10: ["TRAINER TIPS", "The Musical Theater is always looking for performers!",
+                      "Take part again and again for more wonderful Props."],
+                 11: ["BATTLE INSTITUTE", "Test your Trainer skills!"]}
+NIMBASA_SCENES = [
+    # just in from Join Avenue: your picked BW rival (Cheren or Bianca) has come to see the city too (Jordan 11-23: a meeting,
+    # no battle; BW's rival met you here)
+    {"trigger": {"zone": [44, 58, 48, 62]}, "condition": ["friend:cheren", "not:b2_nimbasa_rival"], "flag": "b2_nimbasa_rival",
+     "cast": [{"sheet": "b2_cheren.png", "from": [46, 54], "to": "player",
+               "lines": ["Cheren: {player_name}! You made it to Nimbasa too.",
+                         "Cheren: Two years ago I passed through here on my own journey. I wanted to be strong, and I didn't know why.",
+                         "Cheren: Now I teach at Aspertia. ...Elesa's Gym is in the amusement park. Show her what you've learned."],
+               "leave": [46, 40]}]},
+    {"trigger": {"zone": [44, 58, 48, 62]}, "condition": ["friend:bianca", "not:b2_nimbasa_rival"], "flag": "b2_nimbasa_rival",
+     "cast": [{"sheet": "b2_bianca.png", "from": [46, 54], "to": "player",
+               "lines": ["Bianca: {player_name}! Hi hi! Isn't Nimbasa amazing? All the lights!",
+                         "Bianca: Two years ago my dad came all the way here to take me home. I'd never seen him so worried!",
+                         "Bianca: We talked it over, and he let me keep going. ...Elesa helped, actually. Go say hi at her Gym!"],
+               "leave": [46, 40]}]},
+    # Hugh and Team Plasma outside Big Stadium (the game's trigger: x 25, rows 21-24), after Elesa's badge
+    {"trigger": {"zone": [25, 21, 25, 24]}, "condition": PLASMA_HERE + ["not:b2_nimbasa_plasma_battled"], "flag": "b2_nimbasa_plasma_met",
+     "cast": [{"person": "{rival_name}", "face": "l", "stay": True,
+               "lines": ["{rival_name}: Hold it! What are you lot up to here?"]},
+              {"person": "Plasma Grunt", "face": "r", "stay": True,
+               "lines": ["Team Plasma: Nothing. We're just standing here. Why bother us?"]},
+              {"person": "{rival_name}", "face": "l", "stay": True,
+               "lines": ["{rival_name}: You didn't do anything to me. But I'll never forgive Pokemon thieves like you!"]},
+              {"person": "Plasma Grunt", "face": "r", "stay": True,
+               "lines": ["Team Plasma: Trainers these days... You think your Pokemon's strength is your own?"]},
+              {"person": "{rival_name}", "face": "d", "lines": ["{rival_name}: {player_name}! Cover me!"]}],
+     "then": "event:b2_nimbasa_plasma"},
+    {"trigger": {"zone": [20, 18, 30, 26]}, "condition": ["b2_nimbasa_plasma_battled", "not:b2_nimbasa_plasma"], "flag": "b2_nimbasa_plasma",
+     "cast": [{"person": "Plasma Grunt", "face": "r",
+               "lines": ["Team Plasma: We give up! Two kids...",
+                         "Team Plasma: Just so you know, Team Plasma is searching for something. When we find it, our secret weapon "
+                         "will show its true power!", "Team Plasma: Farewell!"],
+               "leave": [0, 22], "gone": True},
+              {"person": "{rival_name}", "to": "player",
+               "lines": ["{rival_name}: Five years ago, Team Plasma stole my little sister's Purrloin. It was a present for her.",
+                         "{rival_name}: I was just a kid. I couldn't do anything... That's why I have to get stronger!",
+                         "{rival_name}: Good work, by the way. Here, let me patch your team up.",
+                         "{rival_name} fully healed {player_name}'s Pokemon!",
+                         "{rival_name}: Keep filling that Pokedex and getting stronger. I'm counting on you!"],
+               "heal": True, "leave": [0, 22]}]},
+]
+NIMBASA_GYM = nimbasa_room(63, {
+    4: {"text": "Gym", "action": "GYM", "_look": "sheet:b2_c226.png"},
+    1: _gift("Gym guide", ["Welcome to the Nimbasa Gym! A stylish battle and fashion show of Pokemon and Trainers starts now!",
+                           "Proceed by beating the Trainers waiting on the catwalk.",
+                           "Electric-types don't like Ground-type moves... but watch out: Emolga floats above them!",
+                           "Here, take this for now!"], "FRESH_WATER", "b2_clyde_nimbasa",
+             ["Elesa uses bright Electric-type attacks. Shine even brighter than her!"]),
+    2: _b2_battle("Beauty Nikola", 207, "gym_trainer_NIMBASA_CITY_1",
+                  ["Beauty Nikola: Are you beautiful as a Trainer? Surprise me!"], ["Beauty Nikola: You and your Pokemon sparkle!"],
+                  ["Ms. Elesa is strong and beautiful. Don't think she's the same as us."]),
+    3: _b2_battle("Beauty Fleming", 208, "gym_trainer_NIMBASA_CITY_2",
+                  ["Beauty Fleming: Beauty isn't just about looks. Strength is part of it too!"],
+                  ["Beauty Fleming: You shine as brightly as Elesa!"], ["Strength is part of beauty, for you and for Elesa."]),
+    0: _b2_battle("Beauty Ampere", 209, "gym_trainer_NIMBASA_CITY_3",
+                  ["Beauty Ampere: The show's finale! Let's see if you're worthy of Elesa's stage!"],
+                  ["Beauty Ampere: A match between you and Elesa this close... I can't wait!"],
+                  ["That's a battle I want to see!"], name="Beauty Ampere"),
+}, {(18, 57): ["NIMBASA CITY POKEMON GYM", "Leader: Elesa", "The Shining Beauty"],
+    (12, 57): ["NIMBASA CITY POKEMON GYM", "Leader: Elesa", "The Shining Beauty"]}, title="Nimbasa Gym")
+_COASTER_WOMAN = _gift("Woman at the back", ["Oh my! Did you come here looking for the Gym Leader?",
+                                             "I'm sorry, you just missed her. She's gone back to her Gym!",
+                                             "Take this for coming all this way!"], "PARALYZE_HEAL", "b2_elesa_coaster",
+                       ["The Gym Leader loves the thrill of this roller coaster."])
+_COASTER_ROLAN = _b2_battle("Rich Boy Rolan", 621, "b2_coaster_rolan", ["Rich Boy Rolan: Are you cool on a roller coaster? I'll "
+                                                                        "overwhelm you with the speed I learned riding it!"],
+                            ["Rich Boy Rolan: Your way of battling... It's elegant!"], ["Faster! Faster! Speed feels great!"])
+NIMBASA_COASTER = nimbasa_room(585, {
+    2: _b2_battle("Lady Colette", 148, "b2_coaster_colette", ["Lady Colette: Ms. Elesa toughened me up too. I won't give up easily!"],
+                  ["Lady Colette: An honour to face a Trainer like you."], ["The ride's nearly at its finale."]),
+    3: _say("Guide at the entrance", "Hop in a car to ride to the next platform! The woman at the back knows where Elesa went.",
+            "Beat a Trainer and ride on. Aim for the back!"),
+    4: _say("Girl by the cars", "Elesa's amazing! Most Leaders remodel their Gym, but she built a whole new one!"),
+    5: _say("Boy by the cars", "In other places, roller coasters are called jet coasters!"),
+}, {}, extra_people=[(48, 42, _COASTER_WOMAN), (16, 15, _COASTER_ROLAN)], title="Shining Roller Coaster")
+# (Jordan 11-23: the cars' real routes and switches come in batch 4c, from Black 2's event scripts. Till then each platform's
+#  car is a ride pad to the next (entrance <-> middle and left; middle <-> top and back), and the woman (49, 38) and Rolan
+#  (16, 13), who stand at car stops in Black 2, wait one step onto their platforms.)
+_COASTER_RIDES = {(12, 40): (22, 40), (31, 41): (40, 41), (29, 32): (28, 11), (11, 43): (13, 30)}
+for _a, _b in _COASTER_RIDES.items():
+    for _x, _y in (_a, _b):
+        NIMBASA_COASTER["art"][_y] = NIMBASA_COASTER["art"][_y][:_x] + "1" + NIMBASA_COASTER["art"][_y][_x + 1:]
+NIMBASA_COASTER["links"] = {**{"%d,%d" % a: [0, b[0], b[1]] for a, b in _COASTER_RIDES.items()},
+                            **{"%d,%d" % b: [0, a[0], a[1]] for a, b in _COASTER_RIDES.items()}}
+NIMBASA_PARK = nimbasa_room(64, {
+    0: _ball("Poke Ball by the rides", "PARALYZE_HEAL", "b2_park_parlyz", name="a Paralyze Heal"),
+    12: [_say("Gym guide outside", "Oh, are you a challenger? I'm sorry, the Gym Leader is out right now...",
+              "She should be in the roller coaster building by the park's entrance.", condition=["not:b2_elesa_coaster"])],
+    2: _say("Woman by the Gym", "It's a shining, sparkling, bright fashion show!"),
+    3: _say("Boy by the rides", "I hear a Clown's make-up has a teardrop mark."),
+    4: _say("Girl by the rides", "A roller coaster and a Ferris wheel! Which should I ride first?!"),
+    5: _say("Boy on a date", "Ah ah ah! Wh-what do I talk about on my first date..."),
+    6: _say("Girl on a date", "Even at the amusement park, he just plays guitar... He loves music from the bottom of his heart!"),
+    7: _say("Boy by the bench", "What's that? Uh, I dunno. Audino?"),
+    8: _say("Woman by the bench", "A famous TV star filmed here! Between takes the star was on the Xtransceiver the whole time!"),
+    9: _say("Audino", "Audino: Chuuu!"),
+    10: _say("Clown", "Uuugh!"),
+    13: _say("Girl by the coaster", "The best part of a roller coaster is screaming your heart out!"),
+}, {1: ["NIMBASA CITY POKEMON GYM", "Leader: Elesa", "The Shining Beauty"],
+    2: ["THE SHINING ROLLER COASTER", "Former Nimbasa City Pokemon Gym"]},
+    hidden={"44,11": "REVIVE"}, title="Amusement Park",
+    scenes=[{"who": "Gym guide outside", "trigger": {"zone": [70, 11, 72, 13]}, "condition": ["not:b2_nimbasa_gym_out"],
+             "flag": "b2_nimbasa_gym_out", "approach": True,
+             "lines": ["Oh, are you a challenger? I'm sorry, the Gym Leader is out right now...",
+                       "She should be in the roller coaster building by the park's entrance."]},
+            {"who": "Gym guide outside", "trigger": {"zone": [70, 10, 72, 11]}, "condition": ["not:b2_elesa_coaster"], "every": True,
+             "lines": ["The Gym Leader is out right now. Try the roller coaster building!"], "push": [0, 1]}])
+NIMBASA_PARK["rooms_note"] = "the park is a separate map (zone 64), as Castelia's streets"
+NIMBASA = town(
+    62, NIMBASA_PEOPLE, NIMBASA_SIGNS,
+    {65: ("center", "center"), 79: ("house", "stadium"), 84: ("house", "court"), 88: ("house", "house_w"),
+     94: ("house", "house_e"), 93: ("house", "institute"), 91: ("gate", "gate_w"), 92: ("gate", "gate_e")},
+    rooms={
+        "center": nimbasa_room(65, {
+            0: {"text": "Pokémon Center", "action": "HEAL"}, 3: {"text": "Shop", "action": "SHOP"},
+            5: _say("Clerk ", "Welcome! The counter on the left sells everyday items."),
+            4: _say("Clerk  ", "Specialty Poke Balls are over here!"),
+            7: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+            10: _gift("Gentleman by the counter", ["Ha ha! Check the dust clouds in caves: they're chock-full of Shards!",
+                                                    "I've a pile of them. I'll share!"], "RED_SHARD", "b2_nimbasa_shards",
+                      ["Somewhere in Driftveil City an artisan teaches moves in exchange for Shards!"], count=10),
+            8: _say("Girl with Minccino", "My beauteous Minccino! I met it on Route 5. It'll be a hit in the Musical!"),
+            9: _say("Minccino", "Minccino: Chulululucha!"),
+            1: _say("Man by the door", "Nimbasa never sleeps! The lights stay on all night."),
+            2: _say("Woman by the door", "My Pokemon and I came for the Musical. We practise every day!"),
+            6: _say("Boy by the sofa", "The Battle Subway's trains run from Gear Station. Seven Trainers in a row!"),
+            11: _say("Trainer at the PC", "I keep my best Pokemon in a Box, ready for the Subway."),
+        }, {}),
+        "stadium": nimbasa_room(79, {
+            0: _say("Receptionist", "Players are practising in Big Stadium today. Games start at set times!"),
+            1: _say("Boy in the lobby", "You sure look up to athletes when you're a kid."),
+            3: _say("Man in the lobby", "I raise the same Pokemon as my favourite athlete!"),
+            2: _say("Fan by the field door", "The field's closed while they get ready. Come back for a game!"),
+            4: _say("Kid by the field door", "When I throw a Poke Ball, I copy a pitcher's throw!"),
+            5: _say("Fan", "Go, go, go!"), 6: _say("Fan ", "Woooo!"), 7: _say("Fan  ", "Let's go!"),
+        }, {}, title="Big Stadium"),
+        "stadium_stands": nimbasa_room(80, {
+            0: _say("Woman in the stands", "Professional athletes look so cool during a game!"),
+            1: _say("Boy in the stands", "I want to be good at sports AND Pokemon battles!"),
+            2: _say("Girl in the stands", "On the field they play for real!"),
+            3: _say("Man in the stands", "Just one ball can make people and Pokemon smile. Sports are wonderful!"),
+            4: _say("Fan in the stands", "Eeee! Turn this waaay!"), 5: _say("Fan  in the stands", "There! Turn like that!"),
+            6: _say("Kid in the stands", "Following the ball left and right makes me woozy."), 7: _say("Cheerer", "Yahoooo!"),
+        }, {}, title="Big Stadium Stands"),
+        "court": nimbasa_room(84, {
+            0: _say("Fan by the court", "We love sports. Games are great, but we enjoy watching practices too!"),
+            1: _say("Fan  by the court", "New styles of tennis and basketball, made by people and Pokemon together!"),
+            2: _say("Receptionist ", "Talk to the athletes during a practice and they might challenge you to a battle!"),
+            3: _say("Kid by the court door", "First-rank players wait in the court with their Pokemon!"),
+            4: _say("Fan ", "Go!"), 5: _say("Fan  ", "Nice shot!"), 6: _say("Fan   ", "Wow!"),
+            7: _say("Usher", "I'm sorry, the court is closed while the players get ready."),
+        }, {}, title="Small Court"),
+        "court_stands": nimbasa_room(85, {}, {}, title="Small Court Stands"),
+        "house_w": nimbasa_room(88, {
+            0: _say("Man in the house", "With a friend, wireless battles can use the Wonder Launcher rule: items in battle!"),
+            1: _say("Woman in the house", "Wonder Launcher points build up as you battle. Spend them on items!"),
+            2: _say("Old man in the house", "Nimbasa's glitz was nice a few years ago. Now it's too much. Maybe I'll move to the country."),
+            3: _say("Woman by the window", "Some people whose Pokemon Team Plasma stole still haven't got them back."),
+            4: _say("Man by the window", "I hear former Team Plasma members returned the Pokemon they took from one man. Is that enough?"),
+        }, {}, title="House"),
+        "house_w_2f": nimbasa_room(89, {
+            0: _say("Woman upstairs", "A game starts at the same time every day in Big Stadium!"),
+            1: _say("Girl upstairs", "Small Court has basketball and tennis!"),
+            2: {"text": "Socialite upstairs", "action": "EVENT", "flag_condition": "not b2_soothe_bell",
+                "event": {"lines": ["Oh my! Your Pokemon seems to like you very much! That makes me want to give you this!"],
+                          "gift_item": {"SOOTHE_BELL": 1}, "flag": "b2_soothe_bell",
+                          "requires": ["lead_friend:200"],
+                          "fail": ["Oh? Your Pokemon's feelings toward you seem... neutral.",
+                                   "Win its friendship, and I'll give you something nice!"]}},
+        }, {}, title="Upstairs"),
+        "house_e": nimbasa_room(94, {
+            0: _say("Man in the house", "A Shiny Krokorok! Those colours blew my mind!"),
+            1: _say("Girl in the house", "Pokemon that glitter when they come out of the grass are called Shiny Pokemon!"),
+            2: _say("Psychic in the house", "Nuha nuha nuhaha!"),
+        }, {}, title="House"),
+        "house_e_2f": nimbasa_room(95, {
+            0: _gift("Ace Trainer upstairs", ["If I compared Nimbasa's glow to something, it'd be the sun! It inspires me. Take this!"],
+                     "SUN_STONE", "b2_nimbasa_sun_stone", ["A Sun Stone makes some Pokemon evolve. Petilil, for one!"]),
+            1: _say("Girl upstairs", "I gave my Cottonee a Sun Stone as a present!"),
+            2: _say("Man upstairs", "Pokemon evolve in all sorts of ways. Love them and you'll stay close, whatever they look like."),
+        }, {}, title="Upstairs"),
+        "institute": nimbasa_room(93, {
+            0: _say("Woman of mystery", "Welcome to the Battle Institute. Our Battle Tests are taken over the wireless network.",
+                    "...Our network doesn't reach this far. Perhaps another time."),
+            1: _say("Girl in the Institute", "The Battle Test... The woman of mystery shows you the ropes. Keep your Pokemon from fainting!"),
+        }, {}, title="Battle Institute"),
+        "gate_w": nimbasa_room(91, {
+            0: _say("Man at the board", "There are performers gathering on Route 5!"),
+            1: _say("Ranger in the gate", "I wonder if the news on the board is just someone's mutterings..."),
+        }, {1: ["ROUTE 5  -  NIMBASA CITY"]}, title="Nimbasa Gate"),
+        "gate_e": nimbasa_room(92, {
+            0: _gift("Infielder in the gate", ["Let's get to training! Give your Pokemon this and get them into shape!"],
+                     "MACHO_BRACE", "b2_macho_brace",
+                     ["A Macho Brace slows its holder down, but it grows stronger! A bit tricky, but that's how it goes!"]),
+            1: _say("Woman in the gate", "Two years ago, a Zoroark hid its lair in Lostlorn Forest on Route 16."),
+            2: _say("Man at the board", "This way leads to Route 16 and Marvelous Bridge!"),
+        }, {1: ["ROUTE 16  -  NIMBASA CITY"]}, title="Nimbasa Gate"),
+        "park": NIMBASA_PARK, "gym": NIMBASA_GYM, "coaster": NIMBASA_COASTER,
+    },
+    hidden={"18,49": "THUNDER_STONE"},
+    edges={"v": ("JOIN_AVENUE", [(x, 63) for x in range(45, 48)]), "}": ("ROOM:park", [(52, y) for y in range(44, 49)])},
+    scenes=NIMBASA_SCENES,
+)
+NIMBASA["edge_to"] = {"45,63": [12, 5], "46,63": [13, 5], "47,63": [14, 5]}   # (Join Avenue's north end: its own 7-tile road)
+JOIN_AVENUE["edge_to"] = {"%d,5" % x: [45 if x < 13 else 46 if x == 13 else 47, 63] for x in range(10, 17)}
+for _r in ("stadium_stands", "court_stands"):
+    NIMBASA["rooms"][_r]["title"] = NIMBASA["rooms"][_r].get("title") or "Stands"
+
+# --------------------------------------------------------------------------------------------------------------- Route 16
+# Zone 383: Nimbasa's east gate to the Bridge Gate (Marvelous Bridge: shut till the Hall of Fame, a broken lift: Rotom's
+# prank) and north into Lostlorn Forest. A small tree (Cut) by the Heal Ball, a boulder (Strength) by Blossom and TM66.
+ROUTE_16 = route(
+    383, {9: _ball("Poke Ball past the boulder", "TM247", "b2_r16_tm66", name="TM66 Payback"),
+          10: _ball("Poke Ball in the grove", "HEAL_BALL", "b2_r16_heal_ball", name="a Heal Ball")},
+    {1: ["ROUTE 16"], 2: ["MARVELOUS BRIDGE", "Truly marvelous! And also a bridge!"]},
+    exits={"<": ("NIMBASA_CITY", [(6, y) for y in range(21, 24)]), "^": ("LOSTLORN_FOREST", [(35, 0), (36, 0)])},
+    trainers={2: "Backers Stu & Art", 4: "Cyclist Krissa", 5: "Cyclist Hector", 6: "Backpacker Blossom",
+              7: "Backpacker Ivan", 8: "Depot Agent Hank"},
+    hidden={"44,4": "TINY_MUSHROOM"},
+    rooms={"bridge_gate": room(384, {0: _say("Woman in the gate", "What? The lift's broken? Oh no!"),
+                                     1: {"text": "Roughneck by the machine", "action": "EVENT", "flag_condition": "not b2_bridge_gate_water",
+                                         "event": {"lines": ["Awesome! This vending machine gave me an extra drink, for free!",
+                                                             "I'll share my spoils with you, or I'll burst with joy!"],
+                                                   "gift_item": {"FRESH_WATER": 1}, "flag": "b2_bridge_gate_water",
+                                                   "done": ["If I keep getting extra drinks, I'll be rich!"]}},
+                                     2: _say("Man with an umbrella", "That lift wasn't broken. A Rotom was playing a prank!",
+                                             "Rotom can get inside electrical appliances!")},
+                           {}, (55, 15), exits_extra={263: ("^", "MARVELOUS_BRIDGE")},
+                           scenes=[{"who": "Woman in the gate", "trigger": {"zone": [19, 4, 21, 4]}, "condition": ["not:beat_unova_champion"],
+                                    "every": True, "lines": ["The lift up to Marvelous Bridge isn't working..."], "push": [0, 1]}])},
+    inside={"55,15": "bridge_gate"},
+)
+# (Black 2's people 0 and 1: the small tree at 26, 9; the boulder, its model 2 x 2 over the walls at 34-35, 20-21, the way into
+#  the fenced middle: Blossom, TM66. Its person stands at 34, 23, below it.)
+for _y, _x, _c in ((9, 26, "2"), (21, 34, "b"), (21, 35, "b"), (20, 34, "."), (20, 35, ".")):
+    ROUTE_16["art"][_y] = ROUTE_16["art"][_y][:_x] + _c + ROUTE_16["art"][_y][_x + 1:]
+ROUTE_16["rooms"]["bridge_gate"]["title"] = "Bridge Gate"
+ROUTE_16["art"][15] = ROUTE_16["art"][15][:55] + "D" + ROUTE_16["art"][15][56:]   # (the Bridge Gate's door)
+
+# -------------------------------------------------------------------------------------------------------- Lostlorn Forest
+# Zone 385: the forest Zoroark hid with illusions two years ago. Breeder Galen battles again each visit; the Rangers give
+# Berries; the odd Backpacker gives TM95 Snarl and runs off as a Zoroark. Its Hidden Grotto (record 2) at the north-east.
+# Veteran Murphy, the Rare Candy and the Grass Gem are past the waterfall (Surf, Waterfall). Grass Gem: no key yet
+# (cleanup clean-main-unova-gen5-gems), left out till Main adds it.
+LOSTLORN = route(
+    385, {4: _ball("Poke Ball in the stump", "ULTRA_BALL", "b2_lostlorn_ultra", name="an Ultra Ball"),
+          # (5, the Rare Candy above the waterfall: left out till the river's walk codes are read, batch 4c / the Surf pass)
+          6: _ball("Poke Ball by the north stump", "NET_BALL", "b2_lostlorn_net", name="a Net Ball"),
+          7: {"text": "Odd Backpacker", "action": "EVENT", "flag_condition": "not b2_lostlorn_snarl",
+              "event": {"lines": ["Hi, Trainer! I'm a traveller. Do you know a Pokemon called Zoroark?",
+                                  "They say one settled here two years ago, and changed how the forest looked with its illusions.",
+                                  "Every rumour has a kernel of truth. Here, a small present.",
+                                  "{player_name} received TM95 Snarl!", "...Growwwf!", "The Backpacker turned into a Zoroark and ran off!"],
+                        "gift_item": {"TM030": 1}, "flag": "b2_lostlorn_snarl"}}},
+    {},
+    exits={"v": ("UNOVA_ROUTE_16", [(12, 52), (13, 52)])},
+    trainers={0: "Pokemon Breeder Galen", 1: "Pokemon Ranger Serenity", 2: "Pokemon Ranger Forrest", 3: "Veteran Murphy"},
+    hidden={"6,24": "LEAF_STONE"},
+    rooms={"grotto": grotto_room(2, (22, 9))},
+    inside={"22,9": "grotto"},
+)
+LOSTLORN["art"][9] = LOSTLORN["art"][9][:22] + "D" + LOSTLORN["art"][9][23:]
+
+# ---------------------------------------------------------------------------------------------------------------- Route 5
+# Zone 329: from Nimbasa's west gate to the Driftveil Drawbridge. Bianca catches up with HM02 Fly and shows you the route's
+# Hidden Grotto (record 1: its first visit always a Minccino with Skill Link, as Black 2's script sets it). Performers
+# crowd the west end: Motorcyclist Charles blocks the drawbridge (Rotation in Black 2, Triple in White 2: a double battle
+# here, Jordan 11-19). Your picked BW rival battles you before the bridge (BW's Route 5 battle: area on_enter_event).
+ROUTE5_CROWD = ["not:b2_charles"]
+ROUTE_5 = route(
+    329, {18: _ball("Poke Ball on the ledge", "SUPER_REPEL", "b2_r5_super_repel", name="a Super Repel"),
+          19: _ball("Poke Ball behind the fence", "HYPER_POTION", "b2_r5_hyper_potion", name="a Hyper Potion"),
+          0: _say("Ranger by the gate", "Pokemon Rangers patrol here. Route 5 is always lively: performers love it!"),
+          2: _say("Man watching", "Every day there's a show on Route 5. Never the same one twice!"),
+          20: _say("Girl watching", "Look at all the performers! I want to be in a show too!"),
+          21: {"text": "Berry seller", "action": "EVENT", "event": {
+              "lines": ["Fresh Berries! A bunch of five for $200. Just one bunch a day!"],
+              "stock": ["POMEG_BERRY", "KELPSY_BERRY", "QUALOT_BERRY", "HONDEW_BERRY", "GREPA_BERRY"]}},
+          22: _say("Clown by the trailer", "Smile! A sad face makes a bad show!"),
+          23: _say("Girl by the trailer", "The Maid in the trailer is always hungry for new ingredients."),
+          8: [{"text": "Motorcyclist Charles", "action": "EVENT", "condition": ROUTE5_CROWD + ["unova_version:" + _v], "event": {
+              "lines": ["I'm a heartbreaker... My name... Charles.",
+                        "I mastered a new style of battling to win a girl's heart. Hey, Trainer! Battle me!"],
+              "flag": "b2_charles", "battle": _b2(_tid, dialogue={"player_won": ["Charles: You've got a good attitude! I'm always "
+                                                                                   "at full throttle... Fine. The bridge is yours."]})}}
+              for _v, _tid in (("BLACK_2", 339), ("WHITE_2", 340))],
+          9: _say("Ace Trainer in the crowd", "That Motorcyclist won't let anyone across the drawbridge! Can you help?",
+                  condition=ROUTE5_CROWD),
+          **{n: _say(f"Performer {n}", "What a crowd! Nobody can get past to the drawbridge.", condition=ROUTE5_CROWD)
+             for n in range(10, 18)}},
+    {1: ["ROUTE 5", "Nimbasa City - Driftveil Drawbridge"], 3: ["TRAINER TIPS", "Hidden Grottoes look like a big shadow under "
+                                                                   "the trees. Step in and see what's inside!"],
+     2: ["DRIFTVEIL DRAWBRIDGE", "Ahead: Driftveil City"]},
+    exits={">": ("NIMBASA_CITY", [(57, y) for y in range(21, 24)]), "<": ("DRIFTVEIL_DRAWBRIDGE", [(9, y) for y in range(15, 18)])},
+    trainers={1: "Baker Jenn", 3: "Dancer Brian", 4: "Backers Ava & Aya", 6: "Artist Horton", 7: "Pokemon Ranger Lois"},
+    hidden={"36,19": "HYPER_POTION"},
+    rooms={"trailer": room(330, {0: {"text": "Maid in the trailer", "action": "EVENT", "event": {
+               "lines": ["I'm cooking, but I'm short of ingredients... Do you have anything tasty? Berry Juice? A Casteliacone?"]}}},
+                           {}, (45, 18)),
+           "grotto": grotto_room(1, (53, 8))},
+    inside={"45,18": "trailer", "53,8": "grotto"},
+    scenes=[{"trigger": {"zone": [52, 21, 52, 25]}, "condition": ["not:b2_got_fly"], "flag": "b2_r5_bianca",
+             "cast": [{"sheet": "b2_bianca.png", "from": [57, 22], "to": "player",
+                       "lines": ["Bianca: {player_name}! Wait! Congratulations on the Bolt Badge!",
+                                 "Bianca: Professor Juniper asked me to give you this. It's HM02 Fly!",
+                                 "{player_name} received HM02 Fly!",
+                                 "Bianca: With Fly you can zip back to any town you've been to. Use it with Pidove or Sigilyph!",
+                                 "Bianca: ...Huh? Do you hear that? Rustling, over by the trees... Come on!"],
+                       "then": "event:b2_fly", "path": [[53, 10]], "stay": True},
+                      {"as": 0, "lines": ["Bianca: See that big shadow under the trees? It's a Hidden Grotto!",
+                                          "Bianca: Sometimes there's a Pokemon inside with a rare Ability, or an item. They come back after a while!",
+                                          "Bianca: This one has a Minccino in it, I think! I'll leave it to you. Bye-bye!"],
+                       "leave": [57, 22]}],
+             "then": "event:b2_r5_grotto_minccino"}],
+)
+ROUTE_5["art"][8] = ROUTE_5["art"][8][:53] + "D" + ROUTE_5["art"][8][54:]
+ROUTE_5["rooms"]["trailer"]["title"] = "Trailer"
+ROUTE_5["art"][18] = ROUTE_5["art"][18][:45] + "D" + ROUTE_5["art"][18][46:]   # (the trailer's door)
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -2764,4 +3212,5 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "CASTELIA_SEWERS": SEWERS, "CASTELIA_EMPTY_LOT": EMPTY_LOT, "LIBERTY_GARDEN": LIBERTY_GARDEN,
         "ROYAL_UNOVA": ROYAL_UNOVA,
         "UNOVA_ROUTE_4": ROUTE_4, "DESERT_RESORT_ENTRANCE": DESERT_ENTRANCE, "DESERT_RESORT": DESERT_RESORT,
-        "RELIC_CASTLE": RELIC_CASTLE, "JOIN_AVENUE": JOIN_AVENUE}
+        "RELIC_CASTLE": RELIC_CASTLE, "JOIN_AVENUE": JOIN_AVENUE,
+        "NIMBASA_CITY": NIMBASA, "UNOVA_ROUTE_16": ROUTE_16, "LOSTLORN_FOREST": LOSTLORN, "UNOVA_ROUTE_5": ROUTE_5}

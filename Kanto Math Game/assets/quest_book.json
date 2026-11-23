@@ -371,6 +371,15 @@
     {"title": "The Man in the White Coat", "chapters": [
       {"mission": "b2_m18", "title": "Central Plaza", "say": "The fountain at the heart of Castelia draws a crowd. Today, a scientist in a white coat is watching it too."},
       {"mission": "b2_m19", "title": "Colress Waits", "say": "Past Castelia's north gate, the road to the desert is blocked. The man in the white coat has a theory to test, and he wants you."}
+    ]},
+    {"title": "The Bolt Badge", "chapters": [
+      {"mission": "b2_m20", "title": "The City of Lights", "say": "North of Join Avenue, Nimbasa City glows day and night. Somewhere past its gates, a famous model runs the Gym."},
+      {"mission": "b2_m21", "title": "The Leader Is Out", "say": "The Gym's doors are open, but its Leader isn't home. Someone saw her heading for the roller coaster."},
+      {"mission": "b2_m22", "title": "Elesa's Runway", "say": "The lights come up one by one along the catwalk. At the end of it, Elesa waits for her audience."}
+    ]},
+    {"title": "Plasma's Secret Weapon", "chapters": [
+      {"mission": "b2_m23", "title": "Trouble at Big Stadium", "say": "Hugh's voice carries across the plaza. He's found Team Plasma, and he isn't going to let them walk away."},
+      {"mission": "b2_m24", "title": "West to Route 5", "say": "Route 5 is crowded with performers, and someone at the drawbridge is making a scene. Driftveil lies beyond it."}
     ]}
   ]
 }

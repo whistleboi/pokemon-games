@@ -130,6 +130,9 @@ def event(state, ev, lines, show):
     game = state.game
     story = game.story_manager
     gid = ev.get("grotto")
+    if ev.get("fill"):   # (a story fills it: Route 5's first visit is always a Minccino with Skill Link, as Black 2's script)
+        _state(story)[str(gid)] = dict(ev["fill"])
+        return
     cur = refresh(story, gid)
     kind = cur.get("kind")
     if kind == "pokemon" and hasattr(state, "_meet_wild"):

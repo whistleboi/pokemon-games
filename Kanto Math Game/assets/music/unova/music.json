@@ -27,10 +27,18 @@
    "SUMMER": "r_d_su",
    "WINTER": "r_d_wi"
   },
+  "LOSTLORN_FOREST": "d_06",
+  "NIMBASA_CITY": "c_04",
   "PLEDGE_GROVE": "d_01",
   "POKESTAR_STUDIOS": "pw_land",
   "RELIC_CASTLE": "d_04",
   "ROYAL_UNOVA": "pleasure_boat",
+  "UNOVA_ROUTE_16": {
+   "AUTUMN": "r_c_au",
+   "SPRING": "r_c_sp",
+   "SUMMER": "r_c_su",
+   "WINTER": "r_c_wi"
+  },
   "UNOVA_ROUTE_19": {
    "AUTUMN": "sw_r_19_au",
    "SPRING": "sw_r_19_sp",
@@ -44,6 +52,12 @@
    "WINTER": "sw_r_19_wi"
   },
   "UNOVA_ROUTE_4": {
+   "AUTUMN": "r_c_au",
+   "SPRING": "r_c_sp",
+   "SUMMER": "r_c_su",
+   "WINTER": "r_c_wi"
+  },
+  "UNOVA_ROUTE_5": {
    "AUTUMN": "r_c_au",
    "SPRING": "r_c_sp",
    "SUMMER": "r_c_su",
@@ -82,6 +96,13 @@
   "FLOCCESY_TOWN:center": "pokecen",
   "LIBERTY_GARDEN:lighthouse": "d_03",
   "LIBERTY_GARDEN:victini_room": "d_03",
+  "LOSTLORN_FOREST:grotto": "kemonomichi",
+  "NIMBASA_CITY:center": "pokecen",
+  "NIMBASA_CITY:gate_e": "gate",
+  "NIMBASA_CITY:gate_w": "gate",
+  "NIMBASA_CITY:gym": "erectric_gym_01",
+  "UNOVA_ROUTE_16:bridge_gate": "gate",
+  "UNOVA_ROUTE_5:grotto": "kemonomichi",
   "VIRBANK_CITY:center": "pokecen",
   "VIRBANK_CITY:gate_n": "gate",
   "VIRBANK_CITY:gate_w": "gate",

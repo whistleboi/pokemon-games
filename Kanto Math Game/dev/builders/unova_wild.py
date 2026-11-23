@@ -12,13 +12,19 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GAME = os.path.dirname(os.path.dirname(HERE))
+for _up in range(6):   # (the tools folder above the game folder, from the main folder or a worktree: 11-23)
+    _cand = os.path.join(os.path.abspath(os.path.join(GAME, *[".."] * _up)), "kanto_handoff", "unova_map_tools")
+    if os.path.isdir(_cand):
+        sys.path.insert(0, _cand)
+        break
 sys.path.insert(0, os.path.join(os.path.dirname(GAME), "..", "kanto_handoff", "unova_map_tools"))
 sys.path.insert(0, os.path.join(GAME, "..", "..", "kanto_handoff", "unova_map_tools"))
 
 PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "FLOCCESY_RANCH_OUTSIDE": 444,
           "FLOCCESY_RANCH": 445, "VIRBANK_CITY": 448, "VIRBANK_COMPLEX_OUTSIDE": 456, "VIRBANK_COMPLEX": 457,
           "CASTELIA_SEWERS": 495, "CASTELIA_EMPTY_LOT": 500,
-          "UNOVA_ROUTE_4": 326, "DESERT_RESORT_ENTRANCE": 157, "DESERT_RESORT": 158, "RELIC_CASTLE": 160}   # (batch 3b, 11-21)
+          "UNOVA_ROUTE_4": 326, "DESERT_RESORT_ENTRANCE": 157, "DESERT_RESORT": 158, "RELIC_CASTLE": 160,   # (batch 3b, 11-21)
+          "UNOVA_ROUTE_16": 383, "LOSTLORN_FOREST": 385, "UNOVA_ROUTE_5": 329}   # (batch 4a, 11-23)
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 
