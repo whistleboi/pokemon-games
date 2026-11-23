@@ -45577,7 +45577,7 @@
      "c.........c",
      "c...ccc...c",
      "c..cc!cc..c",
-     "c..ccccc..c",
+     "c..cc.cc..c",
      "c.........c",
      "c.........c",
      "c.........c",
@@ -45910,7 +45910,7 @@
      "c.........c",
      "c...ccc...c",
      "c..cc!cc..c",
-     "c..ccccc..c",
+     "c..cc.cc..c",
      "c.........c",
      "c.........c",
      "c.........c",
@@ -46243,7 +46243,7 @@
      "c.........c",
      "c...ccc...c",
      "c..cc!cc..c",
-     "c..ccccc..c",
+     "c..cc.cc..c",
      "c.........c",
      "c.........c",
      "c.........c",
@@ -46578,7 +46578,7 @@
      "c.........c",
      "c...ccc...c",
      "c..cc!cc..c",
-     "c..ccccc..c",
+     "c..cc.cc..c",
      "c.........c",
      "c.........c",
      "c.........c",
@@ -313992,24 +313992,24 @@
   "parts": true,
   "signs": [
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Tower",
+    "The Frontier's tallest challenge. How long can your team keep winning?"
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Hall",
+    "Round after round of tough Trainers. Win in a row to earn Battle Points."
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Factory",
+    "A streak of battles against Trainers from all over. Win in a row to earn Battle Points."
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Castle",
+    "A grand hall of battles, one Trainer after another. Win in a row to earn Battle Points."
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Arcade",
+    "Bright lights and big battles. Win in a row to earn Battle Points."
    ]
   ],
   "overheads": [

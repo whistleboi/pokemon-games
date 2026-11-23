@@ -2872,7 +2872,7 @@
 
                 {"name": "Psychic Phil", "class": "PSYCHIC", "sprite": "psychic.png", "team": [177, 64], "rewards": {"balls": 2}},
 
-                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"POKE_BALL": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
+                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"balls": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
 
                 {"name": "Cooltrainer Allen", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [147, 148, 6], "rewards": {"balls": 2}},
 

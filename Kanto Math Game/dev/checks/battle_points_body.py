@@ -215,7 +215,7 @@ check(len(tut) == 3 and n_moves == 51, f"three tutors, 51 moves ({len(tut)}, {n_
 story.current_area_key = "FRONTIER_ACCESS"; story.last_area_key = "JOHTO_ROUTE_40"
 t = _PS(g); g.change_state(t)
 rooms_ = [t._floor_name(i) for i in range(t.run.n_floors)]
-check("Tutors" in rooms_ and "Center" in rooms_ and "Mart" in rooms_, f"its house, Center and Mart {rooms_}")
+check(any("Tutors" in r for r in rooms_) and any("Center" in r for r in rooms_) and any("Mart" in r for r in rooms_), f"its house, Center and Mart {rooms_}")   # (11-23: rooms named, "Move Tutors", "Pokémon Center")
 ev = tut["Tutor (left)"]; tu = ev["tutor"]
 pika = Pokemon(g.loader.fetch_specific(25), g.assets); story.player_team = [pika]
 _tp = _tms.key_for_move(g, "THUNDER-PUNCH"); story.inventory.pop(_tp, None); story.story_flags.pop("bp_tutor_THUNDER-PUNCH", None)
