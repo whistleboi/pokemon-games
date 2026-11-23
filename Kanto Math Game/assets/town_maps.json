@@ -36333,7 +36333,10 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "Joyful Game Corner",
+     [
+      "Joyful Games",
+      "Joyful Game Corner"
+     ],
      [
       "Lostelle's Thanks",
       "Lostelle's Dad"
@@ -36439,11 +36442,11 @@
       "text": "Move Maniac",
       "action": "EVENT",
       "event": {
-       "quips": "move_reminder",
-       "quip_as": "Move Maniac",
        "lines": [
         "I'm the Move Maniac! I know every move a Pokémon can learn."
-       ]
+       ],
+       "quips": "move_reminder",
+       "quip_as": "Move Maniac"
       }
      }
     ],

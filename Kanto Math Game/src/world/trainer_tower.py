@@ -21,17 +21,16 @@ CLIMBS = ["SINGLE", "DOUBLE", "KNOCKOUT", "MIXED"]
 WORDS = {"SINGLE": "Single Battle", "DOUBLE": "Double Battle", "KNOCKOUT": "Knockout", "MIXED": "Mixed"}
 AREA = "TRAINER_TOWER"
 LOBBY_SPOT = [9, 7]   # (FireRed's warp back to the lobby: 9,7, before the counter)
-# FireRed's trainer classes: our battle picture
-SPRITES = {"SAILOR": "sailor.png", "BUG_CATCHER": "bug_catcher.png", "JUGGLER": "juggler.png", "YOUNGSTER": "youngster.png",
-           "CAMPER": "camper.png", "SWIMMER_M": "swimmer_m.png", "SWIMMER_F": "swimmer_f.png", "BURGLAR": "burglar.png",
-           "PKMN_BREEDER": "pokefan_f.png", "TWINS": "twins.png", "CRUSH_KIN": "battle_girl.png", "COOL_COUPLE": "acetrainer_m.png",
-           "YOUNG_COUPLE": "pt_young_couple.png", "SIS_AND_BRO": "pt_sis_and_bro.png", "BIKER": "biker.png", "CUE_BALL": "cueball.png",
-           "HIKER": "hiker.png", "CRUSH_GIRL": "battle_girl.png", "BLACK_BELT": "blackbelt.png", "PICNICKER": "picnicker.png",
-           "AROMA_LADY": "pt_aroma_lady.png", "COOLTRAINER_F": "acetrainer_f.png", "COOLTRAINER_M": "acetrainer_m.png",
-           "FISHERMAN": "fisherman.png", "GENTLEMAN": "gentleman.png", "BEAUTY": "beauty.png", "LASS": "lass.png",
-           "ENGINEER": "engineer.png", "ROCKER": "rocker.png", "SCIENTIST": "scientist.png", "TUBER": "tuber_f.png",
-           "LADY": "lady.png", "PKMN_RANGER_F": "ranger_f.png", "PKMN_RANGER_M": "ranger_m.png", "PSYCHIC_M": "psychic_m.png",
-           "PSYCHIC_F": "psychic_f.png", "SUPER_NERD": "supernerd.png"}
+SPRITES = {"SAILOR": "fr_sailor.png", "BUG_CATCHER": "fr_bug_catcher.png", "JUGGLER": "fr_juggler.png", "YOUNGSTER": "fr_youngster.png",
+           "CAMPER": "fr_camper.png", "SWIMMER_M": "fr_swimmer_m.png", "SWIMMER_F": "fr_swimmer_f.png", "BURGLAR": "fr_burglar.png",
+           "PKMN_BREEDER": "fr_breeder.png", "TWINS": "fr_twins.png", "CRUSH_KIN": "fr_crush_kin.png", "COOL_COUPLE": "fr_cool_couple.png",
+           "YOUNG_COUPLE": "fr_young_couple.png", "SIS_AND_BRO": "fr_sis_and_bro.png", "BIKER": "fr_biker.png", "CUE_BALL": "fr_cue_ball.png",
+           "HIKER": "fr_hiker.png", "CRUSH_GIRL": "fr_crush_girl.png", "BLACK_BELT": "fr_black_belt.png", "PICNICKER": "fr_picnicker.png",
+           "AROMA_LADY": "fr_aroma_lady.png", "COOLTRAINER_F": "fr_cooltrainer_f.png", "COOLTRAINER_M": "fr_cooltrainer_m.png",
+           "FISHERMAN": "fr_fisherman.png", "GENTLEMAN": "fr_gentleman.png", "BEAUTY": "fr_beauty.png", "LASS": "fr_lass.png",
+           "ENGINEER": "fr_engineer.png", "ROCKER": "fr_rocker.png", "SCIENTIST": "fr_scientist.png", "TUBER": "fr_tuber.png",
+           "LADY": "fr_lady.png", "PKMN_RANGER_F": "fr_ranger_f.png", "PKMN_RANGER_M": "fr_ranger_m.png", "PSYCHIC_M": "fr_psychic_m.png",
+           "PSYCHIC_F": "fr_psychic_f.png", "SUPER_NERD": "fr_super_nerd.png"}   # (FireRed's own portraits: kanto_rom_tools/fr_trainer_pics.py, 11-23)
 _DATA = None
 
 

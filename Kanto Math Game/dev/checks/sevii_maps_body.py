@@ -766,6 +766,48 @@ if _ndx is None: story.story_flags.pop("unlocked_national_dex", None)
 for _k in [k for k in story.story_flags if k.startswith("tt_")] + ["challenge_clock"]:
     story.story_flags.pop(_k, None)
 
+# ---- Two Island's Joyful Game Corner (11-23, K4): FireRed's two link games, single-player, with sums
+from src.world import joyful_games as _jg
+from src.minigames import sevii as _sv
+t = town("TWO_ISLAND", "CAPE_BRINK"); t._go("gamecorner", ""); frames(t, 2)
+_att = next((o for s_, o in t._people().items() if isinstance(o, dict) and (o.get("event") or {}).get("world") == "joyful_games"), None)
+_opts = [(_att or {}).get("text"), (_att or {}).get("event")]
+story.player_team = [mk(25)]
+_said = []
+_jg.event(t, {"world": "joyful_games"}, [], lambda l: _said.extend(l))
+for _ in range(300):
+    if type(g.current_state).__name__ == "PickListState": break
+    _st = g.current_state
+    if getattr(_st, "npc_active", False): _st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    elif getattr(getattr(_st, "dialogue_box", None), "visible", False): _st.dialogue_box.advance()
+    frames(_st)
+_pk = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rows = [c[0] for c in _pk.choices] if _pk else []
+if _pk: _pk.pick("berry")
+frames(g.current_state, 5)
+_no_dodrio = any("needs a Dodrio" in x for x in _said)
+_jg.event(t, {"world": "joyful_games"}, [], lambda l: _said.extend(l))
+for _ in range(300):
+    if type(g.current_state).__name__ == "PickListState": break
+    _st = g.current_state
+    if getattr(_st, "npc_active", False): _st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    elif getattr(getattr(_st, "dialogue_box", None), "visible", False): _st.dialogue_box.advance()
+    frames(_st)
+if type(g.current_state).__name__ == "PickListState": g.current_state.pick("jump")
+_game = g.current_state
+_ok = type(_game).__name__ == "PokemonJump"
+if _ok:
+    _game._play()
+    for _sw in range(4):
+        for _ in range(_game.beat + 1):
+            if _game.beat - _game.t == 2 and not _game.jumped: _game._jump()
+            _game.step()
+    while _game.phase == "PLAY": _game.step()
+    _berries = sum(story.inventory.get(b, 0) for b in ("PECHA_BERRY", "ORAN_BERRY", "SITRUS_BERRY", "LUM_BERRY"))
+    _game.on_done(True)
+    _got = sum(story.inventory.get(b, 0) for b in ("PECHA_BERRY", "ORAN_BERRY", "SITRUS_BERRY", "LUM_BERRY")) - _berries
+check(_opts[0] == "Joyful Games" and _rows == ["Pokemon Jump", "Dodrio Berry Picking"] and _no_dodrio and _ok and _got == 1,
+      f"Two Island's Joyful Game Corner: the attendant runs FireRed's two games, single-player - Dodrio Berry Picking wants a Dodrio; Pokemon Jump played, a prize Berry ({_opts}, {_rows})")
 story.inventory.clear(); story.inventory.update(_inv)
 story.story_flags.clear(); story.story_flags.update(_flags)
 g.walk_towns = False
