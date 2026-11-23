@@ -14290,6 +14290,8 @@
   },
   "townsperson": "NPC 17.png",
   "players": {
+    "lucas": "pt_hero.png",
+    "dawn": "pt_heroine.png",
     "nate": "b2_nate.png",
     "rosa": "b2_rosa.png",
     "red": "trchar000_1.png",
