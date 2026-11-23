@@ -195,6 +195,22 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "BLACK_SLUDGE": {"price": 200, "text": "Held: a Poison-type holder gets back a little HP every turn. Any other is hurt by it."},   # (B2W2: the Castelia Sewers; 11-20)
         "POISON_GEM": {"price": 200, "text": "Held: its holder's first Poison-type move hits harder. Then it's used up."},   # (B2W2: the Castelia Sewers, hidden; 11-20)
         "GROUND_GEM": {"price": 200, "text": "Held: its holder's first Ground-type move hits harder. Then it's used up."},   # (B2W2: the Desert Resort, hidden; 11-21)
+        # (the rest of Black 2's Gems, 11-23: Unova hides them - Lostlorn Forest's Grass Gem, Chargestone Cave, Mistralton...)
+        "NORMAL_GEM": {"price": 200, "text": "Held: its holder's first Normal-type move hits harder. Then it's used up."},
+        "FIRE_GEM": {"price": 200, "text": "Held: its holder's first Fire-type move hits harder. Then it's used up."},
+        "WATER_GEM": {"price": 200, "text": "Held: its holder's first Water-type move hits harder. Then it's used up."},
+        "ELECTRIC_GEM": {"price": 200, "text": "Held: its holder's first Electric-type move hits harder. Then it's used up."},
+        "GRASS_GEM": {"price": 200, "text": "Held: its holder's first Grass-type move hits harder. Then it's used up."},
+        "ICE_GEM": {"price": 200, "text": "Held: its holder's first Ice-type move hits harder. Then it's used up."},
+        "FIGHTING_GEM": {"price": 200, "text": "Held: its holder's first Fighting-type move hits harder. Then it's used up."},
+        "FLYING_GEM": {"price": 200, "text": "Held: its holder's first Flying-type move hits harder. Then it's used up."},
+        "PSYCHIC_GEM": {"price": 200, "text": "Held: its holder's first Psychic-type move hits harder. Then it's used up."},
+        "BUG_GEM": {"price": 200, "text": "Held: its holder's first Bug-type move hits harder. Then it's used up."},
+        "ROCK_GEM": {"price": 200, "text": "Held: its holder's first Rock-type move hits harder. Then it's used up."},
+        "GHOST_GEM": {"price": 200, "text": "Held: its holder's first Ghost-type move hits harder. Then it's used up."},
+        "DRAGON_GEM": {"price": 200, "text": "Held: its holder's first Dragon-type move hits harder. Then it's used up."},
+        "DARK_GEM": {"price": 200, "text": "Held: its holder's first Dark-type move hits harder. Then it's used up."},
+        "STEEL_GEM": {"price": 200, "text": "Held: its holder's first Steel-type move hits harder. Then it's used up."},
         "GRIP_CLAW": {"price": 4000, "text": "Held: its holder's binding moves, like Wrap, last 7 turns."},   # (B2W2 Route 4)
         "LIGHT_CLAY": {"price": 4000, "text": "Held: its holder's Reflect and Light Screen last 8 turns."},   # (W2 Route 4)
         "WHITE_HERB": {"price": 4000, "text": "Held: if its holder's stats are lowered, it puts them back. Used up."},

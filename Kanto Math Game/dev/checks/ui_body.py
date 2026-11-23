@@ -25,6 +25,9 @@ story.inventory.update({"TOWN_MAP": 1, "HM_FLY": 1})
 
 print("1) MENU grid")
 story.current_area_key = "VIRIDIAN_CITY"
+story.inventory["HM_FLY"] = 1   # (Kanto's Fly needs FireRed's Thunder Badge too, 11-16: the test save gets both)
+if "THUNDER" not in story.badges.setdefault("KANTO", []):
+    story.badges["KANTO"].append("THUNDER")
 city = ow.CityState(g)
 g.change_state(city)
 shot("city")

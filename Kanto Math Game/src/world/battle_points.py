@@ -22,7 +22,8 @@ POWERS = [("POWER_BRACER", 16), ("POWER_BELT", 16), ("POWER_LENS", 16), ("POWER_
 SHOPS = {
     "emerald": ("Exchange Service Corner", VITAMINS + [
         ("LEFTOVERS", 48), ("WHITE_HERB", 48), ("QUICK_CLAW", 48), ("MENTAL_HERB", 48),
-        ("BRIGHT_POWDER", 64), ("CHOICE_BAND", 64), ("KINGS_ROCK", 64), ("FOCUS_BAND", 64), ("SCOPE_LENS", 64)]),
+        ("BRIGHT_POWDER", 64), ("CHOICE_BAND", 64), ("KINGS_ROCK", 64), ("FOCUS_BAND", 64), ("SCOPE_LENS", 64),
+        ("RAZOR_CLAW", 48)]),   # (11-23, Jordan: the Razor Claw for Weavile, at ORAS's Battle Maison price; the Maison lives in Hoenn's Frontier)
     "hgss_items": ("Exchange Service Corner", VITAMINS + [("RARE_CANDY", 48)] + POWERS + [
         ("TOXIC_ORB", 16), ("FLAME_ORB", 16), ("WHITE_HERB", 32), ("POWER_HERB", 32),
         ("BRIGHT_POWDER", 48), ("FOCUS_BAND", 48), ("FOCUS_SASH", 48), ("CHOICE_BAND", 48), ("CHOICE_SCARF", 48),
