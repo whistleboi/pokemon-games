@@ -473,9 +473,18 @@
       "flag_condition": "not kanto_rival_left_lab",
       "_look": "@rival"
      },
-     "Bulbasaur's Poke Ball",
-     "Squirtle's Poke Ball",
-     "Charmander's Poke Ball",
+     [
+      "Bulbasaur's Poke Ball",
+      "Last Bulbasaur Ball"
+     ],
+     [
+      "Squirtle's Poke Ball",
+      "Last Squirtle Ball"
+     ],
+     [
+      "Charmander's Poke Ball",
+      "Last Charmander Ball"
+     ],
      {
       "text": "Visitor",
       "action": "EVENT",
@@ -5349,7 +5358,7 @@
    "ccccccc....!cDDc.....ccDcccccDcccccc..c..ccccccc",
    "ccccccc.........................NN....c..ccccccc",
    "ccccccc.....N.........................c..ccccccc",
-   "ccccccc...............................c..ccccccc",
+   "ccccccc...................NN..........c..ccccccc",
    "ccccccccccccccccccc!cccccc2cccccccccccc..ccccccc",
    "ccccccc..................................ccccccc",
    "ccccccc..................................ccccccc",
@@ -5476,6 +5485,13 @@
      "lines": [
       "SLOWBRO is taking a nap..."
      ]
+    },
+    "condition": {
+     "any": [
+      "got_ss_ticket_bill",
+      "has_item:SS_TICKET",
+      "visited_VERMILLION_CITY"
+     ]
     }
    },
    {
@@ -5484,6 +5500,13 @@
     "event": {
      "lines": [
       "Come on, Slowbro, use Sonic Boom! ...Slowbro? Why won't you listen to me?"
+     ]
+    },
+    "condition": {
+     "any": [
+      "got_ss_ticket_bill",
+      "has_item:SS_TICKET",
+      "visited_VERMILLION_CITY"
      ]
     }
    },
@@ -5495,6 +5518,34 @@
       "I want a bright red bicycle. I'd keep it inside so it never gets dirty!"
      ]
     }
+   },
+   {
+    "text": "Slowbro ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "SLOWBRO is taking a nap..."
+     ]
+    },
+    "condition": [
+     "not:got_ss_ticket_bill",
+     "not:has_item:SS_TICKET",
+     "not:visited_VERMILLION_CITY"
+    ]
+   },
+   {
+    "text": "Trainer ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Come on, Slowbro, use Sonic Boom! ...Slowbro? Why won't you listen to me?"
+     ]
+    },
+    "condition": [
+     "not:got_ss_ticket_bill",
+     "not:has_item:SS_TICKET",
+     "not:visited_VERMILLION_CITY"
+    ]
    }
   ],
   "signs": [
@@ -5715,6 +5766,14 @@
    "30,12": {
     "m": "face",
     "d": "d"
+   },
+   "26,31": {
+    "m": "face",
+    "d": "d"
+   },
+   "27,31": {
+    "m": "face",
+    "d": "l"
    }
   },
   "scenes": [
@@ -281035,11 +281094,11 @@
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "...........",
-     ".c.......cc",
-     ".....ccN.cc",
-     ".....cc....",
-     "...........",
+     "N.....NN...",
+     "Nc.......NN",
+     ".....cNN.NN",
+     "NN...cc....",
+     ".........N.",
      "....v......",
      "ccccccccccc"
     ],
@@ -281059,12 +281118,168 @@
      "_buildings_in_picture": true
     },
     "people": [
+     {
+      "text": "Doll 1",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 5",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 4",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 9",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 3",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 2",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 6",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
      [
       "Battle Lorelei",
       "Lorelei's House"
-     ]
+     ],
+     {
+      "text": "Doll 7",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 8",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 10",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 11",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 14",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     }
     ],
     "moves": {
+     "0,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,6": {
+      "m": "face",
+      "d": "d"
+     },
      "7,4": {
       "m": "face",
       "d": "l"
@@ -282478,7 +282693,7 @@
    "cc55cccccc66cccc...ccc.cccccc",
    "cc55.....c66.......ccc......c",
    "cc55....cc6..33c.66ccc....ccc",
-   "c.5..cc66...33.X666.cc...Nccc",
+   "c.5..cc66...33.X666.cc...N!cc",
    "c.55cc6...3633..6...cc.....Nc",
    "cc55cc6..633cc6.6..ccc......c",
    "cc554..4..44..6.6c..cccc..ccc",
@@ -282517,6 +282732,13 @@
    "PEARL",
    "UNLOCK THE DOORS",
    "BIG PEARL"
+  ],
+  "signs": [
+   [
+    "A report full of graphs and text is on the PC screen:",
+    "\"How Magnetic Waves Affect Pokémon Evolution.\"",
+    "It's too hard to understand..."
+   ]
   ],
   "trainer_spots": [
    "Gideon",

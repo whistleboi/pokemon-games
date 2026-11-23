@@ -1919,6 +1919,37 @@ for key, part, name, xy, move, can in (("KANTO_ROUTE_4", None, "Punching fan", (
              and any("for good" in s for s in _saidT))
     check(at == xy and not burnt and got and story.story_flags.get(flag) and again,
           f"{key} {part or ''}: {name} at FireRed's spot {xy} teaches {move} free, unlocked for good (again free); a Magikarp can't learn it and that doesn't use it up ({at}, {burnt}, {got}, {story.money}, {_saidT[-1:]})")
+# ---- K4 (11-23): FireRed's small extras
+from src.world import kanto_lab as _kl
+_keep = {k: story.story_flags.get(k) for k in ("received_starter_kanto", "starter_kanto")}
+_rr = dict(story.region_rivals.get("KANTO") or {})
+story.story_flags["received_starter_kanto"] = True; story.story_flags["starter_kanto"] = 1
+story.region_rivals.setdefault("KANTO", {})["starter_id"] = 4
+_left = _kl.left_on_table(story)
+_pt = open_map("PALLET_TOWN", "KANTO_ROUTE_1"); _pt._go("lab", ""); frames(2)
+_balls = sorted(o.get("text") for o in _pt._people().values() if "Ball" in str(o.get("text")))
+check(_left == 7 and _balls == ["Last Squirtle Ball"], f"Oak's Lab: Bulbasaur yours, Charmander the rival's - Squirtle's ball stays on the table, FireRed's way ({_left}, {_balls})")
+for _k, _v in _keep.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None: story.story_flags[_k] = _v
+story.region_rivals["KANTO"] = _rr
+_tk = {k: story.story_flags.pop(k, None) for k in ("got_ss_ticket_bill", "visited_VERMILLION_CITY")}; _ti = story.inventory.pop("SS_TICKET", None)
+_ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+_before = {o.get("text").strip(): s for s, o in _ce._people().items() if o.get("text", "").strip() in ("Slowbro", "Trainer")}
+story.story_flags["got_ss_ticket_bill"] = True
+_ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+_after = {o.get("text").strip(): s for s, o in _ce._people().items() if o.get("text", "").strip() in ("Slowbro", "Trainer")}
+check(_before == {"Slowbro": (26, 31), "Trainer": (27, 31)} and _after == {"Slowbro": (32, 29), "Trainer": (33, 29)},
+      f"Cerulean: the Slowbro and its trainer stand in front of the Cut tree till the S.S. Ticket, then by the pond (FireRed) ({_before}, {_after})")
+for _k, _v in _tk.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None: story.story_flags[_k] = _v
+if _ti: story.inventory["SS_TICKET"] = _ti
+_lo = _tm["FOUR_ISLAND"]["rooms"]["lorelei"]
+_dolls = [p for p in _lo["people"] if isinstance(p, dict) and str(p.get("text", "")).startswith("Doll ")]
+_wh = _tm["ROCKET_WAREHOUSE"]
+check(len(_dolls) == 12 and any("Magnetic Waves" in " ".join(x) for x in _wh.get("signs", [])),
+      f"Sevii: Lorelei's Pokemon dolls (FireRed's 14 but the two on the top shelf, out of reach); the Rocket Warehouse's PC report ({len(_dolls)})")
 # Copycat: the Magnet Train Pass first (HGSS), then Mimic for a Poke Doll (FireRed), bought on Celadon 4F for $1000
 _, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")
 story.money = 1500; story.inventory.pop("POKE_DOLL", None)
