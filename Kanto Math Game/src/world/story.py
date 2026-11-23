@@ -420,6 +420,10 @@ class StoryManager:
             return self.sinjoh_dragons_received() < self.sinjoh_dragons_allowed()
         if condition.startswith("visited_region:"):  # (Silph Co.'s employee, once you've been to Johto)
             return condition.split(":", 1)[1].upper() in self.visited_regions()
+        if condition.startswith("world:"):   # ("world:<module>:<arg>": a region's own condition, src/world/<module>.py condition(story, arg); 11-23)
+            import importlib
+            _mod, _, _arg = condition[6:].partition(":")
+            return bool(importlib.import_module("src.world." + _mod).condition(self, _arg))
         if condition.startswith("unova_version:"):  # Black 2 / White 2 only (src/world/unova_version.py)
             return self.story_flags.get("unova_version") == condition.split(":", 1)[1]
         if condition.startswith("ja_visitor:"):   # (Join Avenue: today's visitor at a spot dreams of that shop kind, 11-21)
