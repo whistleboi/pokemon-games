@@ -5227,8 +5227,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             def taken(x, y):
                 m = fl.mover_at(x, y)
                 return (x, y) in fl.exits or (x, y) in fl.items or (x, y) in fl.tm_spots or (m is not None and m.kind != "wild")
-            t = next(((spot[0] + dx, spot[1] + dy) for dx, dy in core.DIRS
-                      if fl.walkable(spot[0] + dx, spot[1] + dy) and not taken(spot[0] + dx, spot[1] + dy)), fl.start)
+            t = next(((spot[0] + dx, spot[1] + dy) for dx, dy in core.beside_order(fl, spot)
+                      if not taken(spot[0] + dx, spot[1] + dy)), fl.start)
             return [(i, t[0], t[1], tog)]
 
         def ladders(i, kind):
