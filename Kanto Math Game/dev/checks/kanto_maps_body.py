@@ -1434,7 +1434,7 @@ def _vr_reach(i, frm):
         x, y = q.popleft()
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             n = (x + dx, y + dy)
-            if n not in seen and f.inside(*n) and (f.walkable(*n) or n in f.exits):
+            if n not in seen and f.inside(*n) and (f.walkable(*n) or n in f.exits) and not vr._height_edge((x, y), n):   # (11-23: FireRed's heights - the plateau only by its stairs)
                 seen.add(n)
                 if n not in f.exits:
                     q.append(n)
@@ -1454,6 +1454,20 @@ def _vr_push(i, t):
 
 
 _pic = lambda i: _vart._version_file(vr.recipe["art"]["floors"][i]["roofs"]["_picture"])
+# (11-23, K3: Victory Road 2F's cliff tops are a walk level of their own, FireRed's heights: no stepping straight up the
+#  cliff, but up its stairs at (9,12) and along the top)
+_floor(vr, 1)
+vr.run.floor.movers = [m for m in vr.run.floor.movers if m.kind not in ("wild", "trainer")]
+vr.run.player, vr.anim = (8, 9), 0
+vr.step(0, 1); play(lambda: g.current_state is vr and vr._ready(), 200)
+_up_cliff = tuple(vr.run.player)
+vr.run.player, vr.anim = (9, 13), 0
+vr.step(0, -1); play(lambda: g.current_state is vr and vr._ready(), 200)
+vr.step(0, -1); play(lambda: g.current_state is vr and vr._ready(), 200)
+vr.step(1, 0); play(lambda: g.current_state is vr and vr._ready(), 200)
+_on_top = tuple(vr.run.player)
+check(_up_cliff == (8, 9) and _on_top == (10, 11) and vr.recipe["art"]["floors"][1].get("heights"),
+      f"Victory Road 2F: the cliff top is a level of its own - no stepping up the cliff from below ({_up_cliff}); up the stairs and along the top ({_on_top})")
 _ex, _seen = _vr_reach(0, (11, 20))
 check((3, 2) not in _ex and str(vr.run.floor.decor.get((12, 14))).startswith("barrier") and _pic(0).endswith("1_39_bar.png")
       and any((7 + dx, 18 + dy) in _seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))),
