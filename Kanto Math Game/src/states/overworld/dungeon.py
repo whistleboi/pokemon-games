@@ -2121,6 +2121,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             self.steps += 1
             from src.world import vs_seeker as _vs
             _vs.step(self.game.story_manager)   # (the VS Seeker charges as you walk)
+            from src.world import feats as _feats
+            _feats.note(self.game.story_manager, "steps")   # (a Feat: steps walked)
             self._lap_step()
             if not self._hidden_item(self.run.player):
                 self._cracked_floor(self.run.player) or self._thin_ice(self.run.player)
@@ -3529,6 +3531,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             return
         mover = core.Mover("wild", t[0], t[1], payload=mon)
         f.movers.append(mover)
+        from src.world import feats as _feats
+        _feats.note(self.game.story_manager, "finds")   # (a Feat: Pokemon found by Headbutt / Rock Smash)
         self.say(["Your Pokemon used Rock Smash!", f"A wild {getattr(mon, 'display_name', 'Pokemon')} jumped out!"],
                  then=lambda: self._meet_wild(mover))
 

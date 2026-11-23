@@ -391,6 +391,28 @@
         "condition": { "visited": "CELADON_CITY", "item_not": "COIN_CASE" }, "completed_flag": "got_coin_case"
       },
       {
+        "id": "s_eevee", "type": "SIDE", "text": "A Gift on the Rooftop", "target": "CELADON_CITY",
+        "desc": "Celadon Mansion is taller than it looks. Someone has left a Poke Ball up at the very top, behind the back stairs, as if it's waiting for a new friend.",
+        "condition": { "required_region": "KANTO", "visited": "CELADON_CITY", "flag_not": "got_eevee_celadon" }, "completed_flag": "got_eevee_celadon"
+      },
+      {
+        "id": "s_lapras", "type": "SIDE", "text": "A Thank-You in Silph Co.", "target": "SILPH_CITY",
+        "desc": "With Team Rocket gone, the workers of Silph Co. are coming out of hiding. One of them, behind a door that used to be locked, wants to give you something big.",
+        "condition": { "required_region": "KANTO", "flag": "silph_co_cleared", "flag_not": "got_silph_lapras" }, "completed_flag": "got_silph_lapras"
+      },
+      {
+        "id": "s_magikarp", "type": "SIDE", "text": "A Bargain at Mt. Moon", "target": "KANTO_ROUTE_3",
+        "desc": "A man at the Pokemon Center by Mt. Moon is selling something he swears is 'a real deal'. Is it?",
+        "condition": { "required_region": "KANTO", "visited": "KANTO_ROUTE_3", "flag_not": "got_magikarp_mtmoon" }, "completed_flag": "got_magikarp_mtmoon"
+      },
+      {
+        "id": "s_trades", "type": "SIDE", "text": "Trading Partners",
+        "desc": "People all over Kanto are hoping to swap one Pokemon for another. Bring them what they ask for and see what they give you back.",
+        "condition": { "required_region": "KANTO", "badges_min": 1 },
+        "completed_flag": ["route2_mrmime_trade", "underground_nidoran_trade", "cerulean_jynx_trade", "vermilion_farfetchd_trade", "route11_nidorina_trade", "route18_lickitung_trade", "cinnabar_electrode_trade", "cinnabar_tangela_trade", "cinnabar_seel_trade"],
+        "targets": [["KANTO_ROUTE_2", "route2_mrmime_trade"], ["UNDERGROUND_PATH", "underground_nidoran_trade"], ["CERULEAN_CITY", "cerulean_jynx_trade"], ["VERMILLION_CITY", "vermilion_farfetchd_trade"], ["KANTO_ROUTE_11", "route11_nidorina_trade"], ["KANTO_ROUTE_18", "route18_lickitung_trade"], ["CINNABAR_ISLAND", "cinnabar_electrode_trade"], ["CINNABAR_ISLAND", "cinnabar_tangela_trade"], ["CINNABAR_ISLAND", "cinnabar_seel_trade"]]
+      },
+      {
         "id": "cm30", "type": "SIDE", "text": "Catch 30 Pokémon", "desc": "Own 30 different Kanto Pokémon to earn a $5,000 bonus.",
         "condition": {"required_region": "KANTO"}, "completed_flag": "kanto_catch_30", "kanto_species": 30
       },

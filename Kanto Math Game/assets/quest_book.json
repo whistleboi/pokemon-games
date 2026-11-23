@@ -1,0 +1,61 @@
+{
+  "_about": "The Quest Book's story (src/world/quest_book.py; kanto_handoff/QUEST_BOOK_DESIGN.md): per region, arcs of chapters over the Journal's missions. A chapter: mission (its id), title, say (its page), optional steps (part of a mission: those way-points), done / when (the chapter's own conditions).",
+  "KANTO": [
+    {"title": "A World of Pokemon", "chapters": [
+      {"mission": "m0a", "title": "The First Step", "say": "The tall grass north of Pallet Town is calling. Something tells you today won't be an ordinary day..."},
+      {"mission": "m0a2", "title": "Three Poke Balls", "say": "Three Poke Balls sit on Professor Oak's table. One of them holds the partner who'll go everywhere with you."},
+      {"mission": "m0b", "title": "An Errand Up North", "say": "The road north leads to Viridian City. The shopkeeper there has been waiting for someone from Pallet Town."},
+      {"mission": "m0c", "title": "The Professor's Gift", "say": "The parcel is light, but Professor Oak will want it in his hands. He looked like he had plans for you."}
+    ]},
+    {"title": "The Boulder Badge", "chapters": [
+      {"mission": "m1", "title": "The Locked Gym", "say": "Viridian's Gym has stood empty for a long time. So why are there footsteps inside?"},
+      {"mission": "m1b", "title": "Into the Forest", "say": "Past Route 2 the trees close in. Bug Catchers know every path of Viridian Forest... and every trap."},
+      {"mission": "m2", "title": "Hard as Rock", "say": "Pewter City is a city of stone, and its Gym Leader is the hardest stone of all."}
+    ]},
+    {"title": "The Cascade Badge", "chapters": [
+      {"mission": "m3", "title": "East to the Mountain", "done": "visited_MT_MOON", "say": "Route 3 winds east toward a mountain where, they say, stones fell from the stars."},
+      {"mission": "m3", "title": "Shadows in Mt. Moon", "when": "visited_MT_MOON", "done": {"any": ["beat:MT_MOON:11", "visited_CERULEAN_CITY"]}, "say": "Men in black uniforms are digging deep in the cave. Whatever they're after, they don't want to be seen."},
+      {"mission": "m3", "title": "Light at the End", "when": "visited_MT_MOON", "say": "The tunnels go on and on. Somewhere ahead, the air smells of water."},
+      {"mission": "k_bill", "title": "The Man in the Cottage", "say": "North of Cerulean a bridge full of trainers, and past it a seaside cottage. The scientist who lives there hasn't been himself lately."},
+      {"mission": "m4", "title": "The Tomboyish Mermaid", "say": "Cerulean's Gym Leader rules the water. Her pool has swallowed many challengers."}
+    ]},
+    {"title": "The Thunder Badge", "chapters": [
+      {"mission": "m5", "title": "South to the Sea", "say": "Below Saffron's locked gates runs a tunnel to the coast, and to Kanto's busiest port."},
+      {"mission": "k_ssanne", "title": "A Ship at the Harbour", "say": "A luxury liner is in port, and your ticket says you're invited. Its Captain hasn't left his cabin in days."},
+      {"mission": "m6", "title": "The Lightning American", "say": "Vermilion's Gym crackles behind a little tree. Its Leader once won a war with Electric Pokemon."}
+    ]},
+    {"title": "The Rainbow Badge", "chapters": [
+      {"mission": "m7", "title": "The Dark Tunnel", "say": "East of Cerulean lies a tunnel with no light at all. On the other side, a quiet town."},
+      {"mission": "m8", "title": "Whispers in Lavender", "done": {"any": ["visited_CELADON_CITY", "has_item:SILPH_SCOPE"]}, "say": "Lavender Town is quiet, too quiet. People say a ghost walks the Pokemon Tower, and that no one can see what it really is."},
+      {"mission": "k_hideout1", "title": "The Poster on the Wall", "say": "Celadon's Game Corner is loud and bright. But the man by the poster at the back isn't playing..."},
+      {"mission": "k_hideout2", "title": "Under the Game Corner", "say": "Arrows on the floor, an elevator with no key, and somewhere below, the boss of Team Rocket."},
+      {"mission": "m9", "title": "Nature's Gym", "say": "Celadon's Gym is a garden, and its Leader is said to be gentle. Her Pokemon are not."}
+    ]},
+    {"title": "The Soul Badge", "chapters": [
+      {"mission": "m8", "title": "The Ghost of the Tower", "when": "has_item:SILPH_SCOPE", "say": "With the Silph Scope, the Tower's ghost can't hide any more. And at the very top, someone needs help."},
+      {"mission": "m10", "title": "The Sleeping Giant", "say": "Something enormous is asleep across the road south of Lavender. Nothing seems to wake it... nearly nothing."},
+      {"mission": "m11", "title": "The Ninja's Gym", "say": "Fuchsia's Gym is a maze of walls you can't see. Its Leader is a master of poison."}
+    ]},
+    {"title": "Saffron Under Siege", "chapters": [
+      {"mission": "k_surf", "title": "The House in the Safari", "say": "At the far end of the Safari Zone stands a little house. They say whoever reaches it is given a gift for the sea."},
+      {"mission": "k_teeth", "title": "The Warden's Smile", "say": "The Safari Zone's Warden is mumbling something nobody can understand. Something of his is missing out in the Zone."},
+      {"mission": "k_tea", "title": "Thirsty Guards", "say": "Saffron's gates are guarded day and night, and the guards look parched. Someone in Celadon makes a very good cup of tea."},
+      {"mission": "s_silph", "title": "Silph Co. Taken", "say": "Team Rocket has seized the tallest building in Kanto. Doors are locked on every floor, but keys have a way of being dropped."},
+      {"mission": "s_silph2", "title": "The Boardroom", "say": "A warp pad, an old rival, and at the top of the tower the man behind everything."},
+      {"mission": "s_silph3", "title": "The President's Thanks", "say": "Silph Co. is free. Its President is waiting upstairs, and he's not a man who forgets a favour."},
+      {"mission": "m12", "title": "The Master of Psychic", "say": "With the Rockets gone, Saffron's real Gym opens its doors. Its Leader is said to read minds."}
+    ]},
+    {"title": "The Volcano Badge", "chapters": [
+      {"mission": "m13", "title": "Across the Water", "say": "An island with a volcano lies south of Kanto. Only a Pokemon that can Surf will get you there."},
+      {"mission": "k_mansion", "title": "The Burned Mansion", "say": "The Gym door won't open. On the north of the island, a burned mansion keeps a diary nobody was meant to read."},
+      {"mission": "m14", "title": "The Hotheaded Quiz Master", "say": "Cinnabar's Gym is full of questions, and its Leader is full of fire."}
+    ]},
+    {"title": "The Earth Badge", "chapters": [
+      {"mission": "m15", "title": "The Leader Returns", "say": "The lights are on in Viridian's Gym at last. Its Leader has come home, and he's been waiting for you."}
+    ]},
+    {"title": "The Indigo Plateau", "chapters": [
+      {"mission": "m16", "title": "Victory Road", "done": {"any": ["visited_INDIGO_PLATEAU", "beat_champion"]}, "say": "West of Viridian a road climbs through the rock. Only trainers with all eight badges are allowed to try it."},
+      {"mission": "m16", "title": "The Elite Four", "when": "visited_INDIGO_PLATEAU", "done": "beat_champion", "say": "Four of the strongest trainers in Kanto stand between you and the title. And behind them, someone you know."}
+    ]}
+  ]
+}

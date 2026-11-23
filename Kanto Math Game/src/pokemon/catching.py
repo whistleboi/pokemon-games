@@ -248,6 +248,14 @@ def after_catch(game, pokemon, ball):
     if not pokemon or not ball:
         return
     pokemon.caught_ball = ball
+    try:
+        from src.world import feats as _feats
+        story = game.story_manager
+        _feats.note(story, "caught")   # (Feats: Pokemon caught, and caught in the Safari Zone)
+        if ball == "SAFARI_BALL":
+            _feats.note(story, "safari")
+    except Exception:
+        pass
     if ball == "HEAL_BALL":
         pokemon.current_hp = pokemon.get_max_hp()
         if getattr(pokemon, "status", None):

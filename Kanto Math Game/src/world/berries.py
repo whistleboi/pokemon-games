@@ -114,6 +114,8 @@ def plant(story, area, xy, berry):
     if inv[berry] <= 0:
         del inv[berry]
     _all(story)[f"{area}:{xy[0]},{xy[1]}"] = {"berry": berry, "t": clock(), "water": []}
+    from src.world import feats as _feats
+    _feats.note(story, "berries")   # (a Feat: Berries planted)
     hours = GROWTH.get(berry, (3,))[0] * 4
     return [f"You planted {a(name(berry))} in the soft soil.", f"It should bear Berries in about {hours} hours."]
 
