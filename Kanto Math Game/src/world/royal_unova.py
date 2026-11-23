@@ -110,6 +110,7 @@ def arrive(state, early=False):
         prize = (plan(state).get("prizes") or {}).get(DAYS[_today(story).weekday()])
         if prize:
             story.add_item(prize, 1)
+            story.story_flags["royal_unova_prize"] = True   # (the Quest Book's errand: a day's Trainers all beaten)
             name = prize.replace("_", " ").title().replace("Ragecandybar", "RageCandyBar")
             lines += ["Captain: You beat every Trainer aboard today? Splendid!", f"Please accept this: a {name}!",
                       f"{getattr(game, 'player_name', 'You')} received a {name}!"]

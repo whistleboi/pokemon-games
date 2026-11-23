@@ -86,6 +86,8 @@ def _jump_out(ds, t, kind):
         return False
     m = Mover("wild", t[0], t[1], p)
     ds.run.floor.movers.append(m)
+    from src.world import feats as _feats
+    _feats.note(ds.game.story_manager, "phenomena")   # (a Feat: Pokemon met in rustling grass, rippling water, dust; Unova)
     ds._meet_wild(m)
     return True
 
