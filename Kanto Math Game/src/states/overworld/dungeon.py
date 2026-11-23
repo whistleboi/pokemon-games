@@ -5501,6 +5501,22 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         thin = [(int((plan_of(i).get("thin_ice") or {}).get("to", -1)), {tuple(int(v) for v in k.split(",")) for k in (plan_of(i).get("thin_ice") or {}).get("tiles", [])})
                 for i in range(len(floors))]   # (FireRed's thin ice: crossed once; stepped on again, a drop to the floor below: 11-17)
 
+        def _can(c):   # (a lift panel's "requires": items and flags, as the route's own conditions)
+            c = str(c)
+            return story.inventory.get(c[9:], 0) > 0 if c.startswith("has_item:") else bool(story.story_flags.get(c))
+        _opts = {o.get("text"): o for o in self.area_data.get("route_menu", [])}
+        panels = []   # (each floor's lift panels: {tile: [(floor, x, y) the car stops at]} - FireRed's Silph Co. and Hideout lifts, 11-23)
+        for i in range(len(floors)):
+            pan = {}
+            for k, ev in (plan_of(i).get("sign_events") or {}).items():
+                ev = _opts.get(ev) if isinstance(ev, str) else ev
+                el = ((ev or {}).get("event") or {}).get("elevator") if isinstance(ev, dict) else None
+                if isinstance(el, dict) and el.get("area") == self.area_key and all(_can(c) for c in (ev.get("event") or {}).get("requires", [])):
+                    pan[tuple(int(v) for v in k.split(","))] = [(int(f[1]), int(f[2][0]), int(f[2][1]), str(f[0])) for f in el.get("floors", [])
+                                                                 if isinstance(f[1], int) and len(f) > 2 and f[1] != i and 0 <= f[1] < len(floors)]
+            panels.append(pan)
+        rides = {}   # (a node reached by riding a lift: the panel pressed for it)
+
         _puller = self.game.story_manager.inventory.get("WHIRLPULLER", 0) > 0   # (Orange 5.7: through flowing whirlpools, _whirl_pull)
         pulls = [({tuple(t) for t in (plan_of(i).get("whirl") or ())} if _puller else set()) for i in range(len(floors))]
 
@@ -5601,6 +5617,13 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                     t2 = (x + dx, y + dy)
                     if t2 in thin[i][1] and 0 <= to < len(floors) and floors[to].walkable(*t2):
                         nxt.append((to, t2[0], t2[1], tog))
+            if not through and panels[i]:   # (a lift panel beside you: ride to any floor it serves, onto the car's spot there)
+                for dx, dy in core.DIRS:
+                    for f2, x2, y2, lab in panels[i].get((x + dx, y + dy), ()):
+                        n2 = (f2, x2, y2, tog)
+                        if n2 not in prev:
+                            rides[n2] = ((x + dx, y + dy), lab)
+                            nxt.append(n2)
             if not through and statue(i, x, y) is not None:  # (press it: every gate of its flag swings)
                 nxt.append((i, x, y, tog ^ {press[i]}))
             if not through and secrets[i]:   # (a secret switch beside you, not yet pressed: press it once)
@@ -5652,6 +5675,11 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 return (spot, "Switch") if a[0] == self.run.index else None
             if a in passed and prev.get(b) == a:
                 return ((a[1], a[2]), "To " + self._floor_name(b[0]) if b[0] != a[0] else "Warp") if a[0] == self.run.index else None
+            if b[0] != a[0] and a not in passed and rides.get(b) and prev.get(b) == a:   # (a lift ride: its panel, and the floor to pick)
+                if a[0] != self.run.index:
+                    return None
+                self._lift_plan = b[0]
+                return (rides[b][0], "Lift to " + rides[b][1])
             if b[0] != a[0] and a not in passed:   # (a drop through thin ice: the tile to step onto, again)
                 if a[0] != self.run.index:
                     return None
