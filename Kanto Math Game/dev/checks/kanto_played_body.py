@@ -8,6 +8,8 @@
 #   4. Silph Co.'s Proton, Archer and Ariana, at their fixed levels (DECISIONS follow-up 2)
 #   5. sailing to Sevii from Cinnabar with the Volcano Badge: Bill's Seagallop, then his walk into One Island
 #   6. the Lucky Egg (Route 15's aide) and the Stick (Vermilion's Farfetch'd) end up in the Bag, where the Bag shows them
+#   7. after the title: Mewtwo, Lugia, Ho-Oh, Deoxys, Lorelei at home, the League rematch (Lv 70+, not raised to yours),
+#      Red on Mt. Silver (Johto's title taken as won - its flags set, not played: Jordan 11-23)
 #        bash dev/checks/run.sh kanto_played
 import json, os, copy
 _src = open("dev/checks/kanto_playthrough_body.py", encoding="utf-8").read()
@@ -41,7 +43,18 @@ def _win(b):   # (the driver's battles: fought, not counted as won)
     FOUGHT.append((name, lv))
     if g.current_state is not b:
         g.change_state(b)
-    _fight(b)
+    for _round in range(6):
+        _fight(b)
+        st = g.current_state
+        if type(st).__name__ == "PokemonPartyMenuState" and getattr(st, "context", None) == "forced_switch":
+            nxt = next((i for i, p in enumerate(story.player_team) if p and getattr(p, "current_hp", 0) > 0 and p is not getattr(b, "player_pokemon", None)), None)
+            if nxt is None:
+                break
+            st.on_select(nxt)   # (one fainted: the next one in, as a player picks)
+            if g.current_state is not b:
+                g.change_state(b)
+            continue
+        break
     if g.current_state is b:   # (the fight didn't finish: say so, then end it so the run goes on)
         FOUGHT[-1] = (name + " (UNFINISHED)", lv)
         b.player_won = True
@@ -53,6 +66,7 @@ def ace():
     if hasattr(a, "recalculate_stats"):
         a.recalculate_stats()
     a.heal_full()
+    a.max_hp = a.get_max_hp()
     return a
 
 
@@ -290,6 +304,138 @@ _items.update(dict(bag.pocket_items(bag.pocket_of("STICK"))))
 check(story.inventory.get("LUCKY_EGG") and "LUCKY_EGG" in _items, f"Route 15's aide: the Lucky Egg is in the Bag ({bag.pocket_of('LUCKY_EGG')}: {_items.get('LUCKY_EGG')})")
 check(_far is not None and getattr(_far, "held_item", None) == "STICK" and "STICK" in _items,
       f"Vermilion's trade: Farfetch'd comes holding the Stick, and the Bag shows it ({bag.pocket_of('STICK')}: {_items.get('STICK')}; held {getattr(_far, 'held_item', None)})")
+
+# ================================================================================ 7. after the title
+print("\n7) after the title: Mewtwo, Navel Rock, Birth Island, Lorelei at home, the League rematch, Red (Johto's title set, not played)")
+
+
+def post_title(**more):
+    """The story after Kanto's title and Celio's Network Machine (what the playthrough ends with)."""
+    at("earth", also=True, flags=["beat_champion", "beat_elite_four", "network_machine_fixed", "met_celio", "unlocked_national_dex",
+                                  "got_tri_pass", "got_rainbow_pass", "sevii_icefall_cleared", "sevii_warehouse_cleared",
+                                  "visited_ONE_ISLAND", "visited_CERULEAN_CAVE"] + list(more.get("flags", [])),
+       items=["TRI_PASS", "RAINBOW_PASS"] + list(more.get("items", [])))
+    story.player_team = [ace(), ace()]
+
+
+def battle_drive(limit=12000):
+    """A battle the map started (a legend, a boss): fought turn by turn; its words tapped through; back on the map."""
+    for _ in range(limit):
+        st = g.current_state
+        if isinstance(st, TrainerBattleState):   # (a wild legend's battle is one too: WildBattleState)
+            _win(st)
+            continue
+        if is_map(st) and not getattr(st, "_busy", lambda: False)() and (not hasattr(st, "_ready") or st._ready()):
+            return st
+        if getattr(getattr(st, "dialogue_box", None), "visible", False):
+            st.dialogue_box.advance()
+        elif hasattr(st, "handle_events") and not is_map(st):
+            _click(st)
+        st.update(); st.draw()
+    return g.current_state
+
+
+def fight_figure(area, came, text, floors=24):
+    """Into area from came, find the figure named text on any floor, walk into it, and fight what it starts."""
+    story.current_area_key, story.last_area_key = area, came
+    g.change_state(PlayState(g)); r = settle()
+    if not is_dun(r):
+        return None, f"{area}: no walked map ({type(r).__name__})"
+    found = None
+    for _f in range(floors):
+        try:
+            while len(r.run.floors) <= _f:
+                r.run.enter_floor(len(r.run.floors))
+            r.run.enter_floor(_f); frames(2)
+        except Exception:
+            break
+        found = next((m for m in r.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == text), None)
+        if found:
+            break
+    if found is None:
+        return None, f"{text}: not standing on any floor of {area}"
+    f = r.run.floor
+    f.movers = [m for m in f.movers if m.kind not in ("wild", "trainer")]
+    n = next(((found.x - dx, found.y - dy, dx, dy) for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0))
+              if f.walkable(found.x - dx, found.y - dy) and f.mover_at(found.x - dx, found.y - dy) is None
+              and (found.x - dx, found.y - dy) not in f.exits), None)
+    if n is None:
+        return None, f"{text}: nowhere to stand beside it ({found.x}, {found.y})"
+    r.run.player = (n[0], n[1]); r.anim = 0; r.anim_from = r.partner = r.partner_from = r.run.player
+    r.encounter_free = 999
+    FOUGHT.clear()
+    r.step(n[2], n[3])
+    battle_drive()
+    return (r.run.index, found.x, found.y), None
+
+
+# Mewtwo: Cerulean Cave, open to a Champion once the Network Machine works (the guard's gate is in kanto_gates)
+for _area, _came, _text, _flag, _extra in (("CERULEAN_CAVE", "CERULEAN_CITY", "CHALLENGE MEWTWO", None, {}),
+                                           ("NAVEL_ROCK", "ONE_ISLAND", "SEEK LUGIA", "navel_rock_lugia", {"items": ["MYSTIC_TICKET"]}),
+                                           ("NAVEL_ROCK", "ONE_ISLAND", "SEEK HO-OH", "navel_rock_ho_oh", {"items": ["MYSTIC_TICKET"]}),
+                                           ("BIRTH_ISLAND", "ONE_ISLAND", "SEEK DEOXYS", "birth_island_deoxys", {"items": ["AURORA_TICKET"]})):
+    post_title(**_extra)
+    if _flag is None:   # (Mewtwo's own victory flag, as the map reads it)
+        _it = next(o for o in AREAS[_area]["route_menu"] if o.get("text") == _text)
+        _flag = ((_it.get("boss") or AREAS[_area].get("area_boss") or {}).get("victory_flag") or f"{_area}_boss_defeated")   # (route_encounters._boss_flag_for's rule)
+    story.story_flags.pop(_flag, None)
+    _at, _why = fight_figure(_area, _came, _text)
+    _won = bool(FOUGHT) and not FOUGHT[0][0].endswith("(UNFINISHED)")
+    check(_at and _won and story.story_flags.get(_flag),
+          f"{_area}: {_text} - walked into and fought turn by turn ({_why or _at}; {FOUGHT[:1]}; {_flag}: {story.story_flags.get(_flag)})")
+
+# Lorelei at home: after Icefall Cave and the title, a battle just for fun
+post_title()
+story.story_flags.pop("beat_lorelei_home", None)
+v = walk_town("FOUR_ISLAND", "ICEFALL_CAVE")
+v._go("lorelei", ""); settle(); v = g.current_state
+_pp = people(v)
+_lo = _pp.get("Battle Lorelei")
+FOUGHT.clear()
+if _lo:
+    talk_to(v, _lo)
+_bl = next(o for o in AREAS["FOUR_ISLAND"]["explore_options"] if o.get("text") == "Battle Lorelei")
+check(_lo and FOUGHT and not FOUGHT[0][0].endswith("(UNFINISHED)") and (not _bl["event"].get("flag") or story.story_flags.get(_bl["event"]["flag"])),
+      f"Four Island: Lorelei at home, Icefall Cave cleared - talked to and fought ({_lo}; {FOUGHT[:1]})")
+
+# the League rematch: after the title the run starts over, each Pokemon at least Lv 70, never raised to yours (Jordan 11-21)
+post_title()
+story.story_flags["gym_progress_INDIGO_PLATEAU"] = 5   # (the League beaten once: its doors' flags stay set, as in a real save)
+for _i in range(1, 5):
+    story.story_flags[f"league_won_INDIGO_PLATEAU_{_i}"] = True
+_big = ace(); _big.level = 100
+story.player_team = [_big, ace()]
+v = walk_town("INDIGO_PLATEAU", "KANTO_ROUTE_23")
+_rm = []
+for _i, (_room, _who) in enumerate((("league_lorelei", "Lorelei"), ("league_bruno", "Bruno"), ("league_agatha", "Agatha"),
+                                     ("league_lance", "Lance"), ("league_champion", "{rival_name}")), 1):
+    v = g.current_state
+    if not isinstance(v, _WTS):
+        break
+    v._go(_room, ""); settle(); v = g.current_state
+    for _p in story.player_team:
+        _p.heal_full()
+    FOUGHT.clear()
+    talk_to(v, people(v)[_who])
+    _rm.append((FOUGHT[0] if FOUGHT else (_who, None)))
+_lvls = [lv for _n, lv in _rm if lv]
+check(len(_lvls) == 5 and all(min(lv) >= 70 for lv in _lvls) and all(max(lv) <= 75 for lv in _lvls[:4]) and not any(str(n).endswith("(UNFINISHED)") for n, _l in _rm),
+      f"the League rematch: all five fought again, every Pokemon at least Lv 70 and not raised to your Lv 100s ({_rm})")
+
+# Red: Johto's title is taken as won (its flags set: not played here, Jordan 11-23); Route 28 to Mt. Silver, then the summit
+post_title(flags=["beat_johto_champion", "beat_johto_elite_four", "visited_SILVER_LEAGUE_PLATEAU"])
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"]   # (the game's own names: town_menu has_8_johto_badges)
+story.story_flags[story.champion_flag("JOHTO")] = True   # (Johto's title: as the game records it, then its storage joined to
+story.current_area_key = "KANTO_ROUTE_22"                # Kanto's as a second title does - one party, PC and Bag; Jordan 11-23)
+story.link_champion_regions()
+story.player_team = [ace(), ace()]
+story.story_flags.pop("defeated_red", None)
+exec(open("dev/checks/reach_lib.py", encoding="utf-8").read())
+_seen, _g = reach("KANTO_ROUTE_22")
+check({"KANTO_ROUTE_28", "MT_SILVER_CITY", "MT_SILVER"} <= set(_seen), f"Red's way: Route 22 to Route 28, Mt. Silver's Center and the mountain open with Johto's title ({sorted(x for x in _seen if 'SILVER' in x or x.endswith('_28'))})")
+_at, _why = fight_figure("MT_SILVER", "MT_SILVER_CITY", "CHALLENGE RED")
+check(_at and FOUGHT and not FOUGHT[0][0].endswith("(UNFINISHED)") and story.story_flags.get("defeated_red"),
+      f"Mt. Silver's summit: Red, walked up to and fought turn by turn ({_why or _at}; {FOUGHT[:1]}; defeated_red: {story.story_flags.get('defeated_red')})")
 
 print(f"##### {len(fails)} failures")
 for m in fails:
