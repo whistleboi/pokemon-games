@@ -87,6 +87,69 @@ if os.environ.get("SPT_WALKED", "1") != "0":   # (ROADMAP_SINNOH S1: Sinnoh join
 AREAS = g.loader.area_data["STORY_PROGRESSION"]
 MISSIONS = {m["id"]: m for m in g.loader.area_data.get("JOURNAL_MISSIONS", [])}
 
+# ---------------------------------------------------------------- save points, where the run starts, where it stops
+# (Jordan 11-23: a batch's check plays from a little before the batch, and stops where the maps aren't built yet. Older
+#  places don't change while a new batch is built, so a save made by an earlier clean run stands in for walking them again.)
+#  - Every mission's start is saved (the game's own save data, where you stand included) to SAVES/<mission>.json, marked
+#    "clean" when nothing got stuck, crashed or hung before it in that run.
+#  - SPT_FROM (default FROM, the open batch's lead-in): the run loads that save and plays on from it. No clean save there
+#    yet: it starts from Twinleaf as before (and makes the saves on the way).
+#  - STOP_AT (SPT_STOP to change it, "none" for no stop): the first MAIN mission of the batches not built yet; reaching it
+#    (or any MAIN mission after it in the Journal's list) ends the run as passed: "built so far".
+#  - SPT_FULL=1: the whole story from Twinleaf with no stop (fresh saves; the long run, for the batch's close or main).
+#  When a batch closes: move FROM to the next batch's lead-in and STOP_AT to the first mission of the batch after it
+#  (kanto_handoff/sinnoh_check/make_splaythrough.py, then rerun it; batch -> missions in sinnoh_check/PLAYTHROUGH.md).
+FROM = "sinnoh_m4"      # (S3's lead-in: Through Eterna Forest, the last S2 mission, then all of S3's story up to Veilstone)
+STOP_AT = "sinnoh_m6"   # (S4 starts here: The Galactic Warehouse. Hearthome's Gym, S3, comes after S4's Fen Badge in the
+                        #  Journal, so a run reaches it only once S4 is built)
+SAVES = os.path.join("dev", "checks", "out", "sinnoh_playthrough_saves")
+SPT_FULL = os.environ.get("SPT_FULL") == "1"
+SPT_FROM = "" if SPT_FULL else os.environ.get("SPT_FROM", FROM)
+_stop = "none" if SPT_FULL else os.environ.get("SPT_STOP", STOP_AT)
+MAIN_ORDER = [m["id"] for m in g.loader.area_data.get("JOURNAL_MISSIONS", []) if str(m.get("type")).upper() == "MAIN" and str(m["id"]).startswith("sinnoh_m")]
+STOP_FROM = MAIN_ORDER.index(_stop) if _stop in MAIN_ORDER else None
+FROM_SAVE = None
+try:
+    import subprocess as _sp
+    _COMMIT = _sp.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, timeout=20).stdout.strip()
+except Exception:
+    _COMMIT = "?"
+if SPT_FROM:
+    _p = os.path.join(SAVES, SPT_FROM + ".json")
+    try:
+        _sv = json.load(open(_p, encoding="utf-8"))
+    except (OSError, ValueError):
+        _sv = None
+    if _sv and _sv.get("clean"):
+        g.data.data = _sv["data"]
+        g.load_game_data()
+        g.player_name, g.player_character = _sv["player"]
+        story = g.story_manager
+        FROM_SAVE = SPT_FROM
+        print(f"== FROM SAVE {SPT_FROM} (saved {_sv.get('when')} at commit {_sv.get('commit')}): the run plays on from there", flush=True)
+    else:
+        print(f"== no clean save at {SPT_FROM} yet ({'not clean' if _sv else 'none'}): the run starts in Twinleaf and makes the saves", flush=True)
+print(f"== STOP: {'none (the whole story)' if STOP_FROM is None else MAIN_ORDER[STOP_FROM] + ' (not built yet) and every MAIN mission after it'}", flush=True)
+
+
+def _save_point(mid):
+    """The game's own save data at this mission's start, for later runs to start from."""
+    if mid is None or mid == FROM_SAVE:
+        return
+    try:
+        g.update_save_data()
+        clean = not any(f["kind"] in ("STUCK", "CRASH", "HANG") for f in FIND)
+        os.makedirs(SAVES, exist_ok=True)
+        with open(os.path.join(SAVES, mid + ".json"), "w", encoding="utf-8") as fh:
+            json.dump({"data": g.data.data, "player": [g.player_name, g.player_character], "clean": clean, "when": time.strftime("%Y-%m-%d %H:%M"),
+                       "commit": _COMMIT, "from": FROM_SAVE, "at": here()}, fh, default=str)
+    except Exception as e:
+        print(f"   (no save point at {mid}: {type(e).__name__}: {e})", flush=True)
+
+
+def _not_built(mid):
+    return STOP_FROM is not None and mid in MAIN_ORDER and MAIN_ORDER.index(mid) >= STOP_FROM
+
 said = []         # every line the game showed, in order
 ROWS = []         # one per thing done
 FIND = []         # stuck points, gaps, crashes, harness notes
@@ -1443,7 +1506,15 @@ def play_through():
         m = mission()
         mid = m.get("id") if m else None
         if mid != last_id:
+            if _not_built(mid):
+                if last_id in PER:
+                    PER[last_id]["ended"] = here()
+                    PER[last_id]["done"] = True
+                ended = f"built so far: reached {mid}, not built yet"
+                print(f"== STOP {mid}: {(m or {}).get('title') or (m or {}).get('text')} is in a batch not built yet | at {here()} | {round(time.time() - T0)} s", flush=True)
+                break
             STATE["mission"] = mid
+            _save_point(mid)
             if mid is not None and mid not in PER:
                 PER[mid] = {"id": mid, "title": m.get("text"), "desc": m.get("desc"), "target": guide.mission_target(g, m), "started": here(),
                             "steps": 0, "acts": 0, "wander": 0, "stuck": 0, "skips": [], "gained": [], "markers": [], "order": len(PER) + 1,
@@ -1553,7 +1624,7 @@ except Exception:
     crash("the playthrough loop itself")
 if last := PER.get(STATE["mission"]):
     last["ended"] = here()
-    last["done"] = ENDED == "CHAMPION"
+    last["done"] = ENDED == "CHAMPION" or ENDED.startswith("built so far")
 shot("END_" + ENDED.replace(" ", "_"))
 
 TOUR = []
@@ -1574,7 +1645,8 @@ print(f"==== BY THE MARKER ALONE: {len(_alone)} of {len(PER)} missions | stuck p
       f" | things done not by the marker {sum(p['wander'] for p in PER.values())}")
 print("==== not by the marker alone: " + (", ".join(_not) or "none"))
 never = [m for m in MISSIONS.values() if str(m.get("type")).upper() == "MAIN" and m["id"] not in PER
-         and str(m["id"]).startswith("sinnoh_m")]
+         and str(m["id"]).startswith("sinnoh_m") and not _not_built(m["id"])
+         and not (FROM_SAVE and m["id"] in MAIN_ORDER and MAIN_ORDER.index(m["id"]) < MAIN_ORDER.index(FROM_SAVE))]   # (before the save: an earlier run's)
 print("==== MAIN missions the Journal never showed:", [(m["id"], m.get("title") or m.get("text")) for m in never])
 kinds = collections.Counter(f["kind"] for f in FIND)
 print(f"==== findings: {dict(kinds)}")
@@ -1589,7 +1661,9 @@ for f in FIND:
         print(f"  stuck [{f['mission']} {f.get('title')}] at {f['where']}: {f['why']} | marker: {f['marker']} | {f.get('here')} | skip: {f['skip']}")
     elif f["kind"] in ("CRASH", "HANG"):
         print(f"  {f['kind'].lower()} [{f['mission']}] at {f['where']}: {f['what']}")
-if ENDED != "CHAMPION":
+if ENDED.startswith("built so far"):
+    print(f"   ok  the run reached the end of what's built: {ENDED} (from {'the save at ' + FROM_SAVE if FROM_SAVE else 'Twinleaf'})")
+elif ENDED != "CHAMPION":
     print(f"FAIL the run did not reach Cynthia beaten ({GOAL}): {ENDED} (mission {STATE['mission']}, {here()}; champion {'at ' + str(STATE.get('champion_at')) + ' s' if STATE.get('champion_at') else 'not yet'})")
 print("==== ways out the game refused on the way (what it said):")
 _seen = set()
@@ -1666,7 +1740,7 @@ for what, words, how in THINGS:
 print("==== the tour (the paths the story never walks):")
 for _t in TOUR:
     print(f"  {'ok ' if _t['ok'] else 'NO '} {_t['leg']} ({_t['moves']} moves; ended at {_t['ended']})")
-nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR")) + (ENDED != "CHAMPION")
+nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR")) + (ENDED != "CHAMPION" and not ENDED.startswith("built so far"))
 json.dump({"ended": ENDED, "badges": story.badges.get("SINNOH", []), "state": {k: (dict(v) if isinstance(v, collections.Counter) else v) for k, v in STATE.items() if k != "last_map"},
            "per": list(PER.values()), "find": [{k: v for k, v in f.items() if k not in ("key", "sig")} for f in FIND], "rows": ROWS,
            "never": [(m["id"], m.get("title") or m.get("text")) for m in never], "flags": sorted(k for k, v in story.story_flags.items() if v),
