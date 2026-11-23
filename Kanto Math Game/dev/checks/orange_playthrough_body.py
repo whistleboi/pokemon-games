@@ -1453,6 +1453,25 @@ _ORANGE_AREAS = [k for k, v in g.loader.area_data["STORY_PROGRESSION"].items() i
 _SIDE_T = [m.get("target") for m in g.loader.area_data.get("JOURNAL_MISSIONS", []) if m.get("type") == "SIDE"
            and str(m.get("id", "")).startswith("orange_") and m.get("target")]
 TOUR_LEGS = []
+
+
+def _tour_head(m, b):
+    """head_for, but when it finds no way on (in a bay off the map's main water: Route 72's north bay from Pummelo's
+    row 22), forget the way you came in and the refusals, and try again: TRIED already steers it to another edge row."""
+    ride = _RIDES.get(b)
+    if ride and loc()[0] == ride[0]:   # (at the harbour: the ferry, as its clerk runs it; orange_maps plays the ride itself)
+        put_at(b)
+        return {"how": "ferry"}
+    for _try in range(4):
+        row = head_for(g.current_state, m, ride[0] if ride else b)
+        if row is not None:
+            return row
+        BACK.clear()
+        SHUT.clear()
+    return None
+
+
+_RIDES = {"NEW_ISLAND": ("HAMLIN_ISLAND", "the Hamlin ferry")}   # (places only a ride reaches: walk to its harbour, then ride)
 TOUR = []
 if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
     story.story_flags["move_offer_orange"] = True   # (the title's "where next?" already asked)
@@ -1479,7 +1498,7 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
                 if loc()[0] == _b:
                     _ok = True
                     break
-                _row = head_for(g.current_state, _m, _b)
+                _row = _tour_head(_m, _b)
                 if _row is None:
                     break
             _ok = _ok or loc()[0] == _b
@@ -1492,8 +1511,7 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
                     if loc()[0] == _b:
                         _ok = True
                         break
-                    SHUT.clear()
-                    if head_for(g.current_state, _m, _b) is None:
+                    if _tour_head(_m, _b) is None:
                         break
                 _ok = _ok or loc()[0] == _b
         except Exception:
