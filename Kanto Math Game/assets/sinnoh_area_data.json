@@ -221,7 +221,7 @@
   "ACUITY_LAKEFRONT_PERCENTAGES": {"459": 40, "220": 35, "215": 25},
   "VALOR_LAKEFRONT_PERCENTAGES": {"400": 30, "203": 25, "397": 25, "402": 10, "228": 10},
   "SENDOFF_SPRING_PERCENTAGES": {"75": 32, "400": 30, "397": 17, "433": 10, "356": 8, "42": 3},
-  "OREBURGH_GATE_PERCENTAGES": {"41": 50, "54": 35, "74": 15},
+  "OREBURGH_GATE_PERCENTAGES": {"41": 48, "54": 35, "74": 15, "42": 2},
   "GRAND_UNDERGROUND_PERCENTAGES": { "108": 18, "111": 18, "123": 15, "229": 11, "220": 10, "333": 7, "207": 7, "81": 5, "280": 5, "238": 4 },
   "ETERNA_CITY_DAY_PERCENTAGES": {"406": 38, "399": 30, "265": 10, "266": 10, "268": 10, "267": 1, "269": 1},
   "ETERNA_CITY_GOOD_ROD_PERCENTAGES": {"129": 55, "339": 45},
@@ -422,6 +422,10 @@
   "VALOR_LAKEFRONT_RADAR_PERCENTAGES": {"400": 23, "203": 20, "397": 20, "402": 8, "228": 8, "33": 11, "30": 11},
   "MT_CORONET_BASE_RADAR_PERCENTAGES": {"75": 11, "308": 14, "433": 16, "436": 6, "307": 10, "67": 12, "35": 5, "437": 5, "460": 5, "299": 4, "74": 3, "459": 3, "42": 7, "66": 4, "41": 3, "359": 1, "173": 1, "294": 8},
   "SINNOH_ROUTE_204_RADAR_PERCENTAGES": {"396": 21, "399": 21, "406": 17, "403": 17, "265": 8, "401": 8, "191": 12},
+  "OREBURGH_GATE_GOOD_ROD_PERCENTAGES": {"129": 55, "339": 45},
+  "OREBURGH_GATE_OLD_ROD_PERCENTAGES": {"129": 100},
+  "OREBURGH_GATE_SUPER_ROD_PERCENTAGES": {"130": 55, "340": 45},
+  "OREBURGH_GATE_SURF_PERCENTAGES": {"54": 60, "41": 30, "55": 5, "42": 5},
   "STORY_PROGRESSION": {
     "GRAND_UNDERGROUND": {
       "area_type": "dungeon",
@@ -513,17 +517,24 @@
         "min_rounds": 1,
         "trainer_pool": [
             {"name": "Picnicker Diana", "class": "PICNICKER", "sprite": "pt_picnicker.png", "team": [399], "levels": [9], "rewards": {"balls": 2}},
-            {"name": "Camper Curtis", "class": "CAMPER", "sprite": "pt_camper.png", "team": [396, 403], "levels": [7, 7], "rewards": {"balls": 2}}
+            {"name": "Camper Curtis", "class": "CAMPER", "sprite": "pt_camper.png", "team": [396, 403], "levels": [7, 7], "rewards": {"balls": 2}},
+            {"name": "Veteran Grant", "class": "VETERAN", "sprite": "pt_veteran.png", "team": [447, 398, 75], "levels": [34, 34, 34], "rewards": {"balls": 2}}
         ],
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
             {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
             {"text": "Route 203", "action": "EXIT", "target_area": "SINNOH_ROUTE_203", "condition": "can_exit", "color": "RED"},
-            {"text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED"}
+            {"text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED"},
+            {"text": "TM192", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm192_oreburgh_gate_d14r0102_8_9", "event": {"lines": ["A TM (Focus-Punch), lying among the rocks."], "gift_item": {"TM192": 1}, "flag": "got_tm192_oreburgh_gate_d14r0102_8_9"}},
+            {"text": "EARTH PLATE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_earth_plate_oreburgh_gate_d14r0102_7_21", "event": {"lines": ["An Earth Plate, in a dark corner."], "gift_item": {"EARTH_PLATE": 1}, "flag": "got_earth_plate_oreburgh_gate_d14r0102_7_21"}},
+            {"text": "TM058", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm058_oreburgh_gate_d14r0102_23_10", "event": {"lines": ["A TM (Brick-Break), beside the cave wall."], "gift_item": {"TM058": 1}, "flag": "got_tm058_oreburgh_gate_d14r0102_23_10"}},
+            {"text": "TM291", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm291_oreburgh_gate_d14r0102_57_12", "event": {"lines": ["A TM (Flash), left behind by a hiker."], "gift_item": {"TM291": 1}, "flag": "got_tm291_oreburgh_gate_d14r0102_57_12"}},
+            {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_pearl_oreburgh_gate_d14r0102_41_11", "event": {"lines": ["A Big Pearl, lying among the rocks."], "gift_item": {"BIG_PEARL": 1}, "flag": "got_big_pearl_oreburgh_gate_d14r0102_41_11"}}
         ],
         "next_area": "SINNOH_ROUTE_203",
-        "wild_levels": {"land": [4, 10]}
+        "wild_levels": {"land": [4, 10]},
+        "surf_pool_percentages": "OREBURGH_GATE_SURF_PERCENTAGES"
     },
     "SENDOFF_SPRING": {
         "area_type": "wild_route",
@@ -710,7 +721,7 @@
         "min_rounds": 0,
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "galactic_grunt.png", "team": [434], "rewards": {"balls": 3}},
-            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "galactic_grunt.png", "team": [41, 41], "rewards": {"balls": 4}}
+            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "galactic_grunt.png", "team": [41, 41], "rewards": {"balls": 4, "WORKS_KEY": 1}}
         ],
         "route_menu": [
             {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -1293,7 +1304,7 @@
         "explore_options": [
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
-            {"text": "Pokétch Company", "action": "NPC", "target": "poketch_company", "door": "poketch"},
+            {"text": "Pokétch Company", "action": "EVENT", "door": "poketch", "event": {"requires": ["sinnoh_coupon_1", "sinnoh_coupon_2", "sinnoh_coupon_3"], "fail": ["President: Welcome, welcome! Have you found all three of my clowns?", "President: Each one has a Coupon for you. Bring me all three, and a Pokétch is yours!"], "lines": ["President: One, two, three Coupons! Bravo, bravo!", "President: Here you are: your very own Pokémon Watch, the Pokétch! Wear it with pride!"], "flag": "got_poketch", "done": ["President: How is that Pokétch? We'll have new apps for it soon!"]}},
             {"text": "Talk to Looker", "action": "NPC", "target": "looker", "flag_condition": "not met_looker"},
             {"text": "GTS Building", "action": "NPC", "target": "gts_building", "door": "gts"},
             {"text": "Repel Team Galactic", "action": "NPC", "target": "galactic_jubilife", "flag_condition": "not galactic_jubilife_cleared"},
@@ -3282,14 +3293,53 @@
       "id": "sinnoh_m1e",
       "type": "MAIN",
       "title": "East to Oreburgh",
-      "description": "Pick up a Pokétch in Jubilife, then go east on Route 203 and through Oreburgh Gate. {rival_name} is waiting on the way.",
+      "description": "Three clowns in Jubilife each hand out a Pokétch Coupon. Collect all three and trade them at the Pokétch Company, then go east on Route 203 and through Oreburgh Gate.",
       "condition": {
         "required_region": "SINNOH",
         "visited": "JUBILIFE_CITY",
         "visited_not": "OREBURGH_CITY",
         "badges_less": 1
       },
-      "target": "OREBURGH_CITY"
+      "target": "OREBURGH_CITY",
+      "steps": [
+        {
+          "area": "JUBILIFE_CITY",
+          "at": [
+            55,
+            33
+          ],
+          "label": "A clown",
+          "done": "sinnoh_coupon_1"
+        },
+        {
+          "area": "JUBILIFE_CITY",
+          "at": [
+            15,
+            18
+          ],
+          "label": "A clown",
+          "done": "sinnoh_coupon_2"
+        },
+        {
+          "area": "JUBILIFE_CITY",
+          "at": [
+            36,
+            16
+          ],
+          "label": "A clown",
+          "done": "sinnoh_coupon_3"
+        },
+        {
+          "area": "JUBILIFE_CITY",
+          "room": "poketch",
+          "at": [
+            18,
+            4
+          ],
+          "label": "Pokétch Company",
+          "done": "got_poketch"
+        }
+      ]
     },
     {
       "id": "sinnoh_m2",
@@ -3349,7 +3399,7 @@
       "id": "sinnoh_m3c",
       "type": "MAIN",
       "title": "The Valley Windworks",
-      "description": "Team Galactic has taken the Valley Windworks, east of Floaroma. Chase the grunts out of Floaroma Meadow for the Works Key first.",
+      "description": "Team Galactic has taken the Valley Windworks, east of Floaroma. A girl on Route 205 needs help, and the grunts in Floaroma Meadow have the Works Key.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 1,
@@ -3358,7 +3408,23 @@
         "flag_not": "windworks_cleared"
       },
       "target": "VALLEY_WINDWORKS",
-      "completed_flag": "windworks_cleared"
+      "completed_flag": "windworks_cleared",
+      "steps": [
+        {
+          "area": "SINNOH_ROUTE_205",
+          "at": [
+            19,
+            85
+          ],
+          "label": "A little girl",
+          "done": "sinnoh_r205_girl"
+        },
+        {
+          "area": "FLOAROMA_MEADOW",
+          "label": "Galactic grunts",
+          "done": "has_item:WORKS_KEY"
+        }
+      ]
     },
     {
       "id": "sinnoh_m4",

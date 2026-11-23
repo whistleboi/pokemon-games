@@ -27,6 +27,13 @@ PILOT = {"TWINLEAF_TOWN": ("home", "home_2f", "rival", "rival_2f", "house_0301",
          "SANDGEM_TOWN": ("lab", "assistant", "center", "center_2", "center_b1", "mart", "house_0301")}
 # (Sandgem's assistant_2f stays flat: Platinum's own picture of T02R0202 comes out dark, so it has no ground picture to go live from)
 ROUTES = ("SINNOH_ROUTE_201", "VERITY_LAKEFRONT", "LAKE_VERITY")
+# S2 (11-23): Jubilife to Eterna Forest. A town's rooms: all of them (None), less any listed in FLAT (no ground picture)
+_TM = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))
+FLAT = {("SANDGEM_TOWN", "assistant_2f")}
+for _k in ("JUBILIFE_CITY", "OREBURGH_CITY", "FLOAROMA_TOWN"):
+    PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
+ROUTES += ("SINNOH_ROUTE_202", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_MINE", "SINNOH_ROUTE_204", "RAVAGED_PATH",
+           "FLOAROMA_MEADOW", "SINNOH_ROUTE_205", "VALLEY_WINDWORKS", "ETERNA_FOREST")
 
 
 def settle(n=60):
@@ -163,7 +170,9 @@ for key in ROUTES:
         sc = lv[0]
         check(not sc.holes([(x, int(round(sc.wz(x, y)))) for x, y in opens]), f"{key} floor {i}: ground under every tile you can walk ({len(opens)})")
         so = set(opens)
+        two = set(getattr(f, "bridge", {}) or {})   # (a two-level bridge: on its deck or under it, both right - as Johto's suite)
         jump = [(a_, b_) for a_ in opens for b_ in ((a_[0] + 1, a_[1]), (a_[0], a_[1] + 1)) if b_ in so
+                and not (a_ in two or b_ in two or sc.stacked(*a_) or sc.stacked(*b_))
                 and (abs(t._dl_height(*a_) - t._dl_height(*b_)) > 1.01 or abs(sc.wz(*a_) - sc.wz(*b_)) > 2.01)]
         check(not jump, f"{key} floor {i}: no step jumps a level ({jump[:3]})")
         pygame.image.save(pygame.display.get_surface(), f"{S}/sinnoh_live3d_{key}_{i}.png")

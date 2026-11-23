@@ -515,10 +515,10 @@ def flood(st, through=False, blocked=()):
     """{tile: (the tile before, the step)} for every tile you can get to on this map as it stands now. (Johto: a tile of
     a log bridge is kept as (tile, the way you're crossing it), deck or under; see _bridge_bars.)"""
     fn = t_step if is_town(st) else d_step
-    br = {} if is_town(st) else (getattr(st.run.floor, "bridge", None) or {})
+    br = (getattr(st, "bridge", None) or {}) if is_town(st) else (getattr(st.run.floor, "bridge", None) or {})   # (Sinnoh: towns have them too)
     start = pos(st)
     if start in br:
-        ax = br[start] if getattr(st.run, "deck", True) else (br[start][1], br[start][0])
+        ax = br[start] if (getattr(st, "deck", True) if is_town(st) else getattr(st.run, "deck", True)) else (br[start][1], br[start][0])
         start = (start, ax)
     prev, q = {start: None}, deque([start])
     while q:

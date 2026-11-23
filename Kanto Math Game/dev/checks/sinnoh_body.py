@@ -133,8 +133,12 @@ r = route("SINNOH_ROUTE_203", "OREBURGH_GATE")
 check(r.run.player[0] >= 50, f"Route 203: out of the Gate by the cave mouth {r.run.player}")
 r = route("OREBURGH_GATE", "SINNOH_ROUTE_203")
 f = r.run.floor
-check(isinstance(r, DungeonState) and (f.w, f.h) == (30, 27) and r.run.player[0] <= 4 and set(f.exits.values()) == {"SINNOH_ROUTE_203", "OREBURGH_CITY"},
+check(isinstance(r, DungeonState) and (f.w, f.h) == (30, 27) and r.run.player[0] <= 4 and set(f.exits.values()) - {"STAIRS"} == {"SINNOH_ROUTE_203", "OREBURGH_CITY"},
       f"Oreburgh Gate: 30 x 27; in from Route 203 at the west mouth {r.run.player}; Oreburgh east")
+_st = next((t for t, v in f.exits.items() if v == "STAIRS"), None)   # (11-23 S2: Platinum's B1F, down the stairs at 1F (18,3))
+if _st:
+    r._warp(1, 1, 1); frames(r, 2)
+check(_st == (18, 3) and r.run.index == 1 and r.run.n_floors == 2, f"Oreburgh Gate: the stairs down to B1F ({_st}, floor {r.run.index} of {r.run.n_floors})")
 r = route("OREBURGH_GATE", "OREBURGH_CITY")
 check(r.run.player[0] >= 25, f"Oreburgh Gate: in from Oreburgh at the east mouth {r.run.player}")
 
@@ -491,11 +495,12 @@ story.story_flags["windworks_cleared"] = True
 r, _gr2 = _blocked("SINNOH_ROUTE_205", "FLOAROMA_TOWN")
 check(not _gr2 and "SINNOH_ROUTE_205" in [o.get("target_area") for o in _prog["FLOAROMA_TOWN"]["travel_options"] if not o.get("condition")],
       "Route 205: once the Windworks is cleared the grunts are gone (and Floaroma's own way onto the route is open from the start)")
-story.defeated_trainers.pop("FLOAROMA_MEADOW", None)
+story.inventory.pop("WORKS_KEY", None)
 r, _wg = _blocked("VALLEY_WINDWORKS", "SINNOH_ROUTE_205")
-story.defeated_trainers["FLOAROMA_MEADOW"] = set(range(len(_prog["FLOAROMA_MEADOW"]["trainer_pool"])))
+story.inventory["WORKS_KEY"] = 1   # (11-23, S2: Platinum's rule - the door opens with the Works Key, the Meadow's second grunt's)
 r, _wg2 = _blocked("VALLEY_WINDWORKS", "SINNOH_ROUTE_205")
-check(len(_wg) == 1 and not _wg2, "Valley Windworks: a grunt stands at the door until the Meadow's grunts are beaten (the Works Key)")
+story.inventory.pop("WORKS_KEY", None)
+check(len(_wg) == 1 and not _wg2, "Valley Windworks: the door is shut until you have the Works Key")
 story.inventory["BICYCLE"] = 0
 r, _bk = _blocked("SINNOH_ROUTE_206", "ETERNA_CITY")
 story.inventory["BICYCLE"] = 1
@@ -721,6 +726,66 @@ _drive(r, 2000, lambda: story.story_flags.get("rowan_assistant_balls") and not (
 check(_hit and story.story_flags.get("rowan_assistant_balls") and story.balls_left >= _balls + 5,
       f"Route 202: Dawn catches up, shows you how to catch, and gives you 5 Poke Balls (scene {_hit}, balls {_balls} -> {story.balls_left})")
 story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S2 (11-23): the Windworks chain and Jubilife's Pokétch campaign, as Platinum has them (s_s2_windworks.py, s_s2_jubilife.py)
+from src.states.systems.pick_list import PickListState as _PLS
+_sv = dict(story.story_flags); _inv = dict(story.inventory)
+for _k in ("sinnoh_r205_girl", "windworks_cleared", "got_poketch", "sinnoh_coupon_1", "sinnoh_coupon_2", "sinnoh_coupon_3"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("WORKS_KEY", None)
+for _b in [b for b in story.badges.get("SINNOH", [])]:
+    pass
+_badges = list(story.badges.get("SINNOH", []))
+t = town("FLOAROMA_TOWN", "SINNOH_ROUTE_204")
+check((2, 3) in t.barred and (3, 3) in t.barred, f"Floaroma: two grunts stand in the Meadow's way in before you've met the girl on Route 205 ({sorted(t.barred)[:2]})")
+r = route("SINNOH_ROUTE_205", "FLOAROMA_TOWN")
+_girl = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Little girl"), None) if hasattr(r, "run") else None
+if _girl is not None:
+    r._use_figure(_girl); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+check(_girl is not None and story.story_flags.get("sinnoh_r205_girl"), f"Route 205: the girl whose papa is trapped in the Windworks asks for help ({_girl is not None})")
+t = town("FLOAROMA_TOWN", "SINNOH_ROUTE_204")
+check((2, 3) not in t.barred, "Floaroma: then the grunts have gone into the Meadow")
+_mg = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["FLOAROMA_MEADOW"]["trainer_pool"]
+check(_mg[-1].get("rewards", {}).get("WORKS_KEY") == 1, "Floaroma Meadow: the second grunt gives the Works Key")
+r = route("VALLEY_WINDWORKS", "SINNOH_ROUTE_205")
+_door = next((b for f in (_tm["VALLEY_WINDWORKS"].get("floors") or [_tm["VALLEY_WINDWORKS"]]) for b in f.get("barred") or [] if b.get("item") == "WORKS_KEY"), None)
+check(_door is not None, "Valley Windworks: its door opens with the Works Key")
+
+story.badges["SINNOH"] = []
+t = town("JUBILIFE_CITY", "SINNOH_ROUTE_202")
+_cl = {xy: o for xy, o in t._people().items() if str(o.get("text", "")).startswith("Clown")}
+check(len(_cl) == 3, f"Jubilife: three Pokétch campaign clowns on Platinum's spots ({sorted(_cl)})")
+_xy = sorted(_cl)[0]
+_got = []
+for _ans in (1, 0):   # (wrong first: no Coupon; then right)
+    t._talk(_xy)
+    _drive(t, 200, lambda: isinstance(g.current_state, _PLS))
+    if isinstance(g.current_state, _PLS):
+        g.current_state.pick(_ans)
+    _drive(t, 200, lambda: not getattr(t, "npc_active", False) and g.current_state is t)
+    _got.append(bool(story.story_flags.get(_cl[_xy]["event"]["quiz_flag"])))
+check(_got == [False, True], f"Jubilife: a clown's Coupon only for the right answer (wrong, then right: {_got})")
+t.player = t.anim_from = (61, 22); t.anim = 0; t.walk_goal = None
+t.step(-1, 0); t.anim = 0
+_hit = _drive(t, 40, lambda: t.scenes.busy())
+_drive(t, 900, lambda: not t.scenes.busy())
+check(_hit and t.player[0] >= 59, f"Jubilife: without a Pokétch, Looker stops you at the way east ({_hit}, {t.player})")
+t.player = t.anim_from = (26, 44); t.anim = 0; t.walk_goal = None
+t.step(1, 0); t.anim = 0
+_hit = _drive(t, 40, lambda: t.scenes.busy())
+_drive(t, 900, lambda: not t.scenes.busy())
+check(_hit and t.player[0] >= 28, f"Jubilife: no Badge yet, so the guide turns you back from the Global Terminal ({_hit}, {t.player})")
+_d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["JUBILIFE_CITY"]["inside"].items() if n == "poketch")
+_enter_door(t, _d)
+_pres = next((s for s, o in t.people.items() if str(o.get("text")) == "Pokétch Company"), None)
+if _pres:
+    t._talk(_pres); _drive(t, 200, lambda: not getattr(t, "npc_active", False))
+_early = bool(story.story_flags.get("got_poketch"))
+story.story_flags.update({"sinnoh_coupon_1": True, "sinnoh_coupon_2": True, "sinnoh_coupon_3": True})
+if _pres:
+    t._talk(_pres); _drive(t, 200, lambda: not getattr(t, "npc_active", False))
+check(_pres and not _early and story.story_flags.get("got_poketch"), f"the Pokétch Company: the Pokétch only for all three Coupons (before {_early}, after {story.story_flags.get('got_poketch')})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv); story.badges["SINNOH"] = _badges
 
 g.walk_towns = False
 print(f"##### {fails} failures")

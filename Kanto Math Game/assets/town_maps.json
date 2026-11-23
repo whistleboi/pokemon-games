@@ -150803,9 +150803,9 @@
    "TTTTTTTikeeEEEEEEEEEeekBBBBkeeeeCCCCCCCCCeeeaaaaaeFFFFiTTTTTTTTT",
    "TTTTTTTikeeEEEEEEEEEeekBBBBkeeeeCCCCCCCCCeeeaaaaaeFFFFiiiiiiiTTT",
    "TTTTTTTikeeEEDEEEDEEeekGGGGkeeeeCCCCDCCCCeeeaaaaaeFFFFiiiiiiiTTT",
-   "TTTTTTTikeeeeeeeeeeeeekGGGGkeeeeeeeeeeeeeeelaaaaalHHHHHkeeeeiTTT",
+   "TTTTTTTikeeeeeeeeeeeeekGGGGkeeeeeeeeNeeeeeelaaaaalHHHHHkeeeeiTTT",
    "TTTTTTTikeeeeeeeeeeeeekGGGGkeeeeeeeeeeeeeeeeaaaaaeHHHHHkeeeeiTTT",
-   "..iiiiiikeeeeeeeeeeeeekGGGGkeeeeeNeeeeeeeeeeaaaaaeHHHHHkeeeeiTTT",
+   "..iiiiiikeeeeeeNeeeeeekGGGGkeeeeeNeeeeeeeeeeaaaaaeHHHHHkeeeeiTTT",
    "..iiiiiikkkkk!eeeeeekkkGGGGkeeeeeeeeeee!eeeeaaaaa!HHDHHkeeeeiTTT",
    "..ie!eleeeeeeeeeeeeeeeeeeeeeeeleeeeeeeeeeeeeaaaaaeeeeeeeele!iikk",
    "..=eeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNaaaaaaaaaaaeee=.>",
@@ -150820,9 +150820,9 @@
    "TTTTTTTTTiKKKKNOOOOPPPPQQQQLLLLeee.......N.eaaaaaeJDJJkkkMMMMMii",
    "TTTTTTTTTiKKKKΝOOOOPPPPQQQQLLLLΞeeeeeeeeeeeeaaaaaeeeeeeeeMMMMMii",
    "TTTTTTTTTiKKKKΝOOOOPPPPQQQQLLLLΞeeaaaaaaaaaaaaaaaaaaaaaeeMMMMMii",
-   "TTTTTTTTTiRRRRROOOOPPPPQQQQSSSSSeeaaaaaaaaaaaaaaaaaaaaaeeUUUUUii",
+   "TTTTTTTTTiRRRRROOOOPPPPQQQQSSSSSeeaaaaaaaaaaaaaaaaaaaaaNeUUUUUii",
    "TTTTTTTTTiRRRRROOOOPPPPQQQQSSSSSeeaaaaaaaaaaaaaaaaaNaaaeeUUUUUii",
-   "TTTTTTTTTiRRRRReeYYYYYYYYYeSSSSSeeaaaaaaaaaaaaaaaaaaaaaeeUUUUUii",
+   "TTTTTTTTTiRRRRReeYYYYYYYYYeSSSSSeeaaaaaaaaaaaaNaaaaaaaaeeUUUUUii",
    "TTTTTTTTTiRRRRReeYYYYYYYYYeSSSSSeeeeeeΟΟΟΟΟeaaaaaeeeeeeeeUUUUUii",
    "TTTTTTTTTiRRRRReΠYYYYYYYYYeSSSSSekVVVVVVVVVeaaaaaeWWWWWkeUUUUUii",
    "TTTTTTTTTiRRRRReΠYYYYYYYYYeSSSSSekVVVVVVVVVeaaaaaeWWWWWkeUUUUUii",
@@ -152619,6 +152619,70 @@
   "people": [
    "Repel Team Galactic",
    {
+    "text": "Clown  ",
+    "action": "EVENT",
+    "flag_condition": "not sinnoh_coupon_3",
+    "event": {
+     "lines": [
+      "Clown: Hi there! I'm a Pokétch campaign clown! Here comes my question!"
+     ],
+     "quiz": [
+      {
+       "q": "Can a Pokemon hold an item to help it out in battle?",
+       "options": [
+        "Yes",
+        "No"
+       ],
+       "right": 0
+      }
+     ],
+     "quiz_flag": "sinnoh_coupon_3",
+     "must_be_right": true,
+     "wrong": [
+      "Clown: Bzzzt! Not quite. Have a think, and come back to try again!"
+     ],
+     "after": [
+      "Clown: Ding-ding! Right! Berries, herbs, all sorts. Give your team something to hold!",
+      "You got a Pokétch Coupon!"
+     ],
+     "done": [
+      "Clown: You've got my Coupon! Find the other clowns too!"
+     ]
+    }
+   },
+   {
+    "text": "Clown ",
+    "action": "EVENT",
+    "flag_condition": "not sinnoh_coupon_2",
+    "event": {
+     "lines": [
+      "Clown: Hi there! I'm a Pokétch campaign clown! Here comes my question!"
+     ],
+     "quiz": [
+      {
+       "q": "Do Pokemon moves have types too, just like Pokemon do?",
+       "options": [
+        "Yes",
+        "No"
+       ],
+       "right": 0
+      }
+     ],
+     "quiz_flag": "sinnoh_coupon_2",
+     "must_be_right": true,
+     "wrong": [
+      "Clown: Bzzzt! Not quite. Have a think, and come back to try again!"
+     ],
+     "after": [
+      "Clown: Ding-ding! Right! And a move that matches its Pokemon's own type hits extra hard!",
+      "You got a Pokétch Coupon!"
+     ],
+     "done": [
+      "Clown: You've got my Coupon! Find the other clowns too!"
+     ]
+    }
+   },
+   {
     "text": "Little girl",
     "action": "EVENT",
     "event": {
@@ -152656,11 +152720,55 @@
     }
    },
    {
+    "text": "Clown",
+    "action": "EVENT",
+    "flag_condition": "not sinnoh_coupon_1",
+    "event": {
+     "lines": [
+      "Clown: Hi there! I'm a Pokétch campaign clown! Here comes my question!"
+     ],
+     "quiz": [
+      {
+       "q": "Do Pokemon get stronger by winning battles and earning Exp. Points?",
+       "options": [
+        "Yes",
+        "No"
+       ],
+       "right": 0
+      }
+     ],
+     "quiz_flag": "sinnoh_coupon_1",
+     "must_be_right": true,
+     "wrong": [
+      "Clown: Bzzzt! Not quite. Have a think, and come back to try again!"
+     ],
+     "after": [
+      "Clown: Ding-ding! Right! Battles make Pokemon stronger. Some even evolve into something new!",
+      "You got a Pokétch Coupon!"
+     ],
+     "done": [
+      "Clown: You've got my Coupon! Find the other clowns too!"
+     ]
+    }
+   },
+   {
     "text": "Boy ",
     "action": "EVENT",
     "event": {
      "lines": [
       "Six Poke Balls on my belt. That's the most Pokemon you can carry at once!"
+     ]
+    }
+   },
+   {
+    "text": "Pokétch President",
+    "action": "EVENT",
+    "flag_condition": "not got_poketch",
+    "event": {
+     "lines": [
+      "President: No Pokétch? A Trainer without a Pokétch! That won't do at all!",
+      "President: I make Pokétches, and I'm giving them away! Find the three clowns hiding in Jubilife.",
+      "President: Each one asks a question. Answer right for a Coupon, then bring all three to my company!"
      ]
     }
    },
@@ -153748,7 +153856,14 @@
         4
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C01R0602.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     }
    },
    "gts_3f": {
@@ -154042,7 +154157,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C01R0603.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     }
    },
    "center": {
@@ -155831,7 +155953,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C01R0102.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     }
    },
    "poketch_3f": {
@@ -156285,7 +156414,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C01R0103.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     }
    },
    "mart": {
@@ -157979,7 +158115,7 @@
     "art": [
      "cccccccccccccccccccccc",
      "cccccccccccccccccccccc",
-     "cccccccccccccccccc.ccc",
+     "cccccccccccccccccccccc",
      "cccccccccccccc^.....zc",
      "cccccccccccccc.......c",
      "c......ccccc.....mm..c",
@@ -161636,7 +161772,76 @@
   },
   "hidden": {
    "40,59": "STARDUST"
-  }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      60,
+      21,
+      60,
+      24
+     ]
+    },
+    "condition": "not:got_poketch",
+    "every": true,
+    "cast": [
+     {
+      "sheet": "pt_icpo.png",
+      "from": [
+       58,
+       20
+      ],
+      "to": "player",
+      "lines": [
+       "Looker: Ah! Wait one moment, if you please.",
+       "Looker: You do not have a Pokétch? Every Trainer in Jubilife is getting one for free!",
+       "Looker: Find the clowns about town. Then you may go on your way."
+      ],
+      "leave": [
+       58,
+       20
+      ]
+     },
+     {
+      "you": [
+       [
+        59,
+        22
+       ]
+      ],
+      "face": "l"
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      27,
+      43,
+      27,
+      45
+     ]
+    },
+    "condition": "not:has_coal_badge",
+    "every": true,
+    "call": [
+     "Guide: Welcome! Past here is the Global Terminal, where Trainers trade with the whole world.",
+     "Guide: Oh, you don't have a Gym Badge yet? Please come back once you've earned one!"
+    ],
+    "cast": [
+     {
+      "you": [
+       [
+        28,
+        44
+       ]
+      ],
+      "face": "l"
+     }
+    ]
+   }
+  ]
  },
  "SINNOH_ROUTE_203": {
   "art": [
@@ -162063,91 +162268,185 @@
   ]
  },
  "OREBURGH_GATE": {
-  "art": [
-   "cccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccc",
-   "ccccccccccr..0......cccccccccc",
-   "cccccccccc..........cccccccccc",
-   "cccccccccc........0.cccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccccccccc.0cccccccccccccccccc",
-   "cccccccccc0.cccccccccccccccccc",
-   "cccccccccc.rcccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "ccccccccccr.cccccccccccccccccc",
-   "cccccccccc..cccccccccccccccccc",
-   "cccr..Nrr...cccccccccc...r.ccc",
-   "ccc....rr...cccccccccc.X...ccc",
-   "ccc<......................>ccc",
-   "ccc...r....................ccc",
-   "cccccccccc..............0.rccc",
-   "cccccccccc0.....X.rrcccccccccc",
-   "cccccccccc..0.0...rrcccccccccc",
-   "cccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccc"
-  ],
-  "exits": {
-   "<": "SINNOH_ROUTE_203",
-   ">": "OREBURGH_CITY"
-  },
-  "trainer_spots": [
-   "Picnicker Diana",
-   "Camper Curtis"
-  ],
-  "theme": "cave",
-  "roofs": {
-   "_picture": {
-    "f": "pt_ground/D14R0101.png",
-    "at": [
-     1,
-     2
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "ccccccccccr..0......cccccccccc",
+     "cccccccccc........+.cccccccccc",
+     "cccccccccc........0.cccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccccccccc.0cccccccccccccccccc",
+     "cccccccccc0.cccccccccccccccccc",
+     "cccccccccc.rcccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "ccccccccccr.cccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc",
+     "cccr.N.rr...cccccccccc...r.ccc",
+     "ccc....rr...ccccccccccX....ccc",
+     "ccc<......................>ccc",
+     "ccc...r....................ccc",
+     "cccccccccc..............0.rccc",
+     "cccccccccc0....X..rrcccccccccc",
+     "cccccccccc..0.0...rrcccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "<": "SINNOH_ROUTE_203",
+     ">": "OREBURGH_CITY"
+    },
+    "trainer_spots": [
+     "Picnicker Diana",
+     "Camper Curtis"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/D14R0101.png",
+      "at": [
+       1,
+       2
+      ]
+     },
+     "_look": {
+      "floor": [
+       123,
+       98,
+       74
+      ],
+      "wall": [
+       139,
+       123,
+       74
+      ]
+     }
+    },
+    "parts": true,
+    "people": [
+     {
+      "text": "Hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A brand-new Trainer! Earn Oreburgh's Badge, and you can smash small rocks out of the way.",
+        "That's the Coal Badge! Take this. It teaches Rock Smash."
+       ],
+       "gift_item": {
+        "HM_ROCK_SMASH": 1
+       },
+       "flag": "got_hm_rock_smash_oreburgh_gate",
+       "done": [
+        "Rock Smash breaks cracked rocks. Give it a try!"
+       ],
+       "requires": [
+        "has_coal_badge"
+       ],
+       "fail": [
+        "Earn the Gym Badge in Oreburgh City, then come see me!"
+       ]
+      },
+      "color": "GOLD"
+     }
     ]
    },
-   "_look": {
-    "floor": [
-     123,
-     98,
-     74
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc..rrcccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc-...rccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc.....cc.....cc",
+     "cccccccccccccccccccccccccccccccccccccccccccc.....cc.....cc",
+     "ccccccccccccccccccccccccccccccccccccccccccccr....cc.cc..cc",
+     "cccccccccccccccccccccccccccccccccccccccccccccc..ccc0cc..cc",
+     "cc..N..ccccccccccccccccccccccccccccccccccccccc..ccc.cc__cc",
+     "cc...rrccccccccccccNrrccccccrccc......)....ccc...0..cc..cc",
+     "cc.r.rrcccccccccccc..rcrcccccccc..rr.N)....ccc..cccc....cc",
+     "ccr.b0.cccccccccccc..rcrcccccccc.Nrr__c....ccc..cccc.N..cc",
+     "cc.....cccccccccccc..rc«cccccr.«...0...0...0....cccc....cc",
+     "cc.....cc.ooooooooo..ccccccccc.r..ccccccccc.....cccc____cc",
+     "cc.....cc.ooooooooo..ccccccccc.r..ccccccccc.ccc.cccc....cc",
+     "cc.....cc.ooooooooo..ccccccccc.r..ccccccccc.ccc.cccc....cc",
+     "cc...rrccXooooooooo......rr.r.....ccccccccc.ccc.cccc...rcc",
+     "ccr.rrrcc.ooooooooo.....0.».r.....r..rr.....ccc..r.r..r.cc",
+     "cc..b.....ooooooooorr.......r.....0.........ccc.......r.cc",
+     "cc..rr....oooooooooooooooooooooooooooooooooooooooooooooocc",
+     "ccrNrr.cc.oooooooooooooooooooooooooooooooooooooooooooooocc",
+     "cccccccccroooooooooooooooooooooooooooooooooooooooooooooocc",
+     "cccccccccroooooooooooooooooooooooooooooooooooooooooooooocc",
+     "ccccccccccoooooooooooooooooooooooooooooooooooooooooooooocc",
+     "ccccccccccoooooooooooooooooooooooooooooooooooooooooooooocc",
+     "ccccccccccoooooooooooooooooooooooooooooooooooooooooooooocc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "wall": [
-     139,
-     123,
-     74
+    "parts": true,
+    "roofs": {
+     "_look": {
+      "floor": [
+       123,
+       98,
+       74
+      ],
+      "wall": [
+       139,
+       123,
+       74
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D14R0102.png",
+      "at": [
+       4,
+       1
+      ]
+     }
+    },
+    "trainer_spots": [
+     "Veteran Grant"
+    ],
+    "people": [
+     "TM192",
+     "TM058",
+     "BIG PEARL",
+     {
+      "text": "Cyclist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "See those bumps in the ground? Fly over them on a Bicycle. What a rush!"
+       ]
+      }
+     },
+     "TM291",
+     "EARTH PLATE"
     ]
    }
+  ],
+  "floor_names": [
+   "1F",
+   "B1F"
+  ],
+  "figure_floors": {
+   "Hiker": 0,
+   "Picnicker Diana": 0,
+   "Camper Curtis": 0,
+   "Veteran Grant": 1,
+   "TM192": 1,
+   "EARTH PLATE": 1,
+   "TM058": 1,
+   "TM291": 1,
+   "BIG PEARL": 1,
+   "Cyclist": 1
   },
-  "people": [
-   {
-    "text": "Hiker",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "A brand-new Trainer! Earn Oreburgh's Badge, and you can smash small rocks out of the way.",
-      "That's the Coal Badge! Take this. It teaches Rock Smash."
-     ],
-     "gift_item": {
-      "HM_ROCK_SMASH": 1
-     },
-     "flag": "got_hm_rock_smash_oreburgh_gate",
-     "done": [
-      "Rock Smash breaks cracked rocks. Give it a try!"
-     ],
-     "requires": [
-      "has_coal_badge"
-     ],
-     "fail": [
-      "Earn the Gym Badge in Oreburgh City, then come see me!"
-     ]
-    },
-    "color": "GOLD"
-   }
-  ]
+  "theme": "cave"
  },
  "OREBURGH_CITY": {
   "art": [
@@ -173551,7 +173850,29 @@
    "20,13": "flower",
    "24,28": "house_0201",
    "11,16": "house_0301"
-  }
+  },
+  "barred": [
+   {
+    "tiles": [
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      3
+     ]
+    ],
+    "look": "grunt",
+    "until": {
+     "flag_condition": "sinnoh_r205_girl"
+    },
+    "lines": [
+     "Grunt: Team Galactic, stuck guarding a field of flowers? This can't be our big mission...",
+     "Grunt: Beat it, kid. Nobody goes into the Meadow."
+    ]
+   }
+  ]
  },
  "FLOAROMA_MEADOW": {
   "art": [
@@ -222534,7 +222855,7 @@
    "kkk......kTTkkkkkkkkkkkk===...TT",
    "n.......................===...TT",
    "n.===========================...",
-   "n=============================..",
+   "n==================N==========..",
    "n.===========================..>",
    "kkk............................>",
    "TTk.............TTTTTTTTTTcccccc",
@@ -223094,6 +223415,22 @@
       "Spread sweet Honey on a tree and Pokemon may come for a taste."
      ]
     }
+   },
+   {
+    "text": "Little girl",
+    "action": "EVENT",
+    "flag_condition": "not windworks_cleared",
+    "event": {
+     "lines": [
+      "Little girl: Help! Please help me, Trainer!",
+      "Little girl: Men in funny space suits took over the Valley Windworks. They chased me out...",
+      "Little girl: ...and my papa is still in there! Please, I want my papa back!"
+     ],
+     "flag": "sinnoh_r205_girl",
+     "done": [
+      "Little girl: Papa's at the Valley Windworks, just east of here. Please save him!"
+     ]
+    }
    }
   ],
   "rooms": {
@@ -223368,13 +223705,11 @@
        ]
       ],
       "look": "grunt",
-      "until": {
-       "area_cleared": "FLOAROMA_MEADOW"
-      },
       "lines": [
-       "Grunt: The Windworks is locked! My pals in the Meadow have the Works Key.",
-       "Beat the grunts in Floaroma Meadow to get the key."
-      ]
+       "The door is locked from the inside.",
+       "The grunts who went into Floaroma Meadow have the Works Key."
+      ],
+      "item": "WORKS_KEY"
      }
     ],
     "exits": {
