@@ -155,19 +155,23 @@ for area, came, who, flags_, items_, day, flag in (
         ("BELL_TOWER", "BELLCHIME_TRAIL", "CHALLENGE HO-OH", ("got_rainbow_wing",), ("RAINBOW_WING",), None, None),
         ("WHIRL_ISLANDS", "JOHTO_ROUTE_41", "CHALLENGE LUGIA", ("got_silver_wing", "got_tidal_bell"), ("SILVER_WING", "TIDAL_BELL"), None, None),
         ("MT_SILVER", "MT_SILVER_CITY", "SEEK MOLTRES", ("beat_johto_champion",), (), None, "mt_silver_moltres_defeated"),
-        ("BURNED_TOWER", "ECRUTEAK_CITY", "ENCOUNTER SUICUNE", ("johto_beasts_fled",), (), None, None)):
+        ("BURNED_TOWER", "ECRUTEAK_CITY", "ENCOUNTER SUICUNE", ("johto_beasts_fled",), (), None, None),
+        ("JOHTO_EMBEDDED_TOWER", "JOHTO_ROUTE_47", "Embedded Tower", (), ("HM_ROCK_CLIMB",), None, None),   # (SoulSilver's Groudon)
+        ("JOHTO_EMBEDDED_TOWER", "JOHTO_ROUTE_47", "AWAKEN KYOGRE", ("beat_johto_champion", "JOHTO_EMBEDDED_TOWER_boss_defeated"), ("HM_ROCK_CLIMB",), None, "embedded_kyogre_defeated"),   # (the other version's, after the title)
+        ("JOHTO_EMBEDDED_TOWER", "JOHTO_ROUTE_47", "CALL RAYQUAZA", ("beat_johto_champion", "JOHTO_EMBEDDED_TOWER_boss_defeated", "embedded_kyogre_defeated"), ("HM_ROCK_CLIMB",), None, "embedded_rayquaza_defeated")):
     johto(badges=8, flags=flags_, items=items_)
     if day:
         on_day(day)
     ace()
-    story.story_flags.pop(f"{area}_boss_defeated", None)
+    if f"{area}_boss_defeated" not in flags_:
+        story.story_flags.pop(f"{area}_boss_defeated", None)
     if flag:
         story.story_flags.pop(flag, None)
     r = route(area, came)
     f0 = set(k for k, v in story.story_flags.items() if v)
     w = meet(r, who, n=8000)
     caught = [k for k, v in story.story_flags.items() if v and k.startswith("caught_") and k not in f0]
-    done = won(f"{area}_boss_defeated") or (flag and won(flag)) or bool(caught)
+    done = (won(flag) if flag else won(f"{area}_boss_defeated")) or bool(caught)
     check(w is not None and done, f"{area}: walk up to it ({who}) and battle it ({'beaten or caught ' + str(caught) if done else 'not won'}; {w and w[:1]})")
     _dt.date = _real_date
 
