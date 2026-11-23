@@ -115,6 +115,30 @@ def report(title, start, prev):
     return seen
 
 
+_WALK = {}
+
+
+def _walk_exits(area):
+    """The areas a walkable map's exits name (its own and its rooms'; "ROOM:" and "OUT:" stay inside): a place rebuilt
+    walkable has no menu buttons left, so its ways out live only in assets/town_maps.json (Unova's cleanup, 11-23)."""
+    if "maps" not in _WALK:
+        try:
+            import json as _json
+            _d = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+            _WALK["maps"] = _d.get("maps", _d)
+        except (OSError, ValueError):
+            _WALK["maps"] = {}
+    m = _WALK["maps"].get(area) or {}
+    out = []
+    for part in [m] + list(m.get("floors") or []) + list((m.get("rooms") or {}).values()):
+        ex = (part or {}).get("exits") if isinstance(part, dict) else None
+        for t in (ex.values() if isinstance(ex, dict) else ex or []):
+            t = t if isinstance(t, str) else (t.get("target") if isinstance(t, dict) else None)
+            if t and not t.startswith(("ROOM:", "OUT:")) and t in PROG:
+                out.append(t)
+    return out
+
+
 def _raw_targets(area):
     a = PROG.get(area) or {}
     out = []
@@ -122,7 +146,7 @@ def _raw_targets(area):
         t = o.get("target_area") or (o.get("target") if o.get("action") in ("TRAVEL", "EXIT") else None)
         if t:
             out.append(t)
-    return out
+    return list(dict.fromkeys(out + _walk_exits(area)))
 
 
 def expansion_check(tag, keys, start):
