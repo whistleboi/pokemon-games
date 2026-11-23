@@ -164,9 +164,12 @@ def _trainer(state, ev, show):
         return
     kind = f["type"]
     who = str(ev.get("name") or ev.get("text") or "").strip()
-    if kind == "KNOCKOUT":
-        k = next((i for i, t in enumerate(f["trainers"]) if t["name"] == who), 0)
-        done = story.story_flags.get(f"tt_ko_{n}_{k}")
+    if kind == "KNOCKOUT":   # (FireRed's order whoever you face: bottom, top, right - the first not yet beaten)
+        mine = next((i for i, t in enumerate(f["trainers"]) if t["name"] == who), 0)
+        k = next((i for i in range(len(f["trainers"])) if not story.story_flags.get(f"tt_ko_{n}_{i}")), mine)
+        done = story.story_flags.get(f"tt_floor_{n}")
+        if done:
+            k = mine
     else:
         k = 0
         done = story.story_flags.get(f"tt_floor_{n}")
@@ -248,8 +251,9 @@ def after_battle(game, info, won):
         if all(story.story_flags.get(f"tt_ko_{n}_{i}") for i in range(3)):
             story.story_flags[f"tt_floor_{n}"] = True
             return ["The stairs up are open!"]
-        left = 3 - sum(1 for i in range(3) if story.story_flags.get(f"tt_ko_{n}_{i}"))
-        return [f"{left} more Trainer{'s' if left > 1 else ''} to beat on this floor!"]
+        nxt = next(i for i in range(3) if not story.story_flags.get(f"tt_ko_{n}_{i}"))   # (FireRed: the next comes straight at you)
+        f = floor_data(story, n)
+        return (lambda: game.change_state(_battle(game, n, f, nxt))) if f else ["The next Trainer is waiting!"]
     story.story_flags[f"tt_floor_{n}"] = True
     return ["The stairs up are open!"]
 

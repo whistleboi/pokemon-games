@@ -669,6 +669,36 @@ p.run.player, p.anim = (9, 3), 0
 p.step(0, -1); _ttap(p)
 _one = {(m.payload or {}).get("text"): (m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
 check(p.run.index == 1 and _one.get("Alberto") == (15, 13), f"...up to 1F: the Single climb's first trainer, Alberto, on FireRed's spot ({p.run.index}, {_one})")
+# (FireRed's trigger tile: step onto (10,13) and Alberto walks up and battles you - Jordan 11-23)
+p.run.player, p.anim = (10, 14), 0
+p.step(0, -1)
+for _ in range(400):
+    if type(g.current_state).__name__ == "TrainerIntroState":
+        break
+    _st = g.current_state
+    if getattr(_st, "dialogue_box", None) is not None and getattr(_st.dialogue_box, "visible", False):
+        _st.dialogue_box.advance()
+    frames(_st)
+_trig = g.current_state
+check(type(_trig).__name__ == "TrainerIntroState" and getattr(getattr(_trig, "next_state", None), "trainer_name", None) == "Alberto",
+      f"...step onto FireRed's trigger tile (10,13): Alberto walks up and the battle starts ({type(_trig).__name__})")
+g.change_state(p); frames(p, 2)
+# Knockout: a win and the next comes straight at you, in FireRed's order (bottom, top, right)
+_was = {k: story.story_flags.get(k) for k in ("tt_climb_SINGLE_on", "tt_climb_KNOCKOUT")}
+story.story_flags.pop("tt_climb_SINGLE_on", None); story.story_flags["tt_climb_KNOCKOUT"] = True
+_kf = _tt.floor_data(story, 1)
+_nx = _tt.after_battle(g, {"floor": 1, "kind": "KNOCKOUT", "k": 0}, True)
+if callable(_nx):
+    _nx()
+_ko = g.current_state
+check(callable(_nx) and type(_ko).__name__ == "TrainerIntroState" and getattr(_ko.next_state, "trainer_name", None) == _kf["trainers"][1]["name"]
+      and len([q for q in _ko.next_state.opponent_team if q]) == 1,
+      f"...Knockout: beat the first and the second comes straight at you, one Pokemon each ({getattr(getattr(_ko, 'next_state', None), 'trainer_name', None)})")
+for _k, _v in _was.items():
+    story.story_flags.pop(_k, None)
+    if _v: story.story_flags[_k] = _v
+story.story_flags.pop("tt_ko_1_0", None)
+g.change_state(p); frames(p, 2)
 _b = _tt._battle(g, 1, _tt.floor_data(story, 1), 0)
 _bb = getattr(_b, "battle_state", None) or getattr(_b, "next_state", None) or getattr(_b, "battle", None)
 _team = [(q.id, q.level, getattr(q, "held_item", None)) for q in getattr(_bb, "opponent_team", [])]

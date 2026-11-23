@@ -558177,6 +558177,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Alberto",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_1"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -558266,6 +558283,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Brandon",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_2"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -558355,6 +558389,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Jarrett",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_3"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -558444,6 +558495,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Cole",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_4"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -558533,6 +558601,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Joey",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_5"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -558622,6 +558707,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Braden",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_6"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -558711,6 +558813,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Jac",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_7"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -558800,6 +558919,23 @@
     },
     "pool": "NO_WILD_INDOORS_PERCENTAGES",
     "theme": "room",
+    "scenes": [
+     {
+      "who": "Lily",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_8"
+     }
+    ],
     "barred": [
      {
       "tiles": [
@@ -559179,6 +559315,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Jen",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        },
+        {
+         "who": "Jen",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -559273,6 +559441,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Jo",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        },
+        {
+         "who": "Jo",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -559367,6 +559567,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        },
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -559461,6 +559693,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Isac",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        },
+        {
+         "who": "Isac",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -559555,6 +559819,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Jos",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        },
+        {
+         "who": "Jos",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -559649,6 +559945,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Emy",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        },
+        {
+         "who": "Emy",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -559743,6 +560071,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Axe",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        },
+        {
+         "who": "Axe",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -559837,6 +560197,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        },
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560250,6 +560642,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Jordy",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560349,6 +560758,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Mike",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560448,6 +560874,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Camryn",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560547,6 +560990,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Brennan",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560646,6 +561106,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Maura",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560745,6 +561222,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Ben",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560844,6 +561338,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Priscilla",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -560943,6 +561454,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Chelsea",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -561344,6 +561872,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Allyson",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -561433,6 +561978,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Lorenzo",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -561522,6 +562084,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Owen",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -561606,6 +562185,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        },
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -561700,6 +562311,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Kat",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        },
+        {
+         "who": "Kat",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -561809,6 +562452,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Chelsea",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -561893,6 +562553,38 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        },
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        }
+       ],
        "barred": [
         {
          "tiles": [
@@ -562002,6 +562694,23 @@
        },
        "pool": "NO_WILD_INDOORS_PERCENTAGES",
        "theme": "room",
+       "scenes": [
+        {
+         "who": "Mike",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        }
+       ],
        "barred": [
         {
          "tiles": [
