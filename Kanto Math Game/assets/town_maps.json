@@ -984,7 +984,7 @@
      "lines": [
       "Zzz... I can't eat another bite... Zzz...",
       "...Hm? Oh! I was dreaming about a feast.",
-      "Want your Pokemon to feast on dreams too? I'll teach it Dream Eater. Just this once... yaaawn."
+      "Want your Pokemon to feast on dreams too? I'll teach it Dream Eater... yaaawn."
      ],
      "tutor": {
       "move": "DREAM-EATER",
@@ -3385,7 +3385,7 @@
       "event": {
        "lines": [
         "Whoa, a Trainer! Never throw in the towel, kid. Throw your opponent instead!",
-        "I'll teach one of your Pokemon Seismic Toss. It hits as hard as its level, every time! Only once, though."
+        "I'll teach one of your Pokemon Seismic Toss. It hits as hard as its level, every time!"
        ],
        "tutor": {
         "move": "SEISMIC-TOSS",
@@ -5208,7 +5208,7 @@
     "event": {
      "lines": [
       "Kicks? Bah! The fist is everything! That fool next to me only thinks about his feet.",
-      "Let me teach one of your Pokemon the way of the fist: Mega Punch! Just this once, mind."
+      "Let me teach one of your Pokemon the way of the fist: Mega Punch!"
      ],
      "tutor": {
       "move": "MEGA-PUNCH",
@@ -5230,7 +5230,7 @@
     "event": {
      "lines": [
       "Punches? Please! Real power comes from the legs. Ignore the guy beside me.",
-      "I'll teach one of your Pokemon the way of the kick: Mega Kick! Only the once, though."
+      "I'll teach one of your Pokemon the way of the kick: Mega Kick!"
      ],
      "tutor": {
       "move": "MEGA-KICK",
@@ -12712,7 +12712,7 @@
       "event": {
        "lines": [
         "Rocks fall all the time in a tunnel like this. Might as well put them to work!",
-        "I'll teach one of your Pokemon Rock Slide. Just once. Scary to use it in here, though..."
+        "I'll teach one of your Pokemon Rock Slide. Scary to use it in here, though..."
        ],
        "tutor": {
         "move": "ROCK-SLIDE",
@@ -17566,7 +17566,7 @@
     "event": {
      "lines": [
       "Not many people come all the way out here! You must have Surfed across the pond.",
-      "As a reward, I'll teach Soft-Boiled to one of your Pokemon. It can heal itself, or so they say. Just the once!"
+      "As a reward, I'll teach Soft-Boiled to one of your Pokemon. It can heal itself, or so they say."
      ],
      "tutor": {
       "move": "SOFT-BOILED",
@@ -18034,7 +18034,7 @@
       "event": {
        "lines": [
         "I work the counter here, so naturally my favourite move is Counter!",
-        "Hit back twice as hard as you got hit! I'll teach it to one of your Pokemon, one time only."
+        "Hit back twice as hard as you got hit! I'll teach it to one of your Pokemon."
        ],
        "tutor": {
         "move": "COUNTER",
@@ -22495,7 +22495,7 @@
     "event": {
      "lines": [
       "Aww, I wish I were a baby Kangaskhan. I'd love to be a substitute and snuggle in that pouch...",
-      "Speaking of substitutes! I'll teach one of your Pokemon Substitute, just once. It makes a decoy of itself!"
+      "Speaking of substitutes! I'll teach one of your Pokemon Substitute. It makes a decoy of itself!"
      ],
      "tutor": {
       "move": "SUBSTITUTE",
@@ -27197,7 +27197,7 @@
       "event": {
        "lines": [
         "Tch-tch-tch! That's the sound of a Metronome. It tweaks a Pokemon's brain into using a move it doesn't even know!",
-        "Fascinating, isn't it? I'll teach it to one of your Pokemon, one time only. For science!"
+        "Fascinating, isn't it? I'll teach it to one of your Pokemon. For science!"
        ],
        "tutor": {
         "move": "METRONOME",
@@ -30324,7 +30324,7 @@
       "event": {
        "lines": [
         "You made it this far! Keep that drive going all the way to the Pokemon League!",
-        "Here, take a move that charges straight ahead: Double-Edge. I'll teach it to one of your Pokemon, just once."
+        "Here, take a move that charges straight ahead: Double-Edge. I'll teach it to one of your Pokemon."
        ],
        "tutor": {
         "move": "DOUBLE-EDGE",

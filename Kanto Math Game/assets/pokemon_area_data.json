@@ -2267,12 +2267,12 @@
             "stages": [
               {
                 "lines": [
-                  "Employee: You saved us! Silph's UP-GRADE, a part that makes Porygon even better, is made in Sinnoh now.",
-                  "You can buy one at the Veilstone Department Store there."
+                  "Employee: You saved us! Have you met our scientist on 1F? He's making the UP-GRADE, a part that makes Porygon even better.",
+                  "He needs a link to the faraway islands first. Once that works, he'll have one for you!"
                 ],
                 "requires": [
                   "silph_co_cleared",
-                  "visited_region:JOHTO"
+                  "not:got_upgrade_silph"
                 ],
                 "flag": "silph_upgrade_hint"
               },
@@ -2280,7 +2280,7 @@
                 "flag": "frlg_tutor_thunder_wave",
                 "lines": [
                   "Employee: Thunder Wave paralyses the target. A paralysed Pokemon may not be able to move at all!",
-                  "It's our company's favourite move. Let me teach it to one of your Pokemon. Just this once!"
+                  "It's our company's favourite move. Let me teach it to one of your Pokemon!"
                 ],
                 "tutor": {
                   "move": "THUNDER-WAVE",
