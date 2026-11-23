@@ -22,8 +22,9 @@ def dex_regions(story):
     out = []
     for r, cfg in story.get_region_starts():
         lo, hi = cfg.get("dex_range", [0, -1])
-        if hi < lo:
-            continue  # travel-only places (Orange Islands, Orre) have no Pokedex of their own
+        if hi < lo and not cfg.get("dex_list"):
+            continue  # a place with neither a dex list nor a generation range has no Pokedex of their own
+        #  (11-23, main step M4: the Orange Islands and Orre are full regions: their dex_list is their Pokedex)
         if (r == story.starting_region or story.story_flags.get(f"received_starter_{r.lower()}")
                 or (national_dex and r in ("KANTO", "JOHTO"))):
             out.append(r)
@@ -95,7 +96,8 @@ ROW_H, ROWS_SHOWN = 32, 10   # the list's rows (Journeys' sizes)
 _INFO = {}
 # The dexes in generation order (Jordan, 11-05): the Orange Islands after Johto, Orre after Hoenn.
 GEN_ORDER = ("KANTO", "JOHTO", "ORANGE", "HOENN", "ORRE", "SINNOH", "UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA")
-TRAVEL_DEXES = ("ORANGE", "ORRE")  # (no Pokedex of their own: what lives there, in National order)
+TRAVEL_DEXES = ("ORANGE", "ORRE")  # (no generation range of their own: listed once you've been; their dex_list is their
+#  Pokedex (11-23, main step M4: Orange's = everything Orange gives); without one, what lives there in National order)
 _MAPS = {}  # the AREA page's maps, loaded once
 
 
@@ -252,8 +254,9 @@ class PokedexState(GameState):
     """The Pokedex's list (see above)."""
 
     def normal_dex_ids(self, caught_data, seen_ids):
-        if getattr(self, "dex_view", None) in TRAVEL_DEXES:
-            return travel_dex(self.game, self.dex_view)
+        view = getattr(self, "dex_view", None)
+        if view in TRAVEL_DEXES and not self.game.story_manager.get_region_start(view).get("dex_list"):
+            return travel_dex(self.game, view)
         return _dex_ids(self.game.story_manager, caught_data, seen_ids, getattr(self, "dex_view", None))
 
     def dex_views(self):
