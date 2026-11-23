@@ -830,7 +830,8 @@ def _run_story_event(state, key, check, show):
                     if mv is None:
                         show(_resolve_lines(game, ev.get("cancel") or ["Come back any time!"]))
                         return
-                    _tutor_flow(state, dict(tu, move=mv, like=mv, take=(tu.get("costs") or {}).get(mv, tu.get("take"))), ev, [], show)   # ("costs": each move's own price - Platinum's Shards)
+                    _tutor_flow(state, dict(tu, move=mv, like=mv, take=(tu.get("costs") or {}).get(mv, tu.get("take")),   # ("costs": each move's own price - Platinum's Shards;
+                                            bp=(tu.get("bp_costs") or {}).get(mv, tu.get("bp"))), ev, [], show)        #  "bp_costs": each move's BP - HGSS's Frontier Access)
                 game.change_state(PickListState(game, state, "WHICH MOVE?", [(m.replace("-", " "), m) for m in tu["choices"]], chose))
                 return
             _tutor_flow(state, tu, ev, head, show, flag=flag)
@@ -1325,9 +1326,12 @@ def _tutor_or_tm(state, ev, head, teach):
             if not left:
                 _say_then(state, ["You have that TM already! It teaches the move as often as you like."], lambda: None)
                 return
-            if (ev.get("tutor") or {}).get("bp"):   # (a Battle Point tutor: its TM for the same BP, not money; 11-22)
+            _tu = ev.get("tutor") or {}
+            if _tu.get("bp") or _tu.get("bp_costs"):   # (a Battle Point tutor: its TM for the same BP as the move, not money; 11-22)
                 from src.states.game_corner import BPShopState
-                game.change_state(BPShopState(game, state, items=[(t, int(ev["tutor"]["bp"])) for t in left], title="Move Tutor"))
+                _costs = {str(k).upper().replace("_", "-"): v for k, v in (_tu.get("bp_costs") or {}).items()}
+                game.change_state(BPShopState(game, state, items=[(t, int(_costs.get(_tms.move_of(game, t), _tu.get("bp") or 32))) for t in left],
+                                              title="Move Tutor"))
                 return
             game.change_state(PokeMartState(game, state, stock=left, tutor_sale=True))
         else:

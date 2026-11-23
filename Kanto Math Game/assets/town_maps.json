@@ -85499,7 +85499,7 @@
   "buildings": {
    "C": "center",
    "B": "mart",
-   "H": "house",
+   "H": "tutors",
    "E": "house",
    "F": "house",
    "G": "house"
@@ -85986,11 +85986,135 @@
       "px": 32
      }
     ]
+   },
+   "tutors": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmm...mmzc",
+     "c.........c",
+     "c....NmmN.c",
+     "c.....mmN.c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:4,23"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "1,2": [
+       201,
+       207,
+       220
+      ],
+      "2,2": [
+       162,
+       169,
+       202
+      ],
+      "3,2": [
+       162,
+       169,
+       202
+      ],
+      "6,4": [
+       237,
+       200,
+       98
+      ],
+      "6,5": [
+       237,
+       200,
+       98
+      ],
+      "7,2": [
+       161,
+       168,
+       109
+      ],
+      "7,4": [
+       237,
+       200,
+       98
+      ],
+      "7,5": [
+       237,
+       200,
+       98
+      ],
+      "8,2": [
+       161,
+       168,
+       109
+      ]
+     },
+     "_kinds": {
+      "1,2": "fridge",
+      "2,2": "sink",
+      "3,2": "sink",
+      "7,2": "shelf",
+      "8,2": "shelf",
+      "6,4": "table",
+      "7,4": "table",
+      "6,5": "table",
+      "7,5": "table"
+     },
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      236,
+      232,
+      214
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D32R0103.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Tutor (left)",
+     "Tutor (middle)",
+     "Tutor (right)"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D32R0103.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       11,
+       10
+      ],
+      "px": 32
+     }
+    ]
    }
   },
   "inside": {
    "8,14": "center",
-   "19,14": "mart"
+   "19,14": "mart",
+   "4,23": "tutors"
+  },
+  "hidden": {
+   "24,21": "RARE_CANDY"
   }
  },
  "JOHTO_SS_AQUA": {

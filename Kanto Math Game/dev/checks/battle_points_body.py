@@ -206,4 +206,20 @@ acts = [m.payload for m in fl0.movers if isinstance(m.payload, dict)]
 check(sum(1 for a in acts if a.get("action") == "EVENT") >= 20 and any(a.get("action") == "SCRATCH_OFF" for a in acts),
       f"the plaza: its folk and the Scratch-Off clerk ({len(acts)} people)")
 check(t._floor_name(t.run.index) == "Gate", f"in from Frontier Access: the gate, south ({t._floor_name(t.run.index)})")
+
+print("9) Frontier Access's Move Tutor house: 51 moves for BP, each paid once (HGSS, Bulbapedia's prices)")
+fa = g.loader.area_data["STORY_PROGRESSION"]["FRONTIER_ACCESS"]
+tut = {o["text"]: o["event"] for o in fa["route_menu"] if (o.get("event") or {}).get("tutor")}
+n_moves = sum(len(e_["tutor"]["choices"]) for e_ in tut.values())
+check(len(tut) == 3 and n_moves == 51, f"three tutors, 51 moves ({len(tut)}, {n_moves})")
+story.current_area_key = "FRONTIER_ACCESS"; story.last_area_key = "JOHTO_ROUTE_40"
+t = _PS(g); g.change_state(t)
+rooms_ = [t._floor_name(i) for i in range(t.run.n_floors)]
+check("Tutors" in rooms_ and "Center" in rooms_ and "Mart" in rooms_, f"its house, Center and Mart {rooms_}")
+ev = tut["Tutor (left)"]; tu = ev["tutor"]
+pika = Pokemon(g.loader.fetch_specific(25), g.assets); story.player_team = [pika]
+_tp = _tms.key_for_move(g, "THUNDER-PUNCH"); story.inventory.pop(_tp, None); story.story_flags.pop("bp_tutor_THUNDER-PUNCH", None)
+story.story_flags[bpl.BP_FLAG] = 70
+out = _tutor_teach(g, dict(tu, move="THUNDER-PUNCH", like="THUNDER-PUNCH", bp=tu["bp_costs"]["THUNDER-PUNCH"]), ev, who=pika)
+check(bpl.bp(story) == 6 and story.inventory.get(_tp) == 1, f"Thunder Punch: 64 BP once, unlocked like its TM ({bpl.bp(story)} BP left; {out[-1]})")
 print(f"##### {len(fails)} failures")
