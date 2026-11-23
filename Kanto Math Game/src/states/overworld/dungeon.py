@@ -2689,8 +2689,18 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         self.pending = ("wild", mover)
         self.mode = "MAP"
         self.rounds_completed += 1
-        from src.world import walk_partners
+        from src.world import walk_partners, hordes
         wp = walk_partners.active(self.game.story_manager, self.area_key)
+        if not wp and hordes.roll(self.game, self.area_data):   # (a horde: five at once, ORAS; the area's horde pool and rate)
+            horde = hordes.make(self.game, self.area_key, self.area_data)
+            if horde:
+                from src.states.battle_horde import HordeBattleState
+                battle = HordeBattleState(self.game, horde, self.area_key,
+                                          background_image=self._get_battle_background_for_area())
+                battle.play_state_data = self._play_data()
+                pygame.event.clear()
+                self.game.change_state(battle)
+                return
         if wp:   # (a partner with you: wild Pokemon come two at a time, as in Platinum)
             other = self._make_wild(random.Random(), (mover.x, mover.y))
             if other is not None:
