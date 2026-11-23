@@ -332360,7 +332360,10 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "Trader"
+     [
+      "Trader",
+      "Trader "
+     ]
     ],
     "moves": {
      "7,4": {
@@ -340316,7 +340319,10 @@
        ]
       }
      },
-     "Trader"
+     [
+      "Trader",
+      "Trader "
+     ]
     ],
     "moves": {
      "1,2": {

@@ -284,6 +284,11 @@ for area, who, want, give, item in TRADES:
     new = next((p for p in story.player_team if p.id == give), None)
     check(new is not None and want not in ids and getattr(new, "held_item", None) == item,
           f"{area}: {who} - your #{want} for #{give} holding {item} ({(w or [])[:1]}, {ids}, {getattr(new, 'held_item', None)})")
+    _after = next((o for k in ("explore_options", "route_menu") for o in _P[area].get(k, []) if o.get("text") == who + " "), None)
+    _line = ((_after or {}).get("event") or {}).get("lines", [""])[0] or ((ev or {}).get("event", {}).get("done") or [""])[0]
+    w2 = meet(place(area, _came(area)), who + " ") or meet(place(area, _came(area)), who)
+    check(bool(_line) and any(_line[:30] in l for l in (w2 or [])),
+          f"...and talked to again, the {who} says the after-trade line (11-23: Navel, Yambera, Route 64 had lost it) ({(w2 or [])[:1]})")
 
 print("3) Gifts from people: talk, and the item is in the Bag (once)")
 GIFTS = [("VALENCIA_ISLAND", "Old Rod fisherman", "OLD_ROD", {}), ("KINNOW_ISLAND", "Fisherman", "GOOD_ROD", {}),
