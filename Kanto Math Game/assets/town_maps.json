@@ -41852,6 +41852,33 @@
   }
  },
  "JOHTO_ROUTE_32": {
+  "barred": [
+   {
+    "tiles": [
+     [
+      27,
+      17
+     ],
+     [
+      28,
+      17
+     ]
+    ],
+    "look": "unseen",
+    "until": {
+     "condition": {
+      "any": [
+       "got_togepi_egg",
+       "visited_AZALEA_TOWN"
+      ]
+     }
+    },
+    "lines": [
+     "Hey, wait up! Elm's aide was looking all over Violet for you. She's at the Pokemon Center.",
+     "Better go and see her before you head south. It sounded important!"
+    ]
+   }
+  ],
   "art": [
    "TTTTTTTTTTTTTTffff.....^^.TTTTTT",
    "TTTTTTTTTTTTTTff..........TTTTTT",
@@ -87235,6 +87262,7 @@
      {
       "text": "Worker",
       "action": "EVENT",
+      "flag_condition": "not ampharos_cured",
       "event": {
        "lines": [
         "Hm? You want to go to the Safari Zone too? It's still being built. Come back later, kid."
@@ -87244,6 +87272,7 @@
      {
       "text": "Worker ",
       "action": "EVENT",
+      "flag_condition": "not ampharos_cured",
       "event": {
        "lines": [
         "Everybody's excited about the Safari Zone. The lady at the front desk is a little over the top about it, though..."

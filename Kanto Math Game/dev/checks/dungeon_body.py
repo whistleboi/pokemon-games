@@ -1203,11 +1203,11 @@ _top = _CS(g); g.change_state(_top); _tap_through(_top)
 check(isinstance(_top, _WTS) and sorted(o["text"] for o in _top._people().values() if not o.get("found")) == ["Check Amphy", "Talk to Jasmine"]
       and {"OLIVINE_CITY", "OLIVINE_LIGHTHOUSE_FLOORS"} == set(_top.exits.values()), "...the beacon room: Jasmine, Amphy, the stairs, the elevator")
 _lift = next(t for t, v in _top.exits.items() if v == "OLIVINE_CITY")
-story.story_flags.pop("ampharos_cured", None)
+story.story_flags.pop("ampharos_cured", None); story.story_flags.pop("jasmine_explained", None)
 _top.player = _top.anim_from = (_lift[0], _lift[1] + 1); _top.anim = 0
 _top.step(0, -1)
-check("locked" in _top.toast and type(g.current_state).__name__ != "AreaTransitionState", "...the elevator is locked until Amphy has its medicine")
-story.story_flags["ampharos_cured"] = True
+check("locked" in _top.toast and type(g.current_state).__name__ != "AreaTransitionState", "...the elevator is locked till Jasmine has told you about Amphy")
+story.story_flags["jasmine_explained"] = True   # (11-23: she lends you the lift once she has explained, so you can go for the potion)
 _top.anim = 0
 _top.player = _top.anim_from = (_lift[0], _lift[1] + 1)
 _top.step(0, -1)

@@ -85,7 +85,7 @@
         "lance_mahogany_intro": ["Lance: I've tracked the source of the high-frequency signal to this shop.", "Team Rocket is hiding a massive base beneath Mahogany Town.", "They are forcing Pokémon to evolve using artificial radio waves!", "I will go ahead and scout. Follow me when you are ready!"],
         "lance_mahogany_cleared": ["Lance: Excellent work. Team Rocket's radio signal has been cut off.", "The Dragon's Den in Blackthorn is your next destination."],
         "kimono_girls_intro": ["We are the Kimono Girls of Ecruteak.", "We dance to honor the legends of the towers.", "A master of math and heart may one day see the rainbow bird."],
-        "jasmine_lighthouse_intro": ["Jasmine: Amphy is sick and the lighthouse can't shine.", "There is a pharmacy in Cianwood City that has a special medicine.", "But I cannot leave Amphy alone... please, could you go for me?", "You will need to cross the sea. Please, take this SURF BOARD.", "You received the SURF BOARD!"],
+        "jasmine_lighthouse_intro": ["Jasmine: Amphy is sick and the lighthouse can't shine.", "There is a pharmacy in Cianwood City that has a special medicine.", "But I cannot leave Amphy alone... please, could you go for me?", "Cianwood is across the sea, to the west. Please, take the lift down - I'll unlock it for you."],
         "jasmine_lighthouse_medicine": ["Jasmine: You brought the medicine from Cianwood?", "Thank you so much! Please, give it to Amphy!", "I cannot thank you enough. Math truly connects all hearts."],
         "amphy_sick": ["Amphy looks very weak...", "Its light is barely flickering."],
         "amphy_cured": ["Amphy swallowed the SECRET POTION!", "The light in its tail begins to glow brightly!", "Amphy is cured!"],
@@ -1502,7 +1502,7 @@
             "route_name": "Glitter Lighthouse",
             "backgrounds": {"main": "lighthouse_top.png"},
             "travel_options": [
-                {"text": "Olivine City", "target_area": "OLIVINE_CITY", "flag_condition": "ampharos_cured"},
+                {"text": "Olivine City", "target_area": "OLIVINE_CITY", "condition": {"any": ["jasmine_explained", "ampharos_cured"]}},
                 {"text": "Stairs Down", "target_area": "OLIVINE_LIGHTHOUSE_FLOORS"}
             ],
             "explore_options": [
@@ -4386,8 +4386,8 @@
             "reward": "Zephyr Badge"
         },
         {
-            "id": "johto_m5", "type": "MAIN", "title": "Slowpoke Rescue", "description": "Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
-            "target": "SLOWPOKE_WELL",
+            "id": "johto_m5", "type": "MAIN", "title": "Slowpoke Rescue", "description": "Elm's aide is waiting in Violet City with something for you. Then head south through Union Cave: Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
+            "target": "SLOWPOKE_WELL", "targets": [["VIOLET_CITY", "got_togepi_egg"], ["SLOWPOKE_WELL", "slowpoke_well_cleared"]],
             "condition": { "start_region": "JOHTO", "badges_min": 1, "flag_not": "slowpoke_well_cleared" },
             "reward": "5 Lure Balls"
         },
@@ -4437,9 +4437,9 @@
             "reward": "Mineral Badge + 3 Rare Candies"
         },
         {
-            "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "Jasmine's Ampharos is ill! First get Surf: chase off the Rocket Grunt bothering the Kimono Girls at Ecruteak's Dance Theater. Then cross the sea to Cianwood City and get the Secret Potion from its pharmacy.",
+            "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "Jasmine's Ampharos is ill! First get Surf: chase off the Rocket Grunt bothering the Kimono Girls at Ecruteak's Dance Theater. Climb Olivine's Lighthouse to see what's wrong, then cross the sea to Cianwood City for the Secret Potion from its pharmacy.",
             "target": "CIANWOOD_CITY",
-            "targets": [["ECRUTEAK_DANCE_THEATER", "has_item:HM_SURF"], ["CIANWOOD_CITY", "has_item:SECRET_POTION"]],
+            "targets": [["ECRUTEAK_DANCE_THEATER", "has_item:HM_SURF"], ["OLIVINE_LIGHTHOUSE", "jasmine_explained"], ["CIANWOOD_CITY", "has_item:SECRET_POTION"]],
             "condition": { "start_region": "JOHTO", "badges_min": 4, "item_not": "SECRET_POTION", "flag_not": "ampharos_cured" }
         },
         {
@@ -4519,8 +4519,6 @@
             "id": "johto_s3", "type": "SIDE", "title": "The Karate King", "description": "Deep inside Mt. Mortar, the Karate King awaits a challenger. Defeat him to receive a rare Fighting-type Pokemon.",
             "condition": { "visited": "MT_MORTAR", "flag_not": "defeated_karate_king" }
         },
-        { "id": "johto_s_togepi", "type": "SIDE", "title": "Something Warm in Violet", "description": "Prof. Elm's aide is waiting in Violet City's Pokemon Center. She's holding something round, and it's warm to the touch.", "target": "VIOLET_CITY",
-          "condition": { "required_region": "JOHTO", "flag": "elm_received_egg", "badges_min": 1, "flag_not": "got_togepi_egg" }, "completed_flag": "got_togepi_egg" },
         { "id": "johto_s_kenya", "type": "SIDE", "title": "Special Delivery", "description": "A guard at Goldenrod's gate has a Spearow carrying a letter, and nobody to take it to his friend. The friend is somewhere on Route 31... asleep.", "target": "GOLDENROD_CITY",
           "targets": [["GOLDENROD_CITY", "got_kenya"], ["JOHTO_ROUTE_31", "kenya_delivered"], ["GOLDENROD_CITY", "got_hp_up_kenya_guard"]],
           "condition": { "required_region": "JOHTO", "visited": "GOLDENROD_CITY", "flag_not": "got_hp_up_kenya_guard" }, "completed_flag": "got_hp_up_kenya_guard" },

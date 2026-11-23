@@ -381,6 +381,12 @@ MAPS = {
     },
     # Route 32. From SoulSilver's own map data (zone R32, its whole 32 x 160): Violet north, the Ruins of Alph gatehouse top left, the long shore and pier, the Center and Union Cave's mouth at the south end. The one open tile on the south border (to Route 33) is closed: our areas join through Union Cave.
     "JOHTO_ROUTE_32": {
+        # 11-23 (gate check, HGSS + Crystal; Jordan: "follow the games"): the man north of Route 32 walks you back to Violet till Elm's
+        # aide has given you the Egg (HGSS: R32 trigger 475,305 while VAR_UNK_408D==0, FLAG_GOT_EGG_FROM_ELMS_ASSISTANT). An old save already
+        # past it (been to Azalea) is let through.
+        "barred": [{"tiles": [[27, 17], [28, 17]], "look": "unseen", "until": {"condition": {"any": ["got_togepi_egg", "visited_AZALEA_TOWN"]}},
+                    "lines": ["Hey, wait up! Elm's aide was looking all over Violet for you. She's at the Pokemon Center.",
+                              "Better go and see her before you head south. It sounded important!"]}],
         "art": [
             "TTTTTTTTTTTTTTffff.....^^.TTTTTT",
             "TTTTTTTTTTTTTTff..........TTTTTT",
@@ -6058,7 +6064,7 @@ MAPS = {
                 "parts": True,
                 "exits": {">": "CIANWOOD_CITY", "<": "JOHTO_ROUTE_47"},
                 "hidden": {"25,9": "BIG_PEARL"},
-                "people": [{"text": "Safari desk", "action": "EVENT", "event": {"lines": ["Welcome, welcome, to the Safari Zone desk! It's coming soon - so soon, so soon!", "Wild Pokemon, wide-open spaces, the ride of a lifetime! Oh, I can hardly wait!"]}}, {"text": "Worker", "action": "EVENT", "event": {"lines": ["Hm? You want to go to the Safari Zone too? It's still being built. Come back later, kid."]}}, {"text": "Worker ", "action": "EVENT", "event": {"lines": ["Everybody's excited about the Safari Zone. The lady at the front desk is a little over the top about it, though..."]}}],
+                "people": [{"text": "Safari desk", "action": "EVENT", "event": {"lines": ["Welcome, welcome, to the Safari Zone desk! It's coming soon - so soon, so soon!", "Wild Pokemon, wide-open spaces, the ride of a lifetime! Oh, I can hardly wait!"]}}, {"text": "Worker", "action": "EVENT", "flag_condition": "not ampharos_cured", "event": {"lines": ["Hm? You want to go to the Safari Zone too? It's still being built. Come back later, kid."]}}, {"text": "Worker ", "action": "EVENT", "flag_condition": "not ampharos_cured", "event": {"lines": ["Everybody's excited about the Safari Zone. The lady at the front desk is a little over the top about it, though..."]}}],
                 "roofs": {"_picture": {"f": "ss_ground/D48R0101.png", "at": [15, 16], "px": 32}, "_buildings_in_picture": True, "_signs_in_picture": True},
                 "overheads": [{"kind": "picture", "f": "ss_top/D48R0101.png", "at": [15, 16], "size": [28, 33], "px": 32}],
             },
