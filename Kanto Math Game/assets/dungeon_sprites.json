@@ -7743,6 +7743,45 @@
     "MT_SILVER_CITY:Mountain guide": {
       "sheet": "hg_gsmiddleman1.png"
     },
+    "SILVER_LEAGUE_PLATEAU:Will": {
+      "sheet": "hg_gsbigfour1.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Koga": {
+      "sheet": "hg_gsbigfour2.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Bruno": {
+      "sheet": "hg_gsbigfour3.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Karen": {
+      "sheet": "hg_gsbigfour4.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Lance": {
+      "sheet": "hg_wataru.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Shop": {
+      "sheet": "hg_shopm1.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Guard": {
+      "sheet": "hg_counterm.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Old man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Black Belt": {
+      "sheet": "hg_gsfighter.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Attendant": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Wi-Fi attendant": {
+      "sheet": "hg_wifisf.png"
+    },
+    "SILVER_LEAGUE_PLATEAU:Link attendant": {
+      "sheet": "hg_pcwoman2.png"
+    },
     "KANTO_ROUTE_27:MOON STONE": {
       "item": "POKE_BALL"
     },

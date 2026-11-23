@@ -157,6 +157,11 @@ lance = TrainerBattleState(g, [mk(149)], trainer_class="CHAMPION", trainer_name=
 lance.player_won = True
 g.change_state(lance)
 lance.exit_battle()
+for _ in range(3000):   # (11-19: the Hall of Fame screen first - the team one by one - then home; tap on as a player does)
+    if type(g.current_state).__name__ != "HallOfFameState":
+        break
+    g.current_state.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    g.current_state.update(); g.current_state.draw()
 check(isinstance(g.current_state, ow.AreaTransitionState) and g.current_state.next_area_key == "NEW_BARK_TOWN",
       f"home to New Bark ({type(g.current_state).__name__})")
 
@@ -223,7 +228,9 @@ check(story.is_caught(243, "normal") if hasattr(story, "is_caught") else True, "
 print("HANDOFF Red) Mt. Silver after the Johto title")
 story.badges = {"KANTO": [], "JOHTO": ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"]}
 story.story_flags["beat_johto_champion"] = True
-check("Mt. Silver" in travel("MT_SILVER_CITY"), "no Kanto badges needed")
+import json as _jg   # (11-16: Mt. Silver City is a walked map; the mountain is its north exit, no travel menu any more)
+_msc = _jg.load(open("assets/town_maps.json", encoding="utf-8"))["MT_SILVER_CITY"]
+check("MT_SILVER" in _msc["exits"].values() and not any("KANTO" in str(o.get("condition")) for o in prog["MT_SILVER_CITY"].get("travel_options") or []), "no Kanto badges needed")
 
 print("HANDOFF R-1 / F-1) moving on: the right rival, and the professor explains")
 story.current_area_key = "NEW_BARK_TOWN"
