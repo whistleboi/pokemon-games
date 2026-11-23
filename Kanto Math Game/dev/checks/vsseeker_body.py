@@ -213,6 +213,10 @@ _r5 = vs_seeker.rematch(g, _oa, _oi, dict(_ot2))
 story.is_region_champion = _old_champ
 check(_r5["_vs_stage"] == 4 and max(_r5["levels"]) >= 52, f"after the Champion: stage 5 ({_r5['team']}, {_r5['levels']})")
 check(vs_seeker.made_team(g, _oa, _oi, _ot2, 2) == vs_seeker.made_team(g, _oa, _oi, _ot2, 2), "the same team every time")
+from src.world import levels as _lvm
+_lb = _lvm.canon_league_boost(g)   # (Jordan 11-23: HGSS, ORAS, Platinum, B2W2's League rematch jumps, averaged)
+check(15 <= _lb <= 20, f"League rematch jump where the games have none: +{_lb} (ORAS +20, HGSS ~+20, Platinum +12, B2W2 ~+16)")
+check(_lvm.orange_postgame_levels({}, [20, 22], _lb) == [20 + _lb, 22 + _lb], f"Orange's Gyms after the title: +{_lb} (Cissy's 22 -> {22 + _lb})")
 _cb = vs_seeker.canon_boosts(g)   # (Jordan 11-23, M5: the canon rematch tables' average boost at each stage)
 check(len(_cb) == vs_seeker.MADE_STAGES and all(x < y for x, y in zip(_cb, _cb[1:])) and 6 <= _cb[0] <= 12,
       f"the canon tables' average boost a stage, rising (about +9 a stage): {_cb}")
