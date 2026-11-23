@@ -96665,7 +96665,10 @@
   "inside": {
    "15,8": "gym",
    "20,16": "center",
-   "25,12": "mart"
+   "25,12": "mart",
+   "7,5": "wally_home",
+   "10,19": "dreamer_house",
+   "20,24": "norman_fans"
   },
   "edge_to": {
    "0,12": [
@@ -97806,6 +97809,221 @@
     ],
     "theme": "room",
     "title": "Petalburg Gym"
+   },
+   "wally_home": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "...N.cc....",
+     ".....ccN...",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:7,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/8_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wally's father",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You're the one who went catching Pokémon with Wally! Thank you.",
+        "He's been frail since he was a baby, so we sent him to stay with family in Verdanturf. The air there is cleaner."
+       ]
+      }
+     },
+     {
+      "text": "Wally's mother ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wally was so happy when he caught his Pokémon. I haven't seen him smile like that in ages."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,5": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/8_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Wally's house"
+   },
+   "dreamer_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "........cc",
+     "..........",
+     "..ccN..N..",
+     "..cc......",
+     "..........",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:10,19"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/8_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Old traveller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Travelling is wonderful! When I was young, I roamed every sea and mountain in Hoenn!"
+       ]
+      }
+     },
+     {
+      "text": "Dreamy girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sigh... I wish I could go on an adventure with Pokémon. Through tall grass, over mountains, across the sea..."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     },
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/8_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "norman_fans": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "..........",
+     "cc........",
+     "cc......cc",
+     "..N....Ncc",
+     "..........",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:20,24"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/8_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Chatty neighbour",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Norman is our new Gym Leader. He brought his family here from far away, you know."
+       ]
+      }
+     },
+     {
+      "text": "Beaten Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I battled Norman once. Whew, he was way too strong! That man lives for Pokémon."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "theme": "room",
+    "title": "House"
    }
   }
  },
@@ -98549,6 +98767,98 @@
     ]
    }
   ],
+  "rooms": {
+   "flower_shop": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cm.....cc.cccc.",
+     "Nm.....N...cc..",
+     "cm.............",
+     "cc....cc....ccc",
+     ".....cccc..Nccc",
+     "c....cccc...ccc",
+     "c.nn..........."
+    ],
+    "exits": {
+     "n": "OUT:5,18"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/17_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "PRETTY PETAL FLOWER SHOP",
+     {
+      "text": "Berry-growing sister",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Water your Berry plants while they grow. Leave ripe Berries too long and they fall off... but they sprout again!"
+       ]
+      }
+     },
+     {
+      "text": "Littlest sister",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm growing flowers just like my big sisters! Aren't they pretty?"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,3": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "11,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     },
+     "0,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/17_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pretty Petal Flower Shop"
+   }
+  },
+  "inside": {
+   "5,18": "flower_shop"
+  },
   "hidden": {
    "16,72": "ANTIDOTE",
    "16,64": "HEART_SCALE",
@@ -98796,7 +99106,15 @@
    "27,19": "gym",
    "16,45": "mart",
    "16,38": "center",
-   "27,34": "school"
+   "27,34": "school",
+   "11,15": "devon",
+   "12,15": "devon",
+   "13,30": "ability_house",
+   "33,19": "trade_house",
+   "9,38": "cut_house",
+   "30,28": "school_house",
+   "5,51": "flats",
+   "26,46": "nickname_house"
   },
   "edge_to": {
    "19,0": [
@@ -99688,6 +100006,1018 @@
     ],
     "theme": "room",
     "title": "Trainers' School"
+   },
+   "devon": {
+    "art": [
+     "cccccccccccccc.cccc",
+     "cccccccccccccc<cccc",
+     "ccc!....!cccc...ccc",
+     "ccc..N...cccc...ccc",
+     "cccmmmmm.cccc...ccc",
+     "...............N...",
+     "..N................",
+     "...................",
+     ".....nn............"
+    ],
+    "exits": {
+     "n": "OUT:12,15",
+     "<": "ROOM:devon_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Devon receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Devon Corporation! We make items and medicine to make life better."
+       ]
+      }
+     },
+     {
+      "text": "Devon guard",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Staff only past here, as a rule... but the President told us to let you through."
+       ]
+      }
+     },
+     {
+      "text": "Shoe engineer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Those Running Shoes! They're one of ours. It's great to see someone wearing what we made."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A glass case of Devon's test products and prototypes, from Poké Balls to the PokéNav."
+     ],
+     [
+      "A glass case of rocks and metals. Devon began as a company that dug stones from the ground."
+     ]
+    ],
+    "moves": {
+     "5,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "15,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       19,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Devon Corporation 1F"
+   },
+   "devon_2": {
+    "art": [
+     "ccccccccccccccccccc",
+     "cc<cccccccccccncccc",
+     "c.................c",
+     "...................",
+     ".ccc..cc..cc..cc...",
+     ".Ncc..Nc..N...N....",
+     "..N................",
+     "......cc..cc..cc...",
+     "..............N...."
+    ],
+    "exits": {
+     "n": "ROOM:devon",
+     "<": "ROOM:devon_3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Ball researcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm working on new kinds of Poké Balls. No luck yet, but I'll get there!"
+       ]
+      }
+     },
+     {
+      "text": "Translator researcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We're building a machine to talk with Pokémon. It's... not going well."
+       ]
+      }
+     },
+     {
+      "text": "Dream researcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I want to show Pokémon dreams on a screen. So far it only shows static."
+       ]
+      }
+     },
+     {
+      "text": "PokéNav designer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm adding a new feature to the PokéNav. Shh, it's a secret!"
+       ]
+      }
+     },
+     {
+      "text": "PokéNav engineer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I helped make the PokéNav! I'm so proud of it."
+       ]
+      }
+     },
+     "Devon Fossil Lab"
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "1,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "2,6": {
+      "m": "look",
+      "d": "ul"
+     },
+     "10,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,8": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       19,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Devon Corporation 2F"
+   },
+   "devon_3": {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccncccccccccccccccc",
+     "...................",
+     "...................",
+     ".......ccccc...cc..",
+     ".!.N...ccccc...ccN.",
+     ".......ccccc...cc..",
+     ".!.................",
+     "..................."
+    ],
+    "exits": {
+     "n": "ROOM:devon_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Devon secretary",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If you're ever in Slateport, visit the Shipyard. Captain Stern works there."
+       ]
+      }
+     },
+     [
+      "Mr. Stone",
+      "Devon Corp"
+     ]
+    ],
+    "signs": [
+     [
+      "The President's collection of rare stones and rocks."
+     ],
+     [
+      "The President's collection of rare stones and rocks."
+     ]
+    ],
+    "moves": {
+     "3,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "17,5": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       19,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Devon Corporation 3F"
+   },
+   "ability_house": {
+    "art": [
+     "cccccccccccccc",
+     "cc<ccccccccccc",
+     "..............",
+     "..............",
+     ".cc......NccN.",
+     ".cc.......cc..",
+     "..............",
+     "cc....nn......"
+    ],
+    "exits": {
+     "n": "OUT:13,30",
+     "<": "ROOM:ability_house_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Ability fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every Pokémon has a special Ability of its own. Some are really handy!"
+       ]
+      }
+     },
+     {
+      "text": "Puzzled man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon are such strange, wonderful creatures."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "9,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "12,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "ability_house_2": {
+    "art": [
+     "cccccccccccccc",
+     "ccnccccccccccc",
+     "..............",
+     "..............",
+     "..ccc.........",
+     "..ccc...Nc....",
+     "....N....c....",
+     ".cc..........."
+    ],
+    "exits": {
+     "n": "ROOM:ability_house"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Doll-playing boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My sister and I are having a tea party with her plush dolls. I'm only here for the snacks."
+       ]
+      }
+     },
+     {
+      "text": "Busy mother",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The hardest thing every day? Deciding what to cook for dinner. Every single day!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       3,
+       0
+      ]
+     },
+     "8,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Upstairs"
+   },
+   "trade_house": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "c........N..c",
+     ".............",
+     "...cccN......",
+     "...ccc.......",
+     ".............",
+     "c....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:33,19"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wanderer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every place has its own Pokémon and its own people. That's why I keep travelling."
+       ]
+      }
+     },
+     {
+      "text": "Trader Ken",
+      "action": "EVENT",
+      "event": {
+       "requires": [
+        "party_has:287"
+       ],
+       "fail": [
+        "My Makuhita, Makit, is cute, right? I'd trade him for a Slakoth. Come back if you catch one!"
+       ],
+       "lines": [
+        "A Slakoth! Will you trade it for my Makuhita, Makit? He's holding an X Attack, too."
+       ],
+       "trade": {
+        "want": 287,
+        "give": 296,
+        "item": "X_ATTACK",
+        "nickname": "Makit"
+       },
+       "flag": "rustboro_makuhita_trade",
+       "done": [
+        "Look after Makit for me! I'll take good care of your Slakoth."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "9,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "cut_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     ".........N.",
+     "...........",
+     "........cc.",
+     ".......Ncc.",
+     "...........",
+     "...........",
+     "cc...nn...."
+    ],
+    "exits": {
+     "n": "OUT:9,38"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Cutter's daughter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When Rustboro was growing, my dad's Pokémon used Cut to clear the land for new houses."
+       ]
+      }
+     },
+     {
+      "text": "Cutter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That look in your eye, the way you move... you're a skilled Trainer, I can tell!",
+        "Skinny trees in your way? A Pokémon that knows Cut can clear them."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,2": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "school_house": {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "............",
+     "............",
+     "....Ncc.....",
+     "....Ncc.....",
+     "............",
+     "............",
+     "c....nn....c"
+    ],
+    "exits": {
+     "n": "OUT:30,28"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_12.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Proud mother",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trainers' School is wonderful. Study there and you could even become a Gym Leader."
+       ]
+      }
+     },
+     {
+      "text": "Roxanne fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Roxanne knows everything about Pokémon. And she's really strong, too!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,5": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_12.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "flats": {
+    "art": [
+     "cccccccccccccc",
+     "ccc<cccccccccc",
+     ".....c........",
+     ".....c...cc...",
+     ".....c..NccN..",
+     ".....c........",
+     ".....c..cccccc",
+     ".....c..cccccc",
+     "..nn.........."
+    ],
+    "exits": {
+     "n": "OUT:5,51",
+     "<": "ROOM:flats_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_13.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Flats caretaker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Devon Corporation's workers live in this building."
+       ]
+      }
+     },
+     {
+      "text": "Skitty",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Skitty: Gyaaah!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "8,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "11,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_13.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Devon flats 1F"
+   },
+   "flats_2": {
+    "art": [
+     "cccccccccccccc",
+     "c<cncccccccccc",
+     ".....c......cc",
+     ".....c.N....cc",
+     ".....c.....Ncc",
+     ".....c........",
+     ".....c..cccccc",
+     ".....c..cccccc",
+     ".............."
+    ],
+    "exits": {
+     "n": "ROOM:flats",
+     "<": "ROOM:flats_3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_14.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Devon kid",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My daddy works at the Corporation. He makes the coolest things!"
+       ]
+      }
+     },
+     {
+      "text": "Old Devon worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Long ago, Devon was just a tiny little company. Look at it now!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "11,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,3": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_14.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Devon flats 2F"
+   },
+   "flats_3": {
+    "art": [
+     "cccccccccccccc",
+     "cncccccccccccc",
+     "....c.......N.",
+     "....c..N......",
+     "....c.........",
+     "....c.........",
+     "....c...cccccc",
+     "....c...cccccc",
+     ".............."
+    ],
+    "exits": {
+     "n": "ROOM:flats_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_15.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gossiping woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I hear the President's son collects rare stones too. Like father, like son!"
+       ]
+      }
+     },
+     {
+      "text": "Devon clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Our President loves collecting rare stones."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,3": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     },
+     "12,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_15.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Devon flats 3F"
+   },
+   "nickname_house": {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "............",
+     "............",
+     "....Ncc.....",
+     "....NccN....",
+     "............",
+     "............",
+     "c....nn....c"
+    ],
+    "exits": {
+     "n": "OUT:26,46"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_16.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Pekachu",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pekachu: Peka!"
+       ]
+      }
+     },
+     {
+      "text": "Nickname fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I give all my Pokémon perfect nicknames. It's my special talent!"
+       ]
+      }
+     },
+     {
+      "text": "Doubtful wife",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "He named his Pikachu 'Pekachu'. Is that really a nickname?"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,5": {
+      "m": "face",
+      "d": "l"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_16.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
    }
   }
  },
@@ -99890,6 +101220,84 @@
     ]
    }
   ],
+  "rooms": {
+   "tunnel_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     ".......N..",
+     "..........",
+     ".cc....cc.",
+     ".cc...Ncc.",
+     "...N......",
+     "..........",
+     "....nn...."
+    ],
+    "exits": {
+     "n": "OUT:38,8"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/21_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Old digger",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "One man is digging through to Verdanturf all by hand, so the Pokémon aren't disturbed. Now that's love!"
+       ]
+      }
+     },
+     {
+      "text": "Tunnel foreman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We started boring Rusturf Tunnel with big machines, but the noise upset the wild Pokémon. So we stopped."
+       ]
+      }
+     },
+     {
+      "text": "Tunnel worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Without the tunnel, getting to Verdanturf means sailing to Dewford, then Slateport, then walking through Mauville!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "3,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "theme": "room",
+    "title": "Rest house"
+   }
+  },
+  "inside": {
+   "38,8": "tunnel_house"
+  },
   "hidden": {
    "22,9": "SUPER_POTION",
    "72,7": "BLACK_GLASSES"
@@ -100150,7 +101558,10 @@
   ],
   "inside": {
    "2,10": "center",
-   "8,17": "gym"
+   "8,17": "gym",
+   "17,14": "island_house",
+   "3,3": "hall",
+   "8,8": "pier_house"
   },
   "edge_to": {
    "6,0": [
@@ -100650,6 +102061,333 @@
     ],
     "theme": "room",
     "title": "Dewford Gym"
+   },
+   "island_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "....N.....",
+     "...NccN...",
+     "....cc....",
+     "..........",
+     "..........",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:17,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/3_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Zigzagoon",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Zigzagoon: Guguuh!"
+       ]
+      }
+     },
+     {
+      "text": "Island husband",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Living on a small island with your family and your Pokémon. There's nothing better."
+       ]
+      }
+     },
+     {
+      "text": "Island wife",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I left busy Slateport when I married. Life is slow on this little island, but the sea is beautiful."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,3": {
+      "m": "face",
+      "d": "l"
+     },
+     "3,3": {
+      "m": "face",
+      "d": "r"
+     },
+     "4,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "hall": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     ".....N....c..cc..",
+     ".........Nc.NccN.",
+     "..cccN....c......",
+     ".Nccc.....c..cccc",
+     "....N...N.c..cccc",
+     "..............N..",
+     ".....nn.........."
+    ],
+    "exits": {
+     "n": "OUT:3,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/3_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Curious boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Is it even more popular across the sea? I want to know!"
+       ]
+      }
+     },
+     {
+      "text": "TV watcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Everyone's talking about it. Wasn't there a TV show about it?"
+       ]
+      }
+     },
+     {
+      "text": "Gossiping lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Everyone in Dewford Hall talks about what's trendy. It changes every week!"
+       ]
+      }
+     },
+     {
+      "text": "Bored gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trends come and go. A good Pokémon partner is never out of fashion."
+       ]
+      }
+     },
+     {
+      "text": "Trend student",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I study what's popular. Did you know trends start in Dewford and spread across Hoenn?"
+       ]
+      }
+     },
+     {
+      "text": "Struggling teacher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm teaching my Pokémon the latest dance. It's a bit much for it, I think."
+       ]
+      }
+     },
+     {
+      "text": "Trendy girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "What's in fashion right now? Battling with Mega Evolution, of course!"
+       ]
+      }
+     },
+     {
+      "text": "Collector",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Right now, the trendiest move of all is Sludge Bomb. You haven't got it? That's sad!",
+        "Here, take this TM. Now you're in fashion!"
+       ],
+       "gift_item": {
+        "TM148": 1
+       },
+       "flag": "dewford_hall_sludge_bomb",
+       "done": [
+        "Sludge Bomb is still the trendiest move. Use it in style!"
+       ],
+       "requires": [
+        "has_balance_badge"
+       ],
+       "fail": [
+        "What's trendy? Sludge Bomb! But I only share it with Trainers who have five Badges. Come back then!"
+       ]
+      }
+     },
+     {
+      "text": "Merch collector",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I have the official dolls, the official shirts, the official books... I'm not sharing!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,6": {
+      "m": "face",
+      "d": "u"
+     },
+     "1,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "9,3": {
+      "m": "face",
+      "d": "u"
+     },
+     "5,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,7": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "12,3": {
+      "m": "face",
+      "d": "r"
+     },
+     "15,3": {
+      "m": "face",
+      "d": "l"
+     },
+     "8,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/3_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Dewford Hall"
+   },
+   "pier_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "...cc.....",
+     "..N.......",
+     ".......cc.",
+     "......Ncc.",
+     "..........",
+     "..........",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:8,8"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/3_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Brawly fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You crossed the sea to visit Dewford? I bet you came to battle Brawly. He's so cool!"
+       ]
+      }
+     },
+     {
+      "text": "Stylish Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Feast your eyes on this! A Silk Scarf. It's the height of fashion!",
+        "Oh, I see you like it. Here, it's yours! A Pokémon holding it hits harder with Normal moves."
+       ],
+       "gift_item": {
+        "SILK_SCARF": 1
+       },
+       "flag": "dewford_silk_scarf",
+       "done": [
+        "That scarf suits your Pokémon. Very stylish!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "2,3": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "theme": "room",
+    "title": "House"
    }
   }
  },
@@ -102009,7 +103747,9 @@
    "13,26": "mart",
    "5,19": "rater",
    "4,26": "fanclub",
-   "28,12": "harbor"
+   "28,12": "harbor",
+   "26,38": "shipyard",
+   "21,44": "nature_house"
   },
   "edge_to": {
    "16,0": [
@@ -103122,6 +104862,270 @@
     ],
     "theme": "room",
     "title": "Slateport Harbour"
+   },
+   "shipyard": {
+    "art": [
+     "mmcccmcmmmmmccmcmcmmc",
+     "ccc<ccccccccccccccccc",
+     "cc....c..............",
+     "......c..............",
+     "......cccccccccc...cc",
+     "cc...Ncccccccccc...cc",
+     "....cccc.cccccc....cc",
+     "....ccc...Ncccc......",
+     "cc....c.....cc....N..",
+     "............cc.......",
+     ".....................",
+     "cc....c.....N.....ccc",
+     "......cc..c...c...ccc",
+     "......cccc........ccc",
+     "..nn..cccc..........."
+    ],
+    "exits": {
+     "n": "OUT:26,38",
+     "<": "ROOM:shipyard_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Muddled worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If this goes here and that goes there... then where does this go? Aargh!"
+       ]
+      }
+     },
+     {
+      "text": "Dock",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The seasons, the weather, the moon... they all change the sea. The sea is alive!"
+       ]
+      }
+     },
+     {
+      "text": "Seasick helper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I get seasick really easily, so I help out here on dry land instead."
+       ]
+      }
+     },
+     [
+      "Talk to Stern",
+      "GIVE SCANNER: DEEPSEATOOTH",
+      "GIVE SCANNER: DEEPSEASCALE"
+     ]
+    ],
+    "moves": {
+     "5,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,7": {
+      "m": "face",
+      "d": "u"
+     },
+     "18,8": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "12,11": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       2
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       21,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Stern's Shipyard"
+   },
+   "shipyard_2": {
+    "art": [
+     "mmcccmccmcmmcmcmm",
+     "cccnccccccccccccc",
+     ".................",
+     ".........cc..cc..",
+     "........Ncc..cc..",
+     "cccc....cccccccc.",
+     "........cccccccc.",
+     "........cccccccc.",
+     "cccc....cccccccc.",
+     "N.......cccccccc.",
+     "........cccccccc.",
+     "cccc...ccccccccc.",
+     "........cccccccc.",
+     ".................",
+     "................."
+    ],
+    "exits": {
+     "n": "ROOM:shipyard"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Ship builder",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Building a big ship is more like building a building than a car."
+       ]
+      }
+     },
+     {
+      "text": "Floating expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A ship made of heavy iron still floats. That's buoyancy for you!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "8,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "0,9": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Shipyard 2F"
+   },
+   "nature_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....NccN...",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:21,44"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Nature expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon has a Hasty nature, and it's faster than my others. Natures change how Pokémon grow!"
+       ]
+      }
+     },
+     {
+      "text": "Battle girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You're a Trainer, right? Slateport is a great place to buy battle items at the Market!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
    }
   }
  },
@@ -103903,6 +105907,9 @@
    "8,5": "gym",
    "22,5": "center",
    "23,14": "mart",
+   "35,5": "bike_shop",
+   "32,14": "rock_smash_house",
+   "8,13": "game_corner",
    "19,14": "hills"
   },
   "edge_to": {
@@ -104753,6 +106760,404 @@
     "theme": "room",
     "title": "Mauville Gym"
    },
+   "bike_shop": {
+    "art": [
+     "cccccccccccc",
+     "cccccccc!cc!",
+     "ccccccc.....",
+     "cccmmmc.....",
+     "cc....cc..cc",
+     "ccN.......cc",
+     "cc.....N..cc",
+     "cc........cc",
+     "cc.nn.....cc"
+    ],
+    "exits": {
+     "n": "OUT:35,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Bike Shop",
+     {
+      "text": "Shop assistant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm learning all about bikes here. There are handbooks at the back if you need tips!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A cycling handbook: Hold a direction to keep riding. Bikes are fastest on long straight roads."
+     ],
+     [
+      "A cycling handbook: Some slopes and stones can only be crossed on a bike."
+     ]
+    ],
+    "moves": {
+     "7,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "2,5": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Rydel's Cycles"
+   },
+   "rock_smash_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:32,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Rock Smash Dude",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Woohoo! They call me the Rock Smash Guy. I think I deserve more respect. Rock Smash Dude!",
+        "Cracked rocks in your way? A Pokémon that knows Rock Smash breaks them to bits!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "game_corner": {
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "ccc..ccc.mcNcNNm..cccc",
+     ".......N.cmmmmmc......",
+     "...................N.c",
+     "................N.....",
+     "..ccN..cc.....cc..cc..",
+     ".Ncc...cc...N.cc..cc..",
+     "..cc..NccN....cc..ccN.",
+     "..cc...cc.............",
+     "...........nn........."
+    ],
+    "exits": {
+     "n": "OUT:8,13"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Game Corner",
+     {
+      "text": "Prize clerk ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Thank you for playing! Prizes are swapped at the counter."
+       ]
+      }
+     },
+     {
+      "text": "Prize clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome! Bring your Coins to the counter to swap them for prizes."
+       ]
+      }
+     },
+     {
+      "text": "Lucky girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I won two of the same doll! Silly me."
+       ]
+      }
+     },
+     {
+      "text": "Coin Case man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You need a Coin Case to play. Keep your Coins safe in it!"
+       ]
+      }
+     },
+     {
+      "text": "Roulette fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The roulette tables are all about luck. Win or lose, it's exciting!"
+       ]
+      }
+     },
+     {
+      "text": "Slots expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Here's a tip: the more lightning bolts you collect, the more bonus chances you get."
+       ]
+      }
+     },
+     {
+      "text": "Slots tip man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You can bet up to three Coins on the slots at a time."
+       ]
+      }
+     },
+     {
+      "text": "Coin lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You need Coins to play here. Buy them at the counter."
+       ]
+      }
+     },
+     {
+      "text": "Busy worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's easy to lose track of time in here... I should get back to work."
+       ]
+      }
+     },
+     {
+      "text": "Lucky Seven fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stopping the reel right on 7 is really hard. But when it works, the Coins pour out!"
+       ]
+      }
+     },
+     {
+      "text": "Table watcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Each roulette table pays out differently. Check your Coins before you pick one!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "12,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "16,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "13,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "19,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "20,8": {
+      "m": "face",
+      "d": "l"
+     },
+     "6,8": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,8": {
+      "m": "face",
+      "d": "l"
+     },
+     "4,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "11,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       22,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Mauville Game Corner"
+   },
+   "shopper_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "........cc",
+     "..........",
+     "..cc......",
+     "..ccN.....",
+     "..........",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:19,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Shopping lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If I had a bike, I'd ride down Cycling Road to Slateport for some shopping!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
    "hills": {
     "art": [
      "cccccccccccccccc",
@@ -105180,7 +107585,65 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "day_care": {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "ccNcmcc.....",
+     "mmmmc.......",
+     "............",
+     "..........cc",
+     "c.........cc",
+     "......c.....",
+     "c.nn..cccccc"
+    ],
+    "exits": {
+     "n": "OUT:51,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/22_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "POKéMON DAY CARE"
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/22_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Day Care"
+   }
+  },
+  "inside": {
+   "51,5": "day_care"
+  }
  },
  "VERDANTURF_TOWN": {
   "art": [
@@ -105317,7 +107780,10 @@
   ],
   "inside": {
    "12,3": "mart",
-   "16,3": "center"
+   "16,3": "center",
+   "10,14": "wally_house",
+   "1,14": "friend_house",
+   "17,15": "league_house"
   },
   "edge_to": {
    "19,8": [
@@ -105721,6 +108187,248 @@
     ],
     "theme": "room",
     "title": "Poké Mart"
+   },
+   "wally_house": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     ".......N....c....",
+     "............c..c.",
+     "..NccN......c....",
+     "...cc.......c.N..",
+     ".................",
+     "c......nn.......c"
+    ],
+    "exits": {
+     "n": "OUT:10,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/6_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wally's uncle",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wally's health has really improved out here. Maybe it's the fresh air... or maybe it's his Pokémon."
+       ]
+      }
+     },
+     {
+      "text": "Wanda's mother",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My daughter's boyfriend dug a whole tunnel just to see her. Talk about passion!"
+       ]
+      }
+     },
+     {
+      "text": "Wanda's boyfriend",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Thanks to you, the tunnel's open and I can see my girlfriend every day. I'm so happy!"
+       ]
+      }
+     },
+     "Talk to Wally"
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "14,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/6_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Wally's uncle's house"
+   },
+   "friend_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "...NNcc....",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:1,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/6_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Friendship checker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Let me look at your Pokémon... Oh! It's clear it really likes you. Keep it up!"
+       ]
+      }
+     },
+     {
+      "text": "Pikachu",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pikachu: Pika pika!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/6_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "league_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "........cc",
+     "..........",
+     "..ccN.....",
+     "..ccN.....",
+     "..........",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:17,15"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/6_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "League expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "At the League you face the Elite Four one after another. Lose once, and you start over!"
+       ]
+      }
+     },
+     {
+      "text": "League dreamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Far away in Ever Grande City is the Pokémon League. The Trainers there are frighteningly good."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/6_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
    }
   },
   "hidden": {
@@ -106649,6 +109357,59 @@
     }
    }
   ],
+  "rooms": {
+   "rest_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "..........",
+     "....ccN...",
+     "....cc....",
+     "..........",
+     "..........",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:26,18"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/18_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Kind old lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Oh, dear, your Pokémon look worn out. Rest here a while, won't you?",
+        "Your Pokémon are full of energy again!"
+       ],
+       "heal": true
+      }
+     }
+    ],
+    "moves": {
+     "6,3": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   }
+  },
+  "inside": {
+   "26,18": "rest_house"
+  },
   "hidden": {
    "19,55": "REVIVE",
    "3,28": "PP_UP",
@@ -107291,6 +110052,67 @@
     ]
    }
   ],
+  "rooms": {
+   "glass_workshop": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "...cc.....",
+     "..N.......",
+     ".....N.cc.",
+     ".......cc.",
+     "..........",
+     "..........",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:33,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/30_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "GLASS WORKSHOP",
+     {
+      "text": "Glass apprentice",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Blowing a glass flute while my boss is talking is so much fun. Huff-puff!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "theme": "room",
+    "title": "Glass Workshop"
+   }
+  },
+  "inside": {
+   "33,5": "glass_workshop"
+  },
   "hidden": {
    "66,3": "ETHER",
    "73,3": "NUGGET"
@@ -107386,7 +110208,9 @@
   ],
   "inside": {
    "15,15": "mart",
-   "14,7": "center"
+   "14,7": "center",
+   "6,17": "cozmo_house",
+   "1,6": "reminder_house"
   },
   "edge_to": {
    "0,7": [
@@ -107849,6 +110673,135 @@
     ],
     "theme": "room",
     "title": "Poké Mart"
+   },
+   "cozmo_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "........cc",
+     "..........",
+     "..cc..N...",
+     "..cc......",
+     ".....N....",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:6,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/5_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      "Professor Cozmo",
+      "Talk to Cozmo"
+     ],
+     {
+      "text": "Cozmo's wife",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My husband is crazy about meteorites. He'd go to the ends of the earth for one!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "6,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/5_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Professor Cozmo's house"
+   },
+   "reminder_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:1,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/5_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Move Reminder"
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/5_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Move Reminder's house"
    }
   },
   "hidden": {
@@ -108178,6 +111131,198 @@
     ]
    }
   ],
+  "rooms": {
+   "fossil_house": {
+    "art": [
+     "cccccccccc",
+     "cccc<ccccc",
+     "...N...cc.",
+     ".....cc...",
+     ".cc.......",
+     ".cc.......",
+     "..........",
+     "....nn...."
+    ],
+    "exits": {
+     "n": "OUT:29,5",
+     "<": "ROOM:fossil_tunnel"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/20_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "FOSSIL MANIAC'S HOUSE"
+    ],
+    "moves": {
+     "3,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/20_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Fossil Maniac's house"
+   },
+   "fossil_tunnel": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccN.cccccc",
+     "cccc...cccccc",
+     "ccccc...ccccc",
+     "cccc...cccccc",
+     "cccc....ccccc",
+     "ccccc...ccccc",
+     "ccccc..cccccc",
+     "ccccc...ccccc",
+     "ccccc..cccccc",
+     "cccccc.cccccc",
+     "ccccc..cccccc",
+     "ccccc..cccccc",
+     "ccccc..cccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     "cccccc..ccccc",
+     "cccccc..ccccc",
+     "cccccc.cccccc",
+     "cccccc..ccccc",
+     "cccccc..ccccc",
+     "ccccc....cccc",
+     "ccccc.nn.cccc"
+    ],
+    "exits": {
+     "n": "ROOM:fossil_house"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/20_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      "FOSSIL MANIAC",
+      "Desert Underpass"
+     ]
+    ],
+    "moves": {
+     "5,3": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/20_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       26
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Fossil Maniac's tunnel"
+   },
+   "lanette_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccc!!cc",
+     "ccc......cc",
+     "ccc.c.cc.cc",
+     "c...cNcc.cc",
+     "ccc.c.cc...",
+     "ccc......cc",
+     "ccc..nncccc"
+    ],
+    "exits": {
+     "n": "OUT:27,36"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/20_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "LANETTE'S HOUSE"
+    ],
+    "signs": [
+     [
+      "Lanette's PC. Notes about the Pokémon Storage System fill the screen."
+     ],
+     [
+      "Lanette's PC. Notes about the Pokémon Storage System fill the screen."
+     ]
+    ],
+    "moves": {
+     "5,4": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/20_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lanette's house"
+   }
+  },
+  "inside": {
+   "29,5": "fossil_house",
+   "27,36": "lanette_house"
+  },
   "hidden": {
    "7,30": "REVIVE",
    "35,7": "CARBOS",
@@ -109546,7 +112691,9 @@
   "inside": {
    "5,15": "gym",
    "15,5": "mart",
-   "9,6": "center"
+   "9,6": "center",
+   "12,15": "herb_shop",
+   "16,15": "egg_house"
   },
   "links": {
    "9,2": [
@@ -110527,6 +113674,156 @@
     "parts": true,
     "theme": "room",
     "title": "Lavaridge Gym B1F"
+   },
+   "herb_shop": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cccNcm.....",
+     "mmmmmc...Nc",
+     "..........c",
+     ".......N..c",
+     "...........",
+     "cc.nn....cc"
+    ],
+    "exits": {
+     "n": "OUT:12,15"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/4_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Herb Shop",
+     {
+      "text": "Herb customer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Herbal medicine works wonders. But it's so bitter your Pokémon won't thank you for it!"
+       ]
+      }
+     },
+     "Old man's Charcoal"
+    ],
+    "moves": {
+     "9,3": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "3,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,5": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/4_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Herb Shop"
+   },
+   "egg_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "..........",
+     "..N.cc....",
+     "....cc..N.",
+     "..........",
+     "......N...",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:16,15"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/4_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Old husband",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My wife is warming an Egg in the hot springs. She says it came from the Day Care."
+       ]
+      }
+     },
+     {
+      "text": "Old-fashioned boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ah, young one! I copy the way the old folks of this town talk. Wise, is it not?"
+       ]
+      }
+     },
+     {
+      "text": "Zigzagoon",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Zigzagoon: Pshoo!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,3": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "8,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "6,6": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "theme": "room",
+    "title": "House"
    }
   },
   "hidden": {
@@ -110862,7 +114159,7 @@
    ".ccccDccccnccccccccccccccnccccccnccccccc",
    "<.......cc.cccccccccccccc.cccccc.cccc..>",
    "<..........cccccccccccccc.cccccc.......>",
-   "<..N..!....cccccccccccccc..ccccc.......>",
+   "<.....!....cccccccccccccc..ccccc.......>",
    "<....N..N..ccccccc.cccBcc.!cccccN......>",
    "c..........ccccccc...cDc...cccc....ccccc",
    "ccccccc...ccccccccc........cccc...cccccc",
@@ -110896,7 +114193,6 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "Old woman",
    "Boy",
    {
     "text": "Kind local",
@@ -112398,6 +115694,98 @@
     ]
    }
   ],
+  "rooms": {
+   "rest_stop": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     ".......Ncc",
+     "..........",
+     "..cc......",
+     "..cc....N.",
+     ".N........",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:33,109"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/32_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "REST STOP",
+     {
+      "text": "Wingull ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wingull: Pihyoh!"
+       ]
+      }
+     },
+     {
+      "text": "Wingull",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wingull: Pihyoh!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "1,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     },
+     "8,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       3,
+       2
+      ]
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/32_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Rest stop"
+   }
+  },
+  "inside": {
+   "33,109": "rest_stop"
+  },
   "hidden": {
    "26,120": "FULL_HEAL"
   }
@@ -112491,7 +115879,478 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "trade_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "...cc...",
+     ".NNcc...",
+     ".......N",
+     "c..nn..c"
+    ],
+    "exits": {
+     "n": "OUT:10,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Little girl",
+     {
+      "text": "Zigzagoon",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Zigzagoon: Gumomoh!"
+       ]
+      }
+     },
+     {
+      "text": "Kind old woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading Pokémon with others... it's like trading memories with them."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,4": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       8,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "hidden_power_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     ".cccc...",
+     "..Ncc.N.",
+     "........",
+     "c..nn..c"
+    ],
+    "exits": {
+     "n": "OUT:17,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      "The coin game",
+      "Old woman"
+     ],
+     {
+      "text": "Sleepy old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My wife plays her coin game to stay awake. I just take a nap."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,3": {
+      "m": "face",
+      "d": "l"
+     },
+     "2,3": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       8,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "dex_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "...cc...",
+     "N..cc...",
+     ".....N..",
+     "c..nn..c"
+    ],
+    "exits": {
+     "n": "OUT:25,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Stone hunter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Talking about Pokédexes reminds me: I once met a Trainer called Steven while hunting for rare stones."
+       ]
+      }
+     },
+     {
+      "text": "Dex fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Is that a Pokédex? It's so cool! I want one!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "0,3": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       8,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "wingull_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     ".cccc...",
+     ".NNcc...",
+     "......N.",
+     "c..nn..c"
+    ],
+    "exits": {
+     "n": "OUT:32,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Wingull's trainer",
+     {
+      "text": "Letter Wingull",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wingull: Pihyoh!"
+       ]
+      }
+     },
+     {
+      "text": "Friendly woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Being with Pokémon helps people make friends. It brings the whole world closer."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       8,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "nature_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "...cc...",
+     "...cc.N.",
+     "..N...N.",
+     "c..nn..c"
+    ],
+    "exits": {
+     "n": "OUT:12,13"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Zigzagoon ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Zigzagoon: Bufuu!"
+       ]
+      }
+     },
+     {
+      "text": "Nature lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "People and Pokémon have learned to live with nature. We don't need to change it."
+       ]
+      }
+     },
+     {
+      "text": "Treehouse lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Fortree's treehouses are the best! It's the number one town for living with Pokémon."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,4": {
+      "m": "look",
+      "d": "dur"
+     },
+     "6,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       8,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "guild": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "cNcccccc",
+     "cmmccmmc",
+     "N.......",
+     "c..nn.Nc"
+    ],
+    "exits": {
+     "n": "OUT:37,13"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Aarune",
+     {
+      "text": "Doll collector",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I wanted a pretty desk for my dolls. Maybe one day I'll have a Secret Base to put it in."
+       ]
+      }
+     },
+     {
+      "text": "Guild visitor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This place used to sell furniture. Now it's all about Secret Bases!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "0,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       8,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Secret Base Guild"
+   }
+  },
+  "inside": {
+   "10,3": "trade_house",
+   "17,3": "hidden_power_house",
+   "25,3": "dex_house",
+   "32,2": "wingull_house",
+   "12,13": "nature_house",
+   "37,13": "guild"
+  }
  },
  "HOENN_ROUTE_120": {
   "art": [
@@ -118878,6 +122737,68 @@
     ]
    }
   ],
+  "rooms": {
+   "berry_master": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....NccN...",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:22,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/31_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Berry Master",
+     "Berry Master's wife"
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/31_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Berry Master's house"
+   }
+  },
+  "inside": {
+   "22,6": "berry_master"
+  },
   "hidden": {
    "75,1": "SUPER_REPEL",
    "12,1": "HYPER_POTION",
@@ -127339,7 +131260,15 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Mirage Island appears and vanishes with the weather. Or is it something more?"
+        "Mirage Island comes and goes with the weather... or with something stranger.",
+        "You've come a long way across the sea. Take this TM. It's Psyshock: a Psychic attack that hits the foe's Defense."
+       ],
+       "gift_item": {
+        "TM054": 1
+       },
+       "flag": "pacifidlog_psyshock",
+       "done": [
+        "Psyshock hits hard even against Pokémon with a high Sp. Def. Use it well!"
        ]
       }
      },
@@ -128570,7 +132499,21 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "I love Lotad! Big ones best of all. If you catch a huge Lotad, come and show me!"
+        "A Barboach! What a fine whiskery fish. Thanks for showing me!",
+        "Here, take this Max Elixir. It restores all the PP of all of a Pokémon's moves."
+       ],
+       "gift_item": {
+        "MAX_ELIXIR": 1
+       },
+       "flag": "sootopolis_barboach_shown",
+       "done": [
+        "Big Lotad, whiskery Barboach... I love Pokémon from the water!"
+       ],
+       "requires": [
+        "party_has:339"
+       ],
+       "fail": [
+        "I love Pokémon from fresh water. Do you have a Barboach? I'd love to see one!"
        ]
       }
      },
@@ -128579,7 +132522,21 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "I love Seedot! The bigger the better. Show me a really big one sometime!"
+        "A Shroomish! I hardly ever see one in Sootopolis. Thanks for showing me!",
+        "Here, take this Max Elixir."
+       ],
+       "gift_item": {
+        "MAX_ELIXIR": 1
+       },
+       "flag": "sootopolis_shroomish_shown",
+       "done": [
+        "Seedot, Shroomish... I love Pokémon from the forest!"
+       ],
+       "requires": [
+        "party_has:285"
+       ],
+       "fail": [
+        "Pokémon from the forest are rare in Sootopolis. Do you have a Shroomish? Let me see one!"
        ]
       }
      }

@@ -501,6 +501,23 @@ def _calm(st):
         st.run.floor.movers = [m for m in st.run.floor.movers if m.kind != "wild"]
 
 
+def _house(st, door, at, back=None):
+    """A route house (H4, 11-23: walked inside, h_h4_houses.py): step in at its door from the tile below, talk to the one
+    standing at at; back: then out again to that spot on the route's own floor."""
+    st.run.player, st.anim = (door[0], door[1] + 1), 0
+    st.dialogue_box.visible = False
+    _calm(st); st.step(0, -1); frames(5); tap(st)
+    who = next((m for m in st.run.floor.movers if (m.x, m.y) == tuple(at) and m.kind == "figure"), None)
+    if who is not None:
+        st._use_figure(who)
+    lines = list(st.dialogue_box.text_lines or []) if st.dialogue_box.visible else []
+    tap(st)
+    if back is not None:
+        st.dialogue_box.visible = False
+        st.run.jump_floor(0, back); _calm(st); st.anim = 0
+    return who is not None, lines
+
+
 def _scene(key, came, flags_on=(), flags_off=(), at=None, step=None):
     for k in flags_on:
         story.story_flags[k] = True
@@ -653,13 +670,10 @@ for _k in ("meteor_falls_cleared", "route114_rival_race", "got_tm_dig_114", "rou
 story.story_flags["heard_cozmo"] = True
 _tm15 = story.inventory.pop(_htm("TM055"), None)
 st = open_map("HOENN_ROUTE_114", "FALLARBOR_TOWN")
-st.run.player, st.facing = (29, 6), (0, -1)
-st._read_sign(); tap(st)
-check(story.inventory.get(_htm("TM055"), 0) > 0, "Route 114: the Fossil Maniac's little brother gives you TM15 (Dig)")
-st.run.player, st.facing = (27, 37), (0, -1)
-st._read_sign()
-check(st.dialogue_box.visible and "Lanette" in " ".join(st.dialogue_box.text_lines), f"Route 114: Lanette at home ({st.dialogue_box.text_lines[:1]})")
-tap(st)
+_in, _ = _house(st, (29, 5), (3, 2), back=(29, 6))
+check(_in and story.inventory.get(_htm("TM055"), 0) > 0, "Route 114: inside his house, the Fossil Maniac's little brother gives you TM15 (Dig)")
+_in, _said = _house(st, (27, 36), (5, 4), back=(27, 37))
+check(_in and "Lanette" in " ".join(_said), f"Route 114: Lanette at home, walked inside ({_said[:1]})")
 _bb = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Berry boy")
 st._use_figure(_bb)
 check(story.story_flags.get("route114_berry_day") and "Berry" in " ".join(st.dialogue_box.text_lines), "Route 114: the rich boy gives a Berry a day")
@@ -895,10 +909,8 @@ for _d in ((0, 1), (0, -1)):
     _seen9.append((_tk.x, _tk.y))
 check(_seen9 == [(18, 128), (17, 128)], f"Route 119: the Ninja Boy in the grass copies your steps, turned a quarter (Emerald's copy movement) ({_seen9})")
 _hp = story.player_team[0].current_hp = 1
-st.run.player, st.anim = (33, 110), 0
-st.dialogue_box.visible = False
-_calm(st); st.step(0, -1); tap(st)
-check(story.player_team[0].current_hp == story.player_team[0].max_hp, "Route 119: the rest stop's cabin heals your team")
+_in, _ = _house(st, (33, 109), (7, 2), back=(33, 110))
+check(_in and story.player_team[0].current_hp == story.player_team[0].max_hp, "Route 119: in the rest stop's cabin, its keeper lets your team rest")
 # Fortree: two storeys from one Emerald map, joined by ladders; Emerald's invisible Kecleon by the Gym
 st = open_map("FORTREE_CITY", "HOENN_ROUTE_119")
 _lads = sorted(t for t, k in st.exits.items() if k == "FORTREE_CITY_UPPER")
@@ -1020,10 +1032,11 @@ st.dialogue_box.visible = False
 st._use_figure(_gl); tap(st)
 check(not _no and story.inventory.get(_htm("TM111")) == 1, "Route 123: the Grass lover gives TM28 Giga Drain only to a Trainer with a Grass type")
 _b0 = sum(v for k, v in story.inventory.items() if k.endswith("_BERRY"))
-st.run.player, st.anim = (22, 7), 0
-st.dialogue_box.visible = False
-_calm(st); st.step(0, -1); tap(st)
-check(sum(v for k, v in story.inventory.items() if k.endswith("_BERRY")) - _b0 == 2, "Route 123: the Berry Master gives two Berries a day")
+_in, _ = _house(st, (22, 6), (4, 4), back=(22, 7))
+_b1 = sum(v for k, v in story.inventory.items() if k.endswith("_BERRY"))
+_in2, _ = _house(st, (22, 6), (7, 4), back=(22, 7))
+check(_in and _in2 and _b1 - _b0 == 2 and sum(v for k, v in story.inventory.items() if k.endswith("_BERRY")) - _b1 == 1,
+      "Route 123: in their house, the Berry Master gives two Berries a day, his wife one")
 g.change_state(st)
 story.repel_routes = _rep10
 story.badges.clear(); story.badges.update(_badges10)
@@ -2928,6 +2941,97 @@ check(all(_area[k].get("horde_pool_percentages") for k in ("HOENN_ROUTE_101", "H
       "hordes where ORAS has them: Route 101, Granite Cave, Victory Road, Sky Pillar...")
 story.story_flags.clear(); story.story_flags.update(_f4)
 story.inventory.clear(); story.inventory.update(_inv4)
+
+# H4 houses (11-23, DECISIONS #19): the town and route houses walked inside from Emerald's rooms (h_h4_houses.py), ORAS's
+# gifts in the rooms ORAS has them in, played as a player meets them
+_f5, _inv5, _team5, _badges5 = dict(story.story_flags), dict(story.inventory), list(story.player_team), {r: list(b) for r, b in story.badges.items()}
+for _k in ("dewford_silk_scarf", "dewford_hall_sludge_bomb", "rustboro_makuhita_trade", "sootopolis_barboach_shown",
+           "sootopolis_shroomish_shown", "pacifidlog_psyshock"):
+    story.story_flags.pop(_k, None)
+
+
+def _walk_in(key, came, door):
+    st = open_map(key, came)
+    st.scenes.entered = True
+    st.scenes.playing, st._scene_lock = None, False   # (no town scene of the story's in the way: only the house is checked here)
+    st.player, st.anim = (door[0], door[1] + 1), 0
+    st.step(0, -1); frames(2)
+    return st
+
+
+def _talk_to(st, at):
+    """Walk up beside a person (an open tile next to them) and press A, facing them."""
+    getattr(st, "motions", {}).pop(tuple(at), None)   # (stood still for the check: someone who wanders may be mid-step)
+    for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)):
+        b = (at[0] + dx, at[1] + dy)
+        if st._open(b) and b not in st._people() and b not in st.exits:
+            return _press(st, b, (-dx, -dy))
+    return ["(nowhere to stand)"]
+
+
+_rooms5 = {k: list((_tm2[k].get("rooms") or {})) for k in ("PETALBURG_CITY", "RUSTBORO_CITY", "DEWFORD_TOWN", "SLATEPORT_CITY", "MAUVILLE_CITY",
+                                                              "VERDANTURF_TOWN", "LAVARIDGE_TOWN", "FALLARBOR_TOWN", "FORTREE_CITY_UPPER")}
+check({"wally_home", "dreamer_house", "norman_fans"} <= set(_rooms5["PETALBURG_CITY"]) and {"devon", "devon_2", "devon_3", "trade_house", "flats_3"} <= set(_rooms5["RUSTBORO_CITY"])
+      and {"hall", "pier_house", "island_house"} <= set(_rooms5["DEWFORD_TOWN"]) and {"shipyard", "shipyard_2"} <= set(_rooms5["SLATEPORT_CITY"])
+      and {"bike_shop", "game_corner"} <= set(_rooms5["MAUVILLE_CITY"]) and "wally_house" in _rooms5["VERDANTURF_TOWN"]
+      and "herb_shop" in _rooms5["LAVARIDGE_TOWN"] and "cozmo_house" in _rooms5["FALLARBOR_TOWN"] and "guild" in _rooms5["FORTREE_CITY_UPPER"],
+      "H4: the towns' houses are rooms you walk into (Petalburg to Fortree, from Emerald's maps)")
+_routes5 = {k: sorted(_tm2[k].get("room_floors") or (_tm2[k].get("rooms") or {})) for k in ("HOENN_ROUTE_104", "HOENN_ROUTE_111", "HOENN_ROUTE_113", "HOENN_ROUTE_114",
+                                                                                           "HOENN_ROUTE_116", "HOENN_ROUTE_117", "HOENN_ROUTE_119", "HOENN_ROUTE_123")}
+check(all(_routes5.values()), f"H4: the route houses are rooms too (the Flower Shop, the Glass Workshop, the Fossil Maniac, Lanette, the Day Care...) {_routes5}")
+# a building whose door had options keeps every one of them inside, on a person
+_lost5 = []
+for _k5, _kinds5 in (("RUSTBORO_CITY", ["devon"]), ("SLATEPORT_CITY", ["shipyard"]), ("MAUVILLE_CITY", ["bike"]), ("VERDANTURF_TOWN", ["wally"]),
+                     ("LAVARIDGE_TOWN", ["herb"]), ("FALLARBOR_TOWN", ["cozmo", "reminder"]), ("FORTREE_CITY_UPPER", ["hiddenpower", "spinda", "wingull", "guild"])):
+    _inroom5 = json.dumps([r.get("people") for r in _tm2[_k5]["rooms"].values()], ensure_ascii=False)
+    for _o5 in _area[_k5].get("explore_options", []):
+        if _o5.get("door") in _kinds5 and json.dumps(_o5["text"], ensure_ascii=False) not in _inroom5:
+            _lost5.append(f"{_k5}:{_o5['text']}")
+check(not _lost5, f"H4: every option those doors opened stands inside as a person (Mr. Stone, Stern, Rydel, Wally, Cozmo...) {_lost5}")
+
+st = _walk_in("DEWFORD_TOWN", "HOENN_ROUTE_106", (8, 8))
+check(st.room == "pier_house", f"Dewford: the house by the pier, walked inside ({st.room})")
+_n5 = story.inventory.get("SILK_SCARF", 0)
+said = _talk_to(st, (6, 5))
+check(story.inventory.get("SILK_SCARF", 0) == _n5 + 1, f"Dewford: the Ace Trainer in the pier house gives you the Silk Scarf (ORAS) ({said[:1]})")
+story.badges["HOENN"] = [b for b in story.badges.get("HOENN", []) if "BALANCE" not in str(b).upper()]
+st = _walk_in("DEWFORD_TOWN", "HOENN_ROUTE_106", (3, 3))
+_n5 = story.inventory.get("TM148", 0)
+said = _talk_to(st, (8, 6))
+check(st.room == "hall" and story.inventory.get("TM148", 0) == _n5 and any("five Badges" in x for x in said),
+      f"Dewford Hall: the Collector keeps his TM Sludge Bomb until you have five Badges ({st.room}, {said[:1]})")
+story.badges["HOENN"] = story.badges.get("HOENN", []) + ["BALANCE"]
+said = _talk_to(st, (8, 6))
+check(story.inventory.get("TM148", 0) == _n5 + 1, f"Dewford Hall: with five Badges he gives TM Sludge Bomb (ORAS) ({said[:1]})")
+story.badges.clear(); story.badges.update(_badges5)
+st = _walk_in("RUSTBORO_CITY", "HOENN_ROUTE_104", (11, 15))
+check(st.room == "devon" and _stairs(st, "ROOM:devon_2") == "devon_2" and _stairs(st, "ROOM:devon_3") == "devon_3" and (17, 5) in st._people(),
+      f"Rustboro: Devon walked inside, up to Mr. Stone's office on 3F ({st.room})")
+story.player_team = [mk(287)]
+st = _walk_in("RUSTBORO_CITY", "HOENN_ROUTE_104", (33, 19))
+said = _talk_to(st, (6, 4))
+_mk5 = story.player_team[0]
+check(st.room == "trade_house" and _mk5.id == 296 and getattr(_mk5, "nickname", None) == "Makit" and getattr(_mk5, "held_item", None) == "X_ATTACK",
+      f"Rustboro: the trader swaps his Makuhita, Makit (holding an X Attack), for your Slakoth (ORAS) ({said[-1:]})")
+story.player_team = [mk(339)]
+st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
+st.scenes.entered = True
+st._go("size_house", "OUT:48,25"); frames(2)
+_n5 = story.inventory.get("MAX_ELIXIR", 0)
+said = _talk_to(st, (2, 4))
+check(story.inventory.get("MAX_ELIXIR", 0) == _n5 + 1, f"Sootopolis: shown a Barboach, the fisherman north-east of the Center gives a Max Elixir (ORAS) ({said[:1]})")
+said = _talk_to(st, (5, 4))
+check(story.inventory.get("MAX_ELIXIR", 0) == _n5 + 1 and any("Shroomish" in x for x in said), f"...his sister wants to see a Shroomish first ({said[:1]})")
+st = open_map("PACIFIDLOG_TOWN", "HOENN_ROUTE_131")
+st.scenes.entered = True
+st._go("mirage_house", "OUT:17,21"); frames(2)
+_n5 = story.inventory.get("TM054", 0)
+said = _talk_to(st, (3, 4))
+check(story.inventory.get("TM054", 0) == _n5 + 1, f"Pacifidlog: the man in the south-east house gives TM Psyshock (ORAS) ({said[-1:]})")
+story.story_flags.clear(); story.story_flags.update(_f5)
+story.inventory.clear(); story.inventory.update(_inv5)
+story.player_team = _team5
+story.badges.clear(); story.badges.update(_badges5)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

@@ -50,11 +50,6 @@
     },
     "people": [
      [
-      3,
-      9,
-      "Old woman"
-     ],
-     [
       11,
       18,
       "TM081 GRASS KNOT"
@@ -73,7 +68,6 @@
    }
   },
   "givers": {
-   "Old woman": "Old woman",
    "Boy": "Boy"
   }
  },

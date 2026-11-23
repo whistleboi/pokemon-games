@@ -56,21 +56,6 @@
    },
    "explore_options": [
     {
-     "text": "Old woman",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Old woman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM272": 1
-      },
-      "flag": "oras_fortree_city_2"
-     },
-     "flag_condition": "not oras_fortree_city_2"
-    },
-    {
      "text": "TM081 GRASS KNOT",
      "action": "EVENT",
      "color": "GOLD",
@@ -8998,9 +8983,6 @@
   },
   "FORTREE_CITY:TM86 GRASS KNOT": {
    "item": "TM081"
-  },
-  "FORTREE_CITY:Old woman": {
-   "sheet": "em_22.png"
   },
   "FORTREE_CITY:Boy": {
    "sheet": "em_5.png"
