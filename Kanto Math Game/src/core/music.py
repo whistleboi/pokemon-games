@@ -14,6 +14,7 @@ fanfares (healed, item, key item, caught, level up, badge, evolved) as jingles t
 music, play once and let it carry on where it was. Jingles are cued by the text box lines that
 announce those moments ("... grew to Lv 12!"), see line_cue.
 """
+import json
 import re
 import os
 import random
@@ -104,6 +105,11 @@ VILLAIN_WORDS = ("ROCKET", "MAGMA", "AQUA", "GALACTIC", "PLASMA", "FLARE", "SKUL
                  "CIPHER", "GRUNT", "ADMIN", "BOSS", "SNAGEM")
 
 _current = None  # the game's MusicManager (for line_cue)
+# A region's own soundtrack (11-23, Unova's first): assets/music/<region>/music.json, read once:
+#   {"areas": {AREA: track | {SEASON: track}}, "rooms": {"AREA:room": track}, "kinds": {kind: track}}
+# tracks are <name>.ogg in that folder; a kind there ("wild", "trainer", "gym", "final", "victory", "center", "villain"...)
+# wins over the shared themes. Rooms: a town's room or a route map's room floor (the Center, a Gym, a grotto).
+REGION_MUSIC = {}
 
 
 def class_key(cls):
@@ -141,6 +147,47 @@ class MusicManager:
             if own:  # this region's tracks (plus the built-in ones), not other regions'
                 return [files[f] for f in matches if f in own or f.startswith("music_")]
         return [files[f] for f in matches]
+
+    def region_table(self, region):
+        if region not in REGION_MUSIC:
+            path = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", str(region or "").lower(), "music.json")
+            try:
+                with open(path, encoding="utf-8") as f:
+                    REGION_MUSIC[region] = json.load(f)
+            except (OSError, ValueError):
+                REGION_MUSIC[region] = {}
+        return REGION_MUSIC[region]
+
+    def place_key(self):
+        """(area, room): a town's room you're in, or a route map's room floor; room None outdoors."""
+        area = getattr(self.game.story_manager, "current_area_key", "")
+        st = getattr(self.game, "current_state", None)
+        room = getattr(st, "room", None)
+        run = getattr(st, "run", None)
+        if run is not None and getattr(run, "recipe", None):
+            floors = ((run.recipe.get("art") or {}).get("room_floors") or {})
+            room = next((n for n, i in floors.items() if i == getattr(run, "index", -1)), None)
+        return area, room if isinstance(room, str) else None
+
+    def region_track(self, kind, region):
+        """The region's own track for this kind of music here (its music.json), or None."""
+        table = self.region_table(region) if region else {}
+        if not table:
+            return None
+        if kind in ("town", "route"):
+            area, room = self.place_key()
+            name = (table.get("rooms") or {}).get(f"{area}:{room}") if room else None
+            name = name or (table.get("areas") or {}).get(area)
+            if isinstance(name, dict):
+                try:
+                    from src.world import seasons
+                    name = name.get(seasons.current_season()) or next(iter(name.values()), None)
+                except Exception:
+                    name = next(iter(name.values()), None)
+        else:
+            name = (table.get("kinds") or {}).get(kind)
+        path = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", str(region).lower(), f"{name}.ogg") if name else None
+        return path if path and os.path.isfile(path) else None
 
     def kanto_track(self, kind, region):
         """Kanto's own track for this kind of music here (the area's theme, the battle themes),
@@ -203,7 +250,7 @@ class MusicManager:
             region = self.game.story_manager.get_current_region()
         except Exception:
             pass
-        path = self.kanto_track(kind, region)
+        path = self.region_track(kind, region) or self.kanto_track(kind, region)
         if path and path == self.path and pygame.mixer.music.get_busy() and not force:
             return
         if not path:
@@ -264,6 +311,16 @@ class MusicManager:
         if self.jingle_channel is not None and not self.jingle_channel.get_busy():
             self.jingle_channel = None
             pygame.mixer.music.unpause()
+        self._place_tick = getattr(self, "_place_tick", 0) + 1
+        if self.kind in ("town", "route") and self._place_tick % 20 == 0 and self.jingle_channel is None:
+            try:   # (a region with its own soundtrack: in or out of a room, or a new season, changes the track)
+                region = self.game.story_manager.get_current_region()
+            except Exception:
+                region = None
+            if region and self.region_table(region):
+                path = self.region_track(self.kind, region)
+                if path and path != self.path:
+                    self.play(self.kind)
 
     def encounter_kind(self, battle):
         """The 'eyes meet' theme for the trainer about to battle (None for leaders and the like)."""
