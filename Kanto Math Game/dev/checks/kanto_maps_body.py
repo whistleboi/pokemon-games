@@ -1634,7 +1634,7 @@ ti = open_map("TWO_ISLAND", "CAPE_BRINK")
 _pp = {o.get("text"): p for p, o in ti._people().items()}
 check((ti.w, ti.h) == (48, 20) and _pp.get("Shop") == (28, 4), f"Two Island: FireRed's picture; the data's shop at the market stall ({_pp.get('Shop')})")
 _pp = _room_of(ti, "gamecorner")
-check(_pp.get("Joyful Game Corner") == (4, 2) and (5, 5) in _pp.values(), f"...the Joyful Game Corner: its attendant and Lostelle's dad ({_pp})")
+check((_pp.get("Joyful Games") or _pp.get("Joyful Game Corner")) == (4, 2) and (5, 5) in _pp.values(), f"...the Joyful Game Corner: its attendant and Lostelle's dad ({_pp})")
 _bk = story.story_flags.pop("beat_three_island_bikers", None)
 th = open_map("THREE_ISLAND", "BOND_BRIDGE")
 _pp = {o.get("text"): p for p, o in th._people().items()}

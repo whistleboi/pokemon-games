@@ -34138,6 +34138,46 @@
     "d": "du"
    }
   },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      10,
+      15,
+      14,
+      18
+     ]
+    },
+    "condition": "not:has_item:TRI_PASS",
+    "flag": "one_island_bill_walk",
+    "cast": [
+     {
+      "sheet": "fr_73.png",
+      "from": [
+       12,
+       16
+      ],
+      "to": "player",
+      "lines": [
+       "Bill: Here we are! This is One Island. The Sevii Islands are scattered all around here.",
+       "Bill: My friend Celio runs the Pokémon Network Center. Come on, he's expecting us!"
+      ],
+      "lead": [
+       [
+        14,
+        6,
+        []
+       ]
+      ]
+     }
+    ],
+    "room": [
+     "center",
+     9,
+     9
+    ]
+   }
+  ],
   "rooms": {
    "center": {
     "art": [
@@ -280694,7 +280734,7 @@
    "~~~~~===c.......................cEccccoooccccccc",
    "~~~~~===c...ccccc..............!cDcccc...ccccccc",
    "~~~~~===========c...ccccccccc........c...ccccccc",
-   "~~~~~===N=======c...ccHccFccc........c...ccccccc",
+   "~~~~~===========c...ccHccFccc........c...ccccccc",
    "~~~~~===========c...ccDccDccc........c...ccccccc",
    "~~~~~~~~~...~~~=c..............cc..ccc...ccccccc",
    "~~~~~~~~~.D.~~~=c..............c.........ccccccc",
@@ -280771,19 +280811,6 @@
       "Shh! Don't tell Lorelei I'm out here! She collects stuffed Pokémon dolls, did you know?"
      ]
     }
-   },
-   {
-    "text": "Rival",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "{rival_name}: Huh? {player_name}, what are you doing all the way out here? I'm checking out the Day Care. Smell ya!"
-     ],
-     "flag": "kanto_rival_four_island"
-    },
-    "condition": [
-     "not:kanto_rival_four_island"
-    ]
    }
   ],
   "signs": [
@@ -280821,10 +280848,6 @@
     "m": "face",
     "d": "r"
    },
-   "8,25": {
-    "m": "face",
-    "d": "l"
-   },
    "5,6": {
     "m": "face",
     "d": "d"
@@ -280834,6 +280857,35 @@
     "d": "d"
    }
   },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      8,
+      26,
+      12,
+      28
+     ]
+    },
+    "flag": "kanto_rival_four_island",
+    "cast": [
+     {
+      "sheet": "@rival",
+      "from": [
+       8,
+       25
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Hey! {player_name}! What are you doing out here in the Sevii Islands?",
+       "{rival_name}: Quit following me around, will you? I came to see the Day Care. They say you can get Eggs there.",
+       "{rival_name}: Not that you'd know what to do with one. Smell ya later!"
+      ],
+      "leave": "back"
+     }
+    ]
+   }
+  ],
   "rooms": {
    "daycare": {
     "art": [

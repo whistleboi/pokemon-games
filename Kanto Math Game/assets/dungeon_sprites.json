@@ -80,6 +80,8 @@
     "PALLET_TOWN:Last Squirtle Ball": {"item": "POKE_BALL"},
     "PALLET_TOWN:Last Charmander Ball": {"item": "POKE_BALL"},
     "FOUR_ISLAND:Doll 1": {"sheet": "fr_131.png"},
+    "FOUR_ISLAND:Doll 12": {"sheet": "fr_114.png"},
+    "FOUR_ISLAND:Doll 13": {"sheet": "fr_133.png"},
     "FOUR_ISLAND:Doll 2": {"sheet": "fr_126.png"},
     "FOUR_ISLAND:Doll 3": {"sheet": "fr_120.png"},
     "FOUR_ISLAND:Doll 4": {"sheet": "fr_128.png"},

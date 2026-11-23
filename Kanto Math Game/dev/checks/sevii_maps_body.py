@@ -766,6 +766,32 @@ if _ndx is None: story.story_flags.pop("unlocked_national_dex", None)
 for _k in [k for k in story.story_flags if k.startswith("tt_")] + ["challenge_clock"]:
     story.story_flags.pop(_k, None)
 
+# ---- FireRed's arrival scenes (11-23, K4): Bill walks you into One Island's Network Center; the rival on Four Island
+_af = {k: story.story_flags.pop(k, None) for k in ("one_island_bill_walk", "kanto_rival_four_island")}
+_tp = story.inventory.pop("TRI_PASS", None)
+t = town("ONE_ISLAND", "KINDLE_ROAD"); t._go("harbor", ""); frames(t, 2); t._go(None, "OUT:12,19"); frames(t, 2)
+_start = tuple(t.player)
+for _i in range(400):
+    frames(t)
+    _tap_through(t, 20)
+    if story.story_flags.get("one_island_bill_walk"): break
+frames(t, 5)
+check(story.story_flags.get("one_island_bill_walk") and getattr(t, "room", None) == "center" and tuple(t.player) == (9, 9),
+      f"One Island, first trip: out of the harbour, FireRed's Bill walks you up and into the Network Center, at FireRed's (9,9) (from {_start}: {getattr(t, 'room', None)} {tuple(t.player)})")
+t._go(None, "OUT:14,4"); g.walk_town_room = None
+t = town("FOUR_ISLAND", "ICEFALL_CAVE"); t._go("harbor", ""); frames(t, 2); t._go(None, "OUT:10,29"); frames(t, 2)
+_start = tuple(t.player)
+for _i in range(400):
+    frames(t)
+    _tap_through(t, 20)
+    if story.story_flags.get("kanto_rival_four_island") and not t.scenes.busy(): break
+check(story.story_flags.get("kanto_rival_four_island") and getattr(t, "room", None) is None and not t.scenes.busy()
+      and "Rival" not in [o.get("text") for o in t.people.values() if isinstance(o, dict)],
+      f"Four Island, first visit: out of the harbour the rival walks up from the pier, has his say and goes - once (from {_start})")
+for _k, _v in _af.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None: story.story_flags[_k] = _v
+if _tp is not None: story.inventory["TRI_PASS"] = _tp
 # ---- Two Island's Joyful Game Corner (11-23, K4): FireRed's two link games, single-player, with sums
 from src.world import joyful_games as _jg
 from src.minigames import sevii as _sv
