@@ -768,6 +768,10 @@ class WalkTownState(CityState):
             else:
                 via = next((o.get("door") for o in self.area_data.get("travel_options", []) if o.get("door")
                             and (o.get("target_area") or o.get("target")) == came), None)  # (back from a place you reach through a door here: at that door: the Reception Gate's great door)
+                if via is None and came:   # (no way back from here - a one-way crossing, FireRed's Seagallop from Cinnabar to One
+                    _there = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(came) or {})   # Island: at the kind of door
+                    via = next((o.get("door") for o in _there.get("travel_options", []) if o.get("door")   # you set off by there,
+                                and (o.get("target_area") or o.get("target")) == self.area_key), None)   # its harbour; Kanto 11-23)
                 own = [t for t, k in self.doors.items() if came and (k == via or k.upper().replace(" ", "_") in came)]
                 own = sorted(own, key=lambda t: (self.doors[t] != via, -t[1]))
                 door = (own[0] if own else None) or next((t for t, k in self.doors.items() if k == "center"), None) or \
