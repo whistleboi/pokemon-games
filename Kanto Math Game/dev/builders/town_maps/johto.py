@@ -2475,10 +2475,10 @@ MAPS = {
                 ],
                 "parts": True,
                 "exits": {},
-                "roofs": {"_floor": [206, 196, 170], "_wall": [232, 234, 240], "_things": {}, "_stairs": {"5,2": "foot", "13,5": "foot", "13,4": "foot"}, "_picture": {"f": "ss_ground/D27R0102.png", "at": [0, 0], "px": 32}, "_buildings_in_picture": True, "_signs_in_picture": True},
+                "roofs": {"_floor": [206, 196, 170], "_wall": [232, 234, 240], "_things": {}, "_stairs": {"5,2": "foot", "13,5": "foot", "13,4": "foot"}, "_picture": {"f": "ss_ground/D27R0102.png", "at": [0, 1], "px": 32}, "_buildings_in_picture": True, "_signs_in_picture": True},
                 "links": {"5,2": [0, 2, 2], "13,5": [2, 13, 6], "13,4": [2, 13, 6]},
                 "trainer_spots": ["Gentleman Alfred", "Sailor Huey"],
-                "overheads": [{"kind": "picture", "f": "ss_top/D27R0102.png", "at": [0, 0], "size": [18, 19], "px": 32}],
+                "overheads": [{"kind": "picture", "f": "ss_top/D27R0102.png", "at": [0, 1], "size": [18, 19], "px": 32}],
             },
             {
                 "art": [
@@ -2566,11 +2566,11 @@ MAPS = {
                 ],
                 "parts": True,
                 "exits": {"^": "OLIVINE_LIGHTHOUSE"},
-                "roofs": {"_floor": [206, 196, 170], "_wall": [232, 234, 240], "_things": {}, "_stairs": {"4,4": "foot"}, "_picture": {"f": "ss_ground/D27R0106.png", "at": [0, 0], "px": 32}, "_buildings_in_picture": True, "_signs_in_picture": True},
+                "roofs": {"_floor": [206, 196, 170], "_wall": [232, 234, 240], "_things": {}, "_stairs": {"4,4": "foot"}, "_picture": {"f": "ss_ground/D27R0106.png", "at": [0, 1], "px": 32}, "_buildings_in_picture": True, "_signs_in_picture": True},
                 "links": {"4,4": [3, 3, 4]},
                 "trainer_spots": ["Sailor Roberto", "Sailor Terrell"],
                 "people": ["TM286"],
-                "overheads": [{"kind": "picture", "f": "ss_top/D27R0106.png", "at": [0, 0], "size": [18, 19], "px": 32}],
+                "overheads": [{"kind": "picture", "f": "ss_top/D27R0106.png", "at": [0, 1], "size": [18, 19], "px": 32}],
             },
         ],
         "floor_names": [

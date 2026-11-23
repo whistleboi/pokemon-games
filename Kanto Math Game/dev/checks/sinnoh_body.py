@@ -452,7 +452,8 @@ check(r.run.player != _p0 and r.run.player != (_p0[0] - _cur[_p0][0], _p0[1] - _
 story.inventory.clear(); story.inventory.update(_inv0)
 _data_only = {"JUBILIFE_VILLAGE", "HALL_OF_ORIGIN", "SPEAR_PILLAR_RIFT", "DISTORTION_WORLD", "SEA_TEMPLE", "TURNBACK_CAVE", "SENDOFF_SPRING"}
 _jump = [(k, o.get("target_area")) for k in _sin for o in _prog[k].get("route_menu", []) + _prog[k].get("travel_options", [])
-         if o.get("target_area") and o["target_area"] not in {v for f in (_tm[k].get("floors") or [_tm[k]]) for v in (f.get("exits") or {}).values()}
+         if o.get("target_area") and o["target_area"] not in {v for f in (_tm[k].get("floors") or [_tm[k]]) + list((_tm[k].get("rooms") or {}).values())
+                                                              for v in (f.get("exits") or {}).values()}   # (a gatehouse's far door counts: the Frontier's gate, 11-22)
          and o["target_area"] in _tm]
 check(not _jump, f"the area data lists no jump between two mapped places that aren't joined on the maps {_jump[:6]}")
 _sv = dict(story.story_flags); _team = list(story.player_team)
@@ -636,7 +637,8 @@ def _enter_door(t, door):
 
 _area = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
 _rooms_seen = 0
-for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).get("region") == "SINNOH"]:
+for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).get("region") == "SINNOH"
+             and _area[k].get("area_type") != "dungeon"]:   # (a place walked as a dungeon, its rooms floors of it: the Battle Frontier - battle_points walks it, 11-22)
     _m = _tm[_key]
     _bad = []
     for _d, _name in _m["inside"].items():
