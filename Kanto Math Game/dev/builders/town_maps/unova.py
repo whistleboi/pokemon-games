@@ -866,13 +866,51 @@ RANCH_SCENES = [
                                   "Owner: Come on, Herdier! Everyone's waiting. Let's go home!"], "leave": [50, 33]},
               {"person": "Herdier", "path": [[51, 22], [50, 22], [50, 33]], "gone": True, "lines": []}]},
 ]
+# ------------------------------------------------------------------------------------------------------ Hidden Grottoes
+# (11-23, Jordan: "Build them, backfill"; src/world/grottoes.py.) Black 2's zone 518 is every grotto's map: a path north
+# (way out at 15, 27: the game's trigger 5) to a clearing whose middle (15, 12: trigger 2000) holds the grotto's one thing.
+# Its entrance on the place's map is a person with sprite 293 (Floccesy Ranch's 16 at 52, 20), here a door into the room.
+# What it holds is one option per thing, each shown only while the grotto holds it ("world:grottoes:<n>:<kind>[:<id>]").
+_GROTTOES = {g["grotto"]: g for g in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..",
+                                                                   "assets", "unova_area_data.json"), encoding="utf-8"))["HIDDEN_GROTTOES"]}
+OUTSIDE[518] = -1   # (one map for every grotto: its way out is placed by grotto_room, not by a warp)
+
+
+def grotto_room(gid, door):
+    g = _GROTTOES[gid]
+    ev = {"world": "grottoes", "grotto": gid, "at": [15, 12]}
+    opts, seen = [], set()
+    for v in ("BLACK_2", "WHITE_2"):
+        for s in g["pokemon"][v]:
+            if s["id"] in seen:
+                continue
+            seen.add(s["id"])
+            opts.append({"text": s["name"] + " in the grotto", "action": "EVENT", "no_tag": True, "_look": "pokemon:%d" % s["id"],
+                         "condition": ["world:grottoes:%d:pokemon:%d" % (gid, s["id"])],
+                         "event": dict(ev, lines=["%s! It's watching you from the middle of the clearing." % s["name"]])})
+    opts.append({"text": "Poke Ball in the clearing", "action": "EVENT", "no_tag": True, "_look": "sheet:b2_item_ball.png",
+                 "condition": ["world:grottoes:%d:item" % gid], "event": dict(ev)})
+    opts.append({"text": "Something in the grass", "action": "EVENT", "no_tag": True, "_look": "sheet:b2_none.png",
+                 "condition": ["world:grottoes:%d:hidden" % gid], "event": dict(ev)})
+    m = room(518, {}, {}, None, extra_people=[(15, 12, opts)])
+    rows = [list(r) for r in m["art"]]
+    rows[27][15] = "v"
+    m["art"] = ["".join(r) for r in rows]
+    m["exits"] = {"v": "OUT:%d,%d" % tuple(door)}
+    m["title"] = "Hidden Grotto"
+    return m
+
+
 RANCH = route(
     445, RANCH_PEOPLE, {},
     exits={"v": ("FLOCCESY_RANCH_OUTSIDE", [(45, 54), (46, 54), (47, 54)])},
     trainers={6: ("Youngster Kenny", 2), 4: ("Lass Molly", 3), 5: ("Janitor Orville", 2)},
     extra_people=RANCH_OWNERS,
     scenes=RANCH_SCENES,
+    rooms={"grotto": grotto_room(0, (52, 20))},
+    inside={"52,20": "grotto"},   # (the gap in the trees, north-east, by Surf: Black 2's person 16)
 )
+RANCH["art"][20] = RANCH["art"][20][:52] + "D" + RANCH["art"][20][53:]   # (the grotto's way in is a door)
 
 # --------------------------------------------------------------------------------------------------------- Pledge Grove
 # Zone 614, behind Alder's house: a clearing in the trees, and the rock with three deep cuts (Keldeo: post-game, its BOSS).
