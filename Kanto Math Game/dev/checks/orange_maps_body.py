@@ -583,8 +583,8 @@ _ofile = json.load(open("assets/orange_area_data.json", encoding="utf-8"))
 _left = sorted({k for k, v in _ofile.items() if k.endswith("_PERCENTAGES") and isinstance(v, dict) and any(x.isdigit() and int(x) in _drop for x in v)})
 _ext = g.loader.area_data["REGION_START"]["ORANGE"]["dex_extra"]   # (11-19, Jordan: the hack's species back, the dex only what Orange gives)
 _back = [171, 176, 179, 180, 183, 191, 192, 211, 218, 219, 223, 226, 231, 232]
-check(len(_dl) == 95 and not set(_drop) & set(_dl) and set(_back) <= set(_ext) and not {177, 178} & set(_ext) and len(_left) >= 8,
-      f"Orange dex: 5.7's list stays 95; the old hack's species are back as extras and in their tables, Natu and Xatu not ({len(_dl)}; {_left[:4]})")
+check(len(_dl) == 192 and set(_back) <= set(_ext) <= set(_dl) and not {177, 178} & set(_dl) and len(_left) >= 8,
+      f"Orange dex (Jordan 11-23: everything Orange gives, odex.py): 192; the old hack's species back as extras and in their tables, Natu and Xatu not ({len(_dl)}; {_left[:4]})")
 check(not {"MANDARIN_DESERT", "SUNRAY_CAVE"} & set(_ofile["STORY_PROGRESSION"]), "the menu-era Mandarin Desert and Sunray Cave are deleted")
 if "ORANGE_ROUTE_64" in BUILT:
     story.story_flags["orange_magnemite_saved"] = True
@@ -1266,8 +1266,8 @@ def _played(key, at, step, flag, came, floor=None, n=6000):
 
 _dl = g.loader.area_data["REGION_START"]["ORANGE"]["dex_list"]
 _isl = [g.loader.area_data.get(f"ORANGE_{k}_PERCENTAGES") or {} for k in ("FIRE_ISLAND", "LIGHTNING_ISLAND", "ICE_ISLAND")]
-check(not any(p in _dl for p in (68, 236, 238, 239, 240)) and not any(str(p) in t for t in _isl for p in (236, 238, 239, 240, 68)),
-      "Q35: no Magby, Elekid, Tyrogue, Machamp or Smoochum on the islands (5.7's own tables), and off the ORANGE dex (nothing else gives them; Machoke needs a Linking Cord)")
+check(all(p in _dl for p in (68, 236, 238, 239, 240)) and not any(str(p) in t for t in _isl for p in (236, 238, 239, 240, 68)),
+      "Q35: no Magby, Elekid, Tyrogue, Machamp or Smoochum on the islands (5.7's own tables); in the dex since they come other ways (11-19: the roof Eggs, the Tyrogue gift, the Linking Cord; D1 11-23)")
 _sh = _area["SHAMOUTI_ISLAND"]
 _tr = {o["target_area"]: o.get("condition") for o in _sh["travel_options"]}
 _bars = {tuple(t): b["until"]["flag_condition"] for b in _tm["SHAMOUTI_ISLAND"]["barred"] for t in b["tiles"]}
@@ -1454,7 +1454,10 @@ check(_ta["art"][31][47] in _ta["exits"] and _tm["ORANGE_ROUTE_74"]["art"][31][0
       "Q28: you can sail into Tarroco's south-east sea pocket from Route 74's row 31, as 5.7")
 
 print("23) batch 30 (11-18, Jordan's Q70): every scene's swimmers keep to water and its walkers to ground (flyers cross anything)")
-_osp = _u.spec_from_file_location("oscenepaths", os.path.join("..", "..", "kanto_handoff", "orange_rom_tools", "oscenepaths.py"))
+_otools = os.environ.get("ORANGE_TOOLS") or next((os.path.join(_d, "kanto_handoff", "orange_rom_tools") for _d in
+           [os.path.abspath(os.path.join(os.getcwd(), *[".."] * _n)) for _n in range(1, 8)]
+           if os.path.isdir(os.path.join(_d, "kanto_handoff", "orange_rom_tools"))), "")   # (main folder or a worktree, 11-23)
+_osp = _u.spec_from_file_location("oscenepaths", os.path.join(_otools, "oscenepaths.py"))
 _osm = _u.module_from_spec(_osp); _osp.loader.exec_module(_osm)
 _bad = _osm.report(_oi.ORANGE)
 _n = sum(1 for _ in _osm.every_scene(_oi.ORANGE))
