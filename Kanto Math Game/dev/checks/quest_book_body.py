@@ -416,12 +416,27 @@ check(all(a["state"] == "done" for a in quest_book.arcs(g)), "the whole Orange b
 isl = next(f for f in ft["ORANGE"] if f["id"] == "islands")
 n = feats.value(story, isl, "ORANGE")
 check(10 <= n < feats.goal(story, isl, isl["tiers"][-1], "ORANGE"), f"Island Hopper counts the islands you set foot on ({n})")
+orig = next(f for f in ft["ORANGE"] if f["id"] == "forms")
+ids = feats._form_ids(story, orig)
+pools = {int(x) for k, v in g.loader.area_data.items() if k.startswith("ORANGE_") and k.endswith("_PERCENTAGES") and isinstance(v, dict)
+         for x in v if str(x).isdigit()}
+bosses = {int(a["area_boss"]["id"]) for k, a in prog.items() if k in ok_ and (a.get("area_boss") or {}).get("catchable")}
+check(len(ids) >= 50 and ids <= pools | bosses, f"Orange Originals: every form it counts can be caught in Orange ({sorted(ids - pools - bosses)})")
+check(feats.goal(story, orig, orig["tiers"][-1], "ORANGE") == len(ids), f"Orange Originals' last tier is all of them ({len(ids)})")
+dex = g.data.data.setdefault("pokedex", {})
+before = feats.value(story, orig, "ORANGE")
+for n, sid in enumerate(sorted(ids)[:10]):
+    dex[f"orig_{sid}"] = {"id": sid, "name": "x"}
+check(feats.value(story, orig, "ORANGE") == before + 10, "ten Pinkan Pokemon caught count ten")
 paid = feats.pay(story)
 check(any("Island Hopper" in l for l in paid), f"Island Hopper Bronze paid ({[l for l in paid if 'Island' in l][:1]})")
+check(any("Orange Originals" in l for l in paid), f"Orange Originals Bronze paid ({[l for l in paid if 'Originals' in l][:1]})")
 jn = JournalState(g, city); g.change_state(jn); jn.set_tab("FEATS"); jn.draw()
 check(len(jn.rows) == len(ft["ORANGE"]), "FEATS lists Orange's feats")
 jn.selected = next(i for i, r in enumerate(jn.rows) if r["feat"]["id"] == "islands"); jn.draw()
 pygame.image.save(g.screen, os.path.join(S, "quest_book_orange_feats.png"))
+jn.selected = next(i for i, r in enumerate(jn.rows) if r["feat"]["id"] == "forms"); jn.draw()
+pygame.image.save(g.screen, os.path.join(S, "quest_book_orange_originals.png"))
 jn.set_tab("STORY"); jn.draw()
 pygame.image.save(g.screen, os.path.join(S, "quest_book_orange_story.png"))
 g.change_state(city)
