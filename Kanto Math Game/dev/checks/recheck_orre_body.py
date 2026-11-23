@@ -76,7 +76,10 @@ def opts(area):
     return [o.get("text") for o in (a.get("route_menu") or []) + (a.get("explore_options") or [])]
 
 
-for area, text in (("OUTSKIRT_STAND", "CHALLENGE WILLIE"), ("GATEON_PORT", "Professor Krane's Lab"),
+import json as _json
+_willie = _json.dumps(_json.load(open("assets/town_maps.json", encoding="utf-8"))["OUTSKIRT_STAND"])
+check("Rider Willie" in _willie, "OUTSKIRT_STAND: Rider Willie (in the diner, on the walked map)")   # (11-23: his old menu button is gone)
+for area, text in (("GATEON_PORT", "Professor Krane's Lab"),
                    ("MT_BATTLE", "DAKIM ATTACKS MT. BATTLE"), ("SHADOW_PKMN_LAB", "SHADOW POKEMON LAB: EIN"),
                    ("PHENAC_CITY", "PHENAC STADIUM: SNATTLE"), ("RELIC_FOREST", "HO-OH AT THE RELIC STONE"),
                    ("PYRITE_CAVE", "PYRITE CAVE: MIROR B."), ("SNAGEM_HIDEOUT", "SNAGEM HIDEOUT: GONZAP")):

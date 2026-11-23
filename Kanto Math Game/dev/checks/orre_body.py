@@ -44,11 +44,13 @@ story.level_cap_mode = "NONE"
 print("2) The Snag Machine")
 story.story_flags["received_starter_orre"] = True
 check("Pyrite Town" not in travel("PHENAC_CITY"), "Pyrite waits for the Snag Machine")
-run("PHENAC_CITY", "Trouble at the Fountain")
-check(lineup(battle_of(g.current_state))[-1][1] <= 15, f"Cipher Peons at the fountain, early levels {lineup(battle_of(g.current_state))}")
-story.story_flags["phenac_cipher_beaten"] = True
-run("PHENAC_CITY", "Meet Rui")
-check(story.inventory.get("SNAG_MACHINE") == 1 and "Pyrite Town" in travel("PHENAC_CITY"), "Rui: Snag Machine")
+# (11-23: the old menu steps "Trouble at the Fountain" / "Meet Rui" are gone; Phenac's walked story - Folly, Rui, the
+#  Mystery Troop guards - is played by orre_pilot. The Snag Machine comes with the new game; a guard's win sets the flag.)
+check(not any(o.get("text") in ("Trouble at the Fountain", "Meet Rui") for o in g.loader.area_data["STORY_PROGRESSION"]["PHENAC_CITY"]["explore_options"]),
+      "Phenac's old menu steps are gone")
+story.inventory["SNAG_MACHINE"] = 1
+story.story_flags["got_snag_machine"] = True
+check("Pyrite Town" in travel("PHENAC_CITY"), "the Snag Machine opens the ride to Pyrite")
 m = menu("ORRE_DESERT")
 check(m.count("SNAG SHADOW POKEMON") == 1, f"desert: one SNAG button for its Shadow pool: {m}")
 raw = g.loader.fetch_specific(9406)

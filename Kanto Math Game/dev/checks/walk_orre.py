@@ -23,7 +23,7 @@ story.story_flags["received_starter_orre"] = True
 STEPS = [("the Snag Machine", {"got_snag_machine": True}, None, "PYRITE_TOWN"),
          ("PYRITE badge", {}, "PYRITE", "PYRITE_BUILDING"),
          ("Doken on the Pyrite Building roof", {"orre_beat_doken": True}, None, "PYRITE_CAVE"),
-         ("Miror B. at Pyrite Cave", {"orre_miror_cave": True}, None, "AGATE_VILLAGE"),
+         ("Miror B. at Pyrite Cave (then Fateen by the bike)", {"orre_miror_cave": True, "orre_fateen": True}, None, "AGATE_VILLAGE"),
          ("Dakim at Mt. Battle, then the Subway Key", {"orre_dakim_mt_battle": True, "_item": "SUBWAY_KEY"}, None, "THE_UNDER"),
          ("UNDER badge", {}, "UNDER", "SHADOW_PKMN_LAB"),
          ("Ein's lab", {"orre_ein_lab": True}, None, "GATEON_PORT"),
