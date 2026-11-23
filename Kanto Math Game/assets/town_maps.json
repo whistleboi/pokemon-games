@@ -583526,7 +583526,7 @@
     "theme": "room",
     "art": [
      "cccccccccccccccccccccccccccccccc",
-     "c.N............ccccccccccccccccc",
+     "c..............ccccccccccccccccc",
      "c..............ccccccccccccccccc",
      "................cccccccccccccccc",
      "................cccccccccccccccc",
@@ -583879,18 +583879,7 @@
      },
      "_shadows": true
     },
-    "people": [
-     {
-      "text": "Passenger",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "The rocking train softly rattles...",
-        "How many stops since we left Nimbasa?"
-       ]
-      }
-     }
-    ],
+    "people": [],
     "scenes": [
      {
       "trigger": "enter",
@@ -603878,6 +603867,11 @@
   },
   "inside": {
    "55,15": "bridge_gate"
+  },
+  "gated_exits": {
+   "MARVELOUS_BRIDGE": [
+    "beat_unova_champion"
+   ]
   }
  },
  "LOSTLORN_FOREST": {

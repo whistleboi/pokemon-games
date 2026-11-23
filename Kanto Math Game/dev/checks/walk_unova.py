@@ -1,3 +1,14 @@
+# (11-23: a walked map's way out that a scene keeps shut till a flag - Route 16's Bridge Gate lift, till the Hall of Fame -
+#  is marked "gated_exits" in its map; reach_lib reads ways out but not scenes, so this check drops them till then.)
+_walk_exits_all = _walk_exits
+
+
+def _walk_exits(area):   # noqa: F811
+    found = _walk_exits_all(area)   # (first: it loads the maps)
+    gates = ((_WALK.get("maps") or {}).get(area) or {}).get("gated_exits") or {}
+    return [t for t in found if all(story.story_flags.get(f) for f in gates.get(t, []))]
+
+
 story.badges = {"UNOVA": []}
 story.inventory = {}
 story.story_flags = {"visited_NUVEMA_TOWN": True}

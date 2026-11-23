@@ -3215,9 +3215,7 @@ GEAR = nimbasa_room(66, {
 for _x in range(14, 18):   # (the stairs up to Nimbasa: the file's warp 8 goes "back where you came from")
     GEAR["art"][37] = GEAR["art"][37][:_x] + "z" + GEAR["art"][37][_x + 1:]
 GEAR["exits"]["z"] = "ROOM:MAIN"   # (a letter of its own: nimbasa_room gives "v", "^"... to the platforms' stairways)
-CAR = nimbasa_room(75, {}, {}, scenes=_car_scenes(), title="Battle Subway train",   # (a passenger in a seat: a room with nobody
-                   extra_people=[(2, 1, _say("Passenger", "The rocking train softly rattles...",   # in it plays no scenes yet, Main's
-                                            "How many stops since we left Nimbasa?"))])         # inbox clean-main-unova-scenes-empty-room)
+CAR = nimbasa_room(75, {}, {}, scenes=_car_scenes(), title="Battle Subway train")   # (empty, as Black 2: each Trainer walks in)
 SUBWAY_STOP = nimbasa_room(76, {
     0: {"text": "Depot Agent", "action": "EVENT", "event": {"world": "battle_subway", "stop": True}},
     1: {"text": "Depot Agent ", "action": "EVENT", "event": {"world": "battle_subway", "stop": True}},
@@ -3427,6 +3425,8 @@ ROUTE_16 = route(
 for _y, _x, _c in ((9, 26, "2"), (21, 34, "b"), (21, 35, "b"), (20, 34, "."), (20, 35, ".")):
     ROUTE_16["art"][_y] = ROUTE_16["art"][_y][:_x] + _c + ROUTE_16["art"][_y][_x + 1:]
 ROUTE_16["rooms"]["bridge_gate"]["title"] = "Bridge Gate"
+ROUTE_16["gated_exits"] = {"MARVELOUS_BRIDGE": ["beat_unova_champion"]}   # (the lift's scene turns you back till the Hall of Fame:
+#  for the reach checks, which read a map's ways out but not its scenes; Main's inbox clean-main-unova-reach-gated-exits)
 ROUTE_16["art"][15] = ROUTE_16["art"][15][:55] + "D" + ROUTE_16["art"][15][56:]   # (the Bridge Gate's door)
 
 # -------------------------------------------------------------------------------------------------------- Lostlorn Forest

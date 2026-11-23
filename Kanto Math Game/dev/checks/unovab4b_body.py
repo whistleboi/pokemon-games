@@ -119,6 +119,7 @@ for p in story.player_team:
 st = town("NIMBASA_CITY", (11, 13), "plat_single", (1, 0))
 talk(st, "Depot Agent")
 cur = until(("TrainerIntroState",))
+check(not tmaps["NIMBASA_CITY"]["rooms"]["car"].get("people"), "the car is empty, as in Black 2: nobody but whoever walks in")
 check(type(cur).__name__ == "TrainerIntroState" and flags.get("b2_sub_riding") == "single",
       f"aboard the Single Train: the next Trainer walks in from the next car ({type(cur).__name__})")
 if type(cur).__name__ == "TrainerIntroState":
@@ -235,6 +236,12 @@ st = town("ANVILLE_TOWN", (23, 39), None, (0, -1))
 talk(st, "Traveller with a pack")
 pick("yes")
 check(story.inventory.get("REVIVE", 0) == rv + 1 and story.inventory.get("ESCAPE_ROPE", 0) == 0, "two Escape Ropes for a Revive")
+labels = {str(o.get("text", "")) for o in g.current_state.people.values() if isinstance(o, dict) and g.current_state._shown(o)}
+check("Collector" in labels, "the Star Piece collector too, now PP Up is in the game (main 02ba2d9d)")
+story.inventory["STAR_PIECE"] = 1; pu = story.inventory.get("PP_UP", 0)
+st = town("ANVILLE_TOWN", (37, 28), None, (0, -1))
+talk(st, "Collector"); pick("yes")
+check(story.inventory.get("PP_UP", 0) == pu + 1 and not story.inventory.get("STAR_PIECE"), "a Star Piece for a PP Up")
 anville._today = real
 for k in ("b2_lost_found_first", "b2_lost_found_item", "b2_lost_found_n"):
     flags.pop(k, None)
