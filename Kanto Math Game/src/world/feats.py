@@ -8,7 +8,7 @@ What a feat counts ("count"):
   Lv. 50 or more in the region's party and PC), "math_streak" (the best run of right answers while in the region),
   "places" (the region's places you've set foot in whose key has the feat's "match": Orange's islands, "ISLAND"),
   "forms" (the region's own forms you own: FORM_MAP entries of the feat's "forms", less its "not_yet", ones that
-  can't be got yet: Orange's Pinkan, Valencia and Crystal Pokemon; Jordan 11-23);
+  can't be got yet: each region's Variants feat, Orange's Pinkan, Valencia and Crystal Pokemon; Jordan 11-23);
 - counted as you play, per region (StoryManager.feat_counts {region: {kind: n}}), by note(): "trainers", "steps", "fish",
   "finds" (Headbutt, Rock Smash), "evolved", "evo_items", "berries", "safari", any region's own event kinds.
 A tier is [goal, reward] with goal a number or "all" (the most there is: every species of the dex, every type in it);

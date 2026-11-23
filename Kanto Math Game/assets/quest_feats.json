@@ -122,7 +122,7 @@
       [50, {"money": 5000, "items": {"ULTRA_BALL": 5}}],
       [75, {"money": 5000, "tm": "TM218"}],
       ["all", {"money": 10000, "items": {"MASTER_BALL": 1}}]]},
-    {"id": "forms", "name": "Orange Originals", "count": "forms", "forms": ["pinkan", "valencia", "crystal"], "not_yet": [9136], "desc": "Catch the Pokemon found only here: Pinkan's pink ones, Valencia's own forms and a crystal one.", "tiers": [
+    {"id": "variants", "name": "Orange Variants", "count": "forms", "forms": ["pinkan", "valencia", "crystal"], "not_yet": [9136], "desc": "Catch the Pokemon found only here: Pinkan's pink ones, Valencia's own forms and a crystal one.", "tiers": [
       [10, {"items": {"QUICK_BALL": 5}, "money": 3000}],
       [25, {"tm": "TM201", "items": {"ULTRA_BALL": 5}}],
       [40, {"tm": "TM227", "money": 5000}],
