@@ -3,7 +3,7 @@
 # your room in New Bark Town to beating Lance, led by the Journal's gold marker. Write-up: kanto_handoff/johto_check/PLAYTHROUGH.md.
 #   bash dev/checks/run.sh -v johto_playthrough     (run.sh stops a suite at 1500 s; for a longer run, glue it by hand:
 #   cat dev/checks/harness_head.py dev/checks/johto_playthrough_body.py > dev/checks/out/check_jpt.py; KPT_TIME=3000 python ...)
-# JPT_WALKED=0: leave Johto out of guide.WALKED_REGIONS (the Journal's way over the old menus' links, as the game ships now).
+# Johto is in guide.WALKED_REGIONS (11-22); JPT_WALKED=0 skips the run's own add, so the game's setting is what's tested.
 # Johto's puzzles, each by the game's own code: Ecruteak Gym's pits (walked round: a pit is never stepped on), the Ice
 # Path's and Mahogany Gym's ice (slid as the game slides you), Rocket HQ's Persian statues (their alarm battles are fought),
 # the Electrodes behind the HQ's doors (walked into like trainers), Goldenrod Gym's maze (walked).

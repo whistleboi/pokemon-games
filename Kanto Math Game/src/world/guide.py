@@ -83,7 +83,7 @@ def current_step(game, mission):
     return None
 
 
-WALKED_REGIONS = {"KANTO", "ORANGE"}  # (Orange: 11-17, its walked maps from 5.7, batch by batch) (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
+WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO"}  # (Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto") (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
 _WAYS = {}
 
 
