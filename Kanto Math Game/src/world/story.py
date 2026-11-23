@@ -1330,7 +1330,9 @@ class StoryManager:
     DERIVED_FLAGS = {"sinjoh_rite_done": ("sinjoh_dialga", "sinjoh_palkia", "sinjoh_giratina"),
                      "hideout_b4f_door_open": ("hideout_giovanni_defeated",)}
     # A flag set once every one of these trainers of an area is beaten (by "spot_name", else "name").
-    TRAINER_FLAGS = {"hideout_b4f_door_open": ("ROCKET_HIDEOUT", ("Grunt B4F 2", "Grunt B4F 3"))}
+    # wise_trio_beaten: Crystal's Wise Trio on Bellchime Trail (11-22): the way to the Bell Tower opens once all three are beaten
+    TRAINER_FLAGS = {"hideout_b4f_door_open": ("ROCKET_HIDEOUT", ("Grunt B4F 2", "Grunt B4F 3")),
+                     "wise_trio_beaten": ("BELLCHIME_TRAIL", ("Sage Gaku", "Sage Masa", "Sage Koji"))}
 
     def sync_story_flags(self):
         for flag, sources in self.DERIVED_FLAGS.items():

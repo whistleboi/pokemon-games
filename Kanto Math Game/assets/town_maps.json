@@ -62021,6 +62021,23 @@
     "lines": [
      "Morty, our Gym Leader, went off to the Burned Tower. The Gym's closed till he's back!"
     ]
+   },
+   {
+    "tiles": [
+     [
+      40,
+      26
+     ]
+    ],
+    "look": "sheet:hg_bozu.png",
+    "face": "d",
+    "until": {
+     "condition": "has_badge:FOG"
+    },
+    "lines": [
+     "Sage: Beyond this gate lies the Bell Tower, a sacred place.",
+     "Sage: Only a Trainer who holds Ecruteak's Fog Badge may pass."
+    ]
    }
   ]
  },
@@ -62950,10 +62967,10 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTGGGGGGG==N=N==============TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTGGGGGGG==X=X==============TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTGGGGGGG<======eeeeeeeee=e=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTGGGGGGG<=====e==eeeeeee==e======TZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
-   "TTGGGGGGG===N==eeeee===eeeee======TZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
+   "TTGGGGGGG===X==eeeee===eeeee======TZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT=eeee======ZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTT=eeeee=====ZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT====ZZZZZZZTTTTTTTTTTTTTTTTTTTTTT",
@@ -63042,33 +63059,56 @@
    "23,7": "BIG_MUSHROOM",
    "17,7": "TINY_MUSHROOM"
   },
-  "people": [
-   {
-    "text": "Sage",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Beyond here lies the Bell Tower, built as a resting place for Ho-Oh, the legendary Flying-type Pokemon."
-     ]
-    }
+  "trainer_spots": [
+   "Sage Gaku",
+   "Sage Koji",
+   "Sage Masa"
+  ],
+  "moves": {
+   "11,8": {
+    "m": "face",
+    "d": "d",
+    "s": 3
    },
-   {
-    "text": "Sage ",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "A rainbow-hued Pokemon soaring over the tower... and a silver one resting deep beneath the sea. So the old stories go."
-     ]
-    }
+   "13,8": {
+    "m": "face",
+    "d": "d",
+    "s": 3
    },
+   "12,11": {
+    "m": "face",
+    "d": "u",
+    "s": 3
+   }
+  },
+  "barred": [
    {
-    "text": "Sage  ",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Only one who holds the Rainbow Wing may climb to the top of the Bell Tower."
+    "tiles": [
+     [
+      14,
+      8
+     ],
+     [
+      14,
+      9
+     ],
+     [
+      14,
+      10
+     ],
+     [
+      14,
+      11
      ]
-    }
+    ],
+    "look": "unseen",
+    "until": {
+     "flag_condition": "wise_trio_beaten"
+    },
+    "lines": [
+     "The Wise Trio stand guard over the trail.",
+     "Beat all three of them, and they will let you pass."
+    ]
    }
   ]
  },
@@ -83921,7 +83961,7 @@
      "cc.......j.....j.......cc",
      "cc....1................cc",
      "ccc..N1...............ccc",
-     "ccc...................ccc",
+     "ccc......N.....N.N....ccc",
      "ccc...................ccc",
      "cccc...ccccccccccc...cccc",
      "ccjj...ccccccccccc...jjcc",
@@ -83959,7 +83999,59 @@
      ]
     },
     "people": [
-     "TALK TO SAGE LI"
+     "TALK TO SAGE LI",
+     {
+      "text": "Sage Gaku",
+      "action": "EVENT",
+      "flag_condition": "wise_trio_beaten",
+      "event": {
+       "lines": [
+        "Sage Gaku: We of the Wise Trio keep watch here now, inside the tower itself.",
+        "Sage Gaku: The floors above are for the one Ho-Oh would choose."
+       ]
+      }
+     },
+     {
+      "text": "Sage Koji",
+      "action": "EVENT",
+      "flag_condition": "wise_trio_beaten",
+      "event": {
+       "lines": [
+        "Sage Koji: Long ago a fire took the tower to the west. Three Pokemon were lost in it...",
+        "Sage Koji: ...and Ho-Oh gave them new life. Some say they still run across Johto."
+       ]
+      }
+     },
+     {
+      "text": "Sage Masa",
+      "action": "EVENT",
+      "flag_condition": "wise_trio_beaten",
+      "event": {
+       "lines": [
+        "Sage Masa: Sage Li keeps the Rainbow Wing. Only the one who holds it may climb."
+       ]
+      }
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        3
+       ],
+       [
+        6,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "item": "RAINBOW_WING",
+      "lines": [
+       "Sage Li: Only the one who holds the Rainbow Wing may climb the Bell Tower.",
+       "Sage Li: Come and speak with me."
+      ]
+     }
     ],
     "roofs": {
      "_picture": {
