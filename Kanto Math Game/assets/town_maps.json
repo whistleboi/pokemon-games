@@ -143418,6 +143418,44 @@
      ]
     }
    }
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      12,
+      3,
+      19,
+      3
+     ]
+    },
+    "condition": [
+     "not:sinnoh_visited_rival_home",
+     "not:received_starter_sinnoh"
+    ],
+    "every": true,
+    "call": [
+     "Hey, {player_name}! Hold on a second!"
+    ],
+    "cast": [
+     {
+      "person": "Man",
+      "lines": [
+       "Man: {rival_name} was just here looking for you.",
+       "Man: He ran back home. Go and see him at his house first!"
+      ]
+     },
+     {
+      "you": [
+       [
+        15,
+        4
+       ]
+      ],
+      "face": "d"
+     }
+    ]
+   }
   ]
  },
  "SINNOH_ROUTE_201": {
@@ -150693,6 +150731,57 @@
       "Some Pokemon only show up in the morning, and some only at night. I want to see them all!"
      ]
     }
+   }
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      20,
+      25,
+      20,
+      29
+     ]
+    },
+    "condition": [
+     "received_pokedex_sinnoh",
+     "not:rowan_assistant_balls"
+    ],
+    "flag": "sinnoh_route202_lesson",
+    "cast": [
+     {
+      "sheet": "pt_heroine.png",
+      "from": [
+       21,
+       24
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Dawn: {player_name}! Wait up!",
+       "Dawn: Have you caught a Pokemon yet? Watch me, I'll show you!"
+      ]
+     },
+     {
+      "sheet": "mon:399",
+      "from": [
+       17,
+       27
+      ],
+      "to": "player",
+      "lines": [
+       "A wild BIDOOF jumped out of the grass!"
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Dawn's Pokemon knocked the BIDOOF about a bit...",
+       "Dawn threw a Poke Ball... Gotcha! The BIDOOF was caught!"
+      ]
+     }
+    ],
+    "then": "event:rowan_assistant"
    }
   ]
  },

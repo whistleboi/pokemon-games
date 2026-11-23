@@ -671,5 +671,56 @@ t._go(None, "OUT:%d,%d" % next(tuple(int(v) for v in d.split(",")) for d, n in _
 _enter_door(t, _d)
 check(t.room == "center" and [str(o.get("action")).upper() for o in t.people.values()].count("HEAL") == 1, f"Oreburgh's Pokemon Center: the nurse inside heals ({t.room})")
 
+# ---- S1 (11-23): Platinum's two opening gates (sinnoh_map_tools/s_s1_gates.py; found by sgates.py)
+def _drive(st, n=900, done=None):
+    """Frames with every line tapped through, till the scene is over (or done() says so)."""
+    for _ in range(n):
+        cur = g.current_state
+        if done and done():
+            return True
+        if getattr(cur, "npc_active", False):
+            cur.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        box = getattr(cur, "dialogue_box", None)
+        if box is not None and getattr(box, "visible", False):
+            box.advance()
+        cur.update(); cur.draw()
+    return bool(done and done())
+
+
+_sv = dict(story.story_flags)
+for _k in ("received_starter_sinnoh", "sinnoh_visited_rival_home"):
+    story.story_flags.pop(_k, None)
+t = town("TWINLEAF_TOWN", "TWINLEAF_TOWN")
+t.player = t.anim_from = (15, 4); t.anim = 0; t.walk_goal = None
+t.step(0, -1); t.anim = 0
+_hit = _drive(t, 30, lambda: t.scenes.busy())
+_drive(t, 900, lambda: not t.scenes.busy())
+check(_hit and tuple(t.player)[1] >= 4, f"Twinleaf: before you've been to your friend's house, a neighbour calls you back from the north way out (scene {_hit}, you at {t.player})")
+_enter_door(t, (9, 11))
+_mom = next((s for s, o in t.people.items() if "House" in str(o.get("text"))), None)
+if _mom:
+    t._talk(_mom); _drive(t, 200, lambda: not getattr(t, "npc_active", False))
+check(t.room == "rival" and story.story_flags.get("sinnoh_visited_rival_home"), f"Twinleaf: your friend's mom, in his house, sends you after him ({t.room}, {_mom})")
+t = town("TWINLEAF_TOWN", "TWINLEAF_TOWN")
+t.player = t.anim_from = (15, 4); t.anim = 0; t.walk_goal = None
+t.step(0, -1); t.anim = 0
+_drive(t, 30)
+check(not t.scenes.busy() and tuple(t.player) == (15, 3), f"Twinleaf: after that, the way north is open ({t.player})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+for _k in ("rowan_assistant_balls", "sinnoh_route202_lesson"):
+    story.story_flags.pop(_k, None)
+story.story_flags["received_pokedex_sinnoh"] = True
+r = route("SINNOH_ROUTE_202", "SANDGEM_TOWN")
+_balls = story.balls_left
+r.run.floor.movers = [m for m in r.run.floor.movers if m.kind != "wild"]
+r.run.player = (21, 27); frames(r, 2)
+r.run.player = (20, 27)
+_hit = _drive(r, 60, lambda: r._scene_run is not None and r._scene_run.busy())
+_drive(r, 2000, lambda: story.story_flags.get("rowan_assistant_balls") and not (r._scene_run and r._scene_run.busy()))
+check(_hit and story.story_flags.get("rowan_assistant_balls") and story.balls_left >= _balls + 5,
+      f"Route 202: Dawn catches up, shows you how to catch, and gives you 5 Poke Balls (scene {_hit}, balls {_balls} -> {story.balls_left})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

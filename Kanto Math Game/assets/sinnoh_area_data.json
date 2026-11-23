@@ -190,6 +190,7 @@
       "Mom: I joined a knitting club. We're making scarves for Snover!",
       "Mom: Don't stay out too late near Lake Verity. The legends say a spirit lives there."
     ],
+    "sinnoh_dawn_home": ["Dawn: The Professor needs me on Route 202. Meet me there: I'll show you something useful!"],
     "sinnoh_barry_house": [
       "{rival_name}'s Mom: Oh, {player_name}! {rival_name} ran off again in a hurry.",
       "{rival_name}'s Mom: That child never walks anywhere. I hope he remembered his shoes!"
@@ -1247,7 +1248,7 @@
         ],
         "explore_options": [
             {"text": "Visit Mom", "action": "NPC", "target": "mom"},
-            {"text": "Visit {rival_name}'s House", "action": "NPC", "target": "sinnoh_barry_house", "door": "rival"}
+            {"text": "Visit {rival_name}'s House", "action": "EVENT", "door": "rival", "event": {"lines": ["{rival_name}'s Mom: Oh, {player_name}! {rival_name} was looking for you, then ran off again in a hurry.", "{rival_name}'s Mom: He said something about Lake Verity. Route 201 is just north of town!"], "flag": "sinnoh_visited_rival_home", "done": ["{rival_name}'s Mom: That child never walks anywhere. I hope he remembered his shoes!"]}}
         ],
         "next_area": "SINNOH_ROUTE_201",
         "on_enter_event": [
@@ -1270,7 +1271,7 @@
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
             {"text": "Visit Professor Rowan", "action": "NPC", "target": "professor_rowan", "door": "lab"},
-            {"text": "Talk to Dawn/Lucas", "action": "NPC", "target": "rowan_assistant", "door": "assistant"}
+            {"text": "Talk to Dawn/Lucas", "action": "NPC", "target": "sinnoh_dawn_home", "door": "assistant"}
         ],
         "next_area": "SINNOH_ROUTE_202",
         "on_enter_event": null,
@@ -3217,13 +3218,25 @@
       "id": "sinnoh_m1",
       "type": "MAIN",
       "title": "A Fateful Encounter",
-      "description": "Follow {rival_name} to Lake Verity: west along Route 201, past the Lakefront. Professor Rowan is there.",
+      "description": "{rival_name} was looking for you. Go and see him at his house first, then follow him to Lake Verity: west along Route 201, past the Lakefront.",
       "condition": {
         "required_region": "SINNOH",
         "flag_not": "received_starter_sinnoh"
       },
       "target": "LAKE_VERITY",
-      "reward": "Your first Pokémon"
+      "reward": "Your first Pokémon",
+      "steps": [
+        {
+          "area": "TWINLEAF_TOWN",
+          "room": "rival",
+          "at": [
+            4,
+            5
+          ],
+          "label": "Your friend's mom",
+          "done": "sinnoh_visited_rival_home"
+        }
+      ]
     },
     {
       "id": "sinnoh_m1b",
@@ -3256,7 +3269,7 @@
       "id": "sinnoh_m1d",
       "type": "MAIN",
       "title": "North to Jubilife",
-      "description": "The Professor's assistant, next door in Sandgem, has Poké Balls for you. Then follow Route 202 north to Jubilife City.",
+      "description": "Head north on Route 202 to Jubilife City. The Professor's assistant is waiting on the route to show you how to catch Pokemon.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "received_pokedex_sinnoh",
