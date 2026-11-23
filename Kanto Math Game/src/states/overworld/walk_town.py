@@ -34,7 +34,6 @@ LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. C
           "aerodactyl": "AERODACTYL CHAMBER", "hooh": "HO-OH CHAMBER",
           "flower": "FLOWER SHOP", "bill": "BILL'S HOUSE",
           "burned": "BURNED TOWER", "bellchime": "BELLCHIME TRAIL", "theater": "DANCE THEATER", "pharmacy": "PHARMACY", "souvenir": "SOUVENIR SHOP", "leaguegate": "VICTORY ROAD", "dome": "POKEATHLON DOME"}
-_DATA = {}
 
 # Name tags (Jordan, 11-14: "nametags only show overhead for important places and people, it overcrowds the screen"):
 # a building is named when it's a landmark (LABELS) or a story option names it; a person when they do something (heal,
@@ -77,17 +76,6 @@ def held_pointer():
     except pygame.error:
         pass
     return None
-
-
-def data(game):
-    if "all" not in _DATA:
-        path = os.path.join(game.assets.assets_dir or "assets", "walk_towns.json")
-        try:
-            with open(path, encoding="utf-8") as f:
-                _DATA["all"] = json.load(f)
-        except (OSError, ValueError):
-            _DATA["all"] = {}
-    return _DATA["all"]
 
 
 def custom(game):
@@ -166,7 +154,7 @@ def mark_story_arrival(game, key, room=None):
 def available(game, key):
     if not getattr(game, "walk_towns", os.environ.get("SDL_VIDEODRIVER") != "dummy"):
         return False
-    return bool(key) and (key in custom(game) or key in data(game))
+    return bool(key) and key in custom(game)   # (11-23: the Journeys-picture pilot, assets/walk_towns.json, is gone)
 
 
 def option_kind(opt):
@@ -202,6 +190,7 @@ LIVE_SPRITE = 1.5   # (people in the live 3D view: Black 2's 32-pixel characters
 
 
 class WalkTownState(CityState):
+    is_walked = True   # (CityState skips the menu's town picture for it)
     HONEY_PACK = dn.DungeonState.HONEY_PACK
     # (the route map's own drawing: your trainer, the Pokemon following you, townsfolk)
     _sprite = dn.DungeonState._sprite
@@ -248,12 +237,6 @@ class WalkTownState(CityState):
                 if came and came not in (mine.get("exits") or {}).values():
                     self.room = next((n for n, r in (mine.get("rooms") or {}).items() if came in (r.get("exits") or {}).values()), None)
             self._from_art(mine["rooms"][self.room] if self.room else mine)
-        else:  # a Pokemon Journeys town picture (the Kanto pilot)
-            self.walk = data(game)[self.area_key]
-            self.rows = self.walk["rows"]
-            self.w, self.h = self.walk["w"], self.walk["h"]
-            self.map_img = self._map_image()
-            self._place_things()
         self._arrive()
 
     def _from_art(self, m):
@@ -673,15 +656,6 @@ class WalkTownState(CityState):
         self._remember()
 
     # ---------------------------------------------------------------- the map
-    def _map_image(self):
-        cache = self.game.__dict__.setdefault("_walk_town_imgs", {})
-        if self.area_key not in cache:
-            cache.clear()  # (one town at a time)
-            img = pygame.image.load(os.path.join(self.game.assets.assets_dir or "assets", "walk_towns",
-                                                 f"{self.area_key}.png")).convert()
-            cache[self.area_key] = pygame.transform.scale(img, (self.w * TILE, self.h * TILE))
-        return cache[self.area_key]
-
     def _options(self):
         """The town's EXPLORE options shown right now (their conditions met), as the menu would list them."""
         from src.states.overworld.pokecenter import center_entrance, combined_center
@@ -723,52 +697,6 @@ class WalkTownState(CityState):
         if opt.get("item_condition") and not __import__("src.world.hms", fromlist=["field"]).field(story, opt["item_condition"]):   # (an HM: Kanto asks for its badge too)
             return False
         return not opt.get("condition") or self._check_menu_condition(opt["condition"])
-
-    def _place_things(self):
-        """Doors (the buildings' options), the ways out (the edges), and the people standing about."""
-        self.doors = {}  # (x, y) -> kind
-        self.exits = {}  # (x, y) -> area key
-        for d in self.walk.get("doors", []):
-            x, y = d["x"], d["y"]
-            if not (0 <= x < self.w and 0 <= y < self.h):
-                continue
-            side = "north" if y == 0 else "south" if y == self.h - 1 else "west" if x == 0 else \
-                "east" if x == self.w - 1 else None
-            if side and side in self.walk.get("edges", {}):  # (a warp on the edge: the way out that side)
-                self.exits[(x, y)] = self.walk["edges"][side]
-            else:
-                self.doors[(x, y)] = d.get("kind", "house")
-        for side, target in self.walk.get("edges", {}).items():
-            for t in self._edge_tiles(side):
-                self.exits[t] = target
-        # the first home door is yours (Mom's), the first lab Oak's
-        self.people = {}  # (x, y) -> option
-        kinds = set(self.doors.values())
-        loose = [o for o in self.area_data.get("explore_options", []) if option_kind(o) not in kinds]
-        for opt, spot in zip(loose, self._free_spots(len(loose))):
-            self.people[spot] = opt
-        self._npc_init({})
-
-    def _edge_tiles(self, side):
-        cells = {"north": [(x, 0) for x in range(self.w)], "south": [(x, self.h - 1) for x in range(self.w)],
-                 "west": [(0, y) for y in range(self.h)], "east": [(self.w - 1, y) for y in range(self.h)]}[side]
-        return [c for c in cells if self.rows[c[1]][c[0]] == "."]
-
-    def _free_spots(self, n):
-        """n tiles for people to stand on: open ground near the middle, apart, off the paths to doors."""
-        cx, cy = self.w / 2, self.h / 2
-        near_door = {(x + dx, y + dy) for (x, y) in self.doors for dx in (-1, 0, 1) for dy in (0, 1, 2)}
-        ok = [(x, y) for y in range(2, self.h - 2) for x in range(2, self.w - 2)
-              if self.rows[y][x] == "." and (x, y) not in near_door
-              and all(self.rows[y + dy][x + dx] == "." for dx, dy in DIRS)]
-        ok.sort(key=lambda t: (t[0] - cx) ** 2 + (t[1] - cy) ** 2)
-        out = []
-        for t in ok:
-            if len(out) >= n:
-                break
-            if all(abs(t[0] - o[0]) + abs(t[1] - o[1]) >= 4 for o in out):
-                out.append(t)
-        return out
 
     def _landings(self):
         """This map's or room's "landings": tiles you reach only by a scene's ride (Nimbasa's roller coaster platforms,

@@ -45,7 +45,8 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
 
         self.game.story_manager.sync_badges()
 
-        self.background = self.load_area_background()
+        # (a walked town never draws the menu's picture: not loaded there, 11-23)
+        self.background = None if getattr(type(self), "is_walked", False) else self.load_area_background()
         if self.background:
             box_top = Utils.get_full_dialogue_rect(self.game).top
             self.background = pygame.transform.scale(self.background, (self.game.width, box_top))
