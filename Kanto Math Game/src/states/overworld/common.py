@@ -390,6 +390,10 @@ def _run_story_event(state, key, check, show):
         from src.world import join_avenue
         join_avenue.event(state, ev, lines, show)
         return
+    if ev.get("world"):   # (a region's own mechanic: src/world/<world>.py event(state, ev, lines, show); Unova's Hidden Grottoes, 11-23)
+        import importlib
+        importlib.import_module("src.world." + str(ev["world"])).event(state, ev, lines, show)
+        return
     if ev.get("cruise"):   # (the Royal Unova: boarding, its crew's counts and hints, long talkers; src/world/royal_unova.py, 11-21)
         from src.world import royal_unova
         royal_unova.event(state, ev, lines, show)
