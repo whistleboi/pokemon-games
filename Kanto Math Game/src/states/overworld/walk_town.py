@@ -1119,6 +1119,9 @@ class WalkTownState(CityState):
                 return self.start_gym_battle()
             if bar.get("on_bump"):  # (walking into it moves the story: Fortree's Kecleon, seen with the Devon Scope, runs off)
                 ob = bar["on_bump"]
+                if ob.get("need") and not self._check_menu_condition(ob["need"]):   # (only with the right thing: the Ruins of Alph's
+                    from src.states.overworld.common import _fill_names              #  walls - an Escape Rope, Flash, a Water Stone, Ho-Oh)
+                    return self.show_message([_fill_names(self.game, x) for x in ob.get("no") or bar.get("lines") or ["..."]])
                 if ob.get("flag"):
                     self.npc_flag(ob["flag"])
                 from src.states.overworld.common import _fill_names
@@ -1202,7 +1205,7 @@ class WalkTownState(CityState):
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)
-        if to not in self.exits and (self._surf_wild(to) or self._grass_wild(to)):
+        if to not in self.exits and (self._surf_wild(to) or self._grass_wild(to) or self._room_wild(to)):
             return
         if to in self.exits:
             self.walk_goal = None
@@ -1511,6 +1514,40 @@ class WalkTownState(CityState):
         return bool(cells) and sum(c in art.SEA_CHARS for c in cells) * 2 > len(cells)
 
     GRASS_RATE = 0.1   # (a town's tall grass: about one step in ten, like a route's)
+
+    def _room_wild(self, to):
+        """A room with wild Pokemon on its floor (its "wild": {"pool": the area data's table, "rate", "when": a condition}):
+        the Ruins of Alph's underground hall, its Unown once a puzzle has called them (11-22). True if a battle starts."""
+        import random
+        from src.utils import Utils
+        from src.world import levels
+        from src.pokemon.data import Pokemon
+        room = getattr(self, "room", None)
+        wild = (((getattr(self, "town_map", None) or {}).get("rooms") or {}).get(room) or {}).get("wild") if room else None
+        if not wild or self.anim_from == to or getattr(self.game.story_manager, "repel_routes", 0) > 0:
+            return False
+        if wild.get("when") and not self._check_menu_condition(wild["when"]):
+            return False
+        pool = self.game.loader.area_data.get(wild.get("pool"))
+        if not isinstance(pool, dict) or not pool or random.random() >= float(wild.get("rate", 0.08)):
+            return False
+        pid, form = int(Utils.weighted_random_choice(pool)), "normal"
+        if pid == 201:   # (which Unown: one of the letters the solved puzzles have called)
+            from src.world import alph
+            form = alph.pick(self.game.story_manager, ((self.area_data or {}).get("alt_forms") or {}).get("weights")) or "normal"
+        raw = self.game.loader.fetch_specific(pid, form)
+        if not raw:
+            return False
+        mon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, mon, self.area_key)
+        self.walk_goal = None
+        self.anim = 0
+        self._remember()
+        from src.states.battle import WildBattleState
+        battle = WildBattleState(self.game, mon, self.area_key)
+        battle.back_to_town = True
+        self.game.change_state(battle)
+        return True
 
     def _grass_wild(self, to):
         """A town's own tall grass (the area's "grass_pool_percentages"; 11-19, Jordan: the Ruins of Alph's outside grass has

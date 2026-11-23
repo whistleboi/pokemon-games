@@ -6198,6 +6198,48 @@
     "RUINS_OF_ALPH:POTION": {
       "item": "POKE_BALL"
     },
+    "RUINS_OF_ALPH:HEAL POWDER": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:ENERGY POWDER": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:ORAN BERRY": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:PECHA BERRY": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:ENERGY ROOT": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:MOON STONE": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:SITRUS BERRY": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:STARDUST": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:STAR PIECE": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:MYSTIC WATER": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:LEPPA BERRY": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:REVIVAL HERB": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:CHARCOAL": {
+      "item": "POKE_BALL"
+    },
+    "RUINS_OF_ALPH:LIFE ORB": {
+      "item": "POKE_BALL"
+    },
     "UNION_CAVE:SHELL BELL": {
       "item": "POKE_BALL"
     },

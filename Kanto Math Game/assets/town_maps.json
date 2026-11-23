@@ -44595,11 +44595,1659 @@
       "px": 32
      }
     ]
+   },
+   "lab": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccc..mmmmmc",
+     "cN..........c",
+     "c...........c",
+     "c.....cc..ccc",
+     "c.....cc..ccc",
+     "c.....cc..ccc",
+     "c.....cc..ccc",
+     "c...........c",
+     "cc.........cc",
+     "cz..v......zc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:25,29"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "7,2": [
+       109,
+       120,
+       181
+      ],
+      "8,2": [
+       161,
+       168,
+       109
+      ],
+      "9,2": [
+       161,
+       168,
+       109
+      ],
+      "10,2": [
+       161,
+       168,
+       109
+      ],
+      "11,2": [
+       161,
+       168,
+       109
+      ]
+     },
+     "_kinds": {
+      "10,2": "shelf",
+      "11,2": "shelf",
+      "7,2": "shelf",
+      "8,2": "shelf",
+      "9,2": "shelf"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0102.png",
+      "at": [
+       0,
+       2
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     "Enter Lab"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0102.png",
+      "at": [
+       0,
+       2
+      ],
+      "size": [
+       13,
+       16
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "entrance": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccc.......cc",
+     "c.c.......c.c",
+     "c.c.......c.c",
+     "c...........c",
+     "c........c..c",
+     "c.....^.....c",
+     "ccc.N.....ccc",
+     "ccc.......ccc",
+     "ccccc...ccccc",
+     "ccccc...ccccc",
+     "ccccccvcccccc",
+     "ccccccccccccc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:14,28",
+     "^": "ROOM:hall"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "6,6": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0211.png",
+      "at": [
+       0,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Follow the Unown (Sinjoh Ruins)",
+      "door": "ruins",
+      "target_area": "SINJOH_CABIN",
+      "condition": [
+       "party_has:493",
+       "sinjoh_open"
+      ],
+      "message": "The Unown on the walls seem to stare at Arceus... The world goes white. You're somewhere cold.",
+      "action": "TRAVEL"
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0211.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       13,
+       16
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "hall": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "c...........................c",
+     "c...........................c",
+     "c...........................c",
+     "c.c...c...c...c...c...c...c.c",
+     "c...........................c",
+     "c...........................c",
+     "ccc...ccccccccccccccccccccccc",
+     "ccc...ccccccccccccccccccccccc",
+     "ccc...ccccccccccccccccccccccc",
+     "c...........................c",
+     "c...........................c",
+     "c...........................c",
+     "c.c...c...c...c...c...c...c.c",
+     "c...........................c",
+     "c...........................c",
+     "ccccccccccccccccccccccc...ccc",
+     "ccccccccccccccccccccccc...ccc",
+     "ccccccccccccccccccccccc...ccc",
+     "c...........................c",
+     "c...........................c",
+     "c................v..........c",
+     "c.c..............v........c.c",
+     "c...........................c",
+     "c...........................c",
+     "ccc...ccccccccccccccccccccccc",
+     "ccc...ccccccccccccccccccccccc",
+     "ccc...ccccccccccccccccccccccc",
+     "c...........................c",
+     "c...........................c",
+     "c...........................c",
+     "c.c...c...c...c...c...c...c.c",
+     "c...........................c",
+     "c...........................c",
+     "ccccccccccccccccccccccc...ccc",
+     "ccccccccccccccccccccccc...ccc",
+     "ccccccccccccccccccccccc...ccc",
+     "c...........................c",
+     "c...........................c",
+     "c...........................c",
+     "c.c...c...c...c...c...c...c.c",
+     "c...........................c",
+     "c...........................c",
+     "ccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:entrance"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "17,23": "foot",
+      "17,22": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0205.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "wild": {
+     "pool": "JOHTO_RUINS_OF_ALPH_DAY_PERCENTAGES",
+     "rate": 0.08,
+     "when": {
+      "any": [
+       "alph_kabuto_solved",
+       "alph_aerodactyl_solved",
+       "alph_omanyte_solved",
+       "alph_hooh_solved"
+      ]
+     }
+    },
+    "arrive_as": {
+     "ROOM:kabuto_words": "ROOM:entrance",
+     "ROOM:aerodactyl_words": "ROOM:entrance",
+     "ROOM:omanyte_words": "ROOM:entrance",
+     "ROOM:hooh_words": "ROOM:entrance"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0205.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       29,
+       46
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "kabuto": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc^ccccc",
+     "c.........c",
+     "c.........c",
+     "c...ccc...c",
+     "c..cc!cc..c",
+     "c..ccccc..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..c......c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,10",
+     "^": "ROOM:kabuto_room"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,2": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0202.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "signs": [
+     [
+      "A stone slab with a picture of Kabuto, put back together."
+     ]
+    ],
+    "sign_events": {
+     "5,6": {
+      "text": "Kabuto Panel",
+      "action": "TILE_PUZZLE",
+      "panel": "kabuto",
+      "event": {
+       "flag": "alph_kabuto_solved"
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "alph_kabuto_wall"
+      },
+      "lines": [
+       "Unown letters on the wall spell out: ESCAPE."
+      ],
+      "on_bump": {
+       "need": "has_escape_rope",
+       "flag": "alph_kabuto_wall",
+       "lines": [
+        "Unown letters on the wall spell out: ESCAPE.",
+        "You held up an Escape Rope... The wall slid open!"
+       ],
+       "no": [
+        "Unown letters on the wall spell out: ESCAPE.",
+        "Nothing happens..."
+       ]
+      }
+     }
+    ],
+    "drop": {
+     "room": "kabuto_words",
+     "at": [
+      19,
+      10
+     ],
+     "lines": [
+      "The floor gave way!",
+      "Unown letters cover the floor here. They read:",
+      "WE CARVED OUR WORDS INTO THIS PLACE."
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0202.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "kabuto_room": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "c..c.c.c..c",
+     "c..c...c..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:kabuto"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,16": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0212.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "HEAL POWDER",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_heal_powder_ruins_of_alph_kabuto_room_0",
+      "event": {
+       "lines": [
+        "A Heal Powder, left in the hidden room."
+       ],
+       "gift_item": {
+        "HEAL_POWDER": 1
+       },
+       "flag": "got_heal_powder_ruins_of_alph_kabuto_room_0"
+      }
+     },
+     {
+      "text": "ENERGY POWDER",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_energy_powder_ruins_of_alph_kabuto_room_1",
+      "event": {
+       "lines": [
+        "An Energy Powder, left in the hidden room."
+       ],
+       "gift_item": {
+        "ENERGY_POWDER": 1
+       },
+       "flag": "got_energy_powder_ruins_of_alph_kabuto_room_1"
+      }
+     },
+     {
+      "text": "ORAN BERRY",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_oran_berry_ruins_of_alph_kabuto_room_2",
+      "event": {
+       "lines": [
+        "An Oran Berry, left in the hidden room."
+       ],
+       "gift_item": {
+        "ORAN_BERRY": 1
+       },
+       "flag": "got_oran_berry_ruins_of_alph_kabuto_room_2"
+      }
+     },
+     {
+      "text": "PECHA BERRY",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_pecha_berry_ruins_of_alph_kabuto_room_3",
+      "event": {
+       "lines": [
+        "A Pecha Berry, left in the hidden room."
+       ],
+       "gift_item": {
+        "PECHA_BERRY": 1
+       },
+       "flag": "got_pecha_berry_ruins_of_alph_kabuto_room_3"
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0212.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "kabuto_words": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "ccccccccccvccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:hall"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "10,13": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0203.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0203.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       22,
+       17
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "aerodactyl": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc^ccccc",
+     "c.........c",
+     "c.........c",
+     "c...ccc...c",
+     "c..cc!cc..c",
+     "c..ccccc..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..c......c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,53",
+     "^": "ROOM:aerodactyl_room"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,2": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0204.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "signs": [
+     [
+      "A stone slab with a picture of Aerodactyl, put back together."
+     ]
+    ],
+    "sign_events": {
+     "5,6": {
+      "text": "Aerodactyl Panel",
+      "action": "TILE_PUZZLE",
+      "panel": "aerodactyl",
+      "event": {
+       "flag": "alph_aerodactyl_solved"
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "alph_aerodactyl_wall"
+      },
+      "lines": [
+       "Unown letters on the wall spell out: LIGHT."
+      ],
+      "on_bump": {
+       "need": "has_item:HM_FLASH",
+       "flag": "alph_aerodactyl_wall",
+       "lines": [
+        "Unown letters on the wall spell out: LIGHT.",
+        "Your Pokemon lit up the wall with Flash... The wall slid open!"
+       ],
+       "no": [
+        "Unown letters on the wall spell out: LIGHT.",
+        "Nothing happens..."
+       ]
+      }
+     }
+    ],
+    "drop": {
+     "room": "aerodactyl_words",
+     "at": [
+      18,
+      10
+     ],
+     "lines": [
+      "The floor gave way!",
+      "Unown letters cover the floor here. They read:",
+      "WE RAISED POKEMON STATUES OUTSIDE."
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0204.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "aerodactyl_room": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "c..c.c.c..c",
+     "c..c...c..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:aerodactyl"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,16": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0213.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "HEAL POWDER",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_heal_powder_ruins_of_alph_aerodactyl_room_0",
+      "event": {
+       "lines": [
+        "A Heal Powder, left in the hidden room."
+       ],
+       "gift_item": {
+        "HEAL_POWDER": 1
+       },
+       "flag": "got_heal_powder_ruins_of_alph_aerodactyl_room_0"
+      }
+     },
+     {
+      "text": "ENERGY ROOT",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_energy_root_ruins_of_alph_aerodactyl_room_1",
+      "event": {
+       "lines": [
+        "An Energy Root, left in the hidden room."
+       ],
+       "gift_item": {
+        "ENERGY_ROOT": 1
+       },
+       "flag": "got_energy_root_ruins_of_alph_aerodactyl_room_1"
+      }
+     },
+     {
+      "text": "MOON STONE",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_moon_stone_ruins_of_alph_aerodactyl_room_2",
+      "event": {
+       "lines": [
+        "A Moon Stone, left in the hidden room."
+       ],
+       "gift_item": {
+        "MOON_STONE": 1
+       },
+       "flag": "got_moon_stone_ruins_of_alph_aerodactyl_room_2"
+      }
+     },
+     {
+      "text": "SITRUS BERRY",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_sitrus_berry_ruins_of_alph_aerodactyl_room_3",
+      "event": {
+       "lines": [
+        "A Sitrus Berry, left in the hidden room."
+       ],
+       "gift_item": {
+        "SITRUS_BERRY": 1
+       },
+       "flag": "got_sitrus_berry_ruins_of_alph_aerodactyl_room_3"
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0213.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "aerodactyl_words": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "c...................c",
+     "ccccccccccvcccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:hall"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "10,13": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0210.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0210.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       21,
+       17
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "omanyte": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc^ccccc",
+     "c.........c",
+     "c.........c",
+     "c...ccc...c",
+     "c..cc!cc..c",
+     "c..ccccc..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..c......c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:9,53",
+     "^": "ROOM:omanyte_room"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,2": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0206.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "signs": [
+     [
+      "A stone slab with a picture of Omanyte, put back together."
+     ]
+    ],
+    "sign_events": {
+     "5,6": {
+      "text": "Omanyte Panel",
+      "action": "TILE_PUZZLE",
+      "panel": "omanyte",
+      "event": {
+       "flag": "alph_omanyte_solved"
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "alph_omanyte_wall"
+      },
+      "lines": [
+       "Unown letters on the wall spell out: WATER."
+      ],
+      "on_bump": {
+       "need": "has_water_stone",
+       "flag": "alph_omanyte_wall",
+       "lines": [
+        "Unown letters on the wall spell out: WATER.",
+        "You held up the Water Stone... The wall slid open!"
+       ],
+       "no": [
+        "Unown letters on the wall spell out: WATER.",
+        "Nothing happens..."
+       ]
+      }
+     }
+    ],
+    "drop": {
+     "room": "omanyte_words",
+     "at": [
+      19,
+      12
+     ],
+     "lines": [
+      "The floor gave way!",
+      "Unown letters cover the floor here. They read:",
+      "THEY SENSE WITH THEIR MINDS, AND SHUT OUT THE WORLD."
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0206.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "omanyte_room": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "c..c.c.c..c",
+     "c..c...c..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:omanyte"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,16": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0215.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "STARDUST",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_stardust_ruins_of_alph_omanyte_room_0",
+      "event": {
+       "lines": [
+        "A Stardust, left in the hidden room."
+       ],
+       "gift_item": {
+        "STARDUST": 1
+       },
+       "flag": "got_stardust_ruins_of_alph_omanyte_room_0"
+      }
+     },
+     {
+      "text": "STAR PIECE",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_star_piece_ruins_of_alph_omanyte_room_1",
+      "event": {
+       "lines": [
+        "A Star Piece, left in the hidden room."
+       ],
+       "gift_item": {
+        "STAR_PIECE": 1
+       },
+       "flag": "got_star_piece_ruins_of_alph_omanyte_room_1"
+      }
+     },
+     {
+      "text": "MYSTIC WATER",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_mystic_water_ruins_of_alph_omanyte_room_2",
+      "event": {
+       "lines": [
+        "A Mystic Water, left in the hidden room."
+       ],
+       "gift_item": {
+        "MYSTIC_WATER": 1
+       },
+       "flag": "got_mystic_water_ruins_of_alph_omanyte_room_2"
+      }
+     },
+     {
+      "text": "LEPPA BERRY",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_leppa_berry_ruins_of_alph_omanyte_room_3",
+      "event": {
+       "lines": [
+        "A Leppa Berry, left in the hidden room."
+       ],
+       "gift_item": {
+        "LEPPA_BERRY": 1
+       },
+       "flag": "got_leppa_berry_ruins_of_alph_omanyte_room_3"
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0215.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "omanyte_words": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "ccccccccccvccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:hall"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "10,15": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0207.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0207.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       22,
+       19
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "hooh": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc^ccccc",
+     "c.........c",
+     "c.........c",
+     "c...ccc...c",
+     "c..cc!cc..c",
+     "c..ccccc..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..c......c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:9,33",
+     "^": "ROOM:hooh_room"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,2": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0208.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "signs": [
+     [
+      "A stone slab with a picture of Ho-Oh, put back together."
+     ]
+    ],
+    "sign_events": {
+     "5,6": {
+      "text": "Ho-Oh Panel",
+      "action": "TILE_PUZZLE",
+      "panel": "hooh",
+      "event": {
+       "flag": "alph_hooh_solved"
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "alph_hooh_wall"
+      },
+      "lines": [
+       "Unown letters on the wall spell out: HO-OH."
+      ],
+      "on_bump": {
+       "need": "party_has:250",
+       "flag": "alph_hooh_wall",
+       "lines": [
+        "Unown letters on the wall spell out: HO-OH.",
+        "Ho-Oh cried out... The wall slid open!"
+       ],
+       "no": [
+        "Unown letters on the wall spell out: HO-OH.",
+        "Nothing happens..."
+       ]
+      }
+     }
+    ],
+    "drop": {
+     "room": "hooh_words",
+     "at": [
+      19,
+      20
+     ],
+     "lines": [
+      "The floor gave way!",
+      "Unown letters cover the floor here. They read:",
+      "WE MUST WALK BESIDE THEM. FOR THEIR SAKE, WE LEAVE THIS PLACE."
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0208.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "hooh_room": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "c..c.c.c..c",
+     "c..c...c..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c..N...N..c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "ccccc.ccccc",
+     "cccccvccccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:hooh"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "5,16": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0214.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "REVIVAL HERB",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_revival_herb_ruins_of_alph_hooh_room_0",
+      "event": {
+       "lines": [
+        "A Revival Herb, left in the hidden room."
+       ],
+       "gift_item": {
+        "REVIVAL_HERB": 1
+       },
+       "flag": "got_revival_herb_ruins_of_alph_hooh_room_0"
+      }
+     },
+     {
+      "text": "CHARCOAL",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_charcoal_ruins_of_alph_hooh_room_1",
+      "event": {
+       "lines": [
+        "A Charcoal, left in the hidden room."
+       ],
+       "gift_item": {
+        "CHARCOAL": 1
+       },
+       "flag": "got_charcoal_ruins_of_alph_hooh_room_1"
+      }
+     },
+     {
+      "text": "LIFE ORB",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_life_orb_ruins_of_alph_hooh_room_2",
+      "event": {
+       "lines": [
+        "A Life Orb, left in the hidden room."
+       ],
+       "gift_item": {
+        "LIFE_ORB": 1
+       },
+       "flag": "got_life_orb_ruins_of_alph_hooh_room_2"
+      }
+     },
+     {
+      "text": "LEPPA BERRY",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_leppa_berry_ruins_of_alph_hooh_room_3",
+      "event": {
+       "lines": [
+        "A Leppa Berry, left in the hidden room."
+       ],
+       "gift_item": {
+        "LEPPA_BERRY": 1
+       },
+       "flag": "got_leppa_berry_ruins_of_alph_hooh_room_3"
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0214.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       11,
+       20
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "hooh_words": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "c....................c",
+     "ccccccccccvccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:hall"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {},
+     "_stairs": {
+      "10,23": "foot"
+     },
+     "_floor": [
+      214,
+      196,
+      150
+     ],
+     "_wall": [
+      150,
+      132,
+      104
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/D24R0209.png",
+      "at": [
+       1,
+       4
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/D24R0209.png",
+      "at": [
+       1,
+       4
+      ],
+      "size": [
+       22,
+       27
+      ],
+      "px": 32
+     }
+    ]
    }
   },
   "inside": {
    "14,5": "gate",
-   "15,5": "gate"
+   "15,5": "gate",
+   "25,29": "lab",
+   "14,28": "entrance",
+   "15,28": "entrance",
+   "20,10": "kabuto",
+   "20,53": "aerodactyl",
+   "9,53": "omanyte",
+   "9,33": "hooh"
   }
  },
  "UNION_CAVE": {

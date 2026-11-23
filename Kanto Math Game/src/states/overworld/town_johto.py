@@ -26,6 +26,22 @@ class JohtoTown:
             self.game.change_state(self)
             if won:
                 self.game.story_manager.story_flags[flag(panel)] = True
+                rm = ((getattr(self, "town_map", None) or {}).get("rooms") or {}).get(getattr(self, "room", None) or "") or {}
+                drop = rm.get("drop")
+                if drop and drop.get("room") in (self.town_map.get("rooms") or {}):   # (walked in, 11-22: the floor gives way under
+                    self._go(drop["room"], "DROP")                                     #  you, into the chamber's writing room, HGSS)
+                    self.player = self.anim_from = self.partner = self.partner_from = tuple(drop["at"])
+                    self.facing = (0, 1)
+                    self.anim = 0
+                    self._remember()
+                    said = ["You put the panel back together!"] + list(drop.get("lines") or [])
+                    inv = self.game.story_manager.inventory
+                    if not inv.get("UNOWN_REPORT"):   # (the first puzzle: a researcher hands you the Unown Report, HGSS)
+                        inv["UNOWN_REPORT"] = 1
+                        said += ["A researcher hurries over: You solved it! The Unown are coming out!",
+                                 "Here, keep a record of every one you find in this Unown Report!", "You got the UNOWN REPORT!"]
+                    self.show_message(said)
+                    return
                 self.show_message(["You put the panel back together!", self.ALPH_DONE.get(panel, "")])
 
         self.clear_hover_menu()

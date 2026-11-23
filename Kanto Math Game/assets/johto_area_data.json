@@ -647,7 +647,7 @@
 
             "route_menu": [
 
-                {"text": "RESEARCH UNOWN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "RESEARCH UNOWN", "action": "CATCH", "condition": ["has_balls", {"any": ["alph_kabuto_solved", "alph_omanyte_solved", "alph_aerodactyl_solved", "alph_hooh_solved"]}], "color": "BLUE"},
 
                 {"text": "EXIT RUINS", "action": "EXIT", "target_area": "RUINS_OF_ALPH", "condition": "can_exit", "color": "RED"}
 
