@@ -34,18 +34,12 @@
       3,
       9,
       "Bug Maniac"
-     ],
-     [
-      13,
-      10,
-      "Professor Cozmo "
      ]
     ]
    }
   },
   "givers": {
-   "Bug Maniac": "Bug Maniac",
-   "Professor Cozmo ": "Professor Cozmo"
+   "Bug Maniac": "Bug Maniac"
   }
  },
  "FORTREE_CITY": {
@@ -66,11 +60,6 @@
       "TM081 GRASS KNOT"
      ],
      [
-      37,
-      9,
-      "Winona"
-     ],
-     [
       5,
       10,
       "Boy"
@@ -85,7 +74,6 @@
   },
   "givers": {
    "Old woman": "Old woman",
-   "Winona": "Winona",
    "Boy": "Boy"
   }
  },
@@ -4426,27 +4414,13 @@
  "LAVARIDGE_TOWN": {
   "floors": {
    "0": {
-    "people": [
-     [
-      8,
-      10,
-      "Black Belt"
-     ],
-     [
-      14,
-      9,
-      "Flannery"
-     ]
-    ],
+    "people": [],
     "hidden": {
      "4,5": "ICE_HEAL"
     }
    }
   },
-  "givers": {
-   "Black Belt": "Black Belt",
-   "Flannery": "Flannery"
-  }
+  "givers": {}
  },
  "LILYCOVE_CITY": {
   "floors": {
@@ -4456,11 +4430,6 @@
       61,
       36,
       "MAX REPEL"
-     ],
-     [
-      64,
-      20,
-      "Man"
      ],
      [
       46,
@@ -4481,7 +4450,6 @@
    }
   },
   "givers": {
-   "Man": "Man",
    "Man ": "Man"
   }
  },
@@ -4524,11 +4492,6 @@
       21,
       7,
       "Girl"
-     ],
-     [
-      35,
-      9,
-      "Wattson"
      ],
      [
       9,
@@ -4590,7 +4553,6 @@
   },
   "givers": {
    "Girl": "Girl",
-   "Wattson": "Wattson",
    "Old man": "Old man",
    "Delinquent": "Delinquent"
   }
@@ -4628,11 +4590,6 @@
       11,
       15,
       "Sailor"
-     ],
-     [
-      27,
-      27,
-      "Liza and Tate"
      ]
     ],
     "hidden": {
@@ -4655,8 +4612,7 @@
   "givers": {
    "Boy": "Boy",
    "Woman": "Woman",
-   "Sailor": "Sailor",
-   "Liza and Tate": "Liza and Tate"
+   "Sailor": "Sailor"
   }
  },
  "OLDALE_TOWN": {
@@ -4782,11 +4738,6 @@
       "Boy "
      ],
      [
-      32,
-      33,
-      "Roxanne"
-     ],
-     [
       23,
       50,
       "GREAT BALL"
@@ -4805,25 +4756,16 @@
   "givers": {
    "Businessman": "Businessman",
    "Ace Trainer": "Ace Trainer",
-   "Boy ": "Boy",
-   "Roxanne": "Roxanne"
+   "Boy ": "Boy"
   }
  },
  "SLATEPORT_CITY": {
   "floors": {
    "0": {
-    "people": [
-     [
-      16,
-      15,
-      "Team MagmaOR/AquaAS Grunt"
-     ]
-    ]
+    "people": []
    }
   },
-  "givers": {
-   "Team MagmaOR/AquaAS Grunt": "Team MagmaOR/AquaAS Grunt"
-  }
+  "givers": {}
  },
  "SOOTOPOLIS_CITY": {
   "floors": {
@@ -4839,18 +4781,12 @@
       32,
       35,
       "Collector"
-     ],
-     [
-      43,
-      42,
-      "Black Belt"
      ]
     ]
    }
   },
   "givers": {
-   "Collector": "Collector",
-   "Black Belt": "Black Belt"
+   "Collector": "Collector"
   }
  },
  "VERDANTURF_TOWN": {

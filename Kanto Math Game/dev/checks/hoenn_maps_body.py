@@ -2844,5 +2844,68 @@ st._go("lab", "OUT:7,16"); frames(2)
 check((6, 4) in st._people(), "Littleroot: once he's been saved on Route 101, Birch is at his desk")
 story.badges.clear(); story.badges.update(_badges)
 
+# H4 (11-23): every ORAS Mega Stone can be got; the Museum grunt's TM Thief; Route 129's divers (town_maps/hoenn_canon.py)
+_f4 = dict(story.story_flags)
+_inv4 = dict(story.inventory)
+
+
+def _route_step(key, came, floor, at, way):
+    st = open_map(key, came)
+    st.run.jump_floor(floor, at); _calm(st); st.anim = 0
+    st.run.player = at
+    st.step(*way)
+    return st, _play(st, 300)
+
+
+for _k in ("got_manectite", "got_steelixite", "got_aggronite", "oras_slateport_city_6", "got_houndoominite",
+           "got_latiasite", "got_latiosite", "cave_of_origin_cleared"):
+    story.story_flags.pop(_k, None)
+for _k in ("MANECTITE", "STEELIXITE", "AGGRONITE", "TM018", "HOUNDOOMINITE", "LATIASITE", "LATIOSITE"):
+    story.inventory.pop(_k, None)
+st, said = _route_step("HOENN_ROUTE_110", "SLATEPORT_CITY", 0, (28, 15), (1, 0))
+check(story.inventory.get("MANECTITE", 0) == 1, f"Route 110: the Manectite glints east of the Cycling Road's north gate ({said[-1:]})")
+st, said = _route_step("HOENN_GRANITE_CAVE", "DEWFORD_TOWN", 1, (35, 11), (1, 0))
+check(story.inventory.get("STEELIXITE", 0) == 1, f"Granite Cave 1F: the Steelixite is hidden on the south side ({said[-1:]})")
+story.story_flags.update({"rusturf_rescued": True, "rusturf_briney_thanks": True})   # (Briney's thanks already seen)
+st, said = _route_step("HOENN_RUSTURF_TUNNEL", "RUSTBORO_CITY", 0, (22, 5), (1, 0))
+check(story.inventory.get("AGGRONITE", 0) == 1 and any("boyfriend" in x for x in said),
+      f"Rusturf Tunnel: Wanda's boyfriend hands over the Aggronite once the tunnel is clear ({said[:1]})")
+st, said = _route_step("HOENN_OCEANIC_MUSEUM", "SLATEPORT_CITY", 0, (15, 3), (1, 0))
+check(story.inventory.get("TM018", 0) == 1, f"Oceanic Museum: a bored grunt gives TM Thief (ORAS), no longer on Slateport's street ({said[-1:]})")
+_slate = [o.get("text") for o in _area["SLATEPORT_CITY"].get("explore_options", [])]
+check(not any("MagmaOR" in str(t) for t in _slate), "Slateport: no 'Team MagmaOR/AquaAS Grunt'")
+_leaders = {"RUSTBORO_CITY": "Roxanne", "MAUVILLE_CITY": "Wattson", "LAVARIDGE_TOWN": "Flannery", "FORTREE_CITY": "Winona",
+            "MOSSDEEP_CITY": "Liza and Tate"}
+_twice = [k for k, n in _leaders.items() if n in [o.get("text") for o in _area[k].get("explore_options", [])]]
+check(not _twice, f"no Gym Leader stands in town handing out their Gym TM a second time {_twice}")
+_r129 = _tm2["HOENN_ROUTE_129"]
+_r129 = _r129["floors"][0] if _r129.get("floors") else _r129
+check({"Scuba Diver Colten", "Free Diver Coral"} <= set(_r129.get("trainer_spots") or []), "Route 129: Colten and Coral have spots on the water")
+st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
+st.scenes.entered = True
+_press(st, (6, 9), (0, 1))
+_before = story.inventory.get("HOUNDOOMINITE", 0)
+story.story_flags["cave_of_origin_cleared"] = True
+st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
+st.scenes.entered = True
+_press(st, (6, 9), (0, 1))
+check(_before == 0 and story.inventory.get("HOUNDOOMINITE", 0) == 1,
+      "Lavaridge: the Houndoominite glints by the sand baths only after Groudon / Kyogre (ORAS)")
+story.story_flags.update({"delta_episode_cleared": True, "hoenn_mom_sendoff": True, "hoenn_version": "ALPHA_SAPPHIRE",
+                          "oras_littleroot_town_2": True})
+st = open_map("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+st.scenes.entered = True
+st._go("home", "OUT:5,8"); frames(2)
+said = _press(st, (2, 5), (0, 1))
+if st.hover_menu_active:
+    _mo = next((o for o in st.people[(2, 6)]["any"] if o.get("text") in ("Mom", "Mom's Second Stone") and st._shown(o)), None)
+    st.clear_hover_menu()
+    if _mo:
+        st._get_callback_for_option(_mo)(); said = _play(st)
+check(story.inventory.get("LATIOSITE", 0) == 1 and not story.inventory.get("LATIASITE"),
+      f"Littleroot: after the Delta Episode Mom has your version's Lati stone (Alpha Sapphire: the Latiosite) ({said[:1]})")
+story.story_flags.clear(); story.story_flags.update(_f4)
+story.inventory.clear(); story.inventory.update(_inv4)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

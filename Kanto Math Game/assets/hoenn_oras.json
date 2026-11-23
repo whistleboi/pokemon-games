@@ -38,21 +38,6 @@
       "flag": "oras_fallarbor_town_2"
      },
      "flag_condition": "not oras_fallarbor_town_2"
-    },
-    {
-     "text": "Professor Cozmo ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Professor Cozmo: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM179": 1
-      },
-      "flag": "oras_fallarbor_town_3"
-     },
-     "flag_condition": "not oras_fallarbor_town_3"
     }
    ]
   },
@@ -101,21 +86,6 @@
       },
       "flag": "oras_fortree_city_3"
      }
-    },
-    {
-     "text": "Winona",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Winona: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM268": 1
-      },
-      "flag": "oras_fortree_city_4"
-     },
-     "flag_condition": "not oras_fortree_city_4"
     },
     {
      "text": "Boy",
@@ -8069,36 +8039,6 @@
   },
   "LAVARIDGE_TOWN": {
    "explore_options": [
-    {
-     "text": "Black Belt",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Black Belt: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM088": 1
-      },
-      "flag": "oras_lavaridge_town_1"
-     },
-     "flag_condition": "not oras_lavaridge_town_1"
-    },
-    {
-     "text": "Flannery",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Flannery: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM157": 1
-      },
-      "flag": "oras_lavaridge_town_3"
-     },
-     "flag_condition": "not oras_lavaridge_town_3"
-    }
    ]
   },
   "LILYCOVE_CITY": {
@@ -8119,21 +8059,6 @@
       },
       "flag": "oras_lilycove_city_1"
      }
-    },
-    {
-     "text": "Man",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Man: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM085": 1
-      },
-      "flag": "oras_lilycove_city_2"
-     },
-     "flag_condition": "not oras_lilycove_city_2"
     },
     {
      "text": "Man ",
@@ -8251,21 +8176,6 @@
       "flag": "oras_mauville_city_4"
      },
      "flag_condition": "not oras_mauville_city_4"
-    },
-    {
-     "text": "Wattson",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Wattson: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM048": 1
-      },
-      "flag": "oras_mauville_city_5"
-     },
-     "flag_condition": "not oras_mauville_city_5"
     },
     {
      "text": "Old man",
@@ -8474,21 +8384,6 @@
       "flag": "oras_mossdeep_city_7"
      },
      "flag_condition": "not oras_mossdeep_city_7"
-    },
-    {
-     "text": "Liza and Tate",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Liza and Tate: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM129": 1
-      },
-      "flag": "oras_mossdeep_city_9"
-     },
-     "flag_condition": "not oras_mossdeep_city_9"
     }
    ]
   },
@@ -8513,21 +8408,6 @@
   },
   "PACIFIDLOG_TOWN": {
    "explore_options": [
-    {
-     "text": "Man",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Man: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM054": 1
-      },
-      "flag": "oras_pacifidlog_town_1"
-     },
-     "flag_condition": "not oras_pacifidlog_town_1"
-    },
     {
      "text": "BIG PEARL",
      "action": "EVENT",
@@ -8728,21 +8608,6 @@
      "flag_condition": "not oras_rustboro_city_4"
     },
     {
-     "text": "Roxanne",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Roxanne: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM036": 1
-      },
-      "flag": "oras_rustboro_city_6"
-     },
-     "flag_condition": "not oras_rustboro_city_6"
-    },
-    {
      "text": "GREAT BALL",
      "action": "EVENT",
      "color": "GOLD",
@@ -8763,21 +8628,6 @@
   },
   "SLATEPORT_CITY": {
    "explore_options": [
-    {
-     "text": "Team MagmaOR/AquaAS Grunt",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Team MagmaOR/AquaAS Grunt: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM018": 1
-      },
-      "flag": "oras_slateport_city_6"
-     },
-     "flag_condition": "not oras_slateport_city_6"
-    }
    ]
   },
   "SOOTOPOLIS_CITY": {
@@ -8796,21 +8646,6 @@
       "flag": "oras_sootopolis_city_3"
      },
      "flag_condition": "not oras_sootopolis_city_3"
-    },
-    {
-     "text": "Black Belt",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Black Belt: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM058": 1
-      },
-      "flag": "oras_sootopolis_city_4"
-     },
-     "flag_condition": "not oras_sootopolis_city_4"
     }
    ]
   }
@@ -8822,17 +8657,11 @@
   "FALLARBOR_TOWN:Bug Maniac": {
    "sheet": "em_17.png"
   },
-  "FALLARBOR_TOWN:Professor Cozmo ": {
-   "sheet": "em_26.png"
-  },
   "FORTREE_CITY:TM86 GRASS KNOT": {
    "item": "TM081"
   },
   "FORTREE_CITY:Old woman": {
    "sheet": "em_22.png"
-  },
-  "FORTREE_CITY:Winona": {
-   "sheet": "em_26.png"
   },
   "FORTREE_CITY:Boy": {
    "sheet": "em_5.png"
@@ -9509,17 +9338,8 @@
   "HOENN_WEATHER_INSTITUTE:Receptionist    ": {
    "sheet": "em_26.png"
   },
-  "LAVARIDGE_TOWN:Black Belt": {
-   "sheet": "em_33.png"
-  },
-  "LAVARIDGE_TOWN:Flannery": {
-   "sheet": "em_26.png"
-  },
   "LILYCOVE_CITY:MAX REPEL": {
    "item": "MAX_REPEL"
-  },
-  "LILYCOVE_CITY:Man": {
-   "sheet": "em_17.png"
   },
   "LILYCOVE_CITY:Man ": {
    "sheet": "em_17.png"
@@ -9551,9 +9371,6 @@
   "MAUVILLE_CITY:Girl": {
    "sheet": "em_12.png"
   },
-  "MAUVILLE_CITY:Wattson": {
-   "sheet": "em_26.png"
-  },
   "MAUVILLE_CITY:Old man": {
    "sheet": "em_21.png"
   },
@@ -9577,9 +9394,6 @@
   },
   "MOSSDEEP_CITY:Sailor": {
    "sheet": "em_49.png"
-  },
-  "MOSSDEEP_CITY:Liza and Tate": {
-   "sheet": "em_26.png"
   },
   "OLDALE_TOWN:Poké Mart attendant": {
    "sheet": "em_26.png"
@@ -9623,17 +9437,8 @@
   "RUSTBORO_CITY:Boy ": {
    "sheet": "em_5.png"
   },
-  "RUSTBORO_CITY:Roxanne": {
-   "sheet": "em_26.png"
-  },
-  "SLATEPORT_CITY:Team MagmaOR/AquaAS Grunt": {
-   "sheet": "em_26.png"
-  },
   "SOOTOPOLIS_CITY:Collector": {
    "sheet": "em_38.png"
-  },
-  "SOOTOPOLIS_CITY:Black Belt": {
-   "sheet": "em_33.png"
   }
  }
 }

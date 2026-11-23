@@ -94826,7 +94826,7 @@
    "...ccccCcc..........",
    "...ccccDcc........cc",
    "......!.......N...cc",
-   "cc..............cccc",
+   "cc..N...........cccc",
    "cc..............cccc"
   ],
   "exits": {
@@ -94876,7 +94876,8 @@
       "Professor Birch is hardly ever home. He's always off in the wild doing research!"
      ]
     }
-   }
+   },
+   "A Glinting Stone: Mewtwonite X"
   ],
   "signs": [
    [
@@ -95003,6 +95004,8 @@
     },
     "people": [
      [
+      "Mom",
+      "Mom's Second Stone",
       "Mom ",
       {
        "text": "Talk to Mom",
@@ -97818,7 +97821,7 @@
    "cccccccccccc......cccccccc.cccc......cccc\"\"..Ncc",
    "ccccN..\"\"\"\"!......cccccc\"\"......\"\"\"..cccc_____cc",
    "cccc.\"\"\"\"\"\".......cccccc\"\"\"...\"\"\"\"\"\".cccc.....cc",
-   "cccc\"\"\"\"\"\"\"...X....2.\"\"\"\"\"\"\"cccccc\"\"\"........\"cc",
+   "cccc\"\"\"\"\"\"\"...X....2N\"\"\"\"\"\"\"cccccc\"\"\"........\"cc",
    "cccc\"\"\"\"\"\"......N..2..\"\"\"\"\"\"cccccc\"\"\"\"......\"\"cc",
    "cccc.\"\"\"cccccc....cccccccccccccccccccccc...\"\"\"cc",
    "cccc....cccccc....cccccccccccccccccccccc...\"\"\"cc",
@@ -97880,6 +97883,7 @@
    },
    "PARALYZE HEAL",
    "ETHER",
+   "SCIZORITE",
    "Girl ",
    {
     "text": "Camper boy",
@@ -98578,7 +98582,7 @@
    "ccccccc..ccccDcccc......c...........cccc",
    "ccccccc............c..c.ccccccc...cccccc",
    "ccccccc.................ccccccc.....cccc",
-   "ccccccc.................cccFccc.N...cccc",
+   "ccccccc.................cccFccc.....cccc",
    "ccccccc......N........N.cccDccc.....cccc",
    "cccccccccccc...........N.!..........cccc",
    "cccccccccccc...cccc............N....cccc",
@@ -98664,7 +98668,6 @@
      ]
     }
    },
-   "Roxanne",
    {
     "text": "Devon worker",
     "action": "EVENT",
@@ -99924,15 +99927,18 @@
      ]
     }
    },
-   {
-    "text": "Digger",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Why did they stop digging? My sweetheart is waiting in Verdanturf, just past this rock!"
-     ]
+   [
+    "AGGRONITE",
+    {
+     "text": "Digger",
+     "action": "EVENT",
+     "event": {
+      "lines": [
+       "Why did they stop digging? My sweetheart is waiting in Verdanturf, just past this rock!"
+      ]
+     }
     }
-   }
+   ]
   ],
   "trainer_spots": [
    "Team Magma Grunt"
@@ -100952,7 +100958,10 @@
        ]
       ]
      }
-    ]
+    ],
+    "hidden": {
+     "36,11": "STEELIXITE"
+    }
    },
    {
     "art": [
@@ -101618,7 +101627,7 @@
    "cccc...cccDccc..........!cccDccc.oooooow",
    "cccc.N.!..............................ow",
    "cccc..................................ow",
-   "cccc............N.....................cc",
+   "cccc..................................cc",
    "cccc............................cccccccc",
    "cccccccc..........cccc..........oooccccc",
    "cccccHcc..........cAccc..ooooooooccccccc",
@@ -101710,7 +101719,6 @@
      ]
     }
    },
-   "Team MagmaOR/AquaAS Grunt",
    {
     "text": "Nickname fan",
     "action": "EVENT",
@@ -103018,7 +103026,7 @@
      "cccc.............ccccccccccccccccccccooo",
      "cccc..........ccccccc11cccccccccccccc..o",
      "cccc..........ccccccc..cccccccccccccccco",
-     "cccc..........c.cc.c.............Xccccco",
+     "cccc..........c.cc.c.........N...Xccccco",
      "cccc.........!c1cc1c....cccccc...cccccco",
      "ccc!.............c.....cccccccc..cccccco",
      "ccc..............c....ccccccccccccccccco",
@@ -103124,6 +103132,7 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "MANECTITE",
      "REPEAT BALL",
      "HEAL BALL",
      "DIRE HIT",
@@ -103659,7 +103668,7 @@
    "c..........!......N..............!.....c",
    "<.N......N...N.....!.N................N>",
    "<........................N.............>",
-   "<..............................N...N...>",
+   "<..............................N.......>",
    "<.......................N..............>",
    "c....ccccccc..N........................>",
    "c....cccGccc..cccccccccccc.N...ccccccccc",
@@ -103724,7 +103733,6 @@
    "Delinquent",
    "TM060 U-TURN",
    "METRONOME",
-   "Wattson",
    "Man in a Suit",
    {
     "text": "Road fan",
@@ -107128,7 +107136,7 @@
    "<..!.cccDccc.cDcc..>",
    "<.....!............>",
    "<..N.......N.......>",
-   "<............N.....>",
+   "<..................>",
    "<.......N.!........>",
    "<..................>",
    "<.............cccc.>",
@@ -107172,7 +107180,6 @@
      ]
     }
    },
-   "Professor Cozmo ",
    {
     "text": "Azurill girl",
     "action": "EVENT",
@@ -109030,7 +109037,7 @@
    "ccccccccc__________c.'cccccccc",
    "ccccccc.(............'cccccccc",
    "ccccccc.c'_______cc__'cccccccc",
-   "ccccccc..'.......cc\"\".cccccccc",
+   "ccccccc..'.......cc\"\"Ncccccccc",
    "ccccccc__'_____cc\"\"\"\"\"\"ccccccc",
    "ccccccc........cc______ccccccc",
    "ccccccc...X............ccccccc",
@@ -109079,6 +109086,7 @@
    "TINY MUSHROOM",
    "X DEFENSE",
    "SUPER REPEL",
+   "TYRANITARITE",
    "MAX ETHER"
   ],
   "trainer_spots": [
@@ -109156,7 +109164,7 @@
    "cc==N==.N.......N..>",
    "cc=.=N.......!.....>",
    "cc=.=.........N....>",
-   "cc......N..........>",
+   "cc....N.N..........>",
    "cc.................>",
    "cccccccc...........>",
    "cccccccc..Ncccccccc.",
@@ -109300,6 +109308,7 @@
     }
    },
    "Flannery",
+   "A Glinting Stone: Houndoominite",
    "Black Belt",
    {
     "text": "Flannery fan",
@@ -110642,7 +110651,7 @@
    ".ccccDccccnccccccccccccccnccccccnccccccc",
    "<.......cc.cccccccccccccc.cccccc.cccc..>",
    "<..........cccccccccccccc.cccccc.......>",
-   "<..N..!....cccccccccccccc..ccccc.....N.>",
+   "<..N..!....cccccccccccccc..ccccc.......>",
    "<....N..N..ccccccc.cccBcc.!cccccN......>",
    "c..........ccccccc...cDc...cccc....ccccc",
    "ccccccc...ccccccccc........cccc...cccccc",
@@ -110677,7 +110686,6 @@
   },
   "people": [
    "Old woman",
-   "Winona",
    "Boy",
    {
     "text": "Kind local",
@@ -111660,7 +111668,7 @@
    "ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"X\"\"\"\"\"\"\"\"\"\"\"ccc.\"\"\"\"\"\"c",
    "cc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".c",
    "cc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".cc",
-   "cc...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...ccc",
+   "cc...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"N\"\"\"\"\"\"\"\"\"...ccc",
    "ccccc.........\"\"\"\"\"\"\"\"\"\"\"\".........ccccc",
    "cccccccccc.........N........cccccccccccc",
    "ccccccccccccccc.......cccccccccccccccccc",
@@ -111749,6 +111757,7 @@
    "LEPPA BERRY",
    "MAX ETHER",
    "MAX REPEL",
+   "VENUSAURITE",
    {
     "text": "Stuck cyclist",
     "action": "EVENT",
@@ -113272,7 +113281,7 @@
    "<.............................................(..c__c....Nccc=====........ooooow",
    "cccc...........N..............................(.....(.....ccc=====...=....oooocc",
    "cccc....cccccccccccccccccccccc................(.....(.....ccc====........ooocccc",
-   "cccccccc..cccc......ccccccc.....N.............c_____ccc..cccc==.N........oooccoo",
+   "cccccccc..cccc......ccccccc.....N.............c_____ccc..cccc==..........oooccoo",
    "cccccccc..cKcc....ccccccccccc.......cccccc..........ccc..ccc=..........oooooccow",
    "ccccccc...cDcc....ccccccccccc.......cccccc..........c=====............ooooooccow",
    "ooccccc.........N.cccccFccccc.......cBcccc..........c==.........==...ooooooccoow",
@@ -113409,7 +113418,6 @@
      "not:aqua_hideout_cleared"
     ]
    },
-   "Man",
    {
     "text": "Pokéblock fan",
     "action": "EVENT",
@@ -118350,7 +118358,7 @@
    "cccccccc.cc........c.cDcc.cccccc..oooooooocGcc..(\"\"\"\"\"_c..ccccc.......c\"......(...\"\"\"\"\"ccccc.cccccccccccooooooooooooooc..ccccccccccccccccccc",
    "cccccc...cccc....ccc!.....cc.(c...oooooooocDcc..(\"\"\"\"\"\"(..Xccc.X.....cc.......(..\"\"\"\"\"\"\"cccc.cccccccccccccooooooooooooc..ccccccccccccccccccc",
    "cccc.....c.............N..c..(.N..oooooooo...N..(\"\"\"\"\"\"(...cc........ccc.c.....cc\"\"\"\"\"\"\"cccc.ccccccccccccccoooooooooooc..ccccccccccccccccccc",
-   "c........ccc......X.......c..(...............c...cc\"\"\"\"(...c______.\"\"\"ccc..N..cccc\"\"\"\"\"\"\"ccc2ccccccccccccccccoooooooooc..ccccccccccccccccccc",
+   "c.....N..ccc......X.......c..(...............c...cc\"\"\"\"(...c______.\"\"\"ccc..N..cccc\"\"\"\"\"\"\"ccc2ccccccccccccccccoooooooooc..ccccccccccccccccccc",
    "<...N..N.cc...............c..(......N..........ccccc\"\".(.c........c\"\"\"cccc....ccccc\"\"\"\"\"\"ccc..........ccccccccccccccc!....cccccccccccccccccc",
    "<........ccccccccccc....ccc..c__ccc.______c...cccccc...(cc........cc\"\"\"\"cc_____ccccc...\"\"\"cc.cccccccc.cccccccccccc.c.......c.ccccccccccccccc",
    "<.........!.....................cccc......(ccccccccc....cc.......ccc\"\"X\"\"......cccc....X.......\"\"\"ccc.ccccccccccc...X.........ccc.........Xc",
@@ -118386,6 +118394,7 @@
    "Fairy Tale Girl",
    "HONDEW BERRY",
    "Chomper",
+   "ABOMASITE",
    "SITRUS BERRY",
    "GRACIDEA",
    "WIDE LENS",
@@ -118747,7 +118756,7 @@
      "cccccccccccccccccc...cccccccoooo~~~~~ccoocccoccoooo::::occoo~~ooooooooooooooooo^",
      "~ccccccccccccccccc...ccccccc~~oocccccccoocccooooooo::::occooccooooooooooo~~~~~~~",
      "ccccccccccccccc......c~~ooooccoocccccooooccooooooooo::occooccXoooooooo~~~ccccccc",
-     "cccccccccccccc...c...cccoooooo~~occccooooccooooooooooooccooccccooooooocccccccccc",
+     "cccccccccccccc.N.c...cccoooooo~~occccooooccooooooooooooccooccccooooooocccccccccc",
      "cccccccccccccc....c..cooooooooccooooooooooooooooooooo~~ooooooccooooooocccccccccc",
      "ccccccccccccccccc.c..coooooooooooooooooooooooooooooooccoccooooooooooo~cccccccccc",
      "ccccccccccccccccc.c..coooooooooooooooooooooooooooooooocccccc~~ccoooooccccccccccc",
@@ -118778,7 +118787,8 @@
      "HEART SCALE",
      "RED SHARD",
      "HEART SCALE ",
-     "BLUE SHARD"
+     "BLUE SHARD",
+     "PINSIRITE"
     ],
     "signs": [
      [
@@ -119439,7 +119449,7 @@
    "<===cc=...............ccc..cccc....cDccc.........ccc..............cEcc..ccccccco",
    "<=======...........N..ccc..cccc.............N.....ccccc...........cDcc..ccccccco",
    "<.======.....................cc...................cccccc...............cccccccco",
-   "<..=cc==...................N.ccc..cccccccccc.........cccc..cccccc....c.ccccccooo",
+   "<..=cc==.....................ccc..cccccccccc.........cccc..cccccc....c.ccccccooo",
    "<..=====..oooo...............ccc..cccccccccc..........ccc..ccccccc..ccccccccoooo",
    "<..=====..ooooooo..............N...ccccccccc.................Nccccccccccccccoooo",
    "<o..===..oooooooooooooo.............ccccccccc.N.................cccccccccccooooo",
@@ -119567,7 +119577,6 @@
     }
    },
    "Woman",
-   "Liza and Tate",
    {
     "text": "Wave watcher",
     "action": "EVENT",
@@ -123846,7 +123855,7 @@
    "<ooooooooooooXcccooooooooooooo~~oooooooooooooooo~~~ccooooooooooooooooooooooooooo",
    "<oooooooooooooooooooooooooooooccooooooooooooooooccoooooooooooooooooooooooooooooo",
    "<ooooooooooooooooooooooooo~~~~oooooooo~~oooooo~~oooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooo~~cccc~ooooo~~ccccooccccoooooooooooooooooooooooooooooooo",
+   "<ooooooooooooooooooooooo~~cccc~ooooo~~ccccooccccoooooooXoooooooooooooooooooooooo",
    "<ooooooooooooooooooooo~~ccccccc~~~~occooccccccoooooooooooooooooooooooooooooooooo",
    "<ooooooooooooXooooo~~~ccccccccccccc~~oooooccoooooooooooooooooooooooooooooooooooo",
    "ooooccooo~~~~~~~~ooccc~cccccccccccccc~oooooooooooooooooooooooooooooooooooooooooo",
@@ -123854,7 +123863,7 @@
    ".occoocccccccccccccc~oooocccccccccccccccoooooXoooooooooooooooooooooooooooooooooo",
    "ccccoocccccccccccccccoooooo~~oocccccccoooooooooooooooooooooooooooooooooooooooooo",
    "ccoooooooocccccccccccooooooccooooccccooooooooooooooooooooooooooooooooooooooooooo",
-   "cooooooooooooccccccccooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+   "cooooooooooooccccccccoooooooooooooooooooooooooooooooooooooooooooooooooXooooooooo",
    "coooooooooooooocccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
    "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
    "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
@@ -123885,8 +123894,10 @@
    "Fisherman Fisk",
    "Swimmer Reed",
    "Ace Trainer Honor",
+   "Scuba Diver Colten",
    "Scuba Diver Jason",
-   "Swimmer Tisha"
+   "Swimmer Tisha",
+   "Free Diver Coral"
   ],
   "edge_to": {
    "0,0": [
@@ -127127,7 +127138,7 @@
    "cccccccccccccc....oooooooooooooooooooooo.....ccccccccccccccc",
    "ccccccc.cccc.....Noooooooooooooooooooooooo...ccccccccccccccc",
    "ccccccc.cccc......oooooooooooooooooooooooo........cccccccccc",
-   "ccccccc...cc..N...oooooooooooooooooooooooo.N.......ccccccccc",
+   "ccccccc...cc..N...oooooooooooooooooooooooo.........ccccccccc",
    "ccccccc..Ncc......ooooooooooooooooooooooooooo......ccccccccc",
    "ccccccc..........Nooooooooooooooooooooooooooo....ccccccccccc",
    "ccccccc.......cc..ooooooooooooooooooooooooooo....ccccccccccc",
@@ -127232,7 +127243,6 @@
      ]
     }
    },
-   "Black Belt",
    {
     "text": "Seasons girl",
     "action": "EVENT",
@@ -136489,7 +136499,7 @@
      "cccccccccccccccccccc",
      "cc!!cc1cc!!c!!cc!!cc",
      "....N.....N.N.......",
-     "........N...........",
+     "........N.......N...",
      "..!N...N.N....N!..!.",
      ".......N....N.....N.",
      ".....cccc..cccc.....",
@@ -136549,6 +136559,20 @@
        ]
       },
       "_look": "@grunt"
+     },
+     {
+      "text": "Bored grunt",
+      "action": "EVENT",
+      "flag_condition": "not oras_slateport_city_6",
+      "event": {
+       "lines": [
+        "Grunt: Ugh, guarding a museum. Here, take this TM off my hands. I never use it anyway."
+       ],
+       "gift_item": {
+        "TM018": 1
+       },
+       "flag": "oras_slateport_city_6"
+      }
      },
      {
       "text": "Grunt (f)",

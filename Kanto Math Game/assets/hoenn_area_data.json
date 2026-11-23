@@ -742,7 +742,7 @@
       "backgrounds": { "main": "littleroot_town.png", "lab": "birch_lab.png", "mom": "littleroot_mom.png" },
       "has_gym": false,
       "travel_options": [{"text": "Route 101", "target_area": "HOENN_ROUTE_101"}],
-      "explore_options": [{"text": "Mom", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiasite", "event": {"lines": ["Mom: A stone came in the mail for you. Two of them, in fact!", "You found the LATIASITE!"], "gift_item": {"LATIASITE": 1}, "flag": "got_latiasite"}}, {"text": "Mom's Second Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiosite", "event": {"lines": ["Mom: And here's the other one!", "You found the LATIOSITE!"], "gift_item": {"LATIOSITE": 1}, "flag": "got_latiosite"}}, {"text": "A Glinting Stone: Mewtwonite X", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_x", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE X!"], "gift_item": {"MEWTWONITE_X": 1}, "flag": "got_mewtwonite_x"}}, 
+      "explore_options": [{"text": "Mom", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiasite", "condition": ["delta_episode_cleared", "hoenn_version:OMEGA_RUBY"], "event": {"lines": ["Mom: Did you see the meteor shower last night? I found this odd stone in the yard this morning. It's for you!"], "gift_item": {"LATIASITE": 1}, "flag": "got_latiasite"}}, {"text": "Mom's Second Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiosite", "condition": ["delta_episode_cleared", "hoenn_version:ALPHA_SAPPHIRE"], "event": {"lines": ["Mom: Did you see the meteor shower last night? I found this odd stone in the yard this morning. It's for you!"], "gift_item": {"LATIOSITE": 1}, "flag": "got_latiosite"}}, {"text": "A Glinting Stone: Mewtwonite X", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_x", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE X!"], "gift_item": {"MEWTWONITE_X": 1}, "flag": "got_mewtwonite_x"}}, 
         {"text": "Visit Mom", "action": "NPC", "target": "mom"},
         {"text": "Visit Next Door", "action": "NPC", "target": "hoenn_neighbor", "door": "rival"},
         {"text": "Visit Birch's Lab", "action": "NPC", "target": "hoenn_birch_lab"}
@@ -956,7 +956,7 @@
       "explore_options": [
         {"text": "Herb Shop", "door": "herb", "action": "SHOP", "stock": ["ENERGY_POWDER", "ENERGY_ROOT", "HEAL_POWDER", "REVIVAL_HERB"]},
         {"text": "Old man's Charcoal", "door": "herb", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_charcoal", "event": {"lines": ["Old man: You're a Trainer, eh? Take this Charcoal. Give it to a Pokémon, and its Fire moves burn hotter!"], "gift_item": {"CHARCOAL": 1}, "flag": "got_charcoal"}},
-        {"text": "Moomoo Milk", "door": "center", "action": "SHOP", "stock": ["MOOMOO_MILK"]},{"text": "A Glinting Stone: Houndoominite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_houndoominite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the HOUNDOOMINITE!"], "gift_item": {"HOUNDOOMINITE": 1}, "flag": "got_houndoominite"}}, 
+        {"text": "Moomoo Milk", "door": "center", "action": "SHOP", "stock": ["MOOMOO_MILK"]},{"text": "A Glinting Stone: Houndoominite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_houndoominite", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the HOUNDOOMINITE!"], "gift_item": {"HOUNDOOMINITE": 1}, "flag": "got_houndoominite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -1932,7 +1932,7 @@
         }
       ],
       "route_menu": [
-        {"text": "REST STOP", "door": "reststop", "action": "REST", "color": "GREEN"},{"text": "VENUSAURITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_venusaurite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the VENUSAURITE!"], "gift_item": {"VENUSAURITE": 1}, "flag": "got_venusaurite"}}, 
+        {"text": "REST STOP", "door": "reststop", "action": "REST", "color": "GREEN"},{"text": "VENUSAURITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_venusaurite", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the VENUSAURITE!"], "gift_item": {"VENUSAURITE": 1}, "flag": "got_venusaurite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
@@ -2118,7 +2118,7 @@
       ],
       "route_menu": [
         {"text": "Chomper", "action": "EVENT", "color": "GOLD", "event": {"lines": ["It's Chomper, 123 Go Fish's guard dog. It's looking at you hopefully...", "You gave Chomper a good scratch behind the ears!", "Chomper: Arf! Arf!", "Chomper dug something out of the sand and dropped it at your feet. It's a Mega Stone!"], "gift_item": {"GYARADOSITE": 1}, "flag": "got_gyaradosite", "done": ["Chomper: Arf! (It's wagging its tail.)"]}}, {"text": "123 GO FISH", "door": "gofish", "action": "EVENT", "event": {"lines": ["Clerk: Welcome to 123 Go Fish, the best little supply shack on Route 123!", "Clerk: ...Er, we're all sold out. Chomper got into the bait again.", "Clerk: Give him a scratch on your way out. He loves that."]}},
-        {"text": "ABOMASITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_abomasite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABOMASITE!"], "gift_item": {"ABOMASITE": 1}, "flag": "got_abomasite"}},
+        {"text": "ABOMASITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_abomasite", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABOMASITE!"], "gift_item": {"ABOMASITE": 1}, "flag": "got_abomasite"}},
         {"text": "Berry Master", "door": "berrymaster", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Berry Master: I'm the Berry Master! Here, take some of my Berries. Grow them with care!"], "daily_gift": {"key": "berry_master_123", "items": ["POMEG_BERRY", "KELPSY_BERRY", "QUALOT_BERRY", "HONDEW_BERRY", "GREPA_BERRY", "TAMATO_BERRY", "CORNN_BERRY", "MAGOST_BERRY", "RABUTA_BERRY", "NOMEL_BERRY"], "count": 2, "wait": ["Berry Master: I've already given you Berries today. Come back tomorrow!"]}}},
         {"text": "Berry Master's wife", "door": "berrymaster", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Wife: My husband and his Berries! Have one from me too, dear."], "daily_gift": {"key": "berry_master_wife_123", "items": ["CHERI_BERRY", "CHESTO_BERRY", "PECHA_BERRY", "RAWST_BERRY", "ASPEAR_BERRY", "LEPPA_BERRY", "ORAN_BERRY", "PERSIM_BERRY", "LUM_BERRY", "SITRUS_BERRY"], "wait": ["Wife: That's all for today. Come and see us again!"]}}},
         {"text": "Magikarp fan", "action": "EVENT", "color": "BLUE", "_look": "em_9.png", "flag_condition": "not got_eviolite_123", "event": {"lines": ["Fisherman: Do you like Magikarp? You do? Then you'll like this! It's for Pokémon that haven't evolved yet."], "gift_item": {"EVIOLITE": 1}, "flag": "got_eviolite_123"}},
@@ -2604,7 +2604,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [291], "levels": [27]}, {"team": [269, 291], "levels": [29, 29]}, {"team": [283, 269, 291], "levels": [31, 31, 31]}, {"team": [283, 291, 269, 291], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},"name": "Bug Catcher James", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 267], "rewards": {"balls": 2}},
         {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [261], "rewards": {"balls": 5}, "is_boss_battle": true, "victory_flag": "woods_boss_defeated", "villain": "grunt", "levels": [9], "dialogue": {"player_won": "hoenn_woods_won"}}
       ],
-      "route_menu": [{"text": "SCIZORITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_scizorite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SCIZORITE!"], "gift_item": {"SCIZORITE": 1}, "flag": "got_scizorite"}}, 
+      "route_menu": [{"text": "SCIZORITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_scizorite", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SCIZORITE!"], "gift_item": {"SCIZORITE": 1}, "flag": "got_scizorite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2620,7 +2620,7 @@
       "wild_pool_percentages": "HOENN_RUSTURF_TUNNEL_PERCENTAGES", "rock_smash_pool_percentages": "HOENN_RUSTURF_TUNNEL_ROCK_SMASH_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [261, 322], "rewards": {"balls": 3}, "is_boss_battle": true, "victory_flag": "rusturf_rescued", "dialogue": {"player_won": "hoenn_rusturf_won"}, "villain": "grunt"}],
-      "route_menu": [{"text": "AGGRONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_aggronite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AGGRONITE!"], "gift_item": {"AGGRONITE": 1}, "flag": "got_aggronite"}}, 
+      "route_menu": [{"text": "AGGRONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_aggronite", "condition": "rusturf_rescued", "event": {"lines": ["Wanda's boyfriend: Now the tunnel's clear, I can dig in peace. Look what turned up! You should have it."], "gift_item": {"AGGRONITE": 1}, "flag": "got_aggronite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2647,7 +2647,7 @@
         {"name": "Picknicker Martha", "class": "PICNIKER", "sprite": "picknicker.png", "team": [304], "rewards": {"balls": 3}},
         {"name": "Hiker Lucas", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 3}}
       ],
-      "route_menu": [{"text": "STEELIXITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_steelixite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the STEELIXITE!"], "gift_item": {"STEELIXITE": 1}, "flag": "got_steelixite"}}, 
+      "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2713,7 +2713,7 @@
       ],
       "route_menu": [
         {"text": "TM038 FLAME CHARGE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm102_jagged", "event": {"lines": ["There's a TM lying among the rocks!"], "gift_item": {"TM038": 1}, "flag": "got_tm102_jagged"}},
-        {"text": "TM282 ROCK POLISH", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm103_jagged", "event": {"lines": ["There's a TM lying in the grass!"], "gift_item": {"TM282": 1}, "flag": "got_tm103_jagged"}},{"text": "TYRANITARITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_tyranitarite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the TYRANITARITE!"], "gift_item": {"TYRANITARITE": 1}, "flag": "got_tyranitarite"}}, 
+        {"text": "TM282 ROCK POLISH", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm103_jagged", "event": {"lines": ["There's a TM lying in the grass!"], "gift_item": {"TM282": 1}, "flag": "got_tm103_jagged"}},{"text": "TYRANITARITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_tyranitarite", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the TYRANITARITE!"], "gift_item": {"TYRANITARITE": 1}, "flag": "got_tyranitarite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
