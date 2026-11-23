@@ -1768,7 +1768,7 @@
       ],
       "next_area": "SOUTH_PROVINCE_AREA_3",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Katy", "class": "GYM_LEADER", "sprite": "katy.png", "team": [919, 917, 216], "levels": [14, 14, 15], "dialogue": {"intro": ["Katy, the Bug-type Gym Leader of Cortondo, waves you in. 'Welcome! Our gym test is rolling a giant olive ball to the goal — while my Nymbles try to stop you. Think you can manage?'"], "player_won": ["Katy claps. 'Amazing! You have earned the Bug Badge. Paldea's gyms only get tougher from here!'"], "player_lost": ["Katy: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "BUG", "movesets": {"919": ["STRUGGLE-BUG", "DOUBLE-KICK"], "917": ["BUG-BITE", "ASSURANCE"], "216": ["FURY-CUTTER", "FURY-SWIPES"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Katy", "class": "GYM_LEADER", "sprite": "katy.png", "team": [919, 917, 216], "levels": [14, 14, 15], "dialogue": {"intro": ["Katy, the Bug-type Gym Leader of Cortondo, waves you in. 'Welcome! Our gym test is rolling a giant olive ball to the goal — while my Nymbles try to stop you. Think you can manage?'"], "player_won": ["Katy claps. 'Amazing! You have earned the Bug Badge. Paldea's gyms only get tougher from here!'"], "player_lost": ["Katy: Train harder and come back!"]}, "rewards": {"balls": 5, "TM021": 1}, "is_boss_battle": true, "badge_reward": "BUG", "movesets": {"919": ["STRUGGLE-BUG", "DOUBLE-KICK"], "917": ["BUG-BITE", "ASSURANCE"], "216": ["FURY-CUTTER", "FURY-SWIPES"]}}}
     },
     "ARTAZON": {
       "area_type": "town",
@@ -1788,7 +1788,7 @@
       ],
       "next_area": "SOUTH_PROVINCE_AREA_3",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Brassius", "class": "GYM_LEADER", "sprite": "brassius.png", "team": [548, 928, 185], "levels": [16, 16, 17], "dialogue": {"intro": ["Brassius surveys his city of sculptures. 'Art speaks to the soul. My Pokémon speak with power. Let us see which language you understand.'"], "player_won": ["Brassius stares at his fallen Sudowoodo. 'Verdant rage... Surrenderance.' He hands you the Grass Badge. 'Your battle was a masterpiece.'"], "player_lost": ["Brassius: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "GRASS", "movesets": {"548": ["SLEEP-POWDER", "MEGA-DRAIN"], "928": ["TACKLE", "RAZOR-LEAF"], "185": ["TRAILBLAZE", "ROCK-THROW"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Brassius", "class": "GYM_LEADER", "sprite": "brassius.png", "team": [548, 928, 185], "levels": [16, 16, 17], "dialogue": {"intro": ["Brassius surveys his city of sculptures. 'Art speaks to the soul. My Pokémon speak with power. Let us see which language you understand.'"], "player_won": ["Brassius stares at his fallen Sudowoodo. 'Verdant rage... Surrenderance.' He hands you the Grass Badge. 'Your battle was a masterpiece.'"], "player_lost": ["Brassius: Train harder and come back!"]}, "rewards": {"balls": 5, "TM020": 1}, "is_boss_battle": true, "badge_reward": "GRASS", "movesets": {"548": ["SLEEP-POWDER", "MEGA-DRAIN"], "928": ["TACKLE", "RAZOR-LEAF"], "185": ["TRAILBLAZE", "ROCK-THROW"]}}}
     },
     "LEVINCIA": {
       "area_type": "town",
@@ -1811,7 +1811,7 @@
       ],
       "next_area": "EAST_PROVINCE_AREA_2",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Iono", "class": "GYM_LEADER", "sprite": "iono.png", "team": [940, 939, 404, 429], "levels": [23, 23, 23, 24], "dialogue": {"intro": ["Iono bursts onto the gym stage in a blaze of camera flashes. 'Iooono-ma! Your number-one Gym Leader! Let us play a little find-my-partner game — livestream is already rolling, so give the fans a SHOW!'"], "player_won": ["Iono bounces on her heels. 'You found my partner AND beat my team? The chat is going WILD! Take the Electric Badge — you earned the clout!'"], "player_lost": ["Iono: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "ELECTRIC", "movesets": {"940": ["PLUCK", "QUICK-ATTACK", "SPARK"], "939": ["WATER-GUN", "SPARK"], "404": ["SPARK", "BITE"], "429": ["CHARGE-BEAM", "HEX", "CONFUSE-RAY"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Iono", "class": "GYM_LEADER", "sprite": "iono.png", "team": [940, 939, 404, 429], "levels": [23, 23, 23, 24], "dialogue": {"intro": ["Iono bursts onto the gym stage in a blaze of camera flashes. 'Iooono-ma! Your number-one Gym Leader! Let us play a little find-my-partner game — livestream is already rolling, so give the fans a SHOW!'"], "player_won": ["Iono bounces on her heels. 'You found my partner AND beat my team? The chat is going WILD! Take the Electric Badge — you earned the clout!'"], "player_lost": ["Iono: Train harder and come back!"]}, "rewards": {"balls": 5, "TM048": 1}, "is_boss_battle": true, "badge_reward": "ELECTRIC", "movesets": {"940": ["PLUCK", "QUICK-ATTACK", "SPARK"], "939": ["WATER-GUN", "SPARK"], "404": ["SPARK", "BITE"], "429": ["CHARGE-BEAM", "HEX", "CONFUSE-RAY"]}}}
     },
     "CASCARRAFA": {
       "area_type": "town",
@@ -1832,7 +1832,7 @@
       ],
       "next_area": "ASADO_DESERT",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Kofu", "class": "GYM_LEADER", "sprite": "kofu.png", "team": [976, 961, 740], "levels": [29, 29, 30], "dialogue": {"intro": ["Kofu slaps his broad hands together. 'I am Kofu — chef and Water-type Gym Leader! Before you battle me, you must win a market auction. A chef who cannot compete for ingredients is no chef at all!'"], "player_won": ["Kofu lets out a booming laugh. 'Magnificent! You fought with total conviction. Take the Water Badge!'"], "player_lost": ["Kofu: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "WATER", "movesets": {"976": ["SLASH", "PLUCK", "AQUA-CUTTER"], "961": ["MUD-SLAP", "WATER-PULSE", "HEADBUTT"], "740": ["CRABHAMMER", "ROCK-SMASH", "SLAM"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Kofu", "class": "GYM_LEADER", "sprite": "kofu.png", "team": [976, 961, 740], "levels": [29, 29, 30], "dialogue": {"intro": ["Kofu slaps his broad hands together. 'I am Kofu — chef and Water-type Gym Leader! Before you battle me, you must win a market auction. A chef who cannot compete for ingredients is no chef at all!'"], "player_won": ["Kofu lets out a booming laugh. 'Magnificent! You fought with total conviction. Take the Water Badge!'"], "player_lost": ["Kofu: Train harder and come back!"]}, "rewards": {"balls": 5, "TM022": 1}, "is_boss_battle": true, "badge_reward": "WATER", "movesets": {"976": ["SLASH", "PLUCK", "AQUA-CUTTER"], "961": ["MUD-SLAP", "WATER-PULSE", "HEADBUTT"], "740": ["CRABHAMMER", "ROCK-SMASH", "SLAM"]}}}
     },
     "MEDALI": {
       "area_type": "town",
@@ -1853,7 +1853,7 @@
       ],
       "next_area": "TAGTREE_THICKET",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Larry", "class": "GYM_LEADER", "sprite": "larry.png", "team": [775, 982, 398], "levels": [35, 35, 36], "dialogue": {"intro": ["Larry looks up from his menu with no expression. 'Oh. Another challenger.' He closes it. 'Normal-type Gym Leader. Larry. Let us get this done. I have a late lunch reservation.'"], "player_won": ["Larry accepts his loss with no reaction whatsoever. 'Normal Badge. Here.' He goes back to his menu."], "player_lost": ["Larry: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "NORMAL", "movesets": {"775": ["YAWN", "SUCKER-PUNCH", "SLAM"], "982": ["HYPER-DRILL", "DRILL-RUN", "GLARE"], "398": ["FACADE", "AERIAL-ACE"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Larry", "class": "GYM_LEADER", "sprite": "larry.png", "team": [775, 982, 398], "levels": [35, 35, 36], "dialogue": {"intro": ["Larry looks up from his menu with no expression. 'Oh. Another challenger.' He closes it. 'Normal-type Gym Leader. Larry. Let us get this done. I have a late lunch reservation.'"], "player_won": ["Larry accepts his loss with no reaction whatsoever. 'Normal Badge. Here.' He goes back to his menu."], "player_lost": ["Larry: Train harder and come back!"]}, "rewards": {"balls": 5, "TM025": 1}, "is_boss_battle": true, "badge_reward": "NORMAL", "movesets": {"775": ["YAWN", "SUCKER-PUNCH", "SLAM"], "982": ["HYPER-DRILL", "DRILL-RUN", "GLARE"], "398": ["FACADE", "AERIAL-ACE"]}}}
     },
     "MONTENEVERA": {
       "area_type": "town",
@@ -1874,7 +1874,7 @@
       ],
       "next_area": "TAGTREE_THICKET",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Ryme", "class": "GYM_LEADER", "sprite": "ryme.png", "team": [354, 778, 972, 849], "levels": [41, 41, 41, 42], "dialogue": {"intro": ["Ryme adjusts her mic stand. 'Yo, welcome to Montenevera! Ghost-types, double battles, bars that will haunt you. Drop the beat!'"], "player_won": ["Ryme nods. 'You kept your cool against my squad. Ghost Badge — it is yours. I might write a song about this.'"], "player_lost": ["Ryme: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "GHOST", "movesets": {"354": ["ICY-WIND", "SUCKER-PUNCH", "SHADOW-SNEAK"], "778": ["LIGHT-SCREEN", "SHADOW-SNEAK", "SLASH"], "972": ["PLAY-ROUGH", "CRUNCH", "PHANTOM-FORCE"], "849": ["DISCHARGE", "HEX", "HYPER-VOICE"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Ryme", "class": "GYM_LEADER", "sprite": "ryme.png", "team": [354, 778, 972, 849], "levels": [41, 41, 41, 42], "dialogue": {"intro": ["Ryme adjusts her mic stand. 'Yo, welcome to Montenevera! Ghost-types, double battles, bars that will haunt you. Drop the beat!'"], "player_won": ["Ryme nods. 'You kept your cool against my squad. Ghost Badge — it is yours. I might write a song about this.'"], "player_lost": ["Ryme: Train harder and come back!"]}, "rewards": {"balls": 5, "TM114": 1}, "is_boss_battle": true, "badge_reward": "GHOST", "movesets": {"354": ["ICY-WIND", "SUCKER-PUNCH", "SHADOW-SNEAK"], "778": ["LIGHT-SCREEN", "SHADOW-SNEAK", "SLASH"], "972": ["PLAY-ROUGH", "CRUNCH", "PHANTOM-FORCE"], "849": ["DISCHARGE", "HEX", "HYPER-VOICE"]}}}
     },
     "ALFORNADA": {
       "area_type": "town",
@@ -1895,7 +1895,7 @@
       ],
       "next_area": "SOUTH_PROVINCE_AREA_5",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Tulip", "class": "GYM_LEADER", "sprite": "tulip.png", "team": [981, 282, 956, 671], "levels": [44, 44, 44, 45], "dialogue": {"intro": ["Tulip examines you carefully. 'Your aura is interesting. My gym test will reveal your inner potential. Whether I like what I see... depends on how you battle.'"], "player_won": ["Tulip gives a rare genuine smile. 'Your potential is real. The Psychic Badge is yours.'"], "player_lost": ["Tulip: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "PSYCHIC", "movesets": {"981": ["CRUNCH", "ZEN-HEADBUTT", "REFLECT"], "282": ["PSYCHIC", "DAZZLING-GLEAM", "ENERGY-BALL"], "956": ["PSYCHIC", "QUICK-ATTACK", "SHADOW-BALL"], "671": ["PSYCHIC", "MOONBLAST", "PETAL-BLIZZARD"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Tulip", "class": "GYM_LEADER", "sprite": "tulip.png", "team": [981, 282, 956, 671], "levels": [44, 44, 44, 45], "dialogue": {"intro": ["Tulip examines you carefully. 'Your aura is interesting. My gym test will reveal your inner potential. Whether I like what I see... depends on how you battle.'"], "player_won": ["Tulip gives a rare genuine smile. 'Your potential is real. The Psychic Badge is yours.'"], "player_lost": ["Tulip: Train harder and come back!"]}, "rewards": {"balls": 5, "TM120": 1}, "is_boss_battle": true, "badge_reward": "PSYCHIC", "movesets": {"981": ["CRUNCH", "ZEN-HEADBUTT", "REFLECT"], "282": ["PSYCHIC", "DAZZLING-GLEAM", "ENERGY-BALL"], "956": ["PSYCHIC", "QUICK-ATTACK", "SHADOW-BALL"], "671": ["PSYCHIC", "MOONBLAST", "PETAL-BLIZZARD"]}}}
     },
     "GLASEADO": {
       "area_type": "town",
@@ -1915,7 +1915,7 @@
       ],
       "next_area": "NORTH_PROVINCE_AREA_3",
       "on_enter_event": null,
-      "gym": {"trainers": [], "leader": {"name": "Grusha", "class": "GYM_LEADER", "sprite": "grusha.png", "team": [873, 614, 975, 334], "levels": [47, 47, 47, 48], "dialogue": {"intro": ["Grusha hunches against the cold. 'Was a pro snowboarder before this. Leg injury. Now I am a Gym Leader.' He sighs. 'Let us battle. Try not to make it boring.'"], "player_won": ["Grusha almost smiles. 'You are really good. Here — Ice Badge. You remind me of how I used to compete. Do not lose that.'"], "player_lost": ["Grusha: Train harder and come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "ICE", "movesets": {"873": ["BLIZZARD", "BUG-BUZZ", "TAILWIND"], "614": ["AQUA-JET", "ICICLE-CRASH", "EARTHQUAKE"], "975": ["ICE-SPINNER", "LIQUIDATION", "ICE-SHARD"], "334": ["ICE-BEAM", "DRAGON-PULSE", "MOONBLAST", "HURRICANE"]}}}
+      "gym": {"trainers": [], "leader": {"name": "Grusha", "class": "GYM_LEADER", "sprite": "grusha.png", "team": [873, 614, 975, 334], "levels": [47, 47, 47, 48], "dialogue": {"intro": ["Grusha hunches against the cold. 'Was a pro snowboarder before this. Leg injury. Now I am a Gym Leader.' He sighs. 'Let us battle. Try not to make it boring.'"], "player_won": ["Grusha almost smiles. 'You are really good. Here — Ice Badge. You remind me of how I used to compete. Do not lose that.'"], "player_lost": ["Grusha: Train harder and come back!"]}, "rewards": {"balls": 5, "TM124": 1}, "is_boss_battle": true, "badge_reward": "ICE", "movesets": {"873": ["BLIZZARD", "BUG-BUZZ", "TAILWIND"], "614": ["AQUA-JET", "ICICLE-CRASH", "EARTHQUAKE"], "975": ["ICE-SPINNER", "LIQUIDATION", "ICE-SHARD"], "334": ["ICE-BEAM", "DRAGON-PULSE", "MOONBLAST", "HURRICANE"]}}}
     },
     "NARANJA_ACADEMY": {
       "area_type": "town",

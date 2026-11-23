@@ -1362,7 +1362,7 @@ _rew = [_tm.reward(g, 3, "GYM_LEADER", ["ROCK"], rng=_r38.Random(i)) for i in ra
 check(all(_rew) and len(set(_rew)) == 1 and _tm.info(g, _rew[0])["type"] == "ROCK",
       f"a Rock Leader gives a Rock TM ({_rew[0]} {_tm.move_of(g, _rew[0])})")
 _tr = sum(1 for i in range(200) if _tm.reward(g, 3, "YOUNGSTER", rng=_r38.Random(i)))
-check(40 < _tr < 110, f"route trainers often give one ({_tr}/200)")
+check(_tr == 0, f"route trainers give none any more - Jordan 11-22 ({_tr}/200)")
 check(_tm.reward(g, 3, "WILD") is None, "wild Pokemon don't")
 _img_hm = g.assets.get_item_image("HM_WATERFALL")
 _img_tm = g.assets.get_item_image("TM068")

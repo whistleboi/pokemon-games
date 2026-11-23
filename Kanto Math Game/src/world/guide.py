@@ -391,7 +391,7 @@ def cached(game, what):
     """hud_lines / next_hop, worked out at most every 2 s (screens draw every frame)."""
     import pygame
     key = (game.story_manager.current_area_key, getattr(game.story_manager, "tracked_mission", None),
-           pygame.time.get_ticks() // 2000)
+           pygame.time.get_ticks() // 2000, len(game.story_manager.story_flags))   # (and at once when a flag is set: a mission's last step done mid-cave, 11-22)
     hit = _CACHE.get(what)
     if not hit or hit[0] != key:
         hit = _CACHE[what] = (key, hud_lines(game) if what == "hud" else next_hop(game))

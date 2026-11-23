@@ -1079,8 +1079,8 @@ _ace = mk(150); _ace.level = 100; _ace.moves = ["PSYCHIC", "ICE-BEAM"]; _ace.hea
 story.player_team = [_ace]
 for _k in [k for k in story.story_flags if k.startswith(("league_won_SILVER", "gym_progress_SILVER", "hall_of_fame_due"))]:
     story.story_flags.pop(_k)
-sl = open_map("SILVER_LEAGUE_PLATEAU", "POKEMON_LEAGUE_GATE")
-check(isinstance(sl, _WTS) and sl.player[1] >= 24, f"the Silver League: up from the Reception Gate, at the foot of the plateau {getattr(sl, 'player', None)}")
+sl = open_map("SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD")
+check(isinstance(sl, _WTS) and sl.player[1] >= 24, f"the Silver League: up from Victory Road, at the foot of the plateau {getattr(sl, 'player', None)}")
 sl._enter(next(t for t, k in sl.doors.items() if k == "league")); frames(2)
 _hall = next(t for t, v in sl.exits.items() if v == "ROOM:league_will")
 check(sl.room == "lobby", f"...through the door into the League's lobby ({sl.room})")

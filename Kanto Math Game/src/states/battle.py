@@ -2303,7 +2303,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveMechanics, MoveEffe
             cls = self.trainer_class
             if cls == "RIVAL" or getattr(self, "is_boss_battle", False) and cls not in tms.LEADER_CLASSES:
                 cls = "TRAINER"
-            self._tm_won = tms.reward(self.game, badges, cls, types) if self.player_won else None
+            own = any(tms.is_tm(k) for k in (self.rewards or {}))   # (a Leader with their game's own TM in their rewards gives that,
+            self._tm_won = tms.reward(self.game, badges, cls, types) if self.player_won and not own else None   # not a random one too: 11-22)
         return self._tm_won
 
     def exit_battle(self, lost=False):

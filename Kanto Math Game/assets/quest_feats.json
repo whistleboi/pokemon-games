@@ -10,11 +10,11 @@
     {"id": "types", "name": "Type Collector", "count": "types", "desc": "Own Kanto Pokemon of as many different types as you can.", "tiers": [
       [6, {"tm": "TM032"}],
       [12, {"tm": "TM114", "items": {"GREAT_BALL": 5}}],
-      ["all", {"tm": "TM129", "money": 5000}]]},
+      ["all", {"tm": "TM152", "money": 5000}]]},
     {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in Kanto. Rematches count too!", "tiers": [
       [25, {"money": 2000}],
       [100, {"tm": "TM150", "money": 3000}],
-      [250, {"tm": "TM149", "money": 5000}]]},
+      [250, {"tm": "TM167", "money": 5000}]]},
     {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk Kanto's towns, routes and caves step by step.", "tiers": [
       [5000, {"items": {"SUPER_POTION": 5}}],
       [20000, {"tm": "TM004", "items": {"HYPER_POTION": 3}}],
@@ -22,18 +22,18 @@
     {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [
       [1, {"items": {"RARE_CANDY": 2}}],
       [5, {"tm": "TM158", "items": {"RARE_CANDY": 3}}],
-      [10, {"tm": "TM141", "money": 10000}]]},
+      [10, {"tm": "TM156", "money": 10000}]]},
     {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in Kanto.", "tiers": [
       [10, {"money": 2000}],
       [25, {"tm": "TM105", "money": 3000}],
       [50, {"tm": "TM135", "money": 5000}]]},
     {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [
       [10, {"items": {"NET_BALL": 5}}],
-      [40, {"tm": "TM011", "items": {"LURE_BALL": 5}}],
+      [40, {"tm": "TM110", "items": {"LURE_BALL": 5}}],
       [100, {"tm": "TM126", "items": {"NET_BALL": 10}}]]},
     {"id": "finds", "name": "Treasure Hunter", "count": "finds", "desc": "Find wild Pokemon by Headbutting trees or smashing rocks.", "tiers": [
       [5, {"items": {"GREAT_BALL": 5}}],
-      [20, {"tm": "TM111"}],
+      [20, {"tm": "TM059"}],
       [50, {"tm": "TM119", "money": 5000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
       [5, {"items": {"MOON_STONE": 1}}],
@@ -49,7 +49,7 @@
       [250, {"tm": "TM094", "money": 10000}]]},
     {"id": "safari", "name": "Safari Explorer", "count": "safari", "desc": "Catch Pokemon in Fuchsia's Safari Zone with Safari Balls.", "tiers": [
       [5, {"money": 3000}],
-      [15, {"tm": "TM175", "items": {"ULTRA_BALL": 5}}],
+      [15, {"tm": "TM084", "items": {"ULTRA_BALL": 5}}],
       [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]},
     {"id": "sevii", "name": "Sevii Explorer", "count": "places", "places": ["RESORT_GORGEOUS", "MEMORIAL_PILLAR", "WATER_PATH", "SEVII_ALTERING_CAVE", "OUTCAST_ISLAND", "GREEN_PATH", "CANYON_ENTRANCE", "ONE_ISLAND", "TREASURE_BEACH", "KINDLE_ROAD", "MT_EMBER", "TWO_ISLAND", "CAPE_BRINK", "THREE_ISLAND", "BOND_BRIDGE", "BERRY_FOREST", "FOUR_ISLAND", "ICEFALL_CAVE", "FIVE_ISLAND", "FIVE_ISLE_MEADOW", "WATER_LABYRINTH", "LOST_CAVE", "ROCKET_WAREHOUSE", "SIX_ISLAND", "PATTERN_BUSH", "RUIN_VALLEY", "DOTTED_HOLE", "SEVEN_ISLAND", "SEVAULT_CANYON", "TANOBY_RUINS", "FARAWAY_ISLAND", "THREE_ISLE_PORT", "NAVEL_ROCK", "BIRTH_ISLAND"], "desc": "Explore the Sevii Islands: every island, cave, path and ruin. Some only open to a Champion.", "tiers": [
       [10, {"items": {"SUPER_REPEL": 5}, "money": 2000}],
@@ -74,10 +74,10 @@
     {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in Johto. Rematches count too!", "tiers": [
       [25, {"money": 2000}],
       [100, {"tm": "TM167", "money": 3000}],
-      [250, {"tm": "TM192", "money": 5000}]]},
+      [250, {"tm": "TM152", "money": 5000}]]},
     {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk Johto's towns, routes and caves step by step.", "tiers": [
       [5000, {"items": {"SUPER_POTION": 5}}],
-      [20000, {"tm": "TM268", "items": {"HYPER_POTION": 3}}],
+      [20000, {"tm": "TM065", "items": {"HYPER_POTION": 3}}],
       [50000, {"tm": "TM164", "items": {"MAX_REVIVE": 2}}]]},
     {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [
       [1, {"items": {"RARE_CANDY": 2}}],
@@ -113,7 +113,7 @@
       [5, {"tm": "TM346", "money": 10000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
       [5, {"items": {"SUN_STONE": 1}}],
-      [20, {"tm": "TM240", "items": {"KINGS_ROCK": 1}}],
+      [20, {"tm": "TM079", "items": {"KINGS_ROCK": 1}}],
       [50, {"tm": "TM227", "items": {"METAL_COAT": 1, "DRAGON_SCALE": 1}}]]},
     {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [
       [1, {"money": 2000}],
