@@ -176,6 +176,31 @@ def follower_names(game, pokemon):
         names.insert(0, f"{species}_female")
     return list(dict.fromkeys(names))
 
+def region_sheet_paths(game, names, shiny=False):
+    """Where to look for a following Pokemon's walking sheet, best first (Jordan 11-23: a game-built region's own
+    overworld sheets first, assets/dungeon/followers as the fallback). For each of its names (follower_names: its exact
+    form first): the shiny follower sheet (a region's own sheets have no shiny colours), this region's own sheet
+    (dungeon_sprites.json "region_followers"), the follower sheet, then any other region's own sheet for that name - so a
+    form only one region drew (a Shadow form, an island variant) keeps that look wherever it follows you - and only then
+    the next, plainer name."""
+    assets = getattr(game.assets, "assets_dir", None) or "assets"
+    base, chars = os.path.join(assets, "dungeon", "followers"), os.path.join(assets, "dungeon", "characters")
+    own = {r: d for r, d in (sprite_map(game).get("region_followers") or {}).items() if isinstance(d, dict)}
+    try:
+        here = str(game.story_manager.get_current_region() or "").upper()
+    except AttributeError:
+        here = ""
+    out = []
+    for n in names:
+        if shiny:
+            out.append(os.path.join(base, "shiny", f"{n}.png"))
+        if (own.get(here) or {}).get(n):
+            out.append(os.path.join(chars, own[here][n]))
+        out.append(os.path.join(base, f"{n}.png"))
+        out += [os.path.join(chars, d[n]) for r, d in sorted(own.items()) if r != here and d.get(n)]
+    return list(dict.fromkeys(out))
+
+
 # The Bug-Catching Contest: its balls and turns, prizes for 1st, 2nd, 3rd (and the rest), how a catch scores
 CONTEST_BALLS, CONTEST_TURNS = 20, 150
 # The Safari Game (Jordan, 11-13: "a timer or ball limit for safari visits"): an area with "safari_game" gives each visit
@@ -4258,10 +4283,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         female = getattr(pokemon, "gender", None) == "F" and str(getattr(pokemon, "form", "normal") or "normal").lower() == "normal"
 
         def sheet():
-            base = os.path.join(self.game.assets.assets_dir, "dungeon", "followers")
             names = follower_names(self.game, pokemon)  # (a form's own sheet first: 12_pinkan, 2055 Paldean Tauros)
-            paths = [os.path.join(base, "shiny", f"{n}.png") for n in names] if shiny else []
-            for path in paths + [os.path.join(base, f"{n}.png") for n in names]:
+            for path in region_sheet_paths(self.game, names, shiny):   # (the region's own sheet first, Jordan 11-23)
                 if os.path.isfile(path):
                     img = pygame.image.load(path).convert_alpha()
                     cw, ch = img.get_width() // 4, img.get_height() // 4
@@ -4274,7 +4297,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                     return img, cw, ch, box
             return None
         form_key = str(getattr(pokemon, "form", "normal") or "normal").lower()
-        data = self._sprite(("follower_sheet", int(pokemon.id), pid, form_key, shiny, female), sheet)
+        _here = str(getattr(self.game.story_manager, "get_current_region", lambda: "")() or "")   # (a region's own sheet differs by region)
+        data = self._sprite(("follower_sheet", int(pokemon.id), pid, form_key, shiny, female, _here), sheet)
         if not data:
             return None
 
@@ -4286,7 +4310,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 return self._jumbo(cell)
             k = self._trainer_scale()
             return pygame.transform.scale(cell, (cell.get_width() * k, cell.get_height() * k))
-        return self._sprite(("follower", int(pokemon.id), pid, form_key, shiny, row, frame, female), make)
+        return self._sprite(("follower", int(pokemon.id), pid, form_key, shiny, row, frame, female, _here), make)
 
     def _sheet_frame(self, sheet, facing=(0, 1), col=None, frame=0, height=None, scale=None):
         """One cell of a Pokemon Journeys overworld sheet (4 x 4): a person's walking frame (col None: the
