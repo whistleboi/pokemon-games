@@ -49,6 +49,8 @@ PEOPLE += [
       "event": {"lines": ["Tutor: Pledge moves! Fire, Water and Grass, each stronger together. Want to learn one?"],
                 "tutor": {"choices": ["GRASS-PLEDGE", "FIRE-PLEDGE", "WATER-PLEDGE"], "price": "tm"}}}),
 ]
+# Sootopolis (H5, Jordan #11): after the Cave of Origin Steven gives the Eon Flute (ORAS's timing), by the Center
+PEOPLE += [("SOOTOPOLIS_CITY", None, None, 44, 33, "Steven")]
 HIDDEN = [
     ("HOENN_GRANITE_CAVE", 1, 36, 11, "STEELIXITE"),   # (1F, the south side east of the big rock: hidden, as ORAS)
 ]

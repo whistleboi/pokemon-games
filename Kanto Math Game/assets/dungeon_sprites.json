@@ -2835,6 +2835,9 @@
     "HOENN_OCEANIC_MUSEUM:Bored grunt": {
       "sheet": "@grunt"
     },
+    "SOOTOPOLIS_CITY:Steven": {
+      "sheet": "em_134.png"
+    },
     "LITTLEROOT_TOWN:Little girl": {
       "sheet": "em_6.png"
     },

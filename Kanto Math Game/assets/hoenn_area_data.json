@@ -838,7 +838,7 @@
       "travel_options": [
         {"text": "Route 106", "target_area": "HOENN_ROUTE_106"},
         {"text": "Route 107", "target_area": "HOENN_ROUTE_107", "condition": "has_item:HM_SURF"},
-        {"text": "Boat to Slateport", "door": "harbor", "target_area": "SLATEPORT_CITY", "condition": ["has_knuckle_badge", "met_steven"]},
+        {"text": "Boat to Slateport", "door": "harbor", "target_area": "SLATEPORT_CITY", "condition": ["met_steven"]},
         {"text": "Boat to Route 104", "door": "harbor", "target_area": "HOENN_ROUTE_104"}
       ],
       "explore_options": [
@@ -860,7 +860,7 @@
         {"text": "Oceanic Museum", "door": "museum", "target_area": "HOENN_OCEANIC_MUSEUM"},
         {"text": "Route 134", "target_area": "HOENN_ROUTE_134", "condition": "has_item:HM_SURF"},
         {"text": "Boat to Dewford", "door": "harbor", "target_area": "DEWFORD_TOWN", "condition": "has_knuckle_badge"},
-        {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
+        {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "beat_hoenn_champion"},
         {"text": "Southern Island", "door": "harbor", "target_area": "HOENN_SOUTHERN_ISLAND", "item_condition": "EON_TICKET", "message": "The ship sails south across the sea to Southern Island."}
       ],
       "explore_options": [
@@ -897,13 +897,13 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "mauville_center.png", "pokemart": "mauville_mart.png", "gym": "mauville_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "guitarist.png", "team": [309], "rewards": {"balls": 2}}], "leader": {"name": "Wattson", "class": "GYM_LEADER", "sprite": "wattson.png", "team": [81, 100, 82], "levels": [19, 19, 21], "badge_reward": "DYNAMO", "rewards": {"balls": 5, "DEVON_SCOPE": 1, "TM048": 1}, "dialogue": {"intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."], "player_won": ["Shocking performance!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_dynamo_earned", "movesets": {"81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "100": ["ROLLOUT", "SPARK", "SONICBOOM", "SELF-DESTRUCT"], "82": ["SHOCK-WAVE", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"]}}, "requirements": {"badges": 2, "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"], "flags": ["defeated_wally_mauville"]}},
+      "gym": {"trainers": [{"name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "guitarist.png", "team": [309], "rewards": {"balls": 2}}], "leader": {"name": "Wattson", "class": "GYM_LEADER", "sprite": "wattson.png", "team": [81, 100, 82], "levels": [19, 19, 21], "badge_reward": "DYNAMO", "rewards": {"balls": 5, "TM048": 1}, "dialogue": {"intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."], "player_won": ["Shocking performance!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_dynamo_earned", "movesets": {"81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "100": ["ROLLOUT", "SPARK", "SONICBOOM", "SELF-DESTRUCT"], "82": ["SHOCK-WAVE", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"]}}, "requirements": {"badges": 2, "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"], "flags": ["defeated_wally_mauville"]}},
       "travel_options": [
         {"text": "Route 110", "target_area": "HOENN_ROUTE_110"},
         {"text": "Route 111", "target_area": "HOENN_ROUTE_111", "condition": "has_item:HM_ROCK_SMASH"},
         {"text": "Route 117", "target_area": "HOENN_ROUTE_117"},
         {"text": "Route 118", "target_area": "HOENN_ROUTE_118"},
-        {"text": "New Mauville", "target_area": "HOENN_NEW_MAUVILLE"}
+        {"text": "New Mauville", "target_area": "HOENN_NEW_MAUVILLE", "condition": "wattson_new_mauville_asked", "message": "The door's locked. Wattson keeps the key to New Mauville."}
       ],
       "explore_options": [{"text": "Man in a Suit", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_lopunnite", "event": {"lines": ["Man in a suit: A Mega Stone for a Trainer with style. Take it!", "You found the LOPUNNITE!"], "gift_item": {"LOPUNNITE": 1}, "flag": "got_lopunnite"}}, 
         { "text": "Heal", "action": "HEAL" },
@@ -1011,7 +1011,7 @@
       "travel_options": [
         { "text": "Route 121", "target_area": "HOENN_ROUTE_121" },
         { "text": "Route 124", "target_area": "HOENN_ROUTE_124", "condition": "has_item:HM_SURF" },
-            {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
+            {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "beat_hoenn_champion"},
             {"text": "Ferry to Navel Rock", "door": "harbor", "target_area": "NAVEL_ROCK", "item_condition": "MYSTIC_TICKET", "message": "The ferry sails far out to sea, to a rocky island: Navel Rock."},
             {"text": "Ferry to Birth Island", "door": "harbor", "target_area": "BIRTH_ISLAND", "item_condition": "AURORA_TICKET", "message": "The ferry sails far out to sea, to a bare little island: Birth Island."}
         ],
@@ -1025,7 +1025,7 @@
         {"text": "Memory Girl", "action": "EVENT", "color": "PINK", "event": {"lines": [], "memory": true}},
         {"text": "Ferry clerk", "door": "harbor", "action": "EVENT", "color": "GOLD", "condition": "beat_hoenn_champion", "flag_condition": "not got_island_tickets", "event": {"lines": ["Clerk: Ah, the new Champion! Two tickets came here addressed to you.", "Clerk: The Mystic Ticket and the Aurora Ticket... They're for ferries to islands far out at sea. Nobody knows who sent them."], "gift_item": {"MYSTIC_TICKET": 1, "AURORA_TICKET": 1}, "flag": "got_island_tickets"}},
         {"text": "Ferry to Slateport", "door": "harbor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: The ferry to Slateport is ready to sail. All aboard!"], "travel": "SLATEPORT_CITY"}},
-        {"text": "TEAM HIDEOUT", "action": "EXIT", "target_area": "HOENN_TEAM_HIDEOUT", "condition": ["can_exit", "hoenn_rival_lilycove"], "color": "RED"}
+        {"text": "TEAM HIDEOUT", "action": "EXIT", "target_area": "HOENN_TEAM_HIDEOUT", "condition": ["can_exit", "hoenn_rival_lilycove", "slateport_sub_stolen"], "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_121",
       "on_enter_event": null,
@@ -1043,7 +1043,7 @@
         {"text": "Route 124", "target_area": "HOENN_ROUTE_124"},
         {"text": "Route 125", "target_area": "HOENN_ROUTE_125"},
         {"text": "Space Center", "target_area": "HOENN_SPACE_CENTER"},
-        {"text": "Soaring in the Sky", "target_area": "HOENN_SOARING_IN_THE_SKY", "condition": "got_mega_bracelet"},
+        {"text": "Soaring in the Sky", "target_area": "HOENN_SOARING_IN_THE_SKY", "condition": "has_item:EON_FLUTE"},
         {"text": "Route 127", "target_area": "HOENN_ROUTE_127", "condition": "has_item:HM_SURF"}
       ],
       "explore_options": [{"text": "Steven's House", "door": "steven", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_metagrossite", "event": {"lines": ["Steven left a stone on his table, with a note: \"For you, my friend.\"", "You found the METAGROSSITE!"], "gift_item": {"METAGROSSITE": 1}, "flag": "got_metagrossite"}}, 
@@ -1070,7 +1070,8 @@
       "explore_options": [{"text": "A Glinting Stone: Sablenite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_sablenite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SABLENITE!"], "gift_item": {"SABLENITE": 1}, "flag": "got_sablenite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" }
+        { "text": "Gym", "action": "GYM" },
+        {"text": "Steven", "action": "EVENT", "condition": "cave_of_origin_cleared", "flag_condition": "not got_eon_flute_hoenn", "event": {"lines": ["Steven: It's over. Hoenn is safe, thanks to you.", "Steven: Your {eon} has been waiting to fly with you. This flute calls it down from the sky.", "Play the Eon Flute outside and {eon} will fly you high over Hoenn!"], "gift_item": {"EON_FLUTE": 1}, "flag": "got_eon_flute_hoenn"}}
       ],
       "next_area": "HOENN_CAVE_OF_ORIGIN",
       "on_enter_event": null
@@ -1628,7 +1629,7 @@
         {"text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED"},
         {"text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": ["can_exit", "mt_chimney_boss_defeated"], "color": "RED"},
         {"text": "JAGGED PASS", "action": "TRAVEL", "target_area": "HOENN_JAGGED_PASS", "condition": ["can_exit", "mt_chimney_boss_defeated"], "color": "GREEN"},
-        {"text": "FIERY PATH", "action": "EXIT", "target_area": "HOENN_FIERY_PATH", "condition": ["can_exit", "has_item:HM_STRENGTH"], "color": "RED"}
+        {"text": "FIERY PATH", "action": "EXIT", "target_area": "HOENN_FIERY_PATH", "condition": ["can_exit"], "color": "RED"}
       ],
       "next_area": "LAVARIDGE_TOWN",
       "region": "HOENN",
@@ -2156,7 +2157,7 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_EON_TICKET", "color": "PURPLE"},
         {"text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "ROUTE 126", "action": "EXIT", "target_area": "HOENN_ROUTE_126", "condition": ["can_exit", "has_item:HM_DIVE"], "color": "RED"},
+        {"text": "ROUTE 126", "action": "EXIT", "target_area": "HOENN_ROUTE_126", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
         {"text": "LILYCOVE CITY", "action": "EXIT", "target": "LILYCOVE_CITY", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
         {"text": "ROUTE 125", "action": "EXIT", "target": "HOENN_ROUTE_125", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
       ],

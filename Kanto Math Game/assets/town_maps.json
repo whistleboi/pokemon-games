@@ -131383,7 +131383,7 @@
    "ccccccccccccccc.....c..cooooccccccoooooccccAccc.......cccccc",
    "ccccccccccc........cc..coooocccCccoooooccccDcccc..c...cccccc",
    "ccccccccccc.....c..c...cooo...cDc..ooooccc........cccccccccc",
-   "ccccccccccc....cc......cooo........ooooccc...........ccccccc",
+   "ccccccccccc....cc......cooo........ooooccc..N........ccccccc",
    "ccccccccKc....cc......ccooo......!.oooocccc..ccc.Ncccccccccc",
    "ccccccccDc....ccccc..ccoooo.....N..oooocccc..ccc..cMcccccccc",
    "ccccccc.......ccccc....oooo........oooocccc..ccc..cDcccccccc",
@@ -131469,6 +131469,7 @@
      ]
     }
    },
+   "Steven",
    {
     "text": "Star gazer",
     "action": "EVENT",

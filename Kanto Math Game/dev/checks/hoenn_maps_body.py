@@ -3074,5 +3074,44 @@ story.story_flags.clear(); story.story_flags.update(_f5)
 story.badges.clear(); story.badges.update(_b5)
 story.inventory.clear(); story.inventory.update(_i5)
 
+# H5 gates (11-23, Jordan #8-14): ORAS's gates in our data
+def _opt(area, lst, pred):
+    return next((o for o in (_area[area].get(lst) or []) if isinstance(o, dict) and pred(o)), {})
+
+
+_tidal = [_opt(k, "travel_options", lambda o: o.get("target_area") == "HOENN_SS_TIDAL").get("condition") for k in ("SLATEPORT_CITY", "LILYCOVE_CITY")]
+check(_tidal == ["beat_hoenn_champion"] * 2, f"the S.S. Tidal sails only after the Champion (Emerald; #8) ({_tidal})")
+_nm = _opt("MAUVILLE_CITY", "travel_options", lambda o: o.get("target_area") == "HOENN_NEW_MAUVILLE")
+check(_nm.get("condition") == "wattson_new_mauville_asked", "New Mauville's door opens only after Wattson's request (#9)")
+_w = (_area["MAUVILLE_CITY"].get("gym") or {}).get("leader") or {}
+check("DEVON_SCOPE" not in (_w.get("rewards") or {}), "Wattson gives no Devon Scope: Steven on Route 120 does (#10)")
+_br = _opt("DEWFORD_TOWN", "travel_options", lambda o: o.get("text") == "Boat to Slateport")
+check(_br.get("condition") == ["met_steven"], "Briney sails to Slateport once the Letter is delivered, no Knuckle Badge (#14)")
+_fp = _opt("HOENN_ROUTE_112", "route_menu", lambda o: o.get("text") == "FIERY PATH")
+check(_fp.get("condition") == ["can_exit"], "the Fiery Path's main tunnel is open (Strength only for the side boulders; #14)")
+_r126 = _opt("HOENN_ROUTE_124", "route_menu", lambda o: o.get("text") == "ROUTE 126")
+check(_r126.get("condition") == ["can_exit", "has_item:HM_SURF"], "Route 124 to Route 126 by Surf (#14)")
+_hid = _opt("LILYCOVE_CITY", "explore_options", lambda o: o.get("text") == "TEAM HIDEOUT")
+check("slateport_sub_stolen" in (_hid.get("condition") or []), "the Lilycove hideout waits for Slateport's stolen sub (#12)")
+from src.world import soaring3d as _s3d5
+_fx = {"got_mega_bracelet": True}
+class _S5:
+    pass
+_st5 = _S5(); _st5.inventory = {}; _st5.story_flags = dict(_fx)
+_st5.store_regions = lambda: None
+_early = _s3d5.give_flute(_st5)
+_st5.story_flags["cave_of_origin_cleared"] = True
+_late = _s3d5.give_flute(_st5)
+check(not _early and _late, "the Eon Flute waits for the Cave of Origin (ORAS's timing; #11)")
+_f5b, _i5b = dict(story.story_flags), dict(story.inventory)
+story.inventory.pop("EON_FLUTE", None); story.story_flags.pop("got_eon_flute_hoenn", None)
+story.story_flags["cave_of_origin_cleared"] = True
+st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
+st.scenes.entered = True
+said = _press(st, (44, 34), (0, -1))
+check(story.inventory.get("EON_FLUTE", 0) == 1, f"Sootopolis: after the Cave of Origin Steven gives the Eon Flute ({said[:1]})")
+story.story_flags.clear(); story.story_flags.update(_f5b)
+story.inventory.clear(); story.inventory.update(_i5b)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
