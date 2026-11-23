@@ -564,6 +564,52 @@ def flood(st, through=False, blocked=()):
     return prev
 
 
+# ---------------------------------------------------------------- parts of a place, learned as the run walks (11-23)
+# A place can be split into parts that join only through other places (Orange: Route 56's south half reaches its north
+# half, and Route 67, only across Fairchild Island; Route 72's north bay opens only on Pummelo). The planner below works
+# area by area, so it can't tell those halves apart. A part = the tiles you can reach from where you stand (flood), named
+# by its first tile; every move that takes you from one part to another is written down (PART_EDGE), so later the run
+# can go round the way it already knows (part_way): used only where the area-by-area planner has no way on.
+PART_EDGE = collections.defaultdict(dict)   # part -> {tile you went to: the part it took you to}
+PART_TRIED = collections.Counter()           # (part, tile): times part_way sent the run that way (2 at most: a trainer or a
+                                             #  story bar can split a part differently from the time it was walked)
+
+
+def part_of(st):
+    """(area, room / floor, first tile) of the part of this map you stand in, or None off a map."""
+    if not is_map(st):
+        return None
+    try:
+        reach = flood(st)
+    except Exception:
+        return None
+    L = loc()
+    tiles = [t for t in reach if isinstance(t, tuple) and len(t) == 2 and all(isinstance(v, int) for v in t)]
+    return (L[0], L[1], min(tiles)) if tiles else None
+
+
+def part_way(st, area):
+    """The tile to head for, here, on a way the run has walked before from this part to `area` (None if none known)."""
+    p0 = part_of(st)
+    if p0 is None:
+        return None
+    prev, q = {p0: None}, deque([p0])
+    while q:
+        p = q.popleft()
+        if p[0] == area and p != p0:
+            while prev[p] is not None and prev[p][0] != p0:
+                p = prev[p][0]
+            if prev[p] is None:
+                return None
+            PART_TRIED[(p0, prev[p][1])] += 1
+            return prev[p][1]
+        for tile, nxt in PART_EDGE.get(p, {}).items():
+            if nxt not in prev and (p != p0 or PART_TRIED[(p0, tile)] < 2):
+                prev[nxt] = (p, tile)
+                q.append(nxt)
+    return None
+
+
 def _counter(st, t):
     if is_town(st):
         return bool(getattr(st, "room", None)) and 0 <= t[1] < st.h and 0 <= t[0] < st.w and st.grid[t[1]][t[0]] == "m"
@@ -1130,6 +1176,9 @@ def step_to_next(st, m, here_a, nxt, area, kind="words", label=None):
             out(f"  .... the way from {here_a} to {nxt} is shut: {why[:140]}")
         return row
     if other and not outs and not (last and not is_dun(st)):   # (no way to that way out from this part of the place: round by another area)
+        known = part_way(st, area) or part_way(st, nxt)   # (to the place itself, else on to the next place on the way)
+        if known is not None and (_nearest(st, [known], prev) or _nearest(st, [known], prev2)):   # (a way round walked before)
+            return do(kind, known, f"{tag} (no way to {nxt} from this side: round by the way walked before)", label)
         _, key, tile, words = min(other)
         row = do(kind, tile, f"{tag} (no way to {nxt} from this side: round by) {words}", label)
         TRIED[(L, key)] += 1
@@ -1170,7 +1219,8 @@ def head_for(st, m, area):
     for _ in range(6):
         path = map_path(here_a, area)
         if not path or len(path) < 2:
-            return None
+            known = part_way(st, area)   # (no way over the maps' areas: a way the run walked before, part to part)
+            return do("words", known, f"toward {area}: the way walked before") if known is not None else None
         row = step_to_next(st, m, here_a, path[1], area)
         if row is not None:
             return row
@@ -1185,8 +1235,18 @@ GATES = []   # ways out the game refused while the script was heading somewhere 
 def do(kind, tile, words, label=None):
     m = STATE["mission"]
     a, s0, at0 = snap(), len(said), here()
+    p0 = part_of(g.current_state)
     how, n = go(tile, words)
     b = snap()
+    p1 = part_of(g.current_state)
+    if p0 and p1 and p0[:2] != p1[:2]:   # (a move into another place or room: written down for part_way)
+        PART_EDGE[p0][tuple(tile)] = p1
+        st1 = g.current_state   # (and the way back: the way out beside where you arrived that leads back there)
+        ex = st1.exits if is_town(st1) else st1.run.floor.exits
+        at = pos(st1)
+        back = [t for t, tg in ex.items() if str(tg) == p0[0] and abs(t[0] - at[0]) + abs(t[1] - at[1]) <= 1]
+        if back and back[0] not in PART_EDGE[p1]:
+            PART_EDGE[p1][back[0]] = p0
     got = gained(a, b)
     heard = [x for x in said[s0:] if not x.startswith("(")][:3]
     row = {"n": len(ROWS) + 1, "mission": m, "kind": kind, "from": at0, "to": list(tile), "label": label, "what": words, "how": how,
