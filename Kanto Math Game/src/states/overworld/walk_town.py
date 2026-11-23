@@ -34,7 +34,6 @@ LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. C
           "aerodactyl": "AERODACTYL CHAMBER", "hooh": "HO-OH CHAMBER",
           "flower": "FLOWER SHOP", "bill": "BILL'S HOUSE",
           "burned": "BURNED TOWER", "bellchime": "BELLCHIME TRAIL", "theater": "DANCE THEATER", "pharmacy": "PHARMACY", "souvenir": "SOUVENIR SHOP", "leaguegate": "VICTORY ROAD", "dome": "POKEATHLON DOME"}
-_DATA = {}
 
 # Name tags (Jordan, 11-14: "nametags only show overhead for important places and people, it overcrowds the screen"):
 # a building is named when it's a landmark (LABELS) or a story option names it; a person when they do something (heal,
@@ -77,17 +76,6 @@ def held_pointer():
     except pygame.error:
         pass
     return None
-
-
-def data(game):
-    if "all" not in _DATA:
-        path = os.path.join(game.assets.assets_dir or "assets", "walk_towns.json")
-        try:
-            with open(path, encoding="utf-8") as f:
-                _DATA["all"] = json.load(f)
-        except (OSError, ValueError):
-            _DATA["all"] = {}
-    return _DATA["all"]
 
 
 def custom(game):
@@ -166,7 +154,7 @@ def mark_story_arrival(game, key, room=None):
 def available(game, key):
     if not getattr(game, "walk_towns", os.environ.get("SDL_VIDEODRIVER") != "dummy"):
         return False
-    return bool(key) and (key in custom(game) or key in data(game))
+    return bool(key) and key in custom(game)   # (11-23: the Journeys-picture pilot, assets/walk_towns.json, is gone)
 
 
 def option_kind(opt):
@@ -202,6 +190,7 @@ LIVE_SPRITE = 1.5   # (people in the live 3D view: Black 2's 32-pixel characters
 
 
 class WalkTownState(CityState):
+    is_walked = True   # (CityState skips the menu's town picture for it)
     HONEY_PACK = dn.DungeonState.HONEY_PACK
     # (the route map's own drawing: your trainer, the Pokemon following you, townsfolk)
     _sprite = dn.DungeonState._sprite
@@ -248,12 +237,6 @@ class WalkTownState(CityState):
                 if came and came not in (mine.get("exits") or {}).values():
                     self.room = next((n for n, r in (mine.get("rooms") or {}).items() if came in (r.get("exits") or {}).values()), None)
             self._from_art(mine["rooms"][self.room] if self.room else mine)
-        else:  # a Pokemon Journeys town picture (the Kanto pilot)
-            self.walk = data(game)[self.area_key]
-            self.rows = self.walk["rows"]
-            self.w, self.h = self.walk["w"], self.walk["h"]
-            self.map_img = self._map_image()
-            self._place_things()
         self._arrive()
 
     def _from_art(self, m):
@@ -673,15 +656,6 @@ class WalkTownState(CityState):
         self._remember()
 
     # ---------------------------------------------------------------- the map
-    def _map_image(self):
-        cache = self.game.__dict__.setdefault("_walk_town_imgs", {})
-        if self.area_key not in cache:
-            cache.clear()  # (one town at a time)
-            img = pygame.image.load(os.path.join(self.game.assets.assets_dir or "assets", "walk_towns",
-                                                 f"{self.area_key}.png")).convert()
-            cache[self.area_key] = pygame.transform.scale(img, (self.w * TILE, self.h * TILE))
-        return cache[self.area_key]
-
     def _options(self):
         """The town's EXPLORE options shown right now (their conditions met), as the menu would list them."""
         from src.states.overworld.pokecenter import center_entrance, combined_center
@@ -724,59 +698,24 @@ class WalkTownState(CityState):
             return False
         return not opt.get("condition") or self._check_menu_condition(opt["condition"])
 
-    def _place_things(self):
-        """Doors (the buildings' options), the ways out (the edges), and the people standing about."""
-        self.doors = {}  # (x, y) -> kind
-        self.exits = {}  # (x, y) -> area key
-        for d in self.walk.get("doors", []):
-            x, y = d["x"], d["y"]
-            if not (0 <= x < self.w and 0 <= y < self.h):
-                continue
-            side = "north" if y == 0 else "south" if y == self.h - 1 else "west" if x == 0 else \
-                "east" if x == self.w - 1 else None
-            if side and side in self.walk.get("edges", {}):  # (a warp on the edge: the way out that side)
-                self.exits[(x, y)] = self.walk["edges"][side]
-            else:
-                self.doors[(x, y)] = d.get("kind", "house")
-        for side, target in self.walk.get("edges", {}).items():
-            for t in self._edge_tiles(side):
-                self.exits[t] = target
-        # the first home door is yours (Mom's), the first lab Oak's
-        self.people = {}  # (x, y) -> option
-        kinds = set(self.doors.values())
-        loose = [o for o in self.area_data.get("explore_options", []) if option_kind(o) not in kinds]
-        for opt, spot in zip(loose, self._free_spots(len(loose))):
-            self.people[spot] = opt
-        self._npc_init({})
-
-    def _edge_tiles(self, side):
-        cells = {"north": [(x, 0) for x in range(self.w)], "south": [(x, self.h - 1) for x in range(self.w)],
-                 "west": [(0, y) for y in range(self.h)], "east": [(self.w - 1, y) for y in range(self.h)]}[side]
-        return [c for c in cells if self.rows[c[1]][c[0]] == "."]
-
-    def _free_spots(self, n):
-        """n tiles for people to stand on: open ground near the middle, apart, off the paths to doors."""
-        cx, cy = self.w / 2, self.h / 2
-        near_door = {(x + dx, y + dy) for (x, y) in self.doors for dx in (-1, 0, 1) for dy in (0, 1, 2)}
-        ok = [(x, y) for y in range(2, self.h - 2) for x in range(2, self.w - 2)
-              if self.rows[y][x] == "." and (x, y) not in near_door
-              and all(self.rows[y + dy][x + dx] == "." for dx, dy in DIRS)]
-        ok.sort(key=lambda t: (t[0] - cx) ** 2 + (t[1] - cy) ** 2)
-        out = []
-        for t in ok:
-            if len(out) >= n:
-                break
-            if all(abs(t[0] - o[0]) + abs(t[1] - o[1]) >= 4 for o in out):
-                out.append(t)
-        return out
+    def _landings(self):
+        """This map's or room's "landings": tiles you reach only by a scene's ride (Nimbasa's roller coaster platforms,
+        Unova 11-23) or a fall - places you can stand on that need no walk out."""
+        tm = self.town_map if isinstance(getattr(self, "town_map", None), dict) else {}
+        m = (tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm
+        return {tuple(t) for t in ((m or {}).get("landings") or [])}
 
     def _reaches_out(self, start):
-        """True when a way out (an exit or a door) can be walked to from start."""
+        """True when a way out (an exit or a door) can be walked to from start - or one of the room's landings (a platform
+        a ride brought you to: back there after a battle, not at the entrance, Unova 11-23)."""
         seen, todo = {start}, [start]
+        goals = self._landings()
+        if start in goals:
+            return True
         while todo:
             x, y = todo.pop()
             for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
-                if q in self.exits or q in self.doors:
+                if q in self.exits or q in self.doors or q in goals:
                     return True
                 if q not in seen and self._open(q):
                     seen.add(q)
@@ -2055,14 +1994,24 @@ class WalkTownState(CityState):
         return super().start_gym_battle()
 
     def light_radius(self):
-        """A dark room's light, in tiles (None: fully lit): its "radius" list by how many of its "flags" are set."""
+        """A dark room's light, in tiles (None: fully lit): its "radius" list by how many of its "flags" are set. A room
+        with "lit" sections keeps its first radius round you: the sections do the rest (_lit_sections)."""
         d = self.dark or {}
         flags = self.game.story_manager.story_flags
         n = sum(1 for f in d.get("flags", []) if flags.get(f))
         radii = d.get("radius") or [2]
-        return None if n >= len(radii) else radii[n]
+        if n >= len(radii):
+            return None
+        return radii[0] if d.get("lit") else radii[n]
 
-    def _draw_dark(self, screen, view, centre):
+    def _lit_sections(self):
+        """A dark room's sections lit now: its "lit" [[x0, y0, x1, y1, flag or null], ...] whose flag is set (or none) - Black 2's
+        Nimbasa Gym, a new part of the catwalk lit as you reach each trainer (gym_elec.c; Unova 11-23)."""
+        flags = self.game.story_manager.story_flags
+        return [tuple(int(v) for v in sec[:4]) for sec in ((self.dark or {}).get("lit") or [])
+                if len(sec) >= 4 and (len(sec) < 5 or not sec[4] or flags.get(sec[4]))]
+
+    def _draw_dark(self, screen, view, centre, at=None):
         r = self.light_radius()
         if r is None:
             return
@@ -2072,6 +2021,15 @@ class WalkTownState(CityState):
         rad = int(r * TILE)
         for i in range(6):  # (a soft edge)
             pygame.draw.circle(veil, (0, 0, 0, 250 - 40 * (i + 1)), (cx, cy), max(1, rad - i * TILE // 8))
+        if at is not None:   # (lit sections: each a rectangle of tiles cut out of the veil, soft-edged like the circle)
+            for x0, y0, x1, y1 in self._lit_sections():
+                a, b = at((min(x0, x1), min(y0, y1))), at((max(x0, x1), max(y0, y1)))
+                box = pygame.Rect(a.x - view.x, a.y - view.y, b.right - a.x, b.bottom - a.y)
+                cut = pygame.Surface(view.size, pygame.SRCALPHA)
+                cut.fill((0, 0, 0, 250))
+                for i in range(6):
+                    pygame.draw.rect(cut, (0, 0, 0, 250 - 40 * (i + 1)), box.inflate(TILE // 2 - i * TILE // 8, TILE // 2 - i * TILE // 8))
+                veil.blit(cut, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)   # (the darker of the two never wins: either light shows)
         screen.blit(veil, view.topleft)
 
     def _draw_story_weather(self, screen, view):
@@ -2619,7 +2577,7 @@ class WalkTownState(CityState):
         if getattr(self, "turnstiles", None):
             self._draw_gates(screen, *self._origin())
         if getattr(self, "dark", None):
-            self._draw_dark(screen, view, centre)
+            self._draw_dark(screen, view, centre, at)
         if self.room is None:
             self._draw_story_weather(screen, view)
         if not self._busy():
