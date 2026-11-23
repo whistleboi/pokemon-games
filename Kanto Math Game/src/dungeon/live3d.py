@@ -617,16 +617,18 @@ def scene(game, zone):
 def scene_of(game, pic, at=None, screen=False):
     """The live scene behind a map's baked picture (its roofs "_picture": "f", "at"; "_screen": its grid was moved), or None: Black 2's
     "b2_ground/<zone number>.png" -> assets/b2_3d, SoulSilver's "ss_ground/<ZONE>.png" -> assets/ss_3d (11-21:
-    kanto_handoff/johto_map_tools/jexport3d.py), moved by the map's crop of its zone ("at")."""
+    kanto_handoff/johto_map_tools/jexport3d.py), Platinum's "pt_ground/<ZONE>.png" -> assets/pt_3d (11-23:
+    kanto_handoff/sinnoh_map_tools/pexport3d.py, the same format), moved by the map's crop of its zone ("at")."""
     pic = str(pic or "")
     name = os.path.splitext(os.path.basename(pic))[0]
     if pic.startswith("b2_ground/") and name.isdigit():
         return scene(game, int(name)) if has_scene(game, int(name)) else None
-    if pic.startswith("ss_ground/") and name:
+    if pic.startswith(("ss_ground/", "pt_ground/")) and name:
         at = "grid" if screen else (int(at[0]), int(at[1])) if at else (0, 0)   # (screen: a room whose grid was moved, Scene.wz)
-        key = ("ss", name, at)
+        kind = pic[:2]   # ("ss" SoulSilver, "pt" Platinum: the same DS format)
+        key = (kind, name, at)
         if key not in _SCENES:
-            path = os.path.join(game.assets.assets_dir or "assets", "ss_3d", name + ".npz")
+            path = os.path.join(game.assets.assets_dir or "assets", kind + "_3d", name + ".npz")
             try:
                 _SCENES[key] = Scene(path, at) if os.path.exists(path) else None
             except KeyError:   # (exported before its room's grid was known)

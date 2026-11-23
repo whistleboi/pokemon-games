@@ -40,7 +40,7 @@ class RouteLive:
         from src.core import settings as _settings
         if getattr(self.game, "live3d", True) is False or not _settings.get(self.game.story_manager, "live3d"):
             return None
-        if not pic.startswith(("b2_ground/", "ss_ground/")):
+        if not pic.startswith(("b2_ground/", "ss_ground/", "pt_ground/")):   # (pt: Platinum, 11-23)
             return None
         try:   # (any trouble with the card or its libraries: the flat picture, never a crash)
             from src.dungeon import live3d
