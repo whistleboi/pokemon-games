@@ -483,7 +483,6 @@
             "area_type": "town",
             "route_name": "New Bark Town",
             "region": "JOHTO",
-            "backgrounds": {"main": "new_bark_town.png", "lab": "new_bark_lab.png", "mom": "new_bark_mom.png"},
             "has_gym": false,
             "travel_options": [
                 {"text": "Route 27", "target_area": "KANTO_ROUTE_27", "condition": "has_8_johto_badges"},
@@ -513,7 +512,6 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "cherrygrove_city.png"},
 
             "travel_options": [
 
@@ -563,7 +561,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "violet_city.png", "gym": "violet_city_gym.png", "battle": "battle_gym_violet.png"},
+            "backgrounds": {"gym": "violet_city_gym.png", "battle": "battle_gym_violet.png"},
 
             "next_area": "JOHTO_ROUTE_31",
 
@@ -577,9 +575,8 @@
 
                 {"text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge"},
 
-                {"text": "Route 36", "target_area": "JOHTO_ROUTE_36"},
+                {"text": "Route 36", "target_area": "JOHTO_ROUTE_36"}
 
-                {"text": "Ruins of Alph", "target_area": "RUINS_OF_ALPH", "condition": "visited_RUINS_OF_ALPH"}
 
             ],
 
@@ -647,7 +644,6 @@
 
             "battle_type": "cave",
 
-            "backgrounds": {"main": "ruins_of_alph.png", "lab": "ruins_lab.png"},
 
             "route_menu": [
 
@@ -667,7 +663,6 @@
 
                 {"text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge"},
 
-                {"text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_RUINS_OF_ALPH"},
 
                 {"text": "Union Cave", "target_area": "UNION_CAVE", "condition": "has_zephyr_badge"},
 
@@ -719,7 +714,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "azalea_town.png", "gym": "azalea_gym.png", "battle": "battle_gym_azalea.png"},
+            "backgrounds": {"gym": "azalea_gym.png", "battle": "battle_gym_azalea.png"},
 
             "has_gym": true,
 
@@ -765,7 +760,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "goldenrod_city.png", "gym": "battle_gym_goldenrod.png"},
+            "backgrounds": {"gym": "battle_gym_goldenrod.png"},
 
             "has_gym": true,
 
@@ -935,7 +930,7 @@
 
             "wild_pool_percentages": "JOHTO_BUG_CONTEST_PERCENTAGES",
 
-            "backgrounds": {"main": "national_park.png", "battle": "national_park.png"},
+            "backgrounds": {"battle": "national_park.png"},
 
             "trainer_encounter_rate": 0,
 
@@ -980,7 +975,7 @@
             "wild_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
             "day_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
             "night_pool_percentages": "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES",
-            "backgrounds": {"main": "national_park.png", "battle": "national_park.png"},
+            "backgrounds": {"battle": "national_park.png"},
             "has_gym": false,
             "min_rounds": 0,
             "trainer_pool": [
@@ -1013,7 +1008,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "ecruteak_city.png", "gym": "battle_gym_ecruteak.png"},
+            "backgrounds": {"gym": "battle_gym_ecruteak.png"},
 
             "has_gym": true,
 
@@ -1073,7 +1068,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "olivine_city.png", "gym": "battle_gym_olivine.png"},
+            "backgrounds": {"gym": "battle_gym_olivine.png"},
 
             "has_gym": true,
 
@@ -1141,7 +1136,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "cianwood_city.png", "gym": "battle_gym_cianwood.png"},
+            "backgrounds": {"gym": "battle_gym_cianwood.png"},
 
             "has_gym": true,
 
@@ -1201,7 +1196,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "mahogany_town.png", "gym": "battle_gym_mahogany.png"},
+            "backgrounds": {"gym": "battle_gym_mahogany.png"},
 
             "has_gym": true,
 
@@ -1251,7 +1246,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "blackthorn_city.png", "gym": "battle_gym_blackthorn.png"},
+            "backgrounds": {"gym": "battle_gym_blackthorn.png"},
 
             "has_gym": true,
 
@@ -1375,7 +1370,6 @@
 
             "fly_island": true,
 
-            "backgrounds": {"main": "silver_entrance.png"},
 
             "wild_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES",
 
@@ -1419,7 +1413,6 @@
 
             "route_name": "Mr. Pokemon's House",
 
-            "backgrounds": {"main": "mr_pokemon_house.png"},
 
             "travel_options": [
 
@@ -1500,7 +1493,6 @@
             "area_type": "town",
             "region": "JOHTO",
             "route_name": "Glitter Lighthouse",
-            "backgrounds": {"main": "lighthouse_top.png"},
             "travel_options": [
                 {"text": "Olivine City", "target_area": "OLIVINE_CITY", "condition": {"any": ["jasmine_explained", "ampharos_cured"]}},
                 {"text": "Stairs Down", "target_area": "OLIVINE_LIGHTHOUSE_FLOORS"}
@@ -1518,12 +1510,11 @@
             "region": "JOHTO",
             "route_name": "Silver League",
             "backgrounds": {
-                "main": "silver_entrance.png", 
                 "gym": ["battle_elite_will.png", "battle_elite_koga_johto.png", "battle_elite_bruno_johto.png", "battle_elite_karen.png", "battle_champion_johto.png"]
             },
             "has_gym": true,
             "gym": {"trainers": [{"sprite": "will.png", "name": "Will", "class": "ELITE_FOUR", "team": [178, 124, 103, 80, 178], "levels": [40, 41, 41, 41, 42], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62], "movesets": {"437": ["GRAVITY", "REFLECT", "PAYBACK", "PSYCHIC"], "124": ["FAKE-TEARS", "LOVELY-KISS", "DREAM-EATER", "BLIZZARD"], "326": ["CONFUSE-RAY", "SIGNAL-BEAM", "POWER-GEM", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "BODY-SLAM", "PSYCHIC"], "282": ["CALM-MIND", "CHARGE-BEAM", "FOCUS-BLAST", "PSYCHIC"], "178": ["CONFUSE-RAY", "QUICK-ATTACK", "SHADOW-BALL", "PSYCHIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"178": ["U-TURN", "ME-FIRST", "CONFUSE-RAY", "PSYCHIC"], "124": ["LOVELY-KISS", "DOUBLE-SLAP", "ICE-PUNCH", "PSYCHIC"], "103": ["REFLECT", "HYPNOSIS", "EGG-BOMB", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "WATER-PULSE", "PSYCHIC"]}}, {"sprite": "koga_johto.png", "name": "Koga", "class": "ELITE_FOUR", "team": [168, 49, 89, 205, 169], "levels": [40, 41, 42, 43, 44], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64], "movesets": {"435": ["TOXIC", "DIG", "SUCKER-PUNCH", "EXPLOSION"], "454": ["SWAGGER", "X-SCISSOR", "CROSS-CHOP", "GUNK-SHOT"], "317": ["SLUDGE-BOMB", "AMNESIA", "PAIN-SPLIT", "YAWN"], "49": ["BATON-PASS", "DOUBLE-TEAM", "SILVER-WIND", "PSYCHIC"], "89": ["MINIMIZE", "SCREECH", "SWAGGER", "TOXIC"], "169": ["FLY", "CROSS-POISON", "MEAN-LOOK", "TOXIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"168": ["SPIDER-WEB", "BATON-PASS", "GIGA-DRAIN", "POISON-JAB"], "49": ["PSYCHIC", "GUST", "SUPERSONIC", "TOXIC"], "89": ["GUNK-SHOT", "MINIMIZE", "SCREECH", "TOXIC"], "205": ["SWIFT", "EXPLOSION", "PROTECT", "TOXIC-SPIKES"], "169": ["QUICK-ATTACK", "WING-ATTACK", "DOUBLE-TEAM", "POISON-FANG"]}}, {"sprite": "bruno.png", "name": "Bruno", "class": "ELITE_FOUR", "team": [237, 106, 107, 95, 68], "levels": [42, 42, 42, 43, 46], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61], "movesets": {"237": ["CLOSE-COMBAT", "EARTHQUAKE", "COUNTER", "QUICK-ATTACK"], "106": ["CLOSE-COMBAT", "BLAZE-KICK", "REVERSAL", "SWAGGER"], "297": ["BULK-UP", "LOW-KICK", "PAYBACK", "BULLET-PUNCH"], "68": ["DYNAMIC-PUNCH", "STONE-EDGE", "BULLET-PUNCH", "FORESIGHT"], "448": ["CLOSE-COMBAT", "IRON-TAIL", "COUNTER", "EXTREME-SPEED"], "107": ["CLOSE-COMBAT", "DRAIN-PUNCH", "BULLET-PUNCH", "SUBSTITUTE"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"237": ["DIG", "COUNTER", "TRIPLE-KICK", "QUICK-ATTACK"], "106": ["HIGH-JUMP-KICK", "BLAZE-KICK", "FOCUS-ENERGY", "SWAGGER"], "107": ["THUNDER-PUNCH", "ICE-PUNCH", "FIRE-PUNCH", "BULLET-PUNCH"], "95": ["SANDSTORM", "DRAGONBREATH", "ROCK-SLIDE", "EARTHQUAKE"], "68": ["REVENGE", "CROSS-CHOP", "ROCK-SLIDE", "FORESIGHT"]}}, {"sprite": "karen.png", "name": "Karen", "class": "ELITE_FOUR", "team": [197, 45, 198, 94, 229], "levels": [42, 42, 44, 45, 47], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63], "movesets": {"461": ["ICE-PUNCH", "NIGHT-SLASH", "LOW-KICK", "ICE-SHARD"], "442": ["CURSE", "CONFUSE-RAY", "PAIN-SPLIT", "SUCKER-PUNCH"], "430": ["THUNDER-WAVE", "WHIRLWIND", "DRILL-PECK", "SUCKER-PUNCH"], "197": ["CONFUSE-RAY", "CURSE", "PAYBACK", "SUCKER-PUNCH"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "SLUDGE-BOMB"], "359": ["DETECT", "PERISH-SONG", "NIGHT-SLASH", "PSYCHO-CUT"]}}, "rewards": {"balls": 15}, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true, "movesets": {"197": ["DOUBLE-TEAM", "CONFUSE-RAY", "FEINT-ATTACK", "PAYBACK"], "45": ["STUN-SPORE", "PETAL-DANCE", "ACID", "MOONLIGHT"], "198": ["SUCKER-PUNCH", "FEINT-ATTACK", "PLUCK", "WHIRLWIND"], "94": ["FOCUS-BLAST", "DESTINY-BOND", "SPITE", "LICK"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "CRUNCH"]}}], "leader": {"sprite": "lance.png", "name": "Lance", "class": "CHAMPION", "team": [130, 149, 149, 142, 6, 149], "levels": [44, 49, 49, 48, 48, 50], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68], "movesets": {"373": ["DRAGON-CLAW", "FLAMETHROWER", "SHADOW-CLAW", "REST"], "445": ["OUTRAGE", "SWORDS-DANCE", "EARTHQUAKE", "ROAR"], "149": ["DRACO-METEOR", "SAFEGUARD", "FIRE-BLAST", "HYPER-BEAM"], "6": ["FLAMETHROWER", "HYPER-BEAM", "DRAGON-CLAW", "AIR-SLASH"], "334": ["DOUBLE-TEAM", "DRAGONBREATH", "PERISH-SONG", "HYPER-BEAM"], "130": ["DRAGON-DANCE", "WATERFALL", "ICE-FANG", "THUNDER-WAVE"]}}, "is_boss_battle": true, "rewards": {"balls": 25, "MASTER_BALL": 1}, "victory_flag": "beat_johto_champion", "movesets": {"130": ["WATERFALL", "DRAGON-PULSE", "ICE-FANG", "FLAIL"], "149": ["DRAGON-RUSH", "THUNDER-WAVE", "THUNDER", "HYPER-BEAM"], "142": ["ROCK-SLIDE", "AERIAL-ACE", "CRUNCH", "THUNDER-FANG"], "6": ["AIR-SLASH", "FIRE-FANG", "DRAGON-CLAW", "SHADOW-CLAW"]}}},
-            "travel_options": [{"text": "Mt. Silver City", "target_area": "MT_SILVER_CITY"}, {"text": "Reception Gate", "target_area": "POKEMON_LEAGUE_GATE"}],
+            "travel_options": [],
             "explore_options": [
                 { "text": "Heal", "action": "HEAL" },
                 { "text": "Shop", "action": "SHOP" },
@@ -4016,7 +4007,7 @@
 
             "min_rounds": 0,
 
-            "backgrounds": {"main": "ecruteak_dance_theater.png", "battle": "battle_ecruteak_dance.png"},
+            "backgrounds": {"battle": "battle_ecruteak_dance.png"},
 
             "route_menu": [
 
