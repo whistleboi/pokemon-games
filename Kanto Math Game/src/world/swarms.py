@@ -22,7 +22,14 @@ SWARMS = {
     "JOHTO": {"DARK_CAVE": 206, "JOHTO_ROUTE_32": ("fish", 211), "JOHTO_ROUTE_34": 280, "JOHTO_ROUTE_35": 193, "JOHTO_ROUTE_38": 209,
               "JOHTO_ROUTE_44": ("fish", 223), "JOHTO_ROUTE_45": 333, "JOHTO_ROUTE_47": 132, "MT_MORTAR": 183,
               "KANTO_ROUTE_27": ("surf", 370), "VIOLET_CITY": ("fish", 340)},
+    # Kanto (11-23, Jordan: SoulSilver's 9 Kanto swarms, "from the start"): read from the SoulSilver file's swarm slots
+    # (johto_map_tools jcanon_rom.wild: R01 R03 R09 R12 R13 W19 R25 D46 = Viridian Forest, T06 = Vermilion). The Gen 1
+    # lock still holds: a swarm of a region not played yet doesn't come out (adjust).
+    "KANTO": {"KANTO_ROUTE_1": 261, "KANTO_ROUTE_3": 316, "KANTO_ROUTE_9": 303, "KANTO_ROUTE_12": ("fish", 369),
+              "KANTO_ROUTE_13": 113, "KANTO_ROUTE_19": ("surf", 366), "KANTO_ROUTE_25": 427, "VIRIDIAN_FOREST": 401,
+              "VERMILLION_CITY": ("surf", 278)},
 }
+FROM_START = {"KANTO"}   # (regions whose swarms don't wait for the National Pokedex: Jordan 11-23 for Kanto)
 PLACE = {"VALLEY_WINDWORKS": "the Valley Windworks", "ETERNA_FOREST": "Eterna Forest"}
 SHARE = 0.4   # (Platinum: the swarm takes the grass table's two 20% slots)
 
@@ -38,7 +45,7 @@ def place_name(area):
 def today(story, region, day=None):
     """(area, species) of today's swarm in this region, or None (no table, or no National Pokedex yet)."""
     table = SWARMS.get(str(region or "").upper())
-    if not table or not story.story_flags.get("unlocked_national_dex"):
+    if not table or (str(region or "").upper() not in FROM_START and not story.story_flags.get("unlocked_national_dex")):
         return None
     day = day or datetime.date.today().isoformat()
     area = random.Random(f"swarm@{str(region).upper()}@{day}").choice(sorted(table))
@@ -62,6 +69,9 @@ def adjust(game, pool, area_key, kind="grass"):
     sw = today(story, region)
     k = kind_today(story, region)
     if not sw or sw[0] != area_key or not pool or not (k == kind or (k == "fish" and str(kind).endswith("_rod"))):
+        return pool
+    from src.world import regional_forms
+    if not regional_forms.species_allowed(game, int(sw[1])):   # (Kanto's lock: no Pokemon of a region not played yet, swarm or not)
         return pool
     pool = dict(pool)
     sp = str(sw[1])
