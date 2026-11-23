@@ -625,7 +625,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Mysterious Sisters Elle & Aya",
@@ -642,7 +645,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Hex Maniac Tasha",
@@ -1190,7 +1196,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     { "rematch": {"source": "Emerald", "tiers": [{"team": [300], "levels": [29]}, {"team": [300], "levels": [32]}, {"team": [301], "levels": [35]}, {"team": [301], "levels": [38]}], "needs": {"badges": 5}},
      "name": "Poké Fan Miguel",
@@ -1325,7 +1334,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     }
    ],
    "set_teams": {
@@ -1848,7 +1860,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Fisherman Carter",
@@ -2230,7 +2245,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Camper Travis",
@@ -2962,7 +2980,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Camper Shane",
@@ -3981,7 +4002,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     { "rematch": {"source": "Emerald", "tiers": [{"team": [286], "levels": [31]}, {"team": [286], "levels": [34]}, {"team": [286], "levels": [37]}, {"team": [352, 286], "levels": [39, 39]}], "needs": {"badges": 5}},
      "name": "Pokémon Ranger Jackson",
@@ -4793,7 +4817,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Poké Fan Vanessa",
@@ -5024,20 +5051,19 @@
      "sprite": "twins.png",
      "team": [
       267,
-      269,
-      64,
-      338
+      269
      ],
      "levels": [
       35,
-      35,
-      34,
-      36
+      35
      ],
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Picnicker Martha",
@@ -5181,12 +5207,12 @@
     },
     "Psychic Cameron": {
      "team": [
-      338,
-      65
+      64,
+      338
      ],
      "levels": [
-      40,
-      42
+      34,
+      36
      ]
     }
    },
@@ -5472,7 +5498,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Swimmer ♂ Spencer",
@@ -5653,7 +5682,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Swimmer ♀ Sharon",
@@ -6510,7 +6542,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     }
    ]
   },
@@ -7031,27 +7066,45 @@
       39,
       39
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       322,
+       262
+      ],
+      "ALPHA_SAPPHIRE": [
+       318,
+       262
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     },
     {
      "name": "Team Aqua Grunt",
      "class": "TEAM_AQUA",
      "sprite": "aqua_grunt.png",
      "team": [
-      318,
-      262
+      42
      ],
      "levels": [
-      39,
-      39
+      41
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       42
+      ],
+      "ALPHA_SAPPHIRE": [
+       42
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     }
    ]
   },
@@ -7303,10 +7356,21 @@
       35,
       35
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       109,
+       322
+      ],
+      "ALPHA_SAPPHIRE": [
+       88,
+       318
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     },
     {
      "name": "Team Magma Grunts",
@@ -7336,17 +7400,34 @@
      "class": "TEAM_AQUA",
      "sprite": "aqua_grunt.png",
      "team": [
-      88,
-      318
+      42
      ],
      "levels": [
-      35,
-      35
+      37
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       42
+      ],
+      "ALPHA_SAPPHIRE": [
+       318,
+       88
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "levels_by_version": {
+      "OMEGA_RUBY": [
+       37
+      ],
+      "ALPHA_SAPPHIRE": [
+       35,
+       35
+      ]
+     },
+     "villain": "grunt"
     },
     {
      "name": "Team Aqua Grunts",
@@ -7767,7 +7848,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Expert Theodore",
@@ -7814,7 +7898,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     }
    ],
    "route_menu": [
@@ -7936,27 +8023,55 @@
       29,
       29
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       262,
+       42
+      ],
+      "ALPHA_SAPPHIRE": [
+       262,
+       42
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "levels_by_version": {
+      "OMEGA_RUBY": [
+       29,
+       29
+      ],
+      "ALPHA_SAPPHIRE": [
+       28,
+       28
+      ]
+     },
+     "villain": "grunt"
     },
     {
      "name": "Team Aqua Grunt",
      "class": "TEAM_AQUA",
      "sprite": "aqua_grunt.png",
      "team": [
-      262,
-      42
+      109
      ],
      "levels": [
-      28,
-      28
+      30
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       109
+      ],
+      "ALPHA_SAPPHIRE": [
+       88
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     }
    ],
    "route_menu": [
@@ -8622,6 +8737,230 @@
        "GREAT_BALL": 1
       },
       "flag": "oras_rustboro_city_7"
+     }
+    },
+    {
+     "text": "Team Magma Grunt (Devon 1)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:OMEGA_RUBY"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_1",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_1",
+      "battle": {
+       "name": "Team Magma Grunt",
+       "class": "TEAM_MAGMA",
+       "sprite": "magma_grunt.png",
+       "team": [
+        262,
+        42
+       ],
+       "levels": [
+        48,
+        50
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Aqua Grunt (Devon 1)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_1",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_1",
+      "battle": {
+       "name": "Team Aqua Grunt",
+       "class": "TEAM_AQUA",
+       "sprite": "aqua_grunt.png",
+       "team": [
+        262,
+        42
+       ],
+       "levels": [
+        48,
+        50
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Magma Grunt (Devon 2)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:OMEGA_RUBY"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_2",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_2",
+      "battle": {
+       "name": "Team Magma Grunt",
+       "class": "TEAM_MAGMA",
+       "sprite": "magma_grunt.png",
+       "team": [
+        110
+       ],
+       "levels": [
+        51
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Aqua Grunt (Devon 2)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_2",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_2",
+      "battle": {
+       "name": "Team Aqua Grunt",
+       "class": "TEAM_AQUA",
+       "sprite": "aqua_grunt.png",
+       "team": [
+        89
+       ],
+       "levels": [
+        51
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Magma Grunt (Devon 3)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:OMEGA_RUBY"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_3",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_3",
+      "battle": {
+       "name": "Team Magma Grunt",
+       "class": "TEAM_MAGMA",
+       "sprite": "magma_grunt.png",
+       "team": [
+        42,
+        323
+       ],
+       "levels": [
+        49,
+        49
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Aqua Grunt (Devon 3)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_3",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_3",
+      "battle": {
+       "name": "Team Aqua Grunt",
+       "class": "TEAM_AQUA",
+       "sprite": "aqua_grunt.png",
+       "team": [
+        42,
+        319
+       ],
+       "levels": [
+        49,
+        49
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
      }
     }
    ]
@@ -9439,6 +9778,24 @@
   },
   "SOOTOPOLIS_CITY:Collector": {
    "sheet": "em_38.png"
+  },
+  "RUSTBORO_CITY:Team Magma Grunt (Devon 1)": {
+   "sheet": "em_119.png"
+  },
+  "RUSTBORO_CITY:Team Aqua Grunt (Devon 1)": {
+   "sheet": "em_117.png"
+  },
+  "RUSTBORO_CITY:Team Magma Grunt (Devon 2)": {
+   "sheet": "em_119.png"
+  },
+  "RUSTBORO_CITY:Team Aqua Grunt (Devon 2)": {
+   "sheet": "em_117.png"
+  },
+  "RUSTBORO_CITY:Team Magma Grunt (Devon 3)": {
+   "sheet": "em_119.png"
+  },
+  "RUSTBORO_CITY:Team Aqua Grunt (Devon 3)": {
+   "sheet": "em_117.png"
   }
  }
 }

@@ -98026,7 +98026,9 @@
    }
   ],
   "hidden": {
-   "39,35": "POTION"
+   "39,35": "POTION",
+   "26,6": "TINY_MUSHROOM",
+   "44,22": "TINY_MUSHROOM"
   }
  },
  "HOENN_ROUTE_104": {
@@ -98573,9 +98575,9 @@
    "cccccccccccccccccc.N....ccccccccccccccc.",
    "cccccccccccGcccccc......c...........ccc.",
    "ccccccc...cDDc...c......c...........cccc",
-   "ccccccc..........c.c..c.cccccc.ccccccccc",
+   "ccccccc..N....N..c.c..c.cccccc.ccccccccc",
    "ccccccc..........c......cccccc.ccccccccc",
-   "ccccccc.c......c.c......cccAcc.ccHcccccc",
+   "ccccccc.c..N...c.c......cccAcc.ccHcccccc",
    "ccccccc.........cc.....!..cDc..ccDcccccc",
    "ccccccc..c....c..!..................cccc",
    "ccccccc.............................cccc",
@@ -98658,6 +98660,18 @@
      ]
     }
    },
+   [
+    "Team Magma Grunt (Devon 1)",
+    "Team Aqua Grunt (Devon 1)"
+   ],
+   [
+    "Team Magma Grunt (Devon 2)",
+    "Team Aqua Grunt (Devon 2)"
+   ],
+   [
+    "Team Magma Grunt (Devon 3)",
+    "Team Aqua Grunt (Devon 3)"
+   ],
    {
     "text": "Gym fan",
     "action": "EVENT",
@@ -99877,7 +99891,8 @@
    }
   ],
   "hidden": {
-   "22,9": "SUPER_POTION"
+   "22,9": "SUPER_POTION",
+   "72,7": "BLACK_GLASSES"
   }
  },
  "HOENN_RUSTURF_TUNNEL": {
@@ -99895,7 +99910,7 @@
    "ccc.v..cccccccccccccccccccccc.cccccc",
    "ccccccccccccccccccccccccccccc..ccccc",
    "ccccccccccccccccc_ccccccccccc...cccc",
-   "ccccccccccccccccccccccc...c......ccc",
+   "ccccccccccccccccccccccc...c.....Xccc",
    "cccccc__cccccccccccccc..........cccc",
    "cccccccccccccccccc..c...........cccc",
    "cccccccccccccccccc....c......n..cccc",
@@ -99949,7 +99964,8 @@
    ]
   ],
   "trainer_spots": [
-   "Team Magma Grunt"
+   "Team Magma Grunt",
+   "Hiker Mike"
   ],
   "moves": {
    "23,5": {
@@ -99959,6 +99975,11 @@
    "25,4": {
     "m": "face",
     "d": "l"
+   },
+   "32,13": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
    }
   },
   "scenes": [
@@ -100636,14 +100657,14 @@
   "art": [
    "ccccccccccwwoowwwwwwwwwwwwwwwccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccoooooooooooooooooooccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccc~c~ooooooooooooooocco~c~ccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccc~c~ooooooXoooooooocco~c~ccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccoooooooooooooooccoccccccc~cc~ccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccoooooooooooooooooocccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccooooooooXoooooooooooooocccccccoccoccooccooccooooccccccccccoccccccccccc",
    "ccccccccccoooooooooooooooooooooooccooooooccoooooooooooooooooccooccoooccocccccccc",
    "ccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccc",
    "ccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccc",
-   "ccccccccccccccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccc",
+   "ccccccccccccccccccooooooooooooooooooooooooooooooooooooooXooooooooooooooooccccccc",
    "ccccccccccccccccccoooooooooooXoooooooooooooooooooooooooooooooooooooooooooccccccc",
    "ccccccccccccccccccooooooooooooooooooooooo===============oooooooooooooooooccccccc",
    "ccccccccccccccccccccooccoooooooo========ccccccccccc==c==X===oooooooooooooccccccc",
@@ -100679,7 +100700,9 @@
    ]
   ],
   "trainer_spots": [
+   "Swimmer Douglas",
    "Fisherman Ned",
+   "Triathlete Caleb",
    "Backpacker Graeme",
    "Fisherman Elliot",
    "Swimmer Ned",
@@ -100815,6 +100838,16 @@
     "m": "look",
     "d": "udlr",
     "s": 3
+   },
+   "18,2": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "56,9": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
    }
   },
   "people": [
@@ -100822,7 +100855,8 @@
   ],
   "hidden": {
    "68,15": "HEART_SCALE",
-   "41,11": "STARDUST"
+   "41,11": "STARDUST",
+   "59,12": "POKE_BALLS"
   }
  },
  "HOENN_GRANITE_CAVE": {
@@ -100836,7 +100870,7 @@
      "ccccc..N.cccccc",
      "cccccc...cccccc",
      "cccc..X..cccccc",
-     "cccc.N..X..cccc",
+     "cccc.N..X.Ncccc",
      "cccc...N..ccccc",
      "cccccc...N.cccc",
      "cccccc.c...cccc",
@@ -100860,6 +100894,22 @@
     "people": [
      "POKE BALL",
      "ESCAPE ROPE",
+     {
+      "text": "ESCAPE ROPE by the Hiker",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_granite_escape_rope",
+      "event": {
+       "lines": [
+        "You found an Escape Rope!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       },
+       "flag": "got_h4_granite_escape_rope"
+      }
+     },
      "TALK TO STEVEN",
      "Hiker "
     ],
@@ -101050,7 +101100,11 @@
       2
      ]
     },
-    "parts": true
+    "parts": true,
+    "hidden": {
+     "15,22": "PARALYZE_HEAL",
+     "29,12": "X_DEFENSE"
+    }
    },
    {
     "art": [
@@ -101058,14 +101112,14 @@
      "c.......ccc..............ccc...c",
      "c.......ccc..............ccc.1.c",
      "c.........(.1.............cc...c",
-     "c.........(.cccccc........cc...c",
+     "c...N.....(.cccccc........cc.N.c",
      "c.......1.c_cccccc.......ccc...c",
      "c...........cccccc.......cccc..c",
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccc",
-     "cccccccccc..c..c..cc..cccccccccc",
+     "cccccccccc..c.Nc..cc..cccccccccc",
      "ccccccc0....c.....c...........cc",
      "cccccc......ccc.ccc..........1cc",
      "ccc0.0........................cc",
@@ -101121,7 +101175,61 @@
       2
      ]
     },
-    "parts": true
+    "parts": true,
+    "people": [
+     {
+      "text": "REPEL north side",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_granite_repel",
+      "event": {
+       "lines": [
+        "You found a Repel!"
+       ],
+       "gift_item": {
+        "REPEL": 1
+       },
+       "flag": "got_h4_granite_repel"
+      }
+     },
+     {
+      "text": "RARE CANDY north side",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_granite_rare_candy",
+      "event": {
+       "lines": [
+        "You found a Rare Candy!"
+       ],
+       "gift_item": {
+        "RARE_CANDY": 1
+       },
+       "flag": "got_h4_granite_rare_candy"
+      }
+     },
+     {
+      "text": "TM061 SHADOW CLAW",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_granite_tm_shadow_claw",
+      "event": {
+       "lines": [
+        "You found TM Shadow Claw!"
+       ],
+       "gift_item": {
+        "TM061": 1
+       },
+       "flag": "got_h4_granite_tm_shadow_claw"
+      }
+     }
+    ],
+    "hidden": {
+     "13,3": "SUPER_POTION",
+     "15,11": "EVERSTONE"
+    }
    }
   ],
   "theme": "cave",
@@ -101615,7 +101723,9 @@
    "16,23": "REVIVE",
    "28,20": "ETHER",
    "9,10": "GREAT_BALL",
-   "33,5": "HEART_SCALE"
+   "33,5": "HEART_SCALE",
+   "15,11": "HEART_SCALE",
+   "31,30": "HEART_SCALE"
   }
  },
  "SLATEPORT_CITY": {
@@ -105754,7 +105864,7 @@
    "cccccccccccccc......X.....X..ccccccccccc",
    "cccccccccccccc...........cc..ccccccccccc",
    "ccccccccccc..............cc...cccccccccc",
-   "cccccccccccc................cccccccccccc",
+   "cccccccccccc...........N....cccccccccccc",
    "cccccccccccc...N............cccccccccccc",
    "ccccccccccccc.......cccccccccccccccccccc",
    "ccccccccccccc.......cccccccccccccccccccc",
@@ -105869,7 +105979,8 @@
         "Ty: Yep, every bit of it!",
         "Gabby: Now, a few words for our viewers... You were great out there!"
        ]
-      }
+      },
+      "double": true
      },
      "done": [
       "Gabby: That interview's going to be on the news! Keep it up!",
@@ -105906,7 +106017,8 @@
         "Ty: Yep, every bit of it!",
         "Gabby: Now, a few words for our viewers... You were great out there!"
        ]
-      }
+      },
+      "double": true
      },
      "done": [
       "Gabby: That interview's going to be on the news! Keep it up!",
@@ -105955,6 +106067,22 @@
     }
    },
    "ELIXIR",
+   {
+    "text": "STARDUST south",
+    "action": "EVENT",
+    "color": "GOLD",
+    "found": true,
+    "flag_condition": "not got_h4_r111_stardust",
+    "event": {
+     "lines": [
+      "You found some Stardust!"
+     ],
+     "gift_item": {
+      "STARDUST": 1
+     },
+     "flag": "got_h4_r111_stardust"
+    }
+   },
    "Girl"
   ],
   "signs": [
@@ -106525,7 +106653,8 @@
    "19,55": "REVIVE",
    "3,28": "PP_UP",
    "6,65": "PROTEIN",
-   "17,98": "RARE_CANDY"
+   "17,98": "RARE_CANDY",
+   "28,132": "STARDUST"
   }
  },
  "HOENN_ROUTE_112": {
@@ -108266,7 +108395,7 @@
     "art": [
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
-     "cccccccc............cccccccccc",
+     "cccccccc.....X......cccccccccc",
      "cccccccc...N........cccccccccc",
      "cccccccc.....c......cccccccccc",
      "ccccccccc.cccc______cccccccccc",
@@ -108274,13 +108403,13 @@
      "ccccccccc.cccc_______ccccccccc",
      "ccccccc.....c.........cccccccc",
      "ccccccccc.ccc_________cccccccc",
-     "cccccccc...c...........ccccccc",
+     "cccccccc...c....X......ccccccc",
      "ccccccccc.cc______c____ccccccc",
      "ccccc.X....c......c.....cccccc",
      "ccccc.....c..____c......cccccc",
      "cccc1....cc......c._____cccccc",
      "cccc....ccc____cccc.......cccc",
-     "cccccccc.......cccc.......cccc",
+     "cccccccc.......cccc..X....cccc",
      "cccccccc.......cccc.______cccc",
      "cccccccc..cc___cccc.......cccc",
      "cccccc....cc....c.........cccc",
@@ -108314,7 +108443,10 @@
      "AN OLD WOMAN"
     ],
     "trainer_spots": [
-     "Old Couple John & Jay"
+     "Dragon Tamer Nicolas",
+     "Battle Girl Tess",
+     "Old Couple John & Jay",
+     "Dragon Tamer Dray"
     ],
     "links": {
      "10,29": [
@@ -108351,7 +108483,24 @@
        32
       ]
      }
-    ]
+    ],
+    "moves": {
+     "13,2": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "16,10": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "21,16": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    }
    },
    {
     "art": [
@@ -109061,7 +109210,7 @@
    "ccccccccccc______c'ccccccccccc",
    "ccccccccN\"(......)...'cccccccc",
    "cccccccc\"\"c______c..c'cccccccc",
-   "cccccccc\"\"\"\"........c..ccccccc",
+   "cccccccc\"\"\"\".......Nc..ccccccc",
    "ccccccccccccc..cccccc.Nccccccc",
    "ccccccccc__________cc.cccccccc",
    "cccccccc(c........c)\"\"\"ccccccc",
@@ -109115,6 +109264,22 @@
   },
   "people": [
    "TM282 ROCK POLISH",
+   {
+    "text": "FULL HEAL slope",
+    "action": "EVENT",
+    "color": "GOLD",
+    "found": true,
+    "flag_condition": "not got_h4_jagged_full_heal",
+    "event": {
+     "lines": [
+      "You found a Full Heal!"
+     ],
+     "gift_item": {
+      "FULL_HEAL": 1
+     },
+     "flag": "got_h4_jagged_full_heal"
+    }
+   },
    "TM038 FLAME CHARGE",
    {
     "text": "Lookout grunt",
@@ -109192,7 +109357,8 @@
    }
   ],
   "hidden": {
-   "7,29": "GREAT_BALL"
+   "7,29": "GREAT_BALL",
+   "15,8": "FULL_HEAL"
   }
  },
  "LAVARIDGE_TOWN": {
@@ -110456,7 +110622,8 @@
         "Ty: Yep, every bit of it!",
         "Gabby: Now, a few words for our viewers... Still on top, I see!"
        ]
-      }
+      },
+      "double": true
      },
      "done": [
       "Gabby: That interview's going to be on the news! Keep it up!",
@@ -110493,7 +110660,8 @@
         "Ty: Yep, every bit of it!",
         "Gabby: Now, a few words for our viewers... Still on top, I see!"
        ]
-      }
+      },
+      "double": true
      },
      "done": [
       "Gabby: That interview's going to be on the news! Keep it up!",
@@ -118407,7 +118575,7 @@
    "<.........!.....................cccc......(ccccccccc....cc.......ccc\"\"X\"\"......cccc....X.......\"\"\"ccc.ccccccccccc...X.........ccc.........Xc",
    "cccc.....N.......................ccc.XX...(cccccccc....cc_______ccccc\"\"\"\"........(..c........\"\"\"\"\"ccc2ccccccNccc..............ccc.cccccccccc",
    "cccccc....................................(.cccccc______c.......ccccccc\".........(...........\"\"\"\"\"\"\"...cccc......................2ccccccccXc",
-   "ccccccc.....N.................X...........(N..cccc......(.........cccc.(.N..N....(...N.....c.\"\"\"\"\"\"\".....................c..ccccc...........",
+   "ccccccc.....N.................X...........(N..cccc......(.........cccc.(.N..N....(...N.....c.\"\"\"\"\"\"\".....................c..ccccc....N......",
    "cccccccc..................................(......X......(N.............(.........(..........\"\"\"\"\"\"\"\"......................ccccccc.ccccccccXc",
    "cccccccccccc.cccccccccccccccccc.ccccc.....(.............(..............(.......c.(.....X...cccc\"\"\"\"\"........c...........ccccccccc.cccccccccc",
    "ccccccccccc.............cc.N....cccccccc..(c......c......cc........c...(..........cc...cccccccccccc..c............ccccccccccccccc..........c",
@@ -118470,6 +118638,22 @@
    "CALCIUM",
    "Girl southwest of the pier",
    "ELIXIR",
+   {
+    "text": "PP UP east",
+    "action": "EVENT",
+    "color": "GOLD",
+    "found": true,
+    "flag_condition": "not got_h4_r123_pp_up",
+    "event": {
+     "lines": [
+      "You found a PP Up!"
+     ],
+     "gift_item": {
+      "PP_UP": 1
+     },
+     "flag": "got_h4_r123_pp_up"
+    }
+   },
    "REVIVAL HERB",
    "LEPPA BERRY"
   ],
@@ -118697,7 +118881,8 @@
   "hidden": {
    "75,1": "SUPER_REPEL",
    "12,1": "HYPER_POTION",
-   "139,15": "REVIVE"
+   "139,15": "REVIVE",
+   "30,13": "PP_UP"
   },
   "scenes": [
    {
@@ -122622,7 +122807,17 @@
     },
     "surface": 0,
     "theme": "seabed",
-    "pool": "HOENN_UNDERWATER_POOL_PERCENTAGES"
+    "pool": "HOENN_UNDERWATER_POOL_PERCENTAGES",
+    "hidden": {
+     "11,4": "HEART_SCALE",
+     "28,4": "ULTRA_BALL",
+     "19,16": "MIND_PLATE",
+     "38,12": "BIG_PEARL",
+     "11,34": "BLUE_SHARD",
+     "22,60": "PEARL",
+     "37,67": "STARDUST",
+     "64,60": "YELLOW_SHARD"
+    }
    }
   ],
   "floor_names": [
@@ -123795,7 +123990,11 @@
      "57,21": "DRACO_PLATE",
      "31,33": "PIXIE_PLATE",
      "75,27": "PROTEIN",
-     "62,19": "PEARL"
+     "62,19": "PEARL",
+     "59,22": "HEART_SCALE",
+     "68,26": "HEART_SCALE",
+     "47,39": "HEART_SCALE",
+     "75,13": "ADAMANT_ORB"
     }
    },
    {
@@ -125662,7 +125861,7 @@
      ".ooooooooocc~c~ooo[[[[...cc....[[[[ccoooccoooccoccoooo[[cc[[cc[[[[[[[[[[[[[[[..>",
      ".oooooooooccccc~[[[[[[N..cc...[[[[[[oooooccoccooccoooo[[[[[[[[[[[[[[[[[[[[[[...>",
      ".oooooooooooccccooo[[[.......[[[[[[ccooooccoccoooccoocccc}}[[[[[[cc[[[[[[[[....>",
-     ".oooooooooooocccoo[[[[.......[[[[[[ccccooccooooccccoocccc}[oXoo{[cc[[[[[[[[....>",
+     ".oooooooooooocccoo[[[[....N..[[[[[[ccccooccooooccccoocccc}[oXoo{[cc[[[[[[[[....>",
      ".ooooooooooooccoo[[[[[[.....[[[[[[[[[ccooccccccccooocc[[[[oovvoo{[[[[[[[[[[....>",
      ".ooooooooooooccoooo[[[[[...[[[[[[[[[[[ccoooccccooocccc[[[[ovvvvo[[[[[[[[[[[...N>",
      ".oooooooooooooccooooo[[[[[[[[[cc[[[[[[cc[[oooooocccc[[[[[[ovvvvo[[[[[[[[[[[....>",
@@ -125694,6 +125893,22 @@
     "people": [
      "CARBOS",
      "STAR PIECE",
+     {
+      "text": "HEART SCALE islet",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_r134_heart_scale",
+      "event": {
+       "lines": [
+        "You found a Heart Scale!"
+       ],
+       "gift_item": {
+        "HEART_SCALE": 1
+       },
+       "flag": "got_h4_r134_heart_scale"
+      }
+     },
      "TM086 ROCK SLIDE"
     ],
     "trainer_spots": [
@@ -125928,7 +126143,11 @@
        40
       ]
      }
-    ]
+    ],
+    "hidden": {
+     "52,17": "HEART_SCALE",
+     "55,14": "HEART_SCALE"
+    }
    }
   ],
   "floor_names": [
@@ -125951,7 +126170,7 @@
    "cccccccooooooooooooooooooooocccccccccccc",
    "ccccccccooooooccooooooooooooccc~~ccccccc",
    "ccccccccooooooccoooooooooooooo~ccccccccc",
-   "cccccccccooooooooooooooooooooocccccccccc",
+   "cccccccccooooooooooXoooooooooocccccccccc",
    "cccccccccccooccooooooooooooccocccccccccc",
    "ccccccoooccccccccooooooooooccocccccccccc",
    "ccccccoooooccooccoooXooooooooocccccccccc",
@@ -125987,10 +126206,10 @@
    "ccccoooooooocc..oooooooooooooooccccccccc",
    "cccooooooooccoccoooooooooooooooccccccccc",
    "cccooooooooccoccoooooooooooooooccccccccc",
-   "ccccoooooooooocc==oooooooooooccccccccccc",
+   "ccccooooXooooocc==oooooooooooccccccccccc",
    "ccccoccooooo===c==oooooooooooccccccccccc",
    "cccooccooooo==cc==oooooooooooooccccccccc",
-   "cccooooooooo==cc==oooooooooooooccccccccc",
+   "cccooooooooo==cc=Xoooooooooooooccccccccc",
    "cccccooooooo=cccc=oooooooooooooccccccccc",
    "cccccoooooo==cccc=oooooooooooooocccccccc",
    "ccco..ooooo==cccc=oooooooooooooocccccccc",
@@ -126002,7 +126221,7 @@
    "ccco=cc=ooooo====ooooooooooooccooocccccc",
    "ccco=ccoooooo====ooooooooooooooocccccccc",
    "ccoooc=oooooo===oooooooooooooooocccccccc",
-   "ccoooooooooooo==ooooooooooooocc~c~cccccc",
+   "ccoooooooooooo==oooXooooooooocc~c~cccccc",
    "cccooooooooooo==occooooooooooccccccccccc",
    "cccccoooooccoooooccooooooooooo~ccccccccc",
    "cccccoccooccccooccoooooooooooocccccccccc",
@@ -126045,8 +126264,12 @@
    "_buildings_in_picture": true
   },
   "trainer_spots": [
+   "Swimmer Dawn",
    "Swimmer Luis",
    "Swimmer Dominik",
+   "Swimmer Austin",
+   "Ruin Maniac Foster",
+   "Triathlete Vin",
    "Swimmer Beverly"
   ],
   "edge_to": {
@@ -126205,6 +126428,28 @@
     }
    }
   ],
+  "moves": {
+   "17,48": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "19,9": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "19,60": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "8,45": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   }
+  },
   "people": [
    "IRON"
   ],
@@ -127135,6 +127380,9 @@
     "theme": "room",
     "title": "House"
    }
+  },
+  "hidden": {
+   "14,24": "HEART_SCALE"
   }
  },
  "SOOTOPOLIS_CITY": {
@@ -131604,7 +131852,10 @@
       5
      ]
     },
-    "parts": true
+    "parts": true,
+    "hidden": {
+     "14,16": "X_ATTACK"
+    }
    },
    {
     "art": [
@@ -131657,7 +131908,10 @@
       10
      ]
     },
-    "parts": true
+    "parts": true,
+    "hidden": {
+     "11,6": "REVIVE"
+    }
    },
    {
     "art": [
@@ -132374,7 +132628,10 @@
      }
     },
     "parts": true,
-    "pool": "HOENN_SHOAL_CAVE_ICE_ROOM_PERCENTAGES"
+    "pool": "HOENN_SHOAL_CAVE_ICE_ROOM_PERCENTAGES",
+    "hidden": {
+     "4,7": "ICE_HEAL"
+    }
    },
    {
     "art": [
@@ -132711,14 +132968,14 @@
    "cccccccccccccccccccccc.ccccccccccccccccccccccccccooccocccccc",
    "occccccccccccccccccccc...ccccccccooccccccccccccccooccocccco>",
    "occccccoccccccccccoooooooccccccccoocccccccNc.ccooccoccooooo>",
-   "<oooooooccccccooccoooooooo.ccccccooooooo....oooooccoccooooo>",
+   "<oooooooccccccooccoooooooo.ccccccooooooo.X.Xoooooccoccooooo>",
    "<ooooooooooooooooooooooooooo.n.oooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+   "<oooooooXoooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooX>",
    "<ooooooooooooooXooooooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<ooooooooooooooooooooooooccoooooooooooooXccoo..oooooooooooo>",
+   "<ooooooooooooooooooooooooccooooooooXooooXccoo..oooooooooooo>",
    "<ooccooooooooooooooooooooccoooooooooo..oocco.c..ooooooooooo>",
    "<ooccooooooooooooooo...oooooccooccoooocooooo.c..oooo..ooooo>",
    "occooccccoooooo..ooooc.oooccccccccooooooccooooooooccccccoooo",
@@ -132748,8 +133005,12 @@
    "STAR PIECE"
   ],
   "trainer_spots": [
+   "Ace Trainer Constance",
+   "Ace Trainer Neville",
+   "Swimmer Missy",
    "Swimmer Jerome",
    "Swimmer Matthew",
+   "Swimmer Tara",
    "Swimmer Alice"
   ],
   "edge_to": {
@@ -132850,6 +133111,26 @@
    "42,4": {
     "m": "look",
     "d": "udlr"
+   },
+   "8,7": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "35,12": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "41,5": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "43,5": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
    }
   },
   "hidden": {
@@ -132877,15 +133158,15 @@
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccoocccccccoo",
    "cccccccccccccccccccc~c~cccccccccccccccccoo~c~ccooooocccccco.",
-   "ccccccccccccccccccccccccccccooccooccccooo~cccoooooooccoocco>",
-   "ccccccccccccccccoocccccccooooooooooooooooccccoooooooooooooo>",
+   "ccccccccccccccccccccccccccccooccoXccccooo~cccoooooooccoocco>",
+   "ccccccccccccccccoocccccccooooooooooooooooccccoooooXoooooooo>",
    "ccccccccooooccoooooooooccoooooooooooooooooooooooooooooooooo>",
    "ccccccooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooooooooooooXoooooooooooooooooooooooooooo>",
    "<oooooooooooooXoooooooooooooooooooooooooooooooXoooooooooooo>",
-   "<====oooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<====oooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "======ooooooooooooooooooooooooooooooccoooooooooooooccoooooo>",
+   "<====ooooooooooooooooooooooooooooooooooooXooooooooooooooooo>",
+   "<====oooooooooooooooooooooooooooooooooooooooooooooXoooooooo>",
+   "==N===ooooooooooooooooooooooooooooooccoooooooooooooccoooooo>",
    "=======ooooooooccoooooooooooooooccooccooooooocc~cc~ccoooooo>",
    "=ccc=c=cc~cc~ooccccoooooooocc~c~ccccoccoooocccccccccccccooo>",
    "cccccccccccccccooccccccooooccccc~occoccooooccooccccccccccco>",
@@ -132911,9 +133192,13 @@
    "_buildings_in_picture": true
   },
   "trainer_spots": [
+   "Sis & Bro Lisa & Ray",
+   "Scuba Diver Keaton",
    "Swimmer Tony",
    "Swimmer Denise",
-   "Swimmer Darrin"
+   "Swimmer Darrin",
+   "Free Diver Hollie",
+   "Swimmer Beth"
   ],
   "edge_to": {
    "0,8": [
@@ -132998,6 +133283,46 @@
      60,
      20
     ]
+   }
+  ],
+  "moves": {
+   "50,11": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "33,4": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "50,5": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "41,10": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   }
+  },
+  "people": [
+   {
+    "text": "SUPER REPEL beach",
+    "action": "EVENT",
+    "color": "GOLD",
+    "found": true,
+    "flag_condition": "not got_h4_r107_super_repel",
+    "event": {
+     "lines": [
+      "You found a Super Repel!"
+     ],
+     "gift_item": {
+      "SUPER_REPEL": 1
+     },
+     "flag": "got_h4_r107_super_repel"
+    }
    }
   ]
  },
@@ -133303,7 +133628,7 @@
      "ccccc.N.cccccccccccc...N..cc",
      "cccc....cccccccccccc.N....cc",
      "ccc...N.cccccccccccc...N.ccc",
-     "cc..................N....ccc",
+     "cc...............X..N....ccc",
      "cc...........N.........X.ccc",
      "cc...cccccccc.Xcccccccc..ccc",
      "cc.X.cccccccc..cccccccc..ccc",
@@ -133343,6 +133668,7 @@
     "trainer_spots": [
      "Team Magma Grunt",
      "Team Grunt (1F)",
+     "Team Grunt (Delta 1)",
      "Team Aqua Grunts",
      "Team Grunt (entrance)",
      "Team Aqua Grunt",
@@ -133370,6 +133696,13 @@
       ]
      }
     ],
+    "moves": {
+     "17,9": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    },
     "people": [
      "ESCAPE ROPE",
      "TM094 DARK PULSE ",
@@ -133399,7 +133732,7 @@
      "ccc1cccc......c......cccccc.....ccccccccccc..1ccccc",
      "c....cc.......c.....1..ccc.1...1.cccccccc.......ccc",
      "c.............c..........c.......cccccccc.1..1..1.c",
-     "c.............ccccccccccccccccccccccccccccccccccccc",
+     "c.....X.......ccccccccccccccccccccccccccccccccccccc",
      "c....ccc......ccccccccccccccccccccccccccccccccccccc",
      "c.............ccc.cc...ccc...cccccccccccccccccccccc",
      "c.......ccc...cNN.cc.....c...cccccccccccc.1..1..1.c",
@@ -133411,10 +133744,10 @@
      "c..1.............cc...ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccc...ccc...X....cccccccccccccccccc",
      "cccccccccccccccc.................cccccccc.1..1..1.c",
-     "cccccccccccccccc.................cccccccc.........c",
+     "cccccccccccccccc....X............cccccccc.........c",
      "cccccccccccccccc.cc...cccc......1cccccccccccccccccc",
      "c..1.............................cccccccccccccccccc",
-     "c................................cccccccccccccccccc",
+     "c...........................X....cccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
@@ -133438,7 +133771,10 @@
      "NUGGET"
     ],
     "trainer_spots": [
-     "Team Grunt (B1F)"
+     "Team Grunt (Delta 2)",
+     "Team Grunt (B1F)",
+     "Team Grunt (Delta 3)",
+     "Team Grunt (Delta 4)"
     ],
     "links": {
      "29,1": [
@@ -133583,6 +133919,21 @@
      "16,10": {
       "m": "look",
       "d": "udlr"
+     },
+     "6,6": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "20,18": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "28,21": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -133608,13 +133959,13 @@
      "ccccccccc.....c.....cccc..cccc...c",
      "ccc1ccc.......c.....cccc..cccc...c",
      "c.....c.......c.....cccc..cccc...c",
-     "c.....c......Xc......cc....cc....c",
+     "c.....cX.....Xc......cc....cc....c",
      "c.cc..c....cccc..................c",
      "c.ccc.c.......c..cc..............c",
      "c.ccc1c.1.....c..cc.ccc..ccccc.1.c",
      "c.....c.......c......cc..cc.cc...c",
      "ccccccccccccccc........X.........c",
-     "ccccccccccccccc..................c",
+     "ccccccccccccccc..X...............c",
      "c.............c........c.........c",
      "c..N........1.c...1...cc.........c",
      "c.............c......ccccccccccccc",
@@ -133655,8 +134006,10 @@
      }
     ],
     "trainer_spots": [
+     "Team Grunt (Delta 5)",
      "Team Grunt (sub room)",
-     "Admin Matt"
+     "Admin Matt",
+     "Team Grunt (Delta 6)"
     ],
     "links": {
      "18,1": [
@@ -133718,6 +134071,16 @@
      "3,13": {
       "m": "look",
       "d": "udlr"
+     },
+     "7,5": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "17,11": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "scenes": [
@@ -134440,7 +134803,7 @@
      "..ccccN....X....",
      "..........ccccN.",
      "..........cccc..",
-     ".......nn......."
+     ".......nn...X..."
     ],
     "exits": {
      "n": "MOSSDEEP_CITY"
@@ -134507,7 +134870,8 @@
      }
     ],
     "trainer_spots": [
-     "Team Magma Grunt"
+     "Team Magma Grunt",
+     "Team Grunts (Delta)"
     ],
     "links": {
      "13,1": [
@@ -134536,6 +134900,11 @@
      "2,5": {
       "m": "march",
       "d": "l"
+     },
+     "12,9": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "overheads": [
@@ -134558,7 +134927,7 @@
      "cccccccccccccccc",
      "ccccccccccccc1cc",
      "c.....N.....X...",
-     "c...............",
+     "c............X..",
      "ccccccccccccc...",
      "................",
      ".....N..........",
@@ -134619,6 +134988,7 @@
     ],
     "trainer_spots": [
      "Magma Admin Tabitha",
+     "Team Grunt (Delta 2F)",
      "Magma Leader Maxie"
     ],
     "links": {
@@ -134648,6 +135018,11 @@
      "1,8": {
       "m": "face",
       "d": "d"
+     },
+     "13,3": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "overheads": [
@@ -135759,7 +136134,7 @@
      "cccc.cccc",
      "c.......c",
      "c.......c",
-     "c.cc....c",
+     "c.cc...Xc",
      "c.cc....c",
      "c.......c",
      "c...11..c"
@@ -135782,7 +136157,8 @@
     ],
     "trainer_spots": [
      "Ruin Maniac Garrison",
-     "Swimmer Jani"
+     "Swimmer Jani",
+     "Young Couple Kira & Dan"
     ],
     "links": {
      "4,16": [
@@ -135805,6 +136181,11 @@
      "4,4": {
       "m": "look",
       "d": "udlr"
+     },
+     "7,13": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -137399,7 +137780,7 @@
      "ccc.c.cccccccccccccccccccc..ccccccccc",
      "ccc.c.cccccccccccccccccccc....ccccccc",
      "ccc.c.cccccccccccccccccccc....ccccccc",
-     "cccNc.cccccccccccccccccccc.....cccccc",
+     "cccNc.cccccccccccccccccccc....Xcccccc",
      "ccccc.cccccccccccccc.ccccc.......cccc",
      "cccc.b.b...ccccccccc1ccccc.......cccc",
      "cccc..b....cccccc.......cc.......cccc",
@@ -137437,7 +137818,8 @@
      "RARE CANDY"
     ],
     "trainer_spots": [
-     "Team Magma Grunt"
+     "Team Magma Grunt",
+     "Team Magma Grunt (1-2)"
     ],
     "links": {
      "25,34": [
@@ -137460,6 +137842,11 @@
      "3,20": {
       "m": "look",
       "d": "udlr"
+     },
+     "30,20": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -137488,13 +137875,13 @@
      "ccccccc......................cccc",
      "cccc.........................cccc",
      "cccccccccccccccccccccc..cc...cccc",
-     "ccccc....................c...cccc",
+     "ccccc...X................c...cccc",
      "ccccc....................cccccccc",
      "ccccc.......................ccccc",
-     "ccccc.......................ccccc",
+     "ccccc................X......ccccc",
      "ccccccccc..cccccccccccccccccccccc",
      "ccccccccc..cccccccccccccccccccccc",
-     "cccccccc................ccccccccc",
+     "cccccccc....X...........ccccccccc",
      "cccccccc................ccccccccc",
      "cccccccc......cccc........ccccccc",
      "cccccccc......cccc........ccccccc",
@@ -137534,6 +137921,9 @@
      "_buildings_in_picture": true
     },
     "trainer_spots": [
+     "Team Magma Grunt (2-3)",
+     "Team Magma Grunt (2-4)",
+     "Team Magma Grunt (2-2)",
      "Team Magma Grunt "
     ],
     "links": {
@@ -137567,7 +137957,24 @@
        39
       ]
      }
-    ]
+    ],
+    "moves": {
+     "12,14": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "8,8": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "21,11": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    }
    },
    {
     "art": [
@@ -137578,13 +137985,13 @@
      "cccccccccccccccccccccccccc.cccccccc.1....cccccccc",
      "cccccccc.....ccccccccccccc.....ccccccccc..ccccccc",
      "cccccccc......Nccccccccccc....cccccccccc..ccccccc",
-     "cccccccc.........cccc.........cccccccccc.cccccccc",
+     "cccccccc.........ccccN........cccccccccc.cccccccc",
      "cccccccc..ccccccccccc........Xcccccccccc.cccccccc",
-     "cccccccc..cccccccccccc......cccccccccccc.cccccccc",
+     "ccccccccX.cccccccccccc......cccccccccccc.cccccccc",
      "ccccccc...cccccccccccccc....cccccccccccc.cccccccc",
+     "ccccccc...cccccccccccccccX..cccccccccccc.cccccccc",
      "ccccccc...ccccccccccccccc...cccccccccccc.cccccccc",
-     "ccccccc...ccccccccccccccc...cccccccccccc.cccccccc",
-     "ccccccc...ccccccccccccccc....ccccccccccc.cccccccc",
+     "cccccccX..ccccccccccccccc....ccccccccccc.cccccccc",
      "cccccccc.cccccccccccccccc.....ccccccccc..cccccccc",
      "ccccccc...ccccccccccccccccc.ccccccccccc..cccccccc",
      "ccccccc...........ccccccc.....ccccccccc..cccccccc",
@@ -137614,10 +138021,29 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "FULL RESTORE"
+     "FULL RESTORE",
+     {
+      "text": "MAX ELIXIR far side",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_magma_max_elixir",
+      "event": {
+       "lines": [
+        "You found a Max Elixir!"
+       ],
+       "gift_item": {
+        "MAX_ELIXIR": 1
+       },
+       "flag": "got_h4_magma_max_elixir"
+      }
+     }
     ],
     "trainer_spots": [
-     "Team Magma Grunt  "
+     "Team Magma Grunt  ",
+     "Team Magma Grunt (3-3)",
+     "Team Magma Grunt (3-2)",
+     "Team Magma Grunt (3-4)"
     ],
     "links": {
      "10,22": [
@@ -137635,6 +138061,21 @@
      "14,6": {
       "m": "look",
       "d": "udlr"
+     },
+     "25,11": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "8,9": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "7,13": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -137662,7 +138103,7 @@
      "ccccccccccccc.............cc",
      "ccccccccccccc.............cc",
      "ccccccccccccc.............cc",
-     "cc............cccccc......cc",
+     "ccX...........cccccc......cc",
      "ccccccc.cccccccccccccccccccc",
      "ccccccc.ccccccccccccc1cccccc",
      "cccc....................cccc",
@@ -137676,7 +138117,7 @@
      "cccccc..ccccccccccc...cccccc",
      "cccccc..ccccccccc.....cccccc",
      "cccccc....ccccccc.....cccccc",
-     "cccccc.1..............cccccc",
+     "cccccc.1.............Xcccccc",
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc"
     ],
@@ -137717,6 +138158,16 @@
      "9,16": {
       "m": "look",
       "d": "udlr"
+     },
+     "2,7": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "21,21": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -137733,6 +138184,10 @@
        24
       ]
      }
+    ],
+    "trainer_spots": [
+     "Team Magma Grunt (4-1)",
+     "Team Magma Grunt (4-2)"
     ]
    },
    {
@@ -137740,13 +138195,13 @@
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
-     "ccccccccccc......ccccccc",
+     "ccccccccccc.....Xccccccc",
      "ccccccccccc......cc.cccc",
      "ccccccc.............cccc",
      "ccccccc...ccccccc...cccc",
      "ccccccc...ccccccc...cccc",
      "ccccccc...ccccccc...cccc",
-     "cccccN.....cccccc...cccc",
+     "cccccNN....cccccc...cccc",
      "ccccccc....cccccc...cccc",
      "ccc..cc....cccccc..ccccc",
      "ccc...............cccccc",
@@ -137769,7 +138224,23 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "CAMERUPTITE"
+     "CAMERUPTITE",
+     {
+      "text": "PP MAX side room",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_magma_pp_max",
+      "event": {
+       "lines": [
+        "You found a PP Max!"
+       ],
+       "gift_item": {
+        "PP_MAX": 1
+       },
+       "flag": "got_h4_magma_pp_max"
+      }
+     }
     ],
     "links": {
      "12,15": [
@@ -137782,6 +138253,11 @@
      "5,9": {
       "m": "look",
       "d": "udlr"
+     },
+     "16,3": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -137798,6 +138274,9 @@
        17
       ]
      }
+    ],
+    "trainer_spots": [
+     "Team Magma Grunt (5-1)"
     ]
    },
    {
@@ -137806,7 +138285,7 @@
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccc......cccc..cccccccccccccccccccccccccccccccccccc",
+     "ccccccccccc......cccc.Xcccccccccccccccccccccccccccccccccccc",
      "ccccccc................cccccccccccccccccccccccccccccccccccc",
      "ccccc....................cccccccccccccccccccccccccccccccccc",
      "cccN.cc......ccccccc.....ccccccccccccccccccccc1cccccccccccc",
@@ -137815,7 +138294,7 @@
      "cccc....cccccccccccccccc...cccccccccccccccc......cccccccccc",
      "cccc...cccccccccccccccccc..cccccccccccccccccc..cccccccccccc",
      "cccc...cccccccccccccccccc......cccccccccccccc..cccccccccccc",
-     "cccc...ccccccccccccccccccc.....cccccccccccccc..cccccccccccc",
+     "cccc...cccccccccccccccccccX...Xcccccccccccccc..cccccccccccc",
      "cccc...cccccccccccccccccccccc...ccccccccccccc..cccccccccccc",
      "cccc...cccccccccccccccccccccc....cccccccccccc..cc.ccccccccc",
      "cccc...ccccccccccccccccccccccc...cccccccc.........ccccccccc",
@@ -137824,7 +138303,7 @@
      "cccc.........ccccccccccccccccc....ccccc.cc........ccccccccc",
      "ccccc.........cccccc..ccccccccc...cccc..........ccccccccccc",
      "ccccccc.........X...1.ccccccccc....ccc....ccccccccccccccccc",
-     "ccccccccc.......ccccccccccccccc........cccccccccccccccccccc",
+     "ccccccccc.......cccccccccccccccX.......cccccccccccccccccccc",
      "ccccccccc...ccccccccccccccccccccc......cccccccccccccccccccc",
      "ccccccccc...cccccccccccccccccccccc.....cccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -137848,7 +138327,11 @@
      "MAX REVIVE"
     ],
     "trainer_spots": [
-     "Magma Admin Courtney"
+     "Magma Admin Tabitha",
+     "Team Magma Grunt (6-3)",
+     "Team Magma Grunt (6-2)",
+     "Magma Admin Courtney",
+     "Team Magma Grunt (6-1)"
     ],
     "links": {
      "46,7": [
@@ -137866,6 +138349,26 @@
      "3,7": {
       "m": "look",
       "d": "udlr"
+     },
+     "31,22": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "30,13": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "26,13": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "22,4": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -139121,7 +139624,7 @@
      "cccccccc.....N.....cccccccc",
      "cccccccc...........cccccccc",
      "cccccccc...........cccccccc",
-     "cccccccc...........cccccccc",
+     "cccccccc.....X.....cccccccc",
      "cccccccccc.......cccccccccc",
      "cccccccccc.......cccccccccc",
      "ccccccccccccc11cccccccccccc",
@@ -139163,6 +139666,11 @@
      "13,12": {
       "m": "face",
       "d": "u"
+     },
+     "13,15": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
      }
     },
     "parts": true,
@@ -139179,6 +139687,9 @@
        24
       ]
      }
+    ],
+    "trainer_spots": [
+     "Team Grunt (Southern Island)"
     ]
    }
   ],

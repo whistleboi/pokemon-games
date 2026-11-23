@@ -271,6 +271,40 @@
       "SUPER REPEL"
      ]
     ]
+   },
+   "1": {
+    "trainers": [
+     [
+      13,
+      2,
+      "Dragon Tamer Nicolas",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      16,
+      10,
+      "Battle Girl Tess",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      21,
+      16,
+      "Dragon Tamer Dray",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
    }
   },
   "figures": {
@@ -848,7 +882,49 @@
     "hidden": {
      "5,56": "BIG_PEARL",
      "15,68": "HEART_SCALE"
-    }
+    },
+    "trainers": [
+     [
+      17,
+      48,
+      "Ruin Maniac Foster",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      19,
+      9,
+      "Swimmer Dawn",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      19,
+      60,
+      "Triathlete Vin",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      8,
+      45,
+      "Swimmer Austin",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
    }
   },
   "figures": {
@@ -884,6 +960,26 @@
        "d": "udlr",
        "s": 3
       }
+     ],
+     [
+      18,
+      2,
+      "Swimmer Douglas",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      56,
+      9,
+      "Triathlete Caleb",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
      ]
     ],
     "hidden": {
@@ -906,10 +1002,100 @@
   }
  },
  "HOENN_ROUTE_107": {
-  "floors": {}
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      50,
+      11,
+      "Swimmer Beth",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      33,
+      4,
+      "Sis & Bro Lisa & Ray",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      50,
+      5,
+      "Scuba Diver Keaton",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      41,
+      10,
+      "Free Diver Hollie",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   }
+  }
  },
  "HOENN_ROUTE_108": {
-  "floors": {}
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      8,
+      7,
+      "Swimmer Missy",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      35,
+      12,
+      "Swimmer Tara",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      41,
+      5,
+      "Ace Trainer Constance",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      43,
+      5,
+      "Ace Trainer Neville",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   }
+  }
  },
  "HOENN_ROUTE_109": {
   "floors": {
@@ -3833,6 +4019,18 @@
       2,
       "MAX ETHER"
      ]
+    ],
+    "trainers": [
+     [
+      32,
+      13,
+      "Hiker Mike",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
     ]
    }
   },
@@ -4024,10 +4222,54 @@
   }
  },
  "HOENN_SOUTHERN_ISLAND": {
-  "floors": {}
+  "floors": {
+   "1": {
+    "trainers": [
+     [
+      13,
+      15,
+      "Team Grunt (Southern Island)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   }
+  }
  },
  "HOENN_SPACE_CENTER": {
-  "floors": {}
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      12,
+      9,
+      "Team Grunts (Delta)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   },
+   "1": {
+    "trainers": [
+     [
+      13,
+      3,
+      "Team Grunt (Delta 2F)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   }
+  }
  },
  "HOENN_SS_TIDAL": {
   "floors": {
@@ -4090,6 +4332,16 @@
       23,
       10,
       "Team Aqua Grunts"
+     ],
+     [
+      17,
+      9,
+      "Team Grunt (Delta 1)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
      ]
     ],
     "people": [
@@ -4182,6 +4434,64 @@
       7,
       25,
       "MAX REVIVE "
+     ]
+    ]
+   },
+   "1": {
+    "trainers": [
+     [
+      6,
+      6,
+      "Team Grunt (Delta 2)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      20,
+      18,
+      "Team Grunt (Delta 3)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      28,
+      21,
+      "Team Grunt (Delta 4)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   },
+   "2": {
+    "trainers": [
+     [
+      7,
+      5,
+      "Team Grunt (Delta 5)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      17,
+      11,
+      "Team Grunt (Delta 6)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
      ]
     ]
    }
@@ -4741,6 +5051,30 @@
       23,
       50,
       "GREAT BALL"
+     ],
+     [
+      9,
+      16,
+      [
+       "Team Magma Grunt (Devon 1)",
+       "Team Aqua Grunt (Devon 1)"
+      ]
+     ],
+     [
+      14,
+      16,
+      [
+       "Team Magma Grunt (Devon 2)",
+       "Team Aqua Grunt (Devon 2)"
+      ]
+     ],
+     [
+      11,
+      18,
+      [
+       "Team Magma Grunt (Devon 3)",
+       "Team Aqua Grunt (Devon 3)"
+      ]
      ]
     ]
    }
@@ -4795,6 +5129,192 @@
     "hidden": {
      "3,16": "REPEL"
     }
+   }
+  }
+ },
+ "HOENN_ABANDONED_SHIP": {
+  "floors": {
+   "3": {
+    "trainers": [
+     [
+      7,
+      13,
+      "Young Couple Kira & Dan",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "HOENN_MAGMA_HIDEOUT": {
+  "floors": {
+   "0": {
+    "trainers": [
+     [
+      30,
+      20,
+      "Team Magma Grunt (1-2)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   },
+   "1": {
+    "trainers": [
+     [
+      12,
+      14,
+      "Team Magma Grunt (2-2)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      8,
+      8,
+      "Team Magma Grunt (2-3)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      21,
+      11,
+      "Team Magma Grunt (2-4)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   },
+   "2": {
+    "trainers": [
+     [
+      25,
+      11,
+      "Team Magma Grunt (3-2)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      8,
+      9,
+      "Team Magma Grunt (3-3)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      7,
+      13,
+      "Team Magma Grunt (3-4)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   },
+   "3": {
+    "trainers": [
+     [
+      2,
+      7,
+      "Team Magma Grunt (4-1)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      21,
+      21,
+      "Team Magma Grunt (4-2)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   },
+   "4": {
+    "trainers": [
+     [
+      16,
+      3,
+      "Team Magma Grunt (5-1)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
+   },
+   "5": {
+    "trainers": [
+     [
+      31,
+      22,
+      "Team Magma Grunt (6-1)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      30,
+      13,
+      "Team Magma Grunt (6-2)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      26,
+      13,
+      "Team Magma Grunt (6-3)",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ],
+     [
+      22,
+      4,
+      "Magma Admin Tabitha",
+      {
+       "m": "look",
+       "d": "udlr",
+       "s": 3
+      }
+     ]
+    ]
    }
   }
  }

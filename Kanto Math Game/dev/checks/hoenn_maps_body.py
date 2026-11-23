@@ -1417,12 +1417,15 @@ story.player_team = _team13
 # the Space Center: quiet before the Mind Badge, stormed after it
 story.story_flags.pop("badge_mind_earned", None)
 st = open_map("HOENN_SPACE_CENTER", "MOSSDEEP_CITY")
-_quiet = not any(m.kind == "trainer" for f in st.run.floors for m in f.movers)
+_quiet = not any(m.kind == "trainer" and "beat_hoenn_champion" not in ((m.payload[1] if isinstance(m.payload, tuple) else m.payload).get("when_flags") or []) for f in st.run.floors for m in f.movers)
 story.story_flags["badge_mind_earned"] = True
 st = open_map("HOENN_SPACE_CENTER", "MOSSDEEP_CITY")
 st.run.enter_floor(1); frames(2)
-_all13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload).get("name") for f in st.run.floors for m in f.movers if m.kind == "trainer"]
-check(_quiet and len(_all13) == 3, f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge ({_all13})")
+_pay13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload) for f in st.run.floors for m in f.movers if m.kind == "trainer"]
+_all13 = [t.get("name") for t in _pay13 if "beat_hoenn_champion" not in (t.get("when_flags") or [])]   # (H4: ORAS's two Delta Episode battles come after the Champion)
+_delta13 = [t.get("spot_name") for t in _pay13 if "beat_hoenn_champion" in (t.get("when_flags") or [])]
+check(_quiet and len(_all13) == 3 and len(_delta13) == (2 if story.story_flags.get("beat_hoenn_champion") else 0),
+      f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge; ORAS's Delta Episode grunts after the Champion ({_all13}, {_delta13})")
 _r125 = _tm13["HOENN_ROUTE_125"]
 check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) >= 3,
       "Route 125: Emerald's map, its Trainers (Emerald's three and ORAS's), and Shoal Cave's mouth")
@@ -2434,9 +2437,9 @@ st = open_map("HOENN_MAGMA_HIDEOUT", "HOENN_JAGGED_PASS")
 _hf = _tm24["HOENN_MAGMA_HIDEOUT"]["floors"]
 _tr24 = sorted(n.strip() for f in _hf for n in f.get("trainer_spots", []))
 _it24 = sorted(p for f in _hf for p in f.get("people", []) if isinstance(p, str))
-check(st.run.index == 0 and _tr24 == ["Magma Admin Courtney", "Team Magma Grunt", "Team Magma Grunt", "Team Magma Grunt"]
+check(st.run.index == 0 and _tr24 == sorted(["Magma Admin Courtney", "Magma Admin Tabitha"] + ["Team Magma Grunt"] * 3 + [f"Team Magma Grunt ({n})" for n in ("1-2", "2-2", "2-3", "2-4", "3-2", "3-3", "3-4", "4-1", "4-2", "5-1", "6-1", "6-2", "6-3")])
       and _it24 == ["CAMERUPTITE", "ESCAPE ROPE", "FULL RESTORE", "MAX REVIVE", "NUGGET", "RARE CANDY"],
-      f"Magma Hideout: in from the Jagged Pass; the Grunts and Courtney on Emerald's spots; Emerald's items and the Cameruptite ({_tr24})")
+      f"Magma Hideout: in from the Jagged Pass; Emerald's 16 Grunts, Tabitha and Courtney on Emerald's spots (H4); Emerald's items and the Cameruptite ({_tr24})")
 _cr = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["cracked"]
 _a24 = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["art"]
 _crt = {tuple(int(v) for v in s.split(",")) for s in _cr["tiles"]}
