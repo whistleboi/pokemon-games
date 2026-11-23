@@ -57,5 +57,70 @@
       {"mission": "m16", "title": "Victory Road", "done": {"any": ["visited_INDIGO_PLATEAU", "beat_champion"]}, "say": "West of Viridian a road climbs through the rock. Only trainers with all eight badges are allowed to try it."},
       {"mission": "m16", "title": "The Elite Four", "when": "visited_INDIGO_PLATEAU", "done": "beat_champion", "say": "Four of the strongest trainers in Kanto stand between you and the title. And behind them, someone you know."}
     ]}
+  ],
+  "JOHTO": [
+    {"title": "Winds of a New Beginning", "chapters": [
+      {"mission": "johto_m1", "title": "The Professor's Errand", "done": {"any": ["visited_CHERRYGROVE_CITY", "met_mr_pokemon", "has_item:MYSTERY_EGG"]}, "say": "Prof. Elm has a friend on Route 30 who says he's found something amazing. Elm won't say what it is. Maybe he doesn't know."},
+      {"mission": "johto_m1", "title": "Mr. Pokemon's Discovery", "when": {"any": ["visited_CHERRYGROVE_CITY", "met_mr_pokemon"]}, "say": "A little house at the end of Route 30. The old man inside guards his find like treasure... and today he has a famous visitor."},
+      {"mission": "johto_m2", "title": "A Stranger in Cherrygrove", "when": "met_mr_pokemon", "done": {"any": ["defeated_rival_cherrygrove", "elm_received_egg"]}, "say": "On the road home, a red-haired boy steps out in front of you. He looks like he's been waiting."},
+      {"mission": "johto_m2", "title": "Trouble at the Lab", "when": {"any": ["defeated_rival_cherrygrove", "elm_received_egg"]}, "say": "There's a policeman at Prof. Elm's Lab, and the Professor looks pale. Something has gone missing."}
+    ]},
+    {"title": "The Zephyr Badge", "chapters": [
+      {"mission": "johto_m3", "title": "The Swaying Tower", "say": "Sprout Tower sways but never falls. The Sages at the top test every trainer who climbs it... and someone has already climbed it today."},
+      {"mission": "johto_m4", "title": "Wings Over Violet", "say": "Violet's Gym stands high above the city. Its Leader says no one has ever clipped his Pokemon's wings."}
+    ]},
+    {"title": "The Hive Badge", "chapters": [
+      {"mission": "johto_m5", "title": "Under the Ground", "done": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "South of Violet, the road dives into Union Cave. Somewhere past the dark, a sleepy town is waiting."},
+      {"mission": "johto_m5", "title": "The Well of Tails", "when": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "Azalea's Slowpoke have gone missing, and men in black stand guard at the old well. An old ball-maker named Kurt is furious."},
+      {"mission": "johto_m6", "title": "The Bug Master", "say": "With the well quiet again, Azalea's Gym opens its doors. Its young Leader knows everything about Bug Pokemon... and they swarm."}
+    ]},
+    {"title": "The Plain Badge", "chapters": [
+      {"mission": "johto_m7a", "title": "The Runaway Bird", "say": "In Ilex Forest it's dark even at noon. A charcoal maker's apprentice has lost his Farfetch'd somewhere among the trees."},
+      {"mission": "johto_m7", "title": "The Big City", "say": "North of the forest lies Goldenrod, the biggest city in Johto. You can hear it long before you see it."},
+      {"mission": "johto_m8", "steps": [0], "title": "Rumours on Route 36", "say": "Everyone in Goldenrod is talking about a tree on Route 36 that wiggles. Trees don't wiggle. Do they?"},
+      {"mission": "johto_m8", "after_steps": true, "title": "The Unstoppable Miltank", "say": "Goldenrod's Gym Leader smiles a lot. Trainers who've faced her Miltank don't."}
+    ]},
+    {"title": "The Fog Badge", "chapters": [
+      {"mission": "johto_m9", "title": "The Tree That Wiggled", "done": {"any": ["defeated_sudowoodo", "visited_ECRUTEAK_CITY"]}, "say": "That tree on Route 36 is still in the way. The girl at Goldenrod's flower shop might know what a thirsty tree needs."},
+      {"mission": "johto_m9", "steps": [0], "title": "Ashes of the Burned Tower", "say": "Ecruteak's Burned Tower fell to a fire long ago. Someone you know is already inside, poking through the ashes."},
+      {"mission": "johto_m9", "steps": [1], "title": "Three Beasts Awaken", "say": "Deep in the basement, three shapes lie still under the ash. The old stories say they are waiting for someone."},
+      {"mission": "johto_m10", "title": "The Mystic Seer", "say": "Ecruteak's Gym Leader sees things no one else can. Watch your step: his Gym hides more than it shows."}
+    ]},
+    {"title": "The Storm Badge", "chapters": [
+      {"mission": "johto_m11", "title": "The Dancers' Trouble", "done": {"any": ["has_item:HM_SURF", "visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Olivine's lighthouse has gone dark, and its keeper won't leave her sick Ampharos. Meanwhile, back in Ecruteak, a stranger in black is bothering the Kimono Girls."},
+      {"mission": "johto_m11", "title": "Across the Whirling Sea", "when": {"any": ["has_item:HM_SURF", "visited_CIANWOOD_CITY", "ampharos_cured"]}, "done": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Cianwood City lies across the open sea, west of Olivine. Its pharmacy makes a medicine no one else can."},
+      {"mission": "johto_m11", "title": "The Secret Potion", "when": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "done": {"any": ["has_item:SECRET_POTION", "ampharos_cured"]}, "say": "The pharmacist knows exactly what Amphy needs. He's just been waiting for someone to ask."},
+      {"mission": "johto_m12", "title": "The Waterfall Fighter", "say": "Cianwood's Gym Leader trains under a waterfall, all day, every day. His Pokemon hit like falling rocks."}
+    ]},
+    {"title": "The Mineral Badge", "chapters": [
+      {"mission": "johto_m13", "title": "A Light for the Sea", "done": "ampharos_cured", "say": "Amphy is waiting at the top of the lighthouse, and the ships out at sea are waiting for its light."},
+      {"mission": "johto_m13", "title": "The Steel-Clad Defense", "say": "With the lighthouse shining again, Olivine's Gym Leader is back at her post. Her Steel Pokemon don't dent easily."}
+    ]},
+    {"title": "The Glacier Badge", "chapters": [
+      {"mission": "johto_m14", "title": "The Red Gyarados", "done": {"any": ["defeated_red_gyarados", "rocket_hq_cleared"]}, "say": "Strange news from the Lake of Rage, north of Mahogany Town: a lake that won't calm down, and a Gyarados as red as fire."},
+      {"mission": "johto_m14", "title": "The Shop with No Customers", "when": {"any": ["defeated_red_gyarados", "rocket_hq_cleared"]}, "done": "rocket_hq_cleared", "say": "A trainer in a cape has been watching the lake too. He says Mahogany's little souvenir shop is hiding something big."},
+      {"mission": "johto_m15", "title": "Ice on the Floor", "say": "Mahogany's Gym is a floor of ice. Its Leader is old, patient, and very, very cold."}
+    ]},
+    {"title": "Voices on the Radio", "chapters": [
+      {"mission": "johto_m15b", "title": "The Tower Taken", "done": {"any": ["has_item:BASEMENT_KEY", "has_item:CARD_KEY", "got_radio_card_key", "radio_tower_cleared"]}, "say": "Goldenrod's radio is playing a voice it shouldn't. Team Rocket has taken the Radio Tower, and they're calling out for their missing boss."},
+      {"mission": "johto_m15b", "title": "Under Goldenrod", "when": {"any": ["has_item:BASEMENT_KEY", "has_item:CARD_KEY", "got_radio_card_key", "radio_tower_cleared"]}, "done": {"any": ["has_item:CARD_KEY", "got_radio_card_key", "radio_tower_cleared"]}, "say": "The key opens a door deep beneath the city's streets. Someone down there has been locked away for days."},
+      {"mission": "johto_m15b", "title": "The Top of the Tower", "when": {"any": ["has_item:CARD_KEY", "got_radio_card_key", "radio_tower_cleared"]}, "done": "radio_tower_cleared", "say": "The card opens the upper floors. At the very top, the last of Team Rocket's leaders is waiting."}
+    ]},
+    {"title": "The Rising Badge", "chapters": [
+      {"mission": "johto_m16", "title": "The Ice Path", "done": {"any": ["visited_BLACKTHORN_CITY", "johto_beat_clair"]}, "say": "East of Mahogany, a frozen cave climbs into the mountains. The floor is ice, and the ice doesn't let you stop."},
+      {"mission": "johto_m16", "title": "The Dragon Tamer", "done": "johto_beat_clair", "say": "Blackthorn's Gym Leader is proud, sharp and cousin to a very famous trainer. Her dragons don't like to lose."},
+      {"mission": "johto_m16", "title": "The Elder's Questions", "when": "johto_beat_clair", "say": "She won't hand the badge over. Instead she points to a shrine in a cave full of dragons, where an old man waits with questions."}
+    ]},
+    {"title": "Bells of Ecruteak", "chapters": [
+      {"mission": "johto_m17b", "steps": [0], "title": "Three Wise Sages", "say": "Bellchime Trail rings with bells nobody is ringing. Three sages guard the way, and they don't step aside for just anyone."},
+      {"mission": "johto_m17b", "steps": [1], "title": "A Wing of Many Colours", "say": "Inside the Bell Tower, an old Sage is holding something for you. It shimmers in every colour at once."}
+    ]},
+    {"title": "The Silver League", "chapters": [
+      {"mission": "johto_m17", "title": "Victory Road", "done": {"any": ["visited_SILVER_LEAGUE_PLATEAU", "beat_johto_champion"]}, "say": "East of New Bark, the road to the League crosses the sea and climbs through the rock. Only trainers with all eight badges get through."},
+      {"mission": "johto_m17", "title": "The Elite Four", "when": "visited_SILVER_LEAGUE_PLATEAU", "done": "beat_johto_champion", "say": "Four of the strongest trainers in Johto stand between you and the title. Behind them waits a man in a cape."}
+    ]},
+    {"title": "The Silent Summit", "chapters": [
+      {"mission": "johto_m18", "title": "The Trainer in the Snow", "when": "beat_johto_champion", "done": "defeated_red", "say": "High on Mt. Silver, where the snow never stops, someone has been training alone for years. They say he never says a word."}
+    ]}
   ]
 }

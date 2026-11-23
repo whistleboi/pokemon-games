@@ -342,6 +342,7 @@ class RouteActions:
         levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
         from src.world import feats as _feats
         _feats.note(self.game.story_manager, "finds")   # (a Feat: Pokemon found by Headbutt / Rock Smash)
+        _feats.note(self.game.story_manager, "headbutt")   # (Johto counts its Headbutt trees on their own)
 
         from src.states.battle import WildBattleState
         battle_state = WildBattleState(

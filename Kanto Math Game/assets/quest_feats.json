@@ -51,5 +51,69 @@
       [5, {"money": 3000}],
       [15, {"tm": "TM175", "items": {"ULTRA_BALL": 5}}],
       [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]}
+  ],
+  "JOHTO": [
+    {"id": "dex", "name": "Pokedex Pages", "count": "dex", "desc": "Own different Johto Pokemon: catch them, evolve them, hatch them, trade for them.", "tiers": [
+      [25, {"money": 5000, "items": {"GREAT_BALL": 5}}],
+      [50, {"money": 5000, "items": {"ULTRA_BALL": 5}}],
+      [75, {"money": 5000, "tm": "TM217"}],
+      [100, {"money": 5000, "items": {"RARE_CANDY": 3}}],
+      ["all", {"money": 10000, "items": {"MASTER_BALL": 1}}]]},
+    {"id": "types", "name": "Type Collector", "count": "types", "desc": "Own Johto Pokemon of as many different types as you can.", "tiers": [
+      [6, {"tm": "TM230"}],
+      [12, {"tm": "TM266", "items": {"GREAT_BALL": 5}}],
+      ["all", {"tm": "TM204", "money": 5000}]]},
+    {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in Johto. Rematches count too!", "tiers": [
+      [25, {"money": 2000}],
+      [100, {"tm": "TM167", "money": 3000}],
+      [250, {"tm": "TM192", "money": 5000}]]},
+    {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk Johto's towns, routes and caves step by step.", "tiers": [
+      [5000, {"items": {"SUPER_POTION": 5}}],
+      [20000, {"tm": "TM268", "items": {"HYPER_POTION": 3}}],
+      [50000, {"tm": "TM164", "items": {"MAX_REVIVE": 2}}]]},
+    {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [
+      [1, {"items": {"RARE_CANDY": 2}}],
+      [5, {"tm": "TM270", "items": {"RARE_CANDY": 3}}],
+      [10, {"tm": "TM306", "money": 10000}]]},
+    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in Johto.", "tiers": [
+      [10, {"money": 2000}],
+      [25, {"tm": "TM304", "money": 3000}],
+      [50, {"tm": "TM252", "money": 5000}]]},
+    {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [
+      [10, {"items": {"NET_BALL": 5}}],
+      [40, {"tm": "TM188", "items": {"LURE_BALL": 5}}],
+      [100, {"tm": "TM209", "items": {"NET_BALL": 10}}]]},
+    {"id": "headbutt", "name": "Tree Shaker", "count": "headbutt", "desc": "Headbutt trees until a wild Pokemon falls out.", "tiers": [
+      [5, {"items": {"GREAT_BALL": 5}}],
+      [20, {"tm": "TM326"}],
+      [50, {"tm": "TM271", "money": 5000}]]},
+    {"id": "smash", "name": "Rock Breaker", "count": "smash", "desc": "Find wild Pokemon hiding in rocks with Rock Smash.", "tiers": [
+      [3, {"items": {"DUSK_BALL": 5}}],
+      [10, {"tm": "TM282"}],
+      [25, {"tm": "TM220", "money": 5000}]]},
+    {"id": "apricorns", "name": "Apricorn Picker", "count": "apricorns", "desc": "Pick Apricorns from the trees around Johto. Kurt in Azalea makes them into balls.", "tiers": [
+      [10, {"money": 2000}],
+      [40, {"tm": "TM307", "items": {"ULTRA_BALL": 5}}],
+      [100, {"tm": "TM206", "money": 5000}]]},
+    {"id": "contests", "name": "Bug Catcher", "count": "contests", "desc": "Take part in the Bug-Catching Contest in the National Park.", "tiers": [
+      [1, {"items": {"GREAT_BALL": 5}}],
+      [5, {"tm": "TM300", "money": 2000}],
+      [10, {"tm": "TM219", "money": 5000}]]},
+    {"id": "contest_wins", "name": "Contest Champion", "count": "contest_wins", "desc": "Win first place in the Bug-Catching Contest.", "tiers": [
+      [1, {"money": 3000}],
+      [3, {"tm": "TM185", "items": {"ULTRA_BALL": 5}}],
+      [5, {"tm": "TM346", "money": 10000}]]},
+    {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
+      [5, {"items": {"SUN_STONE": 1}}],
+      [20, {"tm": "TM240", "items": {"KINGS_ROCK": 1}}],
+      [50, {"tm": "TM227", "items": {"METAL_COAT": 1, "DRAGON_SCALE": 1}}]]},
+    {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [
+      [1, {"money": 2000}],
+      [4, {"tm": "TM260", "items": {"SUN_STONE": 1}}],
+      [8, {"tm": "TM190", "money": 5000}]]},
+    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
+      [25, {"items": {"GREAT_BALL": 10}}],
+      [100, {"tm": "TM193", "items": {"ULTRA_BALL": 10}}],
+      [250, {"tm": "TM180", "money": 10000}]]}
   ]
 }

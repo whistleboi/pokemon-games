@@ -2743,6 +2743,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         """The judges score your best catch against the other contestants'; prizes; you keep your bug."""
         c, self.contest = self.contest, None
         story = self.game.story_manager
+        from src.world import feats as _feats
+        _feats.note(story, "contests")   # (a Feat: Bug-Catching Contests entered)
         lines = ["Time's up! The Bug-Catching Contest is over." if c["turns"] <= 0 or c["balls"] <= 0
                  else "You left the contest early. Let's see how you did!"]
         if c["best"] is None:
@@ -2761,6 +2763,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 story.add_item(prize)
                 if place == 0:
                     story.story_flags["won_bug_contest"] = True
+                    _feats.note(story, "contest_wins")   # (a Feat: contests won)
             else:
                 winner = board[0][1]
                 lines.append(f"{winner} won with {board[0][0]} points. You came in {place + 1}th.")
@@ -3533,6 +3536,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         f.movers.append(mover)
         from src.world import feats as _feats
         _feats.note(self.game.story_manager, "finds")   # (a Feat: Pokemon found by Headbutt / Rock Smash)
+        _feats.note(self.game.story_manager, "smash")   # (Johto counts its Rock Smash finds on their own)
         self.say(["Your Pokemon used Rock Smash!", f"A wild {getattr(mon, 'display_name', 'Pokemon')} jumped out!"],
                  then=lambda: self._meet_wild(mover))
 
