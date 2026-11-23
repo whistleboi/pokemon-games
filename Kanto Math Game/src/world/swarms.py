@@ -18,7 +18,10 @@ SWARMS = {
                "SINNOH_ROUTE_222": 300, "SINNOH_ROUTE_224": 177, "SINNOH_ROUTE_225": 296, "SINNOH_ROUTE_226": 98,
                "SINNOH_ROUTE_227": 327, "SINNOH_ROUTE_228": 374, "SINNOH_ROUTE_229": 127, "SINNOH_ROUTE_230": 222,
                "VALLEY_WINDWORKS": 309, "ETERNA_FOREST": 287},
-    "JOHTO": {"JOHTO_ROUTE_34": 280, "JOHTO_ROUTE_45": 333, "KANTO_ROUTE_27": ("surf", 370), "VIOLET_CITY": ("super_rod", 340)},
+    # Johto (11-22: SoulSilver's whole Johto list, from Bulbapedia's area pages; sources/johto): "fish" = on any rod, HGSS's way
+    "JOHTO": {"DARK_CAVE": 206, "JOHTO_ROUTE_32": ("fish", 211), "JOHTO_ROUTE_34": 280, "JOHTO_ROUTE_35": 193, "JOHTO_ROUTE_38": 209,
+              "JOHTO_ROUTE_44": ("fish", 223), "JOHTO_ROUTE_45": 333, "JOHTO_ROUTE_47": 132, "MT_MORTAR": 183,
+              "KANTO_ROUTE_27": ("surf", 370), "VIOLET_CITY": ("fish", 340)},
 }
 PLACE = {"VALLEY_WINDWORKS": "the Valley Windworks", "ETERNA_FOREST": "Eterna Forest"}
 SHARE = 0.4   # (Platinum: the swarm takes the grass table's two 20% slots)
@@ -47,7 +50,7 @@ def _entry(e):
 
 
 def kind_today(story, region, day=None):
-    """How today's swarm is met: "grass", "surf", "good_rod" or "super_rod" (None: no swarm)."""
+    """How today's swarm is met: "grass", "surf", "fish" (any rod), "good_rod" or "super_rod" (None: no swarm)."""
     sw = today(story, region, day)
     return _entry(SWARMS[str(region).upper()][sw[0]])[0] if sw else None
 
@@ -57,7 +60,8 @@ def adjust(game, pool, area_key, kind="grass"):
     story = game.story_manager
     region = story.area_region(area_key) if hasattr(story, "area_region") else story.get_current_region()
     sw = today(story, region)
-    if not sw or sw[0] != area_key or not pool or kind_today(story, region) != kind:
+    k = kind_today(story, region)
+    if not sw or sw[0] != area_key or not pool or not (k == kind or (k == "fish" and str(kind).endswith("_rod"))):
         return pool
     pool = dict(pool)
     sp = str(sw[1])

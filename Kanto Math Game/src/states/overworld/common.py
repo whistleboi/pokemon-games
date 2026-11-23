@@ -1270,11 +1270,27 @@ def _tutor_flow(state, tu, ev, head, show, flag=None, price=0):
     from src.states.systems.pick_list import PickListState
     game = state.game
     story = game.story_manager
+    if not price and tu.get("price") and not _bp_tutor_unlocked(game, tu["move"]):   # (a tutor paid in money, 11-22: "price" $ or
+        if str(tu["price"]) == "tm":                                                  #  "tm" - the move's TM price; once only, it unlocks)
+            from src.pokemon import tms as _tms
+            _k = _tms.key_for_move(game, str(tu["move"]).upper().replace("_", "-"))
+            price = int(_tms.price(game, _k)) if _k else _tutor_price(game, tu["move"])
+        else:
+            price = int(tu["price"])
     can, fail = _tutor_candidates(game, tu, ev)
+    if fail and _bp_tutor_unlocked(game, tu["move"]):   # (unlocked: every Pokemon that can learn it has it already, as with a TM)
+        show([f"You've unlocked {tu['move'].replace('-', ' ').title()} already! Every Pokemon of yours that can learn it has it ready:"
+              " pick it in the Summary."])
+        return
     if fail:
         if flag:
             story.story_flags.pop(flag, None)
         show(_resolve_lines(game, fail))
+        return
+    if price and getattr(story, "money", 0) < price:
+        if flag:
+            story.story_flags.pop(flag, None)
+        show([f"Teaching {tu['move'].replace('-', ' ').title()} costs ${price:,}... You don't have enough money right now."])
         return
 
     def go(who):
@@ -1349,7 +1365,12 @@ def _tutor_again(state, ev, show):
     tu = dict(ev["tutor"])
     tu.pop("take", None)   # (Copycat wants a doll once; after that, money like the rest)
     move = tu["move"].replace("-", " ").title()
-    price = int(ev.get("repeat_price") or tu.get("price") or _tutor_price(game, tu["move"]))
+    if _bp_tutor_unlocked(game, tu["move"]):   # (unlocked by the first lesson, 11-22: again for free, as a TM would)
+        tu.pop("bp", None); tu.pop("coins", None)
+        _say_then(state, _resolve_lines(game, ev.get("done") or []) + [f"You've unlocked {move} for good! I'll teach it again, free."],
+                  lambda: _tutor_flow(state, tu, ev, [], show))
+        return
+    price = int(ev.get("repeat_price") or (tu.get("price") if str(tu.get("price", "")).isdigit() else 0) or _tutor_price(game, tu["move"]))
     lines = _resolve_lines(game, ev.get("done") or []) + [f"I can teach {move} again, to any Pokemon that can learn it. That'll be ${price:,}."]
 
     def answer(yes):
@@ -1392,7 +1413,7 @@ def _tutor_teach(game, tu, ev, who=None):
     from src.pokemon import moves as _mv
     story = game.story_manager
     can, fail = _tutor_candidates(game, tu, ev)
-    if fail and tu.get("bp") and _bp_tutor_unlocked(game, tu["move"]):   # (paid for already: every Pokemon that can learn it has
+    if fail and _bp_tutor_unlocked(game, tu["move"]):   # (unlocked already - any tutor, 11-22: every Pokemon that can learn it has
         return ["\x00fail", f"You've unlocked {tu['move'].replace('-', ' ').title()} already! Every Pokemon of yours that can learn it"
                 " has it ready: pick it in the Summary."]                  #  it in its moves to pick, as with a TM)
     if fail:
@@ -1413,12 +1434,14 @@ def _tutor_teach(game, tu, ev, who=None):
     if short:   # (Platinum's Shard tutors: you need the Shards first; 11-19)
         want = ", ".join(f"{q} {i.replace('_', ' ').title()}{'s' if q > 1 else ''}" for i, q in (tu.get("take") or {}).items())
         return ["\x00fail", f"For {tu['move'].replace('-', ' ').title()} I'll need {want}. Come back when you have them!"]
+    if not _bp_tutor_unlocked(game, tu["move"]):   # (Jordan 11-22: "the move tutors are TM salesmen" - whatever a tutor is paid in,
+        unlocked_now = True                        #  money, BP, Shards, coins, or nothing, using it unlocks the move for good, as its TM)
     who = who if who in can else can[0]
     _mv.move_pool(game, who).append(tu["move"])
     if len(who.moves) < _mv.MAX_MOVES:
         who.moves.append(tu["move"])
     out = [f"{who.display_name.upper()} learned {tu['move'].replace('-', ' ')}! (Set its moves in the Summary.)"]
-    if unlocked_now:   # (one payment: the move is yours, its TM too where there is one; teaching it again is free)
+    if unlocked_now:   # (one use: the move is yours, its TM too where there is one; teaching it again is free)
         out += _bp_tutor_unlock(game, tu["move"])
     return out
 

@@ -120,8 +120,8 @@ def reachable(key, m):
                 todo.append(n)
     near = lambda t: any((t[0] + dx, t[1] + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
     cut = [("exit", t) for t in exits if t not in seen and not near(t)]
-    # (in a room, someone behind a counter is talked to across it)
-    over = lambda t: m.get("theme") == "room" and any(0 <= t[1] + dy < h and 0 <= t[0] + dx < w and art[t[1] + dy][t[0] + dx] == "m"
+    # (someone behind a counter is talked to across it: in a room, or a cave's desk - the Cliff Edge Gate's Safari desk, 11-22)
+    over = lambda t: any(0 <= t[1] + dy < h and 0 <= t[0] + dx < w and art[t[1] + dy][t[0] + dx] == "m"
                                                       and (t[0] + 2 * dx, t[1] + 2 * dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
     at = lambda x, y: art[y][x] if 0 <= y < h and 0 <= x < w else "c"
     over2 = lambda t: m.get("theme") == "room" and any(at(t[0] + dx, t[1] + dy) == "m" and at(t[0] + 2 * dx, t[1] + 2 * dy) == "m" and (t[0] + 3 * dx, t[1] + 3 * dy) in seen

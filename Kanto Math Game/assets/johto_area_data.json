@@ -1281,9 +1281,9 @@
 
                 {"action": "EVENT", "event": { "quips": "move_reminder","lines": ["A Heart Scale! Hand it over and I'll help your Pokemon remember a move it forgot... is what I used to say.", "These days nothing's ever forgotten! Every move is right there in the Summary, all the time. Technology!", "Forty years of tutoring, replaced by a menu. I keep the Heart Scales for my collection now. Want to see? ...No? Fair."]}, "text": "Move Reminder", "door": "movehouse"},
 
-                {"text": "Grandma Wilma", "action": "EVENT", "door": "movehouse", "color": "GOLD", "event": {"lines": ["Hohoho... They call me Grandma Wilma. I sense a little talent as a Dragon Tamer in you.", "Let me teach the strongest Dragon move there is, Draco Meteor, to a Dragon that loves you dearly."], "tutor": {"move": "DRACO-METEOR", "like": "DRACO-METEOR", "min_friend": 220}, "fail": ["Grandma Wilma: Only a Dragon-type Pokemon can master Draco Meteor. Bring me one!"], "not_close": ["Grandma Wilma: Your Dragon isn't close enough to you yet. Spend more time together, and come back."]}},
+                {"text": "Grandma Wilma", "action": "EVENT", "door": "movehouse", "color": "GOLD", "event": {"lines": ["Hohoho... They call me Grandma Wilma. I sense a little talent as a Dragon Tamer in you.", "Let me teach the strongest Dragon move there is, Draco Meteor, to a Dragon that loves you dearly."], "tutor": {"move": "DRACO-METEOR", "like": "DRACO-METEOR", "min_friend": 220, "price": "tm"}, "fail": ["Grandma Wilma: Only a Dragon-type Pokemon can master Draco Meteor. Bring me one!"], "not_close": ["Grandma Wilma: Your Dragon isn't close enough to you yet. Spend more time together, and come back."]}},
 
-                {"text": "Old man", "action": "EVENT", "door": "movehouse", "color": "GOLD", "event": {"lines": ["Your quest for power has brought you here... Very well. The ultimate moves, for the fully grown first partners who love you most."], "tutor": {"choices": ["FRENZY-PLANT", "BLAST-BURN", "HYDRO-CANNON"], "min_friend": 220}, "fail": ["None of your Pokemon can master that move. Only the final form of a first partner can!"], "not_close": ["It could learn it, but its heart isn't yet one with yours. Come back when you're inseparable."]}}
+                {"text": "Old man", "action": "EVENT", "door": "movehouse", "color": "GOLD", "event": {"lines": ["Your quest for power has brought you here... Very well. The ultimate moves, for the fully grown first partners who love you most."], "tutor": {"choices": ["FRENZY-PLANT", "BLAST-BURN", "HYDRO-CANNON"], "min_friend": 220, "price": "tm"}, "fail": ["None of your Pokemon can master that move. Only the final form of a first partner can!"], "not_close": ["It could learn it, but its heart isn't yet one with yours. Come back when you're inseparable."]}}
 
             ],
 
@@ -1710,13 +1710,7 @@
 
             "trainer_pool": [
 
-                {"name": "Youngster Joey", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19], "rewards": {"balls": 2}},
-
-                {"name": "Bug Catcher Don", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10], "rewards": {"balls": 2}},
-
-                {"name": "Picnicker Liz", "class": "PICNIKER", "sprite": "lass.png", "team": [29], "rewards": {"balls": 2}},
-
-                {"name": "Lass Dana", "class": "LASS", "sprite": "lass.png", "team": [16], "rewards": {"balls": 2}}
+                
 
             ],
 
@@ -1773,8 +1767,6 @@
                 {"name": "Youngster Mikey", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19, 16], "rewards": {"balls": 2}},
 
                 {"name": "Bug Catcher Don", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 10], "rewards": {"balls": 2}},
-
-                {"name": "Youngster Nick", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19], "rewards": {"balls": 2}},
 
                 {"name": "Lass Bud", "class": "LASS", "sprite": "lass.png", "team": [16], "rewards": {"balls": 2}},
 
@@ -2059,8 +2051,6 @@
             "trainer_pool": [
         
                 {"name": "Youngster Ian", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [56, 50], "rewards": {"balls": 2}},
-        
-                {"name": "Lass Carrie", "class": "LASS", "sprite": "lass.png", "team": [174, 174, 35], "rewards": {"balls": 2}},
         
                 {"name": "Picnicker Gina", "class": "PICNIKER", "sprite": "lass.png", "team": [187, 187, 1], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [187, 187, 2], "levels": [24, 24, 32]}, {"team": [188, 188, 2], "levels": [26, 26, 44], "gift": {"LEAF_STONE": 1}}, {"team": [188, 189, 3], "levels": [30, 36, 55]}], "call": ["Hi, it's Gina! My Pokemon grew so much. Battle me on Route 34? I have something for you, too!"]}},
         
@@ -4140,13 +4130,7 @@
 
             "trainer_pool": [
 
-                {"name": "Cooltrainer Gwen", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [148, 117], "rewards": {"balls": 3}},
-
-                {"name": "Cooltrainer Paul", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [148, 130], "rewards": {"balls": 3}},
-
-                {"name": "Dragon Tamer Mike", "class": "COOLTRAINER", "sprite": "dragon_tamer.png", "team": [147, 147, 147], "rewards": {"balls": 3}},
-
-                {"name": "Dragon Tamer Darin", "class": "COOLTRAINER", "sprite": "dragon_tamer.png", "team": [147, 147, 148], "rewards": {"balls": 5, "DRATINI": 1}, "victory_flag": "received_den_dratini"},
+                {"name": "Cooltrainer Darin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [148], "rewards": {"balls": 5, "DRATINI": 1}, "victory_flag": "received_den_dratini"},
 
                 {"name": "Ace Trainer Kobe", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [148], "rewards": {"balls": 2}},
 
@@ -4206,13 +4190,7 @@
         
             "trainer_pool": [
         
-                {"name": "Ace Trainer Gaven", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [160, 212, 130], "rewards": {"balls": 5}},
-        
-                {"name": "Ace Trainer Kevin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [6, 121, 143], "rewards": {"balls": 5}},
-        
-                {"name": "Ace Trainer Irene", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [3, 131, 242], "rewards": {"balls": 5}},
-        
-                {"name": "Ace Trainer Reena", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [9, 196, 232], "rewards": {"balls": 5}}
+                
         
             ],
         

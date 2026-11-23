@@ -7629,6 +7629,9 @@
     "CLIFF_EDGE_GATE:Traveller": {
       "sheet": "hg_middlewoman1.png"
     },
+    "CLIFF_EDGE_GATE:Safari desk": {
+      "sheet": "hg_middlewoman1.png"
+    },
     "JOHTO_CLIFF_CAVE:Cave guide": {
       "sheet": "hg_gsmiddleman1.png"
     },

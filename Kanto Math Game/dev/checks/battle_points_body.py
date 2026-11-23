@@ -222,4 +222,33 @@ _tp = _tms.key_for_move(g, "THUNDER-PUNCH"); story.inventory.pop(_tp, None); sto
 story.story_flags[bpl.BP_FLAG] = 70
 out = _tutor_teach(g, dict(tu, move="THUNDER-PUNCH", like="THUNDER-PUNCH", bp=tu["bp_costs"]["THUNDER-PUNCH"]), ev, who=pika)
 check(bpl.bp(story) == 6 and story.inventory.get(_tp) == 1, f"Thunder Punch: 64 BP once, unlocked like its TM ({bpl.bp(story)} BP left; {out[-1]})")
+print("10) every tutor is a TM seller (Jordan 11-22): Blackthorn's, paid in money, unlock the move for good")
+from src.states.overworld.common import _tutor_flow
+bt = {o["text"]: o.get("event") or {} for o in g.loader.area_data["STORY_PROGRESSION"]["BLACKTHORN_CITY"]["explore_options"] if o.get("text")}
+check(all(k in bt for k in ("Move Deleter", "Move Reminder", "Grandma Wilma", "Old man")), "the move house: the Deleter, the Reminder, Grandma Wilma, the old man")
+check(bt["Move Deleter"].get("quips") and bt["Move Reminder"].get("quips") and not bt["Move Deleter"].get("tutor"),
+      "the Deleter and Reminder only joke now (their jobs are gone: every move stays in the Summary)")
+ev = bt["Grandma Wilma"]
+drag = Pokemon(g.loader.fetch_specific(149), g.assets); drag.friendship = 255; story.player_team = [drag]
+_dm = _tms.key_for_move(g, "DRACO-METEOR"); story.inventory.pop(_dm, None); story.story_flags.pop("bp_tutor_DRACO-METEOR", None)
+_mvp = __import__("src.pokemon.moves", fromlist=["move_pool"]).move_pool(g, drag)
+while "DRACO-METEOR" in _mvp:
+    _mvp.remove("DRACO-METEOR")
+_said = []
+_tp_price = _tms.price(g, _dm)
+story.money = 100
+_tutor_flow(g.current_state, ev["tutor"], ev, [], lambda l: _said.extend(l))
+check(not story.inventory.get(_dm) and story.money == 100 and "enough money" in " ".join(_said), f"Draco Meteor costs its TM's price (${_tp_price}): short, nothing happens")
+story.money = _tp_price + 50; _said.clear()
+_tutor_flow(g.current_state, ev["tutor"], ev, [], lambda l: _said.extend(l))
+_mvp = __import__("src.pokemon.moves", fromlist=["move_pool"]).move_pool(g, drag)
+check(story.money == 50 and story.inventory.get(_dm) == 1 and "DRACO-METEOR" in _mvp, f"paid once: Dragonite learns it and the TM is yours (${story.money}, {_said})")
+_mvp = __import__("src.pokemon.moves", fromlist=["move_pool"]).move_pool(g, drag)
+while "DRACO-METEOR" in _mvp:
+    _mvp.remove("DRACO-METEOR")
+drag.moves = [m for m in drag.moves if m != "DRACO-METEOR"]
+_said.clear()
+_tutor_flow(g.current_state, ev["tutor"], ev, [], lambda l: _said.extend(l))
+_mvp = __import__("src.pokemon.moves", fromlist=["move_pool"]).move_pool(g, drag)
+check(story.money == 50 and "DRACO-METEOR" in _mvp and "unlocked" in " ".join(_said), f"again: nothing to pay - it's unlocked, in the Summary like a TM's move (${story.money}, {_said})")
 print(f"##### {len(fails)} failures")

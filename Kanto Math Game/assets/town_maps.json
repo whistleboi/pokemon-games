@@ -38359,10 +38359,10 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGGGGGGTTTTTTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"...TTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGGDDGGTTTTTTTTTT.\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTT.........)........ffTTTTTTffff......TTTT\"\"\"\"..\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTT.........).........fTTTTTTffX.......TTTT\"\"\"\"..\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTT.........).........fTTTTTTff........TTTT\"\"\"\"..\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTT......N......)\"\"\"\"\"\"......TTTTf.N.......TTTT\"\"\"\"..\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTT.............)\"\"\"\"\"\"\".....TTTT..........TTTT\"\"\"\"\"\"TTTT....TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTT.ff.TTTTTT.........X...)\"\"\"\"\"\"\"\".......f..........TTTT\"\"\"\"\"\"TTTT..ffTTTTTTTTTTTTf..ff.TTTTTT",
+   "TTTT.ff.TTTTTT.............)\"\"\"\"\"\"\"\".......f..........TTTT\"\"\"\"\"\"TTTT..ffTTTTTTTTTTTTf..ff.TTTTTT",
    "TTTT.ff.TTTTTT..........N..)\"\"\"\"\"\"\"\"TT....fff.........TTTT\"\"\"\"\"\"TTTT...fTTTTTTTTTTTT......TTTTTT",
    "............TT____...______c\"\"\"\"\"\"\"\"TT....fff.........\"\"\"\"\"\"\"\"\"\"TTTT....TTTTTTTT.ff............>",
    ".....!......TT..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTT..ff........\"\"\"\"\"\"\"\"\"\"TTTT....TTTTTTTT.ff...!........>",
@@ -38371,13 +38371,13 @@
    "<===========(.................TTTTff..ffTTTTTTTT...TT.TTTTTTTT\"\"TTTT\"\"\"\"...)\"\"\"\"\"\"...==========>",
    "<.==========c_____..._________TTTT......TTTTTTTT___cT2TTTTTTTT\"\"TTTT\"\"\"\"...)\"\"\"\"\"\"\"...========.>",
    "......\"\"=================.................ffTTTT...(.......fff......\"\"\"\"...)\"\"\"\"\"\"\"\"...........>",
-   "TTTTTT\"\"==================.....X...TTTT.....TTTT...(........fff.....\"\"\"\"...)\"\"\"\"\"\"\"\"......TTTTTT",
+   "TTTTTT\"\"==================.........TTTT.....TTTT...(........fff.....\"\"\"\"...)\"\"\"\"\"\"\"\"......TTTTTT",
    "TTTTTT\"\".================.......N..TTTT.....TTff...(.........fTTTT..\"\"\"\"...)\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTT",
    "TTTTTT\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTT.....TTTTTTTT2TTff...(.N........TTTT.........)\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTT",
    "TTTTTT\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTT.....TTTTTTTT........(..........TTTT.........)===\"\"\"\"\"\"\"\"\"\"\"TTTTTT",
    "TTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTT_____TTTTTTTT........c____..____TTTT_________c===\"\"\"TTTTTTTTTTTTTT",
    "TTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTT...........ff.............=...ffTTTT\"\"\"\"\"\"\".=====\"\"\"TTTTTTTTTTTTTT",
-   "TTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTT...................X.....===...fTTTT\"\"\"\"\"\"\".====.\"TTTTTTTTTTTTTTTT",
+   "TTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTT.........................===...fTTTT\"\"\"\"\"\"\".====.\"TTTTTTTTTTTTTTTT",
    "TTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTT....................N....===....TTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTT",
    "TTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.............============..\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.............============..\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTT",
@@ -38419,12 +38419,7 @@
     "East: New Bark Town"
    ]
   ],
-  "trainer_spots": [
-   "Lass Dana",
-   "Youngster Joey",
-   "Bug Catcher Don",
-   "Picnicker Liz"
-  ],
+  "trainer_spots": [],
   "overheads": [
    {
     "kind": "picture",
@@ -39689,7 +39684,7 @@
    "TTTTc___=TTTTTTTT........TTTTccc",
    "TTTTc.==N\"\"TTTT...fff.=..TTTTccc",
    "TTTTc.===\"\"TTTT...fff===.TTTTccc",
-   "TTTTc.==X\"\"\"\"TT...fff===.TTTTccc",
+   "TTTTc.==.\"\"\"\"TT...fff===.TTTTccc",
    "ccccc.===X\"\"\"TT..!...===.TTTTccc",
    "cTT...===.......========.TTTTccc",
    "cTT...===....ff=========.TTTTccc",
@@ -39808,7 +39803,6 @@
   "trainer_spots": [
    "Bug Catcher Don",
    "Youngster Mikey",
-   "Youngster Nick",
    "Youngster Joey"
   ],
   "overheads": [
@@ -47123,7 +47117,7 @@
    "ooTT=====...TTTTTTTTTTTTTTTTTTTT",
    "ooTT======..TTTTTTTTTTTTTTTTTTTT",
    "ooTT=======.TTTTTTTTTTTTTTTTTTTT",
-   "ooTT=======XTTTTTTTTTTTTTTTTTTTT",
+   "ooTT=======.TTTTTTTTTTTTTTTTTTTT",
    "ooTT=======.X.TTTTTTTTTTTTTTTTTT",
    "ooTT.======...TTTTTTTTTTTTTTTTTT",
    "ooqqoo=====....AAAAAAATTTTTTTTTT",
@@ -47260,7 +47254,6 @@
   ],
   "trainer_spots": [
    "Camper Todd",
-   "Lass Carrie",
    "Officer Keith",
    "Youngster Ian",
    "Picnicker Gina",
@@ -78684,7 +78677,7 @@
      "ccccccccccccccccccccc...1.....cccccccccccccccccccc",
      "cccccccccccccccccccc..........cccccccccccccccccccc",
      "ccccccccccccccccccc...........cccccccccccccccccccc",
-     "ccccccccccccccccccccccc..Xcccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc...cccccccccccccccccccccccc",
      "ccccccccccccccccc.........Xccccccccccccccccccccccc",
      "ccccccccccccccccc...........cccccccccccccccccccccc",
      "ccccccccccc........cccc...cccccccccccccccccccccccc",
@@ -78694,7 +78687,7 @@
      "cccccccc..coooqoooooooo...ooooooooqqc.Nccccccccccc",
      "cccccccc...oooooooooooo...ooooooooooc..ccccccccccc",
      "cccccccc...oooooooooooo...oooooooooocccccccccccccc",
-     "ccccccccX.coocooooooooooooooooooooooococcccccccccc",
+     "cccccccc..coocooooooooooooooooooooooococcccccccccc",
      "ccccccccX.cooccoooooooooooooooooooooococcccccccccc",
      "cccccccc..cooocooooooooooooooooooooooooccccccccccc",
      "ccccc.....ccccoooooooooooooooooooccooocccccccccccc",
@@ -78704,7 +78697,7 @@
      "cccccoooooooooooocoocc~ooooooooooooccccccccccccccc",
      "cccccooooooccoocoooocccooooooooooooccccccccccccccc",
      "ccc..oooooooooocooccoooooooooooocooccccccccccccccc",
-     "ccX..oooooooooccccoooooooooooooocooccccccccccccccc",
+     "cc...oooooooooccccoooooooooooooocooccccccccccccccc",
      "ccX..oooooooccccoooooooooooooooooooccccc.ccc..cccc",
      "ccX..ooooooocoocoooooooooooooooooocccooc...c...ccc",
      "cc...qcooooccooooooooooooooooooooooccoo........ccc",
@@ -78750,13 +78743,10 @@
      ]
     },
     "trainer_spots": [
-     "Cooltrainer Gwen",
      "Ace Trainer Kobe",
-     "Cooltrainer Paul",
      "Ace Trainer Piper",
-     "Dragon Tamer Mike",
      "Twins Clea & Gil",
-     "Dragon Tamer Darin"
+     "Cooltrainer Darin"
     ],
     "signs": [
      [
@@ -78842,10 +78832,7 @@
    "B1F"
   ],
   "figure_floors": {
-   "Cooltrainer Gwen": 1,
-   "Cooltrainer Paul": 1,
-   "Dragon Tamer Mike": 1,
-   "Dragon Tamer Darin": 1,
+   "Cooltrainer Darin": 1,
    "MAX ELIXIR": 1,
    "IRON": 1,
    "CALCIUM": 1,
@@ -80877,7 +80864,7 @@
      "cccccc$$$$$$$$$$cccccccc...ccccccccc.....cc.cccc.cc",
      "ccccccooooooooooccccccc..................cc......cc",
      "ccccccooooooooooccccc.c................cccccccccccc",
-     "ccccccooooooooooccccc.................Xcccccccccccc",
+     "ccccccooooooooooccccc..................cccccccccccc",
      "ccccccooooooooooooccc..cccccccccccccccccccccccccccc",
      "ccccccccccccooooooccc..cccccccccccccccccccccccccccc",
      "ccccccccccccooooooccc..cccccccccccccccccccccccccccc",
@@ -80890,7 +80877,7 @@
      "cccc...........cccc....cccccccccccccccccccccccccccc",
      "ccc............cccc....ccccccccccc.............cccc",
      "ccccccccccc/ccccccccc..ccccccccccc............1cccc",
-     "ccccccccccc/ccccccccc........X.................cccc",
+     "ccccccccccc/ccccccccc..........................cccc",
      "ccccccccccc/ccccccccc...............ccccccccccccccc",
      "cccccc............ccc...............ccccccccccccccc",
      "ccccccooooooooooooccc...............ccc......cccccc",
@@ -80949,10 +80936,7 @@
       22
      ]
     },
-    "trainer_spots": [
-     "Ace Trainer Kevin",
-     "Ace Trainer Gaven"
-    ],
+    "trainer_spots": [],
     "hidden": {
      "38,38": "DIRE_HIT",
      "3,32": "ULTRA_BALL",
@@ -81224,7 +81208,7 @@
      "cc..cc..ccccccccccccccccccccc..cc..cc.1cc",
      "cc..cc..ccccccccccccccccccccc..cc..cc..cc",
      "cc..cc..cc......cc.............cc..cc..cc",
-     "cc.ccc..cc......cN..........X..cc..cc..cc",
+     "cc.ccc..cc......cN.............cc..cc..cc",
      "cc.ccc..cc..cc..ccccccccccccc..cc..cc..cc",
      "cc..cc..cc..cc..ccccccccccccc..cc..cc..cc",
      "cc..cc..cc..cc.............cc..cc..cc..cc",
@@ -81246,7 +81230,7 @@
      "cc..cc..cc.....................cc..cc..cc",
      "cc.ccc..ccccccccccccccccccccccccc..cc..cc",
      "cc.ccc..ccccccccccccccccccccccccc..cc.1cc",
-     "cc..cc......................X......cc..cc",
+     "cc..cc.............................cc..cc",
      "cc..cc.............................cc..cc",
      "cc..ccccccccccccccccccccccccccccccccc.ccc",
      "cc..ccccccccccccccccccccccccccccccccccccc",
@@ -81294,10 +81278,7 @@
       42
      ]
     },
-    "trainer_spots": [
-     "Ace Trainer Irene",
-     "Ace Trainer Reena"
-    ],
+    "trainer_spots": [],
     "hidden": {
      "2,19": "MAX_POTION",
      "38,2": "IRON"
@@ -81617,11 +81598,7 @@
    "Summit"
   ],
   "figure_floors": {
-   "Ace Trainer Kevin": 0,
-   "Ace Trainer Gaven": 0,
    "SEEK MOLTRES": 3,
-   "Ace Trainer Irene": 4,
-   "Ace Trainer Reena": 4,
    "CHALLENGE RED": 7,
    "REAPER CLOTH": 0,
    "DAWN STONE": 1,
@@ -82270,12 +82247,13 @@
       "f": "ss_ground/D37R0101.png",
       "at": [
        0,
-       1
+       5
       ],
       "px": 32
      },
      "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     "_signs_in_picture": true,
+     "_screen": true
     },
     "links": {
      "8,2": [
@@ -82325,7 +82303,7 @@
       "f": "ss_top/D37R0101.png",
       "at": [
        0,
-       1
+       5
       ],
       "size": [
        32,
@@ -82517,12 +82495,13 @@
       "f": "ss_ground/D37R0102.png",
       "at": [
        0,
-       1
+       5
       ],
       "px": 32
      },
      "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     "_signs_in_picture": true,
+     "_screen": true
     },
     "links": {
      "4,2": [
@@ -82573,7 +82552,7 @@
       "f": "ss_top/D37R0102.png",
       "at": [
        0,
-       1
+       5
       ],
       "size": [
        29,
@@ -82705,12 +82684,13 @@
       "f": "ss_ground/D37R0104.png",
       "at": [
        0,
-       2
+       6
       ],
       "px": 32
      },
      "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     "_signs_in_picture": true,
+     "_screen": true
     },
     "links": {
      "27,2": [
@@ -82781,7 +82761,7 @@
       "f": "ss_top/D37R0104.png",
       "at": [
        0,
-       2
+       6
       ],
       "size": [
        32,
@@ -83312,12 +83292,13 @@
       "f": "ss_ground/D37R0105.png",
       "at": [
        0,
-       2
+       6
       ],
       "px": 32
      },
      "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     "_signs_in_picture": true,
+     "_screen": true
     },
     "links": {
      "3,16": [
@@ -83370,7 +83351,7 @@
       "f": "ss_top/D37R0105.png",
       "at": [
        0,
-       2
+       6
       ],
       "size": [
        31,
@@ -83561,12 +83542,13 @@
       "f": "ss_ground/D37R0103.png",
       "at": [
        0,
-       1
+       5
       ],
       "px": 32
      },
      "_buildings_in_picture": true,
-     "_signs_in_picture": true
+     "_signs_in_picture": true,
+     "_screen": true
     },
     "links": {
      "25,2": [
@@ -83674,7 +83656,7 @@
       "f": "ss_top/D37R0103.png",
       "at": [
        0,
-       1
+       5
       ],
       "size": [
        30,
@@ -85519,9 +85501,9 @@
     "art": [
      "cccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccc",
-     "ccccccc...ccccc.ccccccccc.cc",
-     "ccccccc...ccccc.ccccccccc.cc",
-     "ccccccc...ccccc.cccccc....cc",
+     "ccccccc...ccccc.c....cccc.cc",
+     "ccccccc...ccccc.c..N.cccc.cc",
+     "ccccccc...ccccc.cmmmmc....cc",
      "ccccccc........N..........cc",
      "ccccccc........N.........>cc",
      "ccccccc...ccccc...........cc",
@@ -85560,6 +85542,16 @@
      "25,9": "BIG_PEARL"
     },
     "people": [
+     {
+      "text": "Safari desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome, welcome, to the Safari Zone desk! It's coming soon - so soon, so soon!",
+        "Wild Pokemon, wide-open spaces, the ride of a lifetime! Oh, I can hardly wait!"
+       ]
+      }
+     },
      {
       "text": "Worker",
       "action": "EVENT",
