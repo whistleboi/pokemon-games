@@ -69,6 +69,107 @@ PER = collections.OrderedDict()   # mission id -> its row of the table
 STATE = {"steps": 0, "battles": 0, "frames": 0, "shots": 0, "last_map": None, "forced": 0, "crashes": 0, "mission": None,
          "puzzles": 0, "seen_states": collections.Counter()}
 
+# ---------------------------------------------------------------- save points: where the run starts, where it stops (11-23)
+# (Jordan 11-23, from Sinnoh's run: a batch's check plays from a little before the batch and stops where the maps aren't
+#  built yet; older places don't change while a new batch is built, so an earlier clean run's save stands in for them.
+#  Sinnoh's: 23 minutes down to about 2.5.)
+#  - Every MAIN mission's start is saved (the game's own save data, where you stand included) to SAVES/<mission>.json,
+#    marked "clean" when nothing got stuck, crashed or hung before it in that run.
+#  - FROM (PT_FROM to change it for one run): the run loads that clean save and plays on. No clean save there yet: it
+#    starts from the beginning as before, making the saves on the way.
+#  - STOP_AT (PT_STOP; "none" for no stop): the first MAIN mission not built yet. Reaching it, or any MAIN mission after it
+#    in the Journal's list, ends the run as passed: "built so far".
+#  - PT_FULL=1: the whole story from the start with no stop (the long run, for closing a batch or merging to main).
+#  Each region sets its two ends here (its generator: make_jplaythrough / make_oplaythrough / make_splaythrough) and moves
+#  them when a batch closes. Empty: from the start, to the end, as before.
+FROM = ""
+STOP_AT = ""
+SAVES = OUT + "_saves"
+PT_FULL = os.environ.get("PT_FULL") == "1"
+PT_FROM = "" if PT_FULL else os.environ.get("PT_FROM", FROM)
+_pt_stop = "none" if PT_FULL else os.environ.get("PT_STOP", STOP_AT)
+MAIN_ORDER = [m["id"] for m in g.loader.area_data.get("JOURNAL_MISSIONS", []) if str(m.get("type")).upper() == "MAIN"]
+STOP_FROM = MAIN_ORDER.index(_pt_stop) if _pt_stop in MAIN_ORDER else None
+FROM_SAVE = None
+try:
+    import subprocess as _sp
+    _COMMIT = _sp.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, timeout=20).stdout.strip()
+except Exception:
+    _COMMIT = "?"
+
+
+def _fingerprint():
+    """What a save depends on, as one short hash (Jordan 11-23: a save made before the region's story, maps or the shared
+    story code changed is stale - trainers are kept by their place in an area's list, gates and flags move): this region's
+    areas (STORY_PROGRESSION), its walked maps (town_maps.json) and its MAIN/SIDE missions, plus src/world/story.py and
+    src/world/guide.py. Kanto's run takes Sevii in with it."""
+    import hashlib
+    reg = str(story.starting_region or "KANTO").upper()
+    mine = {reg, "SEVII"} if reg == "KANTO" else {reg}
+    keys = sorted(k for k, a in AREAS.items() if isinstance(a, dict) and str(a.get("region") or "KANTO").upper() in mine)
+    try:
+        _tmf = json.load(open(os.path.join("assets", "town_maps.json"), encoding="utf-8"))
+        _tmf = _tmf.get("maps", _tmf)
+    except (OSError, ValueError):
+        _tmf = {}
+    ms = [m for m in g.loader.area_data.get("JOURNAL_MISSIONS", [])
+          if str(m.get("region") or (m.get("condition") or {}).get("required_region") or (m.get("condition") or {}).get("start_region") or "KANTO").upper() in mine]
+    h = hashlib.sha1()
+    h.update(json.dumps([[k, AREAS[k], _tmf.get(k)] for k in keys], sort_keys=True, default=str).encode())
+    h.update(json.dumps(ms, sort_keys=True, default=str).encode())
+    for _src in ("src/world/story.py", "src/world/guide.py"):
+        try:
+            h.update(open(_src, "rb").read())
+        except OSError:
+            pass
+    return h.hexdigest()[:12]
+
+
+FINGERPRINT = _fingerprint()
+if PT_FROM:
+    try:
+        _sv = json.load(open(os.path.join(SAVES, PT_FROM + ".json"), encoding="utf-8"))
+    except (OSError, ValueError):
+        _sv = None
+    if _sv and _sv.get("clean") and _sv.get("fp") != FINGERPRINT:   # (made before this region's story, maps or the story code changed)
+        print(f"== STALE SAVE {PT_FROM} (saved {_sv.get('when')} at commit {_sv.get('commit')}): the region or the story code changed since"
+              " - the run starts at the beginning and makes fresh saves", flush=True)
+        _sv = dict(_sv, clean=False, stale=True)
+    if _sv and _sv.get("clean"):
+        g.data.data = _sv["data"]
+        g.load_game_data()
+        g.player_name, g.player_character = _sv["player"]
+        story = g.story_manager
+        FROM_SAVE = PT_FROM
+        print(f"== FROM SAVE {PT_FROM} (saved {_sv.get('when')} at commit {_sv.get('commit')}): the run plays on from there", flush=True)
+    elif not (_sv or {}).get("stale"):
+        print(f"== no clean save at {PT_FROM} yet ({'not clean' if _sv else 'none'}): the run starts at the beginning and makes the saves", flush=True)
+print(f"== STOP: {'none (the whole story)' if STOP_FROM is None else MAIN_ORDER[STOP_FROM] + ' (not built yet) and every MAIN mission after it'}", flush=True)
+
+
+def _save_point(mid):
+    """The game's own save data at this mission's start, for later runs to start from."""
+    if mid is None or mid == FROM_SAVE or mid not in MAIN_ORDER:
+        return
+    try:
+        g.update_save_data()
+        clean = not any(f["kind"] in ("STUCK", "CRASH", "HANG") for f in FIND)
+        os.makedirs(SAVES, exist_ok=True)
+        with open(os.path.join(SAVES, mid + ".json"), "w", encoding="utf-8") as fh:
+            json.dump({"data": g.data.data, "player": [g.player_name, g.player_character], "clean": clean, "when": time.strftime("%Y-%m-%d %H:%M"),
+                       "commit": _COMMIT, "fp": FINGERPRINT, "from": FROM_SAVE, "at": here()}, fh, default=str)
+    except Exception as e:
+        print(f"   (no save point at {mid}: {type(e).__name__}: {e})", flush=True)
+
+
+def _not_built(mid):
+    return STOP_FROM is not None and mid in MAIN_ORDER and MAIN_ORDER.index(mid) >= STOP_FROM
+
+
+def _before_save(mid):
+    """A mission an earlier run played, before the save this run started from."""
+    return bool(FROM_SAVE) and mid in MAIN_ORDER and FROM_SAVE in MAIN_ORDER and MAIN_ORDER.index(mid) < MAIN_ORDER.index(FROM_SAVE)
+
 
 def out(s):
     if VERBOSE:
@@ -495,6 +596,52 @@ def flood(st, through=False, blocked=()):
                 if not end:
                     q.append(t)
     return prev
+
+
+# ---------------------------------------------------------------- parts of a place, learned as the run walks (11-23)
+# A place can be split into parts that join only through other places (Orange: Route 56's south half reaches its north
+# half, and Route 67, only across Fairchild Island; Route 72's north bay opens only on Pummelo). The planner below works
+# area by area, so it can't tell those halves apart. A part = the tiles you can reach from where you stand (flood), named
+# by its first tile; every move that takes you from one part to another is written down (PART_EDGE), so later the run
+# can go round the way it already knows (part_way): used only where the area-by-area planner has no way on.
+PART_EDGE = collections.defaultdict(dict)   # part -> {tile you went to: the part it took you to}
+PART_TRIED = collections.Counter()           # (part, tile): times part_way sent the run that way (2 at most: a trainer or a
+                                             #  story bar can split a part differently from the time it was walked)
+
+
+def part_of(st):
+    """(area, room / floor, first tile) of the part of this map you stand in, or None off a map."""
+    if not is_map(st):
+        return None
+    try:
+        reach = flood(st)
+    except Exception:
+        return None
+    L = loc()
+    tiles = [t for t in reach if isinstance(t, tuple) and len(t) == 2 and all(isinstance(v, int) for v in t)]
+    return (L[0], L[1], min(tiles)) if tiles else None
+
+
+def part_way(st, area):
+    """The tile to head for, here, on a way the run has walked before from this part to `area` (None if none known)."""
+    p0 = part_of(st)
+    if p0 is None:
+        return None
+    prev, q = {p0: None}, deque([p0])
+    while q:
+        p = q.popleft()
+        if p[0] == area and p != p0:
+            while prev[p] is not None and prev[p][0] != p0:
+                p = prev[p][0]
+            if prev[p] is None:
+                return None
+            PART_TRIED[(p0, prev[p][1])] += 1
+            return prev[p][1]
+        for tile, nxt in PART_EDGE.get(p, {}).items():
+            if nxt not in prev and (p != p0 or PART_TRIED[(p0, tile)] < 2):
+                prev[nxt] = (p, tile)
+                q.append(nxt)
+    return None
 
 
 def _counter(st, t):
@@ -1063,6 +1210,9 @@ def step_to_next(st, m, here_a, nxt, area, kind="words", label=None):
             out(f"  .... the way from {here_a} to {nxt} is shut: {why[:140]}")
         return row
     if other and not outs and not (last and not is_dun(st)):   # (no way to that way out from this part of the place: round by another area)
+        known = part_way(st, area) or part_way(st, nxt)   # (to the place itself, else on to the next place on the way)
+        if known is not None and (_nearest(st, [known], prev) or _nearest(st, [known], prev2)):   # (a way round walked before)
+            return do(kind, known, f"{tag} (no way to {nxt} from this side: round by the way walked before)", label)
         _, key, tile, words = min(other)
         row = do(kind, tile, f"{tag} (no way to {nxt} from this side: round by) {words}", label)
         TRIED[(L, key)] += 1
@@ -1103,7 +1253,8 @@ def head_for(st, m, area):
     for _ in range(6):
         path = map_path(here_a, area)
         if not path or len(path) < 2:
-            return None
+            known = part_way(st, area)   # (no way over the maps' areas: a way the run walked before, part to part)
+            return do("words", known, f"toward {area}: the way walked before") if known is not None else None
         row = step_to_next(st, m, here_a, path[1], area)
         if row is not None:
             return row
@@ -1118,8 +1269,18 @@ GATES = []   # ways out the game refused while the script was heading somewhere 
 def do(kind, tile, words, label=None):
     m = STATE["mission"]
     a, s0, at0 = snap(), len(said), here()
+    p0 = part_of(g.current_state)
     how, n = go(tile, words)
     b = snap()
+    p1 = part_of(g.current_state)
+    if p0 and p1 and p0[:2] != p1[:2]:   # (a move into another place or room: written down for part_way)
+        PART_EDGE[p0][tuple(tile)] = p1
+        st1 = g.current_state   # (and the way back: the way out beside where you arrived that leads back there)
+        ex = st1.exits if is_town(st1) else st1.run.floor.exits
+        at = pos(st1)
+        back = [t for t, tg in ex.items() if str(tg) == p0[0] and abs(t[0] - at[0]) + abs(t[1] - at[1]) <= 1]
+        if back and back[0] not in PART_EDGE[p1]:
+            PART_EDGE[p1][back[0]] = p0
     got = gained(a, b)
     heard = [x for x in said[s0:] if not x.startswith("(")][:3]
     row = {"n": len(ROWS) + 1, "mission": m, "kind": kind, "from": at0, "to": list(tile), "label": label, "what": words, "how": how,
@@ -1328,6 +1489,14 @@ def play_through():
         m = mission()
         mid = m.get("id") if m else None
         if mid != last_id:
+            if _not_built(mid):   # (the batches not built yet start here: the run ends, passed - save points, above)
+                if last_id in PER:
+                    PER[last_id]["ended"] = here()
+                    PER[last_id]["done"] = True
+                ended = f"built so far: reached {mid}, not built yet"
+                print(f"== STOP {mid}: {(m or {}).get('title') or (m or {}).get('text')} is in a batch not built yet | at {here()} | {round(time.time() - T0)} s", flush=True)
+                break
+            _save_point(mid)
             STATE["mission"] = mid
             if mid is not None and mid not in PER:
                 PER[mid] = {"id": mid, "title": m.get("text"), "desc": m.get("desc"), "target": guide.mission_target(g, m), "started": here(),
@@ -1425,6 +1594,7 @@ except Exception:
 if last := PER.get(STATE["mission"]):
     last["ended"] = here()
     last["done"] = ENDED == "CHAMPION"
+    last["done"] = last["done"] or ENDED.startswith("built so far")
 shot("END_" + ENDED.replace(" ", "_"))
 
 # ---------------------------------------------------------------- the tour: the paths the story never walks (11-19, ROADMAP_KANTO)
@@ -1483,6 +1653,7 @@ print("==== not by the marker alone: " + (", ".join(_not) or "none"))
 never = [m for m in MISSIONS.values() if str(m.get("type")).upper() == "MAIN" and m["id"] not in PER
          and (m.get("region") or (m.get("condition") or {}).get("required_region") or (m.get("condition") or {}).get("start_region") or "KANTO") == "KANTO"
          and not str(m["id"]).startswith(("j", "h", "sn", "u", "ka", "al", "g", "p", "o"))]
+never = [m for m in never if not _not_built(m["id"]) and not _before_save(m["id"])]   # (not built yet; played by an earlier run)
 print("==== MAIN missions the Journal never showed:", [(m["id"], m.get("title") or m.get("text")) for m in never])
 kinds = collections.Counter(f["kind"] for f in FIND)
 print(f"==== findings: {dict(kinds)}")
@@ -1497,7 +1668,9 @@ for f in FIND:
         print(f"  stuck [{f['mission']} {f.get('title')}] at {f['where']}: {f['why']} | marker: {f['marker']} | {f.get('here')} | skip: {f['skip']}")
     elif f["kind"] in ("CRASH", "HANG"):
         print(f"  {f['kind'].lower()} [{f['mission']}] at {f['where']}: {f['what']}")
-if ENDED != "CHAMPION":
+if ENDED.startswith("built so far"):
+    print(f"   ok  the run reached the end of what's built: {ENDED} (from {'the save at ' + FROM_SAVE if FROM_SAVE else 'the start'})")
+elif ENDED != "CHAMPION":
     print(f"FAIL the run did not reach the Champion{' and the end of Sevii (Celio: network_machine_fixed)' if SEVII_TOO else ''}: {ENDED} (mission {STATE['mission']}, {here()}; champion {'at ' + str(STATE.get('champion_at')) + ' s' if STATE.get('champion_at') else 'not yet'})")
 print("==== ways out the game refused on the way (what it said):")
 _seen = set()
@@ -1567,6 +1740,7 @@ print("==== the tour (the paths the story never walks):")
 for _t in TOUR:
     print(f"  {'ok ' if _t['ok'] else 'NO '} {_t['leg']} ({_t['moves']} moves; ended at {_t['ended']})")
 nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR")) + (ENDED != "CHAMPION")
+nf -= int(ENDED.startswith("built so far"))   # (stopped at what isn't built yet: passed)
 json.dump({"ended": ENDED, "badges": story.badges.get("KANTO", []), "state": {k: (dict(v) if isinstance(v, collections.Counter) else v) for k, v in STATE.items() if k != "last_map"},
            "per": list(PER.values()), "find": [{k: v for k, v in f.items() if k not in ("key", "sig")} for f in FIND], "rows": ROWS,
            "never": [(m["id"], m.get("title") or m.get("text")) for m in never], "flags": sorted(k for k, v in story.story_flags.items() if v),
