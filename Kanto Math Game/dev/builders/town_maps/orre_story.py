@@ -68,7 +68,7 @@ BARTENDER = {"text": "Diner", "action": "EVENT", "event": {"stages": [{
     "lines": ["Bartender: Poke Balls? Nobody sells those in Orre these days. There's hardly a wild Pokemon left out here.",
               "Bartender: I've got a few lying around, though. Here, take these on the house.",
               "You received 5 POKE BALLS!"],
-    "gift_item": {"POKE_BALL": 5}}],
+    "gift_item": {"balls": 5}}],
     "done": ["Bartender: The food's good, and it's the only place for miles."]}}
 
 OS_SCENES = [
