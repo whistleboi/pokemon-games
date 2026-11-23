@@ -95,7 +95,7 @@ def _talk(game):
     sw = _swarms.today(story, region)
     if sw:
         name = str((game.loader.fetch_specific(int(sw[1])) or {}).get("name", "a Pokemon")).replace("-", " ").title()
-        how = {"surf": ", out on the water", "good_rod": ", on the end of a fishing line", "super_rod": ", deep in the water - bring a Super Rod"}.get(_swarms.kind_today(story, region), "")
+        how = {"surf": ", out on the water", "fish": ", on the end of a fishing line", "good_rod": ", on the end of a fishing line", "super_rod": ", deep in the water - bring a Super Rod"}.get(_swarms.kind_today(story, region), "")
         return ["Mary: It's Pokemon Talk with Professor Oak!",
                 f"Prof. Oak: Big news! There's a swarm of {name} at {_swarms.place_name(sw[0])} today{how}!",
                 "Mary: Hurry, everyone! See you next time!"]

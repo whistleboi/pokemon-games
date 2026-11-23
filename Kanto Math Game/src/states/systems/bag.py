@@ -497,6 +497,8 @@ class BagState(GameState):
             target_form = entry.split("_", 1)[1].lower() if "_" in entry else "normal"
             self.game.story_manager.inventory[self.selected_item] = max(
                 0, self.game.story_manager.inventory.get(self.selected_item, 0) - 1)
+            from src.world import feats as _feats
+            _feats.note(self.game.story_manager, "evo_items")   # (a Feat: evolution items used)
             self.game.change_state(EvolutionState(
                 self.game, pokemon, target_id, slot_index, next_form=target_form,
                 return_state=self.previous_state))
@@ -523,6 +525,8 @@ class BagState(GameState):
                 target_form = target_name.split("_", 1)[1].lower()
 
             if target_id:
+                from src.world import feats as _feats
+                _feats.note(self.game.story_manager, "evo_items")   # (a Feat: evolution items used)
                 self.game.story_manager.inventory[self.selected_item] -= 1
                 if self.game.story_manager.inventory[self.selected_item] < 0:
                     self.game.story_manager.inventory[self.selected_item] = 0

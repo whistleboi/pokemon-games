@@ -385,6 +385,57 @@ check(len(_sl) >= 10, f"Wayward Cave: {len(_sl)} tiles of steep muddy slope need
 r = route("VICTORY_ROAD_SINNOH", "SINNOH_POKEMON_LEAGUE")
 _nb = sum(row.count("b") for f in _tm["VICTORY_ROAD_SINNOH"]["floors"] for row in f["art"])
 check(_nb >= 20, f"Victory Road: {_nb} Strength boulders stand where the game has them")
+# Victory Road 2F: Platinum's bike ramps (0xD7 ridden east, 0xD8 west): a short hop in normal gear, a long jump in top gear
+# (Shift held), the only ways into the north-west pockets (the Max Elixir's room), the Full Restore's and TM71's ledges.
+import src.states.overworld.dungeon as _dnm
+_rr = route("VICTORY_ROAD_SINNOH", "SINNOH_POKEMON_LEAGUE")
+_rr.run.jump_floor(0, (49, 16))
+_f0 = _rr.run.floor
+_ramps = {p: v for p, v in _f0.decor.items() if str(v).startswith("ramp:")}
+check(len(_ramps) == 9 and list(_ramps.values()).count("ramp:1,0") == 1 and _ramps.get((9, 9)) == "ramp:1,0" and _ramps.get((6, 15)) == "ramp:-1,0",
+      f"Victory Road 2F: Platinum's nine bike ramps, one ridden east and eight west ({sorted(_ramps.items())[:3]}...)")
+_m0, _f0.movers = _f0.movers, []
+_run0 = _dnm.running
+_bike0 = story.inventory.get("BICYCLE", 0)
+
+
+def _jump(frm, d, far, bike=True):
+    story.inventory["BICYCLE"] = 1 if bike else 0
+    _dnm.running = (lambda: far)
+    _rr.run.player = frm; _rr.anim = 0; _rr.hop = None; _rr.sliding = None; _rr.walk_goal = None
+    _rr.dialogue_box.visible = False if hasattr(_rr, "dialogue_box") else None
+    _rr.step(*d)
+    return tuple(_rr.run.player)
+
+
+_nobike = _jump((8, 9), (1, 0), False, bike=False)
+_short = _jump((8, 9), (1, 0), False)
+_long = _jump((8, 9), (1, 0), True)
+_back = _jump((10, 9), (-1, 0), False)
+check(_nobike == (8, 9) and _short == (10, 9) and _long == (12, 9) and _back == (10, 9),
+      f"Victory Road 2F: the north-west ramp, ridden east: a hop to the Max Elixir's corridor {_short}, a long jump to the ledge strip {_long}; "
+      f"not on foot {_nobike}, not from its far side {_back}")
+_in = _jump((7, 15), (-1, 0), True)
+_hop = _jump((7, 15), (-1, 0), False)
+_wrong = _jump((5, 15), (1, 0), True)
+check(_in == (3, 15) and _hop == (5, 15) and _wrong == (5, 15),
+      f"Victory Road 2F: the first ramp's long jump crosses the wall into the west room {_in} (a hop lands short {_hop}; never ridden backwards {_wrong})")
+_fr = _jump((49, 15), (-1, 0), True)
+_tm71 = _jump((41, 22), (-1, 0), True)
+check(_fr == (45, 15) and _tm71 == (37, 22), f"Victory Road 2F: long jumps reach the Full Restore's room {_fr} and TM71's ledge {_tm71}")
+_rock = _f0.decor.pop((8, 9), None); _f0.tiles[9][8] = core.FLOOR   # (the Rock Smash rock before the ramp, broken; the Journal's route finder
+_rr._clear_boulders = lambda: None                                          #  would wait for Rock Smash, as the game does)
+_way = _rr._step_route((0, 7, 15), {(0, 3, 4)}, "Max Elixir", reach=True)   # (from beside the first ramp: everything you can get to)
+story.inventory["BICYCLE"] = 0
+_walk = _rr._step_route((0, 7, 15), {(0, 3, 4)}, "Max Elixir", reach=True)
+story.inventory["BICYCLE"] = 1
+_dnm.running = _run0
+check((0, 3, 15) in _way and (0, 3, 4) in _way and (0, 12, 9) in _way and (0, 3, 4) not in _walk,
+      f"Victory Road 2F: the Journal's route finder rides the ramps to the Max Elixir's room (not on foot)")
+story.inventory["BICYCLE"] = _bike0
+_f0.decor[(8, 9)] = _rock; _f0.tiles[9][8] = core.WALL
+del _rr._clear_boulders
+_f0.movers = _m0
 r = route("FUEGO_IRONWORKS", "SINNOH_ROUTE_205")
 _spin = sum(row.count(c) for row in _tm["FUEGO_IRONWORKS"]["floors"][1]["art"] for c in "3456")
 r._descend(); frames(r, 2)
@@ -401,7 +452,8 @@ check(r.run.player != _p0 and r.run.player != (_p0[0] - _cur[_p0][0], _p0[1] - _
 story.inventory.clear(); story.inventory.update(_inv0)
 _data_only = {"JUBILIFE_VILLAGE", "HALL_OF_ORIGIN", "SPEAR_PILLAR_RIFT", "DISTORTION_WORLD", "SEA_TEMPLE", "TURNBACK_CAVE", "SENDOFF_SPRING"}
 _jump = [(k, o.get("target_area")) for k in _sin for o in _prog[k].get("route_menu", []) + _prog[k].get("travel_options", [])
-         if o.get("target_area") and o["target_area"] not in {v for f in (_tm[k].get("floors") or [_tm[k]]) for v in (f.get("exits") or {}).values()}
+         if o.get("target_area") and o["target_area"] not in {v for f in (_tm[k].get("floors") or [_tm[k]]) + list((_tm[k].get("rooms") or {}).values())
+                                                              for v in (f.get("exits") or {}).values()}   # (a gatehouse's far door counts: the Frontier's gate, 11-22)
          and o["target_area"] in _tm]
 check(not _jump, f"the area data lists no jump between two mapped places that aren't joined on the maps {_jump[:6]}")
 _sv = dict(story.story_flags); _team = list(story.player_team)
@@ -585,7 +637,8 @@ def _enter_door(t, door):
 
 _area = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
 _rooms_seen = 0
-for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).get("region") == "SINNOH"]:
+for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).get("region") == "SINNOH"
+             and _area[k].get("area_type") != "dungeon"]:   # (a place walked as a dungeon, its rooms floors of it: the Battle Frontier - battle_points walks it, 11-22)
     _m = _tm[_key]
     _bad = []
     for _d, _name in _m["inside"].items():

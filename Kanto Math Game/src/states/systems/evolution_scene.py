@@ -161,6 +161,9 @@ class EvolutionState(GameState):
                 if music is not None:
                     music.jingle("congrats_evolve")
                 if self.evolved_pokemon_obj:
+                    if not self.is_hatching:
+                        from src.world import feats as _feats
+                        _feats.note(self.game.story_manager, "evolved")   # (a Feat: Pokemon evolved)
                     if self.context == "pc":
                         self.game.story_manager.pc_pokemon[self.team_index] = self.evolved_pokemon_obj
                     else:

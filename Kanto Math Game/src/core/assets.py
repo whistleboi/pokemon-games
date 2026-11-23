@@ -397,11 +397,17 @@ class AssetManager:
     # Center has its shop inside (10-30); Orre's are Pokemon Orre's Phenac Center and Mart (11-01,
     # dev/builders/render_orre_backgrounds.py). Nurse Joy and the clerk are in the pictures.
     REGION_BUILDINGS = {"KALOS": {"center": "kalos_center.png", "mart": "kalos_center.png"},
-                        "ORRE": {"center": "orre_center.png", "mart": "orre_mart.png"}}
+                        "ORRE": {"center": "orre_center.png", "mart": "orre_mart.png"},
+                        # Johto's are SoulSilver's own Center and Mart, the rooms every Johto town walks in (11-22,
+                        # dev/builders/make_johto_buildings.py); the Goldenrod Dept. Store has its own floors.
+                        "JOHTO": {"center": "johto_center.png", "mart": "johto_mart.png"}}
 
-    def get_region_building(self, region, kind="center"):
-        """The region's shared Pokemon Center ('center') or shop ('mart') picture, or None."""
-        name = self.REGION_BUILDINGS.get(str(region or "").upper(), {}).get(kind)
+    # A town whose shop is not the region's one (Goldenrod's Dept. Store, its own ground floor in SoulSilver).
+    AREA_BUILDINGS = {"GOLDENROD_CITY": {"mart": "goldenrod_dept_store.png"}}
+
+    def get_region_building(self, region, kind="center", area=None):
+        """The region's shared Pokemon Center ('center') or shop ('mart') picture (a town's own first, AREA_BUILDINGS), or None."""
+        name = self.AREA_BUILDINGS.get(str(area or "").upper(), {}).get(kind) or             self.REGION_BUILDINGS.get(str(region or "").upper(), {}).get(kind)
         return self.get_background(name) if name else None
 
     # A Pokemon Center and Mart for the towns of a region (or sub-region) without their own picture, before
@@ -507,6 +513,21 @@ class AssetManager:
         return None
 
     def _load_font(self, size, bold=False):
+        # The UI restyle (11-21, after Solar Eclipse): Power Clear drawn as a pixel font
+        # (src/ui/fonts.py PixelFont); the old Pokemon GSC font below stays as the backup.
+        pixel = Utils.get_actual_path(os.path.join(self.assets_dir, "fonts"), "power_clear_bold.ttf")
+        if os.path.exists(pixel):
+            try:
+                from src.ui.fonts import PixelFont
+                try:
+                    fallback = pygame.font.SysFont("Arial", size, bold=bold)
+                except Exception:
+                    fallback = pygame.font.Font(None, size)
+                font = PixelFont(pixel, size, fallback=fallback)
+                font.render("Test", False, WHITE)
+                return font
+            except Exception as e:
+                print(f"Failed to load font {pixel}: {e}")
         primary_font = None
         candidates = [  # the rebuilt font has a proper accented e (Pokémon)
             Utils.get_actual_path(self.assets_dir, "pokemon_gsc_rebuilt.ttf"),

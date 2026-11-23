@@ -194,12 +194,19 @@ class TownMenu:
             return lambda: self.game.change_state(DaycareState(self.game, self))
         if action == "GAMECORNER":
             from src.states.overworld import dungeon
-            if dungeon.enabled(self.game, "CELADON_GAME_CORNER"):  # walk in (Jordan, 11-05)
+            # (walk in, Jordan 11-05; Celadon only: Goldenrod's counter walked you into Celadon's floor and out to Celadon, 11-22)
+            if getattr(self, "area_key", None) == "CELADON_CITY" and dungeon.enabled(self.game, "CELADON_GAME_CORNER"):
                 from src.states.overworld.area_transition import AreaTransitionState
                 return lambda: self.game.change_state(AreaTransitionState(self.game, "CELADON_GAME_CORNER"))
             from src.states.systems import GameCornerState
             return lambda: self.game.change_state(GameCornerState
                                                   (self.game, self))
+        if action == "SCRATCH_OFF":  # the Battle Frontier's Scratch-Off stall: 1 BP for three cards (11-22)
+            from src.states.game_corner import ScratchOffState
+            return lambda: self.game.change_state(ScratchOffState(self.game, self))
+        if action == "BP_SHOP":  # a battle facility's Exchange Service Corner: prizes for Battle Points (11-22)
+            from src.states.game_corner import BPShopState
+            return lambda: self.game.change_state(BPShopState(self.game, self, opt_data.get("shop", "emerald")))
         if action == "PRIZES":  # the Prize Corner next door to the Game Corner: coins for prizes
             from src.states.game_corner import PrizeCounterState
             return lambda: self.game.change_state(PrizeCounterState(self.game, self))

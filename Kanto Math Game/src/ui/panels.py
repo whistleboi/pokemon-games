@@ -151,42 +151,62 @@ class PartySlotUI(UIElement):
             self.hovered = self.rect.collidepoint(event.pos)
         return False
 
+    PANEL = (112, 102, 86)      # Solar Eclipse's party panels: see-through, warm grey,
+    PANEL_SEL = (196, 152, 56)  # gold for the one you're on,
+    PANEL_FAINT = (150, 58, 62)  # red when fainted
+
+    def _panel(self, surface, r, selected, fainted):
+        """The slanted, see-through party panel: a ring behind the Pokemon, the right part darker."""
+        base = self.PANEL_FAINT if fainted else self.PANEL_SEL if selected else self.PANEL
+        if self.hovered and not selected:
+            base = theme.mix(base, (255, 255, 255), 0.12)
+        c = min(20, r.h // 4)
+        pts = theme.chamfer(r, c, tl=False)
+        theme.alpha_poly(surface, (0, 0, 0), theme.chamfer(r.move(5, 6), c, tl=False), 120)
+        theme.alpha_poly(surface, base, pts, 236 if selected else 214)
+        split = r.x + r.h + 10
+        theme.alpha_poly(surface, (0, 0, 0), [(split + 26, r.y + 4), (r.right - 4, r.y + 4), (r.right - 4, r.bottom - c - 2),
+                                              (r.right - c - 2, r.bottom - 4), (split, r.bottom - 4), (split + 26, r.centery)], 52)
+        pygame.draw.circle(surface, theme.shade(base, 0.78), (r.x + 12 + (r.h - 20) // 2, r.centery), (r.h - 20) // 2, 7)
+        edge = (255, 228, 150) if selected else (255, 200, 200) if fainted else (232, 228, 214)
+        pygame.draw.polygon(surface, edge, pts, 4 if selected else 3)
+
     def draw(self, surface):
-        """A white card (the menu redesign): sprite, name, level and status, HP bar and numbers;
-        a fainted Pokemon's card is tinted red."""
+        """Solar Eclipse's party panel (the 11-21 restyle): sprite on a ring, name and gender, level,
+        status, HP tag and bar and numbers; gold when picked, red when fainted."""
         if not self.visible or not self.pokemon:
             return
         p, r, f = self.pokemon, self.rect, self.game.assets.fonts
+        selected = getattr(self, "selected", False)
+        from src.states.systems import fit_sprite
         if getattr(p, "is_egg", False):  # an Egg: the egg and its name, nothing else
-            theme.card(surface, r, hover=self.hovered, selected=getattr(self, "selected", False),
-                       accent=theme.ACCENT["party"])
-            from src.states.systems import fit_sprite
+            self._panel(surface, r, selected, False)
             if p.image:
                 spr = fit_sprite(p.image, r.h - 20, r.h - 20)
                 surface.blit(spr, spr.get_rect(center=(r.x + 12 + (r.h - 20) // 2, r.centery)))
-            theme.shadow_text(surface, "Egg", f["s_med"], r.x + r.h + 4, r.y + 12)
+            theme.shadow_text(surface, "Egg", f["s_med"], r.x + r.h + 24, r.y + 12)
             return
         fainted = p.current_hp <= 0
-        selected = getattr(self, "selected", False)
-        theme.card(surface, r, hover=self.hovered, selected=selected, accent=theme.ACCENT["party"],
-                   fill=(250, 222, 218) if fainted else theme.TEXTBOX)
-        from src.states.systems import fit_sprite
+        self._panel(surface, r, selected, fainted)
         art = p.image or p.sidebar_image
         if art:
             spr = fit_sprite(art, r.h - 20, r.h - 20)
             surface.blit(spr, spr.get_rect(center=(r.x + 12 + (r.h - 20) // 2, r.centery)))
-        x = r.x + r.h + 4
+        x = r.x + r.h + 24
         name = p.display_name.title()
         nf = f["s_med"] if f["s_med"].size(name)[0] <= r.right - x - 110 else f["label"]
-        nr = theme.shadow_text(surface, name, nf, x, r.y + 12)
+        nr = theme.shadow_text(surface, name, nf, x, r.y + 10)
         from src.pokemon import breeding
-        theme.draw_gender(surface, breeding.gender_of(self.game, p), nr.right + 8, r.y + 16, 18)
+        theme.draw_gender(surface, breeding.gender_of(self.game, p), nr.right + 8, r.y + 14, 18)
         lv = f"Lv{p.level}" + (" MAX" if p.level >= p.MAX_LEVEL else "")
-        theme.shadow_text(surface, lv, f["label"], r.right - 16, r.y + 16, align="right")
+        theme.shadow_text(surface, lv, f["label"], r.right - 22, r.y + 14, align="right")
         tag_w = theme.status_tag(surface, "faint" if fainted else getattr(p, "status", None), f["caption"],
-                                 x, r.y + 48)
+                                 x, r.y + 46)
         from src.pokemon import affection
         if affection.hearts(p) > 0:  # Pokemon-Amie hearts, once it has any
             from src.ui.hearts import draw_hearts
-            draw_hearts(surface, p, x + tag_w + (60 if tag_w else 40), r.y + 60, size=13)
-        theme.hp_bar(surface, x, r.bottom - 40, r.right - 16 - x, p.current_hp, p.get_max_hp(), f["caption"])
+            draw_hearts(surface, p, x + tag_w + (60 if tag_w else 40), r.y + 58, size=13)
+        bar_y = r.bottom - 42
+        hw = theme.hp_label(surface, x, bar_y - 1, 18)
+        theme.hp_bar(surface, x + hw + 2, bar_y, r.right - 24 - x - hw - 2, p.current_hp, p.get_max_hp(), f["caption"],
+                     h=10)

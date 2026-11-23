@@ -26,6 +26,22 @@ class JohtoTown:
             self.game.change_state(self)
             if won:
                 self.game.story_manager.story_flags[flag(panel)] = True
+                rm = ((getattr(self, "town_map", None) or {}).get("rooms") or {}).get(getattr(self, "room", None) or "") or {}
+                drop = rm.get("drop")
+                if drop and drop.get("room") in (self.town_map.get("rooms") or {}):   # (walked in, 11-22: the floor gives way under
+                    self._go(drop["room"], "DROP")                                     #  you, into the chamber's writing room, HGSS)
+                    self.player = self.anim_from = self.partner = self.partner_from = tuple(drop["at"])
+                    self.facing = (0, 1)
+                    self.anim = 0
+                    self._remember()
+                    said = ["You put the panel back together!"] + list(drop.get("lines") or [])
+                    inv = self.game.story_manager.inventory
+                    if not inv.get("UNOWN_REPORT"):   # (the first puzzle: a researcher hands you the Unown Report, HGSS)
+                        inv["UNOWN_REPORT"] = 1
+                        said += ["A researcher hurries over: You solved it! The Unown are coming out!",
+                                 "Here, keep a record of every one you find in this Unown Report!", "You got the UNOWN REPORT!"]
+                    self.show_message(said)
+                    return
                 self.show_message(["You put the panel back together!", self.ALPH_DONE.get(panel, "")])
 
         self.clear_hover_menu()
@@ -161,6 +177,7 @@ class JohtoTown:
                    "Kurt: Hmm... It can't be opened, but it's calling to the shrine in Ilex Forest. Take it there and see what happens.",
                    "Kurt handed the GS BALL back."]
         elif not flags.get("slowpoke_well_cleared"):
+            flags["kurt_went_to_well"] = True   # (HGSS: Kurt sees off the Grunt guarding the Well: the way in is open; 11-22)
             msg = self.game.assets.get_text("kurt_intro")
         elif not flags.get("got_fast_ball_kurt"):   # (once: his thanks for the Well, and the Fast Ball he made; HGSS)
             flags["got_fast_ball_kurt"] = True
@@ -384,8 +401,11 @@ class JohtoTown:
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
     def visit_pharmacist(self):
+        story = self.game.story_manager
+        if story.story_flags.get("ampharos_cured") or story.inventory.get("SECRET_POTION", 0) > 0:   # (one potion, for Amphy: not one each visit; 11-22)
+            return self.show_message(["Pharmacist: That Secret Potion works wonders. I hope the Lighthouse's Ampharos is well!"])
         self.show_message(self.game.assets.get_text("pharmacist_reward"))
-        self.game.story_manager.inventory["SECRET_POTION"] = 1
+        story.inventory["SECRET_POTION"] = 1
 
     def visit_dragon_elder(self):
         self.clear_hover_menu()

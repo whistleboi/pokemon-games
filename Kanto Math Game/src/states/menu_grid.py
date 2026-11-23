@@ -164,9 +164,12 @@ class MenuGridState(GameState):
         Utils.draw_text_outline(screen, "MENU", fonts["button"], WHITE, self.panel.x + 40, self.panel.y + 50,
                                 align="left", outline_color=theme.PANEL_BORDER, thickness=3)
         self.btn_close.draw(screen)
+        mouse = pygame.mouse.get_pos()
         for b in self.tiles:
-            b.draw(screen)
+            theme.menu_tile(screen, b.rect, theme.theme_color(b.bg_color), b.rect.collidepoint(mouse))
             icon = b.icon_surf
-            screen.blit(icon, icon.get_rect(center=(b.rect.centerx, b.rect.y + 12 + icon.get_height() // 2)))
+            spot = (b.rect.centerx, b.rect.y + 12 + icon.get_height() // 2)
+            pygame.draw.circle(screen, theme.theme_color(b.bg_color), spot, max(icon.get_size()) // 2 + 8)
+            screen.blit(icon, icon.get_rect(center=spot))
             Utils.draw_text_outline(screen, b.label, fonts["label"], WHITE, b.rect.centerx, b.rect.bottom - 22,
-                                    outline_color=theme.shade(theme.theme_color(b.bg_color), 0.55), thickness=3)
+                                    outline_color=(14, 14, 18), thickness=3)

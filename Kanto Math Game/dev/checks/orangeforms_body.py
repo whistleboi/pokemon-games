@@ -19,7 +19,7 @@ story.current_area_key = "PINKAN_ISLAND"   # (11-17: 5.7's one Pinkan; the Reser
 pinkan = {int(k): v["id"] for k, v in FM.items() if v.get("form") == "pinkan"}
 check(len(pinkan) == 36, f"36 Pinkan forms: {len(pinkan)}")
 pool = g.loader.area_data["ORANGE_PINKAN_ISLAND_PERCENTAGES"]
-check(all(str(f) in pool for f in range(9101, 9136)) and "9136" not in pool, "Pinkan Island's pool: the listed lines (no Scyther), with 5.7's own species")
+check(all(str(f) in pool for f in range(9101, 9137)), "Pinkan Island's pool: the listed lines, Scyther too (11-23: Quest Book's Orange Variants), with 5.7's own species")
 cat = mkf(9101); cat.level = 7; cat.evo_due = True
 ready = evolution.ready_evolutions(g, cat)
 check(ready == ["METAPOD_PINKAN"], f"Pinkan Caterpie -> Pinkan Metapod: {ready}")

@@ -167,7 +167,9 @@ def mark_trainer_team(team, trainer_info):
         if p and moves:
             p.preset_moves = list(moves)
             p.moves = []
-    for p, item in zip(team, (trainer_info or {}).get("team_items") or []):   # (held items by slot: Orre's discs, 11-20)
+    # Held items by team slot: "team_items" (Orre's discs, 11-20) and "held" (the Frontier Brains', Orange 5.7's
+    # trainers' Berries; 11-22: the data had them, nothing gave them out)
+    for p, item in [pi for key in ("team_items", "held") for pi in zip(team, (trainer_info or {}).get(key) or [])]:
         if p and item:
             p.held_item = item
     return team

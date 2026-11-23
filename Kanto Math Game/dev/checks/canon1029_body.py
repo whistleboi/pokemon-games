@@ -30,8 +30,8 @@ check(levels.canon_area_level(g, "JOHTO_ROUTE_44") == 23, f"Route 44 at HGSS's 2
 story.player_team = [mk(6), mk(9), mk(3)]
 for _p, _l in zip(story.player_team, (40, 30, 5)):
     _p.level = _l
-_exp = (lambda _a: (levels.canon_area_level(g, _a) if levels.is_postgame(story) is False and levels.lead_level(g) < levels.story_level_cap(story)
-               else max(levels.canon_area_level(g, _a), levels.story_level_cap(story) - 3) if not levels.is_postgame(story)
+_exp = (lambda _a: (levels.canon_area_level(g, _a) if levels.is_postgame(story) is False and levels.lead_level(g) < levels.story_ace(story)
+               else max(levels.canon_area_level(g, _a), levels.story_ace(story) - 3) if not levels.is_postgame(story)
                else max(levels.canon_area_level(g, _a), levels.team_level(g))))("JOHTO_ROUTE_29")
 check(levels.area_level(g, "JOHTO_ROUTE_29") == _exp, f"areas keep their canon level till the lead reaches the cap, then 3 under it; after the title they keep up with the team (Jordan 11-15) {_exp}")
 story.player_team[0].level = story.player_team[1].level = 2
@@ -959,7 +959,8 @@ for _i in range(16):
     _t._use(("B", _i))
 check(_t.phase == "WON", "every piece in place: won")
 _a = _AP(g, lambda w: None, panel="hooh", seed=2)
-check(_a.title == "Ho-Oh Panel" and _a.WALL == "bg_hooh.png" and _a.n == 4, f"the Ho-Oh chamber's own panel ({_a.title})")
+check(_a.title == "Ho-Oh Panel" and _a.WALL == "hgss_board.png" and _a.n == 4 and _a.spot_rect(("S", 0)).y < _a.spot_rect(("B", 0)).y,
+      f"the Ho-Oh chamber's own panel, on SoulSilver's board (slots in the arms round it, 11-22) ({_a.title})")
 story.current_area_key = "RUINS_OF_ALPH"
 story.story_flags.pop(_alph_flag("kabuto"), None)
 _alph = [o for o in g.loader.area_data["STORY_PROGRESSION"]["RUINS_OF_ALPH"]["explore_options"] if o.get("action") == "TILE_PUZZLE"]
@@ -1363,7 +1364,7 @@ _rew = [_tm.reward(g, 3, "GYM_LEADER", ["ROCK"], rng=_r38.Random(i)) for i in ra
 check(all(_rew) and len(set(_rew)) == 1 and _tm.info(g, _rew[0])["type"] == "ROCK",
       f"a Rock Leader gives a Rock TM ({_rew[0]} {_tm.move_of(g, _rew[0])})")
 _tr = sum(1 for i in range(200) if _tm.reward(g, 3, "YOUNGSTER", rng=_r38.Random(i)))
-check(40 < _tr < 110, f"route trainers often give one ({_tr}/200)")
+check(_tr == 0, f"route trainers give none any more - Jordan 11-22 ({_tr}/200)")
 check(_tm.reward(g, 3, "WILD") is None, "wild Pokemon don't")
 _img_hm = g.assets.get_item_image("HM_WATERFALL")
 _img_tm = g.assets.get_item_image("TM068")

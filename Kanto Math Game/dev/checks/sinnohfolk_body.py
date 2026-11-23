@@ -310,15 +310,20 @@ for area in [k for k in _SIN if (_tm.get(k) or {}).get("rooms") and _AD.get(k, {
         if not isinstance(p, DungeonState):
             continue
         x, y = (int(v) for v in d.split(","))
-        p.run.player = (x, y + 1); p.anim = 0; p.sliding = None; p.hop = None
-        p.step(0, -1); frames(3)
+        if p.run.index != 0:   # (in at a room: the Battle Frontier's gate, from the Fight Area - out on the map first)
+            p._warp(0, 1, 1); frames(3)
+        _f0 = p.run.floor   # (the open side of the door: below, else beside it - the Battle Frontier's side doors, 11-22)
+        dx, dy = next(((a, b) for a, b in ((0, 1), (-1, 0), (1, 0), (0, -1)) if _f0.walkable(x + a, y + b)
+                       and f"{x + a},{y + b}" not in (_tm[area].get("inside") or {})), (0, 1))   # (not the door's other half)
+        p.run.player = (x + dx, y + dy); p.anim = 0; p.sliding = None; p.hop = None
+        p.step(-dx, -dy); frames(3)
         inside = p.run.index == (p.recipe.get("art") or {}).get("room_floors", {}).get(room)
         mat = next(((mx, my) for my, r in enumerate(_tm[area]["rooms"][room]["art"]) for mx, c in enumerate(r) if c == "v"), None)
         out = False
         if inside and mat:
             p.run.player = (mat[0], mat[1] - 1); p.anim = 0
             p.step(0, 1); frames(3)
-            out = p.run.index == 0 and abs(p.run.player[0] - x) <= 1 and abs(p.run.player[1] - (y + 1)) <= 1
+            out = p.run.index == 0 and abs(p.run.player[0] - (x + dx)) <= 1 and abs(p.run.player[1] - (y + dy)) <= 1
         _n += 1
         if not (inside and out):
             _bad.append((area, d, room, inside, out, p.run.index, p.run.player))

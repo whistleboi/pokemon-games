@@ -124,6 +124,8 @@ class RouteActions:
                 picked[berry] = picked.get(berry, 0) + 1
             for berry, n in picked.items():
                 story.inventory[berry] = story.inventory.get(berry, 0) + n
+            from src.world import feats as _feats
+            _feats.note(story, "berry_picks", sum(picked.values()))   # (a Feat: Berries picked from trees; Sinnoh)
             lines = ["You checked the berry trees..."] + season_lines + [
                 f"You picked {n} {berry_name(b)}{'s' if n > 1 else ''}!" for b, n in picked.items()]
             lines.append("They went into your BERRY POUCH.")
@@ -287,13 +289,14 @@ class RouteActions:
         self.is_progression_paused = True
         self.hide_menu_buttons()
         inv = self.game.story_manager.inventory
-        # (Jordan 11-15: the Rainbow Wing for anyone who's beaten the sages; no need to have caught the three beasts)
+        # (Jordan 11-15: the Rainbow Wing for anyone who's beaten the sages - since 11-22 the Wise Trio, on Bellchime Trail; no need to have caught the three beasts)
         if inv.get("RAINBOW_WING", 0) > 0:
             lines = ["Sage Li: Seek the summit, chosen one."]
         else:
             lines = ["Sage Li: You have shown us your strength, and your bond with your Pokemon.",
                      "Sage Li: Take this Rainbow Wing. Ho-Oh waits at the top of the Bell Tower for the one who holds it."]
             inv["RAINBOW_WING"] = 1
+            self.game.story_manager.story_flags["got_rainbow_wing"] = True   # (the Journal's Wise Trio entry: its last step)
             if self.game.assets.heal_sfx: self.game.assets.heal_sfx.play()
 
         path = os.path.join(self.game.assets.sprites_dir, "png", "elder.png")
@@ -342,6 +345,9 @@ class RouteActions:
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
         levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
+        from src.world import feats as _feats
+        _feats.note(self.game.story_manager, "finds")   # (a Feat: Pokemon found by Headbutt / Rock Smash)
+        _feats.note(self.game.story_manager, "headbutt")   # (Johto counts its Headbutt trees on their own)
 
         from src.states.battle import WildBattleState
         battle_state = WildBattleState(
@@ -460,6 +466,8 @@ class RouteActions:
             return
 
         self.show_dialogue(["Oh! A bite!"], callback=None)
+        from src.world import feats as _feats
+        _feats.note(self.game.story_manager, "fish")   # (a Feat: Pokemon fished up)
 
         bg_file = random.choice(["battle_ocean1.png", "battle_ocean2.png", "battle_ocean3.png"])
 

@@ -163,12 +163,12 @@ check(vance["phone"]["tiers"][1].get("gift") == {"CARBOS": 1}, "...Vance's secon
 phone.register_after_win(g, "JOHTO_ROUTE_44", vance)
 story.mark_trainer_defeated("JOHTO_ROUTE_44", vance_i)
 _lvl = __import__("src.world.levels", fromlist=["x"])
-_save_cap = _lvl.story_level_cap
-_lvl.story_level_cap = lambda st: 100
+_save_cap = _lvl.story_ace
+_lvl.story_ace = lambda st: 100
 try:
     re = phone.rematch_info(g, "JOHTO_ROUTE_44", vance_i, vance)
 finally:
-    _lvl.story_level_cap = _save_cap
+    _lvl.story_ace = _save_cap
 check(re.get("_phone_tier") == 2 and (re.get("rewards") or {}).get("CARBOS") == 1 and "phone_gift_JOHTO_ROUTE_44|Bird Keeper Vance|1" in str(re.get("_phone_gift")),
       f"...met only at his strongest team, he still hands over the Carbos ({re.get('_phone_tier')}, {re.get('rewards')})")
 
@@ -908,7 +908,9 @@ story.current_area_key, story.last_area_key = "ROCKET_HQ", "MAHOGANY_TOWN"
 _hq = PlayState(g); g.change_state(_hq)
 _left = [m.payload.get("text") for fl in _hq.run.floors for m in fl.movers if m.kind == "figure" and isinstance(m.payload, dict)
          and m.payload.get("text", "").strip() in ("Lance", "Dragonite")]
-for _d in [(-1, 0), (-1, 0), (0, -1), (-1, 0)]:
+for _d in [(-1, 0), (-1, 0), (0, -1), (-1, 0), (1, 0), (0, 1), (-1, 0), (0, -1)]:   # (until three real steps: someone
+    if len(set(list(_hq._ctrail)[:3])) == 3:                                                    # wandering can block one, 11-22)
+        break
     if _hq.run.floor.walkable(_hq.run.player[0] + _d[0], _hq.run.player[1] + _d[1]):
         _hq.step(*_d)
     for _ in range(20): _hq.update()
@@ -922,7 +924,7 @@ story.story_flags.clear(); story.story_flags.update(_flL)
 print("N18: the Battle Frontier's five facilities (Jordan 11-16: real streaks per facility)")
 from src.world import frontier as _fr
 _bf = _tm["JOHTO_BATTLE_FRONTIER"]
-check(set((_bf.get("rooms") or {})) == set(_fr.JOHTO_FIVE) and all(
+check(set((_bf.get("rooms") or {})) == set(_fr.JOHTO_FIVE) | {"jgate"} and all(   # (11-22: and the gate, south, down to Frontier Access)
           any(isinstance(p, str) and "attendant" in p for p in _bf["rooms"][k].get("people", [])) for k in _fr.JOHTO_FIVE),
       f"the plaza's five lobbies, an attendant in each {sorted(_bf.get('rooms') or {})}")
 _flF = dict(story.story_flags)
@@ -1016,6 +1018,99 @@ check(_tr == {95: ("Rocky", "PERSIM_BERRY"), 66: ("Muscle", "MACHO_BRACE"), 100:
       f"Johto's trades: SoulSilver's nicknames and held items (Rocky, Muscle with his Macho Brace, Billy, Doris) ({_tr})")
 _lap = next(o for o in _area["UNION_CAVE"]["route_menu"] if o.get("text") == "CHALLENGE LAPRAS")
 check("weekday:fri" in _lap["condition"], "Union Cave's Lapras: Fridays only, as HGSS")
+
+
+# ---- the Silver League (11-22): SoulSilver's own Indigo Plateau, its League walked room by room, Lance, the Hall of Fame, home
+def _fightL(b, n=8000):
+    for _k in range(n):
+        if g.current_state is not b:
+            break
+        if b.phase == "SWITCH_PROMPT" and b.btn_no.visible and b.btn_no.callback:
+            b.btn_no.callback()
+        elif b.phase == "MENU" and not b.dialogue_box.visible:
+            b.open_move_menu()
+            b.choose_move(b.move_buttons[0].text.replace(" ", "-"))
+            b.math_ui.on_click(b.options.index(b.correct_ans))
+        elif b.dialogue_box.visible:
+            b.dialogue_box.is_finished = True
+            if b.phase in ("OUTRO", "VICTORY_TEXT", "REWARD_TEXT"):
+                b.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+            else:
+                _cb = b.dialogue_box.callback
+                if _cb:
+                    b.dialogue_box.callback = None
+                    _cb()
+                else:
+                    b.dialogue_box.advance()
+        b.feedback_timer = 0
+        if g.current_state is b:
+            b.update(); b.draw()
+
+
+def play3(until, n=3000):
+    for _ in range(n):
+        if until():
+            return True
+        st = g.current_state
+        if type(st).__name__ == "HallOfFameState":   # (the Hall of Fame's animated screen: tap on, as a player does)
+            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+            st.update(); st.draw()
+        else:
+            play2(lambda: False, 1)   # (one frame, tapping through what's said)
+    return until()
+
+
+def _battle_with(st, who_at):
+    st.player = (who_at[0], who_at[1] + 1); st.facing = (0, -1); st.anim = 0
+    st._talk(who_at)
+    play2(lambda: type(g.current_state).__name__ in ("TrainerBattleState", "TrainerIntroState"), 600)
+    if type(g.current_state).__name__ == "TrainerIntroState":
+        play2(lambda: type(g.current_state).__name__ == "TrainerBattleState", 600)
+    b = g.current_state
+    if type(b).__name__ != "TrainerBattleState":
+        return False
+    _fightL(b)
+    return True
+
+
+_lsave = dict(story.story_flags); _lteam = list(story.player_team); _lbad = {k: list(v) for k, v in story.badges.items()}
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"]
+_ace = mk(150); _ace.level = 100; _ace.moves = ["PSYCHIC", "ICE-BEAM"]; _ace.heal_full()
+story.player_team = [_ace]
+for _k in [k for k in story.story_flags if k.startswith(("league_won_SILVER", "gym_progress_SILVER", "hall_of_fame_due"))]:
+    story.story_flags.pop(_k)
+sl = open_map("SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD")
+check(isinstance(sl, _WTS) and sl.player[1] >= 24, f"the Silver League: up from Victory Road, at the foot of the plateau {getattr(sl, 'player', None)}")
+sl._enter(next(t for t, k in sl.doors.items() if k == "league")); frames(2)
+_hall = next(t for t, v in sl.exits.items() if v == "ROOM:league_will")
+check(sl.room == "lobby", f"...through the door into the League's lobby ({sl.room})")
+sl._go("league_will", "ROOM:lobby"); frames(2)
+_will = next(p for p, o in sl._people().items() if o.get("text") == "Will")
+_door = next(t for t, v in sl.exits.items() if v == "ROOM:league_koga")
+check(sl.room == "league_will" and (_door in getattr(sl, "barred", {}) or not sl._open(_door)), f"Will's room: Will at {_will}; the far door is shut till you've won")
+said.clear()
+check(_battle_with(sl, _will), "...talk to Will: the battle")
+play2(lambda: isinstance(g.current_state, _WTS) and not g.current_state._busy(), 3000)
+sl = g.current_state
+check(story.story_flags.get("league_won_SILVER_LEAGUE_PLATEAU_1") and getattr(sl, "room", None) == "league_will" and sl._open(_door),
+      f"...won: back in his room, and the far door is open ({getattr(sl, 'room', None)})")
+story.story_flags["gym_progress_SILVER_LEAGUE_PLATEAU"] = 4
+for _i in range(2, 5):
+    story.story_flags[f"league_won_SILVER_LEAGUE_PLATEAU_{_i}"] = True
+sl._go("league_lance", "ROOM:league_karen"); frames(2)
+_lance = next(p for p, o in sl._people().items() if o.get("text") == "Lance")
+_up = next(t for t, v in sl.exits.items() if v == "ROOM:hall_of_fame")
+check(sl.room == "league_lance" and (_up in getattr(sl, "barred", {}) or not sl._open(_up)), f"Lance's room: Champion Lance at {_lance}; the door up to the Hall of Fame shut before the title")
+said.clear()
+check(_battle_with(sl, _lance), "...talk to Lance: the Champion's battle")
+play2(lambda: isinstance(g.current_state, _WTS) and g.current_state.room == "hall_of_fame" and not g.current_state._busy(), 3000)
+t = g.current_state
+check(isinstance(t, _WTS) and t.room == "hall_of_fame" and any("Professor Oak" in s for s in said) and any("come with me" in s for s in said),
+      f"...won: Oak comes in, and Lance takes you up into the Hall of Fame ({getattr(t, 'room', None)}, {said[-3:]})")
+play3(lambda: story.current_area_key == "NEW_BARK_TOWN" and not getattr(g.current_state, "_busy", lambda: True)(), 3000)
+check(story.current_area_key == "NEW_BARK_TOWN" and any("entered in the Hall of Fame" in s for s in said)
+      and not story.story_flags.get("hall_of_fame_due_SILVER_LEAGUE_PLATEAU"), f"...your team recorded, then home to New Bark ({story.current_area_key}, {said[-3:]})")
+story.player_team = _lteam; story.story_flags.clear(); story.story_flags.update(_lsave); story.badges.clear(); story.badges.update(_lbad)
 
 if fails:
     print("FAILS:", len(fails))

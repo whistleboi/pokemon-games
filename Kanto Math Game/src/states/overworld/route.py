@@ -857,9 +857,10 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
                 btn_rect.center = (cx, bar.centery - 2)
                 self.answer_btn_rects[i] = btn_rect
                 hover = btn_rect.collidepoint(pygame.mouse.get_pos())
-                pygame.draw.rect(screen, theme.TEXTBOX_FRAME, btn_rect.move(0, 5), border_radius=14)
-                pygame.draw.rect(screen, (236, 244, 255) if hover else WHITE, btn_rect, border_radius=14)
-                pygame.draw.rect(screen, theme.TEXTBOX_FRAME, btn_rect, 4, border_radius=14)
+                pts = theme.chamfer(btn_rect, 14)  # (the 11-21 look: the battle's answer plates)
+                theme.alpha_poly(screen, (0, 0, 0), theme.chamfer(btn_rect.move(4, 5), 14), 120)
+                pygame.draw.polygon(screen, (62, 62, 74) if hover else (44, 44, 52), pts)
+                pygame.draw.polygon(screen, (255, 255, 255) if hover else theme.TEXTBOX_ACCENT, pts, 3)
                 theme.answer_text(screen, txt, font, btn_rect.centerx, btn_rect.centery)
 
         if self.game.debug_mode:
@@ -883,7 +884,7 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
             if self.question_timer > 0:
                 ratio = max(0, min(1, self.question_timer / self.game.story_manager.timer_frames(30)))
                 track = pygame.Rect(card.x + 24, card.bottom - 20, card.w - 48, 8)
-                pygame.draw.rect(screen, (210, 214, 224), track, border_radius=4)
+                pygame.draw.rect(screen, (22, 22, 28), track, border_radius=4)
                 color = theme.HP_GREEN if ratio > 0.5 else theme.HP_YELLOW if ratio > 0.2 else theme.HP_RED
                 pygame.draw.rect(screen, color, (track.x, track.y, int(track.w * ratio), track.h), border_radius=4)
 

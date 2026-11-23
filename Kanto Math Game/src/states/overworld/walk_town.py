@@ -815,8 +815,11 @@ class WalkTownState(CityState):
                     p2 = tuple(at_edge[2])
                     t = min(edge, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1]))
                 self.game.walk_town_exit = None
-                _out = [(t[0] + dx, t[1] + dy, dx, dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
-                        and (t[0] + dx, t[1] + dy) not in self.exits]
+                _in = lambda e: [(e[0] + dx, e[1] + dy, dx, dy) for dx, dy in DIRS if self._open((e[0] + dx, e[1] + dy))
+                                 and (e[0] + dx, e[1] + dy) not in self.exits]
+                if not _in(t):   # (an end tile of a wide way out with no way in beside it: the nearest that has one; Goldenrod from Route 34, 11-22)
+                    t = min(edge, key=lambda e: (not _in(e), abs(e[0] - t[0]) + abs(e[1] - t[1])))
+                _out = _in(t)
                 _out.sort(key=lambda o: self._open((t[0] - o[2], t[1] - o[3])))   # (out the way the door faces: away from its building. A gatehouse's side door, Saffron's)
                 inward = (_out[0][0], _out[0][1]) if _out else t
                 self.player = inward
@@ -1097,6 +1100,9 @@ class WalkTownState(CityState):
             if arm is not None and not self._turn_gate(arm, (dx, dy)):
                 self.walk_goal = None
                 return self.flash("The gate won't turn that way.", 80)
+        if self._game_machine(to):   # (a Game Corner's machines: walk up to one and play, 11-22; before the level edge, the
+            self.walk_goal = None      #  machine's top stands higher than the floor)
+            return self._play_machine()
         if self._level_edge(tuple(self.player), tuple(to)):   # (a drop between two levels: no stepping off it, as in Black 2)
             self.walk_goal = None
             return
@@ -1117,6 +1123,9 @@ class WalkTownState(CityState):
                 return self.start_gym_battle()
             if bar.get("on_bump"):  # (walking into it moves the story: Fortree's Kecleon, seen with the Devon Scope, runs off)
                 ob = bar["on_bump"]
+                if ob.get("need") and not self._check_menu_condition(ob["need"]):   # (only with the right thing: the Ruins of Alph's
+                    from src.states.overworld.common import _fill_names              #  walls - an Escape Rope, Flash, a Water Stone, Ho-Oh)
+                    return self.show_message([_fill_names(self.game, x) for x in ob.get("no") or bar.get("lines") or ["..."]])
                 if ob.get("flag"):
                     self.npc_flag(ob["flag"])
                 from src.states.overworld.common import _fill_names
@@ -1206,7 +1215,7 @@ class WalkTownState(CityState):
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)
-        if to not in self.exits and (self._surf_wild(to) or self._grass_wild(to)):
+        if to not in self.exits and (self._surf_wild(to) or self._grass_wild(to) or self._room_wild(to)):
             return
         if to in self.exits:
             self.walk_goal = None
@@ -1310,6 +1319,30 @@ class WalkTownState(CityState):
             self.scenes.start(sc, None)
             return
         return self._read_plain(spot)
+
+    def _game_machine(self, t):
+        """True if t is one of a Game Corner's machines: in a room with the Game Corner's counter (a GAMECORNER person),
+        an "m" tile in a column of three or more (the machines stand in tall rows; counters and shelves are one or two deep).
+        Goldenrod's, 11-22: Jordan, "it should open the interior walkable building"."""
+        if not getattr(self, "room", None) or not any(str((o or {}).get("action", "")).upper() == "GAMECORNER" for o in self.people.values()):
+            return False
+        x, y = t
+        col = lambda yy: 0 <= yy < self.h and self.grid[yy][x] == "m"
+        if not col(y):
+            return False
+        up = down = 0
+        while col(y - up - 1):
+            up += 1
+        while col(y + down + 1):
+            down += 1
+        return up + down + 1 >= 3
+
+    def _play_machine(self):
+        """A Game Corner machine: Voltorb Flip, HeartGold and SoulSilver's game (Celadon's walk-in floor has its slots)."""
+        if self.game.story_manager.inventory.get("COIN_CASE", 0) <= 0:
+            return self.show_message(["The machine needs coins. You'll want a Coin Case to hold them."])
+        from src.states.game_corner import VoltorbFlipState
+        self.game.change_state(VoltorbFlipState(self.game, self))
 
     def _read_plain(self, spot):
         from src.states.overworld.common import _fill_names
@@ -1492,6 +1525,40 @@ class WalkTownState(CityState):
 
     GRASS_RATE = 0.1   # (a town's tall grass: about one step in ten, like a route's)
 
+    def _room_wild(self, to):
+        """A room with wild Pokemon on its floor (its "wild": {"pool": the area data's table, "rate", "when": a condition}):
+        the Ruins of Alph's underground hall, its Unown once a puzzle has called them (11-22). True if a battle starts."""
+        import random
+        from src.utils import Utils
+        from src.world import levels
+        from src.pokemon.data import Pokemon
+        room = getattr(self, "room", None)
+        wild = (((getattr(self, "town_map", None) or {}).get("rooms") or {}).get(room) or {}).get("wild") if room else None
+        if not wild or self.anim_from == to or getattr(self.game.story_manager, "repel_routes", 0) > 0:
+            return False
+        if wild.get("when") and not self._check_menu_condition(wild["when"]):
+            return False
+        pool = self.game.loader.area_data.get(wild.get("pool"))
+        if not isinstance(pool, dict) or not pool or random.random() >= float(wild.get("rate", 0.08)):
+            return False
+        pid, form = int(Utils.weighted_random_choice(pool)), "normal"
+        if pid == 201:   # (which Unown: one of the letters the solved puzzles have called)
+            from src.world import alph
+            form = alph.pick(self.game.story_manager, ((self.area_data or {}).get("alt_forms") or {}).get("weights")) or "normal"
+        raw = self.game.loader.fetch_specific(pid, form)
+        if not raw:
+            return False
+        mon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, mon, self.area_key)
+        self.walk_goal = None
+        self.anim = 0
+        self._remember()
+        from src.states.battle import WildBattleState
+        battle = WildBattleState(self.game, mon, self.area_key)
+        battle.back_to_town = True
+        self.game.change_state(battle)
+        return True
+
     def _grass_wild(self, to):
         """A town's own tall grass (the area's "grass_pool_percentages"; 11-19, Jordan: the Ruins of Alph's outside grass has
         SoulSilver's Natu and Smeargle, its Unown only inside). Not in a building, not with a Repel going. True if a battle starts."""
@@ -1669,7 +1736,7 @@ class WalkTownState(CityState):
         if self._live():   # (the live camera: the tile under the finger, on the ground where you stand)
             v = self._view()
             hit = self._live()[0].pick(v.size, self._live_cam(), pos[0] - v.x, pos[1] - v.y, self._live_height(*self.player))
-            return (int(hit[0] // 1), int(hit[2] // 1)) if hit else tuple(self.player)
+            return self._live()[0].tile_of(hit[0], hit[2], tuple(self.player)) if hit else tuple(self.player)
         z = getattr(self, "zoom", 1.0)
         if abs(z - 1.0) > 0.01:   # (the camera zoomed: the point in the map's own picture first)
             v = self._view()
@@ -2055,8 +2122,7 @@ class WalkTownState(CityState):
         dn.draw_frame(screen, view)
         self._draw_hud(screen, fonts)
         if self.hover_menu_active and self.hover_bg_rect:
-            pygame.draw.rect(screen, (255, 255, 255), self.hover_bg_rect, border_radius=12)
-            pygame.draw.rect(screen, (0, 0, 0), self.hover_bg_rect, 6, border_radius=12)
+            theme.draw_panel(screen, self.hover_bg_rect, radius=12, tab=False)
         if self.npc_active and self.npc_dialogue:
             self.npc_dialogue.draw(screen)
         self.game.ui_manager.draw(screen)
@@ -2234,25 +2300,28 @@ class WalkTownState(CityState):
             return None   # (Options, SCREEN & SOUND: 3D camera Flat)
         tm = getattr(self, "town_map", None)
         m = ((tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm) if isinstance(tm, dict) else None
-        key = (id(m), getattr(self, "room", None))
+        roofs = (m or {}).get("roofs") or {}
+        _p = roofs.get("_picture") or {}
+        pic = str(_p.get("f") or "")
+        if _p.get("when") or _p.get("until"):   # (a picture that changes with a flag has its own scene too: Cianwood Gym's
+            from src.dungeon import art          #  waterfall, stopped by the switch at the top, 11-22)
+            pic = str(art._version_file(_p) or pic)
+        key = (id(m), getattr(self, "room", None), pic)
         if getattr(self, "_live_key", None) == key:
             return self._live_got
         self._live_key, self._live_got = key, None
-        roofs = (m or {}).get("roofs") or {}
-        pic = str((roofs.get("_picture") or {}).get("f") or "")
-        name = os.path.splitext(os.path.basename(pic))[0]
-        if not pic.startswith("b2_ground/") or not name.isdigit():
+        if not pic.startswith(("b2_ground/", "ss_ground/")):
             return None
         try:   # (any trouble with the card or its libraries: the baked picture, never a crash)
             from src.dungeon import live3d
-            if not live3d.has_scene(self.game, int(name)) or not live3d.available(self.game):
+            if not live3d.available(self.game):
                 return None
-            sc = live3d.scene(self.game, int(name))
+            sc = live3d.scene_of(self.game, pic, _p.get("at"), bool(roofs.get("_screen")) and pic.startswith("ss_ground/"))
         except Exception:
             return None
         if sc is None or sc.cam is None:
             return None
-        if not sc.covers([(x, y) for y in range(self.h) for x in range(self.w) if self._open((x, y))]):
+        if not sc.covers([(x, int(round(sc.wz(x, y)))) for y in range(self.h) for x in range(self.w) if self._open((x, y))]):
             return None   # (a scene exported with holes where you can walk: the avenue's middle, 11-21: the baked picture till it's whole)
         self._live_got = (sc, roofs.get("_cam") or {})
         self._live_yaw = None
@@ -2268,7 +2337,9 @@ class WalkTownState(CityState):
             memo = self.__dict__.setdefault("_live_ground", {})
             if (id(sc), getattr(self, "room", None)) not in memo:   # (per room: the Gym's three floors share one scene)
                 near = lambda a, b: float(lift[b][a]) / k + float(cam.get("base") or 0.0) if 0 <= b < len(lift) and 0 <= a < len(lift[b]) else None
-                memo[(id(sc), getattr(self, "room", None))] = sc.walk_heights([(a, b) for b in range(self.h) for a in range(self.w) if self.rows[b][a] != "#" or (a, b) in self.people], near)
+                _ts = [(a, b) for b in range(self.h) for a in range(self.w) if self.rows[b][a] != "#" or (a, b) in self.people]
+                memo[(id(sc), getattr(self, "room", None))] = sc.walk_heights(_ts, near, high=[t for t in _ts if self._art_char(t) in "|;"],
+                                                                                  low=[t for t in _ts if self._art_char(t) in "o~x"])   # (a bridge's deck, the water: 11-22)
             G = memo[(id(sc), getattr(self, "room", None))]
             own = G.get((x, y))
             if own is not None:   # (blended between the tiles around you, so a kerb is a slope mid-step, not a snap)
@@ -2284,6 +2355,7 @@ class WalkTownState(CityState):
         return float(cam.get("base") or 0.0)
 
     LEVEL_STEP = 1.5   # (tiles: more than this between two neighbours' ground is a drop, not a step)
+    LIFT_STEP = 10.0   # (tiles: more than this is a lift carrying you, not a drop: Violet Gym's, 11-22)
 
     def _level_edge(self, a, b):
         """True when stepping a -> b goes off one level onto another (11-21, Jordan: "Yes, block them"): Black 2 never
@@ -2300,8 +2372,20 @@ class WalkTownState(CityState):
                 return False
             if any(self._art_char((t[0] + dx, t[1] + dy)) in "|;" for dx, dy in DIRS):   # (beside a bridge: under it or onto
                 return False   # it, two levels the height map can't tell apart: Virbank's underpass beneath the main street)
-        if abs(self._live_height(*a) - self._live_height(*b)) <= self.LEVEL_STEP:
+        _diff = abs(self._live_height(*a) - self._live_height(*b))
+        if _diff <= self.LEVEL_STEP:
             return False
+        if getattr(self._live()[0], "bdhc", None) is not None:
+            # (SoulSilver's places, 11-22: the heights ARE the game's own floors, so the drop is real with no second
+            # opinion needed. The DS never lets you step between two floors far apart; our walk grid only says walkable,
+            # so in Goldenrod Gym you stepped straight from the floor up onto a walkway three levels over it. A LIFT is
+            # the one place the game carries you between far levels: more than LIFT_STEP apart is one (Violet Gym's
+            # platform, 29 levels), never an edge. Nor is a tile where the game has two floors, one over the other
+            # (Goldenrod Gym's walkway over the arch you pass under on the way to Whitney, Tohjo Falls' path behind the
+            # water): our grid has one tile for both, so levels cross there.)
+            if self._live()[0].stacked(*a) or self._live()[0].stacked(*b):
+                return False
+            return _diff <= self.LIFT_STEP
         # (and Black 2's own heights agree: the 3D ground alone misread seat tops in Pokestar's theater and a patch on
         # the way up to Aspertia's Outlook, and would have cut them off)
         cam = self._live()[1]
@@ -2332,7 +2416,7 @@ class WalkTownState(CityState):
             fx, fy = self._cam_focus
         else:
             fx, fy = self._live_feet()
-        px, pz = fx + 0.5, fy + 0.5
+        px, pz = fx + 0.5, sc.wz(fx, fy) + 0.5   # (wz: a Johto room's moved grid put back on the real room, 11-21)
         py = self._live_height(fx, fy)
         _z = None if getattr(self, "_cam_focus", None) else self._cam_zone(fx, fy)
         if _z:   # (a moving strip from the game file: the view slides as you cross it, Aspertia's Outlook, 11-21)
@@ -2360,8 +2444,8 @@ class WalkTownState(CityState):
 
         def put(img, fx, fy):
             if img is not None:
-                sprites.append((img, (fx + 0.5, h(fx, fy), fy + 0.55), img.get_height() / TILE * LIVE_SPRITE))
-                shadows.append((fx + 0.5, h(fx, fy), fy + 0.55))
+                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+                shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
         people = self._people()
         mos = getattr(self, "motions", {})
         by_pos = {mo.pos: mo for mo in mos.values() if not mo.gone}
@@ -2405,6 +2489,20 @@ class WalkTownState(CityState):
         for a in (self.scenes.actors if getattr(self, "scenes", None) else []):
             ax, ay = a["m"].at()
             put(self._actor_img(a["sheet"], self._live_face(a["m"].facing), a["m"].frame(), native=bool(a.get("native"))), ax, ay)
+        if getattr(sc, "bdhc", None) is not None and getattr(self, "grid", None):   # (SoulSilver's own small trees and cracked
+            from src.states.overworld.dungeon_live import SS_THINGS, SS_THING_K, RouteLive   # rocks: people to the game, so not in
+            for _y, _row in enumerate(self.grid):                                            # the scene's model; 11-22, as routes)
+                for _x, _c in enumerate(_row):
+                    _thing = {"2": SS_THINGS["cut"], "0": SS_THINGS["crack"]}.get(_c)
+                    if not _thing or _c in getattr(self, "_cleared", ""):
+                        continue
+                    _img = RouteLive._ss_thing(self, _thing)
+                    if _img is None:
+                        continue
+                    _near = [h(*q) for q in ((_x + 1, _y), (_x - 1, _y), (_x, _y + 1), (_x, _y - 1)) if self._open(q)]
+                    _want = sum(_near) / len(_near) if _near else h(_x, _y)
+                    _hy = min(sc.surfaces(_x, _y) or [h(_x, _y)], key=lambda v: abs(v - _want))
+                    sprites.append((_img, (_x + 0.5, _hy, sc.wz(_x, _y) + 0.55), _img.get_height() / 4 / 16 * SS_THING_K))
         flat_bars = []   # (someone or something in the way: a sprite stood in the scene, else drawn over it)
         for _t, _bar in getattr(self, "barred", {}).items():
             _look = str(_bar.get("look") or "person")
@@ -2422,10 +2520,10 @@ class WalkTownState(CityState):
                 _p = __import__("src.dungeon.live3d", fromlist=["prop"]).prop(self.game, _name)
                 if _p is not None:
                     sc.props.append((_p, (_px, h(int(_px), int(_pz)), _pz), _flip))
-        screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else ()), view.topleft)
+        screen.blit(sc.render(size, cam, sprites, shadows=shadows if getattr(self, "shadows", False) else (), you=me), view.topleft)
 
         def at(t):
-            p = sc.project(size, cam, (t[0] + 0.5, h(*t), t[1] + 0.55))
+            p = sc.project(size, cam, (t[0] + 0.5, h(*t), sc.wz(*t) + 0.55))
             if p is None:
                 return pygame.Rect(-999, -999, TILE, TILE)
             return pygame.Rect(int(view.x + p[0] - TILE / 2), int(view.y + p[1] - TILE), TILE, TILE)

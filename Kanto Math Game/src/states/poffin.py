@@ -273,6 +273,11 @@ class PoffinCookState(_MenuState):
     def finish(self):
         poffin = cook(self.berries, self.good, self.quick, self.mistakes)
         self.story.poffins.append(poffin)
+        try:
+            from src.world import feats as _feats
+            _feats.note(self.story, "poffins")   # (a Feat: Poffins cooked; Sinnoh)
+        except Exception:
+            pass
         flav = ", ".join(f"{f.title()} {v}" for f, v in poffin["flavors"].items())
         lines = [f"You made a {poffin['name']}! (Level {poffin['level']})", f"Flavors: {flav}."]
         if poffin["name"] == "Foul Poffin":

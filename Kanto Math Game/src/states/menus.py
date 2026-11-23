@@ -1201,7 +1201,7 @@ class StarterSelectionState(GameState):
             screen, fonts, box = self.game.screen, self.game.assets.fonts, self.dialogue_box.rect
             theme.draw_textbox(screen, box)
             card = pygame.Rect(box.x + 16, box.y + 16, int(box.w * 0.46) - 16, box.h - 32)
-            pygame.draw.rect(screen, (236, 242, 252), card, border_radius=14)
+            pygame.draw.rect(screen, (24, 24, 30), card, border_radius=14)
             pygame.draw.rect(screen, theme.TEXTBOX_ACCENT, card, 3, border_radius=14)
             theme.shadow_text(screen, msg, fonts["label"] if fonts["label"].size(msg)[0] < card.w - 30 else fonts["caption"],
                               card.centerx, card.y + 28, color=(96, 102, 122), align="center")

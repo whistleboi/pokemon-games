@@ -169,12 +169,15 @@ class HomeMenuState(MenuGridState):
                 continue
             theme.hp_bar(screen, r.x + 84, r.y + 44, r.w - 110, p.current_hp, p.get_max_hp())
         self._draw_info(screen, f, story)
+        mouse = pygame.mouse.get_pos()
         for b in self.tiles:
-            b.draw(screen)
+            theme.menu_tile(screen, b.rect, theme.theme_color(b.bg_color), b.rect.collidepoint(mouse))
             ic = b.icon_surf
-            screen.blit(ic, ic.get_rect(center=(b.rect.centerx, b.rect.y + (b.rect.h - 34) // 2 + 4)))
+            spot = (b.rect.centerx, b.rect.y + (b.rect.h - 34) // 2 + 4)
+            pygame.draw.circle(screen, theme.theme_color(b.bg_color), spot, max(ic.get_width(), ic.get_height()) // 2 + 8)
+            screen.blit(ic, ic.get_rect(center=spot))
             Utils.draw_text_outline(screen, b.label, f["caption"], (255, 255, 255), b.rect.centerx, b.rect.bottom - 18,
-                                    outline_color=theme.shade(theme.theme_color(b.bg_color), 0.55), thickness=2)
+                                    outline_color=(14, 14, 18), thickness=2)
         if self.quitting:
             shade = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
             shade.fill((0, 0, 0, 170))

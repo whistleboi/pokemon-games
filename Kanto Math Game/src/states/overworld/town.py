@@ -6,6 +6,7 @@ import pygame
 import random
 from src.states.base import GameState
 from src.utils import Utils
+from src.ui import theme
 from src.ui.dialogue import ClassicDialogueBox
 from src.ui.widgets import Button
 from src.ui.panels import CityActionMenu
@@ -519,8 +520,7 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
                 screen.blit(self.background, (0, 0))
 
         if self.hover_menu_active and self.hover_bg_rect:
-            pygame.draw.rect(screen, WHITE, self.hover_bg_rect, border_radius=12)
-            pygame.draw.rect(screen, BLACK, self.hover_bg_rect, 6, border_radius=12)
+            theme.draw_panel(screen, self.hover_bg_rect, radius=12, tab=False)
 
         if self.npc_active and self.npc_dialogue:
             if self.npc_sprite:

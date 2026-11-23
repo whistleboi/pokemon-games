@@ -194,6 +194,11 @@ class PokemonLoader:
                                 form = k.split("_", 1)[1]
                             break
 
+            if p_id == 201 and area_data:   # (the Ruins of Alph: only the letters its solved puzzles have called, HGSS - src/world/alph.py)
+                from src.world import alph
+                if alph.is_ruins(area_data) and alph.open_forms(self.game.story_manager):
+                    form = alph.pick(self.game.story_manager, (area_data.get("alt_forms") or {}).get("weights")) or form
+
             if p_id == 201 and form == "a":
                 form = "normal"  # the A is Unown's plain sprite (201.png, shiny too): one A, not two
 

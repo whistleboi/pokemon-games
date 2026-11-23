@@ -526,6 +526,9 @@ def _run_story_event(state, key, check, show):
             continue
         story.inventory[item] = story.inventory.get(item, 0) + qty
         lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
+        if item.endswith("_APRICORN"):
+            from src.world import feats as _feats
+            _feats.note(story, "apricorns", qty)   # (a Feat: Apricorns picked; Johto)
     for item, qty in (ev.get("take_item") or {}).items():
         story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
     if ev.get("heal"):  # a nurse in a building (Silph Co.): like a Pokemon Center
@@ -855,7 +858,8 @@ def _run_story_event(state, key, check, show):
                     if mv is None:
                         show(_resolve_lines(game, ev.get("cancel") or ["Come back any time!"]))
                         return
-                    _tutor_flow(state, dict(tu, move=mv, like=mv, take=(tu.get("costs") or {}).get(mv, tu.get("take"))), ev, [], show)   # ("costs": each move's own price - Platinum's Shards)
+                    _tutor_flow(state, dict(tu, move=mv, like=mv, take=(tu.get("costs") or {}).get(mv, tu.get("take")),   # ("costs": each move's own price - Platinum's Shards;
+                                            bp=(tu.get("bp_costs") or {}).get(mv, tu.get("bp"))), ev, [], show)        #  "bp_costs": each move's BP - HGSS's Frontier Access)
                 game.change_state(PickListState(game, state, "WHICH MOVE?", [(m.replace("-", " "), m) for m in tu["choices"]], chose))
                 return
             _tutor_flow(state, tu, ev, head, show, flag=flag)
@@ -1369,11 +1373,27 @@ def _tutor_flow(state, tu, ev, head, show, flag=None, price=0):
     from src.states.systems.pick_list import PickListState
     game = state.game
     story = game.story_manager
+    if not price and tu.get("price") and not _bp_tutor_unlocked(game, tu["move"]):   # (a tutor paid in money, 11-22: "price" $ or
+        if str(tu["price"]) == "tm":                                                  #  "tm" - the move's TM price; once only, it unlocks)
+            from src.pokemon import tms as _tms
+            _k = _tms.key_for_move(game, str(tu["move"]).upper().replace("_", "-"))
+            price = int(_tms.price(game, _k)) if _k else _tutor_price(game, tu["move"])
+        else:
+            price = int(tu["price"])
     can, fail = _tutor_candidates(game, tu, ev)
+    if fail and _bp_tutor_unlocked(game, tu["move"]):   # (unlocked: every Pokemon that can learn it has it already, as with a TM)
+        show([f"You've unlocked {tu['move'].replace('-', ' ').title()} already! Every Pokemon of yours that can learn it has it ready:"
+              " pick it in the Summary."])
+        return
     if fail:
         if flag:
             story.story_flags.pop(flag, None)
         show(_resolve_lines(game, fail))
+        return
+    if price and getattr(story, "money", 0) < price:
+        if flag:
+            story.story_flags.pop(flag, None)
+        show([f"Teaching {tu['move'].replace('-', ' ').title()} costs ${price:,}... You don't have enough money right now."])
         return
 
     def go(who):
@@ -1425,6 +1445,13 @@ def _tutor_or_tm(state, ev, head, teach):
             if not left:
                 _say_then(state, ["You have that TM already! It teaches the move as often as you like."], lambda: None)
                 return
+            _tu = ev.get("tutor") or {}
+            if _tu.get("bp") or _tu.get("bp_costs"):   # (a Battle Point tutor: its TM for the same BP as the move, not money; 11-22)
+                from src.states.game_corner import BPShopState
+                _costs = {str(k).upper().replace("_", "-"): v for k, v in (_tu.get("bp_costs") or {}).items()}
+                game.change_state(BPShopState(game, state, items=[(t, int(_costs.get(_tms.move_of(game, t), _tu.get("bp") or 32))) for t in left],
+                                              title="Move Tutor"))
+                return
             game.change_state(PokeMartState(game, state, stock=left, tutor_sale=True))
         else:
             _say_then(state, _resolve_lines(game, ev.get("cancel") or ["Come back any time!"]), lambda: None)
@@ -1441,7 +1468,12 @@ def _tutor_again(state, ev, show):
     tu = dict(ev["tutor"])
     tu.pop("take", None)   # (Copycat wants a doll once; after that, money like the rest)
     move = tu["move"].replace("-", " ").title()
-    price = int(ev.get("repeat_price") or tu.get("price") or _tutor_price(game, tu["move"]))
+    if _bp_tutor_unlocked(game, tu["move"]):   # (unlocked by the first lesson, 11-22: again for free, as a TM would)
+        tu.pop("bp", None); tu.pop("coins", None)
+        _say_then(state, _resolve_lines(game, ev.get("done") or []) + [f"You've unlocked {move} for good! I'll teach it again, free."],
+                  lambda: _tutor_flow(state, tu, ev, [], show))
+        return
+    price = int(ev.get("repeat_price") or (tu.get("price") if str(tu.get("price", "")).isdigit() else 0) or _tutor_price(game, tu["move"]))
     lines = _resolve_lines(game, ev.get("done") or []) + [f"I can teach {move} again, to any Pokemon that can learn it. That'll be ${price:,}."]
 
     def answer(yes):
@@ -1484,6 +1516,9 @@ def _tutor_teach(game, tu, ev, who=None):
     from src.pokemon import moves as _mv
     story = game.story_manager
     can, fail = _tutor_candidates(game, tu, ev)
+    if fail and _bp_tutor_unlocked(game, tu["move"]):   # (unlocked already - any tutor, 11-22: every Pokemon that can learn it has
+        return ["\x00fail", f"You've unlocked {tu['move'].replace('-', ' ').title()} already! Every Pokemon of yours that can learn it"
+                " has it ready: pick it in the Summary."]                  #  it in its moves to pick, as with a TM)
     if fail:
         return ["\x00fail"] + fail
     if tu.get("coins"):   # (Crystal's Goldenrod tutor: Game Corner coins, 4000 a move)
@@ -1491,15 +1526,46 @@ def _tutor_teach(game, tu, ev, who=None):
         if _gc.coins(story) < int(tu["coins"]):
             return ["\x00fail", f"That'll be {tu['coins']} coins... You only have {_gc.coins(story)}. Win some at the Game Corner first!"]
         _gc.add_coins(story, -int(tu["coins"]))
+    unlocked_now = False
+    if tu.get("bp") and not _bp_tutor_unlocked(game, tu["move"]):   # (Battle Points: the Frontier's tutors, Omega Ruby / Alpha
+        from src.world import battle_points as _bp                    #  Sapphire's Battle Resort prices; paid ONCE, like buying
+        if _bp.bp(story) < int(tu["bp"]):                              #  the TM: Jordan 11-22)
+            return ["\x00fail", f"That'll be {tu['bp']} BP... You have {_bp.bp(story)}. Win more at the Battle Frontier!"]
+        _bp.add_bp(story, -int(tu["bp"]))
+        unlocked_now = True
     short = {i: q for i, q in (tu.get("take") or {}).items() if story.inventory.get(i, 0) < q}
     if short:   # (Platinum's Shard tutors: you need the Shards first; 11-19)
         want = ", ".join(f"{q} {i.replace('_', ' ').title()}{'s' if q > 1 else ''}" for i, q in (tu.get("take") or {}).items())
         return ["\x00fail", f"For {tu['move'].replace('-', ' ').title()} I'll need {want}. Come back when you have them!"]
+    if not _bp_tutor_unlocked(game, tu["move"]):   # (Jordan 11-22: "the move tutors are TM salesmen" - whatever a tutor is paid in,
+        unlocked_now = True                        #  money, BP, Shards, coins, or nothing, using it unlocks the move for good, as its TM)
     who = who if who in can else can[0]
     _mv.move_pool(game, who).append(tu["move"])
     if len(who.moves) < _mv.MAX_MOVES:
         who.moves.append(tu["move"])
-    return [f"{who.display_name.upper()} learned {tu['move'].replace('-', ' ')}! (Set its moves in the Summary.)"]
+    out = [f"{who.display_name.upper()} learned {tu['move'].replace('-', ' ')}! (Set its moves in the Summary.)"]
+    if unlocked_now:   # (one use: the move is yours, its TM too where there is one; teaching it again is free)
+        out += _bp_tutor_unlock(game, tu["move"])
+    return out
+
+
+def _bp_tutor_unlocked(game, move):
+    """A Battle Point tutor's move already paid for: its unlock flag, or you own the TM that teaches it."""
+    from src.pokemon import tms as _tms
+    story = game.story_manager
+    tm = _tms.key_for_move(game, str(move).upper().replace("_", "-"))
+    return bool(story.story_flags.get(f"bp_tutor_{move}")) or bool(tm and story.inventory.get(tm, 0) > 0)
+
+
+def _bp_tutor_unlock(game, move):
+    """Paid once: the move is unlocked for good (its TM goes in your Bag where there is one). Returns lines."""
+    from src.pokemon import tms as _tms
+    story = game.story_manager
+    story.story_flags[f"bp_tutor_{move}"] = True
+    tm = _tms.key_for_move(game, str(move).upper().replace("_", "-"))
+    if tm and story.add_item(tm, 1):
+        return [f"You got {_tms.label(game, tm)}! The move is yours now: it teaches it as often as you like."]
+    return ["The move is yours now: I'll teach it again for free any time."]
 
 
 def _teach_move(game, teach):

@@ -605,6 +605,10 @@ def art_recipe(m):
                 ch = chr(0x2800 + len(legend))
                 legend[ch] = {"decor": f"boulder:{x},{y}"}
                 out.append(ch)
+            elif c in _art.RAMPS:  # a bike ramp: in the way, but on the Bicycle you jump off it its one way (ramp:<dx>,<dy>)
+                ch = chr(0x2800 + len(legend))
+                legend[ch] = {"decor": "ramp:%d,%d" % _art.RAMPS[c]}
+                out.append(ch)
             elif c in _art.LEDGES:  # a ledge: in the way, but you hop over it its one way (ledge:<dx>,<dy>)
                 ch = chr(0x2800 + len(legend))
                 legend[ch] = {"decor": "ledge:%d,%d" % _art.LEDGES[c]}
@@ -1999,6 +2003,23 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             return False
         return True
 
+    def _ramp_far(self):
+        """Top gear on the Bicycle (Shift held): off a bike ramp you fly the far way (Platinum's fourth gear)."""
+        return running()
+
+    def _ramp_landing(self, ramp, dx, dy):
+        """Where riding (dx, dy) onto the bike ramp at ramp lands you, or None (not a ramp that way, no Bicycle, or
+        nowhere clear to land: someone or something there)."""
+        f = self.run.floor
+        if str(f.decor.get(tuple(ramp), "")) != f"ramp:{dx},{dy}" or self.game.story_manager.inventory.get("BICYCLE", 0) <= 0:
+            return None
+        from src.dungeon import art as _art
+        k = _art.RAMP_JUMP[1 if self._ramp_far() else 0]
+        land = (ramp[0] + dx * k, ramp[1] + dy * k)
+        if not f.walkable(*land) or f.mover_at(*land) is not None or str(f.decor.get(land, "")):
+            return None
+        return land
+
     def _cycling(self, t=None):
         """Are you riding here (the map's "cycling": true, or [x0, y0, x1, y1]; with the Bicycle)?"""
         area = self._here_art().get("cycling")
@@ -2082,8 +2103,14 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             if self.run.floor.walkable(*over) and self.run.floor.mover_at(*over) is None:
                 self.run.player = to
                 hopped = True
+        ramp = self._ramp_landing(to, dx, dy)
+        if ramp:   # (a bike ramp, ridden its way: you jump off it, one tile on in normal gear, three in top gear: Platinum)
+            self.run.player = (ramp[0] - dx, ramp[1] - dy)
+            hopped = True
         events = self.run.step(dx, dy)
         if hopped and self.run.player == to:  # (couldn't land after all)
+            self.run.player = before
+        if ramp and tuple(self.run.player) != ramp:
             self.run.player = before
         self.hop = (hopped or tuple(self.run.player) in getattr(self, "_stones", ()) or tuple(before) in getattr(self, "_stones", ()))             and self.run.player != before  # (a ledge; onto, along and off the round stones, hopping on the Bicycle)
         leaving = any(ev[0] in ("exit", "stairs", "stairs_up") for ev in events)
@@ -2109,6 +2136,9 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 self.anim = STEP_FRAMES * 2
             if dy < 0 and self._downhill(before):  # (pedalling up the Cycling Road's slope: each step takes twice as long)
                 self.anim = STEP_FRAMES * 2
+            if ramp:   # (through the air off a bike ramp: longer the further you fly)
+                self.anim = STEP_FRAMES * (2 if abs(ramp[0] - before[0]) + abs(ramp[1] - before[1]) <= 2 else 3)
+                self.flash("You jumped the ramp!" if self._ramp_far() else "A short hop off the ramp!", 45)
             self.partner_from, self.partner = self.partner, before  # it steps where you were
             self._ctrail_from = list(self._ctrail); self._ctrail = [before] + self._ctrail[:3]   # (companions: a step behind each other)
             self.steps += 1
@@ -2119,6 +2149,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             _said = _shadow.walked(self.game) + _chamber.walked(self.game) + _snacks.walked(self.game)   # (Orre: walking opens a Shadow Pokemon's heart, with
             if _said:                                                       #  you or in the Purify Chamber; 11-21 - the party's was
                 self.flash(_said[-1], 150)                                  #  never called before)
+            from src.world import feats as _feats
+            _feats.note(self.game.story_manager, "steps")   # (a Feat: steps walked)
             self._lap_step()
             if not self._hidden_item(self.run.player):
                 self._cracked_floor(self.run.player) or self._thin_ice(self.run.player)
@@ -2742,6 +2774,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         """The judges score your best catch against the other contestants'; prizes; you keep your bug."""
         c, self.contest = self.contest, None
         story = self.game.story_manager
+        from src.world import feats as _feats
+        _feats.note(story, "contests")   # (a Feat: Bug-Catching Contests entered)
         lines = ["Time's up! The Bug-Catching Contest is over." if c["turns"] <= 0 or c["balls"] <= 0
                  else "You left the contest early. Let's see how you did!"]
         if c["best"] is None:
@@ -2760,6 +2794,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 story.add_item(prize)
                 if place == 0:
                     story.story_flags["won_bug_contest"] = True
+                    _feats.note(story, "contest_wins")   # (a Feat: contests won)
             else:
                 winner = board[0][1]
                 lines.append(f"{winner} won with {board[0][0]} points. You came in {place + 1}th.")
@@ -3759,6 +3794,9 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             return
         mover = core.Mover("wild", t[0], t[1], payload=mon)
         f.movers.append(mover)
+        from src.world import feats as _feats
+        _feats.note(self.game.story_manager, "finds")   # (a Feat: Pokemon found by Headbutt / Rock Smash)
+        _feats.note(self.game.story_manager, "smash")   # (Johto counts its Rock Smash finds on their own)
         self.say(["Your Pokemon used Rock Smash!", f"A wild {getattr(mon, 'display_name', 'Pokemon')} jumped out!"],
                  then=lambda: self._meet_wild(mover))
 
@@ -3787,6 +3825,14 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             return True
         if what.startswith("slope:"):
             self.say(["A steep, muddy slope.", "You could ride up it on a Bicycle."])
+            return True
+        if what.startswith("ramp:"):
+            way = "west" if what.startswith("ramp:-1") else "east" if what.startswith("ramp:1") else "on"
+            if self.game.story_manager.inventory.get("BICYCLE", 0) <= 0:
+                self.say(["A bike ramp, sloping up to the " + way + ".", "On a Bicycle, you could jump off it!"])
+            else:
+                self.say(["A bike ramp, sloping up to the " + way + ".", "Ride at it heading " + way + ": a short hop in normal gear,",
+                          "or hold Shift for top gear and a long jump."])
             return True
         if what.startswith("stones:"):
             self.say(["Round stones, in a row.", "On a Bicycle, you could hop across them!"])
@@ -5451,6 +5497,21 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 at, (dx, dy) = nxt, d
             return (i, *at, tog)
 
+        bike = story.inventory.get("BICYCLE", 0) > 0
+        from src.dungeon import art as _art
+
+        def ramp_lands(i, x, y, tog):
+            """Off a bike ramp beside you, ridden its way: both landings (normal gear and top gear) where clear."""
+            out, fl = [], floors[i]
+            for dx, dy in core.DIRS:
+                at = (x + dx, y + dy)
+                if bike and str(fl.decor.get(at, "")) == "ramp:%d,%d" % (dx, dy):
+                    for k in _art.RAMP_JUMP:
+                        land = (at[0] + dx * k, at[1] + dy * k)
+                        if fl.inside(*land) and hard(i, *land, tog) is None:
+                            out.append((i, *land, tog))
+            return out
+
         def beside(i, spot, tog):
             """Where you stand, come out of a passage at spot: as the game puts you (core.Run._beside). A wild Pokemon
             that happens to stand there now doesn't count: it will have wandered off by the time you get there."""
@@ -5459,8 +5520,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             def taken(x, y):
                 m = fl.mover_at(x, y)
                 return (x, y) in fl.exits or (x, y) in fl.items or (x, y) in fl.tm_spots or (m is not None and m.kind != "wild")
-            t = next(((spot[0] + dx, spot[1] + dy) for dx, dy in core.DIRS
-                      if fl.walkable(spot[0] + dx, spot[1] + dy) and not taken(spot[0] + dx, spot[1] + dy)), fl.start)
+            t = next(((spot[0] + dx, spot[1] + dy) for dx, dy in core.beside_order(fl, spot)
+                      if not taken(spot[0] + dx, spot[1] + dy)), fl.start)
             return [(i, t[0], t[1], tog)]
 
         def ladders(i, kind):
@@ -5502,7 +5563,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 break
             i, x, y, tog = cur
             through = cur != first and (x, y) in floors[i].exits and not (loose and floors[i].exits[(x, y)] == "BOSS")   # (stairs or a pad: on through it)
-            nxt = onward(i, x, y, tog) if through else [slide(i, x, y, tog, dx, dy) for dx, dy in core.DIRS]
+            nxt = onward(i, x, y, tog) if through else [slide(i, x, y, tog, dx, dy) for dx, dy in core.DIRS] + ramp_lands(i, x, y, tog)
             if not through and thin[i][1]:   # (onto a thin-ice tile beside you, once more: down to the floor below, the same spot)
                 to = thin[i][0]
                 for dx, dy in core.DIRS:
@@ -5775,7 +5836,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             _ifd.draw_dowsing(screen, pygame.Rect(view.x + 12, view.bottom - 112, 132, 100), _ifd.dowse(story, _m.get("hidden"), tuple(self.run.player),
                               lambda x, y: f"hidden_{self.area_key}_{self.run.index}_{x}_{y}"), fonts)
         name = self.area_data.get("route_name", self.area_key.replace("_", " ").title())
-        floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and self._floor_name(self.run.index) != name else ""   # (a floor named as the place itself, the Sewers': once, 11-21)
+        floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and not name.endswith(self._floor_name(self.run.index)) else ""   # (a floor named as the place itself, the Sewers': once, 11-21; or as its last word, Goldenrod Tunnel's "Tunnel", 11-22)
         if getattr(self, "per_floor", 1) > 1 and self.zones:  # (a wide floor: the area you're in)
             floor_txt = "  " + self._zone_name(self._zone_index(self.run.index, self.run.player[0], self.run.player[1]))
         title = theme.pokemon_word(name) + floor_txt
@@ -5859,8 +5920,11 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             pygame.draw.rect(screen, theme.BAG, r, 2, border_radius=12)
             screen.blit(t, t.get_rect(center=r.center))
         if self.banner > 0 and self.mode == "MAP":
+            _fn = self._floor_name(self.run.index)
+            if " / " in _fn and self.zones:   # (a floor of several areas: the one you're in, not all of them in a row running off
+                _fn = self._zone_name(self._zone_index(self.run.index, *self.run.player))   # the screen: the Safari Zone, 11-22)
             word = theme.pokemon_word(self.area_data.get("route_name", "")) + \
-                (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 and self._floor_name(self.run.index) != self.area_data.get("route_name", "") else "")
+                (f"  {_fn}" if self.run.n_floors > 1 and not self.area_data.get("route_name", "").endswith(_fn) else "")
             t = fonts["big"].render(word, True, (255, 255, 255))
             r = t.get_rect(center=(map_view(self.game).centerx, int(H * 0.3))).inflate(60, 24)
             panel = pygame.Surface(r.size, pygame.SRCALPHA)

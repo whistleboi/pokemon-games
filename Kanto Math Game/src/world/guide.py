@@ -83,7 +83,7 @@ def current_step(game, mission):
     return None
 
 
-WALKED_REGIONS = {"KANTO", "ORANGE"}  # (Orange: 11-17, its walked maps from 5.7, batch by batch) (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
+WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO"}  # (Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto") (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
 _WAYS = {}
 
 
@@ -302,6 +302,8 @@ def leads_to(game, area_key, opt):
     of its own (Celadon's Game Corner, with the Rocket Hideout under it)."""
     if opt.get("action") in ("TRAVEL", "EXIT") or (opt.get("target_area") and not opt.get("action")):
         return opt.get("target_area") or opt.get("target")
+    if opt.get("leads_to"):   # (someone at a door who takes you in after a battle: the Radio Tower's guard in the takeover, 11-22)
+        return opt["leads_to"]
     if opt.get("action") == "GAMECORNER":
         key = area_key.replace("_CITY", "").replace("_TOWN", "") + "_GAME_CORNER"
         return key if key in game.loader.area_data.get("STORY_PROGRESSION", {}) else None
@@ -389,7 +391,7 @@ def cached(game, what):
     """hud_lines / next_hop, worked out at most every 2 s (screens draw every frame)."""
     import pygame
     key = (game.story_manager.current_area_key, getattr(game.story_manager, "tracked_mission", None),
-           pygame.time.get_ticks() // 2000)
+           pygame.time.get_ticks() // 2000, len(game.story_manager.story_flags))   # (and at once when a flag is set: a mission's last step done mid-cave, 11-22)
     hit = _CACHE.get(what)
     if not hit or hit[0] != key:
         hit = _CACHE[what] = (key, hud_lines(game) if what == "hud" else next_hop(game))

@@ -72,6 +72,7 @@ class StoryManager:
         self.math_difficulty = "AUTO"
         self.prefs = {}          # Options (src/core/settings.py)
         self.math_stats = self._blank_math_stats()
+        self.feat_counts = {}  # the Quest Book's Feats: {region: {kind: n}} (src/world/feats.py)
         self.level_cap_mode = "STORY"  # STORY, OBEDIENCE or NONE (Options)
         self.last_center = None  # area key of the last Pokemon Center used (whiteouts go there)
         self.autosave = True     # Options: save every time you travel to a new area
@@ -559,19 +560,21 @@ class StoryManager:
     def catch_milestones(self):
         """Pay any milestone reached and not paid yet. Returns the lines to show."""
         lines = []
-        owned = self.kanto_caught_count()
-        for n in self.CATCH_MILESTONES:
-            flag = f"kanto_catch_{n}"
-            if owned >= n and not self.story_flags.get(flag):
-                self.story_flags[flag] = True
-                self.money += self.CATCH_BONUS
-                lines += [f"Milestone: {n} Kanto species owned!", f"You received a ${self.CATCH_BONUS:,} bonus!"]
+        from src.world import feats as _feats
+        if not _feats.feats(self.game, "KANTO") if getattr(self, "game", None) else True:   # (11-22: Kanto's are its Pokedex Feat now)
+            owned = self.kanto_caught_count()
+            for n in self.CATCH_MILESTONES:
+                flag = f"kanto_catch_{n}"
+                if owned >= n and not self.story_flags.get(flag):
+                    self.story_flags[flag] = True
+                    self.money += self.CATCH_BONUS
+                    lines += [f"Milestone: {n} Kanto species owned!", f"You received a ${self.CATCH_BONUS:,} bonus!"]
         # other regions' Pokedex missions ("region_species": n of "dex_region"'s Pokedex: Hoenn's)
         missions = (self.game.loader.area_data.get("JOURNAL_MISSIONS", []) if getattr(self, "game", None) else [])
         counts = {}
         for m in missions:
             n, region, flag = m.get("region_species"), m.get("dex_region"), m.get("completed_flag")
-            if not (n and region and flag) or self.story_flags.get(flag):
+            if not (n and region and flag) or self.story_flags.get(flag) or _feats.feats(self.game, region):   # (its Pokedex Feat now)
                 continue
             if region not in counts:
                 counts[region] = self.region_caught_count(region)
@@ -579,6 +582,8 @@ class StoryManager:
                 self.story_flags[flag] = True
                 self.money += self.CATCH_BONUS
                 lines += [f"Milestone: {n} {region.title()} Pokemon owned!", f"You received a ${self.CATCH_BONUS:,} bonus!"]
+        if getattr(self, "game", None):
+            lines += _feats.pay(self)   # the Quest Book's Feats (tiers reached since the last look)
         return lines
 
     MAX_ITEMS = 999  # the most of one item the Bag holds, as in the games
@@ -682,8 +687,12 @@ class StoryManager:
         region = self.get_current_region()
         from src.world import league_redo
         redo = league_redo.mission(self)
+        from src.world import feats as _feats
+        moved = bool(_feats.feats(self.game, "KANTO"))   # (Kanto's "Catch 30..." missions: its Pokedex Feat now, 11-22)
         return [m for m in self.game.loader.area_data.get("JOURNAL_MISSIONS", []) + ([redo] if redo else [])
-                if (m.get("region") or (m.get("condition") or {}).get("required_region") or region) == region]
+                if (m.get("region") or (m.get("condition") or {}).get("required_region") or region) == region
+                and not (moved and m.get("kanto_species"))
+                and not (m.get("region_species") and m.get("dex_region") and _feats.feats(self.game, m["dex_region"]))]
 
     def check_requirements(self, cond, region=None):
         """
@@ -1048,6 +1057,8 @@ class StoryManager:
         s["right" if right else "wrong"] += 1
         s["streak"] = s["streak"] + 1 if right else 0
         s["best"] = max(s["best"], s["streak"])
+        from src.world import feats as _feats
+        _feats.note_best(self, "math_streak", s["streak"])
         s["quick"] += 1 if right and quick else 0
         text = str(problem)
         kinds = [k for k, sign in (("add", " + "), ("sub", " - "), ("mul", " x "), ("div", " ÷ ")) if sign in text]
@@ -1328,7 +1339,7 @@ class StoryManager:
 
             if leader and prog_val > len(trainers):
                 if isinstance(leader, dict):
-                    badge = leader.get("badge_reward")
+                    badge = None if leader.get("badge_later") else leader.get("badge_reward")   # (HGSS's Clair: the Dragon Shrine's Elder hands it over, not her win; 11-22)
                 else:
                     raw = gym.get("badge", "")
                     badge = (raw.upper().replace(" ", "_").replace("'", "")
@@ -1354,7 +1365,9 @@ class StoryManager:
     DERIVED_FLAGS = {"sinjoh_rite_done": ("sinjoh_dialga", "sinjoh_palkia", "sinjoh_giratina"),
                      "hideout_b4f_door_open": ("hideout_giovanni_defeated",)}
     # A flag set once every one of these trainers of an area is beaten (by "spot_name", else "name").
-    TRAINER_FLAGS = {"hideout_b4f_door_open": ("ROCKET_HIDEOUT", ("Grunt B4F 2", "Grunt B4F 3"))}
+    # wise_trio_beaten: Crystal's Wise Trio on Bellchime Trail (11-22): the way to the Bell Tower opens once all three are beaten
+    TRAINER_FLAGS = {"hideout_b4f_door_open": ("ROCKET_HIDEOUT", ("Grunt B4F 2", "Grunt B4F 3")),
+                     "wise_trio_beaten": ("BELLCHIME_TRAIL", ("Sage Gaku", "Sage Masa", "Sage Koji"))}
 
     def sync_story_flags(self):
         for flag, sources in self.DERIVED_FLAGS.items():
@@ -1526,6 +1539,7 @@ class StoryManager:
             "inventory": self.inventory,
             "poffins": self.poffins,
             "notified_missions": self.notified_missions,
+            "feat_counts": self.feat_counts,
             "player_team": [self._pokemon_record(p) for p in self.player_team if p],
             "pc_pokemon": [self._pokemon_record(p) if p else None for p in self.pc_pokemon],
             # Every region's own party, PC and Bag (the keys above are the ones in use).
@@ -1708,6 +1722,7 @@ class StoryManager:
 
         self.poffins = list(data.get("poffins", []))
         self.notified_missions = data.get("notified_missions", [])
+        self.feat_counts = {r: dict(c) for r, c in (data.get("feat_counts") or {}).items()}  # (older saves: from now on)
         # Older saves have no setting -> AUTO (follows region + badges)
         self.math_difficulty = data.get("math_difficulty", "AUTO")
         self.level_cap_mode = data.get("level_cap_mode", "STORY")

@@ -180,12 +180,14 @@ class BadgeCaseState(GameState):
             c, r = (i - 1) % cols, (i - 1) // cols
             pocket = pygame.Rect(inner.x + c * (cw + gap), inner.y + r * (ch + gap), cw, ch)
             earned = any(badge_map.get(b) == i for b in earned_list)
-            velvet = theme.shade(accent, 0.45)
-            pygame.draw.rect(screen, velvet, pocket, border_radius=14)
-            pygame.draw.rect(screen, theme.shade(accent, 0.75) if earned else theme.shade(accent, 0.3), pocket, 3,
-                             border_radius=14)
+            velvet = (26, 26, 32)  # (Solar Eclipse's black badge case; earned pockets edged in the region's colour)
+            pts = theme.chamfer(pocket, 12, tl=False)
+            pygame.draw.polygon(screen, velvet, pts)
+            pygame.draw.polygon(screen, accent if earned else (58, 58, 68), pts, 3 if earned else 2)
             spot = (pocket.centerx, pocket.y + (pocket.h - 34) // 2)
-            pygame.draw.circle(screen, theme.shade(velvet, 0.75), spot, min(cw, ch - 34) // 2 - 6)
+            pygame.draw.circle(screen, (38, 38, 46), spot, min(cw, ch - 34) // 2 - 6)
+            if earned:
+                pygame.draw.circle(screen, theme.shade(accent, 0.7), spot, min(cw, ch - 34) // 2 - 6, 2)
             sprite = self.badge_sprites.get(region, {}).get(i)
             if sprite:
                 img = sprite.copy()

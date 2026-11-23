@@ -301,7 +301,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         self.dialogue_box.set_visibility(False)
         box = Utils.get_full_dialogue_rect(self.game)
         names = self._menu_moves(self.player_pokemon)
-        pad, gap, back_w = 16, 10, 170
+        pad, gap, back_w = 16, 10, 300  # (the right column: the move's details over BACK)
         bw = (box.width - pad * 3 - back_w - gap) // 2
         bh = (box.height - pad * 2 - gap - 4) // 2
         font, small = self.game.assets.fonts["button"], self.game.assets.fonts["label"]
@@ -341,19 +341,27 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
                              stab=bool(power and mtype) and mtype.upper() in own_types, pp=have)
             self.move_buttons.append(btn)
         from src.ui.panels import CommandButton
-        back = CommandButton((box.right - pad - back_w, box.y + pad, back_w, box.height - pad * 2 - 4), "BACK",
+        from src.ui.widgets import MoveInfoPanel
+        MoveButton.keyboard = self.game.keyboard
+        info_h = box.height - pad * 2 - 4 - 52 - gap
+        info = MoveInfoPanel((box.right - pad - back_w, box.y + pad, back_w, info_h), list(self.move_buttons),
+                             font, small)
+        back = CommandButton((box.right - pad - back_w, box.y + pad + info_h + gap, back_w, 52), "BACK",
                              self.game.assets.fonts["button"], self.close_move_menu, bg_color=(120, 124, 144),
                              autosize=False)
+        self._move_info = info  # (beside the buttons, not one of them)
+        self.game.ui_manager.add_element(info)
         self.move_buttons.append(back)
         for btn in self.move_buttons:
             self.game.ui_manager.add_element(btn)
 
     def _clear_move_buttons(self):
-        for btn in self.move_buttons + [getattr(self, "_move_backdrop", None)]:
+        for btn in self.move_buttons + [getattr(self, "_move_backdrop", None), getattr(self, "_move_info", None)]:
             if btn is not None and btn in self.game.ui_manager.elements:
                 self.game.ui_manager.elements.remove(btn)
         self.move_buttons = []
         self._move_backdrop = None
+        self._move_info = None
 
     def close_move_menu(self):
         self.form_armed = None
@@ -1865,9 +1873,10 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         if damage >= defender_hp > 1 and self.vol(defender).get("endure"):
             damage = defender_hp - 1
             lines.append(f"{def_label} endured the hit!")
-        if damage >= defender_hp > 1 and attacker is not defender and self.held_endures(defender):  # (a held Focus Band: now and then it hangs on at 1 HP)
+        _band = self._item_name(self.held(defender)) if self.held(defender) in ("FOCUS_BAND", "FOCUS_SASH") else ""
+        if damage >= defender_hp > 1 and attacker is not defender and self.held_endures(defender):  # (a held Focus Band: now and then it hangs on at 1 HP; a Focus Sash, from full HP)
             damage = defender_hp - 1
-            lines.append(f"{def_label} hung on using its Focus Band!")
+            lines.append(f"{def_label} hung on using its {_band or 'Focus Band'}!")
         if landed > 1:
             lines.append(f"Hit {landed} times!")
         # Drain (Giga Drain +50) heals the user; negative drain is recoil (Take Down -25).
@@ -2305,7 +2314,8 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             cls = self.trainer_class
             if cls == "RIVAL" or getattr(self, "is_boss_battle", False) and cls not in tms.LEADER_CLASSES:
                 cls = "TRAINER"
-            self._tm_won = tms.reward(self.game, badges, cls, types) if self.player_won else None
+            own = any(tms.is_tm(k) for k in (self.rewards or {}))   # (a Leader with their game's own TM in their rewards gives that,
+            self._tm_won = tms.reward(self.game, badges, cls, types) if self.player_won and not own else None   # not a random one too: 11-22)
         return self._tm_won
 
     def exit_battle(self, lost=False):
@@ -2322,6 +2332,9 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
                     p.heal_full()
         if not lost and self.player_won and self._tm_reward():
             self.game.story_manager.add_item(self._tm_reward(), 1)
+        if not lost and self.player_won and self.is_trainer_battle:
+            from src.world import feats as _feats
+            _feats.note(self.game.story_manager, "trainers")   # (a Feat: trainer battles won)
         from src.pokemon import mega_clock
         kept = mega_clock.state(self.game).get("mon") if mega_clock.active(self.game) else None
         coins = self.mv_battle_end()  # (types, items and Transform back as they were)
@@ -2519,6 +2532,11 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             said = frontier.after_battle(self.game, self.frontier, bool(self.player_won and not lost))
             if said and next_state is not None:
                 (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)(said)
+        elif area_key == "BATTLE_SUBWAY" and self.player_won and not lost:   # (Black 2 / White 2: Battle Points for a Subway win, 11-22)
+            from src.world import battle_points as _bp
+            got = _bp.add_bp(self.game.story_manager, _bp.WIN_BP)
+            if got and next_state is not None:
+                (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)([f"You earned {got} BP! You have {_bp.bp(self.game.story_manager)} BP."])
 
         if next_state and hasattr(next_state, "check_for_evolution"):
             if next_state.check_for_evolution():
@@ -3536,7 +3554,7 @@ class WildBattleState(TrainerBattleState):
             from src.ui import theme
             ratio = max(0.0, min(1.0, self.catch_timer / self.game.story_manager.timer_frames(15)))
             bar = pygame.Rect(self.btn_yes.rect.x, self.btn_no.rect.bottom + 10, self.btn_yes.rect.w, 8)
-            pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=4)
+            pygame.draw.rect(screen, (22, 22, 28), bar, border_radius=4)
             pygame.draw.rect(screen, theme.BAG, (bar.x, bar.y, int(bar.w * ratio), bar.h), border_radius=4)
 
         if catching_now or (self.phase == "OUTRO" and self.catch_phase == "CAUGHT"):

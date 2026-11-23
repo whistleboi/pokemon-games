@@ -1439,6 +1439,27 @@ check(_ff.get("SEEK MOLTRES") == 3 and _ff.get("CHALLENGE RED") == 7 and _msf[7]
       f"Mt. Silver: Moltres in its own chamber, Red at the summit {_ff}")
 check([sum(r.count("/") for r in f["art"]) for f in _msf] == [11, 0, 0, 12, 0, 20, 10, 0],
       f"Mt. Silver: the Rock Climb walls where the game has them {[sum(r.count('/') for r in f['art']) for f in _msf]}")
+# Johto's Victory Road (11-22, Jordan: "add it"): SoulSilver's own cave (D43R0101-03) between the Reception Gate and the Silver League
+_vr = kanto("JOHTO_VICTORY_ROAD", came="POKEMON_LEAGUE_GATE")
+_vra = (_vr.recipe.get("art") or {})
+_vrf = _vra.get("floors") or []
+check(_vr.run.n_floors == 3 and _vr.run.index == 0 and (_vr.run.floor.w, _vr.run.floor.h) == (37, 60) and _vr.run.player[1] >= 55
+      and {v for v in _vr.run.floor.exits.values() if not str(v).startswith("WARP")} == {"POKEMON_LEAGUE_GATE"}
+      and _prog["JOHTO_VICTORY_ROAD"]["route_name"] == "Victory Road" and _prog["JOHTO_VICTORY_ROAD"]["region"] == "JOHTO",
+      f"Johto's Victory Road: SoulSilver's three floors, shown as Victory Road; in from the Reception Gate's great door at 1F's foot {_vr.run.player}")
+_vr2 = kanto("JOHTO_VICTORY_ROAD", came="SILVER_LEAGUE_PLATEAU")
+check(_vr2.run.index == 2 and _vr2.run.player[1] <= 5 and "SILVER_LEAGUE_PLATEAU" in _vr2.run.floor.exits.values(),
+      f"...and down from the Silver League's cliff foot you arrive at the top of 3F {_vr2.run.index, _vr2.run.player}")
+_vrl = [len(f.get("links") or {}) for f in _vrf]
+_bad = [(i, k, v) for i, f in enumerate(_vrf) for k, v in (f.get("links") or {}).items() if not (0 <= v[0] < 3 and _vrf[v[0]]["art"][v[2]][v[1]] != "c")]
+check(_vrl == [2, 9, 4] and not _bad, f"Johto's Victory Road: every stair joined to its real far end {_vrl} {_bad[:3]}")
+_vrt = _prog["JOHTO_VICTORY_ROAD"]["trainer_pool"]
+_vff = _vra.get("figure_floors") or {}
+check([t["name"] for t in _vrt] == ["{rival_name}"] and _vrt[0]["victory_flag"] == "defeated_rival_victory_road_johto" and _vrf[2].get("trainer_spots") == ["{rival_name}"]
+      and _vrf[2]["art"][18][31] == "X" and not _prog["MT_SILVER_CITY"].get("on_enter_event"),
+      "Johto's Victory Road: the rival waits on 3F where SoulSilver has him (his battle moved here from Mt. Silver City's old stand-in)")
+check(sum(1 for k in _vff if k != "{rival_name}") == 9 and sum(len(f.get("hidden") or {}) for f in _vrf) == 7,
+      f"Johto's Victory Road: SoulSilver's nine item balls and seven hidden items {sorted(_vff)}")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1472,7 +1493,8 @@ for _k in ("NEW_BARK_TOWN", "CHERRYGROVE_CITY", "VIOLET_CITY", "AZALEA_TOWN", "C
         _seen = {_name}
         while True:  # (through the building's rooms by their stairs)
             _n += 1
-            if any(isinstance(o, dict) and str(o.get("action")).upper() == "GYM" for o in _t.people.values()):
+            if any(isinstance(q, dict) and str(q.get("action")).upper() == "GYM" for o in _t.people.values() if isinstance(o, dict)
+                   for q in o.get("any", [o])):   # (a Leader with stages, by the story: Cianwood's Chuck under the waterfall first, 11-22)
                 _gym = _t.room
             if not all(isinstance(o, dict) for o in _t.people.values()):
                 _bad.append((_d, _t.room, "someone with nothing to say"))
@@ -1490,23 +1512,34 @@ for _k in ("NEW_BARK_TOWN", "CHERRYGROVE_CITY", "VIOLET_CITY", "AZALEA_TOWN", "C
     _jr[_k] = (_n, _gym, _bad)
 check(all(not v[2] for v in _jr.values()) and all(_jr[k][1] for k in _jr if k not in ("NEW_BARK_TOWN", "CHERRYGROVE_CITY", "MT_SILVER_CITY", "SAFARI_ZONE_GATE")) and sum(v[0] for v in _jr.values()) >= 45,
       f"Johto's building insides: {sum(v[0] for v in _jr.values())} rooms walked in twelve places (in by the door, up every stair, out below the door); each of the eight Gyms has its Leader inside {[(k, v[2]) for k, v in _jr.items() if v[2]]}")
-# the Silver League plateau (Jordan, 11-12): Indigo Plateau's own map and lobby, Johto's league inside
+# the Silver League plateau (11-22, Jordan: "make it like SoulSilver's own"): SoulSilver's Indigo Plateau (zone T10), its League walked
 import json as _json_s
 _tm_s = _json_s.load(open("assets/town_maps.json", encoding="utf-8"))
 g.walk_town_pos = None; g.walk_town_room = None
-story.current_area_key, story.last_area_key = "SILVER_LEAGUE_PLATEAU", "MT_SILVER_CITY"
+story.current_area_key, story.last_area_key = "SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD"
 _sl = _CS(g); g.change_state(_sl); _tap_through(_sl)
 _sl_in = _sl.player
 _sl_gym = _sl.area_data["gym"]
+_slm = _tm_s["SILVER_LEAGUE_PLATEAU"]
 _sl._enter(next(t for t, k in _sl.doors.items() if k == "league"))
-_sl_opts = sorted(str(o.get("action")) for o in _sl.people.values())
-check(isinstance(_sl, _WTS) and len(_tm_s["SILVER_LEAGUE_PLATEAU"]["art"]) == len(_tm_s["INDIGO_PLATEAU"]["art"]) == 20 and _sl_in[1] >= 17 and _sl.room == "lobby"
-      and _sl_opts == ["GYM", "HEAL", "SHOP"] and [t["name"] for t in _sl_gym["trainers"]] == ["Will", "Koga", "Bruno", "Karen"] and _sl_gym["leader"]["name"] == "Lance",
-      f"the Silver League plateau: Indigo Plateau's map; in from Mt. Silver's clearing (south) at {_sl_in}; the lobby's nurse, clerk and the League door; Will, Koga, Bruno, Karen, Champion Lance")
+_sl_opts = sorted(str(o.get("action")) for o in _sl.people.values() if str(o.get("action")) in ("HEAL", "SHOP"))
+check(isinstance(_sl, _WTS) and (len(_slm["art"][0]), len(_slm["art"])) == (32, 32) and _slm["roofs"]["_picture"]["f"] == "ss_ground/T10.png" and _sl_in[1] >= 24
+      and _sl.room == "lobby" and _sl_opts == ["HEAL", "SHOP"] and [t["name"] for t in _sl_gym["trainers"]] == ["Will", "Koga", "Bruno", "Karen"] and _sl_gym["leader"]["name"] == "Lance",
+      f"the Silver League plateau: SoulSilver's own (T10); up from Victory Road at the cliff foot {_sl_in}; the lobby's nurse and clerk; Will, Koga, Bruno, Karen, Champion Lance")
+_sl_rooms = _slm["rooms"]
+_sl_chain = ["league_will", "league_koga", "league_bruno", "league_karen", "league_lance", "hall_of_fame"]
+_sl_ok = []
+for _i, _rn in enumerate(_sl_chain[:5]):
+    _r = _sl_rooms.get(_rn) or {}
+    _m = [p for p in _r.get("people", []) if isinstance(p, dict) and p.get("action") == "LEAGUE"]
+    _bar = (_r.get("barred") or [{}])[0].get("until", {}).get("flag_condition")
+    _sl_ok.append(bool(_m) and _m[0]["index"] == _i and "ROOM:" + _sl_chain[_i + 1] in _r["exits"].values()
+                  and _bar == (f"league_won_SILVER_LEAGUE_PLATEAU_{_i + 1}" if _i < 4 else "hall_of_fame_due_SILVER_LEAGUE_PLATEAU"))
+check(all(_sl_ok) and "ROOM:league_will" in _sl_rooms["lobby"]["exits"].values() and any("johto_hall_of_fame" in str(sc.get("then")) for sc in _sl_rooms["hall_of_fame"].get("scenes", [])),
+      f"...the lobby's hall leads to Will's room, then Koga, Bruno, Karen, Lance (each far door shut till you've won there), then the Hall of Fame {_sl_ok}")
 _ip_gym = g.loader.area_data["STORY_PROGRESSION"]["INDIGO_PLATEAU"]["gym"]
-check([t["name"] for t in _ip_gym["trainers"]] == ["Lorelei", "Bruno", "Agatha", "Lance"] and _sl.exits and set(_tm_s["SILVER_LEAGUE_PLATEAU"]["exits"].values()) == {"MT_SILVER_CITY"}
-      and "reception" in _tm_s["SILVER_LEAGUE_PLATEAU"]["buildings"].values(),
-      "...and Indigo keeps Kanto's own (Lorelei, Bruno, Agatha, Lance): the two leagues are distinct; the Silver plateau's hut leads to the Reception Gate")
+check([t["name"] for t in _ip_gym["trainers"]] == ["Lorelei", "Bruno", "Agatha", "Lance"] and _sl.exits and set(_slm["exits"].values()) == {"JOHTO_VICTORY_ROAD"},
+      "...and Indigo keeps Kanto's own (Lorelei, Bruno, Agatha, Lance): the two leagues are distinct; the Silver plateau's way down leads into Johto's Victory Road")
 g.walk_town_pos = None; g.walk_town_room = None
 # Johto's gatehouses and route buildings (11-12): walked through, as Kanto's are. From the far side you arrive inside, at the far mat
 _gt = {}
@@ -1557,13 +1590,14 @@ check(_aq.run.n_floors == 7 and {"OLIVINE_CITY", "VERMILLION_CITY"} <= set(map(s
       f"the S.S. Aqua: seven decks and cabins from SoulSilver; aboard from Olivine at {_aq.run.player}; gangway mats for Olivine and Vermilion")
 _fa = kanto("FRONTIER_ACCESS", came="JOHTO_ROUTE_40")
 _fa2 = kanto("FRONTIER_ACCESS", came="JOHTO_BATTLE_FRONTIER")
-check({"JOHTO_ROUTE_40", "JOHTO_BATTLE_FRONTIER"} == set(map(str, _fa.run.floor.exits.values())) and _fa.run.player[1] < _fa2.run.player[1],
-      f"Frontier Access: SoulSilver's gate hall; in from Route 40 at the north mat {_fa.run.player}, from the Frontier at the south doors {_fa2.run.player}")
+check({"JOHTO_ROUTE_40", "JOHTO_BATTLE_FRONTIER"} == {str(v) for v in _fa.run.floor.exits.values() if not str(v).startswith("WARP")}
+      and _fa.run.player[1] > _fa2.run.player[1],   # (11-22: SoulSilver's own Frontier Access, D32R0102 outdoors: Route 40 south, the Frontier north)
+      f"Frontier Access: SoulSilver's own (outdoors); in from Route 40 at the south gate {_fa.run.player}, from the Frontier at the north {_fa2.run.player}")
 _bfr = kanto("JOHTO_BATTLE_FRONTIER", came="FRONTIER_ACCESS")
 _bfk = {k for k in (_bfr.recipe.get("art") or {}).get("buildings", {}).values()}
-check((_bfr.run.floor.w, _bfr.run.floor.h) == (96, 96) and {v for v in _bfr.run.floor.exits.values() if not str(v).startswith("WARP")} == {"FRONTIER_ACCESS"}
-      and _bfr.run.player[1] <= 19 and {"jtower", "jfactory", "jhall", "jcastle", "jarcade"} <= _bfk,
-      f"the Battle Frontier (N18): SoulSilver's plaza; in from Frontier Access at {_bfr.run.player}; five facility doors {sorted(_bfk)}")
+check((_bfr.run.floors[0].w, _bfr.run.floors[0].h) == (96, 96) and _bfr._floor_name(_bfr.run.index) == "Gate"
+      and "FRONTIER_ACCESS" in {str(v) for v in _bfr.run.floor.exits.values()} and {"jtower", "jgate", "jfactory", "jhall", "jcastle", "jarcade"} <= _bfk,
+      f"the Battle Frontier (N18): SoulSilver's plaza; in from Frontier Access through the gate ({_bfr._floor_name(_bfr.run.index)}); the Tower north, five facility doors {sorted(_bfk)}")
 _bc = kanto("BUG_CONTEST", came="NATIONAL_PARK")
 check((_bc.run.floor.w, _bc.run.floor.h) == (96, 96) and set(map(str, _bc.run.floor.exits.values())) == {"NATIONAL_PARK"} and not [m for m in _bc.run.floor.movers if m.kind == "trainer"],
       "the Bug-Catching Contest: the National Park's own map, no trainers, every gate back to the park")
@@ -1617,12 +1651,12 @@ for _name, _yes in (("johto", {"has_8_johto_badges"}), ("kanto", {"has_8_kanto_b
     _lg._check_menu_condition = lambda c, _y=_yes: (c in _y) if c in ("has_8_johto_badges", "has_8_kanto_badges") else _lg_held(c)
     _lg_seen[_name] = sorted(o.get("target_area") for o in _lg._door_options("leaguegate"))
 _lg._check_menu_condition = _lg_held
-check(_lg_seen == {"johto": ["SILVER_LEAGUE_PLATEAU"], "kanto": ["VICTORY_ROAD"], "both": ["SILVER_LEAGUE_PLATEAU", "VICTORY_ROAD"], "neither": []},
-      f"the Reception Gate's great door: with Johto's eight badges it leads to the Silver League, with Kanto's to Victory Road, with both you choose {_lg_seen}")
+check(_lg_seen == {"johto": ["JOHTO_VICTORY_ROAD"], "kanto": ["VICTORY_ROAD"], "both": ["JOHTO_VICTORY_ROAD", "VICTORY_ROAD"], "neither": []},
+      f"the Reception Gate's great door: with Johto's eight badges it leads into Johto's Victory Road, with Kanto's into Kanto's, with both you choose {_lg_seen}")
 g.walk_town_pos = None; g.walk_town_room = None
-story.current_area_key, story.last_area_key = "POKEMON_LEAGUE_GATE", "SILVER_LEAGUE_PLATEAU"
+story.current_area_key, story.last_area_key = "POKEMON_LEAGUE_GATE", "JOHTO_VICTORY_ROAD"
 _lg2 = _CS(g); g.change_state(_lg2); _tap_through(_lg2)
-check(abs(_lg2.player[0] - _lg_door[0]) <= 1 and _lg2.player[1] <= _lg_door[1] + 2, f"...and back from the Silver League you stand at the great door {_lg2.player}")
+check(abs(_lg2.player[0] - _lg_door[0]) <= 1 and _lg2.player[1] <= _lg_door[1] + 2, f"...and back from Victory Road you stand at the great door {_lg2.player}")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "POKEATHLON_DOME", "NATIONAL_PARK"
 _pd = _CS(g); g.change_state(_pd); _tap_through(_pd)

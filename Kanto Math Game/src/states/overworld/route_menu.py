@@ -531,6 +531,12 @@ class RouteMenu:
         if action == "BUG_CONTEST":  # National Park's officer: the Bug-Catching Contest (src/states/overworld/dungeon.py)
             from src.states.overworld.dungeon import contest_entry
             return lambda: contest_entry(self)
+        if action == "SCRATCH_OFF":  # the Battle Frontier's Scratch-Off stall: 1 BP for three cards (11-22)
+            from src.states.game_corner import ScratchOffState
+            return lambda: self.game.change_state(ScratchOffState(self.game, self))
+        if action == "BP_SHOP":  # a battle facility's Exchange Service Corner: prizes for Battle Points (11-22)
+            from src.states.game_corner import BPShopState
+            return lambda: self.game.change_state(BPShopState(self.game, self, item.get("shop", "emerald")))
         if action == "GAME_CORNER":  # the Game Corner's clerk: its games, coins and prizes
             from src.states.systems import GameCornerState
             return lambda: self.game.change_state(GameCornerState(self.game, self))

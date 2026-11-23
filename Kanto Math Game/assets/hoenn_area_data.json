@@ -375,10 +375,10 @@
         {"text": "Magma Grunt", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Magma Grunt: You saw us, huh. Team Magma and Team Aqua... it wasn't meant to be.", "Magma Grunt: I'm making a fresh start. Please take my Camerupt. It deserves a better Trainer."], "gift_pokemon": 323, "gift_level": 30, "gift_item": {"PASSHO_BERRY": 1}, "requires": ["party_room"], "fail": ["Magma Grunt: Make some room in your party first."], "flag": "got_camerupt_frontier", "done": ["Magma Grunt: Look after Camerupt for me."]}},
         {"text": "Aqua Grunt", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Aqua Grunt: We've called it off. No hard feelings, though!", "Aqua Grunt: My Sharpedo wants to see the world. Will you take it with you?"], "gift_pokemon": 319, "gift_level": 30, "gift_item": {"WACAN_BERRY": 1}, "requires": ["party_room"], "fail": ["Aqua Grunt: Make some room in your party first."], "flag": "got_sharpedo_frontier", "done": ["Aqua Grunt: Sharpedo's in good hands. I can tell."]}},
         {"text": "Whismur show", "action": "EVENT", "event": {"lines": ["Showman: Welcome to the famous Whismur show! Watch them dance, then guess which one holds the Big Mushroom!", "Showman: ...You guessed right! The Big Mushroom is yours!"], "daily_gift": {"key": "frontier_whismur_day", "items": ["BIG_MUSHROOM"], "wait": ["Showman: The Whismur are resting. Come back tomorrow for another show!"]}}},
-        {"text": "Tutor Thunder Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: Battle Points? Not here! I'll teach Thunder Punch for free."], "tutor": {"move": "THUNDER-PUNCH"}}},
-        {"text": "Tutor Fire Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: Fire Punch, no charge. The Frontier pays me well!"], "tutor": {"move": "FIRE-PUNCH"}}},
-        {"text": "Tutor Ice Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: An Ice Punch, coming right up!"], "tutor": {"move": "ICE-PUNCH"}}},
-        {"text": "Tutor Superpower", "action": "EVENT", "event": {"lines": ["Move Tutor: Superpower! Hits hard, costs nothing."], "tutor": {"move": "SUPERPOWER"}}},
+        {"text": "Tutor Thunder Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: Thunder Punch, for 8 Battle Points. Win them at the Frontier!"], "tutor": {"move": "THUNDER-PUNCH", "bp": 8}}},
+        {"text": "Tutor Fire Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: Fire Punch, for 8 BP. A hot deal!"], "tutor": {"move": "FIRE-PUNCH", "bp": 8}}},
+        {"text": "Tutor Ice Punch", "action": "EVENT", "event": {"lines": ["Move Tutor: An Ice Punch, coming right up! That's 8 BP."], "tutor": {"move": "ICE-PUNCH", "bp": 8}}},
+        {"text": "Tutor Superpower", "action": "EVENT", "event": {"lines": ["Move Tutor: Superpower! Hits hard, and it's 16 BP."], "tutor": {"move": "SUPERPOWER", "bp": 16}}},
         {"text": "Bike fan", "action": "EVENT", "event": {"lines": ["Triathlete: Is that a Bike from Rydel's Cycles? I've been thinking of buying one myself!"]}},
         {"text": "Nurse", "action": "CENTER"},
         {"text": "Clerk", "action": "SHOP", "stock": ["ULTRA_BALL", "HYPER_POTION", "MAX_POTION", "FULL_RESTORE", "FULL_HEAL", "REVIVE", "MAX_REPEL", "X_ATTACK"]},
@@ -3190,15 +3190,6 @@
     {"id": "hoenn_m3", "type": "MAIN", "title": "Stone Badge", "description": "Head through Petalburg Woods to Rustboro City and defeat Roxanne at the Gym.", "condition": {"required_region": "HOENN", "region_badges_less": 1, "flag": "helped_wally"}, "completed_flag": "badge_stone_earned", "target": "RUSTBORO_CITY", "reward": "Stone Badge"},
     {"id": "hoenn_m2d", "type": "MAIN", "title": "Trouble in the Woods", "description": "A {team} grunt is bothering a researcher in Petalburg Woods, on the way to Rustboro City. Stop them!", "condition": {"required_region": "HOENN", "flag": "helped_wally", "region_badges_less": 1, "flag_not": "woods_boss_defeated"}, "completed_flag": "woods_boss_defeated", "target": "HOENN_PETALBURG_WOODS", "reward": "Exp. Share"},
     {
-      "id": "hoenn_m4",
-      "type": "MAIN",
-      "title": "Devon Parts",
-      "description": "A {team} grunt stole the Devon Parts! Get them back in Rusturf Tunnel on Route 116, then return them to Mr. Stone in Rustboro.",
-      "condition": { "required_region": "HOENN", "flag": "heard_devon_parts_stolen", "flag_not": "met_mr_stone" },
-      "completed_flag": "met_mr_stone",
-      "target": "HOENN_RUSTURF_TUNNEL"
-    },
-    {
       "id": "hoenn_m5",
       "type": "MAIN",
       "title": "Knuckle Badge",
@@ -3207,15 +3198,16 @@
       "completed_flag": "badge_knuckle_earned",
       "reward": "Knuckle Badge"
     },
-    {"id": "hoenn_m4b", "type": "MAIN", "title": "A Letter for Steven", "description": "Mr. Stone's son Steven is deep in Granite Cave, by Dewford Town. Take him the letter. Mr. Briney's boat can take you there.", "condition": {"required_region": "HOENN", "flag": "met_mr_stone", "flag_not": "met_steven"}, "completed_flag": "met_steven", "target": "HOENN_GRANITE_CAVE"},
     {
-      "id": "hoenn_m6",
+      "id": "hoenn_m4",
       "type": "MAIN",
-      "title": "Oceanic Museum",
-      "description": "{team} is causing trouble at the Oceanic Museum in Slateport City.",
-      "condition": { "required_region": "HOENN", "flag": "badge_knuckle_earned", "visited": "SLATEPORT_CITY", "flag_not": "oceanic_museum_cleared" },
-      "completed_flag": "oceanic_museum_cleared"
+      "title": "Devon Parts",
+      "description": "A {team} grunt stole the Devon Parts! Get them back in Rusturf Tunnel on Route 116, then return them to Mr. Stone in Rustboro.",
+      "condition": { "required_region": "HOENN", "flag": "heard_devon_parts_stolen", "flag_not": "met_mr_stone" },
+      "completed_flag": "met_mr_stone",
+      "target": "HOENN_RUSTURF_TUNNEL"
     },
+    {"id": "hoenn_m4b", "type": "MAIN", "title": "A Letter for Steven", "description": "Mr. Stone's son Steven is deep in Granite Cave, by Dewford Town. Take him the letter. Mr. Briney's boat can take you there.", "condition": {"required_region": "HOENN", "flag": "met_mr_stone", "flag_not": "met_steven"}, "completed_flag": "met_steven", "target": "HOENN_GRANITE_CAVE"},
     {
       "id": "hoenn_m7",
       "type": "MAIN",
@@ -3224,6 +3216,14 @@
       "condition": { "required_region": "HOENN", "region_badges_min": 2, "region_badges_less": 3 },
       "completed_flag": "badge_dynamo_earned",
       "reward": "Dynamo Badge"
+    },
+    {
+      "id": "hoenn_m6",
+      "type": "MAIN",
+      "title": "Oceanic Museum",
+      "description": "{team} is causing trouble at the Oceanic Museum in Slateport City.",
+      "condition": { "required_region": "HOENN", "flag": "badge_knuckle_earned", "visited": "SLATEPORT_CITY", "flag_not": "oceanic_museum_cleared" },
+      "completed_flag": "oceanic_museum_cleared"
     },
     {"id": "hoenn_m6b", "type": "MAIN", "title": "Captain Stern's Parts", "description": "You saved the Oceanic Museum! Now give the Devon Parts to Captain Stern in Slateport City.", "condition": {"required_region": "HOENN", "flag": "oceanic_museum_cleared", "flag_not": "delivered_devon_parts"}, "completed_flag": "delivered_devon_parts", "target": "SLATEPORT_CITY"},
     {"id": "hoenn_m7a", "type": "MAIN", "title": "Rival on Route 110", "description": "{rival_name} is waiting on Route 110, north of Slateport City. Show how much you've grown!", "condition": {"required_region": "HOENN", "flag": "delivered_devon_parts", "region_badges_min": 2, "region_badges_less": 3, "flag_not": "defeated_rival_110"}, "completed_flag": "defeated_rival_110", "target": "HOENN_ROUTE_110"},
@@ -3315,6 +3315,15 @@
       "reward": "Starter Mega Stone"
     },
     {
+      "id": "hoenn_m17",
+      "type": "MAIN",
+      "title": "Mind Badge",
+      "description": "Defeat Tate & Liza at the Mossdeep City Gym.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 6, "region_badges_less": 7 },
+      "completed_flag": "badge_mind_earned",
+      "reward": "Mind Badge"
+    },
+    {
       "id": "hoenn_m15",
       "type": "MAIN",
       "title": "Mt. Pyre",
@@ -3332,13 +3341,12 @@
       "completed_flag": "aqua_hideout_cleared"
     },
     {
-      "id": "hoenn_m17",
+      "id": "hoenn_m19",
       "type": "MAIN",
-      "title": "Mind Badge",
-      "description": "Defeat Tate & Liza at the Mossdeep City Gym.",
-      "condition": { "required_region": "HOENN", "region_badges_min": 6, "region_badges_less": 7 },
-      "completed_flag": "badge_mind_earned",
-      "reward": "Mind Badge"
+      "title": "Seafloor Cavern",
+      "description": "Dive to the Seafloor Cavern and stop {leader} before the {orb} awakens {legend}!",
+      "condition": { "required_region": "HOENN", "flag": "badge_mind_earned", "flag_not": "seafloor_cavern_cleared" },
+      "completed_flag": "seafloor_cavern_cleared"
     },
     {
       "id": "hoenn_m18",
@@ -3347,14 +3355,6 @@
       "description": "{team} is attacking the Mossdeep Space Center!",
       "condition": { "required_region": "HOENN", "flag": "badge_mind_earned", "flag_not": "space_center_cleared" },
       "completed_flag": "space_center_cleared"
-    },
-    {
-      "id": "hoenn_m19",
-      "type": "MAIN",
-      "title": "Seafloor Cavern",
-      "description": "Dive to the Seafloor Cavern and stop {leader} before the {orb} awakens {legend}!",
-      "condition": { "required_region": "HOENN", "flag": "badge_mind_earned", "flag_not": "seafloor_cavern_cleared" },
-      "completed_flag": "seafloor_cavern_cleared"
     },
     {
       "id": "hoenn_m20",
@@ -3516,7 +3516,8 @@
     {"id": "hoenn_s34", "type": "SIDE", "title": "The Gnarled Den", "description": "An icy dragon sleeps in this Mirage den.", "condition": {"required_region": "HOENN", "visited": "HOENN_GNARLED_DEN"}, "completed_flag": "mirage_kyurem", "target": "HOENN_GNARLED_DEN", "reward": "Kyurem"},
     {"id": "hoenn_s35", "type": "SIDE", "title": "The Nameless Cavern", "description": "Three Pokémon of the lakes are hiding in this Mirage cavern.", "condition": {"required_region": "HOENN", "visited": "HOENN_NAMELESS_CAVERN"}, "completed_flag": ["mirage_uxie", "mirage_mesprit", "mirage_azelf"], "target": "HOENN_NAMELESS_CAVERN"},
     {"id": "hoenn_s36", "type": "SIDE", "title": "The Pathless Plain", "description": "Three Pokémon of justice roam this Mirage plain.", "condition": {"required_region": "HOENN", "visited": "HOENN_PATHLESS_PLAIN"}, "completed_flag": ["mirage_cobalion", "mirage_terrakion", "mirage_virizion"], "target": "HOENN_PATHLESS_PLAIN"},
-    {"id": "hoenn_s41", "type": "SIDE", "title": "The Mirage Islands", "description": "Legends from far-off lands have been seen on islands that come and go.", "condition": {"required_region": "HOENN", "visited": "HOENN_MIRAGE_ISLANDS"}, "completed_flag": ["mirage_articuno", "mirage_zapdos", "mirage_moltres", "mirage_mewtwo", "mirage_celebi"], "target": "HOENN_MIRAGE_ISLANDS"}, {"id": "hoenn_s37", "type": "SIDE", "title": "The Trackless Forest", "description": "Three legendary beasts run through this Mirage forest.", "condition": {"required_region": "HOENN", "visited": "HOENN_TRACKLESS_FOREST"}, "completed_flag": ["mirage_raikou", "mirage_entei", "mirage_suicune"], "target": "HOENN_TRACKLESS_FOREST"},
+    {"id": "hoenn_s41", "type": "SIDE", "title": "The Mirage Islands", "description": "Legends from far-off lands have been seen on islands that come and go.", "condition": {"required_region": "HOENN", "visited": "HOENN_MIRAGE_ISLANDS"}, "completed_flag": ["mirage_articuno", "mirage_zapdos", "mirage_moltres", "mirage_mewtwo", "mirage_celebi"], "target": "HOENN_MIRAGE_ISLANDS"},
+    {"id": "hoenn_s37", "type": "SIDE", "title": "The Trackless Forest", "description": "Three legendary beasts run through this Mirage forest.", "condition": {"required_region": "HOENN", "visited": "HOENN_TRACKLESS_FOREST"}, "completed_flag": ["mirage_raikou", "mirage_entei", "mirage_suicune"], "target": "HOENN_TRACKLESS_FOREST"},
     {"id": "hoenn_s38", "type": "SIDE", "title": "The Admins' Questions", "description": "Courtney and Matt want to battle you in Petalburg City and Mossdeep City.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["delta_courtney_petalburg", "delta_matt_petalburg", "delta_courtney_mossdeep", "delta_matt_mossdeep"], "target": "PETALBURG_CITY"},
     {"id": "hoenn_s39", "type": "SIDE", "title": "Wallace on Route 131", "description": "Wallace has something to tell you on Route 131.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "delta_wallace_131", "target": "HOENN_ROUTE_131"},
     {"id": "hoenn_s40", "type": "SIDE", "title": "Zinnia in Granite Cave", "description": "Zinnia is waiting deep in Granite Cave.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "delta_zinnia_granite", "target": "HOENN_GRANITE_CAVE"},
@@ -3524,7 +3525,10 @@
     {"id": "hoenn_dex60", "type": "SIDE", "title": "Catch 60 Pokémon", "description": "Own 60 different Pokémon from the Hoenn Pokédex to earn a $5,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_30"}, "completed_flag": "hoenn_catch_60", "region_species": 60, "dex_region": "HOENN"},
     {"id": "hoenn_dex90", "type": "SIDE", "title": "Catch 90 Pokémon", "description": "Own 90 different Pokémon from the Hoenn Pokédex to earn a $5,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_60"}, "completed_flag": "hoenn_catch_90", "region_species": 90, "dex_region": "HOENN"},
     {"id": "hoenn_dex120", "type": "SIDE", "title": "Catch 120 Pokémon", "description": "Own 120 different Pokémon from the Hoenn Pokédex to earn a $5,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_90"}, "completed_flag": "hoenn_catch_120", "region_species": 120, "dex_region": "HOENN"},
-    {"id": "hoenn_dex143", "type": "SIDE", "title": "Catch 143 Pokémon", "description": "Own every Pokémon in the Hoenn Pokédex to earn the final $5,000 bonus!", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_120"}, "completed_flag": "hoenn_catch_143", "region_species": 143, "dex_region": "HOENN"}
+    {"id": "hoenn_dex143", "type": "SIDE", "title": "Catch 143 Pokémon", "description": "Own every Pokémon in the Hoenn Pokédex to earn the final $5,000 bonus!", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_120"}, "completed_flag": "hoenn_catch_143", "region_species": 143, "dex_region": "HOENN"},
+    {"id": "hoenn_s_eggs", "type": "SIDE", "title": "Eggs in Lavaridge", "description": "Lavaridge's hot springs keep Eggs nice and warm. Someone in town has more than they can look after.", "target": "LAVARIDGE_TOWN", "targets": [["LAVARIDGE_TOWN", "got_lavaridge_egg"], ["LAVARIDGE_TOWN", "got_lavaridge_togepi_egg"]], "condition": {"required_region": "HOENN", "visited": "LAVARIDGE_TOWN"}, "completed_flag": ["got_lavaridge_egg", "got_lavaridge_togepi_egg"]},
+    {"id": "hoenn_s_beldum", "type": "SIDE", "title": "Steven's House", "description": "Steven has a house in Mossdeep City. He collects rare stones... and he may have left something for a friend.", "target": "MOSSDEEP_CITY", "condition": {"required_region": "HOENN", "visited": "MOSSDEEP_CITY", "flag_not": "got_beldum_steven"}, "completed_flag": "got_beldum_steven"},
+    {"id": "hoenn_s_trades", "type": "SIDE", "title": "Trading Partners", "description": "People in Hoenn are hoping to swap one Pokemon for another. Bring them what they ask for and see what they give you back.", "targets": [["FORTREE_CITY_UPPER", "fortree_skitty_trade"], ["PACIFIDLOG_TOWN", "pacifidlog_bagon_trade"]], "condition": {"required_region": "HOENN", "region_badges_min": 1}, "completed_flag": ["fortree_skitty_trade", "pacifidlog_bagon_trade"]}
   ],
   "HOENN_UNDERWATER_POOL_PERCENTAGES": { "170": 35, "171": 15, "366": 25, "369": 10, "370": 15 },
   "HOENN_ROUTE_101_PERCENTAGES": {"261": 20, "263": 40, "265": 40, "2032": 1},

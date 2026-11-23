@@ -7,8 +7,8 @@ Levels for everything the player fights.
 - Elite Four and Champion: per-region ladders.
 - Wild Pokemon and route trainers: the area's level from assets/area_levels.json (the games'
   encounter levels; an area's own `"level"` key overrides it). Before the region's title (Jordan,
-  11-15) they keep that canon level until your lead Pokemon has reached the level cap; then they come
-  anywhere from 3 under the cap to 1 over it (cap 25: Lv 22-26); after the title they keep up with the team's average level (11-07), the lowest one
+  11-15) they keep that canon level until your lead Pokemon has reached the next Leader's ace; then they come
+  anywhere from 3 under that ace to 1 over it (ace 25: Lv 22-26); after the title they keep up with the team's average level (11-07), the lowest one
   left out. Gyms, the League and story trainers keep their own.
 - Legendaries use fixed levels; Max Raid bosses take their level from the star rank.
 """
@@ -131,30 +131,30 @@ def lead_level(game):
 
 def area_level(game, area_key):
     """The level an area's wild Pokemon and route trainers are built around (Jordan, 11-15). Before the region's title:
-    its canon level, unless your lead Pokemon has reached the level cap (the next Gym's ace): then the areas rise to
-    CAP_LIFT_BELOW levels under the cap. After the title (the post-game): its canon level, or the player's team level
+    its canon level, unless your lead Pokemon has reached the next Gym's ace (story_ace): then the areas rise to
+    CAP_LIFT_BELOW levels under that ace. After the title (the post-game): its canon level, or the player's team level
     (team_level) once the team is ahead of it (Jordan, 11-07: keep up with me)."""
     canon = canon_area_level(game, area_key)
     story = getattr(game, "story_manager", None)
     if story is None:
         return canon
     if not is_postgame(story):
-        cap = story_level_cap(story)
-        return max(canon, cap - CAP_LIFT_BELOW) if lead_level(game) >= cap else canon
+        ace = story_ace(story)   # (the ace, not the Exp. cap's ace + 2: Jordan 11-21)
+        return max(canon, ace - CAP_LIFT_BELOW) if lead_level(game) >= ace else canon
     return max(canon, team_level(game))
 
 
 def capped_band(game, area_key):
-    """Before the title, once your lead Pokemon has reached the level cap: the (low, high) levels the area's wild
-    Pokemon and route trainers come at, cap - CAP_LIFT_BELOW to cap + CAP_LIFT_ABOVE (Jordan, 11-15). None otherwise,
+    """Before the title, once your lead Pokemon has reached the next ace: the (low, high) levels the area's wild
+    Pokemon and route trainers come at, ace - CAP_LIFT_BELOW to ace + CAP_LIFT_ABOVE (Jordan, 11-15). None otherwise,
     or where the area's canon level is already above that."""
     story = getattr(game, "story_manager", None)
     if story is None or is_postgame(story):
         return None
-    cap = story_level_cap(story)
-    if lead_level(game) < cap or canon_area_level(game, area_key) > cap + CAP_LIFT_ABOVE:
+    ace = story_ace(story)
+    if lead_level(game) < ace or canon_area_level(game, area_key) > ace + CAP_LIFT_ABOVE:
         return None
-    return cap - CAP_LIFT_BELOW, cap + CAP_LIFT_ABOVE
+    return ace - CAP_LIFT_BELOW, ace + CAP_LIFT_ABOVE
 
 
 
@@ -205,7 +205,7 @@ def legendary_encounter_level(game, area_key=None):
     region = story.get_current_region()
     if is_postgame(story, region) or len(story.badges.get(region, [])) >= len(gym_aces(region)):
         return LEGEND_LEVEL
-    return max(5, min(100, int(story_level_cap(story)) + LEGEND_OVER_CAP))
+    return max(5, min(100, int(story_ace(story)) + LEGEND_OVER_CAP))
 
 
 def boss_level(game, area_key, pid):
@@ -233,7 +233,7 @@ def gym_team_levels(region, area_key, size, role):
 
 LEVEL_CAP_MODES = ("STORY", "OBEDIENCE", "NONE")
 LEVEL_CAP_TEXT = {
-    "STORY": ("STORY", "Can't level past the next Gym Leader's ace"),
+    "STORY": ("STORY", "Can't level past the next Gym Leader's ace + 2"),
     "OBEDIENCE": ("OBEDIENCE", "High-level Pokemon may ignore you until you earn badges"),
     "NONE": ("OFF", "Level freely, like the original games"),
 }
@@ -294,17 +294,32 @@ def postgame_cap(story, region=None):
     return max(5, min(100, max(top, floor)))
 
 
-def story_level_cap(story):
-    """STORY mode: the next Gym Leader's ace in this region (the Champion's ace after the last). After the title
-    (and in Orre, which has no Gyms) the player-controlled post-game cap (postgame_cap)."""
+# Jordan (11-21): the story level cap is the next Leader's ace + CAP_OVER_ACE, in every region. The next Leader comes
+# from this region's badges: the next Gym (Alola: Ilima's trial, then each Kahuna; Orange: the Orange Crew; Orre: the
+# four tournament champions), and with every badge the Champion (Drake in Orange, Evice in Orre). Only the Exp. cap
+# gets the + 2: the wild lift, wild legendaries and rematches stay pegged to the ace itself (story_ace).
+CAP_OVER_ACE = 2
+
+
+def story_ace(story):
+    """The next Leader's ace in this region (the Champion's after the last Gym), never lower than an earlier Gym's
+    (Pryce's ace is below Jasmine's). After the title, the player-controlled post-game cap (postgame_cap)."""
     region = story.get_current_region()
     if is_postgame(story, region):
         return postgame_cap(story, region)
     badges = len(story.badges.get(region, []))
     aces = gym_aces(region)
     if badges < len(aces):
-        return max(aces[:badges + 1])  # never lower than an earlier Gym's (Pryce's ace is below Jasmine's)
-    return CHAMPION_ACE.get(region, 60)  # every Gym badge, no title yet: up to the Champion's ace
+        return max(aces[:badges + 1])
+    return CHAMPION_ACE.get(region, 60)  # every Gym badge, no title yet: the Champion's ace
+
+
+def story_level_cap(story):
+    """STORY mode: the next Leader's ace + CAP_OVER_ACE (Brock 14 -> Lv 16; the Champion's ace + 2 after the last
+    Gym). After the title, the player-controlled post-game cap (postgame_cap)."""
+    if is_postgame(story):
+        return postgame_cap(story)
+    return min(100, story_ace(story) + CAP_OVER_ACE)
 
 
 def xp_cap(story):

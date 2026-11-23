@@ -32,7 +32,7 @@ def tier_ready(game, info):
     from src.world import levels
     tiers = (info.get("phone") or {}).get("tiers") or []
     story = game.story_manager
-    cap = levels.story_level_cap(story) if levels.cap_mode(story) == "STORY" else 100
+    cap = levels.story_ace(story) if levels.cap_mode(story) == "STORY" else 100
     ready = [i for i, t in enumerate(tiers) if min(t.get("levels") or [0]) <= cap]
     return ready[-1] if ready else None
 
@@ -122,7 +122,27 @@ def ring(game, area_key):
             c[k] = t
             call = info["phone"].get("call") or [f"{name}: Let's battle again!"]
             return ["Ring, ring! Your phone is ringing!"] + list(call)
-    return []
+    return swarm_call(game, region)
+
+
+def swarm_call(game, region):
+    """Once a day, a trainer in your phone rings about today's swarm (HGSS: your phone friends tell you of mass outbreaks,
+    as Pokemon Talk does; 11-22, src/world/swarms.py). The friend from that place calls if you have one, else the first."""
+    import datetime
+    from src.world import swarms as _swarms
+    story = game.story_manager
+    sw = _swarms.today(story, region)
+    flag = f"phone_swarm_{datetime.date.today().isoformat()}"
+    c = contacts(story)
+    if not sw or not c or story.story_flags.get(flag):
+        return []
+    story.story_flags[flag] = True
+    k = next((k for k in c if k.split("|", 1)[0] == sw[0]), next(iter(c)))
+    who = k.split("|", 1)[1].split(" ")[-1]
+    name = str((game.loader.fetch_specific(int(sw[1])) or {}).get("name", "a Pokemon")).replace("-", " ").title()
+    how = {"surf": " out on the water", "fish": " - they're biting on every rod"}.get(_swarms.kind_today(story, region), "")
+    return ["Ring, ring! Your phone is ringing!", f"{who}: Hey, guess what! There are loads of {name} at {_swarms.place_name(sw[0])}{how}!",
+            f"{who}: I've never seen so many. Go and see before they're gone!"]
 
 
 # Who's in the phone from the start (HGSS: Mom gives you the Pokegear with her number in it; Elm adds his on Route 29). Our words.

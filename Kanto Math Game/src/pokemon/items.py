@@ -211,7 +211,19 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         # (11-17: for Fling, Trick and Psycho Shift, as in the games. Where to get them: Reversal Mountain (B2W2),
         # Ula'ula Meadow / Resolution Cave (USUM), Wyndon Stadium (SwSh), Levincia's shop (SV, 15,000))
         "FLAME_ORB": {"price": 15000, "text": "Held: it burns its holder at the end of a turn. Flung, it burns the foe."},
-        "TOXIC_ORB": {"price": 15000, "text": "Held: it badly poisons its holder at the end of a turn. Flung, it poisons the foe."}}
+        "TOXIC_ORB": {"price": 15000, "text": "Held: it badly poisons its holder at the end of a turn. Flung, it poisons the foe."},
+        # (11-22: the Battle Point prizes, Emerald / HGSS / B2W2)
+        "FOCUS_SASH": {"price": 4000, "text": "Held: from full HP, its holder hangs on at 1 HP instead of fainting. Used up."},
+        "MUSCLE_BAND": {"price": 4000, "text": "Held: its holder's physical moves hit a little harder."},
+        "WISE_GLASSES": {"price": 4000, "text": "Held: its holder's special moves hit a little harder."},
+        "ZOOM_LENS": {"price": 4000, "text": "Held: its holder's moves hit more often."},
+        "LIFE_ORB": {"price": 4000, "text": "Held: its holder's moves hit harder, but each hit costs it a little HP."},
+        "POWER_WEIGHT": {"price": 3000, "text": "Held: more HP effort points from battles, but its holder is slower."},
+        "POWER_BRACER": {"price": 3000, "text": "Held: more Attack effort points from battles, but its holder is slower."},
+        "POWER_BELT": {"price": 3000, "text": "Held: more Defense effort points from battles, but its holder is slower."},
+        "POWER_LENS": {"price": 3000, "text": "Held: more Sp. Atk effort points from battles, but its holder is slower."},
+        "POWER_BAND": {"price": 3000, "text": "Held: more Sp. Def effort points from battles, but its holder is slower."},
+        "POWER_ANKLET": {"price": 3000, "text": "Held: more Speed effort points from battles, but its holder is slower."}}
 # Items that are used up when their effect happens (berries too): the holder's copy leaves the Bag.
 CONSUMED = {"POWER_HERB", "WHITE_HERB", "MENTAL_HERB"}
 # Held berries (Gen 4 on): eaten in battle when their moment comes.
@@ -339,6 +351,8 @@ VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it 
 # Effort points from battle (Gen 6 on): each Pokemon that earns XP from a knockout gets the foe's yield
 # (assets/ev_yields.json, from Pokemon Essentials' PBS), doubled by a held Macho Brace; up to 252 a stat, 510 in all.
 EV_STAT_CAP = 252
+POWER_ITEMS = {"POWER_WEIGHT": "HP", "POWER_BRACER": "ATTACK", "POWER_BELT": "DEFENSE", "POWER_LENS": "SPATK",
+               "POWER_BAND": "SPDEF", "POWER_ANKLET": "SPEED"}
 
 
 def ev_yield(game, species_id):
@@ -359,7 +373,11 @@ def gain_battle_evs(game, pokemon, species_id):
     got = {}
     mult = 2 if getattr(pokemon, "held_item", None) == "MACHO_BRACE" else 1
     evs = pokemon.__dict__.setdefault("evs", {})
-    for stat, n in ev_yield(game, species_id).items():
+    yields = ev_yield(game, species_id)
+    power = POWER_ITEMS.get(getattr(pokemon, "held_item", None))
+    if power:   # (a Power item: 8 more in its stat, every knockout, as in Gen 6 on)
+        yields[power] = int(yields.get(power, 0)) + 8
+    for stat, n in yields.items():
         room = min(EV_STAT_CAP - int(evs.get(stat, 0)), EV_TOTAL - sum(evs.values()))
         add = max(0, min(n * mult, room))
         if not add:
@@ -419,7 +437,19 @@ def describe(item):
     if item == "EON_FLUTE":  # (Soaring in the Sky: src/world/soaring3d.py)
         from src.world import soaring3d
         return soaring3d.FLUTE_TEXT
-    return info(item).get("text") or catching.BALL_TEXT.get(item, "") or describe_extra(theme.GAME, item)
+    return info(item).get("text") or catching.BALL_TEXT.get(item, "") or OTHER_TEXT.get(item, "") or describe_extra(theme.GAME, item)
+
+
+# (11-22: items the games give that no table above covered; the items_pp suite's "no item without a description")
+OTHER_TEXT = {
+    "UP_GRADE": "A clear little device. Give it to Porygon and it evolves into Porygon2.",
+    "UPGRADE": "A clear little device. Give it to Porygon and it evolves into Porygon2.",
+    "LUCK_INCENSE": "An incense with a lucky smell. Held, it brings in more prize money from battles.",
+    "LUNAR_WING": "A feather that shines like the moon. It's said to chase away bad dreams.",
+    "ODD_KEYSTONE": "An odd stone that seems to call out. It fits the little tower on Route 209.",
+    "POFFIN_CASE": "A case for keeping Poffins, the treats you cook for your Pokemon.",
+    "SHED_SHELL": "A cast-off shell. Held, it lets its holder always switch out.",
+}
 
 
 def standard_stock(badges):
