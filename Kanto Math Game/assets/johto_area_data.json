@@ -3746,17 +3746,7 @@
         
             "area_boss": {"id": 249, "level": 60, "name": "Lugia", "victory_flag": "caught_lugia"},
         
-            "trainer_pool": [
-        
-                {"name": "Swimmer Berke", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 73], "rewards": {"balls": 2}},
-        
-                {"name": "Swimmer Dawn", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [116, 117], "rewards": {"balls": 2}},
-        
-                {"name": "Swimmer Simon", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [73], "rewards": {"balls": 2}},
-        
-                {"name": "Swimmer Paula", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120], "rewards": {"balls": 2}}
-        
-            ],
+            "trainer_pool": [],
         
             "route_menu": [
         

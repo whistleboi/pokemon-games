@@ -76,6 +76,24 @@
     ]
   },
   "figures": {
+    "FRONTIER_ACCESS:POKE MART": {
+      "sheet": "hg_shopm1.png"
+    },
+    "FRONTIER_ACCESS:POKEMON CENTER": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "SAFARI_ZONE_GATE:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "MT_SILVER_CITY:POKEMON CENTER": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "OLIVINE_CITY:Shop": {
+      "sheet": "hg_shopm1.png"
+    },
+    "OLIVINE_CITY:Heal": {
+      "sheet": "hg_pcwoman1.png"
+    },
     "FLOCCESY_TOWN:Mr. Medal": {"sheet": "b2_c360.png"},
     "JOIN_AVENUE:Visitor 1": {"sheet": "b2_c31.png"},
     "JOIN_AVENUE:Visitor 2": {"sheet": "b2_c30.png"},
@@ -7249,7 +7267,7 @@
       "sheet": "hg_pcwoman1.png"
     },
     "CHERRYGROVE_CITY:Shop": {
-      "sheet": "hg_gsman3.png"
+      "sheet": "hg_shopm1.png"
     },
     "CHERRYGROVE_CITY:Guide Gent": {
       "sheet": "hg_gsoldman1.png"
@@ -7297,7 +7315,7 @@
       "sheet": "hg_gsboy1.png"
     },
     "VIOLET_CITY:Shop": {
-      "sheet": "hg_gsoldwoman1.png"
+      "sheet": "hg_shopm1.png"
     },
     "JOHTO_ROUTE_32:POKEMON CENTER": {
       "sheet": "hg_pcwoman1.png"
@@ -7321,7 +7339,7 @@
       "sheet": "hg_gsboy1.png"
     },
     "AZALEA_TOWN:Shop": {
-      "sheet": "hg_gsman3.png"
+      "sheet": "hg_shopm1.png"
     },
     "AZALEA_TOWN:Visit Kurt": {
       "sheet": "hg_gantetsu.png"
@@ -7732,7 +7750,7 @@
       "sheet": "hg_pcwoman1.png"
     },
     "ECRUTEAK_CITY:Shop": {
-      "sheet": "hg_gsman1.png"
+      "sheet": "hg_shopm1.png"
     },
     "ECRUTEAK_CITY:Gym": {
       "sheet": "hg_gsleader4.png"
@@ -8275,7 +8293,7 @@
       "sheet": "hg_gsgirl1.png"
     },
     "BLACKTHORN_CITY:Shop": {
-      "sheet": "hg_gsfighter.png"
+      "sheet": "hg_shopm1.png"
     },
     "BLACKTHORN_CITY:Heal": {
       "sheet": "hg_pcwoman1.png"
@@ -14285,6 +14303,9 @@
   },
   "townsperson": "NPC 17.png",
   "players": {
+    "ethan": "hg_hero.png",
+    "lyra": "hg_heroine.png",
+    "silver": "hg_gsrivel.png",
     "lucas": "pt_hero.png",
     "dawn": "pt_heroine.png",
     "nate": "b2_nate.png",
