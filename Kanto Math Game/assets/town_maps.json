@@ -281147,7 +281147,7 @@
    },
    "lorelei": {
     "art": [
-     "ccccccccccc",
+     "cccccccccNN",
      "ccccccccccc",
      "N.....NN...",
      "Nc.......NN",
@@ -281173,6 +281173,24 @@
      "_buildings_in_picture": true
     },
     "people": [
+     {
+      "text": "Doll 12",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 13",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
      {
       "text": "Doll 1",
       "action": "EVENT",
@@ -281331,6 +281349,14 @@
       "m": "face",
       "d": "d"
      },
+     "9,0": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,0": {
+      "m": "face",
+      "d": "d"
+     },
      "9,6": {
       "m": "face",
       "d": "d"
@@ -281340,6 +281366,10 @@
       "d": "l"
      }
     },
+    "look_only": [
+     "9,0",
+     "10,0"
+    ],
     "overheads": [
      {
       "kind": "picture",

@@ -1948,8 +1948,8 @@ if _ti: story.inventory["SS_TICKET"] = _ti
 _lo = _tm["FOUR_ISLAND"]["rooms"]["lorelei"]
 _dolls = [p for p in _lo["people"] if isinstance(p, dict) and str(p.get("text", "")).startswith("Doll ")]
 _wh = _tm["ROCKET_WAREHOUSE"]
-check(len(_dolls) == 12 and any("Magnetic Waves" in " ".join(x) for x in _wh.get("signs", [])),
-      f"Sevii: Lorelei's Pokemon dolls (FireRed's 14 but the two on the top shelf, out of reach); the Rocket Warehouse's PC report ({len(_dolls)})")
+check(len(_dolls) == 14 and sorted(_lo.get("look_only", [])) == ["10,0", "9,0"] and any("Magnetic Waves" in " ".join(x) for x in _wh.get("signs", [])),
+      f"Sevii: Lorelei's Pokemon dolls (FireRed's 14; the two on the top shelf look-only, out of reach); the Rocket Warehouse's PC report ({len(_dolls)})")
 # Copycat: the Magnet Train Pass first (HGSS), then Mimic for a Poke Doll (FireRed), bought on Celadon 4F for $1000
 _, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")
 story.money = 1500; story.inventory.pop("POKE_DOLL", None)
