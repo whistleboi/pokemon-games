@@ -34,8 +34,28 @@ TRAINERS = [   # (trainers in the area data with no spot on the map: set on open
     ("HOENN_ROUTE_129", 0, 55, 25, "Scuba Diver Colten"),
     ("HOENN_ROUTE_129", 0, 70, 33, "Free Diver Coral"),
 ]
+# Mauville (Jordan 11-23, #18): ORAS's Ultimate Move Studio and Pledge Move Dojo, in Mauville Hills (Emerald's Mauville has
+# no mall); as every tutor now, they sell their moves as TMs (src/pokemon/tutors.py), at the TM's price as Johto's
+PEOPLE += [
+    ("MAUVILLE_CITY", None, "hills", 10, 5,
+     {"text": "Ultimate Move tutor", "action": "EVENT",
+      "event": {"lines": ["Tutor: The ultimate moves! Only a fully evolved first partner who loves its Trainer can learn one."],
+                "tutor": {"choices": ["FRENZY-PLANT", "BLAST-BURN", "HYDRO-CANNON"], "min_friend": 220, "price": "tm"}}}),
+    ("MAUVILLE_CITY", None, "hills", 12, 5,
+     {"text": "Pledge tutor", "action": "EVENT",
+      "event": {"lines": ["Tutor: Pledge moves! Fire, Water and Grass, each stronger together. Want to learn one?"],
+                "tutor": {"choices": ["GRASS-PLEDGE", "FIRE-PLEDGE", "WATER-PLEDGE"], "price": "tm"}}}),
+]
 HIDDEN = [
     ("HOENN_GRANITE_CAVE", 1, 36, 11, "STEELIXITE"),   # (1F, the south side east of the big rock: hidden, as ORAS)
+]
+PATCH = [   # (someone already on the map gets more to their event)
+    # Petalburg Woods: ORAS's Devon researcher gives the Exp. Share; ours retired it, so a Lucky Egg (as Kanto; #22)
+    ("HOENN_PETALBURG_WOODS", None, None, "Devon researcher",
+     {"lines": ["I came looking for Shroomish, and that thug came after my papers! Thank you for stepping in.",
+                "Here, take this. A Pokemon holding it learns faster from every battle."],
+      "gift_item": {"LUCKY_EGG": 1}, "flag": "got_lucky_egg_hoenn",
+      "done": ["Devon researcher: Thanks again! I'll get these papers back to the company safe and sound."]}),
 ]
 LISTS = [
     # Rusturf Tunnel: Wanda's boyfriend digs out the Aggronite once the tunnel is cleared (ORAS)
@@ -74,6 +94,16 @@ def apply(maps):
         if m:
             p = _part(m, floor, None)
             p.setdefault("hidden", {})[f"{x},{y}"] = item
+    for key, floor, room, text, ev in PATCH:
+        m = maps.get(key)
+        if not m:
+            continue
+        p = _part(m, floor, room)
+        who = next((q for q in p.get("people") or [] if isinstance(q, dict) and q.get("text") == text), None)
+        if who is None:
+            print(ascii(f"  hoenn_canon: no {text} on {key}: left out"))
+            continue
+        who["event"] = dict(who.get("event") or {}, **ev)
     for key, floor, room, x, y, more in LISTS:
         m = maps.get(key)
         if not m:

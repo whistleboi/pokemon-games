@@ -97899,7 +97899,15 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "I came looking for Shroomish, and that Team Aqua thug came after my papers! Thank you for stepping in."
+      "I came looking for Shroomish, and that thug came after my papers! Thank you for stepping in.",
+      "Here, take this. A Pokemon holding it learns faster from every battle."
+     ],
+     "gift_item": {
+      "LUCKY_EGG": 1
+     },
+     "flag": "got_lucky_egg_hoenn",
+     "done": [
+      "Devon researcher: Thanks again! I'll get these papers back to the company safe and sound."
      ]
     },
     "flag_condition": "not woods_researcher_left"
@@ -104642,7 +104650,7 @@
      "c......cc......c",
      "cyy....cc....zzc",
      "c..............c",
-     "c.N............c",
+     "c.N.......N.N..c",
      "c..............c",
      "cccccccnnccccccc"
     ],
@@ -104733,6 +104741,41 @@
         "Collector: Eek! Oh, it's only you.",
         "Collector: A scary man in a suit keeps asking about my rent. I spent it all on my collection!"
        ]
+      }
+     },
+     {
+      "text": "Ultimate Move tutor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Tutor: The ultimate moves! Only a fully evolved first partner who loves its Trainer can learn one."
+       ],
+       "tutor": {
+        "choices": [
+         "FRENZY-PLANT",
+         "BLAST-BURN",
+         "HYDRO-CANNON"
+        ],
+        "min_friend": 220,
+        "price": "tm"
+       }
+      }
+     },
+     {
+      "text": "Pledge tutor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Tutor: Pledge moves! Fire, Water and Grass, each stronger together. Want to learn one?"
+       ],
+       "tutor": {
+        "choices": [
+         "GRASS-PLEDGE",
+         "FIRE-PLEDGE",
+         "WATER-PLEDGE"
+        ],
+        "price": "tm"
+       }
       }
      }
     ],

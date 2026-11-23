@@ -2904,6 +2904,17 @@ if st.hover_menu_active:
         st._get_callback_for_option(_mo)(); said = _play(st)
 check(story.inventory.get("LATIOSITE", 0) == 1 and not story.inventory.get("LATIASITE"),
       f"Littleroot: after the Delta Episode Mom has your version's Lati stone (Alpha Sapphire: the Latiosite) ({said[:1]})")
+story.story_flags.pop("got_lucky_egg_hoenn", None); story.story_flags.pop("woods_researcher_left", None)
+_egg = story.inventory.get("LUCKY_EGG", 0)
+st, said = _route_step("HOENN_PETALBURG_WOODS", "HOENN_ROUTE_104", 0, (25, 20), (1, 0))
+check(story.inventory.get("LUCKY_EGG", 0) == _egg + 1, f"Petalburg Woods: the Devon researcher's thanks is a Lucky Egg (ORAS's Exp. Share; #22) ({said[-1:]})")
+from src.pokemon import tutors as _tut4
+g.__dict__.pop("_tutor_cache", None)
+_tt = _tut4.tutor_tms(g, "HOENN")
+check({"TM153", "TM154", "TM155", "TM144", "TM145", "TM146"} <= set(_tt),
+      f"Mauville Hills: ORAS's Ultimate Move and Pledge tutors teach (and sell) their moves ({sorted(_tt)[:8]})")
+_pools = [k for k, v in g.loader.area_data.items() if k.endswith("_PERCENTAGES") and k.startswith(("HOENN", "PETALBURG", "SLATEPORT")) and isinstance(v, dict) and ("2032" in v or "2033" in v)]
+check(not _pools, f"no Galarian Zigzagoon / Linoone in Hoenn's wild lists (#17) {_pools[:3]}")
 story.story_flags.clear(); story.story_flags.update(_f4)
 story.inventory.clear(); story.inventory.update(_inv4)
 

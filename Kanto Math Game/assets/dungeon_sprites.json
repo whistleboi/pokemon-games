@@ -2433,6 +2433,15 @@
     "LITTLEROOT_TOWN:Lab aide": {
       "sheet": "em_46.png"
     },
+    "MAUVILLE_CITY:Ultimate Move tutor": {
+      "sheet": "em_48.png"
+    },
+    "MAUVILLE_CITY:Pledge tutor": {
+      "sheet": "em_47.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Bored grunt": {
+      "sheet": "@grunt"
+    },
     "LITTLEROOT_TOWN:Little girl": {
       "sheet": "em_6.png"
     },
