@@ -317,6 +317,10 @@
     "JOHTO_SAFARI_ZONE_GOOD_ROD_PERCENTAGES": {"129": 36, "118": 29, "119": 14, "60": 9, "61": 9, "98": 3},
 
     "JOHTO_SAFARI_ZONE_SUPER_ROD_PERCENTAGES": {"118": 30, "119": 30, "61": 16, "147": 13, "60": 7, "99": 2, "130": 2},
+    "JOHTO_JOHTO_VICTORY_ROAD_ROCK_SMASH_PERCENTAGES": {"74": 90, "75": 10},
+    "JOHTO_VICTORY_ROAD_DAY_PERCENTAGES": {"75": 30, "42": 30, "95": 15, "217": 10, "232": 10, "111": 5},
+    "JOHTO_VICTORY_ROAD_MORNING_PERCENTAGES": {"75": 30, "42": 30, "95": 15, "217": 10, "232": 10, "111": 5},
+    "JOHTO_VICTORY_ROAD_NIGHT_PERCENTAGES": {"75": 30, "42": 30, "95": 15, "217": 10, "232": 10, "111": 5},
     "STORY_PROGRESSION": {
         "JOHTO_BATTLE_FRONTIER": {
             "area_type": "dungeon",
@@ -1295,6 +1299,70 @@
 
         },
 
+        "JOHTO_VICTORY_ROAD": {
+
+            "region": "JOHTO",
+
+            "area_type": "dungeon",
+
+            "battle_type": "cave",
+
+            "route_name": "Victory Road",
+
+            "wild_pool_percentages": "JOHTO_VICTORY_ROAD_DAY_PERCENTAGES",
+
+            "min_rounds": 4,
+
+            "trainer_pool": [
+
+                {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [215, 42, 82, 93, 64, 157], "team_choice": {"152": [215, 42, 82, 93, 64, 157], "155": [215, 42, 82, 93, 64, 160], "158": [215, 42, 82, 93, 64, 154]}, "levels": [36, 38, 37, 37, 37, 40], "rewards": {"balls": 10}, "dialogue": {"intro": ["...Hold it.", "Are you going to take the Pokemon League challenge?", "...Don't make me laugh. You're so much weaker than I am.", "I'm not like I was before. I now have the best and strongest Pokemon with me!"], "player_won": ["...I haven't given up on becoming the greatest Trainer...", "I'm going to find out why I can't win and become stronger.", "When I do, I will challenge you. And I'll beat you down with all my power.", "...Humph! You keep at it until then."], "player_lost": ["...Humph! I knew it. Go home, the League isn't for you."]}, "movesets": {"215": ["FEINT-ATTACK", "ICY-WIND", "FURY-SWIPES", "QUICK-ATTACK"], "42": ["BITE", "CONFUSE-RAY", "AIR-CUTTER", "ASTONISH"], "82": ["SPARK", "THUNDER-WAVE", "SUPERSONIC", "MAGNET-BOMB"], "64": ["REFLECT", "DISABLE", "PSYBEAM", "RECOVER"], "93": ["CURSE", "MEAN-LOOK", "CONFUSE-RAY", "SHADOW-BALL"], "157": ["LAVA-PLUME", "SWIFT", "FLAME-WHEEL", "QUICK-ATTACK"], "160": ["WATERFALL", "SLASH", "ICE-FANG", "CRUNCH"], "154": ["REFLECT", "PETAL-DANCE", "POISONPOWDER", "SYNTHESIS"]}, "is_boss_battle": true, "victory_flag": "defeated_rival_victory_road_johto"}
+
+            ],
+
+            "route_menu": [
+
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+
+                {"text": "Reception Gate", "action": "EXIT", "target_area": "POKEMON_LEAGUE_GATE", "condition": "can_exit", "color": "RED"}, {"text": "Silver League", "action": "EXIT", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "can_exit", "color": "RED"},
+
+                {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_johto_victory_road_d43r0101_34_14", "event": {"lines": ["A Max Elixir, lying among the rocks."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_johto_victory_road_d43r0101_34_14"}},
+
+                {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_johto_victory_road_d43r0101_35_33", "event": {"lines": ["A Max Revive, in a dark corner."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_johto_victory_road_d43r0101_35_33"}},
+
+                {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_johto_victory_road_d43r0101_42_40", "event": {"lines": ["A Full Heal, beside the cave wall."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_johto_victory_road_d43r0101_42_40"}},
+
+                {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_johto_victory_road_d43r0102_13_24", "event": {"lines": ["A Potion, left behind by a hiker."], "gift_item": {"POTION": 1}, "flag": "got_potion_johto_victory_road_d43r0102_13_24"}},
+
+                {"text": "TM149", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm149_johto_victory_road_d43r0102_31_36", "event": {"lines": ["A TM (Earthquake), lying among the rocks."], "gift_item": {"TM149": 1}, "flag": "got_tm149_johto_victory_road_d43r0102_31_36"}},
+
+                {"text": "HP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hp_up_johto_victory_road_d43r0102_44_24", "event": {"lines": ["A Hp Up, in a dark corner."], "gift_item": {"HP_UP": 1}, "flag": "got_hp_up_johto_victory_road_d43r0102_44_24"}},
+
+                {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_johto_victory_road_d43r0103_46_19", "event": {"lines": ["A Full Restore, beside the cave wall."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_johto_victory_road_d43r0103_46_19"}},
+
+                {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_johto_victory_road_d43r0103_33_36", "event": {"lines": ["An Ultra Ball, left behind by a hiker."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_johto_victory_road_d43r0103_33_36"}},
+
+                {"text": "TM094", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm094_johto_victory_road_d43r0103_25_15", "event": {"lines": ["A TM (Dark-Pulse), lying among the rocks."], "gift_item": {"TM094": 1}, "flag": "got_tm094_johto_victory_road_d43r0103_25_15"}}
+
+            ],
+
+            "next_area": "SILVER_LEAGUE_PLATEAU",
+
+            "radio_sounds": {"hoenn": [359, 296], "sinnoh": [436, 433]},
+
+            "rock_smash_pool_percentages": "JOHTO_JOHTO_VICTORY_ROAD_ROCK_SMASH_PERCENTAGES",
+
+            "morning_pool_percentages": "JOHTO_VICTORY_ROAD_MORNING_PERCENTAGES",
+
+            "day_pool_percentages": "JOHTO_VICTORY_ROAD_DAY_PERCENTAGES",
+
+            "night_pool_percentages": "JOHTO_VICTORY_ROAD_NIGHT_PERCENTAGES"
+
+        },
+
         "MT_SILVER_CITY": {
 
             "area_type": "wild_route",
@@ -1330,8 +1398,6 @@
             ],
 
             "next_area": "MT_SILVER",
-
-            "on_enter_event": {"type": "trainer_battle", "condition": "has_8_johto_badges", "flag_check": "defeated_rival_victory_road_johto", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [215, 42, 82, 93, 64, 157], "team_choice": {"152": [215, 42, 82, 93, 64, 157], "155": [215, 42, 82, 93, 64, 160], "158": [215, 42, 82, 93, 64, 154]}, "levels": [36, 38, 37, 37, 37, 40], "rewards": {"balls": 10}, "dialogue": {"intro": ["...Hold it.", "Are you going to take the Pokemon League challenge?", "...Don't make me laugh. You're so much weaker than I am.", "I'm not like I was before. I now have the best and strongest Pokemon with me!"], "player_won": ["...I haven't given up on becoming the greatest Trainer...", "I'm going to find out why I can't win and become stronger.", "When I do, I will challenge you. And I'll beat you down with all my power.", "...Humph! You keep at it until then."], "player_lost": ["...Humph! I knew it. Go home, the League isn't for you."]}, "movesets": {"215": ["FEINT-ATTACK", "ICY-WIND", "FURY-SWIPES", "QUICK-ATTACK"], "42": ["BITE", "CONFUSE-RAY", "AIR-CUTTER", "ASTONISH"], "82": ["SPARK", "THUNDER-WAVE", "SUPERSONIC", "MAGNET-BOMB"], "64": ["REFLECT", "DISABLE", "PSYBEAM", "RECOVER"], "93": ["CURSE", "MEAN-LOOK", "CONFUSE-RAY", "SHADOW-BALL"], "157": ["LAVA-PLUME", "SWIFT", "FLAME-WHEEL", "QUICK-ATTACK"], "160": ["WATERFALL", "SLASH", "ICE-FANG", "CRUNCH"], "154": ["REFLECT", "PETAL-DANCE", "POISONPOWDER", "SYNTHESIS"]}}},
 
             "radio_sounds": {"hoenn": [293, 264], "sinnoh": [418, 399]},
 
@@ -4407,6 +4473,7 @@
         {
             "id": "johto_m17", "type": "MAIN", "title": "Conquer the League", "description": "The Johto journey ends at the Silver League, past Victory Road. Defeat the Elite Four and become the Johto Champion!",
             "target": "SILVER_LEAGUE_PLATEAU",
+            "steps": [{"area": "JOHTO_VICTORY_ROAD", "floor": 2, "at": [31, 18], "label": "A familiar face", "done": {"any": ["defeated_rival_victory_road_johto", "visited_SILVER_LEAGUE_PLATEAU"]}, "chapter": "Victory Road"}],
             "condition": { "start_region": "JOHTO", "badges_min": 8, "flag_not": "beat_johto_champion" },
             "reward": "Champion Title"
         },

@@ -1619,7 +1619,8 @@ THINGS = [   # (what, words to look for in a mission's text, how the run shows i
     ("Blackthorn Gym: Clair", ["clair", "blackthorn"], "badge:RISING"),
     ("Dragon's Den: the Elders' quiz", ["dragon's den", "dragons den", "dragon den", "elder"], "flag:visited_DRAGONS_DEN"),
     ("HM07 Waterfall (Ice Path)", ["waterfall"], "item:HM_WATERFALL"),
-    ("Victory Road to the Silver League", ["victory road"], "flag:visited_POKEMON_LEAGUE_GATE"),
+    ("Victory Road to the Silver League", ["victory road"], "flag:visited_JOHTO_VICTORY_ROAD"),   # (11-22: Johto's own Victory Road, SoulSilver's D43)
+    ("Victory Road: the rival's last battle", ["victory road"], "flag:defeated_rival_victory_road_johto"),
     ("Elite Four and Lance", ["elite four", "lance", "champion"], "flag:beat_johto_champion"),
 ]
 _wk = sorted(glob.glob(os.path.join(r"C:\Users\Dad\Games\Python Games\pokemon-games\sources", "johto", "Walkthrough_*Part *html")))

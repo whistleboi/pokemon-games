@@ -2684,9 +2684,9 @@
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 22", "target_area": "KANTO_ROUTE_22", "condition": {"any": ["visited_VIRIDIAN_CITY", "beat_johto_champion"]} },
-        { "text": "Victory Road", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges", "door": "leaguegate" },
+        { "text": "Victory Road (Indigo Plateau)", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges", "door": "leaguegate" },
         { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "condition": {"any": ["beat_elite_four", "has_8_johto_badges"]} },
-        { "text": "Silver League", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "has_8_johto_badges", "door": "leaguegate" },
+        { "text": "Victory Road (Silver League)", "target_area": "JOHTO_VICTORY_ROAD", "condition": "has_8_johto_badges", "door": "leaguegate" },
         { "text": "Route 28", "target_area": "KANTO_ROUTE_28", "condition": ["beat_johto_champion", "has_8_johto_badges"] }
       ],
       "explore_options": [
