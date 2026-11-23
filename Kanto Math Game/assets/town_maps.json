@@ -30540,7 +30540,7 @@
    "ccc.....cccccc..cccccccccccccccccccc...cccccccccc",
    "cc.N...N.cccc......cccc.....ccccc...........ccccc",
    "c.........cc......cccc......ccccc.cc..ccc...ccN.c",
-   "c....v....c.....................c...............c",
+   "c....v...Nc.....................c...............c",
    "ccccvcvcccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
@@ -30566,7 +30566,8 @@
    "MAX POTION",
    "TALK TO THE MANAGER",
    "RETURN THE MACHINE PART",
-   "TM166"
+   "TM166",
+   "Trader"
   ],
   "moves": {
    "5,11": {
