@@ -770,13 +770,24 @@ class WalkTownState(CityState):
                 out.append(t)
         return out
 
+    def _landings(self):
+        """This map's or room's "landings": tiles you reach only by a scene's ride (Nimbasa's roller coaster platforms,
+        Unova 11-23) or a fall - places you can stand on that need no walk out."""
+        tm = self.town_map if isinstance(getattr(self, "town_map", None), dict) else {}
+        m = (tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm
+        return {tuple(t) for t in ((m or {}).get("landings") or [])}
+
     def _reaches_out(self, start):
-        """True when a way out (an exit or a door) can be walked to from start."""
+        """True when a way out (an exit or a door) can be walked to from start - or one of the room's landings (a platform
+        a ride brought you to: back there after a battle, not at the entrance, Unova 11-23)."""
         seen, todo = {start}, [start]
+        goals = self._landings()
+        if start in goals:
+            return True
         while todo:
             x, y = todo.pop()
             for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
-                if q in self.exits or q in self.doors:
+                if q in self.exits or q in self.doors or q in goals:
                     return True
                 if q not in seen and self._open(q):
                     seen.add(q)
@@ -1200,6 +1211,8 @@ class WalkTownState(CityState):
             self.anim = STEP * 2  # (deep snow, marsh mud: each step takes twice as long)
         self.rui_from, self.rui = getattr(self, "rui", self.partner), self.partner   # (Orre: Rui, a step behind your Pokemon)
         self.partner_from, self.partner = self.partner, self.player
+        if self._live():
+            self._note_level(self.player, to)   # (which floor you're on, where the game has two: _stack_level)
         self.player = to
         self.steps += 1
         from src.world import vs_seeker as _vs
@@ -2053,14 +2066,24 @@ class WalkTownState(CityState):
         return super().start_gym_battle()
 
     def light_radius(self):
-        """A dark room's light, in tiles (None: fully lit): its "radius" list by how many of its "flags" are set."""
+        """A dark room's light, in tiles (None: fully lit): its "radius" list by how many of its "flags" are set. A room
+        with "lit" sections keeps its first radius round you: the sections do the rest (_lit_sections)."""
         d = self.dark or {}
         flags = self.game.story_manager.story_flags
         n = sum(1 for f in d.get("flags", []) if flags.get(f))
         radii = d.get("radius") or [2]
-        return None if n >= len(radii) else radii[n]
+        if n >= len(radii):
+            return None
+        return radii[0] if d.get("lit") else radii[n]
 
-    def _draw_dark(self, screen, view, centre):
+    def _lit_sections(self):
+        """A dark room's sections lit now: its "lit" [[x0, y0, x1, y1, flag or null], ...] whose flag is set (or none) - Black 2's
+        Nimbasa Gym, a new part of the catwalk lit as you reach each trainer (gym_elec.c; Unova 11-23)."""
+        flags = self.game.story_manager.story_flags
+        return [tuple(int(v) for v in sec[:4]) for sec in ((self.dark or {}).get("lit") or [])
+                if len(sec) >= 4 and (len(sec) < 5 or not sec[4] or flags.get(sec[4]))]
+
+    def _draw_dark(self, screen, view, centre, at=None):
         r = self.light_radius()
         if r is None:
             return
@@ -2070,6 +2093,15 @@ class WalkTownState(CityState):
         rad = int(r * TILE)
         for i in range(6):  # (a soft edge)
             pygame.draw.circle(veil, (0, 0, 0, 250 - 40 * (i + 1)), (cx, cy), max(1, rad - i * TILE // 8))
+        if at is not None:   # (lit sections: each a rectangle of tiles cut out of the veil, soft-edged like the circle)
+            for x0, y0, x1, y1 in self._lit_sections():
+                a, b = at((min(x0, x1), min(y0, y1))), at((max(x0, x1), max(y0, y1)))
+                box = pygame.Rect(a.x - view.x, a.y - view.y, b.right - a.x, b.bottom - a.y)
+                cut = pygame.Surface(view.size, pygame.SRCALPHA)
+                cut.fill((0, 0, 0, 250))
+                for i in range(6):
+                    pygame.draw.rect(cut, (0, 0, 0, 250 - 40 * (i + 1)), box.inflate(TILE // 2 - i * TILE // 8, TILE // 2 - i * TILE // 8))
+                veil.blit(cut, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)   # (the darker of the two never wins: either light shows)
         screen.blit(veil, view.topleft)
 
     def _draw_story_weather(self, screen, view):
@@ -2357,6 +2389,34 @@ class WalkTownState(CityState):
     LEVEL_STEP = 1.5   # (tiles: more than this between two neighbours' ground is a drop, not a step)
     LIFT_STEP = 10.0   # (tiles: more than this is a lift carrying you, not a drop: Violet Gym's, 11-22)
 
+    def _stack_level(self, t, sc=None):
+        """The floor height you stand at on tile t (tiles): where the game has two floors, the one you came in on
+        (self._on_level, set as you step); one floor: that one; None when t has two and which isn't known."""
+        sc = sc or (self._live() or (None,))[0]
+        own = getattr(self, "_on_level", None)
+        if own and own[0] == tuple(t) and own[1] == getattr(self, "room", None):
+            return own[2]
+        if sc is not None and sc.stacked(*t):
+            return None
+        s = sc.surfaces(*t) if sc is not None else []
+        return s[0] if len(s) == 1 else self._live_height(*t)
+
+    def _note_level(self, a, b):
+        """After a step a -> b: which of b's floors you're on now (the one nearest the level you left), for _stack_level."""
+        try:
+            sc = (self._live() or (None,))[0]
+            if sc is None or getattr(sc, "bdhc", None) is None:
+                self._on_level = None
+                return
+            la = self._stack_level(a, sc)
+            sb = sc.surfaces(*b)
+            self._on_level = (tuple(b), getattr(self, "room", None),
+                              min(sb, key=lambda v: abs(v - la)) if (sb and la is not None) else (sb[0] if len(sb) == 1 else None))
+            if self._on_level[2] is None:
+                self._on_level = None
+        except Exception:   # (no live view: nothing to remember)
+            self._on_level = None
+
     def _level_edge(self, a, b):
         """True when stepping a -> b goes off one level onto another (11-21, Jordan: "Yes, block them"): Black 2 never
         lets you step between two tiles at different heights, while the walk map only says walkable or not, so you
@@ -2372,6 +2432,16 @@ class WalkTownState(CityState):
                 return False
             if any(self._art_char((t[0] + dx, t[1] + dy)) in "|;" for dx, dy in DIRS):   # (beside a bridge: under it or onto
                 return False   # it, two levels the height map can't tell apart: Virbank's underpass beneath the main street)
+        _sc = self._live()[0]
+        if getattr(_sc, "bdhc", None) is not None and (_sc.stacked(*a) or _sc.stacked(*b)):
+            # (a tile where the game has two floors, one over the other: judged by the level you're on there, 11-23 -
+            #  Oreburgh Gym's walkway over the floor: in under it from the floor, you can't step sideways up onto the platform
+            #  at its end; on it from the platform, you can't step down off its side. Not known (a load): as before, allowed.)
+            la = self._stack_level(a, _sc)
+            if la is None:
+                return False
+            lb = min(_sc.surfaces(*b) or [self._live_height(*b)], key=lambda v: abs(v - la))
+            return self.LEVEL_STEP < abs(lb - la) <= self.LIFT_STEP
         _diff = abs(self._live_height(*a) - self._live_height(*b))
         if _diff <= self.LEVEL_STEP:
             return False
@@ -2579,7 +2649,7 @@ class WalkTownState(CityState):
         if getattr(self, "turnstiles", None):
             self._draw_gates(screen, *self._origin())
         if getattr(self, "dark", None):
-            self._draw_dark(screen, view, centre)
+            self._draw_dark(screen, view, centre, at)
         if self.room is None:
             self._draw_story_weather(screen, view)
         if not self._busy():
