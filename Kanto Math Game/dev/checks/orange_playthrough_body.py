@@ -260,6 +260,13 @@ def settle(limit=9000):
             if isinstance(st, TrainerBattleState):
                 _win(st)
                 continue
+            if type(st).__name__ in ("HallOfFameState", "IntroSpeechState"):   # (11-19: the Hall of Fame / the opening talk - tap on, as a player does)
+                if not STATE.get("hof_seen") and type(st).__name__ == "HallOfFameState":
+                    STATE["hof_seen"] = True
+                    _say("[Hall of Fame: the team shown, Mom's call]")
+                st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+                st.update(); st.draw()
+                continue
             if isinstance(st, _SPS):
                 STATE["puzzles"] += 1
                 _say("[slide puzzle solved]")
@@ -1439,6 +1446,65 @@ if last := PER.get(STATE["mission"]):
     last["done"] = ENDED == "CHAMPION"
 shot("END_" + ENDED.replace(" ", "_"))
 
+# ---------------------------------------------------------------- the tour: the paths the story never walks (11-19, ROADMAP_KANTO)
+# After the title, with what the run has collected: each leg walked over the maps by the same rules (head_for: the maps'
+# own ways out, real steps, trainers fought, boulders pushed). A leg that doesn't get there is a finding (TOUR).
+_ORANGE_AREAS = [k for k, v in g.loader.area_data["STORY_PROGRESSION"].items() if isinstance(v, dict) and v.get("region") == "ORANGE"]
+_SIDE_T = [m.get("target") for m in g.loader.area_data.get("JOURNAL_MISSIONS", []) if m.get("type") == "SIDE"
+           and str(m.get("id", "")).startswith("orange_") and m.get("target")]
+TOUR_LEGS = []
+TOUR = []
+if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
+    story.story_flags["move_offer_orange"] = True   # (the title's "where next?" already asked)
+    _been = {str(r.get(k) or "").split(" ")[0] for r in ROWS for k in ("from", "now")}   # (where the run stood: its own rows)
+    _left = [k for k in _ORANGE_AREAS if k not in _been]
+    TOUR_LEGS = [(None, k, "to " + k + " (never visited in the story run)") for k in _left] + \
+                [(None, k, "to " + k + " (a side mission's target)") for k in dict.fromkeys(_SIDE_T) if k not in _left]
+    story.inventory.setdefault("PICKAXE", 1)   # (Fukuhara's dig: Nurse Joy's Pickaxe, a side quest)
+    story.inventory.setdefault("SHOWBOAT_PASS", 1)   # (side quests' keys the story run never fetched: Kinnow's guest, Tracey's ticket)
+    story.story_flags["got_showboat_pass"] = True
+    story.story_flags["orange_mystic_ticket"] = True
+    for _a, _b, _what, *_at in TOUR_LEGS:
+        SHUT.clear()   # (ways the game refused during the story are open after the title: forget them each leg)
+        STATE["mission"] = "tour"
+        try:
+            if _a:
+                put_at(_a)
+            if _at:   # (coming in another way: Cerulean from Route 24's river, on the water - FireRed's way to the cave)
+                g.walk_town_pos = (_a, tuple(_at[0]), (0, 1))
+                g.change_state(CityState(g))
+                settle()
+            _m, _ok, _n = {"id": "tour", "type": "SIDE", "text": _what, "target": _b}, False, 0
+            for _n in range(90):
+                if loc()[0] == _b:
+                    _ok = True
+                    break
+                _row = head_for(g.current_state, _m, _b)
+                if _row is None:
+                    break
+            _ok = _ok or loc()[0] == _b
+            for _fly in ("VALENCIA_ISLAND", "PUMMELO_ISLAND"):
+                if _ok:
+                    break
+                put_at(_fly)
+                _what = _what + " (by Fly to " + _fly + ")"
+                for _n in range(90):
+                    if loc()[0] == _b:
+                        _ok = True
+                        break
+                    SHUT.clear()
+                    if head_for(g.current_state, _m, _b) is None:
+                        break
+                _ok = _ok or loc()[0] == _b
+        except Exception:
+            crash("tour: " + _what)
+            _ok = False
+        TOUR.append({"leg": _what, "from": _a, "to": _b, "ok": _ok, "moves": _n, "ended": here()})
+        if not _ok:
+            FIND.append({"kind": "TOUR", "mission": "tour", "where": here(), "what": f"{_what}: didn't get there", "extra": None})
+            shot("TOUR_" + _b)
+        out(f"  tour: {_what}: {'there' if _ok else 'NOT REACHED'} ({_n} moves, at {here()})")
+
 # ---------------------------------------------------------------- the report
 print()
 print(f"==== ORANGE PLAYTHROUGH (goal {GOAL}): ended: {ENDED} | badges {story.badges.get('ORANGE', [])} | at {here()} | mission {STATE['mission']}")
@@ -1515,11 +1581,15 @@ for what, words, how in THINGS:
     note = "" if mains else ("  <- no MAIN mission names it" + (" (a SIDE one does)" if sides else " (no mission at all)"))
     print(f"  {what:<52} {str(inw) if inw is not None else '-':>11}  {(', '.join(i + ('' if i in _shown else '(not shown)') for i in mains) or '-'):<40} {(', '.join(sides) or '-'):<26} {'yes' if got else 'NO'}{note}")
 
+print("==== the tour (the paths the story never walks):")
+for _t in TOUR:
+    print(f"  {'ok ' if _t['ok'] else 'NO '} {_t['leg']} ({_t['moves']} moves; ended at {_t['ended']})")
 nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG")) + (ENDED != "CHAMPION")
+print(f"==== tour: {sum(1 for t in TOUR if t['ok'])} of {len(TOUR)} legs reached (misses are findings, not failures: ROADMAP_ORANGE step 3)")
 json.dump({"ended": ENDED, "badges": story.badges.get("ORANGE", []), "state": {k: (dict(v) if isinstance(v, collections.Counter) else v) for k, v in STATE.items() if k != "last_map"},
            "per": list(PER.values()), "find": [{k: v for k, v in f.items() if k not in ("key", "sig")} for f in FIND], "rows": ROWS,
            "never": [(m["id"], m.get("title") or m.get("text")) for m in never], "flags": sorted(k for k, v in story.story_flags.items() if v),
-           "gates": GATES, "second": SECOND, "when": time.strftime("%Y-%m-%d %H:%M"),
+           "gates": GATES, "second": SECOND, "tour": TOUR, "when": time.strftime("%Y-%m-%d %H:%M"),
            "inventory": dict(story.inventory), "seconds": round(time.time() - T0)},
           open(os.path.join(OUT, "result.json"), "w", encoding="utf-8"), indent=1, default=str)
 print(f"##### {nf} failures (stuck points, crashes, and not reaching the goal {GOAL}: these are the findings)")
