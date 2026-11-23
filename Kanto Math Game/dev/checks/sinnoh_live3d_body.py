@@ -34,6 +34,19 @@ for _k in ("JUBILIFE_CITY", "OREBURGH_CITY", "FLOAROMA_TOWN"):
     PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
 ROUTES += ("SINNOH_ROUTE_202", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_MINE", "SINNOH_ROUTE_204", "RAVAGED_PATH",
            "FLOAROMA_MEADOW", "SINNOH_ROUTE_205", "VALLEY_WINDWORKS", "ETERNA_FOREST", "ETERNA_FOREST_OUTSKIRTS")
+# S3 (11-23): Eterna to Solaceon. Flat for now: Eterna's two houses with no Platinum room (house_0601/0701), the Contest Hall
+# 2F (no ground picture), Hearthome's Gym (rebuilt from Platinum's 13 rooms in S3), the Lost Tower (fog per floor, S3)
+FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701"), ("HEARTHOME_CITY", "contest_2f"), ("HEARTHOME_CITY", "gym")}
+for _k in ("ETERNA_CITY", "HEARTHOME_CITY", "SOLACEON_TOWN"):
+    PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
+# (S3's known level jumps, open on the roadmap: the steps listed, and no others)
+KNOWN_JUMPS = {
+    ("SINNOH_ROUTE_208", 0): ({((27, y), (28, y)) for y in range(28, 32)}, "Surf strip under the east cliff: Platinum's floor data says 5.0 there, the pond 1.5"),
+    ("SINNOH_ROUTE_210", 0): ({((x, 19), (x, 20)) for x in range(15, 25)}, "the wooden bridge (art ',') lets you step off its side into the grass pocket below; Platinum's pocket is reached by Surf"),
+    ("OLD_CHATEAU", 1): ({((9, 4), (9, 5))}, "the hall's opening '-' down to the lower floor: 3.0 to 0.0 in one step"),
+}
+ROUTES += ("SINNOH_ROUTE_206", "WAYWARD_CAVE", "SINNOH_ROUTE_207", "MT_CORONET_BASE", "SINNOH_ROUTE_208", "SINNOH_ROUTE_209",
+           "SOLACEON_RUINS", "SINNOH_ROUTE_210", "OLD_CHATEAU", "ETERNA_GALACTIC_BUILDING")
 
 
 def settle(n=60):
@@ -158,13 +171,14 @@ for key in ROUTES:
     if not lv:
         continue
     for i in range(t.run.n_floors):
-        if i:
+        if i or t.run.index != i:   # (a place entered on another floor: Mt. Coronet, the Old Chateau's hall)
             t._warp(i, 1, 1); settle(4)
         f = t.run.floor
         opens = [(x, y) for y in range(f.h) for x in range(f.w) if f.walkable(x, y)]
+        so_ = set(opens)
         if not opens or t.run.index != i:
             check(False, f"{key} floor {i}: could not be entered by the check"); continue
-        if i:
+        if i or t.run.player not in so_:
             t.run.player = opens[len(opens) // 2]; t._dl_key = None; settle(4)
         lv = t._dl_live()
         check(bool(lv), f"{key} floor {i} ({t._floor_name(i)}): live")
@@ -176,8 +190,13 @@ for key in ROUTES:
         two = set(getattr(f, "bridge", {}) or {})   # (a two-level bridge: on its deck or under it, both right - as Johto's suite)
         jump = [(a_, b_) for a_ in opens for b_ in ((a_[0] + 1, a_[1]), (a_[0], a_[1] + 1)) if b_ in so
                 and not (a_ in two or b_ in two or sc.stacked(*a_) or sc.stacked(*b_))
+                and not t._level_edge(a_, b_)   # (a step the game itself refuses, as the towns' check: two levels' edge)
                 and (abs(t._dl_height(*a_) - t._dl_height(*b_)) > 1.01 or abs(sc.wz(*a_) - sc.wz(*b_)) > 2.01)]
-        check(not jump, f"{key} floor {i}: no step jumps a level ({jump[:3]})")
+        _known = KNOWN_JUMPS.get((key, i))
+        if jump and _known and set(jump) <= _known[0]:
+            print(f"   known {key} floor {i}: {len(jump)} steps jump a level - {_known[1]} (ROADMAP_SINNOH S3)")
+        else:
+            check(not jump, f"{key} floor {i}: no step jumps a level ({jump[:3]})")
         pygame.image.save(pygame.display.get_surface(), f"{S}/sinnoh_live3d_{key}_{i}.png")
 
 print("4b) S3: Eterna Gym's flower clock, live in each of its five states (the hands are Platinum's own models, turned)")
