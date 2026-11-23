@@ -97842,8 +97842,22 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "You're the one who went catching Pokémon with Wally! Thank you.",
+        "You beat your father at his own Gym? Wally would be so proud of you.",
+        "Please, take this. It's Surf: with it your Pokemon can carry you across the water."
+       ],
+       "requires": [
+        "has_balance_badge"
+       ],
+       "fail": [
+        "You're the one who went catching Pokemon with Wally! Thank you.",
         "He's been frail since he was a baby, so we sent him to stay with family in Verdanturf. The air there is cleaner."
+       ],
+       "gift_item": {
+        "HM_SURF": 1
+       },
+       "flag": "got_surf_hoenn",
+       "done": [
+        "Wally's father: Wally writes to us about you. Go see the world!"
        ]
       }
      },
@@ -100590,7 +100604,14 @@
       "event": {
        "lines": [
         "That look in your eye, the way you move... you're a skilled Trainer, I can tell!",
-        "Skinny trees in your way? A Pokémon that knows Cut can clear them."
+        "Here, take this HM. A Pokemon that knows Cut can clear skinny trees. You'll need the Stone Badge to use it out here."
+       ],
+       "gift_item": {
+        "HM_CUT": 1
+       },
+       "flag": "got_cut_hoenn",
+       "done": [
+        "Cutter: When Rustboro was growing, my Pokemon cut a path for every new house."
        ]
       }
      }
@@ -124913,8 +124934,21 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Steven: The cavern under the sea between Mossdeep and Sootopolis... Captain Stern found it with his sub.",
-        "Steven: That's where they've gone. Dive down from Route 128, and be careful."
+        "Steven: You beat Tate and Liza! Then you're ready for this. It's Dive: it takes your Pokemon down into the deep sea.",
+        "Steven: The cavern under the sea between Mossdeep and Sootopolis... Dive down from Route 128, and be careful."
+       ],
+       "requires": [
+        "has_mind_badge"
+       ],
+       "fail": [
+        "Steven: Mossdeep's Gym Leaders are twins. They battle as one. Win, and come and see me."
+       ],
+       "gift_item": {
+        "HM_DIVE": 1
+       },
+       "flag": "got_dive_hoenn",
+       "done": [
+        "Steven: Dive down from Route 128. The cavern under the sea is where they've gone."
        ]
       }
      }

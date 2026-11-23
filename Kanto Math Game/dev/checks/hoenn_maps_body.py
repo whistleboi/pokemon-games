@@ -160,6 +160,7 @@ check(not _far, f"every rebuilt map: in from each way, you stand beside that way
 _bad, _multi = [], 0
 _had_surf = story.inventory.get("HM_SURF", 0)
 story.inventory["HM_SURF"] = 1   # (sea mouths are crossed surfing: without Surf you're set down at the land mouth; Route 125 -> Mossdeep, 11-23)
+story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["BALANCE"]))   # (H5: ORAS needs the HM's badge on the map, hms.USE_BADGE)
 _twins = {(v.get("mirage") or {}).get("area") for v in _area.values() if (v.get("mirage") or {}).get("area")}
 for a, b in _pairs:
     for x, y in ((a, b), (b, a)):
@@ -233,6 +234,7 @@ _rs = story.inventory.pop("HM_ROCK_SMASH", None)
 st = arrive("HOENN_RUSTURF_TUNNEL", "HOENN_ROUTE_116")
 _g1 = st._gate("VERDANTURF_TOWN")
 story.inventory["HM_ROCK_SMASH"] = 1
+story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["DYNAMO"]))   # (H5: ORAS needs the Dynamo Badge for Rock Smash on the map)
 _g2 = st._gate("VERDANTURF_TOWN")
 check(_g1 and tuple(_g1[:3]) == ("rock", "ROCK SMASH", False) and _g2[2], f"Rusturf Tunnel: a cracked rock before Verdanturf until Rock Smash ({_g1})")
 if _rs is None:
@@ -3032,6 +3034,45 @@ story.story_flags.clear(); story.story_flags.update(_f5)
 story.inventory.clear(); story.inventory.update(_inv5)
 story.player_team = _team5
 story.badges.clear(); story.badges.update(_badges5)
+
+# H5 (11-23, Jordan #3-4): every HM from ORAS's giver; each needs its ORAS badge on the map
+from src.world import hms as _hms5
+_f5, _b5, _i5 = dict(story.story_flags), {k: list(v) for k, v in story.badges.items()}, dict(story.inventory)
+check(not _hms5.HM_BY_BADGE.get("HOENN") and _hms5.USE_BADGE["HOENN"]["HM_ROCK_SMASH"] == "DYNAMO" and "HOENN" in _hms5.FIELD_STRICT,
+      "Hoenn: no HM comes with a badge; each needs ORAS's badge on the map (Rock Smash: Dynamo)")
+for _k in ("HM_CUT", "HM_SURF", "HM_DIVE"):
+    story.inventory.pop(_k, None)
+for _k in ("got_cut_hoenn", "got_surf_hoenn", "got_dive_hoenn"):
+    story.story_flags.pop(_k, None)
+story.badges["HOENN"] = ["STONE", "KNUCKLE", "DYNAMO", "HEAT"]
+story.inventory["HM_ROCK_SMASH"] = 1
+check(_hms5.usable(story, "HM_ROCK_SMASH") and not _hms5.usable(story, "HM_FLY"), "Rock Smash works with the Dynamo Badge; Fly not before the Feather Badge")
+st = open_map("RUSTBORO_CITY", "HOENN_ROUTE_104")
+st.scenes.entered = True
+st._go("cut_house", next(v for v in _tm2["RUSTBORO_CITY"]["rooms"]["cut_house"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+_ct = next(t for t, o in st.people.items() if (o.get("text") if isinstance(o, dict) else None) == "Cutter")
+said = _press(st, (_ct[0], _ct[1] + 1), (0, -1))
+check(story.inventory.get("HM_CUT", 0) == 1, f"Rustboro: the Cutter gives HM Cut (ORAS) ({said[-1:]})")
+st = open_map("PETALBURG_CITY", "HOENN_ROUTE_102")
+st.scenes.entered = True
+st._go("wally_home", next(v for v in _tm2["PETALBURG_CITY"]["rooms"]["wally_home"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+said = _press(st, (3, 5), (0, -1))
+_no_surf = story.inventory.get("HM_SURF", 0) == 0
+story.badges["HOENN"].append("BALANCE")
+st._go("wally_home", next(v for v in _tm2["PETALBURG_CITY"]["rooms"]["wally_home"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+said = _press(st, (3, 5), (0, -1))
+check(_no_surf and story.inventory.get("HM_SURF", 0) == 1, f"Petalburg: Wally's father gives HM Surf only after Norman (ORAS) ({said[-1:]})")
+story.badges["HOENN"] += ["FEATHER", "MIND"]
+st = open_map("MOSSDEEP_CITY", "HOENN_ROUTE_124")
+st.scenes.entered = True
+st._go("steven", next(v for v in _tm2["MOSSDEEP_CITY"]["rooms"]["steven"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+said = _press(st, (9, 7), (0, -1))
+check(story.inventory.get("HM_DIVE", 0) == 1, f"Mossdeep: Steven gives HM Dive after the Mind Badge (ORAS) ({said[-1:]})")
+_wl = (_area["SOOTOPOLIS_CITY"].get("gym") or {}).get("leader") or {}
+check((_wl.get("rewards") or {}).get("HM_WATERFALL") == 1, "Sootopolis: HM Waterfall is Wallace's prize (ORAS)")
+story.story_flags.clear(); story.story_flags.update(_f5)
+story.badges.clear(); story.badges.update(_b5)
+story.inventory.clear(); story.inventory.update(_i5)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

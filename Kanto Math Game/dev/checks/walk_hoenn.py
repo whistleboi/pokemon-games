@@ -9,6 +9,7 @@ BEATS = {"STONE": ["rusturf_rescued", "met_mr_stone"], "KNUCKLE": ["met_steven",
          "DYNAMO": ["defeated_wally_mauville", "got_strength_hoenn", "meteor_falls_cleared", "mt_chimney_boss_defeated"],
          "BALANCE": ["got_mega_bracelet", "weather_institute_cleared", "hoenn_rival_119", "got_starter_mega_stone"],
          "FEATHER": ["got_mt_pyre_orb", "hoenn_rival_lilycove"], "RAIN": ["defeated_wally_victory"]}
+HM_GIVERS = {"STONE": ["HM_CUT"], "KNUCKLE": ["HM_FLASH"], "BALANCE": ["HM_SURF"], "MIND": ["HM_DIVE"], "RAIN": ["HM_WATERFALL"]}
 story.defeated_trainers = {}
 story.starting_region = "HOENN"
 R, S = "HOENN", "LITTLEROOT_TOWN"
@@ -23,6 +24,8 @@ for b, extra in [("STONE", {}), ("KNUCKLE", {}), ("DYNAMO", {}), ("HEAT", {}), (
         story.inventory["HM_STRENGTH"] = 1  # the rival's gift on Route 112
     if "defeated_wally_mauville" in BEATS.get(b, []):
         story.inventory["HM_ROCK_SMASH"] = 1  # Wally's uncle, in Mauville (not the Dynamo Badge: 11-06)
+    for hm in HM_GIVERS.get(b, []):   # (H5, 11-23: ORAS's givers, not the badges - the Cutter, the hiker, Wally's father, Steven, Wallace)
+        story.inventory[hm] = 1
     if "hoenn_rival_119" in BEATS.get(b, []):
         story.inventory["HM_FLY"] = 1  # the rival on Route 119 (not the Feather Badge: 11-06)
     seen = report(f"{b} badge", S, seen)

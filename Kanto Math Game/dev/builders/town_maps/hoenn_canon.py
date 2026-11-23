@@ -133,6 +133,27 @@ HIDDEN += [
     ("HOENN_CAVE_OF_ORIGIN", 2, 11, 6, "REVIVE"),
 ]
 PATCH = [   # (someone already on the map gets more to their event)
+    # H5 (Jordan 11-23, DECISIONS #3): every HM from ORAS's giver, no more HMs on badges (src/world/hms.py)
+    ("RUSTBORO_CITY", None, "cut_house", "Cutter",
+     {"lines": ["That look in your eye, the way you move... you're a skilled Trainer, I can tell!",
+                "Here, take this HM. A Pokemon that knows Cut can clear skinny trees. You'll need the Stone Badge to use it out here."],
+      "gift_item": {"HM_CUT": 1}, "flag": "got_cut_hoenn",
+      "done": ["Cutter: When Rustboro was growing, my Pokemon cut a path for every new house."]}),
+    ("PETALBURG_CITY", None, "wally_home", "Wally's father",
+     {"requires": ["has_balance_badge"],
+      "fail": ["You're the one who went catching Pokemon with Wally! Thank you.",
+               "He's been frail since he was a baby, so we sent him to stay with family in Verdanturf. The air there is cleaner."],
+      "lines": ["You beat your father at his own Gym? Wally would be so proud of you.",
+                "Please, take this. It's Surf: with it your Pokemon can carry you across the water."],
+      "gift_item": {"HM_SURF": 1}, "flag": "got_surf_hoenn",
+      "done": ["Wally's father: Wally writes to us about you. Go see the world!"]}),
+    ("MOSSDEEP_CITY", None, "steven", "Steven",
+     {"requires": ["has_mind_badge"],
+      "fail": ["Steven: Mossdeep's Gym Leaders are twins. They battle as one. Win, and come and see me."],
+      "lines": ["Steven: You beat Tate and Liza! Then you're ready for this. It's Dive: it takes your Pokemon down into the deep sea.",
+                "Steven: The cavern under the sea between Mossdeep and Sootopolis... Dive down from Route 128, and be careful."],
+      "gift_item": {"HM_DIVE": 1}, "flag": "got_dive_hoenn",
+      "done": ["Steven: Dive down from Route 128. The cavern under the sea is where they've gone."]}),
     # Petalburg Woods: ORAS's Devon researcher gives the Exp. Share; ours retired it, so a Lucky Egg (as Kanto; #22)
     ("HOENN_PETALBURG_WOODS", None, None, "Devon researcher",
      {"lines": ["I came looking for Shroomish, and that thug came after my papers! Thank you for stepping in.",
