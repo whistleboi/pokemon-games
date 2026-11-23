@@ -370,7 +370,8 @@ class GymLobbyState(GameState):
                                       intro=league_redo.intro_lines(name, league=self.is_league),
                                       player_won=league_redo.won_lines(name, badge))
         # Rematches after the title: the games' rematch teams where we have them (FireRed/LeafGreen
-        # for Kanto, HeartGold/SoulSilver for Johto: "rematch" in the data), else 10 levels up.
+        # for Kanto, HeartGold/SoulSilver for Johto: "rematch" in the data), else up by the canon League rematch jump
+        # (levels.canon_league_boost, Jordan 11-23: the average of HGSS, ORAS, Platinum, B2W2; was 10).
         rematch_boost = 0
         # A League rematch roster's non-League trainers (Galar's Marnie/Hop, Paldea's Nemona) used to follow the post-game cap
         # (your party's top level); Jordan 11-21: no League rematch follows your level, in any region - they rise 10 like the rest.
@@ -386,8 +387,8 @@ class GymLobbyState(GameState):
                 t_data["levels"] = list(rm["levels"])
                 if rm.get("movesets"):  # the rematch team's own canon moves
                     t_data["movesets"] = rm["movesets"]
-            else:
-                rematch_boost = 10
+            elif not self.next_opponent.get("rematch_ace"):   # (a set rematch ace, Orre's Realgam, is fitted below instead)
+                rematch_boost = levels.canon_league_boost(self.game)
 
         team_ids = t_data.get("team", [])
         opponent_team = []
@@ -411,7 +412,7 @@ class GymLobbyState(GameState):
             team_levels = levels.gym_team_levels(region, self.area_key, len(opponent_team),
                                                  levels.gym_role(t_class, is_leader))
         if getattr(self, "orange_rematch", False) and not self.is_league:
-            team_levels = levels.orange_postgame_levels(self.gym_data, team_levels)
+            team_levels = levels.orange_postgame_levels(self.gym_data, team_levels, levels.canon_league_boost(self.game))
             t_data["badge_reward"] = None  # the badge was won before the title
         if rematch_boost:
             team_levels = [min(100, int(lv) + rematch_boost) for lv in team_levels]
