@@ -6,7 +6,7 @@ Legends: Z-A has, in Z-A's order (TM330-TM348) (assets/tms.json, dev/builders/bu
 How you get them, so every one can be had by a region's League (each region's Bag is its own until they link):
 - the Poke Mart sells a TM once the region has its tier's badges (tiers 0-8, weak to strong), cheaply;
 - every Gym Leader, Elite Four member and Champion gives one (its type when there's one left);
-- route trainers often give one too (TRAINER_CHANCE);
+- route trainers give none (Jordan 11-22: a leftover of the old style, dropped once Leaders give their real TMs);
 - the story's TM spots (the games' item balls and gifts) give their move under its number here.
 Unlocking (Jordan, 11-04 / 11-17): a TM in the Bag puts its move in the move pool of every Pokemon that can learn
 it (src/pokemon/moves.py move_pool), party and PC alike, to pick in the Summary's MOVES; no teaching needed. Using it
@@ -20,7 +20,7 @@ import os
 import random
 import re
 
-TRAINER_CHANCE = 0.35
+TRAINER_CHANCE = 0.0   # (route trainers' random TMs: dropped, Jordan 11-22)
 # Regions whose maps carry their games' own TMs (on the ground, from people) and whose Leaders give their own (Jordan,
 # 11-13: Hoenn, from Emerald / ORAS): no random TMs from battles there.
 REAL_TM_REGIONS = {"HOENN"}
@@ -134,13 +134,13 @@ def mart_stock(game, badges):
 
 def reward(game, badges, trainer_class, team_types=(), rng=random):
     """A TM a battle win gives (None if none): every Leader / Elite Four / Champion gives one (of
-    its type when there's one left), route trainers TRAINER_CHANCE of the time."""
+    its type when there's one left); route trainers none (TRAINER_CHANCE 0: Jordan 11-22)."""
     if trainer_class in (None, "WILD"):
         return None
     if game.story_manager.get_current_region() in REAL_TM_REGIONS:
         return None
     leader = trainer_class in LEADER_CLASSES
-    if not leader and rng.random() >= TRAINER_CHANCE:
+    if not leader and (TRAINER_CHANCE <= 0 or rng.random() >= TRAINER_CHANCE):
         return None
     have = owned(game.story_manager)
     cap = min(8, badges + (2 if leader else 1))

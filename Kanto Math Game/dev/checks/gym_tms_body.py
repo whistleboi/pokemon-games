@@ -56,4 +56,8 @@ for rewards, want_random in (({"balls": 5, "TM268": 1}, False), ({"balls": 5}, T
     got = TrainerBattleState._tm_reward(b)
     check(bool(got) == want_random, f"rewards {rewards}: random TM {got}")
 story.inventory.clear(); story.inventory.update(_inv0)
+print("3) route trainers give no random TM any more (Jordan 11-22)")
+import random as _r
+got = [tms.reward(g, 4, "YOUNGSTER", [], rng=_r.Random(i)) for i in range(40)]
+check(not any(got), f"40 route wins, no TM ({sum(1 for x in got if x)})")
 print(f"##### {len(fails)} failures")
