@@ -968,6 +968,10 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             game.arrive_floor = None
             if self.run.floor.walkable(*_drop[2]):
                 self.run.player = tuple(_drop[2])
+        if came not in exits and not at_edge and not _arr and self._on_surf() and not self._can_surf():
+            # (no known way in - a load, a skip, the fallback arrival - put you on a water way in without Surf: ashore, or you'd
+            #  swim without it: Valley Windworks from Route 205's river, 11-23. Walking or surfing in keeps its own tile.)
+            self.run.player = self._nearest_land() or self.run.player
         self._sync_gate()
         if not self.run.fog and not story.story_flags.get(f"visited_{self.area_key}"):  # (dark places keep their own darkness)
             self.run.explore = True
@@ -2078,6 +2082,23 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
     def _on_surf(self, t=None):
         f = self.run.floor
         return f.tile(*(t or self.run.player)) == core.SURF
+
+    def _nearest_land(self):
+        """The nearest tile you can stand on without Surf (not water, not a way out), going through water and land, or None."""
+        f = self.run.floor
+        start = tuple(self.run.player)
+        seen, todo = {start}, [start]
+        while todo:
+            nxt = []
+            for x, y in todo:
+                if (x, y) != start and f.walkable(x, y) and f.tile(x, y) != core.SURF and (x, y) not in f.exits:
+                    return (x, y)
+                for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                    if 0 <= nx < f.w and 0 <= ny < f.h and (nx, ny) not in seen and (f.walkable(nx, ny) or f.tile(nx, ny) == core.SURF):
+                        seen.add((nx, ny))
+                        nxt.append((nx, ny))
+            todo = nxt
+        return None
 
     hop = False  # (mid-hop over a ledge: you arc through the air)
     sliding = None  # (on sheet ice: the way you're sliding, till something stops you)
