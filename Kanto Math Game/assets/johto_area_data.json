@@ -509,7 +509,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "cherrygrove_city.png", "pokecenter": "cherrygrove_center.png", "pokemart": "cherrygrove_mart.png"},
+            "backgrounds": {"main": "cherrygrove_city.png"},
 
             "travel_options": [
 
@@ -559,7 +559,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "violet_city.png", "pokecenter": "violet_center.png", "pokemart": "violet_mart.png", "gym": "violet_city_gym.png", "battle": "battle_gym_violet.png"},
+            "backgrounds": {"main": "violet_city.png", "gym": "violet_city_gym.png", "battle": "battle_gym_violet.png"},
 
             "next_area": "JOHTO_ROUTE_31",
 
@@ -715,7 +715,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "azalea_town.png", "pokecenter": "azalea_center.png", "pokemart": "azalea_mart.png", "gym": "azalea_gym.png", "battle": "battle_gym_azalea.png"},
+            "backgrounds": {"main": "azalea_town.png", "gym": "azalea_gym.png", "battle": "battle_gym_azalea.png"},
 
             "has_gym": true,
 
@@ -761,7 +761,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "goldenrod_city.png", "pokecenter": "goldenrod_center.png", "pokemart": "goldenrod_mart.png", "gym": "battle_gym_goldenrod.png"},
+            "backgrounds": {"main": "goldenrod_city.png", "gym": "battle_gym_goldenrod.png"},
 
             "has_gym": true,
 
@@ -1009,7 +1009,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "ecruteak_city.png", "pokecenter": "ecruteak_center.png", "pokemart": "ecruteak_mart.png", "gym": "battle_gym_ecruteak.png"},
+            "backgrounds": {"main": "ecruteak_city.png", "gym": "battle_gym_ecruteak.png"},
 
             "has_gym": true,
 
@@ -1069,7 +1069,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "olivine_city.png", "pokecenter": "olivine_center.png", "pokemart": "olivine_mart.png", "gym": "battle_gym_olivine.png"},
+            "backgrounds": {"main": "olivine_city.png", "gym": "battle_gym_olivine.png"},
 
             "has_gym": true,
 
@@ -1137,7 +1137,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "cianwood_city.png", "pokecenter": "cianwood_center.png", "pokemart": "cianwood_mart.png", "gym": "battle_gym_cianwood.png"},
+            "backgrounds": {"main": "cianwood_city.png", "gym": "battle_gym_cianwood.png"},
 
             "has_gym": true,
 
@@ -1197,7 +1197,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "mahogany_town.png", "pokecenter": "mahogany_center.png", "pokemart": "mahogany_mart.png", "gym": "battle_gym_mahogany.png"},
+            "backgrounds": {"main": "mahogany_town.png", "gym": "battle_gym_mahogany.png"},
 
             "has_gym": true,
 
@@ -1247,7 +1247,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "blackthorn_city.png", "pokecenter": "blackthorn_center.png", "pokemart": "blackthorn_mart.png", "gym": "battle_gym_blackthorn.png"},
+            "backgrounds": {"main": "blackthorn_city.png", "gym": "battle_gym_blackthorn.png"},
 
             "has_gym": true,
 
@@ -1307,7 +1307,7 @@
 
             "fly_island": true,
 
-            "backgrounds": {"main": "silver_entrance.png", "pokecenter": "silver_center.png"},
+            "backgrounds": {"main": "silver_entrance.png"},
 
             "wild_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES",
 

@@ -38832,13 +38832,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:52,7"
+     "v": "OUT:52,7",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -38921,6 +38922,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -38962,6 +38966,164 @@
      }
     ]
    },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
+      ],
+      "px": 32
+     }
+    ]
+   },
    "mart": {
     "theme": "room",
     "art": [
@@ -38970,9 +39132,9 @@
      "cccccccccccccc",
      "ccccmmmmcccccc",
      "cmmmmmmm....zc",
-     "cccc...N.....c",
+     "cccc.........c",
      "cccm.........c",
-     "cccc..mm.mm.mc",
+     "ccNm..mm.mm.mc",
      "cccc..mm.mm.mc",
      "c............c",
      "c.......mm...c",
@@ -40875,28 +41037,29 @@
      "ccccccccccccccccc",
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccNcccNccccNccczc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
-     "c..cccccccccc..cc",
+     "cN.cccccccccc..cc",
      "c..cccccccccc..cc",
      "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm....c",
+     "c..c.cmmNcmcN...c",
+     "c..c.cccmccm....c",
      "c..c............c",
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:49,47"
+     "v": "OUT:49,47",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -40979,6 +41142,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -40991,7 +41157,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T22PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -41009,7 +41175,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T22PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -41017,6 +41183,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -41306,9 +41630,9 @@
      "cccccccccccccc",
      "ccccmmmmcccccc",
      "cmmmmmmm....zc",
-     "cccc...N.....c",
+     "cccc.........c",
      "cccm.........c",
-     "cccc..mm.mm.mc",
+     "ccNm..mm.mm.mc",
      "cccc..mm.mm.mc",
      "c............c",
      "c.......mm...c",
@@ -41492,7 +41816,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T22FS0101.png",
+      "f": "ss_ground/T21FS0101.png",
       "at": [
        0,
        3
@@ -41508,7 +41832,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T22FS0101.png",
+      "f": "ss_top/T21FS0101.png",
       "at": [
        0,
        3
@@ -41899,7 +42223,7 @@
      "ccccccccccccccccc",
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccNcccNccccNccczc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
@@ -41908,19 +42232,20 @@
      "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccmN...c",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccmN...c",
      "c..c............c",
      "c..c..........ccc",
-     "c.............zzc",
-     "c.............ccc",
-     "cc.............cc",
+     "c...N.........zzc",
+     "cN............ccc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:20,130"
+     "v": "OUT:20,130",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -42003,6 +42328,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -42015,7 +42343,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/R32PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -42026,15 +42354,15 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Woman",
      "POKEMON CENTER",
+     "Woman",
      "Fishing guru",
      "Apricorn fan"
     ],
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/R32PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -42042,6 +42370,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -42870,13 +43356,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:26,12"
+     "v": "OUT:26,12",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -42959,6 +43446,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -42971,7 +43461,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T23PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -42987,7 +43477,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T23PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -42995,6 +43485,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -43087,10 +43735,10 @@
      "cccccccccccccc",
      "cccccccccccccc",
      "ccccmmmmcccccc",
-     "cmmmmmmm..N.zc",
+     "cmmmmmmm....zc",
      "cccc.........c",
      "cccm.........c",
-     "cccc..mm.mm.mc",
+     "ccNm..mm.mm.mc",
      "cccc..mm.mm.mc",
      "c............c",
      "c.......mm...c",
@@ -43274,7 +43922,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T23FS0101.png",
+      "f": "ss_ground/T21FS0101.png",
       "at": [
        0,
        3
@@ -43290,7 +43938,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T23FS0101.png",
+      "f": "ss_top/T21FS0101.png",
       "at": [
        0,
        3
@@ -48673,7 +49321,7 @@
      "ccccccccccccccccc",
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccNcccNccccNccczc",
+     "ccccccccccccccczc",
      "ccmzccmmczcmmcc.c",
      "c...............c",
      "c...............c",
@@ -48682,19 +49330,20 @@
      "c..cccccccccc..cc",
      "c..c.cccccmcc..cc",
      "c..c.cmmccmcc..cc",
-     "c..c.cmmccmc....c",
-     "c..c.ccccccm...Nc",
+     "c..c.cmmNcmc....c",
+     "c..c.cccmccm...Nc",
      "c..c............c",
-     "c..c..........ccc",
+     "c..c.N........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc.N..........^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:64,48"
+     "v": "OUT:64,48",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -48777,6 +49426,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -48789,7 +49441,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T25PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -48800,15 +49452,15 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Big man ",
      "Heal",
+     "Big man ",
      "Center attendant",
      "Little girl "
     ],
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T25PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -48816,6 +49468,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -52415,13 +53225,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:45,55"
+     "v": "OUT:45,55",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -52504,6 +53315,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -52516,7 +53330,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T27PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -52532,7 +53346,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T27PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -52540,6 +53354,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -52553,9 +53525,9 @@
      "cccccccccccccc",
      "ccccmmmmcccccc",
      "cmmmmmmm....zc",
-     "cccc.....N...c",
+     "cccc.........c",
      "cccm.........c",
-     "cccc..mm.mm.mc",
+     "ccNm..mm.mm.mc",
      "cccc..mm.mm.mc",
      "c............c",
      "c.......mm...c",
@@ -52739,7 +53711,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T27FS0101.png",
+      "f": "ss_ground/T21FS0101.png",
       "at": [
        0,
        3
@@ -52755,7 +53727,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T27FS0101.png",
+      "f": "ss_top/T21FS0101.png",
       "at": [
        0,
        3
@@ -63457,13 +64429,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:16,33"
+     "v": "OUT:16,33",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -63546,6 +64519,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -63558,7 +64534,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T26PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -63574,7 +64550,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T26PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -63582,6 +64558,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -63597,7 +64731,7 @@
      "cmmmmmmm....zc",
      "cccc.........c",
      "cccm.........c",
-     "cccc..mm.mmNmc",
+     "ccNm..mm.mm.mc",
      "cccc..mm.mm.mc",
      "c............c",
      "c.......mm...c",
@@ -63781,7 +64915,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T26FS0101.png",
+      "f": "ss_ground/T21FS0101.png",
       "at": [
        0,
        3
@@ -63797,7 +64931,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T26FS0101.png",
+      "f": "ss_top/T21FS0101.png",
       "at": [
        0,
        3
@@ -67305,13 +68439,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:27,49"
+     "v": "OUT:27,49",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -67394,6 +68529,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -67406,7 +68544,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T24PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -67422,7 +68560,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T24PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -67430,6 +68568,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -70785,13 +72081,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:22,23"
+     "v": "OUT:22,23",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -70874,6 +72171,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -70886,7 +72186,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T28PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -70902,7 +72202,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T28PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -70910,6 +72210,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -78114,10 +79572,10 @@
      "cccccccccccccc",
      "cccccccccccccc",
      "ccccmmmmcccccc",
-     "cmmmmmmm..N.zc",
+     "cmmmmmmm....zc",
      "cccc.........c",
      "cccm.........c",
-     "cccc..mm.mm.mc",
+     "ccNm..mm.mm.mc",
      "cccc..mm.mm.mc",
      "c............c",
      "c.......mm...c",
@@ -78301,7 +79759,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T30FS0101.png",
+      "f": "ss_ground/T21FS0101.png",
       "at": [
        0,
        3
@@ -78317,7 +79775,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T30FS0101.png",
+      "f": "ss_top/T21FS0101.png",
       "at": [
        0,
        3
@@ -78354,13 +79812,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:34,48"
+     "v": "OUT:34,48",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -78443,6 +79902,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -78455,7 +79917,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T30PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -78471,7 +79933,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T30PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -78479,6 +79941,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -86400,13 +88020,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:18,46"
+     "v": "OUT:18,46",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -86489,6 +88110,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -86501,7 +88125,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/D47PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -86517,7 +88141,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/D47PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -86525,6 +88149,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -87282,13 +89064,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:8,14"
+     "v": "OUT:8,14",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -87371,6 +89154,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -87383,7 +89169,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/D32PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -87399,7 +89185,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/D32PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -87407,6 +89193,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
@@ -87422,7 +89366,7 @@
      "cmmmmmmm....zc",
      "cccc.........c",
      "cccm.........c",
-     "cccc..mmNmm.mc",
+     "ccNm..mm.mm.mc",
      "cccc..mm.mm.mc",
      "c............c",
      "c.......mm...c",
@@ -87606,7 +89550,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/D32FS0101.png",
+      "f": "ss_ground/T21FS0101.png",
       "at": [
        0,
        3
@@ -87622,7 +89566,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/D32FS0101.png",
+      "f": "ss_top/T21FS0101.png",
       "at": [
        0,
        3
@@ -89458,13 +91402,14 @@
      "c..c..........ccc",
      "c.............zzc",
      "c.............ccc",
-     "cc.............cc",
+     "cc............^cc",
      "cc............ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:20,9"
+     "v": "OUT:20,9",
+     "^": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
@@ -89547,6 +91492,9 @@
       "7,3": "table",
       "12,3": "table"
      },
+     "_stairs": {
+      "14,15": "foot"
+     },
      "_floor": [
       240,
       226,
@@ -89559,7 +91507,7 @@
      ],
      "_screen": true,
      "_picture": {
-      "f": "ss_ground/T31PC0101.png",
+      "f": "ss_ground/T21PC0101.png",
       "at": [
        0,
        0
@@ -89575,7 +91523,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "ss_top/T31PC0101.png",
+      "f": "ss_top/T21PC0101.png",
       "at": [
        0,
        0
@@ -89583,6 +91531,164 @@
       "size": [
        17,
        25
+      ],
+      "px": 32
+     }
+    ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c.ccNcccNcccNcccc",
+     "c.ccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_things": {
+      "2,6": [
+       213,
+       252,
+       252
+      ],
+      "2,7": [
+       213,
+       252,
+       252
+      ],
+      "3,6": [
+       213,
+       252,
+       252
+      ],
+      "3,7": [
+       213,
+       252,
+       252
+      ],
+      "4,3": [
+       150,
+       150,
+       160
+      ],
+      "5,3": [
+       246,
+       213,
+       148
+      ],
+      "8,3": [
+       150,
+       150,
+       160
+      ],
+      "9,3": [
+       246,
+       213,
+       148
+      ],
+      "12,3": [
+       150,
+       150,
+       160
+      ],
+      "15,3": [
+       255,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "2,6": "table",
+      "3,6": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "15,3": "pc",
+      "5,3": "table",
+      "9,3": "table"
+     },
+     "_stairs": {
+      "14,8": "foot"
+     },
+     "_floor": [
+      240,
+      226,
+      190
+     ],
+     "_wall": [
+      236,
+      200,
+      190
+     ],
+     "_screen": true,
+     "_picture": {
+      "f": "ss_ground/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, the link to faraway Trainers is closed right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Union Room counter. Trainers gather here to trade and battle.",
+        "It isn't open yet. Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles and trades are set up here.",
+        "The machines are being checked today. Sorry!"
+       ]
+      }
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/T21PC0102.png",
+      "at": [
+       0,
+       3
+      ],
+      "size": [
+       17,
+       15
       ],
       "px": 32
      }
