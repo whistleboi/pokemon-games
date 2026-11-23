@@ -548,7 +548,8 @@ class RouteEncounters:
         if self.game.story_manager.current_area_key == "JOHTO_ROUTE_36":
             if self.game.story_manager.inventory.get("SQUIRT_BOTTLE", 0) <= 0:
                 self.hide_menu_buttons()
-                msg = ["The strange tree is wiggling...", "It looks like it might respond to water.", "Maybe someone in Goldenrod City can help?"]
+                self.game.story_manager.story_flags["saw_odd_tree"] = True   # (met before the SquirtBottle: the Plain Badge's first chapter; Jordan 11-22)
+                msg = ["A strange tree stands right in the middle of the road.", "...Did it just wiggle?", "Its leaves are drooping. It almost looks thirsty."]
                 self.show_dialogue(msg, callback=self.show_progression_menu)
                 return
 
