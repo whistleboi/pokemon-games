@@ -278,5 +278,66 @@
       {"mission": "hoenn_d3", "title": "Into Space", "say": "There's only one way to stop the meteoroid: go up and meet it."},
       {"mission": "hoenn_d4", "title": "The Other Orb", "say": "Hoenn is safe, for now. But deep in the Cave of Origin, {other_legend} is stirring."}
     ]}
+  ],
+  "SINNOH": [
+    {"title": "Twinleaf Beginnings", "chapters": [
+      {"mission": "sinnoh_m1", "title": "A Fateful Encounter", "say": "{rival_name} can't sit still. There's a lake west of town, and a story about what lives in it. Something is waiting in the grass on the way."},
+      {"mission": "sinnoh_m1b", "title": "The First Battle", "say": "The Starly are gone and a new partner stands beside you. Back home, {rival_name} is already itching to test theirs."},
+      {"mission": "sinnoh_m1c", "title": "The Professor's Lab", "say": "The old man at the lake watched everything. In Sandgem Town, he has been expecting you."},
+      {"mission": "sinnoh_m1d", "title": "The Big City", "say": "Route 202 runs north to Jubilife City, the biggest city in Sinnoh. Everyone there seems to be in a hurry."},
+      {"mission": "sinnoh_m1e", "title": "Through Oreburgh Gate", "say": "East of Jubilife, the road climbs into a cave. {rival_name} has gone on ahead... and won't stop talking about the Gym."}
+    ]},
+    {"title": "The Coal Badge", "chapters": [
+      {"mission": "sinnoh_m2", "title": "Down the Mine", "say": "Oreburgh's Gym Leader isn't at his Gym. He's somewhere down in the coal mine, digging."},
+      {"mission": "sinnoh_m2b", "title": "The Rock-Hard Leader", "say": "He's back from the mine with dust on his helmet. His Rock Pokemon don't crack easily."}
+    ]},
+    {"title": "The Forest Badge", "chapters": [
+      {"mission": "sinnoh_m3", "title": "Space Suits in Jubilife", "say": "Two people in strange suits have cornered the Professor in Jubilife. They talk about space... and energy."},
+      {"mission": "sinnoh_m3b", "title": "The Flower Town", "say": "North through the Ravaged Path lies Floaroma Town, full of flowers and sweet honey. It looks peaceful. For now."},
+      {"mission": "sinnoh_m3c", "title": "Wind Without Power", "say": "The windmills at the Valley Windworks have stopped turning. A little girl's father is trapped inside."},
+      {"mission": "sinnoh_m4", "title": "Into Eterna Forest", "say": "Eterna Forest is dark and easy to get lost in. Someone in there is hoping you'll walk with her."},
+      {"mission": "sinnoh_m4b", "title": "The Grass Leader", "say": "Eterna's Gym is a garden, and its Leader hides among the trees. She loves Grass Pokemon more than anything."}
+    ]},
+    {"title": "The Cobble Badge", "chapters": [
+      {"mission": "sinnoh_m4c", "title": "The Galactic Building", "say": "A woman in black stands by the statue in Eterna. North of the city, a tall building gleams. Its doors are guarded."},
+      {"mission": "sinnoh_m5", "title": "Cycling Road", "say": "A bike, a long road downhill, and a tunnel through the mountain at the heart of Sinnoh."},
+      {"mission": "sinnoh_m5b", "title": "The Leader Who Isn't Home", "say": "Hearthome's Gym Leader is busy with other things. The road east leads on, past ruins and fog."},
+      {"mission": "sinnoh_m5c", "title": "Fists of Veilstone", "say": "Veilstone City is carved out of the rock. Its Gym Leader trains barefoot, and she isn't sure she's strong enough."}
+    ]},
+    {"title": "The Fen Badge", "chapters": [
+      {"mission": "sinnoh_m6", "title": "The Galactic Warehouse", "say": "Team Galactic's grunts are carrying boxes in and out of a warehouse in Veilstone. One of them looks very nervous."},
+      {"mission": "sinnoh_m6b", "title": "South to the Marsh", "say": "Route 214 winds south past a quiet lake toward a marshy city by the sea."},
+      {"mission": "sinnoh_m6c", "title": "The Mask of Pastoria", "say": "Pastoria's Gym Leader is a wrestler who loves the water. His Gym is full of moving pools."}
+    ]},
+    {"title": "The Relic Badge", "chapters": [
+      {"mission": "sinnoh_m7", "title": "The Old Charm", "say": "Cynthia's grandmother lives in Celestic Town, beyond the fog. The Charm in your Bag is very old. Someone else wants it."},
+      {"mission": "sinnoh_m8", "title": "Ghosts of Hearthome", "say": "Hearthome's Gym Leader is finally home. Her Gym is dark, and the lights only come on for the right answers."}
+    ]},
+    {"title": "The Mine Badge", "chapters": [
+      {"mission": "sinnoh_m9", "title": "Across the Water", "say": "West of Jubilife, past the sea, is a port city with a drawbridge and a library older than anyone can remember."},
+      {"mission": "sinnoh_m9b", "title": "The Steel Father", "say": "Canalave's Gym Leader is Roark's father. He's louder, tougher, and his Steel Pokemon are harder still."}
+    ]},
+    {"title": "Three Lakes", "chapters": [
+      {"mission": "sinnoh_m10", "title": "The Library Meeting", "say": "The Professor has found something in the Canalave Library: an old story about three Pokemon and three lakes."},
+      {"mission": "sinnoh_m10b", "title": "Explosion at Lake Valor", "say": "A blast shook the ground. Lake Valor is empty, and Team Galactic is standing in the mud where the water used to be."},
+      {"mission": "sinnoh_m10c", "title": "The Lake Back Home", "say": "Lake Verity, where it all started. {rival_name}'s mom lives just down the road. Commander Mars got there first."}
+    ]},
+    {"title": "The Icicle Badge", "chapters": [
+      {"mission": "sinnoh_m12", "title": "Snowbound", "say": "The far north is buried in snow. The path to Snowpoint City is long, cold and very white."},
+      {"mission": "sinnoh_m12b", "title": "The Ice Leader", "say": "Snowpoint's Gym is a sheet of ice. Its Leader is cheerful, stylish and completely fearless."},
+      {"mission": "sinnoh_m10d", "title": "The Last Lake", "say": "Two lakes have fallen. Only Lake Acuity is left, and {rival_name} is already there."}
+    ]},
+    {"title": "The Spear Pillar", "chapters": [
+      {"mission": "sinnoh_m11", "title": "Galactic Headquarters", "say": "All three lake Pokemon have been taken to Veilstone. Behind the doors of Team Galactic's HQ, a machine is humming."},
+      {"mission": "sinnoh_m13", "title": "The Summit", "say": "Cyrus has gone to the very top of Mt. Coronet. Up there, the ancient ruins are glowing. Time and space are about to tear."}
+    ]},
+    {"title": "The Beacon Badge", "chapters": [
+      {"mission": "sinnoh_m14", "title": "The Shining City", "say": "Sinnoh is quiet again. To the east, Sunyshore City glitters in the sun, with a lighthouse at its tip."},
+      {"mission": "sinnoh_m14b", "title": "The Bored Leader", "say": "Sunyshore's Gym Leader hasn't had a good battle in a long time. He's waiting to see if you're different."}
+    ]},
+    {"title": "Champion of Sinnoh", "chapters": [
+      {"mission": "sinnoh_m15", "title": "Victory Road", "say": "Eight badges. Past the waterfall, Victory Road twists through the dark, with the League at its end."},
+      {"mission": "sinnoh_m15b", "title": "The Champion", "say": "{rival_name} wants one last battle. Then four of Sinnoh's strongest trainers. And at the very top, a familiar face."}
+    ]}
   ]
 }

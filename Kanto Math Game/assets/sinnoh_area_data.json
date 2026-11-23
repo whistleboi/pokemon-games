@@ -3953,6 +3953,35 @@
       },
       "reward": "Hisuian forms everywhere",
       "completed_flag": "forms_complete_hisuian"
+    },
+    {
+      "id": "sinnoh_s_trades",
+      "type": "SIDE",
+      "title": "Trading Partners",
+      "description": "People in Sinnoh are hoping to swap one Pokemon for another. Bring them what they ask for and see what they give you back.",
+      "targets": [
+        [
+          "OREBURGH_CITY",
+          "sinnoh_trade_kazza"
+        ],
+        [
+          "ETERNA_CITY",
+          "sinnoh_trade_charap"
+        ],
+        [
+          "SNOWPOINT_CITY",
+          "sinnoh_trade_gaspar"
+        ]
+      ],
+      "condition": {
+        "required_region": "SINNOH",
+        "visited": "OREBURGH_CITY"
+      },
+      "completed_flag": [
+        "sinnoh_trade_kazza",
+        "sinnoh_trade_charap",
+        "sinnoh_trade_gaspar"
+      ]
     }
   ],
   "SINNOH_ROUTE_201_PERCENTAGES": {"396": 50, "399": 40, "401": 10},

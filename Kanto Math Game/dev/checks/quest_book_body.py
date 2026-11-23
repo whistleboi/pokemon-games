@@ -604,10 +604,94 @@ jn.selected = next(i for i, r in enumerate(jn.rows) if r["feat"]["id"] == "conte
 pygame.image.save(g.screen, os.path.join(S, "quest_book_hoenn_feats.png"))
 g.change_state(city)
 
+print("SINNOH: the book's data")
+sb = book["SINNOH"]
+sids = [c["mission"] for a in sb for c in a["chapters"]]
+check(all(i in jmissions for i in sids), "every Sinnoh chapter's mission exists")
+check(all(c.get("title") and c.get("say") for a in sb for c in a["chapters"]), "every Sinnoh chapter has a title and a page")
+smain = [m for m in jmissions if m.startswith("sinnoh_") and jmissions[m]["type"] == "MAIN"]
+check(sorted(set(smain) - set(sids)) == [], f"every Sinnoh story mission is in the book (missing: {sorted(set(smain) - set(sids))})")
+said = " ".join(c["say"] for a in sb for c in a["chapters"]).lower()
+check(not re.search(r"\b(because|so that|in order to)\b", said), "Sinnoh's pages never spell out why")
+sk = [k for k, a in prog.items() if str(a.get("region", "")).upper() == "SINNOH"]
+sused = set(re.findall(r"TM\d{3}", json.dumps([prog[k] for k in sk]) + json.dumps([tmaps[k] for k in sk if k in tmaps])))
+sgiven = [t[1]["tm"] for f in ft["SINNOH"] for t in f["tiers"] if t[1].get("tm")]
+check(all(k in tms for k in sgiven) and len(sgiven) == len(set(sgiven)), "Sinnoh Feat TMs: real, none twice")
+check(not (set(sgiven) & sused), f"no Sinnoh Feat TM is also on Sinnoh's maps / people ({sorted(set(sgiven) & sused)})")
+check(not (set(sgiven) & set(tutors.tutor_tms(g, "SINNOH"))), "no Sinnoh Feat TM is a Sinnoh tutor's")
+check(all(_items.describe(i) for f in ft["SINNOH"] for t in f["tiers"] for i in (t[1].get("items") or {})), "every Sinnoh reward item is real")
+var = next(f for f in ft["SINNOH"] if f["id"] == "variants")
+hforms = feats._form_ids(story, var)
+spools = json.load(open("assets/sinnoh_area_data.json", encoding="utf-8"))
+caught_at = {int(p) for k, v in spools.items() if k.endswith("PERCENTAGES") and isinstance(v, dict) for p in v if str(p).isdigit()}
+check(len(hforms) == 16 and hforms <= caught_at, f"Hisuian Variants: all 16 forms, each wild somewhere in Sinnoh / Hisui ({sorted(hforms - caught_at)})")
+
+print("SINNOH: chapters follow the story, Twinleaf to the Champion (the order the Journal leads)")
+story.starting_region = "SINNOH"
+story.badges = {r: [] for r in story.badges}
+story.badges["SINNOH"] = []
+for m in jmissions.values():
+    if m["id"].startswith("sinnoh_"):
+        for f in story.mission_flags(m):
+            flags.pop(f, None)
+for k in [k for k in flags if k.startswith(("visited_", "feat_", "badge_"))] + ["received_starter_sinnoh", "defeated_rival_sinnoh_starter", "met_roark"]:
+    flags.pop(k, None)
+at("TWINLEAF_TOWN")
+city = CityState(g); g.change_state(city)
+SBADGE = {"sinnoh_m2b": "COAL", "sinnoh_m4b": "FOREST", "sinnoh_m5c": "COBBLE", "sinnoh_m6c": "FEN", "sinnoh_m8": "RELIC",
+          "sinnoh_m9b": "MINE", "sinnoh_m12b": "ICICLE", "sinnoh_m14b": "BEACON"}
+SSCENE = {"sinnoh_m1": ["received_starter_sinnoh"], "sinnoh_m1b": ["defeated_rival_sinnoh_starter"], "sinnoh_m2": ["met_roark"]}
+n_s = 0
+for arc in sb:
+    for ch in arc["chapters"]:
+        m = jmissions[ch["mission"]]
+        want(quest_book._words(story, arc["title"]), quest_book._words(story, ch["title"]), f"[{m['id']}]")
+        if m["id"] == "sinnoh_m10b":
+            jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
+            pygame.image.save(g.screen, os.path.join(S, "quest_book_sinnoh_story.png"))
+            g.change_state(city)
+        for f in story.mission_flags(m):
+            flags[f] = True
+        if m["id"] in SBADGE:
+            story.badges["SINNOH"].append(SBADGE[m["id"]])
+        done_(SSCENE.get(m["id"], []))
+        if m.get("target"):
+            at(m["target"])
+        n_s += 1
+check(n_s == len(sids) and all(a["state"] == "done" for a in quest_book.arcs(g)), "the whole Sinnoh book is played through")
+jn = JournalState(g, city); g.change_state(jn); jn.set_tab("SIDE"); jn.draw()
+check(not any(r["mission"]["id"].startswith("sinnoh_dex") for r in jn.rows), "Sinnoh's old Catch missions are its Pokedex Feat now")
+check(any(r["mission"]["id"] == "sinnoh_s_trades" for r in jn.rows), "SIDE: Sinnoh's trades")
+from src.states.poffin import PoffinHouseState, PoffinCookState
+house = PoffinHouseState(g, city)
+ck = PoffinCookState(g, house)   # (a Poffin cooked at the Poffin House, as a player would)
+ck.berries, ck.good, ck.quick, ck.mistakes = ["CHERI_BERRY", "PECHA_BERRY"], 4, 3, 0
+ck.finish()
+check(feats.value(story, next(f for f in ft["SINNOH"] if f["id"] == "poffins"), "SINNOH") == 1, "a Poffin cooked counts")
+from src.states.overworld import PlayState
+bk = next(k for k in sk if prog[k].get("berry_trees"))   # (a route's berry trees, picked from its menu, as a player would)
+at(bk); flags["has_berry_pouch"] = True; flags.pop("berries_picked_" + bk, None)
+for _ in range(5):
+    rt = PlayState(g, classic=True); g.change_state(rt); rt.action_pick_berries()
+    flags.pop("berries_picked_" + bk, None)   # (the next day)
+bp = feats.value(story, next(f for f in ft["SINNOH"] if f["id"] == "berry_picks"), "SINNOH")
+check(bp >= 10, f"Berries picked from trees count ({bp} from 5 days at {bk})")
+g.change_state(city)
+feats.note(story, "smash", 3)
+feats.pay(story)   # (the route screen pays too, on the way)
+for fid in ("poffins", "smash", "berry_picks"):
+    f_ = next(f for f in ft["SINNOH"] if f["id"] == fid)
+    check(flags.get(feats.tier_flag("SINNOH", f_, 0)), f"Sinnoh: {f_['name']} Bronze paid")
+jn.set_tab("FEATS"); jn.draw()
+check(len(jn.rows) == len(ft["SINNOH"]), "FEATS lists Sinnoh's feats")
+jn.selected = next(i for i, r in enumerate(jn.rows) if r["feat"]["id"] == "variants"); jn.draw()
+pygame.image.save(g.screen, os.path.join(S, "quest_book_sinnoh_feats.png"))
+g.change_state(city)
+
 print("Other regions: no book yet, each story mission an arc of its own")
-story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "SINNOH")
+story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "UNOVA")
 a = quest_book.arcs(g)
-check(a and all(c.get("title") for x in a for c in x["chapters"]), f"Sinnoh's missions show as arcs ({len(a)})")
+check(a and all(c.get("title") for x in a for c in x["chapters"]), f"Unova's missions show as arcs ({len(a)})")
 jn = JournalState(g, city); g.change_state(jn); jn.draw()
 jn.set_tab("FEATS"); jn.draw()
 check(jn.rows == [], "no Feats in a region without its list yet")

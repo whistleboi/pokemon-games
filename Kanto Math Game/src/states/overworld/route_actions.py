@@ -121,6 +121,8 @@ class RouteActions:
                 picked[berry] = picked.get(berry, 0) + 1
             for berry, n in picked.items():
                 story.inventory[berry] = story.inventory.get(berry, 0) + n
+            from src.world import feats as _feats
+            _feats.note(story, "berry_picks", sum(picked.values()))   # (a Feat: Berries picked from trees; Sinnoh)
             lines = ["You checked the berry trees..."] + season_lines + [
                 f"You picked {n} {berry_name(b)}{'s' if n > 1 else ''}!" for b, n in picked.items()]
             lines.append("They went into your BERRY POUCH.")
