@@ -1200,6 +1200,8 @@ class WalkTownState(CityState):
             self.anim = STEP * 2  # (deep snow, marsh mud: each step takes twice as long)
         self.rui_from, self.rui = getattr(self, "rui", self.partner), self.partner   # (Orre: Rui, a step behind your Pokemon)
         self.partner_from, self.partner = self.partner, self.player
+        if self._live():
+            self._note_level(self.player, to)   # (which floor you're on, where the game has two: _stack_level)
         self.player = to
         self.steps += 1
         from src.world import vs_seeker as _vs
@@ -2357,6 +2359,34 @@ class WalkTownState(CityState):
     LEVEL_STEP = 1.5   # (tiles: more than this between two neighbours' ground is a drop, not a step)
     LIFT_STEP = 10.0   # (tiles: more than this is a lift carrying you, not a drop: Violet Gym's, 11-22)
 
+    def _stack_level(self, t, sc=None):
+        """The floor height you stand at on tile t (tiles): where the game has two floors, the one you came in on
+        (self._on_level, set as you step); one floor: that one; None when t has two and which isn't known."""
+        sc = sc or (self._live() or (None,))[0]
+        own = getattr(self, "_on_level", None)
+        if own and own[0] == tuple(t) and own[1] == getattr(self, "room", None):
+            return own[2]
+        if sc is not None and sc.stacked(*t):
+            return None
+        s = sc.surfaces(*t) if sc is not None else []
+        return s[0] if len(s) == 1 else self._live_height(*t)
+
+    def _note_level(self, a, b):
+        """After a step a -> b: which of b's floors you're on now (the one nearest the level you left), for _stack_level."""
+        try:
+            sc = (self._live() or (None,))[0]
+            if sc is None or getattr(sc, "bdhc", None) is None:
+                self._on_level = None
+                return
+            la = self._stack_level(a, sc)
+            sb = sc.surfaces(*b)
+            self._on_level = (tuple(b), getattr(self, "room", None),
+                              min(sb, key=lambda v: abs(v - la)) if (sb and la is not None) else (sb[0] if len(sb) == 1 else None))
+            if self._on_level[2] is None:
+                self._on_level = None
+        except Exception:   # (no live view: nothing to remember)
+            self._on_level = None
+
     def _level_edge(self, a, b):
         """True when stepping a -> b goes off one level onto another (11-21, Jordan: "Yes, block them"): Black 2 never
         lets you step between two tiles at different heights, while the walk map only says walkable or not, so you
@@ -2372,6 +2402,16 @@ class WalkTownState(CityState):
                 return False
             if any(self._art_char((t[0] + dx, t[1] + dy)) in "|;" for dx, dy in DIRS):   # (beside a bridge: under it or onto
                 return False   # it, two levels the height map can't tell apart: Virbank's underpass beneath the main street)
+        _sc = self._live()[0]
+        if getattr(_sc, "bdhc", None) is not None and (_sc.stacked(*a) or _sc.stacked(*b)):
+            # (a tile where the game has two floors, one over the other: judged by the level you're on there, 11-23 -
+            #  Oreburgh Gym's walkway over the floor: in under it from the floor, you can't step sideways up onto the platform
+            #  at its end; on it from the platform, you can't step down off its side. Not known (a load): as before, allowed.)
+            la = self._stack_level(a, _sc)
+            if la is None:
+                return False
+            lb = min(_sc.surfaces(*b) or [self._live_height(*b)], key=lambda v: abs(v - la))
+            return self.LEVEL_STEP < abs(lb - la) <= self.LIFT_STEP
         _diff = abs(self._live_height(*a) - self._live_height(*b))
         if _diff <= self.LEVEL_STEP:
             return False

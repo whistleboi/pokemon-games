@@ -43,7 +43,8 @@ def usable(story, item):
 
 # Regions where EVERY map test of an HM asks for its badge too (Kanto, 11-16). Elsewhere the tests that only ever asked
 # for the item (Surf on a route, Strength, Rock Smash, Waterfall, Fly) still do, till that region's own pass.
-FIELD_STRICT = {"KANTO", "ORRE"}
+# Johto 11-23 (Jordan, J2 gate check: "Badges for every HM"; HGSS and Crystal both need each HM's badge on the map).
+FIELD_STRICT = {"KANTO", "ORRE", "JOHTO"}
 
 # Field moves a region's game uses by the move alone, with no HM item (Orange Islands 5.7: Route L's swimmer teaches Waterfall
 # and a Pokemon that knows it climbs Butwal's falls; 11-18). {region: {our HM item: the move}}
