@@ -160,11 +160,41 @@ if seen_battle is not None:
     flags["b2_nimbasa_plasma_battled"] = True
     g.change_state(st); settle(5)
 
-print("5b) the roller coaster's cars carry you between platforms")
-st = town("NIMBASA_CITY", (12, 41), "coaster", (0, -1))
-st.step(0, -1); settle(40)
-check(tuple(st.player) == (22, 40) or tuple(getattr(g.current_state, "player", ())) == (22, 40),
-      f"the entrance's car: off at the middle platform ({getattr(g.current_state, 'player', None)})")
+print("5b) the roller coaster: Black 2's cars and switches (overlay 102)")
+for k in range(4):
+    flags.pop("b2_coaster_sw%d" % k, None)
+
+
+def ride(at, face):
+    # (in at the entrance, then put on the platform: a platform reached only by car isn't kept as your spot coming back to
+    # the room - a shared walk_town fix, sent to Main's inbox 11-23: clean-main-unova-room-landings)
+    st = town("NIMBASA_CITY", (14, 40), "coaster", face)
+    st.player, st.facing = tuple(at), face
+    st.step(*face)
+    quiet = 0
+    for _ in range(600):   # (the car moves a tile at a time: wait till the ride has stopped for a while)
+        settle(1)
+        cur = g.current_state
+        busy = getattr(cur, "anim", 0) or getattr(cur, "npc_active", False) or             (getattr(cur, "scenes", None) and getattr(cur.scenes, "playing", None))
+        quiet = 0 if busy else quiet + 1
+        if quiet > 30:
+            break
+    return tuple(g.current_state.player)
+
+
+check(ride((14, 40), (0, -1)) == (22, 40), "the entrance's car: off at the middle platform")
+st = town("NIMBASA_CITY", (14, 40), "coaster", (0, -1)); st.player = (29, 34); st.step(0, -1); settle(120)
+check(flags.get("b2_coaster_sw0"), "the middle platform's switch flips")
+check(ride((22, 40), (0, -1)) == (16, 28), "...now the middle's car goes to the left platform")
+check(ride((16, 16), (0, -1)) == (16, 15), "the left platform's top car: no track yet (you just step to its edge)")
+flags["b2_coaster_sw1"] = True
+check(ride((16, 16), (0, -1)) == (41, 41), "its switch flipped: off at the back platform, by Lady Colette")
+flags["b2_coaster_sw2"] = True
+check(ride((49, 41), (0, -1)) == (34, 9), "the back platform's switch: up to the top, where the woman waits")
+flags["b2_coaster_sw3"] = True
+check(ride((22, 9), (0, -1)) == (5, 40), "the top's switch: a car straight back to the entrance")
+ps = people(town("NIMBASA_CITY", (34, 9), "coaster", (0, 1)))
+check({"Woman at the back", "Lady Colette", "Rich Boy Rolan", "Guide at the entrance"} <= set(ps), f"everyone in the roller coaster ({sorted(ps)})")
 
 print("6) the Subway Bosses' partner: Rosa for a boy, Nate for a girl")
 st = town("NIMBASA_CITY", (38, 48), face=(0, -1))
@@ -203,5 +233,18 @@ print("9) the Journal and the Quest Book")
 book = json.load(open("assets/quest_book.json", encoding="utf-8"))["UNOVA"]
 ids = [c["mission"] for a in book for c in a["chapters"]]
 check(all(f"b2_m{n}" in ids for n in range(20, 25)), "chapters for The City of Lights to West to Route 5")
+print("5c) Elesa's catwalk: dark, a new stretch lit as you reach each trigger (overlay 92)")
+for k in (1, 2, 3):
+    flags.pop("b2_elesa_lit%d" % k, None)
+st = town("NIMBASA_CITY", (10, 59), "gym", (0, -1))
+r0 = st.light_radius()
+for _ in range(6):
+    st.step(0, -1); settle(20)
+check(r0 is not None and flags.get("b2_elesa_lit1") and st.light_radius() > r0, "the first trigger lights the next stretch")
+check(tmaps["NIMBASA_CITY"]["rooms"]["gym"]["dark"].get("lit"), "the lit stretches are in the map, for main's section lighting")
+import os as _os
+_ingo = [o for o in json.dumps(tmaps).split('"sprite": ') if o.startswith('"b2_ingo.png"')]
+check(_ingo and _os.path.exists("assets/sprites/trainers/b2_ingo.png"),
+      "Ingo's own battle picture, from Black 2's animated set (a/0/7/1 slot 87)")
 story.region_rivals["UNOVA"].pop("friend_character", None)
 print(f"##### {len(fails)} failures")

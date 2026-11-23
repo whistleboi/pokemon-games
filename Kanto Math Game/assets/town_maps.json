@@ -379416,65 +379416,65 @@
  },
  "UNOVA_ROUTE_20": {
   "art": [
-   "....c...cccc^^^^^^^o...occcc..cccccccccccccccccccccccccccccccccc",
-   "....c...cccc.......o...occcc..cccccccccccccccccccccccccccccccccc",
-   "cccccccccccc.......o...occcc..cccccccccccccccccccccccccccccccccc",
+   "....c...cccc^^^^^^^ooooocccc..cccccccccccccccccccccccccccccccccc",
+   "....c...cccc.......ooooocccc..cccccccccccccccccccccccccccccccccc",
+   "cccccccccccc.......ooooocccc..cccccccccccccccccccccccccccccccccc",
    "ccccccc............coooccccc..cc...ccccccccccccccccccccccccccccc",
    "ccccccc............................ccccccccccccccccccccccccccccc",
    "ccccccc........................N...ccccccccccccccccccccccccccccc",
    "cccccc.............................cccccccN.cccccccccccccccccccc",
    "cccccc....ccccccccccoooc\"\"\"..\"\"c...ccccccc..cccccccccccccccccccc",
-   "cccccc....ccc.....co...o\"\"\"\"\"\"\"c...cccc..c..cccccccccccccccccccc",
-   "cccccc....ccc.ccc.co...o\"\"\"\"\"\"\"c...cccc.Xc..c.....XN.....ccccccc",
-   "cccccc....ccc.c.c.co...o\"\"\"\"\"\"\"c...cccc..................>cccccc",
-   "ccccccccccccc.ccc.co...o\".X\"\"\"\"c...cccc..................>cccccc",
-   "cccccc.....c......co...o\"..\"\"\"\"c...cccc..................>cccccc",
-   "cccccc.....c...cccco...o\"\"\"\"..\"c...cccc..c..c............ccccccc",
-   "ccccccccccccccccccco...o\"\"\"\".N\"c......c..c..ccc...cccccccccccccc",
-   "cccccc.....c!cccccco...o\"\"\"\"\"\"\"c.....Xc..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
-   "cccccc........ccccco...o\"\"\"\"\"\"\"c......c..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
-   "cccccc........cooooc...occ...ccc......c..ccc...ccccccooooooooooo",
-   "cccccc........o........occ...ccc......c....\"\"\"\"\"\"\"Nccocc.cc.cc..",
-   "cccccc........o........occ...ccc......c....\"\"\"\"\"\"\"\"coocc.cc.cc..",
-   "ccccccc.....N.cooooooooccc...ccc......ccc...cccccccco...cooooooo",
-   "<............................X.c............X...ccooc...occccccc",
-   "<..............................c................cco.....occccccc",
-   "<..............................c................cco.....occccccc",
-   "ccccccc......Xcoooccccccccc..ccc................cco.....occccccc",
-   "cccccccccccccco...occcccccc..ccc................coc.....occccccc",
-   "cccccccc.....co...occ...c....cccc\"\"\"\"\"\"\"\"\"c.....o.......occccccc",
-   "cccccccc.....co...occ...c..N.cccc\"\"\"\"\"\"\"\"\"c.....o.......occccccc",
-   "cccccccc.....co...occ...c....cccc\"\"\"\"\"\"\"\"\"c.....o.......occccccc",
-   "cc...ccccc...co...occ...c....cccc\"\"\"\"\"\"\"\"\"c...coc.......occccccc",
-   "cc...ccccc...co...occ..cccccccccc\"N\"\"\"\"\"\"\"ccooc.........occccccc",
-   "cc...ccccc...co...occ..cccccccccc\"\"\"\"\"\"\"\"\"co..........cooccccccc",
-   "cccccccccc...cccc.occ...(...ccccccccccccccco........cocccccccccc",
-   "ccccccccccccccccc.occ...(...cccccccccccccooc........o..ccccccccc",
-   "cccccccccccccco..cocc...(...cccccccccccco.........coc..ccccccccc",
-   "cccccccccccccco..cocccccc....ccccccccccco.........o....ccccccccc",
-   "ccccc...cccccco...coocccc....ccccccccccco.........o....ccccccccc",
-   "ccccc...ccccccoc....coooooooooocooooooooc.........o....ccccccccc",
-   "ccccc......cccco...............c..................o....ccccccccc",
-   "cccccc......cccoc..............c..................coc..ccccccccc",
-   "ccccccccccccccccooooc..........c....................o..ccccccccc",
-   "cccccccccccccccccccco..cooooooocoooooooooooooc......cocccccccccc",
-   "cccccccccccccccccccco..occccccccccccccccccccco........cocccccccc",
-   "cccoooooooooooooocccoc.occccccccccccccccccccco..........occccccc",
-   "cco..............occoc.occcccccc..cccccccccccooooc......occccccc",
-   "cco..............occo..occcccccc..cccccccccccccccoooc...occccccc",
-   "cco..............occo.cocccccccc..c....ccccccccccccco...occccccc",
-   "cco..cooooooooc..occo.cocccccccc\"\"c....ccccccccccccco...occccccc",
-   "cco..occcccccco..occo..occcccccc\"\"c....ccccccccccccccooocccccccc",
-   "cco..occcccccco..occo..occc\"\"\"\"\"\"\"c........cccccccccc....ccccccc",
-   "cco..occcccccco..occo..occc\"\"\"\"\"\"\"c.................c....ccccccc",
-   "cco..occcccccco..cooc..occc\"\"\"\"\"\"\"c...cccc..........c....ccccccc",
-   "cco..occcccccco........occccc\"\"\"\"\"c...cccc..ccccc...ccc..ccccccc",
-   "cco..occcccccco........occccc\"\"\"\"\"cccccccc..c...c...ccc..ccccccc",
-   "cco..co......oc........occccc\"\"\"\"\"cccccccc..c...c...ccc..ccccccc",
-   "cco...cooooooc.........occccc\"\"\"\"\"cccccccc..c...c...ccc..ccccccc",
-   "cco...............coooooccccc..\"\"\"ccc.cccc..ccccccccccc..ccccccc",
-   "cco...............occcccccccc.........cccc.......cccccc..ccccccc",
-   "ccoooc..coooc..coocc...c..ccc.........cccc.......cccc....ccccccc",
+   "cccccc....ccc.....cooooo\"\"\"\"\"\"\"c...cccc..c..cccccccccccccccccccc",
+   "cccccc....ccc.ccc.cooooo\"\"\"\"\"\"\"c...cccc.Xc..c.....XN.....ccccccc",
+   "cccccc....ccc.c.c.cooooo\"\"\"\"\"\"\"c...cccc..................>cccccc",
+   "cccccc_____cc.ccc.cooooo\".X\"\"\"\"c...cccc..................>cccccc",
+   "cccccc.....c......cooooo\"..\"\"\"\"c...cccc..................>cccccc",
+   "cccccc.....c...ccccooooo\"\"\"\"..\"c...cccc..c..c............ccccccc",
+   "cccccc_____ccccccccooooo\"\"\"\".N\"c......c..c..ccc...cccccccccccccc",
+   "cccccc.....c!ccccccooooo\"\"\"\"\"\"\"c.....Xc..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
+   "cccccc........cccccooooo\"\"\"\"\"\"\"c......c..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
+   "cccccc........coooocoooocc...ccc......c..ccc...ccccccooooooooooo",
+   "cccccc........oooooooooocc...ccc......c....\"\"\"\"\"\"\"Nccoccoccoccoo",
+   "cccccc........oooooooooocc...ccc......c....\"\"\"\"\"\"\"\"cooccoccoccoo",
+   "ccccccc.....N.cooooooooccc...ccc......ccc...ccccccccoooocooooooo",
+   "<............................X.c............X...ccoocooooccccccc",
+   "<..............................c................ccoooooooccccccc",
+   "<..............................c................ccoooooooccccccc",
+   "ccccccc......Xcoooccccccccc..ccc................ccoooooooccccccc",
+   "ccccccccccccccooooocccccccc..ccc................cocooooooccccccc",
+   "cccccccc.....cooooocc...c....cccc\"\"\"\"\"\"\"\"\"c.....oooooooooccccccc",
+   "cccccccc.....cooooocc...c..N.cccc\"\"\"\"\"\"\"\"\"c.....oooooooooccccccc",
+   "cccccccc.....cooooocc...c....cccc\"\"\"\"\"\"\"\"\"c.....oooooooooccccccc",
+   "cc...ccccc...cooooocc...c....cccc\"\"\"\"\"\"\"\"\"c...cocooooooooccccccc",
+   "cc...ccccc...cooooocc..cccccccccc\"N\"\"\"\"\"\"\"ccoocooooooooooccccccc",
+   "cc...ccccc...cooooocc..cccccccccc\"\"\"\"\"\"\"\"\"cooooooooooocooccccccc",
+   "cccccccccc...ccccoocc...(...cccccccccccccccooooooooococccccccccc",
+   "cccccccccccccccccoocc...(...cccccccccccccoocooooooooo..ccccccccc",
+   "ccccccccccccccooococc...(...ccccccccccccoooooooooococ..ccccccccc",
+   "ccccccccccccccooococccccc....cccccccccccooooooooooo....ccccccccc",
+   "ccccc...ccccccoooocoocccc....cccccccccccooooooooooo....ccccccccc",
+   "ccccc...ccccccocoooocoooooooooo$oooooooocoooooooooo....ccccccccc",
+   "ccccc......ccccoooooooooooooooo$ooooooooooooooooooo....ccccccccc",
+   "cccccc......cccocoooooooooooooo$oooooooooooooooooococ..ccccccccc",
+   "ccccccccccccccccoooocoooooooooo$ooooooooooooooooooooo..ccccccccc",
+   "ccccccccccccccccccccooocooooooocooooooooooooocoooooococccccccccc",
+   "ccccccccccccccccccccoooocccccccccccccccccccccooooooooococccccccc",
+   "cccoooooooooooooocccocoocccccccccccccccccccccooooooooooooccccccc",
+   "ccooooooooooooooooccocoocccccccc..cccccccccccoooocoooooooccccccc",
+   "ccooooooooooooooooccoooocccccccc..cccccccccccccccooocooooccccccc",
+   "ccooooooooooooooooccoococccccccc..c....cccccccccccccoooooccccccc",
+   "ccooocoooooooocoooccoococccccccc\"\"c....cccccccccccccoooooccccccc",
+   "ccooooccccccccooooccoooocccccccc\"\"c....ccccccccccccccooocccccccc",
+   "ccooooccccccccooooccooooccc\"\"\"\"\"\"\"c........cccccccccc....ccccccc",
+   "ccooooccccccccooooccooooccc\"\"\"\"\"\"\"c.................c....ccccccc",
+   "ccooooccccccccooocoocoooccc\"\"\"\"\"\"\"c...cccc..........c....ccccccc",
+   "ccooooccccccccooooooooooccccc\"\"\"\"\"c...cccc..ccccc...ccc..ccccccc",
+   "ccooooccccccccooooooooooccccc\"\"\"\"\"cccccccc..c...c...ccc..ccccccc",
+   "ccoooco......ocoooooooooccccc\"\"\"\"\"cccccccc..c...c...ccc..ccccccc",
+   "ccoooocoooooocooooooooooccccc\"\"\"\"\"cccccccc..c...c...ccc..ccccccc",
+   "ccoooooooooooooooocoooooccccc..\"\"\"ccc.cccc..ccccccccccc..ccccccc",
+   "ccooooooooooooooooocccccccccc.........cccc.......cccccc..ccccccc",
+   "ccooocoocooocoocoocc...c..ccc.........cccc.......cccc....ccccccc",
    "ccccccoocccccooccccc...c..ccc............cccccccccccc....ccccccc",
    "cccccccccccccccccccc...c..ccccccc........................ccccccc",
    "cccccccccccccccccccccccc..ccccccc........................ccccccc",
@@ -384536,65 +384536,65 @@
     ],
     "map": {
      "art": [
-      "<........ccc^^^^^^^o...occcc..cccccccccccccccccccccccccccccccccc",
-      "<........ccc.......o...occcc..cccccccccccccccccccccccccccccccccc",
-      "cccc.....ccc.......o...occcc..cccccccccccccccccccccccccccccccccc",
+      "<........ccc^^^^^^^ooooocccc..cccccccccccccccccccccccccccccccccc",
+      "<........ccc.......ooooocccc..cccccccccccccccccccccccccccccccccc",
+      "cccc.....ccc.......ooooocccc..cccccccccccccccccccccccccccccccccc",
       "ccccccc............coooccccc..cc...ccccccccccccccccccccccccccccc",
       "ccccccc............................ccccccccccccccccccccccccccccc",
       "ccccccc........................N...ccccccccccccccccccccccccccccc",
       "cccccc.............................cccccccN.cccccccccccccccccccc",
       "cccccc....cc.......coooc\"\"\"..\"\"c...ccccccc..cccccccccccccccccccc",
-      "cccccc....cc.......o...o\"\"\"\"\"\"\"c...cccc..c..cccccccccccccccccccc",
-      "cccccc....cc.......o...o\"\"\"\"\"\"\"c...cccc.Xc..c.....XN.....ccccccc",
-      "cccccc....cc...N...o...o\"\"\"\"\"\"\"c...cccc..................>cccccc",
-      "ccccccccccc........o...o\".X\"\"\"\"c...cccc..................>cccccc",
-      "cccccc.............o...o\"..\"\"\"\"c...cccc..................>cccccc",
-      "cccccc.............o...o\"\"\"\"..\"c...cccc..c..c............ccccccc",
-      "ccccccccccc.....ccco...o\"\"\"\".N\"c......c..c..ccc...cccccccccccccc",
-      "cccccc.....c!cccccco...o\"\"\"\"\"\"\"c.....Xc..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
-      "cccccc........ccccco...o\"\"\"\"\"\"\"c......c..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
-      "cccccc........cooooc...occ...ccc......c..ccc...ccccccooooooooooo",
-      "cccccc........o........occ...ccc......c....\"\"\"\"\"\"\"Nccocc.cc.cc..",
-      "cccccc........o........occ...ccc......c....\"\"\"\"\"\"\"\"coocc.cc.cc..",
-      "ccccccc.....N.cooocooooccc...ccc......ccc...cccccccco...cooooooo",
-      "<............................X.c............X...cccoc...occccccc",
-      "<..............................c................cco.....occccccc",
-      "<..............................c................cco.....occccccc",
-      "ccccccc......Xcoooccccccccc..ccc................cco.....occccccc",
-      "ccccccc.......o...occcccccc..ccc................coc.....occccccc",
-      "ccccccc.......o...occ...c....cccc\"\"\"\"\"\"\"\"\"c.....o.......occccccc",
-      "ccccccc.......o...occ...c..N.cccc\"\"\"\"\"\"\"\"\"c.....o.......occccccc",
-      "ccccccc.......o...occ...c....cccc\"\"\"\"\"\"\"\"\"c.....o.......occccccc",
-      "ccccccc.......o...occ...c....cccc\"\"\"\"\"\"\"\"\"c...coc.......occccccc",
-      "ccccccccc.....o...occ..cccccccccc\"N\"\"\"\"\"\"\"ccooc.........occccccc",
-      "ccccccccc.....o...occ..cccccccccc\"\"\"\"\"\"\"\"\"co..........cocccccccc",
-      "ccccccccc.....ccc.occ...(...ccccccccccccccco........cocccccccccc",
-      "ccccccccc.....ccc.occ...(...cccccccccccccooc........o..ccccccccc",
-      "cccc..cccccccco..cocc...(...cccccccccccco.........coc..ccccccccc",
-      "cccc.....ccccco..cocccccc....ccccccccccco.........o....ccccccccc",
-      "cccc.....ccccco...coccccc....ccccccccccco.........o....ccccccccc",
-      "cccc........cccc....coooooooooocooooooooc.........o....ccccccccc",
-      "cccc.........ccc...............c..................o....ccccccccc",
-      "cccc.........cccc..............c..................coc..ccccccccc",
-      "ccccc........ccccoooc..........c....................o..ccccccccc",
-      "cccccccccccccccccccco..cooooooocoooooooooooooc......cocccccccccc",
-      "cccccccccccccccccccco..occccccccccccccccccccco........cocccccccc",
-      "cccoooooooooooooooccoc.occccccccccccccccccccco..........occccccc",
-      "cco..............occoc.occcccccc..ccccccccccccoooc......occccccc",
-      "cco..............occo..occcccccc........ccccccccccooc...occccccc",
-      "cco..............occo.cocccccccc........cccccccccccco...occccccc",
-      "cco..cooooooooc..occo.cocccccccc\"\"......cccccccccccco...occccccc",
-      "cco..occcccccco..occo..occcccccc\"\"...........ccccccccooocccccccc",
-      "cco..occcccccco..occo..occc\"\"\"\"\"\"\"..N....................ccccccc",
-      "cco..occcccccco..occo..occc\"\"\"\"\"\"\".......................ccccccc",
-      "cco..occcccccco..cooc..occc\"\"\"\"\"\"\"............N..........ccccccc",
-      "cco..occcccccco........occccc\"\"\"\"\".....cc............cc..ccccccc",
-      "cco..occcccccco........occccc\"\"\"\"\".....cc....N.......cc..ccccccc",
-      "cco..co......oc........occccc\"\"\"\"\"ccccccc..N...N.....cc..ccccccc",
-      "cco...cooooooc.........occccc\"\"\"\"\"ccccccc............cc..ccccccc",
-      "cco...............coooocccccc..\"\"\"ccc.ccc............cc..ccccccc",
-      "cco...............o.....ccccc.........ccc.........ccccc..ccccccc",
-      "ccoooc..coooc..cooc.......ccc.........ccc.........ccc....ccccccc",
+      "cccccc....cc.......ooooo\"\"\"\"\"\"\"c...cccc..c..cccccccccccccccccccc",
+      "cccccc....cc.......ooooo\"\"\"\"\"\"\"c...cccc.Xc..c.....XN.....ccccccc",
+      "cccccc....cc...N...ooooo\"\"\"\"\"\"\"c...cccc..................>cccccc",
+      "cccccc_____........ooooo\".X\"\"\"\"c...cccc..................>cccccc",
+      "cccccc.............ooooo\"..\"\"\"\"c...cccc..................>cccccc",
+      "cccccc.............ooooo\"\"\"\"..\"c...cccc..c..c............ccccccc",
+      "cccccc_____.....cccooooo\"\"\"\".N\"c......c..c..ccc...cccccccccccccc",
+      "cccccc.....c!ccccccooooo\"\"\"\"\"\"\"c.....Xc..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
+      "cccccc........cccccooooo\"\"\"\"\"\"\"c......c..c\"\"\"\"\"\"\"\"\"ccccccccccccc",
+      "cccccc........coooocoooocc...ccc......c..ccc...ccccccooooooooooo",
+      "cccccc........oooooooooocc...ccc......c....\"\"\"\"\"\"\"Nccoccoccoccoo",
+      "cccccc........oooooooooocc...ccc......c....\"\"\"\"\"\"\"\"cooccoccoccoo",
+      "ccccccc.....N.cooocooooccc...ccc......ccc...ccccccccoooocooooooo",
+      "<............................X.c............X...cccocooooccccccc",
+      "<..............................c................ccoooooooccccccc",
+      "<..............................c................ccoooooooccccccc",
+      "ccccccc......Xcoooccccccccc..ccc................ccoooooooccccccc",
+      "ccccccc.......ooooocccccccc..ccc................cocooooooccccccc",
+      "ccccccc.......ooooocc...c....cccc\"\"\"\"\"\"\"\"\"c.....oooooooooccccccc",
+      "ccccccc.......ooooocc...c..N.cccc\"\"\"\"\"\"\"\"\"c.....oooooooooccccccc",
+      "ccccccc.......ooooocc...c....cccc\"\"\"\"\"\"\"\"\"c.....oooooooooccccccc",
+      "ccccccc.......ooooocc...c....cccc\"\"\"\"\"\"\"\"\"c...cocooooooooccccccc",
+      "ccccccccc.....ooooocc..cccccccccc\"N\"\"\"\"\"\"\"ccoocooooooooooccccccc",
+      "ccccccccc.....ooooocc..cccccccccc\"\"\"\"\"\"\"\"\"cooooooooooococccccccc",
+      "ccccccccc.....cccoocc...(...cccccccccccccccooooooooococccccccccc",
+      "ccccccccc.....cccoocc...(...cccccccccccccoocooooooooo..ccccccccc",
+      "cccc..ccccccccooococc...(...ccccccccccccoooooooooococ..ccccccccc",
+      "cccc.....cccccooococccccc....cccccccccccooooooooooo....ccccccccc",
+      "cccc.....cccccoooococcccc....cccccccccccooooooooooo....ccccccccc",
+      "cccc........ccccoooocoooooooooocoooooooocoooooooooo....ccccccccc",
+      "cccc.........cccooooooooooooooo$ooooooooooooooooooo....ccccccccc",
+      "cccc.........ccccoooooooooooooo$oooooooooooooooooococ..ccccccccc",
+      "ccccc........ccccooocoooooooooo$ooooooooooooooooooooo..ccccccccc",
+      "ccccccccccccccccccccooocooooooocooooooooooooocoooooococccccccccc",
+      "ccccccccccccccccccccoooocccccccccccccccccccccooooooooococccccccc",
+      "cccoooooooooooooooccocoocccccccccccccccccccccooooooooooooccccccc",
+      "ccooooooooooooooooccocoocccccccc..ccccccccccccooocoooooooccccccc",
+      "ccooooooooooooooooccoooocccccccc........ccccccccccoocooooccccccc",
+      "ccooooooooooooooooccoococccccccc........ccccccccccccoooooccccccc",
+      "ccooocoooooooocoooccoococccccccc\"\"......ccccccccccccoooooccccccc",
+      "ccooooccccccccooooccoooocccccccc\"\"...........ccccccccooocccccccc",
+      "ccooooccccccccooooccooooccc\"\"\"\"\"\"\"..N....................ccccccc",
+      "ccooooccccccccooooccooooccc\"\"\"\"\"\"\".......................ccccccc",
+      "ccooooccccccccooocoocoooccc\"\"\"\"\"\"\"............N..........ccccccc",
+      "ccooooccccccccooooooooooccccc\"\"\"\"\".....cc............cc..ccccccc",
+      "ccooooccccccccooooooooooccccc\"\"\"\"\".....cc....N.......cc..ccccccc",
+      "ccoooco......ocoooooooooccccc\"\"\"\"\"ccccccc..N...N.....cc..ccccccc",
+      "ccoooocoooooocooooooooooccccc\"\"\"\"\"ccccccc............cc..ccccccc",
+      "ccoooooooooooooooocoooocccccc..\"\"\"ccc.ccc............cc..ccccccc",
+      "ccooooooooooooooooo.....ccccc.........ccc.........ccccc..ccccccc",
+      "ccooocoocooocoocooc.......ccc.........ccc.........ccc....ccccccc",
       "ccccccoocccccoocccc..N....ccc.....................ccc....ccccccc",
       "ccccccccccccccccccc......Nccccccc........................ccccccc",
       "ccccccccccccccccccc.......ccccccc........................ccccccc",
@@ -389895,15 +389895,15 @@
    "cccccccccccccccccccccccccccccccc",
    "ccccccccccccc^^^cccccccocccccccc",
    "ccccccccccc......!.ccccocccccccc",
-   "ccccccccccc........o.ccocccccccc",
+   "ccccccccccc........ooccocccccccc",
    "ccccccccccc........ccccocccccccc",
    "ccccccccccc........ccccocccccccc",
-   "cccccccccccc.....cco.ccocccccccc",
-   "cccccccccccc.....cco.ccocccccccc",
-   "cccccccccccc.....cco...occcccccc",
-   "cccccccccccc.....cco...occcccccc",
-   "cccccccccccc.....cco...occcccccc",
-   "ccccccccccccvvvvvcco...occcccccc"
+   "cccccccccccc.....ccooccocccccccc",
+   "cccccccccccc.....ccooccocccccccc",
+   "cccccccccccc.....ccooooocccccccc",
+   "cccccccccccc.....ccooooocccccccc",
+   "cccccccccccc.....ccooooocccccccc",
+   "ccccccccccccvvvvvccooooocccccccc"
   ],
   "exits": {
    "v": "UNOVA_ROUTE_20",
@@ -391076,50 +391076,50 @@
    "cccccccccccccccccc.......\"\"\"\"cc\"\"\".........ccccccccooccccccccccc",
    "cccccccccccccccccc...........\"\"\"\"cccccccc.....\"\"\"\"\"ccccccc....cc",
    "cccccccccccccccccc..cc.......\"\"\"\"cccccccc....\"\"\"\"\"\"ccccccc....cc",
-   "cccccccccccccccccc..cc.\"ccc..cc....\"\"\"\"cc..cc\"\"\"\"\"\"\"\"\"o..o....cc",
-   "cccccccccccccccccc..cc\"\"ccc..cc....\"\"\"\"cc..cc\"\"\"\"\"\"\"\"\"o..o....cc",
-   "cccccccccccccccccc..cc\"\"ccc..cc..X.\"\"\"\"cc\"\"cc\"\"N.\"\"\"\"\"o..coooccc",
-   "cccccccccccccccccc..cc\"\"ccc..cc....\"\"\"\"cc\"\"cc\"\"..\"\"\"\"\"o...o..occ",
-   "cccccccccccccccccc..cc\"\"ccc..cccc.\"\"\"cccc\"\"\"\"\"\"\"cccccco......occ",
-   "cccccccccccccccccc..cc\"\"ccc..cccc.\"\"\"cccc\"\"\"\"\"\"\"cccccccooc...occ",
-   "cccccccccccccccccc..cc\"\"c....cccc\"\"cccccc..\"\"\"\"\"cc.NDcccco...occ",
-   "cccccccccccccccccc..cc\"\"c....cccc\"\"cccccc...\"\"\"\"cc...cccco...occ",
-   "cccccccccccccccccc..cc.\"ccccccccc..cccccc...cc\"\"cc...cccco...occ",
-   "cccccccccccccccccc......c....cccc..ccccccccccc\"\"cc...cccco...occ",
-   "cccccccccccccccccc......ccc\"\"ccN...cccc.....cc.\"cc...cccco...occ",
-   "ccccccccccccccccccccc...ccc\"\"cc....cccc.....cc..cc...cccco...occ",
-   "ccccccccccccccccccccc...(..\"\"cccccccc\"\"\"..\"\"cc\"......cccco...occ",
-   "ccccccccccccccccccccc...(..\"\"cccccccc\"\"..\"\"\"cc\"\"..\"\"\"cccco...occ",
-   "ccccccccccccccccccccc...(...............\"\"cccc\"\"\"\"\"\"\"cccco...occ",
+   "cccccccccccccccccc..cc.\"ccc..cc....\"\"\"\"cc..cc\"\"\"\"\"\"\"\"\"oooo....cc",
+   "cccccccccccccccccc..cc\"\"ccc..cc....\"\"\"\"cc..cc\"\"\"\"\"\"\"\"\"oooo....cc",
+   "cccccccccccccccccc..cc\"\"ccc..cc..X.\"\"\"\"cc\"\"cc\"\"N.\"\"\"\"\"ooocoooccc",
+   "cccccccccccccccccc..cc\"\"ccc..cc....\"\"\"\"cc\"\"cc\"\"..\"\"\"\"\"oooooooocc",
+   "cccccccccccccccccc..cc\"\"ccc..cccc.\"\"\"cccc\"\"\"\"\"\"\"ccccccoooooooocc",
+   "cccccccccccccccccc..cc\"\"ccc..cccc.\"\"\"cccc\"\"\"\"\"\"\"cccccccoocoooocc",
+   "cccccccccccccccccc..cc\"\"c....cccc\"\"cccccc..\"\"\"\"\"cc.NDccccooooocc",
+   "cccccccccccccccccc..cc\"\"c....cccc\"\"cccccc...\"\"\"\"cc...ccccooooocc",
+   "cccccccccccccccccc..cc.\"c____cccc..cccccc...cc\"\"cc...ccccooooocc",
+   "cccccccccccccccccc......c....cccc..cccccc___cc\"\"cc...ccccooooocc",
+   "cccccccccccccccccc......ccc\"\"ccN...cccc.....cc.\"cc...ccccooooocc",
+   "ccccccccccccccccccccc...ccc\"\"cc....cccc.....cc..cc...ccccooooocc",
+   "ccccccccccccccccccccc...(..\"\"cccccccc\"\"\"..\"\"cc\"......ccccooooocc",
+   "ccccccccccccccccccccc...(..\"\"cccccccc\"\"..\"\"\"cc\"\"..\"\"\"ccccooooocc",
+   "ccccccccccccccccccccc...(...............\"\"cccc\"\"\"\"\"\"\"ccccooooocc",
    "ccccccccccccccccccccc...(...............\"\"cccc\"\"\"\"\"\"\"ccccocccocc",
    "ccccccccccccccccccccc...cccccccc\"\"\"ccccccccccccccccccccooccccocc",
-   "ccccccccccccccccccccc...cccccccc\"\"\"cccccccccccccccccccco.....occ",
-   "ccccccccccccccccccccc...cccccccc\"\"\"cccccccccccccccccccco.....occ",
-   "ccccccccccccccccccccc...cccccccc...cccccccccccccccccccco.....occ",
-   "ccccccccccccccccccccc...ccccccccccccccccccccccccccccccco...coccc",
-   "ccccccccccccccccccccc...cccccccc...cccccccccccccccccccco...occcc",
-   "ccccc.........\"\"ccccc...cccccccc.....ccccccccccccccc...o...occcc",
-   "ccccc.........\"\"cN.............c.......................o...occcc",
-   "ccccc...........c..............c.......................o...occcc",
-   "ccccc...........c..............c.......................o...occcc",
-   "ccccc....\"\"....................c.......................o...occcc",
-   "ccccc....\"\"....................c.......................o...occcc",
-   "ccccc.........\"\"c......cc......ccccccccccc.............o...occcc",
-   "ccccc......N..\"\"c......cc..........ccccc.c.............o...occcc",
-   "ccccc.........\"\"cccc.....N.........ccccc.c.............o...occcc",
-   "ccccc\"\".......\"\"cccc...................................o...occcc",
-   "ccccc\"\".......\"\"cccccccccccccccc.......................o...occcc",
-   "ccccccc.......\"\"\"\"\"\"\"\"\"\"\"\"\"\".ccccc.......c.............o...occcc",
-   "ccccccc......X.\"\"\"\"\"\"\"\"\"\"\"..Nccccc.......c.............o...occcc",
-   "ccccccc........\"\"\"\".cccccccccccccccccccccc.............o...occcc",
-   "ccccccc........\"\"\"\".c....ccccc.ccc\"\"...................o...occcc",
-   "ccccc....................ccccc.ccc\"\"\".........N........o...occcc",
-   "ccccc..........................c..\"\"\"\"\"\".....N.N.......o...occcc",
-   "ccccc.....................N....c...\"\"\"\"\"\"\".........coooc...occcc",
-   "ccccc...............c..........c...\"\"\"\"\"\"\"..cvvvc..o.......occcc",
-   "ccccccc..\"\"\"\"\"\"\"\"\"..c...N......ccc\"\"\".......ccccc..o.......occcc",
-   "ccccccc..\"\"N\"\"\"\"\"\"\"\"c..........ccc\"\"........ccccc..ccc.coooccccc",
-   "ccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"ccc........ccccccccccccccccccccocc.occcccccc",
+   "ccccccccccccccccccccc...cccccccc\"\"\"ccccccccccccccccccccooooooocc",
+   "ccccccccccccccccccccc...cccccccc\"\"\"ccccccccccccccccccccooooooocc",
+   "ccccccccccccccccccccc...cccccccc...ccccccccccccccccccccooooooocc",
+   "ccccccccccccccccccccc...cccccccc___ccccccccccccccccccccoooococcc",
+   "ccccccccccccccccccccc...cccccccc...ccccccccccccccccccccooooocccc",
+   "ccccc.........\"\"ccccc...cccccccc.....ccccccccccccccc...ooooocccc",
+   "ccccc.........\"\"cN.............c.......................ooooocccc",
+   "ccccc...........c..............c.......................ooooocccc",
+   "ccccc...........c..............c.......................ooooocccc",
+   "ccccc....\"\"....................c.......................ooooocccc",
+   "ccccc....\"\"....................c.......................ooooocccc",
+   "ccccc.........\"\"c......cc......ccccccccccc.............ooooocccc",
+   "ccccc......N..\"\"c......cc..........ccccc.c.............ooooocccc",
+   "ccccc.........\"\"cccc.....N.........ccccc.c.............ooooocccc",
+   "ccccc\"\".......\"\"cccc...................................ooooocccc",
+   "ccccc\"\".......\"\"cccccccccccccccc.......................ooooocccc",
+   "ccccccc.......\"\"\"\"\"\"\"\"\"\"\"\"\"\".ccccc.......c.............ooooocccc",
+   "ccccccc......X.\"\"\"\"\"\"\"\"\"\"\"..Nccccc.......c.............ooooocccc",
+   "ccccccc........\"\"\"\".cccccccccccccccccccccc.............ooooocccc",
+   "ccccccc........\"\"\"\".c....ccccc.ccc\"\"...................ooooocccc",
+   "ccccc....................ccccc.ccc\"\"\".........N........ooooocccc",
+   "ccccc..........................c..\"\"\"\"\"\".....N.N.......ooooocccc",
+   "ccccc.....................N....c...\"\"\"\"\"\"\".........cooocoooocccc",
+   "ccccc...............c..........c...\"\"\"\"\"\"\"..cvvvc..ooooooooocccc",
+   "ccccccc..\"\"\"\"\"\"\"\"\"..c...N......ccc\"\"\".......ccccc..ooooooooocccc",
+   "ccccccc..\"\"N\"\"\"\"\"\"\"\"c..........ccc\"\"........ccccc..cccocoooccccc",
+   "ccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"ccc........ccccccccccccccccccccoccoocccccccc",
    "ccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"ccc........ccccccccccccccccccccccccccccccccc",
    "cccccccccccccccc\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -399510,32 +399510,32 @@
    "ccccccccc.....cccccccc.......cccccccccc...cccccccccccccccccccccc",
    "ccccccccccccc.cccccccc.......cccccccccc....ccccccccccccccccccccc",
    "cccccccccc....cccccccc.......cccccccccc....ccccccccccccccccccccc",
-   "cccccccccccccccccccccc.......ccccccccccNN..ccccccccccccccccccccc",
-   "cccccccccc...ccccccccc.......cccccccccc....ccccccccccccccccccccc",
-   "cccccccccc...cc.cBDBc........ccCDCccccc......N.ccccccccccccccccc",
-   "cc...c!ccc...cc................................ccccccccccccccccc",
+   "ccccccccccoooccccccccc.......ccccccccccNN..ccccccccccccccccccccc",
+   "cccccccccooooocccccccc.......cccccccccc....ccccccccccccccccccccc",
+   "cccccccccoooooc.cBDBc........ccCDCccccc......N.ccccccccccccccccc",
+   "cc...c!cccccccc................................ccccccccccccccccc",
    "ED........;;;..................................ccccccccccccccccc",
    "cc........;;;..................................ccccccccccccccccc",
    "cc........;;;.............N....................ccccccccccccccccc",
-   "cccccccccc...cccc...cccccccc.cccccccccccccc....ccccccccccccccccc",
-   "ccc......c...c...|||..c....c......N............ccccccccccccccccc",
-   "cccccccccc...cccc...ccc....ccccccccccccccccc...ccccccccccccccccc",
-   "ccccccccccc......|||............ccccccc....c...ccccccccccccccccc",
-   "ccccccccccc......|||............cccccccc...c...ccccccccccccccccc",
-   "ccccccccccc......||N............cccccccc...c..Nccccccccccccccccc",
-   "ccccccccccc......|||............ccccccc....c...ccccccccccccccccc",
-   "ccccccccccccccccc...ccc....ccccccccccccccccc...ccccccccccccccccc",
-   "cc...............|||..c....c...................ccccccccccccccccc",
-   "cc.cccccccccccccc...c.c....c.ccccccccccccccc...ccccccocccccccccc",
-   "cc.cccccccccccccc...c.c....c.ccccccccccccccc...ccccccocccccccccc",
-   "cc.ccccccccccccc....c.c....c.ccccccccccccccc...ccccccocccccccccc",
-   "cc.c.ccccccccccc....c.c....c.ccccccccccccccc...ccccccocccccccccc",
-   "cc.c.ccccccccccc....c.c....c.ccccccccccccccc...ccccccocccccccccc",
-   "cc.c.ccccccccccc....c.c....c.ccccccFDFcccccc...ccccccoooocccccoo",
-   "cc.c.cccGDGccccc....c.c....c.cccHDH!.ccccccc...ccIDIcccccccccccc",
-   "cc.c................c.c....c.c.................N..N...........NN",
-   "cc.c.................;.;;;;.;....................N..............",
-   "ccvc.............vvv.;.;;;;.;.......N.........N...N............."
+   "ccccccccccccccccc...cccccccc.cccccccccccccc....ccccccccccccccccc",
+   "ccc......ooooo...|||..oooooc......N............ccccccccccccccccc",
+   "ccccccccccooocooc|||cocooooccccccccccccccccc...ccccccccccccccccc",
+   "cccccccccccoooooc|||cooooooooooocccccccooooc...ccccccccccccccccc",
+   "cccccccccccoooooc|||coooooooooooccccccccoooc...ccccccccccccccccc",
+   "cccccccccccoooooc||Ncoooooooooooccccccccoooc..Nccccccccccccccccc",
+   "cccccccccccoooooc|||cooooooooooocccccccooooc...ccccccccccccccccc",
+   "ccccccccccooooooc|||cocoooocoooocccccccccccc...ccccccccccccccccc",
+   "cc...............|||..oooooo...................ccccccccccccccccc",
+   "cc.cccccccccccccc...c.oooooo.ccccccccccccccc...ccccccocccccccccc",
+   "cc.cccccccccccccc...c.oooooo.ccccccccccccccc...ccccccocccccccccc",
+   "cc.ccccccccccccc....c.oooooo.ccccccccccccccc...ccccccocccccccccc",
+   "cc.c.ccccccccccc....c.oooooo.ccccccccccccccc...ccccccocccccccccc",
+   "cc.c.ccccccccccc....c.oooooo.ccccccccccccccc...ccccccocccccccccc",
+   "cc.c.ccccccccccc....c.oooooo.ccccccFDFcccccc...ccccccoooocccccoo",
+   "cc.c.cccGDGccccc....c.oooooo.cccHDH!.ccccccc...ccIDIcccccccccccc",
+   "cc.c................c.cccccc.c.................N..N...........NN",
+   "cc.c.................;;;;;;;;....................N..............",
+   "ccvc.............vvv.;;;;;;;;.......N.........N...N............."
   ],
   "exits": {
    "v": "VIRBANK_COMPLEX_OUTSIDE"
@@ -406465,14 +406465,14 @@
  },
  "VIRBANK_COMPLEX_OUTSIDE": {
   "art": [
-   "cc^cccccccccccccc^^^c.c....c.ccc",
-   "cc.c..................c....c....",
-   "cc.cccccccccc..!......c....ccccc",
-   "cc.cccccccccc.........c........c",
-   "cc.cccccccccc.........c........c",
-   "cc.........Nc.........c........c",
-   "ccccccccccccc.........c........c",
-   "ccccccccccccc.........cccccccccc",
+   "cc^cccccccccccccc^^^c.cccccc.ccc",
+   "cc.c..................oooooo....",
+   "cc.cccccccccc..!......ooooocoooc",
+   "cc.cccccccccc.........oooooooooc",
+   "cc.cccccccccc.........oooooooooc",
+   "cc.........Nc.........oooooooooc",
+   "ccccccccccccc.........oooooooooc",
+   "ccccccccccccc.........cooooccccc",
    "ccccccccccccc..................c",
    "ccccccccccc..\"\"\".....N.........c",
    "ccccccccccc.\"N\"\"\"...\"ccccccccc.c",
@@ -407857,7 +407857,7 @@
    "ccccc\"\"\"|;.ccccc.....ccccc.\"\"\"\"c",
    "ccccc\"\"\"\"\".ccccc.....ccccc.\"\"\"\"c",
    "ccccc.\"\"\"\".ccccc.....ccccc.\"\"\"\"c",
-   "cccccccccc.................\"\"\"\"c",
+   "ccccc_____.................\"\"\"\"c",
    "ccccc......ccccc....\"\"|\"\"ccccc\"c",
    "ccccc..\"\"..ccccc....\"\"|\".ccccc\"c",
    "ccccc\"\"\"\"\".ccccc.X..\"\"|\".ccccc\"c",
@@ -465180,9 +465180,9 @@
    "c..ccocccccccccccccccccccccccccccccccccccccccccccccccccoooc..ccccccccccccccccccccccccccccccccccc",
    "c..ccocc.ccccccccccccccccccccccccccccccccccccccccccccccoooc..ccccccccccccccccccccccccccccccccccc",
    "c..ccocc.ccccccccccccccccccccccccccccccccccccccccccc..coooc..ccccccccccccccccccccccccccccccccccc",
+   "c..ccocc.cccccccoooccccccccccccccccccccccccccccccccc..coooc..ccccccccccccccccccccccccccccccccccc",
    "c..ccocc.ccccccccccccccccccccccccccccccccccccccccccc..coooc..ccccccccccccccccccccccccccccccccccc",
-   "c..ccocc.ccccccccccccccccccccccccccccccccccccccccccc..coooc..ccccccccccccccccccccccccccccccccccc",
-   "c..ccocc.ccDccccccccccccccccccDccccccccccccccccccccc..cooo...ccccccccccccccccccccccccccccccccccc",
+   "c..ccocc.ccDccccccccccccccccccDcccccccococcccccccccc..cooo...ccccccccccccccccccccccccccccccccccc",
    "c..ccocc............ccoccX..........Nccccc.....X......ccoo...ccccccccccccccccccccccccccccccccccc",
    "c..ccocc............ccocc.......cccccccccc............ccoo.c.ccccccccccccccccccccccccccccccccccc",
    "c..ccocc..ooooo............ooooooo...ccccc...ooooooo..ccoooc.ccccccccccccccccccccccccccccccccccc",
@@ -513941,20 +513941,20 @@
    "ccccccocccccccccccc.................ccccccc.......cccccccccccccc",
    "ccccccocccccccccccc.................ccccccc...N..ccccccccccccccc",
    "ccccccoooooc..............cccccc....ccccccc.......cccccccccccccc",
-   "cccccccccc.o..............cccccc....cccccccN......cccccccccccccc",
-   "cccccccccc.o..............cccccc....ccccccc.......cccccccccccccc",
-   "cccccccc...o....cccccc....cccccc....ccccccc.......cccccccccccccc",
-   "ccccccc....o....cccccc....cccccc....ccccccc.......cccccccccccccc",
-   "cccccc.....o....cccccc....cccccc..................cccccccccccccc",
-   "cccccc.....ocX.....cccc...cccccc..................cccccccccccccc",
-   "ccccc.......o......ccc...........................Xc!cccccccccccc",
-   "ccccc.......o......cccc.............cccccccN.........ccccccccccc",
-   "ccccc.......o......cccccc......X....ccccccc..........ccccccccccc",
-   "ccccc.......o......ccccccc..........ccccccc..........ccccccccccc",
-   "cccccc......ooocX..cccccc...........ccccccc..........ccccccccccc",
-   "cccccc.........o.....Ncccc..........ccccccc..........ccccccccccc",
-   "cccccc.........o......ccc...........ccccccc..........ccccccccccc",
-   "cccccc.........o....cccccc..........ccccccc..........ccccccccccc",
+   "ccccccccccoo..............cccccc....cccccccN......cccccccccccccc",
+   "ccccccccccoo..............cccccc....ccccccc.......cccccccccccccc",
+   "ccccccccoooo....cccccc....cccccc....ccccccc.......cccccccccccccc",
+   "cccccccooooo....cccccc....cccccc....ccccccc.......cccccccccccccc",
+   "ccccccoooooo....cccccc....cccccc..................cccccccccccccc",
+   "ccccccoooooocX.....cccc...cccccc..................cccccccccccccc",
+   "cccccoooooooo......ccc...........................Xc!cccccccccccc",
+   "cccccoooooooo......cccc.............cccccccN.........ccccccccccc",
+   "cccccoooooooo......cccccc......X....ccccccc..........ccccccccccc",
+   "cccccoooooooo......ccccccc..........ccccccc..........ccccccccccc",
+   "ccccccooooooooocX..cccccc...........ccccccc..........ccccccccccc",
+   "ccccccoooooooooo.....Ncccc..........ccccccc..........ccccccccccc",
+   "ccccccoooooooooo......ccc...........ccccccc..........ccccccccccc",
+   "ccccccoooooooooo....cccccc..........ccccccc..........ccccccccccc",
    "cccccooooooooooc....cccccccccccccccccccccccccvvvcccccccccccccccc",
    "cccccocccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccocccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -527198,20 +527198,20 @@
       "ccccccccccccccccccc........X......................cccccccccccccc",
       "ccccccccccccccccccc...........................X...cccccccccccccc",
       "ccccccccoooc......................................cccccccccccccc",
-      "cccccccccc.o......................................cccccccccccccc",
-      "cccccccccc.o......................................cccccccccccccc",
-      "cccccccc...o....cccccc....cccccc.ccccccc..........cccccccccccccc",
-      "ccccccc....o....cccccc....cccccc.ccccccc..........cccccccccccccc",
-      "cccccc.....o....cccccc....cccccc.ccccccc..........cccccccccccccc",
-      "cccccc.....ocX.....ccc....cccccc.cccc.............cccccccccccccc",
-      "ccccc.......o......ccc...........cccc.............c!cccccccccccc",
-      "ccccc.......o......ccc...........cccc......N.........ccccccccccc",
-      "ccccc.......o......cccccc........cccc................ccccccccccc",
-      "ccccc.......o......cccccc........cccc................ccccccccccc",
-      "cccccc......oooc...cccccc........cccc................ccccccccccc",
-      "cccccc.........oX....Nccc........cccc................ccccccccccc",
-      "cccccc.........o......ccc............................ccccccccccc",
-      "cccccc.........o....ccccc............................ccccccccccc",
+      "ccccccccccoo......................................cccccccccccccc",
+      "ccccccccccoo......................................cccccccccccccc",
+      "ccccccccoooo....cccccc....cccccc.ccccccc..........cccccccccccccc",
+      "cccccccooooo....cccccc....cccccc.ccccccc..........cccccccccccccc",
+      "ccccccoooooo....cccccc....cccccc.ccccccc..........cccccccccccccc",
+      "ccccccoooooocX.....ccc....cccccc.cccc.............cccccccccccccc",
+      "cccccoooooooo......ccc...........cccc.............c!cccccccccccc",
+      "cccccoooooooo......ccc...........cccc......N.........ccccccccccc",
+      "cccccoooooooo......cccccc........cccc................ccccccccccc",
+      "cccccoooooooo......cccccc........cccc................ccccccccccc",
+      "ccccccoooooooooc...cccccc........cccc................ccccccccccc",
+      "ccccccooooooooooX....Nccc........cccc................ccccccccccc",
+      "ccccccoooooooooo......ccc............................ccccccccccc",
+      "ccccccoooooooooo....ccccc............................ccccccccccc",
       "cccccooooooooooc....cccccccccccccccccccccccccvvvcccccccccccccccc",
       "cccccoccccccccccccccccccc.......cccccccccccccccccccccccccccccccc",
       "cccccocccccccccccccccccccccccc..cccccccccccccccccccccccccccccccc",
@@ -563057,7 +563057,7 @@
        "rewards": {
         "balls": 4
        },
-       "sprite": "subway_boss.png",
+       "sprite": "b2_ingo.png",
        "team": [
         525
        ],
@@ -563141,7 +563141,7 @@
        "rewards": {
         "balls": 4
        },
-       "sprite": "subway_boss.png",
+       "sprite": "b2_ingo.png",
        "team": [
         525
        ],
@@ -570032,7 +570032,7 @@
      "ccccccccc<.......................................ccccccccccccc.................ccccccccccccccccc",
      "ccccccccc<.......................................ccccccccccccc.....N........N..ccccccccccccccccc",
      "ccccccccc<.......................................ccccccccccccc.................ccccccccccccccccc",
-     "ccccccccc<.....................................................................ccccccccccccccccc",
+     "ccccccccc<............................................N........................ccccccccccccccccc",
      "cccccccccc.....................................................................ccccccccccccccccc",
      "cccccccccccccccccccccc.....................N...................................ccccccccccccccccc",
      "cccccccccccccccccccccc..ccccc.ccc.....N..........................................ccccc.Ncccccccc",
@@ -570040,7 +570040,7 @@
      "cccccccccccccccccccccc..ccccc.ccc................................................ccccc..cccccccc",
      "cccccccccccccccccccccc..ccccc.cccccccccccccccccc.................................ccccc..cccccccc",
      "cccccccccccccccccccccc..ccccc.cccccccccccccccccc..ccc...ccc.......................ccc...cccccccc",
-     "cccccccccccccccccccccc........cccccccccccccccccc..ccc...ccc..ccc..ccc..ccc..............cccccccc",
+     "cccccccccccccccccccccc.N......cccccccccccccccccc..ccc...ccc..ccc..ccc..ccc..............cccccccc",
      "cccccccccccccccccccccc........cccccccccccccccccc..ccc...ccc..ccc..ccc..ccc.....ccc..N..ccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc.............ccc..ccc..ccc.....ccc.N.N.ccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccc......cccccccc",
@@ -573447,6 +573447,568 @@
       },
       "_look": "sheet:b2_c27.png"
      },
+     [
+      {
+       "text": "Lass Persephone",
+       "action": "EVENT",
+       "_look": "sheet:b2_c15.png",
+       "condition": [
+        "season:SPRING",
+        "world:unova_story:male_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_persephone_1",
+          "lines": [
+           "Lass Persephone: Ah... achoo! Spring! ...Hey! You were looking at me! When eyes meet, it's a battle!"
+          ],
+          "battle": {
+           "class": "LASS",
+           "levels": [
+            24
+           ],
+           "name": "Lass Persephone",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_lass.png",
+           "team": [
+            510
+           ],
+           "dialogue": {
+            "player_won": [
+             "Persephone: Whaa! I lost?! Fine. Let's ride this rickety old Ferris wheel. First one scared loses!"
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_persephone_2",
+          "requires": [
+           "b2_ferris_persephone_1",
+           "world:unova_story:not_today:b2_ferris_persephone_1"
+          ],
+          "lines": [
+           "Persephone: Achoo! You again?! Got a crush on me or something? You owe me a rematch!"
+          ],
+          "battle": {
+           "class": "LASS",
+           "levels": [
+            24
+           ],
+           "name": "Lass Persephone",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_lass.png",
+           "team": [
+            510
+           ],
+           "dialogue": {
+            "player_won": [
+             "Persephone: Not again... Fine, you win. You're the Feral Liepard of Nimbasa now."
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      },
+      {
+       "text": "Nursery Aide June",
+       "action": "EVENT",
+       "_look": "sheet:b2_c23.png",
+       "condition": [
+        "season:SUMMER",
+        "world:unova_story:male_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_june_1",
+          "lines": [
+           "Nursery Aide June: Phew, it's hot... Oh, are you lost? No? A battle, then? I'm better at caring for Pokemon than battling..."
+          ],
+          "battle": {
+           "class": "NURSERY_AIDE",
+           "levels": [
+            24
+           ],
+           "name": "Nursery Aide June",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "nursery_aide.png",
+           "team": [
+            541
+           ],
+           "dialogue": {
+            "player_won": [
+             "June: Your Pokemon are so strong. I can tell you raise them with love."
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_june_2",
+          "requires": [
+           "b2_ferris_june_1",
+           "world:unova_story:not_today:b2_ferris_june_1"
+          ],
+          "lines": [
+           "June: Hi again! Do you have time? Let's play a little first. My Pokemon's in great shape today!"
+          ],
+          "battle": {
+           "class": "NURSERY_AIDE",
+           "levels": [
+            24
+           ],
+           "name": "Nursery Aide June",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "nursery_aide.png",
+           "team": [
+            541
+           ],
+           "dialogue": {
+            "player_won": [
+             "June: That was fun! I'd love to just play like this and quit my job..."
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      },
+      {
+       "text": "Clerk Trisha",
+       "action": "EVENT",
+       "_look": "sheet:b2_c53.png",
+       "condition": [
+        "season:AUTUMN",
+        "world:unova_story:male_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_trisha_1",
+          "lines": [
+           "Clerk Trisha: The wind's turned cold... Oh! Do you want to battle, perhaps?"
+          ],
+          "battle": {
+           "class": "CLERK_F",
+           "levels": [
+            24
+           ],
+           "name": "Clerk F Trisha",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "clerk_f.png",
+           "team": [
+            572
+           ],
+           "dialogue": {
+            "player_won": [
+             "Trisha: That was over in an instant. I'm not very good. Have you ridden this Ferris wheel? Come ride with me!"
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_trisha_2",
+          "requires": [
+           "b2_ferris_trisha_1",
+           "world:unova_story:not_today:b2_ferris_trisha_1"
+          ],
+          "lines": [
+           "Trisha: Why hello again! Shall we battle? Gently, please!"
+          ],
+          "battle": {
+           "class": "CLERK_F",
+           "levels": [
+            24
+           ],
+           "name": "Clerk F Trisha",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "clerk_f.png",
+           "team": [
+            572
+           ],
+           "dialogue": {
+            "player_won": [
+             "Trisha: I can't keep up! Stay a little longer with me."
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      },
+      {
+       "text": "Beauty December",
+       "action": "EVENT",
+       "_look": "sheet:b2_c303.png",
+       "condition": [
+        "season:WINTER",
+        "world:unova_story:male_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_december_1",
+          "lines": [
+           "Beauty December: Who are you? Did they send a kid to take me back to the manor? Fine! Battle me!"
+          ],
+          "battle": {
+           "class": "BEAUTY",
+           "levels": [
+            24
+           ],
+           "name": "Beauty December",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "beauty.png",
+           "team": [
+            180
+           ],
+           "dialogue": {
+            "player_won": [
+             "December: You just wanted to battle? Then let's ride the Ferris wheel. Hurry!"
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_december_2",
+          "requires": [
+           "b2_ferris_december_1",
+           "world:unova_story:not_today:b2_ferris_december_1"
+          ],
+          "lines": [
+           "December: You again? Help me out: they're getting tougher. Battle me!"
+          ],
+          "battle": {
+           "class": "BEAUTY",
+           "levels": [
+            24
+           ],
+           "name": "Beauty December",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "beauty.png",
+           "team": [
+            180
+           ],
+           "dialogue": {
+            "player_won": [
+             "December: You're as good as ever. Come, let's ride. Even they can't reach us up there."
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      },
+      {
+       "text": "Dancer Dirk",
+       "action": "EVENT",
+       "_look": "sheet:b2_c55.png",
+       "condition": [
+        "season:SPRING",
+        "world:unova_story:female_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_dirk_1",
+          "lines": [
+           "Dancer Dirk: Yawn... A fan of mine? It's my first day off in ages... Well, I guess one battle!"
+          ],
+          "battle": {
+           "class": "DANCER",
+           "levels": [
+            24
+           ],
+           "name": "Dancer Dirk",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_dancer.png",
+           "team": [
+            554
+           ],
+           "dialogue": {
+            "player_won": [
+             "Dirk: You rocked the house! Dirk and the Darumaka still have work to do. Let's ride the Ferris wheel!"
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_dirk_2",
+          "requires": [
+           "b2_ferris_dirk_1",
+           "world:unova_story:not_today:b2_ferris_dirk_1"
+          ],
+          "lines": [
+           "Dirk: Hey! I have a show later, but I thought you might come by. Battle me first?"
+          ],
+          "battle": {
+           "class": "DANCER",
+           "levels": [
+            24
+           ],
+           "name": "Dancer Dirk",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_dancer.png",
+           "team": [
+            554
+           ],
+           "dialogue": {
+            "player_won": [
+             "Dirk: You're tough! Are you aiming to be Champion? ...Let's ride! The view's so mellow."
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      },
+      {
+       "text": "Clerk Augustin",
+       "action": "EVENT",
+       "_look": "sheet:b2_c52.png",
+       "condition": [
+        "season:SUMMER",
+        "world:unova_story:female_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_augustin_1",
+          "lines": [
+           "Clerk Augustin: It's sooo hot! A battle or a ride? I don't mind either, but I'm not very tough."
+          ],
+          "battle": {
+           "class": "CLERK_M",
+           "levels": [
+            24
+           ],
+           "name": "Clerk M Augustin",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_clerk_m.png",
+           "team": [
+            520
+           ],
+           "dialogue": {
+            "player_won": [
+             "Augustin: See? Not very good. Work keeps me busy. As thanks, let me treat you to a ride."
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_augustin_2",
+          "requires": [
+           "b2_ferris_augustin_1",
+           "world:unova_story:not_today:b2_ferris_augustin_1"
+          ],
+          "lines": [
+           "Augustin: Hey! I was waiting for you. Battle me again, then ride with me? You need two people to ride."
+          ],
+          "battle": {
+           "class": "CLERK_M",
+           "levels": [
+            24
+           ],
+           "name": "Clerk M Augustin",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_clerk_m.png",
+           "team": [
+            520
+           ],
+           "dialogue": {
+            "player_won": [
+             "Augustin: I thought I might lose. That's OK. Shall we ride?"
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      },
+      {
+       "text": "Hiker Andy",
+       "action": "EVENT",
+       "_look": "sheet:b2_c64.png",
+       "condition": [
+        "season:AUTUMN",
+        "world:unova_story:female_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_andy_1",
+          "lines": [
+           "Hiker Andy: My heart falls with every leaf... What, a battle? I accept. Let's get this over with."
+          ],
+          "battle": {
+           "class": "HIKER",
+           "levels": [
+            24
+           ],
+           "name": "Hiker Andy",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_hiker.png",
+           "team": [
+            525
+           ],
+           "dialogue": {
+            "player_won": [
+             "Andy: Every battle reminds me of that summer... Will you listen? Come here with me."
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_andy_2",
+          "requires": [
+           "b2_ferris_andy_1",
+           "world:unova_story:not_today:b2_ferris_andy_1"
+          ],
+          "lines": [
+           "Andy: Oh... it's you. My heart's still waiting for rescue. Could you spare a moment? A battle first..."
+          ],
+          "battle": {
+           "class": "HIKER",
+           "levels": [
+            24
+           ],
+           "name": "Hiker Andy",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_hiker.png",
+           "team": [
+            525
+           ],
+           "dialogue": {
+            "player_won": [
+             "Andy: I can't concentrate! Why can't I forget that summer? Stay with me a little longer..."
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      },
+      {
+       "text": "Guitarist January",
+       "action": "EVENT",
+       "_look": "sheet:b2_c295.png",
+       "condition": [
+        "season:WINTER",
+        "world:unova_story:female_player"
+       ],
+       "event": {
+        "stages": [
+         {
+          "flag": "b2_ferris_january_1",
+          "lines": [
+           "Guitarist January: You! Cold-looking clothes in the middle of winter? That's rock 'n' roll! Let's prove who rocks hardest!"
+          ],
+          "battle": {
+           "class": "GUITARIST",
+           "levels": [
+            24
+           ],
+           "name": "Guitarist January",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_guitarist.png",
+           "team": [
+            544
+           ],
+           "dialogue": {
+            "player_won": [
+             "January: Way to rock! For that funky battle I'll sing you a song, but not here. Roll on over this way!"
+            ]
+           }
+          }
+         },
+         {
+          "flag": "b2_ferris_january_2",
+          "requires": [
+           "b2_ferris_january_1",
+           "world:unova_story:not_today:b2_ferris_january_1"
+          ],
+          "lines": [
+           "January: Hey! It's... no. Excuse me. Would you battle me?"
+          ],
+          "battle": {
+           "class": "GUITARIST",
+           "levels": [
+            24
+           ],
+           "name": "Guitarist January",
+           "rewards": {
+            "balls": 2
+           },
+           "sprite": "b2_guitarist.png",
+           "team": [
+            544
+           ],
+           "dialogue": {
+            "player_won": [
+             "January: I knew you rocked. Please listen to my song again!"
+            ]
+           }
+          }
+         }
+        ],
+        "done": [
+         "Thanks for riding with me!"
+        ]
+       }
+      }
+     ],
      {
       "text": "Boy by the rides",
       "action": "EVENT",
@@ -573481,6 +574043,24 @@
        "flag": "b2_park_parlyz"
       },
       "_look": "sheet:b2_item_ball.png"
+     },
+     {
+      "text": "Something dropped",
+      "action": "EVENT",
+      "flag_condition": "not b2_dropped_item",
+      "_look": "sheet:b2_item_ball.png",
+      "no_tag": true,
+      "event": {
+       "scene": "xtransceiver",
+       "caller": "???",
+       "flag": "b2_dropped_item",
+       "call": [
+        "(Someone's dropped an Xtransceiver here... and it's ringing! You pick it up.)",
+        "???: Hello? Oh! You found my Xtransceiver? Thank goodness!",
+        "???: I'm so sorry, I'm swamped at work and can't come for it. Could you hold on to it for me?",
+        "???: I'll call you on it now and then. ...Thank you! Talk soon!"
+       ]
+      }
      },
      {
       "text": "Audino",
@@ -573525,6 +574105,391 @@
      ]
     ],
     "scenes": [
+     {
+      "who": "Lass Persephone",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SPRING",
+       "world:unova_story:male_player",
+       "not:b2_ferris_persephone_1"
+      ],
+      "flag": "b2_ferris_persephone_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The car creaks up into the sky...)",
+       "Persephone: ...Stop looking at me! OK, OK, I'll let you go this time. Next time you're going down!"
+      ]
+     },
+     {
+      "who": "Lass Persephone",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SPRING",
+       "world:unova_story:male_player",
+       "b2_ferris_persephone_1",
+       "world:unova_story:not_today:b2_ferris_persephone_1",
+       "not:b2_ferris_persephone_2"
+      ],
+      "flag": "b2_ferris_persephone_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(Round and round the Ferris wheel goes...)",
+       "Persephone: Don't you dare tell anyone I lost! Someday I'll make you cry!"
+      ]
+     },
+     {
+      "who": "Nursery Aide June",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SUMMER",
+       "world:unova_story:male_player",
+       "not:b2_ferris_june_1"
+      ],
+      "flag": "b2_ferris_june_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "June: Let's spend a little longer together. Come on, ride with me!",
+       "(The car rises over the park...)",
+       "June: Some Trainers blame us when their Pokemon get a scratch. You're different. Thank you."
+      ]
+     },
+     {
+      "who": "Nursery Aide June",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SUMMER",
+       "world:unova_story:male_player",
+       "b2_ferris_june_1",
+       "world:unova_story:not_today:b2_ferris_june_1",
+       "not:b2_ferris_june_2"
+      ],
+      "flag": "b2_ferris_june_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The Ferris wheel turns slowly...)",
+       "June: Summer's not the best time for this ride, is it? Working with kids is messy, but I love it."
+      ]
+     },
+     {
+      "who": "Clerk Trisha",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:AUTUMN",
+       "world:unova_story:male_player",
+       "not:b2_ferris_trisha_1"
+      ],
+      "flag": "b2_ferris_trisha_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The car climbs into the autumn sky...)",
+       "Trisha: I'll be a mum soon. The doctor says to rest, but today I relaxed enough for two. Thanks!"
+      ]
+     },
+     {
+      "who": "Clerk Trisha",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:AUTUMN",
+       "world:unova_story:male_player",
+       "b2_ferris_trisha_1",
+       "world:unova_story:not_today:b2_ferris_trisha_1",
+       "not:b2_ferris_trisha_2"
+      ],
+      "flag": "b2_ferris_trisha_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(Round goes the wheel...)",
+       "Trisha: I hope my child grows up kind, like you. See you again!"
+      ]
+     },
+     {
+      "who": "Beauty December",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:WINTER",
+       "world:unova_story:male_player",
+       "not:b2_ferris_december_1"
+      ],
+      "flag": "b2_ferris_december_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The car sways in the winter wind...)",
+       "December: I'm being chased by a certain organization... You don't have to believe me. Let's hope we meet again."
+      ]
+     },
+     {
+      "who": "Beauty December",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:WINTER",
+       "world:unova_story:male_player",
+       "b2_ferris_december_1",
+       "world:unova_story:not_today:b2_ferris_december_1",
+       "not:b2_ferris_december_2"
+      ],
+      "flag": "b2_ferris_december_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The wheel turns...)",
+       "December: World peace is kept by something very simple. It's best you don't know more than that."
+      ]
+     },
+     {
+      "who": "Dancer Dirk",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SPRING",
+       "world:unova_story:female_player",
+       "not:b2_ferris_dirk_1"
+      ],
+      "flag": "b2_ferris_dirk_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The car rises over Nimbasa...)",
+       "Dirk: This just reminds me of a good memory. Thanks for my day off!"
+      ]
+     },
+     {
+      "who": "Dancer Dirk",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SPRING",
+       "world:unova_story:female_player",
+       "b2_ferris_dirk_1",
+       "world:unova_story:not_today:b2_ferris_dirk_1",
+       "not:b2_ferris_dirk_2"
+      ],
+      "flag": "b2_ferris_dirk_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The wheel turns slowly...)",
+       "Dirk: Two years ago I had a friend here I could never beat. That's why I started my dance team."
+      ]
+     },
+     {
+      "who": "Clerk Augustin",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SUMMER",
+       "world:unova_story:female_player",
+       "not:b2_ferris_augustin_1"
+      ],
+      "flag": "b2_ferris_augustin_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The car creaks upward...)",
+       "Augustin: My company runs this old wheel. It's worn out, and they plan to tear it down someday."
+      ]
+     },
+     {
+      "who": "Clerk Augustin",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:SUMMER",
+       "world:unova_story:female_player",
+       "b2_ferris_augustin_1",
+       "world:unova_story:not_today:b2_ferris_augustin_1",
+       "not:b2_ferris_augustin_2"
+      ],
+      "flag": "b2_ferris_augustin_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The wheel turns...)",
+       "Augustin: My parents had their first date on this wheel. If not for it, I wouldn't exist..."
+      ]
+     },
+     {
+      "who": "Hiker Andy",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:AUTUMN",
+       "world:unova_story:female_player",
+       "not:b2_ferris_andy_1"
+      ],
+      "flag": "b2_ferris_andy_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The car rises into the autumn air...)",
+       "Andy: Sniff... Excuse me. I want to be alone for a moment."
+      ]
+     },
+     {
+      "who": "Hiker Andy",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:AUTUMN",
+       "world:unova_story:female_player",
+       "b2_ferris_andy_1",
+       "world:unova_story:not_today:b2_ferris_andy_1",
+       "not:b2_ferris_andy_2"
+      ],
+      "flag": "b2_ferris_andy_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The wheel turns...)",
+       "Andy: Love and breakups are hard. But tell people how you feel. Don't let fear win."
+      ]
+     },
+     {
+      "who": "Guitarist January",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:WINTER",
+       "world:unova_story:female_player",
+       "not:b2_ferris_january_1"
+      ],
+      "flag": "b2_ferris_january_seen1",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The car sways as she strums...)",
+       "January: A country tune about a lost love. That's it for today. I'll be playing streets all over!"
+      ]
+     },
+     {
+      "who": "Guitarist January",
+      "trigger": {
+       "zone": [
+        52,
+        16,
+        56,
+        17
+       ]
+      },
+      "condition": [
+       "season:WINTER",
+       "world:unova_story:female_player",
+       "b2_ferris_january_1",
+       "world:unova_story:not_today:b2_ferris_january_1",
+       "not:b2_ferris_january_2"
+      ],
+      "flag": "b2_ferris_january_seen2",
+      "approach": true,
+      "then": "talk",
+      "after_lines": [
+       "(The wheel turns to the music...)",
+       "January: I got scouted, but they want me to sing sweet pop and speak politely. Maybe I'll change... Thanks for listening."
+      ]
+     },
      {
       "who": "Gym guide outside",
       "trigger": {
@@ -576654,7 +577619,103 @@
       "_look": "sheet:b2_c187.png"
      }
     ],
-    "title": "Nimbasa Gym"
+    "title": "Nimbasa Gym",
+    "dark": {
+     "flags": [
+      "b2_elesa_lit1",
+      "b2_elesa_lit2",
+      "b2_elesa_lit3"
+     ],
+     "radius": [
+      2.5,
+      3.5,
+      4.5
+     ],
+     "lit": [
+      [
+       7,
+       55,
+       13,
+       61,
+       null
+      ],
+      [
+       9,
+       39,
+       11,
+       54,
+       "b2_elesa_lit1"
+      ],
+      [
+       9,
+       24,
+       11,
+       38,
+       "b2_elesa_lit2"
+      ],
+      [
+       9,
+       8,
+       11,
+       23,
+       "b2_elesa_lit3"
+      ],
+      [
+       1,
+       0,
+       20,
+       7,
+       null
+      ]
+     ]
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        9,
+        54,
+        11,
+        54
+       ]
+      },
+      "flag": "b2_elesa_lit1",
+      "cast": [],
+      "call": [
+       "(Click! A spotlight comes on further down the catwalk.)"
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        39,
+        11,
+        39
+       ]
+      },
+      "flag": "b2_elesa_lit2",
+      "cast": [],
+      "call": [
+       "(Click! A spotlight comes on further down the catwalk.)"
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        24,
+        11,
+        24
+       ]
+      },
+      "flag": "b2_elesa_lit3",
+      "cast": [],
+      "call": [
+       "(Click! A spotlight comes on further down the catwalk.)"
+      ]
+     }
+    ]
    },
    "coaster": {
     "theme": "room",
@@ -576670,11 +577731,11 @@
      "ccccccccccccccccccccc...c.......c...ccccccccccccccccccccccccc",
      "ccccccccccccccccccccc...............ccccccccccccccccccccccccc",
      "ccccccccccccccccccccc...............ccccccccccccccccccccccccc",
-     "ccccccccccccccccccccc.......1.......ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccc...............ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccc....c.N.ccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccc....c..Nccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccc........ccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccc........ccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccc........ccccccccccccccccccccccccccccccccccccccccccc",
@@ -576689,9 +577750,9 @@
      "cccccccccc....c...ccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccN.......ccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccc........ccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccc...1....ccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccc........ccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccc..1..ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc.....ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc.....ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc.....ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc.....ccccccccccccccccccccccccccccc",
@@ -576699,10 +577760,10 @@
      "ccccccccccccccccccccccccccc..N..ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc.....ccccccccccccccccccccccccccccc",
      "cccc...c....c...c.ccc...c.......ccccccccccccccccccccccccccccc",
-     "cccc........1.....ccc.1.........cccccccc...c...c...cccccccccc",
-     "cccc..............ccc..........1ccccccc.1...........ccccccccc",
-     "cccc..............ccc...........ccccccc.........N...ccccccccc",
-     "ccccccccccc1...N..ccccccccccccccccccccc.............ccccccccc",
+     "cccc..............ccc...........cccccccc...c...c...cccccccccc",
+     "cccc..............ccc...........ccccccc...........N.ccccccccc",
+     "cccc..............ccc...........ccccccc.............ccccccccc",
+     "ccccccccccc....N..ccccccccccccccccccccc.............ccccccccc",
      "ccccccccccc.......ccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccvvvccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -580286,34 +581347,20 @@
     },
     "people": [
      {
-      "text": "Lady Colette",
+      "text": "Woman at the back",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Lady Colette: Ms. Elesa toughened me up too. I won't give up easily!"
+        "Oh my! Did you come here looking for the Gym Leader?",
+        "I'm sorry, you just missed her. She's gone back to her Gym!",
+        "Take this for coming all this way!"
        ],
-       "battle": {
-        "class": "LADY",
-        "levels": [
-         24
-        ],
-        "name": "Lady Colette",
-        "rewards": {
-         "balls": 2
-        },
-        "sprite": "b2_lady.png",
-        "team": [
-         180
-        ],
-        "dialogue": {
-         "player_won": [
-          "Lady Colette: An honour to face a Trainer like you."
-         ]
-        }
+       "gift_item": {
+        "PARALYZE_HEAL": 1
        },
-       "flag": "b2_coaster_colette",
+       "flag": "b2_elesa_coaster",
        "done": [
-        "The ride's nearly at its finale."
+        "The Gym Leader loves the thrill of this roller coaster."
        ]
       },
       "_look": "sheet:b2_c303.png"
@@ -580371,20 +581418,34 @@
       "_look": "sheet:b2_c11.png"
      },
      {
-      "text": "Woman at the back",
+      "text": "Lady Colette",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Oh my! Did you come here looking for the Gym Leader?",
-        "I'm sorry, you just missed her. She's gone back to her Gym!",
-        "Take this for coming all this way!"
+        "Lady Colette: Ms. Elesa toughened me up too. I won't give up easily!"
        ],
-       "gift_item": {
-        "PARALYZE_HEAL": 1
+       "battle": {
+        "class": "LADY",
+        "levels": [
+         24
+        ],
+        "name": "Lady Colette",
+        "rewards": {
+         "balls": 2
+        },
+        "sprite": "b2_lady.png",
+        "team": [
+         180
+        ],
+        "dialogue": {
+         "player_won": [
+          "Lady Colette: An honour to face a Trainer like you."
+         ]
+        }
        },
-       "flag": "b2_elesa_coaster",
+       "flag": "b2_coaster_colette",
        "done": [
-        "The Gym Leader loves the thrill of this roller coaster."
+        "The ride's nearly at its finale."
        ]
       }
      },
@@ -580393,56 +581454,408 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Hop in a car to ride to the next platform! The woman at the back knows where Elesa went.",
-        "Beat a Trainer and ride on. Aim for the back!"
+        "To ride the roller coaster, step into a car. The switches on the platforms change where the cars go!",
+        "Beat a Trainer and you can ride on in their car. Aim for the back!"
        ]
       },
       "_look": "sheet:b2_c187.png"
      }
     ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        29,
+        33,
+        29,
+        33
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "call": [
+       "{player_name} pressed the switch. The roller coaster's path changed!"
+      ],
+      "then": "event:b2_coaster_switch_0"
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        39,
+        22,
+        39
+       ]
+      },
+      "every": true,
+      "condition": [
+       "not:b2_coaster_sw0"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          14,
+          39
+         ],
+         [
+          14,
+          40
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        14,
+        39,
+        14,
+        39
+       ]
+      },
+      "every": true,
+      "condition": [
+       "not:b2_coaster_sw0"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          22,
+          39
+         ],
+         [
+          22,
+          40
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        39,
+        22,
+        39
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw0"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          16,
+          27
+         ],
+         [
+          16,
+          28
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        27,
+        16,
+        27
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw0"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          22,
+          39
+         ],
+         [
+          22,
+          40
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        13,
+        16,
+        13,
+        16
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "call": [
+       "{player_name} pressed the switch. The roller coaster's path changed!"
+      ],
+      "then": "event:b2_coaster_switch_1"
+     },
+     {
+      "trigger": {
+       "zone": [
+        41,
+        40,
+        41,
+        40
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw1"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          16,
+          15
+         ],
+         [
+          16,
+          16
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        15,
+        16,
+        15
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw1"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          41,
+          40
+         ],
+         [
+          41,
+          41
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        46,
+        41,
+        46,
+        41
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "call": [
+       "{player_name} pressed the switch. The roller coaster's path changed!"
+      ],
+      "then": "event:b2_coaster_switch_2"
+     },
+     {
+      "trigger": {
+       "zone": [
+        34,
+        8,
+        34,
+        8
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw2"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          49,
+          40
+         ],
+         [
+          49,
+          41
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        49,
+        40,
+        49,
+        40
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw2"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          34,
+          8
+         ],
+         [
+          34,
+          9
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        9,
+        25,
+        9
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "call": [
+       "{player_name} pressed the switch. The roller coaster's path changed!"
+      ],
+      "then": "event:b2_coaster_switch_3"
+     },
+     {
+      "trigger": {
+       "zone": [
+        5,
+        39,
+        5,
+        39
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw3"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          22,
+          8
+         ],
+         [
+          22,
+          9
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        8,
+        22,
+        8
+       ]
+      },
+      "every": true,
+      "condition": [
+       "b2_coaster_sw3"
+      ],
+      "cast": [
+       {
+        "you": [
+         [
+          5,
+          39
+         ],
+         [
+          5,
+          40
+         ]
+        ],
+        "zoom": 0.8
+       }
+      ]
+     }
+    ],
     "title": "Shining Roller Coaster",
-    "links": {
-     "12,40": [
-      0,
+    "landings": [
+     [
+      14,
+      40
+     ],
+     [
       22,
       40
      ],
-     "31,41": [
-      0,
-      40,
+     [
+      16,
+      28
+     ],
+     [
+      16,
+      16
+     ],
+     [
+      41,
       41
      ],
-     "29,32": [
-      0,
-      28,
-      11
+     [
+      49,
+      41
      ],
-     "11,43": [
-      0,
-      13,
-      30
+     [
+      34,
+      9
      ],
-     "22,40": [
-      0,
-      12,
+     [
+      22,
+      9
+     ],
+     [
+      5,
       40
-     ],
-     "40,41": [
-      0,
-      31,
-      41
-     ],
-     "28,11": [
-      0,
-      29,
-      32
-     ],
-     "13,30": [
-      0,
-      11,
-      43
      ]
-    }
+    ]
    }
   },
   "inside": {
@@ -583869,17 +585282,17 @@
    "cccccccc\"\"\".\"\"\"\"\".c.\"\"\"\"cccccccc",
    "cccccccc\"\"\"..\"\"\"\"\"c\"\"\"\"\"cccccccc",
    "cccccccc\"\"\"..\"\"\"\"\"c\"X\"\"\"cccccccc",
-   "cccccccc\"\"\"cccccccc\".cccoccccccc",
-   "cccccccc\"\"\"ccc\".\"\"c\".c...ccccccc",
-   "ccccccccc\"\"cNc\".\"\"c\".c....cccccc",
-   "ccccccccc\"\"\"\"\"\".\"\"c\".c.ccccccccc",
-   "ccccccccc\"\"X\"\"\".\".c\".c.c\"\"\"\"cccc",
-   "ccccccccc.\"\"\"\"\".\".c\".c.c\"\"\"\"cccc",
-   "ccccccccc.\"\"\"\"\".\".c\".c.c\"\"\"\"cccc",
-   "ccccccccc...\"\"....c..c.c\"\"\"\"cccc",
-   "ccccccccocc...cccccccc.c..\"\"\"ccc",
-   "cccccccc..c...c...c....c\"\"\"\"\"ccc",
-   "ccccccccccc...cccccccccc\"\"\"\"\"ccc",
+   "cccccccc\"\"\"ccc____c\".coooccccccc",
+   "cccccccc\"\"\"ccc\".\"\"c\".ooooccccccc",
+   "ccccccccc\"\"cNc\".\"\"c\".ooooocccccc",
+   "ccccccccc\"\"\"\"\"\".\"\"c\".oocoocccccc",
+   "ccccccccc\"\"X\"\"\".\".c\".ooo\"\"\"\"cccc",
+   "ccccccccc.\"\"\"\"\".\".c\".ooo\"\"\"\"cccc",
+   "ccccccccc.\"\"\"\"\".\".c\".ooo\"\"\"\"cccc",
+   "ccccccccc...\"\"....c..ooo\"\"\"\"cccc",
+   "ccccccccooc...cooo$oocoo..\"\"\"ccc",
+   "ccccccccooo...oooo$ooooo\"\"\"N\"ccc",
+   "ccccccccccc...cooo$ooooc\"\"\"\"\"ccc",
    "cccccccccc......ccc\"\"\"..\"\"\"..ccc",
    "cccccccccc......ccccc.\"\"\"\"\"ccccc",
    "ccccccccccccvvccccccc.\"\"\"\"\"ccccc",
@@ -586201,6 +587614,21 @@
      "flag": "b2_lostlorn_ultra"
     },
     "_look": "sheet:b2_c210.png"
+   },
+   {
+    "text": "Poke Ball in the dark grass",
+    "action": "EVENT",
+    "flag_condition": "not b2_lostlorn_candy",
+    "event": {
+     "lines": [
+      "You found a Rare Candy!"
+     ],
+     "gift_item": {
+      "RARE_CANDY": 1
+     },
+     "flag": "b2_lostlorn_candy"
+    },
+    "_look": "sheet:b2_c216.png"
    }
   ],
   "trainer_spots": [
@@ -587828,7 +589256,7 @@
    "ccccccccccc....ccccccc\"\"....\"\"cccccccccccccccccc\"\"cccccccccccccc",
    "ccccccccccc.cc.ccccccc....\"\"\"\"cccccccccccccccccc\"\"cccccccccccccc",
    "ccccccccccc..c.ccccccc.N..\"\"cccc..........cccccc\"\"..cccccccccccc",
-   "cccccccccccccc.!ccccccccccccccccc..c!c.N..cccccc....cccccccccccc",
+   "cccccccccccccc.!cccccc______ccccc..c!c.N..cccccc....cccccccccccc",
    "ccccccccc<.......N.......................cccccccc.......cccccccc",
    "ccccccccc<......N.............N..........cccccccc.......cccccccc",
    "ccccccccc<......N...N.N..................cccccccc...N...cccccccc",
@@ -590334,16 +591762,10 @@
     "text": "Berry seller",
     "action": "EVENT",
     "event": {
-     "lines": [
-      "Fresh Berries! A bunch of five for $200. Just one bunch a day!"
-     ],
-     "stock": [
-      "POMEG_BERRY",
-      "KELPSY_BERRY",
-      "QUALOT_BERRY",
-      "HONDEW_BERRY",
-      "GREPA_BERRY"
-     ]
+     "world": "b2_errands",
+     "berry_bunch": {
+      "key": "b2_r5_berry_bunch"
+     }
     },
     "_look": "sheet:b2_cheren.png"
    },
@@ -590788,9 +592210,8 @@
       "text": "Maid in the trailer",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "I'm cooking, but I'm short of ingredients... Do you have anything tasty? Berry Juice? A Casteliacone?"
-       ]
+       "world": "b2_errands",
+       "maid_food": true
       },
       "_look": "sheet:b2_c65.png"
      }

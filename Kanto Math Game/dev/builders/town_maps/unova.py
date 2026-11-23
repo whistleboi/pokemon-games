@@ -2837,7 +2837,7 @@ def _subway_bosses(who, pic, ids):
     p = _b2(ids[0])
     partner = {"name": who, "class": "PKMN_TRAINER", "sprite": pic, "team": p["team"], "levels": p["levels"],
                "team_choice": {s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), ids)}}
-    return _b2(732, name="Subway Boss Ingo", sprite="subway_boss.png", rewards={"balls": 4},
+    return _b2(732, name="Subway Boss Ingo", sprite="b2_ingo.png", rewards={"balls": 4},
                battle_options={"double": True, "partner": partner, "second_trainer": _b2(733, rewards={"balls": 4})},
                dialogue={"player_won": ["Ingo: Bravo! You and your Pokemon make a fine combination!",
                                         "Emmet: I lost, but I had fun! Ride the subway and battle us there next time!"],
@@ -2946,6 +2946,17 @@ NIMBASA_GYM = nimbasa_room(63, {
                   ["That's a battle I want to see!"], name="Beauty Ampere"),
 }, {(18, 57): ["NIMBASA CITY POKEMON GYM", "Leader: Elesa", "The Shining Beauty"],
     (12, 57): ["NIMBASA CITY POKEMON GYM", "Leader: Elesa", "The Shining Beauty"]}, title="Nimbasa Gym")
+# The catwalk's lights (11-23, closing 4a: Jordan "Build the lighting"). Black 2's gimmick 1 -> overlay 92 (gym_elec.c):
+# the runway is dark; the zone's triggers across it at file rows 54, 39 and 24 (var 0x409b = 0/1/2) each light the next
+# stretch, up to its model, "a new section is lit up as you approach each Gym Trainer, until you reach Elesa singing on
+# the stage". The entrance and Elesa's stage are lit from the start. "lit": rectangles lit once their flag is set (None:
+# always); "flags"/"radius" are the plain dark room's light round you (wider with each section) where "lit" isn't drawn.
+_GYM_LIT = [[7, 55, 13, 61, None], [9, 39, 11, 54, "b2_elesa_lit1"], [9, 24, 11, 38, "b2_elesa_lit2"],
+            [9, 8, 11, 23, "b2_elesa_lit3"], [1, 0, 20, 7, None]]
+NIMBASA_GYM["dark"] = {"flags": ["b2_elesa_lit1", "b2_elesa_lit2", "b2_elesa_lit3"], "radius": [2.5, 3.5, 4.5], "lit": _GYM_LIT}
+NIMBASA_GYM["scenes"] = (NIMBASA_GYM.get("scenes") or []) + [
+    {"trigger": {"zone": [9, row, 11, row]}, "flag": "b2_elesa_lit%d" % k, "cast": [], "call": ["(Click! A spotlight comes on further down the catwalk.)"]}
+    for k, row in ((1, 54), (2, 39), (3, 24))]
 _COASTER_WOMAN = _gift("Woman at the back", ["Oh my! Did you come here looking for the Gym Leader?",
                                              "I'm sorry, you just missed her. She's gone back to her Gym!",
                                              "Take this for coming all this way!"], "PARALYZE_HEAL", "b2_elesa_coaster",
@@ -2953,25 +2964,149 @@ _COASTER_WOMAN = _gift("Woman at the back", ["Oh my! Did you come here looking f
 _COASTER_ROLAN = _b2_battle("Rich Boy Rolan", 621, "b2_coaster_rolan", ["Rich Boy Rolan: Are you cool on a roller coaster? I'll "
                                                                         "overwhelm you with the speed I learned riding it!"],
                             ["Rich Boy Rolan: Your way of battling... It's elegant!"], ["Faster! Faster! Speed feels great!"])
+_COASTER_COLETTE = _b2_battle("Lady Colette", 148, "b2_coaster_colette",
+                              ["Lady Colette: Ms. Elesa toughened me up too. I won't give up easily!"],
+                              ["Lady Colette: An honour to face a Trainer like you."], ["The ride's nearly at its finale."])
+# The cars (11-23, closing 4a: Jordan "Now, before 4b"). Black 2's gimmick 47 -> overlay 102: nine car stops at the platforms'
+# edges (0x21f0228: entrance 14,39 and 5,39; middle 22,39; left 16,27 and 16,15; back 41,40 and 49,40; top 34,8 and 22,8)
+# and the four switches' routes (0x21f01f8, two settings each; 255 = no car): middle switch (29,33): middle <-> entrance /
+# middle <-> left's foot; left switch (13,16): - / left's top <-> back; back switch (46,41): - / back's east <-> top's east;
+# top switch (25,9): - / entrance's west <-> top's west. Each switch flips as you step on it (the room's triggers, scripts
+# 2-5); each car carries you to its partner stop and you step off onto that platform (an animated scene). The cars' and
+# switches' own model positions are the table at 0x21f0268 (the switches at exactly the trigger tiles).
+_STOPS = [(14, 39), (22, 39), (16, 27), (16, 15), (41, 40), (49, 40), (34, 8), (22, 8), (5, 39)]
+_OFF = {(14, 39): (14, 40), (22, 39): (22, 40), (16, 27): (16, 28), (16, 15): (16, 16), (41, 40): (41, 41), (49, 40): (49, 41),
+        (34, 8): (34, 9), (22, 8): (22, 9), (5, 39): (5, 40)}   # (the platform tile you step off onto)
+_SWITCHES = [((29, 33), [(1, 0), (1, 2)]), ((13, 16), [None, (4, 3)]), ((46, 41), [None, (6, 5)]), ((25, 9), [None, (8, 7)])]
+
+
+def _coaster_scenes():
+    out = []
+    for k, ((sx, sy), states) in enumerate(_SWITCHES):
+        out.append({"trigger": {"zone": [sx, sy, sx, sy]}, "every": True, "cast": [],
+                    "call": ["{player_name} pressed the switch. The roller coaster's path changed!"],
+                    "then": "event:b2_coaster_switch_%d" % k})
+        for on, route in enumerate(states):
+            if route is None:
+                continue
+            a, b = _STOPS[route[0]], _STOPS[route[1]]
+            cond = ["b2_coaster_sw%d" % k] if on else ["not:b2_coaster_sw%d" % k]
+            for frm, to in ((a, b), (b, a)):
+                out.append({"trigger": {"zone": [frm[0], frm[1], frm[0], frm[1]]}, "every": True, "condition": cond,
+                            "cast": [{"you": [list(to), list(_OFF[to])], "zoom": 0.8}]})
+    return out
+
+
 NIMBASA_COASTER = nimbasa_room(585, {
-    2: _b2_battle("Lady Colette", 148, "b2_coaster_colette", ["Lady Colette: Ms. Elesa toughened me up too. I won't give up easily!"],
-                  ["Lady Colette: An honour to face a Trainer like you."], ["The ride's nearly at its finale."]),
-    3: _say("Guide at the entrance", "Hop in a car to ride to the next platform! The woman at the back knows where Elesa went.",
-            "Beat a Trainer and ride on. Aim for the back!"),
+    2: _COASTER_WOMAN,
+    3: _say("Guide at the entrance", "To ride the roller coaster, step into a car. The switches on the platforms change "
+                                    "where the cars go!", "Beat a Trainer and you can ride on in their car. Aim for the back!"),
     4: _say("Girl by the cars", "Elesa's amazing! Most Leaders remodel their Gym, but she built a whole new one!"),
     5: _say("Boy by the cars", "In other places, roller coasters are called jet coasters!"),
-}, {}, extra_people=[(48, 42, _COASTER_WOMAN), (16, 15, _COASTER_ROLAN)], title="Shining Roller Coaster")
-# (Jordan 11-23: the cars' real routes and switches come in batch 4c, from Black 2's event scripts. Till then each platform's
-#  car is a ride pad to the next (entrance <-> middle and left; middle <-> top and back), and the woman (49, 38) and Rolan
-#  (16, 13), who stand at car stops in Black 2, wait one step onto their platforms.)
-_COASTER_RIDES = {(12, 40): (22, 40), (31, 41): (40, 41), (29, 32): (28, 11), (11, 43): (13, 30)}
-for _a, _b in _COASTER_RIDES.items():
-    for _x, _y in (_a, _b):
-        NIMBASA_COASTER["art"][_y] = NIMBASA_COASTER["art"][_y][:_x] + "1" + NIMBASA_COASTER["art"][_y][_x + 1:]
-NIMBASA_COASTER["links"] = {**{"%d,%d" % a: [0, b[0], b[1]] for a, b in _COASTER_RIDES.items()},
-                            **{"%d,%d" % b: [0, a[0], a[1]] for a, b in _COASTER_RIDES.items()}}
+}, {}, extra_people=[(50, 41, _COASTER_COLETTE), (17, 15, _COASTER_ROLAN)], title="Shining Roller Coaster",
+    scenes=_coaster_scenes())
+# (Colette and Rolan stand by their cars at 49,38 and 16,13 in Black 2, out on the track: here a step onto their platforms.)
+NIMBASA_COASTER["landings"] = [list(_OFF[s]) for s in _STOPS]   # (the platforms reached by the cars, for the map check)
+# ---------------------------------------------------------------------------------------------- the park's Ferris wheel
+# (11-23, closing 4a's "not done yet") Black 2's Rondez-View Ferris wheel: one trainer a season, by your character (a boy
+# meets Persephone / June / Trisha / December, a girl Dirk / Augustin / Andy / January: text 673, their teams a/0/9/1).
+# Walk up and they call out; the battle, then you ride together and they talk. A second visit: again, and a second ride.
+# The park's person 1 (54, 15) is their spot (its code 162: Black 2's script picks the look). Our words throughout.
+FERRIS = [   # (season, player, label, team id, sheet, [intro 1, ride 1, intro 2, ride 2])
+    ("SPRING", "male", "Lass Persephone", 47, "b2_c15.png", [
+        ["Lass Persephone: Ah... achoo! Spring! ...Hey! You were looking at me! When eyes meet, it's a battle!"],
+        ["Persephone: Whaa! I lost?! Fine. Let's ride this rickety old Ferris wheel. First one scared loses!",
+         "(The car creaks up into the sky...)", "Persephone: ...Stop looking at me! OK, OK, I'll let you go this time. Next time you're going down!"],
+        ["Persephone: Achoo! You again?! Got a crush on me or something? You owe me a rematch!"],
+        ["Persephone: Not again... Fine, you win. You're the Feral Liepard of Nimbasa now.",
+         "(Round and round the Ferris wheel goes...)", "Persephone: Don't you dare tell anyone I lost! Someday I'll make you cry!"]]),
+    ("SUMMER", "male", "Nursery Aide June", 803, "b2_c23.png", [
+        ["Nursery Aide June: Phew, it's hot... Oh, are you lost? No? A battle, then? I'm better at caring for Pokemon than battling..."],
+        ["June: Your Pokemon are so strong. I can tell you raise them with love.", "June: Let's spend a little longer together. Come on, ride with me!",
+         "(The car rises over the park...)", "June: Some Trainers blame us when their Pokemon get a scratch. You're different. Thank you."],
+        ["June: Hi again! Do you have time? Let's play a little first. My Pokemon's in great shape today!"],
+        ["June: That was fun! I'd love to just play like this and quit my job...", "(The Ferris wheel turns slowly...)",
+         "June: Summer's not the best time for this ride, is it? Working with kids is messy, but I love it."]]),
+    ("AUTUMN", "male", "Clerk Trisha", 10, "b2_c53.png", [
+        ["Clerk Trisha: The wind's turned cold... Oh! Do you want to battle, perhaps?"],
+        ["Trisha: That was over in an instant. I'm not very good. Have you ridden this Ferris wheel? Come ride with me!",
+         "(The car climbs into the autumn sky...)", "Trisha: I'll be a mum soon. The doctor says to rest, but today I relaxed enough for two. Thanks!"],
+        ["Trisha: Why hello again! Shall we battle? Gently, please!"],
+        ["Trisha: I can't keep up! Stay a little longer with me.", "(Round goes the wheel...)",
+         "Trisha: I hope my child grows up kind, like you. See you again!"]]),
+    ("WINTER", "male", "Beauty December", 804, "b2_c303.png", [
+        ["Beauty December: Who are you? Did they send a kid to take me back to the manor? Fine! Battle me!"],
+        ["December: You just wanted to battle? Then let's ride the Ferris wheel. Hurry!", "(The car sways in the winter wind...)",
+         "December: I'm being chased by a certain organization... You don't have to believe me. Let's hope we meet again."],
+        ["December: You again? Help me out: they're getting tougher. Battle me!"],
+        ["December: You're as good as ever. Come, let's ride. Even they can't reach us up there.", "(The wheel turns...)",
+         "December: World peace is kept by something very simple. It's best you don't know more than that."]]),
+    ("SPRING", "female", "Dancer Dirk", 138, "b2_c55.png", [
+        ["Dancer Dirk: Yawn... A fan of mine? It's my first day off in ages... Well, I guess one battle!"],
+        ["Dirk: You rocked the house! Dirk and the Darumaka still have work to do. Let's ride the Ferris wheel!",
+         "(The car rises over Nimbasa...)", "Dirk: This just reminds me of a good memory. Thanks for my day off!"],
+        ["Dirk: Hey! I have a show later, but I thought you might come by. Battle me first?"],
+        ["Dirk: You're tough! Are you aiming to be Champion? ...Let's ride! The view's so mellow.", "(The wheel turns slowly...)",
+         "Dirk: Two years ago I had a friend here I could never beat. That's why I started my dance team."]]),
+    ("SUMMER", "female", "Clerk Augustin", 805, "b2_c52.png", [
+        ["Clerk Augustin: It's sooo hot! A battle or a ride? I don't mind either, but I'm not very tough."],
+        ["Augustin: See? Not very good. Work keeps me busy. As thanks, let me treat you to a ride.",
+         "(The car creaks upward...)", "Augustin: My company runs this old wheel. It's worn out, and they plan to tear it down someday."],
+        ["Augustin: Hey! I was waiting for you. Battle me again, then ride with me? You need two people to ride."],
+        ["Augustin: I thought I might lose. That's OK. Shall we ride?", "(The wheel turns...)",
+         "Augustin: My parents had their first date on this wheel. If not for it, I wouldn't exist..."]]),
+    ("AUTUMN", "female", "Hiker Andy", 136, "b2_c64.png", [
+        ["Hiker Andy: My heart falls with every leaf... What, a battle? I accept. Let's get this over with."],
+        ["Andy: Every battle reminds me of that summer... Will you listen? Come here with me.",
+         "(The car rises into the autumn air...)", "Andy: Sniff... Excuse me. I want to be alone for a moment."],
+        ["Andy: Oh... it's you. My heart's still waiting for rescue. Could you spare a moment? A battle first..."],
+        ["Andy: I can't concentrate! Why can't I forget that summer? Stay with me a little longer...", "(The wheel turns...)",
+         "Andy: Love and breakups are hard. But tell people how you feel. Don't let fear win."]]),
+    ("WINTER", "female", "Guitarist January", 806, "b2_c295.png", [
+        ["Guitarist January: You! Cold-looking clothes in the middle of winter? That's rock 'n' roll! Let's prove who rocks hardest!"],
+        ["January: Way to rock! For that funky battle I'll sing you a song, but not here. Roll on over this way!",
+         "(The car sways as she strums...)", "January: A country tune about a lost love. That's it for today. I'll be playing streets all over!"],
+        ["January: Hey! It's... no. Excuse me. Would you battle me?"],
+        ["January: I knew you rocked. Please listen to my song again!", "(The wheel turns to the music...)",
+         "January: I got scouted, but they want me to sing sweet pop and speak politely. Maybe I'll change... Thanks for listening."]]),
+]
+
+
+def _ferris(season, who, label, tid, sheet, words):
+    """One trainer's two visits: stages (a battle each), their scenes (they call out, then the ride)."""
+    k = "b2_ferris_" + label.split()[-1].lower()
+    cond = ["season:" + season, "world:unova_story:%s_player" % who]
+    opt = {"text": label, "action": "EVENT", "_look": "sheet:" + sheet, "condition": cond, "event": {
+        "stages": [{"flag": k + "_1", "lines": words[0], "battle": _b2(tid, dialogue={"player_won": [words[1][0]]})},
+                   {"flag": k + "_2", "requires": [k + "_1", "world:unova_story:not_today:" + k + "_1"], "lines": words[2],
+                    "battle": _b2(tid, dialogue={"player_won": [words[3][0]]})}],
+        "done": ["Thanks for riding with me!"]}}
+    scenes = [{"who": label, "trigger": {"zone": [52, 16, 56, 17]}, "condition": cond + ["not:" + k + "_1"], "flag": k + "_seen1",
+               "approach": True, "then": "talk", "after_lines": words[1][1:]},
+              {"who": label, "trigger": {"zone": [52, 16, 56, 17]},
+               "condition": cond + [k + "_1", "world:unova_story:not_today:" + k + "_1", "not:" + k + "_2"],
+               "flag": k + "_seen2", "approach": True, "then": "talk", "after_lines": words[3][1:]}]
+    return opt, scenes
+
+
+FERRIS_PEOPLE, FERRIS_SCENES = [], []
+for _f in FERRIS:
+    _o, _s = _ferris(*_f)
+    FERRIS_PEOPLE.append(_o)
+    FERRIS_SCENES += _s
+# the Dropped Item (park person 11, 23, 23): a lost Xtransceiver; it rings, and "???" asks you to keep it till they can come.
+# The owner (Yancy for a boy, Curtis for a girl) meets you at the Ferris wheel after the Champion: post-game batch.
+DROPPED_ITEM = {"text": "Something dropped", "action": "EVENT", "flag_condition": "not b2_dropped_item", "_look": "sheet:b2_item_ball.png",
+                "no_tag": True, "event": {"scene": "xtransceiver", "caller": "???", "flag": "b2_dropped_item", "call": [
+                    "(Someone's dropped an Xtransceiver here... and it's ringing! You pick it up.)",
+                    "???: Hello? Oh! You found my Xtransceiver? Thank goodness!",
+                    "???: I'm so sorry, I'm swamped at work and can't come for it. Could you hold on to it for me?",
+                    "???: I'll call you on it now and then. ...Thank you! Talk soon!"]}}
+
 NIMBASA_PARK = nimbasa_room(64, {
     0: _ball("Poke Ball by the rides", "PARALYZE_HEAL", "b2_park_parlyz", name="a Paralyze Heal"),
+    1: FERRIS_PEOPLE,
+    11: DROPPED_ITEM,
     12: [_say("Gym guide outside", "Oh, are you a challenger? I'm sorry, the Gym Leader is out right now...",
               "She should be in the roller coaster building by the park's entrance.", condition=["not:b2_elesa_coaster"])],
     2: _say("Woman by the Gym", "It's a shining, sparkling, bright fashion show!"),
@@ -2987,7 +3122,7 @@ NIMBASA_PARK = nimbasa_room(64, {
 }, {1: ["NIMBASA CITY POKEMON GYM", "Leader: Elesa", "The Shining Beauty"],
     2: ["THE SHINING ROLLER COASTER", "Former Nimbasa City Pokemon Gym"]},
     hidden={"44,11": "REVIVE"}, title="Amusement Park",
-    scenes=[{"who": "Gym guide outside", "trigger": {"zone": [70, 11, 72, 13]}, "condition": ["not:b2_nimbasa_gym_out"],
+    scenes=FERRIS_SCENES + [{"who": "Gym guide outside", "trigger": {"zone": [70, 11, 72, 13]}, "condition": ["not:b2_nimbasa_gym_out"],
              "flag": "b2_nimbasa_gym_out", "approach": True,
              "lines": ["Oh, are you a challenger? I'm sorry, the Gym Leader is out right now...",
                        "She should be in the roller coaster building by the park's entrance."]},
@@ -3128,11 +3263,12 @@ ROUTE_16["art"][15] = ROUTE_16["art"][15][:55] + "D" + ROUTE_16["art"][15][56:] 
 # -------------------------------------------------------------------------------------------------------- Lostlorn Forest
 # Zone 385: the forest Zoroark hid with illusions two years ago. Breeder Galen battles again each visit; the Rangers give
 # Berries; the odd Backpacker gives TM95 Snarl and runs off as a Zoroark. Its Hidden Grotto (record 2) at the north-east.
-# Veteran Murphy, the Rare Candy and the Grass Gem are past the waterfall (Surf, Waterfall). Grass Gem: no key yet
+# Veteran Murphy, the Rare Candy and the Grass Gem are past the waterfall (Surf, Waterfall: the river's walk codes 0x3F / 0x40,
+# read since 11-23). Grass Gem: no key yet
 # (cleanup clean-main-unova-gen5-gems), left out till Main adds it.
 LOSTLORN = route(
     385, {4: _ball("Poke Ball in the stump", "ULTRA_BALL", "b2_lostlorn_ultra", name="an Ultra Ball"),
-          # (5, the Rare Candy above the waterfall: left out till the river's walk codes are read, batch 4c / the Surf pass)
+          5: _ball("Poke Ball in the dark grass", "RARE_CANDY", "b2_lostlorn_candy", name="a Rare Candy"),   # (above the falls: Surf, Waterfall)
           6: _ball("Poke Ball by the north stump", "NET_BALL", "b2_lostlorn_net", name="a Net Ball"),
           7: {"text": "Odd Backpacker", "action": "EVENT", "flag_condition": "not b2_lostlorn_snarl",
               "event": {"lines": ["Hi, Trainer! I'm a traveller. Do you know a Pokemon called Zoroark?",
@@ -3161,9 +3297,7 @@ ROUTE_5 = route(
           0: _say("Ranger by the gate", "Pokemon Rangers patrol here. Route 5 is always lively: performers love it!"),
           2: _say("Man watching", "Every day there's a show on Route 5. Never the same one twice!"),
           20: _say("Girl watching", "Look at all the performers! I want to be in a show too!"),
-          21: {"text": "Berry seller", "action": "EVENT", "event": {
-              "lines": ["Fresh Berries! A bunch of five for $200. Just one bunch a day!"],
-              "stock": ["POMEG_BERRY", "KELPSY_BERRY", "QUALOT_BERRY", "HONDEW_BERRY", "GREPA_BERRY"]}},
+          21: {"text": "Berry seller", "action": "EVENT", "event": {"world": "b2_errands", "berry_bunch": {"key": "b2_r5_berry_bunch"}}},
           22: _say("Clown by the trailer", "Smile! A sad face makes a bad show!"),
           23: _say("Girl by the trailer", "The Maid in the trailer is always hungry for new ingredients."),
           8: [{"text": "Motorcyclist Charles", "action": "EVENT", "condition": ROUTE5_CROWD + ["unova_version:" + _v], "event": {
@@ -3183,7 +3317,7 @@ ROUTE_5 = route(
     trainers={1: "Baker Jenn", 3: "Dancer Brian", 4: "Backers Ava & Aya", 6: "Artist Horton", 7: "Pokemon Ranger Lois"},
     hidden={"36,19": "HYPER_POTION"},
     rooms={"trailer": room(330, {0: {"text": "Maid in the trailer", "action": "EVENT", "event": {
-               "lines": ["I'm cooking, but I'm short of ingredients... Do you have anything tasty? Berry Juice? A Casteliacone?"]}}},
+               "world": "b2_errands", "maid_food": True}}},
                            {}, (45, 18)),
            "grotto": grotto_room(1, (53, 8))},
     inside={"45,18": "trailer", "53,8": "grotto"},

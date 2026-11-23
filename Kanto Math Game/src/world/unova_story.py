@@ -13,6 +13,16 @@ def female(story):
 
 
 def condition(story, arg):
+    """"female_player" / "male_player"; "not_today:<flag>": the flag is set, and not today (the day it was first seen
+    set is kept as <flag>_day: the Ferris wheel's second visit is another day, as Black 2)."""
+    if arg.startswith("not_today:"):
+        import datetime
+        flag = arg[10:]
+        if not story.story_flags.get(flag):
+            return False
+        today = datetime.date.today().isoformat()
+        day = story.story_flags.setdefault(flag + "_day", today)
+        return day != today
     if arg == "female_player":
         return female(story)
     if arg == "male_player":
@@ -21,4 +31,11 @@ def condition(story, arg):
 
 
 def event(state, ev, lines, show):
+    """{"toggle": flag}: flip a flag (the roller coaster's switches: each press changes a car's route)."""
+    if ev.get("toggle"):
+        flags = state.game.story_manager.story_flags
+        flags[ev["toggle"]] = not flags.get(ev["toggle"])
+        if lines:
+            show(lines)
+        return
     show(lines or ["..."])
