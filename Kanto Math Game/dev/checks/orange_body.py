@@ -144,6 +144,14 @@ check('"oi_trainer": 37' in _gul and "team_moves" in _gul, "Gulzar (a map scene'
 check(sum(1 for _ in json.dumps({k: prog[k] for k in ORANGE}).split('"team_moves"')[1:]) >= 58,
       "every Orange trainer whose 5.7 team has set moves carries them (58 in the data, 15 on the maps; oteam.py)")
 
+_shops = [(k, o.get("text"), o.get("stock")) for k in ORANGE for o in (prog[k].get("explore_options") or []) + (prog[k].get("route_menu") or [])
+          if o.get("action") == "SHOP"]
+check(len(_shops) >= 15 and all(st for _k, _t, st in _shops),
+      f"every Orange shop sells 5.7's own list, none the badge counter (Jordan 11-23; ostock.py) ({[(k, t) for k, t, st in _shops if not st]})")
+check(prog["TANGELO_ISLAND"]["explore_options"][1].get("stock", [])[:2] == ["POKE_BALLS", "POTION"] and
+      not any(str(i).startswith("TM") for k, t, st in _shops if t != "TM clerk" for i in st),
+      "Tangelo's Mart: 5.7's Poke Balls, Potions...; no TMs in an Orange Mart but Trovitopolis's TM counter")
+
 print("7) Visiting every Orange area")
 for k in ORANGE:
     story.current_area_key = k
