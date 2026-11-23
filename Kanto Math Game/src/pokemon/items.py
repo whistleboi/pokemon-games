@@ -427,8 +427,16 @@ def use_vitamin(pokemon, item):
     return True, f"{pokemon.display_name}'s {label} rose!"
 
 
+from src.pokemon.pp import PP_ITEMS   # (the PP items - PP Up, PP Max, Ether, Max Ether, Elixir, Max Elixir - live with the PP rules in
+#  pp.py; named here too, so every item table is in this module: a region's check for an item finds them, Unova 11-23)
+
+
+def known(item):
+    """Is this an item the game has (any table here, the PP items, berries, story items; a TM, an HM, a Z or Mega item)?"""
+    return bool(item) and (bool(info(item)) or bool(describe(item)))
+
+
 def info(item):
-    from src.pokemon.pp import PP_ITEMS
     return (MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or VITAMINS.get(item) or VALUABLES.get(item)
             or APRICORNS.get(item) or PP_ITEMS.get(item) or ({"text": BERRY_TEXT[item]} if item in BERRY_TEXT else None)
             or ({"text": STORY_TEXT[item]} if item in STORY_TEXT else None) or {})

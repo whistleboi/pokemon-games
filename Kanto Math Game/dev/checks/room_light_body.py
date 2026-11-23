@@ -79,6 +79,21 @@ if nb:
     check(t._reaches_out(nb), "a spot that walks to a landing: you stay there too")
 t.exits, t.doors, t.town_map = _ex, _dr, _tm
 
+print("4) a room with nobody in it still plays its scenes (Black 2's Battle Subway car: each Trainer walks in by a scene)")
+from src.dungeon import npc as _npc
+_ppl, _mo, _sc = t.people, t.motions, t.scenes
+t.people, t.motions = {}, {}
+story.story_flags.pop("zz_empty_scene", None)
+t.scenes = _npc.Scenes([{"trigger": "enter", "flag": "zz_empty_scene", "cast": [], "lines": ["The doors slide open."]}], t)
+for _ in range(40):
+    if story.story_flags.get("zz_empty_scene"):
+        break
+    t.update()
+    if getattr(t, "dialogue_box", None) is not None and getattr(t.dialogue_box, "visible", False):
+        t.dialogue_box.advance()
+check(bool(story.story_flags.get("zz_empty_scene")), "an 'enter' scene ran with no people in the room")
+t.people, t.motions, t.scenes = _ppl, _mo, _sc
+
 story.story_flags = _saved
 g.walk_town_pos = g.walk_town_room = None
 print(f"##### {len(fails)} failures")
