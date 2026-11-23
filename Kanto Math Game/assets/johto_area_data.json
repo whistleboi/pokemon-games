@@ -4455,12 +4455,12 @@
             "condition": { "visited": "MT_MORTAR", "flag_not": "defeated_karate_king" }
         },
         {
-            "id": "johto_s4", "type": "SIDE", "title": "National Upgrade", "description": "Visit Prof. Oak in Pallet Town after becoming Champion. He has a major upgrade for your Pokedex!",
-            "condition": { "start_region": "JOHTO", "flag": "beat_johto_champion", "flag_not": "unlocked_national_dex" }
+            "id": "johto_s4", "type": "SIDE", "title": "National Upgrade", "description": "Word of a new Champion travels fast. Prof. Oak, in Pallet Town far across Kanto, has been hoping you would come. The S.S. Aqua sails from Olivine.", "target": "PALLET_TOWN", "completed_flag": "received_starter_kanto",
+            "condition": { "start_region": "JOHTO", "flag": "beat_johto_champion", "flag_not": "received_starter_kanto" }
         },
         {
-            "id": "johto_kanto_travel", "type": "SIDE", "title": "The Kanto Challenge", "description": "With your National Dex in hand, the gyms of Kanto are waiting. Head to Pewter City to find Brock!",
-            "condition": { "start_region": "JOHTO", "flag": "unlocked_national_dex", "visited_not": "PEWTER_CITY" }
+            "id": "johto_kanto_travel", "type": "SIDE", "title": "The Kanto Challenge", "description": "A Champion of Johto, yet Kanto has eight Gyms of its own. The first, Brock's, stands in Pewter City.", "target": "PEWTER_CITY",
+            "condition": { "start_region": "JOHTO", "flag": "beat_johto_champion", "visited_not": "PEWTER_CITY" }
         },
         {
             "id": "kanto_johto_travel", "type": "MAIN", "title": "Johto Bound", "description": "Visit Route 26 via Indigo Plateau to begin your journey into the Johto region.",
