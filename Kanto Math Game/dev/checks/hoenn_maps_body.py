@@ -337,7 +337,8 @@ _want_doors = {"LITTLEROOT_TOWN": {"home", "rival", "lab"}, "RUSTBORO_CITY": {"d
 for key, want in _want_doors.items():
     st = arrive(key, sorted(_tm[key]["exits"].values())[0])
     have = set(st.doors.values())
-    check(want <= have and all(st._door_options(k) for k in want), f"{key}: its own doors {sorted(want)}, each opening something (has {sorted(have)})")
+    _opens = lambda k: st._door_options(k) or any(st._room_for(t) for t, kk in st.doors.items() if kk == k)   # (a door into a room opens it; H2/H4)
+    check(want <= have and all(_opens(k) for k in want), f"{key}: its own doors {sorted(want)}, each opening something (has {sorted(have)})")
 
 # ---- story scenes, played as a player meets them
 def walk_into(st, way, n=1):

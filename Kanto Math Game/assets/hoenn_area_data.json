@@ -755,13 +755,11 @@
       "area_type": "town",
       "route_name": "Littleroot Town",
       "region": "HOENN",
-      "backgrounds": { "main": "littleroot_town.png", "lab": "birch_lab.png", "mom": "littleroot_mom.png" },
+      "backgrounds": { "main": "littleroot_town.png" },
       "has_gym": false,
       "travel_options": [{"text": "Route 101", "target_area": "HOENN_ROUTE_101"}],
-      "explore_options": [{"text": "Mom", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiasite", "condition": ["delta_episode_cleared", "hoenn_version:OMEGA_RUBY"], "event": {"lines": ["Mom: Did you see the meteor shower last night? I found this odd stone in the yard this morning. It's for you!"], "gift_item": {"LATIASITE": 1}, "flag": "got_latiasite"}}, {"text": "Mom's Second Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiosite", "condition": ["delta_episode_cleared", "hoenn_version:ALPHA_SAPPHIRE"], "event": {"lines": ["Mom: Did you see the meteor shower last night? I found this odd stone in the yard this morning. It's for you!"], "gift_item": {"LATIOSITE": 1}, "flag": "got_latiosite"}}, {"text": "A Glinting Stone: Mewtwonite X", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_x", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE X!"], "gift_item": {"MEWTWONITE_X": 1}, "flag": "got_mewtwonite_x"}}, 
-        {"text": "Visit Mom", "action": "NPC", "target": "mom"},
-        {"text": "Visit Next Door", "action": "NPC", "target": "hoenn_neighbor", "door": "rival"},
-        {"text": "Visit Birch's Lab", "action": "NPC", "target": "hoenn_birch_lab"}
+      "explore_options": [{"text": "Mom", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiasite", "condition": ["delta_episode_cleared", "hoenn_version:OMEGA_RUBY"], "event": {"lines": ["Mom: Did you see the meteor shower last night? I found this odd stone in the yard this morning. It's for you!"], "gift_item": {"LATIASITE": 1}, "flag": "got_latiasite"}}, {"text": "Mom's Second Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiosite", "condition": ["delta_episode_cleared", "hoenn_version:ALPHA_SAPPHIRE"], "event": {"lines": ["Mom: Did you see the meteor shower last night? I found this odd stone in the yard this morning. It's for you!"], "gift_item": {"LATIOSITE": 1}, "flag": "got_latiosite"}}, {"text": "A Glinting Stone: Mewtwonite X", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_x", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE X!"], "gift_item": {"MEWTWONITE_X": 1}, "flag": "got_mewtwonite_x"}},
+        {"text": "Visit Next Door", "action": "NPC", "target": "hoenn_neighbor", "door": "rival"}
       ],
       "next_area": "HOENN_ROUTE_101",
       "on_enter_event": {"type": "event", "event": "hoenn_birch_lab", "condition": ["hoenn_birch_rescued", "not:hoenn_birch_thanked"]}
@@ -770,7 +768,7 @@
       "area_type": "town",
       "route_name": "Oldale Town",
       "region": "HOENN",
-      "backgrounds": { "main": "oldale_town.png", "pokecenter": "oldale_center.png", "pokemart": "oldale_mart.png" },
+      "backgrounds": { "pokecenter": "oldale_center.png", "pokemart": "oldale_mart.png" },
       "has_gym": false,
       "travel_options": [
         {"text": "Route 101", "target_area": "HOENN_ROUTE_101"},
@@ -790,13 +788,12 @@
       "area_type": "town",
       "route_name": "Petalburg City",
       "region": "HOENN",
-      "backgrounds": { "main": "petalburg_city.png", "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": ["petalburg_gym.png", "petalburg_gym_2.png", "petalburg_gym_leader.png"] },
+      "backgrounds": { "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": ["petalburg_gym.png", "petalburg_gym_2.png", "petalburg_gym_leader.png"] },
       "has_gym": true,
       "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Ace Trainer Randall", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mary", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "norman.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5, "TM257": 1}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
       "travel_options": [
         { "text": "Route 102", "target_area": "HOENN_ROUTE_102" },
-        { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
-        { "text": "Petalburg Woods", "target_area": "HOENN_PETALBURG_WOODS" }
+        { "text": "Route 104", "target_area": "HOENN_ROUTE_104" }
       ],
       "explore_options": [
         {"text": "Heal", "action": "HEAL"},
@@ -813,14 +810,13 @@
       "area_type": "town",
       "route_name": "Rustboro City",
       "region": "HOENN",
-      "backgrounds": { "main": "rustboro_city.png", "pokecenter": "rustboro_center.png", "pokemart": "rustboro_mart.png", "gym": "rustboro_gym.png" },
+      "backgrounds": { "pokecenter": "rustboro_center.png", "pokemart": "rustboro_mart.png", "gym": "rustboro_gym.png" },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [74], "rewards": {"balls": 2}}, {"name": "Hiker Marc", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 2}}], "leader": {"name": "Roxanne", "class": "GYM_LEADER", "sprite": "roxanne.png", "team": [74, 299], "levels": [12, 14], "badge_reward": "STONE", "rewards": {"balls": 5, "TM036": 1}, "dialogue": {"intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."], "player_won": ["Your strategy was flawless!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_stone_earned", "movesets": {"74": ["TACKLE", "DEFENSE-CURL", "ROCK-THROW", "ROCK-TOMB"], "299": ["BLOCK", "HARDEN", "TACKLE", "ROCK-TOMB"]}}},
       "travel_options": [
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
         { "text": "Route 115", "target_area": "HOENN_ROUTE_115" },
-        { "text": "Route 116", "target_area": "HOENN_ROUTE_116" },
-        { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
+        { "text": "Route 116", "target_area": "HOENN_ROUTE_116" }
       ],
       "explore_options": [{"text": "Mr. Stone", "door": "devon", "action": "EVENT", "color": "GOLD", "condition": "has_item:INTRIGUING_STONE", "flag_condition": "not got_pidgeotite", "event": {"lines": ["Mr. Stone: Oh! Is that an Intriguing Stone? What a find! May I have it?", "Mr. Stone: In return, take this. It's a Mega Stone for Pidgeot."], "take_item": {"INTRIGUING_STONE": 1}, "gift_item": {"PIDGEOTITE": 1}, "flag": "got_pidgeotite"}}, 
         { "text": "Heal", "action": "HEAL" },
@@ -836,7 +832,7 @@
       "area_type": "town",
       "route_name": "Dewford Town",
       "region": "HOENN",
-      "backgrounds": { "main": "dewford_town.png", "pokecenter": "dewford_center.png", "pokemart": "dewford_mart.png", "gym": "dewford_gym.png" },
+      "backgrounds": { "pokecenter": "dewford_center.png", "pokemart": "dewford_mart.png", "gym": "dewford_gym.png" },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Blackbelt Koichi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66], "rewards": {"balls": 2}}], "leader": {"name": "Brawly", "class": "GYM_LEADER", "sprite": "brawly.png", "team": [66, 296], "levels": [14, 16], "badge_reward": "KNUCKLE", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM064": 1}, "dialogue": {"intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."], "player_won": ["You're a real wave!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_knuckle_earned", "movesets": {"66": ["KARATE-CHOP", "LOW-KICK", "SEISMIC-TOSS", "BULK-UP"], "296": ["ARM-THRUST", "VITAL-THROW", "REVERSAL", "BULK-UP"]}}, "requirements": {"badges": 1, "fail_text": ["Brawly is only accepting challengers with 1 Hoenn badge.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
@@ -847,7 +843,6 @@
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" }
       ],
       "next_area": "HOENN_GRANITE_CAVE",
@@ -857,7 +852,7 @@
       "area_type": "town",
       "route_name": "Slateport City",
       "region": "HOENN",
-      "backgrounds": { "main": "slateport_city.png", "pokecenter": "slateport_center.png", "pokemart": "slateport_mart.png" },
+      "backgrounds": { "pokecenter": "slateport_center.png", "pokemart": "slateport_mart.png" },
       "has_gym": false,
       "travel_options": [
         {"text": "Route 109", "target_area": "HOENN_ROUTE_109"},
@@ -900,7 +895,7 @@
       "area_type": "town",
       "route_name": "Mauville City",
       "region": "HOENN",
-      "backgrounds": { "main": "mauville_city.png", "pokecenter": "mauville_center.png", "pokemart": "mauville_mart.png", "gym": "mauville_gym.png" },
+      "backgrounds": { "pokecenter": "mauville_center.png", "pokemart": "mauville_mart.png", "gym": "mauville_gym.png" },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "guitarist.png", "team": [309], "rewards": {"balls": 2}}], "leader": {"name": "Wattson", "class": "GYM_LEADER", "sprite": "wattson.png", "team": [81, 100, 82], "levels": [19, 19, 21], "badge_reward": "DYNAMO", "rewards": {"balls": 5, "DEVON_SCOPE": 1, "TM048": 1}, "dialogue": {"intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."], "player_won": ["Shocking performance!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_dynamo_earned", "movesets": {"81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "100": ["ROLLOUT", "SPARK", "SONICBOOM", "SELF-DESTRUCT"], "82": ["SHOCK-WAVE", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"]}}, "requirements": {"badges": 2, "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"], "flags": ["defeated_wally_mauville"]}},
       "travel_options": [
@@ -924,7 +919,7 @@
       "area_type": "town",
       "route_name": "Verdanturf Town",
       "region": "HOENN",
-      "backgrounds": { "main": "verdanturf_town.png", "pokecenter": "verdanturf_center.png" },
+      "backgrounds": { "pokecenter": "verdanturf_center.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 117", "target_area": "HOENN_ROUTE_117" },
@@ -942,7 +937,7 @@
       "area_type": "town",
       "route_name": "Fallarbor Town",
       "region": "HOENN",
-      "backgrounds": { "main": "fallarbor_town.png", "pokecenter": "fallarbor_center.png" },
+      "backgrounds": { "pokecenter": "fallarbor_center.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 113", "target_area": "HOENN_ROUTE_113" },
@@ -963,13 +958,11 @@
       "area_type": "town",
       "route_name": "Lavaridge Town",
       "region": "HOENN",
-      "backgrounds": { "main": "lavaridge_town.png", "pokecenter": "lavaridge_center.png", "pokemart": "lavaridge_mart.png", "gym": ["lavaridge_gym.png", "lavaridge_gym_leader.png"] },
+      "backgrounds": { "pokecenter": "lavaridge_center.png", "pokemart": "lavaridge_mart.png", "gym": ["lavaridge_gym.png", "lavaridge_gym_leader.png"] },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Kindler Jeff", "class": "KINDLER", "sprite": "kindler.png", "team": [322], "rewards": {"balls": 2}}], "leader": {"name": "Flannery", "class": "GYM_LEADER", "sprite": "flannery.png", "team": [218, 322, 324], "levels": [26, 26, 28], "badge_reward": "HEAT", "rewards": {"balls": 5, "RARE_CANDY": 3, "ROOT_FOSSIL": 1, "TM157": 1}, "dialogue": {"intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."], "player_won": ["You're too hot to handle!", "Take this Root Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_heat_earned", "movesets": {"218": ["OVERHEAT", "SMOG", "LIGHT-SCREEN", "SUNNY-DAY"], "324": ["OVERHEAT", "SUNNY-DAY", "BODY-SLAM", "ATTRACT"]}}, "requirements": {"badges": 3, "fail_text": ["Flannery is only accepting challengers with 3 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
-        { "text": "Route 112", "target_area": "HOENN_ROUTE_112" },
-        { "text": "Jagged Pass", "target_area": "HOENN_JAGGED_PASS" },
-        { "text": "Mt. Chimney", "target_area": "HOENN_MT_CHIMNEY" }
+        { "text": "Route 112", "target_area": "HOENN_ROUTE_112" }
       ],
       "explore_options": [
         {"text": "Herb Shop", "door": "herb", "action": "SHOP", "stock": ["ENERGY_POWDER", "ENERGY_ROOT", "HEAL_POWDER", "REVIVAL_HERB"]},
@@ -993,7 +986,7 @@
       "area_type": "town",
       "route_name": "Fortree City",
       "region": "HOENN",
-      "backgrounds": { "main": "fortree_city.png", "pokecenter": "fortree_center.png", "pokemart": "fortree_mart.png", "gym": "fortree_gym.png" },
+      "backgrounds": { "pokecenter": "fortree_center.png", "pokemart": "fortree_mart.png", "gym": "fortree_gym.png" },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Bird Keeper Jared", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [333], "rewards": {"balls": 2}}], "leader": {"name": "Winona", "class": "GYM_LEADER", "sprite": "winona.png", "team": [277, 279, 227, 334], "levels": [33, 33, 33, 35], "badge_reward": "FEATHER", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM268": 1}, "dialogue": {"intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."], "player_won": ["You soared above me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_feather_earned", "movesets": {"277": ["QUICK-ATTACK", "AERIAL-ACE", "DOUBLE-TEAM", "ENDEAVOR"], "279": ["WATER-GUN", "SUPERSONIC", "PROTECT", "AERIAL-ACE"], "227": ["SAND-ATTACK", "FURY-ATTACK", "STEEL-WING", "AERIAL-ACE"], "334": ["EARTHQUAKE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"]}}, "requirements": {"badges": 5, "fail_text": ["Something invisible is blocking the Gym door!", "Winona needs 5 Hoenn badges, and you'll need a way to see what's in the way.", "Steven was heading east to Route 120..."], "flags": ["got_starter_mega_stone"]}},
       "travel_options": [
@@ -1004,8 +997,7 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" },
-        { "text": "Weather Institute", "action": "TRAVEL", "target_area": "HOENN_WEATHER_INSTITUTE" }
+        { "text": "Gym", "action": "GYM" }
       ],
       "next_area": "HOENN_ROUTE_119",
       "on_enter_event": null
@@ -1014,13 +1006,11 @@
       "area_type": "town",
       "route_name": "Lilycove City",
       "region": "HOENN",
-      "backgrounds": { "main": "lilycove_city.png", "pokecenter": "lilycove_center.png", "pokemart": "lilycove_mart.png" },
+      "backgrounds": { "pokecenter": "lilycove_center.png", "pokemart": "lilycove_mart.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 121", "target_area": "HOENN_ROUTE_121" },
         { "text": "Route 124", "target_area": "HOENN_ROUTE_124", "condition": "has_item:HM_SURF" },
-        { "text": "Safari Zone", "target_area": "HOENN_SAFARI_ZONE" },
-        { "text": "Route 122", "target_area": "HOENN_ROUTE_122" },
             {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
             {"text": "Ferry to Navel Rock", "door": "harbor", "target_area": "NAVEL_ROCK", "item_condition": "MYSTIC_TICKET", "message": "The ferry sails far out to sea, to a rocky island: Navel Rock."},
             {"text": "Ferry to Birth Island", "door": "harbor", "target_area": "BIRTH_ISLAND", "item_condition": "AURORA_TICKET", "message": "The ferry sails far out to sea, to a bare little island: Birth Island."}
@@ -1046,7 +1036,7 @@
       "area_type": "town",
       "route_name": "Mossdeep City",
       "region": "HOENN",
-      "backgrounds": { "main": "mossdeep_city.png", "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": ["mossdeep_gym.png", "mossdeep_gym_leader.png"] },
+      "backgrounds": { "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": ["mossdeep_gym.png", "mossdeep_gym_leader.png"] },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"battle_options": {"double": true}, "name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "DIVE_GEAR": 1, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
@@ -1070,13 +1060,12 @@
       "area_type": "town",
       "route_name": "Sootopolis City",
       "region": "HOENN",
-      "backgrounds": { "main": "sootopolis_city.png", "pokecenter": "sootopolis_center.png", "pokemart": "sootopolis_mart.png", "gym": "sootopolis_gym.png" },
+      "backgrounds": { "pokecenter": "sootopolis_center.png", "pokemart": "sootopolis_mart.png", "gym": "sootopolis_gym.png" },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Swimmer Katie", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118], "rewards": {"balls": 2}}], "leader": {"name": "Wallace", "class": "GYM_LEADER", "sprite": "wallace.png", "team": [370, 340, 364, 119, 350], "levels": [44, 44, 44, 44, 46], "badge_reward": "RAIN", "rewards": {"balls": 5, "EON_TICKET": 1, "CLAW_FOSSIL": 1}, "dialogue": {"intro": ["Wallace: Welcome to the Sootopolis City Gym! I'm Wallace, the Water-type Gym Leader."], "player_won": ["The tides have turned in your favor!", "Take this Claw Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_rain_earned", "movesets": {"370": ["FLAIL", "ATTRACT", "SWEET-KISS", "WATER-PULSE"], "340": ["AMNESIA", "RAIN-DANCE", "EARTHQUAKE", "WATER-PULSE"], "364": ["ENCORE", "BODY-SLAM", "AURORA-BEAM", "WATER-PULSE"], "119": ["HORN-DRILL", "FURY-ATTACK", "RAIN-DANCE", "WATER-PULSE"], "350": ["RECOVER", "TWISTER", "ICE-BEAM", "WATER-PULSE"]}}, "requirements": {"badges": 7, "fail_text": ["The Gym is empty. Wallace has gone to the Cave of Origin...", "Hoenn needs you to stop Primal {legend} first!"], "flag": "cave_of_origin_cleared"}},
       "travel_options": [
         { "text": "Route 126", "target_area": "HOENN_ROUTE_126" },
-        { "text": "Cave of Origin", "target_area": "HOENN_CAVE_OF_ORIGIN" },
-        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR", "condition": "beat_hoenn_champion" }
+        { "text": "Cave of Origin", "target_area": "HOENN_CAVE_OF_ORIGIN" }
       ],
       "explore_options": [{"text": "A Glinting Stone: Sablenite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_sablenite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SABLENITE!"], "gift_item": {"SABLENITE": 1}, "flag": "got_sablenite"}}, 
         { "text": "Heal", "action": "HEAL" },
@@ -1090,13 +1079,11 @@
       "area_type": "town",
       "route_name": "Pacifidlog Town",
       "region": "HOENN",
-      "backgrounds": { "main": "pacifidlog_town.png", "pokecenter": "pacifidlog_center.png" },
+      "backgrounds": { "pokecenter": "pacifidlog_center.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 131", "target_area": "HOENN_ROUTE_131" },
-        { "text": "Route 132", "target_area": "HOENN_ROUTE_132" },
-        { "text": "Shoal Cave", "target_area": "HOENN_SHOAL_CAVE" },
-        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR", "condition": "beat_hoenn_champion" }
+        { "text": "Route 132", "target_area": "HOENN_ROUTE_132" }
       ],
       "explore_options": [{"text": "A Glinting Stone: Kangaskhanite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_kangaskhanite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the KANGASKHANITE!"], "gift_item": {"KANGASKHANITE": 1}, "flag": "got_kangaskhanite"}}, {"text": "Heal", "action": "HEAL"}],
       "next_area": "HOENN_ROUTE_131",
@@ -1107,7 +1094,6 @@
       "route_name": "Ever Grande City",
       "region": "HOENN",
       "backgrounds": {
-        "main": "ever_grande_city.png",
         "pokecenter": "ever_grande_center.png",
         "gym": ["hoenn_elite_sidney.png", "hoenn_elite_phoebe.png", "hoenn_elite_glacia.png", "hoenn_elite_drake.png", "hoenn_champion.png"]
       },
@@ -1115,8 +1101,7 @@
       "gym": {"trainers": [{"name": "Sidney", "class": "ELITE_FOUR", "sprite": "sidney.png", "team": [262, 275, 332, 319, 359], "levels": [50, 50, 50, 50, 52], "rewards": {"balls": 15}, "movesets": {"262": ["CRUNCH", "TAKE-DOWN", "SAND-ATTACK", "ROAR"], "332": ["FEINT-ATTACK", "NEEDLE-ARM", "COTTON-SPORE", "LEECH-SEED"], "275": ["FAKE-OUT", "EXTRASENSORY", "DOUBLE-TEAM", "SWAGGER"], "319": ["SURF", "CRUNCH", "SLASH", "SWAGGER"], "359": ["SWORDS-DANCE", "SLASH", "AERIAL-ACE", "SNATCH"]}, "rematch": {"team": [559, 275, 319, 571, 630, 359], "levels": [70, 70, 70, 70, 70, 72]}}, {"name": "Phoebe", "class": "ELITE_FOUR", "sprite": "phoebe.png", "team": [356, 354, 302, 354, 477], "levels": [51, 51, 51, 51, 53], "rewards": {"balls": 15}, "movesets": {"356": ["SHADOW-PUNCH", "CONFUSE-RAY", "CURSE", "PROTECT"], "354": ["SHADOW-BALL", "GRUDGE", "WILL-O-WISP", "FEINT-ATTACK"], "302": ["SHADOW-BALL", "DOUBLE-TEAM", "NIGHT-SHADE", "FEINT-ATTACK"]}, "rematch": {"team": [354, 429, 426, 609, 477, 302], "levels": [71, 71, 71, 71, 71, 73]}}, {"name": "Glacia", "class": "ELITE_FOUR", "sprite": "glacia.png", "team": [362, 478, 362, 478, 365], "levels": [52, 52, 52, 52, 54], "rewards": {"balls": 15}, "movesets": {"362": ["LIGHT-SCREEN", "CRUNCH", "ICY-WIND", "ICE-BEAM"], "365": ["SURF", "BODY-SLAM", "ICE-BEAM", "SHEER-COLD"]}, "rematch": {"team": [460, 614, 478, 584, 365, 362], "levels": [72, 72, 72, 72, 72, 74]}}, {"name": "Drake", "class": "ELITE_FOUR", "sprite": "drake.png", "team": [334, 330, 230, 330, 373], "levels": [53, 53, 53, 53, 55], "rewards": {"balls": 15}, "movesets": {"334": ["DOUBLE-EDGE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"], "330": ["FLAMETHROWER", "CRUNCH", "DRAGONBREATH", "EARTHQUAKE"], "373": ["FLAMETHROWER", "DRAGON-CLAW", "ROCK-SLIDE", "CRUNCH"]}, "rematch": {"team": [334, 691, 230, 330, 612, 373], "levels": [73, 73, 73, 73, 73, 75]}}], "leader": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [227, 344, 306, 346, 348, 376], "levels": [57, 57, 57, 57, 57, 59], "rewards": {"balls": 25, "NATIONAL_DEX": 1}, "victory_flag": "beat_hoenn_champion", "mega": 376, "dialogue": {"intro": ["Steven: I knew you'd make it here. Now show me everything you've got!", "Let's see if your bond with your Pokemon outshines my Mega Metagross!"], "player_won": ["Congratulations! You are the new Hoenn Champion!"], "player_lost": ["A fine battle. Come back stronger, my friend."]}, "movesets": {"227": ["TOXIC", "AERIAL-ACE", "SPIKES", "STEEL-WING"], "346": ["GIGA-DRAIN", "ANCIENT-POWER", "INGRAIN", "CONFUSE-RAY"], "344": ["REFLECT", "LIGHT-SCREEN", "ANCIENT-POWER", "EARTHQUAKE"], "348": ["WATER-PULSE", "ANCIENT-POWER", "AERIAL-ACE", "SLASH"], "306": ["THUNDER", "EARTHQUAKE", "SOLAR-BEAM", "DRAGON-CLAW"], "376": ["EARTHQUAKE", "PSYCHIC", "METEOR-MASH", "SHADOW-BALL"]}, "rematch": {"team": [227, 344, 703, 142, 306, 376], "levels": [77, 77, 77, 77, 77, 79]}}, "requirements": {"badges": 8, "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Hoenn Badges who made it through Victory Road may enter!"], "flags": ["defeated_wally_victory"]}},
       "travel_options": [
         { "text": "Victory Road", "target_area": "HOENN_VICTORY_ROAD" },
-        { "text": "Route 128", "target_area": "HOENN_ROUTE_128" },
-        { "text": "Route 129", "target_area": "HOENN_ROUTE_129" }
+        { "text": "Route 128", "target_area": "HOENN_ROUTE_128" }
       ],
       "explore_options": [{"text": "A Glinting Stone: Mewtwonite Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE Y!"], "gift_item": {"MEWTWONITE_Y": 1}, "flag": "got_mewtwonite_y"}}, {"text": "Heal", "action": "HEAL"}, {"text": "CHALLENGE LEAGUE", "door": "league", "action": "GYM"}],
       "next_area": "HOENN_VICTORY_ROAD",
@@ -3066,7 +3051,7 @@
       "route_name": "Oceanic Museum",
       "region": "HOENN",
       "battle_type": "indoor",
-      "backgrounds": { "main": "oceanic_museum.png" },
+      "backgrounds": {  },
       "min_rounds": 0,
       "trainer_pool": [
         {
@@ -3126,7 +3111,7 @@
       "route_name": "Mossdeep Space Center",
       "region": "HOENN",
       "battle_type": "indoor",
-      "backgrounds": { "main": "space_center.png" },
+      "backgrounds": {  },
       "min_rounds": 0,
       "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The rocket fuel is ours! Stand aside!"], "player_won": ["Grunt: No way!"], "player_lost": ["Grunt: Magma rules!"]}, "when_flags": ["badge_mind_earned"], "villain": "grunt"}, {"name": "Magma Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 42, 262], "rewards": {"balls": 5}, "dialogue": {"intro": ["Tabitha: Hehehe! With this fuel, Mt. Chimney will erupt!"], "player_won": ["Tabitha: Leader Maxie won't be happy..."], "player_lost": ["Tabitha: Hehehe!"]}, "when_flags": ["badge_mind_earned"], "villain": "admin_a"}, {"name": "Magma Leader Maxie", "class": "ROCKET_LEADER", "sprite": "maxie.png", "team": [262, 42, 323], "rewards": {"balls": 10, "RARE_CANDY": 2}, "is_boss_battle": true, "battle_options": {"double": true, "partner": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [375, 227, 306], "levels": [42, 43, 44]}, "second_trainer": {"name": "Tabitha", "villain": "admin_a", "villain_by_version": {"OMEGA_RUBY": "admin_a", "ALPHA_SAPPHIRE": "admin_b"}, "team": [323, 262, 42], "levels": [36, 38, 40], "rewards": {"balls": 3}}}, "victory_flag": "space_center_cleared", "dialogue": {"intro": ["{leader}: {team} needs the Space Center's power. Stand aside!"], "player_won": ["{leader}: You're tougher than you look..."]}, "when_flags": ["badge_mind_earned"], "villain": "leader", "movesets": {"262": ["SAND-ATTACK", "BITE", "ODOR-SLEUTH", "ROAR"], "42": ["SUPERSONIC", "ASTONISH", "BITE", "WING-ATTACK"], "323": ["TACKLE", "FOCUS-ENERGY", "EMBER", "MAGNITUDE"]}}, {"name": "Team Magma Grunt", "spot_name": "Team Grunts (Delta)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 262, 262, 262, 262], "levels": [25, 25, 25, 25, 25], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [262, 262, 262, 262, 262], "ALPHA_SAPPHIRE": [262, 262, 262, 262, 262]}, "when_flags": ["beat_hoenn_champion"]}, {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 2F)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 262, 110], "levels": [55, 51, 51], "rewards": {"balls": 5}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [323, 262, 110], "ALPHA_SAPPHIRE": [319, 262, 89]}, "when_flags": ["beat_hoenn_champion"]}],
       "route_menu": [
@@ -3140,7 +3125,7 @@
       "route_name": "{team} Hideout",
       "region": "HOENN",
       "battle_type": "cave",
-      "backgrounds": { "main": "aqua_hideout.png" },
+      "backgrounds": {  },
       "min_rounds": 0,
       "trainer_pool": [
         {"name": "Team Grunt (entrance)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [322, 109], "levels": [35, 35], "team_by_version": {"OMEGA_RUBY": [322, 109], "ALPHA_SAPPHIRE": [42]}, "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: How did you find our hideout?!"], "player_won": ["Grunt: Abandon ship!"], "player_lost": ["Grunt: Get out of here!"]}, "villain": "grunt", "levels_by_version": {"OMEGA_RUBY": [35, 35], "ALPHA_SAPPHIRE": [37]}},
