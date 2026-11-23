@@ -345,7 +345,12 @@ VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it 
              "RED_SHARD": {"price": 2000, "text": "A small red shard. The Treasure Hunter on Route 124 trades a Fire Stone for one."},
              "BLUE_SHARD": {"price": 2000, "text": "A small blue shard. The Treasure Hunter on Route 124 trades a Water Stone for one."},
              "YELLOW_SHARD": {"price": 2000, "text": "A small yellow shard. The Treasure Hunter on Route 124 trades a Thunder Stone for one."},
-             "GREEN_SHARD": {"price": 2000, "text": "A small green shard. The Treasure Hunter on Route 124 trades a Leaf Stone for one."}}
+             "GREEN_SHARD": {"price": 2000, "text": "A small green shard. The Treasure Hunter on Route 124 trades a Leaf Stone for one."},
+             # (Mulch: Black 2 / White 2's Hidden Grottoes hide it; with no Berry planting in Unova it only sells, as there; 11-23)
+             "DAMP_MULCH": {"price": 200, "text": "Soil that keeps Berries damp. Gardeners buy it, so it sells for a little money."},
+             "GROWTH_MULCH": {"price": 200, "text": "Soil that makes Berries grow faster. Gardeners buy it, so it sells for a little money."},
+             "STABLE_MULCH": {"price": 200, "text": "Soil that keeps ripe Berries on the plant longer. Gardeners buy it, so it sells for a little money."},
+             "GOOEY_MULCH": {"price": 200, "text": "Soil that helps Berries grow back. Gardeners buy it, so it sells for a little money."}}
 
 
 # Effort points from battle (Gen 6 on): each Pokemon that earns XP from a knockout gets the foe's yield
