@@ -313,11 +313,11 @@ check(t.doors.get((58, 7)) == "gym" and t._door_options("gym") and (58, 8) in re
 for _a in sorted(DATA):
     if _a not in MAPS or DATA[_a].get("area_type") == "town": continue
     _m = MAPS[_a]
-    _fl = _m.get("floors") or [_m]
+    _fl = (_m.get("floors") or [_m]) + [f for sm in (_m.get("story_maps") or []) for f in (sm.get("map") or {}).get("floors") or []]   # (11-23: a map's other versions too: the Trainer Tower's climbs)
     _who = lambda x: [x] if isinstance(x, str) else [y.get("text") if isinstance(y, dict) else y for y in x] if isinstance(x, list) else [x.get("text")] if isinstance(x, dict) else []   # (a rebuilt map's people: names, lists, whole options; 11-14)
     _have = {y for f in _fl + list((_m.get("rooms") or {}).values()) for x in f.get("people", []) for y in _who(x)} | ({"BOSS"} if any(f.get("boss_spot") for f in _fl) else set())
     _kinds = set((_m.get("buildings") or {}).values()) | {k for f in _fl for k in (f.get("buildings") or {}).values()}
-    _lost = [o["text"] for o in DATA[_a].get("route_menu", []) if o.get("action") in ("EVENT", "BOSS", "NPC")
+    _lost = [o["text"] for o in DATA[_a].get("route_menu", []) if o.get("action") in ("EVENT", "BOSS", "NPC") and not o.get("not_on_map")
              and o["text"] not in _have and o.get("door") not in _kinds and not (o.get("action") == "BOSS" and "BOSS" in _have)]
     check(not _lost, f"{_a}: every event and boss has someone to walk up to or a door to go through (missing: {_lost})")
 
@@ -613,6 +613,118 @@ p.step(0, -1); frames(p, 60)
 check(_shut and _still and story.story_flags.get("dotted_hole_open") and not str(p.run.floor.decor.get((24, 24), "")).startswith("barrier:"),
       f"Ruin Valley: the braille door stays shut without Cut; with HM01 and the Cascade Badge it opens (FireRed) ({_shut}, {_still}, {story.story_flags.get('dotted_hole_open')})")
 story.badges.clear(); story.badges.update(_bd)
+
+# ---- the Trainer Tower, FireRed's (11-23, Kanto K2): Seven Island's door, the desk, a climb's floors, its battles, the roof
+from src.world import trainer_tower as _tt
+from src.ui import challenge_clock as _ck
+def _ttap(st, n=400):
+    for _ in range(n):
+        cs = g.current_state
+        if getattr(cs, "dialogue_box", None) is not None and getattr(cs.dialogue_box, "visible", False):
+            cs.dialogue_box.advance()
+        frames(cs)
+        if getattr(cs, "_ready", None) and cs._ready() and not getattr(cs.dialogue_box, "visible", False):
+            return
+for _k in [k for k in story.story_flags if k.startswith("tt_")] + ["challenge_clock"]:
+    story.story_flags.pop(_k, None)
+_opt = next(o for o in DATA["SEVEN_ISLAND"]["explore_options"] if o.get("text") == "Trainer Tower")
+check(_opt.get("action") == "TRAVEL" and _opt.get("target_area") == "TRAINER_TOWER" and not DATA["SEVEN_ISLAND"].get("gym"),
+      "Trainer Tower: Seven Island's door goes into the tower (no menu, no Rolf/Koji/Vera/Tower Master)")
+p = route("TRAINER_TOWER", "SEVEN_ISLAND")
+check(p.run.index == 0 and (p.run.floor.w, p.run.floor.h) == (19, 17) and p.run.n_floors == 11, f"...in at FireRed's lobby, 19 x 17; lobby, 1F-8F, roof and the lift ({p.run.player}, {p.run.n_floors})")
+_lob = {(m.payload or {}).get("text"): (m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+check(_lob.get("NURSE") == (4, 9) and _lob.get("CLERK") == (14, 9) and _lob.get("RECEPTIONIST") == (11, 7), f"...the nurse, the clerk and the receptionist on FireRed's spots ({_lob})")
+p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]
+p.run.player, p.anim = (9, 3), 0
+p.step(0, -1); _ttap(p)
+check(p.run.index == 0, f"...the stairs up wait till you sign up ({p.run.index})")
+_said = []
+_tt.event(p, {"tt": "desk"}, [], lambda l: _said.extend(l))
+for _ in range(300):
+    if type(g.current_state).__name__ == "PickListState":
+        break
+    st = g.current_state
+    if getattr(st, "dialogue_box", None) is not None and st.dialogue_box.visible:
+        st.dialogue_box.advance()
+    frames(st)
+_pk = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rows = [c[0] for c in _pk.choices] if _pk else []
+story.player_team = [mk(4), mk(9)]
+story.player_team[0].level, story.player_team[1].level = 60, 55
+if _pk:
+    _pk.pick("SINGLE")
+for _ in range(900):
+    if type(g.current_state).__name__ in ("PlayState", "DungeonState") and getattr(g.current_state, "run", None) is not None and g.current_state._ready():
+        break
+    _st = g.current_state
+    if getattr(_st, "dialogue_box", None) is not None and getattr(_st.dialogue_box, "visible", False):
+        _st.dialogue_box.advance()
+    frames(_st)
+p = g.current_state
+check(_rows[:4] == ["Single Battle", "Double Battle", "Knockout", "Mixed"] and story.story_flags.get("tt_on") and _ck.running(story)
+      and p.run.index == 0 and tuple(p.run.player) == (9, 7),
+      f"...the receptionist: four climbs; signed up, the clock runs and you stand before the counter ({_rows}, {getattr(p.run, 'player', None)})")
+p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]
+p.run.player, p.anim = (9, 3), 0
+p.step(0, -1); _ttap(p)
+_one = {(m.payload or {}).get("text"): (m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+check(p.run.index == 1 and _one.get("Alberto") == (15, 13), f"...up to 1F: the Single climb's first trainer, Alberto, on FireRed's spot ({p.run.index}, {_one})")
+_b = _tt._battle(g, 1, _tt.floor_data(story, 1), 0)
+_bb = getattr(_b, "battle_state", None) or getattr(_b, "next_state", None) or getattr(_b, "battle", None)
+_team = [(q.id, q.level, getattr(q, "held_item", None)) for q in getattr(_bb, "opponent_team", [])]
+check([t[:2] for t in _team] == [(160, 60), (115, 60)],
+      f"...his two (FireRed's pick for 1F: Feraligatr, Kangaskhan) at your highest level, Lv 60 ({_team})")
+_after = _tt.after_battle(g, {"floor": 1, "kind": "SINGLE", "k": 0}, True)
+p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]
+p.run.player, p.anim = (15, 7), 0
+p.step(0, -1); _ttap(p)
+check(story.story_flags.get("tt_floor_1") and p.run.index == 2, f"...beaten, 1F's stairs up open: 2F ({p.run.index}, {_after})")
+_lose = _tt.after_battle(g, {"floor": 2, "kind": "SINGLE", "k": 0}, False)
+if callable(_lose):
+    _lose()
+for _ in range(900):
+    if type(g.current_state).__name__ in ("PlayState", "DungeonState") and getattr(g.current_state, "run", None) is not None and g.current_state is not p and g.current_state._ready():
+        break
+    _st = g.current_state
+    if getattr(_st, "dialogue_box", None) is not None and getattr(_st.dialogue_box, "visible", False):
+        _st.dialogue_box.advance()
+    frames(_st)
+p = g.current_state
+check(not story.story_flags.get("tt_on") and not story.story_flags.get("tt_floor_1") and not _ck.running(story) and p.run.index == 0,
+      f"...lose a battle: the climb is over, back in the lobby ({p.run.index}, {p.run.player})")
+# the Double climb: its own floors (FireRed's Double layouts) and pairs
+story.story_flags["tt_on"] = True; story.story_flags["tt_climb_DOUBLE"] = True
+for _nm in _tt.on_climb("DOUBLE"):
+    story.story_flags["tt_here_" + _nm.strip().replace(" ", "_")] = True
+p = route("TRAINER_TOWER", "SEVEN_ISLAND")
+while len(p.run.floors) <= 1:
+    p.run.enter_floor(len(p.run.floors))
+p.run.enter_floor(1); frames(p, 2)
+_two = {(m.payload or {}).get("text"): (m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+_d = _tt._battle(g, 1, _tt.floor_data(story, 1), 0)
+check(_two.get("Jen") == (10, 12) and _two.get("Kira") == (10, 13) and "2_151" in json.dumps(MAPS["TRAINER_TOWER"]["story_maps"][0]["map"])
+      and (getattr(getattr(_d, "next_state", None), "battle_options", None) or {}).get("double"),
+      f"...the Double climb: FireRed's Double floors; Jen & Kira side by side, a double battle ({_two})")
+# the roof: the owner, the time, the prize once, the record
+for _n in range(1, 9):
+    story.story_flags[f"tt_floor_{_n}"] = True
+story.story_flags.pop("tt_climb_DOUBLE", None); story.story_flags["tt_climb_SINGLE_on"] = True
+_ck.start(story, "TRAINER TOWER")
+story.story_flags.pop("tt_prize_SINGLE", None); story.inventory.pop("UPGRADE", None)
+p = route("TRAINER_TOWER", "SEVEN_ISLAND")
+while len(p.run.floors) <= 9:
+    p.run.enter_floor(len(p.run.floors))
+p.run.enter_floor(9); frames(p, 2)
+_said = []
+_tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
+check(story.inventory.get("UPGRADE") == 1 and story.story_flags.get("tt_best_SINGLE") is not None and not _ck.running(story) and any("record" in x for x in _said),
+      f"...the roof: the owner stops the clock, gives the Single climb's prize (FireRed: the Up-Grade) and keeps the record ({_said[:3]})")
+_said = []
+story.story_flags["tt_on"] = True; story.story_flags["tt_climb_SINGLE_on"] = True; _ck.start(story, "TRAINER TOWER")
+_tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
+check(story.inventory.get("UPGRADE") == 1, f"...the prize once only ({story.inventory.get('UPGRADE')})")
+for _k in [k for k in story.story_flags if k.startswith("tt_")] + ["challenge_clock"]:
+    story.story_flags.pop(_k, None)
 
 story.inventory.clear(); story.inventory.update(_inv)
 story.story_flags.clear(); story.story_flags.update(_flags)

@@ -12,7 +12,7 @@ t = travel("VERMILLION_CITY")
 check("Seagallop to One Island" in t and "Seagallop to Four Island" not in t, "Vermilion: Seagallop to One Island")
 t = travel("ONE_ISLAND")
 check({"Seagallop to Two Island", "Seagallop to Three Island"} <= set(t) and "Seagallop to Four Island" not in t, f"One Island: {t}")
-check(len(SEVII) == 34, f"{len(SEVII)} Sevii areas")  # 24 + 7 (areas_09_sevii.patch) + 3 (Three Isle Port, Navel Rock, Birth Island; the empty Three Isle Path went 11-04)
+check(len(SEVII) == 35, f"{len(SEVII)} Sevii areas")  # 24 + 7 (areas_09_sevii.patch) + 3 (Three Isle Port, Navel Rock, Birth Island; the empty Three Isle Path went 11-04) + the Trainer Tower (11-23)
 bad = [(k, o.get("target_area")) for k in SEVII for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
@@ -100,11 +100,9 @@ run("SEVAULT_CANYON", "OPEN THE CHAMBERS")  # (the Tanoby Key cave is in Sevault
 story.balls_left = 10  # (Poke Balls are in the Bag in use now)
 st = state_for("TANOBY_RUINS")
 check(st._check_route_condition(opt("TANOBY_RUINS", "CATCH WILD PKMN")["condition"], False), "Tanoby chambers: Unown")
-story.current_area_key = "SEVEN_ISLAND"
-lobby = ow.GymLobbyState(g, None)
-g.change_state(lobby)
-lobby.challenge_gym()
-check(lineup(battle_of(g.current_state))[0] == (57, 57), "Trainer Tower floor 1")
+_ttd = _json.load(open("assets/trainer_tower.json", encoding="utf-8"))   # (11-23: FireRed's Trainer Tower, walked - sevii_maps plays it)
+check(any(o.get("target_area") == "TRAINER_TOWER" for o in g.loader.area_data["STORY_PROGRESSION"]["SEVEN_ISLAND"]["explore_options"]) and len(_ttd["climbs"]) == 4,
+      "Trainer Tower: Seven Island's door leads in; FireRed's four climbs")
 st = state_for("FARAWAY_ISLAND")
 mew = opt("FARAWAY_ISLAND", "CHALLENGE MEW")
 dex = g.data.data.setdefault("pokedex", {})

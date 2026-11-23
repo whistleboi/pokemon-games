@@ -613,8 +613,8 @@ def settle(p, n=120):
 
 p = route("ROCKET_HIDEOUT", "CELADON_GAME_CORNER")
 f = p.run.floor
-check(p.run.n_floors == 4 and (f.w, f.h) == (28, 34) and p.run.index == 0 and p.run.player[1] <= 5 and sum(m.kind == "trainer" for m in f.movers) == 5,
-      f"the Rocket Hideout: FireRed's four floors; in from the Game Corner at B1F's stairs {tuple(p.run.player)}; FireRed's five Grunts on B1F")
+check(p.run.n_floors == 7 and (f.w, f.h) == (28, 34) and p.run.index == 0 and p.run.player[1] <= 5 and sum(m.kind == "trainer" for m in f.movers) == 5,
+      f"the Rocket Hideout: FireRed's four floors (and a lift car on three, 11-23); in from the Game Corner at B1F's stairs {tuple(p.run.player)}; FireRed's five Grunts on B1F")
 _hp = [t.get("zone") for t in g.loader.area_data["STORY_PROGRESSION"]["ROCKET_HIDEOUT"]["trainer_pool"]]
 check(_hp == ["b1f"] * 5 + ["b2f"] + ["b3f"] * 2 + ["b4f"] * 4, f"...its trainer list is FireRed's eleven Grunts, floor by floor, and Yellow's Jessie & James on B4F {_hp}")
 p.run.warp(1, 21, 3)                                     # (down to B2F, where the spin-tile maze is)
@@ -640,12 +640,35 @@ p.run.floor.movers = []
 p.run.player = (24, 26); p.anim = 0; p.sliding = None
 _lk = story.inventory.get("LIFT_KEY"); story.inventory["LIFT_KEY"] = 1   # (batch 13: FireRed's lift needs the Lift Key)
 p._clear_boulders()   # (its bar lifts now you have it)
-p.step(0, -1)
+p.step(0, -1)   # (11-23, K2: into FireRed's lift car; its panel, the Lift Key's, rides to B4F)
 for _q in range(40):
     if getattr(p, "dialogue_box", None) and p.dialogue_box.visible:
         p.dialogue_box.advance()
     frames(p)
-check(p.run.index == 3 and abs(p.run.player[0] - 20) + abs(p.run.player[1] - 24) <= 1, f"...with the Lift Key, the lift's door on B1F takes you down to B4F's (floor {p.run.index}, {tuple(p.run.player)})")
+p.run.player = (0, 3); p.anim = 0; p.facing = (0, -1)
+p.step(0, -1)
+for _q in range(200):
+    if type(g.current_state).__name__ == "PickListState":
+        break
+    if getattr(g.current_state, "dialogue_box", None) and g.current_state.dialogue_box.visible:
+        g.current_state.dialogue_box.advance()
+    frames(g.current_state)
+if type(g.current_state).__name__ == "PickListState":
+    g.current_state.done(6)
+for _q in range(400):
+    if type(g.current_state).__name__ in ("PlayState", "DungeonState") and getattr(g.current_state, "run", None) is not None and g.current_state.run.index == 6:
+        break
+    if getattr(g.current_state, "dialogue_box", None) and g.current_state.dialogue_box.visible:
+        g.current_state.dialogue_box.advance()
+    frames(g.current_state)
+p = g.current_state
+p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]; p.anim = 0
+p.step(0, 1)
+for _q in range(60):
+    if getattr(p, "dialogue_box", None) and p.dialogue_box.visible:
+        p.dialogue_box.advance()
+    frames(p)
+check(p.run.index == 3 and abs(p.run.player[0] - 20) + abs(p.run.player[1] - 24) <= 1, f"...with the Lift Key, B1F's lift takes you down to B4F's far side (floor {p.run.index}, {tuple(p.run.player)})")
 if _lk is None: story.inventory.pop("LIFT_KEY", None)
 _fig = [m.payload.get("text") if isinstance(m.payload, dict) else m.payload for m in p.run.floor.movers if m.kind == "figure"]
 check(any("GIOVANNI" in str(t) for t in _fig) or sum(m.kind == "trainer" for m in p.run.floor.movers) == 3, f"...B4F: Giovanni (when the story has him there) and its three Grunts ({_fig})")
