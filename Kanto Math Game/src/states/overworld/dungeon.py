@@ -3893,6 +3893,13 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 self._get_route_callback(opt)()
             return True
         if what.startswith("sign:"):
+            _fl = m["floors"][self.run.index] if m.get("floors") and self.run.index < len(m["floors"]) else m
+            _ev = (_fl.get("sign_events") or {}).get(f"{t[0]},{t[1]}")   # (a panel you press, not a sign you read: a lift's floor
+            if isinstance(_ev, str):                                       #  buttons, FireRed's; {"x,y": a route option or its text}, 11-23)
+                _ev = next((o for o in self.area_data.get("route_menu", []) if o.get("text") == _ev), None)
+            if _ev and self._check_route_condition(_ev.get("condition"), False, _ev) and self._flag_ok(_ev):
+                self._get_route_callback(_ev)()
+                return True
             lines = (m.get("signs") or [])[int(what[5:])] if int(what[5:]) < len(m.get("signs") or []) else []
             if lines:
                 from src.states.overworld.common import _fill_names

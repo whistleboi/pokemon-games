@@ -298129,7 +298129,7 @@
           "You received 5 POKE BALLS!"
          ],
          "gift_item": {
-          "POKE_BALL": 5
+          "balls": 5
          }
         }
        ],

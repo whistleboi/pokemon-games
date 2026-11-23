@@ -390,6 +390,10 @@ def _run_story_event(state, key, check, show):
         from src.world import join_avenue
         join_avenue.event(state, ev, lines, show)
         return
+    if ev.get("world"):   # (a region's own mechanic: src/world/<world>.py event(state, ev, lines, show); Unova's Hidden Grottoes, 11-23)
+        import importlib
+        importlib.import_module("src.world." + str(ev["world"])).event(state, ev, lines, show)
+        return
     if ev.get("cruise"):   # (the Royal Unova: boarding, its crew's counts and hints, long talkers; src/world/royal_unova.py, 11-21)
         from src.world import royal_unova
         royal_unova.event(state, ev, lines, show)
@@ -650,6 +654,10 @@ def _run_story_event(state, key, check, show):
                 show(_resolve_lines(game, (el.get("ride") or ["The lift hums..."]) if moved else []) + [f"This is {label}."])
                 return
             at = next((f[2] for f in el["floors"] if f[1] == room and len(f) > 2), None) or el.get("lift_at") or (1, 2)   # (a floor's own spot by its lift door: the Kumquat Hotel's, 11-18)
+            if isinstance(room, int):   # (a map of floors' lift: room is the floor you step out on, at its spot - FireRed's Silph Co. and
+                game.arrive_floor = (el["area"], room, list(at))   #  Rocket Hideout lifts, whose car is a floor of its own per stop; 11-23)
+                game.change_state(AreaTransitionState(game, el["area"], initial_message=(el.get("ride") or []) + [f"The lift stops at {label}."]))
+                return
             game.walk_town_room = (el["area"], room)
             game.walk_town_pos = (el["area"], tuple(at), (0, 1))
             game.change_state(AreaTransitionState(game, el["area"], initial_message=[f"The lift stops at {label}."]))
