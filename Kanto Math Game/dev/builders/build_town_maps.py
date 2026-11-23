@@ -142,8 +142,11 @@ def reachable(key, m):
                 wet.add(n)
                 todo.append(n)
     by_surf = lambda t: any((t[0] + dx, t[1] + dy) in wet for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+    # ("look_only": ["x,y", ...] - someone to see, not talk to, out of reach as in the game: Lorelei's dolls on her top
+    #  shelf, FireRed's Four Island; Kanto 11-23)
+    look = {tuple(int(v) for v in str(s).split(",")) for s in m.get("look_only", [])}
     cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch)
-            if not near(t) and not (ch == "N" and (over(t) or over2(t) or by_surf(t))) and not (ch == "D" and by_surf(t))]   # (a door you surf to: the Castelia Sewers in summer)
+            if not near(t) and not (ch == "N" and (t in look or over(t) or over2(t) or by_surf(t))) and not (ch == "D" and by_surf(t))]   # (a door you surf to: the Castelia Sewers in summer)
     assert not cut, f"{key}: out of reach {cut[:6]}"
 
 

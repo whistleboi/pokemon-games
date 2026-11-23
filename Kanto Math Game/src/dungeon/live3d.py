@@ -501,6 +501,17 @@ class Scene:
                 tilt /= max(1e-6, np.linalg.norm(tilt))
                 up = tilt * (h * 0.77) * (1 if tilt[1] >= 0 else -1)
             a, b, c, d = base - r, base + r, base + r + up, base - r + up
+            if self.bdhc is not None:   # (11-23, Johto J4: leaning back to face the camera, a figure's top half reached into
+                # the tile behind it, so a counter, shelf or bed there was drawn over it and you showed only faint. Its top
+                # corners slide along their own lines from the eye to the depth they'd have standing upright: on screen
+                # exactly where they were, but as near as an upright figure's - furniture behind you stays behind,
+                # whatever stands in front still covers you, as on the DS.)
+                fn = fwd / max(1e-6, float(np.linalg.norm(fwd)))
+                hi = np.array([0, h, 0], "f4")
+                for_depth = {"c": base + r + hi, "d": base - r + hi}
+                c, d = [eye + (v - eye) * (float(np.dot(u - eye, fn)) / max(1e-3, float(np.dot(v - eye, fn))))
+                        if float(np.dot(v - eye, fn)) > 1e-3 and float(np.dot(u - eye, fn)) > 1e-3 else v
+                        for v, u in ((c, for_depth["c"]), (d, for_depth["d"]))]
             quad = np.array([[*a, 0, 1], [*b, 1, 1], [*c, 1, 0], [*a, 0, 1], [*c, 1, 0], [*d, 0, 0]], "f4")
             rows.append((surf, quad))
         rows.sort(key=lambda t: -float(np.linalg.norm(t[1][0, :3] - eye)))   # (far first)
