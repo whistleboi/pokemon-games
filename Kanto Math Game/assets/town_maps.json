@@ -142562,7 +142562,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/T01R0102.png",
+      "at": [
+       0,
+       2
+      ]
+     }
     }
    },
    "home": {
@@ -143006,7 +143013,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/T01R0202.png",
+      "at": [
+       0,
+       2
+      ]
+     }
     }
    },
    "house_0301": {
@@ -148149,13 +148163,15 @@
      "c...............c",
      "c...............c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc..N........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:17,10"
+     "v": "OUT:17,10",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -148537,6 +148553,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T02PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T02PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "lab": {
     "theme": "room",
@@ -153364,13 +153969,15 @@
      "c...N...........c",
      "c.........N.....c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:52,40"
+     "v": "OUT:52,40",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -153752,6 +154359,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C01PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C01PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "poketch": {
     "theme": "room",
@@ -162209,13 +163405,15 @@
      "c...............c",
      "c..........N....c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v...N..cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:47,20"
+     "v": "OUT:47,20",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -162615,6 +163813,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C03PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C03PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "mart": {
     "theme": "room",
@@ -169920,13 +171707,15 @@
      "c...............c",
      "c...........N...c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:16,28"
+     "v": "OUT:16,28",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -170299,6 +172088,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T03PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T03PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "flower": {
     "theme": "room",
@@ -172961,32 +175339,32 @@
   },
   "signs": [
    [
-    "ETERNA CITY",
-    "History living."
+    "TEAM GALACTIC ETERNA BUILDING",
+    "Pokemon wanted. No questions asked."
    ],
    [
     "ETERNA CITY",
-    "History living."
+    "A town that keeps its old stories."
+   ],
+   [
+    "UNDERGROUND MAN'S HOUSE",
+    "Ask about digging down below!"
    ],
    [
     "ETERNA CITY",
-    "History living."
+    "A town that keeps its old stories."
    ],
    [
-    "ETERNA CITY",
-    "History living."
+    "RAD RICKSHAW'S CYCLE SHOP",
+    "Bikes for every Trainer."
    ],
    [
-    "ETERNA CITY",
-    "History living."
+    "ETERNA CONDOMINIUMS",
+    "The Name Rater lives here."
    ],
    [
-    "ETERNA CITY",
-    "History living."
-   ],
-   [
-    "ETERNA CITY",
-    "History living."
+    "ETERNA CITY GYM",
+    "Leader: Gardenia. Her Grass types bloom in battle!"
    ]
   ],
   "rooms": {
@@ -173003,13 +175381,15 @@
      "c...............c",
      "c....N..........c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:49,18"
+     "v": "OUT:49,18",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -173382,6 +175762,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C04PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C04PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "mart": {
     "theme": "room",
@@ -178645,32 +181614,32 @@
   },
   "signs": [
    [
-    "HEARTHOME CITY",
-    "Warm and kind."
+    "AMITY SQUARE WEST GATE",
+    "Walk the park with your Pokemon."
+   ],
+   [
+    "AMITY SQUARE EAST GATE",
+    "Walk the park with your Pokemon."
+   ],
+   [
+    "POKEMON CONTEST HALL",
+    "Show off your Pokemon's best side!"
+   ],
+   [
+    "HEARTHOME CITY GYM",
+    "Leader: Fantina. Ghost types that dance in the dark!"
+   ],
+   [
+    "POKEMON FAN CLUB",
+    "Come in and talk Pokemon!"
+   ],
+   [
+    "THE POFFIN HOUSE",
+    "Bake treats your Pokemon will love."
    ],
    [
     "HEARTHOME CITY",
-    "Warm and kind."
-   ],
-   [
-    "HEARTHOME CITY",
-    "Warm and kind."
-   ],
-   [
-    "HEARTHOME CITY",
-    "Warm and kind."
-   ],
-   [
-    "HEARTHOME CITY",
-    "Warm and kind."
-   ],
-   [
-    "HEARTHOME CITY",
-    "Warm and kind."
-   ],
-   [
-    "HEARTHOME CITY",
-    "Warm and kind."
+    "A friendly city with a warm heart."
    ]
   ],
   "rooms": {
@@ -180363,13 +183332,15 @@
      "c.N.............c",
      "c.........N.....c",
      "ccc..N........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:17,25"
+     "v": "OUT:17,25",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -180751,6 +183722,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "gym": {
     "theme": "room",
@@ -184113,16 +187673,16 @@
   },
   "signs": [
    [
-    "SOLACEON TOWN",
-    "Free of worry."
+    "POKEMON DAY CARE",
+    "We'll look after your Pokemon."
+   ],
+   [
+    "POKEMON NEWS PRESS",
+    "Looking for a skilled Pokemon catcher!"
    ],
    [
     "SOLACEON TOWN",
-    "Free of worry."
-   ],
-   [
-    "SOLACEON TOWN",
-    "Free of worry."
+    "A quiet town without a care."
    ]
   ],
   "rooms": {
@@ -184355,13 +187915,15 @@
      "c............N..c",
      "c...............c",
      "ccc..N........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc........N..ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:22,16"
+     "v": "OUT:22,16",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -184743,6 +188305,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T04PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T04PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "house_0201": {
     "theme": "room",
@@ -187422,36 +191573,36 @@
   },
   "signs": [
    [
-    "VEILSTONE CITY",
-    "Hewn from rock."
+    "GALACTIC VEILSTONE BUILDING",
+    "Reaching for the stars."
+   ],
+   [
+    "GALACTIC WAREHOUSE",
+    "Private. Keep out!"
+   ],
+   [
+    "VEILSTONE DEPARTMENT STORE",
+    "Floor after floor of shopping."
+   ],
+   [
+    "VEILSTONE CITY GYM",
+    "Leader: Maylene. Fighting types with real grit!"
    ],
    [
     "VEILSTONE CITY",
-    "Hewn from rock."
+    "A city carved out of the rock."
    ],
    [
-    "VEILSTONE CITY",
-    "Hewn from rock."
+    "VEILSTONE GAME CORNER",
+    "Try your luck!"
    ],
    [
-    "VEILSTONE CITY",
-    "Hewn from rock."
+    "PRIZE EXCHANGE",
+    "Swap your Coins for prizes."
    ],
    [
-    "VEILSTONE CITY",
-    "Hewn from rock."
-   ],
-   [
-    "VEILSTONE CITY",
-    "Hewn from rock."
-   ],
-   [
-    "VEILSTONE CITY",
-    "Hewn from rock."
-   ],
-   [
-    "VEILSTONE CITY",
-    "Hewn from rock."
+    "LAKE VALOR",
+    "A lovely lake, just off Route 214."
    ]
   ],
   "rooms": {
@@ -187788,13 +191939,15 @@
      "c...............c",
      "c.........N.....c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:45,35"
+     "v": "OUT:45,35",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -188158,6 +192311,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C07PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C07PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "gym": {
     "theme": "room",
@@ -193121,20 +197863,20 @@
   },
   "signs": [
    [
-    "PASTORIA CITY",
-    "West: Route 212. East: Route 213."
+    "GREAT MARSH OBSERVATORY",
+    "The way into the Great Marsh."
+   ],
+   [
+    "PASTORIA CITY GYM",
+    "Leader: Crasher Wake. Water types that hit like a wave!"
    ],
    [
     "PASTORIA CITY",
-    "West: Route 212. East: Route 213."
+    "The city by the marsh."
    ],
    [
-    "PASTORIA CITY",
-    "West: Route 212. East: Route 213."
-   ],
-   [
-    "PASTORIA CITY",
-    "West: Route 212. East: Route 213."
+    "SAFARI GAME",
+    "Catch Pokemon in the Great Marsh!"
    ]
   ],
   "rooms": {
@@ -194668,13 +199410,15 @@
      "c...N...........c",
      "c..........N....c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:24,15"
+     "v": "OUT:24,15",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -195047,6 +199791,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C06PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C06PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "reminder": {
     "theme": "room",
@@ -196531,13 +201864,15 @@
      "c..........N....c",
      "c..N............c",
      "ccc...........ccc",
-     "cc........N....cc",
+     "cc<.......N...>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:24,26"
+     "v": "OUT:24,26",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -196934,6 +202269,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T05PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T05PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "house_0201": {
     "theme": "room",
@@ -198147,27 +204071,26 @@
   "signs": [
    [
     "CANALAVE CITY",
-    "Cargo port."
+    "Over the drawbridge: the Library."
+   ],
+   [
+    "CANALAVE LIBRARY",
+    "Sinnoh's oldest books are kept here."
+   ],
+   [
+    "CANALAVE CITY GYM",
+    "Leader: Byron. Steel types that won't budge!"
+   ],
+   [
+    "SAILOR ELDRITCH'S HOUSE"
+   ],
+   [
+    "CANALAVE HARBOUR",
+    "Boats out to the islands."
    ],
    [
     "CANALAVE CITY",
-    "Cargo port."
-   ],
-   [
-    "CANALAVE CITY",
-    "Cargo port."
-   ],
-   [
-    "CANALAVE CITY",
-    "Cargo port."
-   ],
-   [
-    "CANALAVE CITY",
-    "Cargo port."
-   ],
-   [
-    "CANALAVE CITY",
-    "Cargo port."
+    "A busy port by the sea."
    ]
   ],
   "rooms": {
@@ -198507,13 +204430,15 @@
      "c...............c",
      "c...............c",
      "ccc........N..ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:26,18"
+     "v": "OUT:26,18",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -198895,6 +204820,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C02PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C02PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "mart": {
     "theme": "room",
@@ -202368,12 +208882,12 @@
   },
   "signs": [
    [
-    "SNOWPOINT CITY",
-    "City of snow."
+    "SNOWPOINT CITY GYM",
+    "Leader: Candice. Ice types that sparkle!"
    ],
    [
     "SNOWPOINT CITY",
-    "City of snow."
+    "Where the snow never stops."
    ]
   ],
   "barred": [
@@ -202748,13 +209262,15 @@
      "c...............c",
      "c.........N.....c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc.........N.ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:27,41"
+     "v": "OUT:27,41",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -203136,6 +209652,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C09PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C09PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "gym": {
     "theme": "room",
@@ -204414,32 +211519,32 @@
   },
   "signs": [
    [
-    "SUNYSHORE CITY",
-    "Solar powered."
+    "JULIA'S HOUSE",
+    "Pretty Ribbons for your Pokemon."
+   ],
+   [
+    "SUNYSHORE CITY GYM",
+    "Leader: Volkner. Electric types that light up the city!"
+   ],
+   [
+    "...",
+    "Someone painted this sign plain white."
+   ],
+   [
+    "SUNYSHORE MARKET",
+    "Seals from all over the world."
+   ],
+   [
+    "POKEMON ROCK",
+    "A landmark of Sunyshore."
    ],
    [
     "SUNYSHORE CITY",
-    "Solar powered."
+    "A city that runs on sunlight."
    ],
    [
-    "SUNYSHORE CITY",
-    "Solar powered."
-   ],
-   [
-    "SUNYSHORE CITY",
-    "Solar powered."
-   ],
-   [
-    "SUNYSHORE CITY",
-    "Solar powered."
-   ],
-   [
-    "SUNYSHORE CITY",
-    "Solar powered."
-   ],
-   [
-    "SUNYSHORE CITY",
-    "Solar powered."
+    "VISTA LIGHTHOUSE",
+    "Its light guides ships across Sinnoh."
    ]
   ],
   "people": [
@@ -204841,13 +211946,15 @@
      "c.........N.....c",
      "c...............c",
      "ccc...........ccc",
-     "cc....N........cc",
+     "cc<...N.......>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:28,48"
+     "v": "OUT:28,48",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -205229,6 +212336,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C08PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C08PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "gym": {
     "theme": "room",
@@ -206905,13 +214601,15 @@
      "c...............c",
      "c........N......c",
      "ccc...........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:10,54"
+     "v": "OUT:10,54",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -207285,6 +214983,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C10PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C10PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "house_0101": {
     "theme": "room",
@@ -208312,13 +216599,15 @@
      "c...............c",
      "c.........N.....c",
      "ccc...N.......ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:39,13"
+     "v": "OUT:39,13",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -208700,6 +216989,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C11PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C11PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "mart": {
     "theme": "room",
@@ -209818,13 +218696,15 @@
      "c...............c",
      "c.........N.....c",
      "ccc..N........ccc",
-     "cc.............cc",
+     "cc<...........>cc",
      "ccc...........ccc",
      "cc......v......cc",
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:19,17"
+     "v": "OUT:19,17",
+     "<": "ROOM:center_2",
+     ">": "ROOM:center_b1"
     },
     "buildings": {},
     "roofs": {
@@ -210207,6 +219087,595 @@
       }
      }
     ]
+   },
+   "center_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cc.............cc",
+     "cc.N...N....N...c",
+     "cmcmcccmmcccmmzcc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "ccc.............c",
+     "cc^.............c",
+     "ccc..c.......c..c",
+     "cc...z.......z.cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      251,
+      218,
+      136
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "2,2": [
+       96,
+       32,
+       32
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       96,
+       96,
+       64
+      ],
+      "6,2": [
+       96,
+       96,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "1,3": [
+       224,
+       192,
+       128
+      ],
+      "15,3": [
+       224,
+       192,
+       128
+      ],
+      "1,5": [
+       32,
+       128,
+       192
+      ],
+      "2,5": [
+       255,
+       64,
+       0
+      ],
+      "3,5": [
+       255,
+       160,
+       128
+      ],
+      "4,5": [
+       255,
+       64,
+       0
+      ],
+      "5,5": [
+       255,
+       64,
+       0
+      ],
+      "6,5": [
+       255,
+       64,
+       0
+      ],
+      "7,5": [
+       255,
+       160,
+       128
+      ],
+      "8,5": [
+       255,
+       224,
+       160
+      ],
+      "9,5": [
+       255,
+       64,
+       0
+      ],
+      "10,5": [
+       255,
+       64,
+       0
+      ],
+      "11,5": [
+       255,
+       64,
+       0
+      ],
+      "12,5": [
+       255,
+       160,
+       128
+      ],
+      "13,5": [
+       255,
+       224,
+       160
+      ],
+      "15,5": [
+       224,
+       64,
+       32
+      ],
+      "1,9": [
+       255,
+       64,
+       32
+      ],
+      "2,9": [
+       255,
+       64,
+       32
+      ],
+      "1,10": [
+       96,
+       96,
+       96
+      ],
+      "1,11": [
+       255,
+       160,
+       96
+      ],
+      "2,11": [
+       255,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,5": "pc",
+      "8,5": "table",
+      "13,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        13,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        14,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        8,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        13,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T06PC0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Wi-Fi Club",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Pokemon Wi-Fi Club!",
+        "Sorry, we can't reach Trainers far away right now."
+       ]
+      }
+     },
+     {
+      "text": "Union Room",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Union Room is through the door behind me.",
+        "It's closed today. No one is linked up!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Link battles are set up here, in the Colosseum.",
+        "The machines are switched off. Please come back later!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center 2F"
+   },
+   "center_b1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccmcccmccccccc",
+     "ccccccccccccccccc",
+     "ccccNcccNcccNcccc",
+     "ccccmmccmmccmccmc",
+     "c...............c",
+     "c...............c",
+     "c.mm............c",
+     "c.mm..........ccc",
+     "c.............^cc",
+     "c...c.......c.ccc",
+     "cc..z.......z..cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      169,
+      218,
+      246
+     ],
+     "_wall": [
+      41,
+      139,
+      222
+     ],
+     "_things": {
+      "4,2": [
+       64,
+       64,
+       96
+      ],
+      "5,2": [
+       64,
+       160,
+       192
+      ],
+      "6,2": [
+       32,
+       64,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       64,
+       96
+      ],
+      "9,2": [
+       64,
+       160,
+       192
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       64,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       64,
+       96,
+       96
+      ],
+      "14,2": [
+       64,
+       96,
+       96
+      ],
+      "1,3": [
+       160,
+       192,
+       224
+      ],
+      "11,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       160,
+       192,
+       224
+      ],
+      "11,4": [
+       192,
+       192,
+       192
+      ],
+      "4,5": [
+       192,
+       192,
+       192
+      ],
+      "5,5": [
+       192,
+       224,
+       224
+      ],
+      "8,5": [
+       192,
+       192,
+       192
+      ],
+      "9,5": [
+       192,
+       224,
+       224
+      ],
+      "12,5": [
+       192,
+       192,
+       192
+      ],
+      "15,5": [
+       32,
+       128,
+       192
+      ],
+      "2,8": [
+       192,
+       255,
+       255
+      ],
+      "3,8": [
+       224,
+       255,
+       255
+      ],
+      "2,9": [
+       160,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       224,
+       224
+      ],
+      "14,9": [
+       224,
+       64,
+       96
+      ],
+      "15,9": [
+       224,
+       64,
+       96
+      ],
+      "15,10": [
+       96,
+       96,
+       96
+      ],
+      "14,11": [
+       192,
+       128,
+       160
+      ],
+      "15,11": [
+       192,
+       128,
+       160
+      ],
+      "1,12": [
+       64,
+       96,
+       96
+      ],
+      "15,12": [
+       64,
+       96,
+       96
+      ]
+     },
+     "_kinds": {
+      "2,8": "table",
+      "3,8": "table",
+      "2,9": "table",
+      "3,9": "table",
+      "15,5": "pc",
+      "9,5": "table",
+      "5,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        2,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        4,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        12,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "pc",
+       "r": [
+        15,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        5,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T06PC0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Plaza guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Wi-Fi Plaza! Trainers from all over meet down here...",
+        "...usually. It's quiet today."
+       ]
+      }
+     },
+     {
+      "text": "Wi-Fi Plaza",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Wi-Fi Plaza's gate is closed right now. Sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Link desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trades with faraway Trainers start here.",
+        "The link is down today. Please come again!"
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Center B1F"
    },
    "mart": {
     "theme": "room",
@@ -211474,15 +220943,14 @@
   "signs": [
    [
     "RESORT AREA",
-    "North: Route 229."
+    "Rest and have fun."
    ],
    [
-    "RESORT AREA",
-    "North: Route 229."
+    "THE RIBBON SYNDICATE",
+    "Members only."
    ],
    [
-    "RESORT AREA",
-    "North: Route 229."
+    "A RATHER NICE VILLA"
    ]
   ],
   "hidden": {
@@ -220616,12 +230084,12 @@
   },
   "signs": [
    [
-    "ETERNA FOREST",
-    "West: Eterna City."
+    "TRAINER TIPS",
+    "Items hide in dark forests and caves. Look closely!"
    ],
    [
     "ETERNA FOREST",
-    "West: Eterna City."
+    "An old forest where time seems to stand still."
    ]
   ],
   "people": [
@@ -221664,12 +231132,12 @@
   },
   "signs": [
    [
-    "ROUTE 208",
-    "West: Mt. Coronet."
+    "TRAINER TIPS",
+    "Planted Berries need water. Pale, dry soil means it's thirsty."
    ],
    [
-    "ROUTE 208",
-    "West: Mt. Coronet."
+    "BERRY MASTER'S HOUSE",
+    "Free Berries every day."
    ]
   ],
   "trainer_spots": [
@@ -224906,12 +234374,11 @@
   },
   "signs": [
    [
-    "ROUTE 210",
-    "South: Solaceon Town. West: Celestic Town."
+    "GRANDMA WILMA'S HOUSE"
    ],
    [
-    "ROUTE 210",
-    "South: Solaceon Town. West: Celestic Town."
+    "CAFE CABIN",
+    "Fresh Moomoo Milk every day."
    ]
   ],
   "trainer_spots": [
@@ -228934,20 +238401,20 @@
   },
   "signs": [
    [
-    "ROUTE 212",
-    "East: Pastoria City."
+    "POKEMON MANSION",
+    "Come and see the Pokemon collection."
    ],
    [
-    "ROUTE 212",
-    "East: Pastoria City."
+    "TRAINER TIPS",
+    "You can sort the things in your Bag."
    ],
    [
-    "ROUTE 212",
-    "East: Pastoria City."
+    "MOVE TUTOR",
+    "Bring Shards, learn moves."
    ],
    [
-    "ROUTE 212",
-    "East: Pastoria City."
+    "TRAINER TIPS",
+    "Stuck in the mud? Keep moving and you'll get out."
    ]
   ],
   "trainer_spots": [
@@ -230960,12 +240427,12 @@
   },
   "signs": [
    [
-    "ROUTE 213",
-    "North: Valor Lakefront. West: Pastoria City."
+    "HOTEL GRAND LAKE",
+    "A world of its own on Lake Valor."
    ],
    [
-    "ROUTE 213",
-    "North: Valor Lakefront. West: Pastoria City."
+    "DR. FOOTSTEP'S HOUSE",
+    "He reads what a Pokemon's footprints say."
    ]
   ],
   "trainer_spots": [
@@ -245872,12 +255339,12 @@
   },
   "signs": [
    [
-    "ROUTE 222",
-    "West: Valor Lakefront. East: Sunyshore City."
+    "PIKACHU FAN CLUB",
+    "Pika pika! Pikachu fans only!"
    ],
    [
-    "ROUTE 222",
-    "West: Valor Lakefront. East: Sunyshore City."
+    "POKEMON SIZE CONTEST",
+    "Bring your biggest Pokemon!"
    ]
   ],
   "trainer_spots": [
@@ -258480,16 +267947,13 @@
      "ccccccccccccccccccc",
      "cmcmmccmmmc..m.m.cc",
      "ccccccccccc......cc",
-     "cccmmccmmcc....mNcc",
+     "cccmmccmmcc....m.cc",
      "ccccccccccc......cc",
      "cmccccccccc..-..mcc",
      "ccccccccccccccccccc",
      "ccccccccccccccccccc"
     ],
     "parts": true,
-    "people": [
-     "Encounter Rotom"
-    ],
     "roofs": {
      "_look": {
       "floor": [
@@ -259459,7 +268923,7 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "cmmmmcccm..mm.ccccccccmcc",
+     "cmmmmcccm..Nm.ccccccccmcc",
      "cmmccccc.N....ccccccccmcc",
      "cmmccccc......ccccccccmcc",
      "cmmccccc.m....ccccccccccc",
@@ -259898,6 +269362,7 @@
      }
     },
     "people": [
+     "Encounter Rotom",
      "DREAD PLATE "
     ]
    },
@@ -260488,7 +269953,7 @@
    "Bedroom 5"
   ],
   "figure_floors": {
-   "Encounter Rotom": 3,
+   "Encounter Rotom": 6,
    "RARE CANDY": 0,
    "BIG PEARL": 0,
    "OLD GATEAU": 4,
@@ -273679,8 +283144,6 @@
    "Back room 3"
   ],
   "figure_floors": {
-   "Ace Trainer Pierce": 0,
-   "Ace Trainer Alicia": 0,
    "Marley": 4,
    "Ace Trainer Omar": 0,
    "Ace Trainer Sydney": 0,
@@ -279143,25 +288606,32 @@
   },
   "signs": [
    [
-    "GREAT MARSH"
+    "GREAT MARSH",
+    "Area 1"
    ],
    [
-    "GREAT MARSH"
+    "GREAT MARSH",
+    "Area 2"
    ],
    [
-    "GREAT MARSH"
+    "GREAT MARSH",
+    "Area 3"
    ],
    [
-    "GREAT MARSH"
+    "GREAT MARSH",
+    "Area 4"
    ],
    [
-    "GREAT MARSH"
+    "GREAT MARSH",
+    "The marsh train runs between the areas."
    ],
    [
-    "GREAT MARSH"
+    "GREAT MARSH",
+    "Area 5"
    ],
    [
-    "GREAT MARSH"
+    "GREAT MARSH",
+    "Area 6"
    ]
   ],
   "theme": "marsh",

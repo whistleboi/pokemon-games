@@ -1749,7 +1749,7 @@
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-            {"text": "Encounter Rotom", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+            {"text": "Encounter Rotom", "action": "BOSS", "condition": ["boss_not_defeated", "time:night"], "color": "GOLD"},
             {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_old_chateau", "boss": {"id": 10501, "name": "Black Fog", "level": 24, "no_catch": true, "victory_flag": "black_fog_banished_old_chateau", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}},
             {"text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED"},
             {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_old_chateau_d25r0102_5_3", "event": {"lines": ["A Rare Candy, lying among the rocks."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_old_chateau_d25r0102_5_3"}},
@@ -2064,9 +2064,7 @@
             {"name": "Bird Keeper Autumn", "class": "BIRD_KEEPER", "sprite": "pt_bird_keeper.png", "team": [198, 178], "levels": [54, 54], "rewards": {"balls": 2}},
             {"name": "Dragon Tamer Joe", "class": "DRAGON_TAMER", "sprite": "pt_dragon_tamer.png", "team": [147, 444], "levels": [52, 56], "rewards": {"balls": 2}},
             {"name": "Black Belt Willie", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [214, 68], "levels": [54, 54], "rewards": {"balls": 2}},
-            {"name": "Veteran Brenden", "class": "VETERAN", "sprite": "pt_veteran.png", "team": [205, 130, 450], "levels": [54, 54, 54], "rewards": {"balls": 2}},
-            {"name": "Ace Trainer Pierce", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [445, 398], "rewards": {"balls": 5}, "dialogue": {"intro": ["Only the elite reach this road!"], "player_won": ["Incredible."], "player_lost": ["This is my road!"]}},
-            {"name": "Ace Trainer Alicia", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "is_boss_battle": true, "team": [448, 468], "rewards": {"balls": 5}, "dialogue": {"intro": ["You'll never make it past me!"], "player_won": ["...Go. You've earned it."], "player_lost": ["Victory Road lives up to its name!"]}}
+            {"name": "Veteran Brenden", "class": "VETERAN", "sprite": "pt_veteran.png", "team": [205, 130, 450], "levels": [54, 54, 54], "rewards": {"balls": 2}}
         ],
         "route_menu": [
             {"text": "Marley", "action": "NPC", "target": "walk_marley", "flag_condition": "not walk_marley_done", "color": "GOLD"},
