@@ -259,4 +259,13 @@ t.draw()
 check(True, "...and its panel draws on the map")
 flags.pop("dowsing_on", None)
 
+print("7) Route 4: the BW rival you picked battles you there, not the other one (11-23)")
+_had = list(story.badges.get("UNOVA", [])); story.badges["UNOVA"] = ["BASIC", "TOXIC", "INSECT"]
+for who, other in (("cheren", "bianca"), ("bianca", "cheren")):
+    story.region_rivals.setdefault("UNOVA", {})["friend_character"] = who
+    t = walk_route("UNOVA_ROUTE_4", (46, 110))
+    fs = [e["event"]["flag_check"] for e in t._arrival_figures()]
+    check(fs == ["defeated_%s_route4" % who], f"picked {who}: only {who} waits on Route 4 ({fs})")
+story.badges["UNOVA"] = _had; story.region_rivals["UNOVA"].pop("friend_character", None)
+
 print(f"##### {len(fails)} failures")

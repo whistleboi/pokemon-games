@@ -8787,6 +8787,9 @@
           ]
         },
         {
+          "battle_options": {
+            "double": true
+          },
           "name": "Hooligans Rob & Sal",
           "class": "HOOLIGANS",
           "sprite": "b2_hooligans.png",
@@ -8825,6 +8828,9 @@
           ]
         },
         {
+          "battle_options": {
+            "double": true
+          },
           "name": "Twins Tara & Val",
           "class": "TWINS",
           "sprite": "twins.png",
@@ -9052,7 +9058,8 @@
           },
           "condition": [
             "has_insect_badge",
-            "not:has_bolt_badge"
+            "not:has_bolt_badge",
+            "friend:cheren"
           ],
           "flag_check": "defeated_cheren_route4"
         },
@@ -9111,7 +9118,8 @@
           },
           "condition": [
             "has_insect_badge",
-            "not:has_bolt_badge"
+            "not:has_bolt_badge",
+            "friend:bianca"
           ],
           "flag_check": "defeated_bianca_route4"
         }
