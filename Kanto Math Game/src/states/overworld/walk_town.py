@@ -814,8 +814,11 @@ class WalkTownState(CityState):
                     p2 = tuple(at_edge[2])
                     t = min(edge, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1]))
                 self.game.walk_town_exit = None
-                _out = [(t[0] + dx, t[1] + dy, dx, dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
-                        and (t[0] + dx, t[1] + dy) not in self.exits]
+                _in = lambda e: [(e[0] + dx, e[1] + dy, dx, dy) for dx, dy in DIRS if self._open((e[0] + dx, e[1] + dy))
+                                 and (e[0] + dx, e[1] + dy) not in self.exits]
+                if not _in(t):   # (an end tile of a wide way out with no way in beside it: the nearest that has one; Goldenrod from Route 34, 11-22)
+                    t = min(edge, key=lambda e: (not _in(e), abs(e[0] - t[0]) + abs(e[1] - t[1])))
+                _out = _in(t)
                 _out.sort(key=lambda o: self._open((t[0] - o[2], t[1] - o[3])))   # (out the way the door faces: away from its building. A gatehouse's side door, Saffron's)
                 inward = (_out[0][0], _out[0][1]) if _out else t
                 self.player = inward

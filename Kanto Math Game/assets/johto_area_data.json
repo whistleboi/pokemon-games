@@ -719,7 +719,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"defeated_area": "SLOWPOKE_WELL", "fail_text": ["Bugsy is helping Kurt protect the Slowpoke! You must defeat every Rocket Grunt in the Well to bring him back to the Gym."]}, "trainers": [{"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [46], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [13, 14, 15], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "is_boss_battle": true, "team": [10, 13], "rewards": {"balls": 2}}, {"battle_options": {"double": true}, "name": "Twins Amy & Mimi", "class": "TWINS", "sprite": "twins.png", "is_boss_battle": true, "team": [167, 165], "rewards": {"balls": 2}}], "leader": {"name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true, "team": [11, 14, 123], "levels": [15, 15, 17], "badge_reward": "HIVE", "rewards": {"balls": 5, "RARE_CANDY": 3}, "dialogue": {"intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."], "player_won": ["You really bugged me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"11": ["TACKLE"], "14": ["POISON-STING"], "123": ["U-TURN", "QUICK-ATTACK", "LEER", "FOCUS-ENERGY"]}}},
+            "gym": {"requirements": {"flag": "slowpoke_well_cleared", "fail_text": ["Bugsy is helping Kurt protect the Slowpoke! Stop Team Rocket in the Slowpoke Well to bring him back to the Gym."]}, "trainers": [{"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [46], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [13, 14, 15], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "is_boss_battle": true, "team": [10, 13], "rewards": {"balls": 2}}, {"battle_options": {"double": true}, "name": "Twins Amy & Mimi", "class": "TWINS", "sprite": "twins.png", "is_boss_battle": true, "team": [167, 165], "rewards": {"balls": 2}}], "leader": {"name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true, "team": [11, 14, 123], "levels": [15, 15, 17], "badge_reward": "HIVE", "rewards": {"balls": 5, "RARE_CANDY": 3}, "dialogue": {"intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."], "player_won": ["You really bugged me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"11": ["TACKLE"], "14": ["POISON-STING"], "123": ["U-TURN", "QUICK-ATTACK", "LEER", "FOCUS-ENERGY"]}}},
 
             "travel_options": [
 
@@ -801,7 +801,7 @@
 
                 {"text": "Radio Tower", "door": "radio", "action": "TRAVEL", "target_area": "RADIO_TOWER", "condition": "not:radio_takeover"},
 
-                {"text": "Radio Tower", "door": "radio", "action": "NPC", "target": "radio_tower_grunt", "condition": "radio_takeover"},
+                {"text": "Radio Tower", "door": "radio", "action": "NPC", "target": "radio_tower_grunt", "condition": "radio_takeover", "leads_to": "RADIO_TOWER"},
 
                 {"text": "Talk to Bill", "door": "bill", "action": "NPC", "target": "bill_johto", "condition": "met_bill_johto"},
 
@@ -4323,7 +4323,7 @@
         },
         {
             "id": "johto_m5", "type": "MAIN", "title": "Slowpoke Rescue", "description": "Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
-            "target": "AZALEA_TOWN",
+            "target": "SLOWPOKE_WELL",
             "condition": { "start_region": "JOHTO", "badges_min": 1, "flag_not": "slowpoke_well_cleared" },
             "reward": "5 Lure Balls"
         },
@@ -4351,18 +4351,20 @@
         {
             "id": "johto_m9", "type": "MAIN", "title": "Shadows of Ecruteak", "description": "Explore the Burned Tower in Ecruteak City. Legends say three beastly Pokemon are slumbering in the basement.",
             "target": "ECRUTEAK_CITY",
-            "condition": { "start_region": "JOHTO", "badges_min": 3, "flag_not": "visited_BURNED_TOWER" },
+            "condition": { "start_region": "JOHTO", "badges_min": 3, "flag_not": "johto_beasts_fled" },
+            "steps": [{"area": "BURNED_TOWER", "floor": 1, "at": [17, 10], "label": "Your rival", "done": "defeated_rival_burned_tower"}, {"area": "BURNED_TOWER", "floor": 1, "at": [11, 5], "label": "The basement", "done": "johto_beasts_fled"}],
             "reward": "Legendary Dogs Tracking"
         },
         {
             "id": "johto_m10", "type": "MAIN", "title": "The Fog Badge", "description": "Morty can see things others cannot. Use your logic to navigate the Ecruteak Gym and defeat his Ghost-types.",
-            "condition": { "start_region": "JOHTO", "flag": "visited_BURNED_TOWER", "badges_less": 4 },
+            "condition": { "start_region": "JOHTO", "flag": "johto_beasts_fled", "badges_less": 4 },
             "reward": "Fog Badge + Amulet Coin"
         },
         {
-            "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "The Jasmine's Ampharos is ill! Travel across the sea to Cianwood City to fetch the Secret Potion.",
+            "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "Jasmine's Ampharos is ill! First get Surf: chase off the Rocket Grunt bothering the Kimono Girls at Ecruteak's Dance Theater. Then cross the sea to Cianwood City and get the Secret Potion from its pharmacy.",
             "target": "CIANWOOD_CITY",
-            "condition": { "start_region": "JOHTO", "badges_min": 4, "visited_not": "CIANWOOD_CITY" }
+            "targets": [["ECRUTEAK_DANCE_THEATER", "has_item:HM_SURF"], ["CIANWOOD_CITY", "has_item:SECRET_POTION"]],
+            "condition": { "start_region": "JOHTO", "badges_min": 4, "item_not": "SECRET_POTION", "flag_not": "ampharos_cured" }
         },
         {
             "id": "johto_m12", "type": "MAIN", "title": "The Storm Badge", "description": "While in Cianwood, challenge Chuck at the Gym. His Fighting-type Pokemon will test your math stamina!",
@@ -4370,28 +4372,40 @@
             "reward": "Storm Badge + Rock Smasher"
         },
         {
-            "id": "johto_m13", "type": "MAIN", "title": "The Mineral Badge", "description": "Amphy is cured! Return to Olivine City and challenge Jasmine. Her Steel-type Pokemon have a rock-solid defense.",
+            "id": "johto_m13", "type": "MAIN", "title": "The Mineral Badge", "description": "Take the Secret Potion to Amphy at the top of the Olivine Lighthouse. Then challenge Jasmine at the Gym: her Steel-type Pokemon have a rock-solid defense.",
+            "targets": [["OLIVINE_LIGHTHOUSE", "ampharos_cured"], ["OLIVINE_CITY", "has_mineral_badge"]],
             "condition": { "start_region": "JOHTO", "badges_min": 5, "badges_less": 6 },
             "reward": "Mineral Badge + 3 Rare Candies"
         },
         {
-            "id": "johto_m14", "type": "MAIN", "title": "Rage at the Lake", "description": "Something is wrong at the Lake of Rage north of Mahogany Town. Investigate the rumor of a Red Gyarados.",
+            "id": "johto_m14", "type": "MAIN", "title": "Rage at the Lake", "description": "Something is wrong at the Lake of Rage north of Mahogany Town. Investigate the rumor of a Red Gyarados, then help Lance clear out the Rocket hideout under Mahogany's souvenir shop.",
             "target": "MAHOGANY_TOWN",
+            "targets": [["LAKE_OF_RAGE", "defeated_red_gyarados"], ["ROCKET_HQ", "rocket_hq_cleared"]],
             "condition": { "start_region": "JOHTO", "badges_min": 6, "flag_not": "rocket_hq_cleared" },
             "reward": "Rare Candy"
         },
         {
-            "id": "johto_m15", "type": "MAIN", "title": "The Glacier Badge", "description": "Pryce is a master of Ice-type Pokemon. Keep a cool head and defeat him at the Mahogany Gym.",
+            "id": "johto_m15", "type": "MAIN", "title": "The Glacier Badge", "description": "Before you leave the hideout, collect HM Whirlpool: it's your thanks for clearing it out. Then face Pryce, a master of Ice-type Pokemon: keep a cool head and defeat him at the Mahogany Gym.",
+            "targets": [["ROCKET_HQ", "has_item:HM_WHIRLPOOL"]],
             "condition": { "start_region": "JOHTO", "flag": "rocket_hq_cleared", "badges_less": 7 },
             "reward": "Glacier Badge"
         },
         {
-            "id": "johto_m16", "type": "MAIN", "title": "The Rising Badge", "description": "Clair of Blackthorn City won't accept your strength easily. Defeat her and pass the test in the Dragon's Den.",
-            "condition": { "start_region": "JOHTO", "badges_min": 7, "badges_less": 8 },
+            "id": "johto_m15b", "type": "MAIN", "title": "Radio Tower Takeover", "description": "Team Rocket has seized the Radio Tower in Goldenrod City! Beat the fake Director for the Basement Key, free the real one in the Goldenrod Underground, then use his Card Key to reach the top. The road east of Mahogany stays shut till you do.",
+            "target": "RADIO_TOWER",
+            "targets": [["RADIO_TOWER", "has_item:BASEMENT_KEY"], ["GOLDENROD_UNDERGROUND", "has_item:CARD_KEY"], ["RADIO_TOWER", "radio_tower_cleared"]],
+            "condition": { "start_region": "JOHTO", "badges_min": 7, "flag_not": "radio_tower_cleared" },
+            "reward": "The road to Blackthorn"
+        },
+        {
+            "id": "johto_m16", "type": "MAIN", "title": "The Rising Badge", "description": "Clair of Blackthorn City won't accept your strength easily. On your way through the Ice Path, find HM Waterfall in its icy corner. Then defeat Clair and pass the Elder's test at the Dragon Shrine, out on the water in the Dragon's Den (Surf and Whirlpool).",
+            "targets": [["ICE_PATH", "has_item:HM_WATERFALL"], ["BLACKTHORN_CITY", "johto_beat_clair"], ["DRAGON_SHRINE", "has_rising_badge"]],
+            "condition": { "start_region": "JOHTO", "badges_min": 7, "badges_less": 8, "flag": "radio_tower_cleared" },
             "reward": "Rising Badge"
         },
         {
-            "id": "johto_m17", "type": "MAIN", "title": "Conquer the League", "description": "The Johto journey ends at the Indigo Plateau. Defeat the Elite Four and become the Johto Champion!",
+            "id": "johto_m17", "type": "MAIN", "title": "Conquer the League", "description": "The Johto journey ends at the Silver League, past Victory Road. Defeat the Elite Four and become the Johto Champion!",
+            "target": "SILVER_LEAGUE_PLATEAU",
             "condition": { "start_region": "JOHTO", "badges_min": 8, "flag_not": "beat_johto_champion" },
             "reward": "Champion Title"
         },

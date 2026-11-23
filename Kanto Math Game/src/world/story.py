@@ -1304,7 +1304,7 @@ class StoryManager:
 
             if leader and prog_val > len(trainers):
                 if isinstance(leader, dict):
-                    badge = leader.get("badge_reward")
+                    badge = None if leader.get("badge_later") else leader.get("badge_reward")   # (HGSS's Clair: the Dragon Shrine's Elder hands it over, not her win; 11-22)
                 else:
                     raw = gym.get("badge", "")
                     badge = (raw.upper().replace(" ", "_").replace("'", "")

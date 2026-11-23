@@ -177,6 +177,7 @@ class JohtoTown:
                    "Kurt: Hmm... It can't be opened, but it's calling to the shrine in Ilex Forest. Take it there and see what happens.",
                    "Kurt handed the GS BALL back."]
         elif not flags.get("slowpoke_well_cleared"):
+            flags["kurt_went_to_well"] = True   # (HGSS: Kurt sees off the Grunt guarding the Well: the way in is open; 11-22)
             msg = self.game.assets.get_text("kurt_intro")
         elif not flags.get("got_fast_ball_kurt"):   # (once: his thanks for the Well, and the Fast Ball he made; HGSS)
             flags["got_fast_ball_kurt"] = True
@@ -400,8 +401,11 @@ class JohtoTown:
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
     def visit_pharmacist(self):
+        story = self.game.story_manager
+        if story.story_flags.get("ampharos_cured") or story.inventory.get("SECRET_POTION", 0) > 0:   # (one potion, for Amphy: not one each visit; 11-22)
+            return self.show_message(["Pharmacist: That Secret Potion works wonders. I hope the Lighthouse's Ampharos is well!"])
         self.show_message(self.game.assets.get_text("pharmacist_reward"))
-        self.game.story_manager.inventory["SECRET_POTION"] = 1
+        story.inventory["SECRET_POTION"] = 1
 
     def visit_dragon_elder(self):
         self.clear_hover_menu()

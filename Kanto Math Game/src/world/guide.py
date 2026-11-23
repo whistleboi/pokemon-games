@@ -302,6 +302,8 @@ def leads_to(game, area_key, opt):
     of its own (Celadon's Game Corner, with the Rocket Hideout under it)."""
     if opt.get("action") in ("TRAVEL", "EXIT") or (opt.get("target_area") and not opt.get("action")):
         return opt.get("target_area") or opt.get("target")
+    if opt.get("leads_to"):   # (someone at a door who takes you in after a battle: the Radio Tower's guard in the takeover, 11-22)
+        return opt["leads_to"]
     if opt.get("action") == "GAMECORNER":
         key = area_key.replace("_CITY", "").replace("_TOWN", "") + "_GAME_CORNER"
         return key if key in game.loader.area_data.get("STORY_PROGRESSION", {}) else None
