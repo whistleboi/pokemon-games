@@ -1491,23 +1491,34 @@ for _k in ("NEW_BARK_TOWN", "CHERRYGROVE_CITY", "VIOLET_CITY", "AZALEA_TOWN", "C
     _jr[_k] = (_n, _gym, _bad)
 check(all(not v[2] for v in _jr.values()) and all(_jr[k][1] for k in _jr if k not in ("NEW_BARK_TOWN", "CHERRYGROVE_CITY", "MT_SILVER_CITY", "SAFARI_ZONE_GATE")) and sum(v[0] for v in _jr.values()) >= 45,
       f"Johto's building insides: {sum(v[0] for v in _jr.values())} rooms walked in twelve places (in by the door, up every stair, out below the door); each of the eight Gyms has its Leader inside {[(k, v[2]) for k, v in _jr.items() if v[2]]}")
-# the Silver League plateau (Jordan, 11-12): Indigo Plateau's own map and lobby, Johto's league inside
+# the Silver League plateau (11-22, Jordan: "make it like SoulSilver's own"): SoulSilver's Indigo Plateau (zone T10), its League walked
 import json as _json_s
 _tm_s = _json_s.load(open("assets/town_maps.json", encoding="utf-8"))
 g.walk_town_pos = None; g.walk_town_room = None
-story.current_area_key, story.last_area_key = "SILVER_LEAGUE_PLATEAU", "MT_SILVER_CITY"
+story.current_area_key, story.last_area_key = "SILVER_LEAGUE_PLATEAU", "POKEMON_LEAGUE_GATE"
 _sl = _CS(g); g.change_state(_sl); _tap_through(_sl)
 _sl_in = _sl.player
 _sl_gym = _sl.area_data["gym"]
+_slm = _tm_s["SILVER_LEAGUE_PLATEAU"]
 _sl._enter(next(t for t, k in _sl.doors.items() if k == "league"))
-_sl_opts = sorted(str(o.get("action")) for o in _sl.people.values())
-check(isinstance(_sl, _WTS) and len(_tm_s["SILVER_LEAGUE_PLATEAU"]["art"]) == len(_tm_s["INDIGO_PLATEAU"]["art"]) == 20 and _sl_in[1] >= 17 and _sl.room == "lobby"
-      and _sl_opts == ["GYM", "HEAL", "SHOP"] and [t["name"] for t in _sl_gym["trainers"]] == ["Will", "Koga", "Bruno", "Karen"] and _sl_gym["leader"]["name"] == "Lance",
-      f"the Silver League plateau: Indigo Plateau's map; in from Mt. Silver's clearing (south) at {_sl_in}; the lobby's nurse, clerk and the League door; Will, Koga, Bruno, Karen, Champion Lance")
+_sl_opts = sorted(str(o.get("action")) for o in _sl.people.values() if str(o.get("action")) in ("HEAL", "SHOP"))
+check(isinstance(_sl, _WTS) and (len(_slm["art"][0]), len(_slm["art"])) == (32, 32) and _slm["roofs"]["_picture"]["f"] == "ss_ground/T10.png" and _sl_in[1] >= 24
+      and _sl.room == "lobby" and _sl_opts == ["HEAL", "SHOP"] and [t["name"] for t in _sl_gym["trainers"]] == ["Will", "Koga", "Bruno", "Karen"] and _sl_gym["leader"]["name"] == "Lance",
+      f"the Silver League plateau: SoulSilver's own (T10); up from the Reception Gate at the cliff foot {_sl_in}; the lobby's nurse and clerk; Will, Koga, Bruno, Karen, Champion Lance")
+_sl_rooms = _slm["rooms"]
+_sl_chain = ["league_will", "league_koga", "league_bruno", "league_karen", "league_lance", "hall_of_fame"]
+_sl_ok = []
+for _i, _rn in enumerate(_sl_chain[:5]):
+    _r = _sl_rooms.get(_rn) or {}
+    _m = [p for p in _r.get("people", []) if isinstance(p, dict) and p.get("action") == "LEAGUE"]
+    _bar = (_r.get("barred") or [{}])[0].get("until", {}).get("flag_condition")
+    _sl_ok.append(bool(_m) and _m[0]["index"] == _i and "ROOM:" + _sl_chain[_i + 1] in _r["exits"].values()
+                  and _bar == (f"league_won_SILVER_LEAGUE_PLATEAU_{_i + 1}" if _i < 4 else "hall_of_fame_due_SILVER_LEAGUE_PLATEAU"))
+check(all(_sl_ok) and "ROOM:league_will" in _sl_rooms["lobby"]["exits"].values() and any("johto_hall_of_fame" in str(sc.get("then")) for sc in _sl_rooms["hall_of_fame"].get("scenes", [])),
+      f"...the lobby's hall leads to Will's room, then Koga, Bruno, Karen, Lance (each far door shut till you've won there), then the Hall of Fame {_sl_ok}")
 _ip_gym = g.loader.area_data["STORY_PROGRESSION"]["INDIGO_PLATEAU"]["gym"]
-check([t["name"] for t in _ip_gym["trainers"]] == ["Lorelei", "Bruno", "Agatha", "Lance"] and _sl.exits and set(_tm_s["SILVER_LEAGUE_PLATEAU"]["exits"].values()) == {"MT_SILVER_CITY"}
-      and "reception" in _tm_s["SILVER_LEAGUE_PLATEAU"]["buildings"].values(),
-      "...and Indigo keeps Kanto's own (Lorelei, Bruno, Agatha, Lance): the two leagues are distinct; the Silver plateau's hut leads to the Reception Gate")
+check([t["name"] for t in _ip_gym["trainers"]] == ["Lorelei", "Bruno", "Agatha", "Lance"] and _sl.exits and set(_slm["exits"].values()) == {"POKEMON_LEAGUE_GATE"},
+      "...and Indigo keeps Kanto's own (Lorelei, Bruno, Agatha, Lance): the two leagues are distinct; the Silver plateau's way down leads to the Reception Gate")
 g.walk_town_pos = None; g.walk_town_room = None
 # Johto's gatehouses and route buildings (11-12): walked through, as Kanto's are. From the far side you arrive inside, at the far mat
 _gt = {}

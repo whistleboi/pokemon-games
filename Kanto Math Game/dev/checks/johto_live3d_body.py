@@ -58,7 +58,8 @@ if not live3d.available(g):
     print("   (no moderngl / OpenGL 3.3 card here: the live camera is off, the baked pictures stay)")
     print(f"##### {len(fails)} failures")
     raise SystemExit
-PILOT = {"NEW_BARK_TOWN": ("lab", "home", "home_2", "rival", "elmhouse"), "CHERRYGROVE_CITY": ("center", "mart", "gent", "fisher", "evohouse")}
+PILOT = {"NEW_BARK_TOWN": ("lab", "home", "home_2", "rival", "elmhouse"), "CHERRYGROVE_CITY": ("center", "mart", "gent", "fisher", "evohouse"),
+         "SILVER_LEAGUE_PLATEAU": ("lobby", "lobby_2", "league_will", "league_koga", "league_bruno", "league_karen", "league_lance", "hall_of_fame")}   # (11-22: SoulSilver's own T10)
 sc = live3d.scene_of(g, "ss_ground/T20.png", [0, 0])
 check(sc is not None and sc.cam is not None and abs(float(sc.cam[0]) - 48.68) < 0.05 and abs(float(sc.cam[1]) - 41.68) < 0.05
       and abs(float(sc.cam[2]) - 16.18) < 0.05,

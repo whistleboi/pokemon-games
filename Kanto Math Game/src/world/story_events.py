@@ -44,6 +44,9 @@ EVENTS = {
     # ---------------- Kanto: the Hall of Fame (FireRed 1.80), after the Champion: your team recorded, then home
     "kanto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
                            "clear": ["hall_of_fame_due_INDIGO_PLATEAU"], "travel": "PALLET_TOWN"},
+    # ---------------- Johto: the Hall of Fame at the Silver League (SoulSilver's T10R0701), after Champion Lance: home to New Bark
+    "johto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
+                           "clear": ["hall_of_fame_due_SILVER_LEAGUE_PLATEAU"], "travel": "NEW_BARK_TOWN"},
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
     "johto_elm_starter": {"starter": "JOHTO"},
     # ---------------- Unova (Black 2 / White 2's opening in Aspertia, Jordan 11-19; the scenes: dev/builders/town_maps/unova.py)
