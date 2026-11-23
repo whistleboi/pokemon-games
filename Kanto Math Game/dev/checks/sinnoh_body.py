@@ -751,6 +751,26 @@ r = route("VALLEY_WINDWORKS", "SINNOH_ROUTE_205")
 _door = next((b for f in (_tm["VALLEY_WINDWORKS"].get("floors") or [_tm["VALLEY_WINDWORKS"]]) for b in f.get("barred") or [] if b.get("item") == "WORKS_KEY"), None)
 check(_door is not None, "Valley Windworks: its door opens with the Works Key")
 
+_r205 = _tm["SINNOH_ROUTE_205"]; _et = _tm["ETERNA_CITY"]
+_at = lambda m, x, y: m["exits"].get(m["art"][y][x])
+check(_at(_r205, 22, 0) == "ETERNA_FOREST_OUTSKIRTS" and _at(_r205, 14, 5) == "ETERNA_FOREST" and _at(_et, 0, 20) == "ETERNA_FOREST_OUTSKIRTS"
+      and _at(_et, 3, 12) == "ETERNA_FOREST", "Eterna Forest's outskirts (Platinum's D03): Route 205's north edge and Eterna's west edge lead there, the forest's doors into the forest")
+r = route("ETERNA_FOREST_OUTSKIRTS", "SINNOH_ROUTE_205")
+_o = r.run.floor
+check(isinstance(r, DungeonState) and set(_o.exits.values()) >= {"SINNOH_ROUTE_205", "ETERNA_CITY"}, f"the outskirts: walked, ways out to Route 205 and Eterna ({set(_o.exits.values())})")
+
+t = town("JUBILIFE_CITY", "SINNOH_ROUTE_202")   # (11-23 S2: Jubilife TV's 3F doorways, s_s2_tv.py)
+_tvb = []
+for _ch, _want in (("<", "tv_4f"), (">", "tv_groups"), ("u", "tv_records")):
+    t._go("house_0201_3f", None); frames(t, 2)
+    _sp = next(((x, y) for y, r in enumerate(_tm["JUBILIFE_CITY"]["rooms"]["house_0201_3f"]["art"]) for x, c in enumerate(r) if c == _ch), None)
+    _nb = next(((x + dx, y + dy) for x, y in [_sp] for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)) if t._open((x + dx, y + dy)) and (x + dx, y + dy) != _sp), None) if _sp else None
+    if _nb:
+        t.player = t.anim_from = _nb; t.anim = 0; t.walk_goal = None
+        t.step(_sp[0] - _nb[0], _sp[1] - _nb[1]); t.anim = 0; frames(t, 3)
+    _tvb.append((_ch, t.room == _want, len(t.people)))
+check(all(ok and n for _c, ok, n in _tvb), f"Jubilife TV 3F: each doorway leads to its room, people there ({_tvb})")
+
 story.badges["SINNOH"] = []
 t = town("JUBILIFE_CITY", "SINNOH_ROUTE_202")
 _cl = {xy: o for xy, o in t._people().items() if str(o.get("text", "")).startswith("Clown")}

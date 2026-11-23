@@ -76,6 +76,16 @@
     ]
   },
   "figures": {
+    "JUBILIFE_CITY:TV staff  ": {"sheet": "pt_woman6.png"},
+    "JUBILIFE_CITY:TV president": {"sheet": "pt_middleman2.png"},
+    "JUBILIFE_CITY:Programmer": {"sheet": "pt_woman1.png"},
+    "JUBILIFE_CITY:Technician": {"sheet": "pt_workman.png"},
+    "JUBILIFE_CITY:Fisher fan": {"sheet": "pt_fishing.png"},
+    "JUBILIFE_CITY:Catcher fan": {"sheet": "pt_woman3.png"},
+    "JUBILIFE_CITY:Big fan": {"sheet": "pt_bigman.png"},
+    "JUBILIFE_CITY:Technician ": {"sheet": "pt_workman.png"},
+    "JUBILIFE_CITY:Ranking girl": {"sheet": "pt_girl2.png"},
+    "JUBILIFE_CITY:Ranking boy": {"sheet": "pt_boy2.png"},
     "JUBILIFE_CITY:Clown": {
       "sheet": "pt_clown.png"
     },
@@ -15755,6 +15765,15 @@
     },
     "OREBURGH_GATE:Cyclist": {
       "sheet": "pt_cyclew.png"
+    },
+    "ETERNA_FOREST_OUTSKIRTS:TM070": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST_OUTSKIRTS:SILVER POWDER": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST_OUTSKIRTS:Woman": {
+      "sheet": "pt_woman1.png"
     }
   },
   "townsperson": "NPC 17.png",

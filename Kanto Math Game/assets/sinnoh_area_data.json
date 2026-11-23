@@ -1371,7 +1371,7 @@
         "travel_options": [
             {"text": "Route 206", "target_area": "SINNOH_ROUTE_206", "condition": "galactic_eterna_cleared"},
             {"text": "Route 211", "target_area": "SINNOH_ROUTE_211"},
-            {"text": "Eterna Forest", "target_area": "ETERNA_FOREST"},
+            {"text": "Eterna Forest", "target_area": "ETERNA_FOREST"}, {"text": "Eterna Forest Outskirts", "target_area": "ETERNA_FOREST_OUTSKIRTS"},
             {"text": "Galactic Eterna Building", "target_area": "ETERNA_GALACTIC_BUILDING", "condition": "has_forest_badge"},
             {"text": "Grand Underground", "target_area": "GRAND_UNDERGROUND"}
         ],
@@ -1749,6 +1749,22 @@
         "wild_levels": {"land": [10, 12]},
         "berry_trees": ["BLUK_BERRY", "CHERI_BERRY", "ORAN_BERRY", "RAZZ_BERRY"],
         "radar_pool_percentages": "ETERNA_FOREST_RADAR_PERCENTAGES"
+    },
+    "ETERNA_FOREST_OUTSKIRTS": {
+        "area_type": "wild_route",
+        "route_name": "Eterna Forest Outskirts",
+        "region": "SINNOH",
+        "battle_type": "grass",
+        "wild_pool_percentages": null,
+        "min_rounds": 0,
+        "trainer_pool": [],
+        "route_menu": [
+            {"text": "Route 205", "action": "EXIT", "target_area": "SINNOH_ROUTE_205", "condition": "can_exit", "color": "RED"},
+            {"text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED"},
+            {"text": "TM070", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm070_eterna_forest_outskirts_d03_51_57", "event": {"lines": ["A TM (Sleep-Talk), among the roots."], "gift_item": {"TM070": 1}, "flag": "got_tm070_eterna_forest_outskirts_d03_51_57"}},
+            {"text": "SILVER POWDER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_silver_powder_eterna_forest_outskirts_d03_36_59", "event": {"lines": ["A Silver Powder, under a bush."], "gift_item": {"SILVER_POWDER": 1}, "flag": "got_silver_powder_eterna_forest_outskirts_d03_36_59"}}
+        ],
+        "next_area": "ETERNA_CITY"
     },
     "OLD_CHATEAU": {
         "area_type": "dungeon",
@@ -2255,6 +2271,7 @@
             {"text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN"},
             {"text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED"},
             {"text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED"},
+            {"text": "Eterna Forest Outskirts", "action": "EXIT", "target_area": "ETERNA_FOREST_OUTSKIRTS", "condition": "can_exit", "color": "RED"},
             {"text": "Fuego Ironworks", "action": "EXIT", "target_area": "FUEGO_IRONWORKS", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
             {"text": "HEAL BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_heal_ball_sinnoh_route_205_r205a_12_42", "event": {"lines": ["A Heal Ball, lying in the grass."], "gift_item": {"HEAL_BALL": 1}, "flag": "got_heal_ball_sinnoh_route_205_r205a_12_42"}},
             {"text": "X SP DEF", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_sp_def_sinnoh_route_205_r205a_21_64", "event": {"lines": ["A X Sp Def, dropped by the path."], "gift_item": {"X_SP_DEF": 1}, "flag": "got_x_sp_def_sinnoh_route_205_r205a_21_64"}},
