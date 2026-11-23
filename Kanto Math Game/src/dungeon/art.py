@@ -26,6 +26,8 @@ can walk. The town screen (src/states/overworld/walk_town.py) and the route maps
   0 a cracked rock: in the way till you have Rock Smash (Ravaged Path, Oreburgh Gate)
   2 a small tree: in the way till you have Cut   7 a steep muddy slope: in the way till you have the Bicycle
   ' round stones: in the way on foot; on the Bicycle you hop across them (the Jagged Pass)
+  « » a bike ramp, ridden west / east: in the way, but on the Bicycle, riding its way, you jump off it: one tile past
+    it in normal gear, three holding Shift (top gear), over whatever lies between (Platinum's Victory Road)
   3 4 5 6 a spin tile: the floor carries you west, east, north, south till something stops you (Fuego Ironworks)
   8 deep snow   9 marsh mud   (open ground you wade through: each step takes twice as long)
   1 a passage to any other floor, or across this one (a map's "links" {"x,y": [floor, x, y]}: Mt. Coronet)
@@ -62,7 +64,9 @@ def _tiles_dir(folder=""):
     return os.path.join(TILE_DIRS[-1], folder)
 
 
-BLOCK = set("Tr~#!lkcqihmgjyztx&$/*_()@027'")
+BLOCK = set("Tr~#!lkcqihmgjyztx&$/*_()@027'«»")
+RAMPS = {"«": (-1, 0), "»": (1, 0)}  # a bike ramp, and the way you ride off it (Platinum's 0xD8 / 0xD7 tiles)
+RAMP_JUMP = (1, 3)  # how far past the ramp you land: normal gear, top gear (Shift held)
 LEDGES = {"_": (0, 1), "(": (-1, 0), ")": (1, 0)}  # a ledge, and the one way you hop over it
 CLIFF = (200, 160, 116)
 CLIFF_DARK = (150, 112, 78)
@@ -353,6 +357,11 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                     sx = r.x + 6 + k * (r.w - 12) // 2
                     pygame.draw.circle(surf, (118, 110, 104), (sx, r.centery + 2), r.w // 7)
                     pygame.draw.circle(surf, (170, 162, 150), (sx - 1, r.centery), r.w // 9)
+            elif c in RAMPS:  # a bike ramp: a wooden wedge rising the way you ride off it
+                pygame.draw.rect(surf, (150, 112, 78), r)
+                lo, hi = (r.right - 4, r.x + 4) if RAMPS[c][0] < 0 else (r.x + 4, r.right - 4)
+                pygame.draw.polygon(surf, (176, 124, 72), [(lo, r.bottom - 6), (hi, r.bottom - 6), (hi, r.y + 8)])
+                pygame.draw.line(surf, (112, 76, 46), (lo, r.bottom - 6), (hi, r.y + 8), 3)
             elif c == "7":  # a steep muddy slope (the Bicycle rides up it): brown ruts running down it
                 pygame.draw.rect(surf, (150, 112, 78), r)
                 for i in range(r.x + 4, r.right - 2, 7):

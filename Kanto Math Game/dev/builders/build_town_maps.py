@@ -55,7 +55,7 @@ def check(key, m):
     w = len(art[0])
     bad = [(i, len(r)) for i, r in enumerate(art) if len(r) != w]
     assert not bad, f"{key}: rows not {w} wide: {bad}"
-    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;0123456789?'`"):  # (` a ready-made piece's footprint)  # (? a crate: Orre's S.S. Libra; ' round stones: the Jagged Pass)
+    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;0123456789?'`«»"):  # (` a ready-made piece's footprint; « » bike ramps)  # (? a crate: Orre's S.S. Libra; ' round stones: the Jagged Pass)
         from src.dungeon import art as _a
         cells = [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c == ch or
                  (c == "D" and (_a.door_owner(art, x, y) == ch or (_a.door_owner(art, x, y) is None and 0 <= y - 1 and art[y - 1][x] == ch)))]
@@ -115,6 +115,12 @@ def reachable(key, m):
                 if r == room and t not in seen:
                     seen.add(t)
                     todo.append(t)
+            if 0 <= n[0] < w and 0 <= n[1] < h and {"«": (-1, 0), "»": (1, 0)}.get(art[n[1]][n[0]]) == (dx, dy):   # (a bike ramp, ridden its way:
+                for k in (1, 3):                                                                                   #  off it a tile on, or three in top gear)
+                    land = (n[0] + dx * k, n[1] + dy * k)
+                    if 0 <= land[0] < w and 0 <= land[1] < h and land not in seen and art[land[1]][land[0]] in OPEN:
+                        seen.add(land)
+                        todo.append(land)
             if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$027?'/"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall; a crate: pushed aside; a Rock Climb wall)
                 seen.add(n)
                 todo.append(n)
