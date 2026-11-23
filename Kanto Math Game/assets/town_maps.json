@@ -324699,7 +324699,7 @@
        "battle": {
         "name": "Tracey",
         "class": "PKMN_TRAINER",
-        "sprite": "tracey.png",
+        "sprite": "tracey_oi.png",
         "team": [
          48,
          183
@@ -338120,7 +338120,7 @@
        "battle": {
         "name": "Tracey",
         "class": "PKMN_TRAINER",
-        "sprite": "tracey.png",
+        "sprite": "tracey_oi.png",
         "team": [
          48,
          183,
