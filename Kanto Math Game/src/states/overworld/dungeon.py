@@ -432,7 +432,7 @@ def with_rooms(m):
         return m
     floors = [dict(f) for f in m["floors"]] if m.get("floors") else [
         {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops",
-                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool", "hidden", "cycling", "downhill") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
+                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool", "hidden", "cycling", "downhill", "heights") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
     n0 = len(floors)
     names = list(m.get("floor_names") or [""] * n0)
     where, doors = {}, {}
@@ -968,6 +968,10 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             game.arrive_floor = None
             if self.run.floor.walkable(*_drop[2]):
                 self.run.player = tuple(_drop[2])
+        if came not in exits and not at_edge and not _arr and self._on_surf() and not self._can_surf():
+            # (no known way in - a load, a skip, the fallback arrival - put you on a water way in without Surf: ashore, or you'd
+            #  swim without it: Valley Windworks from Route 205's river, 11-23. Walking or surfing in keeps its own tile.)
+            self.run.player = self._nearest_land() or self.run.player
         self._sync_gate()
         if not self.run.fog and not story.story_flags.get(f"visited_{self.area_key}"):  # (dark places keep their own darkness)
             self.run.explore = True
@@ -2079,6 +2083,23 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         f = self.run.floor
         return f.tile(*(t or self.run.player)) == core.SURF
 
+    def _nearest_land(self):
+        """The nearest tile you can stand on without Surf (not water, not a way out), going through water and land, or None."""
+        f = self.run.floor
+        start = tuple(self.run.player)
+        seen, todo = {start}, [start]
+        while todo:
+            nxt = []
+            for x, y in todo:
+                if (x, y) != start and f.walkable(x, y) and f.tile(x, y) != core.SURF and (x, y) not in f.exits:
+                    return (x, y)
+                for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                    if 0 <= nx < f.w and 0 <= ny < f.h and (nx, ny) not in seen and (f.walkable(nx, ny) or f.tile(nx, ny) == core.SURF):
+                        seen.add((nx, ny))
+                        nxt.append((nx, ny))
+            todo = nxt
+        return None
+
     hop = False  # (mid-hop over a ledge: you arc through the air)
     sliding = None  # (on sheet ice: the way you're sliding, till something stops you)
 
@@ -2111,7 +2132,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         self._clear_boulders()  # (one already pushed aside isn't in the way)
         before = self.run.player
         to = (before[0] + dx, before[1] + dy)
-        if self._level_edge(tuple(before), tuple(to)):   # (a drop between two levels: no stepping off it, as in Black 2)
+        if self._level_edge(tuple(before), tuple(to)) or self._height_edge(tuple(before), tuple(to)):   # (a drop between two levels: no stepping off it, as in Black 2; a Gen 3 cliff: 11-23)
             self.walk_goal = None
             return
         if self._on_surf(to) and not self._on_surf(before) and not self._can_surf():
@@ -5406,6 +5427,24 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             self._step_key, self._step_hit = key, self._guide_route(start, goal, step.get("label") or "Here")
         return self._step_hit
 
+    def _height_edge(self, a, b, index=None):
+        """True when a -> b climbs or drops between two of a floor's levels the way the Gen 3 games forbid (11-23, FireRed's
+        Victory Road, Seafoam, Cerulean Cave, the Sevii canyons): a floor's "heights" (one hex digit a tile, the game's own
+        elevation) - a step between two land heights that differ is no step, unless one of them is 0 (stairs: any level)
+        or 15 (a bridge: both). Height 1 is water: the Surf rules have it."""
+        art = (getattr(self, "recipe", None) or {}).get("art") or {}
+        i = self.run.index if index is None else index
+        plan = (art.get("floors") or [art])[i] if i < len(art.get("floors") or [art]) else {}
+        rows = plan.get("heights") if isinstance(plan, dict) else None
+        if not rows:
+            return False
+        try:
+            ha, hb = int(rows[a[1]][a[0]], 16), int(rows[b[1]][b[0]], 16)
+        except (IndexError, ValueError):
+            return False
+        free = (0, 1, 15)
+        return ha not in free and hb not in free and ha != hb
+
     def _step_route(self, start, goal, label, reach=False, loose=False):
         """The first tile to head for on the shortest way from start to beside goal ((floor, x, y) each; goal can be a
         set of them: the nearest is taken), by ways you can walk now: over ledges their one way, across water with
@@ -5634,6 +5673,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             for n in nxt:
                 if n is not None and not through and n[0] == i == self.run.index and self._level_edge((x, y), (n[1], n[2])):
                     continue   # (no route off one level onto another: dungeon_live._level_edge)
+                if n is not None and not through and n[0] == i and self._height_edge((x, y), (n[1], n[2]), i):
+                    continue   # (nor up or down a Gen 3 cliff: _height_edge)
                 if n is not None and n not in prev:
                     prev[n] = cur
                     if through:

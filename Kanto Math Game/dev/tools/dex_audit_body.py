@@ -180,6 +180,11 @@ for region in regions:
     if region == "HOENN":
         for pid in pool_ids("HOENN_UNDERWATER_POOL_PERCENTAGES"):
             got.setdefault(pid, set()).add("dive")
+    for k in areas:   # (a drawn map's floor with its own wild list: dungeon.py "pool"; Shoal Cave's Ice room, 11-23)
+        for _f in (T.get(k) or {}).get("floors") or []:
+            if _f.get("pool") and _f["pool"] not in ("NO_WILD_INDOORS_PERCENTAGES", "HOENN_UNDERWATER_POOL_PERCENTAGES"):
+                for pid in pool_ids(_f["pool"]):
+                    got.setdefault(pid, set()).add(f"floor:{k}")
     for pid in ROAMERS.get(region, []):
         got.setdefault(pid, set()).add("roamer")
     for pid in st.get("starters", []):
@@ -193,6 +198,15 @@ for region in regions:
         for kind, it, _c in PRIZES.get(k, []):
             if kind == "ITEM":
                 have_items.add(str(it))
+        for _src in (P[k], T.get(k) or {}):   # (Battle Points counters: src/world/battle_points.py SHOPS; 11-23, Hoenn's Razor Claw)
+            _txt = json.dumps(_src)
+            if '"BP_SHOP"' in _txt:
+                from src.world import battle_points as _bp
+                for _o in re.findall(r'\{[^{}]*"action": "BP_SHOP"[^{}]*\}', _txt):
+                    _shop = (re.search(r'"shop": "(\w+)"', _o) or [None, "emerald"])[1]
+                    for _it, _bpc in (_bp.SHOPS.get(_shop) or (None, []))[1] or []:
+                        if not str(_it).startswith("TM:"):
+                            have_items.add(str(_it))
     if any(k in ("CELADON_CITY", "GOLDENROD_CITY") or P[k].get("department_store") for k in areas):   # (mart.py: a department store
         from src.states.systems.mart import PokeMartState as _PM                                             #  sells every evolution item a
         from src.pokemon import items as _it                                                                 #  Pokemon here can use)
