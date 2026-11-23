@@ -770,13 +770,24 @@ class WalkTownState(CityState):
                 out.append(t)
         return out
 
+    def _landings(self):
+        """This map's or room's "landings": tiles you reach only by a scene's ride (Nimbasa's roller coaster platforms,
+        Unova 11-23) or a fall - places you can stand on that need no walk out."""
+        tm = self.town_map if isinstance(getattr(self, "town_map", None), dict) else {}
+        m = (tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm
+        return {tuple(t) for t in ((m or {}).get("landings") or [])}
+
     def _reaches_out(self, start):
-        """True when a way out (an exit or a door) can be walked to from start."""
+        """True when a way out (an exit or a door) can be walked to from start - or one of the room's landings (a platform
+        a ride brought you to: back there after a battle, not at the entrance, Unova 11-23)."""
         seen, todo = {start}, [start]
+        goals = self._landings()
+        if start in goals:
+            return True
         while todo:
             x, y = todo.pop()
             for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
-                if q in self.exits or q in self.doors:
+                if q in self.exits or q in self.doors or q in goals:
                     return True
                 if q not in seen and self._open(q):
                     seen.add(q)
@@ -2055,14 +2066,24 @@ class WalkTownState(CityState):
         return super().start_gym_battle()
 
     def light_radius(self):
-        """A dark room's light, in tiles (None: fully lit): its "radius" list by how many of its "flags" are set."""
+        """A dark room's light, in tiles (None: fully lit): its "radius" list by how many of its "flags" are set. A room
+        with "lit" sections keeps its first radius round you: the sections do the rest (_lit_sections)."""
         d = self.dark or {}
         flags = self.game.story_manager.story_flags
         n = sum(1 for f in d.get("flags", []) if flags.get(f))
         radii = d.get("radius") or [2]
-        return None if n >= len(radii) else radii[n]
+        if n >= len(radii):
+            return None
+        return radii[0] if d.get("lit") else radii[n]
 
-    def _draw_dark(self, screen, view, centre):
+    def _lit_sections(self):
+        """A dark room's sections lit now: its "lit" [[x0, y0, x1, y1, flag or null], ...] whose flag is set (or none) - Black 2's
+        Nimbasa Gym, a new part of the catwalk lit as you reach each trainer (gym_elec.c; Unova 11-23)."""
+        flags = self.game.story_manager.story_flags
+        return [tuple(int(v) for v in sec[:4]) for sec in ((self.dark or {}).get("lit") or [])
+                if len(sec) >= 4 and (len(sec) < 5 or not sec[4] or flags.get(sec[4]))]
+
+    def _draw_dark(self, screen, view, centre, at=None):
         r = self.light_radius()
         if r is None:
             return
@@ -2072,6 +2093,15 @@ class WalkTownState(CityState):
         rad = int(r * TILE)
         for i in range(6):  # (a soft edge)
             pygame.draw.circle(veil, (0, 0, 0, 250 - 40 * (i + 1)), (cx, cy), max(1, rad - i * TILE // 8))
+        if at is not None:   # (lit sections: each a rectangle of tiles cut out of the veil, soft-edged like the circle)
+            for x0, y0, x1, y1 in self._lit_sections():
+                a, b = at((min(x0, x1), min(y0, y1))), at((max(x0, x1), max(y0, y1)))
+                box = pygame.Rect(a.x - view.x, a.y - view.y, b.right - a.x, b.bottom - a.y)
+                cut = pygame.Surface(view.size, pygame.SRCALPHA)
+                cut.fill((0, 0, 0, 250))
+                for i in range(6):
+                    pygame.draw.rect(cut, (0, 0, 0, 250 - 40 * (i + 1)), box.inflate(TILE // 2 - i * TILE // 8, TILE // 2 - i * TILE // 8))
+                veil.blit(cut, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)   # (the darker of the two never wins: either light shows)
         screen.blit(veil, view.topleft)
 
     def _draw_story_weather(self, screen, view):
@@ -2619,7 +2649,7 @@ class WalkTownState(CityState):
         if getattr(self, "turnstiles", None):
             self._draw_gates(screen, *self._origin())
         if getattr(self, "dark", None):
-            self._draw_dark(screen, view, centre)
+            self._draw_dark(screen, view, centre, at)
         if self.room is None:
             self._draw_story_weather(screen, view)
         if not self._busy():
