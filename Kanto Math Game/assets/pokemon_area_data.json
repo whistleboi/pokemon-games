@@ -2269,7 +2269,7 @@
               {
                 "lines": [
                   "Employee: You saved us! Have you met our scientist on 1F? He's making the UP-GRADE, a part that makes Porygon even better.",
-                  "He needs a link to the faraway islands first. Once that works, he'll have one for you!"
+                  "He needs a link to the faraway islands first, and he only gives it to a Trainer with the National Pokedex."
                 ],
                 "requires": [
                   "silph_co_cleared",

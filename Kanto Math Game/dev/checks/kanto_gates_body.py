@@ -1211,7 +1211,10 @@ guarded("followups", _run_followups)
 story.current_area_key = "PALLET_TOWN"
 
 # =================================================================================================== the list itself
-_gates_file = _os.path.normpath(_os.path.join(_os.getcwd(), "..", "..", "kanto_handoff", "kanto_rom_tools", "kanto_gates.json"))
+_up = _os.getcwd()   # (the handoff folder beside the repo, or further up from a worktree: 11-23)
+while _up and not _os.path.isdir(_os.path.join(_up, "kanto_handoff")) and _os.path.dirname(_up) != _up:
+    _up = _os.path.dirname(_up)
+_gates_file = _os.path.normpath(_os.path.join(_up, "kanto_handoff", "kanto_rom_tools", "kanto_gates.json"))
 if _os.path.exists(_gates_file):
     _gl = json.load(open(_gates_file, encoding="utf-8"))
     _ids = [x["id"] for x in _gl.get("gates", [])]

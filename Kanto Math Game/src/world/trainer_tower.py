@@ -270,6 +270,12 @@ def _owner(state, show):
     out = ["Owner: I'm the owner of the Trainer Tower. You battled perfectly to get here!",
            f"Your time: {challenge_clock.text(t)}."]
     prize = {"UP_GRADE": "UPGRADE"}.get(data()["prizes"].get(c), data()["prizes"].get(c))   # (FireRed's item names: ours)
+    from src.states.systems import has_national_dex
+    if prize == "UPGRADE" and not story.story_flags.get(f"tt_prize_{c}") and not has_national_dex(story):
+        # (Jordan 11-23: no Up-Grade in Kanto before the National Pokedex - a Kanto-first player gets no Porygon2 there)
+        out += ["I have a prize for this climb, but it's a part made for Pokemon from far away.",
+                "Come back with the National Pokedex and climb it again, and it's yours!"]
+        prize = None
     if prize and not story.story_flags.get(f"tt_prize_{c}"):
         story.story_flags[f"tt_prize_{c}"] = True
         story.add_item(prize, 1)

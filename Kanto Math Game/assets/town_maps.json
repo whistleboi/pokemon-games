@@ -15041,10 +15041,11 @@
         "Scientist: Here, take this. Silph made it - a Porygon holding it evolves into Porygon2!"
        ],
        "requires": [
-        "network_machine_fixed"
+        "network_machine_fixed",
+        "unlocked_national_dex"
        ],
        "fail": [
-        "Scientist: We're working on a way to link with faraway islands. If only the Network Machine on One Island worked..."
+        "Scientist: We're working on a part that makes Porygon even better. It needs a link to the faraway islands... and I only give it to a Trainer with the National Pokedex."
        ],
        "gift_item": {
         "UPGRADE": 1

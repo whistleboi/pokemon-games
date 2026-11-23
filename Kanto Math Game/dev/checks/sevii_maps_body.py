@@ -711,18 +711,28 @@ for _n in range(1, 9):
 story.story_flags.pop("tt_climb_DOUBLE", None); story.story_flags["tt_climb_SINGLE_on"] = True
 _ck.start(story, "TRAINER TOWER")
 story.story_flags.pop("tt_prize_SINGLE", None); story.inventory.pop("UPGRADE", None)
+_ndx = story.story_flags.pop("unlocked_national_dex", None)
+_nd_regions = None
 p = route("TRAINER_TOWER", "SEVEN_ISLAND")
 while len(p.run.floors) <= 9:
     p.run.enter_floor(len(p.run.floors))
 p.run.enter_floor(9); frames(p, 2)
 _said = []
+from src.states.systems import has_national_dex as _hnd
+_tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
+check(_hnd(story) or (not story.inventory.get("UPGRADE") and not story.story_flags.get("tt_prize_SINGLE") and any("National Pokedex" in x for x in _said)),
+      f"...without the National Pokedex the owner keeps the Up-Grade for later (Jordan 11-23: none in Kanto before it) ({_said[2:4]})")
+story.story_flags["unlocked_national_dex"] = True
+story.story_flags["tt_on"] = True; story.story_flags["tt_climb_SINGLE_on"] = True; story.story_flags["tt_floor_8"] = True; _ck.start(story, "TRAINER TOWER")
+_said = []
 _tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
 check(story.inventory.get("UPGRADE") == 1 and story.story_flags.get("tt_best_SINGLE") is not None and not _ck.running(story) and any("record" in x for x in _said),
       f"...the roof: the owner stops the clock, gives the Single climb's prize (FireRed: the Up-Grade) and keeps the record ({_said[:3]})")
 _said = []
-story.story_flags["tt_on"] = True; story.story_flags["tt_climb_SINGLE_on"] = True; _ck.start(story, "TRAINER TOWER")
+story.story_flags["tt_on"] = True; story.story_flags["tt_climb_SINGLE_on"] = True; story.story_flags["tt_floor_8"] = True; _ck.start(story, "TRAINER TOWER")
 _tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
 check(story.inventory.get("UPGRADE") == 1, f"...the prize once only ({story.inventory.get('UPGRADE')})")
+if _ndx is None: story.story_flags.pop("unlocked_national_dex", None)
 for _k in [k for k in story.story_flags if k.startswith("tt_")] + ["challenge_clock"]:
     story.story_flags.pop(_k, None)
 
