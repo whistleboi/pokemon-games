@@ -56,7 +56,15 @@ def links(area):
             if cond and not st._check_route_condition(cond, False, o):
                 continue
             out.append(tgt)
-    return out
+    if not _menu_targets(area):   # (a place with no menu buttons at all: its walked map's own ways out - Orre's Pyrite Building
+        out += [t for t in _walk_exits(area) if t not in out]   # lift to The Under, 11-23. Where a place still has menu buttons,
+    return out   # those carry its story gates; its map's barred ways aren't read here)
+
+
+def _menu_targets(area):
+    a = PROG.get(area) or {}
+    return [o for o in (a.get("travel_options") or []) + (a.get("explore_options") or []) + (a.get("route_menu") or [])
+            if o.get("target_area") or (o.get("target") and o.get("action") in ("TRAVEL", "EXIT"))]
 
 
 def gym_open(area):
