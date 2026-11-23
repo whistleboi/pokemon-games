@@ -326,6 +326,22 @@ st = place("CRYSTAL_CAVE", "SUNBURST_ISLAND")
 w = meet(st, "HARD STONE")
 check(story.inventory.get("HARD_STONE") == 1, f"...the Hard Stone is in the Bag ({w})")
 
+print("6) The Orange League's Hall of Fame: the team one by one, the record kept as Orange's (5.7: FireRed's machine)")
+from src.states.hall_of_fame import HallOfFameState, records as _hof_records
+story.player_team = [mk(i) for i in (131, 25, 143)]
+_n0 = len(_hof_records(g))
+_out = []
+_hs = HallOfFameState(g, "ORANGE", lambda ls: _out.extend(ls + ["(done)"]))
+g.current_state = _hs
+for _ in range(4000):
+    if _out:
+        break
+    _hs.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    _hs.update(); _hs.draw()
+_rec = _hof_records(g)[-1] if len(_hof_records(g)) > _n0 else {}
+check(_out[-1:] == ["(done)"] and _rec.get("region") == "ORANGE" and [m["id"] for m in _rec.get("team", [])] == [131, 25, 143],
+      f"...Lapras, Pikachu, Snorlax shown and saved as an Orange League win ({_rec.get('region')}, {len(_rec.get('team', []))})")
+
 story.story_flags.clear(); story.story_flags.update(_flags0)
 story.inventory.clear(); story.inventory.update(_inv0)
 story.player_team, story.money = _team0, _money0
