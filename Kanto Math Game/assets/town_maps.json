@@ -124057,7 +124057,7 @@
     },
     "surface": 0,
     "theme": "seabed",
-    "pool": "HOENN_UNDERWATER_POOL_PERCENTAGES"
+    "pool": "HOENN_ROUTE_128_DIVE_PERCENTAGES"
    }
   ],
   "floor_names": [

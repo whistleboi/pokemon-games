@@ -2918,6 +2918,13 @@ check({"TM153", "TM154", "TM155", "TM144", "TM145", "TM146"} <= set(_tt),
       f"Mauville Hills: ORAS's Ultimate Move and Pledge tutors teach (and sell) their moves ({sorted(_tt)[:8]})")
 _pools = [k for k, v in g.loader.area_data.items() if k.endswith("_PERCENTAGES") and k.startswith(("HOENN", "PETALBURG", "SLATEPORT")) and isinstance(v, dict) and ("2032" in v or "2033" in v)]
 check(not _pools, f"no Galarian Zigzagoon / Linoone in Hoenn's wild lists (#17) {_pools[:3]}")
+from src.world import hordes as _hd4
+_a110 = _area["HOENN_ROUTE_110"]
+_five = _hd4.pick(g, _a110)
+check(_hd4.rate(g, _a110) > 0 and len(_five) == 5 and set(int(x) for x in _five) <= {81, 311, 312},
+      f"Route 110: ORAS's hordes (Magnemite, Plusle, Minun), five at once (#16) ({_five})")
+check(all(_area[k].get("horde_pool_percentages") for k in ("HOENN_ROUTE_101", "HOENN_GRANITE_CAVE", "HOENN_VICTORY_ROAD", "HOENN_SKY_PILLAR")),
+      "hordes where ORAS has them: Route 101, Granite Cave, Victory Road, Sky Pillar...")
 story.story_flags.clear(); story.story_flags.update(_f4)
 story.inventory.clear(); story.inventory.update(_inv4)
 

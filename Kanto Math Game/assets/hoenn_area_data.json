@@ -620,7 +620,10 @@
         {"text": "SEEK HEATRAN", "action": "BOSS", "color": "GOLD", "flag_condition": "not scorched_slab_heatran", "boss": {"id": 485, "level": 50, "name": "Heatran", "victory_flag": "scorched_slab_heatran", "lines": ["A powerful presence fills the air... Heatran appears!"]}, "condition": ["beat_hoenn_champion"]},
         {"text": "Route 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "HOENN_ROUTE_120"
+      "next_area": "HOENN_ROUTE_120",
+      "horde_pool_percentages": "HOENN_SCORCHED_SLAB_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [14, 14]
     },
     "HOENN_ALTERING_CAVE": {
       "area_type": "dungeon",
@@ -1036,7 +1039,8 @@
       ],
       "next_area": "HOENN_ROUTE_121",
       "on_enter_event": null,
-      "department_store": true
+      "department_store": true,
+      "rock_smash_pool_percentages": "LILYCOVE_CITY_ROCK_SMASH_PERCENTAGES"
     },
     "MOSSDEEP_CITY": {"surf_pool_percentages": "MOSSDEEP_CITY_SURF_PERCENTAGES", 
       "area_type": "town",
@@ -1171,7 +1175,10 @@
       ],
       "next_area": "OLDALE_TOWN",
       "region": "HOENN",
-        "starter_event": {"walk_up": {"look": "sheet:em_64.png", "flag": "hoenn_birch_walked_up", "lines": ["Professor Birch hurries over and picks up his bag.", "Professor Birch: Whew... you saved me! I'm Birch, the Pokemon Professor.", "Professor Birch: Let's head back to my lab in Littleroot Town!"]}, "lines": ["Help! Somebody, help me!", "A man is running in circles... a wild POOCHYENA is chasing him!", "Professor Birch: You there! Please help me!"], "boss": {"id": 261, "name": "Poochyena", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "hoenn_birch_rescued", "lines": ["The wild POOCHYENA turns to face you!"], "won": ["The POOCHYENA ran off into the tall grass!"]}, "return_to": "LITTLEROOT_TOWN", "return_until": "hoenn_birch_thanked"}
+        "starter_event": {"walk_up": {"look": "sheet:em_64.png", "flag": "hoenn_birch_walked_up", "lines": ["Professor Birch hurries over and picks up his bag.", "Professor Birch: Whew... you saved me! I'm Birch, the Pokemon Professor.", "Professor Birch: Let's head back to my lab in Littleroot Town!"]}, "lines": ["Help! Somebody, help me!", "A man is running in circles... a wild POOCHYENA is chasing him!", "Professor Birch: You there! Please help me!"], "boss": {"id": 261, "name": "Poochyena", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "hoenn_birch_rescued", "lines": ["The wild POOCHYENA turns to face you!"], "won": ["The POOCHYENA ran off into the tall grass!"]}, "return_to": "LITTLEROOT_TOWN", "return_until": "hoenn_birch_thanked"},
+        "horde_pool_percentages": "HOENN_ROUTE_101_HORDE_PERCENTAGES",
+        "horde_rate": 0.1,
+        "horde_levels": [2, 2]
     },
     "HOENN_ROUTE_102": { "dexnav_pool_percentages": "HOENN_ROUTE_102_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1203,7 +1210,10 @@
         { "text": "PETALBURG CITY", "action": "EXIT", "target_area": "PETALBURG_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "PETALBURG_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_102_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [2, 2]
     },
     "HOENN_ROUTE_103": { "dexnav_pool_percentages": "HOENN_ROUTE_103_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1247,7 +1257,10 @@
         {"text": "ROUTE 110", "action": "EXIT", "target": "HOENN_ROUTE_110", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
       ],
       "next_area": "OLDALE_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_103_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [2, 2]
     },
     "HOENN_ROUTE_104": { "dexnav_pool_percentages": "HOENN_ROUTE_104_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1292,7 +1305,10 @@
         {"text": "ROUTE 105", "action": "EXIT", "target": "HOENN_ROUTE_105", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
       ],
       "next_area": "RUSTBORO_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_104_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [2, 3]
     },
     "HOENN_ROUTE_105": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_105_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
@@ -1543,7 +1559,11 @@
         {"text": "ROUTE 103", "action": "EXIT", "target": "HOENN_ROUTE_103", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
       ],
       "next_area": "MAUVILLE_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_110_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [6, 6],
+      "surf_pool_percentages": "HOENN_ROUTE_110_SURF_PERCENTAGES"
     },
     "HOENN_ROUTE_111": { "dexnav_pool_percentages": "HOENN_ROUTE_111_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1580,7 +1600,10 @@
       ],
       "next_area": "HOENN_ROUTE_112",
       "region": "HOENN",
-      "weather": "SAND"
+      "weather": "SAND",
+      "horde_pool_percentages": "HOENN_ROUTE_111_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [11, 11]
     },
     "HOENN_ROUTE_112": { "dexnav_pool_percentages": "HOENN_ROUTE_112_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1623,7 +1646,10 @@
         {"text": "FIERY PATH", "action": "EXIT", "target_area": "HOENN_FIERY_PATH", "condition": ["can_exit", "has_item:HM_STRENGTH"], "color": "RED"}
       ],
       "next_area": "LAVARIDGE_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_112_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [8, 8]
     },
     "HOENN_ROUTE_113": { "dexnav_pool_percentages": "HOENN_ROUTE_113_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1670,7 +1696,10 @@
         { "text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FALLARBOR_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_113_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [9, 9]
     },
     "HOENN_ROUTE_114": { "dexnav_pool_percentages": "HOENN_ROUTE_114_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1709,7 +1738,10 @@
         {"text": "FOSSIL MANIAC", "door": "fossil", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Fossil Maniac: Dig, dig, dig! No fossils for you, though. Try the sandstorm on Route 111!"]}}
       ],
       "next_area": "FALLARBOR_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_114_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [9, 9]
     },
     "HOENN_ROUTE_115": { "dexnav_pool_percentages": "HOENN_ROUTE_115_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1748,7 +1780,10 @@
         { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "RUSTBORO_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_115_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [10, 10]
     },
     "HOENN_ROUTE_116": { "dexnav_pool_percentages": "HOENN_ROUTE_116_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1794,7 +1829,10 @@
         { "text": "RUSTURF TUNNEL", "action": "TRAVEL", "target_area": "HOENN_RUSTURF_TUNNEL", "condition": "can_exit", "color": "GREEN" }
       ],
       "next_area": "HOENN_RUSTURF_TUNNEL",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_116_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [4, 4]
     },
     "HOENN_ROUTE_117": { "dexnav_pool_percentages": "HOENN_ROUTE_117_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1841,7 +1879,10 @@
         { "text": "VERDANTURF TOWN", "action": "EXIT", "target_area": "VERDANTURF_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "VERDANTURF_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_117_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [7, 7]
     },
     "HOENN_ROUTE_118": { "dexnav_pool_percentages": "HOENN_ROUTE_118_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -1932,7 +1973,10 @@
       "next_area": "FORTREE_CITY",
       "region": "HOENN",
       "weather": "RAIN",
-        "on_enter_event": null
+        "on_enter_event": null,
+        "horde_pool_percentages": "HOENN_ROUTE_119_HORDE_PERCENTAGES",
+        "horde_rate": 0.1,
+        "horde_levels": [12, 12]
     },
     "HOENN_ROUTE_120": {
       "area_type": "wild_route",
@@ -1983,7 +2027,10 @@
       ],
       "next_area": "HOENN_ROUTE_121",
       "region": "HOENN",
-      "weather": "RAIN"
+      "weather": "RAIN",
+      "horde_pool_percentages": "HOENN_ROUTE_120_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [13, 13]
     },
     "HOENN_ROUTE_121": { "dexnav_pool_percentages": "HOENN_ROUTE_121_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -2084,7 +2131,10 @@
         {"text": "ROUTE 118", "action": "EXIT", "target": "HOENN_ROUTE_118", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_122",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_ROUTE_123_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [15, 15]
     },
     "HOENN_ROUTE_124": { "dexnav_surf_pool_percentages": "HOENN_ROUTE_124_DEXNAV_SURF_PERCENTAGES",
       "area_type": "wild_route",
@@ -2516,7 +2566,10 @@
         { "text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_104",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_PETALBURG_WOODS_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [3, 3]
     },
     "HOENN_RUSTURF_TUNNEL": {
       "area_type": "dungeon",
@@ -2539,7 +2592,10 @@
         }
       ],
       "next_area": "VERDANTURF_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_RUSTURF_TUNNEL_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [5, 5]
     },
     "HOENN_GRANITE_CAVE": { "dexnav_pool_percentages": "HOENN_GRANITE_CAVE_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
@@ -2560,7 +2616,10 @@
         {"text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_106",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_GRANITE_CAVE_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [6, 6]
     },
     "HOENN_METEOR_FALLS": { "dexnav_pool_percentages": "HOENN_METEOR_FALLS_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
@@ -2586,7 +2645,10 @@
         { "text": "ROUTE 115", "action": "EXIT", "target_area": "HOENN_ROUTE_115", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_114",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_METEOR_FALLS_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [9, 20]
     },
     "HOENN_JAGGED_PASS": { "dexnav_pool_percentages": "HOENN_JAGGED_PASS_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
@@ -2629,7 +2691,10 @@
         {"text": "Magma Hideout", "action": "EXIT", "target_area": "HOENN_MAGMA_HIDEOUT", "condition": ["can_exit", "has_feather_badge"], "color": "RED"}
       ],
       "next_area": "HOENN_MT_CHIMNEY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_JAGGED_PASS_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [10, 10]
     },
     "HOENN_FIERY_PATH": { "dexnav_pool_percentages": "HOENN_FIERY_PATH_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
@@ -2661,7 +2726,10 @@
         {"text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "HOENN_MT_CHIMNEY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_FIERY_PATH_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [8, 8]
     },
     "HOENN_MT_CHIMNEY": {
       "area_type": "dungeon",
@@ -2699,7 +2767,10 @@
         { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "MAUVILLE_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_NEW_MAUVILLE_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [12, 12]
     },
     "HOENN_WEATHER_INSTITUTE": {
       "area_type": "dungeon",
@@ -2813,7 +2884,10 @@
       ],
       "next_area": "HOENN_ROUTE_121",
       "safari_game": {"balls": 30, "steps": 500},
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_SAFARI_ZONE_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [15, 15]
     },
     "HOENN_SHOAL_CAVE": { "dexnav_pool_percentages": "HOENN_SHOAL_CAVE_DEXNAV_PERCENTAGES", "cleared_flag": "shoal_cave_cleared",
       "area_type": "dungeon",
@@ -2845,7 +2919,10 @@
         { "text": "ROUTE 125", "action": "EXIT", "target_area": "HOENN_ROUTE_125", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "PACIFIDLOG_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_SHOAL_CAVE_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [17, 17]
     },
     "HOENN_SEAFLOOR_CAVERN": {
       "area_type": "dungeon",
@@ -2872,7 +2949,10 @@
       "next_area": "HOENN_ROUTE_128",
       "region": "HOENN",
       "weather": "RAIN",
-      "crisis_weather_area": true
+      "crisis_weather_area": true,
+      "horde_pool_percentages": "HOENN_SEAFLOOR_CAVERN_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [18, 18]
     },
     "HOENN_CAVE_OF_ORIGIN": {
       "area_type": "dungeon",
@@ -2892,7 +2972,10 @@
       "next_area": "SOOTOPOLIS_CITY",
       "region": "HOENN",
       "weather": "SUN",
-      "crisis_weather_area": true
+      "crisis_weather_area": true,
+      "horde_pool_percentages": "HOENN_CAVE_OF_ORIGIN_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [18, 18]
     },
     "HOENN_SKY_PILLAR": {
       "area_type": "dungeon",
@@ -2928,7 +3011,10 @@
       ],
       "area_boss": { "id": 384, "name": "Rayquaza", "victory_flag": "rayquaza_awakened" },
       "next_area": "PACIFIDLOG_TOWN",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_SKY_PILLAR_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [23, 23]
     },
     "HOENN_MT_PYRE": { "dexnav_pool_percentages": "HOENN_MT_PYRE_DEXNAV_PERCENTAGES",
       "area_type": "dungeon",
@@ -2945,7 +3031,10 @@
       ],
       "route_menu": [{"text": "MEDICHAMITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_medichamite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEDICHAMITE!"], "gift_item": {"MEDICHAMITE": 1}, "flag": "got_medichamite"}}, {"text": "BANETTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_banettite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BANETTITE!"], "gift_item": {"BANETTITE": 1}, "flag": "got_banettite"}}, {"text": "TM114 SHADOW BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm105_pyre", "event": {"lines": ["There's a TM lying before the memorial!"], "gift_item": {"TM114": 1}, "flag": "got_tm105_pyre"}}, {"text": "TM107 WILL-O-WISP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm38_pyre", "event": {"lines": ["There's a TM lying on the mountainside!"], "gift_item": {"TM107": 1}, "flag": "got_tm38_pyre"}}, {"text": "SEA INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_sea_incense_pyre", "event": {"lines": ["Some incense was left by a grave. It smells of the sea!"], "gift_item": {"SEA_INCENSE": 1}, "flag": "got_sea_incense_pyre"}}, {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "STOP {team}", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"}, {"text": "TALK TO THE ELDERS", "action": "HOENN_EVENT", "event": "elders", "condition": ["mt_pyre_cleared", "not:got_mt_pyre_orb"], "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_hoenn_mt_pyre", "boss": {"id": 10501, "name": "Black Fog", "level": 35, "no_catch": true, "victory_flag": "black_fog_banished_hoenn_mt_pyre", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED"}],
       "next_area": "HOENN_ROUTE_122",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_MT_PYRE_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [15, 15]
     },
     "HOENN_VICTORY_ROAD": {
       "area_type": "dungeon",
@@ -2967,7 +3056,10 @@
         { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "EVER_GRANDE_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "horde_pool_percentages": "HOENN_VICTORY_ROAD_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [20, 20]
     },
     "HOENN_OCEANIC_MUSEUM": {
       "area_type": "dungeon",
@@ -3072,7 +3164,8 @@
         {"text": "RAID THE HIDEOUT", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"},
         {"text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "LILYCOVE_CITY"
+      "next_area": "LILYCOVE_CITY",
+      "surf_pool_percentages": "HOENN_TEAM_HIDEOUT_SURF_PERCENTAGES"
     },
         "HOENN_SOUTHERN_ISLAND": {"area_type": "dungeon", "route_name": "Southern Island", "region": "HOENN", "battle_type": "field", "min_rounds": 0, "trainer_pool": [{"name": "Team Magma Grunt", "spot_name": "Team Grunt (Southern Island)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 109], "levels": [31, 29], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [323, 109], "ALPHA_SAPPHIRE": [319, 88]}}], "route_menu": [
         {"text": "Sailor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: Ready to head back? Off we go to Slateport!"], "travel": "SLATEPORT_CITY"}},
@@ -3472,7 +3565,7 @@
   "HOENN_ROUTE_109_SUPER_ROD_PERCENTAGES": {"320": 100},
   "HOENN_ROUTE_109_GOOD_ROD_PERCENTAGES": {"72": 35, "129": 60, "320": 5},
   "HOENN_ROUTE_109_OLD_ROD_PERCENTAGES": {"72": 35, "129": 65},
-  "HOENN_ROUTE_110_PERCENTAGES": { "261": 20, "263": 9, "278": 20, "309": 30, "316": 15, "311": 3, "312": 2 },
+  "HOENN_ROUTE_110_PERCENTAGES": {"309": 12, "263": 12, "316": 12, "43": 12, "278": 12, "312": 12, "311": 12, "100": 12},
   "HOENN_ROUTE_111_PERCENTAGES": {"27": 40, "328": 20, "331": 20, "343": 20, "2004": 1, "2005": 1},
   "HOENN_ROUTE_111_SUPER_ROD_PERCENTAGES": {"339": 100},
   "HOENN_ROUTE_111_GOOD_ROD_PERCENTAGES": {"118": 35, "129": 60, "339": 5},
@@ -3699,5 +3792,66 @@
   "HOENN_SCORCHED_SLAB_SUPER_ROD_PERCENTAGES": {"339": 200},
   "HOENN_SEA_MAUVILLE_OLD_ROD_PERCENTAGES": {"129": 65, "72": 35},
   "HOENN_SEA_MAUVILLE_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 35, "320": 5},
-  "HOENN_SEA_MAUVILLE_SUPER_ROD_PERCENTAGES": {"320": 100}
+  "HOENN_SEA_MAUVILLE_SUPER_ROD_PERCENTAGES": {"320": 100},
+  "HOENN_SCORCHED_SLAB_HORDE_PERCENTAGES": {"41": 100},
+  "PETALBURG_CITY_OLD_ROD_PERCENTAGES": {"118": 50, "129": 50},
+  "PETALBURG_CITY_GOOD_ROD_PERCENTAGES": {"118": 33, "129": 33, "341": 33},
+  "PETALBURG_CITY_SUPER_ROD_PERCENTAGES": {"341": 100},
+  "DEWFORD_TOWN_OLD_ROD_PERCENTAGES": {"72": 50, "129": 50},
+  "DEWFORD_TOWN_GOOD_ROD_PERCENTAGES": {"72": 33, "129": 33, "320": 33},
+  "DEWFORD_TOWN_SUPER_ROD_PERCENTAGES": {"320": 100},
+  "SLATEPORT_CITY_OLD_ROD_PERCENTAGES": {"72": 50, "129": 50},
+  "SLATEPORT_CITY_GOOD_ROD_PERCENTAGES": {"72": 33, "129": 33, "320": 33},
+  "SLATEPORT_CITY_SUPER_ROD_PERCENTAGES": {"320": 100},
+  "LILYCOVE_CITY_ROCK_SMASH_PERCENTAGES": {"75": 100},
+  "LILYCOVE_CITY_OLD_ROD_PERCENTAGES": {"72": 50, "129": 50},
+  "LILYCOVE_CITY_GOOD_ROD_PERCENTAGES": {"72": 33, "129": 33, "320": 33},
+  "LILYCOVE_CITY_SUPER_ROD_PERCENTAGES": {"120": 50, "320": 50},
+  "MOSSDEEP_CITY_OLD_ROD_PERCENTAGES": {"72": 50, "129": 50},
+  "MOSSDEEP_CITY_GOOD_ROD_PERCENTAGES": {"72": 33, "129": 33, "320": 33},
+  "MOSSDEEP_CITY_SUPER_ROD_PERCENTAGES": {"320": 100},
+  "SOOTOPOLIS_CITY_OLD_ROD_PERCENTAGES": {"129": 100},
+  "SOOTOPOLIS_CITY_GOOD_ROD_PERCENTAGES": {"129": 100},
+  "SOOTOPOLIS_CITY_SUPER_ROD_PERCENTAGES": {"129": 50, "130": 50},
+  "PACIFIDLOG_TOWN_OLD_ROD_PERCENTAGES": {"129": 50, "72": 50},
+  "PACIFIDLOG_TOWN_GOOD_ROD_PERCENTAGES": {"129": 33, "72": 33, "320": 33},
+  "PACIFIDLOG_TOWN_SUPER_ROD_PERCENTAGES": {"320": 100},
+  "HOENN_ROUTE_101_HORDE_PERCENTAGES": {"261": 50, "263": 50},
+  "HOENN_ROUTE_102_HORDE_PERCENTAGES": {"263": 25, "270": 25, "273": 25, "280": 25},
+  "HOENN_ROUTE_103_HORDE_PERCENTAGES": {"261": 33, "263": 33, "278": 33},
+  "HOENN_ROUTE_104_HORDE_PERCENTAGES": {"263": 33, "278": 33, "276": 33},
+  "HOENN_ROUTE_110_HORDE_PERCENTAGES": {"81": 33, "311": 33, "312": 33},
+  "HOENN_ROUTE_110_SURF_PERCENTAGES": {"72": 33, "278": 33, "279": 33},
+  "HOENN_ROUTE_110_OLD_ROD_PERCENTAGES": {"72": 50, "129": 50},
+  "HOENN_ROUTE_110_GOOD_ROD_PERCENTAGES": {"72": 33, "129": 33, "320": 33},
+  "HOENN_ROUTE_110_SUPER_ROD_PERCENTAGES": {"320": 100},
+  "HOENN_ROUTE_111_HORDE_PERCENTAGES": {"27": 100},
+  "HOENN_ROUTE_112_HORDE_PERCENTAGES": {"66": 50, "322": 50},
+  "HOENN_ROUTE_113_HORDE_PERCENTAGES": {"227": 50, "327": 50},
+  "HOENN_ROUTE_114_HORDE_PERCENTAGES": {"270": 33, "273": 33, "333": 33},
+  "HOENN_ROUTE_115_HORDE_PERCENTAGES": {"333": 100},
+  "HOENN_ROUTE_116_HORDE_PERCENTAGES": {"263": 33, "290": 33, "300": 33},
+  "HOENN_ROUTE_117_HORDE_PERCENTAGES": {"43": 25, "183": 25, "263": 25, "315": 25},
+  "HOENN_ROUTE_119_HORDE_PERCENTAGES": {"43": 100},
+  "HOENN_ROUTE_120_HORDE_PERCENTAGES": {"43": 33, "183": 33, "352": 33},
+  "HOENN_ROUTE_123_HORDE_PERCENTAGES": {"278": 33, "352": 33, "353": 33},
+  "HOENN_PETALBURG_WOODS_HORDE_PERCENTAGES": {"263": 33, "265": 33, "285": 33},
+  "HOENN_RUSTURF_TUNNEL_HORDE_PERCENTAGES": {"293": 100},
+  "HOENN_GRANITE_CAVE_HORDE_PERCENTAGES": {"41": 16, "74": 16, "296": 16, "304": 16, "302": 16, "303": 16},
+  "HOENN_METEOR_FALLS_HORDE_PERCENTAGES": {"41": 50, "371": 50},
+  "HOENN_JAGGED_PASS_HORDE_PERCENTAGES": {"66": 50, "325": 50},
+  "HOENN_FIERY_PATH_HORDE_PERCENTAGES": {"88": 25, "109": 25, "218": 25, "322": 25},
+  "HOENN_NEW_MAUVILLE_HORDE_PERCENTAGES": {"81": 50, "100": 50},
+  "HOENN_SAFARI_ZONE_HORDE_PERCENTAGES": {"43": 33, "54": 33, "84": 33},
+  "HOENN_SHOAL_CAVE_HORDE_PERCENTAGES": {"41": 33, "363": 33, "361": 33},
+  "HOENN_SEAFLOOR_CAVERN_HORDE_PERCENTAGES": {"41": 100},
+  "HOENN_CAVE_OF_ORIGIN_HORDE_PERCENTAGES": {"41": 100},
+  "HOENN_SKY_PILLAR_HORDE_PERCENTAGES": {"42": 33, "168": 33, "333": 33},
+  "HOENN_MT_PYRE_HORDE_PERCENTAGES": {"353": 33, "37": 33, "307": 33},
+  "HOENN_VICTORY_ROAD_HORDE_PERCENTAGES": {"41": 33, "294": 33, "304": 33},
+  "HOENN_TEAM_HIDEOUT_SURF_PERCENTAGES": {"72": 100},
+  "HOENN_TEAM_HIDEOUT_OLD_ROD_PERCENTAGES": {"72": 50, "129": 50},
+  "HOENN_TEAM_HIDEOUT_GOOD_ROD_PERCENTAGES": {"72": 33, "129": 33, "320": 33},
+  "HOENN_TEAM_HIDEOUT_SUPER_ROD_PERCENTAGES": {"120": 50, "320": 50},
+  "HOENN_ROUTE_128_DIVE_PERCENTAGES": {"170": 30, "171": 15, "222": 15, "366": 20, "369": 10, "370": 10}
 }

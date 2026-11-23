@@ -140,6 +140,9 @@ PATCH = [   # (someone already on the map gets more to their event)
       "gift_item": {"LUCKY_EGG": 1}, "flag": "got_lucky_egg_hoenn",
       "done": ["Devon researcher: Thanks again! I'll get these papers back to the company safe and sound."]}),
 ]
+FLOOR_POOLS = [   # (a seabed with its own wild list: ORAS's Route 128 seaweed has Corsola, the shared underwater list doesn't)
+    ("HOENN_ROUTE_128", 1, "HOENN_ROUTE_128_DIVE_PERCENTAGES"),
+]
 DOUBLES = [   # (a pair's person-event battles, written into emerald.py: real doubles, as every ORAS pair; #5)
     ("HOENN_ROUTE_111", "Interviewers Gabby & Ty"),
     ("HOENN_ROUTE_118", "Interviewers Gabby & Ty"),
@@ -191,6 +194,10 @@ def apply(maps):
             print(ascii(f"  hoenn_canon: no {text} on {key}: left out"))
             continue
         who["event"] = dict(who.get("event") or {}, **ev)
+    for key, floor, pool in FLOOR_POOLS:
+        m = maps.get(key)
+        if m:
+            _part(m, floor, None)["pool"] = pool
     for key, name in DOUBLES:
         m = maps.get(key)
         for p in ((m.get("floors") or [m]) if m else []):
