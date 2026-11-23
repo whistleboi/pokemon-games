@@ -50,7 +50,15 @@
     {"id": "safari", "name": "Safari Explorer", "count": "safari", "desc": "Catch Pokemon in Fuchsia's Safari Zone with Safari Balls.", "tiers": [
       [5, {"money": 3000}],
       [15, {"tm": "TM175", "items": {"ULTRA_BALL": 5}}],
-      [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]}
+      [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]},
+    {"id": "sevii", "name": "Sevii Explorer", "count": "places", "places": ["RESORT_GORGEOUS", "MEMORIAL_PILLAR", "WATER_PATH", "SEVII_ALTERING_CAVE", "OUTCAST_ISLAND", "GREEN_PATH", "CANYON_ENTRANCE", "ONE_ISLAND", "TREASURE_BEACH", "KINDLE_ROAD", "MT_EMBER", "TWO_ISLAND", "CAPE_BRINK", "THREE_ISLAND", "BOND_BRIDGE", "BERRY_FOREST", "FOUR_ISLAND", "ICEFALL_CAVE", "FIVE_ISLAND", "FIVE_ISLE_MEADOW", "WATER_LABYRINTH", "LOST_CAVE", "ROCKET_WAREHOUSE", "SIX_ISLAND", "PATTERN_BUSH", "RUIN_VALLEY", "DOTTED_HOLE", "SEVEN_ISLAND", "SEVAULT_CANYON", "TANOBY_RUINS", "FARAWAY_ISLAND", "THREE_ISLE_PORT", "NAVEL_ROCK", "BIRTH_ISLAND"], "desc": "Explore the Sevii Islands: every island, cave, path and ruin. Some only open to a Champion.", "tiers": [
+      [10, {"items": {"SUPER_REPEL": 5}, "money": 2000}],
+      [20, {"tm": "TM196", "items": {"ULTRA_BALL": 5}}],
+      ["all", {"tm": "TM258", "money": 10000}]]},
+    {"id": "unown", "name": "Tanoby Scholar", "count": "unown", "desc": "Catch Unown of every shape. The Tanoby Ruins hide all 28.", "tiers": [
+      [7, {"money": 3000}],
+      [14, {"tm": "TM228", "items": {"ULTRA_BALL": 5}}],
+      ["all", {"tm": "TM218", "money": 10000}]]}
   ],
   "JOHTO": [
     {"id": "dex", "name": "Pokedex Pages", "count": "dex", "desc": "Own different Johto Pokemon: catch them, evolve them, hatch them, trade for them.", "tiers": [
@@ -167,5 +175,22 @@
       [25, {"items": {"GREAT_BALL": 10}}],
       [100, {"tm": "TM345", "items": {"ULTRA_BALL": 10}}],
       [250, {"tm": "TM281", "money": 10000}]]}
+  ],
+  "HOENN": [
+    {"id": "dex", "name": "Pokedex Pages", "count": "dex", "desc": "Own different Hoenn Pokemon: catch them, evolve them, hatch them, trade for them.", "tiers": [[30, {"money": 5000, "items": {"GREAT_BALL": 5}}, "hoenn_catch_30"], [60, {"money": 5000, "items": {"ULTRA_BALL": 5}}, "hoenn_catch_60"], [90, {"money": 5000, "tm": "TM108"}, "hoenn_catch_90"], [120, {"money": 5000, "items": {"RARE_CANDY": 3}}, "hoenn_catch_120"], ["all", {"money": 10000, "items": {"MASTER_BALL": 1}}, "hoenn_catch_143"]]},
+    {"id": "types", "name": "Type Collector", "count": "types", "desc": "Own Hoenn Pokemon of as many different types as you can.", "tiers": [[6, {"tm": "TM027"}], [12, {"tm": "TM101", "items": {"GREAT_BALL": 5}}], ["all", {"tm": "TM115", "money": 5000}]]},
+    {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in Hoenn. Rematches count too!", "tiers": [[25, {"money": 2000}], [100, {"tm": "TM073", "money": 3000}], [250, {"tm": "TM089", "money": 5000}]]},
+    {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk Hoenn's towns, routes and caves step by step.", "tiers": [[5000, {"items": {"SUPER_POTION": 5}}], [20000, {"tm": "TM113", "items": {"HYPER_POTION": 3}}], [50000, {"tm": "TM065", "items": {"MAX_REVIVE": 2}}]]},
+    {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [[1, {"items": {"RARE_CANDY": 2}}], [5, {"tm": "TM099", "items": {"RARE_CANDY": 3}}], [10, {"tm": "TM102", "money": 10000}]]},
+    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in Hoenn.", "tiers": [[10, {"money": 2000}], [25, {"tm": "TM109", "money": 3000}], [50, {"tm": "TM112", "money": 5000}]]},
+    {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [[10, {"items": {"NET_BALL": 5}}], [40, {"tm": "TM011", "items": {"DIVE_BALL": 5}}], [100, {"tm": "TM110", "items": {"NET_BALL": 10}}]]},
+    {"id": "smash", "name": "Rock Breaker", "count": "smash", "desc": "Find wild Pokemon hiding in rocks with Rock Smash.", "tiers": [[3, {"items": {"DUSK_BALL": 5}}], [10, {"tm": "TM076"}], [25, {"tm": "TM106", "money": 5000}]]},
+    {"id": "berries", "name": "Berry Farmer", "count": "berries", "desc": "Plant Berries in the soft soil along Hoenn's routes.", "tiers": [[5, {"money": 2000}], [20, {"tm": "TM056", "items": {"SUPER_REPEL": 5}}], [50, {"tm": "TM071", "money": 5000}]]},
+    {"id": "safari", "name": "Safari Explorer", "count": "safari", "desc": "Catch Pokemon in the Safari Zone with Safari Balls.", "tiers": [[5, {"money": 3000}], [15, {"tm": "TM084", "items": {"ULTRA_BALL": 5}}], [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]},
+    {"id": "contests", "name": "Contest Star", "count": "contests", "desc": "Take part in Pokemon Contests. Every show counts, win or lose!", "tiers": [[1, {"money": 2000}], [5, {"tm": "TM019", "money": 2000}], [15, {"tm": "TM117", "money": 5000}]]},
+    {"id": "contest_wins", "name": "Ribbon Winner", "count": "contest_wins", "desc": "Win Pokemon Contests, at any Rank.", "tiers": [[1, {"items": {"GREAT_BALL": 5}}], [5, {"tm": "TM002", "money": 3000}], [20, {"tm": "TM100", "money": 10000}]]},
+    {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [[5, {"items": {"WATER_STONE": 1}}], [20, {"tm": "TM059", "items": {"FIRE_STONE": 1, "LEAF_STONE": 1}}], [50, {"tm": "TM061", "items": {"THUNDER_STONE": 1, "MOON_STONE": 1}}]]},
+    {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM033", "items": {"SUN_STONE": 1}}], [8, {"tm": "TM053", "money": 5000}]]},
+    {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM072", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM116", "money": 10000}]]}
   ]
 }

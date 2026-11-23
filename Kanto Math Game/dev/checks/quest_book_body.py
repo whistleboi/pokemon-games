@@ -442,10 +442,172 @@ jn.set_tab("STORY"); jn.draw()
 pygame.image.save(g.screen, os.path.join(S, "quest_book_orange_story.png"))
 g.change_state(city)
 
+print("SEVII (in Kanto's book): after Blaine, and after the title")
+kmissions = {m["id"]: m for m in g.loader.area_data["GAME_CONFIG"]["JOURNAL_MISSIONS"]}
+kmissions.update({k: v for k, v in jmissions.items() if k.startswith("sevii_")})
+smain = [m for m in jmissions if m.startswith("sevii_") and jmissions[m]["type"] == "MAIN"]
+kb_ids = [c["mission"] for a in book["KANTO"] for c in a["chapters"]]
+check(sorted(set(smain) - set(kb_ids)) == [], f"every Sevii story mission is in Kanto's book (missing: {sorted(set(smain) - set(kb_ids))})")
+check(sorted(set(kb_ids) - set(kmissions)) == [], "every Kanto chapter's mission exists")
+story.starting_region = "KANTO"
+story.badges = {r: [] for r in story.badges}
+for k in [k for k in story.story_flags if k.startswith(("visited_", "feat_"))] + ["unlocked_national_dex", "beat_champion"]:
+    story.story_flags.pop(k, None)
+story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO"]
+arcs_k = book["KANTO"]
+si = next(i for i, a in enumerate(arcs_k) if a["title"] == "The Sevii Islands")
+for a in arcs_k[:si]:
+    for ch in a["chapters"]:
+        m = kmissions[ch["mission"]]
+        for f in story.mission_flags(m):
+            flags[f] = True
+        for st_ in m.get("steps") or []:
+            if isinstance(st_.get("done"), str):
+                done_(st_["done"])
+        if m.get("target"):
+            flags["visited_" + m["target"]] = True
+flags.update({"got_oaks_parcel": True, "received_pokedex_kanto": True, "received_starter_kanto": True, "kanto_oak_led": True,
+              "kanto_lab_intro": True, "silph_co_cleared": True})
+item("SILPH_SCOPE")
+at("CINNABAR_ISLAND")
+city = CityState(g); g.change_state(city)
+
+
+def play(arcs_):
+    for arc in arcs_:
+        for ch in arc["chapters"]:
+            m = kmissions[ch["mission"]]
+            want(quest_book._words(story, arc["title"]), quest_book._words(story, ch["title"]), f"[{m['id']}]")
+            if ch["title"] == "Into the Berry Forest":
+                jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
+                pygame.image.save(g.screen, os.path.join(S, "quest_book_sevii_story.png"))
+                g.change_state(city)
+            for i in (ch.get("steps") if ch.get("steps") is not None else range(len(m.get("steps") or []))):
+                d = m["steps"][i]["done"]
+                done_(d["any"][0] if isinstance(d, dict) else d)
+                if m["steps"][i].get("area"):
+                    flags["visited_" + m["steps"][i]["area"]] = True
+            if not ch.get("steps") or ch["steps"][-1] == len(m.get("steps") or []) - 1:
+                for f in story.mission_flags(m):
+                    flags[f] = True
+                if m.get("target"):
+                    at(m["target"])
+
+
+SEVII_ITEMS = {"sevii_m2b": "RUBY", "sevii_m4": "RAINBOW_PASS"}
+_play_one = play
+
+
+def play(arcs_):
+    for arc in arcs_:
+        for ch in arc["chapters"]:
+            _play_one([{"title": arc["title"], "chapters": [ch]}])
+            m = ch["mission"]
+            last = not ch.get("steps") or ch["steps"][-1] == len(kmissions[m].get("steps") or []) - 1
+            if last and m in SEVII_ITEMS:
+                item(SEVII_ITEMS[m])
+            if last and m == "sevii_m2c":
+                story.inventory.pop("RUBY", None)
+
+
+play([arcs_k[si]])
+story.badges["KANTO"].append("EARTH")
+flags["beat_champion"] = True; at("INDIGO_PLATEAU")
+want("The Network Machine", "A Bigger Pokedex", "Champion: Sevii again")
+check(all(a["state"] == "done" for a in quest_book.arcs(g) if a["title"] in ("The Sevii Islands", "The Indigo Plateau")),
+      "the Sevii arc and the League are finished")
+play([next(a for a in arcs_k if a["title"] == "The Network Machine")])
+check(quest_book.current(g) == (None, None) and all(a["state"] == "done" for a in quest_book.arcs(g)), f"Kanto's whole book is finished, Sevii and all ({quest_book.current(g)[1] and quest_book.current(g)[1]['title']}, {[(a['title'], a['state']) for a in quest_book.arcs(g) if a['state'] != 'done']})")
+sev = next(f for f in ft["KANTO"] if f["id"] == "sevii")
+check(len(feats._places(story, sev, "KANTO")) == len(sev["places"]) == 34, "Sevii Explorer: all 34 Sevii places are real places")
+n = feats.value(story, sev, "KANTO")
+check(n >= 10, f"Sevii Explorer counts the Sevii places walked ({n})")
+uno = next(f for f in ft["KANTO"] if f["id"] == "unown")
+for f_ in story.UNOWN_FORMS[:7]:
+    story.catch_counts[f"201_{f_}"] = 1
+check(feats.value(story, uno, "KANTO") >= 7 and feats.goal(story, uno, uno["tiers"][-1], "KANTO") == 28, "Tanoby Scholar counts Unown shapes, 28 in all")
+paid = feats.pay(story)
+check(any("Sevii Explorer" in l for l in paid) and any("Tanoby Scholar" in l for l in paid), f"both Sevii feats pay ({[l for l in paid if 'Feat' in l]})")
+check(all(_items.describe(i) for f in ft["KANTO"] for t in f["tiers"] for i in (t[1].get("items") or {})), "every Kanto reward item is real")
+jn = JournalState(g, city); g.change_state(jn); jn.draw()
+jn.set_tab("FEATS"); jn.selected = next(i for i, r in enumerate(jn.rows) if r["feat"]["id"] == "sevii"); jn.draw()
+pygame.image.save(g.screen, os.path.join(S, "quest_book_sevii_feats.png"))
+g.change_state(city)
+
+print("HOENN: the book's data")
+hb = book["HOENN"]
+hids = [c["mission"] for a in hb for c in a["chapters"]]
+check(all(i in jmissions for i in hids), "every Hoenn chapter's mission exists")
+hmain = [m for m in jmissions if m.startswith("hoenn_") and jmissions[m]["type"] == "MAIN"]
+check(sorted(set(hmain) - set(hids)) == [], f"every Hoenn story mission is in the book (missing: {sorted(set(hmain) - set(hids))})")
+hk = [k for k, a in prog.items() if str(a.get("region", "")).upper() == "HOENN"]
+hused = set(re.findall(r"TM\d{3}", json.dumps([prog[k] for k in hk]) + json.dumps([tmaps[k] for k in hk if k in tmaps])))
+hgiven = [t[1]["tm"] for f in ft["HOENN"] for t in f["tiers"] if t[1].get("tm")]
+check(all(k in tms for k in hgiven) and len(hgiven) == len(set(hgiven)), "Hoenn Feat TMs: real, none twice")
+check(not (set(hgiven) & hused), f"no Hoenn Feat TM is also on Hoenn's maps / people ({sorted(set(hgiven) & hused)})")
+check(not (set(hgiven) & set(tutors.tutor_tms(g, "HOENN"))), "no Hoenn Feat TM is a Hoenn tutor's")
+check(all(_items.describe(i) for f in ft["HOENN"] for t in f["tiers"] for i in (t[1].get("items") or {})), "every Hoenn reward item is real")
+
+print("HOENN: chapters follow the story, Littleroot to the Other Orb (the order the Journal leads, 11-23)")
+from src.world import hoenn as _hoenn
+story.starting_region = "HOENN"
+story.badges = {r: [] for r in story.badges}
+story.badges["HOENN"] = []
+for m in jmissions.values():
+    if m["id"].startswith("hoenn_"):
+        for f in story.mission_flags(m):
+            flags.pop(f, None)
+for k in [k for k in flags if k.startswith(("visited_", "feat_", "badge_"))] + ["received_pokedex_hoenn", "heard_devon_parts_stolen"]:
+    flags.pop(k, None)
+at("LITTLEROOT_TOWN")
+flags["hoenn_version"] = "OMEGA_RUBY"   # (picked on arrival: Team Magma, Maxie, Groudon)
+city = CityState(g); g.change_state(city)
+HBADGE = {"hoenn_m3": "STONE", "hoenn_m5": "KNUCKLE", "hoenn_m7": "DYNAMO", "hoenn_m9": "HEAT", "hoenn_m10": "BALANCE",
+          "hoenn_m13": "FEATHER", "hoenn_m17": "MIND", "hoenn_m21": "RAIN"}
+HSCENE = {"hoenn_m3": ["heard_devon_parts_stolen"], "hoenn_m5": ["visited_SLATEPORT_CITY"]}   # (Rustboro's thief, the boat to Slateport)
+n_h = 0
+for arc in hb:
+    for ch in arc["chapters"]:
+        m = jmissions[ch["mission"]]
+        want(quest_book._words(story, arc["title"]), quest_book._words(story, ch["title"]), f"[{m['id']}]")
+        if m["id"] == "hoenn_m8":
+            check("Maxie is waiting" in quest_book.current(g)[1]["say"], f"Omega Ruby's words filled in ({quest_book.current(g)[1]['say'][:70]})")
+            jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
+            pygame.image.save(g.screen, os.path.join(S, "quest_book_hoenn_story.png"))
+            g.change_state(city)
+        for f in story.mission_flags(m):
+            flags[f] = True
+        for st_ in m.get("steps") or []:
+            if isinstance(st_.get("done"), str):
+                done_(st_["done"])
+        if m["id"] in HBADGE:
+            story.badges["HOENN"].append(HBADGE[m["id"]])
+        done_(HSCENE.get(m["id"], []))
+        if m.get("target"):
+            at(m["target"])
+        n_h += 1
+check(n_h == len(hids) and all(a["state"] == "done" for a in quest_book.arcs(g)), "the whole Hoenn book is played through")
+jn = JournalState(g, city); g.change_state(jn); jn.set_tab("SIDE"); jn.draw()
+check(not any(r["mission"]["id"].startswith("hoenn_dex") for r in jn.rows), "Hoenn's old Catch missions are its Pokedex Feat now")
+check(any(r["mission"]["id"] == "hoenn_s_trades" for r in jn.rows), "SIDE: Hoenn's trades")
+flags["hoenn_catch_30"] = True
+before = story.money
+for kind, n in (("contests", 1), ("contest_wins", 1), ("berries", 5), ("smash", 3), ("safari", 5)):
+    feats.note(story, kind, n)
+paid = feats.pay(story)
+for name in ("Contest Star", "Ribbon Winner", "Berry Farmer", "Rock Breaker", "Safari Explorer"):
+    check(any(name in l for l in paid), f"Hoenn: {name} Bronze paid")
+check(not any("Pokedex" in l for l in paid), "a Hoenn catch milestone paid before isn't paid again")
+jn.set_tab("FEATS"); jn.draw()
+check(len(jn.rows) == len(ft["HOENN"]), "FEATS lists Hoenn's feats")
+jn.selected = next(i for i, r in enumerate(jn.rows) if r["feat"]["id"] == "contests"); jn.draw()
+pygame.image.save(g.screen, os.path.join(S, "quest_book_hoenn_feats.png"))
+g.change_state(city)
+
 print("Other regions: no book yet, each story mission an arc of its own")
-story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "HOENN")
+story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "SINNOH")
 a = quest_book.arcs(g)
-check(a and all(c.get("title") for x in a for c in x["chapters"]), f"Hoenn's missions show as arcs ({len(a)})")
+check(a and all(c.get("title") for x in a for c in x["chapters"]), f"Sinnoh's missions show as arcs ({len(a)})")
 jn = JournalState(g, city); g.change_state(jn); jn.draw()
 jn.set_tab("FEATS"); jn.draw()
 check(jn.rows == [], "no Feats in a region without its list yet")

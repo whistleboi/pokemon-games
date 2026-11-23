@@ -51,6 +51,14 @@ def _words(story, text):
     for token, value in (("{rival_name}", getattr(game, "rival_name", None) or "your rival"),
                          ("{player_name}", getattr(game, "player_name", None) or "you")):
         text = str(text or "").replace(token, str(value))
+    if "{" in text:   # (Hoenn's version words: {team}, {leader}, {legend}... Magma or Aqua, Groudon or Kyogre)
+        try:
+            from src.world import hoenn
+            w = hoenn.words(story)
+            for t, v in w.items():
+                text = text.replace("{" + t + "}", str(v))
+        except Exception:
+            pass
     return text
 
 

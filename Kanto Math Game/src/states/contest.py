@@ -546,6 +546,10 @@ class ContestState(GameState):
         for place, c in reversed(list(enumerate(order, start=1))):
             lines.append(f"#{place}: {c.name} and {c.pokemon.display_name.upper()} - {_hearts_text(c.hearts)}")
         won = order[0] is self.player
+        from src.world import feats as _feats
+        _feats.note(self.story, "contests")   # (Feats: contests entered, and won)
+        if won:
+            _feats.note(self.story, "contest_wins")
         self.outcome_lines = self._rewards(won) if won else [
             f"{self.player.pokemon.display_name.upper()} placed #{order.index(self.player) + 1}.",
             "Feed it Pokeblocks and answer quickly to win next time!"]

@@ -6,7 +6,8 @@ a TM, an item, money, or a mix, more for the harder tiers.
 What a feat counts ("count"):
 - worked out from what you own: "dex" (species of the region's own Pokedex), "types" (types among them), "lv50" (Pokemon at
   Lv. 50 or more in the region's party and PC), "math_streak" (the best run of right answers while in the region),
-  "places" (the region's places you've set foot in whose key has the feat's "match": Orange's islands, "ISLAND"),
+  "places" (the region's places you've set foot in whose key has the feat's "match": Orange's islands, "ISLAND";
+  or the feat's own "places" list: Sevii's), "unown" (Unown forms caught, of 28),
   "forms" (the region's own forms you own: FORM_MAP entries of the feat's "forms", less its "not_yet", ones that
   can't be got yet: each region's Variants feat, Orange's Pinkan, Valencia and Crystal Pokemon; Jordan 11-23);
 - counted as you play, per region (StoryManager.feat_counts {region: {kind: n}}), by note(): "trainers", "steps", "fish",
@@ -74,6 +75,8 @@ def _types_of(story, ids):
 def _places(story, feat, region):
     """The region's places a "places" feat counts (keys with its "match" in them)."""
     prog = story.game.loader.area_data.get("STORY_PROGRESSION", {})
+    if feat.get("places"):
+        return [k for k in feat["places"] if k in prog]
     match = str(feat.get("match") or "")
     return [k for k, a in prog.items() if isinstance(a, dict) and str(a.get("region", "KANTO")).upper() == region
             and match in k]
@@ -95,6 +98,8 @@ def value(story, feat, region):
         return len(_types_of(story, _dex_ids(story, region) & _owned_ids(story)))
     if kind == "forms":
         return len(_form_ids(story, feat) & _owned_ids(story))
+    if kind == "unown":
+        return story.unown_forms_caught()
     if kind == "places":
         return sum(1 for k in _places(story, feat, region) if story.story_flags.get("visited_" + k))
     if kind == "lv50":
@@ -118,6 +123,8 @@ def goal(story, feat, tier, region):
             return len(_places(story, feat, region))
         if feat.get("count") == "forms":
             return len(_form_ids(story, feat))
+        if feat.get("count") == "unown":
+            return len(story.UNOWN_FORMS)
     return int(g)
 
 

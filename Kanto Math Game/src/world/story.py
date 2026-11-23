@@ -551,7 +551,7 @@ class StoryManager:
         counts = {}
         for m in missions:
             n, region, flag = m.get("region_species"), m.get("dex_region"), m.get("completed_flag")
-            if not (n and region and flag) or self.story_flags.get(flag):
+            if not (n and region and flag) or self.story_flags.get(flag) or _feats.feats(self.game, region):   # (its Pokedex Feat now)
                 continue
             if region not in counts:
                 counts[region] = self.region_caught_count(region)
@@ -668,7 +668,8 @@ class StoryManager:
         moved = bool(_feats.feats(self.game, "KANTO"))   # (Kanto's "Catch 30..." missions: its Pokedex Feat now, 11-22)
         return [m for m in self.game.loader.area_data.get("JOURNAL_MISSIONS", []) + ([redo] if redo else [])
                 if (m.get("region") or (m.get("condition") or {}).get("required_region") or region) == region
-                and not (moved and m.get("kanto_species"))]
+                and not (moved and m.get("kanto_species"))
+                and not (m.get("region_species") and m.get("dex_region") and _feats.feats(self.game, m["dex_region"]))]
 
     def check_requirements(self, cond, region=None):
         """

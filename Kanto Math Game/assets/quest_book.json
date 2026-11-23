@@ -50,12 +50,31 @@
       {"mission": "k_mansion", "title": "The Burned Mansion", "say": "The Gym door won't open. On the north of the island, a burned mansion keeps a diary nobody was meant to read."},
       {"mission": "m14", "title": "The Hotheaded Quiz Master", "say": "Cinnabar's Gym is full of questions, and its Leader is full of fire."}
     ]},
+    {"title": "The Sevii Islands", "chapters": [
+      {"mission": "sevii_m1", "title": "A Ferry to One Island", "say": "Bill is waiting at Cinnabar's harbour with two ferry tickets. A friend of his on a faraway island needs a hand."},
+      {"mission": "sevii_m2", "steps": [0], "title": "Rumbles on Mt. Ember", "say": "Researchers at the foot of Mt. Ember have seen people digging where nobody should dig."},
+      {"mission": "sevii_m2", "steps": [1, 2, 3], "title": "The Diggers", "say": "The way into the Ruby Path is blocked by Team Rocket. Two of them you've met before."},
+      {"mission": "sevii_m2b", "title": "Deep in the Ruby Path", "say": "Whatever the diggers were after is still down there, past the door they were guarding."},
+      {"mission": "sevii_m2c", "title": "A Gem for Celio", "say": "A red stone, warm to the touch. Celio's machine has been waiting for something just like it."},
+      {"mission": "sevii_m3", "steps": [0], "title": "The Missing Girl", "say": "A little girl from Two Island went out to pick berries and never came home."},
+      {"mission": "sevii_m3", "steps": [1], "title": "Bikers on Three Island", "say": "A gang of bikers has taken over Three Island, and they don't like visitors."},
+      {"mission": "sevii_m3", "steps": [2], "title": "Into the Berry Forest", "say": "Past Bond Bridge the Berry Forest grows thick and dark. Somewhere inside, someone is crying."}
+    ]},
     {"title": "The Earth Badge", "chapters": [
       {"mission": "m15", "title": "The Leader Returns", "say": "The lights are on in Viridian's Gym at last. Its Leader has come home, and he's been waiting for you."}
     ]},
     {"title": "The Indigo Plateau", "chapters": [
       {"mission": "m16", "title": "Victory Road", "done": {"any": ["visited_INDIGO_PLATEAU", "beat_champion"]}, "say": "West of Viridian a road climbs through the rock. Only trainers with all eight badges are allowed to try it."},
       {"mission": "m16", "title": "The Elite Four", "when": "visited_INDIGO_PLATEAU", "done": "beat_champion", "say": "Four of the strongest trainers in Kanto stand between you and the title. And behind them, someone you know."}
+    ]},
+    {"title": "The Network Machine", "chapters": [
+      {"mission": "sevii_m4a", "title": "A Bigger Pokedex", "say": "You're the Champion now. Professor Oak has been waiting to see just how many Pokemon you've met."},
+      {"mission": "sevii_m4", "title": "The Rainbow Pass", "say": "Celio has a pass that opens the rest of the Sevii Islands. Islands nobody from Kanto has seen in years."},
+      {"mission": "sevii_m5", "steps": [0], "title": "The Lady of Four Island", "say": "An old friend has gone home to Four Island. She's heard troubling things about the ice cave across the water."},
+      {"mission": "sevii_m5", "steps": [1, 2], "title": "Icefall Cave", "say": "Someone is catching Pokemon deep in the frozen cave, and they aren't catching them kindly."},
+      {"mission": "sevii_m5", "steps": [3, 4], "title": "The Dotted Hole", "say": "In Ruin Valley there's a door covered in strange dots. Behind it lies a blue gem... and someone else wants it."},
+      {"mission": "sevii_m5", "steps": [5, 6, 7, 8], "title": "The Rocket Warehouse", "say": "Team Rocket's warehouse on Five Isle Meadow is locked tight. Only their own passwords will open it."},
+      {"mission": "sevii_m5b", "title": "The Machine Awakes", "say": "Ruby and Sapphire, side by side at last. Celio's machine is ready to reach the whole world."}
     ]}
   ],
   "JOHTO": [
@@ -197,6 +216,67 @@
       {"mission": "orange_m16d", "title": "The Lightning Sphere", "say": "The palace has crashed on Lightning Island, and the three great birds are fighting. Hurry."},
       {"mission": "orange_m16e", "title": "The Guardian of the Sea", "say": "Something carried you back to Shamouti's shrine. The sea is restless, and something deep beneath it is waking."},
       {"mission": "orange_m16f", "title": "The Ice Sphere", "say": "One treasure is still missing, and only the Chosen One can bring it. Ice Island's cave is on Shamouti's south shore."}
+    ]}
+  ],
+  "HOENN": [
+    {"title": "Littleroot Beginnings", "chapters": [
+      {"mission": "hoenn_m1", "title": "A Cry on Route 101", "say": "You've only just moved to Littleroot Town, and already someone is shouting for help in the tall grass."},
+      {"mission": "hoenn_m1b", "title": "The Professor's Thanks", "say": "Professor Birch owes you one. He doesn't seem like a man who forgets."},
+      {"mission": "hoenn_m2", "title": "The Professor's Kid", "say": "Birch's kid, {rival_name}, is out on Route 103 studying Pokemon. And probably itching for a battle."},
+      {"mission": "hoenn_m2b", "title": "A Pokedex of Your Own", "say": "That battle didn't go unnoticed. Back at the lab, the Professor has something waiting for you."},
+      {"mission": "hoenn_m2c", "title": "The Petalburg Gym", "say": "Your dad is the Gym Leader of Petalburg City. He'll want to see how you're getting on... and a nervous boy is waiting there too."}
+    ]},
+    {"title": "The Stone Badge", "chapters": [
+      {"mission": "hoenn_m2d", "title": "Trouble in the Woods", "say": "Petalburg Woods is quiet and green. Too quiet. A researcher is shouting, and someone in a strange uniform is the reason."},
+      {"mission": "hoenn_m3", "title": "The Rock-Solid Leader", "say": "Rustboro's Gym Leader is top of her class and studies every move. Her Rock Pokemon don't crack easily."}
+    ]},
+    {"title": "The Knuckle Badge", "chapters": [
+      {"mission": "hoenn_m4", "title": "Stolen Goods", "say": "A grunt just ran off with something precious from the Devon Corporation. The tunnel east of Rustboro is a dead end... for now."},
+      {"mission": "hoenn_m4b", "title": "A Letter for Steven", "say": "Mr. Stone's son is exploring a cave on a far-off island. An old sailor and his boat can take you there."},
+      {"mission": "hoenn_m5", "title": "Riding the Big Wave", "say": "Dewford's Gym Leader is a surfer, and his Gym is dark. His Fighting Pokemon hit like a crashing wave."}
+    ]},
+    {"title": "The Dynamo Badge", "chapters": [
+      {"mission": "hoenn_m6", "title": "Chaos at the Museum", "say": "Slateport's Oceanic Museum is full of visitors today, and some of them aren't there to look at the exhibits."},
+      {"mission": "hoenn_m6b", "title": "Parts for the Captain", "say": "The Devon Parts are still in your Bag. Captain Stern's ship can't sail without them."},
+      {"mission": "hoenn_m7a", "title": "Rival on Route 110", "say": "{rival_name} has been training on Route 110. They want to see how far you've come."},
+      {"mission": "hoenn_m7w", "title": "Wally's Challenge", "say": "The shy boy from Petalburg is standing at the Mauville Gym's door. He isn't so shy any more."},
+      {"mission": "hoenn_m7", "title": "The Laughing Leader", "say": "Mauville's Gym Leader laughs at everything. His Gym is a maze of crackling switches."}
+    ]},
+    {"title": "The Heat Badge", "chapters": [
+      {"mission": "hoenn_m7b", "title": "The Missing Professor", "say": "North through the ash, a professor's wife in Fallarbor is worried sick. Her husband hasn't come home."},
+      {"mission": "hoenn_m7c", "title": "Meteor Falls", "say": "The professor was taken to Meteor Falls, along with a stone that fell from the sky. Why would anyone want a meteorite?"},
+      {"mission": "hoenn_m8", "title": "Fire on the Mountain", "say": "The meteorite is on its way up Mt. Chimney. At the top, {leader} is waiting to use it."},
+      {"mission": "hoenn_m9", "title": "The Hot Springs Gym", "say": "Lavaridge's Gym is full of steam and hot sand. Its new Leader is fiery... and trying very hard."}
+    ]},
+    {"title": "The Balance Badge", "chapters": [
+      {"mission": "hoenn_m10", "title": "Father and Child", "say": "Four badges. Now there's only one Gym in Hoenn that really matters: your dad's."}
+    ]},
+    {"title": "The Feather Badge", "chapters": [
+      {"mission": "hoenn_m12", "title": "The Weather Institute", "say": "Researchers on Route 119 study storms and sunshine. Today, someone has locked them inside."},
+      {"mission": "hoenn_m11", "title": "A Stone That Shines", "say": "Steven is waiting on Route 118. He wants to show you a power hidden inside certain stones."},
+      {"mission": "hoenn_m14", "title": "Steven's Gift", "say": "Something invisible is blocking the way to Fortree's Gym. Steven might have a way to see it."},
+      {"mission": "hoenn_m13", "title": "Wings Over Fortree", "say": "Fortree City is built in the treetops, and its Gym Leader flies higher than anyone."}
+    ]},
+    {"title": "The Mind Badge", "chapters": [
+      {"mission": "hoenn_m15", "title": "The Mountain of Spirits", "say": "Mt. Pyre is where people remember their Pokemon. Today, {team} is climbing it, and they want what's kept at the top."},
+      {"mission": "hoenn_m16", "title": "The Hideout by the Sea", "say": "{team} has a hideout near Lilycove, and a stolen submarine waiting inside."},
+      {"mission": "hoenn_m17", "title": "Two Minds as One", "say": "Mossdeep's Gym is run by twins who think the same thoughts. Beating one of them means beating both."}
+    ]},
+    {"title": "The Rain Badge", "chapters": [
+      {"mission": "hoenn_m18", "title": "The Space Center Siege", "say": "The Mossdeep Space Center has something {team} wants. They didn't knock."},
+      {"mission": "hoenn_m19", "title": "Beneath the Sea", "say": "Deep under Hoenn's waters lies a cavern no one has seen. {leader} has found it."},
+      {"mission": "hoenn_m20", "title": "The Ancient Awakening", "say": "{legend} has woken, and the sky over Sootopolis has gone wrong. Someone has to calm it before it's too late."},
+      {"mission": "hoenn_m21", "title": "Rain over Sootopolis", "say": "The skies are clear again. Sootopolis's Gym Leader is back, and his Water Pokemon are as graceful as they are strong."}
+    ]},
+    {"title": "Champion of Hoenn", "chapters": [
+      {"mission": "hoenn_m22", "title": "Victory Road", "say": "Eight badges. The last road to the League is long and dark, and an old friend is waiting along it."},
+      {"mission": "hoenn_m23", "title": "The Champion's Room", "say": "Four of Hoenn's strongest trainers, one after another. And at the very end, a familiar face."}
+    ]},
+    {"title": "The Delta Episode", "chapters": [
+      {"mission": "hoenn_d1", "title": "A Stone from the Stars", "say": "Something huge is falling toward Hoenn. A mysterious woman named Zinnia seems to know more than she's saying."},
+      {"mission": "hoenn_d2", "title": "The Sky Pillar", "say": "At the top of the Sky Pillar, the guardian of the skies is waiting to be called."},
+      {"mission": "hoenn_d3", "title": "Into Space", "say": "There's only one way to stop the meteoroid: go up and meet it."},
+      {"mission": "hoenn_d4", "title": "The Other Orb", "say": "Hoenn is safe, for now. But deep in the Cave of Origin, {other_legend} is stirring."}
     ]}
   ]
 }
