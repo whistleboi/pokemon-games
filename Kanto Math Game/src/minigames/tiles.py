@@ -212,6 +212,44 @@ class AlphPuzzle(TilePuzzle):
         img = _pic(self.game, self.PANELS[self.panel][0])
         return img.copy() if img else super().picture()
 
+    # ---- SoulSilver's own puzzle (11-22, Jordan: "using soulsilver's own tiles"): its 16 pieces of each panel and its board,
+    # from the game file (kanto_handoff/johto_map_tools/j_alph_puzzle.py). The board is the DS's lower screen doubled: a 6 x 6 grid
+    # of 64 px cells from x 64 - the picture's 4 x 4 in the middle, four starting slots in each arm (top, bottom, left, right).
+    def _hgss(self):
+        return _pic(self.game, f"hgss_{self.panel}.png") is not None and _pic(self.game, "hgss_board.png") is not None
+
+    def setup(self):
+        if self._hgss():
+            self.WALL = "hgss_board.png"
+        super().setup()
+        if not self._hgss():
+            return
+        whole = _pic(self.game, f"hgss_{self.panel}.png")
+        self.cell = self.slot = int(64 * self.k)
+        self.pieces = {}
+        for i in range(16):
+            r, c = divmod(i, 4)
+            sub = pygame.transform.scale(whole.subsurface((c * 32, r * 32, 32, 32)), (self.cell, self.cell))
+            self.pieces[i] = (sub, sub)
+        self.cursor = ("S", 0)
+
+    HG_SLOTS = [(2 + j, 0) for j in range(4)] + [(2 + j, 5) for j in range(4)] + [(1, 1 + j) for j in range(4)] + [(6, 1 + j) for j in range(4)]
+
+    def spot_rect(self, spot):
+        if not self._hgss():
+            return super().spot_rect(spot)
+        kind, i = spot
+        c, r = ((2 + i % 4, 1 + i // 4) if kind == "B" else self.HG_SLOTS[i])
+        x, y = self._at(c * 64, r * 64)
+        return pygame.Rect(x, y, self.cell, self.cell)
+
+    def _grid(self):
+        if not self._hgss():
+            return super()._grid()
+        g = {(2 + i % 4 - 1, 1 + i // 4): ("B", i) for i in range(16)}
+        g.update({(c - 1, r): ("S", j) for j, (c, r) in enumerate(self.HG_SLOTS)})
+        return g
+
 
 def flag(panel):
     return f"alph_{panel}_solved"

@@ -957,7 +957,8 @@ for _i in range(16):
     _t._use(("B", _i))
 check(_t.phase == "WON", "every piece in place: won")
 _a = _AP(g, lambda w: None, panel="hooh", seed=2)
-check(_a.title == "Ho-Oh Panel" and _a.WALL == "bg_hooh.png" and _a.n == 4, f"the Ho-Oh chamber's own panel ({_a.title})")
+check(_a.title == "Ho-Oh Panel" and _a.WALL == "hgss_board.png" and _a.n == 4 and _a.spot_rect(("S", 0)).y < _a.spot_rect(("B", 0)).y,
+      f"the Ho-Oh chamber's own panel, on SoulSilver's board (slots in the arms round it, 11-22) ({_a.title})")
 story.current_area_key = "RUINS_OF_ALPH"
 story.story_flags.pop(_alph_flag("kabuto"), None)
 _alph = [o for o in g.loader.area_data["STORY_PROGRESSION"]["RUINS_OF_ALPH"]["explore_options"] if o.get("action") == "TILE_PUZZLE"]
