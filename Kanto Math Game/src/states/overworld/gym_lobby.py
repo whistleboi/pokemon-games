@@ -157,6 +157,10 @@ class GymLobbyState(GameState):
             self.orange_rematch = (self.region == "ORANGE" and bool(self.leader)
                                    and game.story_manager.is_region_champion("ORANGE"))
             badge = (self.leader or {}).get("badge_reward")
+            # (11-23, Johto: a Leader with the games' own rematch team - HGSS's, "rematch" in the data - waits alone once you're
+            #  the region's Champion with their badge: that team and its moves, no badge again)
+            self.leader_rematch = bool(badge and (self.leader or {}).get("rematch") and game.story_manager.is_region_champion(self.region)
+                                       and game.story_manager.has_badge(badge))
             self.redo = bool(badge and league_redo.active_here(game.story_manager, self.region)
                              and not league_redo.has_badge(game.story_manager, self.region, badge))
             # Gym challenge (Jordan, 11-01): in place of the trainers, a minigame (src/minigames) to
@@ -179,7 +183,11 @@ class GymLobbyState(GameState):
             elif self.orange_rematch and self.progress > len(self.trainers):
                 self.progress = 0
                 game.story_manager.story_flags[self.prog_key] = 0
-            if self.redo or self.challenge:
+            if self.leader_rematch and not self.redo:   # (the Leader alone, as HGSS's rematches)
+                self.progress = len(self.trainers)
+                self.next_opponent = self.leader
+                self.status_text = f"Rematch: {_fill_names(game, self.leader.get('name', 'The Leader'))} is waiting!"
+            elif self.redo or self.challenge:
                 pass
             elif self.progress < len(self.trainers):
                 self.next_opponent = self.trainers[self.progress]
@@ -376,7 +384,21 @@ class GymLobbyState(GameState):
         # A League rematch roster's non-League trainers (Galar's Marnie/Hop, Paldea's Nemona) used to follow the post-game cap
         # (your party's top level); Jordan 11-21: no League rematch follows your level, in any region - they rise 10 like the rest.
         cap_rematch = False
-        if (getattr(self, "rematch", False) and not cap_rematch
+        if getattr(self, "leader_rematch", False) and is_leader and not self.redo:   # (HGSS's Leader rematch team)
+            rm = self.leader.get("rematch") or {}
+            t_data["team"] = list(rm.get("team") or t_data.get("team", []))
+            t_data["levels"] = list(rm.get("levels") or t_data.get("levels") or [])
+            if rm.get("movesets"):
+                t_data["movesets"] = rm["movesets"]
+            t_data["badge_reward"] = None
+            t_data["rewards"] = {"balls": 10}
+            _nm = _fill_names(self.game, t_data.get("name") or "Leader")
+            t_data["dialogue"] = {"intro": [f"{_nm}: Champion! My team has grown too. Let's see how far you've come!"],
+                                  "player_won": [f"{_nm}: Still the Champion... Come back any time for another round."],
+                                  "player_lost": [f"{_nm}: Not today! Train up and try again."]}
+            for k in ("victory_flag", "badge_later"):
+                t_data.pop(k, None)
+        elif (getattr(self, "rematch", False) and not cap_rematch
                 and not (self.area_key == "INDIGO_PLATEAU" and is_leader)):
             rm = self.next_opponent.get("rematch")
             if not rm and self.area_key == "INDIGO_PLATEAU":

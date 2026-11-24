@@ -55,6 +55,8 @@ def fly_land(game, key):
         if door:
             x, y = (int(v) for v in door.split(","))
             game.arrive_floor = (key, 0, [x, y + 1])
+    from src.vfx import area_changes   # (Fly's fade, as this region's game: Jordan 11-24)
+    area_changes.note_leave(game, game.story_manager.current_area_key, kind="fly")
     game.change_state(AreaTransitionState(game, key))
 
 

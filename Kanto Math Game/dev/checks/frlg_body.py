@@ -186,7 +186,7 @@ for _ix, _n, _who in ((0, 6, {"FOREST GUIDE", "BUG FAN", "RESTING GIRL"}), (5, 6
           f"...out of the Forest's {'north' if _ix == 0 else 'south'} gate (way {_ix} of {_n}) you stand inside Route 2's {'north' if _ix == 0 else 'south'} gatehouse {tuple(p.run.player)}: FireRed's room, its people")
     p.draw()
     if _n == 2:
-        _i, _at = step(p, (7, 9) if _ix == 0 else (7, 2), (0, 1) if _ix == 0 else (0, -1))
+        _i, _at = step(p, (7, 9) if _ix == 0 else (7, 2), (0, 1) if _ix == 0 else (0, -1), n=0)   # (11-24: the area change is quick now,
         check(type(g.current_state).__name__ != "PlayState" or core.ENTRANCE_COUNT == 2, f"......its forest-side mat leads back into the Forest (way {core.ENTRANCE_INDEX} of {core.ENTRANCE_COUNT})")
         check(core.ENTRANCE_INDEX == _ix, "......by the matching gate")
 p = route("KANTO_ROUTE_2", "VIRIDIAN_FOREST", index=0, count=2)
@@ -721,7 +721,8 @@ for _q in range(4):
 p.draw()
 p.run.player = (14, 2); p.anim = 0
 _ev = p.run.step(1, 0); p._handle(_ev); frames(p, 5)
-check(type(g.current_state).__name__ == "AreaTransitionState" and g.current_state.next_area_key == "ROCKET_HIDEOUT", "...step onto the stairs: down into the Rocket Hideout")
+check((type(g.current_state).__name__ == "AreaTransitionState" and g.current_state.next_area_key == "ROCKET_HIDEOUT")
+      or story.current_area_key == "ROCKET_HIDEOUT", "...step onto the stairs: down into the Rocket Hideout")   # (11-24: no in-between screen on the walked maps: there already)
 p = route("CELADON_GAME_CORNER", "ROCKET_HIDEOUT")
 check(tuple(p.run.player) == (14, 2), f"...back up from the Hideout: you stand by the stairs {tuple(p.run.player)}")
 for _k in _gcf: story.story_flags.pop(_k, None)

@@ -256,10 +256,7 @@
         "id": "m12", "type": "MAIN", "text": "The Marsh Badge", "target": "SAFFRON_CITY", "completed_badge": "MARSH", "desc": "Now that Saffron City is accessible, challenge Sabrina at the Saffron Gym for your sixth badge!",
         "condition": { "badges_min": 5, "badges_less": 6, "flag": ["silph_co_cleared", "received_silph_reward"] }
       },
-      {
-        "id": "m13", "type": "MAIN", "text": "Seafoam and Volcanoes", "target": "CINNABAR_ISLAND", "desc": "Surf to Cinnabar Island: south from Pallet Town down Route 21, or from Fuchsia through Routes 19 and 20 and the Seafoam Islands.",
-        "condition": { "badges_min": 6, "visited_not": "CINNABAR_ISLAND" }
-      },
+      {"id": "m13", "type": "MAIN", "text": "Seafoam and Volcanoes", "target": "CINNABAR_ISLAND", "desc": "Surf to Cinnabar Island: south from Pallet Town down Route 21, or from Fuchsia west along Routes 19 and 20, past the Seafoam Islands.", "condition": {"badges_min": 6, "visited_not": "CINNABAR_ISLAND"}},
       {
         "id": "m14", "type": "MAIN", "text": "The Volcano Badge", "target": "CINNABAR_ISLAND", "completed_badge": "VOLCANO", "desc": "Challenge Blaine at the Cinnabar Island Gym. Only a burning math spirit can win here! Inside, answer the quiz machines' questions: each right answer opens the next gate on the way to Blaine.",
         "condition": { "visited": "CINNABAR_ISLAND", "badges_less": 7 }
@@ -310,11 +307,7 @@
         "desc": "The Chairman of Vermilion's Pokemon Fan Club loves to talk about his Pokemon. Listen right to the end and he'll give you a Bike Voucher for Cerulean's Bike Shop.",
         "condition": { "visited": "VERMILLION_CITY", "item_not": ["BIKE_VOUCHER", "BICYCLE"] }, "completed_flag": "got_bike_voucher"
       },
-      {
-        "id": "s_flash", "type": "SIDE", "text": "Oak's Aide on Route 2", "target": "KANTO_ROUTE_2",
-        "desc": "One of Professor Oak's aides waits in the gatehouse on Route 2, at the Diglett's Cave end. Show him you've caught 10 kinds of Pokemon and he'll give you HM Flash, to light up dark caves.",
-        "condition": { "visited": "VERMILLION_CITY", "item_not": "HM_FLASH" }, "completed_flag": "got_hm_flash_kanto"
-      },
+      {"id": "s_flash", "type": "SIDE", "text": "Oak's Aide on Route 2", "target": "KANTO_ROUTE_2", "desc": "One of Professor Oak's aides waits in the gatehouse on Route 2, in the south of the route above Viridian City. Show him you've caught 10 kinds of Pokemon and he'll give you HM Flash, to light up dark caves.", "condition": {"visited": "VERMILLION_CITY", "item_not": "HM_FLASH"}, "completed_flag": "got_hm_flash_kanto"},
       {
         "id": "s_fly", "type": "SIDE", "text": "The Quiet House", "target": "KANTO_ROUTE_16",
         "desc": "A girl hides away in a house on Route 16, behind the small tree just west of Celadon City. Find her and she'll give you HM Fly, to fly back to any town you've visited.",
@@ -340,10 +333,7 @@
         "id": "s3", "type": "SIDE", "text": "The Mysterious Island", "desc": "A hidden island is said to appear in the sea near Cinnabar Island. Explore it to find rare Pokémon.",
         "condition": { "visited": "CINNABAR_ISLAND", "flag_not": "mysterious_island_explored" }
       },
-      {
-        "id": "s4", "type": "SIDE", "text": "The Lost Cave", "desc": "A cave hidden in the depths of Mt. Moon is said to contain rare Pokémon and treasures.",
-        "condition": { "visited": "MT_MOON", "flag_not": "lost_cave_explored" }
-      },
+      {"id": "s4", "type": "SIDE", "text": "The Lost Cave", "target": "LOST_CAVE", "desc": "Lady Selphy of Resort Gorgeous wandered into the Lost Cave, the maze of dark rooms north of the resort, and never came out. Find her and bring her home.", "condition": {"visited": "RESORT_GORGEOUS", "flag_not": "rescued_selphy"}, "completed_flag": "rescued_selphy"},
       {
         "id": "s5", "type": "SIDE", "text": "Fighting Dojo", "desc": "The Fighting Dojo in Saffron rewards those who have proven their strength against Sabrina.",
         "condition": { "badges_min": 6, "flag_not": "dojo_gift_1" }
@@ -694,7 +684,7 @@
       "next_area": "VERMILLION_CITY"
     },
     "PALLET_TOWN": {
-      "area_type": "town", "can_fish": true,
+      "area_type": "town", "level": 22, "can_fish": true,
       "route_name": "Pallet Town",
       "has_gym": false,
       "travel_options": [
@@ -2586,7 +2576,7 @@
 
 
     "FUCHSIA_CITY": {
-      "area_type": "town", "can_fish": true,
+      "area_type": "town", "level": 30, "can_fish": true,
       "route_name": "Fuchsia City",
       "backgrounds": {
         "pokecenter": "pokecenter.png",
@@ -2613,7 +2603,7 @@
     },
 
     "CINNABAR_ISLAND": {
-      "area_type": "town", "can_fish": true,
+      "area_type": "town", "level": 22, "can_fish": true,
       "route_name": "Cinnabar Island",
       "backgrounds": {
         "pokecenter": "pokecenter.png",
@@ -3577,7 +3567,7 @@
         { "rematch": {"source": "FireRed", "tiers": [{"team": [20, 23, 41], "levels": [19, 19, 19]}, null, {"team": [20, 23, 42], "levels": [27, 27, 27], "unlock": "visited_FUCHSIA_CITY"}, null, {"team": [20, 24, 42], "levels": [52, 52, 52], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_youngster.png", "name": "Timmy", "class": "YOUNGSTER", "team": [27, 23], "levels": [14, 14], "rewards": { "balls": 3 } },
         { "rematch": {"source": "FireRed", "tiers": [{"team": [16, 43, 69], "levels": [12, 12, 12]}]}, "sprite": "fr_lass.png", "name": "Ali", "class": "LASS", "team": [16, 43, 69], "levels": [12, 12, 12], "rewards": { "balls": 3 } },
         { "rematch": {"source": "FireRed", "tiers": [{"team": [10, 13, 11, 14], "levels": [10, 10, 10, 10]}]}, "sprite": "fr_bug_catcher.png", "name": "Cale", "class": "BUG_CATCHER", "team": [10, 13, 11, 14], "levels": [10, 10, 10, 10], "rewards": { "balls": 3 } },
-        {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "fr_team_rocket.png", "team": [23, 41], "levels": [15, 15], "rewards": {"balls": 8}, "is_boss_battle": true, "dialogue": {"intro": ["Congratulations! You beat our five contest trainers! Here's a nugget...", "...Now, how about joining Team Rocket? No? Then I'll make you!"], "player_won": ["Arrgh! You're good. You'd have made a great Rocket..."], "player_lost": ["Heh. Think about it!"]}}
+        {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "fr_team_rocket.png", "team": [23, 41], "levels": [15, 15], "rewards": {"balls": 8, "NUGGET": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Congratulations! You beat our five contest trainers! Here's a nugget...", "...Now, how about joining Team Rocket? No? Then I'll make you!"], "player_won": ["Arrgh! You're good. You'd have made a great Rocket..."], "player_lost": ["Heh. Think about it!"]}}
       ],
       "route_menu": [
         {"text": "TM240", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm31_route24", "event": {"lines": ["A TM, lying by the bridge! It's Attract."], "gift_item": {"TM240": 1}, "flag": "got_tm31_route24"}},

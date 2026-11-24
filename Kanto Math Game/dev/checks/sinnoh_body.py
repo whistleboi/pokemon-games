@@ -662,8 +662,9 @@ for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).ge
             continue  # (a door you reach from another side: not this check's business)
         _enter_door(t, _door)
         _want = len(_m["rooms"][_name].get("people", []))
-        if t.room != _name or len(t.people) != _want or not t._open(t.player) or not any(v == "OUT:" + _d or v.startswith("OUT:") for v in t.exits.values()):
-            _bad.append((_name, t.room, len(t.people), _want)); continue
+        _own = [o for o in t.people.values() if not (isinstance(o, dict) and o.get("_partner_of"))]   # (main 11-24: a leader's partner Pokemon beside them)
+        if t.room != _name or len(_own) != _want or not t._open(t.player) or not any(v == "OUT:" + _d or v.startswith("OUT:") for v in t.exits.values()):
+            _bad.append((_name, t.room, len(_own), _want)); continue
         _mat = next(k for k, v in t.exits.items() if v.startswith("OUT:"))
         _back = tuple(int(v) for v in t.exits[_mat][4:].split(","))  # (a building with two doors: out below its main one)
         t._go(None, t.exits[_mat])
@@ -982,6 +983,184 @@ _lift = not r.run.fog
 check(_r210 == (True, False) and _cor == [False, True] and _way == [True, False] and _lift,
       f"Fog as Platinum's weather: Route 210's north half, Mt. Coronet's D05R0113, Wayward Cave 1F dark; Defog clears ({_r210}, {_cor}, {_way}, {_lift})")
 story.inventory.clear(); story.inventory.update(_inv)
+
+# ---- S3 (11-24): Platinum's gatehouses, walked through (s_s3_gates.py)
+_sv = dict(story.story_flags); story.story_flags["galactic_eterna_cleared"] = True
+_gates = []
+for _town, _room, _door, _route in (("HEARTHOME_CITY", "gate_208", (5, 54), "SINNOH_ROUTE_208"), ("HEARTHOME_CITY", "gate_209", (58, 54), "SINNOH_ROUTE_209"),
+                                    ("HEARTHOME_CITY", "gate_212", (10, 57), "SINNOH_ROUTE_212"), ("ETERNA_CITY", "gate_206", (48, 57), "SINNOH_ROUTE_206")):
+    t = town(_town, _route)   # (in from the route: inside its gate, by the route-side mat - as Platinum)
+    _near = getattr(t, "room", None) == _room and any(v == _route and abs(k[0] - t.player[0]) + abs(k[1] - t.player[1]) <= 1 for k, v in t.exits.items())
+    _in = (t.town_map.get("inside") or {}).get("%d,%d" % _door) == _room and set(t.town_map["rooms"][_room]["exits"].values()) == {"OUT:%d,%d" % _door, _route}
+    _gates.append((_room, _near, _in))
+check(all(n and i for _r, n, i in _gates), f"Gatehouses: Hearthome's three and Eterna's Cycling Road gate: in from the route inside the gate, through it to the town ({_gates})")
+r = route("SINNOH_ROUTE_206", "SINNOH_ROUTE_207")   # (Route 206's own gate: in by a south door, out by the north mat above it)
+if r.run.index != 0:
+    r._warp(0, 1, 1); frames(r, 3)
+r.run.player = (14, 113); r.anim = 0; r.step(0, -1); frames(r, 3)
+_g_in = r.run.index == (r.recipe.get("art") or {}).get("room_floors", {}).get("gate")
+_tmg = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))["SINNOH_ROUTE_206"]["rooms"]["gate"]["art"]
+_vm = next(((mx, my) for my, rr in enumerate(_tmg) for mx, c in enumerate(rr) if c == "v"), None)
+if _g_in and _vm:
+    r.run.player = (_vm[0], _vm[1] + 1); r.anim = 0; r.step(0, -1); frames(r, 3)
+_g_out = r.run.index == 0 and r.run.player[1] <= 104 and 11 <= r.run.player[0] <= 18
+check(_g_in and _g_out, f"Route 206's gate: in from the south, out at its north side under Cycling Road ({_g_in}, {r.run.index}, {r.run.player})")
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+t._go("underground_man", "OUT:54,18"); frames(t, 3)
+check(t.room == "underground_man" and len(t._people()) == 4, f"Eterna: the Underground Man's house, his visitors inside ({t.room}, {len(t._people())})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S3 (11-24): the Pokemon Hotel's lift to its 2F (the Shell Bell), Route 212's gate held by the TV crew till Pastoria
+_sv = dict(story.story_flags); _inv = dict(story.inventory)
+for _k in ("hearthome_hotel_lift", "got_shell_bell_hearthome_hotel", "visited_PASTORIA_CITY"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("SHELL_BELL", None)
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208")
+t._go("house_0101", "OUT:46,38"); frames(t, 3)
+_up = next(k for k, v in t.exits.items() if v == "ROOM:hotel_lift")
+t.player = t.anim_from = (_up[0], _up[1] + 1); t.anim = 0; t.walk_goal = None
+t.step(0, -1)
+_drive(t, 300, lambda: isinstance(g.current_state, _PLS))
+_asked = isinstance(g.current_state, _PLS)
+if _asked:
+    g.current_state.pick("house_0102")
+_drive(t, 300, lambda: g.current_state is t and not getattr(t, "npc_active", False))
+_out = next((k for k, v in t.exits.items() if str(v).startswith("ROOM:")), None) if t.room == "hotel_lift" else None   # (the car's door: it opens on the floor it's at)
+if _out:
+    _drive(t, 200, lambda: not (getattr(t, "scenes", None) and t.scenes.busy()) and not getattr(t, "npc_active", False))
+    t.player = t.anim_from = (_out[0], _out[1] - 1); t.anim = 0; t.step(0, 1)
+    _drive(t, 120, lambda: t.room == "house_0102")
+_guest = next((s for s, o in t._people().items() if str(o.get("text")) == "Hotel guest"), None) if t.room == "house_0102" else None
+if _guest:
+    t._talk(_guest); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+check(_asked and t.room == "house_0102" and story.inventory.get("SHELL_BELL"),
+      f"Pokemon Hotel: into the lift from 1F, up to 2F, and the guest there gives a Shell Bell ({_asked}, {t.room}, {story.inventory.get('SHELL_BELL')})")
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208")
+t._go("gate_212", "OUT:10,57"); frames(t, 3)
+_shut = (5, 12) in t.barred
+story.story_flags["visited_PASTORIA_CITY"] = True
+t._go("gate_212", "OUT:10,57"); frames(t, 25)
+check(_shut and (5, 12) not in t.barred, f"Route 212's gate: the TV crew stand in the way out till you've been to Pastoria City ({_shut})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv)
+
+# ---- S4 (11-24): the Veilstone Department Store, every floor as Platinum (s_s4_dept.py)
+from src.states.systems import PokeMartState as _PMS
+_sv = dict(story.story_flags)
+story.story_flags.pop("veilstone_dept_lift", None)
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_214")
+t._go("mart", "OUT:29,27"); frames(t, 3)
+_title = t.town_map["rooms"]["mart"].get("title")
+_bc = next((s for s, o in t._people().items() if str(o.get("text")) == "Ball clerk"), None)
+_shop = None
+if _bc:
+    t._talk(_bc); _drive(t, 200, lambda: isinstance(g.current_state, _PMS))
+    _shop = list(getattr(g.current_state, "stock", None) or []) if isinstance(g.current_state, _PMS) else None
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_214")   # (a fresh visit for the lift: the shop screen left as a player leaves it)
+t._go("mart", "OUT:29,27"); frames(t, 3)
+_lift = next(k for k, v in t.exits.items() if v == "ROOM:dept_lift")
+_drive(t, 200, lambda: not t._busy())
+t.player = t.anim_from = (_lift[0], _lift[1] + 1); t.anim = 0; t.walk_goal = None; t.step(0, -1)
+_drive(t, 120, lambda: t.room == "dept_lift")
+_att = next((s for s, o in t._people().items() if str(o.get("text")) == "Lift attendant"), None)
+if _att:
+    t._talk(_att); _drive(t, 300, lambda: isinstance(g.current_state, _PLS))
+    if isinstance(g.current_state, _PLS):
+        g.current_state.pick("dept_3f")
+    _drive(t, 300, lambda: g.current_state is t and not getattr(t, "npc_active", False))
+_door = next((k for k, v in t.exits.items() if str(v).startswith("ROOM:")), None)
+if _door:
+    t.player = t.anim_from = (_door[0], _door[1] - 1); t.anim = 0; t.step(0, 1)
+    _drive(t, 120, lambda: t.room == "dept_3f")
+_tms = [o for o in t._people().values() if str(o.get("text")) == "TM clerk"]
+check(_title == "Veilstone Dept. Store 1F" and _shop and "POKE_BALLS" in _shop and t.room == "dept_3f" and _tms and _tms[0]["event"]["stock"],
+      f"Veilstone Dept. Store: 1F's ball counter sells balls, the lift's attendant takes you to 3F's TM Corner ({_title}, {_shop and _shop[:3]}, {t.room})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S4 (11-24): Veilstone Gym's punching bags, Platinum's rules (src/world/veilstone_gym.py, s_s4_veilstone_gym.py)
+from src.world import veilstone_gym as _vg
+_sv = dict(story.story_flags)
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_214")
+t._go("gym", "OUT:12,35"); frames(t, 5); _drive(t, 200, lambda: not t._busy())   # (its "enter" scene sets the bags up)
+_start = (8, 6) in t.barred and (12, 6) in t.barred   # (a bag, and the tire stack east of it)
+
+
+def _hit(bag, d):
+    """Stand beside the bag (room tile) and walk into it; wait for the slide."""
+    t.player = t.anim_from = (bag[0] - d[0], bag[1] - d[1]); t.anim = 0; t.walk_goal = None
+    t.step(*d)
+    _drive(t, 300, lambda: not getattr(t, "_vg_anim", None) and not t._busy())
+
+
+_hit((8, 6), (1, 0))
+_one = (11, 6) in t.barred and (12, 6) not in t.barred and (8, 6) not in t.barred
+# the rest of a way to Maylene (s_s4_veilstone_gym.explore found it; zone tiles less 1 row): 11 more hits
+for _b, _d in [((15, 25), (1, 0)), ((3, 9), (0, 1)), ((3, 13), (1, 0)), ((8, 19), (0, -1)), ((8, 16), (-1, 0)), ((3, 16), (0, 1)),
+               ((4, 21), (0, -1)), ((4, 11), (1, 0)), ((20, 16), (0, -1)), ((16, 9), (-1, 0)), ((13, 9), (-1, 0))]:
+    _hit(_b, _d)
+_seen, _todo = {(12, 29)}, [(12, 29)]
+while _todo:
+    _x, _y = _todo.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _n = (_x + _dx, _y + _dy)
+        if _n not in _seen and 0 <= _n[1] < t.h and 0 <= _n[0] < t.w and t.rows[_n[1]][_n[0]] == "." and _n not in t.barred:
+            _seen.add(_n); _todo.append(_n)
+_reach = any((12 + _dx, 3 + _dy) in _seen for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+t._go("gym", "OUT:12,35"); frames(t, 5); _drive(t, 200, lambda: not t._busy())   # (its "enter" scene sets the bags up)
+_back = (8, 6) in t.barred and (12, 6) in t.barred
+check(_start and _one and _reach and _back,
+      f"Veilstone Gym: a bag hit east slides to its stop and knocks the tires over; twelve hits open the way to Maylene; coming back in sets them up again ({_start}, {_one}, {_reach}, {_back})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S4 (11-24): the Galactic Warehouse raid as Platinum's (s_s4_warehouse.py): Dawn's Pokedex, a tag battle, Looker
+_sv = dict(story.story_flags); _inv = dict(story.inventory); _badges = list(story.badges.get("SINNOH", []))
+for _k in ("sinnoh_dawn_warehouse_call", "sinnoh_warehouse_guards_beaten", "sinnoh_warehouse_looker", "galactic_warehouse_cleared"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("STORAGE_KEY", None); story.inventory.pop("HM_FLY", None)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE"]
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_215"); frames(t, 3)
+_shut = (25, 20) in t.barred
+t.player = t.anim_from = (12, 37); t.anim = 0; t.walk_goal = None   # (out of the Gym with the Cobble Badge)
+_drive(t, 600, lambda: story.story_flags.get("sinnoh_dawn_warehouse_call") and not t._busy())
+_dawn = next((s for s, o in t._people().items() if str(o.get("text")) == "Dawn"), None)
+_bs = None
+if _dawn:
+    t.player = t.anim_from = (_dawn[0] - 1, _dawn[1]); t.anim = 0
+    t._talk(_dawn); _drive(t, 400, lambda: "Battle" in type(g.current_state).__name__)
+    _bs = g.current_state
+story.story_flags["sinnoh_warehouse_guards_beaten"] = True   # (won)
+g.change_state(t); frames(t, 25)
+t.player = t.anim_from = (23, 20); t.anim = 0
+_drive(t, 900, lambda: story.story_flags.get("sinnoh_warehouse_looker") and not t._busy())
+_open = (25, 20) not in t.barred and not [s for s, o in t._people().items() if str(o.get("text")).startswith("Galactic Grunt")]
+t.player = t.anim_from = (29, 16); t.anim = 0; t.walk_goal = None; t.step(0, -1)
+_drive(t, 400, lambda: hasattr(g.current_state, "run"))
+frames(g.current_state, 5)
+r = g.current_state
+_lk = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Looker"), None) if hasattr(r, "run") else None
+if _lk is not None:
+    r._use_figure(_lk); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+_locked = hasattr(r, "run") and r.run.floor.tile(13, 2) == core.WALL   # (the rusty door to the Underpass: the Storage Key's)
+check(_locked and _shut and _dawn == (24, 20) and _bs is not None and story.story_flags.get("sinnoh_warehouse_looker") and _open
+      and _lk is not None and story.story_flags.get("galactic_warehouse_cleared"),
+      f"Galactic Warehouse: the Grunts block the lane; with the Cobble Badge Dawn asks for help; a tag battle; Looker leads you in and the mission ends; the Underpass door stays locked ({_locked}, {_shut}, {_dawn}, {type(_bs).__name__}, {_open}, {_lk is not None})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv); story.badges["SINNOH"] = _badges
+
+# ---- S4 (11-24, Jordan "Add it"): Platinum's scene before the Veilstone Gym - Dawn, then Crasher Wake out of the Gym
+_sv = dict(story.story_flags); _badges = list(story.badges.get("SINNOH", []))
+story.story_flags.pop("sinnoh_veilstone_wake_scene", None); story.badges["SINNOH"] = ["COAL", "FOREST"]
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_215"); frames(t, 3)
+
+t.player = t.anim_from = (11, 40); t.anim = 0; t.walk_goal = None
+_heard = []
+_orig = t.show_message
+def _listen(lines, *a, **k):
+    _heard.extend(lines); return _orig(lines, *a, **k)
+t.show_message = _listen
+_drive(t, 1500, lambda: story.story_flags.get("sinnoh_veilstone_wake_scene") and not t._busy())
+t.show_message = _orig
+check(story.story_flags.get("sinnoh_veilstone_wake_scene") and not t._busy(),
+      f"Veilstone: walking up to the Gym, Dawn chats and Crasher Wake comes out of the Gym ({len(_heard)} lines heard)")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _badges
 
 g.walk_towns = False
 print(f"##### {fails} failures")

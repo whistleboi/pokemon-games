@@ -136,7 +136,7 @@ ps = ow.PlayState(g)
 g.change_state(ps)
 ow._run_story_event(ps, red["event"], lambda c: True, lambda lines: None)
 got = lineup(battle_of(g.current_state))
-check(got == [(25, 88), (131, 80), (143, 82), (3, 84), (6, 84), (9, 84)], f"Red: {got}")
+check(got == [(25, 88), (196, 84), (143, 82), (3, 84), (6, 84), (9, 84)], f"Red: {got}")
 
 print("5) Marts")
 story.badges = {"JOHTO": []}

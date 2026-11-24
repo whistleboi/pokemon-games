@@ -243,7 +243,7 @@ class TownMenu:
             if target == "flower_shop":
                 return self.visit_flower_shop
             if target in ("stoneman", "fossil_lab", "nacrene_museum", "ambrette_fossil_lab"):
-                return self.visit_stoneman
+                return lambda t=target: self.visit_stoneman(t)
             if target == "mr_fuji":
                 return self.visit_mr_fuji
             if target == "silph_employee":
