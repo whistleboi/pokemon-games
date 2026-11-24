@@ -328315,7 +328315,7 @@
      "cc..cccccccccc",
      "c.....c......c",
      "cc....c.ccc..c",
-     "cc.N..cc.N...c",
+     "cc.N..ccNN...c",
      "c......c.....c",
      "cc.....c....cc",
      "cc...^cc....cc",
@@ -328377,6 +328377,7 @@
        ]
       }
      },
+     "door:alakazam",
      "Village Elder"
     ],
     "signs": [],
@@ -339698,6 +339699,11 @@
      "v": "GATEON_PORT"
     },
     "links": {
+     "31,17": [
+      4,
+      1,
+      2
+     ],
      "17,27": [
       6,
       22,
@@ -339707,11 +339713,6 @@
       1,
       1,
       13
-     ],
-     "31,17": [
-      4,
-      1,
-      2
      ]
     },
     "parts": true,
@@ -339763,6 +339764,21 @@
       },
       "lines": [
        "A sealed door. It must open from inside the Dome."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        31,
+        17
+       ]
+      ],
+      "until": {
+       "flag_condition": "orre_rocket_done"
+      },
+      "lines": [
+       "A ladder down, roped off. Something rumbles far below."
       ],
       "look": "barrier"
      }
@@ -340702,6 +340718,134 @@
       ]
      }
     ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "cccccccccccccccccccc",
+     "cccccc..Nc....cccccc",
+     "cccccc..ccc.1.cccccc",
+     "cccc...cccc...cccccc",
+     "cccc...cccc...cccccc",
+     "ccc...ccc.....cccccc",
+     "ccc...ccc.....cccccc",
+     "cc....cc...cc.cccccc",
+     "cc....cc...ccccccccc",
+     "cc.....X...cc...Nccc",
+     "cc...............ccc",
+     "..c.............c...",
+     "....c.....c.........",
+     "......1.............",
+     "....................",
+     "....................",
+     "....................",
+     "....................",
+     "...................."
+    ],
+    "exits": {},
+    "links": {
+     "6,14": [
+      8,
+      3,
+      4
+     ],
+     "12,3": [
+      0,
+      31,
+      17
+     ]
+    },
+    "parts": true,
+    "people": [
+     "FULL RESTORES (TERRA)",
+     "ELIXIRS (TERRA)"
+    ],
+    "trainer_spots": [
+     "Team Magma Grunt"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/193.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/193.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       20
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "ccccc..ccccccccccccc",
+     "ccccc..ccccccccccccc",
+     "cc.........ccccccccc",
+     "c..1...c...ccccccccc",
+     ".....c.c...ccccccccc",
+     ".ccccc.c...ccccccccc",
+     ".ccccccc..........cc",
+     ".ccccccc.ccccccccccc",
+     ".cccccc.......cccccc",
+     ".ccccc...ccccccccccc",
+     ".ccccc...ccccccccccc",
+     ".cccc...cccccccccccc",
+     ".cccc..ccccccccccccc",
+     ".cccc..ccccccccccccc",
+     ".cccc..ccccccccccccc",
+     ".cccc..ccccccccccccc",
+     ".cccc..ccccccccccccc",
+     ".cccX..ccccccccccccc",
+     ".ccc...ccc..cccccccc",
+     ".ccc...ccc....N...cc",
+     ".ccc..........cccccc",
+     ".cccccccc...c.cccccc",
+     ".ccccccccccccccccccc",
+     "...................."
+    ],
+    "exits": {},
+    "links": {
+     "3,4": [
+      7,
+      6,
+      14
+     ]
+    },
+    "parts": true,
+    "people": [
+     [
+      "TEAM MAGMA LEADER MAXIE",
+      "GROUDON"
+     ]
+    ],
+    "trainer_spots": [
+     "Team Magma Grunt Sola"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/194.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    }
    }
   ],
   "floor_names": [
@@ -340711,7 +340855,9 @@
    "Hook Hall",
    "Outside the Dome",
    "Dome 1F",
-   "Dome 2F"
+   "Dome 2F",
+   "Terra Cave",
+   "Terra Cave B2"
   ],
   "figure_floors": {
    "SNAG SHADOW POKEMON": 0,
@@ -340772,7 +340918,13 @@
    "Cipher R&D Kaller": 5,
    "Cipher R&D Loket": 5,
    "GYM LEADER DRAKE": 6,
-   "GRAND MASTER GREEVIL": 6
+   "GRAND MASTER GREEVIL": 6,
+   "FULL RESTORES (TERRA)": 7,
+   "ELIXIRS (TERRA)": 7,
+   "Team Magma Grunt": 7,
+   "TEAM MAGMA LEADER MAXIE": 8,
+   "GROUDON": 8,
+   "Team Magma Grunt Sola": 8
   },
   "theme": "tunnel"
  },
@@ -399853,10 +400005,18 @@
     "art": [
      "cccccccccccccccc",
      "cccccccccccccccc",
+     "cccc..ccc..ccccc",
+     "cccc..ccc..ccccc",
+     "cccc..c1c..ccccc",
+     "cccc.......ccccc",
+     "cccc.......ccccc",
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "cccccccccccccccc",
      "c............ccc",
      "cc..ccccccc..N.c",
      "c...ccccccc....c",
-     "ccc.ccccccc.c.cc",
+     "ccc.ccc1ccc.c.cc",
      "ccc...........cc",
      "cccc...........c",
      "cc.c.........ccc",
@@ -399872,7 +400032,18 @@
     "exits": {
      "v": "PYRITE_TOWN"
     },
-    "links": {},
+    "links": {
+     "7,13": [
+      1,
+      7,
+      13
+     ],
+     "7,4": [
+      3,
+      8,
+      2
+     ]
+    },
     "parts": true,
     "people": [
      "The Gear"
@@ -399883,7 +400054,7 @@
       "f": "orre_ground/135.png",
       "at": [
        17,
-       17
+       9
       ]
      },
      "_signs_in_picture": true,
@@ -399895,21 +400066,246 @@
       "f": "orre_top/135.png",
       "at": [
        17,
-       17
+       9
       ],
       "size": [
        16,
-       17
+       25
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        7,
+        13
+       ]
+      ],
+      "until": {
+       "condition": "beat_orre_champion"
+      },
+      "lines": [
+       "The shed's door is locked. Someone's moving about inside..."
+      ],
+      "look": "barrier"
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "ccccccc1cccccc",
+     "cc.N......c.cc",
+     "c............c",
+     "cc..........cc",
+     "c...N........c",
+     "cc......cc..cc",
+     "cc......cc...c",
+     "cc...........c",
+     "cc...........c",
+     "c............c",
+     "cc..........cc",
+     "cccccc11cccccc",
+     "cccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "7,2": [
+      2,
+      8,
+      2
+     ],
+     "6,13": [
+      0,
+      7,
+      13
+     ],
+     "7,13": [
+      0,
+      7,
+      13
+     ]
+    },
+    "parts": true,
+    "people": [
+     "HEALING MACHINE (TOWER)",
+     "TEAM ROCKET JESSIE & JAMES"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/166.png",
+      "at": [
+       8,
+       2
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/166.png",
+      "at": [
+       8,
+       2
+      ],
+      "size": [
+       14,
+       15
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccc1cc1cccccccc",
+     "cccc........ccccc",
+     "c............cccc",
+     "cc....N......cccc",
+     "cc.......cc..cccc",
+     "cc......NccN.cccc",
+     "cc.......cc..cccc",
+     "cc...........cccc",
+     "cc...........cccc",
+     "c............cccc",
+     "c............cc1c",
+     "ccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "8,2": [
+      1,
+      7,
+      2
+     ],
+     "5,2": [
+      3,
+      5,
+      2
+     ],
+     "6,5": [
+      0,
+      7,
+      13
+     ],
+     "15,12": [
+      0,
+      7,
+      13
+     ]
+    },
+    "parts": true,
+    "people": [
+     "ARMOURED MEWTWO",
+     "BOSS GIOVANNI",
+     "TEAM LEADERS ARCHIE & MAXIE"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/167.png",
+      "at": [
+       8,
+       2
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/167.png",
+      "at": [
+       8,
+       2
+      ],
+      "size": [
+       17,
+       14
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "ccccc1cc1ccccc",
+     "cccc........cc",
+     "c............c",
+     "cc...........c",
+     "cc...........c",
+     "cc...........c",
+     "cc...........c",
+     "cc...........c",
+     "cc...........c",
+     "c............c",
+     "cc..........cc",
+     "cccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "8,2": [
+      0,
+      7,
+      4
+     ],
+     "5,2": [
+      2,
+      5,
+      2
+     ]
+    },
+    "parts": true,
+    "people": [],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/189.png",
+      "at": [
+       8,
+       2
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/189.png",
+      "at": [
+       8,
+       2
+      ],
+      "size": [
+       14,
+       14
       ]
      }
     ]
    }
   ],
   "floor_names": [
-   "Construction Lot"
+   "Construction Lot",
+   "Rocket Tower",
+   "Rocket Tower 2F",
+   "Rocket Tower 3F"
   ],
   "figure_floors": {
-   "The Gear": 0
+   "The Gear": 0,
+   "HEALING MACHINE (TOWER)": 1,
+   "TEAM ROCKET JESSIE & JAMES": 1,
+   "TEAM LEADERS ARCHIE & MAXIE": 2,
+   "BOSS GIOVANNI": 2,
+   "ARMOURED MEWTWO": 2
   },
   "theme": "tunnel"
  },
@@ -844344,5 +844740,75 @@
    "6,19": "library"
   },
   "title": "Strange House"
+ },
+ "MARINE_CAVE": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccc..............cc",
+     "ccc...........^N.cc",
+     "cc........c...c.ccc",
+     "cc........c.....ccc",
+     "cc........c.....ccc",
+     "cc........c.....ccc",
+     "cc.ccccc.ccccc...cc",
+     "cccc..X..ccccc...cc",
+     "ccc......ccccccc.cc",
+     "cc.........ccccc.cc",
+     "cccccc.....ccccc..c",
+     "cccccccc.....ccc..c",
+     "ccccccccc....cccccc",
+     "cccccccccc..Xcccccc",
+     "cccccccccc...cccccc",
+     "cccccccccc.....cccc",
+     "cccccccccc.....cccc",
+     "cccccc.ccc.....cccc",
+     "c..N...........cccc",
+     "cc...........cccccc",
+     "cccc.........cccccc",
+     "ccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "AGATE_VILLAGE"
+    },
+    "links": {},
+    "parts": true,
+    "people": [
+     "door:alakazam",
+     [
+      "TEAM AQUA LEADER ARCHIE",
+      "KYOGRE"
+     ]
+    ],
+    "trainer_spots": [
+     "Team Aqua Grunt",
+     "Team Aqua Grunt Mira"
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/195.png",
+      "at": [
+       1,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    }
+   }
+  ],
+  "floor_names": [
+   "Marine Cave"
+  ],
+  "figure_floors": {
+   "door:alakazam": 0,
+   "TEAM AQUA LEADER ARCHIE": 0,
+   "KYOGRE": 0,
+   "Team Aqua Grunt": 0,
+   "Team Aqua Grunt Mira": 0
+  },
+  "theme": "tunnel"
  }
 }

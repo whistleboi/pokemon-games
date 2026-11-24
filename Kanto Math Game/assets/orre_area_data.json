@@ -877,15 +877,288 @@
           "color": "GOLD",
           "flag_condition": "not orre_got_gear",
           "condition": "orre_power_out",
-          "event": {"flag": "orre_got_gear", "gift_item": {"GEAR": 1},
-                    "lines": ["Silva is gone, but something heavy is wedged against the fence...", "You found the GEAR!",
-                              "Rui: This must be the windmill's missing gear! Let's take it back to Pyrite."]}
+          "event": {
+            "flag": "orre_got_gear",
+            "gift_item": {
+              "GEAR": 1
+            },
+            "lines": [
+              "Silva is gone, but something heavy is wedged against the fence...",
+              "You found the GEAR!",
+              "Rui: This must be the windmill's missing gear! Let's take it back to Pyrite."
+            ]
+          }
+        },
+        {
+          "text": "HEALING MACHINE (TOWER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "lines": [
+              "Team Rocket's healing machine. Your Pokemon are fully healed!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "TEAM ROCKET JESSIE & JAMES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_rocket_jj",
+          "event": {
+            "flag": "orre_rocket_jj",
+            "lines": [
+              "Jessie: Prepare for trouble - in Orre, of all places!",
+              "James: Make it double! We came here for a quiet life!",
+              "Meowth: Dat's right! ...But since ya barged in, it's battle time!"
+            ],
+            "battle": {
+              "name": "Team Rocket Jessie & James",
+              "class": "ROCKET",
+              "sprite": "orre_jessie_james.png",
+              "team": [
+                24,
+                110,
+                71,
+                52
+              ],
+              "levels": [
+                57,
+                57,
+                58,
+                58
+              ],
+              "team_moves": [
+                [
+                  "HAZE",
+                  "SLUDGE-BOMB",
+                  "SWALLOW",
+                  "SPIT-UP"
+                ],
+                [
+                  "MEMENTO",
+                  "EXPLOSION",
+                  "TOXIC",
+                  "SLUDGE-BOMB"
+                ],
+                [
+                  "LEAF-BLADE",
+                  "SWEET-SCENT",
+                  "SLEEP-POWDER",
+                  "RAZOR-LEAF"
+                ],
+                [
+                  "SLASH",
+                  "SCREECH",
+                  "FURY-SWIPES",
+                  "TAUNT"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Jessie & James: We're blasting off agaaain...! The boss is upstairs, twerp!"
+                ]
+              }
+            }
+          },
+          "condition": "beat_orre_champion"
+        },
+        {
+          "text": "TEAM LEADERS ARCHIE & MAXIE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_rocket_alliance",
+          "event": {
+            "flag": "orre_rocket_alliance",
+            "lines": [
+              "Archie: Well, well. Orre's new Champion. Team Aqua and Team Magma work with Giovanni now.",
+              "Maxie: Together we'll make Orre's land and sea ours. You won't stand in the way!"
+            ],
+            "battle": {
+              "name": "Team Leaders Archie & Maxie",
+              "class": "TEAM_LEADER",
+              "sprite": "orre_archie.png",
+              "team": [
+                319,
+                130,
+                365,
+                323,
+                229,
+                6
+              ],
+              "levels": [
+                59,
+                60,
+                61,
+                59,
+                60,
+                61
+              ],
+              "team_moves": [
+                [
+                  "TAKE-DOWN",
+                  "AGILITY",
+                  "CRUNCH",
+                  "SWAGGER"
+                ],
+                [
+                  "HYPER-BEAM",
+                  "THRASH",
+                  "HYDRO-PUMP",
+                  "DRAGON-DANCE"
+                ],
+                [
+                  "BLIZZARD",
+                  "SURF",
+                  "BODY-SLAM",
+                  "ENCORE"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "YAWN",
+                  "TAKE-DOWN",
+                  "CURSE"
+                ],
+                [
+                  "CRUNCH",
+                  "FLAMETHROWER",
+                  "TORMENT",
+                  "BEAT-UP"
+                ],
+                [
+                  "FIRE-SPIN",
+                  "SCARY-FACE",
+                  "FLAMETHROWER",
+                  "SLASH"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Maxie: Hmph... Archie, the plan. Fall back to the caves!"
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_jj"
+        },
+        {
+          "text": "BOSS GIOVANNI",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_rocket_done",
+          "event": {
+            "flag": "orre_rocket_done",
+            "lines": [
+              "Giovanni: You must be out of your mind to chase us here.",
+              "Giovanni: Orre's Shadow Pokemon gave me an idea. My ultimate Pokemon, in armour... Let me show you!"
+            ],
+            "battle": {
+              "name": "Boss Giovanni",
+              "class": "ROCKET_BOSS",
+              "sprite": "orre_giovanni.png",
+              "team": [
+                115,
+                232,
+                351,
+                344,
+                142,
+                34
+              ],
+              "levels": [
+                61,
+                61,
+                62,
+                62,
+                63,
+                63
+              ],
+              "team_moves": [
+                [
+                  "OUTRAGE",
+                  "REVERSAL",
+                  "ENDURE",
+                  "CRUNCH"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "SCARY-FACE",
+                  "SLAM",
+                  "KNOCK-OFF"
+                ],
+                [
+                  "FIRE-BLAST",
+                  "BLIZZARD",
+                  "HYDRO-PUMP",
+                  "WEATHER-BALL"
+                ],
+                [
+                  "EXPLOSION",
+                  "SANDSTORM",
+                  "SELF-DESTRUCT",
+                  "EXTRASENSORY"
+                ],
+                [
+                  "HYPER-BEAM",
+                  "AGILITY",
+                  "TAKE-DOWN",
+                  "CRUNCH"
+                ],
+                [
+                  "HELPING-HAND",
+                  "FLATTER",
+                  "MEGAHORN",
+                  "FOCUS-ENERGY"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Giovanni: ...Impossible. Fine - Team Rocket won't trouble Orre again."
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_alliance"
+        },
+        {
+          "text": "ARMOURED MEWTWO",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_rocket_done",
+          "flag_condition": "not orre_mewtwo_fled",
+          "event": {
+            "flag": "orre_mewtwo_fled",
+            "lines": [
+              "Mewtwo: You humans... using Pokemon as tools for battle...",
+              "Mewtwo: I have had enough of this.",
+              "Mewtwo tears free of its armour and teleports away!",
+              "Giovanni: That can't be! My ultimate Pokemon...!",
+              "Archie and Maxie are gone too. Rumour says Maxie went under Citadark, and Archie to a sea cave near Agate."
+            ]
+          }
         },
         {
           "text": "Pyrite Town",
           "action": "EXIT",
           "target_area": "PYRITE_TOWN",
-          "condition": ["can_exit"],
+          "condition": [
+            "can_exit"
+          ],
           "color": "RED"
         }
       ],
@@ -2953,9 +3226,227 @@
               "orre_dakim_mt_battle"
             ]
           }
+        },
+        {
+          "text": "Marine Cave",
+          "door": "alakazam",
+          "target_area": "MARINE_CAVE",
+          "condition": "orre_rocket_done"
         }
       ],
       "next_area": "PYRITE_CAVE"
+    },
+    "MARINE_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Marine Cave",
+      "region": "ORRE",
+      "level": 58,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Aqua Grunt",
+          "class": "AQUA_GRUNT",
+          "sprite": "orre_aqua_grunt_m.png",
+          "team": [
+            319,
+            262,
+            368,
+            367
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "AGILITY",
+              "CRUNCH",
+              "SWAGGER"
+            ],
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "HYDRO-PUMP",
+              "PSYCHIC",
+              "BATON-PASS",
+              "DIVE"
+            ],
+            [
+              "HYDRO-PUMP",
+              "CRUNCH",
+              "BATON-PASS",
+              "DIVE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Aqua Grunt Mira",
+          "class": "AQUA_GRUNT",
+          "sprite": "orre_aqua_grunt_f.png",
+          "team": [
+            73,
+            262,
+            186,
+            342
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "SURF",
+              "ACID-ARMOR",
+              "BUBBLE-BEAM",
+              "SCREECH"
+            ],
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "BOUNCE",
+              "RAIN-DANCE",
+              "BELLY-DRUM",
+              "HYDRO-PUMP"
+            ],
+            [
+              "ENDEAVOR",
+              "CRABHAMMER",
+              "CRUNCH",
+              "SWORDS-DANCE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "TEAM AQUA LEADER ARCHIE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_archie_marine",
+          "event": {
+            "flag": "orre_archie_marine",
+            "lines": [
+              "Archie: You are too late! Kyogre's heart will be ours - the sea's ultimate weapon!"
+            ],
+            "battle": {
+              "name": "Team Aqua Leader Archie",
+              "class": "TEAM_LEADER",
+              "sprite": "orre_archie.png",
+              "team": [
+                130,
+                262,
+                195,
+                319,
+                365,
+                171
+              ],
+              "levels": [
+                61,
+                62,
+                62,
+                63,
+                64,
+                65
+              ],
+              "team_moves": [
+                [
+                  "HYPER-BEAM",
+                  "THRASH",
+                  "HYDRO-PUMP",
+                  "DRAGON-DANCE"
+                ],
+                [
+                  "TAKE-DOWN",
+                  "YAWN",
+                  "TAUNT",
+                  "SCARY-FACE"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "TOXIC",
+                  "AMNESIA",
+                  "MUDDY-WATER"
+                ],
+                [
+                  "TAKE-DOWN",
+                  "AGILITY",
+                  "CRUNCH",
+                  "SWAGGER"
+                ],
+                [
+                  "HAIL",
+                  "BLIZZARD",
+                  "SURF",
+                  "BODY-SLAM"
+                ],
+                [
+                  "HYDRO-PUMP",
+                  "TAKE-DOWN",
+                  "FLAIL",
+                  "CHARGE"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Archie: Gah! The sea doesn't want me... Kyogre's waking. You deal with it!"
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_done"
+        },
+        {
+          "text": "KYOGRE",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "orre_archie_marine",
+          "flag_condition": "not orre_kyogre_done",
+          "boss": {
+            "id": 382,
+            "name": "Kyogre",
+            "level": 70,
+            "victory_flag": "orre_kyogre_done",
+            "lines": [
+              "The water swells... Kyogre rises from the deep!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Agate",
+          "door": "alakazam",
+          "target_area": "AGATE_VILLAGE"
+        }
+      ],
+      "next_area": "AGATE_VILLAGE"
     },
     "RELIC_CAVE": {
       "area_type": "dungeon",
@@ -21651,6 +22142,104 @@
             "balls": 2
           },
           "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Magma Grunt",
+          "class": "MAGMA_GRUNT",
+          "sprite": "orre_magma_grunt_m.png",
+          "team": [
+            262,
+            324,
+            169,
+            126
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "AMNESIA",
+              "HEAT-WAVE",
+              "CURSE",
+              "FLAMETHROWER"
+            ],
+            [
+              "CONFUSE-RAY",
+              "HAZE",
+              "BITE",
+              "AIR-CUTTER"
+            ],
+            [
+              "FIRE-BLAST",
+              "SUNNY-DAY",
+              "FLAMETHROWER",
+              "LOW-KICK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          },
+          "when_flags": [
+            "orre_rocket_done"
+          ]
+        },
+        {
+          "name": "Team Magma Grunt Sola",
+          "class": "MAGMA_GRUNT",
+          "sprite": "orre_magma_grunt_f.png",
+          "team": [
+            262,
+            38,
+            157,
+            275
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "QUICK-ATTACK",
+              "FLAMETHROWER",
+              "TAIL-WHIP"
+            ],
+            [
+              "FLAMETHROWER",
+              "SWIFT",
+              "DEFENSE-CURL",
+              "FLAME-WHEEL"
+            ],
+            [
+              "LEAF-BLADE",
+              "AIR-CUTTER",
+              "SUNNY-DAY"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          },
+          "when_flags": [
+            "orre_rocket_done"
+          ]
         }
       ],
       "route_menu": [
@@ -22810,6 +23399,136 @@
             "can_exit"
           ],
           "color": "RED"
+        },
+        {
+          "text": "FULL RESTORES (TERRA)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_rocket_done",
+          "flag_condition": "not orre_terra_fr",
+          "event": {
+            "flag": "orre_terra_fr",
+            "gift_item": {
+              "FULL_RESTORE": 10
+            },
+            "lines": [
+              "10 Full Restores!"
+            ]
+          }
+        },
+        {
+          "text": "ELIXIRS (TERRA)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_rocket_done",
+          "flag_condition": "not orre_terra_elixir",
+          "event": {
+            "flag": "orre_terra_elixir",
+            "gift_item": {
+              "ELIXIR": 10
+            },
+            "lines": [
+              "10 Elixirs!"
+            ]
+          }
+        },
+        {
+          "text": "TEAM MAGMA LEADER MAXIE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_maxie_terra",
+          "event": {
+            "flag": "orre_maxie_terra",
+            "lines": [
+              "Maxie: You are too late. Groudon sleeps here - and the land will be mine to shape!"
+            ],
+            "battle": {
+              "name": "Team Magma Leader Maxie",
+              "class": "TEAM_LEADER",
+              "sprite": "orre_maxie.png",
+              "team": [
+                6,
+                59,
+                94,
+                229,
+                359,
+                323
+              ],
+              "levels": [
+                61,
+                62,
+                62,
+                63,
+                64,
+                65
+              ],
+              "team_moves": [
+                [
+                  "FIRE-SPIN",
+                  "SCARY-FACE",
+                  "FLAMETHROWER",
+                  "SLASH"
+                ],
+                [
+                  "FLAMETHROWER",
+                  "HOWL",
+                  "HELPING-HAND",
+                  "EXTREME-SPEED"
+                ],
+                [
+                  "DREAM-EATER",
+                  "DESTINY-BOND",
+                  "SHADOW-BALL",
+                  "NIGHT-SHADE"
+                ],
+                [
+                  "CRUNCH",
+                  "FLAMETHROWER",
+                  "TORMENT",
+                  "BEAT-UP"
+                ],
+                [
+                  "PERISH-SONG",
+                  "FUTURE-SIGHT",
+                  "SWORDS-DANCE",
+                  "FOCUS-ENERGY"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "YAWN",
+                  "TAKE-DOWN",
+                  "CURSE"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Maxie: ...Groudon stirs. Even I can't hold it now. Do what you will."
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_done"
+        },
+        {
+          "text": "GROUDON",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "orre_maxie_terra",
+          "flag_condition": "not orre_groudon_done",
+          "boss": {
+            "id": 383,
+            "name": "Groudon",
+            "level": 70,
+            "victory_flag": "orre_groudon_done",
+            "lines": [
+              "The ground shakes... Groudon wakes, burning with anger!"
+            ]
+          }
         }
       ],
       "next_area": "GATEON_PORT",
@@ -23134,7 +23853,10 @@
     {"id": "orre_s7", "type": "SIDE", "title": "A Rumour in Pyrite", "description": "Nett has heard something about Cail and a Shadow Pokemon. A kid in Pyrite saw it - he's hiding behind a bookcase.", "condition": {"required_region": "ORRE", "flag": "col_post_nett", "flag_not": "col_cail_post"}, "region": "ORRE", "completed_flag": "col_cail_post", "target": "PYRITE_TOWN"},
     {"id": "orre_s7b", "type": "SIDE", "title": "The Snagem Raid", "description": "Snagem is back in its desert hideout, with Shadow Pokemon you missed. Nett also mentioned Gurks, on the Junk Shop's balcony in The Under. Gonzap has something you'll want.", "condition": {"required_region": "ORRE", "flag": "col_cail_post", "flag_not": "col_gonzap_post"}, "region": "ORRE", "completed_flag": "col_gonzap_post", "target": "SNAGEM_HIDEOUT", "reward": "D-Disk"},
     {"id": "orre_s7c", "type": "SIDE", "title": "The Deep Colosseum", "description": "Slot the D-Disk into The Under's floating platform. Five rounds wait at the bottom, and the Deep King after them.", "condition": {"required_region": "ORRE", "flag": "col_gonzap_post", "flag_not": "col_deep_all"}, "region": "ORRE", "completed_flag": "col_deep_all", "target": "THE_UNDER", "reward": "TM Dragon Claw"},
-    {"id": "orre_s8", "type": "SIDE", "title": "Poke Snacks", "description": "Put Poke Snacks on a Poke Spot's tray, then go somewhere else. Your P*DA's Spot Monitor beeps when something comes to eat - fast beeps mean a rare one. No snacks, no wild Pokemon.", "condition": {"required_region": "ORRE", "flag": "xd_spot_oasis", "flag_not": "snacks_from_duking"}, "region": "ORRE", "completed_flag": "snacks_from_duking", "target": "ORRE_POKE_SPOTS"}
+    {"id": "orre_s8", "type": "SIDE", "title": "Poke Snacks", "description": "Put Poke Snacks on a Poke Spot's tray, then go somewhere else. Your P*DA's Spot Monitor beeps when something comes to eat - fast beeps mean a rare one. No snacks, no wild Pokemon.", "condition": {"required_region": "ORRE", "flag": "xd_spot_oasis", "flag_not": "snacks_from_duking"}, "region": "ORRE", "completed_flag": "snacks_from_duking", "target": "ORRE_POKE_SPOTS"},
+    {"id": "orre_s9", "type": "SIDE", "title": "Team Rocket in Orre", "description": "Champion of Orre - and still there's trouble. Team Rocket has a tower behind Pyrite's Construction Lot. Climb it and find out what Giovanni wants.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_rocket_done"}, "region": "ORRE", "target": "CONSTRUCTION_LOT", "completed_flag": "orre_rocket_done"},
+    {"id": "orre_s9b", "type": "SIDE", "title": "Groudon Under Citadark", "description": "Maxie fled under Citadark Isle. A ladder on the island leads down to the Terra Cave.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_groudon_done"}, "region": "ORRE", "target": "XD_CITADARK_ISLE", "completed_flag": "orre_groudon_done"},
+    {"id": "orre_s9c", "type": "SIDE", "title": "Kyogre in the Marine Cave", "description": "Archie went to a sea cave near Agate. Eagun's Alakazam can take you there.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_kyogre_done"}, "region": "ORRE", "target": "AGATE_VILLAGE", "completed_flag": "orre_kyogre_done"}
   ],
   "REGION_START": {
     "ORRE": {
