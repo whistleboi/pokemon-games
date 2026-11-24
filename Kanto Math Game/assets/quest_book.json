@@ -468,9 +468,11 @@
     ]},
     {"title": "Five Years Later", "chapters": [
       {"mission": "orre_m10b", "title": "An Empty Lab", "say": "Five years have passed. Professor Krane's lab near Gateon Port studies how to heal dark hearts. Today the door is open and nobody answers."},
-      {"mission": "orre_m10c", "title": "A Machine Part", "say": "The Purify Chamber needs a part nobody in Gateon has. A shopkeeper's father might, if anyone can find him.", "done": "xd_gateon_bridges"},
+      {"mission": "orre_m10c", "title": "A Machine Part", "say": "The Purify Chamber needs a part nobody in Gateon has. The shopkeeper at the Parts Shop might know someone who does."},
+      {"mission": "orre_m10c2", "title": "Down at Kaminko's", "say": "Perr's father went to visit a very strange inventor and never came back. Kaminko's house is full of machines, and one small, loud assistant guards the stairs."},
       {"mission": "orre_m10d", "title": "The Lighthouse", "say": "Gateon's bridges swing back into place, and the lighthouse on the islands is lit. Three guardians stand between you and the top."},
-      {"mission": "orre_m10c", "title": "Back to the Lab", "say": "The part is in your bag. Lily has been waiting at the lab with the Purify Chamber open.", "when": "xd_gateon_bridges"}
+      {"mission": "orre_m10c3", "title": "A Part at Last", "say": "Makan made it home to the Parts Shop. He has been rummaging through his shelves for something with exactly the right shape."},
+      {"mission": "orre_m10c4", "title": "Back to Lily", "say": "The part is in your bag. Lily has been waiting at the lab with the Purify Chamber open."}
     ]},
     {"title": "Cipher Returns", "chapters": [
       {"mission": "orre_m11", "title": "The Lab Reopened", "say": "A car with no plates was seen driving toward the old lab in the sand. The professor might still be inside."},
