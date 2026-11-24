@@ -8880,21 +8880,6 @@
       ],
       "area_boss": { "id": 648, "name": "Meloetta", "victory_flag": "UNITY_TOWER_boss_defeated" }
     },
-    "BATTLE_SUBWAY": {
-      "area_type": "dungeon",
-      "route_name": "Battle Subway",
-      "region": "UNOVA",
-      "battle_type": "indoor",
-      "wild_pool_percentages": null,
-      "min_rounds": 0,
-      "backgrounds": { "main": "battle_subway.png" },
-      "route_menu": [
-        { "text": "CHALLENGE SUBWAY", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD" },
-        { "text": "EXCHANGE: ITEMS", "action": "BP_SHOP", "shop": "b2w2_items", "color": "BLUE" },
-        { "text": "EXCHANGE: TMs", "action": "BP_SHOP", "shop": "b2w2_tms", "color": "BLUE" },
-        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
-      ]
-    },
     "UNOVA_ROUTE_1": {
       "area_type": "wild_route",
       "route_name": "Route 1",
