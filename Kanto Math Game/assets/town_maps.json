@@ -183927,7 +183927,7 @@
      "c...............c",
      "c...............c",
      "ccc.............c",
-     "cc^.............c",
+     "cc^.......N.....c",
      "ccc..c.......c..c",
      "cc...z.......z.cc",
      "ccccccccccccccccc"
@@ -184196,6 +184196,15 @@
        "lines": [
         "Link battles are set up here, in the Colosseum.",
         "The machines are switched off. Please come back later!"
+       ]
+      }
+     },
+     {
+      "text": "Battle fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Multi Battles are the most exciting battles there are! You have to try one to know."
        ]
       }
      }
@@ -191792,18 +191801,18 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "c..ccccccccccccccccccc..c",
+     "ccccccccccccccccccccccccc",
      "c..cc.ccccccccccccc.cc..c",
      "c.....ccccccccccccc.cc..c",
-     "c.....ccccccccccccc.cc..c",
+     "c.....ccccccccccccc.cc.Nc",
      "c..cc.ccccccccccccc.cc..c",
-     "c..cc...............cc..c",
+     "cN.cc.........N.....cc..c",
      "c..cccccc.......cccccc..c",
      "c..cccccc..ccc..cccccc..c",
      "c......ccccccccccc......c",
      "c......ccccccccccc......c",
      "ccccc...............ccccc",
-     "ccccc.......^.......ccccc",
+     "ccccc..N....^.......ccccc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -192662,8 +192671,53 @@
        128,
        160
       ]
+     },
+     "_picture": {
+      "f": "pt_ground/C05R1103.png",
+      "at": [
+       17,
+       1
+      ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Visual coach",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "For the Visual round, dress your Pokemon up nicely with Accessories."
+       ]
+      }
+     },
+     {
+      "text": "Dance coach",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "In the Dance round, your Pokemon must copy the lead dancer's moves exactly."
+       ]
+      }
+     },
+     {
+      "text": "Acting coach",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "For the Acting round, the right moves at the right time win the Judges over."
+       ]
+      }
+     },
+     {
+      "text": "Cool fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "At a Cool Contest, you need a cool move to impress the Judges!"
+       ]
+      }
+     }
+    ]
    },
    "amity_3": {
     "theme": "room",

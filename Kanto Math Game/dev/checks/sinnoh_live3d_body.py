@@ -35,8 +35,8 @@ for _k in ("JUBILIFE_CITY", "OREBURGH_CITY", "FLOAROMA_TOWN"):
 ROUTES += ("SINNOH_ROUTE_202", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_MINE", "SINNOH_ROUTE_204", "RAVAGED_PATH",
            "FLOAROMA_MEADOW", "SINNOH_ROUTE_205", "VALLEY_WINDWORKS", "ETERNA_FOREST", "ETERNA_FOREST_OUTSKIRTS")
 # S3 (11-23): Eterna to Solaceon. Flat for now: Eterna's two houses with no Platinum room (house_0601/0701), the Contest Hall
-# 2F (no ground picture). Hearthome's Gym: its four Platinum rooms, live (s_s3_hearthome_gym.py)
-FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701"), ("HEARTHOME_CITY", "contest_2f")}
+# (2F: since 11-24). Hearthome's Gym: its four Platinum rooms, live (s_s3_hearthome_gym.py)
+FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701")}   # (the Contest Hall 2F has its picture since 11-24)
 for _k in ("ETERNA_CITY", "HEARTHOME_CITY", "SOLACEON_TOWN"):
     PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
 KNOWN_JUMPS = {}   # ((area, floor): (steps, why)): level jumps left open on the roadmap. S3's three fixed 11-23: Route 210's

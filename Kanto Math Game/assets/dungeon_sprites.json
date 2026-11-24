@@ -76,6 +76,11 @@
     ]
   },
   "figures": {
+    "HEARTHOME_CITY:Cool fan": {"sheet": "pt_fighter.png"},
+    "HEARTHOME_CITY:Acting coach": {"sheet": "pt_woman2.png"},
+    "HEARTHOME_CITY:Dance coach": {"sheet": "pt_idol.png"},
+    "HEARTHOME_CITY:Visual coach": {"sheet": "pt_mount.png"},
+    "ETERNA_CITY:Battle fan": {"sheet": "pt_boy1.png"},
     "SINNOH_ROUTE_206:Gardener girl": {"sheet": "pt_girl2.png"},
     "SINNOH_ROUTE_206:Cyclist ": {"sheet": "pt_shopm1.png"},
     "SINNOH_ROUTE_206:Cyclist": {"sheet": "pt_shopm1.png"},
