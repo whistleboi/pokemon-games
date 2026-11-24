@@ -2915,7 +2915,8 @@ _twice = [k for k, n in _leaders.items() if n in [o.get("text") for o in _area[k
 check(not _twice, f"no Gym Leader stands in town handing out their Gym TM a second time {_twice}")
 _r129 = _tm2["HOENN_ROUTE_129"]
 _r129 = _r129["floors"][0] if _r129.get("floors") else _r129
-check({"Scuba Diver Colten", "Free Diver Coral"} <= set(_r129.get("trainer_spots") or []), "Route 129: Colten and Coral have spots on the water")
+_r129_all = [n for f in (_tm2["HOENN_ROUTE_129"].get("floors") or [_tm2["HOENN_ROUTE_129"]]) for n in (f.get("trainer_spots") or [])]
+check({"Scuba Diver Colten", "Free Diver Coral"} <= set(_r129_all), "Route 129: Colten and Coral have spots (H6: on the seabed)")
 st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
 st.scenes.entered = True
 _press(st, (6, 9), (0, 1))
@@ -3249,6 +3250,45 @@ _th_step(st, (4, 13), (0, 1)); frames(2)
 check(_was == (True, False) and (_d6((1, 4)), _d6((1, 7))) == (False, True), "Trick House puzzle 6: a floor switch flips Emerald's red and blue doors")
 story.story_flags.clear(); story.story_flags.update(_f6); story.inventory.clear(); story.inventory.update(_i6)
 story.badges.clear(); story.badges.update(_b6)
+
+# H6 (11-24): the seabeds of Routes 107, 129 and 130 (ORAS's own size, Emerald's tiles; town_maps/hoenn_canon.py _seabeds)
+_tm6 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_inv6 = dict(story.inventory)
+story.inventory["HM_DIVE"] = 1
+_in6 = lambda p, r: r[0] <= p[0] <= r[2] and r[1] <= p[1] <= r[3]
+for _k6, _came6 in (("HOENN_ROUTE_107", "DEWFORD_TOWN"), ("HOENN_ROUTE_129", "HOENN_ROUTE_128"), ("HOENN_ROUTE_130", "HOENN_ROUTE_129")):
+    _sea6, _bed6 = _tm6[_k6]["floors"]
+    st = open_map(_k6, _came6); _calm(st)
+    _lk6 = _sea6["dive_links"][0]
+    _t6 = sorted(t for t in st.run.floor.deep if _in6(t, _lk6["up"]))[0]
+    st.run.player, st.anim = _t6, 0
+    st.dive_here(); frames(2)
+    _down6 = tuple(st.run.player)
+    _ok_down = st.run.index == 1 and _down6 in st.run.floor.deep and _in6(_down6, _lk6["down"])
+    _calm(st)
+    _plain6 = next((x, y) for y, r in enumerate(_bed6["art"]) for x, c in enumerate(r) if c == "." and st.run.floor.walkable(x, y))
+    st.run.player = _plain6
+    _no_btn = not ((st._act_here() or ("",))[0] == "SURFACE")
+    st.surface_here(); frames(1)
+    _stayed = st.run.index == 1
+    st.run.player = _down6
+    st.surface_here(); frames(2)
+    check(_ok_down and _no_btn and _stayed and st.run.index == 0 and _in6(tuple(st.run.player), _lk6["up"])
+          and len(_bed6["hidden"]) >= 2 and _bed6.get("pool") == "HOENN_SEABED_SEAWEED_PERCENTAGES",
+          f"{_k6}: Dive from a dark patch to its own sunlit patch {_down6}, no coming up off the sunlit tiles, back up in the patch {st.run.player}")
+st = open_map("HOENN_ROUTE_129", "HOENN_ROUTE_128")
+st.run.jump_floor(1, (1, 25)); _calm(st)
+_row6 = next(y for y in range(13, 38) if _tm6["HOENN_ROUTE_129"]["floors"][1]["art"][y][0] == "<" and st.run.floor.walkable(1, y) and not st.run.floor.mover_at(1, y))
+st.run.player, st.anim = (1, _row6), 0
+st.step(-1, 0)
+for _ in range(400):
+    g.current_state.update()
+    if g.current_state is not st and getattr(g.current_state, "area_key", None) == "HOENN_ROUTE_130":
+        break
+frames(2)
+check(getattr(g.current_state, "area_key", None) == "HOENN_ROUTE_130" and g.current_state.run.index == 1,
+      f"Route 129's seabed runs on into Route 130's: you stay on the seabed ({getattr(g.current_state, 'area_key', None)})")
+story.inventory.clear(); story.inventory.update(_inv6)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
