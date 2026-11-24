@@ -246,7 +246,7 @@ def _here(area, came, names):
     return found
 
 
-F["beat_orre_champion"] = True
+F["orre_part2"] = True   # (story rework 11-24: Evice beaten ends Part 1; Reath and Ferma come back in Part 2)
 F.pop("orre_mirakle_b", None)
 seen = _here("PYRITE_CAVE", "PYRITE_TOWN", {"Cipher Peon Mirakle B.", "Miror B. Peon Reath", "Miror B. Peon Ferma"})
 check(seen == {"Miror B. Peon Reath", "Miror B. Peon Ferma"}, f"after Evice: Reath and Ferma in his place, not Mirakle B. ({sorted(seen)})")
@@ -254,7 +254,7 @@ for who, flag in (("Miror B. Peon Reath", "orre_cave_reath"), ("Miror B. Peon Fe
     route("PYRITE_CAVE", "PYRITE_TOWN")
     meet(g.current_state, who)
     check(F.get(flag), f"{who}'s rematch")
-F.pop("beat_orre_champion", None)
+F.pop("orre_part2", None)
 
 print("3) Back in Pyrite: Plusle, Fateen, the ride north")
 t = town("PYRITE_TOWN", "PYRITE_CAVE")

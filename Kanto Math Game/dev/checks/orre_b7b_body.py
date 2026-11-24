@@ -212,10 +212,10 @@ gym = SP["REALGAM_TOWER"]["gym"]
 check([t["name"] for t in gym["trainers"]] == ["Bodybuilder Jomas", "Rider Delan", "Cipher Peon Nella", "Cipher Peon Ston", "Cipher Nascour"],
       "four matches (Jomas, Delan, Nella, Ston), then Nascour")
 ld = gym["leader"]
-check(ld["name"] == "Cipher Head Evice" and max(ld["levels"]) == 68 and ld["team"][0] == TR["col:439"]["team"][0] and ld.get("victory_flag") == "beat_orre_champion",
-      f"Evice last, raised (ace {max(ld['levels'])}), his Shadow Tyranitar leading")
+check(ld["name"] == "Cipher Head Evice" and max(ld["levels"]) == 37 and ld["team"][0] == TR["col:439"]["team"][0] and ld.get("victory_flag") == "orre_evice_beaten",
+      f"Evice last (ace {max(ld['levels'])}, Part 1's end - story rework 11-24), his Shadow Tyranitar leading")
 check(gym["requirements"].get("flag") == "col_gonzap_realgam", "the rooftop opens once Gonzap's beaten inside")
-check(max(gym["trainers"][-1]["levels"]) == 67 and min(min(t["levels"]) for t in gym["trainers"][:4]) >= 59, "raised to fit: the matches ~60-65, Nascour 67")
+check(max(gym["trainers"][-1]["levels"]) == 36 and min(min(t["levels"]) for t in gym["trainers"][:4]) >= 34, "the matches at Lv 34-35, Nascour 36 (Part 1's stage, L1 11-24)")
 
 print("2) The lobby")
 t = town("REALGAM_TOWER", "PHENAC_CITY")
@@ -323,92 +323,10 @@ frames(2)
 t = g.current_state
 check(up not in t.barred, "the lobby's door to the roof opens too")
 
-print("6) Cipher's Colosseum: no healing between, Nascour, Evice, the Hall of Fame")
-from src.states.overworld import GymLobbyState
-from src.states.hall_of_fame import HallOfFameState, records as _hof_records
-story.current_area_key = "REALGAM_TOWER"
-F["gym_challenge_done_REALGAM_TOWER"] = True
-F["gym_progress_REALGAM_TOWER"] = 0
-for q in story.player_team:
-    q.heal_full()
-n0 = len(_hof_records(g))
-_hofs = []
-_real_hof_init = HallOfFameState.__init__
-
-
-def _spy_hof(self, *a, **k):   # (the Hall of Fame can play through inside a battle's wrap-up: note it as it opens)
-    _real_hof_init(self, *a, **k)
-    _hofs.append(self)
-
-
-HallOfFameState.__init__ = _spy_hof
-names, hurt_kept, hof = [], None, None
-_is_battle = lambda s_: hasattr(s_, "math_ui") and hasattr(s_, "phase")
-for match in range(8):
-    g.transitioning = False
-    lobby = GymLobbyState(g, None)
-    g.change_state(lobby)
-    print("   match", match + 1, lobby.status_text, flush=True)
-    lobby.challenge_gym()
-    fought = False
-    for _ in range(400):
-        s_ = g.current_state
-        if isinstance(s_, HallOfFameState):
-            hof = s_
-            break
-        if type(s_).__name__ == "TrainerIntroState":   # (the trainer's intro: past the challenge line, the send-outs play)
-            if s_.phase == "CHALLENGE":
-                _note(s_)
-                s_.on_dialogue_finish()
-            else:
-                s_.dialogue_box.is_finished = True
-                s_.update(); s_.draw()
-            continue
-        if _is_battle(s_):
-            if not fought:
-                names.append(getattr(s_, "trainer_name", "?"))
-                if match == 1:
-                    hurt_kept = story.player_team[2].current_hp
-            fought = True
-            play(4000)   # (the battle to its end: snags, a fainted one's switch, the outro)
-            continue
-        if fought and isinstance(s_, GymLobbyState):
-            break
-        if type(s_).__name__ == "EvolutionState":
-            s_.evolve_no()
-            continue
-        play(20)
-        if fought and not _is_battle(g.current_state) and type(g.current_state).__name__ not in ("TrainerIntroState", "HallOfFameState", "EvolutionState"):
-            break
-    if hof is not None or F.get("beat_orre_champion"):
-        break
-    if match == 0:
-        story.player_team[2].current_hp = max(1, story.player_team[2].get_max_hp() // 3)   # (hurt after the first match)
-    elif match >= 1:   # (once it's shown the game doesn't heal: the Bag between matches, as a player would - Full Restores, Elixirs)
-        for q in story.player_team:
-            if q:
-                q.heal_full()
-                q.pp = {}
-print("   matches:", names, type(g.current_state).__name__)
-HallOfFameState.__init__ = _real_hof_init
-F = story.story_flags
-if hof is None and _hofs:
-    hof = _hofs[-1]
-print("   end:", type(g.current_state).__name__, story.current_area_key, F.get("beat_orre_champion"), len(_hof_records(g)) - n0)
-check(hurt_kept is not None and hurt_kept < story.player_team[2].get_max_hp(), f"no healing between the matches (hp kept {hurt_kept})")
-check(F.get("beat_orre_champion"), f"all six beaten in a row: Evice is beaten ({names})")
-if hof is None and isinstance(g.current_state, HallOfFameState):
-    hof = g.current_state
-check(hof is not None and hof.region == "ORRE" and hof._hall_picture(1280, 720) is not None,
-      "the Hall of Fame follows, in front of Realgam's rooftop arena")
-if hof is not None:
-    out = []
-    for _ in range(4000):
-        if g.current_state is not hof:
-            break
-        hof.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
-        hof.update(); hof.draw()
-check(len(_hof_records(g)) == n0 + 1 and _hof_records(g)[-1].get("region") == "ORRE", "the team saved in the Hall of Fame's records")
+# (6, the old Gym lobby screen's run - Evice as Champion, the Hall of Fame - retired 11-24: Orre's tournaments are walked
+#  (R2 below plays Evice's run, which ends Part 1), and the League's Hall of Fame and title are the end of the Orre
+#  playthrough's story: dev/checks/orre_playthrough_body.py, goal beat_orre_champion)
+from src.world import gym_swaps as _gsw
 
 print("7) The Journal")
 jm = [m_["id"] for m_ in g.loader.area_data["JOURNAL_MISSIONS"] if m_["id"].startswith("orre_m")]
@@ -416,7 +334,7 @@ check(jm.index("orre_m17c") < jm.index("orre_m18") < jm.index("orre_m18b") < jm.
       "Gorigan, the four keys, inside the tower, Cipher's Colosseum")
 
 
-print("R2) Cipher's Colosseum walked (11-23): the host starts the run, the six walk in one by one, Evice, the Hall of Fame")
+print("R2) Cipher's Colosseum walked (11-23): the host starts the run, the six walk in one by one, Evice - Part 1's end")
 from src.pokemon.data import Pokemon as _TP
 from src.world import levels as _tlv
 F = story.story_flags
@@ -425,11 +343,13 @@ _t = []
 for pid in (248, 6, 9, 3, 65, 149):
     p_ = _TP(g.loader.fetch_specific(pid), g.assets, size_mult=2.5); _tlv.set_team([p_], [100], exact=True); p_.heal_full(); _t.append(p_)
 story.player_team = _t
-F.update({"col_gonzap_realgam": True, "xd_gorigan_beaten": True})
-F.pop("beat_orre_champion", None)
+F.update({"col_gonzap_realgam": True})
+for k_ in ("beat_orre_champion", "orre_evice_beaten", "orre_part2"):
+    F.pop(k_, None)
+_gsw.apply(g)
 for k_ in [k_ for k_ in F if k_.startswith(("gym_progress_REALGAM", "orre_tourney"))]:
     F.pop(k_, None)
-story.badges["ORRE"] = ["PYRITE", "UNDER", "PHENAC", "ORRE"]
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM"]
 t = town("REALGAM_TOWER", "PHENAC_CITY"); t._go("realgam", "OUT:31,7"); frames(2)
 t._go("colosseum", "ROOM:realgam"); frames(3)
 _heard = []
@@ -445,23 +365,24 @@ for _try in range(4):   # (a lost run starts over: sign up again, as a player wo
     for _ in range(12):
         play(4000)
         _heard += said
-        if story.story_flags.get("beat_orre_champion") or type(g.current_state).__name__ == "HallOfFameState" or not story.story_flags.get("orre_tourney_REALGAM_TOWER"):
+        if story.story_flags.get("orre_evice_beaten") or not story.story_flags.get("orre_tourney_REALGAM_TOWER"):
             break
-    if story.story_flags.get("beat_orre_champion") or type(g.current_state).__name__ == "HallOfFameState":
+    if story.story_flags.get("orre_evice_beaten"):
         break
 _calls = list(dict.fromkeys(h_ for h_ in _heard if "takes the field" in h_))
 check(len(_calls) == 6 and "Evice" in _calls[-1], f"six walk in, Evice last ({len(_calls)})")
-check(story.story_flags.get("beat_orre_champion") or story.is_region_champion("ORRE") or type(g.current_state).__name__ == "HallOfFameState",
-      f"Evice beaten: Orre's Champion, the Hall of Fame ({type(g.current_state).__name__})")
+check(story.story_flags.get("orre_evice_beaten") and not story.story_flags.get("beat_orre_champion"),
+      f"Evice beaten: Part 1's end, not the title ({type(g.current_state).__name__})")
 from src.world import orre_tournament as _ot
 _was = story.current_area_key
 story.current_area_key = "REALGAM_TOWER"
-check(_ot.condition(story, "won") and not _ot.condition(story, "lost"),
-      f"back on the tower top later, the run closes as won, not lost (count {story.story_flags.get('gym_progress_REALGAM_TOWER')}, "
+check(not _ot.condition(story, "on") and not _ot.condition(story, "lost"),
+      f"back on the tower top later, the run is closed (the five-year skip ends it), not lost (count {story.story_flags.get('gym_progress_REALGAM_TOWER')}, "
       f"battle {story.story_flags.get('orre_tourney_fight_REALGAM_TOWER')})")
 story.current_area_key = _was
 story.player_team, _f, story.badges = _keep[0], _keep[1], _keep[2]
 F.clear(); F.update(_f)
+_gsw.apply(g)
 
 print("FAILURES:", len(fails))
 for f_ in fails:
