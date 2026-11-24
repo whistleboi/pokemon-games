@@ -128,8 +128,11 @@ for _area, _region in (("PALLET_TOWN", "KANTO"), ("CIANWOOD_CITY", "JOHTO"), ("P
           f"{_area}: surfing Pokemon from {_from}'s table ({sorted(_pool, key=lambda k: -_pool[k])[:4]}), e.g. {_mon.display_name if _mon else None} Lv {_mon.level if _mon else '-'}")
 # a battle starts on the water, then you're back in the town where you were
 st = town("MOSSDEEP_CITY", "HOENN")
-_sea = [(x, y) for y in range(2, st.h - 2) for x in range(2, st.w - 2) if st.rows[y][x] == "o" and st.rows[y][x + 1] == "o"]
 story.inventory["HM_SURF"] = 1
+_hb = list(story.badges.get("HOENN", []))   # (11-24: Hoenn's HMs need ORAS's badge on the map too - Surf, the Balance Badge)
+story.badges["HOENN"] = list(dict.fromkeys(_hb + ["BALANCE"]))
+_sea = [(x, y) for y in range(2, st.h - 2) for x in range(2, st.w - 2)   # (open sea all round, and a step east you can take)
+        if all(st.rows[y + dy][x + dx] == "o" for dx in (-1, 0, 1) for dy in (-1, 0, 1)) and st._open((x + 1, y)) and (x + 1, y) not in st.exits]
 st.player = st.anim_from = _sea[0]; st.anim = 0
 _keep = st.SURF_RATE
 type(st).SURF_RATE = 1.0
