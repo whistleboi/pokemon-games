@@ -400,6 +400,30 @@ def _agate(maps):
     _set_people(m, {(52, 22): SKOF, (70, 27): DURY, (60, 27): QUICK_CLAW, (37, 28): EIN_FILE_C})
     m["barred"] = list(m.get("barred") or []) + [CAVE_GUARD]
     _set_people(m["rooms"]["elder"], {(3, 5): BELUH})
+    _agate_garden(m["rooms"]["gym"])
+
+
+# The Agate Gym's number garden (Jordan 11-24, questions/ORRE.md 6 - "our own puzzle", not the fan game's mirrors): three
+# gardens in the hall; walk over beds whose numbers make each garden's target (too much and its vines grow back); all three
+# in bloom and Blaine burns the vines off the way in to the Leaders (src/world/number_garden.py). Targets up to about 30.
+AGATE_GARDENS = {"flag": "agate_garden_done", "gardens": [
+    {"target": 10, "label": [2, 5], "beds": {"2,6": 2, "3,6": 7, "4,6": 4, "2,7": 6, "3,7": 3, "4,7": 5}},
+    {"target": 18, "label": [9, 6], "beds": {"9,7": 8, "10,7": 3, "11,7": 6, "9,8": 4, "10,8": 9, "11,8": 5}},
+    {"target": 27, "label": [16, 2], "beds": {"16,3": 9, "17,3": 5, "18,3": 12, "16,4": 7, "17,4": 8, "18,4": 6}}],
+    "done": ["Every garden in the hall is in full bloom!",
+             "Blaine: Hah! Not bad at all. Erika's flowers like you - so I'll clear the way.",
+             "Blaine burns the vines off the door to the inner garden!"]}
+AGATE_VINES = {"tiles": [[21, 7]], "flag": "agate_garden_done", "look": "img:orre_garden/vines.png",
+               "lines": ["Thick vines cover the door. Erika's sign says the gardens must bloom first."]}
+AGATE_SIGNS = [["AGATE GYM - Leaders: Blaine and Erika", "Walk over a garden's flower beds: each one you step on blooms and adds its number.",
+                "Make the garden's number exactly and it stays in bloom. Go over, and the vines grow back!"],
+               ["AGATE GYM", "Three gardens in bloom, and the way to the Leaders opens."]]
+
+
+def _agate_garden(room):
+    room["gardens"] = AGATE_GARDENS
+    room["barred"] = list(room.get("barred") or []) + [AGATE_VINES]
+    room["signs"] = [list(x) for x in AGATE_SIGNS[:len(room.get("signs") or [])]]
 
 
 OLD_SAVE = "not:got_snag_machine"   # (a save already past this stretch: none of it plays again)
@@ -573,34 +597,24 @@ def _xd5a(maps):
 # ------------------------------------------------------------------ 11-24: Gateon's islands (XD's Bridge System) and the lighthouse Gym
 # Jordan 11-24 (review/gateon_islands_plan.png in kanto_handoff/orre_map_tools): six movable bridges, raised till Makan fixes
 # them (xd_gateon_bridges); Cyle on the north island (XD's cliff), Kilen on the lighthouse roof (XD's). The fan game's
-# lighthouse Gym kept ("keep the gym"): after the title, three guardians by each floor's stairs, then Jasmine on the roof -
-# her team the fan game's own (Lv 55 there, its rematch Lv 70 here: after the title), Gen 3 moves and items; the Mineral
-# Badge a keepsake (Orre's badges stay the four tournaments'); her prize HGSS Jasmine's TM, Iron Tail.
+# lighthouse Gym kept ("keep the gym"): three guardians by each floor's stairs, then Jasmine on the roof. S3 (11-24): it is
+# badge 5, the Gateon Badge, in Part 2 (Lv 36-41, Kanto's caps); her prize HGSS Jasmine's TM, Iron Tail.
 GATEON_BRIDGES = [(37, 22, 40, 23), (23, 22, 26, 23), (31, 18, 32, 21), (17, 18, 18, 21), (31, 25, 32, 28), (17, 28, 18, 31)]   # (towns.py "bridges")
 
 
-def _guardian(name, pid, flag):
-    return {"text": f"Lighthouse {name}", "action": "BOSS", "color": "RED", "condition": "orre_part2",   # (S3 sets the Gym's place: badge 5)
+def _guardian(name, pid, flag, level):
+    return {"text": f"Lighthouse {name}", "action": "BOSS", "color": "RED", "condition": "orre_part2",   # (S3: the Gym of badge 5)
             "flag_condition": f"not {flag}",
-            "boss": {"id": pid, "name": name, "level": 65, "victory_flag": flag,
+            "boss": {"id": pid, "name": name, "level": level, "victory_flag": flag,
                      "lines": [f"{name} crackles with stored power. It guards the stairs!"]}}
 
 
-JASMINE_TEAM = [208, 227, 212, 376, 82, 101]   # Steelix, Skarmory, Scizor, Metagross, Magneton, Electrode (the fan game's)
 JASMINE = {"text": "Gym Leader Jasmine", "action": "EVENT", "color": "GOLD", "condition": "orre_part2", "event": {"stages": [
-    {"requires": ["gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"], "flag": "gateon_jasmine_beaten",
+    # (S3, 11-24: badge 5 - her team, prize and badge are GATEON_PORT's "gym" in orre_area_data.json; src/world/orre_gym.py runs
+    #  the Gym's math game, then her battle; the three guardians first, as the fan game has it)
+    {"requires": ["gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"],
      "fail": ["Jasmine: The lighthouse's Pokemon guard the stairs for me. Get past all three, then we'll battle."],
-     "lines": ["Jasmine: ...You got past all three of the lighthouse's Pokemon? Then you've earned a battle.",
-               "Jasmine: I came to Orre to see its Colosseums. Steel types don't bend - let's see if you do."],
-     "battle": _battle("Gym Leader Jasmine", "LEADER", "jasmine.png", JASMINE_TEAM, [70] * 6,
-                       [["ROCK-SLIDE", "EXPLOSION", "EARTHQUAKE", "IRON-TAIL"], ["SPIKES", "DRILL-PECK", "TOXIC", "PROTECT"],
-                        ["METAL-CLAW", "SILVER-WIND", "BRICK-BREAK", "SWORDS-DANCE"], ["METEOR-MASH", "EARTHQUAKE", "EXPLOSION", "ROCK-SLIDE"],
-                        ["THUNDERBOLT", "THUNDER-WAVE", "TOXIC", "PROTECT"], ["THUNDERBOLT", "EXPLOSION", "THUNDER-WAVE", "LIGHT-SCREEN"]],
-                       team_items=["QUICK_CLAW", "LEFTOVERS", "SCOPE_LENS", "FOCUS_BAND", "LEFTOVERS", "SCOPE_LENS"],
-                       rewards={"balls": 0, "TM265": 1},
-                       dialogue={"player_won": ["Jasmine: ...You're stronger than steel. Here - the Mineral Badge.",
-                                                "Jasmine: It means nothing to Orre's League, but it means something to me. And take this TM: Iron Tail."]})}],
-    "done": ["Jasmine: The lighthouse light reaches past Citadark on a clear night. I'll keep it burning."]}}
+     "world": "orre_gym"}]}}
 KILEN_ROOF = _fight("Bodybuilder Kilen", "xd:Story:14", "xd_gateon_kilen",
                     "Bodybuilder Kilen: Up here every day while the bridge was out... and you finally climbed up. Fight!",
                     "Bodybuilder Kilen: Lost to a kid. Back to my push-ups.", condition="xd_gateon_bridges")
@@ -626,9 +640,9 @@ def _gateon_islands(maps):
                              "lines": ["The movable bridge is raised. It's been stuck like that for ages."]})
     m["barred"] = bars
     r = m["rooms"]
-    _by_text(r["lighthouse"], "Lighthouse Electabuzz", _guardian("Electabuzz", 125, "gateon_lh_electabuzz"))
-    _by_text(r["lighthouse_2f"], "Lighthouse Electrode", _guardian("Electrode", 101, "gateon_lh_electrode"))
-    _by_text(r["lighthouse_3f"], "Lighthouse Ampharos", _guardian("Ampharos", 181, "gateon_lh_ampharos"))
+    _by_text(r["lighthouse"], "Lighthouse Electabuzz", _guardian("Electabuzz", 125, "gateon_lh_electabuzz", 36))
+    _by_text(r["lighthouse_2f"], "Lighthouse Electrode", _guardian("Electrode", 101, "gateon_lh_electrode", 37))
+    _by_text(r["lighthouse_3f"], "Lighthouse Ampharos", _guardian("Ampharos", 181, "gateon_lh_ampharos", 38))
     _by_text(r["lighthouse_roof"], "Gym Leader Jasmine", JASMINE)
     _by_text(r["lighthouse_roof"], "Bodybuilder Kilen", KILEN_ROOF)
 
@@ -730,13 +744,13 @@ def _xd5b(maps):
 
 
 # ================================================================== batch 6: Phenac in Cipher's hands; the Outskirt Stand (BATCH_6.md)
-# XD part 4 with Wes, after the S.S. Libra: Cipher's peons wear the townsfolk's faces. The gate lady's Battle CDs; the Music Disc
+# XD part 4 with Wes, after ONBS (S4: the S.S. Libra optional): Cipher's peons wear the townsfolk's faces. The gate lady's Battle CDs; the Music Disc
 # for the mayor's secretary (a peon) and Es Cade's note to Justy (Jordan 11-21: Es Cade "missing", no Trest); the six Justy
 # impersonators (the Hexagon Brothers) with their CDs; Ertlig on the way to the stadium; the stadium's ambush and Snattle's
 # lackey. XD part 5: Miror B., Hordel's Shadow Togepi and Willie at the Outskirt Stand. XD's teams +28 (Snattle's ace 56).
-TAKEOVER = ["xd_bonsly_found", "not:orre_snattle_phenac"]
+TAKEOVER = ["xd_exol_beaten", "not:orre_snattle_phenac"]   # (S4, 11-24: from Exol's defeat - the S.S. Libra is optional)
 MUSIC_MAN = {"text": "Music lover", "action": "EVENT", "event": {"stages": [
-    {"requires": ["xd_bonsly_found", "not:xd_music_disc"], "flag": "xd_music_disc", "gift_item": {"MUSIC_DISC": 1},
+    {"requires": ["xd_exol_beaten", "not:xd_music_disc"], "flag": "xd_music_disc", "gift_item": {"MUSIC_DISC": 1},
      "lines": ["Music lover: The mayor's secretary wants music? Here, take this Music Disc. Phenac's been so quiet lately."]}],
     "done": ["Music lover: Music makes everything better. Even whatever's going on in this town."]}}
 SECRETARY = {"text": "Mayor's secretary", "action": "EVENT", "condition": TAKEOVER, "flag_condition": "not xd_secretary",
@@ -751,7 +765,7 @@ SECRETARY = {"text": "Mayor's secretary", "action": "EVENT", "condition": TAKEOV
                   "battle": T("xd:Story:91", dialogue={"player_won": ["Cipher Peon Pellim: My disguise... Fenton, get the kid!"]})}]}}
 FENTON = _fight("Cipher Peon Fenton", "xd:Story:92", "xd_fenton", "Cipher Peon Fenton: Nobody leaves the mayor's house!",
                 "Cipher Peon Fenton: Ugh. The Justys will get you!", condition=["xd_secretary", "not:orre_snattle_phenac"])
-GATE_LADY = {"text": "Gate lady", "action": "EVENT", "condition": "xd_bonsly_found", "event": {"stages": [
+GATE_LADY = {"text": "Gate lady", "action": "EVENT", "condition": "xd_exol_beaten", "event": {"stages": [
     {"requires": ["not:xd_gate_cds"], "flag": "xd_gate_cds", "gift_item": {"BATTLE_CD_01": 1, "BATTLE_CD_07": 1, "BATTLE_CD_20": 1},
      "lines": ["Gate lady: Welcome to Phenac! Everything is perfectly normal here. Have some Battle CDs. Go to Realgam Tower and play them!",
                "You got Battle CDs 01, 07 and 20!"]}],
@@ -1281,11 +1295,11 @@ def _walk_sheet(sprite, cls):
     return t.get(sprite) or (d.get("trainers") or {}).get(sprite) or         {"GYM_LEADER": "orre_trainer_cooltrainer_m.png", "CHAMPION": "orre_trainer_ace_trainer.png"}.get(cls) or "orre_trainer_ace_trainer.png"
 
 
-def _gym_of(area):
+def _gym_of(area, key="gym"):
     import json as _j
     import os as _o
     try:
-        return (_j.load(open(_o.path.join("assets", "orre_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"].get(area) or {}).get("gym") or {}
+        return (_j.load(open(_o.path.join("assets", "orre_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"].get(area) or {}).get(key) or {}
     except (OSError, ValueError, KeyError):
         return {}
 
@@ -1321,15 +1335,22 @@ def _tournament(maps):
                            "lines": [f"Receptionist: Welcome to {name}! You're entered. Win every round to take the title.",
                                      "Receptionist: This way to the arena, please. Good luck!"],
                            "champion": [f"Receptionist: Our champion! {name} is yours. Come back any time."]}}}})
-        gym = _gym_of(area)
-        rounds = list(gym.get("trainers") or []) + ([gym["leader"]] if gym.get("leader") else [])
         back = [door[0], door[1]]
         scenes = list(ar.get("scenes") or [])
-        for k, t in enumerate(rounds):
+        # (S5, 11-24: Realgam's arena holds Evice's run in Part 1 and the Orre League in Part 2 - src/world/gym_swaps.py - each
+        #  with its own walk-ins)
+        variants = [(_gym_of(area), [])] if area != "REALGAM_TOWER" else             [(_gym_of(area), ["world:orre_skip:part1"]), (_gym_of(area, "gym_league"), ["world:orre_skip:part2"])]
+        for gym, part in variants:
+          rounds = list(gym.get("trainers") or []) + ([gym["leader"]] if gym.get("leader") else [])
+          league = part == ["world:orre_skip:part2"]
+          for k, t in enumerate(rounds):
             last = k == len(rounds) - 1
             who = t.get("name", "Your opponent")
-            call = [f"Referee: The final! {who} takes the field!"] if last else [f"Referee: Round {k + 1}! {who} takes the field!"]
-            scenes.append({"trigger": "enter", "condition": [f"world:orre_tournament:round:{k}"], "call": call,
+            if league:
+                call = [f"Host: The Champion of Orre! {who} takes the field!"] if last else [f"Host: Elite Four battle {k + 1}! {who} takes the field!"]
+            else:
+                call = [f"Referee: The final! {who} takes the field!"] if last else [f"Referee: Round {k + 1}! {who} takes the field!"]
+            scenes.append({"trigger": "enter", "condition": [f"world:orre_tournament:round:{k}"] + part, "call": call,
                            "cast": [{"sheet": _walk_sheet(t.get("sprite"), t.get("class")), "from": back, "to": list(foe),
                                      "face": "d", "stay": True,
                                      "lines": list((t.get("dialogue") or {}).get("intro") or [f"{who}: Let's battle!"])[:1],
@@ -1345,6 +1366,11 @@ def _tournament(maps):
             o = _is_gym_option(area, text)
             r = {"text": text, "action": "EVENT", "event": dict(referee)}
             r.update({k: o[k] for k in ("condition", "flag_condition", "color") if o and k in o})
+            if text.endswith("Orre League") and r["event"].get("signup"):   # (S5: the League's host, Part 2)
+                r["event"]["signup"] = dict(r["event"]["signup"], lines=[
+                    "Host: Welcome to the Orre League! Four of Orre's strongest, one after another - then the Champion.",
+                    "Host: No rest between battles, and no turning back. Take your place!"],
+                    champion=["Host: Our Champion! The Elite Four are always glad of a rematch."])
             return r
         for i, p in enumerate(ar.get("people") or []):
             if isinstance(p, str) and _is_gym_option(area, p):
@@ -1359,9 +1385,12 @@ def _tournament(maps):
             lost["room"] = [lobby, desk[0], desk[1] + 1]
         scenes.append(lost)
         if area == "REALGAM_TOWER":   # (story rework S1, 11-24: Evice ends Part 1 - the five-year time skip, src/world/orre_skip.py)
-            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
+            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won", "world:orre_skip:part1"], "cast": [],
                            "call": ["The roof of Realgam Tower falls silent. Cipher's leader has fallen."],
                            "event": {"world": "orre_skip"}})
+            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won", "world:orre_skip:part2"], "cast": [],   # (S5)
+                           "call": ["Host: Ladies and gentlemen... the new Champion of Orre, {player_name}!", "The whole tower roars!"],
+                           "event": {"world": "orre_tournament", "done": True}})
         else:
             scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
                            "call": [f"Referee: The champion of {name}!", "The crowd roars!"],

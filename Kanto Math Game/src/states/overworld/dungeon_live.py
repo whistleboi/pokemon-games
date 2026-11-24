@@ -181,6 +181,12 @@ class RouteLive:
                 from src.states.overworld.dungeon import live_height
                 sprites.append((img, (fx + 0.5, h(fx, fy) + lift, sc.wz(fx, fy) + 0.55), live_height(img, LIVE_SPRITE)))   # (a person: one adult height, 11-23)
                 shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
+        for (x, y), what in f.decor.items():   # (Chargestone's stones: the game's model at each one's middle, as on the flat map)
+            if str(what).startswith("stone:") and str(what).split(":")[2] == f"{x},{y}" and (x, y) in f.seen:
+                from src.dungeon import art as _art_s
+                _got = _art_s._model(self._stone_model(int(str(what).split(":")[1])) or "")
+                if _got:
+                    put(_got[0], x, y)
         for (x, y), key in f.items.items():   # (an item lying about)
             if (x, y) in f.seen:
                 put(self._item_img(key) or self._ball_img(), x, y)
@@ -249,6 +255,7 @@ class RouteLive:
                 return pygame.Rect(-999, -999, TILE, TILE)
             return pygame.Rect(int(view.x + p[0] - TILE / 2), int(view.y + p[1] - TILE), TILE, TILE)
         screen.set_clip(view)
+        self._draw_cave_light(screen, at(*self.run.player).center)   # (a dark cave: a small light round you, till Flash)
         self._draw_tap_marks(screen, at)
         # the ways out: one sign over each road saying where it goes (as the flat map does)
         ways = {}

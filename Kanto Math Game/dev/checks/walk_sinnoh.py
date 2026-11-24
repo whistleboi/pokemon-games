@@ -9,14 +9,14 @@ R, S = "SINNOH", "TWINLEAF_TOWN"
 seen = report("start", S, set())
 steps = [
     ("met Roark", {"met_roark": True}, None),
-    ("COAL", {}, "COAL"),
+    ("COAL", {"got_hm_rock_smash_oreburgh_gate": True}, "COAL"),   # (the Oreburgh Gate hiker's Rock Smash, after the badge)
     ("Windworks", {"windworks_cleared": True}, None),
-    ("FOREST", {}, "FOREST"),
+    ("FOREST", {"received_hm_cut": True}, "FOREST"),   # (Cynthia's Cut, after the badge)
     ("Galactic Eterna", {"galactic_eterna_cleared": True}, None),
     ("COBBLE (Maylene)", {}, "COBBLE"),
     ("Galactic Warehouse (Dawn's tag battle, Looker)", {"sinnoh_dawn_warehouse_call": True, "sinnoh_warehouse_guards_beaten": True,
                                                        "galactic_warehouse_cleared": True}, None),   # (Platinum, S4 11-24)
-    ("FEN (Wake)", {}, "FEN"),
+    ("FEN (Wake)", {"got_hm_defog_solaceon_ruins_d07r0116_6_7": True}, "FEN"),   # (Defog lies in the Solaceon Ruins)
     ("Pastoria's bomb, the chase, Cynthia's SecretPotion", {"sinnoh_pastoria_bomb_warned": True, "sinnoh_pastoria_bomb": True,
                                                            "sinnoh_valor_grunt_beaten": True, "sinnoh_secretpotion": True}, None),
     ("Celestic: the Old Charm, Surf from the Elder", {"got_old_charm_r210": True, "sinnoh_celestic_grunt_beaten": True,
@@ -24,7 +24,7 @@ steps = [
     ("RELIC (Fantina, 4+ badges)", {}, "RELIC"),
     ("Iron Island", {"visited_IRON_ISLAND": True, "got_hm_strength_iron_island": True}, None),   # (Riley's Strength, Jordan 11-24)
     ("MINE (Byron)", {}, "MINE"),
-    ("ICICLE (Candice)", {}, "ICICLE"),
+    ("ICICLE (Candice)", {"got_hm_rock_climb_sinnoh_route_217_r217_8_49": True}, "ICICLE"),   # (Rock Climb: Route 217's ball)
     ("Galactic HQ", {"galactic_hq_cleared": True}, None),
     ("Spear Pillar", {"spear_pillar_resolved": True, "SPEAR_PILLAR_boss_defeated": True}, None),
     ("BEACON (Volkner)", {}, "BEACON"),
@@ -34,6 +34,10 @@ for title, flags, b in steps:
     story.story_flags.update(flags)
     if flags.get("got_hm_surf_celestic"):
         story.inventory["HM_SURF"] = 1   # (the Elder's gift, not a badge's)
+    for _f, _hm in (("got_hm_rock_smash_oreburgh_gate", "HM_ROCK_SMASH"), ("received_hm_cut", "HM_CUT"),
+                    ("got_hm_defog_solaceon_ruins_d07r0116_6_7", "HM_DEFOG"), ("got_hm_rock_climb_sinnoh_route_217_r217_8_49", "HM_ROCK_CLIMB")):   # (Platinum's givers, not the badges: 11-24 cleanup)
+        if flags.get(_f):
+            story.inventory[_hm] = 1
     if flags.get("got_hm_strength_iron_island"):
         story.inventory["HM_STRENGTH"] = 1   # (Riley's gift on Iron Island, not the Mine Badge's)
     if b:

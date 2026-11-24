@@ -348,6 +348,10 @@ def _run_story_event(state, key, check, show):
         for k in [k for k in story.story_flags if k.startswith(ev["flag"] + "@") and k != today]:
             story.story_flags.pop(k)   # (yesterday's picking forgotten: one flag a tree)
         ev = dict(ev, flag=today)
+    if isinstance(ev.get("trade"), dict) and not ev.get("flag"):   # (an in-game trade with no flag of its own: once, as in the games -
+        _tr = ev["trade"]                                            #  its own flag; the encyclopedia found nine repeatable, 11-24)
+        ev = dict(ev, flag=f"trade_done_{story.current_area_key}_{_tr.get('want')}_{_tr.get('give')}",
+                  done=ev.get("done") or ["Thanks again for the trade! I'm taking good care of it."])
     flag = ev.get("flag")
     if flag and story.story_flags.get(flag) and (ev.get("battle") or {}).get("rematch"):   # (the VS Seeker called it back: Dario, Rodette)
         from src.world import vs_seeker
@@ -580,7 +584,8 @@ def _run_story_event(state, key, check, show):
             show(_resolve_lines(game, ev.get("full") or ["You have no room in your party for it."]))
             return
         before = len(story.player_team)
-        lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level"), ev.get("gift_held")))
+        lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level"), ev.get("gift_held"),
+                                               ev.get("gift_ability"), bool(ev.get("gift_no_shiny"))))   # (a set Ability: Route 6's Deerling)
         gm = ev.get("gift_moves")   # {"if": flag, "moves": [...], "else": [...]}: the Dragon Shrine's Dratini (Extreme Speed or Leer)
         if gm and len(story.player_team) > before:
             mon = story.player_team[-1]

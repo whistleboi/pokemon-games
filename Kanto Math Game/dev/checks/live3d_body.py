@@ -324,6 +324,20 @@ check(t._live() and all(t._live()[0].surfaces(*p) for p in _op), "Virbank's nurs
 # 11-21 (Jordan: "Run the remaining castelia checks for the 45 earlier places, and remember those going forward")
 _high, _slow = [], []
 import time as _time
+
+
+def _frame_s(t):
+    """A place's frame time: one warm-up draw, then the best of three rounds of five (a spike of load on the machine
+    doesn't fail a place that is fast; a slow one is slow every round). Unova 11-24."""
+    t.draw()
+    best = None
+    for _ in range(3):
+        _t0 = _time.time()
+        for _ in range(5):
+            t.draw()
+        k = (_time.time() - _t0) / 5
+        best = k if best is None else min(best, k)
+    return best
 for _area, _m in _all.items():
     if not isinstance(_m, dict):
         continue
@@ -338,10 +352,7 @@ for _area, _m in _all.items():
             _nb = [t._live_height(*q) for q in ((_p[0] + 1, _p[1]), (_p[0] - 1, _p[1]), (_p[0], _p[1] + 1), (_p[0], _p[1] - 1)) if t._open(q)]
             if _nb and t._live_height(*_p) - max(_nb) > 1.5:
                 _high.append((_area, _rn, _p, round(t._live_height(*_p), 1)))
-        _t0 = _time.time()
-        for _ in range(10):
-            t.draw()
-        if (_time.time() - _t0) / 10 > 0.04:
+        if _frame_s(t) > 0.04:
             _slow.append((_area, _rn))
 check(not _high, f"nobody in Unova stands up on an awning, a roof or a counter ({_high[:4]})")
 check(not _slow, f"every live place draws a frame in under 40 ms ({_slow[:4]})")
@@ -440,10 +451,7 @@ for _area in ("UNOVA_ROUTE_19", "UNOVA_ROUTE_20", "PLEDGE_GROVE", "FLOCCESY_RANC
         _sky = float((_np.abs(_px - _np.array([150, 190, 235])).sum(2) < 12).mean())
         if _sky > 0.2:
             _rskyp = (_area, _c, round(_sky, 2)); _rsky.append(_rskyp)
-    _t0 = _time.time()
-    for _ in range(10):
-        t.draw()
-    if (_time.time() - _t0) / 10 > 0.04:
+    if _frame_s(t) > 0.04:
         _rslow.append(_area)
 check(not _rflat, f"every Unova route-type place is walked in the live 3D view by the route walker, as in play ({_rflat})")
 check(not _rcut, f"...no drop blocked there cuts off a person or a way out ({_rcut[:4]})")

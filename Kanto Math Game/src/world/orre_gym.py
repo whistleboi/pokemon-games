@@ -1,5 +1,8 @@
-"""A Gym Leader standing in one of Orre's walked dungeons (story rework S2, 11-24: Pryce in the Snagem Hideout's ruins, the
-fan game's own Gym room there). A region hook: the Leader's route option runs {"world": "orre_gym"}.
+"""A Gym Leader standing in one of Orre's walked places (story rework S2/S3, 11-24: Pryce in the Snagem Hideout's ruins,
+Jasmine on the Gateon lighthouse's roof, Norman in the Key Lair's hall, Drake in Citadark's Dome, Birch in Realgam's
+Colosseum in the sky - the fan game's own Gym spots). A region hook: the Leader's option runs {"world": "orre_gym"}, with
+"gym": "<field>" for a second Gym in an area that has one (Realgam's "gym_birch"). Its "requirements" (badges, a flag) are
+checked here, as a Gym lobby would.
 
 The area's own "gym" data names the Leader (badge, team, lines). As every Gym (Jordan 11-13): the Gym's math game first,
 till it's won; then the Leader's battle - a story battle that gives the badge (battle.py's badge_reward) and brings you back
@@ -19,14 +22,18 @@ def event(state, ev, lines, show):
     story = game.story_manager
     area = story.current_area_key
     lobby = GymLobbyState(game, state)
+    if ev.get("gym"):   # (a second Gym in an area that has one already: Realgam's Birch beside its Colosseum, S3 11-24)
+        gd = story.get_current_area_data().get(ev["gym"]) or {}
+        lobby.gym_data, lobby.leader, lobby.trainers = gd, gd.get("leader"), []
     ld = dict(lobby.leader or {})
     name = _fill_names(game, ld.get("name", "The Leader"))
     badge = ld.get("badge_reward")
     if badge and story.has_badge(badge):
         return show(lines or [f"{name}: You have my badge already. Keep it with pride."])
-    closed = state.gym_closed() if hasattr(state, "gym_closed") else None
-    if closed:
-        return show(closed)
+    req = dict((lobby.gym_data or {}).get("requirements") or {})
+    have = len(story.badges.get(lobby.region, []))
+    if have < int(req.get("badges", 0)) or (req.get("flag") and not story.story_flags.get(req["flag"])):
+        return show(_resolve_lines(game, [req.get("fail_text") or f"{name}: Come back with {req.get('badges', 0)} badges."]))
 
     def battle():
         info = dict(ld)

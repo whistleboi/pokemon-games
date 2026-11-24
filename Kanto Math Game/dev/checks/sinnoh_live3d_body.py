@@ -57,6 +57,13 @@ ROUTES += tuple(k for k in ("SINNOH_ROUTE_211", "SINNOH_ROUTE_212", "SINNOH_ROUT
                             "MANIAC_TUNNEL", "GALACTIC_WAREHOUSE") if k not in ROUTES)
 
 
+# S5 (11-24): Lake Valor's three floors (drained, full, Valor Cavern)
+ROUTES += tuple(k for k in ("LAKE_VALOR", "SINNOH_ROUTE_216", "SINNOH_ROUTE_217", "ACUITY_LAKEFRONT", "LAKE_ACUITY") if k not in ROUTES)
+KNOWN_JUMPS[("SINNOH_ROUTE_216", 0)] = ({((31, 0), (32, 0))}, "the way out to Route 217 along the cliff top, on the map's top row: you leave the map on it")
+# S5 (11-24): Snowpoint and its rooms (its Gym's ice is flat: one level)
+PILOT["SNOWPOINT_CITY"] = tuple(n for n in (_TM["SNOWPOINT_CITY"].get("rooms") or {}) if ("SNOWPOINT_CITY", n) not in FLAT)
+
+
 def settle(n=60):
     for _ in range(n):
         st = g.current_state

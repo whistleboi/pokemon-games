@@ -743,6 +743,9 @@ def recipe_for(game, area_key):
         recipe.pop("zones", None)
         if recipe.get("dark") or mine.get("dark"):  # (a dark cave: its fog stays, till Flash lights it)
             recipe["fog"], recipe["dark"] = True, True
+            if isinstance(mine.get("dark"), dict):   # (a map's "dark" {"radius": [r]}: black but a small light round you, as
+                recipe["dark_radius"] = int((mine["dark"].get("radius") or [2])[0])   #  the towns' dark rooms; Mistralton Cave, Unova 11-24)
+                recipe["fog"] = False
         return recipe
     real = real_maps(game).get(area_key)
     if real and os.path.isfile(os.path.join(game.assets.assets_dir or "", "walk_routes", f"{area_key}.png")):
@@ -920,8 +923,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if getattr(story, "last_area_key", None) in _ferry:   # (a ferry: the port you boarded at, so its sailor still knows where you're bound after a reload; a loaded save: none)
             story.story_flags[f"ferry_from_{self.area_key}"] = story.last_area_key
         self.recipe = recipe_for(game, self.area_key)
-        if self.recipe.get("dark") and __import__("src.world.hms", fromlist=["usable"]).usable(story, "HM_FLASH"):  # (Flash lights a dark cave)
-            self.recipe = dict(self.recipe, fog=False)
+        _hms = __import__("src.world.hms", fromlist=["usable"])
+        if self.recipe.get("dark") and (_hms.usable(story, "HM_FLASH") or _hms.by_move(story, "HM_FLASH")):  # (Flash lights a dark cave:
+            self.recipe = dict(self.recipe, fog=False, dark_radius=None)                                     #  the HM, or the TM's move in Gen 5+)
         if (self.recipe.get("art") or {}).get("fog") == "defog":  # (thick fog: you see only what is near, till Defog clears it: the Lost Tower)
             self.recipe = dict(self.recipe, fog=story.inventory.get("HM_DEFOG", 0) <= 0)
         if (self.recipe.get("art") or {}).get("fog_floors") is not None:   # (fog on some floors only: the map's "fog_floors")
@@ -939,6 +943,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         exits = list(self.exit_items)
         came = getattr(story, "last_area_key", None)
         nxt = self.area_data.get("next_area")
+        _art = self.recipe.get("art") or {}
+        _drawn = [t for f in ([_art] + list(_art.get("floors") or [])) for t in (f.get("exits") or {}).values()
+                  if isinstance(t, str) and not t.startswith(("OUT:", "ROOM:", "FLOOR:", "WARP:"))]
+        if came and came not in exits and came in _drawn:   # (a walked map with no menu buttons left: in by its own way from
+            exits.append(came)                               #  where you came, a door inside the map too - Unova 11-24)
         if came in exits:
             entrance = came
         else:  # (a new game, a load, Fly...): start at the end away from where the route leads
@@ -1034,6 +1043,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 inn = (t[0] + step[0], t[1] + step[1])
                 if f.walkable(*inn) and inn not in f.exits:
                     self.run.player = inn
+                else:   # (a door inside the map, rock straight in from it: beside it, any open side - Unova 11-24)
+                    near = next(((t[0] + dx, t[1] + dy) for dx, dy in core.DIRS if f.walkable(t[0] + dx, t[1] + dy)
+                                 and (t[0] + dx, t[1] + dy) not in f.exits), None)
+                    if near:
+                        self.run.player = near
         _arr = ((self.recipe.get("art") or {}).get("arrive") or {}).get(came) if not at_edge else None
         if _arr and self.run.index == 0 and self.run.floor.walkable(*_arr):   # (a map's "arrive" {area: [x, y]}: off a ferry with
             self.run.player = tuple(_arr)                                       #  no tile of its own, onto the dock: the Battle Frontier)
@@ -1861,7 +1875,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if spot is None:
                 self.flash("There's rock right under you here.", 100)
                 return
-        if plan.get("dive_at") and below.mover_at(*spot):   # (someone's on the spot you come up on: the nearest free one)
+        if below.mover_at(*spot) and below.walkable(*spot):   # (someone's on the spot you come down on - a wild Pokemon swimming there, 11-24: the nearest free one, not "rock")
             near = sorted(((x, y) for y in range(spot[1] - 2, spot[1] + 3) for x in range(spot[0] - 2, spot[0] + 3)
                            if below.walkable(x, y) and not below.mover_at(x, y)),
                           key=lambda t: abs(t[0] - spot[0]) + abs(t[1] - spot[1]))
@@ -2310,6 +2324,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             return
         if str(self.run.floor.decor.get(to, "")).startswith("box:"):   # (a crate you push by walking into it: XD's Key Lair, 11-21)
             self._push_box(to, dx, dy)
+        if str(self.run.floor.decor.get(to, "")).startswith("stone:"):   # (a stone, 3 x 3: it slides till it stops - Chargestone, 11-24)
+            self._push_stone(int(str(self.run.floor.decor[to]).split(":")[1]), dx, dy)
         if self._board_platform(to):   # (a moving platform's track ahead of you: it carries you across: Citadark's volcano, 11-21)
             return
         hopped = False
@@ -2906,6 +2922,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         else:
             self.say([f"That's not it! {name} ran away!"])
 
+    DARK_DOUBLE = 0.1   # (how often a dark-grass meeting is two wild Pokemon: about 1 in 10, Gen 5; an area may set "dark_double_rate")
+
     def _battle_wild(self, mover):
         from src.states.battle import WildBattleState
         self.pending = ("wild", mover)
@@ -2929,6 +2947,18 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 from src.states.battle_wild_double import WildDoubleBattleState
                 battle = WildDoubleBattleState(self.game, [mover.payload, other], self.area_key,
                                                partner=walk_partners.battle_partner(wp),
+                                               background_image=self._get_battle_background_for_area())
+                battle.play_state_data = self._play_data()
+                pygame.event.clear()
+                self.game.change_state(battle)
+                return
+        if (mover.x, mover.y) in self._dark_tiles() and random.random() < float(self.area_data.get("dark_double_rate", self.DARK_DOUBLE)):
+            # (dark grass: now and then two wild Pokemon at once, a wild double battle - Gen 5; Unova 11-24. A ball can be
+            #  thrown only once one of them is down, as in the games: battle_wild_double.py)
+            other = self._make_wild(random.Random(), (mover.x, mover.y))
+            if other is not None:
+                from src.states.battle_wild_double import WildDoubleBattleState
+                battle = WildDoubleBattleState(self.game, [mover.payload, other], self.area_key,
                                                background_image=self._get_battle_background_for_area())
                 battle.play_state_data = self._play_data()
                 pygame.event.clear()
@@ -3824,6 +3854,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
 
     def _place_boxes(self):
         """Put this floor's crates where they stand now (and free the tiles they've left)."""
+        self._place_stones()
         if not self._here_art().get("boxes"):
             return
         f = self.run.floor
@@ -3836,6 +3867,101 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if t not in f.decor:
                 f.decor[t] = f"box:{t[0]},{t[1]}"
                 f.tiles[t[1]][t[0]] = core.WALL
+
+    # ---------------------------------------------------------------- stones you push (Black 2's Chargestone Cave; Unova 11-24)
+    # A floor's "stones": [[x, y] or [x, y, model], ...] - each the middle of a 3 x 3 block of rock (its picture the map's
+    # "stone_model", e.g. "b2:195_110_0", drawn at the middle). Walk into a stone's edge and the whole block slides that way
+    # till the next row it would cover isn't open floor (or holds a person, an item, a way out). Where they stand is kept
+    # (story flag stones_<area>_<floor>), as the crates are.
+    def _stone_key(self):
+        return f"stones_{self.area_key}_{self.run.index}"
+
+    def _stone_start(self):
+        return [(int(s[0]), int(s[1])) for s in (self._here_art().get("stones") or [])]
+
+    def _stone_spots(self):
+        start = self._stone_start()
+        now = self.game.story_manager.story_flags.get(self._stone_key())
+        return [tuple(t) for t in now] if isinstance(now, list) and len(now) == len(start) else start
+
+    def _stone_model(self, i):
+        s = (self._here_art().get("stones") or [])[i]
+        return s[2] if len(s) > 2 else self._here_art().get("stone_model")
+
+    def _place_stones(self):
+        """Put this floor's stones where they stand now: their 3 x 3 rock, and open floor where they've left."""
+        if not self._here_art().get("stones"):
+            return
+        f = self.run.floor
+        cover = {}
+        for i, (cx, cy) in enumerate(self._stone_spots()):
+            for a in (-1, 0, 1):
+                for b in (-1, 0, 1):
+                    cover[(cx + a, cy + b)] = f"stone:{i}:{cx},{cy}"
+
+        def inside(t):
+            return 0 <= t[0] < f.w and 0 <= t[1] < f.h
+        for t, what in list(f.decor.items()):
+            if str(what).startswith("stone:") and t not in cover:
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.FLOOR
+        for cx, cy in self._stone_start():   # (where a stone stood in the game's grid, rock: open floor once it has moved)
+            for a in (-1, 0, 1):
+                for b in (-1, 0, 1):
+                    t = (cx + a, cy + b)
+                    if inside(t) and t not in cover and t not in f.decor and f.tile(*t) == core.WALL:
+                        f.tiles[t[1]][t[0]] = core.FLOOR
+        for t, what in cover.items():
+            if inside(t):
+                f.decor[t] = what
+                f.tiles[t[1]][t[0]] = core.WALL
+
+    def _push_stone(self, i, dx, dy):
+        """Walked into a stone: it slides that way till something stops it. False if it can't move at all."""
+        f = self.run.floor
+        story = self.game.story_manager
+        art = self._here_art()
+        links = {tuple(int(v) for v in k.split(",")) for k in (art.get("links") or {})}
+        spots = self._stone_spots()
+        cx, cy = spots[i]
+        mine = {(cx + a, cy + b) for a in (-1, 0, 1) for b in (-1, 0, 1)}
+        moved = 0
+        while moved < 200:
+            ahead = {(x + dx, y + dy) for x, y in mine} - mine
+            if any(not (0 <= x < f.w and 0 <= y < f.h) or f.tile(x, y) != core.FLOOR or (x, y) in f.decor or f.mover_at(x, y)
+                   or (x, y) == tuple(self.run.player) or (x, y) in f.exits or (x, y) in f.items or (x, y) in f.tm_spots
+                   or (x, y) in links for x, y in ahead):
+                break
+            mine = {(x + dx, y + dy) for x, y in mine}
+            cx, cy = cx + dx, cy + dy
+            moved += 1
+        if not moved:
+            self.flash("It won't budge.")
+            return False
+        spots[i] = (cx, cy)
+        story.story_flags[self._stone_key()] = [list(u) for u in spots]
+        self._place_stones()
+        self._floor_surf = None
+        self._over_key = None
+        return True
+
+    def _draw_stone(self, screen, i, r):
+        """A stone's picture at its middle tile r (the game's own model, else a drawn glowing rock)."""
+        key = self._stone_model(i)
+        from src.dungeon import art as _art
+        got = _art._model(key) if key else None
+        if got:
+            mp, ox, oy = got
+            cache = self.__dict__.setdefault("_stone_imgs", {})
+            ck = (key, TILE)
+            if ck not in cache:
+                cache[ck] = mp if TILE == 32 else pygame.transform.scale(mp, (max(1, mp.get_width() * TILE // 32), max(1, mp.get_height() * TILE // 32)))
+            screen.blit(cache[ck], (int(r.x + TILE / 2 - ox * TILE / 32), int(r.y + TILE / 2 - oy * TILE / 32)))
+        else:
+            box = r.inflate(TILE * 2 - 6, TILE * 2 - 6)
+            pygame.draw.ellipse(screen, (70, 90, 150), box)
+            pygame.draw.ellipse(screen, (150, 200, 255), box.inflate(-TILE, -TILE))
+            pygame.draw.ellipse(screen, (30, 40, 80), box, 3)
 
     def _push_box(self, t, dx, dy):
         """Walked into a crate: it slides one tile on, if that tile is open floor with nothing on it."""
@@ -4297,6 +4423,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
     def update(self):
         if getattr(self, "_ride", None) and getattr(self, "anim", 0) == 0 and getattr(self, "run", None) is not None:
             self._ride_step()
+        if getattr(self, "run", None) is not None and self._here_art().get("stones") and not self._here_art().get("boxes"):
+            _sk = (self.run.index, tuple(self._stone_spots()))
+            if getattr(self, "_stones_seen", None) != _sk:
+                self._stones_seen = _sk
+                self._place_stones()
         if getattr(self, "run", None) is not None and self._here_art().get("boxes"):
             _bk = (self.run.index, tuple(self._box_spots()))
             if getattr(self, "_boxes_seen", None) != _bk:
@@ -5253,6 +5384,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                     p2 = pygame.transform.scale(_plant, (r.w, int(_plant.get_height() * k)))
                     screen.blit(p2, p2.get_rect(midbottom=(r.centerx, r.bottom - 2)))
                 continue
+            if str(what).startswith("stone:"):   # (a stone: its picture once, at its middle tile)
+                _si, _sc = str(what).split(":")[1:3]
+                if _sc == f"{x},{y}" and (x, y) in f.seen:
+                    self._draw_stone(screen, int(_si), at(x, y))
+                continue
             if str(what).startswith(("crate:", "box:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (a crate: the map's own crate picture)
                 r = at(x, y)
                 img = self._crate_img()
@@ -5568,6 +5704,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 elif not self.run.visible(x, y):
                     screen.blit(fog, r)
 
+        self._draw_cave_light(screen, at(*self.run.player).center)
         for pill, tag in signs:  # where the ways out go
             pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
             screen.blit(tag, tag.get_rect(center=pill.center))
@@ -5584,6 +5721,19 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             self._draw_guide(screen, at)
         screen.set_clip(None)
         return at
+
+    def _draw_cave_light(self, screen, centre):
+        """A dark cave with a light radius (recipe "dark_radius"): black but a soft circle round you, till Flash."""
+        r = self.recipe.get("dark_radius") if isinstance(getattr(self, "recipe", None), dict) else None
+        if not r:
+            return
+        area = screen.get_clip()
+        veil = pygame.Surface(area.size, pygame.SRCALPHA)
+        veil.fill((0, 0, 0, 250))
+        cx, cy, rad = centre[0] - area.x, centre[1] - area.y, int(r * TILE)
+        for i in range(6):  # (a soft edge)
+            pygame.draw.circle(veil, (0, 0, 0, 250 - 40 * (i + 1)), (cx, cy), max(1, rad - i * TILE // 8))
+        screen.blit(veil, area.topleft)
 
     def _draw_rest(self, screen, view, fonts, at):
         """Over the map: its frame, the HUD, the encounter, the dialogue."""

@@ -852,8 +852,10 @@ def things(st):
                 continue
             spot = tuple(mos[home].pos) if home in mos else home
             now = next(o for o in opt["any"] if st._shown(o)) if "any" in opt else opt
-            if str(now.get("action") or "").upper() in BORING or (now.get("event") or {}).get("name_rater") or (now.get("event") or {}).get("tutor") or (now.get("event") or {}).get("stock"):
+            if str(now.get("action") or "").upper() in BORING or (now.get("event") or {}).get("name_rater") or (now.get("event") or {}).get("tutor"):
                 continue
+            if isinstance(now.get("event"), dict) and now["event"].get("stock"):   # (a shop made as an event - a store counter, a vending machine, a stall: a
+                continue                                # shop screen the run can't leave, like the SHOP clerks; Sinnoh 11-24)
             _ride = (now.get("event") or {}).get("travel")   # (a ride - a ship, a ferry, a train - only toward the mission's place: else a
             if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):   # run sails off and is stranded; Unova 11-23)
                 continue
@@ -887,6 +889,8 @@ def things(st):
         for m in f.movers:
             if m.kind == "figure" and isinstance(m.payload, dict):
                 if str(m.payload.get("action") or "").upper() in BORING:
+                    continue
+                if isinstance(m.payload.get("event"), dict) and m.payload["event"].get("stock"):   # (a shop made as an event, as above)
                     continue
                 out_.append((0, ("F", (m.x, m.y), str(m.payload.get("text"))), [(m.x, m.y)], f"walk up to {m.payload.get('text')}", None))
         rest, ways = {}, {}
@@ -1937,6 +1941,12 @@ def play_through():
                 del TRIED[k]
             DONE_PLACES.clear(); MEM["wander"] = 0; MEM["stale"] = True; MEM["mk"] = 0
             SHUT.clear()
+        if m is None and is_town(st) and getattr(st, "room", None) and TRIED[(loc(), ("OUTSIDE",))] < 1:
+            TRIED[(loc(), ("OUTSIDE",))] += 1
+            _out = next((t for t, tg in (st.exits or {}).items() if str(tg).startswith("OUT:")), None)
+            if _out is not None:
+                do("wander", _out, "out of the building (the Journal is empty here)")
+                continue
         if m is None:
             if stuck("the Journal shows no MAIN mission", None, None).startswith("none"):
                 ended = "no MAIN mission"

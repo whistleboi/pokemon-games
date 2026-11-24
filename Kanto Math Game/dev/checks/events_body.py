@@ -121,4 +121,26 @@ for key, ev in story_events.EVENTS.items():
             n = len(story.player_team)
             s2.story_event(key)
             check(len(story.player_team) == n, f"{key}: no repeat gift")
+print("a gift with a set Ability (Route 6's Deerling: Serene Grace, its hidden one; Black 2; 11-24)")
+from src.world import story_events as _se
+from src.pokemon import abilities as _abl
+story.player_team = story.player_team[:1]
+_se.gift_pokemon(g, 585, 20, None, "SERENE-GRACE", True)
+_d = story.player_team[-1]
+check(_d.id == 585 and _d.ability_slot == _abl.HIDDEN_SLOT and not _d.is_shiny, f"Deerling: Serene Grace, not Shiny (slot {_d.ability_slot})")
+check(_se.gift_ability_slot(g, 585, "hidden") == 2 and _se.gift_ability_slot(g, 585, "Sap Sipper") == 1 and _se.gift_ability_slot(g, 585, 0) == 0,
+      "the Ability by 'hidden', by name or by slot")
+print("an in-game trade with no flag of its own happens once (the encyclopedia's nine, 11-24)")
+from src.states.overworld.common import _run_story_event as _rse
+from src.pokemon.data import Pokemon as _Pk
+story.current_area_key = "OLIVINE_CITY"
+story.player_team = [_Pk(g.loader.fetch_specific(19), g.assets), _Pk(g.loader.fetch_specific(19), g.assets)]
+_said = []
+_tev = {"lines": ["Trade your Rattata for my Pidgey?"], "trade": {"want": 19, "give": 16}}
+class _S: pass
+_st = _S(); _st.game = g
+_rse(_st, _tev, lambda c: True, lambda l: _said.append(l))
+check(sum(1 for p in story.player_team if p.id == 16) == 1, "the first time: traded")
+_rse(_st, _tev, lambda c: True, lambda l: _said.append(l))
+check(sum(1 for p in story.player_team if p.id == 16) == 1 and "Thanks again" in str(_said[-1]), f"the second time: no second trade ({_said[-1]})")
 print(f"##### {fails} failures")

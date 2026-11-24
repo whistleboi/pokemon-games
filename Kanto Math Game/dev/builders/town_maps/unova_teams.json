@@ -59,6 +59,68 @@
    180
   ]
  },
+ "149": {
+  "b2_id": 149,
+  "class": "PILOT",
+  "levels": [
+   37
+  ],
+  "name": "Pilot Flynn",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   528
+  ]
+ },
+ "150": {
+  "b2_id": 150,
+  "class": "PILOT",
+  "levels": [
+   37
+  ],
+  "name": "Pilot Winslow",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   561
+  ]
+ },
+ "151": {
+  "b2_id": 151,
+  "class": "PILOT",
+  "levels": [
+   37
+  ],
+  "name": "Pilot Ewing",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   521
+  ]
+ },
+ "152": {
+  "b2_id": 152,
+  "class": "PILOT",
+  "levels": [
+   36,
+   36
+  ],
+  "name": "Pilot Chase",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   580,
+   528
+  ]
+ },
  "153": {
   "b2_id": 153,
   "class": "LEADER",
@@ -320,6 +382,23 @@
   "sprite": "b2_worker.png",
   "team": [
    551
+  ]
+ },
+ "332": {
+  "b2_id": 332,
+  "class": "PILOT",
+  "levels": [
+   36,
+   36
+  ],
+  "name": "Pilot Elron",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   566,
+   521
   ]
  },
  "339": {
@@ -738,6 +817,42 @@
    505
   ]
  },
+ "390": {
+  "b2_id": 390,
+  "class": "BACKPACKER",
+  "levels": [
+   36,
+   36
+  ],
+  "name": "Backpacker Boone",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_backpacker_m.png",
+  "team": [
+   322,
+   561
+  ]
+ },
+ "391": {
+  "b2_id": 391,
+  "class": "PSYCHIC",
+  "levels": [
+   36,
+   36,
+   36
+  ],
+  "name": "Psychic Lynette",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_psychic_f.png",
+  "team": [
+   425,
+   325,
+   426
+  ]
+ },
  "47": {
   "b2_id": 47,
   "class": "LASS",
@@ -751,6 +866,40 @@
   "sprite": "b2_lass.png",
   "team": [
    510
+  ]
+ },
+ "515": {
+  "b2_id": 515,
+  "class": "RANGER",
+  "levels": [
+   38,
+   38
+  ],
+  "name": "Pokemon Ranger Lewis",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "ranger.png",
+  "team": [
+   505,
+   326
+  ]
+ },
+ "518": {
+  "b2_id": 518,
+  "class": "RANGER",
+  "levels": [
+   38,
+   38
+  ],
+  "name": "Pokemon Ranger Eliza",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "ranger.png",
+  "team": [
+   552,
+   59
   ]
  },
  "588": {

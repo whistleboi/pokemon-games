@@ -261,7 +261,8 @@ for _key in _dung:
     check(_ok and not _bad, f"{_key}: {run.n_floors} floors, in from {_came} on open floor, every passage lands on open floor {_bad[:3]}")
 t = town("UNDER_COLOSSEUM", "THE_UNDER")
 _d = next(tuple(int(v) for v in d.split(",")) for d in _tm["UNDER_COLOSSEUM"]["inside"])
-_host = lambda st_: any(isinstance(o, dict) and (o.get("event") or {}).get("referee") for o in st_.people.values())   # (R2: the arena's host is the tournament's referee)
+_host = lambda st_: any(isinstance(q, dict) and (q.get("event") or {}).get("referee")   # (S5: the host's spot holds Part 1's and
+                        for o in st_.people.values() for q in ((o.get("any") or [o]) if isinstance(o, dict) else []))   #  Part 2's)   # (R2: the arena's host is the tournament's referee)
 _in = walk_to(t, _d) and t.room == "gym" and _host(t)
 _mat = next((k for k, v in t.exits.items() if v.startswith("OUT:")), None)
 _out = _mat is not None and walk_to(t, _mat) and t.room is None
@@ -395,8 +396,10 @@ from src.states.systems import pda as _pda
 check(any(sub == "Please come" and "five years" in body for _frm, sub, body in _pda.mail(g)), "Part 2: Krane's e-mail after the skip")
 _txt = open("assets/orre_area_data.json", encoding="utf-8").read() + open("assets/town_maps.json", encoding="utf-8").read()
 import re as _re
-check(not _re.search(r"Wes", _txt) and "beat_orre_champion" not in open("assets/town_maps.json", encoding="utf-8").read(),
-      "the player by their own name (no 'Wes' left in Orre's lines); no map waits on the old title")
+_tit = "beat_orre_champion" in _json.dumps({k: v for k, v in _json.load(open("assets/town_maps.json", encoding="utf-8")).items()
+                                              if k != "CONSTRUCTION_LOT"})   # (S5 put the title on the League again: only the
+check(not _re.search(r"Wes", _txt) and not _tit,                         #  post-game waits on it - S6a's tower door)
+      "the player by their own name (no 'Wes' left in Orre's lines); no map but the post-game's waits on the title")
 for _f in _P1:
     story.story_flags.pop(_f, None)
 
@@ -436,7 +439,7 @@ for _a, _v in _SP.items():
         _all += [(_a, b, _OL.group(_a, gg, w)) for b, gg, w in _OL.battles(_v, _a)]
         if _a in _TMJ:
             _all += [(_a, b, _OL.group(_a, gg, w)) for b, gg, w in _OL.battles(_TMJ[_a], _a)]
-_CAP = {"p1": 37, "mtb": 50, "p2": 48, "eagun": 50, "ag": 55, "post": 63}
+_CAP = {"p1": 37, "mtb": 50, "p2": 48, "eagun": 50, "ag": 55, "post": 70}   # (post: Kanto's after-game, Cerulean Cave to 70)
 _over = [(a, b.get("name"), max(b.get("levels") or [b.get("level")])) for a, b, gr in _all
          if b.get("name") not in _OL.SKIP_NAMES and max(b.get("levels") or [b.get("level")]) > _CAP[gr]]
 _young2 = [(a, b.get("name"), p, lv) for a, b, gr in _all if isinstance(b.get("team"), list)
@@ -461,8 +464,53 @@ _rs = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["REGION_S
 check(not _over and not _young2 and None not in _lv and all(a <= b for a, b in zip(_lv, _lv[1:])) and _lv[12] == 37
       and _rs == {"196": 10, "197": 11},
       f"L1: Orre at Kanto's caps - over a cap {_over[:3]}, too young {_young2[:3]}, bosses in order {_order}, partners {_rs}")
+# the Agate Gym's number garden (Jordan 11-24): vines on the way in till three gardens bloom; walked as a player would
 t = town("AGATE_VILLAGE", "PYRITE_TOWN")
-_gd =next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
+_gd = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
+for _f in [k for k in story.story_flags if k.startswith("agate_garden_done")]:
+    story.story_flags.pop(_f)
+_in0 = walk_to(t, _gd) and t.room == "gym"
+_G = _tm["AGATE_VILLAGE"]["rooms"]["gym"]["gardens"]
+_beds = {tuple(int(v) for v in k.split(",")) for gd in _G["gardens"] for k in gd["beds"]}
+_shut = (21, 7) in t.barred
+
+
+def _bed_walk(st, b):
+    """Walk to bed b without stepping on any other bed (a player picking their way round the gardens)."""
+    prev, q = {tuple(st.player): None}, _dq([tuple(st.player)])
+    while q:
+        cur = q.popleft()
+        if cur == b:
+            break
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nxt = (cur[0] + dx, cur[1] + dy)
+            if nxt in prev or (nxt != b and (nxt in _beds or not st._open(nxt) or nxt in st.exits or nxt in st._people() or nxt in st.barred)):
+                continue
+            prev[nxt] = cur; q.append(nxt)
+    if b not in prev:
+        return False
+    way, cur = [], b
+    while cur is not None:
+        way.append(cur); cur = prev[cur]
+    for (x0, y0), (x1, y1) in zip(way[::-1], way[::-1][1:]):
+        st.anim = 0; st.step(x1 - x0, y1 - y0); st.anim = 0
+    return tuple(st.player) == b
+
+
+_g1 = {v: tuple(int(c) for c in k.split(",")) for k, v in _G["gardens"][0]["beds"].items()}
+_over = _bed_walk(t, _g1[7]) and _bed_walk(t, _g1[6]) and not story.story_flags.get("agate_garden_done_0")   # (7 + 6 > 10: the vines grow back)
+_sols = [(7, 3), (9, 6, 3), (12, 9, 6)]
+_solved = True
+for _i, _sol in enumerate(_sols):
+    _bd = {v: tuple(int(c) for c in k.split(",")) for k, v in _G["gardens"][_i]["beds"].items()}
+    for _n in _sol:
+        _solved = _bed_walk(t, _bd[_n]) and _solved
+    _solved = _solved and bool(story.story_flags.get(f"agate_garden_done_{_i}"))
+    _tap_through(t)
+check(_in0 and _shut and _over and _solved and story.story_flags.get("agate_garden_done") and (21, 7) not in t.barred,
+      f"the Agate Gym's number garden: vines shut the way in ({_shut}); 7 + 6 overshoots 10 and resets ({_over}); 10, 18 and 27 "
+      f"made by walking the beds ({_solved}); then Blaine burns the vines away")
+t = town("AGATE_VILLAGE", "PYRITE_TOWN")
 _in = walk_to(t, _gd) and t.room == "gym"
 _deep = _in and (lambda st: (lambda e: e is not None and walk_to(st, e) and st.room == "gym_2")(next((k for k, v in st.exits.items() if v == "ROOM:gym_2"), None)))(t)
 _lead = _deep and any(isinstance(o, dict) and o.get("action") == "GYM" for o in t.people.values())
@@ -484,6 +532,8 @@ from src.world import orre_gym as _og
 from src import minigames as _mg
 for _f in ("orre_part2", "xd_hordel"):
     story.story_flags.pop(_f, None)
+_saved_badges = list(story.badges.get("ORRE", []))
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE"]
 r = route("SNAGEM_HIDEOUT", "ORRE_DESERT")
 story.story_flags[_mg.done_flag("SNAGEM_HIDEOUT")] = True
 _og.event(r, {"world": "orre_gym"}, [], lambda l: None)
@@ -492,6 +542,186 @@ check(type(g.current_state).__name__ == "TrainerIntroState" and getattr(_bs, "ba
       f"S2: Pryce's battle starts from his room (after his game) and gives the Snagem Badge ({type(g.current_state).__name__})")
 story.story_flags.pop(_mg.done_flag("SNAGEM_HIDEOUT"), None)
 story.story_flags.pop("orre_data_rom_given", None)
+
+# ---- the story rework S3 (11-24): the four Part 2 Gyms - Jasmine (the Gateon lighthouse's roof), Norman (the Key Lair's hall,
+# after Gorigan), Drake (Citadark's Dome 2F, before Greevil), Birch (Realgam's Colosseum in the sky, after Greevil)
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_g2 = [(_SP[a][k]["leader"], _SP[a][k]["requirements"]) for a, k in
+       (("GATEON_PORT", "gym"), ("XD_CIPHER_KEY_LAIR", "gym"), ("XD_CITADARK_ISLE", "gym"), ("REALGAM_TOWER", "gym_birch"))]
+_ok_team = all(_OL.stage(p, lv) == p and p <= 386 for ld, _r in _g2 for p, lv in zip(ld["team"], ld["levels"]))
+_ok_mv = all(m in _mv for ld, _r in _g2 for mm in ld["team_moves"] for m in mm)
+check([ld["badge_reward"] for ld, _r in _g2] == ["GATEON", "KEY_LAIR", "CITADARK", "REALGAM"]
+      and [r["badges"] for _l, r in _g2] == [4, 5, 6, 7] and [max(ld["levels"]) for ld, _r in _g2] == [41, 45, 48, 50]
+      and all(len(ld["team"]) == 6 for ld, _r in _g2) and _ok_team and _ok_mv
+      and _SP["ORRE_COLOSSEUM"]["gym"]["requirements"]["badges"] == 5,
+      f"S3: Part 2's badges in order, six each at Kanto's caps (41/45/48/50), fit species and real moves")
+_tr = {o["text"]: o.get("condition") for o in _SP["GATEON_PORT"]["travel_options"]}
+check("has_gateon_badge" in (_tr.get("Cipher Lab") or []) and "has_key_lair_badge" in (_tr.get("Citadark Isle") or []),
+      f"S3: the Cipher Lab waits for the Gateon Badge, Citadark for the Key Lair Badge ({_tr.get('Cipher Lab')}, {_tr.get('Citadark Isle')})")
+_roof = _TMJ["GATEON_PORT"]["rooms"]["lighthouse_roof"]["people"]
+_jas = next((p for p in _roof if isinstance(p, dict) and p.get("text") == "Gym Leader Jasmine"), {})
+_gl = [p["boss"]["level"] for rn in ("lighthouse", "lighthouse_2f", "lighthouse_3f") for p in _TMJ["GATEON_PORT"]["rooms"][rn]["people"]
+       if isinstance(p, dict) and p.get("action") == "BOSS"]
+check((_jas.get("event") or {}).get("stages", [{}])[0].get("world") == "orre_gym" and _gl == [36, 37, 38],
+      f"S3: Jasmine's roof battle is the Gym's (math game, then badge 5); the guardians Lv {_gl}")
+story.story_flags.update(orre_part2=True)
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON"]
+r = route("XD_CIPHER_KEY_LAIR", "GATEON_PORT")
+_k1 = [o.get("text") for o in r._figure_items()]
+story.story_flags["xd_gorigan_beaten"] = True
+r = route("XD_CIPHER_KEY_LAIR", "GATEON_PORT")
+_k2 = [o.get("text") for o in r._figure_items()]
+story.story_flags[_mg.done_flag("XD_CIPHER_KEY_LAIR")] = True
+_og.event(r, {"world": "orre_gym"}, [], lambda l: None)
+_bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
+check("GYM LEADER NORMAN" not in _k1 and "GYM LEADER NORMAN" in _k2   # (Gorigan stands there once the floors' trainers are beaten)
+      and "BATTLE CIPHER ADMIN GORIGAN" not in _k2 and type(g.current_state).__name__ == "TrainerIntroState"
+      and getattr(_bs, "badge_reward", None) == "KEY_LAIR",
+      f"S3: the Key Lair's hall - Gorigan first, then Norman on his spot; Norman's battle gives the Key Lair Badge ({_k1}, {_k2}, {type(g.current_state).__name__}, {getattr(_bs, 'badge_reward', None)})")
+story.badges["ORRE"] += ["KEY_LAIR"]
+r = route("XD_CITADARK_ISLE", "GATEON_PORT")
+_c1 = [o.get("text") for o in r._figure_items()]
+story.badges["ORRE"] += ["CITADARK"]
+r = route("XD_CITADARK_ISLE", "GATEON_PORT")
+_c2 = [o.get("text") for o in r._figure_items()]
+check("GYM LEADER DRAKE" in _c1 and "GRAND MASTER GREEVIL" not in _c1 and "GRAND MASTER GREEVIL" in _c2 and "GYM LEADER DRAKE" not in _c2,
+      f"S3: Citadark's arena - Drake on the spot first, Greevil once his badge is won")
+story.story_flags["xd_greevil_beaten"] = True
+t = town("REALGAM_TOWER", "PYRITE_TOWN")
+_birch = [p for p in _TMJ["REALGAM_TOWER"]["rooms"]["colosseum"]["people"] if p == "GYM LEADER BIRCH"]
+story.story_flags[_mg.done_flag("REALGAM_TOWER")] = True
+_og.event(t, {"world": "orre_gym", "gym": "gym_birch"}, [], lambda l: None)
+_bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
+check(len(_birch) == 1 and type(g.current_state).__name__ == "TrainerIntroState" and getattr(_bs, "badge_reward", None) == "REALGAM",
+      f"S3: Birch in Realgam's Colosseum in the sky after Greevil; his battle gives the Realgam Badge ({len(_birch)})")
+for _f in ("orre_part2", "xd_gorigan_beaten", "xd_greevil_beaten", _mg.done_flag("XD_CIPHER_KEY_LAIR"), _mg.done_flag("REALGAM_TOWER")):
+    story.story_flags.pop(_f, None)
+story.badges["ORRE"] = _saved_badges
+
+# ---- the story rework S4 (11-24): XD's main line - ONBS after Nett's data (the Poke Spots optional), Cipher's Phenac after
+# Exol (the S.S. Libra optional), XD's end in the Journal's main story; S3's badge gates evaluated, not just written
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_JM = {m["id"]: m for m in _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["JOURNAL_MISSIONS"]}
+story.story_flags.update(orre_part2=True, xd_nett_rom=True)
+for _f in ("xd_miror_cave", "xd_bonsly_found", "xd_exol_beaten"):
+    story.story_flags.pop(_f, None)
+r = route("XD_ONBS", "PYRITE_TOWN")
+_ob = [o.get("text") for o in r._figure_items()]
+_obtr = [i for i, tr in enumerate(_SP["XD_ONBS"]["trainer_pool"]) if story.trainer_on_map("XD_ONBS", i, tr)]
+check("BATTLE CIPHER CMDR EXOL" in _ob and len(_obtr) == len(_SP["XD_ONBS"]["trainer_pool"]),
+      f"S4: ONBS - Exol and his peons are there on Nett's data alone, without the Cave Poke Spot's Miror B. ({len(_obtr)} peons)")
+story.story_flags["xd_exol_beaten"] = True
+t = town("PHENAC_CITY", "ORRE_DESERT")
+_ph = [p.get("text") for p in t.people.values() if isinstance(p, dict)]
+_pre = [i for i, tr in enumerate(_SP["PRESTIGE_PRECEPT_CENTER"]["trainer_pool"]) if story.trainer_on_map("PRESTIGE_PRECEPT_CENTER", i, tr)]
+_stad = t._check_menu_condition(next(o for o in _SP["PHENAC_CITY"]["explore_options"] if o.get("text") == "Phenac Stadium").get("condition"))
+check("Gate lady" in _ph and len(_pre) == len(_SP["PRESTIGE_PRECEPT_CENTER"]["trainer_pool"]) and not _stad,
+      f"S4: Cipher's Phenac once Exol is beaten, without the S.S. Libra - the gate lady, the Pre Gym's peons, the Stadium shut")
+_types = {k: _JM[k]["type"] for k in ("orre_m11c", "orre_m12b", "orre_s5", "orre_s5b", "orre_m12", "orre_m13")}
+check(_types == {"orre_m11c": "SIDE", "orre_m12b": "SIDE", "orre_s5": "MAIN", "orre_s5b": "MAIN", "orre_m12": "MAIN", "orre_m13": "MAIN"}
+      and _JM["orre_m12"]["condition"]["flag"] == "xd_nett_rom" and _JM["orre_m13"]["condition"]["flag"] == "xd_exol_beaten",
+      f"S4: the Journal - the Poke Spots and the Libra side trips, XD's end main story {_types}")
+t = town("GATEON_PORT", "POKEMON_HQ_LAB")
+_cl = {o["text"]: o.get("condition") for o in _SP["GATEON_PORT"]["travel_options"]}
+story.story_flags.update(xd_machine_part_given=True, xd_master_ball=True)
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM"]
+_g0 = (t._check_menu_condition(_cl["Cipher Lab"]), t._check_menu_condition(_cl["Citadark Isle"]))
+story.badges["ORRE"] += ["GATEON", "KEY_LAIR"]
+_g1 = (t._check_menu_condition(_cl["Cipher Lab"]), t._check_menu_condition(_cl["Citadark Isle"]))
+check(_g0 == (False, False) and _g1 == (True, True),
+      f"S3/S4: Gateon's boats - the Cipher Lab and Citadark shut without the Gateon / Key Lair Badges, open with them ({_g0}, {_g1})")
+for _f in ("orre_part2", "xd_nett_rom", "xd_exol_beaten", "xd_machine_part_given", "xd_master_ball"):
+    story.story_flags.pop(_f, None)
+story.badges["ORRE"] = _saved_badges
+
+# ---- the story rework S5 (11-24): the Orre League in Realgam's Colosseum in the sky - Part 1 Evice's run, Part 2 the League
+# (src/world/gym_swaps.py); the Elite Four Justy, Eagun, Miror B., Vander and Champion Eldes at Kanto's levels
+from src.world import gym_swaps as _gs
+from src.states.overworld.gym_lobby import GymLobbyState as _GLS
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_lg = _SP["REALGAM_TOWER"]["gym_league"]
+_lgr = _lg["trainers"] + [_lg["leader"]]
+check([t["name"] for t in _lgr] == ["Elite Four Justy", "Elite Four Eagun", "Elite Four Miror B.", "Elite Four Vander", "Champion Eldes"]
+      and [max(t["levels"]) for t in _lgr] == [54, 56, 58, 60, 63] and [t["class"] for t in _lgr] == ["ELITE_FOUR"] * 4 + ["CHAMPION"]
+      and all(_OL.stage(p, lv) == p and p <= 386 for t in _lgr for p, lv in zip(t["team"], t["levels"]))
+      and all(m in _mv for t in _lgr for mm in t["team_moves"] for m in mm) and _lg["requirements"]["badges"] == 8,
+      "S5: the League - Justy, Eagun, Miror B., Vander, then Champion Eldes; Kanto's levels (54/56/58/60, 63), fit species, real moves")
+story.story_flags.pop("orre_part2", None)
+_gs.apply(g)
+_p1 = (g.loader.area_data["STORY_PROGRESSION"]["REALGAM_TOWER"]["gym"]["leader"]["name"])
+story.story_flags["orre_part2"] = True
+_gs.apply(g)
+_p2 = (g.loader.area_data["STORY_PROGRESSION"]["REALGAM_TOWER"]["gym"]["leader"]["name"])
+story.story_flags["col_gonzap_realgam"] = True
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON", "KEY_LAIR", "CITADARK"]
+t = town("REALGAM_TOWER", "PHENAC_CITY")
+_shut = t.gym_closed()
+story.badges["ORRE"] += ["REALGAM"]
+_open = t.gym_closed()
+_lob = _GLS(g, t)
+check("Evice" in _p1 and _p2 == "Champion Eldes" and _shut and not _open and _lob.is_league
+      and [x.get("name") for x in _lob.gauntlet][-1] == "Champion Eldes" and _lob.next_opponent.get("name") == "Elite Four Justy",
+      f"S5: Realgam's Gym is Evice's run in Part 1 and the League in Part 2 ({_p1} / {_p2}); shut till 8 badges; the League's run starts with Justy")
+_ar = _TMJ["REALGAM_TOWER"]["rooms"]["colosseum"]
+_lsc = [sc for sc in _ar.get("scenes") or [] if "world:orre_skip:part2" in (sc.get("condition") or [])]
+_host = [p for p in _ar["people"] if isinstance(p, list) and any(isinstance(q, dict) and q.get("text") == "Realgam Tower: Orre League" for q in p)]
+_jm = {m["id"]: m for m in _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["JOURNAL_MISSIONS"]}
+check(len(_lsc) == 6 and _host and _jm.get("orre_m21", {}).get("completed_flag") == "beat_orre_champion",
+      f"S5: the sky arena - the League's host, five walk-ins and the Champion's crowd ({len(_lsc)} scenes); the Journal's League step")
+for _f in ("orre_part2", "col_gonzap_realgam"):
+    story.story_flags.pop(_f, None)
+_gs.apply(g)
+story.badges["ORRE"] = _saved_badges
+
+# ---- the story rework S6a (11-24): the fan post-game's villains - Rocket's tower behind the Construction Lot, Terra Cave
+# under Citadark, the Marine Cave by Eagun's Alakazam; each open after the one before, the bosses in turn on their spots
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+for _f in ("beat_orre_champion", "orre_rocket_jj", "orre_rocket_alliance", "orre_rocket_done", "orre_maxie_terra", "orre_archie_marine"):
+    story.story_flags.pop(_f, None)
+
+
+def _figs(area, came):
+    r = route(area, came)
+    return r, [o.get("text") for o in r._figure_items()]
+
+
+r, _f0 = _figs("CONSTRUCTION_LOT", "PYRITE_TOWN")
+story.story_flags["beat_orre_champion"] = True
+r, _f1 = _figs("CONSTRUCTION_LOT", "PYRITE_TOWN")
+story.story_flags["orre_rocket_jj"] = True
+r, _f2 = _figs("CONSTRUCTION_LOT", "PYRITE_TOWN")
+story.story_flags["orre_rocket_alliance"] = True
+r, _f3 = _figs("CONSTRUCTION_LOT", "PYRITE_TOWN")
+story.story_flags["orre_rocket_done"] = True
+r, _f4 = _figs("CONSTRUCTION_LOT", "PYRITE_TOWN")
+check(len(_TMJ["CONSTRUCTION_LOT"]["floors"]) == 4 and "TEAM ROCKET JESSIE & JAMES" not in _f0 and "TEAM ROCKET JESSIE & JAMES" in _f1
+      and "TEAM LEADERS ARCHIE & MAXIE" in _f2 and "BOSS GIOVANNI" in _f3 and "ARMOURED MEWTWO" in _f4,
+      "S6a: Rocket's tower - three floors behind the Lot after the League: Jessie & James, Archie & Maxie, Giovanni, then Mewtwo breaks free")
+story.story_flags.pop("orre_rocket_done", None)
+story.story_flags["orre_rocket_done"] = True
+r, _c1 = _figs("XD_CITADARK_ISLE", "GATEON_PORT")
+story.story_flags["orre_maxie_terra"] = True
+r, _c2 = _figs("XD_CITADARK_ISLE", "GATEON_PORT")
+check(len(_TMJ["XD_CITADARK_ISLE"]["floors"]) == 9 and "TEAM MAGMA LEADER MAXIE" in _c1 and "GROUDON" not in _c1
+      and "GROUDON" in _c2 and "TEAM MAGMA LEADER MAXIE" not in _c2,
+      f"S6a: Terra Cave under Citadark after the tower - Maxie, then Groudon on his spot")
+t = town("AGATE_VILLAGE", "PYRITE_TOWN")
+_ala = [o for o in _SP["AGATE_VILLAGE"]["travel_options"] if o.get("door") == "alakazam"]
+_ok_ala = bool(_ala) and t._check_menu_condition(_ala[0].get("condition"))
+r, _m1 = _figs("MARINE_CAVE", "AGATE_VILLAGE")
+story.story_flags["orre_archie_marine"] = True
+r, _m2 = _figs("MARINE_CAVE", "AGATE_VILLAGE")
+_mtr = [i for i, tr in enumerate(_SP["MARINE_CAVE"]["trainer_pool"]) if story.trainer_on_map("MARINE_CAVE", i, tr)]
+check(_ok_ala and isinstance(r, _DS) and "TEAM AQUA LEADER ARCHIE" in _m1 and "KYOGRE" in _m2 and len(_mtr) == 2
+      and "elder" in _TMJ["AGATE_VILLAGE"]["rooms"] and any(p == "door:alakazam" for p in _TMJ["AGATE_VILLAGE"]["rooms"]["elder"]["people"]),
+      f"S6a: the Marine Cave by Eagun's Alakazam after the tower - two Aqua grunts, Archie, then Kyogre")
+for _f in ("beat_orre_champion", "orre_rocket_jj", "orre_rocket_alliance", "orre_rocket_done", "orre_maxie_terra", "orre_archie_marine"):
+    story.story_flags.pop(_f, None)
+
+
 
 g.walk_towns = False
 print(f"##### {fails} failures")

@@ -75,10 +75,10 @@ def words(story):
     and the other team's: {other_team}, {other_team_short}, {other_leader}, {other_admin}."""
     v = info(story)
     if not v:
-        return dict(NEUTRAL, admin="Tabitha/Shelly", other_team="Team Aqua/Magma", other_team_short="Aqua/Magma",
+        return dict(NEUTRAL, admin="Tabitha/Shelly", admin_b="Courtney/Matt", other_team="Team Aqua/Magma", other_team_short="Aqua/Magma",
                     other_leader="Archie/Maxie", other_admin="Shelly/Tabitha")
     o = VERSIONS["ALPHA_SAPPHIRE" if v["key"] == "OMEGA_RUBY" else "OMEGA_RUBY"]
-    return dict({t: v[t] for t in TOKENS}, admin=v["admin_a"][0], other_team=o["team"], other_team_short=o["team_short"],
+    return dict({t: v[t] for t in TOKENS}, admin=v["admin_a"][0], admin_b=v["admin_b"][0], other_team=o["team"], other_team_short=o["team_short"],
                 other_leader=o["leader"], other_admin=o["admin_a"][0])
 
 

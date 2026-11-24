@@ -117,7 +117,7 @@
     "hoenn_rival_lost": ["{rival_name}: Ha! Practice your math and try again!"],
         "hoenn_devon_parts_stolen": ["A Devon researcher runs up to you, out of breath.", "Researcher: A {team} grunt stole our Devon Parts!", "Researcher: He ran east toward Rusturf Tunnel on Route 116. Please get them back!"],
         "hoenn_rusturf_won": ["The grunt gave back the Devon Parts... and Mr. Briney's Wingull, Peeko!", "Peeko flew happily home to Mr. Briney. Take the Devon Parts back to Rustboro!"],
-        "hoenn_woods_won": ["Grunt: Fine, keep your stupid papers!", "Devon Researcher: Thank you! They wanted the papers for our new parts.", "Devon Researcher: Please take this Exp. Share. It shares battle experience with your team!"],
+        "hoenn_woods_won": ["Grunt: Fine, keep your stupid papers!"],
         "hoenn_museum_stern": ["Dock: Captain Stern went to the Oceanic Museum to look at an exhibit.", "Dock: Could you bring him the Devon Parts there?"]
     },
   "HOENN_MAGMA_HIDEOUT_PERCENTAGES": { "72": 15, "278": 17, "279": 17, "129": 17, "320": 17, "120": 17 },
@@ -783,9 +783,9 @@
       ],
       "explore_options": [
         {"text": "Go back to Mauville together", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "GOLD", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: The Professor's safe! I'm heading back to Mauville. Want to come along?", "{rival_name}: Great! Let's go together!"], "flag": "rival_mauville_ride", "travel": "MAUVILLE_CITY"}},
-        {"text": "I'll walk, thanks", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "BLUE", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: Okay! Exploring Meteor Falls and Route 115 on the way? See you in Mauville, then!"], "flag": "rival_mauville_ride"}},{"text": "Professor Cozmo", "door": "cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
+        {"text": "I'll walk, thanks", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "BLUE", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: Okay! Exploring Meteor Falls and Route 115 on the way? See you in Mauville, then!"], "flag": "rival_mauville_ride"}},{"text": "Professor Cozmo", "door": "cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}, "condition": {"any": ["not:heard_cozmo", "meteor_falls_cleared"]}}, 
         { "text": "Heal", "action": "HEAL" }, {"text": "Shop", "action": "SHOP"},
-        { "text": "Talk to Cozmo", "door": "cozmo", "action": "NPC", "target": "professor_cozmo" },
+        { "text": "Talk to Cozmo", "door": "cozmo", "action": "NPC", "target": "professor_cozmo", "condition": {"any": ["not:heard_cozmo", "meteor_falls_cleared"]} },
         {"text": "Move Reminder", "door": "reminder", "action": "EVENT", "event": { "quips": "move_reminder","lines": ["Move Reminder: Want me to remind your Pokemon of a move it forgot? Ha! I wish.", "Move Reminder: These days every Pokemon remembers every move it ever learned. Just pick them in the Summary!", "Move Reminder: Put me right out of business. I'm thinking of opening a Berry stand instead."]}}, 
         { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" }
       ],
@@ -876,7 +876,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": "mossdeep_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"battle_options": {"double": true}, "name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "DIVE_GEAR": 1, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"battle_options": {"double": true}, "name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         {"text": "Route 124", "target_area": "HOENN_ROUTE_124"},
         {"text": "Route 125", "target_area": "HOENN_ROUTE_125"},
@@ -2506,7 +2506,7 @@
       "trainer_pool": [
         {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [262, 322, 109], "levels": [23, 23, 23], "rewards": {"balls": 3}},
         {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [262, 318, 88], "levels": [23, 23, 23], "rewards": {"balls": 3}},
-        {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 322], "rewards": {"balls": 10, "METEORITE": 1}, "is_boss_battle": true, "victory_flag": "meteor_falls_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [262, 322], "ALPHA_SAPPHIRE": [262, 318]}, "levels": [23, 23]},
+        {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 322], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "meteor_falls_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [262, 322], "ALPHA_SAPPHIRE": [262, 318]}, "levels": [23, 23]},
         { "rematch": {"source": "Emerald", "tiers": [{"team": [308, 297], "levels": [43, 43], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [46, 46], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [49, 49], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [52, 52], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}], "needs": {"badges": 5}},"battle_options": {"double": true}, "name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "oldman.png", "team": [308, 297], "levels": [47, 47], "rewards": {"balls": 10}},
         {"name": "Dragon Tamer Nicolas", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [330], "levels": [47], "rewards": {"balls": 3}},
         {"name": "Battle Girl Tess", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [620], "levels": [46], "rewards": {"balls": 3}},
@@ -2646,7 +2646,7 @@
       "trainer_pool": [
         {"name": "Team Grunt (lobby)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [322, 262], "levels": [28, 28], "team_by_version": {"OMEGA_RUBY": [322, 262], "ALPHA_SAPPHIRE": [318, 262]}, "rewards": {"balls": 3}, "villain": "grunt"},
         {"name": "Team Grunt (upstairs)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [42], "levels": [30], "team_by_version": {"OMEGA_RUBY": [42], "ALPHA_SAPPHIRE": [42]}, "rewards": {"balls": 3}, "villain": "grunt"},
-        {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323], "rewards": {"balls": 10, "MYSTERY_EGG": 1}, "is_boss_battle": true, "victory_flag": "weather_institute_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [32]}
+        {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "weather_institute_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [32]}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
@@ -2789,7 +2789,7 @@
       "wild_pool_percentages": "HOENN_SEAFLOOR_CAVERN_PERCENTAGES", "rock_smash_pool_percentages": "HOENN_SEAFLOOR_CAVERN_ROCK_SMASH_PERCENTAGES", "surf_pool_percentages": "HOENN_SEAFLOOR_CAVERN_SURF_PERCENTAGES",
       "min_rounds": 4,
       "trainer_pool": [{"name": "Team Grunt (room 1)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [322], "levels": [41], "team_by_version": {"OMEGA_RUBY": [322], "ALPHA_SAPPHIRE": [318]}, "rewards": {"balls": 3}, "villain": "grunt", "dialogue": {"player_won": ["Grunt: The boss is already deep inside... You'll never make it in time!"]}}, {"name": "Team Grunt (room 3)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [110], "levels": [41], "team_by_version": {"OMEGA_RUBY": [110], "ALPHA_SAPPHIRE": [89]}, "rewards": {"balls": 3}, "villain": "grunt", "dialogue": {"player_won": ["Grunt: The boss is already deep inside... You'll never make it in time!"]}}, {"name": "Team Grunt (room 3 b)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [262, 110], "levels": [38, 40], "team_by_version": {"OMEGA_RUBY": [262, 110], "ALPHA_SAPPHIRE": [262, 89]}, "rewards": {"balls": 3}, "villain": "grunt", "dialogue": {"player_won": ["Grunt: The boss is already deep inside... You'll never make it in time!"]}}, {"name": "Team Grunt (room 4)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [42, 262], "levels": [38, 38], "rewards": {"balls": 3}, "villain": "grunt", "dialogue": {"player_won": ["Grunt: The boss is already deep inside... You'll never make it in time!"]}}, {"name": "Team Grunt (room 4 b)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [318, 42], "levels": [38, 38], "rewards": {"balls": 3}, "villain": "grunt", "dialogue": {"player_won": ["Grunt: The boss is already deep inside... You'll never make it in time!"]}},
-        {"name": "Aqua Leader Archie", "class": "BOSS", "sprite": "archie.png", "team": [262, 110, 169, 323], "rewards": {"balls": 20, "MASTER_BALL": 1}, "is_boss_battle": true, "victory_flag": "seafloor_cavern_cleared", "dialogue": {"intro": ["{leader}: You're too late! With the {orb}, {legend} will awaken!", "{team} will {goal}, and nothing can stop us!"], "player_won": ["{leader}: It doesn't matter... the {orb} is already shining!", "Rise, {legend}! Show us your primal power!"]}, "villain": "leader", "movesets": {"262": ["TACKLE", "HOWL", "SAND-ATTACK", "BITE"], "42": ["SUPERSONIC", "ASTONISH", "BITE", "WING-ATTACK"], "319": ["CRUNCH", "FOCUS-ENERGY", "RAGE", "SCARY-FACE"]}, "team_by_version": {"OMEGA_RUBY": [262, 110, 169, 323], "ALPHA_SAPPHIRE": [262, 89, 169, 319]}, "levels": [41, 41, 41, 43]}
+        {"name": "Aqua Leader Archie", "class": "BOSS", "sprite": "archie.png", "team": [262, 110, 169, 323], "rewards": {"balls": 20, "MASTER_BALL": 1}, "is_boss_battle": true, "victory_flag": "seafloor_cavern_cleared", "dialogue": {"intro": ["{leader}: You're too late! With the {orb}, {legend} will awaken!", "{team} will {goal}, and nothing can stop us!"], "player_won": ["{leader}: It doesn't matter... the {orb} is already shining!", "Rise, {legend}! Show us your primal power!"]}, "villain": "leader", "movesets": {"262": ["TACKLE", "HOWL", "SAND-ATTACK", "BITE"], "319": ["CRUNCH", "FOCUS-ENERGY", "RAGE", "SCARY-FACE"], "169": ["SUPERSONIC", "ASTONISH", "BITE", "WING-ATTACK"], "323": ["CRUNCH", "FOCUS-ENERGY", "RAGE", "SCARY-FACE"]}, "team_by_version": {"OMEGA_RUBY": [262, 110, 169, 323], "ALPHA_SAPPHIRE": [262, 89, 169, 319]}, "levels": [41, 41, 41, 43]}
       ],
       "route_menu": [{"text": "TM149 EARTHQUAKE", "action": "EVENT", "found": true, "flag_condition": "not got_tm106_seafloor", "event": {"lines": ["There's a TM lying in the deepest part of the cavern!"], "gift_item": {"TM149": 1}, "flag": "got_tm106_seafloor"}}, {"text": "TM188 SCALD", "action": "EVENT", "found": true, "flag_condition": "not got_tm107_seafloor", "event": {"lines": ["A TM, washed up past the currents!"], "gift_item": {"TM188": 1}, "flag": "got_tm107_seafloor"}},
         { "text": "STOP {leader}", "action": "TRAINER", "condition": "has_trainers" },
@@ -2949,7 +2949,7 @@
           "class": "ROCKET_LEADER",
           "sprite": "archie.png",
           "team": [318, 41, 261],
-          "rewards": { "balls": 10, "SUPER_ROD": 1 },
+          "rewards": { "balls": 10 },
           "is_boss_battle": true,
           "victory_flag": "oceanic_museum_cleared",
           "dialogue": {
@@ -2973,7 +2973,7 @@
       "battle_type": "indoor",
       "backgrounds": {  },
       "min_rounds": 0,
-      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The rocket fuel is ours! Stand aside!"], "player_won": ["Grunt: No way!"], "player_lost": ["Grunt: Magma rules!"]}, "when_flags": ["badge_mind_earned"], "villain": "grunt"}, {"name": "Magma Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 42, 262], "rewards": {"balls": 5}, "dialogue": {"intro": ["Tabitha: Hehehe! With this fuel, Mt. Chimney will erupt!"], "player_won": ["Tabitha: Leader Maxie won't be happy..."], "player_lost": ["Tabitha: Hehehe!"]}, "when_flags": ["badge_mind_earned"], "villain": "admin_a"}, {"name": "Magma Leader Maxie", "class": "ROCKET_LEADER", "sprite": "maxie.png", "team": [262, 42, 323], "rewards": {"balls": 10, "RARE_CANDY": 2}, "is_boss_battle": true, "battle_options": {"double": true, "partner": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [375, 227, 306], "levels": [42, 43, 44]}, "second_trainer": {"name": "Tabitha", "villain": "admin_a", "villain_by_version": {"OMEGA_RUBY": "admin_a", "ALPHA_SAPPHIRE": "admin_b"}, "team": [323, 262, 42], "levels": [36, 38, 40], "rewards": {"balls": 3}}}, "victory_flag": "space_center_cleared", "dialogue": {"intro": ["{leader}: {team} needs the Space Center's power. Stand aside!"], "player_won": ["{leader}: You're tougher than you look..."]}, "when_flags": ["badge_mind_earned"], "villain": "leader", "movesets": {"262": ["SAND-ATTACK", "BITE", "ODOR-SLEUTH", "ROAR"], "42": ["SUPERSONIC", "ASTONISH", "BITE", "WING-ATTACK"], "323": ["TACKLE", "FOCUS-ENERGY", "EMBER", "MAGNITUDE"]}}, {"name": "Team Magma Grunt", "spot_name": "Team Grunts (Delta)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 262, 262, 262, 262], "levels": [25, 25, 25, 25, 25], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [262, 262, 262, 262, 262], "ALPHA_SAPPHIRE": [262, 262, 262, 262, 262]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}, {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 2F)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 262, 110], "levels": [55, 51, 51], "rewards": {"balls": 5}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [323, 262, 110], "ALPHA_SAPPHIRE": [319, 262, 89]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}],
+      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The rocket fuel is ours! Stand aside!"], "player_won": ["Grunt: No way!"], "player_lost": ["Grunt: {team} rules!"]}, "when_flags": ["badge_mind_earned"], "villain": "grunt"}, {"name": "Magma Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 42, 262], "rewards": {"balls": 5}, "dialogue": {"intro": ["Admin: Hehehe! With this fuel, nothing can stop {team} now!"], "player_won": ["Admin: {leader} won't be happy..."], "player_lost": ["Admin: Hehehe!"]}, "when_flags": ["badge_mind_earned"], "villain": "admin_a"}, {"name": "Magma Leader Maxie", "class": "ROCKET_LEADER", "sprite": "maxie.png", "team": [262, 42, 323], "rewards": {"balls": 10, "RARE_CANDY": 2}, "is_boss_battle": true, "battle_options": {"double": true, "partner": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [375, 227, 306], "levels": [42, 43, 44]}, "second_trainer": {"name": "Tabitha", "villain": "admin_a", "villain_by_version": {"OMEGA_RUBY": "admin_a", "ALPHA_SAPPHIRE": "admin_b"}, "team": [323, 262, 42], "levels": [36, 38, 40], "rewards": {"balls": 3}}}, "victory_flag": "space_center_cleared", "dialogue": {"intro": ["{leader}: {team} needs the Space Center's power. Stand aside!"], "player_won": ["{leader}: You're tougher than you look..."]}, "when_flags": ["badge_mind_earned"], "villain": "leader", "movesets": {"262": ["SAND-ATTACK", "BITE", "ODOR-SLEUTH", "ROAR"], "42": ["SUPERSONIC", "ASTONISH", "BITE", "WING-ATTACK"], "323": ["TACKLE", "FOCUS-ENERGY", "EMBER", "MAGNITUDE"]}}, {"name": "Team Magma Grunt", "spot_name": "Team Grunts (Delta)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 262, 262, 262, 262], "levels": [38, 38, 38, 38, 38], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [262, 262, 262, 262, 262], "ALPHA_SAPPHIRE": [262, 262, 262, 262, 262]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}, {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 2F)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 262, 110], "levels": [44, 42, 42], "rewards": {"balls": 5}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [323, 262, 110], "ALPHA_SAPPHIRE": [319, 262, 89]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}],
       "route_menu": [
         { "text": "STOP TEAM MAGMA", "action": "TRAINER", "condition": "has_trainers" },
         { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit" }
@@ -2992,7 +2992,7 @@
         {"name": "Team Grunt (1F)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [262], "levels": [37], "team_by_version": {"OMEGA_RUBY": [262], "ALPHA_SAPPHIRE": [262, 42]}, "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The submarine already left! You're too late!"], "player_won": ["Grunt: Maybe not too late..."], "player_lost": ["Grunt: Told you!"]}, "villain": "grunt", "levels_by_version": {"OMEGA_RUBY": [37], "ALPHA_SAPPHIRE": [34, 36]}},
         {"name": "Team Grunt (B1F)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [262, 42], "levels": [34, 36], "team_by_version": {"OMEGA_RUBY": [262, 42], "ALPHA_SAPPHIRE": [262]}, "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: How did you find our hideout?!"], "player_won": ["Grunt: Abandon ship!"], "player_lost": ["Grunt: Get out of here!"]}, "villain": "grunt", "levels_by_version": {"OMEGA_RUBY": [34, 36], "ALPHA_SAPPHIRE": [37]}},
         {"name": "Team Grunt (sub room)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [322], "levels": [37], "team_by_version": {"OMEGA_RUBY": [322], "ALPHA_SAPPHIRE": [318]}, "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The submarine already left! You're too late!"], "player_won": ["Grunt: Maybe not too late..."], "player_lost": ["Grunt: Told you!"]}, "villain": "grunt"},
-        {"name": "Admin Matt", "class": "ROCKET_LEADER", "sprite": "aqua_grunt.png", "team": [323], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "aqua_hideout_cleared", "dialogue": {"intro": ["Matt: Hoohahah! The boss is already on his way to the Seafloor Cavern!", "Matt: You'll have to get past me first!"], "player_won": ["Matt: Hoo! You're strong! Fine, take this... the boss won't miss it.", "You found a MASTER BALL in Team Aqua's storage room!"], "player_lost": ["Matt: Hoohahah! Off you go!"]}, "villain": "admin_b", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [39]},
+        {"name": "Admin Matt", "class": "ROCKET_LEADER", "sprite": "aqua_grunt.png", "team": [323], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "aqua_hideout_cleared", "dialogue": {"intro": ["Admin: Hoohahah! The boss is already on his way to the Seafloor Cavern!", "Admin: You'll have to get past me first!"], "player_won": ["Admin: Hoo! You're strong! Fine, go on... the boss is long gone."], "player_lost": ["Matt: Hoohahah! Off you go!"]}, "villain": "admin_b", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [39]},
         {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 1)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [110, 322], "levels": [49, 49], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [110, 322], "ALPHA_SAPPHIRE": [89, 318]}, "when_flags": ["beat_hoenn_champion", "delta_courtney_mossdeep", "delta_matt_mossdeep"]},
         {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 2)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [322, 110], "levels": [49, 49], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [322, 110], "ALPHA_SAPPHIRE": [42]}, "levels_by_version": {"OMEGA_RUBY": [49, 49], "ALPHA_SAPPHIRE": [51]}, "when_flags": ["beat_hoenn_champion", "delta_courtney_mossdeep", "delta_matt_mossdeep"]},
         {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 3)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262], "levels": [51], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [262], "ALPHA_SAPPHIRE": [262, 42]}, "levels_by_version": {"OMEGA_RUBY": [51], "ALPHA_SAPPHIRE": [48, 50]}, "when_flags": ["beat_hoenn_champion", "delta_courtney_mossdeep", "delta_matt_mossdeep"]},
@@ -3030,14 +3030,14 @@
     {"id": "hoenn_m2", "type": "MAIN", "title": "Rival Showdown", "description": "Professor Birch's kid, {rival_name}, is on Route 103, north of Oldale Town. Go and say hello!", "condition": {"required_region": "HOENN", "flag": "hoenn_birch_thanked", "flag_not": "hoenn_rival_103"}, "completed_flag": "hoenn_rival_103", "target": "HOENN_ROUTE_103"},
     {"id": "hoenn_m2b", "type": "MAIN", "title": "A Pokédex", "description": "Head back to Birch's lab in Littleroot Town. He has something for you after that battle!", "condition": {"required_region": "HOENN", "flag": "hoenn_rival_103", "flag_not": "received_pokedex_hoenn"}, "completed_flag": "received_pokedex_hoenn", "target": "LITTLEROOT_TOWN", "reward": "Pokédex + 10 Poké Balls"},
     {"id": "hoenn_m2c", "type": "MAIN", "title": "Visit Dad", "description": "Your dad, Norman, is the Gym Leader of Petalburg City, west past Route 102. Go and see him!", "condition": {"required_region": "HOENN", "flag": "received_pokedex_hoenn", "flag_not": "helped_wally"}, "completed_flag": "helped_wally", "target": "PETALBURG_CITY"},
-    {"id": "hoenn_m2d", "type": "MAIN", "title": "Trouble in the Woods", "description": "A {team} grunt is bothering a researcher in Petalburg Woods, on the way to Rustboro City. Stop them!", "condition": {"required_region": "HOENN", "flag": "helped_wally", "region_badges_less": 1, "flag_not": "woods_boss_defeated"}, "completed_flag": "woods_boss_defeated", "target": "HOENN_PETALBURG_WOODS", "reward": "Exp. Share"},
+    {"id": "hoenn_m2d", "type": "MAIN", "title": "Trouble in the Woods", "description": "A {team} grunt is bothering a researcher in Petalburg Woods, on the way to Rustboro City. Stop them!", "condition": {"required_region": "HOENN", "flag": "helped_wally", "region_badges_less": 1, "flag_not": "woods_boss_defeated"}, "completed_flag": "woods_boss_defeated", "target": "HOENN_PETALBURG_WOODS", "reward": "Lucky Egg"},
     {"id": "hoenn_m3", "type": "MAIN", "title": "Stone Badge", "description": "Head through Petalburg Woods to Rustboro City and defeat Roxanne at the Gym.", "condition": {"required_region": "HOENN", "region_badges_less": 1, "flag": "woods_boss_defeated"}, "completed_flag": "badge_stone_earned", "target": "RUSTBORO_CITY", "reward": "Stone Badge", "steps": [{"area": "HOENN_PETALBURG_WOODS", "floor": 0, "at": [14, 5], "label": "Route 104", "when": "woods_boss_defeated", "done": "route104_grunt_report"}]},
     {
       "id": "hoenn_m4",
       "type": "MAIN",
       "title": "Devon Parts",
       "description": "A {team} grunt stole the Devon Parts! Get them back in Rusturf Tunnel on Route 116, then return them to Mr. Stone in Rustboro.",
-      "condition": { "required_region": "HOENN", "flag_not": "met_mr_stone", "region_badges_min": 1 },
+      "condition": { "required_region": "HOENN", "flag_not": "met_mr_stone", "flag": "heard_devon_parts_stolen" },
       "completed_flag": "met_mr_stone",
       "target": "HOENN_RUSTURF_TUNNEL",
       "steps": [{"area": "HOENN_ROUTE_116", "floor": 0, "at": [47, 8], "label": "Rusturf Tunnel", "done": {"any": ["rusturf_west_reached", "rusturf_rescued"]}}, {"area": "HOENN_RUSTURF_TUNNEL", "floor": 0, "at": [14, 5], "label": "Battle", "done": "rusturf_rescued"}, {"area": "RUSTBORO_CITY", "room": "devon_3", "at": [17, 5], "label": "Mr. Stone", "done": "met_mr_stone"}]
@@ -3088,7 +3088,7 @@
       "id": "hoenn_m7c",
       "type": "MAIN",
       "title": "Meteor Falls",
-      "description": "{team} took Professor Cozmo to Meteor Falls, east of Fallarbor Town. Beat their admin there to save him. Mt. Chimney's Cable Car won't run until you do!",
+      "description": "{team} took Professor Cozmo to Meteor Falls, west of Fallarbor Town along Route 114. Beat their admin there to save him. Mt. Chimney's Cable Car won't run until you do!",
       "condition": { "required_region": "HOENN", "region_badges_min": 3, "flag": "heard_cozmo", "flag_not": "meteor_falls_cleared" },
       "completed_flag": "meteor_falls_cleared",
       "target": "HOENN_METEOR_FALLS"
@@ -3122,16 +3122,6 @@
       "reward": "Balance Badge"
     },
     {
-      "id": "hoenn_m12",
-      "type": "MAIN",
-      "title": "Weather Institute",
-      "description": "{team} has taken over the Weather Institute on Route 119!",
-      "condition": { "required_region": "HOENN", "flag": "badge_balance_earned", "flag_not": "weather_institute_cleared" },
-      "completed_flag": "weather_institute_cleared",
-      "reward": "Castform",
-      "steps": [{"area": "PETALBURG_CITY", "room": "wally_home", "at": [3, 4], "label": "Wally's father", "done": "got_surf_hoenn"}]
-    },
-    {
       "id": "hoenn_m11",
       "type": "MAIN",
       "title": "Mega Evolution",
@@ -3141,6 +3131,16 @@
       "reward": "Mega Bracelet + {eon}",
       "steps": [{"area": "PETALBURG_CITY", "room": "wally_home", "at": [3, 4], "label": "Wally's father", "done": "got_surf_hoenn"}],
       "target": "HOENN_ROUTE_118"
+    },
+    {
+      "id": "hoenn_m12",
+      "type": "MAIN",
+      "title": "Weather Institute",
+      "description": "{team} has taken over the Weather Institute on Route 119!",
+      "condition": { "required_region": "HOENN", "flag": ["badge_balance_earned", "got_mega_bracelet"], "flag_not": "weather_institute_cleared" },
+      "completed_flag": "weather_institute_cleared",
+      "reward": "Castform",
+      "steps": [{"area": "PETALBURG_CITY", "room": "wally_home", "at": [3, 4], "label": "Wally's father", "done": "got_surf_hoenn"}]
     },
     {
       "id": "hoenn_m14",
@@ -3257,7 +3257,7 @@
     {
       "id": "hoenn_d2",
       "type": "MAIN",
-      "title": "Mega Rayquaza",
+      "title": "Rayquaza",
       "description": "Call Rayquaza at the top of the Sky Pillar.",
       "condition": { "required_region": "HOENN", "flag": "delta_zinnia_defeated", "flag_not": "rayquaza_awakened" },
       "completed_flag": "rayquaza_awakened",
@@ -3276,7 +3276,7 @@
       "id": "hoenn_d4",
       "type": "MAIN",
       "title": "The Other Orb",
-      "description": "{other_legend} stirs in the Cave of Origin. Bring the {other_orb}!",
+      "description": "{other_legend} rests in a cave that has opened since the Delta Episode: Marine Cave off Route 127, or Terra Cave by Route 114. Find it!",
       "condition": { "required_region": "HOENN", "flag": "delta_episode_cleared", "flag_not": "counterpart_legend_caught" },
       "completed_flag": "counterpart_legend_caught",
       "reward": "{other_legend}"
@@ -3288,7 +3288,7 @@
       "description": "Help Mr. Briney rescue the kidnapped Wingull in Rusturf Tunnel and clear the path.",
       "condition": { "required_region": "HOENN", "visited": "HOENN_RUSTURF_TUNNEL", "flag_not": "rusturf_rescued" },
       "completed_flag": "rusturf_rescued",
-      "reward": "HM Surf"
+      "reward": "Aggronite"
     },
     {
       "id": "hoenn_s3",
@@ -3299,7 +3299,7 @@
       "completed_flag": "abandoned_ship_cleared",
       "reward": "DeepSeaScale/Tooth"
     },
-    {"id": "hoenn_s4", "type": "SIDE", "title": "Shoal Cave", "description": "Beat every trainer in Shoal Cave, between Pacifidlog Town and Route 125.", "condition": {"required_region": "HOENN", "visited": "HOENN_SHOAL_CAVE", "flag_not": "shoal_cave_cleared"}, "completed_flag": "shoal_cave_cleared", "target": "HOENN_SHOAL_CAVE"},
+    {"id": "hoenn_s4", "type": "SIDE", "title": "Shoal Cave", "description": "Beat every trainer in Shoal Cave, north of Route 125 off Mossdeep City.", "condition": {"required_region": "HOENN", "visited": "HOENN_SHOAL_CAVE", "flag_not": "shoal_cave_cleared"}, "completed_flag": "shoal_cave_cleared", "target": "HOENN_SHOAL_CAVE"},
     {
       "id": "hoenn_s5",
       "type": "SIDE",
@@ -3313,7 +3313,7 @@
       "type": "SIDE",
       "title": "Regi Trio Awakening",
       "description": "Solve the braille puzzles and awaken Regirock, Regice, and Registeel.",
-      "condition": { "required_region": "HOENN", "badges_min": 7, "flag_not": "regi_trio_awakened" },
+      "condition": { "required_region": "HOENN", "flag_not": "regi_trio_awakened", "flag": "beat_hoenn_champion", "item": "HM_DIVE" },
       "completed_flag": "regi_trio_awakened",
       "reward": "Regi encounters"
     },
@@ -3364,7 +3364,7 @@
     {"id": "hoenn_s26", "type": "SIDE", "title": "Southern Island", "description": "A Pokémon of legend rests on Southern Island.", "condition": {"required_region": "HOENN", "visited": "HOENN_SOUTHERN_ISLAND"}, "completed_flag": "southern_island_eon_caught", "target": "HOENN_SOUTHERN_ISLAND"},
     {"id": "hoenn_s27", "type": "SIDE", "title": "Wally at the Battle Frontier", "description": "Wally is training at the Battle Frontier, by the Battle Maison.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER", "flag": "beat_hoenn_champion"}, "completed_flag": "battle_resort_wally", "target": "HOENN_BATTLE_FRONTIER"},
     {"id": "hoenn_s28", "type": "SIDE", "title": "The Battle Frontier", "description": "Win a streak at each of the seven facilities, then beat its Frontier Brain.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER"}, "completed_flag": "hoenn_battle_frontier_cleared", "target": "HOENN_BATTLE_FRONTIER"},
-    {"id": "hoenn_s29", "type": "SIDE", "title": "Sea Mauville", "description": "Two Pokémon of legend have been seen at Sea Mauville.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["sea_mauville_lugia", "sea_mauville_ho_oh"], "target": "HOENN_SEA_MAUVILLE", "reward": "Lugia and Ho-Oh"},
+    {"id": "hoenn_s29", "type": "SIDE", "title": "Sea Mauville", "description": "Two Pokémon of legend have been seen at Sea Mauville.", "condition": {"required_region": "HOENN", "flag": ["beat_hoenn_champion", "sea_mauville_open"]}, "completed_flag": ["sea_mauville_lugia", "sea_mauville_ho_oh"], "target": "HOENN_SEA_MAUVILLE", "reward": "Lugia and Ho-Oh"},
     {"id": "hoenn_s30", "type": "SIDE", "title": "Soaring in the Sky", "description": "Play the Eon Flute and fly high over Hoenn. Legends wait in the sky.", "condition": {"required_region": "HOENN", "item": "EON_FLUTE"}, "completed_flag": ["soaring_dialga", "soaring_palkia", "soaring_giratina", "soaring_tornadus", "soaring_thundurus", "soaring_landorus"], "target": "HOENN_SOARING_IN_THE_SKY"},
     {"id": "hoenn_s31", "type": "SIDE", "title": "The Scorched Slab", "description": "Deep in the Scorched Slab, something burns hot.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "scorched_slab_heatran", "target": "HOENN_SCORCHED_SLAB", "reward": "Heatran"},
     {"id": "hoenn_s32", "type": "SIDE", "title": "Crescent Isle", "description": "A Pokémon of good dreams lives on this Mirage spot.", "condition": {"required_region": "HOENN", "visited": "HOENN_CRESCENT_ISLE"}, "completed_flag": "mirage_cresselia", "target": "HOENN_CRESCENT_ISLE", "reward": "Cresselia"},

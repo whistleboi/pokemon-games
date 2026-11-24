@@ -37,4 +37,8 @@ _l = links("ZZ_DOCK")
 check("SLATEPORT_CITY" in _l and "LILYCOVE_CITY" not in _l, f"a route's Sailor EVENT sails you; one whose flag isn't set doesn't ({_l})")
 PROG.pop("ZZ_DOCK", None)
 story.story_flags = _saved
+print("the way-back check counts people's rides too (Mistralton's Cargo Service flight; Unova 11-24)")
+if "LENTIMAS_TOWN" in PROG and "MISTRALTON_CITY" in PROG:
+    check("LENTIMAS_TOWN" in _raw_targets("MISTRALTON_CITY"), f"Mistralton -> Lentimas by the Cargo Service ({_raw_targets('MISTRALTON_CITY')})")
+
 print(f"##### {fails} failures")

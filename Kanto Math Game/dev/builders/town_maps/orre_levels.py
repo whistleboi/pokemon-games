@@ -85,7 +85,9 @@ BANDS = {
     ("post", None): (66, 78, 58, 63),                # after the League
 }
 AG_FLAGS = ("col_fein_due", "col_post_kid", "col_cail_post", "col_gurks_post", "col_post_nett2")
-POST_FLAGS = ("beat_orre_champion", "xd_miror_last_due")
+POST_FLAGS = ("beat_orre_champion", "xd_miror_last_due",   # (S6: the fan post-game - Rocket's tower, the Terra and Marine Caves)
+              "orre_rocket_jj", "orre_rocket_alliance", "orre_rocket_done", "orre_maxie_terra", "orre_archie_marine")
+POST_AREAS = {"MARINE_CAVE"}
 SKIP_NAMES = ("Gym Leader Jasmine",)   # (S3 levels her and the lighthouse)
 
 
@@ -101,7 +103,7 @@ def _flags(gates):
 def group(area, gates, where=""):
     """Which band a battle belongs to: p1, p2, mtb, eagun, ag (Colosseum's after-game) or post (after the League)."""
     fl = _flags(gates)
-    if any(f in POST_FLAGS for f in fl):
+    if any(f in POST_FLAGS for f in fl) or ".gym_league" in where or area in POST_AREAS:   # (the League itself: Elite Four 54-60, Champion 63 - S5)
         return "post"
     if area == "DEEP_COLOSSEUM" or any(f in AG_FLAGS for f in fl) or (area == "ORRE_COLOSSEUM" and "xd_colosseum" in where):
         return "ag"
@@ -185,6 +187,8 @@ def battles(o, area, gates=(), where="", out=None):
     out = [] if out is None else out
     if isinstance(o, dict):
         g = list(gates) + [o[k] for k in GATE_KEYS if k in o]
+        if isinstance(o.get("requirements"), dict) and o["requirements"].get("flag"):   # (a Gym's own gate: Birch's, after Greevil)
+            g.append(o["requirements"]["flag"])
         if isinstance(o.get("levels"), list) and o["levels"] and all(isinstance(x, int) for x in o["levels"]):
             if o.get("name") not in SKIP_NAMES:
                 out.append((o, g, where))

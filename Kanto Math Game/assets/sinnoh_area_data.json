@@ -49,17 +49,8 @@
     "4007": { "id": 479, "form": "mow", "name": "Rotom-Mow" }
   },
   "GAME_TEXT": {
-    "sinnoh_rowan_intro": [
-      "Professor Rowan: You there! Are you familiar with Pokémon?",
-      "They are creatures of mystery, harboring unknown potential.",
-      "In my briefcase are three Pokémon. You may choose one.",
-      "Consider it a loan — until you prove yourself worthy.",
-      "Professor Rowan: Choose wisely. Turtwig, Chimchar, or Piplup."
-    ],
-    "sinnoh_rowan_starter": [
-      "Professor Rowan: Your journey begins now. Do not disappoint me.",
-      "You received a Pokédex and 5 Poké Balls!"
-    ],
+    "sinnoh_rowan_intro": ["By the shore of Lake Verity lies a briefcase someone left behind.", "Wild Starly swoop down from the trees! Inside the briefcase are three Poke Balls...", "There's no time to think: pick one! Turtwig, Chimchar or Piplup?"],
+    "sinnoh_rowan_starter": ["Your new partner drove the wild Starly off!", "Whose briefcase was that? Professor Rowan's lab is in Sandgem Town, to the south."],
     "sinnoh_rowan_congrats": [
       "Professor Rowan: Incredible. You are the Sinnoh Champion.",
       "You have fulfilled every expectation I placed in you.",
@@ -90,25 +81,13 @@
       "And at the top of Mt. Coronet... the Spear Pillar.",
       "That is where Team Galactic intends to awaken them."
     ],
-    "sinnoh_celestic_elder": [
-      "Elder: You carry the Old Charm from Cynthia's grandmother.",
-      "Long ago, two beings shaped the world at Spear Pillar.",
-      "The lake guardians — Uxie, Mesprit, and Azelf — keep them in balance.",
-      "If Team Galactic captures the lake trio, that balance shatters.",
-      "Please, protect the lakes.",
-      "The elder taught you Surf. You can now use SURF outside of battle!"
-    ],
+    "sinnoh_celestic_elder": ["Elder: The painting in our ruins shows the three Pokemon of the lakes.", "Elder: Uxie, Mesprit and Azelf keep the time and space of Sinnoh in balance.", "Elder: If Team Galactic captures them, that balance shatters. Please, protect the lakes."],
     "sinnoh_riley_intro": [
       "Riley: I sensed something unusual in this cave.",
       "Team Galactic is using the Iron Island to harvest energy from Pokémon.",
       "Join me. Together we can drive them out."
     ],
-    "sinnoh_riley_egg": [
-      "Riley: You fought bravely in there.",
-      "Here — take this egg. The Pokémon inside has chosen you.",
-      "Raise it well.",
-      "You received the RIOLU EGG!"
-    ],
+    "sinnoh_riley_egg": ["Riley: You fought bravely in there.", "Riley: Here, take this Riolu. It has chosen you. Raise it well.", "You received a Riolu!"],
     "sinnoh_galactic_jubilife": [
       "Galactic Grunt: Our commander Mars has a message for this city.",
       "The old world must be erased for our new universe to be born!",
@@ -135,8 +114,8 @@
       "The portal to another dimension tears open behind Cyrus...",
       "He steps through — and vanishes."
     ],
-    "sinnoh_mars_intro": ["Mars: You again? I'm Commander Mars of Team Galactic.", "Cyrus-sama's vision will not be stopped by a child!"],
-    "sinnoh_mars_won": ["Mars: How... how can you be so strong?", "This isn't over. Cyrus-sama will see this through!"],
+    "sinnoh_mars_intro": ["Mars: That face...! It brings back bad memories. The Valley Windworks! I caught a whole lot of trouble for that.", "Mars: The Pokemon of this lake is ours now. And you? You're about to get stomped!"],
+    "sinnoh_mars_won": ["Mars: I lost again... First the Windworks, and now Lake Verity. ...Calm down, Mars.", "Mars: Team! We're pulling out! The boss is waiting!"],
     "sinnoh_jupiter_intro": ["Jupiter: Commander Jupiter, at your service — to stop you.", "Lake Acuity is ours. The Galactic Plan is unstoppable."],
     "sinnoh_saturn_intro": ["Saturn: I am Commander Saturn.", "Your interference at the lakes ends here."],
     "sinnoh_cynthia_victory_road": [
@@ -182,7 +161,7 @@
     "sinnoh_mom_newstart_3": ["Mom: Every time you win a battle, put a little prize money aside.", "Mom: Who knows? Maybe one day it'll buy us a house in a whole new region!"],
     "sinnoh_mom_home_1": [
       "Mom: {player_name}! Welcome to our snowy little Twinleaf cottage!",
-      "Mom: Your Hoenn prize money covered it with plenty left for a fireplace.",
+      "Mom: The prize money from your journeys covered it, with plenty left for a fireplace.",
       "Mom: I'm starting to collect houses the way you collect badges!"
     ],
     "sinnoh_mom_home_2": ["Mom: Littleroot, Pallet, New Bark... and now Twinleaf.", "Mom: The mail carrier needs a map just to keep track of my addresses!"],
@@ -1282,7 +1261,7 @@
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
             {"text": "Visit Professor Rowan", "action": "NPC", "target": "professor_rowan", "door": "lab"},
-            {"text": "Talk to Dawn/Lucas", "action": "NPC", "target": "sinnoh_dawn_home", "door": "assistant"}
+            {"text": "Talk to Dawn", "action": "NPC", "target": "sinnoh_dawn_home", "door": "assistant"}
         ],
         "next_area": "SINNOH_ROUTE_202",
         "on_enter_event": null,
@@ -1404,7 +1383,7 @@
         "region": "SINNOH",
         "backgrounds": {"pokecenter": "hearthome_center.png", "pokemart": "hearthome_mart.png", "gym": "battle_gym_hearthome.png"},
         "has_gym": true,
-        "gym": {"requirements": {"badges": 4, "fail_text": "Fantina is at the Contest Hall, admiring performances. She'll return to the gym once you've proven yourself with four badges."}, "trainers": [{"name": "Youngster Donny", "class": "YOUNGSTER", "sprite": "pt_youngster.png", "team": [92, 425], "levels": [20, 22], "rewards": {"balls": 2}}, {"name": "Lass Molly", "class": "LASS", "sprite": "pt_lass.png", "team": [200], "levels": [23], "rewards": {"balls": 2}}, {"name": "School Kid Mackenzie", "class": "SCHOOL_KID", "sprite": "pt_school_kid_f.png", "team": [425, 425], "levels": [21, 21], "rewards": {"balls": 2}}, {"name": "Ace Trainer Allen", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [92, 92, 93], "levels": [21, 22, 24], "rewards": {"balls": 2}}, {"name": "School Kid Chance", "class": "SCHOOL_KID", "sprite": "pt_school_kid_m.png", "team": [92], "levels": [23], "rewards": {"balls": 2}}, {"name": "Ace Trainer Catherine", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [93, 200], "levels": [23, 24], "rewards": {"balls": 2}}, {"name": "Camper Drew", "class": "CAMPER", "sprite": "pt_camper.png", "team": [92, 92, 92], "levels": [27, 27, 27], "rewards": {"balls": 2}}, {"name": "Picnicker Cheyenne", "class": "PICNICKER", "sprite": "pt_picnicker.png", "team": [425, 200], "levels": [28, 28], "rewards": {"balls": 2}}], "leader": {"name": "Fantina", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "fantina.png", "team": [426, 94, 429], "levels": [32, 34, 36], "badge_reward": "RELIC", "victory_flag": "sinnoh_beat_fantina", "dialogue": {"intro": ["Ohohoho! I am Fantina, ze Gym Leader!", "I shall defeat you! Oui, certainement!"], "player_won": ["Mon Dieu! You are fantastique! Take ze Relic Badge!"], "player_lost": ["Ohohoho! Magnifique! You could not beat me!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "TM061": 1}, "movesets": {"426": ["PSYCHIC", "SILVER-WIND", "OMINOUS-WIND", "BATON-PASS"], "94": ["FOCUS-BLAST", "THUNDER", "SHADOW-BALL", "PSYCHIC"], "429": ["SHADOW-BALL", "THUNDERBOLT", "PSYCHIC", "MAGICAL-LEAF"]}}},
+        "gym": {"requirements": {"badges": 4, "fail_text": "Fantina is at the Contest Hall, admiring performances. She'll return to the gym once you've proven yourself with four badges."}, "trainers": [{"name": "Youngster Donny", "class": "YOUNGSTER", "sprite": "pt_youngster.png", "team": [92, 425], "levels": [20, 22], "rewards": {"balls": 2}}, {"name": "Lass Molly", "class": "LASS", "sprite": "pt_lass.png", "team": [200], "levels": [23], "rewards": {"balls": 2}}, {"name": "School Kid Mackenzie", "class": "SCHOOL_KID", "sprite": "pt_school_kid_f.png", "team": [425, 425], "levels": [21, 21], "rewards": {"balls": 2}}, {"name": "Ace Trainer Allen", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [92, 92, 93], "levels": [21, 22, 24], "rewards": {"balls": 2}}, {"name": "School Kid Chance", "class": "SCHOOL_KID", "sprite": "pt_school_kid_m.png", "team": [92], "levels": [23], "rewards": {"balls": 2}}, {"name": "Ace Trainer Catherine", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [93, 200], "levels": [23, 24], "rewards": {"balls": 2}}], "leader": {"name": "Fantina", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "fantina.png", "team": [426, 94, 429], "levels": [32, 34, 36], "badge_reward": "RELIC", "victory_flag": "sinnoh_beat_fantina", "dialogue": {"intro": ["Ohohoho! I am Fantina, ze Gym Leader!", "I shall defeat you! Oui, certainement!"], "player_won": ["Mon Dieu! You are fantastique! Take ze Relic Badge!"], "player_lost": ["Ohohoho! Magnifique! You could not beat me!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "TM061": 1}, "movesets": {"426": ["PSYCHIC", "SILVER-WIND", "OMINOUS-WIND", "BATON-PASS"], "94": ["FOCUS-BLAST", "THUNDER", "SHADOW-BALL", "PSYCHIC"], "429": ["SHADOW-BALL", "THUNDERBOLT", "PSYCHIC", "MAGICAL-LEAF"]}}},
         "travel_options": [
             {"text": "Route 208", "target_area": "SINNOH_ROUTE_208"},
             {"text": "Route 209", "target_area": "SINNOH_ROUTE_209"},
@@ -1526,7 +1505,7 @@
         "region": "SINNOH",
         "backgrounds": {"pokecenter": "canalave_center.png", "pokemart": "canalave_mart.png", "gym": "battle_gym_canalave.png"},
         "has_gym": true,
-        "gym": {"requirements": {"badges": 5, "fail_text": "Byron only accepts challengers with 5 Sinnoh Badges."}, "trainers": [{"name": "Black Belt David", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [208, 208], "levels": [35, 37], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Steelix will crush you!"], "player_won": ["Steel is strong, but you're stronger."]}}, {"name": "Worker Jackson", "class": "WORKER", "sprite": "pt_worker.png", "team": [81, 81, 81], "levels": [34, 34, 34], "rewards": {"balls": 2}, "dialogue": {"intro": ["Byron's Gym runs on hard work!"], "player_won": ["Back to work for me..."]}}, {"name": "Worker Gary", "class": "WORKER", "sprite": "pt_worker.png", "team": [81], "levels": [37], "rewards": {"balls": 2}, "dialogue": {"intro": ["Watch out for the lifts. And for my Magnemite!"], "player_won": ["You've got a spark, kid."]}}, {"name": "Black Belt Ricky", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [208], "levels": [38], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Steelix and I train on Iron Island!"], "player_won": ["More training on the island, I think."]}}, {"name": "Ace Trainer Cesar", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [212], "levels": [40], "rewards": {"balls": 2}, "dialogue": {"intro": ["Byron's the strongest. I'm close behind!"], "player_won": ["Not close enough, it seems."]}}, {"name": "Worker Gerardo", "class": "WORKER", "sprite": "pt_worker.png", "team": [81, 81], "levels": [35, 35], "rewards": {"balls": 2}, "dialogue": {"intro": ["Two Magnemite, double the trouble!"], "player_won": ["Double the trouble for me, then."]}}, {"name": "Ace Trainer Breanna", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [436, 436, 436], "levels": [35, 36, 38], "rewards": {"balls": 2}, "dialogue": {"intro": ["Bronzor can take any hit. Try us!"], "player_won": ["They took every hit... except yours."]}}], "leader": {"name": "Byron", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "byron.png", "team": [436, 208, 411], "levels": [36, 36, 39], "badge_reward": "MINE", "dialogue": {"intro": ["I'm Byron! The Man with the Steel Body!", "My Steel-types are impervious to attack!"], "player_won": ["Hmm! You broke through my steel! The Mine Badge is yours!", "Roark! Your kid is amazing!", "Take this Armor Fossil too. The fossil lab in Oreburgh City can revive it!"], "player_lost": ["Solid as steel! You can't crack my defense!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "HM_STRENGTH": 1, "ARMOR_FOSSIL": 1, "TM093": 1}, "movesets": {"436": ["FLASH-CANNON", "EXTRASENSORY", "CONFUSE-RAY", "HYPNOSIS"], "208": ["GYRO-BALL", "DRAGONBREATH", "ICE-FANG", "SANDSTORM"], "411": ["FLASH-CANNON", "ANCIENT-POWER", "IRON-DEFENSE", "REST"]}}},
+        "gym": {"requirements": {"badges": 5, "fail_text": "Byron only accepts challengers with 5 Sinnoh Badges."}, "trainers": [{"name": "Black Belt David", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [208, 208], "levels": [35, 37], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Steelix will crush you!"], "player_won": ["Steel is strong, but you're stronger."]}}, {"name": "Worker Jackson", "class": "WORKER", "sprite": "pt_worker.png", "team": [81, 81, 81], "levels": [34, 34, 34], "rewards": {"balls": 2}, "dialogue": {"intro": ["Byron's Gym runs on hard work!"], "player_won": ["Back to work for me..."]}}, {"name": "Worker Gary", "class": "WORKER", "sprite": "pt_worker.png", "team": [81], "levels": [37], "rewards": {"balls": 2}, "dialogue": {"intro": ["Watch out for the lifts. And for my Magnemite!"], "player_won": ["You've got a spark, kid."]}}, {"name": "Black Belt Ricky", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [208], "levels": [38], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Steelix and I train on Iron Island!"], "player_won": ["More training on the island, I think."]}}, {"name": "Ace Trainer Cesar", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [212], "levels": [40], "rewards": {"balls": 2}, "dialogue": {"intro": ["Byron's the strongest. I'm close behind!"], "player_won": ["Not close enough, it seems."]}}, {"name": "Worker Gerardo", "class": "WORKER", "sprite": "pt_worker.png", "team": [81, 81], "levels": [35, 35], "rewards": {"balls": 2}, "dialogue": {"intro": ["Two Magnemite, double the trouble!"], "player_won": ["Double the trouble for me, then."]}}, {"name": "Ace Trainer Breanna", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [436, 436, 436], "levels": [35, 36, 38], "rewards": {"balls": 2}, "dialogue": {"intro": ["Bronzor can take any hit. Try us!"], "player_won": ["They took every hit... except yours."]}}], "leader": {"name": "Byron", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "byron.png", "team": [436, 208, 411], "levels": [36, 36, 39], "badge_reward": "MINE", "dialogue": {"intro": ["I'm Byron! The Man with the Steel Body!", "My Steel-types are impervious to attack!"], "player_won": ["Hmm! You broke through my steel! The Mine Badge is yours!", "Roark! Your kid is amazing!", "Take this Armor Fossil too. The fossil lab in Oreburgh City can revive it!"], "player_lost": ["Solid as steel! You can't crack my defense!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "ARMOR_FOSSIL": 1, "TM093": 1}, "movesets": {"436": ["FLASH-CANNON", "EXTRASENSORY", "CONFUSE-RAY", "HYPNOSIS"], "208": ["GYRO-BALL", "DRAGONBREATH", "ICE-FANG", "SANDSTORM"], "411": ["FLASH-CANNON", "ANCIENT-POWER", "IRON-DEFENSE", "REST"]}}},
         "travel_options": [
             {"text": "Route 218", "target_area": "SINNOH_ROUTE_218"},
             {"text": "Iron Island", "target_area": "IRON_ISLAND"},
@@ -1550,7 +1529,7 @@
         "region": "SINNOH",
         "backgrounds": {"pokecenter": "snowpoint_center.png", "pokemart": "snowpoint_mart.png", "gym": "battle_gym_snowpoint.png"},
         "has_gym": true,
-        "gym": {"trainers": [{"name": "Ace Trainer Anton", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [362], "levels": [44], "rewards": {"balls": 2}, "dialogue": {"intro": ["Slide on the ice, then slide into a loss!"], "player_won": ["I slipped up there."]}}, {"name": "Ace Trainer Savannah", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [361, 361, 362], "levels": [39, 40, 42], "rewards": {"balls": 2}, "dialogue": {"intro": ["Candice says focus! I'm focused!"], "player_won": ["I lost focus. Ugh!"]}}, {"name": "Ace Trainer Alicia", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [215, 215], "levels": [40, 43], "rewards": {"balls": 2}, "dialogue": {"intro": ["Sneasel are quick on the ice!"], "player_won": ["You were quicker."]}}, {"name": "Ace Trainer Isaiah", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [221], "levels": [44], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Piloswine loves the cold. Do you?"], "player_won": ["You warmed up fast."]}}, {"name": "Ace Trainer Brenna", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [215, 361, 459], "levels": [40, 40, 41], "rewards": {"balls": 2}, "dialogue": {"intro": ["Ice types don't melt easily!"], "player_won": ["Melted... completely."]}}, {"name": "Ace Trainer Sergio", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [459, 215], "levels": [41, 42], "rewards": {"balls": 2}, "dialogue": {"intro": ["Snover and Sneasel, my snow team!"], "player_won": ["Snowed under. Nice battle."]}}], "leader": {"name": "Candice", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "candice.png", "team": [459, 215, 308, 460], "levels": [38, 38, 40, 42], "badge_reward": "ICICLE", "dialogue": {"intro": ["I'm Candice! I can tell you've come a long way!", "My Ice Pokémon have been waiting for a trainer like you!"], "player_won": ["Wow! You're red-hot! The Icicle Badge is all yours!"], "player_lost": ["Cool! You've been frozen out!"]}, "rewards": {"balls": 10, "RARE_CANDY": 3, "TM046": 1}, "movesets": {"459": ["RAZOR-LEAF", "AVALANCHE", "INGRAIN", "LEER"], "215": ["FEINT-ATTACK", "SLASH", "TAUNT", "AVALANCHE"], "308": ["FORCE-PALM", "BULK-UP", "DETECT", "ICE-PUNCH"], "460": ["WOOD-HAMMER", "SWAGGER", "GRASSWHISTLE", "AVALANCHE"]}}},
+        "gym": {"trainers": [{"name": "Ace Trainer Anton", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [362], "levels": [44], "rewards": {"balls": 2}, "dialogue": {"intro": ["Slide on the ice, then slide into a loss!"], "player_won": ["I slipped up there."]}}, {"name": "Ace Trainer Savannah", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [361, 361, 362], "levels": [39, 40, 42], "rewards": {"balls": 2}, "dialogue": {"intro": ["Candice says focus! I'm focused!"], "player_won": ["I lost focus. Ugh!"]}}, {"name": "Ace Trainer Alicia", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [215, 215], "levels": [40, 43], "rewards": {"balls": 2}, "dialogue": {"intro": ["Sneasel are quick on the ice!"], "player_won": ["You were quicker."]}}, {"name": "Ace Trainer Isaiah", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [221], "levels": [44], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Piloswine loves the cold. Do you?"], "player_won": ["You warmed up fast."]}}, {"name": "Ace Trainer Brenna", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [215, 361, 459], "levels": [40, 40, 41], "rewards": {"balls": 2}, "dialogue": {"intro": ["Ice types don't melt easily!"], "player_won": ["Melted... completely."]}}, {"name": "Ace Trainer Sergio", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [459, 215], "levels": [41, 42], "rewards": {"balls": 2}, "dialogue": {"intro": ["Snover and Sneasel, my snow team!"], "player_won": ["Snowed under. Nice battle."]}}], "leader": {"name": "Candice", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "candice.png", "team": [215, 221, 460, 478], "levels": [40, 40, 42, 44], "badge_reward": "ICICLE", "dialogue": {"intro": ["I'm Candice! I can tell you've come a long way!", "My Ice Pokémon have been waiting for a trainer like you!"], "player_won": ["Wow! You're red-hot! The Icicle Badge is all yours!"], "player_lost": ["Cool! You've been frozen out!"]}, "rewards": {"balls": 10, "RARE_CANDY": 3, "TM046": 1}, "movesets": {"215": ["SLASH", "AERIAL-ACE", "FEINT-ATTACK", "ICE-SHARD"], "221": ["AVALANCHE", "STONE-EDGE", "EARTHQUAKE", "HAIL"], "460": ["AVALANCHE", "WOOD-HAMMER", "WATER-PULSE", "FOCUS-BLAST"], "478": ["BLIZZARD", "DOUBLE-TEAM", "SHADOW-BALL", "PSYCHIC"]}}},
         "travel_options": [
             {"text": "Snowpoint Temple", "target_area": "SNOWPOINT_TEMPLE", "flag_condition": "beat_sinnoh_champion"},
             {"text": "Fight Area", "target_area": "FIGHT_AREA", "condition": "beat_sinnoh_champion"},
@@ -1628,9 +1607,9 @@
         "starter_event": {"walk_up": {"look": "sheet:pt_doctor.png", "with": "sheet:pt_heroine.png", "flag": "sinnoh_rowan_walked_up", "lines": ["Professor Rowan walks over and picks up his briefcase.", "Professor Rowan: ...Hm."]}, "lines": ["{rival_name}: Did you see the red Gyarados on TV? There must be a Pokémon like that in our lake too!", "At Lake Verity you find Professor Rowan and his assistant. They leave in a hurry, forgetting a briefcase.", "Suddenly, wild STARLY swoop down from the trees!", "{rival_name}: The briefcase! There are Poké Balls inside... pick one, quick!"], "boss": {"id": 396, "name": "Starly", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "sinnoh_starly_driven_off", "lines": ["The wild STARLY dives at you!"], "won": ["The STARLY flew off!", "Professor Rowan comes back for his briefcase: 'You used my Pokémon?... Hm.'", "Professor Rowan: 'Come and see me at my lab in Sandgem Town.'", "{rival_name}: Phew! Let's head home first. I want a battle!"]}, "return_to": "TWINLEAF_TOWN", "return_until": "defeated_rival_sinnoh_starter"},
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [453], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [37], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 1", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
-            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [434, 228], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [35, 35], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
+            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [453, 431, 434, 228], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [33, 33, 33, 33], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 42, 198], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [33, 33, 36], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 3", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
-            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [228, 431], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [34, 36], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 4", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]}
+            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 198], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [35, 35], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 4", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]}
         ],
         "wild_levels": {"land": [2, 4]},
         "radar_pool_percentages": "LAKE_VERITY_RADAR_PERCENTAGES"
@@ -1652,7 +1631,7 @@
             {"text": "TM166", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm166_lake_valor_d28r0102_53_46", "event": {"lines": ["A TM (Thunder), lying among the rocks."], "gift_item": {"TM166": 1}, "flag": "got_tm166_lake_valor_d28r0102_53_46"}}
         ],
         "area_boss": {"id": 482, "level": 50, "name": "Azelf", "victory_flag": "LAKE_VALOR_boss_defeated"},
-        "trainer_pool": [],
+        "trainer_pool": [{"name": "Galactic Grunt", "class": "GALACTIC", "team": [228, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["You're too late! The lake's already been dealt with!"], "player_won": ["Commander Saturn is in the cavern. He'll finish you!"]}, "levels": [32, 30], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 1", "when_flags": ["canalave_library_meeting"], "gone_flags": ["galactic_lake_valor_cleared"]}, {"name": "Galactic Grunt", "class": "GALACTIC", "team": [42], "rewards": {"balls": 3}, "dialogue": {"intro": ["You're too late! The lake's already been dealt with!"], "player_won": ["Commander Saturn is in the cavern. He'll finish you!"]}, "levels": [37], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2", "when_flags": ["canalave_library_meeting"], "gone_flags": ["galactic_lake_valor_cleared"]}],
         "wild_levels": {"land": [34, 36]},
         "radar_pool_percentages": "LAKE_VALOR_RADAR_PERCENTAGES"
     },
@@ -3649,7 +3628,7 @@
       "id": "sinnoh_m10",
       "type": "MAIN",
       "title": "The Canalave Library",
-      "description": "Professor Rowan wants to meet at the Canalave Library, but Barry won't go in till you have HM Strength. Riley on Iron Island has it: take the boat from the harbour.",
+      "description": "Professor Rowan wants to meet at the Canalave Library, but {rival_name} won't go in till you have HM Strength. Riley on Iron Island has it: take the boat from the harbour.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 6,
@@ -3663,26 +3642,28 @@
       "id": "sinnoh_m10b",
       "type": "MAIN",
       "title": "Explosion at Lake Valor",
-      "description": "A blast shook Lake Valor! Fly to Pastoria or Veilstone and hurry to the lake. Saturn is there.",
+      "description": "A blast shook Lake Valor! The lake has been drained, and Team Galactic are everywhere. Fly to Pastoria or Veilstone, hurry to the lake and find Saturn in the cavern on its island.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "canalave_library_meeting",
         "flag_not": "galactic_lake_valor_cleared"
       },
       "target": "LAKE_VALOR",
+      "steps": [{"area": "LAKE_VALOR", "floor": 0, "at": [32, 32], "label": "Valor Cavern", "done": "galactic_lake_valor_cleared"}],
       "completed_flag": "galactic_lake_valor_cleared"
     },
     {
       "id": "sinnoh_m10c",
       "type": "MAIN",
       "title": "Mars at Lake Verity",
-      "description": "Team Galactic is at Lake Verity too, near Twinleaf. Stop Commander Mars.",
+      "description": "Team Galactic is at Lake Verity too, near Twinleaf, and Dawn couldn't stop them. Get past the grunts and beat Commander Mars at the lake's edge.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "galactic_lake_valor_cleared",
         "flag_not": "galactic_lake_verity_cleared"
       },
       "target": "LAKE_VERITY",
+      "steps": [{"area": "LAKE_VERITY", "floor": 0, "at": [47, 24], "label": "Mars", "done": "galactic_lake_verity_cleared"}],
       "completed_flag": "galactic_lake_verity_cleared"
     },
     {
@@ -3718,7 +3699,7 @@
       "id": "sinnoh_m10d",
       "type": "MAIN",
       "title": "Lake Acuity",
-      "description": "With the Icicle Badge the way to Lake Acuity is open, west of Snowpoint. Jupiter is waiting.",
+      "description": "Lake Acuity lies past the lumpy rocks at Acuity Lakefront, west of Snowpoint. Climb them with Rock Climb - the HM lies in the snow on Route 217. Jupiter is waiting.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 7,
@@ -3726,6 +3707,7 @@
         "flag_not": "galactic_lake_acuity_cleared"
       },
       "target": "LAKE_ACUITY",
+      "steps": [{"area": "SINNOH_ROUTE_217", "at": [8, 49], "label": "HM Rock Climb", "done": "got_hm_rock_climb_sinnoh_route_217_r217_8_49"}],
       "completed_flag": "galactic_lake_acuity_cleared"
     },
     {
@@ -3867,13 +3849,13 @@
       "id": "sinnoh_s0",
       "type": "SIDE",
       "title": "Poké Balls from the Assistant",
-      "description": "The Professor's assistant lives next to the lab in Sandgem Town and has Poké Balls to spare.",
+      "description": "The Professor's assistant, Dawn, waits on Route 202 just north of Sandgem Town to show you how to catch Pokémon - with Poké Balls to spare.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "received_pokedex_sinnoh",
         "flag_not": "rowan_assistant_balls"
       },
-      "target": "SANDGEM_TOWN",
+      "target": "SINNOH_ROUTE_202",
       "completed_flag": "rowan_assistant_balls",
       "reward": "5 Poké Balls"
     },
