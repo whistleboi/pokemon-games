@@ -24,8 +24,9 @@ REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with Heart
            ("johto", "Johto", "HeartGold and SoulSilver, on SoulSilver's maps, with Crystal extras"),
            ("orange", "Orange Islands", "the anime and the fan game Pokémon Orange Islands"),
            ("hoenn", "Hoenn", "Omega Ruby and Alpha Sapphire's story on Emerald's maps, with Ruby, Sapphire and Emerald extras"),
-           ("sinnoh", "Sinnoh", "Diamond, Pearl and Platinum on Platinum's maps, with Brilliant Diamond and Shining Pearl's story")]
-LATER = ["Unova", "Orre"]
+           ("sinnoh", "Sinnoh", "Diamond, Pearl and Platinum on Platinum's maps, with Brilliant Diamond and Shining Pearl's story"),
+           ("unova", "Unova", "Black 2 and White 2 on their own maps, with Black and White's places")]
+LATER = ["Orre"]
 IMPORTANT = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "RIVAL", "ROCKET_LEADER")
 
 
@@ -137,7 +138,8 @@ NAV = {"kanto": [("Kanto", "KANTO", "kanto", "Settlements", ["Sevii Islands", "J
        "johto": [("Johto", "JOHTO", "johto", "Settlements", ["Kanto", "Orange Islands"])],
        "orange": [("Orange Islands", "ORANGE", "orange", "Islands", ["Kanto", "Johto"])],
        "hoenn": [("Hoenn", "HOENN", "hoenn", "Settlements", [])],
-       "sinnoh": [("Sinnoh", "SINNOH", list(range(25, 33)), "Settlements", [])]}   # (Sinnoh's badges: REGION_START badge_images
+       "sinnoh": [("Sinnoh", "SINNOH", list(range(25, 33)), "Settlements", [])],
+       "unova": [("Unova", "UNOVA", list(range(33, 41)), "Settlements", [])]}   # (Sinnoh's badges: REGION_START badge_images
 
 
 def navboxes(region, places, first_part):
