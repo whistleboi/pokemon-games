@@ -381,6 +381,14 @@
     {"title": "Plasma's Secret Weapon", "chapters": [
       {"mission": "b2_m23", "title": "Trouble at Big Stadium", "say": "Hugh's voice carries across the plaza. He's found Team Plasma, and he isn't going to let them walk away."},
       {"mission": "b2_m24", "title": "West to Route 5", "say": "Route 5 is crowded with performers, and someone at the drawbridge is making a scene. Driftveil lies beyond it."}, {"mission": "b2_m25", "title": "Over the Drawbridge", "say": "The drawbridge is down at last. Across the river, Driftveil City waits, and so does whatever Team Plasma left behind."}
+    ]},
+    {"title": "The Quake Badge", "chapters": [
+      {"mission": "b2_m26", "title": "Team Plasma, Old and New", "say": "On the hill north of the Gym stands a house full of people who used to wear Team Plasma's uniform. They say they've changed. Hugh isn't so sure."},
+      {"mission": "b2_m27", "title": "Down the Mine", "say": "Clay's Gym is a mine, and the mine is dark. The conveyor belts rumble from platform to platform, and only the ones you've stood on light up."},
+      {"mission": "b2_m28", "title": "The World Tournament", "say": "South of the city, Trainers from every region gather to find out who's strongest. Clay has saved you a place."}
+    ]},
+    {"title": "The Plasma Frigate", "chapters": [
+      {"mission": "b2_m29", "title": "Aboard the Plasma Frigate", "say": "Grunts in black are running for the pier, where a ship with no flag waits. Hugh is already gone after them. Whoever is on that deck has been expecting company."}
     ]}
   ]
 }

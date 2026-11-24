@@ -333,7 +333,15 @@ class Game:
         from src.vfx import transitions
         if transitions.wants_transition(self, new_state):  # a battle intro first (src/vfx/transitions.py)
             new_state = transitions.BattleTransitionState(self, new_state)
-        if getattr(self, "screen", None) is not None and getattr(self, "current_state", None) is not None                 and getattr(self, "area_wipe", None) is None:   # (a door's or an area's own wipe is playing: src/vfx/area_changes.py)
+        from src.vfx import menu_screens   # (the MENU and its screens as this region's game opens and closes them)
+        old_state = getattr(self, "current_state", None)
+        has_screen = getattr(self, "screen", None) is not None
+        menu_how = menu_screens.decide(self, old_state, new_state) if has_screen and old_state is not None else None
+        menu_snap = self.screen.copy() if isinstance(menu_how, tuple) else None
+        if menu_how is not None:
+            self._fade_left = 0
+        elif has_screen and old_state is not None \
+                and getattr(self, "area_wipe", None) is None:   # (a door's or an area's own wipe is playing: src/vfx/area_changes.py)
             self._fade_from = self.screen.copy()
             self._fade_left = self.FADE_FRAMES
         self.ui_manager.elements.clear()
@@ -343,6 +351,8 @@ class Game:
         self.current_state = new_state
         if hasattr(self, "music"):
             self.music.for_state(new_state)
+        if menu_snap is not None:
+            menu_screens.start(self, menu_how, menu_snap, old_state, new_state)
         self.current_state.start()
         if hasattr(new_state, "ui_elements"):
             self.ui_manager.elements = new_state.ui_elements
