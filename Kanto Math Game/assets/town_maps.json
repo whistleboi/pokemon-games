@@ -247845,7 +247845,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C02R0102.png",
+      "at": [
+       0,
+       2
+      ]
+     }
     }
    },
    "library_3f": {
@@ -248316,7 +248323,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C02R0103.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     }
    },
    "deleter": {
@@ -248347,7 +248361,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C02R0301.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "people": [
      "Move Deleter"
@@ -327756,6 +327777,13 @@
        98,
        90,
        106
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D24R0102.png",
+      "at": [
+       0,
+       0
       ]
      }
     },
