@@ -302473,7 +302473,7 @@
      "ooocccccccccccccccccccccccckkccc",
      "oooccc..cccccccccccccccccccccccc",
      "oooccc.1ccccccccccccc+cckccccccc",
-     "oooccc..ccccccccccc...kccccccccc",
+     "oooccc..ccccccccccc..Nkccccccccc",
      "oooccc__ccccccccccc...kccccccccc",
      "oooccc..ccccccccccc===cccccccccc",
      "oooccc..ccccccccccc===cccccccccc",
@@ -302560,7 +302560,28 @@
     },
     "hidden": {
      "18,24": "STAR_PIECE"
-    }
+    },
+    "people": [
+     {
+      "text": "Riley",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "...You are? OK, you're {player_name}. I'm Riley. I'm a Trainer, and yes, it is a bit odd that I would be training here.",
+        "Anyway, it's always nice to meet another Trainer. Here, take this with you.",
+        "You received HM04 Strength!",
+        "Riley: That Hidden Machine contains the move Strength. To use it outside battle, you need the Mine Badge from Canalave's Gym."
+       ],
+       "gift_item": {
+        "HM_STRENGTH": 1
+       },
+       "flag": "got_hm_strength_iron_island",
+       "done": [
+        "Riley: Iron Island's caves are full of strong Pokemon. I come here to train with Lucario."
+       ]
+      }
+     }
+    ]
    },
    {
     "art": [
@@ -303460,7 +303481,7 @@
      "cccccccccccc",
      "cmmm...mmmcc",
      "c.........cc",
-     "c.m.....m.cc",
+     "c.m..N..m.cc",
      "c.........cc",
      "cc......m.cc",
      "cz..1.....cc",
@@ -303609,7 +303630,34 @@
        224
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Byron",
+      "action": "EVENT",
+      "event": {
+       "requires": [
+        "unlocked_national_dex"
+       ],
+       "fail": [
+        "Byron: Hm? You're in training, then? You know, my son trains as hard as you do.",
+        "Byron: But I still treat him as if he were a child. It's ridiculous, really. He is a proper Gym Leader now."
+       ],
+       "lines": [
+        "Byron: Hm? You've seen Pokemon from far beyond Sinnoh, have you? Then you'll want this.",
+        "You received a Metal Coat!",
+        "Byron: There are Pokemon that evolve into the Steel type using that Metal Coat. Try it!"
+       ],
+       "gift_item": {
+        "METAL_COAT": 1
+       },
+       "flag": "got_metal_coat_iron_island",
+       "done": [
+        "Byron: There are Pokemon that evolve into the Steel type using that Metal Coat. Steel is the best, I say!"
+       ]
+      }
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -303650,7 +303698,9 @@
    "Worker Noel": 6,
    "Worker Braden": 6,
    "ELIXIR": 6,
-   "TM265": 6
+   "TM265": 6,
+   "Riley": 0,
+   "Byron": 7
   },
   "roofs": {
    "A": {
