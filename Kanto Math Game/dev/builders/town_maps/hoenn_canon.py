@@ -203,6 +203,24 @@ def _slateport_sub(maps):
         cast.append(g2)
 
 
+def _museum_queue(maps):
+    """H5 (hoenn_gates #14): the Grunts' queue reaches the Oceanic Museum's door, as Emerald's (its head stands below the
+    door at 31,27); ours stopped at x 29, so row 27 let you walk round it and in before seeing the Shipyard."""
+    m = maps.get("SLATEPORT_CITY")
+    bar = (m or {}).get("barred") or []
+    like = next((b for b in bar if "butt in" in str(b.get("lines"))), None)
+    if like is None:
+        return
+    import copy
+    taken = {tuple(t) for b in bar for t in b.get("tiles") or []}
+    for (x, y), line in (((30, 27), "Grunt: The Boss said wait for the signal. So I'm waiting. In line."),
+                         ((31, 27), "Grunt: First in line! Nobody gets in before me!")):
+        if (x, y) not in taken:
+            b = copy.deepcopy(like)
+            b.update(tiles=[[x, y]], face="u", lines=[line])
+            bar.append(b)
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -219,6 +237,7 @@ def _at(part, x, y):
 
 def apply(maps):
     _slateport_sub(maps)
+    _museum_queue(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
         if m:

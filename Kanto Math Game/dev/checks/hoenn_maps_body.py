@@ -3102,7 +3102,9 @@ _st5 = _S5(); _st5.inventory = {}; _st5.story_flags = dict(_fx)
 _st5.store_regions = lambda: None
 _early = _s3d5.give_flute(_st5)
 _st5.story_flags["cave_of_origin_cleared"] = True
-_late = _s3d5.give_flute(_st5)
+_mid = _s3d5.give_flute(_st5)   # (Steven's to give now: not by itself)
+_st5.story_flags["beat_hoenn_champion"] = True
+_late = _s3d5.give_flute(_st5) and not _mid   # (a save past the Champion that missed him)
 check(not _early and _late, "the Eon Flute waits for the Cave of Origin (ORAS's timing; #11)")
 _f5b, _i5b = dict(story.story_flags), dict(story.inventory)
 story.inventory.pop("EON_FLUTE", None); story.story_flags.pop("got_eon_flute_hoenn", None)
@@ -3151,3 +3153,31 @@ story.inventory.clear(); story.inventory.update(_i5b)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
+
+# Legacy menu clear, pass 2 (11-23): the route doors find their buttons by kind (the Cable Car stations, the Safari Zone gate);
+# the menu's CATCH / BATTLE buttons, colours and dead EXIT shortcuts are gone
+for _dk, _came, _kind in (("HOENN_ROUTE_112", "HOENN_ROUTE_111", "cablecar"), ("HOENN_MT_CHIMNEY", "HOENN_JAGGED_PASS", "cablecar"),
+                          ("HOENN_ROUTE_121", "HOENN_ROUTE_120", "safari")):
+    _mf = story.story_flags.get("meteor_falls_cleared")
+    story.story_flags["meteor_falls_cleared"] = True   # (the Cable Car runs once Magma's left Meteor Falls)
+    st = arrive(_dk, _came)
+    _dt = next((t for t, v in st.run.floor.decor.items() if v == "door:" + _kind), None)
+    _went, _said = [], []
+    _cb0, _say0 = st._get_route_callback, st.say
+    st._get_route_callback = lambda o, _w=_went: (_w.append(o), (lambda: None))[1]
+    st.say = lambda lines, *a, **k: _said.extend(lines)
+    if _dt is not None:
+        st.run.player, st.facing = (_dt[0], _dt[1] + 1), (0, -1)
+        st._read_sign()
+    st._get_route_callback, st.say = _cb0, _say0
+    if _mf is None:
+        story.story_flags.pop("meteor_falls_cleared", None)
+    check(_dt is not None and _went and _went[0].get("door") == _kind and "The door is locked." not in _said,
+          f"{_dk}: its {_kind} door opens ({[o.get('text') for o in _went]}, {_said[:1]})")
+_sp = g.loader.area_data["STORY_PROGRESSION"]
+_walked = [k for k in _sp if k in _tm2 and isinstance(_sp[k], dict) and _sp[k].get("region") == "HOENN"]
+_left = [(k, o.get("text")) for k in _walked for o in (_sp[k].get("route_menu") or []) if o.get("action") in ("CATCH", "BATTLE") or "color" in o]
+check(not _left, f"Hoenn's walked places carry no menu-only route buttons or colours ({_left[:3]})")
+_dead = [(k, o.get("text")) for k in ("HOENN_SS_TIDAL", "HOENN_SOUTHERN_ISLAND", "HOENN_ROUTE_122", "HOENN_ROUTE_129") for o in (_sp[k].get("route_menu") or [])
+         if o.get("action") == "EXIT" and o.get("text") in ("Slateport City", "Lilycove City", "Battle Frontier", "BOAT TO SLATEPORT", "LILYCOVE CITY", "EVER GRANDE CITY")]
+check(not _dead, f"the menu's EXIT shortcuts are gone: the Sailors sail you, the map's edges lead on ({_dead})")

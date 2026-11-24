@@ -104403,6 +104403,48 @@
     "lines": [
      "Grunt: We meet up at the site, then split up. That's the rule."
     ]
+   },
+   {
+    "tiles": [
+     [
+      30,
+      27
+     ]
+    ],
+    "look": "sheet:@grunt",
+    "face": "u",
+    "until_any": [
+     {
+      "flag_condition": "slateport_saw_dock"
+     },
+     {
+      "flag_condition": "oceanic_museum_cleared"
+     }
+    ],
+    "lines": [
+     "Grunt: The Boss said wait for the signal. So I'm waiting. In line."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      27
+     ]
+    ],
+    "look": "sheet:@grunt",
+    "face": "u",
+    "until_any": [
+     {
+      "flag_condition": "slateport_saw_dock"
+     },
+     {
+      "flag_condition": "oceanic_museum_cleared"
+     }
+    ],
+    "lines": [
+     "Grunt: First in line! Nobody gets in before me!"
+    ]
    }
   ],
   "overheads": [
