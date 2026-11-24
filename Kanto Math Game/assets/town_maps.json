@@ -7670,7 +7670,7 @@
      }
     ],
     "theme": "room",
-    "title": "Underground Path"
+    "title": "Underground Path, North-South"
    },
    "south": {
     "art": [
@@ -7733,7 +7733,7 @@
      }
     ],
     "theme": "room",
-    "title": "Underground Path"
+    "title": "Underground Path, Route 6 Entrance"
    },
    "west": {
     "art": [
@@ -7764,22 +7764,6 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "fr_top/1_33.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       13,
-       10
-      ]
-     }
-    ],
-    "theme": "room",
-    "title": "Underground Path",
     "people": [
      {
       "text": "Man",
@@ -7796,7 +7780,23 @@
       "m": "look",
       "d": "udlr"
      }
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_33.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Underground Path, Route 7 Entrance"
    },
    "ew": {
     "art": [
@@ -7848,7 +7848,7 @@
      }
     ],
     "theme": "room",
-    "title": "Underground Path"
+    "title": "Underground Path, East-West"
    },
    "east": {
     "art": [
@@ -7879,22 +7879,6 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "fr_top/1_35.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       13,
-       10
-      ]
-     }
-    ],
-    "theme": "room",
-    "title": "Underground Path",
     "people": [
      {
       "text": "Woman",
@@ -7911,7 +7895,23 @@
       "m": "look",
       "d": "udlr"
      }
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_35.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Underground Path, Route 8 Entrance"
    }
   },
   "overheads": [
@@ -8327,16 +8327,16 @@
    ]
   ],
   "inside": {
-   "22,34": "harbor",
-   "23,34": "harbor",
-   "24,34": "harbor",
    "9,6": "guru",
    "15,6": "center",
    "12,17": "fanclub",
    "19,17": "house_n",
    "29,17": "mart",
    "28,24": "house_e",
-   "14,25": "gym"
+   "14,25": "gym",
+   "22,34": "harbor",
+   "23,34": "harbor",
+   "24,34": "harbor"
   },
   "edge_to": {
    "22,0": [
@@ -9030,7 +9030,7 @@
        "battle": {
         "name": "Gentleman Tucker",
         "class": "GENTLEMAN",
-        "sprite": "gentleman.png",
+        "sprite": "fr_gentleman.png",
         "team": [
          25
         ],
@@ -9063,7 +9063,7 @@
        "battle": {
         "name": "Engineer Baily",
         "class": "ENGINEER",
-        "sprite": "engineer.png",
+        "sprite": "fr_engineer.png",
         "team": [
          100,
          81
@@ -9098,7 +9098,7 @@
        "battle": {
         "name": "Sailor Dwayne",
         "class": "SAILOR",
-        "sprite": "sailor.png",
+        "sprite": "fr_sailor.png",
         "team": [
          25,
          25
@@ -19111,13 +19111,17 @@
     },
     "people": [
      {
-      "text": "Clerk ",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Please come again!"
-       ]
-      }
+      "text": "Battle item clerk",
+      "action": "SHOP",
+      "stock": [
+       "X_ATTACK",
+       "X_DEFENSE",
+       "X_SPEED",
+       "X_SP_ATK",
+       "X_ACCURACY",
+       "GUARD_SPEC",
+       "DIRE_HIT"
+      ]
      },
      {
       "text": "Gentleman",
@@ -19129,13 +19133,15 @@
       }
      },
      {
-      "text": "Clerk",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Please come again!"
-       ]
-      }
+      "text": "Vitamin clerk",
+      "action": "SHOP",
+      "stock": [
+       "HP_UP",
+       "PROTEIN",
+       "IRON",
+       "CARBOS",
+       "CALCIUM"
+      ]
      },
      {
       "text": "Sailor",
@@ -19169,13 +19175,13 @@
        1
       ]
      },
-     "1,7": {
-      "m": "face",
-      "d": "d"
-     },
      "1,6": {
       "m": "face",
       "d": "r"
+     },
+     "1,7": {
+      "m": "face",
+      "d": "d"
      }
     },
     "overheads": [
@@ -19332,7 +19338,9 @@
       "event": {
        "lines": [
         "I'm thirsty! I want something to drink!"
-       ]
+       ],
+       "world": "celadon_roof",
+       "girl": true
       }
      },
      {
@@ -19347,13 +19355,13 @@
     ],
     "signs": [
      [
-      "A vending machine. It's out of order."
+      "A vending machine."
      ],
      [
-      "A vending machine. It's out of order."
+      "A vending machine."
      ],
      [
-      "A vending machine. It's out of order."
+      "A vending machine."
      ],
      [
       "ROOFTOP SQUARE",
@@ -19372,6 +19380,32 @@
        2,
        1
       ]
+     }
+    },
+    "sign_events": {
+     "10,3": {
+      "text": "Vending machine",
+      "action": "EVENT",
+      "event": {
+       "world": "celadon_roof",
+       "drink": "FRESH_WATER"
+      }
+     },
+     "11,3": {
+      "text": "Vending machine",
+      "action": "EVENT",
+      "event": {
+       "world": "celadon_roof",
+       "drink": "SODA_POP"
+      }
+     },
+     "12,3": {
+      "text": "Vending machine",
+      "action": "EVENT",
+      "event": {
+       "world": "celadon_roof",
+       "drink": "LEMONADE"
+      }
      }
     },
     "overheads": [
@@ -20206,7 +20240,7 @@
        "battle": {
         "name": "Beauty Lori",
         "class": "BEAUTY",
-        "sprite": "beauty.png",
+        "sprite": "fr_beauty.png",
         "team": [
          102
         ],
@@ -20240,7 +20274,7 @@
        "battle": {
         "name": "Lass Lisa",
         "class": "LASS",
-        "sprite": "lass.png",
+        "sprite": "fr_lass.png",
         "team": [
          43,
          44
@@ -20275,7 +20309,7 @@
        "battle": {
         "name": "Beauty Tamia",
         "class": "BEAUTY",
-        "sprite": "beauty.png",
+        "sprite": "fr_beauty.png",
         "team": [
          69,
          69
@@ -20310,7 +20344,7 @@
        "battle": {
         "name": "Cooltrainer Mary",
         "class": "COOLTRAINER",
-        "sprite": "acetrainer_f.png",
+        "sprite": "fr_cooltrainer_f.png",
         "team": [
          69,
          43,
@@ -20351,7 +20385,7 @@
        "battle": {
         "name": "Picnicker Tina",
         "class": "PICNICKER",
-        "sprite": "picnicker.png",
+        "sprite": "fr_picnicker.png",
         "team": [
          1,
          2
@@ -20386,7 +20420,7 @@
        "battle": {
         "name": "Beauty Bridget",
         "class": "BEAUTY",
-        "sprite": "beauty.png",
+        "sprite": "fr_beauty.png",
         "team": [
          43,
          69,
@@ -20425,7 +20459,7 @@
        "battle": {
         "name": "Lass Kay",
         "class": "LASS",
-        "sprite": "lass.png",
+        "sprite": "fr_lass.png",
         "team": [
          69,
          70
@@ -301768,7 +301802,7 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "TM208",
+   "TM148",
    "CONFRONT THE ADMIN",
    "RECOVER THE GEMS",
    "PEARL",
@@ -304411,8 +304445,7 @@
    "The Sapphire's room"
   ],
   "figure_floors": {
-   "TAKE THE SAPPHIRE": 5,
-   "READ THE BRAILLE": 0
+   "TAKE THE SAPPHIRE": 5
   }
  },
  "SEVEN_ISLAND": {
