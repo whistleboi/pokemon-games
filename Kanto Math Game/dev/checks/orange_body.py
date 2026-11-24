@@ -166,4 +166,29 @@ for k in ORANGE:
         g.current_state.draw()
     except Exception as e:
         check(False, f"{k}: {type(e).__name__} {e}")
+print("9) Trainer portraits from 5.7's file (11-24, Region Checklist): every Orange trainer's own picture, and its walking sheet")
+import json as _json
+_ds = _json.load(open("assets/dungeon_sprites.json", encoding="utf-8-sig"))
+_own = _ds.get("trainers_ORANGE") or {}
+_seen = {}
+def _tr(o):
+    if isinstance(o, dict):
+        if o.get("oi_trainer") is not None and "sprite" in o and not str(o["sprite"]).startswith("{"):
+            _seen[o["sprite"]] = _seen.get(o["sprite"], 0) + 1
+        for v in o.values():
+            _tr(v)
+    elif isinstance(o, list):
+        for v in o:
+            _tr(v)
+for _k, _a in g.loader.area_data["STORY_PROGRESSION"].items():
+    if _a.get("region") == "ORANGE":
+        _tr(_a)
+_old = {"swimmer_f.png", "swimmer_m.png", "fisherman.png", "firebreather.png", "jessie_james.png", "butch.png", "cassidy.png",
+        "misty.png", "ruinmaniac.png", "acetrainer_m.png", "acetrainer_f.png", "battle_girl.png", "ranger_m.png", "ranger_f.png"}
+check(not _old & set(_seen) and all(os.path.isfile("assets/sprites/trainers/" + s) for s in _seen),
+      f"...{sum(_seen.values())} trainers, {len(_seen)} pictures, all 5.7's (FireRed's fr_ ones or 5.7's own), none of the old stand-ins ({sorted(_old & set(_seen))})")
+_pool = {t.get("sprite") for _a in g.loader.area_data["STORY_PROGRESSION"].values() if _a.get("region") == "ORANGE"
+         for t in (_a.get("trainer_pool") or []) if isinstance(t, dict) and not str(t.get("sprite", "{")).startswith("{")}
+_walk = [s for s in _pool if not (_own.get(s) or (_ds.get("trainers") or {}).get(s))]
+check(not _walk, f"...and each route trainer ({len(_pool)} pictures) walks on the map as 5.7 draws it, not a shrunk battle picture ({_walk})")
 print("FAILURES:", fails)
