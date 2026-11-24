@@ -1328,5 +1328,18 @@ check(_wait and _in and "MINE" not in _hm, f"Canalave: Barry waits at the Librar
 story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
 story.inventory.clear(); story.inventory.update(_iv)
 
+# ---- S5 (11-24): Route 213's gatehouse is a room again, walked through (main a91de160: arrival by land or by sea)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
+t = town("PASTORIA_CITY", "SINNOH_ROUTE_212"); frames(t, 3); _drive(t, 200, lambda: not t._busy())
+t.player = t.anim_from = (62, 12); t.anim = 0; t.walk_goal = None; t.step(1, 0)   # (east on foot, out by the land way)
+_drive(t, 300, lambda: story.current_area_key == "SINNOH_ROUTE_213" and "Play" in type(g.current_state).__name__)
+r = g.current_state
+_fl = getattr(getattr(r, "run", None), "floor", None)
+_here = [str((m.payload or {}).get("text")) for m in (getattr(_fl, "movers", None) or []) if m.kind == "figure"]
+_pos = tuple(getattr(getattr(r, "run", None), "player", None) or ())
+_ok = story.current_area_key == "SINNOH_ROUTE_213" and {"Man", "Gentleman"} <= set(_here) and _fl is not None and _fl.walkable(*_pos)
+check(_ok, f"Route 213: walking out of Pastoria by land puts you in its gatehouse, on its floor, beside its two people ({story.current_area_key}, {_here}, {_pos})")
+story.badges["SINNOH"] = _bv
+
 g.walk_towns = False
 print(f"##### {fails} failures")

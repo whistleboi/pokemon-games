@@ -201,7 +201,40 @@ def wild_html(f):
     if w["water"]:
         out.append(wild_table(w["water"], "On the water" if (w["land"] or w["zones"]) else "Available Pokémon (water)", water=True,
                               band=band, fixed_land=fixed))
+    if w.get("hordes"):
+        out.append(horde_table(w["hordes"]))
+    if w.get("dexnav"):
+        out.append(dexnav_table(w["dexnav"], band))
     return "".join(out)
+
+
+def horde_table(rows):
+    """ORAS's hordes (src/world/hordes.py): five wild Pokemon at once, your one Pokemon against all five."""
+    share = rows[0]["share"]
+
+    def who(r):
+        ids = r["ids"]
+        if len(set(ids)) == 1:
+            return f"{mon_cell(r)} ×5"
+        parts = []
+        for i in dict.fromkeys(ids):
+            parts.append(f"{mon_cell(dict(r, id=i, name=F.mon_name(i), icon=f'{F.base_id(i)}.png'))} ×{ids.count(i)}")
+        return " + ".join(parts)
+    body = "".join(f'<tr><td>{who(r)}</td><td>{lv(r)}</td><td class="rate">{rate(r["rate"])}</td></tr>' for r in rows)
+    return ('<div class="frame"><table><caption>Hordes</caption><thead><tr><th>Five at once</th><th>Levels</th><th>Rate</th></tr></thead>'
+            f'<tbody>{body}</tbody></table><p class="small">About {round(share * 100)}% of the wild battles here are hordes: five '
+            'Pokémon at once against your one.</p></div>')
+
+
+def dexnav_table(rows, band):
+    early = [r for r in rows if r["dex_when"] == "origin"]
+    late = [r for r in rows if r["dex_when"] == "title"]
+    out = ""
+    if early:
+        out += wild_table(early, "Hidden Pokémon (DexNav, after the Cave of Origin)", band=band)
+    if late:
+        out += wild_table(late, "Hidden Pokémon (DexNav, after the title)", band=band)
+    return out
 
 
 def human_cond(c):
@@ -268,11 +301,14 @@ def items_html(f, room=None):
 
 
 def team_html(team):
-    return " ".join(f'<span class="mon sm">{icon("p", m["icon"])}{mon_link(m["id"], m["name"])}'
+    def alt(m):   # (Hoenn's villains: Omega Ruby's Pokemon / Alpha Sapphire's)
+        a = m.get("alt")
+        return f' / {icon("p", a["icon"])}{mon_link(a["id"], a["name"])}' if a else ""
+    return " ".join(f'<span class="mon sm">{icon("p", m["icon"])}{mon_link(m["id"], m["name"])}{alt(m)}'
                     + (f' <span class="lv">Lv {m["lv"]}</span>' if m.get("lv") else "") + "</span>" for m in team)
 
 
-CLASS_WORDS = {"GYM_LEADER": "Gym Leader", "ROCKET": "Team Rocket", "TEAM_ROCKET": "Team Rocket", "ROCKET_GRUNT": "Team Rocket Grunt", "ACE_TRAINER": "Ace Trainer",
+CLASS_WORDS = {"GYM_LEADER": "Gym Leader", "ROCKET": "Team Rocket", "TEAM_ROCKET": "Team Rocket", "TEAM_VILLAIN": "Team Magma/Aqua", "ROCKET_GRUNT": "Team Rocket Grunt", "ACE_TRAINER": "Ace Trainer",
                "COOLTRAINER": "Cooltrainer", "BLACKBELT": "Black Belt", "BUG_CATCHER": "Bug Catcher", "POKEMANIAC": "PokéManiac",
                "SUPER_NERD": "Super Nerd", "BIRD_KEEPER": "Bird Keeper", "CUE_BALL": "Cue Ball", "PSYCHIC_M": "Psychic",
                "PSYCHIC_F": "Psychic", "ELITE_FOUR": "Elite Four", "RIVAL": "Rival", "CHAMPION": "Champion"}
@@ -287,7 +323,10 @@ def trainer_name(t):
     who = t.get("who") or ""
     n = (t["name"] if who.isupper() and t.get("name") else who) or t["name"] or ""
     n = re.sub(r"\s+\d+$", "", n.replace("{rival_name}", "Your rival").strip())   # ("Grunt 373": the fan game's trainer number)
+    n = re.sub(r"^Battle\s+", "", n)   # (an event battle named by its menu label: "Battle Courtney")
     cw = class_word(t.get("class"))
+    if re.search(r"(Magma|Aqua)", n) or (t.get("class") == "ROCKET_LEADER" and CAP["region"] == "HOENN"):
+        return n   # (Hoenn's teams name themselves: "Magma Admin Tabitha"; Zinnia uses the boss class, not Team Rocket)
     if n.lower() in cw.lower().split() or n.lower() == cw.lower():
         return cw
     if len(n.split()) >= 2 and t.get("class") not in ("ROCKET", "ROCKET_GRUNT", "TEAM_ROCKET"):
@@ -300,6 +339,9 @@ def all_trainers(f):
     seen, out = {}, []
     for t in f["battles"] + f["trainers"]:
         k = (trainer_name(t), tuple(m["id"] for m in t["team"]))
+        lvs = tuple(m.get("lv") for m in t["team"])
+        if k in seen and all(lvs) and all(m.get("lv") for m in out[seen[k]]["team"])                 and lvs != tuple(m.get("lv") for m in out[seen[k]]["team"]):
+            k = k + (lvs,)   # (same name and Pokemon, other levels: another trainer, as the hideout's grunts)
         if k in seen:
             if t.get("spot"):
                 out[seen[k]]["spot"] = True   # (the same trainer stands on a map spot: fought on the map)
@@ -362,7 +404,7 @@ def find_trainer(f, name):
 def reward_words(t):
     out = []
     for k, v in (t.get("reward_keys") or {}).items():
-        if k == "message":
+        if k == "message" or v in (0, False, None):   # (balls: 0 = none)
             continue
         mm = re.match(r"^(?:POKEMON_?)?(\d+)$", str(k))
         nm = F.mon_name(mm.group(1)) if mm else F.item_name(k)
@@ -403,7 +445,10 @@ def battle_box(f, t, note=None):
     rw_html = f'<div class="small">Rewards: {esc(rw)}</div>' if rw else ""
     note_html = f'<div class="small">{note}</div>' if note else ""
     style = "on the map" if on_map(f, t) else "battle screen"
-    return (f'<div class="battle"><div><div class="who">{esc(who)}</div><div class="small">{esc(class_word(t.get("class")))}'
+    cls = ("Team Magma/Aqua" if t.get("villain") or re.search(r"(Magma|Aqua)", t.get("name") or "")
+           else "Boss" if t.get("class") == "ROCKET_LEADER" and CAP["region"] == "HOENN"
+           else class_word(t.get("class")))   # (Hoenn's leader is ROCKET_LEADER for the classic screen)
+    return (f'<div class="battle"><div><div class="who">{esc(who)}</div><div class="small">{esc(cls)}'
             f' · {style}</div>'
             f'{rw_html}</div><div class="teams">{teams}{note_html}</div></div>')
 
@@ -459,7 +504,11 @@ def place_id(key):
 
 def link_places(body):
     """Link place names in the text (first mention in each paragraph) to their section, not to the one you're in."""
-    names = sorted(((FACTS[k]["name"], k) for k in PLACE_ID if k in FACTS), key=lambda nk: -len(nk[0]))
+    first = {}
+    for k in PLACE_ID:   # (one link per name: the Trick House's seven places share theirs)
+        if k in FACTS:
+            first.setdefault(FACTS[k]["name"], k)
+    names = sorted(first.items(), key=lambda nk: -len(nk[0]))
     alias = {"Vermillion City": "Vermilion City"}
     pats = [(re.compile(r"(?<![\w-])" + re.escape(alias.get(n, n)) + r"(?![\w-])"), k) for n, k in names]
     here = [None]

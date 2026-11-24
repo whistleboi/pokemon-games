@@ -260145,8 +260145,8 @@
    "TTTTTTTTTTTTTTTT....TTTTTTTTTTTTTTTTTTcccccTTTT........ccccceeee=aaaeEEEEckkekkkccoooooooorroooo",
    "FFFFFF===========....\"\"\"\"\"\"\".\"....TTTTcccccTTTT.ff..ff.ckkkkeeee=aaaeEDEEckeeeekccoooooorroooooo",
    "FFFFFF============...\"\"\"\"\"\"..\"....TTTTcccccTTTT.ffN.ff.ceeeeeeeecaaaeaaaackeeeekccoooooorroooooo",
-   "FFFFFF<===========..\"\"\"\"\".===.........cccccTTTT........ckkkkeeeecaaaeaaaackeeeekccoooooorroooooo",
-   "FFFFFF<===========\"\"\"\"\"\"\"==========...cccccTTTTTTTTTTTTccccccccccaaaeeeeeckeeNekccoooooorroooooo",
+   "FFFFFD.===========..\"\"\"\"\".===.........cccccTTTT........ckkkkeeeecaaaeaaaackeeeekccoooooorroooooo",
+   "FFFFFD.===========\"\"\"\"\"\"\"==========...cccccTTTTTTTTTTTTccccccccccaaaeeeeeckeeNekccoooooorroooooo",
    "FFFFFF===========.\"\"\"\"\"...==========..cccccTTTTTTTTTTTTcccccccccciDicccccckeeeekccoooooooorroooo",
    "TTTTTT...........\"\"\"\"\"\"\"....=======...ccccck\"\"\"TT\"\"TT\"kccckkkkkaGGGGGakkkkkeeeekccoooooooorrorro",
    "TTTTTT.......\"\"\"\"\"\"\"\"\".\"..............ccccck\"\"\"TT\"\"TT\"kccckeeekaGGGGGakeekccccccccoooooooorrorro",
@@ -262570,6 +262570,69 @@
      }
     ],
     "title": "Footprint House"
+   },
+   "gate": {
+    "theme": "room",
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cz..cccc..zc",
+     "c...cccc...c",
+     "c.......N..c",
+     "c..........c",
+     "c<........vc",
+     "c....N.....c",
+     "c..........c",
+     "cc..cccc..cc",
+     "cz..cccc..zc",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:5,12",
+     "<": "PASTORIA_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R213R0101.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Walk on the beach and you leave footprints in the sand. Pokemon seem to love leaving theirs too."
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Do you know about the Battle Frontier? I hear it has facilities where you battle under all sorts of rules."
+       ]
+      }
+     }
+    ],
+    "title": "Route 213 Gate"
    }
   },
   "inside": {
@@ -262578,7 +262641,9 @@
    "61,5": "house_0501",
    "72,5": "house_0601",
    "23,34": "house_0201",
-   "66,14": "house_0301"
+   "66,14": "house_0301",
+   "5,12": "gate",
+   "5,13": "gate"
   },
   "scenes": [
    {
