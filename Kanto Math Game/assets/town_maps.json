@@ -213631,11 +213631,11 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAADDATTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfff....!ff..........ff............",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfff..N.!Nf..........ff............",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....................ff............",
    "TTTTTTTTTTTTTTTTTTTTTTTBBBB..fff......fff.........f............>",
    "TTTTTTTTTTTTTTTTTTTTTTTBBBB....................................>",
-   "TTTTTTTTTTTTTTTTTTTTTTTBBBBff..................N......TTTTTT....",
+   "TTTTTTTTTTTTTTTTTTTTTTTBBBBff...N..............N......TTTTTT....",
    "TTTTTTTTTTTTTTTTTTTTTTTBDBBff.jjTT....................TTTTTT....",
    "TTTTTTTTTTTTTTTT...fff.....ff................ffKCCC.TTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTT.fffff......ff...............ffKCCC.TTTTTTTTTTTT",
@@ -219702,6 +219702,45 @@
   },
   "people": [
    {
+    "text": "Crasher Wake",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "event": {
+     "lines": [
+      "Wake: The Great Marsh is invaluable... I won't let anyone harm it."
+     ]
+    }
+   },
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "not:has_fen_badge"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: Grr... The package hasn't arrived from the Veilstone warehouse yet... I have to wait here until then?",
+      "Grunt: Oh, man, I wish I could do something that involved lots of explosives! This is going to be a smashing job for Team Galactic..."
+     ]
+    }
+   },
+   {
+    "text": "Barry",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "event": {
+     "lines": [
+      "{rival_name}: Hey! What am I, chopped liver? Don't forget I'm here, too!"
+     ]
+    }
+   },
+   {
     "text": "Woman",
     "action": "EVENT",
     "event": {
@@ -219791,6 +219830,307 @@
       "I study the rare Pokemon that live only in the Great Marsh."
      ]
     }
+   }
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      13,
+      28,
+      13,
+      28
+     ]
+    },
+    "condition": [
+     "has_cobble_badge",
+     "not:defeated_rival_pastoria"
+    ],
+    "flag": "sinnoh_pastoria_barry",
+    "cast": [
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       19,
+       19
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Whoops! Hehehe! I'm not always going to plow into you every time we meet!",
+       "{rival_name}: So how's it going, {player_name}? Buffing up your Pokemon, eh? I'll test how buff and tough you are!"
+      ],
+      "stay": true
+     }
+    ],
+    "event": {
+     "lines": [],
+     "battle": {
+      "name": "{rival_name}",
+      "class": "PKMN_TRAINER",
+      "sprite": "{rival_character}",
+      "team": [
+       396,
+       418,
+       315,
+       391
+      ],
+      "team_choice": {
+       "387": [
+        396,
+        418,
+        315,
+        391
+       ],
+       "390": [
+        396,
+        315,
+        77,
+        394
+       ],
+       "393": [
+        396,
+        418,
+        77,
+        388
+       ]
+      },
+      "rewards": {
+       "balls": 5
+      },
+      "victory_flag": "defeated_rival_pastoria",
+      "dialogue": {
+       "intro": [],
+       "player_won": [
+        "{rival_name}: Heh, yeah, maybe you did get a bit tougher since last time. I got beat 'cause I was careless.",
+        "{rival_name}: Oh, yeah, I joined Mr. Wake as an apprentice! Like, I want my own theme song!"
+       ],
+       "player_lost": [
+        "Lake Valor, here I come — AND I BEAT YOU!"
+       ]
+      },
+      "levels": [
+       26,
+       26,
+       27,
+       31
+      ]
+     }
+    }
+   },
+   {
+    "trigger": {
+     "zone": [
+      13,
+      28,
+      13,
+      28
+     ]
+    },
+    "condition": [
+     "has_fen_badge",
+     "not:sinnoh_pastoria_bomb_warned"
+    ],
+    "flag": "sinnoh_pastoria_bomb_warned",
+    "cast": [
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       19,
+       19
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "{rival_name}: Oh, hey! You got the Gym Badge here, huh? What'd I tell you? The master is pretty awesome, hey?"
+      ]
+     },
+     {
+      "sheet": "pt_leader3.png",
+      "from": [
+       13,
+       27
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Wake: What's this racket, then? Oh, it's you two."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: Oh, Master!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Wake: ...Listen, kid. I know your father. I won't deny that. But I don't recall ever taking you on as an apprentice.",
+       "Wake: Besides, you two don't need me. You can become strong on your own."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: It doesn't matter. I made you my master! I decided! But forget that! There's trouble brewing!",
+       "{rival_name}: There's a Team Galactic goon in front of the Observatory Gate. He said something about using a bomb!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Wake: WHAAAAT?! No one messes with Pastoria! Not on my watch!"
+      ],
+      "leave": [
+       35,
+       10
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: Hey! Master! Wait!"
+      ],
+      "leave": [
+       32,
+       14
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      34,
+      10,
+      34,
+      10
+     ]
+    },
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "flag": "sinnoh_pastoria_bomb",
+    "cast": [
+     {
+      "person": "Crasher Wake",
+      "lines": [
+       "Wake: The Great Marsh is invaluable..."
+      ]
+     },
+     {
+      "person": "Barry",
+      "lines": [
+       "{rival_name}: Hey! What am I, chopped liver? Don't forget I'm here, too!"
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: So, where's this Galac..."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "DDDOOOMMM!!"
+      ],
+      "shake": 900
+     },
+     {
+      "sheet": "pt_gingam.png",
+      "from": [
+       34,
+       9
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Grunt: Fweh! That was rough."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: YOU! What've you done?!"
+      ]
+     },
+     {
+      "as": 2,
+      "lines": [
+       "Grunt: What've I done, you're asking? Well, technically speaking, it wasn't me.",
+       "Grunt: The package that arrived, see, that was a bomb, named the Galactic Bomb. Me, I was told to push the button. So I did. 'Poink!'",
+       "Grunt: Oh, that's right! The test results need reporting! Cheerio, then! You daft codger, your mask's absurd!"
+      ],
+      "leave": [
+       63,
+       12
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: You two! Do NOT follow me! Don't let anyone else in, either! There'd be big trouble if there's any of that bomb left!"
+      ],
+      "path": [
+       [
+        34,
+        9
+       ]
+      ],
+      "gone": true
+     },
+     {
+      "as": 1,
+      "lines": [
+       "{rival_name}: Hey! {player_name}! You go after that Galactic goon! I'm staying here like Master said!",
+       "{rival_name}: Gotta keep others from going in! Don't let that Galactic guy get away!"
+      ]
+     }
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      34,
+      10
+     ]
+    ],
+    "look": "sheet:pt_rivel.png",
+    "until_any": [
+     {
+      "flag_condition": "not sinnoh_pastoria_bomb"
+     },
+     {
+      "flag_condition": "sinnoh_valor_grunt_beaten"
+     }
+    ],
+    "lines": [
+     "{rival_name}: What's the matter?! Why aren't you gone already?! Go after that Galactic goon!"
+    ]
+   },
+   {
+    "tiles": [
+     [
+      35,
+      10
+     ]
+    ],
+    "look": "unseen",
+    "until_any": [
+     {
+      "flag_condition": "not sinnoh_pastoria_bomb"
+     },
+     {
+      "flag_condition": "sinnoh_valor_grunt_beaten"
+     }
+    ],
+    "lines": [
+     "{rival_name}: What's the matter?! Why aren't you gone already?! Go after that Galactic goon!"
+    ]
    }
   ]
  },
@@ -257571,7 +257911,7 @@
    "TTTTTTTTTTTTTTcccccccssssssssscccccccsccccccccccccccccccccccssssssssssssssssoooooooooooorroooooo",
    "TTTTTTTTTTTTTTcccccccsIIIIsssscccccccNccccccccccccccccccccccssssssssssssssssoooooooooooorro~~ooo",
    "TTTTTTTTTTTTTTcccccccsIIIIsssscccccccccssssssssssssssssssssssssXssssssssssssoooooooooorrooorrooo",
-   "TTTTTTTTTTTTTTcccccccsIIIIsssssssscccccssssssssssooooooooooooooooooooooooooooooooooooorroooooooo",
+   "TTTTTTTTTTTTTTcccccccsIIIIsssssssscccccssssNsssssooooooooooooooooooooooooooooooooooooorroooooooo",
    "TTTTTTTTTTTTTTcccccccsIDIIssssssssccccsssssssooooooooooooooooooooooooooooooooooooooorroorroooooo",
    "TTTTTTTTTTTTTTcccccccssss!sssssssssssssssssooooooooooooooooooooooooooooooooooooooooorroorroooooo",
    "<oTTTTTTTTTTTTcccccccssssssssssssssssssssooooooooooooocccoooooooooooooooooooooooooorrooooorroooo",
@@ -259061,6 +259401,23 @@
    "TM172",
    "TM027",
    {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb",
+     "not:sinnoh_r213_grunt_heard"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: We needed the energy from the Valley Windworks to make this... Our boss, who made this, is a scientific mechanical genius!",
+      "Grunt: Graw! You were eavesdropping! I was just thinking out loud! But I'm not going to waste my energy knocking you around...",
+      "Grunt: But, boy, this Galactic Bomb packs a pretty big wallop. With this baby there's not much we can't blow up...",
+      "The Grunt ran off toward Valor Lakefront!"
+     ],
+     "flag": "sinnoh_r213_grunt_heard"
+    }
+   },
+   {
     "text": "Fisherman",
     "action": "EVENT",
     "event": {
@@ -259897,7 +260254,43 @@
    "70,10": "house_0401",
    "61,5": "house_0501",
    "72,5": "house_0601"
-  }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      30,
+      26,
+      56,
+      40
+     ]
+    },
+    "condition": [
+     "sinnoh_r213_grunt_heard",
+     "not:sinnoh_r213_looker"
+    ],
+    "flag": "sinnoh_r213_looker",
+    "cast": [
+     {
+      "sheet": "pt_icpo.png",
+      "from": [
+       31,
+       35
+      ],
+      "to": "player",
+      "lines": [
+       "Looker: Hello, my friend! The cargo that the Team Galactic brought is worrisome, so I have come.",
+       "Looker: ...You say the cargo, it was a bomb? And there was an explosion at the Great Marsh? And you are pursuing a man with funny bowl-cut hair?",
+       "Looker: Oh, no, no, no! The man I have seen running away, he was the bearer of the bomb! Ach! Wait! Wait, I say!"
+      ],
+      "leave": [
+       56,
+       33
+      ]
+     }
+    ]
+   }
+  ]
  },
  "VALOR_LAKEFRONT": {
   "art": [
@@ -259955,7 +260348,7 @@
    "TTTcccccccc/cccccccccccccccccceeeeeeeecckkcc........>",
    "Tcccccccccc/ccceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
    "TceeeaCCCCaeeeceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
-   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaaNa==aa==========>",
+   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaNNa==aa==========>",
    "TceeeaCDCCaeeeceeeeeaaaaaaaaa=aaaaaaaa==aa==========>",
    "cceeeaaaaaaeeeceeeeea!aaaaaeeceeeeeeeecckkcc........>",
    "cceeeeeaaeeeeeceeeeeeeaaaeeeeckkkkkkkkcckkcc........>",
@@ -261948,6 +262341,7 @@
     "action": "EVENT",
     "condition": [
      "has_fen_badge",
+     "sinnoh_valor_grunt_beaten",
      "not:sinnoh_secretpotion"
     ],
     "event": {
@@ -261963,6 +262357,40 @@
      "done": [
       "Cynthia: The Psyduck are on Route 210, north of Solaceon Town. Good luck!"
      ]
+    }
+   },
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb",
+     "not:sinnoh_valor_grunt_beaten"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: ...Pant...pant... Why am I running like this anyway?! That new universe our boss was talking about...",
+      "Grunt: Aww, no... You're still on my tail...? The lake's within sight... You leave me no choice... My Pokemon will KO you..."
+     ],
+     "flag": "sinnoh_valor_grunt_beaten",
+     "battle": {
+      "name": "Galactic Grunt",
+      "class": "GALACTIC_GRUNT",
+      "sprite": "pt_galactic_grunt_m.png",
+      "team": [
+       453
+      ],
+      "levels": [
+       31
+      ],
+      "rewards": {
+       "balls": 3
+      },
+      "dialogue": {
+       "player_won": [
+        "Grunt: I can't battle anymore... I'm running on fumes... I'll have to give this to the Commander..."
+       ]
+      }
+     }
     }
    }
   ],
@@ -263537,7 +263965,64 @@
    "23,54": "house_0101",
    "32,45": "house_0201",
    "7,55": "house_0301"
-  }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      28,
+      46,
+      46,
+      62
+     ]
+    },
+    "condition": [
+     "sinnoh_valor_grunt_beaten",
+     "not:sinnoh_secretpotion",
+     "not:sinnoh_valor_cynthia_came"
+    ],
+    "flag": "sinnoh_valor_cynthia_came",
+    "cast": [
+     {
+      "sheet": "pt_champion.png",
+      "from": [
+       40,
+       30
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Cynthia: Oh, hello, long time no see! How is your Pokedex filling up?",
+       "Cynthia: I came to research the folklore about the lake. They say there is an island inside the lake, and inside it a mirage of a Pokemon..."
+      ]
+     },
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       36,
+       62
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Hey, {player_name}! Where'd that Galactic goon run off to? Huh? Is this your older sister? No? Oh, OK.",
+       "{rival_name}: That explosion in the Great Marsh? It wasn't anything serious. Mr. Wake told me to tell you that.",
+       "{rival_name}: Next time I see Team Galactic, I'll teach them a lesson they won't forget! See you around!"
+      ],
+      "leave": "back"
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Cynthia: He's your friend? He's more impatient than he is energetic, isn't he?"
+      ],
+      "leave": [
+       35,
+       54
+      ]
+     }
+    ]
+   }
+  ]
  },
  "SINNOH_ROUTE_214": {
   "art": [

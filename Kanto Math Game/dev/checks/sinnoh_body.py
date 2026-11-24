@@ -489,8 +489,8 @@ story.inventory.pop("SECRET_POTION", None)
 check(_ps1 and not _ps2, f"Route 210: the Psyduck stay till you have the SecretPotion, then they're gone ({len(_ps1)} -> {len(_ps2)})")
 _vl = _tm["VALOR_LAKEFRONT"]
 _cyv = [p for f in (_vl.get("floors") or [_vl]) for p in f.get("people") or [] if isinstance(p, dict) and p.get("text") == "Cynthia"]
-check(_cyv and _cyv[0]["event"].get("gift_item") == {"SECRET_POTION": 1} and "has_fen_badge" in _cyv[0]["condition"],
-      "Valor Lakefront: Cynthia gives the SecretPotion after the Fen Badge")
+check(_cyv and _cyv[0]["event"].get("gift_item") == {"SECRET_POTION": 1} and "has_fen_badge" in _cyv[0]["condition"] and "sinnoh_valor_grunt_beaten" in _cyv[0]["condition"],
+      "Valor Lakefront: Cynthia gives the SecretPotion after the Fen Badge, once the Pastoria grunt is beaten (S4, Platinum)")
 story.story_flags.pop("windworks_cleared", None)
 story.inventory["HM_SURF"] = 0                                     # (you have no Surf this early: the river can't take you round them)
 r, _gr = _blocked("SINNOH_ROUTE_205", "FLOAROMA_TOWN")
@@ -1161,6 +1161,52 @@ t.show_message = _orig
 check(story.story_flags.get("sinnoh_veilstone_wake_scene") and not t._busy(),
       f"Veilstone: walking up to the Gym, Dawn chats and Crasher Wake comes out of the Gym ({len(_heard)} lines heard)")
 story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _badges
+
+# ---- S4 (11-24): Pastoria's Fen Badge story and the chase, as Platinum's (s_s4_pastoria_story.py)
+_sv = dict(story.story_flags); _inv = dict(story.inventory); _badges = list(story.badges.get("SINNOH", []))
+for _k in ("defeated_rival_pastoria", "sinnoh_pastoria_barry", "sinnoh_pastoria_bomb_warned", "sinnoh_pastoria_bomb", "sinnoh_r213_grunt_heard",
+           "sinnoh_r213_looker", "sinnoh_valor_grunt_beaten", "sinnoh_valor_cynthia_came", "sinnoh_secretpotion"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("SECRET_POTION", None)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE"]
+t = town("PASTORIA_CITY", "SINNOH_ROUTE_212"); frames(t, 3)
+t.player = t.anim_from = (13, 28); t.anim = 0; t.walk_goal = None
+_drive(t, 600, lambda: "Battle" in type(g.current_state).__name__)
+_bb = g.current_state if "Battle" in type(g.current_state).__name__ else None
+story.story_flags["defeated_rival_pastoria"] = True
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN"]
+t = town("PASTORIA_CITY", "SINNOH_ROUTE_212"); frames(t, 3)
+t.player = t.anim_from = (13, 28); t.anim = 0; t.walk_goal = None
+_drive(t, 900, lambda: story.story_flags.get("sinnoh_pastoria_bomb_warned") and not t._busy())
+_two = {str(o.get("text")) for o in t._people().values()} >= {"Crasher Wake", "Barry"}
+t.player = t.anim_from = (34, 10); t.anim = 0; t.walk_goal = None
+_drive(t, 1500, lambda: story.story_flags.get("sinnoh_pastoria_bomb") and not t._busy())
+_guarded = (34, 10) in t.barred
+r = route("SINNOH_ROUTE_213", "PASTORIA_CITY")
+_gr = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Galactic Grunt"), None)
+if _gr is not None:
+    r.run.player = [_gr.x - 1, _gr.y]
+    r._use_figure(_gr); _drive(r, 900, lambda: story.story_flags.get("sinnoh_r213_looker") and not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+r = route("VALOR_LAKEFRONT", "SINNOH_ROUTE_213")
+_vg = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Galactic Grunt"), None)
+_vb = None
+if _vg is not None:
+    r.run.player = [_vg.x - 1, _vg.y]
+    r._use_figure(_vg); _drive(r, 600, lambda: "Battle" in type(g.current_state).__name__)
+    _vb = g.current_state if "Battle" in type(g.current_state).__name__ else None
+story.story_flags["sinnoh_valor_grunt_beaten"] = True
+r = route("VALOR_LAKEFRONT", "SINNOH_ROUTE_213")
+r.run.player = [36, 55]
+_drive(r, 1500, lambda: story.story_flags.get("sinnoh_valor_cynthia_came") and not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+_cy = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Cynthia"), None)
+if _cy is not None:
+    r._use_figure(_cy); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+t = town("PASTORIA_CITY", "SINNOH_ROUTE_213"); frames(t, 25)
+check(_bb is not None and _two and _guarded and story.story_flags.get("sinnoh_r213_looker") and _vb is not None
+      and story.inventory.get("SECRET_POTION") and (34, 10) not in t.barred,
+      f"Pastoria: Barry battles you at the Gym; with the Fen Badge, Wake and Barry, the bomb, Barry guards the gate; the chase: Route 213, Looker, the Valor grunt, Cynthia's SecretPotion; the gate opens "
+      f"({_bb is not None}, {_two}, {_guarded}, {story.story_flags.get('sinnoh_r213_looker')}, {_vb is not None}, {story.inventory.get('SECRET_POTION')}, {(34, 10) in t.barred})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv); story.badges["SINNOH"] = _badges
 
 g.walk_towns = False
 print(f"##### {fails} failures")

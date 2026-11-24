@@ -76,6 +76,11 @@
     ]
   },
   "figures": {
+    "VALOR_LAKEFRONT:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "SINNOH_ROUTE_213:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "PASTORIA_CITY:Barry": {"sheet": "pt_rivel.png"},
+    "PASTORIA_CITY:Crasher Wake": {"sheet": "pt_leader3.png"},
+    "PASTORIA_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
     "GALACTIC_WAREHOUSE:Looker": {"sheet": "pt_icpo.png"},
     "VEILSTONE_CITY:Dawn": {"sheet": "pt_heroine.png"},
     "VEILSTONE_CITY:Galactic Grunt ": {"sheet": "pt_gingam.png"},
