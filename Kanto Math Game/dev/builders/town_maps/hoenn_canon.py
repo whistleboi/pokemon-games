@@ -627,6 +627,22 @@ def _drop_dupes(maps):
                       for s in f.get("signs") or []]
 
 
+def _mauville_slots(maps):
+    """Hub / encyclopedia (11-24): Mauville Game Corner's slot machines (Emerald's 10.3: four rows of machines, two wide)
+    were plain wall 'c', so walk_town._game_machine - an 'm' in a column of three or more, in a room with the Game Corner
+    counter - never found one. They are 'm' now; the room is drawn from Emerald's picture, so the look is the same."""
+    r = ((maps.get("MAUVILLE_CITY") or {}).get("rooms") or {}).get("game_corner")
+    if not r:
+        return
+    art = [list(row) for row in r["art"]]
+    for x0 in (2, 7, 14, 18):
+        for y in range(6, 10):
+            for x in (x0, x0 + 1):
+                if art[y][x] == "c":
+                    art[y][x] = "m"
+    r["art"] = ["".join(row) for row in art]
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -708,6 +724,7 @@ def apply(maps):
     _pyre_admin(maps)
     _woods_researcher(maps)
     _drop_dupes(maps)
+    _mauville_slots(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
