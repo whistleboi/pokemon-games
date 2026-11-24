@@ -17,16 +17,21 @@ FLUTE = "EON_FLUTE"
 FLUTE_TEXT = "Play it outside and your Eon friend comes to fly you high over the regions you know."
 
 
-# ---------------------------------------------------------------- the Eon Flute (ORAS: Steven gives it at Southern Island)
+# ---------------------------------------------------------------- the Eon Flute (ORAS: Steven, after the Cave of Origin)
 def give_flute(story):
-    """The Eon Flute comes with the Eon at Southern Island; a save that met its Eon before the flute was in the game
-    gets it now. True if it was added."""
-    if story.inventory.get(FLUTE, 0) > 0 or not story.story_flags.get("got_mega_bracelet"):
+    """Steven gives the Eon Flute in Sootopolis once the Cave of Origin is over (ORAS's timing; Jordan 11-23, Hoenn H5:
+    the Eon and the Mega Bracelet still come at Southern Island after the Balance Badge). Steven's own gift is the way;
+    this only tops up a save already past the Champion that never got it (before, it came by itself the moment the Cave
+    of Origin was over, and Steven then gave a second one: hoenn_gates, 11-23). True if it was added."""
+    f = story.story_flags
+    if story.inventory.get(FLUTE, 0) > 0 or f.get("got_eon_flute_hoenn") or not f.get("got_mega_bracelet") \
+            or not f.get("cave_of_origin_cleared") or not f.get("beat_hoenn_champion"):
         return False
     mine = story.store_regions() if hasattr(story, "store_regions") else None
     if mine is not None and "HOENN" not in mine:
         return False
     story.inventory[FLUTE] = 1
+    f["got_eon_flute_hoenn"] = True   # (Steven's gift's flag: he doesn't give a second)
     return True
 
 

@@ -1,0 +1,340 @@
+{
+ "source": "Orange Islands Beta 5.7 (Kalarie's FireRed hack), Jordan's game file: battle terrain table 0x24EE34 (FireRed's, unchanged); kanto_handoff/orange_rom_tools/oi_battle_bg.py",
+ "terrain": {
+  "grass": "grass.png",
+  "cave": "cave.png",
+  "water": "water.png",
+  "sand": "sand.png",
+  "inside": "building.png"
+ },
+ "areas": {
+  "ASCORBIA_FOREST": "indoor_2.png",
+  "ASCORBIA_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "BAY_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "BUTWAL_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "CLEOPATRA_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "CRYSTAL_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "FAIRCHILD_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "FIRE_ISLAND": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "FUKUHARA_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "GOLDEN_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "HAMLIN_FIELDS": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "HAMLIN_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "ICE_ISLAND": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "KINNOW_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "KUMQUAT_ISLAND": {
+   "trainer": "plain.png",
+   "water": "water.png",
+   "wild": "plain.png",
+   "gym": "building.png",
+   "leader": "leader.png"
+  },
+  "LAWRENCE_SHIP": {
+   "wild": "building.png",
+   "trainer": "building.png"
+  },
+  "LIGHTNING_ISLAND": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "MANDARIN_NORTH": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "MANDARIN_SOUTH": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "MANDARIN_UNDERGROUND": "indoor_2.png",
+  "MIKAN_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png",
+   "gym": "building.png",
+   "leader": "leader.png"
+  },
+  "MORO_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "MT_NAVEL": {
+   "trainer": "plain.png",
+   "water": "water.png",
+   "wild": "plain.png",
+   "leader": "leader.png"
+  },
+  "MURCOTT_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "MURCOTT_MEADOWS": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "NAVEL_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png",
+   "gym": "building.png",
+   "leader": "leader.png"
+  },
+  "NEW_ISLAND": "indoor_2.png",
+  "ORANGE_ROUTE_49": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_50": {
+   "trainer": "sand.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_53": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_54": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_55": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_56": {
+   "trainer": "sand.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_57": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_58": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_59": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_59_SOUTH": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_60": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_61": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_62": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_63": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_64": {
+   "trainer": "sand.png",
+   "water": "pond.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_65": {
+   "trainer": "sand.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_66": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_67": {
+   "trainer": "sand.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_68": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_69": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_70": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "ORANGE_ROUTE_71": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_72": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_73": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "ORANGE_ROUTE_74": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "PINKAN_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "PUMMELO_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png",
+   "gym": "building.png",
+   "leader": "champion.png"
+  },
+  "RIND_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "SALVEYO_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "SEVEN_GRAPEFRUITS": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "SHAMOUTI_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "SHOWBOAT": {
+   "wild": "building.png",
+   "trainer": "building.png"
+  },
+  "SUNBURST_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "TANGELO_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "TANGELO_JUNGLE": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "TARROCO_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "TROVITA_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png",
+   "gym": "building.png",
+   "leader": "leader.png"
+  },
+  "TROVITOPOLIS": {
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "TROVITOPOLIS_SEWERS": "indoor_2.png",
+  "VALENCIA_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "VALENCIA_PARK": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "YAMBERA": {
+   "water": "pond.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  }
+ }
+}

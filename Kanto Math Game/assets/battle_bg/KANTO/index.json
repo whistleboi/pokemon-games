@@ -1,0 +1,385 @@
+{
+ "source": "Pokemon FireRed (U), Jordan's game file: battle terrain table 0x24EE34; kanto_handoff/kanto_rom_tools/fr_battle_bg.py",
+ "terrain": {
+  "grass": "grass.png",
+  "cave": "cave.png",
+  "water": "water.png",
+  "sand": "sand.png",
+  "inside": "building.png"
+ },
+ "areas": {
+  "BERRY_FOREST": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "BILLS_HOUSE": {
+   "wild": "building.png",
+   "trainer": "building.png"
+  },
+  "BIRTH_ISLAND": {
+   "water": "pond.png",
+   "trainer": "plain.png"
+  },
+  "BOND_BRIDGE": {
+   "wild": "grass.png",
+   "trainer": "sand.png",
+   "water": "water.png"
+  },
+  "CANYON_ENTRANCE": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "CAPE_BRINK": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "CELADON_CITY": {
+   "water": "pond.png",
+   "trainer": "plain.png"
+  },
+  "CELADON_GAME_CORNER": {
+   "wild": "building.png",
+   "trainer": "building.png"
+  },
+  "CERULEAN_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "CERULEAN_CITY": {
+   "water": "water.png",
+   "trainer": "plain.png"
+  },
+  "CINNABAR_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png"
+  },
+  "DIGGLETT_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "DOTTED_HOLE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "FARAWAY_ISLAND": {
+   "wild": "long_grass.png",
+   "trainer": "plain.png",
+   "water": "building.png"
+  },
+  "FIVE_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png"
+  },
+  "FIVE_ISLE_MEADOW": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "FOUR_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "FUCHSIA_CITY": {
+   "water": "pond.png",
+   "trainer": "plain.png"
+  },
+  "GREEN_PATH": {
+   "trainer": "sand.png",
+   "water": "water.png"
+  },
+  "ICEFALL_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "INDIGO_PLATEAU": {
+   "elite": [
+    "lorelei.png",
+    "bruno.png",
+    "agatha.png",
+    "lance.png"
+   ],
+   "gym": "champion.png"
+  },
+  "KANTO_POKEMON_TOWER": "indoor_1.png",
+  "KANTO_ROUTE_1": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_ROUTE_10": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_11": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_12": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_13": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_14": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_15": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_ROUTE_16": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_17": {
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_18": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_19": {
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_2": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_ROUTE_20": {
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_21": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_22": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "KANTO_ROUTE_23": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_24": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_25": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_3": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_ROUTE_4": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "KANTO_ROUTE_5": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_ROUTE_6": {
+   "wild": "grass.png",
+   "trainer": "grass.png",
+   "water": "pond.png"
+  },
+  "KANTO_ROUTE_7": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_ROUTE_8": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_ROUTE_9": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "KANTO_SS_ANNE": {
+   "wild": "building.png",
+   "trainer": "building.png",
+   "water": "building.png"
+  },
+  "KINDLE_ROAD": {
+   "wild": "grass.png",
+   "trainer": "sand.png",
+   "water": "water.png"
+  },
+  "LAVENDER_TOWN": {
+   "trainer": "plain.png"
+  },
+  "LOST_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "MEMORIAL_PILLAR": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "MT_EMBER": {
+   "wild": "grass.png",
+   "trainer": "mountain.png"
+  },
+  "MT_MOON": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "NAVEL_ROCK": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "ONE_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png"
+  },
+  "OUTCAST_ISLAND": {
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "PALLET_TOWN": {
+   "water": "water.png",
+   "trainer": "plain.png"
+  },
+  "PATTERN_BUSH": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "PEWTER_CITY": {
+   "trainer": "plain.png"
+  },
+  "POKEMON_MANSION": "indoor_2.png",
+  "POWER_PLANT": "indoor_2.png",
+  "RESORT_GORGEOUS": {
+   "trainer": "sand.png",
+   "water": "water.png"
+  },
+  "ROCKET_HIDEOUT": "indoor_2.png",
+  "ROCKET_WAREHOUSE": "indoor_2.png",
+  "ROCK_TUNNEL": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "RUIN_VALLEY": {
+   "wild": "grass.png",
+   "trainer": "mountain.png",
+   "water": "pond.png"
+  },
+  "SAFARI_ZONE": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "SAFFRON_CITY": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "SEAFOAM_ISLANDS": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "SEVAULT_CANYON": {
+   "wild": "grass.png",
+   "trainer": "mountain.png",
+   "water": "water.png"
+  },
+  "SEVEN_ISLAND": {
+   "trainer": "sand.png",
+   "water": "water.png"
+  },
+  "SEVII_ALTERING_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "SILPH_CITY": {
+   "wild": "building.png",
+   "trainer": "building.png"
+  },
+  "SIX_ISLAND": {
+   "water": "pond.png",
+   "trainer": "plain.png"
+  },
+  "TANOBY_RUINS": "indoor_1.png",
+  "THREE_ISLAND": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "THREE_ISLE_PORT": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "TREASURE_BEACH": {
+   "wild": "grass.png",
+   "trainer": "water.png",
+   "water": "water.png"
+  },
+  "TWO_ISLAND": {
+   "water": "pond.png",
+   "trainer": "plain.png"
+  },
+  "UNDERGROUND_PATH": {
+   "wild": "building.png",
+   "trainer": "building.png"
+  },
+  "VERMILLION_CITY": {
+   "water": "water.png",
+   "trainer": "plain.png"
+  },
+  "VICTORY_ROAD": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "VIRIDIAN_CITY": {
+   "water": "pond.png",
+   "trainer": "plain.png"
+  },
+  "VIRIDIAN_FOREST": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "WATER_LABYRINTH": {
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "WATER_PATH": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "TRAINER_TOWER": "building.png",
+  "KANTO_ROUTE_10_SOUTH": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  }
+ }
+}

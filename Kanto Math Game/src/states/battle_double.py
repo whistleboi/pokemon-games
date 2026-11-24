@@ -1030,6 +1030,8 @@ class DoubleBattleState(TrainerBattleState):
             self.game.ui_manager.draw(screen)
             return
         screen.fill((0, 0, 0))
+        from src.utils import Utils as _U
+        screen.set_clip(pygame.Rect(0, 0, self.game.width, _U.get_full_dialogue_rect(self.game).top))   # (the field, above the box)
         if self.background:
             screen.blit(self.background, (0, 0))
         else:
@@ -1050,6 +1052,7 @@ class DoubleBattleState(TrainerBattleState):
         if self.move_anim:
             self.move_anim.draw(screen)
         self._draw_weather(screen)
+        screen.set_clip(None)
         for side in ("opponent", "player"):
             for k, mon in enumerate(self._slots(side)):
                 if mon is not None and (mon.current_hp > 0 or self._has(self._d_faint_queue, mon)

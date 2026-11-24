@@ -1,5 +1,22 @@
 from src.world.story import StoryManager
 
+
+# (11-23, legacy menu clear: the S.S. Tidal's, the Frontier's and Southern Island's menu EXITs are gone - their Sailors and
+#  the Ferry attendant sail you, an EVENT with "travel"; reach_lib.links follows EXIT/TRAVEL buttons only, so follow them here)
+_links_menu = links
+def links(area):
+    out = _links_menu(area)
+    a = PROG.get(area) or {}
+    for o in a.get("route_menu") or []:
+        ev = o.get("event") if isinstance(o.get("event"), dict) else {}
+        to = ev.get("travel")
+        if o.get("action") != "EVENT" or not to or not _flag_ok(o.get("flag_condition")):
+            continue
+        if o.get("condition") and not _state(area)._check_route_condition(o["condition"], False, o):
+            continue
+        out += [t for t in ((a.get("ferry") or {}).values() if to == "@ferry" else [to]) if t not in out]
+    return out
+
 story.badges = {"HOENN": []}
 story.inventory = {}
 story.story_flags = {"visited_LITTLEROOT_TOWN": True, "hoenn_version": "OMEGA_RUBY"}
@@ -9,6 +26,7 @@ BEATS = {"STONE": ["rusturf_rescued", "met_mr_stone"], "KNUCKLE": ["met_steven",
          "DYNAMO": ["defeated_wally_mauville", "got_strength_hoenn", "meteor_falls_cleared", "mt_chimney_boss_defeated"],
          "BALANCE": ["got_mega_bracelet", "weather_institute_cleared", "hoenn_rival_119", "got_starter_mega_stone"],
          "FEATHER": ["got_mt_pyre_orb", "hoenn_rival_lilycove"], "RAIN": ["defeated_wally_victory"]}
+HM_GIVERS = {"STONE": ["HM_CUT"], "KNUCKLE": ["HM_FLASH"], "BALANCE": ["HM_SURF"], "MIND": ["HM_DIVE"], "RAIN": ["HM_WATERFALL"]}
 story.defeated_trainers = {}
 story.starting_region = "HOENN"
 R, S = "HOENN", "LITTLEROOT_TOWN"
@@ -23,6 +41,8 @@ for b, extra in [("STONE", {}), ("KNUCKLE", {}), ("DYNAMO", {}), ("HEAT", {}), (
         story.inventory["HM_STRENGTH"] = 1  # the rival's gift on Route 112
     if "defeated_wally_mauville" in BEATS.get(b, []):
         story.inventory["HM_ROCK_SMASH"] = 1  # Wally's uncle, in Mauville (not the Dynamo Badge: 11-06)
+    for hm in HM_GIVERS.get(b, []):   # (H5, 11-23: ORAS's givers, not the badges - the Cutter, the hiker, Wally's father, Steven, Wallace)
+        story.inventory[hm] = 1
     if "hoenn_rival_119" in BEATS.get(b, []):
         story.inventory["HM_FLY"] = 1  # the rival on Route 119 (not the Feather Badge: 11-06)
     seen = report(f"{b} badge", S, seen)
