@@ -178,34 +178,21 @@ EVENTS = {
                   "Here, take these to get started."],
         "gift_item": {"balls": 5}, "flag": "rowan_assistant_balls",
         "done": ["Dawn: Catch lots of Pokemon, okay? The Professor will be thrilled!"]},
-    "poketch_company": {
-        "lines": ["Pokétch Company President: You found all three of our clowns? No? Ah, never mind!",
-                  "Here, take a Pokétch. It's a watch, a calculator, and so much more!"],
-        "flag": "got_poketch",
-        "done": ["President: How's the Pokétch? We'll have new apps soon!"]},
     "looker": {"lines": ["sinnoh_looker_intro"], "flag": "met_looker"},
     "looker_veilstone": {"lines": ["sinnoh_looker_galactic_tip"]},
     "gts_building": {"lines": ["The Global Trade Station is buzzing with trainers from far away.",
                                "Trades will open up once the link is finished. Come back later!"]},
     "galactic_jubilife": {
         "lines": ["sinnoh_galactic_jubilife"], "flag": "galactic_jubilife_cleared",
-        "battle": _t(GRUNT_G, team=[41, 431],
+        "battle": _t(GRUNT_G, team=[41, 431], levels=[11, 11],   # (Platinum's grunts at this stage are Lv 11; with no levels they fell to the area's 5-6)
                      dialogue={"player_won": ["Galactic Grunt: Ugh! Retreat! Back to Eterna!"]})},
     "galactic_windworks_grunt": {
         "lines": ["Galactic Grunt: The Valley Windworks belongs to Team Galactic now!",
                   "You want in? You'll need this key... if you can take it!"],
         "flag": "got_works_key",
         "done": ["The grunts ran off to the Valley Windworks on Route 205. Stop them there!"],
-        "battle": _t(GRUNT_G, team=[434, 41], rewards={"WORKS_KEY": 1},
+        "battle": _t(GRUNT_G, team=[434, 41], levels=[11, 11], rewards={"WORKS_KEY": 1},
                      dialogue={"player_won": ["Galactic Grunt: Fine! Take the Works Key and see if we care!"]})},
-    "galactic_eterna": {
-        "lines": ["The Team Galactic Eterna Building. Grunts stand guard at the door...",
-                  "Commander Jupiter: You came all the way up here? How adorable."],
-        "flag": "galactic_eterna_cleared",
-        "battle": {"name": "Commander Jupiter", "class": "COMMANDER", "sprite": "galactic_grunt.png",
-                   "team": [41, 435], "is_boss_battle": True,
-                   "dialogue": {"player_won": ["Jupiter: ...We're leaving. We have what we came for.",
-                                               "The stolen Clefairy was rescued from the building!"]}}},
     "rad_rickshaw": {
         "lines": ["Rad Rickshaw: Thanks for chasing off Team Galactic!",
                   "Take this Bicycle. Ride it with pride!"],
@@ -213,11 +200,8 @@ EVENTS = {
         "done": ["Rad Rickshaw: How's that Bicycle treating you?"]},
     "amity_square": {"lines": ["Amity Square: small Pokemon can walk alongside their trainers here.",
                                "Your partner sniffs around happily. It found nothing... this time."]},
-    "cynthia_hm": {"lines": ["sinnoh_cynthia_hm"], "flag": "received_hm_cut"},
     "day_care": {"lines": ["Day Care Lady: We raise Pokemon for trainers on the go.",
                            "Come back when you have a Pokemon you'd like us to look after!"]},
-    "solaceon_reporter": {"lines": ["Reporter: There are strange ruins just north of town.",
-                                    "They say the Unown inside spell out words... spooky, right?"]},
     "celestic_ruins": {"lines": ["sinnoh_cynthia_celestic"]},
     "celestic_elder": {"lines": ["sinnoh_celestic_elder"]},
     "old_charm_delivery": {"lines": ["sinnoh_old_charm_deliver"], "flag": "delivered_old_charm"},
@@ -245,20 +229,21 @@ EVENTS = {
         "lines": ["sinnoh_mars_intro"], "requires": ["galactic_lake_valor_cleared"],
         "fail": ["Team Galactic grunts block the way to the lake."], "flag": "galactic_lake_verity_cleared",
         "battle": {"name": "Commander Mars", "class": "COMMANDER", "sprite": "mars.png", "team": [42, 436, 432],
-                   "levels": [37, 37, 39],
+                   "levels": [38, 38, 40],   # (Platinum's trainer 405)
                    "is_boss_battle": True, "dialogue": {"player_won": ["sinnoh_mars_won"]}}},
     # BDSP (Serebii's lake pages): Saturn has already taken Azelf but battles you in Valor Cavern;
     # Jupiter has taken Uxie and beaten your rival, and doesn't battle. The Galactic Key is in the
     # Veilstone warehouse underpass.
-    "saturn_lake_valor": {
-        "lines": ["Lake Valor has been drained. Only a muddy crater is left.",
-                  "Deep in Valor Cavern, Commander Saturn turns around.",
-                  "Saturn: You're too late. Azelf is already ours. But since you came all this way..."],
+    "saturn_lake_valor": {   # (Platinum's Saturn in Valor Cavern, D28R0103 (14,19): trainer 408, lines lightly shortened; 11-24)
+        "lines": ["Saturn: The mission is proceeding without a hitch. The boss should be pleased.",
+                  "Saturn: I recognize your face. You're the child who raided our building in Eterna! Jupiter should be ashamed.",
+                  "Saturn: But anything and anyone that opposes Team Galactic must be crushed!"],
         "requires": ["canalave_library_meeting"], "flag": "galactic_lake_valor_cleared",
-        "battle": {"name": "Commander Saturn", "class": "COMMANDER", "sprite": "saturn.png", "team": [64, 436, 454],
-                   "levels": [35, 35, 37], "is_boss_battle": True,
-                   "dialogue": {"player_won": ["Saturn: Well fought. But Azelf is already ours.",
-                                               "Saturn: Mars went to Lake Verity. Hurry, if you think it matters."]}}},
+        "battle": {"name": "Commander Saturn", "class": "COMMANDER", "sprite": "saturn.png", "team": [42, 436, 454],
+                   "levels": [38, 38, 40], "is_boss_battle": True,
+                   "dialogue": {"player_won": ["Saturn: Gah! Even I, a Commander, only managed to buy us time? But that's fine.",
+                                               "Saturn: A child like you will never stem the flow of time. With the lake Pokemon's power we'll make a new universe!",
+                                               "Saturn: By now, Mars should have captured the Pokemon of Lake Verity..."]}}},
     "jupiter_lake_acuity": {
         "lines": ["{rival_name} is slumped by the shore of Lake Acuity.",
                   "{rival_name}: Sorry... Commander Jupiter took Uxie. I couldn't stop her.",
@@ -451,10 +436,10 @@ EVENTS = {
         "done": ["Scientist: How is Castform doing? Try it in the rain and in the sun!"]},
     "devon_president": {"lines": ["Mr. Stone: You got our Devon Parts back? Thank you!",
                                   "Please deliver this letter to my son Steven in Dewford, and these parts to Captain Stern.",
-                                  "Mr. Briney's boat can take you. Take this PokeNav Plus, too."],
+                                  "Mr. Briney's boat can take you."],
                         "requires": ["rusturf_rescued"], "fail": ["hoenn_devon_parts_stolen"],
                         "fail_flag": "heard_devon_parts_stolen",  # the journal's "Devon Parts" from here (Jordan, 11-05)
-                        "gift_item": {"POKE_NAV": 1, "LETTER": 1, "DEVON_PARTS": 1}, "flag": "met_mr_stone",
+                        "gift_item": {"LETTER": 1, "DEVON_PARTS": 1}, "flag": "met_mr_stone",   # (no second PokeNav: your rival gives it on Route 101, 11-24)
                         "done": ["Mr. Stone: Steven is in Granite Cave, in Dewford. Thank you again!"]},
     "hyperspace_guide": {"lines": [
         "Researcher: Hyperspace is a strange place under Lumiose City, full of wild energy.",
@@ -535,9 +520,26 @@ def gift_for_starter(gift, starter_id):
     return gift
 
 
-def gift_pokemon(game, pid, level=None, held=None):
+def gift_ability_slot(game, pid, ability):
+    """The ability slot for a gift's set Ability: "hidden" / 2, a slot number, or the ability by name."""
+    from src.pokemon import abilities as _ab
+    a = str(ability).strip().upper().replace(" ", "").replace("-", "").replace("_", "")
+    if a == "HIDDEN":
+        return _ab.HIDDEN_SLOT
+    if a.isdigit():
+        return int(a)
+    norm = lambda k: str(k or "").upper().replace(" ", "").replace("-", "").replace("_", "")
+    for slot in (0, 1, _ab.HIDDEN_SLOT):
+        if norm(_ab.key_for(game, pid, slot)) == a:
+            return slot
+    return _ab.roll_slot()
+
+
+def gift_pokemon(game, pid, level=None, held=None, ability=None, no_shiny=False):
     """Give a Pokemon to the player (party, or the PC when the party is full), at the area's wild
-    level or at `level` (the Sinjoh Ruins' Lv 1 dragons). Returns the message."""
+    level or at `level` (the Sinjoh Ruins' Lv 1 dragons). ability: its set Ability - "hidden", a slot
+    (0, 1, 2) or the ability's name (Route 6's Serene Grace Deerling, Black 2); no_shiny: never Shiny.
+    Returns the message."""
     from src.pokemon.data import Pokemon
     from src.world import levels
     story = game.story_manager
@@ -549,6 +551,10 @@ def gift_pokemon(game, pid, level=None, held=None):
         mon.current_hp = mon.get_max_hp()
     if held:
         mon.held_item = held
+    if ability is not None:
+        mon.ability_slot = gift_ability_slot(game, mon.id, ability)
+    if no_shiny:
+        mon.is_shiny = False
     if len(story.player_team) < 6:
         story.player_team.append(mon)
         where = "joined your team"
