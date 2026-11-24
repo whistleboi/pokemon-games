@@ -1943,6 +1943,19 @@ class StoryManager:
             self.current_area_key = "MT_SILVER"
         # Old areas nothing leads to any more (Jordan 11-16: deleted): Moomoo's drawn house and barn (the farm is Route 39's rooms),
         # and Hoenn's dropped Secret Islet / Meadow / Shore (back to the route their Soaring landing hangs off).
+        # Platinum's Galactic Warehouse and HQ story (11-24) came after saves that already cleared them: those count its steps
+        # as done (the Warehouse guards, Looker's Storage Key door, Cyrus and Saturn), and keep the Galactic Key the HQ's doors
+        # ask for (in Sinnoh's Bag). Found by sinnoh_played's old-save check.
+        if f.get("galactic_warehouse_cleared"):
+            for _k in ("sinnoh_warehouse_guards_beaten", "sinnoh_dawn_warehouse_call"):
+                f.setdefault(_k, True)
+        if f.get("galactic_hq_cleared"):
+            for _k in ("sinnoh_storage_door_open", "sinnoh_hq_cyrus_beaten", "sinnoh_hq_saturn_beaten"):
+                f.setdefault(_k, True)
+            _key = self.store_key("SINNOH")
+            for _bag in ((self.region_stores.get(_key) or {}).get("bag"), self.inventory if _key == getattr(self, "active_store", None) else None):
+                if isinstance(_bag, dict) and not _bag.get("GALACTIC_KEY"):
+                    _bag["GALACTIC_KEY"] = 1
         _gone = {"MOOMOO_HOUSE": "JOHTO_ROUTE_39", "MOOMOO_BARN": "JOHTO_ROUTE_39", "HOENN_SECRET_ISLET": "HOENN_ROUTE_126",
                  "HOENN_SECRET_MEADOW": "HOENN_ROUTE_130", "HOENN_SECRET_SHORE": "HOENN_ROUTE_129"}
         if self.current_area_key in _gone:
