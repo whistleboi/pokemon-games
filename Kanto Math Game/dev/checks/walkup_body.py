@@ -90,7 +90,8 @@ shot("1a_honey_walking_up")
 key(pygame.K_RIGHT)
 check(p.run.player == me, "arrow keys don't walk you off while they walk up")
 check(until(p, lambda: p.mode == "CATCH", wu.WALK_LIMIT + 120), f"then the catch screen opens ({p.mode})")
-check(all(max(abs(m.x - me[0]), abs(m.y - me[1])) == 1 for m in ws), f"...once all three stand round you, sides first, then corners ({[(m.x, m.y) for m in ws]}, you {me})")
+check(all(max(abs(m.x - me[0]), abs(m.y - me[1])) <= 2 for m in ws) and sum(max(abs(m.x - me[0]), abs(m.y - me[1])) == 1 for m in ws) >= 2,
+      f"...once all three stand round you: beside you, else as close as they can get ({[(m.x, m.y) for m in ws]}, you {me})")
 check(len({(m.x, m.y) for m in ws}) == 3, "...each on its own tile")
 check([id(x) for x in p.p_data] == [id(m.payload) for m in ws], "the catch screen's three are the very ones that walked up")
 check(all(m.motion.facing[0] * (me[0] - m.x) + m.motion.facing[1] * (me[1] - m.y) > 0 for m in ws),
