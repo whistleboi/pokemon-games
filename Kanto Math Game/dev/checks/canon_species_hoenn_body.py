@@ -112,4 +112,25 @@ check(birch_pick(387) and story.player_team[-1].id == 387 and not birch_pick(390
 story.player_team = [mk(25)]
 
 
+print("12) Emerald's mass outbreaks, told on TV, after the Hall of Fame (main M6, 11-24)")
+from src.world import swarms as _sw
+check(_sw.SWARMS["HOENN"] == {"HOENN_ROUTE_102": 273, "HOENN_ROUTE_114": 274, "HOENN_ROUTE_116": 300,
+                              "HOENN_ROUTE_117": 273, "HOENN_ROUTE_120": 273},
+      "Emerald's five: Seedot on Routes 102, 117 and 120, Nuzleaf on 114, Skitty on 116")
+story.enter_region("HOENN")
+_fl = dict(story.story_flags)
+story.story_flags.pop("unlocked_national_dex", None)
+check(_sw.today(story, "HOENN") is None and _sw.news(g, "HOENN") is None, "...none before the Hall of Fame (the National Pokedex)")
+story.story_flags["unlocked_national_dex"] = True
+_real = _sw.today
+try:
+    _sw.today = lambda s, r, day=None: ("HOENN_ROUTE_116", 300) if str(r).upper() == "HOENN" else None
+    _pool = _sw.adjust(g, {"263": 50, "276": 50}, "HOENN_ROUTE_116", "grass")
+    check(_pool.get("300") == 100, f"Route 116's Skitty outbreak is half the grass encounters, Emerald's way ({_pool})")
+    _news = _sw.news(g, "HOENN") or []
+    check(any("Skitty" in x and "Route 116" in x for x in _news), f"...and the TV news tells you ({_news[:1]})")
+finally:
+    _sw.today = _real
+story.story_flags = _fl
+
 print(f"##### {fails} failures")
