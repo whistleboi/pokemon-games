@@ -10,17 +10,17 @@
 
 # main
 aiswitch               main     battle
-battle2                main     battle
+battle2                main     battle,quick
 battle_points          main     battle
-catch                  main     items
+catch                  main     items,quick
 doors                  main     world
-doubles                main     battle
+doubles                main     battle,quick
 ds3d                   main     world
-dungeon                main     world
+dungeon                main     world,quick
 events                 main     story
 exp_mode               main     battle
 faces                  main     world
-flyrule                main     world
+flyrule                main     world,quick
 followers              main     world
 gym_tms                main     items
 hordes                 main     battle
@@ -28,8 +28,8 @@ items                  main     items
 items_pp               main     items
 level_cap              main     battle
 loops                  main     story
-menus                  main     ui
-moveeffects            main     battle
+menus                  main     ui,quick
+moveeffects            main     battle,quick
 movepool               main     battle
 moves_all              main     battle
 reach_rides            main     world
@@ -38,17 +38,17 @@ region_followers       main     world
 rivals                 main     story
 room_light             main     world
 rotom_forms            main     battle
-savename               main     ui
+savename               main     ui,quick
 savespot               main     world
 scaling                main     battle
 selfko                 main     battle
-slots                  main     ui,saves
-storage                main     saves,helpers
+slots                  main     ui,saves,quick
+storage                main     saves,helpers,quick
 tms_hazards            main     items
-tmshop                 main     items
+tmshop                 main     items,quick
 town_smash             main     world
-townsea                main     world
-ui                     main     ui
+townsea                main     world,quick
+ui                     main     ui,quick
 vsseeker               main     story
 water_arrival          main     world
 
@@ -67,7 +67,7 @@ guide_exits            journal  journal
 journal_regions        journal  journal
 journal_rules          journal  journal
 journal_parts          journal  journal
-quest_book             journal  journal
+quest_book             journal  journal,quick
 quest_book_hoenn       journal  journal
 quest_book_johto       journal  journal
 quest_book_orange      journal  journal
