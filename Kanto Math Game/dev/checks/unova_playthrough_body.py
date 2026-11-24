@@ -416,6 +416,12 @@ def settle(limit=9000):
                     if g.current_state is st:
                         st.exit_gym()
                 continue
+            _lp = getattr(getattr(st, "back", None), "_lift_plan", None)
+            if isinstance(st, _PLS) and st.title == "WHICH FLOOR?" and _lp in [v for _l, v in st.choices]:   # (a lift's panel: the floor the marker
+                _say(f"[lift: {st.title}: {next(l for l, v in st.choices if v == _lp)}]")                    #  says, 'Lift to <floor>'; 11-23)
+                st.back._lift_plan = None
+                st.pick(_lp)
+                continue
             if isinstance(st, _PLS):   # (a list to pick from: a tutor's "who should learn it?": BACK, no thanks)
                 if str(st.title).endswith("?") and str(st.title) != str(st.title).upper() and st.choices:   # (Johto: the Elder's quiz)
                     _say(f"[list: {st.title}: answered {st.choices[0][0]}]")
@@ -1764,6 +1770,73 @@ if last := PER.get(STATE["mission"]):
     last["done"] = last["done"] or ENDED.startswith("built so far")
 shot("END_" + ENDED.replace(" ", "_"))
 
+# ---------------------------------------------------------------- after the title: every post-title event PLAYED (11-23, Jordan: "a post league content playthrough")
+# From where Red was beaten, one job at a time: the run gets a Journal entry for it (a stand-in MAIN mission with the game's
+# own way-points: area, floor / room, tile), is set down in the nearest town (Fly), and then plays it the way it plays the
+# story: the marker, real steps, every trainer and battle fought. A job that doesn't end with its flag is a finding (POST).
+POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it's done)
+    ("post_moltres", "Moltres on Mt. Silver", "MT_SILVER_CITY",
+     [{"area": "MT_SILVER", "floor": 3, "at": [10, 9], "label": "Moltres", "done": "mt_silver_moltres_defeated"}], "mt_silver_moltres_defeated"),
+    ("post_gs_ball", "The GS Ball (Goldenrod's Center, for the Champion)", "GOLDENROD_CITY",
+     [{"area": "GOLDENROD_CITY", "room": "center", "at": [5, 18], "label": "Center attendant", "done": "got_gs_ball_johto"}], "got_gs_ball_johto"),
+    ("post_kurt", "Kurt looks at the GS Ball", "AZALEA_TOWN",
+     [{"area": "AZALEA_TOWN", "room": "kurt", "at": [4, 6], "label": "Kurt", "done": "kurt_examined_gs_ball"}], "kurt_examined_gs_ball"),
+    ("post_celebi", "Celebi at Ilex Forest's shrine", "AZALEA_TOWN",
+     [{"area": "ILEX_FOREST", "floor": 0, "at": [13, 77], "label": "The shrine", "done": "ILEX_FOREST_boss_defeated"}], "ILEX_FOREST_boss_defeated"),
+    ("post_hooh", "Ho-Oh on the Bell Tower roof (Rainbow Wing)", "ECRUTEAK_CITY",
+     [{"area": "BELL_TOWER", "floor": 10, "at": [5, 6], "label": "Ho-Oh", "done": "caught_ho_oh"}], "caught_ho_oh"),
+    ("post_kimono", "The Kimono Girls (the Tidal Bell)", "ECRUTEAK_CITY",
+     [{"area": "ECRUTEAK_DANCE_THEATER", "floor": 0, "at": [12, 3], "label": "Kimono Girls", "done": "kimono_girls_defeated"}], "kimono_girls_defeated"),
+    ("post_lugia", "Lugia in the Whirl Islands (Silver Wing + Tidal Bell)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_ROUTE_41", "floor": 0, "at": [45, 21], "label": "The north-east island", "done": "visited_WHIRL_ISLANDS"},   # (of the four islands only
+      {"area": "WHIRL_ISLANDS", "floor": 4, "at": [16, 17], "label": "Lugia", "done": "caught_lugia"}], "caught_lugia"),     #  this one leads down to Lugia, as SoulSilver)
+    ("post_groudon", "Groudon in the Embedded Tower (SoulSilver's)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [8, 7], "label": "Groudon", "done": "JOHTO_EMBEDDED_TOWER_boss_defeated"}], "JOHTO_EMBEDDED_TOWER_boss_defeated"),
+    ("post_kyogre", "Kyogre in the Embedded Tower (HeartGold's, after the title)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [6, 8], "label": "Kyogre", "done": "embedded_kyogre_defeated"}], "embedded_kyogre_defeated"),
+    ("post_rayquaza", "Rayquaza in the Embedded Tower (after both)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [10, 8], "label": "Rayquaza", "done": "embedded_rayquaza_defeated"}], "embedded_rayquaza_defeated"),
+    ("post_clair", "Clair and Lance in the Dragon's Den, with the rival", "BLACKTHORN_CITY",
+     [{"area": "DRAGONS_DEN", "floor": 1, "at": [15, 15], "label": "Clair", "done": "dragons_den_clair"},
+      {"area": "DRAGONS_DEN", "floor": 1, "at": [32, 49], "label": "Lance", "done": "dragons_den_lance"}], "dragons_den_lance"),
+    ("post_safari", "The Safari Zone (Route 48's gate)", "CIANWOOD_CITY",
+     [{"area": "SAFARI_ZONE_GATE", "room": "gate", "at": [4, 9], "label": "Safari receptionist", "done": "visited_JOHTO_SAFARI_ZONE"},
+      {"area": "JOHTO_SAFARI_ZONE", "label": "The Safari Zone", "done": "visited_JOHTO_SAFARI_ZONE"}], "visited_JOHTO_SAFARI_ZONE"),
+]
+POST = []
+if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
+    story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
+    _missions = g.loader.area_data.setdefault("JOURNAL_MISSIONS", [])
+    for _id, _what, _fly, _steps, _flag in POST_JOBS:
+        _t0, _b0, _f0 = time.time(), STATE["battles"], len(FIND)
+        _m = {"id": _id, "type": "MAIN", "text": _what, "desc": "After the title: " + _what, "condition": {"required_region": "JOHTO", "flag": ["beat_johto_champion"]},
+              "completed_flag": _flag, "steps": _steps}
+        _missions.append(_m); MISSIONS[_id] = _m
+        GOAL = _flag
+        TIME_LIMIT = (time.time() - T0) + float(os.environ.get("KPT_POST_TIME", "150"))
+        _how = "?"
+        try:
+            if not story.story_flags.get(_flag):
+                put_at(_fly)
+                _how = play_through()
+            else:
+                _how = "already done"
+        except Exception:
+            crash("after the title: " + _what)
+        _missions.remove(_m)
+        _forced = [f for f in FIND[_f0:] if f.get("kind") in ("STUCK", "CRASH", "HANG")]
+        _ok = bool(story.story_flags.get(_flag)) and not _forced   # (a stuck point on the way - the run set something by hand - is no pass)
+        if _forced and story.story_flags.get(_flag):
+            _how = f"done only after {len(_forced)} stuck point(s): {str(_forced[-1].get('skip') or _forced[-1].get('what') or '')[:80]}"
+        POST.append({"job": _id, "what": _what, "ok": _ok, "how": _how, "battles": STATE["battles"] - _b0, "s": round(time.time() - _t0), "ended": here(),
+                     "found": [str(f.get("what") or f.get("why") or f.get("kind")) for f in FIND[_f0:]][:4]})
+        if not _ok:
+            FIND.append({"kind": "POST", "mission": _id, "where": here(), "what": f"{_what}: not done ({_how})", "extra": None})
+            shot("POST_" + _id)
+        out(f"  after the title: {_what}: {'DONE' if _ok else 'NOT DONE'} ({_how}; {POST[-1]['battles']} battles, {POST[-1]['s']} s, at {here()})")
+    GOAL = "defeated_red"
+    TIME_LIMIT = (time.time() - T0) + 600   # (the tour's own time)
+
 # ---------------------------------------------------------------- the tour: the paths the story never walks (11-19, ROADMAP_KANTO)
 # After the title, with what the run has collected: each leg walked over the maps by the same rules (head_for: the maps'
 # own ways out, real steps, trainers fought, boulders pushed). A leg that doesn't get there is a finding (TOUR).
@@ -1903,15 +1976,18 @@ for what, words, how in THINGS:
     note = "" if mains else ("  <- no MAIN mission names it" + (" (a SIDE one does)" if sides else " (no mission at all)"))
     print(f"  {what:<52} {str(inw) if inw is not None else '-':>11}  {(', '.join(i + ('' if i in _shown else '(not shown)') for i in mains) or '-'):<40} {(', '.join(sides) or '-'):<26} {'yes' if got else 'NO'}{note}")
 
+print("==== after the title (every post-title event, played):")
+for _p in POST:
+    print(f"  {'ok ' if _p['ok'] else 'NO '} {_p['what']} ({_p['how']}; {_p['battles']} battles, {_p['s']} s; ended at {_p['ended']})" + ("" if _p['ok'] else f" | {_p['found']}"))
 print("==== the tour (the paths the story never walks):")
 for _t in TOUR:
     print(f"  {'ok ' if _t['ok'] else 'NO '} {_t['leg']} ({_t['moves']} moves; ended at {_t['ended']})")
-nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR")) + (ENDED != "CHAMPION")
+nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR", "POST")) + (ENDED != "CHAMPION")
 nf -= int(ENDED.startswith("built so far"))   # (stopped at what isn't built yet: passed)
 json.dump({"ended": ENDED, "badges": story.badges.get("UNOVA", []), "state": {k: (dict(v) if isinstance(v, collections.Counter) else v) for k, v in STATE.items() if k != "last_map"},
            "per": list(PER.values()), "find": [{k: v for k, v in f.items() if k not in ("key", "sig")} for f in FIND], "rows": ROWS,
            "never": [(m["id"], m.get("title") or m.get("text")) for m in never], "flags": sorted(k for k, v in story.story_flags.items() if v),
-           "gates": GATES, "second": SECOND, "tour": TOUR, "when": time.strftime("%Y-%m-%d %H:%M"),
+           "gates": GATES, "second": SECOND, "tour": TOUR, "post": POST, "when": time.strftime("%Y-%m-%d %H:%M"),
            "inventory": dict(story.inventory), "seconds": round(time.time() - T0)},
           open(os.path.join(OUT, "result.json"), "w", encoding="utf-8"), indent=1, default=str)
 print(f"##### {nf} failures (stuck points, crashes, and the end not reached: these are the findings)")

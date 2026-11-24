@@ -100,8 +100,9 @@ el = prog["NIMBASA_CITY"]["gym"]["leader"]
 check(el["team"] == [587, 180, 523] and el["levels"] == [28, 28, 30] and el["held_items"] == {"523": "SITRUS_BERRY"},
       "Elesa: Emolga 28, Flaaffy 28, Zebstrika 30 with a Sitrus Berry (Normal mode, from the file)")
 check(el["rewards"].get("TM048") == 1 and el["badge_reward"] == "BOLT", "the Bolt Badge and TM Volt Switch")
-check(not any(k in prog["NIMBASA_CITY"] for k in ("explore_options", "travel_options")) and "route_menu" not in prog["UNOVA_ROUTE_5"],
-      "the rebuilt places' menu-era data is gone")
+check("explore_options" not in prog["NIMBASA_CITY"] and "route_menu" not in prog["UNOVA_ROUTE_5"]
+      and sorted(o["target_area"] for o in prog["NIMBASA_CITY"].get("travel_options", [])) == ["JOIN_AVENUE", "UNOVA_ROUTE_16", "UNOVA_ROUTE_5"],
+      "the menu-era data is gone; travel options only for Nimbasa's own ways out (walk_town opens an exit by them: 11-23)")
 check(all(prog[a].get("wild_tables") for a in ("UNOVA_ROUTE_16", "LOSTLORN_FOREST", "UNOVA_ROUTE_5")),
       "Routes 5 and 16 and Lostlorn Forest have Black 2's wild tables")
 
@@ -160,6 +161,16 @@ if seen_battle is not None:
     flags["b2_nimbasa_plasma_battled"] = True
     g.change_state(st); settle(5)
 
+print("5a) out of Nimbasa by its gates (11-23: the playthrough found every way out shut)")
+st = town("NIMBASA_CITY", (4, 5), "gate_w", (-1, 0))
+for _ in range(6):
+    st = g.current_state
+    if story.current_area_key != "NIMBASA_CITY":
+        break
+    if hasattr(st, "step"):
+        st.step(-1, 0)
+    settle(60)
+check(story.current_area_key == "UNOVA_ROUTE_5", f"west through the gate onto Route 5 ({story.current_area_key})")
 print("5b) the roller coaster: Black 2's cars and switches (overlay 102)")
 for k in range(4):
     flags.pop("b2_coaster_sw%d" % k, None)

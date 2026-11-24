@@ -6296,7 +6296,21 @@
         }
       },
       "next_area": "UNOVA_ROUTE_5",
-      "trainer_pool": []
+      "trainer_pool": [],
+      "travel_options": [
+        {
+          "text": "Route 5",
+          "target_area": "UNOVA_ROUTE_5"
+        },
+        {
+          "text": "Route 16",
+          "target_area": "UNOVA_ROUTE_16"
+        },
+        {
+          "text": "Join Avenue",
+          "target_area": "JOIN_AVENUE"
+        }
+      ]
     },
     "DRIFTVEIL_CITY": {
       "area_type": "town",
