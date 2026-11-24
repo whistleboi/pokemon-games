@@ -222,9 +222,13 @@ def walk_meet(st, text, picks=(), n=3000, play=True, fight=True, choose=None):
 
 def walk_door(st, kind, picks=(), play=True):
     """Walk through a door of kind (center, mart, gym, house, a named building...) on this town's map. Returns the hover
-    list's labels if the door holds several things, else what was said; None if there's no such door."""
+    list's labels if the door holds several things, else what was said; None if there's no such door, or none you can
+    walk to from where you stand."""
     walk_said.clear()
-    door = next((t for t, k in sorted(st.doors.items()) if k == kind), None)
+    doors = [t for t, k in sorted(st.doors.items()) if k == kind]
+    if not doors:
+        return None
+    door = next((d for d in doors if st._path(d)), None)   # (one you can walk to from where you stand: a Cut tree can bar it)
     if door is None:
         return None
     if not _wl_bump(st, door):
@@ -367,3 +371,29 @@ def walk_run(area, text, solve=True, came=None, picks=()):
             pz.on_done(pz.solved)
         walk_play(fight=False)
     return [said]
+
+
+_WL_MAPS = {}
+
+
+def walk_map_exits(area):
+    """The places a walked town's map (and its rooms) lead to, read from assets/town_maps.json without opening it; None
+    if the place has no walked map of its own (a route: its exits are its route_menu's EXITs; a menu region's town)."""
+    if "maps" not in _WL_MAPS:
+        import json as _json
+        _d = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+        _WL_MAPS["maps"] = _d.get("maps", _d)
+    m = _WL_MAPS["maps"].get(area)
+    if not isinstance(m, dict):
+        return None
+    out = set()
+    for part in [m] + list(m.get("floors") or []) + list((m.get("rooms") or {}).values()):
+        ex = (part or {}).get("exits") if isinstance(part, dict) else None
+        for t in (ex.values() if isinstance(ex, dict) else ex or []):
+            t = t if isinstance(t, str) else (t.get("target") if isinstance(t, dict) else None)
+            if t and not t.startswith(("ROOM:", "OUT:")):
+                out.add(t)
+    a = g.loader.area_data["STORY_PROGRESSION"].get(area) or {}
+    out |= {o.get("target_area") for o in (a.get("travel_options") or []) + (a.get("explore_options") or [])
+            if o.get("door") and o.get("target_area")}   # (through a door: a harbour's boats, the bike list)
+    return out
