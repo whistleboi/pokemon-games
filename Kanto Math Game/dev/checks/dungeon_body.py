@@ -135,7 +135,10 @@ _bag = _Bag(g, p)
 _bag._use_field_item("HONEY")  # used from the Bag: back to the map, and it draws them in
 check(g.current_state is p, "HONEY from the Bag: back on the map")
 talk(p)
-frames(p, 3)
+for _ in range(600):   # (region/systems 11-23: the three walk up to you first, then the catch screen: walkup suite)
+    if p.mode == "CATCH":
+        break
+    frames(p)
 check(p.mode == "CATCH" and sum(x is not None for x in p.p_data) == 3,
       f"HONEY draws three wild Pokemon to catch ({[getattr(x, 'name', None) for x in p.p_data]})")
 check(story.inventory.get("HONEY") == 0 and not p.uses_keyboard, "the Honey is used up; the catch screen takes the keys")

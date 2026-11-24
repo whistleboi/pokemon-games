@@ -189,7 +189,10 @@ MORE_EXIT_CHARS = set("ghijklqtyz")   # (more ways out where a map lists them in
 LIVE_SPRITE = 1.5   # (people in the live 3D view: Black 2's 32-pixel characters stand two of its 16-pixel tiles tall)
 
 
-class WalkTownState(CityState):
+from src.states.overworld.wild_walkup import TownWalkUps   # (a town's swarm walking up to you: region/systems)
+
+
+class WalkTownState(TownWalkUps, CityState):
     is_walked = True   # (CityState skips the menu's town picture for it)
     HONEY_PACK = dn.DungeonState.HONEY_PACK
     # (the route map's own drawing: your trainer, the Pokemon following you, townsfolk)
@@ -885,7 +888,7 @@ class WalkTownState(CityState):
 
     # ---------------------------------------------------------------- walking
     def _busy(self):
-        return self.npc_active or bool(self.hover_menu_active) or getattr(self, "_scene_lock", False) or bool(getattr(self, "_ride", None))
+        return self.mode != "MAP" or self.npc_active or bool(self.hover_menu_active) or getattr(self, "_scene_lock", False) or bool(getattr(self, "_ride", None))
 
     def _cocoon_ride(self, c):
         """Into a cocoon: its silk thread pulls you up or down to another floor (Castelia Gym, Black 2's gym_insect overlay)."""
@@ -1419,6 +1422,10 @@ class WalkTownState(CityState):
             return False
         self.walk_goal = None
         self.anim = 0
+        ahead = next(((to[0] + dx, to[1] + dy) for dx, dy in [self.facing] + list(DIRS)
+                      if self._wu_free((to[0] + dx, to[1] + dy), water=True)), None)
+        if self._wu_town_swarm(mon, ahead, "surf"):   # (today's swarm: it calls its friends over the water)
+            return True
         self._remember()
         from src.states.battle import WildBattleState
         battle = WildBattleState(self.game, mon, self.area_key,
@@ -1569,6 +1576,8 @@ class WalkTownState(CityState):
         mon = RouteActions._fish_bite(self)
         if mon is None:
             return self.flash("Not even a nibble...")
+        if self._wu_town_swarm(mon, spot, "fish", first=["Oh! A bite!"]):   # (today's swarm on the line: its friends come up too)
+            return
         self._remember()
 
         def bite():
@@ -1704,6 +1713,11 @@ class WalkTownState(CityState):
         return (self.player[0] + self.facing[0], self.player[1] + self.facing[1])
 
     def handle_events(self, events):
+        if self.mode in ("WALKUP", "SWARM") and not self.npc_active:   # (a swarm walking up, or battling you on the map)
+            for e in events:
+                if self.mode == "SWARM":
+                    self._sw_event(e)
+            return
         if self._busy():
             return super().handle_events(events)
         for e in events:
@@ -1760,6 +1774,12 @@ class WalkTownState(CityState):
         if self.npc_active:
             return super().update()
         self._npc_tick()
+        self._wu_leavers_tick()   # (a swarm running off)
+        if self.mode in ("WALKUP", "SWARM"):   # (a swarm walking up to you; its battle on the map: wild_walkup.py)
+            if self.anim > 0:
+                self.anim = max(0, self.anim - 1)
+            self._wu_tick() if self.mode == "WALKUP" else self._sw_tick()
+            return
         if getattr(self, "_ride", None):   # (riding a cocoon's thread: Castelia Gym)
             return self._ride_tick()
         if not self._busy() and getattr(self, "_phone_area", None) != self.area_key:   # (the phone: a call as you arrive; src/world/phone.py)
@@ -2087,6 +2107,8 @@ class WalkTownState(CityState):
             self._draw_world(screen, view, fonts)
         dn.draw_frame(screen, view)
         self._draw_hud(screen, fonts)
+        if self.mode == "SWARM" and getattr(self, "_wu_at", None):   # (the swarm's battle over the map)
+            self._draw_swarm(screen, lambda x, y: self._wu_at((x, y)))
         if self.hover_menu_active and self.hover_bg_rect:
             theme.draw_panel(screen, self.hover_bg_rect, radius=12, tab=False)
         if self.npc_active and self.npc_dialogue:
@@ -2149,6 +2171,8 @@ class WalkTownState(CityState):
                 from src.world import vs_seeker as _vsm
                 if _vsm.is_ready(self.game.story_manager, self.area_key, _vsm.town_key(_ev)):
                     emotes.append((r.centerx - 4, r.y - 34))
+        self._wu_draw_movers(ox, oy, lp, drawn)   # (a swarm walking up, battling you, running off)
+        self._wu_at = at
         k = 1 - self.anim / STEP if self.anim > 0 else 1
         lead = self.follower()
         me = self._player_img()

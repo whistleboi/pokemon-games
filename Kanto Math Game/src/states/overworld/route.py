@@ -655,7 +655,8 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
 
         bar = Utils.get_full_dialogue_rect(self.game)
         if not self.boss_manager.in_boss_mode:
-            screen.fill(BLACK)
+            if not getattr(self, "_catch_over_map", False):   # (a walked map's catch screen: the live map is already drawn underneath)
+                screen.fill(BLACK)
             if self.route_bg:  # the route itself (redesign); the HUD gets a soft shade to read on
                 screen.blit(self.route_bg, (offset_x, offset_y))
                 screen.blit(self._hud_shade(width), (0, 0))
