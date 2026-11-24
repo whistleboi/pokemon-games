@@ -247,6 +247,21 @@ import datetime as _dt
 day = 6 <= _dt.datetime.now().hour < 20
 bag.on_pokemon_select_gracidea(0)
 check((story.player_team[0].form == "sky") == day, f"Gracidea: Shaymin's Sky Forme in the daytime ({story.player_team[0].form})")
+lan = mk(645); lan.level = 50; story.player_team = [lan, mk(25)]; story.inventory["REVEAL_GLASS"] = 1
+bag = BagState(g, None); g.change_state(bag)
+check(bag.usable("REVEAL_GLASS") and bag.can_use_on("REVEAL_GLASS", lan) if hasattr(bag, "can_use_on") else bag.usable("REVEAL_GLASS"), "Reveal Glass: usable on Landorus")
+inc = lan.get_stat("attack")
+bag.on_pokemon_select_reveal_glass(0)
+t = story.player_team[0]
+check(t.form == "therian" and t.level == 50, f"Reveal Glass: Landorus to Therian Forme ({t.form}, Lv {t.level})")
+check(t.get_stat("attack") != inc, f"with the Therian Forme's stats (Attack {inc} -> {t.get_stat('attack')})")
+bag = BagState(g, None); g.change_state(bag)
+bag.on_pokemon_select_reveal_glass(0)
+check(story.player_team[0].form == "normal", f"used again: back to Incarnate ({story.player_team[0].form})")
+bag = BagState(g, None); g.change_state(bag)
+bag.on_pokemon_select_reveal_glass(1)
+check(story.player_team[1].form != "therian", "on Pikachu: no effect")
+check(g.assets.get_item_image("REVEAL_GLASS") is not None, "Reveal Glass: its icon (ORAS's Bag picture)")
 
 print("11) every item the regions hand out has a description")
 import glob, json, os, re

@@ -748,6 +748,7 @@
       "KANTO_TM_VICTORY_ROAD"
     ]
   },
+  "TRAINER_TOWER": {"floors": 1, "style": "building", "size": [19, 17], "wild": [0, 0], "loot": {"per_floor": [0, 0], "items": {}}, "tm_spots": []},
   "SILPH_CITY": {
     "floors": 5,
     "style": "building",

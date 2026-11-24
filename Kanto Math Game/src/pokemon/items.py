@@ -578,6 +578,7 @@ STORY_TEXT = {
     "AMULET_COIN": "While you have it, battles pay out twice the prize money.",
     "SHINY_CHARM": "A shining charm: shiny Pokemon turn up more often while you have it.",
     "EVERSTONE": "Give it to a Pokemon to hold: it won't evolve while it does.",
+    "REVEAL_GLASS": "A mirror that shows the truth: it changes Tornadus, Thundurus or Landorus between Incarnate and Therian Forme.",
     "GRACIDEA": "A flower for Shaymin: in the daytime it changes Shaymin to its Sky Forme (use it again to change back).",
     "GOLD_TEETH": "The Safari Zone Warden's lost false teeth. He'll be glad to have them back.",
     "INTRIGUING_STONE": "An odd stone someone in town is keen to see.",

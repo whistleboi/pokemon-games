@@ -193,8 +193,7 @@ class RouteActions:
             self._give_item("MEGA_BRACELET", lines)
             lines += ["Steven: With the Mega Bracelet, a Pokemon holding its Mega Stone can Mega Evolve!",
                       "It happens when that Pokemon enters battle, once per battle."]
-            self._give_item("EON_FLUTE", lines)  # (ORAS: it comes with the Eon)
-            lines.append(f"Play the Eon Flute outside and {v['eon']} will fly you high over Hoenn!")
+            # (the Eon Flute comes later: Steven, in Sootopolis after the Cave of Origin - ORAS's timing, Jordan 11-23 Hoenn H5)
             flags["got_mega_bracelet"] = True
         elif event == "starter_stone":
             stone = hoenn.starter_stone(self.game)

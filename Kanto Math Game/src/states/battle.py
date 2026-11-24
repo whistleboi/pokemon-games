@@ -106,7 +106,22 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         self.background = None
 
         bg_raw = None
-        if background_image:
+        import os as _os
+        from src.world import battle_bg as _bbg
+        if background_image and _os.path.isfile(str(background_image)):   # (a region's own game background, by path: battle_bg)
+            try:
+                bg_raw = pygame.image.load(str(background_image)).convert()
+            except Exception:
+                bg_raw = None
+        elif battle_type != "gym":   # (11-23: in a walked region, its own game's background first, the way that game picks it)
+            _own = _bbg.pick(self.game, area_name or self.game.story_manager.current_area_key,
+                             trainer=bool(trainer_sprite or trainer_img_name))
+            if _own:
+                try:
+                    bg_raw = pygame.image.load(_own).convert()
+                except Exception:
+                    bg_raw = None
+        if background_image and not bg_raw:
             bg_raw = self.game.assets.get_background(background_image, from_overworld=False)
             if not bg_raw and self.game.assets.generic_kind(background_image) == "battle_elite":
                 bg_raw = (self.game.assets.get_league_background(background_image)
