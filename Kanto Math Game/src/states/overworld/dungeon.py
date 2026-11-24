@@ -1875,7 +1875,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if spot is None:
                 self.flash("There's rock right under you here.", 100)
                 return
-        if plan.get("dive_at") and below.mover_at(*spot):   # (someone's on the spot you come up on: the nearest free one)
+        if below.mover_at(*spot) and below.walkable(*spot):   # (someone's on the spot you come down on - a wild Pokemon swimming there, 11-24: the nearest free one, not "rock")
             near = sorted(((x, y) for y in range(spot[1] - 2, spot[1] + 3) for x in range(spot[0] - 2, spot[0] + 3)
                            if below.walkable(x, y) and not below.mover_at(x, y)),
                           key=lambda t: abs(t[0] - spot[0]) + abs(t[1] - spot[1]))
