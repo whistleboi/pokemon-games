@@ -32,6 +32,18 @@ PEOPLE = [
      {"text": "Bored grunt", "action": "EVENT", "flag_condition": "not oras_slateport_city_6",
       "event": {"lines": ["Grunt: Ugh, guarding a museum. Here, take this TM off my hands. I never use it anyway."],
                 "gift_item": {"TM018": 1}, "flag": "oras_slateport_city_6"}}),
+    # ORAS (H5, Dev Map clean-hoenn-main-reveal-glass-shop): Mauville's mirror shop owner gives the Reveal Glass once you
+    # bring one of the forces of nature (Tornadus, Thundurus, Landorus: the Soaring storm cloud's); main's item and its form switch
+    ("MAUVILLE_CITY", None, "shopper_house", 6, 3, [
+        {"text": "Mirror shop owner", "action": "EVENT", "flag_condition": "not got_reveal_glass_hoenn",
+         "condition": {"any": ["party_has:641", "party_has:642", "party_has:645"]},
+         "event": {"lines": ["Mirror shop owner: Oh my! That Pokemon with you... it's one of the forces of nature!",
+                             "Mirror shop owner: This old mirror is said to show such Pokemon's true form. It should be yours."],
+                   "gift_item": {"REVEAL_GLASS": 1}, "flag": "got_reveal_glass_hoenn"}},
+        {"text": "Mirror shop owner", "action": "EVENT",   # (only when the gift can't be given: two shown would be a menu)
+         "condition": {"any": [["not:party_has:641", "not:party_has:642", "not:party_has:645"], "got_reveal_glass_hoenn"]},
+         "event": {"lines": ["Mirror shop owner: Welcome! Mirrors of every shape. One of them is said to reveal the truth...",
+                             "Mirror shop owner: ...but only to a Pokemon that commands the wind, the thunder or the land."]}}]),
 ]
 TRAINERS = [   # (trainers in the area data with no spot on the map: set on open water near the route's others)
     ("HOENN_ROUTE_129", 0, 55, 25, "Scuba Diver Colten"),
