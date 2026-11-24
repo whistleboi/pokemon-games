@@ -758,6 +758,12 @@
               "met_agate_elder"
             ]
           }
+        },
+        {
+          "text": "Battle Frontier",
+          "door": "cycle",
+          "target_area": "ORRE_BATTLE_FRONTIER",
+          "condition": "beat_orre_champion"
         }
       ],
       "next_area": "PHENAC_CITY",
@@ -3831,6 +3837,120 @@
         }
       ],
       "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_BATTLE_FRONTIER": {
+      "area_type": "dungeon",
+      "route_name": "Battle Frontier",
+      "region": "ORRE",
+      "level": 50,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "next_area": "REALGAM_TOWER",
+      "route_menu": [
+        {
+          "text": "Ace Trainer",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Ace Trainer: Which challenge first? The endless one is a good start - its trainers aren't too tough at first."
+            ]
+          }
+        },
+        {
+          "text": "Cooltrainer",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Cooltrainer: My Magcargo's Pokedex says it's so hot water boils off it. It still hates Water moves, though."
+            ]
+          }
+        },
+        {
+          "text": "NURSE (FRONTIER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Welcome to the Pokemon Center! Your Pokemon are fully healed. We hope to see you again!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "BP EXCHANGE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "bp_shop": "emerald"
+          }
+        },
+        {
+          "text": "BP EXCHANGE (TMS)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "bp_shop": "orre_tms"
+          }
+        },
+        {
+          "text": "NURSE (TOWER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Your Pokemon are fully healed. Good luck in the tower!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "ENDLESS CHALLENGE",
+          "action": "FRONTIER",
+          "color": "GOLD",
+          "facility": "otower"
+        },
+        {
+          "text": "2-ON-2 CHALLENGE",
+          "action": "FRONTIER",
+          "color": "GOLD",
+          "facility": "otower2"
+        },
+        {
+          "text": "LITTLE CUP CHALLENGE",
+          "action": "FRONTIER",
+          "color": "GOLD",
+          "facility": "olc"
+        },
+        {
+          "text": "LITTLE CUP SELLER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "lc_shop": true
+          }
+        },
+        {
+          "text": "MOVE TUTOR (TOWER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "bp_shop": "orre_tms"
+          }
+        },
+        {
+          "text": "RECORD BOARD",
+          "action": "EVENT",
+          "event": {
+            "world": "orre_frontier",
+            "records": true
+          }
+        }
+      ]
     },
     "RELIC_CAVE": {
       "area_type": "dungeon",
@@ -19220,6 +19340,12 @@
           "door": "fuji",
           "target_area": "ORRE_LAKE_OF_RAGE",
           "condition": "beat_orre_champion"
+        },
+        {
+          "text": "Battle Frontier",
+          "door": "cycle",
+          "target_area": "ORRE_BATTLE_FRONTIER",
+          "condition": "beat_orre_champion"
         }
       ],
       "next_area": "PHENAC_CITY",
@@ -24585,7 +24711,8 @@
     {"id": "orre_s9", "type": "SIDE", "title": "Team Rocket in Orre", "description": "Champion of Orre - and still there's trouble. Team Rocket has a tower behind Pyrite's Construction Lot. Climb it and find out what Giovanni wants.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_rocket_done"}, "region": "ORRE", "target": "CONSTRUCTION_LOT", "completed_flag": "orre_rocket_done"},
     {"id": "orre_s9b", "type": "SIDE", "title": "Groudon Under Citadark", "description": "Maxie fled under Citadark Isle. A ladder on the island leads down to the Terra Cave.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_groudon_done"}, "region": "ORRE", "target": "XD_CITADARK_ISLE", "completed_flag": "orre_groudon_done"},
     {"id": "orre_s9c", "type": "SIDE", "title": "Kyogre in the Marine Cave", "description": "Archie went to a sea cave near Agate. Eagun's Alakazam can take you there.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_kyogre_done"}, "region": "ORRE", "target": "AGATE_VILLAGE", "completed_flag": "orre_kyogre_done"},
-    {"id": "orre_s10", "type": "SIDE", "title": "Mr. Fuji's Alakazam", "description": "Mr. Fuji lives in Realgam's square. His Alakazam can teleport you to where rare Pokemon gather: Sky Pillar, Birth Island, the Lake of Rage - and New Island, where Mewtwo fled.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion"}, "region": "ORRE", "target": "REALGAM_TOWER", "completed_flag": ["orre_rayquaza_done", "orre_deoxys_done", "orre_mewtwo_done", "orre_red_gyarados_done"]}
+    {"id": "orre_s10", "type": "SIDE", "title": "Mr. Fuji's Alakazam", "description": "Mr. Fuji lives in Realgam's square. His Alakazam can teleport you to where rare Pokemon gather: Sky Pillar, Birth Island, the Lake of Rage - and New Island, where Mewtwo fled.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion"}, "region": "ORRE", "target": "REALGAM_TOWER", "completed_flag": ["orre_rayquaza_done", "orre_deoxys_done", "orre_mewtwo_done", "orre_red_gyarados_done"]},
+    {"id": "orre_s11", "type": "SIDE", "title": "The Battle Frontier", "description": "A Battle Frontier has opened in Orre - ride there from Realgam or Pyrite. Its Battle Tower has three endless challenges: singles, 2-on-2 and the Little Cup. Win BP and spend it at the counter.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion"}, "region": "ORRE", "target": "ORRE_BATTLE_FRONTIER", "completed_flag": "visited_ORRE_BATTLE_FRONTIER"}
   ],
   "REGION_START": {
     "ORRE": {
