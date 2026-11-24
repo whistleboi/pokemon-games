@@ -194,10 +194,9 @@ def follow_team(game, team_levels):
 
 
 def wild_level(game, area_key):
-    band = capped_band(game, area_key)
-    if band:
-        return random.randint(*band)
-    return max(2, area_level(game, area_key) + random.randint(-2, 1))
+    """A wild Pokemon's level: the area's own fixed level, as the mainline games have it (Jordan 11-24: no more raising
+    wild Pokemon toward your team or the next Gym's ace, before or after the title). Trainers keep their own rules."""
+    return max(2, canon_area_level(game, area_key) + random.randint(-2, 1))
 
 
 def trainer_level(game, area_key, boss=False):
@@ -389,10 +388,11 @@ def _game_levels(game, area_key):
     a wild Pokemon met on land (not while surfing): else None."""
     try:
         area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key) or {}
-        band = (area.get("wild_levels") or {}).get("land")
+        from src.dungeon import core
+        band = ((area.get("floor_levels") or {}).get(str(core.CURRENT_FLOOR))   # (a floor's own: Dark Cave's Blackthorn side)
+                or (area.get("wild_levels") or {}).get("land"))
         if not band:
             return None
-        from src.dungeon import core
         if core.CURRENT_TILE in (core.SURF, getattr(core, "WATER", None)):
             return None
         return int(band[0]), int(band[1])

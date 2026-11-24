@@ -21,14 +21,15 @@ check(_bt.run.n_floors == 11 and _bt._figure_floor({"text": "TALK TO SAGE LI", "
 _jz = _prog["JOHTO_SAFARI_ZONE"]
 _sv57 = story.story_flags.get("safari_layout")
 _lay57 = {}
-for _l in (0, 5, 9):
+for _l in (0, 5, 9, 10, 11):
     story.story_flags["safari_layout"] = _l
     _js = kanto("JOHTO_SAFARI_ZONE", came="SAFARI_ZONE_GATE")
     _lay57[_l] = (_js.run.index, tuple(_js.run.player), [_js.zones[_js._zone_index(_js.run.index, _x, _y)] for _x, _y in ((10, 10), (40, 10), (75, 10), (10, 45), (40, 45), (75, 45))])
 story.story_flags["safari_layout"] = _sv57
-check(_js.run.n_floors == 10 and [_lay57[_l][0] for _l in (0, 5, 9)] == [0, 5, 9] and _lay57[0][2] == ["plains", "swamp", "meadow", "wetland", "peak", "forest"]
-      and _lay57[5][2] == ["marshland", "plains", "wasteland", "mountain", "peak", "savannah"] and all(_lay57[_l][1] == (47, 67) for _l in _lay57),
-      f"the Johto Safari Zone: ten layouts of SoulSilver's areas, in by the gatehouse below the Peak; Area Setup picks the layout {_lay57}")
+check(_js.run.n_floors == 12 and [_lay57[_l][0] for _l in (0, 5, 9, 10, 11)] == [0, 5, 9, 10, 11] and _lay57[0][2] == ["plains", "swamp", "meadow", "wetland", "peak", "forest"]
+      and _lay57[5][2] == ["marshland", "plains", "wasteland", "mountain", "peak", "savannah"]
+      and _lay57[10][2][0] == "rocky_beach" and _lay57[11][2][0] == "desert" and all(_lay57[_l][1] == (47, 67) for _l in _lay57),
+      f"the Johto Safari Zone: ten default layouts + two of ours (Rocky Beach, Desert: 11-24) of SoulSilver's areas, in by the gatehouse below the Peak; Area Setup picks the layout {_lay57}")
 check(getattr(_js, "safari", None) and _js.safari["balls"] == 30, "...the Safari Game: 30 Safari Balls a visit, as in Hoenn's")
 
 # the Bug-Catching Contest (Jordan, 11-05): National Park, its own map
@@ -516,7 +517,7 @@ check(len(_hqt) == 11 and len(set(_hqt)) == 11,   # (11-15: SoulSilver's own gru
       f"Rocket Hideout: a grunt on each floor on a spot of their own (three share one name), Ariana on B2F, Petrel on B3F {_hqt}")
 _r44 = kanto("JOHTO_ROUTE_44", came="MAHOGANY_TOWN")
 _r44t = [(m.x, m.y) for m in _r44.run.floor.movers if m.kind == "trainer"]
-check(len(_r44t) == len(set(_r44t)) == 9, f"Route 44: nine trainers (SoulSilver's Ace Trainers Cybil and Allen joined, 11-15), each on a spot of the game's {len(_r44t)}")
+check(len(_r44t) == len(set(_r44t)) == 7, f"Route 44: SoulSilver's seven trainers (the Cooltrainer copies of its Ace Trainers gone, 11-24), each on a spot of its own: {len(_r44t)}")
 story.defeated_trainers.pop("JOHTO_ROUTE_43", None)
 _r43 = kanto("JOHTO_ROUTE_43", came="MAHOGANY_TOWN")
 check({(m.x, m.y) for m in _r43.run.floor.movers if m.kind == "trainer"} >= {(18, 8), (25, 15), (8, 17), (19, 26), (14, 31), (14, 53)}, "Route 43: the game's six trainers on the game's six spots")

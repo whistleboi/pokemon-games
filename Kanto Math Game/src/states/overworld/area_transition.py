@@ -116,6 +116,24 @@ class AreaTransitionState(GameState):
         # Another region's party, PC and Bag; a first visit goes to that region's professor.
         self.next_area_key, travel_lines = self.game.story_manager.prepare_travel(next_area_key)
         msg += travel_lines
+        # A walked region with its game's profile (src/vfx/area_changes.py, Jordan 11-24): no in-between screen; its
+        # game's fade (or, over an edge, the quick crossfade), and the words this screen said said on the map on arrival.
+        from src.vfx import area_changes
+        self.quick = area_changes.quick(self.game, self.game.story_manager.current_area_key, self.next_area_key,
+                                        initial_message, heal, ride, travel_lines)
+        self.game.__dict__.pop("area_leave", None)
+        if self.quick:
+            self.snapshot = self.game.screen.copy() if getattr(self.game, "screen", None) is not None else None
+            _dest = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(self.next_area_key, {})
+            _warn = _dest.get("enter_warning")   # (an area's own warning: Team Rocket in the well; the plain one isn't said)
+            area_changes.arrival_lines(self.game, self.next_area_key, msg + ([_warn] if _warn and _dest.get("area_type") not in ["town", "city"] else []))
+            self.timer, self.wait_for_dialogue = 1, False
+            self.dialogue_box = ClassicDialogueBox(rect, [], self.game.assets.fonts["med"])
+            self.dialogue_box.visible = False
+            self.npc_sprite, self.npc_pos_x = None, -300
+            kind, key, cave_from = self.quick
+            area_changes.start(self.game, kind, key, snap=self.snapshot, cave_from=cave_from)
+            return
         if travel_lines:
             self.wait_for_dialogue = True
         if heal:  # ...and so is the team you arrive with, if the trip switched to another region's party
@@ -169,6 +187,8 @@ class AreaTransitionState(GameState):
                     self.npc_sprite = pygame.transform.scale(img, (w, h))
 
     def handle_events(self, events):
+        if getattr(self, "quick", None):
+            return
         for event in events:
             if (self.scene and self.dialogue_box.is_finished and self.ride_t > 20
                     and event.type in (pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN)):
@@ -178,7 +198,8 @@ class AreaTransitionState(GameState):
     def update(self):
         from src.states.overworld.route import PlayState
         from src.states.overworld.town import CityState
-        self.dialogue_box.update()
+        if not getattr(self, "quick", None):
+            self.dialogue_box.update()
         if self.scene:
             self.ride_t += 1
         if self.npc_sprite:
@@ -215,6 +236,8 @@ class AreaTransitionState(GameState):
             else:
                 self.game.states["play"] = PlayState(self.game)
                 self.game.change_state(self.game.states["play"])
+            if getattr(self, "quick", None) and getattr(self.game, "screen", None) is not None:
+                self.game.screen.fill(BLACK)   # (the map you left isn't left showing round the new one's frame)
             if self.game.story_manager.autosave:
                 autosave(self.game)
             # A trip: the Day Care counts towards an Egg, Eggs in the party towards hatching (11-03).
@@ -275,6 +298,10 @@ class AreaTransitionState(GameState):
         self.game.screen.blit(out, ((self.game.width - out.get_width()) // 2, 0))
 
     def draw(self):
+        if getattr(self, "quick", None):   # (no screen of its own: the map you left, under its wipe)
+            if self.snapshot is not None:
+                self.game.screen.blit(self.snapshot, (0, 0))
+            return
         if self.scene:
             self._draw_scene()
         elif self.ride:

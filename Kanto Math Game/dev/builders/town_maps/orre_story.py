@@ -383,13 +383,13 @@ BELUH = {"text": "Beluh", "action": "EVENT", "event": {"stages": [{
               "Beluh: The Relic Stone can open a Shadow Pokemon's heart, once its gauge is empty. Take your Pokemon there.",
               "Beluh: And there was an e-mail for you, Rui... Something about Mt. Battle being attacked!"]},
     {"requires": ["xd_beluh_mail"], "flag": "xd_le_asked",   # (XD's Lucky Egg quest, batch 8b: after Orre Colosseum round 1)
-     "lines": ["Beluh: Wes, thank you for coming. Some of the village's Pokemon have stopped making any sound at all.",
+     "lines": ["Beluh: {player_name}, thank you for coming. Some of the village's Pokemon have stopped making any sound at all.",
                "Beluh: Senilor's Wobbuffet was the first. His house is just down the hill, between ours and the Mart.",
                "Beluh: Would you look into it? Eagun says you have a knack for helping Pokemon."]},
     {"requires": ["xd_le_lotad"], "flag": "xd_lucky_egg", "gift_item": {"LUCKY_EGG": 1},
      "lines": ["Beluh: Wobbuffet's chattering again, and the others too! And that Lotad was only shy? Ho ho!",
                "Beluh: You've done the whole village a kindness. Please, take this Lucky Egg.",
-               "Beluh: A Pokemon holding it learns more from every battle. Use it well, Wes."]}],
+               "Beluh: A Pokemon holding it learns more from every battle. Use it well, {player_name}."]}],
     "done": ["Beluh: Rui, dear, you look so grown up. Take care of each other."]}}
 CAVE_GUARD = {"tiles": [[36, 27]], "look": "sheet:orre_npc_10.png", "face": "d", "until": {"condition": "met_agate_elder"},
               "lines": ["Man: Sorry, nobody goes into the Relic Cave. The elder's orders."]}
@@ -485,7 +485,7 @@ def _under(maps):
 # Machine Part from Gateon's Parts Shop (Perr's dad Makan is at Kaminko's, past Chobin); Datan traces Cipher's car to the
 # Cipher Lab. XD's teams, raised to fit (DECISIONS: levels keep climbing). The words are ours.
 LILY, JOVI, NAPS = "orre_npc_04.png", "orre_npc_cute_hair_girl.png", "orre_trainer_cipher_grunt.png"
-KIDNAP_SCENE = {"trigger": "enter", "condition": ["orre_ein_lab", "not:xd_kidnap_seen", "not:xd_lovrina_beaten"], "flag": "xd_kidnap_seen",
+KIDNAP_SCENE = {"trigger": "enter", "condition": ["orre_part2", "not:xd_kidnap_seen", "not:xd_lovrina_beaten"], "flag": "xd_kidnap_seen",
                 "cast": [{"sheet": NAPS, "from": [10, 9], "path": [[10, 10]], "face": "d", "stay": True,
                           "lines": ["Three men in Cipher uniforms burst out of the lab, dragging an old man in a white coat.",
                                     "Spy Naps: Move it, Professor! Our boss wants a word about that Purify Chamber of yours."]},
@@ -507,10 +507,10 @@ LILY_LAB = {"text": "Lily", "action": "EVENT", "event": {"stages": [
      "take_item": {"MACHINE_PART": 1},
      "lines": ["Lily: The Machine Part! Jovi, run it down to the Chamber.",
                "Datan: Lily! I traced Cipher's car. It went to the old Shadow Pokemon Lab, out in the desert.",
-               "Lily: The lab Cipher abandoned five years ago... They've opened it again. Wes, please - bring the Professor home."]},
+               "Lily: The lab Cipher abandoned five years ago... They've opened it again. {player_name}, please - bring the Professor home."]},
     {"requires": ["xd_lovrina_beaten", "not:xd_krane_home"], "flag": "xd_krane_home", "gift_item": {"XD_DATA_ROM": 1},
-     "lines": ["Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it.",
-               "Professor Krane: Wes, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."]}],
+     "lines": ["Lily: You brought him back! Thank you, {player_name}. The Purify Chamber is nearly done - the Professor will finish it.",
+               "Professor Krane: {player_name}, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."]}],
     "done": ["Lily: The Professor's working day and night on the Purify Chamber."]}}
 AFERD = {"text": "Supertrainer Aferd", "action": "EVENT", "event": {"stages": [{
     "flag": "xd_aferd", "lines": ["Supertrainer Aferd: I test the lab's training data. Spar with me?"],
@@ -553,11 +553,7 @@ GATEON_TRAINERS = {
                      "Sailor Bost: Here, take this. TM240: Attract. Make 'em swoon!"),
     (30, 40): _fight("Chaser Laken", "xd:Story:16", "xd_gateon_laken", "Chaser Laken: I race the ferries along the pier. Race me in a battle!",
                      "Chaser Laken: You're fast."),
-    (23, 40): _fight("Casual Guy Cyle", "xd:Story:12", "xd_gateon_cyle", "Casual Guy Cyle: The bridges work again! First one across gets a battle - that's you!",
-                     "Casual Guy Cyle: Huh. My Ledyba felt... strange.", condition="xd_gateon_bridges"),
-    (24, 40): _fight("Bodybuilder Kilen", "xd:Story:14", "xd_gateon_kilen", "Bodybuilder Kilen: I climbed the lighthouse every day while the bridge was out. Now, fight!",
-                     "Bodybuilder Kilen: Lost to a kid. Back up the lighthouse I go.", condition="xd_gateon_bridges"),
-}
+}   # (Cyle and Kilen: on the islands, _gateon_islands)
 GATEON_TRAINERS[(17, 45)]["event"]["stages"][0]["battle"]["rewards"] = {"balls": 0, "TM240": 1}   # (a battle's prize: a gift on its stage isn't handed out)
 
 
@@ -572,6 +568,69 @@ def _xd5a(maps):
         m["scenes"] = list(m.get("scenes") or []) + [ZOOK_SCENE]
         _set_people(m, GATEON_TRAINERS)
         _set_people(m["rooms"]["bikeshop"], {(10, 5): PERR})
+
+
+# ------------------------------------------------------------------ 11-24: Gateon's islands (XD's Bridge System) and the lighthouse Gym
+# Jordan 11-24 (review/gateon_islands_plan.png in kanto_handoff/orre_map_tools): six movable bridges, raised till Makan fixes
+# them (xd_gateon_bridges); Cyle on the north island (XD's cliff), Kilen on the lighthouse roof (XD's). The fan game's
+# lighthouse Gym kept ("keep the gym"): after the title, three guardians by each floor's stairs, then Jasmine on the roof -
+# her team the fan game's own (Lv 55 there, its rematch Lv 70 here: after the title), Gen 3 moves and items; the Mineral
+# Badge a keepsake (Orre's badges stay the four tournaments'); her prize HGSS Jasmine's TM, Iron Tail.
+GATEON_BRIDGES = [(37, 22, 40, 23), (23, 22, 26, 23), (31, 18, 32, 21), (17, 18, 18, 21), (31, 25, 32, 28), (17, 28, 18, 31)]   # (towns.py "bridges")
+
+
+def _guardian(name, pid, flag):
+    return {"text": f"Lighthouse {name}", "action": "BOSS", "color": "RED", "condition": "orre_part2",   # (S3 sets the Gym's place: badge 5)
+            "flag_condition": f"not {flag}",
+            "boss": {"id": pid, "name": name, "level": 65, "victory_flag": flag,
+                     "lines": [f"{name} crackles with stored power. It guards the stairs!"]}}
+
+
+JASMINE_TEAM = [208, 227, 212, 376, 82, 101]   # Steelix, Skarmory, Scizor, Metagross, Magneton, Electrode (the fan game's)
+JASMINE = {"text": "Gym Leader Jasmine", "action": "EVENT", "color": "GOLD", "condition": "orre_part2", "event": {"stages": [
+    {"requires": ["gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"], "flag": "gateon_jasmine_beaten",
+     "fail": ["Jasmine: The lighthouse's Pokemon guard the stairs for me. Get past all three, then we'll battle."],
+     "lines": ["Jasmine: ...You got past all three of the lighthouse's Pokemon? Then you've earned a battle.",
+               "Jasmine: I came to Orre to see its Colosseums. Steel types don't bend - let's see if you do."],
+     "battle": _battle("Gym Leader Jasmine", "LEADER", "jasmine.png", JASMINE_TEAM, [70] * 6,
+                       [["ROCK-SLIDE", "EXPLOSION", "EARTHQUAKE", "IRON-TAIL"], ["SPIKES", "DRILL-PECK", "TOXIC", "PROTECT"],
+                        ["METAL-CLAW", "SILVER-WIND", "BRICK-BREAK", "SWORDS-DANCE"], ["METEOR-MASH", "EARTHQUAKE", "EXPLOSION", "ROCK-SLIDE"],
+                        ["THUNDERBOLT", "THUNDER-WAVE", "TOXIC", "PROTECT"], ["THUNDERBOLT", "EXPLOSION", "THUNDER-WAVE", "LIGHT-SCREEN"]],
+                       team_items=["QUICK_CLAW", "LEFTOVERS", "SCOPE_LENS", "FOCUS_BAND", "LEFTOVERS", "SCOPE_LENS"],
+                       rewards={"balls": 0, "TM265": 1},
+                       dialogue={"player_won": ["Jasmine: ...You're stronger than steel. Here - the Mineral Badge.",
+                                                "Jasmine: It means nothing to Orre's League, but it means something to me. And take this TM: Iron Tail."]})}],
+    "done": ["Jasmine: The lighthouse light reaches past Citadark on a clear night. I'll keep it burning."]}}
+KILEN_ROOF = _fight("Bodybuilder Kilen", "xd:Story:14", "xd_gateon_kilen",
+                    "Bodybuilder Kilen: Up here every day while the bridge was out... and you finally climbed up. Fight!",
+                    "Bodybuilder Kilen: Lost to a kid. Back to my push-ups.", condition="xd_gateon_bridges")
+CYLE_CLIFF = _fight("Casual Guy Cyle", "xd:Story:12", "xd_gateon_cyle", "Casual Guy Cyle: The bridges work again! First one across gets a battle - that's you!",
+                    "Casual Guy Cyle: Huh. My Ledyba felt... strange.", condition="xd_gateon_bridges")
+
+
+def _by_text(m, text, who):
+    """Swaps the person whose entry is the placeholder text (towns.py room_people) for who."""
+    m["people"] = [who if p == text else p for p in m.get("people", [])]
+
+
+def _gateon_islands(maps):
+    if "GATEON_PORT" not in maps:
+        return
+    m = maps["GATEON_PORT"]
+    _set_people(m, {(17, 15): CYLE_CLIFF})   # (Cyle and Kilen waited at (23, 40), (24, 40) on the mainland till the islands were built)
+    bars = list(m.get("barred") or [])
+    for (x0, y0, x1, y1) in GATEON_BRIDGES:
+        for y in range(y0, y1 + 1):
+            for x in range(x0, x1 + 1):
+                bars.append({"tiles": [[x, y]], "flag": "xd_gateon_bridges", "look": f"img:orre_bridge/80_{x}_{y}.png",
+                             "lines": ["The movable bridge is raised. It's been stuck like that for ages."]})
+    m["barred"] = bars
+    r = m["rooms"]
+    _by_text(r["lighthouse"], "Lighthouse Electabuzz", _guardian("Electabuzz", 125, "gateon_lh_electabuzz"))
+    _by_text(r["lighthouse_2f"], "Lighthouse Electrode", _guardian("Electrode", 101, "gateon_lh_electrode"))
+    _by_text(r["lighthouse_3f"], "Lighthouse Ampharos", _guardian("Ampharos", 181, "gateon_lh_ampharos"))
+    _by_text(r["lighthouse_roof"], "Gym Leader Jasmine", JASMINE)
+    _by_text(r["lighthouse_roof"], "Bodybuilder Kilen", KILEN_ROOF)
 
 
 # ------------------------------------------------------------------ batch 5a: Battle CDs (kanto_handoff/orre_check/BATTLE_CDS.md)
@@ -614,7 +673,7 @@ def _battle_cds(maps):
     if "POKEMON_HQ_LAB" in maps:
         lab = maps["POKEMON_HQ_LAB"]["rooms"]["lab"]
         _set_people(lab, {_free_spot(lab, (3, 6)): CD_PLAYER})
-        _set_people(lab, {_free_spot(lab, (12, 10)): CD_PICK("33", "On a bookshelf:", "beat_orre_champion")})
+        _set_people(lab, {_free_spot(lab, (12, 10)): CD_PICK("33", "On a bookshelf:", "xd_greevil_beaten")})
     if "GATEON_PORT" in maps:
         r = maps["GATEON_PORT"]["rooms"]["krabby"]
         _set_people(r, {_free_spot(r): CD_PICK("06", "On the desk:")})
@@ -625,7 +684,7 @@ def _battle_cds(maps):
         r = maps["PYRITE_TOWN"]["rooms"]["duking"]
         _set_people(r, {_free_spot(r): CD_PICK("22", "On Duking's bookshelf:")})
         r = maps["PYRITE_TOWN"]["rooms"]["house_tower"]
-        _set_people(r, {_free_spot(r): CD_PICK("40", "On the bookshelf:", "beat_orre_champion")})
+        _set_people(r, {_free_spot(r): CD_PICK("40", "On the bookshelf:", "xd_greevil_beaten")})
 
 
 # ================================================================== batch 5b: XD parts 3-5 (BATCH_5B.md)
@@ -734,7 +793,7 @@ CD_15 = {"text": "Runner's Castform", "action": "EVENT", "condition": "orre_snat
 HORDEL = {"text": "Researcher Hordel", "action": "EVENT", "condition": "xd_pregym_freed", "event": {"stages": [
     {"requires": ["not:xd_hordel"], "flag": "xd_hordel",
      "gift_shadow": {"id": 9357, "level": 55},
-     "lines": ["Hordel: You're Wes? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
+     "lines": ["Hordel: You're {player_name}? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
                "Hordel: A Togepi from their factory. Its heart is shut. Please - open it.",
                "Hordel: And one more thing: Team Snagem is back in their old hideout, out in the desert. I'll mark it on your map."]}],
     "done": ["Hordel: Take good care of that Togepi."]}}
@@ -816,12 +875,12 @@ def _col7b(maps):
 # ================================================================== batch 8a: before Citadark Isle (BATCH_8A.md)
 # XD part 7: after the title, Krane shows Wes a secret staircase in the lab and gives him the Master Ball (one in the game) -
 # for XD001, whose heart only the Purify Chamber can open (8b).
-KRANE_MASTER_BALL = {"text": "Professor Krane (the stairs)", "action": "EVENT", "condition": "beat_orre_champion", "event": {"stages": [
+KRANE_MASTER_BALL = {"text": "Professor Krane (the stairs)", "action": "EVENT", "condition": "xd_gorigan_beaten", "event": {"stages": [
     {"requires": ["not:xd_master_ball"], "flag": "xd_master_ball", "gift_item": {"MASTER_BALL": 1},
-     "lines": ["Professor Krane: Wes, come with me. There's a staircase here even Lily rarely uses.",
+     "lines": ["Professor Krane: {player_name}, come with me. There's a staircase here even Lily rarely uses.",
                "Professor Krane: Cipher has gathered on Citadark Isle. Greevil's 'XD001' - our readings say it's a Shadow Pokemon unlike any other.",
                "Professor Krane: This is a Master Ball. There's only one. It catches any Pokemon without fail. Save it for XD001.",
-               "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, Wes."]}],
+               "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, {player_name}."]}],
     "done": ["Professor Krane: Save the Master Ball for XD001. Its heart... I fear only the Purify Chamber could reach it."]}}
 
 
@@ -839,14 +898,14 @@ def _xd8a(maps):
 # Beluh's quest: Senilor's silent Wobbuffet, the old man's translators, Kaminko's Voice Cases (his stages: obatch8b.py).
 EAGUN_LAB = {"text": "Eagun", "action": "EVENT", "condition": "xd_greevil_beaten", "event": {"stages": [
     {"flag": "xd_eagun_lab",
-     "lines": ["Eagun: Wes! I heard you beat Greevil himself. Then you've earned this - one more battle, with me!",
+     "lines": ["Eagun: {player_name}! I heard you beat Greevil himself. Then you've earned this - one more battle, with me!",
                "Eagun: My Pikachu and I haven't lost our spark. Show me everything!"],
      "battle": T("xd:Story:222", dialogue={"player_won": [
          "Eagun: Ha! You and your Pokemon fight as one. Listen - the Orre Colosseum is running again.",
          "Eagun: Seven rounds, the strongest trainers in Orre. Go and show them what you've shown me."]})}],
-    "done": ["Eagun: The Orre Colosseum's waiting for you, Wes. Beluh sends her love."]}}
+    "done": ["Eagun: The Orre Colosseum's waiting for you, {player_name}. Beluh sends her love."]}}
 
-COLO_FINALS = {1: "Lovrina: Wes! I'm here to win, not to make friends. My new Pokemon are perfect!",
+COLO_FINALS = {1: "Lovrina: {player_name}! I'm here to win, not to make friends. My new Pokemon are perfect!",
                2: "Snattle: The next governor of Orre doesn't lose twice. Watch me!",
                3: "Gorigan: Hmph. The Colosseum's honest work. Let's see if you can beat me fair and square.",
                4: "Chobin: My Robo Groudon's at home, but my Pokemon came! Prepare yourself!",
@@ -869,7 +928,7 @@ def _colo_rounds():
     return out
 
 
-COLOSSEUM_DESK = {"text": "Colosseum desk", "action": "EVENT", "condition": "beat_orre_champion", "event": {
+COLOSSEUM_DESK = {"text": "Colosseum desk", "action": "EVENT", "condition": "xd_greevil_beaten", "event": {
     "xd_colosseum": {"rounds": _colo_rounds()},
     "lines": ["Clerk: Welcome to the Orre Colosseum! Seven rounds, four battles each, the toughest trainers in Orre."]}}
 
@@ -894,7 +953,7 @@ SENILOR = {"text": "Senilor", "action": "EVENT", "event": {"stages": [
      "lines": ["You tell Senilor what Dr. Kaminko said: no machine can do it - Wobbuffet needs to hear its own trainer.",
                "Senilor: My voice? Well... I'll try. Wobbuffet! Hey! It's me, you big blue lump!",
                "Wobbuffet: ...Wob... WOBBUFFET!",
-               "Senilor: It spoke! Ha ha! Thank you, Wes. Go and tell Beluh the good news."]}],
+               "Senilor: It spoke! Ha ha! Thank you, {player_name}. Go and tell Beluh the good news."]}],
     "done": ["Senilor: My Wobbuffet won't leave my side these days."]}}
 
 WOBBUFFET = {"text": "Wobbuffet", "action": "EVENT", "event": {"stages": [
@@ -1010,7 +1069,7 @@ CAIL_POST = {"text": "Rogue Cail", "action": "EVENT", "event": {"stages": [
          "Rogue Cail: Half the trainers you let get away are holed up there too, if you ask me."]})}],
     "done": ["Rogue Cail: Don't you have somewhere else to be?"]}}
 
-PYRITE_KID = {"text": "Kid (behind the bookcase)", "action": "EVENT", "condition": "beat_orre_champion", "event": {"stages": [
+PYRITE_KID = {"text": "Kid (behind the bookcase)", "action": "EVENT", "condition": "orre_part2", "event": {"stages": [
     {"requires": ["col_post_nett"], "flag": "col_post_kid",
      "lines": ["Kid: Shh! I'm hiding. I saw Cail battle a guy with a really scary Pokemon - all dark and glowing.",
                "Kid: Cail's down at the bottom of town. Don't tell him I told you!"]}],
@@ -1299,9 +1358,14 @@ def _tournament(maps):
         if lobby and desk:   # (back at the desk; the Under's lobby is its own map, Realgam's is the tower's: you walk out)
             lost["room"] = [lobby, desk[0], desk[1] + 1]
         scenes.append(lost)
-        scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
-                       "call": [f"Referee: The champion of {name}!", "The crowd roars!"],
-                       "event": {"world": "orre_tournament", "done": True}})
+        if area == "REALGAM_TOWER":   # (story rework S1, 11-24: Evice ends Part 1 - the five-year time skip, src/world/orre_skip.py)
+            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
+                           "call": ["The roof of Realgam Tower falls silent. Cipher's leader has fallen."],
+                           "event": {"world": "orre_skip"}})
+        else:
+            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
+                           "call": [f"Referee: The champion of {name}!", "The crowd roars!"],
+                           "event": {"world": "orre_tournament", "done": True}})
         ar["scenes"] = scenes
         if area == "REALGAM_TOWER":
             _set_people(ar, {_free_spot(ar, (2, 5)): XD_REALGAM_DESK})
@@ -1317,6 +1381,7 @@ def apply(maps):
     if "THE_UNDER" in maps:
         _under(maps)
     _xd5a(maps)
+    _gateon_islands(maps)
     _battle_cds(maps)
     _xd5b(maps)
     _xd6(maps)

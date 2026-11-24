@@ -333,7 +333,7 @@ class Game:
         from src.vfx import transitions
         if transitions.wants_transition(self, new_state):  # a battle intro first (src/vfx/transitions.py)
             new_state = transitions.BattleTransitionState(self, new_state)
-        if getattr(self, "screen", None) is not None and getattr(self, "current_state", None) is not None:
+        if getattr(self, "screen", None) is not None and getattr(self, "current_state", None) is not None                 and getattr(self, "area_wipe", None) is None:   # (a door's or an area's own wipe is playing: src/vfx/area_changes.py)
             self._fade_from = self.screen.copy()
             self._fade_left = self.FADE_FRAMES
         self.ui_manager.elements.clear()
@@ -438,6 +438,9 @@ class Game:
     def _frame(self):
         """One frame: input, update, draw (run() wraps it in the safety net)."""
         events = self.android.filter(pygame.event.get())  # on a phone: typing, Back, leaving the app
+        wipe = getattr(self, "area_wipe", None)   # (a door's or an area's wipe: no one moves till the new place shows)
+        if wipe is not None:
+            events = [e for e in events if e.type not in (pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN, getattr(pygame, "FINGERDOWN", -1))]
         # Arrow keys / Enter / Esc drive the on-screen buttons (see src/ui/keyboard.py).
         events = [e for e in events if not self.keyboard.handle(e)]
         # Capture current state to detect changes mid-loop
@@ -474,7 +477,8 @@ class Game:
                 events, lambda: self.current_state is not frame_start_state)
             if remaining and self.current_state is frame_start_state:
                 self.current_state.handle_events(remaining)
-        self.current_state.update()
+        if wipe is None or not wipe.holding():   # (the old place fading out: everything waits)
+            self.current_state.update()
         if getattr(self, "coop_host", None) and not getattr(self.current_state, "coop_ticks", False):
             from src.coop import world as coop_world
             coop_world.tick(self)
@@ -494,6 +498,9 @@ class Game:
             self._fade_from.set_alpha(int(255 * self._fade_left / self.FADE_FRAMES))
             self.screen.blit(self._fade_from, (0, 0))
             self._fade_left -= 1
+        if getattr(self, "area_wipe", None) is not None:
+            from src.vfx import area_changes
+            area_changes.draw(self)
 
 
 # [REF-0059: Main Execution]

@@ -393,7 +393,53 @@ class WildWalkUps:
             _feats.note(self.game.story_manager, "fish")
             return
         self._bite_ready = (mon,)
+        if mon is not None and spot is not None and getattr(self, "_ow_on", lambda: False)():
+            return self._ow_found(super().action_fish, spot, fixed=True, line=["Oh! A bite!"])
         return super().action_fish()
+
+    def action_headbutt(self):
+        """OVERWORLD battle style: the Pokemon Headbutt shakes out falls beside you, and the battle is on the map
+        (as the others: side by side, walked to open ground if need be)."""
+        tree = self._beside("tree") if hasattr(self, "_beside") else None
+        if tree is None or not getattr(self, "_ow_on", lambda: False)():
+            return super().action_headbutt()
+        px, py = self._wu_run().player
+        f = self._wu_run().floor
+        near = [(px + dx, py + dy) for dx, dy in core.DIRS]
+        near = [t for t in near if t != tree and f.walkable(*t) and not f.occupied(*t) and f.tile(*t) != core.SURF]
+        if not near:
+            return super().action_headbutt()
+        spot = min(near, key=lambda t: abs(t[0] - tree[0]) + abs(t[1] - tree[1]))
+        return self._ow_found(super().action_headbutt, spot, fixed=False, line=None, tree=tree)
+
+    def _ow_found(self, make, spot, fixed, line=None, tree=None):
+        """A wild Pokemon met off the map's own wild ones (on your line, out of a tree): the route's own battle (made by
+        make, caught before it opens), its Pokemon put on spot, then the battle on the map (OverworldView). fixed: it
+        stays where it is (in the water)."""
+        battle = self._capture_state(make)
+        from src.states.battle import WildBattleState
+        if not isinstance(battle, WildBattleState):
+            if battle is not None:
+                self.game.change_state(battle)
+            return
+        self.dialogue_box.visible = False
+        mon = battle.opponent_pokemon
+        m = core.Mover("wild", spot[0], spot[1], payload=mon)
+        m._ow_fixed = fixed
+        self._wu_run().floor.movers.append(m)
+        self.pending = ("wild", m)
+        from src.states.overworld.overworld_battle import OverworldView
+
+        def go():
+            battle.overworld = OverworldView(self, m)
+            pygame.event.clear()
+            self.game.change_state(battle)
+        name = mon.display_name.upper()
+        lines = list(line or []) + ([f"A wild {name} fell out of the tree!"] if tree is not None else [f"A wild {name} is on the line!"])
+        if getattr(mon, "cry", None):
+            mon.cry.play()
+        self.mode = "MAP"
+        self._wu_say(lines, then=lambda: self.ow_walk_to_battle(m, False, go))   # (you step into place first, if need be)
 
     def _swarm_kin(self, pid, swarm_pid):
         """pid is the swarm's species, or in its family (the fishing code picks the stage that suits the rod's level)."""
