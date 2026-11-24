@@ -39,12 +39,9 @@ ROUTES += ("SINNOH_ROUTE_202", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_MI
 FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701"), ("HEARTHOME_CITY", "contest_2f")}
 for _k in ("ETERNA_CITY", "HEARTHOME_CITY", "SOLACEON_TOWN"):
     PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
-# (S3's known level jumps, open on the roadmap: the steps listed, and no others)
-KNOWN_JUMPS = {
-    ("SINNOH_ROUTE_208", 0): ({((27, y), (28, y)) for y in range(28, 32)}, "Surf strip under the east cliff: Platinum's floor data says 5.0 there, the pond 1.5"),
-    ("SINNOH_ROUTE_210", 0): ({((x, 19), (x, 20)) for x in range(15, 25)}, "the wooden bridge (art ',') lets you step off its side into the grass pocket below; Platinum's pocket is reached by Surf"),
-    ("OLD_CHATEAU", 1): ({((9, 4), (9, 5))}, "the hall's opening '-' down to the lower floor: 3.0 to 0.0 in one step"),
-}
+KNOWN_JUMPS = {}   # ((area, floor): (steps, why)): level jumps left open on the roadmap. S3's three fixed 11-23: Route 210's
+# bridge lettered as a bridge, the Old Chateau hall's landing above the dining door walled, Route 208's Surf strip
+# (pexport3d BDHC_FIX) - kanto_handoff/sinnoh_map_tools/s_s3_jumps.py
 ROUTES += ("SINNOH_ROUTE_206", "WAYWARD_CAVE", "SINNOH_ROUTE_207", "MT_CORONET_BASE", "SINNOH_ROUTE_208", "SINNOH_ROUTE_209",
            "SOLACEON_RUINS", "SINNOH_ROUTE_210", "OLD_CHATEAU", "ETERNA_GALACTIC_BUILDING")
 
