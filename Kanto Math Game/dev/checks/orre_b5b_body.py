@@ -226,7 +226,7 @@ print("1) XD's trainers in our data")
 bad = sorted({mv for b in TR.values() for ms in b.get("team_moves", []) for mv in ms if mv not in _MV})
 check(not bad, f"every move one the game knows ({bad})")
 ex = next(o for o in SP["XD_ONBS"]["route_menu"] if o["text"] == "BATTLE CIPHER CMDR EXOL")["event"]["battle"]
-check(max(ex["levels"]) == 50 and len(SP["XD_ONBS"]["trainer_pool"]) == 10, f"Exol's ace 50; the raid's ten peons ({ex['levels']})")
+check(max(ex["levels"]) == 42 and len(SP["XD_ONBS"]["trainer_pool"]) == 10, f"Exol's ace 42 (Part 2's stage, L1 11-24); the raid's ten peons ({ex['levels']})")
 check(max(TR["xd:Story:72"]["levels"]) == 50 and max(TR["xd:Story:128"]["levels"]) == 52, "Miror B. at the Cave 50, Smarton on the Libra 52")
 
 print("2) Krane's data to Nett; ONBS before the raid")

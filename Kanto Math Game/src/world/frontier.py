@@ -153,6 +153,16 @@ def goal(game, fac):
     return AGAIN if _flags(game).get(f"frontier_{fac}_silver") else FIRST
 
 
+def trainer_column(game, fac):
+    """Which of Emerald's eight trainer columns (its battles 1-7, 8-14, ... 50-56) may appear now. Our streaks are shorter
+    (FIRST wins to the Silver Symbol, AGAIN to the Gold), so the columns are spread over them: 0-3 on the way to the Silver,
+    4-7 to the Gold - every column's trainers turn up (with wins // 7 only the first two ever did; the encyclopedia, 11-24)."""
+    w = wins(game, fac)
+    if _flags(game).get(f"frontier_{fac}_silver"):
+        return min(7, 4 + w * 4 // max(1, AGAIN))
+    return min(3, w * 4 // max(1, FIRST))
+
+
 def brain_next(game, fac):
     return wins(game, fac) >= goal(game, fac)
 
@@ -199,8 +209,7 @@ def next_trainer(game, fac):
         if fac in BRAIN_HELD:   # (their held items, by team slot)
             info["held"] = list(BRAIN_HELD[fac][1 if is_gold else 0])
         return info
-    w = wins(game, fac)
-    col = min(7, w // 7)   # (Emerald's columns: battles 1-7, 8-14, ... who may appear)
+    col = trainer_column(game, fac)
     pool = data4(game)["trainers"] if fac in GEN4 else data(game)["trainers"]   # (Johto and Sinnoh: Gen IV's own trainers)
     trainers = [t for t in pool if col in t["cols"]] or pool
     t = random.choice(trainers)

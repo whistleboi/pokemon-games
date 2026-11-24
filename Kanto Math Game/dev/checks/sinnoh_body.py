@@ -184,6 +184,8 @@ _cr = [t for t, v in f.decor.items() if str(v).startswith("crack:")]
 check((f.w, f.h) == (32, 52) and len(_cr) >= 20 and all(not f.walkable(*t) for t in _cr) and set(f.exits.values()) == {"SINNOH_ROUTE_204"},
       f"Ravaged Path: 32 x 52; without Rock Smash its {len(_cr)} cracked rocks are in the way")
 story.inventory["HM_ROCK_SMASH"] = 1
+_rs_bv = list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = sorted(set(story.badges.get("SINNOH", [])) | {"COAL"})   # (Platinum: Rock Smash needs the Coal Badge on the map; Jordan 11-24)
 r = route("RAVAGED_PATH", "SINNOH_ROUTE_204")
 f = r.run.floor
 check(not any(str(v).startswith("crack:") for v in f.decor.values()) and all(f.walkable(*t) for t in _cr),
@@ -197,6 +199,7 @@ while _todo:
         if _n not in _seen and 0 <= _n[0] < f.w and 0 <= _n[1] < f.h and f.walkable(*_n) and f.tiles[_n[1]][_n[0]] != core.SURF:
             _seen.add(_n); _todo.append(_n)
 check(_ex[1] in _seen, f"Ravaged Path: then its two mouths join on foot ({_ex[0]} to {_ex[1]})")
+story.badges["SINNOH"] = _rs_bv
 story.inventory["HM_ROCK_SMASH"] = _had
 
 # ---- Floaroma Town and Meadow
@@ -377,6 +380,8 @@ _trees = [(x, y) for y, row in enumerate(_tm["ETERNA_CITY"]["art"]) for x, c in 
 _gate = [p for p in _trees if p[1] == 9]
 check(len(_gate) == 3 and all(not t._open(p) for p in _gate), f"Eterna City: without Cut, three small trees shut the Galactic building's yard {_gate}")
 story.inventory["HM_CUT"] = 1
+_cut_bv = list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = sorted(set(story.badges.get("SINNOH", [])) | {"FOREST"})   # (Platinum: Cut needs the Forest Badge on the map)
 t = town("ETERNA_CITY", None)
 check(all(t._open(p) for p in _gate), "Eterna City: with Cut the trees are gone and you can walk in")
 story.inventory["HM_CUT"] = 0
@@ -386,6 +391,7 @@ story.inventory["HM_CUT"] = 1
 r = route("SINNOH_ROUTE_212", "HEARTHOME_CITY")
 check(len(_cut) >= 8 and not any(str(v).startswith("cut:") for v in r.run.floor.decor.values()) and all(r.run.floor.walkable(*p) for p in _cut),
       f"Route 212: its {len(_cut)} small trees are in the way until you have Cut")
+story.badges["SINNOH"] = _cut_bv
 r = route("WAYWARD_CAVE", "SINNOH_ROUTE_206")
 _sl = [p for f in _tm["WAYWARD_CAVE"]["floors"] for row in f["art"] for p in row if p == "7"]
 check(len(_sl) >= 10, f"Wayward Cave: {len(_sl)} tiles of steep muddy slope need the Bicycle")
@@ -830,8 +836,8 @@ t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
 _cc = next((s for s, o in t._people().items() if str(o.get("text")) == "Cynthia "), None)
 if _cc:
     t._talk(_cc); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
-check(_cc == (51, 8) and story.story_flags.get("received_hm_cut"),
-      f"Eterna: with the Forest Badge, Cynthia outside the Galactic building talks about Cut (\"Cynthia's Gift\" done) ({_cc})")
+check(_cc == (51, 10) and story.story_flags.get("received_hm_cut") and story.inventory.get("HM_CUT"),   # (outside the yard's trees: she gives Cut, 11-24)
+      f"Eterna: with the Forest Badge, Cynthia outside the Galactic building gives HM Cut (\"Cynthia's Gift\" done) ({_cc})")
 story.badges["SINNOH"] = _fb
 story.story_flags["galactic_eterna_cleared"] = True; story.story_flags.pop("sinnoh_cynthia_egg", None)
 t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
@@ -1438,7 +1444,9 @@ _drive(t, 900, lambda: story.story_flags.get("sinnoh_acuity_barry") and not t._b
 _bar = bool(story.story_flags.get("sinnoh_acuity_barry"))
 _wall = not t._open((12, 30))
 story.inventory["HM_ROCK_CLIMB"] = 1
-_climb = t._open((12, 30))
+_noclimb = not t._open((12, 30))   # (Platinum: Rock Climb needs the Icicle Badge too; Jordan 11-24)
+story.badges["SINNOH"] = story.badges["SINNOH"] + ["ICICLE"]
+_climb = t._open((12, 30)) and _noclimb
 t = town("SNOWPOINT_CITY", "SINNOH_ROUTE_217"); frames(t, 3)
 t._go("center", "OUT:27,41"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
 _mp = [o for o in t.people.values() if o.get("text") == "Maylene"]
@@ -1551,6 +1559,19 @@ _wakes = "Battle" in type(g.current_state).__name__
 check(_clown["event"].get("gift_item") == {"COIN_CASE": 1} and _fl["event"].get("gift_item") == {"SPRAYDUCK": 1} and _wet and _asleep and _wakes,
       f"Veilstone's clown gives the Coin Case, Floaroma's florist the Sprayduck that waters Berry soil, Regigigas wakes only for the three Regis ({_wet}, {_asleep}, {_wakes})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv); story.player_team = _team
+
+# ---- 11-24 (Jordan: "from the game file"): Sinnoh's own soundtrack, Platinum's tracks (s_music.py): every track music.json
+#      names is there, and the game picks Sinnoh's own for a Sinnoh town and a wild battle
+_mj = __import__("json").load(open("assets/music/sinnoh/music.json", encoding="utf-8"))
+_names = set()
+for _v in list(_mj["areas"].values()) + list(_mj["rooms"].values()) + list(_mj["kinds"].values()):
+    _names |= set(_v.values()) if isinstance(_v, dict) else {_v}
+_missing = sorted(n for n in _names if not __import__("os").path.isfile(f"assets/music/sinnoh/{n}.ogg"))
+t = town("TWINLEAF_TOWN", None); frames(t, 3)
+_tt = g.music.region_track("town", "SINNOH") if hasattr(g, "music") else None
+_wt = g.music.region_track("wild", "SINNOH") if hasattr(g, "music") else None
+check(not _missing and len(_mj["areas"]) >= 80 and _tt and "town01" in _tt and _wt and _wt.endswith("ba_poke.ogg"),
+      f"Sinnoh's own music: {len(_names)} Platinum tracks for {len(_mj['areas'])} places and {len(_mj['rooms'])} rooms, Twinleaf's theme in Twinleaf ({_missing[:3]}, {_tt}, {_wt})")
 
 g.walk_towns = False
 print(f"##### {fails} failures")
