@@ -3479,3 +3479,23 @@ _lk = [(m.x, m.y) for m in st.run.floor.movers if isinstance(m.payload, dict) an
 _way = st._step_route((st.run.index, *st.run.player), frozenset((st.run.index, *t) for t in _door), "x")
 check(_door and not _lk and _way is not None, f"Jagged Pass: after the title the Magma Hideout's door {_door} is reached down from Mt. Chimney (lookout gone: {_lk}; first step {_way})")
 story.story_flags.clear(); story.story_flags.update(_f12); story.inventory.clear(); story.inventory.update(_i12)
+
+# Jordan 11-24 (Dev Map clean-hoenn-main-unpicked-starters): after the title Birch, in his lab, gives you the two starters
+# you didn't pick - a Mudkip player gets Treecko and Torchic - once
+_f13 = dict(story.story_flags); _t13 = list(story.player_team); _pc13 = list(story.pc_pokemon)
+story.story_flags.update({"hoenn_birch_rescued": True, "hoenn_birch_thanked": True, "starter_hoenn": 258, "hoenn_mom_sendoff": True})
+story.story_flags.pop("got_hoenn_other_starters", None)
+st = open_map("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+st.scenes.entered = True
+story.story_flags["beat_hoenn_champion"] = True   # (set after arriving: arriving as Champion offers the next region)
+st._go("lab", ""); frames(2)
+_ids0 = [p.id for p in list(story.player_team) + list(story.pc_pokemon) if p]
+said13 = _press(st, (6, 5), (0, -1))
+_new13 = [p.id for p in list(story.player_team) + list(story.pc_pokemon) if p]
+for _i in _ids0:
+    if _i in _new13:
+        _new13.remove(_i)
+said13b = _press(st, (6, 5), (0, -1))
+check(sorted(_new13) == [252, 255] and story.story_flags.get("got_hoenn_other_starters") and not any("waiting here since" in x for x in said13b),
+      f"Littleroot: after the title Birch gives a Mudkip player Treecko and Torchic, once ({_new13}, {said13[:1]})")
+story.story_flags.clear(); story.story_flags.update(_f13); story.player_team[:] = _t13; story.pc_pokemon[:] = _pc13
