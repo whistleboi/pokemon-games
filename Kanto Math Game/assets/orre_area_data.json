@@ -160,7 +160,8 @@
           "id": 9406,
           "name": "Shadow Makuhita",
           "flag": "snagged_shadow_makuhita",
-          "trainer": "Miror B.Peon Trudly"
+          "trainer": "Miror B. Peon Trudly (Phenac)",
+          "event_only": true
         },
         {
           "id": 9358,
@@ -194,7 +195,8 @@
           "id": 9357,
           "name": "Shadow Togepi",
           "flag": "snagged_shadow_togepi",
-          "trainer": "Pokémon Trainer Hordel"
+          "trainer": "Pokemon Trainer Hordel (a gift, Part 2)",
+          "event_only": true
         }
       ]
     },
@@ -1626,49 +1628,57 @@
           "id": 9382,
           "name": "Shadow Slugma",
           "flag": "snagged_shadow_slugma",
-          "trainer": "Roller Boy Lon"
+          "trainer": "Roller Boy Lon (Pyrite)",
+          "event_only": true
         },
         {
           "id": 9352,
           "name": "Shadow Noctowl",
           "flag": "snagged_shadow_noctowl",
-          "trainer": "Rider Nover"
+          "trainer": "Rider Nover (Pyrite)",
+          "event_only": true
         },
         {
           "id": 9361,
           "name": "Shadow Flaaffy",
           "flag": "snagged_shadow_flaaffy",
-          "trainer": "St.Performer Diogo"
+          "trainer": "St. Performer Diogo (Pyrite)",
+          "event_only": true
         },
         {
           "id": 9363,
           "name": "Shadow Skiploom",
           "flag": "snagged_shadow_skiploom",
-          "trainer": "Rider Leba"
+          "trainer": "Rider Leba (Pyrite)",
+          "event_only": true
         },
         {
           "id": 9367,
           "name": "Shadow Quagsire",
           "flag": "snagged_shadow_quagsire",
-          "trainer": "Bandana Guy Divel"
+          "trainer": "Bandana Guy Divel (Pyrite)",
+          "event_only": true
         },
         {
           "id": 9369,
           "name": "Shadow Misdreavus",
           "flag": "snagged_shadow_misdreavus",
-          "trainer": "Rider Vant"
+          "trainer": "Rider Vant (Pyrite)",
+          "event_only": true
         },
         {
           "id": 9351,
           "name": "Shadow Furret",
           "flag": "snagged_shadow_furret",
-          "trainer": "Rogue Cail"
+          "trainer": "Rogue Cail (Pyrite)",
+          "event_only": true
         },
         {
           "id": 9366,
           "name": "Shadow Yanma",
           "flag": "snagged_shadow_yanma",
-          "trainer": "Cipher Peon Nore"
+          "trainer": "Cipher Peon Nore (the Pyrite bridge)",
+          "event_only": true
         },
         {
           "id": 9386,
@@ -1692,7 +1702,8 @@
           "id": 9407,
           "name": "Shadow Nosepass",
           "flag": "snagged_shadow_nosepass",
-          "trainer": "Wanderer Miror B."
+          "trainer": "Wanderer Miror B. (the Outskirt Stand, Part 2)",
+          "event_only": true
         }
       ],
       "route_menu": [
@@ -13986,19 +13997,22 @@
           "id": 9380,
           "name": "Shadow Teddiursa",
           "flag": "snagged_shadow_teddiursa",
-          "trainer": "Cipher Peon Naps"
+          "trainer": "Spy Naps (the HQ Lab)",
+          "event_only": true
         },
         {
           "id": 9353,
           "name": "Shadow Ledyba",
           "flag": "snagged_shadow_ledyba",
-          "trainer": "Casual Guy Cyle"
+          "trainer": "Casual Guy Cyle (Gateon)",
+          "event_only": true
         },
         {
           "id": 9401,
           "name": "Shadow Poochyena",
           "flag": "snagged_shadow_poochyena",
-          "trainer": "Bodybuilder Kilen"
+          "trainer": "Bodybuilder Kilen (Gateon)",
+          "event_only": true
         },
         {
           "id": 9347,
@@ -15234,13 +15248,15 @@
           "id": 9428,
           "name": "Shadow Snorunt",
           "flag": "snagged_shadow_snorunt",
-          "trainer": "Cipher Peon Exinn"
+          "trainer": "Cipher Peon Exinn (Phenac)",
+          "event_only": true
         },
         {
           "id": 9370,
           "name": "Shadow Pineco",
           "flag": "snagged_shadow_pineco",
-          "trainer": "Cipher Peon Gonrag"
+          "trainer": "Cipher Peon Gonrag (Phenac)",
+          "event_only": true
         },
         {
           "id": 9359,
@@ -15270,25 +15286,29 @@
           "id": 9305,
           "name": "Shadow Spearow",
           "flag": "snagged_shadow_spearow",
-          "trainer": "Cipher Peon Ezin"
+          "trainer": "Cipher Peon Ezin (Phenac)",
+          "event_only": true
         },
         {
           "id": 9322,
           "name": "Shadow Grimer",
           "flag": "snagged_shadow_grimer",
-          "trainer": "Cipher Peon Faltly"
+          "trainer": "Cipher Peon Faltly (Phenac)",
+          "event_only": true
         },
         {
           "id": 9321,
           "name": "Shadow Seel",
           "flag": "snagged_shadow_seel",
-          "trainer": "Cipher Peon Egrog"
+          "trainer": "Cipher Peon Egrog (Phenac)",
+          "event_only": true
         },
         {
           "id": 9421,
           "name": "Shadow Lunatone",
           "flag": "snagged_shadow_lunatone",
-          "trainer": "Cipher Admin Snattle"
+          "trainer": "Cipher Admin Snattle (Phenac)",
+          "event_only": true
         }
       ],
       "route_menu": [
@@ -21499,37 +21519,43 @@
           "id": 9395,
           "name": "Shadow Miltank",
           "flag": "snagged_shadow_miltank",
-          "trainer": "Bodybuilder Jomas"
+          "trainer": "Bodybuilder Jomas (Cipher's Colosseum)",
+          "event_only": true
         },
         {
           "id": 9427,
           "name": "Shadow Absol",
           "flag": "snagged_shadow_absol",
-          "trainer": "Rider Delan"
+          "trainer": "Rider Delan (Cipher's Colosseum)",
+          "event_only": true
         },
         {
           "id": 9391,
           "name": "Shadow Houndoom",
           "flag": "snagged_shadow_houndoom",
-          "trainer": "Cipher Peon Nella"
+          "trainer": "Cipher Peon Nella (Cipher's Colosseum)",
+          "event_only": true
         },
         {
           "id": 9426,
           "name": "Shadow Tropius",
           "flag": "snagged_shadow_tropius",
-          "trainer": "Cipher Peon Ston"
+          "trainer": "Cipher Peon Ston (Cipher's Colosseum)",
+          "event_only": true
         },
         {
           "id": 9431,
           "name": "Shadow Metagross",
           "flag": "snagged_shadow_metagross",
-          "trainer": "Cipher Nascour"
+          "trainer": "Cipher Nascour (Cipher's Colosseum)",
+          "event_only": true
         },
         {
           "id": 9399,
           "name": "Shadow Tyranitar",
           "flag": "snagged_shadow_tyranitar",
-          "trainer": "Cipher Head Evice"
+          "trainer": "Cipher Head Evice (Cipher's Colosseum)",
+          "event_only": true
         }
       ]
     },
