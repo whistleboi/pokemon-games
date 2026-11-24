@@ -108,14 +108,9 @@ def story_ace(badges):
 
 
 def cap_band(f):
-    """levels.capped_band: once your lead has reached the ace, the place's wild Pokemon come at ace-3..ace+1 (not where
-    the place's own level is already above that)."""
-    if CAP["post"]:
-        return None
-    ace = story_ace(CAP["badges"])
-    if f["level"] > ace + LIFT_ABOVE:
-        return None
-    return ace - LIFT_BELOW, ace + LIFT_ABOVE
+    """Gone (Jordan 11-24, main): wild Pokemon always come at their place's own level (levels.wild_level), so the tables
+    have no "At the cap" column any more."""
+    return None
 
 
 RODS = {"Old Rod": 5, "Good Rod": 10, "Super Rod": 15}
@@ -134,17 +129,14 @@ def at_cap(r, band, fixed_land):
 def cap_html():
     if CAP["post"]:
         return ('<div class="note cap"><b>Level cap: your team.</b> After the title the cap follows your own team: it\'s your '
-                f'highest level, and never below Lv {REMATCH_FLOOR}. Wild Pokémon rise to your team\'s level (its average, '
-                'your lowest Pokémon left out) wherever that\'s above the place\'s own. Legendary Pokémon stay at Lv 70, and '
+                f'highest level, and never below Lv {REMATCH_FLOOR}. Wild Pokémon stay at each place\'s own level, and '
                 'trainers keep their own levels.</div>')
     n = CAP["badges"]
     ace = story_ace(n)
     who = (f"your {['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'][n]} badge" if n < 8
            else "the Champion")
     return (f'<div class="note cap"><b>Level cap: Lv {ace + CAP_OVER}</b> until {who}. Your Pokémon stop gaining Exp. there, '
-            f'and Rare Candies stop working. The next Leader\'s best Pokémon is Lv {ace}. Once your lead Pokémon reaches '
-            f'Lv {ace}, wild Pokémon in places below that level come at Lv {ace - LIFT_BELOW}–{ace + LIFT_ABOVE}: '
-            'the "At the cap" column in the tables. Trainers keep their own levels.</div>')
+            f'and Rare Candies stop working. The next Leader\'s best Pokémon is Lv {ace}.</div>')
 
 
 def captable_html():
@@ -158,11 +150,10 @@ def captable_html():
             nxt = f"{leader.get('name', '?')} ({FACTS[order[n]]['name'] if order[n] in FACTS else order[n].title()})"
         else:
             nxt = "the Elite Four and the Champion"
-        rows.append(f"<tr><td>{n}</td><td><b>Lv {ace + CAP_OVER}</b></td><td>{esc(nxt)}</td><td>Lv {ace}</td>"
-                    f"<td>Lv {ace - LIFT_BELOW}–{ace + LIFT_ABOVE}</td></tr>")
-    rows.append(f"<tr><td>Champion</td><td><b>Your team</b></td><td>the post-game</td><td>—</td><td>your team's level</td></tr>")
+        rows.append(f"<tr><td>{n}</td><td><b>Lv {ace + CAP_OVER}</b></td><td>{esc(nxt)}</td><td>Lv {ace}</td></tr>")
+    rows.append(f"<tr><td>Champion</td><td><b>Your team</b></td><td>the post-game</td><td>—</td></tr>")
     return ('<div class="frame captab"><table><caption>The story level cap</caption><thead><tr><th>Badges</th><th>Cap</th>'
-            '<th>Next (usual order)</th><th>Their best</th><th>Wild at the cap</th></tr></thead>'
+            '<th>Next (usual order)</th><th>Their best</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
@@ -375,6 +366,10 @@ def battle_html(f, name, note=None, pick=None):
     t = find_trainer(f, name)
     if t is None:
         raise SystemExit(f"battle not found: {f['key']} {name}")
+    return battle_box(f, t, note)
+
+
+def battle_box(f, t, note=None):
     who = trainer_name(t)
     if t.get("by_starter"):
         teams = "".join(f'<div class="small">If you chose {esc(s)}:</div><div>{team_html(tm)}</div>'
@@ -613,9 +608,9 @@ def toc(body, pid):
 CSS = open(os.path.join(HERE, "page.css"), encoding="utf-8").read()
 
 
-def build(region, out, only=None):
+def prepare(region, only=None):
+    """Facts, "when" lines, place anchors and boxed trainers for a region's parts; returns the part files to build."""
     global FACTS, WHEN
-    import tempfile
     keys = [k for r in (["KANTO", "SEVII"] if region == "kanto" else [region.upper()]) for k in F.region_keys(r)]
     FACTS = {k: F.place(k) for k in keys}
     WHEN = {}
@@ -635,6 +630,11 @@ def build(region, out, only=None):
                 t = find_trainer(FACTS[key], name) if key in FACTS else None
                 if t is not None:
                     BOXED.add(id(t))
+    return pdir, files
+
+
+def build(region, out, only=None):
+    pdir, files = prepare(region, only)
     parts = []
     for fn in files:
         n = int(re.search(r"\d+", fn).group())

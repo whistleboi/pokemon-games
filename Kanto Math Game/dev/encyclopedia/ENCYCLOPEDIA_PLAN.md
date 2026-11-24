@@ -23,3 +23,14 @@ parts stay the story order; place pages are the reference.
 
 Each region's walkthrough is written from its own source game's walkthrough (HGSS for Johto, ORAS for Hoenn, and so on);
 the reference pages need no writing at all, they come straight from the data.
+
+## Built (11-24, Jordan's OK)
+
+One artifact (the same link as the walkthrough): `index.html` is one page that shows many linked pages (#home,
+#part-kanto-N, #place-KEY, #pokemon-ID, #item-KEY, #trainer-NAME, #list-...). Data beside it: `data/species.json` (every
+Pokémon: types, kind, size, stats, evolutions), `data/<region>.json` (its parts, place pages, where each Pokémon and item
+turns up, its important trainers), `icons.css` (every icon once). Built by `build_site.py OUT_DIR`; publish OUT_DIR's
+index.html with the other files.
+
+Adding a region: its parts in `dev/encyclopedia/<region>/` (WRITING.md), `facts.py` taught that region's data shape,
+one line in `build_site.REGIONS`. Wild levels are the place's own (Jordan 11-24: no lift toward the cap).

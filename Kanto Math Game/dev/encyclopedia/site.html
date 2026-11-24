@@ -1,0 +1,264 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pokémath Encyclopedia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/*CSS*/
+/* Layout: a wiki - a sticky top bar (home, lists, search), then one page at a time in the walkthrough's wiki style */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--head); color: var(--head-fg); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--head); }
+.bar .in { max-width: 980px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; padding-block: 8px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar a { color: var(--head-fg); text-decoration: none; font: 600 14px var(--display); letter-spacing: .04em; }
+.bar a.home { font: 700 17px var(--display); letter-spacing: .02em; margin-right: 6px; }
+.bar a:hover, .bar a:focus-visible { text-decoration: underline; }
+.bar nav { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.search { position: relative; margin-left: auto; flex: 1 1 200px; max-width: 320px; min-width: 0; }
+.search input { width: 100%; box-sizing: border-box; font: 15px var(--body); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--fg); }
+.hits { position: absolute; right: 0; left: 0; top: calc(100% + 4px); background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18); max-height: 60vh; overflow-y: auto; z-index: 6; }
+.hits a { display: flex; align-items: center; gap: 8px; padding: 6px 10px; color: var(--fg); text-decoration: none; font: 15px var(--body); }
+.hits a:hover, .hits a:focus-visible, .hits a.on { background: var(--row); }
+.hits .kind { margin-left: auto; font: 600 11px var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.types { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 10px; }
+.type { font: 700 12px var(--display); letter-spacing: .06em; text-transform: uppercase; padding: 2px 10px; border-radius: 99px; background: var(--chip); }
+.hero { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin: 6px 0 8px; }
+.hero .ic.big { width: 96px; height: 96px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px 18px; margin: 6px 0 14px; max-width: 640px; }
+.facts div { font-size: 15px; } .facts b { display: block; font: 600 12px var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.stats { max-width: 520px; display: grid; grid-template-columns: 7.5em 2.5em 1fr; gap: 4px 10px; align-items: center; font-variant-numeric: tabular-nums; }
+.stats .bar2 { height: 10px; border-radius: 5px; background: var(--accent); opacity: .8; }
+.evo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 8px 0 16px; }
+.evo .step { display: flex; align-items: center; gap: 6px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; }
+.evo .step.me { border-color: var(--accent); }
+.evo .arrow { font-size: 13px; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 14px; }
+.chips a { background: var(--chip); color: var(--fg); padding: 4px 12px; border-radius: 99px; text-decoration: none; font: 600 14px var(--display); }
+.chips a:hover, .chips a:focus-visible { background: var(--line); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 12px 0 20px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.card h3 { margin: 0 0 4px; } .card p { margin: 0 0 8px; font-size: 15px; color: var(--muted); }
+.card.later { opacity: .7; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px 16px; padding: 0; list-style: none; }
+.grid3 li a { display: flex; align-items: center; gap: 8px; padding: 3px 0; text-decoration: none; color: var(--fg); }
+.grid3 li a:hover { color: var(--accent); }
+.grid3 .no { color: var(--muted); font-size: 13px; width: 2.6em; font-variant-numeric: tabular-nums; }
+.pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.loading { color: var(--muted); padding: 40px 0; }
+.ic.mid { width: 40px; height: 40px; }
+</style>
+
+<header class="bar"><div class="in">
+  <a class="home" href="#home">Pokémath Encyclopedia</a>
+  <nav aria-label="Lists"><a href="#list-places">Places</a><a href="#list-pokemon">Pokémon</a><a href="#list-items">Items</a><a href="#list-trainers">Trainers</a></nav>
+  <div class="search"><input id="q" type="search" placeholder="Search a place, Pokémon, item…" aria-label="Search" autocomplete="off"><div class="hits" id="hits" hidden></div></div>
+</div></header>
+<main class="wrap" id="app"><p class="loading">Loading…</p></main>
+
+<script>
+const SITE = /*REGIONS*/;
+const D = { regions: {}, sp: null };
+const app = document.getElementById("app");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const ic = (id, cls = "") => `<i class="ic p${id} ${cls}" aria-hidden="true"></i>`;
+const STAT = ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"];
+
+async function load() {
+  const [css, sp, ...regs] = await Promise.all([
+    fetch("icons.css").then(r => r.text()), fetch("data/species.json").then(r => r.json()),
+    ...SITE.live.map(r => fetch(`data/${r.key}.json`).then(x => x.json()))]);
+  const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+  D.sp = sp; regs.forEach(r => D.regions[r.key] = r);
+  route();
+}
+
+function placeOf(key) { for (const r of Object.values(D.regions)) if (r.places[key]) return [r, r.places[key]]; return [null, null]; }
+function placeLink(key) { const [, p] = placeOf(key); return p ? `<a href="#place-${slug(key)}">${esc(p.name)}</a>` : esc(key); }
+function findPlace(s) { for (const r of Object.values(D.regions)) for (const k in r.places) if (slug(k) === s) return [r, k]; return [null, null]; }
+function monName(id) { return D.sp.species[id]?.n ?? `#${id}`; }
+function monLink(id) { return `<a class="x" href="#pokemon-${id}">${esc(monName(id))}</a>`; }
+function frame(cap, head, rows, cls = "") {
+  return `<div class="frame ${cls}"><table><caption>${cap}</caption><thead><tr>${head.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+}
+function setTitle(t) { document.title = t ? `${t} · Pokémath Encyclopedia` : "Pokémath Encyclopedia"; }
+
+// ---------------------------------------------------------------- views
+function home() {
+  setTitle("");
+  const live = SITE.live.map(r => `<div class="card"><h3>${esc(r.title)}</h3><p>${esc(r.src)}. ${r.parts} parts, ${r.places} places.</p>
+    <div class="chips"><a href="#part-${r.key}-1">Start the walkthrough</a><a href="#list-places">All places</a></div></div>`).join("");
+  const later = SITE.later.map(n => `<div class="card later"><h3>${esc(n)}</h3><p>Not written yet.</p></div>`).join("");
+  const reg = D.regions.kanto;
+  const parts = reg.parts.map(p => `<li><a href="#part-kanto-${p.n}">Part ${p.n}</a>: ${esc(p.title)}</li>`).join("");
+  return `<div class="crumb">Kanto Math Game</div><h1>Pokémath Encyclopedia</h1>
+    <p class="lede">The game's own guide, written from its data: the story in order, and a page for every place, Pokémon, item and important trainer. Names in the tables and text link to their pages.</p>
+    <div class="cards">${live}${later}</div>
+    <h2>Kanto walkthrough</h2><ol class="parts">${parts}</ol>`;
+}
+
+function partView(regKey, n) {
+  const r = D.regions[regKey]; const p = r?.parts.find(x => x.n === n);
+  if (!p) return notFound();
+  setTitle(`Part ${n}`);
+  const prev = r.parts.find(x => x.n === n - 1), next = r.parts.find(x => x.n === n + 1);
+  return `<div class="crumb"><a href="#home">${esc(r.title)}</a> · Walkthrough · Part ${n}</div><h1 class="ph">${esc(p.title)}</h1>${p.toc}${p.html}
+    <div class="pager">${prev ? `<a href="#part-${regKey}-${prev.n}">← Part ${prev.n}: ${esc(prev.title)}</a>` : "<span></span>"}${next ? `<a href="#part-${regKey}-${next.n}">Part ${next.n}: ${esc(next.title)} →</a>` : ""}</div>`;
+}
+
+function placeView(s) {
+  const [r, k] = findPlace(s); if (!r) return notFound();
+  const p = r.places[k];
+  setTitle(p.name);
+  const ways = p.exits.length ? `<h3>Ways out</h3><div class="chips">${p.exits.map(e => `<a href="#place-${slug(e)}">${esc(r.places[e]?.name ?? e)}</a>`).join("")}</div>` : "";
+  const part = p.part ? `<a href="#part-${r.key}-${p.part}">Part ${p.part}: ${esc(r.parts.find(x => x.n === p.part).title)}</a>` : "";
+  return `<div class="crumb"><a href="#home">${esc(r.title)}</a> · ${p.sevii ? "Sevii Islands" : "Kanto"} · Place</div>
+    <div class="note"><b>In the walkthrough.</b> ${part || "Not covered by a part yet."} The place's own level is ${p.level}.</div>${ways}${p.html}`;
+}
+
+function monView(id) {
+  const s = D.sp.species[id]; if (!s) return notFound();
+  setTitle(s.n);
+  const types = s.t.map(t => `<span class="type">${esc(t)}</span>`).join("");
+  const facts = [["Number", `#${String(id).padStart(3, "0")}`], ["Kind", s.k ? `${esc(s.k)} Pokémon` : "—"],
+    ["Height", s.h != null ? `${s.h} m` : "—"], ["Weight", s.w != null ? `${s.w} kg` : "—"]]
+    .map(([a, b]) => `<div><b>${a}</b>${b}</div>`).join("");
+  const top = Math.max(...s.s.filter(Boolean), 1);
+  const stats = s.s.some(Boolean) ? `<h3>Base stats</h3><div class="stats">${s.s.map((v, i) => `<span>${STAT[i]}</span><b>${v ?? "—"}</b><span class="bar2" style="width:${Math.round(100 * (v || 0) / Math.max(top, 150))}%"></span>`).join("")}<span>Total</span><b>${s.s.reduce((a, b) => a + (b || 0), 0)}</b><span></span></div>` : "";
+  // the whole family, in order
+  const fam = new Set([+id]); let grow = true;
+  while (grow) { grow = false; for (const [a, b] of D.sp.evo) if ((fam.has(a) || fam.has(b)) && !(fam.has(a) && fam.has(b))) { fam.add(a); fam.add(b); grow = true; } }
+  const links = D.sp.evo.filter(([a, b]) => fam.has(a) && fam.has(b));
+  let evo = "";
+  if (links.length) {
+    const roots = [...fam].filter(x => !links.some(([, b]) => b === x));
+    const lines = [];
+    const walk = (x, path) => { const nx = links.filter(([a]) => a === x); if (!nx.length) lines.push(path); nx.forEach(([, b, w]) => walk(b, [...path, [b, w]])); };
+    roots.forEach(r0 => walk(r0, [[r0, ""]]));
+    evo = `<h3>Evolution</h3>` + lines.map(l => `<div class="evo">${l.map(([x, w], i) => `${i ? `<span class="arrow">${esc(w)} →</span>` : ""}<span class="step${x === +id ? " me" : ""}">${ic(x)}${x === +id ? esc(monName(x)) : monLink(x)}</span>`).join("")}</div>`).join("");
+  }
+  let where = "", used = "";
+  for (const r of Object.values(D.regions)) {
+    const m = r.mons[id]; if (!m) continue;
+    if (m.wild.length) where += frame(`In the wild: ${esc(r.title)}`, ["Place", "How", "Levels", "Rate"], m.wild.map(w =>
+      `<tr><td>${placeLink(w.p)}${w.form ? ` <span class="small">(${esc(w.form)})</span>` : ""}${w.after ? ` <span class="when">after ${esc(w.after)}</span>` : ""}${w.ours ? ' <span class="ours">ours</span>' : ""}</td><td><span class="how">${esc(w.how)}</span></td><td>${esc(w.lv)}</td><td class="rate">${w.rate}</td></tr>`));
+    if (m.used.length) used += frame(`Trainers who use it: ${esc(r.title)}`, ["Trainer", "Where", "Level"], m.used.map(u =>
+      `<tr><td>${esc(u.who)}</td><td>${placeLink(u.p)}</td><td>${u.lv ?? "—"}</td></tr>`));
+  }
+  if (!where) where = `<p class="small">Not found in the wild in the regions written so far.</p>`;
+  return `<div class="crumb"><a href="#list-pokemon">Pokémon</a> · #${String(id).padStart(3, "0")}</div>
+    <div class="hero">${ic(id, "big")}<div><h1>${esc(s.n)}</h1><div class="types">${types}</div></div></div>
+    <div class="facts">${facts}</div>${evo}${stats}<h3>Where to find it</h3><div class="grid">${where}</div>${used ? `<h3>Used by</h3><div class="grid">${used}</div>` : ""}`;
+}
+
+function itemView(s) {
+  let e = null; for (const r of Object.values(D.regions)) if (r.items[s]) { e = { ...r.items[s], all: [] }; break; }
+  if (!e) return notFound();
+  setTitle(e.name);
+  const rows = []; for (const r of Object.values(D.regions)) (r.items[s]?.where || []).forEach(w => rows.push(`<tr><td>${placeLink(w.p)}</td><td>${esc(w.w)}</td></tr>`));
+  return `<div class="crumb"><a href="#list-items">Items</a></div><div class="hero">${e.ic.replace('class="ic ', 'class="ic mid ')}<h1>${esc(e.name)}</h1></div>
+    ${e.desc ? `<p>${esc(e.desc)}</p>` : ""}<div class="grid">${frame("Where to get it", ["Place", "How"], rows)}</div>`;
+}
+
+function trainerView(s) {
+  let t = null; for (const r of Object.values(D.regions)) if (r.trainers[s]) { t = r.trainers[s]; break; }
+  if (!t) return notFound();
+  setTitle(t.name);
+  return `<div class="crumb"><a href="#list-trainers">Trainers</a> · ${esc(t.cls)}</div><h1>${esc(t.name)}</h1>
+    ${t.battles.map(b => `<h3>${placeLink(b.p)}</h3>${b.html}`).join("")}`;
+}
+
+function listView(kind) {
+  if (kind === "places") {
+    setTitle("Places");
+    return `<div class="crumb">Lists</div><h1>Places</h1>` + Object.values(D.regions).map(r => {
+      const groups = {};
+      r.order.forEach(k => { const p = r.places[k]; const g = p.part ? `Part ${p.part}: ${r.parts.find(x => x.n === p.part).title}` : "Other"; (groups[g] ||= []).push(k); });
+      return `<h2>${esc(r.title)}</h2>` + Object.entries(groups).map(([g, ks]) => `<h4>${esc(g)}</h4><div class="chips">${ks.map(k => `<a href="#place-${slug(k)}">${esc(r.places[k].name)}</a>`).join("")}</div>`).join("");
+    }).join("");
+  }
+  if (kind === "pokemon") {
+    setTitle("Pokémon");
+    const seen = new Set(); Object.values(D.regions).forEach(r => Object.keys(r.mons).forEach(k => seen.add(+k)));
+    const ids = Object.keys(D.sp.species).map(Number).filter(i => seen.has(i)).sort((a, b) => a - b);
+    return `<div class="crumb">Lists</div><h1>Pokémon</h1><p class="lede">${ids.length} Pokémon you can meet in the regions written so far. Every other Pokémon has a page too: search for it.</p>
+      <ul class="grid3">${ids.map(i => `<li><a href="#pokemon-${i}"><span class="no">#${String(i).padStart(3, "0")}</span>${ic(i)}${esc(monName(i))}</a></li>`).join("")}</ul>`;
+  }
+  if (kind === "items") {
+    setTitle("Items");
+    const all = {}; Object.values(D.regions).forEach(r => Object.entries(r.items).forEach(([k, e]) => all[k] ||= e));
+    const ks = Object.keys(all).sort((a, b) => all[a].name.localeCompare(all[b].name));
+    return `<div class="crumb">Lists</div><h1>Items</h1><p class="lede">Every item lying on the ground, hidden, or handed to you.</p>
+      <ul class="grid3">${ks.map(k => `<li><a href="#item-${k}">${all[k].ic}${esc(all[k].name)}</a></li>`).join("")}</ul>`;
+  }
+  if (kind === "trainers") {
+    setTitle("Trainers");
+    return `<div class="crumb">Lists</div><h1>Trainers</h1><p class="lede">Gym Leaders, the Elite Four, your rival, Team Rocket's bosses and the other trainers you meet in the story. Route trainers are on their places' pages.</p>` +
+      Object.values(D.regions).map(r => {
+        const groups = {}; Object.entries(r.trainers).forEach(([k, t]) => (groups[t.cls] ||= []).push([k, t]));
+        return `<h2>${esc(r.title)}</h2>` + Object.entries(groups).map(([c, ts]) => `<h4>${esc(c)}</h4><div class="chips">${ts.map(([k, t]) => `<a href="#trainer-${k}">${esc(t.name)}</a>`).join("")}</div>`).join("");
+      }).join("");
+  }
+  return notFound();
+}
+
+function notFound() { setTitle("Not found"); return `<h1>Page not found</h1><p>That page isn't in the encyclopedia. <a href="#home">Back to the start</a>.</p>`; }
+
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1)) || "home";
+  let m, html;
+  if (h === "home") html = home();
+  else if ((m = h.match(/^part-([a-z]+)-(\d+)$/))) html = partView(m[1], +m[2]);
+  else if ((m = h.match(/^part-(\d+)$/))) html = partView("kanto", +m[1]);
+  else if ((m = h.match(/^place-(.+)$/))) html = placeView(m[1]);
+  else if ((m = h.match(/^pokemon-(\d+)$/))) html = monView(+m[1]);
+  else if ((m = h.match(/^item-(.+)$/))) html = itemView(m[1]);
+  else if ((m = h.match(/^trainer-(.+)$/))) html = trainerView(m[1]);
+  else if ((m = h.match(/^list-(\w+)$/))) html = listView(m[1]);
+  else { const el = document.getElementById(h); if (el) { el.scrollIntoView(); return; } html = notFound(); }
+  app.innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// a part's contents box scrolls within the part
+app.addEventListener("click", e => {
+  const a = e.target.closest("a[data-scroll]"); if (!a) return;
+  const el = document.getElementById(a.dataset.scroll); if (!el) return;
+  e.preventDefault(); el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+});
+
+// ---------------------------------------------------------------- search
+const q = document.getElementById("q"), hits = document.getElementById("hits");
+function searchIndex() {
+  const out = [];
+  for (const [id, s] of Object.entries(D.sp.species)) out.push([s.n, `#pokemon-${id}`, "Pokémon", ic(id)]);
+  for (const r of Object.values(D.regions)) {
+    for (const [k, p] of Object.entries(r.places)) out.push([p.name, `#place-${slug(k)}`, "Place", ""]);
+    for (const [k, e] of Object.entries(r.items)) out.push([e.name, `#item-${k}`, "Item", e.ic]);
+    for (const [k, t] of Object.entries(r.trainers)) out.push([t.name, `#trainer-${k}`, "Trainer", ""]);
+    for (const p of r.parts) out.push([`Part ${p.n}: ${p.title}`, `#part-${r.key}-${p.n}`, "Walkthrough", ""]);
+  }
+  return out;
+}
+let IDX = null, sel = -1;
+q.addEventListener("input", () => {
+  IDX ||= searchIndex();
+  const t = q.value.trim().toLowerCase(); sel = -1;
+  if (t.length < 2) { hits.hidden = true; return; }
+  const found = IDX.filter(x => x[0].toLowerCase().includes(t)).sort((a, b) => a[0].toLowerCase().indexOf(t) - b[0].toLowerCase().indexOf(t)).slice(0, 14);
+  hits.innerHTML = found.length ? found.map(x => `<a href="${x[1]}">${x[3]}${esc(x[0])}<span class="kind">${x[2]}</span></a>`).join("") : `<a>No matches</a>`;
+  hits.hidden = false;
+});
+q.addEventListener("keydown", e => {
+  const as = [...hits.querySelectorAll("a[href]")]; if (hits.hidden || !as.length) return;
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); sel = (sel + (e.key === "ArrowDown" ? 1 : -1) + as.length) % as.length; as.forEach((a, i) => a.classList.toggle("on", i === sel)); }
+  if (e.key === "Enter") { e.preventDefault(); location.hash = as[Math.max(sel, 0)].getAttribute("href"); }
+});
+hits.addEventListener("click", () => { hits.hidden = true; q.value = ""; });
+document.addEventListener("click", e => { if (!e.target.closest(".search")) hits.hidden = true; });
+window.addEventListener("hashchange", () => { hits.hidden = true; q.value = ""; route(); });
+load().catch(err => { app.innerHTML = `<h1>Couldn't load the encyclopedia</h1><p>${esc(err.message)}. Reload the page to try again.</p>`; });
+</script>
