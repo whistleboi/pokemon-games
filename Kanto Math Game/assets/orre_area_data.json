@@ -26032,6 +26032,392 @@
       "origins": [
         280
       ]
+    },
+    "9637": {
+      "id": 152,
+      "form": "shadow",
+      "name": "Shadow Chikorita",
+      "origins": [
+        153
+      ]
+    },
+    "9638": {
+      "id": 155,
+      "form": "shadow",
+      "name": "Shadow Cyndaquil",
+      "origins": [
+        156
+      ]
+    },
+    "9639": {
+      "id": 158,
+      "form": "shadow",
+      "name": "Shadow Totodile",
+      "origins": [
+        159
+      ]
+    },
+    "9640": {
+      "id": 163,
+      "form": "shadow",
+      "name": "Shadow Hoothoot",
+      "origins": [
+        164
+      ]
+    },
+    "9641": {
+      "id": 187,
+      "form": "shadow",
+      "name": "Shadow Hoppip",
+      "origins": [
+        188
+      ]
+    },
+    "9642": {
+      "id": 194,
+      "form": "shadow",
+      "name": "Shadow Wooper",
+      "origins": [
+        195
+      ]
+    },
+    "9643": {
+      "id": 161,
+      "form": "shadow",
+      "name": "Shadow Sentret",
+      "origins": [
+        162
+      ]
+    },
+    "9644": {
+      "id": 236,
+      "form": "shadow",
+      "name": "Shadow Tyrogue",
+      "origins": [
+        106,
+        107,
+        237
+      ]
+    },
+    "9645": {
+      "id": 209,
+      "form": "shadow",
+      "name": "Shadow Snubbull",
+      "origins": [
+        210
+      ]
+    },
+    "9646": {
+      "id": 328,
+      "form": "shadow",
+      "name": "Shadow Trapinch",
+      "origins": [
+        329
+      ]
+    },
+    "9647": {
+      "id": 191,
+      "form": "shadow",
+      "name": "Shadow Sunkern",
+      "origins": [
+        192
+      ]
+    },
+    "9648": {
+      "id": 375,
+      "form": "shadow",
+      "name": "Shadow Metang",
+      "origins": [
+        376
+      ]
+    },
+    "9649": {
+      "id": 247,
+      "form": "shadow",
+      "name": "Shadow Pupitar",
+      "origins": [
+        248
+      ]
+    },
+    "9650": {
+      "id": 300,
+      "form": "shadow",
+      "name": "Shadow Skitty",
+      "origins": [
+        301
+      ]
+    },
+    "9651": {
+      "id": 14,
+      "form": "shadow",
+      "name": "Shadow Kakuna",
+      "origins": [
+        15
+      ]
+    },
+    "9652": {
+      "id": 16,
+      "form": "shadow",
+      "name": "Shadow Pidgey",
+      "origins": [
+        17
+      ]
+    },
+    "9653": {
+      "id": 11,
+      "form": "shadow",
+      "name": "Shadow Metapod",
+      "origins": [
+        12
+      ]
+    },
+    "9654": {
+      "id": 81,
+      "form": "shadow",
+      "name": "Shadow Magnemite",
+      "origins": [
+        82
+      ]
+    },
+    "9655": {
+      "id": 48,
+      "form": "shadow",
+      "name": "Shadow Venonat",
+      "origins": [
+        49
+      ]
+    },
+    "9656": {
+      "id": 69,
+      "form": "shadow",
+      "name": "Shadow Bellsprout",
+      "origins": [
+        70
+      ]
+    },
+    "9657": {
+      "id": 23,
+      "form": "shadow",
+      "name": "Shadow Ekans",
+      "origins": [
+        24
+      ]
+    },
+    "9658": {
+      "id": 56,
+      "form": "shadow",
+      "name": "Shadow Mankey",
+      "origins": [
+        57
+      ]
+    },
+    "9659": {
+      "id": 96,
+      "form": "shadow",
+      "name": "Shadow Drowzee",
+      "origins": [
+        97
+      ]
+    },
+    "9660": {
+      "id": 54,
+      "form": "shadow",
+      "name": "Shadow Psyduck",
+      "origins": [
+        55
+      ]
+    },
+    "9661": {
+      "id": 84,
+      "form": "shadow",
+      "name": "Shadow Doduo",
+      "origins": [
+        85
+      ]
+    },
+    "9662": {
+      "id": 19,
+      "form": "shadow",
+      "name": "Shadow Rattata",
+      "origins": [
+        20
+      ]
+    },
+    "9663": {
+      "id": 353,
+      "form": "shadow",
+      "name": "Shadow Shuppet",
+      "origins": [
+        354
+      ]
+    },
+    "9664": {
+      "id": 240,
+      "form": "shadow",
+      "name": "Shadow Magby",
+      "origins": [
+        126
+      ]
+    },
+    "9665": {
+      "id": 77,
+      "form": "shadow",
+      "name": "Shadow Ponyta",
+      "origins": [
+        78
+      ]
+    },
+    "9666": {
+      "id": 120,
+      "form": "shadow",
+      "name": "Shadow Staryu",
+      "origins": [
+        121
+      ]
+    },
+    "9667": {
+      "id": 276,
+      "form": "shadow",
+      "name": "Shadow Taillow",
+      "origins": [
+        277
+      ]
+    },
+    "9668": {
+      "id": 239,
+      "form": "shadow",
+      "name": "Shadow Elekid",
+      "origins": [
+        125
+      ]
+    },
+    "9669": {
+      "id": 61,
+      "form": "shadow",
+      "name": "Shadow Poliwhirl",
+      "origins": [
+        62
+      ]
+    },
+    "9670": {
+      "id": 50,
+      "form": "shadow",
+      "name": "Shadow Diglett",
+      "origins": [
+        51
+      ]
+    },
+    "9671": {
+      "id": 309,
+      "form": "shadow",
+      "name": "Shadow Electrike",
+      "origins": [
+        310
+      ]
+    },
+    "9672": {
+      "id": 372,
+      "form": "shadow",
+      "name": "Shadow Shelgon",
+      "origins": [
+        373
+      ]
+    },
+    "9673": {
+      "id": 104,
+      "form": "shadow",
+      "name": "Shadow Cubone",
+      "origins": [
+        105
+      ]
+    },
+    "9674": {
+      "id": 111,
+      "form": "shadow",
+      "name": "Shadow Rhyhorn",
+      "origins": [
+        112
+      ]
+    },
+    "9675": {
+      "id": 102,
+      "form": "shadow",
+      "name": "Shadow Exeggcute",
+      "origins": [
+        103
+      ]
+    },
+    "9676": {
+      "id": 148,
+      "form": "shadow",
+      "name": "Shadow Dragonair",
+      "origins": [
+        149
+      ]
+    },
+    "9677": {
+      "id": 374,
+      "form": "shadow",
+      "name": "Shadow Beldum",
+      "origins": [
+        376
+      ]
+    },
+    "9678": {
+      "id": 246,
+      "form": "shadow",
+      "name": "Shadow Larvitar",
+      "origins": [
+        248
+      ]
+    },
+    "9679": {
+      "id": 13,
+      "form": "shadow",
+      "name": "Shadow Weedle",
+      "origins": [
+        15
+      ]
+    },
+    "9680": {
+      "id": 10,
+      "form": "shadow",
+      "name": "Shadow Caterpie",
+      "origins": [
+        12
+      ]
+    },
+    "9681": {
+      "id": 60,
+      "form": "shadow",
+      "name": "Shadow Poliwag",
+      "origins": [
+        62
+      ]
+    },
+    "9682": {
+      "id": 186,
+      "form": "shadow",
+      "name": "Shadow Politoed",
+      "origins": [
+        62
+      ]
+    },
+    "9683": {
+      "id": 371,
+      "form": "shadow",
+      "name": "Shadow Bagon",
+      "origins": [
+        373
+      ]
+    },
+    "9684": {
+      "id": 147,
+      "form": "shadow",
+      "name": "Shadow Dratini",
+      "origins": [
+        149
+      ]
     }
   },
   "ORRE_OASIS_POKE_SPOT_PERCENTAGES": {

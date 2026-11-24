@@ -181,6 +181,9 @@ class EvolutionState(GameState):
                         self.evolved_pokemon_obj.caught_level = 1
                         from src.world import odd_egg as _odd   # (the Odd Egg: the next one is ready tomorrow)
                         _odd.hatched(self.game.story_manager, self.evolved_pokemon_obj.id)
+                        from src.world import shadow as _sh   # (Orre, Jordan 11-24 Q14: a Shadow mother's Egg hatches a Shadow
+                        if _sh.is_shadow(self.game, self.evolved_pokemon_obj):   #  baby, its heart shut - a full gauge to open)
+                            _sh.make_shadow(self.game, self.evolved_pokemon_obj)
                     self.game.data.add_pokemon(self.evolved_pokemon_obj)
                     self._maybe_shedinja()
 

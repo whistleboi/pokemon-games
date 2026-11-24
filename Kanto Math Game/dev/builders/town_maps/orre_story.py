@@ -988,6 +988,22 @@ def _voice(text, n, poke_said):
         "done": [f"{text} is silent. A small machine is stuck to it."]}}
 
 
+# Gateon's Eevee expert (11-19, "every species in one playthrough": XD's stones): a stone a day for Vaporeon, Jolteon or
+# Flareon
+EEVEE_EXPERT = {"text": "Eevee expert", "action": "EVENT", "event": {
+    "lines": ["I know all about Eevee! It can become so many things.",
+              "Here, take a stone to evolve yours. Which one? Come back tomorrow for another!"],
+    "flag": "xd_eevee_stone_day",
+    "choose": {"flag": "xd_eevee_stone", "ask": "WHICH STONE?", "gift": True,
+               "choices": [{"text": "WATER STONE (Vaporeon)", "value": "WATER_STONE"},
+                           {"text": "THUNDER STONE (Jolteon)", "value": "THUNDER_STONE"},
+                           {"text": "FIRE STONE (Flareon)", "value": "FIRE_STONE"}],
+               "cancel": ["Come back when you've made up your mind!"],
+               "done": ["Eevee in the sun becomes Espeon, under the moon Umbreon - if it really loves you!"]},
+    "done": ["That's today's stone! Come back tomorrow and I'll have another for you."],
+    "daily": True}}
+
+
 VOICES = [("Combusken", 1, "Combusken: Combusken! Busken!"), ("Poochyena", 2, "Poochyena: Yip! Yip yip!"),
           ("Taillow", 3, "Taillow: Tail-low!"), ("Shroomish", 5, "Shroomish: Shroo-mish!")]
 
@@ -1029,6 +1045,8 @@ def _xd8b(maps):
             g["art"][y] = row[:61] + "".join("." if row[x] == "c" else row[x] for x in (61, 62)) + row[63:]
         g["overheads"] = list(g.get("overheads") or []) + [{"kind": "picture", "f": "orre_ride/gateon_lighthouse.png", "at": [0, 0], "size": [75, 70]}]
         _set_people(g, {(61, 18): MIROR_LAST})
+        _set_people(g["rooms"]["house_west"], {(8, 5): EEVEE_EXPERT})   # (11-24: back - Gateon's R3 rebuild dropped him; he was
+        #  written into the built files on 11-19, so he lives here now)
     if "AGATE_VILLAGE" in maps:
         a = maps["AGATE_VILLAGE"]
         rooms = a["rooms"]
