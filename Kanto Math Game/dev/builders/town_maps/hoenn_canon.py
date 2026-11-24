@@ -171,6 +171,8 @@ DOUBLES = [   # (a pair's person-event battles, written into emerald.py: real do
     ("HOENN_ROUTE_118", "Interviewers Gabby & Ty"),
 ]
 LISTS = [
+    # Granite Cave (H5): ORAS's Steven gives TM Steel Wing for the Letter (shown once the letter talk is done)
+    ("HOENN_GRANITE_CAVE", 0, None, 7, 8, ["Steven's Steel Wing"]),
     # Rusturf Tunnel: Wanda's boyfriend digs out the Aggronite once the tunnel is cleared (ORAS)
     ("HOENN_RUSTURF_TUNNEL", None, None, 23, 5, ["AGGRONITE"]),
     # Littleroot: after the Delta Episode Mom has your version's Lati stone (ORAS: Latiasite in Omega Ruby, Latiosite in

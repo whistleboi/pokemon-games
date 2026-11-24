@@ -2599,7 +2599,8 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "TALK TO STEVEN", "action": "NPC", "target": "granite_steven", "condition": "not:met_steven", "color": "GOLD"},
         {"text": "BATTLE ZINNIA", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_zinnia_granite", "condition": ["beat_hoenn_champion"], "event": {"lines": ["Zinnia: So you're the one everyone talks about. Show me!"], "flag": "delta_zinnia_granite", "battle": {"name": "Pokémon Trainer Zinnia", "class": "PKMN_TRAINER", "sprite": "zinnia.png", "team": [697, 334, 373], "levels": [55, 55, 57], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Pokémon Trainer Zinnia: Well fought!"]}}}},
-        {"text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED"}
+        {"text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED"},
+        {"text": "Steven's Steel Wing", "action": "EVENT", "condition": "met_steven", "flag_condition": "not got_tm_steel_wing_hoenn", "event": {"lines": ["Steven: Thanks again for bringing me that letter. Please, take this TM as my thanks. It's Steel Wing."], "gift_item": {"TM239": 1}, "flag": "got_tm_steel_wing_hoenn"}}
       ],
       "next_area": "HOENN_ROUTE_106",
       "region": "HOENN",
@@ -3029,7 +3030,7 @@
       "wild_pool_percentages": "HOENN_VICTORY_ROAD_PERCENTAGES", "surf_pool_percentages": "HOENN_VICTORY_ROAD_SURF_PERCENTAGES",
       "min_rounds": 5,
       "trainer_pool": [
-        {"name": "Wally", "class": "RIVAL", "sprite": "wally.png", "is_boss_battle": true, "team": [334, 301, 315, 82, 475], "rewards": {"balls": 15, "RARE_CANDY": 3}, "victory_flag": "defeated_wally_victory", "dialogue": {"intro": ["I've come this far with my Pokémon!"], "player_won": ["You're truly a math master."], "player_lost": ["I won't give up!"]}, "mega": 475, "movesets": {"334": ["AERIAL-ACE", "SAFEGUARD", "DRAGON-PULSE", "COTTON-GUARD"], "301": ["SING", "DISARMING-VOICE", "CHARM", "FEINT-ATTACK"], "315": ["SYNTHESIS", "LEECH-SEED", "PETAL-BLIZZARD", "TOXIC"], "82": ["SCREECH", "DISCHARGE", "TRI-ATTACK", "FLASH-CANNON"], "475": ["PSYCHO-CUT", "CLOSE-COMBAT", "SLASH", "SWORDS-DANCE"]}, "levels": [46, 46, 46, 46, 48]},
+        {"name": "Wally", "class": "RIVAL", "sprite": "wally.png", "is_boss_battle": true, "team": [334, 301, 315, 82, 475], "rewards": {"balls": 15, "RARE_CANDY": 3, "DAWN_STONE": 1}, "victory_flag": "defeated_wally_victory", "dialogue": {"intro": ["I've come this far with my Pokémon!"], "player_won": ["You're truly a math master."], "player_lost": ["I won't give up!"]}, "mega": 475, "movesets": {"334": ["AERIAL-ACE", "SAFEGUARD", "DRAGON-PULSE", "COTTON-GUARD"], "301": ["SING", "DISARMING-VOICE", "CHARM", "FEINT-ATTACK"], "315": ["SYNTHESIS", "LEECH-SEED", "PETAL-BLIZZARD", "TOXIC"], "82": ["SCREECH", "DISCHARGE", "TRI-ATTACK", "FLASH-CANNON"], "475": ["PSYCHO-CUT", "CLOSE-COMBAT", "SLASH", "SWORDS-DANCE"]}, "levels": [46, 46, 46, 46, 48]},
         {"name": "Ace Trainer Vito", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [101, 555, 317], "levels": [44, 44, 44], "rewards": {"balls": 5}},
         {"name": "Cooltrainer Hope", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [130, 230], "rewards": {"balls": 5}},
         {"name": "Cooltrainer Albert", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [306, 311], "rewards": {"balls": 5}}

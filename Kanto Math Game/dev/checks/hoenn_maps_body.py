@@ -455,7 +455,7 @@ check(_br is not None and "Boat" in str(_br.get("text")) and (12, 8) in t.barred
 
 # Granite Cave: Steven in the deepest room where Emerald stands him; down the ladders floor by floor
 _gc = _tm["HOENN_GRANITE_CAVE"]["floors"]
-check(_gc[0]["art"][8][7] == "N" and "TALK TO STEVEN" in _gc[0]["people"], "Granite Cave: Steven stands in the deepest room at Emerald's spot")
+check(_gc[0]["art"][8][7] == "N" and "TALK TO STEVEN" in [q for e in _gc[0]["people"] for q in (e if isinstance(e, list) else [e])], "Granite Cave: Steven stands in the deepest room at Emerald's spot")
 story.current_area_key, story.last_area_key = "HOENN_GRANITE_CAVE", "HOENN_ROUTE_106"
 p = PlayState(g); g.states["play"] = p; g.change_state(p); frames(2)
 _lad = (35, 3)   # 1F's ladder down (Emerald) -> B1F
@@ -3110,6 +3110,13 @@ st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
 st.scenes.entered = True
 said = _press(st, (44, 34), (0, -1))
 check(story.inventory.get("EON_FLUTE", 0) == 1, f"Sootopolis: after the Cave of Origin Steven gives the Eon Flute ({said[:1]})")
+_wv = next((t for t in _area["HOENN_VICTORY_ROAD"].get("trainer_pool", []) if t.get("victory_flag") == "defeated_wally_victory"), {})
+check((_wv.get("rewards") or {}).get("DAWN_STONE") == 1, "Victory Road: Wally gives a Dawn Stone after the battle (ORAS)")
+_sw5 = next((o for o in _area["HOENN_GRANITE_CAVE"].get("route_menu", []) if o.get("text") == "Steven's Steel Wing"), {})
+check(_sw5.get("condition") == "met_steven" and (_sw5.get("event") or {}).get("gift_item") == {"TM239": 1}, "Granite Cave: Steven gives TM Steel Wing for the Letter (ORAS)")
+from src.world.story import StoryManager as _SM5
+import inspect as _insp5
+check('("BALANCE_BADGE", "AMULET_COIN")' not in _insp5.getsource(_SM5), "no Amulet Coin with the Balance Badge: only Mom's, after Norman (ORAS)")
 story.story_flags.clear(); story.story_flags.update(_f5b)
 story.inventory.clear(); story.inventory.update(_i5b)
 

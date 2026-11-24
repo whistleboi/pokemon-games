@@ -102669,7 +102669,10 @@
        "flag": "got_h4_granite_escape_rope"
       }
      },
-     "TALK TO STEVEN",
+     [
+      "Steven's Steel Wing",
+      "TALK TO STEVEN"
+     ],
      "Hiker "
     ],
     "links": {
