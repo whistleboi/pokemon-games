@@ -85,7 +85,10 @@
       "description": "Professor Ivy promised Professor Oak something from Valencia Island: a strange ball that no one has managed to open.",
       "condition": {
         "required_region": "ORANGE",
-        "flag": "oak_gs_errand",
+        "flag": [
+          "oak_gs_errand",
+          "orange_ivy_thanks"
+        ],
         "flag_not": "got_gs_ball_ivy"
       },
       "completed_flag": "got_gs_ball_ivy",
