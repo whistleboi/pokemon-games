@@ -182853,15 +182853,14 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc......ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc......ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc......ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc..nn..ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc..DD..ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccΙΙccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    ">": "SINNOH_ROUTE_211",
    "<": "ETERNA_FOREST",
    "A": "ETERNA_GALACTIC_BUILDING",
-   "n": "SINNOH_ROUTE_206",
    "J": "GRAND_UNDERGROUND",
    "u": "ETERNA_FOREST_OUTSKIRTS"
   },
@@ -182884,7 +182883,8 @@
    "R": "rater",
    "S": "mart",
    "U": "gym",
-   "V": "house"
+   "V": "house",
+   "Ι": "gate206"
   },
   "roofs": {
    "A": {
@@ -188391,6 +188391,337 @@
       ]
      }
     }
+   },
+   "gate_206": {
+    "theme": "room",
+    "art": [
+     "ccccc",
+     "ccccc",
+     "cvvvc",
+     "c...c",
+     "c...c",
+     "c...c",
+     "c...c",
+     "cN.Nc",
+     "c...c",
+     "c...c",
+     "c...c",
+     "c...c",
+     "cnnnc",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:48,57",
+     "n": "SINNOH_ROUTE_206"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C04R0401.png",
+      "at": [
+       5,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Cyclist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cycling Road is all downhill from here. Hold on tight!"
+       ]
+      }
+     },
+     {
+      "text": "Cyclist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Learn to shift gears on your Bike, and you can ride anywhere."
+       ]
+      }
+     }
+    ],
+    "title": "Cycling Road Gate"
+   },
+   "underground_man": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmjj.jjmmc",
+     "cmm.......c",
+     "cm.N..N...c",
+     "cm.......Nc",
+     "c.......Nmc",
+     "c...v...mmc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:54,18"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      180,
+      172,
+      148
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,1": [
+       64,
+       64,
+       64
+      ],
+      "2,1": [
+       64,
+       64,
+       64
+      ],
+      "3,1": [
+       64,
+       64,
+       64
+      ],
+      "4,1": [
+       64,
+       64,
+       64
+      ],
+      "5,1": [
+       64,
+       64,
+       64
+      ],
+      "6,1": [
+       64,
+       64,
+       64
+      ],
+      "7,1": [
+       64,
+       64,
+       64
+      ],
+      "8,1": [
+       64,
+       64,
+       64
+      ],
+      "9,1": [
+       64,
+       64,
+       64
+      ],
+      "1,2": [
+       160,
+       128,
+       64
+      ],
+      "2,2": [
+       160,
+       128,
+       64
+      ],
+      "8,2": [
+       96,
+       128,
+       160
+      ],
+      "9,2": [
+       96,
+       128,
+       160
+      ],
+      "1,3": [
+       224,
+       224,
+       160
+      ],
+      "2,3": [
+       192,
+       160,
+       96
+      ],
+      "1,4": [
+       64,
+       128,
+       192
+      ],
+      "1,5": [
+       64,
+       160,
+       128
+      ],
+      "9,6": [
+       192,
+       160,
+       96
+      ],
+      "8,7": [
+       192,
+       160,
+       96
+      ],
+      "9,7": [
+       192,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,3": "table",
+      "1,4": "table",
+      "1,2": "shelf",
+      "2,2": "shelf",
+      "2,3": "crate",
+      "9,7": "crate",
+      "8,7": "crate",
+      "9,6": "crate",
+      "1,5": "crate",
+      "8,2": "tv",
+      "9,2": "tv"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        1,
+        3,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        1,
+        2,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        2,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        9,
+        7,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        8,
+        7,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        9,
+        6,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "tv",
+       "r": [
+        8,
+        2,
+        2,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C04R0801.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Museum worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I work at the mining museum in Oreburgh. Digging up treasure is my hobby."
+       ]
+      }
+     },
+     {
+      "text": "Underground Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm the Underground Man! I dug the very first tunnels under Sinnoh.",
+        "They're not ready for visitors yet. Come back someday!"
+       ]
+      }
+     },
+     {
+      "text": "Fossil boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "All I ever dig up are Armor Fossils. My buddy only finds Skull Fossils!"
+       ]
+      }
+     },
+     {
+      "text": "Digging boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The tunnels under Sinnoh go everywhere! Someday I'll dig with my friends."
+       ]
+      }
+     }
+    ],
+    "title": "Underground Man's House"
    }
   },
   "inside": {
@@ -188401,7 +188732,10 @@
    "59,36": "rater",
    "42,50": "house_0601",
    "71,25": "house_0701",
-   "60,9": "house_0501"
+   "60,9": "house_0501",
+   "48,57": "gate_206",
+   "49,57": "gate_206",
+   "54,18": "underground_man"
   },
   "hidden": {
    "71,9": "DRACO_PLATE",
@@ -188644,24 +188978,20 @@
    "TTTTTTTTTTTTTTTTTTeQQQQeeeeRRRReeUekeaaaaaekeVeSSSSeTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTeeeeeeeeeeeeeeeeeeeaaaaaeeeeeeeeeeTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTeeeeeeeeeeeNeee!eeeaaaaaeeeeeeeeeeTTTTTTTTTTTT",
-   "WWWWWW...............eaaaaaaaaaaaaaaaaaaaaee..............YYYYYY",
-   "WWWWWW..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeNeeN.YYYYYY",
-   "WWWWWWn.eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeeN>YYYYYY",
-   "WWWWWWn.eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeee>YYYYYY",
-   "WWWWWW..eeeeeeeeeeee.eeleeeeeeeeeeeeeeeeelee.eeeeeeeeeeee.YYYYYY",
-   "TTTTTT....<<..............................................TTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "ΙΙΙΙΙΙ...............eaaaaaaaaaaaaaaaaaaaaee..............ΚΚΚΚΚΚ",
+   "ΙΙΙΙΙΙ..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeNeeN.ΚΚΚΚΚΚ",
+   "ΙΙΙΙΙD..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeeN.DΚΚΚΚΚ",
+   "ΙΙΙΙΙD..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeee.DΚΚΚΚΚ",
+   "ΙΙΙΙΙΙ..eeeeeeeeeeee.eeleeeeeeeeeeeeeeeeelee.eeeeeeeeeeee.ΚΚΚΚΚΚ",
+   "TTTTTT....DD..............................................TTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
   ],
-  "exits": {
-   "n": "SINNOH_ROUTE_208",
-   "<": "SINNOH_ROUTE_212",
-   ">": "SINNOH_ROUTE_209"
-  },
+  "exits": {},
   "buildings": {
    "A": "amity",
    "B": "amity",
@@ -188692,7 +189022,10 @@
    "Ε": "house",
    "Ζ": "house",
    "Η": "house",
-   "Θ": "house"
+   "Θ": "house",
+   "Ι": "gate208",
+   "Κ": "gate209",
+   "Λ": "gate212"
   },
   "roofs": {
    "A": {
@@ -197347,6 +197680,567 @@
       ]
      }
     ]
+   },
+   "gate_208": {
+    "theme": "room",
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cz..cccc..zc",
+     "c...cccc...c",
+     "c..........c",
+     "c...NN.....c",
+     "c<........vc",
+     "c..........c",
+     "c......N...c",
+     "cc..cccc..cc",
+     "cz..cccc..zc",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:5,54",
+     "<": "SINNOH_ROUTE_208"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      115,
+      115,
+      148
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,1": [
+       64,
+       64,
+       64
+      ],
+      "2,1": [
+       64,
+       64,
+       64
+      ],
+      "3,1": [
+       64,
+       64,
+       64
+      ],
+      "8,1": [
+       64,
+       64,
+       64
+      ],
+      "9,1": [
+       64,
+       64,
+       64
+      ],
+      "10,1": [
+       64,
+       64,
+       64
+      ],
+      "4,3": [
+       64,
+       64,
+       64
+      ],
+      "5,3": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       64,
+       64,
+       64
+      ],
+      "7,3": [
+       64,
+       64,
+       64
+      ],
+      "0,5": [
+       128,
+       128,
+       128
+      ],
+      "11,5": [
+       128,
+       128,
+       128
+      ],
+      "0,6": [
+       160,
+       160,
+       160
+      ],
+      "11,6": [
+       128,
+       128,
+       128
+      ],
+      "0,7": [
+       128,
+       128,
+       128
+      ],
+      "11,7": [
+       128,
+       128,
+       128
+      ]
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        1,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        10,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0501.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Clefairy: Pippii?!"
+       ]
+      }
+     },
+     {
+      "text": "Contest fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hearthome means one thing to me: Pokemon Contests! My darling's entering today."
+       ]
+      }
+     },
+     {
+      "text": "Gate visitor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hearthome gets voted the nicest place to live in Sinnoh every year. I believe it!"
+       ]
+      }
+     }
+    ],
+    "title": "Route 208 Gate"
+   },
+   "gate_209": {
+    "theme": "room",
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cz..cccc..zc",
+     "c...cccc.N.c",
+     "c..........c",
+     "c..........c",
+     "cv........>c",
+     "c..........c",
+     "c..........c",
+     "cc..cccc..cc",
+     "cz..cccc..zc",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:58,54",
+     ">": "SINNOH_ROUTE_209"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      115,
+      115,
+      148
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,1": [
+       64,
+       64,
+       64
+      ],
+      "2,1": [
+       64,
+       64,
+       64
+      ],
+      "3,1": [
+       64,
+       64,
+       64
+      ],
+      "8,1": [
+       64,
+       64,
+       64
+      ],
+      "9,1": [
+       64,
+       64,
+       64
+      ],
+      "10,1": [
+       64,
+       64,
+       64
+      ],
+      "4,3": [
+       64,
+       64,
+       64
+      ],
+      "5,3": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       64,
+       64,
+       64
+      ],
+      "7,3": [
+       64,
+       64,
+       64
+      ],
+      "0,5": [
+       128,
+       128,
+       128
+      ],
+      "11,5": [
+       128,
+       128,
+       128
+      ],
+      "0,6": [
+       160,
+       160,
+       160
+      ],
+      "11,6": [
+       128,
+       128,
+       128
+      ],
+      "0,7": [
+       128,
+       128,
+       128
+      ],
+      "11,7": [
+       128,
+       128,
+       128
+      ]
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        1,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        10,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0601.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Curious girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's an old broken pillar on the route ahead. I wonder what it was for?"
+       ]
+      }
+     }
+    ],
+    "title": "Route 209 Gate"
+   },
+   "gate_212": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cccccvccccc",
+     "c.........c",
+     "c...N.....c",
+     "cccc...cccc",
+     "cccz...zccc",
+     "cccc..Ncccc",
+     "cccz...zccc",
+     "cccc...cccc",
+     "cccz...zccc",
+     "c.........c",
+     "c....n....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:10,57",
+     "n": "SINNOH_ROUTE_212"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      115,
+      115,
+      148
+     ],
+     "_wall": [
+      115,
+      115,
+      148
+     ],
+     "_things": {
+      "4,1": [
+       224,
+       128,
+       96
+      ],
+      "5,1": [
+       224,
+       128,
+       96
+      ],
+      "6,1": [
+       224,
+       128,
+       96
+      ],
+      "1,2": [
+       64,
+       64,
+       32
+      ],
+      "2,2": [
+       64,
+       64,
+       32
+      ],
+      "3,2": [
+       64,
+       64,
+       32
+      ],
+      "4,2": [
+       224,
+       128,
+       96
+      ],
+      "6,2": [
+       224,
+       128,
+       96
+      ],
+      "7,2": [
+       64,
+       64,
+       32
+      ],
+      "8,2": [
+       64,
+       64,
+       32
+      ],
+      "9,2": [
+       64,
+       64,
+       32
+      ],
+      "1,5": [
+       160,
+       128,
+       128
+      ],
+      "2,5": [
+       160,
+       128,
+       128
+      ],
+      "8,5": [
+       160,
+       128,
+       128
+      ],
+      "9,5": [
+       160,
+       128,
+       128
+      ]
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        3,
+        6,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        7,
+        6,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        3,
+        8,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        7,
+        8,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        7,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        3,
+        10,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0701.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Traveler",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I came a long way to take part in Hearthome's Contests."
+       ]
+      }
+     },
+     {
+      "text": "Poffin fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokemon have eaten so many Poffins. We're sure to win a Contest!"
+       ]
+      }
+     }
+    ],
+    "title": "Route 212 Gate"
    }
   },
   "inside": {
@@ -197363,7 +198257,13 @@
    "46,38": "house_0101",
    "12,37": "house_1201",
    "40,38": "house_0201",
-   "38,25": "house_0801"
+   "38,25": "house_0801",
+   "5,54": "gate_208",
+   "5,55": "gate_208",
+   "58,54": "gate_209",
+   "58,55": "gate_209",
+   "10,57": "gate_212",
+   "11,57": "gate_212"
   },
   "hidden": {
    "22,9": "BIG_MUSHROOM"
@@ -240811,7 +241711,7 @@
    "ccccccccckC||||||||Ek\"\".TTcccccc",
    "ccccccccckC||||||||Ek\"\".2Ncccccc",
    "cccccccTTkC,,,,,,,,Ek\"..TTcccccc",
-   "cccccccTTkC........Ek\".\"TTcccccc",
+   "cccccccTTkC.DDDDDD.Ek\".\"TTcccccc",
    "cccccccTTkBBBBBBBBBBk...TTcccccc",
    "cccccccTTkBBBBBBBBBBk.\".TTcccccc",
    "cccccccTTkBBBBBBBBBBk\"..TTcccccc",
@@ -241131,8 +242031,127 @@
    "BURN HEAL",
    "PP UP"
   ],
-  "rooms": {},
-  "inside": {}
+  "rooms": {
+   "gate": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "ccvvvcc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "cN...Nc",
+     "c.....c",
+     "c....Nc",
+     "c.....c",
+     "c.....c",
+     "c.nnn.c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "OUT:14,105",
+     "n": "OUT:14,112"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R206R0101.png",
+      "at": [
+       4,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Cyclist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Learn to shift gears on your Bike, and you can ride anywhere."
+       ]
+      }
+     },
+     {
+      "text": "Cyclist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cycling Road's a long way up from here. Keep pedaling!"
+       ]
+      }
+     },
+     {
+      "text": "Gardener girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Through Mt. Coronet, you'll reach Hearthome City. You should dress your Pokemon up for Contests!",
+        "Oh, and take this. Berries love it.",
+        "You received a Damp Mulch!"
+       ],
+       "gift_item": {
+        "DAMP_MULCH": 1
+       },
+       "flag": "got_damp_mulch_r206_gate",
+       "done": [
+        "Damp Mulch keeps the soil wet, so your Berries stay moist longer."
+       ]
+      }
+     }
+    ],
+    "title": "Cycling Road Gate",
+    "land": {
+     "14,105": [
+      14,
+      103
+     ]
+    },
+    "enter": {
+     "13,112": [
+      2,
+      11
+     ],
+     "14,112": [
+      3,
+      11
+     ],
+     "15,112": [
+      4,
+      11
+     ],
+     "16,112": [
+      4,
+      11
+     ]
+    }
+   }
+  },
+  "inside": {
+   "12,105": "gate",
+   "13,105": "gate",
+   "14,105": "gate",
+   "15,105": "gate",
+   "16,105": "gate",
+   "17,105": "gate",
+   "13,112": "gate",
+   "14,112": "gate",
+   "15,112": "gate",
+   "16,112": "gate"
+  }
  },
  "SINNOH_ROUTE_207": {
   "art": [

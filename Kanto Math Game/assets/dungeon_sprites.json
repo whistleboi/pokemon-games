@@ -76,6 +76,19 @@
     ]
   },
   "figures": {
+    "SINNOH_ROUTE_206:Gardener girl": {"sheet": "pt_girl2.png"},
+    "SINNOH_ROUTE_206:Cyclist ": {"sheet": "pt_shopm1.png"},
+    "SINNOH_ROUTE_206:Cyclist": {"sheet": "pt_shopm1.png"},
+    "ETERNA_CITY:Fossil boy": {"sheet": "pt_boy3.png"},
+    "ETERNA_CITY:Underground Man": {"sheet": "pt_oldman1.png"},
+    "ETERNA_CITY:Museum worker": {"sheet": "pt_assistantm.png"},
+    "ETERNA_CITY:Digging boy": {"sheet": "pt_boy2.png"},
+    "ETERNA_CITY:Cyclist ": {"sheet": "pt_shopm1.png"},
+    "ETERNA_CITY:Cyclist": {"sheet": "pt_shopm1.png"},
+    "HEARTHOME_CITY:Poffin fan": {"sheet": "pt_cowgirl.png"},
+    "HEARTHOME_CITY:Traveler": {"sheet": "pt_bigman.png"},
+    "HEARTHOME_CITY:Curious girl": {"sheet": "pt_girl2.png"},
+    "HEARTHOME_CITY:Gate visitor": {"sheet": "pt_man1.png"},
     "HOENN_ROUTE_104:Berry-growing sister": {
       "sheet": "em_14.png"
     },

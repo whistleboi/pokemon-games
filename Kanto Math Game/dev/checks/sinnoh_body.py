@@ -983,5 +983,31 @@ check(_r210 == (True, False) and _cor == [False, True] and _way == [True, False]
       f"Fog as Platinum's weather: Route 210's north half, Mt. Coronet's D05R0113, Wayward Cave 1F dark; Defog clears ({_r210}, {_cor}, {_way}, {_lift})")
 story.inventory.clear(); story.inventory.update(_inv)
 
+# ---- S3 (11-24): Platinum's gatehouses, walked through (s_s3_gates.py)
+_sv = dict(story.story_flags); story.story_flags["galactic_eterna_cleared"] = True
+_gates = []
+for _town, _room, _door, _route in (("HEARTHOME_CITY", "gate_208", (5, 54), "SINNOH_ROUTE_208"), ("HEARTHOME_CITY", "gate_209", (58, 54), "SINNOH_ROUTE_209"),
+                                    ("HEARTHOME_CITY", "gate_212", (10, 57), "SINNOH_ROUTE_212"), ("ETERNA_CITY", "gate_206", (48, 57), "SINNOH_ROUTE_206")):
+    t = town(_town, _route)   # (in from the route: inside its gate, by the route-side mat - as Platinum)
+    _near = getattr(t, "room", None) == _room and any(v == _route and abs(k[0] - t.player[0]) + abs(k[1] - t.player[1]) <= 1 for k, v in t.exits.items())
+    _in = (t.town_map.get("inside") or {}).get("%d,%d" % _door) == _room and set(t.town_map["rooms"][_room]["exits"].values()) == {"OUT:%d,%d" % _door, _route}
+    _gates.append((_room, _near, _in))
+check(all(n and i for _r, n, i in _gates), f"Gatehouses: Hearthome's three and Eterna's Cycling Road gate: in from the route inside the gate, through it to the town ({_gates})")
+r = route("SINNOH_ROUTE_206", "SINNOH_ROUTE_207")   # (Route 206's own gate: in by a south door, out by the north mat above it)
+if r.run.index != 0:
+    r._warp(0, 1, 1); frames(r, 3)
+r.run.player = (14, 113); r.anim = 0; r.step(0, -1); frames(r, 3)
+_g_in = r.run.index == (r.recipe.get("art") or {}).get("room_floors", {}).get("gate")
+_tmg = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))["SINNOH_ROUTE_206"]["rooms"]["gate"]["art"]
+_vm = next(((mx, my) for my, rr in enumerate(_tmg) for mx, c in enumerate(rr) if c == "v"), None)
+if _g_in and _vm:
+    r.run.player = (_vm[0], _vm[1] + 1); r.anim = 0; r.step(0, -1); frames(r, 3)
+_g_out = r.run.index == 0 and r.run.player[1] <= 104 and 11 <= r.run.player[0] <= 18
+check(_g_in and _g_out, f"Route 206's gate: in from the south, out at its north side under Cycling Road ({_g_in}, {r.run.index}, {r.run.player})")
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+t._go("underground_man", "OUT:54,18"); frames(t, 3)
+check(t.room == "underground_man" and len(t._people()) == 4, f"Eterna: the Underground Man's house, his visitors inside ({t.room}, {len(t._people())})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")
