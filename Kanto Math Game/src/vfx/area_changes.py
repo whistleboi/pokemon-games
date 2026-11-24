@@ -168,6 +168,13 @@ class Wipe:
                 screen.fill(p["c"])
             elif style == "ramp":
                 screen.fill(_mix(p["from"], p["to"], k))
+            elif style == "shutter_down":   # FireRed's Bag closing (menu_screens): the black shutter's edge comes down
+                fr = k * n                    # (16 of 160 px a frame) while the screen fades to black ("fade" frames)
+                screen.blit(base, (0, 0))
+                _veil(screen, p["to"], 255 * min(1.0, fr / float(p.get("fade", n))))
+                edge = int(screen.get_height() * min(1.0, fr / float(p.get("shut", n))))
+                if edge > 0:
+                    screen.fill(p["to"], (0, 0, screen.get_width(), edge))
             self._prev_out = screen.copy()
         else:   # the new place showing through
             if style == "fade_in":
@@ -192,6 +199,12 @@ class Wipe:
                 bot = int(view.centery + half)
                 if bot < screen.get_height():
                     screen.fill(p["from"], (0, bot, screen.get_width(), screen.get_height() - bot))
+            elif style == "shutter_up":   # FireRed's Bag opening (menu_screens): the fade in, and over it the black
+                fr = k * n                  # shutter's bottom edge going up (16 of 160 px a frame)
+                _veil(screen, p["from"], 255 * max(0.0, 1 - fr / float(p.get("fade", n))))
+                edge = int(screen.get_height() * max(0.0, 1 - fr / float(p.get("shut", n))))
+                if edge > 0:
+                    screen.fill(p["from"], (0, 0, screen.get_width(), edge))
             elif style == "cross":   # Essentials' Graphics.transition: the frozen old frame crossfades into the new
                 old = getattr(self, "_prev_out", None) or self.snap
                 old.set_alpha(int(255 * (1 - k)))
