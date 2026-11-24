@@ -521,6 +521,13 @@ story.story_flags.pop("got_yellow_squirtle", None)
 team(4, level=20)
 _st = town("VERMILLION_CITY", "KANTO_ROUTE_6")
 check(meet(_st, "Officer Jenny") is None, "...Officer Jenny waits for the Thunder Badge")
+_t = town("CELADON_CITY", "KANTO_ROUTE_7", room="dept_4")
+_gift = {o.get("text"): o.get("stock") for o in _t._people().values() if o.get("action") == "SHOP"}.get("Clerk") or []
+check({"FIRE_STONE", "THUNDER_STONE", "WATER_STONE", "LEAF_STONE", "LINKING_CORD", "POKE_DOLL"} <= set(_gift),
+      f"Celadon 4F sells FireRed's stones, the Poke Doll and the Linking Cord - every Kanto evolution in one run ({_gift})")
+_k = mk(64); _k.level = 30
+from src.pokemon import evolution as _evo
+check(all(_evo.item_evolution(g, mk(_a), "LINKING_CORD") for _a in (64, 67, 75, 93)), "...and the Linking Cord evolves Kadabra, Machoke, Graveler and Haunter")
 from src.states.game_corner import prizes_here as _ph
 story.current_area_key = "TWO_ISLAND"
 check(_ph(story) == [], "Two Island's Joyful Game Corner has no prize list of its own (FireRed: its games give Berries), not Celadon's")

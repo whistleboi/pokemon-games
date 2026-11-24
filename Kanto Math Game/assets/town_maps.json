@@ -19123,20 +19123,15 @@
      },
      {
       "text": "Clerk",
-      "action": "EVENT",
-      "color": "GOLD",
-      "event": {
-       "lines": [
-        "Welcome to the Wise Man Gifts floor! A Poke Doll is $1000. Here you go!"
-       ],
-       "pay": 1000,
-       "gift_item": {
-        "POKE_DOLL": 1
-       },
-       "fail": [
-        "A Poke Doll is $1000... You don't have enough money, I'm afraid."
-       ]
-      }
+      "action": "SHOP",
+      "stock": [
+       "POKE_DOLL",
+       "FIRE_STONE",
+       "THUNDER_STONE",
+       "WATER_STONE",
+       "LEAF_STONE",
+       "LINKING_CORD"
+      ]
      }
     ],
     "signs": [
