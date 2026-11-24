@@ -439,9 +439,11 @@ for _what, _want in _steps:
 check(all(_got), "each story step shows the next mission (Black/White's old menu chain never shows)")
 _done = {m["id"] for m in story.get_all_journal_entries() if m["status"] == "COMPLETED"}
 check({f"b2_m{i}" for i in range(1, 14)} <= _done, f"every story mission so far marked done {sorted(_done)[:5]}")
+story.story_flags["b2_castelia_arrived"] = True   # (landing at Castelia's pier plays the arrival scene: the Royal Unova opens)
 story.story_flags["beat_unova_champion"] = story.story_flags["beat_alder"] = True   # (the League: its batch; the side quests open after it)
 _side = [m["id"] for m in story.get_active_missions() if m["type"] == "SIDE"]
-check(len(_side) >= 12, f"after the story, side quests open {_side}")
+_want = {f"unova_s{i}" for i in (7, 8, 9, 10, 11, 16, 17, 18, 20, 21)} | {"b2_s_victini", "b2_s_royal"}   # (11-24: the post-League
+check(_want <= set(_side), f"after the story, side quests open {_side}")   # quests, and the Royal Unova from Castelia; was a count of 12)
 _ms = g.loader.area_data["JOURNAL_MISSIONS"]
 _areas = g.loader.area_data["STORY_PROGRESSION"]
 check(all(m.get("target") in _areas for m in _ms if m["id"].startswith("unova_")), "every Unova mission points somewhere real")
