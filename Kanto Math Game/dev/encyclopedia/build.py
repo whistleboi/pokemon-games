@@ -208,9 +208,20 @@ def wild_html(f):
                               band=band, fixed_land=fixed))
     if w.get("hordes"):
         out.append(horde_table(w["hordes"]))
+    if w.get("shadows"):
+        out.append(shadow_table(w["shadows"]))
     if w.get("dexnav"):   # (Hoenn's DexNav and Sinnoh's Poke Radar)
         out.append(dexnav_table(w["dexnav"], band))
     return "".join(out)
+
+
+def shadow_table(rows):
+    """Orre's Shadow Pokemon here: whose team each one is in, to snag with the Snag Machine (src/world/shadow.py)."""
+    body = "".join(f'<tr><td>{mon_cell(dict(r, after=None))}</td><td>{esc(r["trainer"]) or "—"}'
+                   + (' <span class="small">(in a story scene)</span>' if r["event"] else "")
+                   + f'</td><td>{("Lv " + str(r["lv"])) if r.get("lv") else "—"}</td></tr>' for r in rows)
+    return ('<div class="frame"><table><caption>Shadow Pokémon to snag</caption><thead><tr><th>Pokémon</th><th>Trainer</th>'
+            f'<th>Level</th></tr></thead><tbody>{body}</tbody></table></div>')
 
 
 def horde_table(rows):
