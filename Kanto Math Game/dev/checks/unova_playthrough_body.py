@@ -880,8 +880,8 @@ def things(st):
             now = next(o for o in opt["any"] if st._shown(o)) if "any" in opt else opt
             if str(now.get("action") or "").upper() in BORING or (now.get("event") or {}).get("name_rater") or (now.get("event") or {}).get("tutor"):
                 continue
-            _ride = (now.get("event") or {}).get("travel")
-            if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):
+            _ride = (now.get("event") or {}).get("travel")   # (a ride - a ship, a ferry, a train - only toward the mission's place: else a
+            if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):   # run sails off and is stranded; Unova 11-23)
                 continue
             out_.append((0, ("P", home), [spot], f"talk to {now.get('text')}", None))
         for t, kind in st.doors.items():
@@ -1787,6 +1787,8 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
      [{"area": "BELL_TOWER", "floor": 10, "at": [5, 6], "label": "Ho-Oh", "done": "caught_ho_oh"}], "caught_ho_oh"),
     ("post_kimono", "The Kimono Girls (the Tidal Bell)", "ECRUTEAK_CITY",
      [{"area": "ECRUTEAK_DANCE_THEATER", "floor": 0, "at": [12, 3], "label": "Kimono Girls", "done": "kimono_girls_defeated"}], "kimono_girls_defeated"),
+    ("post_silver_wing", "The Silver Wing (the Radio Director, on the Observation Deck)", "GOLDENROD_CITY",
+     [{"area": "RADIO_TOWER", "floor": 5, "at": [10, 14], "label": "The Director", "done": "has_item:SILVER_WING"}], "item:SILVER_WING"),
     ("post_lugia", "Lugia in the Whirl Islands (Silver Wing + Tidal Bell)", "CIANWOOD_CITY",
      [{"area": "JOHTO_ROUTE_41", "floor": 0, "at": [45, 21], "label": "The north-east island", "done": "visited_WHIRL_ISLANDS"},   # (of the four islands only
       {"area": "WHIRL_ISLANDS", "floor": 4, "at": [16, 17], "label": "Lugia", "done": "caught_lugia"}], "caught_lugia"),     #  this one leads down to Lugia, as SoulSilver)
@@ -1800,23 +1802,36 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
      [{"area": "DRAGONS_DEN", "floor": 1, "at": [15, 15], "label": "Clair", "done": "dragons_den_clair"},
       {"area": "DRAGONS_DEN", "floor": 1, "at": [32, 49], "label": "Lance", "done": "dragons_den_lance"}], "dragons_den_lance"),
     ("post_safari", "The Safari Zone (Route 48's gate)", "CIANWOOD_CITY",
-     [{"area": "SAFARI_ZONE_GATE", "room": "gate", "at": [4, 9], "label": "Safari receptionist", "done": "visited_JOHTO_SAFARI_ZONE"},
+     [{"area": "SAFARI_ZONE_GATE", "room": "gate", "at": [5, 7], "label": "Into the Safari Zone", "done": "visited_JOHTO_SAFARI_ZONE"},
       {"area": "JOHTO_SAFARI_ZONE", "label": "The Safari Zone", "done": "visited_JOHTO_SAFARI_ZONE"}], "visited_JOHTO_SAFARI_ZONE"),
 ]
 POST = []
+
+
+def _got(flag):
+    """A job's end: a story flag, or "item:X" - X in the Bag."""
+    return story.inventory.get(flag[5:], 0) > 0 if str(flag).startswith("item:") else bool(story.story_flags.get(flag))
+
+
+def _the_end():   # (the goal of the job being played: _got(GOAL); the story's own goal before)
+    if story.story_flags.get(CHAMPION_FLAG) and not STATE.get("champion_at"):
+        STATE["champion_at"] = round(time.time() - T0)
+    return "CHAMPION" if _got(GOAL) else None
+
+
 if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
     story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
     _missions = g.loader.area_data.setdefault("JOURNAL_MISSIONS", [])
     for _id, _what, _fly, _steps, _flag in POST_JOBS:
         _t0, _b0, _f0 = time.time(), STATE["battles"], len(FIND)
         _m = {"id": _id, "type": "MAIN", "text": _what, "desc": "After the title: " + _what, "condition": {"required_region": "JOHTO", "flag": ["beat_johto_champion"]},
-              "completed_flag": _flag, "steps": _steps}
+              "completed_flag": (_flag if not _flag.startswith("item:") else "post_done_" + _id), "steps": _steps}
         _missions.append(_m); MISSIONS[_id] = _m
         GOAL = _flag
         TIME_LIMIT = (time.time() - T0) + float(os.environ.get("KPT_POST_TIME", "150"))
         _how = "?"
         try:
-            if not story.story_flags.get(_flag):
+            if not _got(_flag):
                 put_at(_fly)
                 _how = play_through()
             else:
@@ -1825,8 +1840,8 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
             crash("after the title: " + _what)
         _missions.remove(_m)
         _forced = [f for f in FIND[_f0:] if f.get("kind") in ("STUCK", "CRASH", "HANG")]
-        _ok = bool(story.story_flags.get(_flag)) and not _forced   # (a stuck point on the way - the run set something by hand - is no pass)
-        if _forced and story.story_flags.get(_flag):
+        _ok = _got(_flag) and not _forced   # (a stuck point on the way - the run set something by hand - is no pass)
+        if _forced and _got(_flag):
             _how = f"done only after {len(_forced)} stuck point(s): {str(_forced[-1].get('skip') or _forced[-1].get('what') or '')[:80]}"
         POST.append({"job": _id, "what": _what, "ok": _ok, "how": _how, "battles": STATE["battles"] - _b0, "s": round(time.time() - _t0), "ended": here(),
                      "found": [str(f.get("what") or f.get("why") or f.get("kind")) for f in FIND[_f0:]][:4]})
