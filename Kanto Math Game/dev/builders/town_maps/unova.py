@@ -5257,7 +5257,19 @@ _room_wild(STRANGE_HOUSE, "STRANGE_HOUSE")
 # Grottoes 6 and 7), Lacunosa Town (406: the Center 407, houses 408, 409 the old woman's, 410, 411). Story flags:
 # visited_UNDELLA_TOWN -> b2_lacunosa_juniper (Juniper and Bianca meet you) -> b2_lacunosa_tale (the old woman's tale) ->
 # b2_lacunosa_zinzolin (with Hugh, against Zinzolin and a Grunt) -> visited_OPELUCID_CITY (batch 8).
-OUTSIDE.update({413: 412, 415: 412, 416: 412, 372: 412})
+OUTSIDE.update({413: 412, 415: 412, 416: 412, 372: 412, 414: 412})   # (414: the Marine Tube's building, batch 8b)
+UNDELLA_TUBE = room(414, {
+    2: [_say("Worker", "The Marine Tube is just ahead... but please wait a little longer. I'll be finished cleaning soon!",
+             condition=["not:b2_opelucid_cheren"]),
+        _say("Worker ", "The Marine Tube is ahead! Please enjoy the stunning scenery!", condition=["b2_opelucid_cheren"])],
+    0: _say("Man who moved here", "I moved here just to be the first person through the Marine Tube."),
+    3: _say("Woman by the sign", "The Marine Tube is an undersea tunnel. They built it on land, then sank it into the sea! Without "
+                                 "Pokemon, it would've been impossible.")},
+    {3: ["MARINE TUBE", "An undersea tunnel: Undella Town - Humilau City"]}, (32, 10), exits_extra={464: ("^", "MARINE_TUBE")})
+UNDELLA_TUBE["title"] = "Marine Tube Gate"
+UNDELLA_TUBE["barred"] = [{"tiles": [[x, 0] for x in range(25, 28)], "until": {"flag_condition": "b2_opelucid_cheren"},
+                           "look": "unseen", "lines": ["Worker: Sorry, I'll be finished with the cleaning soon. Please wait!"]}]
+
 UNDELLA_GATE = room(372, {0: _say("Maid in the gate", "The longest road in Unova... I heard it's Route 13."),
                           1: _say("Hiker in the gate", "I love clearing my path with Hidden Moves!")},
                     {1: ["UNDELLA GATE", "North: Route 13"]}, (48, 7), exits_extra={370: ("^", "UNOVA_ROUTE_13")})
@@ -5265,11 +5277,12 @@ UNDELLA_GATE["title"] = "Undella Gate"
 UNDELLA = town(
     412, {5: _ball("Poke Ball by the west villa", "BERRY_JUICE", "b2_undella_berry_juice", name="a Berry Juice"),
           8: _say("Worker by the Marine Tube", "The Marine Tube runs under the bay to Humilau. We're still cleaning it: it's not open yet!",
-                  condition=["not:beat_unova_champion"]),
+                  condition=["not:b2_opelucid_cheren"]),
           9: _say("Ace Trainer on the beach", "Undellaaaaa!"),
           4: _say("Girl on the beach", "The Pokemon World Tournament... I wonder if Cynthia will enter too.")},
-    {14: ["UNDELLA TOWN", "A town of villas by the bay"], 2: ["MARINE TUBE", "Closed for cleaning"], 1: ["UNDELLA TOWN"]},
-    {413: ("center", "center"), 415: ("house", "house"), 416: ("house", "villa"), 372: ("gate", "gate", "UNOVA_ROUTE_13")},
+    {14: ["UNDELLA TOWN", "A town of villas by the bay"], 2: ["MARINE TUBE", "The undersea tunnel to Humilau City"], 1: ["UNDELLA TOWN"]},
+    {413: ("center", "center"), 415: ("house", "house"), 416: ("house", "villa"), 372: ("gate", "gate", "UNOVA_ROUTE_13"),
+     414: ("gate", "tube", "MARINE_TUBE")},
     {"center": room(413, {4: {"text": "Pokémon Center", "action": "HEAL"}, 2: {"text": "Shop", "action": "SHOP"},
                           1: _say("Clerk ", "The counter on the left sells everyday items."),
                           3: _say("Clerk  ", "Specialty Poke Balls are over here!"),
@@ -5284,13 +5297,13 @@ UNDELLA = town(
                    {}, (24, 9)),
      "villa": room(416, {1: _say("Cynthia", "Cynthia: I'm staying at my friend's villa to research the Abyssal Ruins. "
                                             "Let's battle someday, Trainer.", condition=["beat_unova_champion"])}, {}, (41, 9)),
-     "gate": UNDELLA_GATE},
+     "gate": UNDELLA_GATE, "tube": UNDELLA_TUBE},
     edges={">": ("UNDELLA_BAY", [(63, y) for y in range(16, 25)]), "<": ("REVERSAL_MOUNTAIN_INSIDE", [(5, 11)]),
            "v": ("UNOVA_ROUTE_14", [(x, 31) for x in range(11, 53)])},
     hidden={"5,2": "SHINY_STONE", "29,19": "HEART_SCALE", "49,17": "PEARL", "15,29": "PEARL"},
     title="Undella Town")
 UNDELLA["edge_to"] = {"63,%d" % y: [1, min(48 + y - 16, 55)] for y in range(16, 25)}
-UNDELLA["gated_exits"] = {"UNOVA_ROUTE_14": ["beat_unova_champion"]}
+UNDELLA["gated_exits"] = {"UNOVA_ROUTE_14": ["beat_unova_champion"], "MARINE_TUBE": ["b2_opelucid_cheren"]}
 UNDELLA["barred"] = [{"tiles": [[x, 31] for x in range(11, 53)], "until": {"flag_condition": "beat_unova_champion"},
                       "look": "unseen", "lines": ["The beach road south is closed off till the summer crowds go home."]}]
 for _r, _t in (("center", "Pokémon Center"), ("house", "House"), ("villa", "Villa")):
@@ -5576,26 +5589,35 @@ _doors(VILLAGE_BRIDGE_MAP, VILLAGE_BRIDGE_MAP["inside"])
 VIRIZION = {"text": "Virizion", "action": "BOSS", "color": "RED", "_look": "mon:640", "condition": ["not:b2_r11_virizion"],
             "boss": {"id": 640, "name": "Virizion", "level": 45, "victory_flag": "b2_r11_virizion",
                      "lines": ["Kikwaaaa! Virizion leaps down from the cliff, as if it had been waiting for you!"]}}
-ROUTE_11 = route(
-    365, {1: _ball("Poke Ball on the cliff", "RAZOR_FANG", "b2_r11_razor_fang", name="a Razor Fang"),
-          2: _ball("Poke Ball by the gate", "ZINC", "b2_r11_zinc", name="a Zinc"),
-          3: _ball("Poke Ball by the river", "FULL_HEAL", "b2_r11_full_heal", name="a Full Heal")},
-    {1: ["ROUTE 11", "Opelucid City - Village Bridge"], 2: ["VILLAGE BRIDGE AHEAD"]},
-    exits={"<": ("OPELUCID_CITY", [(6, y) for y in range(14, 17)]), ">": ("VILLAGE_BRIDGE", [(55, y) for y in range(14, 17)])},
-    trainers={4: ("Pokemon Breeder Magnolia", 3), 5: ("Pokemon Ranger Crofton", 4), 6: ("Pokemon Ranger Thalia", 4)},
-    hidden={"36,6": "HP_UP", "8,8": "MAX_POTION"},
-    rooms={"trailer": room(367, {0: _say("Ranger by the trailer", "Yahoo! There's an awful lot of nothing round here, isn't there?",
-                                         "I like that there's nothing! But it's hard to share...")}, {}, (39, 12))},
-    inside={"39,12": "trailer"},
-    scenes=[{"trigger": {"zone": [22, 13, 22, 17]}, "condition": ["not:b2_r11_virizion_seen"], "flag": "b2_r11_virizion_seen",
-             "cast": [{"sheet": "mon:640", "from": [20, 10], "to": [20, 14], "stay": True,
-                       "lines": ["Kikwaaaa! A Pokemon leaps down from the cliff, as if it had been waiting for you!"]}]}],
-    extra_people=[(20, 14, dict(VIRIZION, condition=["b2_r11_virizion_seen", "not:b2_r11_virizion"]))],
-    title="Route 11")
+def _route11(z):
+    return route(
+        z, {1: _ball("Poke Ball on the cliff", "RAZOR_FANG", "b2_r11_razor_fang", name="a Razor Fang"),
+              2: _ball("Poke Ball by the gate", "ZINC", "b2_r11_zinc", name="a Zinc"),
+              3: _ball("Poke Ball by the river", "FULL_HEAL", "b2_r11_full_heal", name="a Full Heal")},
+        {1: ["ROUTE 11", "Opelucid City - Village Bridge"], 2: ["VILLAGE BRIDGE AHEAD"]},
+        exits={"<": ("OPELUCID_CITY", [(6, y) for y in range(14, 17)]), ">": ("VILLAGE_BRIDGE", [(55, y) for y in range(14, 17)])},
+        trainers={4: ("Pokemon Breeder Magnolia", 3), 5: ("Pokemon Ranger Crofton", 4), 6: ("Pokemon Ranger Thalia", 4)},
+        hidden={"36,6": "HP_UP", "8,8": "MAX_POTION"},
+        rooms={"trailer": room(367, {0: _say("Ranger by the trailer", "Yahoo! There's an awful lot of nothing round here, isn't there?",
+                                             "I like that there's nothing! But it's hard to share...")}, {}, (39, 12))},
+        inside={"39,12": "trailer"},
+        scenes=[{"trigger": {"zone": [22, 13, 22, 17]}, "condition": ["not:b2_r11_virizion_seen"], "flag": "b2_r11_virizion_seen",
+                 "cast": [{"sheet": "mon:640", "from": [20, 10], "to": [20, 14], "stay": True,
+                           "lines": ["Kikwaaaa! A Pokemon leaps down from the cliff, as if it had been waiting for you!"]}]}],
+        extra_people=[(20, 14, dict(VIRIZION, condition=["b2_r11_virizion_seen", "not:b2_r11_virizion"]))],
+        title="Route 11")
+
+
+ROUTE_11 = _route11(365)
 ROUTE_11["rooms"]["trailer"]["title"] = "Trailer"
 _doors(ROUTE_11, ROUTE_11["inside"])
+ROUTE_11_FROZEN = _route11(619)   # (frozen with Opelucid, kind 768; batch 8b)
+_doors(ROUTE_11_FROZEN, ROUTE_11_FROZEN["inside"])
 ROUTE_11["barred"] = [{"tiles": [[x, 12] for x in range(44, 49)], "until": {"item_condition": "WATERFALL"}, "look": "unseen",   # (the
                        "lines": ["The bank's too steep to climb. In Black 2 this cliff is reached up the falls: Waterfall!"]}]   #  plateau: Ranger Thalia, the Razor Fang)
+ROUTE_11_FROZEN["barred"] = ROUTE_11["barred"]
+ROUTE_11_FROZEN["rooms"]["trailer"]["title"] = "Trailer"
+ROUTE_11["story_maps"] = [{"when": ["b2_opelucid_frozen", "not:b2_opelucid_thawed"], "map": ROUTE_11_FROZEN}]
 
 # ------------------------------------------------------------------------------------------------- Opelucid City
 OUTSIDE.update({121: 120, 122: 120, 123: 120, 124: 120, 125: 120, 126: 120, 127: 120, 128: 120, 129: 120, 130: 120, 131: 120,
@@ -5911,6 +5933,128 @@ for _r, _t in (("gym", "Opelucid Gym"), ("center", "Pokémon Center")):
     OPE_ROOMS[_r]["title"] = _t
 
 
+# ======================================================================================================== batch 8b (11-24)
+# Route 9 (348; frozen 620 while Opelucid is: g5map VIRTUAL_TWINS), its Bridge Gate west to Tubeline Bridge (349: barred till
+# the Champion, Black 2's "load test"), Shopping Mall Nine (350: five counters, Black 2's stock; the Waitress and the Waiter;
+# the Lady's Hyper Potion errand; the stockroom 351: the appliance boxes change Rotom's form, forms.rotom_change, main 11-24),
+# the Marine Tube (464: from Undella's tube building 414, open once Cheren has called (b2_opelucid_cheren), to Humilau:
+# HUMILAU_CITY is batch 9; its building 471 rides along as the tube's north room till then). Route 11's frozen look (619).
+OUTSIDE.update({349: 348, 350: 348, 351: 348, 471: 464})
+R9_GATE = room(349, {0: [_say("Guard", "Halt! Tubeline Bridge is under a test of how many people it can hold. I can't let anyone "
+                                       "else on right now!", condition=["not:beat_unova_champion"]),
+                         _say("Guard ", "The test showed 4,934 people can stand on Tubeline Bridge at once.",
+                              condition=["beat_unova_champion"])],
+                     1: _say("Man in the gate", "Some Trainers take a Rotom into the Shopping Mall's stockroom. I wonder why..."),
+                     2: _say("Boy in the gate", "When you've crossed every bridge in Unova, something cool appears! ...If I spread that "
+                                                "rumour, maybe it'll become an urban legend.")},
+               {}, (15, 15), exits_extra={254: ("<", "TUBELINE_BRIDGE")})
+R9_GATE["title"] = "Bridge Gate"
+R9_GATE["gated_exits"] = {"TUBELINE_BRIDGE": ["beat_unova_champion"]}
+R9_GATE["barred"] = [{"tiles": [[0, 7], [0, 8], [0, 9]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+                      "lines": ["Guard: Halt! The bridge test is still going. Please come back later!"]}]
+
+_MALL_SHOP = lambda label, line, stock: {"text": label, "action": "EVENT", "event": {"lines": [line], "stock": stock}}
+MALL = room(350, {
+    12: _MALL_SHOP("Cashier", "Welcome to Shopping Mall Nine! Medicine and travel goods here.",
+                   ["POTION", "SUPER_POTION", "HYPER_POTION", "MAX_POTION", "REVIVE", "ANTIDOTE", "PARALYZE_HEAL", "BURN_HEAL",
+                    "ICE_HEAL", "AWAKENING", "FULL_HEAL", "ESCAPE_ROPE", "POKE_TOY", "REPEL", "SUPER_REPEL", "MAX_REPEL"]),
+    14: _MALL_SHOP("Poke Ball counter", "Poke Balls of every kind!",
+                   ["POKE_BALLS", "GREAT_BALL", "ULTRA_BALL", "HEAL_BALL", "NET_BALL", "NEST_BALL", "DUSK_BALL", "QUICK_BALL",
+                    "TIMER_BALL"]),
+    13: _MALL_SHOP("TM counter", "TMs you won't find in any Poke Mart!", ["TM163", "TM152"]),
+    15: _MALL_SHOP("Vitamin counter", "Raise your Pokemon's stats!", ["PROTEIN", "IRON", "CALCIUM", "ZINC", "CARBOS", "HP_UP"]),
+    16: _MALL_SHOP("Battle item counter", "Items to swing a battle your way!",
+                   ["X_SPEED", "X_ATTACK", "X_DEFENSE", "GUARD_SPEC", "DIRE_HIT", "X_ACCURACY", "X_SP_ATK", "X_SP_DEF"]),
+    3: {"text": "Waitress with the evening deal", "action": "EVENT", "condition": ["time:night"], "event": {
+        "lines": ["It's tonight's special evening deal! Poke Balls and Potions!"], "stock": ["POKE_BALLS", "POTION"]}},
+    10: _b2_battle("Waitress Olwen", 12, "b2_mall_olwen", ["Waitress Olwen: Welcome! Your order... a battle?"],
+                   ["Waitress Olwen: My, you're strong!"], ["Waitress Olwen: Evening's the best time to shop here!"]),
+    11: _b2_battle("Waiter Lou", 11, "b2_mall_lou", ["Waiter Lou: A battle, served right away!"],
+                   ["Waiter Lou: That was my treat!"], ["Waiter Lou: Only the strong survive in this Mall!"]),
+    1: {"text": "Lady", "action": "EVENT", "event": {"world": "unova_story", "potion_errand": True}},
+    9: _say("Shopper", "If you want every TM, the Mall's a must! Brag about it to the TM fan in Mistralton!"),
+    2: _say("Man by the escalator", "Medicine here, Balls over there, TMs, vitamins and battle items upstairs. I admire the "
+                                     "people who planned it!"),
+    4: _say("Trainer by the shops", "I got challenged to a battle in the Mall! Only the strong survive here."),
+    5: _say("Woman by the vitamins", "What I buy most is HP Up. Lots of other things catch my eye, though."),
+    6: _say("Boy", "The better a Trainer you are, the more you think, so you can help your Pokemon win!"),
+    7: _say("Girl", "If I played hide-and-seek with my Pokemon, they'd find me right away! Handy if I got lost."),
+    0: _say("Guard at the door", "Welcome to Shopping Mall Nine! It's on Route 9, so: Nine. 'Done shopping? Nein!'"),
+    8: _say("Woman with a Lampent", "My Lampent's not good at battles, but it's great at making toast!"),
+}, {1: ["SHOPPING MALL NINE", "Colourful and wonderful!"]}, (37, 7), stairs={351: ("^", "ROOM:stockroom")})
+MALL["title"] = "Shopping Mall Nine"
+STOCKROOM = room(351, {0: _say("Worker in the stockroom", "This mountain of boxes is full of appliances we can't sell. They're "
+                                                            "going to waste. Could someone put them to good use?"),
+                       1: _ball("Poke Ball in the stockroom", "POKE_DOLL", "b2_mall_poke_doll", name="a Poke Doll")},
+                 {}, (19, 13), stairs={350: ("v", "ROOM:mall")})
+STOCKROOM["title"] = "Stockroom"
+STOCKROOM["sign_events"] = {
+    "%d,%d" % xy: {"text": label, "action": "EVENT", "event": {"world": "unova_story", "rotom_form": form,
+                                                                "lines": ["A box with a %s in it." % label.lower()]}}
+    for xy, label, form in (((2, 4), "Microwave", "heat"), ((8, 2), "Washing machine", "wash"), ((12, 2), "Fridge", "frost"),
+                            ((13, 4), "Electric fan", "fan"), ((9, 2), "Lawn mower", "mow"), ((10, 2), "Light bulb", "normal"))}
+
+
+def _route9(z):
+    return route(
+        z, {7: _ball("Poke Ball by the trees", "HP_UP", "b2_r9_hp_up", name="an HP Up"),
+            8: _ball("Poke Ball in the grass", "QUICK_BALL", "b2_r9_quick_ball", name="a Quick Ball"),
+            9: _ball("Poke Ball by the fence", "NUGGET", "b2_r9_nugget", name="a Nugget"),
+            10: _ball("Poke Ball near the gate", "ELIXIR", "b2_r9_elixir", name="an Elixir"),
+            6: _ball("Poke Ball in the south", "IRON", "b2_r9_iron", name="an Iron")},
+        {1: ["ROUTE 9"], 2: ["SHOPPING MALL NINE", "Colourful and wonderful!"],
+         3: ["TRAINER TIPS", "One kind of Pokemon can have different Abilities. Try catching ones you've caught before!"],
+         4: ["TUBELINE BRIDGE", "Unova's famous railway bridge"]},
+        exits={">": ("OPELUCID_CITY", [(57, y) for y in range(14, 17)])},
+        trainers={0: ("Roughneck Chance", 5), 1: ("Biker Zeke", 2), 2: ("Biker Phillip", 1), 3: ("Roughneck Reese", 4),
+                  4: ("Hooligans Jim & Cas", 3), 5: ("Hooligans Jim & Cas", 3)},
+        hidden={"37,28": "DARK_GEM"},
+        rooms={"mall": MALL, "stockroom": STOCKROOM, "gate_w": R9_GATE},
+        inside={"37,7": "mall", "38,7": "mall", "15,15": "gate_w"}, title="Route 9")
+
+
+ROUTE_9 = _route9(348)
+_doors(ROUTE_9, ROUTE_9["inside"])
+ROUTE_9_FROZEN = _route9(620)
+_doors(ROUTE_9_FROZEN, ROUTE_9_FROZEN["inside"])
+ROUTE_9["story_maps"] = [{"when": ["b2_opelucid_frozen", "not:b2_opelucid_thawed"], "map": ROUTE_9_FROZEN}]
+ROUTE_9["edge_to"] = ROUTE_9_FROZEN["edge_to"] = {"57,%d" % y: [1, 46 + y - 15] for y in range(14, 17)}
+
+# ------------------------------------------------------------------------------------------------- the Marine Tube
+TUBE_N = room(471, {0: _say("Guard", "How was it? That's how the world looks to Pokemon under the sea."),
+                    1: _say("Man by the window", "The path is for looking, more than for walking."),
+                    2: {"text": "Parasol Lady with TMs", "action": "EVENT", "event": {
+                        "lines": ["My parasol is full of TMs. Would you like one?", "{player_name} received TM025 Facade!",
+                                  "Facade! When the user's poisoned, paralysed or burned, its power doubles!"],
+                        "gift_item": {"TM025": 1}, "flag": "b2_tube_facade",
+                        "done": ["Facade! When the user's poisoned, paralysed or burned, its power doubles!"]}}},
+              {(9, 1): ["MARINE TUBE", "An undersea tunnel: Humilau City - Undella Town"]}, (15, 7),
+              exits_extra={465: ("<", "HUMILAU_CITY")})
+TUBE_N["title"] = "Marine Tube Gate"
+MARINE_TUBE_MAP = route(
+    464, {4: {"text": "Runner in the tube", "action": "EVENT", "event": {"world": "unova_story", "runner": "b2_tube_runner"}},
+          0: _say("Black Belt at the glass", "This is the undersea world! I can't swim, so I'd given up on seeing it. I'm so moved!"),
+          5: _say("Man at the glass", "It's like a walk-through aquarium... or is it a place for Pokemon to look at us?"),
+          6: _say("Woman by the trench", "Wow! An ocean trench! Maybe six miles deep?"),
+          2: _say("Man by the trench", "That's right... It's deep... Love is infinitely deep..."),
+          1: _say("TV presenter", "Rain Dance is a move to use with a feeling of yearning... Sigh. I can't think of a gripping way to "
+                                  "explain it on TV."),
+          3: [{"text": "Roxie fan", "action": "EVENT", "condition": ["world:unova_story:holding:POISON_BARB"], "event": {
+                  "lines": ["Does your Pokemon have a Poison Barb? Wow! Good going. I think you can use this well, too!",
+                            "{player_name} received a Black Sludge!", "Few Pokemon like to hold it, though. FYI, I'm Roxie's first fan!"],
+                  "gift_item": {"BLACK_SLUDGE": 1}, "flag": "b2_tube_black_sludge",
+                  "done": ["FYI, I'm Roxie's first fan!"]}},
+              _say("Roxie fan ", "Does your Pokemon have a Poison Barb?", condition=["not:world:unova_story:holding:POISON_BARB"])]},
+    {},
+    exits={"v": ("UNDELLA_TOWN", [(x, 190) for x in range(9, 22)])},
+    rooms={"gate_n": TUBE_N}, inside={"%d,7" % x: "gate_n" for x in range(11, 20)},
+    scenes=[{"trigger": {"zone": [9, 90, 22, 110]}, "condition": ["world:unova_story:hour:15", "not:b2_tube_wailord"], "flag": "b2_tube_wailord",
+             "cast": [], "call": ["A huge shadow passes over the tunnel...", "A Wailord is swimming right over the Marine Tube!"]}],
+    title="Marine Tube")
+_doors(MARINE_TUBE_MAP, MARINE_TUBE_MAP["inside"])
+MARINE_TUBE_MAP["edge_to"] = {"%d,190" % x: [32, 11] for x in range(9, 22)}
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -5933,4 +6077,5 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "REVERSAL_MOUNTAIN_INSIDE": RM_INSIDE, "REVERSAL_MOUNTAIN_SOUTH": RM_SOUTH, "STRANGE_HOUSE": STRANGE_HOUSE,
         "UNDELLA_TOWN": UNDELLA, "UNDELLA_BAY": UNDELLA_BAY_MAP, "UNOVA_ROUTE_13": ROUTE_13, "LACUNOSA_TOWN": LACUNOSA,   # (batch 7b)
         "UNOVA_ROUTE_12": ROUTE_12, "VILLAGE_BRIDGE": VILLAGE_BRIDGE_MAP, "UNOVA_ROUTE_11": ROUTE_11,   # (batch 8a)
-        "OPELUCID_CITY": OPELUCID}
+        "OPELUCID_CITY": OPELUCID,
+        "UNOVA_ROUTE_9": ROUTE_9, "MARINE_TUBE": MARINE_TUBE_MAP}   # (batch 8b)

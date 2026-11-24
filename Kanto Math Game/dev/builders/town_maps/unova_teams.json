@@ -14,6 +14,36 @@
    572
   ]
  },
+ "11": {
+  "b2_id": 11,
+  "class": "WAITER",
+  "levels": [
+   43
+  ],
+  "name": "Waiter Lou",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_waiter.png",
+  "team": [
+   510
+  ]
+ },
+ "12": {
+  "b2_id": 12,
+  "class": "WAITRESS",
+  "levels": [
+   43
+  ],
+  "name": "Waitress Olwen",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_waitress.png",
+  "team": [
+   572
+  ]
+ },
  "136": {
   "b2_id": 136,
   "class": "HIKER",
