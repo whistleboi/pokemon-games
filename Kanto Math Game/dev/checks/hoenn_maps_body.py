@@ -3398,3 +3398,15 @@ check(_sm["target"] == "HOENN_ABANDONED_SHIP" and "sea_mauville_open" not in str
       and (_shp.get("HO-OH") or {}).get("boss", {}).get("victory_flag") == "sea_mauville_ho_oh"
       and "beat_hoenn_champion" in _shp["LUGIA"]["condition"] and "LUGIA" in _st8 and "HO-OH" in _st8,
       f"Abandoned Ship: Lugia and Ho-Oh in the storeroom after the title; the Sea Mauville mission points there ({_sm['condition']})")
+
+# H8 (Jordan 11-24, questions/HOENN.md #11, #12): Routes 105-109 have ORAS's own slots and levels, Surf apart from land
+# (no land Pokemon: the beaches are sand; Route 107's seabed its seaweed), and every horde ORAS's 60 / 35 / 5
+from src.world import wild_tables as _wt11
+import random as _r11
+_sp11 = g.loader.area_data["STORY_PROGRESSION"]
+_lv11 = sorted({_wt11.pick(_sp11["HOENN_ROUTE_105"], "surf", _r11.Random(i))[1] for i in range(300)})
+check(all(_wt11.has(_sp11[k], "surf") and not (k != "HOENN_ROUTE_107" and _wt11.has(_sp11[k], "grass"))
+          for k in ("HOENN_ROUTE_105", "HOENN_ROUTE_106", "HOENN_ROUTE_107", "HOENN_ROUTE_108", "HOENN_ROUTE_109"))
+      and _lv11 == [20, 25, 30] and _wt11.pool(_sp11["HOENN_ROUTE_107"], "grass").get("369") == 5
+      and g.loader.area_data["HOENN_ROUTE_116_HORDE_PERCENTAGES"] == {"263": 60, "290": 35, "300": 5},
+      f"Routes 105-109: ORAS's Surf slots and levels ({_lv11}), no land Pokemon, Route 107's seaweed; ORAS's hordes (Route 116)")
