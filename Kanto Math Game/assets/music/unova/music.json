@@ -37,6 +37,9 @@
    "WINTER": "sw_r_19_wi"
   },
   "FLOCCESY_TOWN": "sw_t_06",
+  "GIANT_CHASM": "d_05",
+  "GIANT_CHASM_CAVE": "d_05",
+  "GIANT_CHASM_FOREST": "d_05",
   "GUIDANCE_CHAMBER": "d_02",
   "HUMILAU_CITY": "sw_c_14",
   "JOIN_AVENUE": "rezo_rizo",
@@ -203,6 +206,7 @@
   "DRIFTVEIL_CITY:gym_lobby": "ground_gym_01",
   "FLOCCESY_RANCH:grotto": "kemonomichi",
   "FLOCCESY_TOWN:center": "pokecen",
+  "GIANT_CHASM_FOREST:grotto": "kemonomichi",
   "HUMILAU_CITY:center": "pokecen",
   "HUMILAU_CITY:gym": "water_gym_01",
   "HUMILAU_CITY:tube": "gate",

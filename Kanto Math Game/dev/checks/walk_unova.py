@@ -66,4 +66,5 @@ B2_POST = ["NATURE_PRESERVE", "MARVELOUS_BRIDGE",
 expansion_check("unova b2w2 side areas", B2_EARLY, S)
 gate_check("unova post-game side areas", B2_POST, S, "beat_unova_champion")
 story.story_flags["beat_unova_champion"] = True
+story.story_flags["b2_chasm_done"] = True   # (the League is past the Giant Chasm's end: Route 23 opens then, 9b-2)
 expansion_check("unova post-game side areas", B2_POST, S)

@@ -20,6 +20,9 @@ def looks():
     out = {}
     for key, m in maps.items():
         places = [m] + list((m.get("rooms") or {}).values())
+        for sm in m.get("story_maps") or []:   # (a story map's people and rooms too: the frigate's later visits, 11-24)
+            if isinstance(sm.get("map"), dict):
+                places += [sm["map"]] + list((sm["map"].get("rooms") or {}).values())
         for place in places:
             for p in place.get("people", []):
                 for o in (p if isinstance(p, list) else [p]):
