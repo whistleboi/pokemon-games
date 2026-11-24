@@ -187,6 +187,29 @@ t = town("VIOLET_CITY", "gym")
 if t._live():
     check(not t._level_edge((8, 17), (8, 16)) and abs(t._live_height(8, 17) - t._live_height(8, 16)) > 10, "Violet Gym: the lift's 29 levels are a ride, not a blocked drop")
 
+print("4b) Cianwood Gym's winch: the red button lifts the pipe, as SoulSilver plays it (2 s, five scenes between; 11-23)")
+import time as _time
+story.story_flags.pop("cianwood_gym_waterfall_off", None)
+t = town("CIANWOOD_CITY", "gym")
+_k0 = t._live() and t._live_key[2]
+t.player = t.anim_from = t.partner = t.partner_from = (9, 5); t.facing = (0, -1); t.anim = 0
+t.step(0, -1)
+_seen, _t0 = [], _time.time()
+while _time.time() - _t0 < 2.6:
+    g.current_state.update(); g.current_state.draw()
+    _n = (getattr(t, "_live_key", None) or (0, 0, ""))[2].split("/")[-1]
+    if not _seen or _seen[-1] != _n:
+        _seen.append(_n)
+    _time.sleep(0.02)
+check(story.story_flags.get("cianwood_gym_waterfall_off") and str(_k0).endswith("T24GYM0101.png")
+      and _seen == ["T24GYM0101_w%d.png" % k for k in range(1, 6)] + ["T24GYM0101_off.png"],
+      f"...the waterfall stops and the live scene plays the pipe rising, then rests stopped ({_k0} -> {_seen})")
+check(all(live3d.scene_of(g, "ss_ground/T24GYM0101_w%d.png" % k, None, True) is not None for k in range(1, 6)), "...its five in-between scenes are there")
+g.walk_town_room = None
+t = town("CIANWOOD_CITY", "gym")
+check(t._live() and t._live_key[2].endswith("T24GYM0101_off.png") and not getattr(t, "_pic_play", None), "...come back later: stopped at once, nothing played again")
+story.story_flags.pop("cianwood_gym_waterfall_off", None)
+
 print("5) the flat pictures stay when the live camera is off")
 g.live3d = False
 t = town("NEW_BARK_TOWN")
