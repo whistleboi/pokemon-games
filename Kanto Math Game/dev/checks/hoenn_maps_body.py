@@ -10,6 +10,17 @@ from src.states.overworld.dungeon import DungeonState
 from src.states.menus import StarterSelectionState as _SSS
 
 fails = []
+import os as _os
+# (11-23, speed: half the suite's time went into drawing every frame - nothing here reads the screen but the pictures.
+#  Draw one frame in DRAW_EVERY, and always while someone talks; HM_DRAW_EVERY=1 draws them all, as before.)
+DRAW_EVERY = max(1, int(_os.environ.get("HM_DRAW_EVERY", "4")))
+_drawn = [0]
+
+
+def _draw(st, talking=False):
+    _drawn[0] += 1
+    if talking or _drawn[0] % DRAW_EVERY == 0:
+        st.draw()
 
 
 def check(c, m):
@@ -45,8 +56,12 @@ def tap(st, n=600):
 
 
 def frames(n):
-    for _ in range(n):
-        g.current_state.update(); g.current_state.draw()
+    for i in range(n):
+        g.current_state.update()
+        if i == n - 1:
+            g.current_state.draw()
+        else:
+            _draw(g.current_state)
 
 
 def open_map(key, came):
@@ -491,7 +506,7 @@ def _play(st, frames=1500):
                 st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
             else:
                 st.dialogue_box.advance()
-        st.update(); st.draw()
+        st.update(); _draw(st, talking)
         if i > 60 and not sc.busy() and not talking and len(said) > 1:
             break
     return said
@@ -568,7 +583,7 @@ _hik = next(p for p in _tm2["HOENN_GRANITE_CAVE"]["floors"][1]["people"] if isin
 check((_dew["event"].get("gift_item") or {}).get("OLD_ROD") and (_hik["event"].get("gift_item") or {}).get("HM_FLASH"),
       "Dewford's fisherman gives the Old Rod; Granite Cave's hiker gives Flash")
 _q = [b for b in _tm2["SLATEPORT_CITY"].get("barred", []) if b.get("look") == "sheet:@grunt"]
-check(len(_q) == 9, f"Slateport: the villain team's Grunts queue outside the Museum ({len(_q)})")
+check(len(_q) == 11 and [30, 27] in [b["tiles"][0] for b in _q] and [31, 27] in [b["tiles"][0] for b in _q], f"Slateport: the villain team's Grunts queue outside the Museum, up to its door ({len(_q)})")
 _inv = {k: story.inventory.pop(k, None) for k in ("CONTEST_PASS", "POKEBLOCK_CASE")}
 st, said = _scene("SLATEPORT_CITY", "HOENN_ROUTE_109", ["oceanic_museum_cleared", "slateport_saw_dock"], ["contest_pass_received", "slateport_lisia_met"], at=(17, 6))
 check(story.inventory.get("CONTEST_PASS", 0) > 0 and any("Lisia" in x for x in said), f"Slateport: after the Museum, Lisia walks out of the Contest Hall with a Contest Pass ({said[:1]})")
@@ -3075,44 +3090,9 @@ story.story_flags.clear(); story.story_flags.update(_f5)
 story.badges.clear(); story.badges.update(_b5)
 story.inventory.clear(); story.inventory.update(_i5)
 
-# H5 gates (11-23, Jordan #8-14): ORAS's gates in our data
-def _opt(area, lst, pred):
-    return next((o for o in (_area[area].get(lst) or []) if isinstance(o, dict) and pred(o)), {})
-
-
-_tidal = [_opt(k, "travel_options", lambda o: o.get("target_area") == "HOENN_SS_TIDAL").get("condition") for k in ("SLATEPORT_CITY", "LILYCOVE_CITY")]
-check(_tidal == ["beat_hoenn_champion"] * 2, f"the S.S. Tidal sails only after the Champion (Emerald; #8) ({_tidal})")
-_nm = _opt("MAUVILLE_CITY", "travel_options", lambda o: o.get("target_area") == "HOENN_NEW_MAUVILLE")
-check(_nm.get("condition") == "wattson_new_mauville_asked", "New Mauville's door opens only after Wattson's request (#9)")
-_w = (_area["MAUVILLE_CITY"].get("gym") or {}).get("leader") or {}
-check("DEVON_SCOPE" not in (_w.get("rewards") or {}), "Wattson gives no Devon Scope: Steven on Route 120 does (#10)")
-_br = _opt("DEWFORD_TOWN", "travel_options", lambda o: o.get("text") == "Boat to Slateport")
-check(_br.get("condition") == ["met_steven"], "Briney sails to Slateport once the Letter is delivered, no Knuckle Badge (#14)")
-_fp = _opt("HOENN_ROUTE_112", "route_menu", lambda o: o.get("text") == "FIERY PATH")
-check(_fp.get("condition") == ["can_exit"], "the Fiery Path's main tunnel is open (Strength only for the side boulders; #14)")
-_r126 = _opt("HOENN_ROUTE_124", "route_menu", lambda o: o.get("text") == "ROUTE 126")
-check(_r126.get("condition") == ["can_exit", "has_item:HM_SURF"], "Route 124 to Route 126 by Surf (#14)")
-_hid = _opt("LILYCOVE_CITY", "explore_options", lambda o: o.get("text") == "TEAM HIDEOUT")
-check("slateport_sub_stolen" in (_hid.get("condition") or []), "the Lilycove hideout waits for Slateport's stolen sub (#12)")
-from src.world import soaring3d as _s3d5
-_fx = {"got_mega_bracelet": True}
-class _S5:
-    pass
-_st5 = _S5(); _st5.inventory = {}; _st5.story_flags = dict(_fx)
-_st5.store_regions = lambda: None
-_early = _s3d5.give_flute(_st5)
-_st5.story_flags["cave_of_origin_cleared"] = True
-_mid = _s3d5.give_flute(_st5)   # (Steven's to give now: not by itself)
-_st5.story_flags["beat_hoenn_champion"] = True
-_late = _s3d5.give_flute(_st5) and not _mid   # (a save past the Champion that missed him)
-check(not _early and _late, "the Eon Flute waits for the Cave of Origin (ORAS's timing; #11)")
+# (H5 gates - the S.S. Tidal, New Mauville, the Devon Scope, Briney, the Fiery Path, Route 126, the hideout, the Eon Flute -
+#  are played in hoenn_gates, 11-23: not repeated here)
 _f5b, _i5b = dict(story.story_flags), dict(story.inventory)
-story.inventory.pop("EON_FLUTE", None); story.story_flags.pop("got_eon_flute_hoenn", None)
-story.story_flags["cave_of_origin_cleared"] = True
-st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
-st.scenes.entered = True
-said = _press(st, (44, 34), (0, -1))
-check(story.inventory.get("EON_FLUTE", 0) == 1, f"Sootopolis: after the Cave of Origin Steven gives the Eon Flute ({said[:1]})")
 _wv = next((t for t in _area["HOENN_VICTORY_ROAD"].get("trainer_pool", []) if t.get("victory_flag") == "defeated_wally_victory"), {})
 check((_wv.get("rewards") or {}).get("DAWN_STONE") == 1, "Victory Road: Wally gives a Dawn Stone after the battle (ORAS)")
 _sw5 = next((o for o in _area["HOENN_GRANITE_CAVE"].get("route_menu", []) if o.get("text") == "Steven's Steel Wing"), {})
@@ -3124,16 +3104,7 @@ _sc5 = next((sc for sc in _tm2["SLATEPORT_CITY"].get("scenes", []) if sc.get("fl
 _gb5 = [((c.get("event") or {}).get("battle") or {}) for c in _sc5.get("cast", []) if (c.get("event") or {}).get("battle")]
 check([b.get("team_by_version", {}).get("OMEGA_RUBY") for b in _gb5] == [[262], [322, 42]] and [b.get("levels") for b in _gb5] == [[36], [34, 34]],
       f"Slateport: two grunts hold you up while the sub is stolen, ORAS's teams by version ({[b.get('name') for b in _gb5]})")
-# the Delta Episode as a chain in ORAS order (#13): each step waits for the one before; Wallace guards Sky Pillar
-_dz = next((o for o in _area["HOENN_GRANITE_CAVE"].get("route_menu", []) if o.get("text") == "BATTLE ZINNIA"), {})
-_dp = next((o for o in _area["PETALBURG_CITY"].get("explore_options", []) if o.get("text") == "Battle Courtney"), {})
-_dw = next((o for o in _area["HOENN_ROUTE_131"].get("route_menu", []) if o.get("text") == "BATTLE WALLACE"), {})
-_dsp = next((o for o in _area["HOENN_ROUTE_131"].get("route_menu", []) if o.get("text") == "SKY PILLAR"), {})
-_dh = [t.get("when_flags") for t in _area["HOENN_TEAM_HIDEOUT"].get("trainer_pool", []) if "beat_hoenn_champion" in (t.get("when_flags") or [])]
-check("delta_started" in (_dp.get("condition") or []) and "delta_matt_petalburg" in (_dz.get("condition") or [])
-      and "delta_matt_mossdeep" in (_dw.get("condition") or []) and "delta_wallace_131" in (_dsp.get("condition") or [])
-      and _dh and all("delta_courtney_mossdeep" in w for w in _dh),
-      "the Delta Episode runs in ORAS's order: home, Petalburg, Granite Cave, Rustboro, the Space Center, the hideout, Wallace, Sky Pillar")
+# (the Delta chain's order: hoenn_gates delta_start / delta_chain / sky_pillar_wallace play it)
 for _k in ("delta_started",):
     story.story_flags.pop(_k, None)
 story.story_flags["hoenn_mom_sendoff"] = True
@@ -3150,9 +3121,6 @@ if st.hover_menu_active:
 check(story.story_flags.get("delta_started") and any("meteor" in x for x in said), f"Littleroot: after the Champion, Mom's news of the meteor starts the Delta Episode ({said[:1]})")
 story.story_flags.clear(); story.story_flags.update(_f5b)
 story.inventory.clear(); story.inventory.update(_i5b)
-
-story.story_flags.clear(); story.story_flags.update(_saved)
-print(f"##### {len(fails)} failures")
 
 # Legacy menu clear, pass 2 (11-23): the route doors find their buttons by kind (the Cable Car stations, the Safari Zone gate);
 # the menu's CATCH / BATTLE buttons, colours and dead EXIT shortcuts are gone
@@ -3181,3 +3149,6 @@ check(not _left, f"Hoenn's walked places carry no menu-only route buttons or col
 _dead = [(k, o.get("text")) for k in ("HOENN_SS_TIDAL", "HOENN_SOUTHERN_ISLAND", "HOENN_ROUTE_122", "HOENN_ROUTE_129") for o in (_sp[k].get("route_menu") or [])
          if o.get("action") == "EXIT" and o.get("text") in ("Slateport City", "Lilycove City", "Battle Frontier", "BOAT TO SLATEPORT", "LILYCOVE CITY", "EVER GRANDE CITY")]
 check(not _dead, f"the menu's EXIT shortcuts are gone: the Sailors sail you, the map's edges lead on ({_dead})")
+
+story.story_flags.clear(); story.story_flags.update(_saved)
+print(f"##### {len(fails)} failures")
