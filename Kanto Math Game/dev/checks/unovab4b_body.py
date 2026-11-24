@@ -272,4 +272,14 @@ check(any(f["id"] == "subway" for f in feats), "the Feat: Subway Regular (best s
 mj = json.load(open("assets/music/unova/music.json", encoding="utf-8"))
 blob = json.dumps(mj)
 check("gear_station" in blob and "battle_subway" in blob and "t_03" in blob, "Black 2's tracks: Gear Station, the Subway car, Anville Town")
+print("11) battle backgrounds: Black 2's own, by each zone's battle background number (11-23)")
+from src.world import battle_bg as _bb
+_ix = _bb.index(g, "UNOVA")
+check(_ix and len(_ix["areas"]) >= 26, "Unova has its own battle background index")
+missing = sorted({f for e in _ix["areas"].values() for f in ([e] if isinstance(e, str) else e.values())
+                  if not os.path.isfile(os.path.join("assets", "battle_bg", "UNOVA", f))})
+check(not missing, f"every picture it names is there ({missing})")
+check(str(_bb.pick(g, "UNOVA_ROUTE_19")).endswith("bg01.png") and str(_bb.pick(g, "LOSTLORN_FOREST")).endswith("bg06.png"),
+      "Route 19 on Black 2's open field, Lostlorn Forest on its forest (zone values 1 and 6)")
+check(str(_bb.pick(g, "NIMBASA_CITY", trainer=True, gym=True)).endswith("bg09.png"), "Elesa's Gym: its room's own background")
 print(f"##### {len(fails)} failures")

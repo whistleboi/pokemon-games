@@ -6655,9 +6655,6 @@
       "battle_type": "grass",
       "wild_pool_percentages": "UNOVA_LOSTLORN_FOREST_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": {
-        "main": "lostlorn_forest.png"
-      },
       "trainer_pool": [
         {
           "name": "Pokemon Breeder Galen",
@@ -7257,9 +7254,6 @@
       "battle_type": "indoor",
       "wild_pool_percentages": "UNOVA_CASTELIA_SEWERS_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": {
-        "battle": "battle_castelia_sewers.png"
-      },
       "trainer_pool": [
         {
           "name": "Janitor Felix",
@@ -8097,9 +8091,6 @@
       "battle_type": "field",
       "wild_pool_percentages": "UNOVA_DESERT_RESORT_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": {
-        "battle": "battle_desert_resort.png"
-      },
       "route_menu": [
         {
           "text": "Relic Castle",
@@ -8456,9 +8447,6 @@
       "battle_type": "cave",
       "wild_pool_percentages": "UNOVA_RELIC_CASTLE_PERCENTAGES",
       "min_rounds": 3,
-      "backgrounds": {
-        "battle": "battle_relic_castle.png"
-      },
       "trainer_pool": [
         {
           "name": "Psychic Perry",
@@ -11922,9 +11910,6 @@
       "route_name": "Liberty Garden",
       "region": "UNOVA",
       "battle_type": "grass",
-      "backgrounds": {
-        "main": "liberty_garden.png"
-      },
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
