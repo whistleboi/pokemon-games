@@ -3,8 +3,9 @@
 Every walked region plays the intros of the game it is built from, picked the way that game picks them:
 - Kanto, Sevii (its areas report KANTO) and the Orange Islands: FireRed/LeafGreen;
 - Hoenn: Emerald;  Johto: HeartGold/SoulSilver;  Sinnoh: Platinum;
-- Orre: Pokemon Orre 2.1.1 (Pokemon Essentials v21.1, the game its maps come from).
-Unova and the menu regions (Kalos, Alola, Galar, Paldea, Decolore...) keep the older intros in transitions.py.
+- Orre: Pokemon Orre 2.1.1 (Pokemon Essentials v21.1, the game its maps come from);
+- Unova: Platinum's (Jordan 11-24: a game that needs an emulator to measure, Black 2 / White 2, copies Platinum).
+The menu regions (Kalos, Alola, Galar, Paldea, Decolore...) keep the older intros in transitions.py.
 
 The numbers come from kanto_handoff/transitions_research: GEN3_FRLG_EMERALD.md (pret's pokefirered and
 pokeemerald), GEN4_HGSS_PLATINUM.md (pret's pokeplatinum and pokeheartgold) and GEN5_B2W2_AND_ORRE.md
@@ -13,7 +14,7 @@ same real speed here (src.config.FPS). Every effect is drawn in code; the only a
 trainer sprite, the player's sprite, the wild Pokemon's sprite and, for Orre, the Essentials water and VS
 pictures already in assets/transitions. Team logos (Galactic G, Rocket R, Aqua, Magma) are drawn simply.
 
-To add a game (Unova: Black 2, once measured): a select_<game>(c) returning (effect, params, flash), its
+To add a game (Unova: Black 2, if it is ever measured): a select_<game>(c) returning (effect, params, flash), its
 effect classes in EFFECTS, and its line in REGION_GAME."""
 import math
 import random
@@ -24,7 +25,8 @@ import pygame
 from src.config import FPS
 
 REGION_GAME = {"KANTO": "frlg", "SEVII": "frlg", "ORANGE": "frlg", "HOENN": "emerald", "JOHTO": "hgss",
-               "SINNOH": "platinum", "ORRE": "orre"}
+               "SINNOH": "platinum", "ORRE": "orre",
+               "UNOVA": "platinum"}   # (Jordan 11-24: Black 2 / White 2 would need an emulator to measure: Platinum's instead)
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
 FEMALE = {"leaf", "may", "dawn", "lyra", "kris", "hilda", "rosa", "serena", "selene", "gloria", "juliana",
           "misty", "female", "girl", "marina", "lucy"}

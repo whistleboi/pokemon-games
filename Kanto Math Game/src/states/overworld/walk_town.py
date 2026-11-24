@@ -58,6 +58,9 @@ def important_person(opt):
 
 def held_way(keys_map):
     """The way a held arrow key (or WASD) points, or None (Jordan, 11-07: hold to keep walking)."""
+    from src.vfx import area_changes as _ac
+    if _ac.ACTIVE is not None and _ac.ACTIVE.t > 0:   # (a door's wipe playing on screen: no one walks on)
+        return None
     try:
         pressed = pygame.key.get_pressed()
     except pygame.error:
@@ -241,6 +244,10 @@ class WalkTownState(TownWalkUps, CityState):
                     self.room = next((n for n, r in (mine.get("rooms") or {}).items() if came in (r.get("exits") or {}).values()), None)
             self._from_art(mine["rooms"][self.room] if self.room else mine)
         self._arrive()
+        from src.vfx import area_changes   # (the name sign in this region's game's look: Jordan 11-24)
+        self.sign = area_changes.arrival(self, self._sign_word, inside=bool(getattr(self, "room", None)))
+        if self.sign is not False:
+            self.banner = 0
 
     def _from_art(self, m):
         from src.dungeon import art
@@ -1212,10 +1219,14 @@ class WalkTownState(TownWalkUps, CityState):
         elif to in getattr(self, "links", {}):  # a warp pad: on to its far pad (no stepping back through by itself)
             self.walk_goal = None
             far = self.links[to]
-            if to in getattr(self, "room_links", {}):  # (in another room: Lavaridge Gym's holes down, its vents up)
-                self._go(self.room_links[to], "")
-            self.player = self.partner = self.partner_from = self.anim_from = far
-            self.anim = 0
+            from src.vfx import area_changes   # (a warp panel's fade, as this region's game)
+
+            def _pad():
+                if to in getattr(self, "room_links", {}):  # (in another room: Lavaridge Gym's holes down, its vents up)
+                    self._go(self.room_links[to], "")
+                self.player = self.partner = self.partner_from = self.anim_from = far
+                self.anim = 0
+            area_changes.change(self, "fall" if to in getattr(self, "room_links", {}) else "warp", _pad)
             self._remember()
         elif grid and grid[to[1]][to[0]] in "3456":  # a spin tile: it carries you its way till something stops you, or a stop tile does
             self.walk_goal = None
@@ -1275,7 +1286,10 @@ class WalkTownState(TownWalkUps, CityState):
         kind = self.doors[door]
         inside = self._room_for(door)
         if inside:  # (a building with its inside built: walk in)
-            return self._go(inside, "OUT:%d,%d" % tuple(door))
+            from src.vfx import area_changes   # (the door's fade, as this region's game: Jordan 11-24)
+            out = area_changes.change(self, "door_in", lambda: self._go(inside, "OUT:%d,%d" % tuple(door)))
+            self._room_sign(False)   # (no sign inside; out again, the town's)
+            return out
         if kind == "home":  # (the first home is yours; the others aren't open)
             first = min((t for t, k in self.doors.items() if k == "home"), default=None)
             if door != first:
@@ -1389,11 +1403,19 @@ class WalkTownState(TownWalkUps, CityState):
 
     def _leave(self, target):
         if str(target).startswith("OUT:"):  # (out of a room, back to the town)
-            return self._go(None, target)
+            from src.vfx import area_changes
+            out = area_changes.change(self, "door_out", lambda: self._go(None, target))
+            self._room_sign(True)
+            return out
         if str(target).startswith("ROOM:") and self._car_floor(getattr(self, "room", None)):   # (out of a lift car: on the floor it's at)
             target = "ROOM:" + self._car_floor(self.room)
         if str(target).startswith("ROOM:"):  # (stairs to another room of the building; "ROOM:MAIN" is the place's own first map)
-            return self._go(None if target[5:] == "MAIN" else target[5:], "ROOM:" + (self.room or "MAIN"))
+            from src.vfx import area_changes
+            _to = None if target[5:] == "MAIN" else target[5:]
+            out = area_changes.change(self, "door_out" if _to is None else "stairs",
+                                      lambda: self._go(_to, "ROOM:" + (self.room or "MAIN")))
+            self._room_sign(_to is None)
+            return out
         opt = self._travel_option(target)
         if opt is None or not self._shown(opt):
             here = self.player
@@ -1409,6 +1431,10 @@ class WalkTownState(TownWalkUps, CityState):
         self.game.walk_town_pos = None  # (next time: in by the way you come)
         same = [t for t, v in self.exits.items() if v == target]
         at = tuple(self.player)
+        from src.vfx import area_changes   # (how you leave: over the map's edge, or through a door; the area change's wipe)
+        area_changes.note_leave(self.game, self.area_key, room=bool(getattr(self, "room", None)),
+                                edge=area_changes.edge_exit(self.grid[at[1]][at[0]] if 0 <= at[1] < len(self.grid) and 0 <= at[0] < len(self.grid[at[1]]) else None,
+                                                            at, (self.w, self.h)))
         self.game.walk_town_exit = (self.area_key, same.index(at), len(same)) if at in same else None
         _to = getattr(self, "_edge_to", {}).get(f"{at[0]},{at[1]}")
         self.game.arrive_edge = (self.area_key, target, tuple(_to)) if _to else None
@@ -1831,6 +1857,13 @@ class WalkTownState(TownWalkUps, CityState):
             self.toast_timer -= 1
         if self.banner > 0:
             self.banner -= 1
+        if getattr(self, "sign", None):
+            self.sign.tick(busy=bool(self.npc_active))   # (a text box up: Gen 4's plate and Orre's window go)
+        if not self._busy():   # (what the old in-between screen said: said here on arrival, src/vfx/area_changes.py)
+            from src.vfx import area_changes as _ac
+            _said = _ac.take_arrival_lines(self.game, self.area_key)
+            if _said:
+                self.show_message(_said)
         if self.anim > 0:
             self.anim = max(0, self.anim - (2 if self._may_run() else 1))   # (Shift held: running, Jordan 11-14)
             return
@@ -3124,6 +3157,19 @@ class WalkTownState(TownWalkUps, CityState):
             return parts[t]
         return next((parts[(t[0] + dx, t[1] + dy)] for dx, dy in DIRS if (t[0] + dx, t[1] + dy) in parts), None)
 
+    def _sign_word(self):
+        """The name on the sign: the town's, with the part you're in (Floccesy Town - Outskirts)."""
+        name = theme.pokemon_word(self.area_data.get("route_name") or self.area_key.replace("_", " ").title())
+        part = self.part_name() if self.town_map and self.town_map.get("part_names") else None
+        return f"{name} - {part}" if part else name
+
+    def _room_sign(self, outside):
+        """Out of a building, back outdoors: the town's sign again, where the game shows it (src/vfx/area_changes.py)."""
+        from src.vfx import area_changes
+        got = area_changes.floor_sign(self, self._sign_word, inside=not outside or bool(getattr(self, "room", None)))
+        if got is not False:
+            self.sign, self.banner = got, 0
+
     def part_name(self, t=None):
         """The name the map gives the part a tile (default: where you stand) is in, or None."""
         names = self.town_map.get("part_names") or {}
@@ -3238,6 +3284,8 @@ class WalkTownState(TownWalkUps, CityState):
         if not (getattr(self, "dark", None) and self.light_radius() is not None):  # (a dark room's map isn't given away)
             self._draw_minimap(screen)
         W, H = self.game.width, self.game.height
+        if getattr(self, "sign", None):   # (this region's game's sign: src/vfx/area_changes.py)
+            self.sign.draw(screen, dn.map_view(self.game))
         name = theme.pokemon_word(self.area_data.get("route_name") or self.area_key.replace("_", " ").title())
         if self.banner > 0 and self.town_map.get("part_names"):   # (a named part: "Floccesy Town - Outskirts")
             if getattr(self, "_banner_part", 0) == 0:

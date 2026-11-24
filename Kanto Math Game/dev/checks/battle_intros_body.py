@@ -1,6 +1,6 @@
 # Battle intros from each region's own game (Jordan 11-24, region/systems; src/vfx/canon_intros.py): Kanto, Sevii
 # and Orange play FireRed's, Hoenn Emerald's, Johto HGSS's, Sinnoh Platinum's, Orre the Essentials ones of
-# Pokemon Orre 2.1.1, each picked the way that game picks it; Unova and the menu regions keep the older intros.
+# Pokemon Orre 2.1.1, each picked the way that game picks it; Unova copies Platinum (Jordan 11-24); the menu regions keep the older intros.
 # Also: map battles (OVERWORLD style) get one intro, a classic trainer one, and back from the Bag none.
 # Pictures mid-effect and a GIF per region in dev/checks/out/battle_intros/.
 #   bash dev/checks/run.sh battle_intros
@@ -49,7 +49,8 @@ def sel(key, **kw):
 print("1) the region picks the game")
 check([ci.game_for(r) for r in ("KANTO", "ORANGE", "HOENN", "JOHTO", "SINNOH", "ORRE")] ==
       ["frlg", "frlg", "emerald", "hgss", "platinum", "orre"], "Kanto/Orange FireRed, Hoenn Emerald, Johto HGSS, Sinnoh Platinum, Orre Essentials")
-check(all(ci.game_for(r) is None for r in ("UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA", "DECOLORE")), "Unova and the menu regions: no profile (today's intros)")
+check(all(ci.game_for(r) is None for r in ("KALOS", "ALOLA", "GALAR", "PALDEA", "DECOLORE")), "the menu regions: no profile (today's intros)")
+check(ci.game_for("UNOVA") == "platinum", "Unova copies Platinum (Jordan 11-24: Black 2 would need an emulator to measure)")
 story.current_area_key = "GREEN_PATH"
 check(story.get_current_region() == "KANTO" and ci.game_for(story.get_current_region()) == "frlg", "a Sevii area reports Kanto: FireRed's")
 
