@@ -80,14 +80,37 @@ def available(game=None):
     return _context() is not None
 
 
+MESA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "mesa")
+
+
+def _mesa(moderngl):
+    """Mesa's OpenGL from the game's own "mesa" folder (the portable copy, dev/tools/make_portable.py; Jordan 11-24): for a
+    Windows PC whose driver can't do OpenGL 3.3. It draws on the graphics card through DirectX 12 where it can, else on
+    the CPU (llvmpipe; GALLIUM_DRIVER=llvmpipe forces that). None when there is no such folder."""
+    dll = os.path.join(MESA_DIR, "opengl32.dll")
+    if os.name != "nt" or not os.path.exists(dll):
+        return None
+    os.environ["PATH"] = MESA_DIR + os.pathsep + os.environ.get("PATH", "")   # (its opengl32 loads libgallium_wgl beside it)
+    return moderngl.create_standalone_context(libgl=dll)
+
+
 def _context():
     if "ctx" not in _CTX:
         try:
             import moderngl
-            try:
-                ctx = moderngl.create_standalone_context()
-            except Exception:   # (no X display: Linux's EGL)
-                ctx = moderngl.create_standalone_context(backend="egl")
+            ctx = None
+            if os.environ.get("POKEMATH_MESA"):   # (test the portable copy's Mesa on a PC whose own driver works)
+                ctx = _mesa(moderngl)
+            if ctx is None:
+                try:
+                    ctx = moderngl.create_standalone_context()
+                except Exception:   # (no X display: Linux's EGL)
+                    try:
+                        ctx = moderngl.create_standalone_context(backend="egl")
+                    except Exception:   # (Windows with no OpenGL 3.3 driver: the bundled Mesa, if there)
+                        ctx = _mesa(moderngl)
+                        if ctx is None:
+                            raise
             prog = ctx.program(vertex_shader=VERT, fragment_shader=FRAG)
             _CTX["ctx"], _CTX["prog"], _CTX["mgl"] = ctx, prog, moderngl
         except Exception:
