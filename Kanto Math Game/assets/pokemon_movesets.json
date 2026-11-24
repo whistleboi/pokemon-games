@@ -173451,6 +173451,450 @@
     ],
     "evolution": null
   },
+  "492_sky": {
+    "name": "SHAYMIN-SKY",
+    "types": [
+      "GRASS",
+      "FLYING"
+    ],
+    "stats": {
+      "HP": 100,
+      "ATTACK": 103,
+      "DEFENSE": 75,
+      "SPECIAL-ATTACK": 120,
+      "SPECIAL-DEFENSE": 75,
+      "SPEED": 127
+    },
+    "base_xp": 270,
+    "capture_rate": 45,
+    "moves": [
+      {
+        "name": "LEECH-SEED",
+        "power": 0,
+        "type": "GRASS",
+        "accuracy": 90,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "leech-seed",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "LEECH-SEED",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "GROWTH",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SLEEP-POWDER",
+        "power": 0,
+        "type": "GRASS",
+        "accuracy": 75,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "sleep",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "SLEEP",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "QUICK-ATTACK",
+        "power": 40,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 1,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "RECOVER",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DEFENSE-CURL",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SWEET-KISS",
+        "power": 0,
+        "type": "FAIRY",
+        "accuracy": 75,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SWEET-SCENT",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SYNTHESIS",
+        "power": 0,
+        "type": "GRASS",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "AROMATHERAPY",
+        "power": 0,
+        "type": "GRASS",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "GRASS-WHISTLE",
+        "power": 0,
+        "type": "GRASS",
+        "accuracy": 55,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "sleep",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "SLEEP",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "MAGICAL-LEAF",
+        "power": 60,
+        "type": "GRASS",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HEALING-WISH",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "NATURAL-GIFT",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "LUCKY-CHANT",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "WORRY-SEED",
+        "power": 0,
+        "type": "GRASS",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "AIR-SLASH",
+        "power": 75,
+        "type": "FLYING",
+        "accuracy": 95,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ENERGY-BALL",
+        "power": 90,
+        "type": "GRASS",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SEED-FLARE",
+        "power": 120,
+        "type": "GRASS",
+        "accuracy": 85,
+        "category": "SPECIAL",
+        "effect_chance": 40,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "GRASSY-TERRAIN",
+        "power": 0,
+        "type": "GRASS",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "LEAFAGE",
+        "power": 40,
+        "type": "GRASS",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
   "493": {
     "name": "ARCEUS",
     "types": [
@@ -225944,6 +226388,449 @@
     ],
     "evolution": null
   },
+  "641_therian": {
+    "name": "TORNADUS-THERIAN",
+    "types": [
+      "FLYING"
+    ],
+    "stats": {
+      "HP": 79,
+      "ATTACK": 100,
+      "DEFENSE": 80,
+      "SPECIAL-ATTACK": 110,
+      "SPECIAL-DEFENSE": 90,
+      "SPEED": 121
+    },
+    "base_xp": 261,
+    "capture_rate": 3,
+    "moves": [
+      {
+        "name": "GUST",
+        "power": 40,
+        "type": "FLYING",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TACKLE",
+        "power": 40,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THRASH",
+        "power": 120,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "LEER",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "BITE",
+        "power": 60,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "AGILITY",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SWAGGER",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 85,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TWISTER",
+        "power": 40,
+        "type": "DRAGON",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 20
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "RAIN-DANCE",
+        "power": 0,
+        "type": "WATER",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CRUNCH",
+        "power": 80,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "UPROAR",
+        "power": 90,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "REVENGE",
+        "power": 60,
+        "type": "FIGHTING",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": -4,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ASTONISH",
+        "power": 30,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "AIR-CUTTER",
+        "power": 60,
+        "type": "FLYING",
+        "accuracy": 95,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "EXTRASENSORY",
+        "power": 80,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HAMMER-ARM",
+        "power": 100,
+        "type": "FIGHTING",
+        "accuracy": 90,
+        "category": "PHYSICAL",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TAILWIND",
+        "power": 0,
+        "type": "FLYING",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DARK-PULSE",
+        "power": 80,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 20
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "AIR-SLASH",
+        "power": 75,
+        "type": "FLYING",
+        "accuracy": 95,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HURRICANE",
+        "power": 110,
+        "type": "FLYING",
+        "accuracy": 70,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
   "642": {
     "name": "THUNDURUS-INCARNATE",
     "types": [
@@ -225957,6 +226844,486 @@
       "SPECIAL-ATTACK": 125,
       "SPECIAL-DEFENSE": 80,
       "SPEED": 111
+    },
+    "base_xp": 261,
+    "capture_rate": 3,
+    "moves": [
+      {
+        "name": "TACKLE",
+        "power": 40,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THRASH",
+        "power": 120,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "LEER",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "BITE",
+        "power": 60,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THUNDER-SHOCK",
+        "power": 40,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THUNDER",
+        "power": 110,
+        "type": "ELECTRIC",
+        "accuracy": 70,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "AGILITY",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SWAGGER",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 85,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SPARK",
+        "power": 65,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TWISTER",
+        "power": 40,
+        "type": "DRAGON",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 20
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CRUNCH",
+        "power": 80,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "UPROAR",
+        "power": 90,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CHARGE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "REVENGE",
+        "power": 60,
+        "type": "FIGHTING",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": -4,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ASTONISH",
+        "power": 30,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "EXTRASENSORY",
+        "power": 80,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SHOCK-WAVE",
+        "power": 60,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HAMMER-ARM",
+        "power": 100,
+        "type": "FIGHTING",
+        "accuracy": 90,
+        "category": "PHYSICAL",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HEAL-BLOCK",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "heal-block",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "HEAL-BLOCK",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DARK-PULSE",
+        "power": 80,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 20
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "NASTY-PLOT",
+        "power": 0,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DISCHARGE",
+        "power": 80,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
+  "642_therian": {
+    "name": "THUNDURUS-THERIAN",
+    "types": [
+      "ELECTRIC",
+      "FLYING"
+    ],
+    "stats": {
+      "HP": 79,
+      "ATTACK": 105,
+      "DEFENSE": 70,
+      "SPECIAL-ATTACK": 145,
+      "SPECIAL-DEFENSE": 80,
+      "SPEED": 101
     },
     "base_xp": 261,
     "capture_rate": 3,
@@ -227133,6 +228500,502 @@
       "SPECIAL-ATTACK": 115,
       "SPECIAL-DEFENSE": 80,
       "SPEED": 101
+    },
+    "base_xp": 270,
+    "capture_rate": 3,
+    "moves": [
+      {
+        "name": "SWORDS-DANCE",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TACKLE",
+        "power": 40,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "LEER",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "BITE",
+        "power": 60,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ROCK-THROW",
+        "power": 50,
+        "type": "ROCK",
+        "accuracy": 90,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "EARTHQUAKE",
+        "power": 100,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "FISSURE",
+        "power": 0,
+        "type": "GROUND",
+        "accuracy": 30,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ROCK-SLIDE",
+        "power": 75,
+        "type": "ROCK",
+        "accuracy": 90,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "OUTRAGE",
+        "power": 120,
+        "type": "DRAGON",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SANDSTORM",
+        "power": 0,
+        "type": "ROCK",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TWISTER",
+        "power": 40,
+        "type": "DRAGON",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 20
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CRUNCH",
+        "power": 80,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 20,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "IMPRISON",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ROCK-TOMB",
+        "power": 60,
+        "type": "ROCK",
+        "accuracy": 95,
+        "category": "PHYSICAL",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "EXTRASENSORY",
+        "power": 80,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SAND-TOMB",
+        "power": 35,
+        "type": "GROUND",
+        "accuracy": 85,
+        "category": "PHYSICAL",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "trap",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "TRAP",
+            "chance": 100
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "BLOCK",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "MUD-SHOT",
+        "power": 55,
+        "type": "GROUND",
+        "accuracy": 95,
+        "category": "SPECIAL",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HAMMER-ARM",
+        "power": 100,
+        "type": "FIGHTING",
+        "accuracy": 90,
+        "category": "PHYSICAL",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "PUNISHMENT",
+        "power": 0,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "EARTH-POWER",
+        "power": 90,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "STONE-EDGE",
+        "power": 100,
+        "type": "ROCK",
+        "accuracy": 80,
+        "category": "PHYSICAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "BULLDOZE",
+        "power": 60,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 100,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
+  "645_therian": {
+    "name": "LANDORUS-THERIAN",
+    "types": [
+      "GROUND",
+      "FLYING"
+    ],
+    "stats": {
+      "HP": 89,
+      "ATTACK": 145,
+      "DEFENSE": 90,
+      "SPECIAL-ATTACK": 105,
+      "SPECIAL-DEFENSE": 80,
+      "SPEED": 91
     },
     "base_xp": 270,
     "capture_rate": 3,

@@ -1431,7 +1431,7 @@ class StoryManager:
                 ("STONE_BADGE", "HOENN_MAP"),
                 ("KNUCKLE_BADGE", "OLD_ROD"),
                 ("HEAT_BADGE", "GO_GOGGLES"),
-                ("BALANCE_BADGE", "AMULET_COIN"),
+                # (no Amulet Coin with the Balance Badge: Mom gives it after Norman, as ORAS - Hoenn H2/H5, 11-23)
                 ("FEATHER_BADGE", "ACRO_BIKE"),
                 ("MIND_BADGE", "DIVE_GOGGLES"),
                 ("RAIN_BADGE", "HOENN_CAVE_MAP"),
