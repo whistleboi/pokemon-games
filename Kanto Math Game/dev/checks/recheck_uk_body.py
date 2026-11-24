@@ -29,13 +29,29 @@ _TM = _json.load(open("assets/town_maps.json", encoding="utf-8"))
 _TM = _TM.get("maps", _TM)
 # (Unova's walked rebuild left these out - Unova's inbox, 11-24: a KNOWN line each until Unova places or drops them)
 UNOVA_DROPPED = {("ASPERTIA_CITY", "Battle Leader Cheren"), ("VIRBANK_CITY", "Battle Leader Roxie"),
-                 ("LOSTLORN_FOREST", "SEEK ENTEI"), ("REVERSAL_MOUNTAIN", "SEEK HEATRAN")}
+                 ("LOSTLORN_FOREST", "SEEK ENTEI")}
+SEEK_IDS = {"SEEK ENTEI": 244, "SEEK HEATRAN": 485}   # (a legendary met as a BOSS standing on the walked map: Heatran inside
+_WBOSS = {}                                            #  Reversal Mountain, 11-24)
+
+
+def _wb(o, where):
+    if isinstance(o, dict):
+        if isinstance(o.get("boss"), dict):
+            _WBOSS.setdefault(o["boss"].get("id"), set()).add(where)
+        for k, v in o.items():
+            _wb(v, k if isinstance(k, str) and k.isupper() and len(k) > 3 else where)
+    elif isinstance(o, list):
+        for v in o:
+            _wb(v, where)
+
+
+_wb(_TM, "")
 
 
 def offers(area, text):
     """text is something to do there: a menu option, or (a walked place) someone on its map."""
     a = prog[area]
-    return any(o.get("text") == text for o in (a.get("route_menu") or []) + (a.get("explore_options") or []))         or (area in _TM and _json.dumps(_TM[area]).count(_json.dumps(text)) > 0)
+    return any(o.get("text") == text for o in (a.get("route_menu") or []) + (a.get("explore_options") or []))         or (area in _TM and _json.dumps(_TM[area]).count(_json.dumps(text)) > 0)         or any(w.startswith(area) for w in _WBOSS.get(SEEK_IDS.get(text), ()))
 
 
 def check_offers(area, text, what):
