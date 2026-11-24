@@ -731,7 +731,8 @@ _rr = st._door_options("rivalride")
 _shown_rival = any((o.get("any") or [o])[0].get("door") == "rivalride" for o in st._people().values() if isinstance(o, dict))
 st._get_callback_for_option(_rr[0])()
 frames(3)
-check(_shown_rival and len(_rr) == 2 and type(g.current_state).__name__ == "AreaTransitionState" and getattr(g.current_state, "next_area_key", None) == "MAUVILLE_CITY",
+check(_shown_rival and len(_rr) == 2 and ((type(g.current_state).__name__ == "AreaTransitionState" and getattr(g.current_state, "next_area_key", None) == "MAUVILLE_CITY")
+                                         or story.current_area_key == "MAUVILLE_CITY"),   # (11-24: no in-between screen on the walked maps: there already)
       f"Fallarbor: your rival waits outside Cozmo's house and takes you back to Mauville if you like ({[o.get('text') for o in _rr]})")
 st = open_map("HOENN_MT_CHIMNEY", "HOENN_ROUTE_112")
 _lady = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Lava Cookie lady")
@@ -2434,7 +2435,7 @@ _reg = story.get_current_region()
 st = open_map("NAVEL_ROCK", "LILYCOVE_CITY")
 _figs = sorted(m.payload.get("text") for f in [st.run.made(i) for i in (8, 20)] for m in f.movers if m.kind == "figure" and isinstance(m.payload, dict))
 st._leave("ONE_ISLAND"); frames(1)
-_back = getattr(g.current_state, "next_area_key", None)
+_back = getattr(g.current_state, "next_area_key", None) or story.current_area_key   # (11-24: no in-between screen on the walked maps: there already)
 g.transitioning = False
 story.current_area_key = "LILYCOVE_CITY"
 from src.states.systems.fly_map import FlyState as _Fly
@@ -2453,7 +2454,7 @@ story.current_area_key = "BIRTH_ISLAND"
 _reg2 = story.get_current_region()
 st = open_map("BIRTH_ISLAND", "ONE_ISLAND")
 st._leave("ONE_ISLAND"); frames(1)
-_back2 = getattr(g.current_state, "next_area_key", None)
+_back2 = getattr(g.current_state, "next_area_key", None) or story.current_area_key   # (11-24: as above)
 g.transitioning = False
 check({o.get("item_condition") for o in _one} == {"MYSTIC_TICKET", "AURORA_TICKET"} and "MYSTIC_TICKET" in story.CARRY_ITEMS
       and _reg2 == "KANTO" and _back2 == "ONE_ISLAND" and not _spN["BIRTH_ISLAND"]["route_menu"][0].get("condition"),
