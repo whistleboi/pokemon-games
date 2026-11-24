@@ -4986,9 +4986,8 @@ CT_4F = route(
 CT_ROOF = route(
     342, {}, {}, exits={"v": ("CELESTIAL_TOWER_4F", [(22, 14), (23, 14)])},
     hidden={"10,13": "GHOST_GEM"}, extra_people=[(16, 12, BLACK_FOG)], title="Celestial Tower")
-for _m in (CT_1F, CT_2F, CT_3F, CT_4F):   # (Black 2's camera 33 looks along the inside walls; seen from it, or from our live camera,
-    _m["roofs"].pop("_cam", None)        #  the floor's lost: drawn top-down instead, the floor's own picture with its graves
-    _m.pop("cameras", None)              #  and ramps. Their live 3D files aren't kept, 11-24)
+# (Celestial Tower's floors: Black 2's camera 33 looks along the inside walls, and from it or our live camera the spiral floor
+#  is lost. Jordan 11-24, "3D now": live 3D anyway, the floor fix on ROADMAP_UNOVA; they were drawn top-down before.)
 CT_ROOF["sign_events"] = {"16,10": {"text": "The bell", "action": "EVENT", "event": {
     "lines": ["It's Celestial Tower's bell.", "{player_name} rang the bell...", "The sound of the bell reverberates through the area..."],
     "flag": "b2_celestial_bell"}}}
@@ -5653,8 +5652,8 @@ OPE_GYM = room(121, {
 }, {}, (21, 16))
 GEO["121"] = _G121
 OPE_GYM["title"] = "Opelucid Gym"
-OPE_GYM["roofs"].pop("_cam", None)   # (top-down, as Celestial Tower's floors: the camera picture has no statues to stand on;
-OPE_GYM["roofs"]["_picture"]["f"] = "b2_ground/121_gym.png"   #  kanto_handoff/unova_map_tools/gym_platforms.py paints the levels)
+# (Jordan 11-24, "3D now": the Gym in live 3D (its own scene, 121.npz, found by the zone's picture), the statues missing till
+#  their models are found (ROADMAP_UNOVA). The painted top-down stand-in, gym_platforms.py -> 121_gym.png, is no longer used.)
 _PADS = {(15, 26): ((15, 21), ["gym_trainer_OPELUCID_CITY_1"]), (15, 22): ((15, 28), []),
          (11, 11): ((15, 6), ["gym_trainer_OPELUCID_CITY_4", "gym_trainer_OPELUCID_CITY_5"]), (11, 15): ((15, 19), []),
          (15, 18): ((11, 13), ["gym_trainer_OPELUCID_CITY_2", "gym_trainer_OPELUCID_CITY_3"]), (14, 7): ((22, 50), [])}
