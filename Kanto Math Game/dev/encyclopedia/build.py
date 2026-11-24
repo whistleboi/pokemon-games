@@ -549,7 +549,9 @@ def link_places(body):
             for pat, k in pats:
                 if k in done or k == here[0]:
                     continue
-                mm = pat.search(piece)
+                taken = [(q.start(), q.end()) for q in re.finditer(r"\[\[PL:.*?\]\]", piece)]
+                mm = next((q for q in pat.finditer(piece)   # (not inside a longer name already linked: "Trovitopolis Sewers")
+                           if not any(a <= q.start() < b for a, b in taken)), None)
                 if mm:
                     done.add(k)
                     piece = piece[:mm.start()] + '[[PL:' + k + '|' + mm.group(0) + ']]' + piece[mm.end():]
